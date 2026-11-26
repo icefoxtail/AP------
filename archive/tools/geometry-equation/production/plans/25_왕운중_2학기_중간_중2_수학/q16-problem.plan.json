@@ -1,0 +1,184 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1515",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1381",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2570",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1381",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2650",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1191",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1435",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1191",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "D",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "caption": "25_왕운중_2학기_중간_중2_수학 q16번 문제 조건 도형",
+  "accessibilityDescription": "평행사변형 ABCD의 대각선 AC를 그었다. AD와 BC에는 같은 한 화살표, AB와 DC에는 같은 두 화살표가 표시됐다.",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 460
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "평행사변형 ABCD의 대각선 AC를 그었다. AD와 BC에는 같은 한 화살표, AB와 DC에는 같은 두 화살표가 표시됐다.",
+      "mappedTo": "mathPlan.nodes/displaySegments/planeMarks"
+    },
+    {
+      "id": "scan",
+      "condition": "실제 원본 기출 스캔과 q16-problem-visual-v2.svg의 기하 정보 대조",
+      "mappedTo": "mathPlan.nodes/displaySegments"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 점 이름·연결선과 문제·해설별 표식의 엔진 작도. 바탕 사각형 및 불필요한 면 채움 없음.",
+    "16번 원본 에셋의 기입 길이·동일 표시·수선·평행 표식은 계획의 그려지는 필드별로 별도 확인함."
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "parallel0",
+        "count": 1,
+        "segments": [
+          "s0",
+          "s1"
+        ]
+      },
+      {
+        "id": "parallel1",
+        "count": 2,
+        "segments": [
+          "s2",
+          "s3"
+        ]
+      }
+    ]
+  }
+}

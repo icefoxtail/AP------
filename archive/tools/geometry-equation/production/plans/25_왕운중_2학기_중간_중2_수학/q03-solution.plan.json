@@ -1,0 +1,277 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "H1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2830",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1314",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2340",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1314",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "105",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-2130",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "105",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1780",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2750",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "861",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2390",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "861",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1525",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1314",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1525",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "861",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "H1",
+    "H2",
+    "O",
+    "H3",
+    "H4",
+    "H5",
+    "H6",
+    "H7"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "H1",
+        "H2"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "O",
+        "H3"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "H4",
+        "H5"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "H6",
+        "H7"
+      ],
+      "dashed": true
+    }
+  ],
+  "hiddenPointNames": [
+    "H1",
+    "H2",
+    "H3",
+    "H4",
+    "H5",
+    "H6",
+    "H7"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "25_왕운중_2학기_중간_중2_수학 q03번 해설 과정 도형",
+  "accessibilityDescription": "파란 가로 직선이 점 (−3, 4)를 지나고 가로축과 나란하다. 점에서 축으로 가는 옅은 세로 점선이 −3에 닿는다.",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 460
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "파란 가로 직선이 점 (−3, 4)를 지나고 가로축과 나란하다. 점에서 축으로 가는 옅은 세로 점선이 −3에 닿는다.",
+      "mappedTo": "mathPlan.nodes/displaySegments/planeMarks"
+    },
+    {
+      "id": "scan",
+      "condition": "실제 원본 기출 스캔과 q3-solution-visual-v2.svg의 기하 정보 대조",
+      "mappedTo": "mathPlan.nodes/displaySegments"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 점 이름·연결선과 문제·해설별 표식의 엔진 작도. 바탕 사각형 및 불필요한 면 채움 없음."
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "coordinateGiven",
+        "at": [
+          -3.7,
+          5.5
+        ],
+        "text": "(-3,4)",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "horizontalFormula",
+        "at": [
+          4,
+          5.5
+        ],
+        "text": "y=4",
+        "labelKind": "TEXT"
+      }
+    ]
+  }
+}

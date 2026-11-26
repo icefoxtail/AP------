@@ -1,0 +1,487 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "마름모 ABCD"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "-1470",
+                    "denominator": "400"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "1221",
+                    "denominator": "400"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "-2800",
+                    "denominator": "400"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "390",
+                    "denominator": "400"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "-1470",
+                    "denominator": "400"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "-441",
+                    "denominator": "400"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "-140",
+                    "denominator": "400"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "390",
+                    "denominator": "400"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "-1470",
+                    "denominator": "400"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "390",
+                    "denominator": "400"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "O"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "s0",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "s1",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "s2",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "s3",
+            "refs": [
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "s4",
+            "refs": [
+              "A",
+              "O"
+            ]
+          },
+          {
+            "id": "s5",
+            "refs": [
+              "O",
+              "C"
+            ]
+          },
+          {
+            "id": "s6",
+            "refs": [
+              "B",
+              "O"
+            ]
+          },
+          {
+            "id": "s7",
+            "refs": [
+              "O",
+              "D"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 600,
+          "height": 460
+        },
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "ang0",
+              "refs": [
+                "A",
+                "B",
+                "D"
+              ],
+              "value": 32,
+              "style": "ARC",
+              "label": "x",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "ang1",
+              "refs": [
+                "A",
+                "C",
+                "D"
+              ],
+              "value": 58,
+              "style": "ARC",
+              "label": "58",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "addedAngle2",
+              "refs": [
+                "B",
+                "C",
+                "O"
+              ],
+              "value": 58,
+              "label": "58",
+              "style": "ARC",
+              "factRole": "GIVEN"
+            }
+          ],
+          "equalLengths": [
+            {
+              "id": "equals0",
+              "count": 1,
+              "segments": [
+                "s0",
+                "s1",
+                "s2",
+                "s3"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "정사각형 EFGH"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "4",
+                    "denominator": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "G",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "4",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "H",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "4",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "4",
+                    "denominator": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "2",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "2",
+                    "denominator": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "E",
+          "F",
+          "G",
+          "H",
+          "O"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "s0",
+            "refs": [
+              "E",
+              "F"
+            ]
+          },
+          {
+            "id": "s1",
+            "refs": [
+              "F",
+              "G"
+            ]
+          },
+          {
+            "id": "s2",
+            "refs": [
+              "G",
+              "H"
+            ]
+          },
+          {
+            "id": "s3",
+            "refs": [
+              "H",
+              "E"
+            ]
+          },
+          {
+            "id": "s4",
+            "refs": [
+              "E",
+              "O"
+            ]
+          },
+          {
+            "id": "s5",
+            "refs": [
+              "O",
+              "G"
+            ]
+          },
+          {
+            "id": "s6",
+            "refs": [
+              "F",
+              "O"
+            ]
+          },
+          {
+            "id": "s7",
+            "refs": [
+              "O",
+              "H"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 480,
+          "height": 390
+        },
+        "rightAngles": [
+          {
+            "id": "diagRight",
+            "refs": [
+              "E",
+              "O",
+              "H"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "dimensions": [
+            {
+              "id": "diag10",
+              "from": "F",
+              "to": "H",
+              "label": "10",
+              "unit": "cm",
+              "side": "RIGHT",
+              "style": "BAR"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "askY",
+              "ownerSegment": "s4",
+              "text": "y"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "마름모의 각과 정사각형의 대각선 길이를 나란히 보인 그림",
+  "accessibilityDescription": "마름모의 각과 정사각형의 대각선 길이를 나란히 보인 그림",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "왕운중 21번의 마름모에는 각 58도와 미지각 x가, 정사각형에는 대각선 FH=10cm와 EO=y가 표시되어 있다.",
+      "mappedTo": "panels/caption"
+    }
+  ],
+  "newVisualInformation": [
+    "서로 다른 두 도형의 꼭짓점과 대각선을 한 공간에 겹치지 않고 각각의 패널에서 표시한다."
+  ]
+}

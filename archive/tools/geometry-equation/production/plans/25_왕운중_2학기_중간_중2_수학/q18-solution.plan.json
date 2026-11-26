@@ -1,0 +1,300 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1392",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1725",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2063",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-469",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1952",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-469",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2623",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1725",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1449",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-2115",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "231",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-469",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "F",
+        "E"
+      ]
+    }
+  ],
+  "caption": "25_왕운중_2학기_중간_중2_수학 q18번 해설 과정 도형",
+  "accessibilityDescription": "평행사변형 ABCD의 A에서 시작한 이등분선이 밑변 BC의 F에서 만나고 계속 이어져 CD의 연장선과 E에서 만난다. AB는 8 cm, FC는 x cm, DE는 y cm이다.",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 460
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "평행사변형 ABCD의 A에서 시작한 이등분선이 밑변 BC의 F에서 만나고 계속 이어져 CD의 연장선과 E에서 만난다. AB는 8 cm, FC는 x cm, DE는 y cm이다.",
+      "mappedTo": "mathPlan.nodes/displaySegments/planeMarks"
+    },
+    {
+      "id": "scan",
+      "condition": "실제 원본 기출 스캔과 q18-problem-visual-v2.svg의 기하 정보 대조",
+      "mappedTo": "mathPlan.nodes/displaySegments"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 점 이름·연결선과 문제·해설별 표식의 엔진 작도. 바탕 사각형 및 불필요한 면 채움 없음.",
+    "18번 원본 에셋의 기입 길이·동일 표시·수선·평행 표식은 계획의 그려지는 필드별로 별도 확인함."
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "ang0",
+        "refs": [
+          "B",
+          "A",
+          "E"
+        ],
+        "value": 53.5,
+        "style": "ARC",
+        "noLabel": true,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ang1",
+        "refs": [
+          "E",
+          "A",
+          "D"
+        ],
+        "value": 53.5,
+        "style": "ARC",
+        "noLabel": true,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "label0",
+        "ownerSegment": "s0",
+        "text": "8",
+        "unit": "cm"
+      },
+      {
+        "id": "label1",
+        "ownerSegment": "s2",
+        "text": "x",
+        "unit": "cm"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dimension0",
+        "from": "D",
+        "to": "E",
+        "label": "y",
+        "unit": "cm",
+        "side": "ABOVE",
+        "style": "INLINE"
+      }
+    ],
+    "parallels": [
+      {
+        "id": "parallel0",
+        "count": 1,
+        "segments": [
+          "s4",
+          "s1"
+        ]
+      },
+      {
+        "id": "parallel1",
+        "count": 2,
+        "segments": [
+          "s0",
+          "s3"
+        ]
+      }
+    ]
+  }
+}

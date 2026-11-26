@@ -1,0 +1,313 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "H1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2650",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1403",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2790",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1403",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-531",
+              "denominator": "800"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2807",
+              "denominator": "800"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2281",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1283",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2421",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-612",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2281",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2807",
+              "denominator": "800"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2421",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2807",
+              "denominator": "800"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "H1",
+    "H2",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "H1",
+        "D"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "E",
+        "H2"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "s8",
+      "refs": [
+        "E",
+        "C"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "H1",
+    "H2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "25_왕운중_2학기_중간_중2_수학 q08번 해설 과정 도형",
+  "accessibilityDescription": "직선 l 위에 D, A, E가 왼쪽부터 있다. B에서 그은 수선 BD는 8, C에서 그은 수선 CE는 6이다. A에서 두 같은 변 AB와 AC가 직각으로 만난다.",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 460
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직선 l 위에 D, A, E가 왼쪽부터 있다. B에서 그은 수선 BD는 8, C에서 그은 수선 CE는 6이다. A에서 두 같은 변 AB와 AC가 직각으로 만난다.",
+      "mappedTo": "mathPlan.nodes/displaySegments/planeMarks"
+    },
+    {
+      "id": "scan",
+      "condition": "실제 원본 기출 스캔과 q8-problem-visual-v2.svg의 기하 정보 대조",
+      "mappedTo": "mathPlan.nodes/displaySegments"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 점 이름·연결선과 문제·해설별 표식의 엔진 작도. 바탕 사각형 및 불필요한 면 채움 없음.",
+    "8번 원본 에셋의 기입 길이·동일 표시·수선·평행 표식은 계획의 그려지는 필드별로 별도 확인함."
+  ],
+  "rightAngles": [
+    {
+      "id": "rt0",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "rt1",
+      "refs": [
+        "A",
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "rt2",
+      "refs": [
+        "A",
+        "E",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "label0",
+        "ownerSegment": "s7",
+        "text": "8"
+      },
+      {
+        "id": "label1",
+        "ownerSegment": "s8",
+        "text": "6"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "equals0",
+        "count": 1,
+        "segments": [
+          "s4",
+          "s5"
+        ]
+      }
+    ]
+  }
+}

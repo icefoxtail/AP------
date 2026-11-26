@@ -1,0 +1,429 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "직각삼각형 ABC"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "4",
+                    "denominator": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "-3",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "s0",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "s1",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "s2",
+            "refs": [
+              "C",
+              "A"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 480,
+          "height": 390
+        },
+        "rightAngles": [
+          {
+            "id": "rC",
+            "refs": [
+              "A",
+              "C",
+              "B"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "직각삼각형 DEF"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "4",
+                    "denominator": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "3",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "D",
+          "E",
+          "F"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "s0",
+            "refs": [
+              "D",
+              "E"
+            ]
+          },
+          {
+            "id": "s1",
+            "refs": [
+              "E",
+              "F"
+            ]
+          },
+          {
+            "id": "s2",
+            "refs": [
+              "F",
+              "D"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 480,
+          "height": 390
+        },
+        "rightAngles": [
+          {
+            "id": "rF",
+            "refs": [
+              "D",
+              "F",
+              "E"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "한 변을 겹쳐 비교"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "4",
+                    "denominator": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "-3",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "3",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "E"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "s0",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "s1",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "s2",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "s3",
+            "refs": [
+              "A",
+              "E"
+            ]
+          },
+          {
+            "id": "s4",
+            "refs": [
+              "E",
+              "C"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 480,
+          "height": 390
+        },
+        "rightAngles": [
+          {
+            "id": "rC",
+            "refs": [
+              "A",
+              "C",
+              "B"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "caption": "두 직각삼각형과 겹쳐 놓은 세 번째 도형을 나란히 비교",
+  "accessibilityDescription": "두 직각삼각형과 겹쳐 놓은 세 번째 도형을 나란히 비교",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "왕운중 9번 원본의 C와 F는 직각이고 AB와 DE의 빗변, AC와 DF의 한 변이 각각 같다. 한 변을 겹쳐 합동 조건을 확인한다.",
+      "mappedTo": "panels/caption"
+    }
+  ],
+  "newVisualInformation": [
+    "세 개의 원본 이미지 칸을 별개 도형 패널로 보존한다.",
+    "ENGINE_CAPABILITY_PENDING: 서로 다른 패널의 동등한 변에 똑같은 틱을 붙이는 CROSS_PANEL_EQUAL_MARK_GROUP."
+  ]
+}

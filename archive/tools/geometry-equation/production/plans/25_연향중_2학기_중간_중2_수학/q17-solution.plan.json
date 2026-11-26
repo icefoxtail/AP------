@@ -1,0 +1,217 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-424",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1725",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2440",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1475",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2360",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1475",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "440",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1475",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "A",
+        "P"
+      ]
+    }
+  ],
+  "caption": "25_연향중_2학기_중간_중2_수학 q17번 해설 과정 도형",
+  "accessibilityDescription": "해설 그림: 삼각형 ABC의 변 BC 위의 점 P에서 BP:PC=3:2이고 △ABC의 넓이가 75cm²임을 BC 아래 치수선 옆에 적고, 꼭짓점 A에서 BC에 내린 공통 높이와 △ABP, △APC를 서로 다른 색으로 칠해 나타낸 그림.",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 460
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "해설 그림: 삼각형 ABC의 변 BC 위의 점 P에서 BP:PC=3:2이고 △ABC의 넓이가 75cm²임을 BC 아래 치수선 옆에 적고, 꼭짓점 A에서 BC에 내린 공통 높이와 △ABP, △APC를 서로 다른 색으로 칠해 나타낸 그림.",
+      "mappedTo": "mathPlan.nodes/displaySegments/planeMarks"
+    },
+    {
+      "id": "scan",
+      "condition": "실제 원본 기출 스캔과 q17-problem-visual-v2.svg의 기하 정보 대조",
+      "mappedTo": "mathPlan.nodes/displaySegments"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 점 이름·연결선과 문제·해설별 표식의 엔진 작도. 바탕 사각형 및 불필요한 면 채움 없음.",
+    "17번 원본 에셋의 기입 길이·동일 표시·수선·평행 표식은 계획의 그려지는 필드별로 별도 확인함."
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "label0",
+        "ownerSegment": "s1",
+        "text": "3"
+      },
+      {
+        "id": "label1",
+        "ownerSegment": "s2",
+        "text": "2"
+      }
+    ],
+    "regions": [
+      {
+        "id": "area0",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "P"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "area1",
+        "fill": "WARM",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "P",
+              "C"
+            ]
+          }
+        ]
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "note0",
+        "text": "넓이 75cm²",
+        "labelKind": "TEXT",
+        "at": [
+          -1,
+          6
+        ]
+      }
+    ]
+  }
+}

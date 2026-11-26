@@ -1,0 +1,242 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2920",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1682",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-50",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-25",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2820",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1632",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2820",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1682",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "D",
+    "A",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "caption": "25_왕운중_2학기_중간_중2_수학 q07번 해설 과정 도형",
+  "accessibilityDescription": "A, D, B가 한 직선 위에 있다. BD는 9 cm이다. B와 C에서 BDC 쪽 각은 각각 30도, ADC와 DAC는 각각 60도이다. AC에 x cm를 표시했다.",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 460
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "A, D, B가 한 직선 위에 있다. BD는 9 cm이다. B와 C에서 BDC 쪽 각은 각각 30도, ADC와 DAC는 각각 60도이다. AC에 x cm를 표시했다.",
+      "mappedTo": "mathPlan.nodes/displaySegments/planeMarks"
+    },
+    {
+      "id": "scan",
+      "condition": "실제 원본 기출 스캔과 q7-problem-visual-v2.svg의 기하 정보 대조",
+      "mappedTo": "mathPlan.nodes/displaySegments"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 점 이름·연결선과 문제·해설별 표식의 엔진 작도. 바탕 사각형 및 불필요한 면 채움 없음.",
+    "7번 원본 에셋의 기입 길이·동일 표시·수선·평행 표식은 계획의 그려지는 필드별로 별도 확인함."
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "ang0",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 30,
+        "style": "ARC",
+        "label": "30",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ang1",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 30,
+        "style": "ARC",
+        "label": "30",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ang2",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "value": 60,
+        "style": "ARC",
+        "label": "60",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ang3",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 60,
+        "style": "ARC",
+        "label": "60",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "addedAngle4",
+        "refs": [
+          "D",
+          "B",
+          "C"
+        ],
+        "value": 30,
+        "label": "30",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "label0",
+        "ownerSegment": "s0",
+        "text": "9",
+        "unit": "cm"
+      },
+      {
+        "id": "label1",
+        "ownerSegment": "s3",
+        "text": "x",
+        "unit": "cm"
+      }
+    ]
+  }
+}

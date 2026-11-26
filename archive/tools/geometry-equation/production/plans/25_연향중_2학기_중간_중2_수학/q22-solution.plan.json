@@ -1,0 +1,231 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2386",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-2255",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-27",
+              "denominator": "40"
+            },
+            {
+              "kind": "rational",
+              "numerator": "69",
+              "denominator": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1846",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-2255",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-864388583",
+              "denominator": "253973200"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-20812789",
+              "denominator": "25397320"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "A",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "caption": "25_연향중_2학기_중간_중2_수학 q22번 해설 과정 도형",
+  "accessibilityDescription": "해설 그림: AB=AC인 이등변삼각형 ABC에서 꼭지각 A의 56°, 같은 길이 표시(AB와 AC), 밑각 B와 C를 같은 빨간 겹호로 표시하고, CD가 이등분하는 ∠ACD와 ∠DCB를 같은 파란 호로, D에서 ∠BDC의 호를 보여 준다.",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 460
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "해설 그림: AB=AC인 이등변삼각형 ABC에서 꼭지각 A의 56°, 같은 길이 표시(AB와 AC), 밑각 B와 C를 같은 빨간 겹호로 표시하고, CD가 이등분하는 ∠ACD와 ∠DCB를 같은 파란 호로, D에서 ∠BDC의 호를 보여 준다.",
+      "mappedTo": "mathPlan.nodes/displaySegments/planeMarks"
+    },
+    {
+      "id": "scan",
+      "condition": "실제 원본 기출 스캔과 q22-problem-visual-v2.svg의 기하 정보 대조",
+      "mappedTo": "mathPlan.nodes/displaySegments"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 점 이름·연결선과 문제·해설별 표식의 엔진 작도. 바탕 사각형 및 불필요한 면 채움 없음.",
+    "22번 원본 에셋의 기입 길이·동일 표시·수선·평행 표식은 계획의 그려지는 필드별로 별도 확인함."
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "ang0",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 56,
+        "style": "ARC",
+        "label": "56",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ang1",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "value": 31,
+        "style": "ARC",
+        "noLabel": true,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ang2",
+        "refs": [
+          "D",
+          "C",
+          "B"
+        ],
+        "value": 31,
+        "style": "ARC",
+        "noLabel": true,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ang3",
+        "refs": [
+          "B",
+          "D",
+          "C"
+        ],
+        "value": 87,
+        "style": "ARC",
+        "noLabel": true,
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "equals0",
+        "count": 1,
+        "segments": [
+          {
+            "path": [
+              "s1",
+              "s0"
+            ]
+          },
+          "s2"
+        ]
+      }
+    ]
+  }
+}

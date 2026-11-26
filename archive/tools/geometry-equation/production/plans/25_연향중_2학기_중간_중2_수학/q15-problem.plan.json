@@ -1,0 +1,794 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "평행사변형 (출발)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "1",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "4",
+                    "denominator": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "5",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "6",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "4",
+                    "denominator": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "3",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "2",
+                    "denominator": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "O"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "s0",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "s1",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "s2",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "s3",
+            "refs": [
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "s4",
+            "refs": [
+              "A",
+              "O"
+            ]
+          },
+          {
+            "id": "s5",
+            "refs": [
+              "O",
+              "C"
+            ]
+          },
+          {
+            "id": "s6",
+            "refs": [
+              "B",
+              "O"
+            ]
+          },
+          {
+            "id": "s7",
+            "refs": [
+              "O",
+              "D"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 480,
+          "height": 390
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "(1) 직사각형"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "4",
+                    "denominator": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "6",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "6",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "4",
+                    "denominator": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "3",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "2",
+                    "denominator": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "O"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "s0",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "s1",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "s2",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "s3",
+            "refs": [
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "s4",
+            "refs": [
+              "A",
+              "O"
+            ]
+          },
+          {
+            "id": "s5",
+            "refs": [
+              "O",
+              "C"
+            ]
+          },
+          {
+            "id": "s6",
+            "refs": [
+              "B",
+              "O"
+            ]
+          },
+          {
+            "id": "s7",
+            "refs": [
+              "O",
+              "D"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 480,
+          "height": 390
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "(3) 마름모"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "3",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "5",
+                    "denominator": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "5",
+                    "denominator": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "3",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "6",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "5",
+                    "denominator": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "3",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "5",
+                    "denominator": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "O"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "s0",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "s1",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "s2",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "s3",
+            "refs": [
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "s4",
+            "refs": [
+              "A",
+              "O"
+            ]
+          },
+          {
+            "id": "s5",
+            "refs": [
+              "O",
+              "C"
+            ]
+          },
+          {
+            "id": "s6",
+            "refs": [
+              "B",
+              "O"
+            ]
+          },
+          {
+            "id": "s7",
+            "refs": [
+              "O",
+              "D"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 480,
+          "height": 390
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "(2), (4) 정사각형"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "4",
+                    "denominator": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "4",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "0",
+                    "denominator": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "4",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "4",
+                    "denominator": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "2",
+                    "denominator": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "2",
+                    "denominator": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "O"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "s0",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "s1",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "s2",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "s3",
+            "refs": [
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "s4",
+            "refs": [
+              "A",
+              "O"
+            ]
+          },
+          {
+            "id": "s5",
+            "refs": [
+              "O",
+              "C"
+            ]
+          },
+          {
+            "id": "s6",
+            "refs": [
+              "B",
+              "O"
+            ]
+          },
+          {
+            "id": "s7",
+            "refs": [
+              "O",
+              "D"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 480,
+          "height": 390
+        }
+      }
+    }
+  ],
+  "caption": "평행사변형을 직사각형·마름모·정사각형으로 분류하는 네 도형",
+  "accessibilityDescription": "평행사변형을 직사각형·마름모·정사각형으로 분류하는 네 도형",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "분류 흐름도: 평행사변형에서 (1)은 직사각형, (3)은 마름모, (2)와 (4)는 정사각형으로 이어진다.",
+      "mappedTo": "panels/caption"
+    }
+  ],
+  "newVisualInformation": [
+    "각 네 도형을 원본의 대각선과 교점 O를 포함한 독립 패널로 나타낸다.",
+    "ENGINE_CAPABILITY_PENDING: 합성 패널 사이 번호 달린 (1)~(4) 방향 화살표. 필요 기능: COMPOSITE_PANEL_CROSS_CELL_DIRECTED_CONNECTOR."
+  ]
+}

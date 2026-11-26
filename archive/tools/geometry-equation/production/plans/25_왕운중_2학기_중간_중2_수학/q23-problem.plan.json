@@ -1,0 +1,287 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "H1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2880",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "125",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2430",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "125",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-160",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1520",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-160",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1820",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2860",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "512",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-7",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1940",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-503",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1485",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H8",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "629",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1915",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "H1",
+    "H2",
+    "H3",
+    "H4",
+    "H5",
+    "H6",
+    "H7",
+    "H8"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "H1",
+        "H2"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "H3",
+        "H4"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "H5",
+        "H6"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "H7",
+        "H8"
+      ],
+      "dashed": true
+    }
+  ],
+  "hiddenPointNames": [
+    "H1",
+    "H2",
+    "H3",
+    "H4",
+    "H5",
+    "H6",
+    "H7",
+    "H8"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "25_왕운중_2학기_중간_중2_수학 q23번 문제 조건 도형",
+  "accessibilityDescription": "연한 단위 격자에 올라가는 직선 두 개가 있다. 파란 실선은 완만하고 주황 점선은 가파르다. 가로축은 −2와 2, 세로축은 −2가 표기돼 있다.",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 460
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연한 단위 격자에 올라가는 직선 두 개가 있다. 파란 실선은 완만하고 주황 점선은 가파르다. 가로축은 −2와 2, 세로축은 −2가 표기돼 있다.",
+      "mappedTo": "mathPlan.nodes/displaySegments/planeMarks"
+    },
+    {
+      "id": "scan",
+      "condition": "실제 원본 기출 스캔과 q23-problem-visual-v2.svg의 기하 정보 대조",
+      "mappedTo": "mathPlan.nodes/displaySegments"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 점 이름·연결선과 문제·해설별 표식의 엔진 작도. 바탕 사각형 및 불필요한 면 채움 없음."
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "txt0",
+        "at": [
+          -3.3,
+          -0.4
+        ],
+        "text": "−2",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "txt1",
+        "at": [
+          2.5,
+          -0.4
+        ],
+        "text": "2",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "txt2",
+        "at": [
+          0.3,
+          -2.8
+        ],
+        "text": "−2",
+        "labelKind": "TEXT"
+      }
+    ]
+  }
+}

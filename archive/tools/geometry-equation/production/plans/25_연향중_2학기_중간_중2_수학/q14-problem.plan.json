@@ -1,0 +1,273 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1809",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1325",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2650",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1265",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1889",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1265",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2730",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1325",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-851920173",
+              "denominator": "1423745000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-5936298553",
+              "denominator": "2847490000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "A",
+        "E"
+      ]
+    }
+  ],
+  "caption": "25_연향중_2학기_중간_중2_수학 q14번 문제 조건 도형",
+  "accessibilityDescription": "평행사변형 ABCD에서 C의 각은 108도이다. D의 각을 DE가 나누고 AE는 DE에 수직이다. A에서 AD와 AE 사이의 각은 x도이다.",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 460
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "평행사변형 ABCD에서 C의 각은 108도이다. D의 각을 DE가 나누고 AE는 DE에 수직이다. A에서 AD와 AE 사이의 각은 x도이다.",
+      "mappedTo": "mathPlan.nodes/displaySegments/planeMarks"
+    },
+    {
+      "id": "scan",
+      "condition": "실제 원본 기출 스캔과 q14-problem-visual-v2.svg의 기하 정보 대조",
+      "mappedTo": "mathPlan.nodes/displaySegments"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 점 이름·연결선과 문제·해설별 표식의 엔진 작도. 바탕 사각형 및 불필요한 면 채움 없음.",
+    "14번 원본 에셋의 기입 길이·동일 표시·수선·평행 표식은 계획의 그려지는 필드별로 별도 확인함."
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "ang0",
+        "refs": [
+          "A",
+          "D",
+          "E"
+        ],
+        "value": 36,
+        "style": "ARC",
+        "noLabel": true,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ang1",
+        "refs": [
+          "E",
+          "D",
+          "C"
+        ],
+        "value": 36,
+        "style": "ARC",
+        "noLabel": true,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ang2",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 108,
+        "style": "ARC",
+        "label": "108",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ang3",
+        "refs": [
+          "D",
+          "A",
+          "E"
+        ],
+        "value": 54,
+        "style": "ARC",
+        "label": "x",
+        "factRole": "GIVEN"
+      }
+    ],
+    "parallels": [
+      {
+        "id": "parallel0",
+        "count": 1,
+        "segments": [
+          "s0",
+          "s2"
+        ]
+      },
+      {
+        "id": "parallel1",
+        "count": 2,
+        "segments": [
+          "s3",
+          "s1"
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rt0",
+      "refs": [
+        "D",
+        "E",
+        "A"
+      ]
+    }
+  ]
+}

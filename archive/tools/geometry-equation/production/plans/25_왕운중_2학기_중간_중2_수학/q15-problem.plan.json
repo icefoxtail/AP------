@@ -1,0 +1,235 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1934",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1628",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2650",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1288",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1884",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1288",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2600",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1628",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-25",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "170",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "caption": "25_왕운중_2학기_중간_중2_수학 q15번 문제 조건 도형",
+  "accessibilityDescription": "평행사변형 ABCD에서 두 대각선 AC와 BD가 O에서 만난다. 오른쪽 변 CD의 길이는 10 cm이다.",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 460
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "평행사변형 ABCD에서 두 대각선 AC와 BD가 O에서 만난다. 오른쪽 변 CD의 길이는 10 cm이다.",
+      "mappedTo": "mathPlan.nodes/displaySegments/planeMarks"
+    },
+    {
+      "id": "scan",
+      "condition": "실제 원본 기출 스캔과 q15-problem-visual-v2.svg의 기하 정보 대조",
+      "mappedTo": "mathPlan.nodes/displaySegments"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 점 이름·연결선과 문제·해설별 표식의 엔진 작도. 바탕 사각형 및 불필요한 면 채움 없음.",
+    "15번 원본 에셋의 기입 길이·동일 표시·수선·평행 표식은 계획의 그려지는 필드별로 별도 확인함."
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "label0",
+        "ownerSegment": "s1",
+        "text": "10",
+        "unit": "cm"
+      }
+    ],
+    "parallels": [
+      {
+        "id": "parallel0",
+        "count": 1,
+        "segments": [
+          "s0",
+          "s1"
+        ]
+      },
+      {
+        "id": "parallel1",
+        "count": 2,
+        "segments": [
+          "s2",
+          "s3"
+        ]
+      }
+    ]
+  }
+}
