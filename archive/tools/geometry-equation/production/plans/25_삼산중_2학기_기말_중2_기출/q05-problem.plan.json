@@ -1,0 +1,37 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "6" }, { "kind": "integer", "value": "9" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "MIDPOINT", "inputs": ["B", "C"], "args": {}, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "G", "op": "CENTROID", "inputs": ["A", "B", "C"], "args": {}, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "G"],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sAC", "refs": ["A", "C"] },
+    { "id": "sBD", "refs": ["B", "D"] },
+    { "id": "sDC", "refs": ["D", "C"] },
+    { "id": "sAD", "refs": ["A", "D"] },
+    { "id": "sBG", "refs": ["B", "G"] }
+  ],
+  "planeMarks": {
+    "equalLengths": [{ "id": "midpointBC", "segments": ["sBD", "sDC"], "count": 1 }],
+    "regions": [{ "id": "sourceShadedTriangleGBD", "fill": "MEDIUM", "factRole": "GIVEN", "shapes": [{ "polygon": ["G", "B", "D"] }] }]
+  },
+  "caption": "삼각형 ABC의 무게중심 G, BC의 중점 D, 중선 AD와 선분 BG. 원본에서 색칠한 △GBD만 채운다.",
+  "accessibilityDescription": "A가 위쪽이고 B, D, C가 차례로 밑변에 있다. D는 BC의 중점, G는 AD 위의 무게중심이다. BG를 그리고 GBD의 삼각형 내부에만 음영을 둔다. 큰 삼각형 ABC의 나머지 면은 채우지 않는다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "G는 삼각형 ABC의 무게중심", "mappedTo": ["G", "A", "B", "C", "sAD", "sBG"] },
+    { "id": "c2", "condition": "D는 BC의 중점이며 밑변의 두 구간에 동일 눈금", "mappedTo": ["D", "sBD", "sDC", "midpointBC"] },
+    { "id": "c3", "condition": "넓이 3cm²가 주어진 영역은 삼각형 GBD 하나", "mappedTo": ["sourceShadedTriangleGBD"] }
+  ],
+  "newVisualInformation": ["주어진 △GBD만 채우고 배경·△ABC의 나머지 부분을 채우지 않는다."],
+  "sourceQuote": "점 $G$는 삼각형 $ABC$의 무게중심이다.",
+  "coordinateCanvas": { "width": 660, "height": 480 }
+}
