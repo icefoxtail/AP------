@@ -1,0 +1,224 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "AB의 2:1 내분점 P에서 반지름 OP와 접선 AB가 수직인 원을 나타낸다.",
+  "accessibilityDescription": "AB의 2:1 내분점 P에서 반지름 OP와 접선 AB가 수직인 원을 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "points",
+      "condition": "A=(0,9), B=(9,0)",
+      "mappedTo": [
+        "mathPlan.nodes[0].args.coordinates",
+        "mathPlan.nodes[1].args.coordinates"
+      ]
+    },
+    {
+      "id": "division",
+      "condition": "AP:PB=2:1",
+      "mappedTo": [
+        "mathPlan.nodes[2].args",
+        "displayPoints"
+      ]
+    },
+    {
+      "id": "tangent",
+      "condition": "AB가 P에서 원에 접하므로 OP⊥AB이다.",
+      "mappedTo": [
+        "rightAngles",
+        "displayCircles"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원 중심 O와 접점 P를 잇는 반지름이 접선 AB에 수직임을 표시한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "1",
+                "denominator": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "50"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Z",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 520
+  },
+  "displayCircles": [
+    "c"
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "P",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rTouch",
+      "refs": [
+        "O",
+        "P",
+        "A"
+      ]
+    }
+  ],
+  "coordinateLabels": [
+    "A",
+    "B",
+    "P",
+    "O"
+  ],
+  "sourceQuote": "두 점 $A(0,9)$, $B(9,0)$에 대하여 선분 $AB$를 $2:1$로 내분하는 점을 $P$라 하자. 원 $x^2+y^2-2ax-2by=0$이 직선 $AB$와 점 $P$에서 접할 때, $a+b$의 값은?"
+}

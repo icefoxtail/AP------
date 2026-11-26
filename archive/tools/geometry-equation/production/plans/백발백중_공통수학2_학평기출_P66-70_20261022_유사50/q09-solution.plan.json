@@ -1,0 +1,306 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "직선 AB는 중심 O를 지나 원의 지름이 되고, 반지름 OP가 AB에 수직일 때 삼각형 ABP의 넓이가 최대이다.",
+  "accessibilityDescription": "직선 AB는 중심 O를 지나 원의 지름이 되고, 반지름 OP가 AB에 수직일 때 삼각형 ABP의 넓이가 최대이다.",
+  "sourceConditions": [
+    {
+      "id": "circle",
+      "condition": "원은 중심 O와 반지름 r로 결정된다.",
+      "mappedTo": [
+        "mathPlan.nodes[0].args.coordinates",
+        "mathPlan.nodes[2].args.radius"
+      ]
+    },
+    {
+      "id": "diameter",
+      "condition": "AB는 원의 중심 O를 지나는 지름이다.",
+      "mappedTo": [
+        "displaySegments[0]",
+        "displayLines"
+      ]
+    },
+    {
+      "id": "height",
+      "condition": "최대 높이 OP는 AB에 수직이다.",
+      "mappedTo": [
+        "rightAngles",
+        "displaySegments[1]"
+      ]
+    },
+    {
+      "id": "area",
+      "condition": "최대 넓이는 r²=AB×OP/2이다.",
+      "mappedTo": "planeMarks.expressionLabels"
+    }
+  ],
+  "newVisualInformation": [
+    "지름 AB, 수직인 높이 OP와 두 길이를 명시해 최대 넓이의 기하적 근거를 보여 준다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "d",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-3"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "endpoints",
+        "op": "INTERSECTION",
+        "inputs": [
+          "d",
+          "c"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "endpoints"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O",
+            "R"
+          ],
+          "sign": 1
+        }
+      },
+      {
+        "id": "B",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "endpoints"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O",
+            "R"
+          ],
+          "sign": -1
+        }
+      },
+      {
+        "id": "normal",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "O",
+          "d"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "normalHits",
+        "op": "INTERSECTION",
+        "inputs": [
+          "normal",
+          "c"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "normalHits"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O",
+            "R"
+          ],
+          "sign": 1
+        }
+      },
+      {
+        "id": "Z",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 520
+  },
+  "displayCircles": [
+    "c"
+  ],
+  "displayLines": [
+    "d"
+  ],
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sBP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rHeight",
+      "refs": [
+        "A",
+        "O",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "diameter",
+        "ownerSegment": "sAB",
+        "text": "10"
+      },
+      {
+        "id": "height",
+        "ownerSegment": "sOP",
+        "text": "5"
+      }
+    ]
+  },
+  "coordinateLabels": [
+    "O"
+  ],
+  "sourceQuote": "원 $C:x^2+y^2-2x-ay-b=0$의 중심이 직선 $y=-1x+3$ 위에 있다. 직선과 원이 만나는 두 점을 $A,B$라 하고, 원 위의 점 $P$에 대하여 삼각형 $ABP$의 넓이의 최댓값이 $25$이다. $a+b$의 값은? (단, $a,b$는 상수이고 $P$는 $A,B$가 아니다.)"
+}
