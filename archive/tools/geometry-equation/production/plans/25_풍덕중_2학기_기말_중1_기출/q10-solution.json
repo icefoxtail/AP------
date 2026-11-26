@@ -1,0 +1,38 @@
+{
+  "capability": "solid-figure-v1",
+  "caption": "고깔모자는 밑면이 없는 원뿔이다. 모선 20 cm, 밑면 반지름 8 cm인 옆면의 전개도에서 호의 길이는 16π cm이고 옆넓이는 80π cm²이다.",
+  "accessibilityDescription": "모선 20센티미터의 부채꼴과 호 길이 16파이 센티미터를 그린 원뿔 옆면 전개도. 반지름 8센티미터의 원 모양 밑면은 고깔모자에서 제외되므로 회색 점선으로만 표시한다.",
+  "sourceQuote": "다음은 민주가 생일 때 쓰기 위한 고깔모자의 겉넓이를 구하려고 한다. 제시된 고깔모자는 원뿔 모양으로, 전개도를 펼쳤을 때 다음과 같다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원뿔의 밑면 반지름은 8 cm이고 모선의 길이는 20 cm이다.",
+      "mappedTo": ["net.radius", "net.slant", "net.dims"]
+    },
+    {
+      "id": "c2",
+      "condition": "모자에는 밑면이 포함되지 않으므로 밑면 원은 점선으로 표시한다.",
+      "mappedTo": ["net.excluded"]
+    },
+    {
+      "id": "c3",
+      "condition": "옆면 호의 길이 16π cm를 표시하여 부채꼴 넓이를 구한다.",
+      "mappedTo": ["net.dims[1]", "caption"]
+    }
+  ],
+  "newVisualInformation": [
+    "선택되지 않는 밑면 원을 제외 표시하고, 기존 도형의 불필요한 회색 부채꼴 채움을 제거한다.",
+    "호·모선·반지름은 독립된 치수로 연결하되 모든 길이는 엔진이 계산한다."
+  ],
+  "net": {
+    "kind": "CONE",
+    "radius": 8,
+    "slant": 20,
+    "excluded": ["base"],
+    "dims": [
+      {"part": "slant"},
+      {"part": "arc"},
+      {"part": "radius"}
+    ]
+  }
+}
