@@ -1,0 +1,54 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "10" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "25" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "25" }, { "kind": "integer", "value": "10" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "P", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "E", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "-2" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "F", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "12" }, { "kind": "integer", "value": "-2" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "P", "E", "F"],
+  "hiddenPointNames": ["E", "F"],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBP", "refs": ["B", "P"] },
+    { "id": "sPC", "refs": ["P", "C"] },
+    { "id": "sCD", "refs": ["C", "D"] },
+    { "id": "sDA", "refs": ["D", "A"] },
+    { "id": "sAP", "refs": ["A", "P"] },
+    { "id": "sMove", "refs": ["E", "F"], "arrow": "END" }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      { "id": "dAD", "from": "A", "to": "D", "label": "25", "unit": "cm", "side": "ABOVE", "style": "BAR", "value": "25", "factRole": "GIVEN" },
+      { "id": "dAB", "from": "A", "to": "B", "label": "10", "unit": "cm", "side": "LEFT", "style": "BAR", "value": "10", "factRole": "GIVEN" }
+    ],
+    "regions": [
+      { "id": "trapezoid", "fill": "MEDIUM", "shapes": [{ "polygon": ["A", "D", "C", "P"] }], "factRole": "GIVEN" }
+    ]
+  },
+  "coordinateCanvas": { "width": 720, "height": 500 },
+  "caption": "가로 25 cm, 세로 10 cm인 직사각형에서 P가 B에서 C로 이동하며, 색칠한 부분은 사다리꼴 APCD이다. P의 위치는 예시이다.",
+  "accessibilityDescription": "직사각형 ABCD의 가로가 25 cm, 세로가 10 cm이고 P는 밑변 BC 위에 있다. A와 P를 연결하여 생긴 사다리꼴 APCD만 회색으로 칠하고 P의 오른쪽 이동 방향을 화살표로 표시했다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "직사각형 ABCD는 AD=BC=25 cm, AB=CD=10 cm이다.", "mappedTo": ["A", "B", "C", "D", "dAD", "dAB"] },
+    { "id": "c2", "condition": "P는 BC 위에서 B로부터 C까지 1초에 4 cm씩 이동한다. P=(8,0)은 x=2인 예시 배치이다.", "mappedTo": ["P", "sBP", "sPC", "sMove"] },
+    { "id": "c3", "condition": "문항에서 넓이 y를 묻는 대상은 사다리꼴 APCD이다.", "mappedTo": ["sAP", "trapezoid"] }
+  ],
+  "newVisualInformation": [
+    "원본 기출의 음영은 사다리꼴 APCD 안쪽에만 복원하고 삼각형 ABP와 바탕은 칠하지 않는다.",
+    "25 cm·10 cm를 실제 치수선에 표시하고 P의 이동 방향을 도형 아래 화살표로 보인다."
+  ],
+  "sourceQuote": "그림과 같은 가로 25 cm, 세로 10 cm인 직사각형"
+}

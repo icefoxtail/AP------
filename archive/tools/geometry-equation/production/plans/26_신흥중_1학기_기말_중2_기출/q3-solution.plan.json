@@ -17,39 +17,41 @@
     "sourceDomain": {
       "kind": "ALL_REALS"
     },
-    "requiredPoints": [
-      {
-        "id": "P0",
-        "x": "0",
-        "y": "8"
-      },
-      {
-        "id": "P1",
-        "x": "3",
-        "y": "2"
-      },
-      {
-        "id": "P2",
-        "x": "4",
-        "y": "0"
-      }
-    ],
-    "formula": "8 - 2*x"
+    "requiredPoints": [],
+    "formula": "8 - 2*x",
+    "axisTickValues": {
+      "x": ["3"],
+      "y": ["2", "8"]
+    },
+    "overlays": {
+      "points": [
+        { "id": "U", "x": "0", "y": "8", "unnamed": true, "coordinates": true },
+        { "id": "V", "x": "3", "y": "2", "unnamed": true, "coordinates": true },
+        { "id": "H", "x": "3", "y": "8", "unnamed": true }
+      ],
+      "segments": [
+        { "id": "dx", "from": "U", "to": "H", "dashed": true, "length": true },
+        { "id": "dy", "from": "H", "to": "V", "dashed": true, "length": true }
+      ]
+    }
   },
-  "caption": "x가 0→3일 때 y8→2로 −6. 기울기 −6/3=−2인 y=−2x+8. 정답③.",
+  "caption": "직선 y=−2x+8에서 x가 0에서 3으로 증가할 때 y는 8에서 2로 6 감소한다. 점선의 가로길이는 3, 세로길이는 6이다.",
+  "accessibilityDescription": "y=−2x+8의 그래프 위 (0,8)과 (3,2)를 잇는 가로 3, 세로 6의 점선 기울기 삼각형을 그려 기울기 −2를 보여 준다.",
   "sourceConditions": [
     {
       "id": "source",
       "condition": "다음 일차함수의 그래프 중 $x$의 값이 3만큼 증가할 때 $y$의 값이 6만큼 감소하는 것은? [3점]",
-      "mappedTo": "graphPlan"
+      "mappedTo": ["graphPlan.pieces", "graphPlan.requiredPoints", "graphPlan.overlays.segments"]
     },
     {
       "id": "method",
-      "condition": "x가0→3일 때 y8→2로 −6. 기울기 −6/3=−2인 y=−2x+8. 정답③.",
-      "mappedTo": "graphPlan"
+      "condition": "보기 ③ y=−2x+8은 x=0에서 y=8, x=3에서 y=2이므로 가로 증가 3에 세로 감소 6, 기울기 −6/3=−2이다.",
+      "mappedTo": ["graphPlan.requiredPoints", "graphPlan.axisTickValues", "graphPlan.overlays.segments"]
     }
   ],
   "newVisualInformation": [
-    "x가0→3일 때 y8→2로 −6. 기울기 −6/3=−2인 y=−2x+8. 정답③."
-  ]
+    "기존 SVG에 있던 발문과 관계없는 평행선 y=−2x+7을 제거하고 실제 선택지 ③의 직선만 그린다.",
+    "가로 3과 세로 6을 점선 두 변 및 길이 라벨로 보여 주되, 오른쪽 아래 방향의 감소임을 좌표값으로 확인한다."
+  ],
+  "sourceQuote": "다음 일차함수의 그래프 중 $x$의 값이 3만큼 증가할 때"
 }
