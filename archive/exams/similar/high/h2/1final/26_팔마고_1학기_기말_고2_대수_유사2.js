@@ -85,7 +85,11 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H2-M1-RPM-109",
     "sourceQid": 2,
     "variationType": "CONFIRMATION",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1final/26_팔마고_1학기_기말_고2_대수.js#q2"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1final/26_팔마고_1학기_기말_고2_대수.js#q2",
+    "solutionImage": "assets/images/26_팔마고_1학기_기말_고2_대수_유사2/q2-solution.svg",
+    "solutionImageAlt": "반지름 10, 대변 BC=10√2의 조건에서 사인법칙으로 얻는 A=45°를 확인한다.",
+    "solutionImageCaption": "반지름 10, 대변 BC=10√2의 조건에서 사인법칙으로 얻는 A=45°를 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -558,7 +562,11 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H2-M1-RPM-109",
     "sourceQid": 13,
     "variationType": "CONFIRMATION",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1final/26_팔마고_1학기_기말_고2_대수.js#q13"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1final/26_팔마고_1학기_기말_고2_대수.js#q13",
+    "solutionImage": "assets/images/26_팔마고_1학기_기말_고2_대수_유사2/q13-solution.svg",
+    "solutionImageAlt": "AB=6, AC=4와 끼인각 60°로 BC²=28을 구하고 외접원에 사인법칙을 적용한다.",
+    "solutionImageCaption": "AB=6, AC=4와 끼인각 60°로 BC²=28을 구하고 외접원에 사인법칙을 적용한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -715,7 +723,11 @@ window.questionBank = [
     "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1final/26_팔마고_1학기_기말_고2_대수.js#q17",
     "image": "assets/images/26_팔마고_1학기_기말_고2_대수/q17-problem-v2.svg",
     "imageAlt": "문제의 점과 선분의 위치를 나타낸 원본 조건 도형",
-    "imageCaption": "동일한 도형 조건을 유지한 발전형 유사2"
+    "imageCaption": "동일한 도형 조건을 유지한 발전형 유사2",
+    "solutionImage": "assets/images/26_팔마고_1학기_기말_고2_대수_유사2/q17-solution.svg",
+    "solutionImageAlt": "반원 좌표를 통해 Q=(1/2,√3/2), D=(1,0), P=(-1,√3), C=(1,√3)을 확인해 두 삼각형의 높이를 비교한다.",
+    "solutionImageCaption": "반원 좌표를 통해 Q=(1/2,√3/2), D=(1,0), P=(-1,√3), C=(1,√3)을 확인해 두 삼각형의 높이를 비교한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -829,7 +841,11 @@ window.questionBank = [
     "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1final/26_팔마고_1학기_기말_고2_대수.js#q20",
     "image": "assets/images/26_팔마고_1학기_기말_고2_대수/q20.svg",
     "imageAlt": "문제의 점과 선분의 위치를 나타낸 원본 조건 도형",
-    "imageCaption": "동일한 도형 조건을 유지한 발전형 유사2"
+    "imageCaption": "동일한 도형 조건을 유지한 발전형 유사2",
+    "solutionImage": "assets/images/26_팔마고_1학기_기말_고2_대수_유사2/q20-solution.svg",
+    "solutionImageAlt": "첫 단계 정사각형의 변은 빗변을 세 등분한 길이이며, 다음 단계는 양쪽 닮은 삼각형 두 개에서 진행한다.",
+    "solutionImageCaption": "첫 단계 정사각형의 변은 빗변을 세 등분한 길이이며, 다음 단계는 양쪽 닮은 삼각형 두 개에서 진행한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -869,6 +885,10 @@ window.questionBank = [
     "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1final/26_팔마고_1학기_기말_고2_대수.js#q21",
     "image": "assets/images/26_팔마고_1학기_기말_고2_대수/q21-problem-readable-v2.svg",
     "imageAlt": "문제의 점과 선분의 위치를 나타낸 원본 조건 도형",
-    "imageCaption": "동일한 도형 조건을 유지한 발전형 유사2"
+    "imageCaption": "동일한 도형 조건을 유지한 발전형 유사2",
+    "solutionImage": "assets/images/26_팔마고_1학기_기말_고2_대수_유사2/q21-solution.svg",
+    "solutionImageAlt": "원주각으로 각 CED=A, 코사인법칙으로 CD=3√3·CE=2√3, 닮음으로 DA=5/√3을 얻는 순서를 보인다.",
+    "solutionImageCaption": "원주각으로 각 CED=A, 코사인법칙으로 CD=3√3·CE=2√3, 닮음으로 DA=5/√3을 얻는 순서를 보인다.",
+    "solutionImageSize": "full"
   }
 ];

@@ -339,7 +339,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-05-CORE",
     "subUnit": "집합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_효천고_2학기_중간_고1_유사문제/q10-solution.svg",
+    "solutionImageAlt": "A∪B=A이면 B가 A 안에 포함되어 A∩B=B가 된다.",
+    "solutionImageCaption": "A∪B=A이면 B가 A 안에 포함되어 A∩B=B가 된다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -374,7 +378,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-03-INTERSECTION",
     "subUnit": "원과 직선·원의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_2학기_중간_고1_유사문제/q11-solution.svg",
+    "solutionImageAlt": "반지름 √2인 원이 x+y=6에 접하는 a의 두 경계 경우를 동시에 보인 해설 그림이다.",
+    "solutionImageCaption": "반지름 √2인 원이 x+y=6에 접하는 a의 두 경계 경우를 동시에 보인 해설 그림이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -408,7 +416,12 @@ window.questionBank = [
     "subUnitKey": "H22-C2-04-CORE",
     "subUnit": "도형의 이동 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_효천고_2학기_중간_고1_유사문제/q12-solution.svg",
+    "solutionImageAlt": "꼭짓점 (4,3)이 x축 대칭으로 (4,-3), 위로 3 이동해 (4,0)이 되며 x축에 접한다.",
+    "solutionImageCaption": "꼭짓점 (4,3)이 x축 대칭으로 (4,-3), 위로 3 이동해 (4,0)이 되며 x축에 접한다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 13,
@@ -481,7 +494,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-01-GEOMETRY_RELATION",
     "subUnit": "도형의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_2학기_중간_고1_유사문제/q14-solution.svg",
+    "solutionImageAlt": "A의 같은 파란 각 호가 AD의 이등분을, BD·DC의 길이 라벨 1:2가 각의 이등분선 정리를 보인다.",
+    "solutionImageCaption": "A의 같은 파란 각 호가 AD의 이등분을, BD·DC의 길이 라벨 1:2가 각의 이등분선 정리를 보인다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -649,7 +666,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-04-CORE",
     "subUnit": "도형의 이동 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_효천고_2학기_중간_고1_유사문제/q19-solution.svg",
+    "solutionImageAlt": "예: A=(4,3)인 경우, AB=6·AC=8의 수직인 두 변과 원점 대칭 대각선 AD가 보인다.",
+    "solutionImageCaption": "예: A=(4,3)인 경우, AB=6·AC=8의 수직인 두 변과 원점 대칭 대각선 AD가 보인다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -706,7 +727,12 @@ window.questionBank = [
     "subUnitKey": "H22-C2-01-GEOMETRY_RELATION",
     "subUnit": "도형의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_2학기_중간_고1_유사문제/q21-solution.svg",
+    "solutionImageAlt": "AC:CB=3:2를 만족하는 내분점 C₁과 AB 연장선 위의 외분점 C₂를 함께 나타낸다.",
+    "solutionImageCaption": "AC:CB=3:2를 만족하는 내분점 C₁과 AB 연장선 위의 외분점 C₂를 함께 나타낸다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 22,
@@ -734,7 +760,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-03-TANGENT",
     "subUnit": "원과 접선",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_2학기_중간_고1_유사문제/q22-solution.svg",
+    "solutionImageAlt": "점 (-3,4)를 지나고 두 좌표축에 동시에 접하는 두 원과 중심 사이 선분이다.",
+    "solutionImageCaption": "점 (-3,4)를 지나고 두 좌표축에 동시에 접하는 두 원과 중심 사이 선분이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -763,6 +793,10 @@ window.questionBank = [
     "subUnitKey": "H22-C2-04-CORE",
     "subUnit": "도형의 이동 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_효천고_2학기_중간_고1_유사문제/q23-solution.svg",
+    "solutionImageAlt": "예: (a,b)=(1,-1)의 V자 그래프는 꼭짓점이 원 밖에 있고 오른쪽 가지가 중심을 지난다.",
+    "solutionImageCaption": "예: (a,b)=(1,-1)의 V자 그래프는 꼭짓점이 원 밖에 있고 오른쪽 가지가 중심을 지난다.",
+    "solutionImageSize": "full"
   }
 ];
