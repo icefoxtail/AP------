@@ -89,7 +89,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_157_두평면이이루는각-이면각의크기구하기1_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "정사각뿔의 높이와 모서리 중점",
+    "imageCaption": "정사각뿔의 높이와 모서리 중점",
+    "imageSize": "full"
   },
   {
     "id": 3,

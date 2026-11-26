@@ -89,7 +89,11 @@ window.questionBank = [
       "CC_TRIANGLE_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_152_삼수선의정리의활용-삼각형의넓이_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "직교 평면 α·β의 교선 l과 평행한 AB",
+    "imageCaption": "직교 평면 α·β의 교선 l과 평행한 AB",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -134,7 +138,11 @@ window.questionBank = [
       "CC_TRIANGLE_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_152_삼수선의정리의활용-삼각형의넓이_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "AD가 밑면 BCD에 수직인 사면체 ABCD",
+    "imageCaption": "AD가 밑면 BCD에 수직인 사면체 ABCD",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -179,7 +187,11 @@ window.questionBank = [
       "CC_TRIANGLE_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_152_삼수선의정리의활용-삼각형의넓이_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "넓이 28인 ABH와 평면 밖 P의 두 수선",
+    "imageCaption": "넓이 28인 ABH와 평면 밖 P의 두 수선",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -224,7 +236,11 @@ window.questionBank = [
       "CC_TRIANGLE_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_152_삼수선의정리의활용-삼각형의넓이_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "직각삼각형 ABC와 C 위의 수직선 CD",
+    "imageCaption": "직각삼각형 ABC와 C 위의 수직선 CD",
+    "imageSize": "full"
   },
   {
     "id": 6,

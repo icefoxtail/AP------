@@ -44,7 +44,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_155_삼수선의정리의활용-두직선이이루는각_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "서로 수직인 두 평면과 직선 l, m",
+    "imageCaption": "서로 수직인 두 평면과 직선 l, m",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -89,7 +93,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_155_삼수선의정리의활용-두직선이이루는각_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "교선 AB에서 두 선분 AC, AD의 각",
+    "imageCaption": "교선 AB에서 두 선분 AC, AD의 각",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -134,7 +142,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_155_삼수선의정리의활용-두직선이이루는각_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "교선 XY와 수선 BC의 이면각",
+    "imageCaption": "교선 XY와 수선 BC의 이면각",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -179,7 +191,11 @@ window.questionBank = [
       "CC_RIGHT_TRIANGLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_155_삼수선의정리의활용-두직선이이루는각_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "직육면체의 세 방향각",
+    "imageCaption": "직육면체의 세 방향각",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -224,7 +240,11 @@ window.questionBank = [
       "CC_ORTHOGONAL_PROJECTION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_155_삼수선의정리의활용-두직선이이루는각_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "수직으로 선 정삼각형과 평면 위 직선",
+    "imageCaption": "수직으로 선 정삼각형과 평면 위 직선",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -269,7 +289,11 @@ window.questionBank = [
       "CC_DISTANCE_TWO_POINTS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_155_삼수선의정리의활용-두직선이이루는각_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "직교 평면 위 두 선분과 AB",
+    "imageCaption": "직교 평면 위 두 선분과 AB",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -314,7 +338,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_155_삼수선의정리의활용-두직선이이루는각_고2_유형은행1/q7-problem.svg",
+    "imageAlt": "두 평면의 교선 AP와 직교 단면",
+    "imageCaption": "두 평면의 교선 AP와 직교 단면",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -359,6 +387,10 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "REINTERPRETATION"
+    "integrationPattern": "REINTERPRETATION",
+    "image": "assets/images/기하_155_삼수선의정리의활용-두직선이이루는각_고2_유형은행1/q8-problem.svg",
+    "imageAlt": "직육면체의 두 꼬인 직선 DG, FH",
+    "imageCaption": "직육면체의 두 꼬인 직선 DG, FH",
+    "imageSize": "full"
   }
 ];

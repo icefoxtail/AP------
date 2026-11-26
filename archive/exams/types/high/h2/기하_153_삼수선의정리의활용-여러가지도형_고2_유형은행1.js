@@ -44,7 +44,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_153_삼수선의정리의활용-여러가지도형_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "밑변 8·높이 4인 정삼각기둥과 AC 중점 M의 수선",
+    "imageCaption": "밑변 8·높이 4인 정삼각기둥과 AC 중점 M의 수선",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -134,7 +138,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_153_삼수선의정리의활용-여러가지도형_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "대각선 BD를 접어 두 직각이등변삼각형을 수직으로 세운 도형",
+    "imageCaption": "대각선 BD를 접어 두 직각이등변삼각형을 수직으로 세운 도형",
+    "imageSize": "full"
   },
   {
     "id": 4,

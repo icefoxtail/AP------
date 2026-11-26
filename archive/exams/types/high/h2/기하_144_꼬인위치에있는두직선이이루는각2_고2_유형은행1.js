@@ -196,6 +196,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_144_꼬인위치에있는두직선이이루는각2_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "모든 모서리 6인 정사각뿔 A-BCDE, CD의 1:2 내분점 P, AP와 BD",
+    "imageCaption": "모든 모서리 6인 정사각뿔 A-BCDE, CD의 1:2 내분점 P, AP와 BD",
+    "imageSize": "full"
   }
 ];

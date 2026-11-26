@@ -44,7 +44,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_147_직선과평면의수직에대한정리-꼬인위치에있_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "정사면체 ABCD와 BC 중점 M, AD 중점 N, AM·DM·MN",
+    "imageCaption": "정사면체 ABCD와 BC 중점 M, AD 중점 N, AM·DM·MN",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -89,7 +93,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_147_직선과평면의수직에대한정리-꼬인위치에있_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "모서리 2√5의 정사면체, AB 중점 M·CD 중점 N을 잇는 MN",
+    "imageCaption": "모서리 2√5의 정사면체, AB 중점 M·CD 중점 N을 잇는 MN",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -132,7 +140,11 @@ window.questionBank = [
       "CC_SPACE_FIGURE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_147_직선과평면의수직에대한정리-꼬인위치에있_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "AD=6·BC=10인 사면체의 꼬인 두 수직 모서리와 공통수선 MN=8",
+    "imageCaption": "AD=6·BC=10인 사면체의 꼬인 두 수직 모서리와 공통수선 MN=8",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -177,7 +189,11 @@ window.questionBank = [
       "CC_SQUARE_PROPERTIES"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_147_직선과평면의수직에대한정리-꼬인위치에있_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "모서리 4의 정육면체, BD 위 P와 AG 위 Q 사이의 공통수선 PQ",
+    "imageCaption": "모서리 4의 정육면체, BD 위 P와 AG 위 Q 사이의 공통수선 PQ",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -222,6 +238,10 @@ window.questionBank = [
       "CC_SQUARE_PROPERTIES"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_147_직선과평면의수직에대한정리-꼬인위치에있_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "모서리 6인 정육면체, BD와 AG에 수직인 PQ",
+    "imageCaption": "모서리 6인 정육면체, BD와 AG에 수직인 PQ",
+    "imageSize": "full"
   }
 ];
