@@ -1,0 +1,226 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "41979649",
+              "denominator": "5500000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "30500000",
+              "denominator": "5500000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "0",
+              "denominator": "5500000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "0",
+              "denominator": "5500000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "51889699",
+              "denominator": "5500000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "0",
+              "denominator": "5500000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "25944850",
+              "denominator": "5500000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "18850037",
+              "denominator": "5500000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sBA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "caption": "21번 해설 관계 도형",
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 420
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "AB=BC, BD=4cm, ∠DBC=36°, CD는 C각의 이등분선",
+      "mappedTo": "mathPlan.nodes/displaySegments/planeMarks"
+    }
+  ],
+  "newVisualInformation": [
+    "BD=DC=AC=4cm의 이등변삼각형 연쇄"
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angDBC",
+        "refs": [
+          "D",
+          "B",
+          "C"
+        ],
+        "value": 36,
+        "label": "36",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cBisector1",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 36,
+        "noLabel": true,
+        "arcs": 1,
+        "equalGroup": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "cBisector2",
+        "refs": [
+          "D",
+          "C",
+          "A"
+        ],
+        "value": 36,
+        "noLabel": true,
+        "arcs": 1,
+        "equalGroup": 1,
+        "style": "ARC"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lenBD",
+        "ownerSegment": "sBD",
+        "text": "4",
+        "unit": "cm"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eq0",
+        "count": 1,
+        "segments": [
+          "sBA",
+          "sBC"
+        ]
+      },
+      {
+        "id": "eq1",
+        "count": 2,
+        "segments": [
+          "sBD",
+          "sDC",
+          "sAC"
+        ]
+      }
+    ]
+  }
+}

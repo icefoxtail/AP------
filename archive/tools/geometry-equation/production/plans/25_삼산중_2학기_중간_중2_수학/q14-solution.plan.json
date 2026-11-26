@@ -1,0 +1,300 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "11428665",
+              "denominator": "5500000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "31400000",
+              "denominator": "5500000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "0",
+              "denominator": "5500000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "0",
+              "denominator": "5500000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "37421063",
+              "denominator": "5500000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "0",
+              "denominator": "5500000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "48849728",
+              "denominator": "5500000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "31400000",
+              "denominator": "5500000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5714333",
+              "denominator": "5500000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "15700000",
+              "denominator": "5500000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "43135395",
+              "denominator": "5500000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "15700000",
+              "denominator": "5500000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "M",
+    "N"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "sDN",
+      "refs": [
+        "D",
+        "N"
+      ]
+    },
+    {
+      "id": "sNC",
+      "refs": [
+        "N",
+        "C"
+      ]
+    },
+    {
+      "id": "sMD",
+      "refs": [
+        "M",
+        "D"
+      ]
+    },
+    {
+      "id": "sBN",
+      "refs": [
+        "B",
+        "N"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "caption": "14번 해설 관계 도형",
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 420
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "평행사변형, M·N은 AB·DC 중점, ∠ADM=20°, ∠BNC=50°",
+      "mappedTo": "mathPlan.nodes/displaySegments/planeMarks"
+    }
+  ],
+  "newVisualInformation": [
+    "중점 길이 표시와 △AMD≅△CNB"
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angADM",
+        "refs": [
+          "A",
+          "D",
+          "M"
+        ],
+        "value": 20,
+        "label": "20",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "angBNC",
+        "refs": [
+          "B",
+          "N",
+          "C"
+        ],
+        "value": 50,
+        "label": "50",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eq0",
+        "count": 1,
+        "segments": [
+          "sAM",
+          "sMB"
+        ]
+      },
+      {
+        "id": "eq1",
+        "count": 2,
+        "segments": [
+          "sDN",
+          "sNC"
+        ]
+      }
+    ],
+    "parallels": [
+      {
+        "id": "par0",
+        "count": 1,
+        "segments": [
+          "sAD",
+          "sBC"
+        ]
+      },
+      {
+        "id": "par1",
+        "count": 2,
+        "segments": [
+          "sAB",
+          "sDC"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,306 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "ㄴ: 빗변 5cm, 한 예각 40°"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "383022",
+                    "denominator": "100000"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "321394",
+                    "denominator": "100000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "C"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          }
+        ],
+        "rightAngles": [
+          {
+            "id": "r",
+            "refs": [
+              "B",
+              "A",
+              "C"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "lenHyp",
+              "ownerSegment": "sBC",
+              "text": "5",
+              "unit": "cm"
+            }
+          ],
+          "angles": [
+            {
+              "id": "b40",
+              "refs": [
+                "A",
+                "B",
+                "C"
+              ],
+              "value": 40,
+              "label": "40",
+              "style": "ARC"
+            }
+          ]
+        },
+        "caption": "ㄴ",
+        "coordinateCanvas": {
+          "width": 400,
+          "height": 340
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "ㄷ: 빗변 5cm, 한 예각 40°"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "383022",
+                    "denominator": "100000"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "-321394",
+                    "denominator": "100000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "C"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          }
+        ],
+        "rightAngles": [
+          {
+            "id": "r",
+            "refs": [
+              "B",
+              "A",
+              "C"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "lenHyp",
+              "ownerSegment": "sBC",
+              "text": "5",
+              "unit": "cm"
+            }
+          ],
+          "angles": [
+            {
+              "id": "b40",
+              "refs": [
+                "A",
+                "B",
+                "C"
+              ],
+              "value": 40,
+              "label": "40",
+              "style": "ARC"
+            }
+          ]
+        },
+        "caption": "ㄷ",
+        "coordinateCanvas": {
+          "width": 400,
+          "height": 340
+        }
+      }
+    }
+  ],
+  "caption": "ㄴ과 ㄷ은 빗변과 예각이 각각 같은 RHA 합동",
+  "sourceConditions": [
+    {
+      "id": "h",
+      "condition": "ㄴ·ㄷ: 빗변 5cm, 한 예각 40°",
+      "mappedTo": "panels"
+    }
+  ],
+  "newVisualInformation": [
+    "직각삼각형 두 개의 대응 빗변과 예각 비교"
+  ]
+}

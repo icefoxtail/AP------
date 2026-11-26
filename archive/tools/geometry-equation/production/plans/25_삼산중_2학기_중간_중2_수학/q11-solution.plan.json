@@ -1,0 +1,300 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "0",
+              "denominator": "5500000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "0",
+              "denominator": "5500000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "10721875",
+              "denominator": "5500000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "0",
+              "denominator": "5500000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "10721875",
+              "denominator": "5500000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "14768341",
+              "denominator": "5500000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "0",
+              "denominator": "5500000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "14768341",
+              "denominator": "5500000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-18250000",
+              "denominator": "5500000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "0",
+              "denominator": "5500000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "18250000",
+              "denominator": "5500000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "0",
+              "denominator": "5500000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "outercircle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "331818",
+            "denominator": "100000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "outercircle"
+  ],
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "L",
+    "R"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCO",
+      "refs": [
+        "C",
+        "O"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sLO",
+      "refs": [
+        "L",
+        "O"
+      ]
+    },
+    {
+      "id": "sOR",
+      "refs": [
+        "O",
+        "R"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ],
+      "dashed": true
+    }
+  ],
+  "caption": "11번 해설 관계 도형",
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 420
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "원 O의 반지름 OB=4cm, OABC는 직사각형",
+      "mappedTo": "mathPlan.nodes/displaySegments/planeMarks"
+    }
+  ],
+  "newVisualInformation": [
+    "직사각형의 두 대각선 OB=AC"
+  ],
+  "hiddenPointNames": [
+    "L",
+    "R"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lenOL",
+        "ownerSegment": "sLO",
+        "text": "4",
+        "unit": "cm"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eq0",
+        "count": 1,
+        "segments": [
+          "sOB",
+          "sAC"
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "raCOA",
+      "refs": [
+        "C",
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "raOAB",
+      "refs": [
+        "O",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "raABC",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "raBCO",
+      "refs": [
+        "B",
+        "C",
+        "O"
+      ]
+    }
+  ]
+}
