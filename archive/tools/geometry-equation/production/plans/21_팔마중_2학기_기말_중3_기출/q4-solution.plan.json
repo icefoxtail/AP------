@@ -1,0 +1,263 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "152206249340",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-250943856219",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "399728144157",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-507260281629",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "252381319293",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-475940747163",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "498521045604",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-111023596134",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "369079588592",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-289184477326",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "300537861581",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-404545737188",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "220218960084",
+            "denominator": "1000000000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "C",
+    "B",
+    "D",
+    "O",
+    "P"
+  ],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aD",
+        "refs": [
+          "A",
+          "D",
+          "B"
+        ],
+        "value": 34,
+        "label": "34",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aP",
+        "refs": [
+          "D",
+          "P",
+          "C"
+        ],
+        "value": 102,
+        "label": "x",
+        "style": "ARC",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "ab",
+        "circle": "circ",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR",
+        "label": "68°"
+      },
+      {
+        "id": "cd",
+        "circle": "circ",
+        "center": "O",
+        "from": "C",
+        "to": "D",
+        "side": "MINOR",
+        "label": "136°"
+      }
+    ]
+  },
+  "caption": "∠ADB=34°이므로 호 AB는 2×34°=68°이고, 호 CD는 호 AB의 2배인 136°이다. ∠x는 호 CD를 마주 보고 그 맞꼭지각은 호 AB를 마주 보므로 x는 두 호의 합 68°+136°의 절반이다. 정답은 ④ 102°이다.",
+  "accessibilityDescription": "원 위의 네 점 A, B, C, D와 두 현 AC, BD의 교점 P, 호 AB 68도(파랑), 호 CD 136도(주황), ∠ADB 34도와 각 x=∠DPC",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "원본 q4 해설 SVG의 점·원·보조선·현·할선 연결 관계 및 원본 기출 그림을 대조한 위치 정보",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displaySegments",
+        "displayCircles"
+      ]
+    },
+    {
+      "id": "source-angle",
+      "condition": "$\\angle ADB=34^\\circ$이므로 호 $AB$의 크기는 $2\\times34^\\circ=68^\\circ$이다. 호 $CD$는 호 $AB$의 2배이므로 $\\overset{\\frown}{CD}=2\\times68^\\circ=136^\\circ$이다. 원 안에서 만나는 두 현이 만드는 각은 그 각과 맞꼭지각이 마주 보는 두 호의 합의 절반이다. $\\angle x$는 두 현 $AC$, $BD$의 교점에서 $D$와 $C$ 쪽에 있는 각이므로 호 $CD$를 마주 보고, 그 맞꼭지각은 호 $AB$를 마주 본다. 따라서 $x=(68^\\circ+136^\\circ)\\div2=102^\\circ$이다. 그러므로 정답은 ④이다.",
+      "mappedTo": [
+        "planeMarks.angles",
+        "caption",
+        "planeMarks.arcs"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 SVG의 채움 각도 부채꼴을 제거하고 모든 원주각·중심각·바깥각을 채움 없는 호 표식으로 복원한다."
+  ]
+}

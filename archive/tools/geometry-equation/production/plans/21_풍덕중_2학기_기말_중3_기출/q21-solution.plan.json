@@ -1,0 +1,321 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "243922570638",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-95804332825",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "166829216906",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-383520645880",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "349234050299",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-488832125541",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "557807241460",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-307522216601",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "349234050299",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-278209166219",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "313382819657",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-355033511272",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "210622959322",
+            "denominator": "1000000000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O",
+    "E"
+  ],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "ACD64",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "value": 64,
+        "label": "64",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BOC60",
+        "refs": [
+          "B",
+          "O",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "AEDx",
+        "refs": [
+          "A",
+          "E",
+          "D"
+        ],
+        "value": 94,
+        "label": "x",
+        "style": "ARC",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAD",
+        "circle": "circ",
+        "center": "O",
+        "from": "A",
+        "to": "D",
+        "side": "MINOR",
+        "label": "128°"
+      },
+      {
+        "id": "arcBC",
+        "circle": "circ",
+        "center": "O",
+        "from": "B",
+        "to": "C",
+        "side": "MINOR",
+        "label": "60°"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eqBOOCBC",
+        "count": 1,
+        "segments": [
+          "OB",
+          "OC",
+          "BC"
+        ]
+      }
+    ]
+  },
+  "caption": "BC가 반지름과 같으므로 삼각형 OBC는 정삼각형이고 호 BC=60°이다. 원주각 ∠ACD=64°가 보는 호 AD는 128°이다. 두 현이 원 안에서 만나므로 x는 호 AD와 호 BC의 합의 절반이다. 정답은 94°이다.",
+  "accessibilityDescription": "원 O에 내접하는 꼭짓점이 A, B, C, D인 사각형의 두 대각선 AC, BD가 점 E에서 만난다. 변 BC는 반지름 OB, OC와 길이가 같아 초록색 눈금으로 표시되고, 중심각 ∠BOC와 호 BC는 주황색, ∠ACD=64°와 그 호 AD는 파란색, ∠AED=x는 분홍색으로 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "원본 q21 해설 SVG의 점·원·보조선·현·할선 연결 관계 및 원본 기출 그림을 대조한 위치 정보",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displaySegments",
+        "displayCircles"
+      ]
+    },
+    {
+      "id": "source-angle",
+      "condition": "$BC$의 길이가 반지름과 같으므로 현 $BC$가 보는 중심각은 $60^\\circ$이다. 따라서 호 $BC=60^\\circ$이다.  원주각 $\\angle ACD=64^\\circ$가 호 $AD$를 보므로 호 $AD=2\\times64^\\circ=128^\\circ$이다.  원 안에서 현 $AC$, $BD$가 $E$에서 만나므로 $\\angle AED=\\dfrac{\\text{호 }AD+\\text{호 }BC}{2}$ $=\\dfrac{128^\\circ+60^\\circ}{2}=94^\\circ$이다. 정답은 ⑤이다.",
+      "mappedTo": [
+        "planeMarks.angles",
+        "caption",
+        "planeMarks.arcs"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 SVG의 채움 각도 부채꼴을 제거하고 모든 원주각·중심각·바깥각을 채움 없는 호 표식으로 복원한다."
+  ]
+}

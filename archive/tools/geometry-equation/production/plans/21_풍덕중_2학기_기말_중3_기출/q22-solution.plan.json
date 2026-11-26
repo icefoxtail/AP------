@@ -1,0 +1,38 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"-209","denominator":"241"},{"kind":"rational","numerator":"120","denominator":"241"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"-1"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"88","denominator":"137"},{"kind":"rational","numerator":"105","denominator":"137"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"-11","denominator":"61"},{"kind":"rational","numerator":"60","denominator":"61"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"circ","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"1"}},"outputType":"CIRCLE","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints":["A","B","C","D","O"],
+  "hiddenPointNames":["O"],
+  "displayCircles":["circ"],
+  "displaySegments":[
+    {"id":"AB","refs":["A","B"]},
+    {"id":"BC","refs":["B","C"]},
+    {"id":"CD","refs":["C","D"]},
+    {"id":"DA","refs":["D","A"]}
+  ],
+  "planeMarks": {
+    "angles": [
+      {"id":"bX","refs":["A","B","C"],"value":50,"label":"x","style":"ARC","factRole":"CONCLUSION"},
+      {"id":"d130","refs":["A","D","C"],"value":130,"label":"(3x-20)","style":"ARC","factRole":"GIVEN"}
+    ]
+  },
+  "caption":"원에 내접한 사각형 ABCD의 마주 보는 각 B=x°, D=(3x−20)°의 합은 180°이므로 x=50°이다.",
+  "accessibilityDescription":"원에 내접한 사각형 ABCD의 네 변을 연결하고 서로 마주 보는 꼭짓점 B와 D의 각호만 표시한다. B에는 x, D에는 3x−20이 직접 적혀 있으며 내부의 불필요한 면 색칠은 없다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"사각형 ABCD는 원에 내접한다.","mappedTo":["mathPlan.nodes","displayCircles","displaySegments"]},
+    {"id":"c2","condition":"∠B=x°, ∠ADC=(3x−20)°이며 두 각은 마주 보는 각이다.","mappedTo":["planeMarks.angles"]},
+    {"id":"c3","condition":"원에 내접한 사각형의 대각은 보각이므로 x=50°이다.","mappedTo":["planeMarks.angles","caption"]}
+  ],
+  "newVisualInformation":["기존 원주각 해설의 색칠 부채꼴을 제거하고 서로 보각인 두 각의 식을 실제 꼭짓점에 직접 표기한다."]
+}

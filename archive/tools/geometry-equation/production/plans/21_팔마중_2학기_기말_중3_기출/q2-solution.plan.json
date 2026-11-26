@@ -1,0 +1,270 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "141037833109",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-63310443877",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "103730937681",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-202541673087",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "157139824751",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-247357050530",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "242962166891",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-63310443877",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "280269062319",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-202541673087",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "192000000000",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-151579506196",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "101924333782",
+            "denominator": "1000000000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "A",
+    "B",
+    "Q",
+    "C",
+    "O"
+  ],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "PA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "PB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "QA",
+      "refs": [
+        "Q",
+        "A"
+      ]
+    },
+    {
+      "id": "QC",
+      "refs": [
+        "Q",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aP",
+        "refs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "value": 20,
+        "label": "20",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aQ",
+        "refs": [
+          "A",
+          "Q",
+          "C"
+        ],
+        "value": 60,
+        "label": "x",
+        "style": "ARC",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "ab",
+        "circle": "circ",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR",
+        "label": "5 cm"
+      },
+      {
+        "id": "bc",
+        "circle": "circ",
+        "center": "O",
+        "from": "B",
+        "to": "C",
+        "side": "MINOR",
+        "label": "10 cm"
+      }
+    ]
+  },
+  "caption": "20°인 원주각이 보는 호 AB는 5cm이고 호 BC는 10cm이므로 x가 보는 호 AC는 15cm이다. 같은 원에서 원주각의 크기는 호의 길이에 비례하므로 20°의 3배가 x이다. 정답은 ③ 60°이다.",
+  "accessibilityDescription": "원에서 호 AB 5cm가 보는 원주각 20도와 호 AB와 호 BC를 합친 호 AC가 보는 원주각 x",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "원본 q2 해설 SVG의 점·원·보조선·현·할선 연결 관계 및 원본 기출 그림을 대조한 위치 정보",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displaySegments",
+        "displayCircles"
+      ]
+    },
+    {
+      "id": "source-angle",
+      "condition": "$20^\\circ$인 원주각이 보는 호의 길이는 $5\\rm\\,cm$이다. $x$가 보는 호의 길이는 $5+10=15\\rm\\,cm$이다. 같은 원에서 호의 길이와 그 호에 대한 원주각의 크기는 비례한다. 따라서 $x:20^\\circ=15:5$ $x=20^\\circ\\times3=60^\\circ$이다. 따라서 정답은 ③이다.",
+      "mappedTo": [
+        "planeMarks.angles",
+        "caption",
+        "planeMarks.arcs"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 SVG의 채움 각도 부채꼴을 제거하고 모든 원주각·중심각·바깥각을 채움 없는 호 표식으로 복원한다."
+  ]
+}

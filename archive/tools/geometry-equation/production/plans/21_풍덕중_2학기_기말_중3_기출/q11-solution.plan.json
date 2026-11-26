@@ -1,0 +1,296 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "361553662748",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-91416256158",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "177518434955",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-385934185755",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "531305697869",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-410673401156",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "361553662748",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-296174207716",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "291522318809",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-488583743842",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "204699971772",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-164558333469",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "204757951558",
+            "denominator": "1000000000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "E",
+    "B",
+    "D",
+    "O",
+    "C",
+    "A"
+  ],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "EB",
+      "refs": [
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "ED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    },
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "OD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "BED60",
+        "refs": [
+          "B",
+          "E",
+          "D"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "COD76",
+        "refs": [
+          "C",
+          "O",
+          "D"
+        ],
+        "value": 76,
+        "label": "76",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BACx",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 22,
+        "label": "x",
+        "style": "ARC",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcCD",
+        "circle": "circ",
+        "center": "O",
+        "from": "C",
+        "to": "D",
+        "side": "MINOR",
+        "label": "76°"
+      },
+      {
+        "id": "arcBC",
+        "circle": "circ",
+        "center": "O",
+        "from": "B",
+        "to": "C",
+        "side": "MINOR",
+        "label": "44°"
+      }
+    ]
+  },
+  "caption": "∠BED=60°가 호 BCD를 보므로 호 BCD=120°이다. 중심각 ∠COD=76°이므로 호 CD=76°이고 호 BC=120°−76°=44°이다. x는 호 BC를 보는 원주각이므로 호의 절반이다. 정답은 22°이다.",
+  "accessibilityDescription": "원 O에서 원주각 ∠BED=60°는 파란색, 중심각 ∠COD=76°와 호 CD는 주황색, 호 BC와 이 호를 보는 원주각 ∠BAC=x는 초록색으로 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "원본 q11 해설 SVG의 점·원·보조선·현·할선 연결 관계 및 원본 기출 그림을 대조한 위치 정보",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displaySegments",
+        "displayCircles"
+      ]
+    },
+    {
+      "id": "source-angle",
+      "condition": "$\\angle BED=60^\\circ$가 호 $BCD$를 보므로 호 $BCD=120^\\circ$이다.  중심각 $\\angle COD=76^\\circ$이므로 호 $CD=76^\\circ$이다. 따라서 호 $BC=120^\\circ-76^\\circ=44^\\circ$이다.  $x$는 호 $BC$를 보는 원주각이므로 $x=44^\\circ\\div2=22^\\circ$이다. 정답은 ③이다.",
+      "mappedTo": [
+        "planeMarks.angles",
+        "caption",
+        "planeMarks.arcs"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 SVG의 채움 각도 부채꼴을 제거하고 모든 원주각·중심각·바깥각을 채움 없는 호 표식으로 복원한다."
+  ]
+}

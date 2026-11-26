@@ -1,0 +1,327 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "309634582383",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-125577683723",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "612463054187",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-362173216041",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "107536945813",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-384250862537",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "595214106313",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-384250862537",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "432655052813",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-221691809037",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "432655052813",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-384250862537",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "270095999313",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-302971335787",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "513934579563",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-302971335787",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "181746546992",
+            "denominator": "1000000000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "114946609073",
+            "denominator": "1000000000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "D",
+    "C",
+    "P",
+    "Q",
+    "O1",
+    "O2"
+  ],
+  "hiddenPointNames": [
+    "O1",
+    "O2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayCircles": [
+    "circ1",
+    "circ2"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "DC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "PQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "BPQ52",
+        "refs": [
+          "B",
+          "P",
+          "Q"
+        ],
+        "value": 52,
+        "label": "52",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "APQ128",
+        "refs": [
+          "A",
+          "P",
+          "Q"
+        ],
+        "value": 128,
+        "label": "128",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ADQx",
+        "refs": [
+          "A",
+          "D",
+          "Q"
+        ],
+        "value": 52,
+        "label": "x",
+        "style": "ARC",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "caption": "A, P, B가 한 직선이므로 ∠APQ=180°−52°=128°이다. A, P, Q, D가 한 원 위에 있으므로 마주 보는 ∠APQ와 ∠ADQ의 합이 180°이고 x=180°−128°이다. 정답은 52°이다.",
+  "accessibilityDescription": "두 원이 점 P, Q에서 만나고, 점 A, P, B와 점 D, Q, C가 각각 한 직선 위에 있다. ∠BPQ=52°는 파란색, ∠APQ는 주황색, ∠ADQ=x는 초록색으로 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "원본 q9 해설 SVG의 점·원·보조선·현·할선 연결 관계 및 원본 기출 그림을 대조한 위치 정보",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displaySegments",
+        "displayCircles"
+      ]
+    },
+    {
+      "id": "source-angle",
+      "condition": "그림에서 $A,P,B$는 일직선이고 $D,Q,C$도 일직선이다. 주어진 작은 각은 $\\angle BPQ=52^\\circ$이다.  $PA$와 $PB$는 반대 방향의 반직선이므로 $\\angle APQ=180^\\circ-52^\\circ=128^\\circ$이다.  $A,P,Q,D$는 한 원 위에 있으므로 마주 보는 각의 합은 $180^\\circ$이다. $x+128^\\circ=180^\\circ$ $x=52^\\circ$이다. 정답은 ⑤이다.",
+      "mappedTo": [
+        "planeMarks.angles",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 SVG의 채움 각도 부채꼴을 제거하고 모든 원주각·중심각·바깥각을 채움 없는 호 표식으로 복원한다."
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"51"},{"kind":"integer","value":"140"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"51"},{"kind":"integer","value":"-140"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-149"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"22201","denominator":"51"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"circ","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"149"}},"outputType":"CIRCLE","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints": ["C","O","A","B","P"],
+  "displayCircles": ["circ"],
+  "displaySegments": [
+    {"id":"CA","refs":["C","A"]},
+    {"id":"CB","refs":["C","B"]},
+    {"id":"OA","refs":["O","A"]},
+    {"id":"OB","refs":["O","B"]},
+    {"id":"PA","refs":["P","A"]},
+    {"id":"PB","refs":["P","B"]}
+  ],
+  "rightAngles": [
+    {"id":"rA","refs":["O","A","P"]},
+    {"id":"rB","refs":["O","B","P"]}
+  ],
+  "planeMarks": {
+    "angles": [
+      {"id":"c70","refs":["A","C","B"],"value":70,"label":"70","style":"ARC","factRole":"GIVEN"},
+      {"id":"o140","refs":["A","O","B"],"value":140,"label":"140","style":"ARC","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"p40","refs":["A","P","B"],"value":40,"label":"x","style":"ARC","factRole":"CONCLUSION"}
+    ]
+  },
+  "caption": "원주각 ∠ACB=70°에 대한 중심각 ∠AOB=140°이고 OA⊥PA, OB⊥PB이므로 접선 사이의 각 x는 40°이다.",
+  "accessibilityDescription": "원 O의 왼쪽 C에서 두 접점 A, B로 현을 긋고 오른쪽 P에서 접선 PA, PB를 그린다. C의 70°, O의 140°, P의 x가 호로 표시되며 두 접점에는 직각 정사각 표식이 있다.",
+  "sourceConditions": [
+    {"id":"c1","condition":"점 P에서 그은 접선 PA, PB가 원 O에 A, B에서 접한다.","mappedTo":["mathPlan.nodes","displayCircles","displaySegments","rightAngles"]},
+    {"id":"c2","condition":"원주각 ∠ACB=70°이므로 중심각 ∠AOB=140°이다.","mappedTo":["planeMarks.angles","displaySegments"]},
+    {"id":"c3","condition":"접선 사이 각 ∠APB=x는 40°이다.","mappedTo":["planeMarks.angles","caption"]}
+  ],
+  "newVisualInformation": ["기존 해설의 숫자 90° 부채꼴을 접선·반지름의 직각 정사각 두 개로 바꾸고 주어진 70°를 C에 직접 남긴다."]
+}

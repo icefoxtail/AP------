@@ -1,0 +1,49 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"rational","numerator":"9","denominator":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"3"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"2"}]}]},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"expression","op":"neg","args":[{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"3"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"2"}]}]}]},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"3"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"2"}]}]},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"T","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"circ","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"rational","numerator":"9","denominator":"2"}},"outputType":"CIRCLE","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints": ["A","B","C","O","H","T"],
+  "displayCircles": ["circ"],
+  "displaySegments": [
+    {"id":"AB","refs":["A","B"]},
+    {"id":"AC","refs":["A","C"]},
+    {"id":"BC","refs":["B","C"]},
+    {"id":"OA","refs":["O","A"]},
+    {"id":"OC","refs":["O","C"]},
+    {"id":"AH","refs":["A","H"]},
+    {"id":"TC","refs":["T","C"]},
+    {"id":"CH","refs":["C","H"]}
+  ],
+  "rightAngles": [
+    {"id":"rCtan","refs":["O","C","H"]},
+    {"id":"rH","refs":["A","H","C"]},
+    {"id":"rDiameter","refs":["A","C","B"]}
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {"id":"lAB","ownerSegment":"AB","text":"9"},
+      {"id":"lOC","ownerSegment":"OC","text":"4.5"},
+      {"id":"lAH","ownerSegment":"AH","text":"6"},
+      {"id":"lCH","ownerSegment":"CH","text":"3√2"}
+    ]
+  },
+  "caption": "AB=9cm는 지름이므로 반지름 OC=OA=4.5cm이다. OC⊥CT와 AH⊥CT에서 수직 높이 차는 6−4.5=1.5cm이고 CH²=4.5²−1.5²=18, 따라서 CH=3√2cm이다.",
+  "accessibilityDescription": "원 O에 지름 AB와 원 위 점 C가 보이고 C를 지나는 수평 접선이 T, C, H를 잇는다. A에서 H로 내린 수선은 6cm, 지름 AB는 9cm, 반지름 OC는 4.5cm이고 밑변 CH에 3√2cm가 직접 표시된다. 접선의 직각 세 위치는 작은 정사각형으로 나타난다.",
+  "sourceConditions": [
+    {"id":"c1","condition":"AB는 원 O의 지름이며 AB=9cm이다.","mappedTo":["displayCircles","displaySegments","planeMarks.expressionLabels"]},
+    {"id":"c2","condition":"CT는 C에서의 접선이고 H는 A에서 이 접선에 내린 수선의 발, AH=6cm이다.","mappedTo":["mathPlan.nodes","displaySegments","rightAngles","planeMarks.expressionLabels"]},
+    {"id":"c3","condition":"반지름은 4.5cm이고 구하는 CH=3√2cm이다.","mappedTo":["planeMarks.expressionLabels","caption"]}
+  ],
+  "newVisualInformation": ["기존 SVG의 수직 관계를 세 정사각 표식으로 명시하고 빠졌던 결론 길이 CH=3√2를 밑변에 직접 표기한다."]
+}

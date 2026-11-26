@@ -1,0 +1,241 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "360000000000",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-89221620578",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "202134986434",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-362651844812",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "322100439839",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-449811848602",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "467145502224",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-418981568855",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "360000000000",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-271508436734",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "182286816156",
+            "denominator": "1000000000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "A",
+    "B",
+    "C",
+    "O"
+  ],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "PA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "PB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "PC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "APB24",
+        "refs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "value": 24,
+        "label": "24",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BPC24",
+        "refs": [
+          "B",
+          "P",
+          "C"
+        ],
+        "value": 24,
+        "label": "24",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "circ",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR",
+        "label": "4 cm"
+      },
+      {
+        "id": "arcBC",
+        "circle": "circ",
+        "center": "O",
+        "from": "B",
+        "to": "C",
+        "side": "MINOR",
+        "label": "4 cm"
+      }
+    ]
+  },
+  "caption": "크기가 같은 두 원주각 24°가 보는 호 AB와 호 BC의 길이는 같으므로 각각 4cm이다. x는 두 호를 합친 호 AC의 길이이므로 x=4+4이다. 정답은 8cm이다.",
+  "accessibilityDescription": "원 위의 한 점에서 세 점 A, B, C로 선분이 그어져 있다. 크기가 같은 두 원주각 24°와 그 호 AB, 호 BC는 파란색이고, 호 AB의 길이는 4cm, 두 호를 합친 호 AC의 길이는 x cm로 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "원본 q2 해설 SVG의 점·원·보조선·현·할선 연결 관계 및 원본 기출 그림을 대조한 위치 정보",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displaySegments",
+        "displayCircles"
+      ]
+    },
+    {
+      "id": "source-angle",
+      "condition": "두 $24^\\circ$ 원주각이 같은 크기이므로 이들이 보는 두 호의 길이는 같다. 그림에서 왼쪽 작은 호의 길이는 $4$ cm이다. $x$ 화살표는 아래쪽 두 작은 호를 합친 전체 호를 가리킨다. 따라서 $x=4+4=8$ cm이다. 정답은 ②이다.",
+      "mappedTo": [
+        "planeMarks.angles",
+        "caption",
+        "planeMarks.arcs"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 SVG의 채움 각도 부채꼴을 제거하고 모든 원주각·중심각·바깥각을 채움 없는 호 표식으로 복원한다."
+  ]
+}

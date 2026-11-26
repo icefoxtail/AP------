@@ -1,0 +1,304 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "107536945813",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-173571223398",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "612463054187",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-308865766374",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "395059262538",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-461093540123",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "251298104175",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-212091909684",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "242831488789",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-308865766374",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "427647271488",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-276277757424",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "307170516386",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-308865766374",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "187666864049",
+            "denominator": "1000000000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "D",
+    "C",
+    "A",
+    "B",
+    "O",
+    "E"
+  ],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "PD",
+      "refs": [
+        "P",
+        "D"
+      ]
+    },
+    {
+      "id": "PC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "APB30",
+        "refs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "value": 30,
+        "label": "30",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ADB15",
+        "refs": [
+          "A",
+          "D",
+          "B"
+        ],
+        "value": 15,
+        "label": "15",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "DECx",
+        "refs": [
+          "D",
+          "E",
+          "C"
+        ],
+        "value": 60,
+        "label": "x",
+        "style": "ARC",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "circ",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR",
+        "label": "30°"
+      },
+      {
+        "id": "arcDC",
+        "circle": "circ",
+        "center": "O",
+        "from": "D",
+        "to": "C",
+        "side": "MINOR",
+        "label": "90°"
+      }
+    ]
+  },
+  "caption": "∠ADB=15°가 호 AB를 보므로 호 AB=30°이다. 두 할선이 원 밖에서 이루는 각 30°는 호 DC와 호 AB의 차의 절반이므로 호 DC=90°이다. 두 현이 원 안에서 만날 때 x는 마주 보는 호 AB와 DC의 합의 절반이다. 정답은 60°이다.",
+  "accessibilityDescription": "원 밖의 점 P에서 두 할선 PD, PC가 있고, 두 현 AC와 BD가 점 E에서 만난다. ∠APB=30°는 파란색, ∠ADB=15°와 그 호 AB는 주황색, 호 DC는 초록색, ∠DEC=x는 분홍색으로 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "원본 q10 해설 SVG의 점·원·보조선·현·할선 연결 관계 및 원본 기출 그림을 대조한 위치 정보",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displaySegments",
+        "displayCircles"
+      ]
+    },
+    {
+      "id": "source-angle",
+      "condition": "$\\angle PDB=15^\\circ$는 호 $AB$를 보는 원주각이므로 호 $AB=30^\\circ$이다.  두 할선이 원 밖의 $P$에서 이루는 각은 큰 호와 작은 호의 차의 절반이다. $30^\\circ=\\dfrac{\\text{호 }DC-30^\\circ}{2}$ 따라서 호 $DC=90^\\circ$이다.  원 안에서 두 현 $AC$, $BD$가 만날 때 표시된 각은 마주 보는 호 $AB$, $DC$의 합의 절반이다. $x=\\dfrac{30^\\circ+90^\\circ}{2}=60^\\circ$이다. 정답은 ①이다.",
+      "mappedTo": [
+        "planeMarks.angles",
+        "caption",
+        "planeMarks.arcs"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 SVG의 채움 각도 부채꼴을 제거하고 모든 원주각·중심각·바깥각을 채움 없는 호 표식으로 복원한다."
+  ]
+}

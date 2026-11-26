@@ -1,0 +1,265 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-209",
+              "denominator": "241"
+            },
+            {
+              "kind": "rational",
+              "numerator": "120",
+              "denominator": "241"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "88",
+              "denominator": "137"
+            },
+            {
+              "kind": "rational",
+              "numerator": "105",
+              "denominator": "137"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-11",
+              "denominator": "61"
+            },
+            {
+              "kind": "rational",
+              "numerator": "60",
+              "denominator": "61"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-11",
+              "denominator": "61"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1683",
+              "denominator": "1525"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "bail",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "3",
+            "denominator": "25"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O",
+    "H"
+  ],
+  "hiddenPointNames": [
+    "O",
+    "H"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayCircles": [
+    "circ",
+    "bail"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "bX",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 50,
+        "label": "x",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dX",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "value": 130,
+        "label": "(3x-20)",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "목걸이를 본뜬 원에 내접한 사각형 ABCD에서 ∠B=x°, ∠ADC=(3x−20)°이다. 도형에서 두 각만 표시하고 답은 노출하지 않는다.",
+  "accessibilityDescription": "원 안에 내접한 네 꼭짓점 A B C D를 연결한 목걸이 펜던트 모양의 사각형과 위쪽 작은 장식 고리가 있다. B에는 x, D에는 (3x−20)이라는 각 라벨이 채움 없는 호로 표시된다.",
+  "sourceConditions": [
+    {
+      "id": "geometry",
+      "condition": "원문 q22 문제 목걸이 이미지의 원·내접사각형 ABCD·상단 장식 고리",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "displayCircles"
+      ]
+    },
+    {
+      "id": "angles",
+      "condition": "∠B=x°, ∠ADC=(3x−20)°이고 원에 내접한 사각형, 답 표시 금지",
+      "mappedTo": [
+        "planeMarks.angles",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 목걸이의 넓은 회색 펜던트 면 채움을 제거하고 윤곽선·위쪽 장식 고리와 변수 각도 표식만 보존한다."
+  ]
+}

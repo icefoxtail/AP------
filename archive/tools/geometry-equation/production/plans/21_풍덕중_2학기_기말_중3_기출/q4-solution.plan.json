@@ -1,0 +1,258 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "323269585208",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-92583230933",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "151691466365",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-264161349776",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "495963739119",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-462927039125",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "568308533635",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-264161349776",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "360000000000",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-300891764568",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "211522028536",
+            "denominator": "1000000000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "CBD30",
+        "refs": [
+          "C",
+          "B",
+          "D"
+        ],
+        "value": 30,
+        "label": "30",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BDC70",
+        "refs": [
+          "B",
+          "D",
+          "C"
+        ],
+        "value": 70,
+        "label": "70",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BCDx",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 80,
+        "label": "x",
+        "style": "ARC",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "BADy",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 100,
+        "label": "y",
+        "style": "ARC",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "caption": "삼각형 BCD에서 x=180°−30°−70°이다. 원에 내접한 사각형에서 마주 보는 두 각의 합은 180°이므로 y=180°−x이다. 정답은 x=80°, y=100°이다.",
+  "accessibilityDescription": "원에 내접하는 꼭짓점이 A, B, C, D인 사각형과 대각선 BD가 있다. 삼각형 BCD의 ∠CBD=30°는 파란색, ∠BDC=70°는 주황색, ∠BCD=x는 초록색, 마주 보는 ∠BAD=y는 분홍색으로 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "원본 q4 해설 SVG의 점·원·보조선·현·할선 연결 관계 및 원본 기출 그림을 대조한 위치 정보",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displaySegments",
+        "displayCircles"
+      ]
+    },
+    {
+      "id": "source-angle",
+      "condition": "삼각형 $BCD$에서 $\\angle BCD=180^\\circ-30^\\circ-70^\\circ=80^\\circ$이다.  사각형 $ABCD$는 원에 내접하므로 마주 보는 각의 합은 $180^\\circ$이다. $y=180^\\circ-80^\\circ=100^\\circ$이다.  따라서 $(x,y)=(80^\\circ,100^\\circ)$이므로 정답은 ①이다.",
+      "mappedTo": [
+        "planeMarks.angles",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 SVG의 채움 각도 부채꼴을 제거하고 모든 원주각·중심각·바깥각을 채움 없는 호 표식으로 복원한다."
+  ]
+}

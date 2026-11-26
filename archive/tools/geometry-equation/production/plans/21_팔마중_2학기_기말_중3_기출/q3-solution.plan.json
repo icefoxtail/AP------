@@ -1,0 +1,40 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-2892"},{"kind":"integer","value":"1205"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1205"},{"kind":"integer","value":"2892"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2892"},{"kind":"integer","value":"-1205"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"395"},{"kind":"integer","value":"-3108"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"circ","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"3133"}},"outputType":"CIRCLE","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints": ["A","B","C","D","O"],
+  "displayCircles": ["circ"],
+  "displaySegments": [
+    {"id":"AB","refs":["A","B"]},
+    {"id":"BD","refs":["B","D"]},
+    {"id":"AC","refs":["A","C"]},
+    {"id":"AD","refs":["A","D"]},
+    {"id":"CD","refs":["C","D"]}
+  ],
+  "rightAngles": [{"id":"rD","refs":["A","D","C"]}],
+  "planeMarks": {
+    "angles": [
+      {"id":"a30","refs":["D","A","C"],"value":30,"label":"30","style":"ARC","factRole":"GIVEN"},
+      {"id":"c60","refs":["A","C","D"],"value":60,"label":"60","style":"ARC","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"b60","refs":["A","B","D"],"value":60,"label":"x","style":"ARC","factRole":"CONCLUSION"}
+    ]
+  },
+  "caption": "AC가 지름이므로 ∠ADC=90°이고, ∠DAC=30°이므로 ∠ACD=60°이다. 같은 호 AD를 보는 ∠ABD=x도 60°이다.",
+  "accessibilityDescription": "원의 왼쪽 위 A와 오른쪽 아래 C를 잇는 지름이 중심 O를 지나며, 오른쪽 위 B와 아래 D가 원 위에 있다. A-B, B-D, A-C, A-D, C-D가 연결되고 D에 직각 사각 표식, A에 30°, C에 60°, B에 x의 호 표시가 있다.",
+  "sourceConditions": [
+    {"id":"c1","condition":"AC는 원 O의 지름이고 A,B,C,D는 원 위에 있다.","mappedTo":["mathPlan.nodes","displayCircles","displaySegments"]},
+    {"id":"c2","condition":"∠DAC=30°이며 ∠ADC=90°이다.","mappedTo":["planeMarks.angles","rightAngles"]},
+    {"id":"c3","condition":"같은 호 AD의 원주각 ∠ACD와 ∠ABD=x는 각각 60°이다.","mappedTo":["planeMarks.angles","caption"]}
+  ],
+  "newVisualInformation": ["기존 SVG의 각도 부채꼴 대신 채움 없는 호를 쓰고, 지름의 원주각 ∠ADC에 명확한 정사각형 직각 표식을 추가한다."]
+}

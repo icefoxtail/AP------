@@ -1,0 +1,50 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"rational","numerator":"-16","denominator":"3"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"rational","numerator":"-7","denominator":"6"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"circ","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"rational","numerator":"25","denominator":"6"}},"outputType":"CIRCLE","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints": ["A","B","C","D","E","O"],
+  "hiddenPointNames": ["O"],
+  "displayCircles": ["circ"],
+  "displaySegments": [
+    {"id":"AB","refs":["A","B"]},
+    {"id":"AC","refs":["A","C"]},
+    {"id":"BE","refs":["B","E"]},
+    {"id":"EC","refs":["E","C"]},
+    {"id":"AE","refs":["A","E"]},
+    {"id":"ED","refs":["E","D"]},
+    {"id":"BD","refs":["B","D"]}
+  ],
+  "rightAngles": [
+    {"id":"rE","refs":["A","E","B"]}
+  ],
+  "planeMarks": {
+    "equalLengths": [{"id":"eqABAC","count":1,"segments":["AB","AC"],"color":"BLUE"}],
+    "expressionLabels": [
+      {"id":"lAB","ownerSegment":"AB","text":"5"},
+      {"id":"lAC","ownerSegment":"AC","text":"5"},
+      {"id":"lAE","ownerSegment":"AE","text":"3"},
+      {"id":"lBE","ownerSegment":"BE","text":"4"},
+      {"id":"lEC","ownerSegment":"EC","text":"4"},
+      {"id":"lDE","ownerSegment":"ED","text":"16/3"}
+    ]
+  },
+  "caption": "AB=AC=5cm, AE=3cm이고 AE⊥BC이다. 직각삼각형에서 BE=EC=4cm, 교차현 정리에서 AE×DE=BE×EC이므로 DE=16/3cm이다.",
+  "accessibilityDescription": "원에 내접한 A, B, C, D와 두 현 AD, BC의 교점 E가 표시된다. A에서 BC로 내린 AE는 직각 네모 표식이고 AB와 AC에는 같은 길이 눈금이 있다. 각 선분에 5, 3, 4 및 결론 길이 16/3이 대응한다.",
+  "sourceConditions": [
+    {"id":"c1","condition":"두 삼각형 ABC, ABD는 원에 내접하고 E는 AD와 BC의 교점이다.","mappedTo":["displayCircles","displaySegments","mathPlan.nodes"]},
+    {"id":"c2","condition":"AB=AC=5cm, AE=3cm, AE⊥BC이다.","mappedTo":["planeMarks.equalLengths","planeMarks.expressionLabels","rightAngles"]},
+    {"id":"c3","condition":"BE=EC=4cm이고 교차현 정리로 DE=16/3cm이다.","mappedTo":["planeMarks.expressionLabels","caption"]}
+  ],
+  "newVisualInformation": ["기존 해설의 90° 숫자 부채꼴을 E의 직각 정사각형으로 고치고 두 현의 5·3·4와 DE 결과를 선분에 명시한다."]
+}
