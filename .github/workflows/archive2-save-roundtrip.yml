@@ -8,28 +8,16 @@ name: Archive2 save round trip
 # The second step (tests/archive-saved-papers-many-images.test.mjs, about 20 s) saves image-heavy 20- and 50-question papers and a paper with
 # one unreadable picture against the same Worker code: "a paper with many pictures cannot be saved" and "one picture blocks the whole save" land here.
 #
-# Runs when the screen code, the data it reads, the Worker, or this check itself changes. Exam registration PRs that only add
-# archive/exams files do not start it. No production request is made: the Pages copy, the R2 image host and the API are
-# answered from this checkout.
+# PRs test the checkout's sources immediately. On main, the registration writer must finish first:
+# a push can contain new meta whose registered package is written in a later bot commit, and checking
+# that pre-registration push with --package-only produces a false save failure. Keep the strict check
+# but run it after the registration workflow. No production request is made.
 
 on:
-  push:
+  workflow_run:
+    workflows: ['Archive Main Auto Metadata']
+    types: [completed]
     branches: [main]
-    paths:
-      - 'archive/archive2-*.js'
-      - 'archive/workspace.html'
-      - 'archive/data/**'
-      - 'archive/problem-bank-*.js'
-      - 'archive/meta-foundation-runtime.js'
-      - 'archive/mixer-selector.js'
-      - 'archive/rpm-middle-toc.js'
-      - 'archive/unit-past-exams-core.js'
-      - 'apmath/worker-backup/**'
-      - 'tests/archive2-save-roundtrip.e2e.mjs'
-      - 'tests/archive-saved-papers-many-images.test.mjs'
-      - 'tests/helpers/archive2-save-roundtrip-harness.mjs'
-      - 'tests/helpers/archive2-scope-harness.cjs'
-      - '.github/workflows/archive2-save-roundtrip.yml'
   pull_request:
     branches: [main]
     paths:
@@ -49,9 +37,8 @@ on:
       - '.github/workflows/archive2-save-roundtrip.yml'
   workflow_dispatch:
 
-# A newer push to the same pull request cancels that PR's older run, and a newer push to the same branch (main)
-# cancels that branch's older run: only the newest commit keeps a verdict (runner capacity: 20 concurrent jobs —
-# on 2026-11-24 forty merges queued 100+ runs and the student release waited 40-50 minutes for a runner).
+# A newer PR commit cancels the older PR run. Registered-main runs also keep only the newest
+# verification so a burst of registration completions cannot consume many runners.
 # Manual runs keep one group per run and are never cancelled.
 concurrency:
   group: ${{ github.event_name == 'pull_request' && format('archive2-save-roundtrip-pr-{0}', github.event.pull_request.number) || github.event_name == 'push' && format('archive2-save-roundtrip-push-{0}', github.ref) || format('archive2-save-roundtrip-{0}-{1}', github.event_name, github.run_id) }}
@@ -61,8 +48,62 @@ permissions:
   contents: read
 
 jobs:
+  scope:
+    name: Select save-sensitive registered snapshot
+    runs-on: ubuntu-latest
+    outputs:
+      run_save: ${{ steps.select.outputs.run_save }}
+    steps:
+      - name: Check the triggering commit for save-sensitive files
+        id: select
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT_NAME: ${{ github.event_name }}
+          SOURCE_EVENT: ${{ github.event.workflow_run.event }}
+          SOURCE_RESULT: ${{ github.event.workflow_run.conclusion }}
+          SOURCE_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          set -euo pipefail
+          if [[ "$EVENT_NAME" != workflow_run ]]; then
+            echo 'run_save=true' >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if [[ "$SOURCE_EVENT" != push || "$SOURCE_RESULT" != success ]]; then
+            echo 'run_save=false' >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          [[ "$SOURCE_SHA" =~ ^[a-f0-9]{40}$ ]]
+          paths="$(gh api "repos/$GITHUB_REPOSITORY/commits/$SOURCE_SHA?per_page=300" --jq '.files[].filename')"
+          matched=false
+          count=0
+          while IFS= read -r changed; do
+            [[ -z "$changed" ]] && continue
+            count=$((count + 1))
+            case "$changed" in
+              archive/archive2-*.js|archive/workspace.html|archive/data/*|archive/problem-bank-*.js|\
+              archive/tools/build-archive2-catalog.mjs|archive/tools/materialize-archive-package-shards.mjs|\
+              archive/tools/meta-foundation/question-metadata-format.mjs|\
+              archive/meta-foundation-runtime.js|archive/mixer-selector.js|archive/rpm-middle-toc.js|\
+              archive/unit-past-exams-core.js|apmath/worker-backup/*|\
+              tests/archive2-save-roundtrip.e2e.mjs|tests/archive-saved-papers-many-images.test.mjs|\
+              tests/helpers/archive2-save-roundtrip-harness.mjs|tests/helpers/archive2-scope-harness.cjs|\
+              .github/workflows/archive2-save-roundtrip.yml)
+                matched=true
+                ;;
+            esac
+          done <<< "$paths"
+          # GitHub may truncate a very large commit's file list at 300. Run the check rather than miss a change.
+          if (( count >= 300 )); then matched=true; fi
+          echo "run_save=$matched" >> "$GITHUB_OUTPUT"
+          echo "Save-sensitive change=$matched for triggering commit $SOURCE_SHA" >> "$GITHUB_STEP_SUMMARY"
+
   save-round-trip:
     name: Archive2 save round trip
+    needs: scope
+    if: needs.scope.outputs.run_save == 'true'
+    concurrency:
+      group: ${{ github.event_name == 'workflow_run' && 'archive2-save-roundtrip-registered-main' || format('archive2-save-roundtrip-job-{0}', github.run_id) }}
+      cancel-in-progress: ${{ github.event_name == 'workflow_run' }}
     runs-on: ubuntu-latest
     timeout-minutes: 12
     steps:
