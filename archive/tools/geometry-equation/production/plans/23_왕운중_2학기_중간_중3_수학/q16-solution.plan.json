@@ -1,0 +1,77 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "16",
+          "-16"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "functionName": "f",
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      2
+    ],
+    "viewport": [
+      -1.2,
+      2.2,
+      -5,
+      6
+    ],
+    "requiredPoints": [
+      {
+        "id": "R",
+        "x": 0.75,
+        "y": 0
+      },
+      {
+        "id": "S",
+        "x": 0.25,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 0.5,
+        "y": 1
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "3/4"
+      ],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "axis",
+          "x": "1/2"
+        }
+      ]
+    }
+  },
+  "caption": "a=-16인 대표 예시로 그린 아래로 열린 포물선. 축 x=1/2, 두 근 1/4·3/4.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "축 x=1/2, 근 (3/4,0), 아래로 열린 그래프",
+      "mappedTo": [
+        "R",
+        "S",
+        "V",
+        "axis"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 잘못 표기된 축 x=1/3을 원문 x=1/2로 바로잡고 두 근의 축대칭 관계·축 점선을 보인다."
+  ]
+}
