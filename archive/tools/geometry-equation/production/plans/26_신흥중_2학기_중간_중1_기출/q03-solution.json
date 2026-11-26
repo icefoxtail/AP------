@@ -1,0 +1,44 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"lAC","op":"LINE_THROUGH","inputs":["A","C"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lBD","op":"LINE_THROUGH","inputs":["B","D"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"O","op":"LINE_INTERSECTION","inputs":["lAC","lBD"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["A","B","C","D","O"],
+  "displaySegments": [
+    {"id":"sAB","refs":["A","B"],"emphasis":"ACCENT"},
+    {"id":"sAD","refs":["A","D"]},
+    {"id":"sDC","refs":["D","C"]},
+    {"id":"sBC","refs":["B","C"]},
+    {"id":"sAC","refs":["A","C"]},
+    {"id":"sBD","refs":["B","D"]}
+  ],
+  "rightAngles": [
+    {"id":"rA","refs":["B","A","D"]},
+    {"id":"rB","refs":["A","B","C"]}
+  ],
+  "planeMarks": {
+    "parallels": [{"id":"pADBC","count":1,"segments":["sAD","sBC"]}]
+  },
+  "coordinateCanvas": {"width":480,"height":360},
+  "caption": "사다리꼴 ABCD의 평행선, 직각 표식과 대각선의 교점",
+  "accessibilityDescription": "A는 왼쪽 위, B는 그 아래, D는 A의 오른쪽, C는 오른쪽 아래에 있는 사다리꼴 ABCD이다. AD와 BC에 평행 표식을 각각 하나씩, A와 B에는 직각 사각 표식을 표시했다. 대각선 AC와 BD는 O에서 만나고, 수선 AB를 빨간 선으로 강조했다. 배경과 사다리꼴 안쪽은 흰색이며 면 채움이 없다.",
+  "sourceQuote": "다음 그림에서 사다리꼴 ABCD에 대한 설명으로 옳은 것을 모두 고르면?",
+  "sourceConditions": [
+    {"id":"cTrapezoid","condition":"원본 사다리꼴의 꼭짓점은 A, B, C, D이며 두 대각선 AC와 BD가 O에서 만난다.","mappedTo":["mathPlan.nodes.O","displaySegments.sAC","displaySegments.sBD"]},
+    {"id":"cParallel","condition":"사다리꼴의 윗변 AD와 아랫변 BC는 평행하다.","mappedTo":"planeMarks.parallels.pADBC"},
+    {"id":"cRightA","condition":"원본 그림에서 AB와 AD는 A에서 직각이다.","mappedTo":"rightAngles.rA"},
+    {"id":"cRightB","condition":"원본 그림에서 AB와 BC는 B에서 직각이다.","mappedTo":"rightAngles.rB"},
+    {"id":"cFoot","condition":"해설 ⑤의 수선의 발은 C가 아니라 B이다.","mappedTo":["rightAngles.rB","displaySegments.sAB"]}
+  ],
+  "newVisualInformation": ["원본 발문 이미지에 인쇄되었으나 현행 해설 SVG에서 빠진 A와 B의 두 직각 사각 표식을 복원한다. 해설에서 설명한 AD∥BC는 평행 화살표로 표시하고, AB는 수선임을 강조한다. 좌표·변의 길이는 모식도 배치용이며 추가된 문제 조건이 아니다."]
+}
