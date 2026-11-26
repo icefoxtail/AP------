@@ -37,7 +37,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_066_등비급수의활용-도형의넓이의합1_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "한 변6인 Q₁의 오른쪽 변을 대각선으로 하는 Q₂를 그린다.",
+    "imageCaption": "한 변6인 Q₁의 오른쪽 변을 대각선으로 하는 Q₂를 그린다.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -73,7 +77,11 @@ window.questionBank = [
     "templateKey": "TPL_CALCULUS_SERIES_GEOMETRIC_APPLICATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_066_등비급수의활용-도형의넓이의합1_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "밑변6 정삼각형과 첫 중점삼각형, 둘째 중점삼각형.",
+    "imageCaption": "밑변6 정삼각형과 첫 중점삼각형, 둘째 중점삼각형.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -109,7 +117,11 @@ window.questionBank = [
     "templateKey": "TPL_CALCULUS_SERIES_GEOMETRIC_APPLICATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_066_등비급수의활용-도형의넓이의합1_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "공통 지름 끝 A=0, B₁=8, B₂=6, B₃=9/2인 원 세 개.",
+    "imageCaption": "공통 지름 끝 A=0, B₁=8, B₂=6, B₃=9/2인 원 세 개.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -147,7 +159,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_066_등비급수의활용-도형의넓이의합1_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "반지름6인 외접원에 꼭짓점 하나가 위인 정삼각형을 내접시키고 그 안에 반지름3 내접원을 그린다.",
+    "imageCaption": "반지름6인 외접원에 꼭짓점 하나가 위인 정삼각형을 내접시키고 그 안에 반지름3 내접원을 그린다.",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -185,7 +201,11 @@ window.questionBank = [
       "CC_UNIT_QUARTER_CIRCLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_066_등비급수의활용-도형의넓이의합1_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "한 변6 정사각형과 반지름6 사분원, 다음 한 변3√2 정사각형과 사분원. 호 밖 부분은 옅게 칠한다.",
+    "imageCaption": "한 변6 정사각형과 반지름6 사분원, 다음 한 변3√2 정사각형과 사분원. 호 밖 부분은 옅게 칠한다.",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -223,7 +243,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_066_등비급수의활용-도형의넓이의합1_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "한 변4 정사각형의 각 변을 3:1로 내분하여 Q₁, 이어 같은 작도로 Q₂를 만든다.",
+    "imageCaption": "한 변4 정사각형의 각 변을 3:1로 내분하여 Q₁, 이어 같은 작도로 Q₂를 만든다.",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -261,7 +285,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_066_등비급수의활용-도형의넓이의합1_고2_유형은행1/q7-problem.svg",
+    "imageAlt": "한 변4 정사각형 윗변을 빗변으로 하는 직각이등변삼각형, 왼쪽 직각변에 붙인 Q₂ 정사각형.",
+    "imageCaption": "한 변4 정사각형 윗변을 빗변으로 하는 직각이등변삼각형, 왼쪽 직각변에 붙인 Q₂ 정사각형.",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -299,7 +327,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_066_등비급수의활용-도형의넓이의합1_고2_유형은행1/q8-problem.svg",
+    "imageAlt": "가로3·세로1 직사각형의 첫 정삼각형, 그 밑변 바로 위의 작은 직사각형과 역방향 정삼각형.",
+    "imageCaption": "가로3·세로1 직사각형의 첫 정삼각형, 그 밑변 바로 위의 작은 직사각형과 역방향 정삼각형.",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -335,6 +367,10 @@ window.questionBank = [
     "templateKey": "TPL_CALCULUS_SERIES_GEOMETRIC_APPLICATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "DEEP_COMPOSITE"
+    "integrationPattern": "DEEP_COMPOSITE",
+    "image": "assets/images/미적분II_066_등비급수의활용-도형의넓이의합1_고2_유형은행1/q9-problem.svg",
+    "imageAlt": "한 변4 정육각형의 육각별과 여섯 끝 삼각형 음영, 중심 육각형에서 반복한 작은 별.",
+    "imageCaption": "한 변4 정육각형의 육각별과 여섯 끝 삼각형 음영, 중심 육각형에서 반복한 작은 별.",
+    "imageSize": "full"
   }
 ];

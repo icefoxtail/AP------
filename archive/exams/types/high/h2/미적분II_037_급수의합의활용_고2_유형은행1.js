@@ -275,6 +275,10 @@ window.questionBank = [
       "COND_RANGE",
       "COND_NATURAL_NUMBER"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_037_급수의합의활용_고2_유형은행1/q7-problem.svg",
+    "imageAlt": "n=3 예시: 반지름 2인 두 원의 공통현과 그 중점.",
+    "imageCaption": "n=3 예시: 반지름 2인 두 원의 공통현과 그 중점.",
+    "imageSize": "full"
   }
 ];

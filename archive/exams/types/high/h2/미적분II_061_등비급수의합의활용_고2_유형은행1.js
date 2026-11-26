@@ -37,7 +37,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_061_등비급수의합의활용_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "n=1 대표: 넓이가 4인 정사각형의 대각선 l₁을 나타낸다.",
+    "imageCaption": "n=1 대표: 넓이가 4인 정사각형의 대각선 l₁을 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -75,7 +79,11 @@ window.questionBank = [
       "CC_RADICAL_FUNCTION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_061_등비급수의합의활용_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "n=1 대표: y=√x 위의 A₁(4,2)을 꼭짓점으로 하고 밑변이 x축 위인 정삼각형.",
+    "imageCaption": "n=1 대표: y=√x 위의 A₁(4,2)을 꼭짓점으로 하고 밑변이 x축 위인 정삼각형.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -150,7 +158,11 @@ window.questionBank = [
       "CC_PARALLEL_TRANSLATION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_061_등비급수의합의활용_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "k=1 대표: y=4^x와 점 (1,3)을 지나는 y=3·4^{x−1}, 그 y절편.",
+    "imageCaption": "k=1 대표: y=4^x와 점 (1,3)을 지나는 y=3·4^{x−1}, 그 y절편.",
+    "imageSize": "full"
   },
   {
     "id": 5,

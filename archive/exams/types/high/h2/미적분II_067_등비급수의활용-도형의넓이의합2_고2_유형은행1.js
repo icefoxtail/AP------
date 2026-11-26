@@ -35,7 +35,11 @@ window.questionBank = [
     "templateKey": "TPL_CALCULUS_SERIES_GEOMETRIC_APPLICATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/미적분II_067_등비급수의활용-도형의넓이의합2_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "a=6,b=9 대표 직각삼각형 안에 첫 정사각형(한 변18/5)과 왼쪽 직각변을 따라 두 번째 정사각형(36/25).",
+    "imageCaption": "a=6,b=9 대표 직각삼각형 안에 첫 정사각형(한 변18/5)과 왼쪽 직각변을 따라 두 번째 정사각형(36/25).",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -71,7 +75,11 @@ window.questionBank = [
     "templateKey": "TPL_CALCULUS_SERIES_GEOMETRIC_APPLICATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_067_등비급수의활용-도형의넓이의합2_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "밑변 12, 높이 8인 직각삼각형과 오른쪽으로 이어지는 정사각형 3단계.",
+    "imageCaption": "밑변 12, 높이 8인 직각삼각형과 오른쪽으로 이어지는 정사각형 3단계.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -107,7 +115,11 @@ window.questionBank = [
     "templateKey": "TPL_CALCULUS_SERIES_GEOMETRIC_APPLICATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_067_등비급수의활용-도형의넓이의합2_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "밑변 12, 높이 12인 직각삼각형과 오른쪽으로 이어지는 정사각형 3단계.",
+    "imageCaption": "밑변 12, 높이 12인 직각삼각형과 오른쪽으로 이어지는 정사각형 3단계.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -143,7 +155,11 @@ window.questionBank = [
     "templateKey": "TPL_CALCULUS_SERIES_GEOMETRIC_APPLICATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_067_등비급수의활용-도형의넓이의합2_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "밑변 9, 높이 9인 직각삼각형과 오른쪽으로 이어지는 정사각형 3단계.",
+    "imageCaption": "밑변 9, 높이 9인 직각삼각형과 오른쪽으로 이어지는 정사각형 3단계.",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -183,7 +199,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RATIONAL"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_067_등비급수의활용-도형의넓이의합2_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "한 변 6인 정삼각형과 내접원, 거꾸로 내접하는 다음 정삼각형의 두 단계.",
+    "imageCaption": "한 변 6인 정삼각형과 내접원, 거꾸로 내접하는 다음 정삼각형의 두 단계.",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -219,7 +239,11 @@ window.questionBank = [
     "templateKey": "TPL_CALCULUS_SERIES_GEOMETRIC_APPLICATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_067_등비급수의활용-도형의넓이의합2_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "각의 이등분선에 놓인 두 외접원: 중심 (4,3), (1,3/4).",
+    "imageCaption": "각의 이등분선에 놓인 두 외접원: 중심 (4,3), (1,3/4).",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -257,6 +281,10 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_067_등비급수의활용-도형의넓이의합2_고2_유형은행1/q7-problem.svg",
+    "imageAlt": "각 θ를 이루는 두 반직선 사이의 반원 두 단계.",
+    "imageCaption": "각 θ를 이루는 두 반직선 사이의 반원 두 단계.",
+    "imageSize": "full"
   }
 ];

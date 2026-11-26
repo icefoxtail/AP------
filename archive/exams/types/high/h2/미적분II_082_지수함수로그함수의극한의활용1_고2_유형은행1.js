@@ -37,7 +37,11 @@ window.questionBank = [
       "CC_LINE_SLOPE_TANGENT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "REINTERPRETATION"
+    "integrationPattern": "REINTERPRETATION",
+    "image": "assets/images/미적분II_082_지수함수로그함수의극한의활용1_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "자연로그 y=ln(1+6x)와 원점 O; 비정수 로그값 P·OP·θ는 ENGINE_CAPABILITY_PENDING.",
+    "imageCaption": "자연로그 y=ln(1+6x)와 원점 O; 비정수 로그값 P·OP·θ는 ENGINE_CAPABILITY_PENDING.",
+    "imageSize": "medium"
   },
   {
     "id": 2,

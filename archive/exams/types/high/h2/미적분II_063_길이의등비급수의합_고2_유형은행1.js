@@ -111,6 +111,10 @@ window.questionBank = [
     "templateKey": "TPL_CALCULUS_SERIES_GEOMETRIC_APPLICATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_063_길이의등비급수의합_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "θ=60°인 모형 예시: 길이 3 m의 진자가 연직선 좌우로 θ와 θ/2만큼 올라가는 원호.",
+    "imageCaption": "θ=60°인 모형 예시: 길이 3 m의 진자가 연직선 좌우로 θ와 θ/2만큼 올라가는 원호.",
+    "imageSize": "full"
   }
 ];

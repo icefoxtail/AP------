@@ -35,7 +35,11 @@ window.questionBank = [
     "templateKey": "TPL_CALCULUS_SERIES_GEOMETRIC_APPLICATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/미적분II_068_등비급수의활용-부채꼴의넓이의합_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "반지름 3인 원에서 60°, 이어 20°씩 회전한 세 반지름과 두 부채꼴 호.",
+    "imageCaption": "반지름 3인 원에서 60°, 이어 20°씩 회전한 세 반지름과 두 부채꼴 호.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -73,7 +77,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_068_등비급수의활용-부채꼴의넓이의합_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "직각삼각형 B₁C₁A, 빗변 위 C₂에서 AC₁으로 내린 수선 C₂B₂와 B₁ 중심 호 C₁C₂.",
+    "imageCaption": "직각삼각형 B₁C₁A, 빗변 위 C₂에서 AC₁으로 내린 수선 C₂B₂와 B₁ 중심 호 C₁C₂.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -109,7 +117,11 @@ window.questionBank = [
     "templateKey": "TPL_CALCULUS_SERIES_GEOMETRIC_APPLICATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_068_등비급수의활용-부채꼴의넓이의합_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "x축 위 중심 (2,0),(4,0),(6,0),(8,0), 반지름2의 원 4개와 첫 교점·연속 교점.",
+    "imageCaption": "x축 위 중심 (2,0),(4,0),(6,0),(8,0), 반지름2의 원 4개와 첫 교점·연속 교점.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -147,6 +159,10 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "DEEP_COMPOSITE"
+    "integrationPattern": "DEEP_COMPOSITE",
+    "image": "assets/images/미적분II_068_등비급수의활용-부채꼴의넓이의합_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "삼각형 ABC에서 BDFE 마름모, B 중심 호 DE, FEC 내부의 다음 마름모와 색칠.",
+    "imageCaption": "삼각형 ABC에서 BDFE 마름모, B 중심 호 DE, FEC 내부의 다음 마름모와 색칠.",
+    "imageSize": "full"
   }
 ];

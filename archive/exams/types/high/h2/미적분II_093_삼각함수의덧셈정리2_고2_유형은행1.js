@@ -445,7 +445,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RESTRICTED_INTERVAL"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_093_삼각함수의덧셈정리2_고2_유형은행1/q11-problem.svg",
+    "imageAlt": "단위원의 P(제1사분면),Q(제2사분면)와 양의 x축에 대한 동경각 a,b.",
+    "imageCaption": "단위원의 P(제1사분면),Q(제2사분면)와 양의 x축에 대한 동경각 a,b.",
+    "imageSize": "full"
   },
   {
     "id": 12,
@@ -486,7 +490,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RESTRICTED_INTERVAL"
     ],
-    "integrationPattern": "REINTERPRETATION"
+    "integrationPattern": "REINTERPRETATION",
+    "image": "assets/images/미적분II_093_삼각함수의덧셈정리2_고2_유형은행1/q12-problem.svg",
+    "imageAlt": "반지름13 위쪽 반원 P(5,12),Q(12,5)와 각각 x축에 내린 수선.",
+    "imageCaption": "반지름13 위쪽 반원 P(5,12),Q(12,5)와 각각 x축에 내린 수선.",
+    "imageSize": "full"
   },
   {
     "id": 13,
