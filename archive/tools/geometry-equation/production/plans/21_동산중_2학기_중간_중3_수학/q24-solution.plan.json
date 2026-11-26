@@ -1,0 +1,226 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4898979485566",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3464101615138",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "D",
+    "B",
+    "A"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sBA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAC",
+        "ownerSegment": "sCA",
+        "text": "2√3"
+      },
+      {
+        "id": "lDB",
+        "ownerSegment": "sDB",
+        "text": "2√6−2"
+      },
+      {
+        "id": "lAB",
+        "ownerSegment": "sBA",
+        "text": "6"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sCB",
+        "text": "2√6"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dCD",
+        "from": "C",
+        "to": "D",
+        "label": "2",
+        "side": "BELOW",
+        "style": "BAR"
+      },
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "6",
+        "side": "RIGHT",
+        "style": "BAR"
+      },
+      {
+        "id": "dAD",
+        "from": "A",
+        "to": "D",
+        "label": "4",
+        "side": "LEFT",
+        "style": "BAR"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "AC=√(AD²−CD²)=2√3, BC=√(AB²−AC²)=2√6이므로 cos B=BC/AB=√6/3이다.",
+  "accessibilityDescription": "AC=√(AD²−CD²)=2√3, BC=√(AB²−AC²)=2√6이므로 cos B=BC/AB=√6/3이다.",
+  "sourceConditions": [
+    {
+      "id": "problem-stem",
+      "condition": "직각삼각형 $ABC$에서 $\\angle C=90^\\circ$이고 점 $D$는 선분 $BC$ 위에 있다. $AB=6$, $AD=4$, $CD=2$일 때, $\\cos B$의 값을 구하여라. (6점)<br><img src=\"assets/images/21_동산중_2학기_중간_중3_수학/q24-audit-rework.svg\" alt=\"C가 직각이고 D가 BC 위에 있는 삼각형, AB=6, AD=4, CD=2\" />",
+      "mappedTo": "mathPlan.nodes, displaySegments, planeMarks, rightAngles"
+    },
+    {
+      "id": "worked-solution",
+      "condition": "$D$가 $BC$ 위에 있고 $\\angle C=90^\\circ$이므로 $AC\\perp CD$이다. 직각삼각형 $ACD$에서 $AD^2=AC^2+CD^2$이므로 $AC^2=4^2-2^2=12$, 즉 $AC=2\\sqrt3$이다. 직각삼각형 $ABC$에서 $BC^2=AB^2-AC^2=6^2-12=24$이므로 $BC=2\\sqrt6$이다. 따라서 $\\cos B=BC/AB=2\\sqrt6/6=\\sqrt6/3$이다.",
+      "mappedTo": "planeMarks, displaySegments, caption"
+    }
+  ],
+  "newVisualInformation": [
+    "C 직각과 D∈BC",
+    "AB=6, AD=4, CD=2와 풀이 길이 AC=2√3",
+    "BC=2√6를 나타내는 분할선분 CD·DB, 면 채움 없음"
+  ]
+}

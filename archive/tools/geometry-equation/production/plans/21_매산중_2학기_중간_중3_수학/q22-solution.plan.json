@@ -1,0 +1,504 @@
+{
+  "capability": "composite-panels-v1",
+  "columns": 1,
+  "panels": [
+    {
+      "caption": {
+        "text": "(1) 나무 높이"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "C",
+          "B"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "sCB",
+            "refs": [
+              "C",
+              "B"
+            ]
+          },
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "style": "ARC",
+              "factRole": "GIVEN",
+              "id": "aA",
+              "refs": [
+                "C",
+                "A",
+                "B"
+              ],
+              "value": 30.963756532,
+              "label": "31"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "lBC",
+              "ownerSegment": "sCB",
+              "text": "6"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "dAC",
+              "from": "A",
+              "to": "C",
+              "label": "10",
+              "side": "BELOW",
+              "style": "BAR",
+              "unit": "m"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "r1",
+            "refs": [
+              "A",
+              "C",
+              "B"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 600,
+          "height": 420
+        },
+        "caption": "그림자 AC=10m, 올려다본 각 31°, tan31°≈0.6으로 나무 높이 BC=6m이다.",
+        "accessibilityDescription": "그림자 AC=10m, 올려다본 각 31°, tan31°≈0.6으로 나무 높이 BC=6m이다.",
+        "sourceConditions": [
+          {
+            "id": "problem-stem",
+            "condition": "【서답형 2】 [서술형]<br>다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 2-①】</b> (4점)<br>다음 그림과 같이 나무의 그림자의 길이는 $10\\,\\text{m}$이고, 그림자의 끝 $A$ 지점에서 나무 꼭대기 $B$ 지점을 올려다본 각도가 $31^\\circ$일 때, 나무의 높이를 구하시오. (단, $\\tan 31^\\circ = 0.6$로 계산한다.)<br><img src=\"assets/images/21_매산중_2학기_중간_중3_수학/q22-problem-v2.svg\" /><br><br><br><b>【수준별 2-②】</b> (5점)<br>【대체 문항】$\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 $\\angle B = 72^\\circ$, $\\overline{\\mathrm{BC}} = 6$이다. 점 $\\mathrm{D}$는 선분 $\\overline{\\mathrm{AC}}$ 위에 있고, $\\angle \\mathrm{ABD} = \\angle \\mathrm{DBC}$일 때, $\\cos 36^\\circ$의 값을 구하시오.<br>",
+            "mappedTo": "mathPlan.nodes, displaySegments, planeMarks, rightAngles"
+          },
+          {
+            "id": "worked-solution",
+            "condition": "【수준별 2-①】<br>나무의 높이는 수평인 지면과 수직인 나무가 이루는 직각삼각형의 한 변이고, 그림자 길이 $10\\,\\mathrm m$는 각도 $31^\\circ$에 인접한 변이다. 따라서 $\\tan31^\\circ=\\frac{\\text{나무의 높이}}{10}$이므로 나무의 높이는 $10\\times0.6=6\\,\\mathrm m$이다.<br><br>【수준별 2-②】<br>$AB=AC$이므로 $\\angle C=\\angle B=72^\\circ$, $\\angle A=36^\\circ$이다. $BD$가 $\\angle B$를 이등분하고 $D$가 선분 $AC$ 위에 있으므로 $\\angle ABD=\\angle BAD=36^\\circ$이다. 따라서 $AD=BD$이다. 또 $\\triangle BDC$에서 $\\angle BDC=180^\\circ-36^\\circ-72^\\circ=72^\\circ=\\angle BCD$이므로 $BD=BC=6$이고, $AD=6$이다.<br>두 삼각형의 넓이를 비교하자. $\\triangle ABD$와 $\\triangle CBD$는 $AC$ 위에 놓여 있으므로 $\\frac{[ABD]}{[CBD]}=\\frac{AD}{DC}$이다. 한편 공통 밑변 $BD$에 대한 두 높이는 각각 $AB\\sin36^\\circ$, $BC\\sin36^\\circ$이므로 $\\frac{[ABD]}{[CBD]}=\\frac{AB}{BC}$이다. 따라서 $\\frac{AD}{DC}=\\frac{AB}{BC}$이다.<br>$AB=AC$이므로 $AB=AD+DC=6+DC$이다. $AB=x$라 두면 $\\frac6{DC}=\\frac{x}{6}$에서 $DC=\\frac{36}{x}$이고, $x=6+\\frac{36}{x}$이다. 따라서 $x^2-6x-36=0$이고, 길이는 양수이므로 $AB=3+3\\sqrt5$이다.<br>$D$에서 $AB$에 내린 수선의 발을 $F$라 하면 $AD=BD$이므로 $F$는 $AB$의 중점이다. 직각삼각형 $ADF$에서 $\\cos36^\\circ=\\frac{AF}{AD}=\\frac{AB/2}{6}=\\frac{AB}{12}=\\frac{1+\\sqrt5}{4}$이다.",
+            "mappedTo": "planeMarks, displaySegments, caption"
+          }
+        ],
+        "newVisualInformation": [
+          "그림자 10m와 앙각 31°",
+          "C 직각과 나무 높이 BC=6"
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "(2) 이등변삼각형의 각"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "923305061152576",
+                    "denominator": "100000000000000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "4854101966249685",
+                    "denominator": "1000000000000000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "35267115137548393",
+                    "denominator": "10000000000000000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "15",
+                    "denominator": "10"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "461652530576288",
+                    "denominator": "100000000000000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "B",
+          "C",
+          "A",
+          "D",
+          "F"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sBA",
+            "refs": [
+              "B",
+              "F"
+            ]
+          },
+          {
+            "id": "sFA",
+            "refs": [
+              "F",
+              "A"
+            ]
+          },
+          {
+            "id": "sAD",
+            "refs": [
+              "A",
+              "D"
+            ]
+          },
+          {
+            "id": "sDC",
+            "refs": [
+              "D",
+              "C"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sBD",
+            "refs": [
+              "B",
+              "D"
+            ]
+          },
+          {
+            "id": "sDF",
+            "refs": [
+              "D",
+              "F"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "style": "ARC",
+              "factRole": "GIVEN",
+              "id": "aA",
+              "refs": [
+                "B",
+                "A",
+                "D"
+              ],
+              "value": 36,
+              "label": "36"
+            },
+            {
+              "style": "ARC",
+              "factRole": "GIVEN",
+              "id": "aB1",
+              "refs": [
+                "A",
+                "B",
+                "D"
+              ],
+              "value": 36,
+              "label": "36"
+            },
+            {
+              "style": "ARC",
+              "factRole": "GIVEN",
+              "id": "aB2",
+              "refs": [
+                "D",
+                "B",
+                "C"
+              ],
+              "value": 36,
+              "label": "36"
+            }
+          ],
+          "equalLengths": [
+            {
+              "id": "eABAC",
+              "count": 1,
+              "segments": [
+                {
+                  "path": [
+                    "sBA",
+                    "sFA"
+                  ]
+                },
+                {
+                  "path": [
+                    "sAD",
+                    "sDC"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "eAFBF",
+              "count": 2,
+              "segments": [
+                "sBA",
+                "sFA"
+              ]
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "lAD",
+              "ownerSegment": "sAD",
+              "text": "6"
+            },
+            {
+              "id": "lBD",
+              "ownerSegment": "sBD",
+              "text": "6"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "dBC",
+              "from": "B",
+              "to": "C",
+              "label": "6",
+              "side": "BELOW",
+              "style": "BAR"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "r1",
+            "refs": [
+              "A",
+              "F",
+              "D"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 600,
+          "height": 420
+        },
+        "caption": "B와 C가 72°인 이등변삼각형을 BD로 이등분하고, D에서 AB에 내린 수선 DF를 그려 cos36°=AF/AD=(1+√5)/4를 얻는다.",
+        "accessibilityDescription": "B와 C가 72°인 이등변삼각형을 BD로 이등분하고, D에서 AB에 내린 수선 DF를 그려 cos36°=AF/AD=(1+√5)/4를 얻는다.",
+        "sourceConditions": [
+          {
+            "id": "problem-stem",
+            "condition": "【서답형 2】 [서술형]<br>다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 2-①】</b> (4점)<br>다음 그림과 같이 나무의 그림자의 길이는 $10\\,\\text{m}$이고, 그림자의 끝 $A$ 지점에서 나무 꼭대기 $B$ 지점을 올려다본 각도가 $31^\\circ$일 때, 나무의 높이를 구하시오. (단, $\\tan 31^\\circ = 0.6$로 계산한다.)<br><img src=\"assets/images/21_매산중_2학기_중간_중3_수학/q22-problem-v2.svg\" /><br><br><br><b>【수준별 2-②】</b> (5점)<br>【대체 문항】$\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 $\\angle B = 72^\\circ$, $\\overline{\\mathrm{BC}} = 6$이다. 점 $\\mathrm{D}$는 선분 $\\overline{\\mathrm{AC}}$ 위에 있고, $\\angle \\mathrm{ABD} = \\angle \\mathrm{DBC}$일 때, $\\cos 36^\\circ$의 값을 구하시오.<br>",
+            "mappedTo": "mathPlan.nodes, displaySegments, planeMarks, rightAngles"
+          },
+          {
+            "id": "worked-solution",
+            "condition": "【수준별 2-①】<br>나무의 높이는 수평인 지면과 수직인 나무가 이루는 직각삼각형의 한 변이고, 그림자 길이 $10\\,\\mathrm m$는 각도 $31^\\circ$에 인접한 변이다. 따라서 $\\tan31^\\circ=\\frac{\\text{나무의 높이}}{10}$이므로 나무의 높이는 $10\\times0.6=6\\,\\mathrm m$이다.<br><br>【수준별 2-②】<br>$AB=AC$이므로 $\\angle C=\\angle B=72^\\circ$, $\\angle A=36^\\circ$이다. $BD$가 $\\angle B$를 이등분하고 $D$가 선분 $AC$ 위에 있으므로 $\\angle ABD=\\angle BAD=36^\\circ$이다. 따라서 $AD=BD$이다. 또 $\\triangle BDC$에서 $\\angle BDC=180^\\circ-36^\\circ-72^\\circ=72^\\circ=\\angle BCD$이므로 $BD=BC=6$이고, $AD=6$이다.<br>두 삼각형의 넓이를 비교하자. $\\triangle ABD$와 $\\triangle CBD$는 $AC$ 위에 놓여 있으므로 $\\frac{[ABD]}{[CBD]}=\\frac{AD}{DC}$이다. 한편 공통 밑변 $BD$에 대한 두 높이는 각각 $AB\\sin36^\\circ$, $BC\\sin36^\\circ$이므로 $\\frac{[ABD]}{[CBD]}=\\frac{AB}{BC}$이다. 따라서 $\\frac{AD}{DC}=\\frac{AB}{BC}$이다.<br>$AB=AC$이므로 $AB=AD+DC=6+DC$이다. $AB=x$라 두면 $\\frac6{DC}=\\frac{x}{6}$에서 $DC=\\frac{36}{x}$이고, $x=6+\\frac{36}{x}$이다. 따라서 $x^2-6x-36=0$이고, 길이는 양수이므로 $AB=3+3\\sqrt5$이다.<br>$D$에서 $AB$에 내린 수선의 발을 $F$라 하면 $AD=BD$이므로 $F$는 $AB$의 중점이다. 직각삼각형 $ADF$에서 $\\cos36^\\circ=\\frac{AF}{AD}=\\frac{AB/2}{6}=\\frac{AB}{12}=\\frac{1+\\sqrt5}{4}$이다.",
+            "mappedTo": "planeMarks, displaySegments, caption"
+          }
+        ],
+        "newVisualInformation": [
+          "A와 B의 반각 36° 호, BC6",
+          "AD=BD=6, AB=AC 같은 길이 표식",
+          "F 중점과 DF 수선·직각 표식"
+        ]
+      }
+    }
+  ],
+  "caption": "두 수준별 해설을 충분한 높이로 분리했다. 첫째 나무 높이 6m, 둘째 cos36°=(1+√5)/4이다.",
+  "sourceConditions": [
+    {
+      "id": "two-source-variants",
+      "condition": "【서답형 2】 [서술형]<br>다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 2-①】</b> (4점)<br>다음 그림과 같이 나무의 그림자의 길이는 $10\\,\\text{m}$이고, 그림자의 끝 $A$ 지점에서 나무 꼭대기 $B$ 지점을 올려다본 각도가 $31^\\circ$일 때, 나무의 높이를 구하시오. (단, $\\tan 31^\\circ = 0.6$로 계산한다.)<br><img src=\"assets/images/21_매산중_2학기_중간_중3_수학/q22-problem-v2.svg\" /><br><br><br><b>【수준별 2-②】</b> (5점)<br>【대체 문항】$\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 $\\angle B = 72^\\circ$, $\\overline{\\mathrm{BC}} = 6$이다. 점 $\\mathrm{D}$는 선분 $\\overline{\\mathrm{AC}}$ 위에 있고, $\\angle \\mathrm{ABD} = \\angle \\mathrm{DBC}$일 때, $\\cos 36^\\circ$의 값을 구하시오.<br>",
+      "mappedTo": [
+        "panels[0].plan",
+        "panels[1].plan"
+      ]
+    },
+    {
+      "id": "two-worked-solutions",
+      "condition": "【수준별 2-①】<br>나무의 높이는 수평인 지면과 수직인 나무가 이루는 직각삼각형의 한 변이고, 그림자 길이 $10\\,\\mathrm m$는 각도 $31^\\circ$에 인접한 변이다. 따라서 $\\tan31^\\circ=\\frac{\\text{나무의 높이}}{10}$이므로 나무의 높이는 $10\\times0.6=6\\,\\mathrm m$이다.<br><br>【수준별 2-②】<br>$AB=AC$이므로 $\\angle C=\\angle B=72^\\circ$, $\\angle A=36^\\circ$이다. $BD$가 $\\angle B$를 이등분하고 $D$가 선분 $AC$ 위에 있으므로 $\\angle ABD=\\angle BAD=36^\\circ$이다. 따라서 $AD=BD$이다. 또 $\\triangle BDC$에서 $\\angle BDC=180^\\circ-36^\\circ-72^\\circ=72^\\circ=\\angle BCD$이므로 $BD=BC=6$이고, $AD=6$이다.<br>두 삼각형의 넓이를 비교하자. $\\triangle ABD$와 $\\triangle CBD$는 $AC$ 위에 놓여 있으므로 $\\frac{[ABD]}{[CBD]}=\\frac{AD}{DC}$이다. 한편 공통 밑변 $BD$에 대한 두 높이는 각각 $AB\\sin36^\\circ$, $BC\\sin36^\\circ$이므로 $\\frac{[ABD]}{[CBD]}=\\frac{AB}{BC}$이다. 따라서 $\\frac{AD}{DC}=\\frac{AB}{BC}$이다.<br>$AB=AC$이므로 $AB=AD+DC=6+DC$이다. $AB=x$라 두면 $\\frac6{DC}=\\frac{x}{6}$에서 $DC=\\frac{36}{x}$이고, $x=6+\\frac{36}{x}$이다. 따라서 $x^2-6x-36=0$이고, 길이는 양수이므로 $AB=3+3\\sqrt5$이다.<br>$D$에서 $AB$에 내린 수선의 발을 $F$라 하면 $AD=BD$이므로 $F$는 $AB$의 중점이다. 직각삼각형 $ADF$에서 $\\cos36^\\circ=\\frac{AF}{AD}=\\frac{AB/2}{6}=\\frac{AB}{12}=\\frac{1+\\sqrt5}{4}$이다.",
+      "mappedTo": [
+        "panels[0].plan.planeMarks",
+        "panels[1].plan.planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "(1) 그림자 10m와 앙각 31°",
+    "(1) C 직각과 나무 높이 BC=6",
+    "(2) A와 B의 반각 36° 호, BC6",
+    "(2) AD=BD=6, AB=AC 같은 길이 표식",
+    "(2) F 중점과 DF 수선·직각 표식"
+  ]
+}

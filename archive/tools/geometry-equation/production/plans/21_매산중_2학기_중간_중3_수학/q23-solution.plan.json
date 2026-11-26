@@ -1,0 +1,663 @@
+{
+  "capability": "composite-panels-v1",
+  "columns": 1,
+  "panels": [
+    {
+      "caption": {
+        "text": "(1) 내접원 반지름"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "inc",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "C",
+          "A",
+          "B",
+          "O",
+          "E",
+          "F"
+        ],
+        "displayLines": [],
+        "displayCircles": [
+          "inc"
+        ],
+        "displaySegments": [
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sOE",
+            "refs": [
+              "O",
+              "E"
+            ]
+          },
+          {
+            "id": "sOF",
+            "refs": [
+              "O",
+              "F"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "lAB",
+              "ownerSegment": "sAB",
+              "text": "10"
+            },
+            {
+              "id": "lOE",
+              "ownerSegment": "sOE",
+              "text": "r=2"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "dAC",
+              "from": "C",
+              "to": "A",
+              "label": "6",
+              "side": "LEFT",
+              "style": "BAR",
+              "unit": "cm"
+            },
+            {
+              "id": "dBC",
+              "from": "C",
+              "to": "B",
+              "label": "8",
+              "side": "BELOW",
+              "style": "BAR",
+              "unit": "cm"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "r1",
+            "refs": [
+              "A",
+              "C",
+              "B"
+            ]
+          },
+          {
+            "id": "r2",
+            "refs": [
+              "O",
+              "E",
+              "B"
+            ]
+          },
+          {
+            "id": "r3",
+            "refs": [
+              "C",
+              "F",
+              "O"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 600,
+          "height": 420
+        },
+        "caption": "첫째: 직각삼각형 6–8–10의 내접원은 반지름 r=2cm이며 O에서 변에 내린 반지름이 직각이다.",
+        "accessibilityDescription": "첫째: 직각삼각형 6–8–10의 내접원은 반지름 r=2cm이며 O에서 변에 내린 반지름이 직각이다.",
+        "sourceConditions": [
+          {
+            "id": "problem-stem",
+            "condition": "【서답형 3】 [서술형]<br>다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 3-①】</b> (4점)<br>【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $AC=6\\,\\text{cm}$, $BC=8\\,\\text{cm}$이다. 원 $O$가 삼각형 $ABC$의 내접원일 때, 원 $O$의 반지름을 구하시오.<br><br><b>【수준별 3-②】</b> (5점)<br>【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $AC=15\\,\\text{cm}$, $BC=20\\,\\text{cm}$이다. 원 $I$는 삼각형 $ABC$의 내접원이며, 변 $AB,BC,CA$와의 접점은 각각 $D,E,F$이다. 사각형 $DBEI$의 넓이를 구하시오.",
+            "mappedTo": "mathPlan.nodes, displaySegments, planeMarks, rightAngles"
+          },
+          {
+            "id": "worked-solution",
+            "condition": "【수준별 3-①】<br>피타고라스 정리로 $AB=\\sqrt{6^2+8^2}=10\\,\\text{cm}$이다. 삼각형의 넓이는 $\\frac12\\times6\\times8=24\\,\\text{cm}^2$이고, 반둘레는 $\\frac{6+8+10}{2}=12\\,\\text{cm}$이다.<br>내접원의 반지름을 $r$라 하면 삼각형 넓이는 세 변을 밑변으로 하는 세 삼각형 넓이의 합이므로 $24=\\frac12 r(6+8+10)=12r$이다. 따라서 $r=2\\,\\text{cm}$이다.<br><br>【수준별 3-②】<br>먼저 $AB=\\sqrt{15^2+20^2}=25\\,\\text{cm}$이다. 삼각형 넓이는 $\\frac12\\times15\\times20=150\\,\\text{cm}^2$, 반둘레는 $\\frac{15+20+25}{2}=30\\,\\text{cm}$이므로 내접원의 반지름은 $r=\\frac{150}{30}=5\\,\\text{cm}$이다.<br>$CI$는 직각 $\\angle C$의 이등분선이고 $IE\\perp BC$, $IF\\perp CA$이다. 따라서 직각삼각형 $CIE$에서 $\\angle C=45^\\circ$이므로 $CE=IE=r=5$이고, 같은 이유로 $CF=IF=5$이다. $BE=BC-CE=20-5=15$이고, 점 $B$에서 그은 두 접선의 길이가 같으므로 $BD=BE=15$이다.<br>대각선 $BI$로 사각형 $DBEI$를 두 삼각형으로 나눈다. $DI$와 $EI$는 각각 접선에 수직인 반지름이므로 높이는 모두 $5$이다.<br>$[DBEI]=[DBI]+[BEI]=\\frac12\\times15\\times5+\\frac12\\times15\\times5=75\\,\\text{cm}^2$이다.",
+            "mappedTo": "planeMarks, displaySegments, caption"
+          }
+        ],
+        "newVisualInformation": [
+          "AC6·BC8·AB10",
+          "내접원 O, 반지름 OE=2, 직각 E,F"
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "(2) 접점 사각형의 넓이"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "15"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "20"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "I",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "inc",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "I"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "5"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "C",
+          "A",
+          "B",
+          "I",
+          "D",
+          "E",
+          "F"
+        ],
+        "displayLines": [],
+        "displayCircles": [
+          "inc"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAF",
+            "refs": [
+              "A",
+              "F"
+            ]
+          },
+          {
+            "id": "sFC",
+            "refs": [
+              "F",
+              "C"
+            ]
+          },
+          {
+            "id": "sCE",
+            "refs": [
+              "C",
+              "E"
+            ]
+          },
+          {
+            "id": "sEB",
+            "refs": [
+              "E",
+              "B"
+            ]
+          },
+          {
+            "id": "sBD",
+            "refs": [
+              "B",
+              "D"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "sID",
+            "refs": [
+              "I",
+              "D"
+            ]
+          },
+          {
+            "id": "sIE",
+            "refs": [
+              "I",
+              "E"
+            ]
+          },
+          {
+            "id": "sIF",
+            "refs": [
+              "I",
+              "F"
+            ]
+          },
+          {
+            "id": "sBI",
+            "refs": [
+              "B",
+              "I"
+            ],
+            "dashed": true
+          }
+        ],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "lBD",
+              "ownerSegment": "sBD",
+              "text": "15"
+            },
+            {
+              "id": "lBE",
+              "ownerSegment": "sEB",
+              "text": "15"
+            },
+            {
+              "id": "lID",
+              "ownerSegment": "sID",
+              "text": "5"
+            },
+            {
+              "id": "lIE",
+              "ownerSegment": "sIE",
+              "text": "5"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "dAC",
+              "from": "A",
+              "to": "C",
+              "label": "15",
+              "side": "LEFT",
+              "style": "BAR",
+              "unit": "cm"
+            },
+            {
+              "id": "dBC",
+              "from": "C",
+              "to": "B",
+              "label": "20",
+              "side": "BELOW",
+              "style": "BAR",
+              "unit": "cm"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "r1",
+            "refs": [
+              "A",
+              "C",
+              "B"
+            ]
+          },
+          {
+            "id": "r2",
+            "refs": [
+              "I",
+              "D",
+              "B"
+            ]
+          },
+          {
+            "id": "r3",
+            "refs": [
+              "I",
+              "E",
+              "B"
+            ]
+          },
+          {
+            "id": "r4",
+            "refs": [
+              "I",
+              "F",
+              "C"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 600,
+          "height": 420
+        },
+        "caption": "둘째: 15–20–25 직각삼각형의 내접원 반지름 5, BD=BE=15. 사각형 DBEI는 수선 ID·IE를 높이로 한 삼각형 2개의 합으로 넓이 75cm²이다.",
+        "accessibilityDescription": "둘째: 15–20–25 직각삼각형의 내접원 반지름 5, BD=BE=15. 사각형 DBEI는 수선 ID·IE를 높이로 한 삼각형 2개의 합으로 넓이 75cm²이다.",
+        "sourceConditions": [
+          {
+            "id": "problem-stem",
+            "condition": "【서답형 3】 [서술형]<br>다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 3-①】</b> (4점)<br>【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $AC=6\\,\\text{cm}$, $BC=8\\,\\text{cm}$이다. 원 $O$가 삼각형 $ABC$의 내접원일 때, 원 $O$의 반지름을 구하시오.<br><br><b>【수준별 3-②】</b> (5점)<br>【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $AC=15\\,\\text{cm}$, $BC=20\\,\\text{cm}$이다. 원 $I$는 삼각형 $ABC$의 내접원이며, 변 $AB,BC,CA$와의 접점은 각각 $D,E,F$이다. 사각형 $DBEI$의 넓이를 구하시오.",
+            "mappedTo": "mathPlan.nodes, displaySegments, planeMarks, rightAngles"
+          },
+          {
+            "id": "worked-solution",
+            "condition": "【수준별 3-①】<br>피타고라스 정리로 $AB=\\sqrt{6^2+8^2}=10\\,\\text{cm}$이다. 삼각형의 넓이는 $\\frac12\\times6\\times8=24\\,\\text{cm}^2$이고, 반둘레는 $\\frac{6+8+10}{2}=12\\,\\text{cm}$이다.<br>내접원의 반지름을 $r$라 하면 삼각형 넓이는 세 변을 밑변으로 하는 세 삼각형 넓이의 합이므로 $24=\\frac12 r(6+8+10)=12r$이다. 따라서 $r=2\\,\\text{cm}$이다.<br><br>【수준별 3-②】<br>먼저 $AB=\\sqrt{15^2+20^2}=25\\,\\text{cm}$이다. 삼각형 넓이는 $\\frac12\\times15\\times20=150\\,\\text{cm}^2$, 반둘레는 $\\frac{15+20+25}{2}=30\\,\\text{cm}$이므로 내접원의 반지름은 $r=\\frac{150}{30}=5\\,\\text{cm}$이다.<br>$CI$는 직각 $\\angle C$의 이등분선이고 $IE\\perp BC$, $IF\\perp CA$이다. 따라서 직각삼각형 $CIE$에서 $\\angle C=45^\\circ$이므로 $CE=IE=r=5$이고, 같은 이유로 $CF=IF=5$이다. $BE=BC-CE=20-5=15$이고, 점 $B$에서 그은 두 접선의 길이가 같으므로 $BD=BE=15$이다.<br>대각선 $BI$로 사각형 $DBEI$를 두 삼각형으로 나눈다. $DI$와 $EI$는 각각 접선에 수직인 반지름이므로 높이는 모두 $5$이다.<br>$[DBEI]=[DBI]+[BEI]=\\frac12\\times15\\times5+\\frac12\\times15\\times5=75\\,\\text{cm}^2$이다.",
+            "mappedTo": "planeMarks, displaySegments, caption"
+          }
+        ],
+        "newVisualInformation": [
+          "AC15·BC20·AB25 직각삼각형",
+          "세 접점 D,E,F와 원 I, 수선 직각 표식",
+          "BD=BE=15, ID=IE=5, BI 보조 점선"
+        ]
+      }
+    }
+  ],
+  "caption": "두 수준별 내접원 해설을 세로 독립 패널로 배치했다. 첫째 반지름 2cm, 둘째 사각형 DBEI의 넓이 75cm²이다.",
+  "sourceConditions": [
+    {
+      "id": "two-source-variants",
+      "condition": "【서답형 3】 [서술형]<br>다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 3-①】</b> (4점)<br>【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $AC=6\\,\\text{cm}$, $BC=8\\,\\text{cm}$이다. 원 $O$가 삼각형 $ABC$의 내접원일 때, 원 $O$의 반지름을 구하시오.<br><br><b>【수준별 3-②】</b> (5점)<br>【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $AC=15\\,\\text{cm}$, $BC=20\\,\\text{cm}$이다. 원 $I$는 삼각형 $ABC$의 내접원이며, 변 $AB,BC,CA$와의 접점은 각각 $D,E,F$이다. 사각형 $DBEI$의 넓이를 구하시오.",
+      "mappedTo": [
+        "panels[0].plan",
+        "panels[1].plan"
+      ]
+    },
+    {
+      "id": "two-worked-solutions",
+      "condition": "【수준별 3-①】<br>피타고라스 정리로 $AB=\\sqrt{6^2+8^2}=10\\,\\text{cm}$이다. 삼각형의 넓이는 $\\frac12\\times6\\times8=24\\,\\text{cm}^2$이고, 반둘레는 $\\frac{6+8+10}{2}=12\\,\\text{cm}$이다.<br>내접원의 반지름을 $r$라 하면 삼각형 넓이는 세 변을 밑변으로 하는 세 삼각형 넓이의 합이므로 $24=\\frac12 r(6+8+10)=12r$이다. 따라서 $r=2\\,\\text{cm}$이다.<br><br>【수준별 3-②】<br>먼저 $AB=\\sqrt{15^2+20^2}=25\\,\\text{cm}$이다. 삼각형 넓이는 $\\frac12\\times15\\times20=150\\,\\text{cm}^2$, 반둘레는 $\\frac{15+20+25}{2}=30\\,\\text{cm}$이므로 내접원의 반지름은 $r=\\frac{150}{30}=5\\,\\text{cm}$이다.<br>$CI$는 직각 $\\angle C$의 이등분선이고 $IE\\perp BC$, $IF\\perp CA$이다. 따라서 직각삼각형 $CIE$에서 $\\angle C=45^\\circ$이므로 $CE=IE=r=5$이고, 같은 이유로 $CF=IF=5$이다. $BE=BC-CE=20-5=15$이고, 점 $B$에서 그은 두 접선의 길이가 같으므로 $BD=BE=15$이다.<br>대각선 $BI$로 사각형 $DBEI$를 두 삼각형으로 나눈다. $DI$와 $EI$는 각각 접선에 수직인 반지름이므로 높이는 모두 $5$이다.<br>$[DBEI]=[DBI]+[BEI]=\\frac12\\times15\\times5+\\frac12\\times15\\times5=75\\,\\text{cm}^2$이다.",
+      "mappedTo": [
+        "panels[0].plan.planeMarks",
+        "panels[1].plan.planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "(1) AC6·BC8·AB10",
+    "(1) 내접원 O, 반지름 OE=2, 직각 E,F",
+    "(2) AC15·BC20·AB25 직각삼각형",
+    "(2) 세 접점 D,E,F와 원 I, 수선 직각 표식",
+    "(2) BD=BE=15, ID=IE=5, BI 보조 점선"
+  ]
+}
