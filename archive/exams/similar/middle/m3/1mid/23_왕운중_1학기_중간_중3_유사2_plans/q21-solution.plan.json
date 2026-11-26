@@ -1,0 +1,29 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "정수 부분과 위치",
+        "band": false,
+        "points": [
+          { "id": "L", "value": "3", "hideName": true },
+          { "id": "R", "value": "sqrt(10)", "hideName": true, "valueSide": "ABOVE" },
+          { "id": "U", "value": "4", "hideName": true }
+        ]
+      }
+    ]
+  },
+  "caption": "3과 4 사이에 놓이는 √10의 위치로 정수 부분과 소수 부분을 구별한다.",
+  "accessibilityDescription": "수직선에서 3 바로 오른쪽, 4보다는 3에 가까운 위치에 루트10이 표시되어 정수 부분은 3이고 소수 부분은 루트10에서 3을 뺀 값임을 이해할 수 있다.",
+  "sourceConditions": [
+    { "id": "bounds", "condition": "9<10<16이므로 3<√10<4이다.", "mappedTo": "numberLine.rows[0].points의 L=3,R=√10,U=4의 순서" },
+    { "id": "integer", "condition": "정수 부분 x는 3이다.", "mappedTo": "numberLine.rows[0].points.L의 위치와 값 라벨" },
+    { "id": "fraction", "condition": "소수 부분 y=√10−3이다.", "mappedTo": "numberLine.rows[0].points.L에서 R까지 오른쪽 거리(값 계산은 해설 본문)" }
+  ],
+  "newVisualInformation": [
+    "해설용 수직선에서만 √10을 3과 4 사이에 표시하여 정수 부분이 어디까지인지 보여 준다.",
+    "3·√10·4 세 점의 값과 순서는 공식 엔진이 직접 계산한다."
+  ]
+}
