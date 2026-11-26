@@ -153,6 +153,14 @@
         "B",
         "C"
       ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ],
+      "dashed": true
     }
   ],
   "planeMarks": {
@@ -166,32 +174,67 @@
         ],
         "value": 72,
         "factRole": "GIVEN",
-        "noLabel": true
+        "noLabel": true,
+        "color": "ROSE",
+        "style": "ARC"
       }
-    ]
+    ],
+    "arcs": [
+      {
+        "id": "pArcAB",
+        "circle": "circ",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR",
+        "label": "1",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "pArcBC",
+        "circle": "circ",
+        "center": "O",
+        "from": "B",
+        "to": "C",
+        "side": "CCW",
+        "label": "5",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "pArcCA",
+        "circle": "circ",
+        "center": "O",
+        "from": "C",
+        "to": "A",
+        "side": "MINOR",
+        "label": "4",
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [],
+    "parallels": [],
+    "expressionLabels": [],
+    "dimensions": []
   },
-  "caption": "원 위의 세 점 A, B, C를 이어 삼각형 ABC를 그렸다. 변 BC는 원의 지름이고, 각 ABC에 호 표시가 있다. 호 AB, BC, CA의 길이의 비는 1:5:4이다.",
+  "caption": "원 위 세 점 A·B·C의 호 길이 비 AB:BC:CA=1:5:4와 미지 원주각",
   "sourceConditions": [
     {
-      "id": "c1",
-      "condition": "원 위의 세 점 A, B, C에서 호 AB:호 BC:호 CA=1:5:4이다.",
+      "id": "source",
+      "condition": "원 위 세 점 A·B·C의 호 길이 비 AB:BC:CA=1:5:4와 미지 원주각",
       "mappedTo": [
-        "mathPlan.nodes",
+        "mathPlan",
         "displaySegments",
-        "planeMarks",
-        "caption"
+        "planeMarks"
       ]
     }
   ],
   "newVisualInformation": [
-    "문제의 조건을 그대로 그린 그림이다. 구하는 각 ABC의 크기는 표시하지 않는다."
-  ],
-  "hiddenPointNames": [
-    "O"
+    "발문·원본 스캔에 주어진 대상만 표시하고 풀이에서 알게 되는 숫자와 보조선은 표시하지 않는다."
   ],
   "coordinateCanvas": {
     "width": 560,
     "height": 480
   },
-  "hiddenPointStyle": "NONE"
+  "accessibilityDescription": "원 위 세 점 A·B·C의 호 길이 비 AB:BC:CA=1:5:4와 미지 원주각",
+  "rightAngles": []
 }

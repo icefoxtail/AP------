@@ -228,11 +228,34 @@
         "value": 75,
         "label": "x",
         "labelKind": "MATH",
+        "factRole": "GIVEN",
+        "style": "ARC"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "givenArcAB",
+        "circle": "circ",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR",
+        "label": "1/6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "givenArcCD",
+        "circle": "circ",
+        "center": "O",
+        "from": "C",
+        "to": "D",
+        "side": "MINOR",
+        "label": "1/4",
         "factRole": "GIVEN"
       }
     ]
   },
-  "caption": "원 안에서 두 현 AC와 BD가 점 E에서 만난다. 호 AB는 원주의 6분의 1, 호 CD는 원주의 4분의 1이고, 각 DEC의 크기를 x로 나타냈다.",
+  "caption": "원의 두 현 AC·BD와 교점 E의 미지각 x, 원주에 대한 호 AB의 1/6 및 CD의 1/4 비율",
   "sourceConditions": [
     {
       "id": "c1",
@@ -248,5 +271,6 @@
   ],
   "newVisualInformation": [
     "문제의 조건을 그대로 그린 그림이다. 구하는 각은 x로 둔다."
-  ]
+  ],
+  "accessibilityDescription": "원의 두 현 AC·BD와 교점 E의 미지각 x, 원주에 대한 호 AB의 1/6 및 CD의 1/4 비율"
 }

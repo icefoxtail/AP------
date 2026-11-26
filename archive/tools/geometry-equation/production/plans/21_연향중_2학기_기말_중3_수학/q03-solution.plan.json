@@ -9,14 +9,24 @@
     },
     "nodes": [
       {
-        "id": "E",
+        "id": "C",
         "op": "SOURCE_POINT",
         "inputs": [],
         "args": {
           "coordinates": [
             {
-              "kind": "integer",
-              "value": "0"
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-1"
+                },
+                {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              ]
             },
             {
               "kind": "integer",
@@ -28,14 +38,24 @@
         "factRole": "GIVEN"
       },
       {
-        "id": "T",
+        "id": "D",
         "op": "SOURCE_POINT",
         "inputs": [],
         "args": {
           "coordinates": [
             {
-              "kind": "integer",
-              "value": "0"
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-1"
+                },
+                {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              ]
             },
             {
               "kind": "rational",
@@ -54,9 +74,19 @@
         "args": {
           "coordinates": [
             {
-              "kind": "rational",
-              "numerator": "683013",
-              "denominator": "10000"
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-1"
+                },
+                {
+                  "kind": "rational",
+                  "numerator": "683013",
+                  "denominator": "10000"
+                }
+              ]
             },
             {
               "kind": "integer",
@@ -74,9 +104,19 @@
         "args": {
           "coordinates": [
             {
-              "kind": "rational",
-              "numerator": "1183013",
-              "denominator": "10000"
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-1"
+                },
+                {
+                  "kind": "rational",
+                  "numerator": "1183013",
+                  "denominator": "10000"
+                }
+              ]
             },
             {
               "kind": "integer",
@@ -92,8 +132,8 @@
   "displayPoints": [
     "A",
     "B",
-    "E",
-    "T"
+    "C",
+    "D"
   ],
   "displayLines": [],
   "displayCircles": [],
@@ -109,27 +149,27 @@
       "id": "sBE",
       "refs": [
         "B",
-        "E"
+        "C"
       ]
     },
     {
       "id": "sET",
       "refs": [
-        "E",
-        "T"
+        "C",
+        "D"
       ]
     },
     {
       "id": "sTB",
       "refs": [
-        "T",
+        "D",
         "B"
       ]
     },
     {
       "id": "sTA",
       "refs": [
-        "T",
+        "D",
         "A"
       ]
     }
@@ -139,24 +179,26 @@
       {
         "id": "aA",
         "refs": [
-          "T",
+          "D",
           "A",
-          "E"
+          "C"
         ],
         "value": 30,
         "factRole": "GIVEN",
-        "color": "BLUE"
+        "color": "BLUE",
+        "style": "ARC"
       },
       {
         "id": "aB",
         "refs": [
-          "T",
+          "D",
           "B",
-          "E"
+          "C"
         ],
         "value": 45,
         "factRole": "GIVEN",
-        "color": "WARM"
+        "color": "WARM",
+        "style": "ARC"
       }
     ],
     "expressionLabels": [
@@ -207,17 +249,12 @@
     {
       "id": "r1",
       "refs": [
-        "T",
-        "E",
+        "D",
+        "C",
         "B"
       ]
     }
   ],
-  "hiddenPointNames": [
-    "E",
-    "T"
-  ],
-  "hiddenPointStyle": "NONE",
   "coordinateCanvas": {
     "width": 640,
     "height": 400

@@ -15,8 +15,18 @@
         "args": {
           "coordinates": [
             {
-              "kind": "integer",
-              "value": "0"
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-1"
+                },
+                {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              ]
             },
             {
               "kind": "integer",
@@ -34,8 +44,18 @@
         "args": {
           "coordinates": [
             {
-              "kind": "integer",
-              "value": "0"
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-1"
+                },
+                {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              ]
             },
             {
               "kind": "expression",
@@ -74,15 +94,25 @@
               "args": [
                 {
                   "kind": "integer",
-                  "value": "4"
+                  "value": "-1"
                 },
                 {
                   "kind": "expression",
-                  "op": "sqrt",
+                  "op": "mul",
                   "args": [
                     {
                       "kind": "integer",
-                      "value": "2"
+                      "value": "4"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "2"
+                        }
+                      ]
                     }
                   ]
                 }
@@ -105,8 +135,18 @@
         ],
         "args": {
           "dx": {
-            "kind": "integer",
-            "value": "8"
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-1"
+              },
+              {
+                "kind": "integer",
+                "value": "8"
+              }
+            ]
           },
           "dy": {
             "kind": "integer",
@@ -174,7 +214,8 @@
         ],
         "value": 22.5,
         "factRole": "GIVEN",
-        "color": "ROSE"
+        "color": "ROSE",
+        "style": "ARC"
       },
       {
         "id": "aD",
@@ -185,7 +226,8 @@
         ],
         "value": 45,
         "factRole": "GIVEN",
-        "color": "VIOLET"
+        "color": "VIOLET",
+        "style": "ARC"
       }
     ],
     "expressionLabels": [
