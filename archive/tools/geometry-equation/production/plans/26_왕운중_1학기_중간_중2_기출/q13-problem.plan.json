@@ -1,0 +1,67 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "8" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "4" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "4" }, { "kind": "integer", "value": "8" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "O", "op": "MIDPOINT", "inputs": ["A", "B"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "semi", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["O"], "args": { "radius": { "kind": "integer", "value": "4" } }, "outputType": "CIRCLE", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "O"],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sCD", "refs": ["C", "D"] },
+    { "id": "sDA", "refs": ["D", "A"] },
+    { "id": "sAC", "refs": ["A", "C"] }
+  ],
+  "rightAngles": [
+    { "id": "rightABC", "refs": ["A", "B", "C"] }
+  ],
+  "planeMarks": {
+    "arcs": [
+      { "id": "arcAB", "circle": "semi", "center": "O", "from": "A", "to": "B", "side": "CW", "highlight": false, "factRole": "GIVEN" }
+    ],
+    "dimensions": [
+      { "id": "lengthAB", "from": "A", "to": "B", "label": "4x^3y", "side": "LEFT", "style": "BAR", "factRole": "GIVEN" },
+      { "id": "lengthBC", "from": "B", "to": "C", "label": "2x^3y", "side": "BELOW", "style": "BAR", "factRole": "GIVEN" }
+    ]
+  },
+  "coordinateCanvas": { "width": 620, "height": 570 },
+  "caption": "직사각형 ABCD에서 AB를 지름으로 하는 반원 O와 직각삼각형 ABC를 겹쳐 나타낸 원본의 무채움 그림.",
+  "accessibilityDescription": "직사각형 ABCD의 세로 AB는 4x³y, 가로 BC는 2x³y이다. AB의 중점 O를 중심으로 오른쪽으로 볼록한 반원이 그려져 있고, A에서 C까지 대각선이 이어져 직각삼각형 ABC를 이룬다. 내부는 모두 흰색이다.",
+  "sourceQuote": "$AB$를 지름으로 하는 반원 $O$",
+  "sourceConditions": [
+    {
+      "id": "rectangle",
+      "condition": "원본 직사각형 ABCD는 AB=4x³y, BC=2x³y이다. 좌표 8:4는 정확한 2:1 비례를 나타내는 대표 단위 배치일 뿐 변수의 값을 고정하지 않는다.",
+      "mappedTo": ["A", "B", "C", "D", "sAB", "sBC", "sCD", "sDA", "lengthAB", "lengthBC"]
+    },
+    {
+      "id": "semicircle",
+      "condition": "AB를 지름으로 하고 O를 중심으로 오른쪽 반평면에 그린 반원의 호이다. O는 AB의 중점이고 반지름은 BC와 길이가 같다.",
+      "mappedTo": ["A", "B", "O", "semi", "arcAB", "sAB", "sBC"]
+    },
+    {
+      "id": "rightTriangle",
+      "condition": "직각삼각형 ABC의 빗변 AC와 B의 직각을 표시하되 원본의 면 내부는 칠하지 않는다.",
+      "mappedTo": ["sAB", "sBC", "sAC", "rightABC"]
+    }
+  ],
+  "newVisualInformation": [
+    "현행 q13-problem-visual-v2.svg의 근거 없는 반원·삼각형 전체 면 채움을 없애고, 원본 PNG처럼 경계와 호만 그린다.",
+    "반원 O의 실제 오른쪽 호, 직사각형의 네 변, 삼각형 AC와 B의 직각을 그려지는 필드에 대응한다.",
+    "문제의 미지 V1·V2·최종 부피값은 표시하지 않는다."
+  ]
+}
