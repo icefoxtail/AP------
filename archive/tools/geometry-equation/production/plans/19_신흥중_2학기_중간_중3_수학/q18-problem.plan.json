@@ -1,0 +1,62 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 4
+      },
+      "height": 4,
+      "names": "ABCDEFGH"
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "F",
+      "style": "SOLID",
+      "role": "ACCENT"
+    },
+    {
+      "from": "F",
+      "to": "H",
+      "style": "SOLID",
+      "role": "ACCENT"
+    },
+    {
+      "from": "H",
+      "to": "A",
+      "style": "SOLID",
+      "role": "ACCENT"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AB",
+      "label": "4"
+    }
+  ],
+  "solidCaption": {
+    "text": "정육면체의 삼각형 단면"
+  },
+  "caption": "한 모서리 4cm인 정육면체 ABCDEFGH에서 삼각형 AFH를 세 개의 단면 선분으로 표시하고, E에서 그 평면까지의 높이를 묻는다. 채움 없이 모서리와 숨은 선을 구별한다.",
+  "accessibilityDescription": "한 모서리 4cm인 정육면체 ABCDEFGH에서 삼각형 AFH를 세 개의 단면 선분으로 표시하고, E에서 그 평면까지의 높이를 묻는다. 채움 없이 모서리와 숨은 선을 구별한다.",
+  "sourceConditions": [
+    {
+      "id": "solid",
+      "condition": "한 모서리 4cm인 정육면체 ABCDEFGH에서 삼각형 AFH를 세 개의 단면 선분으로 표시하고, E에서 그 평면까지의 높이를 묻는다. 채움 없이 모서리와 숨은 선을 구별한다.",
+      "mappedTo": [
+        "solids",
+        "segments",
+        "dims"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 정규 입체 형상·길이 라벨·숨은 모서리와 보조선을 보존하고 불필요한 면 채움을 제거한다."
+  ],
+  "sourceQuote": "다음 그림과 같이 한 변의 길이가 $4\\,\\mathrm{cm}$인 정육면체를 잘랐을 때, 꼭짓점 $\\mathrm{E}$에서 밑면 $\\triangle\\mathrm{AFH}$까지의 높이는? (5점)"
+}

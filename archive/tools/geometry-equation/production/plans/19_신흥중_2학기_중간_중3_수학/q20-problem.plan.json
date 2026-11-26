@@ -1,0 +1,74 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 12,
+      "names": "BCDA",
+      "points": [
+        {
+          "id": "E",
+          "at": {
+            "edge": "AC",
+            "t": "2/3"
+          }
+        },
+        {
+          "id": "F",
+          "at": {
+            "edge": "AD",
+            "t": "2/3"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "B",
+      "to": "E",
+      "style": "SOLID",
+      "role": "ACCENT"
+    },
+    {
+      "from": "B",
+      "to": "F",
+      "style": "SOLID",
+      "role": "ACCENT"
+    },
+    {
+      "from": "E",
+      "to": "F",
+      "style": "SOLID",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AB",
+      "label": "12"
+    }
+  ],
+  "solidCaption": {
+    "text": "2:1 내분점 두 개와 삼각형 BEF"
+  },
+  "caption": "한 모서리가 12cm인 정사면체 A-BCD에서 E는 AC의 A쪽 2:1, F는 AD의 A쪽 2:1 내분점이다. BE·BF·EF를 연결하되 면을 임의로 채우지 않는다.",
+  "accessibilityDescription": "한 모서리가 12cm인 정사면체 A-BCD에서 E는 AC의 A쪽 2:1, F는 AD의 A쪽 2:1 내분점이다. BE·BF·EF를 연결하되 면을 임의로 채우지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "solid",
+      "condition": "한 모서리가 12cm인 정사면체 A-BCD에서 E는 AC의 A쪽 2:1, F는 AD의 A쪽 2:1 내분점이다. BE·BF·EF를 연결하되 면을 임의로 채우지 않는다.",
+      "mappedTo": [
+        "solids",
+        "segments",
+        "dims"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 밝은 파란 사면체 면·오렌지색 BEF 채움을 제거하고 2:1 내분을 정확한 3D 보조점으로 구현한다. 원본의 숨은 모서리는 깊이 점선으로 처리한다."
+  ],
+  "sourceQuote": "다음 그림은 한 모서리의 길이가 $12\\,\\mathrm{cm}$인 정사면체이다. 점 $\\mathrm{E, F}$는 각각 $\\overline{\\mathrm{AC}}, \\overline{\\mathrm{AD}}$를 점 $\\mathrm{A}$로부터 $2:1$로 내분하는 점일 때, $\\triangle\\mathrm{BEF}$의 넓이를 구하면? (4점"
+}

@@ -1,0 +1,81 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 8,
+      "side": 6,
+      "names": "BCDEAF",
+      "points": [
+        {
+          "id": "O",
+          "at": {
+            "midpoint": [
+              "A",
+              "F"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AB",
+      "label": "6"
+    }
+  ],
+  "solidCaption": {
+    "text": "한 모서리 6cm 정팔면체"
+  },
+  "segments": [
+    {
+      "from": "A",
+      "to": "O",
+      "style": "DASHED",
+      "role": "ACCENT"
+    },
+    {
+      "from": "O",
+      "to": "F",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "O",
+      "to": "B",
+      "style": "DASHED",
+      "role": "REF"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "O",
+        "refs": [
+          "A",
+          "B"
+        ]
+      }
+    ]
+  },
+  "caption": "정팔면체를 공통 정사각형 고리를 밑면으로 하는 두 정사각뿔로 나누고, 꼭짓점 A·F의 중점 O를 높이의 발로 작도한다. AO⊥OB 직각과 점선 높이를 그린다.",
+  "accessibilityDescription": "정팔면체를 공통 정사각형 고리를 밑면으로 하는 두 정사각뿔로 나누고, 꼭짓점 A·F의 중점 O를 높이의 발로 작도한다. AO⊥OB 직각과 점선 높이를 그린다.",
+  "sourceConditions": [
+    {
+      "id": "solid",
+      "condition": "정팔면체를 공통 정사각형 고리를 밑면으로 하는 두 정사각뿔로 나누고, 꼭짓점 A·F의 중점 O를 높이의 발로 작도한다. AO⊥OB 직각과 점선 높이를 그린다.",
+      "mappedTo": [
+        "solids",
+        "segments",
+        "dims",
+        "marks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "해설의 두 정사각뿔 면색을 제거하는 동시에 실제 중앙점 O, 수직 높이 AO·OF, 중앙 모서리 OB와 직각 표식을 복구한다."
+  ],
+  "sourceQuote": "정팔면체를 가운데 정사각형 밑면을 공유하는 두 정사각뿔로 나눈다. 밑면 넓이는 $6^2=36$. 정사각뿔의 높이 $h$는 정사각형 중심에서 꼭짓점까지의 거리 $3\\sqrt2$와 모서리 $6$을 이용해 $h^2=6^2-(3\\sqrt2)^2=18$, 즉 $h=3\\sqrt2$. 전체 부피는 $2\\cdot\\frac13\\cdot36\\cdot3\\sq"
+}

@@ -1,0 +1,246 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1732050808",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1732050808",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "666666667",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "577350269",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "P"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sEP",
+      "refs": [
+        "E",
+        "P"
+      ],
+      "emphasis": "ACCENT"
+    },
+    {
+      "id": "sPD",
+      "refs": [
+        "P",
+        "D"
+      ],
+      "emphasis": "ACCENT"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rAEC",
+      "refs": [
+        "A",
+        "E",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "2",
+        "side": "LEFT",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 610,
+    "height": 470
+  },
+  "caption": "두 정삼각형 ABC와 ACD를 공통 접는 선 AC에서 펼쳤다. E는 BC의 중점, AE⊥BC이며 최단 선분 ED와 AC의 교점 P에서 EP+PD가 직선이 된다.",
+  "accessibilityDescription": "두 정삼각형 ABC와 ACD를 공통 접는 선 AC에서 펼쳤다. E는 BC의 중점, AE⊥BC이며 최단 선분 ED와 AC의 교점 P에서 EP+PD가 직선이 된다.",
+  "sourceConditions": [
+    {
+      "id": "visual",
+      "condition": "두 정삼각형 ABC와 ACD를 공통 접는 선 AC에서 펼쳤다. E는 BC의 중점, AE⊥BC이며 최단 선분 ED와 AC의 교점 P에서 EP+PD가 직선이 된다.",
+      "mappedTo": [
+        "displaySegments",
+        "displayPoints",
+        "rightAngles",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "평면 전개도는 실제 정삼각형 두 장을 변 AC에서 맞대고 E-P-D 최단 직선·E 직각을 그린다. 3D 입체 그림을 부정확한 2D 축단면으로 대체하지 않는다."
+  ],
+  "sourceQuote": "정사면체의 각 면은 한 변이 $2$인 정삼각형이다. $E$는 정삼각형 $ABC$에서 $A$에서 $BC$에 내린 수선의 발이므로 $BC$의 중점이다. 두 면 $ABC, ACD$를 공통 변 $AC$를 따라 펼치면 $E$와 $D$는 $AC$의 서로 반대쪽에 놓이고, 꺾인 선 $EPD$의 최솟값은 전개도에서 두 점을 잇는 직선 길이이다. $AC$"
+}

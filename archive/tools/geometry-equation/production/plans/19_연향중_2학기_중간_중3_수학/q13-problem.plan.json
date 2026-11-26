@@ -1,0 +1,353 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "14"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "14"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "14"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "E",
+    "H",
+    "G",
+    "F",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "sHD",
+      "refs": [
+        "H",
+        "D"
+      ]
+    },
+    {
+      "id": "sDG",
+      "refs": [
+        "D",
+        "G"
+      ]
+    },
+    {
+      "id": "sGC",
+      "refs": [
+        "G",
+        "C"
+      ]
+    },
+    {
+      "id": "sCF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "sFB",
+      "refs": [
+        "F",
+        "B"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rEHG",
+      "refs": [
+        "E",
+        "H",
+        "G"
+      ]
+    },
+    {
+      "id": "rHGF",
+      "refs": [
+        "H",
+        "G",
+        "F"
+      ]
+    },
+    {
+      "id": "rGFE",
+      "refs": [
+        "G",
+        "F",
+        "E"
+      ]
+    },
+    {
+      "id": "rFEH",
+      "refs": [
+        "F",
+        "E",
+        "H"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "area",
+        "at": [
+          7,
+          7
+        ],
+        "text": "100 cm²",
+        "labelKind": "TEXT"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "sixSides",
+        "count": 1,
+        "segments": [
+          "sAH",
+          "sBE",
+          "sCF",
+          "sDG"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAH",
+        "from": "A",
+        "to": "H",
+        "label": "6",
+        "side": "ABOVE",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 610,
+    "height": 470
+  },
+  "caption": "바깥 정사각형 EFGH에 안쪽 정사각형 ABCD가 기울어 들어가 있고 AH=BE=CF=DG=6cm, 안쪽 넓이는 100cm²이다.",
+  "accessibilityDescription": "바깥 정사각형 EFGH에 안쪽 정사각형 ABCD가 기울어 들어가 있고 AH=BE=CF=DG=6cm, 안쪽 넓이는 100cm²이다.",
+  "sourceConditions": [
+    {
+      "id": "visual",
+      "condition": "바깥 정사각형 EFGH에 안쪽 정사각형 ABCD가 기울어 들어가 있고 AH=BE=CF=DG=6cm, 안쪽 넓이는 100cm²이다.",
+      "mappedTo": [
+        "displaySegments",
+        "displayPoints",
+        "rightAngles",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "외부 네 모서리의 6cm 같은 길이 눈금과 내부 넓이 100cm²를 복원하고 사각형 및 네 꼭짓점 삼각형의 장식성 면 채움을 제거했다."
+  ],
+  "sourceQuote": "다음 그림에서 $\\square\\mathrm{EFGH}$는 정사각형이고, $\\overline{\\mathrm{AH}}=\\overline{\\mathrm{BE}}=\\overline{\\mathrm{CF}}=\\overline{\\mathrm{DG}}=6\\,\\mathrm{cm}$이다. $\\square\\mathrm{ABCD}$의 넓이가 $100\\,\\mat"
+}

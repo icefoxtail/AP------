@@ -1,0 +1,78 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 12,
+        "depth": 12
+      },
+      "height": 7,
+      "names": "ABCDEFGH"
+    }
+  ],
+  "space": {
+    "points": [
+      {
+        "id": "M",
+        "at": {
+          "midpoint": [
+            "F",
+            "B"
+          ]
+        },
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "segments": [
+      {
+        "from": "E",
+        "to": "M",
+        "style": "SOLID",
+        "role": "ACCENT"
+      },
+      {
+        "from": "M",
+        "to": "C",
+        "style": "SOLID",
+        "role": "ACCENT"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "edge": "AB",
+      "label": "12"
+    },
+    {
+      "edge": "BC",
+      "label": "12"
+    },
+    {
+      "edge": "CG",
+      "label": "7"
+    }
+  ],
+  "solidCaption": {
+    "text": "겉면 두 면을 지나는 한 줄의 최단 경로"
+  },
+  "caption": "밑면 가로·깊이가 각각 12cm, 높이가 7cm인 직육면체 ABCDEFGH의 겉면을 따라 E에서 출발해 FB 모서리의 이름 없는 중점을 지나 C에 도착하는 최단 경로를 두 선분으로 그린다.",
+  "accessibilityDescription": "밑면 가로·깊이가 각각 12cm, 높이가 7cm인 직육면체 ABCDEFGH의 겉면을 따라 E에서 출발해 FB 모서리의 이름 없는 중점을 지나 C에 도착하는 최단 경로를 두 선분으로 그린다.",
+  "sourceConditions": [
+    {
+      "id": "solid",
+      "condition": "밑면 가로·깊이가 각각 12cm, 높이가 7cm인 직육면체 ABCDEFGH의 겉면을 따라 E에서 출발해 FB 모서리의 이름 없는 중점을 지나 C에 도착하는 최단 경로를 두 선분으로 그린다.",
+      "mappedTo": [
+        "solids",
+        "dims"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 밑변 12cm 두 개, 높이 7cm, 숨은 입체 모서리를 3D 실측으로 재구성하고, 이름 없는 FB 위 경유점을 감춘 채 E→FB→C 줄의 경로를 실제 표면 선분으로 보여 준다. 면 채움은 제거한다."
+  ],
+  "sourceQuote": "[서술형 3] 다음 그림은 직육면체의 표면에 줄을 이은 모양이다. 점 $\\mathrm{E}$에서 출발하여 $\\overline{\\mathrm{FB}}$를 지나 점 $\\mathrm{C}$에 이르는 최단 거리를 구하여라. (풀이 과정을 쓰시오.) (5점)"
+}

@@ -1,0 +1,278 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2400000000",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "A",
+    "D",
+    "C",
+    "G",
+    "H",
+    "M"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sBA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sCG",
+      "refs": [
+        "C",
+        "G"
+      ]
+    },
+    {
+      "id": "sGH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "sHD",
+      "refs": [
+        "H",
+        "D"
+      ]
+    },
+    {
+      "id": "sBM",
+      "refs": [
+        "B",
+        "M"
+      ],
+      "emphasis": "ACCENT"
+    },
+    {
+      "id": "sMH",
+      "refs": [
+        "M",
+        "H"
+      ],
+      "emphasis": "ACCENT"
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dBA",
+        "from": "B",
+        "to": "A",
+        "label": "4",
+        "side": "ABOVE",
+        "unit": "cm"
+      },
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "3",
+        "side": "LEFT",
+        "unit": "cm"
+      },
+      {
+        "id": "dCG",
+        "from": "C",
+        "to": "G",
+        "label": "2",
+        "side": "LEFT",
+        "unit": "cm"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "M"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 610,
+    "height": 470
+  },
+  "caption": "직육면체의 윗면(4×3)과 옆면(4×2)을 CD를 경계로 펼쳐 4×5cm 직사각형 전개도를 만들었다. B에서 H로 곧게 이은 선은 CD를 지난다.",
+  "accessibilityDescription": "직육면체의 윗면(4×3)과 옆면(4×2)을 CD를 경계로 펼쳐 4×5cm 직사각형 전개도를 만들었다. B에서 H로 곧게 이은 선은 CD를 지난다.",
+  "sourceConditions": [
+    {
+      "id": "visual",
+      "condition": "직육면체의 윗면(4×3)과 옆면(4×2)을 CD를 경계로 펼쳐 4×5cm 직사각형 전개도를 만들었다. B에서 H로 곧게 이은 선은 CD를 지난다.",
+      "mappedTo": [
+        "displaySegments",
+        "displayPoints",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "겉면 전개도의 두 면 파랑·초록 채움을 제거하고 공통 접는 선 CD의 점선과 최단 경로 직선·4·3·2cm 치수선을 유지한다."
+  ],
+  "sourceQuote": "모서리 $CD$를 경계로 윗면과 $CDHG$ 면을 한 평면에 펼친다. 윗면에서 $B$와 모서리 $CD$ 사이의 수직 거리는 $BC=AD=3$cm이다. 인접한 옆면에서 $H$와 $CD$ 사이의 수직 거리는 $DH=BF=2$cm이다. 따라서 전개도에서 이 두 수직 거리는 서로 반대쪽에 놓여 합이 $3+2=5$cm가 된다. $B$에서 모서리 $"
+}

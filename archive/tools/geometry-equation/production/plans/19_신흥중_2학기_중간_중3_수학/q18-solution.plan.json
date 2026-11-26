@@ -1,0 +1,101 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 4
+      },
+      "height": 4,
+      "names": "ABCDEFGH",
+      "points": [
+        {
+          "id": "J",
+          "at": {
+            "projection": {
+              "from": "E",
+              "plane": [
+                "A",
+                "F",
+                "H"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "F",
+      "style": "SOLID",
+      "role": "ACCENT"
+    },
+    {
+      "from": "F",
+      "to": "H",
+      "style": "SOLID",
+      "role": "ACCENT"
+    },
+    {
+      "from": "H",
+      "to": "A",
+      "style": "SOLID",
+      "role": "ACCENT"
+    },
+    {
+      "from": "E",
+      "to": "J",
+      "style": "SOLID",
+      "role": "ACCENT"
+    },
+    {
+      "from": "F",
+      "to": "J",
+      "style": "DASHED",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AB",
+      "label": "4"
+    }
+  ],
+  "solidCaption": {
+    "text": "정육면체의 삼각형 단면"
+  },
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "J",
+        "refs": [
+          "E",
+          "F"
+        ]
+      }
+    ]
+  },
+  "caption": "정육면체의 삼각형 AFH 평면에 E의 수선의 발 J를 작도하고 EJ⊥AFH를 표시한다. 4cm 모서리, 숨은 모서리와 선분은 유지한다.",
+  "accessibilityDescription": "정육면체의 삼각형 AFH 평면에 E의 수선의 발 J를 작도하고 EJ⊥AFH를 표시한다. 4cm 모서리, 숨은 모서리와 선분은 유지한다.",
+  "sourceConditions": [
+    {
+      "id": "solid",
+      "condition": "정육면체의 삼각형 AFH 평면에 E의 수선의 발 J를 작도하고 EJ⊥AFH를 표시한다. 4cm 모서리, 숨은 모서리와 선분은 유지한다.",
+      "mappedTo": [
+        "solids",
+        "segments",
+        "dims",
+        "marks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 정규 입체 형상·길이 라벨·숨은 모서리와 보조선을 보존하고 불필요한 면 채움을 제거한다."
+  ],
+  "sourceQuote": "정육면체의 모서리이므로 $EA=EH=EF=4$이고 $EA\\perp EH$이다. 또 $EF$는 $EA, EH$에 모두 수직이므로 평면 $EAH$에 수직이다. 따라서 사면체 $EAFH$의 부피는 $\\frac13\\cdot[EAH]\\cdot EF=\\frac13\\cdot(\\frac12\\cdot4\\cdot4)\\cdot4=\\frac{32}{3}$이다."
+}

@@ -1,0 +1,182 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9797958971",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "E",
+    "F",
+    "M"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFB",
+      "refs": [
+        "F",
+        "B"
+      ]
+    },
+    {
+      "id": "sBM",
+      "refs": [
+        "B",
+        "M"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rBME",
+      "refs": [
+        "B",
+        "M",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dEF",
+        "from": "E",
+        "to": "F",
+        "label": "8",
+        "side": "BELOW",
+        "unit": "cm"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "beeqbf",
+        "count": 1,
+        "segments": [
+          "sBE",
+          "sFB"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 610,
+    "height": 470
+  },
+  "caption": "삼각형 BEF는 BE=BF=4√7cm인 이등변삼각형이고 EF=8cm이다. 꼭짓점 B에서 EF 중점 M까지 수선을 내려 BM=4√6cm를 구하는 해설 구조다.",
+  "accessibilityDescription": "삼각형 BEF는 BE=BF=4√7cm인 이등변삼각형이고 EF=8cm이다. 꼭짓점 B에서 EF 중점 M까지 수선을 내려 BM=4√6cm를 구하는 해설 구조다.",
+  "sourceConditions": [
+    {
+      "id": "visual",
+      "condition": "삼각형 BEF는 BE=BF=4√7cm인 이등변삼각형이고 EF=8cm이다. 꼭짓점 B에서 EF 중점 M까지 수선을 내려 BM=4√6cm를 구하는 해설 구조다.",
+      "mappedTo": [
+        "displaySegments",
+        "displayPoints",
+        "rightAngles",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "해설의 이등변삼각형 전체 채움을 제거하고 BE=BF 눈금, EF=8 길이선, BM 점선 수선과 직각을 선·표식으로 복원했다."
+  ],
+  "sourceQuote": "$AE=AF=12\\cdot2/3=8$. 정삼각형 면에서 $B$에서 $AC$에 내린 수선의 발은 $AC$의 중점이므로, 밑변의 반은 $6$이고 높이는 $6\\sqrt3$이다. $E$는 $A$에서 $8$ 떨어져 있으므로 발에서 $E$까지는 $2$이고 $BE^2=(6\\sqrt3)^2+2^2=112$, 즉 $BE=4\\sqrt7$. 같은 방식으로 $"
+}

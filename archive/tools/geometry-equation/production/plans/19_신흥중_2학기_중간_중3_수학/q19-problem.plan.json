@@ -1,0 +1,94 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 2,
+      "names": "BCDA",
+      "points": [
+        {
+          "id": "E",
+          "at": {
+            "midpoint": [
+              "B",
+              "C"
+            ]
+          }
+        },
+        {
+          "id": "P",
+          "at": {
+            "edge": "AC",
+            "t": "1/2"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "E",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "E",
+      "to": "B",
+      "style": "SOLID",
+      "role": "REF"
+    },
+    {
+      "from": "E",
+      "to": "P",
+      "style": "SOLID",
+      "role": "ACCENT"
+    },
+    {
+      "from": "P",
+      "to": "D",
+      "style": "SOLID",
+      "role": "ACCENT"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "E",
+        "refs": [
+          "A",
+          "B"
+        ]
+      }
+    ]
+  },
+  "dims": [
+    {
+      "edge": "AB",
+      "label": "2"
+    }
+  ],
+  "solidCaption": {
+    "text": "정사면체의 두 면을 지나는 경로"
+  },
+  "caption": "모서리 2cm 정사면체 A-BCD에서 E는 BC의 중점이자 AE의 수선 발이고, P는 AC의 임의의 점이다. 최단 경로 EP+PD의 두 선분을 구별한다.",
+  "accessibilityDescription": "모서리 2cm 정사면체 A-BCD에서 E는 BC의 중점이자 AE의 수선 발이고, P는 AC의 임의의 점이다. 최단 경로 EP+PD의 두 선분을 구별한다.",
+  "sourceConditions": [
+    {
+      "id": "solid",
+      "condition": "모서리 2cm 정사면체 A-BCD에서 E는 BC의 중점이자 AE의 수선 발이고, P는 AC의 임의의 점이다. 최단 경로 EP+PD의 두 선분을 구별한다.",
+      "mappedTo": [
+        "solids",
+        "segments",
+        "dims",
+        "marks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 정사면체의 E 중점, P의 AC 위 위치, E-P-D 경로를 솔리드 엔진 보조점과 선분으로 모델링한다. 원본에서 요구하지 않는 입체 면 회색·파랑 채움은 제거한다."
+  ],
+  "sourceQuote": "다음 그림과 같이 한 모서리의 길이가 $2\\,\\mathrm{cm}$인 정사면체 $\\mathrm{A-BCD}$가 있다. 꼭짓점 $\\mathrm{A}$에서 $\\overline{\\mathrm{BC}}$에 그은 수선을 $\\overline{\\mathrm{AE}}$라 하고, $\\overline{\\mathrm{AC}}$ 위에 점 $\\mathrm{P}$"
+}

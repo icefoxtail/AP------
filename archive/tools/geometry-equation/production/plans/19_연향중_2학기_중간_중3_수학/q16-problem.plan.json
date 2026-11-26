@@ -1,0 +1,239 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2196152423",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3803847577",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5196152423",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3803847577",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2196152423",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5196152423",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "A",
+    "D",
+    "C",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sBA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aABC",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aDCB",
+        "refs": [
+          "D",
+          "C",
+          "B"
+        ],
+        "value": 45,
+        "label": "45",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAD",
+        "from": "A",
+        "to": "D",
+        "label": "3",
+        "side": "ABOVE",
+        "unit": "cm"
+      },
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "9",
+        "side": "BELOW",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 610,
+    "height": 470
+  },
+  "caption": "AD∥BC인 사다리꼴 ABCD에서 AD=3cm, BC=9cm, ∠B=60°, ∠C=45°의 각 호와 치수선만 나타내고 내부 면은 채우지 않는다.",
+  "accessibilityDescription": "AD∥BC인 사다리꼴 ABCD에서 AD=3cm, BC=9cm, ∠B=60°, ∠C=45°의 각 호와 치수선만 나타내고 내부 면은 채우지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "visual",
+      "condition": "AD∥BC인 사다리꼴 ABCD에서 AD=3cm, BC=9cm, ∠B=60°, ∠C=45°의 각 호와 치수선만 나타내고 내부 면은 채우지 않는다.",
+      "mappedTo": [
+        "displaySegments",
+        "displayPoints",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "사다리꼴의 불필요한 파란 내부 면 채움을 제거하고 원본의 60°·45° 각 호, AD=3cm·BC=9cm 치수선을 보존했다."
+  ],
+  "sourceQuote": "다음 그림과 같이 $\\overline{\\mathrm{AD}} // \\overline{\\mathrm{BC}}$인 사다리꼴 $\\mathrm{ABCD}$에서 $\\angle\\mathrm{B}=60^\\circ$, $\\angle\\mathrm{C}=45^\\circ$이고 $\\overline{\\mathrm{AD}}=3\\,\\mathrm{cm}$, $\\ove"
+}
