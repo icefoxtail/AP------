@@ -1,0 +1,16 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"}
+  ]},
+  "axisTickValues":{"x":[],"y":[]},"displayLines":[],"displayCircles":[],"displayPoints":["A","B","C"],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sAC","refs":["A","C"]}],
+  "rightAngles":[{"id":"rB","refs":["A","B","C"]}],
+  "planeMarks":{"angles":[{"id":"aA","refs":["B","A","C"],"arcs":1,"noLabel":true,"factRole":"GIVEN"}],"expressionLabels":[{"id":"tAB","ownerSegment":"sAB","text":"3","factRole":"GIVEN"},{"id":"tBC","ownerSegment":"sBC","text":"2","factRole":"GIVEN"},{"id":"tAC","ownerSegment":"sAC","text":"sqrt(13)","factRole":"DERIVED_INTERMEDIATE"}]},
+  "coordinateCanvas":{"width":600,"height":420},"caption":"직각삼각형 ABC의 두 직각변 3과 2, 직각 표식 및 피타고라스로 구한 빗변 √13을 표시한다.",
+  "sourceQuote":"∠B=90°, AB=3, BC=2인 직각삼각형 ABC에서 ∠A의 삼각비",
+  "sourceConditions":[{"id":"c1","condition":"AB=3, BC=2, ∠B=90°","mappedTo":["sAB","sBC","tAB","tBC","rB"]},{"id":"c2","condition":"AC=√13","mappedTo":["sAC","tAC"]}],
+  "newVisualInformation":["기존 v2의 과도한 치수 화살표를 정리하고 원본의 각 A 호·직각·세 변의 수치만 남겨 무채움 도형으로 보인다."]
+}

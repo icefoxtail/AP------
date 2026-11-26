@@ -1,0 +1,8 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "graphPlan":{"family":"multi-curve","viewport":[-6,3,-2,7],"curves":[{"id":"f","kind":"Y_OF_X","coefficients":["3","-2","-1/2"],"domain":["-6","2"],"hideLabel":true}],"axisTickValues":{"x":[],"y":[]},"overlays":{"points":[{"id":"A","x":"-2","y":"5","coordinates":true},{"id":"B","x":"0","y":"3","coordinates":true},{"id":"O","x":"0","y":"0"}],"polygons":[{"id":"triangle","points":["A","B","O"],"fill":"NONE"}],"guides":[{"id":"altitude","from":"A","axis":"y"}]}},
+  "pointNames":{"A":"A","B":"B","O":"O"},"caption":"포물선의 꼭짓점 A(-2,5), y절편 B(0,3) 및 원점 O의 삼각형 AOB를 색칠하지 않고 표시한다.",
+  "sourceQuote":"y=-1/2x²-2x+3의 꼭짓점 A와 y축 교점 B로 만든 삼각형 AOB의 넓이",
+  "sourceConditions":[{"id":"c1","condition":"y=-1/2x²-2x+3","mappedTo":["f"]},{"id":"c2","condition":"A=(-2,5), B=(0,3), O=(0,0)","mappedTo":["A","B","O"]},{"id":"c3","condition":"삼각형 AOB의 밑변 OB=3, 높이 2","mappedTo":["triangle","altitude"]}],
+  "newVisualInformation":["기존 v2의 의미 없는 회색 삼각형 채움을 없애고, 원본 그래프의 꼭짓점·절편·삼각형 경계와 높이 점선을 표시한다."]
+}

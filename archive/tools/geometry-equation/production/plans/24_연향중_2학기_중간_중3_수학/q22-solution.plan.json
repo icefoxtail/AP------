@@ -1,0 +1,18 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"rational","numerator":"5196152","denominator":"1000000"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"1615385","denominator":"1000000"},{"kind":"rational","numerator":"3064398","denominator":"1000000"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "axisTickValues":{"x":[],"y":[]},"displayLines":[],"displayCircles":[],"displayPoints":["A","B","C","D","H"],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sAD","refs":["A","D"]},{"id":"sDC","refs":["D","C"]},{"id":"sCB","refs":["C","B"]},{"id":"sDB","refs":["D","B"],"dashed":true},{"id":"sDH","refs":["D","H"],"dashed":true}],
+  "rightAngles":[{"id":"rH","refs":["D","H","B"]}],
+  "planeMarks":{"angles":[{"id":"aA","refs":["B","A","D"],"value":150,"label":"150","arcs":1,"factRole":"GIVEN"},{"id":"aC","refs":["B","C","D"],"value":60,"label":"60","arcs":1,"factRole":"GIVEN"}],"expressionLabels":[{"id":"tAB","ownerSegment":"sAB","text":"2sqrt(3)","unit":"cm","factRole":"GIVEN"},{"id":"tAD","ownerSegment":"sAD","text":"4","unit":"cm","factRole":"GIVEN"},{"id":"tDC","ownerSegment":"sDC","text":"6","unit":"cm","factRole":"GIVEN"},{"id":"tBC","ownerSegment":"sCB","text":"8","unit":"cm","factRole":"GIVEN"},{"id":"tDH","ownerSegment":"sDH","text":"3sqrt(3)","unit":"cm","factRole":"DERIVED_INTERMEDIATE"}],"regions":[{"id":"rTarget","fill":"LIGHT","factRole":"GIVEN","shapes":[{"polygon":["B","A","D","C"]}]}]},
+  "coordinateCanvas":{"width":690,"height":500},"caption":"사각형 ABCD를 대각선 BD로 나누고 C에서 주어진 각과 D에서 BC에 내린 수선 DH를 표시한다.",
+  "sourceQuote":"AB=2√3cm, AD=4cm, DC=6cm, BC=8cm, ∠BAD=150°, ∠BCD=60°인 사각형의 넓이",
+  "sourceConditions":[{"id":"c1","condition":"AB=2√3, AD=4, DC=6, BC=8","mappedTo":["tAB","tAD","tDC","tBC"]},{"id":"c2","condition":"∠BAD=150°, ∠BCD=60°","mappedTo":["aA","aC"]},{"id":"c3","condition":"대각선 BD로 두 삼각형의 넓이를 합하고, D에서 BC에 내린 높이는 3√3","mappedTo":["sDB","sDH","rH","tDH"]}],
+  "newVisualInformation":["기존 v2의 너무 작은 별도 삼각형 두 장 대신 원본 사각형 한 장에 대각선과 수선·길이·각 표시를 모두 배치한다. 원본에서 넓이를 구할 사각형 전체만 옅게 표시한다."]
+}

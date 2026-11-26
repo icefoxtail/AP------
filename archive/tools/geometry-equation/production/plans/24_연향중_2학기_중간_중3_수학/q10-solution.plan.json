@@ -1,0 +1,18 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"8485281","denominator":"1000000"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"4949747","denominator":"1000000"},{"kind":"rational","numerator":"4949747","denominator":"1000000"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"13435028","denominator":"1000000"},{"kind":"rational","numerator":"4949747","denominator":"1000000"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"4949747","denominator":"1000000"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "axisTickValues":{"x":[],"y":[]},"displayLines":[],"displayCircles":[],"displayPoints":["A","B","C","D","H"],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sDA","refs":["D","A"]},{"id":"sAH","refs":["A","H"],"dashed":true}],
+  "rightAngles":[{"id":"rH","refs":["A","H","C"]}],
+  "planeMarks":{"angles":[{"id":"aB","refs":["A","B","C"],"value":45,"label":"45","arcs":1,"factRole":"GIVEN"}],"expressionLabels":[{"id":"tAB","ownerSegment":"sAB","text":"7","factRole":"GIVEN"},{"id":"tAD","ownerSegment":"sDA","text":"6sqrt(2)","factRole":"GIVEN"},{"id":"tAH","ownerSegment":"sAH","text":"7sqrt(2)/2","factRole":"DERIVED_INTERMEDIATE"}]},
+  "coordinateCanvas":{"width":680,"height":460},"caption":"평행사변형 ABCD에 높이 AH를 점선으로 표시하고, 내부는 무채움으로 둔다.",
+  "sourceQuote":"AB=7, AD=6√2, 각 B=45°인 평행사변형 ABCD의 넓이",
+  "sourceConditions":[{"id":"c1","condition":"AB=7, AD=6√2, ∠B=45°","mappedTo":["sAB","sDA","aB","tAB","tAD"]},{"id":"c2","condition":"A에서 BC에 내린 높이 AH=7√2/2","mappedTo":["sAH","rH","tAH"]}],
+  "newVisualInformation":["기존 해설의 회색 삼각형 면 채움을 제거하고 평행사변형의 네 변과 점선 높이, 직각, 발문 길이 라벨을 보존한다."]
+}
