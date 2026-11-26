@@ -1,0 +1,125 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 2
+      },
+      "height": 2,
+      "names": "FGHEBCDA",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "edge": [
+              "A",
+              "D"
+            ],
+            "t": "1/2"
+          }
+        },
+        {
+          "id": "N",
+          "at": {
+            "edge": [
+              "F",
+              "G"
+            ],
+            "t": "1/2"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "M",
+      "to": "F",
+      "style": "SOLID"
+    },
+    {
+      "from": "M",
+      "to": "G",
+      "style": "SOLID"
+    },
+    {
+      "from": "M",
+      "to": "N",
+      "style": "DASHED"
+    },
+    {
+      "from": "N",
+      "to": "G"
+    },
+    {
+      "from": "A",
+      "to": "M"
+    },
+    {
+      "from": "M",
+      "to": "D"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "BF",
+      "label": "2"
+    },
+    {
+      "edge": "FG",
+      "label": "2"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "N",
+        "refs": [
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "equalLengths": [
+      {
+        "count": 1,
+        "segments": [
+          "AM",
+          "MD"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "refs": [
+          "F",
+          "M",
+          "G"
+        ],
+        "label": "x",
+        "arcs": 1
+      }
+    ]
+  },
+  "caption": "정육면체 모서리 2, AD의 중점 M. △FMG와 중선 MN을 강조한다.",
+  "sourceQuote": "한 모서리 2인 정육면체에서 AD의 중점 M, ∠FMG=x°.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=BF=FG=2, AM=MD, FM=GM, MN⊥FG",
+      "mappedTo": [
+        "BF",
+        "FG",
+        "M",
+        "N"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 A~H 꼭짓점과 M, 공간 선분 FM·MG 및 보조선 MN을 3D 숨은선과 함께 표시. 불필요한 파란 삼각형 면 채움 없음."
+  ]
+}

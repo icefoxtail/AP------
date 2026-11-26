@@ -1,0 +1,64 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 6,
+      "names": "BCDA",
+      "points": [
+        {
+          "id": "H",
+          "at": {
+            "base": "center"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "H",
+      "style": "DASHED"
+    },
+    {
+      "from": "B",
+      "to": "H",
+      "style": "DASHED"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AB",
+      "label": "6"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "H",
+        "refs": [
+          "A",
+          "B"
+        ]
+      }
+    ]
+  },
+  "caption": "한 모서리 6인 정사면체 ABCD의 밑면 BCD, 밑면 중심 H와 수직 높이 AH.",
+  "sourceQuote": "한 변의 길이가 6인 정사면체의 부피를 구한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=BC=CD=DA=6, H는 밑면 BCD의 중심, AH⊥BCD",
+      "mappedTo": [
+        "AB",
+        "H"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 삼각면 파란색 채움을 제거하고 숨은 모서리 점선, 무게중심 H, 높이 AH의 직각을 보존한다."
+  ]
+}
