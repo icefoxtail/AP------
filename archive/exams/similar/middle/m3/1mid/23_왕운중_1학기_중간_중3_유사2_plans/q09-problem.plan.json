@@ -1,0 +1,39 @@
+{
+  "capability": "number-line-figure-v1",
+  "caption": "수직선에서 A(3)를 출발해 가로 1칸, 세로 2칸인 직각삼각형의 빗변 길이를 오른쪽으로 옮긴 점 P",
+  "accessibilityDescription": "수직선의 점 A는 3에 있고, 가로 한 칸과 세로 두 칸으로 만든 직각삼각형의 빗변을 컴퍼스 호로 옮긴 점 P는 A의 오른쪽에 있다. P의 수는 적지 않았다.",
+  "numberLine": {
+    "axisVariable": false,
+    "constructions": [
+      {
+        "id": "cA",
+        "center": "A",
+        "radius": { "value": "sqrt(5)" },
+        "arc": { "side": "RIGHT" },
+        "hits": [{ "id": "P", "branch": "RIGHT" }],
+        "source": { "grid": true, "from": [3, 0], "to": [4, 2] }
+      }
+    ],
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          { "id": "A", "value": "3", "showValue": true },
+          { "id": "P", "value": "3+sqrt(5)", "showValue": false }
+        ]
+      }
+    ]
+  },
+  "sourceConditions": [
+    { "id": "A3", "condition": "점 A는 수직선의 3에 있다.", "mappedTo": "numberLine.rows[0].points[0].value" },
+    { "id": "base1", "condition": "직각삼각형 밑변의 길이는 1이다.", "mappedTo": "numberLine.constructions[0].source.from/to x차 1" },
+    { "id": "height2", "condition": "직각삼각형 높이는 2이다.", "mappedTo": "numberLine.constructions[0].source.to[1] 및 두 격자 행" },
+    { "id": "positive", "condition": "빗변의 길이만큼 양의 방향으로 점 P를 잡는다.", "mappedTo": "numberLine.constructions[0].arc.side=RIGHT 및 hits[0].branch=RIGHT" },
+    { "id": "unknown", "condition": "문제에서 구할 것은 P에 대응하는 수이다.", "mappedTo": "numberLine.rows[0].points[1].showValue=false" }
+  ],
+  "newVisualInformation": [
+    "길이를 한 칸으로 한 격자에서 가로 1칸·세로 2칸인 빗변을 실제 선분으로 그린다.",
+    "A(3)에서 오른쪽으로 빗변 길이를 옮기는 호와 P 표식은 그리되 P의 수는 숨긴다."
+  ]
+}
