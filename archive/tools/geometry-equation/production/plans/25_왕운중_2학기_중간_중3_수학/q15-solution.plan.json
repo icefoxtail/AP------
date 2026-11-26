@@ -1,0 +1,271 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "17",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "parent",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "17",
+            "denominator": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "M",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "sCM",
+      "refs": [
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "M90",
+      "refs": [
+        "C",
+        "M",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "midAB",
+        "count": 1,
+        "segments": [
+          "sAM",
+          "sMB"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "CM3",
+        "ownerSegment": "sCM",
+        "text": "3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "AM5",
+        "ownerSegment": "sAM",
+        "text": "5",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "radius17over3",
+        "ownerSegment": "sOA",
+        "text": "17/3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "upperArc",
+        "circle": "parent",
+        "center": "O",
+        "from": "B",
+        "to": "A",
+        "side": "CCW",
+        "highlight": false
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "AB10",
+        "from": "A",
+        "to": "B",
+        "label": "10",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "다음 그림과 같이 호 $AB$는 어떤 원의 일부분이다. $CM\\perp AB$, $AB=10\\,\\mathrm{cm}$, $CM=3\\,\\mathrm{cm}$일 때, 이 원의 넓이를 구하면? [4점]",
+  "accessibilityDescription": "호 AB에 놓인 C, AB=10, CM⊥AB=3, AM=BM=5, 원반지름17/3.",
+  "sourceQuote": "다음 그림과 같이 호 $AB$는 어떤 원의 일부분이다. $CM\\perp AB$, $AB=10\\,\\mathrm{cm}$, $CM=3\\,\\mathrm{cm}$일 때, 이 원의 넓이를 구하면? [4점]",
+  "sourceConditions": [
+    {
+      "id": "original",
+      "condition": "다음 그림과 같이 호 $AB$는 어떤 원의 일부분이다. $CM\\perp AB$, $AB=10\\,\\mathrm{cm}$, $CM=3\\,\\mathrm{cm}$일 때, 이 원의 넓이를 구하면? [4점]",
+      "mappedTo": [
+        "sAM",
+        "sMB",
+        "sCM",
+        "sOM",
+        "sOA",
+        "M90",
+        "midAB",
+        "CM3",
+        "AM5",
+        "radius17over3",
+        "upperArc",
+        "AB10"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 원호 조각을 전체 원으로 오인하지 않도록 위쪽 작은 호만, CM=3/AB=10/AM=5/수선 표기",
+    "원본에 필요한 지시선·점선·각호·직각·수치 및 점명만 생성하며 배경 흰색 직사각형과 불필요한 면 채움을 사용하지 않는다."
+  ]
+}

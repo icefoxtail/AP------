@@ -1,0 +1,298 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-800"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "900"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-500"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-595"
+            },
+            {
+              "kind": "integer",
+              "value": "-500"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "830"
+            },
+            {
+              "kind": "integer",
+              "value": "-500"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "H",
+    "A",
+    "B",
+    "L",
+    "R"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sLP",
+      "refs": [
+        "L",
+        "P"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sPR",
+      "refs": [
+        "P",
+        "R"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sPH",
+      "refs": [
+        "P",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "sHB",
+      "refs": [
+        "H",
+        "B"
+      ]
+    },
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "H90",
+      "refs": [
+        "P",
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "down40",
+        "refs": [
+          "L",
+          "P",
+          "A"
+        ],
+        "label": "40°",
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "value": 40
+      },
+      {
+        "id": "down31",
+        "refs": [
+          "B",
+          "P",
+          "R"
+        ],
+        "label": "31°",
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "value": 31
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "height500",
+        "from": "H",
+        "to": "P",
+        "label": "500",
+        "side": "RIGHT",
+        "style": "BAR",
+        "factRole": "GIVEN",
+        "unit": "m"
+      },
+      {
+        "id": "AH595",
+        "from": "A",
+        "to": "H",
+        "label": "595",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN",
+        "unit": "m"
+      },
+      {
+        "id": "HB830",
+        "from": "H",
+        "to": "B",
+        "label": "830",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN",
+        "unit": "m"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "L",
+    "R"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "[서술형 4] 다음 그림과 같이 산의 바로 위 상공 $500\\,\\mathrm{m}$ 높이에 떠 있는 비행기에서 산의 양 끝 두 지점 $A$, $B$를 내려다본 각의 크기는 각각 $40^\\circ$, $31^\\circ$이었다. 이때 두 지점 $A$, $B$ 사이의 거리를 구하고, 그 과정을 서술하시오. [총 6점] (단, $\\tan50^\\circ=1.19$, $\\tan59^\\circ=1.66$으로 계산한다.)",
+  "accessibilityDescription": "비행기 P에서 수평선에 대하여 좌측40°, 우측31° 아래를 관측, 수선 PH500, AH595, HB830, AB1425m.",
+  "sourceQuote": "[서술형 4] 다음 그림과 같이 산의 바로 위 상공 $500\\,\\mathrm{m}$ 높이에 떠 있는 비행기에서 산의 양 끝 두 지점 $A$, $B$를 내려다본 각의 크기는 각각 $40^\\circ$, $31^\\circ$이었다. 이때 두 지점 $A$, $B$ 사이의 거리를 구하고, 그 과정을 서술하시오. [총 6점] (단, $\\tan50^\\circ=1.19$, $\\tan59^\\circ=1.66$으로 계산한다.)",
+  "sourceConditions": [
+    {
+      "id": "original",
+      "condition": "[서술형 4] 다음 그림과 같이 산의 바로 위 상공 $500\\,\\mathrm{m}$ 높이에 떠 있는 비행기에서 산의 양 끝 두 지점 $A$, $B$를 내려다본 각의 크기는 각각 $40^\\circ$, $31^\\circ$이었다. 이때 두 지점 $A$, $B$ 사이의 거리를 구하고, 그 과정을 서술하시오. [총 6점] (단, $\\tan50^\\circ=1.19$, $\\tan59^\\circ=1.66$으로 계산한다.)",
+      "mappedTo": [
+        "sLP",
+        "sPR",
+        "sPH",
+        "sAH",
+        "sHB",
+        "sPA",
+        "sPB",
+        "H90",
+        "down40",
+        "down31",
+        "height500",
+        "AH595",
+        "HB830"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 산-비행기 그림의 양방향 내려다본 각, 수평 지시선, PH=500 및 AH595+HB830을 보강",
+    "원본에 필요한 지시선·점선·각호·직각·수치 및 점명만 생성하며 배경 흰색 직사각형과 불필요한 면 채움을 사용하지 않는다."
+  ]
+}

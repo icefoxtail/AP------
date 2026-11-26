@@ -1,0 +1,172 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "B90",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "label": "A",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "AB3",
+        "ownerSegment": "sAB",
+        "text": "3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BC4",
+        "ownerSegment": "sBC",
+        "text": "4",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "CA5",
+        "ownerSegment": "sCA",
+        "text": "5",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "[서술형 2] 다음 그림과 같이 $\\angle B=90^\\circ$인 직각삼각형 $ABC$에서 $\\cos A=\\dfrac{3}{5}$일 때, $\\sin A$, $\\tan A$를 구하고, 그 과정을 서술하시오. [총 5점]",
+  "accessibilityDescription": "∠B=90°, cosA3/5이므로 직각삼각형의 변 AB3 BC4 AC5, sinA4/5 tanA4/3.",
+  "sourceQuote": "[서술형 2] 다음 그림과 같이 $\\angle B=90^\\circ$인 직각삼각형 $ABC$에서 $\\cos A=\\dfrac{3}{5}$일 때, $\\sin A$, $\\tan A$를 구하고, 그 과정을 서술하시오. [총 5점]",
+  "sourceConditions": [
+    {
+      "id": "original",
+      "condition": "[서술형 2] 다음 그림과 같이 $\\angle B=90^\\circ$인 직각삼각형 $ABC$에서 $\\cos A=\\dfrac{3}{5}$일 때, $\\sin A$, $\\tan A$를 구하고, 그 과정을 서술하시오. [총 5점]",
+      "mappedTo": [
+        "sAB",
+        "sBC",
+        "sCA",
+        "B90",
+        "angA",
+        "AB3",
+        "BC4",
+        "CA5"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 직각만 있고 3:4:5 변 라벨이 전혀 없는 해설에 코사인 3/5에 대응하는 세 변 수치와 A 각호 추가",
+    "원본에 필요한 지시선·점선·각호·직각·수치 및 점명만 생성하며 배경 흰색 직사각형과 불필요한 면 채움을 사용하지 않는다."
+  ]
+}

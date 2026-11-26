@@ -1,0 +1,222 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-9",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "12",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-9",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-12",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "A",
+    "B"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "A90",
+      "refs": [
+        "O",
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "B90",
+      "refs": [
+        "O",
+        "B",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "radiusEq",
+        "count": 1,
+        "segments": [
+          "sOA",
+          "sOB"
+        ]
+      },
+      {
+        "id": "tangentEq",
+        "count": 2,
+        "segments": [
+          "sPA",
+          "sPB"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "다음은 원 밖의 한 점에서 그 원에 그은 두 접선의 길이가 같음을 설명하는 과정의 일부이다. 다음 빈칸에 들어갈 말로 알맞지 않은 것은? [4점]",
+  "accessibilityDescription": "원의 외부점 P에서 접선 PA와 PB, 직각 OAP와 OBP, OA=OB, OP 공통으로 RHS 합동.",
+  "sourceQuote": "다음은 원 밖의 한 점에서 그 원에 그은 두 접선의 길이가 같음을 설명하는 과정의 일부이다. 다음 빈칸에 들어갈 말로 알맞지 않은 것은? [4점]",
+  "sourceConditions": [
+    {
+      "id": "original",
+      "condition": "다음은 원 밖의 한 점에서 그 원에 그은 두 접선의 길이가 같음을 설명하는 과정의 일부이다. 다음 빈칸에 들어갈 말로 알맞지 않은 것은? [4점]",
+      "mappedTo": [
+        "sPA",
+        "sPB",
+        "sOA",
+        "sOB",
+        "sOP",
+        "A90",
+        "B90",
+        "radiusEq",
+        "tangentEq"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접선 합동 증명에서 빠진 반지름과 접선의 두 직각 및 PA=PB 등길이 눈금 추가",
+    "원본에 필요한 지시선·점선·각호·직각·수치 및 점명만 생성하며 배경 흰색 직사각형과 불필요한 면 채움을 사용하지 않는다."
+  ]
+}
