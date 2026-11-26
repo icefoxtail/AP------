@@ -1,0 +1,18 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"20"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"23660254","denominator":"1000000"},{"kind":"rational","numerator":"13660254","denominator":"1000000"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"lAB","op":"LINE_THROUGH","inputs":["A","B"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"H","op":"PERPENDICULAR_FOOT","inputs":["C","lAB"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "axisTickValues":{"x":[],"y":[]},"displayLines":[],"displayCircles":[],"displayPoints":["A","B","C","H"],
+  "displaySegments":[{"id":"sBH","refs":["B","H"]},{"id":"sHA","refs":["H","A"]},{"id":"sAC","refs":["A","C"]},{"id":"sCB","refs":["C","B"]},{"id":"sCH","refs":["C","H"],"dashed":true}],
+  "rightAngles":[{"id":"rH","refs":["A","H","C"]}],
+  "planeMarks":{"angles":[{"id":"aB","refs":["A","B","C"],"value":30,"label":"30","arcs":1,"factRole":"GIVEN"},{"id":"aC","refs":["B","C","A"],"value":105,"label":"105","arcs":1,"factRole":"GIVEN"},{"id":"aA","refs":["B","A","C"],"value":45,"label":"45","arcs":1,"factRole":"DERIVED_INTERMEDIATE"}],"dimensions":[{"id":"dBC","from":"B","to":"C","label":"20","side":"BELOW","style":"BRACE","factRole":"GIVEN"}],"expressionLabels":[{"id":"tCH","ownerSegment":"sCH","text":"10","factRole":"DERIVED_INTERMEDIATE"},{"id":"tAH","ownerSegment":"sHA","text":"10","factRole":"DERIVED_INTERMEDIATE"}]},
+  "coordinateCanvas":{"width":720,"height":520},"caption":"BC=20, ∠B=30°, ∠C=105°와 보조 높이 CH=10, ∠A=45°, CH⊥AB를 원본 각·길이 그대로 보인다.",
+  "sourceQuote":"삼각형 ABC에서 BC=20, ∠B=30°, ∠C=105°일 때 AC의 길이",
+  "sourceConditions":[{"id":"c1","condition":"BC=20, ∠B=30°, ∠C=105°","mappedTo":["dBC","aB","aC"]},{"id":"c2","condition":"C에서 AB에 내린 수선의 발 H, CH=10","mappedTo":["sCH","rH","tCH"]},{"id":"c3","condition":"∠A=45°, AH=CH=10, AC=10√2","mappedTo":["aA","sHA","tAH","sAC"]}],
+  "newVisualInformation":["기존 해설에서 삭제된 원본의 105° 각과 BC=20 전체 치수선을 복구하고 CH 수선·직각 및 풀이의 45°·10 길이를 분리한다."]
+}
