@@ -1,0 +1,228 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "XL",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "XR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "YB",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "YT",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "XL",
+    "XR",
+    "YB",
+    "YT",
+    "A",
+    "B"
+  ],
+  "hiddenPointNames": [
+    "XL",
+    "XR",
+    "YB",
+    "YT"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "xAxis",
+      "refs": [
+        "XL",
+        "XR"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "yAxis",
+      "refs": [
+        "YB",
+        "YT"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "givenLine",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "f",
+        "ownerSegment": "givenLine",
+        "text": "y=bx-a"
+      },
+      {
+        "id": "x",
+        "ownerSegment": "xAxis",
+        "text": "x"
+      },
+      {
+        "id": "y",
+        "ownerSegment": "yAxis",
+        "text": "y"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 530
+  },
+  "caption": "실선 그래프 y=bx−a가 오른쪽 아래로 기울고 y축의 양의 부분과 만난다는 원본의 부호 정보만 나타낸다. 수치는 주어지지 않았다.",
+  "accessibilityDescription": "가로축 x, 세로축 y와 오른쪽 아래로 내려가는 직선 y=bx−a가 있다. 직선은 y축 양의 방향과 만난다. 눈금이나 미지수의 수치는 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "signs",
+      "condition": "기울기가 음수이고 y절편이 양수인 실선 y=bx−a이다.",
+      "mappedTo": [
+        "givenLine",
+        "f",
+        "yAxis"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 PNG의 실선 직선을 복원하고 기존 문제 SVG의 근거 없는 주황 점선 및 범례를 제거한다.",
+    "정답 사분면이나 ab의 부호를 문제 그림에 미리 표시하지 않는다."
+  ],
+  "sourceQuote": "일차함수 $y=bx-a$의 그래프가 다음 그림과 같을 때"
+}
