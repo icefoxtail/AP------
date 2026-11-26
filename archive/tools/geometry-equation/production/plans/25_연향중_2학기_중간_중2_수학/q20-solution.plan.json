@@ -274,7 +274,8 @@
   ],
   "newVisualInformation": [
     "원본의 점 이름·연결선과 문제·해설별 표식의 엔진 작도. 바탕 사각형 및 불필요한 면 채움 없음.",
-    "20번 원본 에셋의 기입 길이·동일 표시·수선·평행 표식은 계획의 그려지는 필드별로 별도 확인함."
+    "20번 원본 에셋의 기입 길이·동일 표시·수선·평행 표식은 계획의 그려지는 필드별로 별도 확인함.",
+    "ENGINE_CAPABILITY_PENDING: DF=DC의 두 눈금은 D-F가 F-O, O-D로 분할되고 스캔 좌표에 길이 오차가 있어 강제 적용 불가. 필요 기능: EXACT_COMPOSITE_SEGMENT_LENGTH_SNAP_AND_MARK."
   ],
   "planeMarks": {
     "expressionLabels": [
@@ -312,6 +313,60 @@
           "s0",
           "s5"
         ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "source_aBEF",
+        "refs": [
+          "B",
+          "E",
+          "F"
+        ],
+        "value": 73.2158,
+        "style": "ARC",
+        "arcs": 1,
+        "noLabel": true,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "source_aEFB",
+        "refs": [
+          "E",
+          "F",
+          "B"
+        ],
+        "value": 73.2158,
+        "style": "ARC",
+        "arcs": 1,
+        "noLabel": true,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "source_aDFC",
+        "refs": [
+          "D",
+          "F",
+          "C"
+        ],
+        "value": 73.2151,
+        "style": "ARC",
+        "arcs": 1,
+        "noLabel": true,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "source_aDCF",
+        "refs": [
+          "D",
+          "C",
+          "F"
+        ],
+        "value": 73.2285,
+        "style": "ARC",
+        "arcs": 1,
+        "noLabel": true,
+        "factRole": "GIVEN"
       }
     ]
   }

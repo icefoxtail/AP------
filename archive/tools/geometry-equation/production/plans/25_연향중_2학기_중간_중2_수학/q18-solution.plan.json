@@ -292,7 +292,15 @@
         "id": "regionTrap",
         "fill": "LIGHT",
         "shapes": [
-          { "polygon": ["D", "B", "C", "E", "A"] }
+          {
+            "polygon": [
+              "D",
+              "B",
+              "C",
+              "E",
+              "A"
+            ]
+          }
         ]
       }
     ],
@@ -352,6 +360,70 @@
         ],
         "text": "사다리꼴 넓이 98cm²",
         "labelKind": "TEXT"
+      }
+    ],
+    "angles": [
+      {
+        "id": "source_aDAB",
+        "refs": [
+          "D",
+          "A",
+          "B"
+        ],
+        "value": 36.8765,
+        "style": "ARC",
+        "arcs": 1,
+        "noLabel": true,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "source_aECA",
+        "refs": [
+          "E",
+          "C",
+          "A"
+        ],
+        "value": 36.8788,
+        "style": "ARC",
+        "arcs": 1,
+        "noLabel": true,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "source_aDBA",
+        "refs": [
+          "D",
+          "B",
+          "A"
+        ],
+        "value": 53.1264,
+        "style": "ARC",
+        "arcs": 2,
+        "noLabel": true,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "source_aEAC",
+        "refs": [
+          "E",
+          "A",
+          "C"
+        ],
+        "value": 53.1212,
+        "style": "ARC",
+        "arcs": 2,
+        "noLabel": true,
+        "factRole": "GIVEN"
+      }
+    ],
+    "parallels": [
+      {
+        "id": "sourceParallelFeet",
+        "count": 1,
+        "segments": [
+          "s7",
+          "s8"
+        ]
       }
     ]
   }

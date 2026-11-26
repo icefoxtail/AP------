@@ -284,6 +284,32 @@
         "label": "65",
         "style": "ARC",
         "factRole": "GIVEN"
+      },
+      {
+        "id": "source_aEBO",
+        "refs": [
+          "E",
+          "B",
+          "O"
+        ],
+        "value": 24.9933,
+        "style": "ARC",
+        "arcs": 1,
+        "noLabel": true,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "source_aABO",
+        "refs": [
+          "A",
+          "B",
+          "O"
+        ],
+        "value": 45,
+        "style": "ARC",
+        "arcs": 1,
+        "noLabel": true,
+        "factRole": "GIVEN"
       }
     ],
     "expressionLabels": [
@@ -297,6 +323,16 @@
         "id": "label1",
         "ownerSegment": "s8",
         "text": "x"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "sourceSquareRadii",
+        "count": 1,
+        "segments": [
+          "s6",
+          "s8"
+        ]
       }
     ]
   },
