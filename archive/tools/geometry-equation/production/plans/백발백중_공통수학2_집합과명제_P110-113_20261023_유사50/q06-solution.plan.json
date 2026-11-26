@@ -1,0 +1,92 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "1",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "2",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "3",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "4",
+        "in": []
+      },
+      {
+        "text": "6",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "9",
+        "in": []
+      }
+    ],
+    "shade": "A^c∩B^c",
+    "universe": {
+      "name": "U"
+    }
+  },
+  "caption": "각 원소의 두 집합 소속과 연산할 영역을 비교한다.",
+  "accessibilityDescription": "A=[1, 2, 3], B=[2, 3, 6]의 벤다이어그램. 집합식 A^c∩B^c 영역이 음영 처리된다.",
+  "sourceConditions": [
+    {
+      "id": "A",
+      "condition": "A=[1, 2, 3]",
+      "mappedTo": [
+        "diagram.sets[0]",
+        "diagram.elements"
+      ]
+    },
+    {
+      "id": "B",
+      "condition": "B=[2, 3, 6]",
+      "mappedTo": [
+        "diagram.sets[1]",
+        "diagram.elements"
+      ]
+    },
+    {
+      "id": "U",
+      "condition": "U=[1, 2, 3, 4, 6, 9]",
+      "mappedTo": [
+        "diagram.universe",
+        "diagram.elements"
+      ]
+    },
+    {
+      "id": "operation",
+      "condition": "발문의 집합식 A^c∩B^c",
+      "mappedTo": [
+        "diagram.shade"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "공통 원소와 한 집합에만 속하는 원소를 분리하고 실제 집합식의 영역만 칠한다."
+  ]
+}

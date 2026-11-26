@@ -1,0 +1,92 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      },
+      {
+        "id": "C"
+      }
+    ],
+    "subset": [
+      "A",
+      "B",
+      "C"
+    ],
+    "showUniverse": false,
+    "elements": [
+      {
+        "text": "2",
+        "in": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      {
+        "text": "4",
+        "in": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      {
+        "text": "6",
+        "in": [
+          "B",
+          "C"
+        ]
+      },
+      {
+        "text": "7",
+        "in": [
+          "C"
+        ]
+      }
+    ]
+  },
+  "caption": "A⊆B⊆C의 각 포함 단계에서 미정 원소를 확정해 원 안의 원소를 대조한다.",
+  "accessibilityDescription": "세 집합 A, B, C가 차례로 포함되며 각 원에 실제 해설에서 확정된 원소가 배치된 벤다이어그램.",
+  "sourceConditions": [
+    {
+      "id": "set-A",
+      "condition": "풀이에서 확정된 A=['2', '4']",
+      "mappedTo": [
+        "diagram.sets",
+        "diagram.elements"
+      ]
+    },
+    {
+      "id": "set-B",
+      "condition": "풀이에서 확정된 B=['2', '4', '6']",
+      "mappedTo": [
+        "diagram.sets",
+        "diagram.elements"
+      ]
+    },
+    {
+      "id": "set-C",
+      "condition": "풀이에서 확정된 C=['2', '4', '6', '7']",
+      "mappedTo": [
+        "diagram.sets",
+        "diagram.elements"
+      ]
+    },
+    {
+      "id": "inclusion",
+      "condition": "A⊆B, B⊆C",
+      "mappedTo": [
+        "diagram.subset"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "각 집합의 확정 원소가 포함관계에 맞는 중첩 영역 안에 놓인다."
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "A",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "3",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "B",
+        "color": "WARM",
+        "pieces": [
+          {
+            "lo": {
+              "value": "2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "5",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "C",
+        "color": "GREEN",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "3",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "세 구간의 포함"
+  },
+  "caption": "A=[2,3]이 B=[a,5]·C=[0,b]에 포함되므로 a≤2, b≥3. 경계에서 M=2, m=3이다.",
+  "accessibilityDescription": "A는 2에서 3, B는 2에서 5, C는 0에서 3까지 닫힌 구간으로 표시하여 A의 포함관계를 보여 주는 수직선.",
+  "sourceConditions": [
+    {
+      "id": "set-A",
+      "condition": "A=[2,3]",
+      "mappedTo": [
+        "numberLine.rows[0].pieces"
+      ]
+    },
+    {
+      "id": "bound-a",
+      "condition": "A⊆B의 경계 a=2, B=[2,5]",
+      "mappedTo": [
+        "numberLine.rows[1].pieces"
+      ]
+    },
+    {
+      "id": "bound-b",
+      "condition": "A⊆C의 경계 b=3, C=[0,3]",
+      "mappedTo": [
+        "numberLine.rows[2].pieces"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "경계 a=2, b=3에서 A가 B와 C에 완전히 들어가는 것을 세 구간으로 표현한다."
+  ]
+}

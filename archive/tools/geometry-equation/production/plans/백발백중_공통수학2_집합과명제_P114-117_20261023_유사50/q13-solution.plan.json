@@ -1,0 +1,93 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "a",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "b",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "c",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "d",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "e",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "f",
+        "in": []
+      }
+    ],
+    "shade": "B^c",
+    "universe": {
+      "name": "U"
+    }
+  },
+  "caption": "B의 여집합에는 a, e, f가 모두 있으므로 보기의 누락 원소를 확인한다.",
+  "accessibilityDescription": "전체집합 a에서 f까지의 원소를 집합 A, B에 나누고 B 밖의 원소 a, e, f를 칠한 벤다이어그램.",
+  "sourceConditions": [
+    {
+      "id": "U",
+      "condition": "U={a,b,c,d,e,f}",
+      "mappedTo": [
+        "diagram.universe",
+        "diagram.elements"
+      ]
+    },
+    {
+      "id": "A",
+      "condition": "A={a,c,e}",
+      "mappedTo": [
+        "diagram.sets[0]",
+        "diagram.elements"
+      ]
+    },
+    {
+      "id": "B",
+      "condition": "B={b,c,d}",
+      "mappedTo": [
+        "diagram.sets[1]",
+        "diagram.elements"
+      ]
+    },
+    {
+      "id": "complement",
+      "condition": "B^c를 확인한다",
+      "mappedTo": [
+        "diagram.shade"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "B 밖에 있는 a, e, f를 실제 원소 위치와 색칠 영역에서 확인한다."
+  ]
+}
