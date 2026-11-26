@@ -1,0 +1,70 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [],
+  "caption": "문제용 원 O. 지름이 아닌 현과 수선, 두 반지름을 학생이 직접 그린다.",
+  "sourceConditions": [
+    {
+      "id": "q16",
+      "condition": "원본 q16.png는 중심 O가 찍힌 원만 주어지고 AB, M과 선분은 아직 그려지지 않았다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayCircles"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "발문이 요구하는 작도 결과를 문제 그림에 미리 그리지 않는다."
+  ]
+}
