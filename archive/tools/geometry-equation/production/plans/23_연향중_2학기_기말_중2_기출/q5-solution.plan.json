@@ -1,0 +1,227 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "sBH",
+      "refs": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "sHC",
+      "refs": [
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eSides",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sAC"
+        ]
+      },
+      {
+        "id": "eBase",
+        "count": 2,
+        "segments": [
+          "sBH",
+          "sHC"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "17",
+        "side": "LEFT"
+      },
+      {
+        "id": "dAC",
+        "from": "A",
+        "to": "C",
+        "label": "17",
+        "side": "RIGHT"
+      },
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "16",
+        "side": "BELOW"
+      },
+      {
+        "id": "dBH",
+        "from": "B",
+        "to": "H",
+        "label": "8",
+        "side": "BELOW",
+        "offset": "AUTO"
+      },
+      {
+        "id": "dHC",
+        "from": "H",
+        "to": "C",
+        "label": "8",
+        "side": "BELOW",
+        "offset": "AUTO"
+      },
+      {
+        "id": "dAH",
+        "from": "A",
+        "to": "H",
+        "label": "15",
+        "side": "LEFT",
+        "style": "INLINE"
+      }
+    ]
+  },
+  "caption": "변 17, 17, 16인 이등변삼각형에서 중점 H로 내린 높이 AH=15와 밑변 두 조각 8을 보여 준다.",
+  "accessibilityDescription": "변 17, 17, 16인 이등변삼각형에서 중점 H로 내린 높이 AH=15와 밑변 두 조각 8을 보여 준다.",
+  "sourceConditions": [
+    {
+      "id": "isosceles",
+      "condition": "AB=AC=17, BC=16이다.",
+      "mappedTo": "planeMarks.equalLengths:eSides; planeMarks.dimensions:dAB,dAC,dBC"
+    },
+    {
+      "id": "altitude",
+      "condition": "H는 BC의 중점이고 AH는 BC와 수직이다.",
+      "mappedTo": "mathPlan.nodes:H; displaySegments:sAH; planeMarks.equalLengths:eBase; planeMarks.dimensions:dBH,dHC,dAH"
+    }
+  ],
+  "newVisualInformation": [
+    "원본과 같은 흰 바탕에 피타고라스 정리를 위한 직각과 높이만 추가한다."
+  ],
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "A",
+        "H",
+        "C"
+      ]
+    }
+  ]
+}

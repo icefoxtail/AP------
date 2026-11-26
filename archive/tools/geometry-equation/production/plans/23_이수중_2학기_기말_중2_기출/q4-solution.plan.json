@@ -1,0 +1,315 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Dp",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "P",
+    "Dp"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sDP",
+      "refs": [
+        "D",
+        "P"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sPC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sADp",
+      "refs": [
+        "A",
+        "Dp"
+      ]
+    },
+    {
+      "id": "sDpP",
+      "refs": [
+        "Dp",
+        "P"
+      ]
+    },
+    {
+      "id": "sBDp",
+      "refs": [
+        "B",
+        "Dp"
+      ]
+    },
+    {
+      "id": "sDpC",
+      "refs": [
+        "Dp",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAD",
+        "from": "A",
+        "to": "D",
+        "label": "10",
+        "side": "ABOVE",
+        "unit": "cm"
+      },
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "8",
+        "side": "LEFT",
+        "unit": "cm"
+      },
+      {
+        "id": "dBDp",
+        "from": "B",
+        "to": "Dp",
+        "label": "6",
+        "side": "BELOW",
+        "unit": "cm",
+        "offset": "AUTO"
+      },
+      {
+        "id": "dDpC",
+        "from": "Dp",
+        "to": "C",
+        "label": "4",
+        "side": "BELOW",
+        "unit": "cm",
+        "offset": "AUTO"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "same10",
+        "count": 1,
+        "segments": [
+          "sAD",
+          "sADp"
+        ]
+      },
+      {
+        "id": "same5",
+        "count": 2,
+        "segments": [
+          "sDP",
+          "sDpP"
+        ]
+      }
+    ]
+  },
+  "caption": "접기를 통해 AD=AD′=10 cm이며 AB=8 cm이므로 BD′=6 cm, D′C=4 cm이다.",
+  "accessibilityDescription": "가로 10, 세로 8의 접은 직사각형. 점선 원래 모서리 AD·DP, 접는 선 AP와 겹치는 D′, 각 D′의 직각 표식 및 아래쪽 구간 6과 4가 나타난다. 내부는 흰색이다.",
+  "sourceConditions": [
+    {
+      "id": "rectangle",
+      "condition": "ABCD는 가로 10, 세로 8인 직사각형이며 AD와 DP는 접기 전 모서리이다.",
+      "mappedTo": "mathPlan.nodes:A,B,C,D,P; displaySegments:sAB,sBC,sAD,sDP,sPC; planeMarks.dimensions:dAD,dAB"
+    },
+    {
+      "id": "fold",
+      "condition": "접는 선 AP를 따라 D가 BC 위의 D'으로 옮겨진다.",
+      "mappedTo": "mathPlan.nodes:Dp; displaySegments:sAP,sADp,sDpP; rightAngles:rDp"
+    },
+    {
+      "id": "equality",
+      "condition": "접으면 AD=AD'이고 DP=D'P이다.",
+      "mappedTo": "planeMarks.equalLengths:same10,same5"
+    },
+    {
+      "id": "derived",
+      "condition": "직각삼각형 ABD'에서 BD'=6, 남은 D'C=4이다.",
+      "mappedTo": "planeMarks.dimensions:dBDp,dDpC"
+    }
+  ],
+  "newVisualInformation": [
+    "접힌 삼각형의 불필요한 녹색·푸른색 면 채움을 제거하고 실제로 대응하는 같은 길이 눈금과 6, 4 치수를 표기한다."
+  ],
+  "pointNames": {
+    "Dp": "D′"
+  },
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "rDp",
+      "refs": [
+        "A",
+        "Dp",
+        "P"
+      ]
+    }
+  ]
+}
