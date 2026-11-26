@@ -1,0 +1,57 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "caption": "1~50에서 A는 2의 배수 25개, B는 3의 배수 16개, 공배수는 8개이다. 합집합은 중복을 한 번 뺀다.",
+  "accessibilityDescription": "1~50에서 A는 2의 배수 25개, B는 3의 배수 16개, 공배수는 8개이다. 합집합은 중복을 한 번 뺀다.",
+  "sourceConditions": [
+    {
+      "id": "setA",
+      "condition": "n(A2)=25",
+      "mappedTo": "diagram.sets[0].count"
+    },
+    {
+      "id": "setB",
+      "condition": "n(A3)=16",
+      "mappedTo": "diagram.sets[1].count"
+    },
+    {
+      "id": "overlap",
+      "condition": "공배수=8개",
+      "mappedTo": "diagram.elements"
+    },
+    {
+      "id": "union",
+      "condition": "A∪B",
+      "mappedTo": "diagram.shade"
+    }
+  ],
+  "newVisualInformation": [
+    "겹치는 렌즈에 공배수의 수를 표시해 왜 두 집합 크기를 단순히 더하면 안 되는지 보여 준다."
+  ],
+  "diagram": {
+    "kind": "VENN",
+    "universe": {
+      "name": "U",
+      "count": "50"
+    },
+    "sets": [
+      {
+        "id": "A",
+        "count": "25"
+      },
+      {
+        "id": "B",
+        "count": "16"
+      }
+    ],
+    "elements": [
+      {
+        "text": "8개",
+        "in": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "shade": "A∪B"
+  }
+}

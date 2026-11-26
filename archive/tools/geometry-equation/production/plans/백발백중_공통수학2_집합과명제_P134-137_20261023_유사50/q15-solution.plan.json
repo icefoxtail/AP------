@@ -1,0 +1,41 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "caption": "A∪B=A이면 B⊆A, 따라서 B-A=∅이다. A=B도 가능한 조건이다.",
+  "accessibilityDescription": "A∪B=A이면 B⊆A, 따라서 B-A=∅이다. A=B도 가능한 조건이다.",
+  "sourceConditions": [
+    {
+      "id": "given",
+      "condition": "A∪B=A",
+      "mappedTo": [
+        "diagram.subset",
+        "diagram.shade"
+      ]
+    },
+    {
+      "id": "result",
+      "condition": "B-A=∅",
+      "mappedTo": [
+        "diagram.subset"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "B의 모든 점이 A 안에 있어 차집합 B-A가 남지 않는다."
+  ],
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "subset": [
+      "B",
+      "A"
+    ],
+    "shade": "A"
+  }
+}

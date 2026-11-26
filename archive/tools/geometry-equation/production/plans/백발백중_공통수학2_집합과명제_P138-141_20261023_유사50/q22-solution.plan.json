@@ -1,0 +1,214 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "중심 C(2,4), 반지름 4인 원을 두 수직인 지름이 네 등면적 부분으로 나눈다.",
+  "accessibilityDescription": "중심 C(2,4), 반지름 4인 원을 두 수직인 지름이 네 등면적 부분으로 나눈다.",
+  "sourceConditions": [
+    {
+      "id": "circle",
+      "condition": "중심 C(2,4), 반지름 4",
+      "mappedTo": [
+        "mathPlan.nodes[0].args.coordinates",
+        "mathPlan.nodes[1].args.radius"
+      ]
+    },
+    {
+      "id": "firstDiameter",
+      "condition": "직선 y=ax는 중심을 지난다",
+      "mappedTo": [
+        "mathPlan.nodes[2].args",
+        "displayLines"
+      ]
+    },
+    {
+      "id": "secondDiameter",
+      "condition": "직선 y=bx+c는 중심을 지나고 첫 직선과 수직이다",
+      "mappedTo": [
+        "mathPlan.nodes[3].args",
+        "rightAngles"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "같은 중심에서 두 지름이 수직으로 교차해야 네 영역의 중심각이 모두 90°이다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l1",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l2",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-10"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 520
+  },
+  "displayCircles": [
+    "c"
+  ],
+  "displayLines": [
+    "l1",
+    "l2"
+  ],
+  "displayPoints": [
+    "C",
+    "P",
+    "Q"
+  ],
+  "hiddenPointNames": [
+    "P",
+    "Q"
+  ],
+  "hiddenPointStyle": "NONE",
+  "rightAngles": [
+    {
+      "id": "raC",
+      "refs": [
+        "P",
+        "C",
+        "Q"
+      ]
+    }
+  ],
+  "coordinateLabels": [
+    "C"
+  ],
+  "sourceQuote": "두 직선 $y=ax$, $y=bx+c$가 원 $x^2+y^2-4x-8y+4=0$을 넓이가 같은 네 부분으로 나눌 때, $a-b+c$의 값은? (단, $a,b,c$는 상수이다.)"
+}
