@@ -1,0 +1,37 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"24","denominator":"5"},{"kind":"rational","numerator":"32","denominator":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "0" }]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{ "kind": "integer", "value": "21" }, { "kind": "integer", "value": "8" }]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{ "kind": "integer", "value": "15" }, { "kind": "integer", "value": "0" }]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"F","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{ "kind": "integer", "value": "25" }, { "kind": "integer", "value": "0" }]},"outputType":"POINT","factRole":"GIVEN"}
+    ]},
+  "displayPoints":["A","B","C","D","E","F"],
+  "displaySegments":[
+    {"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]},
+    {"id":"sDE","refs":["D","E"]},{"id":"sEF","refs":["E","F"]},{"id":"sFD","refs":["F","D"]}
+  ],
+  "planeMarks":{
+    "dimensions":[
+      {"id":"dAB","from":"A","to":"B","label":"8","unit":"cm","side":"LEFT","style":"BAR","value":"8","factRole":"GIVEN"},
+      {"id":"dDE","from":"D","to":"E","label":"10","unit":"cm","side":"LEFT","style":"BAR","value":"10","factRole":"GIVEN"}
+    ],
+    "regions":[
+      {"id":"rABC","fill":"LIGHT","shapes":[{"polygon":["A","B","C"]}],"factRole":"GIVEN"},
+      {"id":"rDEF","fill":"LIGHT","shapes":[{"polygon":["D","E","F"]}],"factRole":"GIVEN"}
+    ]
+  },
+  "coordinateCanvas":{"width":720,"height":430},
+  "caption":"원본처럼 닮은 두 삼각형 ABC와 DEF의 내부만 연하게 표시하고, 대응변 AB=8 cm와 DE=10 cm를 적는다.",
+  "accessibilityDescription":"왼쪽 삼각형 ABC와 오른쪽 삼각형 DEF가 닮음이고 각 삼각형 내부만 연하게 칠해져 있다. 대응변 AB=8 cm, DE=10 cm이며 바탕은 흰색이다.",
+  "sourceConditions":[
+    {"id":"similar","condition":"△ABC∼△DEF이며 좌표는 닮음비 4:5를 만족하는 대표 배치이다.","mappedTo":["A","B","C","D","E","F","sAB","sDE"]},
+    {"id":"lengths","condition":"AB=8 cm, DE=10 cm이다.","mappedTo":["dAB","dDE"]},
+    {"id":"regions","condition":"원본 이미지의 두 삼각형 내부 회색 음영만 필요하다.","mappedTo":["rABC","rDEF"]}
+  ],
+  "newVisualInformation":["원본 자산의 두 삼각형 내부 음영을 복원하되 바탕·도형 바깥은 칠하지 않는다.","문제 축에는 넓이의 정답을 노출하지 않는다."],
+  "sourceQuote":"다음 그림에서 $\\triangle ABC\\sim"
+}
