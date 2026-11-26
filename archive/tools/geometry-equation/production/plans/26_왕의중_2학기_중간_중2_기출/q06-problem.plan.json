@@ -1,0 +1,38 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "4" }, { "kind": "rational", "numerator": "123", "denominator": "10" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "O", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "5" }, { "kind": "rational", "numerator": "4243", "denominator": "820" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "lAO", "op": "LINE_THROUGH", "inputs": ["A", "O"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lBO", "op": "LINE_THROUGH", "inputs": ["B", "O"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lBC", "op": "LINE_THROUGH", "inputs": ["B", "C"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lAC", "op": "LINE_THROUGH", "inputs": ["A", "C"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "D", "op": "LINE_INTERSECTION", "inputs": ["lAO", "lBC"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "E", "op": "LINE_INTERSECTION", "inputs": ["lBO", "lAC"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "O", "D", "E"],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] }, { "id": "sBC", "refs": ["B", "C"] }, { "id": "sCA", "refs": ["C", "A"] },
+    { "id": "sAO", "refs": ["A", "O"] }, { "id": "sOD", "refs": ["O", "D"] },
+    { "id": "sBO", "refs": ["B", "O"] }, { "id": "sOE", "refs": ["O", "E"] }
+  ],
+  "planeMarks": { "angles": [
+    { "id": "angleC", "refs": ["A", "C", "B"], "value": 64, "label": "64", "style": "ARC", "arcs": 1, "factRole": "GIVEN" }
+  ] },
+  "coordinateCanvas": { "width": 680, "height": 550 },
+  "caption": "외심 O를 지나도록 AD, BE를 연장해 각각 BC의 D, AC의 E와 만나며 C의 각은 64°로 표시한다.",
+  "accessibilityDescription": "삼각형 ABC의 외심 O가 내부에 있고 A-O-D 및 B-O-E는 각각 일직선이다. D는 BC 위, E는 AC 위에 있으며 C 꼭짓점의 64도 각은 호와 숫자로 표기한다. 불필요한 삼각형 내부 면 채움은 없다.",
+  "sourceConditions": [
+    { "id": "circumcenter", "condition": "O는 ABC의 외심이다. 대표 좌표의 OB²=OC²=OA²이며 C의 각이 약 64.0°이다.", "mappedTo": ["O", "A", "B", "C"] },
+    { "id": "extensions", "condition": "AO의 직선 연장은 BC의 D를, BO의 직선 연장은 AC의 E를 지난다.", "mappedTo": ["lAO", "lBO", "D", "E", "sAO", "sOD", "sBO", "sOE"] },
+    { "id": "angle", "condition": "∠ACB=64°는 주어진 각이므로 호와 수치로 명시하고 미지 각의 합은 표시하지 않는다.", "mappedTo": ["angleC", "sCA", "sBC"] }
+  ],
+  "newVisualInformation": ["기존 문제 SVG의 삼각형 전체에 입힌 불필요한 옅은 파란 면을 제거한다.", "AO·BO 연장을 정확한 직선의 교점으로 계산하고 원문의 C=64° 각 호와 숫자만 명시한다."],
+  "sourceQuote": "$AO$, $BO$의 연장선이 각각 $BC$, $AC$와 만나는 점을 $D$, $E$라 한다."
+}

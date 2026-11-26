@@ -1,0 +1,44 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "16" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "12" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "DIVISION_POINT", "inputs": ["B", "A"], "args": { "m": { "kind": "integer", "value": "4" }, "n": { "kind": "integer", "value": "5" }, "mode": "INTERNAL" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "F", "op": "DIVISION_POINT", "inputs": ["B", "C"], "args": { "m": { "kind": "integer", "value": "4" }, "n": { "kind": "integer", "value": "5" }, "mode": "INTERNAL" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "E", "op": "DIVISION_POINT", "inputs": ["A", "C"], "args": { "m": { "kind": "integer", "value": "4" }, "n": { "kind": "integer", "value": "5" }, "mode": "INTERNAL" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "E", "F"],
+  "displaySegments": [
+    { "id": "sBD", "refs": ["B", "D"] }, { "id": "sDA", "refs": ["D", "A"], "dashed": true },
+    { "id": "sAE", "refs": ["A", "E"], "dashed": true }, { "id": "sEC", "refs": ["E", "C"] },
+    { "id": "sBF", "refs": ["B", "F"] }, { "id": "sFC", "refs": ["F", "C"] },
+    { "id": "sDE", "refs": ["D", "E"] }, { "id": "sDF", "refs": ["D", "F"] },
+    { "id": "sEF", "refs": ["E", "F"] }, { "id": "sAF", "refs": ["A", "F"], "dashed": true }
+  ],
+  "rightAngles": [{ "id": "rightB", "refs": ["A", "B", "C"], "factRole": "GIVEN" }],
+  "planeMarks": {
+    "angles": [
+      { "id": "foldD", "refs": ["B", "D", "F"], "value": 36.86989765, "noLabel": true, "style": "ARC", "arcs": 1, "equalGroup": 1, "factRole": "GIVEN" },
+      { "id": "foldF", "refs": ["D", "F", "E"], "value": 36.86989765, "noLabel": true, "style": "ARC", "arcs": 1, "equalGroup": 1, "factRole": "GIVEN" }
+    ],
+    "dimensions": [
+      { "id": "lengthAB", "from": "A", "to": "B", "label": "16", "unit": "cm", "value": "16", "side": "LEFT", "style": "BAR", "factRole": "GIVEN" },
+      { "id": "lengthAC", "from": "A", "to": "C", "label": "20", "unit": "cm", "value": "20", "side": "RIGHT", "style": "BAR", "factRole": "GIVEN" }
+    ]
+  },
+  "coordinateCanvas": { "width": 720, "height": 560 },
+  "caption": "직각삼각형 종이를 A가 밑변의 F에 오도록 접어 DE를 접는 선으로 나타내며 ∠BDF와 ∠DFE는 동일한 각 호로 표시한다.",
+  "accessibilityDescription": "B에서 직각인 삼각형 ABC의 원래 왼쪽 윗변 AD와 윗쪽 빗변 AE는 점선이며, A가 옮겨진 F는 밑변 BC 위에 있다. D와 E를 잇는 접는 선과 D-F, E-F가 실선이다. 서로 같은 ∠BDF와 ∠DFE는 한 개씩 같은 호로 그려져 있고 AB=16cm, AC=20cm 치수선이 있다. 답인 BD는 적지 않으며 면 채움이 없다.",
+  "sourceConditions": [
+    { "id": "originalTriangle", "condition": "ABC는 B에서 직각이고 원본 그림의 AB=16cm, AC=20cm이다. 대표 좌표에서 BC=12cm가 정확하다.", "mappedTo": ["rightB", "lengthAB", "lengthAC", "sBD", "sDA", "sAE", "sEC", "sBF", "sFC"] },
+    { "id": "fold", "condition": "A를 BC의 점 F로 접어 생긴 선은 DE이며 AD=DF, AE=EF, DE⊥AF를 만족한다. 대표 내분점의 매개변수 4/9는 그림에 표시하지 않는다.", "mappedTo": ["D", "E", "F", "sDA", "sAE", "sAF", "sDE", "sDF", "sEF"] },
+    { "id": "equalAngle", "condition": "∠BDF=∠DFE를 두 개의 같은 각 호로 나타낸다.", "mappedTo": ["foldD", "foldF"] }
+  ],
+  "newVisualInformation": ["원본의 접기 전 도형 부분을 점선으로 구별하고 D-E 접는 선과 접힌 후 D-F, E-F 실선을 보존한다.", "기존 SVG의 필요 없는 전체 바탕·접힌 작은 면 채움을 제거하되, 같은 두 각 호와 원본의 16cm·20cm 치수는 렌더 표식으로 복원한다."],
+  "sourceQuote": "$\\angle BDF=\\angle DFE$일 때"
+}
