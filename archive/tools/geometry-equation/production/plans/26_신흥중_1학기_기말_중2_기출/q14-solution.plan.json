@@ -44,11 +44,17 @@
     "직선 위의 점 (3,7)과 (6,8)",
     "x=1일 때 함숫값은 19/3이다."
   ],
+  "sourceQuote": "일차함수 $y=f(x)$의 그래프가 두 점 $(3,7)$",
   "sourceConditions": [
     {
       "id": "source",
       "condition": "일차함수 $y=f(x)$의 그래프가 두 점 $(3,7)$, $(6,8)$을 지날 때, $f(1)$의 값은? [4점]",
-      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+      "mappedTo": ["graphPlan.requiredPoints[1]", "graphPlan.requiredPoints[2]"]
+    },
+    {
+      "id": "evaluationAtOne",
+      "condition": "주어진 두 점을 지나는 직선은 y=x/3+6이고 x=1에서 y=19/3이다.",
+      "mappedTo": ["graphPlan.pieces[0].coefficients", "graphPlan.requiredPoints[0]"]
     }
   ]
 }
