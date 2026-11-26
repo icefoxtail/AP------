@@ -1,0 +1,21 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"-17542853","denominator":"1000000"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"M","op":"MIDPOINT","inputs":["P","O"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"cO","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"6"}},"outputType":"CIRCLE","factRole":"GIVEN"},
+    {"id":"cM","op":"CIRCLE_CENTER_RADIUS","inputs":["M"],"args":{"radius":{"kind":"rational","numerator":"17542853","denominator":"2000000"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"S","op":"INTERSECTION","inputs":["cO","cM"],"args":{},"outputType":"POINT_SET","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"A","op":"SELECT_POINT","inputs":["S"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE","branch":{"kind":"SIDE_OF_ORIENTED_LINE","refs":["P","O"],"sign":1}},
+    {"id":"B","op":"SELECT_POINT","inputs":["S"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE","branch":{"kind":"SIDE_OF_ORIENTED_LINE","refs":["P","O"],"sign":-1}}
+  ]},
+  "axisTickValues":{"x":[],"y":[]},"displayLines":[],"displayCircles":["cO"],"displayPoints":["O","P","A","B"],
+  "displaySegments":[{"id":"sPA","refs":["P","A"]},{"id":"sPB","refs":["P","B"]},{"id":"sOA","refs":["O","A"]},{"id":"sOB","refs":["O","B"]}],
+  "rightAngles":[{"id":"rA","refs":["P","A","O"]},{"id":"rB","refs":["P","B","O"]}],
+  "planeMarks":{"angles":[{"id":"aP","refs":["A","P","B"],"value":40,"label":"40","arcs":1,"factRole":"GIVEN"},{"id":"aO","refs":["A","O","B"],"value":140,"label":"140","arcs":1,"factRole":"DERIVED_INTERMEDIATE"}],"expressionLabels":[{"id":"tOA","ownerSegment":"sOA","text":"6","unit":"cm","factRole":"GIVEN"}],"arcs":[{"id":"arcMajor","circle":"cO","center":"O","from":"A","to":"B","side":"MAJOR","label":"220"}],"regions":[{"id":"rMajor","fill":"LIGHT","factRole":"GIVEN","shapes":[{"loop":{"start":"O","steps":[{"to":"A"},{"to":"B","arc":{"center":"O","side":"MAJOR"}},{"to":"O"}]}}]}]},
+  "coordinateCanvas":{"width":720,"height":490},"caption":"접선 PA·PB 사이 각 40°와 원의 긴 부채꼴 220°만 색칠해 넓이의 대상 영역을 표시한다.",
+  "sourceQuote":"PA, PB는 반지름 6 cm인 원 O의 접선, ∠APB=40°이며 색칠한 부분의 넓이를 구한다.",
+  "sourceConditions":[{"id":"c1","condition":"OA=OB=6cm, PA⊥OA, PB⊥OB","mappedTo":["cO","sOA","sOB","rA","rB","tOA"]},{"id":"c2","condition":"∠APB=40°, ∠AOB=140°, 큰 부채꼴의 중심각=220°","mappedTo":["aP","aO","arcMajor","rMajor"]}],
+  "newVisualInformation":["기존 해설 SVG가 글자만으로 서술한 220° 부채꼴의 실제 면 경계를 원호로 구성하고, 그 영역만 원본처럼 채운다."]
+}

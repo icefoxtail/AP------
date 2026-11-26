@@ -1,0 +1,25 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"X","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-1"},{"kind":"integer","value":"-1"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-4"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"lx","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"0"},"b":{"kind":"integer","value":"1"},"c":{"kind":"integer","value":"0"}},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"ly","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"1"},"b":{"kind":"integer","value":"0"},"c":{"kind":"integer","value":"0"}},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"Ha","op":"PERPENDICULAR_FOOT","inputs":["A","lx"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"Hb","op":"PERPENDICULAR_FOOT","inputs":["B","lx"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"Hc","op":"PERPENDICULAR_FOOT","inputs":["C","lx"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"Jb","op":"PERPENDICULAR_FOOT","inputs":["B","ly"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"Jc","op":"PERPENDICULAR_FOOT","inputs":["C","ly"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "axisTickValues":{"x":[-4,-1,1],"y":[-1,1,2]},"displayLines":[],"displayCircles":[],"displayPoints":["O","A","B","C","Ha","Hb","Hc","Jb","Jc"],"hiddenPointNames":["Ha","Hb","Hc","Jb","Jc"],"unmarkedPointNames":["Ha","Hb","Hc","Jb","Jc"],"coordinateLabels":["A","B","C"],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]},{"id":"sAG","refs":["A","Ha"],"dashed":true},{"id":"sBG","refs":["B","Hb"],"dashed":true},{"id":"sCG","refs":["C","Hc"],"dashed":true},{"id":"sBY","refs":["B","Jb"],"dashed":true},{"id":"sCY","refs":["C","Jc"],"dashed":true}],
+  "rightAngles":[{"id":"rA","refs":["B","A","C"]}],
+  "planeMarks":{"equalLengths":[{"id":"eLegs","count":1,"segments":["sAB","sCA"]}]},
+  "coordinateCanvas":{"width":690,"height":520},"caption":"A(-1,-1), B(-4,1), C(1,2)를 연결하고 축으로 내린 점선 및 A의 직각과 두 같은 변을 보인다.",
+  "sourceQuote":"A(-1,-1), B(-4,1), C(1,2)를 꼭짓점으로 하는 삼각형 ABC에서 sin B cos B",
+  "sourceConditions":[{"id":"c1","condition":"A(-1,-1), B(-4,1), C(1,2)","mappedTo":["A","B","C","sAB","sBC","sCA"]},{"id":"c2","condition":"AB²=AC²=13, BC²=26이므로 A는 직각","mappedTo":["rA","eLegs"]},{"id":"c3","condition":"원본의 수직 x좌표·수평 y좌표 점선 보조선","mappedTo":["sAG","sBG","sCG","sBY","sCY"]}],
+  "newVisualInformation":["기존 해설의 눈금 없는 축과 축 위에 붙은 ∠A=90 글자 대신 원본의 각 좌표 점선을 복구하고 실제 A에 직각표식을 붙인다."]
+}

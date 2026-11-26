@@ -1,0 +1,19 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"rational","numerator":"9","denominator":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"M","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"-3"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"cO","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"rational","numerator":"15","denominator":"2"}},"outputType":"CIRCLE","factRole":"GIVEN"}
+  ]},
+  "axisTickValues":{"x":[],"y":[]},"displayLines":[],"displayCircles":["cO"],"displayPoints":["O","A","B","M","C"],
+  "displaySegments":[{"id":"sAM","refs":["A","M"]},{"id":"sMB","refs":["M","B"]},{"id":"sOM","refs":["O","M"],"dashed":true},{"id":"sMC","refs":["M","C"],"dashed":true},{"id":"sAC","refs":["A","C"]}],
+  "rightAngles":[{"id":"rM","refs":["O","M","A"]}],
+  "planeMarks":{"dimensions":[{"id":"dAB","from":"A","to":"B","label":"12","unit":"cm","side":"ABOVE","style":"BRACE","factRole":"GIVEN"}],"expressionLabels":[{"id":"tAC","ownerSegment":"sAC","text":"3sqrt(5)","unit":"cm","factRole":"GIVEN"},{"id":"tOM","ownerSegment":"sOM","text":"x","factRole":"DERIVED_INTERMEDIATE"}],"equalLengths":[{"id":"eM","count":1,"segments":["sAM","sMB"]}]},
+  "coordinateCanvas":{"width":660,"height":570},"caption":"현 AB=12 cm, AC=3√5 cm와 중심 수선 OM, 중점 M 및 MC=3 cm를 한 원 안에 표시한다.",
+  "sourceQuote":"AB=12cm, AC=3√5cm인 원 O에서 중심에서 현 AB에 내린 수선의 발 M과 원의 교점 C가 주어졌다.",
+  "sourceConditions":[{"id":"c1","condition":"AB=12 cm, AC=3√5 cm","mappedTo":["dAB","tAC"]},{"id":"c2","condition":"OM⊥AB, AM=BM=6 cm","mappedTo":["rM","eM"]},{"id":"c3","condition":"MC=3 cm, OM=x","mappedTo":["sMC","sOM","tOM"]}],
+  "newVisualInformation":["기존 해설에서 빠진 원본의 현 전체 12 cm 치수와 점선 수선·직각을 복원하고 6cm 반현과 3√5cm 현끝-호 길이를 구별한다."]
+}

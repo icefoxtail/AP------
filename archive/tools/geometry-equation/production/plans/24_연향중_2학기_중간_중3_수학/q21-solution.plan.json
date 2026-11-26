@@ -1,0 +1,11 @@
+{
+  "capability":"solid-figure-v1","unit":"cm",
+  "solids":[{"kind":"PRISM","base":{"kind":"RECT","width":8,"depth":8},"height":8,"names":"EFGHABCD","points":[{"id":"N","at":{"footOnLine":{"from":"D","line":["B","H"]}}}]}],
+  "segments":[{"from":"B","to":"N","style":"SOLID","role":"REF"},{"from":"N","to":"H","style":"SOLID","role":"REF"},{"from":"D","to":"B","style":"SOLID"},{"from":"D","to":"H","style":"SOLID"},{"from":"D","to":"N","style":"DASHED","role":"ACCENT"}],
+  "marks":{"rightAngles":[{"at":"N","refs":["D","H"]},{"at":"D","refs":["B","H"]}],"angles":[{"refs":["N","D","H"],"arcs":1,"label":"x"}]},
+  "dims":[{"edge":"AE"}],"solidCaption":{"text":"정육면체"},
+  "caption":"모서리 8인 정육면체에서 BH로 내린 수선 DN과 직각, ∠NDH=x를 3차원 구조 그대로 표시한다.",
+  "sourceQuote":"한 모서리의 길이가 8인 정육면체에서 점 D에서 BH에 내린 수선의 발 N, ∠NDH=x",
+  "sourceConditions":[{"id":"c1","condition":"ABCDEFGH 정육면체의 한 모서리 길이는 8","mappedTo":["EFGHABCD","AE"]},{"id":"c2","condition":"DN⊥BH이며 N은 BH 위","mappedTo":["N","BH","DN"]},{"id":"c3","condition":"x=∠NDH, BD⊥DH","mappedTo":["x","BD","DH"]}],
+  "newVisualInformation":["기존 해설의 평면 삼각형만 있는 그림을 원본의 정육면체·숨은 모서리·공간대각선 BH·수선 DN 구조로 복구한다."]
+}

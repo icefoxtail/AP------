@@ -1,0 +1,21 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"M","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"-2"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"-5656854","denominator":"1000000"},{"kind":"integer","value":"-2"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"5656854","denominator":"1000000"},{"kind":"integer","value":"-2"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"-4242641","denominator":"1000000"},{"kind":"integer","value":"-2"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"4242641","denominator":"1000000"},{"kind":"integer","value":"-2"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"cOuter","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"6"}},"outputType":"CIRCLE","factRole":"GIVEN"},
+    {"id":"cInner","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"rational","numerator":"4690416","denominator":"1000000"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "axisTickValues":{"x":[],"y":[]},"displayLines":[],"displayCircles":["cOuter","cInner"],"displayPoints":["O","M","A","B","C","D"],
+  "displaySegments":[{"id":"sAC","refs":["A","C"]},{"id":"sCM","refs":["C","M"]},{"id":"sMD","refs":["M","D"]},{"id":"sDB","refs":["D","B"]},{"id":"sOM","refs":["O","M"],"dashed":true},{"id":"sOA","refs":["O","A"]},{"id":"sOD","refs":["O","D"],"dashed":true}],
+  "rightAngles":[{"id":"rM","refs":["O","M","D"]}],
+  "planeMarks":{"expressionLabels":[{"id":"tOA","ownerSegment":"sOA","text":"6","unit":"cm","factRole":"GIVEN"},{"id":"tOM","ownerSegment":"sOM","text":"2","unit":"cm","factRole":"GIVEN"},{"id":"tDB","ownerSegment":"sDB","text":"sqrt(2)","unit":"cm","factRole":"GIVEN"}]},
+  "coordinateCanvas":{"width":720,"height":510},"caption":"동심원 두 개의 공통 현 위에서 M·D·B의 순서와 DB, OM을 보이고 직각삼각형 OMD를 점선으로 강조한다.",
+  "sourceQuote":"동심원에서 AB⊥OM, OA=6cm, OM=2cm, DB=√2cm이고 OD의 길이",
+  "sourceConditions":[{"id":"c1","condition":"두 동심원의 중심 O, 바깥 원 반지름 OA=6cm","mappedTo":["O","cOuter","cInner","sOA","tOA"]},{"id":"c2","condition":"OM⊥AB, OM=2cm, DB=√2cm","mappedTo":["sOM","rM","tOM","sDB","tDB"]},{"id":"c3","condition":"MB=4√2, MD=3√2, OD=√22는 해설 본문에서 계산","mappedTo":["sMD","sOD"]}],
+  "newVisualInformation":["기존 v2의 서로 겹친 다수의 지시선을 제거하고 원본의 동심원·현 교점·수선과 주어진 6·2·√2 세 치수를 배치한다. 해설 계산값 √22와 3√2는 라벨 충돌 방지를 위해 해설 본문에 둔다."]
+}

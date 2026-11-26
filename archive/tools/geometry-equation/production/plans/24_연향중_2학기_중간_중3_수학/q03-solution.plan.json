@@ -1,0 +1,24 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"U","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"POLAR_POINT","inputs":["O","C"],"args":{"length":{"kind":"integer","value":"1"},"angleDeg":{"kind":"integer","value":"42"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"rational","numerator":"9","denominator":"10"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"lx","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"0"},"b":{"kind":"integer","value":"1"},"c":{"kind":"integer","value":"0"}},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"ly","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"1"},"b":{"kind":"integer","value":"0"},"c":{"kind":"integer","value":"0"}},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"A","op":"PERPENDICULAR_FOOT","inputs":["B","lx"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"Y","op":"PERPENDICULAR_FOOT","inputs":["B","ly"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"T","op":"PERPENDICULAR_FOOT","inputs":["D","ly"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"cO","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"1"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "axisTickValues":{"x":[0.74,1],"y":[0.67,0.9]},"displayLines":[],"displayCircles":[],"displayPoints":["O","C","U","B","D","A","Y","T"],"hiddenPointNames":["B","U","Y","T"],"unmarkedPointNames":["U","Y","T"],
+  "displaySegments":[{"id":"sOD","refs":["O","D"]},{"id":"sBA","refs":["B","A"],"dashed":true},{"id":"sBY","refs":["B","Y"],"dashed":true},{"id":"sDT","refs":["D","T"],"dashed":true},{"id":"sDC","refs":["D","C"],"dashed":true}],
+  "rightAngles":[{"id":"rA","refs":["B","A","O"]},{"id":"rY","refs":["B","Y","O"]},{"id":"rT","refs":["D","T","O"]}],
+  "planeMarks":{"angles":[{"id":"aO","refs":["C","O","D"],"value":42,"label":"42","arcs":1,"factRole":"GIVEN"}],"arcs":[{"id":"arcQuarter","circle":"cO","center":"O","from":"U","to":"C","side":"MINOR"}],"textLabels":[{"id":"labelB","at":[0.90,0.70],"text":"B","labelKind":"MATH","anchor":"CENTER","factRole":"GIVEN"}]},
+  "coordinateCanvas":{"width":720,"height":600},"caption":"반지름 1인 사분원에서 42°의 동경과 B의 0.74·0.67, D의 높이 0.90 안내 점선을 원본대로 보인다.",
+  "sourceQuote":"원점을 중심으로 반지름이 1인 사분원과 42° 동경, 0.74·0.67·0.90 눈금",
+  "sourceConditions":[{"id":"c1","condition":"반지름 1인 제1사분면의 사분원","mappedTo":["arcQuarter","cO"]},{"id":"c2","condition":"∠COD≈42°, B=(cos42°,sin42°)≈(0.74,0.67)","mappedTo":["aO","B","sBA","sBY"]},{"id":"c3","condition":"D의 높이 0.90을 수평 점선으로 표시","mappedTo":["D","sDT","sDC"]}],
+  "newVisualInformation":["기존 해설 SVG에 없는 원본 0.90의 수평 안내선과 D·C 수직선을 복원하며 축 위 0.74·0.67 눈금과 직각표식을 유지한다."]
+}

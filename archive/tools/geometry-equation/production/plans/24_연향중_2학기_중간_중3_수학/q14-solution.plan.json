@@ -1,0 +1,18 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-4"},{"kind":"rational","numerator":"-5744562","denominator":"1000000"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"rational","numerator":"-5744562","denominator":"1000000"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"M","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"rational","numerator":"-5744562","denominator":"1000000"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"cO","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"7"}},"outputType":"CIRCLE","factRole":"GIVEN"}
+  ]},
+  "axisTickValues":{"x":[],"y":[]},"displayLines":[],"displayCircles":["cO"],"displayPoints":["O","A","B","M"],
+  "displaySegments":[{"id":"sAM","refs":["A","M"]},{"id":"sMB","refs":["M","B"]},{"id":"sOA","refs":["O","A"]},{"id":"sOM","refs":["O","M"],"dashed":true}],
+  "rightAngles":[{"id":"rM","refs":["O","M","A"]}],
+  "planeMarks":{"expressionLabels":[{"id":"tOA","ownerSegment":"sOA","text":"7","unit":"cm","factRole":"GIVEN"},{"id":"tAM","ownerSegment":"sAM","text":"4","unit":"cm","factRole":"DERIVED_INTERMEDIATE"},{"id":"tOM","ownerSegment":"sOM","text":"sqrt(33)","unit":"cm","factRole":"DERIVED_INTERMEDIATE"}],"equalLengths":[{"id":"eChord","count":1,"segments":["sAM","sMB"]}]},
+  "coordinateCanvas":{"width":520,"height":520},"caption":"반지름 7 cm인 원에서 현 AB의 중점 M에 내린 수선과 직각삼각형 OAM을 보인다.",
+  "sourceQuote":"반지름 7 cm인 원의 중심 O와 길이 8 cm인 현 AB 사이의 거리",
+  "sourceConditions":[{"id":"c1","condition":"OA=OB=7 cm, AB=8 cm","mappedTo":["cO","sOA","sAM","sMB","tOA","tAM"]},{"id":"c2","condition":"OM⊥AB, AM=MB=4 cm","mappedTo":["sOM","rM","eChord"]}],
+  "newVisualInformation":["기존 v2에서 A·M이 두 번 나타난 모양을 제거하고 원·현·중점·직각·반지름과 길이를 읽기 쉽게 분리한다."]
+}

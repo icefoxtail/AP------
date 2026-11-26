@@ -1,0 +1,21 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"9"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"12"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"27","denominator":"5"},{"kind":"rational","numerator":"24","denominator":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"F","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"cO","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"3"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "axisTickValues":{"x":[],"y":[]},"displayLines":[],"displayCircles":["cO"],"displayPoints":["A","B","C","D","E","F","O"],
+  "displaySegments":[{"id":"sAD","refs":["A","D"]},{"id":"sDB","refs":["D","B"]},{"id":"sBE","refs":["B","E"]},{"id":"sEC","refs":["E","C"]},{"id":"sCF","refs":["C","F"]},{"id":"sFA","refs":["F","A"]},{"id":"sOD","refs":["O","D"],"dashed":true},{"id":"sOE","refs":["O","E"],"dashed":true},{"id":"sOF","refs":["O","F"],"dashed":true}],
+  "rightAngles":[{"id":"rA","refs":["B","A","C"]},{"id":"rD","refs":["O","D","B"]},{"id":"rE","refs":["O","E","C"]},{"id":"rF","refs":["O","F","C"]}],
+  "planeMarks":{"expressionLabels":[{"id":"tBE","ownerSegment":"sBE","text":"6","unit":"cm","factRole":"GIVEN"},{"id":"tEC","ownerSegment":"sEC","text":"9","unit":"cm","factRole":"GIVEN"},{"id":"tOD","ownerSegment":"sOD","text":"r=3","unit":"cm","factRole":"DERIVED_INTERMEDIATE"}],"equalLengths":[{"id":"eA","count":1,"segments":["sAD","sFA"]},{"id":"eB","count":2,"segments":["sDB","sBE"]},{"id":"eC","count":3,"segments":["sEC","sCF"]}]},
+  "coordinateCanvas":{"width":690,"height":560},"caption":"직각삼각형 ABC의 내접원과 세 접점 D·E·F, 같은 접선 길이와 반지름의 직각을 표시한다.",
+  "sourceQuote":"∠A=90°인 삼각형 ABC의 내접원, BE=6cm, CE=9cm인 경우 원 O의 넓이",
+  "sourceConditions":[{"id":"c1","condition":"∠A=90°, BE=6, CE=9","mappedTo":["rA","tBE","tEC"]},{"id":"c2","condition":"접점 D,E,F는 각 변에 있고 각 접점에서 반지름과 접선이 수직","mappedTo":["D","E","F","rD","rE","rF"]},{"id":"c3","condition":"AD=AF=r, BD=BE=6, CE=CF=9, r=3","mappedTo":["eA","eB","eC","tOD"]}],
+  "newVisualInformation":["기존 해설에서 빠진 접점의 직각과 접선 길이 눈금을 추가하고 원판·삼각형 내부를 채우지 않는다."]
+}
