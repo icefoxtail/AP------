@@ -1,0 +1,358 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lineBA",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "I",
+          "lineBA"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "incircle",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "I",
+          "E"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "I"
+  ],
+  "displaySegments": [
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sEB",
+      "refs": [
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "sDI",
+      "refs": [
+        "D",
+        "I"
+      ]
+    },
+    {
+      "id": "sIE",
+      "refs": [
+        "I",
+        "E"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "incircle"
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "tangentsB",
+        "count": 1,
+        "segments": [
+          "sBD",
+          "sEB"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "sideAB13",
+        "from": "A",
+        "to": "B",
+        "label": "13",
+        "unit": "cm",
+        "side": "ABOVE"
+      },
+      {
+        "id": "sideBC12",
+        "from": "B",
+        "to": "C",
+        "label": "12",
+        "unit": "cm",
+        "side": "BELOW"
+      },
+      {
+        "id": "sideAC5",
+        "from": "A",
+        "to": "C",
+        "label": "5",
+        "unit": "cm",
+        "side": "RIGHT"
+      },
+      {
+        "id": "radius2",
+        "from": "I",
+        "to": "E",
+        "label": "2",
+        "unit": "cm",
+        "side": "RIGHT"
+      },
+      {
+        "id": "tangentBD10",
+        "from": "B",
+        "to": "D",
+        "label": "10",
+        "unit": "cm",
+        "side": "ABOVE"
+      }
+    ],
+    "regions": [
+      {
+        "id": "targetDBEI",
+        "fill": "LIGHT",
+        "label": "20",
+        "factRole": "CONCLUSION",
+        "shapes": [
+          {
+            "polygon": [
+              "D",
+              "B",
+              "E",
+              "I"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rightC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "rightD",
+      "refs": [
+        "B",
+        "D",
+        "I"
+      ]
+    },
+    {
+      "id": "rightE",
+      "refs": [
+        "B",
+        "E",
+        "I"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "두 직각삼각형 BDI와 BEI의 넓이 합인 DBEI는 20 cm²",
+  "accessibilityDescription": "직각삼각형 ABC 내부의 내접원은 AB와 BC에 각각 D와 E에서 접하고 중심 I에서 두 접점으로 반지름이 내려간다. 색칠은 넓이를 묻는 DBEI 영역에만 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AC=5, BC=12, AB=13",
+      "mappedTo": [
+        "sideAC5",
+        "sideBC12",
+        "sideAB13"
+      ],
+      "sourceQuote": "10. 다음 그림에서 점 $\\mathrm{I}$는 직각삼각형 $\\mathrm{ABC}$의 내심이고 두 점 $\\mathrm{D}$와 $\\mathrm{E}$는 접점일 때, $\\square\\mathrm{DBEI}$의 넓이는?(5점) [원본 그림]"
+    },
+    {
+      "id": "c2",
+      "condition": "I는 내심이고 D,E는 접점",
+      "mappedTo": [
+        "incircle",
+        "rightD",
+        "rightE"
+      ],
+      "sourceQuote": "10. 다음 그림에서 점 $\\mathrm{I}$는 직각삼각형 $\\mathrm{ABC}$의 내심이고 두 점 $\\mathrm{D}$와 $\\mathrm{E}$는 접점일 때, $\\square\\mathrm{DBEI}$의 넓이는?(5점) [원본 그림]"
+    },
+    {
+      "id": "c3",
+      "condition": "넓이를 묻는 DBEI만 음영",
+      "mappedTo": [
+        "targetDBEI"
+      ],
+      "sourceQuote": "10. 다음 그림에서 점 $\\mathrm{I}$는 직각삼각형 $\\mathrm{ABC}$의 내심이고 두 점 $\\mathrm{D}$와 $\\mathrm{E}$는 접점일 때, $\\square\\mathrm{DBEI}$의 넓이는?(5점) [원본 그림]"
+    },
+    {
+      "id": "c4",
+      "condition": "내접원 반지름 2 cm",
+      "mappedTo": [
+        "radius2"
+      ],
+      "sourceQuote": "10. 다음 그림에서 점 $\\mathrm{I}$는 직각삼각형 $\\mathrm{ABC}$의 내심이고 두 점 $\\mathrm{D}$와 $\\mathrm{E}$는 접점일 때, $\\square\\mathrm{DBEI}$의 넓이는?(5점) [원본 그림]"
+    },
+    {
+      "id": "c5",
+      "condition": "BD=BE=10 cm",
+      "mappedTo": [
+        "tangentBD10",
+        "tangentsB"
+      ],
+      "sourceQuote": "10. 다음 그림에서 점 $\\mathrm{I}$는 직각삼각형 $\\mathrm{ABC}$의 내심이고 두 점 $\\mathrm{D}$와 $\\mathrm{E}$는 접점일 때, $\\square\\mathrm{DBEI}$의 넓이는?(5점) [원본 그림]"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 스캔의 DBEI 음영이 현행 문제 SVG에서 사라진 결함을 실제 다각형 영역으로 복구한다.",
+    "해설용에만 접선 길이와 반지름·넓이 값을 표시한다."
+  ]
+}

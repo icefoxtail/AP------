@@ -1,0 +1,413 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineAN",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "N"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineBM",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "M"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineCM",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "M"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineDN",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "D",
+          "N"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lineAN",
+          "lineBM"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lineCM",
+          "lineDN"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "M",
+    "N",
+    "P",
+    "Q"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBN",
+      "refs": [
+        "B",
+        "N"
+      ]
+    },
+    {
+      "id": "sNC",
+      "refs": [
+        "N",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDM",
+      "refs": [
+        "D",
+        "M"
+      ]
+    },
+    {
+      "id": "sMA",
+      "refs": [
+        "M",
+        "A"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sPN",
+      "refs": [
+        "P",
+        "N"
+      ]
+    },
+    {
+      "id": "sBP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "sPM",
+      "refs": [
+        "P",
+        "M"
+      ]
+    },
+    {
+      "id": "sDQ",
+      "refs": [
+        "D",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQN",
+      "refs": [
+        "Q",
+        "N"
+      ]
+    },
+    {
+      "id": "sCQ",
+      "refs": [
+        "C",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQM",
+      "refs": [
+        "Q",
+        "M"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "squareSides",
+        "count": 1,
+        "segments": [
+          "sPM",
+          "sPN",
+          "sQN",
+          "sQM"
+        ]
+      }
+    ],
+    "parallels": [
+      {
+        "id": "squarePair1",
+        "count": 1,
+        "segments": [
+          "sPM",
+          "sQN"
+        ]
+      },
+      {
+        "id": "squarePair2",
+        "count": 2,
+        "segments": [
+          "sPN",
+          "sQM"
+        ]
+      }
+    ],
+    "regions": [
+      {
+        "id": "targetMPNQ",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "M",
+              "P",
+              "N",
+              "Q"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "squareP",
+      "refs": [
+        "M",
+        "P",
+        "N"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "직사각형의 절반 길이로 나뉜 대칭 교점 P,Q와 정사각형 MPNQ",
+  "accessibilityDescription": "가로가 세로의 두 배인 직사각형에서 위아래 중점 M과 N을 잇는 교차선들이 P와 Q에서 만나고, 마름모 모양 MPNQ에는 네 변 같은 길이 눈금과 한 직각 표식이 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "ABCD 직사각형",
+      "mappedTo": [
+        "sAB",
+        "sNC",
+        "sCD",
+        "sMA"
+      ],
+      "sourceQuote": "서술형2. 오른쪽 직사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AD}}=2\\overline{\\mathrm{AB}}$이고 $\\mathrm{M}$과 $\\mathrm{N}$은 각각 $\\overline{\\mathrm{AD}}$와 $\\overline{\\mathrm{BC}}$의 중점일 때, $\\square\\mathrm{MPNQ}$는 어떤 사각형인지 설명하시오. (6점) [원본 그림]"
+    },
+    {
+      "id": "c2",
+      "condition": "AD=2AB",
+      "mappedTo": [
+        "sMA",
+        "sDM",
+        "sAB"
+      ],
+      "sourceQuote": "서술형2. 오른쪽 직사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AD}}=2\\overline{\\mathrm{AB}}$이고 $\\mathrm{M}$과 $\\mathrm{N}$은 각각 $\\overline{\\mathrm{AD}}$와 $\\overline{\\mathrm{BC}}$의 중점일 때, $\\square\\mathrm{MPNQ}$는 어떤 사각형인지 설명하시오. (6점) [원본 그림]"
+    },
+    {
+      "id": "c3",
+      "condition": "M,N 각 변의 중점",
+      "mappedTo": [
+        "M",
+        "N"
+      ],
+      "sourceQuote": "서술형2. 오른쪽 직사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AD}}=2\\overline{\\mathrm{AB}}$이고 $\\mathrm{M}$과 $\\mathrm{N}$은 각각 $\\overline{\\mathrm{AD}}$와 $\\overline{\\mathrm{BC}}$의 중점일 때, $\\square\\mathrm{MPNQ}$는 어떤 사각형인지 설명하시오. (6점) [원본 그림]"
+    },
+    {
+      "id": "c4",
+      "condition": "P,Q는 구성선의 교점",
+      "mappedTo": [
+        "P",
+        "Q"
+      ],
+      "sourceQuote": "서술형2. 오른쪽 직사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AD}}=2\\overline{\\mathrm{AB}}$이고 $\\mathrm{M}$과 $\\mathrm{N}$은 각각 $\\overline{\\mathrm{AD}}$와 $\\overline{\\mathrm{BC}}$의 중점일 때, $\\square\\mathrm{MPNQ}$는 어떤 사각형인지 설명하시오. (6점) [원본 그림]"
+    },
+    {
+      "id": "c5",
+      "condition": "MPNQ는 네 변이 같고 직각인 정사각형",
+      "mappedTo": [
+        "squareSides",
+        "squareP"
+      ],
+      "sourceQuote": "서술형2. 오른쪽 직사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AD}}=2\\overline{\\mathrm{AB}}$이고 $\\mathrm{M}$과 $\\mathrm{N}$은 각각 $\\overline{\\mathrm{AD}}$와 $\\overline{\\mathrm{BC}}$의 중점일 때, $\\square\\mathrm{MPNQ}$는 어떤 사각형인지 설명하시오. (6점) [원본 그림]"
+    },
+    {
+      "id": "c6",
+      "condition": "원문 대체 텍스트에서 MPNQ만 음영 지정",
+      "mappedTo": [
+        "targetMPNQ"
+      ],
+      "sourceQuote": "서술형2. 오른쪽 직사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AD}}=2\\overline{\\mathrm{AB}}$이고 $\\mathrm{M}$과 $\\mathrm{N}$은 각각 $\\overline{\\mathrm{AD}}$와 $\\overline{\\mathrm{BC}}$의 중점일 때, $\\square\\mathrm{MPNQ}$는 어떤 사각형인지 설명하시오. (6점) [원본 그림]"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 사진은 소실됐지만 현재 문제 img alt에 명시된 MPNQ 색칠 영역만 단일 region으로 복구한다.",
+    "중점과 선 교점은 엔진 노드로 파생해 정사각형 성질을 기하적으로 만족한다."
+  ]
+}

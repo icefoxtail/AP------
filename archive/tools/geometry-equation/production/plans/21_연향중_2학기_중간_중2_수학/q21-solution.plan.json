@@ -1,0 +1,323 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "25",
+              "denominator": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "P",
+    "Q",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBQ",
+      "refs": [
+        "B",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQC",
+      "refs": [
+        "Q",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDP",
+      "refs": [
+        "D",
+        "P"
+      ]
+    },
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sPO",
+      "refs": [
+        "P",
+        "O"
+      ]
+    },
+    {
+      "id": "sOQ",
+      "refs": [
+        "O",
+        "Q"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "bisectedAC",
+        "count": 1,
+        "segments": [
+          "sAO",
+          "sOC"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "AB6",
+        "from": "A",
+        "to": "B",
+        "label": "6",
+        "unit": "cm",
+        "side": "LEFT"
+      },
+      {
+        "id": "BC8",
+        "from": "B",
+        "to": "C",
+        "label": "8",
+        "unit": "cm",
+        "side": "BELOW"
+      },
+      {
+        "id": "APresult",
+        "from": "A",
+        "to": "P",
+        "label": "25/4",
+        "unit": "cm",
+        "side": "ABOVE"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rectangleB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "perpCenter",
+      "refs": [
+        "P",
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "6×8 직사각형의 대각선 수직이등분선으로 AP=25/4를 구하는 해설",
+  "accessibilityDescription": "직사각형 ABCD의 대각선 AC 중점 O에서 직각인 PQ가 윗변과 아랫변을 P와 Q에서 만나며 대각선 양쪽에는 같은 길이 눈금이 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "ABCD는 직사각형",
+      "mappedTo": [
+        "rectangleB"
+      ],
+      "sourceQuote": "서술형3. 다음 그림에서 $\\mathrm{ABCD}$는 직사각형이다. $\\overline{\\mathrm{PQ}}$가 대각선 $\\mathrm{AC}$를 수직이등분할 때, $x$의 값을 구하시오. (7점) [원본 그림] (1) $\\triangle\\mathrm{APO}$와 닮음인 삼각형을 모두 찾으시오. (3점) (2) $x$의 값을 구하시오. (4점)"
+    },
+    {
+      "id": "c2",
+      "condition": "AB=6 BC=8",
+      "mappedTo": [
+        "AB6",
+        "BC8"
+      ],
+      "sourceQuote": "서술형3. 다음 그림에서 $\\mathrm{ABCD}$는 직사각형이다. $\\overline{\\mathrm{PQ}}$가 대각선 $\\mathrm{AC}$를 수직이등분할 때, $x$의 값을 구하시오. (7점) [원본 그림] (1) $\\triangle\\mathrm{APO}$와 닮음인 삼각형을 모두 찾으시오. (3점) (2) $x$의 값을 구하시오. (4점)"
+    },
+    {
+      "id": "c3",
+      "condition": "PQ는 AC의 수직이등분선",
+      "mappedTo": [
+        "perpCenter",
+        "bisectedAC"
+      ],
+      "sourceQuote": "서술형3. 다음 그림에서 $\\mathrm{ABCD}$는 직사각형이다. $\\overline{\\mathrm{PQ}}$가 대각선 $\\mathrm{AC}$를 수직이등분할 때, $x$의 값을 구하시오. (7점) [원본 그림] (1) $\\triangle\\mathrm{APO}$와 닮음인 삼각형을 모두 찾으시오. (3점) (2) $x$의 값을 구하시오. (4점)"
+    },
+    {
+      "id": "c4",
+      "condition": "AP=25/4",
+      "mappedTo": [
+        "APresult"
+      ],
+      "sourceQuote": "서술형3. 다음 그림에서 $\\mathrm{ABCD}$는 직사각형이다. $\\overline{\\mathrm{PQ}}$가 대각선 $\\mathrm{AC}$를 수직이등분할 때, $x$의 값을 구하시오. (7점) [원본 그림] (1) $\\triangle\\mathrm{APO}$와 닮음인 삼각형을 모두 찾으시오. (3점) (2) $x$의 값을 구하시오. (4점)"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 대각선 AC와 점 O·P·Q의 소속, 중점 눈금, 직각표식 복원.",
+    "기존 문제 그림에 정답은 넣지 않고 해설 plan에만 AP 치수값을 표시한다."
+  ]
+}

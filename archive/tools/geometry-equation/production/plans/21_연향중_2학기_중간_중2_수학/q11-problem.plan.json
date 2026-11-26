@@ -1,0 +1,281 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-162854066",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "834465469",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-329733221",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "421425067",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "38145000",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "0",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-37067612",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "312251838",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "I"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAI",
+      "refs": [
+        "A",
+        "I"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sIE",
+      "refs": [
+        "I",
+        "E"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sCI",
+      "refs": [
+        "C",
+        "I"
+      ]
+    },
+    {
+      "id": "sID",
+      "refs": [
+        "I",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "givenB68",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 68,
+        "label": "68°"
+      },
+      {
+        "id": "unknownX",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "label": "x",
+        "arcs": 1
+      },
+      {
+        "id": "unknownY",
+        "refs": [
+          "A",
+          "E",
+          "C"
+        ],
+        "label": "y",
+        "arcs": 1
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "AE 각이등분선의 점선과 CD 보조선·내심 I·68°·x·y 복구",
+  "accessibilityDescription": "꼭짓점 A와 E를 잇는 내심 통과선만 점선이고 C에서 D를 지나는 다른 각이등분선은 실선이다. 두 선은 I에서 만난다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "I는 ABC의 내심",
+      "mappedTo": [
+        "I"
+      ],
+      "sourceQuote": "11. 다음 그림에서 점 $\\mathrm{I}$가 $\\triangle\\mathrm{ABC}$의 내심이고, $\\angle\\mathrm{B}=68^\\circ$일 때, $\\angle x+\\angle y$의 크기는?(5점) [원본 그림]"
+    },
+    {
+      "id": "c2",
+      "condition": "∠B=68°",
+      "mappedTo": [
+        "givenB68"
+      ],
+      "sourceQuote": "11. 다음 그림에서 점 $\\mathrm{I}$가 $\\triangle\\mathrm{ABC}$의 내심이고, $\\angle\\mathrm{B}=68^\\circ$일 때, $\\angle x+\\angle y$의 크기는?(5점) [원본 그림]"
+    },
+    {
+      "id": "c3",
+      "condition": "∠x+∠y의 값",
+      "mappedTo": [
+        "unknownX",
+        "unknownY"
+      ],
+      "sourceQuote": "11. 다음 그림에서 점 $\\mathrm{I}$가 $\\triangle\\mathrm{ABC}$의 내심이고, $\\angle\\mathrm{B}=68^\\circ$일 때, $\\angle x+\\angle y$의 크기는?(5점) [원본 그림]"
+    }
+  ],
+  "newVisualInformation": [
+    "원본은 AE를 점선, CD를 실선으로 구분하나 기존 SVG에서는 둘 다 실선이다.",
+    "흰색 불투명 배경 없이 세 각의 소속을 실제 기하 위치에 고정한다."
+  ]
+}

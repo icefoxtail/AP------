@@ -1,0 +1,261 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "11"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "givenParallel",
+        "count": 1,
+        "segments": [
+          "sDA",
+          "sBC"
+        ]
+      },
+      {
+        "id": "provedParallel",
+        "count": 2,
+        "segments": [
+          "sAB",
+          "sCD"
+        ]
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "oppositeADBC",
+        "count": 1,
+        "segments": [
+          "sDA",
+          "sBC"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "alternateBCA",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "arcs": 1,
+        "noLabel": true,
+        "equalGroup": 1
+      },
+      {
+        "id": "alternateCAD",
+        "refs": [
+          "C",
+          "A",
+          "D"
+        ],
+        "arcs": 1,
+        "noLabel": true,
+        "equalGroup": 1
+      },
+      {
+        "id": "alternateBAC",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "arcs": 2,
+        "noLabel": true,
+        "equalGroup": 2
+      },
+      {
+        "id": "alternateDCA",
+        "refs": [
+          "D",
+          "C",
+          "A"
+        ],
+        "arcs": 2,
+        "noLabel": true,
+        "equalGroup": 2
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "공통변 AC·엇각·평행한 한 쌍의 대변으로 SAS 합동을 보이는 평행사변형",
+  "accessibilityDescription": "사각형 ABCD의 대각선 AC가 두 삼각형을 나누며 AD와 BC에는 한 종류의 평행/같은 길이 눈금, AB와 CD에는 다른 평행 표식이 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AD∥BC",
+      "mappedTo": [
+        "givenParallel"
+      ],
+      "sourceQuote": "5. 다음은 오른쪽 $\\square\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AD}} // \\overline{\\mathrm{BC}}$이고 $\\overline{\\mathrm{AD}}=\\overline{\\mathrm{BC}}$일 때, $\\square\\mathrm{ABCD}$가 평행사변형임을 설명하는 과정이다. △ABC와 △CDA에서 $\\overline{\\mathrm{BC}}=$ ㄱ (가정), $\\angle\\mathrm{ACB}=$ ㄴ (엇각), ㄷ은 공통이므로 △ABC≡△CDA (SAS 합동)이다. 따라서 $\\angle\\mathrm{BAC}=$ ㄹ (엇각)이므로 $\\overline{\\mathrm{AB}}\\ //$ ㅁ 이다. 다음 $\\square$안에 옳지 않은 것은?(4점) [원본 그림]"
+    },
+    {
+      "id": "c2",
+      "condition": "AD=BC",
+      "mappedTo": [
+        "oppositeADBC"
+      ],
+      "sourceQuote": "5. 다음은 오른쪽 $\\square\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AD}} // \\overline{\\mathrm{BC}}$이고 $\\overline{\\mathrm{AD}}=\\overline{\\mathrm{BC}}$일 때, $\\square\\mathrm{ABCD}$가 평행사변형임을 설명하는 과정이다. △ABC와 △CDA에서 $\\overline{\\mathrm{BC}}=$ ㄱ (가정), $\\angle\\mathrm{ACB}=$ ㄴ (엇각), ㄷ은 공통이므로 △ABC≡△CDA (SAS 합동)이다. 따라서 $\\angle\\mathrm{BAC}=$ ㄹ (엇각)이므로 $\\overline{\\mathrm{AB}}\\ //$ ㅁ 이다. 다음 $\\square$안에 옳지 않은 것은?(4점) [원본 그림]"
+    },
+    {
+      "id": "c3",
+      "condition": "AC는 공통변",
+      "mappedTo": [
+        "sAC"
+      ],
+      "sourceQuote": "ㄷ은 두 삼각형 △ABC, △CDA의 공통인 변 $\\overline{\\mathrm{AC}}$이므로 ③ ㄷ = $\\overline{\\mathrm{BD}}$는 옳지 않다. (ㄱ = $\\overline{\\mathrm{AD}}$, ㄴ = $\\angle\\mathrm{CAD}$, ㄹ = $\\angle\\mathrm{DCA}$, ㅁ = $\\overline{\\mathrm{CD}}$는 옳다.)"
+    },
+    {
+      "id": "c4",
+      "condition": "∠BCA=∠CAD",
+      "mappedTo": [
+        "alternateBCA",
+        "alternateCAD"
+      ],
+      "sourceQuote": "ㄷ은 두 삼각형 △ABC, △CDA의 공통인 변 $\\overline{\\mathrm{AC}}$이므로 ③ ㄷ = $\\overline{\\mathrm{BD}}$는 옳지 않다. (ㄱ = $\\overline{\\mathrm{AD}}$, ㄴ = $\\angle\\mathrm{CAD}$, ㄹ = $\\angle\\mathrm{DCA}$, ㅁ = $\\overline{\\mathrm{CD}}$는 옳다.)"
+    },
+    {
+      "id": "c5",
+      "condition": "AB∥CD",
+      "mappedTo": [
+        "provedParallel"
+      ],
+      "sourceQuote": "ㄷ은 두 삼각형 △ABC, △CDA의 공통인 변 $\\overline{\\mathrm{AC}}$이므로 ③ ㄷ = $\\overline{\\mathrm{BD}}$는 옳지 않다. (ㄱ = $\\overline{\\mathrm{AD}}$, ㄴ = $\\angle\\mathrm{CAD}$, ㄹ = $\\angle\\mathrm{DCA}$, ㅁ = $\\overline{\\mathrm{CD}}$는 옳다.)"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 보기의 잘못된 공통변 후보 BD를 시각적으로 배제하고 실제 AC를 한 줄로 연결한다.",
+    "색칠 없는 한 장의 평행사변형으로 SAS 대응각과 증명 후 평행을 분리한다."
+  ]
+}

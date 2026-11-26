@@ -1,0 +1,262 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "7"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "7"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lineAB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "C",
+          "lineAB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "A",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "sBH",
+      "refs": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "sHA",
+      "refs": [
+        "H",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sCH",
+      "refs": [
+        "C",
+        "H"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "givenBH7",
+        "from": "B",
+        "to": "H",
+        "label": "7",
+        "side": "LEFT"
+      },
+      {
+        "id": "givenAH9",
+        "from": "A",
+        "to": "H",
+        "label": "9",
+        "side": "RIGHT"
+      },
+      {
+        "id": "resultAC12",
+        "from": "A",
+        "to": "C",
+        "label": "12",
+        "side": "RIGHT"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rightC",
+      "refs": [
+        "B",
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "rightH",
+      "refs": [
+        "A",
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "빗변 AB의 분할 7+9=16과 AC²=AH·AB=9·16에서 AC=12",
+  "accessibilityDescription": "직각삼각형 ABC의 C에서 빗변 AB로 수선 CH를 내려 H를 표시하고 두 빗변 분할 구간의 길이와 AC의 길이를 각각 치수선으로 표시했다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "CH⊥AB",
+      "mappedTo": [
+        "rightH"
+      ],
+      "sourceQuote": "9. 다음 그림에서 $\\overline{\\mathrm{CA}}$의 길이는?(5점) [원본 그림]"
+    },
+    {
+      "id": "c2",
+      "condition": "∠C=90°",
+      "mappedTo": [
+        "rightC"
+      ],
+      "sourceQuote": "9. 다음 그림에서 $\\overline{\\mathrm{CA}}$의 길이는?(5점) [원본 그림]"
+    },
+    {
+      "id": "c3",
+      "condition": "BH=7",
+      "mappedTo": [
+        "givenBH7"
+      ],
+      "sourceQuote": "9. 다음 그림에서 $\\overline{\\mathrm{CA}}$의 길이는?(5점) [원본 그림]"
+    },
+    {
+      "id": "c4",
+      "condition": "AH=9",
+      "mappedTo": [
+        "givenAH9"
+      ],
+      "sourceQuote": "9. 다음 그림에서 $\\overline{\\mathrm{CA}}$의 길이는?(5점) [원본 그림]"
+    },
+    {
+      "id": "c5",
+      "condition": "AC=12",
+      "mappedTo": [
+        "resultAC12"
+      ],
+      "sourceQuote": "9. 다음 그림에서 $\\overline{\\mathrm{CA}}$의 길이는?(5점) [원본 그림]"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 H, 두 직각 표식과 7·9 치수 소속을 유지한다.",
+    "계산으로 찾는 AC 길이를 해설 축에만 표시한다."
+  ]
+}
