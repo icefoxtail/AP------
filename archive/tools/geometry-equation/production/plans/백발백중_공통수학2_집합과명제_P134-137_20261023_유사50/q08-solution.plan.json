@@ -1,0 +1,58 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "caption": "교집합 조건에서 a=1, A={1,3}, B={0,3}로 정해져 A∪B={0,1,3}이다. 원소의 합은 4.",
+  "accessibilityDescription": "교집합 조건으로 정한 매개변수 값을 반영하여 두 집합과 중복 없는 합집합을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a=1, A={1,3}",
+      "mappedTo": "diagram.elements"
+    },
+    {
+      "id": "c2",
+      "condition": "B={0,3}",
+      "mappedTo": "diagram.elements"
+    },
+    {
+      "id": "c3",
+      "condition": "A∪B",
+      "mappedTo": "diagram.shade"
+    }
+  ],
+  "newVisualInformation": [
+    "매개변수 결정 후 실제 원소 소속과 합집합의 중복 제거를 한눈에 보여 준다."
+  ],
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "0",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "1",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "3",
+        "in": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "shade": "A∪B"
+  }
+}

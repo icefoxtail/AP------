@@ -1,0 +1,77 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "caption": "D=(A-B)∪(B-A)={2,3,4}, I=A∩B={1}이므로 A^c∩B^c=(D∪I)^c={5,6}이다.",
+  "accessibilityDescription": "대칭차집합 D와 교집합 I의 서로소 영역 밖에 놓인 원소로 두 집합의 공통 여집합을 보여 준다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "U={1,2,3,4,5,6}",
+      "mappedTo": "diagram.elements"
+    },
+    {
+      "id": "c2",
+      "condition": "D={2,3,4}, I={1}",
+      "mappedTo": "diagram.elements"
+    },
+    {
+      "id": "c3",
+      "condition": "A^c∩B^c=(D∪I)^c",
+      "mappedTo": "diagram.shade"
+    }
+  ],
+  "newVisualInformation": [
+    "대칭차와 교집합이 전체 합집합을 이루며 바깥 영역이 공통 여집합이라는 관계를 보인다."
+  ],
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "D"
+      },
+      {
+        "id": "I"
+      }
+    ],
+    "disjoint": [
+      [
+        "D",
+        "I"
+      ]
+    ],
+    "elements": [
+      {
+        "text": "1",
+        "in": [
+          "I"
+        ]
+      },
+      {
+        "text": "2",
+        "in": [
+          "D"
+        ]
+      },
+      {
+        "text": "3",
+        "in": [
+          "D"
+        ]
+      },
+      {
+        "text": "4",
+        "in": [
+          "D"
+        ]
+      },
+      {
+        "text": "5",
+        "in": []
+      },
+      {
+        "text": "6",
+        "in": []
+      }
+    ],
+    "shade": "(D∪I)^c"
+  }
+}

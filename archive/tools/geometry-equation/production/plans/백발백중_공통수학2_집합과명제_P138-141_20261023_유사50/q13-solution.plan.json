@@ -1,0 +1,108 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "원의 중심 C(3,-1)를 구하고 점 P를 역방향으로 옮겨 (1,2)를 얻는다. P에서 C로 x방향 +2, y방향 -3 이동한다.",
+  "accessibilityDescription": "원 중심 C(3,-1)과 평행이동 전 점 P(1,2)를 표시하고 P에서 C로 (2,-3)만큼 이동하는 화살표를 그린다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x²+y²−6x+2y+2=0의 중심 C(3,-1)",
+      "mappedTo": "mathPlan.nodes[2]"
+    },
+    {
+      "id": "c2",
+      "condition": "(a+2,b−3)=C",
+      "mappedTo": "mathPlan.nodes[3],displaySegments[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "원의 중심과 평행이동 전후 두 점 사이의 방향을 도식화한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPC",
+      "refs": [
+        "P",
+        "C"
+      ],
+      "arrow": "END",
+      "emphasis": "BOLD"
+    }
+  ],
+  "coordinateLabels": [
+    "C",
+    "P"
+  ]
+}
