@@ -1,164 +1,117 @@
 {
   "capability": "set-diagram-figure-v1",
   "diagram": {
-    "kind": "MAPPING",
-    "columns": [
+    "kind": "VENN",
+    "sets": [
       {
         "id": "A",
         "name": "2의 배수",
-        "elements": [
-          "2",
-          "4",
-          "6",
-          "8",
-          "10",
-          "12"
-        ]
+        "count": 6
       },
       {
         "id": "B",
-        "name": "합집합",
-        "elements": [
-          "2",
-          "3",
-          "4",
-          "6",
-          "8",
-          "9",
-          "10",
-          "12"
+        "name": "3의 배수",
+        "count": 4
+      }
+    ],
+    "elements": [
+      {
+        "text": "1",
+        "in": []
+      },
+      {
+        "text": "2",
+        "in": [
+          "A"
         ]
       },
       {
-        "id": "C",
-        "name": "3의 배수",
-        "elements": [
-          "3",
-          "6",
-          "9",
-          "12"
+        "text": "3",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "4",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "5",
+        "in": []
+      },
+      {
+        "text": "6",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "7",
+        "in": []
+      },
+      {
+        "text": "8",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "9",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "10",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "11",
+        "in": []
+      },
+      {
+        "text": "12",
+        "in": [
+          "A",
+          "B"
         ]
       }
     ],
-    "arrows": [
-      {
-        "from": {
-          "column": 0,
-          "element": 0
-        },
-        "to": {
-          "column": 1,
-          "element": 0
-        },
-        "style": "SOLID"
-      },
-      {
-        "from": {
-          "column": 0,
-          "element": 1
-        },
-        "to": {
-          "column": 1,
-          "element": 2
-        },
-        "style": "SOLID"
-      },
-      {
-        "from": {
-          "column": 0,
-          "element": 2
-        },
-        "to": {
-          "column": 1,
-          "element": 3
-        },
-        "style": "SOLID"
-      },
-      {
-        "from": {
-          "column": 0,
-          "element": 3
-        },
-        "to": {
-          "column": 1,
-          "element": 4
-        },
-        "style": "SOLID"
-      },
-      {
-        "from": {
-          "column": 0,
-          "element": 4
-        },
-        "to": {
-          "column": 1,
-          "element": 6
-        },
-        "style": "SOLID"
-      },
-      {
-        "from": {
-          "column": 0,
-          "element": 5
-        },
-        "to": {
-          "column": 1,
-          "element": 7
-        },
-        "style": "SOLID"
-      },
-      {
-        "from": {
-          "column": 2,
-          "element": 0
-        },
-        "to": {
-          "column": 1,
-          "element": 1
-        },
-        "style": "SOLID"
-      },
-      {
-        "from": {
-          "column": 2,
-          "element": 1
-        },
-        "to": {
-          "column": 1,
-          "element": 3
-        },
-        "style": "SOLID"
-      },
-      {
-        "from": {
-          "column": 2,
-          "element": 2
-        },
-        "to": {
-          "column": 1,
-          "element": 5
-        },
-        "style": "SOLID"
-      },
-      {
-        "from": {
-          "column": 2,
-          "element": 3
-        },
-        "to": {
-          "column": 1,
-          "element": 7
-        },
-        "style": "SOLID"
-      }
-    ]
+    "universe": {
+      "count": 12
+    },
+    "countStyle": "paren"
   },
-  "caption": "가운데 합집합에는 서로 다른 카드 번호 8개를 한 번씩 적었다. 양쪽에서 6과 12로 화살표가 겹쳐 들어오므로 중복 2개를 빼야 한다. 6+4−2=8.",
+  "caption": "1부터 12까지의 카드에서 2의 배수와 3의 배수를 겹치는 두 집합으로 나타내며, 공통원소 6·12를 한 번만 세어 합집합은 8개다.",
+  "accessibilityDescription": "1부터 12까지의 카드를 2의 배수, 3의 배수, 양쪽 모두, 어느 쪽도 아닌 영역에 정확히 배치한 벤 다이어그램.",
   "sourceConditions": [
     {
-      "id": "source",
-      "condition": "$1$부터 $12$까지의 자연수가 각각 적힌 $12$장의 카드 중에서 한 장을 뽑을 때, $2$의 배수 또는 $3$의 배수가 적힌 카드를 뽑는 경우의 수는? [4점]",
-      "mappedTo": "diagram"
+      "id": "universe",
+      "condition": "서로 다른 1부터 12까지의 12장 카드에서 하나를 뽑는다.",
+      "mappedTo": "diagram.universe; diagram.elements"
+    },
+    {
+      "id": "even",
+      "condition": "2의 배수는 2,4,6,8,10,12로 여섯 개다.",
+      "mappedTo": "diagram.sets:A; diagram.elements:2,4,6,8,10,12"
+    },
+    {
+      "id": "triple",
+      "condition": "3의 배수는 3,6,9,12로 네 개다.",
+      "mappedTo": "diagram.sets:B; diagram.elements:3,6,9,12"
+    },
+    {
+      "id": "overlap",
+      "condition": "6과 12는 두 집합에 공통이어서 합집합은 6+4-2=8개다.",
+      "mappedTo": "diagram.elements:6,12"
     }
+  ],
+  "newVisualInformation": [
+    "교차 화살표 10개를 없애고 2의 배수만인 4개·공통인 2개·3의 배수만인 2개·집합 밖인 4개를 별도 영역에 실제 배치한다."
   ]
 }

@@ -1,0 +1,282 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sBF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "sFD",
+      "refs": [
+        "F",
+        "D"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "ab",
+        "from": "A",
+        "to": "B",
+        "label": "10",
+        "side": "LEFT"
+      },
+      {
+        "id": "cd",
+        "from": "C",
+        "to": "D",
+        "label": "15",
+        "side": "RIGHT"
+      },
+      {
+        "id": "fd",
+        "from": "F",
+        "to": "D",
+        "label": "12",
+        "side": "BELOW"
+      },
+      {
+        "id": "ef",
+        "from": "E",
+        "to": "F",
+        "label": "6",
+        "side": "RIGHT"
+      }
+    ]
+  },
+  "caption": "수직선분 AB, EF, CD를 밑변 BD에 내리고 두 대각선의 교점 E와 수선의 발 F를 나타낸다.",
+  "accessibilityDescription": "수직선분 AB, EF, CD를 밑변 BD에 내리고 두 대각선의 교점 E와 수선의 발 F를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "vertical",
+      "condition": "AB, EF, CD는 BD에 수직이며 A,E,D와 B,E,C는 공선이다.",
+      "mappedTo": "displaySegments:sAB,sEF,sCD,sAE,sED,sBE,sEC; rightAngles:rB,rF,rD"
+    },
+    {
+      "id": "given",
+      "condition": "AB=10cm, CD=15cm, FD=12cm이다.",
+      "mappedTo": "planeMarks.dimensions:ab,cd,fd"
+    },
+    {
+      "id": "derived",
+      "condition": "EF=6cm를 닮음·넓이 관계로 구한다.",
+      "mappedTo": "planeMarks.dimensions:ef"
+    }
+  ],
+  "newVisualInformation": [
+    "원문에 그려진 꼭짓점·중점·중선·보조선과 길이·직각·같은 길이 눈금을 실제 도형 필드에 배치하고, 넓이 지정이 없는 면의 채움을 제거한다."
+  ],
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "rF",
+      "refs": [
+        "E",
+        "F",
+        "D"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "B",
+        "D",
+        "C"
+      ]
+    }
+  ]
+}

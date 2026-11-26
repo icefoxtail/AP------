@@ -1,0 +1,315 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sCF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "sFD",
+      "refs": [
+        "F",
+        "D"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sAF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eFoldLong",
+        "count": 1,
+        "segments": [
+          "sDA",
+          "sAE"
+        ]
+      },
+      {
+        "id": "eFoldShort",
+        "count": 2,
+        "segments": [
+          "sFD",
+          "sEF"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "ab",
+        "from": "A",
+        "to": "B",
+        "label": "6",
+        "side": "LEFT"
+      },
+      {
+        "id": "ad",
+        "from": "A",
+        "to": "D",
+        "label": "10",
+        "side": "ABOVE"
+      },
+      {
+        "id": "be",
+        "from": "B",
+        "to": "E",
+        "label": "8",
+        "side": "BELOW"
+      },
+      {
+        "id": "ce",
+        "from": "E",
+        "to": "C",
+        "label": "2",
+        "side": "BELOW"
+      },
+      {
+        "id": "ef",
+        "from": "E",
+        "to": "F",
+        "label": "10/3",
+        "side": "RIGHT"
+      }
+    ]
+  },
+  "caption": "접기 전 꼭짓점 D가 E로 겹치는 직사각형에서 원래 변 AD·DF는 점선으로 남기고, AE=AD와 EF=DF를 같은 길이 눈금·직각으로 표시한다.",
+  "accessibilityDescription": "접기 전 꼭짓점 D가 E로 겹치는 직사각형에서 원래 변 AD·DF는 점선으로 남기고, AE=AD와 EF=DF를 같은 길이 눈금·직각으로 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "fold",
+      "condition": "직사각형 ABCD를 접어 D가 BC 위의 E와 겹치며 접는 선은 AF이다.",
+      "mappedTo": "displaySegments:sDA,sFD,sAE,sAF,sEF; planeMarks.equalLengths:eFoldLong,eFoldShort"
+    },
+    {
+      "id": "given",
+      "condition": "AB=6cm, AD=10cm이고 B,E,C는 공선이다.",
+      "mappedTo": "planeMarks.dimensions:ab,ad; displaySegments:sBE,sEC"
+    },
+    {
+      "id": "derived",
+      "condition": "BE=8cm, CE=2cm, EF=10/3cm이다.",
+      "mappedTo": "planeMarks.dimensions:be,ce,ef"
+    },
+    {
+      "id": "perpendicular",
+      "condition": "AB⊥BC, CD⊥BC, AE⊥EF이다.",
+      "mappedTo": "rightAngles:rB,rC,rE"
+    }
+  ],
+  "newVisualInformation": [
+    "원문에 그려진 꼭짓점·중점·중선·보조선과 길이·직각·같은 길이 눈금을 실제 도형 필드에 배치하고, 넓이 지정이 없는 면의 채움을 제거한다."
+  ],
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "rC",
+      "refs": [
+        "E",
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "rE",
+      "refs": [
+        "A",
+        "E",
+        "F"
+      ]
+    }
+  ]
+}

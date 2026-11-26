@@ -1,0 +1,257 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "14"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "P",
+    "Q",
+    "R",
+    "G"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sBQ",
+      "refs": [
+        "B",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQC",
+      "refs": [
+        "Q",
+        "C"
+      ]
+    },
+    {
+      "id": "sAR",
+      "refs": [
+        "A",
+        "R"
+      ]
+    },
+    {
+      "id": "sRC",
+      "refs": [
+        "R",
+        "C"
+      ]
+    },
+    {
+      "id": "sAG",
+      "refs": [
+        "A",
+        "G"
+      ]
+    },
+    {
+      "id": "sGQ",
+      "refs": [
+        "G",
+        "Q"
+      ]
+    },
+    {
+      "id": "sBG",
+      "refs": [
+        "B",
+        "G"
+      ]
+    },
+    {
+      "id": "sGR",
+      "refs": [
+        "G",
+        "R"
+      ]
+    },
+    {
+      "id": "sCG",
+      "refs": [
+        "C",
+        "G"
+      ]
+    },
+    {
+      "id": "sGP",
+      "refs": [
+        "G",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eAP",
+        "count": 1,
+        "segments": [
+          "sAP",
+          "sPB"
+        ]
+      },
+      {
+        "id": "eBQ",
+        "count": 2,
+        "segments": [
+          "sBQ",
+          "sQC"
+        ]
+      },
+      {
+        "id": "eAR",
+        "count": 3,
+        "segments": [
+          "sAR",
+          "sRC"
+        ]
+      }
+    ]
+  },
+  "caption": "삼각형 ABC의 세 중선 AQ, BR, CP가 무게중심 G에서 만나고, P·Q·R에 각각 중점 눈금이 표시된 문제 도형이다.",
+  "accessibilityDescription": "삼각형 ABC의 세 중선 AQ, BR, CP가 무게중심 G에서 만나고, P·Q·R에 각각 중점 눈금이 표시된 문제 도형이다.",
+  "sourceConditions": [
+    {
+      "id": "centroid",
+      "condition": "G는 삼각형 ABC의 무게중심이고 AQ,BR,CP는 중선이다.",
+      "mappedTo": "mathPlan.nodes:G; displaySegments:sAG,sGQ,sBG,sGR,sCG,sGP"
+    },
+    {
+      "id": "midpoints",
+      "condition": "P는 AB 중점, Q는 BC 중점, R는 AC 중점이다.",
+      "mappedTo": "mathPlan.nodes:P,Q,R; planeMarks.equalLengths:eAP,eBQ,eAR"
+    }
+  ],
+  "newVisualInformation": [
+    "원문에 그려진 꼭짓점·중점·중선·보조선과 길이·직각·같은 길이 눈금을 실제 도형 필드에 배치하고, 넓이 지정이 없는 면의 채움을 제거한다."
+  ]
+}

@@ -5,24 +5,27 @@
     "columns": [
       {
         "id": "A",
-        "name": "끝수",
+        "name": "자릿수 경우",
         "elements": [
-          "0",
+          "두자리",
+          "끝0",
           "2또는4"
         ]
       },
       {
         "id": "B",
-        "name": "경우",
+        "name": "경우의 수",
         "elements": [
+          "25",
           "20",
           "32"
         ]
       },
       {
         "id": "C",
-        "name": "합",
+        "name": "정답",
         "elements": [
+          "25",
           "52"
         ]
       }
@@ -52,6 +55,17 @@
       },
       {
         "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
           "column": 1,
           "element": 0
         },
@@ -68,21 +82,53 @@
         },
         "to": {
           "column": 2,
-          "element": 0
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 2
+        },
+        "to": {
+          "column": 2,
+          "element": 1
         },
         "style": "SOLID"
       }
     ]
   },
-  "caption": "두 자리 자연수는 십의 자리 5가지와 일의 자리 5가지로 5×5=25가지이다. 세 자리 짝수에서 일의 자리가 0이면 5×4=20가지이고, 일의 자리가 2 또는 4이면 2×4×4=32가지이다. 따라서 20+32=52가지이다. 따라서 답은 (1) 25, (2) 52이다.",
-  "newVisualInformation": [
-    "끝수가 0인 경우 20가지와 끝수가 2 또는 4인 경우 32가지가 합 52로 모이는 대응도이다."
-  ],
+  "caption": "두 자리 자연수는 5×5=25개이다. 세 자리 짝수는 끝수가 0이면 5×4=20개, 끝수가 2 또는 4이면 2×4×4=32개이므로 합계 52개다.",
+  "accessibilityDescription": "두 자리 수 25개와 세 자리 짝수 중 끝수가 0인 20개, 2 또는 4인 32개를 구분하고 세 자리 짝수 52개로 합치는 경우의 수 대응도.",
   "sourceConditions": [
     {
-      "id": "source",
-      "condition": "[서술형 2] 상자 안에 $0$,$1$,$2$,$3$,$4$,$5$가 적힌 $6$장의 카드가 있다. 다음 물음에 답하시오\n(1) 서로 다른 두 장 뽑아 두자리 자연수를 만들 수 있는 경우의 수를 구하시오. (단답형) [2점]\n(2) 세 장을 뽑아 세 자리 자연수를 만들 때 짝수가 되는 경우의 수를 구하시오. (풀이과정 서술) [3점]",
-      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+      "id": "digits",
+      "condition": "카드는 0,1,2,3,4,5로 서로 다른 숫자 6장이며 재사용하지 않는다.",
+      "mappedTo": "diagram.columns:A"
+    },
+    {
+      "id": "two",
+      "condition": "두 자리 수는 십의 자리 5가지, 일의 자리 5가지로 25가지다.",
+      "mappedTo": "diagram.columns:A,B,C; diagram.arrows:0,3"
+    },
+    {
+      "id": "endingzero",
+      "condition": "세 자리 짝수의 일의 자리가 0이면 5×4=20가지다.",
+      "mappedTo": "diagram.columns:A,B; diagram.arrows:1,4"
+    },
+    {
+      "id": "endingeven",
+      "condition": "일의 자리가 2 또는 4이면 2×4×4=32가지다.",
+      "mappedTo": "diagram.columns:A,B; diagram.arrows:2,5"
+    },
+    {
+      "id": "total",
+      "condition": "세 자리 짝수는 20+32=52가지다.",
+      "mappedTo": "diagram.columns:C; diagram.arrows:4,5"
     }
+  ],
+  "newVisualInformation": [
+    "기존 그림에서 빠졌던 (1) 두 자리 수 25가지의 실제 분기를 추가하고, (2) 끝수별 20·32의 합계 52를 따로 연결한다."
   ]
 }
