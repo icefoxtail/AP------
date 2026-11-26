@@ -1,0 +1,203 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "원뿔"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "id": "cone",
+            "kind": "CONE",
+            "radius": 10,
+            "height": 17.32050807568877,
+            "axis": true
+          }
+        ],
+        "dims": [
+          {
+            "slant": true,
+            "label": "20"
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "중심 단면"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "10"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "O"
+        ],
+        "displayLines": [],
+        "displaySegments": [
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "BO",
+            "refs": [
+              "B",
+              "O"
+            ]
+          },
+          {
+            "id": "OA",
+            "refs": [
+              "O",
+              "A"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "given60",
+              "refs": [
+                "A",
+                "B",
+                "O"
+              ],
+              "value": 60,
+              "factRole": "GIVEN",
+              "label": "60"
+            },
+            {
+              "id": "right",
+              "refs": [
+                "A",
+                "O",
+                "B"
+              ],
+              "value": 90,
+              "factRole": "GIVEN"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "hyp",
+              "ownerSegment": "AB",
+              "text": "20",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "height",
+              "ownerSegment": "OA",
+              "text": "h",
+              "factRole": "GIVEN"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "모선 20cm와 밑각 60°를 표시한 원뿔과 중심 단면",
+  "sourceQuote": "오른쪽 그림과 같이 $\\overline{AB}$의 길이가 $20\\rm\\,cm$",
+  "sourceConditions": [
+    {
+      "id": "cone",
+      "condition": "원뿔 AB=20cm, ABO=60°; 원뿔과 중심 단면의 실제 비율 유지",
+      "mappedTo": [
+        "panels"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 원뿔을 보존하고 중심 단면에 A,B,O, 직각과 주어진 60°를 표시한다."
+  ],
+  "accessibilityDescription": "원뿔의 입체 외형과 단면 직각삼각형 ABO가 나란히 있다. 모선 AB는 20cm이고 각 ABO는 60도이다."
+}

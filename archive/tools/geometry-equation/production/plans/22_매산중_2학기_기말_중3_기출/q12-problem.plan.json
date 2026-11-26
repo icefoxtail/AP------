@@ -1,0 +1,381 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "146"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "inc",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "O",
+          "P"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "thales",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "146"
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "crossAB",
+        "op": "INTERSECTION",
+        "inputs": [
+          "inc",
+          "thales"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "crossAB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "P",
+            "O"
+          ],
+          "sign": 1
+        }
+      },
+      {
+        "id": "B",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "crossAB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "P",
+            "O"
+          ],
+          "sign": -1
+        }
+      },
+      {
+        "id": "C",
+        "op": "VECTOR_SCALE_POINT",
+        "inputs": [
+          "P",
+          "A"
+        ],
+        "args": {
+          "k": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "8"
+              },
+              {
+                "kind": "integer",
+                "value": "11"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cC",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "crossE",
+        "op": "INTERSECTION",
+        "inputs": [
+          "inc",
+          "cC"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "crossE"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "C",
+            "O"
+          ],
+          "sign": -1
+        }
+      },
+      {
+        "id": "lineCE",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "E"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "linePB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "P",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lineCE",
+          "linePB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "inc"
+  ],
+  "displaySegments": [
+    {
+      "id": "PC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "PD",
+      "refs": [
+        "P",
+        "D"
+      ]
+    },
+    {
+      "id": "DB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "CE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "ED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [],
+    "expressionLabels": [
+      {
+        "id": "PC8",
+        "ownerSegment": "PC",
+        "text": "8",
+        "factRole": "GIVEN"
+      }
+    ],
+    "callouts": [
+      {
+        "id": "ca3",
+        "kind": "SEGMENT",
+        "path": [
+          "C",
+          "A"
+        ],
+        "at": "ABOVE",
+        "scale": 1.5,
+        "orientation": "HORIZONTAL",
+        "link": "ENDS",
+        "dimensions": [
+          {
+            "id": "caDim",
+            "from": "C",
+            "to": "A",
+            "label": "3",
+            "unit": "cm",
+            "side": "ABOVE",
+            "style": "ARROW",
+            "offset": "AUTO"
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "원 밖 점 P에서 그은 두 접선의 접점 A, B와 보조 접선 CED 및 PC=8cm, CA=3cm를 보여 준다.",
+  "sourceConditions": [
+    {
+      "id": "original-figure",
+      "condition": "원 밖 점 P에서 그은 두 접선의 접점 A, B와 보조 접선 CED 및 PC=8cm, CA=3cm를 보여 준다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원 밖 점 P에서 그은 두 접선의 접점 A, B와 보조 접선 CED 및 PC=8cm, CA=3cm를 보여 준다."
+  ],
+  "accessibilityDescription": "원 밖 점 P에서 그은 두 접선의 접점 A, B와 보조 접선 CED 및 PC=8cm, CA=3cm를 보여 준다.",
+  "sourceQuote": "오른쪽 그림에서 두 점 $A,B$는 점 $P$에서 원 $O$에 그"
+}

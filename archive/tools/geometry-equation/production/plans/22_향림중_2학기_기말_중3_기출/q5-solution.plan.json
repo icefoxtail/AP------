@@ -1,0 +1,524 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "8",
+                  "denominator": "25"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "numerator": "3",
+                      "denominator": "5"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "div",
+                      "args": [
+                        {
+                          "kind": "expression",
+                          "op": "mul",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "8"
+                            },
+                            {
+                              "kind": "expression",
+                              "op": "sqrt",
+                              "args": [
+                                {
+                                  "kind": "integer",
+                                  "value": "14"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "kind": "integer",
+                          "value": "5"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "sub",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "156",
+                  "denominator": "25"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "numerator": "4",
+                      "denominator": "5"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "div",
+                      "args": [
+                        {
+                          "kind": "expression",
+                          "op": "mul",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "8"
+                            },
+                            {
+                              "kind": "expression",
+                              "op": "sqrt",
+                              "args": [
+                                {
+                                  "kind": "integer",
+                                  "value": "14"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "kind": "integer",
+                          "value": "5"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "-8",
+                  "denominator": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "div",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "12"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "14"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "35"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "sub",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "24",
+                  "denominator": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "div",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "16"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "14"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "35"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "inc",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "14"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "7"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "P",
+    "Q",
+    "R"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "inc"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "AP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "AR",
+      "refs": [
+        "A",
+        "R"
+      ]
+    },
+    {
+      "id": "BP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "BQ",
+      "refs": [
+        "B",
+        "Q"
+      ]
+    },
+    {
+      "id": "CR",
+      "refs": [
+        "C",
+        "R"
+      ]
+    },
+    {
+      "id": "CQ",
+      "refs": [
+        "C",
+        "Q"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "AB10",
+        "ownerSegment": "AB",
+        "text": "10",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BC12",
+        "ownerSegment": "BC",
+        "text": "12",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "AC6",
+        "ownerSegment": "AC",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "x",
+        "ownerSegment": "AP",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BPpart",
+        "ownerSegment": "BP",
+        "text": "10-x",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "CRpart",
+        "ownerSegment": "CR",
+        "text": "6-x",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "A-tangents",
+        "count": 1,
+        "segments": [
+          "AP",
+          "AR"
+        ]
+      },
+      {
+        "id": "B-tangents",
+        "count": 2,
+        "segments": [
+          "BP",
+          "BQ"
+        ]
+      },
+      {
+        "id": "C-tangents",
+        "count": 3,
+        "segments": [
+          "CR",
+          "CQ"
+        ]
+      }
+    ]
+  },
+  "caption": "해설에 필요한 도형 관계: 다음 그림에서 $\\triangle ABC$는 원 $O$에 외접하고, 세 점 $P$, $Q$, $R$은 각각 원 $O$의 접점이다. $\\overline{AB}=10",
+  "accessibilityDescription": "다음 그림에서 $\\triangle ABC$는 원 $O$에 외접하고, 세 점 $P$, $Q$, $R$은 각각 원 $O$의 접점이다. $\\overline{AB}=10\\rm\\,cm$, $\\overline{BC}=12\\rm\\,cm$, $\\overline{AC",
+  "sourceQuote": "다음 그림에서 $\\triangle ABC$는 원 $O$에 외접하",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "다음 그림에서 $\\triangle ABC$는 원 $O$에 외접하고, 세 점 $P$, $Q$, $R$은 각각 원 $O$의 접점이다. $\\overline{AB}=10\\rm\\,cm$, $\\overline{BC}=12\\rm\\,cm$, $\\overline{AC}=6\\rm\\,cm$일 때, $x$의 값은? [4점]",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "해설에 필요한 각도와 보조 관계를 구분해 표시"
+  ]
+}

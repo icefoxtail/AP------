@@ -1,0 +1,170 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "baseLine",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "C",
+          "baseLine"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "A",
+    "C",
+    "H"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "base",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "side",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "other",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "givenAngle",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 30,
+        "factRole": "GIVEN",
+        "label": "30"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "baselen",
+        "ownerSegment": "base",
+        "text": "12",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sidelen",
+        "ownerSegment": "side",
+        "text": "8",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "삼각형 ABC에서 AB=12cm, BC=8cm, 끼인각 B=30°가 주어졌다.",
+  "sourceConditions": [
+    {
+      "id": "original-figure",
+      "condition": "삼각형 ABC에서 AB=12cm, BC=8cm, 끼인각 B=30°가 주어졌다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "삼각형 ABC에서 AB=12cm, BC=8cm, 끼인각 B=30°가 주어졌다."
+  ],
+  "accessibilityDescription": "삼각형 ABC에서 AB=12cm, BC=8cm, 끼인각 B=30°가 주어졌다.",
+  "sourceQuote": "오른쪽 삼각형 $ABC$의 넓이를 구한 것은? (4점)"
+}

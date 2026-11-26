@@ -1,0 +1,326 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "inc",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "inc"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "AF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "FC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "CE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "radius",
+      "refs": [
+        "O",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "rightB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 90,
+        "noLabel": true,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "AF2",
+        "ownerSegment": "AF",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "FC3",
+        "ownerSegment": "FC",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "radius1",
+        "ownerSegment": "radius",
+        "text": "1",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "A-tangents",
+        "count": 1,
+        "segments": [
+          "AD",
+          "AF"
+        ]
+      },
+      {
+        "id": "B-tangents",
+        "count": 2,
+        "segments": [
+          "BD",
+          "BE"
+        ]
+      },
+      {
+        "id": "C-tangents",
+        "count": 3,
+        "segments": [
+          "CE",
+          "FC"
+        ]
+      }
+    ]
+  },
+  "caption": "해설에 필요한 도형 관계: [서술형 1] 다음 그림과 같이 $\\angle B=90^\\circ$인 직각삼각형 $ABC$가 원 $O$에 외접하고, 세 점 $D$, $E$, $F$는 각각 원 $",
+  "accessibilityDescription": "[서술형 1] 다음 그림과 같이 $\\angle B=90^\\circ$인 직각삼각형 $ABC$가 원 $O$에 외접하고, 세 점 $D$, $E$, $F$는 각각 원 $O$의 접점이다. $\\overline{AF}=2\\rm\\,cm$, $\\overline{CF}",
+  "sourceQuote": "[서술형 1] 다음 그림과 같이 $\\angle B=90^\\cir",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "[서술형 1] 다음 그림과 같이 $\\angle B=90^\\circ$인 직각삼각형 $ABC$가 원 $O$에 외접하고, 세 점 $D$, $E$, $F$는 각각 원 $O$의 접점이다. $\\overline{AF}=2\\rm\\,cm$, $\\overline{CF}=3\\rm\\,cm$일 때, 원 $O$의 둘레의 길이를 구하시오. [5점]",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "해설에 필요한 각도와 보조 관계를 구분해 표시"
+  ]
+}
