@@ -2072,11 +2072,7 @@ window.questionBank = [
     "solutionVisualReason": "두 날짜의 분기를 해설에서 각각 곱해 더하는 식으로 모두 설명한다. 기존 해설 SVG는 수정 전의 확률과 오답을 표시하므로 학생 화면 연결을 해제한다.",
     "metaEvidenceDebt": [
       "EVIDENCE_DEBT: The current ACTIVE registry has no exact M2 two-stage conditional-weather probability template; no higher-course template is copied down."
-    ],
-    "solutionImage": "assets/images/24_왕운중_2학기_기말_중2_수학/q22-solution.svg",
-    "solutionImageAlt": "금요일에 비가 온 조건에서 토요일 비 2/3·안 옴 1/3으로 나누고, 일요일에 비가 오는 두 경로를 표시한다.",
-    "solutionImageCaption": "금요일에 비가 온 조건에서 토요일 비 2/3·안 옴 1/3으로 나누고, 일요일에 비가 오는 두 경로를 표시한다.",
-    "solutionImageSize": "full"
+    ]
   },
   {
     "id": 23,
