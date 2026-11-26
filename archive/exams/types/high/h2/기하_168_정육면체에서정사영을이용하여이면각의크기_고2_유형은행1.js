@@ -43,7 +43,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_168_정육면체에서정사영을이용하여이면각의크기_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "기하 유형은행 168번 유형 1번: 대표 정육면체의 삼각형 DEG를 연한 색으로 표시함. 각 θ의 수치와 보조선은 그림에 미표시.",
+    "imageCaption": "기하 유형은행 168번 유형 1번: 대표 정육면체의 삼각형 DEG를 연한 색으로 표시함. 각 θ의 수치와 보조선은 그림에 미표시.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -132,7 +136,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_168_정육면체에서정사영을이용하여이면각의크기_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "기하 유형은행 168번 유형 3번: 한 모서리 4인 정육면체. D에서 A로 1인 P, G에서 F로 1인 Q 및 삼각형 PBQ.",
+    "imageCaption": "기하 유형은행 168번 유형 3번: 한 모서리 4인 정육면체. D에서 A로 1인 P, G에서 F로 1인 Q 및 삼각형 PBQ.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -176,7 +184,11 @@ window.questionBank = [
       "CC_INTERNAL_DIVISION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_168_정육면체에서정사영을이용하여이면각의크기_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "기하 유형은행 168번 유형 4번: 정육면체 AE의 K는 A에서 1, E에서 2 떨어져 있으며 BHK 삼각형을 표시.",
+    "imageCaption": "기하 유형은행 168번 유형 4번: 정육면체 AE의 K는 A에서 1, E에서 2 떨어져 있으며 BHK 삼각형을 표시.",
+    "imageSize": "full"
   },
   {
     "id": 5,

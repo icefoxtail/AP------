@@ -43,7 +43,11 @@ window.questionBank = [
       "CC_TRIGONOMETRIC_TANGENT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_160_정사영의길이_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "직선의 평면 위 정사영",
+    "imageCaption": "직선의 평면 위 정사영",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -88,7 +92,11 @@ window.questionBank = [
       "CC_RIGHT_TRIANGLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_160_정사영의길이_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "사각뿔 모서리와 밑면 사이 각",
+    "imageCaption": "사각뿔 모서리와 밑면 사이 각",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -222,7 +230,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_160_정사영의길이_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "정육면체 면대각선의 정사영",
+    "imageCaption": "정육면체 면대각선의 정사영",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -267,7 +279,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_160_정사영의길이_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "정육면체 대각면에 내린 정사영",
+    "imageCaption": "정육면체 대각면에 내린 정사영",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -312,6 +328,10 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_160_정사영의길이_고2_유형은행1/q7-problem.svg",
+    "imageAlt": "정사면체 CE의 정사영",
+    "imageCaption": "정사면체 CE의 정사영",
+    "imageSize": "full"
   }
 ];

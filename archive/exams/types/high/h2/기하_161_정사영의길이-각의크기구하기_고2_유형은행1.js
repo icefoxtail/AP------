@@ -131,6 +131,10 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_161_정사영의길이-각의크기구하기_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "직육면체의 대각선과 세 평면",
+    "imageCaption": "직육면체의 대각선과 세 평면",
+    "imageSize": "full"
   }
 ];

@@ -183,7 +183,11 @@ window.questionBank = [
       "CC_RIGHT_TRIANGLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "REINTERPRETATION"
+    "integrationPattern": "REINTERPRETATION",
+    "image": "assets/images/기하_157_두평면이이루는각-이면각의크기구하기1_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "직육면체의 두 평면 PFG와 EHQ",
+    "imageCaption": "직육면체의 두 평면 PFG와 EHQ",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -228,7 +232,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_157_두평면이이루는각-이면각의크기구하기1_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "직육면체의 단면 삼각형 CHF",
+    "imageCaption": "직육면체의 단면 삼각형 CHF",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -273,7 +281,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_157_두평면이이루는각-이면각의크기구하기1_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "직육면체의 단면 삼각형 DEG",
+    "imageCaption": "직육면체의 단면 삼각형 DEG",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -363,7 +375,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_157_두평면이이루는각-이면각의크기구하기1_고2_유형은행1/q8-problem.svg",
+    "imageAlt": "정육면체의 단면 DEM과 수선의 발 I",
+    "imageCaption": "정육면체의 단면 DEM과 수선의 발 I",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -455,7 +471,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_157_두평면이이루는각-이면각의크기구하기1_고2_유형은행1/q10-problem.svg",
+    "imageAlt": "세 모서리가 직교하는 사면체 OABC",
+    "imageCaption": "세 모서리가 직교하는 사면체 OABC",
+    "imageSize": "full"
   },
   {
     "id": 11,
@@ -500,6 +520,10 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_157_두평면이이루는각-이면각의크기구하기1_고2_유형은행1/q11-problem.svg",
+    "imageAlt": "사면체 ABCD의 두 면과 중점 M",
+    "imageCaption": "사면체 ABCD의 두 면과 중점 M",
+    "imageSize": "full"
   }
 ];

@@ -43,7 +43,11 @@ window.questionBank = [
       "CC_MIDPOINT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_167_정사영의넓이를이용한이면각구하기_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "정육면체 한 변 4에서 AB·BC 중점 P,Q 및 BF의 1:3 내분점 R",
+    "imageCaption": "정육면체 한 변 4에서 AB·BC 중점 P,Q 및 BF의 1:3 내분점 R",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -90,7 +94,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_167_정사영의넓이를이용한이면각구하기_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "직삼각기둥 ABC-DEF 안의 정삼각형 PQR",
+    "imageCaption": "직삼각기둥 ABC-DEF 안의 정삼각형 PQR",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -136,7 +144,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_167_정사영의넓이를이용한이면각구하기_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "밑면 한 변 3의 정삼각기둥을 ABC의 경사 평면으로 자른 입체",
+    "imageCaption": "밑면 한 변 3의 정삼각기둥을 ABC의 경사 평면으로 자른 입체",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -183,7 +195,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_167_정사영의넓이를이용한이면각구하기_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "AB=4, AD=2, AE=4 직육면체에서 M,N 중점 및 마름모 BNHM",
+    "imageCaption": "AB=4, AD=2, AE=4 직육면체에서 M,N 중점 및 마름모 BNHM",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -229,6 +245,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_167_정사영의넓이를이용한이면각구하기_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "밑면 한 변 4, 옆모서리 6의 정사각뿔 A-BCDE와 중점 삼각형 PQR",
+    "imageCaption": "밑면 한 변 4, 옆모서리 6의 정사각뿔 A-BCDE와 중점 삼각형 PQR",
+    "imageSize": "full"
   }
 ];
