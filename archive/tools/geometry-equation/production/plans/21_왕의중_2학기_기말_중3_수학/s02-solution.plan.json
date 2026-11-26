@@ -286,7 +286,8 @@
         ],
         "value": 25,
         "factRole": "GIVEN",
-        "label": "25"
+        "label": "25",
+        "style": "ARC"
       },
       {
         "id": "A60",
@@ -298,7 +299,8 @@
         "value": 60,
         "factRole": "DERIVED_INTERMEDIATE",
         "color": "WARM",
-        "noLabel": true
+        "label": "60",
+        "style": "ARC"
       },
       {
         "id": "P85",
@@ -309,7 +311,8 @@
         ],
         "value": 85,
         "factRole": "GIVEN",
-        "label": "85"
+        "label": "85",
+        "style": "ARC"
       }
     ],
     "arcs": [
@@ -325,34 +328,10 @@
         "labelPlacement": "LEADER",
         "color": "WARM"
       }
-    ],
-    "callouts": [
-      {
-        "id": "kA",
-        "kind": "ANGLE",
-        "vertex": "A",
-        "rays": [
-          "D",
-          "B"
-        ],
-        "at": "LEFT",
-        "angles": [
-          {
-            "id": "kAc",
-            "refs": [
-              "D",
-              "A",
-              "B"
-            ],
-            "value": 60,
-            "label": "60",
-            "color": "WARM"
-          }
-        ]
-      }
     ]
   },
   "caption": "교차하는 두 현이 만드는 각과 호 DB의 중심각을 보여 주는 해설 그림이다.",
+  "accessibilityDescription": "원 안의 두 현 AB와 CD가 P에서 만나며 D의 25°, P의 85°, A의 60°와 호 DB 길이 4cm를 해당 선과 호 옆에 표시한다.",
   "sourceConditions": [
     {
       "id": "c1",

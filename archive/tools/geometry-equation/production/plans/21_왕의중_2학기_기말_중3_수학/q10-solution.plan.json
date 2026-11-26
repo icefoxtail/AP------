@@ -237,7 +237,8 @@
           "T"
         ],
         "value": 75,
-        "factRole": "GIVEN"
+        "factRole": "GIVEN",
+        "style": "ARC"
       },
       {
         "id": "A75",
@@ -248,19 +249,8 @@
         ],
         "value": 75,
         "factRole": "DERIVED_INTERMEDIATE",
-        "label": "75"
-      },
-      {
-        "id": "C90",
-        "refs": [
-          "A",
-          "C",
-          "B"
-        ],
-        "value": 90,
-        "factRole": "DERIVED_INTERMEDIATE",
-        "color": "GREEN",
-        "noLabel": true
+        "label": "75",
+        "style": "ARC"
       },
       {
         "id": "B15",
@@ -271,7 +261,8 @@
         ],
         "value": 15,
         "factRole": "DERIVED_INTERMEDIATE",
-        "label": "15"
+        "label": "15",
+        "style": "ARC"
       },
       {
         "id": "P60",
@@ -282,7 +273,8 @@
         ],
         "value": 60,
         "factRole": "CONCLUSION",
-        "label": "x"
+        "label": "x",
+        "style": "ARC"
       }
     ],
     "equalAngles": [
@@ -295,7 +287,11 @@
       }
     ]
   },
+  "rightAngles": [
+    {"id": "C90", "refs": ["A", "C", "B"]}
+  ],
   "caption": "지름 AB와 접선과 현이 이루는 각, 삼각형 PBC의 각을 보여 주는 해설 그림이다.",
+  "accessibilityDescription": "원 O의 지름 AB와 점 C의 접선 PT, 접선과 현의 각 75°, C의 직각 사각 표식 및 P에서 구하는 각 x를 함께 나타낸다.",
   "sourceConditions": [
     {
       "id": "c1",
@@ -305,6 +301,7 @@
         "displayCircles",
         "displaySegments",
         "planeMarks",
+        "rightAngles",
         "caption"
       ]
     }

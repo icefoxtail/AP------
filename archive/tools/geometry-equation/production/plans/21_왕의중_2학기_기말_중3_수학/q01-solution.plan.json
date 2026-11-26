@@ -279,18 +279,6 @@
     }
   ],
   "planeMarks": {
-    "angles": [
-      {
-        "id": "C90",
-        "refs": [
-          "B",
-          "C",
-          "D"
-        ],
-        "value": 90,
-        "factRole": "GIVEN"
-      }
-    ],
     "equalLengths": [
       {
         "id": "eB",
@@ -362,7 +350,11 @@
       }
     ]
   },
+  "rightAngles": [
+    {"id": "C90", "refs": ["B", "C", "D"]}
+  ],
   "caption": "∠C=90°이므로 CF=CG=5cm이다. BF=13−5=8cm, AE=11−8=3cm이고 같은 점의 접선 길이는 같으므로 x=AH=3cm이다.",
+  "accessibilityDescription": "원에 외접하는 사각형 ABCD와 네 접점 E, F, G, H, C의 직각 표식, 변의 11cm와 13cm, 반지름 5cm 및 접선 길이 관계를 표시한다.",
   "sourceConditions": [
     {
       "id": "c1",
@@ -372,6 +364,7 @@
         "displayCircles",
         "displaySegments",
         "planeMarks",
+        "rightAngles",
         "caption"
       ]
     }

@@ -234,17 +234,6 @@
   "planeMarks": {
     "angles": [
       {
-        "id": "B90",
-        "refs": [
-          "A",
-          "B",
-          "C"
-        ],
-        "value": 90,
-        "factRole": "GIVEN",
-        "noLabel": true
-      },
-      {
         "id": "D65",
         "refs": [
           "A",
@@ -253,7 +242,8 @@
         ],
         "value": 65,
         "factRole": "GIVEN",
-        "noLabel": true
+        "label": "65",
+        "style": "ARC"
       },
       {
         "id": "C65",
@@ -264,7 +254,8 @@
         ],
         "value": 65,
         "factRole": "DERIVED_INTERMEDIATE",
-        "noLabel": true
+        "noLabel": true,
+        "style": "ARC"
       },
       {
         "id": "A25",
@@ -275,7 +266,8 @@
         ],
         "value": 25,
         "factRole": "DERIVED_INTERMEDIATE",
-        "noLabel": true
+        "noLabel": true,
+        "style": "ARC"
       },
       {
         "id": "E25",
@@ -286,7 +278,8 @@
         ],
         "value": 25,
         "factRole": "CONCLUSION",
-        "noLabel": true
+        "label": "x",
+        "style": "ARC"
       }
     ],
     "equalAngles": [
@@ -304,57 +297,13 @@
         ],
         "color": "WARM"
       }
-    ],
-    "callouts": [
-      {
-        "id": "e25",
-        "kind": "ANGLE",
-        "vertex": "E",
-        "rays": [
-          "B",
-          "C"
-        ],
-        "at": "RIGHT",
-        "angles": [
-          {
-            "id": "e25copy",
-            "refs": [
-              "B",
-              "E",
-              "C"
-            ],
-            "value": 25,
-            "label": "x",
-            "color": "WARM"
-          }
-        ]
-      },
-      {
-        "id": "d65",
-        "kind": "ANGLE",
-        "vertex": "D",
-        "rays": [
-          "A",
-          "B"
-        ],
-        "at": "BELOW",
-        "angles": [
-          {
-            "id": "d65copy",
-            "refs": [
-              "A",
-              "D",
-              "B"
-            ],
-            "value": 65,
-            "label": "65",
-            "color": "BLUE"
-          }
-        ]
-      }
     ]
   },
+  "rightAngles": [
+    {"id": "B90", "refs": ["A", "B", "C"]}
+  ],
   "caption": "지름 AC와 같은 호에 대한 원주각을 같은 색으로 묶어 보여 주는 해설 그림이다.",
+  "accessibilityDescription": "원에 내접한 다섯 점과 지름 AC, B의 직각 사각 표식이 있고 D의 65°와 E에서 구하는 x를 각의 꼭짓점 바로 옆 호에 표기한다.",
   "sourceConditions": [
     {
       "id": "c1",
@@ -364,6 +313,7 @@
         "displayCircles",
         "displaySegments",
         "planeMarks",
+        "rightAngles",
         "caption"
       ]
     }

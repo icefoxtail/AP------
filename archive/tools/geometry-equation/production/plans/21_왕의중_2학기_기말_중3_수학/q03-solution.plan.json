@@ -306,29 +306,8 @@
           "E"
         ],
         "value": 60,
-        "factRole": "GIVEN"
-      },
-      {
-        "id": "D90",
-        "refs": [
-          "A",
-          "D",
-          "O"
-        ],
-        "value": 90,
-        "factRole": "DERIVED_INTERMEDIATE",
-        "noLabel": true
-      },
-      {
-        "id": "E90",
-        "refs": [
-          "A",
-          "E",
-          "O"
-        ],
-        "value": 90,
-        "factRole": "DERIVED_INTERMEDIATE",
-        "noLabel": true
+        "factRole": "GIVEN",
+        "style": "ARC"
       }
     ],
     "equalLengths": [
@@ -360,7 +339,12 @@
       }
     ]
   },
+  "rightAngles": [
+    {"id": "D90", "refs": ["A", "D", "O"]},
+    {"id": "E90", "refs": ["A", "E", "O"]}
+  ],
   "caption": "한 점에서 그은 두 접선의 길이가 같다는 관계를 색과 눈금으로 보여 주는 해설 그림이다.",
+  "accessibilityDescription": "원 O 바깥 점 A에서 그은 두 접선 AD, AE와 제삼의 접선 BC, 60°의 각과 40cm 반지름, 두 접점의 직각 사각 표식 및 같은 접선 길이 눈금을 보인다.",
   "sourceConditions": [
     {
       "id": "c1",
@@ -370,6 +354,7 @@
         "displayCircles",
         "displaySegments",
         "planeMarks",
+        "rightAngles",
         "caption"
       ]
     }
