@@ -1,4 +1,56 @@
 {
-  "status": "EXEMPT",
-  "reason": "피타고라스 빗변 회전 수직선 좌표 산출 및 합차 곱셈 계산 문항"
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "constructions": [
+      {
+        "id": "c1",
+        "center": "A",
+        "radius": { "value": "sqrt(5)" },
+        "arc": { "side": "LEFT" },
+        "hits": [{ "id": "P", "branch": "LEFT" }]
+      },
+      {
+        "id": "c2",
+        "center": "A",
+        "radius": { "value": "sqrt(5)" },
+        "arc": { "side": "RIGHT" },
+        "hits": [{ "id": "Q", "branch": "RIGHT" }]
+      }
+    ],
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          { "id": "A", "value": "2", "showValue": false },
+          { "id": "P", "value": "2-sqrt(5)", "showValue": false },
+          { "id": "Q", "value": "2+sqrt(5)", "showValue": false }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": { "text": "수직선 위의 세 점" },
+  "caption": "수직선 위의 점 A를 중심으로 왼쪽의 P와 오른쪽의 Q를 잡은 부분 도식이다. 원문에 언급된 직각삼각형 ABC의 원래 그림 파일이 없어 삼각형은 재현하지 않았다.",
+  "accessibilityDescription": "수직선에 점 A, 그 왼쪽에 P, 오른쪽에 Q가 있으며 A에서 P와 Q까지 같은 길이를 나타내는 호가 있다. 각 점의 수치는 그림에 공개하지 않는다. 원문 직각삼각형의 형태와 배치는 미확정이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "한 눈금의 길이가 1인 모눈종이, 직각삼각형 ABC, AB=AP, AC=AQ, P와 Q가 나타내는 수의 곱을 묻는 문제. 실제 원문 그림 파일은 archive에 없음.",
+      "mappedTo": "PARTIAL_SOURCE_ONLY"
+    },
+    {
+      "id": "c1",
+      "condition": "해설에 따르면 A=2, AB=sqrt(5), P는 A의 왼쪽이고 AP=AB",
+      "mappedTo": ["numberLine.constructions", "numberLine.rows"]
+    },
+    {
+      "id": "c2",
+      "condition": "해설에 따르면 AC=sqrt(5), Q는 A의 오른쪽이고 AQ=AC",
+      "mappedTo": ["numberLine.constructions", "numberLine.rows"]
+    }
+  ],
+  "newVisualInformation": [
+    "해설에 기재된 수직선상의 A와 양쪽 점 P, Q의 위치·등거리 관계만 표현한다. 삼각형의 구체적 배치는 원문 증거 확보 후 별도 검수한다."
+  ]
 }
