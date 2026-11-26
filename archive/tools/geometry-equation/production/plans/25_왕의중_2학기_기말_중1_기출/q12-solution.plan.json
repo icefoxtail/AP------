@@ -1,0 +1,19 @@
+{
+  "capability": "composite-panels-v1",
+  "caption": "원뿔의 모선 12cm와 밑면 반지름 6cm를 원뿔과 반원형 전개도에 나란히 나타낸다. 면의 무의미한 회색 채움은 제거한다.",
+  "accessibilityDescription": "왼쪽은 모선이 12cm이고 밑면 반지름이 6cm인 원뿔, 오른쪽은 반지름 12cm의 반원인 옆면과 반지름 6cm인 밑면 원으로 이루어진 전개도다.",
+  "panels": [
+    {"caption":{"text":"원뿔: 모선 12cm, 반지름 6cm"},"plan":{"capability":"solid-figure-v1","unit":"cm","solids":[{"id":"cone","kind":"CONE","radius":6,"height":10.392304845413264}],"dims":[{"solid":"cone","slant":true,"label":"12"},{"solid":"cone","radius":"bottom","label":"6"}] }},
+    {"caption":{"text":"전개도: 반원형 부채꼴 + 밑면 원"},"plan":{"capability":"solid-figure-v1","unit":"cm","net":{"kind":"CONE","radius":6,"slant":12,"dims":[{"part":"slant"},{"part":"radius"},{"part":"angle"}]}}}
+  ],
+  "sourceConditions": [
+    {"id":"slant","condition":"원본 문제 그림에 원뿔 모선의 길이는 12cm로 주어져 있다.","mappedTo":["panels[0].plan.solids[0]","panels[0].plan.dims[0]","panels[1].plan.net.slant"]},
+    {"id":"base-radius","condition":"옆넓이 72π=πr×12이므로 r=6cm이고 전개도의 밑면 원 반지름도 6이다.","mappedTo":["panels[0].plan.solids[0].radius","panels[0].plan.dims[1]","panels[1].plan.net.radius"]},
+    {"id":"net-angle","condition":"원뿔의 옆면 전개도는 반지름 12의 180° 부채꼴이다(중심각=360×6/12).","mappedTo":["panels[1].plan.net.dims[2]"]}
+  ],
+  "newVisualInformation": [
+    "전개도 부채꼴과 원판 전체의 회색 면 채움을 제거하고 원호·곡면 테두리만 남긴다.",
+    "모선 12cm, 밑면 반지름 6cm, 옆면 전개도의 180° 중심각을 모두 렌더 필드로 연결한다.",
+    "실제 구해야 하는 겉넓이는 문제·풀이 텍스트에만 유지한다."
+  ]
+}

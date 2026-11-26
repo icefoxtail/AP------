@@ -1,0 +1,45 @@
+{
+  "capability": "composite-panels-v1",
+  "caption": "회전체 원뿔대의 전개도와 축을 포함한 절단면을 별도로 크게 그린다. 전개도는 두 원과 고리 모양 부채꼴, 축단면은 윗변 10cm·아랫변 4cm·높이 4cm의 등변사다리꼴이다.",
+  "accessibilityDescription": "왼쪽에 모선 5cm, 큰 밑면 반지름 5cm, 작은 밑면 반지름 2cm인 원뿔대 전개도의 두 원과 고리형 부채꼴이 있다. 오른쪽에는 윗변 10cm, 아랫변 4cm, 높이 4cm인 등변사다리꼴과 높이의 수선 및 직각표시가 있다.",
+  "sourceQuote": "다음 사다리꼴 $ABCD$를 직선 $l$을 회전축으로 하여",
+  "panels": [
+    {"caption":{"text":"① 원뿔대 전개도"},"plan":{"capability":"solid-figure-v1","unit":"cm","net":{"kind":"CONE_FRUSTUM","radius":5,"topRadius":2,"slant":5,"dims":[{"part":"slant"},{"part":"arc-outer"},{"part":"arc-inner"},{"part":"radius-large"},{"part":"radius-small"}]}}},
+    {"caption":{"text":"② 축을 포함하는 절단면"},"plan":{
+      "capability":"construction-spike-v1",
+      "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+        {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-5"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-2"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+      ]},
+      "displayPoints":["A","B","C","D","H"],
+      "hiddenPointNames":["H"],"hiddenPointStyle":"NONE",
+      "displaySegments":[
+        {"id":"sAD","refs":["A","D"]},{"id":"sDC","refs":["D","C"]},
+        {"id":"sCB","refs":["C","B"]},{"id":"sBA","refs":["B","A"]},
+        {"id":"sDH","refs":["D","H"],"dashed":true},{"id":"sCH","refs":["C","H"],"dashed":true}
+      ],
+      "rightAngles":[{"id":"rH","refs":["D","H","C"]}],
+      "planeMarks":{
+        "dimensions":[
+          {"id":"dAD","from":"A","to":"D","label":"10","unit":"cm","side":"ABOVE","factRole":"DERIVED_INTERMEDIATE"},
+          {"id":"dBC","from":"B","to":"C","label":"4","unit":"cm","side":"BELOW","factRole":"DERIVED_INTERMEDIATE"},
+          {"id":"dDH","from":"D","to":"H","label":"4","unit":"cm","side":"RIGHT","factRole":"GIVEN"}
+        ]
+      }
+    }}
+  ],
+  "sourceConditions": [
+    {"id":"source-radii","condition":"원본 사다리꼴을 축 l을 중심으로 회전하면 큰 원의 반지름은 AD=5cm, 작은 원은 BC=2cm다.","mappedTo":["panels[0].plan.net.radius","panels[0].plan.net.topRadius"]},
+    {"id":"slant","condition":"원본의 비스듬한 모서리 AB=5cm가 원뿔대의 모선으로 이어진다.","mappedTo":["panels[0].plan.net.slant","panels[0].plan.net.dims[0]"]},
+    {"id":"cross-section","condition":"축단면은 반지름을 양쪽으로 펼쳐 만든 사다리꼴로 윗변 10cm, 아랫변 4cm, 높이 4cm 및 직각표시가 나타난다. 넓이는 28cm²이다.","mappedTo":["panels[1].plan.displaySegments[0]","panels[1].plan.displaySegments[2]","panels[1].plan.displaySegments[4]","panels[1].plan.rightAngles[0]","panels[1].plan.planeMarks.dimensions[0]","panels[1].plan.planeMarks.dimensions[1]","panels[1].plan.planeMarks.dimensions[2]"]},
+    {"id":"net-faces","condition":"원뿔대의 전개도는 반지름 5, 2의 두 원과 고리 모양 부채꼴이다.","mappedTo":["panels[0].plan.net","panels[0].plan.net.dims[1]","panels[0].plan.net.dims[2]"]}
+  ],
+  "newVisualInformation": [
+    "기존 해설 SVG에서 3D 외형, 전개도, 축단면을 세로로 너무 작게 배치한 구성을 전개도와 축단면의 큰 2패널로 재편한다.",
+    "반지름 5cm/2cm, 모선 5cm, 축단면 양쪽 지름 10cm/4cm와 높이 4cm·수선을 도면 자체에 표시한다.",
+    "면을 무의미하게 채우지 않고 도형의 윤곽과 절단면 보조선만 그린다."
+  ]
+}
