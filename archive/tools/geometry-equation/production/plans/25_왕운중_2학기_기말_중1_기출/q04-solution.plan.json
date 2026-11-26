@@ -1,0 +1,285 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "반지름 3인 두 원은 서로의 중심을 지나고, 공통 교점 A·B가 만드는 각각의 중심각은 120°이며 대응하는 두 호의 길이는 각각 2π이다.",
+  "accessibilityDescription": "반지름 3인 두 원 O와 O프라임이 서로의 중심을 지난다. 공통 교점 A와 B를 두 중심에 연결해 각 AOB와 AO프라임B가 각각 120도임을 나타낸다. 각 원에서 공통 교점 사이 짧은 호의 길이는 2파이이고, 교집합 면은 색칠하지 않는다.",
+  "sourceQuote": "반지름의 길이가 같은 두 원",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "P"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "P"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cO",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "cP",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "A",
+    "B"
+  ],
+  "pointNames": {
+    "P": "O'"
+  },
+  "displayCircles": [
+    "cO",
+    "cP"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aAOB",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 120,
+        "label": "120",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "aAPB",
+        "refs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "value": 120,
+        "label": "120",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcO",
+        "circle": "cO",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR",
+        "label": "2pi",
+        "labelKind": "MATH",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "arcP",
+        "circle": "cP",
+        "center": "P",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR",
+        "label": "2pi",
+        "labelKind": "MATH",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "r3",
+        "ownerSegment": "sOP",
+        "text": "3"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 440
+  },
+  "sourceConditions": [
+    {
+      "id": "two-equal-circles",
+      "condition": "원문은 같은 반지름 3인 두 원 O, O′가 서로의 중심을 지난다고 한다. 중심간 거리와 두 반지름이 3이다.",
+      "mappedTo": [
+        "mathPlan.nodes[0]",
+        "mathPlan.nodes[1]",
+        "mathPlan.nodes[4]",
+        "mathPlan.nodes[5]",
+        "planeMarks.expressionLabels[0]"
+      ]
+    },
+    {
+      "id": "common-points",
+      "condition": "A와 B는 두 원의 공통 교점이며 두 중심과 각각 정삼각형을 이루는 위치여야 한다.",
+      "mappedTo": [
+        "mathPlan.nodes[2]",
+        "mathPlan.nodes[3]",
+        "displaySegments[1]",
+        "displaySegments[4]"
+      ]
+    },
+    {
+      "id": "central-angles",
+      "condition": "중심각 AOB와 AO′B가 각각 120°이다.",
+      "mappedTo": [
+        "planeMarks.angles[0]",
+        "planeMarks.angles[1]"
+      ]
+    },
+    {
+      "id": "two-arc-lengths",
+      "condition": "반지름 3, 중심각 120°의 두 호는 각각 2π이며 합은 4π이다.",
+      "mappedTo": [
+        "planeMarks.arcs[0]",
+        "planeMarks.arcs[1]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 해설 첫 패널에 남아 있는 파란 렌즈 면 채움을 제거하고, 두 원을 하나의 읽기 쉬운 도식으로 합친다.",
+    "원 O·O′, 공통 교점 A·B, 반지름 3, 각각의 중심각 120°, 두 호 길이 2π를 실제 표시 필드에 연결한다.",
+    "호의 길이를 묻는 문제이므로 원 내부에 색칠 영역을 생성하지 않는다."
+  ]
+}

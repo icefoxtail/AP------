@@ -1,0 +1,106 @@
+{
+  "capability": "composite-panels-v1",
+  "caption": "겉넓이 비교에서 ㄱ은 132π, ㄴ은 270+144π, ㄷ은 425π/4 cm²이다. 기존 ㄷ 도식의 100π 오표기를 제거한다.",
+  "panels": [
+    {
+      "caption": {
+        "text": "ㄱ: 반구와 원뿔"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "id": "cone",
+            "kind": "CONE",
+            "radius": 6,
+            "height": 8,
+            "orientation": "APEX_DOWN"
+          },
+          {
+            "id": "hem",
+            "kind": "HEMISPHERE",
+            "radius": 6,
+            "on": "cone"
+          }
+        ],
+        "dims": [
+          {
+            "solid": "cone",
+            "slant": true,
+            "label": "10"
+          },
+          {
+            "solid": "hem",
+            "radius": "center",
+            "label": "6"
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "ㄷ: 구의 8분의 1 제거"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "id": "sphere",
+            "kind": "SPHERE",
+            "radius": 5,
+            "cut": {
+              "kind": "SEVEN_EIGHTHS"
+            }
+          }
+        ],
+        "dims": [
+          {
+            "solid": "sphere",
+            "radius": "center",
+            "label": "5"
+          }
+        ]
+      }
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "figure-a",
+      "condition": "ㄱ의 반구와 원뿔은 접합 원의 반지름 6, 원뿔 모선 10, 높이 8이며 보이는 곡면 넓이는 72π+60π=132π이다.",
+      "mappedTo": [
+        "panels[0].plan.solids[0]",
+        "panels[0].plan.solids[1]",
+        "panels[0].plan.dims[0]"
+      ]
+    },
+    {
+      "id": "figure-b",
+      "condition": "ㄴ은 원본 문제 PNG에 남아 있는 중심각 120°, 반지름 9, 높이 15의 부채꼴 밑면 기둥이며 270+144π이다. 해설 기존 SVG에는 별도 ㄴ 그림이 없고 이 계획에서도 없는 값을 조작해 도형으로 만들지 않고 해설 텍스트·caption에 근거를 보존한다.",
+      "mappedTo": [
+        "caption"
+      ]
+    },
+    {
+      "id": "figure-c-cut",
+      "condition": "ㄷ은 반지름 5인 구의 8분의 1을 잘라낸 7분의 8 구이며 절단면은 사분원 3개다.",
+      "mappedTo": [
+        "panels[1].plan.solids[0]",
+        "panels[1].plan.dims[0]"
+      ]
+    },
+    {
+      "id": "figure-c-area",
+      "condition": "ㄷ의 올바른 곡면은 175π/2, 절단면은 75π/4, 합은 425π/4=106.25π이다. 현행 해설 SVG 표기 75π+25π=100π는 수학 오류다.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "현행 해설 SVG 오른쪽 패널의 [ㄷ] 75π+25π=100π 오표기를 삭제하고, 정확한 425π/4 값과 세 절단 사분원의 의미를 명시한다.",
+    "왼쪽 패널의 반구·원뿔 접합 경계 및 6cm/10cm 길이는 유지하고, 오른쪽 구의 7/8 형태는 정식 SPHERE cut:SEVEN_EIGHTHS로 구성한다.",
+    "원본 [ㄴ]은 문제 PNG와 해설 문장에 보존되어 있으므로 미지원 곡면 밑면을 거짓 다면체로 근사하지 않는다."
+  ]
+}
