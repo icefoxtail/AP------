@@ -1,0 +1,318 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-4293377671",
+              "denominator": "656971600"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-377305907",
+              "denominator": "1313943200"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-765",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1112",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "160",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1725",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2934",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-115",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "160",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1955",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-395",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-115",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "160",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-115",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "E",
+    "A",
+    "D",
+    "C",
+    "F",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "F",
+        "O"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "s8",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "s9",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "s10",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "s11",
+      "refs": [
+        "F",
+        "C"
+      ]
+    }
+  ],
+  "caption": "25_연향중_2학기_중간_중2_수학 q20번 해설 과정 도형",
+  "accessibilityDescription": "해설 그림: 마름모 ABCD에서 AB 위의 점 E와 대각선 BD 위의 점 F를 잡아 BE=BF=12, BC=18을 표시하고, ∠BEF, ∠EFB, ∠DFC, ∠DCF가 같음을 호 표시로 나타내며 DF=DC=18을 두 눈금과 길이로 표시한 그림.",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 460
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "해설 그림: 마름모 ABCD에서 AB 위의 점 E와 대각선 BD 위의 점 F를 잡아 BE=BF=12, BC=18을 표시하고, ∠BEF, ∠EFB, ∠DFC, ∠DCF가 같음을 호 표시로 나타내며 DF=DC=18을 두 눈금과 길이로 표시한 그림.",
+      "mappedTo": "mathPlan.nodes/displaySegments/planeMarks"
+    },
+    {
+      "id": "scan",
+      "condition": "실제 원본 기출 스캔과 q20-problem-visual-v2.svg의 기하 정보 대조",
+      "mappedTo": "mathPlan.nodes/displaySegments"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 점 이름·연결선과 문제·해설별 표식의 엔진 작도. 바탕 사각형 및 불필요한 면 채움 없음.",
+    "20번 원본 에셋의 기입 길이·동일 표시·수선·평행 표식은 계획의 그려지는 필드별로 별도 확인함."
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "label0",
+        "ownerSegment": "s4",
+        "text": "18"
+      },
+      {
+        "id": "label1",
+        "ownerSegment": "s0",
+        "text": "12"
+      },
+      {
+        "id": "label2",
+        "ownerSegment": "s5",
+        "text": "12"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dimension0",
+        "from": "D",
+        "to": "F",
+        "label": "18",
+        "side": "ABOVE",
+        "style": "INLINE"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "equals0",
+        "count": 1,
+        "segments": [
+          "s0",
+          "s5"
+        ]
+      }
+    ]
+  }
+}

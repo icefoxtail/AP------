@@ -1,0 +1,274 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1899",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1725",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1921",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1685",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2061",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1685",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "923",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-600",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "201",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "209",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "923",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1685",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2007",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-548",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circle0",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "I"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "1085",
+            "denominator": "400"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circle0"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "F",
+        "A"
+      ]
+    }
+  ],
+  "caption": "25_연향중_2학기_중간_중2_수학 q11번 문제 조건 도형",
+  "accessibilityDescription": "내접원이 AB 위 D, BC 위 E, CA 위 F에서 닿는다. AD는 4 cm이고 DB는 5 cm이다. 원의 중심은 I이다.",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 460
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "내접원이 AB 위 D, BC 위 E, CA 위 F에서 닿는다. AD는 4 cm이고 DB는 5 cm이다. 원의 중심은 I이다.",
+      "mappedTo": "mathPlan.nodes/displaySegments/planeMarks"
+    },
+    {
+      "id": "scan",
+      "condition": "실제 원본 기출 스캔과 q11-problem-visual-v2.svg의 기하 정보 대조",
+      "mappedTo": "mathPlan.nodes/displaySegments"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 점 이름·연결선과 문제·해설별 표식의 엔진 작도. 바탕 사각형 및 불필요한 면 채움 없음.",
+    "ENGINE_CAPABILITY_PENDING: equal length exact point construction needed AD=AF Δ=0.001794. 필요 기능: CONSTRAINT_EQUAL_LENGTH_SNAP_FROM_SCAN_POINTS / SUBDIVIDED_SIDE_MARK 및 일대일 렌더 대조.",
+    "ENGINE_CAPABILITY_PENDING: equal length exact point construction needed DB=BE Δ=0.000784. 필요 기능: CONSTRAINT_EQUAL_LENGTH_SNAP_FROM_SCAN_POINTS / SUBDIVIDED_SIDE_MARK 및 일대일 렌더 대조.",
+    "ENGINE_CAPABILITY_PENDING: equal length exact point construction needed EC=FC Δ=0.000704. 필요 기능: CONSTRAINT_EQUAL_LENGTH_SNAP_FROM_SCAN_POINTS / SUBDIVIDED_SIDE_MARK 및 일대일 렌더 대조.",
+    "11번 원본 에셋의 기입 길이·동일 표시·수선·평행 표식은 계획의 그려지는 필드별로 별도 확인함."
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "label0",
+        "ownerSegment": "s0",
+        "text": "4",
+        "unit": "cm"
+      },
+      {
+        "id": "label1",
+        "ownerSegment": "s1",
+        "text": "5",
+        "unit": "cm"
+      }
+    ]
+  }
+}

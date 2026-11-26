@@ -1,0 +1,203 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "H1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "H1",
+    "H2",
+    "H3",
+    "H4"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "top",
+      "refs": [
+        "H1",
+        "H2"
+      ]
+    },
+    {
+      "id": "right",
+      "refs": [
+        "H2",
+        "H3"
+      ]
+    },
+    {
+      "id": "bottom",
+      "refs": [
+        "H3",
+        "H4"
+      ]
+    },
+    {
+      "id": "left",
+      "refs": [
+        "H4",
+        "H1"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "H1",
+    "H2",
+    "H3",
+    "H4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "평행한 한 쌍의 변만 가진 사다리꼴은 평행사변형이 아니다.",
+  "accessibilityDescription": "해설 그림: 윗변과 아랫변이 평행한 사다리꼴에서 왼쪽 다리 양 끝의 두 내각이 호 한 개와 호 두 개로 표시되고 '두 각의 합 180°'가 적혀 있으며, 오른쪽 다리는 비스듬히 기울어 있다.",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 460
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "해설 그림: 윗변과 아랫변이 평행한 사다리꼴에서 왼쪽 다리 양 끝의 두 내각이 호 한 개와 호 두 개로 표시되고 '두 각의 합 180°'가 적혀 있으며, 오른쪽 다리는 비스듬히 기울어 있다.",
+      "mappedTo": "mathPlan.nodes/displaySegments/planeMarks"
+    },
+    {
+      "id": "scan",
+      "condition": "실제 원본 기출 스캔과 q2-solution.svg의 기하 정보 대조",
+      "mappedTo": "mathPlan.nodes/displaySegments"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 점 이름·연결선과 문제·해설별 표식의 엔진 작도. 바탕 사각형 및 불필요한 면 채움 없음."
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "adj1",
+        "refs": [
+          "H4",
+          "H1",
+          "H2"
+        ],
+        "value": 116.565,
+        "style": "ARC",
+        "noLabel": true
+      },
+      {
+        "id": "adj2",
+        "refs": [
+          "H1",
+          "H4",
+          "H3"
+        ],
+        "value": 63.435,
+        "style": "ARC",
+        "noLabel": true,
+        "arcs": 2
+      }
+    ],
+    "parallels": [
+      {
+        "id": "basesParallel",
+        "count": 1,
+        "segments": [
+          "top",
+          "bottom"
+        ]
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "anglesSum",
+        "at": [
+          3,
+          5.6
+        ],
+        "text": "이웃한 두 각의 합 180°",
+        "labelKind": "TEXT"
+      }
+    ]
+  }
+}

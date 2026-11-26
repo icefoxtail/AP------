@@ -1,0 +1,319 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2224",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "769",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2034",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "769",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2034",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-2325",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-8443064627",
+              "denominator": "2770340000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-16102271739",
+              "denominator": "2770340000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2224",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-2325",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "718",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1725",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1029",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "769",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "D",
+    "C",
+    "E",
+    "B",
+    "G",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "F"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "F",
+        "D"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "D",
+        "C"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "E",
+        "C"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "A",
+        "G"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "G",
+        "F"
+      ]
+    },
+    {
+      "id": "s8",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "s9",
+      "refs": [
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "caption": "25_연향중_2학기_중간_중2_수학 q16번 문제 조건 도형",
+  "accessibilityDescription": "접는 선 EF는 아래 변의 E와 위 변의 F를 지난다. 접기 전 오른쪽 C와 D는 점선 쪽에 있고, 접은 뒤 C가 A에, D가 G에 닿는다. EAF는 72도이다.",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 460
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "접는 선 EF는 아래 변의 E와 위 변의 F를 지난다. 접기 전 오른쪽 C와 D는 점선 쪽에 있고, 접은 뒤 C가 A에, D가 G에 닿는다. EAF는 72도이다.",
+      "mappedTo": "mathPlan.nodes/displaySegments/planeMarks"
+    },
+    {
+      "id": "scan",
+      "condition": "실제 원본 기출 스캔과 q16-problem-visual-v2.svg의 기하 정보 대조",
+      "mappedTo": "mathPlan.nodes/displaySegments"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 점 이름·연결선과 문제·해설별 표식의 엔진 작도. 바탕 사각형 및 불필요한 면 채움 없음.",
+    "16번 원본 에셋의 기입 길이·동일 표시·수선·평행 표식은 계획의 그려지는 필드별로 별도 확인함."
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "ang0",
+        "refs": [
+          "E",
+          "A",
+          "D"
+        ],
+        "value": 72,
+        "style": "ARC",
+        "label": "72",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ang1",
+        "refs": [
+          "G",
+          "F",
+          "E"
+        ],
+        "value": 126,
+        "style": "ARC",
+        "noLabel": true,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "addedAngle2",
+        "refs": [
+          "E",
+          "A",
+          "F"
+        ],
+        "value": 72,
+        "label": "72",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "equals0",
+        "count": 1,
+        "segments": [
+          "s8",
+          "s3"
+        ]
+      }
+    ]
+  }
+}

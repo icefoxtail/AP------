@@ -1,0 +1,372 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1383",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1434",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1143",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1934",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1383",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-967",
+              "denominator": "200"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "120",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-250",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "541",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1092",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circle0",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "2105",
+            "denominator": "400"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circle1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "I"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "842",
+            "denominator": "400"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "J1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-663",
+              "denominator": "2000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1467",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "J2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "541",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-967",
+              "denominator": "200"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "J3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1383",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-273",
+              "denominator": "100"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "I",
+    "J1",
+    "J2",
+    "J3"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circle0",
+    "circle1"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "added4",
+      "refs": [
+        "I",
+        "J1"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "added5",
+      "refs": [
+        "I",
+        "J2"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "added6",
+      "refs": [
+        "I",
+        "J3"
+      ],
+      "dashed": true
+    }
+  ],
+  "caption": "25_연향중_2학기_중간_중2_수학 q19번 해설 과정 도형",
+  "accessibilityDescription": "해설 그림: ∠C=90°인 직각삼각형 ABC의 외접원(중심 O가 빗변 AB의 중점)과 내접원(중심 I)을 그리고 AB=5cm, BC=3cm, AC=4cm를 표시했으며 I에서 세 변에 내린 같은 길이의 수선 r을 점선으로 나타낸 그림.",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 460
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "해설 그림: ∠C=90°인 직각삼각형 ABC의 외접원(중심 O가 빗변 AB의 중점)과 내접원(중심 I)을 그리고 AB=5cm, BC=3cm, AC=4cm를 표시했으며 I에서 세 변에 내린 같은 길이의 수선 r을 점선으로 나타낸 그림.",
+      "mappedTo": "mathPlan.nodes/displaySegments/planeMarks"
+    },
+    {
+      "id": "scan",
+      "condition": "실제 원본 기출 스캔과 q19-problem-visual-v2.svg의 기하 정보 대조",
+      "mappedTo": "mathPlan.nodes/displaySegments"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 점 이름·연결선과 문제·해설별 표식의 엔진 작도. 바탕 사각형 및 불필요한 면 채움 없음.",
+    "19번 원본 에셋의 기입 길이·동일 표시·수선·평행 표식은 계획의 그려지는 필드별로 별도 확인함.",
+    "내심 I에서 세 변에 내린 세 점선 반지름과 수선 표식을 보강했다."
+  ],
+  "rightAngles": [
+    {
+      "id": "rt0",
+      "refs": [
+        "B",
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "addedRight1",
+      "refs": [
+        "A",
+        "J1",
+        "I"
+      ]
+    },
+    {
+      "id": "addedRight2",
+      "refs": [
+        "B",
+        "J2",
+        "I"
+      ]
+    },
+    {
+      "id": "addedRight3",
+      "refs": [
+        "C",
+        "J3",
+        "I"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dimension0",
+        "from": "A",
+        "to": "B",
+        "label": "5",
+        "unit": "cm",
+        "side": "ABOVE",
+        "style": "INLINE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "label0",
+        "ownerSegment": "s2",
+        "text": "3",
+        "unit": "cm"
+      },
+      {
+        "id": "label1",
+        "ownerSegment": "s3",
+        "text": "4",
+        "unit": "cm"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "J1",
+    "J2",
+    "J3"
+  ],
+  "hiddenPointStyle": "NONE"
+}

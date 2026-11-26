@@ -1,0 +1,362 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1125",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "854",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2650",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1114",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1285",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1114",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2810",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "854",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "163",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1409",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-3",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1149",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "144",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1114",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "80",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-130",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "16",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "854",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "H1",
+    "H2",
+    "F",
+    "O",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "s8",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "s9",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "s10",
+      "refs": [
+        "H1",
+        "F"
+      ]
+    },
+    {
+      "id": "s11",
+      "refs": [
+        "F",
+        "O"
+      ]
+    },
+    {
+      "id": "s12",
+      "refs": [
+        "O",
+        "E"
+      ]
+    },
+    {
+      "id": "s13",
+      "refs": [
+        "E",
+        "H2"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "H1",
+    "H2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "25_왕운중_2학기_중간_중2_수학 q17번 문제 조건 도형",
+  "accessibilityDescription": "평행사변형의 두 대각선과 별도의 직선이 O에서 만난다. 그 직선은 윗변 AD의 E와 아랫변 BC의 F를 지난다. 삼각형 BFO를 칠했다.",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 460
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "평행사변형의 두 대각선과 별도의 직선이 O에서 만난다. 그 직선은 윗변 AD의 E와 아랫변 BC의 F를 지난다. 삼각형 BFO를 칠했다.",
+      "mappedTo": "mathPlan.nodes/displaySegments/planeMarks"
+    },
+    {
+      "id": "scan",
+      "condition": "실제 원본 기출 스캔과 q17-problem-visual-v2.svg의 기하 정보 대조",
+      "mappedTo": "mathPlan.nodes/displaySegments"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 점 이름·연결선과 문제·해설별 표식의 엔진 작도. 바탕 사각형 및 불필요한 면 채움 없음.",
+    "17번 원본 에셋의 기입 길이·동일 표시·수선·평행 표식은 계획의 그려지는 필드별로 별도 확인함."
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "parallel0",
+        "count": 1,
+        "segments": [
+          "s5",
+          "s1"
+        ]
+      },
+      {
+        "id": "parallel1",
+        "count": 2,
+        "segments": [
+          "s0",
+          "s3"
+        ]
+      }
+    ]
+  }
+}

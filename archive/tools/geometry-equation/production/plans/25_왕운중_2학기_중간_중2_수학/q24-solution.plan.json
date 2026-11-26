@@ -1,0 +1,281 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "190",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1553",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2650",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-2233",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3030",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-2233",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "190",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-2233",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-4200254227",
+              "denominator": "1032578600"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-899045327",
+              "denominator": "413031440"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5181203897",
+              "denominator": "1032578600"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-899045327",
+              "denominator": "413031440"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "M",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "B",
+        "M"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "M",
+        "C"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "D",
+        "M"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "E",
+        "M"
+      ]
+    }
+  ],
+  "caption": "25_왕운중_2학기_중간_중2_수학 q24번 해설 과정 도형",
+  "accessibilityDescription": "삼각형 ABC의 밑변 중점은 M이다. M에서 AB와 AC에 내린 두 같은 길이의 수선은 D와 E에서 만난다. AD는 6.4 cm, CE는 3.6 cm이다.",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 460
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "삼각형 ABC의 밑변 중점은 M이다. M에서 AB와 AC에 내린 두 같은 길이의 수선은 D와 E에서 만난다. AD는 6.4 cm, CE는 3.6 cm이다.",
+      "mappedTo": "mathPlan.nodes/displaySegments/planeMarks"
+    },
+    {
+      "id": "scan",
+      "condition": "실제 원본 기출 스캔과 q24-problem-visual-v2.svg의 기하 정보 대조",
+      "mappedTo": "mathPlan.nodes/displaySegments"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 점 이름·연결선과 문제·해설별 표식의 엔진 작도. 바탕 사각형 및 불필요한 면 채움 없음.",
+    "24번 원본 에셋의 기입 길이·동일 표시·수선·평행 표식은 계획의 그려지는 필드별로 별도 확인함."
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "label0",
+        "ownerSegment": "s0",
+        "text": "6.4",
+        "unit": "cm"
+      },
+      {
+        "id": "label1",
+        "ownerSegment": "s3",
+        "text": "3.6",
+        "unit": "cm"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "equals0",
+        "count": 1,
+        "segments": [
+          "s4",
+          "s5"
+        ]
+      },
+      {
+        "id": "equals1",
+        "count": 2,
+        "segments": [
+          "s6",
+          "s7"
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rightAdded0",
+      "refs": [
+        "A",
+        "D",
+        "M"
+      ]
+    },
+    {
+      "id": "rightAdded1",
+      "refs": [
+        "A",
+        "E",
+        "M"
+      ]
+    }
+  ]
+}

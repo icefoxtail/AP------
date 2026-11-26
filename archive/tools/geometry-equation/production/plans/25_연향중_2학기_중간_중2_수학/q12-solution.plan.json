@@ -1,0 +1,281 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2660",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1345",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2650",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-755",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "133",
+              "denominator": "20"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-151",
+              "denominator": "80"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1233",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-755",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "25643657",
+              "denominator": "14491600"
+            },
+            {
+              "kind": "rational",
+              "numerator": "830299",
+              "denominator": "579664"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "added5",
+      "refs": [
+        "D",
+        "H"
+      ],
+      "dashed": true
+    }
+  ],
+  "caption": "25_연향중_2학기_중간_중2_수학 q12번 해설 과정 도형",
+  "accessibilityDescription": "해설 그림: 직각삼각형 ABC에서 ∠A의 이등분선 AD를 긋고 D에서 AB에 내린 수선의 발 H를 표시한 그림. DH=DC=6cm를 같은 눈금으로 나타내고 AB=24cm를 밑변으로 하는 삼각형 ABD를 칠했다.",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 460
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "해설 그림: 직각삼각형 ABC에서 ∠A의 이등분선 AD를 긋고 D에서 AB에 내린 수선의 발 H를 표시한 그림. DH=DC=6cm를 같은 눈금으로 나타내고 AB=24cm를 밑변으로 하는 삼각형 ABD를 칠했다.",
+      "mappedTo": "mathPlan.nodes/displaySegments/planeMarks"
+    },
+    {
+      "id": "scan",
+      "condition": "실제 원본 기출 스캔과 q12-problem-visual-v2.svg의 기하 정보 대조",
+      "mappedTo": "mathPlan.nodes/displaySegments"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 점 이름·연결선과 문제·해설별 표식의 엔진 작도. 바탕 사각형 및 불필요한 면 채움 없음.",
+    "12번 원본 에셋의 기입 길이·동일 표시·수선·평행 표식은 계획의 그려지는 필드별로 별도 확인함.",
+    "수선의 발 H, DH⊥AB를 해설의 결정적 보조선으로 추가했다."
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "ang0",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 34.2,
+        "style": "ARC",
+        "noLabel": true,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ang1",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "value": 34.2,
+        "style": "ARC",
+        "noLabel": true,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "label0",
+        "ownerSegment": "s0",
+        "text": "24",
+        "unit": "cm"
+      },
+      {
+        "id": "label1",
+        "ownerSegment": "s2",
+        "text": "6",
+        "unit": "cm"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "distanceDH",
+        "at": [
+          5,
+          -2
+        ],
+        "text": "DH=DC=6cm",
+        "labelKind": "TEXT"
+      }
+    ],
+    "regions": [
+      {
+        "id": "areaABD",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "D"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rt0",
+      "refs": [
+        "D",
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "addedRight1",
+      "refs": [
+        "A",
+        "H",
+        "D"
+      ]
+    }
+  ]
+}

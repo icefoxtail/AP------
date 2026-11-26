@@ -1,0 +1,363 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2552",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1705",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "537",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1725",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2292",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1705",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1248",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-13",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "572",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-314",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-224037473",
+              "denominator": "193405600"
+            },
+            {
+              "kind": "rational",
+              "numerator": "298432849",
+              "denominator": "193405600"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "143",
+              "denominator": "100"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-341",
+              "denominator": "80"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "308",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1471",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Y",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1893",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1705",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "H1",
+    "H2",
+    "H3",
+    "P",
+    "A",
+    "B",
+    "X",
+    "Y"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "A",
+        "X"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "X",
+        "H1"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "B",
+        "Y"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "Y",
+        "H2"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "O",
+        "P"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "P",
+        "H3"
+      ]
+    },
+    {
+      "id": "s8",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "s9",
+      "refs": [
+        "P",
+        "B"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "H1",
+    "H2",
+    "H3"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "25_연향중_2학기_중간_중2_수학 q07번 문제 조건 도형",
+  "accessibilityDescription": "OX와 OY 사이의 각을 OP가 이등분한다. P에서 OX로 내린 수선의 발은 A이고, OY에 내린 수선의 발은 B이다. X와 Y는 각각 A와 B보다 바깥에 있다.",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 460
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "OX와 OY 사이의 각을 OP가 이등분한다. P에서 OX로 내린 수선의 발은 A이고, OY에 내린 수선의 발은 B이다. X와 Y는 각각 A와 B보다 바깥에 있다.",
+      "mappedTo": "mathPlan.nodes/displaySegments/planeMarks"
+    },
+    {
+      "id": "scan",
+      "condition": "실제 원본 기출 스캔과 q7-problem-visual-v2.svg의 기하 정보 대조",
+      "mappedTo": "mathPlan.nodes/displaySegments"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 점 이름·연결선과 문제·해설별 표식의 엔진 작도. 바탕 사각형 및 불필요한 면 채움 없음.",
+    "ENGINE_CAPABILITY_PENDING: equal length exact point construction needed PA=PB Δ=0.003807. 필요 기능: CONSTRAINT_EQUAL_LENGTH_SNAP_FROM_SCAN_POINTS / SUBDIVIDED_SIDE_MARK 및 일대일 렌더 대조.",
+    "7번 원본 에셋의 기입 길이·동일 표시·수선·평행 표식은 계획의 그려지는 필드별로 별도 확인함."
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "ang0",
+        "refs": [
+          "X",
+          "O",
+          "P"
+        ],
+        "value": 24,
+        "style": "ARC",
+        "noLabel": true,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ang1",
+        "refs": [
+          "P",
+          "O",
+          "Y"
+        ],
+        "value": 24,
+        "style": "ARC",
+        "noLabel": true,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rt0",
+      "refs": [
+        "O",
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "rt1",
+      "refs": [
+        "O",
+        "B",
+        "P"
+      ]
+    }
+  ]
+}

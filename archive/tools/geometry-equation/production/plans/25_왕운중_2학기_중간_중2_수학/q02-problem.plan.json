@@ -1,0 +1,215 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "H1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2710",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-857",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2010",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-857",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-851",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-2400",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-851",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1720",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1696",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1744",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1527",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-2294",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "H1",
+    "H2",
+    "H3",
+    "H4",
+    "H5",
+    "H6"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "H1",
+        "H2"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "H3",
+        "H4"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "H5",
+        "H6"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "H1",
+    "H2",
+    "H3",
+    "H4",
+    "H5",
+    "H6"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "25_왕운중_2학기_중간_중2_수학 q02번 문제 조건 도형",
+  "accessibilityDescription": "보라색 직선이 오른쪽 아래로 내려간다. 가로축과는 원점 오른쪽에서, 세로축과는 원점 위에서 만난다.",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 460
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "보라색 직선이 오른쪽 아래로 내려간다. 가로축과는 원점 오른쪽에서, 세로축과는 원점 위에서 만난다.",
+      "mappedTo": "mathPlan.nodes/displaySegments/planeMarks"
+    },
+    {
+      "id": "scan",
+      "condition": "실제 원본 기출 스캔과 q2-problem-visual-v2.svg의 기하 정보 대조",
+      "mappedTo": "mathPlan.nodes/displaySegments"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 점 이름·연결선과 문제·해설별 표식의 엔진 작도. 바탕 사각형 및 불필요한 면 채움 없음."
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "givenLine",
+        "at": [
+          5,
+          -3
+        ],
+        "text": "주어진 직선",
+        "labelKind": "TEXT"
+      }
+    ]
+  }
+}

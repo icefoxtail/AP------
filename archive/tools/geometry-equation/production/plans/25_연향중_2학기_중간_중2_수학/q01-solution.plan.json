@@ -1,0 +1,359 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "H1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2880",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-795",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1960",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-795",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1717",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1980",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1717",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1840",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "398",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1912",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "398",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1917",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1717",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "258",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H8",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "398",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "258",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H9",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1717",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1312",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H10",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "398",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1312",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "H1",
+    "H2",
+    "H3",
+    "H4",
+    "H5",
+    "H6",
+    "H7",
+    "H8",
+    "H9",
+    "H10"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "H1",
+        "H2"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "H3",
+        "H4"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "H5",
+        "H6"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "H7",
+        "H8"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "H9",
+        "H10"
+      ],
+      "dashed": true
+    }
+  ],
+  "hiddenPointNames": [
+    "H1",
+    "H2",
+    "H3",
+    "H4",
+    "H5",
+    "H6",
+    "H7",
+    "H8",
+    "H9",
+    "H10"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "25_연향중_2학기_중간_중2_수학 q01번 해설 과정 도형",
+  "accessibilityDescription": "파란 세로 직선 x=4가 (4, 0), (4, 2), (4, 4)를 지난다. 회색 세로축과 평행하다.",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 460
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "파란 세로 직선 x=4가 (4, 0), (4, 2), (4, 4)를 지난다. 회색 세로축과 평행하다.",
+      "mappedTo": "mathPlan.nodes/displaySegments/planeMarks"
+    },
+    {
+      "id": "scan",
+      "condition": "실제 원본 기출 스캔과 q1-solution-visual-v2.svg의 기하 정보 대조",
+      "mappedTo": "mathPlan.nodes/displaySegments"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 점 이름·연결선과 문제·해설별 표식의 엔진 작도. 바탕 사각형 및 불필요한 면 채움 없음."
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "txt0",
+        "at": [
+          2.9,
+          -2.7
+        ],
+        "text": "(4, 0)",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "txt1",
+        "at": [
+          -5,
+          0.4
+        ],
+        "text": "2",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "txt2",
+        "at": [
+          2.9,
+          0.4
+        ],
+        "text": "(4, 2)",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "txt3",
+        "at": [
+          -5,
+          3.1
+        ],
+        "text": "4",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "txt4",
+        "at": [
+          2.9,
+          3.1
+        ],
+        "text": "(4, 4)",
+        "labelKind": "TEXT"
+      }
+    ]
+  }
+}

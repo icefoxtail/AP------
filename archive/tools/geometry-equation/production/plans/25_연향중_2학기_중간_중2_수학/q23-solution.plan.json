@@ -1,0 +1,345 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-43",
+              "denominator": "8"
+            },
+            {
+              "kind": "rational",
+              "numerator": "69",
+              "denominator": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-43",
+              "denominator": "8"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-453",
+              "denominator": "80"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "23",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-453",
+              "denominator": "80"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "23",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "69",
+              "denominator": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1085",
+              "denominator": "400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "660",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-31",
+              "denominator": "80"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-27",
+              "denominator": "40"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "E",
+        "O"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "s8",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "s9",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "s10",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "caption": "25_연향중_2학기_중간_중2_수학 q23번 해설 과정 도형",
+  "accessibilityDescription": "해설 그림: 정사각형 ABCD의 두 대각선이 O에서 직각으로 만나고 OC=6cm이며 OD(x)와 같은 길이 표시가 있다. E에서 ∠BEO=65°, 꼭짓점 B에서 ∠ABE=y(빨강), ∠EBO=25°(파랑), ∠ABO=45°(초록) 호를 보여 준다.",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 460
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "해설 그림: 정사각형 ABCD의 두 대각선이 O에서 직각으로 만나고 OC=6cm이며 OD(x)와 같은 길이 표시가 있다. E에서 ∠BEO=65°, 꼭짓점 B에서 ∠ABE=y(빨강), ∠EBO=25°(파랑), ∠ABO=45°(초록) 호를 보여 준다.",
+      "mappedTo": "mathPlan.nodes/displaySegments/planeMarks"
+    },
+    {
+      "id": "scan",
+      "condition": "실제 원본 기출 스캔과 q23-problem-visual-v2.svg의 기하 정보 대조",
+      "mappedTo": "mathPlan.nodes/displaySegments"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 점 이름·연결선과 문제·해설별 표식의 엔진 작도. 바탕 사각형 및 불필요한 면 채움 없음.",
+    "23번 원본 에셋의 기입 길이·동일 표시·수선·평행 표식은 계획의 그려지는 필드별로 별도 확인함."
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "ang0",
+        "refs": [
+          "B",
+          "E",
+          "C"
+        ],
+        "value": 65,
+        "style": "ARC",
+        "label": "65",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ang1",
+        "refs": [
+          "A",
+          "B",
+          "E"
+        ],
+        "value": 20,
+        "style": "ARC",
+        "noLabel": true,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "addedAngle2",
+        "refs": [
+          "B",
+          "E",
+          "O"
+        ],
+        "value": 65,
+        "label": "65",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "label0",
+        "ownerSegment": "s6",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "label1",
+        "ownerSegment": "s8",
+        "text": "x"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rt0",
+      "refs": [
+        "B",
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "rt1",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "rt2",
+      "refs": [
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "rt3",
+      "refs": [
+        "C",
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "rt4",
+      "refs": [
+        "E",
+        "O",
+        "B"
+      ]
+    }
+  ]
+}
