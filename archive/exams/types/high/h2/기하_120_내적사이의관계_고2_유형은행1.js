@@ -44,7 +44,11 @@ window.questionBank = [
       "CC_MIDPOINT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_120_내적사이의관계_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "AB=3·BC=4인 직각삼각형, BC 삼등분점 D,E와 AB 중점 M",
+    "imageCaption": "AB=3·BC=4인 직각삼각형, BC 삼등분점 D,E와 AB 중점 M",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -89,6 +93,10 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "DEEP_COMPOSITE"
+    "integrationPattern": "DEEP_COMPOSITE",
+    "image": "assets/images/기하_120_내적사이의관계_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "∠B=90°, AB 삼등분 A₁·A₂, BC 사등분 C₁·C₂·C₃",
+    "imageCaption": "∠B=90°, AB 삼등분 A₁·A₂, BC 사등분 C₁·C₂·C₃",
+    "imageSize": "full"
   }
 ];

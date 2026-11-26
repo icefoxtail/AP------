@@ -37,7 +37,11 @@ window.questionBank = [
       "CC_SIMILAR_FIGURES_AREA_VOLUME"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_069_등비급수의활용-개수가변하는합_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "직각이등변삼각형 OBC에 내접한 중앙 정사각형과 양쪽 작은 삼각형의 다음 두 정사각형.",
+    "imageCaption": "직각이등변삼각형 OBC에 내접한 중앙 정사각형과 양쪽 작은 삼각형의 다음 두 정사각형.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -75,7 +79,11 @@ window.questionBank = [
       "CC_SIMILAR_FIGURES_AREA_VOLUME"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_069_등비급수의활용-개수가변하는합_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "10×10 정사각형의 다섯 대각선 구간을 교대로 정사각형·원으로 색칠하고 맞은편 두 4×4 정사각형에서 반복.",
+    "imageCaption": "10×10 정사각형의 다섯 대각선 구간을 교대로 정사각형·원으로 색칠하고 맞은편 두 4×4 정사각형에서 반복.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -114,6 +122,10 @@ window.questionBank = [
       "CC_SIMILAR_FIGURES_AREA_VOLUME"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_069_등비급수의활용-개수가변하는합_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "제1사분면의 반지름4 사분원, E·F에서 그은 두 반직선, 색칠한 OIGH와 두 작은 사분원.",
+    "imageCaption": "제1사분면의 반지름4 사분원, E·F에서 그은 두 반직선, 색칠한 OIGH와 두 작은 사분원.",
+    "imageSize": "full"
   }
 ];

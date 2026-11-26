@@ -39,7 +39,11 @@ window.questionBank = [
     "solutionPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q01-solution.plan.json",
     "points": 3.0,
     "problemTypeKey": "PT_TRIG_RATIO",
-    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION"
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+    "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_유사/q1-solution.svg",
+    "solutionImageAlt": "각 A의 대변 BC=5와 빗변 AC=13을 이용한 sin A 계산",
+    "solutionImageCaption": "각 A의 대변 BC=5와 빗변 AC=13을 이용한 sin A 계산",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -584,7 +588,11 @@ window.questionBank = [
     "solutionPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q14-solution.plan.json",
     "points": 4.0,
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
-    "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR"
+    "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+    "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_유사/q14-solution.svg",
+    "solutionImageAlt": "반지름 OA와 OB를 연결하여 두 직각삼각형의 RHS 합동을 증명하는 풀이",
+    "solutionImageCaption": "반지름 OA와 OB를 연결하여 두 직각삼각형의 RHS 합동을 증명하는 풀이",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,

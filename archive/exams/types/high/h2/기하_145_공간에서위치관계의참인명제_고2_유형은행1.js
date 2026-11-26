@@ -129,7 +129,11 @@ window.questionBank = [
       "CC_SQUARE_PROPERTIES"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_145_공간에서위치관계의참인명제_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "윗면 ABCD·밑면 EFGH인 정육면체",
+    "imageCaption": "윗면 ABCD·밑면 EFGH인 정육면체",
+    "imageSize": "full"
   },
   {
     "id": 4,

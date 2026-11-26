@@ -76,7 +76,11 @@ window.questionBank = [
       "CC_SYMMETRIC_INTERVAL_INTEGRATION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_281_x축에수직인평면으로자른단면이주어진입체_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "반지름 3인 원의 밑면, 지름 AB와 x=0 위치의 대표 현만 표시한다. 움직이는 정삼각형 단면은 아직 그리지 않았다.",
+    "imageCaption": "반지름 3인 원의 밑면, 지름 AB와 x=0 위치의 대표 현만 표시한다. 움직이는 정삼각형 단면은 아직 그리지 않았다.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -230,7 +234,11 @@ window.questionBank = [
       "CC_DEFINITE_INTEGRAL"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_281_x축에수직인평면으로자른단면이주어진입체_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "0≤x≤4에서 y=±√(2x+1)로 둘러싸인 밑면 영역을 정확한 두 곡선 사이에 표시한다. 3차원 정사각형 단면은 아직 그리지 않았다.",
+    "imageCaption": "0≤x≤4에서 y=±√(2x+1)로 둘러싸인 밑면 영역을 정확한 두 곡선 사이에 표시한다. 3차원 정사각형 단면은 아직 그리지 않았다.",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -504,7 +512,11 @@ window.questionBank = [
       "CC_SYMMETRIC_INTERVAL_INTEGRATION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_281_x축에수직인평면으로자른단면이주어진입체_고2_유형은행1/q13-problem.svg",
+    "imageAlt": "단위원 x²+y²=1의 밑면 및 x=0의 대표 현만 보인다. 정사각형에서 내접원을 뺀 관통 단면은 미지원이다.",
+    "imageCaption": "단위원 x²+y²=1의 밑면 및 x=0의 대표 현만 보인다. 정사각형에서 내접원을 뺀 관통 단면은 미지원이다.",
+    "imageSize": "full"
   },
   {
     "id": 14,
@@ -583,6 +595,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_PIECEWISE_DOMAIN_PARTITION"
     ],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "CASE_BRANCH",
+    "image": "assets/images/미적분II_281_x축에수직인평면으로자른단면이주어진입체_고2_유형은행1/q15-problem.svg",
+    "imageAlt": "각기 다른 반지름의 두 상단 원호와 x=0인 대표 순간의 P, 수선의 발 H를 표시한다. 나머지 이동 과정과 정사각형 단면은 보류.",
+    "imageCaption": "각기 다른 반지름의 두 상단 원호와 x=0인 대표 순간의 P, 수선의 발 H를 표시한다. 나머지 이동 과정과 정사각형 단면은 보류.",
+    "imageSize": "full"
   }
 ];

@@ -223,7 +223,11 @@ window.questionBank = [
     "content": "이차방정식 $(a+c)x^2+2bx+(a-c)=0$이 중근을 가질 때, $a, b, c$를 세 변의 길이로 하는 삼각형은 어떤 삼각형인지 구하시오. (단, $a, b, c$는 양수이다.)",
     "choices": [],
     "answer": "빗변의 길이가 $a$인 직각삼각형",
-    "solution": "$a>0,\\ c>0$이므로 $a+c\\neq 0$이고 주어진 방정식은 이차방정식이다.\n중근을 가지려면 판별식 $D=0$이어야 한다.\n$$\\frac{D}{4}=b^2-(a+c)(a-c)=b^2-a^2+c^2=0$$\n따라서 $a^2=b^2+c^2$이다.\n이는 피타고라스 정리의 역에 의하여 $a$가 빗변의 길이인 직각삼각형이다."
+    "solution": "$a>0,\\ c>0$이므로 $a+c\\neq 0$이고 주어진 방정식은 이차방정식이다.\n중근을 가지려면 판별식 $D=0$이어야 한다.\n$$\\frac{D}{4}=b^2-(a+c)(a-c)=b^2-a^2+c^2=0$$\n따라서 $a^2=b^2+c^2$이다.\n이는 피타고라스 정리의 역에 의하여 $a$가 빗변의 길이인 직각삼각형이다.",
+    "solutionImage": "assets/images/동아_공통수학1_방정식과부등식_대단원평가_고1/q8-solution.svg",
+    "solutionImageAlt": "a²=b²+c²에서 빗변 a와 두 직각변 b, c가 대응하는 직각삼각형(비율 예시)",
+    "solutionImageCaption": "a²=b²+c²에서 빗변 a와 두 직각변 b, c가 대응하는 직각삼각형(비율 예시)",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,

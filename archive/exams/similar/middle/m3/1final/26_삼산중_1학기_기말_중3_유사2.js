@@ -673,7 +673,11 @@ window.questionBank = [
     "imageAlt": "이차함수 그래프와 x축과의 교점 A(-2, 0), C(4, 0), y축과의 교점 (0, -8), 꼭짓점 B로 이루어진 삼각형 ABC.",
     "imageSize": "full",
     "followupKind": "CONFIRMATION",
-    "solutionPlanRef": "archive/exams/similar/middle/m3/1final/26_삼산중_1학기_기말_중3_유사2_plans/q15-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/middle/m3/1final/26_삼산중_1학기_기말_중3_유사2_plans/q15-solution.plan.json",
+    "solutionImage": "assets/images/26_삼산중_1학기_기말_중3_유사2/q15-solution.svg",
+    "solutionImageAlt": "포물선과 x축 교점 A·C, 꼭짓점 B로 이룬 삼각형 ABC의 넓이 관계",
+    "solutionImageCaption": "포물선과 x축 교점 A·C, 꼭짓점 B로 이룬 삼각형 ABC의 넓이 관계",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -769,7 +773,12 @@ window.questionBank = [
     "sourceQid": 17,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION",
-    "solutionPlanRef": "archive/exams/similar/middle/m3/1final/26_삼산중_1학기_기말_중3_유사2_plans/q17-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/middle/m3/1final/26_삼산중_1학기_기말_중3_유사2_plans/q17-solution.plan.json",
+    "solutionImage": "assets/images/26_삼산중_1학기_기말_중3_유사2/q17-solution.svg",
+    "solutionImageAlt": "제곱완성의 넓이 모형: x² 정사각형과 5x 직사각형 두 개, 추가한 넓이 25의 작은 정사각형",
+    "solutionImageCaption": "제곱완성의 넓이 모형: x² 정사각형과 5x 직사각형 두 개, 추가한 넓이 25의 작은 정사각형",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 18,
@@ -865,7 +874,12 @@ window.questionBank = [
     "sourceQid": 19,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION",
-    "solutionPlanRef": "archive/exams/similar/middle/m3/1final/26_삼산중_1학기_기말_중3_유사2_plans/q19-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/middle/m3/1final/26_삼산중_1학기_기말_중3_유사2_plans/q19-solution.plan.json",
+    "solutionImage": "assets/images/26_삼산중_1학기_기말_중3_유사2/q19-solution.svg",
+    "solutionImageAlt": "두 포물선 y=2x²·y=-x² 및 삼각형 ABO와 세로선 BDC",
+    "solutionImageCaption": "두 포물선 y=2x²·y=-x² 및 삼각형 ABO와 세로선 BDC",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   },
   {
     "id": 20,
@@ -914,7 +928,11 @@ window.questionBank = [
     "imageAlt": "위로 볼록하고 대칭축이 x=1이며 x축과 점 (-2, 0)에서 만나는 이차함수의 그래프.",
     "imageSize": "full",
     "followupKind": "CONFIRMATION",
-    "solutionPlanRef": "archive/exams/similar/middle/m3/1final/26_삼산중_1학기_기말_중3_유사2_plans/q20-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/middle/m3/1final/26_삼산중_1학기_기말_중3_유사2_plans/q20-solution.plan.json",
+    "solutionImage": "assets/images/26_삼산중_1학기_기말_중3_유사2/q20-solution.svg",
+    "solutionImageAlt": "a=-1인 대표 경우의 포물선·x절편·y절편 (주어진 a<0 중 a=-1을 택한 예시이며 a값 자체는 문제의 조건이 아니다.)",
+    "solutionImageCaption": "a=-1인 대표 경우의 포물선·x절편·y절편 (주어진 a<0 중 a=-1을 택한 예시이며 a값 자체는 문제의 조건이 아니다.)",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -998,7 +1016,12 @@ window.questionBank = [
     "sourceQid": 22,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION",
-    "solutionPlanRef": "archive/exams/similar/middle/m3/1final/26_삼산중_1학기_기말_중3_유사2_plans/q22-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/middle/m3/1final/26_삼산중_1학기_기말_중3_유사2_plans/q22-solution.plan.json",
+    "solutionImage": "assets/images/26_삼산중_1학기_기말_중3_유사2/q22-solution.svg",
+    "solutionImageAlt": "22×16 원본 직사각형의 네 모서리에서 한 변 2인 정사각형을 제거한 상자 전개도",
+    "solutionImageCaption": "22×16 원본 직사각형의 네 모서리에서 한 변 2인 정사각형을 제거한 상자 전개도",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 23,
@@ -1080,6 +1103,10 @@ window.questionBank = [
     "sourceQid": 24,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION",
-    "solutionPlanRef": "archive/exams/similar/middle/m3/1final/26_삼산중_1학기_기말_중3_유사2_plans/q24-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/middle/m3/1final/26_삼산중_1학기_기말_중3_유사2_plans/q24-solution.plan.json",
+    "solutionImage": "assets/images/26_삼산중_1학기_기말_중3_유사2/q24-solution.svg",
+    "solutionImageAlt": "사분면 조건의 경계 a=2/9에서의 포물선 (허용 범위의 경계값 예시이다.)",
+    "solutionImageCaption": "사분면 조건의 경계 a=2/9에서의 포물선 (허용 범위의 경계값 예시이다.)",
+    "solutionImageSize": "full"
   }
 ];

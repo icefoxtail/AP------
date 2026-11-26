@@ -228,6 +228,10 @@ window.questionBank = [
       "CC_TANGENT_LINE_SLOPE_AT_POINT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_241_지수함수로그함수의정적분의치환적분법_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "y=2x²+1 위 임의의 점에서의 접선. θ 각호는 엔진 확장이 필요.",
+    "imageCaption": "y=2x²+1 위 임의의 점에서의 접선. θ 각호는 엔진 확장이 필요.",
+    "imageSize": "full"
   }
 ];

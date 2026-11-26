@@ -89,7 +89,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_159_정사면체_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "정사면체의 무게중심과 평면각",
+    "imageCaption": "정사면체의 무게중심과 평면각",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -136,7 +140,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RESTRICTED_INTERVAL"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_159_정사면체_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "정사면체의 모서리 내분점",
+    "imageCaption": "정사면체의 모서리 내분점",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -183,7 +191,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RESTRICTED_INTERVAL"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_159_정사면체_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "정사면체의 두 직선 사이 각",
+    "imageCaption": "정사면체의 두 직선 사이 각",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -230,7 +242,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RESTRICTED_INTERVAL"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_159_정사면체_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "정사면체 두 면의 이면각",
+    "imageCaption": "정사면체 두 면의 이면각",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -277,6 +293,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RESTRICTED_INTERVAL"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_159_정사면체_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "정사면체 중점 평면의 이면각",
+    "imageCaption": "정사면체 중점 평면의 이면각",
+    "imageSize": "full"
   }
 ];

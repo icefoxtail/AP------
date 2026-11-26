@@ -43,7 +43,11 @@ window.questionBank = [
       "CC_POINT_LINE_DISTANCE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_132_내적의최대최소-내적의정의를이용하는경우_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "P(2,0) 및 중심 (5,4), 반지름 2인 원판 내부의 임의 Q",
+    "imageCaption": "P(2,0) 및 중심 (5,4), 반지름 2인 원판 내부의 임의 Q",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -86,7 +90,11 @@ window.questionBank = [
       "CC_CIRCLE_CENTER_RADIUS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_132_내적의최대최소-내적의정의를이용하는경우_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "P(0,3) 및 중심 (4,4), 반지름 2인 원판 내부의 임의 Q",
+    "imageCaption": "P(0,3) 및 중심 (4,4), 반지름 2인 원판 내부의 임의 Q",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -129,7 +137,11 @@ window.questionBank = [
       "CC_CIRCLE_CENTER_RADIUS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_132_내적의최대최소-내적의정의를이용하는경우_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "P(4,3) 및 중심 C(2,5), 반지름 2인 원판 내부의 임의 Q",
+    "imageCaption": "P(4,3) 및 중심 C(2,5), 반지름 2인 원판 내부의 임의 Q",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -173,7 +185,11 @@ window.questionBank = [
       "CC_INSCRIBED_ANGLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "CASE_BRANCH",
+    "image": "assets/images/기하_132_내적의최대최소-내적의정의를이용하는경우_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "반지름 2인 원 위의 서로 다른 A,B,C 및 AB·AC 선분(대표 배치)",
+    "imageCaption": "반지름 2인 원 위의 서로 다른 A,B,C 및 AB·AC 선분(대표 배치)",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -260,7 +276,11 @@ window.questionBank = [
       "CC_PERPENDICULAR"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_132_내적의최대최소-내적의정의를이용하는경우_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "한 변이 6인 정삼각형의 높이 AH 및 선분 AH의 가변점 P",
+    "imageCaption": "한 변이 6인 정삼각형의 높이 AH 및 선분 AH의 가변점 P",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -304,7 +324,11 @@ window.questionBank = [
       "CC_MIDPOINT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_132_내적의최대최소-내적의정의를이용하는경우_고2_유형은행1/q7-problem.svg",
+    "imageAlt": "B 직각, AB=8, BC=6인 삼각형과 AB 내부의 이동점 P",
+    "imageCaption": "B 직각, AB=8, BC=6인 삼각형과 AB 내부의 이동점 P",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -348,7 +372,11 @@ window.questionBank = [
       "CC_TRIANGLE_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "REINTERPRETATION"
+    "integrationPattern": "REINTERPRETATION",
+    "image": "assets/images/기하_132_내적의최대최소-내적의정의를이용하는경우_고2_유형은행1/q8-problem.svg",
+    "imageAlt": "한 변 4인 마름모 ABCD의 DC 위를 움직이는 대표점 P",
+    "imageCaption": "한 변 4인 마름모 ABCD의 DC 위를 움직이는 대표점 P",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -391,7 +419,11 @@ window.questionBank = [
       "CC_PARALLELOGRAM_PROPERTIES"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_132_내적의최대최소-내적의정의를이용하는경우_고2_유형은행1/q9-problem.svg",
+    "imageAlt": "AB=6, AD=4, ∠DAB=60° 평행사변형과 DC 위의 P",
+    "imageCaption": "AB=6, AD=4, ∠DAB=60° 평행사변형과 DC 위의 P",
+    "imageSize": "full"
   },
   {
     "id": 10,

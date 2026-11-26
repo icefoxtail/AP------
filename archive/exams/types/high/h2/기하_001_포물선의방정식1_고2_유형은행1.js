@@ -138,6 +138,10 @@ window.questionBank = [
       "CC_DISTANCE_TWO_POINTS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_001_포물선의방정식1_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "초점 F와 수직현 AB 사이의 거리 및 OF의 길이를 나타낸 포물선",
+    "imageCaption": "초점 F와 수직현 AB 사이의 거리 및 OF의 길이를 나타낸 포물선",
+    "imageSize": "full"
   }
 ];

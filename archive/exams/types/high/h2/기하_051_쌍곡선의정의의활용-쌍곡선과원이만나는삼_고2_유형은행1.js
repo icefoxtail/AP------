@@ -43,7 +43,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_051_쌍곡선의정의의활용-쌍곡선과원이만나는삼_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "선분 FF′을 지름으로 하는 원과 쌍곡선의 제1사분면 교점 P, 색칠된 삼각형 PFF′",
+    "imageCaption": "선분 FF′을 지름으로 하는 원과 쌍곡선의 제1사분면 교점 P, 색칠된 삼각형 PFF′",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -89,7 +93,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_051_쌍곡선의정의의활용-쌍곡선과원이만나는삼_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "초점을 지나는 원과 쌍곡선의 양의 기울기 점근선 교점 P, 색칠된 삼각형 OPF",
+    "imageCaption": "초점을 지나는 원과 쌍곡선의 양의 기울기 점근선 교점 P, 색칠된 삼각형 OPF",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -177,7 +185,11 @@ window.questionBank = [
       "CC_RECTANGLE_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_051_쌍곡선의정의의활용-쌍곡선과원이만나는삼_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "초점 지름 원이 두 점근선과 만나는 네 점으로 만든 색칠된 직사각형",
+    "imageCaption": "초점 지름 원이 두 점근선과 만나는 네 점으로 만든 색칠된 직사각형",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -223,6 +235,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_051_쌍곡선의정의의활용-쌍곡선과원이만나는삼_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "두 초점을 지름의 끝점으로 하는 원과 쌍곡선의 제1사분면 교점 P, 삼각형 PF′F",
+    "imageCaption": "두 초점을 지름의 끝점으로 하는 원과 쌍곡선의 제1사분면 교점 P, 삼각형 PF′F",
+    "imageSize": "full"
   }
 ];

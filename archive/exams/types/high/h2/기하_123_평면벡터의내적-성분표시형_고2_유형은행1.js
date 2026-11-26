@@ -381,7 +381,11 @@ window.questionBank = [
       "CC_PERPENDICULAR"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_123_평면벡터의내적-성분표시형_고2_유형은행1/q9-problem.svg",
+    "imageAlt": "AB=2·AD=3 직사각형, BC의 삼등분점 E,F와 AE·AF",
+    "imageCaption": "AB=2·AD=3 직사각형, BC의 삼등분점 E,F와 AE·AF",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -425,7 +429,11 @@ window.questionBank = [
       "CC_LINE_EQUATION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_123_평면벡터의내적-성분표시형_고2_유형은행1/q10-problem.svg",
+    "imageAlt": "원 x²+y²=10과 직선 y=x+2의 두 교점 A,B 및 OA, OB 선분",
+    "imageCaption": "원 x²+y²=10과 직선 y=x+2의 두 교점 A,B 및 OA, OB 선분",
+    "imageSize": "full"
   },
   {
     "id": 11,

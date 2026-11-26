@@ -82,7 +82,11 @@ window.questionBank = [
     "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_ROOT_PARAMETER",
     "rpmPrimaryRecordId": "H1-RPM-248",
     "sourceQid": 2,
-    "variationType": "STRICT_VARIANT"
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고1_유사3/q2-solution.svg",
+    "solutionImageAlt": "q의 진리집합은 {-1, 6}이다. p는 중심 2에서 거리 a 이내의 구간이므로 두 근까지의 거리는 각각 3, 4이다. 둘 다 포함하는 최소 정수 a는 4이며 이때 p의 범위는 [-2, 6]이다.",
+    "solutionImageCaption": "q의 진리집합은 {-1, 6}이다. p는 중심 2에서 거리 a 이내의 구간이므로 두 근까지의 거리는 각각 3, 4이다. 둘 다 포함하는 최소 정수 a는 4이며 이때 p의 범위는 [-2, 6]이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -901,7 +905,11 @@ window.questionBank = [
     "templateKey": "TPL_MULTIPLE_BIJECTIONS_DEDUCTION",
     "rpmPrimaryRecordId": "H1-RPM-257",
     "sourceQid": 21,
-    "variationType": "STRICT_VARIANT"
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고1_유사3/q21-solution.svg",
+    "solutionImageAlt": "f(2)=3, (g∘f)(1)=2, (f∘g)(2)=1을 만족하는 유일한 두 일대일대응은 f: 1→1, 2→3, 3→2와 g: 1→2, 2→1, 3→3이다. 따라서 f(1)=1, g(3)=3이며 g⁻¹(2)=1과 f(f(3))=3을 더하면 4이다.",
+    "solutionImageCaption": "f(2)=3, (g∘f)(1)=2, (f∘g)(2)=1을 만족하는 유일한 두 일대일대응은 f: 1→1, 2→3, 3→2와 g: 1→2, 2→1, 3→3이다. 따라서 f(1)=1, g(3)=3이며 g⁻¹(2)=1과 f(f(3))=3을 더하면 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

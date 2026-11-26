@@ -88,7 +88,11 @@ window.questionBank = [
       "CC_RECTANGLE_PROPERTIES"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_100_도형에서벡터의연산과실수배_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "직사각형 ABCD의 DC 중점 E와 BC의 1:2 내분점 F, AE·AF·AC 연결",
+    "imageCaption": "직사각형 ABCD의 DC 중점 E와 BC의 1:2 내분점 F, AE·AF·AC 연결",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -133,7 +137,11 @@ window.questionBank = [
       "CC_EQUILATERAL_TRIANGLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_100_도형에서벡터의연산과실수배_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "반지름 1인 원의 중심각 AOB=60°와 내부 이등분선 OC 및 세 중심벡터",
+    "imageCaption": "반지름 1인 원의 중심각 AOB=60°와 내부 이등분선 OC 및 세 중심벡터",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -178,7 +186,11 @@ window.questionBank = [
       "CC_CIRCLE_RADIUS_DEFINITION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_100_도형에서벡터의연산과실수배_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "반지름 1인 사분원 부채꼴 OAB의 45° 호중점 C 및 OA·OB·OC 유향반지름",
+    "imageCaption": "반지름 1인 사분원 부채꼴 OAB의 45° 호중점 C 및 OA·OB·OC 유향반지름",
+    "imageSize": "full"
   },
   {
     "id": 5,

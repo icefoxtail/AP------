@@ -42,7 +42,11 @@ window.questionBank = [
       "CC_PARABOLA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_015_타원의방정식_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "전조등 반사경 단면 y²=20x, 전구 초점과 원점 거리 5cm, 수직 입구 지름 40cm",
+    "imageCaption": "전조등 반사경 단면 y²=20x, 전구 초점과 원점 거리 5cm, 수직 입구 지름 40cm",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -85,7 +89,11 @@ window.questionBank = [
       "CC_PARABOLA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_015_타원의방정식_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "입구 지름 16cm, 깊이 6cm를 각각 세로 현과 수평 치수로 표시한 위성 안테나 단면. 두 평행 입사 전파가 초점 F로 반사된다.",
+    "imageCaption": "입구 지름 16cm, 깊이 6cm를 각각 세로 현과 수평 치수로 표시한 위성 안테나 단면. 두 평행 입사 전파가 초점 F로 반사된다.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -129,7 +137,11 @@ window.questionBank = [
       "CC_TRANSLATION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_015_타원의방정식_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "집열판의 지면 대비 꼭짓점 높이 1m(OV), 끝점 높이 3m(AK), 양 끝 폭 16m(AB)와 좌·우 수직 태양광선이 초점으로 모이는 단면",
+    "imageCaption": "집열판의 지면 대비 꼭짓점 높이 1m(OV), 끝점 높이 3m(AK), 양 끝 폭 16m(AB)와 좌·우 수직 태양광선이 초점으로 모이는 단면",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -353,7 +365,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_015_타원의방정식_고2_유형은행1/q8-problem.svg",
+    "imageAlt": "포물선 초점 현 AB의 AF=12, BF=4와 준선의 수선 발 H, 할선이 준선과 만나는 C의 삼각형 AHC",
+    "imageCaption": "포물선 초점 현 AB의 AF=12, BF=4와 준선의 수선 발 H, 할선이 준선과 만나는 C의 삼각형 AHC",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -447,7 +463,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_015_타원의방정식_고2_유형은행1/q10-problem.svg",
+    "imageAlt": "C₁:y²=4x, C₂:y²=−8(x−a), a>6의 두 교점 P,Q와 초점 F₁,F₂가 이루는 둘레 24의 사각형",
+    "imageCaption": "C₁:y²=4x, C₂:y²=−8(x−a), a>6의 두 교점 P,Q와 초점 F₁,F₂가 이루는 둘레 24의 사각형",
+    "imageSize": "full"
   },
   {
     "id": 11,
@@ -494,7 +514,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_015_타원의방정식_고2_유형은행1/q11-problem.svg",
+    "imageAlt": "y²=4px에서 준선 l의 수선 PH와 초점 통과 현 PFQ, PF:FQ=3:1, 삼각형 PHF 넓이 144√3",
+    "imageCaption": "y²=4px에서 준선 l의 수선 PH와 초점 통과 현 PFQ, PF:FQ=3:1, 삼각형 PHF 넓이 144√3",
+    "imageSize": "full"
   },
   {
     "id": 12,

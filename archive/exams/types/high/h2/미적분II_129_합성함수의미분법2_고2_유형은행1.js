@@ -350,6 +350,10 @@ window.questionBank = [
       "CC_AVERAGE_RATE_OF_CHANGE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_129_합성함수의미분법2_고2_유형은행1/q9-problem.svg",
+    "imageAlt": "두 꺾은선 f:(0,5)–(2,1)–(6,5), g:(0,2)–(2,6)–(6,2)를 같은 축에 구별해 그린다.",
+    "imageCaption": "두 꺾은선 f:(0,5)–(2,1)–(6,5), g:(0,2)–(2,6)–(6,2)를 같은 축에 구별해 그린다.",
+    "imageSize": "full"
   }
 ];

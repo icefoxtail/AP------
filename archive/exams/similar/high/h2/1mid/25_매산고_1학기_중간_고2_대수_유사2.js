@@ -472,7 +472,12 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H2-M1-RPM-105",
     "sourceQid": 11,
     "variationType": "CONFIRMATION",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js#q11"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js#q11",
+    "solutionImage": "assets/images/25_매산고_1학기_중간_고2_대수_유사2/q11-solution.svg",
+    "solutionImageAlt": "연속하는 극댓값 (π/3,7), (4π/3,7)의 간격 π가 한 주기이고, 최대 7·최소 1로 진폭 3과 중심선 4를 확인한다.",
+    "solutionImageCaption": "연속하는 극댓값 (π/3,7), (4π/3,7)의 간격 π가 한 주기이고, 최대 7·최소 1로 진폭 3과 중심선 4를 확인한다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 12,

@@ -88,7 +88,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_162_교선에수직이아닌정사영의길이_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "교선과 45도인 선분의 정사영",
+    "imageCaption": "교선과 45도인 선분의 정사영",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -132,7 +136,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_162_교선에수직이아닌정사영의길이_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "교선과 30도인 선분의 정사영",
+    "imageCaption": "교선과 30도인 선분의 정사영",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -177,7 +185,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_162_교선에수직이아닌정사영의길이_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "정사각뿔의 선분 CH와 사면 정사영",
+    "imageCaption": "정사각뿔의 선분 CH와 사면 정사영",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -222,6 +234,10 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_162_교선에수직이아닌정사영의길이_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "직육면체 DI의 옆면 정사영",
+    "imageCaption": "직육면체 DI의 옆면 정사영",
+    "imageSize": "full"
   }
 ];

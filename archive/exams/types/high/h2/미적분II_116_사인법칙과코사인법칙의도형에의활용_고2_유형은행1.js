@@ -40,7 +40,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_116_사인법칙과코사인법칙의도형에의활용_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "BC=8인 삼각형에서 ∠B=θ, ∠C=3θ이고 꼭짓점 A 아래 BC의 수선 발 H를 표시한다.",
+    "imageCaption": "BC=8인 삼각형에서 ∠B=θ, ∠C=3θ이고 꼭짓점 A 아래 BC의 수선 발 H를 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -81,7 +85,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_116_사인법칙과코사인법칙의도형에의활용_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "원점 중심 반지름 2 원의 제1사분면 P와 양의 가로축 위 원 밖 A를 잇고 ∠POA=3∠PAO를 표시한다.",
+    "imageCaption": "원점 중심 반지름 2 원의 제1사분면 P와 양의 가로축 위 원 밖 A를 잇고 ∠POA=3∠PAO를 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -122,7 +130,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_116_사인법칙과코사인법칙의도형에의활용_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "반지름 2 원에서 작은 호 A–P와 P–Q가 순서대로 이어지고 뒤쪽 호의 중심각은 앞쪽의 세 배다.",
+    "imageCaption": "반지름 2 원에서 작은 호 A–P와 P–Q가 순서대로 이어지고 뒤쪽 호의 중심각은 앞쪽의 세 배다.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -163,7 +175,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/미적분II_116_사인법칙과코사인법칙의도형에의활용_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "반지름 5의 부채꼴 OAB에서 중심각 2θ, 작은 호 AB의 길이 l과 현 AB를 표시한다.",
+    "imageCaption": "반지름 5의 부채꼴 OAB에서 중심각 2θ, 작은 호 AB의 길이 l과 현 AB를 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -245,7 +261,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_116_사인법칙과코사인법칙의도형에의활용_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "AB=5, AC=3인 삼각형에서 두 변의 끼인각 θ와 대변 BC를 보여 준다.",
+    "imageCaption": "AB=5, AC=3인 삼각형에서 두 변의 끼인각 θ와 대변 BC를 보여 준다.",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -286,7 +306,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_116_사인법칙과코사인법칙의도형에의활용_고2_유형은행1/q7-problem.svg",
+    "imageAlt": "반지름 8의 외접원에 내접한 이등변삼각형 ABC에서 AB=AC와 꼭짓점 A의 θ를 나타낸다.",
+    "imageCaption": "반지름 8의 외접원에 내접한 이등변삼각형 ABC에서 AB=AC와 꼭짓점 A의 θ를 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -368,7 +392,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_116_사인법칙과코사인법칙의도형에의활용_고2_유형은행1/q9-problem.svg",
+    "imageAlt": "AB=9인 삼각형의 ∠A=θ, ∠B=2θ와 C에서 AB로 그은 내각 이등분선 CD를 표시한다.",
+    "imageCaption": "AB=9인 삼각형의 ∠A=θ, ∠B=2θ와 C에서 AB로 그은 내각 이등분선 CD를 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 10,

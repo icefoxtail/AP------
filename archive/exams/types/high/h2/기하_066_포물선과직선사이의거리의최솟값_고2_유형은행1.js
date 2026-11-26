@@ -220,6 +220,10 @@ window.questionBank = [
       "CC_PARALLEL_LINES"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_066_포물선과직선사이의거리의최솟값_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "고정된 A,B와 포물선 위 임의 점 P로 만든 삼각형(비최소 예시)",
+    "imageCaption": "고정된 A,B와 포물선 위 임의 점 P로 만든 삼각형(비최소 예시)",
+    "imageSize": "full"
   }
 ];

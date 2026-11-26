@@ -61,7 +61,11 @@ window.questionBank = [
     "content": "중심각의 크기가 $\\frac{3}{4}\\pi$이고 호의 길이가 $9\\pi$인 부채꼴의 넓이를 구하시오.",
     "choices": [],
     "answer": "$54\\pi$",
-    "solution": "[풀이 전략]\n부채꼴의 호의 길이 $l=r\\theta$와 넓이 $S=\\frac{1}{2}rl$을 이용한다.\n[단계별 풀이]\n반지름을 $r$이라 하면 $9\\pi=r\\times\\frac{3}{4}\\pi$이므로 $r=12$이다.\n부채꼴의 넓이는 $\\frac{1}{2}\\times12\\times9\\pi=54\\pi$이다.\n[결론]\n$54\\pi$"
+    "solution": "[풀이 전략]\n부채꼴의 호의 길이 $l=r\\theta$와 넓이 $S=\\frac{1}{2}rl$을 이용한다.\n[단계별 풀이]\n반지름을 $r$이라 하면 $9\\pi=r\\times\\frac{3}{4}\\pi$이므로 $r=12$이다.\n부채꼴의 넓이는 $\\frac{1}{2}\\times12\\times9\\pi=54\\pi$이다.\n[결론]\n$54\\pi$",
+    "image": "assets/images/미래엔_대수_삼각함수_대단원마무리_고2/q2-problem.svg",
+    "imageAlt": "중심각 3π/4(135°)와 호의 길이 9π가 주어진 부채꼴이다.",
+    "imageCaption": "중심각 3π/4(135°)와 호의 길이 9π가 주어진 부채꼴이다.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -95,7 +99,11 @@ window.questionBank = [
       "$\\frac{4}{5}$"
     ],
     "answer": "③",
-    "solution": "[풀이 전략]\n점 $\\mathrm{P}(x,y)$에 대하여 $r=\\sqrt{x^2+y^2}$이면 $\\sin\\theta=\\frac{y}{r}$, $\\cos\\theta=\\frac{x}{r}$이다.\n[단계별 풀이]\n$r=\\overline{\\mathrm{OP}}=\\sqrt{(-1)^2+(-2)^2}=\\sqrt{5}$이다.\n$\\sin\\theta=\\frac{-2}{\\sqrt{5}}$, $\\cos\\theta=\\frac{-1}{\\sqrt{5}}$이다.\n$\\sin\\theta\\cos\\theta=\\frac{-2}{\\sqrt{5}}\\times\\frac{-1}{\\sqrt{5}}=\\frac{2}{5}$이다.\n[결론]\n$\\frac{2}{5}$이므로 답은 ③이다."
+    "solution": "[풀이 전략]\n점 $\\mathrm{P}(x,y)$에 대하여 $r=\\sqrt{x^2+y^2}$이면 $\\sin\\theta=\\frac{y}{r}$, $\\cos\\theta=\\frac{x}{r}$이다.\n[단계별 풀이]\n$r=\\overline{\\mathrm{OP}}=\\sqrt{(-1)^2+(-2)^2}=\\sqrt{5}$이다.\n$\\sin\\theta=\\frac{-2}{\\sqrt{5}}$, $\\cos\\theta=\\frac{-1}{\\sqrt{5}}$이다.\n$\\sin\\theta\\cos\\theta=\\frac{-2}{\\sqrt{5}}\\times\\frac{-1}{\\sqrt{5}}=\\frac{2}{5}$이다.\n[결론]\n$\\frac{2}{5}$이므로 답은 ③이다.",
+    "solutionImage": "assets/images/미래엔_대수_삼각함수_대단원마무리_고2/q3-solution.svg",
+    "solutionImageAlt": "제3사분면의 P(-1,-2)를 원점과 연결하고, x축에 내린 수선으로 가로 1과 세로 2를 표시한다.",
+    "solutionImageCaption": "제3사분면의 P(-1,-2)를 원점과 연결하고, x축에 내린 수선으로 가로 1과 세로 2를 표시한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -275,7 +283,11 @@ window.questionBank = [
     "content": "함수 $y=-2\\cos^2 x + \\cos x + 2$의 최댓값을 $M$, 최솟값을 $m$이라 할 때, $M+m$의 값을 구하시오.",
     "choices": [],
     "answer": "$\\frac{9}{8}$",
-    "solution": "[풀이 전략]\n$\\cos x=t$로 치환하면 $-1\\le t\\le1$이므로 $t$에 관한 이차함수의 최댓값, 최솟값을 구한다.\n[단계별 풀이]\n$\\cos x=t$ ($-1\\le t\\le1$)라 하면 $y=-2t^2+t+2=-2\\left(t-\\frac{1}{4}\\right)^2+\\frac{17}{8}$이다.\n$t=\\frac{1}{4}$일 때 최대이므로 $M=\\frac{17}{8}$이다.\n꼭짓점에서 먼 쪽 끝인 $t=-1$일 때 $y=-2-1+2=-1$이고 $t=1$일 때 $y=-2+1+2=1$이므로 최솟값은 $m=-1$이다.\n$M+m=\\frac{17}{8}-1=\\frac{9}{8}$\n[결론]\n$\\frac{9}{8}$"
+    "solution": "[풀이 전략]\n$\\cos x=t$로 치환하면 $-1\\le t\\le1$이므로 $t$에 관한 이차함수의 최댓값, 최솟값을 구한다.\n[단계별 풀이]\n$\\cos x=t$ ($-1\\le t\\le1$)라 하면 $y=-2t^2+t+2=-2\\left(t-\\frac{1}{4}\\right)^2+\\frac{17}{8}$이다.\n$t=\\frac{1}{4}$일 때 최대이므로 $M=\\frac{17}{8}$이다.\n꼭짓점에서 먼 쪽 끝인 $t=-1$일 때 $y=-2-1+2=-1$이고 $t=1$일 때 $y=-2+1+2=1$이므로 최솟값은 $m=-1$이다.\n$M+m=\\frac{17}{8}-1=\\frac{9}{8}$\n[결론]\n$\\frac{9}{8}$",
+    "solutionImage": "assets/images/미래엔_대수_삼각함수_대단원마무리_고2/q9-solution.svg",
+    "solutionImageAlt": "t=cos x(−1≤t≤1)로 치환하면 y=−2t²+t+2이며 꼭짓점 (1/4,17/8)에서 최대, 왼쪽 끝 (−1,−1)에서 최소다.",
+    "solutionImageCaption": "t=cos x(−1≤t≤1)로 치환하면 y=−2t²+t+2이며 꼭짓점 (1/4,17/8)에서 최대, 왼쪽 끝 (−1,−1)에서 최소다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,

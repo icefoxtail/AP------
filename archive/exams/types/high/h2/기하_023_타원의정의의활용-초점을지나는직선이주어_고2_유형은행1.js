@@ -42,7 +42,11 @@ window.questionBank = [
       "CC_PERIMETER"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_023_타원의정의의활용-초점을지나는직선이주어_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "세로로 긴 타원 25x²+9y²=225에서 아래쪽 초점 F′를 지나는 초점현 AB와 위쪽 초점 F가 이루는 삼각형 ABF",
+    "imageCaption": "세로로 긴 타원 25x²+9y²=225에서 아래쪽 초점 F′를 지나는 초점현 AB와 위쪽 초점 F가 이루는 삼각형 ABF",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -85,7 +89,11 @@ window.questionBank = [
       "CC_PERIMETER"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_023_타원의정의의활용-초점을지나는직선이주어_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "타원 x²/36+y²/20=1에서 초점 A(4,0)를 지나는 비수평 현 PQ와 다른 초점 B(-4,0)를 연결한 삼각형 PQB",
+    "imageCaption": "타원 x²/36+y²/20=1에서 초점 A(4,0)를 지나는 비수평 현 PQ와 다른 초점 B(-4,0)를 연결한 삼각형 PQB",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -131,7 +139,11 @@ window.questionBank = [
       "COND_POSITIVE",
       "COND_INEQUALITY_CONSTRAINT"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_023_타원의정의의활용-초점을지나는직선이주어_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "초점 F(√5,0)를 지나는 타원의 현 AB와 다른 초점 F′(-√5,0)를 연결한 삼각형 ABF′",
+    "imageCaption": "초점 F(√5,0)를 지나는 타원의 현 AB와 다른 초점 F′(-√5,0)를 연결한 삼각형 ABF′",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -176,7 +188,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_023_타원의정의의활용-초점을지나는직선이주어_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "타원 C의 y축 위 점 A(0,2)를 지나 왼쪽 초점 F′까지 잇는 현 AB와 오른쪽 초점 F로 이룬 삼각형 ABF",
+    "imageCaption": "타원 C의 y축 위 점 A(0,2)를 지나 왼쪽 초점 F′까지 잇는 현 AB와 오른쪽 초점 F로 이룬 삼각형 ABF",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -222,7 +238,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_023_타원의정의의활용-초점을지나는직선이주어_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "타원 x²/49+y²/24=1에서 오른쪽 초점 F를 지나는 직선 l과 왼쪽 초점 F′를 지나는 직선 m이 평행하고 그 사이 수선 길이가 6인 그림",
+    "imageCaption": "타원 x²/49+y²/24=1에서 오른쪽 초점 F를 지나는 직선 l과 왼쪽 초점 F′를 지나는 직선 m이 평행하고 그 사이 수선 길이가 6인 그림",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -265,6 +285,10 @@ window.questionBank = [
       "CC_PERIMETER"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_023_타원의정의의활용-초점을지나는직선이주어_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "타원 x²/25+y²/9=1의 초점 F,F′와 제1사분면의 내부점 P, 타원 위 점 Q가 F′-P-Q 순서로 놓이며 PF=3인 두 삼각형 PFQ와 PF′F",
+    "imageCaption": "타원 x²/25+y²/9=1의 초점 F,F′와 제1사분면의 내부점 P, 타원 위 점 Q가 F′-P-Q 순서로 놓이며 PF=3인 두 삼각형 PFQ와 PF′F",
+    "imageSize": "full"
   }
 ];

@@ -43,7 +43,11 @@ window.questionBank = [
       "CC_DISTANCE_TWO_POINTS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_184_삼수선의정리와거리_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "기하 184 q01: 좌표축 위 A,B,P와 선분 AB의 대표 내부점 C, 연결선 PC.",
+    "imageCaption": "기하 184 q01: 좌표축 위 A,B,P와 선분 AB의 대표 내부점 C, 연결선 PC.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -87,7 +91,11 @@ window.questionBank = [
       "CC_DISTANCE_TWO_POINTS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_184_삼수선의정리와거리_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "기하 184 q02: x·y축 위 A,B를 잇는 직선 l과 z축 점 P.",
+    "imageCaption": "기하 184 q02: x·y축 위 A,B를 잇는 직선 l과 z축 점 P.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -220,6 +228,10 @@ window.questionBank = [
       "CC_TRIANGLE_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_184_삼수선의정리와거리_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "기하 184 q05: 사면체 OABC 및 수선 PH=7, 삼각형 PBH 영역을 정확히 나타낸 보조선.",
+    "imageCaption": "기하 184 q05: 사면체 OABC 및 수선 PH=7, 삼각형 PBH 영역을 정확히 나타낸 보조선.",
+    "imageSize": "full"
   }
 ];

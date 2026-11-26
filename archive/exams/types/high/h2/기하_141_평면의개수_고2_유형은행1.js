@@ -44,7 +44,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_PAIRWISE_DISTINCT_POINTS"
     ],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "CASE_BRANCH",
+    "image": "assets/images/기하_141_평면의개수_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "평면 α 위의 A,B,C와 그 밖의 D, 모서리 AD 내부의 P",
+    "imageCaption": "평면 α 위의 A,B,C와 그 밖의 D, 모서리 AD 내부의 P",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -132,6 +136,10 @@ window.questionBank = [
       "CC_SPACE_FIGURE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "CASE_BRANCH",
+    "image": "assets/images/기하_141_평면의개수_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "세 그림: 정사각뿔의 5점·삼각기둥의 6점·정팔면체의 6점",
+    "imageCaption": "세 그림: 정사각뿔의 5점·삼각기둥의 6점·정팔면체의 6점",
+    "imageSize": "full"
   }
 ];

@@ -43,7 +43,11 @@ window.questionBank = [
       "CC_REGULAR_HEXAGON"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_169_정육각기둥에서이면각구하기_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "기하 유형은행 169번 유형 1번: 밑변 10 높이 12인 정육각기둥에서 A H L을 이은 삼각형.",
+    "imageCaption": "기하 유형은행 169번 유형 1번: 밑변 10 높이 12인 정육각기둥에서 A H L을 이은 삼각형.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -88,7 +92,11 @@ window.questionBank = [
       "CC_ELLIPSE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_169_정육각기둥에서이면각구하기_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "기하 유형은행 169번 유형 2번: 한 변 4, 높이 3인 정육각기둥의 삼각형 BJL 평면을 색칠.",
+    "imageCaption": "기하 유형은행 169번 유형 2번: 한 변 4, 높이 3인 정육각기둥의 삼각형 BJL 평면을 색칠.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -133,6 +141,10 @@ window.questionBank = [
       "CC_INTERNAL_DIVISION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_169_정육각기둥에서이면각구하기_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "기하 유형은행 169번 유형 3번: 모든 모서리가 3인 정육각기둥. GK 위 1:2 내분점 M과 선분 CM.",
+    "imageCaption": "기하 유형은행 169번 유형 3번: 모든 모서리가 3인 정육각기둥. GK 위 1:2 내분점 M과 선분 CM.",
+    "imageSize": "full"
   }
 ];

@@ -44,7 +44,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_070_타원의접선의방정식의활용-포물선과타원의_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "타원과 오른쪽 포물선의 제1사분면 교점 P에서 만나는 두 접선 (매개변수의 대표 도식)",
+    "imageCaption": "타원과 오른쪽 포물선의 제1사분면 교점 P에서 만나는 두 접선 (매개변수의 대표 도식)",
+    "imageSize": "full"
   },
   {
     "id": 2,

@@ -42,7 +42,11 @@ window.questionBank = [
       "CC_POINT_TO_LINE_DISTANCE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_077_쌍곡선의접선의방정식의활용1-접점의좌표_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "쌍곡선의 접선 l과 두 초점에서 내린 수선 FP, F′Q",
+    "imageCaption": "쌍곡선의 접선 l과 두 초점에서 내린 수선 FP, F′Q",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -86,7 +90,11 @@ window.questionBank = [
       "CC_DISTANCE_TWO_POINTS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_077_쌍곡선의접선의방정식의활용1-접점의좌표_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "쌍곡선의 접선과 두 초점·수선의 발이 이루는 사다리꼴",
+    "imageCaption": "쌍곡선의 접선과 두 초점·수선의 발이 이루는 사다리꼴",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -177,6 +185,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_077_쌍곡선의접선의방정식의활용1-접점의좌표_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "쌍곡선 접선의 두 축절편 Q,R과 수선의 발 S가 만드는 두 삼각형",
+    "imageCaption": "쌍곡선 접선의 두 축절편 Q,R과 수선의 발 S가 만드는 두 삼각형",
+    "imageSize": "full"
   }
 ];

@@ -42,7 +42,11 @@ window.questionBank = [
       "CC_SPACE_FIGURE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_182_도형에서두점사이의거리_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "기하 182 q01: O를 공유하는 길이 3·5 두 정육면체의 부분 모서리, 대각 맞은편 A,B.",
+    "imageCaption": "기하 182 q01: O를 공유하는 길이 3·5 두 정육면체의 부분 모서리, 대각 맞은편 A,B.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -86,7 +90,11 @@ window.questionBank = [
       "CC_SPACE_FIGURE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_182_도형에서두점사이의거리_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "기하 182 q02: 서로 직교하는 수평 막대 l,m 및 길이 5·3·4·2·4·3인 여섯 구간과 장식 A,B.",
+    "imageCaption": "기하 182 q02: 서로 직교하는 수평 막대 l,m 및 길이 5·3·4·2·4·3인 여섯 구간과 장식 A,B.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -130,7 +138,11 @@ window.questionBank = [
       "CC_POINT_LINE_DISTANCE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_182_도형에서두점사이의거리_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "기하 182 q03: 직육면체 8×9×7과 윗면 내부 P, BC 및 CD까지의 두 수선 길이 2.",
+    "imageCaption": "기하 182 q03: 직육면체 8×9×7과 윗면 내부 P, BC 및 CD까지의 두 수선 길이 2.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -176,7 +188,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_INEQUALITY_CONSTRAINT"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_182_도형에서두점사이의거리_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "기하 182 q04: 주어진 G 좌표와 각 모서리 방향을 만족하는 직육면체, 세 축 방향 보조선.",
+    "imageCaption": "기하 182 q04: 주어진 G 좌표와 각 모서리 방향을 만족하는 직육면체, 세 축 방향 보조선.",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -221,7 +237,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_182_도형에서두점사이의거리_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "기하 182 q05: xy평면 P와 yz평면 Q, 길이 4·6과 60도·30도 호의 동형 도식.",
+    "imageCaption": "기하 182 q05: xy평면 P와 yz평면 Q, 길이 4·6과 60도·30도 호의 동형 도식.",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -266,7 +286,11 @@ window.questionBank = [
       "CC_SIMILARITY"
     ],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_182_도형에서두점사이의거리_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "기하 182 q06: 반지름 12 높이 24인 원뿔 O-O′. A,B와 투영발·60도 호는 미지원.",
+    "imageCaption": "기하 182 q06: 반지름 12 높이 24인 원뿔 O-O′. A,B와 투영발·60도 호는 미지원.",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -310,6 +334,10 @@ window.questionBank = [
       "CC_SPATIAL_POSITION_RELATION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_182_도형에서두점사이의거리_고2_유형은행1/q7-problem.svg",
+    "imageAlt": "기하 182 q07: 직각 도로·육교, 수직 높이 5, 남쪽 A 7, 서쪽 B 6 초기 배치.",
+    "imageCaption": "기하 182 q07: 직각 도로·육교, 수직 높이 5, 남쪽 A 7, 서쪽 B 6 초기 배치.",
+    "imageSize": "full"
   }
 ];

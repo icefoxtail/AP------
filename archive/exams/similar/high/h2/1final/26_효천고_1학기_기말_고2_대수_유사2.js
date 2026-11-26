@@ -386,7 +386,11 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H2-M1-RPM-095",
     "sourceQid": 9,
     "variationType": "CONFIRMATION",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1final/26_효천고_1학기_기말_고2_대수.js#q9"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1final/26_효천고_1학기_기말_고2_대수.js#q9",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고2_대수_유사2/q9-solution.svg",
+    "solutionImageAlt": "수직선의 기울기 −1/2과 제4사분면 조건으로 P=(2,−1)을 선택한다.",
+    "solutionImageCaption": "수직선의 기울기 −1/2과 제4사분면 조건으로 P=(2,−1)을 선택한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -518,7 +522,11 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H2-M1-RPM-103",
     "sourceQid": 12,
     "variationType": "CONFIRMATION",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1final/26_효천고_1학기_기말_고2_대수.js#q12"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1final/26_효천고_1학기_기말_고2_대수.js#q12",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고2_대수_유사2/q12-solution.svg",
+    "solutionImageAlt": "t=πx/2로 치환하여 0≤t≤4π에서 y=2|cos t|와 y=1의 8교점을 본다. x값의 합은 32이다.",
+    "solutionImageCaption": "t=πx/2로 치환하여 0≤t≤4π에서 y=2|cos t|와 y=1의 8교점을 본다. x값의 합은 32이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -607,7 +615,11 @@ window.questionBank = [
     "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1final/26_효천고_1학기_기말_고2_대수.js#q14",
     "image": "assets/images/26_효천고_1학기_기말_고2_대수/q14.png",
     "imageAlt": "원본과 동일한 기하 또는 그래프 조건을 표시한 문제 그림",
-    "imageCaption": "원본 조건 도형을 동일하게 사용"
+    "imageCaption": "원본 조건 도형을 동일하게 사용",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고2_대수_유사2/q14-solution.svg",
+    "solutionImageAlt": "같은 원주각에서 BC=CD를 구하고 코사인법칙 두 번으로 cosθ=3/4 및 R²=64/7을 얻는다.",
+    "solutionImageCaption": "같은 원주각에서 BC=CD를 구하고 코사인법칙 두 번으로 cosθ=3/4 및 R²=64/7을 얻는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -650,7 +662,11 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H2-M1-RPM-109",
     "sourceQid": 15,
     "variationType": "CONFIRMATION",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1final/26_효천고_1학기_기말_고2_대수.js#q15"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1final/26_효천고_1학기_기말_고2_대수.js#q15",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고2_대수_유사2/q15-solution.svg",
+    "solutionImageAlt": "AB=AC와 a:b=2:3의 정규화 삼각형이다. 밑각에서 cosB=1/3을 구해 실제 변 길이를 복원한다.",
+    "solutionImageCaption": "AB=AC와 a:b=2:3의 정규화 삼각형이다. 밑각에서 cosB=1/3을 구해 실제 변 길이를 복원한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -739,7 +755,11 @@ window.questionBank = [
     "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1final/26_효천고_1학기_기말_고2_대수.js#q17",
     "image": "assets/images/26_효천고_1학기_기말_고2_대수/q17.png",
     "imageAlt": "원본과 동일한 기하 또는 그래프 조건을 표시한 문제 그림",
-    "imageCaption": "원본 조건 도형을 동일하게 사용"
+    "imageCaption": "원본 조건 도형을 동일하게 사용",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고2_대수_유사2/q17-solution.svg",
+    "solutionImageAlt": "넓이비에서 CE=8, DE=12; 접기에서 EB=12, 등비중항에서 BD=18이다. 높이는 BD·sin∠BDE.",
+    "solutionImageCaption": "넓이비에서 CE=8, DE=12; 접기에서 EB=12, 등비중항에서 BD=18이다. 높이는 BD·sin∠BDE.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -927,7 +947,11 @@ window.questionBank = [
     "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1final/26_효천고_1학기_기말_고2_대수.js#q22",
     "image": "assets/images/26_효천고_1학기_기말_고2_대수/q22.png",
     "imageAlt": "원본과 동일한 기하 또는 그래프 조건을 표시한 문제 그림",
-    "imageCaption": "원본 조건 도형을 동일하게 사용"
+    "imageCaption": "원본 조건 도형을 동일하게 사용",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고2_대수_유사2/q22-solution.svg",
+    "solutionImageAlt": "대각선 이등분으로 OD=3, cos∠BDC=5/9, OC=2√2를 얻고 삼각형 OCD의 외접원 넓이를 구한다.",
+    "solutionImageCaption": "대각선 이등분으로 OD=3, cos∠BDC=5/9, OC=2√2를 얻고 삼각형 OCD의 외접원 넓이를 구한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

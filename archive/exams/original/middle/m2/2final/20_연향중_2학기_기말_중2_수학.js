@@ -478,7 +478,11 @@ window.examData = {
     "difficultyConfidence": "medium",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "중첩 삼각형의 평행선비 반복",
-    "decisiveStep": "ABC에서 얻은 AE:AC를 ADC의 같은 대응비로 전달해 AF를 정한다."
+    "decisiveStep": "ABC에서 얻은 AE:AC를 ADC의 같은 대응비로 전달해 AF를 정한다.",
+    "image": "assets/images/20_연향중_2학기_기말_중2_수학/q14-problem.svg",
+    "imageAlt": "삼각형 ABC의 변 AB 위에 점 D, 변 AC 위에 점 E, 선분 AD 위에 점 F가 있다. DE는 BC와 평행하고 FE는 DC와 평행하다. AD는 18 cm, DB는 12 cm이다.",
+    "imageCaption": "삼각형 ABC의 변 AB 위에 점 D, 변 AC 위에 점 E, 선분 AD 위에 점 F가 있다. DE는 BC와 평행하고 FE는 DC와 평행하다. AD는 18 cm, DB는 12 cm이다.",
+    "imageSize": "full"
   },
   {
     "id": 15,

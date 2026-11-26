@@ -139,6 +139,10 @@ window.questionBank = [
       "CC_SIMILARITY"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_202_구밖의한점에서구에그은접선의길이2_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "기하 202 q03: 중심 C·반지름 2√2 구 기본형; 광원·접광원뿔·지면 그림자 미표시.",
+    "imageCaption": "기하 202 q03: 중심 C·반지름 2√2 구 기본형; 광원·접광원뿔·지면 그림자 미표시.",
+    "imageSize": "full"
   }
 ];

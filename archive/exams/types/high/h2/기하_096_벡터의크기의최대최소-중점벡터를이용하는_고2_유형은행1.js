@@ -43,7 +43,11 @@ window.questionBank = [
       "CC_DISTANCE_TWO_POINTS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_096_벡터의크기의최대최소-중점벡터를이용하는_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "AB=6·BC=4 직사각형과 C 중심 반지름 2의 원, 원 위 P로 향하는 AP·BP",
+    "imageCaption": "AB=6·BC=4 직사각형과 C 중심 반지름 2의 원, 원 위 P로 향하는 AP·BP",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -88,7 +92,11 @@ window.questionBank = [
       "CC_DISTANCE_TWO_POINTS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_096_벡터의크기의최대최소-중점벡터를이용하는_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "반지름 2인 외접하는 원 세 개, 원 C₂와 C₃의 접점 M, O₁에서 P·Q로 향하는 화살표",
+    "imageCaption": "반지름 2인 외접하는 원 세 개, 원 C₂와 C₃의 접점 M, O₁에서 P·Q로 향하는 화살표",
+    "imageSize": "full"
   },
   {
     "id": 3,

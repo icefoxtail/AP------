@@ -35,7 +35,11 @@ window.questionBank = [
     "templateKey": "TPL_LIMIT_EXP_LOG_STANDARD",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_083_지수함수로그함수의극한의활용2_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "로그곡선 y=ln(x/2)와 x축의 A,B; 곡선 위 P와 삼각형은 ENGINE_CAPABILITY_PENDING.",
+    "imageCaption": "로그곡선 y=ln(x/2)와 x축의 A,B; 곡선 위 P와 삼각형은 ENGINE_CAPABILITY_PENDING.",
+    "imageSize": "medium"
   },
   {
     "id": 2,
@@ -71,7 +75,11 @@ window.questionBank = [
     "templateKey": "TPL_LIMIT_EXP_LOG_STANDARD",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_083_지수함수로그함수의극한의활용2_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "자연지수 y=e^(2x)와 A=(0,4),B=(0,1); C와 P 연결선은 ENGINE_CAPABILITY_PENDING.",
+    "imageCaption": "자연지수 y=e^(2x)와 A=(0,4),B=(0,1); C와 P 연결선은 ENGINE_CAPABILITY_PENDING.",
+    "imageSize": "medium"
   },
   {
     "id": 3,
@@ -107,7 +115,11 @@ window.questionBank = [
     "templateKey": "TPL_LIMIT_EXP_LOG_STANDARD",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_083_지수함수로그함수의극한의활용2_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "y=3^x−1 위 P=(1,2), O(0,0),A(2,0),B(0,1)의 두 삼각형.",
+    "imageCaption": "y=3^x−1 위 P=(1,2), O(0,0),A(2,0),B(0,1)의 두 삼각형.",
+    "imageSize": "medium"
   },
   {
     "id": 4,
@@ -147,7 +159,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_083_지수함수로그함수의극한의활용2_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "대표 포물선 y=4x²와 O,B,C; 자연로그 곡선·제1사분면 교점 P는 ENGINE_CAPABILITY_PENDING.",
+    "imageCaption": "대표 포물선 y=4x²와 O,B,C; 자연로그 곡선·제1사분면 교점 P는 ENGINE_CAPABILITY_PENDING.",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -185,7 +201,11 @@ window.questionBank = [
       "CC_DIFFERENCE_QUOTIENT_SCALING"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_083_지수함수로그함수의극한의활용2_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "자연지수 y=e^(3x)와 A=(0,1); P·중점 M·수직이등분선 Q는 ENGINE_CAPABILITY_PENDING.",
+    "imageCaption": "자연지수 y=e^(3x)와 A=(0,1); P·중점 M·수직이등분선 Q는 ENGINE_CAPABILITY_PENDING.",
+    "imageSize": "medium"
   },
   {
     "id": 6,
@@ -225,6 +245,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_UPPER_BOUND"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_083_지수함수로그함수의극한의활용2_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "자연로그 y=ln(x/2)와 t=1의 x+y=t 직선; P,H,Q·y=e^x는 ENGINE_CAPABILITY_PENDING.",
+    "imageCaption": "자연로그 y=ln(x/2)와 t=1의 x+y=t 직선; P,H,Q·y=e^x는 ENGINE_CAPABILITY_PENDING.",
+    "imageSize": "medium"
   }
 ];

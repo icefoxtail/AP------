@@ -44,7 +44,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_149_직선과평면이이루는각_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "한 변 1인 정육각 밑면과 높이 √5의 직기둥, FI",
+    "imageCaption": "한 변 1인 정육각 밑면과 높이 √5의 직기둥, FI",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -89,7 +93,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_149_직선과평면이이루는각_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "밑면 한 변 2, 높이 1인 직육면체와 공간 대각선 AG",
+    "imageCaption": "밑면 한 변 2, 높이 1인 직육면체와 공간 대각선 AG",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -134,7 +142,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_149_직선과평면이이루는각_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "EF=4·FG=2·AE=2인 직육면체, EF 중점 M과 CM",
+    "imageCaption": "EF=4·FG=2·AE=2인 직육면체, EF 중점 M과 CM",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -179,7 +191,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_149_직선과평면이이루는각_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "밑변 4 정삼각형·높이 2인 직삼각기둥, BC 중점 M과 DM",
+    "imageCaption": "밑변 4 정삼각형·높이 2인 직삼각기둥, BC 중점 M과 DM",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -224,7 +240,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_149_직선과평면이이루는각_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "AB=1·AC=2에 ∠BAC=90°인 삼각기둥, 높이 1과 선분 BF",
+    "imageCaption": "AB=1·AC=2에 ∠BAC=90°인 삼각기둥, 높이 1과 선분 BF",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -269,6 +289,10 @@ window.questionBank = [
       "CC_TRIGONOMETRIC_TANGENT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "REINTERPRETATION"
+    "integrationPattern": "REINTERPRETATION",
+    "image": "assets/images/기하_149_직선과평면이이루는각_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "모서리 2 정육면체에서 AB 중점 M·AD 중점 N과 단면 MFHN",
+    "imageCaption": "모서리 2 정육면체에서 AB 중점 M·AD 중점 N과 단면 MFHN",
+    "imageSize": "full"
   }
 ];

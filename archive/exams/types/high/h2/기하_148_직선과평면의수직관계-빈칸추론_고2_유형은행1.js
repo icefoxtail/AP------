@@ -43,7 +43,11 @@ window.questionBank = [
       "CC_ISOSCELES_TRIANGLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_148_직선과평면의수직관계-빈칸추론_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "정사각뿔 P-ABCD, 밑면 대각선 AC·BD의 교점 O와 PO",
+    "imageCaption": "정사각뿔 P-ABCD, 밑면 대각선 AC·BD의 교점 O와 PO",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -86,7 +90,11 @@ window.questionBank = [
       "CC_EQUILATERAL_TRIANGLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_148_직선과평면의수직관계-빈칸추론_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "정사면체 ABCD의 BC 중점 M과 AM, DM",
+    "imageCaption": "정사면체 ABCD의 BC 중점 M과 AM, DM",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -129,7 +137,11 @@ window.questionBank = [
       "CC_SQUARE_PROPERTIES"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_148_직선과평면의수직관계-빈칸추론_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "정육면체 ABCD-EFGH의 공간 대각선 DF와 삼각형 ACH",
+    "imageCaption": "정육면체 ABCD-EFGH의 공간 대각선 DF와 삼각형 ACH",
+    "imageSize": "full"
   },
   {
     "id": 4,

@@ -132,7 +132,11 @@ window.questionBank = [
       "CC_PARALLEL_LINES"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_082_쌍곡선에기울기가주어진접선의최단거리_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "쌍곡선 위를 움직이는 C와 고정된 두 점 A, B의 삼각형",
+    "imageCaption": "쌍곡선 위를 움직이는 C와 고정된 두 점 A, B의 삼각형",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -177,6 +181,10 @@ window.questionBank = [
       "CC_PERPENDICULAR"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_082_쌍곡선에기울기가주어진접선의최단거리_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "원 위의 P와 쌍곡선 위의 Q를 잇는 거리의 한 예",
+    "imageCaption": "원 위의 P와 쌍곡선 위의 Q를 잇는 거리의 한 예",
+    "imageSize": "full"
   }
 ];

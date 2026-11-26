@@ -44,7 +44,11 @@ window.questionBank = [
       "CC_DISTANCE_TWO_POINTS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_052_쌍곡선의정의를이용한거리의합의최대최소_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "제1사분면 쌍곡선 위의 P와 고정점 A(10,8), 초점 F(5,0)를 잇는 두 선분",
+    "imageCaption": "제1사분면 쌍곡선 위의 P와 고정점 A(10,8), 초점 F(5,0)를 잇는 두 선분",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -92,7 +96,11 @@ window.questionBank = [
       "COND_POSITIVE",
       "COND_NEGATIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_052_쌍곡선의정의를이용한거리의합의최대최소_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "왼쪽 쌍곡선 가지 위 P와 A(0,6), 양의 x축 초점 F를 잇는 두 거리",
+    "imageCaption": "왼쪽 쌍곡선 가지 위 P와 A(0,6), 양의 x축 초점 F를 잇는 두 거리",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -184,7 +192,11 @@ window.questionBank = [
       "CC_DISTANCE_TWO_POINTS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_052_쌍곡선의정의를이용한거리의합의최대최소_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "초점 F에서 x축과 접하는 P 중심의 원 C와 초점 F′에서 원까지의 최단 거리 l",
+    "imageCaption": "초점 F에서 x축과 접하는 P 중심의 원 C와 초점 F′에서 원까지의 최단 거리 l",
+    "imageSize": "full"
   },
   {
     "id": 5,

@@ -938,7 +938,11 @@ window.questionBank = [
     "rpmPrimaryRecordId": "M1-RPM-108",
     "sourceQid": 21,
     "variationType": "NUMERIC",
-    "problemPlanRef": "archive/exams/similar/middle/m1/2final/23_왕운중_2학기_기말_중1_유사_plans/q21-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/middle/m1/2final/23_왕운중_2학기_기말_중1_유사_plans/q21-problem.plan.json",
+    "image": "assets/images/23_왕운중_2학기_기말_중1_유사/q21-problem.svg",
+    "imageAlt": "줄넘기 횟수 히스토그램",
+    "imageCaption": "줄넘기 횟수 히스토그램",
+    "imageSize": "full"
   },
   {
     "id": 22,

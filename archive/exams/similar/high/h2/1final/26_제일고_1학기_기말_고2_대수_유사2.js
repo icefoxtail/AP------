@@ -279,7 +279,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "sourceQid": 7,
     "variationType": "CONFIRMATION",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1final/26_제일고_1학기_기말_고2_대수.js#q7"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1final/26_제일고_1학기_기말_고2_대수.js#q7",
+    "solutionImage": "assets/images/26_제일고_1학기_기말_고2_대수_유사2/q7-solution.svg",
+    "solutionImageAlt": "코사인 투영의 합은 BC이므로 주어진 등식에서 BC와 AC가 같음을 확인한다.",
+    "solutionImageCaption": "코사인 투영의 합은 BC이므로 주어진 등식에서 BC와 AC가 같음을 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -319,7 +323,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "sourceQid": 8,
     "variationType": "CONFIRMATION",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1final/26_제일고_1학기_기말_고2_대수.js#q8"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1final/26_제일고_1학기_기말_고2_대수.js#q8",
+    "solutionImage": "assets/images/26_제일고_1학기_기말_고2_대수_유사2/q8-solution.svg",
+    "solutionImageAlt": "세 변 4, 6, 9인 직육면체는 가운데 길이 6의 제곱이 양끝 길이의 곱과 같다.",
+    "solutionImageCaption": "세 변 4, 6, 9인 직육면체는 가운데 길이 6의 제곱이 양끝 길이의 곱과 같다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -559,7 +567,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "sourceQid": 14,
     "variationType": "CONFIRMATION",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1final/26_제일고_1학기_기말_고2_대수.js#q14"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1final/26_제일고_1학기_기말_고2_대수.js#q14",
+    "solutionImage": "assets/images/26_제일고_1학기_기말_고2_대수_유사2/q14-solution.svg",
+    "solutionImageAlt": "x=4에서 B의 높이는 2, A의 높이는 8, 원점에서 C까지의 거리는 4이다.",
+    "solutionImageCaption": "x=4에서 B의 높이는 2, A의 높이는 8, 원점에서 C까지의 거리는 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -639,7 +651,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "sourceQid": 16,
     "variationType": "CONFIRMATION",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1final/26_제일고_1학기_기말_고2_대수.js#q16"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1final/26_제일고_1학기_기말_고2_대수.js#q16",
+    "solutionImage": "assets/images/26_제일고_1학기_기말_고2_대수_유사2/q16-solution.svg",
+    "solutionImageAlt": "BC를 지름으로 하는 윗반원에서 CD=6, OM=4이고 호의 중점 E와 현 CD 사이 높이는 1이다.",
+    "solutionImageCaption": "BC를 지름으로 하는 윗반원에서 CD=6, OM=4이고 호의 중점 E와 현 CD 사이 높이는 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -679,7 +695,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "sourceQid": 17,
     "variationType": "CONFIRMATION",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1final/26_제일고_1학기_기말_고2_대수.js#q17"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1final/26_제일고_1학기_기말_고2_대수.js#q17",
+    "solutionImage": "assets/images/26_제일고_1학기_기말_고2_대수_유사2/q17-solution.svg",
+    "solutionImageAlt": "접선과 반지름으로 이루는 직각삼각형 OAP에서 AM=12/5, PM=16/5를 삼각형 넓이로 확인한다.",
+    "solutionImageCaption": "접선과 반지름으로 이루는 직각삼각형 OAP에서 AM=12/5, PM=16/5를 삼각형 넓이로 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -755,7 +775,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "sourceQid": 19,
     "variationType": "CONFIRMATION",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1final/26_제일고_1학기_기말_고2_대수.js#q19"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1final/26_제일고_1학기_기말_고2_대수.js#q19",
+    "solutionImage": "assets/images/26_제일고_1학기_기말_고2_대수_유사2/q19-solution.svg",
+    "solutionImageAlt": "두 직선 위의 P(1,√3), Q(1,−√3)를 원점 O와 연결하면 OP=OQ=2, PQ=2√3이며 코사인법칙으로 끼인각 120도를 얻는다.",
+    "solutionImageCaption": "두 직선 위의 P(1,√3), Q(1,−√3)를 원점 O와 연결하면 OP=OQ=2, PQ=2√3이며 코사인법칙으로 끼인각 120도를 얻는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

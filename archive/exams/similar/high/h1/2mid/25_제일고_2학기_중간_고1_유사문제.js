@@ -118,7 +118,12 @@ window.questionBank = [
     "subUnitKey": "H22-C2-05-CORE",
     "subUnit": "집합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고1_유사문제/q4-solution.svg",
+    "solutionImageAlt": "집합식 ①~④의 공통 영역과 ⑤가 나타내는 영역을 나란히 비교한다.",
+    "solutionImageCaption": "집합식 ①~④의 공통 영역과 ⑤가 나타내는 영역을 나란히 비교한다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 5,
@@ -307,7 +312,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
     "subUnit": "평면좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "image": "assets/images/25_제일고_2학기_중간_고1_유사문제/q10-problem.svg",
+    "imageAlt": "주어진 세 점 A, B, C를 이어 만든 삼각형으로, 변의 길이 관계는 표시하지 않는다.",
+    "imageCaption": "주어진 세 점 A, B, C를 이어 만든 삼각형으로, 변의 길이 관계는 표시하지 않는다.",
+    "imageSize": "full"
   },
   {
     "id": 11,

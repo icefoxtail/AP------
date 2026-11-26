@@ -131,7 +131,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_NONZERO"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_093_정n각형의벡터와합이0인경우_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "원주를 시계 방향으로 8등분하는 A부터 H까지와 원 안의 O·P",
+    "imageCaption": "원주를 시계 방향으로 8등분하는 A부터 H까지와 원 안의 O·P",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -175,7 +179,11 @@ window.questionBank = [
       "CC_CIRCLE_CENTER_RADIUS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_093_정n각형의벡터와합이0인경우_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "원 O 위의 서로 다른 세 지름 A₁A₂·B₁B₂·C₁C₂",
+    "imageCaption": "원 O 위의 서로 다른 세 지름 A₁A₂·B₁B₂·C₁C₂",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -219,6 +227,10 @@ window.questionBank = [
       "CC_CIRCUMCIRCLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_093_정n각형의벡터와합이0인경우_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "원에 내접한 정육각형 ABCDEF와 A에서 다른 다섯 꼭짓점으로 향하는 화살표",
+    "imageCaption": "원에 내접한 정육각형 ABCDEF와 A에서 다른 다섯 꼭짓점으로 향하는 화살표",
+    "imageSize": "full"
   }
 ];

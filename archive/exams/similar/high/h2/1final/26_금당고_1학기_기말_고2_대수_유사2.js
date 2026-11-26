@@ -211,7 +211,11 @@ window.questionBank = [
     "variationType": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js#q5",
     "problemPlanRef": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q05-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q05-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q05-solution.plan.json",
+    "solutionImage": "assets/images/26_금당고_1학기_기말_고2_대수_유사2/q5-solution.svg",
+    "solutionImageAlt": "해설: -cos x와 y=1/2의 교점 사이 구간을 등호 포함해서 읽는다.",
+    "solutionImageCaption": "해설: -cos x와 y=1/2의 교점 사이 구간을 등호 포함해서 읽는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -770,7 +774,11 @@ window.questionBank = [
     "variationType": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js#q18",
     "problemPlanRef": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q18-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q18-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q18-solution.plan.json",
+    "solutionImage": "assets/images/26_금당고_1학기_기말_고2_대수_유사2/q18-solution.svg",
+    "solutionImageAlt": "해설: x=1에서 최댓값 4, x=6에서 0, x=11에서 최솟값 -4가 되는 경계를 확인한다.",
+    "solutionImageCaption": "해설: x=1에서 최댓값 4, x=6에서 0, x=11에서 최솟값 -4가 되는 경계를 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

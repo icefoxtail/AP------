@@ -217,7 +217,11 @@ window.questionBank = [
     "templateKey": "TPL_QUANTIFIER_NEGATION_INTERVAL",
     "rpmPrimaryRecordId": "H1-RPM-246",
     "sourceQid": 5,
-    "variationType": "STRICT_VARIANT"
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고1_유사2/q5-solution.svg",
+    "solutionImageAlt": "원래 구간 −1<x≤4는 −1에서 열린 점, 4에서 닫힌 점이다. 그 부정은 x≤−1 또는 x>4로 끝점 포함이 뒤집힌 양쪽 구간이다. '모든'의 부정은 '어떤'임도 함께 확인한다.",
+    "solutionImageCaption": "원래 구간 −1<x≤4는 −1에서 열린 점, 4에서 닫힌 점이다. 그 부정은 x≤−1 또는 x>4로 끝점 포함이 뒤집힌 양쪽 구간이다. '모든'의 부정은 '어떤'임도 함께 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -901,7 +905,11 @@ window.questionBank = [
     "templateKey": "TPL_MULTIPLE_BIJECTIONS_DEDUCTION",
     "rpmPrimaryRecordId": "H1-RPM-257",
     "sourceQid": 21,
-    "variationType": "STRICT_VARIANT"
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고1_유사2/q21-solution.svg",
+    "solutionImageAlt": "조건으로 얻는 두 일대일대응은 g:1↦2,2↦1,3↦3 및 f:1↦1,2↦3,3↦2이다. 초록 합성 경로 1→2→3은 (f∘g)(1)=3을 확인한다. 또한 g⁻¹(3)=3, (g∘f)(3)=1이다.",
+    "solutionImageCaption": "조건으로 얻는 두 일대일대응은 g:1↦2,2↦1,3↦3 및 f:1↦1,2↦3,3↦2이다. 초록 합성 경로 1→2→3은 (f∘g)(1)=3을 확인한다. 또한 g⁻¹(3)=3, (g∘f)(3)=1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

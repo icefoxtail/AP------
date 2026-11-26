@@ -131,7 +131,11 @@ window.questionBank = [
       "CC_TRIANGLE_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_065_포물선의접선의방정식-기울기가주어진경우_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "포물선의 기울기 1/2 접선 l과 직각삼각형 AFH",
+    "imageCaption": "포물선의 기울기 1/2 접선 l과 직각삼각형 AFH",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -262,6 +266,10 @@ window.questionBank = [
       "CC_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_065_포물선의접선의방정식-기울기가주어진경우_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "직선 AB와 평행한 접선 CD가 이루는 평행사변형 ACDB",
+    "imageCaption": "직선 AB와 평행한 접선 CD가 이루는 평행사변형 ACDB",
+    "imageSize": "full"
   }
 ];

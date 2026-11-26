@@ -46,7 +46,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_008_포물선의정의의활용-초점을지나는직선이주_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "y²=16x의 초점 F를 지나는 양의 기울기 직선 l과 두 교점 A,B. AF:BF=2:1.",
+    "imageCaption": "y²=16x의 초점 F를 지나는 양의 기울기 직선 l과 두 교점 A,B. AF:BF=2:1.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -89,7 +93,11 @@ window.questionBank = [
     "decisiveStep": "x₁+x₂+3=15/2에서 x₁+x₂=9/2이고 AH₁+BH₂=x₁+x₂=9/2",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_008_포물선의정의의활용-초점을지나는직선이주_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "y²=6x의 초점 F를 지나는 현 AB와 y축에 내린 발 H₁,H₂, AB=15/2",
+    "imageCaption": "y²=6x의 초점 F를 지나는 현 AB와 y축에 내린 발 H₁,H₂, AB=15/2",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -132,7 +140,11 @@ window.questionBank = [
     "decisiveStep": "AP+BQ=x₁+x₂=10이므로 AB=(x₁+3)+(x₂+3)=10+6=16",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_008_포물선의정의의활용-초점을지나는직선이주_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "포물선 y²=12x와 초점 현 AB, y축 수선 AP 및 BQ의 길이 합이 10",
+    "imageCaption": "포물선 y²=12x와 초점 현 AB, y축 수선 AP 및 BQ의 길이 합이 10",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -175,7 +187,11 @@ window.questionBank = [
     "decisiveStep": "AF=(4+√7)+3=7+√7, BF=(4−√7)+3=7−√7이므로 AB=14",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_008_포물선의정의의활용-초점을지나는직선이주_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "y²=12x의 초점 현 AB에서 y축 수선 AP=4+√7, BQ=4−√7",
+    "imageCaption": "y²=12x의 초점 현 AB에서 y축 수선 AP=4+√7, BQ=4−√7",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -218,6 +234,10 @@ window.questionBank = [
     "decisiveStep": "(10−x₁)+(x₁+4)+(x₂+4)+(10−x₂)=14+14=28",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_008_포물선의정의의활용-초점을지나는직선이주_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "P(10,12)에서 포물선 y²=16x의 A로 수평 입사하고 초점 F, B를 지나 Q까지 수평 반사되는 광로",
+    "imageCaption": "P(10,12)에서 포물선 y²=16x의 A로 수평 입사하고 초점 F, B를 지나 Q까지 수평 반사되는 광로",
+    "imageSize": "full"
   }
 ];

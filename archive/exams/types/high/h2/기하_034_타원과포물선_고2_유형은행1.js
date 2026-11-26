@@ -133,7 +133,11 @@ window.questionBank = [
       "CC_DISTANCE_TWO_POINTS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_034_타원과포물선_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "초점 A(8,0)·준선 y축인 포물선 C₁과 O,A를 초점으로 하는 타원 C₂의 교점 P",
+    "imageCaption": "초점 A(8,0)·준선 y축인 포물선 C₁과 O,A를 초점으로 하는 타원 C₂의 교점 P",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -178,7 +182,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_034_타원과포물선_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "왼쪽 열린 포물선 y²=−16x과 타원의 두 교점 A,B, 초점 사각형 AF′BF",
+    "imageCaption": "왼쪽 열린 포물선 y²=−16x과 타원의 두 교점 A,B, 초점 사각형 AF′BF",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -221,7 +229,11 @@ window.questionBank = [
       "CC_PARABOLA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "REINTERPRETATION"
+    "integrationPattern": "REINTERPRETATION",
+    "image": "assets/images/기하_034_타원과포물선_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "타원 x²/36+y²/11과 포물선 y²=20x의 공통점 P, 준선 발 R과 Q(−5,0)",
+    "imageCaption": "타원 x²/36+y²/11과 포물선 y²=20x의 공통점 P, 준선 발 R과 Q(−5,0)",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -444,6 +456,10 @@ window.questionBank = [
       "CC_DISTANCE_TWO_POINTS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_034_타원과포물선_고2_유형은행1/q10-problem.svg",
+    "imageAlt": "포물선 y²=8x과 초점 F(2,0)을 공유하는 타원 E의 제1사분면 교점 B, 준선의 발 H",
+    "imageCaption": "포물선 y²=8x과 초점 F(2,0)을 공유하는 타원 E의 제1사분면 교점 B, 준선의 발 H",
+    "imageSize": "full"
   }
 ];

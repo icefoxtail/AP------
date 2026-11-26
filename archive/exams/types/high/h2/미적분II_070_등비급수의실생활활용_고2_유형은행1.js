@@ -412,7 +412,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_NATURAL_NUMBER"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_070_등비급수의실생활활용_고2_유형은행1/q11-problem.svg",
+    "imageAlt": "n=1에서 y=|sin(πx)|의 좌우 대칭 4개 반파장; 직선 y=|x|/2의 정확한 두 반직선 표현은 엔진 미지원.",
+    "imageCaption": "n=1에서 y=|sin(πx)|의 좌우 대칭 4개 반파장; 직선 y=|x|/2의 정확한 두 반직선 표현은 엔진 미지원.",
+    "imageSize": "full"
   },
   {
     "id": 12,

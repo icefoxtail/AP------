@@ -43,7 +43,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_089_정육각형의벡터의연산2_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "한 변 2의 정육각형에서 AB, BC, CD를 따라 배치한 세 벡터",
+    "imageCaption": "한 변 2의 정육각형에서 AB, BC, CD를 따라 배치한 세 벡터",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -87,7 +91,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_089_정육각형의벡터의연산2_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "한 변의 길이가 3인 정육각형 ABCDEF",
+    "imageCaption": "한 변의 길이가 3인 정육각형 ABCDEF",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -131,6 +139,10 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_089_정육각형의벡터의연산2_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "한 변 1의 정육각형에서 A→C와 A→D 대각선 벡터",
+    "imageCaption": "한 변 1의 정육각형에서 A→C와 A→D 대각선 벡터",
+    "imageSize": "full"
   }
 ];

@@ -90,7 +90,11 @@ window.questionBank = [
       "CC_TRIANGLE_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_122_평면벡터의내적의성질과수직_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "OA=5·OB=12의 직각삼각형에서 OP⊥AB인 수선의 발 P",
+    "imageCaption": "OA=5·OB=12의 직각삼각형에서 OP⊥AB인 수선의 발 P",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -229,6 +233,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_122_평면벡터의내적의성질과수직_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "AB=4·BC=2 직사각형 내부의 이동점 P와 네 연결선",
+    "imageCaption": "AB=4·BC=2 직사각형 내부의 이동점 P와 네 연결선",
+    "imageSize": "full"
   }
 ];

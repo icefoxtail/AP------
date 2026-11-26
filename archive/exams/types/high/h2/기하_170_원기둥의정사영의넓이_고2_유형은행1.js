@@ -43,7 +43,11 @@ window.questionBank = [
       "CC_ELLIPSE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_170_원기둥의정사영의넓이_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "기하 유형은행 170번 유형 1번: 반지름 6인 원기둥 기본 모형. 45도 비스듬한 반타원 절단면은 아직 표시되지 않음.",
+    "imageCaption": "기하 유형은행 170번 유형 1번: 반지름 6인 원기둥 기본 모형. 45도 비스듬한 반타원 절단면은 아직 표시되지 않음.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -87,7 +91,11 @@ window.questionBank = [
       "CC_ELLIPSE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_170_원기둥의정사영의넓이_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "기하 유형은행 170번 유형 2번: 반지름이 기호 r인 원기둥. 밑면과 60도인 단면은 아직 미구현.",
+    "imageCaption": "기하 유형은행 170번 유형 2번: 반지름이 기호 r인 원기둥. 밑면과 60도인 단면은 아직 미구현.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -132,7 +140,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_170_원기둥의정사영의넓이_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "기하 유형은행 170번 유형 3번: 반지름 3 높이 4의 원뿔을 세운 기본 모형. 실제 기울어진 A-B-C-E 방향은 미표시.",
+    "imageCaption": "기하 유형은행 170번 유형 3번: 반지름 3 높이 4의 원뿔을 세운 기본 모형. 실제 기울어진 A-B-C-E 방향은 미표시.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -177,7 +189,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_170_원기둥의정사영의넓이_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "기하 유형은행 170번 유형 4번: 지름 10 높이 24인 원기둥 기본 모형. 기울어진 그릇과 수면은 미표시.",
+    "imageCaption": "기하 유형은행 170번 유형 4번: 지름 10 높이 24인 원기둥 기본 모형. 기울어진 그릇과 수면은 미표시.",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -222,7 +238,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_170_원기둥의정사영의넓이_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "기하 유형은행 170번 유형 5번: 처음 수심이 12이고 높이가 20인 원기둥 그릇 한 상태. 기울인 상태는 후속 구현.",
+    "imageCaption": "기하 유형은행 170번 유형 5번: 처음 수심이 12이고 높이가 20인 원기둥 그릇 한 상태. 기울인 상태는 후속 구현.",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -266,6 +286,10 @@ window.questionBank = [
       "CC_ELLIPSE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_170_원기둥의정사영의넓이_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "기하 유형은행 170번 유형 6번: 밑넓이 8π, 높이 7, 수심 5인 그릇의 초기 수면. 기울인 상태는 아직 없음.",
+    "imageCaption": "기하 유형은행 170번 유형 6번: 밑넓이 8π, 높이 7, 수심 5인 그릇의 초기 수면. 기울인 상태는 아직 없음.",
+    "imageSize": "full"
   }
 ];

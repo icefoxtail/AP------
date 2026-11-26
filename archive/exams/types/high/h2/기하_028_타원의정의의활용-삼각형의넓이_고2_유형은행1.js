@@ -43,7 +43,11 @@ window.questionBank = [
       "CC_RIGHT_TRIANGLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_028_타원의정의의활용-삼각형의넓이_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "타원 x²/21+y²/5=1 위 제1사분면 P와 두 초점 F·F′로 이룬 직각삼각형 PFF′",
+    "imageCaption": "타원 x²/21+y²/5=1 위 제1사분면 P와 두 초점 F·F′로 이룬 직각삼각형 PFF′",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -87,7 +91,11 @@ window.questionBank = [
       "CC_RIGHT_TRIANGLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_028_타원의정의의활용-삼각형의넓이_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "타원의 제1사분면 P에서 FP를 연장한 Q와 F′Q=10, P에서의 직각을 나타낸 삼각형 QF′F",
+    "imageCaption": "타원의 제1사분면 P에서 FP를 연장한 Q와 F′Q=10, P에서의 직각을 나타낸 삼각형 QF′F",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -130,7 +138,11 @@ window.questionBank = [
       "CC_ISOSCELES_TRIANGLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_028_타원의정의의활용-삼각형의넓이_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "타원 x²/16+y²/7=1 위 P와 두 초점 F′(-3,0), F(3,0)을 이은 삼각형 PF′F",
+    "imageCaption": "타원 x²/16+y²/7=1 위 P와 두 초점 F′(-3,0), F(3,0)을 이은 삼각형 PF′F",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -176,7 +188,11 @@ window.questionBank = [
       "COND_RANGE",
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_028_타원의정의의활용-삼각형의넓이_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "타원의 음의 초점을 지나는 세로 현 AB와 두 꼭짓점 C·D가 이루는 사각형 ACBD",
+    "imageCaption": "타원의 음의 초점을 지나는 세로 현 AB와 두 꼭짓점 C·D가 이루는 사각형 ACBD",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -219,7 +235,11 @@ window.questionBank = [
       "CC_ISOSCELES_RIGHT_TRIANGLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_028_타원의정의의활용-삼각형의넓이_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "직각이등변 삼각형 FPF′의 P에서 F′를 지나 타원에 다시 닿는 Q와 삼각형 FPQ",
+    "imageCaption": "직각이등변 삼각형 FPF′의 P에서 F′를 지나 타원에 다시 닿는 Q와 삼각형 FPQ",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -266,6 +286,10 @@ window.questionBank = [
       "COND_RANGE",
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_028_타원의정의의활용-삼각형의넓이_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "세로 장축 타원에서 초점 F·F′, 가로선 FPB와 사선 F′AB가 만드는 두 삼각형",
+    "imageCaption": "세로 장축 타원에서 초점 F·F′, 가로선 FPB와 사선 F′AB가 만드는 두 삼각형",
+    "imageSize": "full"
   }
 ];

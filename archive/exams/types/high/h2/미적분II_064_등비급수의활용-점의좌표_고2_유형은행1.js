@@ -37,7 +37,11 @@ window.questionBank = [
       "CC_GEOMETRIC_SEQUENCE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_064_등비급수의활용-점의좌표_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "처음 네 번: 오른쪽 2, 위 1, 왼쪽 1/2, 아래 1/4만큼 이동.",
+    "imageCaption": "처음 네 번: 오른쪽 2, 위 1, 왼쪽 1/2, 아래 1/4만큼 이동.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -113,7 +117,11 @@ window.questionBank = [
       "CC_GEOMETRIC_SEQUENCE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_064_등비급수의활용-점의좌표_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "첫 두 단계: A₀(1,0), A₁(2,2), A₂(11/4,4)를 순서대로 잇는다.",
+    "imageCaption": "첫 두 단계: A₀(1,0), A₁(2,2), A₂(11/4,4)를 순서대로 잇는다.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -151,7 +159,11 @@ window.questionBank = [
       "CC_SPECIAL_ANGLES"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_064_등비급수의활용-점의좌표_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "0° 기준으로 30°, 150°, 30° 방향에 길이 2, 2/3, 2/9인 세 이동.",
+    "imageCaption": "0° 기준으로 30°, 150°, 30° 방향에 길이 2, 2/3, 2/9인 세 이동.",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -189,6 +201,10 @@ window.questionBank = [
       "CC_SPECIAL_ANGLES"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_064_등비급수의활용-점의좌표_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "양의 x축에서 0°, 120°, 240° 방향에 길이 3, 3/2, 3/4인 세 이동.",
+    "imageCaption": "양의 x축에서 0°, 120°, 240° 방향에 길이 3, 3/2, 3/4인 세 이동.",
+    "imageSize": "full"
   }
 ];

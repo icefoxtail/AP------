@@ -420,7 +420,11 @@ window.questionBank = [
     "templateKey": "TPL_ITERATION_PERIOD",
     "rpmPrimaryRecordId": "H1-RPM-253",
     "sourceQid": 10,
-    "variationType": "STRICT_VARIANT"
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_유사3/q10-solution.svg",
+    "solutionImageAlt": "f(x)=5x를 7로 나눈 나머지의 전체 대응은 1→5→4→6→2→3→1이다. 강조한 다섯 화살표를 차례로 따라 f⁴(1)=2와 f⁵(1)=3을 읽는다. 주기가 6이므로 f¹⁶(1)=2, f¹⁷(1)=3이다.",
+    "solutionImageCaption": "f(x)=5x를 7로 나눈 나머지의 전체 대응은 1→5→4→6→2→3→1이다. 강조한 다섯 화살표를 차례로 따라 f⁴(1)=2와 f⁵(1)=3을 읽는다. 주기가 6이므로 f¹⁶(1)=2, f¹⁷(1)=3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,

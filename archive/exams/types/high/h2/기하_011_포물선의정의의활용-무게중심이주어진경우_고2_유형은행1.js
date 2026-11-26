@@ -46,7 +46,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_PAIRWISE_DISTINCT_POINTS"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_011_포물선의정의의활용-무게중심이주어진경우_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "포물선 x²=16y 위의 세 점 A,B,C로 만든 삼각형의 무게중심이 초점 F",
+    "imageCaption": "포물선 x²=16y 위의 세 점 A,B,C로 만든 삼각형의 무게중심이 초점 F",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -93,7 +97,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_PAIRWISE_DISTINCT_POINTS"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_011_포물선의정의의활용-무게중심이주어진경우_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "y²=(16/3)x 위의 세 점 A,B,C와 무게중심 G, 초점 F. 주어진 AF+BF+CF=25/2",
+    "imageCaption": "y²=(16/3)x 위의 세 점 A,B,C와 무게중심 G, 초점 F. 주어진 AF+BF+CF=25/2",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -140,7 +148,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_011_포물선의정의의활용-무게중심이주어진경우_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "y²=12x 위의 서로 다른 제1사분면 점 P,Q와 초점 F가 만드는 삼각형 PFQ",
+    "imageCaption": "y²=12x 위의 서로 다른 제1사분면 점 P,Q와 초점 F가 만드는 삼각형 PFQ",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -189,7 +201,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_011_포물선의정의의활용-무게중심이주어진경우_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "y²=4px의 초점 F를 지나는 삼각형 AOB의 중선 AM과 넓이 24√6",
+    "imageCaption": "y²=4px의 초점 F를 지나는 삼각형 AOB의 중선 AM과 넓이 24√6",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -237,6 +253,10 @@ window.questionBank = [
       "COND_NATURAL_NUMBER",
       "COND_LOWER_BOUND"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_011_포물선의정의의활용-무게중심이주어진경우_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "y²=8x 위의 두 자연수 x좌표를 가진 점 A,B와 초점 F로 만든 삼각형 AFB, 무게중심 x=7",
+    "imageCaption": "y²=8x 위의 두 자연수 x좌표를 가진 점 A,B와 초점 F로 만든 삼각형 AFB, 무게중심 x=7",
+    "imageSize": "full"
   }
 ];

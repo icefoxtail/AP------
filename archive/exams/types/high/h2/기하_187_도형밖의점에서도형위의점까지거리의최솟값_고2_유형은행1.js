@@ -87,7 +87,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_187_도형밖의점에서도형위의점까지거리의최솟값_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "기하 187 q02: xy평면 원의 중심·반지름과 원 밖 A, 대표 P. 원형 호는 미구현.",
+    "imageCaption": "기하 187 q02: xy평면 원의 중심·반지름과 원 밖 A, 대표 P. 원형 호는 미구현.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -131,7 +135,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_187_도형밖의점에서도형위의점까지거리의최솟값_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "기하 187 q03: zx평면 위 원의 대표 반지름과 A–P 보조선; 원호·음수 라벨은 미표시.",
+    "imageCaption": "기하 187 q03: zx평면 위 원의 대표 반지름과 A–P 보조선; 원호·음수 라벨은 미표시.",
+    "imageSize": "full"
   },
   {
     "id": 4,

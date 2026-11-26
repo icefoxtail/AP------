@@ -43,7 +43,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_166_두평면의교선을알수없을때-두평면의이면각_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "AB=1, AD=2, AE=2 직육면체에서 삼각형 BDE와 EFG",
+    "imageCaption": "AB=1, AD=2, AE=2 직육면체에서 삼각형 BDE와 EFG",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -88,7 +92,11 @@ window.questionBank = [
       "CC_EQUILATERAL_TRIANGLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_166_두평면의교선을알수없을때-두평면의이면각_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "정육면체 한 변 4에서 M은 AB 중점, 삼각형 MBD와 BDE",
+    "imageCaption": "정육면체 한 변 4에서 M은 AB 중점, 삼각형 MBD와 BDE",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -177,7 +185,11 @@ window.questionBank = [
       "CC_MIDPOINT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_166_두평면의교선을알수없을때-두평면의이면각_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "한 모서리 4인 정사면체에서 BD·CD의 중점 M,N과 삼각형 AMN",
+    "imageCaption": "한 모서리 4인 정사면체에서 BD·CD의 중점 M,N과 삼각형 AMN",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -221,6 +233,10 @@ window.questionBank = [
       "CC_INTERNAL_DIVISION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_166_두평면의교선을알수없을때-두평면의이면각_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "정사면체 한 변 4에서 AP:PD=1:3인 P와 삼각형 PBC·BCD",
+    "imageCaption": "정사면체 한 변 4에서 AP:PD=1:3인 P와 삼각형 PBC·BCD",
+    "imageSize": "full"
   }
 ];

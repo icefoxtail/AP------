@@ -40,7 +40,11 @@ window.questionBank = [
     "templateKey": "TPL_GEO_ELLIPSE_AXIS_FOCUS",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_017_도형에서타원의초점장축단축의길이_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "세 변 AB=7, BC=6, CA=5인 삼각형 ABC만 그린 문제 그림",
+    "imageCaption": "세 변 AB=7, BC=6, CA=5인 삼각형 ABC만 그린 문제 그림",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -125,7 +129,11 @@ window.questionBank = [
       "CC_TRIANGLE_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_017_도형에서타원의초점장축단축의길이_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "타원 위 점 P와 두 초점 F,F′로 이루어진 정삼각형 PF′F",
+    "imageCaption": "타원 위 점 P와 두 초점 F,F′로 이루어진 정삼각형 PF′F",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -169,7 +177,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_017_도형에서타원의초점장축단축의길이_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "타원의 두 초점 F,F′와 타원 위의 두 점 A,B가 직사각형 FAF′B를 이루고 대각선 FF′,AB가 중심 O에서 만나는 그림. AF=5, AF′=12",
+    "imageCaption": "타원의 두 초점 F,F′와 타원 위의 두 점 A,B가 직사각형 FAF′B를 이루고 대각선 FF′,AB가 중심 O에서 만나는 그림. AF=5, AF′=12",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -212,6 +224,10 @@ window.questionBank = [
       "CC_RECTANGLE_PROPERTIES"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_017_도형에서타원의초점장축단축의길이_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "가로 AD=10, 세로 AB=12인 직사각형 ABCD에 장축이 세로인 타원이 네 변 모두에 내접한 그림",
+    "imageCaption": "가로 AD=10, 세로 AB=12인 직사각형 ABCD에 장축이 세로인 타원이 네 변 모두에 내접한 그림",
+    "imageSize": "full"
   }
 ];

@@ -132,7 +132,11 @@ window.questionBank = [
       "CC_EQUILATERAL_TRIANGLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_165_두평면의교선이주어질때-두평면의이면각을_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "OC가 OAB에 수직인 사면체 OABC, 정삼각형 ABC 한 변 6",
+    "imageCaption": "OC가 OAB에 수직인 사면체 OABC, 정삼각형 ABC 한 변 6",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -177,7 +181,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_165_두평면의교선이주어질때-두평면의이면각을_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "사면체 ABCD에서 A의 밑면 수선발 P와 BC의 수선발 Q",
+    "imageCaption": "사면체 ABCD에서 A의 밑면 수선발 P와 BC의 수선발 Q",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -222,6 +230,10 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_165_두평면의교선이주어질때-두평면의이면각을_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "정사각형 밑면 EFGH 위로 삼각형 PHQ를 정사영한 P′HQ",
+    "imageCaption": "정사각형 밑면 EFGH 위로 삼각형 PHQ를 정사영한 P′HQ",
+    "imageSize": "full"
   }
 ];

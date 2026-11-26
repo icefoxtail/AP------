@@ -540,7 +540,11 @@ window.questionBank = [
     "solutionImage": "assets/images/25_순천여고_1학기_중간_고2_확률과통계/q14-solution.svg",
     "solutionImageAlt": "해설 그림: 격자 모양의 길에서 출발점 A부터 각 교차점까지 가는 최단 경로의 수를 적은 그림이다.",
     "solutionImageCaption": "끊어진 도로를 뺀 도로망에서 A부터 각 교차점까지 가는 최단 경로의 수를 적은 그림이다. 한 교차점의 수는 왼쪽과 위쪽 교차점의 수를 더한 값이고, 끊어진 길 쪽은 더하지 않는다. B에 62, P에 5가 적힌다. P를 지나는 경로는 5×6=30가지이므로 P를 지나지 않는 경로는 62−30=32가지이다. 따라서 답은 ⑤이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "image": "assets/images/25_순천여고_1학기_중간_고2_확률과통계/q14-problem.svg",
+    "imageAlt": "도로망",
+    "imageCaption": "도로망",
+    "imageSize": "full"
   },
   {
     "id": 15,

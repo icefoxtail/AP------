@@ -736,7 +736,11 @@ window.questionBank = [
     "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js#q17",
     "image": "assets/images/26_효천고_1학기_중간_고2_확률과통계/q17.png",
     "imageAlt": "원점에 점 P가 표시된 수직선",
-    "imageCaption": "점 P의 최초 위치"
+    "imageCaption": "점 P의 최초 위치",
+    "solutionImage": "assets/images/26_효천고_1학기_중간_고2_확률과통계_유사2/q17-solution.svg",
+    "solutionImageAlt": "오른쪽으로 2칸 이동한 횟수 n=0,1,2,3,4,5에 대응하는 최종 위치는 -5,-2,1,4,7,10이다. 거리 2 이상 4 이하의 위치는 -2,4뿐이다.",
+    "solutionImageCaption": "오른쪽으로 2칸 이동한 횟수 n=0,1,2,3,4,5에 대응하는 최종 위치는 -5,-2,1,4,7,10이다. 거리 2 이상 4 이하의 위치는 -2,4뿐이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

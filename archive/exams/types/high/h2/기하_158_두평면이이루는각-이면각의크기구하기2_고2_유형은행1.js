@@ -46,7 +46,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RESTRICTED_INTERVAL"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_158_두평면이이루는각-이면각의크기구하기2_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "사면체 ABCD의 수선 AH와 이면각 θ",
+    "imageCaption": "사면체 ABCD의 수선 AH와 이면각 θ",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -91,7 +95,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_158_두평면이이루는각-이면각의크기구하기2_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "정삼각뿔 ABCD의 이면각 단면",
+    "imageCaption": "정삼각뿔 ABCD의 이면각 단면",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -136,7 +144,11 @@ window.questionBank = [
       "CC_RIGHT_TRIANGLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_158_두평면이이루는각-이면각의크기구하기2_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "사면체 ACD 넓이와 30도 이면각",
+    "imageCaption": "사면체 ACD 넓이와 30도 이면각",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -181,7 +193,11 @@ window.questionBank = [
       "CC_RIGHT_TRIANGLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_158_두평면이이루는각-이면각의크기구하기2_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "면 넓이 25·18을 갖는 사면체",
+    "imageCaption": "면 넓이 25·18을 갖는 사면체",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -228,6 +244,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RESTRICTED_INTERVAL"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_158_두평면이이루는각-이면각의크기구하기2_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "정육면체 안의 두 평면 BED·BGD",
+    "imageCaption": "정육면체 안의 두 평면 BED·BGD",
+    "imageSize": "full"
   }
 ];

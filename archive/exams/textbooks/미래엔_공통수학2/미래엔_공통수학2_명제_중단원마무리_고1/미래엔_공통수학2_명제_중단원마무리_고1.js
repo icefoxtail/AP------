@@ -55,7 +55,11 @@ window.questionBank = [
     "content": "전체집합 $U=\\{x \\mid x\\text{는 } 7\\text{ 이하의 자연수}\\}$에 대하여 두 조건 $p$와 $q$가\n$p$: $x^2-6x+8=0$, $q$: $x^2-6x+9>0$\n일 때, 다음 조건의 진리집합을 구하시오.\n⑴ $p$\n⑵ $q$\n⑶ $\\sim p$\n⑷ $\\sim q$",
     "choices": [],
     "answer": "⑴ $\\{2,\\ 4\\}$\n⑵ $\\{1,\\ 2,\\ 4,\\ 5,\\ 6,\\ 7\\}$\n⑶ $\\{1,\\ 3,\\ 5,\\ 6,\\ 7\\}$\n⑷ $\\{3\\}$",
-    "solution": "전체집합 $U=\\{1,\\ 2,\\ 3,\\ 4,\\ 5,\\ 6,\\ 7\\}$이다.\n⑴ $x^2-6x+8=(x-2)(x-4)=0$에서 $x=2$ 또는 $x=4$이므로 $p$의 진리집합은 $\\{2,\\ 4\\}$\n⑵ $x^2-6x+9=(x-3)^2>0$은 $x\\ne 3$일 때 성립하므로 $q$의 진리집합은 $U$에서 $3$을 뺀 $\\{1,\\ 2,\\ 4,\\ 5,\\ 6,\\ 7\\}$\n⑶ $\\sim p$의 진리집합은 $p$의 진리집합의 여집합이므로 $\\{1,\\ 3,\\ 5,\\ 6,\\ 7\\}$\n⑷ $\\sim q$의 진리집합은 $q$의 진리집합의 여집합이므로 $\\{3\\}$"
+    "solution": "전체집합 $U=\\{1,\\ 2,\\ 3,\\ 4,\\ 5,\\ 6,\\ 7\\}$이다.\n⑴ $x^2-6x+8=(x-2)(x-4)=0$에서 $x=2$ 또는 $x=4$이므로 $p$의 진리집합은 $\\{2,\\ 4\\}$\n⑵ $x^2-6x+9=(x-3)^2>0$은 $x\\ne 3$일 때 성립하므로 $q$의 진리집합은 $U$에서 $3$을 뺀 $\\{1,\\ 2,\\ 4,\\ 5,\\ 6,\\ 7\\}$\n⑶ $\\sim p$의 진리집합은 $p$의 진리집합의 여집합이므로 $\\{1,\\ 3,\\ 5,\\ 6,\\ 7\\}$\n⑷ $\\sim q$의 진리집합은 $q$의 진리집합의 여집합이므로 $\\{3\\}$",
+    "solutionImage": "assets/images/미래엔_공통수학2_명제_중단원마무리_고1/q2-solution.svg",
+    "solutionImageAlt": "전체집합 U={1,2,3,4,5,6,7}, P={2,4}, Q={1,2,4,5,6,7}에서 P⊂Q임을 보여 준다. 바깥의 3이 Q의 여집합이다.",
+    "solutionImageCaption": "전체집합 U={1,2,3,4,5,6,7}, P={2,4}, Q={1,2,4,5,6,7}에서 P⊂Q임을 보여 준다. 바깥의 3이 Q의 여집합이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -111,7 +115,11 @@ window.questionBank = [
     "content": "두 조건 $p$와 $q$가 다음과 같을 때, $p$는 $q$이기 위한 어떤 조건인지 말하시오.\n⑴ $p$: $x \\le 1$, $q$: $-3 \\le x \\le 0$\n⑵ $p$: $a=b$, $q$: $a^2=b^2$\n⑶ $p$: $|x| \\le 1$, $q$: $-1 \\le x \\le 1$",
     "choices": [],
     "answer": "⑴ 필요조건\n⑵ 충분조건\n⑶ 필요충분조건",
-    "solution": "$p,\\ q$의 진리집합을 각각 $P,\\ Q$라 하자. $P\\subset Q$이면 $p$는 $q$이기 위한 충분조건, $Q\\subset P$이면 필요조건, $P=Q$이면 필요충분조건이다.\n⑴ $P=\\{x\\mid x\\le 1\\}$, $Q=\\{x\\mid -3\\le x\\le 0\\}$이므로 $Q\\subset P$이다. 따라서 $p$는 $q$이기 위한 필요조건이다.\n⑵ $a=b$이면 $a^2=b^2$이므로 $p\\Rightarrow q$이다. 그러나 $a=1,\\ b=-1$이면 $a^2=b^2$이지만 $a\\ne b$이므로 $q\\Rightarrow p$는 거짓이다. 따라서 $p$는 $q$이기 위한 충분조건이다.\n⑶ $|x|\\le 1$은 $-1\\le x\\le 1$과 같으므로 $P=Q$이다. 따라서 $p$는 $q$이기 위한 필요충분조건이다."
+    "solution": "$p,\\ q$의 진리집합을 각각 $P,\\ Q$라 하자. $P\\subset Q$이면 $p$는 $q$이기 위한 충분조건, $Q\\subset P$이면 필요조건, $P=Q$이면 필요충분조건이다.\n⑴ $P=\\{x\\mid x\\le 1\\}$, $Q=\\{x\\mid -3\\le x\\le 0\\}$이므로 $Q\\subset P$이다. 따라서 $p$는 $q$이기 위한 필요조건이다.\n⑵ $a=b$이면 $a^2=b^2$이므로 $p\\Rightarrow q$이다. 그러나 $a=1,\\ b=-1$이면 $a^2=b^2$이지만 $a\\ne b$이므로 $q\\Rightarrow p$는 거짓이다. 따라서 $p$는 $q$이기 위한 충분조건이다.\n⑶ $|x|\\le 1$은 $-1\\le x\\le 1$과 같으므로 $P=Q$이다. 따라서 $p$는 $q$이기 위한 필요충분조건이다.",
+    "solutionImage": "assets/images/미래엔_공통수학2_명제_중단원마무리_고1/q4-solution.svg",
+    "solutionImageAlt": "첫째 조건 p는 x≤1, q는 −3≤x≤0이므로 Q⊂P다. 따라서 p는 q의 필요조건이고 충분조건은 아니다. 둘째·셋째 조건은 원문의 대수 관계로 판정한다.",
+    "solutionImageCaption": "첫째 조건 p는 x≤1, q는 −3≤x≤0이므로 Q⊂P다. 따라서 p는 q의 필요조건이고 충분조건은 아니다. 둘째·셋째 조건은 원문의 대수 관계로 판정한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -167,7 +175,11 @@ window.questionBank = [
     "content": "전체집합 $U$에 대하여 두 조건 $p$와 $q$의 진리집합을 각각 $P$와 $Q$라 하자. 명제 $p \\longrightarrow \\sim q$가 참일 때, 옳은 것을 보기에서 모두 고르시오.\n<보기>\nㄱ. $P \\subset Q^c$\nㄴ. $P \\cap Q=Q$\nㄷ. $P^c \\cap Q=Q$\nㄹ. $P^c \\cup Q^c=U$",
     "choices": [],
     "answer": "ㄱ, ㄷ, ㄹ",
-    "solution": "$p\\longrightarrow\\sim q$가 참이므로 $P\\subset Q^c$이다. 이는 $P$와 $Q$가 서로소임을 뜻한다.\nㄱ. $P\\subset Q^c$ (참)\nㄴ. $P\\cap Q=\\varnothing$이므로 $P\\cap Q=Q$는 $Q=\\varnothing$일 때만 성립한다. 항상 참은 아니다. (거짓)\nㄷ. $P\\subset Q^c$이면 $Q\\subset P^c$이므로 $P^c\\cap Q=Q$이다. (참)\nㄹ. $P\\cap Q=\\varnothing$이므로 드모르간 법칙에 의하여 $P^c\\cup Q^c=(P\\cap Q)^c=\\varnothing^c=U$이다. (참)\n따라서 옳은 것은 ㄱ, ㄷ, ㄹ이다."
+    "solution": "$p\\longrightarrow\\sim q$가 참이므로 $P\\subset Q^c$이다. 이는 $P$와 $Q$가 서로소임을 뜻한다.\nㄱ. $P\\subset Q^c$ (참)\nㄴ. $P\\cap Q=\\varnothing$이므로 $P\\cap Q=Q$는 $Q=\\varnothing$일 때만 성립한다. 항상 참은 아니다. (거짓)\nㄷ. $P\\subset Q^c$이면 $Q\\subset P^c$이므로 $P^c\\cap Q=Q$이다. (참)\nㄹ. $P\\cap Q=\\varnothing$이므로 드모르간 법칙에 의하여 $P^c\\cup Q^c=(P\\cap Q)^c=\\varnothing^c=U$이다. (참)\n따라서 옳은 것은 ㄱ, ㄷ, ㄹ이다.",
+    "solutionImage": "assets/images/미래엔_공통수학2_명제_중단원마무리_고1/q6-solution.svg",
+    "solutionImageAlt": "p⇒~q는 P∩Q=∅를 의미한다. 공통 영역이 없는 두 집합의 그림으로 ㄱ·ㄷ·ㄹ의 참을 확인한다.",
+    "solutionImageCaption": "p⇒~q는 P∩Q=∅를 의미한다. 공통 영역이 없는 두 집합의 그림으로 ㄱ·ㄷ·ㄹ의 참을 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,

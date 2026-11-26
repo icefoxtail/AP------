@@ -38,7 +38,11 @@ window.questionBank = [
       "CC_AUXILIARY_ALTITUDE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_065_등비급수의활용-선분의길이의합_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "첫 두 단계: ∠XOY=60°, OP₀=4, P₀P₁⊥OY, P₁P₂⊥OX.",
+    "imageCaption": "첫 두 단계: ∠XOY=60°, OP₀=4, P₀P₁⊥OY, P₁P₂⊥OX.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -74,7 +78,11 @@ window.questionBank = [
     "templateKey": "TPL_CALCULUS_SERIES_GEOMETRIC_APPLICATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_065_등비급수의활용-선분의길이의합_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "한 변2인 정삼각형의 C₀→B₁→C₁→B₂→C₂ 중점 경로.",
+    "imageCaption": "한 변2인 정삼각형의 C₀→B₁→C₁→B₂→C₂ 중점 경로.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -110,7 +118,11 @@ window.questionBank = [
     "templateKey": "TPL_CALCULUS_SERIES_GEOMETRIC_APPLICATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/미적분II_065_등비급수의활용-선분의길이의합_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "수직 줄기3과 ±45°의 두 길이1 가지, 그 끝의 길이1/3 가지 네 개.",
+    "imageCaption": "수직 줄기3과 ±45°의 두 길이1 가지, 그 끝의 길이1/3 가지 네 개.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -148,7 +160,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_065_등비급수의활용-선분의길이의합_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "한 변2 Q₀에서 중점을 이어 Q₁,Q₂,Q₃의 네 겹 정사각형을 작도한다.",
+    "imageCaption": "한 변2 Q₀에서 중점을 이어 Q₁,Q₂,Q₃의 네 겹 정사각형을 작도한다.",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -184,7 +200,11 @@ window.questionBank = [
     "templateKey": "TPL_CALCULUS_SERIES_GEOMETRIC_APPLICATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_065_등비급수의활용-선분의길이의합_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "한 변4 정삼각형의 중점삼각형과 오른쪽 아래 절반 삼각형의 중점삼각형.",
+    "imageCaption": "한 변4 정삼각형의 중점삼각형과 오른쪽 아래 절반 삼각형의 중점삼각형.",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -223,7 +243,11 @@ window.questionBank = [
       "CC_AUXILIARY_ALTITUDE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_065_등비급수의활용-선분의길이의합_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "원점 통과 0°·60°·120° 세 직선과 P₀(2,0)에서 시작한 연속 수선.",
+    "imageCaption": "원점 통과 0°·60°·120° 세 직선과 P₀(2,0)에서 시작한 연속 수선.",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -295,7 +319,11 @@ window.questionBank = [
     "templateKey": "TPL_CALCULUS_SERIES_GEOMETRIC_APPLICATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_065_등비급수의활용-선분의길이의합_고2_유형은행1/q8-problem.svg",
+    "imageAlt": "A₁=0,A₂=12,A₃=4,A₄=28/3를 잇는 위·아래·위의 세 반원호.",
+    "imageCaption": "A₁=0,A₂=12,A₃=4,A₄=28/3를 잇는 위·아래·위의 세 반원호.",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -333,7 +361,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_065_등비급수의활용-선분의길이의합_고2_유형은행1/q9-problem.svg",
+    "imageAlt": "반지름3 외접원, 상하좌우 꼭짓점의 내접 정사각형, 반지름 3/√2의 동심 내접원.",
+    "imageCaption": "반지름3 외접원, 상하좌우 꼭짓점의 내접 정사각형, 반지름 3/√2의 동심 내접원.",
+    "imageSize": "full"
   },
   {
     "id": 10,

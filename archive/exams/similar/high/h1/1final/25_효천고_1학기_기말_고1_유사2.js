@@ -195,7 +195,12 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_1학기_기말_고1_유사2/q7-solution.svg",
+    "solutionImageAlt": "해설에서 구한 h=10cm일 때의 직사각형 넓이 S(a)=60a-6a². 세로 a=5에서 최대 넓이 150cm²를 갖는다.",
+    "solutionImageCaption": "해설에서 구한 h=10cm일 때의 직사각형 넓이 S(a)=60a-6a². 세로 a=5에서 최대 넓이 150cm²를 갖는다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   },
   {
     "id": 8,
@@ -391,7 +396,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_1학기_기말_고1_유사2/q14-solution.svg",
+    "solutionImageAlt": "최소를 주는 k=1에서 f(x)=x²는 x=-1과 1에서 같은 값 1이고, 직선 y=2x-1에 (1,1)에서 접한다.",
+    "solutionImageCaption": "최소를 주는 k=1에서 f(x)=x²는 x=-1과 1에서 같은 값 1이고, 직선 y=2x-1에 (1,1)에서 접한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -447,7 +456,12 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_1학기_기말_고1_유사2/q16-solution.svg",
+    "solutionImageAlt": "h(x)=2x(x+4)의 [-3,1] 그래프. 꼭짓점 (-2,-8)이 최솟값, 오른쪽 끝 (1,10)이 최댓값으로 차는 18이다.",
+    "solutionImageCaption": "h(x)=2x(x+4)의 [-3,1] 그래프. 꼭짓점 (-2,-8)이 최솟값, 오른쪽 끝 (1,10)이 최댓값으로 차는 18이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 17,
@@ -475,7 +489,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-EQUATION",
     "subUnit": "여러 가지 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_1학기_기말_고1_유사2/q17-solution.svg",
+    "solutionImageAlt": "b=3에서 1<x<4와 (x-1)(x-2)>0의 교집합은 2<x<4이며 정수해는 3 하나이다.",
+    "solutionImageCaption": "b=3에서 1<x<4와 (x-1)(x-2)>0의 교집합은 2<x<4이며 정수해는 3 하나이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -555,7 +573,12 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_1학기_기말_고1_유사2/q20-solution.svg",
+    "solutionImageAlt": "a=4/3, b=19/3을 얻은 해설 그래프. 구간 [-1,3]의 꼭짓점 (2,1)에서 최소, 왼쪽 끝 (-1,13)에서 최대이다.",
+    "solutionImageCaption": "a=4/3, b=19/3을 얻은 해설 그래프. 구간 [-1,3]의 꼭짓점 (2,1)에서 최소, 왼쪽 끝 (-1,13)에서 최대이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 21,
@@ -603,7 +626,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_1학기_기말_고1_유사2/q22-solution.svg",
+    "solutionImageAlt": "a=2,b=4를 구하면 4x²-6x+2≤0, 즉 1/2≤x≤1이고 정수는 1 하나이다.",
+    "solutionImageCaption": "a=2,b=4를 구하면 4x²-6x+2≤0, 즉 1/2≤x≤1이고 정수는 1 하나이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

@@ -39,7 +39,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RESTRICTED_INTERVAL"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_239_그래프로주어진정적분의치환적분법_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "[0,6]에서 다섯 점을 차례로 잇는 꺾은선 함수 f(x).",
+    "imageCaption": "[0,6]에서 다섯 점을 차례로 잇는 꺾은선 함수 f(x).",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -77,7 +81,11 @@ window.questionBank = [
       "CC_DEFINITE_INTEGRAL_AREA_DECOMPOSITION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_239_그래프로주어진정적분의치환적분법_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "x축과 세 번 만나는 연속 대표 곡선. A=11, B=2의 영역 글자는 후속 기능으로 표시.",
+    "imageCaption": "x축과 세 번 만나는 연속 대표 곡선. A=11, B=2의 영역 글자는 후속 기능으로 표시.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -117,6 +125,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RESTRICTED_INTERVAL"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_239_그래프로주어진정적분의치환적분법_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "[0,4]의 세 직선 조각으로 이루어진 함수 f(x).",
+    "imageCaption": "[0,4]의 세 직선 조각으로 이루어진 함수 f(x).",
+    "imageSize": "full"
   }
 ];

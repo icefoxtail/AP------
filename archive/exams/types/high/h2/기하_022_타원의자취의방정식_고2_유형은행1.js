@@ -44,7 +44,11 @@ window.questionBank = [
       "CC_CIRCLE_CENTER_RADIUS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_022_타원의자취의방정식_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "중심 O, 반지름 12인 원 C의 원 위 점 P와 내부의 정점 F(6,0), FP의 중점 M을 지나는 수직이등분선 l과 OP의 교점 X",
+    "imageCaption": "중심 O, 반지름 12인 원 C의 원 위 점 P와 내부의 정점 F(6,0), FP의 중점 M을 지나는 수직이등분선 l과 OP의 교점 X",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -133,7 +137,11 @@ window.questionBank = [
       "CC_TRANSLATION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_022_타원의자취의방정식_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "중심 (−1,0), 반지름 2인 작은 원과 중심 (5,0), 반지름 8인 큰 원, 양쪽에 각각 외접·내접하는 움직이는 원의 한 배치와 중심 P",
+    "imageCaption": "중심 (−1,0), 반지름 2인 작은 원과 중심 (5,0), 반지름 8인 큰 원, 양쪽에 각각 외접·내접하는 움직이는 원의 한 배치와 중심 P",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -177,6 +185,10 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_022_타원의자취의방정식_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "제1사분면에서 x축 위의 A와 y축 위의 B를 잇는 길이 8의 선분 AB, AP:PB=3:1인 내부 점 P",
+    "imageCaption": "제1사분면에서 x축 위의 A와 y축 위의 B를 잇는 길이 8의 선분 AB, AP:PB=3:1인 내부 점 P",
+    "imageSize": "full"
   }
 ];

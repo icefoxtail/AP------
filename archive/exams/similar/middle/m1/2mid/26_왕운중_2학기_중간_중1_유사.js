@@ -721,7 +721,11 @@ window.questionBank = [
     "sourceQuote": "지난 한 달 동안 읽은 책의 수를 조사하여 나타낸 도수분포표이다.",
     "caption": "학생 30명이 읽은 책의 수에 따른 학생 수 분포를 나타낸 도수분포표",
     "problemPlanRef": "archive/exams/similar/middle/m1/2mid/26_왕운중_2학기_중간_중1_유사_plans/q18-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/middle/m1/2mid/26_왕운중_2학기_중간_중1_유사_plans/q18-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/middle/m1/2mid/26_왕운중_2학기_중간_중1_유사_plans/q18-solution.plan.json",
+    "image": "assets/images/26_왕운중_2학기_중간_중1_유사/q18-problem.svg",
+    "imageAlt": "학생 30명이 읽은 책의 수에 따른 학생 수 분포를 나타낸 도수분포표",
+    "imageCaption": "학생 30명이 읽은 책의 수에 따른 학생 수 분포를 나타낸 도수분포표",
+    "imageSize": "full"
   },
   {
     "id": 19,

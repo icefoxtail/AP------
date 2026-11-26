@@ -220,7 +220,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "rpmPrimaryRecordId": "H2-M1-RPM-014",
     "sourceQid": 5,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "solutionImage": "assets/images/24_순천여고_1학기_중간_고2_수학I_유사/q5-solution.svg",
+    "solutionImageAlt": "지수함수는 (2,3)을 지나며 수평선 y=2에 가까워진다. 따라서 보기의 x=2는 점근선이 아니다.",
+    "solutionImageCaption": "지수함수는 (2,3)을 지나며 수평선 y=2에 가까워진다. 따라서 보기의 x=2는 점근선이 아니다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -264,7 +268,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "rpmPrimaryRecordId": "H2-M1-RPM-032",
     "sourceQid": 6,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "solutionImage": "assets/images/24_순천여고_1학기_중간_고2_수학I_유사/q6-solution.svg",
+    "solutionImageAlt": "제2사분면의 동경 OP에 P(−3,1)을 두면 가로 길이 3, 높이 1, 빗변 OP=√10이므로 sin θ는 양수, cos θ는 음수이다.",
+    "solutionImageCaption": "제2사분면의 동경 OP에 P(−3,1)을 두면 가로 길이 3, 높이 1, 빗변 OP=√10이므로 sin θ는 양수, cos θ는 음수이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -484,7 +492,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "rpmPrimaryRecordId": "H2-M1-RPM-019",
     "sourceQid": 11,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "solutionImage": "assets/images/24_순천여고_1학기_중간_고2_수학I_유사/q11-solution.svg",
+    "solutionImageAlt": "지수 3^u가 증가하므로 u=x²−2x−1의 구간 [-1,2] 최대 2, 최소 −2가 원함수의 최대 9와 최소 1/9를 결정한다.",
+    "solutionImageCaption": "지수 3^u가 증가하므로 u=x²−2x−1의 구간 [-1,2] 최대 2, 최소 −2가 원함수의 최대 9와 최소 1/9를 결정한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,

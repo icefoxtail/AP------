@@ -123,7 +123,11 @@ window.questionBank = [
     "content": "두 집합\n$A=\\{x \\mid x^2-8x+15=0\\}$,\n$B=\\{x \\mid x\\text{는 } 9\\text{ 이하의 홀수}\\}$\n에 대하여 $A \\subset X \\subset B$를 만족시키는 집합 $X$의 개수를 구하시오.",
     "choices": [],
     "answer": "$8$",
-    "solution": "$A$: $x^2-8x+15=(x-3)(x-5)=0$에서 $A=\\{3,\\ 5\\}$\n$B$는 $9$ 이하의 홀수의 집합이므로 $B=\\{1,\\ 3,\\ 5,\\ 7,\\ 9\\}$\n$A\\subset X\\subset B$이면 $X$는 $3,\\ 5$를 반드시 포함하고, $B$의 나머지 원소 $1,\\ 7,\\ 9$는 포함해도 되고 안 해도 된다.\n따라서 $X$의 개수는 $2^3=8$"
+    "solution": "$A$: $x^2-8x+15=(x-3)(x-5)=0$에서 $A=\\{3,\\ 5\\}$\n$B$는 $9$ 이하의 홀수의 집합이므로 $B=\\{1,\\ 3,\\ 5,\\ 7,\\ 9\\}$\n$A\\subset X\\subset B$이면 $X$는 $3,\\ 5$를 반드시 포함하고, $B$의 나머지 원소 $1,\\ 7,\\ 9$는 포함해도 되고 안 해도 된다.\n따라서 $X$의 개수는 $2^3=8$",
+    "solutionImage": "assets/images/미래엔_공통수학2_집합과명제_대단원마무리_고1/q4-solution.svg",
+    "solutionImageAlt": "A={3,5}는 B={1,3,5,7,9} 안에 있다. B에서 남는 1,7,9의 포함 여부가 각각 자유로워 가능한 X는 2³=8개다.",
+    "solutionImageCaption": "A={3,5}는 B={1,3,5,7,9} 안에 있다. B에서 남는 1,7,9의 포함 여부가 각각 자유로워 가능한 X는 2³=8개다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -179,7 +183,11 @@ window.questionBank = [
     "content": "전체집합 $U=\\{1, 2, 3, \\cdots, 10\\}$의 세 부분집합 $A$, $B$, $C$에 대하여\n$A \\cup B=\\{x \\mid x\\text{는 } 3\\text{의 배수}\\}$,\n$A \\cup C=\\{x \\mid x\\text{는 } 9\\text{의 약수}\\}$\n일 때, $A \\cup (B \\cap C)$의 모든 원소의 합을 구하시오.",
     "choices": [],
     "answer": "$12$",
-    "solution": "$A\\cup B=\\{3,\\ 6,\\ 9\\}$, $A\\cup C$는 $9$의 약수의 집합이므로 $A\\cup C=\\{1,\\ 3,\\ 9\\}$이다.\n분배법칙에 의하여\n$$A\\cup(B\\cap C)=(A\\cup B)\\cap(A\\cup C)=\\{3,\\ 6,\\ 9\\}\\cap\\{1,\\ 3,\\ 9\\}=\\{3,\\ 9\\}$$\n따라서 모든 원소의 합은 $3+9=12$"
+    "solution": "$A\\cup B=\\{3,\\ 6,\\ 9\\}$, $A\\cup C$는 $9$의 약수의 집합이므로 $A\\cup C=\\{1,\\ 3,\\ 9\\}$이다.\n분배법칙에 의하여\n$$A\\cup(B\\cap C)=(A\\cup B)\\cap(A\\cup C)=\\{3,\\ 6,\\ 9\\}\\cap\\{1,\\ 3,\\ 9\\}=\\{3,\\ 9\\}$$\n따라서 모든 원소의 합은 $3+9=12$",
+    "solutionImage": "assets/images/미래엔_공통수학2_집합과명제_대단원마무리_고1/q6-solution.svg",
+    "solutionImageAlt": "D=A∪B={3,6,9}, E=A∪C={1,3,9}로 두면 분배법칙에 의해 A∪(B∩C)=D∩E={3,9}, 원소의 합은 12다.",
+    "solutionImageCaption": "D=A∪B={3,6,9}, E=A∪C={1,3,9}로 두면 분배법칙에 의해 A∪(B∩C)=D∩E={3,9}, 원소의 합은 12다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -241,7 +249,11 @@ window.questionBank = [
       "$P \\ne \\varnothing$이면 ‘어떤 $x$에 대하여 $p$이다.’는 참이다."
     ],
     "answer": "③",
-    "solution": "① 조건 $\\sim p$의 진리집합은 $P$의 여집합 $P^c$이다. (옳다.)\n② $p\\longrightarrow q$가 참이면 $P\\subset Q$이므로 $Q^c\\subset P^c$이다. (옳다.)\n③ $p\\longrightarrow q$가 참이려면 $P\\subset Q$이어야 한다. $Q\\subset P$이면 명제 $p\\longrightarrow q$가 참이라고 할 수 없다. (옳지 않다.)\n④ '모든 $x$에 대하여 $p$이다'가 참이려면 $P=U$이어야 하므로 $P\\ne U$이면 거짓이다. (옳다.)\n⑤ '어떤 $x$에 대하여 $p$이다'가 참이려면 $P\\ne\\varnothing$이어야 한다. (옳다.)\n따라서 옳지 않은 것은 ③이다."
+    "solution": "① 조건 $\\sim p$의 진리집합은 $P$의 여집합 $P^c$이다. (옳다.)\n② $p\\longrightarrow q$가 참이면 $P\\subset Q$이므로 $Q^c\\subset P^c$이다. (옳다.)\n③ $p\\longrightarrow q$가 참이려면 $P\\subset Q$이어야 한다. $Q\\subset P$이면 명제 $p\\longrightarrow q$가 참이라고 할 수 없다. (옳지 않다.)\n④ '모든 $x$에 대하여 $p$이다'가 참이려면 $P=U$이어야 하므로 $P\\ne U$이면 거짓이다. (옳다.)\n⑤ '어떤 $x$에 대하여 $p$이다'가 참이려면 $P\\ne\\varnothing$이어야 한다. (옳다.)\n따라서 옳지 않은 것은 ③이다.",
+    "solutionImage": "assets/images/미래엔_공통수학2_집합과명제_대단원마무리_고1/q8-solution.svg",
+    "solutionImageAlt": "p⇒q가 참인 상황은 진리집합 P⊂Q로 나타낸다. 이때 Q의 여집합은 P의 여집합 안에 있으며, 거꾸로 Q⊂P만으로 p⇒q를 보장하지 않는다.",
+    "solutionImageCaption": "p⇒q가 참인 상황은 진리집합 P⊂Q로 나타낸다. 이때 Q의 여집합은 P의 여집합 안에 있으며, 거꾸로 Q⊂P만으로 p⇒q를 보장하지 않는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,

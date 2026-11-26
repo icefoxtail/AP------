@@ -42,7 +42,11 @@ window.questionBank = [
       "CC_LINE_INTERSECTION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_056_타원과쌍곡선의활용-초점이일치2_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "공통 초점 F,F′의 타원 C₁·쌍곡선 C₂와 제2사분면 P, 제1사분면 Q",
+    "imageCaption": "공통 초점 F,F′의 타원 C₁·쌍곡선 C₂와 제2사분면 P, 제1사분면 Q",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -85,7 +89,11 @@ window.questionBank = [
       "CC_X_INTERCEPT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_056_타원과쌍곡선의활용-초점이일치2_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "주어진 두 초점과 x축 꼭짓점, 같은 길이 PQ·QF를 갖는 공유초점 타원·쌍곡선",
+    "imageCaption": "주어진 두 초점과 x축 꼭짓점, 같은 길이 PQ·QF를 갖는 공유초점 타원·쌍곡선",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -175,7 +183,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_056_타원과쌍곡선의활용-초점이일치2_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "공통 초점의 타원과 쌍곡선, 제1사분면 교점 P와 주어진 OP=7",
+    "imageCaption": "공통 초점의 타원과 쌍곡선, 제1사분면 교점 P와 주어진 OP=7",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -221,6 +233,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_056_타원과쌍곡선의활용-초점이일치2_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "공유되지 않는 초점을 갖는 가로 쌍곡선과 세로 타원 및 정삼각형 FPF′ (포물선은 엔진 확장 대기)",
+    "imageCaption": "공유되지 않는 초점을 갖는 가로 쌍곡선과 세로 타원 및 정삼각형 FPF′ (포물선은 엔진 확장 대기)",
+    "imageSize": "full"
   }
 ];

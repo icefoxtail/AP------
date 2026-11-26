@@ -167,7 +167,11 @@ window.questionBank = [
     "content": "연립부등식 $\\begin{cases} x^2+3\\ge 4x \\\\ 4x^2-7x-2<0 \\end{cases}$을 푸시오.",
     "choices": [],
     "answer": "$-\\frac{1}{4}<x\\le 1$",
-    "solution": "$x^2+3\\ge 4x$에서 $x^2-4x+3\\ge 0$이므로 $(x-1)(x-3)\\ge 0$, 즉 $x\\le 1$ 또는 $x\\ge 3$\n$4x^2-7x-2<0$에서 $(4x+1)(x-2)<0$이므로 $-\\frac{1}{4}<x<2$\n두 해의 공통부분은 $-\\frac{1}{4}<x\\le 1$"
+    "solution": "$x^2+3\\ge 4x$에서 $x^2-4x+3\\ge 0$이므로 $(x-1)(x-3)\\ge 0$, 즉 $x\\le 1$ 또는 $x\\ge 3$\n$4x^2-7x-2<0$에서 $(4x+1)(x-2)<0$이므로 $-\\frac{1}{4}<x<2$\n두 해의 공통부분은 $-\\frac{1}{4}<x\\le 1$",
+    "solutionImage": "assets/images/미래엔_공통수학1_여러가지방정식과부등식_중단원마무리_고1/q6-solution.svg",
+    "solutionImageAlt": "x≤1 또는 x≥3과 −1/4<x<2를 겹치면 공통부분은 −1/4<x≤1이다.",
+    "solutionImageCaption": "x≤1 또는 x≥3과 −1/4<x<2를 겹치면 공통부분은 −1/4<x≤1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -279,7 +283,12 @@ window.questionBank = [
     "content": "이차부등식 $-x^2+2(a-3)x+5(a-3)>0$의 해가 존재하지 않도록 하는 실수 $a$의 값의 범위를 구하시오.",
     "choices": [],
     "answer": "$-2\\le a\\le 3$",
-    "solution": "$-x^2+2(a-3)x+5(a-3)>0$의 해가 존재하지 않으려면 모든 실수 $x$에 대하여\n$$-x^2+2(a-3)x+5(a-3)\\le 0,\\quad\\text{즉}\\quad x^2-2(a-3)x-5(a-3)\\ge 0$$\n이어야 한다. 이차식이 항상 $0$ 이상이려면 판별식이 $0$ 이하여야 한다.\n$$\\frac{D}{4}=(a-3)^2+5(a-3)=(a-3)(a-3+5)=(a-3)(a+2)\\le 0$$\n따라서 $-2\\le a\\le 3$"
+    "solution": "$-x^2+2(a-3)x+5(a-3)>0$의 해가 존재하지 않으려면 모든 실수 $x$에 대하여\n$$-x^2+2(a-3)x+5(a-3)\\le 0,\\quad\\text{즉}\\quad x^2-2(a-3)x-5(a-3)\\ge 0$$\n이어야 한다. 이차식이 항상 $0$ 이상이려면 판별식이 $0$ 이하여야 한다.\n$$\\frac{D}{4}=(a-3)^2+5(a-3)=(a-3)(a-3+5)=(a-3)(a+2)\\le 0$$\n따라서 $-2\\le a\\le 3$",
+    "solutionImage": "assets/images/미래엔_공통수학1_여러가지방정식과부등식_중단원마무리_고1/q10-solution.svg",
+    "solutionImageAlt": "원래 이차부등식의 해가 없으려면 판별식 D/4=(a−3)(a+2)가 0 이하여야 하므로 −2≤a≤3이다.",
+    "solutionImageCaption": "원래 이차부등식의 해가 없으려면 판별식 D/4=(a−3)(a+2)가 0 이하여야 하므로 −2≤a≤3이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   },
   {
     "id": 11,
@@ -307,7 +316,11 @@ window.questionBank = [
     "content": "연립부등식 $\\begin{cases} x^2-4x-5\\le 0 \\\\ (x-a)(x-3)>0 \\end{cases}$의 해가 $3<x\\le 5$가 되도록 하는 실수 $a$의 값의 범위를 구하는 풀이 과정과 답을 쓰시오.",
     "choices": [],
     "answer": "$a\\le -1$",
-    "solution": "$x^2-4x-5=(x-5)(x+1)\\le 0$에서 $-1\\le x\\le 5$\n$(x-a)(x-3)>0$의 해는 $a$의 값에 따라 다르다.\n(i) $a<3$일 때: $x<a$ 또는 $x>3$이므로 연립부등식의 해는 $-1\\le x<a$ 또는 $3<x\\le 5$ 꼴이다. 해가 $3<x\\le 5$뿐이려면 $-1\\le x<a$를 만족하는 $x$가 없어야 하므로 $a\\le -1$\n(ii) $a=3$일 때: $x\\ne 3$이므로 해는 $-1\\le x<3$ 또는 $3<x\\le 5$이다. 조건에 맞지 않는다.\n(iii) $a>3$일 때: $x<3$ 또는 $x>a$이므로 해에 $-1\\le x<3$이 포함된다. 조건에 맞지 않는다.\n따라서 $a\\le -1$"
+    "solution": "$x^2-4x-5=(x-5)(x+1)\\le 0$에서 $-1\\le x\\le 5$\n$(x-a)(x-3)>0$의 해는 $a$의 값에 따라 다르다.\n(i) $a<3$일 때: $x<a$ 또는 $x>3$이므로 연립부등식의 해는 $-1\\le x<a$ 또는 $3<x\\le 5$ 꼴이다. 해가 $3<x\\le 5$뿐이려면 $-1\\le x<a$를 만족하는 $x$가 없어야 하므로 $a\\le -1$\n(ii) $a=3$일 때: $x\\ne 3$이므로 해는 $-1\\le x<3$ 또는 $3<x\\le 5$이다. 조건에 맞지 않는다.\n(iii) $a>3$일 때: $x<3$ 또는 $x>a$이므로 해에 $-1\\le x<3$이 포함된다. 조건에 맞지 않는다.\n따라서 $a\\le -1$",
+    "solutionImage": "assets/images/미래엔_공통수학1_여러가지방정식과부등식_중단원마무리_고1/q11-solution.svg",
+    "solutionImageAlt": "a=−1인 경계 상황에서 첫째 해집합 −1≤x≤5와 둘째 해집합 x<a 또는 x>3의 공통부분은 3<x≤5이다. a가 더 작아져도 공통부분은 같다.",
+    "solutionImageCaption": "a=−1인 경계 상황에서 첫째 해집합 −1≤x≤5와 둘째 해집합 x<a 또는 x>3의 공통부분은 3<x≤5이다. a가 더 작아져도 공통부분은 같다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,

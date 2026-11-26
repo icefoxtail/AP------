@@ -42,7 +42,11 @@ window.questionBank = [
       "CC_DISTANCE_TWO_POINTS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_063_포물선의접선의성질_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "포물선의 임의 접점 P, 접선의 x축 교점 T와 초점 F(대표 x₁=2)",
+    "imageCaption": "포물선의 임의 접점 P, 접선의 x축 교점 T와 초점 F(대표 x₁=2)",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -132,7 +136,11 @@ window.questionBank = [
       "CC_PARALLELOGRAM_PROPERTIES"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_063_포물선의접선의성질_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "접점 P와 초점 F가 만드는 평행사변형 TFPQ",
+    "imageCaption": "접점 P와 초점 F가 만드는 평행사변형 TFPQ",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -176,7 +184,11 @@ window.questionBank = [
       "CC_TRIGONOMETRIC_TANGENT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_063_포물선의접선의성질_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "초점 F, 접점 P와 접선의 x축 교점 Q가 만드는 각 FPQ",
+    "imageCaption": "초점 F, 접점 P와 접선의 x축 교점 Q가 만드는 각 FPQ",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -222,7 +234,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_063_포물선의접선의성질_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "초점을 중심으로 한 원과 포물선의 교점 P, 접선의 x축 교점 Q(대표 p=1,r=5)",
+    "imageCaption": "초점을 중심으로 한 원과 포물선의 교점 P, 접선의 x축 교점 Q(대표 p=1,r=5)",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -266,7 +282,11 @@ window.questionBank = [
       "CC_X_INTERCEPT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_063_포물선의접선의성질_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "접점 P, 초점 F, 준선 위의 수선의 발 H와 직선 FH",
+    "imageCaption": "접점 P, 초점 F, 준선 위의 수선의 발 H와 직선 FH",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -310,6 +330,10 @@ window.questionBank = [
       "CC_DISTANCE_TWO_POINTS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_063_포물선의접선의성질_고2_유형은행1/q7-problem.svg",
+    "imageAlt": "포물선의 접점 P와 초점 F, 접선 교점 Q가 만드는 삼각형의 외접원",
+    "imageCaption": "포물선의 접점 P와 초점 F, 접선 교점 Q가 만드는 삼각형의 외접원",
+    "imageSize": "full"
   }
 ];

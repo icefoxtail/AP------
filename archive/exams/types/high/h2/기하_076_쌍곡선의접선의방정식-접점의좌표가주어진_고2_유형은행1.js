@@ -87,7 +87,11 @@ window.questionBank = [
       "CC_TRIANGLE_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_076_쌍곡선의접선의방정식-접점의좌표가주어진_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "쌍곡선 접선·법선과 y축의 교점 B,C를 연결한 음영 삼각형 ABC",
+    "imageCaption": "쌍곡선 접선·법선과 y축의 교점 B,C를 연결한 음영 삼각형 ABC",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -353,7 +357,11 @@ window.questionBank = [
       "CC_PARABOLA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_076_쌍곡선의접선의방정식-접점의좌표가주어진_고2_유형은행1/q8-problem.svg",
+    "imageAlt": "쌍곡선의 점 P에서의 접선이 포물선의 초점 F를 지나가는 공통 좌표평면",
+    "imageCaption": "쌍곡선의 점 P에서의 접선이 포물선의 초점 F를 지나가는 공통 좌표평면",
+    "imageSize": "full"
   },
   {
     "id": 9,

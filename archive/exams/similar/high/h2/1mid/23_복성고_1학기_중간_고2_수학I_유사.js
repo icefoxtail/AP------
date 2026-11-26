@@ -748,7 +748,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-016",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/23_복성고_1학기_중간_고2_수학I_유사/q17-solution.svg",
+    "solutionImageAlt": "원래 조건은 x>1이고, 그림은 그 범위 중 표시창에 들어오는 포물선 부분이다. x=1은 속이 빈 점으로 제외되며 꼭짓점 (3,9)가 포함되어 최댓값은 9이다. 오른쪽 그림 경계는 정의역 끝이 아니다.",
+    "solutionImageCaption": "원래 조건은 x>1이고, 그림은 그 범위 중 표시창에 들어오는 포물선 부분이다. x=1은 속이 빈 점으로 제외되며 꼭짓점 (3,9)가 포함되어 최댓값은 9이다. 오른쪽 그림 경계는 정의역 끝이 아니다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -874,7 +878,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-028",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/23_복성고_1학기_중간_고2_수학I_유사/q20-solution.svg",
+    "solutionImageAlt": "풀이에서 sinθ=(1+√17)/6>0, cosθ=(1−√17)/6<0이므로 θ의 동경은 제2사분면이다. 단위원 위의 정확한 점과 두 성분을 표시하며 sinθ+cosθ=1/3을 만족한다.",
+    "solutionImageCaption": "풀이에서 sinθ=(1+√17)/6>0, cosθ=(1−√17)/6<0이므로 θ의 동경은 제2사분면이다. 단위원 위의 정확한 점과 두 성분을 표시하며 sinθ+cosθ=1/3을 만족한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -950,6 +958,10 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-028",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/23_복성고_1학기_중간_고2_수학I_유사/q22-solution.svg",
+    "solutionImageAlt": "밑이 0과 1 사이이면 [−7/2,−3)∪(−3,−2), 밑이 1보다 크면 [−3/2,∞)이다. 두 경우의 합집합을 취한다.",
+    "solutionImageCaption": "밑이 0과 1 사이이면 [−7/2,−3)∪(−3,−2), 밑이 1보다 크면 [−3/2,∞)이다. 두 경우의 합집합을 취한다.",
+    "solutionImageSize": "full"
   }
 ];

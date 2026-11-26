@@ -44,7 +44,11 @@ window.questionBank = [
       "CC_ISOSCELES_TRIANGLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_151_삼수선의정리2_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "평면 α의 직선 l 위 AB와 점 P의 수선 PH",
+    "imageCaption": "평면 α의 직선 l 위 AB와 점 P의 수선 PH",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -89,7 +93,11 @@ window.questionBank = [
       "CC_TRIANGLE_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_151_삼수선의정리2_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "넓이 45인 삼각형 ABC의 무게중심 H와 두 수선",
+    "imageCaption": "넓이 45인 삼각형 ABC의 무게중심 H와 두 수선",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -228,6 +236,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RESTRICTED_INTERVAL"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_151_삼수선의정리2_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "D에서 세 모서리가 서로 수직인 사면체와 BC 위 점 P",
+    "imageCaption": "D에서 세 모서리가 서로 수직인 사면체와 BC 위 점 P",
+    "imageSize": "full"
   }
 ];

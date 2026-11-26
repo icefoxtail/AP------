@@ -86,7 +86,11 @@ window.questionBank = [
       "CC_DISTANCE_TWO_POINTS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_095_벡터의크기의최대최소-원의성질을이용하는_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "좌표평면에서 원 (x−1)²+(y−2)²=3, A(3,0)와 원점 O에서 P로 향하는 벡터",
+    "imageCaption": "좌표평면에서 원 (x−1)²+(y−2)²=3, A(3,0)와 원점 O에서 P로 향하는 벡터",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -130,6 +134,10 @@ window.questionBank = [
       "CC_DISTANCE_TWO_POINTS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_095_벡터의크기의최대최소-원의성질을이용하는_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "AB=12·BC=4 직사각형의 네 중점 E·F·G·H, CF 지름의 원 위 P와 EG·HP 화살표",
+    "imageCaption": "AB=12·BC=4 직사각형의 네 중점 E·F·G·H, CF 지름의 원 위 P와 EG·HP 화살표",
+    "imageSize": "full"
   }
 ];

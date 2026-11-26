@@ -270,6 +270,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_INEQUALITY_CONSTRAINT"
     ],
-    "integrationPattern": "DEEP_COMPOSITE"
+    "integrationPattern": "DEEP_COMPOSITE",
+    "image": "assets/images/기하_031_타원의정의를이용한거리의합의최대최소_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "타원 위 제1사분면 점 P와 초점 F가 이루는 정삼각형 PFQ, 그리고 QF′",
+    "imageCaption": "타원 위 제1사분면 점 P와 초점 F가 이루는 정삼각형 PFQ, 그리고 QF′",
+    "imageSize": "full"
   }
 ];

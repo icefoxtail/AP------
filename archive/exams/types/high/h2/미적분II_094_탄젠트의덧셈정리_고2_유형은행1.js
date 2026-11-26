@@ -553,6 +553,10 @@ window.questionBank = [
       "CC_SPECIAL_ANGLES"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_094_탄젠트의덧셈정리_고2_유형은행1/q14-problem.svg",
+    "imageAlt": "등대 밑 B, 꼭대기 T, 눈 E와 눈높이 수평선 EH 및 각 α,β.",
+    "imageCaption": "등대 밑 B, 꼭대기 T, 눈 E와 눈높이 수평선 EH 및 각 α,β.",
+    "imageSize": "full"
   }
 ];

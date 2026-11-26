@@ -109,7 +109,11 @@ window.questionBank = [
       "CC_VOLUME_MODELING_POLYNOMIAL"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_203_최대최소의활용부피_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "반지름 6의 부채꼴을 말아 만든 원뿔의 대표 모양. 펼친 부채꼴은 후속 그림.",
+    "imageCaption": "반지름 6의 부채꼴을 말아 만든 원뿔의 대표 모양. 펼친 부채꼴은 후속 그림.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -147,7 +151,11 @@ window.questionBank = [
       "CC_VOLUME_MODELING_POLYNOMIAL"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_203_최대최소의활용부피_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "축 단면의 이등변삼각형과 반지름 2인 내접원을 표시한다.",
+    "imageCaption": "축 단면의 이등변삼각형과 반지름 2인 내접원을 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -188,7 +196,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RESTRICTED_INTERVAL"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_203_최대최소의활용부피_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "P, Q, R이 이루는 직각삼각형의 길이 비를 보여준다.",
+    "imageCaption": "P, Q, R이 이루는 직각삼각형의 길이 비를 보여준다.",
+    "imageSize": "full"
   },
   {
     "id": 6,

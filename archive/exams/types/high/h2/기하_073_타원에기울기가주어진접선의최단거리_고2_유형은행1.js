@@ -131,7 +131,11 @@ window.questionBank = [
       "CC_POINT_LINE_DISTANCE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_073_타원에기울기가주어진접선의최단거리_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "타원 위의 대표점 P와 주어진 두 외부점 A,B가 만드는 삼각형 ABP",
+    "imageCaption": "타원 위의 대표점 P와 주어진 두 외부점 A,B가 만드는 삼각형 ABP",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -177,7 +181,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_NO_THREE_COLLINEAR_POINTS"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_073_타원에기울기가주어진접선의최단거리_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "세로로 긴 타원의 내부점 A·외부점 B·대표 타원점 P를 이은 삼각형",
+    "imageCaption": "세로로 긴 타원의 내부점 A·외부점 B·대표 타원점 P를 이은 삼각형",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -222,6 +230,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_073_타원에기울기가주어진접선의최단거리_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "타원과 양의 두 축 꼭짓점 A,B 및 대표점 P를 잇는 볼록사각형 OAPB",
+    "imageCaption": "타원과 양의 두 축 꼭짓점 A,B 및 대표점 P를 잇는 볼록사각형 OAPB",
+    "imageSize": "full"
   }
 ];

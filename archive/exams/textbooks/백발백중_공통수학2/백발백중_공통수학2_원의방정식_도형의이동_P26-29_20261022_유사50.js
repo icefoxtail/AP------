@@ -495,7 +495,11 @@ window.questionBank = [
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50/BV-BAKBAL-H-COM2-P26-Q03-S2-R1-solution.svg",
     "solutionImageAlt": "해설 도형",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50/BV-BAKBAL-H-COM2-P26-Q03-S2-R1-problem.svg",
+    "imageAlt": "교차하는 두 원과 공통현",
+    "imageCaption": "교차하는 두 원과 공통현",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P26-Q04-T1-R1",
@@ -551,7 +555,11 @@ window.questionBank = [
     "problemImageAlt": "발문 도형",
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50/BV-BAKBAL-H-COM2-P26-Q04-T1-R1-solution.svg",
     "solutionImageAlt": "해설 도형",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50/BV-BAKBAL-H-COM2-P26-Q04-T1-R1-problem.svg",
+    "imageAlt": "두 원의 공통외접선과 접점",
+    "imageCaption": "두 원의 공통외접선과 접점",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P26-Q04-S1-R1",
@@ -607,7 +615,11 @@ window.questionBank = [
     "problemImageAlt": "발문 도형",
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50/BV-BAKBAL-H-COM2-P26-Q04-S1-R1-solution.svg",
     "solutionImageAlt": "해설 도형",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50/BV-BAKBAL-H-COM2-P26-Q04-S1-R1-problem.svg",
+    "imageAlt": "두 원의 공통외접선과 접점",
+    "imageCaption": "두 원의 공통외접선과 접점",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P26-Q04-S2-R1",

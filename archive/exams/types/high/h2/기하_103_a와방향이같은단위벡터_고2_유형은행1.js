@@ -44,7 +44,11 @@ window.questionBank = [
       "CC_CIRCLE_CIRCUMFERENCE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "REINTERPRETATION"
+    "integrationPattern": "REINTERPRETATION",
+    "image": "assets/images/기하_103_a와방향이같은단위벡터_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "OA=OB=4, ∠AOB=90°인 직각이등변삼각형과 AB의 움직이는 점 P",
+    "imageCaption": "OA=OB=4, ∠AOB=90°인 직각이등변삼각형과 AB의 움직이는 점 P",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -91,7 +95,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_NONZERO"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_103_a와방향이같은단위벡터_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "한 변 4·∠AOC=60°인 마름모 OABC와 A→B→C 경로 위 P",
+    "imageCaption": "한 변 4·∠AOC=60°인 마름모 OABC와 A→B→C 경로 위 P",
+    "imageSize": "full"
   },
   {
     "id": 3,

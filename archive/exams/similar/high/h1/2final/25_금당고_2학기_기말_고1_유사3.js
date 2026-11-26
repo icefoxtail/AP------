@@ -164,7 +164,11 @@ window.questionBank = [
     "templateKey": "TPL_IMPLICATION_TRUTHSET_RELATION",
     "rpmPrimaryRecordId": "H1-RPM-243",
     "sourceQid": 4,
-    "variationType": "STRICT_VARIANT"
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_유사3/q4-solution.svg",
+    "solutionImageAlt": "P⊂Qᶜ는 P와 Q에 동시에 속하는 원소가 없다는 뜻이다. 따라서 p이면 q가 아니고, 대우로 q이면 p가 아니므로 q→¬p가 참이다.",
+    "solutionImageCaption": "P⊂Qᶜ는 P와 Q에 동시에 속하는 원소가 없다는 뜻이다. 따라서 p이면 q가 아니고, 대우로 q이면 p가 아니므로 q→¬p가 참이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -340,7 +344,11 @@ window.questionBank = [
     "templateKey": "TPL_INVERSE_VALUE_DIRECT",
     "rpmPrimaryRecordId": "H1-RPM-255",
     "sourceQid": 8,
-    "variationType": "STRICT_VARIANT"
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_유사3/q8-solution.svg",
+    "solutionImageAlt": "두 그래프가 모두 (1,4)를 지나므로 f(1)=4, f(4)=1이다. 따라서 f(x)=−x+5이고, 이 직선은 y=x에 대칭이므로 f와 f⁻¹의 그래프가 일치한다. 두 대응점 (1,4), (4,1)을 표시한다.",
+    "solutionImageCaption": "두 그래프가 모두 (1,4)를 지나므로 f(1)=4, f(4)=1이다. 따라서 f(x)=−x+5이고, 이 직선은 y=x에 대칭이므로 f와 f⁻¹의 그래프가 일치한다. 두 대응점 (1,4), (4,1)을 표시한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -741,7 +749,11 @@ window.questionBank = [
     "templateKey": "TPL_TWO_SET_INCLUSION_EXCLUSION",
     "rpmPrimaryRecordId": "H1-RPM-238",
     "sourceQid": 17,
-    "variationType": "STRICT_VARIANT"
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_유사3/q17-solution.svg",
+    "solutionImageAlt": "A∩B의 원소 합이 10이면 k는 21의 배수이거나 30의 배수이므로 7∈C, A∩C={7}이다. 따라서 11≤n(A∪C)≤13은 56≤k≤76을 주고, 그 범위에서 가능한 값은 60과 63뿐이다.",
+    "solutionImageCaption": "A∩B의 원소 합이 10이면 k는 21의 배수이거나 30의 배수이므로 7∈C, A∩C={7}이다. 따라서 11≤n(A∪C)≤13은 56≤k≤76을 주고, 그 범위에서 가능한 값은 60과 63뿐이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

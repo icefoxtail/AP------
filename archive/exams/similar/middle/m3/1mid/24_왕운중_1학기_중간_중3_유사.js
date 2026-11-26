@@ -225,7 +225,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_왕운중_1학기_중간_중3_유사/q8-solution.svg",
+    "solutionImageAlt": "AB=2, BC=3이므로 반지름 AC=√13이다. 중심 A=−2에서 좌우로 √13만큼 떨어진 Q=−2−√13, P=−2+√13을 호로 나타낸다.",
+    "solutionImageCaption": "AB=2, BC=3이므로 반지름 AC=√13이다. 중심 A=−2에서 좌우로 √13만큼 떨어진 Q=−2−√13, P=−2+√13을 호로 나타낸다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,

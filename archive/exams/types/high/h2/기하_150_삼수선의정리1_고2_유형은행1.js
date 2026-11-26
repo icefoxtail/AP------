@@ -43,7 +43,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_150_삼수선의정리1_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "평면 α 위 AB, P의 수선의 발 O와 O의 수선의 발 H; PO=3·OH=4·AH=2√6",
+    "imageCaption": "평면 α 위 AB, P의 수선의 발 O와 O의 수선의 발 H; PO=3·OH=4·AH=2√6",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -87,7 +91,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_150_삼수선의정리1_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "평면 α의 AB, 수선 PO=4, PA=6√2, AH=6; 구하는 OH는 미표시",
+    "imageCaption": "평면 α의 AB, 수선 PO=4, PA=6√2, AH=6; 구하는 OH는 미표시",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -131,7 +139,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_150_삼수선의정리1_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "평면 α의 직선 l 위 A,H와 수선 O,P; PA=17·OH=9·AH=8",
+    "imageCaption": "평면 α의 직선 l 위 A,H와 수선 O,P; PA=17·OH=9·AH=8",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -175,7 +187,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_150_삼수선의정리1_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "평면 α의 AB, 수선 O,H,P; AP=10·AH=8·OH=3",
+    "imageCaption": "평면 α의 AB, 수선 O,H,P; AP=10·AH=8·OH=3",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -219,7 +235,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_150_삼수선의정리1_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "평면 α의 l 위 A,M, 바깥점 P와 발 H; AM=4·AP=9·PH=7",
+    "imageCaption": "평면 α의 l 위 A,M, 바깥점 P와 발 H; AM=4·AP=9·PH=7",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -264,7 +284,11 @@ window.questionBank = [
       "CC_TRIANGLE_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_150_삼수선의정리1_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "평면 α 위 AB와 BH가 같고 P는 α 밖; ∠PBA 직각, PH=1·PA=7",
+    "imageCaption": "평면 α 위 AB와 BH가 같고 P는 α 밖; ∠PBA 직각, PH=1·PA=7",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -309,6 +333,10 @@ window.questionBank = [
       "CC_TRIANGLE_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_150_삼수선의정리1_고2_유형은행1/q7-problem.svg",
+    "imageAlt": "평면 α의 삼수선 PO·OH, OH=2 및 ∠PHO=45°, ∠PAO=30°",
+    "imageCaption": "평면 α의 삼수선 PO·OH, OH=2 및 ∠PHO=45°, ∠PAO=30°",
+    "imageSize": "full"
   }
 ];

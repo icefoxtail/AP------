@@ -44,7 +44,11 @@ window.questionBank = [
       "CC_RIGHT_TRIANGLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_154_삼수선의정리의활용-서로직교하는세선분_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "가로 2·세로 4·높이 2 직육면체의 C에서 HF로 내린 수선",
+    "imageCaption": "가로 2·세로 4·높이 2 직육면체의 C에서 HF로 내린 수선",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -89,7 +93,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_154_삼수선의정리의활용-서로직교하는세선분_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "3×2×2 직육면체 안 삼각형 CHF와 수선 CM",
+    "imageCaption": "3×2×2 직육면체 안 삼각형 CHF와 수선 CM",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -134,7 +142,11 @@ window.questionBank = [
       "CC_RIGHT_TRIANGLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_154_삼수선의정리의활용-서로직교하는세선분_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "밑면 가로 √5·세로 2·높이 2인 직육면체의 삼각형 DEG",
+    "imageCaption": "밑면 가로 √5·세로 2·높이 2인 직육면체의 삼각형 DEG",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -224,7 +236,11 @@ window.questionBank = [
       "CC_TRIANGLE_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_154_삼수선의정리의활용-서로직교하는세선분_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "모서리 6 정육면체에서 BF 중점 M과 FG의 1:2 내분점 N",
+    "imageCaption": "모서리 6 정육면체에서 BF 중점 M과 FG의 1:2 내분점 N",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -269,7 +285,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_154_삼수선의정리의활용-서로직교하는세선분_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "2×2×1 직육면체의 밑면 수선 EP와 음영 삼각형 DEP",
+    "imageCaption": "2×2×1 직육면체의 밑면 수선 EP와 음영 삼각형 DEP",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -359,7 +379,11 @@ window.questionBank = [
       "CC_MIDPOINT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_154_삼수선의정리의활용-서로직교하는세선분_고2_유형은행1/q8-problem.svg",
+    "imageAlt": "모서리 4 정육면체의 EH·HG 중점과 Q에서 DP로 내린 수선",
+    "imageCaption": "모서리 4 정육면체의 EH·HG 중점과 Q에서 DP로 내린 수선",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -404,7 +428,11 @@ window.questionBank = [
       "CC_MIDPOINT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_154_삼수선의정리의활용-서로직교하는세선분_고2_유형은행1/q9-problem.svg",
+    "imageAlt": "모서리 4 정육면체에서 FG 중점 M과 두 수선 AI·EI",
+    "imageCaption": "모서리 4 정육면체에서 FG 중점 M과 두 수선 AI·EI",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -449,6 +477,10 @@ window.questionBank = [
       "CC_MIDPOINT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_154_삼수선의정리의활용-서로직교하는세선분_고2_유형은행1/q10-problem.svg",
+    "imageAlt": "모서리 10 정육면체에서 AB 중점 L·HG 중점 M과 수선 MN",
+    "imageCaption": "모서리 10 정육면체에서 AB 중점 L·HG 중점 M과 수선 MN",
+    "imageSize": "full"
   }
 ];

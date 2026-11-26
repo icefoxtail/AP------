@@ -741,7 +741,11 @@ window.questionBank = [
     "templateKey": "TPL_TWO_SET_INCLUSION_EXCLUSION",
     "rpmPrimaryRecordId": "H1-RPM-238",
     "sourceQid": 17,
-    "variationType": "STRICT_VARIANT"
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_유사2/q17-solution.svg",
+    "solutionImageAlt": "A∩C=∅이므로 12≤n(A∪C)≤15는 32≤k≤47을 준다. 이 범위에서 A∩B의 원소 합이 12인 두 경우를 검사하면 k=35 또는 42이다.",
+    "solutionImageCaption": "A∩C=∅이므로 12≤n(A∪C)≤15는 32≤k≤47을 준다. 이 범위에서 A∩B의 원소 합이 12인 두 경우를 검사하면 k=35 또는 42이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

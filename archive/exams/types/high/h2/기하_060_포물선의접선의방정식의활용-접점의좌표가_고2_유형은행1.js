@@ -89,7 +89,11 @@ window.questionBank = [
       "CC_TRIANGLE_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_060_포물선의접선의방정식의활용-접점의좌표가_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "포물선 y²=12x, 접점 P(3,6), 초점 F(3,0), 접선의 x축 교점 A(-3,0)",
+    "imageCaption": "포물선 y²=12x, 접점 P(3,6), 초점 F(3,0), 접선의 x축 교점 A(-3,0)",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -444,7 +448,11 @@ window.questionBank = [
       "CC_X_INTERCEPT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_060_포물선의접선의방정식의활용-접점의좌표가_고2_유형은행1/q10-problem.svg",
+    "imageAlt": "접점 A(8,8)과 접선 l, 준선 x=-2, 직각삼각형 BCD",
+    "imageCaption": "접점 A(8,8)과 접선 l, 준선 x=-2, 직각삼각형 BCD",
+    "imageSize": "full"
   },
   {
     "id": 11,
@@ -491,6 +499,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_060_포물선의접선의방정식의활용-접점의좌표가_고2_유형은행1/q11-problem.svg",
+    "imageAlt": "포물선 y²=2ax 위 접점 P의 접선 PT·법선 PN과 주어진 중점 M(4,0)",
+    "imageCaption": "포물선 y²=2ax 위 접점 P의 접선 PT·법선 PN과 주어진 중점 M(4,0)",
+    "imageSize": "full"
   }
 ];

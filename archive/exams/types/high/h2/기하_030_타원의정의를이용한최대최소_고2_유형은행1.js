@@ -126,6 +126,10 @@ window.questionBank = [
       "CC_RECTANGLE_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_030_타원의정의를이용한최대최소_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "장축 40·단축 24인 타원에 내접한 축과 평행한 직사각형",
+    "imageCaption": "장축 40·단축 24인 타원에 내접한 축과 평행한 직사각형",
+    "imageSize": "full"
   }
 ];

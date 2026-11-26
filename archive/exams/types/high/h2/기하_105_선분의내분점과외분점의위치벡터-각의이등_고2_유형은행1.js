@@ -40,7 +40,11 @@ window.questionBank = [
     "templateKey": "TPL_GEO_PLANE_VECTOR_POSITION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_105_선분의내분점과외분점의위치벡터-각의이등_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "두 변 길이 5·3인 삼각형의 A각 이등분선 AD",
+    "imageCaption": "두 변 길이 5·3인 삼각형의 A각 이등분선 AD",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -83,7 +87,11 @@ window.questionBank = [
       "CC_TRIANGLE_INCENTER"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_105_선분의내분점과외분점의위치벡터-각의이등_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "내접원의 중심 I를 지나는 삼각형 ABC의 A각 이등분선",
+    "imageCaption": "내접원의 중심 I를 지나는 삼각형 ABC의 A각 이등분선",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -126,6 +134,10 @@ window.questionBank = [
       "CC_TRIANGLE_INCENTER"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_105_선분의내분점과외분점의위치벡터-각의이등_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "세 변 7·8·5의 삼각형에 내접하는 원과 벡터 AI",
+    "imageCaption": "세 변 7·8·5의 삼각형에 내접하는 원과 벡터 AI",
+    "imageSize": "full"
   }
 ];

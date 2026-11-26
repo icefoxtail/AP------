@@ -44,7 +44,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_175_기울어진그릇의지면과이루는각크기를이용한_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "기하 175 유형 q01: 반지름 √3 높이 √6 원뿔 기본 형태. α 위 기울기와 빛/그림자 누락.",
+    "imageCaption": "기하 175 유형 q01: 반지름 √3 높이 √6 원뿔 기본 형태. α 위 기울기와 빛/그림자 누락.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -89,7 +93,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_175_기울어진그릇의지면과이루는각크기를이용한_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "기하 175 유형 q02: 반지름 3 높이 4 원뿔의 기본 형태. α·기울기·밑면 그림자는 미표시.",
+    "imageCaption": "기하 175 유형 q02: 반지름 3 높이 4 원뿔의 기본 형태. α·기울기·밑면 그림자는 미표시.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -134,7 +142,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_175_기울어진그릇의지면과이루는각크기를이용한_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "기하 175 유형 q03: 반지름 2 높이 3√2 원기둥 기본 형태. 기울어진 축과 그림자 미표시.",
+    "imageCaption": "기하 175 유형 q03: 반지름 2 높이 3√2 원기둥 기본 형태. 기울어진 축과 그림자 미표시.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -180,7 +192,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_NATURAL_NUMBER"
     ],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_175_기울어진그릇의지면과이루는각크기를이용한_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "기하 175 유형 q04: 반지름 3인 반구. α와의 45도 관계 및 투영 영역은 미표시.",
+    "imageCaption": "기하 175 유형 q04: 반지름 3인 반구. α와의 45도 관계 및 투영 영역은 미표시.",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -225,6 +241,10 @@ window.questionBank = [
       "CC_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "DEEP_COMPOSITE"
+    "integrationPattern": "DEEP_COMPOSITE",
+    "image": "assets/images/기하_175_기울어진그릇의지면과이루는각크기를이용한_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "기하 175 유형 q05: 두 원판 중심축의 개략 보조선만 표시. 원판과 정사영 타원은 아직 지원하지 않음.",
+    "imageCaption": "기하 175 유형 q05: 두 원판 중심축의 개략 보조선만 표시. 원판과 정사영 타원은 아직 지원하지 않음.",
+    "imageSize": "full"
   }
 ];

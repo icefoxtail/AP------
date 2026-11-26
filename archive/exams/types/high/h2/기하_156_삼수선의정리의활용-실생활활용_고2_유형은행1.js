@@ -44,7 +44,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_156_삼수선의정리의활용-실생활활용_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "절벽 등대와 지면의 직각삼각형",
+    "imageCaption": "절벽 등대와 지면의 직각삼각형",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -89,7 +93,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_156_삼수선의정리의활용-실생활활용_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "송전탑과 도로의 수직 거리",
+    "imageCaption": "송전탑과 도로의 수직 거리",
+    "imageSize": "full"
   },
   {
     "id": 3,

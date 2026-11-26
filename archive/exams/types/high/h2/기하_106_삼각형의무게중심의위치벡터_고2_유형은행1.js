@@ -81,7 +81,11 @@ window.questionBank = [
     "templateKey": "TPL_GEO_PLANE_VECTOR_POSITION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_106_삼각형의무게중심의위치벡터_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "삼각형 ABC와 무게중심 G를 향하는 벡터 BG",
+    "imageCaption": "삼각형 ABC와 무게중심 G를 향하는 벡터 BG",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -125,7 +129,11 @@ window.questionBank = [
       "CC_LINE_INTERSECTION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_106_삼각형의무게중심의위치벡터_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "삼각형 OAB의 두 중선 AN·BM과 교점 G",
+    "imageCaption": "삼각형 OAB의 두 중선 AN·BM과 교점 G",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -168,7 +176,11 @@ window.questionBank = [
       "CC_MIDPOINT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_106_삼각형의무게중심의위치벡터_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "삼각형 ABC의 무게중심 G에서 두 중점 M·N으로 향하는 벡터",
+    "imageCaption": "삼각형 ABC의 무게중심 G에서 두 중점 M·N으로 향하는 벡터",
+    "imageSize": "full"
   },
   {
     "id": 5,

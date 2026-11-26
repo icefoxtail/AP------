@@ -181,7 +181,11 @@ window.questionBank = [
     "rpmPrimaryRecordId": "M1-RPM-097",
     "sourceQid": 4,
     "variationType": "NUMERIC",
-    "problemPlanRef": "archive/exams/similar/middle/m1/2final/23_연향중_2학기_기말_중1_유사_plans/q04-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/middle/m1/2final/23_연향중_2학기_기말_중1_유사_plans/q04-problem.plan.json",
+    "image": "assets/images/23_연향중_2학기_기말_중1_유사/q4-problem.svg",
+    "imageAlt": "원기둥(r=5, h=8) 위에 반구(r=5)가 붙은 회전체의 축단면",
+    "imageCaption": "원기둥(r=5, h=8) 위에 반구(r=5)가 붙은 회전체의 축단면",
+    "imageSize": "full"
   },
   {
     "id": 5,

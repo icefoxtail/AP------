@@ -43,7 +43,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_171_정사영을이용하여타원의넓이구하기_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "기하 유형은행 171번 유형 1번: 반지름 5인 원기둥의 기본 형태. 45도 절단 타원과 각 호 미표시.",
+    "imageCaption": "기하 유형은행 171번 유형 1번: 반지름 5인 원기둥의 기본 형태. 45도 절단 타원과 각 호 미표시.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -87,7 +91,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_171_정사영을이용하여타원의넓이구하기_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "기하 유형은행 171번 유형 2번: 단축 길이 6인 타원의 원기둥 기본 모형. 30도 평면 알파와 채운 단면은 후속.",
+    "imageCaption": "기하 유형은행 171번 유형 2번: 단축 길이 6인 타원의 원기둥 기본 모형. 30도 평면 알파와 채운 단면은 후속.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -132,7 +140,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_171_정사영을이용하여타원의넓이구하기_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "기하 유형은행 171번 유형 3번: 밑면 반지름 6인 원기둥만 표현. 절단 타원의 두 초점과 θ는 미표시.",
+    "imageCaption": "기하 유형은행 171번 유형 3번: 밑면 반지름 6인 원기둥만 표현. 절단 타원의 두 초점과 θ는 미표시.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -176,7 +188,11 @@ window.questionBank = [
       "CC_ELLIPSE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_171_정사영을이용하여타원의넓이구하기_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "기하 유형은행 171번 유형 4번: 반지름 8인 원기둥 기본 형태. A B A′ B′ 및 정사영 수선은 아직 표시되지 않음.",
+    "imageCaption": "기하 유형은행 171번 유형 4번: 반지름 8인 원기둥 기본 형태. A B A′ B′ 및 정사영 수선은 아직 표시되지 않음.",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -222,6 +238,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_UPPER_BOUND"
     ],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "CASE_BRANCH",
+    "image": "assets/images/기하_171_정사영을이용하여타원의넓이구하기_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "기하 유형은행 171번 유형 5번: 정사영 면적에서 반지름이 정해진 원기둥 모형. 두 절단 타원과 넓이 S1,S2는 미표시.",
+    "imageCaption": "기하 유형은행 171번 유형 5번: 정사영 면적에서 반지름이 정해진 원기둥 모형. 두 절단 타원과 넓이 S1,S2는 미표시.",
+    "imageSize": "full"
   }
 ];

@@ -671,6 +671,10 @@ window.questionBank = [
       "CC_DERIVATIVE_VALUE_EVALUATION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_165_이계도함수의항등식_고2_유형은행1/q17-problem.svg",
+    "imageAlt": "f와 g의 두 꺾은선 그래프를 공통 좌표축에 그려 곱·몫·합성함수의 도함수 읽기를 돕는다.",
+    "imageCaption": "f와 g의 두 꺾은선 그래프를 공통 좌표축에 그려 곱·몫·합성함수의 도함수 읽기를 돕는다.",
+    "imageSize": "full"
   }
 ];

@@ -39,7 +39,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "REINTERPRETATION"
+    "integrationPattern": "REINTERPRETATION",
+    "image": "assets/images/미적분II_171_기울기가주어질때접선의방정식의활용_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "로그 곡선 y=ln x를 보인다. 원문 직선 AB와 삼각형 ABP는 엔진 자동 창과 초월 좌표 때문에 미완성이다.",
+    "imageCaption": "로그 곡선 y=ln x를 보인다. 원문 직선 AB와 삼각형 ABP는 엔진 자동 창과 초월 좌표 때문에 미완성이다.",
+    "imageSize": "medium"
   },
   {
     "id": 2,

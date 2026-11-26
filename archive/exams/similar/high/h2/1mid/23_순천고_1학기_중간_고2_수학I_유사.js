@@ -88,7 +88,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-038",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/23_순천고_1학기_중간_고2_수학I_유사/q2-solution.svg",
+    "solutionImageAlt": "y=3^(x−2)+4는 y=3^x를 오른쪽 2, 위쪽 4만큼 이동한 증가곡선이며 y=4는 닿지 않는 수평 점근선이다.",
+    "solutionImageCaption": "y=3^(x−2)+4는 y=3^x를 오른쪽 2, 위쪽 4만큼 이동한 증가곡선이며 y=4는 닿지 않는 수평 점근선이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -132,7 +136,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-003",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "image": "assets/images/23_순천고_1학기_중간_고2_수학I_유사/q3-problem.svg",
+    "imageAlt": "직선 y=x의 점 (1/2,1/2)을 지나는 수평선과 감소 로그곡선을 그린다. 교점의 x좌표 a와 그 값은 문제 그림에 표기하지 않는다.",
+    "imageCaption": "직선 y=x의 점 (1/2,1/2)을 지나는 수평선과 감소 로그곡선을 그린다. 교점의 x좌표 a와 그 값은 문제 그림에 표기하지 않는다.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -220,7 +228,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-005",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/23_순천고_1학기_중간_고2_수학I_유사/q5-solution.svg",
+    "solutionImageAlt": "−510°에 360°를 두 번 더하면 210°이고, 동경 OP는 왼쪽 아래 제3사분면에 있다. 각 표식은 면 채움이 없는 호다.",
+    "solutionImageCaption": "−510°에 360°를 두 번 더하면 210°이고, 동경 OP는 왼쪽 아래 제3사분면에 있다. 각 표식은 면 채움이 없는 호다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -484,7 +496,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-011",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/23_순천고_1학기_중간_고2_수학I_유사/q11-solution.svg",
+    "solutionImageAlt": "t=log x로 바꾸면 원래 함수 y=x^(6−log x)/100의 상용로그 지수는 q(t)=−t²+6t−2이다. 정점 (3,7)은 q의 최대이고 실제 y는 10^q이다. 이것은 원래 y(x)곡선이 아니다.",
+    "solutionImageCaption": "t=log x로 바꾸면 원래 함수 y=x^(6−log x)/100의 상용로그 지수는 q(t)=−t²+6t−2이다. 정점 (3,7)은 q의 최대이고 실제 y는 10^q이다. 이것은 원래 y(x)곡선이 아니다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -660,7 +676,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-016",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/23_순천고_1학기_중간_고2_수학I_유사/q15-solution.svg",
+    "solutionImageAlt": "가능한 해설 예 a=6에서 t=|x|≥0, F(t)=−t²+6t+5이다. F(t)=3은 양의 교점 하나, F(t)=9는 두 개, F(t)=27은 교점이 없어 x는 ±t로 모두 6개다. 이는 허용되는 a 중 하나의 예시이지 모든 a를 하나의 곡선으로 대체한 것이 아니다.",
+    "solutionImageCaption": "가능한 해설 예 a=6에서 t=|x|≥0, F(t)=−t²+6t+5이다. F(t)=3은 양의 교점 하나, F(t)=9는 두 개, F(t)=27은 교점이 없어 x는 ±t로 모두 6개다. 이는 허용되는 a 중 하나의 예시이지 모든 a를 하나의 곡선으로 대체한 것이 아니다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -748,7 +768,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-016",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "image": "assets/images/23_순천고_1학기_중간_고2_수학I_유사/q17-problem.svg",
+    "imageAlt": "가로 변수 u=t/5700은 지난 반감기 수이다. 세로축은 잔존 비율 (1/2)^u이고 수평선 1/5는 주어진 20%를 뜻한다. 구하는 실제 연수 t와 교차 u값은 문제 그림에 적지 않는다.",
+    "imageCaption": "가로 변수 u=t/5700은 지난 반감기 수이다. 세로축은 잔존 비율 (1/2)^u이고 수평선 1/5는 주어진 20%를 뜻한다. 구하는 실제 연수 t와 교차 u값은 문제 그림에 적지 않는다.",
+    "imageSize": "medium"
   },
   {
     "id": 18,
@@ -836,7 +860,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-023",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "image": "assets/images/23_순천고_1학기_중간_고2_수학I_유사/q19-problem.svg",
+    "imageAlt": "n≥5의 대표 사례 n=5로, C=(5,5), P=(4,6)은 중심 C 반지름 √2인 원 위의 점이다. O 중심 반지름 √2인 원에 P에서 접선을 그어 A에 닿게 하고 OA⊥AP를 표시한다. P는 최대·최소를 만드는 특수점이 아닌 예시이며 f(n)이나 합의 정답은 표시하지 않는다.",
+    "imageCaption": "n≥5의 대표 사례 n=5로, C=(5,5), P=(4,6)은 중심 C 반지름 √2인 원 위의 점이다. O 중심 반지름 √2인 원에 P에서 접선을 그어 A에 닿게 하고 OA⊥AP를 표시한다. P는 최대·최소를 만드는 특수점이 아닌 예시이며 f(n)이나 합의 정답은 표시하지 않는다.",
+    "imageSize": "full"
   },
   {
     "id": 20,
@@ -950,6 +978,10 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-028",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "image": "assets/images/23_순천고_1학기_중간_고2_수학I_유사/q22-problem.svg",
+    "imageAlt": "제1사분면의 곡선 y=5/x (x>0) 위 대표점 P(1,5)와 원점 O를 잇는 동경을 보인다. P는 임의의 예시점이고 최댓값 달성점·답은 문제 그림에 표시하지 않는다.",
+    "imageCaption": "제1사분면의 곡선 y=5/x (x>0) 위 대표점 P(1,5)와 원점 O를 잇는 동경을 보인다. P는 임의의 예시점이고 최댓값 달성점·답은 문제 그림에 표시하지 않는다.",
+    "imageSize": "medium"
   }
 ];

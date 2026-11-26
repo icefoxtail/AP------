@@ -136,7 +136,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_INEQUALITY_CONSTRAINT"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_164_두평면의교선이주어질때-두평면의이면각을_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "AE·DH 위 2:1 내분점 I,J와 평면 IFGJ, 면 BFGC",
+    "imageCaption": "AE·DH 위 2:1 내분점 I,J와 평면 IFGJ, 면 BFGC",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -226,7 +230,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_164_두평면의교선이주어질때-두평면의이면각을_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "D에서 세 모서리가 서로 직교하는 사면체 ABCD",
+    "imageCaption": "D에서 세 모서리가 서로 직교하는 사면체 ABCD",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -271,7 +279,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_164_두평면의교선이주어질때-두평면의이면각을_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "정육면체의 밑면 삼각형 FGH와 CG 중점 I의 삼각형 FHI",
+    "imageCaption": "정육면체의 밑면 삼각형 FGH와 CG 중점 I의 삼각형 FHI",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -316,7 +328,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_164_두평면의교선이주어질때-두평면의이면각을_고2_유형은행1/q7-problem.svg",
+    "imageAlt": "밑변 4, 높이 6 직육면체에서 CP:PG=1:2인 P와 삼각형 PFH",
+    "imageCaption": "밑변 4, 높이 6 직육면체에서 CP:PG=1:2인 P와 삼각형 PFH",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -406,7 +422,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_164_두평면의교선이주어질때-두평면의이면각을_고2_유형은행1/q9-problem.svg",
+    "imageAlt": "정사각뿔 O-ABCD의 중점 P,Q와 두 삼각형 OPQ·OCD",
+    "imageCaption": "정사각뿔 O-ABCD의 중점 P,Q와 두 삼각형 OPQ·OCD",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -451,6 +471,10 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "DEEP_COMPOSITE"
+    "integrationPattern": "DEEP_COMPOSITE",
+    "image": "assets/images/기하_164_두평면의교선이주어질때-두평면의이면각을_고2_유형은행1/q10-problem.svg",
+    "imageAlt": "직육면체의 AD·CD 중점 M,N과 평면 BNM·FNM",
+    "imageCaption": "직육면체의 AD·CD 중점 M,N과 평면 BNM·FNM",
+    "imageSize": "full"
   }
 ];

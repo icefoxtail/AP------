@@ -90,7 +90,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_163_정사영의넓이1_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "정삼각형의 넓이 정사영",
+    "imageCaption": "정삼각형의 넓이 정사영",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -317,7 +321,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_163_정사영의넓이1_고2_유형은행1/q7-problem.svg",
+    "imageAlt": "정사각형의 마름모 정사영",
+    "imageCaption": "정사각형의 마름모 정사영",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -362,7 +370,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_163_정사영의넓이1_고2_유형은행1/q8-problem.svg",
+    "imageAlt": "정육각뿔 옆면의 이면각",
+    "imageCaption": "정육각뿔 옆면의 이면각",
+    "imageSize": "full"
   },
   {
     "id": 9,

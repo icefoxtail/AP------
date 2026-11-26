@@ -44,7 +44,11 @@ window.questionBank = [
       "CC_TRAPEZOIDAL_AREA_PROPERTY"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_009_포물선의정의의활용-초점을지나는직선이주_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "초점 현 PQ=17과 준선 l에 내린 두 수선 PH,QH′가 이루는 넓이 102의 사다리꼴",
+    "imageCaption": "초점 현 PQ=17과 준선 l에 내린 두 수선 PH,QH′가 이루는 넓이 102의 사다리꼴",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -92,7 +96,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_009_포물선의정의의활용-초점을지나는직선이주_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "x²=4py(p>0)의 초점 현 AB에서 준선 l로 내린 수선 AP=12, BQ=3",
+    "imageCaption": "x²=4py(p>0)의 초점 현 AB에서 준선 l로 내린 수선 AP=12, BQ=3",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -229,6 +237,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_INTEGER"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_009_포물선의정의의활용-초점을지나는직선이주_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "원점 꼭짓점 포물선의 초점 F를 지나는 기울기 1인 직선과 AF를 대각선으로 하는 변 길이 4의 축평행 정사각형",
+    "imageCaption": "원점 꼭짓점 포물선의 초점 F를 지나는 기울기 1인 직선과 AF를 대각선으로 하는 변 길이 4의 축평행 정사각형",
+    "imageSize": "full"
   }
 ];

@@ -350,7 +350,11 @@ window.questionBank = [
     "image": "assets/images/26_매산고_1학기_중간_고2_기하/q8.png",
     "imageAlt": "꼭짓점 A와 정사각형 밑면 BCDE가 있는 정사각뿔. 뒤쪽 꼭짓점 E에 이어지는 숨은 모서리는 점선이다.",
     "imageSize": "full",
-    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사2_plans/q08-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사2_plans/q08-solution.plan.json",
+    "solutionImage": "assets/images/26_매산고_1학기_중간_고2_기하_유사2/q8-solution.svg",
+    "solutionImageAlt": "BC 중점 M과 밑면 중심 O의 단면 AMO에서 이면각을 확인한다. 모서리 길이 4는 비율을 보여 주기 위한 대표값이다.",
+    "solutionImageCaption": "BC 중점 M과 밑면 중심 O의 단면 AMO에서 이면각을 확인한다. 모서리 길이 4는 비율을 보여 주기 위한 대표값이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -779,7 +783,11 @@ window.questionBank = [
     "image": "assets/images/26_매산고_1학기_중간_고2_기하/q18.png",
     "imageAlt": "정육면체에서 L은 모서리 AB 위에, M은 모서리 HG 위에 있다. M에서 선분 LD에 내린 수선이 N에서 직각으로 만난다.",
     "imageSize": "full",
-    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사2_plans/q18-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사2_plans/q18-solution.plan.json",
+    "solutionImage": "assets/images/26_매산고_1학기_중간_고2_기하_유사2/q18-solution.svg",
+    "solutionImageAlt": "한 모서리 6, AL:LB=2:1, M은 HG의 중점, MN은 DL에 수직인 높이이다.",
+    "solutionImageCaption": "한 모서리 6, AL:LB=2:1, M은 HG의 중점, MN은 DL에 수직인 높이이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

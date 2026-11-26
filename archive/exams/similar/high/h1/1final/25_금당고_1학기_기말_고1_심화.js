@@ -315,7 +315,12 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
     "subUnit": "quadratic equation",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_금당고_1학기_기말_고1_심화/q11-solution.svg",
+    "solutionImageAlt": "허용되는 정수 p 중 p=0인 대표 사례에서 -1과 3에서는 양수, 축 x=1에서는 음수이다.",
+    "solutionImageCaption": "허용되는 정수 p 중 p=0인 대표 사례에서 -1과 3에서는 양수, 축 x=1에서는 음수이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   },
   {
     "id": 12,
@@ -501,7 +506,11 @@ window.questionBank = [
     "solutionImage": "assets/images/25_금당고_1학기_기말_고1_심화/q17-solution.svg",
     "solutionImageAlt": "해설 그림: 원의 마주 보는 두 점을 지름으로 잡고 다른 한 점을 연결한 직각삼각형의 예이다. 같은 방법을 다른 지름에 적용한다.",
     "solutionImageCaption": "원의 마주 보는 두 점을 지름으로 잡고 다른 한 점을 연결한 직각삼각형의 예이다. 같은 방법을 다른 지름에 적용한다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "image": "assets/images/25_금당고_1학기_기말_고1_심화/q17-problem.svg",
+    "imageAlt": "원둘레에 같은 간격으로 놓인 이름 없는 여덟 점",
+    "imageCaption": "원둘레에 같은 간격으로 놓인 이름 없는 여덟 점",
+    "imageSize": "full"
   },
   {
     "id": 18,

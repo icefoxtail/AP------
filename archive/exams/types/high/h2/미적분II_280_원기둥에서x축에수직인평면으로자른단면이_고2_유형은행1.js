@@ -38,7 +38,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_280_원기둥에서x축에수직인평면으로자른단면이_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "원기둥의 반지름 2, 높이 5만 정확히 나타낸 부분 그림. 밑면 60° 경사 절단과 쐐기는 엔진 보류.",
+    "imageCaption": "원기둥의 반지름 2, 높이 5만 정확히 나타낸 부분 그림. 밑면 60° 경사 절단과 쐐기는 엔진 보류.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -79,7 +83,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_280_원기둥에서x축에수직인평면으로자른단면이_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "예: a=1 정규화로 반지름 3a, 높이 3a 비율의 원기둥만 표시; 30° 경사 절단은 보류.",
+    "imageCaption": "예: a=1 정규화로 반지름 3a, 높이 3a 비율의 원기둥만 표시; 30° 경사 절단은 보류.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -118,7 +126,11 @@ window.questionBank = [
       "CC_LINE_SLOPE_TANGENT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_280_원기둥에서x축에수직인평면으로자른단면이_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "예: r=2로 반지름 r, 높이 3r의 원기둥 형상만 표시. 기울인 수면과 남은 물은 보류.",
+    "imageCaption": "예: r=2로 반지름 r, 높이 3r의 원기둥 형상만 표시. 기울인 수면과 남은 물은 보류.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -157,7 +169,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_280_원기둥에서x축에수직인평면으로자른단면이_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "반지름 3, 높이 3√3의 근사 투영 원기둥. 60° 기울임 수면과 남은 물은 미지원.",
+    "imageCaption": "반지름 3, 높이 3√3의 근사 투영 원기둥. 60° 기울임 수면과 남은 물은 미지원.",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -195,6 +211,10 @@ window.questionBank = [
       "CC_DEFINITE_INTEGRAL"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_280_원기둥에서x축에수직인평면으로자른단면이_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "반지름 4cm의 위가 열린 반구 그릇만 정확히 표시. 30° 기울임·비스듬한 수면·남은 물은 미지원.",
+    "imageCaption": "반지름 4cm의 위가 열린 반구 그릇만 정확히 표시. 30° 기울임·비스듬한 수면·남은 물은 미지원.",
+    "imageSize": "full"
   }
 ];

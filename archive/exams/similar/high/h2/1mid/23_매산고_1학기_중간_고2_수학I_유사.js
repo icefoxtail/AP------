@@ -440,7 +440,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-010",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/23_매산고_1학기_중간_고2_수학I_유사/q10-solution.svg",
+    "solutionImageAlt": "증가 지수함수의 닫힌 구간 왼쪽 끝 (-1,−3/4)이 최소, 오른쪽 끝 (2,1)이 최대이므로 8(M+m)=2이다.",
+    "solutionImageCaption": "증가 지수함수의 닫힌 구간 왼쪽 끝 (-1,−3/4)이 최소, 오른쪽 끝 (2,1)이 최대이므로 8(M+m)=2이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,

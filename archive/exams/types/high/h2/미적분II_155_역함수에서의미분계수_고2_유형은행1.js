@@ -79,7 +79,11 @@ window.questionBank = [
       "COND_STRICT_MONOTONE_VALUES",
       "COND_FUNCTION_VALUE_CONSTRAINT"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_155_역함수에서의미분계수_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "주어진 세 점을 지나는 미분가능한 증가·완만한 곡선의 대표 개형과 y=x 및 점선 투영을 표시한다.",
+    "imageCaption": "주어진 세 점을 지나는 미분가능한 증가·완만한 곡선의 대표 개형과 y=x 및 점선 투영을 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -119,7 +123,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_STRICT_MONOTONE_VALUES"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_155_역함수에서의미분계수_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "증가하고 위로 굽는 대표 곡선 f가 (3,2),(5,3)을 지나며 각 점을 좌표축에 점선 투영한다.",
+    "imageCaption": "증가하고 위로 굽는 대표 곡선 f가 (3,2),(5,3)을 지나며 각 점을 좌표축에 점선 투영한다.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -160,6 +168,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_FUNCTION_VALUE_CONSTRAINT"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_155_역함수에서의미분계수_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "감소하는 양의 기울기를 가진 증가 곡선 f 위 (2,3),(3,5),(5,7), 대칭축 y=x와 (3,5) 투영선을 표시한다.",
+    "imageCaption": "감소하는 양의 기울기를 가진 증가 곡선 f 위 (2,3),(3,5),(5,7), 대칭축 y=x와 (3,5) 투영선을 표시한다.",
+    "imageSize": "full"
   }
 ];

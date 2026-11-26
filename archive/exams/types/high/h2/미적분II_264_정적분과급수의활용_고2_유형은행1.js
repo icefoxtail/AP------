@@ -77,7 +77,11 @@ window.questionBank = [
       "CC_SIMILARITY_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_264_정적분과급수의활용_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "직각삼각형 ABC에 n=4일 때 세 평행선 B₁C₁, B₂C₂, B₃C₃를 넣은 대표 그림.",
+    "imageCaption": "직각삼각형 ABC에 n=4일 때 세 평행선 B₁C₁, B₂C₂, B₃C₃를 넣은 대표 그림.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -158,6 +162,10 @@ window.questionBank = [
       "COND_NATURAL_NUMBER",
       "COND_RESTRICTED_INTERVAL"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_264_정적분과급수의활용_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "y=2eˣ 곡선과 대표 분점 xₖ=3/2의 x축 발을 표시한다. 삼각형의 위쪽 꼭짓점과 색칠은 엔진 공백이다.",
+    "imageCaption": "y=2eˣ 곡선과 대표 분점 xₖ=3/2의 x축 발을 표시한다. 삼각형의 위쪽 꼭짓점과 색칠은 엔진 공백이다.",
+    "imageSize": "medium"
   }
 ];

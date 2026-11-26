@@ -37,7 +37,11 @@ window.questionBank = [
       "CC_CONTINUOUS_FUNCTION_GRAPH_INTERPRETATION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "REINTERPRETATION"
+    "integrationPattern": "REINTERPRETATION",
+    "image": "assets/images/미적분II_185_곡선의오목과볼록_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "도함수 또는 함수의 주어진 다항곡선과 원문에 명시된 특징점을 보인다.",
+    "imageCaption": "도함수 또는 함수의 주어진 다항곡선과 원문에 명시된 특징점을 보인다.",
+    "imageSize": "medium"
   },
   {
     "id": 2,
@@ -76,7 +80,11 @@ window.questionBank = [
       "CC_CRITICAL_POINTS_SIGN_CHANGE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_185_곡선의오목과볼록_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "f(x)=x³-6x²+9x의 극대·변곡·극소점을 표시한다.",
+    "imageCaption": "f(x)=x³-6x²+9x의 극대·변곡·극소점을 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 3,

@@ -42,7 +42,11 @@ window.questionBank = [
       "CC_SLOPE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_067_포물선밖의한점에서그은접선의방정식_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "준선 위의 점 A(-2,3)에서 포물선에 그은 서로 다른 두 접선",
+    "imageCaption": "준선 위의 점 A(-2,3)에서 포물선에 그은 서로 다른 두 접선",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -173,7 +177,11 @@ window.questionBank = [
       "CC_LINE_EQUATION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_067_포물선밖의한점에서그은접선의방정식_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "외부점 P에서 두 접점을 잇는 색칠 삼각형 PAB",
+    "imageCaption": "외부점 P에서 두 접점을 잇는 색칠 삼각형 PAB",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -216,6 +224,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_NATURAL_NUMBER"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_067_포물선밖의한점에서그은접선의방정식_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "n=2인 대표 경우: (n,0)에서 왼쪽 포물선에 그은 상하 대칭 접선",
+    "imageCaption": "n=2인 대표 경우: (n,0)에서 왼쪽 포물선에 그은 상하 대칭 접선",
+    "imageSize": "full"
   }
 ];

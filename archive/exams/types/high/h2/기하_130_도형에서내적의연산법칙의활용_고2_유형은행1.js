@@ -43,7 +43,11 @@ window.questionBank = [
       "CC_INTERNAL_DIVISION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_130_도형에서내적의연산법칙의활용_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "직각삼각형 ABC에서 AB=6, D는 BC를 1:2로 내분하고 AD를 이은 도형",
+    "imageCaption": "직각삼각형 ABC에서 AB=6, D는 BC를 1:2로 내분하고 AD를 이은 도형",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -86,7 +90,11 @@ window.questionBank = [
       "CC_EQUILATERAL_TRIANGLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_130_도형에서내적의연산법칙의활용_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "변이 6인 정삼각형 ABC, B-P-Q-C 순서의 삼등분점과 AP,AQ",
+    "imageCaption": "변이 6인 정삼각형 ABC, B-P-Q-C 순서의 삼등분점과 AP,AQ",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -129,7 +137,11 @@ window.questionBank = [
       "CC_INTERNAL_DIVISION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_130_도형에서내적의연산법칙의활용_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "OA=3, OB=4, AB=3인 삼각형 OAB와 AP:PB=1:2인 P",
+    "imageCaption": "OA=3, OB=4, AB=3인 삼각형 OAB와 AP:PB=1:2인 P",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -173,7 +185,11 @@ window.questionBank = [
       "CC_TRIANGLE_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_130_도형에서내적의연산법칙의활용_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "AB=3, AC=2이고 AD가 ∠BAC를 이등분하는 삼각형 ABC",
+    "imageCaption": "AB=3, AC=2이고 AD가 ∠BAC를 이등분하는 삼각형 ABC",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -217,7 +233,11 @@ window.questionBank = [
       "CC_INTERNAL_DIVISION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_130_도형에서내적의연산법칙의활용_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "AB=2, AD=4인 직사각형의 E(AE:ED=1:3), F(BF:FC=3:1)와 AF·BE",
+    "imageCaption": "AB=2, AD=4인 직사각형의 E(AE:ED=1:3), F(BF:FC=3:1)와 AF·BE",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -261,6 +281,10 @@ window.questionBank = [
       "CC_MIDPOINT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_130_도형에서내적의연산법칙의활용_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "한 변 4인 정삼각형, AB 중점 D 및 AC의 F(1:2)·E(2:1)",
+    "imageCaption": "한 변 4인 정삼각형, AB 중점 D 및 AC의 F(1:2)·E(2:1)",
+    "imageSize": "full"
   }
 ];

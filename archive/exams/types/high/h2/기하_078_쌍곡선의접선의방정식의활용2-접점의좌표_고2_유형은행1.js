@@ -132,7 +132,11 @@ window.questionBank = [
       "CC_TRIANGLE_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_078_쌍곡선의접선의방정식의활용2-접점의좌표_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "쌍곡선의 두 점근선과 접선이 만드는 음영 삼각형 OPQ",
+    "imageCaption": "쌍곡선의 두 점근선과 접선이 만드는 음영 삼각형 OPQ",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -179,6 +183,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_078_쌍곡선의접선의방정식의활용2-접점의좌표_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "한 예: 쌍곡선 위 P에서 그은 접선 l과 점근선이 만드는 OQR",
+    "imageCaption": "한 예: 쌍곡선 위 P에서 그은 접선 l과 점근선이 만드는 OQR",
+    "imageSize": "full"
   }
 ];

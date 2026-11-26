@@ -40,7 +40,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_NEGATIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_202_최대최소의활용넓이_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "원문의 자연지수·자연로그 곡선만 정확히 작도한다. 미지 접점과 보조도형은 capability 대기 중이다.",
+    "imageCaption": "원문의 자연지수·자연로그 곡선만 정확히 작도한다. 미지 접점과 보조도형은 capability 대기 중이다.",
+    "imageSize": "medium"
   },
   {
     "id": 2,
@@ -82,7 +86,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RESTRICTED_INTERVAL"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_202_최대최소의활용넓이_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "원문의 자연지수·자연로그 곡선만 정확히 작도한다. 미지 접점과 보조도형은 capability 대기 중이다.",
+    "imageCaption": "원문의 자연지수·자연로그 곡선만 정확히 작도한다. 미지 접점과 보조도형은 capability 대기 중이다.",
+    "imageSize": "medium"
   },
   {
     "id": 3,
@@ -123,7 +131,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RESTRICTED_INTERVAL"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_202_최대최소의활용넓이_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "원문의 자연지수·자연로그 곡선만 정확히 작도한다. 미지 접점과 보조도형은 capability 대기 중이다.",
+    "imageCaption": "원문의 자연지수·자연로그 곡선만 정확히 작도한다. 미지 접점과 보조도형은 capability 대기 중이다.",
+    "imageSize": "medium"
   },
   {
     "id": 4,
@@ -164,7 +176,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_202_최대최소의활용넓이_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "원문의 자연지수·자연로그 곡선만 정확히 작도한다. 미지 접점과 보조도형은 capability 대기 중이다.",
+    "imageCaption": "원문의 자연지수·자연로그 곡선만 정확히 작도한다. 미지 접점과 보조도형은 capability 대기 중이다.",
+    "imageSize": "medium"
   },
   {
     "id": 5,
@@ -284,7 +300,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_NEGATIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_202_최대최소의활용넓이_고2_유형은행1/q7-problem.svg",
+    "imageAlt": "y=ln(2x)의 제4사분면 곡선; 미지 점의 정확한 직사각형은 후속 구현 필요",
+    "imageCaption": "y=ln(2x)의 제4사분면 곡선; 미지 점의 정확한 직사각형은 후속 구현 필요",
+    "imageSize": "medium"
   },
   {
     "id": 8,
@@ -362,7 +382,11 @@ window.questionBank = [
       "CC_TRIGONOMETRIC_EXTREMUM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_202_최대최소의활용넓이_고2_유형은행1/q9-problem.svg",
+    "imageAlt": "밑변 2m와 양 옆변 2m인 대칭 사다리꼴을 보인다.",
+    "imageCaption": "밑변 2m와 양 옆변 2m인 대칭 사다리꼴을 보인다.",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -401,7 +425,11 @@ window.questionBank = [
       "CC_VERTICAL_SEGMENT_LENGTH"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_202_최대최소의활용넓이_고2_유형은행1/q10-problem.svg",
+    "imageAlt": "반지름 2인 원에 내접하는 이등변삼각형의 한 예.",
+    "imageCaption": "반지름 2인 원에 내접하는 이등변삼각형의 한 예.",
+    "imageSize": "full"
   },
   {
     "id": 11,
@@ -512,6 +540,10 @@ window.questionBank = [
     "templateKey": "TPL_MODELED_QUANTITY_OPTIMIZATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_202_최대최소의활용넓이_고2_유형은행1/q13-problem.svg",
+    "imageAlt": "가로 6, 세로 3인 직사각형과 접는 선 FG 및 점 E를 표시한다.",
+    "imageCaption": "가로 6, 세로 3인 직사각형과 접는 선 FG 및 점 E를 표시한다.",
+    "imageSize": "full"
   }
 ];

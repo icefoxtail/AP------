@@ -115,7 +115,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/미적분II_174_두접선이이루는예각의크기_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "포물선과 두 접선 및 x축으로 이루어진 이등변삼각형의 정확한 대표 도식을 나타낸다.",
+    "imageCaption": "포물선과 두 접선 및 x축으로 이루어진 이등변삼각형의 정확한 대표 도식을 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": 4,
