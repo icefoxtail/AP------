@@ -1,0 +1,287 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "95"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "20"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "270"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "210"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "170"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "P",
+    "O",
+    "X0"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "PA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "PB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "PC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "PD",
+      "refs": [
+        "P",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "callouts": [
+      {
+        "id": "kP",
+        "kind": "ANGLE",
+        "vertex": "P",
+        "rays": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "at": "RIGHT",
+        "angles": [
+          {
+            "id": "cAPB",
+            "refs": [
+              "A",
+              "P",
+              "B"
+            ],
+            "value": 55,
+            "label": "55"
+          },
+          {
+            "id": "cBPC",
+            "refs": [
+              "B",
+              "P",
+              "C"
+            ],
+            "value": 30,
+            "label": "30"
+          },
+          {
+            "id": "cCPD",
+            "refs": [
+              "C",
+              "P",
+              "D"
+            ],
+            "value": 20,
+            "label": "20"
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "원본 원주각 그림의 점 P에서 ∠DPC=20°, ∠CPB=30°, ∠BPA=55°를 각각 별도 각도 지시선으로 명확히 제시한다. 반지름 2 cm는 발문에 주어졌으며 해설용 중심각과 호 강조는 문제에 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원 반지름은 2 cm이고 P에서 서로 이웃한 각 ∠DPC=20°, ∠CPB=30°, ∠BPA=55°.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks.callouts"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "겹친 20°·30°·55° 숫자 대신 각별 원문 값에 연결된 지시선을 사용한다. 채움 영역이나 정답 호 계산을 노출하지 않는다."
+  ],
+  "hiddenPointNames": [
+    "O",
+    "X0"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 540
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"2"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"3"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints": ["A","B","C","D"],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {"id":"sAB","refs":["A","B"]},
+    {"id":"sBC","refs":["B","C"]},
+    {"id":"sCD","refs":["C","D"]},
+    {"id":"sDA","refs":["D","A"]}
+  ],
+  "planeMarks": {
+    "angles": [{"id":"aBAD","refs":["B","A","D"],"value":150,"factRole":"GIVEN","labelPlacement":"LEADER"}],
+    "expressionLabels": [
+      {"id":"lAB","ownerSegment":"sAB","text":"4","unit":"cm","factRole":"GIVEN"},
+      {"id":"lBC","ownerSegment":"sBC","text":"sqrt(3)","unit":"cm","factRole":"GIVEN"}
+    ]
+  },
+  "caption": "원본과 같이 평행사변형 ABCD의 AB=4 cm, BC=√3 cm 및 내각 BAD=150°를 보여 준다. 밑변 연장과 높이·30°는 풀이 정보이므로 문제 그림에 없다.",
+  "sourceConditions": [{"id":"c1","condition":"ABCD는 평행사변형이고 AB=4 cm, BC=√3 cm, ∠BAD=150°.","mappedTo":["mathPlan.nodes","displaySegments","planeMarks.angles","planeMarks.expressionLabels"]}],
+  "newVisualInformation": ["원본에서 쓰인 √3의 근호를 실제 수학 라벨로 조판한다. 현행 SVG의 분리된 근호·숫자 배치를 교정하고 면 채움을 사용하지 않는다."]
+}
