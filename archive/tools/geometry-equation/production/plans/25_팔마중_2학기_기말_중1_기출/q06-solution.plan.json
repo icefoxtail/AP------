@@ -1,0 +1,55 @@
+{
+  "capability": "composite-panels-v1",
+  "caption": "반원기둥의 두 반원 밑면, 지름 방향 직사각형, 반원호로 펼친 직사각형을 흰 배경의 윤곽선으로 분리해 표시한다.",
+  "accessibilityDescription": "반원기둥의 겉면 세 종류를 별도 그림으로 보여 준다. 첫째 반원은 지름 6cm, 반지름 3cm이고 두 장이 있다. 둘째 직사각형은 12cm 곱하기 6cm, 셋째는 12cm 곱하기 3파이 cm의 곡면 전개도다.",
+  "sourceQuote": "다음 기둥의 겉넓이를 구하면?",
+  "panels": [
+    {"caption":{"text":"반원 밑면 두 장: r=3cm"},"plan":{
+      "capability":"construction-spike-v1",
+      "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+        {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"circ","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"3"}},"outputType":"CIRCLE","factRole":"GIVEN"}
+      ]},
+      "displayPoints":["O","A","B"],"hiddenPointNames":["O","A","B"],"hiddenPointStyle":"NONE",
+      "displaySegments":[{"id":"diameter","refs":["A","B"]}],
+      "planeMarks":{"arcs":[{"id":"semi","circle":"circ","center":"O","from":"A","to":"B","side":"CW"}],"dimensions":[{"id":"d6","from":"A","to":"B","label":"6","unit":"cm","side":"BELOW","factRole":"GIVEN"}]}
+    }},
+    {"caption":{"text":"지름이 만든 직사각형"},"plan":{
+      "capability":"construction-spike-v1",
+      "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+        {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"12"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"12"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"GIVEN"}
+      ]},
+      "displayPoints":["A","B","C","D"],"hiddenPointNames":["A","B","C","D"],"hiddenPointStyle":"NONE",
+      "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sDA","refs":["D","A"]}],
+      "planeMarks":{"dimensions":[{"id":"d12","from":"A","to":"B","label":"12","unit":"cm","side":"BELOW","factRole":"GIVEN"},{"id":"d6","from":"B","to":"C","label":"6","unit":"cm","side":"RIGHT","factRole":"GIVEN"}]}
+    }},
+    {"caption":{"text":"반원호 곡면: 12cm × 3πcm"},"plan":{
+      "capability":"construction-spike-v1",
+      "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+        {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"12"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"12"},{"kind":"rational","numerator":"471239","denominator":"50000"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"rational","numerator":"471239","denominator":"50000"}]},"outputType":"POINT","factRole":"GIVEN"}
+      ]},
+      "displayPoints":["A","B","C","D"],"hiddenPointNames":["A","B","C","D"],"hiddenPointStyle":"NONE",
+      "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sDA","refs":["D","A"]}],
+      "planeMarks":{"dimensions":[{"id":"d12","from":"A","to":"B","label":"12","unit":"cm","side":"BELOW","factRole":"GIVEN"},{"id":"dArc","from":"B","to":"C","label":"3π","unit":"cm","side":"RIGHT","factRole":"DERIVED_INTERMEDIATE"}]}
+    }}
+  ],
+  "sourceConditions": [
+    {"id":"diameter","condition":"원본의 반원기둥 밑면 지름은 6cm, 반지름은 3cm, 반원 밑면은 두 개다.","mappedTo":["panels[0].plan.mathPlan.nodes[3]","panels[0].plan.planeMarks.arcs[0]","panels[0].plan.planeMarks.dimensions[0]"]},
+    {"id":"prism-length","condition":"기둥의 높이, 즉 옆면으로 펼친 직사각형의 긴 변은 12cm다.","mappedTo":["panels[1].plan.planeMarks.dimensions[0]","panels[2].plan.planeMarks.dimensions[0]"]},
+    {"id":"flat-wall","condition":"지름이 만드는 평면 직사각형은 12×6이다.","mappedTo":["panels[1].plan.displaySegments","panels[1].plan.planeMarks.dimensions[1]"]},
+    {"id":"curved-wall","condition":"반원호 길이는 πr=3πcm이고 곡면 전개도는 12×3π이다. 모델의 실측 비례 좌표는 3π≈9.42478cm로 표시하되 실제 길이 라벨은 3π로 적는다.","mappedTo":["panels[2].plan.displaySegments","panels[2].plan.planeMarks.dimensions[1]"]}
+  ],
+  "newVisualInformation": [
+    "기존 해설의 모든 불필요한 회색 사각형·반원 면 채움을 제거한다.",
+    "반원 둘, 12×6 평면 직사각형, 12×3π 곡면 전개도를 독립된 윤곽선 패널로 둔다.",
+    "지름 6, 길이 12, 곡면의 둘레 3π가 캡션뿐 아니라 실제 치수선과 라벨로 연결된다."
+  ]
+}

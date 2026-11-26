@@ -1,0 +1,50 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "육각형의 내각 111°, 112°, 108°와 두 외각 48°, 53°를 호로 표시하고 내각 x를 찾는다.",
+  "accessibilityDescription": "이름 없는 육각형의 맨 위 왼쪽에서 각 x, 오른쪽 위에서 111도, 오른쪽 아래에서 112도, 왼쪽 아래에서 108도를 표시했다. 오른쪽과 왼쪽 중간 꼭짓점의 외각은 각각 53도, 48도이며 대응하는 내각은 127도, 132도다.",
+  "sourceQuote": "다음 그림에서 $\\angle x$의 크기는?",
+  "sourceConditions": [
+    {"id":"six-sides","condition":"실제 여섯 꼭짓점 A-B-C-D-E-F를 잇는 육각형이다. 좌표는 주어진 다섯 각 및 내각합을 만족하도록 정한 대표 형상이며 길이 조건을 새로 부여하지 않는다.","mappedTo":["mathPlan.nodes[0]","mathPlan.nodes[1]","mathPlan.nodes[2]","mathPlan.nodes[3]","mathPlan.nodes[4]","mathPlan.nodes[5]","displaySegments[0]","displaySegments[5]"]},
+    {"id":"three-inner-angles","condition":"원본의 111°, 112°, 108°는 각각 B, D, E의 내각으로 호에 직접 표시한다.","mappedTo":["planeMarks.angles[1]","planeMarks.angles[3]","planeMarks.angles[4]"]},
+    {"id":"outer-angles","condition":"오른쪽 C 외각 53° 및 왼쪽 F 외각 48°는 연장선 G, H와 호로 드러난다.","mappedTo":["displaySegments[6]","displaySegments[7]","planeMarks.angles[6]","planeMarks.angles[7]"]},
+    {"id":"supplements","condition":"외각에 이웃한 내각은 127°와 132°이고, 육각형의 내각합 720°에 의해 꼭짓점 A의 내각 x=130°이다.","mappedTo":["planeMarks.angles[0]","planeMarks.angles[2]","planeMarks.angles[5]"]}
+  ],
+  "newVisualInformation": [
+    "기존 해설 SVG의 육각형 내부 전체 회색 면 채움을 없앤다.",
+    "원본의 두 연장선과 두 외각 및 대응하는 132°, 127° 내각을 실제 호와 수치로 그린다.",
+    "원본 여섯 각의 합 720°와 x=130°에 맞는 대표 육각형을 정확히 구성한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"201046","denominator":"31250"},{"kind":"rational","numerator":"-1867161","denominator":"500000"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"809767","denominator":"200000"},{"kind":"rational","numerator":"-3775269","denominator":"500000"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"-218801","denominator":"250000"},{"kind":"rational","numerator":"-6682297","denominator":"1000000"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"F","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"-1554051","denominator":"1000000"},{"kind":"rational","numerator":"-926023","denominator":"500000"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"G","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"-2408779","denominator":"1000000"},{"kind":"rational","numerator":"-2870671","denominator":"1000000"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"3610941","denominator":"500000"},{"kind":"rational","numerator":"-5788199","denominator":"1000000"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["A","B","C","D","E","F","G","H"],
+  "hiddenPointNames": ["A","B","C","D","E","F","G","H"],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},
+    {"id":"sCD","refs":["C","D"]},{"id":"sDE","refs":["D","E"]},
+    {"id":"sEF","refs":["E","F"]},{"id":"sFA","refs":["F","A"]},
+    {"id":"extF","refs":["F","G"]},{"id":"extC","refs":["C","H"]}
+  ],
+  "planeMarks": {"angles": [
+    {"id":"atA","refs":["F","A","B"],"value":130,"label":"x","arcs":1,"style":"ARC","factRole":"CONCLUSION"},
+    {"id":"atB","refs":["A","B","C"],"value":111,"label":"111","arcs":1,"style":"ARC","factRole":"GIVEN"},
+    {"id":"atC","refs":["B","C","D"],"value":127,"label":"127","arcs":1,"style":"ARC","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"atD","refs":["C","D","E"],"value":112,"label":"112","arcs":1,"style":"ARC","factRole":"GIVEN"},
+    {"id":"atE","refs":["D","E","F"],"value":108,"label":"108","arcs":1,"style":"ARC","factRole":"GIVEN"},
+    {"id":"atF","refs":["E","F","A"],"value":132,"label":"132","arcs":1,"style":"ARC","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"outF","refs":["E","F","G"],"value":48,"label":"48","arcs":1,"style":"ARC","factRole":"GIVEN"},
+    {"id":"outC","refs":["H","C","D"],"value":53,"label":"53","arcs":1,"style":"ARC","factRole":"GIVEN"}
+  ]}
+}
