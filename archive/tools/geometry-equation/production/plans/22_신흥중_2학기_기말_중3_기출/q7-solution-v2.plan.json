@@ -370,6 +370,38 @@
               ],
               "color": "WARM"
             }
+          ],
+          "expressionLabels": [
+            {
+              "id": "rBig",
+              "ownerSegment": "PT",
+              "text": "1",
+              "unit": "cm",
+              "factRole": "GIVEN"
+            }
+          ],
+          "regions": [
+            {
+              "id": "innerShaded",
+              "fill": "MEDIUM",
+              "factRole": "GIVEN",
+              "shapes": [
+                {
+                  "loop": {
+                    "start": "T",
+                    "steps": [
+                      {
+                        "to": "T",
+                        "arc": {
+                          "center": "M",
+                          "side": "FULL"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
           ]
         },
         "caption": "정사각형 안의 원 5개와 중심을 이은 선분",
