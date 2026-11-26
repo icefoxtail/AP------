@@ -1,0 +1,59 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DICE_TABLE",
+    "colFaces": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "rowFaces": [
+      1,
+      2,
+      3
+    ],
+    "colVar": "a",
+    "rowVar": "b",
+    "cell": "EXPR",
+    "cellExpr": "a+b",
+    "highlightGroups": [
+      {
+        "highlight": {
+          "expr": "a+b",
+          "in": [
+            5,
+            5
+          ]
+        },
+        "tone": 1
+      },
+      {
+        "highlight": {
+          "expr": "a+b",
+          "in": [
+            9,
+            9
+          ]
+        },
+        "tone": 2
+      }
+    ]
+  },
+  "caption": "8등분 첫 원판의 눈 a와 3등분 둘째 원판의 눈 b를 더해 8×3 표를 만들고, 합이 5인 세 칸과 9인 세 칸을 강조한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3] 다음 그림과 같이 8등분, 3등분된 서로 다른 두 개의 원판에 각각 1부터 8까지, 1부터 3까지의 자연수가 적혀 있다. 두 원판을 돌린 후 멈추었을 때, 두 원판의 각 바늘이 가리킨 수의 합이 5 또는 9인 경우의 수를 풀이과정과 함께 쓰시오. (단, 바늘이 경계선을 가리키는 경우는 생각하지 않는다.) [부분점수 있음, 5점]",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "첫째 원판 1~8과 둘째 원판 1~3의 24가지 경우를 보존한다.",
+    "5와 9의 각 세 칸만 서로 다른 회색 묶음이다."
+  ]
+}

@@ -1,0 +1,221 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bf",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "F"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ce",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "E"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bf",
+          "ce"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "E",
+    "F",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sBF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "hatchAEGF",
+        "fill": "LIGHT",
+        "pattern": "HATCH",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "E",
+              "G",
+              "F"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "중선 BF와 CE가 만나는 무게중심 G 위쪽의 사각형 AEGF가 빗금 친 부분이다.",
+  "accessibilityDescription": "삼각형 ABC에 중선 BF, CE가 그려져 무게중심 G에서 만난다. E와 F는 각각 AB, AC의 중점이고 A-E-G-F 경계 안쪽만 사선 빗금이다.",
+  "sourceQuote": "다음 그림에서 점 $G$는 무게중심이고, $\\overline{BF}$와 $\\overline{CE}$는 중선이다. $\\triangle ABC$의 넓이가 $96\\rm\\,cm^2$일 때, 색칠한 부분의 넓이는? [4점]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "BF와 CE는 △ABC의 중선이고 G는 무게중심",
+      "mappedTo": [
+        "E",
+        "F",
+        "G",
+        "sBF",
+        "sCE"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "원본 기출 스캔의 빗금 부분은 사각형 AEGF",
+      "mappedTo": "planeMarks.regions.hatchAEGF"
+    }
+  ],
+  "newVisualInformation": [
+    "삼각형의 외곽선과 중선 두 개를 보존한다.",
+    "A-E-G-F 사각형의 면만 45도 빗금으로 식별한다."
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 480
+  }
+}

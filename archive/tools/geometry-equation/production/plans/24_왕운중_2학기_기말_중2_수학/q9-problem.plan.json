@@ -1,0 +1,251 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 38.659808,
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1,
+        "noLabel": true,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aD",
+        "refs": [
+          "C",
+          "D",
+          "E"
+        ],
+        "value": 38.659808,
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1,
+        "noLabel": true,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lenBE",
+        "ownerSegment": "sBE",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lenEC",
+        "ownerSegment": "sEC",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lenDC",
+        "ownerSegment": "sDC",
+        "text": "5",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lenAD",
+        "ownerSegment": "sAD",
+        "text": "x",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "△ABC 안의 D∈AC, E∈BC이며 ∠B=∠CDE, BE=6, EC=4, DC=5, AD=x이다.",
+  "accessibilityDescription": "삼각형 ABC에서 수직인 AC 변 위 D, 밑변 BC 위 E, 연결선 DE를 표시한다. ∠B와 ∠CDE에 같은 한 줄 호를 두고 BE6, EC4, DC5, ADx를 각각 대응 부분에 쓴다.",
+  "sourceQuote": "아래 그림에서 $\\angle B = \\angle CDE$일 때, $\\overline{AD}$의 길이 $x$의 값은? [4점]<br><br>",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "∠ABC=∠CDE",
+      "mappedTo": [
+        "aB",
+        "aD"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "BE=6, EC=4, DC=5, AD=x",
+      "mappedTo": [
+        "sBE",
+        "sEC",
+        "sDC",
+        "sAD"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "서로 다른 두 각의 호 개수와 반지름을 대응시킨다.",
+    "4개 길이 표시를 각각 그 선분에만 배치한다.",
+    "ENGINE_CAPABILITY_PENDING: 원본 외측 6·4·5·x 길이의 점선 곡선 지시선은 dotted-curved-dimension-guide 기능이 필요하다."
+  ],
+  "coordinateCanvas": {
+    "width": 590,
+    "height": 470
+  }
+}

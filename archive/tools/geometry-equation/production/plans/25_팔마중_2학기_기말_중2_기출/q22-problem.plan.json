@@ -1,0 +1,341 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "36",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "48",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "MAB",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "MCA",
+        "op": "MIDPOINT",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "MCB",
+        "op": "MIDPOINT",
+        "inputs": [
+          "C",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "kAB",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "MAB"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "kCA",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "MCA"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "kCB",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "MCB"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "MAB",
+    "MCA",
+    "MCB"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "hiddenPointNames": [
+    "MAB",
+    "MCA",
+    "MCB"
+  ],
+  "hiddenPointStyle": "NONE",
+  "rightAngles": [
+    {
+      "id": "raC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "labAB",
+        "ownerSegment": "sAB",
+        "text": "20",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "labBC",
+        "ownerSegment": "sBC",
+        "text": "16",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "labAC",
+        "ownerSegment": "sAC",
+        "text": "x",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcCA",
+        "circle": "kCA",
+        "center": "MCA",
+        "from": "C",
+        "to": "A",
+        "side": "CCW",
+        "highlight": false,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "arcCB",
+        "circle": "kCB",
+        "center": "MCB",
+        "from": "C",
+        "to": "B",
+        "side": "CW",
+        "highlight": false,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "arcBA",
+        "circle": "kAB",
+        "center": "MAB",
+        "from": "B",
+        "to": "A",
+        "side": "CCW",
+        "highlight": false,
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "twoLunes",
+        "fill": "LIGHT",
+        "pattern": "HATCH",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "loop": {
+              "start": "C",
+              "steps": [
+                {
+                  "to": "A",
+                  "arc": {
+                    "center": "MCA",
+                    "side": "CCW"
+                  }
+                },
+                {
+                  "to": "C",
+                  "arc": {
+                    "center": "MAB",
+                    "side": "CW"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "loop": {
+              "start": "C",
+              "steps": [
+                {
+                  "to": "B",
+                  "arc": {
+                    "center": "MCB",
+                    "side": "CW"
+                  }
+                },
+                {
+                  "to": "C",
+                  "arc": {
+                    "center": "MAB",
+                    "side": "CCW"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "AB=20, BC=16, AC=x인 직각삼각형의 세 변을 지름으로 하는 반원에서 좌우 두 활꼴만 빗금 친 부분이다.",
+  "accessibilityDescription": "직각삼각형 ABC의 꼭짓점 C에서 직각 표시가 있고 AB는 20, BC는 16, AC는 x이다. 각 변을 지름으로 하는 반원 세 개의 호가 있고 좌우 두 초승달 부분만 빗금이다.",
+  "sourceQuote": "[서술형 2] 다음 그림은 $\\angle C$가 직각인 직각삼각형 $ABC$에 대해 각 변을 지름으로 하는 반원을 그린 그림이다. 물음에 답하시오. [5점] (1) $x$의 길이를 구하시오. [부분점수 없음, 1점] (2) 색칠한 부분의 넓이를 풀이과정과 함께 구하시오. (단, 풀이과정에 $\\overline{AB}$, $\\overline{AC}$, $\\overline{BC}$를 지름으로 하는 반원의 넓이를 포함하여 작성하시오.) [부분점수 있음, 4점]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "∠ACB=90°, AB=20, BC=16, AC=x",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "sAB",
+        "sAC",
+        "sBC",
+        "raC"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "세 변을 지름으로 하는 세 반원과 빗금 친 두 초승달 영역",
+      "mappedTo": [
+        "kAB",
+        "kCA",
+        "kCB",
+        "planeMarks.regions.twoLunes"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "세 원호를 원본과 같은 쪽에만 보존한다.",
+    "두 초승달 영역은 엔진의 HATCH 패턴으로 표시하고 중앙 삼각형은 흰 배경으로 남긴다."
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  }
+}

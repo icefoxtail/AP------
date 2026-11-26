@@ -1,0 +1,73 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DICE_TABLE",
+    "colVar": "a",
+    "rowVar": "b",
+    "cell": "PAIR",
+    "highlightGroups": [
+      {
+        "cells": [
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            6,
+            6
+          ]
+        ],
+        "tone": 1
+      },
+      {
+        "cells": [
+          [
+            2,
+            1
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            2,
+            5
+          ],
+          [
+            2,
+            6
+          ]
+        ],
+        "tone": 2
+      }
+    ]
+  },
+  "caption": "주사위 순서쌍 36가지에서 a=b인 대각선 6칸과 a=2, b∉{2,3}인 4칸을 각각 구별해 제외한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "주사위 한 개를 두 번 던져 첫 번째 나온 눈의 수를 $a$, 두 번째 나온 눈의 수를 $b$라고 할 때, 다음 두 조건을 동시에 만족시킬 확률은? [5점]<br><br><div style=\"border: 1px solid #333; padding: 10px; margin: 10px 0;\"><b>&lt;조건&gt;</b><br>(가) $\\dfrac{a}{b} \\ne 1$<br>(나) 두 직선 $y=2x+3$과 $y=ax+b$는 만난다.</div>",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "a=b를 제외하는 여섯 칸과 평행한 직선의 네 칸을 서로 다른 회색으로 구별한다.",
+    "남은 26개의 순서쌍이 두 조건을 동시에 만족한다."
+  ]
+}

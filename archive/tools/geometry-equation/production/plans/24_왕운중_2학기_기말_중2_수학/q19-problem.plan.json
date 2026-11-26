@@ -1,0 +1,226 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "labAB",
+        "ownerSegment": "sAB",
+        "text": "1",
+        "factRole": "GIVEN"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "startP",
+        "at": "A",
+        "anchor": "S",
+        "text": "P",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "startQ",
+        "at": "B",
+        "anchor": "S",
+        "text": "Q",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "공통 변 BC 위쪽은 한 변이 1인 정삼각형 ABC, 아래쪽은 한 변이 1인 정사각형 BDEC이다. 두 화살표는 각각 A와 B에서 시작하는 반시계 방향이다.",
+  "accessibilityDescription": "위에는 정삼각형 ABC, 아래에는 정사각형 BDEC가 선분 BC를 공유한다. 각 도형의 내부는 칠하지 않는다. 삼각형 A→B, 정사각형 B→D 방향 화살표를 표시한다.",
+  "sourceQuote": "아래 그림에서 한 변의 길이가 1이고 한 변 $BC$가 공통인 정삼각형 $ABC$와 정사각형 $BDEC$가 있다. 서로 다른 2개의 주사위를 던져 나온 눈의 수의 합만큼 점 $P$와 점 $Q$는 각각 정삼각형 $ABC$와 정사각형 $BDEC$ 위를 동시에 움직인다. 이때, 점 $P$는 꼭짓점 $A$에서 출발하여 시계 반대 방향으로 정삼각형 위를 움직이고 점 $Q$는 꼭짓점 $B$에서 출발하여 시계 반대 방향으로 정사각형 위를 움직인다. 두 점 $P, Q$가 만나게 될 확률은? [5점]<br><br>",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정삼각형 ABC와 정사각형 BDEC는 BC를 공유하며 모든 변 길이가 1",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "sBC"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "P는 A에서, Q는 B에서 반시계 방향으로 진행한다",
+      "mappedTo": [
+        "sAB",
+        "sBD"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "공유 변 BC를 점선으로 구분하되 삼각형과 정사각형의 내부는 색칠하지 않는다.",
+    "각 시작점 P(A), Q(B)에서 도형 둘레를 따라 진행하는 방향을 화살표로 보여 준다.",
+    "ENGINE_CAPABILITY_PENDING: 원본의 변 길이 1을 감싸는 곡선 점선 지시선은 dotted-curved-dimension-guide 기능이 필요하다."
+  ],
+  "coordinateCanvas": {
+    "width": 540,
+    "height": 440
+  }
+}

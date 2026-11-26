@@ -1,0 +1,620 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-28",
+              "denominator": "25"
+            },
+            {
+              "kind": "rational",
+              "numerator": "154",
+              "denominator": "25"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-14",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "11"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "297",
+              "denominator": "25"
+            },
+            {
+              "kind": "rational",
+              "numerator": "154",
+              "denominator": "25"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "66",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Pt",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "7",
+            "denominator": "25"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "24",
+            "denominator": "25"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Pb",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "-7",
+            "denominator": "25"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-24",
+            "denominator": "25"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Qt",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "-11",
+            "denominator": "25"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "48",
+            "denominator": "25"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Qb",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "F"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "11",
+            "denominator": "25"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-48",
+            "denominator": "25"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "154",
+              "denominator": "25"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "17"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "17"
+            },
+            {
+              "kind": "rational",
+              "numerator": "154",
+              "denominator": "25"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "17"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "Pt",
+    "Pb",
+    "Qt",
+    "Qb",
+    "L1",
+    "L2",
+    "L3",
+    "R1",
+    "R2",
+    "R3"
+  ],
+  "displaySegments": [
+    {
+      "id": "pTop",
+      "refs": [
+        "Pt",
+        "A"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "pBot",
+      "refs": [
+        "C",
+        "Pb"
+      ]
+    },
+    {
+      "id": "qTop",
+      "refs": [
+        "Qt",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "qBot",
+      "refs": [
+        "F",
+        "Qb"
+      ]
+    },
+    {
+      "id": "lLeft",
+      "refs": [
+        "L1",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "lRight",
+      "refs": [
+        "D",
+        "R1"
+      ]
+    },
+    {
+      "id": "mLeft",
+      "refs": [
+        "L2",
+        "B"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "mRight",
+      "refs": [
+        "E",
+        "R2"
+      ]
+    },
+    {
+      "id": "nLeft",
+      "refs": [
+        "L3",
+        "C"
+      ]
+    },
+    {
+      "id": "sCF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "nRight",
+      "refs": [
+        "F",
+        "R3"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "hiddenPointNames": [
+    "Pt",
+    "Pb",
+    "Qt",
+    "Qb",
+    "L1",
+    "L2",
+    "L3",
+    "R1",
+    "R2",
+    "R3"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "three",
+        "count": 1,
+        "segments": [
+          "sAD",
+          "sBE",
+          "sCF"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lenAD",
+        "ownerSegment": "sAD",
+        "text": "11",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lenBE",
+        "ownerSegment": "sBE",
+        "text": "x",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lenCF",
+        "ownerSegment": "sCF",
+        "text": "16",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "lenAB",
+        "from": "A",
+        "to": "B",
+        "label": "4",
+        "side": "LEFT",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lenBC",
+        "from": "B",
+        "to": "C",
+        "label": "6",
+        "side": "LEFT",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "nameP",
+        "at": "Pt",
+        "anchor": "NW",
+        "text": "p"
+      },
+      {
+        "id": "nameQ",
+        "at": "Qt",
+        "anchor": "NE",
+        "text": "q"
+      },
+      {
+        "id": "nameL",
+        "at": "L1",
+        "anchor": "NW",
+        "text": "l"
+      },
+      {
+        "id": "nameM",
+        "at": "L2",
+        "anchor": "NW",
+        "text": "m"
+      },
+      {
+        "id": "nameN",
+        "at": "L3",
+        "anchor": "NW",
+        "text": "n"
+      }
+    ]
+  },
+  "caption": "세 직선 l,m,n은 평행이고 횡선 p 위의 AB=4, BC=6이다. 각 평행선 위에서 AD=11, BE=x, CF=16이다.",
+  "accessibilityDescription": "서로 평행한 세 가로선 l,m,n을 왼쪽 비스듬한 직선 p와 오른쪽 직선 q가 지난다. A-B-C와 D-E-F가 위에서 아래로 놓이고 세 가로선에 평행 표식이 있다. 길이 4,6,11,x,16은 자신의 구간에 적힌다.",
+  "sourceQuote": "[서술형 4] 아래 그림에서 평행한 세 직선 $l, m, n$이 서로 다른 두 직선 $p, q$와 만나는 점을 $A, B, C, D, E, F$라고 하자. $\\overline{AB}=4, \\overline{BC}=6, \\overline{AD}=11, \\overline{CF}=16$일 때, $\\overline{BE}$의 길이 $x$의 값[2점]을 구하고 그 과정[4점]을 서술하시오. [총 6점]<br><br>",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "l∥m∥n",
+      "mappedTo": "planeMarks.parallels.three"
+    },
+    {
+      "id": "c2",
+      "condition": "p가 A,B,C, q가 D,E,F를 순서대로 지난다",
+      "mappedTo": [
+        "pTop",
+        "sAB",
+        "sBC",
+        "pBot",
+        "qTop",
+        "sDE",
+        "sEF",
+        "qBot"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "AB=4, BC=6, AD=11, CF=16, BE=x",
+      "mappedTo": [
+        "lenAB",
+        "lenBC",
+        "sAD",
+        "sCF",
+        "sBE"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "각 횡선 p,q의 선은 원래처럼 위아래로 연장하고 l,m,n은 평행 화살표로 나타낸다.",
+    "4·6과 11·x·16의 구간 소속이 섞이지 않게 한다.",
+    "ENGINE_CAPABILITY_PENDING: 원본의 다섯 외측 곡선 점선 치수 지시선 4·6·11·x·16에는 dotted-curved-dimension-guide 기능이 필요하다."
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  }
+}

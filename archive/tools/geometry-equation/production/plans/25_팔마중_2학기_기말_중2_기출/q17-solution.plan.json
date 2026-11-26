@@ -1,0 +1,67 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "A흰",
+          "p": "5/9",
+          "children": [
+            {
+              "label": "B흰",
+              "p": "2/3"
+            },
+            {
+              "label": "B검",
+              "p": "1/3"
+            }
+          ]
+        },
+        {
+          "label": "A검",
+          "p": "4/9",
+          "children": [
+            {
+              "label": "B흰",
+              "p": "2/3"
+            },
+            {
+              "label": "B검",
+              "p": "1/3"
+            }
+          ]
+        }
+      ]
+    },
+    "highlightPaths": [
+      {
+        "path": [
+          "A흰",
+          "B검"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "A검",
+          "B흰"
+        ],
+        "color": "WARM"
+      }
+    ],
+    "showPathProbability": true
+  },
+  "caption": "주머니 A의 흰색·검은색과 주머니 B의 두 색을 순서대로 나누고, 서로 다른 색인 두 경로만 강조한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "주머니 A에는 흰 공 5개, 검은 공 4개가 들어 있고, 주머니 B에는 흰 공 4개, 검은 공 2개가 들어 있다. A, B 주머니에서 구슬을 각각 한 개씩 꺼낼 때, 두 개의 공이 서로 다른 색일 확률은? [4점]",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "네 경로의 확률 곱을 엔진이 계산한다.",
+    "A흰→B검과 A검→B흰의 두 경로가 서로 구별된다."
+  ]
+}
