@@ -58,26 +58,18 @@
     "yTitle": "실기",
     "grid": true,
     "equalUnits": true,
-    "regions": [
-      {
-        "kind": "HALF_PLANE",
-        "a": "-1",
-        "b": "1",
-        "c": "0",
-        "side": "GT",
-        "markPoints": true,
-        "tone": 1
-      }
-    ],
     "refLines": [
       {
         "kind": "LINE",
-        "a": "1",
-        "b": "-1",
+        "a": "-1",
+        "b": "1",
         "c": "0",
-        "label": "x-y=0",
-        "style": "SOLID"
+        "label": "y=x",
+        "style": "DASHED"
       }
+    ],
+    "pointGroups": [
+      {"points":[[40,55],[65,75]],"color":"BLUE","label":"실기 우위 2명"}
     ]
   },
   "caption": "실기 점수가 필기 점수보다 높은 경우는 y>x이다. 원문 산점도에서 해당 학생은 (40,55), (65,75) 두 명으로, 10명 중 20%이다. 경계선 y=x 위의 점은 포함하지 않는다. 원문 산점도는 보존한다.",
@@ -87,11 +79,14 @@
       "condition": "원문 산점도의 열 점을 직접 읽어 필기 x점, 실기 y점으로 기록했다. 실기 점수가 필기보다 높은 조건은 y>x이며 동점은 제외한다.",
       "mappedTo": [
         "chart",
+        "chart.points",
+        "chart.pointGroups",
+        "chart.refLines",
         "caption"
       ]
     }
   ],
   "newVisualInformation": [
-    "y=x 경계선과 y>x 영역을 구분해 두 점을 세고 경계의 동점은 제외한다. 축과 점 라벨에 여백을 둔다."
+    "반평면 회색 면 채움을 없애고 y=x 점선과 원본 산점도의 두 점만 파란색으로 구분한다. 격자와 자료점은 모두 보존한다."
   ]
 }

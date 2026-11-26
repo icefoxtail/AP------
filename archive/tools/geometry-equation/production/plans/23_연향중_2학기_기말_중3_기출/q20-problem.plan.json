@@ -1,0 +1,22 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind":"SCATTER",
+    "points":[
+      {"x":"0.8","y":"0.8"},{"x":"0.8","y":"0.9"},{"x":"0.9","y":"0.9"},{"x":1,"y":"0.9"},
+      {"x":"0.9","y":1},{"x":1,"y":1},{"x":"1.2","y":1},{"x":1,"y":"1.2"},
+      {"x":"1.2","y":"1.2"},{"x":"1.5","y":"1.2"},{"x":2,"y":"1.2"},
+      {"x":"1.2","y":"1.5"},{"x":"1.5","y":"1.5"},{"x":2,"y":"1.5"},{"x":2,"y":2}
+    ],
+    "xRange":["0.8","2"],"yRange":["0.8","2"],"xStep":"0.1","yStep":"0.1",
+    "xTitle":"왼쪽 눈 시력","yTitle":"오른쪽 눈 시력","grid":true,"equalUnits":true
+  },
+  "caption":"학생 15명의 왼쪽 눈 시력과 오른쪽 눈 시력을 0.1 눈금의 산점도로 보인다. 정답을 유도하는 기준선은 그리지 않는다.",
+  "accessibilityDescription":"가로축 왼쪽 눈 시력, 세로축 오른쪽 눈 시력의 15개 점을 나타낸 산점도로 각 축은 0.8부터 2.0까지이다.",
+  "sourceConditions":[
+    {"id":"question","condition":"아래 산점도는 중학교 학생 15명의 좌우 시력을 조사하여 나타낸 것이다. 같은 학생의 비율을 묻는다","mappedTo":["chart.points"]},
+    {"id":"scale","condition":"원본 x축 왼쪽 눈 시력, y축 오른쪽 눈 시력, 0.8~2.0과 0.1 눈금","mappedTo":["chart.xTitle","chart.yTitle","chart.xRange","chart.yRange","chart.xStep","chart.yStep"]},
+    {"id":"dots","condition":"원본 산점도의 15개 위치를 모두 보존하고 문제 그림에 정답 표시를 하지 않는다","mappedTo":["chart.points"]}
+  ],
+  "newVisualInformation":["희미한 스캔에서 0.1 간격 세부 눈금과 실제 학생 점 15개를 정확한 자료로 보존한다."]
+}

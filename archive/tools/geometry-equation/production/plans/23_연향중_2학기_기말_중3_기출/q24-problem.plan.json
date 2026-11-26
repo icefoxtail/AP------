@@ -1,0 +1,28 @@
+{
+  "capability":"stat-chart-figure-v1",
+  "chart": {
+    "kind":"SCATTER",
+    "points":[
+      {"x":40,"y":40},
+      {"x":45,"y":45,"name":"A"},{"x":45,"y":30},
+      {"x":50,"y":40},{"x":50,"y":25,"name":"B"},
+      {"x":55,"y":35},
+      {"x":60,"y":35},{"x":60,"y":30},{"x":60,"y":25},{"x":60,"y":15,"name":"C"},
+      {"x":65,"y":40},{"x":65,"y":30},{"x":65,"y":20},
+      {"x":70,"y":25},{"x":70,"y":15},
+      {"x":75,"y":40,"name":"D"},{"x":75,"y":30},{"x":75,"y":20},
+      {"x":80,"y":20},{"x":80,"y":10}
+    ],
+    "xRange":["40","80"],"yRange":["5","45"],"xStep":"5","yStep":"5",
+    "xTitle":"몸무게(kg)","yTitle":"팔굽혀펴기 횟수(회)","grid":true,"equalUnits":true,
+    "pointGroups":[{"color":"BLUE","label":"A B C D","points":[[45,45],[50,25],[60,15],[75,40]]}]
+  },
+  "caption":"학생 20명의 몸무게와 팔굽혀펴기 횟수를 원본 눈금과 같은 5단위 격자에 나타낸다. 표시된 A·B·C·D는 원본의 네 강조점이다.",
+  "accessibilityDescription":"몸무게 40~80킬로그램과 팔굽혀펴기 횟수 5~45회를 나타내는 학생 20명의 산점도이다. 원본에 표시된 네 점 A, B, C, D를 구별한다.",
+  "sourceConditions":[
+    {"id":"question","condition":"원본 발문: 학생 20명의 몸무게와 팔굽혀펴기 횟수 산점도를 보고 알 수 있는 사실 세 가지 이상을 이유와 함께 서술한다","mappedTo":["chart.kind","chart.points"]},
+    {"id":"data","condition":"원본 격자의 20개 점과 몸무게 40~80kg, 팔굽혀펴기 5~45회, 두 축 5단위 눈금을 1:1 보존한다","mappedTo":["chart.points","chart.xRange","chart.yRange","chart.xStep","chart.yStep"]},
+    {"id":"named","condition":"원본에 고리로 강조된 A=(45,45), B=(50,25), C=(60,15), D=(75,40)을 각각 이름과 색점으로 구분","mappedTo":["chart.points","chart.pointGroups"]}
+  ],
+  "newVisualInformation":["흐릿한 스캔에서 20개의 점과 A~D 네 표본점의 이름을 되살리며 새로운 추세선·정답 방향은 문제 그림에 넣지 않는다."]
+}

@@ -71,7 +71,7 @@
           },
           "angleDeg": {
             "kind": "integer",
-            "value": "145"
+            "value": "115"
           },
           "turn": "CCW"
         },
@@ -92,7 +92,7 @@
           },
           "angleDeg": {
             "kind": "integer",
-            "value": "99"
+            "value": "69"
           },
           "turn": "CCW"
         },
@@ -201,6 +201,9 @@
         "D"
       ]
     }
+  ],
+  "rightAngles": [
+    {"id":"rightADB","refs":["A","D","B"]}
   ],
   "planeMarks": {
     "angles": [
@@ -329,6 +332,11 @@
         "planeMarks",
         "caption"
       ]
+    },
+    {
+      "id":"diameterRightAngle",
+      "condition":"지름 AB가 보는 원주각 ADB는 90도이므로 직각 사각 표식과 보조 현 BD를 해설에 표시한다.",
+      "mappedTo":["AB","BD","rightADB"]
     }
   ],
   "newVisualInformation": [

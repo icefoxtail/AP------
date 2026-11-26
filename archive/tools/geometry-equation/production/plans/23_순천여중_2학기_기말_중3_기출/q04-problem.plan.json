@@ -1,0 +1,49 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-10"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"10"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"POLAR_POINT","inputs":["O","B"],"args":{"length":{"kind":"integer","value":"10"},"angleDeg":{"kind":"integer","value":"115"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"POLAR_POINT","inputs":["O","B"],"args":{"length":{"kind":"integer","value":"10"},"angleDeg":{"kind":"integer","value":"69"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"lAD","op":"LINE_THROUGH","inputs":["A","D"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lBC","op":"LINE_THROUGH","inputs":["B","C"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"E","op":"LINE_INTERSECTION","inputs":["lAD","lBC"],"args":{},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"10"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["A","B","C","D","E","O"],
+  "displayCircles": [],
+  "displaySegments": [
+    {"id":"sAB","refs":["A","B"]},
+    {"id":"sAE","refs":["A","E"]},
+    {"id":"sBE","refs":["B","E"]},
+    {"id":"sOD","refs":["O","D"]},
+    {"id":"sOC","refs":["O","C"]}
+  ],
+  "planeMarks": {
+    "arcs": [
+      {"id":"arcBC","circle":"k","center":"O","from":"B","to":"C","side":"MINOR"},
+      {"id":"arcCD","circle":"k","center":"O","from":"C","to":"D","side":"MINOR"},
+      {"id":"arcDA","circle":"k","center":"O","from":"D","to":"A","side":"MINOR"}
+    ],
+    "angles": [
+      {"id":"angleDOC","refs":["D","O","C"],"value":46,"label":"46","style":"ARC","factRole":"GIVEN"},
+      {"id":"angleDEC","refs":["D","E","C"],"label":"x","style":"ARC","factRole":"GIVEN"}
+    ]
+  },
+  "coordinateCanvas": {"width":620,"height":540},
+  "sourceQuote": "다음 그림과 같이 $\\overline{AB}$를 지름으로 하는 반원 $O$에서 $\\overline{AD}$, $\\overline{BC}$의 연장선의 교점을 $E$라고 할 때, 다음 중 옳은 것은? [정답 2개, 5점]",
+  "caption": "AB를 지름으로 하는 위쪽 반원에서 두 할선의 연장선이 E에서 만나며 중심각 DOC는 46°이고 E의 각 x는 미지수이다.",
+  "accessibilityDescription": "반원 왼쪽 A, 오른쪽 B, 중심 O를 표시한다. 위쪽 원호의 D와 C에서 AD, BC를 연장해 원 바깥 점 E를 만든다. 중심각 DOC에는 46도, E에는 미지각 x를 표시한다.",
+  "sourceConditions": [
+    {"id":"diameter","condition":"AB를 지름으로 하는 위쪽 반원 O","mappedTo":["O","sAB","arcBC","arcCD","arcDA"]},
+    {"id":"extension","condition":"AD와 BC의 연장선이 E에서 만난다","mappedTo":["lAD","lBC","sAE","sBE","E"]},
+    {"id":"central","condition":"그림에 주어진 중심각 DOC 46도","mappedTo":["sOD","sOC","angleDOC"]},
+    {"id":"unknown","condition":"E의 외각은 x로만 표시한다","mappedTo":["angleDEC"]}
+  ],
+  "newVisualInformation": ["잘린 원호와 바깥 교점·연장선·중심각을 한 도형에 복원하며, 문제에서 묻는 각에는 풀이값을 노출하지 않는다."]
+}
