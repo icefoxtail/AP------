@@ -1,0 +1,59 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "30" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "30" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "30" }, { "kind": "integer", "value": "30" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "E", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "25" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "F", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "30" }, { "kind": "integer", "value": "22" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "M", "op": "TRANSLATE_POINT", "inputs": ["F"], "args": { "dx": { "kind": "integer", "value": "6" }, "dy": { "kind": "integer", "value": "-3" } }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "N", "op": "TRANSLATE_POINT", "inputs": ["F"], "args": { "dx": { "kind": "integer", "value": "6" }, "dy": { "kind": "integer", "value": "-9" } }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "E", "F", "M", "N"],
+  "hiddenPointNames": ["M", "N"],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBE", "refs": ["B", "E"] },
+    { "id": "sEC", "refs": ["E", "C"] },
+    { "id": "sCF", "refs": ["C", "F"] },
+    { "id": "sFD", "refs": ["F", "D"] },
+    { "id": "sDA", "refs": ["D", "A"] },
+    { "id": "sAE", "refs": ["A", "E"] },
+    { "id": "sAF", "refs": ["A", "F"] },
+    { "id": "movementArrow", "refs": ["M", "N"], "arrow": "END" }
+  ],
+  "planeMarks": {
+    "regions": [
+      { "id": "regionAECF", "fill": "GREEN", "shapes": [{ "polygon": ["A", "E", "C", "F"] }] }
+    ],
+    "dimensions": [
+      { "id": "lengthAD", "from": "A", "to": "D", "label": "30", "unit": "cm", "side": "ABOVE", "style": "BAR", "offset": 1, "factRole": "GIVEN" },
+      { "id": "lengthAB", "from": "A", "to": "B", "label": "30", "unit": "cm", "side": "LEFT", "style": "BAR", "offset": 1, "factRole": "GIVEN" },
+      { "id": "lengthBE", "from": "B", "to": "E", "label": "25", "unit": "cm", "side": "BELOW", "style": "BAR", "offset": 1, "factRole": "GIVEN" },
+      { "id": "lengthDF", "from": "D", "to": "F", "label": "x", "unit": "cm", "side": "RIGHT", "style": "BAR", "offset": 1, "factRole": "GIVEN" }
+    ]
+  },
+  "coordinateCanvas": { "width": 720, "height": 520 },
+  "caption": "한 변이 30cm인 정사각형 ABCD에서 BE는 25cm이고, 오른쪽 변의 F는 D에서 C로 움직인다. 사각형 AECF만 옅게 칠한다.",
+  "accessibilityDescription": "한 변이 30cm인 정사각형 ABCD에서 E는 BC 위에 있고 BE는 25cm이다. F는 DC 위에 있고 DF는 x cm이다. 선분 AE와 AF가 그려지고 그 사이부터 오른쪽 변까지의 사각형 AECF만 옅은 녹색이며, 오른쪽 화살표는 F가 C로 이동하는 방향을 가리킨다.",
+  "sourceQuote": "다음 그림과 같은 정사각형에서 점 $F$는 점 $D$에서 점 $C$까지 움직인다고 한다.",
+  "sourceConditions": [
+    { "id": "square", "condition": "현행 본문 연결 SVG와 imageAlt의 ABCD는 한 변 30cm인 정사각형이다.", "mappedTo": ["A", "B", "C", "D", "sAB", "sBE", "sEC", "sCF", "sFD", "sDA", "lengthAD", "lengthAB"] },
+    { "id": "pointE", "condition": "E는 BC 위에 있고 BE=25cm이며 AE가 내부 경계다.", "mappedTo": ["B", "E", "C", "sBE", "sEC", "sAE", "lengthBE"] },
+    { "id": "movingF", "condition": "F는 D에서 C로 이동하고 DF=x cm이다. F의 도식상 위치 DF=8은 정답이나 주어진 x의 수치가 아니다.", "mappedTo": ["D", "F", "C", "sFD", "sCF", "lengthDF", "M", "N", "movementArrow"] },
+    { "id": "askedRegion", "condition": "발문은 AECF의 넓이를 묻고 현행 imageAlt는 이 영역을 청록색으로 칠했다고 설명하지만, 연결 SVG에는 실제 면색이 없다. AECF만 선택적으로 칠하며 ABE와 ADF는 흰색이다.", "mappedTo": ["A", "E", "C", "F", "sAE", "sEC", "sCF", "sAF", "regionAECF"] }
+  ],
+  "newVisualInformation": [
+    "현행 본문 imageAlt가 설명하는 AECF 선택 음영을 엔진의 planeMarks.regions에 실제 다각형으로 대응하고 다른 영역은 칠하지 않는다.",
+    "AB=AD=30cm, BE=25cm, DF=x cm를 독립 치수 필드에, F의 D→C 이동 방향을 화살표 선분에 각각 대응한다.",
+    "F의 위치는 임의의 설명용 개형이며, 풀이에서 구하는 부등식의 경계나 최소 자연수 답은 그려지는 필드에 넣지 않는다. 원본 스캔 PNG는 확보하지 못했다."
+  ]
+}
