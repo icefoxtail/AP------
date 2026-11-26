@@ -255,7 +255,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_금당고_1학기_기말_고1_확인/q9-solution.svg",
+    "solutionImageAlt": "|x-2|+3|x-4|<6의 최종 해는 2<x<5이고, 정수 3과 4만 포함된다.",
+    "solutionImageCaption": "|x-2|+3|x-4|<6의 최종 해는 2<x<5이고, 정수 3과 4만 포함된다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -311,7 +315,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
     "subUnit": "quadratic equation",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_금당고_1학기_기말_고1_확인/q11-solution.svg",
+    "solutionImageAlt": "근의 곱<0과 근의 합<0의 교집합은 -1<p<1 또는 4<p<5이며 가능한 정수 p는 0이다.",
+    "solutionImageCaption": "근의 곱<0과 근의 합<0의 교집합은 -1<p<1 또는 4<p<5이며 가능한 정수 p는 0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -369,7 +377,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_금당고_1학기_기말_고1_확인/q13-solution.svg",
+    "solutionImageAlt": "허용되는 표본 (a,b)=(4,2)에서 y=x²+2와 y=4x-2는 (2,6) 한 점에서 접한다.",
+    "solutionImageCaption": "허용되는 표본 (a,b)=(4,2)에서 y=x²+2와 y=4x-2는 (2,6) 한 점에서 접한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -491,7 +503,11 @@ window.questionBank = [
     "solutionImage": "assets/images/25_금당고_1학기_기말_고1_확인/q17-solution.svg",
     "solutionImageAlt": "해설 그림: 강조된 정육각형에서 꼭짓점을 하나씩 건너 연결한 검은 삼각형의 예이다. 서로 이웃한 꼭짓점을 택하면 변을 공유한다.",
     "solutionImageCaption": "강조된 정육각형에서 꼭짓점을 하나씩 건너 연결한 검은 삼각형의 예이다. 서로 이웃한 꼭짓점을 택하면 변을 공유한다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "image": "assets/images/25_금당고_1학기_기말_고1_확인/q17-problem.svg",
+    "imageAlt": "한 원에 내접하는 이름 없는 정육각형. 풀이의 대각선이나 삼각형은 아직 표시하지 않는다.",
+    "imageCaption": "한 원에 내접하는 이름 없는 정육각형. 풀이의 대각선이나 삼각형은 아직 표시하지 않는다.",
+    "imageSize": "full"
   },
   {
     "id": 18,

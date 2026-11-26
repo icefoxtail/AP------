@@ -700,7 +700,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고1_유사/q21-solution.svg",
+    "solutionImageAlt": "t=(x-2)²+3의 범위는 [3,7]이다. (t-a)²+1의 최솟값이 5이려면 a가 구간의 왼쪽 또는 오른쪽에서 거리 2만큼 떨어진 1 또는 9다.",
+    "solutionImageCaption": "t=(x-2)²+3의 범위는 [3,7]이다. (t-a)²+1의 최솟값이 5이려면 a가 구간의 왼쪽 또는 오른쪽에서 거리 2만큼 떨어진 1 또는 9다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

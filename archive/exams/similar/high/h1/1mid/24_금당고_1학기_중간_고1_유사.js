@@ -708,7 +708,11 @@ window.questionBank = [
     "integrationPattern": "DEEP_COMPOSITE",
     "rpmPrimaryRecordId": "H1-RPM-037",
     "sourceQid": null,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "solutionImage": "assets/images/24_금당고_1학기_중간_고1_유사/q16-solution.svg",
+    "solutionImageAlt": "대칭축 x=4를 중심으로 한 구간 [3,5]를 주황색 곡선으로 표시한다. 두 끝값은 5이고 꼭짓점 높이는 16/3이다.",
+    "solutionImageCaption": "대칭축 x=4를 중심으로 한 구간 [3,5]를 주황색 곡선으로 표시한다. 두 끝값은 5이고 꼭짓점 높이는 16/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

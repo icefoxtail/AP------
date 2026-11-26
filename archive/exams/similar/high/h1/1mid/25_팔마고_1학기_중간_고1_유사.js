@@ -423,7 +423,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-13-QUADRATIC_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_팔마고_1학기_중간_고1_유사/q15-solution.svg",
+    "solutionImageAlt": "켤레복소근에서 a=−4를 얻고 k=6일 때, 포물선 y=(x−2)²은 T(2,0)에서 x축과 한 점에서만 만난다.",
+    "solutionImageCaption": "켤레복소근에서 a=−4를 얻고 k=6일 때, 포물선 y=(x−2)²은 T(2,0)에서 x축과 한 점에서만 만난다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -479,7 +483,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "image": "assets/images/25_팔마고_1학기_중간_고1_유사/q17-problem.svg",
+    "imageAlt": "밑변의 길이 6, 높이 4인 이등변삼각형에 밑변과 평행한 윗변을 가진 직사각형이 내접한 한 예를 나타낸다.",
+    "imageCaption": "밑변의 길이 6, 높이 4인 이등변삼각형에 밑변과 평행한 윗변을 가진 직사각형이 내접한 한 예를 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": 18,
@@ -623,6 +631,10 @@ window.questionBank = [
     "subUnitKey": "H15-SA-07-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_팔마고_1학기_중간_고1_유사/q23-solution.svg",
+    "solutionImageAlt": "x²+2y²=6의 타원과 접선 x−y=3이 T(2,−1)에서 한 점만 만난다. 연립식의 판별식이 0이라는 해설 조건을 나타낸다.",
+    "solutionImageCaption": "x²+2y²=6의 타원과 접선 x−y=3이 T(2,−1)에서 한 점만 만난다. 연립식의 판별식이 0이라는 해설 조건을 나타낸다.",
+    "solutionImageSize": "full"
   }
 ];

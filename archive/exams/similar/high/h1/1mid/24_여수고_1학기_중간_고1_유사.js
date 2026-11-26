@@ -398,7 +398,12 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "rpmPrimaryRecordId": "H1-RPM-037",
     "sourceQid": null,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "solutionImage": "assets/images/24_여수고_1학기_중간_고1_유사/q9-solution.svg",
+    "solutionImageAlt": "꼭짓점 x=2의 오른쪽 구간 [3,7]에서 함수가 증가하며 우단점 (7,26)에서 최댓값을 갖는다.",
+    "solutionImageCaption": "꼭짓점 x=2의 오른쪽 구간 [3,7]에서 함수가 증가하며 우단점 (7,26)에서 최댓값을 갖는다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 10,
@@ -1002,6 +1007,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "rpmPrimaryRecordId": "H1-RPM-037",
     "sourceQid": null,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "solutionImage": "assets/images/24_여수고_1학기_중간_고1_유사/q23-solution.svg",
+    "solutionImageAlt": "b=18을 대입한 해설 그래프이며 닫힌 구간 [0,3]은 꼭짓점 x=7/2의 왼쪽이므로 감소하고 양끝 높이는 M=18,m=6이다.",
+    "solutionImageCaption": "b=18을 대입한 해설 그래프이며 닫힌 구간 [0,3]은 꼭짓점 x=7/2의 왼쪽이므로 감소하고 양끝 높이는 M=18,m=6이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   }
 ];

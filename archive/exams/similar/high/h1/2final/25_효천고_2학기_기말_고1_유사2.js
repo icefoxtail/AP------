@@ -420,7 +420,11 @@ window.questionBank = [
     "templateKey": "TPL_ITERATION_PERIOD",
     "rpmPrimaryRecordId": "H1-RPM-253",
     "sourceQid": 10,
-    "variationType": "STRICT_VARIANT"
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_유사2/q10-solution.svg",
+    "solutionImageAlt": "f(x)는 3x를 7로 나눈 나머지이므로 1→3→2→6→4→5→1의 여섯 원소 순환을 이룬다. 같은 대응이 6번마다 반복되어 f¹⁵=f³이다. 파랑 1→3, 주황 3→2, 초록 2→6의 세 화살표를 순서대로 따라가면 f³(1)=6이고, 답은 ①이다.",
+    "solutionImageCaption": "f(x)는 3x를 7로 나눈 나머지이므로 1→3→2→6→4→5→1의 여섯 원소 순환을 이룬다. 같은 대응이 6번마다 반복되어 f¹⁵=f³이다. 파랑 1→3, 주황 3→2, 초록 2→6의 세 화살표를 순서대로 따라가면 f³(1)=6이고, 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
