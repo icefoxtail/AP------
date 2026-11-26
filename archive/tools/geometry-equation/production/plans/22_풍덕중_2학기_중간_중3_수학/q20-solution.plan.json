@@ -1,0 +1,227 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2598076211353",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2598076211353",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "45",
+              "denominator": "10"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2598076211353",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "45",
+              "denominator": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 30,
+        "label": "30"
+      },
+      {
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "id": "aB",
+        "refs": [
+          "C",
+          "B",
+          "D"
+        ],
+        "value": 60,
+        "label": "60"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lHeight",
+        "ownerSegment": "sCD",
+        "text": "h"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "3",
+        "side": "ABOVE",
+        "style": "BAR",
+        "unit": "km"
+      },
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "1.5",
+        "side": "ABOVE",
+        "style": "BAR",
+        "unit": "km"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "right1",
+      "refs": [
+        "B",
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "헬리콥터 첫 위치 A와 2분 뒤 위치 B의 간격은 3 km이며, 수평선과 배 D를 내려다본 각은 30°와 60°이다. 두 번째 위치에서 C까지 1.5 km이므로 60초가 더 필요하다.",
+  "accessibilityDescription": "헬리콥터 첫 위치 A와 2분 뒤 위치 B의 간격은 3 km이며, 수평선과 배 D를 내려다본 각은 30°와 60°이다. 두 번째 위치에서 C까지 1.5 km이므로 60초가 더 필요하다.",
+  "newVisualInformation": [
+    "처음과 두 번째 관측 각 30°·60°",
+    "수평 이동 AB=3km, BC=1.5km",
+    "헬리콥터 높이 CD 및 직각 표식"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source-problem",
+      "condition": "한밤중에 파도에 휩쓸려 좌초된 배를 구조하기 위하여 헬리콥터가 출동하였다. 헬리콥터가 좌초된 배에서 나오는 불빛을 처음 관측하였을 때, 배를 내려다본 각의 크기는 $30^\\circ$이었다. 불빛을 처음 관측한 후 수면으로부터 일정한 높이와 시속 $90\\,\\mathrm{km}$를 유지하면서 불빛을 관측한 쪽으로 직선 경로를 따라가 $2$분 후 다시 불빛을 관측하였고, 이때 배를 내려본각의 크기가 $60^\\circ$이었다. 헬리콥터가 좌초된 지점의 상공에 도착하기 위해서는 두 번째로 불빛을 관측한 지점으로부터 몇 초 더 이동해야 하는지 구하면? (단, 배는 좌초된 지점에서 이동하지 않는다.) (5점)<br><br><img src=\"assets/images/22_풍덕중_2학기_중간_중3_수학/q20.png\" alt=\"문제 20번 그림\" style=\"max-width: 320px;\">",
+      "mappedTo": "mathPlan.nodes, displaySegments, planeMarks, rightAngles"
+    },
+    {
+      "id": "solution-reasoning",
+      "condition": "헬리콥터의 높이를 h라 하면 처음 수평거리는 h/tan30°=h√3이고, 2분 뒤 수평거리는 h/tan60°=h/√3이다. 이동거리 차는 2h/√3이다. 이 이동거리가 2분 동안의 3 km이므로 h=3√3/2 km이다. 두 번째 지점에서 배까지의 수평거리는 h/√3=1.5 km이다. 시속 90 km는 분속 1.5 km이므로 1분, 즉 60초 더 가면 된다. ⑤이다.",
+      "mappedTo": "caption, newVisualInformation, planeMarks, rightAngles"
+    }
+  ]
+}

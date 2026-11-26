@@ -1,0 +1,239 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-4472135955",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-4472135955",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-4472135955",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "H",
+    "A",
+    "B",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOH",
+      "refs": [
+        "O",
+        "H"
+      ]
+    },
+    {
+      "id": "sPH",
+      "refs": [
+        "P",
+        "H"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lOA",
+        "ownerSegment": "sOA",
+        "text": "6"
+      },
+      {
+        "id": "lOH",
+        "ownerSegment": "sOH",
+        "text": "2√5"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "8",
+        "side": "BELOW",
+        "style": "BAR",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "right1",
+      "refs": [
+        "O",
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "반지름 6 cm인 원에서 AB=8 cm이고 OH⊥AB이다. 원의 가장 높은 점 P를 택하면 PH=6+2√5로 최대여서 △ABP 넓이는 4(6+2√5)이다.",
+  "accessibilityDescription": "반지름 6 cm인 원에서 AB=8 cm이고 OH⊥AB이다. 원의 가장 높은 점 P를 택하면 PH=6+2√5로 최대여서 △ABP 넓이는 4(6+2√5)이다.",
+  "newVisualInformation": [
+    "반지름 6cm 원과 현 AB=8cm",
+    "O에서 AB로 내린 수선 OH와 직각",
+    "최고점 P를 지나는 높이 PH, OH=2√5"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source-problem",
+      "condition": "오른쪽 그림과 같이 반지름의 길이가 $6\\,\\mathrm{cm}$인 원 $\\mathrm{O}$에서 원 위를 움직이는 점 $\\mathrm{P}$에 대하여 $\\triangle\\mathrm{ABP}$의 넓이의 최댓값을 구하면? (5점)<br><br><img src=\"assets/images/22_풍덕중_2학기_중간_중3_수학/q19.png\" alt=\"문제 19번 그림\" style=\"max-width: 320px;\">",
+      "mappedTo": "mathPlan.nodes, displaySegments, planeMarks, rightAngles"
+    },
+    {
+      "id": "solution-reasoning",
+      "condition": "삼각형 ABP의 넓이는 밑변 AB와 P에서 AB까지의 높이로 계산한다. 그림에서 AB=8 cm이고 중심 O에서 현 AB까지의 거리는 √(6²−4²)=2√5 cm이다. 원주 위의 P를 가장 멀리 놓으면 높이는 6+2√5 cm이다. 따라서 넓이의 최댓값은 (1/2)×8×(6+2√5)=4(6+2√5) cm², ①이다.",
+      "mappedTo": "caption, newVisualInformation, planeMarks, rightAngles"
+    }
+  ]
+}

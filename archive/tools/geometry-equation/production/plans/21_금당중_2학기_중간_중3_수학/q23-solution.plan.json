@@ -1,0 +1,512 @@
+{
+  "capability": "composite-panels-v1",
+  "columns": 1,
+  "panels": [
+    {
+      "caption": {
+        "text": "(1) 현의 수직이등분"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "H",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-7"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "7"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "circ",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "rational",
+                  "numerator": "8062257748299",
+                  "denominator": "1000000000000"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "H",
+          "A",
+          "B"
+        ],
+        "displayLines": [],
+        "displayCircles": [
+          "circ"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAH",
+            "refs": [
+              "A",
+              "H"
+            ]
+          },
+          {
+            "id": "sHB",
+            "refs": [
+              "H",
+              "B"
+            ]
+          },
+          {
+            "id": "sOH",
+            "refs": [
+              "O",
+              "H"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "lAH",
+              "ownerSegment": "sAH",
+              "text": "x=7"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "dAB",
+              "from": "A",
+              "to": "B",
+              "label": "14",
+              "side": "BELOW",
+              "style": "BAR",
+              "unit": "cm"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "right1",
+            "refs": [
+              "O",
+              "H",
+              "B"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 480,
+          "height": 320
+        },
+        "caption": "(1) 중심에서 14cm 현 AB에 내린 수선 OH는 그 현을 이등분하여 AH=HB=7cm이다.",
+        "accessibilityDescription": "(1) 중심에서 14cm 현 AB에 내린 수선 OH는 그 현을 이등분하여 AH=HB=7cm이다.",
+        "newVisualInformation": [
+          "원의 현 AB=14cm",
+          "OH 수선 및 직각 표식",
+          "현의 절반 x=7cm"
+        ],
+        "sourceConditions": [
+          {
+            "id": "source-problem",
+            "condition": "[서술형 2] 원의 현에 대한 성질을 이용하여 $x$의 값을 각각 구하시오. (6점, 각각 3점)<br>(1)<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q23-problem-v2.svg\" /><br>(2)<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/s02_2.png\" />",
+            "mappedTo": "mathPlan.nodes, displaySegments, planeMarks, rightAngles"
+          },
+          {
+            "id": "solution-reasoning",
+            "condition": "(1) 중심에서 현에 내린 수선은 현을 이등분하므로 14cm인 현의 절반은 x=7cm이다. (2) 중심에서 같은 거리에 있는 현의 길이는 같으므로, 중심에서 4cm 떨어진 두 현은 길이가 같다. 한 현이 5cm이므로 x=5cm이다.",
+            "mappedTo": "caption, newVisualInformation, planeMarks, rightAngles"
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "(2) 같은 거리의 두 현"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "M",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "N",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "-25",
+                    "denominator": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "25",
+                    "denominator": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "-25",
+                    "denominator": "10"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "25",
+                    "denominator": "10"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "circ",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "rational",
+                  "numerator": "4716990566028",
+                  "denominator": "1000000000000"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "M",
+          "N",
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "displayLines": [],
+        "displayCircles": [
+          "circ"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sOM",
+            "refs": [
+              "O",
+              "M"
+            ]
+          },
+          {
+            "id": "sON",
+            "refs": [
+              "O",
+              "N"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "lAB",
+              "ownerSegment": "sAB",
+              "text": "x=5"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "dOM",
+              "from": "O",
+              "to": "M",
+              "label": "4",
+              "side": "LEFT",
+              "style": "BAR",
+              "unit": "cm"
+            },
+            {
+              "id": "dON",
+              "from": "O",
+              "to": "N",
+              "label": "4",
+              "side": "ABOVE",
+              "style": "BAR",
+              "unit": "cm"
+            },
+            {
+              "id": "dCD",
+              "from": "C",
+              "to": "D",
+              "label": "5",
+              "side": "RIGHT",
+              "style": "BAR",
+              "unit": "cm"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "right1",
+            "refs": [
+              "O",
+              "M",
+              "B"
+            ]
+          },
+          {
+            "id": "right2",
+            "refs": [
+              "O",
+              "N",
+              "C"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 480,
+          "height": 320
+        },
+        "caption": "(2) 중심에서 두 현까지의 수직거리는 모두 4cm이므로 현 AB와 CD 길이가 같아 x=5cm이다.",
+        "accessibilityDescription": "(2) 중심에서 두 현까지의 수직거리는 모두 4cm이므로 현 AB와 CD 길이가 같아 x=5cm이다.",
+        "newVisualInformation": [
+          "두 현 AB, CD",
+          "OM=ON=4cm 수선과 직각 표식",
+          "CD=5cm, AB=x=5cm"
+        ],
+        "sourceConditions": [
+          {
+            "id": "source-problem",
+            "condition": "[서술형 2] 원의 현에 대한 성질을 이용하여 $x$의 값을 각각 구하시오. (6점, 각각 3점)<br>(1)<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q23-problem-v2.svg\" /><br>(2)<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/s02_2.png\" />",
+            "mappedTo": "mathPlan.nodes, displaySegments, planeMarks, rightAngles"
+          },
+          {
+            "id": "solution-reasoning",
+            "condition": "(1) 중심에서 현에 내린 수선은 현을 이등분하므로 14cm인 현의 절반은 x=7cm이다. (2) 중심에서 같은 거리에 있는 현의 길이는 같으므로, 중심에서 4cm 떨어진 두 현은 길이가 같다. 한 현이 5cm이므로 x=5cm이다.",
+            "mappedTo": "caption, newVisualInformation, planeMarks, rightAngles"
+          }
+        ]
+      }
+    }
+  ],
+  "caption": "(1) 중심에서 내린 수선이 현을 이등분해 x=7cm, (2) 중심으로부터 같은 거리에 있는 두 현의 길이가 같아 x=5cm이다.",
+  "sourceConditions": [
+    {
+      "id": "original",
+      "condition": "[서술형 2] 원의 현에 대한 성질을 이용하여 $x$의 값을 각각 구하시오. (6점, 각각 3점)<br>(1)<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q23-problem-v2.svg\" /><br>(2)<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/s02_2.png\" />",
+      "mappedTo": [
+        "panels[0].plan.planeMarks",
+        "panels[1].plan.planeMarks",
+        "panels[0].plan.displaySegments",
+        "panels[1].plan.displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "(1) 현의 이등분과 수선, x=7",
+    "(2) 두 현의 중심거리 4cm, 길이 동일과 x=5"
+  ]
+}

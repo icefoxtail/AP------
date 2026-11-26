@@ -1,0 +1,238 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3464101615138",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5196152422707",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5196152422707",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "D",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "id": "aA",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "value": 30,
+        "label": "30"
+      },
+      {
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "id": "aACD",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "value": 30,
+        "label": "30"
+      },
+      {
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "id": "aDCB",
+        "refs": [
+          "D",
+          "C",
+          "B"
+        ],
+        "value": 30,
+        "label": "30"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAD",
+        "ownerSegment": "sAD",
+        "text": "2√3"
+      },
+      {
+        "id": "lDB",
+        "ownerSegment": "sDB",
+        "text": "√3"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "3"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "3√3",
+        "side": "BELOW",
+        "style": "BAR",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "right1",
+      "refs": [
+        "D",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "ABC는 B가 직각인 30°-60°-90° 삼각형이고, CD는 C의 각을 이등분한다. AD:DB=AC:BC=2:1이므로 AD=2√3 cm이다.",
+  "accessibilityDescription": "ABC는 B가 직각인 30°-60°-90° 삼각형이고, CD는 C의 각을 이등분한다. AD:DB=AC:BC=2:1이므로 AD=2√3 cm이다.",
+  "newVisualInformation": [
+    "B 직각과 A 30°",
+    "CD 각이등분선과 C의 30° 호 2개",
+    "AB=3√3, AD=2√3, DB=√3 길이 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source-problem",
+      "condition": "오른쪽 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{CD}}$가 $\\angle\\mathrm{C}$의 이등분선일 때, $\\overline{\\mathrm{AD}}$의 길이를 구하면? (4점)<br><br><img src=\"assets/images/22_풍덕중_2학기_중간_중3_수학/q11.png\" alt=\"문제 11번 그림\" style=\"max-width: 320px;\">",
+      "mappedTo": "mathPlan.nodes, displaySegments, planeMarks, rightAngles"
+    },
+    {
+      "id": "solution-reasoning",
+      "condition": "∠B=90°, ∠A=30°이므로 직각삼각형 ABC는 30°-60°-90° 삼각형이다. AB=3√3이므로 짧은 변 BC=AB/√3=3, 빗변 AC=2·BC=6이다. 각의 이등분선 정리에 의해 AD:DB=AC:CB=6:3=2:1이다. AB=3√3을 2:1로 나누면 AD=(2/3)·3√3=2√3 cm이므로 ②이다.",
+      "mappedTo": "caption, newVisualInformation, planeMarks, rightAngles"
+    }
+  ]
+}

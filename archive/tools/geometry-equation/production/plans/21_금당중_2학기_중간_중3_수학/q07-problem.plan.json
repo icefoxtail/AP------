@@ -1,0 +1,312 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "766044443119",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "766044443119",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "642787609687",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "839099631177",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "unit",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "R",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAR",
+      "refs": [
+        "A",
+        "R"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "id": "ax",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 40,
+        "label": "x",
+        "labelKind": "MATH"
+      },
+      {
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "id": "ay",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 50,
+        "label": "y",
+        "labelKind": "MATH"
+      },
+      {
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "id": "az",
+        "refs": [
+          "C",
+          "E",
+          "D"
+        ],
+        "value": 50,
+        "label": "z",
+        "labelKind": "MATH"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "quarterArc",
+        "circle": "unit",
+        "center": "A",
+        "from": "R",
+        "to": "D",
+        "side": "MINOR"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAR",
+        "ownerSegment": "sAR",
+        "text": "1"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "right1",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "right2",
+      "refs": [
+        "A",
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "반지름 1인 사분원에서 A는 중심, B는 C의 수선의 발, D는 접선의 발이다. 각 x,y,z는 크기를 정하지 않은 문자로만 표시한다.",
+  "accessibilityDescription": "반지름 1인 사분원에서 A는 중심, B는 C의 수선의 발, D는 접선의 발이다. 각 x,y,z는 크기를 정하지 않은 문자로만 표시한다.",
+  "newVisualInformation": [
+    "단위 사분원 호와 반지름 1",
+    "수선 BC, 접선 DE, 두 직각 표식",
+    "문자 각 x·y·z와 대응점 A·B·C·D·E"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source-problem",
+      "condition": "아래 그림과 같이 반지름의 길이가 $1$인 사분원에서 다음 중 옳은 것은?<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q07.png\" />",
+      "mappedTo": "mathPlan.nodes, displaySegments, planeMarks, rightAngles"
+    },
+    {
+      "id": "solution-reasoning",
+      "condition": "반지름이 1인 사분원의 직각삼각형에서 cos y는 각 y에 인접한 변을 빗변 1로 나눈 값이다. 그림에서 그 변이 BC이므로 cos y=BC이고 ②가 옳다.",
+      "mappedTo": "caption, newVisualInformation, planeMarks, rightAngles"
+    }
+  ],
+  "hiddenPointNames": [
+    "R"
+  ],
+  "hiddenPointStyle": "NONE"
+}

@@ -1,0 +1,288 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "15",
+              "denominator": "10"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2598076211353",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "45",
+              "denominator": "10"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2598076211353",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1732050807569",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "H",
+    "C",
+    "A",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sBA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sEH",
+      "refs": [
+        "E",
+        "H"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "id": "aDBC",
+        "refs": [
+          "D",
+          "B",
+          "C"
+        ],
+        "value": 30,
+        "label": "30"
+      },
+      {
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "id": "aACB",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 30,
+        "label": "30"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lDE",
+        "ownerSegment": "sDE",
+        "text": "√3"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "6",
+        "side": "BELOW",
+        "style": "BAR",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "right1",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "right2",
+      "refs": [
+        "B",
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "right3",
+      "refs": [
+        "E",
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "두 합동 직각삼각형 ABC와 DBC의 공통 빗변 BC는 6 cm이다. B·C의 30°와 교점 E, 중점 H 및 EH⊥BC를 통해 DE=√3 cm를 설명한다.",
+  "accessibilityDescription": "두 합동 직각삼각형 ABC와 DBC의 공통 빗변 BC는 6 cm이다. B·C의 30°와 교점 E, 중점 H 및 EH⊥BC를 통해 DE=√3 cm를 설명한다.",
+  "newVisualInformation": [
+    "두 합동 삼각형의 빗변 BC=6",
+    "A·D 직각, B·C 30° 호",
+    "대각선 교점 E, 수선 EH, H 직각"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source-problem",
+      "condition": "다음 그림과 같이 합동인 두 직각삼각형 $\\mathrm{ABC}$와 $\\mathrm{DBC}$의 빗변 $\\mathrm{BC}$를 겹쳐 놓았다. $\\overline{\\mathrm{BC}}=6\\,\\mathrm{cm}$, $\\angle\\mathrm{DBC}=30^\\circ$일 때, $\\overline{\\mathrm{DE}}$의 길이는? (5점)<br><br><img src=\"assets/images/22_풍덕중_2학기_중간_중3_수학/q21.png\" alt=\"문제 21번 그림\" style=\"max-width: 320px;\">",
+      "mappedTo": "mathPlan.nodes, displaySegments, planeMarks, rightAngles"
+    },
+    {
+      "id": "solution-reasoning",
+      "condition": "합동인 두 직각삼각형에서 ∠ACB=∠DBC=30°이고 BC=6이다. △DBC에서 BD=6cos30°=3√3, DC=6sin30°=3이며 합동으로 AB=3이다. E는 AC와 DB의 교점이므로 ∠EBC=∠ECB=30°; 따라서 △BEC는 이등변삼각형이고 BC=6이다. E에서 BC에 내린 수선의 발을 H라 하면 H는 BC의 중점이어서 BH=3이다. 직각삼각형 BEH에서 cos30°=BH/BE이므로 BE=3/(√3/2)=2√3이다. B,E,D가 한 직선 위에 있고 E가 BD 사이에 있으므로 DE=BD−BE=3√3−2√3=√3 cm, ④이다.",
+      "mappedTo": "caption, newVisualInformation, planeMarks, rightAngles"
+    }
+  ]
+}
