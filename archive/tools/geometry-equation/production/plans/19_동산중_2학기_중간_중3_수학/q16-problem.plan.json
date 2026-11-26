@@ -1,0 +1,372 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "36",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "27",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "48",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "36",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "39",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "48",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "27",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "39",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sBF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "sCF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "sCG",
+      "refs": [
+        "C",
+        "G"
+      ]
+    },
+    {
+      "id": "sDG",
+      "refs": [
+        "D",
+        "G"
+      ]
+    },
+    {
+      "id": "sDH",
+      "refs": [
+        "D",
+        "H"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "sGH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "sHE",
+      "refs": [
+        "H",
+        "E"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rAEB",
+      "refs": [
+        "A",
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "rBFC",
+      "refs": [
+        "B",
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "rCGD",
+      "refs": [
+        "C",
+        "G",
+        "D"
+      ]
+    },
+    {
+      "id": "rDHA",
+      "refs": [
+        "D",
+        "H",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "15",
+        "side": "LEFT"
+      },
+      {
+        "id": "dAE",
+        "from": "A",
+        "to": "E",
+        "label": "12",
+        "side": "ABOVE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "caption": "한 변 15인 정사각형 ABCD에서 네 합동 직각삼각형과 내부 정사각형 EFGH가 있고 AE=12이다.",
+  "accessibilityDescription": "한 변 15인 정사각형 ABCD에서 네 합동 직각삼각형과 내부 정사각형 EFGH가 있고 AE=12이다.",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "한 변 15인 정사각형 ABCD에서 네 합동 직각삼각형과 내부 정사각형 EFGH가 있고 AE=12이다.",
+      "mappedTo": [
+        "displayPoints",
+        "displaySegments",
+        "rightAngles",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 선 색만으로 구분했던 네 개의 직각과 내부 EF·FG·GH·HE의 정사각형 경계 및 15·12 길이를 정확히 표시한다."
+  ],
+  "sourceQuote": "오른쪽 그림의 정사각형 $\\mathrm{ABCD}$에서 $4$개의 직각삼각형은 모두 합동이고, $\\overline{\\mathrm{AB}} = 15$, $\\overline{\\mathrm{AE}} = 12$일 때, $\\square\\mathrm{EFGH}$의 둘레의 길이는? (4점)"
+}

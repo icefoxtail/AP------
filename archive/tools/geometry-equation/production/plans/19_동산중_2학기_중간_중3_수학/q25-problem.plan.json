@@ -1,0 +1,101 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 6
+      },
+      "height": 6,
+      "names": "EFGHABCD"
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "F",
+      "style": "SOLID",
+      "role": "REF"
+    },
+    {
+      "from": "F",
+      "to": "C",
+      "style": "SOLID",
+      "role": "REF"
+    },
+    {
+      "from": "C",
+      "to": "A",
+      "style": "SOLID",
+      "role": "REF"
+    }
+  ],
+  "space": {
+    "points": [
+      {
+        "id": "J",
+        "at": {
+          "centroid": [
+            "A",
+            "F",
+            "C"
+          ]
+        }
+      }
+    ],
+    "segments": [
+      {
+        "from": "B",
+        "to": "J",
+        "style": "DASHED"
+      },
+      {
+        "from": "A",
+        "to": "J",
+        "style": "DASHED"
+      }
+    ]
+  },
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "J",
+        "refs": [
+          "B",
+          "A"
+        ]
+      }
+    ]
+  },
+  "dims": [
+    {
+      "edge": "EF",
+      "label": "6"
+    }
+  ],
+  "solidCaption": {
+    "text": "정육면체 속 삼각형 AFC와 수선 BJ"
+  },
+  "caption": "한 모서리 6cm인 정육면체 ABCD-EFGH에서 단면 삼각형 AFC와 B에서 그 평면에 내린 수선 BJ를 보인다.",
+  "accessibilityDescription": "한 모서리 6cm인 정육면체 ABCD-EFGH에서 단면 삼각형 AFC와 B에서 그 평면에 내린 수선 BJ를 보인다.",
+  "sourceConditions": [
+    {
+      "id": "source-solid",
+      "condition": "한 모서리 6cm인 정육면체 ABCD-EFGH에서 단면 삼각형 AFC와 B에서 그 평면에 내린 수선 BJ를 보인다.",
+      "mappedTo": [
+        "solids",
+        "segments",
+        "dims",
+        "marks",
+        "space"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "A-F-C 세 단면 선분·B-J 수선·J 직각표식 및 정육면체 깊이 점선을 복원하고 면 채움을 배제한다."
+  ],
+  "sourceQuote": "[서술형 4] 다음 그림과 같이 한 모서리의 길이가 $6\\,\\mathrm{cm}$인 정육면체에서 세 꼭짓점 $\\mathrm{A}, \\mathrm{F}, \\mathrm{C}$를 지나는 평면으로 자르면 사면체 $\\mathrm{B-AFC}$가 생긴다. 꼭짓점 $\\mathrm{B}$에서 밑면에 내린 수선 $\\overline{\\mathrm"
+}

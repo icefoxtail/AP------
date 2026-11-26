@@ -1,0 +1,446 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "32",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "32",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "32",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "-10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "-10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-24",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "32",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "56",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "74",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "18",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "56",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "42",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "L",
+    "M",
+    "F",
+    "G",
+    "E",
+    "T",
+    "H",
+    "I"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sET",
+      "refs": [
+        "E",
+        "T"
+      ]
+    },
+    {
+      "id": "sTA",
+      "refs": [
+        "T",
+        "A"
+      ]
+    },
+    {
+      "id": "sCH",
+      "refs": [
+        "C",
+        "H"
+      ]
+    },
+    {
+      "id": "sHI",
+      "refs": [
+        "H",
+        "I"
+      ]
+    },
+    {
+      "id": "sIA",
+      "refs": [
+        "I",
+        "A"
+      ]
+    },
+    {
+      "id": "sBF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "sGC",
+      "refs": [
+        "G",
+        "C"
+      ]
+    },
+    {
+      "id": "sAL",
+      "refs": [
+        "A",
+        "L"
+      ]
+    },
+    {
+      "id": "sLM",
+      "refs": [
+        "L",
+        "M"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sAF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "sFL",
+      "refs": [
+        "F",
+        "L"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rBAC",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "rALB",
+      "refs": [
+        "A",
+        "L",
+        "B"
+      ]
+    },
+    {
+      "id": "rFML",
+      "refs": [
+        "F",
+        "M",
+        "L"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "8",
+        "side": "LEFT"
+      },
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "10",
+        "side": "BELOW"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "T"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "caption": "직각삼각형 ABC(AB=8, BC=10)의 세 변에 정사각형을 붙이고 AL⊥BC, LM⊥FG, E-C·A-F·F-L 보조선을 표시한다.",
+  "accessibilityDescription": "직각삼각형 ABC(AB=8, BC=10)의 세 변에 정사각형을 붙이고 AL⊥BC, LM⊥FG, E-C·A-F·F-L 보조선을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "직각삼각형 ABC(AB=8, BC=10)의 세 변에 정사각형을 붙이고 AL⊥BC, LM⊥FG, E-C·A-F·F-L 보조선을 표시한다.",
+      "mappedTo": [
+        "displayPoints",
+        "displaySegments",
+        "rightAngles",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 정사각형 세 개, EC·AF·FL 세 내부 보조선, AL·LM 수선의 연장 및 A/L/M 직각표식을 1:1 보존하고 불필요한 면 채움을 제거한다."
+  ],
+  "sourceQuote": "다음 그림은 $\\angle \\mathrm{A} = 90^\\circ$, $\\overline{\\mathrm{AB}} = 8$, $\\overline{\\mathrm{BC}} = 10$인 $\\triangle \\mathrm{ABC}$의 각 변 $\\overline{\\mathrm{AB}}$, $\\overline{\\mathrm{BC}}$, $\\o"
+}

@@ -1,0 +1,222 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "18",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "18",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "H",
+    "C",
+    "A"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBH",
+      "refs": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "sHC",
+      "refs": [
+        "H",
+        "C"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rBAC",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "rBHA",
+      "refs": [
+        "B",
+        "H",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "10",
+        "side": "BELOW",
+        "unit": "cm"
+      },
+      {
+        "id": "dAC",
+        "from": "A",
+        "to": "C",
+        "label": "8",
+        "side": "RIGHT",
+        "unit": "cm"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aBAH",
+        "refs": [
+          "B",
+          "A",
+          "H"
+        ],
+        "value": 36.87,
+        "label": "x",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aHAC",
+        "refs": [
+          "H",
+          "A",
+          "C"
+        ],
+        "value": 53.13,
+        "label": "y",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "caption": "직각삼각형 ABC의 A에서 BC에 내린 수선 AH, 두 직각표식, AC=8cm, BC=10cm와 각 x,y이다.",
+  "accessibilityDescription": "직각삼각형 ABC의 A에서 BC에 내린 수선 AH, 두 직각표식, AC=8cm, BC=10cm와 각 x,y이다.",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "직각삼각형 ABC의 A에서 BC에 내린 수선 AH, 두 직각표식, AC=8cm, BC=10cm와 각 x,y이다.",
+      "mappedTo": [
+        "displayPoints",
+        "displaySegments",
+        "rightAngles",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 AH 보조선·수선의 발 H·두 직각·x/y 각표식·8/10cm 치수를 보존하면서 내부 면 채움을 제거한다."
+  ],
+  "sourceQuote": "다음 그림과 같이 $\\angle \\mathrm{A} = 90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AH}} \\perp \\overline{\\mathrm{BC}}$이고 $\\overline{\\mathrm{BC}} = 10\\,\\mathrm{cm}$, $\\overline{\\mathrm{A"
+}

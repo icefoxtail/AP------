@@ -1,0 +1,216 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "D",
+    "C",
+    "A"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rBDA",
+      "refs": [
+        "B",
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dBA",
+        "from": "B",
+        "to": "A",
+        "label": "3sqrt(2)",
+        "side": "LEFT"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aDCA",
+        "refs": [
+          "D",
+          "C",
+          "A"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eqADBD",
+        "count": 2,
+        "segments": [
+          "sAD",
+          "sBD"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "caption": "삼각형 ABC에서 AD는 BC에 수직이고 AD=BD, AB=3√2, 각 C=60°이다.",
+  "accessibilityDescription": "삼각형 ABC에서 AD는 BC에 수직이고 AD=BD, AB=3√2, 각 C=60°이다.",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "삼각형 ABC에서 AD는 BC에 수직이고 AD=BD, AB=3√2, 각 C=60°이다.",
+      "mappedTo": [
+        "displayPoints",
+        "displaySegments",
+        "rightAngles",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문에서 지정한 AD 수선·직각·같은 길이 눈금·60°·3√2 치수를 명시하고 면 채움을 배제한다."
+  ],
+  "sourceQuote": "오른쪽 그림과 같은 삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AD}} \\perp \\overline{\\mathrm{BC}}$이고, $\\overline{\\mathrm{AD}} = \\overline{\\mathrm{BD}}$일 때, 삼각형 $\\mathrm{ABC}$의 넓이는? (4점)"
+}

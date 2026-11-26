@@ -1,0 +1,218 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "D",
+    "C",
+    "A"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rDCA",
+      "refs": [
+        "D",
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAC",
+        "from": "A",
+        "to": "C",
+        "label": "4",
+        "side": "RIGHT"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aABC",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 30,
+        "label": "30",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aADC",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "value": 45,
+        "label": "45",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "caption": "BC 위 D와 꼭짓점 A에서 AC⊥BC, AC=4, 각 ABC=30°, 각 ADC=45°이다.",
+  "accessibilityDescription": "BC 위 D와 꼭짓점 A에서 AC⊥BC, AC=4, 각 ABC=30°, 각 ADC=45°이다.",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "BC 위 D와 꼭짓점 A에서 AC⊥BC, AC=4, 각 ABC=30°, 각 ADC=45°이다.",
+      "mappedTo": [
+        "displayPoints",
+        "displaySegments",
+        "rightAngles",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 기울기선 BA·DA와 30°/45°·C 직각·길이4를 표시하고 해설에서 AC=CD의 같은 길이 눈금을 추가한다."
+  ],
+  "sourceQuote": "[서답형 2] 다음 그림에서 $\\angle \\mathrm{ABC} = 30^\\circ$, $\\angle \\mathrm{ADC} = 45^\\circ$, $\\angle \\mathrm{ACD} = 90^\\circ$, $\\overline{\\mathrm{AC}} = 4$일 때, $\\overline{\\mathrm{BD}}$의 길이를 구하시오"
+}

@@ -1,0 +1,307 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "16",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-12",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "P",
+    "E",
+    "H"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDP",
+      "refs": [
+        "D",
+        "P"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rABC",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "rBCD",
+      "refs": [
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "rBHA",
+      "refs": [
+        "B",
+        "H",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAD",
+        "from": "A",
+        "to": "D",
+        "label": "8",
+        "side": "ABOVE",
+        "unit": "cm"
+      },
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "4",
+        "side": "LEFT",
+        "unit": "cm"
+      }
+    ],
+    "regions": [
+      {
+        "id": "folded",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "B",
+              "D",
+              "P"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "pointNames": {
+    "P": "A′"
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "caption": "8 cm×4 cm 직사각형을 대각선 BD로 접어 A′의 삼각형을 표시하고 BC 위 E 및 해설의 수선 발 H를 보인다.",
+  "accessibilityDescription": "8 cm×4 cm 직사각형을 대각선 BD로 접어 A′의 삼각형을 표시하고 BC 위 E 및 해설의 수선 발 H를 보인다.",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "8 cm×4 cm 직사각형을 대각선 BD로 접어 A′의 삼각형을 표시하고 BC 위 E 및 해설의 수선 발 H를 보인다.",
+      "mappedTo": [
+        "displayPoints",
+        "displaySegments",
+        "rightAngles",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "대각선 BD·접은 변·원래 외곽 점선과 A′ 라벨을 복구하고 해설에만 A-H 수선·직각을 추가한다."
+  ],
+  "sourceQuote": "오른쪽 그림과 같이 가로의 길이가 $8\\,\\mathrm{cm}$, 세로의 길이가 $4\\,\\mathrm{cm}$인 직사각형 모양의 종이를 대각선 $\\mathrm{BD}$를 접는 선으로 하여 접었을 때, $\\overline{\\mathrm{EC}}$의 길이는? (4점)"
+}

@@ -1,0 +1,265 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "6",
+        "side": "LEFT",
+        "unit": "cm"
+      },
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "8",
+        "side": "BELOW",
+        "unit": "cm"
+      },
+      {
+        "id": "dAD",
+        "from": "A",
+        "to": "D",
+        "label": "2sqrt(3)",
+        "side": "ABOVE",
+        "unit": "cm"
+      },
+      {
+        "id": "dDC",
+        "from": "D",
+        "to": "C",
+        "label": "4",
+        "side": "RIGHT",
+        "unit": "cm"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aABC",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aADC",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "value": 150,
+        "label": "150",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "source-quadrilateral-shading",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "caption": "사각형 ABCD는 AB=6cm, BC=8cm, AD=2√3cm, DC=4cm이고 B=60°, D=150°이며 대각선 AC가 그려져 있다.",
+  "accessibilityDescription": "사각형 ABCD는 AB=6cm, BC=8cm, AD=2√3cm, DC=4cm이고 B=60°, D=150°이며 대각선 AC가 그려져 있다.",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "사각형 ABCD는 AB=6cm, BC=8cm, AD=2√3cm, DC=4cm이고 B=60°, D=150°이며 대각선 AC가 그려져 있다.",
+      "mappedTo": [
+        "displayPoints",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 수치를 정확히 만족하는 A·B·C·D 작도, AC 분할선 및 60°·150° 각 호와 네 치수를 복원한다."
+  ],
+  "sourceQuote": "다음 그림과 같은 사각형 ABCD에서 AB=6 cm, BC=8 cm, ∠ABC=60°, AD=2√3 cm, DC=4 cm, ∠ADC=150°일 때, 사각형 ABCD의 넓이는? (4점)"
+}

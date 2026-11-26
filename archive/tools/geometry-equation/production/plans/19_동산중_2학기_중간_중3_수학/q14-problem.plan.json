@@ -1,0 +1,924 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-1"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "numerator": "1",
+                      "denominator": "2"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "2"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "numerator": "1",
+                      "denominator": "2"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "2"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "add",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "-1"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "rational",
+                          "numerator": "1",
+                          "denominator": "2"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "2"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "rational",
+                          "numerator": "1",
+                          "denominator": "3"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "3"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "add",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "1"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "mul",
+                          "args": [
+                            {
+                              "kind": "rational",
+                              "numerator": "1",
+                              "denominator": "2"
+                            },
+                            {
+                              "kind": "expression",
+                              "op": "sqrt",
+                              "args": [
+                                {
+                                  "kind": "integer",
+                                  "value": "2"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "add",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "1"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "rational",
+                          "numerator": "1",
+                          "denominator": "2"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "2"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "rational",
+                          "numerator": "-1",
+                          "denominator": "3"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "3"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "add",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "-1"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "mul",
+                          "args": [
+                            {
+                              "kind": "rational",
+                              "numerator": "1",
+                              "denominator": "2"
+                            },
+                            {
+                              "kind": "expression",
+                              "op": "sqrt",
+                              "args": [
+                                {
+                                  "kind": "integer",
+                                  "value": "2"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "add",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "add",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "-1"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "mul",
+                          "args": [
+                            {
+                              "kind": "rational",
+                              "numerator": "1",
+                              "denominator": "2"
+                            },
+                            {
+                              "kind": "expression",
+                              "op": "sqrt",
+                              "args": [
+                                {
+                                  "kind": "integer",
+                                  "value": "2"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "expression",
+                          "op": "mul",
+                          "args": [
+                            {
+                              "kind": "rational",
+                              "numerator": "1",
+                              "denominator": "3"
+                            },
+                            {
+                              "kind": "expression",
+                              "op": "sqrt",
+                              "args": [
+                                {
+                                  "kind": "integer",
+                                  "value": "3"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "add",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "1"
+                            },
+                            {
+                              "kind": "expression",
+                              "op": "mul",
+                              "args": [
+                                {
+                                  "kind": "rational",
+                                  "numerator": "1",
+                                  "denominator": "2"
+                                },
+                                {
+                                  "kind": "expression",
+                                  "op": "sqrt",
+                                  "args": [
+                                    {
+                                      "kind": "integer",
+                                      "value": "2"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "numerator": "1",
+                      "denominator": "2"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "add",
+                      "args": [
+                        {
+                          "kind": "expression",
+                          "op": "add",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "1"
+                            },
+                            {
+                              "kind": "expression",
+                              "op": "mul",
+                              "args": [
+                                {
+                                  "kind": "rational",
+                                  "numerator": "1",
+                                  "denominator": "2"
+                                },
+                                {
+                                  "kind": "expression",
+                                  "op": "sqrt",
+                                  "args": [
+                                    {
+                                      "kind": "integer",
+                                      "value": "2"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "mul",
+                          "args": [
+                            {
+                              "kind": "expression",
+                              "op": "mul",
+                              "args": [
+                                {
+                                  "kind": "rational",
+                                  "numerator": "-1",
+                                  "denominator": "3"
+                                },
+                                {
+                                  "kind": "expression",
+                                  "op": "sqrt",
+                                  "args": [
+                                    {
+                                      "kind": "integer",
+                                      "value": "3"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "kind": "expression",
+                              "op": "add",
+                              "args": [
+                                {
+                                  "kind": "integer",
+                                  "value": "-1"
+                                },
+                                {
+                                  "kind": "expression",
+                                  "op": "mul",
+                                  "args": [
+                                    {
+                                      "kind": "rational",
+                                      "numerator": "1",
+                                      "denominator": "2"
+                                    },
+                                    {
+                                      "kind": "expression",
+                                      "op": "sqrt",
+                                      "args": [
+                                        {
+                                          "kind": "integer",
+                                          "value": "2"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "add",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "add",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "1"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "mul",
+                          "args": [
+                            {
+                              "kind": "rational",
+                              "numerator": "1",
+                              "denominator": "2"
+                            },
+                            {
+                              "kind": "expression",
+                              "op": "sqrt",
+                              "args": [
+                                {
+                                  "kind": "integer",
+                                  "value": "2"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "expression",
+                          "op": "mul",
+                          "args": [
+                            {
+                              "kind": "rational",
+                              "numerator": "-1",
+                              "denominator": "3"
+                            },
+                            {
+                              "kind": "expression",
+                              "op": "sqrt",
+                              "args": [
+                                {
+                                  "kind": "integer",
+                                  "value": "3"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "add",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "-1"
+                            },
+                            {
+                              "kind": "expression",
+                              "op": "mul",
+                              "args": [
+                                {
+                                  "kind": "rational",
+                                  "numerator": "1",
+                                  "denominator": "2"
+                                },
+                                {
+                                  "kind": "expression",
+                                  "op": "sqrt",
+                                  "args": [
+                                    {
+                                      "kind": "integer",
+                                      "value": "2"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "numerator": "-1",
+                      "denominator": "2"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "add",
+                      "args": [
+                        {
+                          "kind": "expression",
+                          "op": "add",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "-1"
+                            },
+                            {
+                              "kind": "expression",
+                              "op": "mul",
+                              "args": [
+                                {
+                                  "kind": "rational",
+                                  "numerator": "1",
+                                  "denominator": "2"
+                                },
+                                {
+                                  "kind": "expression",
+                                  "op": "sqrt",
+                                  "args": [
+                                    {
+                                      "kind": "integer",
+                                      "value": "2"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "mul",
+                          "args": [
+                            {
+                              "kind": "expression",
+                              "op": "mul",
+                              "args": [
+                                {
+                                  "kind": "rational",
+                                  "numerator": "1",
+                                  "denominator": "3"
+                                },
+                                {
+                                  "kind": "expression",
+                                  "op": "sqrt",
+                                  "args": [
+                                    {
+                                      "kind": "integer",
+                                      "value": "3"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "kind": "expression",
+                              "op": "add",
+                              "args": [
+                                {
+                                  "kind": "integer",
+                                  "value": "1"
+                                },
+                                {
+                                  "kind": "expression",
+                                  "op": "mul",
+                                  "args": [
+                                    {
+                                      "kind": "rational",
+                                      "numerator": "1",
+                                      "denominator": "2"
+                                    },
+                                    {
+                                      "kind": "expression",
+                                      "op": "sqrt",
+                                      "args": [
+                                        {
+                                          "kind": "integer",
+                                          "value": "2"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sAF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rABC",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "rACD",
+      "refs": [
+        "A",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "rADE",
+      "refs": [
+        "A",
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "rAEF",
+      "refs": [
+        "A",
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAF",
+        "from": "A",
+        "to": "F",
+        "label": "10",
+        "side": "RIGHT",
+        "unit": "cm"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "five-equal",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sBC",
+          "sCD",
+          "sDE",
+          "sEF"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "caption": "연속된 직각삼각형의 AB=BC=CD=DE=EF, B·C·D·E 네 직각 및 최종 AF=10cm를 모두 표시한다.",
+  "accessibilityDescription": "연속된 직각삼각형의 AB=BC=CD=DE=EF, B·C·D·E 네 직각 및 최종 AF=10cm를 모두 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "연속된 직각삼각형의 AB=BC=CD=DE=EF, B·C·D·E 네 직각 및 최종 AF=10cm를 모두 표시한다.",
+      "mappedTo": [
+        "displayPoints",
+        "displaySegments",
+        "rightAngles",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 네 직각표식, 다섯 동일길이 눈금, 내부 보조선 AC·AD·AE와 10cm 종단 길이를 복원한다."
+  ],
+  "sourceQuote": "오른쪽 그림과 같이 $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{BC}} = \\overline{\\mathrm{CD}} = \\overline{\\mathrm{DE}} = \\overline{\\mathrm{EF}}$이고 $\\overline{\\mathrm{AF}} = 10\\,\\mathrm{cm}$일 때, "
+}

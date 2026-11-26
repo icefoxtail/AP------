@@ -1,0 +1,156 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rABC",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "12",
+        "side": "BELOW"
+      },
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "5",
+        "side": "RIGHT"
+      },
+      {
+        "id": "dAC",
+        "from": "A",
+        "to": "C",
+        "label": "13",
+        "side": "ABOVE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "caption": "직각삼각형 ABC에서 B의 직각표식 및 AB=12, BC=5, AC=13을 나타낸다.",
+  "accessibilityDescription": "직각삼각형 ABC에서 B의 직각표식 및 AB=12, BC=5, AC=13을 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "직각삼각형 ABC에서 B의 직각표식 및 AB=12, BC=5, AC=13을 나타낸다.",
+      "mappedTo": [
+        "displayPoints",
+        "displaySegments",
+        "rightAngles",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 5-12-13 삼각형의 세 치수와 직각을 무채움 선분으로 정확히 복원한다."
+  ],
+  "sourceQuote": "다음 그림의 직각삼각형 $\\mathrm{ABC}$에서 삼각비의 값으로 옳은 것은? (4점)"
+}

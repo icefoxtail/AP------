@@ -1,0 +1,281 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "15"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "-5"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "15"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "-5"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "add",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "-1"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "H",
+    "C",
+    "A"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sBH",
+      "refs": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "sHC",
+      "refs": [
+        "H",
+        "C"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rBHA",
+      "refs": [
+        "B",
+        "H",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "10",
+        "side": "BELOW",
+        "unit": "cm"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aBAC",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 105,
+        "label": "105",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aACB",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 45,
+        "label": "45",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "caption": "삼각형 ABC에서 각 BAC=105°, 각 ACB=45°, BC=10cm, AH⊥BC이며 풀이에서는 B=30°를 확인한다.",
+  "accessibilityDescription": "삼각형 ABC에서 각 BAC=105°, 각 ACB=45°, BC=10cm, AH⊥BC이며 풀이에서는 B=30°를 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "삼각형 ABC에서 각 BAC=105°, 각 ACB=45°, BC=10cm, AH⊥BC이며 풀이에서는 B=30°를 확인한다.",
+      "mappedTo": [
+        "displayPoints",
+        "displaySegments",
+        "rightAngles",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 AH 수선·직각·105°·45°·10cm를 복원하고 해설의 30° 유도각까지 추가한다."
+  ],
+  "sourceQuote": "다음 그림과 같은 $\\triangle \\mathrm{ABC}$에서 $\\overline{\\mathrm{AH}} \\perp \\overline{\\mathrm{BC}}$이고, $\\angle \\mathrm{BAC} = 105^\\circ$, $\\angle \\mathrm{ACB} = 45^\\circ$, $\\overline{\\mathrm{BC}"
+}
