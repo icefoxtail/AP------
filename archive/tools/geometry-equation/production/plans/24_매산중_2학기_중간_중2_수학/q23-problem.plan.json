@@ -1,0 +1,77 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": { "text": "① AO=10, BO=6" },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+          "nodes": [
+            { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "10" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+            { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-6" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+            { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "-10" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+            { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "6" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+            { "id": "O", "op": "MIDPOINT", "inputs": ["A", "C"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+          ]
+        },
+        "coordinateCanvas": { "width": 410, "height": 375 },
+        "displayPoints": ["A", "B", "C", "D", "O"],
+        "displaySegments": [
+          { "id": "sAB", "refs": ["A", "B"] }, { "id": "sBC", "refs": ["B", "C"] },
+          { "id": "sCD", "refs": ["C", "D"] }, { "id": "sDA", "refs": ["D", "A"] },
+          { "id": "sAO", "refs": ["A", "O"] }, { "id": "sOC", "refs": ["O", "C"] },
+          { "id": "sBO", "refs": ["B", "O"] }, { "id": "sOD", "refs": ["O", "D"] }
+        ],
+        "planeMarks": {
+          "equalLengths": [{ "id": "eqSides", "count": 1, "segments": ["sAB", "sBC", "sCD", "sDA"] }],
+          "expressionLabels": [
+            { "id": "lAO", "ownerSegment": "sAO", "text": "10", "unit": "cm" },
+            { "id": "lBO", "ownerSegment": "sBO", "text": "6", "unit": "cm" }
+          ]
+        }
+      }
+    },
+    {
+      "caption": { "text": "② AC=16, BD=20" },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+          "nodes": [
+            { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "8" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+            { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-10" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+            { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "-8" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+            { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+            { "id": "O", "op": "MIDPOINT", "inputs": ["A", "C"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+            { "id": "P", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "-15", "denominator": "4" }, { "kind": "integer", "value": "-5" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+          ]
+        },
+        "coordinateCanvas": { "width": 460, "height": 375 },
+        "displayPoints": ["A", "B", "C", "D", "O", "P"],
+        "displaySegments": [
+          { "id": "sAB", "refs": ["A", "B"] }, { "id": "sBP", "refs": ["B", "P"] },
+          { "id": "sPC", "refs": ["P", "C"] }, { "id": "sCD", "refs": ["C", "D"] },
+          { "id": "sDA", "refs": ["D", "A"] }, { "id": "sAO", "refs": ["A", "O"] },
+          { "id": "sOC", "refs": ["O", "C"] }, { "id": "sBO", "refs": ["B", "O"] },
+          { "id": "sOD", "refs": ["O", "D"] }, { "id": "sDP", "refs": ["D", "P"] }
+        ],
+        "planeMarks": {
+          "dimensions": [
+            { "id": "dAC", "from": "A", "to": "C", "label": "16", "unit": "cm", "side": "RIGHT", "style": "ARROW" },
+            { "id": "dBD", "from": "B", "to": "D", "label": "20", "unit": "cm", "side": "ABOVE", "style": "ARROW" }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "매산중 서답형 3의 두 마름모 문제 그림: 대각선·중점·주어진 길이·선분 DP",
+  "accessibilityDescription": "① 마름모의 대각선 교점 O 위쪽 AO는 10cm, 왼쪽 BO는 6cm이다. ② 다른 마름모에서 대각선 AC는 16cm, BD는 20cm이고 BC의 점 P는 BP 대 PC가 5 대 3이다. D와 P를 이었다.",
+  "sourceConditions": [
+    { "id": "first", "condition": "① 마름모 ABCD, O는 대각선의 교점, AO=10cm, BO=6cm", "mappedTo": "panels:0.mathPlan.nodes:A,B,C,D,O;panels:0.planeMarks.expressionLabels:lAO,lBO" },
+    { "id": "second", "condition": "② 마름모 ABCD, AC=16cm, BD=20cm, P는 BC 위, BP:PC=5:3, DP를 그린다", "mappedTo": "panels:1.mathPlan.nodes:A,B,C,D,O,P;panels:1.displaySegments:sBP,sPC,sDP;panels:1.planeMarks.dimensions:dAC,dBD" }
+  ],
+  "newVisualInformation": ["두 소문항을 별도 패널로 표시하되 원본에 없는 회색 카드 배경과 연한 도형 면 채움을 사용하지 않는다.", "두 마름모는 대각선을 서로 이등분하는 실제 좌표를 쓰며, ②의 점 P는 BP:PC=5:3을 정확히 만족한다."]
+}

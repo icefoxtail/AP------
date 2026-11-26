@@ -1,0 +1,54 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": { "text": "① 삼각형의 내심 I" },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": { "schemaVersion": "construction-spike-v1", "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false }, "nodes": [
+          { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "5923962654520", "denominator": "1000000000000" }, { "kind": "rational", "numerator": "7059903775919", "denominator": "1000000000000" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "I", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "5531987580055", "denominator": "1000000000000" }, { "kind": "rational", "numerator": "2579608173398", "denominator": "1000000000000" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+        ] },
+        "coordinateCanvas": { "width": 384, "height": 340 }, "displayPoints": ["A", "B", "C", "I"],
+        "displaySegments": [{ "id": "sAB", "refs": ["A", "B"] }, { "id": "sBC", "refs": ["B", "C"] }, { "id": "sCA", "refs": ["C", "A"] }, { "id": "sAI", "refs": ["A", "I"] }, { "id": "sBI", "refs": ["B", "I"] }, { "id": "sCI", "refs": ["C", "I"] }],
+        "planeMarks": { "angles": [
+          { "id": "aB", "refs": ["I", "B", "C"], "value": 25, "label": "25", "style": "ARC" },
+          { "id": "aC", "refs": ["B", "C", "I"], "value": 30, "label": "30", "style": "ARC" },
+          { "id": "aA", "refs": ["B", "A", "I"], "value": 35, "label": "x", "style": "ARC" }
+        ] }
+      }
+    },
+    {
+      "caption": { "text": "② 원의 색칠된 활꼴" },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": { "schemaVersion": "construction-spike-v1", "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false }, "nodes": [
+          { "id": "O", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "-5656854249492", "denominator": "1000000000000" }, { "kind": "rational", "numerator": "5656854249492", "denominator": "1000000000000" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "-1251475720322", "denominator": "1000000000000" }, { "kind": "rational", "numerator": "-7901506724761", "denominator": "1000000000000" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "5656854249492", "denominator": "1000000000000" }, { "kind": "rational", "numerator": "5656854249492", "denominator": "1000000000000" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "circ", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["O"], "args": { "radius": { "kind": "integer", "value": "8" } }, "outputType": "CIRCLE", "factRole": "GIVEN" }
+        ] },
+        "coordinateCanvas": { "width": 384, "height": 360 }, "displayPoints": ["A", "B", "C", "O"], "displayCircles": ["circ"],
+        "displaySegments": [{ "id": "sAB", "refs": ["A", "B"] }, { "id": "sBC", "refs": ["B", "C"] }, { "id": "sCA", "refs": ["C", "A"] }, { "id": "sOA", "refs": ["O", "A"] }, { "id": "sOB", "refs": ["O", "B"] }, { "id": "sOC", "refs": ["O", "C"] }],
+        "planeMarks": {
+          "angles": [
+            { "id": "aBAO", "refs": ["B", "A", "O"], "value": 27, "label": "27", "style": "ARC" },
+            { "id": "aBCO", "refs": ["B", "C", "O"], "value": 18, "label": "18", "style": "ARC" }
+          ],
+          "expressionLabels": [{ "id": "rOC", "ownerSegment": "sOC", "text": "8" }],
+          "regions": [{ "id": "shadedArcAC", "fill": "LIGHT", "shapes": [{ "segment": { "center": "O", "from": "A", "to": "C", "side": "MINOR" } }] }]
+        }
+      }
+    }
+  ],
+  "caption": "매산중 서답형 2의 내심 반각과 원호 AC의 색칠된 활꼴",
+  "accessibilityDescription": "① 내심 I가 있는 삼각형 ABC에서 B의 반각 25도, C의 반각 30도, A의 반각 x가 표시된다. ② 원 O 위 A, B, C와 세 반지름이 있으며 BAO는 27도, BCO는 18도, 반지름 OC는 8이다. 현 AC와 위쪽 짧은 원호 사이 활꼴만 색칠한다.",
+  "sourceConditions": [
+    { "id": "incenter", "condition": "① I는 삼각형 ABC의 내심이고 B쪽 반각 25°, C쪽 반각 30°, A쪽 반각은 미지수 x", "mappedTo": "panels:0.displaySegments:sAI,sBI,sCI;panels:0.planeMarks.angles:aA,aB,aC" },
+    { "id": "circle", "condition": "② A,B,C는 중심 O, 반지름 8인 원 위에 있으며 ∠BAO=27°, ∠BCO=18°, 현 AC와 작은 호 AC 사이를 색칠", "mappedTo": "panels:1.displayCircles:circ;panels:1.planeMarks.angles:aBAO,aBCO;panels:1.planeMarks.expressionLabels:rOC;panels:1.planeMarks.regions:shadedArcAC" }
+  ],
+  "newVisualInformation": ["첫 패널의 삼각형은 무채움이며 x의 정답 수치 35°를 노출하지 않는다.", "둘째 패널에서만 발문이 명시한 활꼴을 칠하고 원의 나머지 면과 패널 바탕은 흰색이다."]
+}

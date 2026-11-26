@@ -1,0 +1,44 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "8" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "8" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "E", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "5" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "Cp", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "6" }, { "kind": "integer", "value": "8" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "coordinateCanvas": { "width": 570, "height": 440 },
+  "displayPoints": ["A", "B", "C", "D", "E", "Cp"],
+  "pointNames": { "Cp": "C′" },
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sAD", "refs": ["A", "D"] },
+    { "id": "sDE", "refs": ["D", "E"] },
+    { "id": "sEC", "refs": ["E", "C"], "dashed": true },
+    { "id": "sBC", "refs": ["B", "C"], "dashed": true },
+    { "id": "sBE", "refs": ["B", "E"] },
+    { "id": "sBCp", "refs": ["B", "Cp"] },
+    { "id": "sCpE", "refs": ["Cp", "E"] }
+  ],
+  "rightAngles": [{ "id": "rA", "refs": ["B", "A", "Cp"] }],
+  "planeMarks": {
+    "dimensions": [
+      { "id": "dAB", "from": "A", "to": "B", "label": "8", "unit": "cm", "side": "LEFT" },
+      { "id": "dBC", "from": "B", "to": "C", "label": "10", "unit": "cm", "side": "BELOW" },
+      { "id": "dACp", "from": "A", "to": "Cp", "label": "6", "unit": "cm", "side": "ABOVE", "offset": "AUTO" },
+      { "id": "dDCp", "from": "Cp", "to": "D", "label": "4", "unit": "cm", "side": "ABOVE", "offset": "AUTO" }
+    ]
+  },
+  "caption": "접은 후 BC′=10cm, AB=8cm인 직각삼각형으로 AC′=6cm와 DC′=4cm를 구한다",
+  "accessibilityDescription": "직사각형 ABCD에서 BE를 따라 접힌 점 C′가 AD 위에 있다. 원래 점 C는 점선으로 남겼고, 직각삼각형 ABC′의 높이 8, 빗변 10, 윗변 6과 남은 DC′ 4를 표시했다.",
+  "sourceConditions": [
+    { "id": "rect", "condition": "AB=8, BC=10, DE=3; C를 BE로 접어 C′를 얻는다", "mappedTo": ["sAB", "sBC", "sBE", "sBCp", "rA", "dAB", "dBC"] },
+    { "id": "foldLength", "condition": "BC′=BC=10이고 피타고라스 정리에 따라 AC′=6, DC′=10-6=4", "mappedTo": ["sBCp", "dACp", "dDCp", "sAD"] }
+  ],
+  "newVisualInformation": ["접기 전 선분은 점선, 접힌 대응 선분은 실선이다. 풀이 단계에서만 6cm와 4cm를 제시한다.", "불필요한 직사각형·삼각형 면 채움은 없다."]
+}

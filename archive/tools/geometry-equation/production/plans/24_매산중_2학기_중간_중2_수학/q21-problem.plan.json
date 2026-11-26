@@ -1,0 +1,71 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": { "text": "① 이등변삼각형과 외각" },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+          "nodes": [
+            { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+            { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "5" }, { "kind": "rational", "numerator": "2226143426543", "denominator": "1000000000000" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+            { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+            { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "11691306063589", "denominator": "1000000000000" }, { "kind": "rational", "numerator": "5205304828231", "denominator": "1000000000000" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+            { "id": "E", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "14" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+          ]
+        },
+        "coordinateCanvas": { "width": 420, "height": 330 },
+        "displayPoints": ["A", "B", "C", "D", "E"],
+        "displaySegments": [
+          { "id": "sBA", "refs": ["B", "A"] }, { "id": "sAD", "refs": ["A", "D"] },
+          { "id": "sAC", "refs": ["A", "C"] }, { "id": "sCD", "refs": ["C", "D"] },
+          { "id": "sBC", "refs": ["B", "C"] }, { "id": "sCE", "refs": ["C", "E"] }
+        ],
+        "planeMarks": {
+          "equalLengths": [{ "id": "sameThree", "count": 1, "segments": ["sBA", "sAC", "sCD"] }],
+          "angles": [{ "id": "aB", "refs": ["A", "B", "C"], "value": 24, "label": "24", "style": "ARC" }]
+        }
+      }
+    },
+    {
+      "caption": { "text": "② 접는 선 DE" },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+          "nodes": [
+            { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+            { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "5" }, { "kind": "rational", "numerator": "11230183869521", "denominator": "1000000000000" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+            { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+            { "id": "D", "op": "MIDPOINT", "inputs": ["A", "B"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+            { "id": "E", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "8736191374662", "denominator": "1000000000000" }, { "kind": "rational", "numerator": "2838560647688", "denominator": "1000000000000" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+          ]
+        },
+        "coordinateCanvas": { "width": 420, "height": 355 },
+        "displayPoints": ["A", "B", "C", "D", "E"],
+        "displaySegments": [
+          { "id": "sAD", "refs": ["A", "D"], "dashed": true },
+          { "id": "sDB", "refs": ["D", "B"] },
+          { "id": "sAE", "refs": ["A", "E"], "dashed": true },
+          { "id": "sEC", "refs": ["E", "C"] },
+          { "id": "sBC", "refs": ["B", "C"] },
+          { "id": "sDE", "refs": ["D", "E"] },
+          { "id": "sBE", "refs": ["B", "E"] }
+        ],
+        "planeMarks": {
+          "angles": [{ "id": "aEBC", "refs": ["E", "B", "C"], "value": 18, "label": "18", "style": "ARC" }]
+        }
+      }
+    }
+  ],
+  "caption": "매산중 서답형 1의 두 이등변삼각형: 외각 조건과 A를 B로 접는 선 DE",
+  "accessibilityDescription": "첫 그림은 AB와 AC, AC와 CD가 각각 같으며 B의 각 24도, B-A-D와 B-C-E가 일직선이다. 둘째 그림은 이등변삼각형 ABC를 DE로 접어 A와 B가 겹치는 상태로, A에서 D와 E로 가는 원래 모서리는 점선이고 각 EBC는 18도이다.",
+  "sourceConditions": [
+    { "id": "first", "condition": "① AB=AC=CD, B,A,D는 일직선, B,C,E는 일직선, ∠ABC=24°", "mappedTo": "panels:0.displaySegments:sBA,sAD,sAC,sCD,sBC,sCE;panels:0.planeMarks.equalLengths:sameThree;panels:0.planeMarks.angles:aB" },
+    { "id": "second", "condition": "② AB=AC인 삼각형의 점 A가 접는 선 DE로 B에 겹침, ∠EBC=18°", "mappedTo": "panels:1.mathPlan.nodes:A,B,C,D,E;panels:1.displaySegments:sAD,sAE,sDE,sBE;panels:1.planeMarks.angles:aEBC" }
+  ],
+  "newVisualInformation": ["① B의 24°와 동일 길이 세 변의 눈금을 실제 그림에 그리며 답인 외각 DCE의 수치를 노출하지 않는다.", "② 접히기 전 두 변은 점선으로 남기고 18°를 표시하되 답인 ∠A의 값은 쓰지 않는다. 회색 패널과 삼각형 면 채움은 제외한다."]
+}
