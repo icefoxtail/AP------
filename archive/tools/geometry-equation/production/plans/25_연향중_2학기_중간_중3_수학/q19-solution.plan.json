@@ -1,0 +1,359 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "17"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-24",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "64",
+              "denominator": "17"
+            },
+            {
+              "kind": "rational",
+              "numerator": "120",
+              "denominator": "17"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "64",
+              "denominator": "17"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-120",
+              "denominator": "17"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "T",
+    "U",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAT",
+      "refs": [
+        "A",
+        "T"
+      ]
+    },
+    {
+      "id": "sTB",
+      "refs": [
+        "T",
+        "B"
+      ]
+    },
+    {
+      "id": "sAU",
+      "refs": [
+        "A",
+        "U"
+      ]
+    },
+    {
+      "id": "sUC",
+      "refs": [
+        "U",
+        "C"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sOT",
+      "refs": [
+        "O",
+        "T"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOU",
+      "refs": [
+        "O",
+        "U"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOE",
+      "refs": [
+        "O",
+        "E"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "T90",
+      "refs": [
+        "O",
+        "T",
+        "A"
+      ]
+    },
+    {
+      "id": "U90",
+      "refs": [
+        "O",
+        "U",
+        "A"
+      ]
+    },
+    {
+      "id": "E90",
+      "refs": [
+        "O",
+        "E",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "AO17",
+        "ownerSegment": "sOA",
+        "text": "17",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "OT8",
+        "ownerSegment": "sOT",
+        "text": "8",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "AT15",
+        "ownerSegment": "sAT",
+        "text": "15",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "facts": [
+      {
+        "kind": "TANGENT_PERPENDICULAR",
+        "center": "O",
+        "contact": "T",
+        "tangent": "sAT"
+      },
+      {
+        "kind": "TANGENT_PERPENDICULAR",
+        "center": "O",
+        "contact": "U",
+        "tangent": "sAU"
+      },
+      {
+        "kind": "TANGENT_PERPENDICULAR",
+        "center": "O",
+        "contact": "E",
+        "tangent": "sBE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "원 밖 A와 원 O의 접선 두 개, 세 번째 접선 BC가 만드는 삼각형 ABC의 둘레를 구한다.",
+  "accessibilityDescription": "O에서 A까지 17, 원 반지름 8, A에서의 접선 길이 15, 접점 T,U,E와 세 직각표식을 잇는다.",
+  "sourceQuote": "다음 그림에서 $AT$, $AT^{\\prime}$, $BC$는 원 $O$의 접선이고 세 점 $T$, $T^{\\prime}$, $E$는 접점이다. $AO=17\\,\\mathrm{cm}$, $OT=8\\,\\mathrm{cm}$일 때, $\\triangle ABC$의 둘레의 길이는? [4점]",
+  "sourceConditions": [
+    {
+      "id": "given",
+      "condition": "AO=17, OT=8, AT=15",
+      "mappedTo": [
+        "AO17",
+        "OT8",
+        "AT15"
+      ]
+    },
+    {
+      "id": "triangle",
+      "condition": "세 접선이 만드는 ABC와 접점의 직각",
+      "mappedTo": [
+        "sTB",
+        "sUC",
+        "sBE",
+        "sEC",
+        "T90",
+        "U90",
+        "E90"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "현행 해설의 17-8-15 삼각형에는 실제 세 접선이 만드는 ABC와 세 접점의 직각·동등 길이 관계가 충분히 표현되지 않음.",
+    "수식·각호·접점·직각·점선을 사실과 연결하고 무의미한 면 채움과 흰 배경 사각형을 두지 않는다."
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "C",
+    "B"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "C90",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angA",
+        "refs": [
+          "C",
+          "A",
+          "B"
+        ],
+        "label": "A",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "label": "B",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "AC3",
+        "ownerSegment": "sAC",
+        "text": "3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BC4",
+        "ownerSegment": "sCB",
+        "text": "4",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "AB5",
+        "ownerSegment": "sAB",
+        "text": "5",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "sin A=4/5인 직각삼각형에서 tan A와 cos B를 구한다.",
+  "accessibilityDescription": "변 AC=3, CB=4, AB=5인 직각삼각형 ABC, C 직각, A와 B의 각호가 표시되고 면은 채우지 않는다.",
+  "sourceQuote": "$\\angle A+\\angle B=90^\\circ$인 직각삼각형 $ABC$에서 $3\\sin A=-2\\sin A+4$일 때, $\\tan A\\times\\dfrac{1}{\\cos B}+\\tan A\\times\\sin A$의 값은? [4점]",
+  "sourceConditions": [
+    {
+      "id": "ratio",
+      "condition": "sin A=4/5, AC=3, BC=4, AB=5",
+      "mappedTo": [
+        "angA",
+        "angB",
+        "C90",
+        "AC3",
+        "BC4",
+        "AB5"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "현행 해설은 넓이와 무관한 삼각형을 회색으로 채우고 각 A,B의 대응을 각호로 보이지 않음.",
+    "수식·각호·접점·직각·점선을 사실과 연결하고 무의미한 면 채움과 흰 배경 사각형을 두지 않는다."
+  ]
+}

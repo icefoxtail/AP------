@@ -1,0 +1,291 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "A",
+    "H",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "H90",
+      "refs": [
+        "A",
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "B45",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "label": "45",
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "value": 45
+      },
+      {
+        "id": "C30",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "label": "30",
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "value": 30
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "AB8root2",
+        "ownerSegment": "sAB",
+        "text": "8sqrt(2)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BC20",
+        "ownerSegment": "sBC",
+        "text": "20",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "CD10",
+        "ownerSegment": "sCD",
+        "text": "10",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "AH8",
+        "ownerSegment": "sAH",
+        "text": "8",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "regions": [
+      {
+        "id": "areaABC",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "areaACD",
+        "fill": "MEDIUM",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "C",
+              "D"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "사각형 ABCD의 대각선 AC로 삼각형 ABC와 ACD의 넓이를 구분한다.",
+  "accessibilityDescription": "B와 C를 잇는 바닥선, A의 높이 AH, AB=8√2, BC=20, CD=10, ∠ABC=45°, ∠ACD=30°와 대각선 AC를 모두 표시한다.",
+  "sourceQuote": "다음 그림과 같은 사각형 $ABCD$의 넓이는? [5점]",
+  "sourceConditions": [
+    {
+      "id": "given",
+      "condition": "AB=8√2, BC=20, CD=10 및 B=45°, ACD=30°",
+      "mappedTo": [
+        "AB8root2",
+        "BC20",
+        "CD10",
+        "B45",
+        "C30"
+      ]
+    },
+    {
+      "id": "area",
+      "condition": "△ABC와 △ACD의 넓이 분할 및 AH⊥BC",
+      "mappedTo": [
+        "areaABC",
+        "areaACD",
+        "sAC",
+        "sAH",
+        "H90"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 해설은 △ABC만 채우고 D·CD·30° 조건을 통째로 생략해 사각형 전체 넓이의 정당화가 불가능함.",
+    "수식·각호·접점·직각·점선을 사실과 연결하고 무의미한 면 채움과 흰 배경 사각형을 두지 않는다."
+  ]
+}

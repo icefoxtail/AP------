@@ -1,0 +1,347 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "sFD",
+      "refs": [
+        "F",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sBF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sEH",
+      "refs": [
+        "E",
+        "H"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "H90",
+      "refs": [
+        "E",
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angleX",
+        "refs": [
+          "E",
+          "B",
+          "F"
+        ],
+        "label": "x",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "equalAEED",
+        "count": 1,
+        "segments": [
+          "sEA",
+          "sDE"
+        ]
+      },
+      {
+        "id": "equalCFFD",
+        "count": 2,
+        "segments": [
+          "sCF",
+          "sFD"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "BEroot5",
+        "ownerSegment": "sBE",
+        "text": "sqrt(5)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BFroot5",
+        "ownerSegment": "sBF",
+        "text": "sqrt(5)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "EHratio",
+        "ownerSegment": "sEH",
+        "text": "3/sqrt(5)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "regions": [
+      {
+        "id": "areaBEF",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "B",
+              "E",
+              "F"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "정사각형 ABCD에서 E와 F는 각각 AD, CD의 중점이며 ∠EBF=x이다.",
+  "accessibilityDescription": "B에서 E와 F로 잇는 삼각형, 두 중점의 길이 눈금, BF에 내린 수선 EH, ∠EBF 각호가 모두 보인다.",
+  "sourceQuote": "다음 그림과 같이 정사각형 $ABCD$에서 점 $E$, $F$는 각각 $AD$, $CD$의 중점이다. $\\angle EBF=x^\\circ$라 할 때, $\\tan x$의 값은? [5점]",
+  "sourceConditions": [
+    {
+      "id": "square",
+      "condition": "정사각형 ABCD의 변과 E,F의 각각 중점",
+      "mappedTo": [
+        "sAB",
+        "sBC",
+        "sCF",
+        "sFD",
+        "sDE",
+        "sEA",
+        "equalAEED",
+        "equalCFFD"
+      ]
+    },
+    {
+      "id": "ratio",
+      "condition": "∠EBF=x, EH⊥BF와 EH=3/√5",
+      "mappedTo": [
+        "angleX",
+        "sEH",
+        "H90",
+        "EHratio"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 해설의 BEF 면 채움과 x 글씨에 비해 ∠EBF 호·중점 눈금·EH 직각표시가 누락됨.",
+    "수식·각호·접점·직각·점선을 사실과 연결하고 무의미한 면 채움과 흰 배경 사각형을 두지 않는다."
+  ]
+}

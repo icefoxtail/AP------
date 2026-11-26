@@ -1,0 +1,782 @@
+{
+  "schemaVersion": "visual-audit-original-exam-v1",
+  "sourcePath": "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+  "examStem": "25_연향중_2학기_중간_중3_수학",
+  "reviewScope": "중3 2학기 중간, q01–q23 23문항 × 문제·해설 2축",
+  "reviewBasis": "문항 JS 원문·수학 해설, 연결 원본 PNG와 현행 해설 SVG를 Inkscape로 렌더한 접촉 시트를 대조. 새 plan은 실제 엔진의 shallow/full plan-lint를 통과했으며 렌더 후 학생 화면·A4 자동 검수는 별도.",
+  "defaultFillPolicy": "기본 배경 흰색 사각형 금지; 의미 있는 영역 분할/요구된 음영 외 모든 면 채움 금지.",
+  "entries": [
+    {
+      "qid": 1,
+      "axisCount": 2,
+      "problem": {
+        "verdict": "KEEP_ORIGINAL_ASSET",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q1.png",
+        "assetPresent": true,
+        "originalFeaturesChecked": "직각삼각형 ABC에서 BC 중점 D 및 ∠BAD=x.",
+        "drawnFeatureParity": "ORIGINAL_PNG_PRESERVED",
+        "reason": "문제 원본 PNG의 기하조건·라벨·각호/직각을 보존하며 문항 본문에 그대로 연결되어 있음."
+      },
+      "solution": {
+        "verdict": "KEEP_EXISTING_ASSET",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q1-solution.svg",
+        "assetPresent": true,
+        "reason": "직각삼각형 ABC에서 BC 중점 D 및 ∠BAD=x. 기존 해설 SVG의 원문 조건과 용례를 원본 PNG·본문에 대조함. 이번 차수의 누락·배경 오염·품질 저하에 대한 추가 재작성 근거 없음.",
+        "capability": "EXISTING_SVG_PRESERVED",
+        "planPath": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "drawnFeatureParity": "EXISTING_VISUAL_REVIEW_ONLY",
+        "renderedSvgParity": "NOT_RUN"
+      }
+    },
+    {
+      "qid": 2,
+      "axisCount": 2,
+      "problem": {
+        "verdict": "EXEMPT_TEXT_ONLY",
+        "sourceAsset": null,
+        "assetPresent": false,
+        "originalFeaturesChecked": "sin A=4/5, A와 B가 여각인 직각삼각형의 3-4-5 변.",
+        "drawnFeatureParity": "NOT_APPLICABLE",
+        "reason": "그림 없이 원문 텍스트로 조건이 전달됨."
+      },
+      "solution": {
+        "verdict": "REPLAN",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q2-solution.svg",
+        "assetPresent": true,
+        "existingDefect": "sin A=4/5, A와 B가 여각인 직각삼각형의 3-4-5 변.",
+        "capability": "construction-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/25_연향중_2학기_중간_중3_수학/q02-solution.plan.json",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "drawnFeatureParity": "STATIC_1_TO_1_PASS",
+        "expectedFeatures": [
+          "C 직각",
+          "AC3·CB4·AB5",
+          "∠A·∠B 각각 각호",
+          "불필요한 삼각형 채움 없음"
+        ],
+        "mappedFeatures": [
+          "angA",
+          "angB",
+          "C90",
+          "AC3",
+          "BC4",
+          "AB5"
+        ],
+        "missingMappedFieldIds": [],
+        "engineCapabilityPending": null,
+        "renderedSvgParity": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "printA4": "NOT_RUN"
+      }
+    },
+    {
+      "qid": 3,
+      "axisCount": 2,
+      "problem": {
+        "verdict": "KEEP_ORIGINAL_ASSET",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q3.png",
+        "assetPresent": true,
+        "originalFeaturesChecked": "∠B=60°, ∠C=90° 직각삼각형의 삼각비 계산.",
+        "drawnFeatureParity": "ORIGINAL_PNG_PRESERVED",
+        "reason": "문제 원본 PNG의 기하조건·라벨·각호/직각을 보존하며 문항 본문에 그대로 연결되어 있음."
+      },
+      "solution": {
+        "verdict": "EXEMPT_TEXT_SOLUTION",
+        "sourceAsset": null,
+        "reason": "∠B=60°, ∠C=90° 직각삼각형의 삼각비 계산. 수식/본문 풀이가 그림 없이 완결되므로 새 SVG를 만들지 않음.",
+        "capability": "NOT_NEEDED",
+        "planPath": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "drawnFeatureParity": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "qid": 4,
+      "axisCount": 2,
+      "problem": {
+        "verdict": "EXEMPT_TEXT_ONLY",
+        "sourceAsset": null,
+        "assetPresent": false,
+        "originalFeaturesChecked": "cos(2x+10°)=√3/2로 x를 구하는 텍스트식.",
+        "drawnFeatureParity": "NOT_APPLICABLE",
+        "reason": "그림 없이 원문 텍스트로 조건이 전달됨."
+      },
+      "solution": {
+        "verdict": "EXEMPT_TEXT_SOLUTION",
+        "sourceAsset": null,
+        "reason": "cos(2x+10°)=√3/2로 x를 구하는 텍스트식. 수식/본문 풀이가 그림 없이 완결되므로 새 SVG를 만들지 않음.",
+        "capability": "NOT_NEEDED",
+        "planPath": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "drawnFeatureParity": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "qid": 5,
+      "axisCount": 2,
+      "problem": {
+        "verdict": "KEEP_ORIGINAL_ASSET",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q5.png",
+        "assetPresent": true,
+        "originalFeaturesChecked": "반지름 1, 중심각 35° 부채꼴과 AH⊥OB 보조 수선.",
+        "drawnFeatureParity": "ORIGINAL_PNG_PRESERVED",
+        "reason": "문제 원본 PNG의 기하조건·라벨·각호/직각을 보존하며 문항 본문에 그대로 연결되어 있음."
+      },
+      "solution": {
+        "verdict": "EXEMPT_TEXT_SOLUTION",
+        "sourceAsset": null,
+        "reason": "반지름 1, 중심각 35° 부채꼴과 AH⊥OB 보조 수선. 수식/본문 풀이가 그림 없이 완결되므로 새 SVG를 만들지 않음.",
+        "capability": "NOT_NEEDED",
+        "planPath": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "drawnFeatureParity": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "qid": 6,
+      "axisCount": 2,
+      "problem": {
+        "verdict": "EXEMPT_TEXT_ONLY",
+        "sourceAsset": null,
+        "assetPresent": false,
+        "originalFeaturesChecked": "tan x=√3/3·cos y=1/2의 삼각비 식.",
+        "drawnFeatureParity": "NOT_APPLICABLE",
+        "reason": "그림 없이 원문 텍스트로 조건이 전달됨."
+      },
+      "solution": {
+        "verdict": "EXEMPT_TEXT_SOLUTION",
+        "sourceAsset": null,
+        "reason": "tan x=√3/3·cos y=1/2의 삼각비 식. 수식/본문 풀이가 그림 없이 완결되므로 새 SVG를 만들지 않음.",
+        "capability": "NOT_NEEDED",
+        "planPath": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "drawnFeatureParity": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "qid": 7,
+      "axisCount": 2,
+      "problem": {
+        "verdict": "EXEMPT_TEXT_ONLY",
+        "sourceAsset": null,
+        "assetPresent": false,
+        "originalFeaturesChecked": "보기의 여러 특수각 삼각비 대소를 비교하는 텍스트 문항.",
+        "drawnFeatureParity": "NOT_APPLICABLE",
+        "reason": "그림 없이 원문 텍스트로 조건이 전달됨."
+      },
+      "solution": {
+        "verdict": "EXEMPT_TEXT_SOLUTION",
+        "sourceAsset": null,
+        "reason": "보기의 여러 특수각 삼각비 대소를 비교하는 텍스트 문항. 수식/본문 풀이가 그림 없이 완결되므로 새 SVG를 만들지 않음.",
+        "capability": "NOT_NEEDED",
+        "planPath": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "drawnFeatureParity": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "qid": 8,
+      "axisCount": 2,
+      "problem": {
+        "verdict": "KEEP_ORIGINAL_ASSET",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q8.png",
+        "assetPresent": true,
+        "originalFeaturesChecked": "표의 tan x=0.2126, cos13° 값 위치 및 행 열.",
+        "drawnFeatureParity": "ORIGINAL_PNG_PRESERVED",
+        "reason": "문제 원본 PNG의 기하조건·라벨·각호/직각을 보존하며 문항 본문에 그대로 연결되어 있음."
+      },
+      "solution": {
+        "verdict": "EXEMPT_TEXT_SOLUTION",
+        "sourceAsset": null,
+        "reason": "표의 tan x=0.2126, cos13° 값 위치 및 행 열. 수식/본문 풀이가 그림 없이 완결되므로 새 SVG를 만들지 않음.",
+        "capability": "NOT_NEEDED",
+        "planPath": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "drawnFeatureParity": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "qid": 9,
+      "axisCount": 2,
+      "problem": {
+        "verdict": "KEEP_ORIGINAL_ASSET",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q9.png",
+        "assetPresent": true,
+        "originalFeaturesChecked": "∠34° 직각삼각형과 주어진 삼각비 소수값.",
+        "drawnFeatureParity": "ORIGINAL_PNG_PRESERVED",
+        "reason": "문제 원본 PNG의 기하조건·라벨·각호/직각을 보존하며 문항 본문에 그대로 연결되어 있음."
+      },
+      "solution": {
+        "verdict": "EXEMPT_TEXT_SOLUTION",
+        "sourceAsset": null,
+        "reason": "∠34° 직각삼각형과 주어진 삼각비 소수값. 수식/본문 풀이가 그림 없이 완결되므로 새 SVG를 만들지 않음.",
+        "capability": "NOT_NEEDED",
+        "planPath": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "drawnFeatureParity": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "qid": 10,
+      "axisCount": 2,
+      "problem": {
+        "verdict": "KEEP_ORIGINAL_ASSET",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q10.png",
+        "assetPresent": true,
+        "originalFeaturesChecked": "지상 거리 50m, 시선 38°, 눈높이 1.5m, 나무 높이.",
+        "drawnFeatureParity": "ORIGINAL_PNG_PRESERVED",
+        "reason": "문제 원본 PNG의 기하조건·라벨·각호/직각을 보존하며 문항 본문에 그대로 연결되어 있음."
+      },
+      "solution": {
+        "verdict": "REPLAN",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q10-solution.svg",
+        "assetPresent": true,
+        "existingDefect": "지상 거리 50m, 시선 38°, 눈높이 1.5m, 나무 높이.",
+        "capability": "construction-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/25_연향중_2학기_중간_중3_수학/q10-solution.plan.json",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "drawnFeatureParity": "STATIC_1_TO_1_PASS",
+        "expectedFeatures": [
+          "BC50m 거리 치수",
+          "A의 눈높이 1.5m",
+          "시선 AD",
+          "점선 수평선 AH",
+          "∠DAH38°",
+          "나무 꼭대기 D 및 높이 40.5m"
+        ],
+        "mappedFeatures": [
+          "sAH",
+          "sAD",
+          "look38",
+          "eye1p5",
+          "base50",
+          "height40p5",
+          "top39"
+        ],
+        "missingMappedFieldIds": [],
+        "engineCapabilityPending": null,
+        "renderedSvgParity": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "printA4": "NOT_RUN"
+      }
+    },
+    {
+      "qid": 11,
+      "axisCount": 2,
+      "problem": {
+        "verdict": "KEEP_ORIGINAL_ASSET",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q11.png",
+        "assetPresent": true,
+        "originalFeaturesChecked": "AB=7, BC=10, ∠B=45° 삼각형의 높이와 넓이.",
+        "drawnFeatureParity": "ORIGINAL_PNG_PRESERVED",
+        "reason": "문제 원본 PNG의 기하조건·라벨·각호/직각을 보존하며 문항 본문에 그대로 연결되어 있음."
+      },
+      "solution": {
+        "verdict": "KEEP_EXISTING_ASSET",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q11-solution.svg",
+        "assetPresent": true,
+        "reason": "AB=7, BC=10, ∠B=45° 삼각형의 높이와 넓이. 기존 해설 SVG의 원문 조건과 용례를 원본 PNG·본문에 대조함. 이번 차수의 누락·배경 오염·품질 저하에 대한 추가 재작성 근거 없음.",
+        "capability": "EXISTING_SVG_PRESERVED",
+        "planPath": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "drawnFeatureParity": "EXISTING_VISUAL_REVIEW_ONLY",
+        "renderedSvgParity": "NOT_RUN"
+      }
+    },
+    {
+      "qid": 12,
+      "axisCount": 2,
+      "problem": {
+        "verdict": "KEEP_ORIGINAL_ASSET",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q12.png",
+        "assetPresent": true,
+        "originalFeaturesChecked": "반지름 8인 원의 호 AB:BC 비와 내접삼각형.",
+        "drawnFeatureParity": "ORIGINAL_PNG_PRESERVED",
+        "reason": "문제 원본 PNG의 기하조건·라벨·각호/직각을 보존하며 문항 본문에 그대로 연결되어 있음."
+      },
+      "solution": {
+        "verdict": "KEEP_EXISTING_ASSET",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q12-solution.svg",
+        "assetPresent": true,
+        "reason": "반지름 8인 원의 호 AB:BC 비와 내접삼각형. 기존 해설 SVG의 원문 조건과 용례를 원본 PNG·본문에 대조함. 이번 차수의 누락·배경 오염·품질 저하에 대한 추가 재작성 근거 없음.",
+        "capability": "EXISTING_SVG_PRESERVED",
+        "planPath": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "drawnFeatureParity": "EXISTING_VISUAL_REVIEW_ONLY",
+        "renderedSvgParity": "NOT_RUN"
+      }
+    },
+    {
+      "qid": 13,
+      "axisCount": 2,
+      "problem": {
+        "verdict": "KEEP_ORIGINAL_ASSET",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q13.png",
+        "assetPresent": true,
+        "originalFeaturesChecked": "사각형 ABCD, AB=8√2·BC=20·CD=10·∠B45°·∠ACD30°.",
+        "drawnFeatureParity": "ORIGINAL_PNG_PRESERVED",
+        "reason": "문제 원본 PNG의 기하조건·라벨·각호/직각을 보존하며 문항 본문에 그대로 연결되어 있음."
+      },
+      "solution": {
+        "verdict": "REPLAN",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q13-solution.svg",
+        "assetPresent": true,
+        "existingDefect": "사각형 ABCD, AB=8√2·BC=20·CD=10·∠B45°·∠ACD30°.",
+        "capability": "construction-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/25_연향중_2학기_중간_중3_수학/q13-solution.plan.json",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "drawnFeatureParity": "STATIC_1_TO_1_PASS",
+        "expectedFeatures": [
+          "사각형 ABCD 네 변",
+          "대각선 AC",
+          "AB8√2·BC20·CD10",
+          "∠ABC45°",
+          "∠ACD30°",
+          "AH⊥BC",
+          "두 삼각형만 의도적 구분 음영"
+        ],
+        "mappedFeatures": [
+          "AB8root2",
+          "BC20",
+          "CD10",
+          "B45",
+          "C30",
+          "areaABC",
+          "areaACD",
+          "sAC",
+          "sAH",
+          "H90"
+        ],
+        "missingMappedFieldIds": [],
+        "engineCapabilityPending": null,
+        "renderedSvgParity": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "printA4": "NOT_RUN"
+      }
+    },
+    {
+      "qid": 14,
+      "axisCount": 2,
+      "problem": {
+        "verdict": "KEEP_ORIGINAL_ASSET",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q14.png",
+        "assetPresent": true,
+        "originalFeaturesChecked": "원 O의 OA=6, OM=2, AB⊥OM 및 현 중점.",
+        "drawnFeatureParity": "ORIGINAL_PNG_PRESERVED",
+        "reason": "문제 원본 PNG의 기하조건·라벨·각호/직각을 보존하며 문항 본문에 그대로 연결되어 있음."
+      },
+      "solution": {
+        "verdict": "KEEP_EXISTING_ASSET",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q14-solution.svg",
+        "assetPresent": true,
+        "reason": "원 O의 OA=6, OM=2, AB⊥OM 및 현 중점. 기존 해설 SVG의 원문 조건과 용례를 원본 PNG·본문에 대조함. 이번 차수의 누락·배경 오염·품질 저하에 대한 추가 재작성 근거 없음.",
+        "capability": "EXISTING_SVG_PRESERVED",
+        "planPath": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "drawnFeatureParity": "EXISTING_VISUAL_REVIEW_ONLY",
+        "renderedSvgParity": "NOT_RUN"
+      }
+    },
+    {
+      "qid": 15,
+      "axisCount": 2,
+      "problem": {
+        "verdict": "KEEP_ORIGINAL_ASSET",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q15.png",
+        "assetPresent": true,
+        "originalFeaturesChecked": "원호 AB, 현 AD=DB=4, 수직이등분선 CD와 CD=2.",
+        "drawnFeatureParity": "ORIGINAL_PNG_PRESERVED",
+        "reason": "문제 원본 PNG의 기하조건·라벨·각호/직각을 보존하며 문항 본문에 그대로 연결되어 있음."
+      },
+      "solution": {
+        "verdict": "REPLAN",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q15-solution.svg",
+        "assetPresent": true,
+        "existingDefect": "원호 AB, 현 AD=DB=4, 수직이등분선 CD와 CD=2.",
+        "capability": "construction-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/25_연향중_2학기_중간_중3_수학/q15-solution.plan.json",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "drawnFeatureParity": "STATIC_1_TO_1_PASS",
+        "expectedFeatures": [
+          "원 중심 O 반지름5",
+          "현 AD·DB 각각4",
+          "수직이등분선 COD",
+          "D에서 직각",
+          "CD2·OD3",
+          "동등 현 반쪽 눈금"
+        ],
+        "mappedFeatures": [
+          "circ",
+          "CD2",
+          "AD4",
+          "D90",
+          "midChord",
+          "OD3",
+          "OA5"
+        ],
+        "missingMappedFieldIds": [],
+        "engineCapabilityPending": null,
+        "renderedSvgParity": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "printA4": "NOT_RUN"
+      }
+    },
+    {
+      "qid": 16,
+      "axisCount": 2,
+      "problem": {
+        "verdict": "KEEP_ORIGINAL_ASSET",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q16.png",
+        "assetPresent": true,
+        "originalFeaturesChecked": "반지름 4인 원에서 한 점을 중심으로 접는 현 AB.",
+        "drawnFeatureParity": "ORIGINAL_PNG_PRESERVED",
+        "reason": "문제 원본 PNG의 기하조건·라벨·각호/직각을 보존하며 문항 본문에 그대로 연결되어 있음."
+      },
+      "solution": {
+        "verdict": "KEEP_EXISTING_ASSET",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q16-solution.svg",
+        "assetPresent": true,
+        "reason": "반지름 4인 원에서 한 점을 중심으로 접는 현 AB. 기존 해설 SVG의 원문 조건과 용례를 원본 PNG·본문에 대조함. 이번 차수의 누락·배경 오염·품질 저하에 대한 추가 재작성 근거 없음.",
+        "capability": "EXISTING_SVG_PRESERVED",
+        "planPath": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "drawnFeatureParity": "EXISTING_VISUAL_REVIEW_ONLY",
+        "renderedSvgParity": "NOT_RUN"
+      }
+    },
+    {
+      "qid": 17,
+      "axisCount": 2,
+      "problem": {
+        "verdict": "KEEP_ORIGINAL_ASSET",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q17.png",
+        "assetPresent": true,
+        "originalFeaturesChecked": "같은 거리의 현 AB,AC와 OM⊥AB·ON⊥AC, ∠MON130°.",
+        "drawnFeatureParity": "ORIGINAL_PNG_PRESERVED",
+        "reason": "문제 원본 PNG의 기하조건·라벨·각호/직각을 보존하며 문항 본문에 그대로 연결되어 있음."
+      },
+      "solution": {
+        "verdict": "REPLAN",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q17-solution.svg",
+        "assetPresent": true,
+        "existingDefect": "같은 거리의 현 AB,AC와 OM⊥AB·ON⊥AC, ∠MON130°.",
+        "capability": "construction-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/25_연향중_2학기_중간_중3_수학/q17-solution.plan.json",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "drawnFeatureParity": "STATIC_1_TO_1_PASS",
+        "expectedFeatures": [
+          "원 중심 O",
+          "삼각형 ABC와 AB=AC 눈금",
+          "AB 중점 M 및 수선 OM",
+          "AC 중점 N 및 수선 ON",
+          "M,N 두 직각",
+          "중심각 ∠MON130° 호",
+          "∠A50°·∠B65°"
+        ],
+        "mappedFeatures": [
+          "isosceles",
+          "apex50",
+          "base65",
+          "sOM",
+          "sON",
+          "M90",
+          "N90",
+          "central130"
+        ],
+        "missingMappedFieldIds": [],
+        "engineCapabilityPending": null,
+        "renderedSvgParity": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "printA4": "NOT_RUN"
+      }
+    },
+    {
+      "qid": 18,
+      "axisCount": 2,
+      "problem": {
+        "verdict": "KEEP_ORIGINAL_ASSET",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q18.png",
+        "assetPresent": true,
+        "originalFeaturesChecked": "접선 PA·PB, 반지름2, ∠APB=60°, 사각형 APBO 넓이.",
+        "drawnFeatureParity": "ORIGINAL_PNG_PRESERVED",
+        "reason": "문제 원본 PNG의 기하조건·라벨·각호/직각을 보존하며 문항 본문에 그대로 연결되어 있음."
+      },
+      "solution": {
+        "verdict": "REPLAN",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q18-solution.svg",
+        "assetPresent": true,
+        "existingDefect": "접선 PA·PB, 반지름2, ∠APB=60°, 사각형 APBO 넓이.",
+        "capability": "construction-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/25_연향중_2학기_중간_중3_수학/q18-solution.plan.json",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "drawnFeatureParity": "STATIC_1_TO_1_PASS",
+        "expectedFeatures": [
+          "반지름2인 원 O",
+          "접선 PA·PB",
+          "접점 A,B의 직각 둘",
+          "∠APB60°",
+          "PA=PB 눈금",
+          "사각형 APBO만 의도적 음영"
+        ],
+        "mappedFeatures": [
+          "A90",
+          "B90",
+          "APB60",
+          "tangentEq",
+          "OA2",
+          "areaAPBO"
+        ],
+        "missingMappedFieldIds": [],
+        "engineCapabilityPending": null,
+        "renderedSvgParity": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "printA4": "NOT_RUN"
+      }
+    },
+    {
+      "qid": 19,
+      "axisCount": 2,
+      "problem": {
+        "verdict": "KEEP_ORIGINAL_ASSET",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q19.png",
+        "assetPresent": true,
+        "originalFeaturesChecked": "접선 AT·AT′·BC의 접점 T,T′,E, AO17·r8.",
+        "drawnFeatureParity": "ORIGINAL_PNG_PRESERVED",
+        "reason": "문제 원본 PNG의 기하조건·라벨·각호/직각을 보존하며 문항 본문에 그대로 연결되어 있음."
+      },
+      "solution": {
+        "verdict": "REPLAN",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q19-solution.svg",
+        "assetPresent": true,
+        "existingDefect": "접선 AT·AT′·BC의 접점 T,T′,E, AO17·r8.",
+        "capability": "construction-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/25_연향중_2학기_중간_중3_수학/q19-solution.plan.json",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "drawnFeatureParity": "STATIC_1_TO_1_PASS",
+        "expectedFeatures": [
+          "원 O·AO17·반지름8",
+          "A에서 그은 AT·AU 접선",
+          "접선 BC와 접점 E",
+          "세 접점 수선 직각",
+          "AT15",
+          "삼각형 ABC의 세 변"
+        ],
+        "mappedFeatures": [
+          "AO17",
+          "OT8",
+          "AT15",
+          "sTB",
+          "sUC",
+          "sBE",
+          "sEC",
+          "T90",
+          "U90",
+          "E90"
+        ],
+        "missingMappedFieldIds": [],
+        "engineCapabilityPending": null,
+        "renderedSvgParity": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "printA4": "NOT_RUN"
+      }
+    },
+    {
+      "qid": 20,
+      "axisCount": 2,
+      "problem": {
+        "verdict": "KEEP_ORIGINAL_ASSET",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q20.png",
+        "assetPresent": true,
+        "originalFeaturesChecked": "반원 O의 A,B,E 접점, 반지름5, DC=14, 외접 사각형.",
+        "drawnFeatureParity": "ORIGINAL_PNG_PRESERVED",
+        "reason": "문제 원본 PNG의 기하조건·라벨·각호/직각을 보존하며 문항 본문에 그대로 연결되어 있음."
+      },
+      "solution": {
+        "verdict": "REPLAN",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q20-solution.svg",
+        "assetPresent": true,
+        "existingDefect": "반원 O의 A,B,E 접점, 반지름5, DC=14, 외접 사각형.",
+        "capability": "construction-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/25_연향중_2학기_중간_중3_수학/q20-solution.plan.json",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "drawnFeatureParity": "STATIC_1_TO_1_PASS",
+        "expectedFeatures": [
+          "윗 반원 O·OA=OB5",
+          "AD·CB 두 끝점 접선",
+          "공통 접선 D-E-C",
+          "A,B,E 접점 직각 세 곳",
+          "DC=14 전체 경로"
+        ],
+        "mappedFeatures": [
+          "sAB",
+          "upperSemicircle",
+          "sAD",
+          "sDE",
+          "sEC",
+          "sCB",
+          "A90",
+          "B90",
+          "E90",
+          "DC14"
+        ],
+        "missingMappedFieldIds": [],
+        "engineCapabilityPending": null,
+        "renderedSvgParity": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "printA4": "NOT_RUN"
+      }
+    },
+    {
+      "qid": 21,
+      "axisCount": 2,
+      "problem": {
+        "verdict": "KEEP_ORIGINAL_ASSET",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q21.png",
+        "assetPresent": true,
+        "originalFeaturesChecked": "6×8×4 직육면체, 대각선 EG와 공간삼각형 AGE.",
+        "drawnFeatureParity": "ORIGINAL_PNG_PRESERVED",
+        "reason": "문제 원본 PNG의 기하조건·라벨·각호/직각을 보존하며 문항 본문에 그대로 연결되어 있음."
+      },
+      "solution": {
+        "verdict": "REPLAN",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q21-solution.svg",
+        "assetPresent": true,
+        "existingDefect": "6×8×4 직육면체, 대각선 EG와 공간삼각형 AGE.",
+        "capability": "solid-figure-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/25_연향중_2학기_중간_중3_수학/q21-solution.plan.json",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "drawnFeatureParity": "STATIC_1_TO_1_PASS",
+        "expectedFeatures": [
+          "직육면체 6×8×4 전체 모서리",
+          "숨은 모서리 점선",
+          "밑면 대각선 EG=10",
+          "높이 AE4",
+          "공간 대각선 AG",
+          "∠AGE=x 호",
+          "E 직각"
+        ],
+        "mappedFeatures": [
+          "AB",
+          "BC",
+          "AE",
+          "EG"
+        ],
+        "missingMappedFieldIds": [],
+        "engineCapabilityPending": null,
+        "renderedSvgParity": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "printA4": "NOT_RUN"
+      }
+    },
+    {
+      "qid": 22,
+      "axisCount": 2,
+      "problem": {
+        "verdict": "KEEP_ORIGINAL_ASSET",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q22.png",
+        "assetPresent": true,
+        "originalFeaturesChecked": "좌표 A(4,3), B(-2,1), C(2,-2)를 잇는 삼각형 풀이.",
+        "drawnFeatureParity": "ORIGINAL_PNG_PRESERVED",
+        "reason": "문제 원본 PNG의 기하조건·라벨·각호/직각을 보존하며 문항 본문에 그대로 연결되어 있음."
+      },
+      "solution": {
+        "verdict": "KEEP_EXISTING_ASSET",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q22-solution-v2.svg",
+        "assetPresent": true,
+        "reason": "좌표 A(4,3), B(-2,1), C(2,-2)를 잇는 삼각형 풀이. 기존 해설 SVG의 원문 조건과 용례를 원본 PNG·본문에 대조함. 이번 차수의 누락·배경 오염·품질 저하에 대한 추가 재작성 근거 없음.",
+        "capability": "EXISTING_SVG_PRESERVED",
+        "planPath": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "drawnFeatureParity": "EXISTING_VISUAL_REVIEW_ONLY",
+        "renderedSvgParity": "NOT_RUN"
+      }
+    },
+    {
+      "qid": 23,
+      "axisCount": 2,
+      "problem": {
+        "verdict": "KEEP_ORIGINAL_ASSET",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q23.png",
+        "assetPresent": true,
+        "originalFeaturesChecked": "직각삼각형 ABC의 내접원, AF8·CF12, 원 밖 음영 영역.",
+        "drawnFeatureParity": "ORIGINAL_PNG_PRESERVED",
+        "reason": "문제 원본 PNG의 기하조건·라벨·각호/직각을 보존하며 문항 본문에 그대로 연결되어 있음."
+      },
+      "solution": {
+        "verdict": "REPLAN",
+        "sourceAsset": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q23-solution.svg",
+        "assetPresent": true,
+        "existingDefect": "직각삼각형 ABC의 내접원, AF8·CF12, 원 밖 음영 영역.",
+        "capability": "construction-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/25_연향중_2학기_중간_중3_수학/q23-solution.plan.json",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "drawnFeatureParity": "STATIC_1_TO_1_PASS",
+        "expectedFeatures": [
+          "직각삼각형 ABC·B 직각",
+          "내접원 O 반지름4",
+          "3접점 D,E,F의 수선 직각",
+          "AF8·CF12",
+          "삼각형 내부의 원 밖 영역만 정확한 음영",
+          "원 안쪽 미채움"
+        ],
+        "mappedFeatures": [
+          "B90",
+          "AF8",
+          "CF12",
+          "incircle",
+          "D90",
+          "E90",
+          "F90",
+          "r4",
+          "shadedOutside"
+        ],
+        "missingMappedFieldIds": [],
+        "engineCapabilityPending": null,
+        "renderedSvgParity": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "printA4": "NOT_RUN"
+      }
+    }
+  ],
+  "outcome": {
+    "qidCount": 23,
+    "axisCount": 46,
+    "originalProblemAssetsPreserved": 19,
+    "replanned": 10,
+    "kept": 25,
+    "exempt": 11,
+    "shallowPass": 10,
+    "fullPass": 10,
+    "drawnFeatureParityStaticPass": 10,
+    "engineCapabilityPending": 0,
+    "renderedSvgVisualQa": "NOT_RUN",
+    "studentView": "NOT_RUN",
+    "printA4": "NOT_RUN",
+    "publishedVisualParity": "NOT_RUN"
+  },
+  "notice": "기존 JS 원본·SVG 파일을 덮어쓰지 않고 새로운 실행 가능한 JSON plan만 추가. plan-lint full은 Chrome 레이아웃까지 검증하지 않으므로 실제 SVG 학생뷰·A4 시각 패리티가 PASS인 양 주장하지 않는다. ENGINE_CAPABILITY_PENDING은 수학 보조 도식이 full-lint PASS여도 물체 파편 원본의 모든 형상을 미재현한 상태."
+}
