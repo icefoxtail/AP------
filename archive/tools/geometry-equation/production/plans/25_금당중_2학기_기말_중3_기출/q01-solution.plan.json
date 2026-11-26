@@ -1,0 +1,70 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O", "op": "SOURCE_POINT", "inputs": [],
+        "args": {"coordinates": [{"kind": "integer", "value": "0"}, {"kind": "integer", "value": "0"}]},
+        "outputType": "POINT", "factRole": "GIVEN"
+      },
+      {
+        "id": "X", "op": "TRANSLATE_POINT", "inputs": ["O"],
+        "args": {"dx": {"kind": "integer", "value": "10"}, "dy": {"kind": "integer", "value": "0"}},
+        "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["O"],
+        "args": {"radius": {"kind": "integer", "value": "10"}},
+        "outputType": "CIRCLE", "factRole": "GIVEN"
+      },
+      {
+        "id": "A", "op": "POLAR_POINT", "inputs": ["O", "X"],
+        "args": {"length": {"kind": "integer", "value": "10"}, "angleDeg": {"kind": "integer", "value": "203"}, "turn": "CCW"},
+        "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B", "op": "POLAR_POINT", "inputs": ["O", "X"],
+        "args": {"length": {"kind": "integer", "value": "10"}, "angleDeg": {"kind": "integer", "value": "337"}, "turn": "CCW"},
+        "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C", "op": "POLAR_POINT", "inputs": ["O", "X"],
+        "args": {"length": {"kind": "integer", "value": "10"}, "angleDeg": {"kind": "integer", "value": "270"}, "turn": "CCW"},
+        "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": ["O", "A", "B", "C"],
+  "hiddenPointNames": ["A", "B", "C"],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": ["k"],
+  "displaySegments": [
+    {"id": "sOA", "refs": ["O", "A"]},
+    {"id": "sOB", "refs": ["O", "B"]},
+    {"id": "sAC", "refs": ["A", "C"]},
+    {"id": "sBC", "refs": ["B", "C"]}
+  ],
+  "planeMarks": {
+    "angles": [
+      {"id": "aO", "refs": ["A", "O", "B"], "value": 134, "label": "134", "style": "ARC", "color": "BLUE", "factRole": "GIVEN"},
+      {"id": "aC", "refs": ["A", "C", "B"], "value": 113, "label": "x", "style": "ARC", "color": "WARM", "factRole": "GIVEN"}
+    ],
+    "arcs": [
+      {"id": "arcAB", "circle": "k", "center": "O", "from": "A", "to": "B", "side": "MAJOR", "label": "226", "color": "WARM", "factRole": "DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "caption": "134°인 중심각의 반대쪽 큰 호는 226°이며, 그 호를 보는 원주각은 절반이다.",
+  "sourceQuote": "다음 그림에서 \\angle x의 크기를 구하면?",
+  "sourceConditions": [
+    {"id": "c1", "condition": "중심 O와 원 위 세 점 사이에 OA, OB, AC, BC가 그려져 있다.", "mappedTo": ["mathPlan.nodes", "displayCircles", "displaySegments"]},
+    {"id": "c2", "condition": "작은 중심각 AOB가 134°이고 C의 원주각 x는 반대편 큰 호 AB를 본다.", "mappedTo": ["planeMarks.angles", "planeMarks.arcs"]}
+  ],
+  "newVisualInformation": ["면 채움 없이 두 각호와 큰 호 226°를 색 선으로 구분한다."]
+}
