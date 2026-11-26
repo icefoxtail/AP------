@@ -5,7 +5,9 @@
 // (a broken exam JS still throws), minus only the comparison with registered bytes. Duplicate questionUid is guarded elsewhere
 // (verify-archive-registration in the PR registration projection of ci.yml), unchanged by this split.
 import assert from 'node:assert/strict';
+import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
@@ -42,6 +44,40 @@ test('main save test starts after successful registration, not on an unregistere
     'tests/helpers/archive2-save-roundtrip-harness.mjs', 'tests/helpers/archive2-scope-harness.cjs',
     '.github/workflows/archive2-save-roundtrip.yml',
   ]) assert.ok(workflow.includes(path), `save-sensitive trigger path missing: ${path}`);
+});
+
+test('post-registration scope selection runs only for relevant changes and fails open for truncated commits', t => {
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'archive2-save-scope-'));
+  t.after(() => fs.rmSync(tmp, { recursive: true, force: true }));
+  const output = path.join(tmp, 'github-output');
+  const scope = workflow.slice(workflow.indexOf('      - name: Check the triggering commit for save-sensitive files'), workflow.indexOf('\n  save-round-trip:\n'));
+  const scriptStart = scope.indexOf('        run: |\n');
+  assert.ok(scriptStart >= 0);
+  const script = scope.slice(scriptStart + '        run: |\n'.length).split('\n').map(line => line.replace(/^ {10}/, '')).join('\n');
+  const run = (event, changed = [], result = 'success') => {
+    // The GitHub CLI is replaced with the exact commit path list. No network or production access.
+    const bash = 'gh() { printf "%s\\n" "$FAKE_CHANGED_PATHS"; }\n' + script;
+    fs.writeFileSync(output, '');
+    const response = spawnSync('bash', ['-c', bash], {
+      encoding: 'utf8',
+      env: {
+        ...process.env,
+        EVENT_NAME: event, SOURCE_EVENT: 'push', SOURCE_RESULT: result,
+        SOURCE_SHA: 'a'.repeat(40), GITHUB_REPOSITORY: 'icefoxtail/AP------',
+        GITHUB_OUTPUT: output, GITHUB_STEP_SUMMARY: '/dev/null',
+        FAKE_CHANGED_PATHS: changed.join('\n'),
+      },
+    });
+    assert.equal(response.status, 0, response.stderr);
+    return fs.readFileSync(output, 'utf8').match(/run_save=(true|false)/)?.[1];
+  };
+  assert.equal(run('pull_request'), 'true');
+  assert.equal(run('workflow_dispatch'), 'true');
+  assert.equal(run('workflow_run', ['docs/readme.md']), 'false');
+  assert.equal(run('workflow_run', ['archive/data/question-metadata/v1/sample.json']), 'true');
+  assert.equal(run('workflow_run', ['archive/tools/build-archive2-catalog.mjs']), 'true');
+  assert.equal(run('workflow_run', ['archive/data/entry.json'], 'failure'), 'false');
+  assert.equal(run('workflow_run', Array.from({ length: 300 }, (_, i) => `docs/${i}.md`)), 'true');
 });
 
 test('pull request builds the package shards from sources, main and manual runs keep --package-only', () => {
