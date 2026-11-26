@@ -1,0 +1,38 @@
+{
+  "capability": "number-line-figure-v1",
+  "caption": "직각삼각형의 빗변은 √5이고, A(3)에서 오른쪽으로 √5를 옮기면 P는 3+√5이다.",
+  "accessibilityDescription": "수직선의 A(3)에서 가로 한 칸과 세로 두 칸인 직각삼각형의 빗변을 컴퍼스 호로 옮긴 P의 값 3+√5를 나타낸다.",
+  "numberLine": {
+    "axisVariable": false,
+    "constructions": [
+      {
+        "id": "cA",
+        "center": "A",
+        "radius": { "value": "sqrt(5)" },
+        "arc": { "side": "RIGHT" },
+        "hits": [{ "id": "P", "branch": "RIGHT" }],
+        "source": { "grid": true, "from": [3, 0], "to": [4, 2] }
+      }
+    ],
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          { "id": "A", "value": "3", "showValue": true },
+          { "id": "P", "value": "3+sqrt(5)", "showValue": true }
+        ]
+      }
+    ]
+  },
+  "sourceConditions": [
+    { "id": "A3", "condition": "점 A는 3에 있고 P는 A의 양의 방향에 있다.", "mappedTo": ["numberLine.rows[0].points[0].value", "numberLine.constructions[0].arc.side"] },
+    { "id": "legs", "condition": "직각삼각형의 두 직각변의 길이는 1과 2이다.", "mappedTo": "numberLine.constructions[0].source.from/to 및 1×2 격자" },
+    { "id": "hyp", "condition": "피타고라스 정리로 빗변은 √(1²+2²)=√5이다.", "mappedTo": "numberLine.constructions[0].radius.value" },
+    { "id": "Pvalue", "condition": "점 P는 3+√5에 대응한다.", "mappedTo": "numberLine.rows[0].points[1].value/showValue=true" }
+  ],
+  "newVisualInformation": [
+    "정확한 √5 반지름의 컴퍼스 호로 A에서 P까지의 이동을 보인다.",
+    "해설 축에서는 P 아래에 3+√5의 정확한 값을 표시한다."
+  ]
+}
