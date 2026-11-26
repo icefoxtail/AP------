@@ -1,0 +1,111 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2.88675,
+            1.66667
+          ]
+        ]
+      },
+      "height": 4,
+      "names": "DEFABC"
+    },
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            4.330125,
+            2.500005
+          ]
+        ]
+      },
+      "height": 6,
+      "names": "D′E′F′A′B′C′"
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "edge": "AD",
+      "label": "4 cm"
+    },
+    {
+      "solid": "s1",
+      "edge": "DE",
+      "label": "2 cm"
+    },
+    {
+      "solid": "s2",
+      "edge": [
+        "A′",
+        "D′"
+      ],
+      "label": "6 cm"
+    },
+    {
+      "solid": "s2",
+      "edge": [
+        "A′",
+        "C′"
+      ],
+      "label": "5 cm"
+    }
+  ],
+  "marks": {
+    "angles": [
+      {
+        "refs": [
+          "B′",
+          "A′",
+          "C′"
+        ],
+        "value": 30,
+        "arcs": 1,
+        "label": "30^\\circ"
+      }
+    ]
+  },
+  "solidCaption": {
+    "text": "닮은 두 삼각기둥"
+  },
+  "caption": "서로 닮은 작은 삼각기둥 ABC-DEF와 큰 삼각기둥 A′B′C′-D′E′F′의 주어진 치수.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "AD=4cm, DE=2cm, A′D′=6cm, A′C′=5cm, ∠B′A′C′=30°",
+      "mappedTo": [
+        "s1",
+        "s2",
+        "dims",
+        "marks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "작은 삼각기둥과 큰 삼각기둥을 같은 배율로 투영하며 숨은 모서리와 각도를 보인다."
+  ]
+}

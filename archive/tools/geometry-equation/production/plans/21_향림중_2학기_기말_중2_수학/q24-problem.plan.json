@@ -1,0 +1,230 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circAC",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circDC",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "interAC",
+        "op": "INTERSECTION",
+        "inputs": [
+          "circAC",
+          "circDC"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "interAC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "B",
+            "A"
+          ],
+          "sign": -1
+        }
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "D",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "ad",
+        "from": "D",
+        "to": "A",
+        "label": "4",
+        "unit": "cm",
+        "side": "ABOVE"
+      },
+      {
+        "id": "bd",
+        "from": "B",
+        "to": "D",
+        "label": "5",
+        "unit": "cm",
+        "side": "ABOVE"
+      },
+      {
+        "id": "ac",
+        "from": "A",
+        "to": "C",
+        "label": "6",
+        "unit": "cm",
+        "side": "RIGHT"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "dc",
+        "ownerSegment": "sDC",
+        "text": "3",
+        "unit": "cm"
+      }
+    ]
+  },
+  "caption": "AB 위의 D와 C를 이은 △ABC, AD=4, BD=5, AC=6, CD=3의 원문 도식.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "AD=4cm, BD=5cm, AC=6cm, DC=3cm",
+      "mappedTo": [
+        "A",
+        "D",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 AD=4,BD=5,AC=6,DC=3을 두 원의 교점으로 실제 도형에 정확히 대응시키고, BC 값은 문제 축에서 노출하지 않는다."
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 460
+  }
+}

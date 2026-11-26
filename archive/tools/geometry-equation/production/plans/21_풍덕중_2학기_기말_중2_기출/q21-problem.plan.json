@@ -1,0 +1,60 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-2",
+          "2/3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [],
+    "viewport": [
+      -2,
+      7,
+      -5,
+      4
+    ],
+    "axisTickValues": {
+      "x": [
+        "3"
+      ],
+      "y": [
+        "-2"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "axis": "y",
+          "value": "-2",
+          "unnamed": true
+        },
+        {
+          "id": "B",
+          "axis": "x",
+          "value": "3",
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "기울기를 묻는 서술형의 미지수 식 y=ax+b에 대응하는 선.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "원문 두 절편 (0,-2),(3,0), 기울기 값 및 함수식을 문제 그림에 쓰지 않음",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 그래프의 축 눈금·관측점과 직선을 재구성하며 미지 기울기/절편 수치를 라벨에 노출하지 않는다."
+  ]
+}

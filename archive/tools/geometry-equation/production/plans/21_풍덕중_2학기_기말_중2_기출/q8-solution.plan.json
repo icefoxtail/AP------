@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      5,
+      -6,
+      6
+    ],
+    "curves": [
+      {
+        "id": "given",
+        "kind": "LINE",
+        "coefficients": [
+          "-11/3",
+          "2/3"
+        ],
+        "domain": [
+          "-3",
+          "5"
+        ],
+        "color": "BLUE",
+        "label": "y=(2/3)x-11/3"
+      },
+      {
+        "id": "required",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "2/3"
+        ],
+        "domain": [
+          "-3",
+          "5"
+        ],
+        "color": "WARM",
+        "label": "y=(2/3)x+2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "2"
+      ]
+    }
+  },
+  "caption": "기울기 2/3이 같은 두 평행 직선과 (0,2)를 지나는 해설 직선.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "기울기 2/3이 같은 두 평행 직선과 (0,2)를 지나는 해설 직선.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "두 직선의 기울기와 절편을 같은 좌표평면에서 비교한다."
+  ]
+}

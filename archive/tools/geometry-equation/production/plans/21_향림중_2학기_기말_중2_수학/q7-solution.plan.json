@@ -1,0 +1,52 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "CYLINDER",
+      "radius": 6,
+      "height": 9
+    },
+    {
+      "kind": "CYLINDER",
+      "radius": 8,
+      "height": 12
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "height": true,
+      "label": "9 cm"
+    },
+    {
+      "solid": "s1",
+      "radius": "top",
+      "label": "6 cm"
+    },
+    {
+      "solid": "s2",
+      "height": true,
+      "label": "12 cm"
+    },
+    {
+      "solid": "s2",
+      "radius": "top",
+      "label": "8 cm"
+    }
+  ],
+  "solidCaption": {
+    "text": "닮은 두 원기둥"
+  },
+  "caption": "해설: 작은 원기둥의 반지름은 6cm와 높이 9cm, 큰 원기둥의 높이는 12cm.",
+  "sourceConditions": [
+    {
+      "id": "solution",
+      "condition": "두 닮은 원기둥에서 반지름 6×(12/9)=8, 큰 밑넓이는 64π cm².",
+      "mappedTo": "dims"
+    }
+  ],
+  "newVisualInformation": [
+    "큰 원기둥의 반지름은 해설 축에서만 8cm로 표기."
+  ]
+}

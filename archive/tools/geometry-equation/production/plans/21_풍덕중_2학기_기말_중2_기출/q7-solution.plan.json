@@ -1,0 +1,70 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-2/3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [],
+    "viewport": [
+      -5,
+      6,
+      -2,
+      6
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "3"
+      ],
+      "y": [
+        "2",
+        "4"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "L",
+          "curveX": "-3",
+          "unnamed": true,
+          "coordinates": true
+        },
+        {
+          "id": "R",
+          "axis": "x",
+          "value": "3",
+          "unnamed": true,
+          "coordinates": true
+        },
+        {
+          "id": "Y",
+          "axis": "y",
+          "value": "2",
+          "unnamed": true,
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "두 관측점 (−3,4),(3,0)에서 기울기 −2/3, y절편 2를 찾는다.",
+  "sourceConditions": [
+    {
+      "id": "equation",
+      "condition": "두 관측점 (−3,4),(3,0)에서 기울기 −2/3, y절편 2를 찾는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "기울기·절편 및 주어진 좌표를 실제 좌표축과 대응하는 해설 그래프로 나타낸다."
+  ]
+}

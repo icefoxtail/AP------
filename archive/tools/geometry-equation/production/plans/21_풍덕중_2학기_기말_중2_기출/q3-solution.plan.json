@@ -1,0 +1,62 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [],
+    "viewport": [
+      -4,
+      2,
+      -3,
+      8
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2"
+      ],
+      "y": [
+        "4"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "X",
+          "axis": "x",
+          "value": "-2",
+          "unnamed": true,
+          "coordinates": true
+        },
+        {
+          "id": "Y",
+          "axis": "y",
+          "value": "4",
+          "unnamed": true,
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "일차함수 y=2x+4의 x절편 −2와 y절편 4.",
+  "sourceConditions": [
+    {
+      "id": "equation",
+      "condition": "일차함수 y=2x+4의 x절편 −2와 y절편 4.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "기울기·절편 및 주어진 좌표를 실제 좌표축과 대응하는 해설 그래프로 나타낸다."
+  ]
+}

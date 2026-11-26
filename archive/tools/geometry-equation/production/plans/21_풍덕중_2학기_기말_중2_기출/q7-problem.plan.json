@@ -1,0 +1,59 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-2/3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [],
+    "viewport": [
+      -5,
+      6,
+      -2,
+      6
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "3"
+      ],
+      "y": [
+        "4"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "-3",
+          "unnamed": true
+        },
+        {
+          "id": "B",
+          "curveX": "3",
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "x=-3에서 y=4, x=3에서 y=0을 지나는 하강 직선.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "원문 그림의 두 점 (-3,4),(3,0) 및 x=-3,3 y=4 눈금",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 그래프의 축 눈금·관측점과 직선을 재구성하며 미지 기울기/절편 수치를 라벨에 노출하지 않는다."
+  ]
+}

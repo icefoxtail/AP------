@@ -1,0 +1,276 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-12",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-3",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "28",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-3",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "14",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "27",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sBO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a60",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC"
+      },
+      {
+        "id": "a50",
+        "refs": [
+          "C",
+          "A",
+          "D"
+        ],
+        "value": 50,
+        "label": "50",
+        "style": "ARC"
+      }
+    ],
+    "parallels": [
+      {
+        "id": "par1",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sCD"
+        ]
+      },
+      {
+        "id": "par2",
+        "count": 2,
+        "segments": [
+          "sBC",
+          "sDA"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "d7",
+        "from": "C",
+        "to": "D",
+        "label": "7",
+        "unit": "cm",
+        "side": "RIGHT"
+      },
+      {
+        "id": "d10",
+        "from": "B",
+        "to": "D",
+        "label": "10",
+        "unit": "cm",
+        "style": "INLINE",
+        "side": "ABOVE"
+      }
+    ]
+  },
+  "caption": "두 대각선 AC와 BD가 O에서 만나는 평행사변형의 각과 길이.",
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 440
+  },
+  "sourceConditions": [
+    {
+      "id": "source1",
+      "condition": "∠BAC=60°",
+      "mappedTo": [
+        "a60"
+      ]
+    },
+    {
+      "id": "source2",
+      "condition": "∠CAD=50°",
+      "mappedTo": [
+        "a50"
+      ]
+    },
+    {
+      "id": "source3",
+      "condition": "CD=7 cm, BD=10 cm",
+      "mappedTo": [
+        "d7",
+        "d10"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 도형의 점·연결 선분·표식과 길이 라벨을 독립된 실행형 plan 요소로 대응했다."
+  ]
+}
