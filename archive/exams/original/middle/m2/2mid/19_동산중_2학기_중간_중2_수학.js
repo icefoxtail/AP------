@@ -1012,3 +1012,13 @@ window.examData = {
   }
 ]
 };
+
+// 9번 시각 자료 원본 대조: 3cm와 4cm는 수선 OD·OF가 아니라
+// 변 위의 분할 길이 AD·FC이다. 설명 대체문구만 바로잡는다.
+{
+  const q9 = window.examData.questions.find((q) => q.id === 9);
+  q9.solutionImageAlt = '삼각형 ABC에서 외심 O는 BC의 중점이며, AB의 중점 D와 AC의 중점 F로 향하는 수선 OD·OF가 그어져 있다. 원본의 AD=3cm, FC=4cm가 변 위에 적혀 있다.';
+  q9.solutionImageCaption = 'AD=DB=3cm이므로 AB=6cm, AF=FC=4cm이므로 AC=8cm이다. O가 BC 위에 있는 외심이므로 ∠A=90°이고 BC=10cm이다. 따라서 둘레는 6+8+10=24cm(⑤)이다.';
+  // 수선에 잘못 3/4cm를 단 구형 SVG 대신 원본 에셋을 임시 표시한다.
+  q9.solutionImage = 'assets/images/19_동산중_2학기_중간_중2_수학/q09.png';
+}

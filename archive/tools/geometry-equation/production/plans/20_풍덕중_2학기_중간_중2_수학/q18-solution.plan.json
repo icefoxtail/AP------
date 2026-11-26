@@ -9,7 +9,7 @@
     },
     "nodes": [
       {
-        "id": "B",
+        "id": "A",
         "op": "SOURCE_POINT",
         "inputs": [],
         "args": {
@@ -28,270 +28,229 @@
         "factRole": "GIVEN"
       },
       {
-        "id": "C",
-        "op": "TRANSLATE_POINT",
-        "inputs": [
-          "B"
-        ],
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
         "args": {
-          "dx": {
-            "kind": "integer",
-            "value": "3"
-          },
-          "dy": {
-            "kind": "integer",
-            "value": "0"
-          }
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
         },
         "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
+        "factRole": "GIVEN"
       },
       {
-        "id": "A",
-        "op": "TRANSLATE_POINT",
-        "inputs": [
-          "B"
-        ],
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
         "args": {
-          "dx": {
-            "kind": "integer",
-            "value": "6"
-          },
-          "dy": {
-            "kind": "integer",
-            "value": "8"
-          }
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
         },
         "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
+        "factRole": "GIVEN"
       },
       {
         "id": "D",
-        "op": "TRANSLATE_POINT",
-        "inputs": [
-          "A"
-        ],
+        "op": "SOURCE_POINT",
+        "inputs": [],
         "args": {
-          "dx": {
-            "kind": "integer",
-            "value": "7"
-          },
-          "dy": {
-            "kind": "integer",
-            "value": "0"
-          }
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
         },
         "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "ac",
-        "op": "LINE_THROUGH",
-        "inputs": [
-          "A",
-          "C"
-        ],
-        "args": {},
-        "outputType": "LINE",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "bd",
-        "op": "LINE_THROUGH",
-        "inputs": [
-          "B",
-          "D"
-        ],
-        "args": {},
-        "outputType": "LINE",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "F",
-        "op": "LINE_INTERSECTION",
-        "inputs": [
-          "ac",
-          "bd"
-        ],
-        "args": {},
-        "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "bc",
-        "op": "LINE_THROUGH",
-        "inputs": [
-          "B",
-          "C"
-        ],
-        "args": {},
-        "outputType": "LINE",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "ab",
-        "op": "LINE_THROUGH",
-        "inputs": [
-          "A",
-          "B"
-        ],
-        "args": {},
-        "outputType": "LINE",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "pl",
-        "op": "PARALLEL_THROUGH",
-        "inputs": [
-          "F",
-          "bc"
-        ],
-        "args": {},
-        "outputType": "LINE",
-        "factRole": "DERIVED_INTERMEDIATE"
+        "factRole": "GIVEN"
       },
       {
         "id": "E",
-        "op": "LINE_INTERSECTION",
-        "inputs": [
-          "pl",
-          "ab"
-        ],
-        "args": {},
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
         "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "rational",
+              "numerator": "21",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
       }
     ]
   },
+  "displayLines": [],
+  "displayCircles": [],
   "displayPoints": [
     "A",
-    "D",
     "B",
     "C",
+    "D",
     "E",
     "F"
   ],
   "displaySegments": [
     {
-      "id": "AE",
+      "id": "sAB",
       "refs": [
         "A",
-        "E"
-      ]
-    },
-    {
-      "id": "EB",
-      "refs": [
-        "E",
         "B"
       ]
     },
     {
-      "id": "BC",
+      "id": "sBC",
       "refs": [
         "B",
         "C"
       ]
     },
     {
-      "id": "CD",
+      "id": "sCD",
       "refs": [
         "C",
         "D"
       ]
     },
     {
-      "id": "DA",
+      "id": "sDA",
       "refs": [
         "D",
         "A"
       ]
     },
     {
-      "id": "AF",
+      "id": "sAC",
       "refs": [
         "A",
-        "F"
-      ]
-    },
-    {
-      "id": "FC",
-      "refs": [
-        "F",
         "C"
       ]
     },
     {
-      "id": "BF",
+      "id": "sBD",
       "refs": [
         "B",
-        "F"
-      ]
-    },
-    {
-      "id": "FD",
-      "refs": [
-        "F",
         "D"
       ]
     },
     {
-      "id": "EF",
+      "id": "sEF",
       "refs": [
         "E",
         "F"
       ]
     }
   ],
-  "displayCircles": [],
-  "displayLines": [],
-  "caption": "예: AD=7cm, BC=3cm, AB=10cm인 사다리꼴로 그렸다. AD∥BC이므로 △AFD∽△CFB이고 AF:FC=7:3이다. △ABC에서 EF∥BC이므로 AE:AB=AF:AC=7:10이고 y=AE=7, x=EF=(7/10)×3=2.1이다. 따라서 x+y=2.1+7=9.1cm이고 답은 ⑤이다.",
-  "accessibilityDescription": "사다리꼴 ABCD의 두 대각선이 점 F에서 만나고 F를 지나 밑변 BC에 평행한 선분 EF가 변 AB 위의 점 E까지 그어져 있다. AD 7, BC 3, EF x=2.1, AE y=7이 적혀 있다.",
-  "newVisualInformation": [
-    "AD∥BC에서 AF:FC=7:3이고 EF∥BC로 AE:AB=7:10이어서 EF=2.1, AE=7"
-  ],
-  "sourceConditions": [
-    {
-      "id": "source",
-      "condition": "<p>18. 다음 그림에서 $\\overline{\\mathrm{AD}} \\parallel \\overline{\\mathrm{EF}} \\parallel \\overline{\\mathrm{BC}}$일 때, $x+y$의 값은? [4점]</p><p><img src=\"assets/images/20_풍덕중_2학기_중간_중2_수학/q18.png\" alt=\"사다리꼴 ABCD에서 대각선에 의해 나뉜 평행선 EF의 두 선분 x, y: AD=7cm, BC=3cm, AB=10cm가 표시된 그림\" /></p>",
-      "mappedTo": "PRESERVED_ARCHIVE_BANK"
-    },
-    {
-      "id": "gauge",
-      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
-      "mappedTo": "mathPlan"
-    }
-  ],
+  "coordinateCanvas": {
+    "width": 580,
+    "height": 410
+  },
   "planeMarks": {
     "expressionLabels": [
       {
-        "id": "vAD",
-        "ownerSegment": "DA",
-        "text": "7",
-        "factRole": "GIVEN"
+        "id": "lab0",
+        "ownerSegment": "sDA",
+        "text": "7"
       },
       {
-        "id": "vBC",
-        "ownerSegment": "BC",
-        "text": "3",
-        "factRole": "GIVEN"
+        "id": "lab1",
+        "ownerSegment": "sBC",
+        "text": "3"
       },
       {
-        "id": "vEF",
-        "ownerSegment": "EF",
-        "text": "x=2.1",
-        "factRole": "DERIVED_INTERMEDIATE"
+        "id": "lab2",
+        "ownerSegment": "sAB",
+        "text": "10"
       },
       {
-        "id": "vAE",
-        "ownerSegment": "AE",
-        "text": "y=7",
-        "factRole": "DERIVED_INTERMEDIATE"
+        "id": "lab3",
+        "ownerSegment": "sEF",
+        "text": "x=2.1"
+      }
+    ],
+    "parallels": [
+      {
+        "id": "pr0",
+        "count": 1,
+        "segments": [
+          "sDA",
+          "sEF",
+          "sBC"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dim0",
+        "from": "A",
+        "to": "E",
+        "label": "y",
+        "side": "ABOVE"
+      },
+      {
+        "id": "dim1",
+        "from": "A",
+        "to": "E",
+        "label": "y=7",
+        "side": "ABOVE"
       }
     ]
   },
-  "coordinateCanvas": {
-    "width": 720,
-    "height": 600
-  }
+  "caption": "20_풍덕중 18번 발문: 점·선분·주어진 표식을 구분한 도식.",
+  "accessibilityDescription": "18번 발문의 선분과 점 표식: A–B, B–C, C–D, D–A, A–C, B–D, E–F을 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "original-stem",
+      "condition": "<p>18. 다음 그림에서 $\\overline{\\mathrm{AD}} \\parallel \\overline{\\mathrm{EF}} \\parallel \\overline{\\mathrm{BC}}$일 때, $x+y$의 값은? [4점]</p><p><img src=\"assets/images/20_풍덕중_2학기_중간_중2_수학/q18.png\" alt=\"사다리꼴 ABCD에서 대각선에 의해 나뉜 평행선 EF의 두 선분 x, y: AD=7cm, BC=3cm, AB=10cm가 표시된 그림\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "AD/EF/BC가 엄밀히 평행하고 두 대각선의 교점이 F가 되도록 복원. 해설 길이값은 발문에서 숨김."
+  ]
 }

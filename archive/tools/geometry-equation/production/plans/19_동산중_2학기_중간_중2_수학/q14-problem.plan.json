@@ -1,0 +1,218 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1196152423",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1196152423",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 555,
+    "height": 415
+  },
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "pr0",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sCD"
+        ]
+      },
+      {
+        "id": "pr1",
+        "count": 2,
+        "segments": [
+          "sDA",
+          "sBC"
+        ]
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eq0",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sCD"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lab0",
+        "ownerSegment": "sDA",
+        "text": "6"
+      }
+    ],
+    "angles": [
+      {
+        "id": "halfA1",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 60,
+        "noLabel": true,
+        "arcs": 1,
+        "equalGroup": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "halfA2",
+        "refs": [
+          "C",
+          "A",
+          "D"
+        ],
+        "value": 60,
+        "noLabel": true,
+        "arcs": 1,
+        "equalGroup": 1,
+        "style": "ARC"
+      }
+    ],
+    "dimensions": []
+  },
+  "caption": "19_동산중 14번 발문: 점·선분·주어진 표식을 구분한 도식.",
+  "accessibilityDescription": "14번 발문의 선분과 점 표식: A–B, B–C, C–D, D–A, A–C을 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "original-stem",
+      "condition": "<p>14. 아래 그림에서 $\\square\\mathrm{ABCD}$는 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{CD}}$, $\\overline{\\mathrm{AB}}\\parallel \\overline{\\mathrm{CD}}$이고, $\\overline{\\mathrm{AC}}$가 $\\angle\\mathrm{A}$를 이등분 한다. $\\overline{\\mathrm{AD}}=6\\text{cm}$일 때 $\\square\\mathrm{ABCD}$의 둘레의 길이를 구하면?(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q14.png\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 AB=CD, AB∥CD, AC의 각 이등분 관계와 AD=6을 역전 없는 마름모 배치로 복원."
+  ]
+}

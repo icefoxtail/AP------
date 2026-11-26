@@ -1077,4 +1077,32 @@ window.examData = {
 ]
 };
 
+// 13번 원본 그림 수치 재대조(2026-11-27): 실제 PNG는 AB=8, AC=9,
+// BC=10, DE=4이다. 본문의 수학적 조건과 보기 ④는 보존한다.
+// 이전 해설·정답·접근성 대체문구에 옛 그림 수치(6/8/10/3)가 남아
+// 학생에게 잘못된 값을 안내하므로 해당 문항의 직접 연관 필드만 정정한다.
+{
+  const q13 = window.examData.questions.find((q) => q.id === 13);
+  const previousAlt = 'AB=6cm, BC=10cm, AC=8cm, DE=3cm';
+  const verifiedAlt = 'AB=8cm, BC=10cm, AC=9cm, DE=4cm';
+  q13.content = q13.content.replace(previousAlt, verifiedAlt);
+  q13.question = q13.question.replace(previousAlt, verifiedAlt);
+  q13.answer = '④';
+  q13.solution = String.raw`원본 그림의 길이는 AB=8cm, BC=10cm, AC=9cm, DE=4cm이다.
+
+∠ABD=∠BCE=∠CAF이므로 외각의 성질을 적용하면
+∠FDE=∠BAC, ∠DEF=∠ABC, ∠EFD=∠BCA이다.
+따라서 △DEF∽△ABC(AA 닮음)이고 D↔A, E↔B, F↔C로 대응한다.
+
+대응변 DE:AB=4:8=1:2이며 DF:AC=1:2이다.
+그러므로 DF=9×(1/2)=4.5cm이다.
+
+정답은 ④ 4.5cm이다. (③ 4cm는 원본 그림의 AC=9cm를 잘못 읽은 값이다.)`;
+  q13.decisiveStep = '세 외각으로 △DEF∽△ABC를 확인하고 원본 그림의 DE:AB=4:8을 적용하여 DF=9/2=4.5cm를 얻는다.';
+  q13.solutionImageAlt = '해설 그림: 삼각형 ABC의 AB 8cm, BC 10cm, AC 9cm, 내측 DE 4cm와 서로 같은 ∠ABD, ∠BCE, ∠CAF가 표시되고, 닮음으로 DF 4.5cm를 구한다.';
+  q13.solutionImageCaption = '세 각의 외각 관계에서 △DEF∽△ABC이다. DE:AB=4:8=1:2이므로 DF=AC/2=9/2=4.5cm. 정답 ④.';
+  // 엔진 렌더가 승인되기 전에는 틀린 치수가 박힌 옛 해설 SVG를 학생에게 보여 주지 않는다.
+  q13.solutionImage = 'assets/images/20_풍덕중_2학기_중간_중2_수학/q13.png';
+}
+
 window.questionBank = window.examData.questions;

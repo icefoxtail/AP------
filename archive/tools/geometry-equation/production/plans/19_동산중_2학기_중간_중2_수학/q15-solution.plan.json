@@ -1,11 +1,5 @@
 {
   "capability": "construction-spike-v1",
-  "caption": "평행사변형의 두 대각선은 서로 다른 것을 이등분하므로 AO=AC/2=4cm이고 OD=BD/2=6cm이다. 또 AD=BC=10cm이므로 삼각형 AOD의 둘레의 길이는 4+6+10=20cm이다. 따라서 답은 ②이다.",
-  "accessibilityDescription": "평행사변형 ABCD의 두 대각선이 점 O에서 만나고, 선분 AO와 OD에 각각 4와 6, 변 BC와 AD에 10이 표시되어 있다.",
-  "newVisualInformation": [
-    "평행사변형 ABCD와 두 대각선의 교점 O",
-    "대각선의 절반 AO=4, OD=6과 변 BC=10"
-  ],
   "mathPlan": {
     "schemaVersion": "construction-spike-v1",
     "realization": {
@@ -22,30 +16,11 @@
           "coordinates": [
             {
               "kind": "integer",
-              "value": "2"
+              "value": "-4"
             },
             {
               "kind": "integer",
-              "value": "6"
-            }
-          ]
-        },
-        "outputType": "POINT",
-        "factRole": "GIVEN"
-      },
-      {
-        "id": "D",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "12"
-            },
-            {
-              "kind": "integer",
-              "value": "6"
+              "value": "0"
             }
           ]
         },
@@ -60,11 +35,11 @@
           "coordinates": [
             {
               "kind": "integer",
-              "value": "0"
+              "value": "-2"
             },
             {
               "kind": "integer",
-              "value": "0"
+              "value": "-5"
             }
           ]
         },
@@ -79,7 +54,7 @@
           "coordinates": [
             {
               "kind": "integer",
-              "value": "10"
+              "value": "4"
             },
             {
               "kind": "integer",
@@ -91,40 +66,47 @@
         "factRole": "GIVEN"
       },
       {
-        "id": "lac",
-        "op": "LINE_THROUGH",
-        "inputs": [
-          "A",
-          "C"
-        ],
-        "args": {},
-        "outputType": "LINE",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "lbd",
-        "op": "LINE_THROUGH",
-        "inputs": [
-          "B",
-          "D"
-        ],
-        "args": {},
-        "outputType": "LINE",
-        "factRole": "DERIVED_INTERMEDIATE"
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
       },
       {
         "id": "O",
-        "op": "LINE_INTERSECTION",
-        "inputs": [
-          "lac",
-          "lbd"
-        ],
-        "args": {},
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
         "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
+        "factRole": "GIVEN"
       }
     ]
   },
+  "displayLines": [],
+  "displayCircles": [],
   "displayPoints": [
     "A",
     "B",
@@ -132,8 +114,6 @@
     "D",
     "O"
   ],
-  "displayLines": [],
-  "displayCircles": [],
   "displaySegments": [
     {
       "id": "sAB",
@@ -192,39 +172,60 @@
       ]
     }
   ],
+  "coordinateCanvas": {
+    "width": 540,
+    "height": 410
+  },
   "planeMarks": {
     "expressionLabels": [
       {
-        "id": "lAO",
-        "ownerSegment": "sAO",
-        "text": "4"
-      },
-      {
-        "id": "lOD",
-        "ownerSegment": "sOD",
-        "text": "6"
-      },
-      {
-        "id": "lBC",
+        "id": "lab2",
         "ownerSegment": "sBC",
         "text": "10"
       },
       {
-        "id": "lAD",
+        "id": "lab0",
+        "ownerSegment": "sAO",
+        "text": "4"
+      },
+      {
+        "id": "lab1",
+        "ownerSegment": "sOD",
+        "text": "6"
+      },
+      {
+        "id": "lab2_1",
         "ownerSegment": "sDA",
         "text": "10"
       }
+    ],
+    "dimensions": [
+      {
+        "id": "dim0",
+        "from": "A",
+        "to": "C",
+        "label": "8",
+        "side": "ABOVE"
+      },
+      {
+        "id": "dim1",
+        "from": "B",
+        "to": "D",
+        "label": "12",
+        "side": "RIGHT"
+      }
     ]
   },
-  "coordinateCanvas": {
-    "width": 480,
-    "height": 400
-  },
+  "caption": "19_동산중 15번 발문: 점·선분·주어진 표식을 구분한 도식.",
+  "accessibilityDescription": "15번 발문의 선분과 점 표식: A–B, B–C, C–D, D–A, A–O, O–C, B–O, O–D을 나타낸다.",
   "sourceConditions": [
     {
-      "id": "source",
+      "id": "original-stem",
       "condition": "<p>15. 다음 그림과 같은 평행사변형 $\\mathrm{ABCD}$에서 점 $\\mathrm{O}$는 두 대각선의 교점이고 $\\overline{\\mathrm{AC}}=8\\text{cm}$, $\\overline{\\mathrm{BC}}=10\\text{cm}$, $\\overline{\\mathrm{BD}}=12\\text{cm}$일 때, $\\triangle\\mathrm{AOD}$의 둘레의 길이를 구하면?(3점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q15.png\" /></p>",
       "mappedTo": "PRESERVED_ARCHIVE_BANK"
     }
+  ],
+  "newVisualInformation": [
+    "원본의 평행사변형과 교점 O를 유지하고 AC=8, BD=12, BC=10 표시. 세 수치는 삼각형 부등식의 등호가 되어 비퇴화 도형과 양립 불가함을 감사에 명시."
   ]
 }

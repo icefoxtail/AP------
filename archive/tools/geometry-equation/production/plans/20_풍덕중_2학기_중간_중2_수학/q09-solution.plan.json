@@ -1,0 +1,79 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "l0",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1/20"
+        ],
+        "domain": [
+          "0",
+          "20"
+        ]
+      },
+      {
+        "id": "l1",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "1/10"
+        ],
+        "domain": [
+          "20",
+          "40"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "20",
+          "y": "1",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "40",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    },
+    "viewport": [
+      -2,
+      43,
+      -1,
+      4
+    ],
+    "axisScale": {
+      "x": 1,
+      "y": 10
+    }
+  },
+  "caption": "이동 시간 0~20분은 시속 3km, 20~40분은 시속 6km로 누적 거리 0→1→3km를 표현한다.",
+  "accessibilityDescription": "이동 시간 0~20분은 시속 3km, 20~40분은 시속 6km로 누적 거리 0→1→3km를 표현한다.",
+  "sourceConditions": [
+    {
+      "id": "original-stem",
+      "condition": "<p>9. 아침 8시 집에서 $3\\text{km}$ 떨어진 학교까지 가는데 처음에는 시속 $3\\text{km}$로 걸어가다가 도중에 시속 $6\\text{km}$로 뛰어가 아침 8시 40분에 도착하였다. 뛰어간 거리를 구하면? [4점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "시간 20분 분기점과 실제 기울기가 달라지는 두 구간을 수식 그래프 엔진으로 직접 그린다."
+  ]
+}

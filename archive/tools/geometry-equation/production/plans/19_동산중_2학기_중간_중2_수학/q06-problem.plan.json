@@ -1,0 +1,228 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-42",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sEB",
+      "refs": [
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l1",
+        "ownerSegment": "sAE",
+        "text": "4",
+        "unit": "cm"
+      },
+      {
+        "id": "l2",
+        "ownerSegment": "sCA",
+        "text": "4",
+        "unit": "cm"
+      },
+      {
+        "id": "l3",
+        "ownerSegment": "sDC",
+        "text": "2",
+        "unit": "cm"
+      }
+    ],
+    "angles": [],
+    "dimensions": []
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 380
+  },
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "B",
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "rE",
+      "refs": [
+        "A",
+        "E",
+        "D"
+      ]
+    }
+  ],
+  "caption": "원본의 직각 C·E와 AE=AC, DC=2를 구별하고 수선 DE의 발을 표시한다.",
+  "accessibilityDescription": "직각삼각형 ABC의 변 AB 위에 점 E가 있고, E에서 D로 수선 ED가 그어져 있으며 D는 BC 위에 있다. AE와 AC에 4cm, DC에 2cm, BD에 4cm가 표시되고 ∠EAD=30°, E와 C에 직각 표시가 있다.",
+  "newVisualInformation": [
+    "원본 AE=AC=4, DC=2, AB⊥DE, C직각을 보전. 주어진 EAD=30°는 다른 주어진 길이와 수직 조건에 수학적 모순이 있어 숫자 호로 위조하지 않음."
+  ],
+  "sourceConditions": [
+    {
+      "id": "original-stem",
+      "condition": "<p>6. 아래의 그림과 같이 $\\angle\\mathrm{C}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AE}}=\\overline{\\mathrm{AC}}$, $\\overline{\\mathrm{AB}}\\perp \\overline{\\mathrm{DE}}$, $\\angle\\mathrm{EAD}=30^\\circ$이고, $\\overline{\\mathrm{DC}}=2\\text{cm}$, $\\overline{\\mathrm{AC}}=4\\text{cm}$일 때, $\\triangle\\mathrm{ADB}$의 넓이를 구하면?(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q06.png\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
