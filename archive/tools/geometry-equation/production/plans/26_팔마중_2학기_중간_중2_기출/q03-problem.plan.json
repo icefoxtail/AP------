@@ -1,0 +1,241 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "181",
+              "denominator": "26"
+            },
+            {
+              "kind": "rational",
+              "numerator": "68",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sBP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "sCP",
+      "refs": [
+        "C",
+        "P"
+      ]
+    },
+    {
+      "id": "sDP",
+      "refs": [
+        "D",
+        "P"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 540
+  },
+  "caption": "평행사변형 ABCD 내부 P에서 네 꼭짓점으로 선분을 잇고 원본의 두 쌍둥이 색칠 영역 APD와 BPC를 구별한다.",
+  "accessibilityDescription": "A,D 위쪽, B,C 아래쪽 평행사변형의 내부 점 P에서 각 꼭짓점으로 선분 4개를 이었다. 원본에 채워진 위쪽 APD와 아래쪽 BPC 두 삼각형만 옅은 회색으로 표시한다. 수치 20,18,32는 문제 문장에 주어져 있다.",
+  "sourceConditions": [
+    {
+      "id": "areas",
+      "condition": "대표 좌표에서 [APB]=20, [APD]=18, [CPD]=32이고 [ABCD]=104이다. 이 세 수치와 점 P의 내부 위치를 원문 조건대로 만족한다.",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "P",
+        "sAP",
+        "sBP",
+        "sCP",
+        "sDP"
+      ]
+    },
+    {
+      "id": "originalShade",
+      "condition": "원본 그림은 APD와 BPC만 음영이고 다른 두 삼각형은 무채움이다.",
+      "mappedTo": [
+        "shadeAPD",
+        "shadeBPC"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본에 존재하는 두 삼각형 APD·BPC의 제한된 음영을 엔진 regions로 복구한다.",
+    "영역 수치의 실제 면적을 유리수 좌표에서 독립 검산하며 미지 합은 문제 그림에 적지 않는다."
+  ],
+  "sourceQuote": "평행사변형 $ABCD$의 내부의 점을 $P$라 하자.",
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "shadeAPD",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "P",
+              "D"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "shadeBPC",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "B",
+              "P",
+              "C"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

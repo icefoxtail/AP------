@@ -1,0 +1,303 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "sPC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sBO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 540
+  },
+  "caption": "마름모 ABCD의 수직 대각선과 OD=3cm, OC=2cm, 중점 P를 표시하고 원본에서 색칠된 삼각형 ABP만 채운다.",
+  "accessibilityDescription": "마름모 ABCD의 A-C가 세로, B-D가 가로로 수직 교차하며 중심 O가 있다. BC 위의 P는 중점이고 BP와 PC에 같은 눈금이 있다. O-D 옆 3cm, O-C 옆 2cm 길이 표시가 있으며 넓이를 묻는 삼각형 ABP만 원본과 같은 옅은 음영이다.",
+  "sourceConditions": [
+    {
+      "id": "rhombus",
+      "condition": "A=(0,2),B=(-3,0),C=(0,-2),D=(3,0),O=(0,0)의 네 변은 각각 √13, 대각선 AC=4와 BD=6은 수직이등분한다.",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "O",
+        "sAB",
+        "sCD",
+        "sAO",
+        "sOC",
+        "sBO",
+        "sOD"
+      ]
+    },
+    {
+      "id": "distances",
+      "condition": "OD=3cm, OC=2cm가 각각 실제 좌표 거리와 일치한다.",
+      "mappedTo": [
+        "dimOD",
+        "dimOC",
+        "sOD",
+        "sOC"
+      ]
+    },
+    {
+      "id": "midpoint",
+      "condition": "P는 BC의 정확한 중점이며 BP=PC다.",
+      "mappedTo": [
+        "P",
+        "sBP",
+        "sPC",
+        "equalBPPC"
+      ]
+    },
+    {
+      "id": "shade",
+      "condition": "원본은 넓이를 묻는 삼각형 ABP 하나만 음영이다.",
+      "mappedTo": [
+        "shadeABP"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "넓이를 묻는 ABP에만 원본 음영을 제한적으로 복원한다.",
+    "BC 중점을 MIDPOINT 연산으로 고정하고 BP=PC 눈금 및 OD·OC 단위 치수선을 각각 그려지는 필드로 명시한다."
+  ],
+  "sourceQuote": "$OD=3\\,\\mathrm{cm}$, $OC=2\\,\\mathrm{cm}$",
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "equalBPPC",
+        "count": 1,
+        "segments": [
+          "sBP",
+          "sPC"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dimOD",
+        "from": "O",
+        "to": "D",
+        "label": "3",
+        "unit": "cm",
+        "side": "ABOVE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dimOC",
+        "from": "O",
+        "to": "C",
+        "label": "2",
+        "unit": "cm",
+        "side": "RIGHT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "shadeABP",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "P"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
