@@ -326,7 +326,11 @@ window.questionBank = [
     "sourceQid": 7,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION",
-    "solutionPlanRef": "archive/exams/similar/middle/m3/1mid/26_왕운중_1학기_중간_중3_유사2_plans/q07-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/middle/m3/1mid/26_왕운중_1학기_중간_중3_유사2_plans/q07-solution.plan.json",
+    "solutionImage": "assets/images/26_왕운중_1학기_중간_중3_유사2/q7-solution.svg",
+    "solutionImageAlt": "선택지의 수 A, B, D, E는 한 수직선에 근삿값으로 표시한다. A≈-0.59, B≈1.41, D≈2.41, E≈0.59이다. 별도로 C=-1-√2≈-2.41이므로 0과 1 사이에는 E만 있다.",
+    "solutionImageCaption": "선택지의 수 A, B, D, E는 한 수직선에 근삿값으로 표시한다. A≈-0.59, B≈1.41, D≈2.41, E≈0.59이다. 별도로 C=-1-√2≈-2.41이므로 0과 1 사이에는 E만 있다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -1025,7 +1029,11 @@ window.questionBank = [
     "sourceQid": 22,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION",
-    "solutionPlanRef": "archive/exams/similar/middle/m3/1mid/26_왕운중_1학기_중간_중3_유사2_plans/q22-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/middle/m3/1mid/26_왕운중_1학기_중간_중3_유사2_plans/q22-solution.plan.json",
+    "solutionImage": "assets/images/26_왕운중_1학기_중간_중3_유사2/q22-solution.svg",
+    "solutionImageAlt": "왼쪽 사다리꼴 A와 오른쪽 사다리꼴 B는 같은 높이 √5를 갖고, 위아래 두 평행변의 길이의 합으로 각각 넓이를 구한다.",
+    "solutionImageCaption": "왼쪽 사다리꼴 A와 오른쪽 사다리꼴 B는 같은 높이 √5를 갖고, 위아래 두 평행변의 길이의 합으로 각각 넓이를 구한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

@@ -315,7 +315,11 @@ window.questionBank = [
     "rpmPrimaryRecordId": "M1-RPM-050",
     "sourceQid": 7,
     "variationType": "NUMERIC",
-    "problemPlanRef": "archive/exams/similar/middle/m1/2final/23_금당중_2학기_기말_중1_유사_plans/q07-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/middle/m1/2final/23_금당중_2학기_기말_중1_유사_plans/q07-problem.plan.json",
+    "image": "assets/images/23_금당중_2학기_기말_중1_유사/q7-problem.svg",
+    "imageAlt": "y=-3x와 y=a/x의 그래프가 x=2에서 만나는 그림",
+    "imageCaption": "y=-3x와 y=a/x의 그래프가 x=2에서 만나는 그림",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -943,7 +947,11 @@ window.questionBank = [
     "rpmPrimaryRecordId": "M1-RPM-050",
     "sourceQid": 21,
     "variationType": "NUMERIC",
-    "problemPlanRef": "archive/exams/similar/middle/m1/2final/23_금당중_2학기_기말_중1_유사_plans/q21-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/middle/m1/2final/23_금당중_2학기_기말_중1_유사_plans/q21-problem.plan.json",
+    "image": "assets/images/23_금당중_2학기_기말_중1_유사/q21-problem.svg",
+    "imageAlt": "민수(y=500x)와 지수(y=100x)의 시간에 따른 이동 거리 그래프",
+    "imageCaption": "민수(y=500x)와 지수(y=100x)의 시간에 따른 이동 거리 그래프",
+    "imageSize": "full"
   },
   {
     "id": 22,
