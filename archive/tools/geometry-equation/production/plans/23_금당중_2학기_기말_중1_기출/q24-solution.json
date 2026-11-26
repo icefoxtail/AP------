@@ -1,0 +1,79 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "caption": "서술형 4의 (1) 반지름 2·높이 5 원기둥과 (2) 한 변 6·높이 7 정사각뿔을 색칠 없이 나란히 제시한다.",
+  "accessibilityDescription": "왼쪽 원기둥에는 반지름 2cm와 높이 5cm, 오른쪽 정사각뿔에는 한 변 6cm와 수직 높이 7cm의 치수선이 있다. 숨은 모서리는 점선이고 바탕면 채움이 없다.",
+  "sourceQuote": "[서술형4] 다음 그림과 같은 입체도형의 겉넓이와 부피를 구하시오.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "(1) 원기둥의 반지름 2cm와 높이 5cm.",
+      "mappedTo": [
+        "solids[0]",
+        "dims[0]",
+        "dims[1]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "(2) 정사각뿔의 밑면 한 변 6cm와 수직 높이 7cm.",
+      "mappedTo": [
+        "solids[1]",
+        "dims[2]",
+        "dims[3]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "두 도형은 별개의 소문항이며 숨은 선과 각 입체의 높이 치수선을 표시한다.",
+      "mappedTo": [
+        "solids",
+        "dims[3]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 해설에서 원기둥 밑면과 정사각뿔 밑면에 남아 있는 색 면 채움을 제거한다.",
+    "두 도형의 실선·숨은 모서리 점선, 반지름과 높이를 원본 수치와 연결한다."
+  ],
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "CYLINDER",
+      "radius": 2,
+      "height": 5
+    },
+    {
+      "id": "s2",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 6
+      },
+      "height": 7,
+      "names": "....."
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "radius": "top"
+    },
+    {
+      "solid": "s1",
+      "height": true
+    },
+    {
+      "solid": "s2",
+      "edge": [
+        "s2#b0",
+        "s2#b1"
+      ]
+    },
+    {
+      "solid": "s2",
+      "height": true
+    }
+  ]
+}
