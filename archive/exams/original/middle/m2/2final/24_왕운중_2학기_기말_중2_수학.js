@@ -222,11 +222,11 @@ window.questionBank = [
       "흰 공이 나올 확률은 $0$이다.",
       "노란 공이 나올 확률은 $\\dfrac{2}{5}$이다.",
       "파란 공이 나올 확률은 $1$이다.",
-      "파란 공 또는 노란 공이 나올 확률은 $\\dfrac{1}{2}$이다.",
+      "파란 공 또는 노란 공이 나올 확률은 $\\dfrac{3}{5}$이다.",
       "파란 공과 노란 공이 나올 확률은 같다."
     ],
     "answer": "①",
-    "solution": "확률은 전체 경우에서 해당 사건이 일어나는 경우의 비율이다.\n흰 공은 주머니에 없으므로 흰 공이 나올 확률은 $0$이다.\n노란 공의 확률은 $\\dfrac{3}{5}$이고, 파란 공의 확률은 $\\dfrac{2}{5}$이다.\n한 번에 꺼낸 공이 파란색과 노란색일 수는 없으며, 두 색의 확률도 같지 않다.\n따라서 옳은 것은 ①이다.",
+    "solution": "주머니 속 공은 총 5개이며, 흰 공은 없으므로 흰 공이 나올 확률은 $0$이다(①).\n노란 공이 나올 확률은 $\\dfrac35$이므로 ②는 틀리고, 파란 공이 나올 확률은 $\\dfrac25$이므로 ③도 틀리다.\n모든 공이 파란색 또는 노란색이므로 그 확률은 $1$이다(④는 틀림). 또한 두 색의 확률 $\\dfrac25$와 $\\dfrac35$는 같지 않다(⑤는 틀림).\n따라서 정답은 ①이다.",
     "level": "중",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
@@ -493,7 +493,7 @@ window.questionBank = [
     "subUnit": "삼각형의 무게중심의 성질",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "content": "6. $\\triangle DCE$의 넓이가 12일 때, $\\triangle GBC$의 넓이는? [4점]<br><br>",
+    "content": "$\\triangle DCE$의 넓이가 12일 때, $\\triangle GBC$의 넓이는? [4점]<br><br>",
     "choices": [
       "$13$",
       "$14$",
@@ -2029,10 +2029,10 @@ window.questionBank = [
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "content": "[서술형 2] 어느 지역에서 비가 온 다음 날 비가 오지 않을 확률은 $\\dfrac{1}{3}$이고, 비가 오지 않은 다음 날 비가 올 확률은 $\\dfrac{1}{4}$이라고 한다. 금요일에 비가 올 때, 이틀 후인 일요일에 비가 올 확률[2점]을 구하고 그 과정[3점]을 서술하시오. [총 5점]",
+    "content": "[서술형 2] 어느 지역에서 비가 온 다음 날 비가 오지 않을 확률은 $\\dfrac{3}{5}$이고, 비가 오지 않은 다음 날 비가 올 확률은 $\\dfrac{1}{3}$이라고 한다. 금요일에 비가 올 때, 이틀 후인 일요일에 비가 올 확률[2점]을 구하고 그 과정[3점]을 서술하시오. [총 5점]",
     "choices": [],
-    "answer": "$\\dfrac{19}{36}$",
-    "solution": "금요일에 비가 왔으므로 토요일에 비가 올 확률은 $1-\\dfrac13=\\dfrac23$이다.\n토요일에 비가 오면 일요일에도 비가 올 확률은 $\\dfrac23$이고, 토요일에 비가 오지 않으면 일요일에 비가 올 확률은 $\\dfrac14$이다.\n따라서 일요일에 비가 올 확률은\n$\\dfrac23\\cdot\\dfrac23+\\dfrac13\\cdot\\dfrac14=\\dfrac49+\\dfrac1{12}=\\dfrac{19}{36}$이다.",
+    "answer": "$\\dfrac{9}{25}$",
+    "solution": "금요일에 비가 왔으므로 토요일에 비가 오지 않을 확률은 $\\dfrac35$, 비가 올 확률은 $1-\\dfrac35=\\dfrac25$이다.\n토요일에 비가 오면 일요일에도 비가 올 확률은 $\\dfrac25$이고, 토요일에 비가 오지 않으면 일요일에 비가 올 확률은 $\\dfrac13$이다.\n따라서 일요일에 비가 오는 경우를 토요일의 날씨에 따라 나누면\n$\\dfrac25\\cdot\\dfrac25+\\dfrac35\\cdot\\dfrac13=\\dfrac4{25}+\\dfrac15=\\dfrac9{25}$이다.",
     "level": "중",
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
@@ -2068,15 +2068,11 @@ window.questionBank = [
     "integrationPattern": "CASE_BRANCH",
     "projectionStatus": "PROJECTION_UNMATERIALIZED",
     "projectionReasonCode": "NO_EXACT_M2_TWO_STAGE_PROBABILITY_TEMPLATE",
-    "solutionImage": "assets/images/24_왕운중_2학기_기말_중2_수학/q22-solution-v2.svg",
-    "solutionVisualDisposition": "ADD_NEW_VISUAL",
-    "solutionVisualReason": "A two-step probability tree shows the conditional branches and isolates both paths ending in Sunday rain; the source has no diagram, so this adds the missing branch structure without repeating the full text solution.",
+    "solutionVisualDisposition": "TEXT_ONLY_SOLUTION_VISUAL_NOT_NEEDED",
+    "solutionVisualReason": "두 날짜의 분기를 해설에서 각각 곱해 더하는 식으로 모두 설명한다. 기존 해설 SVG는 수정 전의 확률과 오답을 표시하므로 학생 화면 연결을 해제한다.",
     "metaEvidenceDebt": [
       "EVIDENCE_DEBT: The current ACTIVE registry has no exact M2 two-stage conditional-weather probability template; no higher-course template is copied down."
-    ],
-    "solutionImageAlt": "해설 그림: 금요일에 비가 올 때 토요일 비 2/3·안 옴 1/3, 일요일 비·안 옴으로 갈라지는 수형도. 일요일에 비가 오는 두 경로가 굵은 선과 동그라미로 표시되어 있다.",
-    "solutionImageCaption": "일요일에 비가 오는 확률은 2/3×2/3+1/3×1/4=4/9+1/12=19/36이다.",
-    "solutionImageSize": "medium"
+    ]
   },
   {
     "id": 23,

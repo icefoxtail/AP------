@@ -374,7 +374,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림과 같은 $\\triangle ABC$에 대한 설명 중 옳은 것을 모두 고른 것을 고르면? (4점)<br><br><div style=\"border: 1px solid #333; padding: 10px; margin: 10px 0;\">ㄱ. $\\triangle ABC$의 밑변을 $\\overline{AB}$라 할 때 높이는 $5\\sin 45^\\circ\\text{ cm}$이다.<br>ㄴ. $\\triangle ABC$의 밑변을 $\\overline{BC}$라 할 때 높이는 $5\\sin 45^\\circ\\text{ cm}$이다.<br>ㄷ. $\\triangle ABC$의 넓이는 $10\\sqrt{2}\\text{ cm}^2$이다.</div>",
+    "content": "다음 그림과 같은 $\\triangle ABC$에 대한 설명 중 옳은 것을 모두 고른 것은? (4점)<br><br><div style=\"border: 1px solid #333; padding: 10px; margin: 10px 0;\">ㄱ. $\\triangle ABC$의 밑변을 $\\overline{AB}$라 할 때 높이는 $5\\sin 135^\\circ\\text{ cm}$이다.<br>ㄴ. $\\triangle ABC$의 밑변을 $\\overline{BC}$라 할 때 높이는 $5\\sin 45^\\circ\\text{ cm}$이다.<br>ㄷ. $\\triangle ABC$의 넓이는 $10\\sqrt{2}\\text{ cm}^2$이다.</div>",
     "choices": [
       "ㄱ",
       "ㄴ",
@@ -383,7 +383,7 @@ window.questionBank = [
       "ㄴ, ㄷ"
     ],
     "answer": "④",
-    "solution": "그림에서 $\\angle B=135^\\circ$.\n밑변 AB의 높이는 $5\\sin45^\\circ$라 ㄱ은 참이고, 밑변 BC의 높이는 $8\\sin45^\\circ$라 ㄴ은 거짓이다.\n넓이는 $\\frac12\\cdot8\\cdot5\\cdot\\sin135^\\circ=10\\sqrt2$이므로 정답은 ④이다.",
+    "solution": "그림에서 $\\angle B=135^\\circ$.\n밑변 AB의 높이는 $5\\sin135^\\circ=5\\sin45^\\circ$이므로 ㄱ은 참이다. 밑변 BC의 높이는 $8\\sin45^\\circ$이므로 ㄴ은 거짓이다.\n넓이는 $\\frac12\\cdot8\\cdot5\\cdot\\sin135^\\circ=10\\sqrt2$이므로 ㄷ은 참이다. 따라서 정답은 ④이다.",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "candidate_evidence",
@@ -1466,7 +1466,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "[서술형 2] 다음 그림에서 직선 $AT$가 원 $O$의 접선이고 네 점 $A, B, C, D$가 모두 원 $O$ 위에 있다. 접선과 현 $AB$가 이루는 각 중 그림의 오른쪽 각이 $70^\\circ$이고 $\\angle DCB = 100^\\circ$일 때, $\\angle DBA = \\angle x$의 크기를 구하시오. (7점)",
+    "content": "[서술형 2] 다음 그림에서 직선 $AT$가 원 $O$의 접선이고 네 점 $A, B, C, D$가 모두 원 $O$ 위에 있다. $\\angle DCB=100^\\circ$, $\\angle BAT=70^\\circ$일 때, $\\angle DBA=\\angle x$의 크기를 구하시오. (7점)",
     "choices": [],
     "answer": "30°",
     "solution": "접선과 현 AB가 이루는 각 70°는 호 AB에 대한 원주각 ∠ADB와 같다(접선-현 정리). 따라서 ∠ADB=70°.\n\n내접사각형에서 ∠DAB=180-100=80°.\n\n삼각형 DAB에서 x=180-70-80=30°.",
