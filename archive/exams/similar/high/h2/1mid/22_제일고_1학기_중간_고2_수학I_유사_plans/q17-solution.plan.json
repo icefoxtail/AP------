@@ -1,0 +1,20 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": ["4", "1/2", "0"],
+    "phasePi": "-1/12",
+    "sourceDomain": { "kind": "INTERVAL_PI", "rangePi": ["0", "4"], "states": ["CLOSED", "CLOSED"] },
+    "keyPoints": true,
+    "axisTickPi": true,
+    "axisTickValues": { "x": ["7/6", "19/6"], "y": ["4", "-4"] }
+  },
+  "caption": "해설에서 결정된 y=4sin(x/2−π/12)의 한 주기. x=7π/6의 최댓값 4와 다음 x=19π/6의 최솟값 −4 사이가 반주기 2π이다.",
+  "sourceQuote": "최댓값이 $4$, 최솟값이 $-4$",
+  "sourceConditions": [
+    { "id": "extrema", "condition": "a>0, b>0, c>0; 최댓값 4, 최솟값 -4", "mappedTo": "PRESERVED_ARCHIVE_BANK" },
+    { "id": "locations", "condition": "x=7π/6 최댓값, x=19π/6 다음 최솟값", "mappedTo": "PRESERVED_ARCHIVE_BANK" }
+  ],
+  "newVisualInformation": ["해설의 a=4, b=1/2, 최소 양의 c=π/12로 정해지는 한 주기", "극값의 위치와 반주기 관계"]
+}
