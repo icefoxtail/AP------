@@ -1,0 +1,389 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "10"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "10"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "10"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "20"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "10"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "7"
+                }
+              ]
+            },
+            {
+              "kind": "rational",
+              "numerator": "40",
+              "denominator": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "semi",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "O",
+    "D",
+    "C",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAO0",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOB1",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sAD2",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE3",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC4",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sCB5",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sOE6",
+      "refs": [
+        "O",
+        "E"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "D",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "C",
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "O",
+        "E",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "d0",
+        "from": "A",
+        "to": "D",
+        "label": "10",
+        "side": "LEFT",
+        "style": "BRACE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "d1",
+        "from": "D",
+        "to": "C",
+        "label": "14",
+        "side": "ABOVE",
+        "style": "BRACE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "semi",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "CW",
+        "highlight": false,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 660,
+    "height": 570
+  },
+  "caption": "반원 O에 접하는 AD·CD·BC 및 접점 A,E,B; AD=10, CD=14.",
+  "sourceQuote": "반원 O, 접선 AD=10cm·CD=14cm·BC, 접점 A,E,B; 지름 AB를 구한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "반원 O, 접선 AD=10cm·CD=14cm·BC, 접점 A,E,B; 지름 AB를 구한다.",
+      "mappedTo": [
+        "sAO0",
+        "sOB1",
+        "sAD2",
+        "sDE3",
+        "sEC4",
+        "sCB5",
+        "sOE6",
+        "r0",
+        "r1",
+        "r2",
+        "d0",
+        "d1",
+        "arcAB"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "반원 호만 그리고 접선 세 개·접점 E의 직각·두 주어진 길이를 복원한다."
+  ]
+}

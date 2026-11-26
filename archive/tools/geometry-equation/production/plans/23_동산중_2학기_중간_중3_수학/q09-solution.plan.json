@@ -1,0 +1,241 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "14",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD1",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC2",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA3",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sDE4",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "D",
+        "E",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aX",
+        "refs": [
+          "B",
+          "D",
+          "E"
+        ],
+        "label": "x",
+        "labelKind": "MATH",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "d0",
+        "from": "B",
+        "to": "C",
+        "label": "6",
+        "side": "BELOW",
+        "style": "BRACE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "d1",
+        "from": "A",
+        "to": "C",
+        "label": "3",
+        "side": "LEFT",
+        "style": "BRACE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 660,
+    "height": 570
+  },
+  "caption": "직각삼각형 ABC에서 D는 BC 위, DE는 빗변 AB에 수직이다.",
+  "sourceQuote": "∠C=90°, BC=6, AC=3, D∈BC, DE⊥AB, ∠BDE=x.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "∠C=90°, BC=6, AC=3, D∈BC, DE⊥AB, ∠BDE=x.",
+      "mappedTo": [
+        "sAB0",
+        "sBD1",
+        "sDC2",
+        "sCA3",
+        "sDE4",
+        "r0",
+        "r1",
+        "aX",
+        "d0",
+        "d1"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 직각 표시와 D에서의 x 각, 6·3 길이 및 수선을 복원한다."
+  ]
+}

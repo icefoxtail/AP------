@@ -1,0 +1,237 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC1",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCB2",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sHA3",
+      "refs": [
+        "H",
+        "A"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sCH4",
+      "refs": [
+        "C",
+        "H"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "C",
+        "H",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "C",
+          "A",
+          "B"
+        ],
+        "value": 120,
+        "label": "120",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aExt",
+        "refs": [
+          "C",
+          "A",
+          "H"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "d0",
+        "from": "A",
+        "to": "B",
+        "label": "3",
+        "side": "BELOW",
+        "style": "BRACE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "t0",
+        "ownerSegment": "sCH4",
+        "text": "sqrt(3)",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "t1",
+        "ownerSegment": "sAC1",
+        "text": "2",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 660,
+    "height": 570
+  },
+  "caption": "AB=3, AC=2, ∠BAC=120°이며 수선을 내려 높이 √3을 구한다.",
+  "sourceQuote": "AB=3cm, AC=2cm, ∠BAC=120°인 삼각형의 넓이.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=3cm, AC=2cm, ∠BAC=120°인 삼각형의 넓이.",
+      "mappedTo": [
+        "sAB0",
+        "sAC1",
+        "sCB2",
+        "sHA3",
+        "sCH4",
+        "r0",
+        "aA",
+        "aExt",
+        "d0",
+        "t0",
+        "t1"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 둔각 120°와 두 변의 길이를 유지하고 밑변 연장선·수선·60°를 보인다."
+  ]
+}

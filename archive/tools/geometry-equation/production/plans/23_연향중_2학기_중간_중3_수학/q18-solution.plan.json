@@ -1,0 +1,286 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "R"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "200"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "R"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "340"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "outer",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "outer"
+  ],
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "N",
+    "M"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC1",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA2",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sON3",
+      "refs": [
+        "O",
+        "N"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOM4",
+      "refs": [
+        "O",
+        "M"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "N",
+        "O"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "M",
+        "O"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 55,
+        "label": "55",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aO",
+        "refs": [
+          "N",
+          "O",
+          "M"
+        ],
+        "value": 110,
+        "label": "110",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eNM",
+        "count": 1,
+        "segments": [
+          "sON3",
+          "sOM4"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 660,
+    "height": 570
+  },
+  "caption": "원 O의 두 현 AB, AC까지의 중심 거리 ON=OM이며 ∠ACB=55°이다.",
+  "sourceQuote": "AB⊥ON, AC⊥OM, OM=ON, ∠C=55°, ∠MON을 구한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB⊥ON, AC⊥OM, OM=ON, ∠C=55°, ∠MON을 구한다.",
+      "mappedTo": [
+        "sAB0",
+        "sBC1",
+        "sCA2",
+        "sON3",
+        "sOM4",
+        "r0",
+        "r1",
+        "aC",
+        "aO"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 수선·직각·동일 중심거리와 원본 ∠C=55°를 정확한 위치에 표시한다."
+  ]
+}

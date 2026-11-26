@@ -1,0 +1,267 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "40"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "40"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "40"
+            },
+            {
+              "kind": "rational",
+              "numerator": "158",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "B",
+    "G",
+    "H",
+    "F",
+    "K"
+  ],
+  "displaySegments": [
+    {
+      "id": "sBG0",
+      "refs": [
+        "B",
+        "G"
+      ]
+    },
+    {
+      "id": "sGF1",
+      "refs": [
+        "G",
+        "F"
+      ]
+    },
+    {
+      "id": "sFH2",
+      "refs": [
+        "F",
+        "H"
+      ]
+    },
+    {
+      "id": "sHK3",
+      "refs": [
+        "H",
+        "K"
+      ]
+    },
+    {
+      "id": "sBH4",
+      "refs": [
+        "B",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sBK5",
+      "refs": [
+        "B",
+        "K"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "B",
+        "H",
+        "K"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "G",
+        "F",
+        "K"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "H",
+          "B",
+          "K"
+        ],
+        "value": 37,
+        "label": "37",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "d0",
+        "from": "B",
+        "to": "K",
+        "label": "50",
+        "side": "ABOVE",
+        "style": "BRACE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "callouts": [
+      {
+        "id": "kEye",
+        "kind": "SEGMENT",
+        "path": [
+          "B",
+          "G"
+        ],
+        "at": "LEFT",
+        "scale": 4,
+        "orientation": "VERTICAL",
+        "link": "ENDS",
+        "dimensions": [
+          {
+            "id": "dEye",
+            "from": "B",
+            "to": "G",
+            "label": "1.6",
+            "unit": "m",
+            "side": "LEFT",
+            "style": "BRACE",
+            "offset": "AUTO"
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 660,
+    "height": 570
+  },
+  "caption": "손높이 1.6m에서 37°로 올려본 연까지의 거리는 50m이다.",
+  "sourceQuote": "올려본 각 37°, 손에서 연까지 50m, 손높이 1.6m, 지면으로부터 연 높이.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "올려본 각 37°, 손에서 연까지 50m, 손높이 1.6m, 지면으로부터 연 높이.",
+      "mappedTo": [
+        "sBG0",
+        "sGF1",
+        "sFH2",
+        "sHK3",
+        "sBH4",
+        "sBK5",
+        "r0",
+        "r1",
+        "aB",
+        "d0"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 해설에서 빠진 1.6m 손높이와 지면·손높이 수평 기준선을 복원한다."
+  ]
+}

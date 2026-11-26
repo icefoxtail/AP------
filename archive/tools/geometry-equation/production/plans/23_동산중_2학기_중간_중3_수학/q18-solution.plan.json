@@ -1,0 +1,189 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC1",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA2",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 30,
+        "label": "30",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "d0",
+        "from": "A",
+        "to": "C",
+        "label": "150",
+        "side": "BELOW",
+        "style": "BRACE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "t0",
+        "ownerSegment": "sAB0",
+        "text": "50sqrt(3)",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "caption": "지상 거리 AC=150 m, C의 올려본 각 30°와 수직 높이 AB.",
+  "sourceQuote": "AC=150 m, ∠C=30°, ∠A=90°, 두 지점 AB 거리 계산.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AC=150 m, ∠C=30°, ∠A=90°, 두 지점 AB 거리 계산.",
+      "mappedTo": [
+        "sAB0",
+        "sBC1",
+        "sCA2",
+        "r0",
+        "aC",
+        "d0",
+        "t0"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "도면 좌표를 1:5(1단위=5m)로 축척화해 지상 거리 150m·30°·직각과 높이의 관계를 보인다."
+  ]
+}

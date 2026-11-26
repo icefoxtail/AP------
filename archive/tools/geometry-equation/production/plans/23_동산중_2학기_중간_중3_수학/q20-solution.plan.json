@@ -1,0 +1,280 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "5"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC1",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD2",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA3",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAO4",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOC5",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sBO6",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "sOD7",
+      "refs": [
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "rightAngles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aO",
+        "refs": [
+          "C",
+          "O",
+          "D"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "t0",
+        "ownerSegment": "sBO6",
+        "text": "x",
+        "factRole": "GIVEN"
+      }
+    ],
+    "pathLabels": [
+      {
+        "id": "pAC",
+        "points": [
+          "A",
+          "O",
+          "C"
+        ],
+        "label": "10"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 660,
+    "height": 570
+  },
+  "caption": "대각선 AC=10, BD=x이고 그 사이의 각이 60°인 사각형 ABCD.",
+  "sourceQuote": "대각선 AC=10 cm, BD=x cm, 끼인각 60°, 사각형 넓이 50√3.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "대각선 AC=10 cm, BD=x cm, 끼인각 60°, 사각형 넓이 50√3.",
+      "mappedTo": [
+        "sAB0",
+        "sBC1",
+        "sCD2",
+        "sDA3",
+        "sAO4",
+        "sOC5",
+        "sBO6",
+        "sOD7",
+        "aO",
+        "t0"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 대각선·교점·60° 호와 AC=10, BD=x를 보인다."
+  ]
+}

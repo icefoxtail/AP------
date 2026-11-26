@@ -1,0 +1,232 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "4"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC1",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD2",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA3",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD4",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "d0",
+        "from": "A",
+        "to": "B",
+        "label": "8",
+        "side": "ABOVE",
+        "style": "BRACE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eD",
+        "count": 1,
+        "segments": [
+          "sCD2",
+          "sDA3"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 660,
+    "height": 570
+  },
+  "caption": "∠C=90°, ∠A=60°, AB=8이며 D는 AC의 중점이다.",
+  "sourceQuote": "AB=8, ∠C=90°, ∠A=60°, AD=DC, BD를 구한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=8, ∠C=90°, ∠A=60°, AD=DC, BD를 구한다.",
+      "mappedTo": [
+        "sAB0",
+        "sBC1",
+        "sCD2",
+        "sDA3",
+        "sBD4",
+        "r0",
+        "aA",
+        "d0"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "D의 중점 눈금과 BD 보조선·각·직각을 원본대로 복원한다."
+  ]
+}

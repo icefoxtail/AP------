@@ -1,0 +1,408 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "42",
+            "denominator": "25"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-144",
+            "denominator": "25"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "W",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "14",
+            "denominator": "25"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-48",
+            "denominator": "25"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "D",
+    "E",
+    "A",
+    "H",
+    "B",
+    "C",
+    "R",
+    "S",
+    "V",
+    "W"
+  ],
+  "displaySegments": [
+    {
+      "id": "sDE0",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEA1",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sDH2",
+      "refs": [
+        "D",
+        "H"
+      ]
+    },
+    {
+      "id": "sHB3",
+      "refs": [
+        "H",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC4",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAB5",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC6",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sAH7",
+      "refs": [
+        "A",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sAV8",
+      "refs": [
+        "A",
+        "V"
+      ]
+    },
+    {
+      "id": "sVW9",
+      "refs": [
+        "V",
+        "W"
+      ]
+    },
+    {
+      "id": "sWC10",
+      "refs": [
+        "W",
+        "C"
+      ]
+    },
+    {
+      "id": "sAR11",
+      "refs": [
+        "A",
+        "R"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sCS12",
+      "refs": [
+        "C",
+        "S"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "label": "a",
+        "labelKind": "MATH",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "d0",
+        "from": "A",
+        "to": "H",
+        "label": "3",
+        "side": "LEFT",
+        "style": "BRACE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "t0",
+        "ownerSegment": "sAC6",
+        "text": "5",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "R",
+    "S",
+    "V",
+    "W"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 660,
+    "height": 570
+  },
+  "caption": "세로 3cm인 직사각형 종이를 대각선 AC=5cm로 접어 만들어진 각 a.",
+  "sourceQuote": "세로 3cm 직사각형, 접는 선 AC=5cm, ∠ABD=a; sin a.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "세로 3cm 직사각형, 접는 선 AC=5cm, ∠ABD=a; sin a.",
+      "mappedTo": [
+        "sDE0",
+        "sEA1",
+        "sDH2",
+        "sHB3",
+        "sBC4",
+        "sAB5",
+        "sAC6",
+        "sAH7",
+        "sAV8",
+        "sVW9",
+        "sWC10",
+        "sAR11",
+        "sCS12",
+        "r0",
+        "aB",
+        "d0",
+        "t0"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 해설의 단일 삼각형에 종이 외곽선과 접힌 사각형 패널·접는 선, 3·5cm 길이 및 각 a를 복원한다."
+  ]
+}

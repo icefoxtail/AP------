@@ -1,0 +1,235 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "12",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "6",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAD0",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB1",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC2",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA3",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sCD4",
+      "refs": [
+        "C",
+        "D"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "B",
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "C",
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aX",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "label": "x",
+        "labelKind": "MATH",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aY",
+        "refs": [
+          "D",
+          "C",
+          "B"
+        ],
+        "label": "y",
+        "labelKind": "MATH",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "d0",
+        "from": "A",
+        "to": "C",
+        "label": "6",
+        "side": "LEFT",
+        "style": "BRACE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "d1",
+        "from": "B",
+        "to": "C",
+        "label": "12",
+        "side": "ABOVE",
+        "style": "BRACE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 660,
+    "height": 570
+  },
+  "caption": "AC=6, BC=12이고 C와 D에 직각 표시가 있는 삼각형 ABC.",
+  "sourceQuote": "AC=6, BC=12, ∠C=90°, CD⊥AB, ∠ACD=x, ∠DCB=y.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AC=6, BC=12, ∠C=90°, CD⊥AB, ∠ACD=x, ∠DCB=y.",
+      "mappedTo": [
+        "sAD0",
+        "sDB1",
+        "sBC2",
+        "sCA3",
+        "sCD4",
+        "r0",
+        "r1",
+        "aX",
+        "aY",
+        "d0",
+        "d1"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 6·12 길이와 x·y 각, 빗변 위 수선 발 D를 보인다."
+  ]
+}

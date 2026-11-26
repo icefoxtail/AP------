@@ -1,0 +1,347 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "40",
+              "denominator": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "20",
+              "denominator": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "20"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "big",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "20"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "mid",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "small",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "Q"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "20",
+            "denominator": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "mid"
+  ],
+  "displayPoints": [
+    "O",
+    "P",
+    "Q",
+    "A",
+    "B",
+    "L",
+    "T"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAO0",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOL1",
+      "refs": [
+        "O",
+        "L"
+      ]
+    },
+    {
+      "id": "sLQ2",
+      "refs": [
+        "L",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQB3",
+      "refs": [
+        "Q",
+        "B"
+      ]
+    },
+    {
+      "id": "sTP4",
+      "refs": [
+        "T",
+        "P"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sPO5",
+      "refs": [
+        "P",
+        "O"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sPQ6",
+      "refs": [
+        "P",
+        "Q"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "P",
+        "O",
+        "Q"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "t0",
+        "ownerSegment": "sPQ6",
+        "text": "x",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcOuter",
+        "circle": "big",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "CW",
+        "highlight": false,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "arcSmall",
+        "circle": "small",
+        "center": "Q",
+        "from": "L",
+        "to": "B",
+        "side": "CW",
+        "highlight": false,
+        "factRole": "GIVEN"
+      }
+    ],
+    "pathLabels": [
+      {
+        "id": "d20",
+        "points": [
+          "T",
+          "P",
+          "O"
+        ],
+        "label": "20",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 660,
+    "height": 570
+  },
+  "caption": "지름 20인 원 P가 큰 반원 O에 내접하고 작은 반원 Q에 외접한다.",
+  "sourceQuote": "원 P의 지름20, 큰 반원 O에 내접, 반원 Q에 외접, PQ 길이를 구한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원 P의 지름20, 큰 반원 O에 내접, 반원 Q에 외접, PQ 길이를 구한다.",
+      "mappedTo": [
+        "sAO0",
+        "sOL1",
+        "sLQ2",
+        "sQB3",
+        "sTP4",
+        "sPO5",
+        "sPQ6",
+        "r0",
+        "t0",
+        "arcOuter",
+        "arcSmall"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "큰 반원과 작은 반원은 각각 호로만 그려 원래 없던 아래쪽 호를 제거한다. 지름 20 및 PQ를 표시한다."
+  ]
+}

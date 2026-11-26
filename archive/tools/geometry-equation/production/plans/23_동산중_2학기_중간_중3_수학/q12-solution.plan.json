@@ -1,0 +1,227 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC1",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD2",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC3",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sAD4",
+      "refs": [
+        "A",
+        "D"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "D",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "value": 45,
+        "label": "45",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "value": 30,
+        "label": "30",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "t0",
+        "ownerSegment": "sAD4",
+        "text": "5cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 660,
+    "height": 570
+  },
+  "caption": "높이 AD=5 cm와 밑각 45°·30°를 지닌 삼각형 ABC.",
+  "sourceQuote": "AD⊥BC, ∠ABD=45°, ∠ACD=30°, AD=5 cm.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AD⊥BC, ∠ABD=45°, ∠ACD=30°, AD=5 cm.",
+      "mappedTo": [
+        "sAB0",
+        "sAC1",
+        "sBD2",
+        "sDC3",
+        "sAD4",
+        "r0",
+        "aB",
+        "aC",
+        "t0"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 수선·각 호·직각·높이 5 cm를 복원한다."
+  ]
+}

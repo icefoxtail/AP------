@@ -1,0 +1,294 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "5"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC1",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD2",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA3",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAO4",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOC5",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sBO6",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "sOD7",
+      "refs": [
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "rightAngles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aO",
+        "refs": [
+          "B",
+          "O",
+          "C"
+        ],
+        "value": 150,
+        "label": "150",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "t0",
+        "ownerSegment": "sBO6",
+        "text": "10",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "t1",
+        "ownerSegment": "sOC5",
+        "text": "8",
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sAO4",
+          "sOC5"
+        ]
+      },
+      {
+        "id": "e2",
+        "count": 2,
+        "segments": [
+          "sBO6",
+          "sOD7"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 660,
+    "height": 570
+  },
+  "caption": "평행사변형의 대각선 교점 O에서 반대편 두 부분이 각각 같고 ∠BOC=150°이다.",
+  "sourceQuote": "BO=10 cm, CO=8 cm, ∠BOC=150°, O는 평행사변형 ABCD 대각선의 교점.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "BO=10 cm, CO=8 cm, ∠BOC=150°, O는 평행사변형 ABCD 대각선의 교점.",
+      "mappedTo": [
+        "sAB0",
+        "sBC1",
+        "sCD2",
+        "sDA3",
+        "sAO4",
+        "sOC5",
+        "sBO6",
+        "sOD7",
+        "aO",
+        "t0",
+        "t1"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "10·8cm 및 150°를 해당 반대각선에 정확히 매핑하고 등분 눈금을 찍는다."
+  ]
+}

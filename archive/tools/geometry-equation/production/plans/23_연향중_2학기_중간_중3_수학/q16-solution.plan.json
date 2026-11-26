@@ -1,0 +1,436 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "6"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "lBC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "lAC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "kO",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "6"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "kO"
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAD0",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB1",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sBE2",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC3",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sCF4",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "sFA5",
+      "refs": [
+        "F",
+        "A"
+      ]
+    },
+    {
+      "id": "sOD6",
+      "refs": [
+        "O",
+        "D"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOE7",
+      "refs": [
+        "O",
+        "E"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOF8",
+      "refs": [
+        "O",
+        "F"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "D",
+        "O"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "B",
+        "E",
+        "O"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "A",
+        "F",
+        "O"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "d0",
+        "from": "A",
+        "to": "B",
+        "label": "6",
+        "side": "BELOW",
+        "style": "BRACE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "d1",
+        "from": "A",
+        "to": "C",
+        "label": "5",
+        "side": "LEFT",
+        "style": "BRACE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "d2",
+        "from": "A",
+        "to": "D",
+        "label": "2",
+        "side": "BELOW",
+        "style": "BRACE",
+        "offset": "AUTO",
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eA",
+        "count": 1,
+        "segments": [
+          "sAD0",
+          "sFA5"
+        ]
+      },
+      {
+        "id": "eB",
+        "count": 2,
+        "segments": [
+          "sDB1",
+          "sBE2"
+        ]
+      },
+      {
+        "id": "eC",
+        "count": 3,
+        "segments": [
+          "sEC3",
+          "sCF4"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 660,
+    "height": 570
+  },
+  "caption": "AB=6, AC=5, AD=2인 삼각형 ABC의 내접원 O와 접점 D,E,F.",
+  "sourceQuote": "원 O는 △ABC의 내접원, D E F 접점, AB=6, AC=5, AD=2.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원 O는 △ABC의 내접원, D E F 접점, AB=6, AC=5, AD=2.",
+      "mappedTo": [
+        "sAD0",
+        "sDB1",
+        "sBE2",
+        "sEC3",
+        "sCF4",
+        "sFA5",
+        "sOD6",
+        "sOE7",
+        "sOF8",
+        "r0",
+        "r1",
+        "r2",
+        "d0",
+        "d1",
+        "d2"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 A·B·C 배치에 맞춰 내접원, 접점, 세 쌍의 접선 동일 길이와 길이 숫자를 보인다."
+  ]
+}

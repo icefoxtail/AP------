@@ -1,0 +1,260 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "29",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "17",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "rational",
+              "numerator": "17",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "H",
+    "C",
+    "E",
+    "B",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "sHE0",
+      "refs": [
+        "H",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC1",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sHG2",
+      "refs": [
+        "H",
+        "G"
+      ]
+    },
+    {
+      "id": "sGB3",
+      "refs": [
+        "G",
+        "B"
+      ]
+    },
+    {
+      "id": "sEB4",
+      "refs": [
+        "E",
+        "B"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sBC5",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "C",
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "H",
+        "G",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "E",
+          "B",
+          "C"
+        ],
+        "value": 52,
+        "label": "52",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "d0",
+        "from": "H",
+        "to": "G",
+        "label": "10",
+        "side": "BELOW",
+        "style": "BRACE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "d1",
+        "from": "G",
+        "to": "B",
+        "label": "1.7",
+        "side": "RIGHT",
+        "style": "BRACE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "t0",
+        "ownerSegment": "sEC1",
+        "text": "12.8",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 660,
+    "height": 570
+  },
+  "caption": "건물 높이와 눈높이 1.7m를 분리하고 10m 거리에서 52°로 올려본다.",
+  "sourceQuote": "건물까지 10m, 올려본각 52°, 눈높이 1.7m, 건물 높이를 구한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "건물까지 10m, 올려본각 52°, 눈높이 1.7m, 건물 높이를 구한다.",
+      "mappedTo": [
+        "sHE0",
+        "sEC1",
+        "sHG2",
+        "sGB3",
+        "sEB4",
+        "sBC5",
+        "r0",
+        "r1",
+        "aB",
+        "d0",
+        "d1",
+        "t0"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 10m·52°·1.7m·시선과 수평 보조선을 모두 보인다."
+  ]
+}

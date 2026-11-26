@@ -1,0 +1,416 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "G1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "5"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "GF",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H1"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H3",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H2"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "G1",
+    "G2",
+    "G3",
+    "GF",
+    "H1",
+    "H2",
+    "H3"
+  ],
+  "displaySegments": [
+    {
+      "id": "sG1G20",
+      "refs": [
+        "G1",
+        "G2"
+      ]
+    },
+    {
+      "id": "sG2G31",
+      "refs": [
+        "G2",
+        "G3"
+      ]
+    },
+    {
+      "id": "sG3G12",
+      "refs": [
+        "G3",
+        "G1"
+      ]
+    },
+    {
+      "id": "sG3GF3",
+      "refs": [
+        "G3",
+        "GF"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sH1H24",
+      "refs": [
+        "H1",
+        "H2"
+      ]
+    },
+    {
+      "id": "sH2H35",
+      "refs": [
+        "H2",
+        "H3"
+      ]
+    },
+    {
+      "id": "sH3H16",
+      "refs": [
+        "H3",
+        "H1"
+      ]
+    }
+  ],
+  "rightAngles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aG",
+        "refs": [
+          "G3",
+          "G1",
+          "G2"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aH",
+        "refs": [
+          "H1",
+          "H2",
+          "H3"
+        ],
+        "value": 135,
+        "label": "135",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "d0",
+        "from": "G1",
+        "to": "G3",
+        "label": "5",
+        "side": "LEFT",
+        "style": "BRACE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "d1",
+        "from": "G1",
+        "to": "G2",
+        "label": "6",
+        "side": "BELOW",
+        "style": "BRACE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "d2",
+        "from": "H1",
+        "to": "H2",
+        "label": "3",
+        "side": "LEFT",
+        "style": "BRACE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "d3",
+        "from": "H2",
+        "to": "H3",
+        "label": "2sqrt(2)",
+        "side": "ABOVE",
+        "style": "BRACE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "G1",
+    "G2",
+    "G3",
+    "GF",
+    "H1",
+    "H2",
+    "H3"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 660,
+    "height": 570
+  },
+  "caption": "(ㄱ) 5cm·6cm와 끼인각 60°인 삼각형; (ㄴ) 3cm·2√2cm와 끼인각 135°인 삼각형.",
+  "sourceQuote": "(ㄱ) 두 변 5 cm, 6 cm, 끼인각 60°. (ㄴ) 두 변 3 cm, 2√2 cm, 끼인각 135°.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "(ㄱ) 두 변 5 cm, 6 cm, 끼인각 60°. (ㄴ) 두 변 3 cm, 2√2 cm, 끼인각 135°.",
+      "mappedTo": [
+        "sG1G20",
+        "sG2G31",
+        "sG3G12",
+        "sG3GF3",
+        "sH1H24",
+        "sH2H35",
+        "sH3H16",
+        "aG",
+        "aH",
+        "d0",
+        "d1",
+        "d2",
+        "d3"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 나란한 두 삼각형·점선 높이·네 길이·60° 및 135° 각 표시를 두 비교 도형에 복원한다."
+  ]
+}
