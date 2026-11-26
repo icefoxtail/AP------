@@ -95,7 +95,11 @@ window.questionBank = [
     content: "$a>1$이고 곡선 $y=a^x-4$ 위의 제1사분면 점 $A$를 지나는 수직선이 $x$축과 만나는 점을 $B$, 점근선과 만나는 점을 $C$라 한다. $\\overline{AB}=3\\overline{BC}$이고 삼각형 $AOC$의 넓이가 $32$일 때, $a\\times\\overline{OB}$의 값은? (단, $O$는 원점이다.) [4.5점]",
     choices: ["$6$", "$8$", "$10$", "$12$", "$16$"], answer: "②",
     solution: "점근선은 $y=-4$이다. $A=(t,a^t-4)$라 두면 $B=(t,0)$, $C=(t,-4)$이고 $t>0$이다.\n$BC=4$, $AB=3BC=12$이므로 $a^t-4=12$, 즉 $a^t=16$이다.\n밑변 $AC=AB+BC=16$, 높이 $OB=t$이므로 삼각형 $AOC$의 넓이는 $\\dfrac12\\times16\\times t=32$이다.\n따라서 $t=4$, $a^4=16$이므로 $a=2$이다.\n구하는 값은 $a\\times OB=2\\times4=8$이다. 정답은 ②이다.",
-    points: 4.5, curriculum: "2022", rpmPrimaryRecordId: "H2-M1-RPM-080", problemTypeKey: "PT_FUNCTION_GRAPH_TRANSFORM", templateKey: "TPL_FUNCTION_GRAPH_TRANSLATION", crossConceptKeys: [], conditionKeys: [], integrationPattern: "SEQUENTIAL", difficultyBucket: 3, difficultyConfidence: "high", difficultyBoundaryFlag: "NONE", sourceQid: 12, variationType: "EXAM_FOLLOWUP", provenance: "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js#q12"
+    points: 4.5, curriculum: "2022", rpmPrimaryRecordId: "H2-M1-RPM-080", problemTypeKey: "PT_FUNCTION_GRAPH_TRANSFORM", templateKey: "TPL_FUNCTION_GRAPH_TRANSLATION", crossConceptKeys: [], conditionKeys: [], integrationPattern: "SEQUENTIAL", difficultyBucket: 3, difficultyConfidence: "high", difficultyBoundaryFlag: "NONE", sourceQid: 12, variationType: "EXAM_FOLLOWUP", provenance: "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js#q12",
+    "solutionImage": "assets/images/26_효천고_1학기_중간_고2_대수_유사2/q12-solution.svg",
+    "solutionImageAlt": "지수함수 y=2^x-4에서 점 A(4,12), B(4,0), C(4,-4)와 삼각형 AOC의 밑변과 높이를 보인 해설 그림",
+    "solutionImageCaption": "지수함수 y=2^x-4에서 점 A(4,12), B(4,0), C(4,-4)와 삼각형 AOC의 밑변과 높이를 보인 해설 그림",
+    "solutionImageSize": "medium"
   },
   {
     id: 13, category: "로그가 자연수가 되는 조건", standardCourse: "대수", standardUnitKey: "H22-A-01", standardUnit: "지수와 로그", subUnitKey: "H22-A-01-EXPONENT_LOG", subUnit: "지수와 로그", subUnitClassificationDepth: "complete_category",
@@ -135,7 +139,11 @@ window.questionBank = [
     content: "실수 전체에서 정의되고 공역도 실수 전체인 함수 $f(x)=\\begin{cases}2^{-x-1}&(x<k)\\\\-\\log_2(x+1)-1&(x\\ge k)\\end{cases}$가 일대일 대응이다. 또 함수 $g(x)=\\begin{cases}\\log_2(3-x)+2&(x<-k)\\\\-2^{x-1}+2&(x\\ge-k)\\end{cases}$라 한다. $f(a)\\le b\\le g(a)$를 만족하는 정수 순서쌍 $(a,b)$의 개수는? (단, $-3\\le a\\le0$) [5점]",
     choices: ["$9$", "$11$", "$13$", "$15$", "$17$"], answer: "③",
     solution: "함수 $f$의 왼쪽 가지와 오른쪽 가지는 각각 감소한다.\n왼쪽 가지의 치역은 $(2^{-k-1},\\infty)$이고 오른쪽 가지의 치역은 $(-\\infty,-\\log_2(k+1)-1]$이다.\n두 치역이 겹치거나 빈틈이 생기지 않아야 일대일 대응이므로 경계값은 같다. 따라서\n$2^{-k-1}=-\\log_2(k+1)-1>0$이다.\n진수 조건과 부호를 함께 쓰면 $k+1>0$, $\\log_2(k+1)<-1$이고 $0<k+1<\\dfrac12$이다.\n즉 $-1<k<-\\dfrac12$이므로 $a=-3,-2,-1$에서는 $f$의 첫째 가지, $a=0$에서는 둘째 가지를 쓴다. 또한 $-k>\\dfrac12$이므로 이 네 정수 $a$는 모두 $g$의 첫째 가지를 쓴다.\n$a=-3$에서 $f(a)=4$, $g(a)=2+\\log_2 6$은 $4$와 $5$ 사이이므로 $b=4$ 한 개이다.\n$a=-2$에서 $f(a)=2$, $g(a)=2+\\log_2 5$는 $4$와 $5$ 사이이므로 $b=2,3,4$의 세 개이다.\n$a=-1$에서 $f(a)=1$, $g(a)=2+\\log_2 4=4$이므로 네 개이다.\n$a=0$에서 $f(a)=-1$, $g(a)=2+\\log_2 3$은 $3$과 $4$ 사이이므로 $b=-1,0,1,2,3$의 다섯 개이다.\n따라서 $1+3+4+5=13$개이고 정답은 ③이다.",
-    points: 5, curriculum: "2022", rpmPrimaryRecordId: "H2-M1-RPM-087", problemTypeKey: "PT_FUNCTION_GRAPH_PROPERTIES", templateKey: "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT", crossConceptKeys: [], conditionKeys: [], integrationPattern: "SEQUENTIAL", difficultyBucket: 4, difficultyConfidence: "high", difficultyBoundaryFlag: "NONE", sourceQid: 17, variationType: "EXAM_FOLLOWUP", provenance: "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js#q17"
+    points: 5, curriculum: "2022", rpmPrimaryRecordId: "H2-M1-RPM-087", problemTypeKey: "PT_FUNCTION_GRAPH_PROPERTIES", templateKey: "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT", crossConceptKeys: [], conditionKeys: [], integrationPattern: "SEQUENTIAL", difficultyBucket: 4, difficultyConfidence: "high", difficultyBoundaryFlag: "NONE", sourceQid: 17, variationType: "EXAM_FOLLOWUP", provenance: "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js#q17",
+    "solutionImage": "assets/images/26_효천고_1학기_중간_고2_대수_유사2/q17-solution.svg",
+    "solutionImageAlt": "일대일 대응에서 유도되는 k의 필요범위 -1<k<-1/2와 정수 a=-3,-2,-1,0을 구분한다. 실제 k는 두 가지의 경계값이 같은 조건도 만족해야 한다.",
+    "solutionImageCaption": "일대일 대응에서 유도되는 k의 필요범위 -1<k<-1/2와 정수 a=-3,-2,-1,0을 구분한다. 실제 k는 두 가지의 경계값이 같은 조건도 만족해야 한다.",
+    "solutionImageSize": "full"
   },
   {
     id: 18, category: "사분면과 삼각함수의 부호", standardCourse: "대수", standardUnitKey: "H22-A-04", standardUnit: "삼각함수", subUnitKey: "H22-A-04-TRIGONOMETRIC_BASIC", subUnit: "삼각함수의 기본", subUnitClassificationDepth: "complete_category",
@@ -159,7 +167,11 @@ window.questionBank = [
     content: "부등식 $\\log_{\\frac13}(7-2x)>-1$을 만족하는 모든 실수 $x$의 범위를 구하는 과정을 서술하시오. [5점]",
     choices: [], answer: "$2<x<\\dfrac72$",
     solution: "로그의 진수는 양수이므로 먼저 $7-2x>0$, 즉 $x<\\dfrac72$이다.\n$-1=\\log_{\\frac13}3$이므로 원래 부등식은 $\\log_{\\frac13}(7-2x)>\\log_{\\frac13}3$이다.\n밑 $\\dfrac13$은 $0$과 $1$ 사이이므로 로그함수는 감소한다. 따라서 진수의 부등호 방향을 바꾸어 $7-2x<3$이다.\n이를 정리하면 $-2x<-4$, $x>2$이다.\n정의역 조건과 합하면 $2<x<\\dfrac72$이다.",
-    points: 5, curriculum: "2022", rpmPrimaryRecordId: "H2-M1-RPM-091", problemTypeKey: "PT_H22A_03_LOG_INEQUALITY", templateKey: "TPL_H22A_03_LOG_INEQUALITY_091", crossConceptKeys: [], conditionKeys: [], integrationPattern: "SEQUENTIAL", difficultyBucket: 2, difficultyConfidence: "high", difficultyBoundaryFlag: "NONE", sourceQid: 20, variationType: "EXAM_FOLLOWUP", provenance: "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js#q20"
+    points: 5, curriculum: "2022", rpmPrimaryRecordId: "H2-M1-RPM-091", problemTypeKey: "PT_H22A_03_LOG_INEQUALITY", templateKey: "TPL_H22A_03_LOG_INEQUALITY_091", crossConceptKeys: [], conditionKeys: [], integrationPattern: "SEQUENTIAL", difficultyBucket: 2, difficultyConfidence: "high", difficultyBoundaryFlag: "NONE", sourceQid: 20, variationType: "EXAM_FOLLOWUP", provenance: "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js#q20",
+    "solutionImage": "assets/images/26_효천고_1학기_중간_고2_대수_유사2/q20-solution.svg",
+    "solutionImageAlt": "0<7-2x<3의 해집합 2<x<7/2를 양 끝이 열린 구간으로 나타낸다.",
+    "solutionImageCaption": "0<7-2x<3의 해집합 2<x<7/2를 양 끝이 열린 구간으로 나타낸다.",
+    "solutionImageSize": "full"
   },
   {
     id: 21, category: "지수방정식의 두 근의 비", standardCourse: "대수", standardUnitKey: "H22-A-02", standardUnit: "지수함수", subUnitKey: "H22-A-02-EXPONENTIAL_FUNCTION", subUnit: "지수함수", subUnitClassificationDepth: "complete_category",
