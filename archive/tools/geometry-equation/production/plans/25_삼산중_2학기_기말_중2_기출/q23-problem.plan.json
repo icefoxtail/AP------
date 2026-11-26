@@ -1,0 +1,49 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "12" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "216", "denominator": "13" }, { "kind": "rational", "numerator": "90", "denominator": "13" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "60", "denominator": "13" }, { "kind": "rational", "numerator": "90", "denominator": "13" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "M", "op": "MIDPOINT", "inputs": ["B", "C"], "args": {}, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "N", "op": "MIDPOINT", "inputs": ["C", "D"], "args": {}, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "lBD", "op": "LINE_THROUGH", "inputs": ["B", "D"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lAM", "op": "LINE_THROUGH", "inputs": ["A", "M"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lAN", "op": "LINE_THROUGH", "inputs": ["A", "N"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "E", "op": "LINE_INTERSECTION", "inputs": ["lBD", "lAM"], "args": {}, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "F", "op": "LINE_INTERSECTION", "inputs": ["lBD", "lAN"], "args": {}, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "E", "F", "M", "N"],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBM", "refs": ["B", "M"] },
+    { "id": "sMC", "refs": ["M", "C"] },
+    { "id": "sCN", "refs": ["C", "N"] },
+    { "id": "sND", "refs": ["N", "D"] },
+    { "id": "sDA", "refs": ["D", "A"] },
+    { "id": "sBD", "refs": ["B", "D"] },
+    { "id": "sAM", "refs": ["A", "M"] },
+    { "id": "sAN", "refs": ["A", "N"] }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      { "id": "midpointBC", "count": 1, "segments": ["sBM", "sMC"] },
+      { "id": "midpointCD", "count": 2, "segments": ["sCN", "sND"] }
+    ],
+    "dimensions": [{ "id": "givenFullBD18", "from": "B", "to": "D", "label": "18", "unit": "cm", "side": "ABOVE", "factRole": "GIVEN" }]
+  },
+  "caption": "평행사변형 ABCD에서 M은 BC, N은 CD의 중점이고 E=AM∩BD, F=AN∩BD이며 대각선 전체 BD=18cm",
+  "accessibilityDescription": "평행사변형 ABCD의 아래변 BC 가운데 M, 오른쪽 변 CD 가운데 N을 표시한다. AM과 BD의 교점 E, AN과 BD의 교점 F가 있어 BD 위 순서는 B-E-F-D이다. BC와 CD의 각 두 반쪽에 같은 눈금이 있다. 18cm는 EF가 아닌 B에서 D까지 대각선 전체 길이 지시선에만 쓴다. 면 채움 없음.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "ABCD는 평행사변형이고 M은 BC의 중점, N은 CD의 중점", "mappedTo": ["A", "B", "C", "D", "M", "N", "sBM", "sMC", "sCN", "sND", "midpointBC", "midpointCD"] },
+    { "id": "c2", "condition": "E와 F는 BD와 AM, AN의 교점", "mappedTo": ["E", "F", "lBD", "lAM", "lAN", "sBD", "sAM", "sAN"] },
+    { "id": "c3", "condition": "길이 18cm는 BD 전체를 뜻함", "mappedTo": ["B", "D", "sBD", "givenFullBD18"] }
+  ],
+  "newVisualInformation": ["BD=18cm를 유리수 5:12:13 비율의 정확한 좌표로 만족시키고, 기존 SVG에서 EF의 길이처럼 보이던 18cm 지시선을 전체 BD로 복구한다.", "원본의 중점 눈금, AM·AN 보조선, E·F 라벨을 모두 유지한다."],
+  "sourceQuote": "평행사변형 $ABCD$에서 $\\overline{BC}$, $\\overline{CD}$의 중점을 각각 $M$과 $N$이라고 하고",
+  "coordinateCanvas": { "width": 720, "height": 530 }
+}

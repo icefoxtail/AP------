@@ -1,0 +1,44 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "expression", "op": "mul", "args": [{ "kind": "integer", "value": "6" }, { "kind": "expression", "op": "add", "args": [{ "kind": "integer", "value": "1" }, { "kind": "expression", "op": "sqrt", "args": [{ "kind": "integer", "value": "2" }] }] }] }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "expression", "op": "mul", "args": [{ "kind": "integer", "value": "6" }, { "kind": "expression", "op": "add", "args": [{ "kind": "integer", "value": "1" }, { "kind": "expression", "op": "sqrt", "args": [{ "kind": "integer", "value": "2" }] }] }] }, { "kind": "expression", "op": "mul", "args": [{ "kind": "integer", "value": "6" }, { "kind": "expression", "op": "add", "args": [{ "kind": "integer", "value": "1" }, { "kind": "expression", "op": "sqrt", "args": [{ "kind": "integer", "value": "2" }] }] }] }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "expression", "op": "mul", "args": [{ "kind": "integer", "value": "3" }, { "kind": "expression", "op": "sqrt", "args": [{ "kind": "integer", "value": "2" }] }] }, { "kind": "expression", "op": "mul", "args": [{ "kind": "integer", "value": "3" }, { "kind": "expression", "op": "sqrt", "args": [{ "kind": "integer", "value": "2" }] }] }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "lAB", "op": "LINE_THROUGH", "inputs": ["A", "B"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lDE", "op": "PERPENDICULAR_THROUGH", "inputs": ["D", "lAB"], "args": {}, "outputType": "LINE", "factRole": "GIVEN" },
+      { "id": "lBC", "op": "LINE_THROUGH", "inputs": ["B", "C"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "E", "op": "LINE_INTERSECTION", "inputs": ["lDE", "lBC"], "args": {}, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "E"],
+  "displaySegments": [
+    { "id": "sBD", "refs": ["B", "D"] },
+    { "id": "sDA", "refs": ["D", "A"] },
+    { "id": "sAC", "refs": ["A", "C"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sDE", "refs": ["D", "E"] },
+    { "id": "sAE", "refs": ["A", "E"] }
+  ],
+  "rightAngles": [
+    { "id": "rightC", "refs": ["A", "C", "B"], "factRole": "GIVEN" },
+    { "id": "rightD", "refs": ["A", "D", "E"], "factRole": "GIVEN" }
+  ],
+  "planeMarks": {
+    "equalLengths": [{ "id": "sourceADACEqual", "count": 2, "segments": ["sDA", "sAC"] }],
+    "dimensions": [{ "id": "sourceEC6", "from": "E", "to": "C", "label": "6", "unit": "cm", "side": "BELOW", "factRole": "GIVEN" }]
+  },
+  "caption": "∠C=90°, DE⊥AB, AC=BC=AD, EC=6cm인 △ABC의 내부 보조선 AE와 DE",
+  "accessibilityDescription": "B는 왼쪽 아래, C는 오른쪽 아래, A는 C 바로 위에 있는 직각삼각형 ABC다. D는 AB 위, E는 BC 위이고 DE는 AB에 수직이다. AE를 연결한다. AC와 AD의 동일한 두 개 눈금, C와 D의 직각표식, EC 아래 6cm 길이 지시선을 표시한다. 기존 그림에서 EC에 찍힌 잘못된 동일길이 눈금은 제거하고 면은 채우지 않는다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "각 C가 직각이고 AC=BC=AD", "mappedTo": ["A", "B", "C", "D", "rightC", "sAC", "sBC", "sDA", "sourceADACEqual"] },
+    { "id": "c2", "condition": "D는 AB 위이며 AB와 DE가 수직", "mappedTo": ["D", "E", "lDE", "sBD", "sDA", "sDE", "rightD"] },
+    { "id": "c3", "condition": "E는 BC 위, CE=6cm, 보조선 AE", "mappedTo": ["E", "C", "sAE", "sourceEC6"] }
+  ],
+  "newVisualInformation": ["CE=6에서 역산한 정확한 정규화 길이 AC=BC=AD=6(1+√2)를 사용한다.", "원본의 두 직각 및 AD=AC 눈금만 표시하고 잘못된 EC=AD 눈금과 배경 채움을 배제한다."],
+  "sourceQuote": "그림과 같이 $\\triangle ABC$에서 $AB\\perp DE$, $AC=BC=AD$",
+  "coordinateCanvas": { "width": 660, "height": 520 }
+}

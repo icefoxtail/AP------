@@ -1,0 +1,49 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "6" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "6" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "O", "op": "MIDPOINT", "inputs": ["B", "D"], "args": {}, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "lBD", "op": "LINE_THROUGH", "inputs": ["B", "D"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lEF", "op": "PERPENDICULAR_THROUGH", "inputs": ["O", "lBD"], "args": {}, "outputType": "LINE", "factRole": "GIVEN" },
+      { "id": "lAD", "op": "LINE_THROUGH", "inputs": ["A", "D"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lBC", "op": "LINE_THROUGH", "inputs": ["B", "C"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "E", "op": "LINE_INTERSECTION", "inputs": ["lEF", "lAD"], "args": {}, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "F", "op": "LINE_INTERSECTION", "inputs": ["lEF", "lBC"], "args": {}, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "E", "F", "O"],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sCD", "refs": ["C", "D"] },
+    { "id": "sDA", "refs": ["D", "A"] },
+    { "id": "sBD", "refs": ["B", "D"] },
+    { "id": "sEF", "refs": ["E", "F"] },
+    { "id": "sBE", "refs": ["B", "E"] },
+    { "id": "sDF", "refs": ["D", "F"] }
+  ],
+  "rightAngles": [{ "id": "perpendicularAtO", "refs": ["E", "O", "D"], "factRole": "GIVEN" }],
+  "planeMarks": {
+    "dimensions": [
+      { "id": "widthBC8", "from": "B", "to": "C", "label": "8", "unit": "cm", "side": "BELOW", "factRole": "GIVEN" },
+      { "id": "heightCD6", "from": "C", "to": "D", "label": "6", "unit": "cm", "side": "RIGHT", "factRole": "GIVEN" }
+    ]
+  },
+  "caption": "가로 8cm, 세로 6cm 직사각형 ABCD에서 BD의 중점 O를 지나 BD에 수직인 EF, 그리고 BE·DF를 이은 사각형",
+  "accessibilityDescription": "직사각형 ABCD의 B는 왼쪽 아래, C는 오른쪽 아래, D는 오른쪽 위, A는 왼쪽 위이며 BC=8cm, CD=6cm다. BD의 중점 O를 통해 BD와 수직인 선이 윗변의 E와 아랫변의 F를 지난다. BE와 DF가 연결되어 있다. 원본처럼 모든 면에 기본 채움이 없다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "직사각형 ABCD, BC=8cm, CD=6cm", "mappedTo": ["A", "B", "C", "D", "sAB", "sBC", "sCD", "sDA", "widthBC8", "heightCD6"] },
+    { "id": "c2", "condition": "O는 BD의 중점", "mappedTo": ["O", "sBD"] },
+    { "id": "c3", "condition": "O를 지나 BD에 수직인 EF, E∈AD, F∈BC", "mappedTo": ["lEF", "E", "F", "sEF", "perpendicularAtO"] },
+    { "id": "c4", "condition": "사각형 EBFD의 변 EB와 FD", "mappedTo": ["sBE", "sDF"] }
+  ],
+  "newVisualInformation": ["수직 교점 E,F를 PERPENDICULAR_THROUGH와 LINE_INTERSECTION으로 실제 구성하고 원본에 없는 직사각형·마름모 색면은 없앤다."],
+  "sourceQuote": "직사각형 $ABCD$에서 대각선 $\\overline{BD}$의 중점을 $O$라하고",
+  "coordinateCanvas": { "width": 700, "height": 530 }
+}
