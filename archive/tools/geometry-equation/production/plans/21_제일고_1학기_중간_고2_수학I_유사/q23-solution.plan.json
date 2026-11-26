@@ -1,0 +1,17 @@
+{
+  "capability":"trigonometric-spike-v1",
+  "graphPlan": {
+    "family":"trigonometric", "function":"COS", "coefficients":["4","1/2","1"], "phasePi":"-3/8",
+    "sourceDomain":{"kind":"INTERVAL_PI","rangePi":["3/4","19/4"],"states":["CLOSED","CLOSED"]},
+    "keyPoints":true,"axisTickPi":true,
+    "axisTickValues":{"x":["11/4"],"y":["-3","1","5"]}
+  },
+  "caption":"최댓값 5·최솟값 −3이므로 a=4,d=1이고, 연속 최댓점 3π/4과 19π/4 사이가 한 주기 4π이다.",
+  "accessibilityDescription":"코사인 곡선은 (3π/4,5), (11π/4,−3), (19π/4,5)를 지나며 중심선 y=1과 진폭 4를 갖는다.",
+  "sourceQuote":"이웃한 두 최댓값을 갖는 $x$의 값이 각각 $\\frac{3\\pi}{4}$, $\\frac{19\\pi}{4}$",
+  "sourceConditions":[
+    {"id":"amplitude","condition":"최댓값 5, 최솟값 −3; a=4,d=1","mappedTo":"graphPlan.coefficients,graphPlan.axisTickValues.y"},
+    {"id":"period","condition":"인접 최대 x=3π/4,19π/4; 주기 4π","mappedTo":"graphPlan.phasePi,graphPlan.coefficients[1],graphPlan.sourceDomain,graphPlan.axisTickValues.x"}
+  ],
+  "newVisualInformation":["최대·최소를 통한 진폭과 중간선", "4π 주기와 3π/4 오른쪽 이동"]
+}
