@@ -101,3 +101,4 @@ for (const group of testGroups) {
   if (result.error) console.error(result.error.message);
   if (result.status !== 0 || result.error) process.exit(1);
 }
+process.exit(0);
