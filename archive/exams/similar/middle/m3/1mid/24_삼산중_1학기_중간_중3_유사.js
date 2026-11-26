@@ -1082,7 +1082,11 @@ window.questionBank = [
     "rpmPrimaryRecordId": "M3-RPM-016",
     "sourceQid": 23,
     "variationType": "STRICT_VARIANT",
-    "problemPlanRef": "archive/exams/similar/middle/m3/1mid/24_삼산중_1학기_중간_중3_유사_plans/q23-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/middle/m3/1mid/24_삼산중_1학기_중간_중3_유사_plans/q23-problem.plan.json",
+    "solutionImage": "assets/images/24_삼산중_1학기_중간_중3_유사/q23-solution.svg",
+    "solutionImageAlt": "한 변이 a+b인 정사각형을 a와 b의 길이로 각각 나누어 네 영역 a², ab, ab, b²를 얻는 기하학적 증명 모식도이다. a와 b의 수치 비율은 주어지지 않아 도식의 길이 비율은 예시이며 실측값을 뜻하지 않는다.",
+    "solutionImageCaption": "한 변이 a+b인 정사각형을 a와 b의 길이로 각각 나누어 네 영역 a², ab, ab, b²를 얻는 기하학적 증명 모식도이다. a와 b의 수치 비율은 주어지지 않아 도식의 길이 비율은 예시이며 실측값을 뜻하지 않는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

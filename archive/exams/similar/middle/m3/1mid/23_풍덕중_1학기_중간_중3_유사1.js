@@ -587,7 +587,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_풍덕중_1학기_중간_중3_유사1/q21-solution.svg",
+    "solutionImageAlt": "세 무리수는 왼쪽부터 b=−4, a=−3√5/2, c=−7+√20 순서이다. 점 B, A, C는 각각 b, a, c에 대응한다.",
+    "solutionImageCaption": "세 무리수는 왼쪽부터 b=−4, a=−3√5/2, c=−7+√20 순서이다. 점 B, A, C는 각각 b, a, c에 대응한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

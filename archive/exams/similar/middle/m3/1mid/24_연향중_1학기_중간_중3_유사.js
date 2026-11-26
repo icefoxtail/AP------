@@ -330,7 +330,11 @@ window.questionBank = [
     "rpmPrimaryRecordId": "M3-RPM-001",
     "sourceQid": 7,
     "variationType": "STRICT_VARIANT",
-    "problemPlanRef": "archive/exams/similar/middle/m3/1mid/24_연향중_1학기_중간_중3_유사_plans/q07-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/middle/m3/1mid/24_연향중_1학기_중간_중3_유사_plans/q07-problem.plan.json",
+    "solutionImage": "assets/images/24_연향중_1학기_중간_중3_유사/q7-solution.svg",
+    "solutionImageAlt": "한 변의 길이가 1이므로 BD=√(1²+1²)=√2이고 BP=BD이다. B=2에서 오른쪽으로 √2만큼 이동한 P의 수는 2+√2이다.",
+    "solutionImageCaption": "한 변의 길이가 1이므로 BD=√(1²+1²)=√2이고 BP=BD이다. B=2에서 오른쪽으로 √2만큼 이동한 P의 수는 2+√2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -800,7 +804,11 @@ window.questionBank = [
     "rpmPrimaryRecordId": "M3-RPM-001",
     "sourceQid": 17,
     "variationType": "STRICT_VARIANT",
-    "problemPlanRef": "archive/exams/similar/middle/m3/1mid/24_연향중_1학기_중간_중3_유사_plans/q17-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/middle/m3/1mid/24_연향중_1학기_중간_중3_유사_plans/q17-problem.plan.json",
+    "solutionImage": "assets/images/24_연향중_1학기_중간_중3_유사/q17-solution.svg",
+    "solutionImageAlt": "-2<a<5인 수직선의 열린 구간에서 a-5<0, a+2>0이므로 |a-5|=5-a, |a+2|=a+2이다. 식의 값은 -2a+3이다.",
+    "solutionImageCaption": "-2<a<5인 수직선의 열린 구간에서 a-5<0, a+2>0이므로 |a-5|=5-a, |a+2|=a+2이다. 식의 값은 -2a+3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1065,6 +1073,10 @@ window.questionBank = [
     "rpmPrimaryRecordId": "M3-RPM-015",
     "sourceQid": 23,
     "variationType": "STRICT_VARIANT",
-    "problemPlanRef": "archive/exams/similar/middle/m3/1mid/24_연향중_1학기_중간_중3_유사_plans/q23-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/middle/m3/1mid/24_연향중_1학기_중간_중3_유사_plans/q23-problem.plan.json",
+    "solutionImage": "assets/images/24_연향중_1학기_중간_중3_유사/q23-solution.svg",
+    "solutionImageAlt": "한 변 x+y인 정사각형을 x와 y에 따라 네 영역으로 나누면 x²+xy+xy+y²=(x+y)²이다. 이 문항의 x+y=15, x²+y²=125에서 2xy=100, xy=50이고 둘레의 곱은 16xy=800이다. 도식은 가능한 순서 x=10, y=5의 경우를 표현한다.",
+    "solutionImageCaption": "한 변 x+y인 정사각형을 x와 y에 따라 네 영역으로 나누면 x²+xy+xy+y²=(x+y)²이다. 이 문항의 x+y=15, x²+y²=125에서 2xy=100, xy=50이고 둘레의 곱은 16xy=800이다. 도식은 가능한 순서 x=10, y=5의 경우를 표현한다.",
+    "solutionImageSize": "full"
   }
 ];

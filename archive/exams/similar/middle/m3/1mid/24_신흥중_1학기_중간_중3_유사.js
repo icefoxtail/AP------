@@ -284,7 +284,11 @@ window.questionBank = [
     "rpmPrimaryRecordId": "M3-RPM-006",
     "sourceQid": 6,
     "variationType": "STRICT_VARIANT",
-    "problemPlanRef": "archive/exams/similar/middle/m3/1mid/24_신흥중_1학기_중간_중3_유사_plans/q06-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/middle/m3/1mid/24_신흥중_1학기_중간_중3_유사_plans/q06-problem.plan.json",
+    "solutionImage": "assets/images/24_신흥중_1학기_중간_중3_유사/q6-solution.svg",
+    "solutionImageAlt": "모눈에서 AB=√5, CD=√13이다. A=0에서 왼쪽으로 옮긴 P는 -√5이고, C=2에서 오른쪽으로 옮긴 Q는 2+√13이다.",
+    "solutionImageCaption": "모눈에서 AB=√5, CD=√13이다. A=0에서 왼쪽으로 옮긴 P는 -√5이고, C=2에서 오른쪽으로 옮긴 Q는 2+√13이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -334,7 +338,11 @@ window.questionBank = [
     "rpmPrimaryRecordId": "M3-RPM-013",
     "sourceQid": 7,
     "variationType": "STRICT_VARIANT",
-    "problemPlanRef": "archive/exams/similar/middle/m3/1mid/24_신흥중_1학기_중간_중3_유사_plans/q07-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/middle/m3/1mid/24_신흥중_1학기_중간_중3_유사_plans/q07-problem.plan.json",
+    "solutionImage": "assets/images/24_신흥중_1학기_중간_중3_유사/q7-solution.svg",
+    "solutionImageAlt": "주사위 A의 눈 a와 B의 눈 b에 대해 6×6 곱셈 표에서 ab=3인 2칸과 ab=12인 4칸을 구분해 표시한다. 3ab가 완전제곱수가 되는 경우는 36칸 중 6칸이다.",
+    "solutionImageCaption": "주사위 A의 눈 a와 B의 눈 b에 대해 6×6 곱셈 표에서 ab=3인 2칸과 ab=12인 4칸을 구분해 표시한다. 3ab가 완전제곱수가 되는 경우는 36칸 중 6칸이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -864,7 +872,11 @@ window.questionBank = [
     "rpmPrimaryRecordId": "M3-RPM-006",
     "sourceQid": 18,
     "variationType": "STRICT_VARIANT",
-    "problemPlanRef": "archive/exams/similar/middle/m3/1mid/24_신흥중_1학기_중간_중3_유사_plans/q18-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/middle/m3/1mid/24_신흥중_1학기_중간_중3_유사_plans/q18-problem.plan.json",
+    "solutionImage": "assets/images/24_신흥중_1학기_중간_중3_유사/q18-solution.svg",
+    "solutionImageAlt": "2<x<5인 구간에서는 x-5<0, x-2>0이다. 따라서 |x-5|=5-x, |x-2|=x-2이다.",
+    "solutionImageCaption": "2<x<5인 구간에서는 x-5<0, x-2>0이다. 따라서 |x-5|=5-x, |x-2|=x-2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1127,7 +1139,11 @@ window.questionBank = [
     "rpmPrimaryRecordId": "M3-RPM-014",
     "sourceQid": 24,
     "variationType": "STRICT_VARIANT",
-    "problemPlanRef": "archive/exams/similar/middle/m3/1mid/24_신흥중_1학기_중간_중3_유사_plans/q24-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/middle/m3/1mid/24_신흥중_1학기_중간_중3_유사_plans/q24-problem.plan.json",
+    "solutionImage": "assets/images/24_신흥중_1학기_중간_중3_유사/q24-solution.svg",
+    "solutionImageAlt": "원기둥 전개도의 직사각형 가로는 밑면의 둘레 6√2π cm, 세로는 높이 4√3 cm이다. 원의 반지름은 둘레를 2π로 나눈 3√2 cm이다.",
+    "solutionImageCaption": "원기둥 전개도의 직사각형 가로는 밑면의 둘레 6√2π cm, 세로는 높이 4√3 cm이다. 원의 반지름은 둘레를 2π로 나눈 3√2 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,

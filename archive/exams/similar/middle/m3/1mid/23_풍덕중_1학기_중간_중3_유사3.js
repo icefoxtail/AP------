@@ -506,7 +506,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_풍덕중_1학기_중간_중3_유사3/q18-solution.svg",
+    "solutionImageAlt": "|x−4|+|x+2|=6의 해는 −2≤x≤4이고, 정수해는 −2부터 4까지 7개이다.",
+    "solutionImageCaption": "|x−4|+|x+2|=6의 해는 −2≤x≤4이고, 정수해는 −2부터 4까지 7개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -586,7 +590,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_풍덕중_1학기_중간_중3_유사3/q21-solution.svg",
+    "solutionImageAlt": "1/b=2+√3은 3과 4 사이이므로 정수 부분은 3, 소수 부분은 √3−1이다.",
+    "solutionImageCaption": "1/b=2+√3은 3과 4 사이이므로 정수 부분은 3, 소수 부분은 √3−1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

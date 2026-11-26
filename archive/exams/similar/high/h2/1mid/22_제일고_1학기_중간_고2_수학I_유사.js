@@ -748,7 +748,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-041",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/22_제일고_1학기_중간_고2_수학I_유사/q17-solution.svg",
+    "solutionImageAlt": "해설에서 결정된 y=4sin(x/2−π/12)의 한 주기. x=7π/6의 최댓값 4와 다음 x=19π/6의 최솟값 −4 사이가 반주기 2π이다.",
+    "solutionImageCaption": "해설에서 결정된 y=4sin(x/2−π/12)의 한 주기. x=7π/6의 최댓값 4와 다음 x=19π/6의 최솟값 −4 사이가 반주기 2π이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,

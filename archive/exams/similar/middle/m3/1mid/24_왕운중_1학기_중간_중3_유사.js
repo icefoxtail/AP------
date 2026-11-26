@@ -640,6 +640,10 @@ window.questionBank = [
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/24_왕운중_1학기_중간_중3_유사/q23-solution.svg",
+    "solutionImageAlt": "전개식에서 a=4, b=2이므로 밑변 a−b=2, 빗변 a+b=6이다. 직각삼각형의 높이는 √(6²−2²)=4√2이며 넓이는 4√2이다.",
+    "solutionImageCaption": "전개식에서 a=4, b=2이므로 밑변 a−b=2, 빗변 a+b=6이다. 직각삼각형의 높이는 √(6²−2²)=4√2이며 넓이는 4√2이다.",
+    "solutionImageSize": "full"
   }
 ];

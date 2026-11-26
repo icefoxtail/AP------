@@ -664,7 +664,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-016",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/21_매산여고_1학기_중간_고2_수학I_유사/q15-solution.svg",
+    "solutionImageAlt": "해설에서 얻은 y=(5/2)sin(4x+π/6)+1의 한 주기. 최대 7/2, x=π/3에서 최소 −3/2, 중심선 y=1을 확인한다.",
+    "solutionImageCaption": "해설에서 얻은 y=(5/2)sin(4x+π/6)+1의 한 주기. 최대 7/2, x=π/3에서 최소 −3/2, 중심선 y=1을 확인한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -872,7 +876,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-028",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/21_매산여고_1학기_중간_고2_수학I_유사/q20-solution.svg",
+    "solutionImageAlt": "0≤x<2π에서 sin x≤1/2를 해석하기 위한 사인 곡선과 수평선 y=1/2. 두 교점은 x=π/6, 5π/6이며 부등식의 등호를 포함한다.",
+    "solutionImageCaption": "0≤x<2π에서 sin x≤1/2를 해석하기 위한 사인 곡선과 수평선 y=1/2. 두 교점은 x=π/6, 5π/6이며 부등식의 등호를 포함한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -986,6 +994,10 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-041",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/21_매산여고_1학기_중간_고2_수학I_유사/q23-solution.svg",
+    "solutionImageAlt": "y=|3cos(2πx)|, 0≤x≤1의 두 주기. 극댓값 3, 극솟값 0과 x=1/4·3/4의 영점, 수평선 y=3/2을 나타낸다. 엄격부등식의 네 교점은 열린 점이다.",
+    "solutionImageCaption": "y=|3cos(2πx)|, 0≤x≤1의 두 주기. 극댓값 3, 극솟값 0과 x=1/4·3/4의 영점, 수평선 y=3/2을 나타낸다. 엄격부등식의 네 교점은 열린 점이다.",
+    "solutionImageSize": "medium"
   }
 ];

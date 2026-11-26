@@ -287,7 +287,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "rpmPrimaryRecordId": "M3-RPM-001",
     "sourceQid": 6,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "solutionImage": "assets/images/23_향림중_1학기_중간_중3_유사/q6-solution.svg",
+    "solutionImageAlt": "3<√(2x−1)<4를 제곱하면 5<x<17/2이다. 이 범위의 자연수는 6, 7, 8이고 합은 21이다.",
+    "solutionImageCaption": "3<√(2x−1)<4를 제곱하면 5<x<17/2이다. 이 범위의 자연수는 6, 7, 8이고 합은 21이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -1076,7 +1080,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "rpmPrimaryRecordId": "M3-RPM-001",
     "sourceQid": 23,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "solutionImage": "assets/images/23_향림중_1학기_중간_중3_유사/q23-solution.svg",
+    "solutionImageAlt": "5<√30<6이므로 a=5이고, 3<√7+1<4이므로 b=(√7+1)−3=√7−2이다. 이후 1/b를 유리화한다.",
+    "solutionImageCaption": "5<√30<6이므로 a=5이고, 3<√7+1<4이므로 b=(√7+1)−3=√7−2이다. 이후 1/b를 유리화한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
