@@ -1,0 +1,269 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "O",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "equilateralAOC",
+        "count": 1,
+        "segments": [
+          "sAO",
+          "sOC",
+          "sCA"
+        ]
+      },
+      {
+        "id": "hypotenuseHalves",
+        "count": 2,
+        "segments": [
+          "sBO",
+          "sOC"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "given60C",
+        "refs": [
+          "O",
+          "C",
+          "A"
+        ],
+        "value": 60,
+        "label": "60°",
+        "arcs": 1
+      },
+      {
+        "id": "angle60A",
+        "refs": [
+          "O",
+          "A",
+          "C"
+        ],
+        "value": 60,
+        "label": "60°",
+        "arcs": 1
+      },
+      {
+        "id": "angle60O",
+        "refs": [
+          "A",
+          "O",
+          "C"
+        ],
+        "value": 60,
+        "label": "60°",
+        "arcs": 1
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "radius6",
+        "from": "O",
+        "to": "C",
+        "label": "6",
+        "unit": "cm",
+        "side": "BELOW"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rightA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "caption": "직각삼각형의 외심 O는 BC 중점이며 AOC는 변 6의 정삼각형",
+  "accessibilityDescription": "A가 직각이고 C가 60도인 삼각형 ABC에서 BC의 중점 O를 A와 연결했다. AOC의 세 변에는 같은 길이 눈금과 각의 호, 외접원의 반지름 치수가 있다. 색칠한 면은 없다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "∠A=90°",
+      "mappedTo": [
+        "rightA"
+      ],
+      "sourceQuote": "다음 그림에서 $\\triangle ABC$는 $\\angle A=90^\\circ$인 직각삼각형이다. 점 $O$는 $\\triangle ABC$의 외심이고, $\\triangle AOC$의 둘레의 길이가 $18\\,\\mathrm{cm}$일 때, 외접원 $O$의 둘레의 길이는? [5점]"
+    },
+    {
+      "id": "c2",
+      "condition": "∠ACB=60°",
+      "mappedTo": [
+        "given60C"
+      ],
+      "sourceQuote": "다음 그림에서 $\\triangle ABC$는 $\\angle A=90^\\circ$인 직각삼각형이다. 점 $O$는 $\\triangle ABC$의 외심이고, $\\triangle AOC$의 둘레의 길이가 $18\\,\\mathrm{cm}$일 때, 외접원 $O$의 둘레의 길이는? [5점]"
+    },
+    {
+      "id": "c3",
+      "condition": "O는 BC 중점",
+      "mappedTo": [
+        "hypotenuseHalves"
+      ],
+      "sourceQuote": "[키포인트] 직각삼각형의 외심은 빗변의 중점이고, 그림의 $60^\\circ$를 이용하면 $\\triangle AOC$가 정삼각형이 된다.\n$OA=OC$이므로 $\\angle OAC=\\angle ACO=60^\\circ$이다. 따라서 $\\triangle AOC$의 세 각이 모두 $60^\\circ$이므로 정삼각형이고 $OA=OC=AC=r$이다. 둘레가 $18\\,\\mathrm{cm}$이므로 $3r=18$, 따라서 $r=6\\,\\mathrm{cm}$이다. 외접원의 둘레는 $2\\pi r=12\\pi\\,\\mathrm{cm}$이다.\n따라서 정답은 ③이다."
+    },
+    {
+      "id": "c4",
+      "condition": "OA=OC=AC=6",
+      "mappedTo": [
+        "equilateralAOC",
+        "radius6"
+      ],
+      "sourceQuote": "[키포인트] 직각삼각형의 외심은 빗변의 중점이고, 그림의 $60^\\circ$를 이용하면 $\\triangle AOC$가 정삼각형이 된다.\n$OA=OC$이므로 $\\angle OAC=\\angle ACO=60^\\circ$이다. 따라서 $\\triangle AOC$의 세 각이 모두 $60^\\circ$이므로 정삼각형이고 $OA=OC=AC=r$이다. 둘레가 $18\\,\\mathrm{cm}$이므로 $3r=18$, 따라서 $r=6\\,\\mathrm{cm}$이다. 외접원의 둘레는 $2\\pi r=12\\pi\\,\\mathrm{cm}$이다.\n따라서 정답은 ③이다."
+    }
+  ],
+  "newVisualInformation": [
+    "이전 해설이 불필요하게 칠한 AOC 삼각형 면색을 제거한다.",
+    "원의 둘레를 묻는 해설에서 반지름 6을 실제 길이 치수선에 표시한다."
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  }
+}

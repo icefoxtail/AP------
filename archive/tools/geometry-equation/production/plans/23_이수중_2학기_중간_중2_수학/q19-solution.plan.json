@@ -1,0 +1,257 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-9"
+            },
+            {
+              "kind": "integer",
+              "value": "-12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "-12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "D",
+    "E",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "parallelBases",
+        "count": 1,
+        "segments": [
+          "sED",
+          "sBC"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "top12",
+        "from": "E",
+        "to": "D",
+        "label": "12",
+        "side": "ABOVE"
+      },
+      {
+        "id": "upper10",
+        "from": "D",
+        "to": "A",
+        "label": "10",
+        "side": "RIGHT"
+      },
+      {
+        "id": "answer18",
+        "from": "B",
+        "to": "C",
+        "label": "18",
+        "side": "BELOW"
+      }
+    ],
+    "pathLabels": [
+      {
+        "id": "whole25",
+        "points": [
+          "D",
+          "A",
+          "B"
+        ],
+        "label": "25"
+      }
+    ]
+  },
+  "caption": "대각선 DB와 EC가 A에서 교차하는 두 역삼각형의 닮음과 밑변 18",
+  "accessibilityDescription": "위의 작은 삼각형 EAD와 아래의 큰 삼각형 BAC는 점 A에서 서로 맞꼭지각을 만든다. 두 평행 밑변과 교차하는 두 직선 위에 길이 치수를 표시했다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "DE∥BC",
+      "mappedTo": [
+        "parallelBases"
+      ],
+      "sourceQuote": "다음 그림에서 $\\overline{BC}\\parallel\\overline{DE}$일 때, $x$의 값은? [4점]"
+    },
+    {
+      "id": "c2",
+      "condition": "DE=12",
+      "mappedTo": [
+        "top12"
+      ],
+      "sourceQuote": "다음 그림에서 $\\overline{BC}\\parallel\\overline{DE}$일 때, $x$의 값은? [4점]"
+    },
+    {
+      "id": "c3",
+      "condition": "AD=10",
+      "mappedTo": [
+        "upper10"
+      ],
+      "sourceQuote": "다음 그림에서 $\\overline{BC}\\parallel\\overline{DE}$일 때, $x$의 값은? [4점]"
+    },
+    {
+      "id": "c4",
+      "condition": "BD=25",
+      "mappedTo": [
+        "whole25"
+      ],
+      "sourceQuote": "다음 그림에서 $\\overline{BC}\\parallel\\overline{DE}$일 때, $x$의 값은? [4점]"
+    },
+    {
+      "id": "c5",
+      "condition": "BC=18",
+      "mappedTo": [
+        "answer18"
+      ],
+      "sourceQuote": "[키포인트] 평행한 두 밑변 때문에 교점에서 만들어지는 두 삼각형이 닮음이다.\n$DE\\parallel BC$이므로 $\\angle ADE=\\angle ABC$, $\\angle AED=\\angle ACB$이다. 따라서 $\\triangle ADE\\sim\\triangle ABC$이다. $AD:AB=10:15=2:3$이므로 $DE:BC=2:3$이다. 따라서 $12:x=2:3$에서 $x=18$이다.\n따라서 정답은 ②이다."
+    }
+  ],
+  "newVisualInformation": [
+    "이전 해설의 동일 방향 삼각형을 원본의 상하 맞꼭지각 X 형태로 복원한다.",
+    "주어진 12,10,25와 해설의 18을 실제 치수/경로 필드에 매핑한다."
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  }
+}

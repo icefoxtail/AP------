@@ -1,0 +1,259 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "D",
+    "C",
+    "A"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dimAB10",
+        "from": "A",
+        "to": "B",
+        "label": "10",
+        "side": "LEFT"
+      },
+      {
+        "id": "dimBD8",
+        "from": "B",
+        "to": "D",
+        "label": "8",
+        "side": "BELOW"
+      },
+      {
+        "id": "dimAD6",
+        "from": "A",
+        "to": "D",
+        "label": "6",
+        "side": "RIGHT"
+      },
+      {
+        "id": "dimCD9half",
+        "from": "D",
+        "to": "C",
+        "label": "9/2",
+        "side": "BELOW"
+      },
+      {
+        "id": "dimBC25half",
+        "from": "B",
+        "to": "C",
+        "label": "25/2",
+        "side": "BELOW",
+        "offset": "AUTO"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rightA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "rightD",
+      "refs": [
+        "A",
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "caption": "빗변에 내린 높이 AD에서 AB²=BD·BC이고 남은 CD는 9/2",
+  "accessibilityDescription": "A가 직각인 삼각형 ABC에서 A에서 빗변 BC에 내린 수선 AD의 발이 D다. A와 D에 각각 직각 표식이 있고 빗변의 분할 길이를 치수로 표시했다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "∠A=90°",
+      "mappedTo": [
+        "rightA"
+      ],
+      "sourceQuote": "[서술형 4] 아래 그림과 같이 $\\angle A=90^\\circ$인 직각삼각형 $ABC$에서 $\\overline{AD}\\perp\\overline{BC}$이고 $\\overline{AB}=10$, $\\overline{BD}=8$일 때, $\\overline{CD}$의 길이는? [6점]\\n조건1) 어떤 직각삼각형이 닮음인지 적으시오. (3점)\\n조건2) 길이를 구하는 식을 풀이과정에 적으시오. (3점)"
+    },
+    {
+      "id": "c2",
+      "condition": "AD⊥BC",
+      "mappedTo": [
+        "rightD"
+      ],
+      "sourceQuote": "[서술형 4] 아래 그림과 같이 $\\angle A=90^\\circ$인 직각삼각형 $ABC$에서 $\\overline{AD}\\perp\\overline{BC}$이고 $\\overline{AB}=10$, $\\overline{BD}=8$일 때, $\\overline{CD}$의 길이는? [6점]\\n조건1) 어떤 직각삼각형이 닮음인지 적으시오. (3점)\\n조건2) 길이를 구하는 식을 풀이과정에 적으시오. (3점)"
+    },
+    {
+      "id": "c3",
+      "condition": "AB=10",
+      "mappedTo": [
+        "dimAB10"
+      ],
+      "sourceQuote": "[서술형 4] 아래 그림과 같이 $\\angle A=90^\\circ$인 직각삼각형 $ABC$에서 $\\overline{AD}\\perp\\overline{BC}$이고 $\\overline{AB}=10$, $\\overline{BD}=8$일 때, $\\overline{CD}$의 길이는? [6점]\\n조건1) 어떤 직각삼각형이 닮음인지 적으시오. (3점)\\n조건2) 길이를 구하는 식을 풀이과정에 적으시오. (3점)"
+    },
+    {
+      "id": "c4",
+      "condition": "BD=8",
+      "mappedTo": [
+        "dimBD8"
+      ],
+      "sourceQuote": "[서술형 4] 아래 그림과 같이 $\\angle A=90^\\circ$인 직각삼각형 $ABC$에서 $\\overline{AD}\\perp\\overline{BC}$이고 $\\overline{AB}=10$, $\\overline{BD}=8$일 때, $\\overline{CD}$의 길이는? [6점]\\n조건1) 어떤 직각삼각형이 닮음인지 적으시오. (3점)\\n조건2) 길이를 구하는 식을 풀이과정에 적으시오. (3점)"
+    },
+    {
+      "id": "c5",
+      "condition": "AD=6",
+      "mappedTo": [
+        "dimAD6"
+      ],
+      "sourceQuote": "[키포인트] 직각삼각형의 빗변에 내린 높이로 생긴 작은 삼각형은 원래 삼각형과 닮음이다.\n두 각의 크기가 각각 같으므로 $\\triangle ABD\\sim\\triangle CBA$이다. 대응변의 비에서 $AB:BC=BD:AB$이므로 $AB^2=BD\\cdot BC$이다. 따라서 $10^2=8\\cdot BC$이므로 $BC=\\dfrac{100}{8}=\\dfrac{25}{2}$이다. 그러므로 $CD=BC-BD=\\dfrac{25}{2}-8=\\dfrac{25}{2}-\\dfrac{16}{2}=\\dfrac{9}{2}$이다.\n따라서 구하는 길이는 $\\dfrac{9}{2}$이다."
+    },
+    {
+      "id": "c6",
+      "condition": "BC=25/2",
+      "mappedTo": [
+        "dimBC25half"
+      ],
+      "sourceQuote": "[키포인트] 직각삼각형의 빗변에 내린 높이로 생긴 작은 삼각형은 원래 삼각형과 닮음이다.\n두 각의 크기가 각각 같으므로 $\\triangle ABD\\sim\\triangle CBA$이다. 대응변의 비에서 $AB:BC=BD:AB$이므로 $AB^2=BD\\cdot BC$이다. 따라서 $10^2=8\\cdot BC$이므로 $BC=\\dfrac{100}{8}=\\dfrac{25}{2}$이다. 그러므로 $CD=BC-BD=\\dfrac{25}{2}-8=\\dfrac{25}{2}-\\dfrac{16}{2}=\\dfrac{9}{2}$이다.\n따라서 구하는 길이는 $\\dfrac{9}{2}$이다."
+    },
+    {
+      "id": "c7",
+      "condition": "CD=9/2",
+      "mappedTo": [
+        "dimCD9half"
+      ],
+      "sourceQuote": "[키포인트] 직각삼각형의 빗변에 내린 높이로 생긴 작은 삼각형은 원래 삼각형과 닮음이다.\n두 각의 크기가 각각 같으므로 $\\triangle ABD\\sim\\triangle CBA$이다. 대응변의 비에서 $AB:BC=BD:AB$이므로 $AB^2=BD\\cdot BC$이다. 따라서 $10^2=8\\cdot BC$이므로 $BC=\\dfrac{100}{8}=\\dfrac{25}{2}$이다. 그러므로 $CD=BC-BD=\\dfrac{25}{2}-8=\\dfrac{25}{2}-\\dfrac{16}{2}=\\dfrac{9}{2}$이다.\n따라서 구하는 길이는 $\\dfrac{9}{2}$이다."
+    }
+  ],
+  "newVisualInformation": [
+    "기존 해설의 잘못 보이던 끝부분 수치 표기를 실제 구간 BC·CD 치수선으로 재배치한다.",
+    "직각 A와 수선 발 D의 직각을 분리하고 면 채움을 넣지 않는다."
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  }
+}

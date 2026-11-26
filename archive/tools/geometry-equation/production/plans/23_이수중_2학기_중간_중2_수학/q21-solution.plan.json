@@ -1,0 +1,292 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "808931066",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "254465533",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "97767233",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "86296175",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "238744166",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "I"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sIB",
+      "refs": [
+        "I",
+        "B"
+      ]
+    },
+    {
+      "id": "sIC",
+      "refs": [
+        "I",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "equalRadii",
+        "count": 1,
+        "segments": [
+          "sAO",
+          "sOB",
+          "sOC"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "given80",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 80,
+        "label": "80°",
+        "arcs": 1
+      },
+      {
+        "id": "angle160",
+        "refs": [
+          "B",
+          "O",
+          "C"
+        ],
+        "value": 160,
+        "label": "160°",
+        "arcs": 1
+      },
+      {
+        "id": "angle130",
+        "refs": [
+          "B",
+          "I",
+          "C"
+        ],
+        "value": 130,
+        "label": "130°",
+        "arcs": 1
+      },
+      {
+        "id": "angle10B",
+        "refs": [
+          "O",
+          "B",
+          "C"
+        ],
+        "value": 10,
+        "label": "10°",
+        "arcs": 1
+      },
+      {
+        "id": "angle10C",
+        "refs": [
+          "B",
+          "C",
+          "O"
+        ],
+        "value": 10,
+        "label": "10°",
+        "arcs": 1
+      }
+    ]
+  },
+  "caption": "외심 O와 내심 I에서 각각 160°와 130°를 읽는다",
+  "accessibilityDescription": "꼭지각이 80도인 삼각형 안에서 외심 O와 내심 I를 구별한다. 두 중심에서 B, C로 연결한 선과 반지름의 같은 길이 눈금, 중심각의 호가 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "∠A=80°",
+      "mappedTo": [
+        "given80"
+      ],
+      "sourceQuote": "[서술형 1] 다음 그림에서 점 $O$와 점 $I$가 각각 $\\triangle ABC$의 외심과 내심일 때, $\\angle x$, $\\angle y$의 크기를 각각 구하시오. [각 3점, 총 6점]"
+    },
+    {
+      "id": "c2",
+      "condition": "OA=OB=OC",
+      "mappedTo": [
+        "equalRadii"
+      ],
+      "sourceQuote": "[키포인트] 외심에서 세 꼭짓점까지의 거리가 같다는 성질과 내심의 각의 이등분 성질을 이용한다.\n$\\angle OAB=a$, $\\angle OAC=b$라 두면 $a+b=80^\\circ$이다. $OA=OB$이므로 $\\angle ABO=a$이고, $OA=OC$이므로 $\\angle ACO=b$이다. 또한 $OB=OC$이므로 $\\angle OBC=\\angle BCO=c$라 둘 수 있다. $\\triangle ABC$의 내각의 합에서 $80^\\circ+(a+c)+(b+c)=180^\\circ$이므로 $a+b+2c=100^\\circ$이다. $a+b=80^\\circ$이므로 $2c=20^\\circ$, $c=10^\\circ$이다. 따라서 $x=\\angle BOC=180^\\circ-2c=160^\\circ$이다. 한편 $I$는 내심이므로 $\\angle IBC=\\dfrac{1}{2}\\angle B$, $\\angle ICB=\\dfrac{1}{2}\\angle C$이다. 그러므로 $y=180^\\circ-\\dfrac{1}{2}(\\angle B+\\angle C)=180^\\circ-\\dfrac{1}{2}(180^\\circ-80^\\circ)=130^\\circ$이다.\n따라서 구하는 값은 $x=160^\\circ$, $y=130^\\circ$이다."
+    },
+    {
+      "id": "c3",
+      "condition": "∠BOC=160°",
+      "mappedTo": [
+        "angle160"
+      ],
+      "sourceQuote": "[키포인트] 외심에서 세 꼭짓점까지의 거리가 같다는 성질과 내심의 각의 이등분 성질을 이용한다.\n$\\angle OAB=a$, $\\angle OAC=b$라 두면 $a+b=80^\\circ$이다. $OA=OB$이므로 $\\angle ABO=a$이고, $OA=OC$이므로 $\\angle ACO=b$이다. 또한 $OB=OC$이므로 $\\angle OBC=\\angle BCO=c$라 둘 수 있다. $\\triangle ABC$의 내각의 합에서 $80^\\circ+(a+c)+(b+c)=180^\\circ$이므로 $a+b+2c=100^\\circ$이다. $a+b=80^\\circ$이므로 $2c=20^\\circ$, $c=10^\\circ$이다. 따라서 $x=\\angle BOC=180^\\circ-2c=160^\\circ$이다. 한편 $I$는 내심이므로 $\\angle IBC=\\dfrac{1}{2}\\angle B$, $\\angle ICB=\\dfrac{1}{2}\\angle C$이다. 그러므로 $y=180^\\circ-\\dfrac{1}{2}(\\angle B+\\angle C)=180^\\circ-\\dfrac{1}{2}(180^\\circ-80^\\circ)=130^\\circ$이다.\n따라서 구하는 값은 $x=160^\\circ$, $y=130^\\circ$이다."
+    },
+    {
+      "id": "c4",
+      "condition": "∠BIC=130°",
+      "mappedTo": [
+        "angle130"
+      ],
+      "sourceQuote": "[키포인트] 외심에서 세 꼭짓점까지의 거리가 같다는 성질과 내심의 각의 이등분 성질을 이용한다.\n$\\angle OAB=a$, $\\angle OAC=b$라 두면 $a+b=80^\\circ$이다. $OA=OB$이므로 $\\angle ABO=a$이고, $OA=OC$이므로 $\\angle ACO=b$이다. 또한 $OB=OC$이므로 $\\angle OBC=\\angle BCO=c$라 둘 수 있다. $\\triangle ABC$의 내각의 합에서 $80^\\circ+(a+c)+(b+c)=180^\\circ$이므로 $a+b+2c=100^\\circ$이다. $a+b=80^\\circ$이므로 $2c=20^\\circ$, $c=10^\\circ$이다. 따라서 $x=\\angle BOC=180^\\circ-2c=160^\\circ$이다. 한편 $I$는 내심이므로 $\\angle IBC=\\dfrac{1}{2}\\angle B$, $\\angle ICB=\\dfrac{1}{2}\\angle C$이다. 그러므로 $y=180^\\circ-\\dfrac{1}{2}(\\angle B+\\angle C)=180^\\circ-\\dfrac{1}{2}(180^\\circ-80^\\circ)=130^\\circ$이다.\n따라서 구하는 값은 $x=160^\\circ$, $y=130^\\circ$이다."
+    }
+  ],
+  "newVisualInformation": [
+    "이전 해설 하단의 작은 식 대신 중심의 각 호에 160°·130°를 배치한다.",
+    "원문에 없는 이등변 조건을 암시하지 않도록 서로 다른 길이의 세 변을 갖는 대표 삼각형으로 작도한다."
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  }
+}

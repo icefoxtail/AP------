@@ -1,0 +1,244 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "equalABAC",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sCA"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "exterior120",
+        "refs": [
+          "D",
+          "B",
+          "A"
+        ],
+        "value": 120,
+        "label": "120°",
+        "arcs": 1
+      },
+      {
+        "id": "baseB60",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 60,
+        "label": "60°",
+        "arcs": 1
+      },
+      {
+        "id": "baseC60",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "value": 60,
+        "label": "60°",
+        "arcs": 1
+      },
+      {
+        "id": "apex60",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 60,
+        "label": "60°",
+        "arcs": 1
+      }
+    ]
+  },
+  "caption": "이등변삼각형의 외각 120°에서 밑각 60°씩과 꼭지각 60°가 나온다",
+  "accessibilityDescription": "DB와 BC는 직선이고, AB와 AC에는 같은 길이 눈금이 있다. B의 외각과 삼각형의 세 내각을 각도 호로 구별했다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=AC",
+      "mappedTo": [
+        "equalABAC"
+      ],
+      "sourceQuote": "다음 그림과 같이 $\\overline{AB}=\\overline{AC}$인 이등변삼각형 $ABC$에서, $\\angle ABD=120^\\circ$일 때, $\\angle x$의 크기는? [3점]"
+    },
+    {
+      "id": "c2",
+      "condition": "∠ABD=120°",
+      "mappedTo": [
+        "exterior120"
+      ],
+      "sourceQuote": "다음 그림과 같이 $\\overline{AB}=\\overline{AC}$인 이등변삼각형 $ABC$에서, $\\angle ABD=120^\\circ$일 때, $\\angle x$의 크기는? [3점]"
+    },
+    {
+      "id": "c3",
+      "condition": "∠ABC=∠BCA=60°",
+      "mappedTo": [
+        "baseB60",
+        "baseC60"
+      ],
+      "sourceQuote": "[키포인트] 이등변삼각형의 두 밑각이 같다는 성질을 이용한다.\n$\\angle ABC=180^\\circ-120^\\circ=60^\\circ$이다. $\\overline{AB}=\\overline{AC}$이므로 두 밑각이 같아 $\\angle ABC=\\angle BCA=60^\\circ$이다. 따라서 $x=180^\\circ-60^\\circ-60^\\circ=60^\\circ$이다.\n따라서 정답은 ⑤이다."
+    },
+    {
+      "id": "c4",
+      "condition": "∠A=60°",
+      "mappedTo": [
+        "apex60"
+      ],
+      "sourceQuote": "[키포인트] 이등변삼각형의 두 밑각이 같다는 성질을 이용한다.\n$\\angle ABC=180^\\circ-120^\\circ=60^\\circ$이다. $\\overline{AB}=\\overline{AC}$이므로 두 밑각이 같아 $\\angle ABC=\\angle BCA=60^\\circ$이다. 따라서 $x=180^\\circ-60^\\circ-60^\\circ=60^\\circ$이다.\n따라서 정답은 ⑤이다."
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 D-B-C 연장선과 AB=AC 눈금을 모두 보존한다.",
+    "해설의 밑각 60도와 꼭지각 60도를 각 호에 직접 대응한다."
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  }
+}

@@ -1,0 +1,360 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-27",
+              "denominator": "8"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "-15",
+                  "denominator": "8"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "7"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "27",
+              "denominator": "8"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "15",
+                  "denominator": "8"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "7"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sBO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "halfAC",
+        "count": 1,
+        "segments": [
+          "sAO",
+          "sOC"
+        ]
+      },
+      {
+        "id": "halfBD",
+        "count": 2,
+        "segments": [
+          "sBO",
+          "sOD"
+        ]
+      },
+      {
+        "id": "opposite5",
+        "count": 3,
+        "segments": [
+          "sAB",
+          "sCD"
+        ]
+      }
+    ],
+    "parallels": [
+      {
+        "id": "sideParallel",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sCD"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dimAB",
+        "from": "A",
+        "to": "B",
+        "label": "5",
+        "unit": "cm",
+        "side": "LEFT"
+      },
+      {
+        "id": "dimOA",
+        "from": "O",
+        "to": "A",
+        "label": "4",
+        "unit": "cm",
+        "side": "ABOVE"
+      },
+      {
+        "id": "dimOB",
+        "from": "O",
+        "to": "B",
+        "label": "6",
+        "unit": "cm",
+        "side": "LEFT"
+      },
+      {
+        "id": "dimOC",
+        "from": "O",
+        "to": "C",
+        "label": "4",
+        "unit": "cm",
+        "side": "BELOW"
+      },
+      {
+        "id": "dimOD",
+        "from": "O",
+        "to": "D",
+        "label": "6",
+        "unit": "cm",
+        "side": "RIGHT"
+      },
+      {
+        "id": "dimCD",
+        "from": "C",
+        "to": "D",
+        "label": "5",
+        "unit": "cm",
+        "side": "RIGHT"
+      }
+    ]
+  },
+  "caption": "평행사변형 두 대각선의 중점 O와 삼각형 OCD의 세 변 4·6·5 cm",
+  "accessibilityDescription": "ABCD의 대각선 AC, BD가 O에서 만나 서로를 이등분한다. 각 꼭짓점과 선분을 구별하고 같은 길이를 가진 구간을 같은 눈금으로 묶었다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=5 cm",
+      "mappedTo": [
+        "dimAB"
+      ],
+      "sourceQuote": "다음 그림의 평행사변형 $ABCD$에서 두 대각선의 교점을 $O$라 하고, $\\overline{AB}=5\\,\\mathrm{cm}$, $\\overline{OA}=4\\,\\mathrm{cm}$, $\\overline{OB}=6\\,\\mathrm{cm}$일 때, $\\triangle OCD$의 둘레의 길이는? [3점]"
+    },
+    {
+      "id": "c2",
+      "condition": "OA=4 cm",
+      "mappedTo": [
+        "dimOA"
+      ],
+      "sourceQuote": "다음 그림의 평행사변형 $ABCD$에서 두 대각선의 교점을 $O$라 하고, $\\overline{AB}=5\\,\\mathrm{cm}$, $\\overline{OA}=4\\,\\mathrm{cm}$, $\\overline{OB}=6\\,\\mathrm{cm}$일 때, $\\triangle OCD$의 둘레의 길이는? [3점]"
+    },
+    {
+      "id": "c3",
+      "condition": "OB=6 cm",
+      "mappedTo": [
+        "dimOB"
+      ],
+      "sourceQuote": "다음 그림의 평행사변형 $ABCD$에서 두 대각선의 교점을 $O$라 하고, $\\overline{AB}=5\\,\\mathrm{cm}$, $\\overline{OA}=4\\,\\mathrm{cm}$, $\\overline{OB}=6\\,\\mathrm{cm}$일 때, $\\triangle OCD$의 둘레의 길이는? [3점]"
+    },
+    {
+      "id": "c4",
+      "condition": "OC=4 cm",
+      "mappedTo": [
+        "dimOC",
+        "halfAC"
+      ],
+      "sourceQuote": "[키포인트] 평행사변형의 두 대각선은 서로를 이등분하고, 마주 보는 변의 길이는 같다.\n$OC=4\\,\\mathrm{cm}$, $OD=6\\,\\mathrm{cm}$, $CD=5\\,\\mathrm{cm}$이다. 따라서 둘레는 $4+6+5=15\\,\\mathrm{cm}$이다.\n따라서 정답은 ①이다."
+    },
+    {
+      "id": "c5",
+      "condition": "OD=6 cm",
+      "mappedTo": [
+        "dimOD",
+        "halfBD"
+      ],
+      "sourceQuote": "[키포인트] 평행사변형의 두 대각선은 서로를 이등분하고, 마주 보는 변의 길이는 같다.\n$OC=4\\,\\mathrm{cm}$, $OD=6\\,\\mathrm{cm}$, $CD=5\\,\\mathrm{cm}$이다. 따라서 둘레는 $4+6+5=15\\,\\mathrm{cm}$이다.\n따라서 정답은 ①이다."
+    },
+    {
+      "id": "c6",
+      "condition": "CD=5 cm",
+      "mappedTo": [
+        "dimCD",
+        "opposite5"
+      ],
+      "sourceQuote": "[키포인트] 평행사변형의 두 대각선은 서로를 이등분하고, 마주 보는 변의 길이는 같다.\n$OC=4\\,\\mathrm{cm}$, $OD=6\\,\\mathrm{cm}$, $CD=5\\,\\mathrm{cm}$이다. 따라서 둘레는 $4+6+5=15\\,\\mathrm{cm}$이다.\n따라서 정답은 ①이다."
+    }
+  ],
+  "newVisualInformation": [
+    "기존 해설 SVG의 뒤틀린 꼭짓점 순서를 원본 A-B-C-D로 복구한다.",
+    "모든 길이를 실제로 만족하는 평행사변형 좌표를 사용하고 면을 칠하지 않는다."
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  }
+}

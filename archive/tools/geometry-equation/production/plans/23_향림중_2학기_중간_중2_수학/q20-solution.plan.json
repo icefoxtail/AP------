@@ -1,0 +1,285 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "17",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "15",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "E",
+    "A",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "parallelACDE",
+        "count": 1,
+        "segments": [
+          "sAC",
+          "sED"
+        ]
+      }
+    ],
+    "regions": [
+      {
+        "id": "givenABC8",
+        "fill": "LIGHT",
+        "label": "8",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "derivedACE9",
+        "fill": "WARM",
+        "label": "9",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "C",
+              "E"
+            ]
+          }
+        ]
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "equalACD9",
+        "at": [
+          5.6,
+          3.1
+        ],
+        "text": "9"
+      }
+    ]
+  },
+  "caption": "삼각형 ABC의 8과 ACE의 9를 서로 다른 실제 영역에 배치하고 ACD도 9로 대응",
+  "accessibilityDescription": "B, C, E가 한 직선에 있으며 AC와 DE가 평행하다. 삼각형 ABC와 ACE를 서로 다른 옅은 색으로 구별하고 각 넓이 라벨을 정확한 영역에 배치했다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AC∥DE",
+      "mappedTo": [
+        "parallelACDE"
+      ],
+      "sourceQuote": "다음 그림에서 $AC\\parallel DE$이고 $\\triangle ABE=17\\,\\mathrm{cm}^2$, $\\triangle ABC=8\\,\\mathrm{cm}^2$일 때, $\\triangle ACD$의 넓이는? [5점]"
+    },
+    {
+      "id": "c2",
+      "condition": "[ABE]=17 cm²",
+      "mappedTo": [
+        "sAB",
+        "sBC",
+        "sCE",
+        "sAE"
+      ],
+      "sourceQuote": "다음 그림에서 $AC\\parallel DE$이고 $\\triangle ABE=17\\,\\mathrm{cm}^2$, $\\triangle ABC=8\\,\\mathrm{cm}^2$일 때, $\\triangle ACD$의 넓이는? [5점]"
+    },
+    {
+      "id": "c3",
+      "condition": "[ABC]=8 cm²",
+      "mappedTo": [
+        "givenABC8"
+      ],
+      "sourceQuote": "다음 그림에서 $AC\\parallel DE$이고 $\\triangle ABE=17\\,\\mathrm{cm}^2$, $\\triangle ABC=8\\,\\mathrm{cm}^2$일 때, $\\triangle ACD$의 넓이는? [5점]"
+    },
+    {
+      "id": "c4",
+      "condition": "[ACE]=17−8=9 cm²",
+      "mappedTo": [
+        "derivedACE9"
+      ],
+      "sourceQuote": "[키포인트] 큰 삼각형에서 작은 삼각형을 빼고, 평행선 사이에 있는 두 점에서 같은 밑변으로 만든 삼각형의 넓이가 같음을 이용한다.\n$\\triangle ABE$는 $\\triangle ABC$와 $\\triangle ACE$로 나뉘므로 $[ACE]=17-8=9\\,\\mathrm{cm}^2$이다. $AC\\parallel DE$이므로 점 $D$와 $E$에서 직선 $AC$까지의 높이는 같다. 따라서 같은 밑변 $AC$를 가지는 $\\triangle ACD$와 $\\triangle ACE$의 넓이는 같아 $[ACD]=9\\,\\mathrm{cm}^2$이다.\n따라서 정답은 ⑤이다."
+    },
+    {
+      "id": "c5",
+      "condition": "[ACD]=[ACE]=9 cm²",
+      "mappedTo": [
+        "equalACD9",
+        "derivedACE9",
+        "parallelACDE"
+      ],
+      "sourceQuote": "[키포인트] 큰 삼각형에서 작은 삼각형을 빼고, 평행선 사이에 있는 두 점에서 같은 밑변으로 만든 삼각형의 넓이가 같음을 이용한다.\n$\\triangle ABE$는 $\\triangle ABC$와 $\\triangle ACE$로 나뉘므로 $[ACE]=17-8=9\\,\\mathrm{cm}^2$이다. $AC\\parallel DE$이므로 점 $D$와 $E$에서 직선 $AC$까지의 높이는 같다. 따라서 같은 밑변 $AC$를 가지는 $\\triangle ACD$와 $\\triangle ACE$의 넓이는 같아 $[ACD]=9\\,\\mathrm{cm}^2$이다.\n따라서 정답은 ⑤이다."
+    }
+  ],
+  "newVisualInformation": [
+    "기존 해설이 [ACE] 안에 잘못 적은 8 cm²를 [ABC] 영역에 바로잡는다.",
+    "넓이 9는 [ACE] 안에 표시하고, 같은 밑변·평행선의 [ACD] 역시 9임을 별도 라벨로 표현한다.",
+    "넓이 분할 목적에 필요한 두 비중첩 영역만 채운다."
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  }
+}
