@@ -1,0 +1,26 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"15"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"15"},{"kind":"integer","value":"8"}]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "axisTickValues":{"x":[],"y":[]}, "displayLines":[], "displayCircles":[],
+  "displayPoints":["A","B","C"],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]}],
+  "rightAngles":[{"id":"rC","refs":["A","C","B"]}],
+  "planeMarks":{"dimensions":[
+    {"id":"dAB","from":"A","to":"B","label":"17","side":"ABOVE","style":"BRACE","factRole":"GIVEN"},
+    {"id":"dBC","from":"B","to":"C","label":"8","side":"RIGHT","style":"BRACE","factRole":"GIVEN"},
+    {"id":"dAC","from":"A","to":"C","label":"15","side":"BELOW","style":"BRACE","factRole":"GIVEN"}
+  ]},
+  "coordinateCanvas":{"width":640,"height":420},
+  "caption":"직각삼각형 ABC의 세 변 8, 15, 17과 C에서의 직각을 원본 치수 지시선으로 표시한다.",
+  "sourceQuote":"직각삼각형 ABC에서 옳지 않은 것을 모두 고르면?",
+  "sourceConditions":[{"id":"c1","condition":"C에서 직각이고 AB=17, AC=15, BC=8","mappedTo":["A","B","C","rC","dAB","dAC","dBC"]}],
+  "newVisualInformation":["원본의 세 길이 지시선을 BRACE 형태로 복원하고 변 내부는 채우지 않는다."]
+}

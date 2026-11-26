@@ -1,0 +1,36 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"M","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"rational","numerator":"3","denominator":"4"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-1"},{"kind":"rational","numerator":"3","denominator":"4"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"rational","numerator":"3","denominator":"4"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"cOuter","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"rational","numerator":"5","denominator":"4"}},"outputType":"CIRCLE","factRole":"GIVEN"},
+    {"id":"cInner","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"rational","numerator":"3","denominator":"4"}},"outputType":"CIRCLE","factRole":"GIVEN"}
+  ]},
+  "axisTickValues":{"x":[],"y":[]},"displayLines":[],"displayCircles":["cOuter","cInner"],"displayPoints":["O","M","A","B"],
+  "displaySegments":[
+    {"id":"sAM","refs":["A","M"]},{"id":"sMB","refs":["M","B"]},
+    {"id":"sOM","refs":["O","M"]},{"id":"sOB","refs":["O","B"]}
+  ],
+  "rightAngles":[{"id":"rM","refs":["A","M","O"]}],
+  "planeMarks":{"dimensions":[
+    {"id":"dAB","from":"A","to":"B","label":"2","side":"ABOVE","style":"BRACE","crossArcs":true,"factRole":"GIVEN"}
+  ],"expressionLabels":[
+    {"id":"tOM","ownerSegment":"sOM","text":"r","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"tOB","ownerSegment":"sOB","text":"R","factRole":"DERIVED_INTERMEDIATE"}
+  ],"regions":[{
+    "id":"rTrack","fill":"MEDIUM","factRole":"GIVEN",
+    "shapes":[{"loop":{"start":"A","steps":[{"to":"A","arc":{"center":"O","side":"FULL"}}]}}],
+    "holes":[{"loop":{"start":"M","steps":[{"to":"M","arc":{"center":"O","side":"FULL"}}]}}]
+  }]},
+  "coordinateCanvas":{"width":660,"height":540},
+  "caption":"길이 2인 현의 회전 궤적은 두 동심원 사이의 고리 전체이므로, 고리만 원본처럼 회색으로 칠한다.",
+  "sourceQuote":"큰 원에서 길이 2인 현을 작은 원을 따라 한 바퀴 돌렸을 때 현이 지나간 부분의 넓이",
+  "sourceConditions":[
+    {"id":"c1","condition":"동심원 중심 O, 작은 원 반지름 r, 큰 원 반지름 R","mappedTo":["O","cOuter","cInner","tOM","tOB"]},
+    {"id":"c2","condition":"큰 원의 현 AB=2이고 작은 원과 M에서 접하며 OM⊥AB","mappedTo":["A","B","M","dAB","rM"]},
+    {"id":"c3","condition":"현이 지나간 부분은 바깥 원판에서 안쪽 원판을 제외한 고리","mappedTo":["rTrack"]}
+  ],
+  "newVisualInformation":["기존 해설 SVG에서 없어졌던 원본의 촘촘한 고리 음영을 실제 원호 경계의 영역 차집합으로 복원한다."]
+}

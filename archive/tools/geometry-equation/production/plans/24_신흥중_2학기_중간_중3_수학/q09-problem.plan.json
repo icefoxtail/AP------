@@ -1,0 +1,19 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"9464102","denominator":"1000000"},{"kind":"rational","numerator":"5464102","denominator":"1000000"}]},"outputType":"POINT","factRole":"GIVEN"}
+  ]},
+  "axisTickValues":{"x":[],"y":[]},"displayLines":[],"displayCircles":[],"displayPoints":["A","B","C"],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]}],
+  "planeMarks":{"angles":[
+    {"id":"aB","refs":["C","B","A"],"value":30,"label":"30","arcs":1,"style":"ARC","factRole":"GIVEN"},
+    {"id":"aC","refs":["B","C","A"],"value":105,"label":"105","arcs":1,"style":"ARC","factRole":"GIVEN"}
+  ],"dimensions":[{"id":"dBC","from":"B","to":"C","label":"8","unit":"cm","side":"BELOW","style":"BRACE","factRole":"GIVEN"}]},
+  "coordinateCanvas":{"width":650,"height":490},
+  "caption":"원본의 삼각형 ABC에서 BC=8 cm와 밑각 B=30°, C=105°를 한 도형에 남긴다.",
+  "sourceQuote":"삼각형 ABC의 넓이, BC=8 cm, ∠B=30°, ∠C=105°",
+  "sourceConditions":[{"id":"c1","condition":"원본 문제에서 ∠B=30도, ∠C=105도, BC=8cm","mappedTo":["aB","aC","dBC","sBC"]}],
+  "newVisualInformation":["기존 해설의 다른 방향으로 놓인 보조삼각형과 혼동되지 않도록 원본 105도 둔각 꼭짓점을 복원한다."]
+}

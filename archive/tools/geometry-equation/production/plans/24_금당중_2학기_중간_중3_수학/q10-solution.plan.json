@@ -1,0 +1,25 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-8"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"8"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"4330127","denominator":"1000000"},{"kind":"rational","numerator":"11","denominator":"2"}]},"outputType":"POINT","factRole":"GIVEN"}
+  ]},
+  "axisTickValues":{"x":[],"y":[]},"displayLines":[],"displayCircles":[],
+  "displayPoints":["A","B","C","D"],
+  "displaySegments":[{"id":"sBA","refs":["B","A"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]},{"id":"sAD","refs":["A","D"]},{"id":"sDC","refs":["D","C"]}],
+  "rightAngles":[{"id":"rC","refs":["B","C","A"]}],
+  "planeMarks":{"angles":[
+    {"id":"aB","refs":["C","B","A"],"value":45,"label":"45","arcs":1,"style":"ARC","factRole":"GIVEN"},
+    {"id":"aA","refs":["C","A","D"],"value":60,"label":"60","arcs":1,"style":"ARC","factRole":"GIVEN"}
+  ],"dimensions":[
+    {"id":"dBA","from":"B","to":"A","label":"8sqrt(2)","unit":"cm","side":"LEFT","style":"BRACE","factRole":"GIVEN"},
+    {"id":"dAD","from":"A","to":"D","label":"5","unit":"cm","side":"ABOVE","style":"BRACE","factRole":"GIVEN"}
+  ],"regions":[{"id":"rTarget","fill":"LIGHT","shapes":[{"polygon":["B","A","D","C"]}]}]},
+  "coordinateCanvas":{"width":720,"height":540},
+  "caption":"사각형 BADC의 넓이 대상은 옅은 단일 음영으로 표시하고, 대각선 AC가 나누는 두 삼각형을 직각·45°·60°로 확인한다.",
+  "sourceQuote":"AB=8√2 cm, AD=5cm, ∠ABC=45°, ∠DAC=60°일 때 사각형 ABCD의 넓이",
+  "sourceConditions":[{"id":"c1","condition":"AB=8√2cm, AD=5cm, 각 ABC=45도, 각 DAC=60도","mappedTo":["dBA","dAD","aB","aA"]},{"id":"c2","condition":"C의 직각과 대각선 AC로 나뉜 사각형 전체 넓이","mappedTo":["rC","sCA","rTarget"]}],
+  "newVisualInformation":["기존의 서로 다른 파랑·주황 면 채움은 제거하고, 원본에서 넓이 대상으로 점묘된 전체 사각형만 중성의 연한 음영으로 남긴다."]
+}

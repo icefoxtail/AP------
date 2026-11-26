@@ -1,0 +1,33 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"12"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"18"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"18"},{"kind":"integer","value":"12"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"12"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"F","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"G","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"9"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"I","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"54","denominator":"5"},{"kind":"rational","numerator":"12","denominator":"5"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"cO","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"6"}},"outputType":"CIRCLE","factRole":"GIVEN"}
+  ]},
+  "axisTickValues":{"x":[],"y":[]},"displayLines":[],"displayCircles":["cO"],
+  "displayPoints":["A","B","C","D","E","F","G","H","I","O"],
+  "displaySegments":[
+    {"id":"sAF","refs":["A","F"]},{"id":"sFB","refs":["F","B"]},{"id":"sBG","refs":["B","G"]},{"id":"sGH","refs":["G","H"]},{"id":"sHC","refs":["H","C"]},{"id":"sCD","refs":["C","D"]},
+    {"id":"sDE","refs":["D","E"]},{"id":"sEA","refs":["E","A"]},{"id":"sDI","refs":["D","I"]},{"id":"sIH","refs":["I","H"]},{"id":"sOG","refs":["O","G"],"dashed":true},{"id":"sOE","refs":["O","E"],"dashed":true}
+  ],
+  "rightAngles":[{"id":"rC","refs":["B","C","D"]},{"id":"rG","refs":["H","G","O"]}],
+  "planeMarks":{"dimensions":[
+    {"id":"dAB","from":"A","to":"B","label":"12","unit":"cm","side":"LEFT","style":"BRACE","factRole":"GIVEN"},
+    {"id":"dBC","from":"B","to":"C","label":"18","unit":"cm","side":"BELOW","style":"BRACE","factRole":"GIVEN"}
+  ],"equalLengths":[{"id":"eTangentD","count":1,"segments":["sDE","sDI"]},{"id":"eTangentH","count":2,"segments":["sGH","sIH"]}],
+  "expressionLabels":[{"id":"tGH","ownerSegment":"sGH","text":"3","unit":"cm","factRole":"DERIVED_INTERMEDIATE"},{"id":"tHC","ownerSegment":"sHC","text":"9","unit":"cm","factRole":"DERIVED_INTERMEDIATE"}]},
+  "coordinateCanvas":{"width":720,"height":520},
+  "caption":"AB=12 cm, BC=18 cm인 직사각형 안의 접원과 접선 DH에서 접선 길이 관계 및 GH=3 cm, HC=9 cm를 구분한다.",
+  "sourceQuote":"원 O가 ABHD의 네 변과 접하며 AB=12cm, BC=18cm일 때 삼각형 CDH 둘레",
+  "sourceConditions":[{"id":"c1","condition":"ABCD는 직사각형, AB=12cm, BC=18cm","mappedTo":["A","B","C","D","dAB","dBC","rC"]},{"id":"c2","condition":"원의 접점은 E,F,G,I이고 H는 BC 위","mappedTo":["cO","E","F","G","I","H"]},{"id":"c3","condition":"접선 구간 ED=DI와 HG=HI","mappedTo":["eTangentD","eTangentH"]}],
+  "newVisualInformation":["원본의 12 cm와 18 cm 치수선을 복원하고 같은 점에서 그은 접선의 동일 길이를 눈금으로 증명한다."]
+}

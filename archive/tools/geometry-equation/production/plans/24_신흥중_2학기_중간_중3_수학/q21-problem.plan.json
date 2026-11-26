@@ -1,0 +1,29 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"rational","numerator":"3464102","denominator":"1000000"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"F","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"2535898","denominator":"1000000"},{"kind":"rational","numerator":"9464102","denominator":"1000000"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"G","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"-3464102","denominator":"1000000"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"4535898","denominator":"1000000"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "axisTickValues":{"x":[],"y":[]},"displayLines":[],"displayCircles":[],
+  "displayPoints":["A","B","C","D","E","F","G","H"],
+  "displaySegments":[
+    {"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCE","refs":["C","E"]},{"id":"sED","refs":["E","D"]},{"id":"sDH","refs":["D","H"]},{"id":"sHA","refs":["H","A"]},
+    {"id":"sBE","refs":["B","E"]},{"id":"sEH","refs":["E","H"]},{"id":"sHF","refs":["H","F"]},{"id":"sFG","refs":["F","G"]},{"id":"sGB","refs":["G","B"]}
+  ],
+  "rightAngles":[{"id":"rC","refs":["B","C","D"]}],
+  "planeMarks":{"angles":[{"id":"aB","refs":["A","B","E"],"value":60,"label":"60","arcs":1,"style":"ARC","factRole":"GIVEN"}],
+    "dimensions":[{"id":"dBC","from":"B","to":"C","label":"6","unit":"cm","side":"BELOW","style":"BRACE","factRole":"GIVEN"}],
+    "regions":[{"id":"rShade","fill":"MEDIUM","shapes":[{"polygon":["A","H","E","B"]}]}]
+  },
+  "coordinateCanvas":{"width":700,"height":560},
+  "caption":"정사각형 ABCD와 BEFG가 겹치는 AHEB 영역만 원본처럼 회색으로 칠하고 각 ABE=60°를 표시한다.",
+  "sourceQuote":"한 변이 6cm인 정사각형 ABCD와 BE를 한 변으로 한 정사각형 BEFG, 색칠한 부분의 넓이",
+  "sourceConditions":[{"id":"c1","condition":"ABCD는 한 변 6cm인 정사각형이고 E는 CD 위의 점","mappedTo":["A","B","C","D","E","dBC"]},{"id":"c2","condition":"BEFG는 정사각형이고 각 ABE=60도","mappedTo":["B","E","F","G","aB"]},{"id":"c3","condition":"원본의 A-H-E-B로 둘러싸인 면만 색칠","mappedTo":["rShade","H"]}],
+  "newVisualInformation":["기존 해설 SVG에서 누락된 채움 대상 AHEB를 세밀한 단일 영역으로 지정하고 나머지 면은 비운다."]
+}
