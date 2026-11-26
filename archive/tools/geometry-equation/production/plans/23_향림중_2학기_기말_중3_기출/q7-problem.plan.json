@@ -1,0 +1,357 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L1",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "165"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L2",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "195"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "100"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B1",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "250"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B2",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "310"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "L1",
+    "L2",
+    "R",
+    "T",
+    "B1",
+    "B2"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "RL1",
+      "refs": [
+        "R",
+        "L1"
+      ]
+    },
+    {
+      "id": "RL2",
+      "refs": [
+        "R",
+        "L2"
+      ]
+    },
+    {
+      "id": "TB1",
+      "refs": [
+        "T",
+        "B1"
+      ]
+    },
+    {
+      "id": "TB2",
+      "refs": [
+        "T",
+        "B2"
+      ]
+    },
+    {
+      "id": "OL1",
+      "refs": [
+        "O",
+        "L1"
+      ]
+    },
+    {
+      "id": "OL2",
+      "refs": [
+        "O",
+        "L2"
+      ]
+    },
+    {
+      "id": "OB1",
+      "refs": [
+        "O",
+        "B1"
+      ]
+    },
+    {
+      "id": "OB2",
+      "refs": [
+        "O",
+        "B2"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a15",
+        "refs": [
+          "L1",
+          "R",
+          "L2"
+        ],
+        "value": 15,
+        "color": "BLUE",
+        "factRole": "GIVEN",
+        "style": "ARC"
+      },
+      {
+        "id": "xT",
+        "refs": [
+          "B1",
+          "T",
+          "B2"
+        ],
+        "value": 30,
+        "label": "x",
+        "color": "VIOLET",
+        "factRole": "GIVEN",
+        "style": "ARC"
+      },
+      {
+        "id": "yO",
+        "refs": [
+          "B1",
+          "O",
+          "B2"
+        ],
+        "value": 60,
+        "label": "y",
+        "color": "WARM",
+        "factRole": "GIVEN",
+        "style": "ARC"
+      }
+    ],
+    "textLabels": [],
+    "arcs": [
+      {
+        "id": "arc4",
+        "circle": "circ",
+        "center": "O",
+        "from": "L1",
+        "to": "L2",
+        "side": "MINOR",
+        "color": "GREEN",
+        "label": "4",
+        "unit": "cm"
+      },
+      {
+        "id": "arc8",
+        "circle": "circ",
+        "center": "O",
+        "from": "B1",
+        "to": "B2",
+        "side": "MINOR",
+        "color": "WARM",
+        "label": "8",
+        "unit": "cm"
+      }
+    ]
+  },
+  "caption": "두 호 길이 4cm, 8cm와 주어진 원주각 15°, 미지 각 x와 y의 관계를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "given",
+      "condition": "두 호 길이 4cm, 8cm와 주어진 원주각 15°, 미지 각 x와 y의 관계를 나타낸다.",
+      "mappedTo": [
+        "mathPlan",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 기출 문제의 점·선·각·호·치수만 고대비 선과 라벨로 재구성하며, 해설에서 계산한 수치·영역 채움은 배제한다."
+  ],
+  "hiddenPointNames": [
+    "L1",
+    "L2",
+    "R",
+    "T",
+    "B1",
+    "B2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "accessibilityDescription": "두 호 길이 4cm, 8cm와 주어진 원주각 15°, 미지 각 x와 y의 관계를 나타낸다."
+}
