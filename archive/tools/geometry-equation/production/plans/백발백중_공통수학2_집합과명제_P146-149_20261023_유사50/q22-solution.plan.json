@@ -1,0 +1,184 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "삼각형 ABC의 세 중선이 만나는 무게중심 G에서 거리 제곱합이 최소가 된다.",
+  "accessibilityDescription": "세 꼭짓점과 무게중심, 중선 AM 위의 G를 기하적으로 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "세 점 $A(1,3),\\ B(-2,-3),\\ C(4,0)$를 꼭짓점으로 하는 삼각형 $ABC$의 내부의 점 $P(a,b)$에 대하여 $PA^2+PB^2+PC^2$의 최솟값을 $m$이라 하자. $a+b+m$의 값은? (단, 최솟값을 갖는 점의 좌표가 $(a,b)$이다.)",
+      "mappedTo": "mathPlan.nodes[0].args.coordinates,mathPlan.nodes[1].args.coordinates,mathPlan.nodes[2].args.coordinates,displaySegments[0],displaySegments[1],displaySegments[2]"
+    },
+    {
+      "id": "c2",
+      "condition": "무게중심 G=(1,0)",
+      "mappedTo": "mathPlan.nodes[3],displayPoints,coordinateLabels"
+    },
+    {
+      "id": "c3",
+      "condition": "BC의 중점 M과 중선 AM",
+      "mappedTo": "mathPlan.nodes[4],displaySegments[3]"
+    }
+  ],
+  "newVisualInformation": [
+    "세 꼭짓점과 무게중심, 중선 AM 위의 G를 기하적으로 확인한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "G",
+    "M"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ],
+      "dashed": true
+    }
+  ],
+  "hiddenPointNames": [
+    "M"
+  ],
+  "coordinateLabels": [
+    "A",
+    "B",
+    "C",
+    "G"
+  ],
+  "sourceQuote": "세 점 $A(1,3),\\ B(-2,-3),\\ C(4,0)$를 꼭짓점으로 하는 삼각형 $ABC$의 내부의 점 $P(a,b)$에 대하여 $PA^2+PB^2+PC^2$의 최솟값을 $m$이라 하자. $a+b+m$의 값은? (단, 최솟값을 갖는 점의 좌표가 $(a,b)$이다.)"
+}
