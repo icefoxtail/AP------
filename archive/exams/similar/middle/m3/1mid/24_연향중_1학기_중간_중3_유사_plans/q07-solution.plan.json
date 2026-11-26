@@ -1,0 +1,34 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "constructions": [
+      {
+        "id": "c1",
+        "center": "B",
+        "radius": { "value": "sqrt(2)" },
+        "arc": { "side": "RIGHT" },
+        "hits": [{ "id": "P", "branch": "RIGHT" }],
+        "source": { "grid": true, "from": [2, 0], "to": [1, 1], "toName": "D" }
+      }
+    ],
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          { "id": "B", "value": "2", "showValue": true },
+          { "id": "P", "value": "2+sqrt(2)", "showValue": true }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": { "text": "정사각형 대각선 길이를 수직선에 옮기기" },
+  "caption": "한 변의 길이가 1이므로 BD=√(1²+1²)=√2이고 BP=BD이다. B=2에서 오른쪽으로 √2만큼 이동한 P의 수는 2+√2이다.",
+  "accessibilityDescription": "수직선의 B=2에서 정사각형 대각선 BD와 같은 길이 √2의 호를 오른쪽으로 그려 만나는 점 P=2+√2를 표시한 해설 모식도이다.",
+  "sourceConditions": [
+    { "id": "s1", "condition": "정사각형 ABCD의 한 변의 길이 1, BD=BP", "mappedTo": ["numberLine.constructions[0].radius", "numberLine.constructions[0].source", "numberLine.constructions[0].hits"] },
+    { "id": "s2", "condition": "B는 2이고 P는 B 오른쪽 수직선 위: P=2+√2", "mappedTo": ["numberLine.rows[0].points", "numberLine.constructions[0].arc"] }
+  ],
+  "newVisualInformation": ["대각선 길이 √2를 오른쪽으로 옮긴 호와 결과 수 2+√2의 상대 위치를 함께 표시한다"]
+}

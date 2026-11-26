@@ -1,0 +1,55 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "50" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "50" }, { "kind": "integer", "value": "10" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "10" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "E", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "10" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "F", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "40" }, { "kind": "integer", "value": "10" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "G", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "40" }, { "kind": "integer", "value": "20" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "H", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "20" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "E", "F", "G", "H"],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sDE", "refs": ["D", "E"] },
+    { "id": "sEF", "refs": ["E", "F"] },
+    { "id": "sFC", "refs": ["F", "C"] },
+    { "id": "sDA", "refs": ["D", "A"] },
+    { "id": "sEH", "refs": ["E", "H"] },
+    { "id": "sHG", "refs": ["H", "G"] },
+    { "id": "sGF", "refs": ["G", "F"] },
+    { "id": "sDH", "refs": ["D", "H"] },
+    { "id": "sGC", "refs": ["G", "C"] }
+  ],
+  "planeMarks": {
+    "segmentColors": [{ "segments": ["sDA", "sAB", "sBC", "sGC", "sHG", "sDH"], "color": "BLUE" }],
+    "dimensions": [
+      { "id": "bottom50", "from": "A", "to": "B", "label": "50", "side": "BELOW", "style": "ARROW", "factRole": "GIVEN" },
+      { "id": "top30", "from": "H", "to": "G", "label": "30", "side": "ABOVE", "style": "ARROW", "factRole": "GIVEN" },
+      { "id": "height10", "from": "F", "to": "G", "label": "10", "side": "RIGHT", "style": "BRACE", "factRole": "GIVEN" },
+      { "id": "gap10", "from": "F", "to": "C", "label": "10", "side": "BELOW", "style": "ARROW", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "diagonal", "from": "G", "to": "C", "label": "10√2", "side": "RIGHT", "style": "ARROW", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "rightAngles": [{ "id": "raF", "refs": ["G", "F", "C"] }],
+  "coordinateCanvas": { "width": 540, "height": 360 },
+  "hiddenPointNames": ["A", "B", "C", "D", "E", "F", "G", "H"],
+  "hiddenPointStyle": "NONE",
+  "caption": "큰 정사각형 상자(단면 가로 50, 높이 10)의 가운데 작은 상자(단면 가로 30, 높이 10)를 놓은 단면이다. 한 방향의 끈은 작은 상자 위 30, 양쪽 비스듬한 구간 10√2씩, 큰 상자 양옆 10씩, 바닥 50을 지난다. 십자 두 방향과 매듭 30을 합하면 230+40√2 cm이다.",
+  "accessibilityDescription": "가로 50 높이 10인 큰 직사각형 위 가운데에 가로 30 높이 10인 작은 직사각형을 그렸다. 끈의 단면 경로는 작은 상자 윗면에서 양쪽으로 사선으로 내려간 뒤 큰 상자의 옆면과 밑면을 지난다. 한쪽 오른쪽의 가로 10 세로 10 직각삼각형에서 사선 길이 10√2를 표시했다.",
+  "sourceConditions": [
+    { "id": "s1", "condition": "두 상자의 정사각형 밑면 한 변 50cm와 30cm, 각 높이 10cm, 작은 상자는 큰 상자 가운데", "mappedTo": ["mathPlan.nodes", "planeMarks.dimensions[0]", "planeMarks.dimensions[1]", "planeMarks.dimensions[2]"] },
+    { "id": "s2", "condition": "가운데 배치로 양옆 수평 간격 (50−30)/2=10cm, 높이 차 10cm; 사선 길이 √(10²+10²)=10√2", "mappedTo": ["displaySegments[10]", "rightAngles", "planeMarks.dimensions[3]", "planeMarks.dimensions[4]"] },
+    { "id": "s3", "condition": "끈은 직교하는 두 방향의 한 방향 경로를 두 번 지나며 매듭용 30cm를 더한다", "mappedTo": "PRESERVED_ARCHIVE_BANK" }
+  ],
+  "newVisualInformation": ["한 방향의 끈 경로를 파란 선분으로 강조한다", "큰 상자와 작은 상자 사이 10×10 직각삼각형에서 사선 10√2를 시각화한다", "십자 묶기의 나머지 직교 방향은 같은 길이이므로 별도로 수치 합산한다"]
+}

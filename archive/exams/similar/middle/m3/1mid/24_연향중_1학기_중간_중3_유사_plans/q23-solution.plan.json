@@ -1,0 +1,54 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "P0", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "P1", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "P2", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "15" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "P3", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "10" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "P4", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "10" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "P5", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "15" }, { "kind": "integer", "value": "10" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "P6", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "15" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "P7", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "15" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "P8", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "15" }, { "kind": "integer", "value": "15" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": ["P0", "P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8"],
+  "displaySegments": [
+    { "id": "s01", "refs": ["P0", "P1"] }, { "id": "s12", "refs": ["P1", "P2"] },
+    { "id": "s34", "refs": ["P3", "P4"] }, { "id": "s45", "refs": ["P4", "P5"] },
+    { "id": "s67", "refs": ["P6", "P7"] }, { "id": "s78", "refs": ["P7", "P8"] },
+    { "id": "s03", "refs": ["P0", "P3"] }, { "id": "s36", "refs": ["P3", "P6"] },
+    { "id": "s14", "refs": ["P1", "P4"] }, { "id": "s47", "refs": ["P4", "P7"] },
+    { "id": "s25", "refs": ["P2", "P5"] }, { "id": "s58", "refs": ["P5", "P8"] }
+  ],
+  "planeMarks": {
+    "regions": [
+      { "id": "areaXX", "fill": "LIGHT", "label": "x^2", "factRole": "DERIVED_INTERMEDIATE", "shapes": [{ "polygon": ["P0", "P1", "P4", "P3"] }] },
+      { "id": "areaXY1", "fill": "LIGHT", "label": "xy", "factRole": "DERIVED_INTERMEDIATE", "shapes": [{ "polygon": ["P1", "P2", "P5", "P4"] }] },
+      { "id": "areaXY2", "fill": "LIGHT", "label": "xy", "factRole": "DERIVED_INTERMEDIATE", "shapes": [{ "polygon": ["P3", "P4", "P7", "P6"] }] },
+      { "id": "areaYY", "fill": "LIGHT", "label": "y^2", "factRole": "DERIVED_INTERMEDIATE", "shapes": [{ "polygon": ["P4", "P5", "P8", "P7"] }] }
+    ],
+    "dimensions": [
+      { "id": "bottomX", "from": "P0", "to": "P1", "label": "x", "side": "BELOW", "style": "ARROW", "factRole": "GIVEN" },
+      { "id": "bottomY", "from": "P1", "to": "P2", "label": "y", "side": "BELOW", "style": "ARROW", "factRole": "GIVEN" },
+      { "id": "leftX", "from": "P0", "to": "P3", "label": "x", "side": "LEFT", "style": "ARROW", "factRole": "GIVEN" },
+      { "id": "leftY", "from": "P3", "to": "P6", "label": "y", "side": "LEFT", "style": "ARROW", "factRole": "GIVEN" }
+    ]
+  },
+  "coordinateCanvas": { "width": 460, "height": 420 },
+  "hiddenPointNames": ["P0", "P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8"],
+  "hiddenPointStyle": "NONE",
+  "caption": "한 변 x+y인 정사각형을 x와 y에 따라 네 영역으로 나누면 x²+xy+xy+y²=(x+y)²이다. 이 문항의 x+y=15, x²+y²=125에서 2xy=100, xy=50이고 둘레의 곱은 16xy=800이다. 도식은 가능한 순서 x=10, y=5의 경우를 표현한다.",
+  "accessibilityDescription": "한 변이 x+y인 정사각형을 두 방향 모두 x와 y로 나누었다. 왼쪽 아래 영역은 x 제곱, 오른쪽 아래와 왼쪽 위는 각각 xy, 오른쪽 위는 y 제곱이며, 두 xy 영역을 합하면 2xy이다.",
+  "sourceConditions": [
+    { "id": "source", "condition": "한 변 x와 y인 두 정사각형의 둘레 합 60, 넓이 합 125: x+y=15, x²+y²=125", "mappedTo": ["planeMarks.dimensions", "planeMarks.regions"] },
+    { "id": "partition", "condition": "(x+y)²=x²+2xy+y²; 따라서 xy=(225−125)/2=50이고 16xy=800", "mappedTo": ["displaySegments", "planeMarks.regions"] },
+    { "id": "case", "condition": "x,y는 10과 5의 순서를 바꾸어도 식이 같다. SOURCE_POINT 좌표 x=10, y=5는 풀이로 얻은 순서 중 한 가지의 정확한 배치이고 원문에 x>y 조건을 추가하지 않는다.", "mappedTo": ["mathPlan.nodes"] }
+  ],
+  "newVisualInformation": ["큰 정사각형의 두 교차 구획을 xy 두 개로 대응시켜 (x+y)²−(x²+y²)=2xy를 면적으로 나타낸다"]
+}
