@@ -1,0 +1,335 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-373205081",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "446410162",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "692820323",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "373205081",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "446410162",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sAF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "sFC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sBF",
+      "refs": [
+        "B",
+        "F"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "equilateralAB",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sBD",
+          "sAD"
+        ]
+      },
+      {
+        "id": "equilateralAC",
+        "count": 2,
+        "segments": [
+          "sAC",
+          "sFC",
+          "sAF"
+        ]
+      },
+      {
+        "id": "equilateralBC",
+        "count": 3,
+        "segments": [
+          "sBC",
+          "sBE",
+          "sEC"
+        ]
+      }
+    ],
+    "regions": [
+      {
+        "id": "targetAFED",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "F",
+              "E",
+              "D"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "원본 문제의 정삼각형 세 개와 빠진 사각형 AFED 음영을 1:1 복구",
+  "accessibilityDescription": "ABC 세 변을 각각 변으로 하는 정삼각형 ADB, ACF, BCE가 B-C의 위쪽에 배치되고, A-F-E-D의 네 꼭짓점을 연결한 목표 사각형만 옅게 채워져 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "ADB 정삼각형",
+      "mappedTo": [
+        "equilateralAB"
+      ],
+      "sourceQuote": "12. 오른쪽 그림에서 $\\triangle\\mathrm{ADB}$, $\\triangle\\mathrm{ACF}$, $\\triangle\\mathrm{BCE}$는 $\\triangle\\mathrm{ABC}$의 세 변을 각각 한 변으로 하는 정삼각형이다. 이때, 사각형 $\\mathrm{AFED}$에 대한 설명으로 옳은 것은? [4점] [원본 그림]"
+    },
+    {
+      "id": "c2",
+      "condition": "ACF 정삼각형",
+      "mappedTo": [
+        "equilateralAC"
+      ],
+      "sourceQuote": "12. 오른쪽 그림에서 $\\triangle\\mathrm{ADB}$, $\\triangle\\mathrm{ACF}$, $\\triangle\\mathrm{BCE}$는 $\\triangle\\mathrm{ABC}$의 세 변을 각각 한 변으로 하는 정삼각형이다. 이때, 사각형 $\\mathrm{AFED}$에 대한 설명으로 옳은 것은? [4점] [원본 그림]"
+    },
+    {
+      "id": "c3",
+      "condition": "BCE 정삼각형",
+      "mappedTo": [
+        "equilateralBC"
+      ],
+      "sourceQuote": "12. 오른쪽 그림에서 $\\triangle\\mathrm{ADB}$, $\\triangle\\mathrm{ACF}$, $\\triangle\\mathrm{BCE}$는 $\\triangle\\mathrm{ABC}$의 세 변을 각각 한 변으로 하는 정삼각형이다. 이때, 사각형 $\\mathrm{AFED}$에 대한 설명으로 옳은 것은? [4점] [원본 그림]"
+    },
+    {
+      "id": "c4",
+      "condition": "E와 A는 BC의 같은 쪽",
+      "mappedTo": [
+        "E",
+        "A"
+      ],
+      "sourceQuote": "12. 오른쪽 그림에서 $\\triangle\\mathrm{ADB}$, $\\triangle\\mathrm{ACF}$, $\\triangle\\mathrm{BCE}$는 $\\triangle\\mathrm{ABC}$의 세 변을 각각 한 변으로 하는 정삼각형이다. 이때, 사각형 $\\mathrm{AFED}$에 대한 설명으로 옳은 것은? [4점] [원본 그림]"
+    },
+    {
+      "id": "c5",
+      "condition": "사각형 AFED만 음영",
+      "mappedTo": [
+        "targetAFED"
+      ],
+      "sourceQuote": "12. 오른쪽 그림에서 $\\triangle\\mathrm{ADB}$, $\\triangle\\mathrm{ACF}$, $\\triangle\\mathrm{BCE}$는 $\\triangle\\mathrm{ABC}$의 세 변을 각각 한 변으로 하는 정삼각형이다. 이때, 사각형 $\\mathrm{AFED}$에 대한 설명으로 옳은 것은? [4점] [원본 그림]"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 SVG에서 빠진 AFED 영역은 내접된 삼각형 ABC와 겹치지 않는 단일 polygon으로 그린다.",
+    "대변 평행과 각 정삼각형 세변의 일치 표식을 각기 다른 눈금 개수로 식별한다."
+  ]
+}

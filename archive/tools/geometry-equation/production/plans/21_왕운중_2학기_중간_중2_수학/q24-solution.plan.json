@@ -1,0 +1,350 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "incircle",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "D",
+          "F"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circumcircle",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "E",
+          "A"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "sFC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sDF",
+      "refs": [
+        "D",
+        "F"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "incircle",
+    "circumcircle"
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "givenAB5",
+        "from": "A",
+        "to": "B",
+        "label": "5",
+        "side": "LEFT"
+      },
+      {
+        "id": "derivedBC12",
+        "from": "B",
+        "to": "C",
+        "label": "12",
+        "side": "BELOW"
+      },
+      {
+        "id": "diameterAC13",
+        "from": "A",
+        "to": "C",
+        "label": "13",
+        "side": "RIGHT"
+      },
+      {
+        "id": "innerR2",
+        "from": "D",
+        "to": "F",
+        "label": "2",
+        "side": "RIGHT"
+      },
+      {
+        "id": "outerR13half",
+        "from": "E",
+        "to": "C",
+        "label": "13/2",
+        "side": "RIGHT"
+      }
+    ],
+    "pathLabels": [
+      {
+        "id": "perimeter30",
+        "points": [
+          "A",
+          "B",
+          "F",
+          "C"
+        ],
+        "closed": true,
+        "label": "30"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rightB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "radiusPerp",
+      "refs": [
+        "D",
+        "F",
+        "C"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "F"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "반지름 R=13/2·r=2인 5-12-13 직각삼각형의 내접원과 외접원",
+  "accessibilityDescription": "직각삼각형 ABC 안에 내심 D의 작은 원이 세 변에 접하고, 외심 E의 큰 원이 세 꼭짓점을 통과한다. 두 원의 반지름과 각 변에 치수선이 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=5",
+      "mappedTo": [
+        "givenAB5"
+      ],
+      "sourceQuote": "[서술형4] 오른쪽 그림에서 $\\overline{\\mathrm{AB}}=5$이고, $\\mathrm{D}$, $\\mathrm{E}$는 각각 삼각형 $\\mathrm{ABC}$의 내접원과 외접원의 중심을 나타낸다. 내접원의 반지름의 길이를 $r$이라 하고, 외접원의 반지름의 길이를 $R$이라 할 때, $R+r=\\dfrac{17}{2}$, $R-r=\\dfrac{9}{2}$이다. 이 때, 삼각형 $\\mathrm{ABC}$의 둘레의 길이를 구하시오. (단, 풀이 과정을 자세히 서술하여라.) [6점] [원본 그림]"
+    },
+    {
+      "id": "c2",
+      "condition": "D 내심, E 외심",
+      "mappedTo": [
+        "incircle",
+        "circumcircle"
+      ],
+      "sourceQuote": "[서술형4] 오른쪽 그림에서 $\\overline{\\mathrm{AB}}=5$이고, $\\mathrm{D}$, $\\mathrm{E}$는 각각 삼각형 $\\mathrm{ABC}$의 내접원과 외접원의 중심을 나타낸다. 내접원의 반지름의 길이를 $r$이라 하고, 외접원의 반지름의 길이를 $R$이라 할 때, $R+r=\\dfrac{17}{2}$, $R-r=\\dfrac{9}{2}$이다. 이 때, 삼각형 $\\mathrm{ABC}$의 둘레의 길이를 구하시오. (단, 풀이 과정을 자세히 서술하여라.) [6점] [원본 그림]"
+    },
+    {
+      "id": "c3",
+      "condition": "R+r=17/2, R−r=9/2",
+      "mappedTo": [
+        "innerR2",
+        "outerR13half"
+      ],
+      "sourceQuote": "[서술형4] 오른쪽 그림에서 $\\overline{\\mathrm{AB}}=5$이고, $\\mathrm{D}$, $\\mathrm{E}$는 각각 삼각형 $\\mathrm{ABC}$의 내접원과 외접원의 중심을 나타낸다. 내접원의 반지름의 길이를 $r$이라 하고, 외접원의 반지름의 길이를 $R$이라 할 때, $R+r=\\dfrac{17}{2}$, $R-r=\\dfrac{9}{2}$이다. 이 때, 삼각형 $\\mathrm{ABC}$의 둘레의 길이를 구하시오. (단, 풀이 과정을 자세히 서술하여라.) [6점] [원본 그림]"
+    },
+    {
+      "id": "c4",
+      "condition": "∠B=90°",
+      "mappedTo": [
+        "rightB"
+      ],
+      "sourceQuote": "[원문 조건 및 구할 대상] 삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}}=5$이고 점 $\\mathrm{D}$는 내심, 점 $\\mathrm{E}$는 외심이다. 내접원의 반지름 $r$, 외접원의 반지름 $R$에 대하여 $R + r = \\frac{17}{2}, \\quad R - r = \\frac{9}{2}$ 일 때, 삼각형 $\\mathrm{ABC}$의 둘레의 길이를 구한다. [핵심 발상/공식/보조선] 1. 외심 $\\mathrm{E}$가 변 $\\mathrm{AC}$의 중점에 위치하므로 $\\triangle\\mathrm{ABC}$는 $\\angle\\mathrm{B}=90^\\circ$인 직각삼각형이다. 따라서 빗변 $\\overline{\\mathrm{AC}} = 2R$이다. 2. 직각삼각형의 내접원 반지름 공식: $r = \\frac{\\overline{\\mathrm{AB}} + \\overline{\\mathrm{BC}} - \\overline{\\mathrm{AC}}}{2}$ 따라서 $\\overline{\\mathrm{AB}} + \\overline{\\mathrm{BC}} = \\overline{\\mathrm{AC}} + 2r = 2R + 2r$이다. 3. 삼각형의 둘레의 길이는 $(\\overline{\\mathrm{AB}} + \\overline{\\mathrm{BC}}) + \\overline{\\mathrm{AC}}$로 구한다. [연속 등식 및 충분한 중간 계산] 1단계: 연립방정식을 풀어 $R$과 $r$의 값 구하기 두 식을 변끼리 더하면: $(R + r) + (R - r) = \\frac{17}{2} + \\frac{9}{2}$ $2R = \\frac{26}{2} = 13 \\implies R = \\frac{13}{2}$ 두 식을 변끼리 빼면: $(R + r) - (R - r) = \\frac{17}{2} - \\frac{9}{2}$ $2r = \\frac{8}{2} = 4 \\implies r = 2$ 2단계: 직각삼각형의 빗변 $\\overline{\\mathrm{AC}}$의 길이 구하기 외심이 빗변 $\\overline{\\mathrm{AC}}$ 위에 있으므로 $\\overline{\\mathrm{AC}} = 2R = 2 \\times \\frac{13}{2} = 13$ 3단계: 삼각형 $\\mathrm{ABC}$의 둘레의 길이 계산 내접원의 반지름 공식 $r = \\frac{\\overline{\\mathrm{AB}} + \\overline{\\mathrm{BC}} - \\overline{\\mathrm{AC}}}{2}$에서 $2 = \\frac{5 + \\overline{\\mathrm{BC}} - 13}{2}$ $4 = \\overline{\\mathrm{BC}} - 8 \\implies \\overline{\\mathrm{BC}} = 12$ (피타고라스 정리 확인: $5^2 + 12^2 = 25 + 144 = 169 = 13^2$으로 직각삼각형 조건이 완벽히 성립함) 따라서 삼각형 $\\mathrm{ABC}$의 둘레의 길이는 $\\text{둘레} = \\overline{\\mathrm{AB}} + \\overline{\\mathrm{AC}} + \\overline{\\mathrm{BC}} = 5 + 13 + 12 = 30$ (대수적 별해: $\\text{둘레} = 2R + 2r + 2R = 4R + 2r = 4\\left(\\frac{13}{2}\\right) + 2(2) = 26 + 4 = 30$) [조건 적합성 검토] 서술형 문항으로 $R, r$의 정확한 연립방정식 풀이, 빗변의 결정, 내접원 반지름 공식을 이용한 다른 변 구하기 및 둘레 계산이 오류 없이 서술되었다. [명확한 결론] 따라서 삼각형 $\\mathrm{ABC}$의 둘레의 길이는 $30$이다."
+    },
+    {
+      "id": "c5",
+      "condition": "AC=13 BC=12",
+      "mappedTo": [
+        "diameterAC13",
+        "derivedBC12"
+      ],
+      "sourceQuote": "[원문 조건 및 구할 대상] 삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}}=5$이고 점 $\\mathrm{D}$는 내심, 점 $\\mathrm{E}$는 외심이다. 내접원의 반지름 $r$, 외접원의 반지름 $R$에 대하여 $R + r = \\frac{17}{2}, \\quad R - r = \\frac{9}{2}$ 일 때, 삼각형 $\\mathrm{ABC}$의 둘레의 길이를 구한다. [핵심 발상/공식/보조선] 1. 외심 $\\mathrm{E}$가 변 $\\mathrm{AC}$의 중점에 위치하므로 $\\triangle\\mathrm{ABC}$는 $\\angle\\mathrm{B}=90^\\circ$인 직각삼각형이다. 따라서 빗변 $\\overline{\\mathrm{AC}} = 2R$이다. 2. 직각삼각형의 내접원 반지름 공식: $r = \\frac{\\overline{\\mathrm{AB}} + \\overline{\\mathrm{BC}} - \\overline{\\mathrm{AC}}}{2}$ 따라서 $\\overline{\\mathrm{AB}} + \\overline{\\mathrm{BC}} = \\overline{\\mathrm{AC}} + 2r = 2R + 2r$이다. 3. 삼각형의 둘레의 길이는 $(\\overline{\\mathrm{AB}} + \\overline{\\mathrm{BC}}) + \\overline{\\mathrm{AC}}$로 구한다. [연속 등식 및 충분한 중간 계산] 1단계: 연립방정식을 풀어 $R$과 $r$의 값 구하기 두 식을 변끼리 더하면: $(R + r) + (R - r) = \\frac{17}{2} + \\frac{9}{2}$ $2R = \\frac{26}{2} = 13 \\implies R = \\frac{13}{2}$ 두 식을 변끼리 빼면: $(R + r) - (R - r) = \\frac{17}{2} - \\frac{9}{2}$ $2r = \\frac{8}{2} = 4 \\implies r = 2$ 2단계: 직각삼각형의 빗변 $\\overline{\\mathrm{AC}}$의 길이 구하기 외심이 빗변 $\\overline{\\mathrm{AC}}$ 위에 있으므로 $\\overline{\\mathrm{AC}} = 2R = 2 \\times \\frac{13}{2} = 13$ 3단계: 삼각형 $\\mathrm{ABC}$의 둘레의 길이 계산 내접원의 반지름 공식 $r = \\frac{\\overline{\\mathrm{AB}} + \\overline{\\mathrm{BC}} - \\overline{\\mathrm{AC}}}{2}$에서 $2 = \\frac{5 + \\overline{\\mathrm{BC}} - 13}{2}$ $4 = \\overline{\\mathrm{BC}} - 8 \\implies \\overline{\\mathrm{BC}} = 12$ (피타고라스 정리 확인: $5^2 + 12^2 = 25 + 144 = 169 = 13^2$으로 직각삼각형 조건이 완벽히 성립함) 따라서 삼각형 $\\mathrm{ABC}$의 둘레의 길이는 $\\text{둘레} = \\overline{\\mathrm{AB}} + \\overline{\\mathrm{AC}} + \\overline{\\mathrm{BC}} = 5 + 13 + 12 = 30$ (대수적 별해: $\\text{둘레} = 2R + 2r + 2R = 4R + 2r = 4\\left(\\frac{13}{2}\\right) + 2(2) = 26 + 4 = 30$) [조건 적합성 검토] 서술형 문항으로 $R, r$의 정확한 연립방정식 풀이, 빗변의 결정, 내접원 반지름 공식을 이용한 다른 변 구하기 및 둘레 계산이 오류 없이 서술되었다. [명확한 결론] 따라서 삼각형 $\\mathrm{ABC}$의 둘레의 길이는 $30$이다."
+    },
+    {
+      "id": "c6",
+      "condition": "둘레 30",
+      "mappedTo": [
+        "perimeter30"
+      ],
+      "sourceQuote": "[원문 조건 및 구할 대상] 삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}}=5$이고 점 $\\mathrm{D}$는 내심, 점 $\\mathrm{E}$는 외심이다. 내접원의 반지름 $r$, 외접원의 반지름 $R$에 대하여 $R + r = \\frac{17}{2}, \\quad R - r = \\frac{9}{2}$ 일 때, 삼각형 $\\mathrm{ABC}$의 둘레의 길이를 구한다. [핵심 발상/공식/보조선] 1. 외심 $\\mathrm{E}$가 변 $\\mathrm{AC}$의 중점에 위치하므로 $\\triangle\\mathrm{ABC}$는 $\\angle\\mathrm{B}=90^\\circ$인 직각삼각형이다. 따라서 빗변 $\\overline{\\mathrm{AC}} = 2R$이다. 2. 직각삼각형의 내접원 반지름 공식: $r = \\frac{\\overline{\\mathrm{AB}} + \\overline{\\mathrm{BC}} - \\overline{\\mathrm{AC}}}{2}$ 따라서 $\\overline{\\mathrm{AB}} + \\overline{\\mathrm{BC}} = \\overline{\\mathrm{AC}} + 2r = 2R + 2r$이다. 3. 삼각형의 둘레의 길이는 $(\\overline{\\mathrm{AB}} + \\overline{\\mathrm{BC}}) + \\overline{\\mathrm{AC}}$로 구한다. [연속 등식 및 충분한 중간 계산] 1단계: 연립방정식을 풀어 $R$과 $r$의 값 구하기 두 식을 변끼리 더하면: $(R + r) + (R - r) = \\frac{17}{2} + \\frac{9}{2}$ $2R = \\frac{26}{2} = 13 \\implies R = \\frac{13}{2}$ 두 식을 변끼리 빼면: $(R + r) - (R - r) = \\frac{17}{2} - \\frac{9}{2}$ $2r = \\frac{8}{2} = 4 \\implies r = 2$ 2단계: 직각삼각형의 빗변 $\\overline{\\mathrm{AC}}$의 길이 구하기 외심이 빗변 $\\overline{\\mathrm{AC}}$ 위에 있으므로 $\\overline{\\mathrm{AC}} = 2R = 2 \\times \\frac{13}{2} = 13$ 3단계: 삼각형 $\\mathrm{ABC}$의 둘레의 길이 계산 내접원의 반지름 공식 $r = \\frac{\\overline{\\mathrm{AB}} + \\overline{\\mathrm{BC}} - \\overline{\\mathrm{AC}}}{2}$에서 $2 = \\frac{5 + \\overline{\\mathrm{BC}} - 13}{2}$ $4 = \\overline{\\mathrm{BC}} - 8 \\implies \\overline{\\mathrm{BC}} = 12$ (피타고라스 정리 확인: $5^2 + 12^2 = 25 + 144 = 169 = 13^2$으로 직각삼각형 조건이 완벽히 성립함) 따라서 삼각형 $\\mathrm{ABC}$의 둘레의 길이는 $\\text{둘레} = \\overline{\\mathrm{AB}} + \\overline{\\mathrm{AC}} + \\overline{\\mathrm{BC}} = 5 + 13 + 12 = 30$ (대수적 별해: $\\text{둘레} = 2R + 2r + 2R = 4R + 2r = 4\\left(\\frac{13}{2}\\right) + 2(2) = 26 + 4 = 30$) [조건 적합성 검토] 서술형 문항으로 $R, r$의 정확한 연립방정식 풀이, 빗변의 결정, 내접원 반지름 공식을 이용한 다른 변 구하기 및 둘레 계산이 오류 없이 서술되었다. [명확한 결론] 따라서 삼각형 $\\mathrm{ABC}$의 둘레의 길이는 $30$이다."
+    }
+  ],
+  "newVisualInformation": [
+    "원본 스캔이 없는 문제 q24의 기존 SVG가 표현한 두 원 중심 소속을 검증된 5-12-13 좌표로 재작도한다.",
+    "작은 원이나 삼각형 내부는 색칠하지 않는다."
+  ]
+}

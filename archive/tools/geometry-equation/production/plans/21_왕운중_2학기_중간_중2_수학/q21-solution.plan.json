@@ -1,0 +1,292 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-9",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sBO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "allRhombus",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sBC",
+          "sCD",
+          "sDA"
+        ]
+      },
+      {
+        "id": "equalAC",
+        "count": 2,
+        "segments": [
+          "sAO",
+          "sOC"
+        ]
+      },
+      {
+        "id": "equalBD",
+        "count": 3,
+        "segments": [
+          "sBO",
+          "sOD"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "AO4",
+        "from": "A",
+        "to": "O",
+        "label": "4",
+        "side": "LEFT"
+      },
+      {
+        "id": "BD9",
+        "from": "B",
+        "to": "D",
+        "label": "9",
+        "side": "BELOW"
+      },
+      {
+        "id": "AC8",
+        "from": "A",
+        "to": "C",
+        "label": "8",
+        "side": "RIGHT"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "diagonalPerp",
+      "refs": [
+        "A",
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "마름모 수직이등분 대각선 AC=8, BD=9로 넓이 36을 구함",
+  "accessibilityDescription": "마름모 ABCD의 두 대각선이 O에서 직각으로 만나고 반으로 나뉜 각 대각선에는 서로 같은 눈금, 전체 두 대각선에는 치수선이 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "ABCD 마름모",
+      "mappedTo": [
+        "allRhombus"
+      ],
+      "sourceQuote": "[서술형1] 오른쪽 그림과 같은 마름모 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AO}}=4$, $\\overline{\\mathrm{BD}}=9$일 때, $\\square\\mathrm{ABCD}$의 넓이를 구하고, 넓이를 구하는 과정에 사용된 마름모의 성질을 서술하시오. [4점] [원본 그림] (1) $\\square\\mathrm{ABCD}$의 넓이를 구하시오. [3점] (2) $\\square\\mathrm{ABCD}$의 넓이를 구하는 과정에서 사용된 마름모의 성질을 서술하시오. [1점]"
+    },
+    {
+      "id": "c2",
+      "condition": "AO=4",
+      "mappedTo": [
+        "AO4"
+      ],
+      "sourceQuote": "[서술형1] 오른쪽 그림과 같은 마름모 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AO}}=4$, $\\overline{\\mathrm{BD}}=9$일 때, $\\square\\mathrm{ABCD}$의 넓이를 구하고, 넓이를 구하는 과정에 사용된 마름모의 성질을 서술하시오. [4점] [원본 그림] (1) $\\square\\mathrm{ABCD}$의 넓이를 구하시오. [3점] (2) $\\square\\mathrm{ABCD}$의 넓이를 구하는 과정에서 사용된 마름모의 성질을 서술하시오. [1점]"
+    },
+    {
+      "id": "c3",
+      "condition": "BD=9",
+      "mappedTo": [
+        "BD9"
+      ],
+      "sourceQuote": "[서술형1] 오른쪽 그림과 같은 마름모 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AO}}=4$, $\\overline{\\mathrm{BD}}=9$일 때, $\\square\\mathrm{ABCD}$의 넓이를 구하고, 넓이를 구하는 과정에 사용된 마름모의 성질을 서술하시오. [4점] [원본 그림] (1) $\\square\\mathrm{ABCD}$의 넓이를 구하시오. [3점] (2) $\\square\\mathrm{ABCD}$의 넓이를 구하는 과정에서 사용된 마름모의 성질을 서술하시오. [1점]"
+    },
+    {
+      "id": "c4",
+      "condition": "대각선은 수직이등분",
+      "mappedTo": [
+        "diagonalPerp",
+        "equalAC",
+        "equalBD"
+      ],
+      "sourceQuote": "[원문 조건 및 구할 대상] 마름모 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AO}}=4$, $\\overline{\\mathrm{BD}}=9$일 때, (1) 마름모 $\\mathrm{ABCD}$의 넓이를 구한다. (2) 넓이를 구하는 데 사용된 마름모의 성질을 서술한다. [핵심 발상/공식/보조선] 마름모의 두 대각선은 서로 다른 것을 수직이등분한다. 따라서 대각선 $\\overline{\\mathrm{AC}} = 2\\overline{\\mathrm{AO}}$이고, 마름모의 넓이는 $\\frac{1}{2} \\times \\overline{\\mathrm{AC}} \\times \\overline{\\mathrm{BD}}$이다. [연속 등식 및 충분한 중간 계산] 1단계: 소문항 (1) - 대각선 $\\overline{\\mathrm{AC}}$의 길이 계산 마름모의 두 대각선은 서로 다른 것을 이등분하므로 $\\overline{\\mathrm{AC}} = 2 \\times \\overline{\\mathrm{AO}} = 2 \\times 4 = 8$ 2단계: 소문항 (1) - 마름모 $\\square\\mathrm{ABCD}$의 넓이 계산 두 대각선이 서로 수직이므로 $\\text{Area}(\\square\\mathrm{ABCD}) = \\frac{1}{2} \\times \\overline{\\mathrm{AC}} \\times \\overline{\\mathrm{BD}} = \\frac{1}{2} \\times 8 \\times 9 = 36$ 3단계: 소문항 (2) - 사용된 마름모의 성질 서술 '마름모의 두 대각선은 서로 다른 것을 수직이등분한다.' (대각선 $\\overline{\\mathrm{AC}}$의 길이를 구하는 데 '이등분' 성질이, 넓이 공식에 '수직' 성질이 적용됨) [조건 적합성 검토] 서술형 문항으로 (1) 넓이 36 도출과 (2) 대각선의 수직이등분 성질이 논리적 비약 없이 정확하게 서술되었다. [명확한 결론] 따라서 정답은 (1) $36$, (2) 마름모의 두 대각선은 서로 다른 것을 수직이등분한다."
+    },
+    {
+      "id": "c5",
+      "condition": "AC=8",
+      "mappedTo": [
+        "AC8"
+      ],
+      "sourceQuote": "[원문 조건 및 구할 대상] 마름모 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AO}}=4$, $\\overline{\\mathrm{BD}}=9$일 때, (1) 마름모 $\\mathrm{ABCD}$의 넓이를 구한다. (2) 넓이를 구하는 데 사용된 마름모의 성질을 서술한다. [핵심 발상/공식/보조선] 마름모의 두 대각선은 서로 다른 것을 수직이등분한다. 따라서 대각선 $\\overline{\\mathrm{AC}} = 2\\overline{\\mathrm{AO}}$이고, 마름모의 넓이는 $\\frac{1}{2} \\times \\overline{\\mathrm{AC}} \\times \\overline{\\mathrm{BD}}$이다. [연속 등식 및 충분한 중간 계산] 1단계: 소문항 (1) - 대각선 $\\overline{\\mathrm{AC}}$의 길이 계산 마름모의 두 대각선은 서로 다른 것을 이등분하므로 $\\overline{\\mathrm{AC}} = 2 \\times \\overline{\\mathrm{AO}} = 2 \\times 4 = 8$ 2단계: 소문항 (1) - 마름모 $\\square\\mathrm{ABCD}$의 넓이 계산 두 대각선이 서로 수직이므로 $\\text{Area}(\\square\\mathrm{ABCD}) = \\frac{1}{2} \\times \\overline{\\mathrm{AC}} \\times \\overline{\\mathrm{BD}} = \\frac{1}{2} \\times 8 \\times 9 = 36$ 3단계: 소문항 (2) - 사용된 마름모의 성질 서술 '마름모의 두 대각선은 서로 다른 것을 수직이등분한다.' (대각선 $\\overline{\\mathrm{AC}}$의 길이를 구하는 데 '이등분' 성질이, 넓이 공식에 '수직' 성질이 적용됨) [조건 적합성 검토] 서술형 문항으로 (1) 넓이 36 도출과 (2) 대각선의 수직이등분 성질이 논리적 비약 없이 정확하게 서술되었다. [명확한 결론] 따라서 정답은 (1) $36$, (2) 마름모의 두 대각선은 서로 다른 것을 수직이등분한다."
+    }
+  ],
+  "newVisualInformation": [
+    "원본 없는 문제용 SVG가 도입한 O를 정확한 대각선 교점으로 검산한다.",
+    "마름모를 정사각형처럼 보이게 만들지 않고 면 채움을 생략한다."
+  ]
+}

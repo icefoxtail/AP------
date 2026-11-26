@@ -1,0 +1,177 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "givenABAC",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sAC"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "angleB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 45,
+        "label": "45°",
+        "arcs": 1
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rightA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "∠A=90°와 AB=AC에서 두 밑각 45°",
+  "accessibilityDescription": "이등변 직각삼각형 ABC의 A에 직각표식, AB와 AC에 같은 길이 눈금, B에 물음표 각 x가 붙어 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=AC",
+      "mappedTo": [
+        "givenABAC"
+      ],
+      "sourceQuote": "1. 오른쪽 그림과 같이 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$인 직각삼각형 $\\mathrm{ABC}$에서 $\\angle x$의 크기는?(3점) [원본 그림]"
+    },
+    {
+      "id": "c2",
+      "condition": "∠BAC=90°",
+      "mappedTo": [
+        "rightA"
+      ],
+      "sourceQuote": "1. 오른쪽 그림과 같이 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$인 직각삼각형 $\\mathrm{ABC}$에서 $\\angle x$의 크기는?(3점) [원본 그림]"
+    },
+    {
+      "id": "c3",
+      "condition": "∠B=x",
+      "mappedTo": [
+        "angleB"
+      ],
+      "sourceQuote": "1. 오른쪽 그림과 같이 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$인 직각삼각형 $\\mathrm{ABC}$에서 $\\angle x$의 크기는?(3점) [원본 그림]"
+    },
+    {
+      "id": "c4",
+      "condition": "두 밑각은 각각 45°",
+      "mappedTo": [
+        "angleB"
+      ],
+      "sourceQuote": "1. 오른쪽 그림과 같이 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$인 직각삼각형 $\\mathrm{ABC}$에서 $\\angle x$의 크기는?(3점) [원본 그림]"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 불투명한 SVG 배경 요소는 계획에 포함하지 않는다.",
+    "원문 직각과 같은 길이 눈금은 문제·해설 양쪽에서 각각 독립 표식으로 관리한다."
+  ]
+}

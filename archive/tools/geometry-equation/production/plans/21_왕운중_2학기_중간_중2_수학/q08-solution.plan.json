@@ -1,0 +1,281 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "0",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "600000000",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "153048858",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "0",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-123475571",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "248983714",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-72526626",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "175258431",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "I"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sIB",
+      "refs": [
+        "I",
+        "B"
+      ]
+    },
+    {
+      "id": "sIC",
+      "refs": [
+        "I",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "circumRadii",
+        "count": 1,
+        "segments": [
+          "sAO",
+          "sOB",
+          "sOC"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "givenA48",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 48,
+        "label": "48°",
+        "arcs": 1
+      },
+      {
+        "id": "centralO96",
+        "refs": [
+          "B",
+          "O",
+          "C"
+        ],
+        "value": 96,
+        "label": "96°",
+        "arcs": 1
+      },
+      {
+        "id": "incenterI114",
+        "refs": [
+          "B",
+          "I",
+          "C"
+        ],
+        "value": 114,
+        "label": "114°",
+        "arcs": 1
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "외심 O의 96°와 내심 I의 114°를 실제 중심에 그려 2·96−114=78 확인",
+  "accessibilityDescription": "부등변삼각형 ABC에 외심 O와 내심 I가 서로 다른 위치에 있으며 O와 B,C를 잇는 반지름과 I와 B,C를 잇는 선분, 각각의 각 호가 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "O는 외심",
+      "mappedTo": [
+        "circumRadii"
+      ],
+      "sourceQuote": "8. 오른쪽 그림에서 두 점 $\\mathrm{O}$, $\\mathrm{I}$는 각각 $\\triangle\\mathrm{ABC}$의 외심과 내심이다. $\\angle\\mathrm{A}=48^\\circ$일 때, $2\\angle\\mathrm{BOC}-\\angle\\mathrm{BIC}$의 크기를 구하면? [5점] [원본 그림]"
+    },
+    {
+      "id": "c2",
+      "condition": "I는 내심",
+      "mappedTo": [
+        "I"
+      ],
+      "sourceQuote": "8. 오른쪽 그림에서 두 점 $\\mathrm{O}$, $\\mathrm{I}$는 각각 $\\triangle\\mathrm{ABC}$의 외심과 내심이다. $\\angle\\mathrm{A}=48^\\circ$일 때, $2\\angle\\mathrm{BOC}-\\angle\\mathrm{BIC}$의 크기를 구하면? [5점] [원본 그림]"
+    },
+    {
+      "id": "c3",
+      "condition": "∠A=48°",
+      "mappedTo": [
+        "givenA48"
+      ],
+      "sourceQuote": "8. 오른쪽 그림에서 두 점 $\\mathrm{O}$, $\\mathrm{I}$는 각각 $\\triangle\\mathrm{ABC}$의 외심과 내심이다. $\\angle\\mathrm{A}=48^\\circ$일 때, $2\\angle\\mathrm{BOC}-\\angle\\mathrm{BIC}$의 크기를 구하면? [5점] [원본 그림]"
+    },
+    {
+      "id": "c4",
+      "condition": "∠BOC=96°",
+      "mappedTo": [
+        "centralO96"
+      ],
+      "sourceQuote": "[원문 조건 및 구할 대상] $\\triangle\\mathrm{ABC}$에서 점 $\\mathrm{O}$는 외심, 점 $\\mathrm{I}$는 내심이고 $\\angle\\mathrm{A}=48^\\circ$일 때, $2\\angle\\mathrm{BOC} - \\angle\\mathrm{BIC}$의 값을 구한다. [핵심 발상/공식/보조선] - 외심 공식: $\\angle\\mathrm{BOC} = 2\\angle\\mathrm{A}$ - 내심 공식: $\\angle\\mathrm{BIC} = 90^\\circ + \\frac{1}{2}\\angle\\mathrm{A}$ [연속 등식 및 충분한 중간 계산] 1단계: $\\angle\\mathrm{BOC}$ 계산 $\\angle\\mathrm{BOC} = 2 \\times 48^\\circ = 96^\\circ$ 2단계: $\\angle\\mathrm{BIC}$ 계산 $\\angle\\mathrm{BIC} = 90^\\circ + \\frac{1}{2} \\times 48^\\circ = 90^\\circ + 24^\\circ = 114^\\circ$ 3단계: $2\\angle\\mathrm{BOC} - \\angle\\mathrm{BIC}$ 식의 값 계산 $2\\angle\\mathrm{BOC} = 2 \\times 96^\\circ = 192^\\circ$ $2\\angle\\mathrm{BOC} - \\angle\\mathrm{BIC} = 192^\\circ - 114^\\circ = 78^\\circ$ [경우 나눔 및 5개 선지 검토] ① $78^\\circ$: 계산된 결과와 정확히 일치하여 정답이다. ② $80^\\circ$, ③ $85^\\circ$: 오답이다. ④ $96^\\circ$: $\\angle\\mathrm{BOC}$ 자체의 크기이므로 오답이다. ⑤ $100^\\circ$: 오답이다. [명확한 결론] 따라서 구하는 각의 크기는 $78^\\circ$이므로 정답은 ①이다."
+    },
+    {
+      "id": "c5",
+      "condition": "∠BIC=114°",
+      "mappedTo": [
+        "incenterI114"
+      ],
+      "sourceQuote": "[원문 조건 및 구할 대상] $\\triangle\\mathrm{ABC}$에서 점 $\\mathrm{O}$는 외심, 점 $\\mathrm{I}$는 내심이고 $\\angle\\mathrm{A}=48^\\circ$일 때, $2\\angle\\mathrm{BOC} - \\angle\\mathrm{BIC}$의 값을 구한다. [핵심 발상/공식/보조선] - 외심 공식: $\\angle\\mathrm{BOC} = 2\\angle\\mathrm{A}$ - 내심 공식: $\\angle\\mathrm{BIC} = 90^\\circ + \\frac{1}{2}\\angle\\mathrm{A}$ [연속 등식 및 충분한 중간 계산] 1단계: $\\angle\\mathrm{BOC}$ 계산 $\\angle\\mathrm{BOC} = 2 \\times 48^\\circ = 96^\\circ$ 2단계: $\\angle\\mathrm{BIC}$ 계산 $\\angle\\mathrm{BIC} = 90^\\circ + \\frac{1}{2} \\times 48^\\circ = 90^\\circ + 24^\\circ = 114^\\circ$ 3단계: $2\\angle\\mathrm{BOC} - \\angle\\mathrm{BIC}$ 식의 값 계산 $2\\angle\\mathrm{BOC} = 2 \\times 96^\\circ = 192^\\circ$ $2\\angle\\mathrm{BOC} - \\angle\\mathrm{BIC} = 192^\\circ - 114^\\circ = 78^\\circ$ [경우 나눔 및 5개 선지 검토] ① $78^\\circ$: 계산된 결과와 정확히 일치하여 정답이다. ② $80^\\circ$, ③ $85^\\circ$: 오답이다. ④ $96^\\circ$: $\\angle\\mathrm{BOC}$ 자체의 크기이므로 오답이다. ⑤ $100^\\circ$: 오답이다. [명확한 결론] 따라서 구하는 각의 크기는 $78^\\circ$이므로 정답은 ①이다."
+    }
+  ],
+  "newVisualInformation": [
+    "기존 문제 SVG의 O/I 시각 구별이 작은 화면에서 흐려질 수 있어 해설에 정확한 각 호와 길이 눈금을 표시한다.",
+    "원문에 없는 이등변삼각형 조건을 만들어 내지 않는 대표 좌표로 수학 검산한다."
+  ]
+}

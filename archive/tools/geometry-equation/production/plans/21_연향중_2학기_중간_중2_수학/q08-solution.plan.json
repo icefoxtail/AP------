@@ -1,0 +1,296 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "25"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "65"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "D",
+          "E"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "65"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "D",
+    "E",
+    "C",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFD",
+      "refs": [
+        "F",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angleA65",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 65,
+        "label": "65°",
+        "arcs": 1
+      },
+      {
+        "id": "angleD65",
+        "refs": [
+          "E",
+          "D",
+          "F"
+        ],
+        "value": 65,
+        "label": "65°",
+        "arcs": 1
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "sideAB15",
+        "from": "A",
+        "to": "B",
+        "label": "15",
+        "unit": "cm",
+        "side": "BELOW"
+      },
+      {
+        "id": "sideAC9",
+        "from": "A",
+        "to": "C",
+        "label": "9",
+        "unit": "cm",
+        "side": "LEFT"
+      },
+      {
+        "id": "sideDE5",
+        "from": "D",
+        "to": "E",
+        "label": "5",
+        "unit": "cm",
+        "side": "BELOW"
+      },
+      {
+        "id": "sideDF3",
+        "from": "D",
+        "to": "F",
+        "label": "3",
+        "unit": "cm",
+        "side": "RIGHT"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "닮음비 15:5=9:3을 두 삼각형의 실제 길이 치수로 표시",
+  "accessibilityDescription": "서로 닮은 두 삼각형 ABC와 DEF의 포함각 65도를 표시하고 큰 삼각형과 작은 삼각형의 대응하는 두 변에 치수선을 따로 놓았다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "ABC∼DEF",
+      "mappedTo": [
+        "angleA65",
+        "angleD65"
+      ],
+      "sourceQuote": "8. 다음 그림에서 $\\triangle\\mathrm{ABC} \\sim \\triangle\\mathrm{DEF}$일 때, $\\overline{\\mathrm{DF}}$의 길이를 구하면?(4점) [원본 그림]"
+    },
+    {
+      "id": "c2",
+      "condition": "AB=15",
+      "mappedTo": [
+        "sideAB15"
+      ],
+      "sourceQuote": "8. 다음 그림에서 $\\triangle\\mathrm{ABC} \\sim \\triangle\\mathrm{DEF}$일 때, $\\overline{\\mathrm{DF}}$의 길이를 구하면?(4점) [원본 그림]"
+    },
+    {
+      "id": "c3",
+      "condition": "AC=9",
+      "mappedTo": [
+        "sideAC9"
+      ],
+      "sourceQuote": "8. 다음 그림에서 $\\triangle\\mathrm{ABC} \\sim \\triangle\\mathrm{DEF}$일 때, $\\overline{\\mathrm{DF}}$의 길이를 구하면?(4점) [원본 그림]"
+    },
+    {
+      "id": "c4",
+      "condition": "DE=5",
+      "mappedTo": [
+        "sideDE5"
+      ],
+      "sourceQuote": "8. 다음 그림에서 $\\triangle\\mathrm{ABC} \\sim \\triangle\\mathrm{DEF}$일 때, $\\overline{\\mathrm{DF}}$의 길이를 구하면?(4점) [원본 그림]"
+    },
+    {
+      "id": "c5",
+      "condition": "DF=3",
+      "mappedTo": [
+        "sideDF3"
+      ],
+      "sourceQuote": "8. 다음 그림에서 $\\triangle\\mathrm{ABC} \\sim \\triangle\\mathrm{DEF}$일 때, $\\overline{\\mathrm{DF}}$의 길이를 구하면?(4점) [원본 그림]"
+    }
+  ],
+  "newVisualInformation": [
+    "원본에서 같은 번호가 아닌 대응점 AB/DE, AC/DF를 구분한다.",
+    "해설용 각도·길이만 추가하며 면을 칠하지 않는다."
+  ]
+}

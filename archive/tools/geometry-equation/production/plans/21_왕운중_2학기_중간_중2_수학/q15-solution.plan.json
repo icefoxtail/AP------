@@ -1,0 +1,407 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lineBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "I",
+          "lineBC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "incircle",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "I",
+          "F"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sCF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "sFA",
+      "refs": [
+        "F",
+        "A"
+      ]
+    },
+    {
+      "id": "sID",
+      "refs": [
+        "I",
+        "D"
+      ]
+    },
+    {
+      "id": "sIE",
+      "refs": [
+        "I",
+        "E"
+      ]
+    },
+    {
+      "id": "sIF",
+      "refs": [
+        "I",
+        "F"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "incircle"
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "threeRadii",
+        "count": 1,
+        "segments": [
+          "sID",
+          "sIE",
+          "sIF"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "AB12",
+        "from": "A",
+        "to": "B",
+        "label": "12",
+        "unit": "cm",
+        "side": "LEFT"
+      },
+      {
+        "id": "AC9",
+        "from": "A",
+        "to": "C",
+        "label": "9",
+        "unit": "cm",
+        "side": "BELOW"
+      },
+      {
+        "id": "BC15",
+        "from": "B",
+        "to": "C",
+        "label": "15",
+        "unit": "cm",
+        "side": "RIGHT"
+      },
+      {
+        "id": "r3",
+        "from": "I",
+        "to": "F",
+        "label": "3",
+        "unit": "cm",
+        "side": "RIGHT"
+      }
+    ],
+    "regions": [
+      {
+        "id": "shadedOutsideCircle",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        ],
+        "holes": [
+          {
+            "loop": {
+              "start": "F",
+              "steps": [
+                {
+                  "to": "F",
+                  "arc": {
+                    "center": "I",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rightA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "rightD",
+      "refs": [
+        "I",
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "rightE",
+      "refs": [
+        "I",
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "rightF",
+      "refs": [
+        "A",
+        "F",
+        "I"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "직각삼각형 9·12·15 안의 반지름 3 내접원을 뺀 색칠한 넓이 54−9π",
+  "accessibilityDescription": "직각삼각형 ABC 안쪽에 원이 세 변에 접하고, 원 안은 흰색으로 남긴 채 삼각형 영역 중 원 밖에 있는 부분만 옅게 칠해 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A=90°",
+      "mappedTo": [
+        "rightA"
+      ],
+      "sourceQuote": "15. 다음 그림에서 점 $\\mathrm{I}$는 $\\angle\\mathrm{A}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$의 내심이고, 세 점 $\\mathrm{D}$, $\\mathrm{E}$, $\\mathrm{F}$는 접점이다. $\\overline{\\mathrm{AB}}=12$, $\\overline{\\mathrm{AC}}=9$, $\\overline{\\mathrm{BC}}=15$일 때, 색칠한 부분의 넓이를 구하면? [4점] [원본 그림]"
+    },
+    {
+      "id": "c2",
+      "condition": "AB=12 AC=9 BC=15",
+      "mappedTo": [
+        "AB12",
+        "AC9",
+        "BC15"
+      ],
+      "sourceQuote": "15. 다음 그림에서 점 $\\mathrm{I}$는 $\\angle\\mathrm{A}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$의 내심이고, 세 점 $\\mathrm{D}$, $\\mathrm{E}$, $\\mathrm{F}$는 접점이다. $\\overline{\\mathrm{AB}}=12$, $\\overline{\\mathrm{AC}}=9$, $\\overline{\\mathrm{BC}}=15$일 때, 색칠한 부분의 넓이를 구하면? [4점] [원본 그림]"
+    },
+    {
+      "id": "c3",
+      "condition": "I가 내심이고 D,E,F는 접점",
+      "mappedTo": [
+        "incircle",
+        "rightD",
+        "rightE",
+        "rightF"
+      ],
+      "sourceQuote": "15. 다음 그림에서 점 $\\mathrm{I}$는 $\\angle\\mathrm{A}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$의 내심이고, 세 점 $\\mathrm{D}$, $\\mathrm{E}$, $\\mathrm{F}$는 접점이다. $\\overline{\\mathrm{AB}}=12$, $\\overline{\\mathrm{AC}}=9$, $\\overline{\\mathrm{BC}}=15$일 때, 색칠한 부분의 넓이를 구하면? [4점] [원본 그림]"
+    },
+    {
+      "id": "c4",
+      "condition": "반지름 r=3",
+      "mappedTo": [
+        "threeRadii",
+        "r3"
+      ],
+      "sourceQuote": "[원문 조건 및 구할 대상] $\\angle\\mathrm{A}=90^\\circ$이고 $\\overline{\\mathrm{AB}}=12$, $\\overline{\\mathrm{AC}}=9$, $\\overline{\\mathrm{BC}}=15$인 직각삼각형 $\\mathrm{ABC}$에서 내접원을 제외한 색칠한 부분의 넓이를 구한다. [핵심 발상/공식/보조선] $\\text{색칠한 부분의 넓이} = \\triangle\\mathrm{ABC}\\text{의 넓이} - \\text{내접원의 넓이}$ 직각삼각형에서 내접원의 반지름 $r$은 $r = \\frac{a+b-c}{2}$로 구한다. [연속 등식 및 충분한 중간 계산] 1단계: 직각삼각형 $\\mathrm{ABC}$의 넓이 계산 $\\text{Area}(\\triangle\\mathrm{ABC}) = \\frac{1}{2} \\times 12 \\times 9 = 54$ 2단계: 내접원의 반지름 $r$ 계산 $r = \\frac{\\overline{\\mathrm{AB}} + \\overline{\\mathrm{AC}} - \\overline{\\mathrm{BC}}}{2} = \\frac{12 + 9 - 15}{2} = \\frac{6}{2} = 3$ (또는 $\\frac{1}{2}r(12+9+15) = 54 \\implies 18r = 54 \\implies r = 3$) 3단계: 내접원의 넓이 계산 $\\text{내접원 넓이} = \\pi r^2 = \\pi \\times 3^2 = 9\\pi$ 4단계: 색칠한 부분의 넓이 계산 $\\text{색칠한 넓이} = 54 - 9\\pi$ [경우 나눔 및 5개 선지 검토] ① $9\\pi$: 내접원의 넓이만 구한 오답이다. ② $54-3\\pi$: 반지름을 뺀 오답이다. ③ $36-7\\pi$: 오답이다. ④ $54-9\\pi$: 계산 결과와 정확히 일치하여 정답이다. ⑤ $90-9\\pi$: 밑변과 높이를 잘못 곱한 오답이다. [명확한 결론] 따라서 색칠한 부분의 넓이는 $54-9\\pi$이므로 정답은 ④이다."
+    },
+    {
+      "id": "c5",
+      "condition": "삼각형에서 원을 뺀 부분만 색칠",
+      "mappedTo": [
+        "shadedOutsideCircle"
+      ],
+      "sourceQuote": "15. 다음 그림에서 점 $\\mathrm{I}$는 $\\angle\\mathrm{A}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$의 내심이고, 세 점 $\\mathrm{D}$, $\\mathrm{E}$, $\\mathrm{F}$는 접점이다. $\\overline{\\mathrm{AB}}=12$, $\\overline{\\mathrm{AC}}=9$, $\\overline{\\mathrm{BC}}=15$일 때, 색칠한 부분의 넓이를 구하면? [4점] [원본 그림]"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 실제 색칠 대상은 삼각형에서 내접원을 뺀 영역이다.",
+    "polygon-minus-full-circle 경계와 접점·직각을 실제 엔진 region holes로 표현한다."
+  ]
+}
