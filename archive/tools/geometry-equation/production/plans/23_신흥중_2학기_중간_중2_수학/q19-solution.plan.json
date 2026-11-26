@@ -1,0 +1,484 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "원래 삼각형과 이등분선"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBD",
+            "refs": [
+              "B",
+              "D"
+            ]
+          },
+          {
+            "id": "sDC",
+            "refs": [
+              "D",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "sAD",
+            "refs": [
+              "A",
+              "D"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "equalLengths": [
+            {
+              "id": "legs",
+              "count": 1,
+              "segments": [
+                "sAB",
+                "sCA"
+              ]
+            }
+          ],
+          "angles": [
+            {
+              "id": "aBAD",
+              "refs": [
+                "B",
+                "A",
+                "D"
+              ],
+              "style": "ARC",
+              "arcs": 1,
+              "equalGroup": 1,
+              "noLabel": true
+            },
+            {
+              "id": "aDAC",
+              "refs": [
+                "D",
+                "A",
+                "C"
+              ],
+              "style": "ARC",
+              "arcs": 1,
+              "equalGroup": 1,
+              "noLabel": true
+            },
+            {
+              "id": "aABD",
+              "refs": [
+                "A",
+                "B",
+                "D"
+              ],
+              "style": "ARC",
+              "arcs": 2,
+              "equalGroup": 2,
+              "noLabel": true
+            },
+            {
+              "id": "aACD",
+              "refs": [
+                "A",
+                "C",
+                "D"
+              ],
+              "style": "ARC",
+              "arcs": 2,
+              "equalGroup": 2,
+              "noLabel": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "삼각형 ABD"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "D"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ],
+            "emphasis": "BOLD"
+          },
+          {
+            "id": "sBD",
+            "refs": [
+              "B",
+              "D"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ],
+            "emphasis": "BOLD"
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "aBAD",
+              "refs": [
+                "B",
+                "A",
+                "D"
+              ],
+              "style": "ARC",
+              "arcs": 1,
+              "equalGroup": 1,
+              "noLabel": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "삼각형 ACD"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        },
+        "displayPoints": [
+          "A",
+          "C",
+          "D"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ],
+            "emphasis": "BOLD"
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ],
+            "emphasis": "BOLD"
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "aCAD",
+              "refs": [
+                "C",
+                "A",
+                "D"
+              ],
+              "style": "ARC",
+              "arcs": 1,
+              "equalGroup": 1,
+              "noLabel": true
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "AB=AC와 A각 이등분으로 △ABD≅△ACD(SAS), 대응 밑각 B=C",
+  "accessibilityDescription": "왼쪽 문제 도형과 두 개의 같은 방향인 합동 삼각형을 비교한다. 세 화면 모두 같은 선분·각이 대응되고 면은 칠하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "AB=AC, AD 공통",
+      "mappedTo": "panels:0.planeMarks.equalLengths:legs;panels:1.displaySegments:sAB,sDA;panels:2.displaySegments:sAC,sDA",
+      "sourceQuote": "[서술형1] $AB=AC$인 이등변삼각형에서 두 밑각의 크"
+    },
+    {
+      "id": "condition2",
+      "condition": "∠BAD=∠DAC",
+      "mappedTo": "panels:0.planeMarks.angles:aBAD,aDAC;panels:1.planeMarks.angles:aBAD;panels:2.planeMarks.angles:aCAD",
+      "sourceQuote": "[서술형1] $AB=AC$인 이등변삼각형에서 두 밑각의 크"
+    },
+    {
+      "id": "condition3",
+      "condition": "대응 밑각 B=C",
+      "mappedTo": "panels:0.planeMarks.angles:aABD,aACD",
+      "sourceQuote": "[서술형1] $AB=AC$인 이등변삼각형에서 두 밑각의 크"
+    }
+  ],
+  "newVisualInformation": [
+    "문제 배치와 합동·대응 삼각형을 각각 펼친 화면에서 읽을 수 있다.",
+    "실제 같은 변 눈금과 각 호를 유지하고 면 채움 없이 원본 조건을 보여 준다."
+  ]
+}

@@ -1,0 +1,312 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "18"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 610,
+    "height": 430
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "G",
+    "P"
+  ],
+  "pointNames": {
+    "P": "G'"
+  },
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAG",
+      "refs": [
+        "A",
+        "G"
+      ]
+    },
+    {
+      "id": "sGP",
+      "refs": [
+        "G",
+        "P"
+      ]
+    },
+    {
+      "id": "sPD",
+      "refs": [
+        "P",
+        "D"
+      ]
+    },
+    {
+      "id": "sBG",
+      "refs": [
+        "B",
+        "G"
+      ]
+    },
+    {
+      "id": "sCG",
+      "refs": [
+        "C",
+        "G"
+      ]
+    },
+    {
+      "id": "sBP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "sCP",
+      "refs": [
+        "C",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "baseHalf",
+        "count": 1,
+        "segments": [
+          "sBD",
+          "sDC"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dGGp",
+        "from": "G",
+        "to": "P",
+        "label": "4",
+        "side": "RIGHT",
+        "style": "INLINE"
+      },
+      {
+        "id": "dGpD",
+        "from": "P",
+        "to": "D",
+        "label": "2",
+        "side": "RIGHT",
+        "style": "INLINE"
+      },
+      {
+        "id": "dGD",
+        "from": "G",
+        "to": "D",
+        "label": "6",
+        "side": "LEFT",
+        "style": "INLINE"
+      },
+      {
+        "id": "dAG",
+        "from": "A",
+        "to": "G",
+        "label": "12",
+        "side": "LEFT",
+        "style": "INLINE"
+      },
+      {
+        "id": "dAD",
+        "from": "A",
+        "to": "D",
+        "label": "18",
+        "side": "RIGHT",
+        "style": "INLINE"
+      }
+    ]
+  },
+  "caption": "두 무게중심 G와 G′ 사이가 4이면 G′D=2, GD=6, AD=18",
+  "accessibilityDescription": "삼각형의 중선 AD를 12·4·2의 실제 길이로 나누고, 전체 AD18과 BD=DC를 지시선 및 눈금으로 표시한다. 그림에서 P는 원문의 G′을 대신하는 내부 ID이고 표면 라벨은 검수 대상이다.",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "G와 G′은 두 단계 무게중심",
+      "mappedTo": [
+        "G",
+        "P",
+        "sAG",
+        "sGP",
+        "sPD"
+      ],
+      "sourceQuote": "다음 그림에서 두 점 $G,G'$은 각각 $\\triangl"
+    },
+    {
+      "id": "condition2",
+      "condition": "GG′=4, G′D=2",
+      "mappedTo": [
+        "dGGp",
+        "dGpD"
+      ],
+      "sourceQuote": "다음 그림에서 두 점 $G,G'$은 각각 $\\triangl"
+    },
+    {
+      "id": "condition3",
+      "condition": "AD=18",
+      "mappedTo": [
+        "dAD"
+      ],
+      "sourceQuote": "다음 그림에서 두 점 $G,G'$은 각각 $\\triangl"
+    }
+  ],
+  "newVisualInformation": [
+    "발문·원본 그림과 해설의 실제 점·선·각·길이를 각 엔진 필드에 명확히 연결한다.",
+    "배경은 흰색이며 넓이·영역이 필수인 경우 외에는 면 채움을 사용하지 않는다."
+  ]
+}

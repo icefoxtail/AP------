@@ -1,0 +1,327 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1288864005157",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7309511000408",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3025345781827",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2538566529714",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3949308436347",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4195498155886",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 610,
+    "height": 430
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aABE",
+        "refs": [
+          "A",
+          "B",
+          "E"
+        ],
+        "value": 40,
+        "style": "ARC",
+        "arcs": 1,
+        "equalGroup": 1,
+        "label": "40°"
+      },
+      {
+        "id": "aEBC",
+        "refs": [
+          "E",
+          "B",
+          "C"
+        ],
+        "value": 40,
+        "style": "ARC",
+        "arcs": 1,
+        "equalGroup": 1,
+        "noLabel": true
+      },
+      {
+        "id": "aBAD",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 30,
+        "style": "ARC",
+        "arcs": 2,
+        "equalGroup": 2,
+        "label": "30°"
+      },
+      {
+        "id": "aDAE",
+        "refs": [
+          "D",
+          "A",
+          "E"
+        ],
+        "value": 30,
+        "style": "ARC",
+        "arcs": 2,
+        "equalGroup": 2,
+        "noLabel": true
+      },
+      {
+        "id": "aAEB",
+        "refs": [
+          "A",
+          "E",
+          "B"
+        ],
+        "value": 80,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "80°"
+      },
+      {
+        "id": "aADB",
+        "refs": [
+          "A",
+          "D",
+          "B"
+        ],
+        "value": 70,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "70°"
+      },
+      {
+        "id": "aACB",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 40,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "40°"
+      }
+    ]
+  },
+  "caption": "A의 반각 30°와 B의 반각 40°에서 C각 40°를 계산한다.",
+  "accessibilityDescription": "A에서 D로 내려간 각 이등분선과 B에서 E로 그은 각 이등분선이 I에서 만난다. A의 30도 두 호, B의 40도 두 호, E80도 D70도와 C40도가 부착되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "I는 내심이고 AD·BE는 이등분선",
+      "mappedTo": [
+        "I",
+        "sAD",
+        "sBE",
+        "aABE",
+        "aEBC",
+        "aBAD",
+        "aDAE"
+      ],
+      "sourceQuote": "다음 그림에서 $I$가 $\\triangle ABC$의 내심"
+    },
+    {
+      "id": "condition2",
+      "condition": "∠AEB=80°, ∠ADB=70°",
+      "mappedTo": [
+        "aAEB",
+        "aADB"
+      ],
+      "sourceQuote": "다음 그림에서 $I$가 $\\triangle ABC$의 내심"
+    },
+    {
+      "id": "condition3",
+      "condition": "계산된 ∠C=40°",
+      "mappedTo": [
+        "aACB"
+      ],
+      "sourceQuote": "다음 그림에서 $I$가 $\\triangle ABC$의 내심"
+    }
+  ],
+  "newVisualInformation": [
+    "발문·원본 그림과 해설의 실제 점·선·각·길이를 각 엔진 필드에 명확히 연결한다.",
+    "배경은 흰색이며 넓이·영역이 필수인 경우 외에는 면 채움을 사용하지 않는다."
+  ]
+}

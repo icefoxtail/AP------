@@ -1,0 +1,245 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "7500000000000",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4330127018922",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 610,
+    "height": 430
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "M"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBM",
+      "refs": [
+        "B",
+        "M"
+      ]
+    },
+    {
+      "id": "sMC",
+      "refs": [
+        "M",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "halfHypot",
+        "count": 1,
+        "segments": [
+          "sAM",
+          "sBM",
+          "sMC"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 30,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "30°"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "10",
+        "side": "BELOW",
+        "style": "INLINE"
+      },
+      {
+        "id": "dAM",
+        "from": "A",
+        "to": "M",
+        "label": "5",
+        "side": "LEFT",
+        "style": "INLINE"
+      },
+      {
+        "id": "dMC",
+        "from": "M",
+        "to": "C",
+        "label": "5",
+        "side": "BELOW",
+        "style": "INLINE"
+      },
+      {
+        "id": "dCA",
+        "from": "C",
+        "to": "A",
+        "label": "5",
+        "side": "RIGHT",
+        "style": "INLINE"
+      }
+    ]
+  },
+  "caption": "빗변 중점 M에서 AM=BM=MC=5, 30°의 대변 AC=5로 △AMC 둘레 15",
+  "accessibilityDescription": "A의 직각, B의 30도 호, BC=10, 빗변 중점에 두 동일 눈금, AM=BM=MC=5와 AC=5 길이를 읽는다.",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "∠A=90°, ∠B=30°",
+      "mappedTo": [
+        "rA",
+        "aB"
+      ],
+      "sourceQuote": "다음 그림에서 $\\triangle ABC$는 $\\angle"
+    },
+    {
+      "id": "condition2",
+      "condition": "M은 BC의 중점",
+      "mappedTo": [
+        "halfHypot"
+      ],
+      "sourceQuote": "다음 그림에서 $\\triangle ABC$는 $\\angle"
+    },
+    {
+      "id": "condition3",
+      "condition": "BC=10, AM=MC=AC=5",
+      "mappedTo": [
+        "dBC",
+        "dAM",
+        "dMC",
+        "dCA"
+      ],
+      "sourceQuote": "다음 그림에서 $\\triangle ABC$는 $\\angle"
+    }
+  ],
+  "newVisualInformation": [
+    "발문·원본 그림과 해설의 실제 점·선·각·길이를 각 엔진 필드에 명확히 연결한다.",
+    "배경은 흰색이며 넓이·영역이 필수인 경우 외에는 면 채움을 사용하지 않는다."
+  ]
+}

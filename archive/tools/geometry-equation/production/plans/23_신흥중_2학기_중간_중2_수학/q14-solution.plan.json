@@ -1,0 +1,352 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7416198487096",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7416198487096",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 610,
+    "height": 430
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "sFE",
+      "refs": [
+        "F",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sDF",
+      "refs": [
+        "D",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "topbase",
+        "count": 1,
+        "segments": [
+          "sDA",
+          "sFE"
+        ]
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "sidesAndEnds",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sCD"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "aBAE",
+        "refs": [
+          "B",
+          "A",
+          "E"
+        ],
+        "style": "ARC",
+        "arcs": 1,
+        "equalGroup": 1,
+        "noLabel": true
+      },
+      {
+        "id": "aEAD",
+        "refs": [
+          "E",
+          "A",
+          "D"
+        ],
+        "style": "ARC",
+        "arcs": 1,
+        "equalGroup": 1,
+        "noLabel": true
+      },
+      {
+        "id": "aCDF",
+        "refs": [
+          "C",
+          "D",
+          "F"
+        ],
+        "style": "ARC",
+        "arcs": 2,
+        "equalGroup": 2,
+        "noLabel": true
+      },
+      {
+        "id": "aFDA",
+        "refs": [
+          "F",
+          "D",
+          "A"
+        ],
+        "style": "ARC",
+        "arcs": 2,
+        "equalGroup": 2,
+        "noLabel": true
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "10",
+        "side": "BELOW",
+        "style": "INLINE"
+      },
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "8",
+        "side": "LEFT",
+        "style": "INLINE"
+      },
+      {
+        "id": "dBE",
+        "from": "B",
+        "to": "E",
+        "label": "8",
+        "side": "BELOW",
+        "style": "INLINE"
+      },
+      {
+        "id": "dCF",
+        "from": "C",
+        "to": "F",
+        "label": "8",
+        "side": "BELOW",
+        "style": "INLINE"
+      },
+      {
+        "id": "dEF",
+        "from": "F",
+        "to": "E",
+        "label": "6",
+        "side": "BELOW",
+        "style": "INLINE"
+      }
+    ]
+  },
+  "caption": "양쪽 이등분선에 의해 BE=AB=8, CF=CD=8, 따라서 EF=6",
+  "accessibilityDescription": "평행사변형 ABCD와 각 이등분선 AE DF, 서로 다른 각 호 두 그룹, 밑변 BC10, 양 끝부분 BE CF8, 중앙 EF6의 길이 표식이 있다.",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "AE는 A의 이등분선, DF는 D의 이등분선",
+      "mappedTo": [
+        "aBAE",
+        "aEAD",
+        "aCDF",
+        "aFDA"
+      ],
+      "sourceQuote": "오른쪽 그림과 같이 평행사변형 $ABCD$에서 $\\angl"
+    },
+    {
+      "id": "condition2",
+      "condition": "BE=CF=AB=CD=8",
+      "mappedTo": [
+        "sidesAndEnds",
+        "dAB",
+        "dBE",
+        "dCF"
+      ],
+      "sourceQuote": "오른쪽 그림과 같이 평행사변형 $ABCD$에서 $\\angl"
+    },
+    {
+      "id": "condition3",
+      "condition": "BC=10, EF=6",
+      "mappedTo": [
+        "dBC",
+        "dEF"
+      ],
+      "sourceQuote": "오른쪽 그림과 같이 평행사변형 $ABCD$에서 $\\angl"
+    }
+  ],
+  "newVisualInformation": [
+    "발문·원본 그림과 해설의 실제 점·선·각·길이를 각 엔진 필드에 명확히 연결한다.",
+    "배경은 흰색이며 넓이·영역이 필수인 경우 외에는 면 채움을 사용하지 않는다."
+  ]
+}

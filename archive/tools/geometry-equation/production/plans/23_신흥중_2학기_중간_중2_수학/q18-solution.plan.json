@@ -1,0 +1,310 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2668461709225",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7331538290775",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 610,
+    "height": 430
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "ABAD",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sDA"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "aBEC",
+        "refs": [
+          "B",
+          "E",
+          "C"
+        ],
+        "value": 65,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "65°"
+      },
+      {
+        "id": "aBCE",
+        "refs": [
+          "B",
+          "C",
+          "E"
+        ],
+        "value": 45,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "45°"
+      },
+      {
+        "id": "aEBC",
+        "refs": [
+          "E",
+          "B",
+          "C"
+        ],
+        "value": 70,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "70°"
+      },
+      {
+        "id": "aABE",
+        "refs": [
+          "A",
+          "B",
+          "E"
+        ],
+        "value": 20,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "20°"
+      },
+      {
+        "id": "aEDA",
+        "refs": [
+          "E",
+          "D",
+          "A"
+        ],
+        "value": 20,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "20°"
+      }
+    ]
+  },
+  "caption": "정사각형의 대각선 각 45°와 ∠BEC=65°에서 ∠EDA=20°",
+  "accessibilityDescription": "정사각형과 E를 지난 대각선 AC, B-E와 D-E 보조선, ∠BEC65° 및 45°·70°·20° 각 호, 동일 변 눈금으로 합동을 읽는다.",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "ABCD는 정사각형, E∈AC",
+      "mappedTo": [
+        "rA",
+        "rB",
+        "sAE",
+        "sEC",
+        "ABAD"
+      ],
+      "sourceQuote": "오른쪽 그림과 같은 정사각형 $ABCD$에서 대각선 $AC"
+    },
+    {
+      "id": "condition2",
+      "condition": "∠BEC=65°",
+      "mappedTo": [
+        "aBEC"
+      ],
+      "sourceQuote": "오른쪽 그림과 같은 정사각형 $ABCD$에서 대각선 $AC"
+    },
+    {
+      "id": "condition3",
+      "condition": "∠BCE45°, EBC70°, ABE=EDA20°",
+      "mappedTo": [
+        "aBCE",
+        "aEBC",
+        "aABE",
+        "aEDA"
+      ],
+      "sourceQuote": "오른쪽 그림과 같은 정사각형 $ABCD$에서 대각선 $AC"
+    }
+  ],
+  "newVisualInformation": [
+    "발문·원본 그림과 해설의 실제 점·선·각·길이를 각 엔진 필드에 명확히 연결한다.",
+    "배경은 흰색이며 넓이·영역이 필수인 경우 외에는 면 채움을 사용하지 않는다."
+  ]
+}
