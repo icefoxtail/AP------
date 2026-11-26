@@ -1,0 +1,127 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "네 점 A, B, C, D에서 직선·반직선·선분의 개수를 묻는 그림이다.",
+  "caption": "A, B, C는 한 직선에 놓이고 D는 그 직선 위에 있지 않은 점으로 놓는다.",
+  "sourceConditions": [
+    {
+      "id": "collinear",
+      "condition": "A,B,C의 세 점이 일직선 위에 있으며 B가 그 사이에 있다.",
+      "mappedTo": [
+        "mathPlan.nodes[0]",
+        "mathPlan.nodes[1]",
+        "mathPlan.nodes[2]",
+        "displaySegments[0]"
+      ]
+    },
+    {
+      "id": "outside",
+      "condition": "점 D는 직선 ABC 위에 있지 않다.",
+      "mappedTo": "mathPlan.nodes[3]"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 흐린 스캔을 원문과 같은 네 점·한 직선으로 정밀화한다.",
+    "정답이 되는 직선·반직선·선분의 개수는 문제 그림에 쓰지 않는다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "ac",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ]
+}

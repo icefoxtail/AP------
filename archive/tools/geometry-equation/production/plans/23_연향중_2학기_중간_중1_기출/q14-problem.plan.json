@@ -1,0 +1,221 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "정사각형 ABCD와 BC=8cm인 정삼각형 BCE에서 삼각형 ABE의 넓이를 구한다.",
+  "caption": "정사각형과 안쪽 정삼각형의 꼭짓점·선분을 면 채움 없이 그린다.",
+  "sourceConditions": [
+    {
+      "id": "square",
+      "condition": "ABCD는 한 변이 8cm인 정사각형이다.",
+      "mappedTo": [
+        "mathPlan.nodes[0]",
+        "mathPlan.nodes[1]",
+        "mathPlan.nodes[2]",
+        "mathPlan.nodes[3]",
+        "displaySegments[0]",
+        "displaySegments[1]",
+        "displaySegments[2]",
+        "displaySegments[3]"
+      ]
+    },
+    {
+      "id": "equilateral",
+      "condition": "BCE의 세 변이 모두 길이 8이다.",
+      "mappedTo": [
+        "displaySegments[1]",
+        "displaySegments[4]",
+        "displaySegments[5]",
+        "planeMarks.equalLengths[0]"
+      ]
+    },
+    {
+      "id": "triangle",
+      "condition": "넓이를 구하는 ABE의 세 변을 모두 보인다.",
+      "mappedTo": [
+        "displaySegments[0]",
+        "displaySegments[4]",
+        "displaySegments[6]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 손그림의 정삼각형 높이 및 좌표를 정밀하게 고정하고 내부 면은 채우지 않는다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "ab",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "bc",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "cd",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "da",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "be",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "ce",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "ae",
+      "refs": [
+        "A",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "tri",
+        "count": 1,
+        "segments": [
+          "bc",
+          "be",
+          "ce"
+        ]
+      }
+    ]
+  }
+}

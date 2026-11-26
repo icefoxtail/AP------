@@ -1,0 +1,246 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "한 직선 위의 세 각 2x+10°, 90°, x+20°에서 x를 구한다.",
+  "caption": "한 직선의 한 점 위로 뻗은 두 광선, 가운데 직각과 양쪽 두 식을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "straight",
+      "condition": "양쪽 수평 광선은 한 직선을 이룬다.",
+      "mappedTo": [
+        "displaySegments[0]",
+        "displaySegments[1]"
+      ]
+    },
+    {
+      "id": "ray",
+      "condition": "두 사선은 가운데 직각을 이룬다.",
+      "mappedTo": [
+        "displaySegments[2]",
+        "displaySegments[3]",
+        "rightAngles[0]"
+      ]
+    },
+    {
+      "id": "angles",
+      "condition": "좌측 2x+10°, 우측 x+20°가 각각 표시된다.",
+      "mappedTo": [
+        "planeMarks.angles[0]",
+        "planeMarks.angles[1]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "직각 네모를 실제 두 사선 사이에 추가하고 회색 부채꼴을 사용하지 않는다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "V",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "UL",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "V",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "130"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "UR",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "V",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "40"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "V",
+    "T",
+    "L",
+    "R",
+    "UL",
+    "UR"
+  ],
+  "hiddenPointNames": [
+    "V",
+    "T",
+    "L",
+    "R",
+    "UL",
+    "UR"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "left",
+      "refs": [
+        "V",
+        "L"
+      ]
+    },
+    {
+      "id": "right",
+      "refs": [
+        "V",
+        "R"
+      ]
+    },
+    {
+      "id": "slantL",
+      "refs": [
+        "V",
+        "UL"
+      ]
+    },
+    {
+      "id": "slantR",
+      "refs": [
+        "V",
+        "UR"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "orthogonal",
+      "refs": [
+        "UL",
+        "V",
+        "UR"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "leftExpr",
+        "refs": [
+          "L",
+          "V",
+          "UL"
+        ],
+        "value": 50,
+        "label": "2x+10",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rightExpr",
+        "refs": [
+          "UR",
+          "V",
+          "R"
+        ],
+        "value": 40,
+        "label": "x+20",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

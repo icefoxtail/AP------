@@ -1,0 +1,459 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "위쪽 40°, 아래쪽 30°, 가운데 80°에서 x=40°+50°=90°이다.",
+  "caption": "두 꺾인 점에 수평 점선 보조선을 추가하여 엇각 40°·50°·30°와 x=90°의 합을 빈 호로 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "lines",
+      "condition": "위아래 평행선과 삼단 꺾인 선을 보존한다.",
+      "mappedTo": [
+        "displaySegments[0]",
+        "displaySegments[1]",
+        "displaySegments[2]",
+        "displaySegments[3]",
+        "displaySegments[4]",
+        "planeMarks.parallels[0]"
+      ]
+    },
+    {
+      "id": "angles",
+      "condition": "원본의 40°, 80°, 30°, 미지각 x는 각 꼭짓점에 표시한다.",
+      "mappedTo": "planeMarks.angles"
+    },
+    {
+      "id": "split",
+      "condition": "두 수평 보조선과 40°·50° 분할 호를 보여 준다.",
+      "mappedTo": [
+        "displaySegments[5]",
+        "displaySegments[6]",
+        "planeMarks.angles[4]",
+        "planeMarks.angles[5]",
+        "planeMarks.angles[6]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 손그림의 꺾은 선을 정확한 40°·80°·30° 관계로 재작성하고 각 영역의 회색 채움을 제거한다.",
+    "해설 기존 부채꼴 채움을 제거하고 보조 평행선을 실제 점선으로 보강한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "TL",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "TR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-3064",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5429",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-493",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2365",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-4589",
+              "denominator": "1000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BL",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "PL",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-6064",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5429",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "PR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-64",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5429",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "QL",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-3493",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2365",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "QR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2507",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2365",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "TL",
+    "T",
+    "TR",
+    "P",
+    "Q",
+    "R",
+    "BL",
+    "BR",
+    "PL",
+    "PR",
+    "QL",
+    "QR"
+  ],
+  "hiddenPointNames": [
+    "TL",
+    "T",
+    "TR",
+    "P",
+    "Q",
+    "R",
+    "BL",
+    "BR",
+    "PL",
+    "PR",
+    "QL",
+    "QR"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "upper",
+      "refs": [
+        "TL",
+        "TR"
+      ]
+    },
+    {
+      "id": "lower",
+      "refs": [
+        "BL",
+        "BR"
+      ]
+    },
+    {
+      "id": "tP",
+      "refs": [
+        "T",
+        "P"
+      ]
+    },
+    {
+      "id": "pQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "qR",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    },
+    {
+      "id": "guideP",
+      "refs": [
+        "PL",
+        "PR"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "guideQ",
+      "refs": [
+        "QL",
+        "QR"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "parallel",
+        "segments": [
+          "upper",
+          "lower"
+        ],
+        "count": 1
+      }
+    ],
+    "angles": [
+      {
+        "id": "given40",
+        "refs": [
+          "TL",
+          "T",
+          "P"
+        ],
+        "value": 40,
+        "label": "40",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "targetX",
+        "refs": [
+          "T",
+          "P",
+          "Q"
+        ],
+        "value": 90,
+        "label": "x"
+      },
+      {
+        "id": "given80",
+        "refs": [
+          "P",
+          "Q",
+          "R"
+        ],
+        "value": 80,
+        "label": "80",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "given30",
+        "refs": [
+          "Q",
+          "R",
+          "BR"
+        ],
+        "value": 30,
+        "label": "30",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "split40",
+        "refs": [
+          "PR",
+          "P",
+          "T"
+        ],
+        "value": 40,
+        "label": "40"
+      },
+      {
+        "id": "split50",
+        "refs": [
+          "Q",
+          "P",
+          "PR"
+        ],
+        "value": 50,
+        "label": "50"
+      },
+      {
+        "id": "qLeft50",
+        "refs": [
+          "P",
+          "Q",
+          "QL"
+        ],
+        "value": 50,
+        "label": "50"
+      }
+    ]
+  }
+}

@@ -1,0 +1,331 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "l∥m인 두 수평선 사이 꺾인 선의 35°, 130°, 150°, x, y 각을 표시한다.",
+  "caption": "두 수평 평행선과 꺾인 선의 다섯 각호 35°, y, 130°, x, 150°를 비채움 도형으로 그린다.",
+  "sourceConditions": [
+    {
+      "id": "parallel",
+      "condition": "위아래 수평 직선은 평행이다.",
+      "mappedTo": [
+        "displaySegments[0]",
+        "displaySegments[1]",
+        "planeMarks.parallels[0]"
+      ]
+    },
+    {
+      "id": "chain",
+      "condition": "35°, y, 130°, x, 150°의 5개 원본 각은 연속 꺾인 선의 정확한 꼭짓점에 있다.",
+      "mappedTo": [
+        "displaySegments[2]",
+        "displaySegments[3]",
+        "displaySegments[4]",
+        "displaySegments[5]",
+        "planeMarks.angles"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 꺾은 선·평행선·5개 각호를 정확히 대응시키고 면 채움을 제거한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Y",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-4096",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2868",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "603",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4578",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4933",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2078",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "W",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9263",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4578",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ML",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4578",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "MR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4578",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "L",
+    "P",
+    "Y",
+    "U",
+    "X",
+    "W",
+    "ML",
+    "MR"
+  ],
+  "hiddenPointNames": [
+    "L",
+    "P",
+    "Y",
+    "U",
+    "X",
+    "W",
+    "ML",
+    "MR"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "lower",
+      "refs": [
+        "L",
+        "P"
+      ]
+    },
+    {
+      "id": "upper",
+      "refs": [
+        "ML",
+        "MR"
+      ]
+    },
+    {
+      "id": "pY",
+      "refs": [
+        "P",
+        "Y"
+      ]
+    },
+    {
+      "id": "yU",
+      "refs": [
+        "Y",
+        "U"
+      ]
+    },
+    {
+      "id": "uX",
+      "refs": [
+        "U",
+        "X"
+      ]
+    },
+    {
+      "id": "xW",
+      "refs": [
+        "X",
+        "W"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "parallel",
+        "segments": [
+          "lower",
+          "upper"
+        ],
+        "count": 1
+      }
+    ],
+    "angles": [
+      {
+        "id": "given35",
+        "refs": [
+          "L",
+          "P",
+          "Y"
+        ],
+        "value": 35,
+        "label": "35"
+      },
+      {
+        "id": "angleY",
+        "refs": [
+          "P",
+          "Y",
+          "U"
+        ],
+        "value": 55,
+        "label": "y"
+      },
+      {
+        "id": "given130",
+        "refs": [
+          "Y",
+          "U",
+          "X"
+        ],
+        "value": 130,
+        "label": "130"
+      },
+      {
+        "id": "angleX",
+        "refs": [
+          "U",
+          "X",
+          "W"
+        ],
+        "value": 120,
+        "label": "x"
+      },
+      {
+        "id": "given150",
+        "refs": [
+          "X",
+          "W",
+          "MR"
+        ],
+        "value": 150,
+        "label": "150"
+      }
+    ]
+  }
+}

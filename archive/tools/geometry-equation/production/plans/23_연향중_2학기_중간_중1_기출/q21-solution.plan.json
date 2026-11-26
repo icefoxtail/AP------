@@ -1,0 +1,292 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "x+20°+90°+3x+10°=180° 이므로 x=15이다.",
+  "caption": "직선 위쪽 두 각의 식과 가운데 직각 90°를 빈 호 및 직각 네모로 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "threeLines",
+      "condition": "AD, BE, CF는 각각 공통점을 지나는 직선이다.",
+      "mappedTo": "displaySegments"
+    },
+    {
+      "id": "perp",
+      "condition": "AD와 FC가 수직이다.",
+      "mappedTo": "rightAngles[0]"
+    },
+    {
+      "id": "expressions",
+      "condition": "좌측 x+20°, 우측 3x+10°이다.",
+      "mappedTo": [
+        "planeMarks.angles[0]",
+        "planeMarks.angles[1]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문에 필요한 직각 표식을 두 사선 사이에 정확히 두고 불필요한 회색 각 채움은 제거한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "145"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "325"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "55"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "235"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "T",
+    "B",
+    "E",
+    "A",
+    "D",
+    "F",
+    "C"
+  ],
+  "hiddenPointNames": [
+    "T"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "left",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "right",
+      "refs": [
+        "O",
+        "E"
+      ]
+    },
+    {
+      "id": "a",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "d",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "f",
+      "refs": [
+        "O",
+        "F"
+      ]
+    },
+    {
+      "id": "c",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "perp",
+      "refs": [
+        "A",
+        "O",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "leftExpr",
+        "refs": [
+          "B",
+          "O",
+          "A"
+        ],
+        "value": 35,
+        "label": "x+20",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rightExpr",
+        "refs": [
+          "F",
+          "O",
+          "E"
+        ],
+        "value": 55,
+        "label": "3x+10",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "sourceQuote": "사각뿔의 꼭짓점은 5개, 모서리는 8개이므로 b−a=3이다.",
+  "caption": "사각뿔의 5개 꼭짓점과 8개 모서리를 번호로 세고 뒤쪽 가려지는 모서리는 점선으로 보인다.",
+  "sourceConditions": [
+    {
+      "id": "pyramid",
+      "condition": "사각뿔은 꼭짓점 5개, 모서리 8개로 이루어진다.",
+      "mappedTo": "solids[0]"
+    },
+    {
+      "id": "count",
+      "condition": "5개 꼭짓점과 8개 모서리의 목록을 번호로 세는 해설이다.",
+      "mappedTo": "solids[0].count"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 흑백 스캔에서 희미한 뒤쪽 점선·꼭대기 모서리를 공식 3D 엔진의 깊이 검사로 재작도한다.",
+    "문제용 그림에는 교점·교선 개수의 숫자 답을 직접 기입하지 않는다."
+  ],
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "RECT",
+        "width": 5,
+        "depth": 5
+      },
+      "height": 7,
+      "names": ".....",
+      "count": {
+        "vertices": true,
+        "edges": true
+      }
+    }
+  ],
+  "solidCaption": {
+    "text": "사각뿔"
+  }
+}

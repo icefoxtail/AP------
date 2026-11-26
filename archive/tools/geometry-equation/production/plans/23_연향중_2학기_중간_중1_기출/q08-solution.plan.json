@@ -1,0 +1,294 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "4t+t+u+4u=180°이므로 t+u=36°, ∠COE=36°.",
+  "caption": "4t, t, u, 4u의 네 인접각과 합친 ∠COE=36°를 회색 부채꼴 없이 호로 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "straight",
+      "condition": "A, O, B는 일직선이다.",
+      "mappedTo": [
+        "displaySegments[0]",
+        "displaySegments[1]"
+      ]
+    },
+    {
+      "id": "rays",
+      "condition": "OC, OD, OE가 평각을 네 부분으로 나눈다.",
+      "mappedTo": [
+        "displaySegments[2]",
+        "displaySegments[3]",
+        "displaySegments[4]"
+      ]
+    },
+    {
+      "id": "ratio",
+      "condition": "네 인접각의 크기 비는 4t:t:u:4u이며 COE=t+u=36°이다.",
+      "mappedTo": "planeMarks.angles"
+    }
+  ],
+  "newVisualInformation": [
+    "원본에 있는 모든 다섯 반직선·문자 라벨을 보존하고 면 채움을 쓰지 않는다.",
+    "해설 그림의 모든 상징각 표식과 합친 각을 소유 각호에 대응한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "100"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "80"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "64"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "T"
+  ],
+  "hiddenPointNames": [
+    "T"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "a",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "b",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "c",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "d",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "e",
+      "refs": [
+        "O",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "at",
+        "refs": [
+          "A",
+          "O",
+          "C"
+        ],
+        "value": 80,
+        "label": "4t",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "ct",
+        "refs": [
+          "C",
+          "O",
+          "D"
+        ],
+        "value": 20,
+        "label": "t",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "du",
+        "refs": [
+          "D",
+          "O",
+          "E"
+        ],
+        "value": 16,
+        "label": "u",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "eb",
+        "refs": [
+          "E",
+          "O",
+          "B"
+        ],
+        "value": 64,
+        "label": "4u",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "coe",
+        "refs": [
+          "C",
+          "O",
+          "E"
+        ],
+        "value": 36,
+        "label": "36",
+        "ring": 2,
+        "factRole": "CONCLUSION"
+      }
+    ]
+  }
+}
