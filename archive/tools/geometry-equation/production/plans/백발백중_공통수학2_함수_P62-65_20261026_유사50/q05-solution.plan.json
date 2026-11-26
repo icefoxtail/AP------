@@ -1,0 +1,189 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "주어진 f"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "MAPPING",
+          "columns": [
+            {
+              "id": "X",
+              "name": "X",
+              "elements": [
+                "1",
+                "2",
+                "3",
+                "4"
+              ]
+            },
+            {
+              "id": "Y",
+              "name": "X",
+              "elements": [
+                "1",
+                "2",
+                "3",
+                "4"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 2
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 1
+              },
+              "to": {
+                "column": 1,
+                "element": 0
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 2
+              },
+              "to": {
+                "column": 1,
+                "element": 3
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 3
+              },
+              "to": {
+                "column": 1,
+                "element": 1
+              }
+            }
+          ],
+          "arrowGroups": [
+            {
+              "name": "f",
+              "from": "X",
+              "to": "Y",
+              "color": "BLUE"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "조건으로 복원한 g"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "MAPPING",
+          "columns": [
+            {
+              "id": "X",
+              "name": "X",
+              "elements": [
+                "1",
+                "2",
+                "3",
+                "4"
+              ]
+            },
+            {
+              "id": "Y",
+              "name": "X",
+              "elements": [
+                "1",
+                "2",
+                "3",
+                "4"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 2
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 1
+              },
+              "to": {
+                "column": 1,
+                "element": 3
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 2
+              },
+              "to": {
+                "column": 1,
+                "element": 1
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 3
+              },
+              "to": {
+                "column": 1,
+                "element": 0
+              }
+            }
+          ],
+          "arrowGroups": [
+            {
+              "name": "g",
+              "from": "X",
+              "to": "Y",
+              "color": "GREEN"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "합성함수 조건과 일대일대응 조건으로 결정한 f와 g의 대응 관계.",
+  "accessibilityDescription": "합성함수 조건과 일대일대응 조건으로 결정한 f와 g의 대응 관계.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원본 f: 1→3, 2→1, 3→4, 4→2",
+      "mappedTo": "panels[0].plan.diagram"
+    },
+    {
+      "id": "c2",
+      "condition": "풀이 g: 1→3, 2→4, 3→2, 4→1",
+      "mappedTo": "panels[1].plan.diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "f의 합성값을 추적하고 g의 일대일성을 검사해 유일한 대응순서를 확정한다."
+  ],
+  "sourceQuote": "집합 $X=\\{1, 2, 3, 4\\}$와 $X$에서 $X$로의 두 함수 $f, g$에 대하여 함수 $f$는 그림과 같고, 두 함수 $f, g$가 다음 조건을 만족시킨다. $(f \\circ g)(4)-(g \\circ f)(1)$의 값은?\n㈎ 함수 $g$는 일대일대응이다.\n㈏ $(f \\circ g)(1)=4, (g \\circ f)(1)=2$\n㈐ $g(2)>g(4)$"
+}

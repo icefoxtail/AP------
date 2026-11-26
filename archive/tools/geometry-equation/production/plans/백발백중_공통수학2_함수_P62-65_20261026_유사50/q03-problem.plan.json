@@ -1,0 +1,117 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "y=f(x)"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "SCATTER",
+          "points": [
+            {
+              "x": 1,
+              "y": 4
+            },
+            {
+              "x": 2,
+              "y": 5
+            },
+            {
+              "x": 3,
+              "y": 1
+            },
+            {
+              "x": 4,
+              "y": 2
+            },
+            {
+              "x": 5,
+              "y": 3
+            }
+          ],
+          "xRange": [
+            "0",
+            "6"
+          ],
+          "yRange": [
+            "0",
+            "6"
+          ],
+          "xStep": "1",
+          "yStep": "1",
+          "grid": true,
+          "equalUnits": true,
+          "xTitle": "x",
+          "yTitle": "y"
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "y=(f∘g)(x)"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "SCATTER",
+          "points": [
+            {
+              "x": 1,
+              "y": 5
+            },
+            {
+              "x": 2,
+              "y": 2
+            },
+            {
+              "x": 3,
+              "y": 4
+            },
+            {
+              "x": 4,
+              "y": 3
+            },
+            {
+              "x": 5,
+              "y": 1
+            }
+          ],
+          "xRange": [
+            "0",
+            "6"
+          ],
+          "yRange": [
+            "0",
+            "6"
+          ],
+          "xStep": "1",
+          "yStep": "1",
+          "grid": true,
+          "equalUnits": true,
+          "xTitle": "x",
+          "yTitle": "y"
+        }
+      }
+    }
+  ],
+  "caption": "원문 두 이산 함수 그래프의 정수 격자점만 동일하게 표시한다.",
+  "accessibilityDescription": "원문 두 이산 함수 그래프의 정수 격자점만 동일하게 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f의 다섯 점 ((1,4), (2,5), (3,1), (4,2), (5,3))",
+      "mappedTo": "panels[0].plan.chart"
+    },
+    {
+      "id": "c2",
+      "condition": "f∘g의 다섯 점 ((1,5), (2,2), (3,4), (4,3), (5,1))",
+      "mappedTo": "panels[1].plan.chart"
+    }
+  ],
+  "newVisualInformation": [
+    "두 그래프를 일대일 대응시키면 g의 각 입력값을 찾아낼 수 있다."
+  ],
+  "sourceQuote": "집합 $X=\\{1, 2, 3, 4, 5\\}$에 대하여 $X$에서 $X$로의 두 함수 $f(x), g(x)$가 있다. $y=f(x), y=(f \\circ g)(x)$의 그래프가 그림과 같을 때, $g(1)+(g \\circ f)(4)$의 값은?"
+}
