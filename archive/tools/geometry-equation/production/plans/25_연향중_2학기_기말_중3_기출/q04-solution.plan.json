@@ -1,0 +1,47 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"X","op":"TRANSLATE_POINT","inputs":["O"],"args":{"dx":{"kind":"integer","value":"1"},"dy":{"kind":"integer","value":"0"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"3"}},"outputType":"CIRCLE","factRole":"GIVEN"},
+      {"id":"A","op":"POLAR_POINT","inputs":["O","X"],"args":{"length":{"kind":"integer","value":"3"},"angleDeg":{"kind":"integer","value":"150"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"POLAR_POINT","inputs":["O","X"],"args":{"length":{"kind":"integer","value":"3"},"angleDeg":{"kind":"integer","value":"270"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"lOA","op":"LINE_THROUGH","inputs":["O","A"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lOB","op":"LINE_THROUGH","inputs":["O","B"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"tA","op":"PERPENDICULAR_THROUGH","inputs":["A","lOA"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"tB","op":"PERPENDICULAR_THROUGH","inputs":["B","lOB"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"P","op":"LINE_INTERSECTION","inputs":["tA","tB"],"args":{},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "coordinateCanvas":{"width":580,"height":450},
+  "displayPoints":["O","A","B","P"],
+  "displayLines":[],
+  "displayCircles":["k"],
+  "displaySegments":[
+    {"id":"sPA","refs":["P","A"],"emphasis":"BOLD"},
+    {"id":"sPB","refs":["P","B"],"emphasis":"BOLD"},
+    {"id":"sOA","refs":["O","A"]},
+    {"id":"sOB","refs":["O","B"]},
+    {"id":"sOP","refs":["O","P"],"dashed":true}
+  ],
+  "rightAngles":[{"id":"rA","refs":["O","A","P"]},{"id":"rB","refs":["O","B","P"]}],
+  "planeMarks":{
+    "angles":[
+      {"id":"aP","refs":["A","P","B"],"value":60,"label":"60","style":"ARC","factRole":"GIVEN"},
+      {"id":"aBPO","refs":["B","P","O"],"value":30,"label":"30","style":"ARC","factRole":"DERIVED_INTERMEDIATE"}
+    ],
+    "equalLengths":[{"id":"eTangents","count":1,"segments":["sPA","sPB"]}],
+    "expressionLabels":[{"id":"lenOB","ownerSegment":"sOB","text":"3","unit":"cm"}]
+  },
+  "caption":"한 점 P에서 그은 두 접선 PA와 PB는 길이가 같으며 PO는 60°인 꼭짓각을 30°로 이등분한다.",
+  "sourceQuote":"PA, PB가 원 O의 접선이고 APB=60°, OB=3cm일 때 PA+PB를 구한다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"PA와 PB는 각각 A와 B에서 접하고 반지름 OA, OB는 접선과 수직이다.","mappedTo":["mathPlan.nodes","displaySegments","rightAngles"]},
+    {"id":"c2","condition":"APB=60°, OB=3cm이다.","mappedTo":["planeMarks.angles","planeMarks.expressionLabels"]},
+    {"id":"c3","condition":"PA=PB이고 OP는 APB를 이등분하므로 BPO=30°이다.","mappedTo":["planeMarks.equalLengths","displaySegments","planeMarks.angles"]}
+  ],
+  "newVisualInformation":["종전 상단의 작고 분리된 중복 각도 스케치를 없애고 하나의 원 도형에서 60°·30°·직각·접선 길이의 대응을 보여 준다.","불필요한 면 채움은 사용하지 않는다."]
+}
