@@ -1,0 +1,418 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "E",
+    "F",
+    "C",
+    "A",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "abBf",
+        "count": 1,
+        "segments": [
+          "sAB",
+          {
+            "path": [
+              "sBE",
+              "sEF"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cdCe",
+        "count": 2,
+        "segments": [
+          "sCD",
+          {
+            "path": [
+              "sEF",
+              "sFC"
+            ]
+          }
+        ]
+      }
+    ],
+    "parallels": [
+      {
+        "id": "topBase",
+        "count": 1,
+        "segments": [
+          "sDA",
+          "sEF"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "bisectorA1",
+        "refs": [
+          "B",
+          "A",
+          "F"
+        ],
+        "arcs": 1,
+        "noLabel": true,
+        "equalGroup": 1
+      },
+      {
+        "id": "bisectorA2",
+        "refs": [
+          "F",
+          "A",
+          "D"
+        ],
+        "arcs": 1,
+        "noLabel": true,
+        "equalGroup": 1
+      },
+      {
+        "id": "bisectorD1",
+        "refs": [
+          "A",
+          "D",
+          "E"
+        ],
+        "arcs": 2,
+        "noLabel": true,
+        "equalGroup": 2
+      },
+      {
+        "id": "bisectorD2",
+        "refs": [
+          "E",
+          "D",
+          "C"
+        ],
+        "arcs": 2,
+        "noLabel": true,
+        "equalGroup": 2
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "side6",
+        "from": "A",
+        "to": "B",
+        "label": "6",
+        "unit": "cm",
+        "side": "LEFT"
+      },
+      {
+        "id": "top10",
+        "from": "A",
+        "to": "D",
+        "label": "10",
+        "unit": "cm",
+        "side": "ABOVE"
+      },
+      {
+        "id": "be4",
+        "from": "B",
+        "to": "E",
+        "label": "4",
+        "unit": "cm",
+        "side": "BELOW"
+      },
+      {
+        "id": "ef2",
+        "from": "E",
+        "to": "F",
+        "label": "2",
+        "unit": "cm",
+        "side": "BELOW"
+      },
+      {
+        "id": "bf6",
+        "from": "B",
+        "to": "F",
+        "label": "6",
+        "unit": "cm",
+        "side": "BELOW",
+        "offset": "AUTO"
+      }
+    ]
+  },
+  "caption": "밑변 위 E와 F 사이의 2cm를 구하는 평행사변형 각 이등분선",
+  "accessibilityDescription": "평행사변형 ABCD에서 A와 D의 각 이등분선이 BC 위의 F와 E에 각각 닿는다. 주어진 두 변과 BC 위 세 분할 구간을 각각 치수선으로 표시했고 면색은 없다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=6 cm",
+      "mappedTo": [
+        "side6"
+      ],
+      "sourceQuote": "[서술형 4] 다음 그림의 평행사변형 $ABCD$에서 $AB=6\\,\\mathrm{cm}$, $AD=10\\,\\mathrm{cm}$이고 $AF$, $DE$가 각각 $\\angle A$, $\\angle D$의 이등분선일 때, $EF$의 길이를 구하시오. [5점]"
+    },
+    {
+      "id": "c2",
+      "condition": "AD=10 cm",
+      "mappedTo": [
+        "top10"
+      ],
+      "sourceQuote": "[서술형 4] 다음 그림의 평행사변형 $ABCD$에서 $AB=6\\,\\mathrm{cm}$, $AD=10\\,\\mathrm{cm}$이고 $AF$, $DE$가 각각 $\\angle A$, $\\angle D$의 이등분선일 때, $EF$의 길이를 구하시오. [5점]"
+    },
+    {
+      "id": "c3",
+      "condition": "AF,DE는 각의 이등분선",
+      "mappedTo": [
+        "bisectorA1",
+        "bisectorA2",
+        "bisectorD1",
+        "bisectorD2"
+      ],
+      "sourceQuote": "[서술형 4] 다음 그림의 평행사변형 $ABCD$에서 $AB=6\\,\\mathrm{cm}$, $AD=10\\,\\mathrm{cm}$이고 $AF$, $DE$가 각각 $\\angle A$, $\\angle D$의 이등분선일 때, $EF$의 길이를 구하시오. [5점]"
+    },
+    {
+      "id": "c4",
+      "condition": "BF=6 cm",
+      "mappedTo": [
+        "bf6",
+        "abBf"
+      ],
+      "sourceQuote": "[키포인트] 평행사변형의 평행선과 각의 이등분선을 함께 이용하면 밑변 위에 이등변삼각형이 만들어진다.\n$AD\\parallel BF$이므로 $\\angle DAF=\\angle AFB$이다. 또 $AF$는 $\\angle DAB$의 이등분선이므로 $\\angle BAF=\\angle DAF$이다. 따라서 $\\angle BAF=\\angle AFB$이므로 $BF=AB=6\\,\\mathrm{cm}$이다. 같은 방법으로 $AD\\parallel CE$이고 $DE$가 $\\angle CDA$를 이등분하므로 $\\angle CDE=\\angle DEC$이다. 따라서 $CE=CD=6\\,\\mathrm{cm}$이다. $BC=10\\,\\mathrm{cm}$이므로 $BE=BC-CE=4\\,\\mathrm{cm}$이고, $EF=BF-BE=6-4=2\\,\\mathrm{cm}$이다.\n따라서 구하는 길이는 $2\\,\\mathrm{cm}$이다."
+    },
+    {
+      "id": "c5",
+      "condition": "BE=4 cm",
+      "mappedTo": [
+        "be4"
+      ],
+      "sourceQuote": "[키포인트] 평행사변형의 평행선과 각의 이등분선을 함께 이용하면 밑변 위에 이등변삼각형이 만들어진다.\n$AD\\parallel BF$이므로 $\\angle DAF=\\angle AFB$이다. 또 $AF$는 $\\angle DAB$의 이등분선이므로 $\\angle BAF=\\angle DAF$이다. 따라서 $\\angle BAF=\\angle AFB$이므로 $BF=AB=6\\,\\mathrm{cm}$이다. 같은 방법으로 $AD\\parallel CE$이고 $DE$가 $\\angle CDA$를 이등분하므로 $\\angle CDE=\\angle DEC$이다. 따라서 $CE=CD=6\\,\\mathrm{cm}$이다. $BC=10\\,\\mathrm{cm}$이므로 $BE=BC-CE=4\\,\\mathrm{cm}$이고, $EF=BF-BE=6-4=2\\,\\mathrm{cm}$이다.\n따라서 구하는 길이는 $2\\,\\mathrm{cm}$이다."
+    },
+    {
+      "id": "c6",
+      "condition": "EF=2 cm",
+      "mappedTo": [
+        "ef2"
+      ],
+      "sourceQuote": "[키포인트] 평행사변형의 평행선과 각의 이등분선을 함께 이용하면 밑변 위에 이등변삼각형이 만들어진다.\n$AD\\parallel BF$이므로 $\\angle DAF=\\angle AFB$이다. 또 $AF$는 $\\angle DAB$의 이등분선이므로 $\\angle BAF=\\angle DAF$이다. 따라서 $\\angle BAF=\\angle AFB$이므로 $BF=AB=6\\,\\mathrm{cm}$이다. 같은 방법으로 $AD\\parallel CE$이고 $DE$가 $\\angle CDA$를 이등분하므로 $\\angle CDE=\\angle DEC$이다. 따라서 $CE=CD=6\\,\\mathrm{cm}$이다. $BC=10\\,\\mathrm{cm}$이므로 $BE=BC-CE=4\\,\\mathrm{cm}$이고, $EF=BF-BE=6-4=2\\,\\mathrm{cm}$이다.\n따라서 구하는 길이는 $2\\,\\mathrm{cm}$이다."
+    }
+  ],
+  "newVisualInformation": [
+    "길이를 구하는 문제의 무관한 초록 삼각형 면 채움을 제거한다.",
+    "기존 해설에서 B-E-F-C 순서·길이 6/4/2가 혼동되지 않도록 구간별 치수선과 이등분 각 호를 분리한다."
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  }
+}

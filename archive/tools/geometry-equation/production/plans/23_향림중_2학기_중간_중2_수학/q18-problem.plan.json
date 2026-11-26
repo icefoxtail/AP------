@@ -1,0 +1,266 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "482806353",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "175727141",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "482806353",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "875727141",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sBO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "parallelHorizontal",
+        "count": 1,
+        "segments": [
+          "sDA",
+          "sBC"
+        ]
+      },
+      {
+        "id": "parallelSides",
+        "count": 2,
+        "segments": [
+          "sAB",
+          "sCD"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "given70",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "value": 70,
+        "label": "70°",
+        "arcs": 1
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dimAB7",
+        "from": "A",
+        "to": "B",
+        "label": "7",
+        "unit": "cm",
+        "side": "LEFT"
+      },
+      {
+        "id": "dimBD10",
+        "from": "B",
+        "to": "D",
+        "label": "10",
+        "unit": "cm",
+        "side": "RIGHT"
+      }
+    ]
+  },
+  "caption": "평행사변형의 AB=7, BD=10 및 D에서 DA와 DC 사이의 각 70°",
+  "accessibilityDescription": "평행사변형 ABCD의 대각선 AC, BD가 O에서 만난다. AB 길이 7cm, BD 길이 10cm이며 D에서 DA와 DC가 이루는 각에 정확히 70도 호를 표시했다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=7 cm",
+      "mappedTo": [
+        "dimAB7"
+      ],
+      "sourceQuote": "다음 그림과 같은 평행사변형 $ABCD$에서 $AB=7\\,\\mathrm{cm}$, $BD=10\\,\\mathrm{cm}$, $\\angle ADC=70^\\circ$일 때, 다음 중 옳지 않은 것은? [4점]"
+    },
+    {
+      "id": "c2",
+      "condition": "BD=10 cm",
+      "mappedTo": [
+        "dimBD10"
+      ],
+      "sourceQuote": "다음 그림과 같은 평행사변형 $ABCD$에서 $AB=7\\,\\mathrm{cm}$, $BD=10\\,\\mathrm{cm}$, $\\angle ADC=70^\\circ$일 때, 다음 중 옳지 않은 것은? [4점]"
+    },
+    {
+      "id": "c3",
+      "condition": "∠ADC=70°",
+      "mappedTo": [
+        "given70"
+      ],
+      "sourceQuote": "다음 그림과 같은 평행사변형 $ABCD$에서 $AB=7\\,\\mathrm{cm}$, $BD=10\\,\\mathrm{cm}$, $\\angle ADC=70^\\circ$일 때, 다음 중 옳지 않은 것은? [4점]"
+    },
+    {
+      "id": "c4",
+      "condition": "ABCD는 평행사변형",
+      "mappedTo": [
+        "parallelHorizontal",
+        "parallelSides"
+      ],
+      "sourceQuote": "다음 그림과 같은 평행사변형 $ABCD$에서 $AB=7\\,\\mathrm{cm}$, $BD=10\\,\\mathrm{cm}$, $\\angle ADC=70^\\circ$일 때, 다음 중 옳지 않은 것은? [4점]"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 그림에서 70° 호가 BD 쪽으로 읽힐 위험을 없애고 ∠ADC 자체에 부착한다.",
+    "예시 좌표가 AB=7, BD=10, ∠ADC=70을 모두 동시에 만족한다.",
+    "문제용이므로 구하는 대각선 AC 길이나 선택지 정답은 표시하지 않는다."
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  }
+}

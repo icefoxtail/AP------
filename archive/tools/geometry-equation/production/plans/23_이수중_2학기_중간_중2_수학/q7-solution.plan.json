@@ -29,62 +29,62 @@
       },
       {
         "id": "C",
-        "op": "TRANSLATE_POINT",
-        "inputs": [
-          "B"
-        ],
+        "op": "SOURCE_POINT",
+        "inputs": [],
         "args": {
-          "dx": {
-            "kind": "integer",
-            "value": "13"
-          },
-          "dy": {
-            "kind": "integer",
-            "value": "0"
-          }
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
         },
         "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
+        "factRole": "GIVEN"
       },
       {
         "id": "A",
-        "op": "TRANSLATE_POINT",
-        "inputs": [
-          "B"
-        ],
+        "op": "SOURCE_POINT",
+        "inputs": [],
         "args": {
-          "dx": {
-            "kind": "rational",
-            "numerator": "94",
-            "denominator": "13"
-          },
-          "dy": {
-            "kind": "expression",
-            "op": "mul",
-            "args": [
-              {
-                "kind": "rational",
-                "numerator": "24",
-                "denominator": "13"
-              },
-              {
-                "kind": "expression",
-                "op": "sqrt",
-                "args": [
-                  {
-                    "kind": "integer",
-                    "value": "14"
-                  }
-                ]
-              }
-            ]
-          }
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "94",
+              "denominator": "13"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "24",
+                  "denominator": "13"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "14"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         },
         "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
+        "factRole": "GIVEN"
       },
       {
-        "id": "bA",
+        "id": "bisectorA",
         "op": "ANGLE_BISECTOR",
         "inputs": [
           "B",
@@ -98,7 +98,7 @@
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
-        "id": "bB",
+        "id": "bisectorB",
         "op": "ANGLE_BISECTOR",
         "inputs": [
           "A",
@@ -115,15 +115,15 @@
         "id": "I",
         "op": "LINE_INTERSECTION",
         "inputs": [
-          "bA",
-          "bB"
+          "bisectorA",
+          "bisectorB"
         ],
         "args": {},
         "outputType": "POINT",
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
-        "id": "ab",
+        "id": "lineAB",
         "op": "LINE_THROUGH",
         "inputs": [
           "A",
@@ -134,7 +134,7 @@
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
-        "id": "bc",
+        "id": "lineBC",
         "op": "LINE_THROUGH",
         "inputs": [
           "B",
@@ -145,7 +145,7 @@
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
-        "id": "ca",
+        "id": "lineCA",
         "op": "LINE_THROUGH",
         "inputs": [
           "C",
@@ -160,7 +160,7 @@
         "op": "PERPENDICULAR_FOOT",
         "inputs": [
           "I",
-          "ab"
+          "lineAB"
         ],
         "args": {},
         "outputType": "POINT",
@@ -171,7 +171,7 @@
         "op": "PERPENDICULAR_FOOT",
         "inputs": [
           "I",
-          "bc"
+          "lineBC"
         ],
         "args": {},
         "outputType": "POINT",
@@ -182,14 +182,14 @@
         "op": "PERPENDICULAR_FOOT",
         "inputs": [
           "I",
-          "ca"
+          "lineCA"
         ],
         "args": {},
         "outputType": "POINT",
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
-        "id": "inc",
+        "id": "incircle",
         "op": "CIRCLE_THROUGH_POINT",
         "inputs": [
           "I",
@@ -202,73 +202,73 @@
     ]
   },
   "displayPoints": [
+    "A",
     "B",
     "C",
-    "A",
-    "I",
     "D",
     "E",
-    "F"
+    "F",
+    "I"
   ],
   "displaySegments": [
     {
-      "id": "AD",
+      "id": "sAD",
       "refs": [
         "A",
         "D"
       ]
     },
     {
-      "id": "DB",
+      "id": "sDB",
       "refs": [
         "D",
         "B"
       ]
     },
     {
-      "id": "BE",
+      "id": "sBE",
       "refs": [
         "B",
         "E"
       ]
     },
     {
-      "id": "EC",
+      "id": "sEC",
       "refs": [
         "E",
         "C"
       ]
     },
     {
-      "id": "CF",
+      "id": "sCF",
       "refs": [
         "C",
         "F"
       ]
     },
     {
-      "id": "FA",
+      "id": "sFA",
       "refs": [
         "F",
         "A"
       ]
     },
     {
-      "id": "ID",
+      "id": "sID",
       "refs": [
         "I",
         "D"
       ]
     },
     {
-      "id": "IE",
+      "id": "sIE",
       "refs": [
         "I",
         "E"
       ]
     },
     {
-      "id": "IF",
+      "id": "sIF",
       "refs": [
         "I",
         "F"
@@ -276,29 +276,74 @@
     }
   ],
   "displayCircles": [
-    "inc"
+    "incircle"
   ],
-  "displayLines": [],
-  "caption": "내접원과 변의 접점을 D, E, F라 하자. 한 점에서 원에 그은 두 접선의 길이는 같으므로 AD=AF=x라 하면 BD=BE=10−x, CE=CF=9−x이다. BC=13이므로 (10−x)+(9−x)=13에서 x=3이다. 그러므로 BE=10−3=7cm이다. 따라서 답은 ④이다.",
-  "accessibilityDescription": "삼각형 ABC의 내접원이 세 변과 만나는 점 D, E, F가 있고 내심 I에서 세 접점으로 수직인 선분이 그어져 있다. 각 꼭짓점에서 접점까지의 길이가 같은 것끼리 x, 10−x, 9−x로 표시되고 변 BC 아래에 13이 적혀 있다.",
-  "newVisualInformation": [
-    "한 점에서 그은 접선의 길이가 같아 AD=AF=x, BD=BE=10−x, CE=CF=9−x가 되는 관계와 BC=13"
-  ],
-  "sourceConditions": [
-    {
-      "id": "source",
-      "condition": "다음 그림에서 점 $I$가 $\\triangle ABC$의 내심일 때, $\\overline{BE}$의 길이는? [4점]",
-      "mappedTo": "PRESERVED_ARCHIVE_BANK"
-    },
-    {
-      "id": "gauge",
-      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
-      "mappedTo": "mathPlan"
-    }
-  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "tangentFromA",
+        "count": 1,
+        "segments": [
+          "sAD",
+          "sFA"
+        ]
+      },
+      {
+        "id": "tangentFromB",
+        "count": 2,
+        "segments": [
+          "sDB",
+          "sBE"
+        ]
+      },
+      {
+        "id": "tangentFromC",
+        "count": 3,
+        "segments": [
+          "sEC",
+          "sCF"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "sideAB10",
+        "from": "A",
+        "to": "B",
+        "label": "10",
+        "unit": "cm",
+        "side": "LEFT"
+      },
+      {
+        "id": "sideAC9",
+        "from": "A",
+        "to": "C",
+        "label": "9",
+        "unit": "cm",
+        "side": "RIGHT"
+      },
+      {
+        "id": "sideBC13",
+        "from": "B",
+        "to": "C",
+        "label": "13",
+        "unit": "cm",
+        "side": "BELOW"
+      },
+      {
+        "id": "answerBE7",
+        "from": "B",
+        "to": "E",
+        "label": "7",
+        "unit": "cm",
+        "side": "BELOW",
+        "offset": "AUTO"
+      }
+    ]
+  },
   "rightAngles": [
     {
-      "id": "r0",
+      "id": "rightD",
       "refs": [
         "I",
         "D",
@@ -306,7 +351,7 @@
       ]
     },
     {
-      "id": "r1",
+      "id": "rightE",
       "refs": [
         "I",
         "E",
@@ -314,7 +359,7 @@
       ]
     },
     {
-      "id": "r2",
+      "id": "rightF",
       "refs": [
         "I",
         "F",
@@ -322,85 +367,77 @@
       ]
     }
   ],
-  "equalLengths": [
+  "caption": "세 접선의 같은 길이와 AB=10, AC=9, BC=13에서 BE=7",
+  "accessibilityDescription": "삼각형 ABC의 내접원 중심 I에서 세 변으로 내린 수선이 각각 D,E,F에 닿는다. 세 접점에 직각을, 같은 접선 구간마다 눈금을 표시하고 세 변의 길이를 치수로 표기했다.",
+  "sourceConditions": [
     {
-      "id": "eq0",
-      "count": 1,
-      "segments": [
-        "AD",
-        "FA"
-      ]
+      "id": "c1",
+      "condition": "I는 삼각형 ABC의 내심",
+      "mappedTo": [
+        "I",
+        "incircle"
+      ],
+      "sourceQuote": "다음 그림에서 점 $I$가 $\\triangle ABC$의 내심일 때, $\\overline{BE}$의 길이는? [4점]"
     },
     {
-      "id": "eq1",
-      "count": 2,
-      "segments": [
-        "DB",
-        "BE"
-      ]
+      "id": "c2",
+      "condition": "AB=10 cm",
+      "mappedTo": [
+        "sideAB10"
+      ],
+      "sourceQuote": "[키포인트] 한 점에서 원에 그은 두 접선의 길이는 같다.\n$AD=AF=x$라 두면 $BD=10-x$, $CF=9-x$이다. 따라서 $BE=10-x$, $CE=9-x$이다. $BC=13$이므로 $(10-x)+(9-x)=13$이고, $19-2x=13$에서 $x=3$이다. 그러므로 $BE=10-3=7\\,\\mathrm{cm}$이다.\n따라서 정답은 ④이다."
     },
     {
-      "id": "eq2",
-      "count": 3,
-      "segments": [
-        "EC",
-        "CF"
-      ]
+      "id": "c3",
+      "condition": "AC=9 cm",
+      "mappedTo": [
+        "sideAC9"
+      ],
+      "sourceQuote": "[키포인트] 한 점에서 원에 그은 두 접선의 길이는 같다.\n$AD=AF=x$라 두면 $BD=10-x$, $CF=9-x$이다. 따라서 $BE=10-x$, $CE=9-x$이다. $BC=13$이므로 $(10-x)+(9-x)=13$이고, $19-2x=13$에서 $x=3$이다. 그러므로 $BE=10-3=7\\,\\mathrm{cm}$이다.\n따라서 정답은 ④이다."
+    },
+    {
+      "id": "c4",
+      "condition": "BC=13 cm",
+      "mappedTo": [
+        "sideBC13"
+      ],
+      "sourceQuote": "[키포인트] 한 점에서 원에 그은 두 접선의 길이는 같다.\n$AD=AF=x$라 두면 $BD=10-x$, $CF=9-x$이다. 따라서 $BE=10-x$, $CE=9-x$이다. $BC=13$이므로 $(10-x)+(9-x)=13$이고, $19-2x=13$에서 $x=3$이다. 그러므로 $BE=10-3=7\\,\\mathrm{cm}$이다.\n따라서 정답은 ④이다."
+    },
+    {
+      "id": "c5",
+      "condition": "ID⊥AB, IE⊥BC, IF⊥AC",
+      "mappedTo": [
+        "rightD",
+        "rightE",
+        "rightF"
+      ],
+      "sourceQuote": "[키포인트] 한 점에서 원에 그은 두 접선의 길이는 같다.\n$AD=AF=x$라 두면 $BD=10-x$, $CF=9-x$이다. 따라서 $BE=10-x$, $CE=9-x$이다. $BC=13$이므로 $(10-x)+(9-x)=13$이고, $19-2x=13$에서 $x=3$이다. 그러므로 $BE=10-3=7\\,\\mathrm{cm}$이다.\n따라서 정답은 ④이다."
+    },
+    {
+      "id": "c6",
+      "condition": "AD=AF, BD=BE, CE=CF",
+      "mappedTo": [
+        "tangentFromA",
+        "tangentFromB",
+        "tangentFromC"
+      ],
+      "sourceQuote": "[키포인트] 한 점에서 원에 그은 두 접선의 길이는 같다.\n$AD=AF=x$라 두면 $BD=10-x$, $CF=9-x$이다. 따라서 $BE=10-x$, $CE=9-x$이다. $BC=13$이므로 $(10-x)+(9-x)=13$이고, $19-2x=13$에서 $x=3$이다. 그러므로 $BE=10-3=7\\,\\mathrm{cm}$이다.\n따라서 정답은 ④이다."
+    },
+    {
+      "id": "c7",
+      "condition": "BE=7 cm",
+      "mappedTo": [
+        "answerBE7"
+      ],
+      "sourceQuote": "[키포인트] 한 점에서 원에 그은 두 접선의 길이는 같다.\n$AD=AF=x$라 두면 $BD=10-x$, $CF=9-x$이다. 따라서 $BE=10-x$, $CE=9-x$이다. $BC=13$이므로 $(10-x)+(9-x)=13$이고, $19-2x=13$에서 $x=3$이다. 그러므로 $BE=10-3=7\\,\\mathrm{cm}$이다.\n따라서 정답은 ④이다."
     }
   ],
-  "planeMarks": {
-    "expressionLabels": [
-      {
-        "id": "vAD",
-        "ownerSegment": "AD",
-        "text": "x",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "vFA",
-        "ownerSegment": "FA",
-        "text": "x",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "vDB",
-        "ownerSegment": "DB",
-        "text": "10−x",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "vBE",
-        "ownerSegment": "BE",
-        "text": "10−x",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "vEC",
-        "ownerSegment": "EC",
-        "text": "9−x",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "vCF",
-        "ownerSegment": "CF",
-        "text": "9−x",
-        "factRole": "DERIVED_INTERMEDIATE"
-      }
-    ],
-    "dimensions": [
-      {
-        "id": "d0",
-        "from": "B",
-        "to": "C",
-        "label": "13",
-        "unit": "cm",
-        "side": "BELOW",
-        "value": 13
-      }
-    ]
-  },
+  "newVisualInformation": [
+    "기존 plan의 PRESERVED_ARCHIVE_BANK 같은 가짜 mappedTo를 실제 렌더되는 접점·표식 ID로 치환한다.",
+    "세 접선 쌍과 3개의 직각, 주어진 세 변 길이, 정답 BE=7이 그림에서 읽힌다."
+  ],
   "coordinateCanvas": {
     "width": 720,
-    "height": 600
+    "height": 550
   }
 }

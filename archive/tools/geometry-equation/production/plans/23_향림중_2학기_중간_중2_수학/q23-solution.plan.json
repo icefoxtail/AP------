@@ -1,0 +1,433 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "8"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "numerator": "-3",
+                      "denominator": "2"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "19"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "rational",
+              "numerator": "15",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "8"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "-1"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "19"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "8"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "-1"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "19"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lineAB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "I",
+          "lineAB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineAC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "I",
+          "lineAC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "incircle",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "I",
+          "E"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sID",
+      "refs": [
+        "I",
+        "D"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sIE",
+      "refs": [
+        "I",
+        "E"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sIF",
+      "refs": [
+        "I",
+        "F"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayCircles": [
+    "incircle"
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "threeRadii",
+        "count": 1,
+        "segments": [
+          "sID",
+          "sIE",
+          "sIF"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "radius3",
+        "from": "I",
+        "to": "E",
+        "label": "3",
+        "unit": "cm",
+        "side": "RIGHT"
+      }
+    ],
+    "pathLabels": [
+      {
+        "id": "perimeter40",
+        "points": [
+          "A",
+          "D",
+          "B",
+          "E",
+          "C"
+        ],
+        "closed": true,
+        "label": "40",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "perpD",
+      "refs": [
+        "I",
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "perpE",
+      "refs": [
+        "I",
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "perpF",
+      "refs": [
+        "I",
+        "F",
+        "C"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "D",
+    "E",
+    "F"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "내접원의 세 수선 반지름 3과 세 변 둘레 40으로 넓이 60을 설명한다",
+  "accessibilityDescription": "일반 부등변삼각형 ABC의 내접원 중심은 I이며 세 변에 닿는 수선의 발 D, E, F와 세 접점의 직각 및 반지름 치수를 표시했다. 내부에 무관한 색 면은 없다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "I는 내심",
+      "mappedTo": [
+        "incircle"
+      ],
+      "sourceQuote": "[서술형 3] 다음 그림에서 점 $I$는 $\\triangle ABC$의 내심이고, $\\triangle ABC$의 둘레의 길이는 $40\\,\\mathrm{cm}$이다. 내접원의 반지름의 길이가 $3\\,\\mathrm{cm}$일 때, $\\triangle ABC$의 넓이를 구하시오. [5점]"
+    },
+    {
+      "id": "c2",
+      "condition": "반지름 3 cm",
+      "mappedTo": [
+        "radius3",
+        "threeRadii"
+      ],
+      "sourceQuote": "[서술형 3] 다음 그림에서 점 $I$는 $\\triangle ABC$의 내심이고, $\\triangle ABC$의 둘레의 길이는 $40\\,\\mathrm{cm}$이다. 내접원의 반지름의 길이가 $3\\,\\mathrm{cm}$일 때, $\\triangle ABC$의 넓이를 구하시오. [5점]"
+    },
+    {
+      "id": "c3",
+      "condition": "삼각형 둘레 40 cm",
+      "mappedTo": [
+        "perimeter40"
+      ],
+      "sourceQuote": "[서술형 3] 다음 그림에서 점 $I$는 $\\triangle ABC$의 내심이고, $\\triangle ABC$의 둘레의 길이는 $40\\,\\mathrm{cm}$이다. 내접원의 반지름의 길이가 $3\\,\\mathrm{cm}$일 때, $\\triangle ABC$의 넓이를 구하시오. [5점]"
+    },
+    {
+      "id": "c4",
+      "condition": "세 높이의 합으로 넓이 60 cm²",
+      "mappedTo": [
+        "perpD",
+        "perpE",
+        "perpF"
+      ],
+      "sourceQuote": "[키포인트] 내심에서 세 변에 내린 수선의 길이는 모두 내접원의 반지름과 같으므로 큰 삼각형을 세 개의 작은 삼각형으로 나눈다.\n$[ABC]=\\dfrac{1}{2}\\times AB\\times3+\\dfrac{1}{2}\\times BC\\times3+\\dfrac{1}{2}\\times CA\\times3$이다. 따라서 $[ABC]=\\dfrac{1}{2}\\times3\\times(AB+BC+CA)=\\dfrac{1}{2}\\times3\\times40=60\\,\\mathrm{cm}^2$이다.\n따라서 구하는 넓이는 $60\\,\\mathrm{cm}^2$이다."
+    }
+  ],
+  "newVisualInformation": [
+    "원본에서 주어지지 않은 직각삼각형 조건을 만들지 않고 내접원의 접선 관계만 보존한다.",
+    "대표 좌표는 세 변이 12−√19, 12+√19, 16으로 둘레 40, 내접반지름 3을 정확히 만족한다."
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  }
+}

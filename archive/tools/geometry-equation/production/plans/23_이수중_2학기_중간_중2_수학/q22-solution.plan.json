@@ -1,0 +1,380 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ray20",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "20"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineAF",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "ray20"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineBD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lineAF",
+          "lineBD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineDC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "D",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lineAF",
+          "lineDC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "equalADCD",
+        "count": 1,
+        "segments": [
+          "sDA",
+          "sCD"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "given20",
+        "refs": [
+          "D",
+          "A",
+          "E"
+        ],
+        "value": 20,
+        "label": "20°",
+        "arcs": 1
+      },
+      {
+        "id": "angle45ADE",
+        "refs": [
+          "A",
+          "D",
+          "E"
+        ],
+        "value": 45,
+        "label": "45°",
+        "arcs": 1
+      },
+      {
+        "id": "angle45CDE",
+        "refs": [
+          "C",
+          "D",
+          "E"
+        ],
+        "value": 45,
+        "label": "45°",
+        "arcs": 1
+      },
+      {
+        "id": "angle20DCE",
+        "refs": [
+          "D",
+          "C",
+          "E"
+        ],
+        "value": 20,
+        "label": "20°",
+        "arcs": 1
+      },
+      {
+        "id": "result65",
+        "refs": [
+          "B",
+          "E",
+          "C"
+        ],
+        "value": 65,
+        "label": "65°",
+        "arcs": 1
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "squareAtA",
+      "refs": [
+        "B",
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "caption": "정사각형에서 보조선 A-E-F와 합동 삼각형 ADE, CDE 및 외각 65°",
+  "accessibilityDescription": "정사각형 ABCD의 대각선 BD 위에 E가 있다. A에서 E를 지나 CD 위의 F까지 직선을 연장했고, D와 E, C의 주요 각에 호를 그렸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정사각형 ABCD",
+      "mappedTo": [
+        "squareAtA",
+        "equalADCD"
+      ],
+      "sourceQuote": "[서술형 2] 아래 그림과 같은 정사각형 $ABCD$에서 $\\angle DAE=20^\\circ$가 되도록 대각선 $BD$ 위에 점 $E$를 잡을 때, $\\angle BEC$의 크기를 구하시오. [6점]\\n조건1) 두 삼각형의 합동조건을 풀이과정에 반드시 적으시오. (3점)\\n조건2) 삼각형의 한 외각의 성질을 이용해 풀이과정을 적으시오. (3점)"
+    },
+    {
+      "id": "c2",
+      "condition": "E∈BD",
+      "mappedTo": [
+        "sBE",
+        "sED"
+      ],
+      "sourceQuote": "[서술형 2] 아래 그림과 같은 정사각형 $ABCD$에서 $\\angle DAE=20^\\circ$가 되도록 대각선 $BD$ 위에 점 $E$를 잡을 때, $\\angle BEC$의 크기를 구하시오. [6점]\\n조건1) 두 삼각형의 합동조건을 풀이과정에 반드시 적으시오. (3점)\\n조건2) 삼각형의 한 외각의 성질을 이용해 풀이과정을 적으시오. (3점)"
+    },
+    {
+      "id": "c3",
+      "condition": "∠DAE=20°",
+      "mappedTo": [
+        "given20"
+      ],
+      "sourceQuote": "[서술형 2] 아래 그림과 같은 정사각형 $ABCD$에서 $\\angle DAE=20^\\circ$가 되도록 대각선 $BD$ 위에 점 $E$를 잡을 때, $\\angle BEC$의 크기를 구하시오. [6점]\\n조건1) 두 삼각형의 합동조건을 풀이과정에 반드시 적으시오. (3점)\\n조건2) 삼각형의 한 외각의 성질을 이용해 풀이과정을 적으시오. (3점)"
+    },
+    {
+      "id": "c4",
+      "condition": "∠ADE=∠CDE=45°",
+      "mappedTo": [
+        "angle45ADE",
+        "angle45CDE"
+      ],
+      "sourceQuote": "[키포인트] 정사각형의 대각선이 꼭지각을 이등분하는 성질로 두 삼각형의 SAS 합동을 만든다.\n$AD=CD$, $DE$는 공통, $\\angle ADE=\\angle CDE=45^\\circ$이므로 $\\triangle ADE\\equiv\\triangle CDE$이다(SAS 합동). 따라서 대응각 $\\angle DCE=\\angle DAE=20^\\circ$이다. $B,E,D$는 한 직선 위에 있으므로 $\\angle BEC$는 $\\triangle CDE$의 꼭짓점 $E$에서의 한 외각이다. 삼각형의 한 외각은 그와 이웃하지 않는 두 내각의 합과 같으므로 $\\angle BEC=\\angle CDE+\\angle DCE=45^\\circ+20^\\circ=65^\\circ$이다.\n따라서 구하는 각의 크기는 $65^\\circ$이다."
+    },
+    {
+      "id": "c5",
+      "condition": "∠DCE=20°",
+      "mappedTo": [
+        "angle20DCE"
+      ],
+      "sourceQuote": "[키포인트] 정사각형의 대각선이 꼭지각을 이등분하는 성질로 두 삼각형의 SAS 합동을 만든다.\n$AD=CD$, $DE$는 공통, $\\angle ADE=\\angle CDE=45^\\circ$이므로 $\\triangle ADE\\equiv\\triangle CDE$이다(SAS 합동). 따라서 대응각 $\\angle DCE=\\angle DAE=20^\\circ$이다. $B,E,D$는 한 직선 위에 있으므로 $\\angle BEC$는 $\\triangle CDE$의 꼭짓점 $E$에서의 한 외각이다. 삼각형의 한 외각은 그와 이웃하지 않는 두 내각의 합과 같으므로 $\\angle BEC=\\angle CDE+\\angle DCE=45^\\circ+20^\\circ=65^\\circ$이다.\n따라서 구하는 각의 크기는 $65^\\circ$이다."
+    },
+    {
+      "id": "c6",
+      "condition": "∠BEC=65°",
+      "mappedTo": [
+        "result65"
+      ],
+      "sourceQuote": "[키포인트] 정사각형의 대각선이 꼭지각을 이등분하는 성질로 두 삼각형의 SAS 합동을 만든다.\n$AD=CD$, $DE$는 공통, $\\angle ADE=\\angle CDE=45^\\circ$이므로 $\\triangle ADE\\equiv\\triangle CDE$이다(SAS 합동). 따라서 대응각 $\\angle DCE=\\angle DAE=20^\\circ$이다. $B,E,D$는 한 직선 위에 있으므로 $\\angle BEC$는 $\\triangle CDE$의 꼭짓점 $E$에서의 한 외각이다. 삼각형의 한 외각은 그와 이웃하지 않는 두 내각의 합과 같으므로 $\\angle BEC=\\angle CDE+\\angle DCE=45^\\circ+20^\\circ=65^\\circ$이다.\n따라서 구하는 각의 크기는 $65^\\circ$이다."
+    }
+  ],
+  "newVisualInformation": [
+    "기존 해설에서 삭제된 원본의 보조점 F와 연장선 EF를 되살린다.",
+    "E는 20도 반직선과 BD의 실제 교점, F는 그 직선과 CD의 실제 교점으로 엔진 작도한다."
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  }
+}
