@@ -1,0 +1,50 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"8"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"8"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"F","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"156","denominator":"25"},{"kind":"rational","numerator":"-92","denominator":"25"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"G","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"348","denominator":"25"},{"kind":"rational","numerator":"-36","denominator":"25"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"292","denominator":"25"},{"kind":"rational","numerator":"156","denominator":"25"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"lEH","op":"LINE_THROUGH","inputs":["E","H"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lDC","op":"LINE_THROUGH","inputs":["D","C"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"J","op":"LINE_INTERSECTION","inputs":["lEH","lDC"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lEF","op":"LINE_THROUGH","inputs":["E","F"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lBC","op":"LINE_THROUGH","inputs":["B","C"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"I","op":"LINE_INTERSECTION","inputs":["lEF","lBC"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["A","B","C","D","E","F","G","H","I","J"],
+  "displaySegments": [
+    {"id":"sAB","refs":["A","B"]},
+    {"id":"sBI","refs":["B","I"]}, {"id":"sIC","refs":["I","C"]},
+    {"id":"sCJ","refs":["C","J"]}, {"id":"sJD","refs":["J","D"]},
+    {"id":"sDA","refs":["D","A"]},
+    {"id":"sAE","refs":["A","E"]}, {"id":"sEC","refs":["E","C"]},
+    {"id":"sBE","refs":["B","E"]}, {"id":"sED","refs":["E","D"]},
+    {"id":"sEI","refs":["E","I"]}, {"id":"sIF","refs":["I","F"]},
+    {"id":"sFG","refs":["F","G"]}, {"id":"sGH","refs":["G","H"]},
+    {"id":"sHJ","refs":["H","J"]}, {"id":"sJE","refs":["J","E"]}
+  ],
+  "planeMarks": {
+    "regions": [{"id":"shaded","fill":"LIGHT","factRole":"GIVEN","shapes":[{"polygon":["E","J","C","I"]}]}],
+    "expressionLabels": [{"id":"sideFG","ownerSegment":"sFG","text":"8","unit":"cm"}]
+  },
+  "coordinateCanvas": {"width":700,"height":550},
+  "caption": "정사각형 ABCD와 중심 E에서 시작하는 정사각형 EFGH, 겹쳐 색칠한 부분",
+  "accessibilityDescription": "한 변이 8cm인 축에 나란한 정사각형 ABCD의 두 대각선 교점에 E가 있다. E를 꼭짓점으로 하는 크기가 같은 두 번째 정사각형 EFGH가 오른쪽 아래로 기울어져 겹친다. EH가 DC와 만나는 점 J, EF가 BC와 만나는 점 I이고 E-J-C-I 안쪽만 회색으로 칠했다.",
+  "sourceQuote": "한 변의 길이가 8cm인 두 정사각형 ABCD, EFGH가 있다. 정사각형 EFGH의 꼭짓점 E가 정사각형 ABCD의 대각선의 교점에 있을 때, 색칠한 부분의 넓이",
+  "sourceConditions": [
+    {"id":"cSquareOne","condition":"ABCD는 한 변 8cm의 정사각형이며 대각선 AC와 BD의 교점이 E이다.","mappedTo":["mathPlan.nodes.A","mathPlan.nodes.B","mathPlan.nodes.C","mathPlan.nodes.D","mathPlan.nodes.E","displaySegments.sAB","displaySegments.sDA","displaySegments.sAE","displaySegments.sEC","displaySegments.sBE","displaySegments.sED"]},
+    {"id":"cSquareTwo","condition":"EFGH도 한 변 8cm인 정사각형으로 첫 정사각형과 회전해 겹쳐 있다.","mappedTo":["mathPlan.nodes.F","mathPlan.nodes.G","mathPlan.nodes.H","displaySegments.sEI","displaySegments.sIF","displaySegments.sFG","displaySegments.sGH","displaySegments.sHJ","displaySegments.sJE","planeMarks.expressionLabels.sideFG"]},
+    {"id":"cIntersections","condition":"J는 EH와 DC의 교점, I는 EF와 BC의 교점이다.","mappedTo":["mathPlan.nodes.J","mathPlan.nodes.I","displaySegments.sCJ","displaySegments.sIC"]},
+    {"id":"cShaded","condition":"원본 그림에서 색칠된 부분은 E-J-C-I로 둘러싸인 정사각형들의 겹침 영역이다.","mappedTo":"planeMarks.regions.shaded"}
+  ],
+  "newVisualInformation": ["원본 문제 PNG에서 잘린 A·B·D 및 정사각형 왼쪽 윤곽을 복원한다. 두 정사각형은 모두 정확히 한 변 8cm이고 E는 첫 정사각형의 대각선 교점이다. 두 번째 정사각형의 방향은 원본 그림의 모식적 회전 방향을 재현한 것이며 별도 각도·수치를 문제 조건으로 표시하지 않는다. 색칠은 발문이 묻는 E-J-C-I에만 사용한다."]
+}

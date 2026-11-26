@@ -1,0 +1,31 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"M","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"L","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"10"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"N","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"25","denominator":"2"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"20"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints": ["A","M","L","N","B"],
+  "displaySegments": [{"id":"sAB","refs":["A","B"]}],
+  "planeMarks": {
+    "dimensions": [{"id":"dAB","from":"A","to":"B","label":"20","unit":"cm","side":"ABOVE","style":"BAR","value":20}]
+  },
+  "coordinateCanvas": {"width":700,"height":360},
+  "caption": "한 직선 위 A, M, L, N, B의 순서와 전체 길이 AB 20cm",
+  "accessibilityDescription": "한 직선 위에 왼쪽부터 A, M, L, N, B가 차례로 놓인다. A에서 B까지 전체 선분의 길이는 20cm이고, 위쪽 치수선에 표시되어 있다. 각 점의 중점 관계는 문제 발문의 조건과 일치한다.",
+  "sourceQuote": "AB, AL, MB의 중점이 각각 점 L, M, N이고 AB=20 cm일 때, AN의 길이",
+  "sourceConditions": [
+    {"id":"cOrder","condition":"문제와 원본 그림의 한 직선 위 점 순서는 A, M, L, N, B이다.","mappedTo":["mathPlan.nodes.A","mathPlan.nodes.M","mathPlan.nodes.L","mathPlan.nodes.N","mathPlan.nodes.B","displaySegments.sAB"]},
+    {"id":"cMidL","condition":"L은 AB의 중점이다.","mappedTo":["mathPlan.nodes.A","mathPlan.nodes.L","mathPlan.nodes.B"]},
+    {"id":"cMidM","condition":"M은 AL의 중점이다.","mappedTo":["mathPlan.nodes.A","mathPlan.nodes.M","mathPlan.nodes.L"]},
+    {"id":"cMidN","condition":"N은 MB의 중점이다.","mappedTo":["mathPlan.nodes.M","mathPlan.nodes.N","mathPlan.nodes.B"]},
+    {"id":"cLength","condition":"AB의 전체 길이는 20cm이다.","mappedTo":"planeMarks.dimensions.dAB"}
+  ],
+  "newVisualInformation": ["양 끝점 A와 B의 이름이 잘린 원본 PNG 대신 다섯 점을 모두 보이도록 배치한다. 전체 길이 20cm는 A부터 B까지 하나의 치수선으로 표시하고, 구하는 길이 AN이나 풀이 중간값은 문제 그림에 쓰지 않는다."]
+}

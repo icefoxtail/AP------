@@ -1,0 +1,51 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id":"V0","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"V1","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"V2","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"-1"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"V3","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"-5"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"V4","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-3"},{"kind":"integer","value":"-5"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"V5","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-6"},{"kind":"integer","value":"-1"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"V6","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-5"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints": ["V0","V1","V2","V3","V4","V5","V6"],
+  "hiddenPointNames": ["V0","V1","V2","V3","V4","V5","V6"],
+  "displaySegments": [
+    {"id":"e01","refs":["V0","V1"]}, {"id":"e12","refs":["V1","V2"]},
+    {"id":"e23","refs":["V2","V3"]}, {"id":"e34","refs":["V3","V4"]},
+    {"id":"e45","refs":["V4","V5"]}, {"id":"e56","refs":["V5","V6"]},
+    {"id":"e60","refs":["V6","V0"]},
+    {"id":"d02","refs":["V0","V2"],"dashed":true},
+    {"id":"d03","refs":["V0","V3"],"dashed":true},
+    {"id":"d04","refs":["V0","V4"],"dashed":true},
+    {"id":"d05","refs":["V0","V5"],"dashed":true},
+    {"id":"d13","refs":["V1","V3"],"dashed":true},
+    {"id":"d14","refs":["V1","V4"],"dashed":true},
+    {"id":"d15","refs":["V1","V5"],"dashed":true},
+    {"id":"d16","refs":["V1","V6"],"dashed":true},
+    {"id":"d24","refs":["V2","V4"],"dashed":true},
+    {"id":"d25","refs":["V2","V5"],"dashed":true},
+    {"id":"d26","refs":["V2","V6"],"dashed":true},
+    {"id":"d35","refs":["V3","V5"],"dashed":true},
+    {"id":"d36","refs":["V3","V6"],"dashed":true},
+    {"id":"d46","refs":["V4","V6"],"dashed":true}
+  ],
+  "planeMarks": {
+    "textLabels": [{"id":"heptagonLabel","at":[0,0],"text":"칠각형","labelKind":"TEXT","factRole":"DERIVED_INTERMEDIATE"}]
+  },
+  "coordinateCanvas": {"width":620,"height":560},
+  "caption": "칠각형의 일곱 변과 이웃하지 않은 두 꼭짓점을 잇는 열네 대각선",
+  "accessibilityDescription": "일곱 팀을 각각 점 하나로 나타낸 칠각형이다. 이웃한 팀 사이 일곱 변은 실선이고, 경기할 수 있는 이웃하지 않은 팀의 연결 열네 개는 점선으로 그렸다. 칠각형 안쪽을 채우지 않았다.",
+  "sourceQuote": "7개 배구 대표팀이 서로 한 번씩 경기하려고 한다. 이웃한 대표팀끼리는 경기하지 않는다.",
+  "sourceConditions": [
+    {"id":"cSevenTeams","condition":"서로 다른 배구 대표팀 7개를 칠각형의 일곱 꼭짓점으로 대응시킨다. 이름은 해설 그림에 새로 만들지 않는다.","mappedTo":["mathPlan.nodes.V0","mathPlan.nodes.V1","mathPlan.nodes.V2","mathPlan.nodes.V3","mathPlan.nodes.V4","mathPlan.nodes.V5","mathPlan.nodes.V6","displayPoints"]},
+    {"id":"cAdjacentExcluded","condition":"이웃한 팀의 7개 쌍은 칠각형의 변이며 경기에 포함하지 않는다.","mappedTo":["displaySegments.e01","displaySegments.e12","displaySegments.e23","displaySegments.e34","displaySegments.e45","displaySegments.e56","displaySegments.e60"]},
+    {"id":"cGames","condition":"이웃하지 않은 팀끼리 한 번씩 치르는 경기는 칠각형의 대각선 14개와 대응한다.","mappedTo":["displaySegments.d02","displaySegments.d03","displaySegments.d04","displaySegments.d05","displaySegments.d13","displaySegments.d14","displaySegments.d15","displaySegments.d16","displaySegments.d24","displaySegments.d25","displaySegments.d26","displaySegments.d35","displaySegments.d36","displaySegments.d46","planeMarks.textLabels.heptagonLabel"]}
+  ],
+  "newVisualInformation": ["기존 해설 SVG의 불필요한 회색 다각형 면 채움을 제거하고, 이웃한 7개 쌍은 실선 변, 실제 경기 14개 쌍은 점선 대각선으로 분리한다. 그림에 임의 학교 이름이나 수치가 추가되지 않는다."]
+}
