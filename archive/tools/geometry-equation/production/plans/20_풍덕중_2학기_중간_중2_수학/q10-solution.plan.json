@@ -1,0 +1,171 @@
+{
+  "capability": "composite-panels-v1",
+  "columns": 2,
+  "panels": [
+    {
+      "caption": {
+        "text": "① 배수의 대응"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "MAPPING",
+          "columns": [
+            {
+              "id": "X",
+              "name": "x",
+              "elements": [
+                "2",
+                "3"
+              ]
+            },
+            {
+              "id": "Y",
+              "name": "y",
+              "elements": [
+                "2",
+                "4",
+                "6"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 0
+              },
+              "style": "SOLID"
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 1
+              },
+              "style": "SOLID"
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 2
+              },
+              "style": "SOLID"
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 1
+              },
+              "to": {
+                "column": 1,
+                "element": 2
+              },
+              "style": "SOLID"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "③ 절댓값의 대응"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "MAPPING",
+          "columns": [
+            {
+              "id": "X",
+              "name": "x",
+              "elements": [
+                "3",
+                "4"
+              ]
+            },
+            {
+              "id": "Y",
+              "name": "y",
+              "elements": [
+                "-3",
+                "3",
+                "-4",
+                "4"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 0
+              },
+              "style": "SOLID"
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 1
+              },
+              "style": "SOLID"
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 1
+              },
+              "to": {
+                "column": 1,
+                "element": 2
+              },
+              "style": "SOLID"
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 1
+              },
+              "to": {
+                "column": 1,
+                "element": 3
+              },
+              "style": "SOLID"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "①과 ③에서는 하나의 입력이 여러 출력에 대응하므로 함수가 아니다.",
+  "accessibilityDescription": "①과 ③에서는 하나의 입력이 여러 출력에 대응하므로 함수가 아니다.",
+  "sourceConditions": [
+    {
+      "id": "original-stem",
+      "condition": "<p>10. $y$가 $x$의 함수가 아닌 것은?(정답 2개) [4점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "①·③에 대응하는 두 독립 대응도를 구성하고 모든 화살표 끝점을 원소에 접속."
+  ]
+}

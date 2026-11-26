@@ -9,6 +9,27 @@
     },
     "nodes": [
       {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "36",
+              "denominator": "10"
+            },
+            {
+              "kind": "rational",
+              "numerator": "48",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
         "id": "B",
         "op": "SOURCE_POINT",
         "inputs": [],
@@ -47,27 +68,6 @@
         "factRole": "GIVEN"
       },
       {
-        "id": "A",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "rational",
-              "numerator": "32",
-              "denominator": "5"
-            },
-            {
-              "kind": "rational",
-              "numerator": "24",
-              "denominator": "5"
-            }
-          ]
-        },
-        "outputType": "POINT",
-        "factRole": "GIVEN"
-      },
-      {
         "id": "O",
         "op": "SOURCE_POINT",
         "inputs": [],
@@ -94,18 +94,18 @@
           "coordinates": [
             {
               "kind": "rational",
-              "numerator": "16",
-              "denominator": "5"
+              "numerator": "18",
+              "denominator": "10"
             },
             {
               "kind": "rational",
-              "numerator": "12",
-              "denominator": "5"
+              "numerator": "24",
+              "denominator": "10"
             }
           ]
         },
         "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
+        "factRole": "GIVEN"
       },
       {
         "id": "F",
@@ -115,58 +115,44 @@
           "coordinates": [
             {
               "kind": "rational",
-              "numerator": "41",
-              "denominator": "5"
+              "numerator": "68",
+              "denominator": "10"
             },
             {
               "kind": "rational",
-              "numerator": "12",
-              "denominator": "5"
+              "numerator": "24",
+              "denominator": "10"
             }
           ]
         },
         "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
+        "factRole": "GIVEN"
       }
     ]
   },
+  "displayLines": [],
+  "displayCircles": [],
   "displayPoints": [
     "A",
     "B",
     "C",
+    "O",
     "D",
-    "F",
-    "O"
+    "F"
   ],
-  "displayLines": [],
-  "displayCircles": [],
   "displaySegments": [
     {
-      "id": "sA1",
+      "id": "sAD",
       "refs": [
         "A",
         "D"
       ]
     },
     {
-      "id": "s1B",
+      "id": "sDB",
       "refs": [
         "D",
         "B"
-      ]
-    },
-    {
-      "id": "sA2",
-      "refs": [
-        "A",
-        "F"
-      ]
-    },
-    {
-      "id": "s2C",
-      "refs": [
-        "F",
-        "C"
       ]
     },
     {
@@ -184,84 +170,44 @@
       ]
     },
     {
-      "id": "sOA",
+      "id": "sCF",
       "refs": [
-        "O",
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "sFA",
+      "refs": [
+        "F",
         "A"
       ]
     },
     {
-      "id": "sO1",
+      "id": "sOD",
       "refs": [
         "O",
         "D"
       ]
     },
     {
-      "id": "sO2",
+      "id": "sOF",
       "refs": [
         "O",
         "F"
       ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
     }
   ],
-  "planeMarks": {
-    "equalLengths": [
-      {
-        "id": "eM1",
-        "count": 1,
-        "segments": [
-          "sA1",
-          "s1B"
-        ],
-        "color": "BLUE"
-      },
-      {
-        "id": "eM2",
-        "count": 2,
-        "segments": [
-          "sA2",
-          "s2C"
-        ],
-        "color": "GREEN"
-      },
-      {
-        "id": "eR",
-        "count": 3,
-        "segments": [
-          "sOA",
-          "sBO",
-          "sOC"
-        ],
-        "color": "VIOLET"
-      }
-    ],
-    "expressionLabels": [
-      {
-        "id": "lO1",
-        "ownerSegment": "sO1",
-        "text": "3",
-        "unit": "cm"
-      },
-      {
-        "id": "lO2",
-        "ownerSegment": "sO2",
-        "text": "4",
-        "unit": "cm"
-      }
-    ]
-  },
   "rightAngles": [
     {
       "id": "r0",
-      "refs": [
-        "B",
-        "A",
-        "C"
-      ]
-    },
-    {
-      "id": "r1",
       "refs": [
         "A",
         "D",
@@ -269,35 +215,73 @@
       ]
     },
     {
-      "id": "r2",
+      "id": "r1",
       "refs": [
-        "A",
+        "O",
         "F",
-        "O"
+        "A"
+      ]
+    },
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "C"
       ]
     }
   ],
   "coordinateCanvas": {
-    "width": 520,
-    "height": 400
+    "width": 560,
+    "height": 420
   },
-  "hiddenPointNames": [
-    "D",
-    "F"
-  ],
-  "hiddenPointStyle": "DOT",
-  "caption": "O가 외심이므로 OA=OB=OC이고, O에서 변 AB, AC에 내린 수선은 그 변을 각각 이등분한다. 그림에서 O가 BC 위에 있으므로 BC는 외접원의 지름이고 각 A는 직각이다. 수선의 길이가 3센티미터, 4센티미터이므로 AC=6, AB=8이고 BC=10이다. 따라서 둘레의 길이는 6+8+10=24센티미터이므로 답은 ⑤이다.",
-  "accessibilityDescription": "삼각형 ABC의 변 BC 위에 외심 O가 있고, O에서 변 AB와 AC에 내린 수선과 그 발의 직각 표시가 있다. 두 수선의 길이는 각각 3센티미터와 4센티미터이고, OA=OB=OC와 두 변이 이등분된 표시가 있다.",
-  "newVisualInformation": [
-    "외심 O와 두 수선, 발의 직각 표시",
-    "수선의 길이 3과 4",
-    "OA=OB=OC, 두 변의 이등분 표시"
-  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lab0",
+        "ownerSegment": "sAD",
+        "text": "3"
+      },
+      {
+        "id": "lab1",
+        "ownerSegment": "sCF",
+        "text": "4"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dim0",
+        "from": "A",
+        "to": "B",
+        "label": "6",
+        "side": "RIGHT"
+      },
+      {
+        "id": "dim1",
+        "from": "A",
+        "to": "C",
+        "label": "8",
+        "side": "ABOVE"
+      },
+      {
+        "id": "dim2",
+        "from": "B",
+        "to": "C",
+        "label": "10",
+        "side": "ABOVE"
+      }
+    ]
+  },
+  "caption": "19_동산중 9번 발문: 점·선분·주어진 표식을 구분한 도식.",
+  "accessibilityDescription": "9번 발문의 선분과 점 표식: A–D, D–B, B–O, O–C, C–F, F–A, O–D, O–F, O–A을 나타낸다.",
   "sourceConditions": [
     {
-      "id": "source",
+      "id": "original-stem",
       "condition": "<p>9. 오른쪽 그림에서 점 $\\mathrm{O}$가 $\\triangle\\mathrm{ABC}$의 외심일 때, $\\triangle\\mathrm{ABC}$의 둘레의 길이를 구하면?(3점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q09.png\" /></p>",
       "mappedTo": "PRESERVED_ARCHIVE_BANK"
     }
+  ],
+  "newVisualInformation": [
+    "원본의 3cm는 AD, 4cm는 FC의 길이인데 기존 해설은 OD/OF로 잘못 읽었음. O를 BC의 중점으로, 두 수직이등분선을 실제 기하로 재구성."
   ]
 }

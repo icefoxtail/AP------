@@ -1,0 +1,182 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "105",
+              "denominator": "10"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5809475",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "D",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 540,
+    "height": 385
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lab0",
+        "ownerSegment": "sAB",
+        "text": "12"
+      },
+      {
+        "id": "lab1",
+        "ownerSegment": "sCA",
+        "text": "8"
+      },
+      {
+        "id": "lab2",
+        "ownerSegment": "sBD",
+        "text": "9"
+      },
+      {
+        "id": "lab3",
+        "ownerSegment": "sDC",
+        "text": "7"
+      },
+      {
+        "id": "lab0_1",
+        "ownerSegment": "sAD",
+        "text": "6"
+      }
+    ],
+    "dimensions": []
+  },
+  "caption": "20_풍덕중 23번 발문: 점·선분·주어진 표식을 구분한 도식.",
+  "accessibilityDescription": "23번 발문의 선분과 점 표식: A–B, B–D, D–C, C–A, A–D을 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "original-stem",
+      "condition": "<p>[서술형 3] 다음 그림은 삼각형의 닮음의 조건을 이용하여 $\\overline{\\mathrm{AD}}$의 길이를 구하려고 한다. 다음 물음에 서술하시오.</p><p><img src=\"assets/images/20_풍덕중_2학기_중간_중2_수학/s03.png\" alt=\"삼각형 ABC에서 변 BC 위의 점 D가 연결되어 삼각형 DBA를 형성하는 그림: AB=12cm, AC=8cm, BD=9cm, DC=7cm, AD=x cm가 표시됨\" /></p><p>1) 서로 닮음 삼각형을 찾아 $\\sim$을 사용하여 나타내고, 이 때 사용한 삼각형의 닮음 조건을 쓰시오.(단답형) [3점]</p><p>2) $\\overline{\\mathrm{AD}}$의 길이를 구하시오.(풀이과정 서술) [2점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "서술형 원본의 네 변·부분 길이 12/8/9/7과 AD를 같은 좌표 관계에 배치. 해설에만 AD=6을 명시."
+  ]
+}

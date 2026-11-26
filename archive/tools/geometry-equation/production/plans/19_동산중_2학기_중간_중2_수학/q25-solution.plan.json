@@ -1,0 +1,288 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBG",
+      "refs": [
+        "B",
+        "G"
+      ]
+    },
+    {
+      "id": "sGC",
+      "refs": [
+        "G",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sAG",
+      "refs": [
+        "A",
+        "G"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "B",
+        "G",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 400
+  },
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eq0",
+        "count": 1,
+        "segments": [
+          "sAE",
+          "sCD"
+        ]
+      }
+    ],
+    "parallels": [
+      {
+        "id": "pr0",
+        "count": 1,
+        "segments": [
+          "sAE",
+          "sBG",
+          "sGC",
+          "sCD"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lab1",
+        "ownerSegment": "sAG",
+        "text": "4"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dim0",
+        "from": "B",
+        "to": "D",
+        "label": "6",
+        "side": "ABOVE"
+      }
+    ]
+  },
+  "caption": "19_동산중 25번 발문: 점·선분·주어진 표식을 구분한 도식.",
+  "accessibilityDescription": "25번 발문의 선분과 점 표식: A–B, B–G, G–C, C–D, A–E, E–F, F–C, A–D, A–G을 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "original-stem",
+      "condition": "<p>서술형 4. 사다리꼴 $\\mathrm{ABCE}$에서 $\\overline{\\mathrm{AE}}=\\overline{\\mathrm{CD}}$라 하자.</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/s04.png\" /></p><p>(1) $\\triangle\\mathrm{AEF}\\equiv\\triangle\\mathrm{DCF}$임을 보이시오.</p><p>(2) 점 $\\mathrm{A}$에 $\\overline{\\mathrm{BD}}$에 수직으로 내린 점을 $\\mathrm{G}$라 하자. $\\overline{\\mathrm{BD}}=6\\text{cm}$, $\\overline{\\mathrm{AG}}=4\\text{cm}$일 때, $\\square\\mathrm{ABCE}$의 넓이를 구하시오.</p><p>(채점기준 : (1) 3점, (2) 3점) [6점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 사다리꼴 A–B–C–E, BC 연장선상의 D, AE=CD, AD와 CE 교점 F, 수선 AG⊥BD, BD6/AG4를 빠짐없이 복원."
+  ]
+}

@@ -1,0 +1,236 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "G",
+    "G1"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAG",
+      "refs": [
+        "A",
+        "G"
+      ]
+    },
+    {
+      "id": "sGG1",
+      "refs": [
+        "G",
+        "G1"
+      ]
+    },
+    {
+      "id": "sG1D",
+      "refs": [
+        "G1",
+        "D"
+      ]
+    },
+    {
+      "id": "sBG",
+      "refs": [
+        "B",
+        "G"
+      ]
+    },
+    {
+      "id": "sGC",
+      "refs": [
+        "G",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 535,
+    "height": 450
+  },
+  "pointNames": {
+    "G1": "G′"
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "tAG",
+        "ownerSegment": "sAG",
+        "text": "12"
+      },
+      {
+        "id": "lab0",
+        "ownerSegment": "sG1D",
+        "text": "2"
+      }
+    ],
+    "dimensions": []
+  },
+  "caption": "20_풍덕중 19번 발문: 점·선분·주어진 표식을 구분한 도식.",
+  "accessibilityDescription": "19번 발문의 선분과 점 표식: A–B, B–D, D–C, C–A, A–G, G–G1, G1–D, B–G, G–C을 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "original-stem",
+      "condition": "<p>19. 그림에서 점 $\\mathrm{G}$는 $\\triangle\\mathrm{ABC}$의 무게중심이고, 점 $\\mathrm{G}'$은 $\\triangle\\mathrm{BCG}$의 무게중심이다. $\\overline{\\mathrm{AG}}=12\\text{cm}$일 때, $\\overline{\\mathrm{G}'\\mathrm{D}}$의 길이구하면? [4점]</p><p><img src=\"assets/images/20_풍덕중_2학기_중간_중2_수학/q19.png\" alt=\"삼각형 ABC에서 무게중심 G와 삼각형 BCG의 무게중심 G 프라임이 중선 AD 위에 나란히 놓여 있고 AG=12cm가 표시된 그림\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 두 무게중심 G/G′와 중선 AD, AG=12를 구분. 구한 G′D=2는 해설에만 표시."
+  ]
+}

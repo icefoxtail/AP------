@@ -1,0 +1,470 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lm",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "19",
+              "denominator": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "mm",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "13",
+              "denominator": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "nm",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "km",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lr",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "mr",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "nr",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "kr",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "L",
+    "R",
+    "M",
+    "N",
+    "K",
+    "lm",
+    "mm",
+    "nm",
+    "km",
+    "lr",
+    "mr",
+    "nr",
+    "kr"
+  ],
+  "displaySegments": [
+    {
+      "id": "l",
+      "refs": [
+        "L",
+        "R"
+      ]
+    },
+    {
+      "id": "m",
+      "refs": [
+        "M",
+        "mr"
+      ]
+    },
+    {
+      "id": "n",
+      "refs": [
+        "N",
+        "nr"
+      ]
+    },
+    {
+      "id": "k",
+      "refs": [
+        "K",
+        "kr"
+      ]
+    },
+    {
+      "id": "sLM",
+      "refs": [
+        "lm",
+        "mm"
+      ]
+    },
+    {
+      "id": "sMN",
+      "refs": [
+        "mm",
+        "nm"
+      ]
+    },
+    {
+      "id": "sNK",
+      "refs": [
+        "nm",
+        "km"
+      ]
+    },
+    {
+      "id": "sLR",
+      "refs": [
+        "lr",
+        "mr"
+      ]
+    },
+    {
+      "id": "sMR",
+      "refs": [
+        "mr",
+        "nr"
+      ]
+    },
+    {
+      "id": "sNR",
+      "refs": [
+        "nr",
+        "kr"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "L",
+    "R",
+    "M",
+    "N",
+    "K",
+    "lm",
+    "mm",
+    "nm",
+    "km",
+    "lr",
+    "mr",
+    "nr",
+    "kr"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 660,
+    "height": 430
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "a1",
+        "ownerSegment": "sLM",
+        "text": "4"
+      },
+      {
+        "id": "a2",
+        "ownerSegment": "sMN",
+        "text": "x"
+      },
+      {
+        "id": "a3",
+        "ownerSegment": "sNK",
+        "text": "2"
+      },
+      {
+        "id": "a4",
+        "ownerSegment": "sLR",
+        "text": "6"
+      },
+      {
+        "id": "a5",
+        "ownerSegment": "sMR",
+        "text": "9"
+      },
+      {
+        "id": "a6",
+        "ownerSegment": "sNR",
+        "text": "3"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "ln1",
+        "at": "L",
+        "text": "l"
+      },
+      {
+        "id": "ln2",
+        "at": "M",
+        "text": "m"
+      },
+      {
+        "id": "ln3",
+        "at": "N",
+        "text": "n"
+      },
+      {
+        "id": "ln4",
+        "at": "K",
+        "text": "k"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "d1",
+        "from": "lr",
+        "to": "nr",
+        "label": "15",
+        "unit": "cm",
+        "side": "RIGHT"
+      },
+      {
+        "id": "d2",
+        "from": "mr",
+        "to": "kr",
+        "label": "y",
+        "unit": "cm",
+        "side": "RIGHT"
+      }
+    ],
+    "parallels": [
+      {
+        "id": "para",
+        "count": 1,
+        "segments": [
+          "l",
+          "m",
+          "n",
+          "k"
+        ]
+      }
+    ]
+  },
+  "caption": "20_풍덕중 16번 발문: 점·선분·주어진 표식을 구분한 도식.",
+  "accessibilityDescription": "16번 발문의 선분과 점 표식: L–R, M–mr, N–nr, K–kr, lm–mm, mm–nm, nm–km, lr–mr, mr–nr, nr–kr을 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "original-stem",
+      "condition": "<p>16. 그림에서 $l \\parallel m \\parallel n \\parallel k$일 때, $x+y$의 값은? [4점]</p><p><img src=\"assets/images/20_풍덕중_2학기_중간_중2_수학/q16.png\" alt=\"4개의 평행선 l, m, n, k를 지나는 두 직선이 만나면서 생기는 선분의 길이: 왼쪽 4cm, x cm, 2cm와 오른쪽 6cm, l에서 n까지 15cm, m에서 k까지 y cm가 표시된 그림\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "네 평행선 l,m,n,k와 양쪽 횡단선, x/y 보조 치수선을 각각 분리. 원본의 15는 l→n, y는 m→k에 걸친 괄호로 표시."
+  ]
+}
