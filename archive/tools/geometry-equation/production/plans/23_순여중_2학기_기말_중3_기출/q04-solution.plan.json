@@ -1,0 +1,58 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "O", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-10" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "POLAR_POINT", "inputs": ["O", "B"], "args": { "length": { "kind": "integer", "value": "10" }, "angleDeg": { "kind": "integer", "value": "115" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "POLAR_POINT", "inputs": ["O", "B"], "args": { "length": { "kind": "integer", "value": "10" }, "angleDeg": { "kind": "integer", "value": "69" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "lAD", "op": "LINE_THROUGH", "inputs": ["A", "D"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lBC", "op": "LINE_THROUGH", "inputs": ["B", "C"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "E", "op": "LINE_INTERSECTION", "inputs": ["lAD", "lBC"], "args": {}, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "k", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["O"], "args": { "radius": { "kind": "integer", "value": "10" } }, "outputType": "CIRCLE", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "E", "O"],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sAE", "refs": ["A", "E"] },
+    { "id": "sBE", "refs": ["B", "E"] },
+    { "id": "sOD", "refs": ["O", "D"] },
+    { "id": "sOC", "refs": ["O", "C"] },
+    { "id": "sDB", "refs": ["D", "B"] }
+  ],
+  "rightAngles": [
+    { "id": "rightADB", "refs": ["A", "D", "B"] }
+  ],
+  "planeMarks": {
+    "arcs": [
+      { "id": "arcBC", "circle": "k", "center": "O", "from": "B", "to": "C", "side": "MINOR" },
+      { "id": "arcCD", "circle": "k", "center": "O", "from": "C", "to": "D", "side": "MINOR" },
+      { "id": "arcDA", "circle": "k", "center": "O", "from": "D", "to": "A", "side": "MINOR" }
+    ],
+    "angles": [
+      { "id": "angleDOC", "refs": ["D", "O", "C"], "value": 46, "label": "46", "style": "ARC", "factRole": "GIVEN" },
+      { "id": "angleDBC", "refs": ["D", "B", "C"], "value": 23, "label": "23", "style": "ARC" },
+      { "id": "angleDEC", "refs": ["D", "E", "C"], "value": 67, "label": "67", "style": "ARC" }
+    ]
+  },
+  "coordinateCanvas": { "width": 640, "height": 550 },
+  "sourceQuote": "다음 그림과 같이 $\\overline{AB}$를 지름으로 하는 반원 O에서 $\\overline{AD}$, $\\overline{BC}$의 연장선의 교점을 E라고 할 때, 다음 중 옳은 것은? [정답 2개, 5점]",
+  "caption": "지름 AB가 보는 원주각 ADB는 90°이고 중심각 DOC=46°에 대응하는 원주각 DBC는 23°이다. 따라서 ②와 ④가 옳다.",
+  "accessibilityDescription": "반원 O와 두 직선의 교점 E를 유지하고, 지름 AB에 대한 원주각 ADB에는 직각 표식을, 원주각 DBC에는 23도 호 표식을 추가했다. 중심각 DOC는 46도, E의 외각은 67도로 나타낸다.",
+  "sourceConditions": [
+    { "id": "semicircle", "condition": "AB가 지름인 반원", "mappedTo": ["k", "sAB", "arcBC", "arcCD", "arcDA"] },
+    { "id": "intersection", "condition": "AD·BC의 연장선의 교점 E", "mappedTo": ["sAE", "sBE", "lAD", "lBC", "E"] },
+    { "id": "given", "condition": "중심각 DOC=46도", "mappedTo": ["sOD", "sOC", "angleDOC"] },
+    { "id": "inscribed", "condition": "현 BD를 보조선으로 그리면 지름 AB의 원주각 ADB=90도, 호 DC의 원주각 DBC=23도", "mappedTo": ["sDB", "rightADB", "angleDBC"] },
+    { "id": "external", "condition": "두 직선이 E에서 이루는 각은 90-23=67도", "mappedTo": ["angleDEC"] }
+  ],
+  "newVisualInformation": [
+    "원본 반원과 외부 교점·중심각 조건을 보존하고 직각 ADB와 보조선 BD 및 호 DC의 원주각 23°를 별도로 표시한다.",
+    "지름을 반지름으로 오인하는 선택지와 46°를 두 배로 하는 오개념을 색면 없이 실제 표식으로 비교할 수 있다."
+  ]
+}

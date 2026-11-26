@@ -1,0 +1,54 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "O", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-8" }, { "kind": "integer", "value": "6" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "6" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-8" }, { "kind": "integer", "value": "-6" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "-6" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "M", "op": "MIDPOINT", "inputs": ["A", "B"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "N", "op": "MIDPOINT", "inputs": ["C", "D"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "k", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["O"], "args": { "radius": { "kind": "integer", "value": "10" } }, "outputType": "CIRCLE", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "M", "N", "O"],
+  "displayCircles": ["k"],
+  "displaySegments": [
+    { "id": "sAM", "refs": ["A", "M"] },
+    { "id": "sMB", "refs": ["M", "B"] },
+    { "id": "sCN", "refs": ["C", "N"] },
+    { "id": "sND", "refs": ["N", "D"] },
+    { "id": "sOM", "refs": ["O", "M"] },
+    { "id": "sON", "refs": ["O", "N"] },
+    { "id": "sOA", "refs": ["O", "A"] },
+    { "id": "sOC", "refs": ["O", "C"] }
+  ],
+  "rightAngles": [
+    { "id": "rightM", "refs": ["A", "M", "O"] },
+    { "id": "rightN", "refs": ["C", "N", "O"] }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      { "id": "radiusEqual", "count": 1, "segments": ["sOA", "sOC"] },
+      { "id": "offsetEqual", "count": 2, "segments": ["sOM", "sON"] },
+      { "id": "halfChordEqual", "count": 3, "segments": ["sAM", "sMB", "sCN", "sND"] }
+    ]
+  },
+  "coordinateCanvas": { "width": 620, "height": 530 },
+  "sourceQuote": "원 $O$의 두 현 $AB$, $CD$에 중심 $O$에서 내린 수선의 발을 각각 $M$, $N$이라 하자. $\\overline{OM}=\\overline{ON}>0$일 때, 다음 중 반드시 옳은 것은? [5점]",
+  "caption": "직각삼각형 OMA, ONC에서 OA=OC와 OM=ON이므로 AM=CN이다. 각 현은 수선의 발에서 이등분되어 AB=CD가 된다. 정답은 ④.",
+  "accessibilityDescription": "중심에서 같은 거리의 위아래 두 현을 그려 OA와 OC가 반지름으로 같음을 표시했다. OM과 ON은 같은 길이, M과 N에는 직각, 네 반현 AM·MB·CN·ND에는 같은 길이 눈금이 있다. 면 내부는 색칠하지 않았다.",
+  "sourceConditions": [
+    { "id": "radius", "condition": "OA=OC인 두 반지름", "mappedTo": ["k", "sOA", "sOC", "radiusEqual"] },
+    { "id": "right", "condition": "원 중심에서 현으로 내린 수선", "mappedTo": ["sOM", "sON", "rightM", "rightN"] },
+    { "id": "distance", "condition": "OM=ON", "mappedTo": ["sOM", "sON", "offsetEqual"] },
+    { "id": "halves", "condition": "수선은 현을 이등분하고 두 직각삼각형의 대응 반현이 같으므로 AB=CD", "mappedTo": ["sAM", "sMB", "sCN", "sND", "halfChordEqual"] }
+  ],
+  "newVisualInformation": [
+    "현의 길이가 같다는 결론을 색면 대신 네 반현의 같은 길이 표식과 반지름/수선의 대응 표식으로 보여 준다.",
+    "원본의 점 이름과 직각 두 곳을 보존하며 불필요한 도형 면 채움을 사용하지 않는다."
+  ]
+}

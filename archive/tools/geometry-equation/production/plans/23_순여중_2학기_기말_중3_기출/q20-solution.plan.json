@@ -1,0 +1,43 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SCATTER",
+    "points": [
+      { "x": 40, "y": 55 },
+      { "x": 55, "y": 45 },
+      { "x": 65, "y": 55 },
+      { "x": 65, "y": 65 },
+      { "x": 65, "y": 75 },
+      { "x": 70, "y": 70 },
+      { "x": 80, "y": 75 },
+      { "x": 85, "y": 85 },
+      { "x": 90, "y": 90 },
+      { "x": 95, "y": 95 }
+    ],
+    "xRange": ["40", "100"],
+    "yRange": ["40", "110"],
+    "xStep": "10",
+    "yStep": "10",
+    "xTitle": "필기(점)",
+    "yTitle": "실기(점)",
+    "grid": true,
+    "equalUnits": true,
+    "refLines": [
+      { "kind": "LINE", "a": -1, "b": 1, "c": 0, "label": "y=x", "style": "DASHED" }
+    ],
+    "pointGroups": [
+      { "points": [[40,55], [65,75]], "color": "BLUE", "label": "실기 우위 2명" }
+    ]
+  },
+  "caption": "실기 점수가 필기 점수보다 높은 점은 기준선 y=x의 위쪽 (40,55), (65,75) 두 개다. 따라서 10명 중 2명, 20%이며 정답은 ②.",
+  "accessibilityDescription": "필기와 실기 점수의 10명 산점도에 점선 y=x를 그렸으며, 점선 위쪽의 두 점 (40,55), (65,75)을 파란색으로 구분했다. 나머지 여덟 점은 원본 좌표 그대로 남아 있다.",
+  "sourceConditions": [
+    { "id": "original", "condition": "다음 그림은 워드 프로세서 시험에 응시한 학생 10명의 필기 점수와 실기 점수에 대한 산점도이다. 원본 산점도 10명과 두 축의 점수 및 10점 눈금 보존", "mappedTo": ["chart.points", "chart.xRange", "chart.yRange", "chart.xStep", "chart.yStep", "chart.xTitle", "chart.yTitle"] },
+    { "id": "criterion", "condition": "실기 점수가 필기 점수보다 크다: y>x", "mappedTo": ["chart.refLines"] },
+    { "id": "two", "condition": "10개 중 기준선 위의 점은 (40,55), (65,75) 두 점", "mappedTo": ["chart.pointGroups"] }
+  ],
+  "newVisualInformation": [
+    "기존 해설에 있는 y=x 점선 및 기준선 위쪽 두 점 강조를 원본 10개 좌표와 분리해서 명시한다.",
+    "그래프의 눈금과 실제 점 좌표를 선언형 데이터로 고정해 기존 스캔의 희미한 격자보다 선명한 학생용 도식을 계획한다."
+  ]
+}
