@@ -1,0 +1,48 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "O", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "X", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "1" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "POLAR_POINT", "inputs": ["O", "X"], "args": { "length": { "kind": "integer", "value": "1" }, "angleDeg": { "kind": "integer", "value": "50" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "A", "op": "POLAR_POINT", "inputs": ["O", "X"], "args": { "length": { "kind": "integer", "value": "1" }, "angleDeg": { "kind": "integer", "value": "230" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "P", "op": "POLAR_POINT", "inputs": ["O", "X"], "args": { "length": { "kind": "integer", "value": "1" }, "angleDeg": { "kind": "integer", "value": "160" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "k", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["O"], "args": { "radius": { "kind": "integer", "value": "1" } }, "outputType": "CIRCLE", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "displayPoints": ["O", "X", "A", "B", "P"],
+  "hiddenPointNames": ["X"],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": ["k"],
+  "displaySegments": [
+    { "id": "diameterAB", "refs": ["A", "B"] },
+    { "id": "chordPA", "refs": ["P", "A"] },
+    { "id": "chordPB", "refs": ["P", "B"] },
+    { "id": "radiusPO", "refs": ["P", "O"] }
+  ],
+  "planeMarks": {
+    "angles": [
+      { "id": "anglePAB", "refs": ["P", "A", "B"], "value": 55, "label": "55", "style": "ARC", "factRole": "GIVEN" },
+      { "id": "angleOPB", "refs": ["O", "P", "B"], "value": 35, "label": "x", "style": "ARC" }
+    ],
+    "facts": [{ "kind": "ON_CIRCLE", "circle": "k", "points": ["A", "B", "P"] }]
+  },
+  "coordinateCanvas": { "width": 600, "height": 480 },
+  "caption": "원 O에서 AB는 지름이고 P는 원 위의 점이다. 원주각 PAB는 55도이며 P에서 반지름 PO와 현 PB가 이루는 각을 x로 표시한다.",
+  "accessibilityDescription": "원의 중심 O를 통과하는 지름 AB의 양 끝이 왼쪽 아래 A와 오른쪽 위 B에 있다. 원 위 왼쪽 위의 P에서 A와 B로 현을 긋고 P와 O도 연결했다. A의 각 PAB는 55도, P의 각 OPB는 미지수 x로 표시된다.",
+  "sourceQuote": "다음 그림에서 $\\angle x$의 크기를 구하면? (단, 점 $P$는 원 $O$ 위의 점이고 $\\overline{AB}$는 원 $O$의 지름이다.) (4점)",
+  "sourceConditions": [
+    { "id": "circleAndPoints", "condition": "원본 q12.png의 원 O와 원 위의 A, B, P; 세 점이 같은 원 위에 있다.", "mappedTo": ["O", "A", "B", "P", "k"] },
+    { "id": "diameter", "condition": "현행 JS의 AB는 원 O의 지름이다. 반대 방향의 두 반지름 끝에 A와 B를 놓아 O가 AB 위에 있다.", "mappedTo": ["O", "A", "B", "diameterAB"] },
+    { "id": "originalAngle", "condition": "원본 q12.png의 A에서 현 AP와 지름 AB가 이루는 각은 55도이다.", "mappedTo": ["chordPA", "diameterAB", "anglePAB"] },
+    { "id": "questionAngle", "condition": "원본에서 P의 현 PB와 반지름 PO 사이의 미지각을 x로 표기한다. 내부 작도 각 35도는 실제 답을 도형에 숫자로 표시하지 않는 검증용 기하값이다.", "mappedTo": ["radiusPO", "chordPB", "angleOPB"] }
+  ],
+  "newVisualInformation": [
+    "현행 연결 q12.png는 원 아래쪽이 이미지 경계에서 잘려 A 및 지름 끝을 읽기 어려우므로 원 전체와 A·B·P·O를 화면 안에 정확히 다시 배치한다.",
+    "기존 원본의 현 PA, PB, 지름 AB, 반지름 OP를 실제 선분으로 그리고 A의 55도 및 P의 미지각 x를 각 호 필드에 붙인다.",
+    "문제 그림이므로 지름에 대한 원주각 90도, 중심각 110도, 최종 x의 수치는 표시하지 않고 불필요한 면 채움도 사용하지 않는다."
+  ]
+}
