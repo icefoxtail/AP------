@@ -1,0 +1,215 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "A를 직선 y=x에 대칭시킨 A′와 공통 밑변 BC를 쓰는 두 삼각형을 보여 준다.",
+  "accessibilityDescription": "A를 직선 y=x에 대칭시킨 A′와 공통 밑변 BC를 쓰는 두 삼각형을 보여 준다.",
+  "sourceConditions": [
+    {
+      "id": "given-points",
+      "condition": "A=(1,3), B=(5,5), C=(0,k), 0<k<2",
+      "mappedTo": [
+        "mathPlan.nodes[0].args",
+        "mathPlan.nodes[1].args",
+        "mathPlan.nodes[2].args"
+      ]
+    },
+    {
+      "id": "axis-and-image",
+      "condition": "y=x 대칭 A′=(3,1)",
+      "mappedTo": [
+        "mathPlan.nodes[3].args",
+        "mathPlan.nodes[4].inputs",
+        "pointNames"
+      ]
+    },
+    {
+      "id": "area-ratio",
+      "condition": "[A′BC]=2[ABC]",
+      "mappedTo": "displaySegments"
+    }
+  ],
+  "newVisualInformation": [
+    "A와 A′가 동일한 B,C를 기준으로 만든 서로 다른 삼각형의 넓이를 비교한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "axis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "A",
+          "axis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [
+    "axis"
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "P"
+  ],
+  "pointNames": {
+    "P": "A'"
+  },
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sPC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ],
+      "dashed": true
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 530
+  },
+  "sourceQuote": "세 점 $A(1,3)$, $B(5,5)$, $C(0,k)$ $(0<k<2)$에서 $A$를 직선 $y=x$에 대하여 대칭이동한 점을 $A\\prime$라 하자. 삼각형 $A\\prime BC$의 넓이가 삼각형 $ABC$의 넓이의 $2$배일 때 $k$는?"
+}

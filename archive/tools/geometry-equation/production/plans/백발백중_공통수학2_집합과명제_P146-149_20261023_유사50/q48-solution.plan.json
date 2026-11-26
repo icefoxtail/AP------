@@ -1,0 +1,235 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "원의 중심 K에서 x축과 다른 직선에 내린 두 수선 KH, KT를 비교한다.",
+  "accessibilityDescription": "원의 중심 K에서 x축과 다른 직선에 내린 두 수선 KH, KT를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "source-circle-center",
+      "condition": "원의 중심 2,-2",
+      "mappedTo": [
+        "mathPlan.nodes[0].args",
+        "displayPoints"
+      ]
+    },
+    {
+      "id": "nonintersection",
+      "condition": "x축과 x+y+2=0까지의 거리보다 반지름이 작아야 한다.",
+      "mappedTo": [
+        "mathPlan.nodes[1].args",
+        "mathPlan.nodes[2].args",
+        "mathPlan.nodes[3].inputs",
+        "mathPlan.nodes[4].inputs",
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 중심거리 선분을 비교하는 데 필요한 수선의 발을 표현한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "K",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l1",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l2",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "K",
+          "l1"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "K",
+          "l2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "W",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [
+    "l1",
+    "l2"
+  ],
+  "displayPoints": [
+    "K",
+    "H",
+    "T",
+    "W",
+    "V"
+  ],
+  "hiddenPointNames": [
+    "W",
+    "V"
+  ],
+  "displaySegments": [
+    {
+      "id": "sKH",
+      "refs": [
+        "K",
+        "H"
+      ]
+    },
+    {
+      "id": "sKT",
+      "refs": [
+        "K",
+        "T"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rightH",
+      "refs": [
+        "K",
+        "H",
+        "W"
+      ]
+    },
+    {
+      "id": "rightT",
+      "refs": [
+        "K",
+        "T",
+        "V"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 530
+  },
+  "sourceQuote": "원 $x^2+y^2-4x+4y+a=0$이 직선 $x+y+2=0$과 $x$축을 모두 만나지 않도록 하는 정수 $a$의 개수는? (단, 원은 반지름이 양수인 원이다.)"
+}

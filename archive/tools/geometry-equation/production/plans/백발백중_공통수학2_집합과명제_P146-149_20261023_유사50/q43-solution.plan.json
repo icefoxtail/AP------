@@ -1,0 +1,185 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "선분 AB를 지정된 비로 나누는 P와 다른 점 T를 지나는 직선의 위치를 나타낸다.",
+  "accessibilityDescription": "선분 AB를 지정된 비로 나누는 P와 다른 점 T를 지나는 직선의 위치를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "endpoints",
+      "condition": "A=-4,1, B=6,6, T=2,-1",
+      "mappedTo": [
+        "mathPlan.nodes[0].args",
+        "mathPlan.nodes[1].args",
+        "mathPlan.nodes[3].args"
+      ]
+    },
+    {
+      "id": "section",
+      "condition": "AP:PB=2:3",
+      "mappedTo": [
+        "mathPlan.nodes[2].args",
+        "displaySegments"
+      ]
+    },
+    {
+      "id": "linear-rule",
+      "condition": "P와 T를 지나는 y=ax+b",
+      "mappedTo": [
+        "mathPlan.nodes[4].inputs",
+        "displayLines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "AP:PB의 방향을 B와 A의 순서를 바꾸지 않고 읽도록 돕는다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "line",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "P",
+          "T"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [
+    "line"
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "P",
+    "T"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 530
+  },
+  "sourceQuote": "두 점 $A(-4,1)$, $B(6,6)$에 대하여 선분 $AB$를 $2:3$으로 내분하는 점과 점 $(2,-1)$을 지나는 직선이 $y=ax+b$일 때, $ab$는?"
+}

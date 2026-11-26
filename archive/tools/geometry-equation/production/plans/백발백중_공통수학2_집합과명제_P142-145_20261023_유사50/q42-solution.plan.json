@@ -1,0 +1,253 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "내공통접선의 두 접점에서 중심으로 내린 반지름이 접선과 수직이다.",
+  "accessibilityDescription": "내공통접선의 두 접점에서 중심으로 내린 반지름이 접선과 수직이다.",
+  "sourceConditions": [
+    {
+      "id": "given-circles",
+      "condition": "두 원의 중심은 (0,0),(10,0), 반지름은 3과 1이다.",
+      "mappedTo": [
+        "mathPlan.nodes[0].args",
+        "mathPlan.nodes[1].args",
+        "mathPlan.nodes[3].args",
+        "mathPlan.nodes[4].args",
+        "displayCircles"
+      ]
+    },
+    {
+      "id": "inner-tangent",
+      "condition": "x축 교점이 두 중심 사이인 접선이며 접점은 반지름의 수선의 발이다.",
+      "mappedTo": [
+        "mathPlan.nodes[2].args",
+        "mathPlan.nodes[5].inputs",
+        "mathPlan.nodes[6].inputs",
+        "displayLines",
+        "rightAngles"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 원의 반지름을 더한 값이 중심-접선 거리의 수직 성분으로 작용함을 보여 준다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "K",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "t",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "b": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "21"
+                  }
+                ]
+              }
+            ]
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-15"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "K"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "K",
+          "t"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "M",
+          "t"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayCircles": [
+    "c1",
+    "c2"
+  ],
+  "displayLines": [
+    "t"
+  ],
+  "displayPoints": [
+    "K",
+    "M",
+    "T",
+    "S"
+  ],
+  "displaySegments": [
+    {
+      "id": "sKM",
+      "refs": [
+        "K",
+        "M"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "K",
+        "T"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "M",
+        "S"
+      ]
+    },
+    {
+      "id": "sTS",
+      "refs": [
+        "T",
+        "S"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "raT",
+      "refs": [
+        "K",
+        "T",
+        "S"
+      ]
+    },
+    {
+      "id": "raS",
+      "refs": [
+        "M",
+        "S",
+        "T"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 530
+  },
+  "sourceQuote": "직선 $y=mx+n$ ($m>0$, $n<0$)이 두 원 $x^2+y^2=9$, $(x-10)^2+y^2=1$에 동시에 접하고, $x$축과 만나는 점이 두 원의 중심 사이에 있다. $mn$의 값은?"
+}
