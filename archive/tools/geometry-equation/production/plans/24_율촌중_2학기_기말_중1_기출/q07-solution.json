@@ -1,0 +1,14 @@
+{
+  "capability": "solid-figure-v1",
+  "caption": "원뿔의 전개도에서 부채꼴 반지름 5 cm, 밑면 반지름 2 cm, 호의 길이 4π cm, 중심각 144°를 대응한다.",
+  "accessibilityDescription": "부채꼴과 밑면 원이 접한 원뿔 전개도. 부채꼴의 반지름 5센티미터와 밑면 반지름 2센티미터, 144도 중심각 및 4파이 센티미터 호 길이가 각각 선으로 표시된다.",
+  "sourceQuote": "오른쪽 원뿔의 전개도로 만들어지는 원뿔의 겉넓이는?",
+  "sourceConditions": [
+    {"id":"c1","condition":"부채꼴의 반지름 곧 모선은 5 cm이다.","mappedTo":["net.slant","net.dims[0]"]},
+    {"id":"c2","condition":"밑면 원의 반지름은 2 cm이다.","mappedTo":["net.radius","net.dims[1]"]},
+    {"id":"c3","condition":"원뿔 전개도의 호 길이는 밑면 원의 둘레와 같다.","mappedTo":["net.dims[2]","net.dims[3]"]}
+  ],
+  "newVisualInformation": ["원본의 5 cm·2 cm 지시 대상과 전개도의 접점·호를 보존한다.", "필요하지 않은 회색 부채꼴·밑원 채움을 쓰지 않는다."],
+  "unit": "cm",
+  "net": {"kind":"CONE","radius":2,"slant":5,"dims":[{"part":"slant"},{"part":"radius"},{"part":"arc"},{"part":"angle"}]}
+}
