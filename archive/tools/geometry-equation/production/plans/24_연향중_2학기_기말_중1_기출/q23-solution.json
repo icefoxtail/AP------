@@ -1,0 +1,46 @@
+{
+  "capability": "solid-figure-v1",
+  "caption": "원뿔대의 전개도: 모선 5 cm, 큰 밑면 반지름 6 cm, 작은 밑면 반지름 3 cm. 옆면 고리부채꼴의 중심각은 216°, 중심에서 바깥 호까지 10 cm, 안쪽 호까지 5 cm이다.",
+  "accessibilityDescription": "색칠하지 않은 고리부채꼴의 바깥 호 12파이 센티미터, 안쪽 호 6파이 센티미터, 폭 5센티미터와 큰 원의 반지름 6센티미터, 작은 원의 반지름 3센티미터를 각각 표시한 원뿔대 전개도이다.",
+  "sourceQuote": "다음 그림의 사다리꼴을 직선 l을 회전축으로 하여 1회전 시킬 때 생기는 회전체의 전개도(길이도 포함하여 나타내기)를 그리시오.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "회전하면 큰 밑면 반지름 6 cm, 작은 밑면 반지름 3 cm, 모선 5 cm인 원뿔대가 된다.",
+      "mappedTo": ["net.radius", "net.topRadius", "net.slant", "net.dims"]
+    },
+    {
+      "id": "c2",
+      "condition": "큰 원 둘레는 12π cm, 작은 원 둘레는 6π cm이며, 옆면의 고리부채꼴 중심각은 216°이다.",
+      "mappedTo": ["net.dims[1]", "net.dims[2]", "net.kind", "caption"]
+    },
+    {
+      "id": "c3",
+      "condition": "옆넓이 45π cm²와 밑넓이 36π cm², 9π cm²를 구분한다.",
+      "mappedTo": ["net.faceLabels"]
+    }
+  ],
+  "newVisualInformation": [
+    "기존의 옆면·밑면 회색 배경 채움을 없애고 엔진 기본 무채움 도형만 사용한다.",
+    "모선·두 호의 길이·두 밑면 반지름·각 면의 넓이 표기를 원뿔대 전개도 모델에 연결한다.",
+    "고리부채꼴의 반지름 10 cm와 5 cm, 중심각 216°는 엔진이 계산하여 캡션에 보존한다."
+  ],
+  "net": {
+    "kind": "CONE_FRUSTUM",
+    "radius": 6,
+    "topRadius": 3,
+    "slant": 5,
+    "dims": [
+      {"part": "slant"},
+      {"part": "arc-outer"},
+      {"part": "arc-inner"},
+      {"part": "radius-large"},
+      {"part": "radius-small"}
+    ],
+    "faceLabels": [
+      {"face": "side", "text": "45\\pi"},
+      {"face": "large", "text": "36\\pi"},
+      {"face": "small", "text": "9\\pi"}
+    ]
+  }
+}
