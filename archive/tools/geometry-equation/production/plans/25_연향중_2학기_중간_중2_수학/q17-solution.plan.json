@@ -91,6 +91,19 @@
         },
         "outputType": "POINT",
         "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "rational", "numerator": "-424", "denominator": "400" },
+            { "kind": "rational", "numerator": "-1475", "denominator": "400" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
       }
     ]
   },
@@ -98,8 +111,11 @@
     "A",
     "B",
     "C",
-    "P"
+    "P",
+    "H"
   ],
+  "hiddenPointNames": ["H"],
+  "hiddenPointStyle": "NONE",
   "displayLines": [],
   "displayCircles": [],
   "displaySegments": [
@@ -137,6 +153,14 @@
         "A",
         "P"
       ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ],
+      "dashed": true
     }
   ],
   "caption": "25_연향중_2학기_중간_중2_수학 q17번 해설 과정 도형",
