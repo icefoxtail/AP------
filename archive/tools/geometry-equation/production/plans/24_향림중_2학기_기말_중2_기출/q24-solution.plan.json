@@ -1,0 +1,121 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "운동",
+          "p": "1/5",
+          "children": [
+            {
+              "label": "운동",
+              "p": "1/5",
+              "children": [
+                {
+                  "label": "운동",
+                  "p": "1/5"
+                },
+                {
+                  "label": "휴식",
+                  "p": "4/5"
+                }
+              ]
+            },
+            {
+              "label": "휴식",
+              "p": "4/5",
+              "children": [
+                {
+                  "label": "운동",
+                  "p": "1/5"
+                },
+                {
+                  "label": "휴식",
+                  "p": "4/5"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "휴식",
+          "p": "4/5",
+          "children": [
+            {
+              "label": "운동",
+              "p": "1/5",
+              "children": [
+                {
+                  "label": "운동",
+                  "p": "1/5"
+                },
+                {
+                  "label": "휴식",
+                  "p": "4/5"
+                }
+              ]
+            },
+            {
+              "label": "휴식",
+              "p": "4/5",
+              "children": [
+                {
+                  "label": "운동",
+                  "p": "1/5"
+                },
+                {
+                  "label": "휴식",
+                  "p": "4/5"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "highlightPaths": [
+      {
+        "path": [
+          "운동",
+          "휴식",
+          "휴식"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "휴식",
+          "운동",
+          "휴식"
+        ],
+        "color": "WARM"
+      },
+      {
+        "path": [
+          "휴식",
+          "휴식",
+          "운동"
+        ],
+        "color": "GREEN"
+      }
+    ],
+    "showPathProbability": true,
+    "pathColumn": true
+  },
+  "caption": "3일 동안 운동·휴식의 8개 경로 중 운동이 정확히 하루인 세 경로를 구별한다.",
+  "accessibilityDescription": "3일 동안 운동·휴식의 8개 경로 중 운동이 정확히 하루인 세 경로를 구별한다.",
+  "sourceConditions": [
+    {
+      "id": "src",
+      "condition": "[서·논술형 4] 재모가 저녁 운동을 할 확률이 $20\\%$일 때, $3$일 중 하루만 저녁 운동을 할 확률을 구하고, 그 풀이과정을 쓰시오. (5점)",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "독립 사건 운동 1/5·휴식 4/5와 3개의 원하는 경우를 가지 굵기·고리로 드러낸다."
+  ]
+}

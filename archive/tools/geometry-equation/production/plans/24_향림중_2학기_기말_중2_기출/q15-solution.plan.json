@@ -1,0 +1,70 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "일의0",
+          "children": [
+            {
+              "label": "십의1"
+            },
+            {
+              "label": "십의2"
+            },
+            {
+              "label": "십의3"
+            },
+            {
+              "label": "십의4"
+            }
+          ]
+        },
+        {
+          "label": "일의2",
+          "children": [
+            {
+              "label": "십의1"
+            },
+            {
+              "label": "십의3"
+            },
+            {
+              "label": "십의4"
+            }
+          ]
+        },
+        {
+          "label": "일의4",
+          "children": [
+            {
+              "label": "십의1"
+            },
+            {
+              "label": "십의2"
+            },
+            {
+              "label": "십의3"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "caption": "일의 자리가 0,2,4인 두 자리 짝수의 4+3+3=10가지 경우를 분기마다 실제 나열한다.",
+  "accessibilityDescription": "일의 자리가 0,2,4인 두 자리 짝수의 4+3+3=10가지 경우를 분기마다 실제 나열한다.",
+  "sourceConditions": [
+    {
+      "id": "src",
+      "condition": "$0$에서 $4$까지의 수가 적힌 $5$장의 카드에서 $2$장을 뽑아 두 자리의 짝수를 만들 수 있는 경우의 수는? (4점)",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "각 일의 자리 뒤에서 가능한 십의 자리 후보를 원본 서술과 1:1로 연결하고 중복 숫자를 제외한다."
+  ]
+}

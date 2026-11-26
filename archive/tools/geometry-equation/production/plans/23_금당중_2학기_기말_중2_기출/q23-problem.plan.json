@@ -1,0 +1,204 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A0",
+    "A3",
+    "A6",
+    "B0",
+    "B2",
+    "B6"
+  ],
+  "displaySegments": [
+    {
+      "id": "Aline",
+      "refs": [
+        "A0",
+        "A6"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "Bline",
+      "refs": [
+        "B0",
+        "B6"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "hiddenPointNames": [
+    "A0",
+    "A3",
+    "A6",
+    "B0",
+    "B2",
+    "B6"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "Aa",
+        "at": "A6",
+        "anchor": "NE",
+        "text": "A",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Bb",
+        "at": "B6",
+        "anchor": "E",
+        "text": "B",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 650,
+    "height": 480
+  },
+  "caption": "두 물체 A와 B의 시간-위치 그래프이다. A는 (0,3),(3,4)를, B는 (0,1),(2,2)를 지나고, 질문의 만나는 시점은 표시하지 않는다.",
+  "accessibilityDescription": "가로축 시간 x, 세로축 위치 y. 시작위치가 각각 3,1인 두 직선은 시간이 6분까지 A가 더 위쪽이다. A와 B를 각 선 오른쪽에 표기한다.",
+  "sourceQuote": "[서술형2] 아래의 그림은 수직선 위를 일정한 속력으로 움직이는 두 물체 $A$와 $B$의 시간에 따른 위치를 나타낸 것이다. 두 물체가 움직이기 시작한 지 $x$분 후의 위치를 $y$라고 할 때, 다음 물음에 답하시오.\n<img src=\"assets/images/23_금당중_2학기_기말_중2_기출/q23.png\">\n(1) 물체 $A$에 대하여 $x$와 $y$ 사이의 관계식을 구하여라. [1점]\n(2) 물체 $B$에 대하여 $x$와 $y$ 사이의 관계식을 구하여라. [1점]\n(3) 두 물체 $A$와 $B$는 움직이기 시작한 지 몇 분 후에 만나는지 구하시오. [3점]",
+  "sourceConditions": [
+    {
+      "id": "src",
+      "condition": "[서술형2] 아래의 그림은 수직선 위를 일정한 속력으로 움직이는 두 물체 $A$와 $B$의 시간에 따른 위치를 나타낸 것이다. 두 물체가 움직이기 시작한 지 $x$분 후의 위치를 $y$라고 할 때, 다음 물음에 답하시오.\n<img src=\"assets/images/23_금당중_2학기_기말_중2_기출/q23.png\">\n(1) 물체 $A$에 대하여 $x$와 $y$ 사이의 관계식을 구하여라. [1점]\n(2) 물체 $B$에 대하여 $x$와 $y$ 사이의 관계식을 구하여라. [1점]\n(3) 두 물체 $A$와 $B$는 움직이기 시작한 지 몇 분 후에 만나는지 구하시오. [3점]",
+      "mappedTo": [
+        "mathPlan",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 q23.png의 두 직선과 시작점, (3,4), (2,2), x=0~6 눈금에 해당하는 정확한 기울기를 보존한다.",
+    "원본의 만나는 시점 x=12는 문제 그림에 노출하지 않는다.",
+    "JS 본문 HTML img는 있으나 image 필드가 없어 게시 연결은 별도 작업으로 남는다."
+  ]
+}

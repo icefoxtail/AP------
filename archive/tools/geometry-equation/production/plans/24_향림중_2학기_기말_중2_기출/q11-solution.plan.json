@@ -1,0 +1,254 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ACline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BDline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ACline",
+          "BDline"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "EC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "ED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "p",
+        "count": 1,
+        "segments": [
+          "AB",
+          "CD"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "abe",
+        "ownerSegment": "BE",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ede",
+        "ownerSegment": "ED",
+        "text": "4",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "ab6",
+        "from": "A",
+        "to": "B",
+        "label": "6",
+        "side": "ABOVE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dc8",
+        "from": "D",
+        "to": "C",
+        "label": "8",
+        "side": "BELOW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 650,
+    "height": 460
+  },
+  "caption": "AB∥DC인 사다리꼴 대각선이 E에서 만나 BE:ED=3:4이므로 두 삼각형의 넓이비도 3:4다.",
+  "accessibilityDescription": "넓이를 칠하지 않은 사다리꼴 ABCD의 대각선 AC, BD가 E에서 만나고 위아래 6과8, BE=3과 DE=4 비율이 표시된다.",
+  "sourceQuote": "다음 그림에서 $\\overline{AB}=6\\rm\\,cm$, $\\overline{CD}=8\\rm\\,cm$, $\\triangle ABE=12\\rm\\,cm^2$, $\\overline{AB}\\parallel\\overline{DC}$일 때, $\\triangle ADE$의 넓이는? (4점)",
+  "sourceConditions": [
+    {
+      "id": "src",
+      "condition": "다음 그림에서 $\\overline{AB}=6\\rm\\,cm$, $\\overline{CD}=8\\rm\\,cm$, $\\triangle ABE=12\\rm\\,cm^2$, $\\overline{AB}\\parallel\\overline{DC}$일 때, $\\triangle ADE$의 넓이는? (4점)",
+      "mappedTo": [
+        "mathPlan",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 대각선 교차와 두 개 대응 길이 3:4가 실제 분리 선분으로 유지된다."
+  ]
+}

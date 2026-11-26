@@ -1,0 +1,70 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3/2",
+          "-1/4"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      5
+    ],
+    "referenceLines": [
+      {
+        "id": "second",
+        "slope": "3/4",
+        "intercept": "-1/2",
+        "intersectionX": [
+          "2"
+        ]
+      },
+      {
+        "id": "third",
+        "slope": "-1/2",
+        "intercept": "2",
+        "intersectionX": [
+          "2"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "E",
+        "x": "2",
+        "y": "1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        2
+      ],
+      "y": [
+        1
+      ]
+    }
+  },
+  "caption": "a=1/2인 경우 세 직선이 (2,1)에서 한 점으로 만나 삼각형이 생기지 않는다.",
+  "accessibilityDescription": "a=1/2인 경우 세 직선이 (2,1)에서 한 점으로 만나 삼각형이 생기지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "src",
+      "condition": "다음 세 일차방정식의 그래프가 삼각형을 이루지 않도록 하는 수 $a$의 값들의 합을 구하면? (단, $a\\ne0$) [4점]\n$x+4y-6=0,\\quad 3x-4y-2=0,\\quad ax+y-2=0$",
+      "mappedTo": [
+        "graphPlan",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "세 직선의 실제 교점 (2,1)과 계수 a=1/2인 동시 교차 한 경우를 정밀하게 그린다.",
+    "ENGINE_CAPABILITY_PENDING: 원본 해설의 a=1/4와 a=−3/4인 두 평행선 경우까지 같은 크기의 세 그래프 패널로 나란히 보여 주려면 composite-panels-v1의 3-panel linear-piecewise 지원이 필요하다."
+  ]
+}

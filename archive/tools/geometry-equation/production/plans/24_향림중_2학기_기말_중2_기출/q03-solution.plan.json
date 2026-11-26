@@ -1,0 +1,288 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "U",
+    "V"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AU",
+      "refs": [
+        "A",
+        "U"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "DV",
+      "refs": [
+        "D",
+        "V"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "hiddenPointNames": [
+    "U",
+    "V"
+  ],
+  "hiddenPointStyle": "NONE",
+  "rightAngles": [
+    {
+      "id": "rU",
+      "refs": [
+        "B",
+        "U",
+        "A"
+      ]
+    },
+    {
+      "id": "rV",
+      "refs": [
+        "D",
+        "V",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "para",
+        "count": 1,
+        "segments": [
+          "DA",
+          "BC"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "ab",
+        "ownerSegment": "AB",
+        "text": "5",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "height",
+        "ownerSegment": "AU",
+        "text": "4",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "base10",
+        "from": "B",
+        "to": "C",
+        "label": "10",
+        "side": "BELOW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "top4",
+        "from": "A",
+        "to": "D",
+        "label": "4",
+        "side": "ABOVE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "left3",
+        "from": "B",
+        "to": "U",
+        "label": "3",
+        "side": "BELOW",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "right3",
+        "from": "V",
+        "to": "C",
+        "label": "3",
+        "side": "BELOW",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 650,
+    "height": 460
+  },
+  "caption": "등변사다리꼴의 두 수선 발에서 양쪽 밑변 조각은 각각 3cm, 높이는 4cm다.",
+  "accessibilityDescription": "윗변 AD 4, 아랫변 BC 10, 왼쪽 빗변 AB 5와 두 수선의 발 직각 표식, 양끝 3cm 조각, 높이 4cm를 표시한 색칠 없는 등변사다리꼴.",
+  "sourceQuote": "다음 그림과 같이 $\\overline{AD}\\parallel\\overline{BC}$인 등변사다리꼴 $ABCD$에서 $\\overline{AB}=5\\rm\\,cm$, $\\overline{BC}=10\\rm\\,cm$, $\\overline{AD}=4\\rm\\,cm$일 때, $\\square ABCD$의 넓이는? (5점)",
+  "sourceConditions": [
+    {
+      "id": "src",
+      "condition": "다음 그림과 같이 $\\overline{AD}\\parallel\\overline{BC}$인 등변사다리꼴 $ABCD$에서 $\\overline{AB}=5\\rm\\,cm$, $\\overline{BC}=10\\rm\\,cm$, $\\overline{AD}=4\\rm\\,cm$일 때, $\\square ABCD$의 넓이는? (5점)",
+      "mappedTo": [
+        "mathPlan",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "직각 보조선 두 개와 양쪽 3cm 조각을 실제 선·치수선으로 표시한다.",
+    "삼각형 내부의 무관한 파란 면 채움이 없다."
+  ]
+}

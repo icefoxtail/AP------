@@ -1,0 +1,66 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "-3"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      4
+    ],
+    "referenceLines": [
+      {
+        "id": "before",
+        "slope": "-3",
+        "intercept": "-1",
+        "intersectionX": []
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "1",
+        "y": "1"
+      },
+      {
+        "id": "Q",
+        "x": "3",
+        "y": "-5"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        1,
+        3
+      ],
+      "y": [
+        1,
+        -5
+      ]
+    }
+  },
+  "caption": "평행한 두 직선 y=−3x−1과 y=−3x+4는 기울기가 −3으로 같고, 위쪽 직선은 (1,1),(3,−5)를 지난다.",
+  "accessibilityDescription": "평행한 두 직선 y=−3x−1과 y=−3x+4는 기울기가 −3으로 같고, 위쪽 직선은 (1,1),(3,−5)를 지난다.",
+  "sourceConditions": [
+    {
+      "id": "src",
+      "condition": "일차함수 $y=ax-1$의 그래프를 $y$축의 방향으로 $b$만큼 평행이동한 그래프가 두 점 $(1,1)$, $(3,-5)$를 지날 때, $a-b$의 값은? (단, $a$는 상수이다.) [4점]",
+      "mappedTo": [
+        "graphPlan",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "그림에 실제 평행한 두 선과 이동 후의 정확한 점 (1,1),(3,-5)가 존재한다."
+  ]
+}

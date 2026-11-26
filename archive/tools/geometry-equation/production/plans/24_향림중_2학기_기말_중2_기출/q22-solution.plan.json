@@ -1,0 +1,275 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "20"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "25"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "25"
+            },
+            {
+              "kind": "integer",
+              "value": "30"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "FC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "AE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "EC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "ED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    },
+    {
+      "id": "EF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "three",
+        "count": 1,
+        "segments": [
+          "AB",
+          "EF",
+          "CD"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "ef12",
+        "ownerSegment": "EF",
+        "text": "12",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "fc15",
+        "ownerSegment": "FC",
+        "text": "15",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "cd30",
+        "ownerSegment": "CD",
+        "text": "30",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "ab20",
+        "from": "A",
+        "to": "B",
+        "label": "20",
+        "side": "LEFT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "bf10",
+        "from": "B",
+        "to": "F",
+        "label": "10",
+        "side": "BELOW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 650,
+    "height": 460
+  },
+  "caption": "AB=20, EF=12, BF=10, FC=15, CD=30과 세 평행선을 표시해 두 쌍의 닮음비를 읽는다.",
+  "accessibilityDescription": "수직으로 평행한 AB, EF, DC를 가로지르는 A-E-C와 B-E-D가 E에서 교차한다. 밑변은 B-F-C로 나뉘며 10과 15, 높이는 20,12,30이다. 면 채움은 없다.",
+  "sourceQuote": "[서·논술형 2] 다음 그림에서 $\\overline{AB}\\parallel\\overline{EF}\\parallel\\overline{DC}$일 때, $x$, $y$ 값을 구하고, 그 풀이과정을 쓰시오. (6점)",
+  "sourceConditions": [
+    {
+      "id": "src",
+      "condition": "[서·논술형 2] 다음 그림에서 $\\overline{AB}\\parallel\\overline{EF}\\parallel\\overline{DC}$일 때, $x$, $y$ 값을 구하고, 그 풀이과정을 쓰시오. (6점)",
+      "mappedTo": [
+        "mathPlan",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "E가 두 대각선의 공통 교점인 것을 유지하고 AB∥EF∥DC 화살표 세 개를 표시한다.",
+    "x=15, y=30의 유도값을 원래 길이 표식과 분리된 정확한 선분에 기록하고 원본에 없던 면색을 삭제한다."
+  ]
+}

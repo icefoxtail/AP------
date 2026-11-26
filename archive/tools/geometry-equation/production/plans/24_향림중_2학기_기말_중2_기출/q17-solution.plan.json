@@ -1,0 +1,32 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DICE_TABLE",
+    "faces": 6,
+    "cell": "PAIR",
+    "colVar": "첫째 주사위",
+    "rowVar": "둘째 주사위",
+    "highlight": {
+      "expr": "a-b",
+      "in": [
+        -2,
+        2
+      ]
+    }
+  },
+  "caption": "서로 다른 두 주사위의 36가지 결과 중 눈의 차가 2 이하인 대각선 띠 24칸만 강조한다.",
+  "accessibilityDescription": "서로 다른 두 주사위의 36가지 결과 중 눈의 차가 2 이하인 대각선 띠 24칸만 강조한다.",
+  "sourceConditions": [
+    {
+      "id": "src",
+      "condition": "서로 다른 두 개의 주사위를 동시에 던질 때, 나오는 두 눈의 수의 차가 $2$ 이하일 확률은? (4점)",
+      "mappedTo": [
+        "chart",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 표에서 36칸 전체를 회색으로 칠하던 결함을 고쳐 절댓값 차 2 이하인 24칸만 강조한다."
+  ]
+}
