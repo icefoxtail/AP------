@@ -1,0 +1,47 @@
+{
+  "capability": "number-line-figure-v1",
+  "caption": "제3사분면에서는 x<0, y<0이 동시에 성립하므로 1/3<t<2/3이며 양 끝은 제외한다.",
+  "accessibilityDescription": "수직선에서 변수 t가 1/3보다 크고 2/3보다 작은 열린 구간으로 표시된다. 양끝점은 빈 동그라미이다.",
+  "sourceConditions": [
+    {
+      "id": "thirdQuadrant",
+      "condition": "제3사분면 x<0, y<0",
+      "mappedTo": "numberLine.rows[0].pieces"
+    },
+    {
+      "id": "bounds",
+      "condition": "원래 좌표와 내분비를 계산한 t의 열린 범위 1/3<t<2/3",
+      "mappedTo": [
+        "numberLine.rows[0].pieces[0].lo",
+        "numberLine.rows[0].pieces[0].hi"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "양 끝 경계를 포함하지 않는 열린 점 두 개와 그 사이만 가능한 t의 범위를 한 축 위에서 보여 준다."
+  ],
+  "numberLine": {
+    "variable": "t",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "제3사분면",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1/3",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "2/3",
+              "state": "OPEN"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "두 좌표가 모두 음수인 경우"
+  }
+}

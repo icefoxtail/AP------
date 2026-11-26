@@ -1,0 +1,95 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "선분 AB의 점이 제3사분면에 놓일 수 있는 부분을 좌표축과 함께 확인한다.",
+  "accessibilityDescription": "A(-4,2)와 B(2,-4)를 잇는 선분과 두 좌표축을 표시한다. 제3사분면에서의 내분비 값은 문제 그림에 제시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "A",
+      "condition": "A(-4,2)",
+      "mappedTo": "mathPlan.nodes[0].args.coordinates"
+    },
+    {
+      "id": "B",
+      "condition": "B(2,-4)",
+      "mappedTo": "mathPlan.nodes[1].args.coordinates"
+    },
+    {
+      "id": "AB",
+      "condition": "원문에서 AB를 내분하는 점 P의 위치를 묻는다.",
+      "mappedTo": "displaySegments[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "원문에서 주어진 두 점을 제3사분면을 포함한 좌표평면에 배치한다. 열린 구간과 경계값은 풀기 전 그림에 쓰지 않는다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 520
+  },
+  "displayPoints": [
+    "A",
+    "B"
+  ],
+  "coordinateLabels": [
+    "A",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "sourceQuote": "두 점 $A(-4,2)$, $B(2,-4)$를 잇는 선"
+}
