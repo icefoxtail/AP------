@@ -639,44 +639,7 @@
             ]
           }
         ],
-        "planeMarks": {
-          "regions": [
-            {
-              "id": "rSq",
-              "fill": "WARM",
-              "shapes": [
-                {
-                  "polygon": [
-                    "A",
-                    "B",
-                    "E",
-                    "X"
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "rRe",
-              "fill": "WARM",
-              "shapes": [
-                {
-                  "polygon": [
-                    "B",
-                    "F",
-                    "K",
-                    "J"
-                  ]
-                }
-              ]
-            }
-          ],
-          "equalAreas": [
-            [
-              "rSq",
-              "rRe"
-            ]
-          ]
-        },
+        "planeMarks": {},
         "caption": "정사각형과 직사각형",
         "coordinateCanvas": {
           "width": 420,
@@ -920,42 +883,7 @@
             ]
           }
         ],
-        "planeMarks": {
-          "regions": [
-            {
-              "id": "rEBA",
-              "fill": "BLUE",
-              "shapes": [
-                {
-                  "polygon": [
-                    "E",
-                    "B",
-                    "A"
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "rBFJ",
-              "fill": "BLUE",
-              "shapes": [
-                {
-                  "polygon": [
-                    "B",
-                    "F",
-                    "J"
-                  ]
-                }
-              ]
-            }
-          ],
-          "equalAreas": [
-            [
-              "rEBA",
-              "rBFJ"
-            ]
-          ]
-        },
+        "planeMarks": {},
         "caption": "절반 크기의 두 삼각형",
         "coordinateCanvas": {
           "width": 420,
@@ -1249,5 +1177,18 @@
       }
     }
   ],
-  "caption": "AB²=BC×BJ이므로 AB 위의 정사각형과 BC 쪽의 직사각형(점 B, F, K, J)의 넓이가 같다(주황색). 삼각형 EBA와 BFJ는 그 절반이다(파란색). 삼각형 EBC는 EBA와, ABF는 BFJ와 밑변과 높이가 같다."
+  "caption": "AB²=BC×BJ이므로 AB 위의 정사각형과 BC 쪽의 직사각형(점 B, F, K, J)의 넓이가 같다. 삼각형 EBA와 BFJ는 그 절반이고, 삼각형 EBC는 EBA와, ABF는 BFJ와 밑변과 높이가 같다. 면은 채우지 않고 대응선으로 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "original-figure",
+      "condition": "직각삼각형 ABC의 세 변 위에 세 정사각형이 있고 그림의 E, F, I, J 등의 점으로 여러 삼각형 넓이를 비교한다.",
+      "mappedTo": [
+        "panels[0].plan.displaySegments",
+        "panels[0].plan.rightAngles"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정사각형의 대응 변과 직각 표식만으로 넓이 비교를 할 수 있도록 면 채움은 제거한다."
+  ]
 }
