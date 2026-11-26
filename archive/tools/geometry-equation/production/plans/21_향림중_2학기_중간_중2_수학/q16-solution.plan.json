@@ -1,0 +1,211 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "Q",
+          "P"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "40"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "Q",
+          "S"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "P",
+          "L"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "Q",
+    "R"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQR",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    },
+    {
+      "id": "sRP",
+      "refs": [
+        "R",
+        "P"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "rightAngles": [
+    {
+      "id": "ra1",
+      "refs": [
+        "P",
+        "R",
+        "Q"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a_Q",
+        "refs": [
+          "P",
+          "Q",
+          "R"
+        ],
+        "value": 40,
+        "label": "40",
+        "arcs": 1,
+        "side": "INNER",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "PQ",
+        "from": "P",
+        "to": "Q",
+        "label": "10",
+        "side": "ABOVE",
+        "unit": "cm",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "P",
+    "Q",
+    "R"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 480
+  },
+  "caption": "직각삼각형에서 나머지 예각은 50°이다. 선택지 ⑤의 같은 빗변과 각을 확인해 합동 판정한다.",
+  "accessibilityDescription": "직각삼각형에서 나머지 예각은 50°이다. 선택지 ⑤의 같은 빗변과 각을 확인해 합동 판정한다.",
+  "sourceConditions": [
+    {
+      "id": "f1",
+      "sourceQuote": "빗변 10 cm",
+      "condition": "빗변 10 cm",
+      "mappedTo": "planeMarks.dimensions[PQ]"
+    },
+    {
+      "id": "f2",
+      "sourceQuote": "예각 40°",
+      "condition": "예각 40°",
+      "mappedTo": "planeMarks.angles[Q]"
+    },
+    {
+      "id": "f3",
+      "sourceQuote": "직각",
+      "condition": "직각",
+      "mappedTo": "rightAngles[ra1]"
+    },
+    {
+      "id": "f4",
+      "sourceQuote": "다른 예각 50°",
+      "condition": "다른 예각 50°",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "빗변 10 cm",
+    "예각 40°",
+    "직각",
+    "다른 예각 50°"
+  ],
+  "sourceFile": "archive/exams/original/middle/m2/2mid/21_향림중_2학기_중간_중2_수학.js",
+  "sourceQid": "q16",
+  "targetAxis": "solution"
+}

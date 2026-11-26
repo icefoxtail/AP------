@@ -1,0 +1,61 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "-3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "0",
+        "y": "3"
+      },
+      {
+        "id": "Q",
+        "x": "1",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        1
+      ],
+      "y": [
+        3
+      ]
+    }
+  },
+  "caption": "그림의 직선은 y축의 3과 x축의 1을 지난다. 이 직선의 기울기와 평행한 다른 직선을 비교한다.",
+  "accessibilityDescription": "그림의 직선은 y축의 3과 x축의 1을 지난다. 이 직선의 기울기와 평행한 다른 직선을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "g1",
+      "sourceQuote": "y절편 3",
+      "condition": "y절편 3",
+      "mappedTo": "axisTickValues.y"
+    },
+    {
+      "id": "g2",
+      "sourceQuote": "x절편 1",
+      "condition": "x절편 1",
+      "mappedTo": "axisTickValues.x"
+    }
+  ],
+  "newVisualInformation": [
+    "y절편 3",
+    "x절편 1"
+  ],
+  "sourceFile": "archive/exams/original/middle/m2/2mid/21_향림중_2학기_중간_중2_수학.js",
+  "sourceQid": "q05",
+  "targetAxis": "problem"
+}

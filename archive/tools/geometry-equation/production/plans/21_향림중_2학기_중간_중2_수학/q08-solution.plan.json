@@ -1,0 +1,57 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "1"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "-2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "두 점 (1,1), (4,−2)를 잇는 직선의 기울기는 −1이고 식은 y=−x+2이다.",
+  "accessibilityDescription": "두 점 (1,1), (4,−2)를 잇는 직선의 기울기는 −1이고 식은 y=−x+2이다.",
+  "sourceConditions": [
+    {
+      "id": "g1",
+      "sourceQuote": "(1,1)",
+      "condition": "(1,1)",
+      "mappedTo": "requiredPoints[A]"
+    },
+    {
+      "id": "g2",
+      "sourceQuote": "(4,-2)",
+      "condition": "(4,-2)",
+      "mappedTo": "requiredPoints[B]"
+    }
+  ],
+  "newVisualInformation": [
+    "(1,1)",
+    "(4,-2)"
+  ],
+  "sourceFile": "archive/exams/original/middle/m2/2mid/21_향림중_2학기_중간_중2_수학.js",
+  "sourceQid": "q08",
+  "targetAxis": "solution"
+}

@@ -1,0 +1,211 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "110"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "140"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a_BOC",
+        "refs": [
+          "B",
+          "O",
+          "C"
+        ],
+        "value": 110,
+        "label": "110",
+        "arcs": 1,
+        "side": "INNER",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a_OCA",
+        "refs": [
+          "O",
+          "C",
+          "A"
+        ],
+        "value": 20,
+        "label": "20",
+        "arcs": 1,
+        "side": "INNER",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 480
+  },
+  "caption": "삼각형 ABC의 외심 O를 세 꼭짓점과 이었다. 중심각 BOC=110°이고 ∠OCA=20°이다.",
+  "accessibilityDescription": "삼각형 ABC의 외심 O를 세 꼭짓점과 이었다. 중심각 BOC=110°이고 ∠OCA=20°이다.",
+  "sourceConditions": [
+    {
+      "id": "f1",
+      "sourceQuote": "O는 외심",
+      "condition": "O는 외심",
+      "mappedTo": "displaySegments[sOA,sOB,sOC]"
+    },
+    {
+      "id": "f2",
+      "sourceQuote": "∠BOC=110°",
+      "condition": "∠BOC=110°",
+      "mappedTo": "planeMarks.angles[BOC]"
+    },
+    {
+      "id": "f3",
+      "sourceQuote": "∠OCA=20°",
+      "condition": "∠OCA=20°",
+      "mappedTo": "planeMarks.angles[OCA]"
+    }
+  ],
+  "newVisualInformation": [
+    "O는 외심",
+    "∠BOC=110°",
+    "∠OCA=20°"
+  ],
+  "sourceFile": "archive/exams/original/middle/m2/2mid/21_향림중_2학기_중간_중2_수학.js",
+  "sourceQid": "q19",
+  "targetAxis": "problem"
+}

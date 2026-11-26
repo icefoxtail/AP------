@@ -1,0 +1,64 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "small",
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 5,
+      "names": "...."
+    },
+    {
+      "id": "large",
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 10,
+      "names": "...."
+    }
+  ],
+  "dims": [
+    {
+      "edge": [
+        "small#v0",
+        "small#v1"
+      ]
+    },
+    {
+      "edge": [
+        "large#v0",
+        "large#v1"
+      ]
+    }
+  ],
+  "solidCaption": {
+    "text": "A 6개 / B 1개"
+  },
+  "caption": "제품 A는 모서리 5 cm인 작은 정사면체 여섯 개, 제품 B는 모서리 10 cm인 큰 정사면체 한 개이다. 두 크기를 비교한다.",
+  "accessibilityDescription": "제품 A는 모서리 5 cm인 작은 정사면체 여섯 개, 제품 B는 모서리 10 cm인 큰 정사면체 한 개이다. 두 크기를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "s1",
+      "sourceQuote": "A 정사면체 모서리 5 cm",
+      "condition": "A 정사면체 모서리 5 cm",
+      "mappedTo": "dims[0]"
+    },
+    {
+      "id": "s2",
+      "sourceQuote": "B 정사면체 모서리 10 cm",
+      "condition": "B 정사면체 모서리 10 cm",
+      "mappedTo": "dims[1]"
+    },
+    {
+      "id": "s3",
+      "sourceQuote": "A의 총 개수 6개",
+      "condition": "A의 총 개수 6개",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "A 정사면체 모서리 5 cm",
+    "B 정사면체 모서리 10 cm",
+    "A의 총 개수 6개"
+  ]
+}

@@ -1,0 +1,340 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1289899",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4698463",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "70"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "24500000",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "15934849",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7047695",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "G",
+          "F"
+        ],
+        "args": {
+          "length": {
+            "kind": "rational",
+            "numerator": "7500000",
+            "denominator": "1000000"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "70"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "A",
+    "D",
+    "F",
+    "G",
+    "E",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "sGH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "sHE",
+      "refs": [
+        "H",
+        "E"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a_C",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 70,
+        "label": "70",
+        "arcs": 1,
+        "side": "INNER",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a_G",
+        "refs": [
+          "F",
+          "G",
+          "H"
+        ],
+        "value": 70,
+        "label": "70",
+        "arcs": 1,
+        "side": "INNER",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "EH",
+        "from": "E",
+        "to": "H",
+        "label": "6",
+        "side": "ABOVE",
+        "unit": "cm",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "AD",
+        "from": "A",
+        "to": "D",
+        "label": "4",
+        "side": "ABOVE",
+        "unit": "cm",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 480
+  },
+  "caption": "닮음비 2:3에서 AD=4 cm, 대응각 G=70°로 연결되는 구조를 함께 표시한다.",
+  "accessibilityDescription": "닮음비 2:3에서 AD=4 cm, 대응각 G=70°로 연결되는 구조를 함께 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "f1",
+      "sourceQuote": "∠C=70°",
+      "condition": "∠C=70°",
+      "mappedTo": "planeMarks.angles[C]"
+    },
+    {
+      "id": "f2",
+      "sourceQuote": "EH=6 cm",
+      "condition": "EH=6 cm",
+      "mappedTo": "planeMarks.dimensions[EH]"
+    },
+    {
+      "id": "f3",
+      "sourceQuote": "ABCD∼EFGH",
+      "condition": "ABCD∼EFGH",
+      "mappedTo": "displaySegments"
+    },
+    {
+      "id": "f4",
+      "sourceQuote": "AD=4 cm",
+      "condition": "AD=4 cm",
+      "mappedTo": "planeMarks.dimensions[AD]"
+    }
+  ],
+  "newVisualInformation": [
+    "∠C=70°",
+    "EH=6 cm",
+    "ABCD∼EFGH",
+    "AD=4 cm"
+  ],
+  "sourceFile": "archive/exams/original/middle/m2/2mid/21_풍덕중_2학기_중간_중2_수학.js",
+  "sourceQid": "q11",
+  "targetAxis": "solution"
+}

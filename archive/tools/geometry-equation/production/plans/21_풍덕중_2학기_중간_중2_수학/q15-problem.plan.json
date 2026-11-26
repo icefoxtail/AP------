@@ -1,0 +1,251 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3091398",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5142301",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9219754",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "6538598",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2249757",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a_ABD",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "value": 40,
+        "label": "40",
+        "arcs": 1,
+        "side": "INNER",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a_ACB",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 40,
+        "label": "40",
+        "arcs": 1,
+        "side": "INNER",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "AB",
+        "from": "A",
+        "to": "B",
+        "label": "6",
+        "side": "LEFT",
+        "unit": "cm",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "AC",
+        "from": "A",
+        "to": "C",
+        "label": "8",
+        "side": "RIGHT",
+        "unit": "cm",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "AD",
+        "from": "A",
+        "to": "D",
+        "label": "x",
+        "side": "RIGHT",
+        "unit": "cm",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 480
+  },
+  "caption": "삼각형 ABC의 변 AC 위에 D가 있다. AB=6 cm, AC=8 cm, AD=x cm이며 ∠ABD=∠ACB=40°이다.",
+  "accessibilityDescription": "삼각형 ABC의 변 AC 위에 D가 있다. AB=6 cm, AC=8 cm, AD=x cm이며 ∠ABD=∠ACB=40°이다.",
+  "sourceConditions": [
+    {
+      "id": "f1",
+      "sourceQuote": "AB=6 cm",
+      "condition": "AB=6 cm",
+      "mappedTo": "planeMarks.dimensions[AB]"
+    },
+    {
+      "id": "f2",
+      "sourceQuote": "AC=8 cm",
+      "condition": "AC=8 cm",
+      "mappedTo": "planeMarks.dimensions[AC]"
+    },
+    {
+      "id": "f3",
+      "sourceQuote": "AD=x cm",
+      "condition": "AD=x cm",
+      "mappedTo": "planeMarks.dimensions[AD]"
+    },
+    {
+      "id": "f4",
+      "sourceQuote": "∠ABD=40°",
+      "condition": "∠ABD=40°",
+      "mappedTo": "planeMarks.angles[ABD]"
+    },
+    {
+      "id": "f5",
+      "sourceQuote": "∠ACB=40°",
+      "condition": "∠ACB=40°",
+      "mappedTo": "planeMarks.angles[ACB]"
+    }
+  ],
+  "newVisualInformation": [
+    "AB=6 cm",
+    "AC=8 cm",
+    "AD=x cm",
+    "∠ABD=40°",
+    "∠ACB=40°"
+  ],
+  "sourceFile": "archive/exams/original/middle/m2/2mid/21_풍덕중_2학기_중간_중2_수학.js",
+  "sourceQid": "q15",
+  "targetAxis": "problem"
+}

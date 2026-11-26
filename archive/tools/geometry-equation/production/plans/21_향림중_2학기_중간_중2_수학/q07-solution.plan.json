@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "functionName": "f",
+    "overlays": {
+      "points": [
+        {
+          "id": "anchor",
+          "curveX": "-2",
+          "unnamed": true
+        }
+      ],
+      "callouts": [
+        {
+          "id": "formula",
+          "point": "anchor",
+          "text": "y=ax-b",
+          "labelKind": "MATH",
+          "direction": "NW"
+        }
+      ]
+    }
+  },
+  "caption": "기울기 a는 음수이고 y절편 −b도 음수이다. 개형 위의 y=ax−b는 원문 식이며 수치 절편을 주장하지 않는다.",
+  "accessibilityDescription": "기울기 a는 음수이고 y절편 −b도 음수이다. 개형 위의 y=ax−b는 원문 식이며 수치 절편을 주장하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "g1",
+      "sourceQuote": "a<0",
+      "condition": "a<0",
+      "mappedTo": "pieces[0].coefficients"
+    },
+    {
+      "id": "g2",
+      "sourceQuote": "−b<0",
+      "condition": "−b<0",
+      "mappedTo": "pieces[0].coefficients"
+    },
+    {
+      "id": "g3",
+      "sourceQuote": "y=ax−b",
+      "condition": "y=ax−b",
+      "mappedTo": "overlays.callouts[formula]"
+    }
+  ],
+  "newVisualInformation": [
+    "a<0",
+    "−b<0",
+    "y=ax−b"
+  ],
+  "sourceFile": "archive/exams/original/middle/m2/2mid/21_향림중_2학기_중간_중2_수학.js",
+  "sourceQid": "q07",
+  "targetAxis": "solution"
+}

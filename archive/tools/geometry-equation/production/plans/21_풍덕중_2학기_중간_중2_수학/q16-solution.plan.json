@@ -1,0 +1,234 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "D",
+    "C",
+    "A"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "rightAngles": [
+    {
+      "id": "ra1",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "ra2",
+      "refs": [
+        "B",
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "BD",
+        "from": "B",
+        "to": "D",
+        "label": "2",
+        "side": "BELOW",
+        "unit": "cm",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "DC",
+        "from": "D",
+        "to": "C",
+        "label": "8",
+        "side": "BELOW",
+        "unit": "cm",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "AD",
+        "from": "A",
+        "to": "D",
+        "label": "4",
+        "side": "LEFT",
+        "unit": "cm",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 480
+  },
+  "caption": "닮은 삼각형 DBA와 DAC에서 AD²=BD·DC, 따라서 DC=8 cm이다.",
+  "accessibilityDescription": "닮은 삼각형 DBA와 DAC에서 AD²=BD·DC, 따라서 DC=8 cm이다.",
+  "sourceConditions": [
+    {
+      "id": "f1",
+      "sourceQuote": "∠A=90°",
+      "condition": "∠A=90°",
+      "mappedTo": "rightAngles[ra1]"
+    },
+    {
+      "id": "f2",
+      "sourceQuote": "AD⊥BC",
+      "condition": "AD⊥BC",
+      "mappedTo": "rightAngles[ra2]"
+    },
+    {
+      "id": "f3",
+      "sourceQuote": "BD=2 cm",
+      "condition": "BD=2 cm",
+      "mappedTo": "planeMarks.dimensions[BD]"
+    },
+    {
+      "id": "f4",
+      "sourceQuote": "AD=4 cm",
+      "condition": "AD=4 cm",
+      "mappedTo": "planeMarks.dimensions[AD]"
+    },
+    {
+      "id": "f5",
+      "sourceQuote": "DC=8 cm",
+      "condition": "DC=8 cm",
+      "mappedTo": "planeMarks.dimensions[DC]"
+    }
+  ],
+  "newVisualInformation": [
+    "∠A=90°",
+    "AD⊥BC",
+    "BD=2 cm",
+    "AD=4 cm",
+    "DC=8 cm"
+  ],
+  "sourceFile": "archive/exams/original/middle/m2/2mid/21_풍덕중_2학기_중간_중2_수학.js",
+  "sourceQid": "q16",
+  "targetAxis": "solution"
+}

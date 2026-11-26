@@ -1,0 +1,62 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-5/2",
+          "1/2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "3",
+        "y": "-1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "referenceLines": [
+      {
+        "id": "g",
+        "slope": "-1/2",
+        "intercept": "1/2",
+        "intersectionX": [
+          "3"
+        ]
+      }
+    ]
+  },
+  "caption": "x=3인 교점은 (3,−1)이고 두 직선 y=(x−5)/2, y=(1−x)/2가 만난다.",
+  "accessibilityDescription": "x=3인 교점은 (3,−1)이고 두 직선 y=(x−5)/2, y=(1−x)/2가 만난다.",
+  "sourceConditions": [
+    {
+      "id": "g1",
+      "sourceQuote": "x=3",
+      "condition": "x=3",
+      "mappedTo": "requiredPoints[P]"
+    },
+    {
+      "id": "g2",
+      "sourceQuote": "두 방정식의 직선",
+      "condition": "두 방정식의 직선",
+      "mappedTo": "referenceLines[g]"
+    }
+  ],
+  "newVisualInformation": [
+    "x=3",
+    "두 방정식의 직선"
+  ],
+  "sourceFile": "archive/exams/original/middle/m2/2mid/21_향림중_2학기_중간_중2_수학.js",
+  "sourceQid": "q12",
+  "targetAxis": "solution"
+}

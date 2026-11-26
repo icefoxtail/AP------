@@ -1,0 +1,65 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "small",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 1
+      },
+      "height": 4,
+      "names": "........"
+    },
+    {
+      "id": "large",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 2
+      },
+      "height": 8,
+      "names": "........"
+    }
+  ],
+  "dims": [
+    {
+      "edge": [
+        "small#b0",
+        "small#t0"
+      ]
+    },
+    {
+      "edge": [
+        "large#b0",
+        "large#t0"
+      ]
+    }
+  ],
+  "solidCaption": {
+    "text": "닮은 사각기둥 1:2"
+  },
+  "caption": "대응 길이의 비 1:2에 대해 부피의 비는 1:8로 계산한다.",
+  "accessibilityDescription": "대응 길이의 비 1:2에 대해 부피의 비는 1:8로 계산한다.",
+  "sourceConditions": [
+    {
+      "id": "s1",
+      "sourceQuote": "높이 4:8",
+      "condition": "높이 4:8",
+      "mappedTo": "dims[0,1]"
+    },
+    {
+      "id": "s2",
+      "sourceQuote": "부피 64 cm³",
+      "condition": "부피 64 cm³",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "높이 4:8",
+    "부피 64 cm³"
+  ]
+}
