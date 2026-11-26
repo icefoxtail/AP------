@@ -233,6 +233,17 @@
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
+        "id": "V",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "A",
+          "O2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
         "id": "sm",
         "op": "CIRCLE_THROUGH_POINT",
         "inputs": [
@@ -252,6 +263,7 @@
     "B",
     "C",
     "D",
+    "V",
     "T",
     "U"
   ],
@@ -302,6 +314,22 @@
         "A",
         "D"
       ]
+    },
+    {
+      "id": "sCVguide",
+      "refs": [
+        "C",
+        "V"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sVAguide",
+      "refs": [
+        "V",
+        "A"
+      ],
+      "dashed": true
     }
   ],
   "planeMarks": {
