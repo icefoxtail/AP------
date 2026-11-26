@@ -1,0 +1,335 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "E에서 AB까지의 거리는 4cm, AB=8cm이므로 삼각형 ABE의 넓이는 16cm²이다.",
+  "caption": "원본 정사각형과 정삼각형의 윤곽만 유지하고 E에서 내린 수평·수직 점선, 8cm·4cm 치수와 직각을 보인다.",
+  "sourceConditions": [
+    {
+      "id": "square",
+      "condition": "ABCD는 한 변이 8cm인 정사각형이다.",
+      "mappedTo": [
+        "mathPlan.nodes[0]",
+        "mathPlan.nodes[1]",
+        "mathPlan.nodes[2]",
+        "mathPlan.nodes[3]",
+        "displaySegments[0]",
+        "displaySegments[1]",
+        "displaySegments[2]",
+        "displaySegments[3]"
+      ]
+    },
+    {
+      "id": "equilateral",
+      "condition": "BCE의 세 변이 모두 길이 8이다.",
+      "mappedTo": [
+        "displaySegments[1]",
+        "displaySegments[4]",
+        "displaySegments[5]",
+        "planeMarks.equalLengths[0]"
+      ]
+    },
+    {
+      "id": "triangle",
+      "condition": "넓이를 구하는 ABE의 세 변을 모두 보인다.",
+      "mappedTo": [
+        "displaySegments[0]",
+        "displaySegments[4]",
+        "displaySegments[6]"
+      ]
+    },
+    {
+      "id": "height",
+      "condition": "E에서 AB까지의 거리가 4cm인 수평 수선, AB=8cm, 대응 직각을 표시한다.",
+      "mappedTo": [
+        "displaySegments[7]",
+        "rightAngles[0]",
+        "planeMarks.dimensions[0]",
+        "planeMarks.dimensions[1]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 손그림의 정삼각형 높이 및 좌표를 정밀하게 고정하고 내부 면은 채우지 않는다.",
+    "회색 삼각형 면 채움을 제거하고 두 수선의 발을 점선으로 표시한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ABline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "E",
+          "ABline"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "H",
+    "M"
+  ],
+  "displaySegments": [
+    {
+      "id": "ab",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "bc",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "cd",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "da",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "be",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "ce",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "ae",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "eh",
+      "refs": [
+        "E",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "em",
+      "refs": [
+        "E",
+        "M"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "tri",
+        "count": 1,
+        "segments": [
+          "bc",
+          "be",
+          "ce"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "base8",
+        "from": "A",
+        "to": "B",
+        "label": "8",
+        "unit": "cm",
+        "side": "LEFT"
+      },
+      {
+        "id": "height4",
+        "from": "H",
+        "to": "E",
+        "label": "4",
+        "unit": "cm",
+        "side": "ABOVE"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "H",
+    "M"
+  ],
+  "unmarkedPointNames": [
+    "H",
+    "M"
+  ],
+  "rightAngles": [
+    {
+      "id": "footH",
+      "refs": [
+        "A",
+        "H",
+        "E"
+      ]
+    },
+    {
+      "id": "footM",
+      "refs": [
+        "B",
+        "M",
+        "E"
+      ]
+    }
+  ]
+}

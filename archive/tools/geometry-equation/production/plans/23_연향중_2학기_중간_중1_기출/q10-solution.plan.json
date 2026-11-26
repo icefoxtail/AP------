@@ -1,0 +1,504 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "β=20°인 대표 형상에서 y=β+35°, γ=50−β, x=β+100°, x−y=65°이다.",
+  "caption": "꺾인 세 점에 점선 평행 보조선을 그리고 엇각 β·γ와 35°·130°·150° 및 x−y=65°를 빈 호로 보인다.",
+  "sourceConditions": [
+    {
+      "id": "parallel",
+      "condition": "위아래 수평 직선은 평행이다.",
+      "mappedTo": [
+        "displaySegments[0]",
+        "displaySegments[1]",
+        "planeMarks.parallels[0]"
+      ]
+    },
+    {
+      "id": "chain",
+      "condition": "35°, y, 130°, x, 150°의 5개 원본 각은 연속 꺾인 선의 정확한 꼭짓점에 있다.",
+      "mappedTo": [
+        "displaySegments[2]",
+        "displaySegments[3]",
+        "displaySegments[4]",
+        "displaySegments[5]",
+        "planeMarks.angles"
+      ]
+    },
+    {
+      "id": "guides",
+      "condition": "세 꼭짓점의 수평 보조선과 엇각 β·γ를 표시한다.",
+      "mappedTo": [
+        "displaySegments[6]",
+        "displaySegments[7]",
+        "displaySegments[8]",
+        "planeMarks.angles[5]",
+        "planeMarks.angles[6]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 꺾은 선·평행선·5개 각호를 정확히 대응시키고 면 채움을 제거한다.",
+    "원본 해설의 연한 회색 부채꼴을 모두 제거하고 점선 보조선을 보존한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Y",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-4096",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2868",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "603",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4578",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4933",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2078",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "W",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9263",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4578",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ML",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4578",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "MR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4578",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "YR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1096",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2868",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "UL",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2397",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4578",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "UR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3603",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4578",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "XL",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1933",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2078",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "XR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "7933",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2078",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "L",
+    "P",
+    "Y",
+    "U",
+    "X",
+    "W",
+    "ML",
+    "MR",
+    "YR",
+    "UL",
+    "UR",
+    "XL",
+    "XR"
+  ],
+  "hiddenPointNames": [
+    "L",
+    "P",
+    "Y",
+    "U",
+    "X",
+    "W",
+    "ML",
+    "MR",
+    "YR",
+    "UL",
+    "UR",
+    "XL",
+    "XR"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "lower",
+      "refs": [
+        "L",
+        "P"
+      ]
+    },
+    {
+      "id": "upper",
+      "refs": [
+        "ML",
+        "MR"
+      ]
+    },
+    {
+      "id": "pY",
+      "refs": [
+        "P",
+        "Y"
+      ]
+    },
+    {
+      "id": "yU",
+      "refs": [
+        "Y",
+        "U"
+      ]
+    },
+    {
+      "id": "uX",
+      "refs": [
+        "U",
+        "X"
+      ]
+    },
+    {
+      "id": "xW",
+      "refs": [
+        "X",
+        "W"
+      ]
+    },
+    {
+      "id": "guideY",
+      "refs": [
+        "Y",
+        "YR"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "guideU",
+      "refs": [
+        "UL",
+        "UR"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "guideX",
+      "refs": [
+        "XL",
+        "XR"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "parallel",
+        "segments": [
+          "lower",
+          "upper"
+        ],
+        "count": 1
+      }
+    ],
+    "angles": [
+      {
+        "id": "given35",
+        "refs": [
+          "L",
+          "P",
+          "Y"
+        ],
+        "value": 35,
+        "label": "35"
+      },
+      {
+        "id": "angleY",
+        "refs": [
+          "P",
+          "Y",
+          "U"
+        ],
+        "value": 55,
+        "label": "y"
+      },
+      {
+        "id": "given130",
+        "refs": [
+          "Y",
+          "U",
+          "X"
+        ],
+        "value": 130,
+        "label": "130"
+      },
+      {
+        "id": "angleX",
+        "refs": [
+          "U",
+          "X",
+          "W"
+        ],
+        "value": 120,
+        "label": "x"
+      },
+      {
+        "id": "given150",
+        "refs": [
+          "X",
+          "W",
+          "MR"
+        ],
+        "value": 150,
+        "label": "150"
+      },
+      {
+        "id": "beta",
+        "refs": [
+          "YR",
+          "Y",
+          "U"
+        ],
+        "value": 20,
+        "label": "β",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "gamma",
+        "refs": [
+          "UR",
+          "U",
+          "X"
+        ],
+        "value": 30,
+        "label": "γ",
+        "labelKind": "MATH"
+      }
+    ]
+  }
+}

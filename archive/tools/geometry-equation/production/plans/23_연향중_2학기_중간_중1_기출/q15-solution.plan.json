@@ -1,0 +1,270 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "△ABD≡△CAE, AD=CE=7, DE=28이므로 BD=AE=21cm.",
+  "caption": "회색 면 채움을 제거하고 합동인 직각삼각형의 28·7·21cm 치수, 세 직각, 등변 눈금을 직접 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "base",
+      "condition": "D,A,E는 일직선이고 DE=28cm이다.",
+      "mappedTo": [
+        "mathPlan.nodes[0]",
+        "mathPlan.nodes[1]",
+        "mathPlan.nodes[2]",
+        "displaySegments[0]",
+        "displaySegments[1]",
+        "planeMarks.dimensions[0]"
+      ]
+    },
+    {
+      "id": "triangle",
+      "condition": "AB=AC이고 ∠BAC=90°이다.",
+      "mappedTo": [
+        "displaySegments[4]",
+        "displaySegments[5]",
+        "planeMarks.equalLengths[0]",
+        "rightAngles[2]"
+      ]
+    },
+    {
+      "id": "feet",
+      "condition": "BD와 CE는 직선 DAE에 각각 수직이고 CE=7cm이다.",
+      "mappedTo": [
+        "displaySegments[2]",
+        "displaySegments[3]",
+        "rightAngles[0]",
+        "rightAngles[1]",
+        "planeMarks.dimensions[1]"
+      ]
+    },
+    {
+      "id": "answer",
+      "condition": "해설에서는 BD=21cm를 명시한다.",
+      "mappedTo": "planeMarks.dimensions[2]"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 삼각형의 흐린 수선·직각·밑변 치수를 정밀화하고 삼각형 면 채움은 하지 않는다.",
+    "문제에서 생략한 BD=21cm를 해설의 독립 치수선으로 보여 준다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "21"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-7"
+            },
+            {
+              "kind": "integer",
+              "value": "-21"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "21"
+            },
+            {
+              "kind": "integer",
+              "value": "-7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "D",
+    "A",
+    "E",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "da",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "ae",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "db",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "ec",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "ab",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "ac",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "perpD",
+      "refs": [
+        "A",
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "perpE",
+      "refs": [
+        "A",
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "perpA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "isosceles",
+        "segments": [
+          "ab",
+          "ac"
+        ],
+        "count": 1
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "total28",
+        "from": "D",
+        "to": "E",
+        "label": "28",
+        "unit": "cm",
+        "side": "ABOVE"
+      },
+      {
+        "id": "given7",
+        "from": "E",
+        "to": "C",
+        "label": "7",
+        "unit": "cm",
+        "side": "RIGHT"
+      },
+      {
+        "id": "result21",
+        "from": "D",
+        "to": "B",
+        "label": "21",
+        "unit": "cm",
+        "side": "LEFT",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "sourceQuote": "사각뿔의 교점 a개, 교선 b개에서 b-a를 구한다.",
+  "caption": "밑면이 사각형인 사각뿔의 윤곽과 뒤쪽 가려진 모서리를 점선으로 보여 준다.",
+  "sourceConditions": [
+    {
+      "id": "pyramid",
+      "condition": "사각형 밑면과 한 꼭대기 점으로 이루어진 각뿔이다.",
+      "mappedTo": "solids[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 흑백 스캔에서 희미한 뒤쪽 점선·꼭대기 모서리를 공식 3D 엔진의 깊이 검사로 재작도한다.",
+    "문제용 그림에는 교점·교선 개수의 숫자 답을 직접 기입하지 않는다."
+  ],
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "RECT",
+        "width": 5,
+        "depth": 5
+      },
+      "height": 7,
+      "names": "....."
+    }
+  ],
+  "solidCaption": {
+    "text": "사각뿔"
+  }
+}

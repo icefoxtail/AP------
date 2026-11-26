@@ -1,0 +1,228 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "AOB가 평각이고 AOC=4 COD, BOE=4 DOE인 도형.",
+  "caption": "직선 AOB 위의 세 반직선 OC·OD·OE를 정확한 방향으로 놓고, 문제에 없는 각 값은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "straight",
+      "condition": "A, O, B는 일직선이다.",
+      "mappedTo": [
+        "displaySegments[0]",
+        "displaySegments[1]"
+      ]
+    },
+    {
+      "id": "rays",
+      "condition": "OC, OD, OE가 평각을 네 부분으로 나눈다.",
+      "mappedTo": [
+        "displaySegments[2]",
+        "displaySegments[3]",
+        "displaySegments[4]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본에 있는 모든 다섯 반직선·문자 라벨을 보존하고 면 채움을 쓰지 않는다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "100"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "80"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "64"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "T"
+  ],
+  "hiddenPointNames": [
+    "T"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "a",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "b",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "c",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "d",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "e",
+      "refs": [
+        "O",
+        "E"
+      ]
+    }
+  ]
+}

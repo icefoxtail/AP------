@@ -1,0 +1,268 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "두 삼각형이 교차점에서 맞꼭지각을 이루고 왼쪽 40°,35°, 오른쪽 27°와 x가 있다.",
+  "caption": "한 점에서 교차하는 두 직선과 양쪽 삼각형의 40°·35°·27°·x 각호를 면 채움 없이 그린다.",
+  "sourceConditions": [
+    {
+      "id": "cross",
+      "condition": "서로 교차하는 두 직선의 양끝에 두 삼각형이 형성된다.",
+      "mappedTo": "displaySegments"
+    },
+    {
+      "id": "givens",
+      "condition": "왼쪽 40°·35°, 오른쪽 아래 27°, 위쪽 x를 표시한다.",
+      "mappedTo": [
+        "planeMarks.angles[0]",
+        "planeMarks.angles[1]",
+        "planeMarks.angles[2]",
+        "planeMarks.angles[3]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 흐린 교차각 호와 숫자 라벨을 올바른 세 꼭짓점·교점에 배치한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "LT",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "X",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "140"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "LB",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "X",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "rational",
+            "numerator": "5603",
+            "denominator": "1000"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "245"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "RT",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "X",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "rational",
+            "numerator": "4500",
+            "denominator": "1000"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "65"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "RB",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "X",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "rational",
+            "numerator": "7366",
+            "denominator": "1000"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "320"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "X",
+    "T",
+    "LT",
+    "LB",
+    "RT",
+    "RB"
+  ],
+  "hiddenPointNames": [
+    "X",
+    "T",
+    "LT",
+    "LB",
+    "RT",
+    "RB"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "upperL",
+      "refs": [
+        "X",
+        "LT"
+      ]
+    },
+    {
+      "id": "lowerL",
+      "refs": [
+        "X",
+        "LB"
+      ]
+    },
+    {
+      "id": "upperR",
+      "refs": [
+        "X",
+        "RT"
+      ]
+    },
+    {
+      "id": "lowerR",
+      "refs": [
+        "X",
+        "RB"
+      ]
+    },
+    {
+      "id": "sideL",
+      "refs": [
+        "LT",
+        "LB"
+      ]
+    },
+    {
+      "id": "sideR",
+      "refs": [
+        "RT",
+        "RB"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "leftTop",
+        "refs": [
+          "LB",
+          "LT",
+          "X"
+        ],
+        "value": 40,
+        "label": "40",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "leftBottom",
+        "refs": [
+          "LT",
+          "LB",
+          "X"
+        ],
+        "value": 35,
+        "label": "35",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rightBottom",
+        "refs": [
+          "RT",
+          "RB",
+          "X"
+        ],
+        "value": 27,
+        "label": "27",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rightTop",
+        "refs": [
+          "RB",
+          "RT",
+          "X"
+        ],
+        "value": 48,
+        "label": "x"
+      }
+    ]
+  }
+}

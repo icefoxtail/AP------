@@ -1,0 +1,205 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "(85−2x)+75+(140−4x)=180으로 x=20이다.",
+  "caption": "내각 45°·75°·60°와 외각 120°가 이루는 삼각형으로, 원문 식 라벨과 평각 관계를 빈 각호로 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "geometry",
+      "condition": "삼각형의 밑변과 그 연장선, 두 변을 그린다.",
+      "mappedTo": "displaySegments"
+    },
+    {
+      "id": "angles",
+      "condition": "좌측 85−2x°, 꼭대기 75°, 우측 외각 4x+40°이다.",
+      "mappedTo": [
+        "planeMarks.angles[0]",
+        "planeMarks.angles[1]",
+        "planeMarks.angles[2]"
+      ]
+    },
+    {
+      "id": "supplementary",
+      "condition": "오른쪽 내각은 140−4x°로 외각과 합해 180°이다.",
+      "mappedTo": "planeMarks.angles[3]"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 희미한 스캔의 외각 호와 식 라벨을 선분과 떨어진 위치에 정밀 재작성한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5072",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5072",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "11"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "C",
+    "B",
+    "R"
+  ],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "R"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "base",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "left",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "right",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "extension",
+      "refs": [
+        "C",
+        "R"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "leftExpr",
+        "refs": [
+          "C",
+          "A",
+          "B"
+        ],
+        "value": 45,
+        "label": "85-2x"
+      },
+      {
+        "id": "apex",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 75,
+        "label": "75"
+      },
+      {
+        "id": "exterior",
+        "refs": [
+          "B",
+          "C",
+          "R"
+        ],
+        "value": 120,
+        "label": "4x+40"
+      },
+      {
+        "id": "interior",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 60,
+        "label": "140-4x",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  }
+}
