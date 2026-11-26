@@ -796,19 +796,6 @@
               ]
             },
             {
-              "id": "rT1",
-              "fill": "BLUE",
-              "shapes": [
-                {
-                  "polygon": [
-                    "A",
-                    "B",
-                    "D"
-                  ]
-                }
-              ]
-            },
-            {
               "id": "rL2",
               "fill": "WARM",
               "shapes": [
@@ -855,30 +842,7 @@
                   }
                 }
               ]
-            },
-            {
-              "id": "rT2",
-              "fill": "WARM",
-              "shapes": [
-                {
-                  "polygon": [
-                    "B",
-                    "C",
-                    "D"
-                  ]
-                }
-              ]
             }
-          ],
-          "equalAreas": [
-            [
-              "rL1",
-              "rT1"
-            ],
-            [
-              "rL2",
-              "rT2"
-            ]
           ],
           "expressionLabels": [
             {
@@ -906,5 +870,18 @@
       }
     }
   ],
-  "caption": "직사각형의 대각선 BD는 외접원의 지름이다. 직각삼각형 ABD에서 두 직각변 위의 반원 넓이의 합과 빗변 위의 반원(원의 절반) 넓이가 같으므로, 파란색 두 초승달의 넓이의 합은 삼각형 ABD의 넓이와 같다. 주황색 두 초승달도 삼각형 BCD와 같다."
+  "caption": "직사각형의 대각선 BD는 외접원의 지름이다. 직각삼각형 ABD에서 두 직각변 위의 반원 넓이의 합과 빗변 위의 반원(원의 절반) 넓이가 같으므로, 파란색 두 초승달의 넓이의 합은 삼각형 ABD의 넓이와 같다. 주황색 두 초승달도 삼각형 BCD와 같다.",
+  "sourceConditions": [
+    {
+      "id": "original-conditions",
+      "condition": "가로 12cm, 세로 16cm 직사각형의 네 변 밖에 각각 반원이 있고 색칠한 네 초승달의 넓이를 묻는다.",
+      "mappedTo": [
+        "panels[0].plan.mathPlan.nodes",
+        "panels[0].plan.displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본에 없는 장식용 면 채움을 제거하고 기하·수치·경계선 표현을 보존한다."
+  ]
 }

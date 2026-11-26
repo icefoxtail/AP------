@@ -263,7 +263,6 @@
           }
         ],
         "planeMarks": {
-          "regions": [],
           "textLabels": [
             {
               "id": "tl",
@@ -580,21 +579,6 @@
           }
         ],
         "planeMarks": {
-          "regions": [
-            {
-              "id": "r1",
-              "fill": "BLUE",
-              "shapes": [
-                {
-                  "polygon": [
-                    "A",
-                    "C",
-                    "F"
-                  ]
-                }
-              ]
-            }
-          ],
           "textLabels": [
             {
               "id": "tl",
@@ -911,21 +895,6 @@
           }
         ],
         "planeMarks": {
-          "regions": [
-            {
-              "id": "r2",
-              "fill": "WARM",
-              "shapes": [
-                {
-                  "polygon": [
-                    "B",
-                    "E",
-                    "G"
-                  ]
-                }
-              ]
-            }
-          ],
           "textLabels": [
             {
               "id": "tl",
@@ -960,5 +929,18 @@
       }
     }
   ],
-  "caption": "삼각형이 되려면 세 점이 한 직선 위에 있으면 안 되므로 두 직선 중 한 곳에서 두 점, 다른 곳에서 한 점을 고른다. l에서 두 점과 m에서 한 점(파란색), l에서 한 점과 m에서 두 점(주황색)의 두 경우로 나누어 센다."
+  "caption": "두 평행선 위의 점에서 삼각형을 만들려면 한 직선에서 두 점, 다른 직선에서 한 점을 고른다. 면은 채우지 않고 선택한 점과 선으로 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "original-conditions",
+      "condition": "평행한 두 직선 l, m 위에 각각 A B C D와 E F G가 차례로 있다. 서로 다른 세 점의 삼각형 수를 센다.",
+      "mappedTo": [
+        "panels[0].plan.mathPlan.nodes",
+        "panels[0].plan.displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본에 없는 장식용 면 채움을 제거하고 기하·수치·경계선 표현을 보존한다."
+  ]
 }

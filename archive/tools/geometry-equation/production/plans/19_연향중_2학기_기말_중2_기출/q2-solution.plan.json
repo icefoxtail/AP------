@@ -194,21 +194,6 @@
                 "sDC"
               ]
             }
-          ],
-          "regions": [
-            {
-              "id": "rT",
-              "fill": "WARM",
-              "shapes": [
-                {
-                  "polygon": [
-                    "G2",
-                    "B",
-                    "D"
-                  ]
-                }
-              ]
-            }
           ]
         },
         "caption": "삼각형 ABC의 넓이는 72",
@@ -384,54 +369,6 @@
           }
         ],
         "planeMarks": {
-          "regions": [
-            {
-              "id": "rGBC",
-              "fill": "BLUE",
-              "shapes": [
-                {
-                  "polygon": [
-                    "G",
-                    "B",
-                    "C"
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "rGCA",
-              "fill": "BLUE",
-              "shapes": [
-                {
-                  "polygon": [
-                    "G",
-                    "C",
-                    "A"
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "rGAB",
-              "fill": "BLUE",
-              "shapes": [
-                {
-                  "polygon": [
-                    "G",
-                    "A",
-                    "B"
-                  ]
-                }
-              ]
-            }
-          ],
-          "equalAreas": [
-            [
-              "rGBC",
-              "rGCA",
-              "rGAB"
-            ]
-          ],
           "textLabels": [
             {
               "id": "trGBC",
@@ -651,88 +588,6 @@
             ]
           }
         ],
-        "planeMarks": {
-          "regions": [
-            {
-              "id": "r1",
-              "fill": "WARM",
-              "shapes": [
-                {
-                  "polygon": [
-                    "G2",
-                    "B",
-                    "D"
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "r2",
-              "fill": "BLUE",
-              "shapes": [
-                {
-                  "polygon": [
-                    "G2",
-                    "D",
-                    "C"
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "r3",
-              "fill": "BLUE",
-              "shapes": [
-                {
-                  "polygon": [
-                    "G2",
-                    "C",
-                    "E"
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "r4",
-              "fill": "BLUE",
-              "shapes": [
-                {
-                  "polygon": [
-                    "G2",
-                    "E",
-                    "G"
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "r5",
-              "fill": "BLUE",
-              "shapes": [
-                {
-                  "polygon": [
-                    "G2",
-                    "G",
-                    "F"
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "r6",
-              "fill": "BLUE",
-              "shapes": [
-                {
-                  "polygon": [
-                    "G2",
-                    "F",
-                    "B"
-                  ]
-                }
-              ]
-            }
-          ]
-        },
         "caption": "삼각형 GBC를 6등분",
         "coordinateCanvas": {
           "width": 420,
@@ -749,5 +604,18 @@
       }
     }
   ],
-  "caption": "무게중심 G는 삼각형 ABC를 넓이가 같은 세 삼각형으로 나눈다(파란색). G′은 삼각형 GBC의 무게중심이므로 세 중선이 삼각형 GBC를 넓이가 같은 6개의 삼각형으로 나누고, 그중 하나가 삼각형 G′BD(주황색)이다. 오른쪽 그림은 삼각형 GBC를 알아보기 쉽게 다시 그린 것이다."
+  "caption": "G는 ABC의 무게중심, G′은 GBC의 무게중심이다. 중선과 높이·넓이 관계를 구획선으로 설명한다.",
+  "sourceConditions": [
+    {
+      "id": "original-conditions",
+      "condition": "G는 ABC의 무게중심, G′은 GBC의 무게중심이고 원본에는 넓이 색칠이 없다.",
+      "mappedTo": [
+        "panels[0].plan.mathPlan.nodes",
+        "panels[0].plan.displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본에 없는 장식용 면 채움을 제거하고 기하·수치·경계선 표현을 보존한다."
+  ]
 }
