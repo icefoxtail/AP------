@@ -1,69 +1,115 @@
 {
-  "capability": "piecewise-polynomial-spike-v1",
+  "capability": "multi-curve-figure-v1",
   "graphPlan": {
-    "family": "piecewise-polynomial",
-    "pieces": [
+    "family": "multi-curve",
+    "curves": [
       {
+        "id": "f",
+        "kind": "Y_OF_X",
         "coefficients": [
           "3",
           "-2",
           "1/4"
-        ]
+        ],
+        "domain": [
+          "-1",
+          "9"
+        ],
+        "label": "y=(1/4)(x-4)^2-1"
       }
     ],
-    "domain": [
-      "0",
-      "8"
-    ],
-    "sourceDomain": {
-      "kind": "ALL_REALS"
-    },
-    "requiredPoints": [
-      {
-        "id": "V",
-        "x": "4",
-        "y": "-1"
-      },
-      {
-        "id": "A",
-        "x": "2",
-        "y": "0"
-      },
-      {
-        "id": "B",
-        "x": "6",
-        "y": "0"
-      },
-      {
-        "id": "C",
-        "x": "0",
-        "y": "3"
-      }
+    "viewport": [
+      -2,
+      10,
+      -3,
+      7
     ],
     "axisTickValues": {
-      "x": [
-        "2",
-        "4",
-        "6",
-        "8"
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "4",
+          "y": "-1",
+          "coordinates": true
+        },
+        {
+          "id": "Y",
+          "x": "0",
+          "y": "3",
+          "coordinates": true
+        },
+        {
+          "id": "X1",
+          "x": "2",
+          "y": "0"
+        },
+        {
+          "id": "X2",
+          "x": "6",
+          "y": "0"
+        }
       ],
-      "y": [
-        "-1",
-        "3"
+      "guides": [
+        {
+          "id": "axis",
+          "from": "V",
+          "axis": "x"
+        }
       ]
     }
   },
-  "caption": "y=(x−4)²/4−1은 y=x²/4를 오른쪽 4, 아래 1만큼 옮긴 포물선이다. 꼭짓점(4,−1), 대칭축 x=4, y절편 3이며 x절편은 2와 6이다. 판독 가능한 보기①의 꼭짓점과 y절편이 일치한다. 정답①.",
+  "caption": "정답 ①의 주어진 식을 정확한 포물선과 꼭짓점·절편으로 확인한다.",
   "sourceConditions": [
     {
-      "id": "source",
-      "condition": "다음 중 이차함수 $y=\\dfrac{1}{4}(x-4)^2-1$의 그래프는? (4점)",
-      "mappedTo": "graphPlan"
+      "id": "curve_f",
+      "condition": "원문 함수 y=(1/4)(x-4)^2-1의 포물선 실선·점선",
+      "mappedTo": [
+        "f"
+      ]
     },
     {
-      "id": "domain",
-      "condition": "원래 정의역은 모든 실수이며 domain[0,8]은 꼭짓점·양근·y절편을 포함하는 표시용 자르기다. 누락된 보기②④의 함수나 좌표를 추측해 복원하지 않는다.",
-      "mappedTo": "graphPlan.curves.domain"
+      "id": "point_V",
+      "condition": "표시 점 V(4,-1)",
+      "mappedTo": [
+        "V"
+      ]
+    },
+    {
+      "id": "point_Y",
+      "condition": "표시 점 Y(0,3)",
+      "mappedTo": [
+        "Y"
+      ]
+    },
+    {
+      "id": "point_X1",
+      "condition": "표시 점 X1(2,0)",
+      "mappedTo": [
+        "X1"
+      ]
+    },
+    {
+      "id": "point_X2",
+      "condition": "표시 점 X2(6,0)",
+      "mappedTo": [
+        "X2"
+      ]
+    },
+    {
+      "id": "guide_axis",
+      "condition": "점선 대칭축 또는 높이 axis",
+      "mappedTo": [
+        "axis"
+      ]
     }
-  ]
+  ],
+  "newVisualInformation": [
+    "원문 포물선의 기울기·꼭짓점·절편·점선 축을 엔진 곡선으로 그린다. 기본 배경 사각형과 무의미한 면 채움은 없다.",
+    "SOURCE_ASSET_INCOMPLETE: q03_2.png와 q03_4.png에 곡선 일부분만 남아 다섯 보기 전체의 1:1 복원이 불가하다. 고의 추정·임의 도식 금지."
+  ],
+  "sourceQuote": "다음 중 이차함수 $y=\\dfrac{1}{4}(x-4)^2-1$의 그래프는? (4점)"
 }

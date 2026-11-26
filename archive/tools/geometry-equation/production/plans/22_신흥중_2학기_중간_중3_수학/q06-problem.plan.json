@@ -1,0 +1,74 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-1/2",
+          "1",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "2"
+        ],
+        "label": "y=ax^2+bx+c"
+      }
+    ],
+    "viewport": [
+      -4,
+      3,
+      -2,
+      5
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "-1/2",
+          "y": "-3/4"
+        },
+        {
+          "id": "Y",
+          "x": "0",
+          "y": "-1/2"
+        }
+      ]
+    }
+  },
+  "caption": "원본 그래프의 a>0, 대칭축 x<0, y절편 c<0인 부호 조건만 나타낸다. 계수의 구체적 수치는 모양을 위한 대표값이다.",
+  "sourceConditions": [
+    {
+      "id": "curve_f",
+      "condition": "원문 함수 y=ax^2+bx+c의 포물선 실선·점선",
+      "mappedTo": [
+        "f"
+      ]
+    },
+    {
+      "id": "point_V",
+      "condition": "표시 점 V(-1/2,-3/4)",
+      "mappedTo": [
+        "V"
+      ]
+    },
+    {
+      "id": "point_Y",
+      "condition": "표시 점 Y(0,-1/2)",
+      "mappedTo": [
+        "Y"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 포물선의 기울기·꼭짓점·절편·점선 축을 엔진 곡선으로 그린다. 기본 배경 사각형과 무의미한 면 채움은 없다."
+  ],
+  "sourceQuote": "이차함수 $y=ax^2+bx+c$의 그래프가 아래 그림과 같을 때, 수 $a, b, c$의 부호는? (4점) [원본 그림]"
+}

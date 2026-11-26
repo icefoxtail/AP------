@@ -1,0 +1,317 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1732050808",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1732050808",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "866025404",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "866025404",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1098076211",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "633974596",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1098076211",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "B",
+    "C",
+    "D",
+    "A",
+    "E",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sEH",
+      "refs": [
+        "E",
+        "H"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "rC",
+      "refs": [
+        "D",
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "rH",
+      "refs": [
+        "E",
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "tCD",
+        "ownerSegment": "sDC",
+        "text": "10",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 45,
+        "label": "45",
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aD",
+        "refs": [
+          "B",
+          "D",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 650,
+    "height": 465
+  },
+  "caption": "두 직각삼각형 ABC와 DBC, 교점 E, 보조높이 EH⊥BC, 각 C45°·D60°·CD10.",
+  "sourceConditions": [
+    {
+      "id": "L_CD",
+      "condition": "그려지는 선분 DC의 길이·라벨 10",
+      "mappedTo": [
+        "tCD"
+      ]
+    },
+    {
+      "id": "A_C",
+      "condition": "각 C에 45 표시",
+      "mappedTo": [
+        "aC"
+      ]
+    },
+    {
+      "id": "A_D",
+      "condition": "각 D에 60 표시",
+      "mappedTo": [
+        "aD"
+      ]
+    },
+    {
+      "id": "R_A",
+      "condition": "꼭짓점 A의 직각 표시",
+      "mappedTo": [
+        "rA"
+      ]
+    },
+    {
+      "id": "R_C",
+      "condition": "꼭짓점 C의 직각 표시",
+      "mappedTo": [
+        "rC"
+      ]
+    },
+    {
+      "id": "R_H",
+      "condition": "꼭짓점 H의 직각 표시",
+      "mappedTo": [
+        "rH"
+      ]
+    },
+    {
+      "id": "AUX_EH",
+      "condition": "풀이 보조 점선 EH",
+      "mappedTo": [
+        "sEH"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "모든 표시 선분·길이·각·직각과 원본 도형 경계를 엔진 필드로 표현하며 불필요한 면 채움은 쓰지 않는다."
+  ],
+  "sourceQuote": "【서술형 1】 다음 그림과 같이 두 직각삼각형 $\\mathrm{ABC}$와 $\\mathrm{DBC}$에서 $\\angle\\mathrm{ACB}=45^\\circ$, $\\angle\\mathrm{BDC}=60^\\circ$, $\\overline{\\mathrm{CD}}=10$일 때, $\\overline{\\mathrm{EH}}$의 길이를 삼각비를 이용하여 구하여라. (7점) [원본 그림]"
+}

@@ -1,0 +1,350 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "81915204",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "81915204",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "57357644",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "70020754",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "D",
+    "F",
+    "C",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sAF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "C",
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "E",
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "tAC",
+        "ownerSegment": "sAC",
+        "text": "1",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "ax",
+        "refs": [
+          "C",
+          "A",
+          "D"
+        ],
+        "value": 35,
+        "label": "x",
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ay",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 55,
+        "label": "y",
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "az",
+        "refs": [
+          "C",
+          "E",
+          "D"
+        ],
+        "value": 55,
+        "label": "z",
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcFD",
+        "circle": "c",
+        "center": "A",
+        "from": "D",
+        "to": "F",
+        "side": "CCW"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 650,
+    "height": 465
+  },
+  "caption": "반지름1인 사분원, 교점 C와 수직 발 B, 외부점 E의 z, ∠A=x, ∠C=y를 원본 관계대로 그린다.",
+  "sourceConditions": [
+    {
+      "id": "L_AC",
+      "condition": "그려지는 선분 AC의 길이·라벨 1",
+      "mappedTo": [
+        "tAC"
+      ]
+    },
+    {
+      "id": "A_x",
+      "condition": "각 x에 x 표시",
+      "mappedTo": [
+        "ax"
+      ]
+    },
+    {
+      "id": "A_y",
+      "condition": "각 y에 y 표시",
+      "mappedTo": [
+        "ay"
+      ]
+    },
+    {
+      "id": "A_z",
+      "condition": "각 z에 z 표시",
+      "mappedTo": [
+        "az"
+      ]
+    },
+    {
+      "id": "R_B",
+      "condition": "꼭짓점 B의 직각 표시",
+      "mappedTo": [
+        "rB"
+      ]
+    },
+    {
+      "id": "R_D",
+      "condition": "꼭짓점 D의 직각 표시",
+      "mappedTo": [
+        "rD"
+      ]
+    },
+    {
+      "id": "ARC_FD",
+      "condition": "원본의 실제 원호",
+      "mappedTo": [
+        "arcFD"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "모든 표시 선분·길이·각·직각과 원본 도형 경계를 엔진 필드로 표현하며 불필요한 면 채움은 쓰지 않는다."
+  ],
+  "sourceQuote": "아래 그림과 같이 반지름의 길이가 $1$인 사분원에서 다음 중 옳지 않은 것은? (5점) [원본 그림]"
+}

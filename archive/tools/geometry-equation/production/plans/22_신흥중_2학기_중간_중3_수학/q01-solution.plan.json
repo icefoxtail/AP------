@@ -1,0 +1,84 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-2"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=-2x^2"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-1"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=-x^2",
+        "style": "DASHED"
+      }
+    ],
+    "viewport": [
+      -3,
+      3,
+      -9,
+      2
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ]
+    }
+  },
+  "caption": "y=-2x²는 아래로 열리고 y=-x²보다 폭이 좁다. 두 그래프를 실선·점선으로 구분한다.",
+  "sourceConditions": [
+    {
+      "id": "curve_f",
+      "condition": "원문 함수 y=-2x^2의 포물선 실선·점선",
+      "mappedTo": [
+        "f"
+      ]
+    },
+    {
+      "id": "curve_g",
+      "condition": "원문 함수 y=-x^2의 포물선 실선·점선",
+      "mappedTo": [
+        "g"
+      ]
+    },
+    {
+      "id": "point_O",
+      "condition": "표시 점 O(0,0)",
+      "mappedTo": [
+        "O"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 포물선의 기울기·꼭짓점·절편·점선 축을 엔진 곡선으로 그린다. 기본 배경 사각형과 무의미한 면 채움은 없다."
+  ],
+  "sourceQuote": "다음 중에서 이차함수 $y=-2x^2$의 그래프에 대한 설명으로 옳지 않은 것은? (정답2개) (4점)"
+}
