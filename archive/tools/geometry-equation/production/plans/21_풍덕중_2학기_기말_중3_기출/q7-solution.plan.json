@@ -1,0 +1,317 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "313337322676",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-91416256158",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "194796604510",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-417104202605",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "348084975369",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-488583743842",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "545148706364",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-253732334459",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "548188732059",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-488583743842",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "348084975369",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-288479987153",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "200103756690",
+            "denominator": "1000000000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "P",
+    "O"
+  ],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "CP",
+      "refs": [
+        "C",
+        "P"
+      ]
+    },
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "tangentC",
+      "refs": [
+        "O",
+        "C",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "BAD75",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 75,
+        "label": "75",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BDC25",
+        "refs": [
+          "B",
+          "D",
+          "C"
+        ],
+        "value": 25,
+        "label": "25",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BCD105",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 105,
+        "label": "105",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "CBD50",
+        "refs": [
+          "C",
+          "B",
+          "D"
+        ],
+        "value": 50,
+        "label": "50",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "DCPx",
+        "refs": [
+          "D",
+          "C",
+          "P"
+        ],
+        "value": 50,
+        "label": "x",
+        "style": "ARC",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "caption": "원에 내접한 사각형이므로 ∠BCD=180°−75°=105°이고, 삼각형 BCD에서 ∠CBD=180°−105°−25°이다. 접선과 현이 이루는 각은 그 현을 보는 원주각과 같으므로 x=∠CBD이다. 정답은 50°이다.",
+  "accessibilityDescription": "원에 내접하는 꼭짓점이 A, B, C, D인 사각형과 대각선 BD, 점 C에서의 접선 CP가 있다. ∠BAD=75°는 파란색, ∠BDC=25°는 초록색, ∠BCD는 분홍색, 크기가 같은 ∠CBD(라벨 없음)와 접선과 현이 이루는 ∠DCP=x는 주황색으로 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "원본 q7 해설 SVG의 점·원·보조선·현·할선 연결 관계 및 원본 기출 그림을 대조한 위치 정보",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displaySegments",
+        "displayCircles"
+      ]
+    },
+    {
+      "id": "source-angle",
+      "condition": "사각형 $ABCD$는 원에 내접하므로 $\\angle BCD=180^\\circ-75^\\circ=105^\\circ$이다.  삼각형 $BCD$에서 $\\angle CBD=180^\\circ-105^\\circ-25^\\circ=50^\\circ$이다.  접선과 현 $CD$가 이루는 각은 현 $CD$를 보는 원주각 $\\angle CBD$와 같다. 따라서 $x=50^\\circ$이고 정답은 ③이다.",
+      "mappedTo": [
+        "planeMarks.angles",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 SVG의 채움 각도 부채꼴을 제거하고 모든 원주각·중심각·바깥각을 채움 없는 호 표식으로 복원한다.",
+    "접선-반지름의 직각을 정사각형 직각 표식으로 추가하고 해당 보조 반지름을 표시한다."
+  ]
+}

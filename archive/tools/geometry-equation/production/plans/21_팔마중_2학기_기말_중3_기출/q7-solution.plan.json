@@ -1,0 +1,45 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-72"},{"kind":"integer","value":"154"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-72"},{"kind":"integer","value":"-154"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"Q","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-170"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"-7225","denominator":"18"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"circ","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"170"}},"outputType":"CIRCLE","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints": ["P","A","B","Q","O"],
+  "displayLines": [],
+  "displayCircles": ["circ"],
+  "displaySegments": [
+    {"id":"PA","refs":["P","A"]},
+    {"id":"PB","refs":["P","B"]},
+    {"id":"QA","refs":["Q","A"]},
+    {"id":"QB","refs":["Q","B"]},
+    {"id":"OA","refs":["O","A"]},
+    {"id":"OB","refs":["O","B"]}
+  ],
+  "rightAngles": [
+    {"id":"rA","refs":["O","A","P"]},
+    {"id":"rB","refs":["O","B","P"]}
+  ],
+  "planeMarks": {
+    "angles": [
+      {"id":"Q115","refs":["A","Q","B"],"value":115,"label":"115","style":"ARC","factRole":"GIVEN"},
+      {"id":"O130","refs":["A","O","B"],"value":130,"label":"130","style":"ARC","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"P50","refs":["A","P","B"],"value":50,"label":"x","style":"ARC","factRole":"CONCLUSION"}
+    ]
+  },
+  "caption": "접선 PA와 PB, 원주각 AQB=115°, 작은 호 AB의 중심각 130°를 함께 보여 준다. 두 접선이 이루는 각 x는 50°이다.",
+  "accessibilityDescription": "원 O의 A와 B에서 그은 두 접선이 바깥 점 P에서 만나고 작은 호 AB 위의 Q에서 두 현 QA와 QB가 만난다. Q의 115°, O의 130°, P의 x가 직접 쓰여 있으며 A와 B에는 접선과 반지름의 직각 표식이 있다.",
+  "sourceConditions": [
+    {"id":"c1","condition":"P에서 원 O에 그은 두 접선의 접점은 A와 B이다.","mappedTo":["mathPlan.nodes","displayCircles","displaySegments","rightAngles"]},
+    {"id":"c2","condition":"작은 호 AB 위의 Q에서 ∠AQB=115°이다.","mappedTo":["mathPlan.nodes","displaySegments","planeMarks.angles"]},
+    {"id":"c3","condition":"∠APB=x를 구하며 접점 사이 작은 호 AB는 130°, x=50°이다.","mappedTo":["planeMarks.angles","caption"]}
+  ],
+  "newVisualInformation": ["기존 해설 SVG에서 빠졌던 원문의 115°를 Q의 실제 각호에 복원하고, 접선의 직각 두 곳을 정사각 표식으로 나타낸다."]
+}
