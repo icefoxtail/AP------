@@ -929,36 +929,6 @@
      }
     ],
     "planeMarks": {
-     "regions": [
-      {
-       "id": "rg0",
-       "fill": "BLUE",
-       "shapes": [
-        {
-         "polygon": [
-          "P",
-          "Q",
-          "N",
-          "C",
-          "M"
-         ]
-        }
-       ]
-      },
-      {
-       "id": "rg1",
-       "fill": "ROSE",
-       "shapes": [
-        {
-         "polygon": [
-          "A",
-          "P",
-          "Q"
-         ]
-        }
-       ]
-      }
-     ]
     },
     "caption": "삼각형 AMN=9, APN=6, APQ=4",
     "coordinateCanvas": {
@@ -968,5 +938,18 @@
    }
   }
  ],
- "caption": "닮음비 2:1로 AP:PM과 AQ:QN을 구한다. 사각형 A-M-C-N은 12, 삼각형 AMN은 9, 삼각형 APN은 6, 삼각형 APQ는 4이다. 파란색 오각형 P-Q-N-C-M은 사각형 A-M-C-N에서 분홍색 삼각형 APQ를 뺀 부분이다."
+ "caption": "닮음비 2:1로 AP:PM과 AQ:QN을 구한다. 원본의 색칠한 오각형 PQNCM은 첫 패널에 표시하고, 보조 패널은 선만으로 12, 9, 6, 4의 넓이 관계를 비교한다.",
+ "sourceConditions": [
+  {
+   "id": "original-figure",
+   "condition": "ABCD는 가로 6cm 세로 4cm의 직사각형이고 M, N은 변의 중점이며 원본의 음영은 오각형 PQNCM뿐이다.",
+   "mappedTo": [
+    "panels[0].plan.planeMarks.dimensions",
+    "panels[0].plan.planeMarks.regions"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "원본 오각형 음영만 유지하고 보조 패널의 장식성 면 채움을 제거한다."
+ ]
 }

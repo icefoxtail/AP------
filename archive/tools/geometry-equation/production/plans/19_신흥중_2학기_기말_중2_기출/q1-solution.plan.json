@@ -384,5 +384,19 @@
       }
     }
   ],
-  "caption": "E는 AC의 중점이므로 AE=EC=8이고, 무게중심 G는 중선 BE를 꼭짓점 B 쪽에서 2:1로 나눈다. 파란색 BG가 주황색 GE의 두 배이다."
+  "caption": "E는 AC의 중점이므로 AE=EC=8이고, 무게중심 G는 중선 BE를 꼭짓점 B 쪽에서 2:1로 나눈다. 파란색 BG가 주황색 GE의 두 배이다.",
+  "sourceConditions": [
+    {
+      "id": "original-figure",
+      "condition": "원본 PNG에서 E는 AC의 중점이고 EC=8cm, BG=6cm, x는 AE, y는 GE로 표시된다. 현행 JS의 x=4, 정답③은 원본 그림과 불일치한다.",
+      "mappedTo": [
+        "panels[0].plan.planeMarks.equalLengths",
+        "panels[0].plan.planeMarks.expressionLabels",
+        "panels[1].plan.planeMarks.expressionLabels"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "중점 표시와 무게중심의 2:1 분할을 분리해 보여 원본의 x=8, y=3을 읽게 한다."
+  ]
 }

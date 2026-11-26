@@ -321,21 +321,6 @@
           }
         ],
         "planeMarks": {
-          "regions": [
-            {
-              "id": "rT",
-              "fill": "BLUE",
-              "shapes": [
-                {
-                  "polygon": [
-                    "A",
-                    "B",
-                    "D"
-                  ]
-                }
-              ]
-            }
-          ],
           "segmentColors": [
             {
               "segments": [
@@ -532,22 +517,6 @@
           }
         ],
         "planeMarks": {
-          "regions": [
-            {
-              "id": "rT",
-              "fill": "BLUE",
-              "shapes": [
-                {
-                  "polygon": [
-                    "A",
-                    "B",
-                    "E",
-                    "D"
-                  ]
-                }
-              ]
-            }
-          ],
           "segmentColors": [
             {
               "segments": [
@@ -582,5 +551,18 @@
       }
     }
   ],
-  "caption": "삼각형 ABD의 넓이를 직각을 낀 두 변 AB, AD로 구한 것과, 빗변 BD를 밑변·AE를 높이로 구한 것이 같다."
+  "caption": "삼각형 ABD의 넓이를 직각을 낀 두 변 AB, AD로 구한 것과, 빗변 BD를 밑변·AE를 높이로 구한 것이 같다.",
+  "sourceConditions": [
+    {
+      "id": "original-figure",
+      "condition": "가로 8cm, 세로 6cm인 직사각형 ABCD에서 AE는 대각선 BD에 수직이며 E는 수선의 발이다.",
+      "mappedTo": [
+        "panels[0].plan.planeMarks.dimensions",
+        "panels[0].plan.rightAngles"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "BD와 AE를 구하는 두 직각삼각형의 높이·밑변을 보여준다."
+  ]
 }

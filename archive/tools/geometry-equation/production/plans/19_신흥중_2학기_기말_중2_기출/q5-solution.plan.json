@@ -390,34 +390,6 @@
           }
         ],
         "planeMarks": {
-          "regions": [
-            {
-              "id": "rAFD",
-              "fill": "BLUE",
-              "shapes": [
-                {
-                  "polygon": [
-                    "A",
-                    "F",
-                    "D"
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "rFBD",
-              "fill": "WARM",
-              "shapes": [
-                {
-                  "polygon": [
-                    "F",
-                    "B",
-                    "D"
-                  ]
-                }
-              ]
-            }
-          ],
           "expressionLabels": [
             {
               "id": "lAF",
@@ -439,5 +411,18 @@
       }
     }
   ],
-  "caption": "G가 무게중심이므로 G를 지나고 BC에 평행한 FE는 AB를 AF:FB=2:1로 나눈다. D가 BC의 중점이라 삼각형 ABD는 ABC의 절반이고, 삼각형 AFD와 FBD는 높이가 같아 넓이의 비가 밑변의 비 2:1이다."
+  "caption": "G가 무게중심이므로 G를 지나고 BC에 평행한 FE는 AB를 AF:FB=2:1로 나눈다. D가 BC의 중점이라 삼각형 ABD는 ABC의 절반이고, 삼각형 AFD와 FBD는 높이가 같아 넓이의 비가 밑변의 비 2:1이다.",
+  "sourceConditions": [
+    {
+      "id": "original-figure",
+      "condition": "G는 무게중심, FE는 BC와 평행하고 삼각형 ABC의 넓이는 36cm²이며 원본에서 작은 삼각형 FGD가 색칠되어 있다.",
+      "mappedTo": [
+        "panels[0].plan.planeMarks.parallels",
+        "panels[0].plan.planeMarks.regions"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "평행 표식과 원본 음영을 보존하고 풀이의 넓이비 관계를 분리해 제시한다."
+  ]
 }

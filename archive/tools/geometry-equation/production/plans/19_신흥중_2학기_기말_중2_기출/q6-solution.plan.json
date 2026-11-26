@@ -484,5 +484,18 @@
       }
     }
   ],
-  "caption": "AG:GD=2:1이고 M이 AD의 중점이므로 AD를 6등분하면 AM=3칸, AG=4칸, MG=1칸이다. 따라서 MG는 AD의 6분의 1이다."
+  "caption": "AG:GD=2:1이고 M이 AD의 중점이므로 AD를 6등분하면 AM=3칸, AG=4칸, MG=1칸이다. 따라서 MG는 AD의 6분의 1이다.",
+  "sourceConditions": [
+    {
+      "id": "original-figure",
+      "condition": "G는 무게중심, M은 AD의 중점이고 원본의 작은 삼각형 MGC에 넓이 2cm²가 주어진다.",
+      "mappedTo": [
+        "panels[0].plan.planeMarks.regions",
+        "panels[0].plan.displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "M-G-C 경계와 무게중심 중선의 비를 강조해 넓이 계산을 돕는다."
+  ]
 }

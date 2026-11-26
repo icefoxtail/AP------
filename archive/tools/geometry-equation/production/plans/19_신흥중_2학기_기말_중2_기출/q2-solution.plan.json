@@ -509,98 +509,7 @@
             ]
           }
         ],
-        "planeMarks": {
-          "regions": [
-            {
-              "id": "rGBD",
-              "fill": "BLUE",
-              "shapes": [
-                {
-                  "polygon": [
-                    "G",
-                    "B",
-                    "D"
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "rGDC",
-              "fill": "BLUE",
-              "shapes": [
-                {
-                  "polygon": [
-                    "G",
-                    "D",
-                    "C"
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "rGCE",
-              "fill": "BLUE",
-              "shapes": [
-                {
-                  "polygon": [
-                    "G",
-                    "C",
-                    "E"
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "rGEA",
-              "fill": "BLUE",
-              "shapes": [
-                {
-                  "polygon": [
-                    "G",
-                    "E",
-                    "A"
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "rGAF",
-              "fill": "BLUE",
-              "shapes": [
-                {
-                  "polygon": [
-                    "G",
-                    "A",
-                    "F"
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "rGFB",
-              "fill": "BLUE",
-              "shapes": [
-                {
-                  "polygon": [
-                    "G",
-                    "F",
-                    "B"
-                  ]
-                }
-              ]
-            }
-          ],
-          "equalAreas": [
-            [
-              "rGBD",
-              "rGDC",
-              "rGCE",
-              "rGEA",
-              "rGAF",
-              "rGFB"
-            ]
-          ]
-        },
+        "planeMarks": {},
         "caption": "세 중선이 만드는 여섯 삼각형",
         "coordinateCanvas": {
           "width": 420,
@@ -614,5 +523,18 @@
       }
     }
   ],
-  "caption": "D는 BC의 중점이라 BD가 BC의 절반이고, 무게중심 G의 높이는 꼭짓점 A의 높이의 3분의 1이다. 세 중선은 삼각형 ABC를 넓이가 같은 6개의 삼각형으로 나눈다(파란색)."
+  "caption": "D는 BC의 중점이라 BD가 BC의 절반이고, 무게중심 G의 높이는 꼭짓점 A의 높이의 3분의 1이다. 원본처럼 삼각형 GBD만 색칠하고, 세 중선이 만드는 6개의 등넓이 삼각형은 선으로 보여 준다.",
+  "sourceConditions": [
+    {
+      "id": "original-figure",
+      "condition": "G는 삼각형 ABC의 무게중심, D는 BC의 중점이며 원본에서 삼각형 GBD만 음영 처리되고 넓이는 4cm²이다.",
+      "mappedTo": [
+        "panels[0].plan.planeMarks.regions",
+        "panels[0].plan.displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본에서 색칠한 GBD만 남기고, 여섯 등넓이 삼각형의 관계는 선으로 구분한다."
+  ]
 }
