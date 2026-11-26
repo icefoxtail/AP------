@@ -1,0 +1,102 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "2"
+        ],
+        "domain": [
+          null,
+          "1"
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "9",
+          "-5",
+          "1"
+        ],
+        "domain": [
+          "1",
+          null
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-3",
+        "y": "-3"
+      },
+      {
+        "id": "B",
+        "x": "0",
+        "y": "3"
+      },
+      {
+        "id": "C",
+        "x": "2",
+        "y": "3"
+      },
+      {
+        "id": "D",
+        "x": "3",
+        "y": "3"
+      },
+      {
+        "id": "V",
+        "x": "5/2",
+        "y": "11/4"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "-3",
+        "3"
+      ]
+    },
+    "functionName": "f"
+  },
+  "caption": "x<1에서는 2x+3, x≥1에서는 x²−5x+9. f(f(a))=f(a)를 만족하는 a = −3, 0, 2, 3; 서로 다른 네 해.",
+  "accessibilityDescription": "정의역 전체에서 왼쪽 일차함수 조각과 오른쪽 이차함수 조각을 보여 주고, a = −3, 0, 2, 3의 각 점을 곡선 위에 표시하였다.",
+  "sourceConditions": [
+    {
+      "id": "pieces",
+      "condition": "f(x) = \\begin{cases} 2x+3 & (x < 1) \\\\ x^2-5x+9 & (x \\ge 1) \\end{cases}",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "equation",
+      "condition": "f(f(a))=f(a)는 f(a)가 f(t)=t의 고정점인 조건이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.pieces"
+      ]
+    },
+    {
+      "id": "solutions",
+      "condition": "실근 a = −3, 0, 2, 3",
+      "mappedTo": "graphPlan.requiredPoints"
+    },
+    {
+      "id": "vertex",
+      "condition": "오른쪽 이차 조각의 꼭짓점 V도 해당 조각 위에 표시",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "각 후보 a = −3, 0, 2, 3에서의 f(a)를 표시하여 고정점의 원상을 시각적으로 구별한다."
+  ],
+  "sourceQuote": "실수 전체의 집합에서 정의된 함수 $f(x) = \\begin{cases} 2x+3 & (x < 1) \\\\ x^2-5x+9 & (x \\ge 1) \\end{cases}$에 대하여 $(f \\circ f)(a) = f(a)$를 만족시키는 서로 다른 실수 $a$의 개수는?"
+}

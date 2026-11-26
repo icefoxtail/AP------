@@ -1,0 +1,3718 @@
+{
+  "schemaVersion": "visual-audit-textbook-v2",
+  "mainBaseSha": "a8472e59ae2523a70e937d4b2d6b002b6c7de54b",
+  "sourcePath": "archive/exams/textbooks/백발백중_공통수학2/백발백중_공통수학2_함수_P70-73_20261030_유사50.js",
+  "sourceGitBlobSha": "2dd97ad399d399adb3995228b7b6c2035f5c8892",
+  "wholeSourceTextSha256": "6a9d2256c431f70b49518b8e80b8f1afe638e0033ac702dfe9cbfa3e0b38972c",
+  "page": "P70–73",
+  "reviewContract": "Question and solution axes independently checked against exact JS text, answer, referenced SVG existence, and executable plan sourceConditions → renderable field mapping. Actual engine render/PNG/student/A4 remain separate NOT_RUN.",
+  "exclusions": "No original JS or existing SVG/PNG is modified. A P66 six-graph problem remains ENGINE_CAPABILITY_PENDING rather than pretending partial panels are equivalent.",
+  "entries": [
+    {
+      "ordinal": 1,
+      "qid": "BV-BAKBAL-H-COM2-HA-P70-Q01-T1-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P70-Q01",
+      "category": "구간별 정의된 이차·일차함수가 닫힌구간에서 일대일대응일 조건과 함숫값",
+      "questionSha256": "f8e4c89d0dbe87a598825e1038964efb0450faf2d62c7b123dccf194797251d6",
+      "solutionSha256": "e7b0484a3ec06ac32303a19e762970e2d7286ba734c081ab8438c1e660d9561c",
+      "content": "집합 $X=\\{x \\mid 0 \\le x \\le 4\\}$에 대하여 $X$에서 $X$로의 함수 $f(x) = \\begin{cases} ax^2+b & (0 \\le x < 3) \\\\ x-3 & (3 \\le x \\le 4) \\end{cases}$가 일대일대응일 때, $f(1)$의 값은? (단, $a, b$는 상수이다.)",
+      "answer": "①",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q01-T1-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q01-T1-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q01-T1-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "닫힌구간의 일대일대응이 되도록 두 조각의 치역을 연속적으로 나눈다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "닫힌구간의 일대일대응이 되도록 두 조각의 치역을 연속적으로 나눈다. 미정계수 확정 그래프를 문제 단계에서 먼저 제공하면 해를 누설하므로 발문의 구간별 식으로 충분하다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "BENEFICIAL",
+        "reason": "닫힌구간의 일대일대응이 되도록 두 조각의 치역을 연속적으로 나눈다. 원문 해설의 그래프 개형·치역·주기·교점·대칭 또는 순열의 결정적 관계를 나타내는 보조 그림이다.",
+        "capability": "piecewise-discontinuous-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_함수_P70-73_20261030_유사50/q01-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "featureParity": "PASS",
+        "sourceQuoteCheck": "MATCH",
+        "drawnFeatureEvidence": [
+          {
+            "id": "domain",
+            "condition": "정의역과 공역 [0,4]",
+            "mappedTo": "graphPlan.pieces",
+            "fieldPresent": true
+          },
+          {
+            "id": "quadratic",
+            "condition": "0≤x<3: f(x)=-1/3x²+4",
+            "mappedTo": "graphPlan.pieces[0].coefficients",
+            "fieldPresent": true
+          },
+          {
+            "id": "linear",
+            "condition": "3≤x≤4: f(x)=x-3",
+            "mappedTo": "graphPlan.pieces[1].coefficients",
+            "fieldPresent": true
+          },
+          {
+            "id": "jump",
+            "condition": "x=3에서 좌극한 1(열림), 함수값 0(닫힘)",
+            "mappedTo": "graphPlan.pieces",
+            "fieldPresent": true
+          }
+        ],
+        "engineGap": null,
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 2,
+      "qid": "BV-BAKBAL-H-COM2-HA-P70-Q01-S1-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P70-Q01",
+      "category": "구간별 정의된 이차·일차함수가 닫힌구간에서 일대일대응일 조건과 함숫값",
+      "questionSha256": "557bd4dde8e9e4e4ba47be083b37340c374f484f30bcf2a522afc3dc801f0b13",
+      "solutionSha256": "104eadecbfa5374bfc5588f612da6f8934e150e8c27ecc643064c2ad32c48a2e",
+      "content": "집합 $X=\\{x \\mid 0 \\le x \\le 4\\}$에 대하여 $X$에서 $X$로의 함수 $f(x) = \\begin{cases} ax^2+b & (0 \\le x < 3) \\\\ x-3 & (3 \\le x \\le 4) \\end{cases}$가 일대일대응일 때, $f(2)$의 값은? (단, $a, b$는 상수이다.)",
+      "answer": "③",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q01-S1-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q01-S1-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q01-S1-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "닫힌구간의 일대일대응이 되도록 두 조각의 치역을 연속적으로 나눈다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "닫힌구간의 일대일대응이 되도록 두 조각의 치역을 연속적으로 나눈다. 미정계수 확정 그래프를 문제 단계에서 먼저 제공하면 해를 누설하므로 발문의 구간별 식으로 충분하다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "BENEFICIAL",
+        "reason": "닫힌구간의 일대일대응이 되도록 두 조각의 치역을 연속적으로 나눈다. 원문 해설의 그래프 개형·치역·주기·교점·대칭 또는 순열의 결정적 관계를 나타내는 보조 그림이다.",
+        "capability": "piecewise-discontinuous-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_함수_P70-73_20261030_유사50/q02-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "featureParity": "PASS",
+        "sourceQuoteCheck": "MATCH",
+        "drawnFeatureEvidence": [
+          {
+            "id": "domain",
+            "condition": "정의역과 공역 [0,4]",
+            "mappedTo": "graphPlan.pieces",
+            "fieldPresent": true
+          },
+          {
+            "id": "quadratic",
+            "condition": "0≤x<3: f(x)=-1/3x²+4",
+            "mappedTo": "graphPlan.pieces[0].coefficients",
+            "fieldPresent": true
+          },
+          {
+            "id": "linear",
+            "condition": "3≤x≤4: f(x)=x-3",
+            "mappedTo": "graphPlan.pieces[1].coefficients",
+            "fieldPresent": true
+          },
+          {
+            "id": "jump",
+            "condition": "x=3에서 좌극한 1(열림), 함수값 0(닫힘)",
+            "mappedTo": "graphPlan.pieces",
+            "fieldPresent": true
+          }
+        ],
+        "engineGap": null,
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 3,
+      "qid": "BV-BAKBAL-H-COM2-HA-P70-Q01-S2-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P70-Q01",
+      "category": "구간별 정의된 이차·일차함수가 닫힌구간에서 일대일대응일 조건과 함숫값",
+      "questionSha256": "c9e8445aa35c4c5a18417cde71bbe2f9fa275af21aa2fd5acfd96b0f3a3b71f8",
+      "solutionSha256": "4a0b99f6749d76c5d337179c16fd782de34815765863430d3d134fa1020fb93b",
+      "content": "집합 $X=\\{x \\mid 0 \\le x \\le 4\\}$에 대하여 $X$에서 $X$로의 함수 $f(x) = \\begin{cases} ax^2+b & (0 \\le x < 3) \\\\ x-3 & (3 \\le x \\le 4) \\end{cases}$가 일대일대응일 때, $f(0)$의 값은? (단, $a, b$는 상수이다.)",
+      "answer": "⑤",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q01-S2-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q01-S2-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q01-S2-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "닫힌구간의 일대일대응이 되도록 두 조각의 치역을 연속적으로 나눈다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "닫힌구간의 일대일대응이 되도록 두 조각의 치역을 연속적으로 나눈다. 미정계수 확정 그래프를 문제 단계에서 먼저 제공하면 해를 누설하므로 발문의 구간별 식으로 충분하다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "BENEFICIAL",
+        "reason": "닫힌구간의 일대일대응이 되도록 두 조각의 치역을 연속적으로 나눈다. 원문 해설의 그래프 개형·치역·주기·교점·대칭 또는 순열의 결정적 관계를 나타내는 보조 그림이다.",
+        "capability": "piecewise-discontinuous-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_함수_P70-73_20261030_유사50/q03-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "featureParity": "PASS",
+        "sourceQuoteCheck": "MATCH",
+        "drawnFeatureEvidence": [
+          {
+            "id": "domain",
+            "condition": "정의역과 공역 [0,4]",
+            "mappedTo": "graphPlan.pieces",
+            "fieldPresent": true
+          },
+          {
+            "id": "quadratic",
+            "condition": "0≤x<3: f(x)=-1/3x²+4",
+            "mappedTo": "graphPlan.pieces[0].coefficients",
+            "fieldPresent": true
+          },
+          {
+            "id": "linear",
+            "condition": "3≤x≤4: f(x)=x-3",
+            "mappedTo": "graphPlan.pieces[1].coefficients",
+            "fieldPresent": true
+          },
+          {
+            "id": "jump",
+            "condition": "x=3에서 좌극한 1(열림), 함수값 0(닫힘)",
+            "mappedTo": "graphPlan.pieces",
+            "fieldPresent": true
+          }
+        ],
+        "engineGap": null,
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 4,
+      "qid": "BV-BAKBAL-H-COM2-HA-P70-Q01-S3-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P70-Q01",
+      "category": "구간별 정의된 이차·일차함수가 닫힌구간에서 일대일대응일 조건과 함숫값",
+      "questionSha256": "9472d3b218b3c7ec7c8d7aba034d6c0137e582f93e77f2bc68e02f43e9ff72a4",
+      "solutionSha256": "0384c6720c19cacce93fe7e02aa36965fe5500a6ddef702e01e0a561908d9876",
+      "content": "집합 $X=\\{x \\mid 0 \\le x \\le 4\\}$에 대하여 $X$에서 $X$로의 함수 $f(x) = \\begin{cases} ax^2+b & (0 \\le x < 3) \\\\ x-3 & (3 \\le x \\le 4) \\end{cases}$가 일대일대응일 때, $a+b$의 값은? (단, $a, b$는 상수이다.)",
+      "answer": "②",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q01-S3-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q01-S3-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q01-S3-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "닫힌구간의 일대일대응이 되도록 두 조각의 치역을 연속적으로 나눈다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "닫힌구간의 일대일대응이 되도록 두 조각의 치역을 연속적으로 나눈다. 미정계수 확정 그래프를 문제 단계에서 먼저 제공하면 해를 누설하므로 발문의 구간별 식으로 충분하다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "BENEFICIAL",
+        "reason": "닫힌구간의 일대일대응이 되도록 두 조각의 치역을 연속적으로 나눈다. 원문 해설의 그래프 개형·치역·주기·교점·대칭 또는 순열의 결정적 관계를 나타내는 보조 그림이다.",
+        "capability": "piecewise-discontinuous-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_함수_P70-73_20261030_유사50/q04-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "featureParity": "PASS",
+        "sourceQuoteCheck": "MATCH",
+        "drawnFeatureEvidence": [
+          {
+            "id": "domain",
+            "condition": "정의역과 공역 [0,4]",
+            "mappedTo": "graphPlan.pieces",
+            "fieldPresent": true
+          },
+          {
+            "id": "quadratic",
+            "condition": "0≤x<3: f(x)=-1/3x²+4",
+            "mappedTo": "graphPlan.pieces[0].coefficients",
+            "fieldPresent": true
+          },
+          {
+            "id": "linear",
+            "condition": "3≤x≤4: f(x)=x-3",
+            "mappedTo": "graphPlan.pieces[1].coefficients",
+            "fieldPresent": true
+          },
+          {
+            "id": "jump",
+            "condition": "x=3에서 좌극한 1(열림), 함수값 0(닫힘)",
+            "mappedTo": "graphPlan.pieces",
+            "fieldPresent": true
+          }
+        ],
+        "engineGap": null,
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 5,
+      "qid": "BV-BAKBAL-H-COM2-HA-P70-Q01-S4-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P70-Q01",
+      "category": "구간별 정의된 이차·일차함수가 닫힌구간에서 일대일대응일 조건과 함숫값",
+      "questionSha256": "043bc3aaef6cd47fd96a147641e99b217a583286792acdea443378a370224e38",
+      "solutionSha256": "71db246e8ee267407934b9e3648174bbc2984f99b5bd9e67dea484b404ffc63b",
+      "content": "집합 $X=\\{x \\mid 0 \\le x \\le 4\\}$에 대하여 $X$에서 $X$로의 함수 $f(x) = \\begin{cases} ax^2+b & (0 \\le x < 3) \\\\ x-3 & (3 \\le x \\le 4) \\end{cases}$가 일대일대응일 때, $a-b$의 값은? (단, $a, b$는 상수이다.)",
+      "answer": "④",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q01-S4-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q01-S4-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q01-S4-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "닫힌구간의 일대일대응이 되도록 두 조각의 치역을 연속적으로 나눈다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "닫힌구간의 일대일대응이 되도록 두 조각의 치역을 연속적으로 나눈다. 미정계수 확정 그래프를 문제 단계에서 먼저 제공하면 해를 누설하므로 발문의 구간별 식으로 충분하다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "BENEFICIAL",
+        "reason": "닫힌구간의 일대일대응이 되도록 두 조각의 치역을 연속적으로 나눈다. 원문 해설의 그래프 개형·치역·주기·교점·대칭 또는 순열의 결정적 관계를 나타내는 보조 그림이다.",
+        "capability": "piecewise-discontinuous-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_함수_P70-73_20261030_유사50/q05-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "featureParity": "PASS",
+        "sourceQuoteCheck": "MATCH",
+        "drawnFeatureEvidence": [
+          {
+            "id": "domain",
+            "condition": "정의역과 공역 [0,4]",
+            "mappedTo": "graphPlan.pieces",
+            "fieldPresent": true
+          },
+          {
+            "id": "quadratic",
+            "condition": "0≤x<3: f(x)=-1/3x²+4",
+            "mappedTo": "graphPlan.pieces[0].coefficients",
+            "fieldPresent": true
+          },
+          {
+            "id": "linear",
+            "condition": "3≤x≤4: f(x)=x-3",
+            "mappedTo": "graphPlan.pieces[1].coefficients",
+            "fieldPresent": true
+          },
+          {
+            "id": "jump",
+            "condition": "x=3에서 좌극한 1(열림), 함수값 0(닫힘)",
+            "mappedTo": "graphPlan.pieces",
+            "fieldPresent": true
+          }
+        ],
+        "engineGap": null,
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 6,
+      "qid": "BV-BAKBAL-H-COM2-HA-P70-Q01-S5-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P70-Q01",
+      "category": "구간별 정의된 이차·일차함수가 닫힌구간에서 일대일대응일 조건과 함숫값",
+      "questionSha256": "1e2d3e4025f63e09759fd6877fd809519ea1ba079c32501fee50929b7c9436e4",
+      "solutionSha256": "7a095746a095a55f6e18dd8902736cd694d478b2aaa6f4c91caf0cf45b98f493",
+      "content": "집합 $X=\\{x \\mid 0 \\le x \\le 5\\}$에 대하여 $X$에서 $X$로의 함수 $f(x) = \\begin{cases} ax^2+b & (0 \\le x < 4) \\\\ x-4 & (4 \\le x \\le 5) \\end{cases}$가 일대일대응일 때, $f(2)$의 값은? (단, $a, b$는 상수이다.)",
+      "answer": "②",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q01-S5-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q01-S5-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q01-S5-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "닫힌구간의 일대일대응이 되도록 두 조각의 치역을 연속적으로 나눈다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "닫힌구간의 일대일대응이 되도록 두 조각의 치역을 연속적으로 나눈다. 미정계수 확정 그래프를 문제 단계에서 먼저 제공하면 해를 누설하므로 발문의 구간별 식으로 충분하다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "BENEFICIAL",
+        "reason": "닫힌구간의 일대일대응이 되도록 두 조각의 치역을 연속적으로 나눈다. 원문 해설의 그래프 개형·치역·주기·교점·대칭 또는 순열의 결정적 관계를 나타내는 보조 그림이다.",
+        "capability": "piecewise-discontinuous-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_함수_P70-73_20261030_유사50/q06-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "featureParity": "PASS",
+        "sourceQuoteCheck": "MATCH",
+        "drawnFeatureEvidence": [
+          {
+            "id": "domain",
+            "condition": "정의역과 공역 [0,5]",
+            "mappedTo": "graphPlan.pieces",
+            "fieldPresent": true
+          },
+          {
+            "id": "quadratic",
+            "condition": "0≤x<4: f(x)=-1/4x²+5",
+            "mappedTo": "graphPlan.pieces[0].coefficients",
+            "fieldPresent": true
+          },
+          {
+            "id": "linear",
+            "condition": "4≤x≤5: f(x)=x-4",
+            "mappedTo": "graphPlan.pieces[1].coefficients",
+            "fieldPresent": true
+          },
+          {
+            "id": "jump",
+            "condition": "x=4에서 좌극한 1(열림), 함수값 0(닫힘)",
+            "mappedTo": "graphPlan.pieces",
+            "fieldPresent": true
+          }
+        ],
+        "engineGap": null,
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 7,
+      "qid": "BV-BAKBAL-H-COM2-HA-P70-Q01-S6-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P70-Q01",
+      "category": "구간별 정의된 이차·일차함수가 닫힌구간에서 일대일대응일 조건과 함숫값",
+      "questionSha256": "bdb79a1ddda490b9fa1eed71a3c7275d471086f4955e4ed714e67fe9a451d814",
+      "solutionSha256": "a60c0bb6b01d68d87982d04a4112d649b35231b3c91f58ab667ebd3c85fb2c2b",
+      "content": "집합 $X=\\{x \\mid 0 \\le x \\le 5\\}$에 대하여 $X$에서 $X$로의 함수 $f(x) = \\begin{cases} ax^2+b & (0 \\le x < 4) \\\\ x-4 & (4 \\le x \\le 5) \\end{cases}$가 일대일대응일 때, $f(1)$의 값은? (단, $a, b$는 상수이다.)",
+      "answer": "④",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q01-S6-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q01-S6-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q01-S6-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "닫힌구간의 일대일대응이 되도록 두 조각의 치역을 연속적으로 나눈다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "닫힌구간의 일대일대응이 되도록 두 조각의 치역을 연속적으로 나눈다. 미정계수 확정 그래프를 문제 단계에서 먼저 제공하면 해를 누설하므로 발문의 구간별 식으로 충분하다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "BENEFICIAL",
+        "reason": "닫힌구간의 일대일대응이 되도록 두 조각의 치역을 연속적으로 나눈다. 원문 해설의 그래프 개형·치역·주기·교점·대칭 또는 순열의 결정적 관계를 나타내는 보조 그림이다.",
+        "capability": "piecewise-discontinuous-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_함수_P70-73_20261030_유사50/q07-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "featureParity": "PASS",
+        "sourceQuoteCheck": "MATCH",
+        "drawnFeatureEvidence": [
+          {
+            "id": "domain",
+            "condition": "정의역과 공역 [0,5]",
+            "mappedTo": "graphPlan.pieces",
+            "fieldPresent": true
+          },
+          {
+            "id": "quadratic",
+            "condition": "0≤x<4: f(x)=-1/4x²+5",
+            "mappedTo": "graphPlan.pieces[0].coefficients",
+            "fieldPresent": true
+          },
+          {
+            "id": "linear",
+            "condition": "4≤x≤5: f(x)=x-4",
+            "mappedTo": "graphPlan.pieces[1].coefficients",
+            "fieldPresent": true
+          },
+          {
+            "id": "jump",
+            "condition": "x=4에서 좌극한 1(열림), 함수값 0(닫힘)",
+            "mappedTo": "graphPlan.pieces",
+            "fieldPresent": true
+          }
+        ],
+        "engineGap": null,
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 8,
+      "qid": "BV-BAKBAL-H-COM2-HA-P70-Q02-T1-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P70-Q02",
+      "category": "실수 전체에서 구간별 이차·일차함수가 일대일대응이기 위한 정수 계수의 최솟값",
+      "questionSha256": "328dc136ef1fa4d4f93463c9de1216a87341ca16f0121000e5d4c45c37dec61e",
+      "solutionSha256": "67e9d5d51304184dfa6606c16ffdcb72cab34e5db1cb620add7f27b05273ab65",
+      "content": "실수 전체의 집합 $\\mathbb{R}$에서 $\\mathbb{R}$로의 함수 $f(x) = \\begin{cases} -(x-1)^2+b & (x < 1) \\\\ ax+4 & (x \\ge 1) \\end{cases}$가 일대일대응일 때, 정수 $a$의 최솟값을 $m$, 그때의 $b$의 값을 $n$이라 하자. $m+n$의 값은? (단, $a, b$는 상수이다.)",
+      "answer": "①",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q02-T1-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q02-T1-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q02-T1-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "실수 전체의 일대일대응이 되도록 이차 가지와 직선의 경계 높이를 맞춘다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "실수 전체의 일대일대응이 되도록 이차 가지와 직선의 경계 높이를 맞춘다. 미정계수 확정 그래프를 문제 단계에서 먼저 제공하면 해를 누설하므로 발문의 구간별 식으로 충분하다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "BENEFICIAL",
+        "reason": "실수 전체의 일대일대응이 되도록 이차 가지와 직선의 경계 높이를 맞춘다. 원문 해설의 그래프 개형·치역·주기·교점·대칭 또는 순열의 결정적 관계를 나타내는 보조 그림이다.",
+        "capability": "piecewise-discontinuous-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_함수_P70-73_20261030_유사50/q08-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "featureParity": "PASS",
+        "sourceQuoteCheck": "MATCH",
+        "drawnFeatureEvidence": [
+          {
+            "id": "left",
+            "condition": "x<1인 음의 이차식의 꼭짓점은 (1,5)이며 이 점은 왼쪽 조각에 미포함",
+            "mappedTo": "graphPlan.pieces[0].coefficients",
+            "fieldPresent": true
+          },
+          {
+            "id": "right",
+            "condition": "x≥1: a=1인 직선의 절편은 4",
+            "mappedTo": "graphPlan.pieces[1].coefficients",
+            "fieldPresent": true
+          },
+          {
+            "id": "range",
+            "condition": "왼쪽 치역 (-∞,5), 오른쪽 치역 [5,∞)",
+            "mappedTo": "graphPlan.pieces",
+            "fieldPresent": true
+          }
+        ],
+        "engineGap": null,
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 9,
+      "qid": "BV-BAKBAL-H-COM2-HA-P70-Q02-S1-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P70-Q02",
+      "category": "실수 전체에서 구간별 이차·일차함수가 일대일대응이기 위한 정수 계수의 최솟값",
+      "questionSha256": "ef89e0616d16160a28c64e59f83e81b26e86c136a91a968621b3d834330c3142",
+      "solutionSha256": "d26082f18c2f1e192db45699d2cfacb97de0bb6dae9352a2f8ebba2d92cf5686",
+      "content": "실수 전체의 집합 $\\mathbb{R}$에서 $\\mathbb{R}$로의 함수 $f(x) = \\begin{cases} -(x-1)^2+b & (x < 1) \\\\ ax+4 & (x \\ge 1) \\end{cases}$가 일대일대응일 때, 정수 $a$의 최솟값을 $m$, 그때의 $b$의 값을 $n$이라 하자. $n-m$의 값은? (단, $a, b$는 상수이다.)",
+      "answer": "③",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q02-S1-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q02-S1-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q02-S1-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "실수 전체의 일대일대응이 되도록 이차 가지와 직선의 경계 높이를 맞춘다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "실수 전체의 일대일대응이 되도록 이차 가지와 직선의 경계 높이를 맞춘다. 미정계수 확정 그래프를 문제 단계에서 먼저 제공하면 해를 누설하므로 발문의 구간별 식으로 충분하다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "BENEFICIAL",
+        "reason": "실수 전체의 일대일대응이 되도록 이차 가지와 직선의 경계 높이를 맞춘다. 원문 해설의 그래프 개형·치역·주기·교점·대칭 또는 순열의 결정적 관계를 나타내는 보조 그림이다.",
+        "capability": "piecewise-discontinuous-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_함수_P70-73_20261030_유사50/q09-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "featureParity": "PASS",
+        "sourceQuoteCheck": "MATCH",
+        "drawnFeatureEvidence": [
+          {
+            "id": "left",
+            "condition": "x<1인 음의 이차식의 꼭짓점은 (1,5)이며 이 점은 왼쪽 조각에 미포함",
+            "mappedTo": "graphPlan.pieces[0].coefficients",
+            "fieldPresent": true
+          },
+          {
+            "id": "right",
+            "condition": "x≥1: a=1인 직선의 절편은 4",
+            "mappedTo": "graphPlan.pieces[1].coefficients",
+            "fieldPresent": true
+          },
+          {
+            "id": "range",
+            "condition": "왼쪽 치역 (-∞,5), 오른쪽 치역 [5,∞)",
+            "mappedTo": "graphPlan.pieces",
+            "fieldPresent": true
+          }
+        ],
+        "engineGap": null,
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 10,
+      "qid": "BV-BAKBAL-H-COM2-HA-P70-Q02-S2-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P70-Q02",
+      "category": "실수 전체에서 구간별 이차·일차함수가 일대일대응이기 위한 정수 계수의 최솟값",
+      "questionSha256": "64fe0d893f29bab4453d585f817566c17fee950b4ac20252913333c65338acf7",
+      "solutionSha256": "adc41ca2e9c2b96b656c155d1e191c834313dc86fa4994567870f75e86985aa4",
+      "content": "실수 전체의 집합 $\\mathbb{R}$에서 $\\mathbb{R}$로의 함수 $f(x) = \\begin{cases} -(x-1)^2+b & (x < 1) \\\\ ax+4 & (x \\ge 1) \\end{cases}$가 일대일대응일 때, 정수 $a$의 최솟값을 $m$, 그때의 $b$의 값을 $n$이라 하자. $mn$의 값은? (단, $a, b$는 상수이다.)",
+      "answer": "⑤",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q02-S2-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q02-S2-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q02-S2-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "실수 전체의 일대일대응이 되도록 이차 가지와 직선의 경계 높이를 맞춘다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "실수 전체의 일대일대응이 되도록 이차 가지와 직선의 경계 높이를 맞춘다. 미정계수 확정 그래프를 문제 단계에서 먼저 제공하면 해를 누설하므로 발문의 구간별 식으로 충분하다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "BENEFICIAL",
+        "reason": "실수 전체의 일대일대응이 되도록 이차 가지와 직선의 경계 높이를 맞춘다. 원문 해설의 그래프 개형·치역·주기·교점·대칭 또는 순열의 결정적 관계를 나타내는 보조 그림이다.",
+        "capability": "piecewise-discontinuous-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_함수_P70-73_20261030_유사50/q10-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "featureParity": "PASS",
+        "sourceQuoteCheck": "MATCH",
+        "drawnFeatureEvidence": [
+          {
+            "id": "left",
+            "condition": "x<1인 음의 이차식의 꼭짓점은 (1,5)이며 이 점은 왼쪽 조각에 미포함",
+            "mappedTo": "graphPlan.pieces[0].coefficients",
+            "fieldPresent": true
+          },
+          {
+            "id": "right",
+            "condition": "x≥1: a=1인 직선의 절편은 4",
+            "mappedTo": "graphPlan.pieces[1].coefficients",
+            "fieldPresent": true
+          },
+          {
+            "id": "range",
+            "condition": "왼쪽 치역 (-∞,5), 오른쪽 치역 [5,∞)",
+            "mappedTo": "graphPlan.pieces",
+            "fieldPresent": true
+          }
+        ],
+        "engineGap": null,
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 11,
+      "qid": "BV-BAKBAL-H-COM2-HA-P70-Q02-S3-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P70-Q02",
+      "category": "실수 전체에서 구간별 이차·일차함수가 일대일대응이기 위한 정수 계수의 최솟값",
+      "questionSha256": "77681bf6d934b5d58dd93a4c28702a937a9fd655b74d630847b19f07896c3345",
+      "solutionSha256": "6849e8fed14ee9b8aa57634d49f91c9eb1e7e6e51c9f3b1ee18c0474e068c0b2",
+      "content": "실수 전체의 집합 $\\mathbb{R}$에서 $\\mathbb{R}$로의 함수 $f(x) = \\begin{cases} -(x-2)^2+b & (x < 2) \\\\ ax+3 & (x \\ge 2) \\end{cases}$가 일대일대응일 때, 정수 $a$의 최솟값을 $m$, 그때의 $b$의 값을 $n$이라 하자. $m+n$의 값은? (단, $a, b$는 상수이다.)",
+      "answer": "③",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q02-S3-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q02-S3-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q02-S3-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "실수 전체의 일대일대응이 되도록 이차 가지와 직선의 경계 높이를 맞춘다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "실수 전체의 일대일대응이 되도록 이차 가지와 직선의 경계 높이를 맞춘다. 미정계수 확정 그래프를 문제 단계에서 먼저 제공하면 해를 누설하므로 발문의 구간별 식으로 충분하다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "BENEFICIAL",
+        "reason": "실수 전체의 일대일대응이 되도록 이차 가지와 직선의 경계 높이를 맞춘다. 원문 해설의 그래프 개형·치역·주기·교점·대칭 또는 순열의 결정적 관계를 나타내는 보조 그림이다.",
+        "capability": "piecewise-discontinuous-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_함수_P70-73_20261030_유사50/q11-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "featureParity": "PASS",
+        "sourceQuoteCheck": "MATCH",
+        "drawnFeatureEvidence": [
+          {
+            "id": "left",
+            "condition": "x<2인 음의 이차식의 꼭짓점은 (2,5)이며 이 점은 왼쪽 조각에 미포함",
+            "mappedTo": "graphPlan.pieces[0].coefficients",
+            "fieldPresent": true
+          },
+          {
+            "id": "right",
+            "condition": "x≥2: a=1인 직선의 절편은 3",
+            "mappedTo": "graphPlan.pieces[1].coefficients",
+            "fieldPresent": true
+          },
+          {
+            "id": "range",
+            "condition": "왼쪽 치역 (-∞,5), 오른쪽 치역 [5,∞)",
+            "mappedTo": "graphPlan.pieces",
+            "fieldPresent": true
+          }
+        ],
+        "engineGap": null,
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 12,
+      "qid": "BV-BAKBAL-H-COM2-HA-P70-Q02-S4-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P70-Q02",
+      "category": "실수 전체에서 구간별 이차·일차함수가 일대일대응이기 위한 정수 계수의 최솟값",
+      "questionSha256": "583cf5f55f7888b7d1bfa53bcf0c8ebd116121870fb778fb14b18aecc298d4a1",
+      "solutionSha256": "76c3991f780b994a93c0822dd8ab7707c5df069f03e3c57efa5e6c51d503cab2",
+      "content": "실수 전체의 집합 $\\mathbb{R}$에서 $\\mathbb{R}$로의 함수 $f(x) = \\begin{cases} -(x-2)^2+b & (x < 2) \\\\ ax+3 & (x \\ge 2) \\end{cases}$가 일대일대응일 때, 정수 $a$의 최솟값을 $m$, 그때의 $b$의 값을 $n$이라 하자. $n$의 값은? (단, $a, b$는 상수이다.)",
+      "answer": "⑤",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q02-S4-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q02-S4-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q02-S4-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "실수 전체의 일대일대응이 되도록 이차 가지와 직선의 경계 높이를 맞춘다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "실수 전체의 일대일대응이 되도록 이차 가지와 직선의 경계 높이를 맞춘다. 미정계수 확정 그래프를 문제 단계에서 먼저 제공하면 해를 누설하므로 발문의 구간별 식으로 충분하다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "BENEFICIAL",
+        "reason": "실수 전체의 일대일대응이 되도록 이차 가지와 직선의 경계 높이를 맞춘다. 원문 해설의 그래프 개형·치역·주기·교점·대칭 또는 순열의 결정적 관계를 나타내는 보조 그림이다.",
+        "capability": "piecewise-discontinuous-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_함수_P70-73_20261030_유사50/q12-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "featureParity": "PASS",
+        "sourceQuoteCheck": "MATCH",
+        "drawnFeatureEvidence": [
+          {
+            "id": "left",
+            "condition": "x<2인 음의 이차식의 꼭짓점은 (2,5)이며 이 점은 왼쪽 조각에 미포함",
+            "mappedTo": "graphPlan.pieces[0].coefficients",
+            "fieldPresent": true
+          },
+          {
+            "id": "right",
+            "condition": "x≥2: a=1인 직선의 절편은 3",
+            "mappedTo": "graphPlan.pieces[1].coefficients",
+            "fieldPresent": true
+          },
+          {
+            "id": "range",
+            "condition": "왼쪽 치역 (-∞,5), 오른쪽 치역 [5,∞)",
+            "mappedTo": "graphPlan.pieces",
+            "fieldPresent": true
+          }
+        ],
+        "engineGap": null,
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 13,
+      "qid": "BV-BAKBAL-H-COM2-HA-P70-Q02-S5-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P70-Q02",
+      "category": "실수 전체에서 구간별 이차·일차함수가 일대일대응이기 위한 정수 계수의 최솟값",
+      "questionSha256": "4860c751c736a979cba096be9b831748a128289a798ee4a769477ace9de857b5",
+      "solutionSha256": "13f0b2033ab798360df241a8257ba737ce35c5c8c483cde9373b468a2ef438c1",
+      "content": "실수 전체의 집합 $\\mathbb{R}$에서 $\\mathbb{R}$로의 함수 $f(x) = \\begin{cases} -(x-1)^2+b & (x < 1) \\\\ ax+2 & (x \\ge 1) \\end{cases}$가 일대일대응일 때, 정수 $a$의 최솟값을 $m$, 그때의 $b$의 값을 $n$이라 하자. $m+n$의 값은? (단, $a, b$는 상수이다.)",
+      "answer": "②",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q02-S5-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q02-S5-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q02-S5-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "실수 전체의 일대일대응이 되도록 이차 가지와 직선의 경계 높이를 맞춘다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "실수 전체의 일대일대응이 되도록 이차 가지와 직선의 경계 높이를 맞춘다. 미정계수 확정 그래프를 문제 단계에서 먼저 제공하면 해를 누설하므로 발문의 구간별 식으로 충분하다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "BENEFICIAL",
+        "reason": "실수 전체의 일대일대응이 되도록 이차 가지와 직선의 경계 높이를 맞춘다. 원문 해설의 그래프 개형·치역·주기·교점·대칭 또는 순열의 결정적 관계를 나타내는 보조 그림이다.",
+        "capability": "piecewise-discontinuous-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_함수_P70-73_20261030_유사50/q13-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "featureParity": "PASS",
+        "sourceQuoteCheck": "MATCH",
+        "drawnFeatureEvidence": [
+          {
+            "id": "left",
+            "condition": "x<1인 음의 이차식의 꼭짓점은 (1,3)이며 이 점은 왼쪽 조각에 미포함",
+            "mappedTo": "graphPlan.pieces[0].coefficients",
+            "fieldPresent": true
+          },
+          {
+            "id": "right",
+            "condition": "x≥1: a=1인 직선의 절편은 2",
+            "mappedTo": "graphPlan.pieces[1].coefficients",
+            "fieldPresent": true
+          },
+          {
+            "id": "range",
+            "condition": "왼쪽 치역 (-∞,3), 오른쪽 치역 [3,∞)",
+            "mappedTo": "graphPlan.pieces",
+            "fieldPresent": true
+          }
+        ],
+        "engineGap": null,
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 14,
+      "qid": "BV-BAKBAL-H-COM2-HA-P70-Q02-S6-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P70-Q02",
+      "category": "실수 전체에서 구간별 이차·일차함수가 일대일대응이기 위한 정수 계수의 최솟값",
+      "questionSha256": "51279a1744e7c18a7369033733c4574ee6cffe5f168aecbbe49db8e9faf96e2b",
+      "solutionSha256": "52c11db34ec0ee7c7832127b0834496a6311f06e925d4a6ed125c100ef8fae16",
+      "content": "실수 전체의 집합 $\\mathbb{R}$에서 $\\mathbb{R}$로의 함수 $f(x) = \\begin{cases} -(x-1)^2+b & (x < 1) \\\\ ax+2 & (x \\ge 1) \\end{cases}$가 일대일대응일 때, 정수 $a$의 최솟값을 $m$, 그때의 $b$의 값을 $n$이라 하자. $n-m$의 값은? (단, $a, b$는 상수이다.)",
+      "answer": "④",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q02-S6-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q02-S6-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P70-Q02-S6-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "실수 전체의 일대일대응이 되도록 이차 가지와 직선의 경계 높이를 맞춘다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "실수 전체의 일대일대응이 되도록 이차 가지와 직선의 경계 높이를 맞춘다. 미정계수 확정 그래프를 문제 단계에서 먼저 제공하면 해를 누설하므로 발문의 구간별 식으로 충분하다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "BENEFICIAL",
+        "reason": "실수 전체의 일대일대응이 되도록 이차 가지와 직선의 경계 높이를 맞춘다. 원문 해설의 그래프 개형·치역·주기·교점·대칭 또는 순열의 결정적 관계를 나타내는 보조 그림이다.",
+        "capability": "piecewise-discontinuous-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_함수_P70-73_20261030_유사50/q14-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "featureParity": "PASS",
+        "sourceQuoteCheck": "MATCH",
+        "drawnFeatureEvidence": [
+          {
+            "id": "left",
+            "condition": "x<1인 음의 이차식의 꼭짓점은 (1,3)이며 이 점은 왼쪽 조각에 미포함",
+            "mappedTo": "graphPlan.pieces[0].coefficients",
+            "fieldPresent": true
+          },
+          {
+            "id": "right",
+            "condition": "x≥1: a=1인 직선의 절편은 2",
+            "mappedTo": "graphPlan.pieces[1].coefficients",
+            "fieldPresent": true
+          },
+          {
+            "id": "range",
+            "condition": "왼쪽 치역 (-∞,3), 오른쪽 치역 [3,∞)",
+            "mappedTo": "graphPlan.pieces",
+            "fieldPresent": true
+          }
+        ],
+        "engineGap": null,
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 15,
+      "qid": "BV-BAKBAL-H-COM2-HA-P71-Q03-T1-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P71-Q03",
+      "category": "유한집합에서 구간별로 정의된 함수가 상수함수일 때 미정계수의 합",
+      "questionSha256": "02e83884d22e0fbb740617b104a5b89602400edee5df8c3ac1a3bb60c1c7118a",
+      "solutionSha256": "e0b40ebc096667e7f50691a0f9819bd44a03f0123c38c7c6435b902bed94e162",
+      "content": "집합 $X=\\{0, 2, 4\\}$에 대하여 $X$에서 $X$로의 함수 $f(x) = \\begin{cases} 3x+2 & (x < 2) \\\\ x^2+ax+b & (x \\ge 2) \\end{cases}$가 상수함수일 때, $a+b$의 값은? (단, $a, b$는 상수이다.)",
+      "answer": "①",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q03-T1-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q03-T1-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q03-T1-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "유한집합 세 입력의 출력이 모두 같아야 하는 상수함수 계산이다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "유한집합 세 입력의 출력이 모두 같아야 하는 상수함수 계산이다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "EXEMPT",
+        "reason": "유한집합 세 입력의 출력이 모두 같아야 하는 상수함수 계산이다. 해설의 직접 대입·연립·개수 계산만으로 판단이 완결되며, 추가 그림은 식이나 대응을 중복 표기한다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 16,
+      "qid": "BV-BAKBAL-H-COM2-HA-P71-Q03-S1-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P71-Q03",
+      "category": "유한집합에서 구간별로 정의된 함수가 상수함수일 때 미정계수의 합",
+      "questionSha256": "009c78855841b066837e99a07d8a35e5fc4b289ace1eb473a278f2178aec34f5",
+      "solutionSha256": "2697dae2944b544d3ac477a62d6224c1211e9c24083c8244fc3ac08fcb0b4501",
+      "content": "집합 $X=\\{0, 2, 4\\}$에 대하여 $X$에서 $X$로의 함수 $f(x) = \\begin{cases} 3x+2 & (x < 2) \\\\ x^2+ax+b & (x \\ge 2) \\end{cases}$가 상수함수일 때, $b-a$의 값은? (단, $a, b$는 상수이다.)",
+      "answer": "④",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q03-S1-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q03-S1-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q03-S1-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "유한집합 세 입력의 출력이 모두 같아야 하는 상수함수 계산이다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "유한집합 세 입력의 출력이 모두 같아야 하는 상수함수 계산이다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "EXEMPT",
+        "reason": "유한집합 세 입력의 출력이 모두 같아야 하는 상수함수 계산이다. 해설의 직접 대입·연립·개수 계산만으로 판단이 완결되며, 추가 그림은 식이나 대응을 중복 표기한다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 17,
+      "qid": "BV-BAKBAL-H-COM2-HA-P71-Q03-S2-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P71-Q03",
+      "category": "유한집합에서 구간별로 정의된 함수가 상수함수일 때 미정계수의 합",
+      "questionSha256": "9e649ce8a63c7f34690473ac11143d56e1e8681c0ac3f77d1a93874d890d4400",
+      "solutionSha256": "4b0e0f2e4d02b81348627efe157b08dfd127e101a0606ab360ed4748c9d6df4d",
+      "content": "집합 $X=\\{0, 2, 4\\}$에 대하여 $X$에서 $X$로의 함수 $f(x) = \\begin{cases} 3x+2 & (x < 2) \\\\ x^2+ax+b & (x \\ge 2) \\end{cases}$가 상수함수일 때, $ab$의 값은? (단, $a, b$는 상수이다.)",
+      "answer": "①",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q03-S2-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q03-S2-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q03-S2-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "유한집합 세 입력의 출력이 모두 같아야 하는 상수함수 계산이다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "유한집합 세 입력의 출력이 모두 같아야 하는 상수함수 계산이다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "EXEMPT",
+        "reason": "유한집합 세 입력의 출력이 모두 같아야 하는 상수함수 계산이다. 해설의 직접 대입·연립·개수 계산만으로 판단이 완결되며, 추가 그림은 식이나 대응을 중복 표기한다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 18,
+      "qid": "BV-BAKBAL-H-COM2-HA-P71-Q03-S3-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P71-Q03",
+      "category": "유한집합에서 구간별로 정의된 함수가 상수함수일 때 미정계수의 합",
+      "questionSha256": "7bcd800d1111e24f11f9fbdca71a02ec5559202e61d4d521db1a684fe6953f59",
+      "solutionSha256": "b778b3bf1bd1a2946d095459f5ccd0e6aa19025ba68256b2ad59b1bacfb758fc",
+      "content": "집합 $X=\\{1, 3, 5\\}$에 대하여 $X$에서 $X$로의 함수 $f(x) = \\begin{cases} 2x+1 & (x < 3) \\\\ x^2+ax+b & (x \\ge 3) \\end{cases}$가 상수함수일 때, $a+b$의 값은? (단, $a, b$는 상수이다.)",
+      "answer": "③",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q03-S3-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q03-S3-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q03-S3-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "유한집합 세 입력의 출력이 모두 같아야 하는 상수함수 계산이다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "유한집합 세 입력의 출력이 모두 같아야 하는 상수함수 계산이다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "EXEMPT",
+        "reason": "유한집합 세 입력의 출력이 모두 같아야 하는 상수함수 계산이다. 해설의 직접 대입·연립·개수 계산만으로 판단이 완결되며, 추가 그림은 식이나 대응을 중복 표기한다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 19,
+      "qid": "BV-BAKBAL-H-COM2-HA-P71-Q03-S4-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P71-Q03",
+      "category": "유한집합에서 구간별로 정의된 함수가 상수함수일 때 미정계수의 합",
+      "questionSha256": "c84ecafd737c34284de77432149734806bf55111096a404d5ab431d93c144621",
+      "solutionSha256": "5e72f735ac897495fc95f6ac6f6281a11199cf6aa15530e5715dfb6e8751307d",
+      "content": "집합 $X=\\{1, 3, 5\\}$에 대하여 $X$에서 $X$로의 함수 $f(x) = \\begin{cases} 2x+1 & (x < 3) \\\\ x^2+ax+b & (x \\ge 3) \\end{cases}$가 상수함수일 때, $b$의 값은? (단, $a, b$는 상수이다.)",
+      "answer": "⑤",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q03-S4-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q03-S4-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q03-S4-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "유한집합 세 입력의 출력이 모두 같아야 하는 상수함수 계산이다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "유한집합 세 입력의 출력이 모두 같아야 하는 상수함수 계산이다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "EXEMPT",
+        "reason": "유한집합 세 입력의 출력이 모두 같아야 하는 상수함수 계산이다. 해설의 직접 대입·연립·개수 계산만으로 판단이 완결되며, 추가 그림은 식이나 대응을 중복 표기한다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 20,
+      "qid": "BV-BAKBAL-H-COM2-HA-P71-Q03-S5-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P71-Q03",
+      "category": "유한집합에서 구간별로 정의된 함수가 상수함수일 때 미정계수의 합",
+      "questionSha256": "d50d95aa005785f9cd3dd846617965d82901e70f6c79970ecfda57c00f218544",
+      "solutionSha256": "4df8158c558cafc995fcd2bebb1907325603b995df3b717d92f3f80683d86022",
+      "content": "집합 $X=\\{1, 3, 5\\}$에 대하여 $X$에서 $X$로의 함수 $f(x) = \\begin{cases} 2x+1 & (x < 3) \\\\ x^2+ax+b & (x \\ge 3) \\end{cases}$가 상수함수일 때, $a$의 값은? (단, $a, b$는 상수이다.)",
+      "answer": "②",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q03-S5-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q03-S5-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q03-S5-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "유한집합 세 입력의 출력이 모두 같아야 하는 상수함수 계산이다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "유한집합 세 입력의 출력이 모두 같아야 하는 상수함수 계산이다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "EXEMPT",
+        "reason": "유한집합 세 입력의 출력이 모두 같아야 하는 상수함수 계산이다. 해설의 직접 대입·연립·개수 계산만으로 판단이 완결되며, 추가 그림은 식이나 대응을 중복 표기한다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 21,
+      "qid": "BV-BAKBAL-H-COM2-HA-P71-Q04-T1-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P71-Q04",
+      "category": "유한집합에서 구간별로 정의된 함수가 항등함수일 때 미정계수의 곱",
+      "questionSha256": "d78ebe1de1022379cd47563c155db421dc4468f6db8743122647a9e6d4631b81",
+      "solutionSha256": "3303cf713f8039395b28c899417af692d27ef4ba624ff5f9d06feb823affc573",
+      "content": "집합 $X=\\{-3, -2, 4\\}$에 대하여 $X$에서 $X$로의 함수 $f(x) = \\begin{cases} ax^2+bx-6 & (x < 0) \\\\ 4 & (x \\ge 0) \\end{cases}$가 항등함수일 때, $ab$의 값은? (단, $a, b$는 상수이다.)",
+      "answer": "⑤",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q04-T1-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q04-T1-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q04-T1-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "유한집합 세 입력의 출력이 입력 자신과 같아야 하는 항등함수 계산이다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "유한집합 세 입력의 출력이 입력 자신과 같아야 하는 항등함수 계산이다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "EXEMPT",
+        "reason": "유한집합 세 입력의 출력이 입력 자신과 같아야 하는 항등함수 계산이다. 해설의 직접 대입·연립·개수 계산만으로 판단이 완결되며, 추가 그림은 식이나 대응을 중복 표기한다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 22,
+      "qid": "BV-BAKBAL-H-COM2-HA-P71-Q04-S1-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P71-Q04",
+      "category": "유한집합에서 구간별로 정의된 함수가 항등함수일 때 미정계수의 곱",
+      "questionSha256": "531ce6897cd29fb32cfbc5880a5794b53ca92e0cbb321aa21037fccd540499b7",
+      "solutionSha256": "adb7341255bf58a1647a99be270622a85201c12da2fb02a6fc10331a96924d83",
+      "content": "집합 $X=\\{-3, -2, 4\\}$에 대하여 $X$에서 $X$로의 함수 $f(x) = \\begin{cases} ax^2+bx-6 & (x < 0) \\\\ 4 & (x \\ge 0) \\end{cases}$가 항등함수일 때, $a+b$의 값은? (단, $a, b$는 상수이다.)",
+      "answer": "②",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q04-S1-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q04-S1-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q04-S1-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "유한집합 세 입력의 출력이 입력 자신과 같아야 하는 항등함수 계산이다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "유한집합 세 입력의 출력이 입력 자신과 같아야 하는 항등함수 계산이다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "EXEMPT",
+        "reason": "유한집합 세 입력의 출력이 입력 자신과 같아야 하는 항등함수 계산이다. 해설의 직접 대입·연립·개수 계산만으로 판단이 완결되며, 추가 그림은 식이나 대응을 중복 표기한다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 23,
+      "qid": "BV-BAKBAL-H-COM2-HA-P71-Q04-S2-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P71-Q04",
+      "category": "유한집합에서 구간별로 정의된 함수가 항등함수일 때 미정계수의 곱",
+      "questionSha256": "60ffd60d37f0efe32da40644df34b827705a991d9afe86e179b43a8d1a718289",
+      "solutionSha256": "767adfbaba65520205cb9668c0be55f0671707f82f94904c4777f12cf2d5547e",
+      "content": "집합 $X=\\{-3, -2, 4\\}$에 대하여 $X$에서 $X$로의 함수 $f(x) = \\begin{cases} ax^2+bx-6 & (x < 0) \\\\ 4 & (x \\ge 0) \\end{cases}$가 항등함수일 때, $a-b$의 값은? (단, $a, b$는 상수이다.)",
+      "answer": "④",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q04-S2-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q04-S2-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q04-S2-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "유한집합 세 입력의 출력이 입력 자신과 같아야 하는 항등함수 계산이다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "유한집합 세 입력의 출력이 입력 자신과 같아야 하는 항등함수 계산이다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "EXEMPT",
+        "reason": "유한집합 세 입력의 출력이 입력 자신과 같아야 하는 항등함수 계산이다. 해설의 직접 대입·연립·개수 계산만으로 판단이 완결되며, 추가 그림은 식이나 대응을 중복 표기한다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 24,
+      "qid": "BV-BAKBAL-H-COM2-HA-P71-Q04-S3-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P71-Q04",
+      "category": "유한집합에서 구간별로 정의된 함수가 항등함수일 때 미정계수의 곱",
+      "questionSha256": "ea745d266219514f74157ef6a914912af5383dff4e2307dfe1556ebc1f66f9ae",
+      "solutionSha256": "054a5ea55a75d8a47ca10d23a2d332b297b8c2f1c17a32e220d548ec0e7c2ff8",
+      "content": "집합 $X=\\{-2, -1, 3\\}$에 대하여 $X$에서 $X$로의 함수 $f(x) = \\begin{cases} ax^2+bx-4 & (x < 0) \\\\ 3 & (x \\ge 0) \\end{cases}$가 항등함수일 때, $a+b$의 값은? (단, $a, b$는 상수이다.)",
+      "answer": "①",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q04-S3-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q04-S3-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q04-S3-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "유한집합 세 입력의 출력이 입력 자신과 같아야 하는 항등함수 계산이다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "유한집합 세 입력의 출력이 입력 자신과 같아야 하는 항등함수 계산이다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "EXEMPT",
+        "reason": "유한집합 세 입력의 출력이 입력 자신과 같아야 하는 항등함수 계산이다. 해설의 직접 대입·연립·개수 계산만으로 판단이 완결되며, 추가 그림은 식이나 대응을 중복 표기한다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 25,
+      "qid": "BV-BAKBAL-H-COM2-HA-P71-Q04-S4-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P71-Q04",
+      "category": "유한집합에서 구간별로 정의된 함수가 항등함수일 때 미정계수의 곱",
+      "questionSha256": "6b5b7e9373f6a2776aa17f22e1c0b1307083a83bfc4b1888368c30899078fba9",
+      "solutionSha256": "2da1cc47a62e3d131d875e94d2f45a01232fd08f5a03a0805ea150afdac74c3e",
+      "content": "집합 $X=\\{-2, -1, 3\\}$에 대하여 $X$에서 $X$로의 함수 $f(x) = \\begin{cases} ax^2+bx-4 & (x < 0) \\\\ 3 & (x \\ge 0) \\end{cases}$가 항등함수일 때, $ab$의 값은? (단, $a, b$는 상수이다.)",
+      "answer": "③",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q04-S4-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q04-S4-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q04-S4-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "유한집합 세 입력의 출력이 입력 자신과 같아야 하는 항등함수 계산이다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "유한집합 세 입력의 출력이 입력 자신과 같아야 하는 항등함수 계산이다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "EXEMPT",
+        "reason": "유한집합 세 입력의 출력이 입력 자신과 같아야 하는 항등함수 계산이다. 해설의 직접 대입·연립·개수 계산만으로 판단이 완결되며, 추가 그림은 식이나 대응을 중복 표기한다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 26,
+      "qid": "BV-BAKBAL-H-COM2-HA-P71-Q04-S5-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P71-Q04",
+      "category": "유한집합에서 구간별로 정의된 함수가 항등함수일 때 미정계수의 곱",
+      "questionSha256": "989e0c67470fde7b21c205c1a730f43e46888139b3eef88b7267c3b338f5ffc9",
+      "solutionSha256": "56c8235f047412d940d126440f35f32883e5eeff62115bcccbfe4add74aab35b",
+      "content": "집합 $X=\\{-2, -1, 3\\}$에 대하여 $X$에서 $X$로의 함수 $f(x) = \\begin{cases} ax^2+bx-4 & (x < 0) \\\\ 3 & (x \\ge 0) \\end{cases}$가 항등함수일 때, $a-b$의 값은? (단, $a, b$는 상수이다.)",
+      "answer": "①",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q04-S5-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q04-S5-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P71-Q04-S5-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "유한집합 세 입력의 출력이 입력 자신과 같아야 하는 항등함수 계산이다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "유한집합 세 입력의 출력이 입력 자신과 같아야 하는 항등함수 계산이다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "EXEMPT",
+        "reason": "유한집합 세 입력의 출력이 입력 자신과 같아야 하는 항등함수 계산이다. 해설의 직접 대입·연립·개수 계산만으로 판단이 완결되며, 추가 그림은 식이나 대응을 중복 표기한다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 27,
+      "qid": "BV-BAKBAL-H-COM2-HA-P72-Q05-T1-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P72-Q05",
+      "category": "구간별 정의된 함수에서 합성함수 방정식 (f o f)(a)=f(a)의 실근의 합",
+      "questionSha256": "440054a2b85757898e5eb2e62f94e0e59ce78eba4092401a7f10172b5055c526",
+      "solutionSha256": "70287f25c3e35f643977f25fa8c5d95918e5416dc84367f45c07e56cb33abaa8",
+      "content": "실수 전체의 집합에서 정의된 함수 $f(x) = \\begin{cases} 2x+2 & (x < 2) \\\\ x^2-7x+16 & (x \\ge 2) \\end{cases}$에 대하여 $(f \\circ f)(a) = f(a)$를 만족시키는 모든 실수 $a$의 값의 합은?",
+      "answer": "④",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q05-T1-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q05-T1-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q05-T1-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "f(f(a))=f(a)를 f(t)=t의 고정점과 각 원상으로 분리한다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "f(f(a))=f(a)를 f(t)=t의 고정점과 각 원상으로 분리한다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "BENEFICIAL",
+        "reason": "f(f(a))=f(a)를 f(t)=t의 고정점과 각 원상으로 분리한다. 원문 해설의 그래프 개형·치역·주기·교점·대칭 또는 순열의 결정적 관계를 나타내는 보조 그림이다.",
+        "capability": "piecewise-discontinuous-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_함수_P70-73_20261030_유사50/q27-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "featureParity": "PASS",
+        "sourceQuoteCheck": "MATCH",
+        "drawnFeatureEvidence": [
+          {
+            "id": "pieces",
+            "condition": "f(x) = \\begin{cases} 2x+2 & (x < 2) \\\\ x^2-7x+16 & (x \\ge 2) \\end{cases}",
+            "mappedTo": "graphPlan.pieces",
+            "fieldPresent": true
+          },
+          {
+            "id": "equation",
+            "condition": "f(f(a))=f(a)는 f(a)가 f(t)=t의 고정점인 조건이다.",
+            "mappedTo": [
+              "graphPlan.requiredPoints",
+              "graphPlan.pieces"
+            ],
+            "fieldPresent": true
+          },
+          {
+            "id": "solutions",
+            "condition": "실근 a = −2, 1, 3, 4",
+            "mappedTo": "graphPlan.requiredPoints",
+            "fieldPresent": true
+          },
+          {
+            "id": "vertex",
+            "condition": "오른쪽 이차 조각의 꼭짓점 V도 해당 조각 위에 표시",
+            "mappedTo": "graphPlan.requiredPoints",
+            "fieldPresent": true
+          }
+        ],
+        "engineGap": null,
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 28,
+      "qid": "BV-BAKBAL-H-COM2-HA-P72-Q05-S1-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P72-Q05",
+      "category": "구간별 정의된 함수에서 합성함수 방정식 (f o f)(a)=f(a)의 실근의 합",
+      "questionSha256": "cb919f8aa0d4be4d62596e02165f7576a59fbc306004af16c644a06a58b9aca9",
+      "solutionSha256": "85c244302914f425f01800634950f3d7aacb1472b6c0b8d1aacf59f87b27fcca",
+      "content": "실수 전체의 집합에서 정의된 함수 $f(x) = \\begin{cases} 2x+2 & (x < 2) \\\\ x^2-7x+16 & (x \\ge 2) \\end{cases}$에 대하여 $(f \\circ f)(a) = f(a)$를 만족시키는 서로 다른 실수 $a$의 개수는?",
+      "answer": "②",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q05-S1-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q05-S1-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q05-S1-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "f(f(a))=f(a)를 f(t)=t의 고정점과 각 원상으로 분리한다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "f(f(a))=f(a)를 f(t)=t의 고정점과 각 원상으로 분리한다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "BENEFICIAL",
+        "reason": "f(f(a))=f(a)를 f(t)=t의 고정점과 각 원상으로 분리한다. 원문 해설의 그래프 개형·치역·주기·교점·대칭 또는 순열의 결정적 관계를 나타내는 보조 그림이다.",
+        "capability": "piecewise-discontinuous-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_함수_P70-73_20261030_유사50/q28-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "featureParity": "PASS",
+        "sourceQuoteCheck": "MATCH",
+        "drawnFeatureEvidence": [
+          {
+            "id": "pieces",
+            "condition": "f(x) = \\begin{cases} 2x+2 & (x < 2) \\\\ x^2-7x+16 & (x \\ge 2) \\end{cases}",
+            "mappedTo": "graphPlan.pieces",
+            "fieldPresent": true
+          },
+          {
+            "id": "equation",
+            "condition": "f(f(a))=f(a)는 f(a)가 f(t)=t의 고정점인 조건이다.",
+            "mappedTo": [
+              "graphPlan.requiredPoints",
+              "graphPlan.pieces"
+            ],
+            "fieldPresent": true
+          },
+          {
+            "id": "solutions",
+            "condition": "실근 a = −2, 1, 3, 4",
+            "mappedTo": "graphPlan.requiredPoints",
+            "fieldPresent": true
+          },
+          {
+            "id": "vertex",
+            "condition": "오른쪽 이차 조각의 꼭짓점 V도 해당 조각 위에 표시",
+            "mappedTo": "graphPlan.requiredPoints",
+            "fieldPresent": true
+          }
+        ],
+        "engineGap": null,
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 29,
+      "qid": "BV-BAKBAL-H-COM2-HA-P72-Q05-S2-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P72-Q05",
+      "category": "구간별 정의된 함수에서 합성함수 방정식 (f o f)(a)=f(a)의 실근의 합",
+      "questionSha256": "7390764b22fa67829e901c69a9d96d93c90881a08567680cf4a51df689fcd929",
+      "solutionSha256": "1375043933b794a94d2c52a1054d1eac71b9e9925268c7247c7272b929f0f5f8",
+      "content": "실수 전체의 집합에서 정의된 함수 $f(x) = \\begin{cases} 2x+2 & (x < 2) \\\\ x^2-7x+16 & (x \\ge 2) \\end{cases}$에 대하여 $(f \\circ f)(a) = f(a)$를 만족시키는 실수 $a$의 최댓값은?",
+      "answer": "⑤",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q05-S2-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q05-S2-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q05-S2-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "f(f(a))=f(a)를 f(t)=t의 고정점과 각 원상으로 분리한다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "f(f(a))=f(a)를 f(t)=t의 고정점과 각 원상으로 분리한다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "BENEFICIAL",
+        "reason": "f(f(a))=f(a)를 f(t)=t의 고정점과 각 원상으로 분리한다. 원문 해설의 그래프 개형·치역·주기·교점·대칭 또는 순열의 결정적 관계를 나타내는 보조 그림이다.",
+        "capability": "piecewise-discontinuous-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_함수_P70-73_20261030_유사50/q29-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "featureParity": "PASS",
+        "sourceQuoteCheck": "MATCH",
+        "drawnFeatureEvidence": [
+          {
+            "id": "pieces",
+            "condition": "f(x) = \\begin{cases} 2x+2 & (x < 2) \\\\ x^2-7x+16 & (x \\ge 2) \\end{cases}",
+            "mappedTo": "graphPlan.pieces",
+            "fieldPresent": true
+          },
+          {
+            "id": "equation",
+            "condition": "f(f(a))=f(a)는 f(a)가 f(t)=t의 고정점인 조건이다.",
+            "mappedTo": [
+              "graphPlan.requiredPoints",
+              "graphPlan.pieces"
+            ],
+            "fieldPresent": true
+          },
+          {
+            "id": "solutions",
+            "condition": "실근 a = −2, 1, 3, 4",
+            "mappedTo": "graphPlan.requiredPoints",
+            "fieldPresent": true
+          },
+          {
+            "id": "vertex",
+            "condition": "오른쪽 이차 조각의 꼭짓점 V도 해당 조각 위에 표시",
+            "mappedTo": "graphPlan.requiredPoints",
+            "fieldPresent": true
+          }
+        ],
+        "engineGap": null,
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 30,
+      "qid": "BV-BAKBAL-H-COM2-HA-P72-Q05-S3-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P72-Q05",
+      "category": "구간별 정의된 함수에서 합성함수 방정식 (f o f)(a)=f(a)의 실근의 합",
+      "questionSha256": "f5df6b8c298a4bdb3e04ced8fb3b49d0f03e58e1869ffcda0fae378edb57cd30",
+      "solutionSha256": "416b2c2a4ce073519415604b1e3c784ae7765b69d1a3721c9db131d71c713fa2",
+      "content": "실수 전체의 집합에서 정의된 함수 $f(x) = \\begin{cases} 2x+2 & (x < 2) \\\\ x^2-7x+16 & (x \\ge 2) \\end{cases}$에 대하여 $(f \\circ f)(a) = f(a)$를 만족시키는 실수 $a$의 최솟값은?",
+      "answer": "③",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q05-S3-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q05-S3-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q05-S3-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "f(f(a))=f(a)를 f(t)=t의 고정점과 각 원상으로 분리한다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "f(f(a))=f(a)를 f(t)=t의 고정점과 각 원상으로 분리한다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "BENEFICIAL",
+        "reason": "f(f(a))=f(a)를 f(t)=t의 고정점과 각 원상으로 분리한다. 원문 해설의 그래프 개형·치역·주기·교점·대칭 또는 순열의 결정적 관계를 나타내는 보조 그림이다.",
+        "capability": "piecewise-discontinuous-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_함수_P70-73_20261030_유사50/q30-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "featureParity": "PASS",
+        "sourceQuoteCheck": "MATCH",
+        "drawnFeatureEvidence": [
+          {
+            "id": "pieces",
+            "condition": "f(x) = \\begin{cases} 2x+2 & (x < 2) \\\\ x^2-7x+16 & (x \\ge 2) \\end{cases}",
+            "mappedTo": "graphPlan.pieces",
+            "fieldPresent": true
+          },
+          {
+            "id": "equation",
+            "condition": "f(f(a))=f(a)는 f(a)가 f(t)=t의 고정점인 조건이다.",
+            "mappedTo": [
+              "graphPlan.requiredPoints",
+              "graphPlan.pieces"
+            ],
+            "fieldPresent": true
+          },
+          {
+            "id": "solutions",
+            "condition": "실근 a = −2, 1, 3, 4",
+            "mappedTo": "graphPlan.requiredPoints",
+            "fieldPresent": true
+          },
+          {
+            "id": "vertex",
+            "condition": "오른쪽 이차 조각의 꼭짓점 V도 해당 조각 위에 표시",
+            "mappedTo": "graphPlan.requiredPoints",
+            "fieldPresent": true
+          }
+        ],
+        "engineGap": null,
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 31,
+      "qid": "BV-BAKBAL-H-COM2-HA-P72-Q05-S4-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P72-Q05",
+      "category": "구간별 정의된 함수에서 합성함수 방정식 (f o f)(a)=f(a)의 실근의 합",
+      "questionSha256": "47c6defd0d8b1b1781c5cf00fc88a21336b0e97c8b6f799aa6be3f2a0e787078",
+      "solutionSha256": "48e3179ddb6543bf6f57f8406160256f3e9264a74181971595663fc044a6fb9f",
+      "content": "실수 전체의 집합에서 정의된 함수 $f(x) = \\begin{cases} 2x+3 & (x < 1) \\\\ x^2-5x+9 & (x \\ge 1) \\end{cases}$에 대하여 $(f \\circ f)(a) = f(a)$를 만족시키는 모든 실수 $a$의 값의 합은?",
+      "answer": "②",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q05-S4-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q05-S4-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q05-S4-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "f(f(a))=f(a)를 f(t)=t의 고정점과 각 원상으로 분리한다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "f(f(a))=f(a)를 f(t)=t의 고정점과 각 원상으로 분리한다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "BENEFICIAL",
+        "reason": "f(f(a))=f(a)를 f(t)=t의 고정점과 각 원상으로 분리한다. 원문 해설의 그래프 개형·치역·주기·교점·대칭 또는 순열의 결정적 관계를 나타내는 보조 그림이다.",
+        "capability": "piecewise-discontinuous-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_함수_P70-73_20261030_유사50/q31-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "featureParity": "PASS",
+        "sourceQuoteCheck": "MATCH",
+        "drawnFeatureEvidence": [
+          {
+            "id": "pieces",
+            "condition": "f(x) = \\begin{cases} 2x+3 & (x < 1) \\\\ x^2-5x+9 & (x \\ge 1) \\end{cases}",
+            "mappedTo": "graphPlan.pieces",
+            "fieldPresent": true
+          },
+          {
+            "id": "equation",
+            "condition": "f(f(a))=f(a)는 f(a)가 f(t)=t의 고정점인 조건이다.",
+            "mappedTo": [
+              "graphPlan.requiredPoints",
+              "graphPlan.pieces"
+            ],
+            "fieldPresent": true
+          },
+          {
+            "id": "solutions",
+            "condition": "실근 a = −3, 0, 2, 3",
+            "mappedTo": "graphPlan.requiredPoints",
+            "fieldPresent": true
+          },
+          {
+            "id": "vertex",
+            "condition": "오른쪽 이차 조각의 꼭짓점 V도 해당 조각 위에 표시",
+            "mappedTo": "graphPlan.requiredPoints",
+            "fieldPresent": true
+          }
+        ],
+        "engineGap": null,
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 32,
+      "qid": "BV-BAKBAL-H-COM2-HA-P72-Q05-S5-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P72-Q05",
+      "category": "구간별 정의된 함수에서 합성함수 방정식 (f o f)(a)=f(a)의 실근의 합",
+      "questionSha256": "d01c2008bdcfa57d31496c508f8cfe06faf08d76127a29e8a2a0356f8854911c",
+      "solutionSha256": "a4256a59388556caf9167c45ae9acb8e7d4fd44cd3717fdd7508a9e06511f063",
+      "content": "실수 전체의 집합에서 정의된 함수 $f(x) = \\begin{cases} 2x+3 & (x < 1) \\\\ x^2-5x+9 & (x \\ge 1) \\end{cases}$에 대하여 $(f \\circ f)(a) = f(a)$를 만족시키는 서로 다른 실수 $a$의 개수는?",
+      "answer": "⑤",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q05-S5-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q05-S5-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q05-S5-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "f(f(a))=f(a)를 f(t)=t의 고정점과 각 원상으로 분리한다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "f(f(a))=f(a)를 f(t)=t의 고정점과 각 원상으로 분리한다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "BENEFICIAL",
+        "reason": "f(f(a))=f(a)를 f(t)=t의 고정점과 각 원상으로 분리한다. 원문 해설의 그래프 개형·치역·주기·교점·대칭 또는 순열의 결정적 관계를 나타내는 보조 그림이다.",
+        "capability": "piecewise-discontinuous-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_함수_P70-73_20261030_유사50/q32-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "featureParity": "PASS",
+        "sourceQuoteCheck": "MATCH",
+        "drawnFeatureEvidence": [
+          {
+            "id": "pieces",
+            "condition": "f(x) = \\begin{cases} 2x+3 & (x < 1) \\\\ x^2-5x+9 & (x \\ge 1) \\end{cases}",
+            "mappedTo": "graphPlan.pieces",
+            "fieldPresent": true
+          },
+          {
+            "id": "equation",
+            "condition": "f(f(a))=f(a)는 f(a)가 f(t)=t의 고정점인 조건이다.",
+            "mappedTo": [
+              "graphPlan.requiredPoints",
+              "graphPlan.pieces"
+            ],
+            "fieldPresent": true
+          },
+          {
+            "id": "solutions",
+            "condition": "실근 a = −3, 0, 2, 3",
+            "mappedTo": "graphPlan.requiredPoints",
+            "fieldPresent": true
+          },
+          {
+            "id": "vertex",
+            "condition": "오른쪽 이차 조각의 꼭짓점 V도 해당 조각 위에 표시",
+            "mappedTo": "graphPlan.requiredPoints",
+            "fieldPresent": true
+          }
+        ],
+        "engineGap": null,
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 33,
+      "qid": "BV-BAKBAL-H-COM2-HA-P72-Q06-T1-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P72-Q06",
+      "category": "구간별 일차·이차함수의 합성방정식 f(f(a))=f(a)를 만족시키는 실수 a의 합",
+      "questionSha256": "18d2195af50ae53da2f5a233bf8aeecde7b96698b43b5ef1aa0c1f49161dbecb",
+      "solutionSha256": "349bb63f0e541f07aa401abb6acdd54d3b55c776444fef1678148c8ad85399f9",
+      "content": "실수 전체의 집합에서 정의된 함수 $f(x) = \\begin{cases} 2x+4 & (x < 0) \\\\ x^2-4x+4 & (x \\ge 0) \\end{cases}$에 대하여 $(f \\circ f)(a) = f(a)$를 만족시키는 모든 실수 $a$의 값의 합은?",
+      "answer": "③",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q06-T1-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q06-T1-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q06-T1-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "불연속이 아닌 두 조각 함수에서 고정점의 원상을 모두 찾는다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "불연속이 아닌 두 조각 함수에서 고정점의 원상을 모두 찾는다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "BENEFICIAL",
+        "reason": "불연속이 아닌 두 조각 함수에서 고정점의 원상을 모두 찾는다. 원문 해설의 그래프 개형·치역·주기·교점·대칭 또는 순열의 결정적 관계를 나타내는 보조 그림이다.",
+        "capability": "piecewise-discontinuous-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_함수_P70-73_20261030_유사50/q33-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "featureParity": "PASS",
+        "sourceQuoteCheck": "MATCH",
+        "drawnFeatureEvidence": [
+          {
+            "id": "pieces",
+            "condition": "f(x) = \\begin{cases} 2x+4 & (x < 0) \\\\ x^2-4x+4 & (x \\ge 0) \\end{cases}",
+            "mappedTo": "graphPlan.pieces",
+            "fieldPresent": true
+          },
+          {
+            "id": "equation",
+            "condition": "f(f(a))=f(a)는 f(a)가 f(t)=t의 고정점인 조건이다.",
+            "mappedTo": [
+              "graphPlan.requiredPoints",
+              "graphPlan.pieces"
+            ],
+            "fieldPresent": true
+          },
+          {
+            "id": "solutions",
+            "condition": "실근 a = −4, −3/2, 0, 1, 3, 4",
+            "mappedTo": "graphPlan.requiredPoints",
+            "fieldPresent": true
+          },
+          {
+            "id": "vertex",
+            "condition": "오른쪽 이차 조각의 꼭짓점 V도 해당 조각 위에 표시",
+            "mappedTo": "graphPlan.requiredPoints",
+            "fieldPresent": true
+          }
+        ],
+        "engineGap": null,
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 34,
+      "qid": "BV-BAKBAL-H-COM2-HA-P72-Q06-S1-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P72-Q06",
+      "category": "구간별 일차·이차함수의 합성방정식 f(f(a))=f(a)를 만족시키는 실수 a의 합",
+      "questionSha256": "c89271faf6cf89c80f0c64b07b55c96e23e8109cbe2c5836ace36610e37a7228",
+      "solutionSha256": "c653ebe4d8a7217d94c50f91daa17e9d5655cbe45b765e95093c10f5cd4909e5",
+      "content": "실수 전체의 집합에서 정의된 함수 $f(x) = \\begin{cases} 2x+4 & (x < 0) \\\\ x^2-4x+4 & (x \\ge 0) \\end{cases}$에 대하여 $(f \\circ f)(a) = f(a)$를 만족시키는 서로 다른 실수 $a$의 개수는?",
+      "answer": "①",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q06-S1-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q06-S1-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q06-S1-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "불연속이 아닌 두 조각 함수에서 고정점의 원상을 모두 찾는다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "불연속이 아닌 두 조각 함수에서 고정점의 원상을 모두 찾는다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "BENEFICIAL",
+        "reason": "불연속이 아닌 두 조각 함수에서 고정점의 원상을 모두 찾는다. 원문 해설의 그래프 개형·치역·주기·교점·대칭 또는 순열의 결정적 관계를 나타내는 보조 그림이다.",
+        "capability": "piecewise-discontinuous-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_함수_P70-73_20261030_유사50/q34-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "featureParity": "PASS",
+        "sourceQuoteCheck": "MATCH",
+        "drawnFeatureEvidence": [
+          {
+            "id": "pieces",
+            "condition": "f(x) = \\begin{cases} 2x+4 & (x < 0) \\\\ x^2-4x+4 & (x \\ge 0) \\end{cases}",
+            "mappedTo": "graphPlan.pieces",
+            "fieldPresent": true
+          },
+          {
+            "id": "equation",
+            "condition": "f(f(a))=f(a)는 f(a)가 f(t)=t의 고정점인 조건이다.",
+            "mappedTo": [
+              "graphPlan.requiredPoints",
+              "graphPlan.pieces"
+            ],
+            "fieldPresent": true
+          },
+          {
+            "id": "solutions",
+            "condition": "실근 a = −4, −3/2, 0, 1, 3, 4",
+            "mappedTo": "graphPlan.requiredPoints",
+            "fieldPresent": true
+          },
+          {
+            "id": "vertex",
+            "condition": "오른쪽 이차 조각의 꼭짓점 V도 해당 조각 위에 표시",
+            "mappedTo": "graphPlan.requiredPoints",
+            "fieldPresent": true
+          }
+        ],
+        "engineGap": null,
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 35,
+      "qid": "BV-BAKBAL-H-COM2-HA-P72-Q06-S2-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P72-Q06",
+      "category": "구간별 일차·이차함수의 합성방정식 f(f(a))=f(a)를 만족시키는 실수 a의 합",
+      "questionSha256": "068d34a045ab28d6bc86283d77202a3b32b38dc37361ec014c2a6a3fa00d99ed",
+      "solutionSha256": "067cf3454d212c8ff6c94c171c7ec9cd40bab59c23ef1c77dd259d129f4d8158",
+      "content": "실수 전체의 집합에서 정의된 함수 $f(x) = \\begin{cases} 2x+4 & (x < 0) \\\\ x^2-4x+4 & (x \\ge 0) \\end{cases}$에 대하여 $(f \\circ f)(a) = f(a)$를 만족시키는 실수 $a$의 최댓값은?",
+      "answer": "④",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q06-S2-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q06-S2-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q06-S2-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "불연속이 아닌 두 조각 함수에서 고정점의 원상을 모두 찾는다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "불연속이 아닌 두 조각 함수에서 고정점의 원상을 모두 찾는다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "BENEFICIAL",
+        "reason": "불연속이 아닌 두 조각 함수에서 고정점의 원상을 모두 찾는다. 원문 해설의 그래프 개형·치역·주기·교점·대칭 또는 순열의 결정적 관계를 나타내는 보조 그림이다.",
+        "capability": "piecewise-discontinuous-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_함수_P70-73_20261030_유사50/q35-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "featureParity": "PASS",
+        "sourceQuoteCheck": "MATCH",
+        "drawnFeatureEvidence": [
+          {
+            "id": "pieces",
+            "condition": "f(x) = \\begin{cases} 2x+4 & (x < 0) \\\\ x^2-4x+4 & (x \\ge 0) \\end{cases}",
+            "mappedTo": "graphPlan.pieces",
+            "fieldPresent": true
+          },
+          {
+            "id": "equation",
+            "condition": "f(f(a))=f(a)는 f(a)가 f(t)=t의 고정점인 조건이다.",
+            "mappedTo": [
+              "graphPlan.requiredPoints",
+              "graphPlan.pieces"
+            ],
+            "fieldPresent": true
+          },
+          {
+            "id": "solutions",
+            "condition": "실근 a = −4, −3/2, 0, 1, 3, 4",
+            "mappedTo": "graphPlan.requiredPoints",
+            "fieldPresent": true
+          },
+          {
+            "id": "vertex",
+            "condition": "오른쪽 이차 조각의 꼭짓점 V도 해당 조각 위에 표시",
+            "mappedTo": "graphPlan.requiredPoints",
+            "fieldPresent": true
+          }
+        ],
+        "engineGap": null,
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 36,
+      "qid": "BV-BAKBAL-H-COM2-HA-P72-Q06-S3-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P72-Q06",
+      "category": "구간별 일차·이차함수의 합성방정식 f(f(a))=f(a)를 만족시키는 실수 a의 합",
+      "questionSha256": "29d112f45539b9bb991c91fb9a1784389376a5dc49eadbc8328be7ed5634a7b6",
+      "solutionSha256": "f38b159a31ea0fef72282a033e41243a81d61b1efaf53d817bf903ddbb99fc51",
+      "content": "실수 전체의 집합에서 정의된 함수 $f(x) = \\begin{cases} 2x+4 & (x < 0) \\\\ x^2-4x+4 & (x \\ge 0) \\end{cases}$에 대하여 $(f \\circ f)(a) = f(a)$를 만족시키는 실수 $a$의 최솟값은?",
+      "answer": "③",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q06-S3-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q06-S3-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q06-S3-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "불연속이 아닌 두 조각 함수에서 고정점의 원상을 모두 찾는다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "불연속이 아닌 두 조각 함수에서 고정점의 원상을 모두 찾는다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "BENEFICIAL",
+        "reason": "불연속이 아닌 두 조각 함수에서 고정점의 원상을 모두 찾는다. 원문 해설의 그래프 개형·치역·주기·교점·대칭 또는 순열의 결정적 관계를 나타내는 보조 그림이다.",
+        "capability": "piecewise-discontinuous-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_함수_P70-73_20261030_유사50/q36-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "featureParity": "PASS",
+        "sourceQuoteCheck": "MATCH",
+        "drawnFeatureEvidence": [
+          {
+            "id": "pieces",
+            "condition": "f(x) = \\begin{cases} 2x+4 & (x < 0) \\\\ x^2-4x+4 & (x \\ge 0) \\end{cases}",
+            "mappedTo": "graphPlan.pieces",
+            "fieldPresent": true
+          },
+          {
+            "id": "equation",
+            "condition": "f(f(a))=f(a)는 f(a)가 f(t)=t의 고정점인 조건이다.",
+            "mappedTo": [
+              "graphPlan.requiredPoints",
+              "graphPlan.pieces"
+            ],
+            "fieldPresent": true
+          },
+          {
+            "id": "solutions",
+            "condition": "실근 a = −4, −3/2, 0, 1, 3, 4",
+            "mappedTo": "graphPlan.requiredPoints",
+            "fieldPresent": true
+          },
+          {
+            "id": "vertex",
+            "condition": "오른쪽 이차 조각의 꼭짓점 V도 해당 조각 위에 표시",
+            "mappedTo": "graphPlan.requiredPoints",
+            "fieldPresent": true
+          }
+        ],
+        "engineGap": null,
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 37,
+      "qid": "BV-BAKBAL-H-COM2-HA-P72-Q06-S4-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P72-Q06",
+      "category": "구간별 일차·이차함수의 합성방정식 f(f(a))=f(a)를 만족시키는 실수 a의 합",
+      "questionSha256": "6907e77fcb162911fdcd31864afa7147cc90613656a2953569b6f79c3adbb443",
+      "solutionSha256": "a162c14e851df7a3dc0729ba4fd3b37ee4f243b4c980f1634d599a33422667c1",
+      "content": "실수 전체의 집합에서 정의된 함수 $f(x) = \\begin{cases} 2x+4 & (x < 0) \\\\ x^2-4x+4 & (x \\ge 0) \\end{cases}$에 대하여 $(f \\circ f)(a) = f(a)$를 만족시키는 양의 실수 $a$의 값의 합은?",
+      "answer": "①",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q06-S4-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q06-S4-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q06-S4-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "불연속이 아닌 두 조각 함수에서 고정점의 원상을 모두 찾는다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "불연속이 아닌 두 조각 함수에서 고정점의 원상을 모두 찾는다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "BENEFICIAL",
+        "reason": "불연속이 아닌 두 조각 함수에서 고정점의 원상을 모두 찾는다. 원문 해설의 그래프 개형·치역·주기·교점·대칭 또는 순열의 결정적 관계를 나타내는 보조 그림이다.",
+        "capability": "piecewise-discontinuous-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_함수_P70-73_20261030_유사50/q37-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "featureParity": "PASS",
+        "sourceQuoteCheck": "MATCH",
+        "drawnFeatureEvidence": [
+          {
+            "id": "pieces",
+            "condition": "f(x) = \\begin{cases} 2x+4 & (x < 0) \\\\ x^2-4x+4 & (x \\ge 0) \\end{cases}",
+            "mappedTo": "graphPlan.pieces",
+            "fieldPresent": true
+          },
+          {
+            "id": "equation",
+            "condition": "f(f(a))=f(a)는 f(a)가 f(t)=t의 고정점인 조건이다.",
+            "mappedTo": [
+              "graphPlan.requiredPoints",
+              "graphPlan.pieces"
+            ],
+            "fieldPresent": true
+          },
+          {
+            "id": "solutions",
+            "condition": "실근 a = −4, −3/2, 0, 1, 3, 4",
+            "mappedTo": "graphPlan.requiredPoints",
+            "fieldPresent": true
+          },
+          {
+            "id": "vertex",
+            "condition": "오른쪽 이차 조각의 꼭짓점 V도 해당 조각 위에 표시",
+            "mappedTo": "graphPlan.requiredPoints",
+            "fieldPresent": true
+          }
+        ],
+        "engineGap": null,
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 38,
+      "qid": "BV-BAKBAL-H-COM2-HA-P72-Q06-S5-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P72-Q06",
+      "category": "구간별 일차·이차함수의 합성방정식 f(f(a))=f(a)를 만족시키는 실수 a의 합",
+      "questionSha256": "7f575bd95faff2674f2fc16c39dac7f3a298d7ba0e0e534758e93dc6fe16df50",
+      "solutionSha256": "1b9ee6fa71ec0f1ad72358bd3a50c1d7b091aa4728792b040a4f85b2a88007e3",
+      "content": "실수 전체의 집합에서 정의된 함수 $f(x) = \\begin{cases} 2x+4 & (x < 0) \\\\ x^2-4x+4 & (x \\ge 0) \\end{cases}$에 대하여 $(f \\circ f)(a) = f(a)$를 만족시키는 음의 실수 $a$의 값의 합은?",
+      "answer": "④",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q06-S5-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q06-S5-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P72-Q06-S5-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "불연속이 아닌 두 조각 함수에서 고정점의 원상을 모두 찾는다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "불연속이 아닌 두 조각 함수에서 고정점의 원상을 모두 찾는다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "BENEFICIAL",
+        "reason": "불연속이 아닌 두 조각 함수에서 고정점의 원상을 모두 찾는다. 원문 해설의 그래프 개형·치역·주기·교점·대칭 또는 순열의 결정적 관계를 나타내는 보조 그림이다.",
+        "capability": "piecewise-discontinuous-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_함수_P70-73_20261030_유사50/q38-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "featureParity": "PASS",
+        "sourceQuoteCheck": "MATCH",
+        "drawnFeatureEvidence": [
+          {
+            "id": "pieces",
+            "condition": "f(x) = \\begin{cases} 2x+4 & (x < 0) \\\\ x^2-4x+4 & (x \\ge 0) \\end{cases}",
+            "mappedTo": "graphPlan.pieces",
+            "fieldPresent": true
+          },
+          {
+            "id": "equation",
+            "condition": "f(f(a))=f(a)는 f(a)가 f(t)=t의 고정점인 조건이다.",
+            "mappedTo": [
+              "graphPlan.requiredPoints",
+              "graphPlan.pieces"
+            ],
+            "fieldPresent": true
+          },
+          {
+            "id": "solutions",
+            "condition": "실근 a = −4, −3/2, 0, 1, 3, 4",
+            "mappedTo": "graphPlan.requiredPoints",
+            "fieldPresent": true
+          },
+          {
+            "id": "vertex",
+            "condition": "오른쪽 이차 조각의 꼭짓점 V도 해당 조각 위에 표시",
+            "mappedTo": "graphPlan.requiredPoints",
+            "fieldPresent": true
+          }
+        ],
+        "engineGap": null,
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 39,
+      "qid": "BV-BAKBAL-H-COM2-HA-P73-Q07-T1-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P73-Q07",
+      "category": "합성함수의 결합법칙을 이용한 일차 방정식 ((f o g) o g)(a)=a의 해",
+      "questionSha256": "95b317001a695ab82403e76061a492d62075d0e36ac626d010cec4e4ccfd1fc5",
+      "solutionSha256": "6be0fd4b4899b96594465cdd6476bbc86de92492093461926ceb7e85b100b41f",
+      "content": "실수 전체의 집합에서 정의된 두 함수 $f(x)=2x+1, g(x)$가 있다. 모든 실수 $x$에 대하여 $(g \\circ g)(x)=3x-1$일 때, $((f \\circ g) \\circ g)(a)=a$를 만족시키는 실수 $a$의 값은?",
+      "answer": "②",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q07-T1-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q07-T1-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q07-T1-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "합성함수의 결합법칙을 이용해 주어진 일차식을 대입한다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "합성함수의 결합법칙을 이용해 주어진 일차식을 대입한다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "EXEMPT",
+        "reason": "합성함수의 결합법칙을 이용해 주어진 일차식을 대입한다. 해설의 직접 대입·연립·개수 계산만으로 판단이 완결되며, 추가 그림은 식이나 대응을 중복 표기한다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 40,
+      "qid": "BV-BAKBAL-H-COM2-HA-P73-Q07-S1-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P73-Q07",
+      "category": "합성함수의 결합법칙을 이용한 일차 방정식 ((f o g) o g)(a)=a의 해",
+      "questionSha256": "05fe2620b6b210ae017ecaa228d12ae5ce86917020ae97fcd9b76c580bfb28ec",
+      "solutionSha256": "2be7ae498579c7bd3b24f1af5dd890665e8587ced0a7c5921a3036ff64ef3966",
+      "content": "실수 전체의 집합에서 정의된 두 함수 $f(x)=2x+3, g(x)$가 있다. 모든 실수 $x$에 대하여 $(g \\circ g)(x)=2x-4$일 때, $((f \\circ g) \\circ g)(a)=a$를 만족시키는 실수 $a$의 값은?",
+      "answer": "⑤",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q07-S1-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q07-S1-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q07-S1-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "합성함수의 결합법칙을 이용해 주어진 일차식을 대입한다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "합성함수의 결합법칙을 이용해 주어진 일차식을 대입한다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "EXEMPT",
+        "reason": "합성함수의 결합법칙을 이용해 주어진 일차식을 대입한다. 해설의 직접 대입·연립·개수 계산만으로 판단이 완결되며, 추가 그림은 식이나 대응을 중복 표기한다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 41,
+      "qid": "BV-BAKBAL-H-COM2-HA-P73-Q07-S2-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P73-Q07",
+      "category": "합성함수의 결합법칙을 이용한 일차 방정식 ((f o g) o g)(a)=a의 해",
+      "questionSha256": "57ccba3b7dd8dc0e64dc9adc991552a57347193b983b00c13787f64ca7fbb0ae",
+      "solutionSha256": "8825011d97fbbedb6d8f27bbd3a3bb06b8543c4c965c3194a1a689d223f42172",
+      "content": "실수 전체의 집합에서 정의된 두 함수 $f(x)=2x+1, g(x)$가 있다. 모든 실수 $x$에 대하여 $(g \\circ g)(x)=3x-1$일 때, $((f \\circ g) \\circ g)(a)=a$를 만족시키는 실수 $a$에 대하여 $5a$의 값은?",
+      "answer": "④",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q07-S2-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q07-S2-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q07-S2-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "합성함수의 결합법칙을 이용해 주어진 일차식을 대입한다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "합성함수의 결합법칙을 이용해 주어진 일차식을 대입한다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "EXEMPT",
+        "reason": "합성함수의 결합법칙을 이용해 주어진 일차식을 대입한다. 해설의 직접 대입·연립·개수 계산만으로 판단이 완결되며, 추가 그림은 식이나 대응을 중복 표기한다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 42,
+      "qid": "BV-BAKBAL-H-COM2-HA-P73-Q07-S3-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P73-Q07",
+      "category": "합성함수의 결합법칙을 이용한 일차 방정식 ((f o g) o g)(a)=a의 해",
+      "questionSha256": "d5e8704ffc40ef82adc0d264051f964ee2ddb35f87339b1e67a74da9f476fb57",
+      "solutionSha256": "e95f691f6214b74f2670d5e21cf81435e0c214a445ca13afa230bfc33b3ea087",
+      "content": "실수 전체의 집합에서 정의된 두 함수 $f(x)=3x+1, g(x)$가 있다. 모든 실수 $x$에 대하여 $(g \\circ g)(x)=2x+1$일 때, $((f \\circ g) \\circ g)(a)=a$를 만족시키는 실수 $a$의 값은?",
+      "answer": "②",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q07-S3-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q07-S3-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q07-S3-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "합성함수의 결합법칙을 이용해 주어진 일차식을 대입한다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "합성함수의 결합법칙을 이용해 주어진 일차식을 대입한다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "EXEMPT",
+        "reason": "합성함수의 결합법칙을 이용해 주어진 일차식을 대입한다. 해설의 직접 대입·연립·개수 계산만으로 판단이 완결되며, 추가 그림은 식이나 대응을 중복 표기한다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 43,
+      "qid": "BV-BAKBAL-H-COM2-HA-P73-Q07-S4-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P73-Q07",
+      "category": "합성함수의 결합법칙을 이용한 일차 방정식 ((f o g) o g)(a)=a의 해",
+      "questionSha256": "a64d57477e809c4eef1598d573a1dfeab4928f45caf4c35563e9a7c6d1f7aca3",
+      "solutionSha256": "8bd391ff9b22a23ba5fd5c39ae7b466e5d7297f05c8e11060715794e360a0826",
+      "content": "실수 전체의 집합에서 정의된 두 함수 $f(x)=4x-3, g(x)$가 있다. 모든 실수 $x$에 대하여 $(g \\circ g)(x)=x+2$일 때, $((f \\circ g) \\circ g)(a)=a$를 만족시키는 실수 $a$의 값은?",
+      "answer": "⑤",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q07-S4-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q07-S4-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q07-S4-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "합성함수의 결합법칙을 이용해 주어진 일차식을 대입한다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "합성함수의 결합법칙을 이용해 주어진 일차식을 대입한다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "EXEMPT",
+        "reason": "합성함수의 결합법칙을 이용해 주어진 일차식을 대입한다. 해설의 직접 대입·연립·개수 계산만으로 판단이 완결되며, 추가 그림은 식이나 대응을 중복 표기한다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 44,
+      "qid": "BV-BAKBAL-H-COM2-HA-P73-Q07-S5-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P73-Q07",
+      "category": "합성함수의 결합법칙을 이용한 일차 방정식 ((f o g) o g)(a)=a의 해",
+      "questionSha256": "c109b29c80bacbaad100792697303ff5d6027f01832d056edd3c1de7e029389d",
+      "solutionSha256": "29bc7a3509df8275137e039fc15506500fab72b65edb2d0334050cfb8f1b90e5",
+      "content": "실수 전체의 집합에서 정의된 두 함수 $f(x)=x+4, g(x)$가 있다. 모든 실수 $x$에 대하여 $(g \\circ g)(x)=2x-1$일 때, $((f \\circ g) \\circ g)(a)=a$를 만족시키는 실수 $a$의 값은?",
+      "answer": "③",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q07-S5-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q07-S5-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q07-S5-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "합성함수의 결합법칙을 이용해 주어진 일차식을 대입한다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "합성함수의 결합법칙을 이용해 주어진 일차식을 대입한다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "EXEMPT",
+        "reason": "합성함수의 결합법칙을 이용해 주어진 일차식을 대입한다. 해설의 직접 대입·연립·개수 계산만으로 판단이 완결되며, 추가 그림은 식이나 대응을 중복 표기한다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 45,
+      "qid": "BV-BAKBAL-H-COM2-HA-P73-Q08-T1-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P73-Q08",
+      "category": "세 함수의 합성 결합법칙 (f o (g o h))(a)=a를 이용한 이차방정식 실근의 합",
+      "questionSha256": "e892b98b811c0065778090b0bc79602d438fdbb6f6b9ac6e48a9c286c5638e4f",
+      "solutionSha256": "aeaf2841cd18cfdb7e65cf18af83bfc0ecaf56ec87cb4116e53d9e5f3194d19c",
+      "content": "실수 전체의 집합에서 정의된 세 함수 $f, g, h$에 대하여 $(f \\circ g)(x)=x^2-5, h(x)=x-1$일 때, $(f \\circ (g \\circ h))(a)=a$를 만족시키는 모든 실수 $a$의 값의 합은?",
+      "answer": "①",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q08-T1-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q08-T1-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q08-T1-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "세 함수 합성을 묶어 주어진 이차식을 대입하고 이차방정식을 푼다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "세 함수 합성을 묶어 주어진 이차식을 대입하고 이차방정식을 푼다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "EXEMPT",
+        "reason": "세 함수 합성을 묶어 주어진 이차식을 대입하고 이차방정식을 푼다. 해설의 직접 대입·연립·개수 계산만으로 판단이 완결되며, 추가 그림은 식이나 대응을 중복 표기한다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 46,
+      "qid": "BV-BAKBAL-H-COM2-HA-P73-Q08-S1-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P73-Q08",
+      "category": "세 함수의 합성 결합법칙 (f o (g o h))(a)=a를 이용한 이차방정식 실근의 합",
+      "questionSha256": "e35321338a4eff05e656b1da92c6f4495de6b7bb5f93b7eda49528c5bb4bcf19",
+      "solutionSha256": "df6cb38931400e713f9401e35d1affe10115319e1e9e8b9c5f78f756361f6519",
+      "content": "실수 전체의 집합에서 정의된 세 함수 $f, g, h$에 대하여 $(f \\circ g)(x)=x^2-5, h(x)=x-1$일 때, $(f \\circ (g \\circ h))(a)=a$를 만족시키는 모든 실수 $a$의 값의 곱은?",
+      "answer": "⑤",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q08-S1-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q08-S1-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q08-S1-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "세 함수 합성을 묶어 주어진 이차식을 대입하고 이차방정식을 푼다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "세 함수 합성을 묶어 주어진 이차식을 대입하고 이차방정식을 푼다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "EXEMPT",
+        "reason": "세 함수 합성을 묶어 주어진 이차식을 대입하고 이차방정식을 푼다. 해설의 직접 대입·연립·개수 계산만으로 판단이 완결되며, 추가 그림은 식이나 대응을 중복 표기한다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 47,
+      "qid": "BV-BAKBAL-H-COM2-HA-P73-Q08-S2-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P73-Q08",
+      "category": "세 함수의 합성 결합법칙 (f o (g o h))(a)=a를 이용한 이차방정식 실근의 합",
+      "questionSha256": "dba70a4f3b106eccd8d3ec5c06291a93de3d82c769b42c4b1932aec15c4fd682",
+      "solutionSha256": "76a258ca2e838d7a320ab96388f0511940d616da772de82d066faa6bc827db34",
+      "content": "실수 전체의 집합에서 정의된 세 함수 $f, g, h$에 대하여 $(f \\circ g)(x)=x^2-5, h(x)=x-1$일 때, $(f \\circ (g \\circ h))(a)=a$를 만족시키는 실수 $a$의 최댓값은?",
+      "answer": "③",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q08-S2-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q08-S2-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q08-S2-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "세 함수 합성을 묶어 주어진 이차식을 대입하고 이차방정식을 푼다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "세 함수 합성을 묶어 주어진 이차식을 대입하고 이차방정식을 푼다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "EXEMPT",
+        "reason": "세 함수 합성을 묶어 주어진 이차식을 대입하고 이차방정식을 푼다. 해설의 직접 대입·연립·개수 계산만으로 판단이 완결되며, 추가 그림은 식이나 대응을 중복 표기한다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 48,
+      "qid": "BV-BAKBAL-H-COM2-HA-P73-Q08-S3-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P73-Q08",
+      "category": "세 함수의 합성 결합법칙 (f o (g o h))(a)=a를 이용한 이차방정식 실근의 합",
+      "questionSha256": "1c928b1984e286215331c390fa56cf59ee522765f2cd354288cf9835ab8ecda5",
+      "solutionSha256": "0b66ee62bb4fba17469d78cd18f42f355a42f2c6f53f44f0efd8b88e7b3c0997",
+      "content": "실수 전체의 집합에서 정의된 세 함수 $f, g, h$에 대하여 $(f \\circ g)(x)=x^2-5, h(x)=x-1$일 때, $(f \\circ (g \\circ h))(a)=a$를 만족시키는 실수 $a$의 최솟값은?",
+      "answer": "①",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q08-S3-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q08-S3-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q08-S3-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "세 함수 합성을 묶어 주어진 이차식을 대입하고 이차방정식을 푼다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "세 함수 합성을 묶어 주어진 이차식을 대입하고 이차방정식을 푼다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "EXEMPT",
+        "reason": "세 함수 합성을 묶어 주어진 이차식을 대입하고 이차방정식을 푼다. 해설의 직접 대입·연립·개수 계산만으로 판단이 완결되며, 추가 그림은 식이나 대응을 중복 표기한다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 49,
+      "qid": "BV-BAKBAL-H-COM2-HA-P73-Q08-S4-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P73-Q08",
+      "category": "세 함수의 합성 결합법칙 (f o (g o h))(a)=a를 이용한 이차방정식 실근의 합",
+      "questionSha256": "b628cfc16822a57cb015ecb058dcf0c00a1b544a8155aaa6feb2f17115e31d8f",
+      "solutionSha256": "197d2bfdc057527bbaa36c8113ca01a4d0b6f8ebcb903e595a3e5eff974ce803",
+      "content": "실수 전체의 집합에서 정의된 세 함수 $f, g, h$에 대하여 $(f \\circ g)(x)=x^2-3, h(x)=x-2$일 때, $(f \\circ (g \\circ h))(a)=a$를 만족시키는 모든 실수 $a$의 값의 합은?",
+      "answer": "④",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q08-S4-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q08-S4-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q08-S4-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "세 함수 합성을 묶어 주어진 이차식을 대입하고 이차방정식을 푼다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "세 함수 합성을 묶어 주어진 이차식을 대입하고 이차방정식을 푼다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "EXEMPT",
+        "reason": "세 함수 합성을 묶어 주어진 이차식을 대입하고 이차방정식을 푼다. 해설의 직접 대입·연립·개수 계산만으로 판단이 완결되며, 추가 그림은 식이나 대응을 중복 표기한다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    },
+    {
+      "ordinal": 50,
+      "qid": "BV-BAKBAL-H-COM2-HA-P73-Q08-S5-R1",
+      "sourceLocationId": "2022-BAKBAL-H-COM2-PART2-HA-S15-P73-Q08",
+      "category": "세 함수의 합성 결합법칙 (f o (g o h))(a)=a를 이용한 이차방정식 실근의 합",
+      "questionSha256": "b00a3195d15c04db69bb853dece6e4a1b300e86b3b6aec7551edf4caf265b315",
+      "solutionSha256": "1f4e79b5c5ec899e9b692f6ad544bedf099ecd59670c19aab0c1693efda12f8f",
+      "content": "실수 전체의 집합에서 정의된 세 함수 $f, g, h$에 대하여 $(f \\circ g)(x)=x^2-3, h(x)=x-2$일 때, $(f \\circ (g \\circ h))(a)=a$를 만족시키는 모든 실수 $a$의 값의 곱은?",
+      "answer": "②",
+      "sourceProblemImage": null,
+      "sourceSolutionImage": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q08-S5-R1-solution.svg",
+      "sourceAssetCheck": {
+        "problem": {
+          "path": null,
+          "resolved": null,
+          "exists": false
+        },
+        "solution": {
+          "path": "assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q08-S5-R1-solution.svg",
+          "resolved": "archive/exams/textbooks/백발백중_공통수학2/assets/images/백발백중_공통수학2_함수_P70-73_20261030_유사50/BV-BAKBAL-H-COM2-HA-P73-Q08-S5-R1-solution.svg",
+          "exists": true
+        }
+      },
+      "mathematicalIntent": "세 함수 합성을 묶어 주어진 이차식을 대입하고 이차방정식을 푼다.",
+      "problem": {
+        "verdict": "EXEMPT",
+        "reason": "세 함수 합성을 묶어 주어진 이차식을 대입하고 이차방정식을 푼다. 발문에 필요한 숫자·식·구간 조건이 이미 완결되어 별도 문제 그림은 의미를 추가하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "NO_SOURCE_ASSET"
+      },
+      "solution": {
+        "verdict": "EXEMPT",
+        "reason": "세 함수 합성을 묶어 주어진 이차식을 대입하고 이차방정식을 푼다. 해설의 직접 대입·연립·개수 계산만으로 판단이 완결되며, 추가 그림은 식이나 대응을 중복 표기한다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "NOT_APPLICABLE",
+        "featureParity": "EXEMPT",
+        "sourceQuoteCheck": "NOT_SUPPORTED_BY_CAPABILITY",
+        "drawnFeatureEvidence": [],
+        "engineGap": null,
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "render": "NOT_RUN",
+        "png": "NOT_RUN",
+        "studentView": "NOT_RUN",
+        "a4": "NOT_RUN",
+        "jsImageLink": "SOURCE_ASSET_PRESENT"
+      }
+    }
+  ],
+  "summary": {
+    "questions": 50,
+    "axes": 100,
+    "plan": 26,
+    "exempt": 74,
+    "pending": 0,
+    "mappingFailures": 0,
+    "missingLinkedAssets": 0,
+    "lintShallowPass": 26,
+    "lintFullPass": 26,
+    "parityPass": 26
+  }
+}

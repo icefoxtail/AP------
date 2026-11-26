@@ -1,0 +1,112 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "2"
+        ],
+        "domain": [
+          null,
+          "0"
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "4",
+          "-4",
+          "1"
+        ],
+        "domain": [
+          "0",
+          null
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-4",
+        "y": "-4"
+      },
+      {
+        "id": "B",
+        "x": "-3/2",
+        "y": "1"
+      },
+      {
+        "id": "C",
+        "x": "0",
+        "y": "4"
+      },
+      {
+        "id": "D",
+        "x": "1",
+        "y": "1"
+      },
+      {
+        "id": "E",
+        "x": "3",
+        "y": "1"
+      },
+      {
+        "id": "F",
+        "x": "4",
+        "y": "4"
+      },
+      {
+        "id": "V",
+        "x": "2",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-4",
+        "2",
+        "4"
+      ],
+      "y": [
+        "-4",
+        "1",
+        "4"
+      ]
+    },
+    "functionName": "f"
+  },
+  "caption": "x<0에서는 2x+4, x≥0에서는 (x−2)². f(f(a))=f(a)를 만족하는 a = −4, −3/2, 0, 1, 3, 4; 여섯 해의 합은 5/2.",
+  "accessibilityDescription": "정의역 전체에서 왼쪽 일차함수 조각과 오른쪽 이차함수 조각을 보여 주고, a = −4, −3/2, 0, 1, 3, 4의 각 점을 곡선 위에 표시하였다.",
+  "sourceConditions": [
+    {
+      "id": "pieces",
+      "condition": "f(x) = \\begin{cases} 2x+4 & (x < 0) \\\\ x^2-4x+4 & (x \\ge 0) \\end{cases}",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "equation",
+      "condition": "f(f(a))=f(a)는 f(a)가 f(t)=t의 고정점인 조건이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.pieces"
+      ]
+    },
+    {
+      "id": "solutions",
+      "condition": "실근 a = −4, −3/2, 0, 1, 3, 4",
+      "mappedTo": "graphPlan.requiredPoints"
+    },
+    {
+      "id": "vertex",
+      "condition": "오른쪽 이차 조각의 꼭짓점 V도 해당 조각 위에 표시",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "각 후보 a = −4, −3/2, 0, 1, 3, 4에서의 f(a)를 표시하여 고정점의 원상을 시각적으로 구별한다."
+  ],
+  "sourceQuote": "실수 전체의 집합에서 정의된 함수 $f(x) = \\begin{cases} 2x+4 & (x < 0) \\\\ x^2-4x+4 & (x \\ge 0) \\end{cases}$에 대하여 $(f \\circ f)(a) = f(a)$를 만족시키는 모든 실수 $a$의 값의 합은?"
+}

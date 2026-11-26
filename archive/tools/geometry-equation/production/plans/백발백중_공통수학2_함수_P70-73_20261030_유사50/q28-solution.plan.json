@@ -1,0 +1,103 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "2"
+        ],
+        "domain": [
+          null,
+          "2"
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "16",
+          "-7",
+          "1"
+        ],
+        "domain": [
+          "2",
+          null
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "-2"
+      },
+      {
+        "id": "B",
+        "x": "1",
+        "y": "4"
+      },
+      {
+        "id": "C",
+        "x": "3",
+        "y": "4"
+      },
+      {
+        "id": "D",
+        "x": "4",
+        "y": "4"
+      },
+      {
+        "id": "V",
+        "x": "7/2",
+        "y": "15/4"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "y": [
+        "-2",
+        "4"
+      ]
+    },
+    "functionName": "f"
+  },
+  "caption": "x<2에서는 2x+2, x≥2에서는 x²−7x+16. f(f(a))=f(a)를 만족하는 a = −2, 1, 3, 4; 서로 다른 네 해.",
+  "accessibilityDescription": "정의역 전체에서 왼쪽 일차함수 조각과 오른쪽 이차함수 조각을 보여 주고, a = −2, 1, 3, 4의 각 점을 곡선 위에 표시하였다.",
+  "sourceConditions": [
+    {
+      "id": "pieces",
+      "condition": "f(x) = \\begin{cases} 2x+2 & (x < 2) \\\\ x^2-7x+16 & (x \\ge 2) \\end{cases}",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "equation",
+      "condition": "f(f(a))=f(a)는 f(a)가 f(t)=t의 고정점인 조건이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.pieces"
+      ]
+    },
+    {
+      "id": "solutions",
+      "condition": "실근 a = −2, 1, 3, 4",
+      "mappedTo": "graphPlan.requiredPoints"
+    },
+    {
+      "id": "vertex",
+      "condition": "오른쪽 이차 조각의 꼭짓점 V도 해당 조각 위에 표시",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "각 후보 a = −2, 1, 3, 4에서의 f(a)를 표시하여 고정점의 원상을 시각적으로 구별한다."
+  ],
+  "sourceQuote": "실수 전체의 집합에서 정의된 함수 $f(x) = \\begin{cases} 2x+2 & (x < 2) \\\\ x^2-7x+16 & (x \\ge 2) \\end{cases}$에 대하여 $(f \\circ f)(a) = f(a)$를 만족시키는 서로 다른 실수 $a$의 개수는?"
+}
