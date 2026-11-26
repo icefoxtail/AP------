@@ -114,6 +114,27 @@
         "factRole": "GIVEN"
       },
       {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-19",
+              "denominator": "8"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-47",
+              "denominator": "80"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
         "id": "O",
         "op": "SOURCE_POINT",
         "inputs": [],
@@ -142,8 +163,11 @@
     "C",
     "A",
     "E",
-    "O"
+    "O",
+    "M"
   ],
+  "hiddenPointNames": ["M"],
+  "hiddenPointStyle": "NONE",
   "displayLines": [],
   "displayCircles": [],
   "displaySegments": [
@@ -218,6 +242,13 @@
         "E"
       ],
       "dashed": true
+    },
+    {
+      "id": "s10",
+      "refs": [
+        "O",
+        "M"
+      ]
     }
   ],
   "caption": "25_연향중_2학기_중간_중2_수학 q08번 해설 과정 도형",
@@ -261,6 +292,17 @@
     }
   ],
   "planeMarks": {
+    "regions": [
+      {
+        "id": "regionAOB",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": ["A", "O", "B"]
+          }
+        ]
+      }
+    ],
     "equalLengths": [
       {
         "id": "equals0",
