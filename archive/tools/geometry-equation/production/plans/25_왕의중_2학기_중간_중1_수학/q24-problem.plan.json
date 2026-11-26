@@ -1,0 +1,44 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-6" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "5" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "POLAR_POINT", "inputs": ["A", "C"], "args": { "length": { "kind": "integer", "value": "6" }, "angleDeg": { "kind": "integer", "value": "60" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "E", "op": "POLAR_POINT", "inputs": ["C", "B"], "args": { "length": { "kind": "integer", "value": "5" }, "angleDeg": { "kind": "integer", "value": "60" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "lAE", "op": "LINE_THROUGH", "inputs": ["A", "E"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lDB", "op": "LINE_THROUGH", "inputs": ["D", "B"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lCE", "op": "LINE_THROUGH", "inputs": ["C", "E"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lDC", "op": "LINE_THROUGH", "inputs": ["D", "C"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "F", "op": "LINE_INTERSECTION", "inputs": ["lDB", "lAE"], "args": {}, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "G", "op": "LINE_INTERSECTION", "inputs": ["lDB", "lCE"], "args": {}, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "H", "op": "LINE_INTERSECTION", "inputs": ["lAE", "lDC"], "args": {}, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "E", "F", "G", "H"],
+  "displaySegments": [
+    { "id": "sAC", "refs": ["A", "C"] }, { "id": "sCB", "refs": ["C", "B"] },
+    { "id": "sAD", "refs": ["A", "D"] }, { "id": "sDC", "refs": ["D", "C"] },
+    { "id": "sCE", "refs": ["C", "E"] }, { "id": "sEB", "refs": ["E", "B"] },
+    { "id": "sAE", "refs": ["A", "E"] }, { "id": "sDB", "refs": ["D", "B"] }
+  ],
+  "coordinateCanvas": { "width": 720, "height": 470 },
+  "caption": "정삼각형 ACD와 CBE의 내부를 칠하지 않고 두 선분 AE, DB와 세 교점 F, G, H를 원본 위치에 표시한다.",
+  "accessibilityDescription": "수평선 위의 A, C, B를 밑변으로 왼쪽에는 큰 정삼각형 ACD, 오른쪽에는 작은 정삼각형 CBE가 있다. 선분 AE와 DB가 F에서, DB와 CE가 G에서, AE와 DC가 H에서 정확히 교차하며 모든 면은 흰색이다.",
+  "sourceConditions": [
+    { "id": "base", "condition": "A, C, B가 왼쪽부터 일직선에 있으며 C는 AB 위에 있다.", "mappedTo": ["A", "C", "B", "sAC", "sCB"] },
+    { "id": "equilateral1", "condition": "ACD는 AC=CD=DA, 모든 내각 60°인 정삼각형이다.", "mappedTo": ["A", "C", "D", "sAC", "sDC", "sAD"] },
+    { "id": "equilateral2", "condition": "CBE는 CB=BE=EC, 모든 내각 60°인 정삼각형이다.", "mappedTo": ["C", "B", "E", "sCB", "sCE", "sEB"] },
+    { "id": "cross-F", "condition": "F는 선분 DB와 AE의 교점이다.", "mappedTo": ["sDB", "sAE", "F", "lDB", "lAE"] },
+    { "id": "cross-G", "condition": "G는 선분 DB와 CE의 교점이다.", "mappedTo": ["sDB", "sCE", "G", "lDB", "lCE"] },
+    { "id": "cross-H", "condition": "H는 선분 AE와 DC의 교점이다.", "mappedTo": ["sAE", "sDC", "H", "lAE", "lDC"] }
+  ],
+  "newVisualInformation": [
+    "원본 스캔 PNG에서 A-C-B, D, E, F, G, H의 가늘게 겹치는 획과 흐릿한 이름을 정확한 두 정삼각형과 세 LINE_INTERSECTION으로 재현한다.",
+    "합동과 각도 문제의 정답인 120° 및 60°는 문제 도형에 미리 쓰지 않는다. 원본에 없는 보조점과 수치·면 색칠도 넣지 않는다."
+  ],
+  "sourceQuote": "△ACD와 △CBE는 각각 정삼각형이다. DB와 AE의 교점을 F, DB와 CE의 교점을 G, AE와 DC의 교점을 H"
+}

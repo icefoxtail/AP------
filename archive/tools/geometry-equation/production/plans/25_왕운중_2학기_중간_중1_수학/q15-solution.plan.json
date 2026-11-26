@@ -1,0 +1,39 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "4" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "P", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "4" }, { "kind": "integer", "value": "4" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "L", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-1" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "R", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "9" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "P", "L", "R"],
+  "hiddenPointNames": ["L", "R"],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    { "id": "sl", "refs": ["L", "R"], "arrow": "BOTH" },
+    { "id": "sPA", "refs": ["P", "A"] },
+    { "id": "sPB", "refs": ["P", "B"] },
+    { "id": "sPC", "refs": ["P", "C"] }
+  ],
+  "planeMarks": { "expressionLabels": [{ "id": "labelL", "ownerSegment": "sl", "text": "l", "labelAt": 0.91 }] },
+  "coordinateCanvas": { "width": 600, "height": 380 },
+  "caption": "일직선 A, B, C와 직선 밖 P에서 정해지는 네 직선을 한 그림에 모아 확인한다.",
+  "accessibilityDescription": "화살촉이 양쪽에 있는 직선 l 위에 A, B, C가 왼쪽부터 놓이고, 위쪽 점 P를 A, B, C에 각각 연결해 전체 네 직선의 방향을 보여 준다. 원본에 없는 점 이름과 면 채움은 없다.",
+  "sourceConditions": [
+    { "id": "collinear", "condition": "A, B, C는 이 순서로 직선 l 위에 놓여 있고 직선은 양방향으로 계속된다.", "mappedTo": ["A", "B", "C", "L", "R", "sl", "labelL"] },
+    { "id": "outside", "condition": "점 P는 직선 l 위에 없으며 P와 A, B, C를 각각 연결하면 서로 다른 직선 셋이 정해진다.", "mappedTo": ["P", "sPA", "sPB", "sPC"] },
+    { "id": "counting", "condition": "서로 다른 직선 4개, 반직선 10개, 선분 6개를 구별해야 한다.", "mappedTo": ["sl", "sPA", "sPB", "sPC", "A", "B", "C", "P"] }
+  ],
+  "newVisualInformation": [
+    "기존 해설의 극소형 패널 다섯 개를 한 개의 큰 기본 배치로 정리하고 원본 네 점 사이의 관계를 읽기 쉬운 크기로 보인다.",
+    "직선 l의 양방향 화살촉과 P에서 A, B, C로 향하는 서로 다른 세 연결을 유지한다. 반직선 10개와 선분 6개는 원문 해설 문장으로 독립 검산한다.",
+    "배경과 내부 면은 흰색이며 답을 설명하는 데 필요 없는 강조 채움·색상은 없다."
+  ],
+  "sourceQuote": "세 점 A,B,C는 직선 l 위에 있고, 점 P는 직선 l 위에 있지 않을 때"
+}
