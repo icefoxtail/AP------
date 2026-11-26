@@ -1,0 +1,57 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"-6"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"expression","op":"neg","args":[{"kind":"expression","op":"div","args":[{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"27"}]},{"kind":"integer","value":"2"}]}]},{"kind":"rational","numerator":"-3","denominator":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"expression","op":"div","args":[{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"27"}]},{"kind":"integer","value":"2"}]},{"kind":"rational","numerator":"-3","denominator":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"circ","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"3"}},"outputType":"CIRCLE","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints":["O","P","A","B"],
+  "displayLines":[],
+  "displayCircles":["circ"],
+  "displaySegments":[
+    {"id":"sOA","refs":["O","A"]},
+    {"id":"sOB","refs":["O","B"]},
+    {"id":"sPA","refs":["P","A"]},
+    {"id":"sPB","refs":["P","B"]},
+    {"id":"sPO","refs":["P","O"],"dashed":true}
+  ],
+  "rightAngles":[
+    {"id":"rightA","refs":["O","A","P"]},
+    {"id":"rightB","refs":["O","B","P"]}
+  ],
+  "planeMarks":{
+    "angles":[
+      {"id":"givenAngle","refs":["A","P","B"],"value":60,"label":"60","ring":2,"style":"ARC","factRole":"GIVEN"},
+      {"id":"halfAngle","refs":["A","P","O"],"value":30,"label":"30","ring":1,"style":"ARC","factRole":"DERIVED_INTERMEDIATE"}
+    ],
+    "equalLengths":[
+      {"id":"sameTangents","count":1,"segments":["sPA","sPB"]},
+      {"id":"sameRadii","count":2,"segments":["sOA","sOB"]}
+    ],
+    "expressionLabels":[
+      {"id":"radiusThree","ownerSegment":"sOA","text":"3","factRole":"GIVEN"},
+      {"id":"tangentValue","ownerSegment":"sPA","text":"3sqrt(3)","factRole":"CONCLUSION"}
+    ]
+  },
+  "coordinateCanvas":{"width":600,"height":500},
+  "caption":"원 O에서 P가 그은 두 접선 PA와 PB의 길이가 같고, OP가 60도 각을 이등분한다.",
+  "accessibilityDescription":"흰 바탕의 원 O와 바깥 점 P, 두 접선 PA·PB, 반지름 OA·OB가 있다. 두 접점의 직각, P의 60도 각과 그 절반인 30도, PA=PB의 눈금, 반지름 3과 접선 길이 3루트3이 표시된다.",
+  "sourceQuote":"두 점 $A$, $B$는 그 접점이다.",
+  "sourceConditions":[
+    {"id":"circle","condition":"원 O의 반지름은 3이다(원본 q018 이미지와 현행 풀이). 면 채움 없이 원과 반지름 두 개를 그린다.","mappedTo":["circ","O","sOA","sOB","radiusThree","sameRadii"]},
+    {"id":"tangents","condition":"PA와 PB는 접선이고 접점에서 OA⊥PA 및 OB⊥PB이다. 두 접선 길이가 같다.","mappedTo":["sPA","sPB","rightA","rightB","sameTangents"]},
+    {"id":"angles","condition":"각 APB는 60도이며 OP는 두 접선의 대칭축이므로 APO=30도이다.","mappedTo":["sPO","givenAngle","halfAngle"]},
+    {"id":"computedLength","condition":"해설에서 PA=PB=3sqrt(3)를 얻는다. 이 수치는 해설 축에만 표기한다.","mappedTo":["tangentValue"]}
+  ],
+  "newVisualInformation":[
+    "기존 q18-solution-v2.svg의 불필요한 파란 부채꼴 면 채움을 제거하고 원·접선·두 반지름만 실선으로 유지한다.",
+    "접점 직각 2개와 접선 길이의 동일한 눈금, 60도와 30도 각 호를 실제 렌더 필드로 표시한다.",
+    "원본의 반지름 3과 해설의 PA=3sqrt(3)는 선분 소속을 가진 라벨로 기재한다."
+  ]
+}
