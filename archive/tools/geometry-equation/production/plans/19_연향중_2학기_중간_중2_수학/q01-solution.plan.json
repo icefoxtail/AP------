@@ -1,0 +1,198 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 430
+  },
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eq0",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sCA"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 29.74,
+        "noLabel": true,
+        "equalGroup": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "value": 29.74,
+        "noLabel": true,
+        "equalGroup": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "1번 문제: 원본 q01: AB=AC, A에서 BC까지 이어진 AD와 꼭짓각의 이등분 표식.",
+  "accessibilityDescription": "1번 문제 그림: 원본 q01: AB=AC, A에서 BC까지 이어진 AD와 꼭짓각의 이등분 표식.",
+  "sourceConditions": [
+    {
+      "id": "src-q1",
+      "condition": " 조건: 이등변삼각형의 두 밑각의 크기가 같음을 설명하는 5개의 빈칸(①~⑤)이 포함된 증명 박스가 주어져 있습니다. 구할 대상: 각 빈칸에 들어갈 것으로 '잘못된' 것 2개를 선택합니다.  증명 논리 단계: 1) $\\overline{\\text{AB}}=\\overline{\\text{AC}}$ (이등변삼각형의 가정) 2) 꼭지각 $\\angle\\text{A}$의 이등분선이므로 $\\angle\\text{BAD} = \\angle\\text{CAD}$ 3) 선분 $\\overline{\\text{AD}}$는 두 삼각형에 공통 4) 두 변의 길이와 그 끼인각이 같으므로 $\\text{SAS}$ 합동 5) 합동인 두 삼각형의 대응각이므로 $\\angle\\text{B} = \\angle\\text{C}$  각 빈칸에 들어갈 올바른 수학적 대상 검토: - ①: $\\overline{\\text{AB}} = \\overline{\\text{AC}}$ (선지 ①은 $\\overline{\\text{AC}}$이므로 올바름) - ②: $\\angle\\text{BAD} = \\angle\\text{CAD}$ (선지 ②는 $\\angle\\text{CAD}$이므로 올바름) - ③: 공통인 선분은 $\\overline{\\text{AD}}$이어야 합니다. 선지 ③은 $\\overline{\\text{BC}}$로 잘못 표기되어 있습니다. - ④: 두 변과 그 끼인각이 같으므로 $\\text{SAS}$ 합동이어야 합니다. 선지 ④는 $\\text{ASA}$로 잘못 표기되어 있습니다. - ⑤: 대응각의 크기가 같으므로 $\\angle\\text{B} = \\angle\\text{C}$입니다. (선지 ⑤는 $\\angle\\text{C}$이므로 올바름)  ① $\\overline{\\text{AC}}$: 참 (올바른 빈칸 채움) ② $\\angle\\text{CAD}$: 참 (올바른 빈칸 채움) ③ $\\overline{\\text{BC}}$: 거짓 (공통인 변은 $\\overline{\\text{AD}}$이므로 잘못됨, 정답) ④ $\\text{ASA}$: 거짓 (두 변과 끼인각이므로 $\\text{SAS}$ 합동이어야 하므로 잘못됨, 정답) ⑤ $\\angle\\text{C}$: 참 (올바른 빈칸 채움)  따라서 잘못된 것은 ③, ④입니다. ",
+      "mappedTo": "mathPlan.nodes;displaySegments;planeMarks"
+    },
+    {
+      "id": "source-visual-feature",
+      "condition": "원본 q01: AB=AC, A에서 BC까지 이어진 AD와 꼭짓각의 이등분 표식; 풀이에 필요한 추가 관계",
+      "mappedTo": "displaySegments;planeMarks"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 q01: AB=AC, A에서 BC까지 이어진 AD와 꼭짓각의 이등분 표식; 풀이에 필요한 추가 관계"
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "B",
+        "D",
+        "A"
+      ]
+    }
+  ]
+}

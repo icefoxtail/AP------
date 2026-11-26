@@ -1,0 +1,237 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 430
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "A",
+        "E",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l0",
+        "ownerSegment": "sAB",
+        "text": "3"
+      },
+      {
+        "id": "l1",
+        "ownerSegment": "sCD",
+        "text": "5"
+      },
+      {
+        "id": "l2",
+        "ownerSegment": "sBC",
+        "text": "8"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eq0",
+        "count": 1,
+        "segments": [
+          "sAE",
+          "sDE"
+        ]
+      }
+    ]
+  },
+  "caption": "21번 문제: 서술형 q21 원본 이미지 없음: ∠B=∠C=∠AED=90°, AE=DE, 실제 AB3·CD5 도형.",
+  "accessibilityDescription": "21번 문제 그림: 서술형 q21 원본 이미지 없음: ∠B=∠C=∠AED=90°, AE=DE, 실제 AB3·CD5 도형.",
+  "sourceConditions": [
+    {
+      "id": "src-q21",
+      "condition": " 조건: $\\angle\\text{B}=\\angle\\text{C}=\\angle\\text{AED}=90^\\circ$이고 $\\overline{\\text{AE}}=\\overline{\\text{DE}}$입니다. 현재 그림에서 $\\overline{\\text{AB}}=3\\text{cm}$, $\\overline{\\text{CD}}=5\\text{cm}$입니다.  직선 $\\text{B,E,C}$ 위의 각을 보면 $\\angle\\text{AEB}+90^\\circ+\\angle\\text{CED}=180^\\circ$이므로 $\\angle\\text{AEB}+\\angle\\text{CED}=90^\\circ$입니다. 직각삼각형 $\\text{ABE}$에서 $\\angle\\text{BAE}+\\angle\\text{AEB}=90^\\circ$이므로 $\\angle\\text{BAE}=\\angle\\text{CED}$입니다. 두 직각삼각형에서 빗변 $\\text{AE} = \\text{DE}$와 한 예각이 같으므로 $\\triangle\\text{ABE}\\equiv\\triangle\\text{DCE}$ (RHA)입니다.  대응하는 변에서 $\\overline{\\text{BE}}=\\overline{\\text{CD}}=5\\text{cm}$, $\\overline{\\text{EC}}=\\overline{\\text{AB}}=3\\text{cm}$입니다. 따라서 $\\overline{\\text{BC}}=\\overline{\\text{BE}}+\\overline{\\text{EC}}=5+3=8\\text{cm}$입니다. ",
+      "mappedTo": "mathPlan.nodes;displaySegments;planeMarks"
+    },
+    {
+      "id": "source-visual-feature",
+      "condition": "서술형 q21 원본 이미지 없음: ∠B=∠C=∠AED=90°, AE=DE, 실제 AB3·CD5 도형; 풀이에 필요한 추가 관계",
+      "mappedTo": "displaySegments;planeMarks"
+    }
+  ],
+  "newVisualInformation": [
+    "서술형 q21 원본 이미지 없음: ∠B=∠C=∠AED=90°, AE=DE, 실제 AB3·CD5 도형; 풀이에 필요한 추가 관계"
+  ]
+}

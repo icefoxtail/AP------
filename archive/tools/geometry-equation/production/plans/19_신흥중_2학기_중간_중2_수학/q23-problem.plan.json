@@ -1,0 +1,236 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5291502622129181",
+              "denominator": "1000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "75",
+              "denominator": "10"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3968626966596886",
+              "denominator": "1000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 460
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l0",
+        "ownerSegment": "sDC",
+        "text": "6"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dim0",
+        "from": "A",
+        "to": "D",
+        "label": "2",
+        "side": "ABOVE"
+      },
+      {
+        "id": "dim1",
+        "from": "E",
+        "to": "C",
+        "label": "4",
+        "side": "ABOVE"
+      }
+    ],
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 97.18,
+        "label": "x",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "D",
+          "E",
+          "C"
+        ],
+        "value": 97.18,
+        "label": "x",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "23번 문제: 삼각형 ABC 내부 선분 DE, 같은 각 A와 DEC, AD2·DC6·EC4.",
+  "accessibilityDescription": "23번 문제 그림: 삼각형 ABC 내부 선분 DE, 같은 각 A와 DEC, AD2·DC6·EC4.",
+  "sourceConditions": [
+    {
+      "id": "src-q23",
+      "condition": " 서술형 3. 다음 그림과 같이 $\\triangle\\mathrm{ABC}$에서 $\\angle\\mathrm{A}=\\angle\\mathrm{DEC}$이고 $\\overline{\\mathrm{AD}}=2\\text{cm}$, $\\overline{\\mathrm{DC}}=6\\text{cm}$, $\\overline{\\mathrm{EC}}=4\\text{cm}$일 때, 다음 물음에 답하시오. (6점)     (1) 서로 닮음인 두 삼각형을 찾아 닮음조건을 설명하고, 기호 $\\sim$를 사용하여 나타내시오. (풀이과정과 답) (4점)  (2) $\\overline{\\mathrm{BE}}$의 길이를 구하시오. (풀이과정과 답) (2점) ",
+      "mappedTo": "mathPlan.nodes;displaySegments;planeMarks"
+    },
+    {
+      "id": "source-visual-feature",
+      "condition": "삼각형 ABC 내부 선분 DE, 같은 각 A와 DEC, AD2·DC6·EC4",
+      "mappedTo": "displaySegments;planeMarks"
+    }
+  ],
+  "newVisualInformation": [
+    "삼각형 ABC 내부 선분 DE, 같은 각 A와 DEC, AD2·DC6·EC4"
+  ]
+}

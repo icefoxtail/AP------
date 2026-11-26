@@ -1,0 +1,188 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 430
+  },
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eq0",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sCA"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 29.74,
+        "noLabel": true,
+        "equalGroup": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "value": 29.74,
+        "noLabel": true,
+        "equalGroup": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "1번 문제: 원본 q01: AB=AC, A에서 BC까지 이어진 AD와 꼭짓각의 이등분 표식.",
+  "accessibilityDescription": "1번 문제 그림: 원본 q01: AB=AC, A에서 BC까지 이어진 AD와 꼭짓각의 이등분 표식.",
+  "sourceConditions": [
+    {
+      "id": "src-q1",
+      "condition": " 1. 다음은 「이등변삼각형의 두 밑각의 크기는 같음」을 설명하는 과정이다. 각 빈칸에 들어갈 것으로 잘못된 것을 고르면? (정답 2개) [4점]  $$\\begin{array}{|l|}\\hline \\overline{\\text{AB}}=\\overline{\\text{AC}}\\text{인 } \\triangle \\text{ABC}\\text{에서 꼭지각}(\\angle \\text{A}\\text{의) 이등분선과} \\\\ \\text{밑변 } \\text{BC}\\text{의 교점을 } \\text{D}\\text{라고 하면,} \\\\ \\triangle \\text{ABD} \\equiv \\triangle \\text{ACD}\\text{이다. 그 이유는} \\\\ \\quad \\overline{\\text{AB}} = \\fbox{\\quad \\text{①} \\quad} \\\\ \\quad \\angle \\text{BAD} = \\fbox{\\quad \\text{②} \\quad} \\\\ \\quad \\fbox{\\quad \\text{③} \\quad} \\text{는 공통} \\\\ \\text{①, ②, ③에서 대응하는 두 변의 길이가 각각 같고,} \\\\ \\text{그 끼인각의 크기가 같으므로} \\\\ \\quad \\triangle \\text{ABD} \\equiv \\triangle \\text{ACD} \\ (\\fbox{\\quad \\text{④} \\quad}\\text{합동}) \\\\ \\text{따라서 } \\angle \\text{B} = \\fbox{\\quad \\text{⑤} \\quad} \\\\ \\hline \\end{array}$$    ",
+      "mappedTo": "mathPlan.nodes;displaySegments;planeMarks"
+    },
+    {
+      "id": "source-visual-feature",
+      "condition": "원본 q01: AB=AC, A에서 BC까지 이어진 AD와 꼭짓각의 이등분 표식",
+      "mappedTo": "displaySegments;planeMarks"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 q01: AB=AC, A에서 BC까지 이어진 AD와 꼭짓각의 이등분 표식"
+  ]
+}

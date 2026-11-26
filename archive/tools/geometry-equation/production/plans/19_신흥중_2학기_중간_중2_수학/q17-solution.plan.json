@@ -1,0 +1,180 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "56875",
+              "denominator": "10000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1911",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4265625",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "14332500000000002",
+              "denominator": "10000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 430
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l0",
+        "ownerSegment": "sBC",
+        "text": "8"
+      },
+      {
+        "id": "l1",
+        "ownerSegment": "sCD",
+        "text": "4"
+      }
+    ]
+  },
+  "caption": "17번 문제: AB=2AC, BD=3DA인 삼각형의 D 위치와 BC8.",
+  "accessibilityDescription": "17번 문제 그림: AB=2AC, BD=3DA인 삼각형의 D 위치와 BC8.",
+  "sourceConditions": [
+    {
+      "id": "src-q17",
+      "condition": " 조건: $\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}}=2\\overline{\\mathrm{AC}}$, $\\overline{\\mathrm{BD}}=3\\overline{\\mathrm{DA}}$이고, $\\overline{\\mathrm{BC}}=8\\text{cm}$입니다. 구할 대상: 선분 $\\overline{\\mathrm{CD}}$의 길이를 구합니다.  먼저 풀이에 쓸 성질을 순서대로 정리합니다. 1) $\\overline{\\mathrm{AC}}=b$라고 두면 $\\overline{\\mathrm{AB}}=2b$입니다. 2) 점 $\\mathrm{D}$가 선분 $\\overline{\\mathrm{AB}}$ 위에 있고 $\\overline{\\mathrm{BD}}=3\\overline{\\mathrm{DA}}$이므로 $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AD}} + 3\\overline{\\mathrm{AD}} = 4\\overline{\\mathrm{AD}}$입니다. 이를 통해 $\\overline{\\mathrm{AD}}$의 길이를 $b$로 표현합니다. 3) $\\triangle\\mathrm{ACD}$와 $\\triangle\\mathrm{ABC}$에서 공통각 $\\angle\\mathrm{A}$를 낀 두 변의 길이의 비를 비교하여 SAS 닮음임을 밝힙니다.  위에서 정리한 성질을 이용해 차례로 계산합니다. $\\overline{\\mathrm{AC}} = b$라 두면 $\\overline{\\mathrm{AB}} = 2b$입니다. $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AD}} + \\overline{\\mathrm{BD}} = \\overline{\\mathrm{AD}} + 3\\overline{\\mathrm{AD}} = 4\\overline{\\mathrm{AD}} = 2b$이므로: $$\\overline{\\mathrm{AD}} = \\frac{2b}{4} = \\frac{1}{2}b$$ 이제 $\\triangle\\mathrm{ACD}$와 $\\triangle\\mathrm{ABC}$를 비교합니다: - 공통각: $\\angle\\mathrm{CAD} = \\angle\\mathrm{BAC}$ (공통) - $\\angle\\mathrm{A}$를 낀 두 변의 길이의 비: $$\\overline{\\mathrm{AD}} : \\overline{\\mathrm{AC}} = \\frac{1}{2}b : b = 1 : 2$$ $$\\overline{\\mathrm{AC}} : \\overline{\\mathrm{AB}} = b : 2b = 1 : 2$$ 따라서 두 쌍의 대응변의 길이의 비가 같고 그 끼인각의 크기가 같으므로: $$\\triangle\\mathrm{ACD} \\sim \\triangle\\mathrm{ABC} \\quad (\\text{SAS 닮음})$$ 닮음비가 $1:2$이므로 나머지 한 대응변의 비 역시 $1:2$입니다: $$\\overline{\\mathrm{CD}} : \\overline{\\mathrm{BC}} = 1 : 2$$ $\\overline{\\mathrm{BC}}=8\\text{cm}$이므로: $$\\overline{\\mathrm{CD}} : 8 = 1 : 2 \\implies \\overline{\\mathrm{CD}} = \\frac{8}{2} = 4\\text{ cm}$$  각 선지를 확인하면 다음과 같습니다. ① $4\\text{cm}$: 참 (계산된 $\\overline{\\mathrm{CD}}=4\\text{cm}$와 일치) ② $4.5\\text{cm}$: 거짓 ③ $5\\text{cm}$: 거짓 ④ $5.5\\text{cm}$: 거짓 ⑤ $6\\text{cm}$: 거짓  따라서 정답은 ①입니다. ",
+      "mappedTo": "mathPlan.nodes;displaySegments;planeMarks"
+    },
+    {
+      "id": "source-visual-feature",
+      "condition": "닮음인 삼각형과 CD4 보조선",
+      "mappedTo": "displaySegments;planeMarks"
+    }
+  ],
+  "newVisualInformation": [
+    "닮음인 삼각형과 CD4 보조선"
+  ]
+}
