@@ -102,26 +102,8 @@
         "outputType": "POINT",
         "factRole": "GIVEN"
       },
-      {
-        "id": "H",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "rational",
-              "numerator": "31",
-              "denominator": "8"
-            },
-            {
-              "kind": "integer",
-              "value": "0"
-            }
-          ]
-        },
-        "outputType": "POINT",
-        "factRole": "GIVEN"
-      },
+      {"id":"baseAB","op":"LINE_THROUGH","inputs":["A","B"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"H","op":"PERPENDICULAR_FOOT","inputs":["T","baseAB"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
       {
         "id": "O",
         "op": "SOURCE_POINT",
@@ -297,7 +279,14 @@
       }
     ]
   },
-  "caption": "접선 PT는 주황색, 할선의 바깥 부분 PA는 파란색, 안쪽 부분 AB는 초록색이다. 먼저 접선과 할선의 관계로 PT를 구한 뒤, 삼각형의 길이 관계로 BT를 구한다.",
+  "rightAngles": [{"id":"rH","refs":["T","H","B"]}],
+  "caption": "접선 PT와 할선 PAB의 관계로 PT=8cm를 구한다. T에서 직선 AB에 내린 수선의 발 H와 직각 표식을 사용하여 두 직각삼각형의 길이 관계를 비교한다.",
+  "accessibilityDescription": "P에서 원에 그은 접선 PT와 할선 PAB, 현 AT와 BT가 있다. PA 4cm, AB 12cm, AT 7cm이고 해설에서 구한 PT 8cm가 적혀 있다. T에서 AB에 내린 수선의 발 H와 직각이 표시되어 있다.",
+  "sourceConditions": [
+    {"id":"c1","sourceQuote":"PT는 원의 접선, PA=4cm, AB=12cm, AT=7cm","mappedTo":["mathPlan.nodes","displaySegments","planeMarks.expressionLabels"]},
+    {"id":"c2","condition":"해설에서 T에서 직선 PAB에 수선을 내려 H를 정의한다.","mappedTo":["mathPlan.nodes","displaySegments","rightAngles"]}
+  ],
+  "newVisualInformation": ["H는 직접 찍은 좌표가 아니라 엔진의 PERPENDICULAR_FOOT로 계산한다.","수선 TH와 H의 직각 표식을 실제 작도 요소로 추가한다.","원판 안은 칠하지 않는다."],
   "hiddenPointNames": [
     "O"
   ],

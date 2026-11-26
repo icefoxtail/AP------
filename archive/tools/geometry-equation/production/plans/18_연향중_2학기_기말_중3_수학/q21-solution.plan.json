@@ -106,31 +106,8 @@
         "outputType": "POINT",
         "factRole": "GIVEN"
       },
-      {
-        "id": "H",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "expression",
-              "op": "sqrt",
-              "args": [
-                {
-                  "kind": "integer",
-                  "value": "3"
-                }
-              ]
-            },
-            {
-              "kind": "integer",
-              "value": "0"
-            }
-          ]
-        },
-        "outputType": "POINT",
-        "factRole": "GIVEN"
-      }
+      {"id":"baseBD","op":"LINE_THROUGH","inputs":["B","D"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"H","op":"PERPENDICULAR_FOOT","inputs":["C","baseBD"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
     ]
   },
   "displayPoints": [
@@ -268,22 +245,21 @@
       }
     ]
   },
-  "caption": "대각선 BD로 사각형을 두 삼각형으로 나눈다. 직각삼각형 ABD에서 BD=7√3이므로 파란 삼각형의 넓이는 7×7√3÷2이다. C에서 BD에 내린 수선의 발을 H라 하면 CH=12×sin30°=6이므로 주황 삼각형의 넓이는 7√3×6÷2=21√3이다. 두 넓이를 더한다.",
+  "caption": "대각선 BD로 사각형을 두 삼각형으로 나눈다. 직각삼각형 ABD에서 BD=7√3이고, C에서 BD에 내린 점선 수선 CH의 길이는 6이다. 두 삼각형의 넓이를 합한다.",
+  "accessibilityDescription": "사각형 ABCD의 대각선 BD 양쪽으로 삼각형 ABD와 BCD가 나뉘며, A의 60도, B의 직각, D의 30도와 길이 7, 14, 12cm가 표시된다. C에서 BD에 내린 수선 CH와 H의 직각 및 높이 6cm가 표시된다.",
   "sourceConditions": [
     {
       "id": "c1",
       "condition": "사각형 A, B, C, D에서 각 A=60°, 각 ABD=90°, 각 CDB=30°, AB=7cm, AD=14cm, CD=12cm이다.",
-      "mappedTo": [
-        "mathPlan.nodes",
-        "displaySegments",
-        "planeMarks",
-        "caption"
-      ]
+      "mappedTo": ["mathPlan.nodes", "displaySegments", "planeMarks.angles", "planeMarks.expressionLabels", "rightAngles"]
+    },
+    {
+      "id": "c2",
+      "condition": "해설에서 C에서 BD에 내린 수선의 발 H와 높이 CH=6cm를 사용한다.",
+      "mappedTo": ["mathPlan.nodes", "displaySegments", "rightAngles", "planeMarks.expressionLabels"]
     }
   ],
-  "newVisualInformation": [
-    "도형의 각·길이와 관계를 색과 표식으로 구별한다."
-  ],
+  "newVisualInformation": ["H는 임의 좌표로 배치한 주어진 점이 아니라 엔진이 계산한 수선의 발이다.","BD로 분할된 두 삼각형 면 채움은 넓이 합산을 위해서만 사용한다."],
   "rightAngles": [
     {
       "id": "r1",

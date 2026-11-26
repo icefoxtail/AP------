@@ -1,0 +1,47 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"30"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"30"},{"kind":"integer","value":"30"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"30"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[
+        {"kind":"integer","value":"30"},
+        {"kind":"expression","op":"add","args":[{"kind":"integer","value":"30"},{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"30"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]}]}
+      ]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints": ["A","B","C","D"],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {"id":"sAB","refs":["A","B"]},
+    {"id":"sAC","refs":["A","C"]},
+    {"id":"sAD","refs":["A","D"],"dashed":true},
+    {"id":"sBD","refs":["B","D"]},
+    {"id":"sDC","refs":["D","C"]}
+  ],
+  "planeMarks": {
+    "angles": [
+      {"id":"aUp","refs":["B","A","D"],"value":60,"factRole":"GIVEN"},
+      {"id":"aDown","refs":["D","A","C"],"value":45,"factRole":"GIVEN"}
+    ],
+    "expressionLabels": [{"id":"lAD","ownerSegment":"sAD","text":"30","unit":"m","ownership":"NEAREST"}],
+    "segmentColors": [
+      {"segments":["sAB"],"color":"BLUE"},
+      {"segments":["sAC"],"color":"WARM"}
+    ]
+  },
+  "rightAngles": [{"id":"rD","refs":["A","D","C"]}],
+  "coordinateCanvas": {"width":720,"height":600},
+  "caption": "우체국 옥상 A에서 백화점 옥상 B를 올려다본 각이 60도, 바닥 C를 내려다본 각이 45도이다. 두 건물 사이 수평 거리는 30m이다.",
+  "accessibilityDescription": "우체국 옥상 A에서 오른쪽 백화점 꼭대기 B와 밑점 C로 두 선이 나가고, 같은 높이 D까지 점선 수평선이 그어져 있다. A에서 위로 60도, 아래로 45도, 수평 거리는 30미터이다.",
+  "sourceConditions": [
+    {"id":"c1","sourceQuote":"30m 떨어진 우체국과 백화점","mappedTo":["mathPlan.nodes","displaySegments","planeMarks.expressionLabels"]},
+    {"id":"c2","sourceQuote":"A에서 B를 올려다 본 각의 크기가 60°","mappedTo":["planeMarks.angles[0]"]},
+    {"id":"c3","sourceQuote":"C 지점을 내려다 본 각의 크기는 45°","mappedTo":["planeMarks.angles[1]","rightAngles"]}
+  ],
+  "newVisualInformation": ["높이를 구하는 문제이므로 BD, DC, BC의 계산값은 그림에 표시하지 않는다.","기울어진 시선 두 개, 점선 수평 기준선, 30m 및 두 각·직각 표식을 완전한 작도 필드로 표현한다.","건물 면을 장식색으로 채우지 않는다."]
+}
