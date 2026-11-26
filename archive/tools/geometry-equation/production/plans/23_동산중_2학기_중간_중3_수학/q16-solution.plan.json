@@ -1,0 +1,160 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC1",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA2",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "B",
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "t0",
+        "ownerSegment": "sAB0",
+        "text": "c",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "t1",
+        "ownerSegment": "sBC1",
+        "text": "c*sin(A)",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "t2",
+        "ownerSegment": "sCA2",
+        "text": "c*cos(A)",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 660,
+    "height": 570
+  },
+  "caption": "빗변 AB=c, C에서 직각인 삼각형에서 ∠A의 삼각비를 표시한다.",
+  "sourceQuote": "∠C=90°, ∠A와 빗변 AB=c가 주어지고 AC·BC를 삼각비로 표현한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "∠C=90°, ∠A와 빗변 AB=c가 주어지고 AC·BC를 삼각비로 표현한다.",
+      "mappedTo": [
+        "sAB0",
+        "sBC1",
+        "sCA2",
+        "r0",
+        "t0",
+        "t1",
+        "t2"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "삼각비의 기준각과 빗변·맞은변·이웃변의 관계를 복원한다."
+  ]
+}
