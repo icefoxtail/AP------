@@ -1,0 +1,36 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"18"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"9"},{"kind":"rational","numerator":"439","denominator":"100"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"-2086533","denominator":"1002721"},{"kind":"rational","numerator":"982165481","denominator":"100272100"}]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "coordinateCanvas":{"width":560,"height":380},
+  "displayLines":[],"displayCircles":[],"displayPoints":["A","B","C","D","E"],
+  "displaySegments":[
+    {"id":"sEB","refs":["E","B"]},{"id":"sBA","refs":["B","A"]},
+    {"id":"sBC","refs":["B","C"]},{"id":"sBD","refs":["B","D"]},
+    {"id":"sCD","refs":["C","D"]},{"id":"sDA","refs":["D","A"]}
+  ],
+  "planeMarks":{
+    "equalLengths":[{"id":"eTriple","count":1,"segments":["sBC","sBD","sDA"]}],
+    "angles":[
+      {"id":"aCBE","refs":["C","B","E"],"value":78,"label":"78","style":"ARC"},
+      {"id":"aBAD","refs":["B","A","D"],"value":26,"label":"x","style":"ARC"}
+    ]
+  },
+  "caption":"연속한 세 등변 관계에서 외각 78도와 구하는 각 x를 표시한 도형.",
+  "accessibilityDescription":"E, B, A는 한 직선 위, C, D, A도 한 직선 위에 있다. BC, BD, DA 세 선분에는 같은 길이 눈금이 있고 B의 외각 CBE는 78도, A의 각 BAD는 x로 표시되어 있다.",
+  "sourceConditions":[
+    {"id":"collinear","condition":"E-B-A는 일직선, C-D-A는 일직선이다. 수치가 없는 위치는 p=9, q=4.39로 택한 유리수 대표 배치로 정확히 동선·세 선분의 같음을 구성했다. 외각은 계산상 78.0063도로 원문 78도와 표시 허용 오차 0.5도 안에서 일치한다.","mappedTo":"mathPlan.nodes:E,B,A,C,D;displaySegments:sEB,sBA,sCD,sDA"},
+    {"id":"triple-equality","condition":"BC=BD=DA는 원본 그림의 세 개 동일 눈금과 같다.","mappedTo":"mathPlan.nodes:C,D,A;planeMarks.equalLengths:eTriple"},
+    {"id":"exterior-78","condition":"∠CBE=78°이고 ∠BAD=x이다.","mappedTo":"planeMarks.angles:aCBE,aBAD"}
+  ],
+  "newVisualInformation":["세 선분의 같은 길이 눈금과 B의 외각 78도 호를 엔진 표식으로 보인다.","원본에 없는 면 채움 없이 선·점·각만 그린다."]
+}

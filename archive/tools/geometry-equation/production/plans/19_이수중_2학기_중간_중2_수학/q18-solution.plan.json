@@ -1,0 +1,39 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"12"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"3316625","denominator":"1000000"},{"kind":"integer","value":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"15316625","denominator":"1000000"},{"kind":"integer","value":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"9316625","denominator":"1000000"},{"kind":"integer","value":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"F","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "coordinateCanvas":{"width":660,"height":420},"displayPoints":["A","B","C","D","E","F"],"displayLines":[],"displayCircles":[],
+  "displaySegments":[
+    {"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},
+    {"id":"sCD","refs":["C","D"]},{"id":"sDA","refs":["D","A"]},
+    {"id":"sBE","refs":["B","E"]},{"id":"sDF","refs":["D","F"]}
+  ],
+  "planeMarks":{
+    "expressionLabels":[{"id":"length-ab","ownerSegment":"sAB","text":"6"},{"id":"length-bc","ownerSegment":"sBC","text":"12"}],
+    "angles":[
+      {"id":"b-left","refs":["A","B","E"],"noLabel":true,"arcs":1,"equalGroup":1},
+      {"id":"b-right","refs":["E","B","C"],"noLabel":true,"arcs":1,"equalGroup":1},
+      {"id":"d-left","refs":["A","D","F"],"noLabel":true,"arcs":2,"equalGroup":2},
+      {"id":"d-right","refs":["F","D","C"],"noLabel":true,"arcs":2,"equalGroup":2}
+    ],
+    "regions":[{"id":"shaded-ebfd","fill":"MEDIUM","shapes":[{"polygon":["E","B","F","D"]}],"label":"30","unit":"cm^2","factRole":"CONCLUSION"}]
+  },
+  "caption":"AB=6, BC=12, 평행사변형 넓이 60일 때 두 각의 이등분선 BE와 DF가 만드는 사각형 EBFD의 넓이는 30cm²이다. 이 영역만 의도된 음영으로 표시한다.",
+  "accessibilityDescription":"윗변 AD와 아랫변 BC가 평행한 ABCD에서 E는 AD 위, F는 BC 위에 있다. BE는 B의 각을, DF는 D의 각을 이등분한다. AB의 길이 6, BC의 길이 12가 표시되어 있고, 사각형 EBFD만 음영으로 칠해져 넓이 30cm²라 적혀 있다.",
+  "sourceConditions":[
+    {"id":"parallelogram","condition":"AB=6cm, BC=12cm, 사각형 ABCD의 넓이는 60cm²이며 높이가 5인 실제 길이의 대표 도형이다.","mappedTo":"mathPlan.nodes:A,B,C,D;planeMarks.expressionLabels:length-ab,length-bc"},
+    {"id":"angle-bisectors","condition":"BE는 ∠B의, DF는 ∠D의 이등분선이고 E∈AD, F∈BC이다.","mappedTo":"mathPlan.nodes:E,F;displaySegments:sBE,sDF;planeMarks.angles:b-left,b-right,d-left,d-right"},
+    {"id":"intentional-shade","condition":"원본에서 유일하게 짙게 채운 사각형 EBFD의 넓이는 30cm²이고 엔진의 영역 면적과 정확히 일치한다.","mappedTo":"planeMarks.regions:shaded-ebfd"}
+  ],
+  "newVisualInformation":["각 이등분표식 네 개, 치수 라벨 6과 12, 원본의 짙게 칠한 EBFD 넓이영역을 각각 선언한다.","사용자가 요구한 무채움 기본값을 유지하고 계산에 꼭 필요한 단 한 영역만 채운다."]
+}

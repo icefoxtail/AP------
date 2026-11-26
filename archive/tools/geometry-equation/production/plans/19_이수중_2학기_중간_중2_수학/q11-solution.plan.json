@@ -1,0 +1,23 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"2736162","denominator":"1000000"},{"kind":"rational","numerator":"7517541","denominator":"1000000"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"10736162","denominator":"1000000"},{"kind":"rational","numerator":"7517541","denominator":"1000000"}]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "coordinateCanvas":{"width":570,"height":400},"displayPoints":["A","B","C","D"],"displayLines":[],"displayCircles":[],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sDA","refs":["D","A"]}],
+  "planeMarks":{"angles":[
+    {"id":"a-at-a","refs":["B","A","D"],"label":"110","value":110,"arcs":1,"style":"ARC","factRole":"CONCLUSION"},
+    {"id":"b-at-b","refs":["A","B","C"],"label":"70","value":70,"arcs":1,"style":"ARC","factRole":"CONCLUSION"}
+  ]},
+  "caption":"평행사변형의 이웃각 합은 180°이고, 2∠B=∠A+30°이므로 ∠B=70°, ∠A=110°이다.",
+  "accessibilityDescription":"A D가 윗변, B C가 아랫변인 평행사변형 ABCD에서 ∠B는 70°, ∠A는 110°로 표시되어 있다. 나머지 면은 채우지 않았다.",
+  "sourceConditions":[{"id":"adjacent-angles","condition":"ABCD는 평행사변형이고 2∠B=∠A+30°이다.","mappedTo":"mathPlan.nodes:A,B,C,D;planeMarks.angles:a-at-a,b-at-b"}],
+  "newVisualInformation":["원본에 있는 평행사변형과 문제의 두 이웃각을 실제 크기에 부합하는 호로 보여 준다.","풀이 결과 70°/110°를 해설 축에만 표시한다."]
+}

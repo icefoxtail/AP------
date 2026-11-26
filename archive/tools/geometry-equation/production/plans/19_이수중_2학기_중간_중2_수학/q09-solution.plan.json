@@ -1,0 +1,34 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"rational","numerator":"4767014","denominator":"1000000"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"rational","numerator":"705308","denominator":"1000000"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"I","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"rational","numerator":"1865231","denominator":"1000000"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "coordinateCanvas":{"width":510,"height":460},"displayPoints":["A","B","C","O","I"],"displayLines":[],"displayCircles":[],
+  "displaySegments":[
+    {"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]},
+    {"id":"sBI","refs":["B","I"]},{"id":"sCI","refs":["C","I"]},
+    {"id":"sBO","refs":["B","O"]},{"id":"sCO","refs":["C","O"]}
+  ],
+  "planeMarks":{
+    "equalLengths":[{"id":"same-radius","count":1,"segments":["sBO","sCO"]}],
+    "angles":[
+      {"id":"incenter-angle","refs":["B","I","C"],"label":"130","value":130,"arcs":1,"style":"ARC","factRole":"GIVEN"},
+      {"id":"circumcenter-angle","refs":["B","O","C"],"label":"x","value":160,"arcs":1,"style":"ARC","factRole":"CONCLUSION"}
+    ]
+  },
+  "caption":"∠BIC=130°이면 ∠A=80°이고 ∠BOC=2∠A=160°이다. 원본과 같이 내심 I가 외심 O보다 위쪽에 보이며 원본의 두 중심각을 구별한다.",
+  "accessibilityDescription":"삼각형 ABC 안에서 B와 C를 잇는 두 쌍의 선분이 위쪽 내심 I, 아래쪽 외심 O로 향한다. ∠BIC는 130°, ∠BOC는 x로 표시되어 있고 외접반지름 OB와 OC는 같다.",
+  "sourceConditions":[
+    {"id":"centers","condition":"I는 내심, O는 외심이며 B,C에서 두 점으로 잇는 네 선분이 있다. 모델 좌표는 80° 꼭지각에 대한 실제 내·외심 위치의 6자리 유리수 근사이다.","mappedTo":"mathPlan.nodes:A,B,C,I,O;displaySegments:sBI,sCI,sBO,sCO"},
+    {"id":"angle130","condition":"원본 ∠BIC=130°, 구할 각은 ∠BOC=x이다.","mappedTo":"planeMarks.angles:incenter-angle,circumcenter-angle"}
+  ],
+  "newVisualInformation":["내심각 130°와 외심각 x의 원호를 다른 꼭짓점에 정확히 부착한다.","원본과 달리 필요 없는 색 면 또는 기본 흰색 배경을 추가하지 않는다."]
+}

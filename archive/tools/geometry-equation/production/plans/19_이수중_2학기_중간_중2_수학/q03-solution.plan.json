@@ -1,0 +1,53 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"TRANSLATE_POINT","inputs":["A"],"args":{"dx":{"kind":"integer","value":"6"},"dy":{"kind":"integer","value":"0"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"C","op":"POLAR_POINT","inputs":["A","B"],"args":{"length":{"kind":"integer","value":"3"},"angleDeg":{"kind":"integer","value":"60"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"E","op":"MIDPOINT","inputs":["A","B"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"U","op":"POLAR_POINT","inputs":["A","B"],"args":{"length":{"kind":"integer","value":"1"},"angleDeg":{"kind":"integer","value":"30"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lAU","op":"LINE_THROUGH","inputs":["A","U"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lBC","op":"LINE_THROUGH","inputs":["B","C"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"D","op":"LINE_INTERSECTION","inputs":["lAU","lBC"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "coordinateCanvas": {"width": 560, "height": 390},
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": ["A","B","C","D","E"],
+  "displaySegments": [
+    {"id":"sAE","refs":["A","E"]},
+    {"id":"sEB","refs":["E","B"]},
+    {"id":"sBC","refs":["B","C"]},
+    {"id":"sCA","refs":["C","A"]},
+    {"id":"sAD","refs":["A","D"]},
+    {"id":"sDE","refs":["D","E"]}
+  ],
+  "rightAngles": [
+    {"id":"rC","refs":["A","C","B"]},
+    {"id":"rE","refs":["A","E","D"]}
+  ],
+  "planeMarks": {
+    "equalLengths": [{"id":"eAEAC","count":1,"segments":["sAE","sCA"]}],
+    "angles": [
+      {"id":"aADE","refs":["A","D","E"],"value":60,"label":"60","style":"ARC"},
+      {"id":"aB","refs":["A","B","C"],"value":30,"label":"x","style":"ARC"}
+    ]
+  },
+  "caption": "두 직각표식과 같은 길이의 선분을 함께 나타낸 직각삼각형의 보조도.",
+  "accessibilityDescription": "삼각형 ABC에서 C가 직각이고, E는 AB 위, D는 BC 위이다. AE와 AC는 같은 길이 눈금으로, DE와 AB의 직각은 작은 정사각형으로 표시되어 있으며 ADE각은 60도, B각은 x이다.",
+  "sourceConditions": [
+    {"id":"right-angle-C","condition":"원본의 ∠ACB=90°를 보존한다.","mappedTo":"mathPlan.nodes:C;rightAngles:rC"},
+    {"id":"equal-AE-AC","condition":"AE=AC이며 두 선분은 동일한 한 줄 눈금이다. 길이 3은 비례형 대표 배치의 값일 뿐 원문에 주어진 cm 수치가 아니다.","mappedTo":"mathPlan.nodes:C,E;planeMarks.equalLengths:eAEAC"},
+    {"id":"perpendicular-DE","condition":"DE⊥AB이고 두 선분의 교점 E에 직각표식을 둔다.","mappedTo":"mathPlan.nodes:D,E;displaySegments:sDE;rightAngles:rE"},
+    {"id":"angle-60","condition":"∠ADE=60°이고 ∠ABC=x이다.","mappedTo":"planeMarks.angles:aADE,aB"}
+  ],
+  "newVisualInformation": [
+    "원본에 나타난 C와 E의 직각표식 두 개를 실제 엔진 rightAngles로 그린다.",
+    "원본의 AE=AC 눈금과 ADE의 60도 호를 복원한다.",
+    "색 또는 면 채움 없이 검은 선과 표식만 사용한다."
+  ]
+}
