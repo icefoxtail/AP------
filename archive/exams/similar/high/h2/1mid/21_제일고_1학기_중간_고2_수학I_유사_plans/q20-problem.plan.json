@@ -1,0 +1,22 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "graphPlan": {
+    "family":"multi-curve", "viewport":[0,5,-6,3],
+    "curves":[
+      {"id":"f","kind":"EXPONENTIAL","base":"1/2","coefficients":["1","1","0"],"domain":["0","5"],"color":"BLUE","label":"f"},
+      {"id":"g","kind":"LOGARITHMIC","base":"1/2","coefficients":["1","1","0","0"],"domain":["1/8","5"],"color":"WARM","label":"g"},
+      {"id":"h","kind":"LOGARITHMIC","base":"2","coefficients":["1","1","-2","0"],"domain":["2001/1000","5"],"color":"GREEN","label":"h"}
+    ],
+    "axisTickValues":{"x":["1","2","3"],"y":["1"]}
+  },
+  "caption":"각각 f(x)=(1/2)^x, g(x)=log_(1/2)x, h(x)=log_2(x−2)에 대응하는 세 곡선을 색으로 구분한다. 교점 A,B,C의 좌표·크기 관계는 문제 그림에 적지 않는다.",
+  "accessibilityDescription":"감소하는 지수곡선 f, 감소하는 로그곡선 g, x=2의 오른쪽에서 증가하는 로그곡선 h가 같은 좌표축에 그려져 있다.",
+  "sourceQuote":"두 함수 $y=\\left(\\frac{1}{2}\\right)^x$, $y=\\log_{\\frac{1}{2}} x$의 그래프의 교점",
+  "sourceConditions":[
+    {"id":"f","condition":"f(x)=(1/2)^x","mappedTo":"graphPlan.curves[0]"},
+    {"id":"g","condition":"g(x)=log_(1/2)x","mappedTo":"graphPlan.curves[1]"},
+    {"id":"h","condition":"h(x)=log_2(x−2), x>2","mappedTo":"graphPlan.curves[2]"},
+    {"id":"intersections","condition":"A=f∩g, B=g∩h, C=f∩h; 비대수적 교점 좌표/이름 자동 표시는 현 엔진 미지원","mappedTo":"ENGINE_CAPABILITY_PENDING: implicit intersection of exponential and logarithmic curves with named points"}
+  ],
+  "newVisualInformation":["세 곡선의 개형과 교점의 상대적 위치", "비교되는 정의역 x>0 및 x>2"]
+}

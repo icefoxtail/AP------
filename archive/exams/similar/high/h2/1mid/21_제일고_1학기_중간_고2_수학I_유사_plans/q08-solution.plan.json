@@ -1,0 +1,22 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "graphPlan": {
+    "family":"multi-curve", "viewport":[0,14,-1,4],
+    "curves":[{"id":"f","kind":"LOGARITHMIC","base":"3","coefficients":["1","1","0","0"],"domain":["1","13"]}],
+    "axisTickValues":{"x":[],"y":["2"]},
+    "overlays": {
+      "points":[{"id":"A","x":"9","y":"2","coordinates":true},{"id":"B","x":"9","y":"0"},{"id":"C","x":"11","y":"0"},{"id":"D","x":"11","y":"2","coordinates":true}],
+      "segments":[{"id":"AB","from":"A","to":"B"},{"id":"BC","from":"B","to":"C","length":true},{"id":"CD","from":"C","to":"D"},{"id":"DA","from":"D","to":"A"}]
+    }
+  },
+  "pointNames":{"A":"A","B":"B","C":"C","D":"D"},
+  "caption":"AB=2이므로 log_3(x_A)=2, A=(9,2)이다. 오른쪽으로 2만큼 이동한 D=(11,2)이므로 a+b=13이다.",
+  "accessibilityDescription":"로그곡선과 정사각형 위에 A(9,2), D(11,2) 및 길이 BC=2가 추가로 표시되어 있다.",
+  "sourceQuote":"점 $A$가 곡선 $y=\\log_3 x$ 위의 점",
+  "sourceConditions":[
+    {"id":"curve","condition":"로그곡선 y=log_3 x","mappedTo":"graphPlan.curves[0]"},
+    {"id":"A","condition":"log_3 x_A=2에서 A(9,2)","mappedTo":"graphPlan.overlays.points[0]"},
+    {"id":"D","condition":"정사각형의 변 2, D(11,2)","mappedTo":"graphPlan.overlays.points[3],graphPlan.overlays.segments[1]"}
+  ],
+  "newVisualInformation":["계산된 A와 D의 좌표", "수평·수직인 한 변 2의 정사각형"]
+}

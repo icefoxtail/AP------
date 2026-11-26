@@ -1,0 +1,26 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"X","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-4"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints":["O","X","P","H"],"hiddenPointNames":["X"],"displayLines":[],"displayCircles":[],"coordinateLabels":["P"],
+  "displaySegments":[{"id":"OP","refs":["O","P"]},{"id":"OH","refs":["O","H"]},{"id":"HP","refs":["H","P"]}],
+  "rightAngles":[{"id":"rH","refs":["O","H","P"]}],
+  "planeMarks":{"expressionLabels":[{"id":"radius","ownerSegment":"OP","text":"5"},{"id":"legx","ownerSegment":"OH","text":"4"},{"id":"legy","ownerSegment":"HP","text":"3"}]},
+  "coordinateCanvas":{"width":600,"height":500},
+  "caption":"제2사분면에서 tan θ=−3/4인 동경에 점 P(−4,3)을 잡으면 3:4:5 직각삼각형이 되어 sin θ=3/5이다.",
+  "accessibilityDescription":"제2사분면의 점 P(-4,3)과 원점을 잇는 길이 5의 사선, x축을 따라 길이 4, 위로 길이 3인 직각삼각형이 보인다.",
+  "sourceQuote":"$\\theta$가 제2사분면의 각이고 $\\tan\\theta = -\\frac{3}{4}$",
+  "sourceConditions":[
+    {"id":"tan","condition":"제2사분면 tan θ=−3/4, P(−4,3) 대표 점","mappedTo":"mathPlan.nodes[2],displaySegments"},
+    {"id":"legs","condition":"수평 4, 수직 3, 빗변 5","mappedTo":"planeMarks.expressionLabels,displaySegments,rightAngles"}
+  ],
+  "newVisualInformation":["제2사분면 탄젠트 부호", "수평·수직 성분과 빗변의 3:4:5 비"]
+}

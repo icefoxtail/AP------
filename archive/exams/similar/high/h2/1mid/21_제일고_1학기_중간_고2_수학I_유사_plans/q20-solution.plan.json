@@ -1,0 +1,22 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "graphPlan": {
+    "family":"multi-curve", "viewport":[0,5,-6,3],
+    "curves":[
+      {"id":"f","kind":"EXPONENTIAL","base":"1/2","coefficients":["1","1","0"],"domain":["0","5"],"color":"BLUE","label":"f"},
+      {"id":"g","kind":"LOGARITHMIC","base":"1/2","coefficients":["1","1","0","0"],"domain":["1/8","5"],"color":"WARM","label":"g"},
+      {"id":"h","kind":"LOGARITHMIC","base":"2","coefficients":["1","1","-2","0"],"domain":["2001/1000","5"],"color":"GREEN","label":"h"}
+    ],
+    "axisTickValues":{"x":["1","2","3"],"y":["1"]},
+    "overlays":{"lines":[{"id":"identity","slope":"1","intercept":"0","style":"DASHED","label":"y=x"}]}
+  },
+  "caption":"f와 g는 서로 역함수이므로 점선 y=x에 대칭이고 그들의 교점 A는 y=x 위에 있다. g와 h, f와 h의 교점 B,C를 함께 비교한다.",
+  "accessibilityDescription":"서로 역함수인 감소 지수곡선 f와 로그곡선 g, 증가 로그곡선 h 및 대칭축 y=x가 함께 표시된 비교 그림이다.",
+  "sourceQuote":"점 $A(x_1, y_1)$은 서로 역함수 관계인 $y=2^{-x}$와",
+  "sourceConditions":[
+    {"id":"inverse","condition":"f=(1/2)^x와 g=log_(1/2)x는 y=x에 대칭","mappedTo":"graphPlan.curves[0],graphPlan.curves[1],graphPlan.overlays.lines[0]"},
+    {"id":"h","condition":"h=log_2(x−2)","mappedTo":"graphPlan.curves[2]"},
+    {"id":"intersections","condition":"A,B,C는 초월함수의 서로 다른 교점, 이름과 근사 위치를 원문과 대조해 붙여야 함","mappedTo":"ENGINE_CAPABILITY_PENDING: solve and label implicit pairwise intersections"}
+  ],
+  "newVisualInformation":["y=x 역함수 대칭축", "세 함수의 상대적인 교점 구조"]
+}
