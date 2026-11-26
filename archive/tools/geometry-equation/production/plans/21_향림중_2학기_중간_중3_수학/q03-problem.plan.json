@@ -1,0 +1,81 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "upper",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "8/3",
+          "-8/3",
+          "2/3"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "label": "y=2/3*(x-2)^2",
+        "color": "BLUE"
+      },
+      {
+        "id": "lower",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-1/3",
+          "-8/3",
+          "2/3"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "label": "y=2/3*(x-2)^2-3",
+        "color": "WARM"
+      }
+    ],
+    "viewport": [
+      -2,
+      6,
+      -4,
+      9
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "3",
+          "y": "2/3"
+        },
+        {
+          "id": "B",
+          "x": "3",
+          "y": "-7/3"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        }
+      ]
+    }
+  },
+  "caption": "같은 축에서 y값이 항상 3 차이나는 두 포물선과 같은 x좌표의 A·B를 색선으로 구분한다",
+  "accessibilityDescription": "같은 축에서 y값이 항상 3 차이나는 두 포물선과 같은 x좌표의 A·B를 색선으로 구분한다",
+  "sourceQuote": "두 이차함수 $y=\\frac{2}{3}(x-2)^2$과 $y=\\frac{2}{3}(x-2)^2-3$의 그래프가 다음 그림과 같고 점 $\\mathrm{A}$와 $\\mathrm{B}$는 각각 두 이차함수의 그래프 위의 점일 때, $\\overline{\\mathrm{AB}}$의 길이는? (단, $\\overline{\\mathrm{AB}}$는 $y$축에 평행하다.) [3점]",
+  "sourceConditions": [
+    {
+      "id": "two-parabolas",
+      "condition": "같은 축에서 y값이 항상 3 차이나는 두 포물선과 같은 x좌표의 A·B를 색선으로 구분한다",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.overlays"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "같은 축에서 y값이 항상 3 차이나는 두 포물선과 같은 x좌표의 A·B를 색선으로 구분한다"
+  ]
+}

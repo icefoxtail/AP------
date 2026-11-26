@@ -1,0 +1,124 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U0",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "L",
+    "R"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sLR0",
+      "refs": [
+        "L",
+        "R"
+      ]
+    }
+  ],
+  "rightAngles": [],
+  "displayCircles": [],
+  "hiddenPointNames": [
+    "L",
+    "R"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lbl0",
+        "ownerSegment": "sLR0",
+        "text": "y=ax+b"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "a<0, b<0 부호만 읽히도록 좌표축과 오른쪽 아래로 내려가는 직선 y=ax+b를 복원한다(숫자값은 예시)",
+  "accessibilityDescription": "a<0, b<0 부호만 읽히도록 좌표축과 오른쪽 아래로 내려가는 직선 y=ax+b를 복원한다(숫자값은 예시)",
+  "sourceQuote": "일차함수 $y=ax+b$의 그래프가 다음 그림과 같을 때, 이차함수 $y=(x-a)^2+b$의 그래프로 알맞은 것은? [5점]",
+  "sourceConditions": [
+    {
+      "id": "source-figure",
+      "condition": "a<0, b<0 부호만 읽히도록 좌표축과 오른쪽 아래로 내려가는 직선 y=ax+b를 복원한다(숫자값은 예시)",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "a<0, b<0 부호만 읽히도록 좌표축과 오른쪽 아래로 내려가는 직선 y=ax+b를 복원한다(숫자값은 예시)"
+  ]
+}

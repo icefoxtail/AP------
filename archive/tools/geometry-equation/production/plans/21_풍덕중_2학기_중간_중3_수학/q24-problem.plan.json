@@ -1,0 +1,275 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "16",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "12",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sAB0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC1",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC2",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "k"
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lbl0",
+        "ownerSegment": "sAB0",
+        "text": "6"
+      },
+      {
+        "id": "lbl1",
+        "ownerSegment": "sAC1",
+        "text": "8"
+      }
+    ],
+    "regions": [
+      {
+        "id": "outside-circle",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        ],
+        "holes": [
+          {
+            "loop": {
+              "start": "F",
+              "steps": [
+                {
+                  "to": "F",
+                  "arc": {
+                    "center": "O",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "직각삼각형 ABC(AB=6cm,AC=8cm)과 내접원, 원 밖의 색칠된 부분",
+  "accessibilityDescription": "직각삼각형 ABC(AB=6cm,AC=8cm)과 내접원, 원 밖의 색칠된 부분",
+  "sourceQuote": "[서술형 3] 아래 물음에 답하시오. (8점) 다음 그림에서 직각삼각형 $\\mathrm{ABC}$는 원 $\\mathrm{O}$에 외접하고, 세 점 $\\mathrm{D}$, $\\mathrm{E}$, $\\mathrm{F}$는 그 접점이다. 단, $\\angle A=90^\\circ$, $\\overline{AB}=6\\,\\mathrm{cm}$, $\\overline{AC}=8\\,\\mathrm{cm}$이다. (1) $\\overline{\\mathrm{BD}}$, $\\overline{\\mathrm{CF}}$의 길이를 각각 구하시오. [2점] (2) 원 $\\mathrm{O}$의 반지름의 길이를 구하시오. [3점] (3) 삼각형 $ABC$의 내부에서 원 $O$의 내부를 제외한 부분의 넓이를 구하시오. [3점] 채점 기준 배점 (i) $\\overline{\\mathrm{BD}}$, $\\overline{\\mathrm{CF}}$의 길이를 각각 구한 경우 2점 (ii) 반지름 구하는 식을 세우고 원 $\\mathrm{O}$의 반지름의 길이를 구한 경우 (식의 풀이과정 필요) 3점 (iii) 삼각형 $ABC$의 내부에서 원 $O$의 내부를 제외한 부분의 넓이를 구한 경우 3점",
+  "sourceConditions": [
+    {
+      "id": "source-figure",
+      "condition": "직각삼각형 ABC(AB=6cm,AC=8cm)과 내접원, 원 밖의 색칠된 부분",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "직각삼각형 ABC(AB=6cm,AC=8cm)과 내접원, 원 밖의 색칠된 부분"
+  ]
+}

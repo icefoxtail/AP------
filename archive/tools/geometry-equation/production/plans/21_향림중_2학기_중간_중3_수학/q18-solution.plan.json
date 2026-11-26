@@ -1,0 +1,68 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "8",
+      "2",
+      "-1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3.2,
+      5.2
+    ],
+    "viewport": [
+      -4,
+      6,
+      -2,
+      11
+    ],
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": -2,
+        "y": 0
+      },
+      {
+        "id": "Q",
+        "x": 4,
+        "y": 0
+      },
+      {
+        "id": "A",
+        "x": 1,
+        "y": 9
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        -2,
+        1,
+        4
+      ],
+      "y": [
+        9
+      ]
+    }
+  },
+  "caption": "근 -2·4와 꼭짓점 A(1,9)를 표시하여 삼각형 APQ의 높이 9·밑변 6을 보인다",
+  "accessibilityDescription": "근 -2·4와 꼭짓점 A(1,9)를 표시하여 삼각형 APQ의 높이 9·밑변 6을 보인다",
+  "sourceQuote": "다음 그림은 이차함수 $y=-x^2+2x+8$의 그래프이다. $x$축과의 교점을 $\\mathrm{P}$와 $\\mathrm{Q}$, 꼭짓점을 $\\mathrm{A}$라고 할 때, $\\triangle \\mathrm{APQ}$의 넓이는? [4점]",
+  "sourceConditions": [
+    {
+      "id": "source-parabola",
+      "condition": "근 -2·4와 꼭짓점 A(1,9)를 표시하여 삼각형 APQ의 높이 9·밑변 6을 보인다",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints",
+        "graphPlan.axisTickValues"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "근 -2·4와 꼭짓점 A(1,9)를 표시하여 삼각형 APQ의 높이 9·밑변 6을 보인다"
+  ]
+}

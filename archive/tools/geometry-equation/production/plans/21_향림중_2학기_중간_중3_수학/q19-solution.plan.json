@@ -1,0 +1,56 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "3",
+      "4",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -5,
+      1
+    ],
+    "viewport": [
+      -6,
+      2,
+      -3,
+      8
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": -2,
+        "y": -1
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        -2
+      ],
+      "y": [
+        -1
+      ]
+    }
+  },
+  "caption": "a<0,b<0의 대표값 a=-2,b=-1일 때 위로 열린 포물선의 꼭짓점이 제3사분면에 있음을 보인다",
+  "accessibilityDescription": "a<0,b<0의 대표값 a=-2,b=-1일 때 위로 열린 포물선의 꼭짓점이 제3사분면에 있음을 보인다",
+  "sourceQuote": "일차함수 $y=ax+b$의 그래프가 다음 그림과 같을 때, 이차함수 $y=(x-a)^2+b$의 그래프로 알맞은 것은? [5점]",
+  "sourceConditions": [
+    {
+      "id": "source-parabola",
+      "condition": "a<0,b<0의 대표값 a=-2,b=-1일 때 위로 열린 포물선의 꼭짓점이 제3사분면에 있음을 보인다",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints",
+        "graphPlan.axisTickValues"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "a<0,b<0의 대표값 a=-2,b=-1일 때 위로 열린 포물선의 꼭짓점이 제3사분면에 있음을 보인다"
+  ]
+}

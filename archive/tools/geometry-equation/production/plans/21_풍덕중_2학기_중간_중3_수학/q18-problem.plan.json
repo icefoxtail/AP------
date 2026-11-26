@@ -1,0 +1,318 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "57",
+              "denominator": "7"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "12",
+                  "denominator": "7"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "5"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "55",
+              "denominator": "7"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "9",
+                  "denominator": "7"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "5"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "190",
+              "denominator": "21"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "40",
+                  "denominator": "21"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "5"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "5"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "5"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "C",
+    "A",
+    "D",
+    "E",
+    "B",
+    "O"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sPC0",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA1",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sPD2",
+      "refs": [
+        "P",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB3",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sCD4",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "rightAngles": [],
+  "displayCircles": [
+    "k"
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lbl0",
+        "ownerSegment": "sPC0",
+        "text": "7"
+      },
+      {
+        "id": "lbl1",
+        "ownerSegment": "sCA1",
+        "text": "3"
+      },
+      {
+        "id": "lbl4",
+        "ownerSegment": "sCD4",
+        "text": "4"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "한 원에 접하는 PA·PB·CD, P-C-A·P-D-B·C-E-D의 점 순서와 7·3·4cm를 정확히 재구성한다",
+  "accessibilityDescription": "한 원에 접하는 PA·PB·CD, P-C-A·P-D-B·C-E-D의 점 순서와 7·3·4cm를 정확히 재구성한다",
+  "sourceQuote": "다음 그림에서 $\\overline{\\mathrm{PA}}$, $\\overline{\\mathrm{PB}}$, $\\overline{\\mathrm{CD}}$는 원 $\\mathrm{O}$의 접선이고 세 점 $\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{E}$는 그 접점일 때, $\\overline{\\mathrm{PD}}$의 길이를 구하면? (4점) 단, 점 $P,C,A$는 한 직선 위에 이 순서로 있고, 점 $P,D,B$와 점 $C,E,D$도 각각 한 직선 위에 이 순서로 있다. $\\overline{PC}=7\\,\\mathrm{cm}$, $\\overline{CA}=3\\,\\mathrm{cm}$, $\\overline{CD}=4\\,\\mathrm{cm}$이다.",
+  "sourceConditions": [
+    {
+      "id": "source-figure",
+      "condition": "한 원에 접하는 PA·PB·CD, P-C-A·P-D-B·C-E-D의 점 순서와 7·3·4cm를 정확히 재구성한다",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "한 원에 접하는 PA·PB·CD, P-C-A·P-D-B·C-E-D의 점 순서와 7·3·4cm를 정확히 재구성한다"
+  ]
+}

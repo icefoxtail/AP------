@@ -1,0 +1,52 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "0",
+      "1/2"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      4
+    ],
+    "viewport": [
+      -5,
+      5,
+      -1,
+      9
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "원본 질문에서 이동 전 기준 그래프 y=(1/2)x²의 꼭짓점 O와 위로 열린 모양을 복원한다",
+  "accessibilityDescription": "원본 질문에서 이동 전 기준 그래프 y=(1/2)x²의 꼭짓점 O와 위로 열린 모양을 복원한다",
+  "sourceQuote": "다음 그림은 이차함수 $y=\\frac{1}{2}x^2$의 그래프이다. 이 그래프를 이용하여 $y=\\frac{1}{2}(x+2)^2+3$의 그래프를 바르게 그린 것은? [3점]",
+  "sourceConditions": [
+    {
+      "id": "source-parabola",
+      "condition": "원본 질문에서 이동 전 기준 그래프 y=(1/2)x²의 꼭짓점 O와 위로 열린 모양을 복원한다",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints",
+        "graphPlan.axisTickValues"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 질문에서 이동 전 기준 그래프 y=(1/2)x²의 꼭짓점 O와 위로 열린 모양을 복원한다"
+  ]
+}

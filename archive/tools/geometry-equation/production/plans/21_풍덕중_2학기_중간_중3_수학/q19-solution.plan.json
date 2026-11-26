@@ -1,0 +1,285 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "16",
+              "denominator": "7"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "8",
+                  "denominator": "7"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "D",
+    "C",
+    "A",
+    "H"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sBD0",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC1",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sAB2",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAD3",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sAC4",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sDH5",
+      "refs": [
+        "D",
+        "H"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "A",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "right1",
+      "refs": [
+        "D",
+        "H",
+        "A"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lbl0",
+        "ownerSegment": "sBD0",
+        "text": "4"
+      },
+      {
+        "id": "lbl1",
+        "ownerSegment": "sDC1",
+        "text": "4"
+      },
+      {
+        "id": "lbl3",
+        "ownerSegment": "sAD3",
+        "text": "8"
+      },
+      {
+        "id": "lbl4",
+        "ownerSegment": "sAC4",
+        "text": "4sqrt(3)"
+      }
+    ],
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "value": 30,
+        "label": "x",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 19.1066,
+        "label": "y",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "BD=DC=4, AC=4√3, AD=8과 D에서 AB로 내린 수선 DH를 표시하고 불필요한 면 채움을 제거한다",
+  "accessibilityDescription": "BD=DC=4, AC=4√3, AD=8과 D에서 AB로 내린 수선 DH를 표시하고 불필요한 면 채움을 제거한다",
+  "sourceQuote": "오른쪽 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{BD}}=\\overline{\\mathrm{CD}}=4\\,\\mathrm{cm}$이고 $\\sin x^\\circ = \\frac{1}{2}$일 때, $\\sin y^\\circ$의 값을 구하면? 단, $\\angle \\mathrm{ACB}=90^\\circ$, 점 $D$는 $\\overline{\\mathrm{BC}}$ 위의 점이며, $x=\\angle \\mathrm{DAC}$, $y=\\angle \\mathrm{BAD}$이다. (5점)",
+  "sourceConditions": [
+    {
+      "id": "source-figure",
+      "condition": "BD=DC=4, AC=4√3, AD=8과 D에서 AB로 내린 수선 DH를 표시하고 불필요한 면 채움을 제거한다",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "BD=DC=4, AC=4√3, AD=8과 D에서 AB로 내린 수선 DH를 표시하고 불필요한 면 채움을 제거한다"
+  ]
+}

@@ -1,0 +1,372 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "67",
+              "denominator": "100"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "1",
+                  "denominator": "100"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "5511"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "67",
+              "denominator": "100"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "111",
+              "denominator": "100"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "1",
+                  "denominator": "100"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "5511"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Y",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U0",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "T",
+    "Y"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sOC0",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sOD1",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "sAB2",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sCD3",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sOB4",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOA5",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sTA6",
+      "refs": [
+        "T",
+        "A"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "O",
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "right1",
+      "refs": [
+        "O",
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "hiddenPointNames": [
+    "T",
+    "Y"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lbl1",
+        "ownerSegment": "sOD1",
+        "text": "1"
+      },
+      {
+        "id": "lbl3",
+        "ownerSegment": "sCD3",
+        "text": "1.11"
+      },
+      {
+        "id": "lbl4",
+        "ownerSegment": "sOB4",
+        "text": "0.67"
+      },
+      {
+        "id": "lbl5",
+        "ownerSegment": "sOA5",
+        "text": "1"
+      },
+      {
+        "id": "lbl6",
+        "ownerSegment": "sTA6",
+        "text": "0.75"
+      }
+    ],
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "D",
+          "O",
+          "C"
+        ],
+        "value": 48,
+        "label": "48",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "O",
+          "A",
+          "B"
+        ],
+        "value": 42,
+        "label": "42",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arc0",
+        "circle": "k",
+        "center": "O",
+        "from": "Y",
+        "to": "D",
+        "side": "MINOR"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "tan48°=CD/OD=1.11, sin42°=OB/OA=0.67의 대상을 좌표축과 보조선에 표시",
+  "accessibilityDescription": "tan48°=CD/OD=1.11, sin42°=OB/OA=0.67의 대상을 좌표축과 보조선에 표시",
+  "sourceQuote": "다음 그림과 같이 반지름의 길이가 $1$인 사분원에서 $\\tan 48^\\circ - \\sin 42^\\circ$의 값은? [4점]",
+  "sourceConditions": [
+    {
+      "id": "source-figure",
+      "condition": "tan48°=CD/OD=1.11, sin42°=OB/OA=0.67의 대상을 좌표축과 보조선에 표시",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "tan48°=CD/OD=1.11, sin42°=OB/OA=0.67의 대상을 좌표축과 보조선에 표시"
+  ]
+}
