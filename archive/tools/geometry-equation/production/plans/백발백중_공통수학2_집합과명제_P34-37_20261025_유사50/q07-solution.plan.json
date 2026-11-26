@@ -1,0 +1,67 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "k",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "조건 p",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-3",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "5",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "조건 q",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "label": "공통",
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "두 명제의 공통 정수 범위"
+  },
+  "caption": "p: -3<k<5, q: k≥1의 공통 정수는 1, 2, 3, 4이므로 합는 10이다.",
+  "accessibilityDescription": "k의 범위를 나타내는 수직선 세 줄. p는 양끝이 열린 구간, q는 왼쪽 끝이 닫힌 반직선이며 마지막 줄에 공통 정수점을 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "p의 참 조건은 -3<k<5 (양끝 제외)",
+      "mappedTo": "numberLine.rows[0].pieces[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "q의 참 조건은 k≥1",
+      "mappedTo": "numberLine.rows[1].pieces"
+    },
+    {
+      "id": "c3",
+      "condition": "p,q의 공통 정수점 1, 2, 3, 4",
+      "mappedTo": "numberLine.rows[2].integerPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "p와 q의 겹치는 구간을 같은 축에 놓고 끝점 포함 및 정수점 4개를 구별한다."
+  ]
+}

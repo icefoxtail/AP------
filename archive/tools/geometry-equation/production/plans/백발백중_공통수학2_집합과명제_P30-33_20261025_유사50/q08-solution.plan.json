@@ -1,0 +1,40 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "P"
+      },
+      {
+        "id": "Q"
+      }
+    ],
+    "subset": [
+      "P",
+      "Q"
+    ]
+  },
+  "caption": "P∩Q=P이면 P⊆Q이므로 p⇒q가 참이다.",
+  "accessibilityDescription": "집합 P가 집합 Q 안에 포함된 벤다이어그램이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "p의 진리집합 P",
+      "mappedTo": "diagram.sets[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "q의 진리집합 Q",
+      "mappedTo": "diagram.sets[1]"
+    },
+    {
+      "id": "c3",
+      "condition": "P∩Q=P",
+      "mappedTo": "diagram.subset"
+    }
+  ],
+  "newVisualInformation": [
+    "P가 Q에 포함되어 집합 P에서 Q 바깥으로 나가는 원소가 없음을 보여 준다."
+  ]
+}

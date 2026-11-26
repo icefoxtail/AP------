@@ -1,0 +1,37 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "P"
+      },
+      {
+        "id": "Q"
+      }
+    ],
+    "shade": "(P∪Q)^c"
+  },
+  "caption": "~p⇒q의 반례는 P의 여집합과 Q의 여집합의 교집합이다.",
+  "accessibilityDescription": "두 집합 P와 Q의 바깥 공통 영역을 표시한 벤다이어그램이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "p의 진리집합 P",
+      "mappedTo": "diagram.sets[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "q의 진리집합 Q",
+      "mappedTo": "diagram.sets[1]"
+    },
+    {
+      "id": "c3",
+      "condition": "가정 ~p가 참이고 결론 q가 거짓",
+      "mappedTo": "diagram.shade"
+    }
+  ],
+  "newVisualInformation": [
+    "명제가 거짓이 되는 원소가 속한 정확한 영역을 표시한다."
+  ]
+}
