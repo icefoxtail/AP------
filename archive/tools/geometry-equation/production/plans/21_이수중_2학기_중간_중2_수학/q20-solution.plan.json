@@ -1,0 +1,265 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2226143426543",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-2226143426543",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1654346968206",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1489580700844",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCH",
+      "refs": [
+        "C",
+        "H"
+      ]
+    },
+    {
+      "id": "sHD",
+      "refs": [
+        "H",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "given24",
+        "refs": [
+          "C",
+          "B",
+          "D"
+        ],
+        "label": "24°",
+        "arcs": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "unknownHAD",
+        "refs": [
+          "H",
+          "A",
+          "D"
+        ],
+        "label": "x",
+        "arcs": 1,
+        "style": "ARC"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "rhombus",
+        "segments": [
+          "sAB",
+          "sBC",
+          {
+            "path": [
+              "sCH",
+              "sHD"
+            ]
+          },
+          "sDA"
+        ],
+        "count": 1
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "perpH",
+      "refs": [
+        "A",
+        "H",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "마름모 대각선 BD와 CD 위 수선의 발 H",
+  "accessibilityDescription": "A와 H를 잇는 수선에 직각표식, B의 BD·BC 사이 24도, A의 AH·AD 사이 x를 표시한다.",
+  "sourceQuote": "20. 오른쪽 그림과 같은 마름모 $\\mathrm{ABCD}$의",
+  "sourceConditions": [
+    {
+      "id": "a",
+      "condition": "마름모 ABCD의 네 변 같음",
+      "mappedTo": [
+        "rhombus"
+      ],
+      "sourceQuote": "20. 오른쪽 그림과 같은 마름모 $\\mathrm{ABCD}$의 점 $\\mathrm{A}$에서 $\\overline{\\mathrm{CD}}$에 내린 수선의 발을 $\\mathrm{H}$라고 하자. $\\angle\\mathrm{CBD}=24^\\circ$일 때, $\\angle\\mathrm{HAD}$의 크기는? (4점) [그림]"
+    },
+    {
+      "id": "b",
+      "condition": "AH⊥CD",
+      "mappedTo": [
+        "perpH"
+      ],
+      "sourceQuote": "20. 오른쪽 그림과 같은 마름모 $\\mathrm{ABCD}$의 점 $\\mathrm{A}$에서 $\\overline{\\mathrm{CD}}$에 내린 수선의 발을 $\\mathrm{H}$라고 하자. $\\angle\\mathrm{CBD}=24^\\circ$일 때, $\\angle\\mathrm{HAD}$의 크기는? (4점) [그림]"
+    },
+    {
+      "id": "c",
+      "condition": "∠CBD=24°",
+      "mappedTo": [
+        "given24"
+      ],
+      "sourceQuote": "20. 오른쪽 그림과 같은 마름모 $\\mathrm{ABCD}$의 점 $\\mathrm{A}$에서 $\\overline{\\mathrm{CD}}$에 내린 수선의 발을 $\\mathrm{H}$라고 하자. $\\angle\\mathrm{CBD}=24^\\circ$일 때, $\\angle\\mathrm{HAD}$의 크기는? (4점) [그림]"
+    },
+    {
+      "id": "d",
+      "condition": "∠HAD=x",
+      "mappedTo": [
+        "unknownHAD"
+      ],
+      "sourceQuote": "20. 오른쪽 그림과 같은 마름모 $\\mathrm{ABCD}$의 점 $\\mathrm{A}$에서 $\\overline{\\mathrm{CD}}$에 내린 수선의 발을 $\\mathrm{H}$라고 하자. $\\angle\\mathrm{CBD}=24^\\circ$일 때, $\\angle\\mathrm{HAD}$의 크기는? (4점) [그림]"
+    }
+  ],
+  "newVisualInformation": []
+}

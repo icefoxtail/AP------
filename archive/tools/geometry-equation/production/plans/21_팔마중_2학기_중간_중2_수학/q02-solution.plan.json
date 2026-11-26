@@ -1,0 +1,247 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "36"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "5"
+              },
+              {
+                "kind": "expression",
+                "op": "sub",
+                "args": [
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "1"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "5"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  }
+                ]
+              }
+            ]
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "36"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "A",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "equalBABC",
+        "segments": [
+          {
+            "path": [
+              "sBD",
+              "sDA"
+            ]
+          },
+          "sCB"
+        ],
+        "count": 1
+      },
+      {
+        "id": "equalBDDCAC",
+        "segments": [
+          "sBD",
+          "sDC",
+          "sAC"
+        ],
+        "count": 2
+      }
+    ],
+    "angles": [
+      {
+        "id": "unknownACD",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "label": "x",
+        "arcs": 1,
+        "style": "ARC"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "두 독립 등변조건을 한 눈금과 두 눈금으로 구분",
+  "accessibilityDescription": "BD는 BA의 일부이며, BA와 BC의 한 눈금과 BD·DC·CA의 두 눈금이 겹치지 않게 표시된다.",
+  "sourceQuote": "2. 다음 그림과 같이 $\\overline{\\mathrm{BA}",
+  "sourceConditions": [
+    {
+      "id": "a",
+      "condition": "BA=BC",
+      "mappedTo": [
+        "equalBABC"
+      ],
+      "sourceQuote": "2. 다음 그림과 같이 $\\overline{\\mathrm{BA}}=\\overline{\\mathrm{BC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{BD}}=\\overline{\\mathrm{DC}}=\\overline{\\mathrm{CA}}$일 때, $\\angle\\mathrm{ACD}$의 크기를 구하면? [4점] [그림]"
+    },
+    {
+      "id": "b",
+      "condition": "BD=DC=CA",
+      "mappedTo": [
+        "equalBDDCAC"
+      ],
+      "sourceQuote": "2. 다음 그림과 같이 $\\overline{\\mathrm{BA}}=\\overline{\\mathrm{BC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{BD}}=\\overline{\\mathrm{DC}}=\\overline{\\mathrm{CA}}$일 때, $\\angle\\mathrm{ACD}$의 크기를 구하면? [4점] [그림]"
+    },
+    {
+      "id": "c",
+      "condition": "∠ACD=x",
+      "mappedTo": [
+        "unknownACD"
+      ],
+      "sourceQuote": "2. 다음 그림과 같이 $\\overline{\\mathrm{BA}}=\\overline{\\mathrm{BC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{BD}}=\\overline{\\mathrm{DC}}=\\overline{\\mathrm{CA}}$일 때, $\\angle\\mathrm{ACD}$의 크기를 구하면? [4점] [그림]"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 BD=DC=CA는 기존 SVG의 잘못된 눈금 그룹으로 왜곡되므로 원문 두 등식의 그룹을 엄격히 분리한다."
+  ]
+}

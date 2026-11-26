@@ -1,0 +1,183 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "sameB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "label": "",
+        "arcs": 1,
+        "style": "ARC",
+        "noLabel": true,
+        "equalGroup": 1
+      },
+      {
+        "id": "sameC",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "label": "",
+        "arcs": 1,
+        "style": "ARC",
+        "noLabel": true,
+        "equalGroup": 1
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "sideAC",
+        "from": "A",
+        "to": "C",
+        "label": "x+6",
+        "side": "ABOVE",
+        "unit": "cm"
+      },
+      {
+        "id": "sideAB",
+        "from": "A",
+        "to": "B",
+        "label": "2x-4",
+        "side": "BELOW",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "같은 밑각과 두 변의 대수식 길이 표시",
+  "accessibilityDescription": "ABC의 B,C 밑각에는 같은 호, AB와 AC에는 서로 다른 문자식 길이 치수선을 붙인다.",
+  "sourceQuote": "1. 다음 그림과 같이 $\\triangle\\mathrm{ABC}",
+  "sourceConditions": [
+    {
+      "id": "a",
+      "condition": "∠B=∠C",
+      "mappedTo": [
+        "sameB",
+        "sameC"
+      ],
+      "sourceQuote": "1. 다음 그림과 같이 $\\triangle\\mathrm{ABC}$에서 $\\angle\\mathrm{B}=\\angle\\mathrm{C}$일 때, $x$의 값을 구하면? [3점] [그림]"
+    },
+    {
+      "id": "b",
+      "condition": "AC=x+6cm",
+      "mappedTo": [
+        "sideAC"
+      ],
+      "sourceQuote": "1. 다음 그림과 같이 $\\triangle\\mathrm{ABC}$에서 $\\angle\\mathrm{B}=\\angle\\mathrm{C}$일 때, $x$의 값을 구하면? [3점] [그림]"
+    },
+    {
+      "id": "c",
+      "condition": "AB=2x-4cm",
+      "mappedTo": [
+        "sideAB"
+      ],
+      "sourceQuote": "1. 다음 그림과 같이 $\\triangle\\mathrm{ABC}$에서 $\\angle\\mathrm{B}=\\angle\\mathrm{C}$일 때, $x$의 값을 구하면? [3점] [그림]"
+    }
+  ],
+  "newVisualInformation": [
+    "원본은 곡선 점선 괄호로 길이를 가리켰으며 정식 plan은 두 지시 치수선으로 보존한다."
+  ]
+}

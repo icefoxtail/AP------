@@ -1,0 +1,396 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BA",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "72"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "CA",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "44"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBA",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "BA"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lCA",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "CA"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lBA",
+          "lCA"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "AV",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "32"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAV",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "AV"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lAV",
+          "lBC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BV",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "36"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBV",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "BV"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lAV",
+          "lBV"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lBV",
+          "lCA"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "I"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sAI",
+      "refs": [
+        "A",
+        "I"
+      ]
+    },
+    {
+      "id": "sID",
+      "refs": [
+        "I",
+        "D"
+      ]
+    },
+    {
+      "id": "sBI",
+      "refs": [
+        "B",
+        "I"
+      ]
+    },
+    {
+      "id": "sIE",
+      "refs": [
+        "I",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "given80",
+        "refs": [
+          "A",
+          "E",
+          "B"
+        ],
+        "label": "80°",
+        "arcs": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "given76",
+        "refs": [
+          "A",
+          "D",
+          "B"
+        ],
+        "label": "76°",
+        "arcs": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "unknownC",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "label": "x",
+        "arcs": 1,
+        "style": "ARC"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "내심을 통과하는 AD·BE와 80도·76도의 소속",
+  "accessibilityDescription": "A-D 각이등분선과 B-E 각이등분선이 I에서 만나며 E의 AEB=80도, D의 ADB=76도를 구분한다.",
+  "sourceQuote": "8. 오른쪽 그림에서 점 $\\mathrm{I}$는 $\\trian",
+  "sourceConditions": [
+    {
+      "id": "a",
+      "condition": "I는 내심",
+      "mappedTo": [
+        "I"
+      ],
+      "sourceQuote": "8. 오른쪽 그림에서 점 $\\mathrm{I}$는 $\\triangle\\mathrm{ABC}$의 내심이고 $\\overline{\\mathrm{AI}}$와 $\\overline{\\mathrm{BI}}$의 연장선이 $\\overline{\\mathrm{BC}}$, $\\overline{\\mathrm{AC}}$와 만나는 점을 각각 $\\mathrm{D}$, $\\mathrm{E}$라고 하자. $\\angle\\mathrm{AEB}=80^\\circ$, $\\angle\\mathrm{ADB}=76^\\circ$일 때, $\\angle\\mathrm{C}$의 크기를 구하면? [5점] [그림]"
+    },
+    {
+      "id": "b",
+      "condition": "A,I,D가 한 직선",
+      "mappedTo": [
+        "sAI",
+        "sID"
+      ],
+      "sourceQuote": "8. 오른쪽 그림에서 점 $\\mathrm{I}$는 $\\triangle\\mathrm{ABC}$의 내심이고 $\\overline{\\mathrm{AI}}$와 $\\overline{\\mathrm{BI}}$의 연장선이 $\\overline{\\mathrm{BC}}$, $\\overline{\\mathrm{AC}}$와 만나는 점을 각각 $\\mathrm{D}$, $\\mathrm{E}$라고 하자. $\\angle\\mathrm{AEB}=80^\\circ$, $\\angle\\mathrm{ADB}=76^\\circ$일 때, $\\angle\\mathrm{C}$의 크기를 구하면? [5점] [그림]"
+    },
+    {
+      "id": "c",
+      "condition": "B,I,E가 한 직선",
+      "mappedTo": [
+        "sBI",
+        "sIE"
+      ],
+      "sourceQuote": "8. 오른쪽 그림에서 점 $\\mathrm{I}$는 $\\triangle\\mathrm{ABC}$의 내심이고 $\\overline{\\mathrm{AI}}$와 $\\overline{\\mathrm{BI}}$의 연장선이 $\\overline{\\mathrm{BC}}$, $\\overline{\\mathrm{AC}}$와 만나는 점을 각각 $\\mathrm{D}$, $\\mathrm{E}$라고 하자. $\\angle\\mathrm{AEB}=80^\\circ$, $\\angle\\mathrm{ADB}=76^\\circ$일 때, $\\angle\\mathrm{C}$의 크기를 구하면? [5점] [그림]"
+    },
+    {
+      "id": "d",
+      "condition": "∠AEB=80°",
+      "mappedTo": [
+        "given80"
+      ],
+      "sourceQuote": "8. 오른쪽 그림에서 점 $\\mathrm{I}$는 $\\triangle\\mathrm{ABC}$의 내심이고 $\\overline{\\mathrm{AI}}$와 $\\overline{\\mathrm{BI}}$의 연장선이 $\\overline{\\mathrm{BC}}$, $\\overline{\\mathrm{AC}}$와 만나는 점을 각각 $\\mathrm{D}$, $\\mathrm{E}$라고 하자. $\\angle\\mathrm{AEB}=80^\\circ$, $\\angle\\mathrm{ADB}=76^\\circ$일 때, $\\angle\\mathrm{C}$의 크기를 구하면? [5점] [그림]"
+    },
+    {
+      "id": "e",
+      "condition": "∠ADB=76°",
+      "mappedTo": [
+        "given76"
+      ],
+      "sourceQuote": "8. 오른쪽 그림에서 점 $\\mathrm{I}$는 $\\triangle\\mathrm{ABC}$의 내심이고 $\\overline{\\mathrm{AI}}$와 $\\overline{\\mathrm{BI}}$의 연장선이 $\\overline{\\mathrm{BC}}$, $\\overline{\\mathrm{AC}}$와 만나는 점을 각각 $\\mathrm{D}$, $\\mathrm{E}$라고 하자. $\\angle\\mathrm{AEB}=80^\\circ$, $\\angle\\mathrm{ADB}=76^\\circ$일 때, $\\angle\\mathrm{C}$의 크기를 구하면? [5점] [그림]"
+    }
+  ],
+  "newVisualInformation": []
+}

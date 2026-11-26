@@ -1,0 +1,317 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "112",
+              "denominator": "25"
+            },
+            {
+              "kind": "rational",
+              "numerator": "384",
+              "denominator": "25"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "P",
+    "Q"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sDP",
+      "refs": [
+        "D",
+        "P"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    },
+    {
+      "id": "sBQ",
+      "refs": [
+        "B",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQD",
+      "refs": [
+        "Q",
+        "D"
+      ]
+    },
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "BC16",
+        "from": "B",
+        "to": "C",
+        "label": "16",
+        "side": "BELOW",
+        "unit": "cm"
+      },
+      {
+        "id": "CD12",
+        "from": "C",
+        "to": "D",
+        "label": "12",
+        "side": "RIGHT",
+        "unit": "cm"
+      },
+      {
+        "id": "BD20",
+        "from": "B",
+        "to": "D",
+        "label": "20",
+        "side": "LEFT",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rightC",
+      "refs": [
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "perpQ",
+      "refs": [
+        "P",
+        "Q",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "종이 접기에서 원래 경계 점선과 새 접힌 변, 수선 PQ",
+  "accessibilityDescription": "원래 종이의 B-C-D와 P-D는 점선으로, 실제 접힌 선 B-E-D와 대각선 BD는 실선으로 구분한다. P에서 BD에 수선 PQ를 내린다.",
+  "sourceQuote": "[서술형 4] 직사각형 모양의 종이 $\\mathrm{ABCD}$",
+  "sourceConditions": [
+    {
+      "id": "a",
+      "condition": "직사각형 BC=16,CD=12",
+      "mappedTo": [
+        "BC16",
+        "CD12"
+      ],
+      "sourceQuote": "[서술형 4] 직사각형 모양의 종이 $\\mathrm{ABCD}$를 다음 그림과 같이 접었다. $\\overline{\\mathrm{AD}}$와 $\\overline{\\mathrm{BE}}$의 교점 $\\mathrm{P}$에서 대각선 $\\overline{\\mathrm{BD}}$에 내린 수선의 발을 $\\mathrm{Q}$라 할때, $\\overline{\\mathrm{PD}}$의 길이를 구하려고 합니다. 다음 물음에 답하시오. [6점] [그림] (1) $\\triangle\\mathrm{PBD}$가 이등변삼각형임을 설명하시오. [2점] (2) $\\overline{\\mathrm{DQ}}$의 길이를 구하여라. [1점] (3) $\\triangle\\mathrm{DQP}$와 $\\triangle\\mathrm{BCD}$가 닮음임을 설명하시오. [2점] (4) $\\overline{\\mathrm{PD}}$의 길이를 구하여라. [1점]"
+    },
+    {
+      "id": "b",
+      "condition": "접은 종이의 BE와 AD 교점 P",
+      "mappedTo": [
+        "sBE",
+        "sPA"
+      ],
+      "sourceQuote": "[서술형 4] 직사각형 모양의 종이 $\\mathrm{ABCD}$를 다음 그림과 같이 접었다. $\\overline{\\mathrm{AD}}$와 $\\overline{\\mathrm{BE}}$의 교점 $\\mathrm{P}$에서 대각선 $\\overline{\\mathrm{BD}}$에 내린 수선의 발을 $\\mathrm{Q}$라 할때, $\\overline{\\mathrm{PD}}$의 길이를 구하려고 합니다. 다음 물음에 답하시오. [6점] [그림] (1) $\\triangle\\mathrm{PBD}$가 이등변삼각형임을 설명하시오. [2점] (2) $\\overline{\\mathrm{DQ}}$의 길이를 구하여라. [1점] (3) $\\triangle\\mathrm{DQP}$와 $\\triangle\\mathrm{BCD}$가 닮음임을 설명하시오. [2점] (4) $\\overline{\\mathrm{PD}}$의 길이를 구하여라. [1점]"
+    },
+    {
+      "id": "c",
+      "condition": "PQ⊥BD",
+      "mappedTo": [
+        "perpQ"
+      ],
+      "sourceQuote": "[서술형 4] 직사각형 모양의 종이 $\\mathrm{ABCD}$를 다음 그림과 같이 접었다. $\\overline{\\mathrm{AD}}$와 $\\overline{\\mathrm{BE}}$의 교점 $\\mathrm{P}$에서 대각선 $\\overline{\\mathrm{BD}}$에 내린 수선의 발을 $\\mathrm{Q}$라 할때, $\\overline{\\mathrm{PD}}$의 길이를 구하려고 합니다. 다음 물음에 답하시오. [6점] [그림] (1) $\\triangle\\mathrm{PBD}$가 이등변삼각형임을 설명하시오. [2점] (2) $\\overline{\\mathrm{DQ}}$의 길이를 구하여라. [1점] (3) $\\triangle\\mathrm{DQP}$와 $\\triangle\\mathrm{BCD}$가 닮음임을 설명하시오. [2점] (4) $\\overline{\\mathrm{PD}}$의 길이를 구하여라. [1점]"
+    }
+  ],
+  "newVisualInformation": [
+    "접기 과정의 원본 PNG가 없는 문항이라 현재 시험지 SVG의 위상과 발문을 교차 사용한다."
+  ]
+}

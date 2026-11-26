@@ -1,0 +1,247 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3420201433257",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9396926207859",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "16731571851015",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "20151773284271",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9396926207859",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "parallelADBC",
+        "count": 1,
+        "segments": [
+          "sDA",
+          "sBC"
+        ]
+      },
+      {
+        "id": "parallelABCD",
+        "count": 2,
+        "segments": [
+          "sAB",
+          "sCD"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "givenA",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "label": "110°",
+        "arcs": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "givenD",
+        "refs": [
+          "A",
+          "D",
+          "B"
+        ],
+        "label": "25°",
+        "arcs": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "unknownX",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "label": "x",
+        "arcs": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "unknownY",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "label": "y",
+        "arcs": 1,
+        "style": "ARC"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "평행사변형의 두 쌍의 평행변과 110도·25도·x·y",
+  "accessibilityDescription": "A에서 110도, D에서 AD와 DB 사이 25도, C에 x, B에서 BA와 BD 사이 y를 표시한다.",
+  "sourceQuote": "15. 다음 평행사변형 $\\mathrm{ABCD}$에서 $\\an",
+  "sourceConditions": [
+    {
+      "id": "a",
+      "condition": "평행사변형의 두 쌍의 대변",
+      "mappedTo": [
+        "parallelADBC",
+        "parallelABCD"
+      ],
+      "sourceQuote": "15. 다음 평행사변형 $\\mathrm{ABCD}$에서 $\\angle x+\\angle y$의 값을 구하면? (3점) [그림]"
+    },
+    {
+      "id": "b",
+      "condition": "∠A=110°",
+      "mappedTo": [
+        "givenA"
+      ],
+      "sourceQuote": "15. 다음 평행사변형 $\\mathrm{ABCD}$에서 $\\angle x+\\angle y$의 값을 구하면? (3점) [그림]"
+    },
+    {
+      "id": "c",
+      "condition": "∠ADB=25°",
+      "mappedTo": [
+        "givenD"
+      ],
+      "sourceQuote": "15. 다음 평행사변형 $\\mathrm{ABCD}$에서 $\\angle x+\\angle y$의 값을 구하면? (3점) [그림]"
+    },
+    {
+      "id": "d",
+      "condition": "∠C=x, ∠ABD=y",
+      "mappedTo": [
+        "unknownX",
+        "unknownY"
+      ],
+      "sourceQuote": "15. 다음 평행사변형 $\\mathrm{ABCD}$에서 $\\angle x+\\angle y$의 값을 구하면? (3점) [그림]"
+    }
+  ],
+  "newVisualInformation": []
+}

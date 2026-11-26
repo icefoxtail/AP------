@@ -1,0 +1,203 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9900347413665",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "269803406737",
+              "denominator": "100000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAI",
+      "refs": [
+        "A",
+        "I"
+      ]
+    },
+    {
+      "id": "sBI",
+      "refs": [
+        "B",
+        "I"
+      ]
+    },
+    {
+      "id": "sCI",
+      "refs": [
+        "C",
+        "I"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "given112",
+        "refs": [
+          "B",
+          "I",
+          "C"
+        ],
+        "label": "112°",
+        "arcs": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "unknownX",
+        "refs": [
+          "B",
+          "A",
+          "I"
+        ],
+        "label": "x",
+        "arcs": 1,
+        "style": "ARC"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "내심 I에서의 112도 각과 A 꼭짓점의 이등분각",
+  "accessibilityDescription": "내심과 세 꼭짓점을 연결하고 BIC=112°, BAI=x의 두 호를 정확한 점에 묶는다.",
+  "sourceQuote": "14. 오른쪽 그림에서 점 $\\mathrm{I}$는 $\\tria",
+  "sourceConditions": [
+    {
+      "id": "a",
+      "condition": "I는 삼각형의 내심",
+      "mappedTo": [
+        "I"
+      ],
+      "sourceQuote": "14. 오른쪽 그림에서 점 $\\mathrm{I}$는 $\\triangle\\mathrm{ABC}$의 내심이다. $\\angle\\mathrm{BIC}=112^\\circ$일 때, $\\angle x$의 크기는? (4점) [그림]"
+    },
+    {
+      "id": "b",
+      "condition": "∠BIC=112°",
+      "mappedTo": [
+        "given112"
+      ],
+      "sourceQuote": "14. 오른쪽 그림에서 점 $\\mathrm{I}$는 $\\triangle\\mathrm{ABC}$의 내심이다. $\\angle\\mathrm{BIC}=112^\\circ$일 때, $\\angle x$의 크기는? (4점) [그림]"
+    },
+    {
+      "id": "c",
+      "condition": "∠BAI=x",
+      "mappedTo": [
+        "unknownX"
+      ],
+      "sourceQuote": "14. 오른쪽 그림에서 점 $\\mathrm{I}$는 $\\triangle\\mathrm{ABC}$의 내심이다. $\\angle\\mathrm{BIC}=112^\\circ$일 때, $\\angle x$의 크기는? (4점) [그림]"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 도형은 원본 그림보다 삼각형을 과도하게 확대하고 내부선을 임의 배치한 점을 수정한다."
+  ]
+}

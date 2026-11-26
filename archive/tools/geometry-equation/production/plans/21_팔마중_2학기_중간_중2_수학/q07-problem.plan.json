@@ -1,0 +1,272 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "R"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "R"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "230"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "R"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "330"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circumcircle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "R"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "circumcircle"
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angleABO20",
+        "refs": [
+          "A",
+          "B",
+          "O"
+        ],
+        "label": "20°",
+        "arcs": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "angleACO30",
+        "refs": [
+          "A",
+          "C",
+          "O"
+        ],
+        "label": "30°",
+        "arcs": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "angleX",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "label": "x",
+        "arcs": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "angleY",
+        "refs": [
+          "B",
+          "O",
+          "C"
+        ],
+        "label": "y",
+        "arcs": 1,
+        "style": "ARC"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "R"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "외접원과 중심각·원주각의 대응 위치",
+  "accessibilityDescription": "A,B,C는 큰 원 위에, O는 원의 중심에 있고 20·30도 밑각과 x 원주각, y 중심각이 구분된다.",
+  "sourceQuote": "7. 다음 그림에서 $\\triangle\\mathrm{ABC}$의",
+  "sourceConditions": [
+    {
+      "id": "a",
+      "condition": "O는 외심",
+      "mappedTo": [
+        "O",
+        "circumcircle"
+      ],
+      "sourceQuote": "7. 다음 그림에서 $\\triangle\\mathrm{ABC}$의 외심은 점 $\\mathrm{O}$이고 $\\angle\\mathrm{ABO}=20^\\circ$, $\\angle\\mathrm{ACO}=30^\\circ$일 때, $\\angle x$와 $\\angle y$의 합 $\\angle x+\\angle y$의 크기를 구하면? [4점] [그림]"
+    },
+    {
+      "id": "b",
+      "condition": "∠ABO=20°",
+      "mappedTo": [
+        "angleABO20"
+      ],
+      "sourceQuote": "7. 다음 그림에서 $\\triangle\\mathrm{ABC}$의 외심은 점 $\\mathrm{O}$이고 $\\angle\\mathrm{ABO}=20^\\circ$, $\\angle\\mathrm{ACO}=30^\\circ$일 때, $\\angle x$와 $\\angle y$의 합 $\\angle x+\\angle y$의 크기를 구하면? [4점] [그림]"
+    },
+    {
+      "id": "c",
+      "condition": "∠ACO=30°",
+      "mappedTo": [
+        "angleACO30"
+      ],
+      "sourceQuote": "7. 다음 그림에서 $\\triangle\\mathrm{ABC}$의 외심은 점 $\\mathrm{O}$이고 $\\angle\\mathrm{ABO}=20^\\circ$, $\\angle\\mathrm{ACO}=30^\\circ$일 때, $\\angle x$와 $\\angle y$의 합 $\\angle x+\\angle y$의 크기를 구하면? [4점] [그림]"
+    },
+    {
+      "id": "d",
+      "condition": "∠BAC=x,∠BOC=y",
+      "mappedTo": [
+        "angleX",
+        "angleY"
+      ],
+      "sourceQuote": "7. 다음 그림에서 $\\triangle\\mathrm{ABC}$의 외심은 점 $\\mathrm{O}$이고 $\\angle\\mathrm{ABO}=20^\\circ$, $\\angle\\mathrm{ACO}=30^\\circ$일 때, $\\angle x$와 $\\angle y$의 합 $\\angle x+\\angle y$의 크기를 구하면? [4점] [그림]"
+    }
+  ],
+  "newVisualInformation": []
+}

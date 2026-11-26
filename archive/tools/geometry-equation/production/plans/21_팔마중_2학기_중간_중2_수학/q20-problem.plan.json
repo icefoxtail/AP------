@@ -1,0 +1,322 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "25",
+              "denominator": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sBO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "sEO",
+      "refs": [
+        "E",
+        "O"
+      ]
+    },
+    {
+      "id": "sOF",
+      "refs": [
+        "O",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "bisectedBD",
+        "segments": [
+          "sBO",
+          "sOD"
+        ],
+        "count": 2
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "BO5",
+        "from": "B",
+        "to": "O",
+        "label": "5",
+        "side": "ABOVE",
+        "unit": "cm"
+      },
+      {
+        "id": "BC8",
+        "from": "B",
+        "to": "C",
+        "label": "8",
+        "side": "BELOW",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rightA",
+      "refs": [
+        "B",
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "rightC",
+      "refs": [
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "perpO",
+      "refs": [
+        "E",
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "대각선 BD를 수직이등분하는 EF와 BO5·BC8",
+  "accessibilityDescription": "BD와 EF는 O에서 수직으로 만나고 BO·OD는 같은 두 눈금이다. BO=5cm, BC=8cm의 치수를 표시한다.",
+  "sourceQuote": "20. 다음 그림과 같이 직사각형 $\\mathrm{ABCD}$에",
+  "sourceConditions": [
+    {
+      "id": "a",
+      "condition": "직사각형 ABCD",
+      "mappedTo": [
+        "rightA",
+        "rightC"
+      ],
+      "sourceQuote": "20. 다음 그림과 같이 직사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{EF}}$가 대각선 $\\overline{\\mathrm{BD}}$의 수직이등분선이고, $\\overline{\\mathrm{BO}}=5\\text{ cm}$, $\\overline{\\mathrm{BC}}=8\\text{ cm}$일 때, $\\overline{\\mathrm{DE}}$의 길이를 구하면? [4점] [그림]"
+    },
+    {
+      "id": "b",
+      "condition": "EF는 BD의 수직이등분선",
+      "mappedTo": [
+        "perpO",
+        "bisectedBD"
+      ],
+      "sourceQuote": "20. 다음 그림과 같이 직사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{EF}}$가 대각선 $\\overline{\\mathrm{BD}}$의 수직이등분선이고, $\\overline{\\mathrm{BO}}=5\\text{ cm}$, $\\overline{\\mathrm{BC}}=8\\text{ cm}$일 때, $\\overline{\\mathrm{DE}}$의 길이를 구하면? [4점] [그림]"
+    },
+    {
+      "id": "c",
+      "condition": "BO=5cm",
+      "mappedTo": [
+        "BO5"
+      ],
+      "sourceQuote": "20. 다음 그림과 같이 직사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{EF}}$가 대각선 $\\overline{\\mathrm{BD}}$의 수직이등분선이고, $\\overline{\\mathrm{BO}}=5\\text{ cm}$, $\\overline{\\mathrm{BC}}=8\\text{ cm}$일 때, $\\overline{\\mathrm{DE}}$의 길이를 구하면? [4점] [그림]"
+    },
+    {
+      "id": "d",
+      "condition": "BC=8cm",
+      "mappedTo": [
+        "BC8"
+      ],
+      "sourceQuote": "20. 다음 그림과 같이 직사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{EF}}$가 대각선 $\\overline{\\mathrm{BD}}$의 수직이등분선이고, $\\overline{\\mathrm{BO}}=5\\text{ cm}$, $\\overline{\\mathrm{BC}}=8\\text{ cm}$일 때, $\\overline{\\mathrm{DE}}$의 길이를 구하면? [4점] [그림]"
+    }
+  ],
+  "newVisualInformation": []
+}

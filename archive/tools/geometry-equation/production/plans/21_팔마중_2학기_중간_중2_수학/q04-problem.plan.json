@@ -1,0 +1,325 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "-7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "D",
+    "A",
+    "E",
+    "B",
+    "C",
+    "L",
+    "R"
+  ],
+  "displaySegments": [
+    {
+      "id": "sLD",
+      "refs": [
+        "L",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sER",
+      "refs": [
+        "E",
+        "R"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "isoscelesABAC",
+        "segments": [
+          "sAB",
+          "sAC"
+        ],
+        "count": 2
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "aLength",
+        "from": "D",
+        "to": "B",
+        "label": "a",
+        "side": "LEFT",
+        "unit": "cm"
+      },
+      {
+        "id": "bLength",
+        "from": "E",
+        "to": "C",
+        "label": "b",
+        "side": "RIGHT",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rightA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "footD",
+      "refs": [
+        "A",
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "footE",
+      "refs": [
+        "A",
+        "E",
+        "C"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "L",
+    "R"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "직각이등변삼각형과 직선 l 위의 두 수선의 발",
+  "accessibilityDescription": "D-A-E가 일직선이며 B,D와 C,E가 각각 수직이다. A의 직각과 AB·AC 같은 길이 눈금, a·b 치수를 보인다.",
+  "sourceQuote": "4. 다음 그림과 같이 직각이등변삼각형 $\\mathrm{ABC}",
+  "sourceConditions": [
+    {
+      "id": "a",
+      "condition": "AB=AC, ∠BAC=90°",
+      "mappedTo": [
+        "isoscelesABAC",
+        "rightA"
+      ],
+      "sourceQuote": "4. 다음 그림과 같이 직각이등변삼각형 $\\mathrm{ABC}$에서 꼭짓점 $\\mathrm{A}$를 지나는 직선 $l$을 긋고, 두 점 $\\mathrm{B}$와 $\\mathrm{C}$에서 직선 $l$에 내린 수선의 발을 각각 $\\mathrm{D}$와 $\\mathrm{E}$라고 하자. $\\overline{\\mathrm{BD}}=a\\text{ cm}$, $\\overline{\\mathrm{CE}}=b\\text{ cm}$일 때, 다음 보기에서 옳은 것을 모두 골라 짝지은 것은? [4점] [그림] [보 기] ㄱ. $\\angle\\mathrm{DBA}=\\angle\\mathrm{ABC}$ ㄴ. $\\angle\\mathrm{DAB}=\\angle\\mathrm{EAC}$ ㄷ. $\\overline{\\mathrm{DB}}+\\overline{\\mathrm{EC}}=\\overline{\\mathrm{DE}}$ ㄹ. $\\triangle\\mathrm{DBA}\\equiv\\triangle\\mathrm{EAC}$ ㅁ. $\\square\\mathrm{DBCE}$의 넓이는 $\\dfrac{(a+b)^2}{2}\\text{ cm}^2$이다."
+    },
+    {
+      "id": "b",
+      "condition": "BD⊥l",
+      "mappedTo": [
+        "footD"
+      ],
+      "sourceQuote": "4. 다음 그림과 같이 직각이등변삼각형 $\\mathrm{ABC}$에서 꼭짓점 $\\mathrm{A}$를 지나는 직선 $l$을 긋고, 두 점 $\\mathrm{B}$와 $\\mathrm{C}$에서 직선 $l$에 내린 수선의 발을 각각 $\\mathrm{D}$와 $\\mathrm{E}$라고 하자. $\\overline{\\mathrm{BD}}=a\\text{ cm}$, $\\overline{\\mathrm{CE}}=b\\text{ cm}$일 때, 다음 보기에서 옳은 것을 모두 골라 짝지은 것은? [4점] [그림] [보 기] ㄱ. $\\angle\\mathrm{DBA}=\\angle\\mathrm{ABC}$ ㄴ. $\\angle\\mathrm{DAB}=\\angle\\mathrm{EAC}$ ㄷ. $\\overline{\\mathrm{DB}}+\\overline{\\mathrm{EC}}=\\overline{\\mathrm{DE}}$ ㄹ. $\\triangle\\mathrm{DBA}\\equiv\\triangle\\mathrm{EAC}$ ㅁ. $\\square\\mathrm{DBCE}$의 넓이는 $\\dfrac{(a+b)^2}{2}\\text{ cm}^2$이다."
+    },
+    {
+      "id": "c",
+      "condition": "CE⊥l",
+      "mappedTo": [
+        "footE"
+      ],
+      "sourceQuote": "4. 다음 그림과 같이 직각이등변삼각형 $\\mathrm{ABC}$에서 꼭짓점 $\\mathrm{A}$를 지나는 직선 $l$을 긋고, 두 점 $\\mathrm{B}$와 $\\mathrm{C}$에서 직선 $l$에 내린 수선의 발을 각각 $\\mathrm{D}$와 $\\mathrm{E}$라고 하자. $\\overline{\\mathrm{BD}}=a\\text{ cm}$, $\\overline{\\mathrm{CE}}=b\\text{ cm}$일 때, 다음 보기에서 옳은 것을 모두 골라 짝지은 것은? [4점] [그림] [보 기] ㄱ. $\\angle\\mathrm{DBA}=\\angle\\mathrm{ABC}$ ㄴ. $\\angle\\mathrm{DAB}=\\angle\\mathrm{EAC}$ ㄷ. $\\overline{\\mathrm{DB}}+\\overline{\\mathrm{EC}}=\\overline{\\mathrm{DE}}$ ㄹ. $\\triangle\\mathrm{DBA}\\equiv\\triangle\\mathrm{EAC}$ ㅁ. $\\square\\mathrm{DBCE}$의 넓이는 $\\dfrac{(a+b)^2}{2}\\text{ cm}^2$이다."
+    },
+    {
+      "id": "d",
+      "condition": "BD=a,CE=b",
+      "mappedTo": [
+        "aLength",
+        "bLength"
+      ],
+      "sourceQuote": "4. 다음 그림과 같이 직각이등변삼각형 $\\mathrm{ABC}$에서 꼭짓점 $\\mathrm{A}$를 지나는 직선 $l$을 긋고, 두 점 $\\mathrm{B}$와 $\\mathrm{C}$에서 직선 $l$에 내린 수선의 발을 각각 $\\mathrm{D}$와 $\\mathrm{E}$라고 하자. $\\overline{\\mathrm{BD}}=a\\text{ cm}$, $\\overline{\\mathrm{CE}}=b\\text{ cm}$일 때, 다음 보기에서 옳은 것을 모두 골라 짝지은 것은? [4점] [그림] [보 기] ㄱ. $\\angle\\mathrm{DBA}=\\angle\\mathrm{ABC}$ ㄴ. $\\angle\\mathrm{DAB}=\\angle\\mathrm{EAC}$ ㄷ. $\\overline{\\mathrm{DB}}+\\overline{\\mathrm{EC}}=\\overline{\\mathrm{DE}}$ ㄹ. $\\triangle\\mathrm{DBA}\\equiv\\triangle\\mathrm{EAC}$ ㅁ. $\\square\\mathrm{DBCE}$의 넓이는 $\\dfrac{(a+b)^2}{2}\\text{ cm}^2$이다."
+    }
+  ],
+  "newVisualInformation": []
+}

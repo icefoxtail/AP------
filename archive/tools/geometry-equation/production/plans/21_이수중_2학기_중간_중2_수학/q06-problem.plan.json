@@ -1,0 +1,244 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4616525305763",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-15",
+              "denominator": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "15",
+              "denominator": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "927050983125",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1763355756877",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "equalABAC",
+        "segments": [
+          "sAB",
+          {
+            "path": [
+              "sDA",
+              "sCD"
+            ]
+          }
+        ],
+        "count": 1
+      }
+    ],
+    "angles": [
+      {
+        "id": "givenC",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "label": "72°",
+        "arcs": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "halfB1",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "label": "",
+        "arcs": 1,
+        "style": "ARC",
+        "noLabel": true
+      },
+      {
+        "id": "halfB2",
+        "refs": [
+          "D",
+          "B",
+          "C"
+        ],
+        "label": "",
+        "arcs": 1,
+        "style": "ARC",
+        "noLabel": true
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "base3",
+        "from": "B",
+        "to": "C",
+        "label": "3",
+        "side": "BELOW",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "이등변삼각형의 B각 이등분선과 72도 밑각",
+  "accessibilityDescription": "A,B,C 삼각형의 AC 위 D를 B와 잇고 B의 두 작은 각에 호, C에 72도, BC에 3cm 표시.",
+  "sourceQuote": "6. 오른쪽 그림과 같이 $\\overline{\\mathrm{AB",
+  "sourceConditions": [
+    {
+      "id": "a",
+      "condition": "AB=AC",
+      "mappedTo": [
+        "equalABAC"
+      ],
+      "sourceQuote": "6. 오른쪽 그림과 같이 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 $\\angle\\mathrm{B}$의 이등분선과 $\\overline{\\mathrm{AC}}$가 만나는 점을 $\\mathrm{D}$라고 하자. $\\overline{\\mathrm{BC}}=3\\text{ cm}$, $\\angle\\mathrm{C}=72^\\circ$일 때, $\\overline{\\mathrm{AD}}$의 길이를 구하면? (4점) [그림]"
+    },
+    {
+      "id": "b",
+      "condition": "BD는 ∠B의 이등분선",
+      "mappedTo": [
+        "halfB1",
+        "halfB2"
+      ],
+      "sourceQuote": "6. 오른쪽 그림과 같이 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 $\\angle\\mathrm{B}$의 이등분선과 $\\overline{\\mathrm{AC}}$가 만나는 점을 $\\mathrm{D}$라고 하자. $\\overline{\\mathrm{BC}}=3\\text{ cm}$, $\\angle\\mathrm{C}=72^\\circ$일 때, $\\overline{\\mathrm{AD}}$의 길이를 구하면? (4점) [그림]"
+    },
+    {
+      "id": "c",
+      "condition": "∠C=72°",
+      "mappedTo": [
+        "givenC"
+      ],
+      "sourceQuote": "6. 오른쪽 그림과 같이 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 $\\angle\\mathrm{B}$의 이등분선과 $\\overline{\\mathrm{AC}}$가 만나는 점을 $\\mathrm{D}$라고 하자. $\\overline{\\mathrm{BC}}=3\\text{ cm}$, $\\angle\\mathrm{C}=72^\\circ$일 때, $\\overline{\\mathrm{AD}}$의 길이를 구하면? (4점) [그림]"
+    },
+    {
+      "id": "d",
+      "condition": "BC=3 cm",
+      "mappedTo": [
+        "base3"
+      ],
+      "sourceQuote": "6. 오른쪽 그림과 같이 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 $\\angle\\mathrm{B}$의 이등분선과 $\\overline{\\mathrm{AC}}$가 만나는 점을 $\\mathrm{D}$라고 하자. $\\overline{\\mathrm{BC}}=3\\text{ cm}$, $\\angle\\mathrm{C}=72^\\circ$일 때, $\\overline{\\mathrm{AD}}$의 길이를 구하면? (4점) [그림]"
+    }
+  ],
+  "newVisualInformation": []
+}

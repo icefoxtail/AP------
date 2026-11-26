@@ -1,0 +1,263 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "12",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "E",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "equalACEC",
+        "segments": [
+          "sAC",
+          "sEC"
+        ],
+        "count": 1
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "AB9",
+        "from": "A",
+        "to": "B",
+        "label": "9",
+        "side": "LEFT",
+        "unit": "cm"
+      },
+      {
+        "id": "AC12",
+        "from": "A",
+        "to": "C",
+        "label": "12",
+        "side": "ABOVE",
+        "unit": "cm"
+      },
+      {
+        "id": "DE4",
+        "from": "D",
+        "to": "E",
+        "label": "4",
+        "side": "RIGHT",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rightA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "rightE",
+      "refs": [
+        "D",
+        "E",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "직각삼각형의 9·12·4cm와 빗변에 내린 DE 수선",
+  "accessibilityDescription": "D는 AB에, E는 BC에 놓이며 DE는 BC에 수직이다. AC와 EC의 눈금, 세 치수와 두 직각 표시가 있다.",
+  "sourceQuote": "8. 다음 그림과 같이 $\\angle\\mathrm{A}=90^\\",
+  "sourceConditions": [
+    {
+      "id": "a",
+      "condition": "∠BAC=90°",
+      "mappedTo": [
+        "rightA"
+      ],
+      "sourceQuote": "8. 다음 그림과 같이 $\\angle\\mathrm{A}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 빗변 $\\mathrm{BC}$ 위에 $\\overline{\\mathrm{AC}}=\\overline{\\mathrm{EC}}$인 점 $\\mathrm{E}$를 잡고, $\\overline{\\mathrm{AB}}$ 위에 $\\overline{\\mathrm{DE}}\\perp\\overline{\\mathrm{BC}}$가 되도록 점 $\\mathrm{D}$를 잡는다. $\\overline{\\mathrm{AB}}=9\\text{ cm}$, $\\overline{\\mathrm{AC}}=12\\text{ cm}$, $\\overline{\\mathrm{DE}}=4\\text{ cm}$일 때, $\\overline{\\mathrm{BD}}$의 길이를 구하면? (4점) [그림]"
+    },
+    {
+      "id": "b",
+      "condition": "AC=EC",
+      "mappedTo": [
+        "equalACEC"
+      ],
+      "sourceQuote": "8. 다음 그림과 같이 $\\angle\\mathrm{A}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 빗변 $\\mathrm{BC}$ 위에 $\\overline{\\mathrm{AC}}=\\overline{\\mathrm{EC}}$인 점 $\\mathrm{E}$를 잡고, $\\overline{\\mathrm{AB}}$ 위에 $\\overline{\\mathrm{DE}}\\perp\\overline{\\mathrm{BC}}$가 되도록 점 $\\mathrm{D}$를 잡는다. $\\overline{\\mathrm{AB}}=9\\text{ cm}$, $\\overline{\\mathrm{AC}}=12\\text{ cm}$, $\\overline{\\mathrm{DE}}=4\\text{ cm}$일 때, $\\overline{\\mathrm{BD}}$의 길이를 구하면? (4점) [그림]"
+    },
+    {
+      "id": "c",
+      "condition": "DE⊥BC",
+      "mappedTo": [
+        "rightE"
+      ],
+      "sourceQuote": "8. 다음 그림과 같이 $\\angle\\mathrm{A}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 빗변 $\\mathrm{BC}$ 위에 $\\overline{\\mathrm{AC}}=\\overline{\\mathrm{EC}}$인 점 $\\mathrm{E}$를 잡고, $\\overline{\\mathrm{AB}}$ 위에 $\\overline{\\mathrm{DE}}\\perp\\overline{\\mathrm{BC}}$가 되도록 점 $\\mathrm{D}$를 잡는다. $\\overline{\\mathrm{AB}}=9\\text{ cm}$, $\\overline{\\mathrm{AC}}=12\\text{ cm}$, $\\overline{\\mathrm{DE}}=4\\text{ cm}$일 때, $\\overline{\\mathrm{BD}}$의 길이를 구하면? (4점) [그림]"
+    },
+    {
+      "id": "d",
+      "condition": "AB=9, AC=12, DE=4",
+      "mappedTo": [
+        "AB9",
+        "AC12",
+        "DE4"
+      ],
+      "sourceQuote": "8. 다음 그림과 같이 $\\angle\\mathrm{A}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 빗변 $\\mathrm{BC}$ 위에 $\\overline{\\mathrm{AC}}=\\overline{\\mathrm{EC}}$인 점 $\\mathrm{E}$를 잡고, $\\overline{\\mathrm{AB}}$ 위에 $\\overline{\\mathrm{DE}}\\perp\\overline{\\mathrm{BC}}$가 되도록 점 $\\mathrm{D}$를 잡는다. $\\overline{\\mathrm{AB}}=9\\text{ cm}$, $\\overline{\\mathrm{AC}}=12\\text{ cm}$, $\\overline{\\mathrm{DE}}=4\\text{ cm}$일 때, $\\overline{\\mathrm{BD}}$의 길이를 구하면? (4점) [그림]"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 긴 점선 길이 괄호는 엔진의 치수선으로 정식 대체한다."
+  ]
+}
