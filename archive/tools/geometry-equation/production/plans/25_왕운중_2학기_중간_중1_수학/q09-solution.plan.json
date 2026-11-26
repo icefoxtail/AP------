@@ -1,0 +1,57 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "6" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "POLAR_POINT", "inputs": ["A", "C"], "args": { "length": { "kind": "integer", "value": "6" }, "angleDeg": { "kind": "integer", "value": "60" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "rA26", "op": "POLAR_POINT", "inputs": ["A", "C"], "args": { "length": { "kind": "integer", "value": "1" }, "angleDeg": { "kind": "integer", "value": "26" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "rC60", "op": "POLAR_POINT", "inputs": ["C", "A"], "args": { "length": { "kind": "integer", "value": "1" }, "angleDeg": { "kind": "integer", "value": "120" }, "turn": "CW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lAE", "op": "LINE_THROUGH", "inputs": ["A", "rA26"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lCE", "op": "LINE_THROUGH", "inputs": ["C", "rC60"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "E", "op": "LINE_INTERSECTION", "inputs": ["lAE", "lCE"], "args": {}, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "rEB", "op": "POLAR_POINT", "inputs": ["E", "C"], "args": { "length": { "kind": "integer", "value": "1" }, "angleDeg": { "kind": "integer", "value": "60" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lEB", "op": "LINE_THROUGH", "inputs": ["E", "rEB"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lAB", "op": "LINE_THROUGH", "inputs": ["A", "C"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "B", "op": "LINE_INTERSECTION", "inputs": ["lAB", "lEB"], "args": {}, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "lDB", "op": "LINE_THROUGH", "inputs": ["D", "B"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "P", "op": "LINE_INTERSECTION", "inputs": ["lAE", "lDB"], "args": {}, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "E", "P"],
+  "displaySegments": [
+    { "id": "sAC", "refs": ["A", "C"] }, { "id": "sCB", "refs": ["C", "B"] },
+    { "id": "sAD", "refs": ["A", "D"] }, { "id": "sDC", "refs": ["D", "C"] },
+    { "id": "sCE", "refs": ["C", "E"] }, { "id": "sEB", "refs": ["E", "B"] },
+    { "id": "sAE", "refs": ["A", "E"] }, { "id": "sDB", "refs": ["D", "B"] }
+  ],
+  "planeMarks": {
+    "angles": [
+      { "id": "aDAE", "refs": ["D", "A", "E"], "value": 34, "label": "34", "style": "ARC", "arcs": 1, "ring": 2, "factRole": "GIVEN" },
+      { "id": "aEAC", "refs": ["E", "A", "C"], "value": 26, "label": "26", "style": "ARC", "arcs": 1, "ring": 1, "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "aBDC", "refs": ["B", "D", "C"], "value": 26, "label": "26", "style": "ARC", "arcs": 1, "factRole": "CONCLUSION" },
+      { "id": "aDAC", "refs": ["D", "A", "C"], "value": 60, "label": "60", "style": "ARC", "arcs": 1, "ring": 3, "factRole": "GIVEN" },
+      { "id": "aACE", "refs": ["A", "C", "E"], "value": 120, "label": "120", "style": "ARC", "arcs": 2, "ring": 1, "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "aDCB", "refs": ["D", "C", "B"], "value": 120, "label": "120", "style": "ARC", "arcs": 2, "ring": 2, "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "coordinateCanvas": { "width": 720, "height": 500 },
+  "caption": "정삼각형 ACD와 CBE의 교차 선분 및 SAS 합동에서 얻는 26°와 120° 각을 선 표식만으로 비교한다.",
+  "accessibilityDescription": "A, C, B가 일직선에 있고 위쪽에 D와 E가 있는 두 정삼각형의 선분 AE와 DB가 P에서 교차한다. A에는 34°, 26°, 60°, C에는 120° 두 각, D에는 26°가 호로 표시되고 삼각형 내부는 칠하지 않았다.",
+  "sourceConditions": [
+    { "id": "base", "condition": "점 C는 선분 AB 위에 있으며 A, C, B가 이 순서로 일직선이다.", "mappedTo": ["A", "C", "B", "sAC", "sCB", "lAB"] },
+    { "id": "equilateral-left", "condition": "삼각형 ACD가 정삼각형이므로 AC=AD=DC이며 ∠DAC=60°이다.", "mappedTo": ["A", "C", "D", "sAC", "sAD", "sDC", "aDAC"] },
+    { "id": "equilateral-right", "condition": "삼각형 CBE가 정삼각형이므로 CB=CE=EB이다.", "mappedTo": ["C", "B", "E", "sCB", "sCE", "sEB"] },
+    { "id": "given-angle", "condition": "∠DAE=34°이며 ∠EAC=26°로 나뉜다.", "mappedTo": ["aDAE", "aEAC", "lAE"] },
+    { "id": "intersection", "condition": "AE와 DB가 교차하는 점의 원본 표기는 P이다.", "mappedTo": ["sAE", "sDB", "P"] },
+    { "id": "congruence", "condition": "∠ACE=∠DCB=120°, ∠BDC=26°는 SAS 합동과 대응각에서 나온다.", "mappedTo": ["aACE", "aDCB", "aBDC"] }
+  ],
+  "newVisualInformation": [
+    "원본 문제의 여덟 선분과 P 교점을 유지하고 34°·26°·60°·120° 호를 해설 축에만 분명히 보인다.",
+    "기존 해설 SVG가 합동 삼각형 ACE와 DCB의 내부에 넣은 두 회색 면 채움을 완전히 없애고, 각 부채꼴도 칠하지 않는다.",
+    "정삼각형은 POLAR_POINT와 두 직선의 실제 교점으로 구성하여 원본 각 관계를 근사 수치 없이 충족한다."
+  ],
+  "sourceQuote": "정삼각형 ACD, CBE를 만들었다. ∠DAE=34°일 때"
+}
