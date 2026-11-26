@@ -1,0 +1,39 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-7" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "O", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "E", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "7" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "7" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "POLAR_POINT", "inputs": ["O", "E"], "args": { "length": { "kind": "integer", "value": "7" }, "angleDeg": { "kind": "integer", "value": "75" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "POLAR_POINT", "inputs": ["O", "E"], "args": { "length": { "kind": "integer", "value": "7" }, "angleDeg": { "kind": "integer", "value": "50" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["A", "O", "E", "B", "C", "D"],
+  "displaySegments": [
+    { "id": "sAO", "refs": ["A", "O"] },
+    { "id": "sOE", "refs": ["O", "E"] },
+    { "id": "sOB", "refs": ["O", "B"] },
+    { "id": "sOC", "refs": ["O", "C"] },
+    { "id": "sOD", "refs": ["O", "D"] }
+  ],
+  "rightAngles": [{ "id": "rAOB", "refs": ["A", "O", "B"] }],
+  "coordinateCanvas": { "width": 600, "height": 390 },
+  "caption": "직선 AE 위 O에서 직각 OB를 올리고, 그 오른쪽에 OC와 OD 두 반직선이 놓인 문제 그림",
+  "accessibilityDescription": "A, O, E가 왼쪽부터 수평 직선에 있고, O에서 위쪽 B와 오른쪽 위 C, D로 세 선분이 뻗는다. AOB에만 원본의 직각 정사각형이 있고 15°, 25°, 40° 같은 풀이 수치는 문제에 표시되지 않는다.",
+  "sourceConditions": [
+    { "id": "base", "condition": "A, O, E는 일직선이고 AE와 BO는 O에서 수직으로 만난다.", "mappedTo": ["A", "O", "E", "B", "sAO", "sOE", "sOB", "rAOB"] },
+    { "id": "rays", "condition": "OC, OD는 OB와 OE 사이에서 OC가 OD보다 OB에 가까운 원본 순서를 유지한다.", "mappedTo": ["C", "D", "sOC", "sOD"] },
+    { "id": "ratio1", "condition": "∠AOB=6∠BOC이므로 ∠BOC의 각도는 구성상 직각의 1/6이다.", "mappedTo": ["B", "O", "C", "rAOB"] },
+    { "id": "ratio2", "condition": "∠COE=3∠COD이며 그림은 이 각 비례를 정확히 충족한다.", "mappedTo": ["C", "O", "E", "D", "sOC", "sOD", "sOE"] }
+  ],
+  "newVisualInformation": [
+    "흐릿한 원본 PNG의 A·O·E 수평선, B·C·D 세 반직선, O의 직각 기호를 정확한 엔진 도형으로 정리한다.",
+    "주어진 두 각의 비를 POLAR_POINT 75°·50°의 실제 구성으로 충족하지만 풀이 결과값 15°·25°·40°는 문제 축에 드러내지 않는다.",
+    "점선과 면 채움은 원본에 없으므로 추가하지 않는다."
+  ],
+  "sourceQuote": "AE ⟂ BO이고, ∠AOB=6∠BOC, ∠COE=3∠COD"
+}
