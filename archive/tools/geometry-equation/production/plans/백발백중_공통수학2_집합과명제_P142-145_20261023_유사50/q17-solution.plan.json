@@ -1,0 +1,135 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "원의 중심 O, 외부 점 A와 가까운 원 위 점 P가 한 직선에 놓인다.",
+  "accessibilityDescription": "반지름 OP와 남는 선분 PA를 한 직선에 표시하여 AP의 최소 관계를 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "점 $A(3,4)$와 원 $x^2+y^2=9$ 위를 움직이는 점 $P$ 사이의 거리 $AP$의 최솟값은?",
+      "mappedTo": "mathPlan.nodes[1].args.coordinates,mathPlan.nodes[2].args.radius"
+    },
+    {
+      "id": "c2",
+      "condition": "OP=3이고 P는 OA 선분 위의 점",
+      "mappedTo": "mathPlan.nodes[4].args,displaySegments"
+    }
+  ],
+  "newVisualInformation": [
+    "반지름 OP와 남는 선분 PA를 한 직선에 표시하여 AP의 최소 관계를 보인다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "displayCircles": [
+    "k"
+  ],
+  "displayPoints": [
+    "O",
+    "A",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ],
+      "emphasis": "BOLD"
+    }
+  ],
+  "coordinateLabels": [
+    "A"
+  ],
+  "sourceQuote": "점 $A(3,4)$와 원 $x^2+y^2=9$ 위를 움직이는 점 $P$ 사이의 거리 $AP$의 최솟값은?"
+}

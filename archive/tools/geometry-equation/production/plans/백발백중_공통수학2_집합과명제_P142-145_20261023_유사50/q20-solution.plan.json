@@ -1,0 +1,214 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "원과 y축이 만나는 두 점 A, B를 연결한 현의 길이가 4이다.",
+  "accessibilityDescription": "원 중심에서 현의 중점으로 내린 수선과 현의 양 끝점을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원 $x^2+y^2-6x-2y+k=0$이 $y$축과 만나는 두 점을 $A,B$라 할 때, $\\overline{AB}=4$을 만족시키는 상수 $k$의 값은?",
+      "mappedTo": "mathPlan.nodes[1],mathPlan.nodes[2],mathPlan.nodes[6].args.radius,displaySegments[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "중심 (3,1)에서 y축까지 거리는 3",
+      "mappedTo": "displaySegments[1],rightAngles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "원 중심에서 현의 중점으로 내린 수선과 현의 양 끝점을 표시한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "Y",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "13"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayCircles": [
+    "k"
+  ],
+  "displayLines": [
+    "Y"
+  ],
+  "displayPoints": [
+    "C",
+    "M",
+    "A",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "sCM",
+      "refs": [
+        "C",
+        "M"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "raM",
+      "refs": [
+        "C",
+        "M",
+        "A"
+      ]
+    }
+  ],
+  "coordinateLabels": [
+    "A",
+    "B"
+  ],
+  "sourceQuote": "원 $x^2+y^2-6x-2y+k=0$이 $y$축과 만나는 두 점을 $A,B$라 할 때, $\\overline{AB}=4$을 만족시키는 상수 $k$의 값은?"
+}

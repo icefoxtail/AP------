@@ -1,0 +1,174 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "주어진 점 T에서 직선 L에 내린 수선과 L에 수직인 직선 R을 나타낸다.",
+  "accessibilityDescription": "서로 수직인 두 직선과 직각 표식으로 기울기 곱이 -1인 관계를 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "점 $(2,-1)$을 지나고 직선 $x-2y+1=0$에 수직인 직선의 방정식이 $y=ax+b$일 때, $a+b$의 값은?",
+      "mappedTo": "mathPlan.nodes[0].args.coordinates,mathPlan.nodes[1].args"
+    },
+    {
+      "id": "c2",
+      "condition": "R과 L은 서로 수직",
+      "mappedTo": "mathPlan.nodes[2],rightAngles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "서로 수직인 두 직선과 직각 표식으로 기울기 곱이 -1인 관계를 확인한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "T",
+          "L"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "F",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "T",
+          "L"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "L"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "T",
+    "F",
+    "G"
+  ],
+  "displayLines": [
+    "L",
+    "R"
+  ],
+  "displaySegments": [
+    {
+      "id": "sTF",
+      "refs": [
+        "T",
+        "F"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ],
+      "dashed": true
+    }
+  ],
+  "hiddenPointNames": [
+    "G"
+  ],
+  "rightAngles": [
+    {
+      "id": "raF",
+      "refs": [
+        "T",
+        "F",
+        "G"
+      ]
+    }
+  ],
+  "coordinateLabels": [
+    "T"
+  ],
+  "lineLabels": [
+    {
+      "nodeId": "L",
+      "form": "GENERAL"
+    }
+  ],
+  "sourceQuote": "점 $(2,-1)$을 지나고 직선 $x-2y+1=0$에 수직인 직선의 방정식이 $y=ax+b$일 때, $a+b$의 값은?"
+}
