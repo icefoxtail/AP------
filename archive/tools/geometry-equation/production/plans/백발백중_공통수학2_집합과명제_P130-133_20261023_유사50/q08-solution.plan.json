@@ -1,0 +1,29 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "shade": "A"
+  },
+  "caption": "(A∩B)∪(A−B)는 A의 공통 부분과 A만의 부분을 모두 포함하므로 A이다.",
+  "accessibilityDescription": "집합 A의 B와 겹치는 영역 및 A만의 영역을 합쳐 A 전체를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "law",
+      "condition": "(A∩B)∪(A−B)=A",
+      "mappedTo": [
+        "diagram.shade"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "집합 A의 B와 겹치는 영역 및 A만의 영역을 합쳐 A 전체를 표시한다."
+  ]
+}

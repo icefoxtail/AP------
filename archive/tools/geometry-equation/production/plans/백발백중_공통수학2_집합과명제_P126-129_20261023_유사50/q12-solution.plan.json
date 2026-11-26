@@ -1,0 +1,70 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "A",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "2",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "37",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "B",
+        "color": "WARM",
+        "pieces": [
+          {
+            "lo": {
+              "value": "5",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "36",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "허용 최댓값 사례 a=5"
+  },
+  "caption": "A=(-∞,2)∪(37,∞)이며 a=5에서 B=[5,36]로 A∩B=∅이다. B=[a,(a+1)²], a≥2; 이 그림은 모든 a가 아니라 최대 허용 자연수 사례이다.",
+  "accessibilityDescription": "허용 최댓값 사례 a=5에서 해집합 A와 B의 열린·닫힌 끝점을 정확하게 표시한 두 줄 수직선.",
+  "sourceConditions": [
+    {
+      "id": "interval-1",
+      "condition": "A=(−∞,2)∪(37,∞), 두 경계는 A에 포함되지 않음",
+      "mappedTo": [
+        "numberLine.rows[0].pieces"
+      ]
+    },
+    {
+      "id": "interval-2",
+      "condition": "B=[a,(a+1)²], a≥2에서 a=5를 대입한 B=[5,36]",
+      "mappedTo": [
+        "numberLine.rows[1].pieces"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 해집합의 끝점 포함 여부와 포함·서로소 관계를 수직선 위에 보인다."
+  ]
+}

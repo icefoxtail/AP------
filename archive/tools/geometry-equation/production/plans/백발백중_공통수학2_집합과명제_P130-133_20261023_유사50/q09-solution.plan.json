@@ -1,0 +1,39 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "subset": [
+      "A",
+      "B"
+    ]
+  },
+  "caption": "A⊂B이므로 A−B=∅, A∩B^c=∅이다. 여집합의 포함관계는 B^c⊆A^c이다.",
+  "accessibilityDescription": "작은 원 A가 큰 원 B 안에 완전히 들어가 A만의 영역이 없는 포함관계 그림.",
+  "sourceConditions": [
+    {
+      "id": "subset",
+      "condition": "A⊂B",
+      "mappedTo": [
+        "diagram.subset"
+      ]
+    },
+    {
+      "id": "empty",
+      "condition": "A−B=∅",
+      "mappedTo": [
+        "diagram.subset"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "작은 원 A가 큰 원 B 안에 완전히 들어가 A만의 영역이 없는 포함관계 그림."
+  ]
+}

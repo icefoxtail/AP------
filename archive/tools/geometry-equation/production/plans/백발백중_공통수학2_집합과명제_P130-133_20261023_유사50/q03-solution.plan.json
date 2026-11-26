@@ -1,0 +1,84 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "disjoint": [
+      [
+        "A",
+        "B"
+      ]
+    ],
+    "elements": [
+      {
+        "text": "1",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "2",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "5",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "6",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "3",
+        "in": []
+      },
+      {
+        "text": "4",
+        "in": []
+      }
+    ]
+  },
+  "caption": "A⊆X⊆B^c: A의 2개 원소는 필수, B의 2개 원소는 금지, 두 집합 바깥 3,4의 2개 원소만 자유 선택(4가지).",
+  "accessibilityDescription": "A의 필수 원소 1,2와 B의 금지 원소 5,6, 나머지 자유 원소 3,4를 각각 영역에 구분한 벤다이어그램.",
+  "sourceConditions": [
+    {
+      "id": "universe",
+      "condition": "U={1,2,3,4,5,6}",
+      "mappedTo": [
+        "diagram.elements"
+      ]
+    },
+    {
+      "id": "A-fixed",
+      "condition": "A={1,2}⊆X",
+      "mappedTo": [
+        "diagram.sets[0]",
+        "diagram.elements"
+      ]
+    },
+    {
+      "id": "B-excluded",
+      "condition": "B={5,6}와 X는 서로소",
+      "mappedTo": [
+        "diagram.sets[1]",
+        "diagram.disjoint"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "A의 필수 원소 1,2와 B의 금지 원소 5,6, 나머지 자유 원소 3,4를 각각 영역에 구분한 벤다이어그램."
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "name": "A6",
+        "count": "16",
+        "countUnit": "개"
+      },
+      {
+        "id": "B",
+        "name": "A12",
+        "count": "8",
+        "countUnit": "개"
+      }
+    ],
+    "subset": [
+      "B",
+      "A"
+    ],
+    "shade": "A",
+    "countStyle": "n"
+  },
+  "caption": "(A4∪A6)∩A3=A12∪A6=A6. A12는 A6에 포함되므로 100 이하에서 n(A6)=16개이다.",
+  "accessibilityDescription": "A12 원이 A6 원 안에 들어 있으며 A6 전체가 색칠되어 합집합이 A6으로 환원됨을 보인다.",
+  "sourceConditions": [
+    {
+      "id": "simplification",
+      "condition": "A4∩A3=A12, A6∩A3=A6",
+      "mappedTo": [
+        "diagram.sets"
+      ]
+    },
+    {
+      "id": "subset",
+      "condition": "A12⊆A6",
+      "mappedTo": [
+        "diagram.subset"
+      ]
+    },
+    {
+      "id": "count",
+      "condition": "n(A6)=floor(100/6)=16",
+      "mappedTo": [
+        "diagram.sets[0].count",
+        "diagram.shade"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "A12 원이 A6 원 안에 들어 있으며 A6 전체가 색칠되어 합집합이 A6으로 환원됨을 보인다."
+  ]
+}

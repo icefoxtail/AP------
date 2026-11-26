@@ -1,0 +1,53 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "name": "A6",
+        "count": "20",
+        "countUnit": "개"
+      },
+      {
+        "id": "B",
+        "name": "A15",
+        "count": "8",
+        "countUnit": "개"
+      }
+    ],
+    "elements": [
+      {
+        "text": "4개",
+        "in": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "shade": "A∪B",
+    "countStyle": "n"
+  },
+  "caption": "A3∩(A2∪A5)=A6∪A15이고 공통 부분은 A30(4개)이다. 따라서 20+8−4=24개.",
+  "accessibilityDescription": "A6과 A15의 합집합을 칠하고 30의 배수 4개가 중복되는 영역을 별도로 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "distribution",
+      "condition": "A3∩(A2∪A5)=A6∪A15",
+      "mappedTo": [
+        "diagram.sets",
+        "diagram.shade"
+      ]
+    },
+    {
+      "id": "overlap",
+      "condition": "A6∩A15=A30, 1~120에서 4개",
+      "mappedTo": [
+        "diagram.elements[0]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "A6과 A15의 합집합을 칠하고 30의 배수 4개가 중복되는 영역을 별도로 표시한다."
+  ]
+}
