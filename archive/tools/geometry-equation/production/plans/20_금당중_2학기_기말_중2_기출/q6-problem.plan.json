@@ -1,0 +1,372 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "Ta",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "81",
+              "denominator": "25"
+            },
+            {
+              "kind": "rational",
+              "numerator": "56",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Tb",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Ua",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "201",
+              "denominator": "25"
+            },
+            {
+              "kind": "rational",
+              "numerator": "56",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Ub",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "91",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "69",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "17"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "Ta",
+    "Tb",
+    "Ua",
+    "Ub",
+    "P1",
+    "P2",
+    "P3",
+    "Q1",
+    "Q2",
+    "Q3"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sP1Q1",
+      "refs": [
+        "P1",
+        "Q1"
+      ]
+    },
+    {
+      "id": "sP2Q2",
+      "refs": [
+        "P2",
+        "Q2"
+      ]
+    },
+    {
+      "id": "sP3Q3",
+      "refs": [
+        "P3",
+        "Q3"
+      ]
+    },
+    {
+      "id": "sTaTb",
+      "refs": [
+        "Ta",
+        "Tb"
+      ]
+    },
+    {
+      "id": "sUaUb",
+      "refs": [
+        "Ua",
+        "Ub"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lP1Q1",
+        "ownerSegment": "sP1Q1",
+        "text": "l",
+        "labelAt": "MID",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "lP2Q2",
+        "ownerSegment": "sP2Q2",
+        "text": "m",
+        "labelAt": "MID",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "lP3Q3",
+        "ownerSegment": "sP3Q3",
+        "text": "n",
+        "labelAt": "MID",
+        "labelKind": "MATH"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dP1P2",
+        "from": "P1",
+        "to": "P2",
+        "label": "6",
+        "side": "LEFT",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dP1P3",
+        "from": "P1",
+        "to": "P3",
+        "label": "10",
+        "side": "LEFT",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "offset": 2
+      },
+      {
+        "id": "dQ1Q2",
+        "from": "Q1",
+        "to": "Q2",
+        "label": "9",
+        "side": "RIGHT",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dQ2Q3",
+        "from": "Q2",
+        "to": "Q3",
+        "label": "x",
+        "side": "RIGHT",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ],
+    "parallels": [
+      {
+        "id": "pp",
+        "count": 1,
+        "segments": [
+          "sP1Q1",
+          "sP2Q2",
+          "sP3Q3"
+        ],
+        "color": "VIOLET"
+      }
+    ]
+  },
+  "caption": "원본 기출 문제 그림: 평행선 l,m,n과 대응 길이 6,10,9,x",
+  "sourceConditions": [
+    {
+      "id": "original",
+      "condition": "평행선 l,m,n과 대응 길이 6,10,9,x",
+      "mappedTo": [
+        "sP1Q1",
+        "sP2Q2",
+        "sP3Q3",
+        "sTaTb",
+        "sUaUb"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 문제 이미지의 점·선분·치수·각·직각·평행·중점 조건을 문제 단계의 정보만으로 구성했다."
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "hiddenPointNames": [
+    "Ta",
+    "Tb",
+    "Ua",
+    "Ub",
+    "P1",
+    "P2",
+    "P3",
+    "Q1",
+    "Q2",
+    "Q3"
+  ],
+  "hiddenPointStyle": "NONE"
+}
