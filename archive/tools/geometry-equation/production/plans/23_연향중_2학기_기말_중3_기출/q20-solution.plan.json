@@ -1,0 +1,25 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind":"SCATTER",
+    "points":[
+      {"x":"0.8","y":"0.8"},{"x":"0.8","y":"0.9"},{"x":"0.9","y":"0.9"},{"x":1,"y":"0.9"},
+      {"x":"0.9","y":1},{"x":1,"y":1},{"x":"1.2","y":1},{"x":1,"y":"1.2"},
+      {"x":"1.2","y":"1.2"},{"x":"1.5","y":"1.2"},{"x":2,"y":"1.2"},
+      {"x":"1.2","y":"1.5"},{"x":"1.5","y":"1.5"},{"x":2,"y":"1.5"},{"x":2,"y":2}
+    ],
+    "xRange":["0.8","2"],"yRange":["0.8","2"],"xStep":"0.1","yStep":"0.1",
+    "xTitle":"왼쪽 눈 시력","yTitle":"오른쪽 눈 시력","grid":true,"equalUnits":true,
+    "refLines":[{"kind":"LINE","a":-1,"b":1,"c":0,"label":"y=x","style":"DASHED"}],
+    "pointGroups":[{"color":"BLUE","label":"좌우 시력 같음","points":[
+      ["0.8","0.8"],["0.9","0.9"],[1,1],["1.2","1.2"],["1.5","1.5"],[2,2]
+    ]}]
+  },
+  "caption":"좌우 시력이 같은 학생은 y=x에 놓인 6명으로 전체 15명 중 비율은 6/15=2/5이다.",
+  "accessibilityDescription":"학생 15명의 좌우 시력 산점도에 y=x 점선을 그어 좌우 시력이 같은 6개의 점을 파란색으로 표시한다.",
+  "sourceConditions":[
+    {"id":"raw","condition":"원본 중학생 15명과 두 축 시력 범위 0.8~2.0 및 0.1 눈금 유지","mappedTo":["chart.points","chart.xRange","chart.yRange","chart.xStep","chart.yStep"]},
+    {"id":"diagonal","condition":"좌우 시력이 같은 여섯 학생은 (0.8,0.8),(0.9,0.9),(1.0,1.0),(1.2,1.2),(1.5,1.5),(2.0,2.0)","mappedTo":["chart.refLines","chart.pointGroups"]}
+  ],
+  "newVisualInformation":["회색 면 채움 없이 원본의 정확한 15개 점과 y=x 점선을 보존하고 여섯 동점만 색점으로 구분한다."]
+}

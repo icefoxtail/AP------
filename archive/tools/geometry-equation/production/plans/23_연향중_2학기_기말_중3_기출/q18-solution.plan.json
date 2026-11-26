@@ -1,0 +1,30 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind":"SCATTER",
+    "points":[
+      {"x":1,"y":1},{"x":"1.5","y":"1.5"},{"x":"1.5","y":"2.5"},{"x":"1.5","y":3},
+      {"x":2,"y":"2.5"},{"x":"2.5","y":3},{"x":"2.5","y":"3.5"},
+      {"x":3,"y":2},{"x":3,"y":3},{"x":3,"y":4},{"x":3,"y":"4.5"},
+      {"x":"3.5","y":2},{"x":"3.5","y":3},{"x":"3.5","y":"4.5"},
+      {"x":4,"y":4},{"x":"4.5","y":3},{"x":"4.5","y":"4.5"},{"x":5,"y":4}
+    ],
+    "xRange":["0","5"],"yRange":["0","5"],"xStep":"0.5","yStep":"0.5",
+    "xTitle":"지난달(시간)","yTitle":"이번달(시간)","grid":true,"equalUnits":true,
+    "refLines":[{"kind":"LINE","a":-1,"b":1,"c":0,"label":"y=x","style":"DASHED"}],
+    "pointGroups":[
+      {"color":"BLUE","label":"a+b=13","points":[
+        [1,1],["1.5","1.5"],["1.5","2.5"],["1.5",3],[2,"2.5"],["2.5",3],["2.5","3.5"],
+        [3,3],[3,4],[3,"4.5"],["3.5","4.5"],[4,4],["4.5","4.5"]
+      ]}
+    ]
+  },
+  "caption":"y=x 위의 학생과 이번달 시간이 더 많은 학생은 모두 13명이다. 회색 반평면 면 채움은 쓰지 않는다.",
+  "accessibilityDescription":"18개 점을 그대로 두고 y=x 점선 위나 그 위쪽인 13개 점만 파란색으로 강조한 봉사활동 시간 산점도이다.",
+  "sourceConditions":[
+    {"id":"original","condition":"원본 학생 18명, 지난달·이번달 0~5시간, 0.5시간 간격 눈금 보존","mappedTo":["chart.points","chart.xRange","chart.yRange","chart.xStep","chart.yStep"]},
+    {"id":"equal","condition":"지난달과 이번달 봉사시간이 같은 학생은 y=x 위의 점","mappedTo":["chart.refLines","chart.pointGroups"]},
+    {"id":"more","condition":"이번달 봉사시간이 지난달보다 더 많은 학생은 y>x; a+b=13명","mappedTo":["chart.pointGroups","caption"]}
+  ],
+  "newVisualInformation":["기존 해설의 불필요한 회색 반평면을 제거하고 y=x 점선과 13개의 근거점만 강조한다. 원본 자료점 18개 모두 유지한다."]
+}

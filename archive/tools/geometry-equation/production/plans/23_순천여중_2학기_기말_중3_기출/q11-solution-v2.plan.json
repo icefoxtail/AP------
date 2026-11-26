@@ -207,11 +207,12 @@
       ]
     },
     {
-      "id": "PB",
-      "refs": [
-        "P",
-        "B"
-      ]
+      "id": "PA",
+      "refs": ["P", "A"]
+    },
+    {
+      "id": "AB",
+      "refs": ["A", "B"]
     },
     {
       "id": "AT",
@@ -229,6 +230,9 @@
     }
   ],
   "planeMarks": {
+    "equalLengths": [
+      {"id":"givenPAequalsAT","count":1,"segments":["PA","AT"]}
+    ],
     "angles": [
       {
         "id": "given",
@@ -309,6 +313,11 @@
         "planeMarks",
         "caption"
       ]
+    },
+    {
+      "id":"givenEqualSides",
+      "condition":"원본 문제의 AP=AT 조건은 PA 선분과 AT 선분 위에 같은 한 개의 눈금으로 표시한다.",
+      "mappedTo":["PA","AT","givenPAequalsAT"]
     }
   ],
   "newVisualInformation": [

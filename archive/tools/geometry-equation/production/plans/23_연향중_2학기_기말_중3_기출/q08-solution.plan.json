@@ -1,0 +1,65 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"X","op":"TRANSLATE_POINT","inputs":["D"],"args":{"dx":{"kind":"integer","value":"1"},"dy":{"kind":"integer","value":"0"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"base","op":"LINE_THROUGH","inputs":["D","X"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"cdLine","op":"LINE_THROUGH","inputs":["C","D"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"c6","op":"CIRCLE_CENTER_RADIUS","inputs":["C"],"args":{"radius":{"kind":"integer","value":"6"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"hitsA","op":"INTERSECTION","inputs":["base","c6"],"args":{},"outputType":"POINT_SET","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"A","op":"SELECT_POINT","inputs":["hitsA"],"args":{},"branch":{"kind":"SIDE_OF_ORIENTED_LINE","refs":["C","D"],"sign":-1},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"c3","op":"CIRCLE_CENTER_RADIUS","inputs":["C"],"args":{"radius":{"kind":"integer","value":"3"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"hitsB","op":"INTERSECTION","inputs":["base","c3"],"args":{},"outputType":"POINT_SET","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"B","op":"SELECT_POINT","inputs":["hitsB"],"args":{},"branch":{"kind":"SIDE_OF_ORIENTED_LINE","refs":["C","D"],"sign":1},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"k","op":"CIRCLE_THROUGH_3","inputs":["A","B","C"],"args":{},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"Mab","op":"MIDPOINT","inputs":["A","B"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"Mbc","op":"MIDPOINT","inputs":["B","C"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"bcLine","op":"LINE_THROUGH","inputs":["B","C"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"bisAB","op":"PERPENDICULAR_THROUGH","inputs":["Mab","base"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"bisBC","op":"PERPENDICULAR_THROUGH","inputs":["Mbc","bcLine"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"O","op":"LINE_INTERSECTION","inputs":["bisAB","bisBC"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"E","op":"POINT_REFLECTION","inputs":["C","O"],"args":{},"outputType":"POINT","factRole":"CONCLUSION"}
+    ],
+    "conditionAudits":[
+      {"id":"checkAC6","kind":"DISTANCE_EQUALS","refs":["A","C"],"expected":{"kind":"integer","value":"6"},"sourceConditionId":"triangle"},
+      {"id":"checkBC3","kind":"DISTANCE_EQUALS","refs":["B","C"],"expected":{"kind":"integer","value":"3"},"sourceConditionId":"triangle"},
+      {"id":"checkCD2","kind":"DISTANCE_EQUALS","refs":["C","D"],"expected":{"kind":"integer","value":"2"},"sourceConditionId":"triangle"},
+      {"id":"checkAltitude","kind":"PERPENDICULAR","refs":["base","cdLine"],"sourceConditionId":"triangle"}
+    ]
+  },
+  "displayPoints":["A","B","C","D","E","O"],
+  "displayCircles":["k"],
+  "displaySegments":[
+    {"id":"sAC","refs":["A","C"]},
+    {"id":"sCB","refs":["C","B"]},
+    {"id":"sAB","refs":["A","B"]},
+    {"id":"sCD","refs":["C","D"],"dashed":true},
+    {"id":"sCE","refs":["C","E"],"dashed":true},
+    {"id":"sEB","refs":["E","B"]}
+  ],
+  "rightAngles":[
+    {"id":"atD","refs":["C","D","A"]},
+    {"id":"atB","refs":["C","B","E"]}
+  ],
+  "planeMarks":{
+    "expressionLabels":[
+      {"id":"lenAC","ownerSegment":"sAC","text":"6cm"},
+      {"id":"lenCB","ownerSegment":"sCB","text":"3cm"},
+      {"id":"lenCD","ownerSegment":"sCD","text":"2cm"},
+      {"id":"diameterCE","ownerSegment":"sCE","text":"9cm"}
+    ]
+  },
+  "coordinateCanvas":{"width":700,"height":580},
+  "caption":"파손 접시의 세 실측 길이 AC=6cm, BC=3cm, CD=2cm를 보존하고 지름 CE=9cm를 작도한다. 따라서 원래 둘레는 9πcm이다.",
+  "accessibilityDescription":"원 위 A,B,C가 있고 현 AB의 수선의 발 D에 CD=2cm가 표시된다. AC=6cm, BC=3cm이며 점 C를 지나는 지름 CE를 점선으로 추가해 길이 9cm를 쓴다. D와 B에 직각 표식을 둔다.",
+  "sourceConditions":[
+    {"id":"triangle","condition":"원본 측정 AC=6cm, BC=3cm, CD=2cm, D는 AB 위, CD는 AB에 수직","mappedTo":["A","B","C","D","base","c6","c3","sAC","sCB","sCD","lenAC","lenCB","lenCD","atD"]},
+    {"id":"reconstruct","condition":"원본 해설은 점 C를 지나는 지름 CE를 보조선으로 긋고 ∠CBE=90°인 삼각형 ECB를 비교한다","mappedTo":["k","O","E","sCE","sEB","atB"]},
+    {"id":"diameter","condition":"삼각형 ACD와 ECB의 닮음에서 AC:CE=CD:CB=2:3, 따라서 CE=9cm","mappedTo":["diameterCE","sCE","caption"]}
+  ],
+  "newVisualInformation":["깨진 접시의 불규칙 경계는 풀이용 원으로 복원하되 실측 6·3·2cm와 보조 지름 9cm, 두 직각 표식을 빠짐없이 담는다. 문제축의 파손 윤곽은 별도의 엔진 기능이 필요하다."]
+}

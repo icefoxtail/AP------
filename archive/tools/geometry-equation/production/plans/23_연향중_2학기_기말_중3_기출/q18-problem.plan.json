@@ -1,0 +1,23 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind":"SCATTER",
+    "points":[
+      {"x":1,"y":1},{"x":"1.5","y":"1.5"},{"x":"1.5","y":"2.5"},{"x":"1.5","y":3},
+      {"x":2,"y":"2.5"},{"x":"2.5","y":3},{"x":"2.5","y":"3.5"},
+      {"x":3,"y":2},{"x":3,"y":3},{"x":3,"y":4},{"x":3,"y":"4.5"},
+      {"x":"3.5","y":2},{"x":"3.5","y":3},{"x":"3.5","y":"4.5"},
+      {"x":4,"y":4},{"x":"4.5","y":3},{"x":"4.5","y":"4.5"},{"x":5,"y":4}
+    ],
+    "xRange":["0","5"],"yRange":["0","5"],"xStep":"0.5","yStep":"0.5",
+    "xTitle":"지난달(시간)","yTitle":"이번달(시간)","grid":true,"equalUnits":true
+  },
+  "caption":"학생 18명의 지난달 봉사시간과 이번달 봉사시간을 원본의 0.5시간 눈금으로 나타낸다.",
+  "accessibilityDescription":"지난달 시간을 가로축, 이번달 시간을 세로축으로 하는 학생 18명의 산점도이다. 두 축은 각각 0~5시간이며 0.5시간 간격 격자이다.",
+  "sourceConditions":[
+    {"id":"question","condition":"아래 산점도는 학생 18명의 지난달과 이번달 봉사 활동 시간을 조사하여 나타낸 것이다. a+b의 값은? [4점]","mappedTo":["chart.kind","chart.points"]},
+    {"id":"axes","condition":"가로 지난달(시간), 세로 이번달(시간), 두 축 0~5시간과 0.5시간 격자","mappedTo":["chart.xRange","chart.yRange","chart.xStep","chart.yStep","chart.xTitle","chart.yTitle","chart.grid"]},
+    {"id":"rawpoints","condition":"원본의 점 18개를 중복·삭제 없이 원 좌표에서 옮김; 문제 축에는 y=x 및 a+b 판정을 표시하지 않는다","mappedTo":["chart.points"]}
+  ],
+  "newVisualInformation":["작게 뭉개진 18개 원본 점과 각 눈금을 개별 선언하며 문제 축에는 해설용 경계선이나 점 강조를 추가하지 않는다."]
+}

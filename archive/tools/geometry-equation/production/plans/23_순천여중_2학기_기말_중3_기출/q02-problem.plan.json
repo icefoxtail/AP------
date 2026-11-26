@@ -1,0 +1,40 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"X","op":"TRANSLATE_POINT","inputs":["O"],"args":{"dx":{"kind":"integer","value":"10"},"dy":{"kind":"integer","value":"0"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"A","op":"POLAR_POINT","inputs":["O","X"],"args":{"length":{"kind":"integer","value":"10"},"angleDeg":{"kind":"integer","value":"110"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"POLAR_POINT","inputs":["O","X"],"args":{"length":{"kind":"integer","value":"10"},"angleDeg":{"kind":"integer","value":"180"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"POLAR_POINT","inputs":["O","X"],"args":{"length":{"kind":"integer","value":"10"},"angleDeg":{"kind":"integer","value":"230"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"POLAR_POINT","inputs":["O","X"],"args":{"length":{"kind":"integer","value":"10"},"angleDeg":{"kind":"integer","value":"300"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"E","op":"POLAR_POINT","inputs":["O","X"],"args":{"length":{"kind":"integer","value":"10"},"angleDeg":{"kind":"integer","value":"70"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"10"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints":["A","B","C","D","E","O"],
+  "displayCircles":["k"],
+  "displaySegments":[
+    {"id":"sAB","refs":["A","B"]},{"id":"sAC","refs":["A","C"]},
+    {"id":"sEB","refs":["E","B"]},{"id":"sED","refs":["E","D"]},
+    {"id":"sOC","refs":["O","C"]},{"id":"sOD","refs":["O","D"]}
+  ],
+  "planeMarks":{"angles":[
+    {"id":"given60","refs":["B","E","D"],"value":60,"label":"60","style":"ARC","factRole":"GIVEN"},
+    {"id":"given70","refs":["C","O","D"],"value":70,"label":"70","style":"ARC","factRole":"GIVEN"},
+    {"id":"unknown","refs":["B","A","C"],"label":"x","style":"ARC","factRole":"GIVEN"}
+  ]},
+  "coordinateCanvas":{"width":560,"height":490},
+  "sourceQuote":"다음 원 $O$에서 $\\angle x$의 크기를 구하는 과정이다. 아래에서 옳지 않은 것은? [4점]",
+  "caption":"원 O 위의 A,B,C,D,E에 대해 E에서의 원주각 60°와 중심각 COD 70°가 주어졌고 A에서의 x를 구한다.",
+  "accessibilityDescription":"원 O의 왼쪽 B, 위쪽 왼편 A, 위쪽 오른편 E, 아래 C, 오른쪽 아래 D를 잇는다. E에 60도, 중심 O에 70도, A의 호 BC를 보는 각에 x가 표시된다.",
+  "sourceConditions":[
+    {"id":"inscribed","condition":"원본 ∠BED=60도와 두 현 EB,ED","mappedTo":["sEB","sED","given60"]},
+    {"id":"central","condition":"원본 중심각 ∠COD=70도와 반지름 OC,OD","mappedTo":["sOC","sOD","given70"]},
+    {"id":"unknown","condition":"원본 ∠BAC의 미지수 x는 풀이값 25도를 문제 그림에 드러내지 않는다","mappedTo":["sAB","sAC","unknown"]},
+    {"id":"circle","condition":"A,B,C,D,E가 한 원 O 위에 놓인다","mappedTo":["A","B","C","D","E","k","O"]}
+  ],
+  "newVisualInformation":["원본의 겹치는 현이 흐릿해 x·60도·70도가 서로 섞이는 문제를 각의 소유 점과 반지름을 명시한 한 장의 원으로 재작도한다."]
+}
