@@ -45,7 +45,7 @@ window.questionBank = [
   },
   {
     "id": 2,
-    "category": "외접원의 넓이와 사인법칙",
+    "category": "외접원의 둘레와 사인법칙",
     "standardCourse": "대수",
     "standardUnitKey": "H22-A-05",
     "standardUnit": "사인법칙과 코사인법칙",
@@ -404,7 +404,6 @@ window.questionBank = [
     "templateKey": "TPL_H22A_05_COSINE_LAW_111",
     "crossConceptKeys": [
       "CC_SINE_LAW",
-      "CC_RADIAN_DEGREE_CONVERSION",
       "CC_TRIANGLE_ANGLE_SUM"
     ],
     "conditionKeys": [
