@@ -1,0 +1,64 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "caption": "오래 매달리기 기록 30명의 도수분포다각형에서 상위 20%의 오른쪽 두 계급을 묶는다.",
+  "accessibilityDescription": "계급 경계 10,20,...,70초와 여섯 도수 3,5,10,6,4,2를 가진 도수분포다각형. 50~70초 두 계급을 합쳐 6명 괄호를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "10초부터 70초까지 10초 너비 여섯 계급이다.",
+      "mappedTo": "chart.boundaries"
+    },
+    {
+      "id": "c2",
+      "condition": "차례로 3,5,10,6,4,2명, 전체 30명이다.",
+      "mappedTo": "chart.series[0].frequencies"
+    },
+    {
+      "id": "c3",
+      "condition": "상위 20%는 6명이고 50초 이상인 마지막 두 계급 도수가 4+2=6이다.",
+      "mappedTo": "chart.classSums"
+    }
+  ],
+  "newVisualInformation": [
+    "끝점 0을 포함한 원래의 다각형만 유지하여 히스토그램 면 채움이 들어가지 않도록 한다.",
+    "50초 이상 두 계급을 하나의 괄호로 표시해 해설의 6명 근거를 분명히 한다."
+  ],
+  "chart": {
+    "kind": "FREQUENCY_POLYGON",
+    "boundaries": [
+      "10",
+      "20",
+      "30",
+      "40",
+      "50",
+      "60",
+      "70"
+    ],
+    "series": [
+      {
+        "frequencies": [
+          3,
+          5,
+          10,
+          6,
+          4,
+          2
+        ]
+      }
+    ],
+    "total": 30,
+    "xTitle": "기록(초)",
+    "yTitle": "도수(명)",
+    "grid": true,
+    "showValues": true,
+    "classSums": [
+      {
+        "series": 0,
+        "from": 4,
+        "to": 5,
+        "label": "6",
+        "unit": "명"
+      }
+    ]
+  }
+}
