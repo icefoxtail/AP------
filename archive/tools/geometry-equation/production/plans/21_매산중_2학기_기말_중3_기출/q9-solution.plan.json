@@ -82,7 +82,7 @@
                 },
                 "angleDeg": {
                   "kind": "integer",
-                  "value": "130"
+                  "value": "270"
                 },
                 "turn": "CCW"
               },
@@ -124,7 +124,7 @@
                 },
                 "angleDeg": {
                   "kind": "integer",
-                  "value": "280"
+                  "value": "120"
                 },
                 "turn": "CCW"
               },
@@ -292,7 +292,8 @@
                 "C"
               ],
               "value": 30,
-              "factRole": "GIVEN"
+              "factRole": "GIVEN",
+              "style": "ARC"
             },
             {
               "id": "A80",
@@ -304,7 +305,8 @@
               "value": 80,
               "label": "x",
               "factRole": "CONCLUSION",
-              "labelPlacement": "LEADER"
+              "labelPlacement": "LEADER",
+              "style": "ARC"
             },
             {
               "id": "C70",
@@ -314,7 +316,8 @@
                 "B"
               ],
               "value": 70,
-              "factRole": "DERIVED_INTERMEDIATE"
+              "factRole": "DERIVED_INTERMEDIATE",
+              "style": "ARC"
             }
           ]
         },
@@ -349,6 +352,30 @@
             "refs": [
               "O",
               "E",
+              "A"
+            ]
+          },
+          {
+            "id": "tangent-D",
+            "refs": [
+              "O",
+              "D",
+              "B"
+            ]
+          },
+          {
+            "id": "tangent-E",
+            "refs": [
+              "O",
+              "E",
+              "C"
+            ]
+          },
+          {
+            "id": "tangent-F",
+            "refs": [
+              "O",
+              "F",
               "A"
             ]
           }
@@ -436,7 +463,7 @@
                 },
                 "angleDeg": {
                   "kind": "integer",
-                  "value": "130"
+                  "value": "270"
                 },
                 "turn": "CCW"
               },
@@ -478,7 +505,7 @@
                 },
                 "angleDeg": {
                   "kind": "integer",
-                  "value": "280"
+                  "value": "120"
                 },
                 "turn": "CCW"
               },
@@ -537,7 +564,8 @@
                 "D"
               ],
               "value": 55,
-              "factRole": "GIVEN"
+              "factRole": "GIVEN",
+              "style": "ARC"
             },
             {
               "id": "O110",
@@ -547,7 +575,8 @@
                 "E"
               ],
               "value": 110,
-              "factRole": "DERIVED_INTERMEDIATE"
+              "factRole": "DERIVED_INTERMEDIATE",
+              "style": "ARC"
             }
           ],
           "arcs": [
@@ -597,5 +626,6 @@
   ],
   "newVisualInformation": [
     "접선과 원주각, 중심각 관계를 구별하고 점·각 표기에 여유를 둔다."
-  ]
+  ],
+  "accessibilityDescription": "매산중 9번 해설에 필요한 원·도형과 관계를 표시한다."
 }

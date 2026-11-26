@@ -122,7 +122,7 @@
                 },
                 "angleDeg": {
                   "kind": "integer",
-                  "value": "90"
+                  "value": "80"
                 },
                 "turn": "CCW"
               },
@@ -167,25 +167,28 @@
         "planeMarks": {
           "angles": [
             {
-              "id": "A45",
+              "id": "A40",
               "refs": [
                 "C",
                 "A",
                 "B"
               ],
-              "value": 45,
-              "factRole": "GIVEN"
+              "value": 40,
+              "factRole": "GIVEN",
+              "style": "ARC",
+              "label": "40"
             },
             {
-              "id": "B45",
+              "id": "B50",
               "refs": [
                 "A",
                 "B",
                 "C"
               ],
-              "value": 45,
-              "label": "x",
-              "factRole": "CONCLUSION"
+              "value": 50,
+              "label": "50",
+              "factRole": "CONCLUSION",
+              "style": "ARC"
             }
           ]
         },
@@ -842,7 +845,7 @@
       }
     }
   ],
-  "caption": "두 소문항의 원과 선분 관계를 구분하고 색칠한 영역을 지름이 CG인 원과 비교한다.",
+  "caption": "지름 AB에서 원주각 40°와 나머지 각 50°를 확인하고, 두 번째 패널은 세 반원 사이의 색칠 영역을 비교한다.",
   "sourceConditions": [
     {
       "id": "c1",
@@ -855,5 +858,6 @@
   ],
   "newVisualInformation": [
     "두 소문항의 그림을 분리해 판독한다."
-  ]
+  ],
+  "accessibilityDescription": "매산중 21번 해설에 필요한 원·도형과 관계를 표시한다."
 }

@@ -297,7 +297,36 @@
           "D"
         ],
         "value": 90,
-        "factRole": "GIVEN"
+        "factRole": "GIVEN",
+        "style": "ARC"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "BC-6",
+        "from": "B",
+        "to": "C",
+        "label": "6",
+        "side": "BELOW"
+      },
+      {
+        "id": "CD-4",
+        "from": "C",
+        "to": "D",
+        "label": "4",
+        "side": "RIGHT"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "AB-x",
+        "ownerSegment": "AB",
+        "text": "x"
+      },
+      {
+        "id": "AD-y",
+        "ownerSegment": "DA",
+        "text": "y"
       }
     ]
   },
@@ -317,5 +346,16 @@
   ],
   "newVisualInformation": [
     "수직인 대각선과 외접사각형의 네 변을 구별한다. 원의 중심 O와 교점 P는 같은 점으로 가정하지 않는다."
+  ],
+  "accessibilityDescription": "동산중 8번 해설에 필요한 원·도형과 관계를 표시한다.",
+  "rightAngles": [
+    {
+      "id": "rP",
+      "refs": [
+        "A",
+        "P",
+        "B"
+      ]
+    }
   ]
 }

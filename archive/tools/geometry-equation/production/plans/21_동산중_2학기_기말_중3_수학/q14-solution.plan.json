@@ -241,7 +241,8 @@
           "C"
         ],
         "value": 100,
-        "factRole": "GIVEN"
+        "factRole": "GIVEN",
+        "style": "ARC"
       },
       {
         "id": "O50",
@@ -251,7 +252,19 @@
           "D"
         ],
         "value": 50,
-        "factRole": "GIVEN"
+        "factRole": "GIVEN",
+        "style": "ARC"
+      },
+      {
+        "id": "E-asked",
+        "refs": [
+          "A",
+          "E",
+          "D"
+        ],
+        "value": 105,
+        "label": "105",
+        "style": "ARC"
       }
     ]
   },
@@ -271,5 +284,6 @@
   ],
   "newVisualInformation": [
     "호 AED와 E를 포함하지 않는 호 AD를 구별하고 각 라벨을 충분히 띄운다."
-  ]
+  ],
+  "accessibilityDescription": "동산중 14번 해설에 필요한 원·도형과 관계를 표시한다."
 }

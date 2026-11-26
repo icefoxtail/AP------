@@ -195,7 +195,8 @@
           "C"
         ],
         "value": 20,
-        "factRole": "GIVEN"
+        "factRole": "GIVEN",
+        "style": "ARC"
       },
       {
         "id": "A20",
@@ -205,7 +206,40 @@
           "B"
         ],
         "value": 20,
-        "factRole": "DERIVED_INTERMEDIATE"
+        "factRole": "DERIVED_INTERMEDIATE",
+        "style": "ARC"
+      }
+    ],
+    "parallels": [
+      {
+        "id": "ABCD-parallel",
+        "count": 1,
+        "segments": [
+          "AB",
+          "CD"
+        ]
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcDB-3pi",
+        "circle": "circ",
+        "center": "O",
+        "from": "D",
+        "to": "B",
+        "side": "MINOR",
+        "label": "3pi",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "arcCD-unknown",
+        "circle": "circ",
+        "center": "O",
+        "from": "C",
+        "to": "D",
+        "side": "MINOR",
+        "label": "x",
+        "labelKind": "MATH"
       }
     ]
   },
@@ -225,5 +259,6 @@
   ],
   "newVisualInformation": [
     "평행한 선분과 대응 호의 비를 구별한다."
-  ]
+  ],
+  "accessibilityDescription": "동산중 4번 해설에 필요한 원·도형과 관계를 표시한다."
 }

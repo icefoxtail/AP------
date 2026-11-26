@@ -251,17 +251,27 @@
           "O"
         ],
         "value": 90,
-        "factRole": "GIVEN"
+        "factRole": "GIVEN",
+        "style": "ARC"
       }
     ],
     "equalLengths": [
       {
-        "id": "OHHC",
+        "id": "OHHC-given",
         "count": 1,
         "segments": [
           "OH",
           "HC"
         ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "AB-12",
+        "from": "A",
+        "to": "B",
+        "label": "12",
+        "side": "BELOW"
       }
     ]
   },
@@ -281,5 +291,16 @@
   ],
   "newVisualInformation": [
     "중점 H와 직각삼각형 OHA의 r, r/2, 6을 구별한다."
+  ],
+  "accessibilityDescription": "동산중 3번 해설에 필요한 원·도형과 관계를 표시한다.",
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "O",
+        "H",
+        "A"
+      ]
+    }
   ]
 }

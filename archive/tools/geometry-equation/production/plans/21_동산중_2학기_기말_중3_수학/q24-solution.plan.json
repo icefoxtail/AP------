@@ -266,7 +266,8 @@
           "D"
         ],
         "value": 30,
-        "factRole": "GIVEN"
+        "factRole": "GIVEN",
+        "style": "ARC"
       },
       {
         "id": "Q60",
@@ -276,7 +277,30 @@
           "C"
         ],
         "value": 60,
-        "factRole": "GIVEN"
+        "factRole": "GIVEN",
+        "style": "ARC"
+      },
+      {
+        "id": "C-x",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 15,
+        "label": "15",
+        "style": "ARC"
+      },
+      {
+        "id": "B-y",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 45,
+        "label": "45",
+        "style": "ARC"
       }
     ]
   },
@@ -300,5 +324,6 @@
   "hiddenPointNames": [
     "O"
   ],
-  "hiddenPointStyle": "NONE"
+  "hiddenPointStyle": "NONE",
+  "accessibilityDescription": "동산중 24번 해설에 필요한 원·도형과 관계를 표시한다."
 }

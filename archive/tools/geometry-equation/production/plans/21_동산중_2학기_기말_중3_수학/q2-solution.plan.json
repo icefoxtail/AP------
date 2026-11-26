@@ -233,38 +233,31 @@
     }
   ],
   "planeMarks": {
-    "angles": [
-      {
-        "id": "M90",
-        "refs": [
-          "A",
-          "M",
-          "O"
-        ],
-        "value": 90,
-        "factRole": "GIVEN"
-      },
-      {
-        "id": "N90",
-        "refs": [
-          "A",
-          "N",
-          "O"
-        ],
-        "value": 90,
-        "factRole": "GIVEN"
-      }
-    ],
+    "angles": [],
     "equalLengths": [
       {
-        "id": "midpoints",
-        "count": 2,
+        "id": "OMON-given",
+        "count": 1,
         "segments": [
-          "AM",
-          "MB",
-          "AN",
-          "NC"
+          "OM",
+          "ON"
         ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "AB-9",
+        "from": "A",
+        "to": "B",
+        "label": "9",
+        "side": "LEFT"
+      },
+      {
+        "id": "BC-6",
+        "from": "B",
+        "to": "C",
+        "label": "6",
+        "side": "BELOW"
       }
     ]
   },
@@ -284,5 +277,24 @@
   ],
   "newVisualInformation": [
     "같은 현의 중점과 중점연결선의 길이를 구별한다."
+  ],
+  "accessibilityDescription": "동산중 2번 해설에 필요한 원·도형과 관계를 표시한다.",
+  "rightAngles": [
+    {
+      "id": "rM",
+      "refs": [
+        "A",
+        "M",
+        "O"
+      ]
+    },
+    {
+      "id": "rN",
+      "refs": [
+        "A",
+        "N",
+        "O"
+      ]
+    }
   ]
 }
