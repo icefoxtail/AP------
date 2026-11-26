@@ -1,0 +1,56 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"rational","numerator":"8","denominator":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"10"},{"kind":"expression","op":"add","args":[{"kind":"rational","numerator":"8","denominator":"5"},{"kind":"expression","op":"div","args":[{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"10"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]},{"kind":"integer","value":"3"}]}]}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"10"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"10"},{"kind":"rational","numerator":"8","denominator":"5"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"F","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"rational","numerator":"18","denominator":"5"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints":["A","B","C","D","E","F"],
+  "hiddenPointNames":["A","B","C","D","E","F"],
+  "hiddenPointStyle":"NONE",
+  "displayLines":[],
+  "displayCircles":[],
+  "displaySegments":[
+    {"id":"sAE","refs":["A","E"]},
+    {"id":"sEC","refs":["E","C"]},
+    {"id":"sCD","refs":["C","D"]},
+    {"id":"sDB","refs":["D","B"]},
+    {"id":"sAD","refs":["A","D"],"dashed":true},
+    {"id":"sAB","refs":["A","B"]},
+    {"id":"sAF","refs":["A","F"],"dashed":true}
+  ],
+  "rightAngles":[{"id":"tree90","refs":["A","D","B"]}],
+  "planeMarks":{
+    "angles":[
+      {"id":"upAngle","refs":["D","A","B"],"value":30,"label":"30","style":"ARC","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"measuredAngle","refs":["F","A","B"],"value":60,"label":"60","style":"ARC","factRole":"GIVEN"}
+    ],
+    "dimensions":[
+      {"id":"groundDistance","from":"E","to":"C","label":"10","unit":"m","side":"BELOW","style":"BAR","factRole":"GIVEN"},
+      {"id":"eyeHeight","from":"E","to":"A","label":"1.6","unit":"m","side":"LEFT","style":"BAR","factRole":"GIVEN"},
+      {"id":"treeHeight","from":"C","to":"B","label":"H","unit":"m","side":"RIGHT","style":"BAR","offset":2,"factRole":"DERIVED_INTERMEDIATE"}
+    ],
+    "expressionLabels":[{"id":"heightAboveEye","ownerSegment":"sDB","text":"H-1.6","factRole":"DERIVED_INTERMEDIATE"}]
+  },
+  "coordinateCanvas":{"width":650,"height":470},
+  "caption":"눈높이 1.6m에서 10m 떨어진 나무를 보는 각은 수평에서 30도이며, 나무 높이는 H로 둔다.",
+  "accessibilityDescription":"흰 바탕 위에 측정자의 눈높이, 10m 수평거리, 나무의 수직 높이 H가 있다. 시선과 수평선은 30도, 시선과 수직 보조선은 60도를 이루며, 나무와 수평선이 만나는 지점은 직각이다.",
+  "sourceQuote":"측정자와 나무 사이의 거리는",
+  "sourceConditions":[
+    {"id":"dist","condition":"측정자와 나무 사이 지면 거리는 10m이고 눈높이는 1.6m이다.","mappedTo":["sEC","sAE","groundDistance","eyeHeight"]},
+    {"id":"angles","condition":"원본 클리노미터의 실과 시선은 60도이며, 시선과 수평선의 올려본각은 30도이다.","mappedTo":["sAF","sAD","sAB","measuredAngle","upAngle"]},
+    {"id":"height","condition":"나무 높이 H는 미지수이며, 눈높이보다 높은 수직 부분은 H-1.6이다. 밑변·높이의 직각 관계를 그린다.","mappedTo":["sCD","sDB","tree90","treeHeight","heightAboveEye"]}
+  ],
+  "newVisualInformation":[
+    "기존 해설 SVG에서 이유 없이 칠한 삼각형 면 채움을 없애 학생용 흰 배경을 유지한다.",
+    "원본 사진의 60도 측정각과 풀이에서 얻는 30도 올려본각을 별도 각 호로, 10m와 1.6m를 정식 치수선으로 그린다.",
+    "H는 미지 높이이므로 숫자 답을 그림에 써서 풀이를 생략하지 않는다."
+  ]
+}
