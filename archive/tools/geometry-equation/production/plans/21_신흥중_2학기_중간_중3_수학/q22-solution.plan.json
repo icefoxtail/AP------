@@ -1,0 +1,310 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "M",
+    "N"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "C",
+        "N"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "N",
+        "D"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "D",
+        "M"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "M",
+        "A"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "B",
+        "M"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "B",
+        "N"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "B",
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "right1",
+      "refs": [
+        "B",
+        "C",
+        "N"
+      ]
+    },
+    {
+      "id": "right2",
+      "refs": [
+        "M",
+        "D",
+        "N"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "length0",
+        "ownerSegment": "s0",
+        "text": "4"
+      },
+      {
+        "id": "length1",
+        "ownerSegment": "s1",
+        "text": "4"
+      },
+      {
+        "id": "length2",
+        "ownerSegment": "s2",
+        "text": "2"
+      },
+      {
+        "id": "length3",
+        "ownerSegment": "s3",
+        "text": "2"
+      },
+      {
+        "id": "length4",
+        "ownerSegment": "s4",
+        "text": "2"
+      },
+      {
+        "id": "length5",
+        "ownerSegment": "s5",
+        "text": "2"
+      },
+      {
+        "id": "length6",
+        "ownerSegment": "s6",
+        "text": "2√5"
+      },
+      {
+        "id": "length7",
+        "ownerSegment": "s7",
+        "text": "2√5"
+      }
+    ],
+    "angles": [
+      {
+        "id": "angle0",
+        "refs": [
+          "M",
+          "B",
+          "N"
+        ],
+        "value": 36.869898,
+        "label": "x",
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "midpoints",
+        "segments": [
+          "s2",
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "count": 1
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "BM=BN=2√5와 중점 길이2, ∠MBN=x, 기존 회색·파랑 색면 제거",
+  "accessibilityDescription": "BM=BN=2√5와 중점 길이2, ∠MBN=x, 기존 회색·파랑 색면 제거",
+  "sourceQuote": "【서술형 2】 한 변의 길이가 $4$인 정사각형 $\\mathrm{ABCD}$의 두 변 $\\mathrm{AD}, \\mathrm{CD}$의 중점을 각각 $\\mathrm{M}, \\mathrm{N}$이라 하고 $\\angle \\mathrm{MBN} = x^\\circ$라 할 때, $\\sin x^\\circ$의 값을 구하시오. (7점)",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "BM=BN=2√5와 중점 길이2, ∠MBN=x, 기존 회색·파랑 색면 제거",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "BM=BN=2√5와 중점 길이2, ∠MBN=x, 기존 회색·파랑 색면 제거"
+  ]
+}

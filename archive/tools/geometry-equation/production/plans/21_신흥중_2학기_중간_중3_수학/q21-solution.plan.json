@@ -1,0 +1,158 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "100"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "100"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1349",
+              "denominator": "20"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "H",
+    "A"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "H",
+        "A"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "B",
+        "A"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "B",
+        "H",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "length0",
+        "ownerSegment": "s0",
+        "text": "100"
+      },
+      {
+        "id": "length1",
+        "ownerSegment": "s1",
+        "text": "67.45"
+      }
+    ],
+    "angles": [
+      {
+        "id": "angle0",
+        "refs": [
+          "A",
+          "B",
+          "H"
+        ],
+        "value": 34,
+        "label": "34",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "tan34°≈0.6745를 이용한 탑 높이 67.45m; 직각 수선",
+  "accessibilityDescription": "tan34°≈0.6745를 이용한 탑 높이 67.45m; 직각 수선",
+  "sourceQuote": "【서술형 1】 다음 그림과 같은 탑의 높이를 알아보기 위하여 탑으로부터 $100\\,\\text{m}$ 떨어진 지점에서 탑의 꼭대기를 올려다본 각이 $34^\\circ$일 때, 탑의 높이를 구하시오. (5점) (단, $\\sin 34^\\circ = 0.5592$, $\\cos 34^\\circ = 0.8290$, $\\tan 34^\\circ = 0.6745$로 계산한다.)",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "tan34°≈0.6745를 이용한 탑 높이 67.45m; 직각 수선",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "tan34°≈0.6745를 이용한 탑 높이 67.45m; 직각 수선"
+  ]
+}

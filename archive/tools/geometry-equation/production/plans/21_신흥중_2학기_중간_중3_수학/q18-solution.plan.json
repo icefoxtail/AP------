@@ -1,0 +1,299 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "14320549046737",
+              "denominator": "1562500000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "14320549046737",
+              "denominator": "3125000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "14320549046737",
+              "denominator": "1562500000000"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "6873863542433759",
+              "denominator": "2500000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "21",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "semi",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "14320549046737",
+            "denominator": "3125000000000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "O",
+    "D",
+    "C",
+    "T"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "O",
+        "T"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "D",
+        "T"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "T",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "B",
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "right1",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "right2",
+      "refs": [
+        "O",
+        "T",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "length0",
+        "ownerSegment": "s0",
+        "text": "2√21"
+      },
+      {
+        "id": "length1",
+        "ownerSegment": "s1",
+        "text": "3"
+      },
+      {
+        "id": "length2",
+        "ownerSegment": "s2",
+        "text": "10"
+      },
+      {
+        "id": "length3",
+        "ownerSegment": "s3",
+        "text": "7"
+      },
+      {
+        "id": "length5",
+        "ownerSegment": "s5",
+        "text": "3"
+      },
+      {
+        "id": "length6",
+        "ownerSegment": "s6",
+        "text": "7"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arc0",
+        "circle": "semi",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "CW"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "접선길이 AD=DT=3, CT=CB=7, 수직 차4로 AB=2√21; 반원호 및 접점 직각",
+  "accessibilityDescription": "접선길이 AD=DT=3, CT=CB=7, 수직 차4로 AB=2√21; 반원호 및 접점 직각",
+  "sourceQuote": "다음 그림에서 $\\overline{\\mathrm{AD}}, \\overline{\\mathrm{CD}}, \\overline{\\mathrm{BC}}$는 반원 $\\mathrm{O}$의 접선이고, 두 점 $\\mathrm{A}, \\mathrm{B}$는 접점이다. $\\overline{\\mathrm{AD}} = 3$, $\\overline{\\mathrm{CD}} = 10$일 때, $\\overline{\\mathrm{AB}}$의 길이는?",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "접선길이 AD=DT=3, CT=CB=7, 수직 차4로 AB=2√21; 반원호 및 접점 직각",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접선길이 AD=DT=3, CT=CB=7, 수직 차4로 AB=2√21; 반원호 및 접점 직각"
+  ]
+}

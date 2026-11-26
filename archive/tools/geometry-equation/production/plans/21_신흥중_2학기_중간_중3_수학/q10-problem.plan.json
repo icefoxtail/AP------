@@ -1,0 +1,196 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7794228634059947",
+              "denominator": "500000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "54",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3117691453623979",
+              "denominator": "500000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "rightAngles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "length0",
+        "ownerSegment": "s0",
+        "text": "12"
+      },
+      {
+        "id": "length3",
+        "ownerSegment": "s3",
+        "text": "18"
+      }
+    ],
+    "angles": [
+      {
+        "id": "angle0",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 30,
+        "label": "30",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angle1",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "value": 30,
+        "label": "30",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "삼각형 ABC의 AB12·AC18·∠BAC60°, A에서 BC까지의 각이등분선 AD와 ∠BAD=∠DAC=30°",
+  "accessibilityDescription": "삼각형 ABC의 AB12·AC18·∠BAC60°, A에서 BC까지의 각이등분선 AD와 ∠BAD=∠DAC=30°",
+  "sourceQuote": "다음 그림과 같이 $\\overline{\\mathrm{AB}} = 12$, $\\overline{\\mathrm{AC}} = 18$인 $\\triangle \\mathrm{ABC}$에서 $\\angle \\mathrm{A}$의 이등분선이 $\\overline{\\mathrm{BC}}$와 만나는 점을 $\\mathrm{D}$라 하자. $\\angle \\mathrm{BAC} = 60^\\circ$일 때, $\\overline{\\mathrm{AD}}$의 길이는?",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "삼각형 ABC의 AB12·AC18·∠BAC60°, A에서 BC까지의 각이등분선 AD와 ∠BAD=∠DAC=30°",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "삼각형 ABC의 AB12·AC18·∠BAC60°, A에서 BC까지의 각이등분선 AD와 ∠BAD=∠DAC=30°"
+  ]
+}

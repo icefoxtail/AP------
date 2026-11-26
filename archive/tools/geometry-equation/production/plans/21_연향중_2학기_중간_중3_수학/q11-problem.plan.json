@@ -1,0 +1,317 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "left",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "right",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "Q"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "Q",
+    "A",
+    "B",
+    "P",
+    "T",
+    "L",
+    "R"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "left",
+    "right"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "L",
+        "R"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "P",
+        "T"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "A",
+        "T"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "T",
+        "B"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "Q",
+        "B"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "O",
+        "T"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "Q",
+        "T"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "O",
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "right1",
+      "refs": [
+        "P",
+        "B",
+        "Q"
+      ]
+    },
+    {
+      "id": "right2",
+      "refs": [
+        "O",
+        "T",
+        "P"
+      ]
+    }
+  ],
+  "pointNames": {
+    "Q": "O′"
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "서로 외접한 두 원 O·O′의 위쪽 공통접선 AB와 접점 A·B, 공통접선 PT의 접점 T, P는 A와 B 사이",
+  "accessibilityDescription": "서로 외접한 두 원 O·O′의 위쪽 공통접선 AB와 접점 A·B, 공통접선 PT의 접점 T, P는 A와 B 사이",
+  "sourceQuote": "다음 그림과 같이 $\\overleftrightarrow{\\mathrm{AB}}$와 $\\overline{\\mathrm{PT}}$는 두 원 $\\mathrm{O, O'}$의 공통인 접선이고, 세 점 $\\mathrm{A, B, T}$는 접점이다. &lt;보기&gt; 중 옳은 것을 모두 고른 것은? &lt;보기&gt; ㉠ $\\angle\\mathrm{ATB}=80^\\circ$ ㉡ $\\overline{\\mathrm{PA}}=\\overline{\\mathrm{PB}}=\\overline{\\mathrm{PT}}$ ㉢ $\\angle\\mathrm{PBT}=\\angle\\mathrm{PTB}$ ㉣ $\\angle\\mathrm{OTP}=\\angle\\mathrm{OAP}$",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "서로 외접한 두 원 O·O′의 위쪽 공통접선 AB와 접점 A·B, 공통접선 PT의 접점 T, P는 A와 B 사이",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "서로 외접한 두 원 O·O′의 위쪽 공통접선 AB와 접점 A·B, 공통접선 PT의 접점 T, P는 A와 B 사이"
+  ]
+}

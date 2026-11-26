@@ -1,0 +1,151 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1767766952966369",
+              "denominator": "1250000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1767766952966369",
+              "denominator": "1250000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "C",
+    "B"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "B",
+        "A"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "length0",
+        "ownerSegment": "s0",
+        "text": "√2a"
+      },
+      {
+        "id": "length1",
+        "ownerSegment": "s1",
+        "text": "a"
+      },
+      {
+        "id": "length2",
+        "ownerSegment": "s2",
+        "text": "√3a"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "원문 a²+b²=c²·b=√2a의 축척 삼각형: BC=a, AC=√2a, AB=√3a, ∠C 직각",
+  "accessibilityDescription": "원문 a²+b²=c²·b=√2a의 축척 삼각형: BC=a, AC=√2a, AB=√3a, ∠C 직각",
+  "sourceQuote": "$\\triangle\\mathrm{ABC}$에 대하여 세 변 $\\overline{\\mathrm{AB}}$, $\\overline{\\mathrm{BC}}$, $\\overline{\\mathrm{AC}}$의 길이가 각각 $c$, $a$, $b$일 때, $a^2+b^2=c^2$, $b=\\sqrt{2}a$인 관계가 성립한다. $\\cos B \\times \\sin B$의 값은?",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "원문 a²+b²=c²·b=√2a의 축척 삼각형: BC=a, AC=√2a, AB=√3a, ∠C 직각",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 a²+b²=c²·b=√2a의 축척 삼각형: BC=a, AC=√2a, AB=√3a, ∠C 직각"
+  ]
+}

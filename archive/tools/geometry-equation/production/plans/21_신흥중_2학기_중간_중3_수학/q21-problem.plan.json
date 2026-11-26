@@ -1,0 +1,154 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "100"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "100"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1349",
+              "denominator": "20"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "H",
+    "A"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "H",
+        "A"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "B",
+        "A"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "B",
+        "H",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "length0",
+        "ownerSegment": "s0",
+        "text": "100"
+      }
+    ],
+    "angles": [
+      {
+        "id": "angle0",
+        "refs": [
+          "A",
+          "B",
+          "H"
+        ],
+        "value": 34,
+        "label": "34",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "높이를 재는 원본 송전탑·지면 선 도형: 100m 수평 거리, 34° 고도각, 탑 수직 AH",
+  "accessibilityDescription": "높이를 재는 원본 송전탑·지면 선 도형: 100m 수평 거리, 34° 고도각, 탑 수직 AH",
+  "sourceQuote": "【서술형 1】 다음 그림과 같은 탑의 높이를 알아보기 위하여 탑으로부터 $100\\,\\text{m}$ 떨어진 지점에서 탑의 꼭대기를 올려다본 각이 $34^\\circ$일 때, 탑의 높이를 구하시오. (5점) (단, $\\sin 34^\\circ = 0.5592$, $\\cos 34^\\circ = 0.8290$, $\\tan 34^\\circ = 0.6745$로 계산한다.)",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "높이를 재는 원본 송전탑·지면 선 도형: 100m 수평 거리, 34° 고도각, 탑 수직 AH",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "높이를 재는 원본 송전탑·지면 선 도형: 100m 수평 거리, 34° 고도각, 탑 수직 AH",
+    "ENGINE_CAPABILITY_PENDING: 원본 송전탑 복잡 철골·절연체·지면 풍경의 에셋 합성/경로 패턴 기능이 필요하다. 원본 s01.png 유지."
+  ]
+}

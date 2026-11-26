@@ -1,0 +1,257 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-4330127018922193",
+              "denominator": "1250000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4330127018922193",
+              "denominator": "1250000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "outer",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "fold",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "K"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "K",
+    "M"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "outer"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "O",
+        "K"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "O",
+        "M"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "A",
+        "M",
+        "O"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "length0",
+        "ownerSegment": "s0",
+        "text": "4√3"
+      },
+      {
+        "id": "length1",
+        "ownerSegment": "s1",
+        "text": "4"
+      },
+      {
+        "id": "length2",
+        "ownerSegment": "s2",
+        "text": "4"
+      },
+      {
+        "id": "length3",
+        "ownerSegment": "s3",
+        "text": "4"
+      },
+      {
+        "id": "length4",
+        "ownerSegment": "s4",
+        "text": "2"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arc0",
+        "circle": "fold",
+        "center": "K",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "접힌 원호의 대칭 중심 K, 현 중점 M, OM=2와 반현 2√3, AB=4√3; 접힌 호 점선",
+  "accessibilityDescription": "접힌 원호의 대칭 중심 K, 현 중점 M, OM=2와 반현 2√3, AB=4√3; 접힌 호 점선",
+  "sourceQuote": "다음 그림과 같이 반지름의 길이가 $4\\,\\text{cm}$인 원 $\\mathrm{O}$에서 $\\overline{\\mathrm{AB}}$를 접는 선으로 하여 짧은 호 $\\mathrm{AB}$가 원의 중심 $\\mathrm{O}$를 지나도록 접었을 때, $\\overline{\\mathrm{AB}}$의 길이는?",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "접힌 원호의 대칭 중심 K, 현 중점 M, OM=2와 반현 2√3, AB=4√3; 접힌 호 점선",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접힌 원호의 대칭 중심 K, 현 중점 M, OM=2와 반현 2√3, AB=4√3; 접힌 호 점선"
+  ]
+}

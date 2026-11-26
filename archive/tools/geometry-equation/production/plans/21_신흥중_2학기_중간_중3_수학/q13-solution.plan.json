@@ -1,0 +1,242 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "M",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "M",
+        "C"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "A",
+        "M",
+        "O"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "length0",
+        "ownerSegment": "s0",
+        "text": "4"
+      },
+      {
+        "id": "length1",
+        "ownerSegment": "s1",
+        "text": "4"
+      },
+      {
+        "id": "length2",
+        "ownerSegment": "s2",
+        "text": "3"
+      },
+      {
+        "id": "length3",
+        "ownerSegment": "s3",
+        "text": "2"
+      },
+      {
+        "id": "length4",
+        "ownerSegment": "s4",
+        "text": "5"
+      },
+      {
+        "id": "length5",
+        "ownerSegment": "s5",
+        "text": "5"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "OM=r−2=3, AM=MB=4, 반지름 OB=OC=5와 M 직각(기존 길이용 색선 제거)",
+  "accessibilityDescription": "OM=r−2=3, AM=MB=4, 반지름 OB=OC=5와 M 직각(기존 길이용 색선 제거)",
+  "sourceQuote": "다음 그림에서 $\\overline{\\mathrm{AB}} \\perp \\overline{\\mathrm{OM}}$이고 $\\overline{\\mathrm{AB}} = 8\\,\\text{cm}$, $\\overline{\\mathrm{MC}} = 2\\,\\text{cm}$일 때, 원 $\\mathrm{O}$의 넓이는?",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "OM=r−2=3, AM=MB=4, 반지름 OB=OC=5와 M 직각(기존 길이용 색선 제거)",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "OM=r−2=3, AM=MB=4, 반지름 OB=OC=5와 M 직각(기존 길이용 색선 제거)"
+  ]
+}

@@ -1,0 +1,339 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-14"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-184877493221863",
+              "denominator": "31250000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-11"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-14"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-4878787878787879",
+              "denominator": "500000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-5019704058387553",
+              "denominator": "500000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-4613636363636363",
+              "denominator": "500000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-3025268070903213",
+              "denominator": "1250000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-7840909090909091",
+              "denominator": "1250000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-3226952608963427",
+              "denominator": "500000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "184877493221863",
+            "denominator": "31250000000000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "C",
+    "A",
+    "B",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "P",
+        "E"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "s8",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "s9",
+      "refs": [
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "P",
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "right1",
+      "refs": [
+        "P",
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "right2",
+      "refs": [
+        "C",
+        "D",
+        "O"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "length0",
+        "ownerSegment": "s0",
+        "text": "11"
+      },
+      {
+        "id": "length1",
+        "ownerSegment": "s1",
+        "text": "3"
+      },
+      {
+        "id": "length2",
+        "ownerSegment": "s2",
+        "text": "9"
+      },
+      {
+        "id": "length3",
+        "ownerSegment": "s3",
+        "text": "5"
+      },
+      {
+        "id": "length4",
+        "ownerSegment": "s4",
+        "text": "3"
+      },
+      {
+        "id": "length5",
+        "ownerSegment": "s5",
+        "text": "5"
+      },
+      {
+        "id": "length6",
+        "ownerSegment": "s6",
+        "text": "8"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "접선구간 PA=PB=14, CD=CA=3, DE=EB=5, PE=9의 위치·비례를 보존",
+  "accessibilityDescription": "접선구간 PA=PB=14, CD=CA=3, DE=EB=5, PE=9의 위치·비례를 보존",
+  "sourceQuote": "다음 그림에서 $\\overline{\\mathrm{PA}}, \\overline{\\mathrm{PB}}, \\overline{\\mathrm{CE}}$는 원 $\\mathrm{O}$의 접선이고, 세 점 $\\mathrm{A}, \\mathrm{B}, \\mathrm{D}$는 접점이다. $\\overline{\\mathrm{AC}} = 3$, $\\overline{\\mathrm{CE}} = 8$, $\\overline{\\mathrm{PC}} = 11$일 때, $\\overline{\\mathrm{PE}}$의 길이는?",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "접선구간 PA=PB=14, CD=CA=3, DE=EB=5, PE=9의 위치·비례를 보존",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접선구간 PA=PB=14, CD=CA=3, DE=EB=5, PE=9의 위치·비례를 보존"
+  ]
+}
