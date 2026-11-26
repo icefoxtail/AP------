@@ -1,0 +1,305 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "270"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "174"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "103"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lOT",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "tT",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "T",
+          "lOT"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lAB",
+          "tT"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 630,
+    "height": 490
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "T",
+    "A",
+    "B"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPT",
+      "refs": [
+        "P",
+        "T"
+      ]
+    },
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sTA",
+      "refs": [
+        "T",
+        "A"
+      ]
+    },
+    {
+      "id": "sTB",
+      "refs": [
+        "T",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "len0",
+        "ownerSegment": "sPT",
+        "text": "8"
+      },
+      {
+        "id": "len1",
+        "ownerSegment": "sTA",
+        "text": "6"
+      },
+      {
+        "id": "len2",
+        "ownerSegment": "sTB",
+        "text": "8"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aT",
+        "refs": [
+          "P",
+          "T",
+          "A"
+        ],
+        "value": 48.19,
+        "noLabel": true,
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "aB",
+        "refs": [
+          "P",
+          "B",
+          "T"
+        ],
+        "value": 48.19,
+        "noLabel": true,
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rt",
+      "refs": [
+        "O",
+        "T",
+        "P"
+      ]
+    }
+  ],
+  "caption": "접선 PT와 접점 T, P-A-B 일직선, PT=8,TA=6,TB=8을 모두 도형선·길이 라벨로 표현한다.",
+  "sourceQuote": "PT가 원의 접선이고 T가 접점, PT=8,TA=6,TB=8일 때 현 AB의 길이",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "PT는 원의 T접선, P,A,B는 동일 할선 위에 있다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "rightAngles"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "PT=8, TA=6, TB=8",
+      "mappedTo": [
+        "planeMarks.expressionLabels"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 접선 PT 및 길이 8 두 개와 6 하나의 지시 표식을 빠뜨리지 않고 기하적으로 근접 배치한다.",
+    "도식 축척은 원문처럼 개략도이며 실측값 검증 기능은 ENGINE_CAPABILITY_PENDING: EXACT_TANGENT_CHORD_METRIC_CONSTRAINTS.",
+    "ENGINE_CAPABILITY_PENDING: TRANSPARENT_CANVAS_OR_NO_BACKGROUND_RECT"
+  ]
+}
