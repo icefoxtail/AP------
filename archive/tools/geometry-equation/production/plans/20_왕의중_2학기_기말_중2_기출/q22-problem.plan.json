@@ -1,0 +1,100 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            6.8,
+            -2.4
+          ],
+          [
+            3.6,
+            -4.8
+          ]
+        ]
+      },
+      "height": 6,
+      "apex": [
+        2,
+        -3
+      ],
+      "names": "BDCA"
+    },
+    {
+      "id": "s2",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            13.6,
+            -4.8
+          ],
+          [
+            7.2,
+            -9.6
+          ]
+        ]
+      },
+      "height": 12,
+      "apex": [
+        4,
+        -6
+      ],
+      "names": "FHGE"
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "edge": "AB",
+      "label": "x"
+    },
+    {
+      "solid": "s1",
+      "edge": "BC",
+      "label": "6"
+    },
+    {
+      "solid": "s1",
+      "edge": "CD",
+      "label": "4"
+    },
+    {
+      "solid": "s2",
+      "edge": "EF",
+      "label": "14"
+    },
+    {
+      "solid": "s2",
+      "edge": "FG",
+      "label": "12"
+    },
+    {
+      "solid": "s2",
+      "edge": "GH",
+      "label": "y"
+    }
+  ],
+  "caption": "20년 왕의중 기말 22번: 닮은 두 삼각뿔과 주어진 모서리 길이",
+  "sourceConditions": [
+    "AB=x cm, BC=6 cm, CD=4 cm, EF=14 cm, FG=12 cm, GH=y cm",
+    "두 삼각뿔은 서로 닮음"
+  ],
+  "newVisualInformation": [
+    "원본의 작은 삼각뿔과 큰 삼각뿔을 동시에 표시하고 점 이름 및 여섯 변의 값을 유지"
+  ]
+}
