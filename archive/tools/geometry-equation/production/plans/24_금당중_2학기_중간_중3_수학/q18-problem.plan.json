@@ -1,0 +1,28 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"12"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"15"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"15"},{"kind":"integer","value":"12"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"10"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"F","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"12"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"G","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"I","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"150","denominator":"13"},{"kind":"rational","numerator":"48","denominator":"13"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"cO","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"6"}},"outputType":"CIRCLE","factRole":"GIVEN"}
+  ]},
+  "axisTickValues":{"x":[],"y":[]},"displayLines":[],"displayCircles":["cO"],
+  "displayPoints":["A","B","C","D","E","F","G","H","I","O"],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sDA","refs":["D","A"]},{"id":"sDE","refs":["D","E"]}],
+  "rightAngles":[{"id":"rC","refs":["B","C","D"]}],
+  "planeMarks":{"dimensions":[
+    {"id":"dDC","from":"D","to":"C","label":"12","unit":"cm","side":"RIGHT","style":"BRACE","factRole":"GIVEN"}
+  ],"expressionLabels":[{"id":"tDE","ownerSegment":"sDE","text":"13","unit":"cm","factRole":"GIVEN"}]},
+  "coordinateCanvas":{"width":720,"height":560},
+  "caption":"직사각형 ABCD의 세 변과 DE에 접하는 원, 네 접점 F·G·H·I 및 원본 길이 DC=12 cm, DE=13 cm을 표시한다.",
+  "sourceQuote":"DE가 원 O의 접선이고 DC=12 cm, DE=13 cm일 때 BE의 길이는?",
+  "sourceConditions":[{"id":"c1","condition":"사각형 ABCD는 직사각형이고 원 O는 AB,AD,BC에 접한다","mappedTo":["A","B","C","D","cO","F","G","H"]},{"id":"c2","condition":"DE는 I에서 원의 접선, DC=12cm, DE=13cm","mappedTo":["sDE","I","dDC","tDE"]}],
+  "newVisualInformation":["기존 해설에서 빠진 DE=13cm를 선분에 붙여 복원하고 원·직사각형·접선을 원본 비율로 맞춘다."]
+}

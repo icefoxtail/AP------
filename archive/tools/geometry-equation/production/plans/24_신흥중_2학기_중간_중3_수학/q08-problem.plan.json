@@ -1,0 +1,22 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"9"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"9"},{"kind":"rational","numerator":"5196152","denominator":"1000000"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "axisTickValues":{"x":[],"y":[]}, "displayLines":[], "displayCircles":[],
+  "displayPoints":["A","B","C","E"],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sAC","refs":["A","C"]},{"id":"sAE","refs":["A","E"]},{"id":"sBE","refs":["B","E"]},{"id":"sEC","refs":["E","C"]}],
+  "rightAngles":[{"id":"rC","refs":["E","C","A"]}],
+  "planeMarks":{"angles":[
+    {"id":"aB","refs":["E","B","A"],"value":30,"label":"30","arcs":1,"style":"ARC","factRole":"GIVEN"},
+    {"id":"aE","refs":["C","E","A"],"value":60,"label":"60","arcs":1,"style":"ARC","factRole":"GIVEN"}
+  ],"dimensions":[{"id":"dBE","from":"B","to":"E","label":"6","side":"BELOW","style":"BRACE","factRole":"GIVEN"}],"expressionLabels":[{"id":"tEC","ownerSegment":"sEC","text":"x","factRole":"GIVEN"}]},
+  "coordinateCanvas":{"width":640,"height":440},
+  "caption":"BC 위의 E에서 그은 선분 AE와 두 특수각, BE=6 및 EC=x를 표시한다.",
+  "sourceQuote":"각 ABC=30°, 각 AEC=60°이고 BE=6일 때 x의 값",
+  "sourceConditions":[{"id":"c1","condition":"B,E,C는 일직선상, A에서 C로 수선","mappedTo":["B","E","C","A","rC"]},{"id":"c2","condition":"각 B=30도, 각 AEC=60도, BE=6, EC=x","mappedTo":["aB","aE","dBE","tEC"]}],
+  "newVisualInformation":["원본의 6 지시선과 x 라벨을 구분하고 내부 삼각형 색칠을 배제한다."]
+}

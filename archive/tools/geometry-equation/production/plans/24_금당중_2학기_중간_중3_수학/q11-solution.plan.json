@@ -1,0 +1,32 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"rational","numerator":"5196152","denominator":"1000000"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"rational","numerator":"953511","denominator":"1000000"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"4242641","denominator":"1000000"},{"kind":"rational","numerator":"953511","denominator":"1000000"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"F","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"2449490","denominator":"1000000"},{"kind":"rational","numerator":"953511","denominator":"1000000"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "axisTickValues":{"x":[],"y":[]},"displayLines":[],"displayCircles":[],"displayPoints":["A","B","C","D","E","F"],
+  "displaySegments":[
+    {"id":"sAD","refs":["A","D"]},{"id":"sDB","refs":["D","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sAC","refs":["A","C"]},
+    {"id":"sDF","refs":["D","F"]},{"id":"sFE","refs":["F","E"]},{"id":"sEA","refs":["E","A"]}
+  ],
+  "rightAngles":[{"id":"rB","refs":["A","B","C"]},{"id":"rD","refs":["A","D","E"]}],
+  "planeMarks":{"angles":[
+    {"id":"aC","refs":["B","C","A"],"value":60,"label":"60","arcs":1,"style":"ARC","factRole":"GIVEN"},
+    {"id":"aE","refs":["D","E","A"],"value":45,"label":"45","arcs":1,"style":"ARC","factRole":"GIVEN"}
+  ],"dimensions":[
+    {"id":"dAE","from":"A","to":"E","label":"6","unit":"cm","side":"RIGHT","style":"BRACE","crossArcs":true,"factRole":"GIVEN"}
+  ],"expressionLabels":[
+    {"id":"tAC","ownerSegment":"sAC","text":"6","unit":"cm","factRole":"GIVEN"},
+    {"id":"tAD","ownerSegment":"sAD","text":"3sqrt(2)","unit":"cm","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"tDF","ownerSegment":"sDF","text":"sqrt(6)","unit":"cm","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "coordinateCanvas":{"width":720,"height":570},
+  "caption":"AC=AE=6 cm인 두 직각삼각형이 겹치는 ADF를 보조선과 길이만으로 드러내고 면 채움은 쓰지 않는다.",
+  "sourceQuote":"두 직각삼각형 ABC, ADE가 겹친 부분 삼각형 ADF의 넓이",
+  "sourceConditions":[{"id":"c1","condition":"ABC는 B에서 직각이고 AC=6cm, 각 C=60도","mappedTo":["A","B","C","rB","aC","tAC"]},{"id":"c2","condition":"ADE는 D에서 직각이고 AE=6cm, 각 E=45도","mappedTo":["A","D","E","rD","aE","dAE"]},{"id":"c3","condition":"F는 AC와 DE의 교점, 겹친 영역은 삼각형 ADF","mappedTo":["F","sAC","sDF","sAD"]}],
+  "newVisualInformation":["기존 분리 패널의 근거 없는 주황색 삼각형 채움을 제거하면서, 원본 두 빗변의 6 cm 지시선과 겹친 삼각형의 실제 경계는 유지한다."]
+}

@@ -1,0 +1,28 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-7"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"7"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"M","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"T","op":"TRANSLATE_POINT","inputs":["M"],"args":{"dx":{"kind":"integer","value":"0"},"dy":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"cO","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"7"}},"outputType":"CIRCLE","factRole":"GIVEN"},
+    {"id":"lCD","op":"LINE_THROUGH","inputs":["M","T"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"iCD","op":"INTERSECTION","inputs":["lCD","cO"],"args":{},"outputType":"POINT_SET","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"C","op":"SELECT_POINT","inputs":["iCD"],"args":{},"outputType":"POINT","factRole":"GIVEN","branch":{"kind":"SIDE_OF_ORIENTED_LINE","refs":["A","B"],"sign":1}},
+    {"id":"D","op":"SELECT_POINT","inputs":["iCD"],"args":{},"outputType":"POINT","factRole":"GIVEN","branch":{"kind":"SIDE_OF_ORIENTED_LINE","refs":["A","B"],"sign":-1}}
+  ]},
+  "axisTickValues":{"x":[],"y":[]},"displayLines":[],"displayCircles":["cO"],
+  "displayPoints":["O","A","B","M","C","D"],
+  "displaySegments":[{"id":"sAM","refs":["A","M"]},{"id":"sMB","refs":["M","B"]},{"id":"sCM","refs":["C","M"]},{"id":"sMD","refs":["M","D"]}],
+  "rightAngles":[{"id":"rM","refs":["A","M","C"]}],
+  "planeMarks":{"dimensions":[
+    {"id":"dAM","from":"A","to":"M","label":"10","unit":"cm","side":"BELOW","style":"BRACE","offset":"AUTO","crossArcs":true,"factRole":"GIVEN"},
+    {"id":"dMB","from":"M","to":"B","label":"4","unit":"cm","side":"BELOW","style":"BRACE","offset":"AUTO","crossArcs":true,"factRole":"GIVEN"}
+  ]},
+  "coordinateCanvas":{"width":620,"height":480},
+  "caption":"원 O에서 지름 AB와 이에 수직인 현 CD가 M에서 만나며 AM=10 cm, MB=4 cm이다.",
+  "sourceQuote":"두 현 AB와 CD가 수직으로 만난다. AM=10 cm, MB=4 cm일 때 CD의 길이는?",
+  "sourceConditions":[{"id":"c1","condition":"AB는 중심 O를 지나고 CD와 M에서 수직","mappedTo":["O","A","B","C","D","M","rM"]},{"id":"c2","condition":"AM=10cm와 MB=4cm","mappedTo":["dAM","dMB"]}],
+  "newVisualInformation":["해설 도형에서 빠졌던 10cm·4cm의 실제 수치 지시선과 직각 표식을 한 프레임에 복원한다."]
+}

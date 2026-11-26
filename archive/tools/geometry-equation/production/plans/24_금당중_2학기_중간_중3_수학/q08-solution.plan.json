@@ -1,0 +1,24 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"2535898","denominator":"1000000"},{"kind":"rational","numerator":"9464102","denominator":"1000000"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"rational","numerator":"3464102","denominator":"1000000"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "axisTickValues":{"x":[],"y":[]},"displayLines":[],"displayCircles":[],
+  "displayPoints":["A","B","C","D"],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sAD","refs":["A","D"]},{"id":"sDC","refs":["D","C"]},{"id":"sCB","refs":["C","B"]},{"id":"sBD","refs":["B","D"]}],
+  "rightAngles":[{"id":"rD","refs":["B","D","A"]}],
+  "planeMarks":{"angles":[
+    {"id":"aB","refs":["C","B","A"],"value":75,"label":"75","arcs":1,"style":"ARC","factRole":"GIVEN"},
+    {"id":"aC","refs":["B","C","A"],"value":60,"label":"60","arcs":1,"style":"ARC","factRole":"GIVEN"},
+    {"id":"aA","refs":["B","A","D"],"value":45,"label":"45","arcs":1,"style":"ARC","factRole":"DERIVED_INTERMEDIATE"}
+  ],"dimensions":[{"id":"dBC","from":"B","to":"C","label":"8","unit":"cm","side":"BELOW","style":"BAR","factRole":"GIVEN"}],
+  "expressionLabels":[{"id":"tBD","ownerSegment":"sBD","text":"4sqrt(3)","unit":"cm","factRole":"DERIVED_INTERMEDIATE"}]},
+  "coordinateCanvas":{"width":680,"height":510},
+  "caption":"BC=8 cm, B=75°, C=60°인 삼각형에서 BD⊥AC를 내려 45°와 BD=4√3 cm를 표시한다.",
+  "sourceQuote":"삼각형 ABC의 BC=8cm, B=75°, C=60°일 때 AB의 길이",
+  "sourceConditions":[{"id":"c1","condition":"BC=8cm, 각 B=75도, 각 C=60도","mappedTo":["B","C","dBC","aB","aC"]},{"id":"c2","condition":"풀이에서 B에서 AC에 내린 수선 BD와 각 A=45도","mappedTo":["A","D","sBD","rD","aA","tBD"]}],
+  "newVisualInformation":["기존 해설의 불필요한 두 삼각형 색칠을 제거하며 수선과 각·길이 관계는 남긴다."]
+}

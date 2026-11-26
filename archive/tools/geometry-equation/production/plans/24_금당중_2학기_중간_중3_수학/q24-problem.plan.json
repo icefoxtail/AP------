@@ -1,0 +1,31 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"M","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"-5656854","denominator":"1000000"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"5656854","denominator":"1000000"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"-4242641","denominator":"1000000"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"4242641","denominator":"1000000"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"cOuter","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"6"}},"outputType":"CIRCLE","factRole":"GIVEN"},
+    {"id":"cInner","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"rational","numerator":"4690416","denominator":"1000000"}},"outputType":"CIRCLE","factRole":"GIVEN"}
+  ]},
+  "axisTickValues":{"x":[],"y":[]},"displayLines":[],"displayCircles":["cOuter","cInner"],
+  "displayPoints":["O","M","A","B","C","D"],
+  "displaySegments":[{"id":"sAC","refs":["A","C"]},{"id":"sCM","refs":["C","M"]},{"id":"sMD","refs":["M","D"]},{"id":"sDB","refs":["D","B"]},{"id":"sOA","refs":["O","A"]},{"id":"sOM","refs":["O","M"]}],
+  "rightAngles":[{"id":"rM","refs":["A","M","O"]}],
+  "planeMarks":{"expressionLabels":[
+    {"id":"tOA","ownerSegment":"sOA","text":"6","unit":"cm","factRole":"GIVEN"},
+    {"id":"tOM","ownerSegment":"sOM","text":"2","unit":"cm","factRole":"GIVEN"},
+    {"id":"tDB","ownerSegment":"sDB","text":"sqrt(2)","unit":"cm","factRole":"GIVEN"}
+  ],"regions":[{
+    "id":"rAnnulus","fill":"MEDIUM",
+    "shapes":[{"loop":{"start":"A","steps":[{"to":"A","arc":{"center":"O","side":"FULL"}}]}}],
+    "holes":[{"loop":{"start":"C","steps":[{"to":"C","arc":{"center":"O","side":"FULL"}}]}}]
+  }]},
+  "coordinateCanvas":{"width":660,"height":520},
+  "caption":"동심원 사이의 고리만 음영 처리하고 OA=6 cm, OM=2 cm, DB=√2 cm 및 직각을 보인다.",
+  "sourceQuote":"반지름이 서로 다른 두 동심원에서 AB⊥OM, OA=6cm, OM=2cm, DB=√2cm일 때 어두운 부분의 넓이",
+  "sourceConditions":[{"id":"c1","condition":"공통 중심 O, AB 수평·OM 수직, 외반지름 OA=6, OM=2","mappedTo":["O","A","B","M","rM","cOuter","tOA","tOM"]},{"id":"c2","condition":"DB=√2이고 내부 원과 외부 원 사이 고리만 어둡게 색칠","mappedTo":["D","B","tDB","cInner","rAnnulus"]}],
+  "newVisualInformation":["원본에만 있던 고리의 의미 있는 회색 음영을 내부 원을 뺀 복합 경계로 복원한다."]
+}

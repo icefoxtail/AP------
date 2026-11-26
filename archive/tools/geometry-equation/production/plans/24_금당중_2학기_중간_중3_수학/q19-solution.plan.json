@@ -1,0 +1,39 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-12"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"X","op":"TRANSLATE_POINT","inputs":["O"],"args":{"dx":{"kind":"integer","value":"-6"},"dy":{"kind":"integer","value":"0"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"A","op":"POLAR_POINT","inputs":["O","X"],"args":{"length":{"kind":"integer","value":"6"},"angleDeg":{"kind":"integer","value":"60"},"turn":"CW"},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"POLAR_POINT","inputs":["O","X"],"args":{"length":{"kind":"integer","value":"6"},"angleDeg":{"kind":"integer","value":"60"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"cO","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"6"}},"outputType":"CIRCLE","factRole":"GIVEN"}
+  ]},
+  "axisTickValues":{"x":[],"y":[]},"displayLines":[],"displayCircles":["cO"],"displayPoints":["P","O","A","B"],
+  "displaySegments":[
+    {"id":"sPA","refs":["P","A"]},{"id":"sPB","refs":["P","B"]},
+    {"id":"sOA","refs":["O","A"]},{"id":"sOB","refs":["O","B"]},
+    {"id":"sAB","refs":["A","B"],"dashed":true},{"id":"sPO","refs":["P","O"],"dashed":true}
+  ],
+  "rightAngles":[{"id":"rA","refs":["P","A","O"]},{"id":"rB","refs":["P","B","O"]}],
+  "planeMarks":{"angles":[
+    {"id":"aP","refs":["A","P","O"],"value":30,"label":"30","arcs":1,"style":"ARC","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"aO","refs":["A","O","B"],"value":120,"label":"120","arcs":1,"style":"ARC","factRole":"DERIVED_INTERMEDIATE"}
+  ],"dimensions":[
+    {"id":"dPA","from":"P","to":"A","label":"6sqrt(3)","unit":"cm","side":"ABOVE","style":"BRACE","crossArcs":true,"factRole":"GIVEN"}
+  ],"equalLengths":[
+    {"id":"eP","count":1,"segments":["sPA","sPB"]},
+    {"id":"eO","count":2,"segments":["sOA","sOB"]}
+  ],"expressionLabels":[{"id":"tOA","ownerSegment":"sOA","text":"6","unit":"cm","factRole":"GIVEN"}],
+  "regions":[{"id":"rShadedOutside","fill":"LIGHT","factRole":"GIVEN","shapes":[
+    {"loop":{"start":"P","steps":[{"to":"A"},{"to":"B","arc":{"center":"O","side":"MINOR"}},{"to":"P"}]}}
+  ]}]},
+  "coordinateCanvas":{"width":720,"height":540},
+  "caption":"접선 PA·PB와 원호 AB 사이 영역만 원본처럼 회색으로 칠하고, 나머지 원판은 무채움으로 둔다.",
+  "sourceQuote":"PA와 PB는 원 O의 접선, PA=6√3cm, OA=6cm; 색칠한 부분의 넓이",
+  "sourceConditions":[
+    {"id":"c1","condition":"PA=PB=6√3cm이고 OA=OB=6cm","mappedTo":["P","A","B","O","dPA","tOA","eP","eO"]},
+    {"id":"c2","condition":"PA⊥OA, PB⊥OB","mappedTo":["rA","rB"]},
+    {"id":"c3","condition":"원 밖 두 접선과 짧은 원호 AB가 둘러싼 영역만 색칠","mappedTo":["rShadedOutside","cO","sPA","sPB"]}
+  ],
+  "newVisualInformation":["기존 해설 SVG에서 완전히 빠진 원본의 의미 있는 접선 사이 원호 바깥 영역의 음영을 정확한 호 경계로 복구한다."]
+}

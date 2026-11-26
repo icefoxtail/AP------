@@ -1,0 +1,35 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"220","denominator":"27"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"21","denominator":"5"},{"kind":"rational","numerator":"28","denominator":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"11"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"33","denominator":"5"},{"kind":"rational","numerator":"44","denominator":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"F","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"6017","denominator":"925"},{"kind":"rational","numerator":"2156","denominator":"925"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"11"},{"kind":"rational","numerator":"11","denominator":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"cO","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"rational","numerator":"11","denominator":"2"}},"outputType":"CIRCLE","factRole":"GIVEN"}
+  ]},
+  "axisTickValues":{"x":[],"y":[]},"displayLines":[],"displayCircles":["cO"],"displayPoints":["A","B","C","D","E","F","O"],
+  "displaySegments":[
+    {"id":"sAB","refs":["A","B"]},{"id":"sBD","refs":["B","D"]},
+    {"id":"sAC","refs":["A","C"]},{"id":"sCE","refs":["C","E"]},
+    {"id":"sBF","refs":["B","F"]},{"id":"sFC","refs":["F","C"]}
+  ],
+  "planeMarks":{"dimensions":[
+    {"id":"dAE","from":"A","to":"E","label":"11","unit":"cm","side":"LEFT","style":"BRACE","crossArcs":true,"factRole":"GIVEN"}
+  ],"equalLengths":[
+    {"id":"eB","count":1,"segments":["sBD","sBF"]},
+    {"id":"eC","count":2,"segments":["sCE","sFC"]}
+  ]},
+  "coordinateCanvas":{"width":720,"height":570},
+  "caption":"AE=11 cm인 외접삼각형에서 D·E·F의 접점과 BD=BF, CE=CF를 표시하고 기본 면은 흰색으로 둔다.",
+  "sourceQuote":"AD, AE, BC는 원 O의 접선이고 D, E, F가 접점이며 AE=11cm일 때 △ABC의 둘레",
+  "sourceConditions":[
+    {"id":"c1","condition":"A,B,D는 한 직선 위, A,C,E는 한 직선 위, B,F,C는 한 직선 위","mappedTo":["A","B","C","D","E","F"]},
+    {"id":"c2","condition":"원 O가 AD, AE, BC에 각각 D, E, F에서 접한다","mappedTo":["O","cO","D","E","F"]},
+    {"id":"c3","condition":"AE=11cm","mappedTo":["dAE"]},
+    {"id":"c4","condition":"동일한 외부 점의 접선 길이 BD=BF, CE=CF","mappedTo":["eB","eC"]}
+  ],
+  "newVisualInformation":["기존 해설 SVG에서 빠진 문제의 11 cm 지시선을 복원하고 세 접점을 정확한 원의 접선 위에 둔다."]
+}
