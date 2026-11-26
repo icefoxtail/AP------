@@ -1,0 +1,94 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "caption": "사다리꼴 밑면이 위아래 평행변 2cm와 5cm, 높이 4cm인 기둥을 길이 10cm 방향으로 펼쳐 그린다.",
+  "accessibilityDescription": "직각 사다리꼴 밑면의 평행한 두 변 2cm, 5cm, 수직 높이 4cm와 비스듬한 변 5cm, 기둥 길이 10cm가 표시되고 숨은 모서리는 점선이다. 면 채움은 없다.",
+  "sourceQuote": "아래 그림과 같은 사각기둥의 부피를 구하면?",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "사다리꼴 밑면의 평행한 두 변은 2,5이고 수직 높이는 4이다.",
+      "mappedTo": "solids[0].base"
+    },
+    {
+      "id": "c2",
+      "condition": "오른쪽 사다리꼴의 빗변은 3-4-5 직각삼각형의 빗변이며 기둥 길이는 10이다.",
+      "mappedTo": "solids[0].height"
+    },
+    {
+      "id": "c3",
+      "condition": "밑면의 수직 변과 윗변이 만나는 직각은 그림에 존재한다.",
+      "mappedTo": "marks.rightAngles"
+    }
+  ],
+  "newVisualInformation": [
+    "해설의 평면 사다리꼴+파란 면이 칠해진 추상 기둥 대신 원본과 같은 실물 사각기둥을 면 채움 없이 재구성한다.",
+    "평행변 2·5와 높이 4, 기둥 길이 10, 숨은 모서리 점선 및 직각 표시를 한 그림에 연결한다."
+  ],
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            5,
+            0
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "plane": "XZ"
+      },
+      "height": 10,
+      "names": "........"
+    }
+  ],
+  "dims": [
+    {
+      "edge": [
+        "#b0",
+        "#b1"
+      ]
+    },
+    {
+      "edge": [
+        "#b2",
+        "#b3"
+      ]
+    },
+    {
+      "edge": [
+        "#b0",
+        "#b3"
+      ]
+    },
+    {
+      "edge": [
+        "#b1",
+        "#t1"
+      ]
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "#b0",
+        "refs": [
+          "#b1",
+          "#b3"
+        ]
+      }
+    ]
+  }
+}
