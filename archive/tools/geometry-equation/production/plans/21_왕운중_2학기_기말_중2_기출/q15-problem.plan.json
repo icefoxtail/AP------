@@ -1,0 +1,310 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "32",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "MAB",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "MAC",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "MCB",
+        "op": "MIDPOINT",
+        "inputs": [
+          "C",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cAB",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "MAB"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cAC",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "MAC"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cBC",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "MCB"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "MAB",
+    "MAC",
+    "MCB"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "cAB",
+        "center": "MAB",
+        "from": "A",
+        "to": "B",
+        "side": "CCW"
+      },
+      {
+        "id": "arcAC",
+        "circle": "cAC",
+        "center": "MAC",
+        "from": "A",
+        "to": "C",
+        "side": "CW"
+      },
+      {
+        "id": "arcCB",
+        "circle": "cBC",
+        "center": "MCB",
+        "from": "C",
+        "to": "B",
+        "side": "CW"
+      }
+    ],
+    "regions": [
+      {
+        "id": "area1",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "segment": {
+              "center": "MAB",
+              "from": "A",
+              "to": "B",
+              "side": "CCW"
+            }
+          }
+        ]
+      },
+      {
+        "id": "area2",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "segment": {
+              "center": "MCB",
+              "from": "C",
+              "to": "B",
+              "side": "CW"
+            }
+          }
+        ]
+      },
+      {
+        "id": "area3",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "segment": {
+              "center": "MAC",
+              "from": "A",
+              "to": "C",
+              "side": "CW"
+            }
+          }
+        ]
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "t1",
+        "at": [
+          5,
+          -2.3
+        ],
+        "text": "S1"
+      },
+      {
+        "id": "t2",
+        "at": [
+          10.2,
+          4
+        ],
+        "text": "S2"
+      },
+      {
+        "id": "t3",
+        "at": [
+          1.7,
+          4.6
+        ],
+        "text": "S3"
+      }
+    ]
+  },
+  "caption": "원문 문제: 직각삼각형의 세 변을 지름으로 하는 외측 반원 S1, S2, S3",
+  "coordinateCanvas": {
+    "width": 500,
+    "height": 400
+  },
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "MAB",
+    "MAC",
+    "MCB"
+  ],
+  "hiddenPointStyle": "NONE",
+  "sourceConditions": [
+    {
+      "id": "source-q15",
+      "condition": "직각삼각형 ABC의 세 변을 지름으로 하는 외부 반원 S1,S2,S3",
+      "mappedTo": "mathPlan.nodes/displaySegments/planeMarks"
+    }
+  ],
+  "newVisualInformation": []
+}

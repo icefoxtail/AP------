@@ -1,0 +1,48 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "(가)"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "solids": [
+          {
+            "id": "cone",
+            "kind": "CONE",
+            "radius": 2,
+            "height": 4
+          }
+        ],
+        "dims": []
+      }
+    },
+    {
+      "caption": {
+        "text": "(나)"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "solids": [
+          {
+            "id": "cone",
+            "kind": "CONE",
+            "radius": 3,
+            "height": 6
+          }
+        ],
+        "dims": []
+      }
+    }
+  ],
+  "caption": "원문의 크기가 다른 원뿔 (가)와 (나)",
+  "sourceConditions": [
+    {
+      "id": "source-q8",
+      "condition": "서로 닮은 두 원뿔 (가),(나)의 크기 비교",
+      "mappedTo": "panels"
+    }
+  ],
+  "newVisualInformation": []
+}
