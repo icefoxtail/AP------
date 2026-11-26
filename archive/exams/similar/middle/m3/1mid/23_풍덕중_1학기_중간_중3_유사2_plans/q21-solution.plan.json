@@ -1,0 +1,37 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "A",
+        "band": false,
+        "points": [{"id": "P0", "value": "3-sqrt(5)", "hideName": true, "showValue": false}]
+      },
+      {
+        "kind": "POINTS",
+        "label": "B",
+        "band": false,
+        "points": [{"id": "P1", "value": "1/2", "hideName": true, "showValue": false}]
+      },
+      {
+        "kind": "POINTS",
+        "label": "C",
+        "band": false,
+        "points": [{"id": "P2", "value": "-1+sqrt(3)", "hideName": true, "showValue": false}]
+      }
+    ]
+  },
+  "caption": "A=3−√5≈0.764, B=1/2=0.5, C=√3−1≈0.732이므로 B<C<A이다.",
+  "accessibilityDescription": "세 실수 A, B, C의 정확한 위치를 같은 가로 눈금의 서로 다른 세 행에 표시한 수직선이다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "A=3−√5", "mappedTo": ["numberLine.rows"]},
+    {"id": "c2", "condition": "B=1/2", "mappedTo": ["numberLine.rows"]},
+    {"id": "c3", "condition": "C=√3−1", "mappedTo": ["numberLine.rows"]}
+  ],
+  "newVisualInformation": [
+    "각 수를 정확한 근호식 또는 분수 값으로 계산하고 동일한 척도에서 점의 가로 위치를 비교한다.",
+    "가까운 A와 C의 점 라벨이 겹치지 않도록 각 수를 별도 행에 나타낸다."
+  ]
+}
