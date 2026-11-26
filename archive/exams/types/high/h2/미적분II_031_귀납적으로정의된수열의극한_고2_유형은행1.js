@@ -37,7 +37,11 @@ window.questionBank = [
       "CC_GRAPH_INTERSECTION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/미적분II_031_귀납적으로정의된수열의극한_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "a₁=2에서 시작하는 y=x와 y=x/4+3 사이의 두 단계 수직·수평 반복.",
+    "imageCaption": "a₁=2에서 시작하는 y=x와 y=x/4+3 사이의 두 단계 수직·수평 반복.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -76,7 +80,11 @@ window.questionBank = [
       "CC_GRAPH_INTERSECTION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/미적분II_031_귀납적으로정의된수열의극한_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "a₁=9에서 시작하는 y=x, y=√(4x) 사이의 수직·수평 반복.",
+    "imageCaption": "a₁=9에서 시작하는 y=x, y=√(4x) 사이의 수직·수평 반복.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -344,7 +352,11 @@ window.questionBank = [
       "CC_QUADRATIC_FUNCTION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_031_귀납적으로정의된수열의극한_고2_유형은행1/q9-problem.svg",
+    "imageAlt": "n=1 대표: 포물선 y=4x²−x 위 Pₙ과 Qₙ을 연결한 할선.",
+    "imageCaption": "n=1 대표: 포물선 y=4x²−x 위 Pₙ과 Qₙ을 연결한 할선.",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -455,7 +467,11 @@ window.questionBank = [
     "templateKey": "TPL_CALCULUS_SEQ_LIMIT_ALGEBRAIC",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_031_귀납적으로정의된수열의극한_고2_유형은행1/q12-problem.svg",
+    "imageAlt": "n=4 대표: 원점 중심 반지름 2인 원과 A(0,8), B(−4,0), 직선 AB에 수직인 방향의 점 P.",
+    "imageCaption": "n=4 대표: 원점 중심 반지름 2인 원과 A(0,8), B(−4,0), 직선 AB에 수직인 방향의 점 P.",
+    "imageSize": "full"
   },
   {
     "id": 13,
@@ -531,6 +547,10 @@ window.questionBank = [
       "CC_VERTICAL_SEGMENT_LENGTH"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_031_귀납적으로정의된수열의극한_고2_유형은행1/q14-problem.svg",
+    "imageAlt": "n=1 대표: y=√x와 x=4, x=16의 교점·수선 발을 잇는 사다리꼴.",
+    "imageCaption": "n=1 대표: y=√x와 x=4, x=16의 교점·수선 발을 잇는 사다리꼴.",
+    "imageSize": "full"
   }
 ];

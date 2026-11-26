@@ -83,7 +83,11 @@ window.questionBank = [
     "content": "반지름의 길이가 $10$이고 호의 길이가 $6\\pi$인 부채꼴의 중심각의 크기와 넓이를 구하시오.",
     "choices": [],
     "answer": "중심각의 크기: $\\frac{3}{5}\\pi$, 넓이: $30\\pi$",
-    "solution": "반지름의 길이가 $r$, 호의 길이가 $l$인 부채꼴의 중심각의 크기는 $\\theta=\\frac{l}{r}$, 넓이는 $S=\\frac{1}{2}rl$이다.\n$$\\theta=\\frac{6\\pi}{10}=\\frac{3}{5}\\pi$$\n$$S=\\frac{1}{2}\\times 10\\times 6\\pi=30\\pi$$"
+    "solution": "반지름의 길이가 $r$, 호의 길이가 $l$인 부채꼴의 중심각의 크기는 $\\theta=\\frac{l}{r}$, 넓이는 $S=\\frac{1}{2}rl$이다.\n$$\\theta=\\frac{6\\pi}{10}=\\frac{3}{5}\\pi$$\n$$S=\\frac{1}{2}\\times 10\\times 6\\pi=30\\pi$$",
+    "solutionImage": "assets/images/미래엔_대수_삼각함수_중단원마무리_고2/q3-solution.svg",
+    "solutionImageAlt": "반지름 10, 호 길이 6π로부터 중심각 3π/5(108°)가 계산되는 부채꼴이다.",
+    "solutionImageCaption": "반지름 10, 호 길이 6π로부터 중심각 3π/5(108°)가 계산되는 부채꼴이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -111,7 +115,11 @@ window.questionBank = [
     "content": "원점 $\\mathrm{O}$와 점 $\\mathrm{P}(-2,\\, 1)$을 지나는 동경 $\\mathrm{OP}$가 나타내는 각의 크기를 $\\theta$라 할 때, $\\sin\\theta,\\, \\cos\\theta,\\, \\tan\\theta$의 값을 구하시오.",
     "choices": [],
     "answer": "$\\sin\\theta=\\frac{\\sqrt{5}}{5},\\ \\cos\\theta=-\\frac{2\\sqrt{5}}{5},\\ \\tan\\theta=-\\frac{1}{2}$",
-    "solution": "점 $\\mathrm{P}(-2,\\ 1)$에 대하여 $\\overline{\\mathrm{OP}}=\\sqrt{(-2)^2+1^2}=\\sqrt{5}$이다.\n삼각함수의 정의에 의하여 $x=-2,\\ y=1,\\ r=\\sqrt{5}$일 때\n$$\\sin\\theta=\\frac{y}{r}=\\frac{1}{\\sqrt{5}}=\\frac{\\sqrt{5}}{5},\\quad \\cos\\theta=\\frac{x}{r}=-\\frac{2}{\\sqrt{5}}=-\\frac{2\\sqrt{5}}{5},\\quad \\tan\\theta=\\frac{y}{x}=-\\frac{1}{2}$$"
+    "solution": "점 $\\mathrm{P}(-2,\\ 1)$에 대하여 $\\overline{\\mathrm{OP}}=\\sqrt{(-2)^2+1^2}=\\sqrt{5}$이다.\n삼각함수의 정의에 의하여 $x=-2,\\ y=1,\\ r=\\sqrt{5}$일 때\n$$\\sin\\theta=\\frac{y}{r}=\\frac{1}{\\sqrt{5}}=\\frac{\\sqrt{5}}{5},\\quad \\cos\\theta=\\frac{x}{r}=-\\frac{2}{\\sqrt{5}}=-\\frac{2\\sqrt{5}}{5},\\quad \\tan\\theta=\\frac{y}{x}=-\\frac{1}{2}$$",
+    "solutionImage": "assets/images/미래엔_대수_삼각함수_중단원마무리_고2/q4-solution.svg",
+    "solutionImageAlt": "제2사분면 P(-2,1)의 동경과 x축 수선으로 밑변 2·높이 1인 직각삼각형을 만든다.",
+    "solutionImageCaption": "제2사분면 P(-2,1)의 동경과 x축 수선으로 밑변 2·높이 1인 직각삼각형을 만든다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -223,7 +231,11 @@ window.questionBank = [
     "content": "$\\theta$가 제3사분면의 각이고 $\\tan\\theta = \\frac{3}{4}$일 때, $\\sin\\theta$와 $\\cos\\theta$의 값을 구하시오.",
     "choices": [],
     "answer": "$\\sin\\theta=-\\frac{3}{5},\\ \\cos\\theta=-\\frac{4}{5}$",
-    "solution": "$1+\\tan^2\\theta=\\frac{1}{\\cos^2\\theta}$이므로\n$$\\frac{1}{\\cos^2\\theta}=1+\\frac{9}{16}=\\frac{25}{16}$$\n$\\cos^2\\theta=\\frac{16}{25}$이다. $\\theta$가 제$3$사분면의 각이므로 $\\cos\\theta<0$이어서 $\\cos\\theta=-\\frac{4}{5}$\n$\\sin\\theta=\\tan\\theta\\cos\\theta=\\frac{3}{4}\\times\\left(-\\frac{4}{5}\\right)=-\\frac{3}{5}$"
+    "solution": "$1+\\tan^2\\theta=\\frac{1}{\\cos^2\\theta}$이므로\n$$\\frac{1}{\\cos^2\\theta}=1+\\frac{9}{16}=\\frac{25}{16}$$\n$\\cos^2\\theta=\\frac{16}{25}$이다. $\\theta$가 제$3$사분면의 각이므로 $\\cos\\theta<0$이어서 $\\cos\\theta=-\\frac{4}{5}$\n$\\sin\\theta=\\tan\\theta\\cos\\theta=\\frac{3}{4}\\times\\left(-\\frac{4}{5}\\right)=-\\frac{3}{5}$",
+    "solutionImage": "assets/images/미래엔_대수_삼각함수_중단원마무리_고2/q8-solution.svg",
+    "solutionImageAlt": "제3사분면에서 tan θ=3/4인 동경을 가로 4·세로 3·빗변 5의 직각삼각형으로 표현한다.",
+    "solutionImageCaption": "제3사분면에서 tan θ=3/4인 동경을 가로 4·세로 3·빗변 5의 직각삼각형으로 표현한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,

@@ -192,7 +192,11 @@ window.questionBank = [
       "CC_AXIS_INTERCEPT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_037_급수의합의활용_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "n=1 대표: (3n−1)x+(3n+2)y=6과 두 좌표축의 제1사분면 삼각형.",
+    "imageCaption": "n=1 대표: (3n−1)x+(3n+2)y=6과 두 좌표축의 제1사분면 삼각형.",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -228,7 +232,11 @@ window.questionBank = [
     "templateKey": "TPL_CALCULUS_SERIES_PARTIAL_SUM",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_037_급수의합의활용_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "n=1 대표: y=6/x의 (2,3)과 (4,3/2)을 대각 끝으로 하는 축 평행 직사각형.",
+    "imageCaption": "n=1 대표: y=6/x의 (2,3)과 (4,3/2)을 대각 끝으로 하는 축 평행 직사각형.",
+    "imageSize": "full"
   },
   {
     "id": 7,

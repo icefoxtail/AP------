@@ -77,7 +77,11 @@ window.questionBank = [
       "CC_POINT_ON_CURVE_SUBSTITUTION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_030_함수의그래프에서등비수열의극한의활용_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "n=1 대표: y=√x 위의 (9,3)과 (81,9)을 잇는 선분.",
+    "imageCaption": "n=1 대표: y=√x 위의 (9,3)과 (81,9)을 잇는 선분.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -116,7 +120,11 @@ window.questionBank = [
       "CC_GRAPH_INTERSECTION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_030_함수의그래프에서등비수열의극한의활용_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "n=1 대표: 수평선 y=1과 두 로그곡선의 교점, 원점으로 이은 삼각형.",
+    "imageCaption": "n=1 대표: 수평선 y=1과 두 로그곡선의 교점, 원점으로 이은 삼각형.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -157,6 +165,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_030_함수의그래프에서등비수열의극한의활용_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "a=25인 대표 사례: 두 지수곡선의 교점 P에서 x축에 내린 수선을 표시한다. 일반 a의 k값은 표시하지 않는다.",
+    "imageCaption": "a=25인 대표 사례: 두 지수곡선의 교점 P에서 x축에 내린 수선을 표시한다. 일반 a의 k값은 표시하지 않는다.",
+    "imageSize": "full"
   }
 ];

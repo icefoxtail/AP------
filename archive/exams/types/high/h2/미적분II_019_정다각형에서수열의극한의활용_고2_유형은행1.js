@@ -35,7 +35,11 @@ window.questionBank = [
     "templateKey": "TPL_CALCULUS_SEQ_LIMIT_ALGEBRAIC",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_019_정다각형에서수열의극한의활용_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "n=1 예시: 한 변을 2등분한 정삼각형의 단위 격자와 모든 격자 꼭짓점.",
+    "imageCaption": "n=1 예시: 한 변을 2등분한 정삼각형의 단위 격자와 모든 격자 꼭짓점.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -71,7 +75,11 @@ window.questionBank = [
     "templateKey": "TPL_CALCULUS_SEQ_LIMIT_ALGEBRAIC",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_019_정다각형에서수열의극한의활용_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "n=2 예시: 가로 4칸·세로 2칸의 단위 정사각형 격자와 모든 격자점.",
+    "imageCaption": "n=2 예시: 가로 4칸·세로 2칸의 단위 정사각형 격자와 모든 격자점.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -107,7 +115,11 @@ window.questionBank = [
     "templateKey": "TPL_CALCULUS_SEQ_LIMIT_ALGEBRAIC",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_019_정다각형에서수열의극한의활용_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "n=2 예시: 가로 2칸·세로 2칸 정사각형 격자와 모든 격자점.",
+    "imageCaption": "n=2 예시: 가로 2칸·세로 2칸 정사각형 격자와 모든 격자점.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -143,6 +155,10 @@ window.questionBank = [
     "templateKey": "TPL_CALCULUS_SEQ_LIMIT_ALGEBRAIC",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_019_정다각형에서수열의극한의활용_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "n=2 예시: 왼쪽 2칸, 오른쪽 4칸 높이의 계단형 단위 정사각형 배열.",
+    "imageCaption": "n=2 예시: 왼쪽 2칸, 오른쪽 4칸 높이의 계단형 단위 정사각형 배열.",
+    "imageSize": "full"
   }
 ];

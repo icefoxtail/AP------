@@ -421,7 +421,12 @@ window.questionBank = [
     "conditionKeys": [
       "COND_UNIVERSAL_INPUTS"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/미적분II_012_수열의극한의대소관계1_고2_유형은행1/q11-solution.svg",
+    "solutionImageAlt": "n=2, a_n=9는 두 포물선의 x축 교점 유무 조건을 동시에 만족하는 대표 사례다. f는 x축과 두 점에서 만나고 g는 만나지 않는다. 전체 n에 대한 일반 증명은 판별식 부등식으로 한다.",
+    "solutionImageCaption": "n=2, a_n=9는 두 포물선의 x축 교점 유무 조건을 동시에 만족하는 대표 사례다. f는 x축과 두 점에서 만나고 g는 만나지 않는다. 전체 n에 대한 일반 증명은 판별식 부등식으로 한다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   },
   {
     "id": 12,

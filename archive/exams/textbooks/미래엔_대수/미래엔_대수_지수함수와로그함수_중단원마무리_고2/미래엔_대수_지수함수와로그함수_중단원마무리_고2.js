@@ -167,7 +167,11 @@ window.questionBank = [
     "content": "함수 $y=\\left(\\frac{1}{5}\\right)^{x-1}+k$의 그래프가 제$1$사분면을 지나지 않도록 하는 상수 $k$의 최댓값을 구하시오.",
     "choices": [],
     "answer": "$-5$",
-    "solution": "$y=\\left(\\frac{1}{5}\\right)^{x-1}+k$는 감소함수이다. 제$1$사분면을 지나지 않으려면 $x>0$일 때 항상 $y\\le 0$이어야 한다.\n$x>0$에서 $y$의 값은 $x\\to 0$일 때 $\\left(\\frac{1}{5}\\right)^{-1}+k=5+k$에 가까워지고 $x$가 커질수록 작아진다. 따라서 $x>0$에서 $y<5+k$이므로 $5+k\\le 0$이면 $y<0$이 되어 제$1$사분면을 지나지 않는다.\n$5+k\\le 0$에서 $k\\le -5$\n따라서 $k$의 최댓값은 $-5$"
+    "solution": "$y=\\left(\\frac{1}{5}\\right)^{x-1}+k$는 감소함수이다. 제$1$사분면을 지나지 않으려면 $x>0$일 때 항상 $y\\le 0$이어야 한다.\n$x>0$에서 $y$의 값은 $x\\to 0$일 때 $\\left(\\frac{1}{5}\\right)^{-1}+k=5+k$에 가까워지고 $x$가 커질수록 작아진다. 따라서 $x>0$에서 $y<5+k$이므로 $5+k\\le 0$이면 $y<0$이 되어 제$1$사분면을 지나지 않는다.\n$5+k\\le 0$에서 $k\\le -5$\n따라서 $k$의 최댓값은 $-5$",
+    "solutionImage": "assets/images/미래엔_대수_지수함수와로그함수_중단원마무리_고2/q6-solution.svg",
+    "solutionImageAlt": "경계값 k=-5일 때 x>0에서 y<0이라 제1사분면을 지나지 않는 지수함수",
+    "solutionImageCaption": "경계값 k=-5일 때 x>0에서 y<0이라 제1사분면을 지나지 않는 지수함수",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,

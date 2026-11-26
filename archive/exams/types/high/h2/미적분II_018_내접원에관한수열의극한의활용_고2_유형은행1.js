@@ -35,7 +35,11 @@ window.questionBank = [
     "templateKey": "TPL_CALCULUS_SEQ_LIMIT_ALGEBRAIC",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_018_내접원에관한수열의극한의활용_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "n=2 대표 직각삼각형 OQP의 세 변에 접하는 내접원을 표시한다.",
+    "imageCaption": "n=2 대표 직각삼각형 OQP의 세 변에 접하는 내접원을 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -71,6 +75,10 @@ window.questionBank = [
     "templateKey": "TPL_CALCULUS_SEQ_LIMIT_ALGEBRAIC",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_018_내접원에관한수열의극한의활용_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "n=2 대표 삼각형 OAB와 중심 C인 내접원, 넓이를 구하는 삼각형 OAC를 표시한다.",
+    "imageCaption": "n=2 대표 삼각형 OAB와 중심 C인 내접원, 넓이를 구하는 삼각형 OAC를 표시한다.",
+    "imageSize": "full"
   }
 ];
