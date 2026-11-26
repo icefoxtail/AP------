@@ -1,0 +1,15 @@
+{
+  "capability":"solid-figure-v1",
+  "caption":"원뿔의 회전축을 지나는 단면은 모선 두 개가 같은 이등변삼각형이다.",
+  "accessibilityDescription":"원뿔의 꼭짓점과 밑면 중심을 잇는 회전축, 밑원 중심을 지나는 직경, 회전축을 포함하는 이등변삼각형 단면을 함께 보인다. 양쪽 모선에는 같은 길이 표식이 한 개씩 있다.",
+  "sourceQuote":"원뿔을 회전축을 포함하는 평면으로 자르면 생기는 단면의 모양은?",
+  "sourceConditions":[
+    {"id":"c1","condition":"회전축은 꼭짓점과 밑면 중심을 지나며 축단면을 자른다.","mappedTo":["solids[0].axis","section"]},
+    {"id":"c2","condition":"원뿔의 두 모선의 길이가 같고, 단면은 밑원의 지름을 밑변으로 한다.","mappedTo":["marks.equalSlant","section"]},
+    {"id":"c3","condition":"문제에는 수치가 없어 비율은 동형을 나타내는 예시로만 사용하며 그림에 길이 숫자는 추가하지 않는다.","mappedTo":["solids[0].radius","solids[0].height"]}
+  ],
+  "newVisualInformation":["원본 원뿔 중앙의 회전축 세로선이 해설에서 누락되지 않도록 엔진의 축 표현을 명시한다.","축단면의 지름 보조선과 양 모선의 같은 길이 표식을 유지한다."],
+  "solids":[{"kind":"CONE","radius":2,"height":4,"axis":true}],
+  "section":{"kind":"AXIAL"},
+  "marks":{"equalSlant":true}
+}
