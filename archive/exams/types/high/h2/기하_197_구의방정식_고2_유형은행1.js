@@ -414,7 +414,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_LOWER_BOUND"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_197_구의방정식_고2_유형은행1/q9-problem.svg",
+    "imageAlt": "기하 197 q09: 제1팔분면 정육면체의 원문 좌표 A,B와 완전한 변 길이 13 모델.",
+    "imageCaption": "기하 197 q09: 제1팔분면 정육면체의 원문 좌표 A,B와 완전한 변 길이 13 모델.",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -460,7 +464,11 @@ window.questionBank = [
       "CC_CIRCLE_CIRCUMFERENCE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "CASE_BRANCH",
+    "image": "assets/images/기하_197_구의방정식_고2_유형은행1/q10-problem.svg",
+    "imageAlt": "기하 197 q10: 반지름 7 구의 기본형. 두 원형 단면과 평면 간 6 거리는 미표시.",
+    "imageCaption": "기하 197 q10: 반지름 7 구의 기본형. 두 원형 단면과 평면 간 6 거리는 미표시.",
+    "imageSize": "full"
   },
   {
     "id": 11,

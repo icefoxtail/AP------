@@ -44,7 +44,11 @@ window.questionBank = [
       "CC_DISTANCE_TWO_POINTS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/기하_206_두구의위치관계_고2_유형은행1/q1-solution.svg",
+    "solutionImageAlt": "두 구의 중심을 지나는 평면에서 외접 관계를 단면원으로 나타내면 중심 거리 7은 두 반지름 2와 5의 합이다.",
+    "solutionImageCaption": "두 구의 중심을 지나는 평면에서 외접 관계를 단면원으로 나타내면 중심 거리 7은 두 반지름 2와 5의 합이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,

@@ -43,7 +43,11 @@ window.questionBank = [
       "CC_DISTANCE_TWO_POINTS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_193_공간도형-내분점외분점의활용_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "기하 193 q01: 정육면체 CE의 3:2 내분점 P와 FP.",
+    "imageCaption": "기하 193 q01: 정육면체 CE의 3:2 내분점 P와 FP.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -87,7 +91,11 @@ window.questionBank = [
       "CC_DISTANCE_TWO_POINTS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_193_공간도형-내분점외분점의활용_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "기하 193 q02: 정육면체 대각선 BH의 내분점 I와 EI.",
+    "imageCaption": "기하 193 q02: 정육면체 대각선 BH의 내분점 I와 EI.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -131,7 +139,11 @@ window.questionBank = [
       "CC_DISTANCE_TWO_POINTS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_193_공간도형-내분점외분점의활용_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "기하 193 q03: 정육면체 BH·AC의 두 내분점 I,J와 IJ.",
+    "imageCaption": "기하 193 q03: 정육면체 BH·AC의 두 내분점 I,J와 IJ.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -175,7 +187,11 @@ window.questionBank = [
       "CC_DISTANCE_TWO_POINTS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_193_공간도형-내분점외분점의활용_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "기하 193 q04: 6×4×3 직육면체의 대각선 BE·AG 내분점 P,Q와 PQ.",
+    "imageCaption": "기하 193 q04: 6×4×3 직육면체의 대각선 BE·AG 내분점 P,Q와 PQ.",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -220,7 +236,11 @@ window.questionBank = [
       "CC_MIDPOINT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_193_공간도형-내분점외분점의활용_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "기하 193 q05: ABC 삼각형과 중점 M, CM의 내분점 D, 좌표축 보조선.",
+    "imageCaption": "기하 193 q05: ABC 삼각형과 중점 M, CM의 내분점 D, 좌표축 보조선.",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -265,6 +285,10 @@ window.questionBank = [
       "CC_DISTANCE_TWO_POINTS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_193_공간도형-내분점외분점의활용_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "기하 193 q06: 정삼각기둥의 DE 중점 M과 BM 내분점 P, CP.",
+    "imageCaption": "기하 193 q06: 정삼각기둥의 DE 중점 M과 BM 내분점 P, CP.",
+    "imageSize": "full"
   }
 ];

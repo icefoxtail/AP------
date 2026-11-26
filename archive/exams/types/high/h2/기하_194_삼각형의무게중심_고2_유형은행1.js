@@ -342,7 +342,11 @@ window.questionBank = [
       "CC_INTERNAL_DIVISION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_194_삼각형의무게중심_고2_유형은행1/q8-problem.svg",
+    "imageAlt": "기하 194 q08: 양의 세 좌표축 절편 A,B,C를 이은 삼각형. 화살표와 좌표표시 미완성.",
+    "imageCaption": "기하 194 q08: 양의 세 좌표축 절편 A,B,C를 이은 삼각형. 화살표와 좌표표시 미완성.",
+    "imageSize": "full"
   },
   {
     "id": 9,

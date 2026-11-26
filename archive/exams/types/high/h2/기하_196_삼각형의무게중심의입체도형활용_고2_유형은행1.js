@@ -48,7 +48,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_196_삼각형의무게중심의입체도형활용_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "기하 196 q01: 한 모서리 12인 정사면체 OABC의 정확한 좌표 모델; 원문 좌표축은 보류.",
+    "imageCaption": "기하 196 q01: 한 모서리 12인 정사면체 OABC의 정확한 좌표 모델; 원문 좌표축은 보류.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -94,7 +98,11 @@ window.questionBank = [
       "CC_INTERNAL_DIVISION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_196_삼각형의무게중심의입체도형활용_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "기하 196 q02: 정육면체 세 모서리의 중점 P,Q,R과 삼각형 PQR·대각선 AG.",
+    "imageCaption": "기하 196 q02: 정육면체 세 모서리의 중점 P,Q,R과 삼각형 PQR·대각선 AG.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -141,7 +149,11 @@ window.questionBank = [
       "CC_DISTANCE_TWO_POINTS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_196_삼각형의무게중심의입체도형활용_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "기하 196 q03: 정육면체 CH·EF·AB의 점 P,Q,R와 삼각형의 무게중심 S.",
+    "imageCaption": "기하 196 q03: 정육면체 CH·EF·AB의 점 P,Q,R와 삼각형의 무게중심 S.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -184,7 +196,11 @@ window.questionBank = [
     "decisiveStep": "$\\frac{8+18+r}{3}=20$에서 $26+r=60$이므로 $r=34$",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_196_삼각형의무게중심의입체도형활용_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "기하 196 q04: 반지름 8·18인 두 구의 비접촉 예시. 미지 반지름 r의 구, 접촉 및 높이20은 미표시.",
+    "imageCaption": "기하 196 q04: 반지름 8·18인 두 구의 비접촉 예시. 미지 반지름 r의 구, 접촉 및 높이20은 미표시.",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -231,7 +247,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_196_삼각형의무게중심의입체도형활용_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "기하 196 q05: 한 변 6 정육면체 원형만 표시. 8분할과 내부 구 3개는 미지원.",
+    "imageCaption": "기하 196 q05: 한 변 6 정육면체 원형만 표시. 8분할과 내부 구 3개는 미지원.",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -277,6 +297,10 @@ window.questionBank = [
       "CC_DISTANCE_TWO_POINTS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_196_삼각형의무게중심의입체도형활용_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "기하 196 q06: 정육면체 세 내분점 P,Q,R와 삼각형 및 무게중심 I.",
+    "imageCaption": "기하 196 q06: 정육면체 세 내분점 P,Q,R와 삼각형 및 무게중심 I.",
+    "imageSize": "full"
   }
 ];

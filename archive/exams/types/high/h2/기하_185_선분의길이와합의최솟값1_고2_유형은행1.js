@@ -43,7 +43,11 @@ window.questionBank = [
       "CC_SHORTEST_DISTANCE_COLLINEAR"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_185_선분의길이와합의최솟값1_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "기하 185 q01: zx평면 위 임의 P와 A,B를 잇는 두 선분. 최적 P는 보여 주지 않음.",
+    "imageCaption": "기하 185 q01: zx평면 위 임의 P와 A,B를 잇는 두 선분. 최적 P는 보여 주지 않음.",
+    "imageSize": "full"
   },
   {
     "id": 2,

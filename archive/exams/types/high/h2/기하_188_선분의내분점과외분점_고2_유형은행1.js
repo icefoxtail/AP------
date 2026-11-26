@@ -206,7 +206,11 @@ window.questionBank = [
       "CC_MIDPOINT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_188_선분의내분점과외분점_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "기하 188 q05: 내분점 P·외분점 Q·중점 M의 일직선 순서만 보여 주는 보충 그림.",
+    "imageCaption": "기하 188 q05: 내분점 P·외분점 Q·중점 M의 일직선 순서만 보여 주는 보충 그림.",
+    "imageSize": "full"
   },
   {
     "id": 6,
