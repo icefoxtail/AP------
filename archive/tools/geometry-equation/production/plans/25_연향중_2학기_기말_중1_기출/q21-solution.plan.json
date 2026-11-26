@@ -1,0 +1,800 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "20각형의 한 꼭짓점 A에서 그은 대각선 17개가 내부를 삼각형 18개로 나누는 대표 도식이다.",
+  "accessibilityDescription": "20개의 꼭짓점을 가진 다각형의 한 꼭짓점 A에서 이웃한 두 꼭짓점을 제외한 나머지 17개 꼭짓점으로 대각선을 그었다. 18개의 삼각형이 만들어지며 영역 색칠은 없다.",
+  "sourceQuote": "한 꼭짓점에서 그을 수 있는 대각선의 개수가",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V1",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "18"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V2",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "36"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V3",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "54"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V4",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "72"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V5",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V6",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "108"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V7",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "126"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V8",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "144"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V9",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "162"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V10",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V11",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "198"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V12",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "216"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V13",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "234"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V14",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "252"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V15",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "270"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V16",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "288"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V17",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "306"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V18",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "324"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V19",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "342"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "V0",
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "V5",
+    "V6",
+    "V7",
+    "V8",
+    "V9",
+    "V10",
+    "V11",
+    "V12",
+    "V13",
+    "V14",
+    "V15",
+    "V16",
+    "V17",
+    "V18",
+    "V19"
+  ],
+  "pointNames": {
+    "V0": "A"
+  },
+  "hiddenPointNames": [
+    "O",
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "V5",
+    "V6",
+    "V7",
+    "V8",
+    "V9",
+    "V10",
+    "V11",
+    "V12",
+    "V13",
+    "V14",
+    "V15",
+    "V16",
+    "V17",
+    "V18",
+    "V19"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "edge0",
+      "refs": [
+        "V0",
+        "V1"
+      ]
+    },
+    {
+      "id": "edge1",
+      "refs": [
+        "V1",
+        "V2"
+      ]
+    },
+    {
+      "id": "edge2",
+      "refs": [
+        "V2",
+        "V3"
+      ]
+    },
+    {
+      "id": "edge3",
+      "refs": [
+        "V3",
+        "V4"
+      ]
+    },
+    {
+      "id": "edge4",
+      "refs": [
+        "V4",
+        "V5"
+      ]
+    },
+    {
+      "id": "edge5",
+      "refs": [
+        "V5",
+        "V6"
+      ]
+    },
+    {
+      "id": "edge6",
+      "refs": [
+        "V6",
+        "V7"
+      ]
+    },
+    {
+      "id": "edge7",
+      "refs": [
+        "V7",
+        "V8"
+      ]
+    },
+    {
+      "id": "edge8",
+      "refs": [
+        "V8",
+        "V9"
+      ]
+    },
+    {
+      "id": "edge9",
+      "refs": [
+        "V9",
+        "V10"
+      ]
+    },
+    {
+      "id": "edge10",
+      "refs": [
+        "V10",
+        "V11"
+      ]
+    },
+    {
+      "id": "edge11",
+      "refs": [
+        "V11",
+        "V12"
+      ]
+    },
+    {
+      "id": "edge12",
+      "refs": [
+        "V12",
+        "V13"
+      ]
+    },
+    {
+      "id": "edge13",
+      "refs": [
+        "V13",
+        "V14"
+      ]
+    },
+    {
+      "id": "edge14",
+      "refs": [
+        "V14",
+        "V15"
+      ]
+    },
+    {
+      "id": "edge15",
+      "refs": [
+        "V15",
+        "V16"
+      ]
+    },
+    {
+      "id": "edge16",
+      "refs": [
+        "V16",
+        "V17"
+      ]
+    },
+    {
+      "id": "edge17",
+      "refs": [
+        "V17",
+        "V18"
+      ]
+    },
+    {
+      "id": "edge18",
+      "refs": [
+        "V18",
+        "V19"
+      ]
+    },
+    {
+      "id": "edge19",
+      "refs": [
+        "V19",
+        "V0"
+      ]
+    },
+    {
+      "id": "diag2",
+      "refs": [
+        "V0",
+        "V2"
+      ]
+    },
+    {
+      "id": "diag3",
+      "refs": [
+        "V0",
+        "V3"
+      ]
+    },
+    {
+      "id": "diag4",
+      "refs": [
+        "V0",
+        "V4"
+      ]
+    },
+    {
+      "id": "diag5",
+      "refs": [
+        "V0",
+        "V5"
+      ]
+    },
+    {
+      "id": "diag6",
+      "refs": [
+        "V0",
+        "V6"
+      ]
+    },
+    {
+      "id": "diag7",
+      "refs": [
+        "V0",
+        "V7"
+      ]
+    },
+    {
+      "id": "diag8",
+      "refs": [
+        "V0",
+        "V8"
+      ]
+    },
+    {
+      "id": "diag9",
+      "refs": [
+        "V0",
+        "V9"
+      ]
+    },
+    {
+      "id": "diag10",
+      "refs": [
+        "V0",
+        "V10"
+      ]
+    },
+    {
+      "id": "diag11",
+      "refs": [
+        "V0",
+        "V11"
+      ]
+    },
+    {
+      "id": "diag12",
+      "refs": [
+        "V0",
+        "V12"
+      ]
+    },
+    {
+      "id": "diag13",
+      "refs": [
+        "V0",
+        "V13"
+      ]
+    },
+    {
+      "id": "diag14",
+      "refs": [
+        "V0",
+        "V14"
+      ]
+    },
+    {
+      "id": "diag15",
+      "refs": [
+        "V0",
+        "V15"
+      ]
+    },
+    {
+      "id": "diag16",
+      "refs": [
+        "V0",
+        "V16"
+      ]
+    },
+    {
+      "id": "diag17",
+      "refs": [
+        "V0",
+        "V17"
+      ]
+    },
+    {
+      "id": "diag18",
+      "refs": [
+        "V0",
+        "V18"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 520
+  },
+  "sourceConditions": [
+    {
+      "id": "number-of-sides",
+      "condition": "원문 a=n−3, b=n−2, a+b=35에서 n=20이다. 기존 SVG는 꼭짓점 7개/삼각형 5개만 보여 n=20의 해설 수치와 불일치한다. 여기서는 20개의 점을 사용한다.",
+      "mappedTo": [
+        "mathPlan.nodes[1]",
+        "mathPlan.nodes[20]",
+        "displaySegments[19]"
+      ]
+    },
+    {
+      "id": "diagonal-count",
+      "condition": "꼭짓점 A에서 서로 이웃하지 않은 17개 꼭짓점 V2~V18로 각각 대각선 1개를 실제로 긋는다.",
+      "mappedTo": [
+        "displaySegments[20]",
+        "displaySegments[36]"
+      ]
+    },
+    {
+      "id": "triangle-count",
+      "condition": "17개의 대각선은 20각형을 18개 삼각형으로 나눈다. 도식은 보기 쉽게 등간격의 정20각형을 대표로 택했으며 원문에서 정다각형이라는 가정을 추가하지 않는다.",
+      "mappedTo": [
+        "mathPlan.realization",
+        "displaySegments[0]",
+        "displaySegments[36]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 7각형의 다섯 색칠된 삼각형을 없애고, 풀이의 n=20에 맞는 20각형 윤곽과 17개 대각선을 실제로 구성한다.",
+    "경계 20개와 내부 대각선 17개를 개별 displaySegments로 작성하여 18개 삼각형이 생기며, 면 채움은 두지 않는다.",
+    "20각형이 정다각형이라는 새 전제를 발문에 부여하지 않고 도식상의 대표 예시임을 명시한다."
+  ]
+}
