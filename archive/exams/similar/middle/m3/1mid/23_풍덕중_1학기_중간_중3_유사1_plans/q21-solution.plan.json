@@ -1,0 +1,29 @@
+{
+  "capability": "number-line-figure-v1",
+  "caption": "세 무리수는 왼쪽부터 b=−4, a=−3√5/2, c=−7+√20 순서이다. 점 B, A, C는 각각 b, a, c에 대응한다.",
+  "accessibilityDescription": "수직선 위 점 B는 b값인 마이너스 4, 점 A는 a값인 마이너스 3루트5 나누기 2, 점 C는 c값인 마이너스 7 더하기 루트20이며 왼쪽부터 B, A, C로 배열된다.",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          { "id": "B", "value": "-4", "showValue": false },
+          { "id": "A", "value": "-3*sqrt(5)/2", "showValue": false },
+          { "id": "C", "value": "-7+sqrt(20)", "showValue": false }
+        ]
+      }
+    ]
+  },
+  "sourceConditions": [
+    { "id": "a", "condition": "a=−(3/2)√5이다.", "mappedTo": "numberLine.rows[0].points[1].value" },
+    { "id": "b", "condition": "b=−4이다.", "mappedTo": "numberLine.rows[0].points[0].value" },
+    { "id": "c", "condition": "c=−7+√20이다.", "mappedTo": "numberLine.rows[0].points[2].value" },
+    { "id": "order", "condition": "−4≈−4, −(3/2)√5≈−3.354, −7+√20≈−2.528이므로 b<a<c이다.", "mappedTo": "numberLine.rows[0].points[0,1,2]의 정확한 수직선 위치" }
+  ],
+  "newVisualInformation": [
+    "음수 무리수 세 값의 정확한 위치를 같은 수직선 위에 점으로 표시한다.",
+    "엔진의 값 있는 점 id 제한으로 화면에는 대문자 B,A,C를 붙이며 caption에 원문 소문자 b,a,c와의 대응을 밝힌다. 원문 이름의 1:1 표기는 ENGINE_CAPABILITY_PENDING이다."
+  ]
+}
