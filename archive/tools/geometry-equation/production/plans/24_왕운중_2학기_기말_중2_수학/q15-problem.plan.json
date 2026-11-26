@@ -1,0 +1,294 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ac",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bd",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ac",
+          "bd"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "parallel3",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sEF",
+          "sDC"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "labAB",
+        "ownerSegment": "sAB",
+        "text": "9",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "labDC",
+        "ownerSegment": "sDC",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "labEF",
+        "ownerSegment": "sEF",
+        "text": "x",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dimBC",
+        "from": "B",
+        "to": "C",
+        "label": "20",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "AB∥EF∥DC이고 E는 AC와 BD의 교점, F는 BC 위의 점이다. AB=9, DC=6, BC=20, EF=x이다.",
+  "accessibilityDescription": "밑변 BC=20의 왼쪽 위에 AB=9, 오른쪽 위에 DC=6인 두 평행변이 있고, 두 대각선 AC, BD의 교점 E에서 BC로 그은 평행선 EF에 x가 표시된다.",
+  "sourceQuote": "아래 그림에서 $\\overline{AB} \\parallel \\overline{EF} \\parallel \\overline{DC}$일 때, $\\overline{EF}$의 길이 $x$의 값은? [4점]<br><br>",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB∥EF∥DC",
+      "mappedTo": "planeMarks.parallels.parallel3"
+    },
+    {
+      "id": "c2",
+      "condition": "AB=9, DC=6, BC=20, EF=x",
+      "mappedTo": [
+        "sAB",
+        "sDC",
+        "dimBC",
+        "sEF"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "E는 AC와 BD의 교점이고 F는 BC 위",
+      "mappedTo": [
+        "E",
+        "F",
+        "sAE",
+        "sEC",
+        "sBE",
+        "sED"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "세 평행선의 방향과 E에서 교차하는 두 대각선을 보존한다.",
+    "변 길이는 해당 변 또는 전체 밑변 치수선에 소속시킨다.",
+    "ENGINE_CAPABILITY_PENDING: 원본에 있는 AB·DC·BC·EF 외측 곡선 점선 지시선을 1:1 되살리려면 dotted-curved-dimension-guide 기능이 필요하다."
+  ],
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 460
+  }
+}

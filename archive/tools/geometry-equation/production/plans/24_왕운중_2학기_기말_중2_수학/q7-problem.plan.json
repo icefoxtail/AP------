@@ -1,0 +1,233 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "para",
+        "count": 1,
+        "segments": [
+          "sDE",
+          "sBC"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lenBD",
+        "ownerSegment": "sDB",
+        "text": "5",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lenAE",
+        "ownerSegment": "sAE",
+        "text": "8",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lenEC",
+        "ownerSegment": "sEC",
+        "text": "x",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "lenAB",
+        "from": "A",
+        "to": "B",
+        "label": "15",
+        "side": "LEFT",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "DE∥BC인 삼각형 ABC에서 AB 전체 15, BD=5, AE=8, EC=x이다.",
+  "accessibilityDescription": "삼각형 ABC의 왼쪽 A-B 전체는 길이 15 치수선, 아래쪽 DB=5, 오른쪽 AE=8과 EC=x이다. DE와 BC에 평행 화살표가 동일하게 있다.",
+  "sourceQuote": "다음 그림에서 $\\overline{BC} \\parallel \\overline{DE}$일 때, $\\overline{EC}$의 길이 $x$의 값은? [4점]<br><br>",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "DE∥BC",
+      "mappedTo": "planeMarks.parallels.para"
+    },
+    {
+      "id": "c2",
+      "condition": "AB=15, BD=5, AE=8, EC=x",
+      "mappedTo": [
+        "lenAB",
+        "sDB",
+        "sAE",
+        "sEC"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "AB 전체 길이의 지시 치수선과 BD=5를 혼동하지 않도록 분리한다.",
+    "DE와 BC의 평행 표식 및 EC의 미지수 x를 보존한다.",
+    "ENGINE_CAPABILITY_PENDING: 원본의 외측 점선 곡선 길이 지시선 15·5·8·x는 dotted-curved-dimension-guide 기능이 필요하다."
+  ],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 470
+  }
+}

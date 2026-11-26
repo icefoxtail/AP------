@@ -1,0 +1,40 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DICE_TABLE",
+    "colVar": "x",
+    "rowVar": "y",
+    "cell": "PAIR",
+    "highlightGroups": [
+      {
+        "cells": [
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            5,
+            5
+          ]
+        ],
+        "tone": 2
+      }
+    ]
+  },
+  "caption": "주사위 A의 눈을 가로 x, B의 눈을 세로 y로 두면 2x−y=5인 세 순서쌍은 (3,1), (4,3), (5,5)이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 개의 주사위 $A,B$를 동시에 던져 $A$에서 나온 눈의 수를 $x$, $B$에서 나온 눈의 수를 $y$라 할 때, $2x-y=5$를 만족시키는 경우의 수는? [4점]",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "36개의 순서쌍을 빠짐없이 표시한다.",
+    "방정식의 해인 세 칸만 강조한다."
+  ]
+}

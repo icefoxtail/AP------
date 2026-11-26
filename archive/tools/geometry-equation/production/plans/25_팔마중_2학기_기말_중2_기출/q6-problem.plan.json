@@ -1,0 +1,212 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "rightAngles": [
+    {
+      "id": "rightD",
+      "refs": [
+        "B",
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "valAB",
+        "ownerSegment": "sAB",
+        "text": "y",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "valAC",
+        "ownerSegment": "sAC",
+        "text": "15",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "valAD",
+        "ownerSegment": "sAD",
+        "text": "x",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "valDC",
+        "ownerSegment": "sDC",
+        "text": "9",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "base14",
+        "from": "B",
+        "to": "C",
+        "label": "14",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "D는 BC 위의 수선의 발로 AD⊥BC이고 AC=15, BC=14, DC=9, AD=x, AB=y이다.",
+  "accessibilityDescription": "삼각형 ABC의 A에서 밑변 BC에 내린 수선 AD가 D에서 직각이다. AC=15, DC=9, BC 전체 길이=14는 바깥 치수선에, AD=x, AB=y는 각 변에 표시한다.",
+  "sourceQuote": "$\\triangle ABC$의 점 $A$에서 $\\overline{BC}$에 내린 수선의 발을 점 $D$라 하자. $\\overline{AD}=x$, $\\overline{AB}=y$라 할 때, $x+y$의 값은? [4점]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AD⊥BC",
+      "mappedTo": "rightD"
+    },
+    {
+      "id": "c2",
+      "condition": "AC=15, BC=14, DC=9, AD=x, AB=y",
+      "mappedTo": [
+        "sAC",
+        "base14",
+        "sDC",
+        "sAD",
+        "sAB"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "밑변 14의 전체 길이는 DC=9와 구분되도록 독립 치수선으로 그린다.",
+    "A에서 D까지의 수선 및 직각 작은 사각표식을 빠뜨리지 않는다."
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 460
+  }
+}

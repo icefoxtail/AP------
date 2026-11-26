@@ -1,0 +1,205 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "rightAngles": [
+    {
+      "id": "raA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "raD",
+      "refs": [
+        "A",
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lenAD",
+        "ownerSegment": "sAD",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lenDC",
+        "ownerSegment": "sDC",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lenBD",
+        "ownerSegment": "sBD",
+        "text": "x",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "∠BAC와 ∠ADC는 모두 직각인 삼각형이고 AD=4, DC=2, BD=x이다.",
+  "accessibilityDescription": "삼각형 ABC에서 A는 직각, A에서 BC로 내린 AD도 D에서 직각이다. AD=4, DC=2, BD=x가 각 선분 옆에 있다. 면은 칠하지 않는다.",
+  "sourceQuote": "아래 그림에서 $\\angle A = \\angle ADC = 90^\\circ, \\overline{AD}=4, \\overline{DC}=2$일 때, $\\overline{BD}$의 길이 $x$의 값은? [4점]<br><br>",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "∠A=∠ADC=90°",
+      "mappedTo": [
+        "raA",
+        "raD"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "AD=4, DC=2, BD=x",
+      "mappedTo": [
+        "sAD",
+        "sDC",
+        "sBD"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "A와 D의 직각 표식을 각각 독립적으로 보존한다.",
+    "수직인 AD와 밑변의 두 부분을 칠 없이 선으로 구별한다.",
+    "ENGINE_CAPABILITY_PENDING: 원본의 AD=4·BD=x·DC=2 주위 점선 곡선 길이 표시에는 dotted-curved-dimension-guide 기능이 필요하다."
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  }
+}

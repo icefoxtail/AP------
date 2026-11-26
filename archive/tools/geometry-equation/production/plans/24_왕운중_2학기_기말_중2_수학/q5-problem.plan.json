@@ -1,0 +1,238 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "72",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "be",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "E"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cd",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "be",
+          "cd"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sBG",
+      "refs": [
+        "B",
+        "G"
+      ]
+    },
+    {
+      "id": "sGE",
+      "refs": [
+        "G",
+        "E"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lenBG",
+        "ownerSegment": "sBG",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lenGE",
+        "ownerSegment": "sGE",
+        "text": "x",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "D와 E는 각각 AB, AC의 중점이고 두 중선 CD, BE가 G에서 만나며 BG=6, GE=x이다.",
+  "accessibilityDescription": "삼각형 ABC의 양옆 중점 D, E를 잇고, 중선 BE와 CD가 G에서 만난다. B에서 G까지 6, G에서 E까지 x가 각각 별도 선분 곁에 적혀 있다.",
+  "sourceQuote": "[5~6번] 아래 그림에서 점 $G$가 $\\triangle ABC$의 무게중심이고 $\\overline{BG}=6, \\overline{GE}=x$일 때, 물음에 답하시오.<br><br><br><br>5. $\\overline{GE}$의 길이 $x$의 값은? [3점]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "G는 삼각형 ABC의 무게중심이고 BE, CD는 중선",
+      "mappedTo": [
+        "D",
+        "E",
+        "G",
+        "sCD",
+        "sBG",
+        "sGE"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "BG=6, GE=x",
+      "mappedTo": [
+        "sBG",
+        "sGE"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "중점 D, E를 도형 중앙의 실제 중선 교점 G와 연결한다.",
+    "길이 6과 x는 각각 B-G와 G-E 전체를 가리킨다.",
+    "ENGINE_CAPABILITY_PENDING: 원본의 B-G와 G-E를 휘어 감는 점선 길이 지시선에는 dotted-curved-dimension-guide와 owner path anchor가 필요하다."
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 470
+  }
+}
