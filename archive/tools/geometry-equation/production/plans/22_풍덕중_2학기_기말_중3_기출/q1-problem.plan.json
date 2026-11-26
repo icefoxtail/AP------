@@ -1,0 +1,230 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1040490651",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-858464803",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "EAST1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "582602735",
+            "denominator": "100000000"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "0",
+            "denominator": "100000000"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "EAST1"
+        ],
+        "args": {
+          "length": {
+            "kind": "rational",
+            "numerator": "582602735",
+            "denominator": "100000000"
+          },
+          "angleDeg": {
+            "kind": "rational",
+            "numerator": "22000000000",
+            "denominator": "100000000"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "EAST1"
+        ],
+        "args": {
+          "length": {
+            "kind": "rational",
+            "numerator": "582602735",
+            "denominator": "100000000"
+          },
+          "angleDeg": {
+            "kind": "rational",
+            "numerator": "27200000000",
+            "denominator": "100000000"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "EAST1"
+        ],
+        "args": {
+          "length": {
+            "kind": "rational",
+            "numerator": "582602735",
+            "denominator": "100000000"
+          },
+          "angleDeg": {
+            "kind": "rational",
+            "numerator": "1000000000",
+            "denominator": "100000000"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "582602735",
+            "denominator": "100000000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "PA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "PB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "P26",
+        "refs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "value": 26,
+        "factRole": "GIVEN",
+        "label": "26"
+      },
+      {
+        "id": "Ox",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 52,
+        "factRole": "GIVEN",
+        "label": "x",
+        "labelKind": "MATH"
+      }
+    ]
+  },
+  "caption": "문제 원 그림: 중심각 x와 같은 호를 바라보는 원주각 26°.",
+  "sourceConditions": [
+    {
+      "id": "original-image",
+      "condition": "원본 q1.png의 호 AB의 원주각 26°와 중심각 x",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks.angles"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 원·현·접선·미지각·지시각 및 호 길이만 표시하고 계산 결과는 노출하지 않는다."
+  ],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "P"
+  ],
+  "hiddenPointStyle": "NONE"
+}

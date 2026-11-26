@@ -1,0 +1,307 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "CTR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1042564568",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-900232462",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "EAST1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "CTR"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "502872229",
+            "denominator": "100000000"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "0",
+            "denominator": "100000000"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "CTR",
+          "EAST1"
+        ],
+        "args": {
+          "length": {
+            "kind": "rational",
+            "numerator": "502872229",
+            "denominator": "100000000"
+          },
+          "angleDeg": {
+            "kind": "rational",
+            "numerator": "15000000000",
+            "denominator": "100000000"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "CTR",
+          "EAST1"
+        ],
+        "args": {
+          "length": {
+            "kind": "rational",
+            "numerator": "502872229",
+            "denominator": "100000000"
+          },
+          "angleDeg": {
+            "kind": "rational",
+            "numerator": "23000000000",
+            "denominator": "100000000"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "CTR",
+          "EAST1"
+        ],
+        "args": {
+          "length": {
+            "kind": "rational",
+            "numerator": "502872229",
+            "denominator": "100000000"
+          },
+          "angleDeg": {
+            "kind": "rational",
+            "numerator": "35000000000",
+            "denominator": "100000000"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "CTR",
+          "EAST1"
+        ],
+        "args": {
+          "length": {
+            "kind": "rational",
+            "numerator": "502872229",
+            "denominator": "100000000"
+          },
+          "angleDeg": {
+            "kind": "rational",
+            "numerator": "5000000000",
+            "denominator": "100000000"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1102296913",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-829046226",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "CTR"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "502872229",
+            "denominator": "100000000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "CTR",
+    "A",
+    "B",
+    "C",
+    "D",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "A60",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 60,
+        "factRole": "GIVEN",
+        "label": "60"
+      },
+      {
+        "id": "C50",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "value": 50,
+        "factRole": "GIVEN",
+        "label": "50"
+      },
+      {
+        "id": "Px",
+        "refs": [
+          "A",
+          "P",
+          "D"
+        ],
+        "value": 110,
+        "factRole": "DERIVED_INTERMEDIATE",
+        "label": "110"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAD",
+        "circle": "circ",
+        "center": "CTR",
+        "from": "A",
+        "to": "D",
+        "side": "MINOR",
+        "factRole": "GIVEN",
+        "color": "BLUE"
+      },
+      {
+        "id": "arcBC",
+        "circle": "circ",
+        "center": "CTR",
+        "from": "B",
+        "to": "C",
+        "side": "MINOR",
+        "factRole": "GIVEN",
+        "color": "WARM"
+      }
+    ]
+  },
+  "caption": "해설 도형: 두 현 AC·BD의 교점 P, 원주각 60°·50°. 주어진 각·호·접선의 관계를 따라 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "original-image",
+      "condition": "원본 q6.png의 두 현 AC·BD의 교점 P, 원주각 60°·50°",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks.angles",
+        "planeMarks.arcs"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 점·선·각도·호 길이를 모두 보존하고 관계를 표시하며 면 채움은 쓰지 않는다."
+  ],
+  "hiddenPointNames": [
+    "CTR"
+  ],
+  "hiddenPointStyle": "NONE"
+}

@@ -1,0 +1,330 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2375818175",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1526956760",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "EAST1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "1026754348",
+            "denominator": "100000000"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "0",
+            "denominator": "100000000"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "EAST1"
+        ],
+        "args": {
+          "length": {
+            "kind": "rational",
+            "numerator": "1026754348",
+            "denominator": "100000000"
+          },
+          "angleDeg": {
+            "kind": "rational",
+            "numerator": "27000000000",
+            "denominator": "100000000"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "EAST1"
+        ],
+        "args": {
+          "length": {
+            "kind": "rational",
+            "numerator": "1026754348",
+            "denominator": "100000000"
+          },
+          "angleDeg": {
+            "kind": "rational",
+            "numerator": "21000000000",
+            "denominator": "100000000"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "EAST1"
+        ],
+        "args": {
+          "length": {
+            "kind": "rational",
+            "numerator": "1026754348",
+            "denominator": "100000000"
+          },
+          "angleDeg": {
+            "kind": "rational",
+            "numerator": "3000000000",
+            "denominator": "100000000"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "597427477",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-2553711108",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3402572523",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-2553711108",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "1026754348",
+            "denominator": "100000000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "P",
+    "T"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "PA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "AT",
+      "refs": [
+        "A",
+        "T"
+      ]
+    },
+    {
+      "id": "PC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "CAT",
+        "refs": [
+          "C",
+          "A",
+          "T"
+        ],
+        "value": 60,
+        "factRole": "DERIVED_INTERMEDIATE",
+        "noLabel": true
+      },
+      {
+        "id": "APC",
+        "refs": [
+          "A",
+          "P",
+          "C"
+        ],
+        "value": 30,
+        "factRole": "DERIVED_INTERMEDIATE",
+        "noLabel": true
+      },
+      {
+        "id": "ACB",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 30,
+        "factRole": "DERIVED_INTERMEDIATE",
+        "noLabel": true
+      },
+      {
+        "id": "BAC",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 90,
+        "factRole": "DERIVED_INTERMEDIATE",
+        "noLabel": true
+      },
+      {
+        "id": "ABC",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 60,
+        "factRole": "DERIVED_INTERMEDIATE",
+        "noLabel": true
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "equalPAAC",
+        "count": 1,
+        "segments": [
+          "PA",
+          "AC"
+        ]
+      }
+    ]
+  },
+  "caption": "해설 도형: 접선 PAT, 지름 PBOC, AP=AC인 삼각형 APC. 주어진 각·호·접선의 관계를 따라 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "original-image",
+      "condition": "원본 q20.png의 접선 PAT, 지름 PBOC, AP=AC인 삼각형 APC",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displayCircles",
+        "displaySegments",
+        "planeMarks.angles",
+        "rightAngles",
+        "planeMarks.equalLengths"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 점·선·각도·호 길이를 모두 보존하고 관계를 표시하며 면 채움은 쓰지 않는다."
+  ],
+  "rightAngles": [
+    {
+      "id": "right90",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ],
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ]
+}

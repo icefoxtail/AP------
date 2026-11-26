@@ -300,8 +300,9 @@
           "D"
         ],
         "value": 60,
-        "noLabel": true,
-        "factRole": "CONCLUSION"
+        "factRole": "CONCLUSION",
+        "label": "x",
+        "labelKind": "MATH"
       }
     ],
     "arcs": [
@@ -313,7 +314,10 @@
         "to": "C",
         "side": "MINOR",
         "color": "BLUE",
-        "factRole": "GIVEN"
+        "factRole": "GIVEN",
+        "label": "3",
+        "unit": "cm",
+        "labelKind": "MATH"
       },
       {
         "id": "arcCD",
@@ -323,7 +327,10 @@
         "to": "D",
         "side": "MINOR",
         "color": "BLUE",
-        "factRole": "GIVEN"
+        "factRole": "GIVEN",
+        "label": "3",
+        "unit": "cm",
+        "labelKind": "MATH"
       }
     ]
   },
@@ -342,6 +349,6 @@
     }
   ],
   "newVisualInformation": [
-    "길이가 같은 두 호와 이를 보는 원주각 30°,60°의 관계를 표시한다. 호 길이는 원문 그림을 보존하며 라벨에 여유를 둔다."
+    "원본의 두 호 BC·CD에 각각 3 cm 길이 라벨을 직접 그린다. 같은 길이의 호와 30° 원주각을 보존한다."
   ]
 }
