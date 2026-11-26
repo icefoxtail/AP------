@@ -1,0 +1,46 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "caption": "U의 2와 5의 배수 집합 두 원 바깥이 Aᶜ∩Bᶜ이다.",
+  "accessibilityDescription": "U의 2와 5의 배수 집합 두 원 바깥이 Aᶜ∩Bᶜ이다.",
+  "sourceConditions": [
+    {
+      "id": "universe",
+      "condition": "n(U)=30",
+      "mappedTo": "diagram.universe.count"
+    },
+    {
+      "id": "multiples",
+      "condition": "n(A)=15, n(B)=6",
+      "mappedTo": [
+        "diagram.sets[0].count",
+        "diagram.sets[1].count"
+      ]
+    },
+    {
+      "id": "complement",
+      "condition": "A^c∩B^c=(A∪B)^c",
+      "mappedTo": "diagram.shade"
+    }
+  ],
+  "newVisualInformation": [
+    "원의 포함·겹침·바깥 영역만 시각화하며 원소 수나 정답을 그림 원소로 가장하지 않는다."
+  ],
+  "diagram": {
+    "kind": "VENN",
+    "universe": {
+      "name": "U",
+      "count": "30"
+    },
+    "sets": [
+      {
+        "id": "A",
+        "count": "15"
+      },
+      {
+        "id": "B",
+        "count": "6"
+      }
+    ],
+    "shade": "(A∪B)^c"
+  }
+}

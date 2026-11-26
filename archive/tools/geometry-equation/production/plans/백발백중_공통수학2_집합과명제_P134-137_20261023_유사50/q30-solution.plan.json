@@ -1,0 +1,55 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "caption": "6의 배수 B는 3의 배수 A에 포함되므로 공통 여집합은 A 바깥이다.",
+  "accessibilityDescription": "6의 배수 B는 3의 배수 A에 포함되므로 공통 여집합은 A 바깥이다.",
+  "sourceConditions": [
+    {
+      "id": "universe",
+      "condition": "n(U)=40",
+      "mappedTo": "diagram.universe.count"
+    },
+    {
+      "id": "multiples",
+      "condition": "n(A)=13, n(B)=6",
+      "mappedTo": [
+        "diagram.sets[0].count",
+        "diagram.sets[1].count"
+      ]
+    },
+    {
+      "id": "complement",
+      "condition": "A^c∩B^c=(A∪B)^c",
+      "mappedTo": "diagram.shade"
+    },
+    {
+      "id": "nested",
+      "condition": "B⊂A",
+      "mappedTo": "diagram.subset"
+    }
+  ],
+  "newVisualInformation": [
+    "원의 포함·겹침·바깥 영역만 시각화하며 원소 수나 정답을 그림 원소로 가장하지 않는다."
+  ],
+  "diagram": {
+    "kind": "VENN",
+    "universe": {
+      "name": "U",
+      "count": "40"
+    },
+    "sets": [
+      {
+        "id": "A",
+        "count": "13"
+      },
+      {
+        "id": "B",
+        "count": "6"
+      }
+    ],
+    "shade": "(A∪B)^c",
+    "subset": [
+      "B",
+      "A"
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "caption": "A=D₃₀, B=D₁₈로 두면 두 약수 집합의 차집합은 A에만 속하는 영역이다.",
+  "accessibilityDescription": "A=D₃₀, B=D₁₈로 두면 두 약수 집합의 차집합은 A에만 속하는 영역이다.",
+  "sourceConditions": [
+    {
+      "id": "divisorSets",
+      "condition": "A=D30, B=D18, n(A)=8, n(B)=6",
+      "mappedTo": [
+        "diagram.sets[0].count",
+        "diagram.sets[1].count"
+      ]
+    },
+    {
+      "id": "difference",
+      "condition": "D30-D18={5,10,15,30}",
+      "mappedTo": [
+        "diagram.elements",
+        "diagram.shade"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원의 포함·겹침·바깥 영역만 시각화하며 원소 수나 정답을 그림 원소로 가장하지 않는다."
+  ],
+  "diagram": {
+    "kind": "VENN",
+    "showUniverse": false,
+    "sets": [
+      {
+        "id": "A",
+        "count": "8"
+      },
+      {
+        "id": "B",
+        "count": "6"
+      }
+    ],
+    "elements": [
+      {
+        "text": "5",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "10",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "15",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "30",
+        "in": [
+          "A"
+        ]
+      }
+    ],
+    "shade": "A-B"
+  }
+}

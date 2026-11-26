@@ -1,0 +1,315 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "두 접점에서 반지름과 접선이 직각이고 접선 길이가 같음을 표시한다.",
+  "accessibilityDescription": "두 접점에서 반지름과 접선이 직각이고 접선 길이가 같음을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "circle",
+      "condition": "원 x²+y²=5, 중심 O=(0,0)",
+      "mappedTo": [
+        "mathPlan.nodes[2].args.radius",
+        "displayCircles"
+      ]
+    },
+    {
+      "id": "external",
+      "condition": "P=(3,0)",
+      "mappedTo": [
+        "mathPlan.nodes[1].args.coordinates",
+        "displayPoints"
+      ]
+    },
+    {
+      "id": "twoTangents",
+      "condition": "P에서 그은 서로 다른 두 접선",
+      "mappedTo": [
+        "displaySegments[0]",
+        "displaySegments[1]"
+      ]
+    },
+    {
+      "id": "right",
+      "condition": "OT1⊥PT1, OT2⊥PT2",
+      "mappedTo": "rightAngles"
+    },
+    {
+      "id": "sameTangents",
+      "condition": "PT1=PT2",
+      "mappedTo": "planeMarks.equalLengths"
+    }
+  ],
+  "newVisualInformation": [
+    "점 P와 원점 O, 두 접점이 만드는 직각삼각형을 비교한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "5"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "t1",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "5"
+              }
+            ]
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "c": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-3"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "t2",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "5"
+              }
+            ]
+          },
+          "b": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "c": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-3"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T1",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "t1"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T2",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "t2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 520
+  },
+  "displayCircles": [
+    "c"
+  ],
+  "displayPoints": [
+    "O",
+    "P",
+    "T1",
+    "T2"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPT1",
+      "refs": [
+        "P",
+        "T1"
+      ]
+    },
+    {
+      "id": "sPT2",
+      "refs": [
+        "P",
+        "T2"
+      ]
+    },
+    {
+      "id": "sOT1",
+      "refs": [
+        "O",
+        "T1"
+      ]
+    },
+    {
+      "id": "sOT2",
+      "refs": [
+        "O",
+        "T2"
+      ]
+    },
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ],
+      "dashed": true
+    }
+  ],
+  "pointNames": {
+    "T1": "T₁",
+    "T2": "T₂"
+  },
+  "rightAngles": [
+    {
+      "id": "raT1",
+      "refs": [
+        "O",
+        "T1",
+        "P"
+      ]
+    },
+    {
+      "id": "raT2",
+      "refs": [
+        "O",
+        "T2",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eqT",
+        "count": 1,
+        "segments": [
+          "sPT1",
+          "sPT2"
+        ]
+      },
+      {
+        "id": "eqR",
+        "count": 2,
+        "segments": [
+          "sOT1",
+          "sOT2"
+        ]
+      }
+    ]
+  },
+  "sourceQuote": "점 $(3,0)$에서 원 $x^2+y^2=5$에 그은 서로 다른 두 "
+}

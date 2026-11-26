@@ -1,0 +1,210 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "두 거리 같은 점의 자취인 각의 이등분선과 y축이 만드는 삼각형을 나타낸다.",
+  "accessibilityDescription": "두 거리 같은 점의 자취인 각의 이등분선과 y축이 만드는 삼각형을 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "bisectors",
+      "condition": "두 등거리 자취: -2,4,-14 및 4,2,0",
+      "mappedTo": [
+        "mathPlan.nodes[0].args",
+        "mathPlan.nodes[1].args",
+        "displayLines"
+      ]
+    },
+    {
+      "id": "base",
+      "condition": "y축과의 두 교점 A,B",
+      "mappedTo": [
+        "mathPlan.nodes[4]",
+        "mathPlan.nodes[5]",
+        "displaySegments[2]"
+      ]
+    },
+    {
+      "id": "apex",
+      "condition": "두 이등분선의 교점 P",
+      "mappedTo": [
+        "mathPlan.nodes[3]",
+        "displayPoints"
+      ]
+    },
+    {
+      "id": "triangle",
+      "condition": "삼각형 PAB의 밑변은 y축 위",
+      "mappedTo": "displaySegments"
+    }
+  ],
+  "newVisualInformation": [
+    "교점 P에서 y축으로 잰 수평 거리가 높이임을 시각화하며 면 채움은 하지 않는다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "b1",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-14"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "b2",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ay",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "b1",
+          "b2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "b1",
+          "ay"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "b2",
+          "ay"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 520
+  },
+  "displayLines": [
+    "b1",
+    "b2"
+  ],
+  "displayPoints": [
+    "P",
+    "A",
+    "B"
+  ],
+  "coordinateLabels": [
+    "P",
+    "A",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "ap",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "bp",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "ab",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "sourceQuote": "점 $P$에서 두 직선 $x+3y-7=0$, $3x-y+7=0$에 이"
+}
