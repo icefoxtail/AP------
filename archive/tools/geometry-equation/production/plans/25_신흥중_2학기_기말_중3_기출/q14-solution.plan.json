@@ -1,0 +1,28 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "SET", "label": "첫째 자료", "color": "BLUE",
+        "pieces": [{"lo": {"value": "5", "state": "CLOSED"}, "hi": {"value": "11", "state": "CLOSED"}}]
+      },
+      {
+        "kind": "SET", "label": "둘째 자료", "color": "WARM",
+        "pieces": [{"lo": {"value": "8", "state": "CLOSED"}, "hi": null}]
+      },
+      {
+        "kind": "RESULT", "label": "공통 범위", "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {"text": "두 중앙값 조건의 공통 범위"},
+  "caption": "첫째 자료에서 5≤a≤11이고 둘째 자료에서 a≥8이므로 8≤a≤11의 자연수 네 개가 가능하다.",
+  "accessibilityDescription": "수직선 세 줄에 첫째 5부터 11까지, 둘째 8 이상, 마지막 공통 구간 8부터 11까지가 모두 닫힌 점으로 나타난다. 공통 구간에는 자연수 8, 9, 10, 11이 해당한다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "첫째 자료의 중앙값이 a이면 5≤a≤11.", "mappedTo": ["numberLine.rows[0]"]},
+    {"id": "c2", "condition": "둘째 자료의 중앙값이 8이면 a≥8(등호 포함).", "mappedTo": ["numberLine.rows[1]"]},
+    {"id": "c3", "condition": "두 조건의 공통인 8≤a≤11과 자연수 8,9,10,11.", "mappedTo": ["numberLine.rows[2]"]}
+  ],
+  "newVisualInformation": ["기존 해설 SVG의 잘못된 a>8 표기를 등호가 포함된 a≥8로 교정하고 결과 범위와 일치시킨다."]
+}

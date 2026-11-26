@@ -1,0 +1,54 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id": "C", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "0"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "B", "op": "TRANSLATE_POINT", "inputs": ["C"], "args": {"dx": {"kind": "integer", "value": "16"}, "dy": {"kind": "integer", "value": "0"}}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "A", "op": "TRANSLATE_POINT", "inputs": ["C"], "args": {"dx": {"kind": "integer", "value": "0"}, "dy": {"kind": "expression", "op": "mul", "args": [{"kind": "integer", "value": "16"}, {"kind": "expression", "op": "sqrt", "args": [{"kind": "integer", "value": "3"}]}]}}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "O", "op": "MIDPOINT", "inputs": ["A", "B"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "k", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["O"], "args": {"radius": {"kind": "integer", "value": "16"}}, "outputType": "CIRCLE", "factRole": "GIVEN"},
+      {"id": "lOC", "op": "LINE_THROUGH", "inputs": ["O", "C"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "tC", "op": "PERPENDICULAR_THROUGH", "inputs": ["C", "lOC"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "lAB", "op": "LINE_THROUGH", "inputs": ["A", "B"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "P", "op": "LINE_INTERSECTION", "inputs": ["tC", "lAB"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "T", "op": "TRANSLATE_POINT", "inputs": ["C"], "args": {"dx": {"kind": "integer", "value": "-12"}, "dy": {"kind": "expression", "op": "mul", "args": [{"kind": "integer", "value": "4"}, {"kind": "expression", "op": "sqrt", "args": [{"kind": "integer", "value": "3"}]}]}}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "coordinateCanvas": {"width": 680, "height": 520},
+  "displayPoints": ["A", "B", "C", "O", "P", "T"],
+  "displayLines": [],
+  "displayCircles": ["k"],
+  "displaySegments": [
+    {"id": "sAB", "refs": ["A", "B"]},
+    {"id": "sAC", "refs": ["A", "C"]},
+    {"id": "sBC", "refs": ["B", "C"]},
+    {"id": "sCT", "refs": ["C", "T"]},
+    {"id": "sCP", "refs": ["C", "P"]},
+    {"id": "sOC", "refs": ["O", "C"], "dashed": true}
+  ],
+  "planeMarks": {
+    "angles": [
+      {"id": "aA", "refs": ["B", "A", "C"], "value": 30, "label": "30", "style": "ARC", "color": "BLUE", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "aC", "refs": ["B", "C", "P"], "value": 30, "label": "30", "style": "ARC", "color": "BLUE", "factRole": "GIVEN"}
+    ],
+    "dimensions": [
+      {"id": "dAB", "from": "A", "to": "B", "label": "32", "unit": "cm", "side": "ABOVE", "offset": "AUTO"},
+      {"id": "dBC", "from": "B", "to": "C", "label": "16", "unit": "cm", "side": "BELOW", "offset": "AUTO"},
+      {"id": "dAC", "from": "A", "to": "C", "label": "16sqrt(3)", "unit": "cm", "side": "LEFT", "offset": "AUTO"}
+    ]
+  },
+  "rightAngles": [
+    {"id": "rC", "refs": ["A", "C", "B"]},
+    {"id": "rTan", "refs": ["O", "C", "P"]}
+  ],
+  "caption": "지름 AB=32cm, 접선-현의 각 30°, 직각삼각형 ACB의 두 변 16cm와 16√3cm를 치수선으로 분리했다.",
+  "sourceQuote": "반지름 16cm인 원의 접선 TC에서 ∠BCP=30°이고 삼각형 ACB의 넓이를 구한다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "AB는 원 O의 지름이고 반지름은 16cm이다.", "mappedTo": ["mathPlan.nodes", "displayCircles", "displaySegments", "planeMarks.dimensions"]},
+    {"id": "c2", "condition": "TC는 C에서의 접선이고 ∠BCP=30°이다.", "mappedTo": ["mathPlan.nodes", "displaySegments", "rightAngles", "planeMarks.angles"]},
+    {"id": "c3", "condition": "원주각 ACB는 직각이고 AB=32, BC=16, AC=16sqrt(3)이다.", "mappedTo": ["rightAngles", "planeMarks.dimensions"]}
+  ],
+  "newVisualInformation": ["기존 SVG에 겹친 16cm/16√3cm/32cm 수식 대신 원래 변에서 바깥으로 뺀 치수선 3개를 사용한다.", "불필요한 면 채움 없이 두 30° 각호와 직각 표시를 보존한다."]
+}

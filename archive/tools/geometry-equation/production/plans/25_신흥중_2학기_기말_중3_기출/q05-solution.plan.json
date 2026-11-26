@@ -1,0 +1,51 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id": "O", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "0"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "X", "op": "TRANSLATE_POINT", "inputs": ["O"], "args": {"dx": {"kind": "integer", "value": "10"}, "dy": {"kind": "integer", "value": "0"}}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "k", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["O"], "args": {"radius": {"kind": "integer", "value": "10"}}, "outputType": "CIRCLE", "factRole": "GIVEN"},
+      {"id": "B", "op": "POLAR_POINT", "inputs": ["O", "X"], "args": {"length": {"kind": "integer", "value": "10"}, "angleDeg": {"kind": "integer", "value": "290"}, "turn": "CCW"}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "C", "op": "POLAR_POINT", "inputs": ["O", "X"], "args": {"length": {"kind": "integer", "value": "10"}, "angleDeg": {"kind": "integer", "value": "164"}, "turn": "CCW"}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "D", "op": "POLAR_POINT", "inputs": ["O", "X"], "args": {"length": {"kind": "integer", "value": "10"}, "angleDeg": {"kind": "integer", "value": "45"}, "turn": "CCW"}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "lOB", "op": "LINE_THROUGH", "inputs": ["O", "B"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "lOC", "op": "LINE_THROUGH", "inputs": ["O", "C"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "tB", "op": "PERPENDICULAR_THROUGH", "inputs": ["B", "lOB"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "tC", "op": "PERPENDICULAR_THROUGH", "inputs": ["C", "lOC"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "A", "op": "LINE_INTERSECTION", "inputs": ["tB", "tC"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "coordinateCanvas": {"width": 640, "height": 480},
+  "displayPoints": ["O", "A", "B", "C", "D"],
+  "displayLines": [],
+  "displayCircles": ["k"],
+  "displaySegments": [
+    {"id": "sAB", "refs": ["A", "B"]},
+    {"id": "sAC", "refs": ["A", "C"]},
+    {"id": "sOB", "refs": ["O", "B"]},
+    {"id": "sOC", "refs": ["O", "C"]},
+    {"id": "sDB", "refs": ["D", "B"]},
+    {"id": "sDC", "refs": ["D", "C"]}
+  ],
+  "planeMarks": {
+    "angles": [
+      {"id": "aD", "refs": ["B", "D", "C"], "value": 63, "label": "63", "style": "ARC", "factRole": "GIVEN"},
+      {"id": "aO", "refs": ["B", "O", "C"], "value": 126, "label": "126", "style": "ARC", "color": "BLUE", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "aA", "refs": ["B", "A", "C"], "value": 54, "label": "54", "style": "ARC", "color": "WARM", "factRole": "CONCLUSION"}
+    ]
+  },
+  "rightAngles": [
+    {"id": "rB", "refs": ["O", "B", "A"]},
+    {"id": "rC", "refs": ["O", "C", "A"]}
+  ],
+  "caption": "두 접선의 접점에서 반지름은 수직이고 중심각 BOC는 126°여서 바깥각 BAC는 54°이다.",
+  "sourceQuote": "원 O 밖의 점 A에서 두 접선 AB, AC를 그었고 원 위 점 D에 대해 각 BDC=63°일 때 각 CAB을 구한다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "AB와 AC는 원 O의 접선이며 B와 C가 접점이다.", "mappedTo": ["mathPlan.nodes", "displaySegments", "rightAngles"]},
+    {"id": "c2", "condition": "D는 원 위에 있고 ∠BDC=63°이다.", "mappedTo": ["displayCircles", "displayPoints", "planeMarks.angles"]},
+    {"id": "c3", "condition": "∠BOC=126°, ∠CAB=54°는 각각 원주각 성질과 사각형 내각합으로 얻는다.", "mappedTo": ["planeMarks.angles"]}
+  ],
+  "newVisualInformation": ["기존 SVG의 삼각형 ABOC 내부 파란 면 채움을 제거하고 각도 호·접점 직각·반지름을 모두 선으로 표시한다."]
+}
