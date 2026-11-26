@@ -1,0 +1,316 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "C",
+    "B",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "hiddenPointNames": [
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "sGB",
+      "refs": [
+        "G",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "10",
+        "side": "BELOW",
+        "value": "10"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lenAC",
+        "ownerSegment": "sAC",
+        "text": "x"
+      },
+      {
+        "id": "lenCB",
+        "ownerSegment": "sCB",
+        "text": "10-x"
+      }
+    ],
+    "regions": [
+      {
+        "id": "area1",
+        "fill": "BLUE",
+        "label": "S_1",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "C",
+              "E",
+              "D"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "area2",
+        "fill": "WARM",
+        "label": "S_2",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "C",
+              "B",
+              "G",
+              "F",
+              "E"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "선분 AB의 길이는 10이며, 내부점 C를 경계로 AC와 CB를 각각 한 변으로 하는 두 정사각형을 같은 쪽에 그렸다.",
+  "accessibilityDescription": "A, C, B가 왼쪽부터 일직선에 있고 C는 AB 내부에 있다. AC와 CB를 밑변으로 하는 두 정사각형이 AB의 위쪽에 나란히 있으며 각각 넓이 S1, S2를 표시한다. 전체 길이 AB는 10, 양쪽 변의 길이는 x와 10-x이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A,C,B가 한 직선 위, C는 AB 내부",
+      "mappedTo": "mathPlan.nodes"
+    },
+    {
+      "id": "c2",
+      "condition": "AB=10",
+      "mappedTo": "planeMarks.dimensions[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "AC를 한 변으로 하는 첫 정사각형",
+      "mappedTo": "displaySegments"
+    },
+    {
+      "id": "c4",
+      "condition": "CB를 한 변으로 하는 둘째 정사각형",
+      "mappedTo": "displaySegments"
+    },
+    {
+      "id": "c5",
+      "condition": "AC=x, CB=10-x",
+      "mappedTo": "planeMarks.expressionLabels"
+    },
+    {
+      "id": "c6",
+      "condition": "각 정사각형의 넓이 S1,S2",
+      "mappedTo": "planeMarks.regions"
+    }
+  ],
+  "newVisualInformation": [
+    "두 정사각형이 공통 선분 AB에서 갈라지는 점 C를 공유하되, 양쪽 변의 길이는 미정이라는 관계만 보여 준다."
+  ]
+}

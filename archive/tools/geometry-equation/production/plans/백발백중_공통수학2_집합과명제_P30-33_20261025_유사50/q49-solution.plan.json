@@ -1,0 +1,63 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "k",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "조건 (가)",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "1",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "조건 (나)",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "label": "공통 범위"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "존재명제와 전칭명제의 허용 구간 교집합"
+  },
+  "caption": "(가)는 k<1이고 (나)는 k≥-2이므로 동시에 만족하는 k는 [-2,1)이다. 왼쪽 끝점 -2는 포함되고 오른쪽 1는 포함되지 않아 최솟값은 -2이다.",
+  "accessibilityDescription": "k 수직선 위에서 조건 (가)는 1보다 작은 열린 왼쪽 반직선, 조건 (나)는 -2 이상인 닫힌 오른쪽 반직선, 공통 범위는 -2를 포함하고 1를 제외하는 구간이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "존재명제 (가)의 필요충분조건 k<1",
+      "mappedTo": "numberLine.rows[0].pieces[0].hi"
+    },
+    {
+      "id": "c2",
+      "condition": "전칭명제 (나)의 필요충분조건 k≥-2",
+      "mappedTo": "numberLine.rows[1].pieces[0].lo"
+    },
+    {
+      "id": "c3",
+      "condition": "(가)와 (나)의 공통 범위 [-2,1)",
+      "mappedTo": "numberLine.rows[2]"
+    }
+  ],
+  "newVisualInformation": [
+    "존재와 전칭의 경계가 왜 한쪽은 열리고 다른 쪽은 닫히는지 두 반직선과 교집합의 차이를 한 눈금 위에서 보여 준다."
+  ]
+}
