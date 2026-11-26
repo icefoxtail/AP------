@@ -1,0 +1,49 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "18" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "36", "denominator": "5" }, { "kind": "rational", "numerator": "48", "denominator": "5" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "126", "denominator": "5" }, { "kind": "rational", "numerator": "48", "denominator": "5" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "F", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "96", "denominator": "5" }, { "kind": "rational", "numerator": "48", "denominator": "5" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "E", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "144", "denominator": "5" }, { "kind": "rational", "numerator": "72", "denominator": "5" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "F", "E"],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sCD", "refs": ["C", "D"] },
+    { "id": "sDA", "refs": ["D", "A"] },
+    { "id": "sBF", "refs": ["B", "F"] },
+    { "id": "sFE", "refs": ["F", "E"] },
+    { "id": "sDE", "refs": ["D", "E"] }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      { "id": "dAB", "from": "A", "to": "B", "label": "12", "unit": "cm", "side": "LEFT", "style": "BAR", "value": "12", "factRole": "GIVEN" },
+      { "id": "dBC", "from": "B", "to": "C", "label": "18", "unit": "cm", "side": "BELOW", "style": "BAR", "value": "18", "factRole": "GIVEN" }
+    ],
+    "angles": [
+      { "id": "aABF", "refs": ["A", "B", "F"], "value": 26.565051177, "noLabel": true, "style": "ARC", "arcs": 1, "equalGroup": 1, "factRole": "GIVEN" },
+      { "id": "aFBC", "refs": ["F", "B", "C"], "value": 26.565051177, "noLabel": true, "style": "ARC", "arcs": 1, "equalGroup": 1, "factRole": "GIVEN" }
+    ]
+  },
+  "coordinateCanvas": { "width": 720, "height": 500 },
+  "caption": "평행사변형 ABCD에서 AB=12 cm, BC=18 cm이고 B의 각 이등분선 B-F-E가 CD를 E까지 실선으로 연장한 선과 만난다.",
+  "accessibilityDescription": "B-C가 밑변인 평행사변형 ABCD에서 B와 E를 잇는 실선이 윗변 AD의 F를 지난다. C-D-E는 한 직선이고 D-E 역시 실선이다. B의 두 작은 각은 같은 호로 표시하며 AB=12 cm, BC=18 cm를 적는다. 면은 칠하지 않고 DE의 정답 길이는 표시하지 않는다.",
+  "sourceConditions": [
+    { "id": "parallelogram", "condition": "ABCD는 평행사변형으로 AB=12 cm, BC=18 cm이다. 대표 좌표에서 AB=(36/5,48/5), BC=(18,0)이고 두 길이가 정확하다.", "mappedTo": ["A", "B", "C", "D", "sAB", "sBC", "sCD", "sDA", "dAB", "dBC"] },
+    { "id": "bisector", "condition": "BE가 각 ABC를 이등분하고, F는 BE와 AD의 교점이다. 두 각은 각각 arctan(1/2)이며 같다.", "mappedTo": ["B", "F", "E", "sBF", "sFE", "aABF", "aFBC"] },
+    { "id": "extension", "condition": "E는 CD의 D쪽 연장선 위에 있다. C,D,E가 정확히 일직선이며 원본에서 DE는 점선이 아니라 실선이다.", "mappedTo": ["C", "D", "E", "sCD", "sDE"] }
+  ],
+  "newVisualInformation": [
+    "원본 PNG처럼 D-E 연장부를 실선으로 그린다. 현행 SVG의 점선 D-E를 그대로 따르지 않는다.",
+    "B의 각 이등분 조건을 두 실제 각 호의 equalGroup으로 표시하고, 원본의 12 cm·18 cm와 F 교점을 보존한다.",
+    "원본에 없는 전체 면 채움과 아직 구하지 않은 DE의 수치 라벨은 사용하지 않는다."
+  ],
+  "sourceQuote": "다음 평행사변형 ABCD에서 $\\angle B$의 이등분선이 $\\overline{CD}$의 연장선과 만나는 점을 E라고 할 때"
+}
