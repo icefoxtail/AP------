@@ -1,0 +1,280 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "직선 y=x+t 위 두 점 P,Q에서 AB를 보는 각이 직각이다.",
+  "accessibilityDescription": "직선 y=x+t 위 두 점 P,Q에서 AB를 보는 각이 직각이다.",
+  "sourceConditions": [
+    {
+      "id": "fixed-diameter",
+      "condition": "A=[2,3], B=[-4,-3]",
+      "mappedTo": [
+        "mathPlan.nodes[0].args",
+        "mathPlan.nodes[1].args",
+        "displaySegments"
+      ]
+    },
+    {
+      "id": "secant",
+      "condition": "y=x+2, P,Q는 위 직선과 직각 조건의 두 점",
+      "mappedTo": [
+        "mathPlan.nodes[2].args",
+        "mathPlan.nodes[6].inputs",
+        "mathPlan.nodes[7].branch",
+        "mathPlan.nodes[8].branch"
+      ]
+    },
+    {
+      "id": "right-angle",
+      "condition": "∠APB=∠AQB=90°",
+      "mappedTo": "rightAngles"
+    }
+  ],
+  "newVisualInformation": [
+    "지름 AB와 현 PQ의 직각·중점·수선 관계를 나타낸다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "line",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "M",
+          "A"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "M",
+          "line"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "hits",
+        "op": "INTERSECTION",
+        "inputs": [
+          "line",
+          "circle"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "hits"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "M",
+            "H"
+          ],
+          "sign": 1
+        }
+      },
+      {
+        "id": "Q",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "hits"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "M",
+            "H"
+          ],
+          "sign": -1
+        }
+      },
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [
+    "line"
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "P",
+    "Q"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sAQ",
+      "refs": [
+        "A",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQB",
+      "refs": [
+        "Q",
+        "B"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rightP",
+      "refs": [
+        "A",
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "rightQ",
+      "refs": [
+        "A",
+        "Q",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 530
+  },
+  "sourceQuote": "두 점 $A(2,3)$, $B(-4,-3)$와 직선 $y=x+2$ 위의 서로 다른 두 점 $P,Q$에 대하여 $\\angle APB=\\angle AQB=90^\\circ$일 때, 선분 $PQ$의 길이는?"
+}

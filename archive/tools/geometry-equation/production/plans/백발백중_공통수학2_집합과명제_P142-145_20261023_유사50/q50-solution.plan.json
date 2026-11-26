@@ -1,0 +1,232 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "B와 C가 O에서 출발하는 같은 반직선 위에 있고 직선 CD가 삼각형 OAC를 분할한다.",
+  "accessibilityDescription": "B와 C가 O에서 출발하는 같은 반직선 위에 있고 직선 CD가 삼각형 OAC를 분할한다.",
+  "sourceConditions": [
+    {
+      "id": "given-vertices",
+      "condition": "O=(0,0), A=5,10, B=-2,3",
+      "mappedTo": [
+        "mathPlan.nodes[0].args",
+        "mathPlan.nodes[1].args",
+        "mathPlan.nodes[2].args"
+      ]
+    },
+    {
+      "id": "ray-and-area",
+      "condition": "C=4B, [ACO]=4[ABO]",
+      "mappedTo": [
+        "mathPlan.nodes[3].args",
+        "displaySegments"
+      ]
+    },
+    {
+      "id": "cutting-line",
+      "condition": "4x+5y-28=0",
+      "mappedTo": [
+        "mathPlan.nodes[4].args",
+        "mathPlan.nodes[6].inputs",
+        "displayLines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 삼각형의 분할점과 한 직선 위에 있는 O,B,C를 좌표 그림으로 확인한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "VECTOR_SCALE_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "k": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cut",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-28"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "oa",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "cut",
+          "oa"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [
+    "cut"
+  ],
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ],
+      "dashed": true
+    }
+  ],
+  "coordinateLabels": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 530
+  },
+  "sourceQuote": "좌표평면 위의 세 점 $O(0,0)$, $A(5,10)$, $B(-2,3)$에 대하여 제2사분면의 점 $C$는 반직선 $OB$ 위에 있다. 삼각형 $ACO$의 넓이가 삼각형 $ABO$의 넓이의 4배일 때, 직선 $4x+5y-28=0$이 삼각형 $ACO$의 넓이를 $p:q$ ($p<q$, 서로소인 자연수)로 나눈다. $p^2+q^2$의 값은?"
+}
