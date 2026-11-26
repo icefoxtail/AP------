@@ -1,80 +1,56 @@
 {
-  "capability": "multi-curve-figure-v1",
-  "graphPlan": {
-    "family": "multi-curve",
-    "curves": [
-      {
-        "id": "f0",
-        "kind": "LINE",
-        "coefficients": [
-          "0",
-          "2"
-        ],
-        "domain": [
-          "-2",
-          "2"
-        ]
-      },
-      {
-        "id": "f1",
-        "kind": "LINE",
-        "coefficients": [
-          "-3",
-          "2"
-        ],
-        "domain": [
-          "-2",
-          "2"
-        ]
-      }
-    ],
-    "overlays": {
-      "points": [
-        {
-          "id": "P0",
-          "x": "0",
-          "y": "0",
-          "coordinates": true,
-          "unnamed": true
-        },
-        {
-          "id": "P1",
-          "x": "0",
-          "y": "-3",
-          "coordinates": true,
-          "unnamed": true
-        },
-        {
-          "id": "P2",
-          "x": "1",
-          "y": "2",
-          "coordinates": true,
-          "unnamed": true
-        },
-        {
-          "id": "P3",
-          "x": "1",
-          "y": "-1",
-          "coordinates": true,
-          "unnamed": true
-        }
-      ]
-    }
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "O", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "XL", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-3" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "XR", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "3" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "YB", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "-8" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "YT", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "6" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-2" }, { "kind": "integer", "value": "-4" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "2" }, { "kind": "integer", "value": "4" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-2" }, { "kind": "integer", "value": "-7" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "2" }, { "kind": "integer", "value": "1" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "G0", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-1" }, { "kind": "integer", "value": "-2" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "H0", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-1" }, { "kind": "integer", "value": "-5" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "G1", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "1" }, { "kind": "integer", "value": "2" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "H1", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "1" }, { "kind": "integer", "value": "-1" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
   },
-  "caption": "같은 x에서 세로좌표가 3 감소한다. y=2x−3, 정답④.",
+  "displayPoints": ["O", "XL", "XR", "YB", "YT", "A", "B", "C", "D", "G0", "H0", "G1", "H1"],
+  "hiddenPointNames": ["XL", "XR", "YB", "YT", "A", "B", "C", "D", "G0", "H0", "G1", "H1"],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    { "id": "xAxis", "refs": ["XL", "XR"], "arrow": "END" },
+    { "id": "yAxis", "refs": ["YB", "YT"], "arrow": "END" },
+    { "id": "sourceLine", "refs": ["A", "B"] },
+    { "id": "shiftedLine", "refs": ["C", "D"] },
+    { "id": "move0", "refs": ["G0", "H0"], "arrow": "END" },
+    { "id": "move1", "refs": ["G1", "H1"], "arrow": "END" }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      { "id": "lineSource", "ownerSegment": "sourceLine", "text": "y=2x" },
+      { "id": "lineShift", "ownerSegment": "shiftedLine", "text": "y=2x-3" },
+      { "id": "delta0", "ownerSegment": "move0", "text": "-3" },
+      { "id": "delta1", "ownerSegment": "move1", "text": "-3" },
+      { "id": "axisX", "ownerSegment": "xAxis", "text": "x" },
+      { "id": "axisY", "ownerSegment": "yAxis", "text": "y" }
+    ]
+  },
+  "coordinateCanvas": { "width": 720, "height": 530 },
+  "caption": "직선 y=2x를 아래로 3만큼 평행이동하면 y=2x−3이다. 수직 화살표 두 개가 같은 x에서 y값이 3 감소함을 나타낸다.",
+  "accessibilityDescription": "좌표평면에서 y=2x와 y=2x−3 두 직선이 평행하고, x=−1과 x=1에서 위쪽 직선으로부터 아래쪽 직선까지 내려가는 화살표에 각각 −3을 표시한다.",
   "sourceConditions": [
-    {
-      "id": "source",
-      "condition": "그림의 ㉠은 일차함수 $y=2x$의 그래프를 $y$축의 방향으로 $-3$만큼 평행이동한 직선이다. ㉠의 식으로 옳은 것을 고르시오. [3점]",
-      "mappedTo": "graphPlan"
-    },
-    {
-      "id": "method",
-      "condition": "같은 x에서 세로좌표가3 감소한다. y=2x−3, 정답④.",
-      "mappedTo": "graphPlan"
-    }
+    { "id": "c1", "condition": "기준 그래프는 y=2x로, (−2,−4)와 (2,4)를 지난다.", "mappedTo": ["sourceLine", "A", "B", "lineSource"] },
+    { "id": "c2", "condition": "y축 방향으로 −3만큼 평행이동한 직선은 y=2x−3이다.", "mappedTo": ["shiftedLine", "C", "D", "lineShift"] },
+    { "id": "c3", "condition": "x=−1과 x=1에서 원래 그래프와 이동한 그래프의 세로좌표 차는 항상 −3이다.", "mappedTo": ["move0", "move1", "delta0", "delta1"] }
   ],
   "newVisualInformation": [
-    "같은 x에서 세로좌표가3 감소한다. y=2x−3, 정답④."
-  ]
+    "기존 해설 SVG에서 빠졌던 세로 평행이동 화살표 두 개를 엔진 displaySegments.arrow=END로 명시한다.",
+    "두 선의 식을 실제 선분에 소유된 라벨로 붙이고 면색은 사용하지 않는다."
+  ],
+  "sourceQuote": "일차함수 y=2x의 그래프를 y축 방향으로 −3 평행이동하여 ㉠의 식을 구한다."
 }
