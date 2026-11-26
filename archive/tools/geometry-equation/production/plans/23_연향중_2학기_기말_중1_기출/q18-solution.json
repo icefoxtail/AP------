@@ -1,0 +1,63 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "caption": "수학 공부 시간의 상대도수분포다각형에서 60분 이상 세 계급의 합 0.60을 확인한다.",
+  "accessibilityDescription": "30~90분 여섯 계급의 상대도수는 차례로 0.10,0.10,0.20,0.35,0.15,0.10. 60분 이상인 마지막 세 계급 아래 0.60 괄호.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "30~90분까지 10분 간격의 6계급이다.",
+      "mappedTo": "chart.boundaries"
+    },
+    {
+      "id": "c2",
+      "condition": "상대도수 0.10,0.10,0.20,0.35,0.15,0.10의 합은 1.00이다.",
+      "mappedTo": "chart.series[0].relativeFrequencies"
+    },
+    {
+      "id": "c3",
+      "condition": "60분 이상인 3계급의 상대도수 합은 0.60이다.",
+      "mappedTo": "chart.classSums"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 6개 점과 격자·축 눈금을 그대로 유지하며 분포다각형 아래 면 채움은 사용하지 않는다.",
+    "해설용 60분 이상 3계급의 구간 괄호를 정확히 그린다."
+  ],
+  "chart": {
+    "kind": "FREQUENCY_POLYGON",
+    "yKind": "RELATIVE",
+    "boundaries": [
+      "30",
+      "40",
+      "50",
+      "60",
+      "70",
+      "80",
+      "90"
+    ],
+    "series": [
+      {
+        "relativeFrequencies": [
+          "0.10",
+          "0.10",
+          "0.20",
+          "0.35",
+          "0.15",
+          "0.10"
+        ]
+      }
+    ],
+    "xTitle": "시간(분)",
+    "yTitle": "상대도수",
+    "grid": true,
+    "showValues": true,
+    "classSums": [
+      {
+        "series": 0,
+        "from": 3,
+        "to": 5,
+        "label": "0.60"
+      }
+    ]
+  }
+}
