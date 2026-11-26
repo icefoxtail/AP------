@@ -1,0 +1,37 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": { "schemaVersion": "construction-spike-v1", "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false }, "nodes": [
+    { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-5" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "5" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "1" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "O", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "-12" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+    { "id": "k", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["O"], "args": { "radius": { "kind": "integer", "value": "13" } }, "outputType": "CIRCLE", "factRole": "DERIVED_INTERMEDIATE" }
+  ]},
+  "displayPoints": ["A", "B", "C", "D", "O"], "hiddenPointNames": ["O"], "hiddenPointStyle": "NONE",
+  "displayLines": [], "displayCircles": [],
+  "displaySegments": [
+    { "id": "sAD", "refs": ["A", "D"] },
+    { "id": "sDB", "refs": ["D", "B"] },
+    { "id": "sCD", "refs": ["C", "D"] }
+  ],
+  "rightAngles": [{ "id": "rD", "refs": ["A", "D", "C"] }],
+  "planeMarks": {
+    "equalLengths": [{ "id": "halfChord", "count": 1, "segments": ["sAD", "sDB"] }],
+    "arcs": [{ "id": "arcAB", "circle": "k", "center": "O", "from": "A", "to": "B", "side": "MINOR" }],
+    "expressionLabels": [
+      { "id": "given5", "ownerSegment": "sAD", "text": "5", "unit": "cm" },
+      { "id": "given1", "ownerSegment": "sCD", "text": "1", "unit": "cm" }
+    ]
+  },
+  "coordinateCanvas": { "width": 600, "height": 420 },
+  "caption": "현 AB 위의 D는 AD=BD=5cm인 중점이고, 그 위쪽 호의 점 C에서 내려온 CD는 현에 수직이며 1cm이다.",
+  "accessibilityDescription": "원 전체 대신 위쪽으로 작은 호 AB만 있고, 양 끝 A와 B를 잇는 가로 현 중점 D에 같은 길이 눈금이 있다. 호 위 C와 D 사이 1cm 수직선 및 직각 표식이 있다. 원의 중심과 반지름의 크기는 보이지 않는다.",
+  "sourceQuote": "다음 그림에서 $\\wideparen{AB}$는 원의 일부분이다. $\\overline{AD}=\\overline{BD}$, $\\overline{AB}\\perp\\overline{CD}$일 때, 이 원의 반지름의 길이는? (5점)",
+  "sourceConditions": [
+    { "id": "visibleArc", "condition": "원본 q5.png에는 원 전체가 아니라 짧은 호 AB만 표시되어 있으며 중심은 알려지지 않는다.", "mappedTo": ["arcAB", "A", "B", "C", "k"] },
+    { "id": "halfChord", "condition": "D는 AB의 중점이고 AD=BD=5cm이다.", "mappedTo": ["sAD", "sDB", "halfChord", "given5"] },
+    { "id": "height", "condition": "CD는 현에 수직이고 길이 1cm이다.", "mappedTo": ["sCD", "rD", "given1"] }
+  ],
+  "newVisualInformation": ["원본의 가느다란 작은 원호를 정확히 복원하고 같은 길이·직각·1cm·5cm를 대응 필드에 넣는다.", "원 중심 및 r 또는 O=(0,-12)는 작도 내부에서만 사용하고 문제 그림에 노출하지 않으며 칠한 면을 쓰지 않는다."]
+}
