@@ -49,7 +49,11 @@ window.questionBank = [
     "metaRationale": "인쇄 P75 Q09는 한 직선을 x축·y축·원점·y=x에 대칭이동하여 직선 방정식을 구하는 4소문항. 해당 대칭 연산과 구할 대상(직선 방정식)을 보존한 변형. 원본 PDF 텍스트 대조.",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P75-78_20261022_유사50/BV-BAKBAL-H-COM2-P75-Q09-T1-R3-solution.svg",
     "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_도형의이동_P75-78_20261022_유사50/BV-BAKBAL-H-COM2-P75-Q09-T1-R3-problem.svg",
+    "imageAlt": "주어진 직선 3x+2y-6=0과 x축 대칭 기준을 표시한다. 대칭이동한 결과는 문제 그림에 그리지 않았다.",
+    "imageCaption": "주어진 직선 3x+2y-6=0과 x축 대칭 기준을 표시한다. 대칭이동한 결과는 문제 그림에 그리지 않았다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P75-Q09-S1-R3",
@@ -100,7 +104,11 @@ window.questionBank = [
     "metaRationale": "인쇄 P75 Q09는 한 직선을 x축·y축·원점·y=x에 대칭이동하여 직선 방정식을 구하는 4소문항. 해당 대칭 연산과 구할 대상(직선 방정식)을 보존한 변형. 원본 PDF 텍스트 대조.",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P75-78_20261022_유사50/BV-BAKBAL-H-COM2-P75-Q09-S1-R3-solution.svg",
     "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_도형의이동_P75-78_20261022_유사50/BV-BAKBAL-H-COM2-P75-Q09-S1-R3-problem.svg",
+    "imageAlt": "주어진 직선 2x-y+4=0과 y축 대칭 기준을 표시한다. 대칭이동한 결과는 문제 그림에 그리지 않았다.",
+    "imageCaption": "주어진 직선 2x-y+4=0과 y축 대칭 기준을 표시한다. 대칭이동한 결과는 문제 그림에 그리지 않았다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P75-Q09-S2-R3",
@@ -151,7 +159,11 @@ window.questionBank = [
     "metaRationale": "인쇄 P75 Q09는 한 직선을 x축·y축·원점·y=x에 대칭이동하여 직선 방정식을 구하는 4소문항. 해당 대칭 연산과 구할 대상(직선 방정식)을 보존한 변형. 원본 PDF 텍스트 대조.",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P75-78_20261022_유사50/BV-BAKBAL-H-COM2-P75-Q09-S2-R3-solution.svg",
     "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_도형의이동_P75-78_20261022_유사50/BV-BAKBAL-H-COM2-P75-Q09-S2-R3-problem.svg",
+    "imageAlt": "주어진 직선 x-3y+2=0과 원점 대칭 기준을 표시한다. 대칭이동한 결과는 문제 그림에 그리지 않았다.",
+    "imageCaption": "주어진 직선 x-3y+2=0과 원점 대칭 기준을 표시한다. 대칭이동한 결과는 문제 그림에 그리지 않았다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P75-Q10-T1-R3",
@@ -202,7 +214,11 @@ window.questionBank = [
     "metaRationale": "원본 인쇄 P75 Q10: 인쇄 Q10은 한 원을 여러 대칭축에 대하여 옮긴 원의 방정식을 구하는 4소문항. 원본의 개념·변환 순서·구할 대상에 맞춘 독립 변형. PDF 텍스트 대조; 페이지 이미지 NOT_RUN.",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P75-78_20261022_유사50/BV-BAKBAL-H-COM2-P75-Q10-T1-R3-solution.svg",
     "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_도형의이동_P75-78_20261022_유사50/BV-BAKBAL-H-COM2-P75-Q10-T1-R3-problem.svg",
+    "imageAlt": "주어진 원 (x-3)²+(y+2)²=5과 y=x 대칭 기준을 표시한다. 대칭이동한 결과는 문제 그림에 그리지 않았다.",
+    "imageCaption": "주어진 원 (x-3)²+(y+2)²=5과 y=x 대칭 기준을 표시한다. 대칭이동한 결과는 문제 그림에 그리지 않았다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P75-Q10-S1-R3",
@@ -253,7 +269,11 @@ window.questionBank = [
     "metaRationale": "원본 인쇄 P75 Q10: 인쇄 Q10은 한 원을 여러 대칭축에 대하여 옮긴 원의 방정식을 구하는 4소문항. 원본의 개념·변환 순서·구할 대상에 맞춘 독립 변형. PDF 텍스트 대조; 페이지 이미지 NOT_RUN.",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P75-78_20261022_유사50/BV-BAKBAL-H-COM2-P75-Q10-S1-R3-solution.svg",
     "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_도형의이동_P75-78_20261022_유사50/BV-BAKBAL-H-COM2-P75-Q10-S1-R3-problem.svg",
+    "imageAlt": "주어진 원 (x-2)²+(y+3)²=9과 x축 대칭 기준을 표시한다. 대칭이동한 결과는 문제 그림에 그리지 않았다.",
+    "imageCaption": "주어진 원 (x-2)²+(y+3)²=9과 x축 대칭 기준을 표시한다. 대칭이동한 결과는 문제 그림에 그리지 않았다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P75-Q10-S2-R3",
@@ -304,7 +324,11 @@ window.questionBank = [
     "metaRationale": "원본 인쇄 P75 Q10: 인쇄 Q10은 한 원을 여러 대칭축에 대하여 옮긴 원의 방정식을 구하는 4소문항. 원본의 개념·변환 순서·구할 대상에 맞춘 독립 변형. PDF 텍스트 대조; 페이지 이미지 NOT_RUN.",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P75-78_20261022_유사50/BV-BAKBAL-H-COM2-P75-Q10-S2-R3-solution.svg",
     "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_도형의이동_P75-78_20261022_유사50/BV-BAKBAL-H-COM2-P75-Q10-S2-R3-problem.svg",
+    "imageAlt": "주어진 원 (x+1)²+(y-4)²=8과 y축 대칭 기준을 표시한다. 대칭이동한 결과는 문제 그림에 그리지 않았다.",
+    "imageCaption": "주어진 원 (x+1)²+(y-4)²=8과 y축 대칭 기준을 표시한다. 대칭이동한 결과는 문제 그림에 그리지 않았다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P75-Q11-T1-R3",
@@ -508,7 +532,11 @@ window.questionBank = [
     "metaRationale": "원본 인쇄 P75 Q12: 인쇄 Q12는 원을 y축에 대칭한 후 원점에 대칭한 원의 방정식을 구하는 문항. 원본의 개념·변환 순서·구할 대상에 맞춘 독립 변형. PDF 텍스트 대조; 페이지 이미지 NOT_RUN.",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P75-78_20261022_유사50/BV-BAKBAL-H-COM2-P75-Q12-T1-R3-solution.svg",
     "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_도형의이동_P75-78_20261022_유사50/BV-BAKBAL-H-COM2-P75-Q12-T1-R3-problem.svg",
+    "imageAlt": "주어진 원 (x-1)²+(y-2)²=4과 y축 → 원점 대칭 기준을 표시한다. 대칭이동한 결과는 문제 그림에 그리지 않았다.",
+    "imageCaption": "주어진 원 (x-1)²+(y-2)²=4과 y축 → 원점 대칭 기준을 표시한다. 대칭이동한 결과는 문제 그림에 그리지 않았다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P75-Q12-S1-R3",
@@ -559,7 +587,11 @@ window.questionBank = [
     "metaRationale": "원본 인쇄 P75 Q12: 인쇄 Q12는 원을 y축에 대칭한 후 원점에 대칭한 원의 방정식을 구하는 문항. 원본의 개념·변환 순서·구할 대상에 맞춘 독립 변형. PDF 텍스트 대조; 페이지 이미지 NOT_RUN.",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P75-78_20261022_유사50/BV-BAKBAL-H-COM2-P75-Q12-S1-R3-solution.svg",
     "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_도형의이동_P75-78_20261022_유사50/BV-BAKBAL-H-COM2-P75-Q12-S1-R3-problem.svg",
+    "imageAlt": "주어진 원 (x-2)²+(y+4)²=9과 y축 → 원점 대칭 기준을 표시한다. 대칭이동한 결과는 문제 그림에 그리지 않았다.",
+    "imageCaption": "주어진 원 (x-2)²+(y+4)²=9과 y축 → 원점 대칭 기준을 표시한다. 대칭이동한 결과는 문제 그림에 그리지 않았다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P75-Q12-S2-R3",
@@ -610,7 +642,11 @@ window.questionBank = [
     "metaRationale": "원본 인쇄 P75 Q12: 인쇄 Q12는 원을 y축에 대칭한 후 원점에 대칭한 원의 방정식을 구하는 문항. 원본의 개념·변환 순서·구할 대상에 맞춘 독립 변형. PDF 텍스트 대조; 페이지 이미지 NOT_RUN.",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P75-78_20261022_유사50/BV-BAKBAL-H-COM2-P75-Q12-S2-R3-solution.svg",
     "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_도형의이동_P75-78_20261022_유사50/BV-BAKBAL-H-COM2-P75-Q12-S2-R3-problem.svg",
+    "imageAlt": "주어진 원 (x+2)²+(y-3)²=1과 y축 → 원점 대칭 기준을 표시한다. 대칭이동한 결과는 문제 그림에 그리지 않았다.",
+    "imageCaption": "주어진 원 (x+2)²+(y-3)²=1과 y축 → 원점 대칭 기준을 표시한다. 대칭이동한 결과는 문제 그림에 그리지 않았다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P75-Q13-T1-R3",

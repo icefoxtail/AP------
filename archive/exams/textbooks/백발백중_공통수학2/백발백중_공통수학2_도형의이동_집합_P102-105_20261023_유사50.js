@@ -116,7 +116,11 @@ window.questionBank = [
     "metaRationale": "두 번의 대칭이동, 원 사이 최단거리 및 P,Q 교점의 순서·등호 가능성 검증이 모두 필요하다.",
     "image": "assets/images/백발백중_공통수학2_도형의이동_집합_P102-105_20261023_유사50/BV-BAKBAL-H-COM2-P102-Q01-S1-R1-problem.svg",
     "imageAlt": "문제 도형",
-    "imageSize": "large"
+    "imageSize": "large",
+    "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_집합_P102-105_20261023_유사50/BV-BAKBAL-H-COM2-P102-Q01-S1-R1-solution.svg",
+    "solutionImageAlt": "반사된 두 원의 중심 연결선과 경유 교점 P,Q",
+    "solutionImageCaption": "반사된 두 원의 중심 연결선과 경유 교점 P,Q",
+    "solutionImageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P102-Q01-S2-R1",
@@ -411,7 +415,11 @@ window.questionBank = [
     "metaRationale": "원 밖의 점에서 원주까지 최단거리",
     "image": "assets/images/백발백중_공통수학2_도형의이동_집합_P102-105_20261023_유사50/BV-BAKBAL-H-COM2-P102-Q03-T1-R1-problem.svg",
     "imageAlt": "문제 도형",
-    "imageSize": "large"
+    "imageSize": "large",
+    "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_집합_P102-105_20261023_유사50/BV-BAKBAL-H-COM2-P102-Q03-T1-R1-solution.svg",
+    "solutionImageAlt": "점 B와 원의 가장 가까운 원주점 A",
+    "solutionImageCaption": "점 B와 원의 가장 가까운 원주점 A",
+    "solutionImageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P102-Q03-S1-R1",
@@ -470,7 +478,11 @@ window.questionBank = [
     "metaRationale": "원 밖의 점에서 원주까지 최장거리",
     "image": "assets/images/백발백중_공통수학2_도형의이동_집합_P102-105_20261023_유사50/BV-BAKBAL-H-COM2-P102-Q03-S1-R1-problem.svg",
     "imageAlt": "문제 도형",
-    "imageSize": "large"
+    "imageSize": "large",
+    "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_집합_P102-105_20261023_유사50/BV-BAKBAL-H-COM2-P102-Q03-S1-R1-solution.svg",
+    "solutionImageAlt": "점 B와 원의 가장 먼 원주점 A",
+    "solutionImageCaption": "점 B와 원의 가장 먼 원주점 A",
+    "solutionImageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P102-Q03-S2-R1",
@@ -588,7 +600,11 @@ window.questionBank = [
     "metaRationale": "직선에 대한 반사와 경유 최단거리",
     "image": "assets/images/백발백중_공통수학2_도형의이동_집합_P102-105_20261023_유사50/BV-BAKBAL-H-COM2-P102-Q04-T1-R1-problem.svg",
     "imageAlt": "문제 도형",
-    "imageSize": "large"
+    "imageSize": "large",
+    "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_집합_P102-105_20261023_유사50/BV-BAKBAL-H-COM2-P102-Q04-T1-R1-solution.svg",
+    "solutionImageAlt": "A를 y=x에 반사한 A′와 직선 위의 최단 경유점 P",
+    "solutionImageCaption": "A를 y=x에 반사한 A′와 직선 위의 최단 경유점 P",
+    "solutionImageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P102-Q04-S1-R1",

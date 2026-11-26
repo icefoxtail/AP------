@@ -249,6 +249,10 @@ window.questionBank = [
       "COND_POSITIVE",
       "COND_RESTRICTED_INTERVAL"
     ],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/미적분II_274_도형의넓이를이등분하는경우_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "정확한 y=2sin x (0≤x≤π/2)와 끝점 눈금. y=a cos x와 이등분 면은 보류.",
+    "imageCaption": "정확한 y=2sin x (0≤x≤π/2)와 끝점 눈금. y=a cos x와 이등분 면은 보류.",
+    "imageSize": "medium"
   }
 ];

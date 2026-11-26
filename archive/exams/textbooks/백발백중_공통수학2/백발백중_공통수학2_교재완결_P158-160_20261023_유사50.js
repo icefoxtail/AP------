@@ -398,7 +398,11 @@ window.questionBank = [
     "metaRationale": "두 번의 대칭을 적용한 뒤 두 제약직선과의 교점 순서를 확인해야 최솟값의 달성을 증명할 수 있다.",
     "solutionImage": "assets/images/백발백중_공통수학2_교재완결_P158-160_20261023_유사50/BV-BAKBAL-H-COM2-P158-Q03-T1-R1-solution.svg",
     "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_교재완결_P158-160_20261023_유사50/BV-BAKBAL-H-COM2-P158-Q03-T1-R1-problem.svg",
+    "imageAlt": "A(3,1), B∈y=x, C∈x축인 삼각형 ABC의 길이 AB+BC+CA를 보여 준다. B와 C의 위치는 임의 예시이며 최솟값 위치가 아니다.",
+    "imageCaption": "A(3,1), B∈y=x, C∈x축인 삼각형 ABC의 길이 AB+BC+CA를 보여 준다. B와 C의 위치는 임의 예시이며 최솟값 위치가 아니다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P158-Q03-S1-R1",
@@ -453,7 +457,11 @@ window.questionBank = [
     "metaRationale": "두 번의 대칭을 적용한 뒤 두 제약직선과의 교점 순서를 확인해야 최솟값의 달성을 증명할 수 있다.",
     "solutionImage": "assets/images/백발백중_공통수학2_교재완결_P158-160_20261023_유사50/BV-BAKBAL-H-COM2-P158-Q03-S1-R1-solution.svg",
     "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_교재완결_P158-160_20261023_유사50/BV-BAKBAL-H-COM2-P158-Q03-S1-R1-problem.svg",
+    "imageAlt": "A(2,1), B∈y=x, C∈x축인 삼각형 ABC의 길이 AB+BC+CA를 보여 준다. B와 C의 위치는 임의 예시이며 최솟값 위치가 아니다.",
+    "imageCaption": "A(2,1), B∈y=x, C∈x축인 삼각형 ABC의 길이 AB+BC+CA를 보여 준다. B와 C의 위치는 임의 예시이며 최솟값 위치가 아니다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P158-Q03-S2-R1",
@@ -508,7 +516,11 @@ window.questionBank = [
     "metaRationale": "두 번의 대칭을 적용한 뒤 두 제약직선과의 교점 순서를 확인해야 최솟값의 달성을 증명할 수 있다.",
     "solutionImage": "assets/images/백발백중_공통수학2_교재완결_P158-160_20261023_유사50/BV-BAKBAL-H-COM2-P158-Q03-S2-R1-solution.svg",
     "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_교재완결_P158-160_20261023_유사50/BV-BAKBAL-H-COM2-P158-Q03-S2-R1-problem.svg",
+    "imageAlt": "A(4,2), B∈y=x, C∈x축인 삼각형 ABC의 길이 AB+BC+CA를 보여 준다. B와 C의 위치는 임의 예시이며 최솟값 위치가 아니다.",
+    "imageCaption": "A(4,2), B∈y=x, C∈x축인 삼각형 ABC의 길이 AB+BC+CA를 보여 준다. B와 C의 위치는 임의 예시이며 최솟값 위치가 아니다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P158-Q04-T1-R1",

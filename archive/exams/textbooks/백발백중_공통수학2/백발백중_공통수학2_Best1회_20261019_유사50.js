@@ -136,7 +136,11 @@ window.questionBank = [
     "L1": "도형의 방정식",
     "L2": "평면좌표와 직선의 방정식",
     "L3": "두 점 사이의 거리",
-    "L4": "같은 거리에 있는 점"
+    "L4": "같은 거리에 있는 점",
+    "solutionImage": "assets/images/백발백중_공통수학2_Best1회_20261019_유사50/BV-BAKBAL-H-COM2-P10-Q01-S2-R1-solution.svg",
+    "solutionImageAlt": "OP=AP이므로 P는 선분 OA의 수직이등분선과 x축의 교점이다.",
+    "solutionImageCaption": "OP=AP이므로 P는 선분 OA의 수직이등분선과 x축의 교점이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P10-Q02-T1-R1",
@@ -180,7 +184,11 @@ window.questionBank = [
     "L1": "도형의 방정식",
     "L2": "평면좌표와 직선의 방정식",
     "L3": "같은 거리에 있는 점",
-    "L4": "같은 거리에 있는 점"
+    "L4": "같은 거리에 있는 점",
+    "solutionImage": "assets/images/백발백중_공통수학2_Best1회_20261019_유사50/BV-BAKBAL-H-COM2-P10-Q02-T1-R1-solution.svg",
+    "solutionImageAlt": "A와 B에서 같은 거리에 있는 y축 위의 점 P는 AB의 수직이등분선과 y축의 교점이다.",
+    "solutionImageCaption": "A와 B에서 같은 거리에 있는 y축 위의 점 P는 AB의 수직이등분선과 y축의 교점이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P10-Q02-S1-R1",
@@ -224,7 +232,11 @@ window.questionBank = [
     "L1": "도형의 방정식",
     "L2": "평면좌표와 직선의 방정식",
     "L3": "같은 거리에 있는 점",
-    "L4": "직선 위의 같은 거리 점"
+    "L4": "직선 위의 같은 거리 점",
+    "solutionImage": "assets/images/백발백중_공통수학2_Best1회_20261019_유사50/BV-BAKBAL-H-COM2-P10-Q02-S1-R1-solution.svg",
+    "solutionImageAlt": "y=x와 AB의 수직이등분선이 만나는 점 P는 AP=BP를 만족한다.",
+    "solutionImageCaption": "y=x와 AB의 수직이등분선이 만나는 점 P는 AP=BP를 만족한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P10-Q03-T1-R1",
@@ -413,7 +425,11 @@ window.questionBank = [
     "L4": "선분 위의 점과 거리 제곱합 최소",
     "solutionImage": "assets/images/백발백중_공통수학2_Best1회_20261019_유사50/q09-solution.svg",
     "solutionImageAlt": "해설 도형",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_Best1회_20261019_유사50/BV-BAKBAL-H-COM2-P10-Q04-T1-R1-problem.svg",
+    "imageAlt": "A와 B에서 선분 CD 위의 이동점 P까지의 두 거리를 나타낸 문제 그림이다. P의 위치는 예시이다.",
+    "imageCaption": "A와 B에서 선분 CD 위의 이동점 P까지의 두 거리를 나타낸 문제 그림이다. P의 위치는 예시이다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P10-Q04-S1-R1",
@@ -461,7 +477,11 @@ window.questionBank = [
     "L4": "선분 위의 점과 거리 제곱합 최소",
     "solutionImage": "assets/images/백발백중_공통수학2_Best1회_20261019_유사50/q10-solution.svg",
     "solutionImageAlt": "해설 도형",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_Best1회_20261019_유사50/BV-BAKBAL-H-COM2-P10-Q04-S1-R1-problem.svg",
+    "imageAlt": "A와 B에서 y축 위 선분 CD를 움직이는 점 P까지의 거리를 나타낸 문제 그림이다. P의 위치는 예시이다.",
+    "imageCaption": "A와 B에서 y축 위 선분 CD를 움직이는 점 P까지의 거리를 나타낸 문제 그림이다. P의 위치는 예시이다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P10-Q04-S2-R1",
@@ -552,7 +572,11 @@ window.questionBank = [
     "L1": "도형의 방정식",
     "L2": "평면좌표와 직선의 방정식",
     "L3": "선분의 내분점",
-    "L4": "선분의 내분점"
+    "L4": "선분의 내분점",
+    "solutionImage": "assets/images/백발백중_공통수학2_Best1회_20261019_유사50/BV-BAKBAL-H-COM2-P10-Q05-T1-R1-solution.svg",
+    "solutionImageAlt": "A(1,2)에서 P(4,5)까지의 변위를 2/3배 더하면 B(6,7)이 되고 AP:PB=3:2이다.",
+    "solutionImageCaption": "A(1,2)에서 P(4,5)까지의 변위를 2/3배 더하면 B(6,7)이 되고 AP:PB=3:2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P10-Q05-S1-R1",
@@ -643,7 +667,11 @@ window.questionBank = [
     "L1": "도형의 방정식",
     "L2": "평면좌표와 직선의 방정식",
     "L3": "삼각형의 무게중심",
-    "L4": "삼각형의 무게중심"
+    "L4": "삼각형의 무게중심",
+    "solutionImage": "assets/images/백발백중_공통수학2_Best1회_20261019_유사50/BV-BAKBAL-H-COM2-P11-Q06-T1-R1-solution.svg",
+    "solutionImageAlt": "무게중심 G(2,6)은 직선 y=3x 위에 있고 세 번째 꼭짓점은 C(7,15)이다.",
+    "solutionImageCaption": "무게중심 G(2,6)은 직선 y=3x 위에 있고 세 번째 꼭짓점은 C(7,15)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P11-Q06-S1-R1",
@@ -692,7 +720,11 @@ window.questionBank = [
     "image": "assets/images/백발백중_공통수학2_Best1회_20261019_유사50/q15-problem.svg",
     "imageStatus": "verified",
     "problemImage": "assets/images/백발백중_공통수학2_Best1회_20261019_유사50/q15-problem.svg",
-    "problemImageAlt": "문제 도형"
+    "problemImageAlt": "문제 도형",
+    "solutionImage": "assets/images/백발백중_공통수학2_Best1회_20261019_유사50/BV-BAKBAL-H-COM2-P11-Q06-S1-R1-solution.svg",
+    "solutionImageAlt": "삼각형 OAB의 무게중심 G(3,2)와 구할 길이 OG를 표시한다.",
+    "solutionImageCaption": "삼각형 OAB의 무게중심 G(3,2)와 구할 길이 OG를 표시한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P11-Q06-S2-R1",
@@ -736,7 +768,11 @@ window.questionBank = [
     "L1": "도형의 방정식",
     "L2": "평면좌표와 직선의 방정식",
     "L3": "삼각형의 무게중심",
-    "L4": "꼭짓점 복원"
+    "L4": "꼭짓점 복원",
+    "solutionImage": "assets/images/백발백중_공통수학2_Best1회_20261019_유사50/BV-BAKBAL-H-COM2-P11-Q06-S2-R1-solution.svg",
+    "solutionImageAlt": "주어진 무게중심 G(2,3)을 만족하도록 구한 세 번째 꼭짓점 C(2,4)와 중선 CM을 표시한다.",
+    "solutionImageCaption": "주어진 무게중심 G(2,3)을 만족하도록 구한 세 번째 꼭짓점 C(2,4)와 중선 CM을 표시한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P11-Q07-T1-R1",

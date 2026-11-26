@@ -531,7 +531,11 @@ window.questionBank = [
     "metaRationale": "원본 교재 p.14 Q04와 동일한 핵심 구조(선분 AC 위 P, AP²+BP² 최솟값). 완전제곱 후 P의 선분 내부 범위 검증 필요. 풀이 단계 2~3개로 중/2 판정. PT/TPL 기존 키는 유지하고 L4·조건 메타만 정밀화함.",
     "solutionImage": "assets/images/백발백중_공통수학2_Best2회_P14-17_20261022_유사50/BV-BAKBAL-H-COM2-P14-Q04-T1-R2-solution.svg",
     "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_Best2회_P14-17_20261022_유사50/BV-BAKBAL-H-COM2-P14-Q04-T1-R2-problem.svg",
+    "imageAlt": "A(0,-3), C(0,5)를 잇는 선분 위에서 P가 움직이고 AP와 BP의 거리를 비교한다. P의 위치는 예시이다.",
+    "imageCaption": "A(0,-3), C(0,5)를 잇는 선분 위에서 P가 움직이고 AP와 BP의 거리를 비교한다. P의 위치는 예시이다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P14-Q04-S1-R2",
@@ -584,7 +588,11 @@ window.questionBank = [
     "metaRationale": "원본 교재 p.14 Q04와 동일한 핵심 구조(선분 AC 위 P, AP²+BP² 최솟값). 완전제곱 후 P의 선분 내부 범위 검증 필요. 풀이 단계 2~3개로 중/2 판정. PT/TPL 기존 키는 유지하고 L4·조건 메타만 정밀화함.",
     "solutionImage": "assets/images/백발백중_공통수학2_Best2회_P14-17_20261022_유사50/BV-BAKBAL-H-COM2-P14-Q04-S1-R2-solution.svg",
     "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_Best2회_P14-17_20261022_유사50/BV-BAKBAL-H-COM2-P14-Q04-S1-R2-problem.svg",
+    "imageAlt": "A(1,-5), C(1,7)를 잇는 선분 위의 P와 두 거리 AP, BP를 표시한다. P는 이동점이다.",
+    "imageCaption": "A(1,-5), C(1,7)를 잇는 선분 위의 P와 두 거리 AP, BP를 표시한다. P는 이동점이다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P14-Q04-S2-R2",
@@ -637,7 +645,11 @@ window.questionBank = [
     "metaRationale": "원본 교재 p.14 Q04와 동일한 핵심 구조(선분 AC 위 P, AP²+BP² 최솟값). 완전제곱 후 P의 선분 내부 범위 검증 필요. 풀이 단계 2~3개로 중/2 판정. PT/TPL 기존 키는 유지하고 L4·조건 메타만 정밀화함.",
     "solutionImage": "assets/images/백발백중_공통수학2_Best2회_P14-17_20261022_유사50/BV-BAKBAL-H-COM2-P14-Q04-S2-R2-solution.svg",
     "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_Best2회_P14-17_20261022_유사50/BV-BAKBAL-H-COM2-P14-Q04-S2-R2-problem.svg",
+    "imageAlt": "x축의 선분 AC 위를 움직이는 P에서 두 길이 AP와 BP를 비교한다. P는 예시 위치이다.",
+    "imageCaption": "x축의 선분 AC 위를 움직이는 P에서 두 길이 AP와 BP를 비교한다. P는 예시 위치이다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P14-Q05-T1-R2",
@@ -943,7 +955,11 @@ window.questionBank = [
       "COND_THREE_POINTS"
     ],
     "integrationPattern": "INTEG_ARITHMETIC_MEAN",
-    "metaRationale": "교재 p.15 Q06: ABC 무게중심 G를 포함한 GBC의 무게중심 H가 주어져 A(a,b)를 두 번 역산하는 동일 개념·조건·풀이구조. 난이도 중/3; 기존 TYPE_CENTROID/TMPL_CENTROID_BASIC 키 재사용, 신규 PT/TPL 없음."
+    "metaRationale": "교재 p.15 Q06: ABC 무게중심 G를 포함한 GBC의 무게중심 H가 주어져 A(a,b)를 두 번 역산하는 동일 개념·조건·풀이구조. 난이도 중/3; 기존 TYPE_CENTROID/TMPL_CENTROID_BASIC 키 재사용, 신규 PT/TPL 없음.",
+    "solutionImage": "assets/images/백발백중_공통수학2_Best2회_P14-17_20261022_유사50/BV-BAKBAL-H-COM2-P15-Q06-S2-R2-solution.svg",
+    "solutionImageAlt": "G(2,0)은 ABC의 무게중심이고 H(1,0)은 GBC의 무게중심이다. 역산한 A(5,0)를 중선 위에 표시한다.",
+    "solutionImageCaption": "G(2,0)은 ABC의 무게중심이고 H(1,0)은 GBC의 무게중심이다. 역산한 A(5,0)를 중선 위에 표시한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P15-Q07-T1-R2",
@@ -1041,7 +1057,11 @@ window.questionBank = [
       "COND_PARALLELOGRAM"
     ],
     "integrationPattern": "INTEG_MIDPOINT_PROPERTY",
-    "metaRationale": "교재 p.15 Q07: A,B,C,D의 평행사변형 조건에서 A+C=B+D로 두 미지 좌표를 구해 합산하는 동일 핵심 구조. 난이도 중/2; 기존 TYPE_PARALLELOGRAM/TMPL_PARALLELOGRAM_MIDPOINT 재사용, 신규 PT/TPL 없음."
+    "metaRationale": "교재 p.15 Q07: A,B,C,D의 평행사변형 조건에서 A+C=B+D로 두 미지 좌표를 구해 합산하는 동일 핵심 구조. 난이도 중/2; 기존 TYPE_PARALLELOGRAM/TMPL_PARALLELOGRAM_MIDPOINT 재사용, 신규 PT/TPL 없음.",
+    "solutionImage": "assets/images/백발백중_공통수학2_Best2회_P14-17_20261022_유사50/BV-BAKBAL-H-COM2-P15-Q07-S1-R2-solution.svg",
+    "solutionImageAlt": "A(-2,3), B(1,-1), C(4,1), D(1,5)와 두 대각선의 공통 중점 X(1,2)를 표시한다.",
+    "solutionImageCaption": "A(-2,3), B(1,-1), C(4,1), D(1,5)와 두 대각선의 공통 중점 X(1,2)를 표시한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P15-Q07-S2-R2",
@@ -1090,7 +1110,11 @@ window.questionBank = [
       "COND_PARALLELOGRAM"
     ],
     "integrationPattern": "INTEG_MIDPOINT_PROPERTY",
-    "metaRationale": "교재 p.15 Q07: A,B,C,D의 평행사변형 조건에서 A+C=B+D로 두 미지 좌표를 구해 합산하는 동일 핵심 구조. 난이도 중/3; 기존 TYPE_PARALLELOGRAM/TMPL_PARALLELOGRAM_MIDPOINT 재사용, 신규 PT/TPL 없음."
+    "metaRationale": "교재 p.15 Q07: A,B,C,D의 평행사변형 조건에서 A+C=B+D로 두 미지 좌표를 구해 합산하는 동일 핵심 구조. 난이도 중/3; 기존 TYPE_PARALLELOGRAM/TMPL_PARALLELOGRAM_MIDPOINT 재사용, 신규 PT/TPL 없음.",
+    "solutionImage": "assets/images/백발백중_공통수학2_Best2회_P14-17_20261022_유사50/BV-BAKBAL-H-COM2-P15-Q07-S2-R2-solution.svg",
+    "solutionImageAlt": "A(3,-2), B(0,4), C(-4,1), D(-1,-5)와 두 대각선의 공통 중점 X(-1/2,-1/2)를 표시한다.",
+    "solutionImageCaption": "A(3,-2), B(0,4), C(-4,1), D(-1,-5)와 두 대각선의 공통 중점 X(-1/2,-1/2)를 표시한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P15-Q08-T1-R3",

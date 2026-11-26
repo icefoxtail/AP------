@@ -61,7 +61,11 @@ window.questionBank = [
     "problemImageSize": "large",
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_P50-53_20261022_유사50/BV-BAKBAL-H-COM2-P50-Q01-T1-R2-solution.svg",
     "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_원의방정식_P50-53_20261022_유사50/BV-BAKBAL-H-COM2-P50-Q01-T1-R2-problem.svg",
+    "imageAlt": "주어진 두 원과 공통접선의 접점 및 반지름의 수직관계를 나타낸다.",
+    "imageCaption": "주어진 두 원과 공통접선의 접점 및 반지름의 수직관계를 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P50-Q01-S1-R1",
@@ -124,7 +128,11 @@ window.questionBank = [
     "problemImageSize": "large",
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_P50-53_20261022_유사50/BV-BAKBAL-H-COM2-P50-Q01-S1-R1-solution.svg",
     "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_원의방정식_P50-53_20261022_유사50/BV-BAKBAL-H-COM2-P50-Q01-S1-R1-problem.svg",
+    "imageAlt": "주어진 두 원과 공통접선의 접점 및 반지름의 수직관계를 나타낸다.",
+    "imageCaption": "주어진 두 원과 공통접선의 접점 및 반지름의 수직관계를 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P50-Q01-S2-R1",
@@ -187,7 +195,11 @@ window.questionBank = [
     "problemImageSize": "large",
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_P50-53_20261022_유사50/BV-BAKBAL-H-COM2-P50-Q01-S2-R1-solution.svg",
     "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_원의방정식_P50-53_20261022_유사50/BV-BAKBAL-H-COM2-P50-Q01-S2-R1-problem.svg",
+    "imageAlt": "주어진 두 원과 공통접선의 접점 및 반지름의 수직관계를 나타낸다.",
+    "imageCaption": "주어진 두 원과 공통접선의 접점 및 반지름의 수직관계를 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P50-Q02-T1-R1",
@@ -414,7 +426,11 @@ window.questionBank = [
     "problemImageSize": "large",
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_P50-53_20261022_유사50/BV-BAKBAL-H-COM2-P50-Q03-T1-R1-solution.svg",
     "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_원의방정식_P50-53_20261022_유사50/BV-BAKBAL-H-COM2-P50-Q03-T1-R1-problem.svg",
+    "imageAlt": "주어진 두 원과 공통접선의 접점 및 반지름의 수직관계를 나타낸다.",
+    "imageCaption": "주어진 두 원과 공통접선의 접점 및 반지름의 수직관계를 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P50-Q03-S1-R1",
@@ -473,7 +489,11 @@ window.questionBank = [
     "problemImageSize": "large",
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_P50-53_20261022_유사50/BV-BAKBAL-H-COM2-P50-Q03-S1-R1-solution.svg",
     "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_원의방정식_P50-53_20261022_유사50/BV-BAKBAL-H-COM2-P50-Q03-S1-R1-problem.svg",
+    "imageAlt": "주어진 두 원과 공통접선의 접점 및 반지름의 수직관계를 나타낸다.",
+    "imageCaption": "주어진 두 원과 공통접선의 접점 및 반지름의 수직관계를 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P50-Q03-S2-R1",
@@ -532,7 +552,11 @@ window.questionBank = [
     "problemImageSize": "large",
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_P50-53_20261022_유사50/BV-BAKBAL-H-COM2-P50-Q03-S2-R1-solution.svg",
     "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_원의방정식_P50-53_20261022_유사50/BV-BAKBAL-H-COM2-P50-Q03-S2-R1-problem.svg",
+    "imageAlt": "중심이 (1,0), (7,0)이고 반지름이 2, 1인 두 원의 위치를 나타낸다.",
+    "imageCaption": "중심이 (1,0), (7,0)이고 반지름이 2, 1인 두 원의 위치를 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P50-Q04-T1-R2",
