@@ -1,0 +1,62 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "caption": "자유투 성공 횟수의 도수분포다각형은 다섯 계급의 점만 이어 그리고 9~13회 구간 도수 13명을 괄호로 나타낸다.",
+  "accessibilityDescription": "횟수 3,5,7,9,11을 계급값으로 가지는 도수분포다각형. 도수 1,6,12,10,3; 다각형은 양 끝에서 영으로 닫히고 8~12회 두 계급의 도수 13명을 하단 괄호로 묶는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "계급 경계는 2~12회, 간격 2회이며 계급값은 3,5,7,9,11회이다.",
+      "mappedTo": "chart.boundaries"
+    },
+    {
+      "id": "c2",
+      "condition": "다섯 계급 도수는 1,6,12,10,3명으로 총 32명이다.",
+      "mappedTo": "chart.series[0].frequencies"
+    },
+    {
+      "id": "c3",
+      "condition": "9·11회 계급(8~12회)의 합은 13명이다.",
+      "mappedTo": "chart.classSums"
+    }
+  ],
+  "newVisualInformation": [
+    "원본에서 각 계급의 꼭짓점과 선분을 유지하고 불필요한 면 채움 없이 다각형만 표시한다.",
+    "해설에서 필요한 오른쪽 두 계급의 구간 괄호와 13명만 추가한다."
+  ],
+  "chart": {
+    "kind": "FREQUENCY_POLYGON",
+    "boundaries": [
+      "2",
+      "4",
+      "6",
+      "8",
+      "10",
+      "12"
+    ],
+    "series": [
+      {
+        "frequencies": [
+          1,
+          6,
+          12,
+          10,
+          3
+        ]
+      }
+    ],
+    "total": 32,
+    "xTitle": "횟수(회)",
+    "yTitle": "도수(명)",
+    "grid": true,
+    "showValues": true,
+    "classSums": [
+      {
+        "series": 0,
+        "from": 3,
+        "to": 4,
+        "label": "13",
+        "unit": "명"
+      }
+    ]
+  }
+}

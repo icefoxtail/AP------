@@ -1,0 +1,71 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "caption": "몸무게 200명의 찢어진 상대도수분포다각형은 50~55kg 계급을 빈 구간으로 두고 보이는 합 0.60을 확인한다.",
+  "accessibilityDescription": "35~65kg 5kg 너비 6계급의 다각형. 보이는 다섯 상대도수는 0.12,0.16,0.20,0.08,0.04이고 50~55kg은 찢어져 보이지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "계급은 35 이상 40 미만부터 60 이상 65 미만까지 5kg 간격이다.",
+      "mappedTo": "chart.boundaries"
+    },
+    {
+      "id": "c2",
+      "condition": "차례로 0.12,0.16,0.20,미상,0.08,0.04로 제시되었다.",
+      "mappedTo": "chart.series[0].relativeFrequencies"
+    },
+    {
+      "id": "c3",
+      "condition": "보이는 다섯 상대도수 합은 0.60이고 지워진 계급은 정답이므로 수치를 임의로 채우지 않는다.",
+      "mappedTo": "chart.classSums"
+    }
+  ],
+  "newVisualInformation": [
+    "찢어진 계급의 도수점을 새로 계산해 가짜 실선으로 연결하지 않고 양옆에서 단절되게 한다.",
+    "원본에서 읽는 5개 점과 구간 두 묶음의 상대도수 합 0.60을 보존한다."
+  ],
+  "chart": {
+    "kind": "FREQUENCY_POLYGON",
+    "yKind": "RELATIVE",
+    "boundaries": [
+      "35",
+      "40",
+      "45",
+      "50",
+      "55",
+      "60",
+      "65"
+    ],
+    "series": [
+      {
+        "relativeFrequencies": [
+          "0.12",
+          "0.16",
+          "0.20",
+          null,
+          "0.08",
+          "0.04"
+        ]
+      }
+    ],
+    "xTitle": "몸무게(kg)",
+    "yTitle": "상대도수",
+    "grid": true,
+    "showValues": true,
+    "classSums": [
+      {
+        "series": 0,
+        "classes": [
+          [
+            0,
+            2
+          ],
+          [
+            4,
+            5
+          ]
+        ],
+        "label": "0.60"
+      }
+    ]
+  }
+}
