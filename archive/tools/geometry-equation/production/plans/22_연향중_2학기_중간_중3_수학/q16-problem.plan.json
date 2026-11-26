@@ -1,0 +1,328 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "c"
+  ],
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "M",
+    "N"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "sCN",
+      "refs": [
+        "C",
+        "N"
+      ]
+    },
+    {
+      "id": "sND",
+      "refs": [
+        "N",
+        "D"
+      ]
+    },
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "sON",
+      "refs": [
+        "O",
+        "N"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rM",
+      "refs": [
+        "O",
+        "M",
+        "A"
+      ]
+    },
+    {
+      "id": "rN",
+      "refs": [
+        "O",
+        "N",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sAM",
+          "sMB"
+        ]
+      },
+      {
+        "id": "e2",
+        "count": 2,
+        "segments": [
+          "sCN",
+          "sND"
+        ]
+      },
+      {
+        "id": "e3",
+        "count": 3,
+        "segments": [
+          "sOM",
+          "sON"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 650,
+    "height": 465
+  },
+  "caption": "동일한 길이의 두 현 AB·CD에 중심에서 내린 수선 OM·ON과 직각·중점 눈금.",
+  "sourceConditions": [
+    {
+      "id": "R_M",
+      "condition": "꼭짓점 M의 직각 표시",
+      "mappedTo": [
+        "rM"
+      ]
+    },
+    {
+      "id": "R_N",
+      "condition": "꼭짓점 N의 직각 표시",
+      "mappedTo": [
+        "rN"
+      ]
+    },
+    {
+      "id": "E_0",
+      "condition": "같은 길이의 선분에 눈금",
+      "mappedTo": [
+        "e1"
+      ]
+    },
+    {
+      "id": "E_1",
+      "condition": "같은 길이의 선분에 눈금",
+      "mappedTo": [
+        "e2"
+      ]
+    },
+    {
+      "id": "E_2",
+      "condition": "같은 길이의 선분에 눈금",
+      "mappedTo": [
+        "e3"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "모든 표시 선분·길이·각·직각과 원본 도형 경계를 엔진 필드로 표현하며 불필요한 면 채움은 쓰지 않는다."
+  ],
+  "sourceQuote": "다음 증명 과정에서 빈칸에 들어갈 알맞은 것끼리 짝지어진 것을 고르면? (4점) [원본 그림] 오른쪽 그림과 같이 원 $\\mathrm{O}$의 중심에서 두 현 $\\overline{\\mathrm{AB}}$와 $\\overline{\\mathrm{CD}}$에 내린 수선의 발을 각각 $\\mathrm{M}$과 $\\mathrm{N}$이라고 하자. 다음은 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{CD}}$이면 $\\overline{\\mathrm{OM}}=\\overline{\\mathrm{ON}}$임을 보이는 과정이다. 원의 중심에서 현에 내린 수선은 그 현을 이등분하므로 $\\overline{\\mathrm{AM}}=(㉮)\\overline{\\mathrm{AB}}$, $\\overline{\\mathrm{CN}}=(㉮)\\overline{\\mathrm{CD}}$이다. 그런데 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{CD}}$이므로 $\\overline{\\mathrm{AM}}=\\overline{\\mathrm{CN}}$이다. 두 직각삼각형 $\\mathrm{OAM}$과 $\\mathrm{OCN}$에서 $\\overline{\\mathrm{OA}}$와 $\\overline{\\mathrm{OC}}$는 원의 (㉯)이므로 $\\overline{\\mathrm{OA}}=\\overline{\\mathrm{OC}}$, $\\overline{\\mathrm{AM}}=\\overline{\\mathrm{CN}}$이므로 $\\triangle\\mathrm{OAM} \\equiv \\triangle\\mathrm{OCN}$ ((㉰) 합동) 따라서 $\\overline{\\mathrm{OM}}=\\overline{\\mathrm{ON}}$이다."
+}

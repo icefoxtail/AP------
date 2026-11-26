@@ -1,0 +1,109 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-2"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=-2x^2"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-2",
+          "-4",
+          "-2"
+        ],
+        "domain": [
+          "-3",
+          "1"
+        ],
+        "label": "y=-2(x+1)^2"
+      }
+    ],
+    "viewport": [
+      -4,
+      3,
+      -10,
+      2
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "V",
+          "x": "-1",
+          "y": "0",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "axis",
+          "x": "-1"
+        }
+      ]
+    }
+  },
+  "caption": "꼭짓점이 왼쪽으로 1 이동하여 대칭축이 x=-1이 되는 두 포물선을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "curve_f",
+      "condition": "원문 함수 y=-2x^2의 포물선 실선·점선",
+      "mappedTo": [
+        "f"
+      ]
+    },
+    {
+      "id": "curve_g",
+      "condition": "원문 함수 y=-2(x+1)^2의 포물선 실선·점선",
+      "mappedTo": [
+        "g"
+      ]
+    },
+    {
+      "id": "point_O",
+      "condition": "표시 점 O(0,0)",
+      "mappedTo": [
+        "O"
+      ]
+    },
+    {
+      "id": "point_V",
+      "condition": "표시 점 V(-1,0)",
+      "mappedTo": [
+        "V"
+      ]
+    },
+    {
+      "id": "guide_axis",
+      "condition": "점선 대칭축 또는 높이 axis",
+      "mappedTo": [
+        "axis"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 포물선의 기울기·꼭짓점·절편·점선 축을 엔진 곡선으로 그린다. 기본 배경 사각형과 무의미한 면 채움은 없다."
+  ],
+  "sourceQuote": "이차함수 $y=-2(x+1)^2$의 그래프는 이차함수 $y=-2x^2$의 그래프를 $x$축의 방향으로 $a$만큼 평행이동한 것이고, 축의 방정식은 $x=b$이다. 이때 $a+b$의 값은? (4점)"
+}

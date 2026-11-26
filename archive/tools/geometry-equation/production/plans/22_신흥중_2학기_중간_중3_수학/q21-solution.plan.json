@@ -1,0 +1,262 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "150000000",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7290000000",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "60"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "60"
+            },
+            {
+              "kind": "rational",
+              "numerator": "150000000",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "B",
+    "H",
+    "T",
+    "G",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sBH",
+      "refs": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "sHT",
+      "refs": [
+        "H",
+        "T"
+      ]
+    },
+    {
+      "id": "sGE",
+      "refs": [
+        "G",
+        "E"
+      ]
+    },
+    {
+      "id": "sEH",
+      "refs": [
+        "E",
+        "H"
+      ]
+    },
+    {
+      "id": "sET",
+      "refs": [
+        "E",
+        "T"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "T",
+        "H",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "teye",
+        "ownerSegment": "sGE",
+        "text": "1.5",
+        "unit": "m",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ttower",
+        "ownerSegment": "sHT",
+        "text": "71.4",
+        "unit": "m",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aBEH",
+        "refs": [
+          "H",
+          "E",
+          "T"
+        ],
+        "value": 50,
+        "label": "50",
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "ddistance",
+        "from": "H",
+        "to": "E",
+        "label": "60",
+        "side": "BELOW",
+        "style": "BRACE",
+        "unit": "m",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 650,
+    "height": 465
+  },
+  "caption": "눈높이 1.5m, 건물과 수평거리60m, 올려다본 각50°, 시선과 직각을 그린다.",
+  "sourceConditions": [
+    {
+      "id": "L_eye",
+      "condition": "그려지는 선분 GE의 길이·라벨 1.5m",
+      "mappedTo": [
+        "teye"
+      ]
+    },
+    {
+      "id": "L_tower",
+      "condition": "그려지는 선분 HT의 길이·라벨 71.4m",
+      "mappedTo": [
+        "ttower"
+      ]
+    },
+    {
+      "id": "A_BEH",
+      "condition": "각 BEH에 50 표시",
+      "mappedTo": [
+        "aBEH"
+      ]
+    },
+    {
+      "id": "R_H",
+      "condition": "꼭짓점 H의 직각 표시",
+      "mappedTo": [
+        "rH"
+      ]
+    },
+    {
+      "id": "D_distance",
+      "condition": "치수선 distance에 60 표기",
+      "mappedTo": [
+        "ddistance"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "모든 표시 선분·길이·각·직각과 원본 도형 경계를 엔진 필드로 표현하며 불필요한 면 채움은 쓰지 않는다."
+  ],
+  "sourceQuote": "【서술형 6】 현진이가 어떤 건물로부터 $60\\text{ m}$ 떨어진 곳에서 건물의 꼭대기를 올려다본 각도가 $50^\\circ$이었다. 현진이의 눈높이가 $1.5\\text{ m}$일 때, 건물의 높이를 구하시오. (단, $\\tan 50^\\circ = 1.19$로 계산한다.) (6점)"
+}

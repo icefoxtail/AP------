@@ -1,0 +1,280 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "450000000",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "396862697",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "350000000",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "132287566",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "156863815",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "138340881",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "295204696",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "256458565",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "38746131",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "132287566",
+            "denominator": "100000000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "c"
+  ],
+  "displayPoints": [
+    "B",
+    "C",
+    "A",
+    "O",
+    "D",
+    "E",
+    "X"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "rightAngles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "tAB",
+        "ownerSegment": "sAB",
+        "text": "6",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tAC",
+        "ownerSegment": "sCA",
+        "text": "4",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tBC",
+        "ownerSegment": "sBC",
+        "text": "5",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "X"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 650,
+    "height": 465
+  },
+  "caption": "삼각형 ABC의 내접원, 원에 접하는 DE와 원본 세 변 6·4·5 cm를 무채움으로 그린다.",
+  "sourceConditions": [
+    {
+      "id": "L_AB",
+      "condition": "그려지는 선분 AB의 길이·라벨 6cm",
+      "mappedTo": [
+        "tAB"
+      ]
+    },
+    {
+      "id": "L_AC",
+      "condition": "그려지는 선분 CA의 길이·라벨 4cm",
+      "mappedTo": [
+        "tAC"
+      ]
+    },
+    {
+      "id": "L_BC",
+      "condition": "그려지는 선분 BC의 길이·라벨 5cm",
+      "mappedTo": [
+        "tBC"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "모든 표시 선분·길이·각·직각과 원본 도형 경계를 엔진 필드로 표현하며 불필요한 면 채움은 쓰지 않는다."
+  ],
+  "sourceQuote": "아래 그림에서 원 $\\mathrm{O}$는 $\\triangle\\mathrm{ABC}$의 내접원이고 $\\overline{\\mathrm{DE}}$는 원 $\\mathrm{O}$에 접한다. $\\overline{\\mathrm{AB}}=6\\text{ cm}$, $\\overline{\\mathrm{AC}}=4\\text{ cm}$, $\\overline{\\mathrm{BC}}=5\\text{ cm}$일 때, $\\triangle\\mathrm{BED}$의 둘레의 길이는? (5점) [원본 그림]"
+}

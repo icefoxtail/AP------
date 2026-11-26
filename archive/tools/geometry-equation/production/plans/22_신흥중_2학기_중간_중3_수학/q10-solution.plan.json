@@ -1,0 +1,248 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "473205081",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "B",
+    "D",
+    "C",
+    "A"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rD",
+      "refs": [
+        "A",
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "tAB",
+        "ownerSegment": "sAB",
+        "text": "3sqrt(2)",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tAD",
+        "ownerSegment": "sAD",
+        "text": "3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "value": 45,
+        "label": "45",
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 650,
+    "height": 465
+  },
+  "caption": "해설은 AD=3, DC=√3을 구하는 수직 보조선 AD로 원문 조건을 연결한다.",
+  "sourceConditions": [
+    {
+      "id": "L_AB",
+      "condition": "그려지는 선분 AB의 길이·라벨 3sqrt(2)cm",
+      "mappedTo": [
+        "tAB"
+      ]
+    },
+    {
+      "id": "A_B",
+      "condition": "각 B에 45 표시",
+      "mappedTo": [
+        "aB"
+      ]
+    },
+    {
+      "id": "A_C",
+      "condition": "각 C에 60 표시",
+      "mappedTo": [
+        "aC"
+      ]
+    },
+    {
+      "id": "R_D",
+      "condition": "꼭짓점 D의 직각 표시",
+      "mappedTo": [
+        "rD"
+      ]
+    },
+    {
+      "id": "AUX_AD",
+      "condition": "풀이 보조 점선 AD",
+      "mappedTo": [
+        "sAD"
+      ]
+    },
+    {
+      "id": "sol_AD",
+      "condition": "해설에서 유도한 높이 AD=3",
+      "mappedTo": [
+        "tAD"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "모든 표시 선분·길이·각·직각과 원본 도형 경계를 엔진 필드로 표현하며 불필요한 면 채움은 쓰지 않는다."
+  ],
+  "sourceQuote": "다음 그림에서 $\\overline{\\mathrm{AC}}$의 길이는? (4점) [원본 그림]"
+}

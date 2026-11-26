@@ -1,0 +1,77 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "5",
+          "0",
+          "-13"
+        ],
+        "domain": [
+          "-3/2",
+          "3/2"
+        ],
+        "label": "y=-13x^2+5"
+      }
+    ],
+    "viewport": [
+      -2,
+      2,
+      -28,
+      7
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "1",
+          "y": "-8",
+          "coordinates": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "P_vertical",
+          "from": "P",
+          "axis": "x"
+        }
+      ]
+    }
+  },
+  "caption": "y=ax²를 위로 5만큼 옮긴 포물선이 P(1,-8)을 지남을 보인다.",
+  "sourceConditions": [
+    {
+      "id": "curve_f",
+      "condition": "원문 함수 y=-13x^2+5의 포물선 실선·점선",
+      "mappedTo": [
+        "f"
+      ]
+    },
+    {
+      "id": "point_P",
+      "condition": "표시 점 P(1,-8)",
+      "mappedTo": [
+        "P"
+      ]
+    },
+    {
+      "id": "guide_P_vertical",
+      "condition": "점선 대칭축 또는 높이 P_vertical",
+      "mappedTo": [
+        "P_vertical"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 포물선의 기울기·꼭짓점·절편·점선 축을 엔진 곡선으로 그린다. 기본 배경 사각형과 무의미한 면 채움은 없다."
+  ],
+  "sourceQuote": "이차함수 $y=ax^2$의 그래프를 $y$축의 방향으로 $5$만큼 평행이동하면 점 $(1, -8)$을 지날 때, 수 $a$의 값을 구하면? (4점)"
+}

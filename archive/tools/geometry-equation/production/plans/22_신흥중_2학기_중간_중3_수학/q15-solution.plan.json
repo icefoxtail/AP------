@@ -1,0 +1,392 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "248528100",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-7"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "H",
+    "C",
+    "P",
+    "Q",
+    "R",
+    "T",
+    "U"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sAQ",
+      "refs": [
+        "A",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQR",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    },
+    {
+      "id": "sRC",
+      "refs": [
+        "R",
+        "C"
+      ]
+    },
+    {
+      "id": "sBT",
+      "refs": [
+        "B",
+        "T"
+      ]
+    },
+    {
+      "id": "sTP",
+      "refs": [
+        "T",
+        "P"
+      ]
+    },
+    {
+      "id": "sBU",
+      "refs": [
+        "B",
+        "U"
+      ]
+    },
+    {
+      "id": "sUC",
+      "refs": [
+        "U",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "A",
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aABC",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 45,
+        "label": "45",
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dheight",
+        "from": "P",
+        "to": "T",
+        "label": "6",
+        "side": "LEFT",
+        "style": "BRACE",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sBC"
+        ]
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "P",
+    "Q",
+    "R",
+    "T",
+    "U"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 650,
+    "height": 465
+  },
+  "caption": "접은 변 AB=BC의 눈금과 높이 AH=6, 직각 및 45°로 넓이를 계산한다.",
+  "sourceConditions": [
+    {
+      "id": "A_ABC",
+      "condition": "각 ABC에 45 표시",
+      "mappedTo": [
+        "aABC"
+      ]
+    },
+    {
+      "id": "R_H",
+      "condition": "꼭짓점 H의 직각 표시",
+      "mappedTo": [
+        "rH"
+      ]
+    },
+    {
+      "id": "D_height",
+      "condition": "치수선 height에 6 표기",
+      "mappedTo": [
+        "dheight"
+      ]
+    },
+    {
+      "id": "E_0",
+      "condition": "같은 길이의 선분에 눈금",
+      "mappedTo": [
+        "e1"
+      ]
+    },
+    {
+      "id": "AUX_AH",
+      "condition": "풀이 보조 점선 AH",
+      "mappedTo": [
+        "sAH"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "모든 표시 선분·길이·각·직각과 원본 도형 경계를 엔진 필드로 표현하며 불필요한 면 채움은 쓰지 않는다."
+  ],
+  "sourceQuote": "다음 그림은 세로의 길이가 $6\\text{ cm}$인 직사각형 모양의 종이를 접은 것이다. $\\angle\\mathrm{ABC}=45^\\circ$일 때, $\\triangle\\mathrm{ABC}$의 넓이를 구하면? (4점) [원본 그림]"
+}

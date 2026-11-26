@@ -1,0 +1,343 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "142814801",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Y",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "160000000",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "quarter",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "D"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "55"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lOD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "A",
+          "lOD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "D",
+    "C",
+    "Y"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sOY",
+      "refs": [
+        "O",
+        "Y"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "C",
+        "D",
+        "O"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "tOB",
+        "ownerSegment": "sOB",
+        "text": "0.5736",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tAB",
+        "ownerSegment": "sAB",
+        "text": "0.8192",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tCD",
+        "ownerSegment": "sCD",
+        "text": "1.4281",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aAOD",
+        "refs": [
+          "A",
+          "O",
+          "D"
+        ],
+        "value": 55,
+        "label": "55",
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcquarter",
+        "circle": "quarter",
+        "center": "O",
+        "from": "D",
+        "to": "A",
+        "side": "MINOR"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "Y"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 650,
+    "height": 465
+  },
+  "caption": "55° 반직선·단위원 사분호, 두 직각, 소수 x=0.5736, y=0.8192, tan높이=1.4281.",
+  "sourceConditions": [
+    {
+      "id": "L_OB",
+      "condition": "그려지는 선분 OB의 길이·라벨 0.5736",
+      "mappedTo": [
+        "tOB"
+      ]
+    },
+    {
+      "id": "L_AB",
+      "condition": "그려지는 선분 AB의 길이·라벨 0.8192",
+      "mappedTo": [
+        "tAB"
+      ]
+    },
+    {
+      "id": "L_CD",
+      "condition": "그려지는 선분 CD의 길이·라벨 1.4281",
+      "mappedTo": [
+        "tCD"
+      ]
+    },
+    {
+      "id": "A_AOD",
+      "condition": "각 AOD에 55 표시",
+      "mappedTo": [
+        "aAOD"
+      ]
+    },
+    {
+      "id": "R_B",
+      "condition": "꼭짓점 B의 직각 표시",
+      "mappedTo": [
+        "rB"
+      ]
+    },
+    {
+      "id": "R_D",
+      "condition": "꼭짓점 D의 직각 표시",
+      "mappedTo": [
+        "rD"
+      ]
+    },
+    {
+      "id": "ARC_quarter",
+      "condition": "원본의 실제 원호",
+      "mappedTo": [
+        "arcquarter"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "모든 표시 선분·길이·각·직각과 원본 도형 경계를 엔진 필드로 표현하며 불필요한 면 채움은 쓰지 않는다."
+  ],
+  "sourceQuote": "【서술형 5】 오른쪽 그림과 같이 반지름의 길이가 $1$인 사분원에서 다음 삼각비의 값을 구하시오. (6점 : 각 2점) (1) $\\sin 55^\\circ$ (2) $\\sin 35^\\circ$ (3) $\\tan 55^\\circ$ [원본 그림]"
+}

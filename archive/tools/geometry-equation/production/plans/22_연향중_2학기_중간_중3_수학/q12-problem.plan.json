@@ -1,0 +1,289 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "346410162",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "rational",
+              "numerator": "346410162",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "B",
+    "C",
+    "A",
+    "D",
+    "M"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBM",
+      "refs": [
+        "B",
+        "M"
+      ]
+    },
+    {
+      "id": "sMC",
+      "refs": [
+        "M",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "tAB",
+        "ownerSegment": "sAB",
+        "text": "4",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tAD",
+        "ownerSegment": "sDA",
+        "text": "6",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aD",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sBM",
+          "sMC"
+        ]
+      }
+    ],
+    "parallels": [
+      {
+        "id": "p1",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sCD"
+        ]
+      },
+      {
+        "id": "p2",
+        "count": 2,
+        "segments": [
+          "sBM",
+          "sDA"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 650,
+    "height": 465
+  },
+  "caption": "평행사변형 ABCD, AD=6cm·AB=4cm·각 D=60°, 중점 M의 이등분 눈금과 △AMC.",
+  "sourceConditions": [
+    {
+      "id": "L_AB",
+      "condition": "그려지는 선분 AB의 길이·라벨 4cm",
+      "mappedTo": [
+        "tAB"
+      ]
+    },
+    {
+      "id": "L_AD",
+      "condition": "그려지는 선분 DA의 길이·라벨 6cm",
+      "mappedTo": [
+        "tAD"
+      ]
+    },
+    {
+      "id": "A_D",
+      "condition": "각 D에 60 표시",
+      "mappedTo": [
+        "aD"
+      ]
+    },
+    {
+      "id": "E_0",
+      "condition": "같은 길이의 선분에 눈금",
+      "mappedTo": [
+        "e1"
+      ]
+    },
+    {
+      "id": "P_0",
+      "condition": "평행 관계를 화살표로 표시",
+      "mappedTo": [
+        "p1"
+      ]
+    },
+    {
+      "id": "P_1",
+      "condition": "평행 관계를 화살표로 표시",
+      "mappedTo": [
+        "p2"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "모든 표시 선분·길이·각·직각과 원본 도형 경계를 엔진 필드로 표현하며 불필요한 면 채움은 쓰지 않는다."
+  ],
+  "sourceQuote": "오른쪽 그림과 같은 평행사변형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{BC}}$의 중점을 $\\mathrm{M}$이라 하자. $\\overline{\\mathrm{AB}}=4\\text{ cm}$, $\\overline{\\mathrm{AD}}=6\\text{ cm}$, $\\angle\\mathrm{D}=60^\\circ$일 때, $\\triangle\\mathrm{AMC}$의 넓이는? (4점) [원본 그림]"
+}

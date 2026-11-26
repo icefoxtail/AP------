@@ -1,0 +1,255 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-346410162",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "346410162",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "346410162",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "tAB",
+        "ownerSegment": "sAB",
+        "text": "4",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tBC",
+        "ownerSegment": "sBC",
+        "text": "2sqrt(3)",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tCD",
+        "ownerSegment": "sCD",
+        "text": "6",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tAD",
+        "ownerSegment": "sDA",
+        "text": "8",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 150,
+        "label": "150",
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aD",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 650,
+    "height": 465
+  },
+  "caption": "대각선 AC로 넓이 2√3과 12√3인 두 삼각형을 분리하여 계산한다.",
+  "sourceConditions": [
+    {
+      "id": "L_AB",
+      "condition": "그려지는 선분 AB의 길이·라벨 4cm",
+      "mappedTo": [
+        "tAB"
+      ]
+    },
+    {
+      "id": "L_BC",
+      "condition": "그려지는 선분 BC의 길이·라벨 2sqrt(3)cm",
+      "mappedTo": [
+        "tBC"
+      ]
+    },
+    {
+      "id": "L_CD",
+      "condition": "그려지는 선분 CD의 길이·라벨 6cm",
+      "mappedTo": [
+        "tCD"
+      ]
+    },
+    {
+      "id": "L_AD",
+      "condition": "그려지는 선분 DA의 길이·라벨 8cm",
+      "mappedTo": [
+        "tAD"
+      ]
+    },
+    {
+      "id": "A_B",
+      "condition": "각 B에 150 표시",
+      "mappedTo": [
+        "aB"
+      ]
+    },
+    {
+      "id": "A_D",
+      "condition": "각 D에 60 표시",
+      "mappedTo": [
+        "aD"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "모든 표시 선분·길이·각·직각과 원본 도형 경계를 엔진 필드로 표현하며 불필요한 면 채움은 쓰지 않는다."
+  ],
+  "sourceQuote": "다음 사각형의 넓이를 구하면? (4점) [원본 그림]"
+}

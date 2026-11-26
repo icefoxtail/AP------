@@ -1,0 +1,267 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-207055236",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-772740661",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "207055236",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-772740661",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-772740661",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "A",
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "tAB",
+        "ownerSegment": "sAB",
+        "text": "8",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tAC",
+        "ownerSegment": "sCA",
+        "text": "8",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 75,
+        "label": "75",
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 30,
+        "label": "30",
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sCA"
+        ]
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "H"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 650,
+    "height": 465
+  },
+  "caption": "AB=AC=8cm인 이등변삼각형, B=75°, 두 등변 눈금과 꼭짓점각 A=30°.",
+  "sourceConditions": [
+    {
+      "id": "L_AB",
+      "condition": "그려지는 선분 AB의 길이·라벨 8cm",
+      "mappedTo": [
+        "tAB"
+      ]
+    },
+    {
+      "id": "L_AC",
+      "condition": "그려지는 선분 CA의 길이·라벨 8cm",
+      "mappedTo": [
+        "tAC"
+      ]
+    },
+    {
+      "id": "A_B",
+      "condition": "각 B에 75 표시",
+      "mappedTo": [
+        "aB"
+      ]
+    },
+    {
+      "id": "A_A",
+      "condition": "각 A에 30 표시",
+      "mappedTo": [
+        "aA"
+      ]
+    },
+    {
+      "id": "R_H",
+      "condition": "꼭짓점 H의 직각 표시",
+      "mappedTo": [
+        "rH"
+      ]
+    },
+    {
+      "id": "E_0",
+      "condition": "같은 길이의 선분에 눈금",
+      "mappedTo": [
+        "e1"
+      ]
+    },
+    {
+      "id": "AUX_AH",
+      "condition": "풀이 보조 점선 AH",
+      "mappedTo": [
+        "sAH"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "모든 표시 선분·길이·각·직각과 원본 도형 경계를 엔진 필드로 표현하며 불필요한 면 채움은 쓰지 않는다."
+  ],
+  "sourceQuote": "오른쪽 그림과 같이 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}=8\\text{ cm}$, $\\angle\\mathrm{B}=75^\\circ$인 이등변삼각형 $\\mathrm{ABC}$의 넓이는? (5점) [원본 그림]"
+}

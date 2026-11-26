@@ -1,0 +1,112 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "17",
+          "-8",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "8"
+        ],
+        "label": "y=(x-4)^2+1"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=x^2",
+        "style": "DASHED"
+      }
+    ],
+    "viewport": [
+      -4,
+      9,
+      -2,
+      19
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "4",
+          "y": "1",
+          "coordinates": true
+        },
+        {
+          "id": "Y",
+          "x": "0",
+          "y": "17",
+          "coordinates": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "axis",
+          "from": "V",
+          "axis": "x"
+        }
+      ]
+    }
+  },
+  "caption": "원래 y=x²를 오른쪽4, 위1 이동한 그래프. 꼭짓점 (4,1), y절편17.",
+  "sourceConditions": [
+    {
+      "id": "curve_f",
+      "condition": "원문 함수 y=(x-4)^2+1의 포물선 실선·점선",
+      "mappedTo": [
+        "f"
+      ]
+    },
+    {
+      "id": "curve_g",
+      "condition": "원문 함수 y=x^2의 포물선 실선·점선",
+      "mappedTo": [
+        "g"
+      ]
+    },
+    {
+      "id": "point_V",
+      "condition": "표시 점 V(4,1)",
+      "mappedTo": [
+        "V"
+      ]
+    },
+    {
+      "id": "point_Y",
+      "condition": "표시 점 Y(0,17)",
+      "mappedTo": [
+        "Y"
+      ]
+    },
+    {
+      "id": "guide_axis",
+      "condition": "점선 대칭축 또는 높이 axis",
+      "mappedTo": [
+        "axis"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 포물선의 기울기·꼭짓점·절편·점선 축을 엔진 곡선으로 그린다. 기본 배경 사각형과 무의미한 면 채움은 없다."
+  ],
+  "sourceQuote": "【서술형 1】 이차함수 $y=(x-4)^2+1$에 대하여 다음 물음에 답하시오. (6점) (1) 축의 방정식은? (1점) (2) 꼭짓점의 좌표는? (1점) (3) $y=x^2$의 그래프를 $x$축 방향으로 ( )만큼, $y$축 방향으로 ( )만큼 평행이동한 것이다. (2점) (4) $y$절편은? (1점) (5) 그래프의 모양은? (1점)"
+}

@@ -1,0 +1,289 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-180000000",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "240000000",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-180000000",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-240000000",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-180000000",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "c"
+  ],
+  "displayPoints": [
+    "O",
+    "P",
+    "A",
+    "B",
+    "M"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "O",
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "rB",
+      "refs": [
+        "O",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "rM",
+      "refs": [
+        "O",
+        "M",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "tPA",
+        "ownerSegment": "sPA",
+        "text": "4",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tOA",
+        "ownerSegment": "sOA",
+        "text": "3",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "M"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 650,
+    "height": 465
+  },
+  "caption": "P에서 원 O로 그은 두 접선 PA·PB, 접점 직각 A·B, 반지름3cm·접선4cm.",
+  "sourceConditions": [
+    {
+      "id": "L_PA",
+      "condition": "그려지는 선분 PA의 길이·라벨 4cm",
+      "mappedTo": [
+        "tPA"
+      ]
+    },
+    {
+      "id": "L_OA",
+      "condition": "그려지는 선분 OA의 길이·라벨 3cm",
+      "mappedTo": [
+        "tOA"
+      ]
+    },
+    {
+      "id": "R_A",
+      "condition": "꼭짓점 A의 직각 표시",
+      "mappedTo": [
+        "rA"
+      ]
+    },
+    {
+      "id": "R_B",
+      "condition": "꼭짓점 B의 직각 표시",
+      "mappedTo": [
+        "rB"
+      ]
+    },
+    {
+      "id": "R_M",
+      "condition": "꼭짓점 M의 직각 표시",
+      "mappedTo": [
+        "rM"
+      ]
+    },
+    {
+      "id": "AUX_OM",
+      "condition": "풀이 보조 점선 OM",
+      "mappedTo": [
+        "sOM"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "모든 표시 선분·길이·각·직각과 원본 도형 경계를 엔진 필드로 표현하며 불필요한 면 채움은 쓰지 않는다."
+  ],
+  "sourceQuote": "다음 그림에서 $\\overline{\\mathrm{PA}}, \\overline{\\mathrm{PB}}$는 원 $\\mathrm{O}$의 접선이고 두 점 $\\mathrm{A, B}$는 접점이다. $\\overline{\\mathrm{PA}}=4\\text{ cm}$, $\\overline{\\mathrm{OA}}=3\\text{ cm}$일 때, $\\overline{\\mathrm{AB}}$의 길이는? (5점) [원본 그림]"
+}

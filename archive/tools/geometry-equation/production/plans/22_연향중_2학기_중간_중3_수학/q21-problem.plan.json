@@ -1,0 +1,350 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "180000000",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "160000000",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "c"
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "D",
+    "F",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sEB",
+      "refs": [
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "sAF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "sFC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "sOE",
+      "refs": [
+        "O",
+        "E"
+      ]
+    },
+    {
+      "id": "sOF",
+      "refs": [
+        "O",
+        "F"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "O",
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "rF",
+      "refs": [
+        "O",
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "rE",
+      "refs": [
+        "O",
+        "E",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "tBE",
+        "ownerSegment": "sEB",
+        "text": "2",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tCE",
+        "ownerSegment": "sCE",
+        "text": "3",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 650,
+    "height": 465
+  },
+  "caption": "직각 A인 △ABC의 내접원, 접점 D·E·F, 밑변 BE=2cm·CE=3cm와 3개 접점의 직각.",
+  "sourceConditions": [
+    {
+      "id": "L_BE",
+      "condition": "그려지는 선분 EB의 길이·라벨 2cm",
+      "mappedTo": [
+        "tBE"
+      ]
+    },
+    {
+      "id": "L_CE",
+      "condition": "그려지는 선분 CE의 길이·라벨 3cm",
+      "mappedTo": [
+        "tCE"
+      ]
+    },
+    {
+      "id": "R_A",
+      "condition": "꼭짓점 A의 직각 표시",
+      "mappedTo": [
+        "rA"
+      ]
+    },
+    {
+      "id": "R_D",
+      "condition": "꼭짓점 D의 직각 표시",
+      "mappedTo": [
+        "rD"
+      ]
+    },
+    {
+      "id": "R_F",
+      "condition": "꼭짓점 F의 직각 표시",
+      "mappedTo": [
+        "rF"
+      ]
+    },
+    {
+      "id": "R_E",
+      "condition": "꼭짓점 E의 직각 표시",
+      "mappedTo": [
+        "rE"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "모든 표시 선분·길이·각·직각과 원본 도형 경계를 엔진 필드로 표현하며 불필요한 면 채움은 쓰지 않는다."
+  ],
+  "sourceQuote": "【서술형 3】 다음 그림에서 원 $\\mathrm{O}$는 $\\angle\\mathrm{A}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$의 내접원이고, 세 점 $\\mathrm{D, E, F}$는 접점이다. $\\overline{\\mathrm{BE}}=2\\text{ cm}$, $\\overline{\\mathrm{CE}}=3\\text{ cm}$일 때, $\\triangle\\mathrm{ABC}$의 내접원의 넓이를 구하여라. (6점) [원본 그림]"
+}

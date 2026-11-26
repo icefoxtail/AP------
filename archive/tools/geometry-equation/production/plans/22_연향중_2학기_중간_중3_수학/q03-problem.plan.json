@@ -1,0 +1,249 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "256000000",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "192000000",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "B",
+    "A",
+    "C",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "rH",
+      "refs": [
+        "A",
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "tAB",
+        "ownerSegment": "sAB",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tAC",
+        "ownerSegment": "sAC",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tBC",
+        "ownerSegment": "sBC",
+        "text": "5",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aCAH",
+        "refs": [
+          "C",
+          "A",
+          "H"
+        ],
+        "value": 36.87,
+        "label": "x",
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 650,
+    "height": 465
+  },
+  "caption": "3-4-5 직각삼각형의 BC에 높이 AH, 직각 A·H와 구할 각 x를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "L_AB",
+      "condition": "그려지는 선분 AB의 길이·라벨 4",
+      "mappedTo": [
+        "tAB"
+      ]
+    },
+    {
+      "id": "L_AC",
+      "condition": "그려지는 선분 AC의 길이·라벨 3",
+      "mappedTo": [
+        "tAC"
+      ]
+    },
+    {
+      "id": "L_BC",
+      "condition": "그려지는 선분 BC의 길이·라벨 5",
+      "mappedTo": [
+        "tBC"
+      ]
+    },
+    {
+      "id": "A_CAH",
+      "condition": "각 CAH에 x 표시",
+      "mappedTo": [
+        "aCAH"
+      ]
+    },
+    {
+      "id": "R_A",
+      "condition": "꼭짓점 A의 직각 표시",
+      "mappedTo": [
+        "rA"
+      ]
+    },
+    {
+      "id": "R_H",
+      "condition": "꼭짓점 H의 직각 표시",
+      "mappedTo": [
+        "rH"
+      ]
+    },
+    {
+      "id": "AUX_AH",
+      "condition": "풀이 보조 점선 AH",
+      "mappedTo": [
+        "sAH"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "모든 표시 선분·길이·각·직각과 원본 도형 경계를 엔진 필드로 표현하며 불필요한 면 채움은 쓰지 않는다."
+  ],
+  "sourceQuote": "다음 그림에서 $\\angle\\mathrm{CAH}=x$라고 할 때, $\\tan x$의 값은? (4점) [원본 그림]"
+}

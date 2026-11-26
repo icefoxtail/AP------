@@ -1,0 +1,263 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Y",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "O",
+    "B",
+    "X",
+    "Y"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOX",
+      "refs": [
+        "O",
+        "X"
+      ]
+    },
+    {
+      "id": "sOY",
+      "refs": [
+        "O",
+        "Y"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rO",
+      "refs": [
+        "A",
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "tOA",
+        "ownerSegment": "sAO",
+        "text": "8",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tOB",
+        "ownerSegment": "sOB",
+        "text": "4",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aBAO",
+        "refs": [
+          "B",
+          "A",
+          "O"
+        ],
+        "value": 26.565,
+        "label": "a",
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aABO",
+        "refs": [
+          "A",
+          "B",
+          "O"
+        ],
+        "value": 63.435,
+        "label": "b",
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "X",
+    "Y"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 650,
+    "height": 465
+  },
+  "caption": "OA=8, OB=4, AB=4√5인 직각삼각형의 각 a·b를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "L_OA",
+      "condition": "그려지는 선분 AO의 길이·라벨 8",
+      "mappedTo": [
+        "tOA"
+      ]
+    },
+    {
+      "id": "L_OB",
+      "condition": "그려지는 선분 OB의 길이·라벨 4",
+      "mappedTo": [
+        "tOB"
+      ]
+    },
+    {
+      "id": "A_BAO",
+      "condition": "각 BAO에 a 표시",
+      "mappedTo": [
+        "aBAO"
+      ]
+    },
+    {
+      "id": "A_ABO",
+      "condition": "각 ABO에 b 표시",
+      "mappedTo": [
+        "aABO"
+      ]
+    },
+    {
+      "id": "R_O",
+      "condition": "꼭짓점 O의 직각 표시",
+      "mappedTo": [
+        "rO"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "모든 표시 선분·길이·각·직각과 원본 도형 경계를 엔진 필드로 표현하며 불필요한 면 채움은 쓰지 않는다."
+  ],
+  "sourceQuote": "오른쪽 그림에서 일차함수 $y=\\dfrac{1}{2}x+4$의 그래프가 $x$축, $y$축과 만나는 점을 각각 $\\mathrm{A, B}$라 하자. $\\angle\\mathrm{BAO}=a^\\circ$, $\\angle\\mathrm{ABO}=b^\\circ$라고 할 때, $\\cos a^\\circ \\times \\sin a^\\circ \\times \\tan b^\\circ$의 값을 구하면? (4점) [원본 그림]"
+}
