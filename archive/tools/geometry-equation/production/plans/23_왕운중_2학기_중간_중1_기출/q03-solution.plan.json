@@ -1,0 +1,41 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "sourceQuote": "오각뿔은 교선 10개, 교점 6개이다.",
+  "caption": "오각뿔의 6개 꼭짓점과 10개 모서리를 번호로 구별하며 가려진 모서리를 점선으로 표현한다.",
+  "sourceConditions": [
+    {
+      "id": "pentagon",
+      "condition": "오각형 밑면과 한 꼭짓점을 잇는 오각뿔이다.",
+      "mappedTo": "solids[0].base"
+    },
+    {
+      "id": "count",
+      "condition": "밑면 5개+꼭대기 1개의 교점, 밑변 5개+옆변 5개의 교선이다.",
+      "mappedTo": "solids[0].count"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 흑백 오각뿔의 숨은 점선과 모서리 구분을 복원하고 불필요한 밑면 색칠을 넣지 않는다."
+  ],
+  "solids": [
+    {
+      "id": "pent",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "REGULAR",
+        "n": 5,
+        "side": 5
+      },
+      "height": 8,
+      "names": "......",
+      "count": {
+        "vertices": true,
+        "edges": true
+      }
+    }
+  ],
+  "solidCaption": {
+    "text": "오각뿔"
+  }
+}

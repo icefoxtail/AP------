@@ -1,0 +1,37 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "sourceQuote": "다음 직육면체에서 교점의 개수 a와 교선의 개수 b의 합을 구한다.",
+  "caption": "A~H의 여덟 꼭짓점을 가진 직육면체의 보이는 선·가려지는 선을 구별한다.",
+  "sourceConditions": [
+    {
+      "id": "box",
+      "condition": "원본은 꼭짓점 A~H를 가진 직육면체이다.",
+      "mappedTo": "solids[0].names"
+    },
+    {
+      "id": "edges",
+      "condition": "보이는 9개 모서리와 뒤쪽에 가려진 3개 모서리를 모두 그린다.",
+      "mappedTo": "solids[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "흐린 원본 직육면체와 A~H 라벨을 엔진 입체도형으로 선명하게 표시하고 정답 수량을 문제 그림에서 숨긴다."
+  ],
+  "solids": [
+    {
+      "id": "box",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 4
+      },
+      "height": 5,
+      "names": "ABCDEFGH"
+    }
+  ],
+  "solidCaption": {
+    "text": "직육면체"
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "AC=AB/4, CM=BM, AM=5cm에서 AB를 구한다.",
+  "caption": "A–C–M–B의 수직선 위에서 CM과 MB의 같은 길이 눈금과 AM=5cm를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "order",
+      "condition": "점 A,C,M,B는 한 직선 위에 이 순서로 있다.",
+      "mappedTo": "mathPlan.nodes"
+    },
+    {
+      "id": "quarter",
+      "condition": "AC는 전체 AB의 1/4이다.",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "halves",
+      "condition": "CM=MB이다.",
+      "mappedTo": "planeMarks.equalLengths[0]"
+    },
+    {
+      "id": "given-five",
+      "condition": "AM의 길이는 5cm이다.",
+      "mappedTo": "planeMarks.dimensions[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "희미한 원본의 두 등분 눈금과 AM=5cm 치수선을 확실히 그린다.",
+    "물어보는 AB의 전체 길이 정답은 문제 그림에 쓰지 않는다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "C",
+    "M",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCM",
+      "refs": [
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eCM",
+        "count": 1,
+        "segments": [
+          "sCM",
+          "sMB"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAM",
+        "from": "A",
+        "to": "M",
+        "label": "5",
+        "unit": "cm",
+        "side": "ABOVE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 650,
+    "height": 360
+  }
+}

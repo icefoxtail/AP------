@@ -1,0 +1,41 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "sourceQuote": "직육면체의 꼭짓점 수 a=8, 모서리 수 b=12, a+b=20.",
+  "caption": "직육면체의 꼭짓점 8개와 모서리 12개에 번호를 붙이고 보이지 않는 모서리는 점선으로 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "box",
+      "condition": "원본은 직육면체이며 여덟 꼭짓점과 열두 모서리가 있다.",
+      "mappedTo": "solids[0]"
+    },
+    {
+      "id": "counts",
+      "condition": "교점 8개, 교선 12개를 각각 번호로 세어 확인한다.",
+      "mappedTo": "solids[0].count"
+    }
+  ],
+  "newVisualInformation": [
+    "해설 원본의 1~8 꼭짓점·①~⑫ 모서리 번호를 유지하면서 색 채움 없이 숨은 모서리를 점선으로 표시한다."
+  ],
+  "solids": [
+    {
+      "id": "box",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 4
+      },
+      "height": 5,
+      "names": "........",
+      "count": {
+        "vertices": true,
+        "edges": true
+      }
+    }
+  ],
+  "solidCaption": {
+    "text": "직육면체"
+  }
+}

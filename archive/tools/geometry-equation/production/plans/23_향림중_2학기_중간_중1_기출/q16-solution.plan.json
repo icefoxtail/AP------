@@ -1,0 +1,309 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "서로 마주 보는 두 삼각형에서 40°,45°,60°, ∠x,∠y가 주어졌다.",
+  "caption": "맞꼭지각 95°와 이웃각 x=85°, 오른쪽 꼭짓점 y=25°를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "triangles",
+      "condition": "왼쪽과 오른쪽 삼각형은 두 교차 직선을 공유한다.",
+      "mappedTo": "displaySegments"
+    },
+    {
+      "id": "given-angles",
+      "condition": "왼쪽 40°·45°, 오른쪽 60°와 x,y의 각 위치를 보존한다.",
+      "mappedTo": "planeMarks.angles"
+    }
+  ],
+  "newVisualInformation": [
+    "중앙 맞꼭지각의 회색·빨강 부채꼴을 없애고 같은 크기는 호로 표시한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "rational",
+            "numerator": "636396",
+            "denominator": "100000"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "130"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "rational",
+            "numerator": "578509",
+            "denominator": "100000"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "225"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "rational",
+            "numerator": "692820",
+            "denominator": "100000"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "45"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "rational",
+            "numerator": "338095",
+            "denominator": "100000"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "310"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "T",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "hiddenPointNames": [
+    "O",
+    "T",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "sBO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "leftTop",
+        "refs": [
+          "B",
+          "A",
+          "O"
+        ],
+        "value": 40,
+        "label": "40",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "leftBottom",
+        "refs": [
+          "A",
+          "B",
+          "O"
+        ],
+        "value": 45,
+        "label": "45",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rightBottom",
+        "refs": [
+          "O",
+          "D",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rightTop",
+        "refs": [
+          "O",
+          "C",
+          "D"
+        ],
+        "value": 25,
+        "label": "25",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "centerTop",
+        "refs": [
+          "A",
+          "O",
+          "C"
+        ],
+        "value": 85,
+        "label": "85",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "centerLeft",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 95,
+        "label": "95",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "centerRight",
+        "refs": [
+          "C",
+          "O",
+          "D"
+        ],
+        "value": 95,
+        "label": "95",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 670,
+    "height": 480
+  }
+}

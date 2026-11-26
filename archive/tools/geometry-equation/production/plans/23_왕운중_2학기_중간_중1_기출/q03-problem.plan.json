@@ -1,0 +1,38 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "sourceQuote": "다음 그림과 같은 입체도형에서 교선과 교점은 각각 몇 개인가?",
+  "caption": "오각형 밑면의 꼭대기를 잇는 오각뿔이며 안쪽에 가려지는 모서리는 점선으로 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "pyramid",
+      "condition": "오각형 밑면과 한 꼭대기로 이루어진 오각뿔이다.",
+      "mappedTo": "solids[0].base"
+    },
+    {
+      "id": "hidden",
+      "condition": "뒤쪽 밑변과 뒤쪽 옆모서리를 점선으로 구분한다.",
+      "mappedTo": "solids[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 스캔의 뭉개진 오각뿔 선·숨은 모서리를 공식 입체 엔진에 맞게 재작성한다.",
+    "문제용에는 교점·교선 개수나 정답을 노출하지 않는다."
+  ],
+  "solids": [
+    {
+      "id": "pent",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "REGULAR",
+        "n": 5,
+        "side": 5
+      },
+      "height": 8,
+      "names": "......"
+    }
+  ],
+  "solidCaption": {
+    "text": "오각뿔"
+  }
+}
