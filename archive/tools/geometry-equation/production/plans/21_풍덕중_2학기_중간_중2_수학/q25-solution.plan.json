@@ -1,0 +1,57 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "small",
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 5,
+      "names": "...."
+    },
+    {
+      "id": "large",
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 10,
+      "names": "...."
+    }
+  ],
+  "dims": [
+    {
+      "edge": [
+        "small#v0",
+        "small#v1"
+      ]
+    },
+    {
+      "edge": [
+        "large#v0",
+        "large#v1"
+      ]
+    }
+  ],
+  "solidCaption": {
+    "text": "작은 6개 / 큰 1개"
+  },
+  "caption": "닮음비 1:2이므로 큰 정사면체 하나는 작은 정사면체 8개와 같은 부피이다. 6개와 8개를 비교한다.",
+  "accessibilityDescription": "닮음비 1:2이므로 큰 정사면체 하나는 작은 정사면체 8개와 같은 부피이다. 6개와 8개를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "s1",
+      "sourceQuote": "5 cm : 10 cm",
+      "condition": "5 cm : 10 cm",
+      "mappedTo": "dims[0,1]"
+    },
+    {
+      "id": "s2",
+      "sourceQuote": "총 6개와 부피 8배 비교",
+      "condition": "총 6개와 부피 8배 비교",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "5 cm : 10 cm",
+    "총 6개와 부피 8배 비교"
+  ]
+}

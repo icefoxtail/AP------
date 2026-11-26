@@ -1,0 +1,224 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "7500000",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "cOut",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "17",
+            "denominator": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "cIn",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "I"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "I"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "cOut",
+    "cIn"
+  ],
+  "rightAngles": [
+    {
+      "id": "ra1",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 480
+  },
+  "caption": "직각삼각형 ABC에 외접원(반지름 17/2)과 내접원(반지름 3)이 있다. 두 원의 크기를 구분한다.",
+  "accessibilityDescription": "직각삼각형 ABC에 외접원(반지름 17/2)과 내접원(반지름 3)이 있다. 두 원의 크기를 구분한다.",
+  "sourceConditions": [
+    {
+      "id": "f1",
+      "sourceQuote": "∠A=90°",
+      "condition": "∠A=90°",
+      "mappedTo": "rightAngles[ra1]"
+    },
+    {
+      "id": "f2",
+      "sourceQuote": "외접원의 둘레 17π",
+      "condition": "외접원의 둘레 17π",
+      "mappedTo": "displayCircles[cOut]"
+    },
+    {
+      "id": "f3",
+      "sourceQuote": "내접원의 둘레 6π",
+      "condition": "내접원의 둘레 6π",
+      "mappedTo": "displayCircles[cIn]"
+    }
+  ],
+  "newVisualInformation": [
+    "∠A=90°",
+    "외접원의 둘레 17π",
+    "내접원의 둘레 6π"
+  ],
+  "sourceFile": "archive/exams/original/middle/m2/2mid/21_향림중_2학기_중간_중2_수학.js",
+  "sourceQid": "q22",
+  "targetAxis": "problem",
+  "hiddenPointNames": [
+    "O",
+    "I"
+  ],
+  "hiddenPointStyle": "NONE"
+}

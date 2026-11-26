@@ -1,0 +1,96 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "-4",
+        "y": "1"
+      },
+      {
+        "id": "Q",
+        "x": "0",
+        "y": "-3"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "referenceLines": [
+      {
+        "id": "g",
+        "slope": "1/4",
+        "intercept": "2",
+        "intersectionX": [
+          "-4"
+        ]
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "v",
+          "x": "0"
+        }
+      ],
+      "points": [
+        {
+          "id": "R",
+          "x": "0",
+          "y": "2"
+        }
+      ]
+    }
+  },
+  "caption": "y=−x−3, y=x/4+2, x=0의 교점 세 개를 연결하면 밑변 5, 높이 4의 삼각형이 된다.",
+  "accessibilityDescription": "y=−x−3, y=x/4+2, x=0의 교점 세 개를 연결하면 밑변 5, 높이 4의 삼각형이 된다.",
+  "sourceConditions": [
+    {
+      "id": "g1",
+      "sourceQuote": "y=−x−3",
+      "condition": "y=−x−3",
+      "mappedTo": "pieces[0].coefficients"
+    },
+    {
+      "id": "g2",
+      "sourceQuote": "y=x/4+2",
+      "condition": "y=x/4+2",
+      "mappedTo": "referenceLines[g]"
+    },
+    {
+      "id": "g3",
+      "sourceQuote": "x=0",
+      "condition": "x=0",
+      "mappedTo": "overlays.lines[v]"
+    },
+    {
+      "id": "g4",
+      "sourceQuote": "교점 (−4,1)",
+      "condition": "교점 (−4,1)",
+      "mappedTo": "requiredPoints[P]"
+    }
+  ],
+  "newVisualInformation": [
+    "y=−x−3",
+    "y=x/4+2",
+    "x=0",
+    "교점 (−4,1)"
+  ],
+  "sourceFile": "archive/exams/original/middle/m2/2mid/21_향림중_2학기_중간_중2_수학.js",
+  "sourceQid": "q10",
+  "targetAxis": "solution"
+}

@@ -1,0 +1,260 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-7937254",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "7937254",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-5952940",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2250000",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5952940",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2250000",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "AD",
+        "from": "A",
+        "to": "D",
+        "label": "9",
+        "side": "LEFT",
+        "unit": "cm",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "AC",
+        "from": "A",
+        "to": "C",
+        "label": "12",
+        "side": "RIGHT",
+        "unit": "cm",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "a_AED",
+        "refs": [
+          "A",
+          "E",
+          "D"
+        ],
+        "noLabel": true,
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a_ABC",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "noLabel": true,
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalAngles": [
+      {
+        "angles": [
+          "a_AED",
+          "a_ABC"
+        ],
+        "color": "WARM"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 480
+  },
+  "caption": "삼각형 ABC에서 D는 AB 위, E는 AC 위이다. 같은 색의 호가 ∠AED=∠ABC임을 나타낸다. AD=9, AC=12 cm.",
+  "accessibilityDescription": "삼각형 ABC에서 D는 AB 위, E는 AC 위이다. 같은 색의 호가 ∠AED=∠ABC임을 나타낸다. AD=9, AC=12 cm.",
+  "sourceConditions": [
+    {
+      "id": "f1",
+      "sourceQuote": "∠AED=∠ABC",
+      "condition": "∠AED=∠ABC",
+      "mappedTo": "planeMarks.equalAngles"
+    },
+    {
+      "id": "f2",
+      "sourceQuote": "AD=9 cm",
+      "condition": "AD=9 cm",
+      "mappedTo": "planeMarks.dimensions[AD]"
+    },
+    {
+      "id": "f3",
+      "sourceQuote": "AC=12 cm",
+      "condition": "AC=12 cm",
+      "mappedTo": "planeMarks.dimensions[AC]"
+    }
+  ],
+  "newVisualInformation": [
+    "∠AED=∠ABC",
+    "AD=9 cm",
+    "AC=12 cm"
+  ],
+  "sourceFile": "archive/exams/original/middle/m2/2mid/21_풍덕중_2학기_중간_중2_수학.js",
+  "sourceQid": "q24",
+  "targetAxis": "problem"
+}

@@ -1,0 +1,77 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "10",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "45"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "5",
+        "y": "20"
+      },
+      {
+        "id": "Q",
+        "x": "15",
+        "y": "40"
+      },
+      {
+        "id": "R",
+        "x": "40",
+        "y": "90"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisScale": {
+      "x": 1,
+      "y": 1
+    }
+  },
+  "caption": "물의 높이는 5분에 20 cm, 15분에 40 cm로 선형 증가한다. 40분에는 90 cm가 된다.",
+  "accessibilityDescription": "물의 높이는 5분에 20 cm, 15분에 40 cm로 선형 증가한다. 40분에는 90 cm가 된다.",
+  "sourceConditions": [
+    {
+      "id": "g1",
+      "sourceQuote": "(5,20)",
+      "condition": "(5,20)",
+      "mappedTo": "requiredPoints[P]"
+    },
+    {
+      "id": "g2",
+      "sourceQuote": "(15,40)",
+      "condition": "(15,40)",
+      "mappedTo": "requiredPoints[Q]"
+    },
+    {
+      "id": "g3",
+      "sourceQuote": "(40,90)",
+      "condition": "(40,90)",
+      "mappedTo": "requiredPoints[R]"
+    }
+  ],
+  "newVisualInformation": [
+    "(5,20)",
+    "(15,40)",
+    "(40,90)"
+  ],
+  "sourceFile": "archive/exams/original/middle/m2/2mid/21_향림중_2학기_중간_중2_수학.js",
+  "sourceQid": "q25",
+  "targetAxis": "solution"
+}

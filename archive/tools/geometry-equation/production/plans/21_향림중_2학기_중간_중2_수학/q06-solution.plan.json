@@ -1,0 +1,57 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "3/2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "2",
+        "y": "0"
+      },
+      {
+        "id": "Q",
+        "x": "0",
+        "y": "-3"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "원래 두 직선의 x·y절편 중 (2,0), (0,−3)을 연결하여 기울기 3/2의 일차함수를 얻는다.",
+  "accessibilityDescription": "원래 두 직선의 x·y절편 중 (2,0), (0,−3)을 연결하여 기울기 3/2의 일차함수를 얻는다.",
+  "sourceConditions": [
+    {
+      "id": "g1",
+      "sourceQuote": "(2,0)",
+      "condition": "(2,0)",
+      "mappedTo": "requiredPoints[P]"
+    },
+    {
+      "id": "g2",
+      "sourceQuote": "(0,-3)",
+      "condition": "(0,-3)",
+      "mappedTo": "requiredPoints[Q]"
+    }
+  ],
+  "newVisualInformation": [
+    "(2,0)",
+    "(0,-3)"
+  ],
+  "sourceFile": "archive/exams/original/middle/m2/2mid/21_향림중_2학기_중간_중2_수학.js",
+  "sourceQid": "q06",
+  "targetAxis": "solution"
+}

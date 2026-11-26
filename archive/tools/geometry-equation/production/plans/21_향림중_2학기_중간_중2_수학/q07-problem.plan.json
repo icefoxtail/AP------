@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "functionName": "f",
+    "overlays": {
+      "points": [
+        {
+          "id": "anchor",
+          "curveX": "-2",
+          "unnamed": true
+        }
+      ],
+      "callouts": [
+        {
+          "id": "formula",
+          "point": "anchor",
+          "text": "y=ax-b",
+          "labelKind": "MATH",
+          "direction": "NW"
+        }
+      ]
+    }
+  },
+  "caption": "기울기가 음수이고 y절편도 음수인 일차함수 y=ax−b의 개형이다. 숫자 절편은 원문에서 주어지지 않았으므로 주장하지 않는다.",
+  "accessibilityDescription": "기울기가 음수이고 y절편도 음수인 일차함수 y=ax−b의 개형이다. 숫자 절편은 원문에서 주어지지 않았으므로 주장하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "g1",
+      "sourceQuote": "오른쪽 아래로 기울어짐",
+      "condition": "오른쪽 아래로 기울어짐",
+      "mappedTo": "pieces[0].coefficients"
+    },
+    {
+      "id": "g2",
+      "sourceQuote": "y절편이 원점 아래",
+      "condition": "y절편이 원점 아래",
+      "mappedTo": "pieces[0].coefficients"
+    },
+    {
+      "id": "g3",
+      "sourceQuote": "y=ax−b",
+      "condition": "y=ax−b",
+      "mappedTo": "overlays.callouts[formula]"
+    }
+  ],
+  "newVisualInformation": [
+    "오른쪽 아래로 기울어짐",
+    "y절편이 원점 아래",
+    "y=ax−b"
+  ],
+  "sourceFile": "archive/exams/original/middle/m2/2mid/21_향림중_2학기_중간_중2_수학.js",
+  "sourceQid": "q07",
+  "targetAxis": "problem"
+}

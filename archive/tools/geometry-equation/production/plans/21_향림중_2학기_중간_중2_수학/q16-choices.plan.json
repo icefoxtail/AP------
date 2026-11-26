@@ -1,0 +1,864 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "① 빗변 10·한 변 6"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "rightAngles": [
+          {
+            "id": "ra1",
+            "refs": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "dimensions": [
+            {
+              "id": "a6",
+              "from": "A",
+              "to": "B",
+              "label": "6",
+              "side": "LEFT",
+              "unit": "cm",
+              "style": "ARROW",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "hyp10",
+              "from": "A",
+              "to": "C",
+              "label": "10",
+              "side": "RIGHT",
+              "unit": "cm",
+              "style": "ARROW",
+              "factRole": "GIVEN"
+            }
+          ],
+          "angles": []
+        },
+        "hiddenPointNames": [
+          "A",
+          "B",
+          "C"
+        ],
+        "hiddenPointStyle": "NONE",
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        },
+        "caption": "① 빗변 10·한 변 6",
+        "accessibilityDescription": "① 빗변 10·한 변 6",
+        "sourceConditions": [
+          {
+            "id": "f1",
+            "sourceQuote": "① 빗변 10·한 변 6",
+            "condition": "① 빗변 10·한 변 6",
+            "mappedTo": "displaySegments"
+          }
+        ],
+        "newVisualInformation": [
+          "① 빗변 10·한 변 6"
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "② 빗변 10·한 변 5"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Q",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "R",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "2500000",
+                    "denominator": "1000000"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "div",
+                    "args": [
+                      {
+                        "kind": "expression",
+                        "op": "mul",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "5"
+                          },
+                          {
+                            "kind": "expression",
+                            "op": "sqrt",
+                            "args": [
+                              {
+                                "kind": "integer",
+                                "value": "3"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "P",
+          "Q",
+          "R"
+        ],
+        "displaySegments": [
+          {
+            "id": "sPQ",
+            "refs": [
+              "P",
+              "Q"
+            ]
+          },
+          {
+            "id": "sQR",
+            "refs": [
+              "Q",
+              "R"
+            ]
+          },
+          {
+            "id": "sRP",
+            "refs": [
+              "R",
+              "P"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "rightAngles": [
+          {
+            "id": "ra1",
+            "refs": [
+              "P",
+              "R",
+              "Q"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "dimensions": [
+            {
+              "id": "hyp10",
+              "from": "P",
+              "to": "Q",
+              "label": "10",
+              "side": "BELOW",
+              "unit": "cm",
+              "style": "ARROW",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "leg5",
+              "from": "Q",
+              "to": "R",
+              "label": "5",
+              "side": "RIGHT",
+              "unit": "cm",
+              "style": "ARROW",
+              "factRole": "GIVEN"
+            }
+          ],
+          "angles": []
+        },
+        "hiddenPointNames": [
+          "P",
+          "Q",
+          "R"
+        ],
+        "hiddenPointStyle": "NONE",
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        },
+        "caption": "② 빗변 10·한 변 5",
+        "accessibilityDescription": "② 빗변 10·한 변 5",
+        "sourceConditions": [
+          {
+            "id": "f1",
+            "sourceQuote": "② 빗변 10·한 변 5",
+            "condition": "② 빗변 10·한 변 5",
+            "mappedTo": "displaySegments"
+          }
+        ],
+        "newVisualInformation": [
+          "② 빗변 10·한 변 5"
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "③ 10은 직각변"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Q",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "R",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "P",
+          "Q",
+          "R"
+        ],
+        "displaySegments": [
+          {
+            "id": "sPQ",
+            "refs": [
+              "P",
+              "Q"
+            ]
+          },
+          {
+            "id": "sQR",
+            "refs": [
+              "Q",
+              "R"
+            ]
+          },
+          {
+            "id": "sRP",
+            "refs": [
+              "R",
+              "P"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "rightAngles": [
+          {
+            "id": "ra1",
+            "refs": [
+              "Q",
+              "P",
+              "R"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "dimensions": [
+            {
+              "id": "leg10",
+              "from": "P",
+              "to": "R",
+              "label": "10",
+              "side": "ABOVE",
+              "unit": "cm",
+              "style": "ARROW",
+              "factRole": "GIVEN"
+            }
+          ],
+          "angles": []
+        },
+        "hiddenPointNames": [
+          "P",
+          "Q",
+          "R"
+        ],
+        "hiddenPointStyle": "NONE",
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        },
+        "caption": "③ 10은 직각변",
+        "accessibilityDescription": "③ 10은 직각변",
+        "sourceConditions": [
+          {
+            "id": "f1",
+            "sourceQuote": "③ 10은 직각변",
+            "condition": "③ 10은 직각변",
+            "mappedTo": "displaySegments"
+          }
+        ],
+        "newVisualInformation": [
+          "③ 10은 직각변"
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "④ 10은 직각변"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Q",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "R",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "11917536",
+                    "denominator": "1000000"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "P",
+          "Q",
+          "R"
+        ],
+        "displaySegments": [
+          {
+            "id": "sPQ",
+            "refs": [
+              "P",
+              "Q"
+            ]
+          },
+          {
+            "id": "sQR",
+            "refs": [
+              "Q",
+              "R"
+            ]
+          },
+          {
+            "id": "sRP",
+            "refs": [
+              "R",
+              "P"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "rightAngles": [
+          {
+            "id": "ra1",
+            "refs": [
+              "Q",
+              "P",
+              "R"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "dimensions": [
+            {
+              "id": "leg10",
+              "from": "P",
+              "to": "Q",
+              "label": "10",
+              "side": "LEFT",
+              "unit": "cm",
+              "style": "ARROW",
+              "factRole": "GIVEN"
+            }
+          ],
+          "angles": [
+            {
+              "id": "a_acute40",
+              "refs": [
+                "P",
+                "R",
+                "Q"
+              ],
+              "value": 40,
+              "label": "40",
+              "arcs": 1,
+              "side": "INNER",
+              "style": "ARC",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "hiddenPointNames": [
+          "P",
+          "Q",
+          "R"
+        ],
+        "hiddenPointStyle": "NONE",
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        },
+        "caption": "④ 10은 직각변",
+        "accessibilityDescription": "④ 10은 직각변",
+        "sourceConditions": [
+          {
+            "id": "f1",
+            "sourceQuote": "④ 10은 직각변",
+            "condition": "④ 10은 직각변",
+            "mappedTo": "displaySegments"
+          }
+        ],
+        "newVisualInformation": [
+          "④ 10은 직각변"
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "⑤ 빗변 10·예각 50"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Q",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "7660444",
+                    "denominator": "1000000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "6427876",
+                    "denominator": "1000000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "R",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "6427876",
+                    "denominator": "1000000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "P",
+          "Q",
+          "R"
+        ],
+        "displaySegments": [
+          {
+            "id": "sPQ",
+            "refs": [
+              "P",
+              "Q"
+            ]
+          },
+          {
+            "id": "sQR",
+            "refs": [
+              "Q",
+              "R"
+            ]
+          },
+          {
+            "id": "sRP",
+            "refs": [
+              "R",
+              "P"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "rightAngles": [
+          {
+            "id": "ra1",
+            "refs": [
+              "Q",
+              "R",
+              "P"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "dimensions": [
+            {
+              "id": "hyp10",
+              "from": "P",
+              "to": "Q",
+              "label": "10",
+              "side": "BELOW",
+              "unit": "cm",
+              "style": "ARROW",
+              "factRole": "GIVEN"
+            }
+          ],
+          "angles": [
+            {
+              "id": "a_acute50",
+              "refs": [
+                "R",
+                "P",
+                "Q"
+              ],
+              "value": 50,
+              "label": "50",
+              "arcs": 1,
+              "side": "INNER",
+              "style": "ARC",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "hiddenPointNames": [
+          "P",
+          "Q",
+          "R"
+        ],
+        "hiddenPointStyle": "NONE",
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        },
+        "caption": "⑤ 빗변 10·예각 50",
+        "accessibilityDescription": "⑤ 빗변 10·예각 50",
+        "sourceConditions": [
+          {
+            "id": "f1",
+            "sourceQuote": "⑤ 빗변 10·예각 50",
+            "condition": "⑤ 빗변 10·예각 50",
+            "mappedTo": "displaySegments"
+          }
+        ],
+        "newVisualInformation": [
+          "⑤ 빗변 10·예각 50"
+        ]
+      }
+    }
+  ],
+  "caption": "원문의 선택지 ①~⑤를 각각 독립된 직각삼각형으로 그린다. 기준 삼각형(빗변 10, 예각 40)은 q16-problem plan에 따로 있다.",
+  "accessibilityDescription": "선택지 다섯 삼각형의 서로 다른 길이와 직각 및 각 표시를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "choices",
+      "condition": "그림 선택지 ①~⑤",
+      "sourceQuote": "다음 중 오른쪽 그림의 삼각형과 합동인 삼각형",
+      "mappedTo": "panels[0..4]"
+    }
+  ],
+  "newVisualInformation": [
+    "선택지별 10 cm 위치, 직각 표식, 40°·50° 예각"
+  ]
+}

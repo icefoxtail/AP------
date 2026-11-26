@@ -1,0 +1,298 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4500000",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4345599",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "10755736",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4345599",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "A",
+    "D",
+    "X"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sCX",
+      "refs": [
+        "C",
+        "X"
+      ],
+      "style": "DASHED"
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "abac",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sCA"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "a_ABD",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "value": 22,
+        "label": "22",
+        "arcs": 1,
+        "side": "INNER",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a_DBC",
+        "refs": [
+          "D",
+          "B",
+          "C"
+        ],
+        "noLabel": true,
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a_ACD",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "noLabel": true,
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a_DCX",
+        "refs": [
+          "D",
+          "C",
+          "X"
+        ],
+        "noLabel": true,
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalAngles": [
+      {
+        "angles": [
+          "a_ABD",
+          "a_DBC"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "angles": [
+          "a_ACD",
+          "a_DCX"
+        ],
+        "color": "VIOLET"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "X"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 480
+  },
+  "caption": "AB=AC, BD는 B의 내각, CD는 C의 외각의 이등분선이다. 밑변의 오른쪽 연장선은 점선이며 ∠ABD=22°이다.",
+  "accessibilityDescription": "AB=AC, BD는 B의 내각, CD는 C의 외각의 이등분선이다. 밑변의 오른쪽 연장선은 점선이며 ∠ABD=22°이다.",
+  "sourceConditions": [
+    {
+      "id": "f1",
+      "sourceQuote": "AB=AC",
+      "condition": "AB=AC",
+      "mappedTo": "planeMarks.equalLengths[abac]"
+    },
+    {
+      "id": "f2",
+      "sourceQuote": "∠ABD=22°",
+      "condition": "∠ABD=22°",
+      "mappedTo": "planeMarks.angles[ABD]"
+    },
+    {
+      "id": "f3",
+      "sourceQuote": "BD는 ∠B 이등분선",
+      "condition": "BD는 ∠B 이등분선",
+      "mappedTo": "planeMarks.equalAngles[0]"
+    },
+    {
+      "id": "f4",
+      "sourceQuote": "CD는 ∠C 외각 이등분선",
+      "condition": "CD는 ∠C 외각 이등분선",
+      "mappedTo": "planeMarks.equalAngles[1]"
+    },
+    {
+      "id": "f5",
+      "sourceQuote": "C의 외각 연장선",
+      "condition": "C의 외각 연장선",
+      "mappedTo": "displaySegments[sCX]"
+    }
+  ],
+  "newVisualInformation": [
+    "AB=AC",
+    "∠ABD=22°",
+    "BD는 ∠B 이등분선",
+    "CD는 ∠C 외각 이등분선",
+    "C의 외각 연장선"
+  ],
+  "sourceFile": "archive/exams/original/middle/m2/2mid/21_향림중_2학기_중간_중2_수학.js",
+  "sourceQid": "q15",
+  "targetAxis": "problem"
+}

@@ -1,0 +1,52 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "2",
+        "y": "5"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "y=ax를 위로 3만큼 이동하면 y=ax+3이고 (2,5)를 지나므로 a=1이다.",
+  "accessibilityDescription": "y=ax를 위로 3만큼 이동하면 y=ax+3이고 (2,5)를 지나므로 a=1이다.",
+  "sourceConditions": [
+    {
+      "id": "g1",
+      "sourceQuote": "이동 거리 3",
+      "condition": "이동 거리 3",
+      "mappedTo": "pieces[0].coefficients"
+    },
+    {
+      "id": "g2",
+      "sourceQuote": "(2,5)",
+      "condition": "(2,5)",
+      "mappedTo": "requiredPoints[P]"
+    }
+  ],
+  "newVisualInformation": [
+    "이동 거리 3",
+    "(2,5)"
+  ],
+  "sourceFile": "archive/exams/original/middle/m2/2mid/21_향림중_2학기_중간_중2_수학.js",
+  "sourceQid": "q23",
+  "targetAxis": "solution"
+}

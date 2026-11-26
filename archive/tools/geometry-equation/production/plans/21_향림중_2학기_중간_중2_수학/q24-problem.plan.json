@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "9/2",
+          "-1/2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "1",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "4"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "3"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "A(1,4)와 B(3,3)를 연결하는 주어진 선분 AB만 표시한다.",
+  "accessibilityDescription": "A(1,4)와 B(3,3)를 연결하는 주어진 선분 AB만 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "g1",
+      "sourceQuote": "A(1,4)",
+      "condition": "A(1,4)",
+      "mappedTo": "requiredPoints[A]"
+    },
+    {
+      "id": "g2",
+      "sourceQuote": "B(3,3)",
+      "condition": "B(3,3)",
+      "mappedTo": "requiredPoints[B]"
+    },
+    {
+      "id": "g3",
+      "sourceQuote": "선분 AB",
+      "condition": "선분 AB",
+      "mappedTo": "sourceDomain[INTERVAL]"
+    }
+  ],
+  "newVisualInformation": [
+    "A(1,4)",
+    "B(3,3)",
+    "선분 AB"
+  ],
+  "sourceFile": "archive/exams/original/middle/m2/2mid/21_향림중_2학기_중간_중2_수학.js",
+  "sourceQid": "q24",
+  "targetAxis": "problem"
+}

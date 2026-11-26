@@ -1,0 +1,41 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "tank",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 4
+      },
+      "height": 10,
+      "names": "........"
+    }
+  ],
+  "solidCaption": {
+    "text": "직육면체 수조"
+  },
+  "caption": "직육면체 수조의 모서리와 숨은 모서리를 표시한다. 원본의 낮은 수면·수도꼭지·물줄기는 ENGINE_CAPABILITY_PENDING이다.",
+  "accessibilityDescription": "직육면체 수조 외곽. 원본의 낮은 수면과 수도꼭지, 물줄기는 입체 엔진에서 아직 그릴 수 없다.",
+  "sourceConditions": [
+    {
+      "id": "vessel",
+      "condition": "직육면체 모양의 수조",
+      "sourceQuote": "직육면체 모양의 수조",
+      "mappedTo": "solids[0]"
+    },
+    {
+      "id": "water",
+      "condition": "처음에 물이 조금 들어 있음",
+      "sourceQuote": "물이 조금 들어 있는",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:PRISM_LEVEL"
+    }
+  ],
+  "newVisualInformation": [
+    "수조 외곽과 숨은 모서리 점선",
+    "ENGINE_CAPABILITY_PENDING:PRISM_LEVEL_WATER_SURFACE",
+    "ENGINE_CAPABILITY_PENDING:FAUCET_AND_FLOWING_STREAM"
+  ]
+}

@@ -1,0 +1,286 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "84"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "116"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "cO",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "9"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a_OAB",
+        "refs": [
+          "O",
+          "A",
+          "B"
+        ],
+        "value": 48,
+        "label": "48",
+        "arcs": 1,
+        "side": "INNER",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a_OCA",
+        "refs": [
+          "O",
+          "C",
+          "A"
+        ],
+        "value": 32,
+        "label": "32",
+        "arcs": 1,
+        "side": "INNER",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a_BOC",
+        "refs": [
+          "B",
+          "O",
+          "C"
+        ],
+        "value": 160,
+        "label": "160",
+        "arcs": 1,
+        "side": "INNER",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "AO",
+        "from": "A",
+        "to": "O",
+        "label": "9",
+        "side": "RIGHT",
+        "unit": "cm",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcBC",
+        "circle": "cO",
+        "center": "O",
+        "from": "B",
+        "to": "C",
+        "side": "MINOR",
+        "highlight": true,
+        "color": "VIOLET",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 480
+  },
+  "caption": "OA=OB=OC를 이용해 중심각 AOB=84°, AOC=116°, BOC=160°를 얻고 반지름 9로 호 BC 길이를 계산한다.",
+  "accessibilityDescription": "OA=OB=OC를 이용해 중심각 AOB=84°, AOC=116°, BOC=160°를 얻고 반지름 9로 호 BC 길이를 계산한다.",
+  "sourceConditions": [
+    {
+      "id": "f1",
+      "sourceQuote": "O는 외심",
+      "condition": "O는 외심",
+      "mappedTo": "displaySegments[sOA,sOB,sOC]"
+    },
+    {
+      "id": "f2",
+      "sourceQuote": "∠OAB=48°",
+      "condition": "∠OAB=48°",
+      "mappedTo": "planeMarks.angles[OAB]"
+    },
+    {
+      "id": "f3",
+      "sourceQuote": "∠OCA=32°",
+      "condition": "∠OCA=32°",
+      "mappedTo": "planeMarks.angles[OCA]"
+    },
+    {
+      "id": "f4",
+      "sourceQuote": "AO=9 cm",
+      "condition": "AO=9 cm",
+      "mappedTo": "planeMarks.dimensions[AO]"
+    },
+    {
+      "id": "f5",
+      "sourceQuote": "∠BOC=160°",
+      "condition": "∠BOC=160°",
+      "mappedTo": "planeMarks.angles[BOC]"
+    },
+    {
+      "id": "arc",
+      "condition": "부채꼴 BOC의 호 BC",
+      "sourceQuote": "부채꼴 BOC의 호의 길이",
+      "mappedTo": "planeMarks.arcs[arcBC]"
+    }
+  ],
+  "newVisualInformation": [
+    "O는 외심",
+    "∠OAB=48°",
+    "∠OCA=32°",
+    "AO=9 cm",
+    "∠BOC=160°",
+    "호 BC는 둘레 전체가 아닌 B에서 C까지의 짧은 원호이다."
+  ],
+  "sourceFile": "archive/exams/original/middle/m2/2mid/21_향림중_2학기_중간_중2_수학.js",
+  "sourceQid": "q26",
+  "targetAxis": "solution"
+}

@@ -1,0 +1,72 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "small",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 1
+      },
+      "height": 4,
+      "names": "........"
+    },
+    {
+      "id": "large",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 2
+      },
+      "height": 8,
+      "names": "........"
+    }
+  ],
+  "dims": [
+    {
+      "edge": [
+        "small#b0",
+        "small#t0"
+      ]
+    },
+    {
+      "edge": [
+        "large#b0",
+        "large#t0"
+      ]
+    }
+  ],
+  "solidCaption": {
+    "text": "(가) 4cm / (나) 8cm"
+  },
+  "caption": "서로 닮은 두 직육면체 (가)·(나)의 대응 높이가 각각 4 cm, 8 cm이다.",
+  "accessibilityDescription": "서로 닮은 두 직육면체 (가)·(나)의 대응 높이가 각각 4 cm, 8 cm이다.",
+  "sourceConditions": [
+    {
+      "id": "s1",
+      "sourceQuote": "높이 4 cm",
+      "condition": "높이 4 cm",
+      "mappedTo": "dims[0]"
+    },
+    {
+      "id": "s2",
+      "sourceQuote": "높이 8 cm",
+      "condition": "높이 8 cm",
+      "mappedTo": "dims[1]"
+    },
+    {
+      "id": "s3",
+      "sourceQuote": "두 직육면체가 닮음",
+      "condition": "두 직육면체가 닮음",
+      "mappedTo": "solids[0,1]"
+    }
+  ],
+  "newVisualInformation": [
+    "높이 4 cm",
+    "높이 8 cm",
+    "두 직육면체가 닮음"
+  ]
+}

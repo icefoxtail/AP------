@@ -1,0 +1,307 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "50"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "E",
+          "F"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "50"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "A",
+    "E",
+    "F",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFD",
+      "refs": [
+        "F",
+        "D"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a_B",
+        "refs": [
+          "C",
+          "B",
+          "A"
+        ],
+        "value": 50,
+        "label": "50",
+        "arcs": 1,
+        "side": "INNER",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a_E",
+        "refs": [
+          "F",
+          "E",
+          "D"
+        ],
+        "value": 50,
+        "label": "50",
+        "arcs": 1,
+        "side": "INNER",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "BC",
+        "from": "B",
+        "to": "C",
+        "label": "8",
+        "side": "BELOW",
+        "unit": "cm",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "EF",
+        "from": "E",
+        "to": "F",
+        "label": "4",
+        "side": "BELOW",
+        "unit": "cm",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "AB",
+        "from": "A",
+        "to": "B",
+        "label": "12",
+        "side": "LEFT",
+        "unit": "cm",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "DE",
+        "from": "D",
+        "to": "E",
+        "label": "6",
+        "side": "LEFT",
+        "unit": "cm",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 480
+  },
+  "caption": "정답 추가 조건 AB=12 cm, DE=6 cm를 그리면 ∠B=∠E=50°, AB:DE=BC:EF=2:1이어서 SAS 닮음이다.",
+  "accessibilityDescription": "정답 추가 조건 AB=12 cm, DE=6 cm를 그리면 ∠B=∠E=50°, AB:DE=BC:EF=2:1이어서 SAS 닮음이다.",
+  "sourceConditions": [
+    {
+      "id": "f1",
+      "sourceQuote": "∠B=∠E=50°",
+      "condition": "∠B=∠E=50°",
+      "mappedTo": "planeMarks.angles[B,E]"
+    },
+    {
+      "id": "f2",
+      "sourceQuote": "BC=8 cm",
+      "condition": "BC=8 cm",
+      "mappedTo": "planeMarks.dimensions[BC]"
+    },
+    {
+      "id": "f3",
+      "sourceQuote": "EF=4 cm",
+      "condition": "EF=4 cm",
+      "mappedTo": "planeMarks.dimensions[EF]"
+    },
+    {
+      "id": "f4",
+      "sourceQuote": "AB=12 cm",
+      "condition": "AB=12 cm",
+      "mappedTo": "planeMarks.dimensions[AB]"
+    },
+    {
+      "id": "f5",
+      "sourceQuote": "DE=6 cm",
+      "condition": "DE=6 cm",
+      "mappedTo": "planeMarks.dimensions[DE]"
+    }
+  ],
+  "newVisualInformation": [
+    "∠B=∠E=50°",
+    "BC=8 cm",
+    "EF=4 cm",
+    "AB=12 cm",
+    "DE=6 cm"
+  ],
+  "sourceFile": "archive/exams/original/middle/m2/2mid/21_풍덕중_2학기_중간_중2_수학.js",
+  "sourceQid": "q14",
+  "targetAxis": "solution"
+}

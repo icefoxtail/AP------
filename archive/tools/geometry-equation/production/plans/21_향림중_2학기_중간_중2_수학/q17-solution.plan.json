@@ -1,0 +1,313 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "M"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sMD",
+      "refs": [
+        "M",
+        "D"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "rightAngles": [
+    {
+      "id": "ra1",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "ra2",
+      "refs": [
+        "A",
+        "M",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "mid",
+        "count": 1,
+        "segments": [
+          "sAM",
+          "sMB"
+        ]
+      },
+      {
+        "id": "idcd",
+        "count": 2,
+        "segments": [
+          "sMD",
+          "sDC"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "a_BAD",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "noLabel": true,
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a_DAC",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "noLabel": true,
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalAngles": [
+      {
+        "angles": [
+          "a_BAD",
+          "a_DAC"
+        ],
+        "color": "BLUE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 480
+  },
+  "caption": "DM은 AB의 수직이등분선이고 △ACD≡△AMD에서 CD=DM임을 보여 준다.",
+  "accessibilityDescription": "DM은 AB의 수직이등분선이고 △ACD≡△AMD에서 CD=DM임을 보여 준다.",
+  "sourceConditions": [
+    {
+      "id": "f1",
+      "sourceQuote": "∠C=90°",
+      "condition": "∠C=90°",
+      "mappedTo": "rightAngles[ra1]"
+    },
+    {
+      "id": "f2",
+      "sourceQuote": "DM⊥AB",
+      "condition": "DM⊥AB",
+      "mappedTo": "rightAngles[ra2]"
+    },
+    {
+      "id": "f3",
+      "sourceQuote": "AM=BM",
+      "condition": "AM=BM",
+      "mappedTo": "planeMarks.equalLengths[mid]"
+    },
+    {
+      "id": "f4",
+      "sourceQuote": "AD는 ∠A 이등분선",
+      "condition": "AD는 ∠A 이등분선",
+      "mappedTo": "planeMarks.equalAngles"
+    },
+    {
+      "id": "f5",
+      "sourceQuote": "CD=DM",
+      "condition": "CD=DM",
+      "mappedTo": "planeMarks.equalLengths[idcd]"
+    }
+  ],
+  "newVisualInformation": [
+    "∠C=90°",
+    "DM⊥AB",
+    "AM=BM",
+    "AD는 ∠A 이등분선",
+    "CD=DM"
+  ],
+  "sourceFile": "archive/exams/original/middle/m2/2mid/21_향림중_2학기_중간_중2_수학.js",
+  "sourceQid": "q17",
+  "targetAxis": "solution"
+}
