@@ -662,8 +662,9 @@ window.questionBank = [
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "P78 Q15의 포물선 원점 대칭 후 x/y 평행이동과 y축 교점 조건 유지, 계수 변형.",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P78-81_20261022_유사50/BV-BAKBAL-H-COM2-P78-Q15-T1-R3-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원점 대칭과 평행이동 후 포물선의 y절편",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원점 대칭과 평행이동 후 포물선의 y절편"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P78-Q15-S1-R3",
@@ -713,8 +714,9 @@ window.questionBank = [
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "P78 Q15의 포물선 연속 이동과 y절편 조건 유지.",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P78-81_20261022_유사50/BV-BAKBAL-H-COM2-P78-Q15-S1-R3-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "대칭과 평행이동 후 포물선의 꼭짓점",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "대칭과 평행이동 후 포물선의 꼭짓점"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P78-Q15-S2-R3",
@@ -764,8 +766,9 @@ window.questionBank = [
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "P78 Q15의 포물선 원점 대칭 후 평행이동 구조를 꼭짓점 추적으로 변형.",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P78-81_20261022_유사50/BV-BAKBAL-H-COM2-P78-Q15-S2-R3-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "대칭과 평행이동 후 포물선의 꼭짓점",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "대칭과 평행이동 후 포물선의 꼭짓점"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P79-Q06-T1-R2",
