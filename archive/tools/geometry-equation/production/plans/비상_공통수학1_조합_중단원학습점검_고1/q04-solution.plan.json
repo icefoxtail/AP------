@@ -1,0 +1,70 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "폭 10m를 1m씩 10칸으로 나누면 칸 사이 경계는 9곳이다. 이 중 7곳을 여덟 단의 경계로 골라 9C7=36가지가 된다. 점선은 가능한 경계 위치다.",
+  "accessibilityDescription": "전체 폭 10m의 긴 직사각형 막대가 1m짜리 열 칸으로 나뉘었다. 내부의 아홉 곳마다 세로 점선이 있어 그중 일곱 곳을 선택하면 여덟 개의 양의 정수 폭으로 구분됨을 나타낸다. 실제 선택된 경계는 지정하지 않았다.",
+  "sourceQuote": "10m를 1m씩 10칸으로 나누면 칸 사이의 경계는 9곳이고, 이 중 7곳을 골라 단의 경계로 정하면 되므로 9C7=36이다.",
+  "sourceConditions": [
+    {"id":"s1","condition":"전체 가로 폭 10m를 1m 길이의 10칸으로 나눈다.","mappedTo":["mathPlan.nodes","displaySegments","planeMarks.dimensions"]},
+    {"id":"s2","condition":"내부 경계 후보는 x=1,2,...,9에 해당하는 정확히 9개이며 모두 점선으로 구분한다.","mappedTo":["displaySegments"]},
+    {"id":"s3","condition":"8개의 양의 정수 폭은 내부 9개 자리 중 7개를 경계로 정하는 것과 일대일 대응하여 C(9,7)=36이다. 답에 해당하는 한 배치를 고정하지 않는다.","mappedTo":["caption","displaySegments"]}
+  ],
+  "newVisualInformation": [
+    "열 개의 1m 단위 구간과 아홉 개의 점선 경계 후보를 모두 보여 주어 해설의 조합 대응을 그림으로 설명한다.",
+    "전부 점선 후보이므로 이미 선택된 일곱 곳으로 오해하지 않도록 본문에서 구분한다.",
+    "수평 총길이 10m의 치수선 및 1m 단위 치수선을 각각 올바른 구간에 둔다.",
+    "색칠한 면과 별도 흰색 배경 사각형을 만들지 않는다."
+  ],
+  "mathPlan": {
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"B0","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B1","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B2","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B3","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B4","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B5","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B6","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B7","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"7"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B8","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B9","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"9"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B10","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"10"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"T0","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"T1","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"T2","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"T3","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"T4","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"T5","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"T6","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"T7","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"7"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"T8","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"T9","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"9"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"T10","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"10"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints":["B0","B1","B2","B3","B4","B5","B6","B7","B8","B9","B10","T0","T1","T2","T3","T4","T5","T6","T7","T8","T9","T10"],
+  "hiddenPointNames":["B0","B1","B2","B3","B4","B5","B6","B7","B8","B9","B10","T0","T1","T2","T3","T4","T5","T6","T7","T8","T9","T10"],
+  "hiddenPointStyle":"NONE",
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments":[
+    {"id":"bottom","refs":["B0","B10"]},{"id":"top","refs":["T0","T10"]},
+    {"id":"left","refs":["B0","T0"]},{"id":"right","refs":["B10","T10"]},
+    {"id":"c1","refs":["B1","T1"],"dashed":true},
+    {"id":"c2","refs":["B2","T2"],"dashed":true},
+    {"id":"c3","refs":["B3","T3"],"dashed":true},
+    {"id":"c4","refs":["B4","T4"],"dashed":true},
+    {"id":"c5","refs":["B5","T5"],"dashed":true},
+    {"id":"c6","refs":["B6","T6"],"dashed":true},
+    {"id":"c7","refs":["B7","T7"],"dashed":true},
+    {"id":"c8","refs":["B8","T8"],"dashed":true},
+    {"id":"c9","refs":["B9","T9"],"dashed":true}
+  ],
+  "planeMarks":{
+    "dimensions":[
+      {"id":"dOne","from":"B0","to":"B1","label":"1","unit":"m","side":"BELOW","value":"1","offset":"AUTO"},
+      {"id":"dTotal","from":"B0","to":"B10","label":"10","unit":"m","side":"BELOW","value":"10","offset":"AUTO"}
+    ]
+  },
+  "coordinateCanvas":{"width":690,"height":340}
+}
