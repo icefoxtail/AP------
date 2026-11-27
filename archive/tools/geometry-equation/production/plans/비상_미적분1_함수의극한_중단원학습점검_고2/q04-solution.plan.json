@@ -1,0 +1,62 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-1, 5, -3, 4],
+    "curves": [
+      {
+        "id": "left",
+        "kind": "LINE",
+        "coefficients": ["3", "-1"],
+        "domain": ["-1", "2"],
+        "domainStates": ["NONE", "OPEN"],
+        "color": "BLUE",
+        "label": "y=3-x"
+      },
+      {
+        "id": "right",
+        "kind": "LINE",
+        "coefficients": ["-3", "1"],
+        "domain": ["2", "5"],
+        "domainStates": ["OPEN", "NONE"],
+        "color": "WARM",
+        "label": "y=x-3"
+      }
+    ],
+    "axisTickValues": {"x": ["2"], "y": ["-1", "1"]},
+    "overlays": {
+      "points": [
+        {"id": "L", "x": "2", "y": "1", "marker": "OPEN", "unnamed": true},
+        {"id": "R", "x": "2", "y": "-1", "marker": "OPEN", "unnamed": true}
+      ],
+      "guides": [
+        {"id": "GL", "from": "L", "axis": "BOTH"},
+        {"id": "GR", "from": "R", "axis": "BOTH"}
+      ]
+    }
+  },
+  "caption": "x≠2에서 절댓값을 분기하면 왼쪽은 3-x, 오른쪽은 x-3이다. (2,1), (2,-1)은 모두 열린 점이므로 좌우 극한은 다르고 함수값은 없다.",
+  "accessibilityDescription": "x=2를 기준으로 왼쪽 직선 y=3-x가 열린 점 (2,1)에, 오른쪽 직선 y=x-3이 열린 점 (2,-1)에 다가간다. 두 점에서 축으로 그어진 점선과 2, 1, -1 눈금이 보인다.",
+  "sourceQuote": "\\lim_{x\\to2}\\frac{x^2-5x+6}{|x-2|}",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x<2에서 (x-2)(x-3)/|x-2|=3-x",
+      "mappedTo": ["graphPlan.curves[0].coefficients", "graphPlan.curves[0].domain", "graphPlan.curves[0].domainStates"]
+    },
+    {
+      "id": "c2",
+      "condition": "x>2에서 (x-2)(x-3)/|x-2|=x-3",
+      "mappedTo": ["graphPlan.curves[1].coefficients", "graphPlan.curves[1].domain", "graphPlan.curves[1].domainStates"]
+    },
+    {
+      "id": "c3",
+      "condition": "x=2는 정의되지 않음; 좌극한 1, 우극한 -1",
+      "mappedTo": ["graphPlan.overlays.points", "graphPlan.overlays.guides", "graphPlan.axisTickValues"]
+    }
+  ],
+  "newVisualInformation": [
+    "함숫값을 만들어 넣지 않고 서로 다른 두 열린 끝점과 방향별 직선 조각을 표시한다.",
+    "좌우 극한 1과 -1을 같은 x=2 축 눈금과 각 점의 수평·수직 점선으로 비교한다."
+  ]
+}
