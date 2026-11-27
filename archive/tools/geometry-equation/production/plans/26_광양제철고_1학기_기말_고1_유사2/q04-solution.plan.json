@@ -1,0 +1,209 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Y",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "X",
+    "L",
+    "M",
+    "R",
+    "Y"
+  ],
+  "displaySegments": [
+    {
+      "id": "XL",
+      "refs": [
+        "X",
+        "L"
+      ]
+    },
+    {
+      "id": "LM",
+      "refs": [
+        "L",
+        "M"
+      ]
+    },
+    {
+      "id": "MR",
+      "refs": [
+        "M",
+        "R"
+      ]
+    },
+    {
+      "id": "RY",
+      "refs": [
+        "R",
+        "Y"
+      ],
+      "arrow": "END"
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 500
+  },
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eq1",
+        "count": 1,
+        "segments": [
+          "LM",
+          "MR"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "gap1",
+        "ownerSegment": "LM",
+        "text": "d"
+      },
+      {
+        "id": "gap2",
+        "ownerSegment": "MR",
+        "text": "d"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "axisX",
+        "at": "Y",
+        "text": "x",
+        "labelKind": "MATH",
+        "anchor": "E"
+      }
+    ]
+  },
+  "caption": "서로 다른 세 자리의 수 L<M<R가 등간격이면 L+R=2M이다. 공차 d의 가능한 집합 12개에 배열 6가지를 곱한다.",
+  "accessibilityDescription": "L−M과 M−R이 같은 길이임을 실선과 동일 길이 표시 및 공차 d 라벨로 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "geometry",
+      "condition": "세 수 p<q<r, p+r=2q, q-p=r-q=d.",
+      "mappedTo": [
+        "LM",
+        "MR",
+        "eq1",
+        "gap1",
+        "gap2",
+        "XL",
+        "RY",
+        "axisX"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "L−M과 M−R이 같은 길이임을 실선과 동일 길이 표시 및 공차 d 라벨로 나타낸다."
+  ],
+  "hiddenPointNames": [
+    "X",
+    "Y"
+  ],
+  "hiddenPointStyle": "NONE"
+}
