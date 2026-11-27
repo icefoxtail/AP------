@@ -1,0 +1,15 @@
+{
+  "capability":"composite-panels-v1",
+  "panels":[
+    {"caption":{"text":"경우 1: A=B"},"plan":{"capability":"set-diagram-figure-v1","diagram":{"kind":"VENN","sets":[{"id":"A","name":"A,B"}],"showUniverse":false}}},
+    {"caption":{"text":"경우 2: A가 B에 포함"},"plan":{"capability":"set-diagram-figure-v1","diagram":{"kind":"VENN","sets":[{"id":"A"},{"id":"B"}],"subset":["A","B"],"showUniverse":false,"shade":"B-A"}}}
+  ],
+  "caption":"A∪B=B이면 A⊆B다. A=B인 경우와 A가 B에 진부분집합인 경우가 모두 가능하므로 B-A=∅은 항상 성립하지 않는다.",
+  "accessibilityDescription":"왼쪽은 A와 B가 같은 집합인 하나의 원, 오른쪽은 B 안에 A가 들어가고 B에서 A를 뺀 부분만 색칠한 두 경우 비교도이다.",
+  "sourceConditions":[
+    {"id":"inclusion","condition":"A∪B=B ⇔ A⊆B","mappedTo":"panels"},
+    {"id":"equality","condition":"A=B이면 B-A=∅","mappedTo":"panels[0]"},
+    {"id":"proper","condition":"A⊊B이면 B-A≠∅","mappedTo":"panels[1].plan.diagram.shade"}
+  ],
+  "newVisualInformation":["두 경우를 영역으로 구분하며 진부분집합인 경우 B-A만 의도적으로 색칠한다."]
+}
