@@ -414,7 +414,7 @@ window.questionBank = [
   {
     "id": 10,
     "imageSize": "full",
-    "imageAlt": "평행사변형 ABCD에서 AB는 12 cm이고 BC는 18 cm이다. B의 각을 나누는 선이 위쪽 변 AD의 F, 오른쪽 변 CD를 연장한 E와 만난다.",
+    "imageAlt": "평행사변형 ABCD에서 AB=12 cm, BC=18 cm이고 B의 각 이등분선 B-F-E가 CD를 E까지 실선으로 연장한 선과 만난다.",
     "level": "상",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -460,7 +460,8 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "difficultyBucket": 3,
     "primaryMethod": "각 이등분·평행선으로 얻은 길이를 닮음비에 전달",
-    "decisiveStep": "ABF를 이등변으로 만들어 AF,FD를 정한 뒤 ABF~DEF의 대응변 비로 DE를 구한다."
+    "decisiveStep": "ABF를 이등변으로 만들어 AF,FD를 정한 뒤 ABF~DEF의 대응변 비로 DE를 구한다.",
+    "imageCaption": "평행사변형 ABCD에서 AB=12 cm, BC=18 cm이고 B의 각 이등분선 B-F-E가 CD를 E까지 실선으로 연장한 선과 만난다."
   },
   {
     "id": 11,
@@ -553,7 +554,7 @@ window.questionBank = [
   {
     "id": 13,
     "imageSize": "full",
-    "imageAlt": "평행사변형 ABCD의 왼쪽 AB는 18 cm, 위쪽 AD는 24 cm이다. A의 이등분선은 아래쪽 E, D의 이등분선은 아래쪽 F에 닿는다. 밑변에서 B, F, E, C 순서이다.",
+    "imageAlt": "평행사변형 ABCD의 AD=24 cm, AB=18 cm이고 A-E, D-F는 각 꼭짓점의 각 이등분선이다. 밑변의 점은 B-F-E-C 순서이다.",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -594,7 +595,8 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 3,
     "primaryMethod": "평행사변형의 두 각 이등분선이 만드는 겹친 선분 계산",
-    "decisiveStep": "두 이등분선의 엇각을 이용해 BE=AB, CF=CD를 얻고 겹치는 선분 FE를 계산한다."
+    "decisiveStep": "두 이등분선의 엇각을 이용해 BE=AB, CF=CD를 얻고 겹치는 선분 FE를 계산한다.",
+    "imageCaption": "평행사변형 ABCD의 AD=24 cm, AB=18 cm이고 A-E, D-F는 각 꼭짓점의 각 이등분선이다. 밑변의 점은 B-F-E-C 순서이다."
   },
   {
     "id": 14,
@@ -1000,8 +1002,8 @@ window.questionBank = [
   },
   {
     "id": 23,
-    "imageSize": "large",
-    "imageAlt": "삼각형 ABC에서 AC와 BC는 같은 길이이고 O는 이 삼각형의 외심이다. 삼각형 ABO의 내심 I와 외심 O′를 A에 각각 이었다.",
+    "imageSize": "full",
+    "imageAlt": "AC=BC인 삼각형 ABC의 외심 O, 삼각형 ABO의 내심 I와 외심 O′를 표시하고 A에서 이 점들로 실선을 잇는다.",
     "level": "상",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -1037,6 +1039,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 4,
     "primaryMethod": "중첩된 두 외심과 내심의 각 관계",
-    "decisiveStep": "내심 반각 y를 공통 변수로 잡고 원래 외심·작은 삼각형 외심의 등거리 및 수직이등분선 위치를 함께 연결한다."
+    "decisiveStep": "내심 반각 y를 공통 변수로 잡고 원래 외심·작은 삼각형 외심의 등거리 및 수직이등분선 위치를 함께 연결한다.",
+    "imageCaption": "AC=BC인 삼각형 ABC의 외심 O, 삼각형 ABO의 내심 I와 외심 O′를 표시하고 A에서 이 점들로 실선을 잇는다."
   }
 ];
