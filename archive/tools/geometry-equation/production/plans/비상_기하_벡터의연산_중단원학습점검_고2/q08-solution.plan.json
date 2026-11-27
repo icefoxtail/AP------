@@ -1,0 +1,21 @@
+{
+  "capability":"solid-figure-v1",
+  "space":{"points":[{"id":"A","at":[0,0,1]},{"id":"B","at":[0,1,1]},{"id":"C","at":[1,1,1]},{"id":"D","at":[1,0,1]},{"id":"E","at":[0,0,0]},{"id":"F","at":[0,1,0]},{"id":"G","at":[1,1,0]},{"id":"H","at":[1,0,0]}],"segments":[
+    {"from":"A","to":"B"},{"from":"B","to":"C"},{"from":"C","to":"D"},{"from":"D","to":"A"},
+    {"from":"A","to":"E","style":"DASHED"},{"from":"B","to":"F"},{"from":"C","to":"G"},{"from":"D","to":"H"},
+    {"from":"E","to":"F","style":"DASHED"},{"from":"F","to":"G"},{"from":"G","to":"H"},
+    {"from":"E","to":"C","role":"ACCENT"},{"from":"E","to":"H"},{"from":"H","to":"C","role":"ACCENT"}
+  ]},
+  "dims":[{"from":"A","to":"D","label":"1"},{"from":"E","to":"H","label":"1"},{"from":"E","to":"C","label":"\\sqrt{3}"},{"from":"H","to":"C","label":"\\sqrt{2}"}],
+  "marks":{"rightAngles":[{"at":"H","refs":["E","C"]}]},
+  "caption":"오른쪽 면 CGHD에서 E와 가장 먼 P는 C, 가장 가까운 Q는 H이므로 EP−EQ=HC이고 그 길이는 √2이다.",
+  "accessibilityDescription":"모서리 길이 1인 정육면체에서 오른쪽 사각형 C-G-H-D가 이동면이다. E에서 가장 멀리 있는 꼭짓점 C로 가는 공간 대각선과 E에서 가장 가까운 꼭짓점 H로 가는 수선, 그리고 H에서 C까지의 면 대각선을 그린다. H에서 직각이고 HC=루트2이다.",
+  "sourceQuote":"모서리 1인 정육면체, 면 CGHD 위 P,Q, |EP| 최대·|EQ| 최소, |EP−EQ|",
+  "sourceConditions":[
+    {"id":"c1","condition":"CGHD는 한 변 1인 정사각형 면","mappedTo":"space.points[2],space.points[6],space.points[7],space.points[3],dims[0]"},
+    {"id":"c2","condition":"최대 거리 P=C, EC=√3","mappedTo":"space.points[2],space.segments[11],dims[2]"},
+    {"id":"c3","condition":"최소 거리 Q=H, EH=1, EH⊥CGHD","mappedTo":"space.points[7],space.segments[12],dims[1],marks.rightAngles[0]"},
+    {"id":"c4","condition":"EP−EQ=HC, 길이 √2","mappedTo":"space.segments[13],dims[3]"}
+  ],
+  "newVisualInformation":["원본 정육면체 PNG를 문제에 보존한다. 해설에서는 P=C, Q=H의 최댓점·최솟점 대응을 원본 꼭짓점 이름과 함께 설명하고, EC·EH·HC 세 경로와 길이 √3·1·√2, 직각을 실제 선·치수·표식으로 넣는다. 면색을 사용하지 않는다."]
+}

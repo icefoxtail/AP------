@@ -1,0 +1,24 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"20"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"10"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"D","op":"DIVISION_POINT","inputs":["A","C"],"args":{"m":{"kind":"integer","value":"5"},"n":{"kind":"integer","value":"3"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"P","op":"DIVISION_POINT","inputs":["B","D"],"args":{"m":{"kind":"integer","value":"4"},"n":{"kind":"integer","value":"1"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["A","B","C","D","P"],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sAD","refs":["A","D"]},{"id":"sDC","refs":["D","C"]},{"id":"sCB","refs":["C","B"]},{"id":"sBP","refs":["B","P"],"dashed":true},{"id":"sPD","refs":["P","D"],"dashed":true},{"id":"sAP","refs":["A","P"]},{"id":"sPC","refs":["P","C"]}],
+  "planeMarks":{"dimensions":[{"id":"dAD","from":"A","to":"D","label":"5u","side":"BELOW","style":"BRACE"},{"id":"dDC","from":"D","to":"C","label":"3u","side":"BELOW","style":"BRACE"},{"id":"dBP","from":"B","to":"P","label":"4t","side":"RIGHT","style":"BRACE"},{"id":"dPD","from":"P","to":"D","label":"t","side":"RIGHT","style":"BRACE"}]},
+  "coordinateCanvas":{"width":720,"height":540},
+  "caption":"넓이 100인 삼각형 ABC에서 D는 AC의 5:3 내분점, P는 BD의 4:1 내분점이므로 APC의 넓이는 20이다.",
+  "accessibilityDescription":"삼각형 ABC 안에 A와 C를 5대3으로 나누는 D가 밑변에 있고 B와 D를 잇는 점선 위에 BP대PD가 4대1인 P가 있다. 선분 AP와 CP가 그려지고 각 부분 비율에 치수 라벨이 있다. 넓이 관련 면색은 없다.",
+  "sourceQuote":"넓이 100인 삼각형 ABC, 3PA+2PB+5PC=0; APC의 넓이",
+  "sourceConditions":[
+    {"id":"c1","condition":"ABC의 넓이=100인 대표 직각삼각형","mappedTo":"mathPlan.nodes[0],mathPlan.nodes[1],mathPlan.nodes[2],displaySegments[0]"},
+    {"id":"c2","condition":"D는 AC의 5:3 내분점","mappedTo":"mathPlan.nodes[3],planeMarks.dimensions[0],planeMarks.dimensions[1]"},
+    {"id":"c3","condition":"P는 BD의 4:1 내분점","mappedTo":"mathPlan.nodes[4],planeMarks.dimensions[2],planeMarks.dimensions[3]"},
+    {"id":"c4","condition":"삼각형 APC는 ABC의 1/5","mappedTo":"displaySegments[6],displaySegments[7],mathPlan.nodes[4]"}
+  ],
+  "newVisualInformation":["벡터의 가중합을 D와 P의 두 내분 관계로 분리하고, 두 비율을 실제 치수선에 붙여 넓이 1/5을 시각화한다. 이 좌표는 원문의 면적 100까지 만족하는 대표 배치이다."]
+}
