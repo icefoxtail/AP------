@@ -307,7 +307,11 @@ window.questionBank = [
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_중간_중1_모의고사_1회/q11-solution.svg",
+    "solutionImageAlt": "-1 이상이고 2보다 크지 않다는 말은 -1≤x≤2이다. 두 끝점 -1과 2를 모두 포함한다.",
+    "solutionImageCaption": "-1 이상이고 2보다 크지 않다는 말은 -1≤x≤2이다. 두 끝점 -1과 2를 모두 포함한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -681,6 +685,10 @@ window.questionBank = [
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_중간_중1_모의고사_1회/q25-solution.svg",
+    "solutionImageAlt": "넓이=(a+b)h/2 cm²이다. a=7, b=11, h=8을 대입하면 (7+11)×8/2=72 cm²이다.",
+    "solutionImageCaption": "넓이=(a+b)h/2 cm²이다. a=7, b=11, h=8을 대입하면 (7+11)×8/2=72 cm²이다.",
+    "solutionImageSize": "full"
   }
 ];

@@ -251,7 +251,11 @@ window.questionBank = [
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_중간_중1_모의고사_4회/q9-solution.svg",
+    "solutionImageAlt": "|x|<4를 만족하는 정수는 -3,-2,-1,0,1,2,3의 일곱 개이다.",
+    "solutionImageCaption": "|x|<4를 만족하는 정수는 -3,-2,-1,0,1,2,3의 일곱 개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -335,7 +339,11 @@ window.questionBank = [
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_중간_중1_모의고사_4회/q12-solution.svg",
+    "solutionImageAlt": "-8/3=-2와 2/3만큼이므로 -3에 가장 가깝고, 7/4=1과 3/4이므로 2에 가장 가깝다. a=-3, b=2라서 a-b=-5이다.",
+    "solutionImageCaption": "-8/3=-2와 2/3만큼이므로 -3에 가장 가깝고, 7/4=1과 3/4이므로 2에 가장 가깝다. a=-3, b=2라서 a-b=-5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -484,7 +492,12 @@ window.questionBank = [
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_중간_중1_모의고사_4회/q17-solution.svg",
+    "solutionImageAlt": "왼쪽 아래에서 오른쪽 위까지 대각선으로 나눈 두 직각삼각형의 넓이를 더한다. 15a/2+12b/2=15a/2+6b이므로 보기 ②이다.",
+    "solutionImageCaption": "왼쪽 아래에서 오른쪽 위까지 대각선으로 나눈 두 직각삼각형의 넓이를 더한다. 15a/2+12b/2=15a/2+6b이므로 보기 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 18,
@@ -640,7 +653,11 @@ window.questionBank = [
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_중간_중1_모의고사_4회/q23-solution.svg",
+    "solutionImageAlt": "-5<a≤2이므로 정수는 -4,-3,-2,-1,0,1,2의 일곱 개이다. -5는 제외하고 2는 포함한다.",
+    "solutionImageCaption": "-5<a≤2이므로 정수는 -4,-3,-2,-1,0,1,2의 일곱 개이다. -5는 제외하고 2는 포함한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

@@ -307,7 +307,11 @@ window.questionBank = [
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/AP수학학원_1학기_중간_중1_모의고사_3회/q11-solution.svg",
+    "solutionImageAlt": "두 점 사이 거리는 7/2-(-3/2)=10/2=5이다.",
+    "solutionImageCaption": "두 점 사이 거리는 7/2-(-3/2)=10/2=5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -631,7 +635,11 @@ window.questionBank = [
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/AP수학학원_1학기_중간_중1_모의고사_3회/q23-solution.svg",
+    "solutionImageAlt": "|a|≤3에 해당하면서 음수인 정수는 -3,-2,-1이고 합은 -6이다. -3은 포함하고 0은 음수가 아니므로 제외한다.",
+    "solutionImageCaption": "|a|≤3에 해당하면서 음수인 정수는 -3,-2,-1이고 합은 -6이다. -3은 포함하고 0은 음수가 아니므로 제외한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

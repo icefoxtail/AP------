@@ -734,7 +734,11 @@ window.questionBank = [
     "sourceQid": 13,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q13-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q13-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q13-solution.plan.json",
+    "solutionImage": "assets/images/26_순천고_1학기_기말_고1_유사/q13-solution.svg",
+    "solutionImageAlt": "두 연립부등식의 공통해가 2<x<6이 되는 매개변수 a의 범위는 -2≤a≤0이다.",
+    "solutionImageCaption": "두 연립부등식의 공통해가 2<x<6이 되는 매개변수 a의 범위는 -2≤a≤0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -852,7 +856,11 @@ window.questionBank = [
     "sourceQid": 15,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q15-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q15-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q15-solution.plan.json",
+    "solutionImage": "assets/images/26_순천고_1학기_기말_고1_유사/q15-solution.svg",
+    "solutionImageAlt": "n=7인 대표 경우의 이차부등식 (x-4)(x-7)<0은 4<x<7이고 자연수 해는 5와 6이다.",
+    "solutionImageCaption": "n=7인 대표 경우의 이차부등식 (x-4)(x-7)<0은 4<x<7이고 자연수 해는 5와 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -911,7 +919,11 @@ window.questionBank = [
     "sourceQid": 16,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q16-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q16-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q16-solution.plan.json",
+    "solutionImage": "assets/images/26_순천고_1학기_기말_고1_유사/q16-solution.svg",
+    "solutionImageAlt": "y=x²-6x+5는 꼭짓점 (3,-4), 점 (0,5), (6,5)를 지나므로 a의 범위에 따라 구간 최댓값이 달라진다.",
+    "solutionImageCaption": "y=x²-6x+5는 꼭짓점 (3,-4), 점 (0,5), (6,5)를 지나므로 a의 범위에 따라 구간 최댓값이 달라진다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -962,7 +974,11 @@ window.questionBank = [
     "sourceQid": 17,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q17-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q17-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q17-solution.plan.json",
+    "solutionImage": "assets/images/26_순천고_1학기_기말_고1_유사/q17-solution.svg",
+    "solutionImageAlt": "|x+2|+|x-3|≤11의 해는 -5≤x≤6이고, 양 끝 포함 정수는 12개이다.",
+    "solutionImageCaption": "|x+2|+|x-3|≤11의 해는 -5≤x≤6이고, 양 끝 포함 정수는 12개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

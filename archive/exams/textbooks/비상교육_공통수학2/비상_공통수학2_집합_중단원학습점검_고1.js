@@ -77,7 +77,11 @@ window.questionBank = [
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/비상_공통수학2_집합_중단원학습점검_고1/qid_v1_060abd8580a6243ff106820d8789ac0e745a35ec1bdf00ec7982d53b6bac858d-solution.svg",
+    "solutionImageAlt": "U={1,…,9}에서 A∩B={1,2,3}, A−B={6}, B−A={5,7}, 두 집합 밖={4,8,9}를 원소마다 정확히 배치하고 기본 면 채움은 두지 않는다.",
+    "solutionImageCaption": "U={1,…,9}에서 A∩B={1,2,3}, A−B={6}, B−A={5,7}, 두 집합 밖={4,8,9}를 원소마다 정확히 배치하고 기본 면 채움은 두지 않는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "qid_v1_4e05a4d976b1a8ed3d7b0b5e13b3ab0d36d61b66d7cb15da9d8d4d9899d51b3a",
@@ -129,7 +133,11 @@ window.questionBank = [
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/비상_공통수학2_집합_중단원학습점검_고1/qid_v1_2d74a3ac5a7c5c99fdb005420d9f1a9f2c1c1779eed49cb56cd8fce847974689-solution.svg",
+    "solutionImageAlt": "A∪B={3,5,6,7,8,9,10}의 영역에서 A∩B={6,9}는 겹친 부분, 3은 B에만, 5·7·8·10은 A에만 속한다.",
+    "solutionImageCaption": "A∪B={3,5,6,7,8,9,10}의 영역에서 A∩B={6,9}는 겹친 부분, 3은 B에만, 5·7·8·10은 A에만 속한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "qid_v1_6c120be5b4a5ceb8bed486fb3f4bd5b50c1186b2d97e4bed8b9e6b448c8fb887",
@@ -155,7 +163,11 @@ window.questionBank = [
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/비상_공통수학2_집합_중단원학습점검_고1/qid_v1_6c120be5b4a5ceb8bed486fb3f4bd5b50c1186b2d97e4bed8b9e6b448c8fb887-solution.svg",
+    "solutionImageAlt": "A={0,1,2}, B={1,2,3}, C={−2,−1,0,1,2}의 모든 원소 소속을 표식으로 비교하면 C−A={−2,−1}, (C∩Aᶜ)∪B={−2,−1,1,2,3}이다.",
+    "solutionImageCaption": "A={0,1,2}, B={1,2,3}, C={−2,−1,0,1,2}의 모든 원소 소속을 표식으로 비교하면 C−A={−2,−1}, (C∩Aᶜ)∪B={−2,−1,1,2,3}이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "qid_v1_1a92c0bc2b3d3cc702ea4a08e4903df006b06833cb8c6c364ec40cb1ed3c50ae",
@@ -237,7 +249,11 @@ window.questionBank = [
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/비상_공통수학2_집합_중단원학습점검_고1/qid_v1_23aea70aaede0e9a7b8cec6567888a296fe4d4675f5273206ddfde79db2ddcd5-solution.svg",
+    "solutionImageAlt": "A∩B=A 이므로 A⊆B; A의 원을 B의 원 안에 완전히 놓아 포함관계와 여집합 역포함을 확인한다.",
+    "solutionImageCaption": "A∩B=A 이므로 A⊆B; A의 원을 B의 원 안에 완전히 놓아 포함관계와 여집합 역포함을 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "qid_v1_04efeb701a7c913220926a49ba60ac7e49968fb0619b6dfb42a269ab9458731e",
@@ -263,7 +279,11 @@ window.questionBank = [
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/비상_공통수학2_집합_중단원학습점검_고1/qid_v1_04efeb701a7c913220926a49ba60ac7e49968fb0619b6dfb42a269ab9458731e-solution.svg",
+    "solutionImageAlt": "A={1,5}⊆X⊆B={1,2,4,5,10,20}. A의 1,5는 고정이고 B−A={2,4,10,20} 네 원소는 X에 자유롭게 포함하거나 제외한다.",
+    "solutionImageCaption": "A={1,5}⊆X⊆B={1,2,4,5,10,20}. A의 1,5는 고정이고 B−A={2,4,10,20} 네 원소는 X에 자유롭게 포함하거나 제외한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "qid_v1_4e7e9dff0e37f3b56d3041d4583aad5c8e2b737ddcd407afdcf8f6c3e4e05d58",

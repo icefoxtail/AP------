@@ -33,7 +33,11 @@ window.questionBank = [
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/비상_공통수학2_선분의내분과직선_중단원학습점검_고1/qid_v1_1a84bdf969b7878498dc6e8ddf640ddaed69d10c94e06d3d8f00146b3cdaaee0-solution.svg",
+    "solutionImageAlt": "AB의 2:1 내분점 P(2,7)와 BA의 2:1 내분점 Q(0,6)는 같은 선분 위 서로 다른 점이다.",
+    "solutionImageCaption": "AB의 2:1 내분점 P(2,7)와 BA의 2:1 내분점 Q(0,6)는 같은 선분 위 서로 다른 점이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "qid_v1_2960ae6237cfadc4f2d647ee8b28e16365df434d193385c01f56da6889774072",
@@ -135,7 +139,11 @@ window.questionBank = [
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/비상_공통수학2_선분의내분과직선_중단원학습점검_고1/qid_v1_0be7bc1715fc113a9a31ad48d12e2645e25307fb821623902a368aa84027d44a-solution.svg",
+    "solutionImageAlt": "점 P(3,-1)에서 5x−12y−1=0에 내린 수선 PH가 최단거리 2를 나타낸다.",
+    "solutionImageCaption": "점 P(3,-1)에서 5x−12y−1=0에 내린 수선 PH가 최단거리 2를 나타낸다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "qid_v1_24835c24a36257e1e523dabc525938a3003b54b1695f1fd6d594ed9a73ca1399",
@@ -169,7 +177,11 @@ window.questionBank = [
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/비상_공통수학2_선분의내분과직선_중단원학습점검_고1/qid_v1_24835c24a36257e1e523dabc525938a3003b54b1695f1fd6d594ed9a73ca1399-solution.svg",
+    "solutionImageAlt": "내분점 P(-1,3)과 중점 M(1,4) 사이의 거리는 √5이다.",
+    "solutionImageCaption": "내분점 P(-1,3)과 중점 M(1,4) 사이의 거리는 √5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "qid_v1_728774a2314cfbdfa88a63449f9759677ca6746214dfaee5271d3af156849e1f",
@@ -237,7 +249,11 @@ window.questionBank = [
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/비상_공통수학2_선분의내분과직선_중단원학습점검_고1/qid_v1_766a8cddd3a8a404cde0d348401446cc554d2aa61db76e6cc8300c0297dcf5e6-solution.svg",
+    "solutionImageAlt": "두 중선의 교점 G(2,1)을 지나고 주어진 직선과 평행한 직선은 y=3x−5이다.",
+    "solutionImageCaption": "두 중선의 교점 G(2,1)을 지나고 주어진 직선과 평행한 직선은 y=3x−5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "qid_v1_369298662368baa5edb955ebdf7cf06e37f03dc8b7b23d3ab1a2a7a06b011f34",
@@ -271,7 +287,11 @@ window.questionBank = [
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/비상_공통수학2_선분의내분과직선_중단원학습점검_고1/qid_v1_369298662368baa5edb955ebdf7cf06e37f03dc8b7b23d3ab1a2a7a06b011f34-solution.svg",
+    "solutionImageAlt": "AB의 3:1 내분점 P(3,0)에서 AB에 수직인 직선의 식은 y=−x+3이다.",
+    "solutionImageCaption": "AB의 3:1 내분점 P(3,0)에서 AB에 수직인 직선의 식은 y=−x+3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "qid_v1_980a769aa94fdffa89536bc9bdbb6b0f32ba97b036c00f8bf898887ce65311ad",
@@ -308,7 +328,11 @@ window.questionBank = [
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/비상_공통수학2_선분의내분과직선_중단원학습점검_고1/qid_v1_980a769aa94fdffa89536bc9bdbb6b0f32ba97b036c00f8bf898887ce65311ad-solution.svg",
+    "solutionImageAlt": "변 AB의 중점 M(2,3)을 지나는 OM이 삼각형의 넓이를 정확히 이등분한다.",
+    "solutionImageCaption": "변 AB의 중점 M(2,3)을 지나는 OM이 삼각형의 넓이를 정확히 이등분한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "qid_v1_48ef2cf4edefd59b2d397237d65a2fb23e796a22acbb7cc3adfbe7e8f94b40e5",
@@ -342,7 +366,11 @@ window.questionBank = [
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/비상_공통수학2_선분의내분과직선_중단원학습점검_고1/qid_v1_48ef2cf4edefd59b2d397237d65a2fb23e796a22acbb7cc3adfbe7e8f94b40e5-solution.svg",
+    "solutionImageAlt": "교점 Q(-1,2)를 기준으로 거리 √13만큼 떨어진 두 평행선 2x+3y−17=0, 2x+3y+9=0을 함께 그린다.",
+    "solutionImageCaption": "교점 Q(-1,2)를 기준으로 거리 √13만큼 떨어진 두 평행선 2x+3y−17=0, 2x+3y+9=0을 함께 그린다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "qid_v1_e66ff653a3a02ac536755683d0d0496e16040beaa2367541aab254e9a6122e5f",
@@ -376,7 +404,15 @@ window.questionBank = [
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "image": "assets/images/비상_공통수학2_선분의내분과직선_중단원학습점검_고1/qid_v1_e66ff653a3a02ac536755683d0d0496e16040beaa2367541aab254e9a6122e5f-problem.svg",
+    "imageAlt": "PQ∥BC와 넓이비 [ABC]:[APQ]=9:1을 나타내되 미지점 P,Q의 좌표는 드러내지 않는다.",
+    "imageCaption": "PQ∥BC와 넓이비 [ABC]:[APQ]=9:1을 나타내되 미지점 P,Q의 좌표는 드러내지 않는다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/비상_공통수학2_선분의내분과직선_중단원학습점검_고1/qid_v1_e66ff653a3a02ac536755683d0d0496e16040beaa2367541aab254e9a6122e5f-solution.svg",
+    "solutionImageAlt": "PQ가 BC와 평행해 AP:AB=AQ:AC=1:3인 닮은 삼각형을 만든다.",
+    "solutionImageCaption": "PQ가 BC와 평행해 AP:AB=AQ:AC=1:3인 닮은 삼각형을 만든다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "qid_v1_5d2fd6d67bbd576eb960b8601e0ba4123546f7f098b42adc119f820d49dfaea7",

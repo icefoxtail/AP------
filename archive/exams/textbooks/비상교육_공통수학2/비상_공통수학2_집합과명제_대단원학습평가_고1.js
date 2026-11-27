@@ -54,7 +54,11 @@ window.questionBank = [
     "image": "assets/images/비상_공통수학2_집합과명제_대단원학습평가_고1/q04_source.png",
     "answer": "⑤",
     "solution": "$A-B=\\{0,2\\}$이므로 $n(A-B)=2$이다. 그림에서 색칠한 부분은 전체집합 $U$에서 $A-B$ 부분만 제외한 영역, 즉 $(A-B)^c$이다.\n따라서 색칠한 부분의 원소의 개수는 $n((A-B)^c)=n(U)-n(A-B)=7-2=5$이다. 그러므로 정답은 ⑤이다.",
-    "difficultyBucket": "UNKNOWN", "difficultyConfidence": "UNKNOWN", "difficultyBoundaryFlag": "UNKNOWN", "legacyLevelCompatibility": "UNKNOWN"
+    "difficultyBucket": "UNKNOWN", "difficultyConfidence": "UNKNOWN", "difficultyBoundaryFlag": "UNKNOWN", "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/비상_공통수학2_집합과명제_대단원학습평가_고1/qid_v1_d1adb99b325801df5cd77a19b440477aaf42837b56b510dba9d60440091c80f0-solution.svg",
+    "solutionImageAlt": "A-B={0,2}를 제외한 다섯 원소가 색칠된 영역에 있다. n((A-B)^c)=5.",
+    "solutionImageCaption": "A-B={0,2}를 제외한 다섯 원소가 색칠된 영역에 있다. n((A-B)^c)=5.",
+    "solutionImageSize": "full"
   },
   {
     "id": "qid_v1_2b8c59e1f2ab4fddbc663f3d0086e6ea34d27e5ec0086095bbc1dca15f32b224",
