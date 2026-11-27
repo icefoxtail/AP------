@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "6",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -1,
+      4
+    ],
+    "viewport": [
+      -2,
+      5,
+      -5,
+      15
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 3,
+        "y": 13
+      },
+      {
+        "id": "L",
+        "x": -1,
+        "y": -3
+      },
+      {
+        "id": "R",
+        "x": 4,
+        "y": 12
+      }
+    ]
+  },
+  "caption": "−1≤x≤4에서 y=−x²+6x+4의 최대 13과 최소 −3",
+  "accessibilityDescription": "−1≤x≤4에서 y=−x²+6x+4의 최대 13과 최소 −3",
+  "sourceQuote": "−1≤x≤4, y=−x²+6x+k, 최댓값+최솟값=10에서 k=4",
+  "sourceConditions": [
+    {
+      "id": "eq",
+      "condition": "−1≤x≤4, y=−x²+6x+k, 최댓값+최솟값=10에서 k=4",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "vis",
+      "condition": "−1≤x≤4에서 y=−x²+6x+4의 최대 13과 최소 −3",
+      "mappedTo": "graphPlan.requiredPoints,graphPlan.sourceDomain"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진의 실제 곡선 계수·정의역·특징점과 필요한 보조 도형 필드로 해설 조건을 표시한다."
+  ]
+}

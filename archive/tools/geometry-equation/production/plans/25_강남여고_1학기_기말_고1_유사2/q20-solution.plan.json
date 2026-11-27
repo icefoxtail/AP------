@@ -1,0 +1,133 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "6",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "viewport": [
+      -1,
+      6,
+      -2,
+      12
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 3,
+        "y": 9,
+        "marker": "NONE"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "L",
+          "slope": "2",
+          "intercept": "0"
+        },
+        {
+          "id": "t",
+          "x": "2",
+          "label": "x=t",
+          "labelValues": {
+            "t": "2"
+          }
+        }
+      ],
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "A",
+          "x": "4",
+          "y": "8",
+          "coordinates": true
+        },
+        {
+          "id": "P",
+          "x": "2",
+          "y": "8",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "2",
+          "y": "4",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "PQ",
+          "from": "P",
+          "to": "Q",
+          "length": true
+        },
+        {
+          "id": "OA",
+          "from": "O",
+          "to": "A"
+        },
+        {
+          "id": "AP",
+          "from": "A",
+          "to": "P"
+        },
+        {
+          "id": "PO",
+          "from": "P",
+          "to": "O"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "T",
+          "points": [
+            "O",
+            "A",
+            "P"
+          ],
+          "fill": "NONE"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "O": "O",
+    "A": "A",
+    "P": "P",
+    "Q": "Q"
+  },
+  "caption": "t=2에서 PQ=4, OAP 삼각형의 넓이는 8로 최대다.",
+  "accessibilityDescription": "t=2에서 PQ=4, OAP 삼각형의 넓이는 8로 최대다.",
+  "sourceQuote": "f(x)=−x²+6x, y=2x, A(4,8), P(2,8), Q(2,4)",
+  "sourceConditions": [
+    {
+      "id": "poly",
+      "condition": "f(x)=−x²+6x, y=2x, A(4,8), P(2,8), Q(2,4)",
+      "mappedTo": "graphPlan.pieces,graphPlan.sourceDomain"
+    },
+    {
+      "id": "dots",
+      "condition": "최대 세로 길이 4, O·A·P로 만드는 삼각형의 세 변과 세 점",
+      "mappedTo": "graphPlan.overlays,graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "그려지는 함수 그래프·교점·보조선·선분의 방향과 개별 점 이름을 실제 그리기 필드로 표시한다."
+  ]
+}

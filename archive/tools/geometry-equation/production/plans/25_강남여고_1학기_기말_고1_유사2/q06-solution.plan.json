@@ -1,0 +1,58 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "가능한 a",
+        "band": false,
+        "points": [
+          {
+            "id": "a0",
+            "value": "0",
+            "hideName": true,
+            "showValue": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "a1",
+            "value": "8",
+            "hideName": true,
+            "showValue": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "a2",
+            "value": "9",
+            "hideName": true,
+            "showValue": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "a3",
+            "value": "10",
+            "hideName": true,
+            "showValue": true,
+            "style": "FILLED"
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "해집합과 경계 확인"
+  },
+  "caption": "최소 정수해 5를 만드는 정수 a는 0,8,9,10",
+  "accessibilityDescription": "최소 정수해 5를 만드는 정수 a는 0,8,9,10",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "x=5 가능, x=4 불가능이라는 조건의 정수 매개변수 a=0,8,9,10",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "a축에서 허용하는 네 개의 고립 정수점만 표시"
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "viewport": [
+      -6,
+      8,
+      -7,
+      7
+    ],
+    "requiredPoints": [],
+    "overlays": {
+      "circles": [
+        {
+          "id": "C",
+          "center": [
+            "0",
+            "0"
+          ],
+          "radiusSquared": "18"
+        }
+      ],
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "T",
+          "x": "3",
+          "y": "-3",
+          "coordinates": true
+        },
+        {
+          "id": "L",
+          "x": "4",
+          "y": "-2"
+        }
+      ],
+      "segments": [
+        {
+          "id": "OT",
+          "from": "O",
+          "to": "T",
+          "dashed": true
+        }
+      ],
+      "rightAngles": [
+        {
+          "at": "T",
+          "from": [
+            "O",
+            "L"
+          ]
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "O": "O",
+    "T": "T",
+    "L": "L"
+  },
+  "caption": "원 x²+y²=18에 직선 x−y=6이 점 T(3,−3)에서 접한다.",
+  "accessibilityDescription": "원 x²+y²=18에 직선 x−y=6이 점 T(3,−3)에서 접한다.",
+  "sourceQuote": "x−y=a, x²+y²=18, a>0. 접할 때 a=6",
+  "sourceConditions": [
+    {
+      "id": "eq",
+      "condition": "x−y=a, x²+y²=18, a>0. 접할 때 a=6",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "vis",
+      "condition": "원 중심 O, 접점 T, 반지름 OT와 직선 y=x−6의 직각 표식",
+      "mappedTo": "graphPlan.overlays,graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진의 실제 곡선 계수·정의역·특징점과 필요한 보조 도형 필드로 해설 조건을 표시한다."
+  ]
+}

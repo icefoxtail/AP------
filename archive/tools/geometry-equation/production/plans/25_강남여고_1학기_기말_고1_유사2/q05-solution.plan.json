@@ -1,0 +1,57 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "15",
+          "-8",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "viewport": [
+      -1,
+      5,
+      5,
+      20
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 2,
+        "y": 7
+      }
+    ],
+    "overlays": {
+      "lines": [{"id": "sym", "x": "2", "style": "DASHED"}]
+    },
+    "axisTitles": {
+      "x": "a",
+      "y": "m"
+    }
+  },
+  "caption": "m=2(a−2)²+7의 꼭짓점 (2,7)에서 최소 7",
+  "accessibilityDescription": "m=2(a−2)²+7의 꼭짓점 (2,7)에서 최소 7",
+  "sourceQuote": "m=2a²−8a+15=2(a−2)²+7",
+  "sourceConditions": [
+    {
+      "id": "eq",
+      "condition": "m=2a²−8a+15=2(a−2)²+7",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "vis",
+      "condition": "m=2(a−2)²+7의 꼭짓점 (2,7)에서 최소 7",
+      "mappedTo": "graphPlan.requiredPoints,graphPlan.sourceDomain"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진의 실제 곡선 계수·정의역·특징점과 필요한 보조 도형 필드로 해설 조건을 표시한다."
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "a=5",
+        "pieces": [
+          {
+            "lo": {
+              "value": "6",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "9",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": true
+      },
+      {
+        "kind": "SET",
+        "label": "a=6",
+        "pieces": [
+          {
+            "lo": {
+              "value": "7",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "10",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "해집합과 경계 확인"
+  },
+  "caption": "a=5 또는 6에서 정수해가 각각 네 개",
+  "accessibilityDescription": "a=5 또는 6에서 정수해가 각각 네 개",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "−4≤x≤10, (x−a)(x−2a)<0, 두 후보 a=5,6",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "후보 a값 별로 실제 허용 정수 네 개를 서로 다른 행에 표시"
+  ]
+}

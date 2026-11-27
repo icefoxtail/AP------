@@ -1,0 +1,177 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "도로망의 다섯 구간 도로 수: 3,2,3,4,x",
+  "accessibilityDescription": "지점 A,B,C,D를 잇는 다섯 구간에 도로 개수를 숫자로 적은 도로망 개수 도식이다. BC 구간은 x개로 미정이다.",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "nAB",
+        "ownerSegment": "AB",
+        "text": "3"
+      },
+      {
+        "id": "nAC",
+        "ownerSegment": "AC",
+        "text": "2"
+      },
+      {
+        "id": "nBD",
+        "ownerSegment": "BD",
+        "text": "3"
+      },
+      {
+        "id": "nCD",
+        "ownerSegment": "CD",
+        "text": "4"
+      },
+      {
+        "id": "nBC",
+        "ownerSegment": "BC",
+        "text": "x"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 520
+  },
+  "sourceConditions": [
+    {
+      "id": "roads",
+      "condition": "AB=3, AC=2, BD=3, CD=4; BC는 x개 추가, B와 C를 모두 거치는 수 72",
+      "mappedTo": "displaySegments,planeMarks.expressionLabels"
+    }
+  ],
+  "newVisualInformation": [
+    "실제 엔진이 그리는 A·B·C·D 네 꼭짓점, 5개 연결 선분과 각 구간 도로 수를 도식화한다. 숫자는 거리나 선분 길이가 아니라 도로 선택 개수다."
+  ]
+}

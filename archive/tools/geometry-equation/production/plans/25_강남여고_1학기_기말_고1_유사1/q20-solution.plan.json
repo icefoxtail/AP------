@@ -1,0 +1,107 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "6",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "viewport": [
+      -1,
+      6,
+      -2,
+      12
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 3,
+        "y": 9,
+        "marker": "NONE"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "L",
+          "slope": "2",
+          "intercept": "0"
+        },
+        {
+          "id": "t",
+          "x": "2",
+          "label": "x=t",
+          "labelValues": {
+            "t": "2"
+          }
+        }
+      ],
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "A",
+          "x": "4",
+          "y": "8",
+          "coordinates": true
+        },
+        {
+          "id": "P",
+          "x": "2",
+          "y": "8",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "2",
+          "y": "4",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "PQ",
+          "from": "P",
+          "to": "Q",
+          "length": true
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "O": "O",
+    "A": "A",
+    "P": "P",
+    "Q": "Q"
+  },
+  "caption": "t=2에서 P(2,8), Q(2,4), PQ=4로 최대이며 A=(4,8)이다.",
+  "accessibilityDescription": "t=2에서 P(2,8), Q(2,4), PQ=4로 최대이며 A=(4,8)이다.",
+  "sourceQuote": "y=−x²+6x 와 y=2x, O(0,0), A(4,8), t∈(0,4), P=(t,f(t)),Q=(t,2t)",
+  "sourceConditions": [
+    {
+      "id": "poly",
+      "condition": "y=−x²+6x 와 y=2x, O(0,0), A(4,8), t∈(0,4), P=(t,f(t)),Q=(t,2t)",
+      "mappedTo": "graphPlan.pieces,graphPlan.sourceDomain"
+    },
+    {
+      "id": "dots",
+      "condition": "최대 조건으로 도출한 t=2와 점 P·Q의 좌표 및 세로 길이 4",
+      "mappedTo": "graphPlan.overlays,graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "그려지는 함수 그래프·교점·보조선·선분의 방향과 개별 점 이름을 실제 그리기 필드로 표시한다."
+  ]
+}
