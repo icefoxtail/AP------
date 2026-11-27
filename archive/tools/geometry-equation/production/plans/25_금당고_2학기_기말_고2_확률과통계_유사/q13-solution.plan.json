@@ -1,0 +1,91 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "A상자"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "NORMAL_CURVE",
+          "curves": [
+            {
+              "id": "A",
+              "mean": "303",
+              "sd": "6",
+              "label": "A"
+            }
+          ],
+          "ticks": [
+            "300",
+            "303"
+          ],
+          "shades": [
+            {
+              "from": "300",
+              "to": null
+            }
+          ],
+          "zAxis": true,
+          "areaLabels": [
+            {
+              "shade": 0,
+              "text": "0.69",
+              "source": "TABLE"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "B상자"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "NORMAL_CURVE",
+          "curves": [
+            {
+              "id": "B",
+              "mean": "304",
+              "sd": "4",
+              "label": "B"
+            }
+          ],
+          "ticks": [
+            "300",
+            "304"
+          ],
+          "shades": [
+            {
+              "from": "300",
+              "to": null
+            }
+          ],
+          "zAxis": true,
+          "areaLabels": [
+            {
+              "shade": 0,
+              "text": "0.84",
+              "source": "TABLE"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "probq13pair",
+      "condition": "독립 A·B 상자 표본평균 N(303,6²)·N(304,4²), 가격 20000원 경계 300g와 P=0.69·0.84",
+      "mappedTo": "panels[0].plan.chart,panels[1].plan.chart"
+    }
+  ],
+  "newVisualInformation": [
+    "독립 A·B 상자 표본평균 N(303,6²)·N(304,4²), 가격 20000원 경계 300g와 P=0.69·0.84"
+  ],
+  "caption": "독립 A·B 상자 표본평균 N(303,6²)·N(304,4²), 가격 20000원 경계 300g와 P=0.69·0.84",
+  "accessibilityDescription": "독립 A·B 상자 표본평균 N(303,6²)·N(304,4²), 가격 20000원 경계 300g와 P=0.69·0.84"
+}

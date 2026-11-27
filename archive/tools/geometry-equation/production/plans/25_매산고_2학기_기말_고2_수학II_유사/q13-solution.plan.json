@@ -1,0 +1,71 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "판별식 양수",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-1-1*sqrt(6)",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "-1+1*sqrt(6)",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "label": "정수 a",
+        "points": [
+          {
+            "id": "a0",
+            "value": "-3",
+            "hideName": true
+          },
+          {
+            "id": "a1",
+            "value": "-2",
+            "hideName": true
+          },
+          {
+            "id": "a2",
+            "value": "-1",
+            "hideName": true
+          },
+          {
+            "id": "a3",
+            "value": "0",
+            "hideName": true
+          },
+          {
+            "id": "a4",
+            "value": "1",
+            "hideName": true,
+            "style": "CROSS"
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "a=1 제외, 가능한 정수 4개"
+  },
+  "caption": "도함수 판별식 >0의 두 무리근 경계 −1±√6, 정수 −3·−2·−1·0 포함과 a=1 삼차함수 제외 표시",
+  "accessibilityDescription": "도함수 판별식 >0의 두 무리근 경계 −1±√6, 정수 −3·−2·−1·0 포함과 a=1 삼차함수 제외 표시",
+  "sourceConditions": [
+    {
+      "id": "source-q13-solution",
+      "condition": "도함수 판별식 >0의 두 무리근 경계 −1±√6, 정수 −3·−2·−1·0 포함과 a=1 삼차함수 제외 표시",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "도함수 판별식 >0의 두 무리근 경계 −1±√6, 정수 −3·−2·−1·0 포함과 a=1 삼차함수 제외 표시"
+  ]
+}

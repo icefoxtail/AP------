@@ -1,0 +1,91 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "한 상자: 표본평균"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "NORMAL_CURVE",
+          "curves": [
+            {
+              "id": "X",
+              "mean": "60",
+              "sd": "2",
+              "label": "표본평균"
+            }
+          ],
+          "ticks": [
+            "56",
+            "60"
+          ],
+          "shades": [
+            {
+              "from": null,
+              "to": "56"
+            }
+          ],
+          "zAxis": true,
+          "areaLabels": [
+            {
+              "shade": 0,
+              "text": "0.02",
+              "source": "TABLE"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "2500상자: 불량 수"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "NORMAL_CURVE",
+          "curves": [
+            {
+              "id": "Y",
+              "mean": "50",
+              "sd": "7",
+              "label": "불량 상자 수"
+            }
+          ],
+          "ticks": [
+            "36",
+            "50"
+          ],
+          "shades": [
+            {
+              "from": null,
+              "to": "36"
+            }
+          ],
+          "zAxis": true,
+          "areaLabels": [
+            {
+              "shade": 0,
+              "text": "0.02",
+              "source": "TABLE"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "probq12pair",
+      "condition": "1차 표본평균 N(60,2²)의 X̄≤56과 2차 불량개수 근사 N(50,7²)의 Y≤36을 별도 패널로 묘사",
+      "mappedTo": "panels[0].plan.chart,panels[1].plan.chart"
+    }
+  ],
+  "newVisualInformation": [
+    "1차 표본평균 N(60,2²)의 X̄≤56과 2차 불량개수 근사 N(50,7²)의 Y≤36을 별도 패널로 묘사"
+  ],
+  "caption": "1차 표본평균 N(60,2²)의 X̄≤56과 2차 불량개수 근사 N(50,7²)의 Y≤36을 별도 패널로 묘사",
+  "accessibilityDescription": "1차 표본평균 N(60,2²)의 X̄≤56과 2차 불량개수 근사 N(50,7²)의 Y≤36을 별도 패널로 묘사"
+}

@@ -1,0 +1,94 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-3/2",
+          "0",
+          "1/2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2.2,
+      2.2
+    ],
+    "viewport": [
+      -2.5,
+      2.5,
+      -1.8,
+      1.8
+    ],
+    "referenceLines": [
+      {
+        "id": "upper",
+        "y": "1",
+        "intersectionX": [
+          "-1",
+          "2"
+        ]
+      },
+      {
+        "id": "lower",
+        "y": "-1",
+        "intersectionX": [
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "H",
+        "x": -1,
+        "y": 1
+      },
+      {
+        "id": "L",
+        "x": 1,
+        "y": -1
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        -2,
+        -1,
+        1,
+        2
+      ],
+      "y": [
+        -1,
+        1
+      ]
+    }
+  },
+  "caption": "u=x/3, v=f(3u)/54로 정확히 정규화하면 v=(u³−3u)/2이다. |v|=1의 네 교점 중 u=±1은 접점이고 u=±2는 횡단 교점이다.",
+  "accessibilityDescription": "u=x/3, v=f(x)/54인 축에서 위쪽 수평선 v=1에 u=−1에서 접하고 u=2에서 만나며, 아래쪽 v=−1에 u=1에서 접하고 u=−2에서 만난다.",
+  "sourceConditions": [
+    {
+      "id": "odd",
+      "condition": "f(−x)+f(x)=0, leading cubic coefficient 1",
+      "mappedTo": "u=x/3, v=f(3u)/54; graphPlan.pieces[0].coefficients=[0,−3/2,0,1/2]"
+    },
+    {
+      "id": "absolute",
+      "condition": "|f(x)|=54 has 4 distinct real roots",
+      "mappedTo": "|v|=1; graphPlan.referenceLines[upper,lower], each two distinct u intersections"
+    },
+    {
+      "id": "tangent",
+      "condition": "f(−3)=54 and f(3)=−54, f′(±3)=0",
+      "mappedTo": "graphPlan.requiredPoints[H=(-1,1),L=(1,-1)] under exact axis transformation"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 수치 x=±3,±6 및 y=±54를 u=±1,±2 및 v=±1로 정확히 무차원화한 그래프다. 축 치환을 캡션에 밝히므로 원래 수치인 척 하지 않는다."
+  ]
+}
