@@ -1,0 +1,20 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["-16", "-8", "7", "-1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-2.7, 5.6], "viewport": [-3, 6, -28, 15],
+    "axisTickValues": {"x": [-1, 4], "y": []},
+    "overlays": {"points": [{"id": "A", "curveX": "-1", "coordinates": true}, {"id": "B", "curveX": "4", "coordinates": true}]}
+  },
+  "pointNames": {"A": "A", "B": "B"},
+  "caption": "원본의 도함수 개형과 부호를 만족시키는 대표식 f'(x)=-(x+1)(x-4)²의 그래프: -1에서 부호가 바뀌고 4에서는 x축에 접할 뿐이다.",
+  "accessibilityDescription": "도함수 그래프가 -1에서 가로축을 위쪽에서 아래쪽으로 지나고 4에서는 아래쪽에서 축에 닿았다 다시 내려간다.",
+  "sourceQuote": "사차함수 $f(x)$의 도함수 $y=f'(x)$의 그래프가 다음 그림과 같을 때, 보기 중 옳은 것을 모두 고르시오.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "원본 개형: x=-1에서 +에서 -로 교차", "mappedTo": "graphPlan.coefficients,graphPlan.overlays.points[A]"},
+    {"id": "c2", "condition": "원본 개형: x=4에서 위로 올라와 x축에 접한 뒤 다시 아래로", "mappedTo": "graphPlan.coefficients,graphPlan.overlays.points[B]"},
+    {"id": "c3", "condition": "원본 그림은 구체적인 f' 식을 주지 않음; 임의의 양의 배율을 고정한 대표 모형", "mappedTo": "graphPlan.coefficients"}
+  ],
+  "newVisualInformation": ["4에서의 접함(중근)과 -1에서의 부호변화(단근)를 구별한다.", "계수 1은 그림의 개형을 위한 예시이며 원문 함수의 확정식이 아니다."]
+}

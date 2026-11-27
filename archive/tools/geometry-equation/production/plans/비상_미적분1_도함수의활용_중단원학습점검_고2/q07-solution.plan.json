@@ -1,0 +1,20 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["3", "0", "3", "-1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-1.8, 3.9], "viewport": [-2, 4, -3, 10],
+    "axisTickValues": {"x": [2], "y": [3, 7]},
+    "overlays": {"points": [{"id": "m", "curveX": "0", "coordinates": true}, {"id": "M", "curveX": "2", "coordinates": true}]}
+  },
+  "pointNames": {"m": "P", "M": "Q"},
+  "caption": "도함수의 영점 x=0에서 극솟값 f(0)=3, x=2에서 극댓값 f(2)=7을 갖는 원함수 y=-x³+3x²+3.",
+  "accessibilityDescription": "삼차함수의 x=0인 극소점 높이 3과 x=2인 극대점 높이 7을 함께 표시한 그래프.",
+  "sourceQuote": "함수 $f(x)$의 극댓값이 $7$일 때, 함수 $f(x)$의 극솟값을 구하시오.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "f'=-3x(x-2), 원함수 최고차항 -1", "mappedTo": "graphPlan.coefficients"},
+    {"id": "c2", "condition": "극댓값 7은 x=2", "mappedTo": "graphPlan.overlays.points[M]"},
+    {"id": "c3", "condition": "극솟값 3은 x=0", "mappedTo": "graphPlan.overlays.points[m]"}
+  ],
+  "newVisualInformation": ["원본의 도함수 그림과 달리 해설에 필요한 원함수의 극대·극소 높이를 보여 준다."]
+}

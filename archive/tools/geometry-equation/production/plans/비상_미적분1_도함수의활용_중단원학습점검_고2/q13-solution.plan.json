@@ -1,0 +1,26 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["4", "-12", "-3", "2"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-3.8, 4.3], "viewport": [-4, 4.5, -21, 20],
+    "axisTickValues": {"x": [-1, 2], "y": [-16, -11, 11]},
+    "overlays": {
+      "lines": [
+        {"id": "top", "slope": "0", "intercept": "11", "label": "y=11"},
+        {"id": "bottom", "slope": "0", "intercept": "-11", "label": "y=-11"}
+      ],
+      "points": [{"id": "H", "curveX": "-1", "coordinates": true}, {"id": "L", "curveX": "2", "coordinates": true}]
+    }
+  },
+  "pointNames": {"H": "H", "L": "L"},
+  "caption": "f(x)=2x³-3x²-12x+4에서 f(x)=11은 두 근, f(x)=-11은 세 근이므로 |f(x)|=11의 서로 다른 근은 다섯 개이다.",
+  "accessibilityDescription": "삼차곡선의 극댓값 11과 극솟값 -16, 수평선 y=11과 y=-11을 함께 표시한다.",
+  "sourceQuote": "함수 $f(x)=2x^3-3x^2-12x+4$에 대하여 방정식 $|f(x)|-k=0$이 서로 다른 $5$개의 실근을 갖도록 하는 실수 $k$의 값을 구하시오.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "f(x)=2x³-3x²-12x+4", "mappedTo": "graphPlan.coefficients"},
+    {"id": "c2", "condition": "극대(-1,11), 극소(2,-16)", "mappedTo": "graphPlan.overlays.points[H,L]"},
+    {"id": "c3", "condition": "k=11일 때 수평선 ±k와의 교점 수 합계 5", "mappedTo": "graphPlan.overlays.lines[top,bottom]"}
+  ],
+  "newVisualInformation": ["절댓값 방정식의 두 가지 f(x)=±k를 수평선 두 개로 보여 준다."]
+}
