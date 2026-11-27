@@ -1,0 +1,32 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "SPHERE",
+      "radius": 3,
+      "names": {
+        "center": "G"
+      }
+    }
+  ],
+  "dims": [
+    {
+      "radius": "center",
+      "label": "3"
+    }
+  ],
+  "caption": "세 위치벡터의 합은 3PG이고, |PG|=3이므로 G=(0,-1,2)를 중심으로 하는 반지름 3의 구이다.",
+  "sourceConditions": [
+    {
+      "id": "locus",
+      "condition": "G는 A B C의 무게중심, |PG|=3",
+      "mappedTo": [
+        "solids[0]",
+        "dims[0]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "구의 중심 G와 실제 반지름 3의 치수선을 그림에 쓴다."
+  ]
+}

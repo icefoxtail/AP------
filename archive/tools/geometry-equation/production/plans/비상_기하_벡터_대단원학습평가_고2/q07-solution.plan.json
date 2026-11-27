@@ -1,0 +1,271 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {"id":"lineAF","op":"LINE_THROUGH","inputs":["A","F"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lineDE","op":"LINE_THROUGH","inputs":["D","E"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"X","op":"LINE_INTERSECTION","inputs":["lineAF","lineDE"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "X"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "vectors": [
+      {
+        "id": "vaf",
+        "from": "A",
+        "to": "F",
+        "label": "vec(AF)",
+        "side": "LEFT",
+        "emphasis": "ACCENT"
+      },
+      {
+        "id": "vde",
+        "from": "D",
+        "to": "E",
+        "label": "vec(DE)",
+        "side": "RIGHT",
+        "emphasis": "ACCENT"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dab",
+        "from": "A",
+        "to": "B",
+        "label": "3",
+        "side": "LEFT",
+        "style": "BRACE"
+      },
+      {
+        "id": "dad",
+        "from": "A",
+        "to": "D",
+        "label": "4",
+        "side": "ABOVE",
+        "style": "BRACE"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rb",
+      "refs": [
+        "A",
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id":"rx",
+      "refs":["A","X","D"]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 540
+  },
+  "caption": "AF=(3,-3), DE=(-3,-3)으로 서로 수직인 두 벡터를 강조",
+  "sourceConditions": [
+    {
+      "id": "length",
+      "condition": "AB=3,AD=4인 직사각형",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "planeMarks.dimensions",
+        "rightAngles"
+      ]
+    },
+    {
+      "id": "div",
+      "condition": "BE:EC=1:3, BF:FC=3:1",
+      "mappedTo": [
+        "mathPlan.nodes.E",
+        "mathPlan.nodes.F"
+      ]
+    },
+    {
+      "id": "vectors",
+      "condition": "AF와 DE의 내적",
+      "mappedTo": "planeMarks.vectors"
+    }
+  ],
+  "newVisualInformation": [
+    "두 벡터의 방향, 원본 길이 지시선 3과 4, 직각 표식 보존; 면 채움 없음"
+  ]
+}

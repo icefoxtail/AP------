@@ -1,0 +1,63 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 8,
+      "side": 1,
+      "names": "CDEBAF"
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "C",
+      "style": "AUTO",
+      "color": "BLUE"
+    },
+    {
+      "from": "E",
+      "to": "F",
+      "style": "AUTO",
+      "color": "BLUE"
+    },
+    {
+      "from": "A",
+      "to": "B",
+      "style": "AUTO",
+      "color": "WARM"
+    },
+    {
+      "from": "D",
+      "to": "F",
+      "style": "AUTO",
+      "color": "WARM"
+    },
+    {
+      "from": "C",
+      "to": "E",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "B",
+      "to": "D",
+      "style": "DASHED",
+      "role": "REF"
+    }
+  ],
+  "caption": "AC와 EF의 같은 방향, AB와 FD의 반대 방향, 중앙 대각선 CE와 BD의 수직 관계",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "AC와 EF의 같은 방향, AB와 FD의 반대 방향, 중앙 대각선 CE와 BD의 수직 관계",
+      "mappedTo": [
+        "solids",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점 이름과 자동 숨은선 점선 유지; 별도 면 채움 없음"
+  ]
+}
