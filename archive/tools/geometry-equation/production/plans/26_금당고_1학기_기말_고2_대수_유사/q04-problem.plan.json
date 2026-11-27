@@ -1,0 +1,28 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"POLAR_POINT","inputs":["C","B"],"args":{"length":{"kind":"integer","value":"5"},"angleDeg":{"kind":"integer","value":"60"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints":["A","B","C"],
+  "displaySegments":[{"id":"sAC","refs":["A","C"]},{"id":"sCB","refs":["C","B"]},{"id":"sAB","refs":["A","B"]}],
+  "coordinateCanvas":{"width":610,"height":400},
+  "planeMarks":{
+    "angles":[{"id":"aC","refs":["A","C","B"],"value":60,"label":"60","style":"ARC","factRole":"GIVEN"}],
+    "expressionLabels":[
+      {"id":"lAC","ownerSegment":"sAC","text":"5","factRole":"GIVEN"},
+      {"id":"lCB","ownerSegment":"sCB","text":"8","factRole":"GIVEN"}
+    ]
+  },
+  "caption":"CA=5, CB=8, 끼인각 C=60°인 삼각형을 영역 채움 없이 선·각 호·길이 라벨로 나타낸다.",
+  "accessibilityDescription":"바닥 CB가 8, 왼쪽 변 CA가 5이고 C에 60도 각 호가 있는 무채움 삼각형 ABC.",
+  "sourceConditions":[
+    {"id":"S1","condition":"a=BC=8, b=CA=5, C=60°","mappedTo":["mathPlan.nodes","planeMarks.angles","planeMarks.expressionLabels"]}
+  ],
+  "newVisualInformation":["회색 각 내부 채움을 제거하고 세 변·두 길이 라벨·60° 호를 명확히 분리한다."]
+}

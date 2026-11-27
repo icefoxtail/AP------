@@ -1,0 +1,27 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints":["A","B","C"],
+  "displaySegments":[{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]},{"id":"sAB","refs":["A","B"]}],
+  "coordinateCanvas":{"width":600,"height":400},
+  "rightAngles":[{"id":"raC","refs":["A","C","B"]}],
+  "planeMarks":{
+    "expressionLabels":[
+      {"id":"labela","ownerSegment":"sBC","text":"a","factRole":"GIVEN"},
+      {"id":"labelb","ownerSegment":"sCA","text":"b","factRole":"GIVEN"},
+      {"id":"labelc","ownerSegment":"sAB","text":"c","factRole":"GIVEN"}
+    ]
+  },
+  "caption":"사인법칙과 코사인법칙에서 a²+b²=c²를 얻으므로 c의 맞은편 각 C는 90°인 직각삼각형이다.",
+  "accessibilityDescription":"서로 수직인 CA=b와 CB=a 및 빗변 AB=c, 꼭짓점 C의 정확한 직각 사각형 표식이 있는 무채움 삼각형.",
+  "sourceConditions":[{"id":"S1","condition":"sin B/sin C=cos A ⇒ a²+b²=c² ⇒ C=90°","mappedTo":["planeMarks.expressionLabels","rightAngles"]}],
+  "newVisualInformation":["피타고라스 관계에서 c가 빗변이고 C가 직각임을 직각표식과 변 문자로 시각화한다."]
+}

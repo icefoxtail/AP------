@@ -1,0 +1,37 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"POLAR_POINT","inputs":["O","A"],"args":{"length":{"kind":"integer","value":"4"},"angleDeg":{"kind":"integer","value":"90"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"C","op":"POLAR_POINT","inputs":["O","A"],"args":{"length":{"kind":"integer","value":"4"},"angleDeg":{"kind":"integer","value":"210"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"circle","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"4"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints":["O","A","B","C"],
+  "displayCircles":["circle"],
+  "displaySegments":[
+    {"id":"sOA","refs":["O","A"]},{"id":"sOB","refs":["O","B"]},{"id":"sOC","refs":["O","C"]},
+    {"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]}
+  ],
+  "coordinateCanvas":{"width":650,"height":510},
+  "planeMarks":{
+    "angles":[
+      {"id":"aAOB","refs":["A","O","B"],"value":90,"label":"90","style":"ARC","ring":1,"factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"aBOC","refs":["B","O","C"],"value":120,"label":"120","style":"ARC","ring":2,"factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"aCOA","refs":["C","O","A"],"value":150,"label":"150","style":"ARC","ring":3,"factRole":"DERIVED_INTERMEDIATE"}
+    ],
+    "equalLengths":[{"id":"eqR","count":1,"segments":["sOA","sOB","sOC"]}],
+    "expressionLabels":[{"id":"lenR","ownerSegment":"sOA","text":"4","factRole":"GIVEN"}]
+  },
+  "caption":"호 AB:BC:CA=3:4:5이므로 중심각 AOB, BOC, COA는 90°, 120°, 150°이고 반지름은 모두 4이다.",
+  "accessibilityDescription":"반지름 4의 원 위 A,B,C와 중심 O를 연결한 세 반지름의 동일 길이 눈금, 중심각 90·120·150도 호, 세 현을 채움 없이 표시했다.",
+  "sourceConditions":[
+    {"id":"S1","condition":"원 O의 반지름은 4이다.","mappedTo":["mathPlan.nodes","planeMarks.equalLengths","planeMarks.expressionLabels"]},
+    {"id":"S2","condition":"세 호의 비 3:4:5는 중심각 90°:120°:150°이다.","mappedTo":["planeMarks.angles"]}
+  ],
+  "newVisualInformation":["면 채움 없이 세 호에 대응하는 중심각·동일한 반지름·세 현을 같은 도형에 연결한다."]
+}

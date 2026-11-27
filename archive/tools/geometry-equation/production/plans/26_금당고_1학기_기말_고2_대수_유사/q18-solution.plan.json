@@ -1,0 +1,33 @@
+{
+  "capability":"trigonometric-spike-v1",
+  "graphPlan":{
+    "family":"trigonometric",
+    "function":"SIN",
+    "ratePi":"1/6",
+    "coefficients":["2","0"],
+    "phasePi":"1/6",
+    "sourceDomain":{"kind":"INTERVAL","range":["0","8"],"states":["CLOSED","CLOSED"]},
+    "axisTickValues":{"x":["2","6","7"],"y":["2","-2"]},
+    "keyPoints":true,
+    "displaySize":"full",
+    "overlays":{
+      "points":[
+        {"id":"P6","curveX":"6"},
+        {"id":"P7","curveX":"7"},
+        {"id":"P8","curveX":"8"}
+      ],
+      "guides":[
+        {"id":"g6","from":"P6","axis":"x"},
+        {"id":"g7","from":"P7","axis":"x"},
+        {"id":"g8","from":"P8","axis":"x"}
+      ]
+    }
+  },
+  "caption":"0≤x≤n에서 n=6,7이면 최댓값 2와 최솟값 −2 사이의 차가 2보다 크고 4보다 작다. n≥8이면 x=8에서 최솟값 −2가 포함되어 차가 4이다.",
+  "accessibilityDescription":"2sin(π(x+1)/6)의 주기곡선에 n=6,7,8의 오른쪽 경계점과 x축 점선 보조선을 표시하고 최댓값 2, 최솟값 −2를 읽는다.",
+  "sourceConditions":[
+    {"id":"S1","condition":"y=2sin{π(x+1)/6}","mappedTo":["graphPlan.ratePi","graphPlan.phasePi","graphPlan.coefficients"]},
+    {"id":"S2","condition":"n=6,7이면 2<f(n)−g(n)<4이고 n≥8은 g(n)=−2","mappedTo":["graphPlan.sourceDomain","graphPlan.overlays.points","graphPlan.overlays.guides"]}
+  ],
+  "newVisualInformation":["구간의 오른쪽 끝 6·7·8과 최솟값 포착 시점을 점선으로 드러낸다."]
+}

@@ -1,0 +1,39 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"POLAR_POINT","inputs":["B","C"],"args":{"length":{"kind":"integer","value":"6"},"angleDeg":{"kind":"integer","value":"150"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"lBC","op":"LINE_THROUGH","inputs":["B","C"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"H","op":"PERPENDICULAR_FOOT","inputs":["A","lBC"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["A","B","C","H"],
+  "displaySegments": [
+    {"id":"sAB","refs":["A","B"]},
+    {"id":"sBC","refs":["B","C"]},
+    {"id":"sCA","refs":["C","A"]},
+    {"id":"sAH","refs":["A","H"],"dashed":true},
+    {"id":"sHB","refs":["H","B"],"dashed":true}
+  ],
+  "coordinateCanvas": {"width":680,"height":420},
+  "rightAngles":[{"id":"raH","refs":["A","H","B"]}],
+  "planeMarks": {
+    "angles":[{"id":"aB","refs":["A","B","C"],"value":150,"label":"5pi/6","labelKind":"MATH","style":"ARC","factRole":"GIVEN"}],
+    "expressionLabels":[
+      {"id":"lAB","ownerSegment":"sAB","text":"6","factRole":"GIVEN"},
+      {"id":"lenBC","ownerSegment":"sBC","text":"8","factRole":"GIVEN"},
+      {"id":"lAH","ownerSegment":"sAH","text":"3","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "caption":"둔각삼각형의 높이는 BC를 왼쪽으로 연장한 선에 내린 AH=6sin(π/6)=3이므로 넓이는 8×3/2=12이다.",
+  "accessibilityDescription":"BC 왼쪽 연장선 위의 H로 내린 점선 높이 AH=3, 수선의 발 직각표식, B의 5π/6 각 호를 포함하는 무채움 해설 삼각형.",
+  "sourceConditions":[
+    {"id":"S1","condition":"AB=6, BC=8, ∠B=5π/6","mappedTo":["mathPlan.nodes","planeMarks.expressionLabels","planeMarks.angles"]},
+    {"id":"S2","condition":"H는 BC 직선에 대한 A의 수선의 발이고 AH=3이다.","mappedTo":["mathPlan.nodes","displaySegments","rightAngles"]}
+  ],
+  "newVisualInformation":["원본의 둔각 관계를 유지하면서 BC 연장 점선, 높이 AH, 직각표식을 풀이에 추가한다."]
+}

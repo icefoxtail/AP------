@@ -1,0 +1,34 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"POLAR_POINT","inputs":["C","B"],"args":{"length":{"kind":"integer","value":"5"},"angleDeg":{"kind":"integer","value":"60"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"baseLine","op":"LINE_THROUGH","inputs":["C","B"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"H","op":"PERPENDICULAR_FOOT","inputs":["A","baseLine"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints":["A","B","C","H"],
+  "displaySegments":[
+    {"id":"sAC","refs":["A","C"]},{"id":"sCB","refs":["C","B"]},{"id":"sAB","refs":["A","B"]},
+    {"id":"sAH","refs":["A","H"],"dashed":true}
+  ],
+  "coordinateCanvas":{"width":630,"height":420},
+  "rightAngles":[{"id":"rightH","refs":["A","H","B"]}],
+  "planeMarks":{
+    "angles":[{"id":"aC","refs":["A","C","B"],"value":60,"label":"60","style":"ARC","factRole":"GIVEN"}],
+    "expressionLabels":[
+      {"id":"lenAC","ownerSegment":"sAC","text":"5","factRole":"GIVEN"},
+      {"id":"lenCB","ownerSegment":"sCB","text":"8","factRole":"GIVEN"},
+      {"id":"heightAH","ownerSegment":"sAH","text":"5sqrt(3)/2","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "caption":"CA=5, CB=8, C=60°에서 높이 AH=5sin60°=5√3/2이고 삼각형의 넓이는 10√3이다.",
+  "accessibilityDescription":"바닥 CB에 내린 A의 점선 높이 AH, 수선의 발 H의 직각표식과 60도 호, 두 원래 변의 길이를 표시한 해설 삼각형.",
+  "sourceConditions":[{"id":"S1","condition":"a=8, b=5, C=60°","mappedTo":["mathPlan.nodes","planeMarks.angles","planeMarks.expressionLabels"]},
+    {"id":"S2","condition":"AH=5sin60°=5√3/2","mappedTo":["mathPlan.nodes","displaySegments","rightAngles"]}],
+  "newVisualInformation":["면 채움 없이 높이 점선, 직각, 높이 길이 라벨을 시각적으로 분리한다."]
+}

@@ -1,0 +1,42 @@
+{
+  "capability":"trigonometric-spike-v1",
+  "graphPlan":{
+    "family":"trigonometric",
+    "function":"SIN",
+    "ratePi":"1",
+    "coefficients":["1","0"],
+    "phasePi":"0",
+    "sourceDomain":{"kind":"INTERVAL","range":["0","5"],"states":["CLOSED","CLOSED"]},
+    "referenceLines":[{"id":"h","y":"sqrt(3)/2","intersectionCount":6}],
+    "axisTickValues":{"x":["1","2","3","4"],"y":["1","-1"]},
+    "keyPoints":true,
+    "displaySize":"full",
+    "overlays":{
+      "points":[
+        {"id":"P1","curveX":"1/3"},
+        {"id":"P2","curveX":"2/3"},
+        {"id":"P3","curveX":"7/3"},
+        {"id":"P4","curveX":"8/3"}
+      ],
+      "guides":[
+        {"id":"g1","from":"P1","axis":"x"},
+        {"id":"g2","from":"P2","axis":"x"},
+        {"id":"g3","from":"P3","axis":"x"},
+        {"id":"g4","from":"P4","axis":"x"}
+      ],
+      "callouts":[
+        {"id":"c1","point":"P1","text":"a_1","direction":"N"},
+        {"id":"c2","point":"P2","text":"a_2","direction":"E"},
+        {"id":"c3","point":"P3","text":"a_3","direction":"N"},
+        {"id":"c4","point":"P4","text":"a_4","direction":"E"}
+      ]
+    }
+  },
+  "caption":"y=sin(πx)와 y=√3/2의 교점을 왼쪽부터 a₁,a₂,a₃,a₄…로 정한다. 첫 두 주기의 네 교점에 x축까지의 점선 보조선을 표시했다.",
+  "accessibilityDescription":"x≥0의 사인곡선과 수평선 y=√3/2이 다섯 단위 동안 6번 만난다. 왼쪽부터 네 교점에 이름과 x축까지의 점선 가이드가 있다.",
+  "sourceConditions":[
+    {"id":"S1","condition":"y=sinπx, x≥0","mappedTo":["graphPlan.function","graphPlan.ratePi","graphPlan.sourceDomain"]},
+    {"id":"S2","condition":"y=√3/2와의 교점 x좌표가 작은 순으로 a1,a2,...","mappedTo":["graphPlan.referenceLines","graphPlan.overlays.points","graphPlan.overlays.guides"]}
+  ],
+  "newVisualInformation":["원본의 교점 순서 이름과 x축 보조선을 복구하고 사인 주기·수평선 높이를 정확하게 지정한다."]
+}
