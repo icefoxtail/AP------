@@ -744,8 +744,8 @@ window.questionBank =[
       "integrationPattern": "NONE"
     },
     "solutionImage": "assets/images/22_동산중_2학기_중간_중3_수학/q10-solution.svg",
-    "solutionImageAlt": "해설 그림: C가 직각인 삼각형에서 대변 a,b를 파랑, 빗변 c를 주황으로 나타낸 모식도.",
-    "solutionImageCaption": "C=90°이므로 c는 빗변이고, tan A=a/b이다. 따라서 c/b라고 한 설명이 틀렸다. 답: ⑤.",
+    "solutionImageAlt": "각 C가 직각인 삼각형의 세 대변을 a, b, c로 표기한다.",
+    "solutionImageCaption": "각 C가 직각인 삼각형의 세 대변을 a, b, c로 표기한다.",
     "solutionImageSize": "full"
   },
   {
@@ -818,8 +818,8 @@ window.questionBank =[
     "semanticStatus": "FINAL",
     "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-055","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비","l3":"삼각비의 뜻","l4":"sin·cos·tan"},"rpmL3":"삼각비의 뜻","rpmL4":"sin·cos·tan","subUnitKey":"M3-05-TRIG_RATIO","problemTypeKey":"PT_TRIG_RATIO","templateKey":"TPL_TRIG_RATIO_GEOMETRIC_DERIVATION","projectionStatus":"PROJECTION_UNMATERIALIZED","projectionReason":"현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.","problemTypeOwnerPack":"MIDDLE_GEOMETRY","crossConceptKeys":["CC_PYTHAGOREAN","CC_TRIANGLE_SIMILARITY_AA"],"integrationPattern":"SEQUENTIAL"},
     "solutionImage": "assets/images/22_동산중_2학기_중간_중3_수학/q11-solution.svg",
-    "solutionImageAlt": "해설 그림: 큰 직각삼각형 ABC와 작은 직각삼각형 BDE에서 파랑 호로 x와 각 A의 대응을 나타낸다.",
-    "solutionImageCaption": "피타고라스 정리로 AB=5이다. 닮음으로 x=∠A이므로 cos x=AC/AB=3/5이다. 답: ①.",
+    "solutionImageAlt": "두 삼각형의 직각과 주어진 길이 4·3, 각 x를 모두 표시한다.",
+    "solutionImageCaption": "두 삼각형의 직각과 주어진 길이 4·3, 각 x를 모두 표시한다.",
     "solutionImageSize": "full"
   },
   {
@@ -915,8 +915,8 @@ window.questionBank =[
       "integrationPattern": "NONE"
     },
     "solutionImage": "assets/images/22_동산중_2학기_중간_중3_수학/q12-solution.svg",
-    "solutionImageAlt": "해설 그림: 반지름 1인 사분원에서 x,y,z 각과 AB⊥OD, AB∥DC를 표시한다.",
-    "solutionImageCaption": "OA=OD=1이다. sin x=AB, sin z=OB, cos y=AB, tan x=CD는 맞다. 그러나 tan z=OD/CD=1/CD이므로 OD와 같다는 진술이 틀렸다. 답: ⑤.",
+    "solutionImageAlt": "같은 사분원 위에서 직각과 각 x·y·z의 여각 관계를 확인한다.",
+    "solutionImageCaption": "같은 사분원 위에서 직각과 각 x·y·z의 여각 관계를 확인한다.",
     "solutionImageSize": "full",
     "image": "assets/images/22_동산중_2학기_중간_중3_수학/q12-problem.svg",
     "imageAlt": "반지름 1, 사분원 호, 두 수직선과 각 x·y·z를 별도의 호로 표시한다.",
@@ -1082,8 +1082,8 @@ window.questionBank =[
     "semanticStatus": "FINAL",
     "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-055","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비","l3":"삼각비의 뜻","l4":"sin·cos·tan"},"rpmL3":"삼각비의 뜻","rpmL4":"sin·cos·tan","subUnitKey":"M3-05-TRIG_RATIO","problemTypeKey":"PT_TRIG_RATIO","templateKey":"TPL_TRIG_RATIO_GEOMETRIC_DERIVATION","projectionStatus":"PROJECTION_UNMATERIALIZED","projectionReason":"현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.","problemTypeOwnerPack":"MIDDLE_GEOMETRY","crossConceptKeys":["CC_ISOSCELES_TRIANGLES","CC_TRIANGLE_ANGLE_SUM","CC_DENOMINATOR_RATIONALIZATION_CONJUGATE"],"integrationPattern":"SEQUENTIAL"},
     "solutionImage": "assets/images/22_동산중_2학기_중간_중3_수학/q14-solution.svg",
-    "solutionImageAlt": "해설 그림: AD=DC인 이등변삼각형 ADC와 직각삼각형 DBC에서 30°와 15°를 표시한다.",
-    "solutionImageCaption": "∠ADC=150°이므로 ∠A=15°. BC=d/2, DB=√3d/2, AB=d+√3d/2이다. 따라서 tan15°=BC/AB=2−√3. 답: ①.",
+    "solutionImageAlt": "이등변 조건의 눈금과 30°·15°를 호로 보이고 내부는 칠하지 않는다.",
+    "solutionImageCaption": "이등변 조건의 눈금과 30°·15°를 호로 보이고 내부는 칠하지 않는다.",
     "solutionImageSize": "full"
   },
   {
@@ -1226,8 +1226,8 @@ window.questionBank =[
     "semanticStatus": "FINAL",
     "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-065","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비의 활용","l3":"복합도형","l4":"보조선 활용"},"rpmL3":"복합도형","rpmL4":"보조선 활용","subUnitKey":"M3-05-TRIG_RATIO_APPLICATION","problemTypeKey":"PT_TRIG_RATIO_APPLICATION","templateKey":"TPL_TRIG_APPLICATION_CHAINED_MEASURE","projectionStatus":"PROJECTION_UNMATERIALIZED","projectionReason":"현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.","problemTypeOwnerPack":"MIDDLE_GEOMETRY","crossConceptKeys":["CC_ANGLE_BISECTOR_THEOREM"],"integrationPattern":"SEQUENTIAL"},
     "solutionImage": "assets/images/22_동산중_2학기_중간_중3_수학/q16-solution.svg",
-    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 A의 각 이등분선 AD, 30° 각, AB=4와 구할 선분 CD=x를 표시한다.",
-    "solutionImageCaption": "30°-60°-90° 삼각형에서 AC=2, BC=2√3이다. 각의 이등분선 정리로 BD:DC=AB:AC=2:1이므로 CD=2√3/3이다. 답: ④.",
+    "solutionImageAlt": "직각, 각의 이등분 호, 빗변 길이와 보조선 AD를 표시한다.",
+    "solutionImageCaption": "직각, 각의 이등분 호, 빗변 길이와 보조선 AD를 표시한다.",
     "solutionImageSize": "full"
   },
   {
@@ -1311,8 +1311,8 @@ window.questionBank =[
     ],
     "replacementReason": "Choice-level ALIVE_REPLACEMENT of q17 option ② only; original printed wording is not claimed recovered.",
     "solutionImage": "assets/images/22_동산중_2학기_중간_중3_수학/q17-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 A의 수선 AH가 두 직각삼각형을 만들고, 파랑 눈금으로 AH=BH를 나타낸다.",
-    "solutionImageCaption": "△AHC에서 AH=12sin60°=6√3, HC=12cos60°=6이다. △ABH는 45°-45°-90°이므로 BH=AH=6√3. 따라서 BC=6(√3+1)이다. 답: ①.",
+    "solutionImageAlt": "삼각형에 점선 높이 AH와 75°·60°·45°의 각 호를 그린다.",
+    "solutionImageCaption": "삼각형에 점선 높이 AH와 75°·60°·45°의 각 호를 그린다.",
     "solutionImageSize": "full"
   },
   {
@@ -1471,8 +1471,8 @@ window.questionBank =[
     "semanticStatus": "FINAL",
     "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-061","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비의 활용","l3":"평면도형","l4":"삼각형의 높이·넓이"},"rpmL3":"평면도형","rpmL4":"삼각형의 높이·넓이","subUnitKey":"M3-05-TRIG_RATIO_APPLICATION","problemTypeKey":"PT_TRIG_RATIO_APPLICATION","templateKey":"TPL_TRIG_APPLICATION_CHAINED_MEASURE","projectionStatus":"PROJECTION_UNMATERIALIZED","projectionReason":"현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.","problemTypeOwnerPack":"MIDDLE_GEOMETRY","crossConceptKeys":["CC_TRIANGLE_AREA"],"integrationPattern":"INTERDEPENDENT"},
     "solutionImage": "assets/images/22_동산중_2학기_중간_중3_수학/q19-solution.svg",
-    "solutionImageAlt": "해설 그림: 두 파란 삼각형의 넓이를 같게 표시하고, 첫 삼각형 높이 3√3과 둘째 삼각형의 수선 높이를 비교한다.",
-    "solutionImageCaption": "△ABC의 넓이는 ½·4·3√3=6√3이다. △DEF의 높이는 DF·sin60°이므로 넓이는 3DF이다. 두 넓이를 같게 두면 DF=2√3이다. 답: ②.",
+    "solutionImageAlt": "면 채움 없이 넓이가 같은 두 삼각형을 분리하고, 두 번째 삼각형의 연장선과 높이를 점선으로 그린다.",
+    "solutionImageCaption": "면 채움 없이 넓이가 같은 두 삼각형을 분리하고, 두 번째 삼각형의 연장선과 높이를 점선으로 그린다.",
     "solutionImageSize": "full"
   },
   {
@@ -1627,8 +1627,8 @@ window.questionBank =[
     "repairKind": "MINIMAL_TRANSCRIPTION_CORRECTION",
     "replacementReason": "Image shows AM=6 and no D; original JS AD=6 is a source transcription error.",
     "solutionImage": "assets/images/22_동산중_2학기_중간_중3_수학/q21-solution.svg",
-    "solutionImageAlt": "해설 그림: 원의 호 AB, 중점 M, CM=2, AM=6과 O-M-C의 일직선 및 OM⊥AB를 나타낸다.",
-    "solutionImageCaption": "OM=d라 하면 반지름 OC=d+2이다. 직각삼각형 OMA에서 (d+2)²=d²+6²이므로 d=8, OC=10이다. 답: ④.",
+    "solutionImageAlt": "필요한 윗호 AB만 표시하고 중심을 향한 수선과 중점 눈금을 보인다.",
+    "solutionImageCaption": "필요한 윗호 AB만 표시하고 중심을 향한 수선과 중점 눈금을 보인다.",
     "solutionImageSize": "full"
   },
   {
@@ -1706,8 +1706,8 @@ window.questionBank =[
     "semanticStatus": "FINAL",
     "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-071","rpmPrimaryPath":{"majorUnit":"원의 성질","midUnit":"원과 직선","l3":"원의 접선","l4":"한 점에서 그은 두 접선"},"rpmL3":"원의 접선","rpmL4":"한 점에서 그은 두 접선","subUnitKey":"M3-06-CIRCLE_LINE","problemTypeKey":"PT_CIRCLE_TANGENT","templateKey":"TM_TANGENT_LENGTH","projectionStatus":"PROJECTION_BINDING_PENDING","projectionReason":"GLOBAL ACTIVE PT/TPL과 원본2015 문맥의 MIDDLE_GEOMETRY ACTIVE binding 1건이 존재한다. canonical PT 소유 pack GEOMETRY_EQUATIONS와 binding 소유 pack의 불일치 때문에 crosswalk가 DIRECT_BINDING_GAP로 남아 있어 연결 정합화가 필요하다. binding 자체의 부재를 뜻하지 않으며 공식 Resolver의 신규 완료는 주장하지 않는다.","problemTypeOwnerPack":"GEOMETRY_EQUATIONS","bindingOwnerPack":"MIDDLE_GEOMETRY","bindingStatus":"ACTIVE","bindingUnitTuple":{"curriculum":"2015","standardUnitKey":"M3-06","subUnitKey":"M3-06-CIRCLE_LINE","ownerPack":"MIDDLE_GEOMETRY"},"crossPackPolicyReference":"docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md §1.4 rule 5; §2.3","crossConceptKeys":["CC_PYTHAGOREAN"],"integrationPattern":"SEQUENTIAL"},
     "solutionImage": "assets/images/22_동산중_2학기_중간_중3_수학/q22-solution.svg",
-    "solutionImageAlt": "해설 그림: 반원 지름 AB와 접선 AC·BD·CTD를 표시하고, C의 접선 길이는 파랑, D의 접선 길이는 주황 같은 눈금으로 묶는다.",
-    "solutionImageCaption": "CT=CA=4, DT=DB=9이므로 CD=13이고, C와 D의 높이 차는 9−4=5이다. 직각삼각형에서 AB²+5²=13²이므로 AB=12이다. 답: ③.",
+    "solutionImageAlt": "반원 윗호·접선 세 개·접점 T·길이 4와 9를 보이고 배경을 칠하지 않는다.",
+    "solutionImageCaption": "반원 윗호·접선 세 개·접점 T·길이 4와 9를 보이고 배경을 칠하지 않는다.",
     "solutionImageSize": "full"
   },
   {
@@ -1847,8 +1847,8 @@ window.questionBank =[
     "semanticStatus": "FINAL",
     "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-062","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비의 활용","l3":"평면도형","l4":"다각형의 길이·넓이"},"rpmL3":"평면도형","rpmL4":"다각형의 길이·넓이","subUnitKey":"M3-05-TRIG_RATIO_APPLICATION","problemTypeKey":"PT_TRIG_RATIO_APPLICATION","templateKey":"TPL_TRIG_APPLICATION_CHAINED_MEASURE","projectionStatus":"PROJECTION_UNMATERIALIZED","projectionReason":"현재 발문·기존 해설로 의미메타를 재판정하고 GLOBAL ACTIVE 정의를 대조했다. 기존 VERIFIED_FINAL 해설의 독립검증 영수증이 이 입력에 없어 공식 Resolver 투영의 새 완료를 주장하지 않는다. exact binding/등록은 별도 인계한다.","problemTypeOwnerPack":"MIDDLE_GEOMETRY","crossConceptKeys":["CC_TRIANGLE_AREA"],"integrationPattern":"SEQUENTIAL"},
     "solutionImage": "assets/images/22_동산중_2학기_중간_중3_수학/q24-solution.svg",
-    "solutionImageAlt": "해설 그림: 사각형 ABCD를 파랑 △BCD와 주황 △ABD로 나누고, DB에 내린 높이 AH를 점선으로 나타낸다.",
-    "solutionImageCaption": "△BCD의 넓이는 ½·6·2√3=6√3이다. △ABD의 높이는 AH=3sin30°=3/2이고 BD=4√3이므로 넓이는 3√3이다. 합은 9√3이다. 답: 9√3.",
+    "solutionImageAlt": "면 채움 없이 사각형의 대각선 BD와 직각 C, 각도·변 길이를 표시한다.",
+    "solutionImageCaption": "면 채움 없이 사각형의 대각선 BD와 직각 C, 각도·변 길이를 표시한다.",
     "solutionImageSize": "full"
   },
   {
@@ -1923,8 +1923,8 @@ window.questionBank =[
     "repairKind": "MINIMAL_CONDITION_CLARIFICATION",
     "replacementReason": "The source scan crops the x/y marks. The candidate explicitly states x,y are the two remaining sides AB and AD, in either order; this makes the answer-free input uniquely solvable and the requested sum is order-independent.",
     "solutionImage": "assets/images/22_동산중_2학기_중간_중3_수학/q25-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 O에 외접하는 사각형 ABCD와 직교 대각선 AC,BD를 나타내고, BC=9, CD=6, x=AB, y=AD를 표시한다.",
-    "solutionImageCaption": "그림은 조건을 만족하는 한 예이다. u=AB, v=AD라 두면 접선 길이로 u−v=3, 직교 대각선으로 u²−v²=45이므로 u+v=15이다. 답: 15.",
+    "solutionImageAlt": "접점에서 같은 두 접선 길이가 같고 대각선 AC⊥BD인 사각형을 그린다.",
+    "solutionImageCaption": "접점에서 같은 두 접선 길이가 같고 대각선 AC⊥BD인 사각형을 그린다.",
     "solutionImageSize": "full",
     "image": "assets/images/22_동산중_2학기_중간_중3_수학/q25-problem.svg",
     "imageAlt": "원에 외접한 사각형과 직교하는 대각선을 무채움으로 그린다.",

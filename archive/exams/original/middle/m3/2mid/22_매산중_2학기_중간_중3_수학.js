@@ -288,8 +288,8 @@ window.questionBank = [
       "integrationPatternExplanation": "x축 대칭의 y값 부호 변화만 적용하므로 통합유형은 NONE이다."
     },
     "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q5-solution.svg",
-    "solutionImageAlt": "해설 그림: 파란 아래로 열린 포물선과 주황 위로 열린 포물선이 x축을 기준으로 서로 대칭이다. 같은 x 위치의 예시 점을 점선으로 대응시킨다.",
-    "solutionImageCaption": "x축 대칭은 (x,y)를 (x,−y)로 바꾸므로 y=−(−4/5x²)=4/5x²이다. 답: ③.",
+    "solutionImageAlt": "서로 x축에 대칭인 두 이차함수 그래프를 선으로 구분한다.",
+    "solutionImageCaption": "서로 x축에 대칭인 두 이차함수 그래프를 선으로 구분한다.",
     "solutionImageSize": "full"
   ,
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
@@ -349,8 +349,8 @@ window.questionBank = [
       "integrationPatternExplanation": "포물선 계수와 그래프 모양의 관계를 해석하므로 통합유형은 NONE이다."
     },
     "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q6-solution.svg",
-    "solutionImageAlt": "해설 그림: 예시에서 파란 실선과 주황 점선은 원점을 꼭짓점으로 하는 아래로 열린 포물선이다. y=-1에서 주황 점선의 좌우 교점이 파란 실선보다 원점에 가깝다.",
-    "solutionImageCaption": "두 그래프가 아래로 열리므로 a<0이다. 같은 높이에서 점선의 |x|가 더 작으므로 |a|>1이다. 보기에서 가능한 값은 -2이다. 답: ①.",
+    "solutionImageAlt": "점선은 아래로 열리고 실선보다 좁으므로 a는 -1보다 작다.",
+    "solutionImageCaption": "점선은 아래로 열리고 실선보다 좁으므로 a는 -1보다 작다.",
     "solutionImageSize": "full"
   ,
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
@@ -409,8 +409,8 @@ window.questionBank = [
     "metaDebtFields": [],
     "semanticMeta": {"primaryConcept":"삼각비의 뜻","subConcept":"직각삼각형에서 tan 정의","conditionsUsed":"AB=13, AC=12, BC=5에서 직각 위치와 A의 맞은편·이웃한 변을 확인한다.","integrationPatternExplanation":"기존 해설은 피타고라스 정리의 역으로 직각 위치를 먼저 확인하고 탄젠트 정의를 적용한다. 이 보조 단계는 SEQUENTIAL로 기록하되 현재 그림에 직각이 주어졌다는 난도 근거와 구별한다."},
     "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q7-solution.svg",
-    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 C가 직각이다. A의 맞은편 BC=5는 주황색, A의 이웃변 AC=12는 파란색, 빗변 AB=13는 초록색이다.",
-    "solutionImageCaption": "13²=12²+5²이므로 C=90°이다. tan A=맞은편/이웃한 변=BC/AC=5/12이다. 답: ②.",
+    "solutionImageAlt": "각 A의 맞은편 5와 이웃변 12를 비교하도록 세 길이를 모두 보인다.",
+    "solutionImageCaption": "각 A의 맞은편 5와 이웃변 12를 비교하도록 세 길이를 모두 보인다.",
     "solutionImageSize": "full"
   ,
     "subUnitKey": "M3-05-TRIG_RATIO",
@@ -635,8 +635,8 @@ window.questionBank = [
       "integrationPatternExplanation": "탄젠트로 한 직각변을 구하고 피타고라스 정리를 적용한다."
     },
     "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q11-solution.svg",
-    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 B가 직각이다. AB=3 cm는 각 A의 이웃한 직각변, BC=5 cm는 맞은편 직각변이며 AC는 빗변이다.",
-    "solutionImageCaption": "tan A=BC/AB=5/3이고 AB=3이므로 BC=5이다. 피타고라스 정리에서 AC=√(3²+5²)=√34 cm이다. 답: ③.",
+    "solutionImageAlt": "직각삼각형에 주어진 세로변 3cm와 유도한 밑변 5cm를 표시한다.",
+    "solutionImageCaption": "직각삼각형에 주어진 세로변 3cm와 유도한 밑변 5cm를 표시한다.",
     "solutionImageSize": "full"
   ,
     "subUnitKey": "M3-05-TRIG_RATIO",
@@ -696,8 +696,8 @@ window.questionBank = [
       "integrationPatternExplanation": "특수각의 변의 비를 넓이 계산에 적용한다."
     },
     "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q12-solution.svg",
-    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 C가 직각, A=30°이다. 밑변 BC=6 cm와 높이 AC=6√3 cm를 서로 다른 색으로 표시한다.",
-    "solutionImageCaption": "넓이는 1/2·BC·AC=1/2·6·6√3=18√3 cm²이다. 답: ④.",
+    "solutionImageAlt": "30°-60°-90° 삼각형의 직각과 원문 길이, 유도된 높이를 보인다.",
+    "solutionImageCaption": "30°-60°-90° 삼각형의 직각과 원문 길이, 유도된 높이를 보인다.",
     "solutionImageSize": "full"
   ,
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
@@ -757,8 +757,8 @@ window.questionBank = [
       "integrationPatternExplanation": "두 직각삼각형에서 서로 다른 삼각비로 길이를 구해 곱한다."
     },
     "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q13-solution.svg",
-    "solutionImageAlt": "해설 그림: 공통변 BC=6 cm를 사이에 둔 파란색 직각삼각형 ABC와 주황색 직각삼각형 BCD이다. 각도는 각각 45°와 30°이며 x=AB, y=CD이다.",
-    "solutionImageCaption": "ABC에서 x=AB=6sin45°=3√2이다. BCD에서 y=CD=6tan30°=2√3이다. 따라서 xy=3√2·2√3=6√6이다. 답: ④.",
+    "solutionImageAlt": "두 직각삼각형의 공통변 BC와 각각의 각·길이를 면 채움 없이 나타낸다.",
+    "solutionImageCaption": "두 직각삼각형의 공통변 BC와 각각의 각·길이를 면 채움 없이 나타낸다.",
     "solutionImageSize": "full"
   ,
     "subUnitKey": "M3-05-TRIG_RATIO",
@@ -814,8 +814,8 @@ window.questionBank = [
     "metaDebtFields": ["problemTypeKey","templateKey"],
     "semanticMeta": {"primaryConcept":"삼각비의 뜻","subConcept":"탄젠트로 나타낸 물매에서 표로 각도 역조회","conditionsUsed":"직각삼각형의 높이:밑변=3:10을 tan x와 연결하고 표의 값을 찾는다.","integrationPatternExplanation":"지붕의 기울기를 탄젠트로 나타내어 표의 각과 연결한다."},
     "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q14-solution.svg",
-    "solutionImageAlt": "해설 그림: 지붕 경사 삼각형 ABC에서 수평 밑변 AB=10, 수직 높이 BC=3이고 B는 직각이다. x는 A에서 지붕과 수평선이 이루는 각이다.",
-    "solutionImageCaption": "물매는 높이/밑변이므로 tan x=BC/AB=3/10=0.30이다. 표에서 tan 17°=0.30이므로 x=17°이다. 답: ②.",
+    "solutionImageAlt": "지붕의 밑변 10과 높이 3, 물매각 x를 표시한다.",
+    "solutionImageCaption": "지붕의 밑변 10과 높이 3, 물매각 x를 표시한다.",
     "solutionImageSize": "full"
   ,
     "subUnitKey": "M3-05-TRIG_RATIO",
@@ -939,8 +939,8 @@ window.questionBank = [
       "integrationPatternExplanation": "평행이동 후 함수식에 점을 대입하는 단일 함수 개념 풀이이다."
     },
     "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q16-solution.svg",
-    "solutionImageAlt": "해설 그림: 같은 폭과 모양의 두 아래로 열린 포물선을 그린다. x=1/2에서 원래 그래프의 Q와 이동한 그래프 위의 P(1/2,5)를 점선으로 연결한다.",
-    "solutionImageCaption": "원래 그래프에서 x=1/2일 때 y=-4(1/2)²+3=2이다. 이동한 그래프가 y=5인 P를 지나므로 k=5−2=3이다. 답: ⑤.",
+    "solutionImageAlt": "원래 포물선과 위로 3만큼 이동한 포물선 및 주어진 점을 그린다.",
+    "solutionImageCaption": "원래 포물선과 위로 3만큼 이동한 포물선 및 주어진 점을 그린다.",
     "solutionImageSize": "full"
   ,
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
@@ -1003,8 +1003,8 @@ window.questionBank = [
       "integrationPatternExplanation": "수평이동 후 같은 포물선의 기본 성질을 판정한다."
     },
     "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q17-solution.svg",
-    "solutionImageAlt": "해설 그림: 파란 원래 포물선 y=3x²와 주황색으로 왼쪽 이동한 포물선, 대칭축 x=-4, 이동한 그래프 위의 점 P(-2,12)를 나타낸다.",
-    "solutionImageCaption": "x축 방향으로 -4만큼 옮기면 식은 y=3(x+4)², 꼭짓점은 V=(-4,0)이다. x=-2일 때 y=12이며 x>0에서 그래프는 증가한다. 꼭짓점이 (4,0)이라는 설명은 틀렸다. 답: ③.",
+    "solutionImageAlt": "원점과 왼쪽 4로 이동한 꼭짓점을 갖는 두 포물선을 구분한다.",
+    "solutionImageCaption": "원점과 왼쪽 4로 이동한 꼭짓점을 갖는 두 포물선을 구분한다.",
     "solutionImageSize": "full"
   ,
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
@@ -1131,8 +1131,8 @@ window.questionBank = [
       "integrationPatternExplanation": "평행이동을 역으로 해석하고 꼭짓점·점 조건으로 계수를 정한다."
     },
     "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q19-solution.svg",
-    "solutionImageAlt": "해설 그림: 파란 원래 포물선과 주황색으로 오른쪽 3, 아래 5만큼 옮긴 포물선을 그린다. 꼭짓점 V,W와 대응점 R(1,10), P(4,5)을 연결된 점쌍으로 표시한다.",
-    "solutionImageCaption": "이동된 꼭짓점 (2,-3)에서 원래 꼭짓점은 (-1,2)이므로 f(x)=a(x+1)²+2이다. P(4,5)는 f의 R(1,10)에 대응해 4a+2=10, a=2이다. 전개하면 f(x)=2x²+4x+4이므로 a+b-c=2+4-4=2. 답: ③.",
+    "solutionImageAlt": "두 포물선의 꼭짓점과 서로 3·-5 이동한 대응점을 점선으로 잇는다.",
+    "solutionImageCaption": "두 포물선의 꼭짓점과 서로 3·-5 이동한 대응점을 점선으로 잇는다.",
     "solutionImageSize": "full"
   ,
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
@@ -1195,8 +1195,8 @@ window.questionBank = [
       "integrationPatternExplanation": "서로의 꼭짓점 조건과 수평 현 길이를 포물선 대칭성에 함께 적용한다."
     },
     "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q20-solution.svg",
-    "solutionImageAlt": "해설 그림: 파란 원래 포물선과 주황 이동 포물선은 서로의 꼭짓점을 지난다. 원래 그래프의 대칭축과, 꼭짓점 A에서 같은 높이로 잰 AB=6을 표시한다.",
-    "solutionImageCaption": "원래 포물선의 축은 x=-2이다. 두 번째 꼭짓점 A가 원래 그래프 위에 있고 두 포물선은 V=(-2,0)에서 만난다. 대칭축을 이용해 B의 위치를 읽으면 p=-5, q=18이고 a=-2이다. 따라서 a+p+q=11이다. 답: ⑤.",
+    "solutionImageAlt": "서로의 꼭짓점을 지나는 두 포물선과 수평 선분 AB를 표시한다.",
+    "solutionImageCaption": "서로의 꼭짓점을 지나는 두 포물선과 수평 선분 AB를 표시한다.",
     "solutionImageSize": "full"
   ,
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",

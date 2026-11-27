@@ -776,8 +776,8 @@ window.examData = {
   },
   {
     "id": 19,
-    "imageSize": "tall",
-    "imageAlt": "삼각형의 무게중심 G에서 만나는 세 중선을 표시했다. D는 BC의 중점이고 구하는 삼각형 GDC를 옅게 칠했다.",
+    "imageSize": "full",
+    "imageAlt": "삼각형 ABC에서 G는 세 중선의 교점, D는 BC의 중점이다. 전체 넓이는 30 cm².",
     "questionNumber": 19,
     "score": 4,
     "level": "하",
@@ -814,12 +814,13 @@ window.examData = {
     "solutionImage": "assets/images/21_풍덕중_2학기_중간_중2_수학/q19-solution.svg",
     "solutionImageAlt": "세 중선으로 △ABC가 여섯 개의 같은 넓이 삼각형으로 나뉘므로 △GDC=5 cm²이다.",
     "solutionImageCaption": "세 중선으로 △ABC가 여섯 개의 같은 넓이 삼각형으로 나뉘므로 △GDC=5 cm²이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageCaption": "삼각형 ABC에서 G는 세 중선의 교점, D는 BC의 중점이다. 전체 넓이는 30 cm²."
   },
   {
     "id": 20,
-    "imageSize": "tall",
-    "imageAlt": "G는 ABC의 무게중심이고 G′은 GBC의 무게중심이다. 순서대로 A, G, G′, D가 한 중선에 있고 GG′=2 cm이다.",
+    "imageSize": "full",
+    "imageAlt": "G는 △ABC의 무게중심, G′는 △GBC의 무게중심이다. GG′=2 cm인 중선 AD.",
     "questionNumber": 20,
     "score": 4,
     "level": "중",
@@ -852,12 +853,13 @@ window.examData = {
     "image": "assets/images/21_풍덕중_2학기_중간_중2_수학/q20-problem-visual-v2.svg",
     "images": ["assets/images/21_풍덕중_2학기_중간_중2_수학/q20-problem-visual-v2.svg"],
     "answer": "③",
-    "solution": "점 $\\mathrm{G}$는 $\\triangle\\mathrm{ABC}$의 무게중심이고, 점 $\\mathrm{G}'$은 $\\triangle\\mathrm{GBC}$의 무게중심이다. $\\overline{\\mathrm{GG}'}=2\\text{ cm}$일 때, 중선 $\\overline{\\mathrm{AD}}$의 길이를 구한다.\n\n- 점 $\\mathrm{D}$는 $\\overline{\\mathrm{BC}}$의 중점이므로, $\\overline{\\mathrm{GD}}$는 $\\triangle\\mathrm{GBC}$의 중선이다.\n- 무게중심은 중선의 길이를 $2 : 1$로 내분한다:\n  1. $\\triangle\\mathrm{GBC}$에서 $\\overline{\\mathrm{GG}'} : \\overline{\\mathrm{G}'\\mathrm{D}} = 2 : 1$\n  2. $\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{AG}} : \\overline{\\mathrm{GD}} = 2 : 1$\n\n1단계: 선분 $\\overline{\\mathrm{GD}}$의 길이 구하기\n$\\triangle\\mathrm{GBC}$에서 $\\mathrm{G}'$은 무게중심이므로:\n$\\overline{\\mathrm{GG}'} : \\overline{\\mathrm{G}'\\mathrm{D}} = 2 : 1$\n$\\overline{\\mathrm{GG}'} = 2\\text{ cm}$이므로 $\\overline{\\mathrm{G}'\\mathrm{D}} = 1\\text{ cm}$이다.\n따라서:\n$\\overline{\\mathrm{GD}} = \\overline{\\mathrm{GG}'} + \\overline{\\mathrm{G}'\\mathrm{D}} = 2 + 1 = 3\\text{ cm}$\n\n2단계: 선분 $\\overline{\\mathrm{AG}}$의 길이 구하기\n$\\triangle\\mathrm{ABC}$에서 $\\mathrm{G}$는 무게중심이므로:\n$\\overline{\\mathrm{AG}} : \\overline{\\mathrm{GD}} = 2 : 1$\n$\\overline{\\mathrm{AG}} = 2 \\times \\overline{\\mathrm{GD}} = 2 \\times 3 = 6\\text{ cm}$\n\n3단계: 전체 중선 $\\overline{\\mathrm{AD}}$의 길이 계산하기\n$\\overline{\\mathrm{AD}} = \\overline{\\mathrm{AG}} + \\overline{\\mathrm{GD}} = 6 + 3 = 9\\text{ cm}$\n\n각 선지를 확인하면 다음과 같다.\n① $6\\text{ cm}$: $\\overline{\\mathrm{AG}}$의 길이이다.\n② $8\\text{ cm}$: 오답\n③ $9\\text{ cm}$: 구한 $\\overline{\\mathrm{AD}}$의 길이와 일치함\n④ $12\\text{ cm}$: 오답\n⑤ $15\\text{ cm}$: 오답\n\n따라서 $\\overline{\\mathrm{AD}}$의 길이는 ③ $9\\text{ cm}$이다."
+    "solution": "점 $\\mathrm{G}$는 $\\triangle\\mathrm{ABC}$의 무게중심이고, 점 $\\mathrm{G}'$은 $\\triangle\\mathrm{GBC}$의 무게중심이다. $\\overline{\\mathrm{GG}'}=2\\text{ cm}$일 때, 중선 $\\overline{\\mathrm{AD}}$의 길이를 구한다.\n\n- 점 $\\mathrm{D}$는 $\\overline{\\mathrm{BC}}$의 중점이므로, $\\overline{\\mathrm{GD}}$는 $\\triangle\\mathrm{GBC}$의 중선이다.\n- 무게중심은 중선의 길이를 $2 : 1$로 내분한다:\n  1. $\\triangle\\mathrm{GBC}$에서 $\\overline{\\mathrm{GG}'} : \\overline{\\mathrm{G}'\\mathrm{D}} = 2 : 1$\n  2. $\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{AG}} : \\overline{\\mathrm{GD}} = 2 : 1$\n\n1단계: 선분 $\\overline{\\mathrm{GD}}$의 길이 구하기\n$\\triangle\\mathrm{GBC}$에서 $\\mathrm{G}'$은 무게중심이므로:\n$\\overline{\\mathrm{GG}'} : \\overline{\\mathrm{G}'\\mathrm{D}} = 2 : 1$\n$\\overline{\\mathrm{GG}'} = 2\\text{ cm}$이므로 $\\overline{\\mathrm{G}'\\mathrm{D}} = 1\\text{ cm}$이다.\n따라서:\n$\\overline{\\mathrm{GD}} = \\overline{\\mathrm{GG}'} + \\overline{\\mathrm{G}'\\mathrm{D}} = 2 + 1 = 3\\text{ cm}$\n\n2단계: 선분 $\\overline{\\mathrm{AG}}$의 길이 구하기\n$\\triangle\\mathrm{ABC}$에서 $\\mathrm{G}$는 무게중심이므로:\n$\\overline{\\mathrm{AG}} : \\overline{\\mathrm{GD}} = 2 : 1$\n$\\overline{\\mathrm{AG}} = 2 \\times \\overline{\\mathrm{GD}} = 2 \\times 3 = 6\\text{ cm}$\n\n3단계: 전체 중선 $\\overline{\\mathrm{AD}}$의 길이 계산하기\n$\\overline{\\mathrm{AD}} = \\overline{\\mathrm{AG}} + \\overline{\\mathrm{GD}} = 6 + 3 = 9\\text{ cm}$\n\n각 선지를 확인하면 다음과 같다.\n① $6\\text{ cm}$: $\\overline{\\mathrm{AG}}$의 길이이다.\n② $8\\text{ cm}$: 오답\n③ $9\\text{ cm}$: 구한 $\\overline{\\mathrm{AD}}$의 길이와 일치함\n④ $12\\text{ cm}$: 오답\n⑤ $15\\text{ cm}$: 오답\n\n따라서 $\\overline{\\mathrm{AD}}$의 길이는 ③ $9\\text{ cm}$이다.",
+    "imageCaption": "G는 △ABC의 무게중심, G′는 △GBC의 무게중심이다. GG′=2 cm인 중선 AD."
   },
   {
     "id": 21,
-    "imageSize": "tall",
-    "imageAlt": "FE는 BC와 나란하다. 무게중심 G를 지나는 중선 AD 위에 F가 있고, B에서 G로 이어지는 중선이 AC에서 E와 만난다.",
+    "imageSize": "full",
+    "imageAlt": "G는 △ABC의 무게중심이고 E는 AC 위, F는 AD 위에서 FE가 BC에 평행하도록 놓여 있다.",
     "questionNumber": 21,
     "score": 4,
     "level": "상",
@@ -894,7 +896,8 @@ window.examData = {
     "solutionImage": "assets/images/21_풍덕중_2학기_중간_중2_수학/q21-solution.svg",
     "solutionImageAlt": "중점연결선 FE를 경계로 △GEF와 △AEF가 같은 밑변 FE를 공유하며 높이의 비를 비교한다.",
     "solutionImageCaption": "중점연결선 FE를 경계로 △GEF와 △AEF가 같은 밑변 FE를 공유하며 높이의 비를 비교한다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageCaption": "G는 △ABC의 무게중심이고 E는 AC 위, F는 AD 위에서 FE가 BC에 평행하도록 놓여 있다."
   },
   {
     "id": 22,
@@ -1016,8 +1019,8 @@ window.examData = {
   },
   {
     "id": 25,
-    "imageSize": "tall",
-    "imageAlt": "A에는 같은 크기의 정사면체가 6개 있고 작은 정사면체의 모서리 길이는 5 cm이다. B에는 모서리 길이가 10 cm인 정사면체 하나가 있다.",
+    "imageSize": "full",
+    "imageAlt": "제품 A는 모서리 5 cm인 작은 정사면체 여섯 개, 제품 B는 모서리 10 cm인 큰 정사면체 한 개이다. 두 크기를 비교한다.",
     "questionNumber": 25,
     "score": 5,
     "level": "상",
@@ -1057,7 +1060,8 @@ window.examData = {
     "solutionImage": "assets/images/21_풍덕중_2학기_중간_중2_수학/q25-solution.svg",
     "solutionImageAlt": "닮음비 1:2이므로 큰 정사면체 하나는 작은 정사면체 8개와 같은 부피이다. 6개와 8개를 비교한다.",
     "solutionImageCaption": "닮음비 1:2이므로 큰 정사면체 하나는 작은 정사면체 8개와 같은 부피이다. 6개와 8개를 비교한다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageCaption": "제품 A는 모서리 5 cm인 작은 정사면체 여섯 개, 제품 B는 모서리 10 cm인 큰 정사면체 한 개이다. 두 크기를 비교한다."
   }
 ]
 };
