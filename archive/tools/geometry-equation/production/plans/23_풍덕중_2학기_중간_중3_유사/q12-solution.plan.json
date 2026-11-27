@@ -1,0 +1,229 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBH",
+      "refs": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "sHC",
+      "refs": [
+        "H",
+        "C"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "H"
+        ],
+        "value": 18.44,
+        "label": "a",
+        "arcs": 1,
+        "equalGroup": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aA",
+        "refs": [
+          "C",
+          "A",
+          "H"
+        ],
+        "value": 18.44,
+        "label": "a",
+        "arcs": 1,
+        "equalGroup": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "20",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "bh12",
+        "ownerSegment": "sBH",
+        "text": "18",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "hc12",
+        "ownerSegment": "sHC",
+        "text": "2",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ah12",
+        "ownerSegment": "sAH",
+        "text": "6",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "caption": "풍덕중 12번 해설 과정: 원문 12번 해설에 필요한 풀이 관계.",
+  "accessibilityDescription": "원문 12번 해설에 필요한 풀이 관계",
+  "newVisualInformation": [
+    "원문 12번 해설에 필요한 풀이 관계"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q12-solution",
+      "condition": "$AH=h$라 하면 $BH=3h$, $HC=\\dfrac{h}{3}$이므로 $3h+\\dfrac{h}{3}=20 \\implies \\dfrac{10h}{3}=20 \\implies h=6$이다. 따라서 $BH=18$, $HC=2$이고 $AB = \\sqrt{6^2+18^2} = 6\\sqrt{10}$, $AC = \\sqrt{6^2+2^2} = 2\\sqrt{10}$이다. 그러므로 $\\triangle ABC$의 둘레의 길이는 $20 + 6\\sqrt{10} + 2\\sqrt{10} = 20+8\\sqrt{10}$이다. 정답은 ⑤이다.",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    }
+  ]
+}

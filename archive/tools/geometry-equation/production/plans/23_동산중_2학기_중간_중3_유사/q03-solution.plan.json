@@ -1,0 +1,47 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-7",
+          "4",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "2",
+        "y": "-3",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": [
+        "-3"
+      ]
+    }
+  },
+  "caption": "동산중 3번 해설 과정: 원문 3번 해설에 필요한 풀이 관계.",
+  "accessibilityDescription": "원문 3번 해설에 필요한 풀이 관계",
+  "sourceConditions": [
+    {
+      "id": "q03-solution",
+      "condition": "$y = -(x^2-4x)-7 = -(x-2)^2 - 3$이므로 축은 $x=2$, 꼭짓점은 $(2, -3)$이고 위로 볼록하다. 따라서 $x<2$일 때 $x$가 증가하면 $y$도 증가하므로 옳은 것은 ⑤이다.",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 3번 해설에 필요한 풀이 관계"
+  ]
+}

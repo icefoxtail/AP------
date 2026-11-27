@@ -1,0 +1,206 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "value": 45,
+        "label": "45",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "value": 30,
+        "label": "30",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAD",
+        "ownerSegment": "sAD",
+        "text": "6",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 380
+  },
+  "rightAngles": [
+    {
+      "id": "rD",
+      "refs": [
+        "A",
+        "D",
+        "B"
+      ]
+    }
+  ],
+  "caption": "동산중 12번 문제 조건: 원문 12번 문제에 필요한 점·선·라벨.",
+  "accessibilityDescription": "원문 12번 문제에 필요한 점·선·라벨",
+  "newVisualInformation": [
+    "원문 12번 문제에 필요한 점·선·라벨"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q12-problem",
+      "condition": "다음 그림과 같이 $AD \\perp BC$, $\\angle ABD=45^\\circ$, $\\angle ACD=30^\\circ$, $AD=6,\\mathrm{cm}$인 $\\triangle ABC$에 대하여 옳은 것을 모두 고른 것은?\n\nㄱ. $\\triangle ABD$는 직각이등변삼각형이다. ㄴ. $BC=6+6\\sqrt{3},\\mathrm{cm}$이다. ㄷ. $AC=12\\sqrt{3},\\mathrm{cm}$이다. ㄹ. $\\triangle ABC$의 넓이는 $18\\sqrt{3},\\mathrm{cm}^2$이다.",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    }
+  ]
+}

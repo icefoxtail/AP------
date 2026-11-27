@@ -1,0 +1,200 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "integer",
+              "value": "40"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "40"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "C",
+    "B",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 440
+  },
+  "caption": "풍덕중 24번 해설 과정: 원문 24번 해설에 필요한 풀이 관계.",
+  "accessibilityDescription": "원문 24번 해설에 필요한 풀이 관계",
+  "sourceConditions": [
+    {
+      "id": "q24-solution",
+      "condition": "원기둥의 전개도에서 밑면의 둘레는 $2\\pi\\times 15 = 30\\pi,\\mathrm{m}$, 높이는 $40\\pi,\\mathrm{m}$이므로 계단의 길이는 $\\sqrt{(30\\pi)^2 + (40\\pi)^2} = 50\\pi,\\mathrm{m}$이다. 또 $\\tan a = \\dfrac{40\\pi}{30\\pi} = \\dfrac{4}{3} \\approx 1.33$이므로 $a \\approx 53^\\circ$이다.",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 24번 해설에 필요한 풀이 관계"
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aStair",
+        "refs": [
+          "C",
+          "A",
+          "B"
+        ],
+        "value": 53.1301023542,
+        "label": "a",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lCirc",
+        "ownerSegment": "sAC",
+        "text": "30π",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "unit": "m"
+      },
+      {
+        "id": "lH",
+        "ownerSegment": "sCB",
+        "text": "40π",
+        "factRole": "GIVEN",
+        "unit": "m"
+      },
+      {
+        "id": "lStep",
+        "ownerSegment": "sAB",
+        "text": "50π",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "unit": "m"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ]
+}

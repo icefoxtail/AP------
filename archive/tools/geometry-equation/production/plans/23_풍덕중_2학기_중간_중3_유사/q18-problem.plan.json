@@ -1,0 +1,290 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "sub",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "4"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "6"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "3"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "6"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "c"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "C",
+          "B",
+          "A"
+        ],
+        "value": 30,
+        "label": "30",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "value": 30,
+        "label": "30",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "4"
+      }
+    ]
+  },
+  "rightAngles": [],
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 400
+  },
+  "hiddenPointNames": [
+    "O"
+  ],
+  "caption": "풍덕중 18번 문제 조건: 원문 18번 문제에 필요한 점·선·라벨.",
+  "accessibilityDescription": "원문 18번 문제에 필요한 점·선·라벨",
+  "newVisualInformation": [
+    "원문 18번 문제에 필요한 점·선·라벨"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q18-problem",
+      "condition": "$\\angle B=\\angle C=30^\\circ$, $\\overline{AB}=4$인 $\\triangle ABC$의 내접원의 반지름의 길이는?",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    }
+  ]
+}

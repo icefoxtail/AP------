@@ -1,0 +1,346 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "div",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "4"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "3"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "div",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "4"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "3"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "8"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineAB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "lineAB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "M"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "c"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "8"
+      },
+      {
+        "id": "r17",
+        "ownerSegment": "sOB",
+        "text": "8√3/3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "mb17",
+        "ownerSegment": "sMB",
+        "text": "4",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "facts": [
+      {
+        "kind": "ON_CIRCLE",
+        "circle": "c",
+        "points": [
+          "A",
+          "B",
+          "C"
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rM",
+      "refs": [
+        "O",
+        "M",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 460
+  },
+  "hiddenPointNames": [
+    "O"
+  ],
+  "caption": "풍덕중 17번 해설 과정: 원문 17번 해설에 필요한 풀이 관계.",
+  "accessibilityDescription": "원문 17번 해설에 필요한 풀이 관계",
+  "newVisualInformation": [
+    "원문 17번 해설에 필요한 풀이 관계"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q17-solution",
+      "condition": "$\\angle C = 180^\\circ \\times \\dfrac{4}{3+5+4} = 60^\\circ$이므로 외접원의 중심 $O$에 대하여 $\\angle AOB = 120^\\circ$이다. $O$에서 $AB$에 내린 수선의 발을 $M$이라 하면 $BM=4$, $\\angle BOM=60^\\circ$이므로 $$ R = \\dfrac{4}{\\sin 60^\\circ} = \\dfrac{8\\sqrt{3}}{3} $$ 따라서 정답은 ③이다.",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    }
+  ]
+}

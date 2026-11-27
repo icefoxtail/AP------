@@ -1,0 +1,272 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "7",
+                  "denominator": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "9",
+                  "denominator": "2"
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "numerator": "9",
+                      "denominator": "2"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lac",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lbd",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lac",
+          "lbd"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a1",
+        "refs": [
+          "B",
+          "O",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "12",
+        "unit": "cm"
+      },
+      {
+        "id": "lBD",
+        "ownerSegment": "sBD",
+        "text": "x",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 440,
+    "height": 380
+  },
+  "hiddenPointNames": [
+    "O"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "동산중 20번 문제 조건: 원문 20번 문제에 필요한 점·선·라벨.",
+  "accessibilityDescription": "원문 20번 문제에 필요한 점·선·라벨",
+  "newVisualInformation": [
+    "원문 20번 문제에 필요한 점·선·라벨"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q20-problem",
+      "condition": "두 대각선이 이루는 각의 크기가 $60^\\circ$이고 $AC=12,\\mathrm{cm}$, $BD=x,\\mathrm{cm}$인 사각형 $ABCD$의 넓이가 $48\\sqrt{3},\\mathrm{cm}^2$일 때, $x$의 값은?",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    }
+  ]
+}

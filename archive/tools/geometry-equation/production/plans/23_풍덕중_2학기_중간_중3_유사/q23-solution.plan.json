@@ -1,0 +1,239 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "outputType": "POINT",
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "150"
+          },
+          "turn": "CCW"
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "C",
+          "B",
+          "O"
+        ],
+        "value": 15,
+        "label": "15",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angBOC",
+        "refs": [
+          "B",
+          "O",
+          "C"
+        ],
+        "value": 150,
+        "label": "150",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lOB",
+        "ownerSegment": "sOB",
+        "text": "8"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcSemi",
+        "circle": "c",
+        "center": "O",
+        "from": "B",
+        "to": "A",
+        "side": "CCW",
+        "highlight": false
+      },
+      {
+        "id": "arcBC",
+        "circle": "c",
+        "center": "O",
+        "from": "C",
+        "to": "B",
+        "side": "MINOR",
+        "highlight": false
+      }
+    ],
+    "regions": [
+      {
+        "id": "segBC",
+        "fill": "WARM",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "loop": {
+              "start": "B",
+              "steps": [
+                {
+                  "to": "C"
+                },
+                {
+                  "to": "B",
+                  "arc": {
+                    "center": "O",
+                    "side": "MINOR"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "rightAngles": [],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 340
+  },
+  "hiddenPointNames": [
+    "A"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "풍덕중 23번 해설 과정: 원문 23번 해설에 필요한 풀이 관계.",
+  "accessibilityDescription": "원문 23번 해설에 필요한 풀이 관계",
+  "newVisualInformation": [
+    "원문 23번 해설에 필요한 풀이 관계"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q23-solution",
+      "condition": "$OB=OC=8$이므로 $\\angle BCO = \\angle CBO = 15^\\circ$, 따라서 $\\angle BOC = 150^\\circ$이다. 부채꼴 $BOC$의 넓이는 $\\pi\\times 8^2\\times\\dfrac{150^\\circ}{360^\\circ} = \\dfrac{80\\pi}{3}$이다. $\\triangle BOC$의 넓이는 $\\dfrac{1}{2}\\times 8\\times 8\\sin(180^\\circ-150^\\circ) = 32\\times\\dfrac{1}{2} = 16$이다. 따라서 활꼴의 넓이는 $S = \\dfrac{80\\pi}{3} - 16$이다.",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    }
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "4"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              }
+            ]
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "72"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "4√5",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "10√2",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 72,
+        "label": "72",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 380
+  },
+  "rightAngles": [],
+  "caption": "풍덕중 22번 문제 조건: 원문 22번 문제에 필요한 점·선·라벨.",
+  "accessibilityDescription": "원문 22번 문제에 필요한 점·선·라벨",
+  "newVisualInformation": [
+    "원문 22번 문제에 필요한 점·선·라벨"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q22-problem",
+      "condition": "[서술형 2] 다음 그림과 같이 $\\overline{AB}=4\\sqrt{5}$, $\\overline{BC}=10\\sqrt{2}$, $\\angle ABC=72^\\circ$인 $\\triangle ABC$에서 $\\overline{AC}$의 길이를 구하는 과정을 서술하시오. (단, $\\tan 18^\\circ = \\dfrac{1}{3}$)",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    }
+  ]
+}

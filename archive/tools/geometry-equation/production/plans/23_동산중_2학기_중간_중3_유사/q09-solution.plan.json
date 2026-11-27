@@ -1,0 +1,232 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aBDE",
+        "refs": [
+          "B",
+          "D",
+          "E"
+        ],
+        "value": 63.435,
+        "label": "x",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 63.4349488229,
+        "label": "x",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "8",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lCA",
+        "ownerSegment": "sCA",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "hyp9",
+        "ownerSegment": "sAB",
+        "text": "4√5",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 380
+  },
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "B",
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "rE",
+      "refs": [
+        "D",
+        "E",
+        "A"
+      ]
+    }
+  ],
+  "caption": "동산중 9번 해설 과정: 원문 9번 해설에 필요한 풀이 관계.",
+  "accessibilityDescription": "원문 9번 해설에 필요한 풀이 관계",
+  "newVisualInformation": [
+    "원문 9번 해설에 필요한 풀이 관계"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q09-solution",
+      "condition": "$\\triangle BDE \\sim \\triangle BAC$이므로 $x = \\angle A$이다. $AB = \\sqrt{8^2+4^2} = 4\\sqrt{5}$이므로 $\\sin x = \\dfrac{8}{4\\sqrt{5}} = \\dfrac{2\\sqrt{5}}{5}$, $\\tan x = \\dfrac{8}{4} = 2$이다. 따라서 $\\sin x \\tan x = \\dfrac{2\\sqrt{5}}{5}\\times 2 = \\dfrac{4\\sqrt{5}}{5}$이므로 정답은 ⑤이다.",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    }
+  ]
+}

@@ -1,0 +1,402 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Bp",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Cp",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "sub",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Dp",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lDC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "D",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBpCp",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "Bp",
+          "Cp"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lDC",
+          "lBpCp"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "Bp",
+    "Cp",
+    "Dp",
+    "X"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sABp",
+      "refs": [
+        "A",
+        "Bp"
+      ]
+    },
+    {
+      "id": "sBpCp",
+      "refs": [
+        "Bp",
+        "Cp"
+      ]
+    },
+    {
+      "id": "sCpDp",
+      "refs": [
+        "Cp",
+        "Dp"
+      ]
+    },
+    {
+      "id": "sDpA",
+      "refs": [
+        "Dp",
+        "A"
+      ]
+    },
+    {
+      "id": "sDBp",
+      "refs": [
+        "D",
+        "Bp"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a1",
+        "refs": [
+          "B",
+          "A",
+          "Bp"
+        ],
+        "value": 30,
+        "label": "30",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "6",
+        "unit": "cm"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rgOverlap",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "D",
+              "X",
+              "Bp"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 420
+  },
+  "hiddenPointNames": [
+    "Bp",
+    "Cp",
+    "Dp",
+    "X"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "동산중 22번 해설 과정: 원문 22번 해설에 필요한 풀이 관계.",
+  "accessibilityDescription": "원문 22번 해설에 필요한 풀이 관계",
+  "newVisualInformation": [
+    "원문 22번 해설에 필요한 풀이 관계"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q22-solution",
+      "condition": "변 $DC$와 회전된 변 $B'C'$의 교점을 $X$라 하면 겹치는 부분은 사각형 $ADXB'$이다. $AB'=6,\\mathrm{cm}$이고 $\\angle BAB'=30^\\circ$이므로 $B'$에서 $AD$까지의 거리는 $6\\cos 30^\\circ = 3\\sqrt{3},\\mathrm{cm}$이고, $\\triangle ADB' = \\dfrac{1}{2}\\times 6\\times 3\\sqrt{3} = 9\\sqrt{3},\\mathrm{cm}^2$이다. 또 $B'$에서 $AB$까지의 거리는 $6\\sin 30^\\circ = 3,\\mathrm{cm}$이므로 $B'$에서 $DC$까지의 거리는 $6-3=3,\\mathrm{cm}$이다. 직각삼각형 $ADX$에서 $\\angle DAX=30^\\circ$이므로 $DX = 6\\tan 30^\\circ = 2\\sqrt{3},\\mathrm{cm}$이고, $\\triangle DXB' = \\dfrac{1}{2}\\times 2\\sqrt{3}\\times 3 = 3\\sqrt{3},\\mathrm{cm}^2$이다. 따라서 겹치는 부분의 넓이는 $9\\sqrt{3} + 3\\sqrt{3} = 12\\sqrt{3},\\mathrm{cm}^2$이다. 정답은 ⑤이다.",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    }
+  ]
+}
