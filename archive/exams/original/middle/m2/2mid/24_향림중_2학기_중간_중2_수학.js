@@ -571,7 +571,10 @@ window.questionBank=[
     "difficultyConfidence": "high",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "직각삼각형 합동조건의 충분성 비교",
-    "decisiveStep": "각만 같은 닮음 조건을 제외하고 RHS·SAS·ASA·RHA로 크기까지 정해지는 경우를 비교한다."
+    "decisiveStep": "각만 같은 닮음 조건을 제외하고 RHS·SAS·ASA·RHA로 크기까지 정해지는 경우를 비교한다.",
+    "solutionImageAlt": "AA(직각과 한 예각)만 같은 두 직각삼각형은 크기가 달라 합동이 아니다",
+    "solutionImageCaption": "AA(직각과 한 예각)만 같은 두 직각삼각형은 크기가 달라 합동이 아니다",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -953,7 +956,7 @@ window.questionBank=[
   {
     "id": 22,
     "imageSize": "full",
-    "imageAlt": "직사각형 ABCD의 가로는 18 cm, 세로는 8 cm이다. 아래의 P는 오른쪽으로, 위의 Q는 왼쪽으로 움직인다. P와 Q를 이었다.",
+    "imageAlt": "시작 후 임의 시점의 이동점 P,Q와 사다리꼴 PCDQ, 밑변 18·높이 8",
     "level": "상",
     "category": "일차함수의 활용",
     "originalCategory": "일차함수",
@@ -992,7 +995,11 @@ window.questionBank=[
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "difficultyBoundaryFlag": "B34",
     "primaryMethod": "등속 이동점이 만드는 넓이의 일차함수 모델",
-    "decisiveStep": "이동 거리를 x와3x로 나타내고 남은 변18-x와 함께 사다리꼴 넓이식에 넣어 목표 넓이의 시간을 구한다."
+    "decisiveStep": "이동 거리를 x와3x로 나타내고 남은 변18-x와 함께 사다리꼴 넓이식에 넣어 목표 넓이의 시간을 구한다.",
+    "imageCaption": "시작 후 임의 시점의 이동점 P,Q와 사다리꼴 PCDQ, 밑변 18·높이 8",
+    "solutionImageAlt": "BP=x, DQ=3x, PC=18−x로 y=8x+72가 되는 사다리꼴 PCDQ",
+    "solutionImageCaption": "BP=x, DQ=3x, PC=18−x로 y=8x+72가 되는 사다리꼴 PCDQ",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1074,6 +1081,9 @@ window.questionBank=[
     "difficultyConfidence": "high",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "평행사변형 대변 동등과 대각선 이등분",
-    "decisiveStep": "대변 길이식을 같게 놓고 대각선 전체 길이를 반 길이의 두 배로 표현해 두 문자를 각각 정한다."
+    "decisiveStep": "대변 길이식을 같게 놓고 대각선 전체 길이를 반 길이의 두 배로 표현해 두 문자를 각각 정한다.",
+    "solutionImageAlt": "평행사변형의 마주 보는 변 3x−4=x+2, 대각선 BD의 양쪽 반쪽이 같음",
+    "solutionImageCaption": "평행사변형의 마주 보는 변 3x−4=x+2, 대각선 BD의 양쪽 반쪽이 같음",
+    "solutionImageSize": "full"
   }
 ];

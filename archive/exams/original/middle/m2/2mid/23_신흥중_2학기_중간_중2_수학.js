@@ -1002,8 +1002,8 @@ window.questionBank = [
   {
     "id": 19,
     "solutionImageSize": "full",
-    "solutionImageCaption": "AB=AC이고 AD는 공통이면서 두 꼭짓각의 반이 같다. 따라서 두 삼각형은 SAS 합동이므로 두 밑각이 같다.",
-    "solutionImageAlt": "삼각형의 두 옆변 AB와 AC는 같은 길이이다. 꼭짓각을 두 부분으로 나눈 선분 AD와 같은 각 표식을 표시했다.",
+    "solutionImageCaption": "AB=AC와 A각 이등분으로 △ABD≅△ACD(SAS), 대응 밑각 B=C",
+    "solutionImageAlt": "AB=AC와 A각 이등분으로 △ABD≅△ACD(SAS), 대응 밑각 B=C",
     "imageSize": "tall",
     "imageAlt": "삼각형의 두 옆변 AB와 AC는 같은 길이이다.",
     "level": "중",
@@ -1051,7 +1051,8 @@ window.questionBank = [
       "l4": "꼭짓각의 이등분선"
     },
     "primaryMethod": "꼭지각 이등분선으로 밑각 동등 증명",
-    "decisiveStep": "같은 두 변·공통변·반각의 SAS 후 대응각으로 밑각 동등을 보인다."
+    "decisiveStep": "같은 두 변·공통변·반각의 SAS 후 대응각으로 밑각 동등을 보인다.",
+    "solutionImageScale": 90
   },
   {
     "id": 20,

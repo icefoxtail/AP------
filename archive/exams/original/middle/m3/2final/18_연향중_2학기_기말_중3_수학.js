@@ -876,8 +876,8 @@ window.questionBank = [
       "sourceUid": null,
       "sourceUidStatus": "ABSENT",
       "solutionImage": "assets/images/18_연향중_2학기_기말_중3_수학/q21-solution.svg",
-      "solutionImageAlt": "해설 그림: 점 B에서 직각인 삼각형 A, B, D(파란색 칠)와 삼각형 B, C, D(주황색 칠)가 대각선 BD를 공유하는 사각형이다. 각 A는 60도, 각 CDB는 30도이고 AB는 7cm, AD는 14cm, CD는 12cm이다. 점 C에서 BD에 내린 수선의 발이 H이고 CH는 6cm로 점선으로 표시되어 있다.",
-      "solutionImageCaption": "대각선 BD로 사각형을 두 삼각형으로 나눈다. 직각삼각형 ABD에서 BD=7√3이므로 파란 삼각형의 넓이는 7×7√3÷2이다. C에서 BD에 내린 수선의 발을 H라 하면 CH=12×sin30°=6이므로 주황 삼각형의 넓이는 7√3×6÷2=21√3이다. 두 넓이를 더한다. 정답은 (91√3)÷2 cm²이다.",
+      "solutionImageAlt": "대각선 BD로 사각형을 두 삼각형으로 나눈다. 직각삼각형 ABD에서 BD=7√3이고, C에서 BD에 내린 점선 수선 CH의 길이는 6이다. 두 삼각형의 넓이를 합한다.",
+      "solutionImageCaption": "대각선 BD로 사각형을 두 삼각형으로 나눈다. 직각삼각형 ABD에서 BD=7√3이고, C에서 BD에 내린 점선 수선 CH의 길이는 6이다. 두 삼각형의 넓이를 합한다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",

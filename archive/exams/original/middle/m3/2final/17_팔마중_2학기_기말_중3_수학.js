@@ -239,8 +239,8 @@ window.examData = {
       "answer": "①",
       "solution": "평행사변형의 이웃한 각의 합은 $180^\\circ$이다.<br>$\\angle B=180^\\circ-150^\\circ$이다.<br>$\\angle B=30^\\circ$이다.<br>A에서 직선 BC에 내린 수선의 발을 H라 하자.<br>$BH=AB\\cos30^\\circ$이다. (직각삼각형 ABH에서 코사인의 정의를 썼다.)<br>$BH=4\\times\\dfrac{\\sqrt3}{2}$이다.<br>$BH=2\\sqrt3$이다.<br>$BC=\\sqrt3<2\\sqrt3=BH$이므로 H는 C 너머 직선 BC의 연장선 위에 있다.<br>높이는 $AH=AB\\sin30^\\circ$이다. (직각삼각형 ABH에서 사인의 정의를 썼다.)<br>$AH=4\\times\\dfrac12$이다.<br>$AH=2$ cm이다.<br>평행사변형의 넓이는 밑변과 그에 대한 높이의 곱이다.<br>$[ABCD]=BC\\times AH$이다.<br>$[ABCD]=\\sqrt3\\times2$이다.<br>$[ABCD]=2\\sqrt3$ cm$^2$이므로 ①이다.",
       "solutionImage": "assets/images/17_팔마중_2학기_기말_중3_수학/q7-solution.svg",
-      "solutionImageAlt": "해설 그림: 평행사변형과 꼭짓점 A에서 직선 BC에 내린 수선(주황)이다. 수선의 발은 C 너머 연장선(점선) 위에 있고, AB=4 cm, BC=√3 cm, ∠A=150°, ∠B=30°가 표시되어 있다.",
-      "solutionImageCaption": "∠B=30°이므로 높이는 AH=4 sin30°=2 cm이다. 넓이는 BC×AH=√3×2=2√3 cm²이다. 정답은 ①이다.",
+      "solutionImageAlt": "평행사변형에서 ∠A=150°, AB=4 cm, BC=√3 cm이다. A에서 직선 BC에 내린 수선의 발 H는 C 너머 연장선 위에 있다.",
+      "solutionImageCaption": "평행사변형에서 ∠A=150°, AB=4 cm, BC=√3 cm이다. A에서 직선 BC에 내린 수선의 발 H는 C 너머 연장선 위에 있다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -320,8 +320,8 @@ window.examData = {
       "answer": "⑤",
       "solution": "중심에서 현에 내린 수선은 현을 이등분하므로 $AM=MB$, $DN=NC$이다.<br>$AM=DN$이므로 $AB=2AM=2DN=CD$이고, 같은 원에서 같은 현에 대한 작은 호의 크기도 같으므로 ㄱ과 ㄷ은 옳다.<br>$OA=OC$, $OB=OD$, $AB=CD$이므로 세 변의 길이가 각각 같으므로 $\\triangle OAB\\equiv\\triangle OCD$이다. 따라서 ㅂ도 옳다.<br>그러나 $OM=BM$은 주어진 조건에서 나오지 않는다. 또 두 현의 상대적 방향에 대한 조건이 없어 호 $AC$와 호 $BD$, 그리고 $\\angle AOC$와 $\\angle BOD$가 같다고 할 수 없다.<br>옳지 않은 것은 ㄴ, ㄹ, ㅁ이므로 ⑤이다.",
       "solutionImage": "assets/images/17_팔마중_2학기_기말_중3_수학/q9-solution.svg",
-      "solutionImageAlt": "해설 그림: 예시 배치이다. 원 O 안의 두 현 AB와 CD, 중심에서 각 현에 내린 수선 OM, ON이 있다. AB와 CD는 파랑, 반지름은 분홍으로 표시했고 삼각형 OAB와 OCD를 같은 색으로 칠했다.",
-      "solutionImageCaption": "예: 중심에서 현에 내린 수선은 현을 이등분하므로 AM=DN에서 AB=CD이다. 반지름이 같아 삼각형 OAB와 OCD는 세 변이 같아 합동이다. 그러나 OM=BM이나 두 현의 상대 위치에 대한 호·각의 관계는 알 수 없다. 정답은 ⑤이다.",
+      "solutionImageAlt": "예: 원 O에서 두 현 AB와 CD가 중심에서 같은 거리에 있도록 그린 그림이다. AB⊥OM, CD⊥ON이고 AM=DN이다. 두 현의 상대적 위치는 조건에 없다.",
+      "solutionImageCaption": "예: 원 O에서 두 현 AB와 CD가 중심에서 같은 거리에 있도록 그린 그림이다. AB⊥OM, CD⊥ON이고 AM=DN이다. 두 현의 상대적 위치는 조건에 없다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",

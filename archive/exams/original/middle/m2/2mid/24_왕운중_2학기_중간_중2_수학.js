@@ -898,8 +898,8 @@ window.questionBank=[
   },
   {
     "id": 21,
-    "imageSize": "tall",
-    "imageAlt": "같은 길이 AB와 AC는 A에서 직각을 이룬다. D와 E는 A와 같은 직선에 있고, BD와 CE는 그 직선에 수직이다.",
+    "imageSize": "full",
+    "imageAlt": "두 직각삼각형 ABD, CAE의 합동 조건",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -932,7 +932,8 @@ window.questionBank=[
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "서로 수직인 변쌍으로 RHA",
-    "decisiveStep": "두 직각과 같은 빗변에 대응하는 예각 상등을 수직선 관계에서 확인한다."
+    "decisiveStep": "두 직각과 같은 빗변에 대응하는 예각 상등을 수직선 관계에서 확인한다.",
+    "imageCaption": "두 직각삼각형 ABD, CAE의 합동 조건"
   },
   {
     "id": 22,

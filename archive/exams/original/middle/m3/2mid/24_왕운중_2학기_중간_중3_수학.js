@@ -835,8 +835,8 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageAlt": "해설 그림: 단위 정육면체에서 만든 직각삼각형 AEG: AE=1, EG=√2, 직각은 E, 각 x는 꼭짓점 G에 있다.",
-    "solutionImageCaption": "tan x=AE/EG=1/√2=√2/2이다. 정답은 ⑤이다.",
+    "solutionImageAlt": "정육면체의 모서리 AE=1, 밑면 대각선 EG=√2, 공간대각선 AG를 보이고 ∠AGE=x를 표시한다.",
+    "solutionImageCaption": "정육면체의 모서리 AE=1, 밑면 대각선 EG=√2, 공간대각선 AG를 보이고 ∠AGE=x를 표시한다.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_TRIG_RATIO",
@@ -961,8 +961,8 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImageAlt": "해설 그림: 포물선의 꼭짓점 A와 y절편 B, 삼각형 AOB의 높이 AH=2와 밑변 OB=3.",
-    "solutionImageCaption": "[AOB]=1/2×3×2=3이다. 정답은 3이다.",
+    "solutionImageAlt": "포물선의 꼭짓점 A(-2,5), y절편 B(0,3) 및 원점 O의 삼각형 AOB를 색칠하지 않고 표시한다.",
+    "solutionImageCaption": "포물선의 꼭짓점 A(-2,5), y절편 B(0,3) 및 원점 O의 삼각형 AOB를 색칠하지 않고 표시한다.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
@@ -1003,8 +1003,8 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImageAlt": "해설 그림: 직각 B인 삼각형에서 AB=3, BC=2, 빗변 AC=√13을 나타낸다.",
-    "solutionImageCaption": "sin A=2/√13=2√13/13, cos A=3/√13=3√13/13, tan A=2/3이다.",
+    "solutionImageAlt": "직각삼각형 ABC의 두 직각변 3과 2, 직각 표식 및 피타고라스로 구한 빗변 √13을 표시한다.",
+    "solutionImageCaption": "직각삼각형 ABC의 두 직각변 3과 2, 직각 표식 및 피타고라스로 구한 빗변 √13을 표시한다.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_TRIG_RATIO",
