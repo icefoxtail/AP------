@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "$v(t)=36-4t=0$",
+  "caption": "속도 v(t)=36−4t의 그래프에서 t=0부터 t=9까지 x축 위의 넓이가 위로 올라간 거리 162m이다. 가로축은 시각, 세로축은 속도이다.",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "36",
+          "-4"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "18"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "36-4x",
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "9",
+        "fill": "LIGHT",
+        "label": "S"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 36
+      },
+      {
+        "id": "B",
+        "x": 9,
+        "y": 0
+      },
+      {
+        "id": "C",
+        "x": 18,
+        "y": -36
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "지면으로부터 $18\\mathrm{m}$ 떨어진 건물 옥상에서 지면과 수직으로 위로 쏘아 올린 로켓의 $t$초 후의 속도 $v(t)$가 $v(t)=36-4t$일 때 이 로켓이 출발 이후 처음으로 이동 방향을 바꿀 때 지면으로부터의 높이는? (단, $0\\le t\\le 18$이고 이 로켓의 이동 경로는 출발 지점에서 지면과 수직으로 그은 반직선이고 속도의 단위는 $\\mathrm{m/s}$이다.) ",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "속도 v(t)=36−4t의 그래프에서 t=0부터 t=9까지 x축 위의 넓이가 위로 올라간 거리 162m이다. 가로축은 시각, 세로축은 속도이다."
+  ],
+  "accessibilityDescription": "속도 v(t)=36−4t의 그래프에서 t=0부터 t=9까지 x축 위의 넓이가 위로 올라간 거리 162m이다. 가로축은 시각, 세로축은 속도이다."
+}

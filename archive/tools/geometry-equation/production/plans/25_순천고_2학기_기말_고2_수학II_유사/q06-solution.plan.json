@@ -1,0 +1,63 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "$v(t)=x'(t)=40-10t=10(4-t)$",
+  "caption": "높이 x(t)=40t−5t²은 t=4에서 최대 80이다. 가로축은 시각 t, 세로축은 높이이다.",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "40",
+      "-5"
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        0,
+        8
+      ]
+    },
+    "domain": [
+      0,
+      8
+    ],
+    "viewport": [
+      0,
+      8,
+      0,
+      90
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 4,
+        "y": 80
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        2,
+        4,
+        6,
+        8
+      ],
+      "y": [
+        20,
+        40,
+        60
+      ]
+    },
+    "applicationAxes": true,
+    "axisVariable": "t"
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "지상에서 똑바로 위를 향하여 속도 $40\\mathrm{m/s}$로 던진 물체가 $t$초 후에 도달하는 높이를 $x\\mathrm{m}$라고 하면 $x=40t-5t^2$ 인 관계가 성립한다. 이 물체가 최고 지점에 도달했을 때 지면으로부터의 높이는? (단, $0\\le t\\le 8$) [3.6점]",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "높이 x(t)=40t−5t²은 t=4에서 최대 80이다. 가로축은 시각 t, 세로축은 높이이다."
+  ],
+  "accessibilityDescription": "높이 x(t)=40t−5t²은 t=4에서 최대 80이다. 가로축은 시각 t, 세로축은 높이이다."
+}

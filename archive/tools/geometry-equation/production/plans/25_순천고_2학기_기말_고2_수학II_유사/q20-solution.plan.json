@@ -1,0 +1,76 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "11",
+          "-9",
+          "-3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-4",
+        "6"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "x^3-3*x^2-9*x+11",
+    "functionName": "h",
+    "referenceLines": [
+      {
+        "id": "u",
+        "y": "16",
+        "intersectionX": [
+          "-1",
+          "5"
+        ]
+      },
+      {
+        "id": "l",
+        "y": "-16",
+        "intersectionX": [
+          "-3",
+          "3"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1,
+        "y": 16
+      },
+      {
+        "id": "B",
+        "x": 3,
+        "y": -16
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "h(x)=f(x)−f(1)의 극댓값 16·극솟값 −16과 수평선 y=±16의 접점·교점",
+  "accessibilityDescription": "삼차함수 그래프 위 극댓점과 극솟점에 각각 접하는 두 수평선을 그린 해설용 그림",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "h(x)=x³−3x²−9x+11, h(-1)=16, h(3)=−16; |h(x)|=16은 중복 없는 실근 네 개.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "수평선 y=16·y=−16과 곡선 h의 접점 각 하나와 다른 교점 각 하나를 확인"
+  ]
+}

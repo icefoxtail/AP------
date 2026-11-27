@@ -1,0 +1,58 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "X",
+        "mean": "50",
+        "sd": "1",
+        "label": "X"
+      }
+    ],
+    "ticks": [
+      "48.5",
+      "50",
+      "52"
+    ],
+    "zAxis": true,
+    "shades": [
+      {
+        "curve": "X",
+        "from": "48.5",
+        "to": "50",
+        "tone": 1
+      },
+      {
+        "curve": "X",
+        "from": "50",
+        "to": "52",
+        "tone": 2
+      }
+    ],
+    "areaLabels": [
+      {
+        "shade": 0,
+        "text": "0.4332",
+        "source": "TABLE"
+      },
+      {
+        "shade": 1,
+        "text": "0.4772",
+        "source": "TABLE"
+      }
+    ]
+  },
+  "caption": "표본평균 N(50,1²)에서 48.5 이상 52 이하의 두 면적을 구별한다.",
+  "accessibilityDescription": "표본평균 N(50,1²)에서 48.5 이상 52 이하의 두 면적을 구별한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "표본평균 표준편차 6/√36=1, z=−1.5와 z=2, 표의 0.4332와 0.4772를 더한다.",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "평균 50의 양쪽 서로 다른 두 부분을 색으로 분리"
+  ]
+}

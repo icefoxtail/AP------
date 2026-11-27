@@ -1,0 +1,58 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "$f'(x)=3(x+1)(x-3)$",
+  "caption": "도함수 f′(x)=3(x+1)(x−3)은 x=−1에서 +→−, x=3에서 −→+로 부호가 바뀌므로 f는 x=−1에서 극대, x=3에서 극소이다.",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-9",
+      "-6",
+      "3"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2.5,
+      4.5
+    ],
+    "viewport": [
+      -3,
+      5,
+      -14,
+      22
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 3,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 1,
+        "y": -12
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "서답형 3. (서술형) 함수 $f(x)$는 최고차항의 계수가 $1$인 삼차함수이고 $f'(-1)=f'(3)=0$이다. 함수 $f(x)$의 극솟값이 $-10$일 때, 함수 $f(x)$를 구하는 과정을 풀이 과정과 함께 서술하시오. [부분 점수 있음, 4점]",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "도함수 f′(x)=3(x+1)(x−3)은 x=−1에서 +→−, x=3에서 −→+로 부호가 바뀌므로 f는 x=−1에서 극대, x=3에서 극소이다."
+  ],
+  "accessibilityDescription": "도함수 f′(x)=3(x+1)(x−3)은 x=−1에서 +→−, x=3에서 −→+로 부호가 바뀌므로 f는 x=−1에서 극대, x=3에서 극소이다."
+}
