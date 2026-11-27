@@ -1007,7 +1007,10 @@ window.questionBank = [
     "decisiveStep": "반원의 지름10을 구하고 두 외부점의 등접선 관계로 AD+BC를 DC에 대응시켜 둘레 전체를10+2DC로 정리한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "반지름 5의 반원에 세 접선 AD, BC, DC를 긋고 DC=14를 이용해 사각형 둘레를 구한다.",
+    "solutionImageCaption": "반지름 5의 반원에 세 접선 AD, BC, DC를 긋고 DC=14를 이용해 사각형 둘레를 구한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 21,
@@ -1052,7 +1055,9 @@ window.questionBank = [
     "decisiveStep": "직육면체의 밑면 대각선과 공간 대각선을 차례로 피타고라스로 복원하고 지정된 공간각이 속한 직각삼각형의 두 변 비로 cos를 구한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "가로 6, 세로 8, 높이 4인 직육면체의 공간삼각형 AEG에서 ∠AGE=x이다.",
+    "solutionImageCaption": "가로 6, 세로 8, 높이 4인 직육면체의 공간삼각형 AEG에서 ∠AGE=x이다."
   },
   {
     "id": 22,
@@ -1143,6 +1148,9 @@ window.questionBank = [
     "decisiveStep": "등접선으로 두 직각변을8+r와12+r로 표현하고 피타고라스 이차방정식에서 반지름을 구해 삼각형 넓이에서 원 넓이를 뺀다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "직각삼각형 ABC의 내접원 바깥쪽 영역만 색칠해 그 넓이를 구한다.",
+    "solutionImageCaption": "직각삼각형 ABC의 내접원 바깥쪽 영역만 색칠해 그 넓이를 구한다.",
+    "solutionImageScale": 90
   }
 ];

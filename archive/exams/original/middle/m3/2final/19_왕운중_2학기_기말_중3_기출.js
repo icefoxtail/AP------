@@ -4,8 +4,8 @@ window.questionBank = [
     "id": 1,
     "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q1-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageAlt": "각 A의 맞은편은 주황, 이웃한 변은 초록, 빗변은 파랑으로 표시했다.",
-    "solutionImageCaption": "sin A=√5/3, tan A=√5/2이므로 곱은 5/6이다. 정답은 ④이다.",
+    "solutionImageAlt": "19_왕운중_2학기_기말_중3_기출 1번 해설: 기존 SVG의 도형 선·원·텍스트를 정본 엔진의 수학 primitive로 다시 구성한 초안.",
+    "solutionImageCaption": "19_왕운중_2학기_기말_중3_기출 1번 해설: 기존 SVG의 도형 선·원·텍스트를 정본 엔진의 수학 primitive로 다시 구성한 초안.",
     "content": "직각삼각형 $ABC$에서 $\\cos A=\\dfrac{2}{3}$일 때, $\\sin A\\times\\tan A$의 값은? (단, $0^\\circ<A<90^\\circ$) (3점)",
     "choices": [
       "$\\dfrac{\\sqrt5}{3}$",
@@ -454,7 +454,7 @@ window.questionBank = [
   },
   {
     "id": 8,
-    "imageSize": "large",
+    "imageSize": "full",
     "content": "오른쪽 그림과 같은 등변사다리꼴 $ABCD$에서 두 대각선이 이루는 각의 크기가 $120^\\circ$이고, $\\square ABCD$의 넓이가 $2\\sqrt3\\rm\\,cm^2$일 때, $\\overline{AC}$의 길이는? (3점)",
     "choices": [
       "$2\\rm\\,cm$",
@@ -515,7 +515,9 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "conceptClusterKey": "TRIG_RATIO_APPLICATION",
-    "primaryMethod": "등변사다리꼴의두대각선길이가같음을활용하고 두직선의예각60°로B,D의수선높이를구해 넓이를d²√3/4로나타낸다."
+    "primaryMethod": "등변사다리꼴의두대각선길이가같음을활용하고 두직선의예각60°로B,D의수선높이를구해 넓이를d²√3/4로나타낸다.",
+    "imageAlt": "등변사다리꼴의 같은 두 대각선과 끼인각 — 등변사다리꼴에서 두 대각선이 P에서 교차한다. 아래쪽 두 대각선 사이의 각은 120도이다.",
+    "imageCaption": "등변사다리꼴의 같은 두 대각선과 끼인각 — 등변사다리꼴에서 두 대각선이 P에서 교차한다. 아래쪽 두 대각선 사이의 각은 120도이다."
   },
   {
     "id": 9,
@@ -586,8 +588,8 @@ window.questionBank = [
     "id": 10,
     "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q10-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageAlt": "초록 두 눈금의 BM과 MC는 같은 길이이다. 왼쪽 절반 중 D까지의 영역을 주황으로 표시했다.",
-    "solutionImageCaption": "큰 삼각형 넓이는 36 cm², 왼쪽 절반은 18 cm²이다. AD/AB=2/3이므로 [ADM]=12 cm²이고 정답은 ③이다.",
+    "solutionImageAlt": "19_왕운중_2학기_기말_중3_기출 10번 해설: 기존 SVG의 도형 선·원·텍스트를 정본 엔진의 수학 primitive로 다시 구성한 초안.",
+    "solutionImageCaption": "19_왕운중_2학기_기말_중3_기출 10번 해설: 기존 SVG의 도형 선·원·텍스트를 정본 엔진의 수학 primitive로 다시 구성한 초안.",
     "content": "삼각형 $ABC$에서 $\\overline{AB}=\\overline{AC}=12\\rm\\,cm$, $\\angle BAC=30^\\circ$이다. 점 $M$은 $\\overline{BC}$의 중점이고, 점 $D$는 $\\overline{AB}$ 위의 점으로 $\\overline{AD}:\\overline{DB}=2:1$이다.\n$\\triangle ADM$의 넓이는? (5점)",
     "choices": [
       "$6\\rm\\,cm^2$",
@@ -713,7 +715,7 @@ window.questionBank = [
   },
   {
     "id": 12,
-    "imageSize": "large",
+    "imageSize": "full",
     "content": "오른쪽 그림과 같은 원 $O$에서 $\\angle AOB=\\angle BOC=\\angle DOE$일 때, 다음 중 옳지 않은 것은? (3점)",
     "choices": [
       "$\\overset{\\frown}{BC}=\\overset{\\frown}{DE}$",
@@ -769,12 +771,14 @@ window.questionBank = [
     "sourceIdentityKey": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0|12",
     "decisiveStep": "동일 중심각의 호·현·SAS합동은 성립하지만 중심각 두 배가 현 길이 두 배를 뜻하지 않음을 구별한다.",
     "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q12-solution-v2.svg",
-    "solutionImageAlt": "같은 길이인 세 호와 그에 대응하는 현을 초록으로 표시했다. 큰 현 AC는 보라색이다.",
-    "solutionImageCaption": "같은 중심각에 대한 호와 현은 각각 같다. AC는 두 호가 합친 범위에 대한 현이므로 현이 두 배 길이라는 ④는 옳지 않다.",
+    "solutionImageAlt": "같은 중심각이 만드는 같은 호와 현 — 같은 길이인 세 호와 그에 대응하는 현을 초록으로 표시했다. 큰 현 AC는 보라색이다.",
+    "solutionImageCaption": "같은 중심각이 만드는 같은 호와 현 — 같은 길이인 세 호와 그에 대응하는 현을 초록으로 표시했다. 큰 현 AC는 보라색이다.",
     "solutionImageSize": "full"
   ,
     "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
-    "primaryMethod": "동일 중심각의 호·현·SAS합동은 성립하지만 중심각 두 배가 현 길이 두 배를 뜻하지 않음을 구별한다."
+    "primaryMethod": "동일 중심각의 호·현·SAS합동은 성립하지만 중심각 두 배가 현 길이 두 배를 뜻하지 않음을 구별한다.",
+    "imageAlt": "같은 중심각이 만드는 같은 호와 현 — 원 O의 왼쪽에서 A, B, C는 연속으로 놓이고 오른쪽의 D와 E 사이에도 같은 중심각을 표시했다.",
+    "imageCaption": "같은 중심각이 만드는 같은 호와 현 — 원 O의 왼쪽에서 A, B, C는 연속으로 놓이고 오른쪽의 D와 E 사이에도 같은 중심각을 표시했다."
   },
   {
     "id": 13,
@@ -843,7 +847,7 @@ window.questionBank = [
   },
   {
     "id": 14,
-    "imageSize": "large",
+    "imageSize": "full",
     "content": "오른쪽 그림은 원 모양의 접시의 일부분이다. $\\overline{AB}\\perp\\overline{CM}$이고, $\\overline{AM}=\\overline{BM}=3$, $\\overline{CM}=1$일 때, 원래 접시의 넓이는? (4점)",
     "choices": [
       "$9\\pi$",
@@ -899,12 +903,15 @@ window.questionBank = [
     "sourceIdentityKey": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0|14",
     "decisiveStep": "활꼴 높이1과 반현3에서 중심거리 r-1을 두어 피타고라스 방정식으로 r를 구한 뒤 원넓이를 계산한다.",
     "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q14-solution-v2.svg",
-    "solutionImageAlt": "파랑 원의 중심 O에서 원호 C로 이어진 수직선이 현의 가운데 M을 지난다. OM은 반지름보다 1 작고 AM은 반쪽 현이다.",
-    "solutionImageCaption": "r²=3²+(r−1)²이므로 r=5이다. 원래 접시의 넓이는 25π이고 정답은 ④이다.",
+    "solutionImageAlt": "왕운중 14번 해설: 현 AB의 중점 M에서 반지름 OA와 수선 OM을 보조선으로 추가하고, AM=BM=3, CM=1로 r=5를 구한다. 접시의 원래 넓이는 25π이다.",
+    "solutionImageCaption": "왕운중 14번 해설: 현 AB의 중점 M에서 반지름 OA와 수선 OM을 보조선으로 추가하고, AM=BM=3, CM=1로 r=5를 구한다. 접시의 원래 넓이는 25π이다.",
     "solutionImageSize": "full"
   ,
     "conceptClusterKey": "CIRCLE_LINE",
-    "primaryMethod": "활꼴 높이1과 반현3에서 중심거리 r-1을 두어 피타고라스 방정식으로 r를 구한 뒤 원넓이를 계산한다."
+    "primaryMethod": "활꼴 높이1과 반현3에서 중심거리 r-1을 두어 피타고라스 방정식으로 r를 구한 뒤 원넓이를 계산한다.",
+    "imageAlt": "왕운중 14번 문제: 잘린 원형 접시의 굽은 테두리와 파손된 가장자리, 현 AM=BM=3 및 수선 높이 CM=1을 원본 스캔에 맞춰 표시한다. 미지 반지름과 넓이는 보이지 않는다.",
+    "imageCaption": "왕운중 14번 문제: 잘린 원형 접시의 굽은 테두리와 파손된 가장자리, 현 AM=BM=3 및 수선 높이 CM=1을 원본 스캔에 맞춰 표시한다. 미지 반지름과 넓이는 보이지 않는다.",
+    "solutionImageScale": 90
   },
   {
     "id": 15,
@@ -1103,7 +1110,7 @@ window.questionBank = [
   },
   {
     "id": 18,
-    "imageSize": "large",
+    "imageSize": "full",
     "content": "오른쪽 그림과 같이 반원의 호 $AB$ 위의 한 점 $T$를 지나는 접선이 지름 $AB$의 양 끝점에서 그은 접선과 만나는 점을 각각 $D,C$라 할 때, 색칠한 부분의 넓이는? (5점)",
     "choices": [
       "$40+16\\pi\\rm\\,cm^2$",
@@ -1159,16 +1166,18 @@ window.questionBank = [
     "sourceIdentityKey": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0|18",
     "decisiveStep": "접선 조각의 합10과 양끝 높이차6으로 지름8을 구한 뒤 사다리꼴에서 반원 넓이를 뺀다.",
     "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q18-solution-v2.svg",
-    "solutionImageAlt": "D가 공유하는 두 접선은 주황 한 눈금, C가 공유하는 두 접선은 초록 두 눈금이다. 수평 보조선으로 두 높이의 차를 구한다.",
-    "solutionImageCaption": "DC=8+2=10 cm이고 높이 차는 6 cm이므로 AB=8 cm이다. 색칠한 넓이는 40−8π cm²이고 정답은 ⑤이다.",
+    "solutionImageAlt": "왕운중 18번 해설: AD=8cm, BC=2cm에서 반원 지름 AB=8cm, 반지름 4cm. 사다리꼴 넓이 40cm²에서 반원 넓이 8πcm²를 뺀 색칠 넓이는 40−8πcm².",
+    "solutionImageCaption": "왕운중 18번 해설: AD=8cm, BC=2cm에서 반원 지름 AB=8cm, 반지름 4cm. 사다리꼴 넓이 40cm²에서 반원 넓이 8πcm²를 뺀 색칠 넓이는 40−8πcm².",
     "solutionImageSize": "full"
   ,
     "conceptClusterKey": "CIRCLE_LINE",
-    "primaryMethod": "접선 조각의 합10과 양끝 높이차6으로 지름8을 구한 뒤 사다리꼴에서 반원 넓이를 뺀다."
+    "primaryMethod": "접선 조각의 합10과 양끝 높이차6으로 지름8을 구한 뒤 사다리꼴에서 반원 넓이를 뺀다.",
+    "imageAlt": "왕운중 18번 문제: 반원 지름 AB 양 끝 접선 AD=8cm·BC=2cm와 공통 접선 DC, 접점 T, 그리고 반원 바깥쪽의 실제 색칠된 영역을 그림으로 표시한다. 넓이 답은 노출하지 않는다.",
+    "imageCaption": "왕운중 18번 문제: 반원 지름 AB 양 끝 접선 AD=8cm·BC=2cm와 공통 접선 DC, 접점 T, 그리고 반원 바깥쪽의 실제 색칠된 영역을 그림으로 표시한다. 넓이 답은 노출하지 않는다."
   },
   {
     "id": 19,
-    "imageSize": "large",
+    "imageSize": "full",
     "content": "오른쪽 그림에서 $\\overset{\\frown}{AC}+\\overset{\\frown}{BD}=2\\pi$이고, 원의 반지름의 길이가 $4$일 때, 두 현 $\\overline{AB},\\overline{CD}$가 이루는 $\\angle APC$의 크기는? (4점)",
     "choices": [
       "$40^\\circ$",
@@ -1224,16 +1233,18 @@ window.questionBank = [
     "sourceIdentityKey": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0|19",
     "decisiveStep": "두호길이합이원둘레의1/4임으로중심각합90°를 얻고, 보조선BC와외각정리로교차현각을두원주각합으로 표현하여45°를 구한다.",
     "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q19-solution-v2.svg",
-    "solutionImageAlt": "서로 마주 보는 초록 호 AC와 주황 호 BD로 색을 나눴다. 삼각형 BPC의 변 BC가 두 원주각의 읽기를 돕는다.",
-    "solutionImageCaption": "두 호 길이의 합은 원둘레 8π의 1/4이다. 두 중심각의 합은 90°이므로 ∠APC는 45°이다. 정답은 ②이다.",
+    "solutionImageAlt": "교차하는 두 현과 서로 마주 보는 호 — 서로 마주 보는 초록 호 AC와 주황 호 BD로 색을 나눴다. 삼각형 BPC의 변 BC가 두 원주각의 읽기를 돕는다.",
+    "solutionImageCaption": "교차하는 두 현과 서로 마주 보는 호 — 서로 마주 보는 초록 호 AC와 주황 호 BD로 색을 나눴다. 삼각형 BPC의 변 BC가 두 원주각의 읽기를 돕는다.",
     "solutionImageSize": "full"
   ,
     "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
-    "primaryMethod": "두호길이합이원둘레의1/4임으로중심각합90°를 얻고, 보조선BC와외각정리로교차현각을두원주각합으로 표현하여45°를 구한다."
+    "primaryMethod": "두호길이합이원둘레의1/4임으로중심각합90°를 얻고, 보조선BC와외각정리로교차현각을두원주각합으로 표현하여45°를 구한다.",
+    "imageAlt": "교차하는 두 현과 서로 마주 보는 호 — 원 안의 P를 지나 두 현 AB와 CD가 교차한다. P의 왼쪽 각이 문제에서 묻는 각이다.",
+    "imageCaption": "교차하는 두 현과 서로 마주 보는 호 — 원 안의 P를 지나 두 현 AB와 CD가 교차한다. P의 왼쪽 각이 문제에서 묻는 각이다."
   },
   {
     "id": 20,
-    "imageSize": "large",
+    "imageSize": "full",
     "content": "오른쪽 그림처럼 두 현 $\\overline{AB},\\overline{CD}$는 점 $P$에서 만난다. $\\overline{AP}=5\\rm\\,cm$, $\\overline{BP}=8\\rm\\,cm$이고 $\\overline{CP}:\\overline{DP}=2:5$일 때, $\\overline{DP}$의 길이는? (4점)",
     "choices": [
       "$4\\rm\\,cm$",
@@ -1289,12 +1300,14 @@ window.questionBank = [
     "sourceIdentityKey": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0|20",
     "decisiveStep": "교차하는 두 현의 부분길이 곱AP·PB=CP·DP와2:5의 비로 비례상수의 제곱을 구하고 양의 길이를 택한다.",
     "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q20-solution-v2.svg",
-    "solutionImageAlt": "P 양쪽 파랑 구간을 곱한 값은 주황 구간의 곱과 같다. 주황 현의 두 부분 비는 2 대 5이다.",
-    "solutionImageCaption": "CP=2k, DP=5k라 두면 10k²=5×8, k=2이다. DP=10 cm이며 정답은 ③이다.",
+    "solutionImageAlt": "교차하는 현의 대응하는 두 부분 — P 양쪽 파랑 구간을 곱한 값은 주황 구간의 곱과 같다. 주황 현의 두 부분 비는 2 대 5이다.",
+    "solutionImageCaption": "교차하는 현의 대응하는 두 부분 — P 양쪽 파랑 구간을 곱한 값은 주황 구간의 곱과 같다. 주황 현의 두 부분 비는 2 대 5이다.",
     "solutionImageSize": "full"
   ,
     "conceptClusterKey": "CIRCLE_LINE",
-    "primaryMethod": "교차하는 두 현의 부분길이 곱AP·PB=CP·DP와2:5의 비로 비례상수의 제곱을 구하고 양의 길이를 택한다."
+    "primaryMethod": "교차하는 두 현의 부분길이 곱AP·PB=CP·DP와2:5의 비로 비례상수의 제곱을 구하고 양의 길이를 택한다.",
+    "imageAlt": "교차하는 현의 대응하는 두 부분 — 원 안의 점 P에서 푸른 현 AB와 주황 현 CD가 만난다. AP는 5 cm, BP는 8 cm이다.",
+    "imageCaption": "교차하는 현의 대응하는 두 부분 — 원 안의 점 P에서 푸른 현 AB와 주황 현 CD가 만난다. AP는 5 cm, BP는 8 cm이다."
   },
   {
     "id": 21,
