@@ -1,0 +1,234 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "E",
+    "C",
+    "A"
+  ],
+  "displaySegments": [
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sBA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "A",
+        "C",
+        "E"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "E",
+          "B",
+          "A"
+        ],
+        "value": 30,
+        "label": "30",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aE",
+        "refs": [
+          "C",
+          "E",
+          "A"
+        ],
+        "value": 60,
+        "label": "60",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "be",
+        "ownerSegment": "sBE",
+        "text": "8"
+      },
+      {
+        "id": "ec",
+        "ownerSegment": "sEC",
+        "text": "x",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [],
+    "regions": [],
+    "equalLengths": [],
+    "parallels": [],
+    "facts": []
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "sourceQuote": "다음 그림에서 $\\angle C=90^\\circ$, $\\angle ABC=30^\\circ$, $\\a",
+  "caption": "8번 문제에서 필요한 선분·각·원 구조",
+  "accessibilityDescription": "8번 문제에서 필요한 선분·각·원 구조",
+  "sourceConditions": [
+    {
+      "id": "q08-problem-text",
+      "condition": "다음 그림에서 $\\angle C=90^\\circ$, $\\angle ABC=30^\\circ$, $\\angle AEC=60^\\circ$이고 $\\overline{BE}=8$일 때, $\\overline{EC}$의 길이 $x$의 값은?",
+      "mappedTo": [
+        "mathPlan",
+        "displaySegments",
+        "planeMarks"
+      ]
+    },
+    {
+      "id": "q08-svg",
+      "condition": "archive/assets/images/24_신흥중_2학기_중간_중3_유사/q08-problem.svg",
+      "mappedTo": "DRAWN_FEATURE_PARITY_STATIC_REVIEW"
+    }
+  ],
+  "newVisualInformation": [
+    "발문의 조건만 표시하며 해설 답 선노출 방지"
+  ]
+}

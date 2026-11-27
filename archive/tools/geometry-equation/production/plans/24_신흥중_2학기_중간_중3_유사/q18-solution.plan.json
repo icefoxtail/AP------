@@ -1,0 +1,406 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "80",
+              "denominator": "11"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lDH",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "D",
+          "H"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "lDH"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "H",
+    "O",
+    "E",
+    "F",
+    "G",
+    "I"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sDH",
+      "refs": [
+        "D",
+        "H"
+      ]
+    },
+    {
+      "id": "sOE",
+      "refs": [
+        "O",
+        "E"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOF",
+      "refs": [
+        "O",
+        "F"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOG",
+      "refs": [
+        "O",
+        "G"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOI",
+      "refs": [
+        "O",
+        "I"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayCircles": [
+    "circ"
+  ],
+  "rightAngles": [
+    {
+      "id": "rE",
+      "refs": [
+        "O",
+        "E",
+        "D"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "rF",
+      "refs": [
+        "O",
+        "F",
+        "A"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "rG",
+      "refs": [
+        "O",
+        "G",
+        "C"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "rI",
+      "refs": [
+        "O",
+        "I",
+        "D"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "planeMarks": {
+    "angles": [],
+    "expressionLabels": [
+      {
+        "id": "ab",
+        "ownerSegment": "sAB",
+        "text": "10",
+        "unit": "cm"
+      },
+      {
+        "id": "bc",
+        "ownerSegment": "sBC",
+        "text": "16",
+        "unit": "cm"
+      },
+      {
+        "id": "de",
+        "ownerSegment": "sDA",
+        "text": "16",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "dh",
+        "ownerSegment": "sDH",
+        "text": "146/11",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "arcs": [],
+    "regions": [],
+    "equalLengths": [],
+    "parallels": [],
+    "facts": [
+      {
+        "kind": "TANGENT_PERPENDICULAR",
+        "center": "O",
+        "contact": "I",
+        "tangent": "sDH"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "sourceQuote": "다음 그림에서 원 $O$는 사각형 $ABHD$의 네 변과 접한다. 직사각형 $ABCD$에서 $\\ov",
+  "caption": "18번 해설에서 필요한 선분·각·원 구조",
+  "accessibilityDescription": "18번 해설에서 필요한 선분·각·원 구조",
+  "sourceConditions": [
+    {
+      "id": "q18-solution-text",
+      "condition": "원의 지름이 $AB=10,\\mathrm{cm}$이므로 반지름은 $5,\\mathrm{cm}$이다. $AD$, $AB$, $BC$, $DH$와 원 $O$의 접점을 각각 $E$, $F$, $G$, $I$라 하면 $AF=AE=5$, $BF=BG=5$이다. $DE = 16-5 = 11$이므로 $DI=11$이고, $GH=HI=x$라 하면 $DH=11+x$, $HC=16-(5+x)=11-x$이다. 따라서 $\\triangle CDH$의 둘레의 길이는 $10 + (11+x) + (11-x) = 32,\\mathrm{cm}$이다. 정답은 ①이다.",
+      "mappedTo": [
+        "mathPlan",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 해설에서 필요한 보조선·길이·각을 독립 구성"
+  ]
+}

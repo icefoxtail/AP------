@@ -1,0 +1,162 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "A"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "planeMarks": {
+    "angles": [],
+    "expressionLabels": [
+      {
+        "id": "ac",
+        "ownerSegment": "sCA",
+        "text": "13"
+      },
+      {
+        "id": "bc",
+        "ownerSegment": "sBC",
+        "text": "5"
+      },
+      {
+        "id": "ab",
+        "ownerSegment": "sAB",
+        "text": "12",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "arcs": [],
+    "regions": [],
+    "equalLengths": [],
+    "parallels": [],
+    "facts": []
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "sourceQuote": "다음 그림의 직각삼각형 $ABC$($\\angle B=90^\\circ$)에서 $\\overline{AC",
+  "caption": "1번 해설에서 필요한 선분·각·원 구조",
+  "accessibilityDescription": "1번 해설에서 필요한 선분·각·원 구조",
+  "sourceConditions": [
+    {
+      "id": "q01-solution-text",
+      "condition": "$\\angle B=90^\\circ$이므로 빗변은 $\\overline{AC}=13$이고, 각 $C$에 이웃한 변은 $\\overline{BC}=5$이다. 따라서 $\\cos C = \\dfrac{\\overline{BC}}{\\overline{AC}} = \\dfrac{5}{13}$이므로 정답은 ③이다.",
+      "mappedTo": [
+        "mathPlan",
+        "displaySegments",
+        "planeMarks"
+      ]
+    },
+    {
+      "id": "q01-svg",
+      "condition": "archive/assets/images/24_연향중_2학기_중간_중3_유사/q01-problem.svg",
+      "mappedTo": "DRAWN_FEATURE_PARITY_STATIC_REVIEW"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 해설에서 필요한 보조선·길이·각을 독립 구성"
+  ]
+}

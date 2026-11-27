@@ -1,0 +1,305 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "60"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "60"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "E",
+          "U"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "36"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lEP",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "E",
+          "P"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lGH",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "G",
+          "H"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lEP",
+          "lGH"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "E",
+    "G",
+    "H",
+    "U",
+    "P",
+    "T"
+  ],
+  "displaySegments": [
+    {
+      "id": "ground",
+      "refs": [
+        "O",
+        "G"
+      ]
+    },
+    {
+      "id": "person",
+      "refs": [
+        "O",
+        "E"
+      ]
+    },
+    {
+      "id": "tree",
+      "refs": [
+        "G",
+        "T"
+      ]
+    },
+    {
+      "id": "eyeline",
+      "refs": [
+        "E",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sight",
+      "refs": [
+        "E",
+        "T"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "rightAngles": [
+    {
+      "id": "rG",
+      "refs": [
+        "O",
+        "G",
+        "T"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "rH",
+      "refs": [
+        "E",
+        "H",
+        "T"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aE",
+        "refs": [
+          "H",
+          "E",
+          "T"
+        ],
+        "value": 36,
+        "label": "36",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "eyeHeight",
+        "ownerSegment": "person",
+        "text": "1.6",
+        "unit": "m"
+      }
+    ],
+    "arcs": [],
+    "regions": [],
+    "equalLengths": [],
+    "parallels": [],
+    "facts": [],
+    "dimensions": [
+      {
+        "id": "dOG",
+        "from": "O",
+        "to": "G",
+        "label": "60",
+        "unit": "m",
+        "side": "BELOW",
+        "style": "ARROW"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "실제 36°의 좌표 높이는 60tan36°+1.6이며 문항의 근삿값 0.73을 적용하면 45.4m이다.",
+  "hiddenPointNames": [
+    "U",
+    "P"
+  ],
+  "hiddenPointStyle": "NONE",
+  "sourceQuote": "다음 그림과 같이 똑바로 서 있는 나무로부터 $60,\\mathrm{m}$ 떨어진 지점에서 나무의 꼭",
+  "accessibilityDescription": "실제 36°의 좌표 높이는 60tan36°+1.6이며 문항의 근삿값 0.73을 적용하면 45.4m이다.",
+  "sourceConditions": [
+    {
+      "id": "q11-solution-text",
+      "condition": "눈높이에서 나무 꼭대기까지의 높이는 $h = 60\\tan 36^\\circ = 60\\times 0.73 = 43.8,\\mathrm{m}$이다. 따라서 나무 전체의 높이는 $43.8 + 1.6 = 45.4,\\mathrm{m}$이므로 정답은 ④이다.",
+      "mappedTo": [
+        "mathPlan",
+        "displaySegments",
+        "planeMarks"
+      ]
+    },
+    {
+      "id": "q11-svg",
+      "condition": "archive/assets/images/24_연향중_2학기_중간_중3_유사/q11-problem.svg",
+      "mappedTo": "DRAWN_FEATURE_PARITY_STATIC_REVIEW"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 해설에서 필요한 보조선·길이·각을 독립 구성"
+  ]
+}

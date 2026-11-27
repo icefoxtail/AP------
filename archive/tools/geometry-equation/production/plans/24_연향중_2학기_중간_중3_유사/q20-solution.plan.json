@@ -1,0 +1,288 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "16",
+            "denominator": "5"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "12",
+            "denominator": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "EC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "OD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "OE",
+      "refs": [
+        "O",
+        "E"
+      ]
+    },
+    {
+      "id": "OF",
+      "refs": [
+        "O",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lBE",
+        "ownerSegment": "BE",
+        "text": "8",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lEC",
+        "ownerSegment": "EC",
+        "text": "12",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "r",
+        "ownerSegment": "OD",
+        "text": "4",
+        "unit": "cm",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 560
+  },
+  "caption": "직각삼각형 ABC의 내접원이 세 변에 접하는 점을 D, E, F로 나타낸 그림이다. 변 BC 위에서 접점 E가 나누는 두 선분의 길이가 각각 8 cm, 12 cm로 주어져 있다.",
+  "accessibilityDescription": "꼭짓점 A가 직각인 삼각형 ABC 안에 중심 O인 원이 세 변에 접한다. 접점 D는 변 AB 위, F는 변 AC 위, E는 변 BC 위에 있고, 선분 BE와 EC의 길이가 각각 8 cm, 12 cm로 표시되어 있다.",
+  "newVisualInformation": [
+    "원문 해설에서 필요한 보조선·길이·각을 독립 구성"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q20-solution-text",
+      "condition": "$BD=BE=8,\\mathrm{cm}$, $CF=CE=12,\\mathrm{cm}$이고 내접원의 반지름을 $r,\\mathrm{cm}$라 하면 $AD=AF=r$이다. $AB=r+8$, $AC=r+12$, $BC=20$이므로 직각삼각형 $ABC$에서 $$ (r+8)^2 + (r+12)^2 = 20^2 \\implies 2r^2 + 40r - 192 = 0 \\implies r^2 + 20r - 96 = 0 $$ $(r-4)(r+24)=0$이고 $r>0$이므로 $r=4,\\mathrm{cm}$이다. 따라서 원 $O$의 넓이는 $\\pi\\times 4^2 = 16\\pi,\\mathrm{cm}^2$이므로 정답은 ⑤이다.",
+      "mappedTo": [
+        "mathPlan",
+        "displaySegments",
+        "planeMarks"
+      ]
+    },
+    {
+      "id": "q20-svg",
+      "condition": "archive/assets/images/24_연향중_2학기_중간_중3_유사/q20-problem.svg",
+      "mappedTo": "DRAWN_FEATURE_PARITY_STATIC_REVIEW"
+    }
+  ],
+  "sourceQuote": "다음 그림에서 원 $O$는 $\\angle A=90^\\circ$인 직각삼각형 $ABC$의 내접원이고 "
+}

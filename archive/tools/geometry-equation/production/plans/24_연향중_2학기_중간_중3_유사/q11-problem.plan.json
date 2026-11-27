@@ -1,0 +1,305 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "60"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "60"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "E",
+          "U"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "36"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lEP",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "E",
+          "P"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lGH",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "G",
+          "H"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lEP",
+          "lGH"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "E",
+    "G",
+    "H",
+    "U",
+    "P",
+    "T"
+  ],
+  "displaySegments": [
+    {
+      "id": "ground",
+      "refs": [
+        "O",
+        "G"
+      ]
+    },
+    {
+      "id": "person",
+      "refs": [
+        "O",
+        "E"
+      ]
+    },
+    {
+      "id": "tree",
+      "refs": [
+        "G",
+        "T"
+      ]
+    },
+    {
+      "id": "eyeline",
+      "refs": [
+        "E",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sight",
+      "refs": [
+        "E",
+        "T"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "rightAngles": [
+    {
+      "id": "rG",
+      "refs": [
+        "O",
+        "G",
+        "T"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "rH",
+      "refs": [
+        "E",
+        "H",
+        "T"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aE",
+        "refs": [
+          "H",
+          "E",
+          "T"
+        ],
+        "value": 36,
+        "label": "36",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "eyeHeight",
+        "ownerSegment": "person",
+        "text": "1.6",
+        "unit": "m"
+      }
+    ],
+    "arcs": [],
+    "regions": [],
+    "equalLengths": [],
+    "parallels": [],
+    "facts": [],
+    "dimensions": [
+      {
+        "id": "dOG",
+        "from": "O",
+        "to": "G",
+        "label": "60",
+        "unit": "m",
+        "side": "BELOW",
+        "style": "ARROW"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "눈높이 1.6m에서 수평 60m의 나무 꼭대기를 36°로 올려본다. 원문 tan36≈0.73은 반올림값이다.",
+  "hiddenPointNames": [
+    "U",
+    "P"
+  ],
+  "hiddenPointStyle": "NONE",
+  "sourceQuote": "다음 그림과 같이 똑바로 서 있는 나무로부터 $60,\\mathrm{m}$ 떨어진 지점에서 나무의 꼭",
+  "accessibilityDescription": "눈높이 1.6m에서 수평 60m의 나무 꼭대기를 36°로 올려본다. 원문 tan36≈0.73은 반올림값이다.",
+  "sourceConditions": [
+    {
+      "id": "q11-problem-text",
+      "condition": "다음 그림과 같이 똑바로 서 있는 나무로부터 $60,\\mathrm{m}$ 떨어진 지점에서 나무의 꼭대기를 올려다본 각의 크기가 $36^\\circ$이다. 사람의 눈높이가 $1.6,\\mathrm{m}$일 때, 이 나무의 높이는? (단, $\\sin 36^\\circ=0.59$, $\\cos 36^\\circ=0.81$, $\\tan 36^\\circ=0.73$으로 계산한다.)",
+      "mappedTo": [
+        "mathPlan",
+        "displaySegments",
+        "planeMarks"
+      ]
+    },
+    {
+      "id": "q11-svg",
+      "condition": "archive/assets/images/24_연향중_2학기_중간_중3_유사/q11-problem.svg",
+      "mappedTo": "DRAWN_FEATURE_PARITY_STATIC_REVIEW"
+    }
+  ],
+  "newVisualInformation": [
+    "발문의 조건만 표시하며 해설 답 선노출 방지"
+  ]
+}
