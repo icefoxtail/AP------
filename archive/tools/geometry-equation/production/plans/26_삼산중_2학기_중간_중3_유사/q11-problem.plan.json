@@ -1,0 +1,157 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "다음 $\\triangle ABC$의 넓이가 $",
+  "sourceConditions": [
+    {
+      "id": "q11-c1",
+      "condition": "AB=6, 각 A=60도",
+      "mappedTo": "seg-AB"
+    },
+    {
+      "id": "q11-c2",
+      "condition": "삼각형 넓이 6루트3",
+      "mappedTo": "poly-ABC"
+    }
+  ],
+  "newVisualInformation": [
+    "AB=6과 각 A=60도를 갖는 삼각형 ABC"
+  ],
+  "caption": "넓이가 6루트3이고 AB=6, 각 A=60도인 삼각형 ABC",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [],
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    }
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "seg-BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "seg-AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "assetPath": "assets/images/26_삼산중_2학기_중간_중3_유사/q11.svg",
+  "accessibilityDescription": "중학교 3학년 11번 발문에서 주어진 점과 도형, 길이와 각 관계를 나타낸 그림.",
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "given60",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "text-lenAB",
+        "ownerSegment": "seg-AB",
+        "text": "6"
+      }
+    ]
+  }
+}

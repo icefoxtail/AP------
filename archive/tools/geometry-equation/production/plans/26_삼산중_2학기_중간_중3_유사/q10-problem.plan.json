@@ -1,0 +1,306 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "배구 선수가 지면으로부터 높이 $3\\text{",
+  "sourceConditions": [
+    {
+      "id": "q10-c1",
+      "condition": "A 높이 3m, 네트 D 높이 2m",
+      "mappedTo": "seg-net"
+    },
+    {
+      "id": "q10-c2",
+      "condition": "각도 30도 및 45도",
+      "mappedTo": "seg-paths"
+    },
+    {
+      "id": "verified-3",
+      "condition": "A에서 D까지의 경로는 수평선과 30도, D에서 B까지는 45도",
+      "mappedTo": "seg-AD"
+    }
+  ],
+  "newVisualInformation": [
+    "배구공이 A에서 네트 D를 거쳐 바닥 B에 떨어지는 경로"
+  ],
+  "caption": "A지점에서 네트 D를 거쳐 바닥 B로 이동하는 공의 경로",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1732051",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3732051",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "HA",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "HD",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1732051",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "AR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "DR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2732051",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [],
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    }
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "seg-DB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "ground",
+      "refs": [
+        "HA",
+        "B"
+      ]
+    },
+    {
+      "id": "altA",
+      "refs": [
+        "A",
+        "HA"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "altD",
+      "refs": [
+        "D",
+        "HD"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "horizA",
+      "refs": [
+        "A",
+        "AR"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "horizD",
+      "refs": [
+        "D",
+        "DR"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "D",
+    "B",
+    "HA",
+    "HD",
+    "AR",
+    "DR"
+  ],
+  "assetPath": "assets/images/26_삼산중_2학기_중간_중3_유사/q10.svg",
+  "accessibilityDescription": "중학교 3학년 10번 발문에서 주어진 점과 도형, 길이와 각 관계를 나타낸 그림.",
+  "hiddenPointNames": [
+    "HA",
+    "HD",
+    "AR",
+    "DR"
+  ],
+  "hiddenPointStyle": "NONE",
+  "rightAngles": [
+    {
+      "id": "rightHA",
+      "refs": [
+        "A",
+        "HA",
+        "B"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "rightHD",
+      "refs": [
+        "D",
+        "HD",
+        "B"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angle30",
+        "refs": [
+          "AR",
+          "A",
+          "D"
+        ],
+        "value": 30,
+        "label": "30",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angle45",
+        "refs": [
+          "DR",
+          "D",
+          "B"
+        ],
+        "value": 45,
+        "label": "45",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "text-lenHA",
+        "ownerSegment": "altA",
+        "text": "3 m"
+      },
+      {
+        "id": "text-lenHD",
+        "ownerSegment": "altD",
+        "text": "2 m"
+      }
+    ]
+  }
+}

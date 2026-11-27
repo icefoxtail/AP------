@@ -1,0 +1,216 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "원 $O$에서 현의 길이가 $16\\text{ ",
+  "sourceConditions": [
+    {
+      "id": "q3-c1",
+      "condition": "현 AB의 길이는 16",
+      "mappedTo": "seg-AB"
+    },
+    {
+      "id": "q3-c2",
+      "condition": "중심 O에서 현까지의 거리 OM=6",
+      "mappedTo": "seg-OM"
+    },
+    {
+      "id": "verified-3",
+      "condition": "원 중심 O와 원주점 A의 거리 10은 발문 값으로부터 계산한 반지름",
+      "mappedTo": "circleO"
+    }
+  ],
+  "newVisualInformation": [
+    "해설에서 도출한 수치와 도형 관계가 문제 그림에 추가 표시됨"
+  ],
+  "caption": "삼산중 3번 해설에서 보조선과 계산된 길이·각을 구분하여 표시한 그림",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circleO",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "audit-OM",
+        "sourceConditionId": "q3-c2",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "O",
+          "M"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "6"
+        }
+      }
+    ],
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    }
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "seg-OM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "seg-OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "seg-AM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "M"
+  ],
+  "accessibilityDescription": "문제에 제시된 점과 선에 해설 과정에서 계산한 길이, 각도 또는 보조선을 표시한 그림.",
+  "displayCircles": [
+    "circleO"
+  ],
+  "rightAngles": [
+    {
+      "id": "rightM",
+      "refs": [
+        "O",
+        "M",
+        "A"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "text-lenAB",
+        "ownerSegment": "seg-AB",
+        "text": "16"
+      },
+      {
+        "id": "text-lenOM",
+        "ownerSegment": "seg-OM",
+        "text": "6"
+      },
+      {
+        "id": "text-derivedAM",
+        "ownerSegment": "seg-AM",
+        "text": "8"
+      },
+      {
+        "id": "text-derivedRadius",
+        "ownerSegment": "seg-OA",
+        "text": "10"
+      }
+    ]
+  }
+}

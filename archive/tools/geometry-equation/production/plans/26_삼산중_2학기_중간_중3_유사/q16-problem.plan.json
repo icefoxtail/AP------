@@ -1,0 +1,383 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "다음 그림과 같이 원 $O$ 내부에 길이가 각",
+  "sourceConditions": [
+    {
+      "id": "q16-c1",
+      "condition": "AB, CD 사이 거리 8",
+      "mappedTo": "seg-AB"
+    },
+    {
+      "id": "q16-c2",
+      "condition": "EF, GH 사이 거리 12, AB=16",
+      "mappedTo": "seg-EF"
+    },
+    {
+      "id": "verified-3",
+      "condition": "서로 수직인 두 평행현 묶음의 간격이 8cm와 12cm",
+      "mappedTo": "gap8"
+    }
+  ],
+  "newVisualInformation": [
+    "원 O 내부의 수직인 두 쌍의 평행현의 배치"
+  ],
+  "caption": "원 O 내부의 수직인 두 쌍의 평행현 AB, CD와 EF, GH",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "44"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-1"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "44"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "44"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-1"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "44"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circleO",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "80"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [],
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    }
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "seg-CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "seg-EF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "seg-GH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H"
+  ],
+  "assetPath": "assets/images/26_삼산중_2학기_중간_중3_유사/q16.svg",
+  "accessibilityDescription": "중학교 3학년 16번 발문에서 주어진 점과 도형, 길이와 각 관계를 나타낸 그림.",
+  "displayCircles": [
+    "circleO"
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "hEqual",
+        "count": 1,
+        "segments": [
+          "seg-AB",
+          "seg-CD"
+        ]
+      },
+      {
+        "id": "vEqual",
+        "count": 2,
+        "segments": [
+          "seg-EF",
+          "seg-GH"
+        ]
+      }
+    ],
+    "parallels": [
+      {
+        "id": "hParallel",
+        "count": 1,
+        "segments": [
+          "seg-AB",
+          "seg-CD"
+        ]
+      },
+      {
+        "id": "vParallel",
+        "count": 2,
+        "segments": [
+          "seg-EF",
+          "seg-GH"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "text-lenAB",
+        "ownerSegment": "seg-AB",
+        "text": "16"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "gap8",
+        "from": "A",
+        "to": "C",
+        "label": "8",
+        "unit": "cm",
+        "side": "LEFT",
+        "style": "BAR"
+      },
+      {
+        "id": "gap12",
+        "from": "E",
+        "to": "G",
+        "label": "12",
+        "unit": "cm",
+        "side": "ABOVE",
+        "style": "BAR"
+      }
+    ]
+  }
+}

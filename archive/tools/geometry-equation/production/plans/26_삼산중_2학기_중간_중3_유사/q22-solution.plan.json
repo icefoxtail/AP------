@@ -1,0 +1,239 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "<서술형2> 어느 유명한 건축물은 지면의 수직",
+  "sourceConditions": [
+    {
+      "id": "q22-c1",
+      "condition": "AB=48, 수직선과 5도 기울어짐",
+      "mappedTo": "seg-AB"
+    },
+    {
+      "id": "q22-c2",
+      "condition": "A에서 올려다본 각 45도",
+      "mappedTo": "point-A"
+    },
+    {
+      "id": "verified-3",
+      "condition": "기울어진 건축물이 수직 방향에서 5도 기울어져 있음",
+      "mappedTo": "seg-CB"
+    }
+  ],
+  "newVisualInformation": [
+    "해설에서 도출한 수치와 도형 관계가 문제 그림에 추가 표시됨"
+  ],
+  "caption": "삼산중 22번 해설에서 보조선과 계산된 길이·각을 구분하여 표시한 그림",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "11"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "11"
+            },
+            {
+              "kind": "integer",
+              "value": "11"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BU",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [],
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    }
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "seg-AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "seg-CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "seg-CB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "verticalReference",
+      "refs": [
+        "B",
+        "BU"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "BU"
+  ],
+  "accessibilityDescription": "문제에 제시된 점과 선에 해설 과정에서 계산한 길이, 각도 또는 보조선을 표시한 그림.",
+  "rightAngles": [
+    {
+      "id": "rightD",
+      "refs": [
+        "C",
+        "D",
+        "A"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angleA45",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "value": 45,
+        "label": "45",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tilt5",
+        "refs": [
+          "BU",
+          "B",
+          "C"
+        ],
+        "value": 5,
+        "label": "5",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "derivedB85",
+        "refs": [
+          "D",
+          "B",
+          "C"
+        ],
+        "value": 85,
+        "label": "85",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "text-lenAB",
+        "ownerSegment": "seg-AB",
+        "text": "48"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "BU"
+  ],
+  "hiddenPointStyle": "NONE"
+}

@@ -1,0 +1,290 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "왕운중 16번 해설에서 보조선과 계산된 길이·각을 구분하여 표시한 그림",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "14",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "48",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-18",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "C1",
+    "C2",
+    "N",
+    "T1",
+    "T2",
+    "M"
+  ],
+  "pointNames": {
+    "O": "O"
+  },
+  "hiddenPointNames": [
+    "C1",
+    "C2",
+    "N",
+    "T1",
+    "T2",
+    "M"
+  ],
+  "unmarkedPointNames": [
+    "C1",
+    "C2",
+    "N",
+    "T1",
+    "T2",
+    "M"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sChord1",
+      "refs": [
+        "C1",
+        "C2"
+      ]
+    },
+    {
+      "id": "sChord2",
+      "refs": [
+        "T1",
+        "T2"
+      ]
+    },
+    {
+      "id": "sON",
+      "refs": [
+        "O",
+        "N"
+      ]
+    },
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "sRadius",
+      "refs": [
+        "O",
+        "C1"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lx",
+        "ownerSegment": "sOM",
+        "text": "x"
+      },
+      {
+        "id": "lRad",
+        "ownerSegment": "sRadius",
+        "text": "10"
+      },
+      {
+        "id": "lCh1",
+        "ownerSegment": "sChord1",
+        "text": "16"
+      },
+      {
+        "id": "lCh2",
+        "ownerSegment": "sChord2",
+        "text": "16"
+      },
+      {
+        "id": "text-derivedON",
+        "ownerSegment": "sON",
+        "text": "6"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rN",
+      "refs": [
+        "O",
+        "N",
+        "C2"
+      ]
+    },
+    {
+      "id": "rM",
+      "refs": [
+        "O",
+        "M",
+        "T2"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 560
+  },
+  "accessibilityDescription": "문제에 제시된 점과 선에 해설 과정에서 계산한 길이, 각도 또는 보조선을 표시한 그림.",
+  "newVisualInformation": [
+    "해설에서 도출한 수치와 도형 관계가 문제 그림에 추가 표시됨"
+  ]
+}

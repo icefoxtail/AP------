@@ -1,0 +1,146 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "왕운중 11번 해설에서 보조선과 계산된 길이·각을 구분하여 표시한 그림",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "50"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "pointNames": {
+    "A": "A",
+    "B": "B",
+    "C": "C"
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angC",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "label": "60°"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAC",
+        "ownerSegment": "sCA",
+        "text": "30 m"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sCB",
+        "text": "50 m"
+      },
+      {
+        "id": "text-derivedAB",
+        "ownerSegment": "sAB",
+        "text": "10sqrt(19)"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 580,
+    "height": 400
+  },
+  "accessibilityDescription": "문제에 제시된 점과 선에 해설 과정에서 계산한 길이, 각도 또는 보조선을 표시한 그림.",
+  "newVisualInformation": [
+    "해설에서 도출한 수치와 도형 관계가 문제 그림에 추가 표시됨"
+  ]
+}

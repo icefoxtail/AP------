@@ -1,0 +1,184 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "다음 그림의 직각삼각형 $ABC$에서 $\\an",
+  "sourceConditions": [
+    {
+      "id": "q1-c1",
+      "condition": "각 B는 90도",
+      "mappedTo": "ra-B"
+    },
+    {
+      "id": "q1-c2",
+      "condition": "빗변 AC=13",
+      "mappedTo": "seg-AC"
+    },
+    {
+      "id": "q1-c3",
+      "condition": "대변 BC=5",
+      "mappedTo": "seg-BC"
+    },
+    {
+      "id": "verified-4",
+      "condition": "피타고라스 정리로 구한 AB의 길이는 12",
+      "mappedTo": "seg-AB"
+    }
+  ],
+  "newVisualInformation": [
+    "해설에서 도출한 수치와 도형 관계가 문제 그림에 추가 표시됨"
+  ],
+  "caption": "삼산중 1번 해설에서 보조선과 계산된 길이·각을 구분하여 표시한 그림",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "audit-AB",
+        "sourceConditionId": "verified-4",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "B",
+          "A"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "12"
+        }
+      },
+      {
+        "id": "audit-BC",
+        "sourceConditionId": "q1-c3",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "5"
+        }
+      }
+    ],
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    }
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "seg-BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "seg-AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "rightAngles": [
+    {
+      "id": "ra-B",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "accessibilityDescription": "문제에 제시된 점과 선에 해설 과정에서 계산한 길이, 각도 또는 보조선을 표시한 그림.",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "text-lenAC",
+        "ownerSegment": "seg-AC",
+        "text": "13"
+      },
+      {
+        "id": "text-lenBC",
+        "ownerSegment": "seg-BC",
+        "text": "5"
+      },
+      {
+        "id": "text-derivedAB",
+        "ownerSegment": "seg-AB",
+        "text": "12"
+      }
+    ]
+  }
+}
