@@ -1,0 +1,12 @@
+{
+  "capability":"ellipse-figure-v1",
+  "sourceQuote":"A(0,-4)에서 쌍곡선 x²−y²=8에 그은 접선의 접점 P(a,b), a>0, a/b",
+  "conic":{"kind":"HYPERBOLA","center":["0","0"],"aSquared":"8","bSquared":"8","transverse":"X"},
+  "points":[{"id":"A","kind":"POINT","x":"0","y":"-4","coordinates":true},{"id":"P","kind":"ON_CONIC","x":"2*sqrt(3)","sign":"POS"}],
+  "lines":[{"id":"t","tangent":true,"at":"P"}],
+  "segments":[{"id":"ap","from":"A","to":"P"}],
+  "caption":"쌍곡선 밖의 점 A에서 오른쪽 가지에 그은 접선의 접점 P",
+  "accessibilityDescription":"쌍곡선 x²−y²=8의 오른쪽 위 P(2√3,2)에 그은 접선이 A(0,-4)를 지나며 a/b=√3이다.",
+  "sourceConditions":[{"id":"c1","condition":"쌍곡선 x²−y²=8, A=(0,-4)","mappedTo":["conic","A"]},{"id":"c2","condition":"해설 접점 조건 y_P=2, a>0에서 x_P=2√3","mappedTo":["P","t"]}],
+  "newVisualInformation":["실제 오른쪽 가지 접점과 외부점 A의 접선을 표시"]
+}

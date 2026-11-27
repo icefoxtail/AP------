@@ -1,0 +1,12 @@
+{
+  "capability":"ellipse-figure-v1",
+  "sourceQuote":"x²/a²+y²/16=1의 초점 F=(c,0), F′=(-c,0), x=c와 만나는 A,B, 꼭짓점 C=(a,0), D=(-a,0)의 사각형 ADBC 넓이",
+  "ellipse":{"center":["0","0"],"semiAxisSquared":{"major":"25","minor":"16"},"majorAxis":"X"},
+  "points":[{"id":"F","kind":"FOCUS","side":1},{"id":"F'","kind":"FOCUS","side":-1},{"id":"A","kind":"ON_ELLIPSE","x":"3","branch":"POS"},{"id":"B","kind":"ON_ELLIPSE","x":"3","branch":"NEG"},{"id":"C","kind":"VERTEX","end":"MAJOR_POS"},{"id":"D","kind":"VERTEX","end":"MAJOR_NEG"},{"id":"O","kind":"ORIGIN"}],
+  "segments":[{"id":"ab","from":"A","to":"B"},{"id":"dc","from":"D","to":"C","dashed":true},{"id":"ad","from":"A","to":"D"},{"id":"db","from":"D","to":"B"},{"id":"bc","from":"B","to":"C"},{"id":"ca","from":"C","to":"A"}],
+  "polygons":[{"id":"area","points":["A","D","B","C"],"fill":"LIGHT"}],
+  "caption":"두 대각선 AB와 DC가 수직인 사각형 ADBC의 넓이",
+  "accessibilityDescription":"가로 장축인 타원 안에서 x=c의 현 AB와 양 끝 꼭짓점 D,C가 이루는 사각형 ADBC를 엷게 강조한다.",
+  "sourceConditions":[{"id":"c1","condition":"a²−c²=16; 좌표는 설명용 대표 a=5,c=3, 실제 원문 미지수 a,c를 결정했다는 뜻은 아님","mappedTo":["ellipse","F","F'","C","D"]},{"id":"c2","condition":"A,B는 x=c와 타원의 교점","mappedTo":["A","B","ab"]},{"id":"c3","condition":"사각형 ADBC의 면적을 묻는 문제라 해당 영역만 강조","mappedTo":["area","dc"]}],
+  "newVisualInformation":["사각형의 두 수직 대각선 AB와 DC, 실제 면적 영역을 강조", "ENGINE_CAPABILITY_PENDING: 원본 x=c, a, -a의 문자식 라벨을 수치 노출 없이 그리는 기능 필요"]
+}

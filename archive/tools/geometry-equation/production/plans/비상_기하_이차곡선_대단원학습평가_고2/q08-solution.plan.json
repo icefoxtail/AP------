@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "sourceQuote":"x²−y²+2y+a=0이 x축 평행 주축의 쌍곡선이 될 a의 범위",
+  "conic":{"kind":"HYPERBOLA","center":["0","1"],"aSquared":"1","bSquared":"1","transverse":"X"},
+  "points":[{"id":"C","kind":"CENTER"}],
+  "lines":[{"id":"u","role":"ASYMPTOTE","sign":1,"dashed":true},{"id":"v","role":"ASYMPTOTE","sign":-1,"dashed":true}],
+  "caption":"a<-1일 때의 가로 주축 쌍곡선(대표 a=-2)",
+  "accessibilityDescription":"식 x²−(y−1)²=−a−1에서 우변이 양수인 대표 a=-2의 경우, 중심 (0,1)에서 x방향으로 두 가지가 열리는 쌍곡선이다.",
+  "sourceConditions":[{"id":"c1","condition":"완전제곱으로 x²−(y−1)²=−a−1","mappedTo":["conic"]},{"id":"c2","condition":"−a−1>0이면 x축 평행 주축, 대표 a=-2","mappedTo":["conic","C","u","v"]}],
+  "newVisualInformation":["x축과 평행한 가로 주축이라는 조건을 두 가지와 점근선으로 설명", "대표 계수는 해설용이고 문제 그림에 정답 조건 미노출"]
+}

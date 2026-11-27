@@ -1,0 +1,12 @@
+{
+  "capability":"ellipse-figure-v1",
+  "sourceQuote":"원점 중심 타원의 초점 F, y축과 만나는 A를 연결한 AF의 식 y=x/2−1",
+  "conic":{"kind":"ELLIPSE","center":["0","0"],"aSquared":"5","bSquared":"1","major":"X"},
+  "points":[{"id":"F","kind":"FOCUS","side":1},{"id":"A","kind":"POINT","x":"0","y":"-1"},{"id":"O","kind":"ORIGIN"}],
+  "lines":[{"id":"af","through":["A","F"],"label":"y=x/2-1"}],
+  "segments":[{"id":"saf","from":"A","to":"F"}],
+  "caption":"직선 AF의 x절편이 초점 F, y절편이 타원의 꼭짓점 A",
+  "accessibilityDescription":"원점을 중심으로 하는 가로 타원의 아랫쪽 꼭짓점 A(0,-1)과 오른쪽 초점 F(2,0)를 잇는 직선 AF를 보인다.",
+  "sourceConditions":[{"id":"c1","condition":"AF: y=x/2−1에서 A=(0,-1), F=(2,0)","mappedTo":["A","F","af"]},{"id":"c2","condition":"해설로 a²=b²+c²=1+4=5","mappedTo":["conic"]}],
+  "newVisualInformation":["AF가 타원 하단과 x축의 오른쪽 초점을 잇는 정확한 선임을 보여 준다"]
+}

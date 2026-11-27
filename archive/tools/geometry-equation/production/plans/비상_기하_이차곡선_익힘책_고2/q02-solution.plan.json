@@ -1,0 +1,10 @@
+{
+  "capability":"ellipse-figure-v1",
+  "sourceQuote":"두 포물선 (y−1)²=a(x+3), (x+2)²=−8(y−b)의 초점이 일치할 때 a+b",
+  "conics":[{"id":"p1","kind":"PARABOLA","vertex":["-3","1"],"p":"1","axis":"X"},{"id":"p2","kind":"PARABOLA","vertex":["-2","3"],"p":"-2","axis":"Y"}],
+  "points":[{"id":"F","kind":"FOCUS","curve":"p1","coordinates":true}],
+  "caption":"오른쪽과 아래쪽으로 열린 두 포물선의 공통 초점",
+  "accessibilityDescription":"첫 포물선의 꼭짓점은 (-3,1), 둘째의 꼭짓점은 (-2,3)이고 두 포물선의 초점은 F(-2,1)에서 일치한다.",
+  "sourceConditions":[{"id":"c1","condition":"첫 초점 (-3+a/4,1), 둘째 초점 (-2,b−2)","mappedTo":["conics","F"]},{"id":"c2","condition":"초점 일치로 a=4,b=3을 엔진 내부 기하에만 적용","mappedTo":["conics"]}],
+  "newVisualInformation":["서로 열리는 축이 직교하지만 초점이 같은 사실을 한 좌표평면에 보여 준다"]
+}

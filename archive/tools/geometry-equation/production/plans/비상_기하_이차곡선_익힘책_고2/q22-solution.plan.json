@@ -1,0 +1,12 @@
+{
+  "capability":"ellipse-figure-v1",
+  "sourceQuote":"A(0,a)에서 타원 x²/9+y²/4=1에 그은 접선 AP, OA=AP, a²",
+  "conic":{"kind":"ELLIPSE","center":["0","0"],"aSquared":"9","bSquared":"4","major":"X"},
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"A","kind":"POINT","x":"0","y":"2*sqrt(5)"},{"id":"P","kind":"ON_CONIC","x":"6*sqrt(5)/5","branch":"POS"}],
+  "lines":[{"id":"t","tangent":true,"at":"P"}],
+  "segments":[{"id":"oa","from":"O","to":"A"},{"id":"ap","from":"A","to":"P"},{"id":"op","from":"O","to":"P","dashed":true}],
+  "caption":"타원 바깥 점 A에서 그은 접선 AP와 OA=AP의 관계",
+  "accessibilityDescription":"타원 x²/9+y²/4=1에 A(0,2√5)에서 접한 점 P가 있고, OA와 AP의 길이는 같다.",
+  "sourceConditions":[{"id":"c1","condition":"A=(0,a), OA=AP이고 a²=20, 양의 a로 대표 그림","mappedTo":["A","oa","ap"]},{"id":"c2","condition":"접선과의 접점 P=(6√5/5,2√5/5)에서 접선 기울기를 판별식으로 검증","mappedTo":["P","t"]}],
+  "newVisualInformation":["원의 반지름처럼 오인하지 않도록 타원 접점과 AP를 정확히 표시", "ENGINE_CAPABILITY_PENDING: OA와 AP의 동일 길이 눈금, 접점에서 반지름/접선 직각표식이 이 capability에 없음"]
+}

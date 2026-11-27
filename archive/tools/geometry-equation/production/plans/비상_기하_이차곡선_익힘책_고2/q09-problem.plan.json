@@ -1,0 +1,12 @@
+{
+  "capability":"ellipse-figure-v1",
+  "sourceQuote":"타원 x²+4y²=20의 P(2,2)와 두 초점 F,F′가 이루는 삼각형 넓이",
+  "ellipse":{"center":["0","0"],"semiAxisSquared":{"major":"20","minor":"5"},"majorAxis":"X"},
+  "points":[{"id":"P","kind":"ON_ELLIPSE","x":"2","branch":"POS","coordinates":true},{"id":"F","kind":"FOCUS","side":1},{"id":"F'","kind":"FOCUS","side":-1}],
+  "segments":[{"id":"pf","from":"P","to":"F"},{"id":"pfp","from":"P","to":"F'"},{"id":"ff","from":"F","to":"F'"}],
+  "polygons":[{"id":"area","points":["P","F","F'"],"fill":"LIGHT"}],
+  "caption":"넓이를 묻는 삼각형 PFF′의 위치",
+  "accessibilityDescription":"타원 위의 주어진 점 P(2,2)와 두 초점을 이은 삼각형 영역만 밝은 색으로 표시하고 수치 넓이는 적지 않았다.",
+  "sourceConditions":[{"id":"c1","condition":"x²/20+y²/5=1의 초점 F,F′와 P=(2,2)","mappedTo":["ellipse","P","F","F'"]},{"id":"c2","condition":"삼각형 넓이를 묻지만 넓이 값은 미표기","mappedTo":["area","pf","pfp","ff"]}],
+  "newVisualInformation":["구하는 대상 영역만 칠하고 정답 값 노출 없이 밑변과 높이를 읽게 한다"]
+}

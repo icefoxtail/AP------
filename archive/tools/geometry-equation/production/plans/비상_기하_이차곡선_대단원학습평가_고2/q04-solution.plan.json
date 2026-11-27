@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "sourceQuote":"초점 (5,0),(-5,0), 한 꼭짓점 (0,4)인 타원 방정식",
+  "ellipse":{"center":["0","0"],"semiAxisSquared":{"major":"41","minor":"16"},"majorAxis":"X"},
+  "points":[{"id":"F","kind":"FOCUS","side":1},{"id":"F'","kind":"FOCUS","side":-1},{"id":"B","kind":"VERTEX","end":"MINOR_POS","coordinates":true},{"id":"O","kind":"ORIGIN"}],
+  "segments":[{"id":"ob","from":"O","to":"B","label":"4"},{"id":"of","from":"O","to":"F","label":"5"}],
+  "caption":"초점거리 5, 단반지름 4로 정해지는 가로 장축 타원",
+  "accessibilityDescription":"타원의 두 초점 F(5,0),F′(-5,0) 및 단축 위 꼭짓점 B(0,4)를 연결해 a²=41을 구하는 관계를 보인다.",
+  "sourceConditions":[{"id":"c1","condition":"원점 중심, 초점거리 c=5, 단반지름 b=4","mappedTo":["ellipse","F","F'","B","ob","of"]},{"id":"c2","condition":"해설 a²=b²+c²=16+25=41","mappedTo":["ellipse"]}],
+  "newVisualInformation":["초점과 단반지름이 다른 방향에 놓이는 관계를 실제 좌표로 표시"]
+}

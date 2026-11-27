@@ -1,0 +1,13 @@
+{
+  "capability":"ellipse-figure-v1",
+  "sourceQuote":"쌍곡선 x²/4−y²/5=1 오른쪽 가지와 초점 D를 지나는 직선 y=m(x−3)의 교점 A,B, AB=6",
+  "conic":{"kind":"HYPERBOLA","center":["0","0"],"aSquared":"4","bSquared":"5","transverse":"X"},
+  "points":[{"id":"C","kind":"FOCUS","side":-1},{"id":"D","kind":"FOCUS","side":1},{"id":"A","kind":"LINE_CONIC","line":"l","which":1},{"id":"B","kind":"LINE_CONIC","line":"l","which":2}],
+  "lines":[{"id":"l","slope":"5*sqrt(2)/2","intercept":"-15*sqrt(2)/2","label":"l"}],
+  "segments":[{"id":"ab","from":"A","to":"B","label":"6"},{"id":"ad","from":"A","to":"D"},{"id":"bd","from":"B","to":"D"},{"id":"ac","from":"A","to":"C"},{"id":"bc","from":"B","to":"C"}],
+  "polygons":[{"id":"abc","points":["A","B","C"],"fill":"NONE"}],
+  "caption":"초점 D를 가로지르는 현 AB와 삼각형 ABC의 둘레",
+  "accessibilityDescription":"쌍곡선의 두 초점 C(-3,0), D(3,0)를 표시하고, D를 지나는 현 AB=6 및 삼각형 ABC의 세 변을 그린다.",
+  "sourceConditions":[{"id":"c1","condition":"C=(-3,0),D=(3,0), 오른쪽 가지의 A,B와 D가 일직선","mappedTo":["conic","C","D","A","B","l"]},{"id":"c2","condition":"길이가 6인 현의 한 배치로 m=5√2/2를 내부에 사용, 원문 미지 m의 값은 화면에는 쓰지 않음","mappedTo":["l","ab"]},{"id":"c3","condition":"해설: AC−AD=BC−BD=4, AD+BD=AB=6","mappedTo":["ac","ad","bc","bd","ab"]}],
+  "newVisualInformation":["양쪽 초점과 현을 잇는 삼각형의 구성", "ENGINE_CAPABILITY_PENDING: 원본처럼 왼쪽 쌍곡선 가지만 점선으로 바꾸는 branchStyle 지원 필요"]
+}

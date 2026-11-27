@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "sourceQuote":"타원 2x²+y²=32의 양 초점으로 만든 삼각형 PFF′의 둘레 24가 정하는 P의 자취",
+  "conics":[{"id":"old","kind":"ELLIPSE","center":["0","0"],"aSquared":"32","bSquared":"16","major":"Y"},{"id":"new","kind":"ELLIPSE","center":["0","0"],"aSquared":"64","bSquared":"48","major":"Y"}],
+  "points":[{"id":"F","kind":"FOCUS","curve":"old","side":1},{"id":"F'","kind":"FOCUS","curve":"old","side":-1},{"id":"P","kind":"ON_CONIC","curve":"new","x":"6","branch":"POS"}],
+  "segments":[{"id":"ff","from":"F","to":"F'","label":"8"},{"id":"pf","from":"P","to":"F","label":"6"},{"id":"pfp","from":"P","to":"F'","label":"10"}],
+  "caption":"두 타원이 같은 두 초점을 가지며 PFF′의 둘레 24인 대표 배치",
+  "accessibilityDescription":"내부 타원의 초점 F(0,4),F′(0,-4)를 공통으로 하는 외부 타원 위의 P(6,4)에서 삼각형 PF′F의 세 변 길이 합이 24이다.",
+  "sourceConditions":[{"id":"c1","condition":"기존 타원 x²/16+y²/32=1의 초점거리 c=4, FF′=8","mappedTo":["conics","F","F'","ff"]},{"id":"c2","condition":"PF+PF′=24−8=16인 새 타원 x²/48+y²/64=1, 대표 P=(6,4)","mappedTo":["conics","P","pf","pfp"]}],
+  "newVisualInformation":["같은 두 초점을 공유하는 기존 타원과 새 자취를 동시에 표시"]
+}

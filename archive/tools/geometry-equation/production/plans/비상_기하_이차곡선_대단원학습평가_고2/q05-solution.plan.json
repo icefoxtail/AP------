@@ -1,0 +1,18 @@
+{
+  "capability":"construction-spike-v1",
+  "sourceQuote":"AB=5, A는 x축, B는 y축, AP:PB=3:2인 점 P의 자취",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"X","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"P","op":"DIVISION_POINT","inputs":["A","B"],"args":{"m":{"kind":"integer","value":"3"},"n":{"kind":"integer","value":"2"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["A","B","P"],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sAP","refs":["A","P"]},{"id":"sPB","refs":["P","B"]}],
+  "planeMarks":{"dimensions":[{"id":"dAB","from":"A","to":"B","label":"5","value":"5","side":"ABOVE"}],"expressionLabels":[{"id":"eAP","ownerSegment":"sAP","text":"3t"},{"id":"ePB","ownerSegment":"sPB","text":"2t"}]},
+  "caption":"길이 5인 선분 AB의 3:2 내분점 P를 나타낸 대표 배치",
+  "accessibilityDescription":"직각으로 만나는 양의 좌표축에 A(4,0), B(0,3)를 놓아 AB=5인 한 예를 나타낸다. P는 AP:PB=3:2의 내분점이다.",
+  "sourceConditions":[{"id":"c1","condition":"A(a,0),B(0,b),a²+b²=25의 한 대표 배치 a=4,b=3","mappedTo":["A","B","sAB","dAB"]},{"id":"c2","condition":"AP:PB=3:2, P=(2a/5,3b/5)","mappedTo":["P","sAP","sPB","eAP","ePB"]}],
+  "newVisualInformation":["원본에서 빠진 AP:PB의 관계를 각 선분의 3t, 2t 라벨로 표현", "전체 타원 자취를 미리 그리지 않고 하나의 위치만 보여 준다"]
+}

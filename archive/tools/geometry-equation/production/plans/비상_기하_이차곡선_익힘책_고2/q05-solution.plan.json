@@ -1,0 +1,12 @@
+{
+  "capability":"ellipse-figure-v1",
+  "sourceQuote":"포물선 y²=12x의 초점 F를 지나는 현 AB, A는 제1사분면, AF:BF=4:1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"3","axis":"X"},
+  "points":[{"id":"F","kind":"FOCUS"},{"id":"A","kind":"ON_CONIC","x":"12","branch":"POS","coordinates":true},{"id":"B","kind":"ON_CONIC","x":"3/4","branch":"NEG"},{"id":"O","kind":"ORIGIN"}],
+  "lines":[{"id":"l","through":["A","B"],"label":"l"}],
+  "segments":[{"id":"af","from":"A","to":"F","label":"15"},{"id":"bf","from":"B","to":"F","label":"15/4"}],
+  "caption":"초점을 지나는 현에서 AF:BF=4:1인 배치",
+  "accessibilityDescription":"포물선 y²=12x의 초점 F(3,0)를 지나고 A(12,12), B(3/4,-3)를 잇는 현 AB의 두 부분 AF와 BF를 표시한다.",
+  "sourceConditions":[{"id":"c1","condition":"포물선 y²=12x, 초점 F=(3,0)","mappedTo":["conic","F"]},{"id":"c2","condition":"A는 제1사분면, A,F,B 순서 및 AF:BF=4:1","mappedTo":["A","F","B","af","bf","l"]},{"id":"c3","condition":"해설 계산 AF=15, BF=15/4, A=(12,12)","mappedTo":["af","bf","A"]}],
+  "newVisualInformation":["AF, BF 길이 라벨을 각각 자기 선분에 붙여 원본의 비례 정보 강화"]
+}

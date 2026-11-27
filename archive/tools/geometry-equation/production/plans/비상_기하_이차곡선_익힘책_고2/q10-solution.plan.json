@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "sourceQuote":"타원 x²/36+y²/16=1 위 P와 양 초점 F,F′에 대하여 OP=OF일 때 PF·PF′",
+  "ellipse":{"center":["0","0"],"semiAxisSquared":{"major":"36","minor":"16"},"majorAxis":"X"},
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS","side":1},{"id":"F'","kind":"FOCUS","side":-1},{"id":"P","kind":"ON_ELLIPSE","x":"6*sqrt(5)/5","branch":"POS"}],
+  "segments":[{"id":"pf","from":"P","to":"F"},{"id":"pfp","from":"P","to":"F'"},{"id":"op","from":"O","to":"P"},{"id":"of","from":"O","to":"F"},{"id":"ff","from":"F","to":"F'","dashed":true}],
+  "caption":"OP=OF인 점 P에서 두 초점까지의 선분이 만드는 직각삼각형",
+  "accessibilityDescription":"타원 위 P에서 두 초점 F,F′를 이은 삼각형, 원점 O에서 P와 F까지 같은 거리인 두 선분을 표시한다.",
+  "sourceConditions":[{"id":"c1","condition":"타원 x²/36+y²/16=1, c²=20","mappedTo":["ellipse","F","F'"]},{"id":"c2","condition":"대표 P=(6√5/5,8√5/5)는 타원 위이며 OP=OF=2√5","mappedTo":["P","op","of"]},{"id":"c3","condition":"해설에서 ∠FPF′=90°임을 이용","mappedTo":["pf","pfp","ff"]}],
+  "newVisualInformation":["원본에 없던 OP와 OF를 실제 선분으로 보강", "ENGINE_CAPABILITY_PENDING: 타원 P의 직각 표시와 OP, OF의 등길이 눈금이 필요한데 ellipse-figure에는 planeMarks가 없음"]
+}
