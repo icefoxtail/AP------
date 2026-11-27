@@ -36,7 +36,7 @@ window.examData = {
     ],
     "answer": "④",
     "solution": "<p>조건: $\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$인 이등변삼각형이고, 꼭지각 $\\angle\\mathrm{A}=50^\\circ$입니다.<br/>구할 대상: 꼭짓점 $\\mathrm{C}$에서의 외각 $\\angle x$의 크기(도 단위)를 구합니다.</p><p>먼저 풀이에 쓸 성질을 순서대로 정리합니다.<br/>1) 이등변삼각형의 두 밑각의 크기는 서로 같습니다: $\\angle\\mathrm{B} = \\angle\\mathrm{ACB}$.<br/>2) 삼각형의 세 내각의 크기의 합은 $180^\\circ$이므로 $\\angle\\mathrm{ACB} = \\dfrac{180^\\circ - \\angle\\mathrm{A}}{2}$입니다.<br/>3) 평각의 성질 또는 삼각형 외각의 성질에 의해 $\\angle x = 180^\\circ - \\angle\\mathrm{ACB} = \\angle\\mathrm{A} + \\angle\\mathrm{B}$입니다.</p><p>밑각 $\\angle\\mathrm{ACB}$의 크기를 계산하면 다음과 같습니다:<br/>$$\\angle\\mathrm{B} = \\angle\\mathrm{ACB} = \\frac{180^\\circ - 50^\\circ}{2} = \\frac{130^\\circ}{2} = 65^\\circ$$<br/>따라서 외각 $\\angle x$의 크기는 평각 $180^\\circ$에서 내각 $65^\\circ$를 뺀 값입니다:<br/>$$\\angle x = 180^\\circ - 65^\\circ = 115^\\circ$$<br/>(또는 삼각형의 한 외각의 크기는 이웃하지 않는 두 내각의 크기의 합과 같으므로 $\\angle x = \\angle\\mathrm{A} + \\angle\\mathrm{B} = 50^\\circ + 65^\\circ = 115^\\circ$로 일치합니다.)</p><p>각 선지를 확인하면 다음과 같습니다.<br/>① $100^\\circ$: 거짓 ($115^\\circ$와 불일치)<br/>② $105^\\circ$: 거짓 ($115^\\circ$와 불일치)<br/>③ $110^\\circ$: 거짓 ($115^\\circ$와 불일치)<br/>④ $115^\\circ$: 참 (계산된 $\\angle x = 115^\\circ$와 정확히 일치)<br/>⑤ $120^\\circ$: 거짓 ($115^\\circ$와 불일치)</p><p>따라서 정답은 ④입니다.</p>",
-    "image": "assets/images/19_신흥중_2학기_중간_중2_수학/q01.png",
+    "image": "assets/images/19_신흥중_2학기_중간_중2_수학/q1-problem.svg",
     "accessibility": "선분 AB는 선분 AC인 이등변삼각형 ABC에서 꼭지각 A의 크기가 50도일 때 꼭짓점 C에서의 외각 x의 크기를 구하는 기하 도형",
     "crossConceptKeys": [],
     "conditionKeys": [],
@@ -49,9 +49,12 @@ window.examData = {
     "primaryMethod": "이등변 밑각에서 외각으로 보완",
     "decisiveStep": "꼭지각50으로밑각65를구하고평각180에서빼115를얻는다.",
     "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q1-solution.svg",
-    "solutionImageAlt": "해설 그림: 이등변삼각형 ABC에서 변 BC를 C쪽으로 연장한 점 D가 있고 꼭지각 50°, 두 밑각 65°, 꼭짓점 C의 외각 x=115°가 표시되어 있으며 변 AB와 CA에 같은 눈금이 있다.",
-    "solutionImageCaption": "AB=AC이고 ∠A=50°이므로 두 밑각은 ∠B=∠ACB=(180°−50°)/2=65°이다. 꼭짓점 C에서의 외각은 평각에서 ∠ACB를 뺀 것이므로 ∠x=180°−65°=115°이다. 이는 이웃하지 않는 두 내각의 합 50°+65°=115°와도 같다. 따라서 답은 ④이다.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "1번 문제: 등변 AB=AC, 꼭지각 50°, BC의 연장선과 C의 외각 x.",
+    "solutionImageCaption": "1번 문제: 등변 AB=AC, 꼭지각 50°, BC의 연장선과 C의 외각 x.",
+    "solutionImageSize": "full",
+    "imageAlt": "1번 문제: 등변 AB=AC, 꼭지각 50°, BC의 연장선과 C의 외각 x.",
+    "imageCaption": "1번 문제: 등변 AB=AC, 꼭지각 50°, BC의 연장선과 C의 외각 x.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -142,7 +145,7 @@ window.examData = {
     ],
     "answer": "⑤",
     "solution": "<p>조건: $\\triangle\\mathrm{ABC}$는 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$인 이등변삼각형이고, $\\overline{\\mathrm{AD}}$는 꼭지각 $\\angle\\mathrm{A}$의 이등분선이며 $\\overline{\\mathrm{BC}}$와 만나는 점이 $\\mathrm{D}$입니다. 점 $\\mathrm{P}$는 선분 $\\overline{\\mathrm{AD}}$ 위의 임의의 점입니다.<br/>구할 대상: 5개의 선지 중 수학적으로 '옳지 않은 것'을 고릅니다.</p><p>먼저 풀이에 쓸 성질을 순서대로 정리합니다.<br/>1) 이등변삼각형의 꼭지각의 이등분선은 밑변을 수직이등분합니다:<br/>$$\\overline{\\mathrm{AD}} \\perp \\overline{\\mathrm{BC}}, \\quad \\overline{\\mathrm{BD}} = \\overline{\\mathrm{CD}}$$<br/>2) 점 $\\mathrm{P}$는 선분 $\\overline{\\mathrm{BC}}$의 수직이등분선 위에 있으므로 $\\overline{\\mathrm{PB}} = \\overline{\\mathrm{PC}}$입니다.<br/>3) 이를 바탕으로 $\\triangle\\mathrm{PBD}$와 $\\triangle\\mathrm{PCD}$, $\\triangle\\mathrm{ABP}$와 $\\triangle\\mathrm{ACP}$의 합동 관계를 엄밀히 검토합니다.</p><p>각 선지를 차례로 검토합니다.<br/>- $\\triangle\\mathrm{PBD}$와 $\\triangle\\mathrm{PCD}$에서:<br/>$$\\overline{\\mathrm{BD}} = \\overline{\\mathrm{CD}}, \\quad \\angle\\mathrm{PDB} = \\angle\\mathrm{PDC} = 90^\\circ, \\quad \\overline{\\mathrm{PD}}\\text{는 공통}$$<br/>따라서 $\\triangle\\mathrm{PBD} \\equiv \\triangle\\mathrm{PCD}$ (SAS 합동)입니다. (선지 ④ 참)<br/>- 대응각의 크기가 같으므로:<br/>$$\\angle\\mathrm{BPD} = \\angle\\mathrm{CPD} \\quad (\\text{선지 ① 참})$$<br/>$$\\angle\\mathrm{PBD} = \\angle\\mathrm{PCD} \\implies \\angle\\mathrm{PBC} = \\angle\\mathrm{PCB} \\quad (\\text{선지 ② 참})$$<br/>- $\\triangle\\mathrm{ABP}$와 $\\triangle\\mathrm{ACP}$에서:<br/>$$\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AC}}, \\quad \\angle\\mathrm{BAP} = \\angle\\mathrm{CAP}, \\quad \\overline{\\mathrm{AP}}\\text{는 공통}$$<br/>따라서 $\\triangle\\mathrm{ABP} \\equiv \\triangle\\mathrm{ACP}$ (SAS 합동)입니다. (선지 ③ 참)<br/>- 선지 ⑤의 $\\angle\\mathrm{BPC}=90^\\circ$ 검토:<br/>점 $\\mathrm{P}$는 $\\overline{\\mathrm{AD}}$ 위의 임의의 점이므로 점 $\\mathrm{P}$의 위치에 따라 $\\angle\\mathrm{BPC}$의 크기는 $\\angle\\mathrm{BAC}$에서 $180^\\circ$ 미만까지 연속적으로 변합니다. 특수한 한 위치를 제외하고는 일반적으로 $90^\\circ$가 되지 않으므로 항상 성립한다고 할 수 없습니다.</p><p>선지별 결과를 정리하면 다음과 같습니다.<br/>① $\\angle\\mathrm{BPD}=\\angle\\mathrm{CPD}$: 참 ($\\triangle\\mathrm{PBD}\\equiv\\triangle\\mathrm{PCD}$의 대응각)<br/>② $\\angle\\mathrm{PBC}=\\angle\\mathrm{PCB}$: 참 ($\\triangle\\mathrm{PBC}$는 $\\overline{\\mathrm{PB}}=\\overline{\\mathrm{PC}}$인 이등변삼각형)<br/>③ $\\triangle\\mathrm{ABP}\\equiv\\triangle\\mathrm{ACP}$: 참 (SAS 합동)<br/>④ $\\triangle\\mathrm{PBD}\\equiv\\triangle\\mathrm{PCD}$: 참 (SAS 합동)<br/>⑤ $\\angle\\mathrm{BPC}=90^\\circ$: 거짓 (임의의 점 $\\mathrm{P}$에 대해 항상 $90^\\circ$가 되지는 않음, 옳지 않은 것)</p><p>따라서 옳지 않은 것은 ⑤입니다.</p>",
-    "image": "assets/images/19_신흥중_2학기_중간_중2_수학/q03.png",
+    "image": "assets/images/19_신흥중_2학기_중간_중2_수학/q3-problem.svg",
     "accessibility": "선분 AB는 선분 AC인 이등변삼각형 ABC에서 꼭지각 A의 이등분선 AD 위의 임의의 점 P를 잡았을 때의 기하 관계를 나타낸 도형",
     "crossConceptKeys": [
       "CC_TRIANGLE_CONGRUENCE"
@@ -157,9 +160,12 @@ window.examData = {
     "primaryMethod": "꼭지각 이등분선 위 점의 합동·각 성질 판정",
     "decisiveStep": "밑변수직이등분과두SAS쌍으로네진술을확인하고임의점의중앙각90을배제한다.",
     "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q3-solution.svg",
-    "solutionImageAlt": "해설 그림: 이등변삼각형 ABC의 꼭짓점 A에서 밑변 BC의 점 D로 선분 AD가 그어져 있고 D에 직각 표시가 있다. AD 위의 점 P에서 B와 C로 선분이 그어져 있으며 PB와 PC에 같은 눈금이 있다.",
-    "solutionImageCaption": "이등변삼각형에서 꼭지각의 이등분선 AD는 밑변 BC를 수직이등분하므로 AD 위의 점 P는 PB=PC이다. 따라서 ∠PBC=∠PCB(②), △ABP≡△ACP(SAS, ③), △PBD≡△PCD(④), ∠BPD=∠CPD(①)이다. 그러나 ∠BPC=90°라는 ⑤는 P의 위치에 따라 달라져 항상 성립하지 않는다. 따라서 옳지 않은 것은 ⑤이다.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "3번 문제: 꼭짓각 이등분선 AD 위 P, 선분 BP/CP와 AB=AC 표식.",
+    "solutionImageCaption": "3번 문제: 꼭짓각 이등분선 AD 위 P, 선분 BP/CP와 AB=AC 표식.",
+    "solutionImageSize": "full",
+    "imageAlt": "3번 문제: 꼭짓각 이등분선 AD 위 P, 선분 BP/CP와 AB=AC 표식.",
+    "imageCaption": "3번 문제: 꼭짓각 이등분선 AD 위 P, 선분 BP/CP와 AB=AC 표식.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -302,7 +308,7 @@ window.examData = {
     ],
     "answer": "④",
     "solution": "<p>조건: 점 $\\mathrm{I}$는 $\\triangle\\mathrm{ABC}$의 내심이고, $\\angle\\mathrm{A}=50^\\circ$입니다.<br/>구할 대상: $\\angle\\mathrm{BIC}$의 크기를 구합니다.</p><p>먼저 풀이에 쓸 성질을 순서대로 정리합니다.<br/>1) 내심 $\\mathrm{I}$는 세 내각의 이등분선의 교점입니다.<br/>2) 따라서 $\\angle\\mathrm{IBC} = \\dfrac{1}{2}\\angle\\mathrm{B}$, $\\angle\\mathrm{ICB} = \\dfrac{1}{2}\\angle\\mathrm{C}$입니다.<br/>3) $\\triangle\\mathrm{IBC}$에서 $\\angle\\mathrm{BIC} = 180^\\circ - (\\angle\\mathrm{IBC} + \\angle\\mathrm{ICB}) = 90^\\circ + \\dfrac{1}{2}\\angle\\mathrm{A}$ 공식이 성립합니다.</p><p>위에서 정리한 성질을 이용해 차례로 계산합니다.<br/>$\\triangle\\mathrm{ABC}$에서 세 내각의 합은 $180^\\circ$이므로:<br/>$$\\angle\\mathrm{B} + \\angle\\mathrm{C} = 180^\\circ - \\angle\\mathrm{A} = 180^\\circ - 50^\\circ = 130^\\circ$$<br/>선분 $\\overline{\\mathrm{BI}}$와 $\\overline{\\mathrm{CI}}$가 각각 $\\angle\\mathrm{B}$와 $\\angle\\mathrm{C}$의 이등분선이므로:<br/>$$\\angle\\mathrm{IBC} + \\angle\\mathrm{ICB} = \\frac{1}{2}(\\angle\\mathrm{B} + \\angle\\mathrm{C}) = \\frac{1}{2} \\times 130^\\circ = 65^\\circ$$<br/>$\\triangle\\mathrm{IBC}$에서 세 내각의 합은 $180^\\circ$이므로:<br/>$$\\angle\\mathrm{BIC} = 180^\\circ - (\\angle\\mathrm{IBC} + \\angle\\mathrm{ICB}) = 180^\\circ - 65^\\circ = 115^\\circ$$<br/>공식 $\\angle\\mathrm{BIC} = 90^\\circ + \\dfrac{1}{2}\\angle\\mathrm{A}$에 대입하여도:<br/>$$\\angle\\mathrm{BIC} = 90^\\circ + \\frac{1}{2} \\times 50^\\circ = 90^\\circ + 25^\\circ = 115^\\circ$$<br/>동일한 결과를 얻습니다.</p><p>각 선지를 확인하면 다음과 같습니다.<br/>① $100^\\circ$: 거짓 ($115^\\circ$와 불일치)<br/>② $105^\\circ$: 거짓 ($115^\\circ$와 불일치)<br/>③ $110^\\circ$: 거짓 ($115^\\circ$와 불일치)<br/>④ $115^\\circ$: 참 (계산 결과와 일치)<br/>⑤ $120^\\circ$: 거짓 ($115^\\circ$와 불일치)</p><p>따라서 정답은 ④입니다.</p>",
-    "image": "assets/images/19_신흥중_2학기_중간_중2_수학/q06.png",
+    "image": "assets/images/19_신흥중_2학기_중간_중2_수학/q6-problem.svg",
     "accessibility": "삼각형 ABC의 내심 I가 주어지고 꼭지각 A의 크기가 50도일 때 각 BIC의 크기를 구하는 기하 도형",
     "crossConceptKeys": [],
     "conditionKeys": [],
@@ -315,9 +321,12 @@ window.examData = {
     "primaryMethod": "내심각 공식의 직접 적용",
     "decisiveStep": "BIC=90+A/2에A50을넣는다.",
     "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q6-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내부에 내심 I가 있고 I에서 B와 C로 선분이 그어져 있으며 꼭짓점 A의 각 50°, 각 BIC 115°, 꼭짓점 B와 C에서 이등분된 각이 같은 표시로 나타나 있다.",
-    "solutionImageCaption": "예: ∠A=50°, ∠B=70°, ∠C=60°인 삼각형으로 그렸다. 내심 I에서 BI, CI는 ∠B, ∠C의 이등분선이므로 ∠IBC=(1/2)∠B, ∠ICB=(1/2)∠C이다. ∠BIC=180°−(1/2)(∠B+∠C)=180°−(1/2)(180°−50°)=115°이다. 따라서 답은 ④이다.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "6번 문제: 내심 I와 BI·CI, 꼭지각 50°와 해설 중심각 115°.",
+    "solutionImageCaption": "6번 문제: 내심 I와 BI·CI, 꼭지각 50°와 해설 중심각 115°.",
+    "solutionImageSize": "full",
+    "imageAlt": "6번 문제: 내심 I와 BI·CI, 꼭지각 50°와 해설 중심각 115°.",
+    "imageCaption": "6번 문제: 내심 I와 BI·CI, 꼭지각 50°와 해설 중심각 115°.",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -406,7 +415,7 @@ window.examData = {
     ],
     "answer": "④",
     "solution": "<p>조건: $\\angle\\mathrm{C}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 점 $\\mathrm{I}$는 내심입니다. 세 변의 길이는 $\\overline{\\mathrm{AB}}=10\\text{cm}$, $\\overline{\\mathrm{BC}}=8\\text{cm}$, $\\overline{\\mathrm{CA}}=6\\text{cm}$입니다.<br/>구할 대상: 직각삼각형 내부에서 내접원을 제외한 색칠한 부분의 넓이를 구합니다.</p><p>먼저 풀이에 쓸 성질을 순서대로 정리합니다.<br/>1) 직각삼각형 $\\mathrm{ABC}$의 넓이는 $S = \\dfrac{1}{2} \\times \\overline{\\mathrm{BC}} \\times \\overline{\\mathrm{CA}}$입니다.<br/>2) 내접원의 반지름 $r$은 넓이 공식 $S = \\dfrac{1}{2}r(a+b+c)$ 또는 직각삼각형 공식 $r = \\dfrac{a+b-c}{2}$를 통해 구합니다.<br/>3) 색칠한 부분의 넓이 = (직각삼각형 $\\mathrm{ABC}$의 넓이) - (내접원의 넓이 $\\pi r^2$)입니다.</p><p>직각삼각형 $\\mathrm{ABC}$의 넓이는 다음과 같습니다:<br/>$$S_{\\triangle\\mathrm{ABC}} = \\frac{1}{2} \\times 8 \\times 6 = 24\\text{ cm}^2$$<br/>내접원의 반지름 $r$을 구하면:<br/>$$S = \\frac{1}{2}r(10 + 8 + 6) = \\frac{1}{2}r \\times 24 = 12r = 24 \\implies r = 2\\text{ cm}$$<br/>(직각삼각형 공식: $r = \\dfrac{8+6-10}{2} = \\dfrac{4}{2} = 2\\text{ cm}$로 동일)<br/>따라서 내접원의 넓이는:<br/>$$S_{\\text{circle}} = \\pi r^2 = \\pi \\times 2^2 = 4\\pi\\text{ cm}^2$$<br/>구하고자 하는 색칠한 부분의 넓이는 직각삼각형 넓이에서 원의 넓이를 뺀 값이므로:<br/>$$\\text{색칠한 부분의 넓이} = 24 - 4\\pi\\text{ (cm}^2)$$</p><p>각 선지를 확인하면 다음과 같습니다.<br/>① $(24-\\pi)\\text{cm}^2$: 거짓 ($r=2$이므로 원 넓이는 $4\\pi$)<br/>② $(24-2\\pi)\\text{cm}^2$: 거짓<br/>③ $(24-3\\pi)\\text{cm}^2$: 거짓<br/>④ $(24-4\\pi)\\text{cm}^2$: 참 (정확히 일치)<br/>⑤ $(24-9\\pi)\\text{cm}^2$: 거짓</p><p>따라서 정답은 ④입니다.</p>",
-    "image": "assets/images/19_신흥중_2학기_중간_중2_수학/q08.png",
+    "image": "assets/images/19_신흥중_2학기_중간_중2_수학/q8-problem.svg",
     "accessibility": "세 변의 길이가 10cm, 8cm, 6cm이고 각 C가 90도인 직각삼각형 ABC의 내접원 I를 제외한 색칠한 부분의 넓이를 구하는 기하 도형",
     "crossConceptKeys": [
       "CC_TRIANGLE_AREA",
@@ -422,10 +431,13 @@ window.examData = {
     "primaryMethod": "내접반지름을 넓이와 둘레로 구해 영역 차 계산",
     "decisiveStep": "직각삼각형넓이24와둘레24로r2를구한뒤원넓이를뺀다.",
     "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q8-solution.svg",
-    "solutionImageAlt": "해설 그림: 직각삼각형 ABC 안에 중심 I와 반지름 2인 내접원이 있고, 원을 뺀 나머지 부분이 색칠되어 있다. 세 변에 10, 8, 6이 표시되고 반지름에 r=2가 표시되어 있다.",
-    "solutionImageCaption": "직각삼각형 ABC의 넓이는 2분의 1 곱하기 8 곱하기 6, 즉 24 제곱센티미터이다. 내접원의 반지름은 8과 6을 더한 값에서 10을 뺀 것의 절반인 2 센티미터이므로 원의 넓이는 4π 제곱센티미터이다. 색칠한 부분의 넓이는 24에서 4π를 뺀 값이다. 따라서 답은 ④이다.",
+    "solutionImageAlt": "8번 문제: 6·8·10 직각삼각형의 내접원을 제외한 정확한 색칠 영역과 삼각형의 세 변.",
+    "solutionImageCaption": "8번 문제: 6·8·10 직각삼각형의 내접원을 제외한 정확한 색칠 영역과 삼각형의 세 변.",
     "solutionImageSize": "full",
-    "solutionImageScale": 90
+    "solutionImageScale": 90,
+    "imageAlt": "8번 문제: 6·8·10 직각삼각형의 내접원을 제외한 정확한 색칠 영역과 삼각형의 세 변.",
+    "imageCaption": "8번 문제: 6·8·10 직각삼각형의 내접원을 제외한 정확한 색칠 영역과 삼각형의 세 변.",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -827,7 +839,7 @@ window.examData = {
     ],
     "answer": "②",
     "solution": "<p>조건: $\\triangle\\mathrm{ABC}\\sim\\triangle\\mathrm{DEF}$이고 닮음비는 $2:1$입니다. 그림에서 $\\overline{\\mathrm{AC}}=8\\text{cm}$, $\\overline{\\mathrm{BC}}=12\\text{cm}$, $\\overline{\\mathrm{DE}}=5\\text{cm}$입니다.<br/>구할 대상: $\\triangle\\mathrm{DEF}$의 둘레의 길이를 구합니다.</p><p>먼저 풀이에 쓸 성질을 순서대로 정리합니다.<br/>1) 두 닮은 도형에서 대응하는 변의 길이의 비는 닮음비와 같습니다.<br/>2) 닮음비가 $2:1$이므로 둘레의 길이의 비 역시 $2:1$입니다.<br/>3) 대응변 $\\overline{\\mathrm{AB}}$와 $\\overline{\\mathrm{DE}}$의 비 $\\overline{\\mathrm{AB}} : \\overline{\\mathrm{DE}} = 2:1$을 이용하여 $\\overline{\\mathrm{AB}}$의 길이를 구하고, $\\triangle\\mathrm{ABC}$의 전체 둘레를 구한 후 절반으로 계산합니다.</p><p>위에서 정리한 성질을 이용해 차례로 계산합니다.<br/>$\\triangle\\mathrm{ABC}\\sim\\triangle\\mathrm{DEF}$이고 닮음비가 $2:1$이므로 대응변의 비에 의해:<br/>$$\\overline{\\mathrm{AB}} : \\overline{\\mathrm{DE}} = 2 : 1 \\implies \\overline{\\mathrm{AB}} : 5 = 2 : 1 \\implies \\overline{\\mathrm{AB}} = 10\\text{ cm}$$<br/>따라서 $\\triangle\\mathrm{ABC}$의 세 변의 길이는 $\\overline{\\mathrm{AB}}=10\\text{cm}$, $\\overline{\\mathrm{BC}}=12\\text{cm}$, $\\overline{\\mathrm{CA}}=8\\text{cm}$입니다.<br/>$\\triangle\\mathrm{ABC}$의 둘레의 길이는 다음과 같습니다:<br/>$$\\text{둘레}_{\\triangle\\mathrm{ABC}} = 10 + 12 + 8 = 30\\text{ cm}$$<br/>닮은 두 삼각형의 둘레의 비는 닮음비와 같으므로:<br/>$$\\text{둘레}_{\\triangle\\mathrm{ABC}} : \\text{둘레}_{\\triangle\\mathrm{DEF}} = 2 : 1$$<br/>$$30 : \\text{둘레}_{\\triangle\\mathrm{DEF}} = 2 : 1 \\implies \\text{둘레}_{\\triangle\\mathrm{DEF}} = \\frac{30}{2} = 15\\text{ cm}$$<br/>(각 변의 길이로 직접 확인: $\\overline{\\mathrm{DE}}=5\\text{cm}, \\overline{\\mathrm{EF}}=\\frac{12}{2}=6\\text{cm}, \\overline{\\mathrm{FD}}=\\frac{8}{2}=4\\text{cm} \\implies 5+6+4=15\\text{cm}$로 일치합니다.)</p><p>각 선지를 확인하면 다음과 같습니다.<br/>① $13\\text{cm}$: 거짓<br/>② $15\\text{cm}$: 참 (계산 결과와 일치)<br/>③ $17\\text{cm}$: 거짓<br/>④ $25\\text{cm}$: 거짓<br/>⑤ $30\\text{cm}$: 거짓 ($\\triangle\\mathrm{ABC}$의 둘레임)</p><p>따라서 정답은 ②입니다.</p>",
-    "image": "assets/images/19_신흥중_2학기_중간_중2_수학/q16.png",
+    "image": "assets/images/19_신흥중_2학기_중간_중2_수학/q16-problem.svg",
     "accessibility": "삼각형 ABC와 DEF의 닮음비가 2대 1이고 변 AC는 8cm, BC는 12cm, DE는 5cm일 때 삼각형 DEF의 둘레의 길이를 구하는 기하 도형",
     "crossConceptKeys": [],
     "conditionKeys": [],
@@ -840,10 +852,13 @@ window.examData = {
     "primaryMethod": "주어진 닮음비로 대응변과 둘레 계산",
     "decisiveStep": "작은삼각형의이미알려진변5와대응변8/2,12/2를더한다.",
     "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q16-solution.svg",
-    "solutionImageAlt": "해설 그림: 닮음비 2:1인 두 삼각형 ABC와 DEF가 나란히 있고, 각 변의 길이가 변 옆에 cm 단위로 적혀 있다.",
-    "solutionImageCaption": "닮음비가 2:1이므로 AB:DE=2:1에서 AB=10cm이다. 삼각형 ABC의 둘레는 10+12+8=30cm이고, 닮은 두 삼각형의 둘레의 비도 2:1이다. 따라서 삼각형 DEF의 둘레는 30÷2=15cm이다. 따라서 답은 ②이다.",
+    "solutionImageAlt": "16번 문제: 닮음비 2:1인 삼각형 ABC·DEF와 원본의 AC8 BC12 DE5.",
+    "solutionImageCaption": "16번 문제: 닮음비 2:1인 삼각형 ABC·DEF와 원본의 AC8 BC12 DE5.",
     "solutionImageSize": "full",
-    "solutionImageScale": 90
+    "solutionImageScale": 90,
+    "imageAlt": "16번 문제: 닮음비 2:1인 삼각형 ABC·DEF와 원본의 AC8 BC12 DE5.",
+    "imageCaption": "16번 문제: 닮음비 2:1인 삼각형 ABC·DEF와 원본의 AC8 BC12 DE5.",
+    "imageSize": "full"
   },
   {
     "id": 17,
@@ -986,7 +1001,7 @@ window.examData = {
     ],
     "answer": "③",
     "solution": "<p>조건: $\\square\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}}, \\overline{\\mathrm{BC}}, \\overline{\\mathrm{CD}}, \\overline{\\mathrm{DA}}$의 중점을 각각 $\\mathrm{P}, \\mathrm{Q}, \\mathrm{R}, \\mathrm{S}$라 합니다. 그림에서 두 대각선의 길이는 $\\overline{\\mathrm{AC}}=14\\text{cm}$, $\\overline{\\mathrm{BD}}=10\\text{cm}$입니다.<br/>구할 대상: $\\square\\mathrm{PQRS}$의 둘레의 길이를 구합니다.</p><p>먼저 풀이에 쓸 성질을 순서대로 정리합니다.<br/>1) 삼각형의 중점연결정리에 의해:<br/>- $\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{PQ}} \\parallel \\overline{\\mathrm{AC}}$, $\\overline{\\mathrm{PQ}} = \\dfrac{1}{2}\\overline{\\mathrm{AC}}$<br/>- $\\triangle\\mathrm{ADC}$에서 $\\overline{\\mathrm{SR}} \\parallel \\overline{\\mathrm{AC}}$, $\\overline{\\mathrm{SR}} = \\dfrac{1}{2}\\overline{\\mathrm{AC}}$<br/>- $\\triangle\\mathrm{ABD}$에서 $\\overline{\\mathrm{PS}} \\parallel \\overline{\\mathrm{BD}}$, $\\overline{\\mathrm{PS}} = \\dfrac{1}{2}\\overline{\\mathrm{BD}}$<br/>- $\\triangle\\mathrm{CBD}$에서 $\\overline{\\mathrm{QR}} \\parallel \\overline{\\mathrm{BD}}$, $\\overline{\\mathrm{QR}} = \\dfrac{1}{2}\\overline{\\mathrm{BD}}$<br/>2) 따라서 $\\square\\mathrm{PQRS}$의 둘레의 길이는 두 대각선의 길이의 합 $\\overline{\\mathrm{AC}} + \\overline{\\mathrm{BD}}$와 정확히 같습니다.</p><p>중점연결정리에 의해 각 변의 길이를 계산합니다:<br/>$$\\overline{\\mathrm{PQ}} = \\overline{\\mathrm{SR}} = \\frac{1}{2}\\overline{\\mathrm{AC}} = \\frac{1}{2} \\times 14 = 7\\text{ cm}$$<br/>$$\\overline{\\mathrm{PS}} = \\overline{\\mathrm{QR}} = \\frac{1}{2}\\overline{\\mathrm{BD}} = \\frac{1}{2} \\times 10 = 5\\text{ cm}$$<br/>따라서 사각형 $\\square\\mathrm{PQRS}$의 둘레의 길이는 다음과 같습니다:<br/>$$\\text{둘레} = \\overline{\\mathrm{PQ}} + \\overline{\\mathrm{QR}} + \\overline{\\mathrm{RS}} + \\overline{\\mathrm{SP}}$$<br/>$$= 7 + 5 + 7 + 5 = 24\\text{ cm}$$<br/>(공식 적용: $\\text{둘레} = \\overline{\\mathrm{AC}} + \\overline{\\mathrm{BD}} = 14 + 10 = 24\\text{ cm}$)</p><p>각 선지를 확인하면 다음과 같습니다.<br/>① $12\\text{cm}$: 거짓<br/>② $17\\text{cm}$: 거짓<br/>③ $24\\text{cm}$: 참 (계산 결과와 일치)<br/>④ $34\\text{cm}$: 거짓<br/>⑤ $48\\text{cm}$: 거짓</p><p>따라서 정답은 ③입니다.</p>",
-    "image": "assets/images/19_신흥중_2학기_중간_중2_수학/q19.png",
+    "image": "assets/images/19_신흥중_2학기_중간_중2_수학/q19-problem.svg",
     "accessibility": "사각형 ABCD의 네 변의 중점 P, Q, R, S를 연결한 사각형 PQRS에서 두 대각선 AC가 14cm, BD가 10cm일 때 사각형 PQRS의 둘레를 구하는 기하 도형",
     "crossConceptKeys": [],
     "conditionKeys": [],
@@ -999,9 +1014,12 @@ window.examData = {
     "primaryMethod": "네 중점연결선의 대각선 절반 둘레",
     "decisiveStep": "대각선별로두중점연결선이각각절반임을읽어14+10을구한다.",
     "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q19-solution.svg",
-    "solutionImageAlt": "해설 그림: 사각형 ABCD의 두 대각선 AC와 BD가 그어져 있고 네 변의 중점 P, Q, R, S를 차례로 이은 사각형 PQRS가 안쪽에 있다. PQ와 RS에 AC의 절반, QR과 SP에 BD의 절반이 적혀 있고 같은 길이의 변에 같은 눈금이 있다.",
-    "solutionImageCaption": "예: AC와 BD의 길이의 합이 24cm인 사각형으로 그렸다. △ABC에서 P, Q가 AB, BC의 중점이므로 중점연결정리에 의해 PQ=(1/2)AC이고 RS도 같다. 같은 방법으로 QR=SP=(1/2)BD이다. 따라서 □PQRS의 둘레는 AC+BD=24cm이다. 답은 ③이다.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "19번 문제: 사각형 ABCD의 네 변 중점 P/Q/R/S 및 대각선 AC14 BD10.",
+    "solutionImageCaption": "19번 문제: 사각형 ABCD의 네 변 중점 P/Q/R/S 및 대각선 AC14 BD10.",
+    "solutionImageSize": "full",
+    "imageAlt": "19번 문제: 사각형 ABCD의 네 변 중점 P/Q/R/S 및 대각선 AC14 BD10.",
+    "imageCaption": "19번 문제: 사각형 ABCD의 네 변 중점 P/Q/R/S 및 대각선 AC14 BD10.",
+    "imageSize": "full"
   },
   {
     "id": 20,
@@ -1087,7 +1105,7 @@ window.examData = {
     "choices": [],
     "answer": "(1) 30도\n(2) 75도",
     "solution": "<p>조건: $\\square\\mathrm{ABCD}$는 정사각형이고 점 $\\mathrm{E}$는 정사각형 내부의 점으로서 $\\overline{\\mathrm{EB}}=\\overline{\\mathrm{BC}}=\\overline{\\mathrm{EC}}$입니다.<br/>구할 대상:<br/>(1) $\\angle y$의 크기를 풀이과정과 함께 구합니다. (3점)<br/>(2) $\\angle x$의 크기를 풀이과정과 함께 구합니다. (3점)</p><p>먼저 풀이에 쓸 성질을 순서대로 정리합니다.<br/>1) $\\overline{\\mathrm{EB}}=\\overline{\\mathrm{BC}}=\\overline{\\mathrm{EC}}$이므로 $\\triangle\\mathrm{EBC}$는 세 변의 길이가 같은 정삼각형입니다. 따라서 한 내각의 크기는 $60^\\circ$입니다.<br/>2) 정사각형의 한 내각은 $90^\\circ$이므로 $\\angle y = \\angle\\mathrm{ABC} - \\angle\\mathrm{EBC}$로 계산합니다.<br/>3) $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{BC}}$이고 $\\overline{\\mathrm{BE}}=\\overline{\\mathrm{BC}}$이므로 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{BE}}$가 되어 $\\triangle\\mathrm{ABE}$는 이등변삼각형입니다. 꼭지각 $\\angle y$를 이용하여 밑각 $\\angle x$를 구합니다.</p><p>(1) $\\angle y$의 크기 계산:<br/>$\\triangle\\mathrm{EBC}$에서 세 변의 길이가 같으므로 정삼각형입니다:<br/>$$\\angle\\mathrm{EBC} = 60^\\circ$$<br/>정사각형 $\\mathrm{ABCD}$에서 $\\angle\\mathrm{ABC} = 90^\\circ$이므로:<br/>$$\\angle y = \\angle\\mathrm{ABC} - \\angle\\mathrm{EBC} = 90^\\circ - 60^\\circ = 30^\\circ$$<br/><br/>(2) $\\angle x$의 크기 계산:<br/>정사각형의 성질에 의해 $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{BC}}$이고, 정삼각형의 성질에 의해 $\\overline{\\mathrm{BE}} = \\overline{\\mathrm{BC}}$입니다.<br/>따라서 $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{BE}}$이므로 $\\triangle\\mathrm{ABE}$는 이등변삼각형입니다.<br/>이등변삼각형 $\\mathrm{ABE}$에서 꼭지각이 $\\angle y = 30^\\circ$이므로 두 밑각의 크기는 서로 같습니다:<br/>$$\\angle\\mathrm{BAE} = \\angle\\mathrm{BEA} = \\angle x$$<br/>삼각형의 세 내각의 크기의 합은 $180^\\circ$이므로:<br/>$$\\angle x = \\frac{180^\\circ - \\angle y}{2} = \\frac{180^\\circ - 30^\\circ}{2} = \\frac{150^\\circ}{2} = 75^\\circ$$</p><p>각 소문항의 핵심 근거를 정리하면 다음과 같습니다.<br/>- 소문항 (1): 정삼각형의 내각 $60^\\circ$와 정사각형의 직각 $90^\\circ$의 차이로 $\\angle y = 30^\\circ$를 올바르게 유도함.<br/>- 소문항 (2): $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{BE}}$에 의한 이등변삼각형 성질을 적용하여 밑각 $\\angle x = 75^\\circ$를 정확히 계산함.</p><p>따라서 최종 정답은 다음과 같습니다:<br/>(1) $30^\\circ$<br/>(2) $75^\\circ$</p>",
-    "image": "assets/images/19_신흥중_2학기_중간_중2_수학/s01.png",
+    "image": "assets/images/19_신흥중_2학기_중간_중2_수학/q21-problem.svg",
     "accessibility": "정사각형 ABCD 내부의 점 E에 대하여 선분 EB는 BC는 EC일 때 각 y와 각 x의 크기를 단계별로 구하는 기하 도형",
     "crossConceptKeys": [
       "CC_ISOSCELES_TRIANGLE"
@@ -1102,9 +1120,12 @@ window.examData = {
     "primaryMethod": "정삼각형 각과 정사각형 변을 이등변에 연결",
     "decisiveStep": "세변일치로60도를얻어y30을정하고AB=BE의밑각x75를구한다.",
     "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q21-solution.svg",
-    "solutionImageAlt": "정사각형 ABCD의 안쪽에 점 E가 있고 삼각형 EBC가 정삼각형이며 E에서 A와 D로 선분이 그어져 있다. 각 EBC 60°, 각 ABE y=30°, 각 AEB x=75°가 표시되어 있고 EB, BC, EC에 같은 눈금이 있다.",
-    "solutionImageCaption": "△EBC는 EB=BC=EC인 정삼각형이므로 ∠EBC=60°이다. 정사각형의 한 각이 90°이므로 (1) ∠y=∠ABE=90°−60°=30°이다. (2) BA=BC=BE이므로 △ABE는 이등변삼각형이고 ∠x=∠AEB=(180°−30°)/2=75°이다. 따라서 ∠y=30°, ∠x=75°이다.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "21번 문제: 서술형 도형: 정사각형 ABCD 내부의 정삼각형 BEC와 각 x·y.",
+    "solutionImageCaption": "21번 문제: 서술형 도형: 정사각형 ABCD 내부의 정삼각형 BEC와 각 x·y.",
+    "solutionImageSize": "full",
+    "imageAlt": "21번 문제: 서술형 도형: 정사각형 ABCD 내부의 정삼각형 BEC와 각 x·y.",
+    "imageCaption": "21번 문제: 서술형 도형: 정사각형 ABCD 내부의 정삼각형 BEC와 각 x·y.",
+    "imageSize": "full"
   },
   {
     "id": 22,
