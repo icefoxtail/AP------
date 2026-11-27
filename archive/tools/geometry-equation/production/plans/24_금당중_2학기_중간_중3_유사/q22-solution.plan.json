@@ -1,0 +1,212 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-7464102",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-3464102",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "value": 15,
+        "label": "15",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aD",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "value": 30,
+        "label": "30",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBD",
+        "from": "B",
+        "to": "D",
+        "label": "4",
+        "side": "BELOW",
+        "style": "ARROW",
+        "offset": "AUTO",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "ad",
+        "ownerSegment": "sAD",
+        "text": "4",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "arcs": []
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 360
+  },
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "caption": "직각삼각형 ABC에서 점 D는 변 BC 위에 있고 BD=4, 각 ABC=15도, 각 ADC=30도인 그림이다.",
+  "accessibilityDescription": "C가 직각인 삼각형 ABC의 변 BC 위에 점 D가 있고, BD의 길이 4와 B의 각 15도, D의 각 30도가 표시되어 있다.",
+  "newVisualInformation": [
+    "q22 해설에서 도출한 조건을 실제 점·선·각·호·라벨로 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q22-solution-current",
+      "condition": "$\\angle ADB = 180^\\circ - 30^\\circ = 150^\\circ$이므로 $\\triangle ABD$에서 $\\angle BAD = 180^\\circ - 15^\\circ - 150^\\circ = 15^\\circ$이다. 따라서 $\\triangle ABD$는 이등변삼각형이므로 $AD = BD = 4$이다. 직각삼각형 $ACD$에서 $\\angle ADC=30^\\circ$이므로 $$ AC = 4\\sin 30^\\circ = 2, \\qquad CD = 4\\cos 30^\\circ = 2\\sqrt{3} $$ 따라서 $BC = BD + CD = 4 + 2\\sqrt{3}$이므로 $$ \\tan 15^\\circ = \\dfrac{AC}{BC} = \\dfrac{2}{4+2\\sqrt{3}} = \\dfrac{1}{2+\\sqrt{3}} = 2-\\sqrt{3} $$ 이다.",
+      "mappedTo": [
+        "mathPlan",
+        "displaySegments",
+        "planeMarks"
+      ]
+    },
+    {
+      "id": "q22-source-asset",
+      "condition": "archive/assets/images/24_금당중_2학기_중간_중3_유사/q22-problem.svg",
+      "mappedTo": "SOLUTION_INDEPENDENT_REVIEW"
+    }
+  ],
+  "sourceQuote": "[서술형 2] 다음 직각삼각형 $ABC$($\\angle ACB="
+}

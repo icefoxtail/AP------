@@ -1,0 +1,173 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "11"
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "11"
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "14"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "A"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "planeMarks": {
+    "angles": [],
+    "expressionLabels": [
+      {
+        "id": "ab",
+        "ownerSegment": "sAB",
+        "text": "5"
+      },
+      {
+        "id": "bc",
+        "ownerSegment": "sBC",
+        "text": "sqrt(11)"
+      },
+      {
+        "id": "ac",
+        "ownerSegment": "sAC",
+        "text": "sqrt(14)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "arcs": [],
+    "regions": []
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "sourceQuote": "다음 그림과 같이 $\\angle C=90^\\circ$, $AB=",
+  "caption": "2번 해설의 수학적 도형 관계",
+  "accessibilityDescription": "2번 해설의 수학적 도형 관계",
+  "sourceConditions": [
+    {
+      "id": "q02-solution-current",
+      "condition": "피타고라스 정리에 의해 $$ AC = \\sqrt{AB^2 - BC^2} = \\sqrt{5^2 - (\\sqrt{11})^2} = \\sqrt{25-11} = \\sqrt{14} $$ 따라서 $\\cos B = \\dfrac{BC}{AB} = \\dfrac{\\sqrt{11}}{5}$, $\\tan B = \\dfrac{AC}{BC} = \\dfrac{\\sqrt{14}}{\\sqrt{11}}$이므로 $$ \\cos B \\times \\tan B = \\dfrac{\\sqrt{11}}{5} \\times \\dfrac{\\sqrt{14}}{\\sqrt{11}} = \\dfrac{\\sqrt{14}}{5} $$ 따라서 정답은 ⑤이다.",
+      "mappedTo": [
+        "mathPlan",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "q02 해설에서 도출한 조건을 실제 점·선·각·호·라벨로 표시"
+  ]
+}

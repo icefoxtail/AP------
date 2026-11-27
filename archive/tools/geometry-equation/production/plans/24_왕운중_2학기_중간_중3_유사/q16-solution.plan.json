@@ -1,0 +1,60 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "coefficients": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "intersectionX": [
+          "0"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "y=2x²과 y=x²/2는 같은 높이에서 서로 다른 x좌표를 갖는다.",
+  "sourceQuote": "이차함수 $y=2x^2$의 그래프 위의 점 $A$와 이차함수 $",
+  "accessibilityDescription": "y=2x²과 y=x²/2는 같은 높이에서 서로 다른 x좌표를 갖는다.",
+  "sourceConditions": [
+    {
+      "id": "q16-solution-current",
+      "condition": "$A(t, 2t^2)$, $B\\left(s, \\dfrac{1}{2}s^2\\right)$라 하면 $2t^2 = \\dfrac{1}{2}s^2 \\implies s^2 = 4t^2$, 즉 $s = \\pm 2t$이다. $|s - t| = 9$이므로 $s=2t$일 때 $|t|=9 \\implies t=\\pm 9$, $s=-2t$일 때 $|3t|=9 \\implies t=\\pm 3$이다. 따라서 모든 $t$의 곱은 $9\\times(-9)\\times 3\\times(-3) = 729$이므로 정답은 ④이다.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "q16 해설에서 도출한 조건을 실제 점·선·각·호·라벨로 표시"
+  ]
+}

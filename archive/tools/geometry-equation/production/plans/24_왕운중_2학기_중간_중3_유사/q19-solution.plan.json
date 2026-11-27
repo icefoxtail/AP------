@@ -1,0 +1,66 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 2
+      },
+      "height": 2,
+      "names": "EFGHABCD"
+    }
+  ],
+  "segments": [
+    {
+      "from": "E",
+      "to": "G",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "A",
+      "to": "G",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AE",
+      "label": "2"
+    },
+    {
+      "from": "E",
+      "to": "G",
+      "label": "2\\sqrt{2}"
+    },
+    {
+      "from": "A",
+      "to": "G",
+      "label": "2\\sqrt{3}"
+    }
+  ],
+  "solidCaption": {
+    "text": "모서리 2인 정육면체와 대각선"
+  },
+  "caption": "정육면체의 A,E,G 사이 선분과 각 AGE를 나타냈다.",
+  "sourceQuote": "다음 그림과 같이 한 모서리의 길이가 $2$인 정육면체 $ABC",
+  "accessibilityDescription": "정육면체의 A,E,G 사이 선분과 각 AGE를 나타냈다.",
+  "sourceConditions": [
+    {
+      "id": "q19-solution-current",
+      "condition": "$EG = \\sqrt{2^2+2^2} = 2\\sqrt{2}$, $AE=2$이므로 $AG = \\sqrt{(2\\sqrt{2})^2+2^2} = 2\\sqrt{3}$이다. 직각삼각형 $AEG$에서 $\\tan x = \\dfrac{AE}{EG} = \\dfrac{2}{2\\sqrt{2}} = \\dfrac{\\sqrt{2}}{2}$이다. 정답은 ③이다.",
+      "mappedTo": [
+        "solids",
+        "segments",
+        "dims"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "q19 해설에서 도출한 조건을 실제 점·선·각·호·라벨로 표시"
+  ]
+}

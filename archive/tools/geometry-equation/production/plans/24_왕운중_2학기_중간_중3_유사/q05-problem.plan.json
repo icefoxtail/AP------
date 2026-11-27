@@ -1,0 +1,60 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "-4/3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "coefficients": [
+          "0",
+          "0",
+          "-1"
+        ],
+        "intersectionX": [
+          "0"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "a=-1인 모양 예시로, 기준 포물선보다 넓고 두 곡선 모두 아래로 열린다.",
+  "sourceQuote": "다음 그림과 같이 이차함수 $y=-\\dfrac{4}{3}x^2$",
+  "accessibilityDescription": "a=-1인 모양 예시로, 기준 포물선보다 넓고 두 곡선 모두 아래로 열린다.",
+  "sourceConditions": [
+    {
+      "id": "q05-problem-current",
+      "condition": "다음 그림과 같이 이차함수 $y=-\\dfrac{4}{3}x^2$과 $y=ax^2$의 그래프가 모두 아래로 향하고, $y=ax^2$의 그래프의 폭이 더 넓을 때, 실수 $a$의 값의 범위는?",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "q05 문제 조건을 실제 점·선·각·호·라벨로 표시"
+  ]
+}

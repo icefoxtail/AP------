@@ -1,0 +1,65 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "coefficients": [
+          "-32",
+          "16",
+          "-2"
+        ],
+        "intersectionX": [
+          "2"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 4,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "y=-2x²을 오른쪽으로 4만큼 옮긴 그래프는 y=-2(x-4)²이다.",
+  "sourceQuote": "이차함수 $y=-2(x-4)^2$의 그래프에 대한 설명으로 옳지",
+  "accessibilityDescription": "y=-2x²을 오른쪽으로 4만큼 옮긴 그래프는 y=-2(x-4)²이다.",
+  "sourceConditions": [
+    {
+      "id": "q06-solution-current",
+      "condition": "$y=-2(x-4)^2$은 $y=-2x^2$을 $x$축의 방향으로 $4$만큼 평행이동한 그래프이다. $y=-2x^2$과 $x$축에 대하여 대칭인 그래프는 $y=2x^2$이므로 ⑤가 옳지 않다.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "q06 해설에서 도출한 조건을 실제 점·선·각·호·라벨로 표시"
+  ]
+}
