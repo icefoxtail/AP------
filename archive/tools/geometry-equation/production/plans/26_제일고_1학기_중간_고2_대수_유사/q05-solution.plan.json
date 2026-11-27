@@ -1,0 +1,97 @@
+{
+  "capability": "composite-panels-v1",
+  "chain": "number-line-figure-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "두 조건의 공통 범위"
+      },
+      "plan": {
+        "capability": "number-line-v1",
+        "numberLine": {
+          "rows": [
+            {
+              "kind": "SET",
+              "pieces": [
+                {
+                  "lo": {
+                    "value": "1",
+                    "state": "OPEN"
+                  },
+                  "hi": null
+                }
+              ]
+            },
+            {
+              "kind": "SET",
+              "pieces": [
+                {
+                  "lo": {
+                    "value": "-1",
+                    "state": "OPEN"
+                  },
+                  "hi": {
+                    "value": "7",
+                    "state": "OPEN"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "SET",
+              "pieces": [
+                {
+                  "lo": null,
+                  "hi": {
+                    "value": "2",
+                    "state": "OPEN"
+                  }
+                },
+                {
+                  "lo": {
+                    "value": "2",
+                    "state": "OPEN"
+                  },
+                  "hi": null
+                }
+              ]
+            },
+            {
+              "kind": "RESULT",
+              "integerPoints": true
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "밑의 조건 x>1, 진수의 조건 -1<x<7, 밑이 1이 되는 x=2 제외를 모두 적용하면 가능한 정수는 3, 4, 5, 6이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "밑의 조건 x-1>0",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "진수의 조건 -x^2+6x+7>0, 즉 -1<x<7",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "로그의 밑 x-1은 1이 아니므로 x=2는 제외",
+      "mappedTo": [
+        "panels[0].plan.numberLine.rows[2].pieces"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "세 조건의 교집합에서 x=2를 비운 점으로 표시하고 정수 3, 4, 5, 6을 표시한다"
+  ],
+  "sourceQuote": "(i), (ii)를 모두 만족시키는 $x$의 범위는",
+  "accessibilityDescription": "밑의 조건 x>1, 진수의 조건 -1<x<7, 밑이 1이 되는 x=2 제외를 모두 적용하면 가능한 정수는 3, 4, 5, 6이다."
+}

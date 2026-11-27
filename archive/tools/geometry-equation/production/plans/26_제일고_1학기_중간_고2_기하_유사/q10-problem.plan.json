@@ -1,0 +1,39 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 6,
+      "names": "BCDA"
+    },
+    {
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 8,
+      "side": 6,
+      "names": "FGHIEJ"
+    }
+  ],
+  "caption": "정사면체 ABCD와 정팔면체 EFGHIJ(위 꼭짓점 E, 아래 꼭짓점 J, 가운데 정사각형 FGHI)를 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정사면체 ABCD는 A가 위, B가 왼쪽, C가 아래, D가 오른쪽에 있다. 숨은 모서리는 점선이다.",
+      "mappedTo": [
+        "solids[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "정팔면체 EFGHIJ는 E가 위, J가 아래, 정사각형 FGHI가 가운데 있으며 숨은 모서리가 점선이다.",
+      "mappedTo": [
+        "solids[1]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 입체의 꼭짓점 이름과 모서리의 위치"
+  ],
+  "sourceQuote": "정사면체 $ABCD$와 정팔면체 $EFGHIJ$에 대하여",
+  "accessibilityDescription": "정사면체 ABCD와 정팔면체 EFGHIJ(위 꼭짓점 E, 아래 꼭짓점 J, 가운데 정사각형 FGHI)를 나타낸 그림이다."
+}

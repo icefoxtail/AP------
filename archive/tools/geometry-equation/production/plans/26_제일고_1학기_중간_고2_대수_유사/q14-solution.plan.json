@@ -1,0 +1,38 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-1, 6, 0, 14],
+    "curves": [
+      {
+        "id": "quad",
+        "kind": "Y_OF_X",
+        "coefficients": ["7", "-4", "1"],
+        "domain": ["0", "5"],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      }
+    ],
+    "axisTickValues": {"x": ["2", "5"], "y": ["3", "7", "12"]},
+    "overlays": {
+      "points": [
+        {"id": "A", "x": "0", "y": "7", "coordinates": true},
+        {"id": "V", "x": "2", "y": "3", "coordinates": true},
+        {"id": "B", "x": "5", "y": "12", "coordinates": true}
+      ],
+      "lines": [
+        {"id": "low", "slope": "0", "intercept": "3", "style": "DASHED", "label": "y=3"},
+        {"id": "high", "slope": "0", "intercept": "12", "style": "DASHED", "label": "y=12"}
+      ]
+    }
+  },
+  "caption": "0≤x≤5에서 f(x)=(x-2)^2+3의 꼭짓점 V(2,3)이 최솟값이고 닫힌 오른쪽 끝점 B(5,12)가 최댓값이다. 왼쪽 끝점 A(0,7)도 확인하여 3≤f(x)≤12임을 보인다. 두 로그함수의 단조성을 적용하면 M=log_3(13), m=log_(1/2)(27)이다.",
+  "accessibilityDescription": "정의역 0에서 5까지의 위로 열린 포물선. 왼쪽 닫힌 점 A(0,7), 최저점 V(2,3), 오른쪽 닫힌 점 B(5,12). y=3과 y=12에 점선이 그려져 최솟값과 최댓값을 비교한다.",
+  "sourceQuote": "$f(x)=x^2-4x+7=(x-2)^2+3$이다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "f(x)=x^2-4x+7, 0≤x≤5", "mappedTo": ["graphPlan.curves[0]"]},
+    {"id": "c2", "condition": "꼭짓점 (2,3)에서 최솟값 3", "mappedTo": ["graphPlan.overlays.points[1]", "graphPlan.overlays.lines[0]"]},
+    {"id": "c3", "condition": "f(0)=7, f(5)=12에서 최댓값 12", "mappedTo": ["graphPlan.overlays.points[0]", "graphPlan.overlays.points[2]", "graphPlan.overlays.lines[1]"]}
+  ],
+  "newVisualInformation": ["함수의 실제 정의역·양 끝점·꼭짓점·최솟값과 최댓값의 기준선을 모두 표시해 두 합성로그함수의 극값을 결정하는 근거를 보여 준다."]
+}

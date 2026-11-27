@@ -1,0 +1,82 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "2",
+    "axis": "X"
+  },
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS"
+    },
+    {
+      "id": "A",
+      "kind": "ON_CONIC",
+      "x": "18",
+      "branch": "POS"
+    },
+    {
+      "id": "H",
+      "kind": "FOOT",
+      "from": "A",
+      "onto": "xAxis",
+      "rightAngle": true
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "x": "-2",
+      "y": "0"
+    }
+  ],
+  "lines": [
+    {
+      "id": "l",
+      "role": "DIRECTRIX"
+    },
+    {
+      "id": "xAxis",
+      "through": [
+        "F",
+        "B"
+      ],
+      "hidden": true
+    }
+  ],
+  "segments": [
+    {
+      "id": "sAH",
+      "from": "A",
+      "to": "H",
+      "label": "12"
+    },
+    {
+      "id": "sBH",
+      "from": "B",
+      "to": "H",
+      "label": "20"
+    }
+  ],
+  "caption": "p=2인 경우(p=−2이면 좌우 대칭)의 그림으로, BH=10|p|=20이고 AH=6|p|=12이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "|p|=2, BH=10|p|=20, AH=6|p|=12",
+      "mappedTo": [
+        "conic",
+        "points",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "BH와 AH의 길이가 p의 절댓값으로 정해지는 모습"
+  ],
+  "sourceQuote": "$\\overline{BH}=|9p-(-p)|=10|p|$이다.",
+  "accessibilityDescription": "p=2인 경우(p=−2이면 좌우 대칭)의 그림으로, BH=10|p|=20이고 AH=6|p|=12이다."
+}
