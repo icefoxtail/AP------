@@ -1,0 +1,100 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "r",
+        "kind": "RATIONAL",
+        "numerator": [
+          "20",
+          "0"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-8",
+          "7"
+        ],
+        "color": "BLUE",
+        "hideLabel": true
+      }
+    ],
+    "viewport": [
+      -8,
+      7,
+      -8,
+      13
+    ],
+    "axisTickValues": {
+      "x": [
+        "-5",
+        "2"
+      ],
+      "y": [
+        "10"
+      ]
+    },
+    "axisTickLabels": {
+      "y": {
+        "-4": "k"
+      }
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "G",
+          "x": "2",
+          "y": "10",
+          "unnamed": true
+        },
+        {
+          "id": "K",
+          "x": "-5",
+          "y": "-4",
+          "unnamed": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "x2",
+          "from": "G",
+          "axis": "x"
+        },
+        {
+          "id": "y10",
+          "from": "G",
+          "axis": "y"
+        },
+        {
+          "id": "xm5",
+          "from": "K",
+          "axis": "x"
+        },
+        {
+          "id": "yk",
+          "from": "K",
+          "axis": "y"
+        }
+      ]
+    }
+  },
+  "caption": "반비례 그래프에서 x=2일 때 y=10이고 x=-5일 때 y=k라는 미지 눈금이 있다.",
+  "accessibilityDescription": "반비례 그래프에서 x=2일 때 y=10이고 x=-5일 때 y=k라는 미지 눈금이 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "(2,10)을 지나는 반비례 그래프와 x=-5에서의 미지 높이 k가 원본에 표시된다. 모델에서 k=-4는 계산용이며 문제 그림에 숫자 -4를 노출하지 않는다.",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.axisTickValues",
+        "graphPlan.overlays"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 가지 반비례 곡선·x=2, -5·y=10 안내선·미지 k 위치"
+  ]
+}

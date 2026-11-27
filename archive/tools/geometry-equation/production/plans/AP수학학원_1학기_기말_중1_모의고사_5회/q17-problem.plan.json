@@ -1,0 +1,74 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "prop",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "-5/3"
+        ],
+        "domain": [
+          "-5",
+          "7"
+        ],
+        "color": "BLUE",
+        "hideLabel": true
+      }
+    ],
+    "viewport": [
+      -5,
+      7,
+      -12,
+      7
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3"
+      ],
+      "y": [
+        "5"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "G",
+          "x": "-3",
+          "y": "5",
+          "unnamed": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "gx",
+          "from": "G",
+          "axis": "x"
+        },
+        {
+          "id": "gy",
+          "from": "G",
+          "axis": "y"
+        }
+      ]
+    }
+  },
+  "caption": "원점과 (-3,5)를 지나는 정비례 그래프와 두 점선 좌표 안내선.",
+  "accessibilityDescription": "원점과 (-3,5)를 지나는 정비례 그래프와 두 점선 좌표 안내선.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "그래프는 원점과 (-3,5)를 지난다. (6,k)의 k는 문제에서 구하는 값으로 문제 그림에는 나타내지 않는다.",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.axisTickValues",
+        "graphPlan.overlays"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "음의 기울기, 원점 통과, x=-3·y=5 두 점선, 점·선·눈금"
+  ]
+}

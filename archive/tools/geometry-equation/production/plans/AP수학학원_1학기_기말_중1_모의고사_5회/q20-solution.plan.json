@@ -1,0 +1,91 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "p",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "2/3"
+        ],
+        "domain": [
+          "-6",
+          "10"
+        ],
+        "color": "BLUE",
+        "label": "y=2x/3"
+      },
+      {
+        "id": "i",
+        "kind": "RATIONAL",
+        "numerator": [
+          "24",
+          "0"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-6",
+          "10"
+        ],
+        "color": "WARM",
+        "label": "y=a/x"
+      }
+    ],
+    "viewport": [
+      -6,
+      10,
+      -5,
+      8
+    ],
+    "axisTickValues": {
+      "x": [
+        "6"
+      ],
+      "y": [
+        "4"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "6",
+          "y": "4"
+        }
+      ],
+      "guides": [
+        {
+          "id": "x6",
+          "from": "A",
+          "axis": "x"
+        },
+        {
+          "id": "y4",
+          "from": "A",
+          "axis": "y"
+        }
+      ]
+    }
+  },
+  "caption": "x=6인 교점 A는 정비례 그래프에서 y=4이므로 반비례 곡선 위에서도 xy=24이다.",
+  "accessibilityDescription": "x=6인 교점 A는 정비례 그래프에서 y=4이므로 반비례 곡선 위에서도 xy=24이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x=6에서 y=(2/3)×6=4이고 반비례상수 a=xy=24이다.",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.axisTickValues",
+        "graphPlan.overlays"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 곡선·A(6,4)의 두 좌표 보조선·정비례 식, 풀이 점 4 표시"
+  ]
+}
