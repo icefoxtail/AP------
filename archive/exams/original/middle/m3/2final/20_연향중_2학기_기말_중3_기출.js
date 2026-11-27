@@ -120,11 +120,12 @@ window.questionBank = [
     "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|2",
     "decisiveStep": "원주각40°로 작은중심각80°를 얻고 반대호의 원주각140°를 구하여 두각을 합한다.",
     "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q2-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 원 위의 점 A, B, C, D와 중심 O가 있고 원주각 40°, 중심각 80°, 원주각 140°가 색으로 구분된 그림",
-    "solutionImageCaption": "∠BAD=40°가 보는 호 BD는 80°이므로 중심각은 80°이다. C는 작은 호 BD 위에 있어 ∠BCD는 큰 호 280°를 보므로 140°이다. 두 각의 합을 구하면 정답은 220°이다.",
+    "solutionImageAlt": "∠BAD=40°이므로 작은 호 BD와 중심각 BOD는 80°이다. C는 작은 호 BD 위에 있으므로 ∠BCD는 큰 호 BD를 본다.",
+    "solutionImageCaption": "∠BAD=40°이므로 작은 호 BD와 중심각 BOD는 80°이다. C는 작은 호 BD 위에 있으므로 ∠BCD는 큰 호 BD를 본다.",
     "solutionImageSize": "full"
   ,
-    "primaryMethod": "원주각40°로 작은중심각80°를 얻고 반대호의 원주각140°를 구하여 두각을 합한다."
+    "primaryMethod": "원주각40°로 작은중심각80°를 얻고 반대호의 원주각140°를 구하여 두각을 합한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 3,
@@ -183,8 +184,8 @@ window.questionBank = [
     "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|3",
     "decisiveStep": "지름의 반원180°에서65° 원주각이 보는호130°를 빼고 남은호50°의 원주각25°를 얻는다.",
     "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q3-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 지름 AB를 가진 원에서 파란 원주각 65°와 분홍색 구하는 각 x가 있는 그림",
-    "solutionImageCaption": "AB가 지름이므로 반원의 호는 180°이다. ∠ADC=65°가 보는 호 AC는 130°이므로 호 CB=50°이다. x는 호 CB를 보는 원주각이므로 정답은 25°이다.",
+    "solutionImageAlt": "지름 AB의 아랫반원은 180°이다. ∠ADC=65°가 보는 호 AC는 130°이므로 호 CB=50°이다. x는 호 CB를 보는 원주각이다.",
+    "solutionImageCaption": "지름 AB의 아랫반원은 180°이다. ∠ADC=65°가 보는 호 AC는 130°이므로 호 CB=50°이다. x는 호 CB를 보는 원주각이다.",
     "solutionImageSize": "full"
   ,
     "primaryMethod": "지름의 반원180°에서65° 원주각이 보는호130°를 빼고 남은호50°의 원주각25°를 얻는다."
@@ -246,11 +247,12 @@ window.questionBank = [
     "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|4",
     "decisiveStep": "원내부교점각68°가 주는 호합136°와 외부할선각24°가 주는 호차48°를 연립한 뒤 두원주각을 구한다.",
     "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q4-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 원 밖의 점 P에서 두 할선이 그려지고 현 AD, BC가 점 E에서 만나며 24°, 68°와 구하는 각 x, y가 색으로 구분된 그림",
-    "solutionImageCaption": "두 현의 교차각에서 호 BD+호 AC=136°이고, 점 P의 바깥각에서 호 BD−호 AC=48°이다. 따라서 호 BD=92°, 호 AC=44°이다. 정답은 x=22°, y=46°이다.",
+    "solutionImageAlt": "두 현의 교차각에서 호 BD+AC=136°, 두 할선의 외각에서 호 BD−AC=48°이다. 따라서 호 AC=44°, 호 BD=92°이다. x는 호 AC, y는 호 BD를 보는 원주각이다.",
+    "solutionImageCaption": "두 현의 교차각에서 호 BD+AC=136°, 두 할선의 외각에서 호 BD−AC=48°이다. 따라서 호 AC=44°, 호 BD=92°이다. x는 호 AC, y는 호 BD를 보는 원주각이다.",
     "solutionImageSize": "full"
   ,
-    "primaryMethod": "원내부교점각68°가 주는 호합136°와 외부할선각24°가 주는 호차48°를 연립한 뒤 두원주각을 구한다."
+    "primaryMethod": "원내부교점각68°가 주는 호합136°와 외부할선각24°가 주는 호차48°를 연립한 뒤 두원주각을 구한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 5,
@@ -309,11 +311,12 @@ window.questionBank = [
     "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|5",
     "decisiveStep": "두원주각45°,15°에 대응하는호의 각비3:1을 같은원의 호길이비에 전달하여 AB호9를 구한다.",
     "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q5-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 원 위의 두 점 P, Q에서 보는 원주각 45°와 15°, 같은 길이의 주황 호 CD, DE와 초록 호 AB가 있는 그림",
-    "solutionImageCaption": "∠APB=45°가 보는 호 AB는 90°, ∠CQD=15°가 보는 호 CD는 30°이다. 같은 원에서 호의 길이는 각도에 비례하므로 호 AB는 호 CD의 3배이다. 정답은 9cm이다.",
+    "solutionImageAlt": "∠APB=45°가 보는 호 AB는 90°, ∠CQD=15°가 보는 호 CD는 30°이다. 같은 원에서 호의 길이는 각도에 비례하므로 호 AB는 호 CD의 3배이다.",
+    "solutionImageCaption": "∠APB=45°가 보는 호 AB는 90°, ∠CQD=15°가 보는 호 CD는 30°이다. 같은 원에서 호의 길이는 각도에 비례하므로 호 AB는 호 CD의 3배이다.",
     "solutionImageSize": "full"
   ,
-    "primaryMethod": "두원주각45°,15°에 대응하는호의 각비3:1을 같은원의 호길이비에 전달하여 AB호9를 구한다."
+    "primaryMethod": "두원주각45°,15°에 대응하는호의 각비3:1을 같은원의 호길이비에 전달하여 AB호9를 구한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 6,
@@ -372,8 +375,8 @@ window.questionBank = [
     "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|6",
     "decisiveStep": "접현각63°에서 호BC126°를 얻고 나머지호의2:1관계를 원전체360°의 식으로 만들어 목표원주각을 구한다.",
     "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q6-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 원의 접선 CP와 현 BC가 이루는 63°, 구하는 각 x가 파랑·분홍으로 구분된 그림",
-    "solutionImageCaption": "접선과 현이 이루는 각 63°에서 호 BC는 126°이다. 호 AB=u라 하면 호 ADC=360°−126°−u=2u이므로 u=78°이다. x는 호 ADC를 보는 원주각이다. 정답은 78°이다.",
+    "solutionImageAlt": "접선과 현 BC가 이루는 각은 63°이므로 호 BC=126°이다. 호 AB=u라 하면 호 ADC=360°−126°−u=2u이다. x는 호 ADC를 보는 원주각이다.",
+    "solutionImageCaption": "접선과 현 BC가 이루는 각은 63°이므로 호 BC=126°이다. 호 AB=u라 하면 호 ADC=360°−126°−u=2u이다. x는 호 ADC를 보는 원주각이다.",
     "solutionImageSize": "full"
   ,
     "primaryMethod": "접현각63°에서 호BC126°를 얻고 나머지호의2:1관계를 원전체360°의 식으로 만들어 목표원주각을 구한다."
@@ -435,8 +438,8 @@ window.questionBank = [
     "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|7",
     "decisiveStep": "원주각126°가 보는 큰호252°를 작은호108°로 바꾸고 두접선각과중심각의 보각관계로72°를 구한다.",
     "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q7-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 원 밖의 점 A에서 접점 B, C로 두 접선이 그려지고 원주각 126°와 구하는 각이 색으로 구분된 그림",
-    "solutionImageCaption": "원주각 126°가 보는 큰 호 BC는 252°이므로 작은 호 BC는 108°이다. 두 접선이 이루는 각은 180°에서 108°를 뺀 값이다. 정답은 72°이다.",
+    "solutionImageAlt": "∠BDC=126°가 보는 큰 호 BC는 252°이고 작은 호는 108°이다. 두 접선이 이루는 각은 180°에서 작은 호 BC의 크기를 뺀 값이다.",
+    "solutionImageCaption": "∠BDC=126°가 보는 큰 호 BC는 252°이고 작은 호는 108°이다. 두 접선이 이루는 각은 180°에서 작은 호 BC의 크기를 뺀 값이다.",
     "solutionImageSize": "full"
   ,
     "primaryMethod": "원주각126°가 보는 큰호252°를 작은호108°로 바꾸고 두접선각과중심각의 보각관계로72°를 구한다."
@@ -498,8 +501,8 @@ window.questionBank = [
     "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|8",
     "decisiveStep": "지름의 반원에서 원주각20°가 보는호40°를 뺀 AC호140°를 호중점D로 이등분하여 원주각35°를 구한다.",
     "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q8-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 지름 AB를 가진 원에서 20°, 구하는 각 x가 있고 호 AD와 호 DC가 같은 색인 그림",
-    "solutionImageCaption": "지름 AB의 반원은 180°이고 ∠CAB=20°가 보는 호 CB는 40°이다. 호 AC=140°를 D가 이등분하므로 호 DC=70°이다. x는 호 DC의 원주각이므로 정답은 35°이다.",
+    "solutionImageAlt": "지름 AB의 반원은 180°이고 ∠CAB=20°가 보는 호 CB는 40°이다. 호 AC=140°를 D가 이등분하므로 호 DC=70°이다. x는 호 DC를 보는 원주각이다.",
+    "solutionImageCaption": "지름 AB의 반원은 180°이고 ∠CAB=20°가 보는 호 CB는 40°이다. 호 AC=140°를 D가 이등분하므로 호 DC=70°이다. x는 호 DC를 보는 원주각이다.",
     "solutionImageSize": "full"
   ,
     "primaryMethod": "지름의 반원에서 원주각20°가 보는호40°를 뺀 AC호140°를 호중점D로 이등분하여 원주각35°를 구한다."
@@ -561,8 +564,8 @@ window.questionBank = [
     "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|9",
     "decisiveStep": "내접사각형 대각합으로 A80°를 얻고 ABD내각합으로 D55°를 구한뒤 두접현각에 대응시킨다.",
     "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q9-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 원에 내접하는 사각형 ABCD와 점 A에서의 접선이 있고 100°, 45°, 구하는 각 x, y가 색으로 구분된 그림",
-    "solutionImageCaption": "내접사각형에서 ∠DAB=80°이다. 접선과 현의 각 x는 ∠ABD와 같은 45°이다. ∠ADB=180°−80°−45°=55°이고 y는 이와 같다. 정답은 x=45°, y=55°이다.",
+    "solutionImageAlt": "내접사각형에서 ∠DAB=80°이다. x는 접선과 현 AD가 이루는 각으로 ∠ABD와 같고, y는 접선과 현 AB가 이루는 각으로 ∠ADB와 같다.",
+    "solutionImageCaption": "내접사각형에서 ∠DAB=80°이다. x는 접선과 현 AD가 이루는 각으로 ∠ABD와 같고, y는 접선과 현 AB가 이루는 각으로 ∠ADB와 같다.",
     "solutionImageSize": "full"
   ,
     "primaryMethod": "내접사각형 대각합으로 A80°를 얻고 ABD내각합으로 D55°를 구한뒤 두접현각에 대응시킨다."
@@ -802,11 +805,12 @@ window.questionBank = [
     "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|13",
     "decisiveStep": "편차합0에서 C의편차−2를 찾고 평균12에 더해 원자료10을 복원한다. 목표가 표준편차가 아니므로 현재 missing-deviation-and-SD TPL을 강제하지 않는다.",
     "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q13-solution-v2.svg",
-    "solutionImageAlt": "환자별 편차를 수직 영점 좌우에 표시했다. 오른쪽 파랑은 양수, 왼쪽 주황은 음수이다. C는 B와 같은 길이의 왼쪽 막대이다.",
-    "solutionImageCaption": "편차의 합은 0이므로 C의 편차는 −2분이다. 평균 12분에 C의 편차를 더하면 대기 시간은 10분이다.",
+    "solutionImageAlt": "환자 A~E의 편차: 0선을 기준으로 오른쪽은 양(파랑), 왼쪽은 음(주황)이다. A=+7, B=−2, C=−2, D=−6, E=+3 (분).",
+    "solutionImageCaption": "환자 A~E의 편차: 0선을 기준으로 오른쪽은 양(파랑), 왼쪽은 음(주황)이다. A=+7, B=−2, C=−2, D=−6, E=+3 (분).",
     "solutionImageSize": "full"
   ,
-    "primaryMethod": "편차합0에서 C의편차−2를 찾고 평균12에 더해 원자료10을 복원한다. 목표가 표준편차가 아니므로 현재 missing-deviation-and-SD TPL을 강제하지 않는다."
+    "primaryMethod": "편차합0에서 C의편차−2를 찾고 평균12에 더해 원자료10을 복원한다. 목표가 표준편차가 아니므로 현재 missing-deviation-and-SD TPL을 강제하지 않는다.",
+    "solutionImageScale": 90
   },
   {
     "id": 14,
@@ -978,11 +982,12 @@ window.questionBank = [
     "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|16",
     "decisiveStep": "산점도의 양의방향·밀집과상관강도·자료쌍 표현이라는 정의를 진술별로 대조하여①을 고른다.",
     "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q16-solution-v2.svg",
-    "solutionImageAlt": "각 산점도는 예시 자료이다. 오른쪽으로 높아지는 파란 점과 낮아지는 주황 점, 고르게 흩어진 초록 점과 가로에 모인 보라 점을 한 눈금에 나란히 놓았다.",
-    "solutionImageCaption": "양의 상관관계가 있으면 x가 커질수록 y도 커지는 방향으로 점들이 모인다. 옳은 것은 ①이다.",
+    "solutionImageAlt": "점들의 모양에 따라 양의 상관관계, 음의 상관관계, 상관관계 없음을 비교하는 산점도 예시 네 가지이다.",
+    "solutionImageCaption": "점들의 모양에 따라 양의 상관관계, 음의 상관관계, 상관관계 없음을 비교하는 산점도 예시 네 가지이다.",
     "solutionImageSize": "full"
   ,
-    "primaryMethod": "산점도의 양의방향·밀집과상관강도·자료쌍 표현이라는 정의를 진술별로 대조하여①을 고른다."
+    "primaryMethod": "산점도의 양의방향·밀집과상관강도·자료쌍 표현이라는 정의를 진술별로 대조하여①을 고른다.",
+    "solutionImageScale": 94
   },
   {
     "id": 17,
@@ -1041,11 +1046,14 @@ window.questionBank = [
     "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|17",
     "decisiveStep": "오른쪽아래로 향한 산점도를 음의상관으로 읽고 한변량증가때 다른변량이 줄어드는 두상황에 대응한다.",
     "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q17-solution-v3.svg",
-    "solutionImageAlt": "점들은 움직이는 방향이 서로 반대인 두 변량의 음의 상관관계를 이룬다. 주황 추세선을 그었다.",
-    "solutionImageCaption": "그림처럼 두 변량이 반대 방향으로 변하는 것은 낮과 밤의 길이, 자동차 이동 거리와 남은 연료이다. 정답은 ①과 ③이다.",
+    "solutionImageAlt": "해설: 음의 상관관계와 하강 추세 — ENGINE_CAPABILITY_PENDING: 원본 128점 중 40점을 좌표 비례로 표본화했다. 완전한 1:1 재현에는 단일 SCATTER 차트의 최대 점 개수를 128개 이상으로 확장해야 한다.",
+    "solutionImageCaption": "해설: 음의 상관관계와 하강 추세 — ENGINE_CAPABILITY_PENDING: 원본 128점 중 40점을 좌표 비례로 표본화했다. 완전한 1:1 재현에는 단일 SCATTER 차트의 최대 점 개수를 128개 이상으로 확장해야 한다.",
     "solutionImageSize": "full"
   ,
-    "primaryMethod": "오른쪽아래로 향한 산점도를 음의상관으로 읽고 한변량증가때 다른변량이 줄어드는 두상황에 대응한다."
+    "primaryMethod": "오른쪽아래로 향한 산점도를 음의상관으로 읽고 한변량증가때 다른변량이 줄어드는 두상황에 대응한다.",
+    "imageAlt": "원본 문제 산점도 — ENGINE_CAPABILITY_PENDING: 원본 128점 중 40점을 좌표 비례로 표본화했다. 완전한 1:1 재현에는 단일 SCATTER 차트의 최대 점 개수를 128개 이상으로 확장해야 한다.",
+    "imageCaption": "원본 문제 산점도 — ENGINE_CAPABILITY_PENDING: 원본 128점 중 40점을 좌표 비례로 표본화했다. 완전한 1:1 재현에는 단일 SCATTER 차트의 최대 점 개수를 128개 이상으로 확장해야 한다.",
+    "imageSize": "full"
   },
   {
     "id": 18,
@@ -1161,8 +1169,8 @@ window.questionBank = [
     "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|19",
     "decisiveStep": "원주각52°에서 호AB+BC104°,외부각36°에서 호CD−AB72°를 얻고 전체호합으로 목표호차80°를 소거해 외각40°를 구한다.",
     "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q19-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 원 밖의 점 P, Q에서 할선이 그려지고 36°, 52°와 구하는 각 x가 색으로 구분된 그림",
-    "solutionImageCaption": "∠ADC=52°이므로 호 AB+호 BC=104°이다. 점 P에서 호 CD−호 AB=72°이다. 전체 호의 합에서 호 DA−호 BC=80°를 얻는다. 점 Q의 각은 그 절반이므로 정답은 40°이다.",
+    "solutionImageAlt": "∠ADC=52°이므로 호 AB+BC=104°이다. ∠P=36°에서 호 CD−AB=72°이고, 전체 호의 합을 이용하면 호 DA−BC=80°이다. ∠Q는 그 절반이다.",
+    "solutionImageCaption": "∠ADC=52°이므로 호 AB+BC=104°이다. ∠P=36°에서 호 CD−AB=72°이고, 전체 호의 합을 이용하면 호 DA−BC=80°이다. ∠Q는 그 절반이다.",
     "solutionImageSize": "full"
   ,
     "primaryMethod": "원주각52°에서 호AB+BC104°,외부각36°에서 호CD−AB72°를 얻고 전체호합으로 목표호차80°를 소거해 외각40°를 구한다."
@@ -1218,11 +1226,12 @@ window.questionBank = [
     "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|20",
     "decisiveStep": "필수두방법으로 정오각형의중심각72°의절반과 내각108°를 같은세원주각으로 나눈값을 각각 구한다.",
     "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q20-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 원에 내접하는 정오각형과 대각선, 중심각 72°, 내각 108°, 구하는 원주각 x가 색으로 구분된 그림",
-    "solutionImageCaption": "(1) 중심각 ∠COD=72°이므로 같은 호의 원주각은 절반이다. (2) 내각 ∠BAE=108°는 같은 세 원주각의 합이므로 3으로 나눈다. 정답은 (1) 36°, (2) 36°이다.",
+    "solutionImageAlt": "정오각형의 중심각 COD=72°이므로 같은 호의 원주각 CAD는 그 절반이다. 또는 내각 BAE=108°가 같은 세 원주각의 합이므로 CAD는 108°의 3분의 1이다.",
+    "solutionImageCaption": "정오각형의 중심각 COD=72°이므로 같은 호의 원주각 CAD는 그 절반이다. 또는 내각 BAE=108°가 같은 세 원주각의 합이므로 CAD는 108°의 3분의 1이다.",
     "solutionImageSize": "full"
   ,
-    "primaryMethod": "필수두방법으로 정오각형의중심각72°의절반과 내각108°를 같은세원주각으로 나눈값을 각각 구한다."
+    "primaryMethod": "필수두방법으로 정오각형의중심각72°의절반과 내각108°를 같은세원주각으로 나눈값을 각각 구한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 21,

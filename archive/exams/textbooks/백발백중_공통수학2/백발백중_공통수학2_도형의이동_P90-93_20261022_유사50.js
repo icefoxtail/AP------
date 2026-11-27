@@ -225,8 +225,9 @@ window.questionBank = [
     "sourceOriginalQuestionMatch": "CONCEPT_AND_STRUCTURE_MATCH_TEXT_ONLY",
     "sourceVisualComparison": "UNKNOWN",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P90-93_20261022_유사50/BV-BAKBAL-H-COM2-P90-Q02-T1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "두 축에 대한 대칭으로 얻은 직각삼각형 PQR의 두 변",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "두 축에 대한 대칭으로 얻은 직각삼각형 PQR의 두 변"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P90-Q02-S1-R2",
@@ -282,8 +283,9 @@ window.questionBank = [
     "sourceOriginalQuestionMatch": "CONCEPT_AND_STRUCTURE_MATCH_TEXT_ONLY",
     "sourceVisualComparison": "UNKNOWN",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P90-93_20261022_유사50/BV-BAKBAL-H-COM2-P90-Q02-S1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "두 축에 대한 대칭으로 얻은 직각삼각형 PQR의 두 변",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "두 축에 대한 대칭으로 얻은 직각삼각형 PQR의 두 변"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P90-Q02-S2-R2",
@@ -339,8 +341,9 @@ window.questionBank = [
     "sourceOriginalQuestionMatch": "CONCEPT_AND_STRUCTURE_MATCH_TEXT_ONLY",
     "sourceVisualComparison": "UNKNOWN",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P90-93_20261022_유사50/BV-BAKBAL-H-COM2-P90-Q02-S2-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "두 축에 대한 대칭으로 얻은 직각삼각형 PQR의 두 변",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "두 축에 대한 대칭으로 얻은 직각삼각형 PQR의 두 변"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P90-Q03-T1-R2",
@@ -720,8 +723,9 @@ window.questionBank = [
     "sourceOriginalQuestionMatch": "CONCEPT_AND_STRUCTURE_MATCH_VARIANT",
     "sourceVisualComparison": "UNKNOWN",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P90-93_20261022_유사50/BV-BAKBAL-H-COM2-P90-Q05-T1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "평행한 두 직선 사이의 수직 거리 2sqrt(10)",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "평행한 두 직선 사이의 수직 거리 2sqrt(10)"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P90-Q05-S1-R2",
@@ -777,8 +781,9 @@ window.questionBank = [
     "sourceOriginalQuestionMatch": "CONCEPT_FOLLOWUP",
     "sourceVisualComparison": "UNKNOWN",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P90-93_20261022_유사50/BV-BAKBAL-H-COM2-P90-Q05-S1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "평행한 두 직선 사이의 수직 거리 3",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "평행한 두 직선 사이의 수직 거리 3"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P90-Q05-S2-R2",

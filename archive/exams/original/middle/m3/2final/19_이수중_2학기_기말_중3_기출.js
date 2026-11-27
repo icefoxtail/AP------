@@ -301,7 +301,7 @@ window.questionBank = [
   },
   {
     "id": 7,
-    "imageSize": "large",
+    "imageSize": "full",
     "content": "다음 그림과 같이 $30\\rm\\,m$ 떨어진 우체국과 백화점이 있다. 우체국의 옥상 $A$에서 백화점의 옥상 $B$를 올려다 본 각의 크기가 $60^\\circ$이고, $C$ 지점을 내려다 본 각의 크기는 $45^\\circ$일 때, 백화점의 높이는? (4점)",
     "choices": [
       "$(30+30\\sqrt3)\\rm\\,m$",
@@ -348,7 +348,9 @@ window.questionBank = [
   ,
     "conceptClusterKey": "TRIG_RATIO_APPLICATION",
     "primaryMethod": "같은 수평거리30에서 부각45°와 앙각60°의 탄젠트로 아래·위 높이 두 부분을 구하여 합한다.",
-    "decisiveStep": "같은 수평거리30에서 부각45°와 앙각60°의 탄젠트로 아래·위 높이 두 부분을 구하여 합한다."
+    "decisiveStep": "같은 수평거리30에서 부각45°와 앙각60°의 탄젠트로 아래·위 높이 두 부분을 구하여 합한다.",
+    "imageAlt": "우체국 옥상 A에서 백화점 옥상 B를 올려다본 각이 60도, 바닥 C를 내려다본 각이 45도이다. 두 건물 사이 수평 거리는 30m이다.",
+    "imageCaption": "우체국 옥상 A에서 백화점 옥상 B를 올려다본 각이 60도, 바닥 C를 내려다본 각이 45도이다. 두 건물 사이 수평 거리는 30m이다."
   },
   {
     "id": 8,
@@ -392,8 +394,8 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "level": "중",
     "solutionImage": "assets/images/19_이수중_2학기_기말_중3_기출/q8-solution-v2.svg",
-    "solutionImageAlt": "A의 점에서 밑변 BC에 주황 수선을 내렸으므로 60도의 맞은편 길이가 높이다.",
-    "solutionImageCaption": "넓이는 4×5×sin60°/2=5√3 cm², 정답은 ②이다.",
+    "solutionImageAlt": "AB=4cm, BC=5cm이고 끼인각 B는 60도이다. 점 A에서 BC에 내린 점선 높이 AH와 직각 표시로 넓이 공식을 설명한다.",
+    "solutionImageCaption": "AB=4cm, BC=5cm이고 끼인각 B는 60도이다. 점 A에서 BC에 내린 점선 높이 AH와 직각 표시로 넓이 공식을 설명한다.",
     "solutionImageSize": "full"
   ,
     "conceptClusterKey": "TRIG_RATIO_APPLICATION",
@@ -445,8 +447,8 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
     "solutionImage": "assets/images/19_이수중_2학기_기말_중3_기출/q9-solution-v2.svg",
-    "solutionImageAlt": "A에서 밑변 쪽으로 주황 수선을 내렸다. B가 포함된 작은 직각삼각형에서 높이는 주어진 6 cm와 연결된다.",
-    "solutionImageCaption": "넓이 식에서 sin B=(15√2)/30=√2/2이다. B가 예각이므로 ∠B=45°이며 정답은 ③이다.",
+    "solutionImageAlt": "AB=6cm, BC=10cm이고 삼각형 넓이가 15√2cm²이다. B에서의 예각을 45도로 구한 후 점선 높이 AH와 직각 표시로 넓이 관계를 확인한다.",
+    "solutionImageCaption": "AB=6cm, BC=10cm이고 삼각형 넓이가 15√2cm²이다. B에서의 예각을 45도로 구한 후 점선 높이 AH와 직각 표시로 넓이 관계를 확인한다.",
     "solutionImageSize": "full"
   ,
     "conceptClusterKey": "TRIG_RATIO_APPLICATION",
@@ -508,7 +510,7 @@ window.questionBank = [
   },
   {
     "id": 11,
-    "imageSize": "large",
+    "imageSize": "full",
     "content": "원 $O$의 중심 $O$에서 두 현 $\\overline{AB}$, $\\overline{CD}$에 내린 수선의 발을 각각 $M,N$이라 할 때, $\\overline{AB}=\\overline{CD}$이면 $\\overline{OM}=\\overline{ON}$임을 설명한 것이다. $\\square$ 안에 순서대로 알맞은 것은? (5점)\n\n원의 중심에서 현에 내린 수선의 발은 그 현을 이등분한다.\n\\overline{AB}=\\overline{CD}이므로\n\\overline{AM}=\\overline{CN}이다.\n\n\\triangle OAM과 \\triangle OCN에서\n\\angle OMA=\\angle ONC=90^\\circ\n\\overline{OA}=\\square\\ (반지름)\n\\overline{AM}=\\square\n이므로\n\\triangle OAM\\cong\\triangle OCN\n따라서 \\overline{OM}=\\square이다.",
     "choices": [
       "$\\overline{ON},\\ \\overline{CN},\\ \\overline{OC}$",
@@ -549,13 +551,16 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
     "solutionImage": "assets/images/19_이수중_2학기_기말_중3_기출/q11-solution-v2.svg",
-    "solutionImageAlt": "반지름 두 곳은 파랑 두 눈금이고, 반쪽 현 두 곳은 초록 한 눈금이다. 두 수선은 각 현과 직각이다.",
-    "solutionImageCaption": "RHS 합동으로 OA=OC, AM=CN, OM=ON을 얻는다. 빈칸 순서는 OC, CN, ON으로 정답 ⑤이다.",
+    "solutionImageAlt": "같은 색은 같은 길이이다. 두 직각삼각형은 빗변과 한 직각변이 각각 같아 합동이고, 대응하는 변 OM과 ON의 길이도 같다.",
+    "solutionImageCaption": "같은 색은 같은 길이이다. 두 직각삼각형은 빗변과 한 직각변이 각각 같아 합동이고, 대응하는 변 OM과 ON의 길이도 같다.",
     "solutionImageSize": "full"
   ,
     "conceptClusterKey": "CIRCLE_LINE",
     "primaryMethod": "등현을 이등분한 반현이 같고 반지름과 직각이 같아 RHS합동임을 확인한 뒤 중심거리 대응변을 찾는다.",
-    "decisiveStep": "등현을 이등분한 반현이 같고 반지름과 직각이 같아 RHS합동임을 확인한 뒤 중심거리 대응변을 찾는다."
+    "decisiveStep": "등현을 이등분한 반현이 같고 반지름과 직각이 같아 RHS합동임을 확인한 뒤 중심거리 대응변을 찾는다.",
+    "imageAlt": "원본 기출의 서로 평행하지 않은 두 현 AB, CD를 재현한다. 두 수선의 발 M,N과 직각 표식을 표시하며 불필요한 원 내부 면 채움은 없다.",
+    "imageCaption": "원본 기출의 서로 평행하지 않은 두 현 AB, CD를 재현한다. 두 수선의 발 M,N과 직각 표식을 표시하며 불필요한 원 내부 면 채움은 없다.",
+    "solutionImageScale": 90
   },
   {
     "id": 12,
@@ -964,7 +969,7 @@ window.questionBank = [
   },
   {
     "id": 20,
-    "imageSize": "large",
+    "imageSize": "full",
     "content": "서답형 2. 그림과 같이 $\\square ABCD$의 두 대각선이 이루는 예각의 크기가 $30^\\circ$이고, $\\overline{AC}=7\\rm\\,cm$, $\\overline{BD}=9\\rm\\,cm$일 때, $\\square ABCD$의 넓이를 구하여라. (5점)",
     "choices": [],
     "answer": "$\\dfrac{63}{4}\\rm\\,cm^2$",
@@ -1005,7 +1010,9 @@ window.questionBank = [
   ,
     "conceptClusterKey": "TRIG_RATIO_APPLICATION",
     "primaryMethod": "네 삼각형 넓이를 공통대각선으로 합쳐1/2AC·BD sin30°에 주어진 값을 대입한다.",
-    "decisiveStep": "네 삼각형 넓이를 공통대각선으로 합쳐1/2AC·BD sin30°에 주어진 값을 대입한다."
+    "decisiveStep": "네 삼각형 넓이를 공통대각선으로 합쳐1/2AC·BD sin30°에 주어진 값을 대입한다.",
+    "imageAlt": "원본의 목표 넓이인 사각형 ABCD만 옅게 채우고, 대각선 AC=7 cm, BD=9 cm 및 끼인 예각 30°를 표시한다. 교점 이름과 점 표식은 표시하지 않는다.",
+    "imageCaption": "원본의 목표 넓이인 사각형 ABCD만 옅게 채우고, 대각선 AC=7 cm, BD=9 cm 및 끼인 예각 30°를 표시한다. 교점 이름과 점 표식은 표시하지 않는다."
   },
   {
     "id": 21,
@@ -1090,12 +1097,13 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "상",
     "solutionImage": "assets/images/19_이수중_2학기_기말_중3_기출/q22-solution-v2.svg",
-    "solutionImageAlt": "T에서 할선 위에 수선을 내려 H를 표시했다. 같은 주황 높이를 공유하는 세 직각삼각형을 비교한다.",
-    "solutionImageCaption": "PT=√(PA·PB)=8 cm이다. 수선의 발 H까지 PH=31/8이고 TH²=3135/64이다. 피타고라스 정리로 BT=14 cm이다.",
+    "solutionImageAlt": "접선 PT와 할선 PAB의 관계로 PT=8cm를 구한다. T에서 직선 AB에 내린 수선의 발 H와 직각 표식을 사용하여 두 직각삼각형의 길이 관계를 비교한다.",
+    "solutionImageCaption": "접선 PT와 할선 PAB의 관계로 PT=8cm를 구한다. T에서 직선 AB에 내린 수선의 발 H와 직각 표식을 사용하여 두 직각삼각형의 길이 관계를 비교한다.",
     "solutionImageSize": "full"
   ,
     "conceptClusterKey": "CIRCLE_LINE",
     "primaryMethod": "접선-할선 곱으로 PT를 정한 뒤 T에서 할선에 내린 수선의 좌표거리 t,h를 두 피타고라스 식의 차로 구하여 BT를 복원한다.",
-    "decisiveStep": "접선-할선 곱으로 PT를 정한 뒤 T에서 할선에 내린 수선의 좌표거리 t,h를 두 피타고라스 식의 차로 구하여 BT를 복원한다."
+    "decisiveStep": "접선-할선 곱으로 PT를 정한 뒤 T에서 할선에 내린 수선의 좌표거리 t,h를 두 피타고라스 식의 차로 구하여 BT를 복원한다.",
+    "solutionImageScale": 90
   }
 ];

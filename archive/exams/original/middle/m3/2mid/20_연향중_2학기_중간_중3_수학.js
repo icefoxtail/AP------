@@ -3,8 +3,8 @@ window.questionBank = [
     "id": 1,
     "solutionImage": "assets/images/20_연향중_2학기_중간_중3_수학/q1-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageAlt": "A의 맞은편과 B의 이웃한 변은 같은 주황 선분 BC이다. 파란 빗변 AB와 두 직각변을 표시했다.",
-    "solutionImageCaption": "AC=1, BC=√2로 잡으면 AB=√3이다. sin A와 cos B는 같은 비이므로 합은 2√6/3이고 정답은 ①이다.",
+    "solutionImageAlt": "직각삼각형 ABC에서 C 직각, tan A=√2이므로 AC:BC=1:√2.",
+    "solutionImageCaption": "직각삼각형 ABC에서 C 직각, tan A=√2이므로 AC:BC=1:√2.",
     "level": "중",
     "category": "삼각비",
     "originalCategory": "삼각비",
@@ -48,7 +48,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "tan으로 정한 두 직각변에서 빗변을 복원하고 여각의 sin·cos를 합한다.",
-    "decisiveStep": "AC:BC:AB=1:√2:√3이고 cos B=sin A이므로 합은 2√6/3이다."
+    "decisiveStep": "AC:BC:AB=1:√2:√3이고 cos B=sin A이므로 합은 2√6/3이다.",
+    "imageAlt": "직각삼각형 ABC에서 C 직각, tan A=√2이므로 AC:BC=1:√2.",
+    "imageCaption": "직각삼각형 ABC에서 C 직각, tan A=√2이므로 AC:BC=1:√2.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -106,8 +109,8 @@ window.questionBank = [
     "id": 3,
     "solutionImage": "assets/images/20_연향중_2학기_중간_중3_수학/q3-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageAlt": "A에서 밑변에 주황 수선을 그었다. 밑변의 양쪽 각과 수선으로 나뉜 작은 두 삼각형을 비교한다.",
-    "solutionImageCaption": "A에서 내린 높이는 4sin 30°=2이다. C가 60°이므로 AC=4√3/3이고 정답은 ②이다.",
+    "solutionImageAlt": "삼각형 ABC에서 AB=4, B=30°, C=60°; 해설에서는 AD⊥BC.",
+    "solutionImageCaption": "삼각형 ABC에서 AB=4, B=30°, C=60°; 해설에서는 AD⊥BC.",
     "level": "중",
     "category": "삼각비",
     "originalCategory": "삼각비",
@@ -152,7 +155,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculum": "2015",
     "primaryMethod": "삼각형 내각합으로 직각을 확인하고 특수각의 탄젠트로 AC를 직접 구한다.",
-    "decisiveStep": "B=30°,C=60°이므로 A=90°이고 AC=AB tan30°=4√3/3이다."
+    "decisiveStep": "B=30°,C=60°이므로 A=90°이고 AC=AB tan30°=4√3/3이다.",
+    "imageAlt": "삼각형 ABC에서 AB=4, B=30°, C=60°; 해설에서는 AD⊥BC.",
+    "imageCaption": "삼각형 ABC에서 AB=4, B=30°, C=60°; 해설에서는 AD⊥BC.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -255,8 +261,8 @@ window.questionBank = [
     "id": 6,
     "solutionImage": "assets/images/20_연향중_2학기_중간_중3_수학/q6-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageAlt": "D의 접한 작은 삼각형과 큰 삼각형을 다른 색으로 구분했다. B에서의 작은 각과 E에서의 두 사선 사이 각은 크기가 같다.",
-    "solutionImageCaption": "DC=√3, DE=2이다. ∠DBE=∠BED이므로 BD=DE=2이다. 따라서 tan 15°=1/(2+√3)=2−√3이고 정답은 ⑤이다.",
+    "solutionImageAlt": "B-D-C 일직선 위의 두 직각삼각형, B=15°, D=30°, CE=1.",
+    "solutionImageCaption": "B-D-C 일직선 위의 두 직각삼각형, B=15°, D=30°, CE=1.",
     "level": "상",
     "category": "삼각비",
     "originalCategory": "삼각비",
@@ -300,7 +306,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculum": "2015",
     "primaryMethod": "30° 삼각형과 15°가 같은 이등변삼각형을 연결해 tan15°를 길이비로 유도한다.",
-    "decisiveStep": "DC=√3, DE=2이며 ∠BDE=150°, 나머지 두 각이 15°여서 BD=2. 따라서 tan15°=1/(2+√3)=2−√3이다."
+    "decisiveStep": "DC=√3, DE=2이며 ∠BDE=150°, 나머지 두 각이 15°여서 BD=2. 따라서 tan15°=1/(2+√3)=2−√3이다.",
+    "imageAlt": "B-D-C 일직선 위의 두 직각삼각형, B=15°, D=30°, CE=1.",
+    "imageCaption": "B-D-C 일직선 위의 두 직각삼각형, B=15°, D=30°, CE=1.",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -408,8 +417,8 @@ window.questionBank = [
     "id": 9,
     "solutionImage": "assets/images/20_연향중_2학기_중간_중3_수학/q9-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageAlt": "초록 눈금 세 곳은 모두 1 cm이다. 옅은 주황 삼각형 ABD의 가로 밑변과 B에서 내린 세로 높이는 같은 길이이다.",
-    "solutionImageCaption": "AB=√5 cm, BD=√2 cm이고 삼각형 ABD 넓이는 1/2 cm²이다. 두 변과 끼인각으로 같은 넓이를 쓰면 sin x=√10/10이며 정답은 ②이다.",
+    "solutionImageAlt": "ABC에서 AC=2, AD=DC=BC=1cm, C 직각, ABD=x.",
+    "solutionImageCaption": "ABC에서 AC=2, AD=DC=BC=1cm, C 직각, ABD=x.",
     "level": "중",
     "category": "삼각비",
     "originalCategory": "삼각비",
@@ -453,7 +462,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "같은 삼각형의 넓이를 밑변·높이와 두 변·끼인각 두 방식으로 나타낸다.",
-    "decisiveStep": "AB=√5, BD=√2이고 넓이 ABD=1/2=√10 sin x/2이므로 sin x=√10/10이다."
+    "decisiveStep": "AB=√5, BD=√2이고 넓이 ABD=1/2=√10 sin x/2이므로 sin x=√10/10이다.",
+    "imageAlt": "ABC에서 AC=2, AD=DC=BC=1cm, C 직각, ABD=x.",
+    "imageCaption": "ABC에서 AC=2, AD=DC=BC=1cm, C 직각, ABD=x.",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -510,8 +522,8 @@ window.questionBank = [
     "id": 11,
     "solutionImage": "assets/images/20_연향중_2학기_중간_중3_수학/q11-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageAlt": "윗쪽 변을 A 너머까지 연장하고 D의 높이를 주황 점선으로 표시했다. A의 바깥에서 생기는 예각을 높이 계산에 이용한다.",
-    "solutionImageCaption": "한 변을 s라 두면 높이는 (√3/2)s이다. (√3/2)s²=9√3에서 한 변은 3√2 cm이며 정답은 ④이다.",
+    "solutionImageAlt": "마름모 ABCD의 네 변은 같고 각 BAD=120°이다.",
+    "solutionImageCaption": "마름모 ABCD의 네 변은 같고 각 BAD=120°이다.",
     "level": "중",
     "category": "삼각비",
     "originalCategory": "삼각비",
@@ -555,7 +567,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "마름모의 높이를 변 길이와 sin60°로 나타내어 넓이에서 변을 역산한다.",
-    "decisiveStep": "높이=(√3/2)s, 넓이=(√3/2)s²=9√3이므로 양의 길이 s=3√2이다."
+    "decisiveStep": "높이=(√3/2)s, 넓이=(√3/2)s²=9√3이므로 양의 길이 s=3√2이다.",
+    "imageAlt": "마름모 ABCD의 네 변은 같고 각 BAD=120°이다.",
+    "imageCaption": "마름모 ABCD의 네 변은 같고 각 BAD=120°이다.",
+    "imageSize": "full"
   },
   {
     "id": 12,
@@ -664,8 +679,8 @@ window.questionBank = [
     "id": 14,
     "solutionImage": "assets/images/20_연향중_2학기_중간_중3_수학/q14-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageAlt": "D에서 난 접선 길이 AD와 DT는 주황, C에서 난 접선 길이 BC와 CT는 초록이다. D에서 오른쪽 접선에 내린 가로선은 지름과 평행하다.",
-    "solutionImageCaption": "DA=DT=6 cm, CB=CT=3 cm이므로 DC=9 cm이고 높이 차는 3 cm이다. 지름 AB는 6√2 cm이며 정답은 ③이다.",
+    "solutionImageAlt": "반원 O 위 T에 그은 접선 D-T-C, 양 끝 A/B에서 접하는 수직선, AD=6cm, BC=3cm.",
+    "solutionImageCaption": "반원 O 위 T에 그은 접선 D-T-C, 양 끝 A/B에서 접하는 수직선, AD=6cm, BC=3cm.",
     "level": "상",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
@@ -708,7 +723,10 @@ window.questionBank = [
     "problemTypeKey": "PT_CIRCLE_TANGENT",
     "curriculum": "2015",
     "primaryMethod": "두 접선의 같은 길이를 이용해 비스듬한 접선 구간을 구하고 높이 차로 직각삼각형을 구성한다.",
-    "decisiveStep": "DT=6, CT=3이므로 DC=9이고 끝점 높이차3이므로 AB²=9²−3²=72, AB=6√2이다."
+    "decisiveStep": "DT=6, CT=3이므로 DC=9이고 끝점 높이차3이므로 AB²=9²−3²=72, AB=6√2이다.",
+    "imageAlt": "반원 O 위 T에 그은 접선 D-T-C, 양 끝 A/B에서 접하는 수직선, AD=6cm, BC=3cm.",
+    "imageCaption": "반원 O 위 T에 그은 접선 D-T-C, 양 끝 A/B에서 접하는 수직선, AD=6cm, BC=3cm.",
+    "imageSize": "full"
   },
   {
     "id": 15,
@@ -766,8 +784,8 @@ window.questionBank = [
     "id": 16,
     "solutionImage": "assets/images/20_연향중_2학기_중간_중3_수학/q16-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageAlt": "P에서 만나는 두 주황 접선에 파란 반지름이 각각 직각이다. 가운데 O의 각을 구한 다음 두 같은 반지름이 만드는 삼각형을 본다.",
-    "solutionImageCaption": "∠AOB=100°이고 OA=OB이므로 밑각 ∠OAB=40°이다. 정답은 ②이다.",
+    "solutionImageAlt": "원 O의 두 접선 PA/PB가 P에서 80°를 이루고 접점 A/B에서 반지름과 수직이다.",
+    "solutionImageCaption": "원 O의 두 접선 PA/PB가 P에서 80°를 이루고 접점 A/B에서 반지름과 수직이다.",
     "level": "중",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
@@ -809,7 +827,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "접선과 반지름의 직각에서 중심각을 구한 뒤 이등변삼각형의 밑각을 구한다.",
-    "decisiveStep": "AOB=360°−90°−90°−80°=100°이고 OA=OB이므로 OAB=(180°−100°)/2=40°이다."
+    "decisiveStep": "AOB=360°−90°−90°−80°=100°이고 OA=OB이므로 OAB=(180°−100°)/2=40°이다.",
+    "imageAlt": "원 O의 두 접선 PA/PB가 P에서 80°를 이루고 접점 A/B에서 반지름과 수직이다.",
+    "imageCaption": "원 O의 두 접선 PA/PB가 P에서 80°를 이루고 접점 A/B에서 반지름과 수직이다.",
+    "imageSize": "full"
   },
   {
     "id": 17,
@@ -910,8 +931,8 @@ window.questionBank = [
     "id": 19,
     "solutionImage": "assets/images/20_연향중_2학기_중간_중3_수학/q19-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageAlt": "B의 맞은편은 주황 AC, 이웃한 변은 초록 BC, 빗변은 파란 AB이다. 세 변으로 B의 삼각비를 읽는다.",
-    "solutionImageCaption": "AB=5 cm이므로 sin B=3/5, cos B=4/5, tan B=3/4이다. C에 대해서 sin C=1, cos C=0, tan C는 정의되지 않는다.",
+    "solutionImageAlt": "C 직각인 3-4-5 삼각형 ABC, AC=3cm, BC=4cm.",
+    "solutionImageCaption": "C 직각인 3-4-5 삼각형 ABC, AC=3cm, BC=4cm.",
     "level": "중",
     "category": "삼각비",
     "originalCategory": "삼각비",
@@ -951,14 +972,17 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "직각삼각형의 세 변에서 B의 삼각비를 구하고 90° 삼각비의 정의 여부를 판정한다.",
-    "decisiveStep": "AB=5이므로 B의 sin,cos,tan은3/5,4/5,3/4이고 C=90°에서 sin1,cos0,tan은 분모0으로 정의되지 않는다."
+    "decisiveStep": "AB=5이므로 B의 sin,cos,tan은3/5,4/5,3/4이고 C=90°에서 sin1,cos0,tan은 분모0으로 정의되지 않는다.",
+    "imageAlt": "C 직각인 3-4-5 삼각형 ABC, AC=3cm, BC=4cm.",
+    "imageCaption": "C 직각인 3-4-5 삼각형 ABC, AC=3cm, BC=4cm.",
+    "imageSize": "full"
   },
   {
     "id": 20,
     "solutionImage": "assets/images/20_연향중_2학기_중간_중3_수학/q20-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageAlt": "A에서 주황 수선을 내려 밑변 BC를 나눴다. 파랑 AB를 빗변으로 한 삼각형과 초록 AC를 빗변으로 한 삼각형이 생긴다.",
-    "solutionImageCaption": "높이는 2√3 cm이고 B에서 수선의 발까지는 2 cm이다. AB=4 cm, AC=√21 cm이다.",
+    "solutionImageAlt": "△ABC에서 AB=4cm, BC=5cm, B=60°이며 넓이는 5√3cm²이다.",
+    "solutionImageCaption": "△ABC에서 AB=4cm, BC=5cm, B=60°이며 넓이는 5√3cm²이다.",
     "level": "상",
     "category": "삼각비",
     "originalCategory": "삼각비",
@@ -996,14 +1020,17 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculum": "2015",
     "primaryMethod": "넓이에서 높이를 복원한 뒤 삼각비로 밑변을 나누고 다른 직각삼각형의 빗변을 구한다.",
-    "decisiveStep": "AD=2√3, AB=AD/sin60°=4, BD=2, DC=3이므로 AC=√(12+9)=√21이다."
+    "decisiveStep": "AD=2√3, AB=AD/sin60°=4, BD=2, DC=3이므로 AC=√(12+9)=√21이다.",
+    "imageAlt": "△ABC에서 AB=4cm, BC=5cm, B=60°이며 넓이는 5√3cm²이다.",
+    "imageCaption": "△ABC에서 AB=4cm, BC=5cm, B=60°이며 넓이는 5√3cm²이다.",
+    "imageSize": "full"
   },
   {
     "id": 21,
     "solutionImage": "assets/images/20_연향중_2학기_중간_중3_수학/q21-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageAlt": "B의 두 같은 길이는 주황 한 줄, C의 두 같은 길이는 초록 두 줄이다. 직각 A 근처의 두 접선 조각과 세 반지름도 같은 길이여서 파란 눈금이다.",
-    "solutionImageCaption": "반지름을 r이라 두면 (r+4)²+(r+6)²=10²에서 r=2 cm이다. 직각삼각형 OEB와 OEC를 계산하면 OBC의 둘레는 10+2√5+2√10 cm이다.",
+    "solutionImageAlt": "직각삼각형 ABC의 내접원 O는 세 변에 D,E,F에서 접하고 BE=4, CE=6cm이다.",
+    "solutionImageCaption": "직각삼각형 ABC의 내접원 O는 세 변에 D,E,F에서 접하고 BE=4, CE=6cm이다.",
     "level": "상",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
@@ -1040,6 +1067,9 @@ window.questionBank = [
     "problemTypeKey": "PT_CIRCLE_TANGENT",
     "curriculum": "2015",
     "primaryMethod": "내접원의 접선 조각으로 두 직각변을 반지름의 식으로 만들고 피타고라스 방정식을 푼다.",
-    "decisiveStep": "직각의 접점까지 길이는 r이므로 AB=r+4, AC=r+6, BC=10. (r+4)²+(r+6)²=100에서 r=2이고 OBC 둘레=10+2√5+2√10이다."
+    "decisiveStep": "직각의 접점까지 길이는 r이므로 AB=r+4, AC=r+6, BC=10. (r+4)²+(r+6)²=100에서 r=2이고 OBC 둘레=10+2√5+2√10이다.",
+    "imageAlt": "직각삼각형 ABC의 내접원 O는 세 변에 D,E,F에서 접하고 BE=4, CE=6cm이다.",
+    "imageCaption": "직각삼각형 ABC의 내접원 O는 세 변에 D,E,F에서 접하고 BE=4, CE=6cm이다.",
+    "imageSize": "full"
   }
 ];

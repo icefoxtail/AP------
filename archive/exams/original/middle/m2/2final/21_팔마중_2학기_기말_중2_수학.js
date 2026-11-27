@@ -70,8 +70,8 @@ window.examData = {
   },
   {
     "id": 2,
-    "imageSize": "tall",
-    "imageAlt": "BC=15 cm, AC=17 cm이며 세 중점 D, E, F를 연결했다. EF는 6 cm이다.",
+    "imageSize": "full",
+    "imageAlt": "문제의 그림 (단위 cm)",
     "score": 4,
     "level": 2,
     "category": "삼각형의 두 변의 중점을 연결한 선분",
@@ -130,12 +130,13 @@ window.examData = {
       "l4": "기본 비례"
     },
     "primaryMethod": "세 중점선의 길이 합",
-    "decisiveStep": "알려진 두 변을 절반으로 하여 주어진EF6과 더한다."
+    "decisiveStep": "알려진 두 변을 절반으로 하여 주어진EF6과 더한다.",
+    "imageCaption": "문제의 그림 (단위 cm)"
   },
   {
     "id": 3,
-    "imageSize": "tall",
-    "imageAlt": "네 평행선은 위부터 k, l, m, n이다. l에서 두 사선이 만난다. 내려가는 사선에서 위는 12 cm, 중간은 4 cm, l부터 n까지는 y cm이다. 올라가는 사선의 세 구간은 10 cm, x cm, 6 cm이다.",
+    "imageSize": "full",
+    "imageAlt": "문제의 그림 (단위 cm)",
     "score": 4,
     "level": 3,
     "category": "평행선 사이의 선분의 길이의 비",
@@ -194,12 +195,13 @@ window.examData = {
       "l4": "여러 평행선"
     },
     "primaryMethod": "네 평행선의 전체·부분 대응비",
-    "decisiveStep": "두 횡단선의6대5비로x를 정하고 l에서n까지의 전체 y를 대응시킨다."
+    "decisiveStep": "두 횡단선의6대5비로x를 정하고 l에서n까지의 전체 y를 대응시킨다.",
+    "imageCaption": "문제의 그림 (단위 cm)"
   },
   {
     "id": 4,
-    "imageSize": "tall",
-    "imageAlt": "AB는 16 cm, AC는 12 cm, BC는 14 cm이고 AD는 각 A의 이등분선이다. DC는 x cm이다.",
+    "imageSize": "full",
+    "imageAlt": "문제의 그림 (단위 cm)",
     "score": 4,
     "level": 3,
     "category": "삼각형의 내각의 이등분선",
@@ -250,12 +252,13 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "각이등분선의 대변비와 같은 높이 넓이비",
-    "decisiveStep": "AB:AC=4:3을 두 부분넓이의 기약비로 옮기고 밑변14를 분배한다."
+    "decisiveStep": "AB:AC=4:3을 두 부분넓이의 기약비로 옮기고 밑변14를 분배한다.",
+    "imageCaption": "문제의 그림 (단위 cm)"
   },
   {
     "id": 5,
-    "imageSize": "tall",
-    "imageAlt": "삼각형 ABC의 세 중선이 G에서 만난다. FE가 AD와 만나는 곳은 H이고 GH는 3 cm이다.",
+    "imageSize": "full",
+    "imageAlt": "문제의 그림 (GH=3cm)",
     "score": 5,
     "level": 3,
     "category": "삼각형의 무게중심",
@@ -316,12 +319,13 @@ window.examData = {
       "l4": "무게중심을 이용한 복합도형"
     },
     "primaryMethod": "중점선과 무게중심의 같은 중선 분할차",
-    "decisiveStep": "같은AD의1/2 위치H와2/3 위치G의 차1/6을 GH3과 대응시킨다."
+    "decisiveStep": "같은AD의1/2 위치H와2/3 위치G의 차1/6을 GH3과 대응시킨다.",
+    "imageCaption": "문제의 그림 (GH=3cm)"
   },
   {
     "id": 6,
-    "imageSize": "tall",
-    "imageAlt": "BG는 12 cm이다. BE와 DF는 평행하고 G는 두 중선의 교점이다.",
+    "imageSize": "full",
+    "imageAlt": "문제의 그림 (단위 cm)",
     "score": 4,
     "level": 2,
     "category": "삼각형의 무게중심",
@@ -382,12 +386,13 @@ window.examData = {
       "l4": "무게중심을 이용한 복합도형"
     },
     "primaryMethod": "중선 전체 복원 뒤 평행 중점선",
-    "decisiveStep": "BG12로BE18을 얻고 CBE의 중점선DF를 절반으로 구한다."
+    "decisiveStep": "BG12로BE18을 얻고 CBE의 중점선DF를 절반으로 구한다.",
+    "imageCaption": "문제의 그림 (단위 cm)"
   },
   {
     "id": 7,
-    "imageSize": "tall",
-    "imageAlt": "윗변 AD의 길이는 9 cm이고 아랫변 BC는 16 cm이다. 오른쪽 두 모서리는 직각이다.",
+    "imageSize": "full",
+    "imageAlt": "문제의 그림 (넓이 300, 단위 cm)",
     "score": 4,
     "level": 3,
     "category": "피타고라스 정리의 활용",
@@ -420,8 +425,8 @@ window.examData = {
     "images": ["assets/images/21_팔마중_2학기_기말_중2_수학/q7-problem-visual-v2.svg"],
     "accessibility": "넓이가 300 제곱센티미터인 직각 사다리꼴 ABCD",
     "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q7-solution-visual-v2.svg",
-    "solutionImageAlt": "윗변 AD의 길이는 9 cm이고 아랫변 BC는 16 cm이다. 오른쪽 두 모서리는 직각이다. A에서 수선을 내려 얻은 직각삼각형 ABH만 옅게 칠했다. 두 다리는 7 cm와 24 cm이다.",
-    "solutionImageCaption": "사다리꼴 높이는 2×300÷(9+16)=24 cm이다. 가로 차는 16−9=7 cm이므로 AB=√(24²+7²)=25 cm이고 정답은 ③이다.",
+    "solutionImageAlt": "사다리꼴의 넓이로 높이를 구한다. A에서 BC에 수선 AH를 내리면 수선을 내려 생긴 직사각형 모양에서 HC는 9이고 높이 AH는 24이다. 빨간 선분 AB는 직각삼각형 ABH의 빗변이다.",
+    "solutionImageCaption": "사다리꼴의 넓이로 높이를 구한다. A에서 BC에 수선 AH를 내리면 수선을 내려 생긴 직사각형 모양에서 HC는 9이고 높이 AH는 24이다. 빨간 선분 AB는 직각삼각형 ABH의 빗변이다.",
     "solutionImageSize": "full",
     "curriculum": "2015",
     "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
@@ -449,12 +454,14 @@ window.examData = {
       "l4": "평면도형 길이"
     },
     "primaryMethod": "사다리꼴 넓이로 높이를 얻은 직각삼각형",
-    "decisiveStep": "넓이300으로 높이24를 구하고 수선 보조선에서 밑변차7을 얻어 빗변25를 구한다."
+    "decisiveStep": "넓이300으로 높이24를 구하고 수선 보조선에서 밑변차7을 얻어 빗변25를 구한다.",
+    "imageCaption": "문제의 그림 (넓이 300, 단위 cm)",
+    "solutionImageScale": 90
   },
   {
     "id": 8,
-    "imageSize": "tall",
-    "imageAlt": "B는 직각이다. AB=15, AD=17, DC=12이고 AC가 x이다.",
+    "imageSize": "full",
+    "imageAlt": "문제의 그림 (단위 cm)",
     "score": 4,
     "level": 2,
     "category": "피타고라스 정리",
@@ -513,12 +520,13 @@ window.examData = {
       "l4": "직각삼각형의 변 길이"
     },
     "primaryMethod": "이어진 두 직각삼각형의 길이 복원",
-    "decisiveStep": "작은 직각삼각형에서BD8을 얻고BC20을 만든 뒤 큰 빗변을 계산한다."
+    "decisiveStep": "작은 직각삼각형에서BD8을 얻고BC20을 만든 뒤 큰 빗변을 계산한다.",
+    "imageCaption": "문제의 그림 (단위 cm)"
   },
   {
     "id": 9,
-    "imageSize": "tall",
-    "imageAlt": "한 변이 8 cm인 정사각형 ABCD에서 BE는 10 cm이고, F는 BE와 AD를 연장한 교점이다.",
+    "imageSize": "full",
+    "imageAlt": "문제의 그림 (단위 cm)",
     "score": 4,
     "level": 3,
     "category": "피타고라스 정리와 닮음의 활용",
@@ -579,12 +587,13 @@ window.examData = {
       "l4": "AA"
     },
     "primaryMethod": "새 AA 닮음으로 둘레 전달",
-    "decisiveStep": "피타고라스로CE6을 얻어DE2와 비교하고 두 직각삼각형의AA 닮음비1/3로 둘레를 옮긴다."
+    "decisiveStep": "피타고라스로CE6을 얻어DE2와 비교하고 두 직각삼각형의AA 닮음비1/3로 둘레를 옮긴다.",
+    "imageCaption": "문제의 그림 (단위 cm)"
   },
   {
     "id": 10,
-    "imageSize": "tall",
-    "imageAlt": "AB=9 cm, AD=15 cm인 직사각형이다. AF가 접는 선이고 D가 E로 옮겨진다. AEF만 색칠했다.",
+    "imageSize": "full",
+    "imageAlt": "문제의 그림 (단위 cm)",
     "score": 4,
     "level": 3,
     "category": "직사각형의 접기와 피타고라스 정리",
@@ -643,7 +652,8 @@ window.examData = {
       "l4": "평면도형 길이"
     },
     "primaryMethod": "접힌 길이 보존과 두 피타고라스 관계",
-    "decisiveStep": "접기에서AE15,EF=DF를 얻고FC=x라 두어(9−x)²=3²+x²를 푼다."
+    "decisiveStep": "접기에서AE15,EF=DF를 얻고FC=x라 두어(9−x)²=3²+x²를 푼다.",
+    "imageCaption": "문제의 그림 (단위 cm)"
   },
   {
     "id": 11,
@@ -1150,8 +1160,8 @@ window.examData = {
   },
   {
     "id": 19,
-    "imageSize": "tall",
-    "imageAlt": "정사각형 그림에서 A는 왼쪽 위, B는 왼쪽 아래, C는 오른쪽 아래, D는 오른쪽 위이다. A에서 반시계 방향으로 B를 향한다.",
+    "imageSize": "full",
+    "imageAlt": "문제의 그림 (한 변의 길이 1)",
     "score": 5,
     "level": 3,
     "category": "도형 위를 움직이는 점의 확률",
@@ -1214,7 +1224,8 @@ window.examData = {
       "l4": "경우를 나누어 구하는 확률"
     },
     "primaryMethod": "주기 이동을 가능한 눈 합으로 변환",
-    "decisiveStep": "네 자리 주기에 따라 두 눈의 합2·6·10을 고르고 각 순서쌍을 센다."
+    "decisiveStep": "네 자리 주기에 따라 두 눈의 합2·6·10을 고르고 각 순서쌍을 센다.",
+    "imageCaption": "문제의 그림 (한 변의 길이 1)"
   },
   {
     "id": 20,
@@ -1268,8 +1279,8 @@ window.examData = {
   },
   {
     "id": 21,
-    "imageSize": "tall",
-    "imageAlt": "ED와 BC는 평행하다. AE=8 cm, EB=4 cm, BC=12 cm이다.",
+    "imageSize": "full",
+    "imageAlt": "문제의 그림 (단위 cm)",
     "score": 5,
     "level": 3,
     "category": "삼각형의 평행선과 닮음 증명",
@@ -1323,12 +1334,13 @@ window.examData = {
       "l4": "AA"
     },
     "primaryMethod": "평행 동위각으로 AA 판정 후 비례식",
-    "decisiveStep": "공통각과 평행 동위각으로AED와ABC의AA를 설명한 뒤ED를 구한다."
+    "decisiveStep": "공통각과 평행 동위각으로AED와ABC의AA를 설명한 뒤ED를 구한다.",
+    "imageCaption": "문제의 그림 (단위 cm)"
   },
   {
     "id": 22,
-    "imageSize": "tall",
-    "imageAlt": "BD=18 cm이다. O는 두 대각선의 교점이고 M은 BC의 중점이다. AM과 BD의 교점은 P이다.",
+    "imageSize": "full",
+    "imageAlt": "문제의 그림",
     "score": 5,
     "level": 3,
     "category": "평행사변형과 삼각형의 무게중심",
@@ -1384,12 +1396,13 @@ window.examData = {
       "l4": "무게중심을 이용한 복합도형"
     },
     "primaryMethod": "대각선 중점에서 두 중선 교점 확인",
-    "decisiveStep": "평행사변형 대각선이등분으로BO9를 얻고P를무게중심으로 확인해PO3을 구한다."
+    "decisiveStep": "평행사변형 대각선이등분으로BO9를 얻고P를무게중심으로 확인해PO3을 구한다.",
+    "imageCaption": "문제의 그림"
   },
   {
     "id": 23,
-    "imageSize": "tall",
-    "imageAlt": "문제 그림의 13 cm 빨대와 12 cm 빨대를 표시했다.",
+    "imageSize": "full",
+    "imageAlt": "13 cm, 12 cm, x cm인 세 빨대의 길이 표시 (x는 미지수, 비례 축척 아님)",
     "score": 4,
     "level": 3,
     "category": "직각삼각형이 되기 위한 조건",
@@ -1443,12 +1456,13 @@ window.examData = {
       "l4": "직각삼각형의 변 길이"
     },
     "primaryMethod": "빗변 후보 두 경우의 제곱관계",
-    "decisiveStep": "13이빗변인 제곱차25와 x가빗변인 제곱합313을 모두 구한다."
+    "decisiveStep": "13이빗변인 제곱차25와 x가빗변인 제곱합313을 모두 구한다.",
+    "imageCaption": "13 cm, 12 cm, x cm인 세 빨대의 길이 표시 (x는 미지수, 비례 축척 아님)"
   },
   {
     "id": 24,
-    "imageSize": "tall",
-    "imageAlt": "검은 직선은 가로축의 2와 세로축의 −6을 지나 오른쪽 위로 뻗는다.",
+    "imageSize": "full",
+    "imageAlt": "주어진 직선과 두 절편. x절편 2, y절편 −6을 나타낸다.",
     "score": 6,
     "level": 3,
     "category": "일차함수 직선과 주사위 좌표 확률",
@@ -1507,7 +1521,8 @@ window.examData = {
       "l4": "경우를 나누어 구하는 확률"
     },
     "primaryMethod": "직선식의 유한 자연수 좌표를 사건으로 계수",
-    "decisiveStep": "절편에서y=3x−6을 만들고1~6 좌표를 동시에 만족하는 두 점을 센다."
+    "decisiveStep": "절편에서y=3x−6을 만들고1~6 좌표를 동시에 만족하는 두 점을 센다.",
+    "imageCaption": "주어진 직선과 두 절편. x절편 2, y절편 −6을 나타낸다."
   }
 ]
 };

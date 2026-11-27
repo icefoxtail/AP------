@@ -60,12 +60,13 @@ window.questionBank = [
     "problemImageAlt": "발문 도형",
     "problemImageSize": "large",
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_P50-53_20261022_유사50/BV-BAKBAL-H-COM2-P50-Q01-T1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "중심 O1, O2와 두 원의 공통외접선 접점·접선과 반지름의 직각 관계를 나타낸다.",
+    "solutionImageSize": "full",
     "image": "assets/images/백발백중_공통수학2_원의방정식_P50-53_20261022_유사50/BV-BAKBAL-H-COM2-P50-Q01-T1-R2-problem.svg",
     "imageAlt": "주어진 두 원과 공통접선의 접점 및 반지름의 수직관계를 나타낸다.",
     "imageCaption": "주어진 두 원과 공통접선의 접점 및 반지름의 수직관계를 나타낸다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageCaption": "중심 O1, O2와 두 원의 공통외접선 접점·접선과 반지름의 직각 관계를 나타낸다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P50-Q01-S1-R1",
@@ -127,12 +128,13 @@ window.questionBank = [
     "problemImageAlt": "발문 도형",
     "problemImageSize": "large",
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_P50-53_20261022_유사50/BV-BAKBAL-H-COM2-P50-Q01-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "중심 O1, O2와 두 원의 공통내접선 접점·접선과 반지름의 직각 관계를 나타낸다.",
+    "solutionImageSize": "full",
     "image": "assets/images/백발백중_공통수학2_원의방정식_P50-53_20261022_유사50/BV-BAKBAL-H-COM2-P50-Q01-S1-R1-problem.svg",
     "imageAlt": "주어진 두 원과 공통접선의 접점 및 반지름의 수직관계를 나타낸다.",
     "imageCaption": "주어진 두 원과 공통접선의 접점 및 반지름의 수직관계를 나타낸다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageCaption": "중심 O1, O2와 두 원의 공통내접선 접점·접선과 반지름의 직각 관계를 나타낸다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P50-Q01-S2-R1",
@@ -254,8 +256,9 @@ window.questionBank = [
     "targetChoiceSlot": 4,
     "metaRationale": "두 원이 두 점에서 만나는지 먼저 판정한 후 중심선과 공통현의 수직 관계를 적용해야 한다.",
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_P50-53_20261022_유사50/BV-BAKBAL-H-COM2-P50-Q02-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "두 원의 공통현과 두 중심의 연결선은 서로 수직이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "두 원의 공통현과 두 중심의 연결선은 서로 수직이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P50-Q02-S1-R1",
@@ -310,8 +313,9 @@ window.questionBank = [
     "targetChoiceSlot": 1,
     "metaRationale": "중심거리와 반지름 조건으로 공통현 존재를 판정하고 중심선 기울기를 계산한다.",
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_P50-53_20261022_유사50/BV-BAKBAL-H-COM2-P50-Q02-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "두 원의 공통현과 두 중심의 연결선은 서로 수직이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "두 원의 공통현과 두 중심의 연결선은 서로 수직이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P50-Q02-S2-R1",
@@ -366,8 +370,9 @@ window.questionBank = [
     "targetChoiceSlot": 4,
     "metaRationale": "일반형 원의 중심을 완전제곱으로 찾고 두 중심을 지나는 직선의 계수와 부호를 결정한다.",
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_P50-53_20261022_유사50/BV-BAKBAL-H-COM2-P50-Q02-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "두 원의 중심 O1(-1,2), O2(3,-1)을 이은 직선의 기울기를 읽는다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "두 원의 중심 O1(-1,2), O2(3,-1)을 이은 직선의 기울기를 읽는다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P50-Q03-T1-R1",
@@ -425,12 +430,13 @@ window.questionBank = [
     "problemImageAlt": "발문 도형",
     "problemImageSize": "large",
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_P50-53_20261022_유사50/BV-BAKBAL-H-COM2-P50-Q03-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "중심 O1, O2와 두 원의 공통외접선 접점·접선과 반지름의 직각 관계를 나타낸다.",
+    "solutionImageSize": "full",
     "image": "assets/images/백발백중_공통수학2_원의방정식_P50-53_20261022_유사50/BV-BAKBAL-H-COM2-P50-Q03-T1-R1-problem.svg",
     "imageAlt": "주어진 두 원과 공통접선의 접점 및 반지름의 수직관계를 나타낸다.",
     "imageCaption": "주어진 두 원과 공통접선의 접점 및 반지름의 수직관계를 나타낸다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageCaption": "중심 O1, O2와 두 원의 공통외접선 접점·접선과 반지름의 직각 관계를 나타낸다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P50-Q03-S1-R1",
@@ -551,12 +557,13 @@ window.questionBank = [
     "problemImageAlt": "발문 도형",
     "problemImageSize": "large",
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_P50-53_20261022_유사50/BV-BAKBAL-H-COM2-P50-Q03-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "중심 O1, O2와 두 원의 두 원의 외접선과 내접선 접점·접선과 반지름의 직각 관계를 나타낸다.",
+    "solutionImageSize": "full",
     "image": "assets/images/백발백중_공통수학2_원의방정식_P50-53_20261022_유사50/BV-BAKBAL-H-COM2-P50-Q03-S2-R1-problem.svg",
     "imageAlt": "중심이 (1,0), (7,0)이고 반지름이 2, 1인 두 원의 위치를 나타낸다.",
     "imageCaption": "중심이 (1,0), (7,0)이고 반지름이 2, 1인 두 원의 위치를 나타낸다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageCaption": "중심 O1, O2와 두 원의 두 원의 외접선과 내접선 접점·접선과 반지름의 직각 관계를 나타낸다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P50-Q04-T1-R2",

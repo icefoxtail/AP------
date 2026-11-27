@@ -55,12 +55,13 @@ window.questionBank = [
     "sourceMatch": "STRUCTURE_MATCHED_VARIANT",
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P130-133_20261023_유사50/BV-BAKBAL-H-COM2-P130-Q01-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "A⊆X⊆B^c: A의 3개 원소는 필수, B의 2개 원소는 금지, 두 집합 바깥 4,5,6의 3개 원소만 자유 선택(8가지).",
+    "solutionImageSize": "full",
     "inferredFields": [
       "exact_original_to_uid_number_mapping"
     ],
-    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S31-P130-Q06"
+    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S31-P130-Q06",
+    "solutionImageCaption": "A⊆X⊆B^c: A의 3개 원소는 필수, B의 2개 원소는 금지, 두 집합 바깥 4,5,6의 3개 원소만 자유 선택(8가지)."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P130-Q01-S1-R1",
@@ -117,12 +118,13 @@ window.questionBank = [
     "sourceMatch": "STRUCTURE_MATCHED_VARIANT",
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P130-133_20261023_유사50/BV-BAKBAL-H-COM2-P130-Q01-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "A⊆X⊆B^c: A의 3개 원소는 필수, B의 3개 원소는 금지, 두 집합 바깥 4,5,6,7의 4개 원소만 자유 선택(16가지).",
+    "solutionImageSize": "full",
     "inferredFields": [
       "exact_original_to_uid_number_mapping"
     ],
-    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S31-P130-Q06"
+    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S31-P130-Q06",
+    "solutionImageCaption": "A⊆X⊆B^c: A의 3개 원소는 필수, B의 3개 원소는 금지, 두 집합 바깥 4,5,6,7의 4개 원소만 자유 선택(16가지)."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P130-Q01-S2-R1",
@@ -179,12 +181,13 @@ window.questionBank = [
     "sourceMatch": "STRUCTURE_MATCHED_VARIANT",
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P130-133_20261023_유사50/BV-BAKBAL-H-COM2-P130-Q01-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "A⊆X⊆B^c: A의 2개 원소는 필수, B의 2개 원소는 금지, 두 집합 바깥 3,4의 2개 원소만 자유 선택(4가지).",
+    "solutionImageSize": "full",
     "inferredFields": [
       "exact_original_to_uid_number_mapping"
     ],
-    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S31-P130-Q06"
+    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S31-P130-Q06",
+    "solutionImageCaption": "A⊆X⊆B^c: A의 2개 원소는 필수, B의 2개 원소는 금지, 두 집합 바깥 3,4의 2개 원소만 자유 선택(4가지)."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P130-Q02-T1-R1",
@@ -241,12 +244,13 @@ window.questionBank = [
     "sourceMatch": "STRUCTURE_MATCHED_VARIANT",
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P130-133_20261023_유사50/BV-BAKBAL-H-COM2-P130-Q02-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "A=(2,3), B=[k−2,k+2]. k=1이면 B=[-1,3]로 A⊆B이다. 정수 k의 전체 범위는 1≤k≤4이다.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "exact_original_to_uid_number_mapping"
     ],
-    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S31-P130-Q07"
+    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S31-P130-Q07",
+    "solutionImageCaption": "A=(2,3), B=[k−2,k+2]. k=1이면 B=[-1,3]로 A⊆B이다. 정수 k의 전체 범위는 1≤k≤4이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P130-Q02-S1-R1",
@@ -303,12 +307,13 @@ window.questionBank = [
     "sourceMatch": "STRUCTURE_MATCHED_VARIANT",
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P130-133_20261023_유사50/BV-BAKBAL-H-COM2-P130-Q02-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "A=(3,4), B=[k−1,k+1]. k=3이면 B=[2,4]로 A⊆B이다. 정수 k의 전체 범위는 3≤k≤4이다.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "exact_original_to_uid_number_mapping"
     ],
-    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S31-P130-Q07"
+    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S31-P130-Q07",
+    "solutionImageCaption": "A=(3,4), B=[k−1,k+1]. k=3이면 B=[2,4]로 A⊆B이다. 정수 k의 전체 범위는 3≤k≤4이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P130-Q02-S2-R1",
@@ -365,12 +370,13 @@ window.questionBank = [
     "sourceMatch": "STRUCTURE_MATCHED_VARIANT",
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P130-133_20261023_유사50/BV-BAKBAL-H-COM2-P130-Q02-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "A=(2,4), B=[k−2,k+2]. k=2이면 B=[0,4]로 A⊆B이다. 정수 k의 전체 범위는 2≤k≤4이다.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "exact_original_to_uid_number_mapping"
     ],
-    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S31-P130-Q07"
+    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S31-P130-Q07",
+    "solutionImageCaption": "A=(2,4), B=[k−2,k+2]. k=2이면 B=[0,4]로 A⊆B이다. 정수 k의 전체 범위는 2≤k≤4이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P130-Q03-T1-R1",
@@ -427,13 +433,14 @@ window.questionBank = [
     "sourceMatch": "UNKNOWN_ORIGINAL_STRUCTURE",
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P130-133_20261023_유사50/BV-BAKBAL-H-COM2-P130-Q03-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "A−B^c=A∩B이므로 (A−B^c)^c=(A∩B)^c=A^c∪B^c. 교집합을 제외한 전체 영역을 표시한다.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "original_printed_question_mapping",
       "original_structure_similarity"
     ],
-    "verifiedSourceLocationId": null
+    "verifiedSourceLocationId": null,
+    "solutionImageCaption": "A−B^c=A∩B이므로 (A−B^c)^c=(A∩B)^c=A^c∪B^c. 교집합을 제외한 전체 영역을 표시한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P130-Q03-S1-R1",
@@ -490,13 +497,14 @@ window.questionBank = [
     "sourceMatch": "UNKNOWN_ORIGINAL_STRUCTURE",
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P130-133_20261023_유사50/BV-BAKBAL-H-COM2-P130-Q03-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "(A∩B)∪(A−B)는 A의 공통 부분과 A만의 부분을 모두 포함하므로 A이다.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "original_printed_question_mapping",
       "original_structure_similarity"
     ],
-    "verifiedSourceLocationId": null
+    "verifiedSourceLocationId": null,
+    "solutionImageCaption": "(A∩B)∪(A−B)는 A의 공통 부분과 A만의 부분을 모두 포함하므로 A이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P130-Q03-S2-R1",
@@ -553,13 +561,14 @@ window.questionBank = [
     "sourceMatch": "UNKNOWN_ORIGINAL_STRUCTURE",
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P130-133_20261023_유사50/BV-BAKBAL-H-COM2-P130-Q03-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "A⊂B이므로 A−B=∅, A∩B^c=∅이다. 여집합의 포함관계는 B^c⊆A^c이다.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "original_printed_question_mapping",
       "original_structure_similarity"
     ],
-    "verifiedSourceLocationId": null
+    "verifiedSourceLocationId": null,
+    "solutionImageCaption": "A⊂B이므로 A−B=∅, A∩B^c=∅이다. 여집합의 포함관계는 B^c⊆A^c이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P130-Q04-T1-R1",
@@ -616,13 +625,15 @@ window.questionBank = [
     "sourceMatch": "UNKNOWN_ORIGINAL_STRUCTURE",
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P130-133_20261023_유사50/BV-BAKBAL-H-COM2-P130-Q04-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "ㄱ·ㄴ·ㄷ의 양변에서 색칠된 부분을 대조하면 세 등식 모두 같은 영역이다.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "original_printed_question_mapping",
       "original_structure_similarity"
     ],
-    "verifiedSourceLocationId": null
+    "verifiedSourceLocationId": null,
+    "solutionImageCaption": "ㄱ·ㄴ·ㄷ의 양변에서 색칠된 부분을 대조하면 세 등식 모두 같은 영역이다.",
+    "solutionImageScale": 94
   },
   {
     "id": "BV-BAKBAL-H-COM2-P130-Q04-S1-R1",
@@ -679,13 +690,15 @@ window.questionBank = [
     "sourceMatch": "UNKNOWN_ORIGINAL_STRUCTURE",
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P130-133_20261023_유사50/BV-BAKBAL-H-COM2-P130-Q04-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "ㄱ 참, ㄴ 참, ㄷ 참. 각 식의 양변을 실제 색칠 영역으로 비교한다.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "original_printed_question_mapping",
       "original_structure_similarity"
     ],
-    "verifiedSourceLocationId": null
+    "verifiedSourceLocationId": null,
+    "solutionImageCaption": "ㄱ 참, ㄴ 참, ㄷ 참. 각 식의 양변을 실제 색칠 영역으로 비교한다.",
+    "solutionImageScale": 94
   },
   {
     "id": "BV-BAKBAL-H-COM2-P130-Q04-S2-R1",
@@ -742,13 +755,15 @@ window.questionBank = [
     "sourceMatch": "UNKNOWN_ORIGINAL_STRUCTURE",
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P130-133_20261023_유사50/BV-BAKBAL-H-COM2-P130-Q04-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "ㄱ 참, ㄴ 거짓, ㄷ 거짓. 각 식의 양변을 실제 색칠 영역으로 비교한다.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "original_printed_question_mapping",
       "original_structure_similarity"
     ],
-    "verifiedSourceLocationId": null
+    "verifiedSourceLocationId": null,
+    "solutionImageCaption": "ㄱ 참, ㄴ 거짓, ㄷ 거짓. 각 식의 양변을 실제 색칠 영역으로 비교한다.",
+    "solutionImageScale": 94
   },
   {
     "id": "BV-BAKBAL-H-COM2-P130-Q05-T1-R1",
@@ -805,13 +820,14 @@ window.questionBank = [
     "sourceMatch": "UNKNOWN_ORIGINAL_STRUCTURE",
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P130-133_20261023_유사50/BV-BAKBAL-H-COM2-P130-Q05-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "(A4∪A6)∩A3=A12∪A6=A6. A12는 A6에 포함되므로 100 이하에서 n(A6)=16개이다.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "original_printed_question_mapping",
       "original_structure_similarity"
     ],
-    "verifiedSourceLocationId": null
+    "verifiedSourceLocationId": null,
+    "solutionImageCaption": "(A4∪A6)∩A3=A12∪A6=A6. A12는 A6에 포함되므로 100 이하에서 n(A6)=16개이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P130-Q05-S1-R1",

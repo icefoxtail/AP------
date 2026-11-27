@@ -17,8 +17,8 @@ window.examData = {
     "answer": "③",
     "solution": "정사각형은 직사각형이면서 마름모이어야 한다.\n평행사변형이 직사각형이 되려면 한 내각이 $90^\\circ$이거나 두 대각선의 길이가 같아야 하고, 마름모가 되려면 이웃하는 두 변의 길이가 같거나 두 대각선이 서로 수직이어야 한다.\n① 한 각이 $90^\\circ$, $\\overline{AO}=\\overline{BO}$ (대각선의 길이가 같음): 직사각형 조건만 있다.\n② 대각선의 길이가 같다: 직사각형 조건만 있다.\n③ $\\overline{AO}=\\overline{DO}$이면 $\\overline{AC}=\\overline{BD}$이므로 직사각형이다. 직사각형에서는 두 대각선이 서로 다른 것을 이등분하므로 $\\overline{AO}=\\overline{BO}$이고, $\\angle BAO=45^\\circ$이므로 $\\triangle ABO$에서 $\\angle ABO=\\angle BAO=45^\\circ$, $\\angle AOB=90^\\circ$이다. 두 대각선이 수직이므로 마름모이다. 따라서 정사각형이다.\n④ 대각선이 수직, 이웃하는 두 변이 같다: 마름모 조건만 있다.\n⑤ $\\overline{AB}=\\overline{AD}$이므로 마름모이고 $\\angle BAO=\\angle DAO$는 마름모에서 항상 성립한다. 직사각형 조건이 없다.\n정답은 ③이다.",
     "solutionImage": "assets/images/18_연향중_2학기_기말_중2_수학/q1-solution.svg",
-    "solutionImageAlt": "해설 그림: 네 개의 그림이다. 첫째는 대각선이 점 O에서 만나는 평행사변형이다. 둘째는 두 대각선의 길이가 같은 직사각형이고 대각선이 파란색이다. 셋째는 두 대각선이 수직으로 만나고 네 변이 주황색으로 같은 마름모이다. 넷째는 선분 OA와 OB가 같고 밑각이 각각 45도인 삼각형이다.",
-    "solutionImageCaption": "정사각형이 되려면 직사각형 조건(두 대각선의 길이가 같다 또는 한 각이 직각)과 마름모 조건(두 대각선이 수직 또는 이웃한 두 변이 같다)을 모두 만족해야 한다. 한 보기에서 AO=DO이면 AC=BD이므로 직사각형이고, 이때 AO=BO이므로 삼각형 ABO는 밑각이 45도로 같은 이등변삼각형이 되어 각 AOB가 직각이다. 대각선이 수직이므로 마름모도 되어 정사각형이다. 정답은 ③이다.",
+    "solutionImageAlt": "정사각형은 직사각형이면서 마름모인 도형이다. 직사각형은 두 대각선의 길이가 같고, 마름모는 두 대각선이 서로 수직이다. 두 대각선이 서로를 이등분하는 평행사변형에서 대각선의 길이가 같고 서로 수직이면 정사각형이 된다.",
+    "solutionImageCaption": "정사각형은 직사각형이면서 마름모인 도형이다. 직사각형은 두 대각선의 길이가 같고, 마름모는 두 대각선이 서로 수직이다. 두 대각선이 서로를 이등분하는 평행사변형에서 대각선의 길이가 같고 서로 수직이면 정사각형이 된다.",
     "solutionImageSize": "full",
     "crossConceptKeys": [
       "CC_ISOSCELES_TRIANGLE"
@@ -35,7 +35,8 @@ window.examData = {
     "legacyLevelCompatibility": "UNKNOWN",
     "standardCourse": "중2 수학",
     "primaryMethod": "직사각형·마름모 조건을 함께 확인",
-    "decisiveStep": "대각선 반길이의 같음으로 직사각형을 얻고 45도와 이등변으로 대각선 수직까지 확인한다."
+    "decisiveStep": "대각선 반길이의 같음으로 직사각형을 얻고 45도와 이등변으로 대각선 수직까지 확인한다.",
+    "solutionImageScale": 94
   },
   {
     "id": 2,
@@ -51,8 +52,8 @@ window.examData = {
     "answer": "⑤",
     "solution": "두 직각삼각형의 합동 조건을 확인한다.\n① 빗변과 다른 한 변이 각각 같다(RHS 합동).\n② 빗변과 한 예각이 각각 같다(RHA 합동).\n③ $\\angle A=\\angle D$, $\\angle C=\\angle F=90^\\circ$이고 $\\overline{AC}=\\overline{DF}$이므로 한 변과 양 끝각이 같다(ASA 합동).\n④ $\\angle B=\\angle E$, $\\angle C=\\angle F=90^\\circ$이고 $\\overline{BC}=\\overline{EF}$이므로 ASA 합동이다.\n⑤ 세 각이 각각 같을 뿐 변의 길이가 같다는 조건이 없어 합동이라 할 수 없다. (닮음이다.)\n정답은 ⑤이다.",
     "solutionImage": "assets/images/18_연향중_2학기_기말_중2_수학/q2-solution.svg",
-    "solutionImageAlt": "해설 그림: 두 개의 그림이다. 첫째는 직각이 하나씩 있고 빗변(파란색), 다른 한 변(주황색), 한 예각(분홍색)이 각각 같게 표시된 합동인 직각삼각형 두 개이다. 둘째는 직각삼각형 두 개로, 세 각이 각각 같지만 오른쪽 삼각형이 더 크다.",
-    "solutionImageCaption": "직각삼각형 ABC와 DEF에서 직각이 같으므로, 빗변과 다른 한 변(RHS), 빗변과 한 예각(RHA), 한 변과 양 끝각(ASA) 중 하나가 같으면 합동이다. 세 각이 각각 같다는 조건만으로는 변의 길이가 같다고 할 수 없어 크기가 다른 닮은 삼각형일 수 있다. 정답은 ⑤이다.",
+    "solutionImageAlt": "직각삼각형은 직각이 이미 같으므로 빗변과 다른 한 변이 같거나, 빗변과 한 예각이 같거나, 한 변과 그 양 끝각이 같으면 합동이다. 한 변의 길이가 같다는 조건 없이 각만 같으면 모양이 같을 뿐 크기가 다른 닮음일 수 있다.",
+    "solutionImageCaption": "직각삼각형은 직각이 이미 같으므로 빗변과 다른 한 변이 같거나, 빗변과 한 예각이 같거나, 한 변과 그 양 끝각이 같으면 합동이다. 한 변의 길이가 같다는 조건 없이 각만 같으면 모양이 같을 뿐 크기가 다른 닮음일 수 있다.",
     "solutionImageSize": "full",
     "crossConceptKeys": [],
     "conditionKeys": [],
@@ -67,7 +68,8 @@ window.examData = {
     "standardUnit": "도형의 성질",
     "subUnit": "삼각형의 성질",
     "primaryMethod": "직각삼각형의 합동조건 충분성 비교",
-    "decisiveStep": "RHS·RHA·ASA와 각만 같은 조건을 대조하여 크기를 고정하지 않는 조건을 찾는다."
+    "decisiveStep": "RHS·RHA·ASA와 각만 같은 조건을 대조하여 크기를 고정하지 않는 조건을 찾는다.",
+    "solutionImageScale": 90
   },
   {
     "id": 3,
@@ -115,8 +117,8 @@ window.examData = {
     "answer": "④",
     "solution": "점 $O$는 외심이므로 $\\overline{OA}=\\overline{OB}=\\overline{OC}$이다.\n$\\triangle OAB$에서 $\\angle OAB=\\angle OBA=50^\\circ$, $\\triangle OAC$에서 $\\angle OAC=\\angle OCA=30^\\circ$이다.\n그림에서 점 $O$는 변 $AC$의 바깥쪽에 있으므로 $\\angle BAC=50^\\circ-30^\\circ=20^\\circ$이다.\n$\\triangle OBC$에서 $\\overline{OB}=\\overline{OC}$이므로 $\\angle OCB=\\angle OBC=\\angle x$이다.\n그러면 $\\angle ABC=50^\\circ+\\angle x$, $\\angle ACB=\\angle x-30^\\circ$이다.\n$\\triangle ABC$의 내각의 합에서\n$20^\\circ+(50^\\circ+\\angle x)+(\\angle x-30^\\circ)=180^\\circ$\n$2\\angle x=140^\\circ$\n$\\angle x=70^\\circ$이고 정답은 ④이다.",
     "solutionImage": "assets/images/18_연향중_2학기_기말_중2_수학/q4-solution.svg",
-    "solutionImageAlt": "해설 그림: 세 개의 그림이다. 첫째는 외심 O와 삼각형 ABC가 있고 각 OBA 50도, 각 OCA 30도, 각 OBC x가 표시된 문제 배치이다. 둘째는 O에서 세 꼭짓점까지 반지름이 같고 두 이등변삼각형의 밑각 50도와 30도가 같은 색으로 표시된 그림이다. 셋째는 삼각형 ABC의 세 각이 20도, 50도+x, x−30도로 표시된 그림이다.",
-    "solutionImageCaption": "점 O는 외심이므로 OA=OB=OC이다. 삼각형 OAB에서 각 OAB는 50도, 삼각형 OAC에서 각 OAC는 30도이고 O가 변 AC의 바깥쪽에 있으므로 각 BAC=50도−30도=20도이다. 삼각형 OBC도 이등변삼각형이어서 각 OCB=x이므로 각 ABC=50도+x, 각 ACB=x−30도이다. 내각의 합 20+(50+x)+(x−30)=180에서 x를 구한다. 정답은 ④(70도)이다.",
+    "solutionImageAlt": "외심 O에서 세 꼭짓점까지의 거리가 같으므로 삼각형 OAB와 OAC는 이등변삼각형이다. 그림에서 O는 변 AC의 바깥쪽에 있으므로 각 BAC는 각 OAB와 OAC의 차이다. 삼각형 ABC의 세 내각은 20도, 50도+x, x−30도이고 합이 180도이다.",
+    "solutionImageCaption": "외심 O에서 세 꼭짓점까지의 거리가 같으므로 삼각형 OAB와 OAC는 이등변삼각형이다. 그림에서 O는 변 AC의 바깥쪽에 있으므로 각 BAC는 각 OAB와 OAC의 차이다. 삼각형 ABC의 세 내각은 20도, 50도+x, x−30도이고 합이 180도이다.",
     "solutionImageSize": "full",
     "crossConceptKeys": [],
     "conditionKeys": [],
@@ -131,7 +133,8 @@ window.examData = {
     "legacyLevelCompatibility": "UNKNOWN",
     "standardCourse": "중2 수학",
     "primaryMethod": "외부 외심의 등거리와 각 차",
-    "decisiveStep": "외심의 세 반지름으로 이등변 밑각을 옮기고 실제 외부 배치의 합·차를 내각합에 넣는다."
+    "decisiveStep": "외심의 세 반지름으로 이등변 밑각을 옮기고 실제 외부 배치의 합·차를 내각합에 넣는다.",
+    "solutionImageScale": 94
   },
   {
     "id": 5,
@@ -213,8 +216,8 @@ window.examData = {
     "answer": "③",
     "solution": "$\\overline{AB}=\\overline{AC}$이므로 $\\angle ABC=\\angle ACB=\\dfrac{180^\\circ-44^\\circ}{2}=68^\\circ$이다.\n$\\overline{BD}$는 $\\angle B$의 이등분선이므로 $\\angle DBC=34^\\circ$이다.\n$\\angle ACE=180^\\circ-68^\\circ=112^\\circ$이고 $\\overline{CD}$는 이 외각의 이등분선이므로 $\\angle DCE=56^\\circ$이다.\n$\\triangle DBC$에서 $\\angle DCE$는 $\\angle C$의 외각이므로 $\\angle DCE=\\angle DBC+\\angle BDC$이다.\n$56^\\circ=34^\\circ+\\angle BDC$이므로 $\\angle BDC=22^\\circ$이다.\n정답은 ③이다.",
     "solutionImage": "assets/images/18_연향중_2학기_기말_중2_수학/q7-solution.svg",
-    "solutionImageAlt": "해설 그림: 세 개의 그림이다. 첫째는 각 A가 44도인 삼각형 ABC와 각 B의 이등분선, 각 C의 외각의 이등분선이 점 D에서 만나는 문제 배치이다. 둘째는 AB와 AC가 같은 이등변삼각형으로 두 밑각이 68도이고 외각 ACE가 112도이다. 셋째는 삼각형 DBC에서 각 DBC가 34도, 외각 DCE가 56도로 표시된 그림이다.",
-    "solutionImageCaption": "AB=AC이므로 각 ABC=각 ACB=(180°−44°)÷2=68°이다. BD가 각 B의 이등분선이므로 각 DBC=34°이다. 각 ACE=180°−68°=112°이고 CD가 이 외각의 이등분선이므로 각 DCE=56°이다. 삼각형 DBC에서 외각 DCE=각 DBC+각 BDC이므로 56°=34°+각 BDC이다. 정답은 ③(22°)이다.",
+    "solutionImageAlt": "삼각형 ABC는 이등변삼각형이므로 두 밑각이 같고, 각 B의 이등분선과 각 C의 외각의 이등분선이 각각 각을 반으로 나눈다. 삼각형 DBC에서 외각 DCE의 크기는 이웃하지 않는 두 내각 DBC와 BDC의 크기의 합이다.",
+    "solutionImageCaption": "삼각형 ABC는 이등변삼각형이므로 두 밑각이 같고, 각 B의 이등분선과 각 C의 외각의 이등분선이 각각 각을 반으로 나눈다. 삼각형 DBC에서 외각 DCE의 크기는 이웃하지 않는 두 내각 DBC와 BDC의 크기의 합이다.",
     "solutionImageSize": "full",
     "crossConceptKeys": [
       "CC_ANGLE_BISECTOR",
@@ -232,7 +235,8 @@ window.examData = {
     "legacyLevelCompatibility": "UNKNOWN",
     "standardCourse": "중2 수학",
     "primaryMethod": "이등변 밑각과 내각·외각 이등분의 연결",
-    "decisiveStep": "밑각 68과 외각 112를 각각 반으로 나눈 뒤 DBC의 외각식에서 차를 구한다."
+    "decisiveStep": "밑각 68과 외각 112를 각각 반으로 나눈 뒤 DBC의 외각식에서 차를 구한다.",
+    "solutionImageScale": 94
   },
   {
     "id": 8,
@@ -280,8 +284,8 @@ window.examData = {
     "answer": "②",
     "solution": "$\\overline{BC}$의 중점을 $M$이라 하면 $\\overline{BM}=\\overline{MC}=\\dfrac{1}{2}\\overline{BC}=\\overline{AD}$이고 $\\overline{AD}//\\overline{BM}$이므로 $\\square ABMD$는 평행사변형이다.\n따라서 $\\overline{DM}=\\overline{AB}$이다. 조건에서 $\\overline{AB}=\\overline{DC}=\\overline{MC}$이므로 $\\overline{DM}=\\overline{DC}=\\overline{MC}$이다.\n즉 $\\triangle DMC$는 정삼각형이므로 $\\angle C=60^\\circ$이다.\n$\\overline{AD}//\\overline{BC}$이므로 $\\angle ADC=180^\\circ-60^\\circ=120^\\circ$이다.\n$\\triangle ADC$에서 $\\overline{AD}=\\overline{DC}$이므로 $\\angle DAC=\\dfrac{180^\\circ-120^\\circ}{2}=30^\\circ$이다.\n정답은 ②이다.",
     "solutionImage": "assets/images/18_연향중_2학기_기말_중2_수학/q9-solution.svg",
-    "solutionImageAlt": "해설 그림: 세 개의 그림이다. 첫째는 AD와 BC가 평행하고 AB, AD, DC가 같은 사다리꼴과 대각선 AC이다. 둘째는 BC의 중점 M을 잡아 삼각형 DMC를 주황색으로 칠하고 같은 길이의 변을 파란색으로 표시한 그림이다. 셋째는 각 ADC가 120도이고 AD와 DC가 같은 이등변삼각형 ADC이다.",
-    "solutionImageCaption": "BC의 중점을 M이라 하면 BM=AD이고 AD∥BM이므로 꼭짓점이 A, B, M, D인 사각형은 평행사변형이다. 따라서 DM=AB=DC=MC이므로 삼각형 DMC는 정삼각형이고 각 C=60°이다. AD∥BC이므로 각 ADC=180°−60°=120°이다. 삼각형 ADC에서 AD=DC이므로 두 밑각의 크기는 (180°−120°)÷2이다. 정답은 ②(30°)이다.",
+    "solutionImageAlt": "BC의 중점을 M이라 하면 AD와 BM이 평행하고 길이가 같아 꼭짓점이 A, B, M, D인 사각형이 평행사변형이다. 그래서 DM=AB이고, 조건에서 AB=DC=MC이므로 세 변이 같은 삼각형 DMC(주황색)는 정삼각형이다. 각 C가 60도이므로 각 ADC는 120도이고 삼각형 ADC는 AD=DC인 이등변삼각형이다.",
+    "solutionImageCaption": "BC의 중점을 M이라 하면 AD와 BM이 평행하고 길이가 같아 꼭짓점이 A, B, M, D인 사각형이 평행사변형이다. 그래서 DM=AB이고, 조건에서 AB=DC=MC이므로 세 변이 같은 삼각형 DMC(주황색)는 정삼각형이다. 각 C가 60도이므로 각 ADC는 120도이고 삼각형 ADC는 AD=DC인 이등변삼각형이다.",
     "solutionImageSize": "full",
     "crossConceptKeys": [
       "CC_ISOSCELES_TRIANGLE"
@@ -298,7 +302,8 @@ window.examData = {
     "legacyLevelCompatibility": "UNKNOWN",
     "standardCourse": "중2 수학",
     "primaryMethod": "밑변 중점을 보조로 만들어 정삼각형 발견",
-    "decisiveStep": "새 중점 M으로 평행사변형 ABMD를 구성하여 DM=DC=MC를 얻고 60도와 이등변 밑각을 연결한다."
+    "decisiveStep": "새 중점 M으로 평행사변형 ABMD를 구성하여 DM=DC=MC를 얻고 60도와 이등변 밑각을 연결한다.",
+    "solutionImageScale": 94
   },
   {
     "id": 10,
@@ -349,8 +354,8 @@ window.examData = {
     "answer": "①",
     "solution": "$\\overline{AB}=\\overline{AC}$이므로 $\\angle ABC=\\angle ACB=\\dfrac{180^\\circ-52^\\circ}{2}=64^\\circ$이다.\n내심 $I$는 각의 이등분선의 교점이므로 $\\angle ABI=\\dfrac{1}{2}\\times64^\\circ=32^\\circ$이다.\n외심 $O$는 $\\overline{OA}=\\overline{OB}=\\overline{OC}$이므로 $\\triangle OAB\\equiv\\triangle OAC$(SSS 합동)이고 $\\angle OAB=\\dfrac{1}{2}\\angle A=26^\\circ$이다.\n$\\triangle OAB$는 $\\overline{OA}=\\overline{OB}$인 이등변삼각형이므로 $\\angle OBA=\\angle OAB=26^\\circ$이다.\n$\\angle OBI=\\angle ABI-\\angle OBA=32^\\circ-26^\\circ=6^\\circ$이다.\n정답은 ①이다.",
     "solutionImage": "assets/images/18_연향중_2학기_기말_중2_수학/q11-solution.svg",
-    "solutionImageAlt": "해설 그림: 세 개의 그림이다. 첫째는 각 A가 52도인 이등변삼각형 ABC의 외심 O와 내심 I가 있는 문제 배치이다. 둘째는 내심 I를 지나는 각의 이등분선으로 네 개의 같은 각이 32도로 표시된 그림이다. 셋째는 외심 O에서 세 꼭짓점까지의 거리가 같고 네 개의 같은 각이 26도로 표시된 그림이다.",
-    "solutionImageCaption": "AB=AC이므로 각 ABC=각 ACB=(180°−52°)÷2=64°이다. 내심 I는 각의 이등분선의 교점이므로 각 ABI=32°이다. 외심 O에서 OA=OB=OC이므로 삼각형 OAB와 OAC가 합동이고 각 OAB=26°이며 삼각형 OAB가 이등변삼각형이므로 각 OBA=26°이다. 따라서 각 OBI=각 ABI−각 OBA이다. 정답은 ①(6°)이다.",
+    "solutionImageAlt": "삼각형 ABC는 AB=AC인 이등변삼각형이므로 두 밑각이 같다. 내심 I는 각의 이등분선의 교점이어서 각 ABI는 각 B의 절반이다. 외심 O는 세 꼭짓점까지의 거리가 같아 직선 AO가 각 A를 이등분하고 삼각형 OAB는 이등변삼각형이다. 각 OBI는 각 ABI와 각 OBA의 차이다.",
+    "solutionImageCaption": "삼각형 ABC는 AB=AC인 이등변삼각형이므로 두 밑각이 같다. 내심 I는 각의 이등분선의 교점이어서 각 ABI는 각 B의 절반이다. 외심 O는 세 꼭짓점까지의 거리가 같아 직선 AO가 각 A를 이등분하고 삼각형 OAB는 이등변삼각형이다. 각 OBI는 각 ABI와 각 OBA의 차이다.",
     "solutionImageSize": "full",
     "crossConceptKeys": [
       "CC_ISOSCELES_TRIANGLE"
@@ -367,7 +372,8 @@ window.examData = {
     "legacyLevelCompatibility": "UNKNOWN",
     "standardCourse": "중2 수학",
     "primaryMethod": "이등변삼각형의 내심·외심 각 차",
-    "decisiveStep": "밑각의 반각 32와 외심 등거리로 생긴 밑각 26을 구해 두 중심으로 향한 각의 차를 구한다."
+    "decisiveStep": "밑각의 반각 32와 외심 등거리로 생긴 밑각 26을 구해 두 중심으로 향한 각의 차를 구한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 12,
@@ -415,8 +421,8 @@ window.examData = {
     "answer": "⑤",
     "solution": "$\\triangle ABC\\sim\\triangle DFE$이고 $\\angle A=\\angle D$, $\\angle B=\\angle F$, $\\angle C=\\angle E$가 대응한다. 길이가 주어진 변끼리 $\\overline{BC}$와 $\\overline{FE}$, $\\overline{AB}$와 $\\overline{DF}$가 대응해야 $x$를 구할 수 있기 때문이다.\n$\\overline{BC}$의 대각이 $\\angle A$, $\\overline{FE}$의 대각이 $\\angle D$이므로 $\\angle D=\\angle A=66^\\circ$이다.\n$\\triangle DEF$에서 $y=180-66-44=70$이다.\n닮음비는 $\\overline{BC}:\\overline{FE}=5:10=1:2$이다.\n$\\overline{AB}:\\overline{DF}=1:2$이므로 $x:8=1:2$, $x=4$이다.\n$x+y=4+70=74$이다.\n정답은 ⑤이다.",
     "solutionImage": "assets/images/18_연향중_2학기_기말_중2_수학/q13-solution.svg",
-    "solutionImageAlt": "해설 그림: 두 개의 그림이다. 첫째는 왼쪽의 작은 삼각형 ABC와 오른쪽의 큰 삼각형 DFE이고 BC는 5, DF는 8, FE는 10, 각 A는 66도, 각 E는 44도, 각 F는 y이다. 둘째는 같은 두 삼각형에서 대응하는 각을 분홍색, 보라색, 초록색으로, 대응하는 변 AB와 DF는 파란색, BC와 FE는 주황색, AC와 DE는 초록색으로 표시한 그림이다.",
-    "solutionImageCaption": "삼각형 ABC와 DEF에서 대응하는 각이 같으므로 각 D=각 A=66°이다. 삼각형 DEF의 내각의 합에서 y=180−66−44=70이다. BC와 FE가 대응하므로 닮음비는 5:10=1:2이고, AB와 DF가 대응하므로 x:8=1:2에서 x=4이다. x+y의 값을 구한다. 정답은 ⑤이다.",
+    "solutionImageAlt": "두 삼각형이 닮음이므로 대응하는 각은 같다. 각 A와 각 D(분홍색), 각 B와 각 F(보라색), 각 C와 각 E(초록색)가 대응한다. 대응하는 변 BC와 FE(주황색), AB와 DF(파란색)의 길이의 비가 같으므로 x를 구할 수 있다.",
+    "solutionImageCaption": "두 삼각형이 닮음이므로 대응하는 각은 같다. 각 A와 각 D(분홍색), 각 B와 각 F(보라색), 각 C와 각 E(초록색)가 대응한다. 대응하는 변 BC와 FE(주황색), AB와 DF(파란색)의 길이의 비가 같으므로 x를 구할 수 있다.",
     "solutionImageSize": "full"
   },
   {
@@ -565,8 +571,8 @@ window.examData = {
     "answer": "④",
     "solution": "$\\overline{AB}//\\overline{DC}$이므로 $\\triangle PAB\\sim\\triangle PCD$(AA 닮음)이고 닮음비는 $\\overline{AB}:\\overline{CD}=6:12=1:2$이다.\n따라서 $\\overline{BP}:\\overline{PD}=1:2$이고 $\\overline{BP}:\\overline{BD}=1:3$이다.\n$\\overline{PQ}//\\overline{DC}$이므로 $\\triangle BQP\\sim\\triangle BCD$(AA 닮음)이다.\n$\\overline{PQ}:\\overline{DC}=\\overline{BP}:\\overline{BD}=1:3$이므로 $\\overline{PQ}=\\dfrac{1}{3}\\times12=4\\text{ cm}$이다.\n정답은 ④이다.",
     "solutionImage": "assets/images/18_연향중_2학기_기말_중2_수학/q18-solution.svg",
-    "solutionImageAlt": "해설 그림: 세 개의 그림이다. 첫째는 B와 C에서 BC에 수직인 AB와 DC를 세우고 AC와 BD가 만나는 점 P에서 BC에 내린 수선의 발이 Q인 문제 배치로 AB는 6cm, DC는 12cm이다. 둘째는 평행한 AB와 DC 사이의 삼각형 PAB를 파란색, PCD를 주황색으로 칠한 그림이다. 셋째는 PQ와 DC가 평행한 삼각형 BCD와 그 안의 선분 PQ이다.",
-    "solutionImageCaption": "AB∥DC이므로 삼각형 PAB와 PCD는 AA 닮음이고 닮음비는 AB:CD=6:12=1:2이다. 따라서 BP:PD=1:2이고 BP:BD=1:3이다. PQ∥DC이므로 삼각형 BQP와 BCD는 AA 닮음이고 PQ:DC=BP:BD=1:3이다. DC=12cm이므로 PQ의 길이를 구한다. 정답은 ④(4cm)이다.",
+    "solutionImageAlt": "AB와 DC가 평행하므로 삼각형 PAB와 PCD는 닮음이고 닮음비가 6대 12인 1대 2이다. 그래서 BP와 PD의 비는 1대 2이고 BP와 BD의 비는 1대 3이다. PQ와 DC가 평행하므로 삼각형 BQP와 BCD가 닮음이고 PQ와 DC의 비는 BP와 BD의 비와 같다.",
+    "solutionImageCaption": "AB와 DC가 평행하므로 삼각형 PAB와 PCD는 닮음이고 닮음비가 6대 12인 1대 2이다. 그래서 BP와 PD의 비는 1대 2이고 BP와 BD의 비는 1대 3이다. PQ와 DC가 평행하므로 삼각형 BQP와 BCD가 닮음이고 PQ와 DC의 비는 BP와 BD의 비와 같다.",
     "solutionImageSize": "full",
     "crossConceptKeys": [],
     "conditionKeys": [],
@@ -581,7 +587,8 @@ window.examData = {
     "legacyLevelCompatibility": "UNKNOWN",
     "standardCourse": "중2 수학",
     "primaryMethod": "교차선 비를 전체비로 바꾸어 내부 평행비에 적용",
-    "decisiveStep": "두 수직변 6:12에서 BP:PD=1:2와 BP:BD=1:3을 얻고 PQ//DC의 길이비에 넣는다."
+    "decisiveStep": "두 수직변 6:12에서 BP:PD=1:2와 BP:BD=1:3을 얻고 PQ//DC의 길이비에 넣는다.",
+    "solutionImageScale": 94
   },
   {
     "id": 19,
@@ -740,8 +747,8 @@ window.examData = {
     "answer": "$10\\text{ cm}$",
     "solution": "$\\overline{AB}//\\overline{DE}$이므로 엇각의 크기가 같아 $\\angle BAC=\\angle DEC$, $\\angle ABC=\\angle EDC$이다.\n따라서 $\\triangle ABC\\sim\\triangle EDC$(AA 닮음)이다.\n대응하는 변의 길이의 비가 같으므로 $\\overline{AB}:\\overline{ED}=\\overline{AC}:\\overline{EC}$이다.\n$15:x=9:6$\n$9x=90$\n$x=10\\text{ cm}$이다.",
     "solutionImage": "assets/images/18_연향중_2학기_기말_중2_수학/q24-solution.svg",
-    "solutionImageAlt": "해설 그림: 세 개의 그림이다. 첫째는 AB와 DE가 평행하고 선분 AE와 BD가 점 C에서 만나는 문제 배치로 AB는 15cm, AC는 9cm, BC는 12cm, CE는 6cm, DE는 x이다. 둘째는 같은 방향으로 놓은 삼각형 ABC로 AB는 15, AC는 9이다. 셋째는 삼각형 EDC로 DE는 x, CE는 6이고 대응하는 각과 변이 같은 색으로 표시되어 있다.",
-    "solutionImageCaption": "AB∥DE이므로 엇각이 같아 각 BAC=각 DEC, 각 ABC=각 EDC이다. 따라서 삼각형 ABC와 EDC는 AA 닮음이다. 대응하는 변의 길이의 비가 같으므로 AB:ED=AC:EC에서 15:x=9:6이다. 9x=90에서 x의 값을 구한다. 정답은 10cm이다.",
+    "solutionImageAlt": "AB와 DE가 평행하므로 엇각의 크기가 같아 각 BAC와 각 DEC(분홍색), 각 ABC와 각 EDC(보라색)가 같다. 따라서 삼각형 ABC와 EDC는 AA 닮음이다. 대응하는 변은 AB와 ED(파란색), AC와 EC(주황색), BC와 DC(초록색)이다.",
+    "solutionImageCaption": "AB와 DE가 평행하므로 엇각의 크기가 같아 각 BAC와 각 DEC(분홍색), 각 ABC와 각 EDC(보라색)가 같다. 따라서 삼각형 ABC와 EDC는 AA 닮음이다. 대응하는 변은 AB와 ED(파란색), AC와 EC(주황색), BC와 DC(초록색)이다.",
     "solutionImageSize": "full",
     "crossConceptKeys": [],
     "conditionKeys": [],
@@ -756,7 +763,8 @@ window.examData = {
     "legacyLevelCompatibility": "UNKNOWN",
     "standardCourse": "중2 수학",
     "primaryMethod": "교차한 평행선 삼각형의 직접 비례",
-    "decisiveStep": "AB//DE가 만드는 두 엇각으로 ABC~EDC를 읽고 15:x=9:6을 바로 푼다."
+    "decisiveStep": "AB//DE가 만드는 두 엇각으로 ABC~EDC를 읽고 15:x=9:6을 바로 푼다.",
+    "solutionImageScale": 90
   }
 ]
 };

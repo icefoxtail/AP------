@@ -250,8 +250,8 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageAlt": "해설 도형: 다음 그림과 같이 $AB=5$, $BC=2$, $\\angle ABC=120^\\circ$인 삼각형에 대하여 $\\triangle ABC$의 넓이를 ",
-    "solutionImageCaption": "해설의 핵심 관계: ∠ABC=120°이므로 연장선 BH와 BC 사이 ∠CBH=60°; CH⊥AB, CH=2 sin60°=√3.",
+    "solutionImageAlt": "다음 그림과 같이 $AB=5$, $BC=2$, $\\angle ABC=120^\\circ$인 삼각형에 대하여 $\\triangle ABC$의 넓이를 구하면? [4점]",
+    "solutionImageCaption": "다음 그림과 같이 $AB=5$, $BC=2$, $\\angle ABC=120^\\circ$인 삼각형에 대하여 $\\triangle ABC$의 넓이를 구하면? [4점]",
     "solutionImageSize": "full",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
@@ -264,7 +264,8 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL"
   ,
     "primaryMethod": "두 변과 끼인각이 주어져 삼각비 넓이 공식에 바로 대입한다.",
-    "decisiveStep": "두 변과 끼인각이 주어져 삼각비 넓이 공식에 바로 대입한다."
+    "decisiveStep": "두 변과 끼인각이 주어져 삼각비 넓이 공식에 바로 대입한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 7,
@@ -359,7 +360,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL"
   ,
     "primaryMethod": "45도 삼각형에서 높이와 밑변 조각을 정하고 나머지 밑변으로 피타고라스 길이를 구해 높이와 합한다.",
-    "decisiveStep": "45도 삼각형에서 높이와 밑변 조각을 정하고 나머지 밑변으로 피타고라스 길이를 구해 높이와 합한다."
+    "decisiveStep": "45도 삼각형에서 높이와 밑변 조각을 정하고 나머지 밑변으로 피타고라스 길이를 구해 높이와 합한다.",
+    "solutionImageAlt": "다음 그림과 같이 $AB=4\\sqrt{2}$, $BC=10$, $\\angle ABH=45^\\circ$인 $\\triangle ABC$에서 $AH+AC$의 길이를 구하면? [4점]",
+    "solutionImageCaption": "다음 그림과 같이 $AB=4\\sqrt{2}$, $BC=10$, $\\angle ABH=45^\\circ$인 $\\triangle ABC$에서 $AH+AC$의 길이를 구하면? [4점]",
+    "solutionImageScale": 90
   },
   {
     "id": 9,
@@ -403,7 +407,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL"
   ,
     "primaryMethod": "직각변의 1:3 비를 공통배수로 놓아 빗변 비를 피타고라스로 복원한 뒤 코사인을 읽는다.",
-    "decisiveStep": "직각변의 1:3 비를 공통배수로 놓아 빗변 비를 피타고라스로 복원한 뒤 코사인을 읽는다."
+    "decisiveStep": "직각변의 1:3 비를 공통배수로 놓아 빗변 비를 피타고라스로 복원한 뒤 코사인을 읽는다.",
+    "solutionImageAlt": "$\\angle A=90^\\circ$인 직각삼각형 $ABC$에서 $AC=3AB$일 때, $\\cos C$의 값을 구하면? [5점]",
+    "solutionImageCaption": "$\\angle A=90^\\circ$인 직각삼각형 $ABC$에서 $AC=3AB$일 때, $\\cos C$의 값을 구하면? [5점]",
+    "solutionImageScale": 90
   },
   {
     "id": 10,
@@ -435,8 +442,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q10-solution.svg",
-    "solutionImageAlt": "30°, 60°, 90° 내각을 표시한 직각삼각형 ABC",
-    "solutionImageCaption": "각의 비 1:2:3에서 얻는 세 각과 sin A=cos B를 연결한다.",
+    "solutionImageAlt": "세 내각의 크기의 비가 $1:2:3$인 삼각형 $ABC$에서 내각의 크기가 $A<B<C$인 대소 관계를 만족할 때, $\\sin A:\\cos B$의 값을 구하면? [5점]",
+    "solutionImageCaption": "세 내각의 크기의 비가 $1:2:3$인 삼각형 $ABC$에서 내각의 크기가 $A<B<C$인 대소 관계를 만족할 때, $\\sin A:\\cos B$의 값을 구하면? [5점]",
     "solutionImageSize": "full",
     "problemTypeKey": "PT_TRIG_RATIO",
     "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
@@ -449,7 +456,8 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL"
   ,
     "primaryMethod": "내각의 합과 크기 순서로 30도·60도·90도를 배정하고 두 특수각 삼각비의 비를 구한다.",
-    "decisiveStep": "내각의 합과 크기 순서로 30도·60도·90도를 배정하고 두 특수각 삼각비의 비를 구한다."
+    "decisiveStep": "내각의 합과 크기 순서로 30도·60도·90도를 배정하고 두 특수각 삼각비의 비를 구한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 11,
@@ -483,8 +491,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q11-solution.svg",
-    "solutionImageAlt": "120°인 C와 BC 연장선 위의 H, 수선 AH를 표시한 삼각형",
-    "solutionImageCaption": "밑변 BC와 높이 AH가 만드는 넓이 관계를 본다.",
+    "solutionImageAlt": "다음 그림과 같이 $\\triangle ABC$의 넓이가 $12\\sqrt{3}$이고, $BC=8$, $\\angle ACB=120^\\circ$일 때, $AH$의 길이를 구하면? [4점]",
+    "solutionImageCaption": "다음 그림과 같이 $\\triangle ABC$의 넓이가 $12\\sqrt{3}$이고, $BC=8$, $\\angle ACB=120^\\circ$일 때, $AH$의 길이를 구하면? [4점]",
     "solutionImageSize": "full",
     "problemTypeKey": null,
     "templateKey": null,
@@ -497,7 +505,8 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   ,
     "primaryMethod": "삼각형 넓이를 밑변과 수직 높이의 곱 절반으로 놓고 알려진 넓이와 밑변으로 높이만 역산한다. 120도 조건과 삼각비는 사용되지 않는다.",
-    "decisiveStep": "삼각형 넓이를 밑변과 수직 높이의 곱 절반으로 놓고 알려진 넓이와 밑변으로 높이만 역산한다. 120도 조건과 삼각비는 사용되지 않는다."
+    "decisiveStep": "삼각형 넓이를 밑변과 수직 높이의 곱 절반으로 놓고 알려진 넓이와 밑변으로 높이만 역산한다. 120도 조건과 삼각비는 사용되지 않는다.",
+    "solutionImageScale": 90
   },
   {
     "id": 12,
@@ -543,7 +552,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   ,
     "primaryMethod": "정육각형 변까지의 중심거리와 30도 코사인으로 반지름을 복원한 뒤 원 넓이에서 여섯 정삼각형 넓이를 뺀다.",
-    "decisiveStep": "정육각형 변까지의 중심거리와 30도 코사인으로 반지름을 복원한 뒤 원 넓이에서 여섯 정삼각형 넓이를 뺀다."
+    "decisiveStep": "정육각형 변까지의 중심거리와 30도 코사인으로 반지름을 복원한 뒤 원 넓이에서 여섯 정삼각형 넓이를 뺀다.",
+    "solutionImageAlt": "다음 그림과 같이 정육각형 $ABCDEF$가 원 $O$에 내접하고, $O$에서 $AF$에 내린 수선의 발을 $H$, $OH=3\\sqrt{3}$일 때, 색칠한 부분의 넓이를 구하면? [5점]",
+    "solutionImageCaption": "다음 그림과 같이 정육각형 $ABCDEF$가 원 $O$에 내접하고, $O$에서 $AF$에 내린 수선의 발을 $H$, $OH=3\\sqrt{3}$일 때, 색칠한 부분의 넓이를 구하면? [5점]",
+    "solutionImageScale": 90
   },
   {
     "id": 13,
@@ -577,8 +589,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q13-solution.svg",
-    "solutionImageAlt": "현 AB=24의 중점 H와 중심 O에서 내린 수선",
-    "solutionImageCaption": "중심에서 현에 내린 수선이 현을 이등분해 반지름 직각삼각형을 만든다.",
+    "solutionImageAlt": "다음 그림과 같이 $OA=x$, $OH=5$, $AB=24$인 원 $O$에서 $x$의 값을 구하면? [4점]",
+    "solutionImageCaption": "다음 그림과 같이 $OA=x$, $OH=5$, $AB=24$인 원 $O$에서 $x$의 값을 구하면? [4점]",
     "solutionImageSize": "full",
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_CHORD_LENGTH",
@@ -591,7 +603,8 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   ,
     "primaryMethod": "현을 이등분해 반현 길이를 얻고 중심거리와 피타고라스 관계로 반지름을 구한다.",
-    "decisiveStep": "현을 이등분해 반현 길이를 얻고 중심거리와 피타고라스 관계로 반지름을 구한다."
+    "decisiveStep": "현을 이등분해 반현 길이를 얻고 중심거리와 피타고라스 관계로 반지름을 구한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 14,
@@ -637,7 +650,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL"
   ,
     "primaryMethod": "반지름의 동일성과 공통 수선으로 직각삼각형의 빗변·한 변 합동을 확인해 잘못 적힌 RHA 명칭을 판별한다.",
-    "decisiveStep": "반지름의 동일성과 공통 수선으로 직각삼각형의 빗변·한 변 합동을 확인해 잘못 적힌 RHA 명칭을 판별한다."
+    "decisiveStep": "반지름의 동일성과 공통 수선으로 직각삼각형의 빗변·한 변 합동을 확인해 잘못 적힌 RHA 명칭을 판별한다.",
+    "solutionImageAlt": "다음은 원의 중심에서 현에 내린 수선이 그 현을 이등분함을 보이는 과정을 설명한 것이다. 다음에 들어갈 내용 중 옳지 않은 것을 고르면? [4점]",
+    "solutionImageCaption": "다음은 원의 중심에서 현에 내린 수선이 그 현을 이등분함을 보이는 과정을 설명한 것이다. 다음에 들어갈 내용 중 옳지 않은 것을 고르면? [4점]",
+    "solutionImageScale": 90
   },
   {
     "id": 15,
@@ -683,7 +699,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   ,
     "primaryMethod": "반현과 활꼴 높이로 중심거리를 r−3으로 두어 피타고라스 방정식에서 반지름을 구한 뒤 원의 넓이로 연결한다.",
-    "decisiveStep": "반현과 활꼴 높이로 중심거리를 r−3으로 두어 피타고라스 방정식에서 반지름을 구한 뒤 원의 넓이로 연결한다."
+    "decisiveStep": "반현과 활꼴 높이로 중심거리를 r−3으로 두어 피타고라스 방정식에서 반지름을 구한 뒤 원의 넓이로 연결한다.",
+    "solutionImageAlt": "다음 그림과 같이 호 $AB$는 어떤 원의 일부분이다. $CM\\perp AB$, $AB=10\\,\\mathrm{cm}$, $CM=3\\,\\mathrm{cm}$일 때, 이 원의 넓이를 구하면? [4점]",
+    "solutionImageCaption": "다음 그림과 같이 호 $AB$는 어떤 원의 일부분이다. $CM\\perp AB$, $AB=10\\,\\mathrm{cm}$, $CM=3\\,\\mathrm{cm}$일 때, 이 원의 넓이를 구하면? [4점]",
+    "solutionImageScale": 90
   },
   {
     "id": 16,
@@ -729,7 +748,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL"
   ,
     "primaryMethod": "세 현의 중심거리가 같아 정삼각형이 됨을 보인 뒤 반현과 30도 삼각비로 외접반지름을 얻어 둘레를 구한다.",
-    "decisiveStep": "세 현의 중심거리가 같아 정삼각형이 됨을 보인 뒤 반현과 30도 삼각비로 외접반지름을 얻어 둘레를 구한다."
+    "decisiveStep": "세 현의 중심거리가 같아 정삼각형이 됨을 보인 뒤 반현과 30도 삼각비로 외접반지름을 얻어 둘레를 구한다.",
+    "solutionImageAlt": "다음 그림과 같은 원 $O$의 중심에서 $AB$, $BC$, $CA$에 내린 수선의 발을 각각 $D$, $E$, $F$라 할 때, $OD=OE=OF$이다. $AB=12$일 때, 원 $O$의 둘레의 길이를 구하면? [4점]",
+    "solutionImageCaption": "다음 그림과 같은 원 $O$의 중심에서 $AB$, $BC$, $CA$에 내린 수선의 발을 각각 $D$, $E$, $F$라 할 때, $OD=OE=OF$이다. $AB=12$일 때, 원 $O$의 둘레의 길이를 구하면? [4점]",
+    "solutionImageScale": 90
   },
   {
     "id": 17,
@@ -775,7 +797,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL"
   ,
     "primaryMethod": "P에서 같은 접선 길이를 옮겨 PQ에서 뺀 뒤 Q에서의 같은 접선 길이로 x를 읽는다.",
-    "decisiveStep": "P에서 같은 접선 길이를 옮겨 PQ에서 뺀 뒤 Q에서의 같은 접선 길이로 x를 읽는다."
+    "decisiveStep": "P에서 같은 접선 길이를 옮겨 PQ에서 뺀 뒤 Q에서의 같은 접선 길이로 x를 읽는다.",
+    "solutionImageAlt": "다음 그림과 같이 $PA=2$, $PQ=5$, $QC=x$이고 세 점 $A$, $B$, $C$는 원 $O$의 접점일 때, $x$의 값을 구하면? [4점]",
+    "solutionImageCaption": "다음 그림과 같이 $PA=2$, $PQ=5$, $QC=x$이고 세 점 $A$, $B$, $C$는 원 $O$의 접점일 때, $x$의 값을 구하면? [4점]",
+    "solutionImageScale": 90
   },
   {
     "id": 18,
@@ -918,7 +943,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL"
   ,
     "primaryMethod": "30도 삼각형의 두 직각변을 구하고 45도 방향의 수평 성분을 합해 빗변의 수평 투영과 연결하여 sin75를 유도한다.",
-    "decisiveStep": "30도 삼각형의 두 직각변을 구하고 45도 방향의 수평 성분을 합해 빗변의 수평 투영과 연결하여 sin75를 유도한다."
+    "decisiveStep": "30도 삼각형의 두 직각변을 구하고 45도 방향의 수평 성분을 합해 빗변의 수평 투영과 연결하여 sin75를 유도한다.",
+    "solutionImageAlt": "다음 그림과 같이 직사각형 $ABCD$ 안에 있는 $\\triangle AEF$는 빗변의 길이가 $6$이고 $\\angle EAF=30^\\circ$인 직각삼각형일 때, $\\sin75^\\circ$의 값을 구하면? [5점]",
+    "solutionImageCaption": "다음 그림과 같이 직사각형 $ABCD$ 안에 있는 $\\triangle AEF$는 빗변의 길이가 $6$이고 $\\angle EAF=30^\\circ$인 직각삼각형일 때, $\\sin75^\\circ$의 값을 구하면? [5점]",
+    "solutionImageScale": 90
   },
   {
     "id": 21,
@@ -988,8 +1016,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q22-solution.svg",
-    "solutionImageAlt": "AB:BC:AC=3:4:5인 직각삼각형 ABC",
-    "solutionImageCaption": "cos A가 정하는 3-4-5 변 관계에서 sin A와 tan A를 읽는다.",
+    "solutionImageAlt": "[서술형 2] 다음 그림과 같이 $\\angle B=90^\\circ$인 직각삼각형 $ABC$에서 $\\cos A=\\dfrac{3}{5}$일 때, $\\sin A$, $\\tan A$를 구하고, 그 과정을 서술하시오. [총 5점]",
+    "solutionImageCaption": "[서술형 2] 다음 그림과 같이 $\\angle B=90^\\circ$인 직각삼각형 $ABC$에서 $\\cos A=\\dfrac{3}{5}$일 때, $\\sin A$, $\\tan A$를 구하고, 그 과정을 서술하시오. [총 5점]",
     "solutionImageSize": "full",
     "problemTypeKey": "PT_TRIG_RATIO",
     "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
@@ -1002,7 +1030,8 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL"
   ,
     "primaryMethod": "코사인에서 두 변의 비를 두고 피타고라스로 나머지 변을 얻어 사인과 탄젠트의 비를 각각 구한다.",
-    "decisiveStep": "코사인에서 두 변의 비를 두고 피타고라스로 나머지 변을 얻어 사인과 탄젠트의 비를 각각 구한다."
+    "decisiveStep": "코사인에서 두 변의 비를 두고 피타고라스로 나머지 변을 얻어 사인과 탄젠트의 비를 각각 구한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 23,
@@ -1042,7 +1071,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "STRONG_CONFLICT"
   ,
     "primaryMethod": "작은 원 반지름을 현까지의 수직거리로 보고 큰 원의 반지름과 피타고라스로 반현을 얻어 삼각형 넓이를 구한다.",
-    "decisiveStep": "작은 원 반지름을 현까지의 수직거리로 보고 큰 원의 반지름과 피타고라스로 반현을 얻어 삼각형 넓이를 구한다."
+    "decisiveStep": "작은 원 반지름을 현까지의 수직거리로 보고 큰 원의 반지름과 피타고라스로 반현을 얻어 삼각형 넓이를 구한다.",
+    "solutionImageAlt": "[서술형 3] 다음 그림과 같이 중심이 $O$로 같은 두 원의 반지름의 길이가 각각 $5\\,\\mathrm{cm}$, $7\\,\\mathrm{cm}$이다. 큰 원의 현 $AB$가 작은 원에 접할 때의 그 접점을 $M$이라 할 때, $\\triangle OAB$의 넓이를 구하고, 그 과정을 서술하시오. [총 5점]",
+    "solutionImageCaption": "[서술형 3] 다음 그림과 같이 중심이 $O$로 같은 두 원의 반지름의 길이가 각각 $5\\,\\mathrm{cm}$, $7\\,\\mathrm{cm}$이다. 큰 원의 현 $AB$가 작은 원에 접할 때의 그 접점을 $M$이라 할 때, $\\triangle OAB$의 넓이를 구하고, 그 과정을 서술하시오. [총 5점]",
+    "solutionImageScale": 90
   },
   {
     "id": 24,

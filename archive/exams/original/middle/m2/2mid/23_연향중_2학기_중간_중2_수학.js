@@ -42,7 +42,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "꼭지각 이등분선의 수직이등분과 합동",
-    "decisiveStep": "밑변 수직이등분선 위의 점에서 두 밑변 끝까지 거리는 같지만 꼭짓점까지 거리는 정해지지 않는다."
+    "decisiveStep": "밑변 수직이등분선 위의 점에서 두 밑변 끝까지 거리는 같지만 꼭짓점까지 거리는 정해지지 않는다.",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중2_수학/q1-solution.svg",
+    "solutionImageAlt": "이등변삼각형 ABC에서 AD는 밑변의 수직이등분선이고 P에서 B,C까지 거리가 같다",
+    "solutionImageCaption": "이등변삼각형 ABC에서 AD는 밑변의 수직이등분선이고 P에서 B,C까지 거리가 같다",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -314,8 +318,8 @@ window.questionBank = [
   },
   {
     "id": 8,
-    "imageSize": "tall",
-    "imageAlt": "평행사변형 ABCD 안의 P를 네 꼭짓점과 연결하여 네 삼각형으로 나누었다.",
+    "imageSize": "full",
+    "imageAlt": "평행사변형 ABCD 안의 P가 만든 세 삼각형의 주어진 넓이",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -355,7 +359,8 @@ window.questionBank = [
     "problemTypeKey": "PT_MG_PARALLELOGRAM_INTERNAL_POINT_AREA",
     "templateKey": "TPL_MG_CALCULATE_OPPOSITE_TRIANGLE_AREA_FROM_INTERNAL_POINT",
     "primaryMethod": "평행사변형 내부점의 반대 넓이 합",
-    "decisiveStep": "두 대변 위 삼각형 넓이 합이 전체의 절반이라는 관계로 네 번째 넓이를 뺀다."
+    "decisiveStep": "두 대변 위 삼각형 넓이 합이 전체의 절반이라는 관계로 네 번째 넓이를 뺀다.",
+    "imageCaption": "평행사변형 ABCD 안의 P가 만든 세 삼각형의 주어진 넓이"
   },
   {
     "id": 9,
@@ -448,8 +453,8 @@ window.questionBank = [
     "solutionImageSize": "full",
     "solutionImageCaption": "EBI와 ECJ의 넓이가 같아 사각형 EICJ의 넓이는 큰 정사각형의 1/4이다. 전체 정사각형의 넓이는 6²÷2=18 cm²이므로 구하는 넓이는 9/2 cm²이다.",
     "solutionImageAlt": "두 정사각형 ABCD, EFGH는 합동이다. ABCD의 대각선은 E에서 만난다. EF와 BC의 교점은 I, EH와 CD의 교점은 J이다. 같은 넓이인 두 삼각형 EBI와 ECJ를 같은 색으로 칠했다.",
-    "imageSize": "tall",
-    "imageAlt": "두 정사각형 ABCD, EFGH는 합동이다. ABCD의 대각선은 E에서 만난다. EF와 BC의 교점은 I, EH와 CD의 교점은 J이다.",
+    "imageSize": "full",
+    "imageAlt": "두 합동인 정사각형의 배치와 두 대각선 및 교점 I, J",
     "level": "상",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -490,7 +495,8 @@ window.questionBank = [
     "problemTypeKey": "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA",
     "templateKey": "TPL_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA_CORE",
     "primaryMethod": "정사각형 두 배치의 ASA 합동과 넓이 교환",
-    "decisiveStep": "대각선의 등거리와 두 직각의 각 관계로 삼각형 두 개를 합동으로 보이고 겹친 넓이를 한 중심 삼각형으로 옮긴다."
+    "decisiveStep": "대각선의 등거리와 두 직각의 각 관계로 삼각형 두 개를 합동으로 보이고 겹친 넓이를 한 중심 삼각형으로 옮긴다.",
+    "imageCaption": "두 합동인 정사각형의 배치와 두 대각선 및 교점 I, J"
   },
   {
     "id": 12,
@@ -1006,8 +1012,8 @@ window.questionBank = [
   {
     "id": 24,
     "solutionImageSize": "full",
-    "solutionImageCaption": "AC와 EF는 서로를 이등분하며 수직이므로 AFCE는 마름모이다. AE=8−2=6이므로 사각형 AFCE의 둘레는 24 cm이다.",
-    "solutionImageAlt": "가로 BC는 8이고 위쪽 DE는 2이다. 대각선 AC의 중점 O를 지나 AD 및 BC에 닿는 선은 AC에 수직이다. 사각형 AFCE를 색으로 표시하고 EF도 O에서 같은 길이로 나뉨을 나타냈다.",
+    "solutionImageCaption": "직사각형의 대각선 중점 O에서 두 대각선이 수직이고 서로 이등분한다",
+    "solutionImageAlt": "직사각형의 대각선 중점 O에서 두 대각선이 수직이고 서로 이등분한다",
     "imageSize": "tall",
     "imageAlt": "가로 BC는 8이고 위쪽 DE는 2이다. 대각선 AC의 중점 O를 지나 AD 및 BC에 닿는 선은 AC에 수직이다.",
     "level": "상",

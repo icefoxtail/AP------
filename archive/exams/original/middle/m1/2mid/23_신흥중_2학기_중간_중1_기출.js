@@ -28,7 +28,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "사각뿔의 꼭짓점은 5개이고 모서리는 8개이다. 따라서 b-a=8-5=3이므로 정답은 ①이다.",
-    "image": "assets/images/23_신흥중_2학기_중간_중1_기출/q1.png",
+    "image": "assets/images/23_신흥중_2학기_중간_중1_기출/q1-problem.svg",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
@@ -43,9 +43,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/23_신흥중_2학기_중간_중1_기출/q1-solution.svg",
-    "solutionImageAlt": "해설 그림: 사각뿔의 꼭짓점 5개에 1부터 5까지, 모서리 8개에 ①부터 ⑧까지 번호를 붙이고 보이지 않는 모서리는 점선으로 나타낸 그림",
-    "solutionImageCaption": "꼭짓점과 모서리에 번호를 붙여 교점과 교선의 개수를 센다.",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "사각뿔의 5개 꼭짓점과 8개 모서리를 번호로 세고 뒤쪽 가려지는 모서리는 점선으로 보인다.",
+    "solutionImageCaption": "사각뿔의 5개 꼭짓점과 8개 모서리를 번호로 세고 뒤쪽 가려지는 모서리는 점선으로 보인다.",
+    "solutionImageSize": "full",
     "rpmPrimaryRecordId": "M1-RPM-094",
     "rpmPrimaryPath": {
       "majorUnit": "입체도형",
@@ -54,7 +54,10 @@ window.questionBank = [
       "l4": "면·모서리·꼭짓점"
     },
     "rpmScope": "M1-2",
-    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE",
+    "imageAlt": "밑면이 사각형인 사각뿔의 윤곽과 뒤쪽 가려진 모서리를 점선으로 보여 준다.",
+    "imageCaption": "밑면이 사각형인 사각뿔의 윤곽과 뒤쪽 가려진 모서리를 점선으로 보여 준다.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -84,7 +87,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "A, B, C 중 두 점을 이은 직선은 하나이고 D와 A, B, C를 잇는 직선이 3개이므로 a=4이다.\n반직선은 A, B, C에서 각각 생기는 4개와 D에서 다른 점으로 향하는 3개, 다른 점에서 D로 향하는 3개를 합쳐 b=10개이다.\n선분은 두 점의 조합인 c=6개이다.\n따라서 a+b+c=4+10+6=20이므로 정답은 ⑤이다.",
-    "image": "assets/images/23_신흥중_2학기_중간_중1_기출/q2.png",
+    "image": "assets/images/23_신흥중_2학기_중간_중1_기출/q2-problem.svg",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -110,7 +113,10 @@ window.questionBank = [
       "l4": "직선·반직선·선분"
     },
     "rpmScope": "M1-2",
-    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT",
+    "imageAlt": "A, B, C는 한 직선에 놓이고 D는 그 직선 위에 있지 않은 점으로 놓는다.",
+    "imageCaption": "A, B, C는 한 직선에 놓이고 D는 그 직선 위에 있지 않은 점으로 놓는다.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -188,7 +194,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "직선 위의 인접한 세 각의 합은 180도이다. 가운데 각이 90도이므로 (2x+10)+90+(x+20)=180, 3x=60이다. 따라서 x=20이다.",
-    "image": "assets/images/23_신흥중_2학기_중간_중1_기출/q4.png",
+    "image": "assets/images/23_신흥중_2학기_중간_중1_기출/q4-problem.svg",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -203,9 +209,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "solutionImage": "assets/images/23_신흥중_2학기_중간_중1_기출/q4-solution.svg",
-    "solutionImageAlt": "해설 그림: 한 직선 위의 한 점에서 위로 뻗은 두 반직선이 세 각을 이룬다. 왼쪽 각은 2x+10°, 가운데 각은 직각, 오른쪽 각은 x+20°이고, 일직선 전체가 180°임을 아래 괄호로 나타낸 그림.",
-    "solutionImageCaption": "일직선 위의 세 각의 합은 180°",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "수평 직선의 평각 180°와 가운데 직각 90°, 양쪽 식의 각호를 정확히 대응시킨다.",
+    "solutionImageCaption": "수평 직선의 평각 180°와 가운데 직각 90°, 양쪽 식의 각호를 정확히 대응시킨다.",
+    "solutionImageSize": "full",
     "rpmPrimaryRecordId": null,
     "rpmPrimaryPath": {
       "majorUnit": "기본 도형",
@@ -214,7 +220,10 @@ window.questionBank = [
       "l4": "각의 크기"
     },
     "rpmScope": "M1-2",
-    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT",
+    "imageAlt": "한 직선의 한 점 위로 뻗은 두 광선, 가운데 직각과 양쪽 두 식을 표시한다.",
+    "imageCaption": "한 직선의 한 점 위로 뻗은 두 광선, 가운데 직각과 양쪽 두 식을 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 5,

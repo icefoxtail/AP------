@@ -72,8 +72,8 @@ window.questionBank = [
   },
   {
     "id": 2,
-    "imageSize": "tall",
-    "imageAlt": "빗변은 25 cm, 긴 직각변은 24 cm이다. 나머지 짧은 직각변의 길이는 x cm이다. 오른쪽 위에 직각 표시가 있다.",
+    "imageSize": "full",
+    "imageAlt": "직각삼각형의 한 직각변은 24 cm, 빗변은 25 cm, 다른 직각변은 x cm이다.",
     "questionType": "객관식",
     "tags": [
       "직각삼각형",
@@ -137,7 +137,8 @@ window.questionBank = [
     "solutionImage": "assets/images/21_신흥중_2학기_기말_중2_기출/q2-solution.svg",
     "solutionImageAlt": "해설 그림: 직각이 표시된 두 변에 24와 다른 한 변의 길이가 적혀 있고 빗변에 25가 적힌 직각삼각형이다.",
     "solutionImageCaption": "빗변의 길이가 25 cm이고 한 직각변이 24 cm인 직각삼각형이다. 피타고라스 정리에서 x²=25²−24²=625−576=49이므로 x=7 cm이다. 따라서 답은 ①이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageCaption": "직각삼각형의 한 직각변은 24 cm, 빗변은 25 cm, 다른 직각변은 x cm이다."
   },
   {
     "id": 3,
@@ -208,8 +209,8 @@ window.questionBank = [
     "solutionImageSize": "full",
     "solutionImageCaption": "두 밑변의 차는 14−6=8 cm이다. 높이는 √(17²−8²)=15 cm이므로 둘레는 17+6+15+14=52 cm이고 정답은 ④이다.",
     "solutionImageAlt": "사다리꼴의 윗변 AD는 6 cm, 아랫변 BC는 14 cm, 기울어진 변 AB는 17 cm이다. A에서 H로 수선을 내려 왼쪽 ABH만 칠했다. BH는 8 cm, 높이는 15 cm이다.",
-    "imageSize": "tall",
-    "imageAlt": "사다리꼴의 윗변 AD는 6 cm, 아랫변 BC는 14 cm, 기울어진 변 AB는 17 cm이다.",
+    "imageSize": "full",
+    "imageAlt": "사다리꼴의 밑변은 14 cm와 6 cm, 왼쪽 빗변은 17 cm이며 오른쪽 두 꼭짓점은 직각이다.",
     "questionType": "객관식",
     "tags": [
       "사다리꼴",
@@ -270,7 +271,8 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "metaNullReason": "CROSSWALK_L2_PROJECTION_MISMATCH",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "imageCaption": "사다리꼴의 밑변은 14 cm와 6 cm, 왼쪽 빗변은 17 cm이며 오른쪽 두 꼭짓점은 직각이다."
   },
   {
     "id": 5,
@@ -409,10 +411,10 @@ window.questionBank = [
   {
     "id": 7,
     "solutionImageSize": "full",
-    "solutionImageCaption": "AB=CD=6 cm, BC=DE=8 cm이므로 두 빗변 AC와 CE는 각각 10 cm이다. ∠ACE=90°이므로 넓이는 10×10÷2=50 cm²이며 정답은 ④이다.",
-    "solutionImageAlt": "세 점 B, C, D는 수평으로 놓인다. AB는 6 cm, DE는 8 cm이고 삼각형 ACE를 칠했다. 합동인 두 직각삼각형의 같은 길이를 같은 눈금으로 표시했다. AC와 CE 사이가 직각임을 표시했다.",
-    "imageSize": "tall",
-    "imageAlt": "세 점 B, C, D는 수평으로 놓인다. AB는 6 cm, DE는 8 cm이고 삼각형 ACE를 칠했다.",
+    "solutionImageCaption": "두 직각삼각형의 대응변이 같고 가운데 삼각형 ACE의 넓이는 50 cm²이다.",
+    "solutionImageAlt": "두 직각삼각형의 대응변이 같고 가운데 삼각형 ACE의 넓이는 50 cm²이다.",
+    "imageSize": "full",
+    "imageAlt": "두 직각삼각형 ABC와 CDE가 합동이고 중앙의 삼각형 ACE가 음영으로 구분된다.",
     "questionType": "객관식",
     "tags": [
       "합동",
@@ -473,15 +475,16 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "metaNullReason": "The source gives the right-triangle congruence directly; the solution transfers corresponding side lengths and decomposes area, not an RHS construction. Keep the broader active PT_RIGHT_TRIANGLE_CONGRUENCE classification; no exact current active template maps this given-congruence area-decomposition method, so templateKey remains explicit projection debt.",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "imageCaption": "두 직각삼각형 ABC와 CDE가 합동이고 중앙의 삼각형 ACE가 음영으로 구분된다."
   },
   {
     "id": 8,
     "solutionImageSize": "full",
-    "solutionImageCaption": "무게중심이 중선을 2:1로 나누므로 AD=3×5=15 cm이다. 직각삼각형에서 D는 외심이므로 외접원의 반지름이 15 cm이다. 넓이는 225π cm², 정답은 ④이다.",
-    "solutionImageAlt": "직각의 꼭짓점 A와 빗변의 중점 D를 연결했다. 무게중심 G에서 D까지는 5 cm, AC는 18 cm이다. D를 중심으로 지나는 세 점 A, B, C의 외접원과 반지름을 표시했다.",
-    "imageSize": "tall",
-    "imageAlt": "직각의 꼭짓점 A와 빗변의 중점 D를 연결했다. 무게중심 G에서 D까지는 5 cm, AC는 18 cm이다.",
+    "solutionImageCaption": "직각삼각형의 외접원은 빗변 BC를 지름으로 하며 반지름은 15 cm이다.",
+    "solutionImageAlt": "직각삼각형의 외접원은 빗변 BC를 지름으로 하며 반지름은 15 cm이다.",
+    "imageSize": "full",
+    "imageAlt": "직각삼각형 ABC에서 D는 빗변 중점, G는 무게중심이며 AC=18 cm, GD=5 cm이다.",
     "questionType": "객관식",
     "tags": [
       "직각삼각형",
@@ -544,15 +547,16 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "metaNullReason": "CROSSWALK_PROJECTION_ROW_MISSING",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "imageCaption": "직각삼각형 ABC에서 D는 빗변 중점, G는 무게중심이며 AC=18 cm, GD=5 cm이다."
   },
   {
     "id": 9,
     "solutionImageSize": "full",
-    "solutionImageCaption": "내접원의 반지름은 삼각형 높이의 1/3이다. 넓이 식을 비교하면 BC=15 cm이다. DE는 BC의 2/3이므로 DE=10 cm, 정답은 ③이다.",
-    "solutionImageAlt": "AB는 18 cm, AC는 12 cm이다. BC와 평행한 DE에 무게중심 G와 내심 I가 나란히 있다. I의 세 수선은 모두 같은 길이이므로 같은 청록색과 눈금으로 표시했다.",
-    "imageSize": "tall",
-    "imageAlt": "AB는 18 cm, AC는 12 cm이다. BC와 평행한 DE에 무게중심 G와 내심 I가 나란히 있다.",
+    "solutionImageCaption": "내심 I에 중심을 둔 내접원이 밑변에 접하며 DE=10 cm이다.",
+    "solutionImageAlt": "내심 I에 중심을 둔 내접원이 밑변에 접하며 DE=10 cm이다.",
+    "imageSize": "full",
+    "imageAlt": "삼각형 내부의 D-E 평행선 위에 무게중심 G와 내심 I가 놓이고 두 사선의 길이가 표시된다.",
     "questionType": "객관식",
     "tags": [
       "무게중심",
@@ -616,7 +620,8 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "metaNullReason": null,
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "imageCaption": "삼각형 내부의 D-E 평행선 위에 무게중심 G와 내심 I가 놓이고 두 사선의 길이가 표시된다."
   },
   {
     "id": 10,
@@ -1169,8 +1174,8 @@ window.questionBank = [
   },
   {
     "id": 19,
-    "imageSize": "tall",
-    "imageAlt": "A는 위쪽에 있다. B, C, D, E는 왼쪽 위부터 반시계 방향으로 이름을 붙였다. A에 말이 있고 시계 방향인 E로 향하는 화살표가 있다.",
+    "imageSize": "full",
+    "imageAlt": "한 변의 길이가 1인 정오각형 ABCDE에서 말은 A를 출발하여 시계 방향으로 이동한다.",
     "questionType": "객관식",
     "tags": [
       "확률",
@@ -1237,7 +1242,8 @@ window.questionBank = [
     "solutionImage": "assets/images/21_신흥중_2학기_기말_중2_기출/q19-solution.svg",
     "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
     "solutionImageCaption": "오각형에서 A에서 시계 방향으로 세 번 이동하면 C에 닿고, 한 바퀴 다섯 번을 더 이동한 여덟 번도 C에 닿는다. 두 주사위 눈의 합이 3인 순서쌍은 (1,2), (2,1)의 2가지이고 합이 8인 순서쌍은 (2,6), (3,5), (4,4), (5,3), (6,2)의 5가지이다. 유리한 경우는 2+5=7가지이고 전체는 6×6=36가지이므로 확률은 7/36이다. 따라서 답은 ④이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageCaption": "한 변의 길이가 1인 정오각형 ABCDE에서 말은 A를 출발하여 시계 방향으로 이동한다."
   },
   {
     "id": 20,
@@ -1313,10 +1319,10 @@ window.questionBank = [
   {
     "id": 21,
     "solutionImageSize": "full",
-    "solutionImageCaption": "두 정사각형 한 변은 각각 2 cm와 6 cm이다. BE=8 cm, EF=6 cm이므로 BF=√(8²+6²)=10 cm이다.",
-    "solutionImageAlt": "B, C, E는 같은 수평선 위에 있다. 검은 작은 정사각형과 청록 큰 정사각형에 걸쳐 B부터 F까지 사선을 이었다. 두 정사각형의 한 변이 2 cm와 6 cm이므로 가로 BE는 8 cm이다. 직각삼각형 BEF만 옅게 색칠했다.",
-    "imageSize": "tall",
-    "imageAlt": "B, C, E는 같은 수평선 위에 있다. 검은 작은 정사각형과 청록 큰 정사각형에 걸쳐 B부터 F까지 사선을 이었다.",
+    "solutionImageCaption": "두 정사각형의 밑변을 이은 BE는 8 cm이고 EF는 6 cm인 직각삼각형 BEF가 된다.",
+    "solutionImageAlt": "두 정사각형의 밑변을 이은 BE는 8 cm이고 EF는 6 cm인 직각삼각형 BEF가 된다.",
+    "imageSize": "full",
+    "imageAlt": "밑변 B-C-E가 일직선인 넓이 4 cm², 36 cm²의 두 정사각형을 대각선 BF가 가로지른다.",
     "questionType": "서술형",
     "tags": [
       "정사각형",
@@ -1371,7 +1377,8 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "metaNullReason": "CROSSWALK_L2_PROJECTION_MISMATCH",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "imageCaption": "밑변 B-C-E가 일직선인 넓이 4 cm², 36 cm²의 두 정사각형을 대각선 BF가 가로지른다."
   },
   {
     "id": 22,
@@ -1491,10 +1498,10 @@ window.questionBank = [
   {
     "id": 24,
     "solutionImageSize": "full",
-    "solutionImageCaption": "삼각형의 넓이 60 cm²와 밑변 10 cm로 높이 12 cm를 구한다. 직각삼각형 ABD에서 AB=√(5²+12²)=13 cm이다.",
-    "solutionImageAlt": "AB와 AC에 같은 눈금을 붙였다. 밑변 BC의 길이는 10 cm이다. A에서 밑변의 중점 D로 내린 수선은 12 cm이다. 두 밑변 구간은 5 cm씩이다.",
-    "imageSize": "tall",
-    "imageAlt": "AB와 AC에 같은 눈금을 붙였다. 밑변 BC의 길이는 10 cm이다.",
+    "solutionImageCaption": "밑변을 이등분하는 높이 AD=12 cm와 반밑변 5 cm로 이루어진 직각삼각형이다.",
+    "solutionImageAlt": "밑변을 이등분하는 높이 AD=12 cm와 반밑변 5 cm로 이루어진 직각삼각형이다.",
+    "imageSize": "full",
+    "imageAlt": "AB와 AC가 같은 이등변삼각형 ABC이고 밑변 BC의 길이는 10 cm이다.",
     "questionType": "서술형",
     "tags": [
       "이등변삼각형",
@@ -1551,6 +1558,7 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "metaNullReason": "CROSSWALK_L2_PROJECTION_MISMATCH",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "imageCaption": "AB와 AC가 같은 이등변삼각형 ABC이고 밑변 BC의 길이는 10 cm이다."
   }
 ];

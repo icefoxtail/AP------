@@ -134,8 +134,8 @@ window.examData = {
   },
   {
     "id": 4,
-    "imageSize": "tall",
-    "imageAlt": "오르는 실선 y=2x+6과 내리는 점선 y=−x+3이 A에서 만난다. 두 직선은 가로축에서 B 및 C와 만난다. 삼각형 ABC만 옅게 칠했다.",
+    "imageSize": "full",
+    "imageAlt": "두 직선과 x축이 둘러싼 삼각형 ABC의 넓이 영역",
     "questionNumber": 4,
     "score": 4,
     "level": "중",
@@ -178,7 +178,13 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "두 직선 교점과 축절편의 넓이",
-    "decisiveStep": "공통 교점의높이4와두x절편의차6을밑변·높이로사용한다."
+    "decisiveStep": "공통 교점의높이4와두x절편의차6을밑변·높이로사용한다.",
+    "solutionImage": "assets/images/21_이수중_2학기_중간_중2_수학/q4-solution.svg",
+    "solutionImageAlt": "두 직선과 x축이 둘러싼 삼각형 ABC의 넓이 영역",
+    "solutionImageCaption": "두 직선과 x축이 둘러싼 삼각형 ABC의 넓이 영역",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90,
+    "imageCaption": "두 직선과 x축이 둘러싼 삼각형 ABC의 넓이 영역"
   },
   {
     "id": 5,
@@ -313,8 +319,8 @@ window.examData = {
   },
   {
     "id": 8,
-    "imageSize": "tall",
-    "imageAlt": "A는 직각이고 AB=9 cm, AC=12 cm이다. AC와 EC에는 같은 눈금을 붙였다. DE=4 cm이며 BC와 직각이다.",
+    "imageSize": "full",
+    "imageAlt": "직각삼각형의 9·12·4cm와 빗변에 내린 DE 수선",
     "questionNumber": 8,
     "score": 4,
     "level": "중",
@@ -357,12 +363,18 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "전체 빗변과 남은 변을 잇는 두 직각삼각형",
-    "decisiveStep": "BC를구해EC를빼BE를만든후BDE에서BD를구한다."
+    "decisiveStep": "BC를구해EC를빼BE를만든후BDE에서BD를구한다.",
+    "solutionImage": "assets/images/21_이수중_2학기_중간_중2_수학/q8-solution.svg",
+    "solutionImageAlt": "직각삼각형의 9·12·4cm와 빗변에 내린 DE 수선",
+    "solutionImageCaption": "직각삼각형의 9·12·4cm와 빗변에 내린 DE 수선",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90,
+    "imageCaption": "직각삼각형의 9·12·4cm와 빗변에 내린 DE 수선"
   },
   {
     "id": 9,
-    "imageSize": "tall",
-    "imageAlt": "왼쪽 ABC의 B와 오른쪽 DEF의 E에 직각 표식이 있다. 길이 숫자와 같은 변 표시는 없다.",
+    "imageSize": "full",
+    "imageAlt": "서로 다른 두 직각삼각형 ABC와 DEF의 직각 위치",
     "questionNumber": 9,
     "score": 4,
     "level": "중",
@@ -405,12 +417,18 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "직각삼각형 합동의 충분조건 비교",
-    "decisiveStep": "RHA·RHS·ASA·SAS와달리각만같은AAA는크기를확정하지못한다."
+    "decisiveStep": "RHA·RHS·ASA·SAS와달리각만같은AAA는크기를확정하지못한다.",
+    "solutionImage": "assets/images/21_이수중_2학기_중간_중2_수학/q9-solution.svg",
+    "solutionImageAlt": "서로 다른 두 직각삼각형 ABC와 DEF의 직각 위치",
+    "solutionImageCaption": "서로 다른 두 직각삼각형 ABC와 DEF의 직각 위치",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90,
+    "imageCaption": "서로 다른 두 직각삼각형 ABC와 DEF의 직각 위치"
   },
   {
     "id": 10,
-    "imageSize": "tall",
-    "imageAlt": "D는 AB, E는 BC, F는 AC의 중점이다. O는 각 중점에서 세 변에 수직인 선이 만나는 점이다.",
+    "imageSize": "full",
+    "imageAlt": "외심 O를 지나는 세 수직이등분선과 중점 눈금",
     "questionNumber": 10,
     "score": 4,
     "level": "중",
@@ -453,7 +471,13 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "외심의 등거리와 중점 성질 판정",
-    "decisiveStep": "꼭짓점까지등거리와변의중점을확인하고내심의변까지등거리를구별한다."
+    "decisiveStep": "꼭짓점까지등거리와변의중점을확인하고내심의변까지등거리를구별한다.",
+    "solutionImage": "assets/images/21_이수중_2학기_중간_중2_수학/q10-solution.svg",
+    "solutionImageAlt": "외심 O를 지나는 세 수직이등분선과 중점 눈금",
+    "solutionImageCaption": "외심 O를 지나는 세 수직이등분선과 중점 눈금",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90,
+    "imageCaption": "외심 O를 지나는 세 수직이등분선과 중점 눈금"
   },
   {
     "id": 11,
@@ -553,8 +577,8 @@ window.examData = {
   },
   {
     "id": 13,
-    "imageSize": "tall",
-    "imageAlt": "BC와 평행한 DE가 내심 I를 지난다. B부터 D까지는 5 cm, C부터 E까지는 4 cm이다.",
+    "imageSize": "full",
+    "imageAlt": "내심 I를 지나는 평행선 DE와 양쪽 5·4cm 구간",
     "questionNumber": 13,
     "score": 4,
     "level": "중",
@@ -599,7 +623,13 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "내심과 평행선이 만드는 두 이등변삼각형",
-    "decisiveStep": "각이등분과엇각을결합해DI=BD,EI=CE로옮겨DE를합한다."
+    "decisiveStep": "각이등분과엇각을결합해DI=BD,EI=CE로옮겨DE를합한다.",
+    "solutionImage": "assets/images/21_이수중_2학기_중간_중2_수학/q13-solution.svg",
+    "solutionImageAlt": "내심 I를 지나는 평행선 DE와 양쪽 5·4cm 구간",
+    "solutionImageCaption": "내심 I를 지나는 평행선 DE와 양쪽 5·4cm 구간",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90,
+    "imageCaption": "내심 I를 지나는 평행선 DE와 양쪽 5·4cm 구간"
   },
   {
     "id": 14,
@@ -749,8 +779,8 @@ window.examData = {
   },
   {
     "id": 17,
-    "imageSize": "tall",
-    "imageAlt": "AB는 8이고 AD는 11이다. A의 각 이등분선은 밑변의 F와 만나고, D의 각 이등분선은 E와 만난다.",
+    "imageSize": "full",
+    "imageAlt": "평행사변형의 두 꼭짓각 이등분선과 바닥 교점 E·F",
     "questionNumber": 17,
     "score": 4,
     "level": "중",
@@ -793,7 +823,13 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "두 각이등분선의 이등변과 겹친 구간",
-    "decisiveStep": "BF=AB,CE=CD를얻고BF+CE−BC로EF를구한다."
+    "decisiveStep": "BF=AB,CE=CD를얻고BF+CE−BC로EF를구한다.",
+    "solutionImage": "assets/images/21_이수중_2학기_중간_중2_수학/q17-solution.svg",
+    "solutionImageAlt": "평행사변형의 두 꼭짓각 이등분선과 바닥 교점 E·F",
+    "solutionImageCaption": "평행사변형의 두 꼭짓각 이등분선과 바닥 교점 E·F",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90,
+    "imageCaption": "평행사변형의 두 꼭짓각 이등분선과 바닥 교점 E·F"
   },
   {
     "id": 18,
@@ -1114,8 +1150,8 @@ window.examData = {
   },
   {
     "id": 25,
-    "imageSize": "tall",
-    "imageAlt": "밑각 B와 C의 같은 호를 표시했다. 위의 A에서 밑변의 D에 이르는 선이 각 A를 이등분한다.",
+    "imageSize": "full",
+    "imageAlt": "밑각이 같은 삼각형의 꼭지각 이등분선 AD와 대응각 눈금",
     "questionNumber": 25,
     "score": 5,
     "level": "중",
@@ -1153,7 +1189,13 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "각이등분선과 ASA로 이등변 판정 증명",
-    "decisiveStep": "밑각과꼭지각반각의동등에서나머지각도같아공통변AD로ASA합동을보인다."
+    "decisiveStep": "밑각과꼭지각반각의동등에서나머지각도같아공통변AD로ASA합동을보인다.",
+    "solutionImage": "assets/images/21_이수중_2학기_중간_중2_수학/q25-solution.svg",
+    "solutionImageAlt": "밑각이 같은 삼각형의 꼭지각 이등분선 AD와 대응각 눈금",
+    "solutionImageCaption": "밑각이 같은 삼각형의 꼭지각 이등분선 AD와 대응각 눈금",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90,
+    "imageCaption": "밑각이 같은 삼각형의 꼭지각 이등분선 AD와 대응각 눈금"
   },
   {
     "id": 26,

@@ -52,8 +52,10 @@ window.questionBank = [
     "confidence": "HIGH_TEXT_ONLY",
     "decisionOwner": "GPT_BOOK_MATH_META",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P82-85_20261022_유사50/BV-BAKBAL-H-COM2-P82-Q01-T1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "두 번 대칭한 포물선의 꼭짓점",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "두 번 대칭한 포물선의 꼭짓점",
+    "solutionImageScale": 90
   },
   {
     "id": "BV-BAKBAL-H-COM2-P82-Q01-S1-R2",
@@ -107,8 +109,9 @@ window.questionBank = [
     "confidence": "HIGH_TEXT_ONLY",
     "decisionOwner": "GPT_BOOK_MATH_META",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P82-85_20261022_유사50/BV-BAKBAL-H-COM2-P82-Q01-S1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "두 번 대칭한 포물선의 꼭짓점",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "두 번 대칭한 포물선의 꼭짓점"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P82-Q01-S2-R2",
@@ -162,8 +165,9 @@ window.questionBank = [
     "confidence": "HIGH_TEXT_ONLY",
     "decisionOwner": "GPT_BOOK_MATH_META",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P82-85_20261022_유사50/BV-BAKBAL-H-COM2-P82-Q01-S2-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "두 번 대칭한 포물선의 꼭짓점",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "두 번 대칭한 포물선의 꼭짓점"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P82-Q02-T1-R2",
@@ -217,8 +221,9 @@ window.questionBank = [
     "confidence": "HIGH_TEXT_ONLY",
     "decisionOwner": "GPT_BOOK_MATH_META",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P82-85_20261022_유사50/BV-BAKBAL-H-COM2-P82-Q02-T1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "대칭된 원과 x축의 두 교점 A, B",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "대칭된 원과 x축의 두 교점 A, B"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P82-Q02-S1-R2",
@@ -272,8 +277,9 @@ window.questionBank = [
     "confidence": "HIGH_TEXT_ONLY",
     "decisionOwner": "GPT_BOOK_MATH_META",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P82-85_20261022_유사50/BV-BAKBAL-H-COM2-P82-Q02-S1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "y=x 대칭 후 원과 x축의 교점",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "y=x 대칭 후 원과 x축의 교점"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P82-Q02-S2-R2",
@@ -327,8 +333,9 @@ window.questionBank = [
     "confidence": "HIGH_TEXT_ONLY",
     "decisionOwner": "GPT_BOOK_MATH_META",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P82-85_20261022_유사50/BV-BAKBAL-H-COM2-P82-Q02-S2-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "y=x 대칭 후 원과 x축의 교점",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "y=x 대칭 후 원과 x축의 교점"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P82-Q03-T1-R2",
@@ -547,8 +554,9 @@ window.questionBank = [
     "confidence": "HIGH_TEXT_ONLY",
     "decisionOwner": "GPT_BOOK_MATH_META",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P82-85_20261022_유사50/BV-BAKBAL-H-COM2-P82-Q04-T1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "역대칭·역평행이동으로 원래 직선 위의 점 찾기",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "역대칭·역평행이동으로 원래 직선 위의 점 찾기"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P82-Q04-S1-R2",
@@ -602,8 +610,9 @@ window.questionBank = [
     "confidence": "HIGH_TEXT_ONLY",
     "decisionOwner": "GPT_BOOK_MATH_META",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P82-85_20261022_유사50/BV-BAKBAL-H-COM2-P82-Q04-S1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "역대칭·역평행이동으로 원래 직선 위의 점 찾기",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "역대칭·역평행이동으로 원래 직선 위의 점 찾기"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P82-Q04-S2-R2",
@@ -712,8 +721,9 @@ window.questionBank = [
     "confidence": "HIGH_TEXT_ONLY",
     "decisionOwner": "GPT_BOOK_MATH_META",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P82-85_20261022_유사50/BV-BAKBAL-H-COM2-P82-Q05-T1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원 중심의 평행이동과 y=x 대칭",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원 중심의 평행이동과 y=x 대칭"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P82-Q05-S1-R2",
@@ -767,8 +777,9 @@ window.questionBank = [
     "confidence": "HIGH_TEXT_ONLY",
     "decisionOwner": "GPT_BOOK_MATH_META",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P82-85_20261022_유사50/BV-BAKBAL-H-COM2-P82-Q05-S1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원 중심의 평행이동과 y=x 대칭",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원 중심의 평행이동과 y=x 대칭"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P82-Q05-S2-R2",
@@ -822,8 +833,9 @@ window.questionBank = [
     "confidence": "HIGH_TEXT_ONLY",
     "decisionOwner": "GPT_BOOK_MATH_META",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P82-85_20261022_유사50/BV-BAKBAL-H-COM2-P82-Q05-S2-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원 중심의 평행이동과 y=x 대칭",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원 중심의 평행이동과 y=x 대칭"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P83-Q06-T1-R2",

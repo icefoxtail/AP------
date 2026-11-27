@@ -26,14 +26,14 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "$\\angle A$를 기준으로 빗변은 $AC=b$, 이웃한 변은 $AB=c$이다.<br>따라서 $\\cos A=\\dfrac{c}{b}$이므로 정답은 ④이다.",
-    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q1.png",
+    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q1-problem.svg",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/22_매산중_2학기_기말_중3_기출/q1-solution.svg",
-    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 각 B가 직각이고 빗변 AC와 두 변 AB, BC를 표시한 그림",
-    "solutionImageCaption": "각 A에 대하여 인접한 변은 c이고 빗변은 b이다. 코사인은 인접한 변을 빗변으로 나눈 비이므로 cos A=c/b이다. 정답은 ④이다.",
+    "solutionImageAlt": "직각삼각형 ABC에서 각 B가 직각이고 변의 이름은 a, b, c이다.",
+    "solutionImageCaption": "직각삼각형 ABC에서 각 B가 직각이고 변의 이름은 a, b, c이다.",
     "solutionImageSize": "full"
   ,
     "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
@@ -50,7 +50,10 @@ window.questionBank = [
     "decisiveStep": "기준각 A의 이웃변c와 빗변b를 구별해 코사인 정의에 맞는 등식을 고른다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "직각삼각형 ABC에서 B는 직각이고 AC=b, AB=c, BC=a라는 세 변 표기를 보여 준다.",
+    "imageCaption": "직각삼각형 ABC에서 B는 직각이고 AC=b, AB=c, BC=a라는 세 변 표기를 보여 준다.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -77,14 +80,14 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "직각삼각형 $ABO$에서 $AB=20$, $\\angle ABO=60^\\circ$이고 높이는 $AO$이다.<br>$AO=AB\\sin60^\\circ=20\\cdot\\dfrac{\\sqrt3}{2}=10\\sqrt3$이므로 높이는 $10\\sqrt3\\rm\\,cm$이다. 정답은 ④이다.",
-    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q2.png",
+    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q2-problem.svg",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/22_매산중_2학기_기말_중3_기출/q2-solution.svg",
-    "solutionImageAlt": "해설 그림: 원뿔의 단면 직각삼각형과 모선 및 높이를 표시한 그림",
-    "solutionImageCaption": "직각삼각형 ABO에서 AB=20이고 각 ABO=60°이다. 높이 AO는 20 sin 60°로 구한다. 정답은 10√3cm이다.",
+    "solutionImageAlt": "원뿔 단면의 직각삼각형과 높이",
+    "solutionImageCaption": "원뿔 단면의 직각삼각형과 높이",
     "solutionImageSize": "full"
   ,
     "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
@@ -101,7 +104,10 @@ window.questionBank = [
     "decisiveStep": "원뿔의 축단면에 이미 주어진 직각삼각형에서 모선20과 sin60으로 높이AO를 직접 구한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "모선 20cm와 밑각 60°를 표시한 원뿔과 중심 단면",
+    "imageCaption": "모선 20cm와 밑각 60°를 표시한 원뿔과 중심 단면",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -134,8 +140,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/22_매산중_2학기_기말_중3_기출/q3-solution.svg",
-    "solutionImageAlt": "해설 그림: 나무와 50m 그림자, 40도 시선으로 만든 직각삼각형",
-    "solutionImageCaption": "예: 나무 높이를 h라 하면 tan 40°=h/50이고 tan 40°=0.8이다. 따라서 h=40m이다. 정답은 40m이다.",
+    "solutionImageAlt": "나무 높이 h와 50m 그림자를 나타낸 40도 각의 예시.",
+    "solutionImageCaption": "나무 높이 h와 50m 그림자를 나타낸 40도 각의 예시.",
     "solutionImageSize": "full"
   ,
     "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
@@ -185,8 +191,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/22_매산중_2학기_기말_중3_기출/q4-solution.svg",
-    "solutionImageAlt": "해설 그림: 병원 꼭대기와 관측점 사이의 수평선 및 두 직각삼각형",
-    "solutionImageCaption": "A에서 병원까지 수평거리는 70m이다. 아래쪽 각 45°에서 A의 높이는 70m이고 위쪽 각 60°에서 병원은 A보다 70√3m 높다. 정답은 70+70√3m이다.",
+    "solutionImageAlt": "수평 보조선으로 병원의 높이를 두 직각삼각형으로 나눈 그림.",
+    "solutionImageCaption": "수평 보조선으로 병원의 높이를 두 직각삼각형으로 나눈 그림.",
     "solutionImageSize": "full"
   ,
     "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
@@ -236,8 +242,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/22_매산중_2학기_기말_중3_기출/q5-solution.svg",
-    "solutionImageAlt": "해설 그림: 건물 높이와 가까운 점, 먼 점을 잇는 두 시선 삼각형",
-    "solutionImageCaption": "가까운 점에서 건물까지의 거리를 x라 두면 45°에서 건물 높이도 x이다. 먼 점까지의 거리는 x+30이고 30° 조건에서 높이를 정리한다. 정답은 15(√3+1)m이다.",
+    "solutionImageAlt": "건물 높이와 두 관측점의 시선 삼각형",
+    "solutionImageCaption": "건물 높이와 두 관측점의 시선 삼각형",
     "solutionImageSize": "full"
   ,
     "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
@@ -281,14 +287,14 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "두 변 $AB=12\\rm\\,cm$, $BC=8\\rm\\,cm$와 그 사이각 $\\angle B=30^\\circ$를 이용한다.<br>$[\\triangle ABC]=\\dfrac12\\cdot12\\cdot8\\cdot\\sin30^\\circ=24\\rm\\,cm^2$이다.<br>따라서 정답은 ④이다.",
-    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q6.png",
+    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q6-problem.svg",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/22_매산중_2학기_기말_중3_기출/q6-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼각형의 두 변과 사이각, 높이 보조선",
-    "solutionImageCaption": "높이는 8 sin 30°=4cm이다. 삼각형 넓이는 밑변 12cm와 높이 4cm의 곱의 절반이다. 정답은 24cm²이다.",
+    "solutionImageAlt": "삼각형의 사이각과 높이 보조선",
+    "solutionImageCaption": "삼각형의 사이각과 높이 보조선",
     "solutionImageSize": "full"
   ,
     "templateKey": "TPL_H22A_05_TRIANGLE_AREA_113",
@@ -302,7 +308,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 1,
     "primaryMethod": "주어진 두 변12와8 및 끼인각30도를 삼각형 사인넓이식에 직접 대입한다.",
-    "decisiveStep": "주어진 두 변12와8 및 끼인각30도를 삼각형 사인넓이식에 직접 대입한다."
+    "decisiveStep": "주어진 두 변12와8 및 끼인각30도를 삼각형 사인넓이식에 직접 대입한다.",
+    "imageAlt": "삼각형 ABC에서 AB=12cm, BC=8cm, 끼인각 B=30°가 주어졌다.",
+    "imageCaption": "삼각형 ABC에서 AB=12cm, BC=8cm, 끼인각 B=30°가 주어졌다.",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -329,14 +338,14 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "두 변 $BC=8\\rm\\,cm$, $CA=10\\rm\\,cm$와 그 사이각 $\\angle C=120^\\circ$를 이용한다.<br>$[\\triangle ABC]=\\dfrac12\\cdot8\\cdot10\\cdot\\sin120^\\circ=20\\sqrt3\\rm\\,cm^2$이다.<br>따라서 정답은 ①이다.",
-    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q7.png",
+    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q7-problem.svg",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/22_매산중_2학기_기말_중3_기출/q7-solution.svg",
-    "solutionImageAlt": "해설 그림: 둔각 삼각형과 밑변 연장선에 내린 높이",
-    "solutionImageCaption": "밑변을 연장해 높이를 내리면 높이는 10 sin 120°=5√3cm이다. 넓이는 8cm와 높이의 곱의 절반이다. 정답은 20√3cm²이다.",
+    "solutionImageAlt": "둔각 삼각형의 높이 보조선",
+    "solutionImageCaption": "둔각 삼각형의 높이 보조선",
     "solutionImageSize": "full"
   ,
     "templateKey": "TPL_H22A_05_TRIANGLE_AREA_113",
@@ -350,7 +359,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBucket": 2,
     "primaryMethod": "주어진 두 변8과10 및 끼인각120도를 삼각형 사인넓이식에 직접 대입한다.",
-    "decisiveStep": "주어진 두 변8과10 및 끼인각120도를 삼각형 사인넓이식에 직접 대입한다."
+    "decisiveStep": "주어진 두 변8과10 및 끼인각120도를 삼각형 사인넓이식에 직접 대입한다.",
+    "imageAlt": "삼각형 ABC에서 BC=8cm, CA=10cm, 끼인각 C=120°가 주어졌다.",
+    "imageCaption": "삼각형 ABC에서 BC=8cm, CA=10cm, 끼인각 C=120°가 주어졌다.",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -377,14 +389,14 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "합동인 마름모 $6$개가 한 점 둘레를 빈틈없이 이루므로 그 점에서 각 마름모의 각은 $60^\\circ$이다.<br>한 마름모의 넓이는 $6^2\\sin60^\\circ=18\\sqrt3\\rm\\,cm^2$이다.<br>색칠된 마름모는 $3$개이므로 넓이는 $3\\cdot18\\sqrt3=54\\sqrt3\\rm\\,cm^2$이다. 정답은 ③이다.",
-    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q8.png",
+    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q8-problem.svg",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/22_매산중_2학기_기말_중3_기출/q8-solution.svg",
-    "solutionImageAlt": "해설 그림: 한 점 둘레의 여섯 마름모 중 세 개가 색칠되어 있고, 한 마름모의 높이 보조선과 60도 중심각이 표시된 그림",
-    "solutionImageCaption": "한 점 둘레의 여섯 중심각은 각각 60°이다. 한 마름모의 넓이는 18√3cm²이고 색칠된 세 개를 합한다. 정답은 54√3cm²이다.",
+    "solutionImageAlt": "여섯 합동 마름모 중 세 개와 한 마름모의 높이",
+    "solutionImageCaption": "여섯 합동 마름모 중 세 개와 한 마름모의 높이",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
@@ -398,7 +410,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "한 점 둘레의 합동인 마름모6개에서 끼인각60도를 구하고 한 마름모의 사인넓이를 계산해 색칠한3개의 넓이를 합한다.",
-    "decisiveStep": "한 점 둘레의 합동인 마름모6개에서 끼인각60도를 구하고 한 마름모의 사인넓이를 계산해 색칠한3개의 넓이를 합한다."
+    "decisiveStep": "한 점 둘레의 합동인 마름모6개에서 끼인각60도를 구하고 한 마름모의 사인넓이를 계산해 색칠한3개의 넓이를 합한다.",
+    "imageAlt": "한 점을 둘러싼 합동인 마름모 6개, 한 변 6cm, 색칠된 3개의 위치를 표현한다.",
+    "imageCaption": "한 점을 둘러싼 합동인 마름모 6개, 한 변 6cm, 색칠된 3개의 위치를 표현한다.",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -425,14 +440,14 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "원의 반지름은 $5\\rm\\,cm$이고, 길이가 $8\\rm\\,cm$인 현의 절반은 $4\\rm\\,cm$이다.<br>중심에서 현에 내린 수선은 현을 이등분하므로 $x^2+4^2=5^2$이다.<br>$x=3$이므로 정답은 ⑤이다.",
-    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q9.png",
+    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q9-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/22_매산중_2학기_기말_중3_기출/q9-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 중심에서 현에 내린 수선과 반지름으로 만든 직각삼각형",
-    "solutionImageCaption": "중심에서 현에 내린 수선은 현을 이등분해 반쪽 길이가 4cm이다. 반지름 5cm인 직각삼각형에서 중심거리를 구한다. 정답은 3cm이다.",
+    "solutionImageAlt": "중심 O에서 길이 8cm인 현에 내린 수선은 현을 이등분하므로 4²+x²=5²에서 x=3이다.",
+    "solutionImageCaption": "중심 O에서 길이 8cm인 현에 내린 수선은 현을 이등분하므로 4²+x²=5²에서 x=3이다.",
     "solutionImageSize": "full"
   ,
     "templateKey": "TM_CIRCLE_CHORD_LENGTH",
@@ -449,7 +464,10 @@ window.questionBank = [
     "decisiveStep": "현의 수직이등분으로 반현4를 정하고 반지름5와 피타고라스에서 중심거리x를 구한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원 O에서 길이가 8cm인 위쪽 현과 4cm인 아래쪽 현, 반지름 5cm와 위쪽 중심거리 x를 구분한다.",
+    "imageCaption": "원 O에서 길이가 8cm인 위쪽 현과 4cm인 아래쪽 현, 반지름 5cm와 위쪽 중심거리 x를 구분한다.",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -476,14 +494,14 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "한 점에서 같은 원에 그은 두 접선의 길이는 같다.<br>$BP=BQ=5$이고 $BC=16$이므로 $CQ=11$, 따라서 $CR=11$이다.<br>$DC=15$이므로 $DR=4$, 따라서 $DS=4$이다.<br>$AD=10$이므로 $AS=10-4=6$이고 $AP=AS=6$이다.<br>따라서 정답은 ⑤이다.",
-    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q10.png",
+    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q10-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/22_매산중_2학기_기말_중3_기출/q10-solution.svg",
-    "solutionImageAlt": "해설 그림: 원에 내접하는 사각형의 접선과 각 접점에서 같은 길이의 선분",
-    "solutionImageCaption": "한 점에서 그은 두 접선은 길이가 같다. 사각형 변의 길이에서 접선 조각을 차례로 빼면 마지막 접선 쌍을 구할 수 있다. 정답은 6cm이다.",
+    "solutionImageAlt": "내접원과 접선의 길이 관계",
+    "solutionImageCaption": "내접원과 접선의 길이 관계",
     "solutionImageSize": "full"
   ,
     "templateKey": "TM_TANGENT_LENGTH",
@@ -500,7 +518,10 @@ window.questionBank = [
     "decisiveStep": "각 꼭짓점에서 같은 접선길이를 차례로 옮기고 전체변에서 빼어 마지막 접선AP를 구한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "내접원이 있는 사각형 ABCD의 AD=10cm, DC=15cm, BC=16cm 및 BP=5cm를 보여 준다.",
+    "imageCaption": "내접원이 있는 사각형 ABCD의 AD=10cm, DC=15cm, BC=16cm 및 BP=5cm를 보여 준다.",
+    "imageSize": "full"
   },
   {
     "id": 11,
@@ -527,7 +548,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "$AD$와 $BC$는 반원의 양 끝점에서 그은 접선이므로, 점 $D$에서 접점까지의 길이는 $DA=DP=10$, 점 $C$에서는 $CB=CP=3$이다.<br>따라서 $DC=DP+PC=13$이다.<br>$AB$를 지름이라 하면 $AB=2r$이고, $D$와 $C$의 높이 차는 $10-3=7$이므로 $DC^2=(2r)^2+7^2$이다.<br>$13^2=4r^2+49$에서 $r^2=30$이다.<br>반원의 넓이는 $\\dfrac12\\pi r^2=15\\pi\\rm\\,cm^2$이므로 정답은 ②이다.",
-    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q11.png",
+    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q11-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
@@ -548,7 +569,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBucket": 3,
     "primaryMethod": "두 외부점의 접선 등길이로 사다리꼴 빗변13을 만들고 평행변 차7과 지름의 피타고라스 관계에서 반원 넓이를 구한다.",
-    "decisiveStep": "두 외부점의 접선 등길이로 사다리꼴 빗변13을 만들고 평행변 차7과 지름의 피타고라스 관계에서 반원 넓이를 구한다."
+    "decisiveStep": "두 외부점의 접선 등길이로 사다리꼴 빗변13을 만들고 평행변 차7과 지름의 피타고라스 관계에서 반원 넓이를 구한다.",
+    "imageAlt": "반원을 밑변 AB에 둔 사다리꼴 ABCD의 직각 A, B, AD=10cm, BC=3cm를 보여 준다.",
+    "imageCaption": "반원을 밑변 AB에 둔 사다리꼴 ABCD의 직각 A, B, AD=10cm, BC=3cm를 보여 준다.",
+    "imageSize": "full"
   },
   {
     "id": 12,
@@ -575,7 +599,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "$P,C,A$가 한 직선 위에 있고 $PC=8$, $CA=3$이므로 $PA=11$이다.<br>점 $P$에서 그은 두 접선의 길이는 같아 $PB=PA=11$이다.<br>또 점 $C$에서는 $CE=CA=3$, 점 $D$에서는 $DE=DB$이다.<br>삼각형 $PCD$의 둘레는 $PC+CD+DP=8+(CE+ED)+DP=8+3+(DB+DP)$이다.<br>$DB+DP=PB=11$이므로 둘레는 $22\\rm\\,cm$이다. 정답은 ③이다.",
-    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q12.png",
+    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q12-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
@@ -596,7 +620,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "세 외부점의 두 접선 등길이로 둘레의 조각을 합쳐 PA+PB=22로 바꾼다.",
-    "decisiveStep": "세 외부점의 두 접선 등길이로 둘레의 조각을 합쳐 PA+PB=22로 바꾼다."
+    "decisiveStep": "세 외부점의 두 접선 등길이로 둘레의 조각을 합쳐 PA+PB=22로 바꾼다.",
+    "imageAlt": "원 밖 점 P에서 그은 두 접선의 접점 A, B와 보조 접선 CED 및 PC=8cm, CA=3cm를 보여 준다.",
+    "imageCaption": "원 밖 점 P에서 그은 두 접선의 접점 A, B와 보조 접선 CED 및 PC=8cm, CA=3cm를 보여 준다.",
+    "imageSize": "full"
   },
   {
     "id": 13,
@@ -623,15 +650,15 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "점 $B$에서 원에 그은 두 접선의 길이는 $BD=BE$, 점 $C$에서는 $CE=CF$이다.<br>따라서 $BC=BE+EC=BD+CF$가 성립한다.<br>또 $OD=OF$는 반지름이고, 중심과 외부점을 이은 선은 두 접선 사이의 각을 이등분하므로 $\\angle OCE=\\angle OCF$, $\\angle BOD=\\angle BOE$도 성립한다.<br>하지만 $AB=AC$는 일반적으로 성립하지 않는다. 따라서 정답은 ①이다.",
-    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q13.png",
-    "imageSize": "tall",
+    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q13-problem.svg",
+    "imageSize": "full",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/22_매산중_2학기_기말_중3_기출/q13-solution.svg",
-    "solutionImageAlt": "해설 그림: 원에 외접하는 삼각형의 접점과 중심을 이은 반지름",
-    "solutionImageCaption": "예: 같은 외부점에서 그은 접선은 길이가 같고, 중심에서 접점까지는 반지름이다. 이 성질로 옳지 않은 등식 하나를 판별한다. 정답은 ①이다.",
+    "solutionImageAlt": "접점과 중심을 이은 반지름 및 접선",
+    "solutionImageCaption": "접점과 중심을 이은 반지름 및 접선",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_CIRCLE_TANGENT",
@@ -645,7 +672,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "외부점에서 그은 접선 등길이와 중심을 이은 선의 각이등분 성질을 선택지별로 대조해 일반적으로 보장되지 않는 AB=AC를 배제한다.",
-    "decisiveStep": "외부점에서 그은 접선 등길이와 중심을 이은 선의 각이등분 성질을 선택지별로 대조해 일반적으로 보장되지 않는 AB=AC를 배제한다."
+    "decisiveStep": "외부점에서 그은 접선 등길이와 중심을 이은 선의 각이등분 성질을 선택지별로 대조해 일반적으로 보장되지 않는 AB=AC를 배제한다.",
+    "imageAlt": "원에 대한 접선 AD, BC, AF의 접점 D, E, F와 중심 O의 관계를 표현한다.",
+    "imageCaption": "원에 대한 접선 AD, BC, AF의 접점 D, E, F와 중심 O의 관계를 표현한다."
   },
   {
     "id": 14,
@@ -672,14 +701,14 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "$52^\\circ$가 있는 원주점과 중심 $O$, 아래쪽 원주점을 이으면 두 변이 반지름인 이등변삼각형이 된다.<br>두 밑각이 각각 $52^\\circ$이므로 그 삼각형의 중심각은 $180^\\circ-52^\\circ-52^\\circ=76^\\circ$이다.<br>$x$는 이 중심각과 일직선 위의 각이므로 $x=180^\\circ-76^\\circ=104^\\circ$이다. 정답은 ④이다.",
-    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q14.png",
+    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q14-problem.svg",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/22_매산중_2학기_기말_중3_기출/q14-solution.svg",
-    "solutionImageAlt": "해설 그림: 원주점과 중심을 잇는 반지름, 일직선 위의 중심각",
-    "solutionImageCaption": "예: 반지름으로 만든 이등변삼각형에서 밑각은 각각 52도이다. 중심각은 76도이고 일직선 위의 나머지 각을 구한다. 정답은 104도이다.",
+    "solutionImageAlt": "원주점과 중심을 잇는 반지름",
+    "solutionImageCaption": "원주점과 중심을 잇는 반지름",
     "solutionImageSize": "full"
   ,
     "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
@@ -693,7 +722,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "같은 반지름인 두 변의 이등변삼각형에서 중심의 내각76도를 구한 뒤 평각에서 빼104도를 구한다. 실제 해설은 원주각 정리를 사용하지 않는다.",
-    "decisiveStep": "같은 반지름인 두 변의 이등변삼각형에서 중심의 내각76도를 구한 뒤 평각에서 빼104도를 구한다. 실제 해설은 원주각 정리를 사용하지 않는다."
+    "decisiveStep": "같은 반지름인 두 변의 이등변삼각형에서 중심의 내각76도를 구한 뒤 평각에서 빼104도를 구한다. 실제 해설은 원주각 정리를 사용하지 않는다.",
+    "imageAlt": "원 위의 52° 원주각과 중심 O에서의 미지 각 x를 표현한다.",
+    "imageCaption": "원 위의 52° 원주각과 중심 O에서의 미지 각 x를 표현한다.",
+    "imageSize": "full"
   },
   {
     "id": 15,
@@ -720,14 +752,14 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "그림에서 $43^\\circ$인 원주각과 같은 현을 보는 원주각도 $43^\\circ$이다.<br>또 중심 $O$를 지나는 현은 지름이므로 그 지름을 보는 원주각은 $90^\\circ$이다.<br>따라서 남은 각은 $x=180^\\circ-90^\\circ-43^\\circ=47^\\circ$이다. 정답은 ②이다.",
-    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q15.png",
+    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q15-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/22_매산중_2학기_기말_중3_기출/q15-solution.svg",
-    "solutionImageAlt": "해설 그림: 원주각 두 개와 지름이 만드는 직각 삼각형",
-    "solutionImageCaption": "예: 같은 현을 보는 원주각은 같고 지름을 보는 원주각은 직각이다. 삼각형의 나머지 각을 구한다. 정답은 47도이다.",
+    "solutionImageAlt": "같은 현을 보는 원주각과 지름",
+    "solutionImageCaption": "같은 현을 보는 원주각과 지름",
     "solutionImageSize": "full"
   ,
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
@@ -744,7 +776,10 @@ window.questionBank = [
     "decisiveStep": "같은 현의 원주각43도와 지름을 보는 직각90도를 각각 옮긴 뒤 삼각형의 남은 각을 구한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원주각 43°와 지름 및 원 위의 미지 각 x를 표현한다.",
+    "imageCaption": "원주각 43°와 지름 및 원 위의 미지 각 x를 표현한다.",
+    "imageSize": "full"
   },
   {
     "id": 16,
@@ -771,14 +806,14 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "접선과 현이 이루는 각은 그 현이 만드는 원주각과 같다.<br>현 $AB$와 접선 $AT$가 이루는 각 $x$는 $\\angle ACB=72^\\circ$와 같으므로 $x=72$이다.<br>또 현 $AC$와 접선이 이루는 $71^\\circ$는 $\\angle ABC=y$와 같으므로 $y=71$이다.<br>따라서 정답은 ③이다.",
-    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q16.png",
+    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q16-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/22_매산중_2학기_기말_중3_기출/q16-solution.svg",
-    "solutionImageAlt": "해설 그림: 원에 그은 접선과 현, 같은 호를 보는 원주각",
-    "solutionImageCaption": "예: 접선과 현이 이루는 각은 같은 현을 보는 원주각과 같다. 그림의 두 각 관계로 x와 y를 정한다. 정답은 x=72도, y=71도이다.",
+    "solutionImageAlt": "접선과 현이 이루는 각의 관계",
+    "solutionImageCaption": "접선과 현이 이루는 각의 관계",
     "solutionImageSize": "full"
   ,
     "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
@@ -795,7 +830,10 @@ window.questionBank = [
     "decisiveStep": "서로 다른 두 현에 접현각 정리를 각각 바로 적용하여 x=72,y=71을 얻는다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "접선 AT와 두 현 AB, AC, 원주각 72°와 미지 각 x, y를 표현한다.",
+    "imageCaption": "접선 AT와 두 현 AB, AC, 원주각 72°와 미지 각 x, y를 표현한다.",
+    "imageSize": "full"
   },
   {
     "id": 17,
@@ -822,14 +860,14 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "원에 내접하는 사각형의 마주 보는 두 각의 합은 $180^\\circ$이다.<br>$x+110^\\circ=180^\\circ$이므로 $x=70^\\circ$이다.<br>$y$는 $x$와 한 직선 위의 이웃한 각이므로 $y=180^\\circ-70^\\circ=110^\\circ$이다.<br>따라서 정답은 ⑤이다.",
-    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q17.png",
+    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q17-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/22_매산중_2학기_기말_중3_기출/q17-solution.svg",
-    "solutionImageAlt": "해설 그림: 원에 내접한 사각형과 한 변의 연장선",
-    "solutionImageCaption": "예: 내접 사각형의 마주 보는 각의 합은 180도이다. 이어서 직선 위 이웃한 각의 합도 180도임을 이용한다. 정답은 x=70도, y=110도이다.",
+    "solutionImageAlt": "내접 사각형과 연장선의 이웃각",
+    "solutionImageCaption": "내접 사각형과 연장선의 이웃각",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
@@ -843,7 +881,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "내접사각형의 대각 합180도로 x를 정하고 그 외각의 평각 관계로 y를 구한다.",
-    "decisiveStep": "내접사각형의 대각 합180도로 x를 정하고 그 외각의 평각 관계로 y를 구한다."
+    "decisiveStep": "내접사각형의 대각 합180도로 x를 정하고 그 외각의 평각 관계로 y를 구한다.",
+    "imageAlt": "원에 내접하는 사각형 ABCD의 D각 110°와 B의 미지 각 x, 외각 y를 표현한다.",
+    "imageCaption": "원에 내접하는 사각형 ABCD의 D각 110°와 B의 미지 각 x, 외각 y를 표현한다.",
+    "imageSize": "full"
   },
   {
     "id": 18,
@@ -870,14 +911,14 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "$\\angle A=122^\\circ$가 보는 호 $BCDE$의 크기는 $244^\\circ$이다.<br>중심각 $\\angle DOE=70^\\circ$이므로 호 $DE$의 크기는 $70^\\circ$이다.<br>따라서 호 $BCD$의 크기는 $244^\\circ-70^\\circ=174^\\circ$이다.<br>$\\angle BCD$가 보는 반대쪽 호 $BAED$의 크기는 $360^\\circ-174^\\circ=186^\\circ$이므로 $\\angle BCD=\\dfrac{186^\\circ}{2}=93^\\circ$이다.<br>따라서 정답은 ③이다.",
-    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q18.png",
+    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q18-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/22_매산중_2학기_기말_중3_기출/q18-solution.svg",
-    "solutionImageAlt": "해설 그림: 원에 내접한 오각형의 원주각과 중심각",
-    "solutionImageCaption": "예: 122도 원주각이 보는 호의 크기는 244도이고 중심각은 해당 호의 크기를 나타낸다. 남은 호를 이용해 구하는 원주각을 계산한다. 정답은 93도이다.",
+    "solutionImageAlt": "원주각과 중심각, 호의 관계",
+    "solutionImageCaption": "원주각과 중심각, 호의 관계",
     "solutionImageSize": "full"
   ,
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
@@ -894,7 +935,10 @@ window.questionBank = [
     "decisiveStep": "원주각122도를 호244도로 바꿔 중심각70도의 호를 빼고 반대쪽 호의 나머지186도를 반으로 나눈다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원에 내접하는 오각형 ABCDE의 A각 122°와 중심각 DOE 70°를 표현한다.",
+    "imageCaption": "원에 내접하는 오각형 ABCDE의 A각 122°와 중심각 DOE 70°를 표현한다.",
+    "imageSize": "full"
   },
   {
     "id": 19,
@@ -925,8 +969,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/22_매산중_2학기_기말_중3_기출/q19-solution.svg",
-    "solutionImageAlt": "해설 그림: 원에 내접한 등변사다리꼴과 네 각",
-    "solutionImageCaption": "예: 아랫변의 두 각이 70도이면 윗변의 두 각은 110도이고, 마주 보는 두 각의 합이 180도이다. 이 성질로 원에 내접하는 사각형을 가려낸다. 정답은 ②이다.",
+    "solutionImageAlt": "원에 내접하는 등변사다리꼴의 각",
+    "solutionImageCaption": "원에 내접하는 등변사다리꼴의 각",
     "solutionImageSize": "full"
   ,
     "difficultyBoundaryFlag": "B12",
@@ -967,14 +1011,14 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "원 안에서 두 현이 만날 때 그 교점에서 생기는 각의 크기는 마주 보는 두 호의 크기 합의 절반이다.<br>$\\angle AED=60^\\circ$이므로 호 $AD$와 호 $BC$의 각도 합은 $120^\\circ$이다.<br>반지름이 $15\\rm\\,cm$이므로 원의 둘레는 $30\\pi\\rm\\,cm$이다.<br>따라서 두 호의 길이 합은 $\\dfrac{120}{360}\\cdot30\\pi=10\\pi\\rm\\,cm$이다. 정답은 ①이다.",
-    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q20.png",
+    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q20-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/22_매산중_2학기_기말_중3_기출/q20-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 내부에서 교차하는 두 현과 마주 보는 호",
-    "solutionImageCaption": "예: 교차하는 두 현이 만드는 각은 마주 보는 두 호의 합의 절반이다. 두 호의 각도 합 120도를 반지름 15cm인 원의 둘레에 적용한다. 정답은 10πcm이다.",
+    "solutionImageAlt": "교차하는 두 현과 마주 보는 호",
+    "solutionImageCaption": "교차하는 두 현과 마주 보는 호",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
@@ -988,7 +1032,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "두 현의 교점각이 마주 보는 두 호의 각도합의 절반임을 적용하여120도를 구하고 원둘레에 비례시켜 호길이 합을 계산한다.",
-    "decisiveStep": "두 현의 교점각이 마주 보는 두 호의 각도합의 절반임을 적용하여120도를 구하고 원둘레에 비례시켜 호길이 합을 계산한다."
+    "decisiveStep": "두 현의 교점각이 마주 보는 두 호의 각도합의 절반임을 적용하여120도를 구하고 원둘레에 비례시켜 호길이 합을 계산한다.",
+    "imageAlt": "원 안에서 두 현 AC, BD가 E에서 만나고 AED 60°, 반지름 15cm를 나타낸다.",
+    "imageCaption": "원 안에서 두 현 AC, BD가 E에서 만나고 AED 60°, 반지름 15cm를 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": 21,
@@ -1010,14 +1057,14 @@ window.questionBank = [
     "choices": [],
     "answer": "$8\\sqrt3\\rm\\,cm$",
     "solution": "직각삼각형 $ABC$에서 $AB=16\\rm\\,cm$은 빗변이고 $\\angle A=30^\\circ$이다.<br>$\\cos30^\\circ=\\dfrac{AC}{AB}$이므로 $AC=16\\cdot\\dfrac{\\sqrt3}{2}=8\\sqrt3\\rm\\,cm$이다.<br>따라서 $AC=8\\sqrt3\\rm\\,cm$이다.",
-    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q21.png",
+    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q21-problem.svg",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/22_매산중_2학기_기말_중3_기출/q21-solution.svg",
-    "solutionImageAlt": "해설 그림: 30도 각을 가진 직각삼각형과 빗변",
-    "solutionImageCaption": "빗변은 16cm이고 한 예각은 30°이다. 코사인 비로 그 각에 인접한 변의 길이를 구한다. 정답은 8√3cm이다.",
+    "solutionImageAlt": "AB가 빗변이고 각 A가 30도인 직각삼각형.",
+    "solutionImageCaption": "AB가 빗변이고 각 A가 30도인 직각삼각형.",
     "solutionImageSize": "full"
   ,
     "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
@@ -1034,7 +1081,10 @@ window.questionBank = [
     "decisiveStep": "빗변16과 주어진30도에서 cos30으로 이웃한 변AC를 직접 계산한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "직각삼각형 ABC에서 AB=16cm, A각 30°, C각 90°를 표현한다.",
+    "imageCaption": "직각삼각형 ABC에서 AB=16cm, A각 30°, C각 90°를 표현한다.",
+    "imageSize": "full"
   },
   {
     "id": 22,
@@ -1056,7 +1106,7 @@ window.questionBank = [
     "choices": [],
     "answer": "$36\\sqrt3\\cos a^\\circ$",
     "solution": "정육면체의 한 모서리가 $6$이므로 $BC,CD,DB$는 각각 한 면의 대각선으로 길이가 $6\\sqrt2$이다.<br>따라서 $\\triangle BCD$는 한 변이 $6\\sqrt2$인 정삼각형이고 넓이는 $\\dfrac{\\sqrt3}{4}(6\\sqrt2)^2=18\\sqrt3$이다.<br>$AH\\perp$ 면 $BCD$이므로 $\\triangle ABH$는 $H$에서 직각이고 $AB=6$이다.<br>$\\angle BAH=a^\\circ$이므로 $\\cos a^\\circ=\\dfrac{AH}{AB}$에서 $AH=6\\cos a^\\circ$이다.<br>따라서 삼각뿔의 부피는 $\\dfrac13\\cdot18\\sqrt3\\cdot6\\cos a^\\circ=36\\sqrt3\\cos a^\\circ$이다.",
-    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q22.png",
+    "image": "assets/images/22_매산중_2학기_기말_중3_기출/q22-problem.svg",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
@@ -1080,6 +1130,9 @@ window.questionBank = [
     "decisiveStep": "정육면체의 면대각선으로 밑면 정삼각형 넓이를 정하고 주어진 수선·각에서 cos a로 높이AH를 표현한 뒤 삼각뿔 부피식에 대입한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "한 모서리 6인 정육면체의 세 면대각선 BC·CD·DB가 이루는 절단 삼각뿔과 수선 AH, 각 BAH=a",
+    "imageCaption": "한 모서리 6인 정육면체의 세 면대각선 BC·CD·DB가 이루는 절단 삼각뿔과 수선 AH, 각 BAH=a",
+    "imageSize": "full"
   }
 ];

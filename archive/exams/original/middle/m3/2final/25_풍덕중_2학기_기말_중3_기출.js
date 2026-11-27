@@ -29,15 +29,15 @@ window.questionBank=[
     "answer": "③",
     "solution": "같은 호 $\\wideparen{AB}$를 보는 중심각은 원주각의 $2$배이다.\n$\\angle AOB=54^\\circ$이므로\n$\\angle x=\\dfrac{54^\\circ}{2}=27^\\circ$\n이다.\n따라서 정답은 ③이다.",
     "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q1-solution-v2.svg",
-    "solutionImageSize": "medium",
-    "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q1.png",
+    "solutionImageSize": "full",
+    "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q1-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageLayout": "fullwidth",
-    "solutionImageAlt": "해설 그림: 원 O에서 중심각 AOB=54도와 같은 호 AB를 보는 원주각 ACB=x가 나타나 있다. 호 AB와 중심각이 같은 색이다.",
-    "solutionImageCaption": "같은 호 AB를 보는 중심각은 원주각의 2배이다. ∠AOB=54°이므로 x=54°÷2=27°이고 정답은 ③이다."
+    "solutionImageAlt": "중심각 54°, 같은 호 AB의 원주각 x, 현·반지름·호를 모두 보존한다.",
+    "solutionImageCaption": "중심각 54°, 같은 호 AB의 원주각 x, 현·반지름·호를 모두 보존한다."
   ,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
@@ -52,7 +52,10 @@ window.questionBank=[
     "decisiveStep": "중심각54도가 보는 호와 같은 호를 보는 원주각을 그 절반으로 구한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원본 문제 재설계: ∠AOB=54°, ∠ACB=x인 원 O의 그림 — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageCaption": "원본 문제 재설계: ∠AOB=54°, ∠ACB=x인 원 O의 그림 — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -81,15 +84,15 @@ window.questionBank=[
     "answer": "⑤",
     "solution": "$\\angle CPD=40^\\circ$는 호 $\\wideparen{CD}$를 보는 원주각이므로, 호 $\\wideparen{CD}$에 대한 중심각은\n$2\\times40^\\circ=80^\\circ$\n이다.\n같은 원에서 호의 길이는 그 호에 대한 중심각의 크기에 비례하므로\n$15:x=50:80$\n$50x=1200$\n$x=24$\n이다.\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q2-solution-v2.svg",
-    "solutionImageSize": "medium",
-    "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q2.png",
+    "solutionImageSize": "full",
+    "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q2-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageLayout": "fullwidth",
-    "solutionImageAlt": "해설 그림: 원 O에서 중심각 AOB=50도인 호 AB는 15cm로 파란색이고, 원주각 CPD=40도가 보는 호 CD는 x cm로 주황색이며 호 CD의 중심각 COD는 80도이다.",
-    "solutionImageCaption": "∠CPD=40°는 호 CD의 원주각이므로 중심각 ∠COD=2×40°=80°이다. 호의 길이는 중심각에 비례하므로 15:x=50:80이고 x=24이다. 정답은 ⑤이다."
+    "solutionImageAlt": "호 AB 15cm, 호 CD xcm, 중심각 50°/80° 및 원주각 40°를 각각 원문에 맞게 독립 표식한다.",
+    "solutionImageCaption": "호 AB 15cm, 호 CD xcm, 중심각 50°/80° 및 원주각 40°를 각각 원문에 맞게 독립 표식한다."
   ,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
@@ -104,7 +107,10 @@ window.questionBank=[
     "decisiveStep": "원주각40도를 중심각80도로 바꾼 다음 같은 원의 중심각 비와 호 길이 비를 대응하여 미지 호 길이를 정한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원본 문제 재설계: 중심각 AOB=50°, 원주각 CPD=40°, 호 AB=15cm, 호 CD=xcm — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageCaption": "원본 문제 재설계: 중심각 AOB=50°, 원주각 CPD=40°, 호 AB=15cm, 호 CD=xcm — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -133,15 +139,15 @@ window.questionBank=[
     "answer": "⑤",
     "solution": "$AB$가 지름이므로 반원 $\\wideparen{AB}$의 크기는 $180^\\circ$이다.\n원 밖의 점 $E$에서 두 할선이 이루는 각에 의해\n$62^\\circ=\\dfrac12(180^\\circ-\\wideparen{DC})$\n$124^\\circ=180^\\circ-\\wideparen{DC}$\n$\\wideparen{DC}=56^\\circ$\n이다.\n중심각 $\\angle DOC$의 크기는 호 $\\wideparen{DC}$의 크기와 같으므로 $x=56^\\circ$이다.\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q3-solution-v2.svg",
-    "solutionImageSize": "medium",
-    "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q3.png",
+    "solutionImageSize": "full",
+    "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q3-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageLayout": "fullwidth",
-    "solutionImageAlt": "해설 그림: 지름 AB를 가진 반원에서 E에서 두 할선이 이루는 ∠E=62°를 보이고, 호 DC와 중심각 ∠DOC(x)를 같은 초록으로 칠해 두 값이 같음을 보여 준다.",
-    "solutionImageCaption": "62°=½(180°−호 DC)에서 180°−호 DC=124°이므로 호 DC=56°이고 ∠DOC=호 DC이므로 x=56°이다. 정답 ⑤."
+    "solutionImageAlt": "반원 지름 AB와 점 E까지의 두 연장선을 끊지 않고 연결; ∠DEC=62° 및 호 DC=56°를 표시한다.",
+    "solutionImageCaption": "반원 지름 AB와 점 E까지의 두 연장선을 끊지 않고 연결; ∠DEC=62° 및 호 DC=56°를 표시한다."
   ,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
@@ -156,7 +162,10 @@ window.questionBank=[
     "decisiveStep": "지름이 정한 반원180도와 외부 두 할선각62도의 관계식에서 작은 호 DC를 구해 그 중심각을 정한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원본 문제 재설계: AB를 지름으로 하는 반원에서 AD,BC 연장선이 E에서 만나고 ∠DEC=62°, ∠DOC=x — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageCaption": "원본 문제 재설계: AB를 지름으로 하는 반원에서 AD,BC 연장선이 E에서 만나고 ∠DEC=62°, ∠DOC=x — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -185,15 +194,15 @@ window.questionBank=[
     "answer": "④",
     "solution": "$\\angle DAC$와 $\\angle DBC$는 같은 호 $\\wideparen{DC}$를 보므로\n$x=50^\\circ$\n이다.\n또 $\\angle BAC$와 $\\angle BDC$는 같은 호 $\\wideparen{BC}$를 보므로\n$y=32^\\circ$\n이다.\n따라서\n$x-y=50^\\circ-32^\\circ=18^\\circ$\n이므로 정답은 ④이다.",
     "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q4-solution-v2.svg",
-    "solutionImageSize": "medium",
-    "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q4.png",
+    "solutionImageSize": "full",
+    "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q4-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageLayout": "fullwidth",
-    "solutionImageAlt": "해설 그림: 원에 내접한 □ABCD에서 호 DC를 보는 원주각 x와 ∠DBC=50°를 같은 색으로, 호 BC를 보는 원주각 y와 ∠BDC=32°를 같은 색으로 표시한다.",
-    "solutionImageCaption": "∠DAC와 ∠DBC는 같은 호 DC를 보는 원주각이라 x=50°이고, ∠BAC와 ∠BDC는 같은 호 BC를 보는 원주각이라 y=32°이다. 따라서 x−y=18°이고 정답은 ④이다."
+    "solutionImageAlt": "두 교차 대각선과 원주각 네 곳의 짝을 보존하며 삼각형 내부 면 채움 없이 호로만 강조한다.",
+    "solutionImageCaption": "두 교차 대각선과 원주각 네 곳의 짝을 보존하며 삼각형 내부 면 채움 없이 호로만 강조한다."
   ,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
@@ -208,7 +217,10 @@ window.questionBank=[
     "decisiveStep": "같은 호 DC와 BC를 보는 원주각을 각각 대응시켜 x와 y를 읽고 차를 구한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원본 문제 재설계: 원에 내접한 사각형 ABCD, ∠DBC=50°, ∠BDC=32°, ∠DAC=x, ∠BAC=y — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageCaption": "원본 문제 재설계: 원에 내접한 사각형 ABCD, ∠DBC=50°, ∠BDC=32°, ∠DAC=x, ∠BAC=y — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -332,7 +344,7 @@ window.questionBank=[
     "solution": "$\\angle ABC=50^\\circ$는 호 $\\wideparen{ADC}$를 보는 원주각이므로\n$\\wideparen{AD}+\\wideparen{DC}=100^\\circ$\n이다.\n점 $F$에서 두 할선이 이루는 각이 $55^\\circ$이므로\n$55^\\circ=\\dfrac12(\\wideparen{AB}-\\wideparen{CD})$\n따라서\n$\\wideparen{AB}-\\wideparen{CD}=110^\\circ$\n이다.\n$\\wideparen{AB}=\\wideparen{CD}+110^\\circ$, $\\wideparen{AD}=100^\\circ-\\wideparen{CD}$를 네 호의 합 $360^\\circ$에 대입하면\n$\\wideparen{BC}+\\wideparen{CD}=150^\\circ$\n이므로\n$\\wideparen{BC}-\\wideparen{AD}=50^\\circ$\n이다.\n점 $E$에서 두 할선이 이루는 각은\n$x=\\dfrac12(\\wideparen{BC}-\\wideparen{AD})=25^\\circ$\n이다.\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q7-solution-v2.svg",
     "solutionImageSize": "medium",
-    "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q7.png",
+    "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q7-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -354,7 +366,10 @@ window.questionBank=[
     "decisiveStep": "원주각이 보는 두 호의 합과 외부 할선각이 주는 두 호의 차를 전체360도와 함께 정리하여 다른 외부 할선각에 필요한 호의 차를 얻는다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원본 문제 재설계: 내접 사각형 ABCD에서 BA,CD 연장 E, AD,BC 연장 F, ∠ABC=50°, ∠F=55° — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageCaption": "원본 문제 재설계: 내접 사각형 ABCD에서 BA,CD 연장 E, AD,BC 연장 F, ∠ABC=50°, ∠F=55° — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -429,15 +444,15 @@ window.questionBank=[
     "answer": "①",
     "solution": "원에 내접하는 육각형에서 한 칸씩 건너뛴 세 각 $\\angle A$, $\\angle C$, $\\angle E$가 보는 호를 모두 더하면 원 전체를 두 번 센다. 따라서\n$\\angle A+\\angle C+\\angle E=360^\\circ$\n이다.\n그러므로\n$x+123^\\circ+117^\\circ=360^\\circ$\n$x=120^\\circ$\n이다.\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q9-solution-v2.svg",
-    "solutionImageSize": "medium",
-    "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q9.png",
+    "solutionImageSize": "full",
+    "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q9-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageLayout": "fullwidth",
-    "solutionImageAlt": "해설 그림: 원에 내접하는 육각형 ABCDEF에서 각 A=x, 각 C=123도, 각 E=117도가 서로 다른 색이고 각 각이 보는 호가 같은 색의 바깥 호 세 겹으로 표시되어 원을 두 번 덮는다.",
-    "solutionImageCaption": "∠A, ∠C, ∠E가 보는 호의 합은 원 전체를 두 번 덮은 720°이므로 ∠A+∠C+∠E=360°이다. x+123°+117°=360°이므로 x=120°이고 정답은 ①이다."
+    "solutionImageAlt": "원 둘레 육각형의 여섯 꼭짓점과 여섯 현을 모두 연결, 중앙 면 및 외곽 계산용 부채꼴 채움 제거.",
+    "solutionImageCaption": "원 둘레 육각형의 여섯 꼭짓점과 여섯 현을 모두 연결, 중앙 면 및 외곽 계산용 부채꼴 채움 제거."
   ,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
@@ -452,7 +467,10 @@ window.questionBank=[
     "decisiveStep": "내접 육각형에서 한 칸씩 건너뛴 세 원주각이 보는 호를 더하면 전체 원이 두 번 세어짐을 이용해 세 각의 합360도를 만든다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원본 문제 재설계: 원에 내접한 육각형 ABCDEF에서 C=123°, E=117°, A=x — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageCaption": "원본 문제 재설계: 원에 내접한 육각형 ABCDEF에서 C=123°, E=117°, A=x — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -481,15 +499,15 @@ window.questionBank=[
     "answer": "②",
     "solution": "접선 $TQ$와 현 $TB$가 이루는 각은 현 $TB$를 보는 원주각과 같다.\n$\\angle BTQ=55^\\circ$이므로\n$\\angle TAB=55^\\circ$\n이다.\n따라서 $x=55^\\circ$이므로 정답은 ②이다.",
     "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q10-solution-v2.svg",
-    "solutionImageSize": "medium",
-    "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q10.png",
+    "solutionImageSize": "full",
+    "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q10-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageLayout": "fullwidth",
-    "solutionImageAlt": "해설 그림: 접선 PQ와 현 TB가 이루는 ∠BTQ=55°와 현 TB를 보는 원주각 ∠TAB(x)를 같은 파랑으로 칠해 두 각이 같음을 보여 준다.",
-    "solutionImageCaption": "접선과 현이 이루는 각은 그 현을 보는 원주각과 같으므로 x=∠BTQ=55°이다. 정답 ②."
+    "solutionImageAlt": "접선 PQ 양쪽 연장과 접점 T의 두 각호 및 현 TA,TB,AB를 모두 보존한다.",
+    "solutionImageCaption": "접선 PQ 양쪽 연장과 접점 T의 두 각호 및 현 TA,TB,AB를 모두 보존한다."
   ,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
@@ -504,7 +522,10 @@ window.questionBank=[
     "decisiveStep": "접선 TQ와 현 TB가 이루는55도 각을 같은 현을 보는 원주각 TAB에 바로 대응한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원본 문제 재설계: 접선 PQ와 접점 T, ∠PTA=60°, ∠BTQ=55°, ∠TAB=x — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageCaption": "원본 문제 재설계: 접선 PQ와 접점 T, ∠PTA=60°, ∠BTQ=55°, ∠TAB=x — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageSize": "full"
   },
   {
     "id": 11,
@@ -533,15 +554,15 @@ window.questionBank=[
     "answer": "①",
     "solution": "접선과 현의 성질에 의해\n$\\angle PTA=\\angle PBT$\n이고, $P,A,B$가 한 직선 위에 있으므로 두 삼각형 $\\triangle PTA$, $\\triangle PBT$는 $\\angle P$도 공통이다.\n따라서\n$\\triangle PTA\\sim\\triangle PBT$\n이다.\n대응변의 비에서\n$PA:PT=TA:TB=6:8=3:4$\n이므로 $PA=6$이다.\n또\n$PT:PB=3:4$\n$8:PB=3:4$\n이므로\n$PB=\\dfrac{32}{3}$\n이다.\n따라서\n$AB=PB-PA=\\dfrac{32}{3}-6=\\dfrac{14}{3}$\n이므로 정답은 ①이다.",
     "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q11-solution-v2.svg",
-    "solutionImageSize": "medium",
-    "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q11.png",
+    "solutionImageSize": "full",
+    "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q11-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImageLayout": "fullwidth",
-    "solutionImageAlt": "해설 그림: 원의 접선 PT와 직선 PAB에서 ∠PTA=∠PBT를 같은 색으로, 대응변 PA와 PT, TA와 TB를 색으로 묶어 △PTA∽△PBT를 보이고 PA=6, PB=32/3을 표시한다.",
-    "solutionImageCaption": "접선과 현의 성질로 ∠PTA=∠PBT이고 ∠P가 공통이어서 △PTA∽△PBT이다. PA:PT=TA:TB=6:8=3:4에서 PA=6, PT:PB=3:4에서 PB=32/3이다. 따라서 AB=PB−PA=14/3이고 정답은 ①이다."
+    "solutionImageAlt": "접선 PT와 접점 T, P-A-B 일직선, PT=8,TA=6,TB=8을 모두 도형선·길이 라벨로 표현한다.",
+    "solutionImageCaption": "접선 PT와 접점 T, P-A-B 일직선, PT=8,TA=6,TB=8을 모두 도형선·길이 라벨로 표현한다."
   ,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "",
@@ -553,7 +574,10 @@ window.questionBank=[
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "접선현각과 공통각으로 두 삼각형의 AA닮음을 확보하고 대응변 비로 PA와 PB를 구해 현 AB의 길이를 정한다.",
-    "decisiveStep": "접선현각과 공통각으로 두 삼각형의 AA닮음을 확보하고 대응변 비로 PA와 PB를 구해 현 AB의 길이를 정한다."
+    "decisiveStep": "접선현각과 공통각으로 두 삼각형의 AA닮음을 확보하고 대응변 비로 PA와 PB를 구해 현 AB의 길이를 정한다.",
+    "imageAlt": "접선 PT와 접점 T, P-A-B 일직선, PT=8,TA=6,TB=8을 모두 도형선·길이 라벨로 표현한다.",
+    "imageCaption": "접선 PT와 접점 T, P-A-B 일직선, PT=8,TA=6,TB=8을 모두 도형선·길이 라벨로 표현한다.",
+    "imageSize": "full"
   },
   {
     "id": 12,
@@ -582,15 +606,15 @@ window.questionBank=[
     "answer": "③",
     "solution": "$\\angle ADB=55^\\circ$는 호 $\\wideparen{AB}$를 보는 원주각이므로 같은 호에 대한 중심각은\n$\\angle AOB=2\\times55^\\circ=110^\\circ$\n이다.\n$A,O,C$가 한 직선 위에 있으므로\n$\\angle BOC=180^\\circ-110^\\circ=70^\\circ$\n이다.\n또 $BC$는 점 $B$에서의 접선이므로 $OB\\perp BC$이다.\n따라서 삼각형 $OBC$에서\n$x=180^\\circ-90^\\circ-70^\\circ=20^\\circ$\n이다.\n따라서 정답은 ③이다.",
     "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q12-solution-v2.svg",
-    "solutionImageSize": "medium",
-    "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q12.png",
+    "solutionImageSize": "full",
+    "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q12-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageLayout": "fullwidth",
-    "solutionImageAlt": "해설 그림: 원 O에서 지름을 포함하는 선분 AC와 B에서의 접선 BC. 원주각 ∠ADB=55°, 같은 호의 중심각 ∠AOB=110°, ∠BOC=70°가 표시되고 직각삼각형 OBC가 주황으로 칠해져 있으며 ∠BCO는 x이다.",
-    "solutionImageCaption": "∠AOB=2×55°=110°이므로 ∠BOC=70°이고 OB⊥BC인 삼각형 OBC에서 x=180°−90°−70°=20° (정답 ③)"
+    "solutionImageAlt": "원문 두 교차 직선과 접선·접점 수선을 유지하고 해설의 불필요한 주황 부채꼴 영역을 제거한다.",
+    "solutionImageCaption": "원문 두 교차 직선과 접선·접점 수선을 유지하고 해설의 불필요한 주황 부채꼴 영역을 제거한다."
   ,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
@@ -605,7 +629,10 @@ window.questionBank=[
     "decisiveStep": "원주각55도를 중심각110도로 바꾸고 A,O,C의 일직선에서70도를 얻은 뒤 접점 반지름의 직각과 삼각형 내각합으로 x를 정한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원본 문제 재설계: A,O,C가 일직선, BC가 B에서 접선, ∠ADB=55°, C의 바깥각 x — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageCaption": "원본 문제 재설계: A,O,C가 일직선, BC가 B에서 접선, ∠ADB=55°, C의 바깥각 x — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageSize": "full"
   },
   {
     "id": 13,
@@ -638,9 +665,9 @@ window.questionBank=[
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q13-solution.svg",
-    "solutionImageAlt": "해설 그림: 마라톤 참가자 나이 줄기와 잎 그림. 작은 쪽 9번째 잎(줄기 2의 4)에 동그라미와 번호 9가 있어 앞에 8개, 뒤에 8개가 있음을 보인다.",
-    "solutionImageCaption": "자료가 17개이므로 중앙값은 작은 쪽 9번째 값이고 24세이다. 정답은 ②이다.",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "원문 줄기 1~4와 17명 자료를 오름차순 잎으로 나열한다.",
+    "solutionImageCaption": "원문 줄기 1~4와 17명 자료를 오름차순 잎으로 나열한다.",
+    "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
     "templateKey": "TPL_M1_CENTRAL_TENDENCY_MEDIAN_ORDER_STATISTIC",
@@ -849,16 +876,16 @@ window.questionBank=[
     ],
     "answer": "③",
     "solution": "국어 점수와 영어 점수가 같은 학생은 산점도에서 가로축의 값과 세로축의 값이 같은 점이다.\n그런 점은 $(50,50),(60,60),(70,70),(80,80),(90,90),(100,100)$으로 모두 $6$개이다.\n전체 학생은 $20$명이므로\n$\\dfrac6{20}\\times100=30\\%$\n이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q18.png",
-    "imageSize": "tall",
+    "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q18-problem.svg",
+    "imageSize": "full",
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q18-solution.svg",
-    "solutionImageAlt": "해설 그림: 국어 점수(가로)와 영어 점수(세로)의 산점도 20개 점에 대각선 y=x를 점선으로 그린 그림. 선 위의 6개 점 (50,50), (60,60), (70,70), (80,80), (90,90), (100,100)을 주황색으로 강조했다.",
-    "solutionImageCaption": "국어 점수와 영어 점수가 같은 학생은 직선 y=x 위의 주황색 점 6명이므로 6/20×100=30%이다. 정답은 ③이다.",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "원본 산점도의 모든 좌표·축 눈금·축 제목 보존: 학생 20명 중 국어=영어 점수가 6명이다.",
+    "solutionImageCaption": "원본 산점도의 모든 좌표·축 눈금·축 제목 보존: 학생 20명 중 국어=영어 점수가 6명이다.",
+    "solutionImageSize": "full"
   ,
     "problemTypeKey": "",
     "templateKey": "",
@@ -870,7 +897,9 @@ window.questionBank=[
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "산점도에서 가로·세로 좌표가 같은 대각선 위 점6개를 세어 전체20명에 대한 백분율을 계산한다.",
-    "decisiveStep": "산점도에서 가로·세로 좌표가 같은 대각선 위 점6개를 세어 전체20명에 대한 백분율을 계산한다."
+    "decisiveStep": "산점도에서 가로·세로 좌표가 같은 대각선 위 점6개를 세어 전체20명에 대한 백분율을 계산한다.",
+    "imageAlt": "원본 산점도의 모든 좌표·축 눈금·축 제목 보존: 학생 20명 중 국어=영어 점수가 6명이다.",
+    "imageCaption": "원본 산점도의 모든 좌표·축 눈금·축 제목 보존: 학생 20명 중 국어=영어 점수가 6명이다."
   },
   {
     "id": 19,
@@ -979,15 +1008,15 @@ window.questionBank=[
     "answer": "$37^\\circ$",
     "solution": "$\\angle ACB=23^\\circ$는 호 $\\wideparen{AB}$를 보는 원주각이므로\n$\\wideparen{AB}=2\\times23^\\circ=46^\\circ$\n이다.\n원 안에서 두 현 $AC$, $BD$가 점 $E$에서 만나므로\n$83^\\circ=\\dfrac12(\\wideparen{AB}+\\wideparen{DC})$\n이다. 따라서\n$166^\\circ=46^\\circ+\\wideparen{DC}$\n$\\wideparen{DC}=120^\\circ$\n이다.\n점 $P$에서 두 할선 $PAD$, $PBC$가 만나므로\n$x=\\dfrac12(\\wideparen{DC}-\\wideparen{AB})$\n$=\\dfrac12(120^\\circ-46^\\circ)$\n$=37^\\circ$\n이다.\n따라서 구하는 값은 $37^\\circ$이다.",
     "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q21-solution-v2.svg",
-    "solutionImageSize": "medium",
-    "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q21.png",
+    "solutionImageSize": "full",
+    "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q21-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageLayout": "fullwidth",
-    "solutionImageAlt": "해설 그림: 네 점 A, B, C, D를 지나는 원과 점 P에서 만나는 두 할선 PAD, PBC, 두 현의 교점 E, ∠ACB=23°, ∠E=83°, 호 AB=46°(파랑), 호 DC=120°(주황), ∠x를 나타낸 그림.",
-    "solutionImageCaption": "∠ACB=23°는 호 AB를 보는 원주각이므로 호 AB=46°이다. 두 현 AC, BD가 E에서 만나므로 83°=½(호 AB+호 DC)에서 호 DC=120°이다. P에서 두 할선이 만나므로 ∠x=½(호 DC−호 AB)=½(120°−46°)=37°이다."
+    "solutionImageAlt": "외부 두 할선의 교점 P와 내부 두 현의 교점 E를 구별하고 23°,83°,x=37°에 대응하는 호 AB=46°, DC=120°를 표시한다.",
+    "solutionImageCaption": "외부 두 할선의 교점 P와 내부 두 현의 교점 E를 구별하고 23°,83°,x=37°에 대응하는 호 AB=46°, DC=120°를 표시한다."
   ,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
@@ -1002,7 +1031,10 @@ window.questionBank=[
     "decisiveStep": "원주각으로 작은 호46도를 얻고 원 안의 두 현각에서 다른 호120도를 구한 후 외부 두 할선각의 호 차 관계로 x를 정한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원본 문제 재설계: 원 안 현 AC·BD의 교점 E에서 83°, ∠ACB=23°, 바깥 x — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageCaption": "원본 문제 재설계: 원 안 현 AC·BD의 교점 E에서 83°, ∠ACB=23°, 바깥 x — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageSize": "full"
   },
   {
     "id": 22,
@@ -1025,15 +1057,15 @@ window.questionBank=[
     "answer": "$56^\\circ$",
     "solution": "호 $\\wideparen{AB}$의 길이가 원주의 $\\dfrac19$이므로 호 $\\wideparen{AB}$의 각도는\n$360^\\circ\\times\\dfrac19=40^\\circ$\n이다.\n같은 원에서는 호의 길이의 비와 호의 각도의 비가 같으므로\n$\\wideparen{CD}=40^\\circ\\times\\dfrac95=72^\\circ$\n이다.\n원 안에서 두 현 $AC$, $BD$가 점 $P$에서 만나므로\n$x=\\dfrac12(40^\\circ+72^\\circ)=56^\\circ$\n이다.\n따라서 구하는 값은 $56^\\circ$이다.",
     "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q22-solution-v2.svg",
-    "solutionImageSize": "medium",
-    "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q22.png",
+    "solutionImageSize": "full",
+    "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q22-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageLayout": "fullwidth",
-    "solutionImageAlt": "해설 그림: 원에서 두 현 AC와 BD가 점 P에서 만난다. 호 AB는 40도, 호 CD는 72도로 서로 다른 색이고 각 DPC는 x이다.",
-    "solutionImageCaption": "호 AB는 원주의 1/9이므로 40°이고 호 AB:호 CD=5:9에서 호 CD=72°이다. x=(40°+72°)÷2=56°이다."
+    "solutionImageAlt": "현 두 개의 교차점 P와 호 AB 40°, CD 72°, 교점각 x=56°를 모든 원호와 함께 나타낸다.",
+    "solutionImageCaption": "현 두 개의 교차점 P와 호 AB 40°, CD 72°, 교점각 x=56°를 모든 원호와 함께 나타낸다."
   ,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
@@ -1048,7 +1080,10 @@ window.questionBank=[
     "decisiveStep": "원주의1/9인 호를40도로 바꾸고 호 비5:9로 다른 호72도를 정한 뒤 내부 두 현각의 반합으로 목표각을 구한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원본 문제 재설계: 두 현 AC·BD의 교점 P, 호 AB=둘레의 1/9, 호 AB:CD=5:9, ∠DPC=x — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageCaption": "원본 문제 재설계: 두 현 AC·BD의 교점 P, 호 AB=둘레의 1/9, 호 AB:CD=5:9, ∠DPC=x — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageSize": "full"
   },
   {
     "id": 23,
@@ -1075,9 +1110,9 @@ window.questionBank=[
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q23-solution.svg",
-    "solutionImageAlt": "해설 그림: 학생 A와 B의 4회 쪽지 시험 점수를 각각 점도표로 나타낸 그림. 두 점도표 모두 평균 8에 점선이 있고 각 점 위에 평균과의 차가 쓰여 있다. A는 −2, +1, 0, +1이고 B는 −1, +2, +1, −2이다.",
-    "solutionImageCaption": "점 하나가 시험 한 번이다. 두 학생의 평균은 모두 8이고 그림의 숫자는 점수에서 평균 8을 뺀 편차이다. A의 편차의 제곱은 4, 1, 0, 1로 합이 6이고, B는 1, 4, 1, 4로 합이 10이다. 분산은 편차의 제곱의 합을 4로 나눈 값이다. 분산이 작을수록 점수가 평균 주변에 고르게 모여 있어 A가 더 고르다. 따라서 A의 분산은 3/2, B의 분산은 5/2이고 점수가 더 고른 학생은 A이다.",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "원문 점수의 모든 자료를 점 하나당 변량 하나로 보존한 비교 그림.",
+    "solutionImageCaption": "원문 점수의 모든 자료를 점 하나당 변량 하나로 보존한 비교 그림.",
+    "solutionImageSize": "full"
   ,
     "problemTypeKey": "",
     "templateKey": "",

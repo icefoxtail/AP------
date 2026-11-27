@@ -728,8 +728,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_풍덕중_2학기_중간_중3_수학/q16-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 원래 삼각형의 같은 두 변, 연결점 D를 넣었을 때 같은 세 선분, 서로 떼어 같은 방향으로 놓은 두 닮은 삼각형의 대응을 색과 표식으로 읽는다.",
-    "solutionImageCaption": "△ABC에서 ∠B=∠C=72°. D를 잡아 ∠DBC=36°로 두면 ∠ABD=∠BAD=36°이므로 AD=BD. 또 △BCD에서 ∠BDC=∠BCD=72°이므로 BD=BC=4. 따라서 AD=BD=BC=4, DC=s−4이고 △ABC∼△BCD이다. s/4=4/(s−4)에서 s=2+2√5. 그러므로 cos72°=2/s=(√5−1)/4이며 정답은 ⑤이다.",
+    "solutionImageAlt": "AB=AC, BC=4, ∠A=36°인 이등변삼각형과 닮음에 쓰는 점 D; ∠DBC=36°, BD=AD=4.",
+    "solutionImageCaption": "AB=AC, BC=4, ∠A=36°인 이등변삼각형과 닮음에 쓰는 점 D; ∠DBC=36°, BD=AD=4.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_TRIG_RATIO",
@@ -871,8 +871,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_풍덕중_2학기_중간_중3_수학/q19-solution.svg",
-    "solutionImageAlt": "해설 그림: 모서리가 6인 정사면체에서 H는 밑면의 무게중심, M은 CD의 중점이다. 푸른 단면 ABH에서 AH와 BH는 수직이다.",
-    "solutionImageCaption": "밑면의 중선 BM은 3√3이고 BH는 그 길이의 2/3이다. 단면 ABH의 피타고라스 관계로 정사면체의 높이 AH를 구한다.",
+    "solutionImageAlt": "한 모서리 6인 정사면체 ABCD의 밑면 BCD, 밑면 중심 H와 수직 높이 AH.",
+    "solutionImageCaption": "한 모서리 6인 정사면체 ABCD의 밑면 BCD, 밑면 중심 H와 수직 높이 AH.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
@@ -1086,8 +1086,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_풍덕중_2학기_중간_중3_수학/q24-solution.svg",
-    "solutionImageAlt": "해설 그림: 굴뚝의 옆면을 펼친 직사각형에서 파란 가로는 밑면 원둘레, 초록 세로는 높이, 주황 대각선 AB는 한 바퀴 도는 계단 경로이다.",
-    "solutionImageCaption": "직사각형의 가로는 밑면의 원둘레 40π m이고 세로는 굴뚝 높이 30π m이다. 한 바퀴 도는 계단은 펼친 옆면에서 대각선 AB가 된다.",
+    "solutionImageAlt": "반지름 20 m, 높이 30π m 원기둥을 펼친 가로 40π m·세로 30π m의 직사각형과 한 바퀴 계단 AB.",
+    "solutionImageCaption": "반지름 20 m, 높이 30π m 원기둥을 펼친 가로 40π m·세로 30π m의 직사각형과 한 바퀴 계단 AB.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
@@ -1100,6 +1100,7 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "원기둥의 옆면을 펼쳐 둘레와 높이를 직각변으로 놓아 대각선 길이를 구하고 두 직각변의 탄젠트를 표에 역조회해 경사각을 정한다.",
-    "decisiveStep": "원기둥의 옆면을 펼쳐 둘레와 높이를 직각변으로 놓아 대각선 길이를 구하고 두 직각변의 탄젠트를 표에 역조회해 경사각을 정한다."
+    "decisiveStep": "원기둥의 옆면을 펼쳐 둘레와 높이를 직각변으로 놓아 대각선 길이를 구하고 두 직각변의 탄젠트를 표에 역조회해 경사각을 정한다.",
+    "solutionImageScale": 90
   }
 ];

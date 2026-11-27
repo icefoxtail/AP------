@@ -247,8 +247,8 @@ window.questionBank = [
     "sourceQid": 6,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_효천고_2학기_기말_고1_유사3/q06-solution.svg",
-    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
-    "solutionImageCaption": "P−Q=∅에서 P⊂Q이고, Qᶜ∪R=U에서 Q−R=∅이므로 Q⊂R이다. 따라서 P⊂Q⊂R이므로 P⊂R이고, p→r과 그 대우 ~r→~p가 항상 참이다. 따라서 답은 ①이다.",
+    "solutionImageAlt": "P−Q=∅에서 P⊆Q, Qᶜ∪R=U에서 Q⊆R이므로 P⊆Q⊆R이다. 포함관계가 대우 명제 ∼r→∼p를 설명한다.",
+    "solutionImageCaption": "P−Q=∅에서 P⊆Q, Qᶜ∪R=U에서 Q⊆R이므로 P⊆Q⊆R이다. 포함관계가 대우 명제 ∼r→∼p를 설명한다.",
     "solutionImageSize": "full"
   },
   {
@@ -292,8 +292,8 @@ window.questionBank = [
     "sourceQid": 7,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_효천고_2학기_기말_고1_유사3/q07-solution.svg",
-    "solutionImageAlt": "해설 그림: 각 원소가 어느 집합에 속하는지 표로 나타낸 그림이다.",
-    "solutionImageCaption": "ㄱ (0,0)은 p와 q가 모두 참, ㄴ (1,-1)은 p만 참, ㄷ (3,-1)은 q만 참인 예이다. ㄴ은 p→q가, ㄷ은 q→p가 거짓이므로 필요충분조건이 아니고, 필요충분조건인 것은 ㄱ뿐이므로 답은 ①이다.",
+    "solutionImageAlt": "예: 보기별 두 조건 p,q의 진리집합을 각각 P,Q로 나타낸다. ㄱ은 두 조건이 모두 a=b=0과 같고, ㄴ은 (1,-1)이 P에만 있으며, ㄷ은 (3,-1)이 Q에만 있다. 따라서 필요충분조건은 ㄱ뿐이다.",
+    "solutionImageCaption": "예: 보기별 두 조건 p,q의 진리집합을 각각 P,Q로 나타낸다. ㄱ은 두 조건이 모두 a=b=0과 같고, ㄴ은 (1,-1)이 P에만 있으며, ㄷ은 (3,-1)이 Q에만 있다. 따라서 필요충분조건은 ㄱ뿐이다.",
     "solutionImageSize": "full"
   },
   {

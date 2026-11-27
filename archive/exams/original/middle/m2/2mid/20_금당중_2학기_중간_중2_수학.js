@@ -133,9 +133,13 @@ window.examData = {
     "primaryMethod": "각이등분선과 공통변 ASA로 이등변 판정 정리 증명",
     "decisiveStep": "주어진 두 쌍의 같은각과 공통AD가 한변과양끝각임을 확인해 증명의 합동조건 빈칸을 채운다.",
     "solutionImage": "assets/images/20_금당중_2학기_중간_중2_수학/q3-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼각형 ABC의 꼭짓점 A에서 변 BC 위의 점 D로 각의 이등분선 AD가 그어져 있고 점 D에 직각 표시가 있으며 A에서 이등분된 두 각에 같은 표시, B와 C의 각에도 같은 표시가 있다.",
-    "solutionImageCaption": "△ABD와 △ACD에서 ∠BAD=∠CAD(AD는 ∠A의 이등분선), 선분 AD는 공통, ∠ADB=∠ADC이다. 한 변의 길이와 그 양 끝 각의 크기가 각각 같으므로 ASA 합동이고, 대응변인 AB=AC가 성립한다. 따라서 답은 ③이다.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "AD 공통과 양쪽 각이 같아 ABD와 ACD가 ASA 합동이다.",
+    "solutionImageCaption": "AD 공통과 양쪽 각이 같아 ABD와 ACD가 ASA 합동이다.",
+    "solutionImageSize": "full",
+    "image": "assets/images/20_금당중_2학기_중간_중2_수학/q3-problem.svg",
+    "imageAlt": "두 밑각이 같고 AD가 꼭지각을 이등분하는 삼각형 ABC.",
+    "imageCaption": "두 밑각이 같고 AD가 꼭지각을 이등분하는 삼각형 ABC.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -286,9 +290,13 @@ window.examData = {
     "primaryMethod": "두 수직이등분선 교점에서 세 번째 중점 판정",
     "decisiveStep": "P를 외심으로 인식하여 AC의 수직이등분선도 P를 지나므로 수선발F가 중점임을 판정한다.",
     "solutionImage": "assets/images/20_금당중_2학기_중간_중2_수학/q6-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 변 AB의 중점 D와 변 BC의 중점 E에서 세운 수선이 점 P에서 만나고 P에서 변 AC에 수선 PF가 내려져 있다. 각 변의 중점과 수선의 발에 직각 표시가 있고 P에서 세 꼭짓점으로 길이가 같은 선분이 그어져 있다.",
-    "solutionImageCaption": "점 P는 두 변 AB, BC의 수직이등분선의 교점이므로 삼각형 ABC의 외심이다. 외심은 세 변의 수직이등분선이 모두 지나는 점이므로 AC의 수직이등분선 위에도 있고, 수선 PF는 AC를 수직이등분하여 AF=CF이다. 또 외심에서 세 꼭짓점까지의 거리는 같아 PA=PB=PC이다(변까지의 거리 PE=PF가 같은 것은 내심의 성질이다). 따라서 답은 ④이다.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "세 변의 수직이등분선이 외심 P를 지나므로 F는 AC의 중점이다.",
+    "solutionImageCaption": "세 변의 수직이등분선이 외심 P를 지나므로 F는 AC의 중점이다.",
+    "solutionImageSize": "full",
+    "image": "assets/images/20_금당중_2학기_중간_중2_수학/q6-problem.svg",
+    "imageAlt": "AB와 BC의 수직이등분선이 P에서 만나고 PF가 AC에 수직이다.",
+    "imageCaption": "AB와 BC의 수직이등분선이 P에서 만나고 PF가 AC에 수직이다.",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -339,7 +347,11 @@ window.examData = {
     "solutionImage": "assets/images/20_금당중_2학기_중간_중2_수학/q7-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형 ABC와 그 외심 O가 있고 O에서 A, B, C로 선분이 그려져 있다. 꼭짓점 B의 각에 29, 꼭짓점 C의 각에 31, 꼭짓점 A의 각에 x가 표시되어 있고 OA, OB, OC에 같은 길이 표시가 있다.",
     "solutionImageCaption": "외심 O에서 세 꼭짓점까지의 거리가 같으므로 삼각형 OAB, OBC, OCA는 모두 이등변삼각형이다. 이때 꼭짓점마다 한 각씩 고른 세 각의 합은 90이므로 x + 29 + 31 = 90이다. 따라서 x의 크기는 30이다. 따라서 답은 ③이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "image": "assets/images/20_금당중_2학기_중간_중2_수학/q7-problem.svg",
+    "imageAlt": "원문 7번의 점·선·각·치수를 답 노출 없이 재구성한 문제 그림.",
+    "imageCaption": "원문 7번의 점·선·각·치수를 답 노출 없이 재구성한 문제 그림.",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -380,7 +392,11 @@ window.examData = {
     "solutionImage": "assets/images/20_금당중_2학기_중간_중2_수학/q8-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형 ABC의 내부에 내심 I가 있고 I에서 세 꼭짓점으로 선분이 그려져 있다. 꼭짓점 B의 각에 29, 꼭짓점 C의 각에 31, 꼭짓점 A의 각에 x가 표시되어 있다.",
     "solutionImageCaption": "내심 I를 잇는 BI와 CI가 각 B와 C를 이등분하므로 ∠IBC = 29, ∠ICB = 31이다. 세 내각의 합이 180이므로 반각을 하나씩 고른 합은 90이고 x + 29 + 31 = 90이다. 따라서 x의 크기는 30이다. 따라서 답은 ③이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "image": "assets/images/20_금당중_2학기_중간_중2_수학/q8-problem.svg",
+    "imageAlt": "원문 8번의 점·선·각·치수를 답 노출 없이 재구성한 문제 그림.",
+    "imageCaption": "원문 8번의 점·선·각·치수를 답 노출 없이 재구성한 문제 그림.",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -432,7 +448,11 @@ window.examData = {
     "solutionImageAlt": "해설 그림: 원의 중심 O에서 세 꼭짓점 A, B, C로 반지름 OA, OB, OC를 그린 삼각형 ABC가 보이고, 점 B의 각에 50 표시와 중심 O의 각 AOC에 별도의 각 표시가 있다. 세 반지름에는 같은 길이 눈금이 있다.",
     "solutionImageCaption": "점 O가 삼각형 ABC의 외심이므로 OA, OB, OC의 길이가 모두 같다. 호 AC에 대한 중심각 AOC는 원주각 ABC의 2배이다. 각 B가 50°이므로 각 AOC는 2 × 50° = 100°이다. 따라서 답은 ②이다.",
     "solutionImageSize": "full",
-    "solutionImageScale": 90
+    "solutionImageScale": 90,
+    "image": "assets/images/20_금당중_2학기_중간_중2_수학/q9-problem.svg",
+    "imageAlt": "원문 9번의 점·선·각·치수를 답 노출 없이 재구성한 문제 그림.",
+    "imageCaption": "원문 9번의 점·선·각·치수를 답 노출 없이 재구성한 문제 그림.",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -621,9 +641,13 @@ window.examData = {
     "primaryMethod": "직각삼각형 외접반지름은 반빗변",
     "decisiveStep": "본문의직각과빗변15를읽어외접반지름을절반으로구한다.",
     "solutionImage": "assets/images/20_금당중_2학기_중간_중2_수학/q13-solution.svg",
-    "solutionImageAlt": "해설 그림: 꼭짓점 A에서 직각인 직각삼각형 ABC와 그 외접원이 있고 외심 O가 빗변 BC의 중점에 있으며 AB 9, CA 12, 빗변의 절반인 BO와 OC에 15/2가 적혀 있다.",
-    "solutionImageCaption": "∠A=90°이므로 꼭짓점 A의 대변 BC=15cm가 빗변이다. 직각삼각형의 외심은 빗변의 중점이므로 외접원의 지름이 빗변 BC=15cm이다. 따라서 반지름은 15/2=7.5cm이다. 답은 ③이다.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "직각삼각형의 외심 O는 빗변 BC의 중점이고 반지름은 7.5cm이다.",
+    "solutionImageCaption": "직각삼각형의 외심 O는 빗변 BC의 중점이고 반지름은 7.5cm이다.",
+    "solutionImageSize": "full",
+    "image": "assets/images/20_금당중_2학기_중간_중2_수학/q13-problem.svg",
+    "imageAlt": "직각삼각형 ABC의 세 꼭짓점이 있는 외접원, 세 변 9,12,15cm.",
+    "imageCaption": "직각삼각형 ABC의 세 꼭짓점이 있는 외접원, 세 변 9,12,15cm.",
+    "imageSize": "full"
   },
   {
     "id": 14,
@@ -766,9 +790,13 @@ window.examData = {
     "primaryMethod": "대각선 이등분과 평행선 각으로 ASA 대응 판정",
     "decisiveStep": "같은반대각선과맞꼭지각·엇각으로마주보는두삼각형의ASA대응을확인하고잘못된각대응을배제한다.",
     "solutionImage": "assets/images/20_금당중_2학기_중간_중2_수학/q16-solution.svg",
-    "solutionImageAlt": "해설 그림: 평행사변형 ABCD의 두 대각선이 점 O에서 만나고 O를 지나는 직선이 변 AD와 점 E, 변 BC와 점 F에서 만난다. 엇각끼리 같은 표시, 맞꼭지각에 같은 표시가 있고 OA와 OC에 같은 눈금이 있다.",
-    "solutionImageCaption": "평행사변형의 두 대각선은 서로를 이등분하므로 OA=OC이다. AD∥BC이므로 엇각이 같아 ∠EAO=∠FCO(α)이고 ∠AEO=∠CFO(β)이며, 맞꼭지각이므로 ∠AOE=∠COF이다. 따라서 △OAE≡△OCF(ASA 합동)이고 AE=CF이다. ③의 ∠AEO=∠FCO는 대응하는 엇각이 아니므로 옳지 않다. 따라서 답은 ③이다.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "대각선의 이등분과 엇각·맞꼭지각으로 △AOE와 △COF를 비교한다.",
+    "solutionImageCaption": "대각선의 이등분과 엇각·맞꼭지각으로 △AOE와 △COF를 비교한다.",
+    "solutionImageSize": "full",
+    "image": "assets/images/20_금당중_2학기_중간_중2_수학/q16-problem.svg",
+    "imageAlt": "평행사변형의 대각선 교점 O와 O를 지나는 직선 EF, 원문에서 측정해 비교한 OE=OF를 모두 보인다.",
+    "imageCaption": "평행사변형의 대각선 교점 O와 O를 지나는 직선 EF, 원문에서 측정해 비교한 OE=OF를 모두 보인다.",
+    "imageSize": "full"
   },
   {
     "id": 17,
@@ -819,9 +847,13 @@ window.examData = {
     "primaryMethod": "중점의 반대변에서 한 쌍의 평행·같은길이 판정",
     "decisiveStep": "원래대변의평행과같은길이를각절반인MB,DN으로옮겨한쌍의대변조건을고른다.",
     "solutionImage": "assets/images/20_금당중_2학기_중간_중2_수학/q17-solution.svg",
-    "solutionImageAlt": "해설 그림: 평행사변형 ABCD에서 변 AB의 중점 M과 변 CD의 중점 N을 지나 선분 MD와 BN이 그어져 있고 길이가 같은 MB와 ND에 같은 눈금, AM과 CN에 같은 눈금이 있다.",
-    "solutionImageCaption": "평행사변형 ABCD에서 AB∥CD이고 AB=CD이다. M, N이 각각 AB, CD의 중점이므로 MB는 AB의 절반, DN은 CD의 절반이어서 MB∥DN이고 MB=DN이다. 한 쌍의 대변이 평행하고 그 길이가 같으므로 사각형 MBND는 평행사변형이다. 따라서 답은 ⑤이다.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "MB와 DN이 평행하고 길이가 같으므로 MBND는 평행사변형이다.",
+    "solutionImageCaption": "MB와 DN이 평행하고 길이가 같으므로 MBND는 평행사변형이다.",
+    "solutionImageSize": "full",
+    "image": "assets/images/20_금당중_2학기_중간_중2_수학/q17-problem.svg",
+    "imageAlt": "평행사변형 ABCD의 중점 M,N과 연결선 MD,BN을 표시한다.",
+    "imageCaption": "평행사변형 ABCD의 중점 M,N과 연결선 MD,BN을 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 18,
@@ -870,9 +902,13 @@ window.examData = {
     "primaryMethod": "마름모의 대각선 수직이등분과 등변 성질 비교",
     "decisiveStep": "네변같음과대각선수직이등분은확인하고두대각선의같은길이는일반적으로보장되지않음을판정한다.",
     "solutionImage": "assets/images/20_금당중_2학기_중간_중2_수학/q18-solution.svg",
-    "solutionImageAlt": "해설 그림: 마름모 ABCD의 두 대각선이 점 O에서 직각으로 만나고 네 변에 같은 눈금이 있다. 대각선 AC는 BD보다 짧고 OB와 OD, OA와 OC에 각각 같은 눈금이 있다.",
-    "solutionImageCaption": "예: 마름모의 모양을 나타낸 그림이다(대각선의 길이는 모양만 나타낸 예이다). 마름모는 네 변의 길이가 모두 같으므로 AB=AD이다. 두 대각선은 서로를 수직이등분하므로 OB=OD, AC⊥BD이고 △ABO≡△ADO이다. 그러나 정사각형이 아닌 마름모에서는 두 대각선의 길이가 같지 않으므로 AC=BD는 옳지 않다. 따라서 답은 ②이다.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "마름모의 네 변과 대각선 수직이등분 성질을 시각적으로 확인한다.",
+    "solutionImageCaption": "마름모의 네 변과 대각선 수직이등분 성질을 시각적으로 확인한다.",
+    "solutionImageSize": "full",
+    "image": "assets/images/20_금당중_2학기_중간_중2_수학/q18-problem.svg",
+    "imageAlt": "직사각형 → 두 번 접기 → 자르기 → 펼친 마름모의 네 단계를 원본 순서대로 복원한다. 단계 사이 화살표는 엔진 미지원으로 후속 표기가 필요하다.",
+    "imageCaption": "직사각형 → 두 번 접기 → 자르기 → 펼친 마름모의 네 단계를 원본 순서대로 복원한다. 단계 사이 화살표는 엔진 미지원으로 후속 표기가 필요하다.",
+    "imageSize": "full"
   },
   {
     "id": 19,
@@ -911,9 +947,13 @@ window.examData = {
     "answer": "⑤",
     "solution": "마름모 ABCD의 꼭짓점 A에서 두 변 BC, CD에 내린 수선의 발을 각각 E, F라 할 때, 각 EAF = 60°가 주어진다. 이때 각 BAE의 크기를 구한다.\n\n마름모와 사각형의 내각의 성질을 이용한다.\n- 꼭짓점 A에서 대변에 내린 수선이므로 선분 AE ⊥ BC, AF ⊥ CD이다.\n- 사각형 AECF의 네 내각의 크기의 합은 360°임을 이용하여 마름모의 내각 ∠C의 크기를 구한다.\n- 마름모는 평행사변형이므로 이웃하는 두 내각의 합은 180°이다: ∠B = 180° - ∠C.\n- 직각삼각형 ABE에서 세 내각의 합을 이용하여 ∠BAE의 크기를 구한다.\n\n1단계: 사각형 AECF에서 꼭짓점 C의 내각 구하기\n선분 AE ⊥ BC이므로 ∠AEC = 90°\n선분 AF ⊥ CD이므로 ∠AFC = 90°\n주어진 각 ∠EAF = 60°\n사각형의 네 내각의 크기의 합은 360°이므로 사각형 AECF에서:\n∠C = 360° - (∠AEC + ∠AFC + ∠EAF)\n= 360° - (90° + 90° + 60°)\n= 360° - 240° = 120°\n2단계: 마름모의 내각 ∠B의 크기 구하기\n마름모 ABCD는 평행사변형이므로 이웃하는 두 내각의 합은 180°이다:\n∠B + ∠C = 180°\n∠B = 180° - 120° = 60°\n3단계: 직각삼각형 ABE에서 ∠BAE 계산하기\n선분 AE ⊥ BC이므로 △ABE는 ∠AEB = 90°인 직각삼각형이다.\n직각삼각형의 두 예각의 합은 90°이므로:\n∠BAE = 90° - ∠B = 90° - 60° = 30°\n\n(별해: 마름모의 대칭성 이용\n△ABE와 △ADF는 빗변 AB = AD, ∠B = ∠D, ∠AEB = ∠AFD = 90°이므로 RHA 합동이다.\n따라서 ∠BAE = ∠DAF이다.\n마름모의 대각 ∠BAD = ∠C = 120°이고,\n∠BAD = ∠BAE + ∠EAF + ∠DAF이므로:\n120° = ∠BAE + 60° + ∠BAE\n2∠BAE = 60°\n∠BAE = 30°)\n\n각 선지를 확인하면 다음과 같다.\n① 10°: 오답\n② 15°: 각도 계산 착오 오답\n③ 18°: 오답\n④ 20°: 오답\n⑤ 30°: 사각형 내각의 합 및 직각삼각형 계산 결과와 정확히 일치함 (정답)\n\n따라서 각 BAE의 크기는 30°이므로 정답은 ⑤이다.",
     "solutionImage": "assets/images/20_금당중_2학기_중간_중2_수학/q19-solution.svg",
-    "solutionImageAlt": "해설 그림: 마름모 ABCD의 꼭짓점 A에서 변 BC와 CD에 수선 AE, AF가 내려져 있고 두 수선의 발에 직각 표시가 있으며 각 BAE 30°, 각 EAF 60°, 꼭짓점 B의 각 60°, 꼭짓점 C의 각 120°가 표시되어 있다.",
-    "solutionImageCaption": "사각형 AECF에서 ∠AEC=∠AFC=90°, ∠EAF=60°이므로 ∠C=360°−(90°+90°+60°)=120°이다. 마름모는 평행사변형이므로 ∠B=180°−120°=60°이다. 직각삼각형 ABE에서 ∠BAE=90°−60°=30°이다. 따라서 답은 ⑤이다.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "두 직각과 EAF로 마름모의 다른 각을 추적하고 BAE를 구한다.",
+    "solutionImageCaption": "두 직각과 EAF로 마름모의 다른 각을 추적하고 BAE를 구한다.",
+    "solutionImageSize": "full",
+    "image": "assets/images/20_금당중_2학기_중간_중2_수학/q19-problem.svg",
+    "imageAlt": "마름모 ABCD에서 수선 AE, AF와 주어진 EAF 각 60°를 표시한다.",
+    "imageCaption": "마름모 ABCD에서 수선 AE, AF와 주어진 EAF 각 60°를 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 20,
@@ -964,9 +1004,13 @@ window.examData = {
     "primaryMethod": "정사각형 대각선 대칭의 SAS와 외각",
     "decisiveStep": "대각선의45도와같은변·공통변으로ABE,ADE의SAS를얻고주어진외각에서45도를빼대응각을구한다.",
     "solutionImage": "assets/images/20_금당중_2학기_중간_중2_수학/q20-solution.svg",
-    "solutionImageAlt": "해설 그림: 정사각형 ABCD의 대각선 AC 위에 점 E가 있고 B와 D에서 E로 선분이 그어져 있다. 각 BEC 69°, 꼭짓점 A의 각 45°, 각 EBA와 각 EDA에 같은 크기 24°가 표시되어 있다.",
-    "solutionImageCaption": "정사각형에서 AB=AD, AE는 공통, ∠BAE=∠DAE=45°이므로 △ABE≡△ADE(SAS 합동)이고 ∠EDA=∠EBA이다. △ABE에서 외각 ∠BEC=∠BAE+∠EBA이므로 69°=45°+∠EBA에서 ∠EBA=24°이다. 따라서 ∠EDA=24°이고 답은 ⑤이다.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "AC가 직각을 이등분하고 △ABE와 △ADE가 합동인 관계를 통해 EDA를 구한다.",
+    "solutionImageCaption": "AC가 직각을 이등분하고 △ABE와 △ADE가 합동인 관계를 통해 EDA를 구한다.",
+    "solutionImageSize": "full",
+    "image": "assets/images/20_금당중_2학기_중간_중2_수학/q20-problem.svg",
+    "imageAlt": "정사각형 대각선 AC 위의 E와 ∠BEC=69°가 주어졌다.",
+    "imageCaption": "정사각형 대각선 AC 위의 E와 ∠BEC=69°가 주어졌다.",
+    "imageSize": "full"
   },
   {
     "id": 21,
@@ -1012,9 +1056,13 @@ window.examData = {
     "primaryMethod": "직각삼각형 내접원 접선길이로 반지름 방정식",
     "decisiveStep": "같은내접반지름의RHS쌍에서접선길이를전달하고빗변합을r의일차식으로표현해빈칸을완성한다.",
     "solutionImage": "assets/images/20_금당중_2학기_중간_중2_수학/q21-solution.svg",
-    "solutionImageAlt": "꼭짓점 C에서 직각인 직각삼각형 ABC의 내접원이 세 변과 만나는 점 D, E, F가 있고 내심 I에서 세 접점으로 수직인 선분이 그어져 있다. 반지름 r, 접선의 길이 6−r, 8−r이 각 선분에 적혀 있다.",
-    "solutionImageCaption": "내접원의 중심을 I, 접점을 D, E, F라 하자. ID=IE=IF=r이고 접선은 반지름에 수직이므로 사각형 IECF는 한 변이 r인 정사각형이어서 EC=FC=r이다. 따라서 BE=BC−EC=8−r이다. △IAD≡△IAF(RHS 합동)이므로 AD=AF=6−r이고, 같은 방법으로 BD=BE=8−r이다. AB=AD+BD이므로 10=(6−r)+(8−r)이고 14−2r=10에서 r=2이다.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "접선 길이 AD=AF, BD=BE, EC=FC를 이용해 r을 구한다.",
+    "solutionImageCaption": "접선 길이 AD=AF, BD=BE, EC=FC를 이용해 r을 구한다.",
+    "solutionImageSize": "full",
+    "image": "assets/images/20_금당중_2학기_중간_중2_수학/q21-problem.svg",
+    "imageAlt": "직각삼각형 6-8-10과 내접원의 중심 I 및 접점 D,E,F이다.",
+    "imageCaption": "직각삼각형 6-8-10과 내접원의 중심 I 및 접점 D,E,F이다.",
+    "imageSize": "full"
   },
   {
     "id": 22,
@@ -1102,9 +1150,13 @@ window.examData = {
     "primaryMethod": "직사각형 두 대각선의 같은길이를 SAS로 증명",
     "decisiveStep": "대변AB=DC를공통BC와직각에보태SAS를완성하고대응대각선AC=DB를증명의결론으로쓴다.",
     "solutionImage": "assets/images/20_금당중_2학기_중간_중2_수학/q23-solution.svg",
-    "solutionImageAlt": "해설 그림: 직사각형 ABCD에 두 대각선 AC와 BD가 그어져 있고 꼭짓점 B와 C에 직각 표시가 있으며 대변 AB와 CD에 같은 눈금, 두 대각선에 같은 눈금이 있다.",
-    "solutionImageCaption": "△ABC와 △DCB에서 ∠ABC=∠DCB=90°(직사각형의 네 각은 모두 직각), 변 BC는 공통, 직사각형의 대변의 길이는 같으므로 AB=DC이다. 따라서 △ABC≡△DCB(SAS 합동)이고 대응변인 AC=DB이다. 즉 직사각형의 두 대각선의 길이는 같다.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "AB=DC, BC 공통, 두 끼인각 90°로 두 삼각형의 SAS 합동을 보인다.",
+    "solutionImageCaption": "AB=DC, BC 공통, 두 끼인각 90°로 두 삼각형의 SAS 합동을 보인다.",
+    "solutionImageSize": "full",
+    "image": "assets/images/20_금당중_2학기_중간_중2_수학/q23-problem.svg",
+    "imageAlt": "직사각형 ABCD의 두 대각선 AC, DB와 B,C의 직각 표식이다.",
+    "imageCaption": "직사각형 ABCD의 두 대각선 AC, DB와 B,C의 직각 표식이다.",
+    "imageSize": "full"
   },
   {
     "id": 24,
@@ -1136,7 +1188,12 @@ window.examData = {
       "assets/images/20_금당중_2학기_중간_중2_수학/s04.png"
     ],
     "answer": "(1) 두 대각선이 서로 다른 것을 수직이등분하므로, 마름모이다.\\n(2) 두 대각선이 길이가 같고 서로 다른 것을 수직이등분하므로, 정사각형이다.\\n(3) 두 대각선이 서로 다른 것을 이등분하므로, 평행사변형이다.\\n(4) 두 대각선이 길이가 같고 서로 다른 것을 이등분하므로, 직사각형이다.",
-    "solution": "주어진 대각선의 성질 분류 다이어그램에서 (1)~(4)에 해당하는 사각형의 이름을 보기(평행사변형, 직사각형, 마름모, 정사각형)에서 고르고, 그 이유를 완전한 문장으로 설명한다.\n\n사각형의 대각선의 성질을 이용한다.\n- 여러 가지 사각형의 대각선 성질:\n  1) 평행사변형: 두 대각선이 서로 다른 것을 이등분한다.\n  2) 직사각형: 두 대각선의 길이가 같고 서로 다른 것을 이등분한다.\n  3) 마름모: 두 대각선이 서로 다른 것을 수직이등분한다.\n  4) 정사각형: 두 대각선의 길이가 같고 서로 다른 것을 수직이등분한다.\n\n1단계: (1) 조건 분석\n- 대각선 조건: 수직이등분하지만 길이는 같지 않음\n- 사각형: 마름모\n- 이유: 두 대각선이 서로 다른 것을 수직이등분하므로 마름모이다.\n2단계: (2) 조건 분석\n- 대각선 조건: 길이가 같고 서로 다른 것을 수직이등분함\n- 사각형: 정사각형\n- 이유: 두 대각선이 길이가 같고 서로 다른 것을 수직이등분하므로 정사각형이다.\n3단계: (3) 조건 분석\n- 대각선 조건: 서로 다른 것을 이등분하지만 수직이 아니고 길이가 같지 않음\n- 사각형: 평행사변형\n- 이유: 두 대각선이 서로 다른 것을 이등분하므로 평행사변형이다.\n4단계: (4) 조건 분석\n- 대각선 조건: 길이가 같고 서로 다른 것을 이등분하지만 수직은 아님\n- 사각형: 직사각형\n- 이유: 두 대각선이 길이가 같고 서로 다른 것을 이등분하므로 직사각형이다.\n\n정리하면 다음과 같다.\n(1) 두 대각선이 서로 다른 것을 수직이등분하므로, 마름모이다.\n(2) 두 대각선이 길이가 같고 서로 다른 것을 수직이등분하므로, 정사각형이다.\n(3) 두 대각선이 서로 다른 것을 이등분하므로, 평행사변형이다.\n(4) 두 대각선이 길이가 같고 서로 다른 것을 이등분하므로, 직사각형이다.\n\n따라서 (1) 마름모, (2) 정사각형, (3) 평행사변형, (4) 직사각형이다."
+    "solution": "주어진 대각선의 성질 분류 다이어그램에서 (1)~(4)에 해당하는 사각형의 이름을 보기(평행사변형, 직사각형, 마름모, 정사각형)에서 고르고, 그 이유를 완전한 문장으로 설명한다.\n\n사각형의 대각선의 성질을 이용한다.\n- 여러 가지 사각형의 대각선 성질:\n  1) 평행사변형: 두 대각선이 서로 다른 것을 이등분한다.\n  2) 직사각형: 두 대각선의 길이가 같고 서로 다른 것을 이등분한다.\n  3) 마름모: 두 대각선이 서로 다른 것을 수직이등분한다.\n  4) 정사각형: 두 대각선의 길이가 같고 서로 다른 것을 수직이등분한다.\n\n1단계: (1) 조건 분석\n- 대각선 조건: 수직이등분하지만 길이는 같지 않음\n- 사각형: 마름모\n- 이유: 두 대각선이 서로 다른 것을 수직이등분하므로 마름모이다.\n2단계: (2) 조건 분석\n- 대각선 조건: 길이가 같고 서로 다른 것을 수직이등분함\n- 사각형: 정사각형\n- 이유: 두 대각선이 길이가 같고 서로 다른 것을 수직이등분하므로 정사각형이다.\n3단계: (3) 조건 분석\n- 대각선 조건: 서로 다른 것을 이등분하지만 수직이 아니고 길이가 같지 않음\n- 사각형: 평행사변형\n- 이유: 두 대각선이 서로 다른 것을 이등분하므로 평행사변형이다.\n4단계: (4) 조건 분석\n- 대각선 조건: 길이가 같고 서로 다른 것을 이등분하지만 수직은 아님\n- 사각형: 직사각형\n- 이유: 두 대각선이 길이가 같고 서로 다른 것을 이등분하므로 직사각형이다.\n\n정리하면 다음과 같다.\n(1) 두 대각선이 서로 다른 것을 수직이등분하므로, 마름모이다.\n(2) 두 대각선이 길이가 같고 서로 다른 것을 수직이등분하므로, 정사각형이다.\n(3) 두 대각선이 서로 다른 것을 이등분하므로, 평행사변형이다.\n(4) 두 대각선이 길이가 같고 서로 다른 것을 이등분하므로, 직사각형이다.\n\n따라서 (1) 마름모, (2) 정사각형, (3) 평행사변형, (4) 직사각형이다.",
+    "solutionImage": "assets/images/20_금당중_2학기_중간_중2_수학/q24-solution.svg",
+    "solutionImageAlt": "대각선의 서로 이등분, 수직 여부, 길이 같음을 통해 마름모·정사각형·평행사변형·직사각형을 구별한다.",
+    "solutionImageCaption": "대각선의 서로 이등분, 수직 여부, 길이 같음을 통해 마름모·정사각형·평행사변형·직사각형을 구별한다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 94
   }
 ]
 };

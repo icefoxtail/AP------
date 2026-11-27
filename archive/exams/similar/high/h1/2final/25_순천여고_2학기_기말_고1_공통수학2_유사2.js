@@ -166,8 +166,8 @@ window.questionBank = [
     "sourceQid": 4,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사2/q4-solution.svg",
-    "solutionImageAlt": "해설 그림: ",
-    "solutionImageCaption": "",
+    "solutionImageAlt": "p의 진리집합 P={(0,0)}는 R에, R은 Q에 포함된다. (1,1)은 Q에 속하지만 R에는 속하지 않으므로 R은 Q의 필요조건이 아니다. ㄱ, ㄷ, ㄹ이 참이다.",
+    "solutionImageCaption": "p의 진리집합 P={(0,0)}는 R에, R은 Q에 포함된다. (1,1)은 Q에 속하지만 R에는 속하지 않으므로 R은 Q의 필요조건이 아니다. ㄱ, ㄷ, ㄹ이 참이다.",
     "solutionImageSize": "full"
   },
   {
@@ -385,7 +385,9 @@ window.questionBank = [
     "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사2/q9-solution.svg",
     "solutionImageAlt": "해설 그림: ",
     "solutionImageCaption": "",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "X={1,2,3,4}에서 X로의 두 함수 f, g. 왼쪽에서 가운데로 향하는 파란 화살표는 f, 가운데에서 오른쪽으로 향하는 주황 화살표는 g이다.",
+    "imageCaption": "X={1,2,3,4}에서 X로의 두 함수 f, g. 왼쪽에서 가운데로 향하는 파란 화살표는 f, 가운데에서 오른쪽으로 향하는 주황 화살표는 g이다."
   },
   {
     "id": 10,
@@ -733,8 +735,8 @@ window.questionBank = [
     "sourceQid": 17,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사2/q17-solution.svg",
-    "solutionImageAlt": "해설 그림: ",
-    "solutionImageCaption": "",
+    "solutionImageAlt": "k=4에서는 무리함수의 끝점 (4,0)과 (3,1)에서 두 번 만난다. k=17/4에서는 (15/4,1/2)에서 접해 한 번만 만난다. 따라서 두 교점이 생기는 범위는 4≤k<17/4이다.",
+    "solutionImageCaption": "k=4에서는 무리함수의 끝점 (4,0)과 (3,1)에서 두 번 만난다. k=17/4에서는 (15/4,1/2)에서 접해 한 번만 만난다. 따라서 두 교점이 생기는 범위는 4≤k<17/4이다.",
     "solutionImageSize": "full"
   },
   {
@@ -858,8 +860,8 @@ window.questionBank = [
     "sourceQid": 20,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사2/q20-solution.svg",
-    "solutionImageAlt": "해설 그림: ",
-    "solutionImageCaption": "",
+    "solutionImageAlt": "조건을 만족하는 한 예 (a,b,c)=(1,3,2)의 함수 y=2−√(x+3)이다. 시작점 (−3,2), 양의 y절편, x절편 (1,0)이 보여 제1·2·4사분면을 지나며, 정의역 x≥−3과 공역 y≤2를 만족한다.",
+    "solutionImageCaption": "조건을 만족하는 한 예 (a,b,c)=(1,3,2)의 함수 y=2−√(x+3)이다. 시작점 (−3,2), 양의 y절편, x절편 (1,0)이 보여 제1·2·4사분면을 지나며, 정의역 x≥−3과 공역 y≤2를 만족한다.",
     "solutionImageSize": "full"
   },
   {
@@ -897,8 +899,8 @@ window.questionBank = [
     "sourceQid": 21,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사2/q21-solution.svg",
-    "solutionImageAlt": "해설 그림: ",
-    "solutionImageCaption": "",
+    "solutionImageAlt": "역함수 y=2−√(x−1)는 (1,2)에서 시작한다. 직선 y=4−x와의 교점은 x≥2 조건을 만족하는 x=(5+√5)/2 한 개뿐이다. 제곱에서 나온 다른 근은 x<2이므로 제외한다.",
+    "solutionImageCaption": "역함수 y=2−√(x−1)는 (1,2)에서 시작한다. 직선 y=4−x와의 교점은 x≥2 조건을 만족하는 x=(5+√5)/2 한 개뿐이다. 제곱에서 나온 다른 근은 x<2이므로 제외한다.",
     "solutionImageSize": "full"
   }
 ];

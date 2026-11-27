@@ -222,11 +222,14 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 이등변삼각형의 높이와 넓이 조건으로 점 $C$의 위치를 정한 뒤 내분점 $P$와의 거리를 구한다.\n조건 정리: $AC=BC$이므로 $C$에서 $AB$에 내린 높이의 발은 $AB$의 중점이다.\n정석 풀이: $AB=10m$이고 넓이가 $30m^2$이므로 높이를 $h$라 하면 $\\dfrac12\\cdot10\\cdot h=30$에서 $h=6m$이다. $A=(0,0)$, $B=(10,0)$으로 두면 그림과 같이 $C=(5,-6)$으로 둘 수 있다. $AP:PB=3:2$이므로 $P=(6,0)$이다. 따라서 $CP=\\sqrt{(6-5)^2+\\{0-(-6)\\}^2}=\\sqrt{37}m$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/25_순천여고_2학기_중간_고1_공통수학2_강화유사문제/q08.png",
+    "image": "assets/images/25_순천여고_2학기_중간_고1_공통수학2_강화유사문제/q8-problem.svg",
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
     "subUnit": "평면좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "imageAlt": "원본 도식의 등변 삼각형에서 AB=10m, AC=BC, 넓이 30m², AP:PB=3:2를 표기한다. 좌표 A=(0,0), B=(10,0), C=(5,−6)은 조건을 만족하는 대표 배치이며 CP의 길이는 드러내지 않는다.",
+    "imageCaption": "원본 도식의 등변 삼각형에서 AB=10m, AC=BC, 넓이 30m², AP:PB=3:2를 표기한다. 좌표 A=(0,0), B=(10,0), C=(5,−6)은 조건을 만족하는 대표 배치이며 CP의 길이는 드러내지 않는다.",
+    "imageSize": "full"
   },
   {
     "id": 9,

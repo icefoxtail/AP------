@@ -128,15 +128,15 @@ window.questionBank = [
     "answer": "②",
     "solution": "$\\triangle ABC$는 $AB=AC=6$, $\\angle BAC=120^\\circ$이므로 $\\angle B=30^\\circ$이고, 점 $A$에서 $BC$까지의 거리는 $6\\sin30^\\circ=3$이다.\n$OA\\perp BC$이고 $OA=6$이므로 점 $O$에서 $BC$까지의 거리는 $6-3=3$이다.\n$OD\\perp AB$이므로 $OD$와 $AB$의 교점을 $M$이라 하면 $AM=3$이고, $OM=\\sqrt{6^2-3^2}=3\\sqrt3$이다.\n직각삼각형 $AOM$에서 $\\cos\\angle AOM=\\dfrac{3\\sqrt3}{6}=\\dfrac{\\sqrt3}{2}$이므로 $\\angle AOM=30^\\circ$이다.\n$OA\\perp BC$이므로 직각삼각형 $OEA'$($A'$은 $O$에서 $BC$에 내린 수선의 발)에서 $\\angle A'OE=30^\\circ$이고 $OA'=3$이므로\n$OE=\\dfrac{3}{\\cos30^\\circ}=2\\sqrt3$이다.\n따라서 정답은 ②이다.",
     "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q3-solution-v2.svg",
-    "solutionImageSize": "medium",
-    "image": "assets/images/25_연향중_2학기_기말_중3_기출/q3.png",
+    "solutionImageSize": "full",
+    "image": "assets/images/25_연향중_2학기_기말_중3_기출/q3-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageLayout": "fullwidth",
-    "solutionImageAlt": "해설 그림: 원 O에 내접하는 이등변삼각형 ABC. 중심 O에서 AB에 내린 수선 OD가 AB와 E에서 직각으로 만나고, AE=BE=3(같은 길이, 주황), OA=6이며 직각삼각형 OEA가 파랑으로 칠해져 있다.",
-    "solutionImageCaption": "AE=BE=3, OA=6인 직각삼각형 OEA에서 OE²=6²−3²=27이므로 OE=3√3 (정답 ③)"
+    "solutionImageAlt": "OD와 현 BC의 교점 E를 정확히 표시하고, OD와 AB의 교점 M을 구분하여 OE의 길이를 구한다.",
+    "solutionImageCaption": "OD와 현 BC의 교점 E를 정확히 표시하고, OD와 AB의 교점 M을 구분하여 OE의 길이를 구한다."
   ,
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_CHORD_LENGTH",
@@ -151,7 +151,10 @@ window.questionBank = [
     "decisiveStep": "중심에서 현에 내린 수선이 현을 이등분하므로 반현과 반지름으로 중심거리를 피타고라스 계산한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원에 내접하는 이등변삼각형 ABC에서 OD는 AB에 수직이며 E는 OD와 BC의 교점이다.",
+    "imageCaption": "원에 내접하는 이등변삼각형 ABC에서 OD는 AB에 수직이며 E는 OD와 BC의 교점이다.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -179,15 +182,15 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "한 점 $P$에서 원에 그은 두 접선의 길이는 같으므로 $PA=PB$이다. 또한 $OP$는 $\\angle APB$를 이등분하므로\n$\\angle BPO=\\dfrac{60^\\circ}{2}=30^\\circ$\n이다. 반지름 $OB$는 접선 $PB$에 수직이므로 $\\triangle PBO$는 직각삼각형이다.\n$\\tan30^\\circ=\\dfrac{OB}{PB}=\\dfrac{3}{PB}$\n$\\dfrac{1}{\\sqrt3}=\\dfrac{3}{PB}$\n$PB=3\\sqrt3$\n이다. 따라서 $PA=3\\sqrt3$이고\n$PA+PB=6\\sqrt3\\,\\mathrm{cm}$\n이다. 그러므로 정답은 ⑤이다.",
     "solutionImage": "assets/images/25_연향중_2학기_기말_중3_기출/q4-solution-v2.svg",
-    "solutionImageSize": "medium",
+    "solutionImageSize": "full",
     "image": "assets/images/25_연향중_2학기_기말_중3_기출/q4.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageLayout": "fullwidth",
-    "solutionImageAlt": "해설 그림: 점 P에서 원 O에 그은 두 접선 PA, PB(같은 길이, 분홍)와 OP가 60°를 30°씩 둘로 나누고 접점 B에서 반지름 OB=3cm가 접선과 직각을 이루는 그림.",
-    "solutionImageCaption": "한 점 P에서 원에 그은 두 접선의 길이는 같으므로 PA=PB이고, OP는 ∠APB를 이등분하므로 ∠BPO=30°이다. OB⊥PB이므로 tan30°=3/PB에서 PB=3√3 cm이고 PA+PB=6√3 cm이다. 정답 ⑤."
+    "solutionImageAlt": "한 점 P에서 그은 두 접선 PA와 PB는 길이가 같으며 PO는 60°인 꼭짓각을 30°로 이등분한다.",
+    "solutionImageCaption": "한 점 P에서 그은 두 접선 PA와 PB는 길이가 같으며 PO는 60°인 꼭짓각을 30°로 이등분한다."
   ,
     "problemTypeKey": "PT_CIRCLE_TANGENT",
     "templateKey": "TM_TANGENT_LENGTH",

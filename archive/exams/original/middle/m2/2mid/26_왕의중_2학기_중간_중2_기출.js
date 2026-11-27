@@ -154,7 +154,7 @@ window.questionBank = [
   {
     "id": 4,
     "imageSize": "full",
-    "imageAlt": "C에서 직각인 삼각형 ABC의 변 AB는 10, BC는 8, AC는 6이다. A의 이등분선이 밑변을 D에서 만나며 D에서 AB로 내린 수선의 발이 E이다.",
+    "imageAlt": "AB=10, BC=8, AC=6인 직각삼각형에서 AD가 A의 각을 이등분하고 DE가 AB에 수직이다. 넓이를 구하는 작은 삼각형 BDE만 옅게 구분한다.",
     "level": "중",
     "category": "삼각형의 성질",
     "originalCategory": "삼각형의 성질",
@@ -202,12 +202,13 @@ window.questionBank = [
     "solutionImageCaption": "△ACD≅△AED로 얻는 길이와 색칠한 △BDE를 보여 준다.",
     "solutionImageSize": "medium",
     "primaryMethod": "각의 이등분선의 대변 분할비",
-    "decisiveStep": "RHA 합동으로 높이를 대응시키고 각 이등분선의 변 분할비로 그 높이를 수치화한다."
+    "decisiveStep": "RHA 합동으로 높이를 대응시키고 각 이등분선의 변 분할비로 그 높이를 수치화한다.",
+    "imageCaption": "AB=10, BC=8, AC=6인 직각삼각형에서 AD가 A의 각을 이등분하고 DE가 AB에 수직이다. 넓이를 구하는 작은 삼각형 BDE만 옅게 구분한다."
   },
   {
     "id": 5,
     "imageSize": "full",
-    "imageAlt": "삼각형 ABC의 외심이 O이다. O에서 AB, BC, AC로 내린 세 수선은 D, E, F에서 각 변을 만난다. O에서 세 꼭짓점을 잇는 선도 보인다.",
+    "imageAlt": "삼각형 ABC의 외심 O에서 각 변에 내린 수선의 발 D, E, F와 세 꼭짓점으로 잇는 선분을 표시한다.",
     "level": "중",
     "category": "삼각형의 성질",
     "originalCategory": "삼각형의 성질",
@@ -254,12 +255,13 @@ window.questionBank = [
     "solutionImageCaption": "외심의 OA=OB=OC와 합동인 △OFA, △OFC를 보여 준다.",
     "solutionImageSize": "medium",
     "primaryMethod": "외심의 정의와 수직이등분선",
-    "decisiveStep": "꼭짓점까지의 등거리와 현의 수직이등분 성질을 이용해 보기의 참·거짓을 판별한다."
+    "decisiveStep": "꼭짓점까지의 등거리와 현의 수직이등분 성질을 이용해 보기의 참·거짓을 판별한다.",
+    "imageCaption": "삼각형 ABC의 외심 O에서 각 변에 내린 수선의 발 D, E, F와 세 꼭짓점으로 잇는 선분을 표시한다."
   },
   {
     "id": 6,
     "imageSize": "full",
-    "imageAlt": "삼각형 ABC에서 A에서 외심 O를 지나 밑변 BC의 D까지 이었다. B에서 O를 지나 오른쪽 변 AC의 E까지 이었다. 오른쪽 밑각 ACB는 64도이다.",
+    "imageAlt": "외심 O를 지나도록 AD, BE를 연장해 각각 BC의 D, AC의 E와 만나며 C의 각은 64°로 표시한다.",
     "level": "상",
     "category": "삼각형의 성질",
     "originalCategory": "삼각형의 성질",
@@ -307,7 +309,8 @@ window.questionBank = [
     "solutionImageCaption": "OA=OB인 이등변삼각형 AOB의 각 128°, 26°, 26°를 보여 준다.",
     "solutionImageSize": "medium",
     "primaryMethod": "외심 중심각과 보조삼각형 내각합",
-    "decisiveStep": "외심의 중심각으로 밑각을 정한 뒤 두 삼각형의 내각 합을 더해 미지의 원래 두 각을 소거한다."
+    "decisiveStep": "외심의 중심각으로 밑각을 정한 뒤 두 삼각형의 내각 합을 더해 미지의 원래 두 각을 소거한다.",
+    "imageCaption": "외심 O를 지나도록 AD, BE를 연장해 각각 BC의 D, AC의 E와 만나며 C의 각은 64°로 표시한다."
   },
   {
     "id": 7,
@@ -756,8 +759,8 @@ window.questionBank = [
   },
   {
     "id": 17,
-    "imageSize": "large",
-    "imageAlt": "아래 가로선에 B, C, E가 차례로 놓인다. 위쪽에 A와 D가 있고 AC와 DE는 평행하다. A에서 E, D에서 C로도 선을 이었다.",
+    "imageSize": "full",
+    "imageAlt": "B, C, E가 한 직선 위에 있고 BC:CE=3:2이며 AC와 DE는 평행하다. 삼각형 ABC의 넓이 15 cm²에서 출발한다.",
     "level": "중",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -804,7 +807,8 @@ window.questionBank = [
     "solutionImageCaption": "밑변의 비와 평행선으로 △ACE, △ACD의 넓이를 구하는 과정을 보여 준다. (넓이의 단위: cm²)",
     "solutionImageSize": "medium",
     "primaryMethod": "평행선 사이 등적 변형",
-    "decisiveStep": "같은 높이의 밑변비로 한 넓이를 구하고 평행선 사이 같은 밑변·높이로 목표 삼각형에 옮긴다."
+    "decisiveStep": "같은 높이의 밑변비로 한 넓이를 구하고 평행선 사이 같은 밑변·높이로 목표 삼각형에 옮긴다.",
+    "imageCaption": "B, C, E가 한 직선 위에 있고 BC:CE=3:2이며 AC와 DE는 평행하다. 삼각형 ABC의 넓이 15 cm²에서 출발한다."
   },
   {
     "id": 18,
@@ -982,8 +986,8 @@ window.questionBank = [
   },
   {
     "id": 22,
-    "imageSize": "large",
-    "imageAlt": "BC의 중점은 M이다. M에서 AB, AC에 내린 수선은 각각 D, E에서 만나며 MD와 ME는 같은 길이이다. 왼쪽 밑각은 32도이다.",
+    "imageSize": "full",
+    "imageAlt": "M은 BC의 중점이고 MD와 ME는 각 변에 수직이며 서로 같다. B의 각은 32°이고 A의 각은 미지이다.",
     "level": "중",
     "category": "삼각형의 성질",
     "originalCategory": "삼각형의 성질",
@@ -1024,12 +1028,13 @@ window.questionBank = [
     "solutionImageCaption": "색칠한 두 직각삼각형이 RHS 합동이어서 ∠C=∠B임을 보여 준다.",
     "solutionImageSize": "medium",
     "primaryMethod": "RHS 합동으로 꼭짓각 연결",
-    "decisiveStep": "중점에서 얻은 같은 빗변과 같은 수선 길이로 두 직각삼각형의 대응각을 정한다."
+    "decisiveStep": "중점에서 얻은 같은 빗변과 같은 수선 길이로 두 직각삼각형의 대응각을 정한다.",
+    "imageCaption": "M은 BC의 중점이고 MD와 ME는 각 변에 수직이며 서로 같다. B의 각은 32°이고 A의 각은 미지이다."
   },
   {
     "id": 23,
     "imageSize": "full",
-    "imageAlt": "접기 전 직각삼각형의 AB는 16 cm, AC는 20 cm이다. 점 A를 가로변 BC의 F로 옮겨 접었다. 접힌 경계는 DE이고 FD, FE가 보인다. 각 BDF와 DFE에 같은 색의 각 표시를 했다.",
+    "imageAlt": "직각삼각형 종이를 A가 밑변의 F에 오도록 접어 DE를 접는 선으로 나타내며 ∠BDF와 ∠DFE는 동일한 각 호로 표시한다.",
     "level": "상",
     "category": "삼각형의 성질",
     "originalCategory": "삼각형의 성질",
@@ -1070,12 +1075,13 @@ window.questionBank = [
     "solutionImageCaption": "접힌 선에서 생기는 같은 변과 같은 각을 보여 준다.",
     "solutionImageSize": "medium",
     "primaryMethod": "접기 각 보존으로 AA 닮음 구성",
-    "decisiveStep": "접기로 보존되는 각과 주어진 같은 각을 연결하여 작은 직각삼각형과 원삼각형의 AA 닮음을 세운다."
+    "decisiveStep": "접기로 보존되는 각과 주어진 같은 각을 연결하여 작은 직각삼각형과 원삼각형의 AA 닮음을 세운다.",
+    "imageCaption": "직각삼각형 종이를 A가 밑변의 F에 오도록 접어 DE를 접는 선으로 나타내며 ∠BDF와 ∠DFE는 동일한 각 호로 표시한다."
   },
   {
     "id": 24,
     "imageSize": "full",
-    "imageAlt": "마름모 ABCD에서 A의 두 수선이 BC의 P와 CD의 Q에 닿는다. 두 수선의 발을 가로선으로 이었다. 왼쪽 각 B는 64도이고 AP와 PQ가 만드는 각은 x이다.",
+    "imageAlt": "마름모 ABCD의 B 각은 64°이며 A에서 BC와 CD에 내린 두 수선 AP, AQ가 PQ와 만나는 P의 미지각 x를 보인다.",
     "level": "중",
     "category": "삼각형의 성질",
     "originalCategory": "삼각형의 성질",
@@ -1117,6 +1123,7 @@ window.questionBank = [
     "solutionImageCaption": "색칠한 두 직각삼각형의 합동으로 AP=AQ와 ∠PAQ=64°를 보여 준다.",
     "solutionImageSize": "medium",
     "primaryMethod": "RHA 합동으로 이등변삼각형 구성",
-    "decisiveStep": "마름모에서 같은 빗변·예각을 얻어 수선 삼각형을 RHA 합동으로 만들고 두 수선의 같은 길이를 이용한다."
+    "decisiveStep": "마름모에서 같은 빗변·예각을 얻어 수선 삼각형을 RHA 합동으로 만들고 두 수선의 같은 길이를 이용한다.",
+    "imageCaption": "마름모 ABCD의 B 각은 64°이며 A에서 BC와 CD에 내린 두 수선 AP, AQ가 PQ와 만나는 P의 미지각 x를 보인다."
   }
 ];

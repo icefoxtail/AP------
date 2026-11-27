@@ -139,7 +139,11 @@ window.questionBank = [
     "decisiveStep": "반지름1인 사분원의 점 좌표를 cos·sin으로 읽고 여각 관계 및 sin/cos의 비로 tan 근삿값을 비교한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "반지름 1인 사분원에서 42°의 동경과 B의 0.74·0.67, D의 높이 0.90 안내 점선을 원본대로 보인다.",
+    "solutionImageCaption": "반지름 1인 사분원에서 42°의 동경과 B의 0.74·0.67, D의 높이 0.90 안내 점선을 원본대로 보인다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 4,
@@ -374,7 +378,11 @@ window.questionBank = [
     "decisiveStep": "내각합으로45도를 정하고 보조수선 높이를 sin30으로 구한 뒤45도 직각이등변삼각형에서 목표변을 복원한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "BC=20, ∠B=30°, ∠C=105°와 보조 높이 CH=10, ∠A=45°, CH⊥AB를 원본 각·길이 그대로 보인다.",
+    "solutionImageCaption": "BC=20, ∠B=30°, ∠C=105°와 보조 높이 CH=10, ∠A=45°, CH⊥AB를 원본 각·길이 그대로 보인다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 9,
@@ -456,8 +464,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q10-solution.svg",
-    "solutionImageAlt": "해설 그림: 평행사변형 ABCD와 밑변 BC에 내린 수선 AH, ∠B=45° 및 변 길이.",
-    "solutionImageCaption": "BC=6√2 cm, AH=7√2/2 cm이므로 넓이는 BC×AH=42 cm²이다. 정답: ④",
+    "solutionImageAlt": "평행사변형 ABCD에 높이 AH를 점선으로 표시하고, 내부는 무채움으로 둔다.",
+    "solutionImageCaption": "평행사변형 ABCD에 높이 AH를 점선으로 표시하고, 내부는 무채움으로 둔다.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
@@ -611,7 +619,10 @@ window.questionBank = [
     "decisiveStep": "좌표에서 세 변의 제곱을 구해 등변과 피타고라스의 역을 확인하여45도 직각이등변삼각형을 복원하고 최종 삼각비 곱을 계산한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "A(-1,-1), B(-4,1), C(1,2)를 연결하고 축으로 내린 점선 및 A의 직각과 두 같은 변을 보인다.",
+    "solutionImageCaption": "A(-1,-1), B(-4,1), C(1,2)를 연결하고 축으로 내린 점선 및 A의 직각과 두 같은 변을 보인다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -645,8 +656,8 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q14-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 반지름 7 cm인 원, 길이 8 cm인 현 AB, 현의 중점 M과 중심 O에서 내린 수선 OM.",
-    "solutionImageCaption": "직각삼각형 OAM에서 OM=√(7²−4²)=√33 cm이다. 정답: ⑤",
+    "solutionImageAlt": "반지름 7 cm인 원에서 현 AB의 중점 M에 내린 수선과 직각삼각형 OAM을 보인다.",
+    "solutionImageCaption": "반지름 7 cm인 원에서 현 AB의 중점 M에 내린 수선과 직각삼각형 OAM을 보인다.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
@@ -707,7 +718,10 @@ window.questionBank = [
     "decisiveStep": "반현6을 이용해 원호까지 높이MC3을 먼저 복원하고 중심거리x와 반지름x+3의 피타고라스 식에서 중심거리를 정한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "현 AB=12 cm, AC=3√5 cm와 중심 수선 OM, 중점 M 및 MC=3 cm를 한 원 안에 표시한다.",
+    "solutionImageCaption": "현 AB=12 cm, AC=3√5 cm와 중심 수선 OM, 중점 M 및 MC=3 cm를 한 원 안에 표시한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -752,7 +766,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "접점 두 직각과 사각형 내각합으로 작은 중심각140도를 정하고 색칠한 큰 부채꼴220도를 선택하여 넓이를 구한다.",
-    "decisiveStep": "접점 두 직각과 사각형 내각합으로 작은 중심각140도를 정하고 색칠한 큰 부채꼴220도를 선택하여 넓이를 구한다."
+    "decisiveStep": "접점 두 직각과 사각형 내각합으로 작은 중심각140도를 정하고 색칠한 큰 부채꼴220도를 선택하여 넓이를 구한다.",
+    "solutionImageAlt": "접선 PA·PB 사이 각 40°와 원의 긴 부채꼴 220°만 색칠해 넓이의 대상 영역을 표시한다.",
+    "solutionImageCaption": "접선 PA·PB 사이 각 40°와 원의 긴 부채꼴 220°만 색칠해 넓이의 대상 영역을 표시한다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 17,
@@ -882,8 +900,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q19-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 삼각형의 내접원과 세 접점 D, E, F가 보인다. 같은 꼭짓점의 두 접선은 같은 색과 같은 개수의 눈금으로 표시했다. A는 파란색 한 눈금, B는 주황색 두 눈금, C는 초록색 세 눈금이다.",
-    "solutionImageCaption": "CF=CE=8−5/2=11/2 cm이다. 정답: ③",
+    "solutionImageAlt": "변 길이 6·8·9 cm인 삼각형의 내접원과 D·E·F 접점, 접선 길이 눈금·직각을 원본대로 표시한다.",
+    "solutionImageCaption": "변 길이 6·8·9 cm인 삼각형의 내접원과 D·E·F 접점, 접선 길이 눈금·직각을 원본대로 표시한다.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_CIRCLE_TANGENT",
@@ -896,7 +914,8 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "각 꼭짓점의 두 접선길이를 같게 놓아 미지 접선조각 x로 나머지 변을 표현하고 한 일차식으로 CF를 구한다.",
-    "decisiveStep": "각 꼭짓점의 두 접선길이를 같게 놓아 미지 접선조각 x로 나머지 변을 표현하고 한 일차식으로 CF를 구한다."
+    "decisiveStep": "각 꼭짓점의 두 접선길이를 같게 놓아 미지 접선조각 x로 나머지 변을 표현하고 한 일차식으로 CF를 구한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 20,
@@ -941,7 +960,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "등접선과 직각 꼭짓점의 반지름 정사각형 관계로 두 직각변을r+6,r+9로 표현하고 피타고라스 이차식의 양수근을 골라 원넓이를 구한다.",
-    "decisiveStep": "등접선과 직각 꼭짓점의 반지름 정사각형 관계로 두 직각변을r+6,r+9로 표현하고 피타고라스 이차식의 양수근을 골라 원넓이를 구한다."
+    "decisiveStep": "등접선과 직각 꼭짓점의 반지름 정사각형 관계로 두 직각변을r+6,r+9로 표현하고 피타고라스 이차식의 양수근을 골라 원넓이를 구한다.",
+    "solutionImageAlt": "직각삼각형 ABC의 내접원과 세 접점 D·E·F, 같은 접선 길이와 반지름의 직각을 표시한다.",
+    "solutionImageCaption": "직각삼각형 ABC의 내접원과 세 접점 D·E·F, 같은 접선 길이와 반지름의 직각을 표시한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -983,7 +1005,10 @@ window.questionBank = [
     "decisiveStep": "정육면체의 면대각선과 공간대각선을 복원하고 수선이 만든 직각삼각형의 닮음으로 목표각을 큰 삼각형의 각에 옮긴 뒤 세 삼각비를 조합한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "모서리 8인 정육면체에서 BH로 내린 수선 DN과 직각, ∠NDH=x를 3차원 구조 그대로 표시한다.",
+    "solutionImageCaption": "모서리 8인 정육면체에서 BH로 내린 수선 DN과 직각, ∠NDH=x를 3차원 구조 그대로 표시한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1011,8 +1036,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q22-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: △ABD의 연장선 높이 2 cm와 △BCD의 높이 3√3 cm를 각각 표시한 두 패널.",
-    "solutionImageCaption": "[△ABD]=2√3 cm², [△BCD]=12√3 cm²이므로 전체 넓이는 14√3 cm²이다.",
+    "solutionImageAlt": "사각형 ABCD를 대각선 BD로 나누고 C에서 주어진 각과 D에서 BC에 내린 수선 DH를 표시한다.",
+    "solutionImageCaption": "사각형 ABCD를 대각선 BD로 나누고 C에서 주어진 각과 D에서 BC에 내린 수선 DH를 표시한다.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
@@ -1053,8 +1078,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q23-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 두 동심원, 현 AB와 중심 수선 OM, M-D-B 순서 및 DB=√2 cm.",
-    "solutionImageCaption": "MB=√(6²−2²)=4√2이므로 MD=3√2, OD=√(2²+(3√2)²)=√22 cm이다.",
+    "solutionImageAlt": "동심원 두 개의 공통 현 위에서 M·D·B의 순서와 DB, OM을 보이고 직각삼각형 OMD를 점선으로 강조한다.",
+    "solutionImageCaption": "동심원 두 개의 공통 현 위에서 M·D·B의 순서와 DB, OM을 보이고 직각삼각형 OMD를 점선으로 강조한다.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
@@ -1067,6 +1092,7 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "큰 원의 반지름과 중심거리에서 반현MB를 구하고 DB를 빼 작은 원의 반현MD를 얻은 뒤 같은 높이OM의 직각삼각형으로 작은 반지름을 구한다.",
-    "decisiveStep": "큰 원의 반지름과 중심거리에서 반현MB를 구하고 DB를 빼 작은 원의 반현MD를 얻은 뒤 같은 높이OM의 직각삼각형으로 작은 반지름을 구한다."
+    "decisiveStep": "큰 원의 반지름과 중심거리에서 반현MB를 구하고 DB를 빼 작은 원의 반현MD를 얻은 뒤 같은 높이OM의 직각삼각형으로 작은 반지름을 구한다.",
+    "solutionImageScale": 90
   }
 ];

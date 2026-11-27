@@ -56,8 +56,9 @@ window.questionBank = [
     "targetChoiceSlot": 1,
     "metaRationale": "교집합의 원소와 원소 합",
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P106-109_20261023_유사50/BV-BAKBAL-H-COM2-P107-Q01-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "두 원의 실제 원소 소속을 표시하고 공통 영역에 해당하는 원소를 확인한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "두 원의 실제 원소 소속을 표시하고 공통 영역에 해당하는 원소를 확인한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P107-Q01-S1-R1",
@@ -115,8 +116,9 @@ window.questionBank = [
     "targetChoiceSlot": 5,
     "metaRationale": "합집합의 원소와 중복 없는 합",
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P106-109_20261023_유사50/BV-BAKBAL-H-COM2-P107-Q01-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "두 원의 실제 원소 소속을 표시하고 합쳐진 영역에 해당하는 원소를 확인한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "두 원의 실제 원소 소속을 표시하고 합쳐진 영역에 해당하는 원소를 확인한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P107-Q01-S2-R1",
@@ -174,8 +176,9 @@ window.questionBank = [
     "targetChoiceSlot": 1,
     "metaRationale": "교집합의 원소와 원소 곱",
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P106-109_20261023_유사50/BV-BAKBAL-H-COM2-P107-Q01-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "두 원의 실제 원소 소속을 표시하고 공통 영역에 해당하는 원소를 확인한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "두 원의 실제 원소 소속을 표시하고 공통 영역에 해당하는 원소를 확인한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P107-Q02-T1-R1",
@@ -233,8 +236,9 @@ window.questionBank = [
     "targetChoiceSlot": 3,
     "metaRationale": "정수 구간 교집합의 원소 개수",
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P106-109_20261023_유사50/BV-BAKBAL-H-COM2-P107-Q02-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "두 정수 범위의 겹치는 구간과 그 안의 정수를 표시한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "두 정수 범위의 겹치는 구간과 그 안의 정수를 표시한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P107-Q02-S1-R1",
@@ -292,8 +296,9 @@ window.questionBank = [
     "targetChoiceSlot": 5,
     "metaRationale": "정수 구간 교집합의 원소 합",
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P106-109_20261023_유사50/BV-BAKBAL-H-COM2-P107-Q02-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "두 정수 범위의 겹치는 구간과 그 안의 정수를 표시한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "두 정수 범위의 겹치는 구간과 그 안의 정수를 표시한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P107-Q02-S2-R1",
@@ -351,8 +356,9 @@ window.questionBank = [
     "targetChoiceSlot": 1,
     "metaRationale": "정수 구간 교집합의 원소 곱",
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P106-109_20261023_유사50/BV-BAKBAL-H-COM2-P107-Q02-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "두 정수 범위의 겹치는 구간과 그 안의 정수를 표시한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "두 정수 범위의 겹치는 구간과 그 안의 정수를 표시한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P107-Q03-T1-R1",
@@ -410,8 +416,9 @@ window.questionBank = [
     "targetChoiceSlot": 5,
     "metaRationale": "서로소인 부분집합의 개수",
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P106-109_20261023_유사50/BV-BAKBAL-H-COM2-P107-Q03-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "A와 서로소인 부분집합에 들어갈 수 있는 원소는 U에서 A를 뺀 영역에 있다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "A와 서로소인 부분집합에 들어갈 수 있는 원소는 U에서 A를 뺀 영역에 있다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P107-Q03-S1-R1",
@@ -469,8 +476,9 @@ window.questionBank = [
     "targetChoiceSlot": 5,
     "metaRationale": "서로소인 공집합 아닌 부분집합 개수",
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P106-109_20261023_유사50/BV-BAKBAL-H-COM2-P107-Q03-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "A와 서로소인 부분집합에 들어갈 수 있는 원소는 U에서 A를 뺀 영역에 있다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "A와 서로소인 부분집합에 들어갈 수 있는 원소는 U에서 A를 뺀 영역에 있다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P107-Q03-S2-R1",
@@ -760,8 +768,9 @@ window.questionBank = [
     "targetChoiceSlot": 4,
     "metaRationale": "조건을 원소·부분집합 관계 또는 구간/매개변수 조건으로 변환한 뒤 모든 후보를 확인하는 단계 수를 기준으로 판정.",
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P106-109_20261023_유사50/BV-BAKBAL-H-COM2-P107-Q05-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "B는 A를 포함하고 A는 C를 포함하며, 열린·닫힌 끝점을 구별한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "B는 A를 포함하고 A는 C를 포함하며, 열린·닫힌 끝점을 구별한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P107-Q05-S1-R1",

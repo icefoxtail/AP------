@@ -16,7 +16,7 @@ window.questionBank = [
       "$AD:EH=2:3$",
       "$CD:GH=1:2$"
     ],
-    "image": "assets/images/20_금당중_2학기_기말_중2_기출/q01.png",
+    "image": "assets/images/20_금당중_2학기_기말_중2_기출/q1-problem.svg",
     "answer": "③",
     "solution": "닮음 순서에서 $A\\leftrightarrow E$, $B\\leftrightarrow F$, $C\\leftrightarrow G$, $D\\leftrightarrow H$이다.\n\n$BC:FG=9:12=3:4$이므로 두 사각형의 대응변의 비는 $3:4$이다. 따라서 $EF=6\\times\\dfrac43=8\\text{ cm}$이고, $CD:GH=3:4$이다.\n\n각도는 대응하는 꼭짓점끼리 같다. 그림에서 $\\angle A=100^\\circ$, $\\angle C=80^\\circ$, $\\angle B=\\angle F=85^\\circ$이므로\n$\\angle D=360^\\circ-(100^\\circ+80^\\circ+85^\\circ)=95^\\circ$.\n\n따라서 $\\angle H=\\angle D=95^\\circ$이므로 옳은 설명은 ③이다.",
     "level": "중",
@@ -59,7 +59,10 @@ window.questionBank = [
       "l4": "대응변·대응각"
     },
     "primaryMethod": "닮은 사각형의 대응과 각의 합 판정",
-    "decisiveStep": "대응길이비와 대응각을 구별하고 사각형 내각합으로 마지막 대응각을 결정한다."
+    "decisiveStep": "대응길이비와 대응각을 구별하고 사각형 내각합으로 마지막 대응각을 결정한다.",
+    "imageAlt": "원본 기출 문제 그림: 닮은 사각형 ABCD와 EFGH, 6·9·12 cm, 100°·80°·85°",
+    "imageCaption": "원본 기출 문제 그림: 닮은 사각형 ABCD와 EFGH, 6·9·12 cm, 100°·80°·85°",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -76,7 +79,7 @@ window.questionBank = [
       "$10\\text{ cm}$",
       "$12\\text{ cm}$"
     ],
-    "image": "assets/images/20_금당중_2학기_기말_중2_기출/q02.png",
+    "image": "assets/images/20_금당중_2학기_기말_중2_기출/q2-problem.svg",
     "answer": "⑤",
     "solution": "$AC=AD+DC=3+9=12\\text{ cm}$이다.\n\n$\\angle A=\\angle DEC$이고 $\\angle ACB=\\angle DCE$는 공통이므로 $\\triangle ABC\\sim\\triangle EDC$이다. 대응변에서\n$AC:EC=BC:DC$\n$12:6=BC:9$\n$BC=18\\text{ cm}$.\n\n$BE=BC-EC=18-6=12\\text{ cm}$.\n따라서 정답은 ⑤이다.",
     "level": "중",
@@ -121,7 +124,10 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "imageAlt": "원본 기출 문제 그림: 삼각형 ABC에서 ∠A=∠DEC, AD=3, DC=9, EC=6",
+    "imageCaption": "원본 기출 문제 그림: 삼각형 ABC에서 ∠A=∠DEC, AD=3, DC=9, EC=6",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -138,7 +144,7 @@ window.questionBank = [
       "$\\triangle ADF\\sim\\triangle DBE$",
       "$\\triangle ADF\\sim\\triangle FEC$"
     ],
-    "image": "assets/images/20_금당중_2학기_기말_중2_기출/q03.png",
+    "image": "assets/images/20_금당중_2학기_기말_중2_기출/q3-problem.svg",
     "answer": "①",
     "solution": "D, F는 각각 $AB$, $AC$ 위의 점이다. 주어진 길이로 전체 변의 길이를 구하면\n$AB=AD+DB=9+12=21$,\n$AC=AF+FC=6+8=14$이다.\n\n따라서\n$AB:AD=21:9=7:3$,\n$AC:AF=14:6=7:3$이다.\n또한 $\\angle BAC=\\angle DAF$이다.\n두 변의 비와 그 끼인각이 각각 같으므로\n$\\triangle ABC\\sim\\triangle ADF$이다.\n따라서 옳은 설명은 ①이다.",
     "level": "상",
@@ -183,7 +189,10 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "imageAlt": "원본 기출 문제 그림: 삼각형 ABC의 D/E/F, 9·12·6·8·9·10 cm와 연결 보조선",
+    "imageCaption": "원본 기출 문제 그림: 삼각형 ABC의 D/E/F, 9·12·6·8·9·10 cm와 연결 보조선",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -200,7 +209,7 @@ window.questionBank = [
       "$\\triangle ACD=2\\triangle ABD$",
       "$\\triangle ABD\\sim\\triangle CAD$"
     ],
-    "image": "assets/images/20_금당중_2학기_기말_중2_기출/q04.png",
+    "image": "assets/images/20_금당중_2학기_기말_중2_기출/q4-problem.svg",
     "answer": "④",
     "solution": "$\\triangle ABD$, $\\triangle ACD$는 각각 $D$에서 직각이고 $AD$를 공통으로 갖는다.\n\n빗변정리에 따라\n$AD^2=BD\\cdot DC$\n$9^2=6\\cdot DC$\n$DC=\\dfrac{81}{6}=13.5\\text{ cm}$.\n\n두 삼각형의 넓이의 비는 같은 높이 $AD$에 대한 밑변의 비이므로\n$[ACD]:[ABD]=DC:BD=13.5:6=9:4$.\n\n따라서 $[ACD]=2[ABD]$라는 설명만 옳지 않다. 정답은 ④이다.",
     "level": "중",
@@ -247,7 +256,10 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "imageAlt": "원본 기출 문제 그림: 직각삼각형 ABC, A=90°, AD⊥BC, AD=9, BD=6",
+    "imageCaption": "원본 기출 문제 그림: 직각삼각형 ABC, A=90°, AD⊥BC, AD=9, BD=6",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -264,7 +276,7 @@ window.questionBank = [
       "$\\triangle ABC\\sim\\triangle ADF$",
       "$\\triangle DBE$의 둘레의 길이는 $20\\text{ cm}$이다."
     ],
-    "image": "assets/images/20_금당중_2학기_기말_중2_기출/q05.png",
+    "image": "assets/images/20_금당중_2학기_기말_중2_기출/q5-problem.svg",
     "answer": "⑤",
     "solution": "세 변의 중점을 이은 선분은 평행한 변의 절반이다. 따라서\n$DF=\\dfrac12BC=6\\text{ cm}$, $DE\\parallel AC$, $EF\\parallel AB$.\n\n$\\angle DEF$는 $DE$와 $EF$가 이루는 각이고, $\\angle EDB$는 $DE$와 $DB$가 이루는 각이다. $EF\\parallel DB$이므로 두 각은 같다.\n\n또 $AD=4$, $AF=5$, $DF=6$이고 $AB=8$, $AC=10$, $BC=12$이므로 $\\triangle ABC\\sim\\triangle ADF$.\n\n$\\triangle DBE$의 세 변은 $DB=4$, $BE=6$, $DE=5$이므로 둘레는 $4+6+5=15\\text{ cm}$이다.\n따라서 옳지 않은 설명은 ⑤이다.",
     "level": "중",
@@ -309,7 +321,10 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "imageAlt": "원본 기출 문제 그림: 삼각형 ABC의 변 중점 D/E/F와 세 중점 연결 선분, AB=8·AC=10·BC=12",
+    "imageCaption": "원본 기출 문제 그림: 삼각형 ABC의 변 중점 D/E/F와 세 중점 연결 선분, AB=8·AC=10·BC=12",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -326,7 +341,7 @@ window.questionBank = [
       "$5.5\\text{ cm}$",
       "$6\\text{ cm}$"
     ],
-    "image": "assets/images/20_금당중_2학기_기말_중2_기출/q06.png",
+    "image": "assets/images/20_금당중_2학기_기말_중2_기출/q6-problem.svg",
     "answer": "⑤",
     "solution": "세 평행선이 두 직선을 자르므로 같은 두 평행선 사이의 선분 길이의 비는 같다.\n\n왼쪽 직선에서 $l$과 $m$ 사이가 $6\\text{ cm}$이고 $l$과 $n$ 사이가 $10\\text{ cm}$이다. 오른쪽 직선에서 $l$과 $m$ 사이가 $9\\text{ cm}$이고 $l$과 $n$ 사이 길이는 $9+x$이다.\n\n$6:10=9:(9+x)$\n$6(9+x)=90$\n$54+6x=90$\n$x=6$.\n따라서 정답은 ⑤이다.",
     "level": "중",
@@ -371,7 +386,10 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "imageAlt": "원본 기출 문제 그림: 평행선 l,m,n과 대응 길이 6,10,9,x",
+    "imageCaption": "원본 기출 문제 그림: 평행선 l,m,n과 대응 길이 6,10,9,x",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -388,7 +406,7 @@ window.questionBank = [
       "$7\\text{ cm}$",
       "$8\\text{ cm}$"
     ],
-    "image": "assets/images/20_금당중_2학기_기말_중2_기출/q07.png",
+    "image": "assets/images/20_금당중_2학기_기말_중2_기출/q7-problem.svg",
     "answer": "①",
     "solution": "$G$는 삼각형의 무게중심이므로 $AM$은 중선이고 $M$은 $BC$의 중점이다. 따라서 $MC=BM=6\\text{ cm}$.\n\n$DE\\parallel BC$이므로 $\\triangle AGE\\sim\\triangle AMC$. 무게중심은 중선을 꼭짓점 쪽과 밑변 쪽으로 $2:1$로 나누어 $AG:AM=2:3$이다.\n\n따라서\n$GE:MC=AG:AM=2:3$\n$x:6=2:3$\n$x=4$.\n\n또 $AE:AC=2:3$이고 $AE=8$이므로 $AC=12$, $y=EC=12-8=4$.\n\n$2x-y=2\\cdot4-4=4$.\n따라서 정답은 ①이다.",
     "level": "중",
@@ -435,7 +453,10 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "imageAlt": "원본 기출 문제 그림: 삼각형 ABC의 무게중심 G, DE∥BC, AE=8, BM=6, GE=x, EC=y",
+    "imageCaption": "원본 기출 문제 그림: 삼각형 ABC의 무게중심 G, DE∥BC, AE=8, BM=6, GE=x, EC=y",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -453,7 +474,7 @@ window.questionBank = [
       "$15\\text{ cm}^2$",
       "$18\\text{ cm}^2$"
     ],
-    "image": "assets/images/20_금당중_2학기_기말_중2_기출/q08.png",
+    "image": "assets/images/20_금당중_2학기_기말_중2_기출/q8-problem.svg",
     "answer": "①",
     "solution": "$G$는 $\\triangle ABC$의 무게중심이므로 $G$에서 $BC$까지의 높이는 $A$에서 $BC$까지의 높이의 $\\dfrac13$이다. 따라서\n$[GBC]=\\dfrac13[ABC]=30\\text{ cm}^2$.\n\n$G'$은 $\\triangle GBC$의 무게중심이므로 $G'$에서 $BC$까지의 높이는 $G$에서 $BC$까지의 높이의 $\\dfrac13$, 즉 $A$에서 $BC$까지 높이의 $\\dfrac19$이다. $D$는 $BC$의 중점이므로 $BD=\\dfrac12BC$.\n\n따라서\n$[G'BD]=\\dfrac12\\cdot\\dfrac12BC\\cdot\\dfrac19h$\n$=\\dfrac1{18}\\left(\\dfrac12BC\\cdot h\\right)$\n$=\\dfrac1{18}[ABC]=\\dfrac{90}{18}=5\\text{ cm}^2$.\n\n정답은 ①이다.",
     "level": "상",
@@ -494,7 +515,10 @@ window.questionBank = [
       "l4": "넓이 분할"
     },
     "primaryMethod": "연속 무게중심의 높이·넓이 분할",
-    "decisiveStep": "두 무게중심에서 높이가 각각1/3이 되고 마지막 밑변도 중점에서1/2이 됨을 연결한다."
+    "decisiveStep": "두 무게중심에서 높이가 각각1/3이 되고 마지막 밑변도 중점에서1/2이 됨을 연결한다.",
+    "imageAlt": "원본 기출 문제 그림: 삼각형 ABC의 무게중심 G와 삼각형 GBC의 무게중심 G'",
+    "imageCaption": "원본 기출 문제 그림: 삼각형 ABC의 무게중심 G와 삼각형 GBC의 무게중심 G'",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -512,7 +536,7 @@ window.questionBank = [
       "$12\\text{ cm}$",
       "$13\\text{ cm}$"
     ],
-    "image": "assets/images/20_금당중_2학기_기말_중2_기출/q09.png",
+    "image": "assets/images/20_금당중_2학기_기말_중2_기출/q9-problem.svg",
     "answer": "②",
     "solution": "삼각형 $BCD$에서 $M$, $N$은 각각 $BC$, $CD$의 중점이다. 중점연결정리에 따라\n$MN=\\dfrac12BD=6\\text{ cm}$.\n\n$E$는 $AM$과 $BD$의 교점이고 $BM\\parallel AD$이다. 따라서 $\\triangle BEM\\sim\\triangle DEA$이며\n$BE:ED=BM:DA=1:2$.\n\n$BD=12\\text{ cm}$이므로\n$BE=\\dfrac13BD=4\\text{ cm}$.\n\n$BE+MN=4+6=10\\text{ cm}$.\n따라서 정답은 ②이다.",
     "level": "중",
@@ -559,7 +583,10 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "imageAlt": "원본 기출 문제 그림: 평행사변형 ABCD의 중점 M,N 및 대각선 BD와 AM,AN의 교점 E,F; BD=12",
+    "imageCaption": "원본 기출 문제 그림: 평행사변형 ABCD의 중점 M,N 및 대각선 BD와 AM,AN의 교점 E,F; BD=12",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -678,7 +705,7 @@ window.questionBank = [
       "$165\\text{ cm}^2$",
       "$180\\text{ cm}^2$"
     ],
-    "image": "assets/images/20_금당중_2학기_기말_중2_기출/q12.png",
+    "image": "assets/images/20_금당중_2학기_기말_중2_기출/q12-problem.svg",
     "answer": "⑤",
     "solution": "윗변과 아랫변의 길이는 각각 $4\\text{ cm}$, $11\\text{ cm}$이고, 두 밑변의 차는 $11-4=7\\text{ cm}$이다. 직각삼각형에서 빗변 $25\\text{ cm}$, 한 직각변 $7\\text{ cm}$이므로 높이 $h$는\n$h^2+7^2=25^2$\n$h^2=625-49=576$\n$h=24\\text{ cm}$.\n\n사다리꼴의 넓이는\n$\\dfrac{4+11}{2}\\cdot24=180\\text{ cm}^2$.\n따라서 정답은 ⑤이다.",
     "level": "중",
@@ -725,7 +752,10 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "imageAlt": "원본 기출 문제 그림: 사다리꼴 ABCD의 AD=4, BC=11, AB=25와 직각 표시",
+    "imageCaption": "원본 기출 문제 그림: 사다리꼴 ABCD의 AD=4, BC=11, AB=25와 직각 표시",
+    "imageSize": "full"
   },
   {
     "id": 13,
@@ -742,7 +772,7 @@ window.questionBank = [
       "$15\\text{ cm}$",
       "$18\\text{ cm}$"
     ],
-    "image": "assets/images/20_금당중_2학기_기말_중2_기출/q13.png",
+    "image": "assets/images/20_금당중_2학기_기말_중2_기출/q13-problem.svg",
     "answer": "④",
     "solution": "직사각형의 대각선 $BD$의 길이는\n$BD=\\sqrt{8^2+6^2}=10\\text{ cm}$이다. $O$는 대각선의 중점이므로 $DO=5\\text{ cm}$.\n\n$EF\\perp BD$이므로 $\\angle DOE=90^\\circ$. 직사각형에서 $\\angle DAB=90^\\circ$이고, $DE$는 $DA$와 같은 직선, $DO$는 $DB$와 같은 직선에 놓인다. 따라서 $\\triangle DOE\\sim\\triangle DAB$이다.\n\n대응변의 비에서\n$DO:DA=DE:DB=EO:AB=5:8$.\n\n$DE=10\\cdot\\dfrac58=\\dfrac{25}4\\text{ cm}$,\n$EO=6\\cdot\\dfrac58=\\dfrac{15}4\\text{ cm}$.\n\n따라서 둘레는\n$DE+EO+DO=\\dfrac{25}4+\\dfrac{15}4+5=15\\text{ cm}$.\n정답은 ④이다.",
     "level": "상",
@@ -789,7 +819,10 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "imageAlt": "원본 기출 문제 그림: 직사각형 ABCD, BD의 중점 O, EO⊥BD, BC=8, DC=6",
+    "imageCaption": "원본 기출 문제 그림: 직사각형 ABCD, BD의 중점 O, EO⊥BD, BC=8, DC=6",
+    "imageSize": "full"
   },
   {
     "id": 14,
@@ -1288,7 +1321,7 @@ window.questionBank = [
     ],
     "content": "[서술형2] 아래 그림에서 점 $G$와 $G'$은 각각 $\\triangle ABD$와 $\\triangle ADC$의 무게중심이다. $BC=30\\text{ cm}$일 때, $GG'$의 길이를 구하려고 한다. 물음에 답하시오. [7점]\n(1) $EF$의 길이를 구하시오. [1점]\n(2) $\\triangle AGG'$와 서로 닮음인 삼각형을 찾아, 닮음기호를 사용하여 나타내시오. [4점]\n(3) 닮음비를 이용하여 $GG'$의 길이를 구하시오. [2점]",
     "choices": [],
-    "image": "assets/images/20_금당중_2학기_기말_중2_기출/q22.png",
+    "image": "assets/images/20_금당중_2학기_기말_중2_기출/q22-problem.svg",
     "answer": "(1) 15 cm, (2) △AGG′∼△AEF, (3) 10 cm",
     "solution": "$G$는 $\\triangle ABD$의 무게중심이므로 $AE$는 중선이고 $E$는 $BD$의 중점이다. 마찬가지로 $F$는 $DC$의 중점이다.\n\n(1) 따라서\n$EF=ED+DF=\\dfrac12BD+\\dfrac12DC=\\dfrac12BC=15\\text{ cm}$.\n\n(2) $AG:AE=AG':AF=2:3$이고 $\\angle GAG'=\\angle EAF$이므로 두 변의 비와 끼인각이 같다.\n$\\triangle AGG'\\sim\\triangle AEF$.\n\n(3) 대응변의 비에서\n$GG':EF=2:3$,\n$GG'=\\dfrac23\\times15=10\\text{ cm}$.\n따라서 구하는 길이는 $10\\text{ cm}$이다.",
     "level": "상",
@@ -1335,7 +1368,10 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "imageAlt": "원본 기출 문제 그림: 삼각형 ABD·ADC의 무게중심 G,G'와 BC=30",
+    "imageCaption": "원본 기출 문제 그림: 삼각형 ABD·ADC의 무게중심 G,G'와 BC=30",
+    "imageSize": "full"
   },
   {
     "id": 23,

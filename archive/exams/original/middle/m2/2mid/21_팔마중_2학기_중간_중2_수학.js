@@ -82,7 +82,16 @@ window.examData = {
       "l4": "밑각"
     },
     "primaryMethod": "세 이등변삼각형의 밑각 관계 연결",
-    "decisiveStep": "BD=DC,DC=CA,BA=BC에서 생기는 세 밑각 관계를 D의 공선·내각합과 연결한다."
+    "decisiveStep": "BD=DC,DC=CA,BA=BC에서 생기는 세 밑각 관계를 D의 공선·내각합과 연결한다.",
+    "image": "assets/images/21_팔마중_2학기_중간_중2_수학/q2-problem.svg",
+    "imageAlt": "두 독립 등변조건을 한 눈금과 두 눈금으로 구분",
+    "imageCaption": "두 독립 등변조건을 한 눈금과 두 눈금으로 구분",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_팔마중_2학기_중간_중2_수학/q2-solution.svg",
+    "solutionImageAlt": "두 독립 등변조건을 한 눈금과 두 눈금으로 구분",
+    "solutionImageCaption": "두 독립 등변조건을 한 눈금과 두 눈금으로 구분",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 3,
@@ -113,7 +122,16 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "직각삼각형의 합동을 보장하는 조건 비교",
-    "decisiveStep": "RHS·SAS·RHA 조건과 크기를 정하지 못하는 두 각 조건을 구별한다."
+    "decisiveStep": "RHS·SAS·RHA 조건과 크기를 정하지 못하는 두 각 조건을 구별한다.",
+    "image": "assets/images/21_팔마중_2학기_중간_중2_수학/q3-problem.svg",
+    "imageAlt": "나란히 놓은 두 직각삼각형의 직각 표식",
+    "imageCaption": "나란히 놓은 두 직각삼각형의 직각 표식",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_팔마중_2학기_중간_중2_수학/q3-solution.svg",
+    "solutionImageAlt": "나란히 놓은 두 직각삼각형의 직각 표식",
+    "solutionImageCaption": "나란히 놓은 두 직각삼각형의 직각 표식",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 4,
@@ -156,7 +174,16 @@ window.examData = {
       "l4": "RHA"
     },
     "primaryMethod": "투영된 두 직각삼각형의 RHA와 넓이",
-    "decisiveStep": "두 예각의 보각관계로 DBA와 EAC의 RHA를 만들고 대응변합을 사다리꼴 높이로 옮긴다."
+    "decisiveStep": "두 예각의 보각관계로 DBA와 EAC의 RHA를 만들고 대응변합을 사다리꼴 높이로 옮긴다.",
+    "image": "assets/images/21_팔마중_2학기_중간_중2_수학/q4-problem.svg",
+    "imageAlt": "직각이등변삼각형과 직선 l 위의 두 수선의 발",
+    "imageCaption": "직각이등변삼각형과 직선 l 위의 두 수선의 발",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_팔마중_2학기_중간_중2_수학/q4-solution.svg",
+    "solutionImageAlt": "직각이등변삼각형과 직선 l 위의 두 수선의 발",
+    "solutionImageCaption": "직각이등변삼각형과 직선 l 위의 두 수선의 발",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 5,
@@ -283,7 +310,16 @@ window.examData = {
       "l4": "외심의 위치·각"
     },
     "primaryMethod": "같은 반지름이 만드는 중심각·꼭지각",
-    "decisiveStep": "OA를 이어 두 이등변삼각형의 밑각을 옮기고 중심 둘레각으로 BOC를 정한다."
+    "decisiveStep": "OA를 이어 두 이등변삼각형의 밑각을 옮기고 중심 둘레각으로 BOC를 정한다.",
+    "image": "assets/images/21_팔마중_2학기_중간_중2_수학/q7-problem.svg",
+    "imageAlt": "외접원과 중심각·원주각의 대응 위치",
+    "imageCaption": "외접원과 중심각·원주각의 대응 위치",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_팔마중_2학기_중간_중2_수학/q7-solution.svg",
+    "solutionImageAlt": "외접원과 중심각·원주각의 대응 위치",
+    "solutionImageCaption": "외접원과 중심각·원주각의 대응 위치",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 8,
@@ -326,7 +362,16 @@ window.examData = {
       "l4": "각의 이등분선과 내심"
     },
     "primaryMethod": "두 내각 이등분선의 각 관계식",
-    "decisiveStep": "A/2+B 및 A+B/2를 두 보조삼각형 내각합에서 얻고 두 식의 합으로 A+B를 복원한다."
+    "decisiveStep": "A/2+B 및 A+B/2를 두 보조삼각형 내각합에서 얻고 두 식의 합으로 A+B를 복원한다.",
+    "image": "assets/images/21_팔마중_2학기_중간_중2_수학/q8-problem.svg",
+    "imageAlt": "내심을 통과하는 AD·BE와 80도·76도의 소속",
+    "imageCaption": "내심을 통과하는 AD·BE와 80도·76도의 소속",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_팔마중_2학기_중간_중2_수학/q8-solution.svg",
+    "solutionImageAlt": "내심을 통과하는 AD·BE와 80도·76도의 소속",
+    "solutionImageCaption": "내심을 통과하는 AD·BE와 80도·76도의 소속",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 9,
@@ -370,7 +415,16 @@ window.examData = {
       "l4": "외심·내심을 이용한 복합도형"
     },
     "primaryMethod": "외접반지름과 내접반지름의 원넓이 차",
-    "decisiveStep": "직각삼각형의 빗변중점으로 외접반지름을, 세 변까지 같은 높이의 넓이합으로 내접반지름을 정한다."
+    "decisiveStep": "직각삼각형의 빗변중점으로 외접반지름을, 세 변까지 같은 높이의 넓이합으로 내접반지름을 정한다.",
+    "image": "assets/images/21_팔마중_2학기_중간_중2_수학/q9-problem.svg",
+    "imageAlt": "반지름 5의 외접원에서 반지름 2의 내접원을 뺀 음영",
+    "imageCaption": "반지름 5의 외접원에서 반지름 2의 내접원을 뺀 음영",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_팔마중_2학기_중간_중2_수학/q9-solution.svg",
+    "solutionImageAlt": "반지름 5의 외접원에서 반지름 2의 내접원을 뺀 음영",
+    "solutionImageCaption": "반지름 5의 외접원에서 반지름 2의 내접원을 뺀 음영",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 10,
@@ -452,7 +506,16 @@ window.examData = {
       "l4": "평행사변형의 대각선 성질"
     },
     "primaryMethod": "평행사변형의 대변·대각선·각 성질 판별",
-    "decisiveStep": "대각선 이등분과 대변·대각 동등을 사용하고 대각선의 맞은편 삼각형 합동과 이웃삼각형을 구별한다."
+    "decisiveStep": "대각선 이등분과 대변·대각 동등을 사용하고 대각선의 맞은편 삼각형 합동과 이웃삼각형을 구별한다.",
+    "image": "assets/images/21_팔마중_2학기_중간_중2_수학/q11-problem.svg",
+    "imageAlt": "대각선과 ∠D의 관계를 확인하는 평행사변형",
+    "imageCaption": "대각선과 ∠D의 관계를 확인하는 평행사변형",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_팔마중_2학기_중간_중2_수학/q11-solution.svg",
+    "solutionImageAlt": "대각선과 ∠D의 관계를 확인하는 평행사변형",
+    "solutionImageCaption": "대각선과 ∠D의 관계를 확인하는 평행사변형",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 12,
@@ -493,7 +556,16 @@ window.examData = {
       "l4": "SAS 합동"
     },
     "primaryMethod": "대각선 이등분에서 SAS로 평행사변형 증명",
-    "decisiveStep": "대각선의 반길이와 맞꼭지각으로 SAS를 보이고 대응 엇각의 동등에서 두 쌍 대변의 평행을 얻는다."
+    "decisiveStep": "대각선의 반길이와 맞꼭지각으로 SAS를 보이고 대응 엇각의 동등에서 두 쌍 대변의 평행을 얻는다.",
+    "image": "assets/images/21_팔마중_2학기_중간_중2_수학/q12-problem.svg",
+    "imageAlt": "두 대각선이 서로를 이등분하는 평행사변형",
+    "imageCaption": "두 대각선이 서로를 이등분하는 평행사변형",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_팔마중_2학기_중간_중2_수학/q12-solution.svg",
+    "solutionImageAlt": "두 대각선이 서로를 이등분하는 평행사변형",
+    "solutionImageCaption": "두 대각선이 서로를 이등분하는 평행사변형",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 13,
@@ -534,7 +606,16 @@ window.examData = {
       "l4": "분할도형"
     },
     "primaryMethod": "평행사변형 내부점의 마주보는 넓이합",
-    "decisiveStep": "PDA+PBC와 PAB+PCD가 각각 전체의 절반임을 이용한다."
+    "decisiveStep": "PDA+PBC와 PAB+PCD가 각각 전체의 절반임을 이용한다.",
+    "image": "assets/images/21_팔마중_2학기_중간_중2_수학/q13-problem.svg",
+    "imageAlt": "내점 P가 나눈 세 기지 넓이 9·10·16",
+    "imageCaption": "내점 P가 나눈 세 기지 넓이 9·10·16",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_팔마중_2학기_중간_중2_수학/q13-solution.svg",
+    "solutionImageAlt": "내점 P가 나눈 세 기지 넓이 9·10·16",
+    "solutionImageCaption": "내점 P가 나눈 세 기지 넓이 9·10·16",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 14,
@@ -575,7 +656,16 @@ window.examData = {
       "l4": "조건으로 사각형 판정"
     },
     "primaryMethod": "추가조건으로 특수사각형 판정",
-    "decisiveStep": "반대각선 동등·대각선 수직·이웃변 동등·직각이 각각 보장하는 특수사각형을 구별한다."
+    "decisiveStep": "반대각선 동등·대각선 수직·이웃변 동등·직각이 각각 보장하는 특수사각형을 구별한다.",
+    "image": "assets/images/21_팔마중_2학기_중간_중2_수학/q14-problem.svg",
+    "imageAlt": "두 대각선 교점 O의 성질을 비교하는 평행사변형",
+    "imageCaption": "두 대각선 교점 O의 성질을 비교하는 평행사변형",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_팔마중_2학기_중간_중2_수학/q14-solution.svg",
+    "solutionImageAlt": "두 대각선 교점 O의 성질을 비교하는 평행사변형",
+    "solutionImageCaption": "두 대각선 교점 O의 성질을 비교하는 평행사변형",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 15,
@@ -657,7 +747,16 @@ window.examData = {
       "l4": "대응변·대응각"
     },
     "primaryMethod": "명시된 사각형 닮음의 대응변비",
-    "decisiveStep": "ABCD와 EFGH 순서에서 BC와 FG의 비를 AD와 EH에 그대로 적용한다."
+    "decisiveStep": "ABCD와 EFGH 순서에서 BC와 FG의 비를 AD와 EH에 그대로 적용한다.",
+    "image": "assets/images/21_팔마중_2학기_중간_중2_수학/q16-problem.svg",
+    "imageAlt": "닮은 두 사다리꼴의 대응변과 6·8·12 길이",
+    "imageCaption": "닮은 두 사다리꼴의 대응변과 6·8·12 길이",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_팔마중_2학기_중간_중2_수학/q16-solution.svg",
+    "solutionImageAlt": "닮음비 8 대 12에서 대응 윗변 9cm",
+    "solutionImageCaption": "닮음비 8 대 12에서 대응 윗변 9cm",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 17,
@@ -700,7 +799,15 @@ window.examData = {
       "l4": "넓이·부피 비"
     },
     "primaryMethod": "원뿔 닮음비와 절대부피의 결합",
-    "decisiveStep": "작은 높이에서 큰 높이를 복원하고 주어진 밑넓이로 큰 부피를 구한 뒤 부피비로 작은 부피를 정한다."
+    "decisiveStep": "작은 높이에서 큰 높이를 복원하고 주어진 밑넓이로 큰 부피를 구한 뒤 부피비로 작은 부피를 정한다.",
+    "image": "assets/images/21_팔마중_2학기_중간_중2_수학/q17-problem.svg",
+    "imageAlt": "닮음비 5대4인 두 원뿔의 밑넓이와 높이",
+    "imageCaption": "닮음비 5대4인 두 원뿔의 밑넓이와 높이",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_팔마중_2학기_중간_중2_수학/q17-solution.svg",
+    "solutionImageAlt": "큰 원뿔의 높이는 15cm이며 두 밑면의 반지름 비는 5대4",
+    "solutionImageCaption": "큰 원뿔의 높이는 15cm이며 두 밑면의 반지름 비는 5대4",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -755,7 +862,16 @@ window.examData = {
       "l4": "길이"
     },
     "primaryMethod": "빗변에 내린 높이의 AA 닮음",
-    "decisiveStep": "ABH와 CBA의 AA 대응으로 AB의 제곱=BH×BC를 얻고 전체 BC에서 BH를 뺀다."
+    "decisiveStep": "ABH와 CBA의 AA 대응으로 AB의 제곱=BH×BC를 얻고 전체 BC에서 BH를 뺀다.",
+    "image": "assets/images/21_팔마중_2학기_중간_중2_수학/q19-problem.svg",
+    "imageAlt": "직각에서 빗변으로 내린 수선과 AB5·BH4",
+    "imageCaption": "직각에서 빗변으로 내린 수선과 AB5·BH4",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_팔마중_2학기_중간_중2_수학/q19-solution.svg",
+    "solutionImageAlt": "직각에서 빗변으로 내린 수선과 AB5·BH4",
+    "solutionImageCaption": "직각에서 빗변으로 내린 수선과 AB5·BH4",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 20,

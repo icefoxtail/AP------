@@ -190,7 +190,11 @@ window.examData = {
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
     "primaryMethod": "대각선 AC로 나누고 각 삼각형의 높이를 특수각 삼각비로 구한다.",
-    "decisiveStep": "ABC는 한 변6인 정삼각형이고 ADC의 높이는 √3여서 넓이 합은9√3+3√3이다."
+    "decisiveStep": "ABC는 한 변6인 정삼각형이고 ADC의 높이는 √3여서 넓이 합은9√3+3√3이다.",
+    "image": "assets/images/16_신흥중_2학기_기말_중3_수학/q5-problem.svg",
+    "imageAlt": "원문 사각형 ABCD: AB=BC=6 cm, AD=DC=2√3 cm, ∠B=60°, ∠D=120°이다. 대각선이나 색칠 영역은 없다.",
+    "imageCaption": "원문 사각형 ABCD: AB=BC=6 cm, AD=DC=2√3 cm, ∠B=60°, ∠D=120°이다. 대각선이나 색칠 영역은 없다.",
+    "imageSize": "full"
   },
     {
       "id": 6,
@@ -342,7 +346,11 @@ window.examData = {
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_CHORD_LENGTH",
     "primaryMethod": "중심에서 세 현까지의 거리가 같으므로 정삼각형임을 알아내 외접반지름을 구한다.",
-    "decisiveStep": "AB=BC=CA=4√3이므로 반지름4, 원의 넓이16π이다."
+    "decisiveStep": "AB=BC=CA=4√3이므로 반지름4, 원의 넓이16π이다.",
+    "image": "assets/images/16_신흥중_2학기_기말_중3_수학/q9-problem.svg",
+    "imageAlt": "원 O에 내접한 삼각형 ABC: OD=OE=OF이고 세 선분은 각 현에 수직이며 AB=4√3 cm이다.",
+    "imageCaption": "원 O에 내접한 삼각형 ABC: OD=OE=OF이고 세 선분은 각 현에 수직이며 AB=4√3 cm이다.",
+    "imageSize": "full"
   },
     {
       "id": 10,

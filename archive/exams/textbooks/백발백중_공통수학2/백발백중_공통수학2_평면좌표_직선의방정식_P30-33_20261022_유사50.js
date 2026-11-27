@@ -54,8 +54,9 @@ window.questionBank = [
     ],
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_평면좌표_직선의방정식_P30-33_20261022_유사50/BV-BAKBAL-H-COM2-P30-Q01-T1-R2-solution.svg",
-    "solutionImageAlt": "해설 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "각 변을 1:2로 순환 내분한 D, E, F로 만든 삼각형은 원래 삼각형과 무게중심이 같다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "각 변을 1:2로 순환 내분한 D, E, F로 만든 삼각형은 원래 삼각형과 무게중심이 같다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P30-Q01-S1-R2",
@@ -111,8 +112,9 @@ window.questionBank = [
     ],
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_평면좌표_직선의방정식_P30-33_20261022_유사50/BV-BAKBAL-H-COM2-P30-Q01-S1-R2-solution.svg",
-    "solutionImageAlt": "해설 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "각 변을 2:1로 순환 내분한 D, E, F로 만든 삼각형은 원래 삼각형과 무게중심이 같다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "각 변을 2:1로 순환 내분한 D, E, F로 만든 삼각형은 원래 삼각형과 무게중심이 같다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P30-Q01-S2-R1",
@@ -225,8 +227,9 @@ window.questionBank = [
     ],
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_평면좌표_직선의방정식_P30-33_20261022_유사50/BV-BAKBAL-H-COM2-P30-Q02-T1-R1-solution.svg",
-    "solutionImageAlt": "해설 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "M은 AB의 중점이며 P는 M을 중심으로 반지름 4인 원 위의 예시 위치에 있다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "M은 AB의 중점이며 P는 M을 중심으로 반지름 4인 원 위의 예시 위치에 있다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P30-Q02-S1-R1",
@@ -282,8 +285,9 @@ window.questionBank = [
     ],
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_평면좌표_직선의방정식_P30-33_20261022_유사50/BV-BAKBAL-H-COM2-P30-Q02-S1-R1-solution.svg",
-    "solutionImageAlt": "해설 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "M은 AB의 중점이며 P는 M을 중심으로 반지름 3인 원 위의 예시 위치에 있다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "M은 AB의 중점이며 P는 M을 중심으로 반지름 3인 원 위의 예시 위치에 있다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P30-Q02-S2-R1",
@@ -339,8 +343,9 @@ window.questionBank = [
     ],
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_평면좌표_직선의방정식_P30-33_20261022_유사50/BV-BAKBAL-H-COM2-P30-Q02-S2-R1-solution.svg",
-    "solutionImageAlt": "해설 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "M은 AB의 중점이며 P는 M을 중심으로 반지름 4인 원 위의 예시 위치에 있다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "M은 AB의 중점이며 P는 M을 중심으로 반지름 4인 원 위의 예시 위치에 있다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P30-Q03-T1-R2",
@@ -396,12 +401,13 @@ window.questionBank = [
     ],
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_평면좌표_직선의방정식_P30-33_20261022_유사50/BV-BAKBAL-H-COM2-P30-Q03-T1-R2-solution.svg",
-    "solutionImageAlt": "해설 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "정삼각형의 높이 AM은 중선이며 무게중심 O에서 AO:OM=2:1이다.",
+    "solutionImageSize": "full",
     "image": "assets/images/백발백중_공통수학2_평면좌표_직선의방정식_P30-33_20261022_유사50/BV-BAKBAL-H-COM2-P30-Q03-T1-R2-problem.svg",
     "imageAlt": "주어진 정삼각형 ABC의 높이 AM과 원점 무게중심 O의 위치를 나타낸다.",
     "imageCaption": "주어진 정삼각형 ABC의 높이 AM과 원점 무게중심 O의 위치를 나타낸다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageCaption": "정삼각형의 높이 AM은 중선이며 무게중심 O에서 AO:OM=2:1이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P30-Q03-S1-R2",
@@ -457,12 +463,13 @@ window.questionBank = [
     ],
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_평면좌표_직선의방정식_P30-33_20261022_유사50/BV-BAKBAL-H-COM2-P30-Q03-S1-R2-solution.svg",
-    "solutionImageAlt": "해설 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "정삼각형의 높이 AM은 중선이며 무게중심 O에서 AO:OM=2:1이다.",
+    "solutionImageSize": "full",
     "image": "assets/images/백발백중_공통수학2_평면좌표_직선의방정식_P30-33_20261022_유사50/BV-BAKBAL-H-COM2-P30-Q03-S1-R2-problem.svg",
     "imageAlt": "주어진 정삼각형 ABC의 높이 AM과 원점 무게중심 O의 위치를 나타낸다.",
     "imageCaption": "주어진 정삼각형 ABC의 높이 AM과 원점 무게중심 O의 위치를 나타낸다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageCaption": "정삼각형의 높이 AM은 중선이며 무게중심 O에서 AO:OM=2:1이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P30-Q03-S2-R2",
@@ -520,8 +527,9 @@ window.questionBank = [
     ],
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_평면좌표_직선의방정식_P30-33_20261022_유사50/BV-BAKBAL-H-COM2-P30-Q03-S2-R2-solution.svg",
-    "solutionImageAlt": "해설 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "정삼각형의 높이 AM은 중선이며 무게중심 O에서 AO:OM=2:1이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "정삼각형의 높이 AM은 중선이며 무게중심 O에서 AO:OM=2:1이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P30-Q04-T1-R2",

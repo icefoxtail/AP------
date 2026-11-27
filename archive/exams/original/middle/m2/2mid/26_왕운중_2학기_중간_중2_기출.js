@@ -534,7 +534,7 @@ window.questionBank = [
   {
     "id": 8,
     "imageSize": "full",
-    "imageAlt": "삼각형 ABC의 AB와 AC는 같은 길이이다. 외심 O에서 B와 C로 이어진 선과 내심 I에서 B와 C로 이어진 선을 구별했다. 각 BIC가 108도이다.",
+    "imageAlt": "AB=AC인 이등변삼각형에서 외심 O와 내심 I를 각각 B, C에 실선으로 잇고 ∠BIC=108°를 나타낸다.",
     "level": "중",
     "category": "외심과 내심의 관계",
     "originalCategory": "도형의 성질",
@@ -606,12 +606,13 @@ window.questionBank = [
     "solutionImageCaption": "∠A=36°, ∠B=72°, ∠BOC=72°, ∠OBC=54°, ∠IBC=36°이므로 ∠OBI=∠OBC−∠IBC=18°이다.",
     "solutionImageSize": "medium",
     "primaryMethod": "내심각에서 꼭짓각을 복원하고 외심각과 비교",
-    "decisiveStep": "A=36, 밑각72를 구한 뒤 OBC54와 IBC36의 차를 취한다."
+    "decisiveStep": "A=36, 밑각72를 구한 뒤 OBC54와 IBC36의 차를 취한다.",
+    "imageCaption": "AB=AC인 이등변삼각형에서 외심 O와 내심 I를 각각 B, C에 실선으로 잇고 ∠BIC=108°를 나타낸다."
   },
   {
     "id": 9,
     "imageSize": "full",
-    "imageAlt": "첫 장면은 꼭짓점 A가 B에 닿도록 접는 선, 둘째는 A가 C에 닿도록 접는 선을 보인다. 셋째는 원래 삼각형에 두 선을 그어 만나는 점 O를 표시했다.",
+    "imageAlt": "두 변의 수직이등분선을 접어 만들고 그 교점 O를 찾는 세 단계의 활동이다.",
     "level": "하",
     "category": "수직이등분선과 외심",
     "originalCategory": "도형의 성질",
@@ -681,7 +682,8 @@ window.questionBank = [
     "solutionImageCaption": "수직이등분선의 교점 O는 세 꼭짓점에서 같은 거리이고, 정삼각형에서는 외심과 내심이 일치한다.",
     "solutionImageSize": "medium",
     "primaryMethod": "접은 선을 수직이등분선으로 해석해 외심 판정",
-    "decisiveStep": "두 수직이등분선의 교점을 외심으로 확인하고 중심각·등거리 진술을 검토한다."
+    "decisiveStep": "두 수직이등분선의 교점을 외심으로 확인하고 중심각·등거리 진술을 검토한다.",
+    "imageCaption": "두 변의 수직이등분선을 접어 만들고 그 교점 O를 찾는 세 단계의 활동이다."
   },
   {
     "id": 10,
@@ -1417,7 +1419,7 @@ window.questionBank = [
   {
     "id": 20,
     "imageSize": "full",
-    "imageAlt": "왼쪽 삼각형 ABC의 AB는 9 cm이고, 오른쪽 삼각형 DEF의 대응변 DE는 15 cm이다.",
+    "imageAlt": "서로 닮은 삼각형 ABC, DEF에서 AB=9 cm, DE=15 cm를 보인다.",
     "level": "하",
     "category": "닮음비와 넓이비",
     "originalCategory": "도형의 닮음",
@@ -1487,12 +1489,13 @@ window.questionBank = [
     "solutionImageCaption": "대응변 AB와 DE의 길이는 9cm, 15cm이고 △DEF의 넓이는 50cm²이며, 닮음비가 3:5이므로 넓이의 비는 9:25이다.",
     "solutionImageSize": "medium",
     "primaryMethod": "닮음비 제곱으로 넓이비 환산",
-    "decisiveStep": "대응변3:5를 넓이9:25로 바꾸어 주어진 넓이에 적용한다."
+    "decisiveStep": "대응변3:5를 넓이9:25로 바꾸어 주어진 넓이에 적용한다.",
+    "imageCaption": "서로 닮은 삼각형 ABC, DEF에서 AB=9 cm, DE=15 cm를 보인다."
   },
   {
     "id": 21,
     "imageSize": "full",
-    "imageAlt": "B에서 직각인 삼각형 ABC의 AB는 12, AC는 15이다. A의 이등분선이 밑변의 D에 닿고 BD는 4이다. D에서 AC에 내린 수선은 E에서 만난다. 삼각형 DEC가 칠해져 있다.",
+    "imageAlt": "직각삼각형 ABC에서 AD는 각 A의 이등분선이고 DE는 AC에 수직이다. 구하는 영역 DEC만 옅게 표시한다.",
     "level": "중",
     "category": "직각삼각형의 RHA 합동과 넓이",
     "originalCategory": "도형의 성질",
@@ -1558,7 +1561,8 @@ window.questionBank = [
     "solutionImageCaption": "△ABD와 △AED가 합동이므로 AE=AB=12, DE=BD=4이고 EC=AC-AE=3이다.",
     "solutionImageSize": "medium",
     "primaryMethod": "RHA 합동으로 대응변을 얻어 부분삼각형 넓이 계산",
-    "decisiveStep": "ABD≅AED에서 AE와 DE를 얻고 EC=AC−AE로 목표 직각삼각형 넓이를 구한다."
+    "decisiveStep": "ABD≅AED에서 AE와 DE를 얻고 EC=AC−AE로 목표 직각삼각형 넓이를 구한다.",
+    "imageCaption": "직각삼각형 ABC에서 AD는 각 A의 이등분선이고 DE는 AC에 수직이다. 구하는 영역 DEC만 옅게 표시한다."
   },
   {
     "id": 22,
@@ -1696,11 +1700,12 @@ window.questionBank = [
     "tagStatus": "review_required",
     "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q23-problem-visual-v2.svg",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q23-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 정사각형 ABCD의 대각선 AC 위의 점 P에서 ∠APB=125°, ∠BPC=55°이고, 두 삼각형 ABP와 ADP가 합동이 되도록 AB=AD, ∠BAP=∠PAD=45°, ∠ABP=∠ADP=10°를 표시한 그림이다.",
-    "solutionImageCaption": "대각선이 꼭지각을 이등분하고 AB=AD, AP는 공통이므로 색칠한 △ABP와 △ADP는 합동이고 ∠ADP=∠ABP=10°이다.",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "∠BPC=55°와 대각선의 이등분 각 45°, 합동인 두 삼각형에서 ∠ABP=∠ADP=10°, 따라서 ∠PDC=80°이다.",
+    "solutionImageCaption": "∠BPC=55°와 대각선의 이등분 각 45°, 합동인 두 삼각형에서 ∠ABP=∠ADP=10°, 따라서 ∠PDC=80°이다.",
+    "solutionImageSize": "full",
     "primaryMethod": "정사각형 대각선의 각이등분과 SAS 합동",
-    "decisiveStep": "ABP의 각을 구하고 ABP≅ADP로 목표각을 옮긴다."
+    "decisiveStep": "ABP의 각을 구하고 ABP≅ADP로 목표각을 옮긴다.",
+    "solutionImageScale": 90
   },
   {
     "id": 24,

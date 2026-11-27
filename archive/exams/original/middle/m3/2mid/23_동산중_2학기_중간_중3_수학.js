@@ -385,8 +385,8 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에 BC=6 cm, AC=3 cm를 표시한다. BC 위 D에서 AB에 내린 수선 DE와 두 같은 파란 각 x, ∠BAC를 보인다.",
-    "solutionImageCaption": "AB=3√5 cm이고 x=∠A이다. sin x=2√5/5, tan x=2이므로 sin x·tan x=4√5/5이다. 정답은 ②이다.",
+    "solutionImageAlt": "직각삼각형 ABC에서 D는 BC 위, DE는 빗변 AB에 수직이다.",
+    "solutionImageCaption": "직각삼각형 ABC에서 D는 BC 위, DE는 빗변 AB에 수직이다.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_TRIG_RATIO",
@@ -433,8 +433,8 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageAlt": "해설 그림: 직각삼각형 ABC와 빗변 AB의 높이 CD. 파란색 x=∠ABC, 주황색 y=∠BAC를 대응시킨다. AC=6 cm, BC=12 cm.",
-    "solutionImageCaption": "AB=6√5 cm이다. sin x=√5/5, sin y=2√5/5이므로 sin x+sin y=3√5/5이다. 정답은 ③이다.",
+    "solutionImageAlt": "AC=6, BC=12이고 C와 D에 직각 표시가 있는 삼각형 ABC.",
+    "solutionImageCaption": "AC=6, BC=12이고 C와 D에 직각 표시가 있는 삼각형 ABC.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_TRIG_RATIO",
@@ -526,8 +526,8 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 AD는 BC에 수직이다. AD와 BD에 파란 한 눈금, 두 45° 각에 주황 표시를 하고 오른쪽 직각삼각형 ACD에 30°, DC=5√3 cm, AC=10 cm를 표시한다.",
-    "solutionImageCaption": "BD=AD=5 cm이고 DC=5√3 cm이므로 BC=5+5√3 cm이다. AC=10 cm이다. 넓이는 1/2×(5+5√3)×5=25(1+√3)/2 cm²이므로 옳은 것은 ㄱ, ㄴ이다. 정답은 ①이다.",
+    "solutionImageAlt": "높이 AD=5 cm와 밑각 45°·30°를 지닌 삼각형 ABC.",
+    "solutionImageCaption": "높이 AD=5 cm와 밑각 45°·30°를 지닌 삼각형 ABC.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
@@ -588,7 +588,10 @@ window.questionBank = [
     "decisiveStep": "사분원의 반지름을 직각삼각형의 이웃변으로 읽고 탄젠트 정의에서 목표 수선을 바로 표현한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "반지름 2인 사분원 안의 점 C와 수선 BC, 직각삼각형 ADP.",
+    "solutionImageCaption": "반지름 2인 사분원 안의 점 C와 수선 BC, 직각삼각형 ADP.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -681,7 +684,10 @@ window.questionBank = [
     "decisiveStep": "주어진 각의 이웃변을 기준으로 코사인과 탄젠트의 정의를 각각 써서 빗변과 맞은편 변을 표시한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "BC=12, ∠ABC=36°이고 C에서 직각인 삼각형 ABC.",
+    "solutionImageCaption": "BC=12, ∠ABC=36°이고 C에서 직각인 삼각형 ABC.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -729,7 +735,10 @@ window.questionBank = [
     "decisiveStep": "빗변 c로 두 직각변을 사인·코사인으로 표현한 다음 둘레와 넓이식에 넣어 진술을 판정한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "빗변 AB=c, C에서 직각인 삼각형에서 ∠A의 삼각비를 표시한다.",
+    "solutionImageCaption": "빗변 AB=c, C에서 직각인 삼각형에서 ∠A의 삼각비를 표시한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -763,8 +772,8 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageAlt": "해설 그림: 밑변 6 cm인 ㄱ의 높이는 안쪽에, 밑변 3 cm인 ㄴ의 높이는 바깥쪽에 점선으로 내렸다. 두 수선의 발에 직각 표시가 있다.",
-    "solutionImageCaption": "ㄱ의 넓이는 ½×6×5√3/2=15√3/2, ㄴ의 넓이는 ½×3×2=3이다. 답: ⑤.",
+    "solutionImageAlt": "(ㄱ) 5cm·6cm와 끼인각 60°인 삼각형; (ㄴ) 3cm·2√2cm와 끼인각 135°인 삼각형.",
+    "solutionImageCaption": "(ㄱ) 5cm·6cm와 끼인각 60°인 삼각형; (ㄴ) 3cm·2√2cm와 끼인각 135°인 삼각형.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
@@ -811,8 +820,8 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageAlt": "해설 그림: AC=150m, ∠C=30°와 직각 A를 표시한 삼각형이다. AB는 값 없이 남긴다.",
-    "solutionImageCaption": "AB=150tan30°=50√3m이다. 답: ③.",
+    "solutionImageAlt": "지상 거리 AC=150 m, C의 올려본 각 30°와 수직 높이 AB.",
+    "solutionImageCaption": "지상 거리 AC=150 m, C의 올려본 각 30°와 수직 높이 AB.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
@@ -825,7 +834,8 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "직각삼각형에서 밑변과 관측각의 탄젠트를 곱해 두 지점의 거리를 바로 구한다.",
-    "decisiveStep": "직각삼각형에서 밑변과 관측각의 탄젠트를 곱해 두 지점의 거리를 바로 구한다."
+    "decisiveStep": "직각삼각형에서 밑변과 관측각의 탄젠트를 곱해 두 지점의 거리를 바로 구한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 19,
@@ -873,7 +883,10 @@ window.questionBank = [
     "decisiveStep": "대각선의 이등분 성질로 네 삼각형의 두 변을 정하고 삼각비 넓이를 계산하여 네 배 한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "평행사변형의 대각선 교점 O에서 반대편 두 부분이 각각 같고 ∠BOC=150°이다.",
+    "solutionImageCaption": "평행사변형의 대각선 교점 O에서 반대편 두 부분이 각각 같고 ∠BOC=150°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -918,7 +931,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "네 삼각형의 사인 넓이 합을 두 대각선 곱의 절반으로 묶은 뒤 주어진 넓이를 넣어 미지 대각선을 역산한다.",
-    "decisiveStep": "네 삼각형의 사인 넓이 합을 두 대각선 곱의 절반으로 묶은 뒤 주어진 넓이를 넣어 미지 대각선을 역산한다."
+    "decisiveStep": "네 삼각형의 사인 넓이 합을 두 대각선 곱의 절반으로 묶은 뒤 주어진 넓이를 넣어 미지 대각선을 역산한다.",
+    "solutionImageAlt": "대각선 AC=10, BD=x이고 그 사이의 각이 60°인 사각형 ABCD.",
+    "solutionImageCaption": "대각선 AC=10, BD=x이고 그 사이의 각이 60°인 사각형 ABCD.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -967,7 +983,10 @@ window.questionBank = [
     "decisiveStep": "탄젠트로 눈높이 위의 건물 높이를 구하고 눈높이를 더해 전체 높이를 구한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "건물 높이와 눈높이 1.7m를 분리하고 10m 거리에서 52°로 올려본다.",
+    "solutionImageCaption": "건물 높이와 눈높이 1.7m를 분리하고 10m 거리에서 52°로 올려본다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1001,8 +1020,8 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageAlt": "해설 그림: 변 3cm인 정사각형을 A를 중심으로 30° 돌린 뒤 겹친 사각형 A-D-X-B′를 주황색으로 표시한다. B′에서 원래 변에 내린 두 수선도 함께 보인다.",
-    "solutionImageCaption": "DX=√3cm이다. B′에서 AD와 DC에 내린 수선의 길이는 각각 3√3/2cm, 3/2cm이다. 두 직각삼각형의 넓이는 9√3/4와 3√3/4이므로 겹친 넓이는 3√3cm²이다. 답: ④.",
+    "solutionImageAlt": "정사각형 ABCD와 A를 중심으로 30° 회전한 A B′ C′ D′의 겹치는 사각형.",
+    "solutionImageCaption": "정사각형 ABCD와 A를 중심으로 30° 회전한 A B′ C′ D′의 겹치는 사각형.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
@@ -1080,8 +1099,8 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageAlt": "해설 그림: D가 AC의 중점인 직각삼각형. AB=8cm, ∠A=60°, C 직각, AD=DC의 같은 눈금과 BD=x를 표시한다.",
-    "solutionImageCaption": "AC=ABcos60°=4cm이므로 CD=2cm이다. 직각삼각형 BCD에서 BD=√((4√3)²+2²)=2√13cm이다. 답: 2√13.",
+    "solutionImageAlt": "∠C=90°, ∠A=60°, AB=8이며 D는 AC의 중점이다.",
+    "solutionImageCaption": "∠C=90°, ∠A=60°, AB=8이며 D는 AC의 중점이다.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
@@ -1123,8 +1142,8 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageAlt": "해설 그림: 직각삼각형 ABC와 ADE가 겹치며, 겹친 삼각형 ADF를 주황색으로 채우고 AD·DF와 45°·60°를 표시한다.",
-    "solutionImageCaption": "AD=3√2/2cm이고 직각삼각형 ADF에서 DF=ADtan30°=√6/2cm이다. 따라서 [△ADF]=½·AD·DF=3√3/4cm²이다. 답: 3√3/4cm².",
+    "solutionImageAlt": "두 직각삼각형 ABC와 ADE가 겹친 영역 △ADF를 나타낸다.",
+    "solutionImageCaption": "두 직각삼각형 ABC와 ADE가 겹친 영역 △ADF를 나타낸다.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",

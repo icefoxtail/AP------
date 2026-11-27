@@ -252,9 +252,10 @@ window.questionBank = [
     "decisiveStep": "높이6:9를반지름비2:3으로사용한뒤밑면원넓이를계산한다.",
     "sourceMode": "ORIGINAL",
     "solutionImage": "assets/images/19_동산중_2학기_기말_중2_기출/q4-solution.svg",
-    "solutionImageAlt": "해설 그림: 왼쪽에는 밑면 반지름 2 cm, 높이 6 cm인 작은 원기둥과 높이 9 cm인 큰 원기둥이 있다. 오른쪽에는 두 원기둥의 밑면을 색칠하고 반지름 2 cm와 3 cm, 높이 6 cm와 9 cm를 적었다.",
-    "solutionImageCaption": "닮은 두 원기둥에서 높이의 비는 6 대 9, 곧 2 대 3이다. 밑면 반지름의 비도 2 대 3이므로 큰 원기둥의 밑면 반지름은 2에 2분의 3을 곱한 3 cm이다. 따라서 큰 원기둥의 밑넓이는 원주율 곱하기 3의 제곱으로 9파이 제곱센티미터이다. 정답은 ④이다.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "닮은 두 원기둥은 높이의 비와 밑면 반지름의 비가 같다. 원기둥 내부 면은 채우지 않고 밑원 윤곽선과 숨은 원호를 구분한다. 세 번째 그림은 축을 지나는 단면이다.",
+    "solutionImageCaption": "닮은 두 원기둥은 높이의 비와 밑면 반지름의 비가 같다. 원기둥 내부 면은 채우지 않고 밑원 윤곽선과 숨은 원호를 구분한다. 세 번째 그림은 축을 지나는 단면이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 5,
@@ -637,9 +638,10 @@ window.questionBank = [
     "decisiveStep": "한중선의2:1과중점넓이반분은확인하되서로다른중선의일부길이는같다고보장되지않음을구분한다.",
     "sourceMode": "ORIGINAL",
     "solutionImage": "assets/images/19_동산중_2학기_기말_중2_기출/q10-solution.svg",
-    "solutionImageAlt": "해설 그림: 왼쪽 위에는 삼각형 ABC와 세 변의 중점 D, E, F, 세 중선이 만나는 무게중심 G가 있고 같은 길이의 선분에 같은 표시가 있다. 오른쪽 위에는 세 중선이 나눈 여섯 개의 작은 삼각형이 같은 파란색으로 칠해져 있다. 아래에는 GD가 3, GE가 4, GF가 5인 예가 있다.",
-    "solutionImageCaption": "무게중심은 중선을 꼭짓점 쪽에서 2 대 1로 나누므로 GC 대 FG는 2 대 1이고 ①은 옳다. F가 AB의 중점이므로 AF와 BF가 같고 삼각형 AFG와 BGF의 넓이도 같아 ②와 ⑤가 옳으며, 세 중선은 삼각형을 넓이가 같은 여섯 삼각형으로 나누므로 ④도 옳다. 그러나 세 중선의 길이는 같을 필요가 없어서 예를 들어 GD, GE, GF가 3, 4, 5인 삼각형도 있다. 따라서 옳지 않은 것은 ③이다. 정답은 ③이다.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "무게중심 G는 세 중선을 꼭짓점 쪽에서 2 대 1로 나눈다. 가운데 그림은 세 중선이 만드는 여섯 삼각형의 넓이가 같다는 것을 분할선으로, 오른쪽 아래 그림은 어떤 삼각형에서 GD, GE, GF의 길이를 잰 예이다.",
+    "solutionImageCaption": "무게중심 G는 세 중선을 꼭짓점 쪽에서 2 대 1로 나눈다. 가운데 그림은 세 중선이 만드는 여섯 삼각형의 넓이가 같다는 것을 분할선으로, 오른쪽 아래 그림은 어떤 삼각형에서 GD, GE, GF의 길이를 잰 예이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 11,
@@ -959,9 +961,10 @@ window.questionBank = [
     "sourceMode": "ORIGINAL",
     "metaNullReason": "Current 2015 M2-2 RPM crosswalk has only RPM_ONLY records for the Pythagorean path (M2-RPM-101–106); current ACTIVE taxonomy lookup found no exact primary PT/TPL projection. Keep RPM semantic fields populated; record explicit projection debt.",
     "solutionImage": "assets/images/19_동산중_2학기_기말_중2_기출/q15-solution.svg",
-    "solutionImageAlt": "해설 그림: 왼쪽에는 직각삼각형 ABC의 세 변 위에 정사각형이 있고 아래쪽 정사각형은 35, 오른쪽 위 정사각형은 20, 왼쪽 위 정사각형은 x 제곱센티미터이다. 오른쪽에는 직각삼각형 ABC에서 AB는 루트 35, BC는 2루트 5이고 같은 색으로 정사각형과 대응한다.",
-    "solutionImageCaption": "정사각형의 넓이는 한 변의 길이의 제곱이다. 직각삼각형 ABC에서 AB가 빗변이므로 피타고라스 정리에 따라 두 직각변 위의 정사각형의 넓이의 합이 빗변 위의 정사각형의 넓이와 같다. 그래서 35는 왼쪽 위 정사각형의 넓이와 20의 합이고, 왼쪽 위 정사각형의 넓이 x는 35에서 20을 뺀 15 제곱센티미터이다. 정답은 ①이다.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "정사각형의 넓이는 한 변의 길이의 제곱이다. 문제 그림의 세 정사각형은 색을 채우지 않고, 비교 패널에서 빗변 AB는 초록색 선, BC는 주황색 선, AC는 파란색 선으로 표시한다. AC 위의 미지 넓이는 x이다.",
+    "solutionImageCaption": "정사각형의 넓이는 한 변의 길이의 제곱이다. 문제 그림의 세 정사각형은 색을 채우지 않고, 비교 패널에서 빗변 AB는 초록색 선, BC는 주황색 선, AC는 파란색 선으로 표시한다. AC 위의 미지 넓이는 x이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 16,

@@ -469,8 +469,8 @@ window.questionBank=[
   {
     "id": 12,
     "solutionImageSize": "full",
-    "solutionImageCaption": "두 직각삼각형은 빗변 OP가 공통이며 O의 두 각이 같아 RHA 합동이다. 따라서 OC=OD이고 PC=PD이다. 옳지 않은 것은 ②이다.",
-    "solutionImageAlt": "P는 O각의 이등분선 위에 있다. P에서 OA에 내린 수선은 C, OB에 내린 수선은 D에 닿는다. 같은 두 수선과 두 빗변을 갖는 삼각형을 비교한다.",
+    "solutionImageCaption": "각의 이등분선 위 점 P에서 OA, OB로 내린 두 수선의 길이가 같다",
+    "solutionImageAlt": "각의 이등분선 위 점 P에서 OA, OB로 내린 두 수선의 길이가 같다",
     "imageSize": "tall",
     "imageAlt": "P는 O각의 이등분선 위에 있다. P에서 OA에 내린 수선은 C, OB에 내린 수선은 D에 닿는다.",
     "level": "중",
@@ -515,7 +515,8 @@ window.questionBank=[
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "각 이등분선 두 직각삼각형의 RHA 대응",
-    "decisiveStep": "공통빗변과 같은 꼭짓점 예각으로 두 삼각형의 대응을 정해 같다고 보장되지 않는 다른 꼭짓점 각을 고른다."
+    "decisiveStep": "공통빗변과 같은 꼭짓점 예각으로 두 삼각형의 대응을 정해 같다고 보장되지 않는 다른 꼭짓점 각을 고른다.",
+    "solutionImageScale": 90
   },
   {
     "id": 13,
@@ -614,8 +615,8 @@ window.questionBank=[
   {
     "id": 15,
     "solutionImageSize": "full",
-    "solutionImageCaption": "OA=OC이고 C의 각은 60°이므로 AOC는 정삼각형이다. 둘레가 18 cm여서 반지름은 6 cm이다. 외접원의 둘레는 12π cm이다.",
-    "solutionImageAlt": "A의 각은 직각이다. 빗변 BC 위의 O는 외심이다. △ACO에서 C의 각이 60도이다. △ACO의 세 같은 변을 표시했다.",
+    "solutionImageCaption": "직각삼각형의 외심 O는 BC 중점이며 AOC는 변 6의 정삼각형",
+    "solutionImageAlt": "직각삼각형의 외심 O는 BC 중점이며 AOC는 변 6의 정삼각형",
     "imageSize": "tall",
     "imageAlt": "A의 각은 직각이다. 빗변 BC 위의 O는 외심이다. △ACO에서 C의 각이 60도이다.",
     "level": "중",
@@ -660,7 +661,8 @@ window.questionBank=[
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "외심 등거리로 정삼각형을 발견해 반지름 복원",
-    "decisiveStep": "외심과60도에서 반지름 두 개를 가진 정삼각형을 읽어 둘레에서 반지름을 얻는다."
+    "decisiveStep": "외심과60도에서 반지름 두 개를 가진 정삼각형을 읽어 둘레에서 반지름을 얻는다.",
+    "solutionImageScale": 90
   },
   {
     "id": 16,
@@ -756,8 +758,8 @@ window.questionBank=[
   },
   {
     "id": 18,
-    "imageSize": "tall",
-    "imageAlt": "AB는 7 cm이고 대각선 BD 전체는 10 cm이다. D의 각은 AD와 DC 사이의 70도이다. 두 대각선이 O에서 만난다.",
+    "imageSize": "full",
+    "imageAlt": "평행사변형의 AB=7, BD=10 및 D에서 DA와 DC 사이의 각 70°",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -797,7 +799,8 @@ window.questionBank=[
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "평행사변형의 보장 성질과 대각선 구별",
-    "decisiveStep": "대변·대각·이웃각은 성립하지만 두 대각선 길이 같음은 보장되지 않음을 판정한다."
+    "decisiveStep": "대변·대각·이웃각은 성립하지만 두 대각선 길이 같음은 보장되지 않음을 판정한다.",
+    "imageCaption": "평행사변형의 AB=7, BD=10 및 D에서 DA와 DC 사이의 각 70°"
   },
   {
     "id": 19,
@@ -843,8 +846,8 @@ window.questionBank=[
   {
     "id": 20,
     "solutionImageSize": "full",
-    "solutionImageCaption": "ABE에서 ABC를 빼면 ACE의 넓이는 17−8=9 cm²이다. AC와 DE가 평행하므로 같은 밑변 AC를 쓰는 ACD의 넓이도 9 cm²이다.",
-    "solutionImageAlt": "B, C, E는 한 직선 위에 있다. AC와 DE는 서로 평행하다. 밑변 AC를 공유하는 ACE와 ACD를 색과 점선으로 구분했다.",
+    "solutionImageCaption": "삼각형 ABC의 8과 ACE의 9를 서로 다른 실제 영역에 배치하고 ACD도 9로 대응",
+    "solutionImageAlt": "삼각형 ABC의 8과 ACE의 9를 서로 다른 실제 영역에 배치하고 ACD도 9로 대응",
     "imageSize": "tall",
     "imageAlt": "B, C, E는 한 직선 위에 있다. AC와 DE는 서로 평행하다.",
     "level": "상",
@@ -885,7 +888,8 @@ window.questionBank=[
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "평행선 사이 같은 높이의 등적 변환",
-    "decisiveStep": "큰 삼각형에서 공통 부분을 뺀 넓이를 같은 밑변과 같은 높이의 목표 삼각형으로 옮긴다."
+    "decisiveStep": "큰 삼각형에서 공통 부분을 뺀 넓이를 같은 밑변과 같은 높이의 목표 삼각형으로 옮긴다.",
+    "solutionImageScale": 90
   },
   {
     "id": 21,
@@ -962,8 +966,8 @@ window.questionBank=[
   {
     "id": 23,
     "solutionImageSize": "full",
-    "solutionImageCaption": "I에서 세 변까지 내린 수선의 길이는 모두 3 cm이다. 세 작은 삼각형의 넓이를 더하면 3×40÷2=60 cm²이다.",
-    "solutionImageAlt": "삼각형의 내심은 I이다. I에서 밑변에 내린 수선은 반지름 3 cm이다. 풀이에서는 나머지 두 변에 내린 같은 길이의 수선을 함께 표시했다.",
+    "solutionImageCaption": "내접원의 세 수선 반지름 3과 세 변 둘레 40으로 넓이 60을 설명한다",
+    "solutionImageAlt": "내접원의 세 수선 반지름 3과 세 변 둘레 40으로 넓이 60을 설명한다",
     "imageSize": "tall",
     "imageAlt": "삼각형의 내심은 I이다. I에서 밑변에 내린 수선은 반지름 3 cm이다.",
     "level": "중",
@@ -1002,7 +1006,8 @@ window.questionBank=[
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "같은 내심 높이로 삼각형 넓이 합",
-    "decisiveStep": "세 수선 높이가 반지름으로 같으므로 세 밑변의 합을 전체 둘레로 묶어 넓이를 구한다."
+    "decisiveStep": "세 수선 높이가 반지름으로 같으므로 세 밑변의 합을 전체 둘레로 묶어 넓이를 구한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 24,

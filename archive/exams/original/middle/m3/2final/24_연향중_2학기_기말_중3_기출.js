@@ -366,7 +366,7 @@ window.questionBank = [
       "$9\\sqrt3\\rm\\,cm$"
     ],
     "answer": "②",
-    "image": "assets/images/24_연향중_2학기_기말_중3_기출/q8.png",
+    "image": "assets/images/24_연향중_2학기_기말_중3_기출/q8-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
@@ -390,7 +390,10 @@ window.questionBank = [
     "decisiveStep": "30도 직각삼각형에서 반지름이 중심거리의 절반임을 쓰고 원주까지 거리와 합쳐 중심거리를 먼저 정한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원 O의 바깥 점 P에서 그은 접선 PT와 반지름 OT는 접점 T에서 수직이다. PA는 6cm이고 각 TPO는 30도이다.",
+    "imageCaption": "원 O의 바깥 점 P에서 그은 접선 PT와 반지름 OT는 접점 T에서 수직이다. PA는 6cm이고 각 TPO는 30도이다.",
+    "imageSize": "full"
   },
   {
     "id": 9,

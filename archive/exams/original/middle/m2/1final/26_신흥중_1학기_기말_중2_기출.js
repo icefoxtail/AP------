@@ -93,9 +93,10 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/26_신흥중_1학기_기말_중2_기출/q3-solution.svg",
-    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
-    "solutionImageCaption": "x가 0→3일 때 y8→2로 −6. 기울기 −6/3=−2인 y=−2x+8. 정답③.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "직선 y=−2x+8에서 x가 0에서 3으로 증가할 때 y는 8에서 2로 6 감소한다. 점선의 가로길이는 3, 세로길이는 6이다.",
+    "solutionImageCaption": "직선 y=−2x+8에서 x가 0에서 3으로 증가할 때 y는 8에서 2로 6 감소한다. 점선의 가로길이는 3, 세로길이는 6이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 4,
@@ -434,7 +435,7 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/26_신흥중_1학기_기말_중2_기출/q14-solution.svg",
-    "solutionImageAlt": "해설 그림: 좌표평면에 오른쪽 위로 완만하게 올라가는 직선과 그 위의 세 점이 표시되어 있다.",
+    "solutionImageAlt": "두 점 (3,7), (6,8)을 지나므로 기울기는 (8−7)÷(6−3)=1/3이다. f(x)=x/3+b에 (3,7)을 대입하면 7=1+b에서 b=6이므로 f(x)=x/3+6이다. 따라서 f(1)=1/3+6=19/3이다. 따라서 답은 ①이다.",
     "solutionImageCaption": "두 점 (3,7), (6,8)을 지나므로 기울기는 (8−7)÷(6−3)=1/3이다. f(x)=x/3+b에 (3,7)을 대입하면 7=1+b에서 b=6이므로 f(x)=x/3+6이다. 따라서 f(1)=1/3+6=19/3이다. 따라서 답은 ①이다.",
     "solutionImageSize": "full"
   },
@@ -655,7 +656,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/26_신흥중_1학기_기말_중2_기출/q21-solution.svg",
-    "solutionImageAlt": "해설 그림: 두 직선이 한 점에서 만나며, 그 교점이 점과 좌표로 표시되어 있다.",
+    "solutionImageAlt": "두 식의 y 계수를 각각 6으로 같게 만든 뒤 빼면 x=1이다. x=1을 3x-2y=7에 대입하면 y=-2이다. 따라서 답은 x=1, y=-2이다.",
     "solutionImageCaption": "두 식의 y 계수를 각각 6으로 같게 만든 뒤 빼면 x=1이다. x=1을 3x-2y=7에 대입하면 y=-2이다. 따라서 답은 x=1, y=-2이다.",
     "solutionImageSize": "full"
   },

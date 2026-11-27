@@ -66,7 +66,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "image": "assets/images/22_연향중_2학기_기말_중3_기출/q2.png",
+    "image": "assets/images/22_연향중_2학기_기말_중3_기출/q2-problem.svg",
     "content": "다음 그림에서 $\\overline{AB}$는 반원 $O$의 지름이고 직선 $BP$는 점 $B$에서의 접선, $\\overline{PD}$는 $\\angle APB$의 이등분선이다. $\\angle CED=110^\\circ$일 때, $\\angle CAB$의 크기는?[4점]",
     "choices": [
       "$45^\\circ$",
@@ -99,7 +99,10 @@ window.questionBank = [
     "decisiveStep": "지름직각과 접현각으로 삼각형의 각을 α로 표현하고 이등분선과 맞꼭지각을 연결한 일차식에서 목표각을 정한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원본 반원과 B에서의 접선 BP, ∠APB를 이등분하는 PD 및 ∠CED=110°를 그린 문제 도형.",
+    "imageCaption": "원본 반원과 B에서의 접선 BP, ∠APB를 이등분하는 PD 및 ∠CED=110°를 그린 문제 도형.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -556,7 +559,7 @@ window.questionBank = [
       "공통자료"
     ],
     "wide": false,
-    "image": "assets/images/22_연향중_2학기_기말_중3_기출/q13.png",
+    "image": "assets/images/22_연향중_2학기_기말_중3_기출/q13-problem.svg",
     "content": "[13~14] 아래의 산점도는 학생 $20$명의 1차, 2차 두 차례에 걸쳐 시행한 영어 듣기 평가 점수를 조사하여 나타낸 것이다. 다음 물음에 답하시오.",
     "choices": [
       "3명",
@@ -586,7 +589,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "두 점수 대소 조건을 y>x로 옮겨 대각선 위쪽의 점을 센다.",
-    "decisiveStep": "두 점수 대소 조건을 y>x로 옮겨 대각선 위쪽의 점을 센다."
+    "decisiveStep": "두 점수 대소 조건을 y>x로 옮겨 대각선 위쪽의 점을 센다.",
+    "imageAlt": "공통 산점도: 1차·2차 점수, 원본의 학생 20명 점 위치와 눈금을 유지한다.",
+    "imageCaption": "공통 산점도: 1차·2차 점수, 원본의 학생 20명 점 위치와 눈금을 유지한다.",
+    "imageSize": "full"
   },
   {
     "id": 14,
@@ -654,7 +660,7 @@ window.questionBank = [
       "그래프"
     ],
     "wide": false,
-    "image": "assets/images/22_연향중_2학기_기말_중3_기출/q15.png",
+    "image": "assets/images/22_연향중_2학기_기말_중3_기출/q15-problem.svg",
     "content": "아래의 산점도는 어느 열차에 탄 $12$명의 승객이 청결도와 안전성에 준 평점을 조사하여 나타낸 것이다. 청결도에 $2$점 이하를 준 승객들이 안전성에 준 평점의 평균은?[4점]",
     "choices": [
       "$1.5$점",
@@ -684,7 +690,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "가로축 값이2이하인 점만 고른 후 그 세로축 값의 평균을 구한다.",
-    "decisiveStep": "가로축 값이2이하인 점만 고른 후 그 세로축 값의 평균을 구한다."
+    "decisiveStep": "가로축 값이2이하인 점만 고른 후 그 세로축 값의 평균을 구한다.",
+    "imageAlt": "청결도·안전성 산점도: 원문 12개 점과 축의 단위 눈금을 유지한다.",
+    "imageCaption": "청결도·안전성 산점도: 원문 12개 점과 축의 단위 눈금을 유지한다.",
+    "imageSize": "full"
   },
   {
     "id": 16,
@@ -912,8 +921,8 @@ window.questionBank = [
       "그래프"
     ],
     "wide": false,
-    "image": "assets/images/22_연향중_2학기_기말_중3_기출/q21.png",
-    "imageSize": "tall",
+    "image": "assets/images/22_연향중_2학기_기말_중3_기출/q21-problem.svg",
+    "imageSize": "full",
     "content": "아래의 산점도는 학생 $20$명의 수학 점수와 영어 점수를 조사하여 나타낸 것이다.",
     "choices": [],
     "answer": "$a=3$, $b=30$, $c=25$",
@@ -937,6 +946,8 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "두 점수90이상 점의 수, 점수차가 최대인 점의 가로좌표, x>y 점의 비율을 각각 그림에서 읽는다.",
-    "decisiveStep": "두 점수90이상 점의 수, 점수차가 최대인 점의 가로좌표, x>y 점의 비율을 각각 그림에서 읽는다."
+    "decisiveStep": "두 점수90이상 점의 수, 점수차가 최대인 점의 가로좌표, x>y 점의 비율을 각각 그림에서 읽는다.",
+    "imageAlt": "수학·영어 산점도: 원문 20개 점과 10점 단위 눈금을 유지한다.",
+    "imageCaption": "수학·영어 산점도: 원문 20개 점과 10점 단위 눈금을 유지한다."
   }
 ];

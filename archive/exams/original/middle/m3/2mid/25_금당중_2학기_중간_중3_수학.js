@@ -139,7 +139,9 @@ window.questionBank = [
     "decisiveStep": "코사인으로 두 변의 비를 정하고 피타고라스로 나머지 변을 구해 사인·탄젠트의 곱으로 전환한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "cos A가 2/3인 직각삼각형에서 밑변 2, 빗변 3, 높이 루트5의 관계를 표시한다.",
+    "solutionImageCaption": "cos A가 2/3인 직각삼각형에서 밑변 2, 빗변 3, 높이 루트5의 관계를 표시한다."
   },
   {
     "id": 4,
@@ -236,7 +238,9 @@ window.questionBank = [
     "decisiveStep": "높이로 나뉜 삼각형의 닮음에서 두 표시각을 원래 삼각형의 예각으로 옮겨 읽고 삼각비의 몫을 정한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "C에서 직각인 8·15·17 삼각형에 AB로 내린 수선 CD와 x·y 각호를 표시한다.",
+    "solutionImageCaption": "C에서 직각인 8·15·17 삼각형에 AB로 내린 수선 CD와 x·y 각호를 표시한다."
   },
   {
     "id": 6,
@@ -286,7 +290,9 @@ window.questionBank = [
     "decisiveStep": "특수각 삼각비로 직각삼각형의 변을 복원하고 각의 이등분선 정리의 변 비로 BC를 나누어 BD를 정한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "빗변 AB=6, B=30도인 직각삼각형에서 A의 이등분선 AD와 BD:DC=2:1을 보인다.",
+    "solutionImageCaption": "빗변 AB=6, B=30도인 직각삼각형에서 A의 이등분선 AD와 BD:DC=2:1을 보인다."
   },
   {
     "id": 7,
@@ -336,7 +342,9 @@ window.questionBank = [
     "decisiveStep": "첫 직각삼각형의 45도 변비로 공통변 BC를 구한 뒤 두 번째 직각삼각형에서 코사인으로 BD를 구한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "직각이등변삼각형 ABC와 BDC의 30도·직각 조건을 겹쳐 그린다.",
+    "solutionImageCaption": "직각이등변삼각형 ABC와 BDC의 30도·직각 조건을 겹쳐 그린다."
   },
   {
     "id": 8,
@@ -386,7 +394,9 @@ window.questionBank = [
     "decisiveStep": "주어진 변을 수평·수직 성분으로 나눈 후 남은 밑변 조각과 높이로 피타고라스 길이를 구한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "B=60도인 삼각형에서 A의 수선 AH로 높이와 수평 길이를 분리해 AC를 계산한다.",
+    "solutionImageCaption": "B=60도인 삼각형에서 A의 수선 AH로 높이와 수평 길이를 분리해 AC를 계산한다."
   },
   {
     "id": 9,
@@ -436,7 +446,9 @@ window.questionBank = [
     "decisiveStep": "둔각의 바깥각으로 45도 직각이등변삼각형을 만들어 AH=CH를 얻고 같은 높이를 공유하는 탄젠트 식으로 높이를 결정한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "C의 외각 45도와 B의 30도 및 A에서 밑변 연장선으로 내린 수선 AH를 보인다.",
+    "solutionImageCaption": "C의 외각 45도와 B의 30도 및 A에서 밑변 연장선으로 내린 수선 AH를 보인다."
   },
   {
     "id": 10,
@@ -486,7 +498,9 @@ window.questionBank = [
     "decisiveStep": "정사각형에서 모서리 삼각형을 빼 삼각형 EBF의 넓이를 구하고 같은 두 변을 복원해 사인값을 얻은 뒤 코사인으로 전환한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "한 변이 4인 정사각형에서 중점 E,F와 ∠EBF=x를 표시하고 △EBF 넓이 6을 비교한다.",
+    "solutionImageCaption": "한 변이 4인 정사각형에서 중점 E,F와 ∠EBF=x를 표시하고 △EBF 넓이 6을 비교한다."
   },
   {
     "id": 11,
@@ -536,7 +550,9 @@ window.questionBank = [
     "decisiveStep": "이등변삼각형의 두 밑각으로 꼭짓각 30도를 구하고 두 변과 끼인각의 삼각비 넓이 공식을 적용한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "AB=AC=4루트2인 이등변삼각형의 밑각 75도, 꼭짓각 30도와 넓이를 보인다.",
+    "solutionImageCaption": "AB=AC=4루트2인 이등변삼각형의 밑각 75도, 꼭짓각 30도와 넓이를 보인다."
   },
   {
     "id": 12,
@@ -586,7 +602,9 @@ window.questionBank = [
     "decisiveStep": "접힌 선분과 폭으로 30도를 얻고 접기 대칭으로 60도를 정한 다음 두 수평거리의 차에서 삼각형의 밑변을 복원한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "세로 폭이 2인 종이띠의 원래 윤곽(점선)과 접힘 선 AC=4, 접혀 생긴 △ABC를 함께 보인다.",
+    "solutionImageCaption": "세로 폭이 2인 종이띠의 원래 윤곽(점선)과 접힘 선 AC=4, 접혀 생긴 △ABC를 함께 보인다."
   },
   {
     "id": 13,
@@ -636,7 +654,9 @@ window.questionBank = [
     "decisiveStep": "넓이식에서 한 변을 먼저 역산한 뒤 그 변의 수평·수직 성분과 남은 밑변으로 피타고라스 길이를 구한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "BC=6, B=60도인 삼각형의 넓이 15루트3으로 AB=10을 구한 뒤 높이로 AC를 계산한다.",
+    "solutionImageCaption": "BC=6, B=60도인 삼각형의 넓이 15루트3으로 AB=10을 구한 뒤 높이로 AC를 계산한다."
   },
   {
     "id": 14,
@@ -686,7 +706,9 @@ window.questionBank = [
     "decisiveStep": "중심에서 현에 내린 수선이 현을 이등분한다는 성질로 반현 길이를 읽는다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "원본의 미지수 x=AM과 현 길이12cm, 중심 수선 OM, 중점 M을 표시하여 x=6을 읽는다.",
+    "solutionImageCaption": "원본의 미지수 x=AM과 현 길이12cm, 중심 수선 OM, 중점 M을 표시하여 x=6을 읽는다."
   },
   {
     "id": 15,
@@ -736,7 +758,9 @@ window.questionBank = [
     "decisiveStep": "현의 절반을 구하고 중심에서 현까지 거리를 r−3으로 표현해 반지름과 함께 피타고라스 방정식에 넣는다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "원의 중심에서 현 AB로 내린 수선 OM과 현의 반쪽 7 및 MC=3으로 반지름을 구한다.",
+    "solutionImageCaption": "원의 중심에서 현 AB로 내린 수선 OM과 현의 반쪽 7 및 MC=3으로 반지름을 구한다."
   },
   {
     "id": 16,
@@ -784,7 +808,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "접하는 두 원의 중심거리를 지름으로 놓고 중심 사이 가로·세로 차가 같은 직각삼각형의 피타고라스 관계로 상자 변을 정한다.",
-    "decisiveStep": "접하는 두 원의 중심거리를 지름으로 놓고 중심 사이 가로·세로 차가 같은 직각삼각형의 피타고라스 관계로 상자 변을 정한다."
+    "decisiveStep": "접하는 두 원의 중심거리를 지름으로 놓고 중심 사이 가로·세로 차가 같은 직각삼각형의 피타고라스 관계로 상자 변을 정한다.",
+    "solutionImageAlt": "반지름2인 동일 원 다섯 개가 정사각형 상자에 접하여 놓인 모습과 한 변 4+4루트2를 그린다.",
+    "solutionImageCaption": "반지름2인 동일 원 다섯 개가 정사각형 상자에 접하여 놓인 모습과 한 변 4+4루트2를 그린다."
   },
   {
     "id": 17,
@@ -831,7 +857,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "외부점에서 그은 두 접선의 길이가 같아 두 변이 결정되고 60도 끼인각으로 삼각형 넓이를 구한다.",
-    "decisiveStep": "외부점에서 그은 두 접선의 길이가 같아 두 변이 결정되고 60도 끼인각으로 삼각형 넓이를 구한다."
+    "decisiveStep": "외부점에서 그은 두 접선의 길이가 같아 두 변이 결정되고 60도 끼인각으로 삼각형 넓이를 구한다.",
+    "solutionImageAlt": "원 밖 P의 접선 PA=PB=6과 P각 60도로 △APB가 정삼각형임을 보인다.",
+    "solutionImageCaption": "원 밖 P의 접선 PA=PB=6과 P각 60도로 △APB가 정삼각형임을 보인다."
   },
   {
     "id": 18,
@@ -878,7 +906,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "내접원의 접선 조각을 x로 놓아 원래 직각삼각형의 피타고라스 식으로 반지름을 구하고 중심과 두 꼭짓점 거리로 둘레를 만든다.",
-    "decisiveStep": "내접원의 접선 조각을 x로 놓아 원래 직각삼각형의 피타고라스 식으로 반지름을 구하고 중심과 두 꼭짓점 거리로 둘레를 만든다."
+    "decisiveStep": "내접원의 접선 조각을 x로 놓아 원래 직각삼각형의 피타고라스 식으로 반지름을 구하고 중심과 두 꼭짓점 거리로 둘레를 만든다.",
+    "solutionImageAlt": "직각삼각형 ABC의 내접원 접점 세 곳과 접선 동등길이, 반지름 4 및 OB·OC를 보인다.",
+    "solutionImageCaption": "직각삼각형 ABC의 내접원 접점 세 곳과 접선 동등길이, 반지름 4 및 OB·OC를 보인다."
   },
   {
     "id": 19,
@@ -978,7 +1008,9 @@ window.questionBank = [
     "decisiveStep": "중심거리와 반지름으로 두 직각삼각형의 변·각을 복원하고 가운데 남은 부채꼴각을 구해 삼각형 둘과 부채꼴 넓이를 합한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "원 O에서 OM=ON=3, ∠NOM=150도인 도형의 오른쪽 음영을 정확한 원호 경계로 보인다.",
+    "solutionImageCaption": "원 O에서 OM=ON=3, ∠NOM=150도인 도형의 오른쪽 음영을 정확한 원호 경계로 보인다."
   },
   {
     "id": 21,
@@ -1022,7 +1054,9 @@ window.questionBank = [
     "decisiveStep": "코사인 정의로 빗변에 대한 인접변을 구하고 그 결과와 빗변으로 피타고라스를 적용해 나머지 변을 구한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "cos A=2/3인 직각삼각형에서 AC=6을 빗변으로 AB=4, BC=2루트5를 계산한다.",
+    "solutionImageCaption": "cos A=2/3인 직각삼각형에서 AC=6을 빗변으로 AB=4, BC=2루트5를 계산한다."
   },
   {
     "id": 22,
@@ -1066,7 +1100,9 @@ window.questionBank = [
     "decisiveStep": "일차함수의 축 교점을 구해 좌표축 직각삼각형을 만들고 변의 비로 사인·코사인·탄젠트를 정한 뒤 식에 대입한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "직선 y=x/2+4의 절편 A(-8,0), B(0,4)와 두 각 a,b를 좌표축 위에 보인다.",
+    "solutionImageCaption": "직선 y=x/2+4의 절편 A(-8,0), B(0,4)와 두 각 a,b를 좌표축 위에 보인다."
   },
   {
     "id": 23,
@@ -1110,7 +1146,9 @@ window.questionBank = [
     "decisiveStep": "45도 직각삼각형에서 대각선 AC를 얻고 이를 이웃 삼각형의 삼각비 넓이에 사용해 사각형 넓이를 합한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "사각형 ABCD를 대각선 AC로 넓이 18인 △ABC와 다른 삼각형 ACD로 나누어 구한다.",
+    "solutionImageCaption": "사각형 ABCD를 대각선 AC로 넓이 18인 △ABC와 다른 삼각형 ACD로 나누어 구한다."
   },
   {
     "id": 24,
@@ -1151,6 +1189,8 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "반지름과 같은 중심거리를 빗변·한 변으로 갖는 두 직각삼각형의 합동을 보이고 반현 길이의 동일성을 전체 현으로 옮긴다.",
-    "decisiveStep": "반지름과 같은 중심거리를 빗변·한 변으로 갖는 두 직각삼각형의 합동을 보이고 반현 길이의 동일성을 전체 현으로 옮긴다."
+    "decisiveStep": "반지름과 같은 중심거리를 빗변·한 변으로 갖는 두 직각삼각형의 합동을 보이고 반현 길이의 동일성을 전체 현으로 옮긴다.",
+    "solutionImageAlt": "반지름 OA=OC, 중심거리 OM=ON, 두 직각으로 △OAM과 △OCN이 합동이며 AB=CD임을 보인다.",
+    "solutionImageCaption": "반지름 OA=OC, 중심거리 OM=ON, 두 직각으로 △OAM과 △OCN이 합동이며 AB=CD임을 보인다."
   }
 ];

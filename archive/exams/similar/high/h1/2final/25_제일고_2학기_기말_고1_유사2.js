@@ -80,8 +80,8 @@ window.questionBank = [
     "sourceQid": 2,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사2/q2-solution.svg",
-    "solutionImageAlt": "해설 그림: ",
-    "solutionImageCaption": "",
+    "solutionImageAlt": "점 P(1, -2)를 점 Q(-3, 4)로 옮기는 평행이동은 x좌표가 4만큼 줄고 y좌표가 6만큼 늘어나는 이동이다. 같은 이동으로 점 A가 점 R(2, 1)로 옮겨졌으므로 A의 좌표는 (2+4, 1-6)=(6, -5)이다. 따라서 답은 ③이다.",
+    "solutionImageCaption": "점 P(1, -2)를 점 Q(-3, 4)로 옮기는 평행이동은 x좌표가 4만큼 줄고 y좌표가 6만큼 늘어나는 이동이다. 같은 이동으로 점 A가 점 R(2, 1)로 옮겨졌으므로 A의 좌표는 (2+4, 1-6)=(6, -5)이다. 따라서 답은 ③이다.",
     "solutionImageSize": "full"
   },
   {
@@ -123,8 +123,8 @@ window.questionBank = [
     "sourceQid": 3,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사2/q3-solution.svg",
-    "solutionImageAlt": "해설 그림: ",
-    "solutionImageCaption": "",
+    "solutionImageAlt": "원의 중심 C(2, -1)과 접점 T(5, 1)를 잇는 반지름의 기울기는 2/3이므로 접선의 기울기는 -3/2이고, 접선(주황)의 방정식은 3x+2y=17이다. 이 접선이 점 K(1, k)를 지나므로 3+2k=17에서 k=7이다. 따라서 답은 ④이다.",
+    "solutionImageCaption": "원의 중심 C(2, -1)과 접점 T(5, 1)를 잇는 반지름의 기울기는 2/3이므로 접선의 기울기는 -3/2이고, 접선(주황)의 방정식은 3x+2y=17이다. 이 접선이 점 K(1, k)를 지나므로 3+2k=17에서 k=7이다. 따라서 답은 ④이다.",
     "solutionImageSize": "full"
   },
   {
@@ -166,8 +166,8 @@ window.questionBank = [
     "sourceQid": 4,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사2/q4-solution.svg",
-    "solutionImageAlt": "해설 그림: ",
-    "solutionImageCaption": "",
+    "solutionImageAlt": "x>2, y>k-1인 모든 점이 x+y>7을 만족해야 한다. 색칠한 영역 x>2, y>k-1에서 x+y의 값은 꼭짓점 (2, k-1)에 가까울수록 작아지므로 이 꼭짓점이 직선 x+y=7 위(또는 위쪽)에 있어야 한다. 2+(k-1)≥7에서 k≥6이므로 k=6일 때 꼭짓점은 (2, 5)이고 최솟값은 6이다. 따라서 답은 ①이다.",
+    "solutionImageCaption": "x>2, y>k-1인 모든 점이 x+y>7을 만족해야 한다. 색칠한 영역 x>2, y>k-1에서 x+y의 값은 꼭짓점 (2, k-1)에 가까울수록 작아지므로 이 꼭짓점이 직선 x+y=7 위(또는 위쪽)에 있어야 한다. 2+(k-1)≥7에서 k≥6이므로 k=6일 때 꼭짓점은 (2, 5)이고 최솟값은 6이다. 따라서 답은 ①이다.",
     "solutionImageSize": "full"
   },
   {
@@ -209,8 +209,8 @@ window.questionBank = [
     "sourceQid": 5,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사2/q5-solution.svg",
-    "solutionImageAlt": "해설 그림: ",
-    "solutionImageCaption": "",
+    "solutionImageAlt": "세 조건의 진리집합을 P, Q, R이라 하면 P는 x≤-2 또는 x≥5(파랑 줄)이다. p가 q이기 위한 충분조건이므로 P⊂Q이고, x≤-2인 모든 x가 x<a를 만족해야 하므로 a>-2이며 정수 a의 최솟값은 -1이다(초록 Q 줄은 a=-1). p가 r이기 위한 필요조건이므로 R⊂P이고, x≥b인 모든 x가 P에 속하려면 b≥5이므로 정수 b의 최솟값은 5이다(주황 R 줄은 b=5). 따라서 -1+5=4이므로 답은 ④이다.",
+    "solutionImageCaption": "세 조건의 진리집합을 P, Q, R이라 하면 P는 x≤-2 또는 x≥5(파랑 줄)이다. p가 q이기 위한 충분조건이므로 P⊂Q이고, x≤-2인 모든 x가 x<a를 만족해야 하므로 a>-2이며 정수 a의 최솟값은 -1이다(초록 Q 줄은 a=-1). p가 r이기 위한 필요조건이므로 R⊂P이고, x≥b인 모든 x가 P에 속하려면 b≥5이므로 정수 b의 최솟값은 5이다(주황 R 줄은 b=5). 따라서 -1+5=4이므로 답은 ④이다.",
     "solutionImageSize": "full"
   },
   {
@@ -252,8 +252,8 @@ window.questionBank = [
     "sourceQid": 6,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사2/q6-solution.svg",
-    "solutionImageAlt": "해설 그림: ",
-    "solutionImageCaption": "",
+    "solutionImageAlt": "점 A(1, 3)을 x축에 대하여 대칭이동한 점 A'(1, -3)을 잡으면 AP=A'P이므로 AP+BP=A'P+BP(파랑 AP, PB와 점선 A'P)이고, A', P, B가 한 직선 위에 있을 때 최소가 된다. A'B=10에서 √(64+(k+3)²)=10이므로 k=3이고, B(9, 3)일 때 P(5, 0)이다. 따라서 답은 ①이다.",
+    "solutionImageCaption": "점 A(1, 3)을 x축에 대하여 대칭이동한 점 A'(1, -3)을 잡으면 AP=A'P이므로 AP+BP=A'P+BP(파랑 AP, PB와 점선 A'P)이고, A', P, B가 한 직선 위에 있을 때 최소가 된다. A'B=10에서 √(64+(k+3)²)=10이므로 k=3이고, B(9, 3)일 때 P(5, 0)이다. 따라서 답은 ①이다.",
     "solutionImageSize": "full"
   },
   {
@@ -295,8 +295,8 @@ window.questionBank = [
     "sourceQid": 7,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사2/q7-solution.svg",
-    "solutionImageAlt": "해설 그림: ",
-    "solutionImageCaption": "",
+    "solutionImageAlt": "점 P(-2, 1)을 지나는 직선의 기울기를 m이라 하고 중심 C(1, -3)에서 직선까지의 거리가 반지름 √5라 하면 4m²+24m+11=0이다. 두 근은 -1/2, -11/2이므로 두 접선 y=-x/2(파랑), y=-11x/2-10(초록)을 그렸고 접점은 각각 T1(2, -1), T2(-6/5, -17/5)이며 반지름 CT1, CT2는 접선에 수직이다. 기울기의 합은 -6이므로 답은 ⑤이다.",
+    "solutionImageCaption": "점 P(-2, 1)을 지나는 직선의 기울기를 m이라 하고 중심 C(1, -3)에서 직선까지의 거리가 반지름 √5라 하면 4m²+24m+11=0이다. 두 근은 -1/2, -11/2이므로 두 접선 y=-x/2(파랑), y=-11x/2-10(초록)을 그렸고 접점은 각각 T1(2, -1), T2(-6/5, -17/5)이며 반지름 CT1, CT2는 접선에 수직이다. 기울기의 합은 -6이므로 답은 ⑤이다.",
     "solutionImageSize": "full"
   },
   {
@@ -377,8 +377,8 @@ window.questionBank = [
     "sourceQid": 9,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사2/q9-solution.svg",
-    "solutionImageAlt": "해설 그림: ",
-    "solutionImageCaption": "",
+    "solutionImageAlt": "직선 x/a+y/b=1이 점 P(2, 3)을 지나므로 2/a+3/b=1이고, 산술평균과 기하평균의 관계에서 ab≥24이다. 등호는 a=4, b=6일 때 성립하므로 이때 직선이 x축, y축과 만나는 점은 A(4, 0), B(0, 6)이고 삼각형 OAB의 넓이는 (1/2)×4×6=12로 최소이다. 따라서 답은 ②이다.",
+    "solutionImageCaption": "직선 x/a+y/b=1이 점 P(2, 3)을 지나므로 2/a+3/b=1이고, 산술평균과 기하평균의 관계에서 ab≥24이다. 등호는 a=4, b=6일 때 성립하므로 이때 직선이 x축, y축과 만나는 점은 A(4, 0), B(0, 6)이고 삼각형 OAB의 넓이는 (1/2)×4×6=12로 최소이다. 따라서 답은 ②이다.",
     "solutionImageSize": "full"
   },
   {
@@ -422,9 +422,11 @@ window.questionBank = [
     "image": "assets/images/25_제일고_2학기_기말_고1_유사2/q10.svg",
     "imageSize": "full",
     "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사2/q10-solution.svg",
-    "solutionImageAlt": "해설 그림: ",
-    "solutionImageCaption": "",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "f(2)=4이므로 f(f(x))=4가 되려면 f(x)=2이어야 하고, f(5)=2이므로 x=5이다. 실선 화살표 5→2와 2→4가 (f∘f)(5)=f(f(5))=f(2)=4를 나타내며(음영 원소), 따라서 답은 ⑤이다.",
+    "solutionImageCaption": "f(2)=4이므로 f(f(x))=4가 되려면 f(x)=2이어야 하고, f(5)=2이므로 x=5이다. 실선 화살표 5→2와 2→4가 (f∘f)(5)=f(f(5))=f(2)=4를 나타내며(음영 원소), 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "imageAlt": "집합 X={1, 2, 3, 4, 5}에서 X로 가는 함수 f의 대응도이다.",
+    "imageCaption": "집합 X={1, 2, 3, 4, 5}에서 X로 가는 함수 f의 대응도이다."
   },
   {
     "id": 11,
@@ -465,8 +467,8 @@ window.questionBank = [
     "sourceQid": 11,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사2/q11-solution.svg",
-    "solutionImageAlt": "해설 그림: ",
-    "solutionImageCaption": "",
+    "solutionImageAlt": "k=2일 때 y=-√(x+4)+2의 그래프는 시작점 (-4, 2)에서 오른쪽 아래로 뻗으며 x=0일 때 y=0이다. 감소함수이므로 x>0에서 y<0이어서 색칠한 제1사분면을 지나지 않는다. k=3이면 x=0에서 y=1>0이 되어 제1사분면을 지나므로 k의 최댓값은 2이고 답은 ③이다.",
+    "solutionImageCaption": "k=2일 때 y=-√(x+4)+2의 그래프는 시작점 (-4, 2)에서 오른쪽 아래로 뻗으며 x=0일 때 y=0이다. 감소함수이므로 x>0에서 y<0이어서 색칠한 제1사분면을 지나지 않는다. k=3이면 x=0에서 y=1>0이 되어 제1사분면을 지나므로 k의 최댓값은 2이고 답은 ③이다.",
     "solutionImageSize": "full"
   },
   {
@@ -512,7 +514,9 @@ window.questionBank = [
     "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사2/q12-solution.svg",
     "solutionImageAlt": "해설 그림: y=2에서 곡선과 만나는 점 (5, 2)를 읽으면 f(5)=2이므로 f⁻¹(2)=5이다. 5는 직선 y=x 위의 점 (5, 5)를 거쳐 y=5로 옮기면 곡선 위의 점 (7, 5)에서 f(7)=5이므로 f⁻¹(5)=7이다. 따라서 (f⁻¹∘f⁻¹)(2)=7이므로 답은 ⑤이다.",
     "solutionImageCaption": "y=2에서 곡선과 만나는 점 (5, 2)를 읽으면 f(5)=2이므로 f⁻¹(2)=5이다. 5는 직선 y=x 위의 점 (5, 5)를 거쳐 y=5로 옮기면 곡선 위의 점 (7, 5)에서 f(7)=5이므로 f⁻¹(5)=7이다. 따라서 (f⁻¹∘f⁻¹)(2)=7이므로 답은 ⑤이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "문제의 그래프는 (2,1), (5,2), (7,5)를 지나며 점선은 x·y축에 내려진다. 직선 y=x와 곡선 y=f(x)를 구분하고 세 점의 좌표만 읽을 수 있게 한다. 합성 역함수의 결과는 표시하지 않는다.",
+    "imageCaption": "문제의 그래프는 (2,1), (5,2), (7,5)를 지나며 점선은 x·y축에 내려진다. 직선 y=x와 곡선 y=f(x)를 구분하고 세 점의 좌표만 읽을 수 있게 한다. 합성 역함수의 결과는 표시하지 않는다."
   },
   {
     "id": 13,
@@ -553,9 +557,9 @@ window.questionBank = [
     "sourceQid": 13,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사2/q13-solution.svg",
-    "solutionImageAlt": "해설 그림: ",
-    "solutionImageCaption": "",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "y=(3x-4)/(x-2)=3+2/(x-2)이므로 점근선은 x=2, y=3이고 두 점근선의 교점 P(2, 3)이 대칭의 중심이다. 점 P를 지나고 기울기가 ±1인 직선 a: y=x+1(파랑)과 b: y=-x+5(초록)는 대칭축이다. 직선 c: y=-x+3(주황)은 점 P를 지나지 않아 대칭축이 아니므로 옳지 않은 것은 ⑤이고 답은 ⑤이다.",
+    "solutionImageCaption": "y=(3x-4)/(x-2)=3+2/(x-2)이므로 점근선은 x=2, y=3이고 두 점근선의 교점 P(2, 3)이 대칭의 중심이다. 점 P를 지나고 기울기가 ±1인 직선 a: y=x+1(파랑)과 b: y=-x+5(초록)는 대칭축이다. 직선 c: y=-x+3(주황)은 점 P를 지나지 않아 대칭축이 아니므로 옳지 않은 것은 ⑤이고 답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -596,8 +600,8 @@ window.questionBank = [
     "sourceQid": 14,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사2/q14-solution.svg",
-    "solutionImageAlt": "해설 그림: ",
-    "solutionImageCaption": "",
+    "solutionImageAlt": "첫째 함수를 f(파랑), 둘째 함수를 g(주황)라 하자. k=4일 때 g: y=(4x+1)/(x+4)=4-15/(x+4)의 점근선은 x=-4, y=4이고, f: y=1/(x-2)+1의 점근선은 x=2, y=1이다. 네 점근선으로 둘러싸인 직사각형은 가로 2-(-4)=6, 세로 4-1=3이므로 넓이가 18이다. 따라서 답은 ②이다.",
+    "solutionImageCaption": "첫째 함수를 f(파랑), 둘째 함수를 g(주황)라 하자. k=4일 때 g: y=(4x+1)/(x+4)=4-15/(x+4)의 점근선은 x=-4, y=4이고, f: y=1/(x-2)+1의 점근선은 x=2, y=1이다. 네 점근선으로 둘러싸인 직사각형은 가로 2-(-4)=6, 세로 4-1=3이므로 넓이가 18이다. 따라서 답은 ②이다.",
     "solutionImageSize": "full"
   },
   {
@@ -719,9 +723,11 @@ window.questionBank = [
     "image": "assets/images/25_제일고_2학기_기말_고1_유사2/q17.svg",
     "imageSize": "full",
     "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사2/q17-solution.svg",
-    "solutionImageAlt": "해설 그림: ",
-    "solutionImageCaption": "",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "A(a,2√a), D(2a,2√a)이므로 AD=a, AB=2√a이다. 직각인 정사각형의 두 변이 같아 a=2√a이며 a=4이다. A(4,4), B(4,0), C(8,0), D(8,4)와 변 AD의 길이 4를 표시하므로 넓이는 4²=16, 답은 ④이다.",
+    "solutionImageCaption": "A(a,2√a), D(2a,2√a)이므로 AD=a, AB=2√a이다. 직각인 정사각형의 두 변이 같아 a=2√a이며 a=4이다. A(4,4), B(4,0), C(8,0), D(8,4)와 변 AD의 길이 4를 표시하므로 넓이는 4²=16, 답은 ④이다.",
+    "solutionImageSize": "full",
+    "imageAlt": "원문에 주어진 두 근호함수 그래프, A와 D를 수평으로 잇고 A,B 및 D,C를 수직으로 잇는 정사각형 ABCD를 그린다. A는 y=√(4x), D는 y=√(2x)에 있고 B,C는 x축 위다. 한 변의 길이와 넓이 값은 표시하지 않는다.",
+    "imageCaption": "원문에 주어진 두 근호함수 그래프, A와 D를 수평으로 잇고 A,B 및 D,C를 수직으로 잇는 정사각형 ABCD를 그린다. A는 y=√(4x), D는 y=√(2x)에 있고 B,C는 x축 위다. 한 변의 길이와 넓이 값은 표시하지 않는다."
   },
   {
     "id": 18,
@@ -799,8 +805,8 @@ window.questionBank = [
     "sourceQid": 19,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사2/q19-solution.svg",
-    "solutionImageAlt": "해설 그림: ",
-    "solutionImageCaption": "",
+    "solutionImageAlt": "부정은 모든 실수 x에 대하여 x²+2kx+k+6>0이다. 이 이차부등식이 항상 성립하려면 판별식 D/4=k²-k-6=(k+2)(k-3)<0이어야 한다. 그림은 D/4=k²-k-6을 (가로축 k, 세로축 D/4의 값)으로 그린 그래프이며, 가로축 아래에 있는 구간이 -2<k<3이다. 이를 만족하는 정수 k는 -1, 0, 1, 2의 4개이다.",
+    "solutionImageCaption": "부정은 모든 실수 x에 대하여 x²+2kx+k+6>0이다. 이 이차부등식이 항상 성립하려면 판별식 D/4=k²-k-6=(k+2)(k-3)<0이어야 한다. 그림은 D/4=k²-k-6을 (가로축 k, 세로축 D/4의 값)으로 그린 그래프이며, 가로축 아래에 있는 구간이 -2<k<3이다. 이를 만족하는 정수 k는 -1, 0, 1, 2의 4개이다.",
     "solutionImageSize": "full"
   },
   {

@@ -876,8 +876,8 @@ window.questionBank = [
       "sourceUid": null,
       "sourceUidStatus": "ABSENT",
       "solutionImage": "assets/images/18_연향중_2학기_기말_중3_수학/q21-solution.svg",
-      "solutionImageAlt": "해설 그림: 점 B에서 직각인 삼각형 A, B, D(파란색 칠)와 삼각형 B, C, D(주황색 칠)가 대각선 BD를 공유하는 사각형이다. 각 A는 60도, 각 CDB는 30도이고 AB는 7cm, AD는 14cm, CD는 12cm이다. 점 C에서 BD에 내린 수선의 발이 H이고 CH는 6cm로 점선으로 표시되어 있다.",
-      "solutionImageCaption": "대각선 BD로 사각형을 두 삼각형으로 나눈다. 직각삼각형 ABD에서 BD=7√3이므로 파란 삼각형의 넓이는 7×7√3÷2이다. C에서 BD에 내린 수선의 발을 H라 하면 CH=12×sin30°=6이므로 주황 삼각형의 넓이는 7√3×6÷2=21√3이다. 두 넓이를 더한다. 정답은 (91√3)÷2 cm²이다.",
+      "solutionImageAlt": "대각선 BD로 사각형을 두 삼각형으로 나눈다. 직각삼각형 ABD에서 BD=7√3이고, C에서 BD에 내린 점선 수선 CH의 길이는 6이다. 두 삼각형의 넓이를 합한다.",
+      "solutionImageCaption": "대각선 BD로 사각형을 두 삼각형으로 나눈다. 직각삼각형 ABD에서 BD=7√3이고, C에서 BD에 내린 점선 수선 CH의 길이는 6이다. 두 삼각형의 넓이를 합한다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -898,7 +898,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "대각선 BD로 사각형을 두 삼각형으로 나누고 sin60으로 BD, sin30으로 다른 삼각형의 높이를 얻어 두 넓이를 합한다.",
-    "decisiveStep": "대각선 BD로 사각형을 두 삼각형으로 나누고 sin60으로 BD, sin30으로 다른 삼각형의 높이를 얻어 두 넓이를 합한다."
+    "decisiveStep": "대각선 BD로 사각형을 두 삼각형으로 나누고 sin60으로 BD, sin30으로 다른 삼각형의 높이를 얻어 두 넓이를 합한다.",
+    "image": "assets/images/18_연향중_2학기_기말_중3_수학/q21-problem.svg",
+    "imageAlt": "사각형 ABCD에서 A는 60도, ABD는 직각, CDB는 30도이고, AB는 7cm, AD는 14cm, CD는 12cm이다.",
+    "imageCaption": "사각형 ABCD에서 A는 60도, ABD는 직각, CDB는 30도이고, AB는 7cm, AD는 14cm, CD는 12cm이다.",
+    "imageSize": "full"
   },
     {
       "id": 22,
@@ -935,7 +939,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "P가 O에 겹치는 접기에서 AB가 PO의 수직이등분선임을 얻는다. 반지름과 OM으로 AM을 피타고라스 계산하고 PM의 중점 Q에서 PQ를 구해 PAQ의 넓이를 산출한다.",
-    "decisiveStep": "P가 O에 겹치는 접기에서 AB가 PO의 수직이등분선임을 얻는다. 반지름과 OM으로 AM을 피타고라스 계산하고 PM의 중점 Q에서 PQ를 구해 PAQ의 넓이를 산출한다."
+    "decisiveStep": "P가 O에 겹치는 접기에서 AB가 PO의 수직이등분선임을 얻는다. 반지름과 OM으로 AM을 피타고라스 계산하고 PM의 중점 Q에서 PQ를 구해 PAQ의 넓이를 산출한다.",
+    "image": "assets/images/18_연향중_2학기_기말_중3_수학/q22-problem.svg",
+    "imageAlt": "반지름 4√3cm인 원을 접을 때 P와 O가 겹치고, AB는 접는 선이다. Q는 PM 위에서 PQ=QM이며, 색칠은 구하려는 삼각형 PAQ에만 한다.",
+    "imageCaption": "반지름 4√3cm인 원을 접을 때 P와 O가 겹치고, AB는 접는 선이다. Q는 PM 위에서 PQ=QM이며, 색칠은 구하려는 삼각형 PAQ에만 한다.",
+    "imageSize": "full"
   },
     {
       "id": 23,

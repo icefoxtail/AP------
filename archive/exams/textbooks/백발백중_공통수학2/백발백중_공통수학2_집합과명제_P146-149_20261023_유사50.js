@@ -55,9 +55,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P146-Q01-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "두 집합에서 한쪽에만 속하는 원소는 1, 4, 5, 6, 10이고, 색칠된 두 차집합이 그 부분이다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "두 집합에서 한쪽에만 속하는 원소는 1, 4, 5, 6, 10이고, 색칠된 두 차집합이 그 부분이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P146-Q01-S1-R1",
@@ -114,9 +115,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P146-Q01-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "두 집합에서 한쪽에만 속하는 원소는 1, 2, 7, 9이고, 색칠된 두 차집합이 그 부분이다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "두 집합에서 한쪽에만 속하는 원소는 1, 2, 7, 9이고, 색칠된 두 차집합이 그 부분이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P146-Q01-S2-R1",
@@ -173,9 +175,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P146-Q01-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "두 집합에서 한쪽에만 속하는 원소는 1, 3, 5, 6, 8, 10, 12이고, 색칠된 두 차집합이 그 부분이다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "두 집합에서 한쪽에만 속하는 원소는 1, 3, 5, 6, 8, 10, 12이고, 색칠된 두 차집합이 그 부분이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P146-Q02-T1-R1",
@@ -232,13 +235,15 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P146-Q02-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "세 변의 길이가 정해진 삼각형 ABC에서 M은 BC의 중점이고, N은 AM을 2:3으로 내분한다.",
+    "solutionImageSize": "full",
     "inferredFields": [],
     "image": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P146-Q02-T1-R1-problem.svg",
     "imageAlt": "삼각형 ABC에서 BC의 중점 M과 AM을 2:3으로 내분하는 N의 위치. 세 변의 길이와 비율은 주어진 조건이다.",
     "imageCaption": "삼각형 ABC에서 BC의 중점 M과 AM을 2:3으로 내분하는 N의 위치. 세 변의 길이와 비율은 주어진 조건이다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageCaption": "세 변의 길이가 정해진 삼각형 ABC에서 M은 BC의 중점이고, N은 AM을 2:3으로 내분한다.",
+    "solutionImageScale": 90
   },
   {
     "id": "BV-BAKBAL-H-COM2-P146-Q02-S1-R1",
@@ -295,13 +300,15 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P146-Q02-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "세 변의 길이가 정해진 삼각형 ABC에서 M은 BC의 중점이고, N은 AM을 3:2으로 내분한다.",
+    "solutionImageSize": "full",
     "inferredFields": [],
     "image": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P146-Q02-S1-R1-problem.svg",
     "imageAlt": "삼각형 ABC에서 BC의 중점 M과 AM을 3:2으로 내분하는 N의 위치. 세 변의 길이와 비율은 주어진 조건이다.",
     "imageCaption": "삼각형 ABC에서 BC의 중점 M과 AM을 3:2으로 내분하는 N의 위치. 세 변의 길이와 비율은 주어진 조건이다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageCaption": "세 변의 길이가 정해진 삼각형 ABC에서 M은 BC의 중점이고, N은 AM을 3:2으로 내분한다.",
+    "solutionImageScale": 90
   },
   {
     "id": "BV-BAKBAL-H-COM2-P146-Q02-S2-R1",
@@ -358,13 +365,15 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P146-Q02-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "세 변의 길이가 정해진 삼각형 ABC에서 M은 BC의 중점이고, N은 AM을 4:1으로 내분한다.",
+    "solutionImageSize": "full",
     "inferredFields": [],
     "image": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P146-Q02-S2-R1-problem.svg",
     "imageAlt": "삼각형 ABC에서 BC의 중점 M과 AM을 4:1으로 내분하는 N의 위치. 세 변의 길이와 비율은 주어진 조건이다.",
     "imageCaption": "삼각형 ABC에서 BC의 중점 M과 AM을 4:1으로 내분하는 N의 위치. 세 변의 길이와 비율은 주어진 조건이다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageCaption": "세 변의 길이가 정해진 삼각형 ABC에서 M은 BC의 중점이고, N은 AM을 4:1으로 내분한다.",
+    "solutionImageScale": 90
   },
   {
     "id": "BV-BAKBAL-H-COM2-P146-Q03-T1-R1",
@@ -598,9 +607,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P146-Q04-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "A와 B에 같은 평행이동을 적용하면 각각 A′와 B′로 옮겨진다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "A와 B에 같은 평행이동을 적용하면 각각 A′와 B′로 옮겨진다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P146-Q04-S1-R1",
@@ -657,9 +667,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P146-Q04-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "A와 B에 같은 평행이동을 적용하면 각각 A′와 B′로 옮겨진다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "A와 B에 같은 평행이동을 적용하면 각각 A′와 B′로 옮겨진다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P146-Q04-S2-R1",
@@ -716,9 +727,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P146-Q04-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "A와 B에 같은 평행이동을 적용하면 각각 A′와 B′로 옮겨진다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "A와 B에 같은 평행이동을 적용하면 각각 A′와 B′로 옮겨진다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P146-Q05-T1-R1",
@@ -775,9 +787,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P146-Q05-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "주어진 직선과 그 직선에 수직인 직선이 주어진 점 T에서 만나는 수선 관계. 진한 직선은 수직인 직선이다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "주어진 직선과 그 직선에 수직인 직선이 주어진 점 T에서 만나는 수선 관계. 진한 직선은 수직인 직선이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P146-Q05-S1-R1",
@@ -834,9 +847,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P146-Q05-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "주어진 점 T에서 직선 L에 내린 수선과 L에 수직인 직선 R을 나타낸다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "주어진 점 T에서 직선 L에 내린 수선과 L에 수직인 직선 R을 나타낸다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P146-Q05-S2-R1",
@@ -893,9 +907,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P146-Q05-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "주어진 점 T에서 직선 L에 내린 수선과 L에 수직인 직선 R을 나타낸다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "주어진 점 T에서 직선 L에 내린 수선과 L에 수직인 직선 R을 나타낸다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P147-Q06-T1-R1",
@@ -952,9 +967,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P147-Q06-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "해설에서 구한 첫 번째 가능한 k의 직선은 원과 만나지 않는다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "해설에서 구한 첫 번째 가능한 k의 직선은 원과 만나지 않는다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P147-Q06-S1-R1",
@@ -1306,9 +1322,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P147-Q08-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "삼각형 ABC의 세 중선이 만나는 무게중심 G에서 거리 제곱합이 최소가 된다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "삼각형 ABC의 세 중선이 만나는 무게중심 G에서 거리 제곱합이 최소가 된다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P147-Q08-S1-R1",
@@ -1365,9 +1382,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P147-Q08-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "삼각형 ABC의 세 중선이 만나는 무게중심 G에서 거리 제곱합이 최소가 된다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "삼각형 ABC의 세 중선이 만나는 무게중심 G에서 거리 제곱합이 최소가 된다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P147-Q08-S2-R1",
@@ -1424,9 +1442,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P147-Q08-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "삼각형 ABC의 세 중선이 만나는 무게중심 G에서 거리 제곱합이 최소가 된다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "삼각형 ABC의 세 중선이 만나는 무게중심 G에서 거리 제곱합이 최소가 된다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P147-Q09-T1-R1",
@@ -1483,9 +1502,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P147-Q09-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "포물선과 평행이동한 직선이 접점 T에서 만나 중근을 갖는다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "포물선과 평행이동한 직선이 접점 T에서 만나 중근을 갖는다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P147-Q09-S1-R1",
@@ -1542,9 +1562,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P147-Q09-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "포물선과 평행이동한 직선이 접점 T에서 만나 중근을 갖는다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "포물선과 평행이동한 직선이 접점 T에서 만나 중근을 갖는다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P147-Q09-S2-R1",
@@ -1601,9 +1622,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P147-Q09-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "평행이동한 직선과 포물선이 한 점 T에서 접하는 모습을 표시한다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "평행이동한 직선과 포물선이 한 점 T에서 접하는 모습을 표시한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P147-Q10-T1-R1",
@@ -1660,13 +1682,14 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P147-Q10-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "중심에서 현의 중점에 내린 수선과 반지름으로 직각삼각형을 만든다.",
+    "solutionImageSize": "full",
     "inferredFields": [],
     "image": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P147-Q10-T1-R1-problem.svg",
     "imageAlt": "주어진 원과 직선의 두 교점 A, B 및 현 AB의 중점 M을 표시한다.",
     "imageCaption": "주어진 원과 직선의 두 교점 A, B 및 현 AB의 중점 M을 표시한다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageCaption": "중심에서 현의 중점에 내린 수선과 반지름으로 직각삼각형을 만든다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P147-Q10-S1-R1",
@@ -1723,13 +1746,14 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P147-Q10-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "중심에서 현의 중점에 내린 수선과 반지름으로 직각삼각형을 만든다.",
+    "solutionImageSize": "full",
     "inferredFields": [],
     "image": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P147-Q10-S1-R1-problem.svg",
     "imageAlt": "주어진 원과 직선의 두 교점 A, B 및 현 AB의 중점 M을 표시한다.",
     "imageCaption": "주어진 원과 직선의 두 교점 A, B 및 현 AB의 중점 M을 표시한다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageCaption": "중심에서 현의 중점에 내린 수선과 반지름으로 직각삼각형을 만든다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P147-Q10-S2-R1",
@@ -1786,13 +1810,14 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P147-Q10-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "중심에서 현의 중점에 내린 수선과 반지름으로 직각삼각형을 만든다.",
+    "solutionImageSize": "full",
     "inferredFields": [],
     "image": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P147-Q10-S2-R1-problem.svg",
     "imageAlt": "주어진 원과 직선의 두 교점 A, B 및 현 AB의 중점 M을 표시한다.",
     "imageCaption": "주어진 원과 직선의 두 교점 A, B 및 현 AB의 중점 M을 표시한다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageCaption": "중심에서 현의 중점에 내린 수선과 반지름으로 직각삼각형을 만든다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P148-Q11-T1-R1",
@@ -1911,12 +1936,13 @@ window.questionBank = [
     "sourceMatch": "SAME_CONCEPT_AND_METHOD_VISUAL",
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P148-Q11-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "변수를 교환하고 평행이동한 결과의 왼쪽 또는 오른쪽 반원 영역을 나타낸다.",
+    "solutionImageSize": "full",
     "inferredFields": [],
     "problemImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P148-Q11-S1-R1-problem.svg",
     "problemImageAlt": "발문 도형",
-    "problemImageSize": "large"
+    "problemImageSize": "large",
+    "solutionImageCaption": "변수를 교환하고 평행이동한 결과의 왼쪽 또는 오른쪽 반원 영역을 나타낸다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P148-Q12-T1-R1",
@@ -1973,11 +1999,12 @@ window.questionBank = [
     "sourceMatch": "SAME_CONCEPT_AND_METHOD_TEXT_ONLY",
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P148-Q12-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "원의 중심에서 주어진 직선에 내린 수선의 발에서 접선을 그려 최소 길이를 나타낸다.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "SOURCE_IMAGE_EXACT_MATCH"
-    ]
+    ],
+    "solutionImageCaption": "원의 중심에서 주어진 직선에 내린 수선의 발에서 접선을 그려 최소 길이를 나타낸다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P148-Q12-S1-R1",
@@ -2095,9 +2122,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CONCEPT_AND_METHOD_VISUAL",
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P148-Q13-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "매개변수 m=0인 대표 직선 y=5는 삼각형의 세 꼭짓점과 떨어져 있다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "매개변수 m=0인 대표 직선 y=5는 삼각형의 세 꼭짓점과 떨어져 있다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P148-Q13-S1-R1",
@@ -2154,9 +2182,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CONCEPT_AND_METHOD_VISUAL",
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P148-Q13-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "매개변수 m=0인 대표 직선 y=4는 삼각형의 세 꼭짓점과 떨어져 있다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "매개변수 m=0인 대표 직선 y=4는 삼각형의 세 꼭짓점과 떨어져 있다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P148-Q14-T1-R1",
@@ -2331,9 +2360,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CONCEPT_AND_METHOD_VISUAL",
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P148-Q15-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "A를 y=x에 대해 대칭시킨 A′와 두 삼각형이 공통 밑변 BC를 가지는 모습을 보여 준다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "A를 y=x에 대해 대칭시킨 A′와 두 삼각형이 공통 밑변 BC를 가지는 모습을 보여 준다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P148-Q15-S1-R1",
@@ -2390,9 +2420,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CONCEPT_AND_METHOD_VISUAL",
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P148-Q15-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "A를 직선 y=x에 대칭시킨 A′와 공통 밑변 BC를 쓰는 두 삼각형을 보여 준다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "A를 직선 y=x에 대칭시킨 A′와 공통 밑변 BC를 쓰는 두 삼각형을 보여 준다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P148-Q16-T1-R1",
@@ -2449,13 +2480,14 @@ window.questionBank = [
     "sourceMatch": "SAME_CONCEPT_AND_METHOD_VISUAL",
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P148-Q16-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "AB를 지름으로 하는 원과 y=x+t의 교점 P,Q가 현을 만들며 중심에서 현에 내린 수선은 이를 이등분한다.",
+    "solutionImageSize": "full",
     "inferredFields": [],
     "image": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P148-Q16-T1-R1-problem.svg",
     "imageAlt": "직선 y=x+t 위 두 점 P,Q에서 AB를 보는 각이 직각이다.",
     "imageCaption": "직선 y=x+t 위 두 점 P,Q에서 AB를 보는 각이 직각이다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageCaption": "AB를 지름으로 하는 원과 y=x+t의 교점 P,Q가 현을 만들며 중심에서 현에 내린 수선은 이를 이등분한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P148-Q16-S1-R1",
@@ -2512,13 +2544,14 @@ window.questionBank = [
     "sourceMatch": "SAME_CONCEPT_AND_METHOD_VISUAL",
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P148-Q16-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "AB를 지름으로 하는 원과 y=x+t의 교점 P,Q가 현을 만들며 중심에서 현에 내린 수선은 이를 이등분한다.",
+    "solutionImageSize": "full",
     "inferredFields": [],
     "image": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P148-Q16-S1-R1-problem.svg",
     "imageAlt": "직선 y=x+t 위 두 점 P,Q에서 AB를 보는 각이 직각이다.",
     "imageCaption": "직선 y=x+t 위 두 점 P,Q에서 AB를 보는 각이 직각이다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageCaption": "AB를 지름으로 하는 원과 y=x+t의 교점 P,Q가 현을 만들며 중심에서 현에 내린 수선은 이를 이등분한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P149-Q17-T1-R1",
@@ -2575,9 +2608,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CONCEPT_AND_METHOD_VISUAL",
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P149-Q17-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "선분 AB를 지정된 비로 나누는 P와 다른 점 T를 지나는 직선의 위치를 나타낸다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "선분 AB를 지정된 비로 나누는 P와 다른 점 T를 지나는 직선의 위치를 나타낸다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P149-Q17-S1-R1",
@@ -2634,9 +2668,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CONCEPT_AND_METHOD_VISUAL",
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P149-Q17-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "선분 AB를 지정된 비로 나누는 P와 다른 점 T를 지나는 직선의 위치를 나타낸다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "선분 AB를 지정된 비로 나누는 P와 다른 점 T를 지나는 직선의 위치를 나타낸다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P149-Q18-T1-R1",
@@ -2693,9 +2728,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CONCEPT_AND_METHOD_VISUAL",
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P149-Q18-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "전체집합과 B의 원소 수로 A∩B와 Aᶜ∩B의 크기를 구분한다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "전체집합과 B의 원소 수로 A∩B와 Aᶜ∩B의 크기를 구분한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P149-Q18-S1-R1",
@@ -2752,9 +2788,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CONCEPT_AND_METHOD_VISUAL",
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P149-Q18-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "전체집합과 B의 원소 수로 A∩B와 Aᶜ∩B의 크기를 구분한다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "전체집합과 B의 원소 수로 A∩B와 Aᶜ∩B의 크기를 구분한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P149-Q19-T1-R1",
@@ -2811,9 +2848,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CONCEPT_AND_METHOD_VISUAL",
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P149-Q19-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "원의 중심 K에서 x축과 다른 직선에 내린 두 수선 KH, KT를 비교한다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "원의 중심 K에서 x축과 다른 직선에 내린 두 수선 KH, KT를 비교한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P149-Q19-S1-R1",
@@ -2870,9 +2908,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CONCEPT_AND_METHOD_VISUAL",
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P149-Q19-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "원의 중심 K에서 x축과 다른 직선에 내린 두 수선 KH, KT를 비교한다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "원의 중심 K에서 x축과 다른 직선에 내린 두 수선 KH, KT를 비교한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P149-Q20-T1-R1",
@@ -2929,9 +2968,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CONCEPT_AND_METHOD_VISUAL",
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P149-Q20-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "x축의 P,Q와 y=1의 R을 지나는 최단 꺾은 경로 A-P-R-Q-B를 나타낸다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "x축의 P,Q와 y=1의 R을 지나는 최단 꺾은 경로 A-P-R-Q-B를 나타낸다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P149-Q20-S1-R1",
@@ -2988,8 +3028,9 @@ window.questionBank = [
     "sourceMatch": "SAME_CONCEPT_AND_METHOD_VISUAL",
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P149-Q20-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "x축의 P,Q와 y=1의 R을 지나는 최단 꺾은 경로 A-P-R-Q-B를 나타낸다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "x축의 P,Q와 y=1의 R을 지나는 최단 꺾은 경로 A-P-R-Q-B를 나타낸다."
   }
 ];

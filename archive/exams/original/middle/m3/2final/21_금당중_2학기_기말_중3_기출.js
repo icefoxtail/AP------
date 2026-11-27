@@ -17,7 +17,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_금당중_2학기_기말_중3_기출/q01.png",
+    "image": "assets/images/21_금당중_2학기_기말_중3_기출/q1-problem.svg",
     "decisiveStep": "그림에서 같은 호를 보는 중심각150도와 원주각을 대응하여 절반 관계를 바로 적용한다.",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -48,7 +48,10 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
-    "primaryMethod": "그림에서 같은 호를 보는 중심각150도와 원주각을 대응하여 절반 관계를 바로 적용한다."
+    "primaryMethod": "그림에서 같은 호를 보는 중심각150도와 원주각을 대응하여 절반 관계를 바로 적용한다.",
+    "imageAlt": "금당중 1번 문제에 제시된 원과 주어진 각·선분의 배치",
+    "imageCaption": "금당중 1번 문제에 제시된 원과 주어진 각·선분의 배치",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -66,7 +69,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_금당중_2학기_기말_중3_기출/q02.png",
+    "image": "assets/images/21_금당중_2학기_기말_중3_기출/q2-problem.svg",
     "decisiveStep": "원주각의 꼭짓점이 작은 호에 있으므로 반대쪽 큰 호를 먼저 선택한 뒤 중심각과 원주각의 절반 관계를 적용한다.",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -97,7 +100,10 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
-    "primaryMethod": "원주각의 꼭짓점이 작은 호에 있으므로 반대쪽 큰 호를 먼저 선택한 뒤 중심각과 원주각의 절반 관계를 적용한다."
+    "primaryMethod": "원주각의 꼭짓점이 작은 호에 있으므로 반대쪽 큰 호를 먼저 선택한 뒤 중심각과 원주각의 절반 관계를 적용한다.",
+    "imageAlt": "금당중 2번 문제에 제시된 원과 주어진 각·선분의 배치",
+    "imageCaption": "금당중 2번 문제에 제시된 원과 주어진 각·선분의 배치",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -115,7 +121,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_금당중_2학기_기말_중3_기출/q03-r1.png",
+    "image": "assets/images/21_금당중_2학기_기말_중3_기출/q3-problem.svg",
     "decisiveStep": "기존 원주각으로 작은 호를 구하고 요구한 ABD가 나머지 큰 호임을 확인하여 그 절반을 정한다.",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -146,7 +152,10 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
-    "primaryMethod": "기존 원주각으로 작은 호를 구하고 요구한 ABD가 나머지 큰 호임을 확인하여 그 절반을 정한다."
+    "primaryMethod": "기존 원주각으로 작은 호를 구하고 요구한 ABD가 나머지 큰 호임을 확인하여 그 절반을 정한다.",
+    "imageAlt": "금당중 3번 문제에 제시된 원과 주어진 각·선분의 배치",
+    "imageCaption": "금당중 3번 문제에 제시된 원과 주어진 각·선분의 배치",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -213,7 +222,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_금당중_2학기_기말_중3_기출/q05-r2.png",
+    "image": "assets/images/21_금당중_2학기_기말_중3_기출/q5-problem.svg",
     "decisiveStep": "접선현각으로 ABD를 정하고 삼각형 내각합, 내접사각형의 대각 보각, 다시 삼각형 내각합을 순차 결합하여 두 각의 합을 구한다.",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -244,7 +253,10 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
-    "primaryMethod": "접선현각으로 ABD를 정하고 삼각형 내각합, 내접사각형의 대각 보각, 다시 삼각형 내각합을 순차 결합하여 두 각의 합을 구한다."
+    "primaryMethod": "접선현각으로 ABD를 정하고 삼각형 내각합, 내접사각형의 대각 보각, 다시 삼각형 내각합을 순차 결합하여 두 각의 합을 구한다.",
+    "imageAlt": "접선 AT와 원주상 네 점 A, B, C, D가 이루는 각 x, y",
+    "imageCaption": "접선 AT와 원주상 네 점 A, B, C, D가 이루는 각 x, y",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -262,7 +274,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_금당중_2학기_기말_중3_기출/q06.png",
+    "image": "assets/images/21_금당중_2학기_기말_중3_기출/q6-problem.svg",
     "decisiveStep": "같은 쪽의 두 점에서 같은 현의 원주각이 같음과 내접사각형의 대각 보각이라는 두 순환 조건을 각각 판정한다.",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -293,7 +305,10 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
-    "primaryMethod": "같은 쪽의 두 점에서 같은 현의 원주각이 같음과 내접사각형의 대각 보각이라는 두 순환 조건을 각각 판정한다."
+    "primaryMethod": "같은 쪽의 두 점에서 같은 현의 원주각이 같음과 내접사각형의 대각 보각이라는 두 순환 조건을 각각 판정한다.",
+    "imageAlt": "선분 AB와 같은 쪽에 두 점 C, P를 둔 사각형과 교차하는 대각선",
+    "imageCaption": "선분 AB와 같은 쪽에 두 점 C, P를 둔 사각형과 교차하는 대각선",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -311,7 +326,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_금당중_2학기_기말_중3_기출/q07.png",
+    "image": "assets/images/21_금당중_2학기_기말_중3_기출/q7-problem.svg",
     "decisiveStep": "원주각과 중심각, 접점수직, 같은 점의 등접선, 이등변삼각형과 접현각을 연결해 주어진 다섯 각·길이 진술을 확인한다.",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -342,7 +357,10 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
-    "primaryMethod": "원주각과 중심각, 접점수직, 같은 점의 등접선, 이등변삼각형과 접현각을 연결해 주어진 다섯 각·길이 진술을 확인한다."
+    "primaryMethod": "원주각과 중심각, 접점수직, 같은 점의 등접선, 이등변삼각형과 접현각을 연결해 주어진 다섯 각·길이 진술을 확인한다.",
+    "imageAlt": "삼각형 ABC의 내접원 O와 세 접점 D, E, F",
+    "imageCaption": "삼각형 ABC의 내접원 O와 세 접점 D, E, F",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -360,7 +378,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_금당중_2학기_기말_중3_기출/q08-r1.png",
+    "image": "assets/images/21_금당중_2학기_기말_중3_기출/q8-problem.svg",
     "decisiveStep": "접선과 평행한 현에서 엇각을 구한 뒤 접선현각과 같은 원주각에 연결하여 두 각의 같음을 판정한다.",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -391,7 +409,10 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
-    "primaryMethod": "접선과 평행한 현에서 엇각을 구한 뒤 접선현각과 같은 원주각에 연결하여 두 각의 같음을 판정한다."
+    "primaryMethod": "접선과 평행한 현에서 엇각을 구한 뒤 접선현각과 같은 원주각에 연결하여 두 각의 같음을 판정한다.",
+    "imageAlt": "금당중 8번 문제에 제시된 원과 주어진 각·선분의 배치",
+    "imageCaption": "금당중 8번 문제에 제시된 원과 주어진 각·선분의 배치",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -409,7 +430,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_금당중_2학기_기말_중3_기출/q09.png",
+    "image": "assets/images/21_금당중_2학기_기말_중3_기출/q9-problem.svg",
     "decisiveStep": "접선과 현 AC가 이루는 각을 그 현을 보는 반대쪽 원주각에 직접 대응한다.",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -440,7 +461,10 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
-    "primaryMethod": "접선과 현 AC가 이루는 각을 그 현을 보는 반대쪽 원주각에 직접 대응한다."
+    "primaryMethod": "접선과 현 AC가 이루는 각을 그 현을 보는 반대쪽 원주각에 직접 대응한다.",
+    "imageAlt": "금당중 9번 문제에 제시된 원과 주어진 각·선분의 배치",
+    "imageCaption": "금당중 9번 문제에 제시된 원과 주어진 각·선분의 배치",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -994,7 +1018,7 @@ window.questionBank = [
       "통계",
       "산점도"
     ],
-    "image": "assets/images/21_금당중_2학기_기말_중3_기출/q22-r1.png",
+    "image": "assets/images/21_금당중_2학기_기말_중3_기출/q22-problem.svg",
     "decisiveStep": "산점도의 각 좌표를 읽어 한 변량의 중앙값·최빈값, 두 점수의 범위와 차 조건에 따른 인원 비율을 여러 진술과 비교한다.",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -1025,7 +1049,10 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
-    "primaryMethod": "산점도의 각 좌표를 읽어 한 변량의 중앙값·최빈값, 두 점수의 범위와 차 조건에 따른 인원 비율을 여러 진술과 비교한다."
+    "primaryMethod": "산점도의 각 좌표를 읽어 한 변량의 중앙값·최빈값, 두 점수의 범위와 차 조건에 따른 인원 비율을 여러 진술과 비교한다.",
+    "imageAlt": "10명의 국어 점수와 영어 점수 원문 산점도",
+    "imageCaption": "10명의 국어 점수와 영어 점수 원문 산점도",
+    "imageSize": "full"
   },
   {
     "id": 23,

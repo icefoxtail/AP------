@@ -1091,7 +1091,7 @@ window.questionBank = [
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
     "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed.",
     "solutionImage": "assets/images/21_팔마중_2학기_기말_중3_기출/q21-solution.svg",
-    "solutionImageAlt": "해설 그림: 1학기 성적과 2학기 성적의 산점도 20개 점, 대각선 y=x와 그 위쪽의 파란 점 8개",
+    "solutionImageAlt": "대각선 y=x보다 위쪽에 있는 점은 2학기 성적이 1학기보다 오른 학생이다. 파란 점 8개가 그 점이므로 전체 20명 중 8명이다. 비율은 20분의 8, 곧 5분의 2이다. 정답은 ④ 5분의 2이다.",
     "solutionImageCaption": "대각선 y=x보다 위쪽에 있는 점은 2학기 성적이 1학기보다 오른 학생이다. 파란 점 8개가 그 점이므로 전체 20명 중 8명이다. 비율은 20분의 8, 곧 5분의 2이다. 정답은 ④ 5분의 2이다.",
     "solutionImageSize": "full"
   ,
@@ -1236,7 +1236,7 @@ window.questionBank = [
     "visualDisposition": "NATIVE_SOURCE_CHART_ONLY_CROP_NO_SOLUTION_SVG_REQUIRED",
     "visualEvidence": "Chart-only crop compared against native PDF page 5; title, key, stem row and all twelve leaves are preserved exactly, with duplicate prompt text and repeated subquestion removed from the image.",
     "solutionImage": "assets/images/21_팔마중_2학기_기말_중3_기출/q24-solution.svg",
-    "solutionImageAlt": "해설 그림: 윗몸일으키기 횟수 12개를 나타낸 줄기와 잎 그림, 가운데 두 값 강조",
+    "solutionImageAlt": "자료를 작은 순서로 쓰면 1, 2, 3, 11, 15, 15, 17, 18, 20, 20, 21, 25이다. 자료가 12개이므로 가운데 두 값인 6번째와 7번째 값(동그라미)의 평균이 중앙값이다. 평균은 합 168을 12로 나눈 값이고, 최빈값은 두 번씩 나타나는 15와 20이다. 정답은 -5이다.",
     "solutionImageCaption": "자료를 작은 순서로 쓰면 1, 2, 3, 11, 15, 15, 17, 18, 20, 20, 21, 25이다. 자료가 12개이므로 가운데 두 값인 6번째와 7번째 값(동그라미)의 평균이 중앙값이다. 평균은 합 168을 12로 나눈 값이고, 최빈값은 두 번씩 나타나는 15와 20이다. 정답은 -5이다.",
     "solutionImageSize": "full"
   ,

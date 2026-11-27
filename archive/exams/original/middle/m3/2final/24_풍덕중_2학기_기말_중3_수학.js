@@ -179,10 +179,10 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/24_풍덕중_2학기_기말_중3_수학/q4-solution-v2.svg",
-    "solutionImageSize": "medium",
+    "solutionImageSize": "full",
     "solutionImageLayout": "fullwidth",
-    "solutionImageAlt": "해설 그림: 원 O의 두 현 AB, CD에 내린 수선의 발 M, N이 있다. OM=ON, OA=OC, AM=CN이 각각 같은 색이고 두 직각삼각형 OMA, ONC가 같은 색으로 합동이다.",
-    "solutionImageCaption": "두 직각삼각형 OMA, ONC에서 OA=OC, OM=ON이므로 AM=CN이다. 수선은 현을 이등분하므로 AB=2AM=2CN=CD이고 정답은 ④이다."
+    "solutionImageAlt": "직각삼각형 OMA, ONC에서 OA=OC와 OM=ON이므로 AM=CN이다. 각 현은 수선의 발에서 이등분되어 AB=CD가 된다. 정답은 ④.",
+    "solutionImageCaption": "직각삼각형 OMA, ONC에서 OA=OC와 OM=ON이므로 AM=CN이다. 각 현은 수선의 발에서 이등분되어 AB=CD가 된다. 정답은 ④."
   ,
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_CHORD_LENGTH",
@@ -195,7 +195,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "중심거리의 같음과 반지름의 같음을 두 직각삼각형의 피타고라스 식에 넣어 반현, 이어 전체 현의 같음을 확인한다.",
-    "decisiveStep": "중심거리의 같음과 반지름의 같음을 두 직각삼각형의 피타고라스 식에 넣어 반현, 이어 전체 현의 같음을 확인한다."
+    "decisiveStep": "중심거리의 같음과 반지름의 같음을 두 직각삼각형의 피타고라스 식에 넣어 반현, 이어 전체 현의 같음을 확인한다.",
+    "imageAlt": "서로 다른 두 현 AB, CD에 중심 O에서 내린 수선 OM, ON은 같은 길이이다. 원문에 없는 수치나 정답은 표시하지 않는다.",
+    "imageCaption": "서로 다른 두 현 AB, CD에 중심 O에서 내린 수선 OM, ON은 같은 길이이다. 원문에 없는 수치나 정답은 표시하지 않는다.",
+    "imageSize": "full"
   },
     {
     "id": 5,

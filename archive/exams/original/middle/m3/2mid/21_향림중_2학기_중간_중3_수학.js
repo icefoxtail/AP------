@@ -34,7 +34,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "꼭짓점형2(x−0)²+3에서 꼭짓점·대칭축·위치·볼록성을 바로 읽어 잘못된 꼭짓점 진술을 고른다.",
-    "decisiveStep": "꼭짓점형2(x−0)²+3에서 꼭짓점·대칭축·위치·볼록성을 바로 읽어 잘못된 꼭짓점 진술을 고른다."
+    "decisiveStep": "꼭짓점형2(x−0)²+3에서 꼭짓점·대칭축·위치·볼록성을 바로 읽어 잘못된 꼭짓점 진술을 고른다.",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중3_수학/q1-solution.svg",
+    "solutionImageAlt": "y=2x²+3의 꼭짓점은 (0,3)임을 보여 주는 위로 열린 포물선",
+    "solutionImageCaption": "y=2x²+3의 꼭짓점은 (0,3)임을 보여 주는 위로 열린 포물선",
+    "solutionImageSize": "full"
   },
     {
       "id": 2,
@@ -68,7 +72,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "x축방향+3 평행이동으로 꼭짓점x좌표와 대칭축을3으로 옮긴다.",
-    "decisiveStep": "x축방향+3 평행이동으로 꼭짓점x좌표와 대칭축을3으로 옮긴다."
+    "decisiveStep": "x축방향+3 평행이동으로 꼭짓점x좌표와 대칭축을3으로 옮긴다.",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중3_수학/q2-solution.svg",
+    "solutionImageAlt": "y=-x²를 오른쪽으로 3만큼 이동하여 꼭짓점 (3,0)과 대칭축 x=3을 보인다",
+    "solutionImageCaption": "y=-x²를 오른쪽으로 3만큼 이동하여 꼭짓점 (3,0)과 대칭축 x=3을 보인다",
+    "solutionImageSize": "full"
   },
     {
       "id": 3,
@@ -136,7 +144,15 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "기본그래프를 왼쪽2 위쪽3으로 옮겨 꼭짓점(−2,3)과 위로 열린 모양의 그림을 선택한다.",
-    "decisiveStep": "기본그래프를 왼쪽2 위쪽3으로 옮겨 꼭짓점(−2,3)과 위로 열린 모양의 그림을 선택한다."
+    "decisiveStep": "기본그래프를 왼쪽2 위쪽3으로 옮겨 꼭짓점(−2,3)과 위로 열린 모양의 그림을 선택한다.",
+    "image": "assets/images/21_향림중_2학기_중간_중3_수학/q4-problem.svg",
+    "imageAlt": "원본 질문에서 이동 전 기준 그래프 y=(1/2)x²의 꼭짓점 O와 위로 열린 모양을 복원한다",
+    "imageCaption": "원본 질문에서 이동 전 기준 그래프 y=(1/2)x²의 꼭짓점 O와 위로 열린 모양을 복원한다",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중3_수학/q4-solution.svg",
+    "solutionImageAlt": "y=1/2x²를 왼쪽 2·위쪽 3만큼 이동한 꼭짓점 (-2,3)의 그래프",
+    "solutionImageCaption": "y=1/2x²를 왼쪽 2·위쪽 3만큼 이동한 꼭짓점 (-2,3)의 그래프",
+    "solutionImageSize": "full"
   },
     {
       "id": 5,
@@ -170,7 +186,15 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "원본 그림에 세변13,5,12가 모두 명시되어 있으므로 B의 대변12와빗변13의 비를 바로 읽는다. 해설의 피타고라스 재계산은 필요하지 않다.",
-    "decisiveStep": "원본 그림에 세변13,5,12가 모두 명시되어 있으므로 B의 대변12와빗변13의 비를 바로 읽는다. 해설의 피타고라스 재계산은 필요하지 않다."
+    "decisiveStep": "원본 그림에 세변13,5,12가 모두 명시되어 있으므로 B의 대변12와빗변13의 비를 바로 읽는다. 해설의 피타고라스 재계산은 필요하지 않다.",
+    "image": "assets/images/21_향림중_2학기_중간_중3_수학/q5-problem.svg",
+    "imageAlt": "C 직각, 빗변 13과 BC=5인 삼각형 ABC(AC의 계산값은 표시하지 않음)",
+    "imageCaption": "C 직각, 빗변 13과 BC=5인 삼각형 ABC(AC의 계산값은 표시하지 않음)",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중3_수학/q5-solution.svg",
+    "solutionImageAlt": "5-12-13 직각삼각형에서 B의 대변 AC=12를 강조한다",
+    "solutionImageCaption": "5-12-13 직각삼각형에서 B의 대변 AC=12를 강조한다",
+    "solutionImageSize": "full"
   },
     {
       "id": 6,
@@ -220,8 +244,8 @@ window.examData = {
       "answer": "①",
       "solution": "BC를 C쪽으로 연장하고 A에서 연장선에 수선을 내려 발을 H라 하면, 그림의 외각으로 $\\angle ACH=45^\\circ$이다. 직각삼각형 ACH에서 $AH=6\\sin45^\\circ=3\\sqrt2$이고, 밑변 $BC=2\\sqrt2$이므로 넓이는 $\\frac12\\cdot2\\sqrt2\\cdot3\\sqrt2=6$이다. 따라서 ①이다.",
       "solutionImage": "assets/images/21_향림중_2학기_중간_중3_수학/q7-solution.svg",
-      "solutionImageAlt": "해설 그림: 삼각형 ABC의 AC=6, BC=2√2, ∠C=135°를 표시하고 BC의 C쪽 연장선 위로 높이 AH를 내렸다.",
-      "solutionImageCaption": "외각은 45°이므로 AH=6sin45°=3√2이다. 넓이는 ½·2√2·3√2=6이다. 정답은 ①이다.",
+      "solutionImageAlt": "BC 연장선에 수선 AH를 내려 높이 3√2를 보이고 불필요한 회색 면 채움을 제거한다",
+      "solutionImageCaption": "BC 연장선에 수선 AH를 내려 높이 3√2를 보이고 불필요한 회색 면 채움을 제거한다",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -242,7 +266,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "135°의 보각45°로 외부높이3√2를 구하고 밑변2√2의 삼각형넓이를 계산한다.",
-    "decisiveStep": "135°의 보각45°로 외부높이3√2를 구하고 밑변2√2의 삼각형넓이를 계산한다."
+    "decisiveStep": "135°의 보각45°로 외부높이3√2를 구하고 밑변2√2의 삼각형넓이를 계산한다.",
+    "image": "assets/images/21_향림중_2학기_중간_중3_수학/q7-problem.svg",
+    "imageAlt": "BC=2√2, CA=6, C의 둔각 135°인 삼각형",
+    "imageCaption": "BC=2√2, CA=6, C의 둔각 135°인 삼각형",
+    "imageSize": "full"
   },
     {
       "id": 8,
@@ -280,7 +308,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "아래로 열린 개형과 꼭짓점의 좌표(−p,q)가 제2사분면임을 계수a,p,q의 부호에 대응한다.",
-    "decisiveStep": "아래로 열린 개형과 꼭짓점의 좌표(−p,q)가 제2사분면임을 계수a,p,q의 부호에 대응한다."
+    "decisiveStep": "아래로 열린 개형과 꼭짓점의 좌표(−p,q)가 제2사분면임을 계수a,p,q의 부호에 대응한다.",
+    "image": "assets/images/21_향림중_2학기_중간_중3_수학/q8-problem.svg",
+    "imageAlt": "음의 이차항, y축 왼쪽·x축 위 꼭짓점을 가진 아래로 열린 포물선의 개형",
+    "imageCaption": "음의 이차항, y축 왼쪽·x축 위 꼭짓점을 가진 아래로 열린 포물선의 개형",
+    "imageSize": "full"
   },
     {
       "id": 9,
@@ -316,7 +348,15 @@ window.examData = {
     "primaryMethod": "꼭짓점(−2,4)로p,q를 읽고 y절편2를 꼭짓점식에 넣어a를 복원한 뒤 세값을 더한다.",
     "decisiveStep": "꼭짓점(−2,4)로p,q를 읽고 y절편2를 꼭짓점식에 넣어a를 복원한 뒤 세값을 더한다."
   ,
-    "courseKey": "M3-1"
+    "courseKey": "M3-1",
+    "image": "assets/images/21_향림중_2학기_중간_중3_수학/q9-problem.svg",
+    "imageAlt": "꼭짓점 (-2,4), y절편 2인 아래로 열린 포물선",
+    "imageCaption": "꼭짓점 (-2,4), y절편 2인 아래로 열린 포물선",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중3_수학/q9-solution.svg",
+    "solutionImageAlt": "꼭짓점 (-2,4), y절편 2의 조건에서 계수 a=-1/2를 읽는 그래프",
+    "solutionImageCaption": "꼭짓점 (-2,4), y절편 2의 조건에서 계수 a=-1/2를 읽는 그래프",
+    "solutionImageSize": "full"
   },
     {
       "id": 10,
@@ -388,7 +428,15 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "두직각변으로 빗변3을 구하고 작은직각삼각형의 x가 B의 여각임을 이용해 cosx=sinB=1/3으로 바꾼다.",
-    "decisiveStep": "두직각변으로 빗변3을 구하고 작은직각삼각형의 x가 B의 여각임을 이용해 cosx=sinB=1/3으로 바꾼다."
+    "decisiveStep": "두직각변으로 빗변3을 구하고 작은직각삼각형의 x가 B의 여각임을 이용해 cosx=sinB=1/3으로 바꾼다.",
+    "image": "assets/images/21_향림중_2학기_중간_중3_수학/q11-problem.svg",
+    "imageAlt": "C 직각, BC=2√2, AC=1 및 D에서 AB로 내린 수선 DE와 각 x",
+    "imageCaption": "C 직각, BC=2√2, AC=1 및 D에서 AB로 내린 수선 DE와 각 x",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중3_수학/q11-solution.svg",
+    "solutionImageAlt": "두 직각삼각형의 각이 서로 여각이라 cos x=sin B=AC/AB=1/3임을 연결한다",
+    "solutionImageCaption": "두 직각삼각형의 각이 서로 여각이라 cos x=sin B=AC/AB=1/3임을 연결한다",
+    "solutionImageSize": "full"
   },
     {
       "id": 12,
@@ -422,7 +470,15 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "왼쪽60° 삼각형의 밑변3으로 높이3√3와빗변6을 구하고 오른쪽45° 빗변을 구해 합한다.",
-    "decisiveStep": "왼쪽60° 삼각형의 밑변3으로 높이3√3와빗변6을 구하고 오른쪽45° 빗변을 구해 합한다."
+    "decisiveStep": "왼쪽60° 삼각형의 밑변3으로 높이3√3와빗변6을 구하고 오른쪽45° 빗변을 구해 합한다.",
+    "image": "assets/images/21_향림중_2학기_중간_중3_수학/q12-problem.svg",
+    "imageAlt": "BH=3, B=60°, C=45°, AH⊥BC 및 AB=x, AC=y를 보여 준다",
+    "imageCaption": "BH=3, B=60°, C=45°, AH⊥BC 및 AB=x, AC=y를 보여 준다",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중3_수학/q12-solution.svg",
+    "solutionImageAlt": "AH=3√3, AB=6, AC=3√6의 두 직각삼각형 관계",
+    "solutionImageCaption": "AH=3√3, AB=6, AC=3√6의 두 직각삼각형 관계",
+    "solutionImageSize": "full"
   },
     {
       "id": 13,
@@ -524,7 +580,15 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "표의 cos열 .3746과 같은행의 tan2.4751을 대응해 이웃변10에 곱하여 대변길이를 구한다.",
-    "decisiveStep": "표의 cos열 .3746과 같은행의 tan2.4751을 대응해 이웃변10에 곱하여 대변길이를 구한다."
+    "decisiveStep": "표의 cos열 .3746과 같은행의 tan2.4751을 대응해 이웃변10에 곱하여 대변길이를 구한다.",
+    "image": "assets/images/21_향림중_2학기_중간_중3_수학/q15-problem.svg",
+    "imageAlt": "C 직각, 이웃변 AC=10cm와 A의 코사인 표값 0.3746을 대응한다",
+    "imageCaption": "C 직각, 이웃변 AC=10cm와 A의 코사인 표값 0.3746을 대응한다",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "탄젠트 표 2.4751을 이용해 BC=10×2.4751=24.751cm가 되는 직각삼각형",
+    "solutionImageCaption": "탄젠트 표 2.4751을 이용해 BC=10×2.4751=24.751cm가 되는 직각삼각형",
+    "solutionImageSize": "full"
   },
     {
       "id": 16,
@@ -540,8 +604,8 @@ window.examData = {
       "answer": "①",
       "solution": "$\\angle A=180^\\circ-75^\\circ-45^\\circ=60^\\circ$이다. B에서 AC에 수선을 내려 발을 H라 하자. 직각삼각형 BCH에서 $BH=8\\sin45^\\circ=4\\sqrt2$이고, 직각삼각형 ABH에서 $\\sin60^\\circ=BH/AB$이므로 $AB=4\\sqrt2/(\\sqrt3/2)=\\frac{8\\sqrt6}{3}$이다. 따라서 ①이다.",
       "solutionImage": "assets/images/21_향림중_2학기_중간_중3_수학/q16-solution.svg",
-      "solutionImageAlt": "해설 그림: BC=8cm, 각 B=75°, C=45°, A=60°인 삼각형에서 BH를 AC에 수직으로 내렸다. BH=4√2cm이다.",
-      "solutionImageCaption": "BH=8sin45°=4√2이므로 sin60°=BH/AB에서 AB=8√6/3cm이다. 정답은 ①이다.",
+      "solutionImageAlt": "B에서 AC에 내린 수선 BH=4√2를 표현하고 회색 삼각형 면 채움을 제거한다",
+      "solutionImageCaption": "B에서 AC에 내린 수선 BH=4√2를 표현하고 회색 삼각형 면 채움을 제거한다",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -562,7 +626,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "내각합으로 A60°를 정하고 B에서 AC로 수선을 내려 BC8과45°로 높이를 얻은 뒤60° 삼각형의 AB를 구한다.",
-    "decisiveStep": "내각합으로 A60°를 정하고 B에서 AC로 수선을 내려 BC8과45°로 높이를 얻은 뒤60° 삼각형의 AB를 구한다."
+    "decisiveStep": "내각합으로 A60°를 정하고 B에서 AC로 수선을 내려 BC8과45°로 높이를 얻은 뒤60° 삼각형의 AB를 구한다.",
+    "image": "assets/images/21_향림중_2학기_중간_중3_수학/q16-problem.svg",
+    "imageAlt": "BC=8cm, 밑각 B=75°·C=45°인 비직각삼각형",
+    "imageCaption": "BC=8cm, 밑각 B=75°·C=45°인 비직각삼각형",
+    "imageSize": "full"
   },
     {
       "id": 17,
@@ -578,8 +646,8 @@ window.examData = {
       "answer": "②",
       "solution": "큰 정삼각형 ABC의 한 변은 6 cm이다. 그림에서 $AD=2$, $AF=4$, $EC=4$이므로 $BD=AB-AD=4$, $FC=AC-AF=2$, $BE=BC-EC=2$이다. 따라서 바깥 꼭짓점에 생기는 작은 삼각형은 각각 두 변이 2와 4이고 끼인각이 $60^\\circ$이다. 예를 들어 $\\triangle ADF$에서 D에서 AF에 내린 수선의 발을 G라 하면, 직각삼각형 ADG에서 $DG=AD\\sin60^\\circ=\\sqrt3$이다. 그러므로 $\\triangle ADF$의 넓이는 $\\frac12\\cdot AF\\cdot DG=\\frac12\\cdot4\\cdot\\sqrt3=2\\sqrt3$이다. 나머지 두 작은 삼각형의 넓이도 각각 $2\\sqrt3$이다. 큰 정삼각형의 넓이는 $\\frac{\\sqrt3}{4}\\cdot6^2=9\\sqrt3$이므로, $\\triangle DEF$의 넓이는 $9\\sqrt3-3\\cdot2\\sqrt3=3\\sqrt3\\,\\mathrm{cm}^2$이다. 따라서 ②이다.",
       "solutionImage": "assets/images/21_향림중_2학기_중간_중3_수학/q17-solution.svg",
-      "solutionImageAlt": "해설 그림: 정삼각형 ABC 안의 DEF를 표시하고, 같은 넓이의 세 모서리 삼각형을 주황색, 중앙 DEF를 파란색으로 구분했다.",
-      "solutionImageCaption": "큰 넓이는 9√3이고 세 모서리 넓이는 각각 2√3이므로 [DEF]=9√3−3·2√3=3√3cm²이다. 정답은 ②이다.",
+      "solutionImageAlt": "정삼각형 DEF의 세 바깥 보조삼각형을 경계선만으로 분리하고 전체 면 채움을 없앤다",
+      "solutionImageCaption": "정삼각형 DEF의 세 바깥 보조삼각형을 경계선만으로 분리하고 전체 면 채움을 없앤다",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -600,7 +668,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "외부 정삼각형넓이에서 두변2,4와60°로 결정되는 세모서리 삼각형넓이를 뺀다.",
-    "decisiveStep": "외부 정삼각형넓이에서 두변2,4와60°로 결정되는 세모서리 삼각형넓이를 뺀다."
+    "decisiveStep": "외부 정삼각형넓이에서 두변2,4와60°로 결정되는 세모서리 삼각형넓이를 뺀다.",
+    "image": "assets/images/21_향림중_2학기_중간_중3_수학/q17-problem.svg",
+    "imageAlt": "한 변 6cm인 정삼각형 ABC와 내접 정삼각형 DEF, 주어진 2·4cm 구간",
+    "imageCaption": "한 변 6cm인 정삼각형 ABC와 내접 정삼각형 DEF, 주어진 2·4cm 구간",
+    "imageSize": "full"
   },
     {
       "id": 18,
@@ -634,7 +706,15 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "완전제곱식으로 꼭짓점(1,9),이차방정식으로 두x절편−2,4를 복원해 밑변6·높이9의 넓이를 구한다.",
-    "decisiveStep": "완전제곱식으로 꼭짓점(1,9),이차방정식으로 두x절편−2,4를 복원해 밑변6·높이9의 넓이를 구한다."
+    "decisiveStep": "완전제곱식으로 꼭짓점(1,9),이차방정식으로 두x절편−2,4를 복원해 밑변6·높이9의 넓이를 구한다.",
+    "image": "assets/images/21_향림중_2학기_중간_중3_수학/q18-problem.svg",
+    "imageAlt": "교점 P·Q와 꼭짓점 A의 이름만 표시하고 계산된 절편·넓이는 노출하지 않는다",
+    "imageCaption": "교점 P·Q와 꼭짓점 A의 이름만 표시하고 계산된 절편·넓이는 노출하지 않는다",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중3_수학/q18-solution.svg",
+    "solutionImageAlt": "근 -2·4와 꼭짓점 A(1,9)를 표시하여 삼각형 APQ의 높이 9·밑변 6을 보인다",
+    "solutionImageCaption": "근 -2·4와 꼭짓점 A(1,9)를 표시하여 삼각형 APQ의 높이 9·밑변 6을 보인다",
+    "solutionImageSize": "full"
   },
     {
       "id": 19,
@@ -668,7 +748,15 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "주어진 직선의 기울기·y절편 부호를 읽어 새로운 포물선 꼭짓점(a,b)의 제3사분면 위치에 전달한다.",
-    "decisiveStep": "주어진 직선의 기울기·y절편 부호를 읽어 새로운 포물선 꼭짓점(a,b)의 제3사분면 위치에 전달한다."
+    "decisiveStep": "주어진 직선의 기울기·y절편 부호를 읽어 새로운 포물선 꼭짓점(a,b)의 제3사분면 위치에 전달한다.",
+    "image": "assets/images/21_향림중_2학기_중간_중3_수학/q19-problem.svg",
+    "imageAlt": "a<0, b<0 부호만 읽히도록 좌표축과 오른쪽 아래로 내려가는 직선 y=ax+b를 복원한다(숫자값은 예시)",
+    "imageCaption": "a<0, b<0 부호만 읽히도록 좌표축과 오른쪽 아래로 내려가는 직선 y=ax+b를 복원한다(숫자값은 예시)",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중3_수학/q19-solution.svg",
+    "solutionImageAlt": "a<0,b<0의 대표값 a=-2,b=-1일 때 위로 열린 포물선의 꼭짓점이 제3사분면에 있음을 보인다",
+    "solutionImageCaption": "a<0,b<0의 대표값 a=-2,b=-1일 때 위로 열린 포물선의 꼭짓점이 제3사분면에 있음을 보인다",
+    "solutionImageSize": "full"
   },
     {
       "id": 20,
@@ -794,7 +882,15 @@ window.examData = {
     "primaryMethod": "그래프의 꼭짓점(3,−2),y절편1로 a1/3을 구하고 일반형의 세계수를 더한다.",
     "decisiveStep": "그래프의 꼭짓점(3,−2),y절편1로 a1/3을 구하고 일반형의 세계수를 더한다."
   ,
-    "courseKey": "M3-1"
+    "courseKey": "M3-1",
+    "image": "assets/images/21_향림중_2학기_중간_중3_수학/q23-problem.svg",
+    "imageAlt": "y절편 1과 꼭짓점 (3,-2)에서 점선 안내를 읽는 이차함수 그래프",
+    "imageCaption": "y절편 1과 꼭짓점 (3,-2)에서 점선 안내를 읽는 이차함수 그래프",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중3_수학/q23-solution.svg",
+    "solutionImageAlt": "y절편 1과 꼭짓점(3,-2)에서 x=1일 때 함수값 a+b+c를 판단하는 포물선",
+    "solutionImageCaption": "y절편 1과 꼭짓점(3,-2)에서 x=1일 때 함수값 a+b+c를 판단하는 포물선",
+    "solutionImageSize": "full"
   },
     {
       "id": 24,
@@ -822,7 +918,15 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "sinA2/3와빗변6으로 대변4를 구하고 피타고라스의 이웃변2√5로 cos,tan을 표현한다.",
-    "decisiveStep": "sinA2/3와빗변6으로 대변4를 구하고 피타고라스의 이웃변2√5로 cos,tan을 표현한다."
+    "decisiveStep": "sinA2/3와빗변6으로 대변4를 구하고 피타고라스의 이웃변2√5로 cos,tan을 표현한다.",
+    "image": "assets/images/21_향림중_2학기_중간_중3_수학/q24-problem.svg",
+    "imageAlt": "C가 직각이고 빗변 AB=6인 삼각형, A의 사인값 2/3은 발문에만 주어진다",
+    "imageCaption": "C가 직각이고 빗변 AB=6인 삼각형, A의 사인값 2/3은 발문에만 주어진다",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중3_수학/q24-solution.svg",
+    "solutionImageAlt": "AB=6, BC=4, AC=2√5의 세 변으로 사인·코사인·탄젠트 정의를 연결한다",
+    "solutionImageCaption": "AB=6, BC=4, AC=2√5의 세 변으로 사인·코사인·탄젠트 정의를 연결한다",
+    "solutionImageSize": "full"
   },
     {
       "id": 25,
@@ -832,8 +936,8 @@ window.examData = {
       "answer": "$20.4\\,\\mathrm{m}$",
       "solution": "높이 차를 $h$라 하면 $\\tan43^\\circ=\\frac{h}{20}=0.93$이므로 $h=20\\cdot0.93=18.6\\,\\mathrm{m}$이다. 눈높이 $1.8\\,\\mathrm{m}$를 더하면 점프대 높이는 $18.6+1.8=20.4\\,\\mathrm{m}$이다.",
       "solutionImage": "assets/images/21_향림중_2학기_중간_중3_수학/q25-solution.svg",
-      "solutionImageAlt": "해설 그림: 눈 위치 A는 지면보다 1.8m 높고, 점프대 밑 B까지 수평 거리는 20m이다. 시선 AC는 수평 눈높이 AH와 43°를 이룬다.",
-      "solutionImageCaption": "높이 차는 20tan43°≈20·0.93=18.6m이다. 눈높이 1.8m를 더하면 점프대 높이는 20.4m이다.",
+      "solutionImageAlt": "높이 차 18.6m와 눈높이 1.8m를 더해 전체 20.4m가 됨을 면 채움 없이 보인다",
+      "solutionImageCaption": "높이 차 18.6m와 눈높이 1.8m를 더해 전체 20.4m가 됨을 면 채움 없이 보인다",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -854,7 +958,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "공급된 tan43=.93을 수평거리20에 곱해 눈높이 위의18.6을 구하고 눈높이1.8을 더한다.",
-    "decisiveStep": "공급된 tan43=.93을 수평거리20에 곱해 눈높이 위의18.6을 구하고 눈높이1.8을 더한다."
+    "decisiveStep": "공급된 tan43=.93을 수평거리20에 곱해 눈높이 위의18.6을 구하고 눈높이1.8을 더한다.",
+    "image": "assets/images/21_향림중_2학기_중간_중3_수학/q25-problem.svg",
+    "imageAlt": "20m 수평거리, 1.8m 눈높이, 올려본각 43°인 번지 점프대 개형",
+    "imageCaption": "20m 수평거리, 1.8m 눈높이, 올려본각 43°인 번지 점프대 개형",
+    "imageSize": "full"
   }
   ]
 };

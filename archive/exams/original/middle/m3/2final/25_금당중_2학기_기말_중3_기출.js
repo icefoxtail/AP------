@@ -34,9 +34,9 @@ window.questionBank=[
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
     "solutionImage": "assets/images/25_금당중_2학기_기말_중3_기출/q1-solution-v2.svg",
-    "solutionImageSize": "medium",
-    "solutionImageAlt": "해설 그림: 원 O에서 중심각 134°가 보는 작은 호는 파랑, 그 반대쪽 큰 호 226°와 이 호를 보는 원주각 ∠x는 주황으로 칠해 두 호를 구분해 보여 준다.",
-    "solutionImageCaption": "큰 호 226°를 보는 원주각이므로 ∠x는 226°의 절반인 113°이다. 정답 ②."
+    "solutionImageSize": "full",
+    "solutionImageAlt": "134°인 중심각의 반대쪽 큰 호는 226°이며, 그 호를 보는 원주각은 절반이다.",
+    "solutionImageCaption": "134°인 중심각의 반대쪽 큰 호는 226°이며, 그 호를 보는 원주각은 절반이다."
   ,
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBoundaryFlag": "B12",

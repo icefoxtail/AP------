@@ -51,7 +51,7 @@ window.questionBank = [
   },
   {
     "id": 2,
-    "imageAlt": "세로가 긴 A0 용지의 위 절반은 A1이다. 아래 남은 직사각형은 왼쪽 A2와 오른쪽으로 나뉜다. 오른쪽 윗부분에 A3, 아랫부분 왼쪽에 A4가 있다.",
+    "imageAlt": "A0 용지를 가로와 세로 방향으로 번갈아 절반씩 잘라 A1, A2, A3, A4를 만든 도식. 내부 색칠 없음.",
     "level": "중",
     "category": "닮은 도형의 닮음비",
     "originalCategory": "도형의 닮음",
@@ -95,7 +95,8 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "넓이비에서 닮음비 역산",
-    "decisiveStep": "네 번 절반으로 자른 넓이비의 제곱근을 길이비로 읽는다."
+    "decisiveStep": "네 번 절반으로 자른 넓이비의 제곱근을 길이비로 읽는다.",
+    "imageCaption": "A0 용지를 가로와 세로 방향으로 번갈아 절반씩 잘라 A1, A2, A3, A4를 만든 도식. 내부 색칠 없음."
   },
   {
     "id": 3,
@@ -917,7 +918,7 @@ window.questionBank = [
   },
   {
     "id": 21,
-    "imageAlt": "파란 직선은 세로축의 위쪽 B부터 가로축의 오른쪽 A를 지나 아래로 내려간다. 두 축이 만나는 원점 O에서 직선으로 내린 청록색 수선의 발은 C이고, 직각이 표시돼 있다.",
+    "imageAlt": "좌표축 위에 직선 12x+5y−60=0과 절편 A, B 및 원점 O에서 그 직선에 내린 수선 OC를 나타낸 문제 그림.",
     "level": "상",
     "category": "피타고라스 정리의 활용",
     "originalCategory": "피타고라스 정리",
@@ -960,12 +961,13 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "primaryMethod": "절편에서 직각삼각형 길이와 높이",
-    "decisiveStep": "좌표축 절편으로 두 변을 얻고 피타고라스의 빗변과 같은 삼각형의 넓이 두 표현으로 수선 길이를 정한다."
+    "decisiveStep": "좌표축 절편으로 두 변을 얻고 피타고라스의 빗변과 같은 삼각형의 넓이 두 표현으로 수선 길이를 정한다.",
+    "imageCaption": "좌표축 위에 직선 12x+5y−60=0과 절편 A, B 및 원점 O에서 그 직선에 내린 수선 OC를 나타낸 문제 그림."
   },
   {
     "id": 22,
     "imageSize": "full",
-    "imageAlt": "육각형의 여섯 꼭짓점은 왼쪽 위 A에서 시작하여 반시계 방향으로 B, C, D, E, F 순이다. 위쪽 가로변 AF는 길이가 1이다. 왼쪽 기울어진 변 AB를 따라 내려가는 주황색 화살표 옆에 점 P가 표시돼 있다.",
+    "imageAlt": "변의 길이가 1인 정육각형 ABCDEF. 점 P는 A에서 출발해 A에서 B 방향으로 반시계 이동한다.",
     "level": "상",
     "category": "확률의 계산",
     "originalCategory": "확률",
@@ -1007,7 +1009,8 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "primaryMethod": "순환 경로의 이동 합을 분류한 확률",
-    "decisiveStep": "6칸을 돌면 같은 점임을 사용해 목표 도착 합4와10을 구하고 각 합의 순서쌍을 합친다."
+    "decisiveStep": "6칸을 돌면 같은 점임을 사용해 목표 도착 합4와10을 구하고 각 합의 순서쌍을 합친다.",
+    "imageCaption": "변의 길이가 1인 정육각형 ABCDEF. 점 P는 A에서 출발해 A에서 B 방향으로 반시계 이동한다."
   },
   {
     "id": 23,

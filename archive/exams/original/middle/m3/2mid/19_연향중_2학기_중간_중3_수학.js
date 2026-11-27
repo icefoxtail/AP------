@@ -981,8 +981,8 @@ window.questionBank = [
     "id": 13,
     "solutionImage": "assets/images/19_연향중_2학기_중간_중3_수학/q13-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageAlt": "네 모서리마다 초록 직각변 6과 주황 직각변 8, 파란 빗변 10이 반복된다. 같은 길이끼리 같은 색과 눈금이다.",
-    "solutionImageCaption": "안쪽 한 변은 10 cm이고 다른 직각변은 √(10²−6²)=8 cm이다. 바깥 넓이는 (6+8)²=196 cm²이며 정답은 ④이다.",
+    "solutionImageAlt": "바깥 정사각형 EFGH에 안쪽 정사각형 ABCD가 기울어 들어가 있고 AH=BE=CF=DG=6cm, 안쪽 넓이는 100cm²이다.",
+    "solutionImageCaption": "바깥 정사각형 EFGH에 안쪽 정사각형 ABCD가 기울어 들어가 있고 AH=BE=CF=DG=6cm, 안쪽 넓이는 100cm²이다.",
     "score": 4.0,
     "level": "중",
     "category": "기하",
@@ -1058,7 +1058,11 @@ window.questionBank = [
     "rpmL3": null,
     "rpmL4": null,
     "primaryMethod": "안쪽 넓이100으로 한변10을 구하고 바깥 꼭짓점의 직각삼각형에서 나머지변8을 구해 바깥한변14와 넓이196을 얻는다.",
-    "decisiveStep": "안쪽 넓이100으로 한변10을 구하고 바깥 꼭짓점의 직각삼각형에서 나머지변8을 구해 바깥한변14와 넓이196을 얻는다."
+    "decisiveStep": "안쪽 넓이100으로 한변10을 구하고 바깥 꼭짓점의 직각삼각형에서 나머지변8을 구해 바깥한변14와 넓이196을 얻는다.",
+    "image": "assets/images/19_연향중_2학기_중간_중3_수학/q13-problem.svg",
+    "imageAlt": "바깥 정사각형 EFGH에 안쪽 정사각형 ABCD가 기울어 들어가 있고 AH=BE=CF=DG=6cm, 안쪽 넓이는 100cm²이다.",
+    "imageCaption": "바깥 정사각형 EFGH에 안쪽 정사각형 ABCD가 기울어 들어가 있고 AH=BE=CF=DG=6cm, 안쪽 넓이는 100cm²이다.",
+    "imageSize": "full"
   },
   {
     "id": 14,
@@ -1405,8 +1409,8 @@ window.questionBank = [
     "id": 18,
     "solutionImage": "assets/images/19_연향중_2학기_중간_중3_수학/q18-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageAlt": "정면의 주황 면 대각선 BG와 공간을 지나는 파란 대각선 AG를 구분했다. 두 선을 직각삼각형에서 순서대로 구한다.",
-    "solutionImageCaption": "BG=√(6²+4²)=2√13, AG=√(8²+BG²)=2√29이므로 둘레는 8+2√13+2√29 cm이다. 정답은 ⑤이다.",
+    "solutionImageAlt": "세 방향의 모서리가 6cm, 8cm, 4cm인 직육면체 ABCDEFGH의 삼각형 ABG를 실제 세 선분 AB,BG,GA로 표시한다. 숨은 모서리는 점선이고 면은 칠하지 않는다.",
+    "solutionImageCaption": "세 방향의 모서리가 6cm, 8cm, 4cm인 직육면체 ABCDEFGH의 삼각형 ABG를 실제 세 선분 AB,BG,GA로 표시한다. 숨은 모서리는 점선이고 면은 칠하지 않는다.",
     "score": 5.0,
     "level": "중",
     "category": "기하",
@@ -1483,7 +1487,11 @@ window.questionBank = [
     "rpmL3": null,
     "rpmL4": null,
     "primaryMethod": "직육면체의 모서리AB8, 면대각선BG=√(6²+4²), 공간대각선AG=√(6²+8²+4²)를 구해 둘레를 합한다.",
-    "decisiveStep": "직육면체의 모서리AB8, 면대각선BG=√(6²+4²), 공간대각선AG=√(6²+8²+4²)를 구해 둘레를 합한다."
+    "decisiveStep": "직육면체의 모서리AB8, 면대각선BG=√(6²+4²), 공간대각선AG=√(6²+8²+4²)를 구해 둘레를 합한다.",
+    "image": "assets/images/19_연향중_2학기_중간_중3_수학/q18-problem.svg",
+    "imageAlt": "세 방향의 모서리가 6cm, 8cm, 4cm인 직육면체 ABCDEFGH의 삼각형 ABG를 실제 세 선분 AB,BG,GA로 표시한다. 숨은 모서리는 점선이고 면은 칠하지 않는다.",
+    "imageCaption": "세 방향의 모서리가 6cm, 8cm, 4cm인 직육면체 ABCDEFGH의 삼각형 ABG를 실제 세 선분 AB,BG,GA로 표시한다. 숨은 모서리는 점선이고 면은 칠하지 않는다.",
+    "imageSize": "full"
   },
   {
     "id": 19,
@@ -1568,14 +1576,18 @@ window.questionBank = [
     "rpmL3": null,
     "rpmL4": null,
     "primaryMethod": "지정모서리CD를 경계로 두 면을 펼쳐 수직길이합5와 모서리방향길이4로 직각삼각형을 만들고 최단거리√41을 구한다.",
-    "decisiveStep": "지정모서리CD를 경계로 두 면을 펼쳐 수직길이합5와 모서리방향길이4로 직각삼각형을 만들고 최단거리√41을 구한다."
+    "decisiveStep": "지정모서리CD를 경계로 두 면을 펼쳐 수직길이합5와 모서리방향길이4로 직각삼각형을 만들고 최단거리√41을 구한다.",
+    "image": "assets/images/19_연향중_2학기_중간_중3_수학/q19-problem.svg",
+    "imageAlt": "가로 4cm, 깊이 3cm, 높이 2cm 직육면체에서 B에서 윗면과 CDHG 면의 공통 모서리 CD를 지나 H까지 겉면 최단 경로를 찾는다. 면은 채우지 않는다.",
+    "imageCaption": "가로 4cm, 깊이 3cm, 높이 2cm 직육면체에서 B에서 윗면과 CDHG 면의 공통 모서리 CD를 지나 H까지 겉면 최단 경로를 찾는다. 면은 채우지 않는다.",
+    "imageSize": "full"
   },
   {
     "id": 20,
     "solutionImage": "assets/images/19_연향중_2학기_중간_중3_수학/q20-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageAlt": "V, H, B를 지나는 평면으로 자르면 직각삼각형이 보인다. 초록 직각변 HB는 정사각형 대각선의 반이다.",
-    "solutionImageCaption": "HB=3√2 cm이고 VB=6 cm이다. 높이는 √(36−18)=3√2 cm이고 정답은 ①이다.",
+    "solutionImageAlt": "밑면 한 변 6cm, 옆모서리 6cm인 정사각뿔 V-ABCD에서 꼭짓점 V가 밑면 중심 위에 있고 수선 h와 발의 직각 표식을 그린다.",
+    "solutionImageCaption": "밑면 한 변 6cm, 옆모서리 6cm인 정사각뿔 V-ABCD에서 꼭짓점 V가 밑면 중심 위에 있고 수선 h와 발의 직각 표식을 그린다.",
     "score": 4.0,
     "level": "중",
     "category": "기하",
@@ -1652,7 +1664,11 @@ window.questionBank = [
     "rpmL3": null,
     "rpmL4": null,
     "primaryMethod": "밑면 대각선의 절반3√2를 구하고 옆모서리6과 높이가 만드는 직각삼각형으로 높이3√2를 계산한다.",
-    "decisiveStep": "밑면 대각선의 절반3√2를 구하고 옆모서리6과 높이가 만드는 직각삼각형으로 높이3√2를 계산한다."
+    "decisiveStep": "밑면 대각선의 절반3√2를 구하고 옆모서리6과 높이가 만드는 직각삼각형으로 높이3√2를 계산한다.",
+    "image": "assets/images/19_연향중_2학기_중간_중3_수학/q20-problem.svg",
+    "imageAlt": "한 밑변과 한 옆모서리가 각각 6cm인 정사각뿔 V-ABCD에서 밑면 정사각형과 꼭짓점 V 및 높이의 수직 관계를 보여 준다.",
+    "imageCaption": "한 밑변과 한 옆모서리가 각각 6cm인 정사각뿔 V-ABCD에서 밑면 정사각형과 꼭짓점 V 및 높이의 수직 관계를 보여 준다.",
+    "imageSize": "full"
   },
   {
     "id": 21,

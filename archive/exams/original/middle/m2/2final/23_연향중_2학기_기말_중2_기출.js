@@ -62,8 +62,8 @@ window.questionBank = [
   },
   {
     "id": 2,
-    "imageSize": "tall",
-    "imageAlt": "M은 BC의 중점, N은 CD의 중점이다. AM과 AN이 BD에서 각각 P와 Q를 만난다. P, Q, N, C, M을 차례로 이은 영역을 칠했다.",
+    "imageSize": "full",
+    "imageAlt": "평행사변형에서 두 중점 M, N과 교점 P, Q가 만드는 오각형 P-Q-N-C-M만 음영으로 나타낸다.",
     "level": "상",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -93,8 +93,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q2-solution-visual-v2.svg",
-    "solutionImageAlt": "M은 BC의 중점, N은 CD의 중점이다. AM과 AN이 BD에서 각각 P와 Q를 만난다. P, Q, N, C, M을 차례로 이은 영역을 칠했다. 둘레 옆의 두 삼각형을 다른 색으로 표시했다.",
-    "solutionImageCaption": "삼각형 BCD의 넓이는 48 cm²이고 두 주황 삼각형은 각각 8 cm²이다. 따라서 색칠한 부분은 32 cm²이다.",
+    "solutionImageAlt": "색칠한 오각형은 삼각형 BCD에서 왼쪽 BPM, 오른쪽 DQN의 두 작은 삼각형을 뺀 부분이다.",
+    "solutionImageCaption": "색칠한 오각형은 삼각형 BCD에서 왼쪽 BPM, 오른쪽 DQN의 두 작은 삼각형을 뺀 부분이다.",
     "solutionImageSize": "full",
     "curriculum": "2015",
     "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
@@ -119,12 +119,13 @@ window.questionBank = [
       "l4": "선분비를 이용한 복합도형"
     },
     "primaryMethod": "중점·평행선 비례로 대각선 삼등분 후 넓이 분할",
-    "decisiveStep": "두 닮음에서 대각선의 삼등분점을 얻고 두 변의 비를 곱한 양쪽 삼각형을 뺀다."
+    "decisiveStep": "두 닮음에서 대각선의 삼등분점을 얻고 두 변의 비를 곱한 양쪽 삼각형을 뺀다.",
+    "imageCaption": "평행사변형에서 두 중점 M, N과 교점 P, Q가 만드는 오각형 P-Q-N-C-M만 음영으로 나타낸다."
   },
   {
     "id": 3,
-    "imageSize": "tall",
-    "imageAlt": "삼각형 ABC의 중선 AD와 BE는 G에서 만난다. D에서 오른쪽 변 AC에 닿는 DF는 BE와 평행이다.",
+    "imageSize": "full",
+    "imageAlt": "무게중심 G를 지나는 중선 AD·BE와, BE에 평행한 DF가 있는 삼각형이다.",
     "level": "상",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -154,8 +155,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q3-solution-visual-v2.svg",
-    "solutionImageAlt": "삼각형 ABC의 중선 AD와 BE는 G에서 만난다. D에서 오른쪽 변 AC에 닿는 DF는 BE와 평행이다. FDC의 넓이를 청록 영역 안에 표시했다.",
-    "solutionImageCaption": "닮음에서 CF:CA=1:4, 밑변에서 CD:CB=1:2이다. FDC 넓이는 전체의 1/8이므로 ABC의 넓이는 64 cm²이다.",
+    "solutionImageAlt": "삼각형 FDC의 넓이 8 cm²만 회색으로 구분하여 중점과 닮음에 의한 전체 삼각형의 넓이비를 읽는다.",
+    "solutionImageCaption": "삼각형 FDC의 넓이 8 cm²만 회색으로 구분하여 중점과 닮음에 의한 전체 삼각형의 넓이비를 읽는다.",
     "solutionImageSize": "full",
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -183,7 +184,8 @@ window.questionBank = [
       "l4": "선분비를 이용한 복합도형"
     },
     "primaryMethod": "무게중심의 중점 조건과 평행 중선 비례",
-    "decisiveStep": "DC는 BC의 절반, CF는 AC의 사분의 일임을 구해 공통각의 넓이비를 곱한다."
+    "decisiveStep": "DC는 BC의 절반, CF는 AC의 사분의 일임을 구해 공통각의 넓이비를 곱한다.",
+    "imageCaption": "무게중심 G를 지나는 중선 AD·BE와, BE에 평행한 DF가 있는 삼각형이다."
   },
   {
     "id": 4,
@@ -279,8 +281,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q5-solution-visual-v2.svg",
-    "solutionImageAlt": "삼각형 ABC의 두 옆변 AB와 AC는 각각 17이고 가로 밑변 BC는 16이다. 높이 15를 내려 밑변을 두 길이 8로 나눈다.",
-    "solutionImageCaption": "밑변의 절반은 8이고 높이는 √(17²−8²)=15이다. 따라서 넓이는 16×15÷2=120이다.",
+    "solutionImageAlt": "변 17, 17, 16인 이등변삼각형에서 중점 H로 내린 높이 AH=15와 밑변 두 조각 8을 보여 준다.",
+    "solutionImageCaption": "변 17, 17, 16인 이등변삼각형에서 중점 H로 내린 높이 AH=15와 밑변 두 조각 8을 보여 준다.",
     "solutionImageSize": "full",
     "curriculum": "2015",
     "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
@@ -799,8 +801,8 @@ window.questionBank = [
   },
   {
     "id": 15,
-    "imageSize": "tall",
-    "imageAlt": "왼쪽 위에 A, 그 아래 B, 오른쪽 위에 D, 전체 아랫줄에 C를 두었다. 경계선을 공유하는 영역을 읽을 수 있다.",
+    "imageSize": "full",
+    "imageAlt": "위의 A·B·D와 아래의 C 네 영역으로 구분된 도형이며 각 영역은 아직 칠하지 않았다.",
     "level": "상",
     "category": "확률",
     "originalCategory": "확률",
@@ -854,7 +856,8 @@ window.questionBank = [
     "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q15-solution.svg",
     "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
     "solutionImageCaption": "이 도형은 원래 영역의 위치나 넓이를 대체하지 않는 인접 관계도이다. 연결선 AB,AD,BD,BC,CD만 서로 다른 색이 필요하며 A와 C는 이웃하지 않는다. B4가지→D3가지→A2가지→C2가지, 총 48.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageCaption": "위의 A·B·D와 아래의 C 네 영역으로 구분된 도형이며 각 영역은 아직 칠하지 않았다."
   },
   {
     "id": 16,
@@ -1226,8 +1229,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q22-solution-visual-v2.svg",
-    "solutionImageAlt": "직사각형 ABCD의 가로 AD는 12 cm, 세로 AB는 9 cm이다. A에서 대각선 BD에 내린 수선은 E에 닿는다. 삼각형의 넓이 54 cm²와 대각선 15 cm를 따로 나타냈다.",
-    "solutionImageCaption": "삼각형 ABD는 54 cm²이고 대각선 BD는 15 cm이다. 15×AE÷2=54이므로 AE=36/5 cm이다.",
+    "solutionImageAlt": "가로 12 cm, 세로 9 cm인 직사각형의 대각선 BD=15 cm에 A에서 수선 AE를 내리고 E의 직각 표식을 보인다.",
+    "solutionImageCaption": "가로 12 cm, 세로 9 cm인 직사각형의 대각선 BD=15 cm에 A에서 수선 AE를 내리고 E의 직각 표식을 보인다.",
     "solutionImageSize": "full",
     "curriculum": "2015",
     "problemTypeKey": "",

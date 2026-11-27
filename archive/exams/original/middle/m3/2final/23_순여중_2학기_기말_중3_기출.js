@@ -175,7 +175,7 @@ window.questionBank = [
     ],
     "answer": "②, ④",
     "solution": "$AB$는 지름이므로\n$\\angle ADB=90^\\circ$이다.\n$E,D,A$가 한 직선 위에 있으므로 삼각형 $DEB$에서 $\\angle DEB+\\angle DBE=90^\\circ$가 되어 ②는 옳다.\n또 $\\angle DOC=46^\\circ$이므로 같은 호 $DC$를 보는 원주각 $\\angle DBC=23^\\circ$여서 ④도 옳다.\n정답은 ②, ④이다.",
-    "image": "assets/images/23_순여중_2학기_기말_중3_기출/q4.png",
+    "image": "assets/images/23_순여중_2학기_기말_중3_기출/q4-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "existing_preserved",
@@ -196,7 +196,13 @@ window.questionBank = [
     "decisiveStep": "지름을 보는 원주각의 직각과 같은 호의 중심각 절반을 이용하여 성립하는 두 각 진술을 판정한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "AB는 반원 O의 지름이다. 원 위 D,C를 지나는 직선 AD와 BC의 연장선은 E에서 만나고 중심각 DOC는 46°이다. x의 값은 미지수로만 표시한다.",
+    "imageCaption": "AB는 반원 O의 지름이다. 원 위 D,C를 지나는 직선 AD와 BC의 연장선은 E에서 만나고 중심각 DOC는 46°이다. x의 값은 미지수로만 표시한다.",
+    "imageSize": "full",
+    "solutionImageAlt": "지름 AB가 보는 원주각 ADB는 90°이고 중심각 DOC=46°에 대응하는 원주각 DBC는 23°이다. 따라서 ②와 ④가 옳다.",
+    "solutionImageCaption": "지름 AB가 보는 원주각 ADB는 90°이고 중심각 DOC=46°에 대응하는 원주각 DBC는 23°이다. 따라서 ②와 ④가 옳다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,

@@ -247,7 +247,7 @@ window.questionBank = [
     "sourceQid": 6,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_효천고_2학기_기말_고1_유사2/q06-solution.svg",
-    "solutionImageAlt": "해설 그림: 각 원소가 어느 집합에 속하는지 표로 나타낸 그림이다.",
+    "solutionImageAlt": "예: 전체집합의 원소 1부터 5까지가 P, Q, R에 속하는 경우를 표로 나타냈다. P∪Q=Q에서 P⊆Q이고, Q∩R=R에서 R⊆Q이므로 P와 R에 속하는 원소는 모두 Q에도 속한다. R⊆Q이므로 r→q가 항상 참이고, 그 대우인 ∼q→∼r도 항상 참이다. 따라서 답은 ④이다.",
     "solutionImageCaption": "예: 전체집합의 원소 1부터 5까지가 P, Q, R에 속하는 경우를 표로 나타냈다. P∪Q=Q에서 P⊆Q이고, Q∩R=R에서 R⊆Q이므로 P와 R에 속하는 원소는 모두 Q에도 속한다. R⊆Q이므로 r→q가 항상 참이고, 그 대우인 ∼q→∼r도 항상 참이다. 따라서 답은 ④이다.",
     "solutionImageSize": "full"
   },
@@ -292,7 +292,7 @@ window.questionBank = [
     "sourceQid": 7,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_효천고_2학기_기말_고1_유사2/q07-solution.svg",
-    "solutionImageAlt": "해설 그림: 각 원소가 어느 집합에 속하는지 표로 나타낸 그림이다.",
+    "solutionImageAlt": "표는 보기 ㄱ, ㄴ, ㄷ에서 p, q의 진리집합 P, Q에 속하는 원소의 예이다. 위에서부터 두 줄씩 ㄱ(1,2)·(0,3), ㄴ(3,3)·(-3,-3), ㄷ 3·4이다. 세 보기 모두 P에 속하는 원소는 Q에도 속하므로 p→q는 참이고, Q에만 속하는 원소 (0,3), (-3,-3), 4가 있으므로 q→p는 거짓이다. 따라서 p는 q이기 위한 충분조건이지만 필요조건은 아니다. 따라서 답은 ⑤이다.",
     "solutionImageCaption": "표는 보기 ㄱ, ㄴ, ㄷ에서 p, q의 진리집합 P, Q에 속하는 원소의 예이다. 위에서부터 두 줄씩 ㄱ(1,2)·(0,3), ㄴ(3,3)·(-3,-3), ㄷ 3·4이다. 세 보기 모두 P에 속하는 원소는 Q에도 속하므로 p→q는 참이고, Q에만 속하는 원소 (0,3), (-3,-3), 4가 있으므로 q→p는 거짓이다. 따라서 p는 q이기 위한 충분조건이지만 필요조건은 아니다. 따라서 답은 ⑤이다.",
     "solutionImageSize": "full"
   },
@@ -337,7 +337,7 @@ window.questionBank = [
     "sourceQid": 8,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_효천고_2학기_기말_고1_유사2/q08-solution.svg",
-    "solutionImageAlt": "해설 그림: 원점에서 시작하는 주황색 점선 무리함수 곡선과, 끝점 (2,−1)에서 시작하는 파란색 무리함수 곡선이 그려져 있고 파란 곡선 위의 점 (4,1)이 표시되어 있다.",
+    "solutionImageAlt": "평행이동한 함수는 y=√(2(x−2))−1이고 끝점은 (2,−1)이다. 정의역은 x≥2, 치역은 y≥−1이며 x=4일 때 y=1이므로 점 (4,1)을 지난다. 주황색 점선은 처음 함수 y=√(2x)이고, 파란색 곡선은 x축으로 2, y축으로 −1만큼 평행이동한 그래프이다. 그래프는 제1사분면과 제4사분면만 지나고 제3사분면은 지나지 않는다. 따라서 답은 ⑤이다.",
     "solutionImageCaption": "평행이동한 함수는 y=√(2(x−2))−1이고 끝점은 (2,−1)이다. 정의역은 x≥2, 치역은 y≥−1이며 x=4일 때 y=1이므로 점 (4,1)을 지난다. 주황색 점선은 처음 함수 y=√(2x)이고, 파란색 곡선은 x축으로 2, y축으로 −1만큼 평행이동한 그래프이다. 그래프는 제1사분면과 제4사분면만 지나고 제3사분면은 지나지 않는다. 따라서 답은 ⑤이다.",
     "solutionImageSize": "full"
   },
@@ -467,7 +467,7 @@ window.questionBank = [
     "sourceQid": 11,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_효천고_2학기_기말_고1_유사2/q11-solution.svg",
-    "solutionImageAlt": "해설 그림: 파란색 무리함수 곡선과 주황색 역함수 곡선이 점선 y=x에 대칭으로 그려져 있고 두 곡선이 y=x 위의 한 점에서 만난다.",
+    "solutionImageAlt": "a=−1이므로 f(x)=√(x−1)+3이고 시작점은 (1,3)이다. f는 증가함수이므로 f와 역함수 f⁻¹의 그래프는 직선 y=x에 대하여 대칭이고 교점은 y=x 위에 있다. √(x−1)=x−3의 해 중 x≥3인 것은 x=5이므로 교점은 (5,5)이다. 따라서 답은 ③이다.",
     "solutionImageCaption": "a=−1이므로 f(x)=√(x−1)+3이고 시작점은 (1,3)이다. f는 증가함수이므로 f와 역함수 f⁻¹의 그래프는 직선 y=x에 대하여 대칭이고 교점은 y=x 위에 있다. √(x−1)=x−3의 해 중 x≥3인 것은 x=5이므로 교점은 (5,5)이다. 따라서 답은 ③이다.",
     "solutionImageSize": "full"
   },
@@ -512,7 +512,7 @@ window.questionBank = [
     "sourceQid": 12,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_효천고_2학기_기말_고1_유사2/q12-solution.svg",
-    "solutionImageAlt": "해설 그림: 점근선 x=2, y=2를 가지는 파란색 유리함수 그래프이고 두 점근선의 교점을 기울기 −1, 1인 두 점선이 지난다.",
+    "solutionImageAlt": "y=(ax+b)/(x−2)=a+(2a+b)/(x−2)이므로 점근선은 x=2, y=a이고 대칭의 중심은 C(2,a)이다. 직선 y=−x+4(초록색 점선)가 C를 지나므로 a=2이다. y=8/x와 겹치므로 2a+b=8에서 b=4이다. 그림은 이 값으로 그린 y=(2x+4)/(x−2)이고, 주황색 점선 y=x도 C를 지난다. 따라서 a+b=6이고 답은 ①이다.",
     "solutionImageCaption": "y=(ax+b)/(x−2)=a+(2a+b)/(x−2)이므로 점근선은 x=2, y=a이고 대칭의 중심은 C(2,a)이다. 직선 y=−x+4(초록색 점선)가 C를 지나므로 a=2이다. y=8/x와 겹치므로 2a+b=8에서 b=4이다. 그림은 이 값으로 그린 y=(2x+4)/(x−2)이고, 주황색 점선 y=x도 C를 지난다. 따라서 a+b=6이고 답은 ①이다.",
     "solutionImageSize": "full"
   },

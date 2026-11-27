@@ -41,7 +41,16 @@ window.examData = {
       "l4": "밑각"
     },
     "primaryMethod": "직각 이등변삼각형의 같은 밑각",
-    "decisiveStep": "그림의 A직각과 AB=AC로 두 밑각이 각각45도임을 사용한다."
+    "decisiveStep": "그림의 A직각과 AB=AC로 두 밑각이 각각45도임을 사용한다.",
+    "image": "assets/images/21_연향중_2학기_중간_중2_수학/q1-problem.svg",
+    "imageAlt": "직각·두 변 같은 눈금·미지각 x를 원본처럼 표시",
+    "imageCaption": "직각·두 변 같은 눈금·미지각 x를 원본처럼 표시",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_연향중_2학기_중간_중2_수학/q1-solution.svg",
+    "solutionImageAlt": "∠A=90°와 AB=AC에서 두 밑각 45°",
+    "solutionImageCaption": "∠A=90°와 AB=AC에서 두 밑각 45°",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 2,
@@ -158,7 +167,12 @@ window.examData = {
       "ㅁ = $\\overline{\\mathrm{CD}}$"
     ],
     "answer": "③",
-    "solution": "ㄷ은 두 삼각형 △ABC, △CDA의 공통인 변 $\\overline{\\mathrm{AC}}$이므로 ③ ㄷ = $\\overline{\\mathrm{BD}}$는 옳지 않다. (ㄱ = $\\overline{\\mathrm{AD}}$, ㄴ = $\\angle\\mathrm{CAD}$, ㄹ = $\\angle\\mathrm{DCA}$, ㅁ = $\\overline{\\mathrm{CD}}$는 옳다.)"
+    "solution": "ㄷ은 두 삼각형 △ABC, △CDA의 공통인 변 $\\overline{\\mathrm{AC}}$이므로 ③ ㄷ = $\\overline{\\mathrm{BD}}$는 옳지 않다. (ㄱ = $\\overline{\\mathrm{AD}}$, ㄴ = $\\angle\\mathrm{CAD}$, ㄹ = $\\angle\\mathrm{DCA}$, ㅁ = $\\overline{\\mathrm{CD}}$는 옳다.)",
+    "solutionImage": "assets/images/21_연향중_2학기_중간_중2_수학/q5-solution.svg",
+    "solutionImageAlt": "공통변 AC·엇각·평행한 한 쌍의 대변으로 SAS 합동을 보이는 평행사변형",
+    "solutionImageCaption": "공통변 AC·엇각·평행한 한 쌍의 대변으로 SAS 합동을 보이는 평행사변형",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 6,
@@ -412,7 +426,11 @@ window.examData = {
       "l4": "각의 이등분선과 내심"
     },
     "primaryMethod": "두 각이등분선이 만드는 각 합",
-    "decisiveStep": "A와 C의 반각을 두 보조삼각형 내각합에 넣고 두 목표각을 합하여 A+C를 소거한다."
+    "decisiveStep": "A와 C의 반각을 두 보조삼각형 내각합에 넣고 두 목표각을 합하여 A+C를 소거한다.",
+    "image": "assets/images/21_연향중_2학기_중간_중2_수학/q11-problem.svg",
+    "imageAlt": "AE 각이등분선의 점선과 CD 보조선·내심 I·68°·x·y 복구",
+    "imageCaption": "AE 각이등분선의 점선과 CD 보조선·내심 I·68°·x·y 복구",
+    "imageSize": "full"
   },
   {
     "id": 12,
@@ -777,7 +795,16 @@ window.examData = {
       "l4": "조건으로 사각형 판정"
     },
     "primaryMethod": "두 정사각형의 대각선 중심으로 새 사각형 판정",
-    "decisiveStep": "가로를 반분한 두 도형이 정사각형임을 확인하고 각 대각선의 교점 P,Q와 M,N으로 만든 사각형의 변·각을 판정한다."
+    "decisiveStep": "가로를 반분한 두 도형이 정사각형임을 확인하고 각 대각선의 교점 P,Q와 M,N으로 만든 사각형의 변·각을 판정한다.",
+    "image": "assets/images/21_연향중_2학기_중간_중2_수학/q20-problem.svg",
+    "imageAlt": "원문 대체 텍스트가 지정한 사각형 MPNQ의 누락된 음영 복구",
+    "imageCaption": "원문 대체 텍스트가 지정한 사각형 MPNQ의 누락된 음영 복구",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_연향중_2학기_중간_중2_수학/q20-solution.svg",
+    "solutionImageAlt": "직사각형의 절반 길이로 나뉜 대칭 교점 P,Q와 정사각형 MPNQ",
+    "solutionImageCaption": "직사각형의 절반 길이로 나뉜 대칭 교점 P,Q와 정사각형 MPNQ",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 21,
@@ -812,7 +839,12 @@ window.examData = {
       "l4": "AA"
     },
     "primaryMethod": "수직이등분선과 직사각형에서 AA 닮음",
-    "decisiveStep": "그림의 두 작은 직각삼각형과 큰 직각삼각형의 대응각을 맞추고 AO와 AC·BC의 비로 AP를 정한다."
+    "decisiveStep": "그림의 두 작은 직각삼각형과 큰 직각삼각형의 대응각을 맞추고 AO와 AC·BC의 비로 AP를 정한다.",
+    "solutionImage": "assets/images/21_연향중_2학기_중간_중2_수학/q21-solution.svg",
+    "solutionImageAlt": "6×8 직사각형의 대각선 수직이등분선으로 AP=25/4를 구하는 해설",
+    "solutionImageCaption": "6×8 직사각형의 대각선 수직이등분선으로 AP=25/4를 구하는 해설",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   }
 ]
 };

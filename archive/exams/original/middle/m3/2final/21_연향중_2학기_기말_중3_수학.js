@@ -25,8 +25,8 @@ window.examData = {
       "answer": "⑤",
       "solution": "AB는 빗변이고, ∠B에 대하여 BC=a는 이웃한 변이며 AC는 맞은편 변이다. 따라서 tan B=AC/BC=AC/a이므로 AC=a tan B이다. 정답은 ⑤.",
       "solutionImage": "assets/images/21_연향중_2학기_기말_중3_수학/q01-solution.svg",
-      "solutionImageAlt": "해설 그림: 꼭짓점 C에서 직각인 직각삼각형 A, B, C이다. 빗변 AB는 c, 파란색 변 BC는 a로 적혀 있고 주황색 변은 AC이다. 꼭짓점 B의 각은 분홍색 호로 표시되어 있다.",
-      "solutionImageCaption": "∠C=90°인 직각삼각형이다. ∠B를 기준으로 빗변은 AB(c), 이웃한 변은 파란 BC(a), 맞은편 변은 주황 AC이다. 구하는 AC를 이웃한 변 a와 ∠B의 삼각비로 나타낸다. 이웃한 변 a에 대한 맞은편 변 AC의 비가 tan B이므로 AC=a tan B이다. 정답은 ⑤이다.",
+      "solutionImageAlt": "∠C=90°인 직각삼각형이다. ∠B를 기준으로 빗변은 AB(c), 이웃한 변은 파란 BC(a), 맞은편 변은 주황 AC이다. 구하는 AC를 이웃한 변 a와 ∠B의 삼각비로 나타낸다.",
+      "solutionImageCaption": "∠C=90°인 직각삼각형이다. ∠B를 기준으로 빗변은 AB(c), 이웃한 변은 파란 BC(a), 맞은편 변은 주황 AC이다. 구하는 AC를 이웃한 변 a와 ∠B의 삼각비로 나타낸다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -47,7 +47,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "한 직각삼각형에서 기준각 B의 이웃변 a와 맞은편 변 AC를 tan B의 정의에 직접 대응하여 길이식을 고른다.",
-    "decisiveStep": "한 직각삼각형에서 기준각 B의 이웃변 a와 맞은편 변 AC를 tan B의 정의에 직접 대응하여 길이식을 고른다."
+    "decisiveStep": "한 직각삼각형에서 기준각 B의 이웃변 a와 맞은편 변 AC를 tan B의 정의에 직접 대응하여 길이식을 고른다.",
+    "image": "assets/images/21_연향중_2학기_기말_중3_수학/q01-problem.svg",
+    "imageAlt": "직각 C인 삼각형 ABC, 빗변 c와 변 BC의 길이 a 및 구하는 변 AC",
+    "imageCaption": "직각 C인 삼각형 ABC, 빗변 c와 변 BC의 길이 a 및 구하는 변 AC",
+    "imageSize": "full"
   },
     {
       "id": "q02",
@@ -64,8 +68,8 @@ window.examData = {
       "answer": "①",
       "solution": "두 변 AB, BC와 그 끼인각 B가 주어졌으므로 넓이는 (1/2)·AB·BC·sin B이다. AB=√13, BC=3, ∠B=30°이므로 넓이는 (1/2)·√13·3·(1/2)=3√13/4이다. 따라서 정답은 ①이다.",
       "solutionImage": "assets/images/21_연향중_2학기_기말_중3_수학/q02-solution.svg",
-      "solutionImageAlt": "해설 그림: 삼각형 A, B, C가 파란색으로 칠해져 있다. AB는 √13, BC는 3이고 꼭짓점 B의 각은 30도이다. 꼭짓점 C에서 변 AB에 내린 초록색 수선의 발이 H이고 CH는 2분의 3이다.",
-      "solutionImageCaption": "AB=√13, BC=3, ∠B=30°인 삼각형이다. 꼭짓점 C에서 AB에 내린 수선의 발을 H라 하면 직각삼각형 BCH에서 높이 CH는 BC의 절반인 2분의 3이다(초록). 삼각형 ABC의 넓이는 AB와 높이 CH로 구한다. 따라서 넓이는 2분의 1×√13×2분의 3=4분의 3√13이다. 정답은 ①이다.",
+      "solutionImageAlt": "AB=√13, BC=3, ∠B=30°인 삼각형이다. 꼭짓점 C에서 AB에 내린 수선의 발을 H라 하면 직각삼각형 BCH에서 높이 CH는 BC의 절반인 2분의 3이다(초록). 삼각형 ABC의 넓이는 AB와 높이 CH로 구한다.",
+      "solutionImageCaption": "AB=√13, BC=3, ∠B=30°인 삼각형이다. 꼭짓점 C에서 AB에 내린 수선의 발을 H라 하면 직각삼각형 BCH에서 높이 CH는 BC의 절반인 2분의 3이다(초록). 삼각형 ABC의 넓이는 AB와 높이 CH로 구한다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -86,7 +90,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "주어진 두 변과 끼인각을 1/2 ab sin C에 바로 대입해 삼각형의 넓이를 계산한다.",
-    "decisiveStep": "주어진 두 변과 끼인각을 1/2 ab sin C에 바로 대입해 삼각형의 넓이를 계산한다."
+    "decisiveStep": "주어진 두 변과 끼인각을 1/2 ab sin C에 바로 대입해 삼각형의 넓이를 계산한다.",
+    "image": "assets/images/21_연향중_2학기_기말_중3_수학/q02-problem.svg",
+    "imageAlt": "AB가 sqrt(13), BC가 3, 끼인각 B가 30도인 삼각형 ABC",
+    "imageCaption": "AB가 sqrt(13), BC가 3, 끼인각 B가 30도인 삼각형 ABC",
+    "imageSize": "full"
   },
     {
       "id": "q03",
@@ -103,8 +111,8 @@ window.examData = {
       "answer": "②",
       "solution": "건물의 높이를 h m, B에서 건물 밑까지의 수평거리를 d m라 두자. ∠B=45°이므로 tan45°=h/d에서 d=h이다. A는 B보다 건물에서 50 m 더 멀리 있으므로 A에서 건물 밑까지의 거리는 h+50이다. ∠A=30°이므로 tan30°=h/(h+50)=1/√3. 따라서 √3h=h+50, h(√3−1)=50이고, h=50/(√3−1)=25(√3+1) m이다. 정답은 ②.",
       "solutionImage": "assets/images/21_연향중_2학기_기말_중3_수학/q03-solution.svg",
-      "solutionImageAlt": "해설 그림: 지면 위의 두 지점 A, B와 건물을 옆에서 본 그림이다. A와 B 사이는 50m이고 건물 높이는 h로 적혀 있다. 건물 꼭대기를 잇는 파란색 선과 A에서의 각은 30도, 주황색 선과 B에서의 각은 45도이다.",
-      "solutionImageCaption": "건물의 높이를 h라 하자. B에서 건물 밑까지의 거리는 h이고(∠B=45°), A는 B보다 50 m 더 멀다. 파란 선(30°)과 주황 선(45°)의 탄젠트로 h에 대한 식을 세워 h를 구한다. ∠B=45°에서 B부터 건물까지의 거리도 h이므로 tan30°는 (h+50)분의 h이다. 이를 풀면 h=25(√3+1) m이다. 정답은 ②이다.",
+      "solutionImageAlt": "건물의 높이를 h라 하자. B에서 건물 밑까지의 거리는 h이고(∠B=45°), A는 B보다 50 m 더 멀다. 파란 선(30°)과 주황 선(45°)의 탄젠트로 h에 대한 식을 세워 h를 구한다.",
+      "solutionImageCaption": "건물의 높이를 h라 하자. B에서 건물 밑까지의 거리는 h이고(∠B=45°), A는 B보다 50 m 더 멀다. 파란 선(30°)과 주황 선(45°)의 탄젠트로 h에 대한 식을 세워 h를 구한다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -125,7 +133,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "같은 건물 높이를 미지수로 두고 두 관측점의 수평거리 차50과 tan45, tan30의 두 식을 연결해 공통 높이를 구한다.",
-    "decisiveStep": "같은 건물 높이를 미지수로 두고 두 관측점의 수평거리 차50과 tan45, tan30의 두 식을 연결해 공통 높이를 구한다."
+    "decisiveStep": "같은 건물 높이를 미지수로 두고 두 관측점의 수평거리 차50과 tan45, tan30의 두 식을 연결해 공통 높이를 구한다.",
+    "image": "assets/images/21_연향중_2학기_기말_중3_수학/q03-problem.svg",
+    "imageAlt": "수평선 위 A·B 두 지점이 50m 떨어지고 건물 C·D를 각각 30도·45도로 보는 도형",
+    "imageCaption": "수평선 위 A·B 두 지점이 50m 떨어지고 건물 C·D를 각각 30도·45도로 보는 도형",
+    "imageSize": "full"
   },
     {
       "id": "q04",
@@ -142,8 +154,8 @@ window.examData = {
       "answer": "①",
       "solution": "AD=BD이므로 △ABD는 이등변삼각형이고, ∠BAD=∠ABD=22.5°이다. 따라서 ∠ADB=135°. B, D, C는 한 직선 위에 있으므로 ∠ADC=180°−135°=45°. △ADC는 C에서 직각인 삼각형이므로 45°-45°-90° 삼각형이다. AD=8 cm는 빗변이므로 두 직각변은 각각 8/√2=4√2 cm이다. 따라서 x=DC=4√2 cm, y=AC=4√2 cm이고 정답은 ①이다.",
       "solutionImage": "assets/images/21_연향중_2학기_기말_중3_수학/q04-solution.svg",
-      "solutionImageAlt": "해설 그림: 꼭짓점 C에서 직각인 직각삼각형 A, B, C이다. 변 BC 위의 점 D에서 AD와 BD는 각각 8cm이고 같은 길이 표시(파란색)가 있다. 꼭짓점 B의 각은 22.5도(분홍색), 각 ADC는 45도(보라색)이며 DC는 x(주황색), CA는 y(초록색)로 적혀 있다.",
-      "solutionImageCaption": "∠C=90°인 직각삼각형 ABC에서 점 D는 BC 위에 있고 AD=BD=8 cm이다. 삼각형 ABD는 이등변삼각형이고 ∠B=22.5°이므로 바깥각 ∠ADC=45°이다. 따라서 직각삼각형 ADC는 직각이등변삼각형이다. 구하는 x(주황)와 y(초록)는 이 삼각형의 두 직각변이다. 빗변 AD=8 cm이므로 두 직각변은 8을 √2로 나눈 4√2 cm이다. 정답은 ①이다.",
+      "solutionImageAlt": "∠C=90°인 직각삼각형 ABC에서 점 D는 BC 위에 있고 AD=BD=8 cm이다. 삼각형 ABD는 이등변삼각형이고 ∠B=22.5°이므로 바깥각 ∠ADC=45°이다. 따라서 직각삼각형 ADC는 직각이등변삼각형이다. 구하는 x(주황)와 y(초록)는 이 삼각형의 두 직각변이다.",
+      "solutionImageCaption": "∠C=90°인 직각삼각형 ABC에서 점 D는 BC 위에 있고 AD=BD=8 cm이다. 삼각형 ABD는 이등변삼각형이고 ∠B=22.5°이므로 바깥각 ∠ADC=45°이다. 따라서 직각삼각형 ADC는 직각이등변삼각형이다. 구하는 x(주황)와 y(초록)는 이 삼각형의 두 직각변이다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -164,7 +176,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "등변 AD=BD에서 밑각을 옮기고 일직선의 보각으로45도를 구한 뒤 45-45-90 고정 변비에서 두 직각변의 길이를 구한다.",
-    "decisiveStep": "등변 AD=BD에서 밑각을 옮기고 일직선의 보각으로45도를 구한 뒤 45-45-90 고정 변비에서 두 직각변의 길이를 구한다."
+    "decisiveStep": "등변 AD=BD에서 밑각을 옮기고 일직선의 보각으로45도를 구한 뒤 45-45-90 고정 변비에서 두 직각변의 길이를 구한다.",
+    "image": "assets/images/21_연향중_2학기_기말_중3_수학/q04-problem.svg",
+    "imageAlt": "직각삼각형 ABC 안의 점 D, AD=BD=8cm와 22.5도, 미지변 x·y",
+    "imageCaption": "직각삼각형 ABC 안의 점 D, AD=BD=8cm와 22.5도, 미지변 x·y",
+    "imageSize": "full"
   },
     {
       "id": "q05",
@@ -181,8 +197,8 @@ window.examData = {
       "answer": "②",
       "solution": "대각선 AC를 그어 사각형을 △ABC와 △ADC로 나눈다. △ABC의 넓이는 (1/2)·6·8·sin60°=12√3 cm²이다. C에서 직선 AD에 내린 수선의 발을 H라 하면 H는 AD를 D 쪽으로 연장한 선 위에 있고, ∠CDH=180°−150°=30°이다. 따라서 높이 CH=DC·sin30°=2√3·(1/2)=√3 cm이고, △ADC의 넓이는 (1/2)·AD·CH=(1/2)·4·√3=2√3 cm²이다. 전체 넓이는 12√3+2√3=14√3 cm²이므로 정답은 ②.",
       "solutionImage": "assets/images/21_연향중_2학기_기말_중3_수학/q05-solution.svg",
-      "solutionImageAlt": "해설 그림: 사각형 A, B, C, D가 대각선 AC로 나뉘어 삼각형 A, B, C는 파란색, 삼각형 A, D, C는 주황색으로 칠해져 있다. AB는 6, BC는 8, CD는 2√3, DA는 4(단위 cm)이고 각 B는 60도, 각 ADC는 150도이다. AD의 연장선에 C에서 내린 점선의 수선의 발이 H이고 CH는 √3이다.",
-      "solutionImageCaption": "대각선 AC로 사각형을 두 삼각형으로 나눈다. 파란 삼각형 ABC의 넓이는 AB, BC, ∠B로 구한다. C에서 AD의 연장선에 내린 수선의 발을 H라 하면 ∠CDH=30°이므로 CH=DC의 절반이고, 주황 삼각형 ADC의 넓이를 구할 수 있다. 삼각형 ABC의 넓이는 12√3, 삼각형 ADC의 넓이는 2√3이고 합은 14√3 cm²이다. 정답은 ②이다.",
+      "solutionImageAlt": "대각선 AC로 사각형을 두 삼각형으로 나눈다. 파란 삼각형 ABC의 넓이는 AB, BC, ∠B로 구한다. C에서 AD의 연장선에 내린 수선의 발을 H라 하면 ∠CDH=30°이므로 CH=DC의 절반이고, 주황 삼각형 ADC의 넓이를 구할 수 있다.",
+      "solutionImageCaption": "대각선 AC로 사각형을 두 삼각형으로 나눈다. 파란 삼각형 ABC의 넓이는 AB, BC, ∠B로 구한다. C에서 AD의 연장선에 내린 수선의 발을 H라 하면 ∠CDH=30°이므로 CH=DC의 절반이고, 주황 삼각형 ADC의 넓이를 구할 수 있다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -203,7 +219,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "대각선으로 사각형을 두 삼각형으로 나누고 한 넓이는 사인 넓이공식, 다른 넓이는 연장선 위 수선의 높이를 sin30으로 구하여 더한다.",
-    "decisiveStep": "대각선으로 사각형을 두 삼각형으로 나누고 한 넓이는 사인 넓이공식, 다른 넓이는 연장선 위 수선의 높이를 sin30으로 구하여 더한다."
+    "decisiveStep": "대각선으로 사각형을 두 삼각형으로 나누고 한 넓이는 사인 넓이공식, 다른 넓이는 연장선 위 수선의 높이를 sin30으로 구하여 더한다.",
+    "image": "assets/images/21_연향중_2학기_기말_중3_수학/q05-problem.svg",
+    "imageAlt": "사각형 ABCD의 AB=6cm·BC=8cm·AD=4cm·CD=2sqrt(3)cm와 각 B=60도·D=150도",
+    "imageCaption": "사각형 ABCD의 AB=6cm·BC=8cm·AD=4cm·CD=2sqrt(3)cm와 각 B=60도·D=150도",
+    "imageSize": "full"
   },
     {
       "id": "q06",
@@ -220,8 +240,8 @@ window.examData = {
       "answer": "①",
       "solution": "A에서 BC에 수선을 내려 발을 H라 하고 AH=h라 하자. △ABH는 45°-45°-90° 직각삼각형이므로 BH=h이다. △ACH는 30°-60°-90° 직각삼각형이고 ∠C=60°이므로 CH=h/√3이다. BC=BH+CH=5에서 h+h/√3=5이므로 h=(15−5√3)/2이다. 따라서 △ABH의 빗변 AB=h√2=(15√2−5√6)/2 cm이다. 따라서 정답은 ①이다.",
       "solutionImage": "assets/images/21_연향중_2학기_기말_중3_수학/q06-solution.svg",
-      "solutionImageAlt": "해설 그림: 삼각형 A, B, C에서 BC는 5cm, 꼭짓점 B의 각은 45도(파란색), 꼭짓점 C의 각은 60도(분홍색)이다. A에서 BC에 내린 초록색 수선의 발이 H이고 AH는 h로 적혀 있으며 AH와 BH에는 같은 길이 표시(보라색)가 있다. 구하는 변 AB는 주황색이다.",
-      "solutionImageCaption": "A에서 BC에 내린 수선의 발을 H, AH=h라 하자(초록). ∠B=45°이므로 삼각형 ABH는 직각이등변삼각형이어서 BH=AH=h이고, ∠C=60°이므로 삼각형 ACH에서 CH는 h를 √3으로 나눈 값이다. BH+CH=5로 h를 구하면 주황 AB를 알 수 있다. h+(h÷√3)=5에서 h=2분의 (15−5√3)이고 AB=h√2=2분의 (15√2−5√6) cm이다. 정답은 ①이다.",
+      "solutionImageAlt": "A에서 BC에 내린 수선의 발을 H, AH=h라 하자(초록). ∠B=45°이므로 삼각형 ABH는 직각이등변삼각형이어서 BH=AH=h이고, ∠C=60°이므로 삼각형 ACH에서 CH는 h를 √3으로 나눈 값이다. BH+CH=5로 h를 구하면 주황 AB를 알 수 있다.",
+      "solutionImageCaption": "A에서 BC에 내린 수선의 발을 H, AH=h라 하자(초록). ∠B=45°이므로 삼각형 ABH는 직각이등변삼각형이어서 BH=AH=h이고, ∠C=60°이므로 삼각형 ACH에서 CH는 h를 √3으로 나눈 값이다. BH+CH=5로 h를 구하면 주황 AB를 알 수 있다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -242,7 +262,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "보조 수선의 높이를 공유하는45-45-90 및30-60-90 삼각형의 고정 변비를 사용해 두 밑변의 합5를 식으로 나타내고 빗변을 구한다.",
-    "decisiveStep": "보조 수선의 높이를 공유하는45-45-90 및30-60-90 삼각형의 고정 변비를 사용해 두 밑변의 합5를 식으로 나타내고 빗변을 구한다."
+    "decisiveStep": "보조 수선의 높이를 공유하는45-45-90 및30-60-90 삼각형의 고정 변비를 사용해 두 밑변의 합5를 식으로 나타내고 빗변을 구한다.",
+    "image": "assets/images/21_연향중_2학기_기말_중3_수학/q06-problem.svg",
+    "imageAlt": "밑변 BC=5cm이고 각 B=45도·C=60도인 삼각형 ABC",
+    "imageCaption": "밑변 BC=5cm이고 각 B=45도·C=60도인 삼각형 ABC",
+    "imageSize": "full"
   },
     {
       "id": "q07",
@@ -259,8 +283,8 @@ window.examData = {
       "answer": "⑤",
       "solution": "△BCD에서 ∠CBD=60°, ∠BDC=45°이므로 ∠BCD=75°이다. C에서 BD에 수선 CE를 내리면 △CDE는 ∠D=45°, ∠E=90°인 직각이등변삼각형이다. 따라서 CE=CD/√2=390√3/√2=195√6 m이다. △BCE에서 ∠B=60°, ∠E=90°이므로 30°-60°-90°의 변의 비로 BC=2CE/√3=390√2 m이다. △ABC는 C에서 직각이고 ∠ABC=30°이므로 탑 높이 AC=BC·tan30°=390√2/√3=130√6 m. 따라서 정답은 ⑤이다.",
       "solutionImage": "assets/images/21_연향중_2학기_기말_중3_수학/q07-solution.svg",
-      "solutionImageAlt": "해설 그림: 왼쪽은 지면 위에서 본 삼각형 B, C, D로 CD는 390√3m, 각 B는 60도(분홍색), 각 C는 75도(초록색), 각 D는 45도(보라색)이고 C에서 BD에 내린 점선의 수선의 발이 E이고 BC는 파란색이다. 오른쪽은 탑을 옆에서 본 직각삼각형 A, B, C로 BC는 파란색 390√2m, 각 B는 30도(초록색), 탑 AC는 주황색이다.",
-      "solutionImageCaption": "점 C는 탑 밑이다. 지면 위의 삼각형 B, C, D에서 ∠B=60°, ∠C=75°이므로 ∠D=45°이고, C에서 BD에 내린 수선 CE로 BC(파랑)를 구한다. 탑을 옆에서 본 직각삼각형 A, B, C에서 ∠B=30°이므로 같은 BC에 tan30°를 곱하면 탑 높이 AC(주황)이다. BC=390√2 m이고 AC=BC×tan30°=130√6 m이다. 정답은 ⑤이다.",
+      "solutionImageAlt": "점 C는 탑 밑이다. 지면 위의 삼각형 B, C, D에서 ∠B=60°, ∠C=75°이므로 ∠D=45°이고, C에서 BD에 내린 수선 CE로 BC(파랑)를 구한다. 탑을 옆에서 본 직각삼각형 A, B, C에서 ∠B=30°이므로 같은 BC에 tan30°를 곱하면 탑 높이 AC(주황)이다.",
+      "solutionImageCaption": "점 C는 탑 밑이다. 지면 위의 삼각형 B, C, D에서 ∠B=60°, ∠C=75°이므로 ∠D=45°이고, C에서 BD에 내린 수선 CE로 BC(파랑)를 구한다. 탑을 옆에서 본 직각삼각형 A, B, C에서 ∠B=30°이므로 같은 BC에 tan30°를 곱하면 탑 높이 AC(주황)이다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -281,7 +305,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "지면의 삼각형을 수선으로 두 특수직각삼각형으로 나누어 지상거리 BC를 복원한 뒤 수직 단면에서 tan30으로 탑 높이를 구한다.",
-    "decisiveStep": "지면의 삼각형을 수선으로 두 특수직각삼각형으로 나누어 지상거리 BC를 복원한 뒤 수직 단면에서 tan30으로 탑 높이를 구한다."
+    "decisiveStep": "지면의 삼각형을 수선으로 두 특수직각삼각형으로 나누어 지상거리 BC를 복원한 뒤 수직 단면에서 tan30으로 탑 높이를 구한다.",
+    "image": "assets/images/21_연향중_2학기_기말_중3_수학/q07-problem.svg",
+    "imageAlt": "탑 꼭대기 A, 지면 B·C와 아래 지점 D, 관측각 30도·60도·75도 및 CD=390sqrt(3)m",
+    "imageCaption": "탑 꼭대기 A, 지면 B·C와 아래 지점 D, 관측각 30도·60도·75도 및 CD=390sqrt(3)m",
+    "imageSize": "full"
   },
     {
       "id": "q08",
@@ -298,8 +326,8 @@ window.examData = {
       "answer": "②",
       "solution": "15°인 원주각이 길이 4 cm인 호를 바라보므로 그 호에 대한 중심각은 30°이다. 같은 원에서 호의 길이는 중심각에 비례하므로 길이 8 cm인 호에 대한 중심각 y는 60°이다. x는 그 8 cm인 호를 바라보는 원주각이므로 x=60°÷2=30°이다. 따라서 x+y=30°+60°=90°이고, 정답은 ②.",
       "solutionImage": "assets/images/21_연향중_2학기_기말_중3_수학/q08-solution.svg",
-      "solutionImageAlt": "해설 그림: 중심 O인 원에서 위의 점 P에서 네 점 A, B, C, D로 선분이 그어져 있다. 호 AB는 4cm(파란색), 호 CD는 8cm(주황색)이고 각 APB는 15도, 중심각 AOB는 30도(보라색)이다. 호 CD에 대한 원주각 x는 주황색, 중심각 y는 초록색이다.",
-      "solutionImageCaption": "그림의 점 배치는 문제 그림과 다를 수 있으나 호와 각의 크기 관계는 같다. 같은 원에서 호의 길이는 중심각에 비례한다. 길이 4 cm인 호 AB(파랑)에 대한 원주각이 15°이므로 중심각은 30°(보라)이고, 길이가 2배인 8 cm 호 CD(주황)의 중심각 y(초록)는 그 2배이다. x는 호 CD에 대한 원주각이다. 따라서 y=60°이고 x는 y의 절반인 30°이므로 x+y=90°이다. 정답은 ②이다.",
+      "solutionImageAlt": "같은 원에서 호의 길이는 중심각에 비례한다. 길이 4 cm인 호 AB(파랑)에 대한 원주각이 15°이므로 중심각은 30°(보라)이고, 길이가 2배인 8 cm 호 CD(주황)의 중심각 y(초록)는 그 2배이다. x는 호 CD에 대한 원주각이다.",
+      "solutionImageCaption": "같은 원에서 호의 길이는 중심각에 비례한다. 길이 4 cm인 호 AB(파랑)에 대한 원주각이 15°이므로 중심각은 30°(보라)이고, 길이가 2배인 8 cm 호 CD(주황)의 중심각 y(초록)는 그 2배이다. x는 호 CD에 대한 원주각이다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -320,7 +348,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "주어진15도 원주각을 중심각으로 옮기고 호의 길이 비2를 중심각에 적용한 뒤 목표 원주각과 중심각을 더한다.",
-    "decisiveStep": "주어진15도 원주각을 중심각으로 옮기고 호의 길이 비2를 중심각에 적용한 뒤 목표 원주각과 중심각을 더한다."
+    "decisiveStep": "주어진15도 원주각을 중심각으로 옮기고 호의 길이 비2를 중심각에 적용한 뒤 목표 원주각과 중심각을 더한다.",
+    "image": "assets/images/21_연향중_2학기_기말_중3_수학/q08-problem.svg",
+    "imageAlt": "원의 두 호 길이 4cm·8cm와 15도 원주각, 미지 원주각 x·중심각 y",
+    "imageCaption": "원의 두 호 길이 4cm·8cm와 15도 원주각, 미지 원주각 x·중심각 y",
+    "imageSize": "full"
   },
     {
       "id": "q09",
@@ -337,8 +369,8 @@ window.examData = {
       "answer": "③",
       "solution": "AB가 지름이므로 지름을 바라보는 원주각 ∠ACB=90°이다. 삼각형 ABC의 내각의 합을 이용하면 x=180°−90°−22°=68°이다. 정답은 ③.",
       "solutionImage": "assets/images/21_연향중_2학기_기말_중3_수학/q09-solution.svg",
-      "solutionImageAlt": "해설 그림: 지름 AB인 원 O의 위에 점 C가 있고 삼각형 A, B, C의 각 C는 직각이다. 꼭짓점 A의 각은 22도(파란색), 꼭짓점 B의 각 x는 분홍색으로 표시되어 있다.",
-      "solutionImageCaption": "AB는 원 O의 지름이므로 지름에 대한 원주각 ∠ACB는 직각이다. ∠CAB=22°(파랑)이므로 삼각형의 내각의 합에서 구하는 x(분홍)는 180°에서 직각과 22°를 뺀 값이다. x=180°−90°−22°=68°이다. 정답은 ③이다.",
+      "solutionImageAlt": "AB는 원 O의 지름이므로 지름에 대한 원주각 ∠ACB는 직각이다. ∠CAB=22°(파랑)이므로 삼각형의 내각의 합에서 구하는 x(분홍)는 180°에서 직각과 22°를 뺀 값이다.",
+      "solutionImageCaption": "AB는 원 O의 지름이므로 지름에 대한 원주각 ∠ACB는 직각이다. ∠CAB=22°(파랑)이므로 삼각형의 내각의 합에서 구하는 x(분홍)는 180°에서 직각과 22°를 뺀 값이다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -359,7 +391,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "지름 AB에 대한 원주각90도를 찾고 삼각형의 내각합으로 남은 목표각을 구한다.",
-    "decisiveStep": "지름 AB에 대한 원주각90도를 찾고 삼각형의 내각합으로 남은 목표각을 구한다."
+    "decisiveStep": "지름 AB에 대한 원주각90도를 찾고 삼각형의 내각합으로 남은 목표각을 구한다.",
+    "image": "assets/images/21_연향중_2학기_기말_중3_수학/q09-problem.svg",
+    "imageAlt": "지름 AB인 원 O에 내접한 삼각형 ABC, A의 22도와 B의 미지각 x",
+    "imageCaption": "지름 AB인 원 O에 내접한 삼각형 ABC, A의 22도와 B의 미지각 x",
+    "imageSize": "full"
   },
     {
       "id": "q10",
@@ -376,8 +412,8 @@ window.examData = {
       "answer": "①",
       "solution": "Q는 AD와 BC의 교점이므로 ∠BAD=∠BAQ=25°이다. B,Q,C가 한 직선 위에 있으므로 ∠AQB=180°−∠AQC=110°. △ABQ에서 ∠ABQ=180°−25°−110°=45°이고, 따라서 ∠ABC=45°이다. 원주각 ∠BAD와 ∠BCD는 같은 현 BD를 바라보므로 ∠BCD=25°이다. P,B,A가 이 순서로 일직선 위에 있으므로 ∠PBC=180°−∠ABC=135°. P,D,C가 이 순서로 일직선 위에 있으므로 ∠BCP=∠BCD=25°. △PBC에서 ∠BPC=180°−135°−25°=20°이다. 따라서 정답은 ①이다.",
       "solutionImage": "assets/images/21_연향중_2학기_기말_중3_수학/q10-solution.svg",
-      "solutionImageAlt": "해설 그림: 원 위의 점 A, B, D, C와 원 밖 오른쪽의 점 P가 있다. P에서 A로 가는 선이 B를 지나고 P에서 C로 가는 선이 D를 지난다. 현 AD와 BC는 점 Q에서 만난다. 각 BAD와 각 BCD는 25도(파란색, 같은 각 표시), 각 AQC는 70도(초록색), 각 ABC는 45도(주황색)이고 각 P는 분홍색 호로 표시되어 있다.",
-      "solutionImageCaption": "원 위의 점 A, B, D, C가 이 순서로 있고 직선 AB와 직선 DC가 점 P에서 만난다. ∠BAD=25°와 같은 호 BD에 대한 원주각 ∠BCD도 25°(파랑)이고, ∠AQC=70°에서 ∠AQB=110°이므로 ∠ABC=45°(주황)이다. 삼각형 PBC의 내각으로 분홍색 ∠P를 구한다. ∠PBC=180°−45°=135°이고 ∠BCP=25°이므로 ∠P=180°−135°−25°=20°이다. 정답은 ①이다.",
+      "solutionImageAlt": "원 위의 점 A, B, D, C가 이 순서로 있고 직선 AB와 직선 DC가 점 P에서 만난다. ∠BAD=25°와 같은 호 BD에 대한 원주각 ∠BCD도 25°(파랑)이고, ∠AQC=70°에서 ∠AQB=110°이므로 ∠ABC=45°(주황)이다. 삼각형 PBC의 내각으로 분홍색 ∠P를 구한다.",
+      "solutionImageCaption": "원 위의 점 A, B, D, C가 이 순서로 있고 직선 AB와 직선 DC가 점 P에서 만난다. ∠BAD=25°와 같은 호 BD에 대한 원주각 ∠BCD도 25°(파랑)이고, ∠AQC=70°에서 ∠AQB=110°이므로 ∠ABC=45°(주황)이다. 삼각형 PBC의 내각으로 분홍색 ∠P를 구한다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -398,7 +434,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "일직선의 보각과 두 삼각형 내각합으로 각을 전달하고 같은 현 BD에 대한 두 원주각이 같음을 중간 연결로 사용한다.",
-    "decisiveStep": "일직선의 보각과 두 삼각형 내각합으로 각을 전달하고 같은 현 BD에 대한 두 원주각이 같음을 중간 연결로 사용한다."
+    "decisiveStep": "일직선의 보각과 두 삼각형 내각합으로 각을 전달하고 같은 현 BD에 대한 두 원주각이 같음을 중간 연결로 사용한다.",
+    "image": "assets/images/21_연향중_2학기_기말_중3_수학/q10-problem.svg",
+    "imageAlt": "원 O의 두 할선 PA·PB·PC·PD, 25도·70도가 주어진 교점 Q의 문제 배치",
+    "imageCaption": "원 O의 두 할선 PA·PB·PC·PD, 25도·70도가 주어진 교점 Q의 문제 배치",
+    "imageSize": "full"
   },
     {
       "id": "q11",
@@ -415,8 +455,8 @@ window.examData = {
       "answer": "①",
       "solution": "전체 호의 길이 비는 1+5+4=10이다. 호 CA는 전체 원둘레의 4/10이므로 그 중심각의 크기는 360°·4/10=144°이다. ∠ABC는 호 CA를 바라보는 원주각이므로 144°÷2=72°이다. 정답은 ①.",
       "solutionImage": "assets/images/21_연향중_2학기_기말_중3_수학/q11-solution.svg",
-      "solutionImageAlt": "해설 그림: 원 위의 세 점 A, B, C로 삼각형이 그려져 있다. 호 위의 숫자는 호의 길이의 비로, 호 AB는 파란색 1, 호 BC는 주황색 5, 호 CA는 초록색 4이고 BC는 원의 지름이다. 중심에서 A로 점선이 있고 중심각은 144도(초록색), 꼭짓점 B의 각은 분홍색 호로 표시되어 있다.",
-      "solutionImageCaption": "호 AB, BC, CA의 길이의 비가 1:5:4이므로 전체 원둘레를 10으로 나눈 비(파랑 1, 주황 5, 초록 4)이다. 호 CA의 중심각은 360°의 10분의 4인 144°이고, 분홍색 ∠ABC는 호 CA에 대한 원주각이다. 따라서 ∠ABC=144°÷2=72°이다. 정답은 ①이다.",
+      "solutionImageAlt": "호 AB, BC, CA의 길이의 비가 1:5:4이므로 전체 원둘레를 10으로 나눈 비(파랑 1, 주황 5, 초록 4)이다. 호 CA의 중심각은 360°의 10분의 4인 144°이고, 분홍색 ∠ABC는 호 CA에 대한 원주각이다.",
+      "solutionImageCaption": "호 AB, BC, CA의 길이의 비가 1:5:4이므로 전체 원둘레를 10으로 나눈 비(파랑 1, 주황 5, 초록 4)이다. 호 CA의 중심각은 360°의 10분의 4인 144°이고, 분홍색 ∠ABC는 호 CA에 대한 원주각이다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -439,8 +479,8 @@ window.examData = {
     "primaryMethod": "전체 호의 비10 중 목표호 CA의 비4를360도에 비례배분하고 대응 원주각의 절반 관계를 적용한다.",
     "decisiveStep": "전체 호의 비10 중 목표호 CA의 비4를360도에 비례배분하고 대응 원주각의 절반 관계를 적용한다.",
     "image": "assets/images/21_연향중_2학기_기말_중3_수학/q11-problem.svg",
-    "imageAlt": "원 위의 세 점 A, B, C를 이어 삼각형 ABC를 그렸다. 변 BC는 원의 지름이고, 각 ABC에 호 표시가 있다. 호 AB, BC, CA의 길이의 비는 1:5:4이다.",
-    "imageCaption": "원 위의 세 점 A, B, C를 이어 삼각형 ABC를 그렸다. 변 BC는 원의 지름이고, 각 ABC에 호 표시가 있다. 호 AB, BC, CA의 길이의 비는 1:5:4이다.",
+    "imageAlt": "원 위 세 점 A·B·C의 호 길이 비 AB:BC:CA=1:5:4와 미지 원주각",
+    "imageCaption": "원 위 세 점 A·B·C의 호 길이 비 AB:BC:CA=1:5:4와 미지 원주각",
     "imageSize": "full"
   },
     {
@@ -458,8 +498,8 @@ window.examData = {
       "answer": "③",
       "solution": "B, C, P는 한 직선 위에 있으므로 ∠PBD=180°−55°=125°이다. △PBD에서 ∠PDB=180°−25°−125°=30°이다. P, A, D도 한 직선 위에 있으므로 ∠ADB=∠PDB=30°이다. ∠ACB와 ∠ADB는 같은 호 AB를 바라보는 원주각이므로 ∠ACB=30°이다. 정답은 ③.",
       "solutionImage": "assets/images/21_연향중_2학기_기말_중3_수학/q12-solution.svg",
-      "solutionImageAlt": "해설 그림: 원 위의 점 A, B, C, D와 원 밖 왼쪽의 점 P가 있다. P에서 D로 가는 선이 A를 지나고 P에서 C로 가는 선이 B를 지난다. 각 DPC는 25도(파란색), 각 DBC는 55도(주황색), 각 PBD는 125도(초록색)이다. 각 ACB와 각 ADB는 같은 크기를 뜻하는 같은 표시(분홍색)가 있다.",
-      "solutionImageCaption": "연장선의 교점 P에서 ∠DPC=25°이다. 직선 BC 위에서 ∠PBD=180°−55°=125°(초록)이므로 삼각형 PBD에서 ∠PDB를 구할 수 있다. ∠ADB와 구하는 ∠ACB(분홍)는 같은 호 AB에 대한 원주각이어서 크기가 같다. ∠PDB=180°−25°−125°=30°이므로 ∠ACB=30°이다. 정답은 ③이다.",
+      "solutionImageAlt": "연장선의 교점 P에서 ∠DPC=25°이다. 직선 BC 위에서 ∠PBD=180°−55°=125°(초록)이므로 삼각형 PBD에서 ∠PDB를 구할 수 있다. ∠ADB와 구하는 ∠ACB(분홍)는 같은 호 AB에 대한 원주각이어서 크기가 같다.",
+      "solutionImageCaption": "연장선의 교점 P에서 ∠DPC=25°이다. 직선 BC 위에서 ∠PBD=180°−55°=125°(초록)이므로 삼각형 PBD에서 ∠PDB를 구할 수 있다. ∠ADB와 구하는 ∠ACB(분홍)는 같은 호 AB에 대한 원주각이어서 크기가 같다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -480,7 +520,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "외부 교점과 원 위 점의 일직선 관계에서 보각을 찾고 삼각형 내각합으로 구한 각을 같은 호 AB의 원주각에 옮긴다.",
-    "decisiveStep": "외부 교점과 원 위 점의 일직선 관계에서 보각을 찾고 삼각형 내각합으로 구한 각을 같은 호 AB의 원주각에 옮긴다."
+    "decisiveStep": "외부 교점과 원 위 점의 일직선 관계에서 보각을 찾고 삼각형 내각합으로 구한 각을 같은 호 AB의 원주각에 옮긴다.",
+    "image": "assets/images/21_연향중_2학기_기말_중3_수학/q12-problem.svg",
+    "imageAlt": "원에서 두 할선의 교점 P에 있는 25도, 원주각 DBC=55도와 구할 ACB",
+    "imageCaption": "원에서 두 할선의 교점 P에 있는 25도, 원주각 DBC=55도와 구할 ACB",
+    "imageSize": "full"
   },
     {
       "id": "q13",
@@ -497,8 +541,8 @@ window.examData = {
       "answer": "④",
       "solution": "두 현의 교점을 P라 하고 AC를 그린다. ∠APD=60°이므로 ∠APC=120°이다. △APC에서 ∠PAC+∠ACP=60°이다. ∠PAC와 ∠ACP는 각각 호 BC와 호 AD를 바라보는 원주각이고, 호 BC:호 AD=4π:2π=2:1이므로 ∠PAC:∠ACP=2:1이다. 따라서 ∠ACP=60°÷3=20°이고, 호 AD의 중심각은 2·20°=40°이다. 길이 2π인 호 AD가 전체 원둘레의 40°/360°에 해당하므로 원둘레는 2π·360°/40°=18π이다. 2πr=18π이므로 r=9이고, 정답은 ④.",
       "solutionImage": "assets/images/21_연향중_2학기_기말_중3_수학/q13-solution.svg",
-      "solutionImageAlt": "해설 그림: 중심 O인 원에서 두 현 AB와 CD가 점 P에서 만나고 각 APD는 60도(분홍색)이다. 호 AD는 2π(파란색), 호 BC는 4π(주황색)로 표시되어 있다. 점선 AC를 그어 각 PAC는 주황색, 각 ACP는 파란색 호로 표시했다.",
-      "solutionImageCaption": "두 현 AB, CD가 점 P에서 만나 ∠APD=60°(분홍)이다. 선분 AC를 그으면 삼각형 APC에서 ∠PAC(주황)와 ∠ACP(파랑)의 합은 120°의 보각인 60°이고, 두 각은 호 BC(4π)와 호 AD(2π)에 대한 원주각이므로 2:1이다. 호 AD의 중심각을 구해 원의 반지름을 구한다. ∠ACP=20°이므로 호 AD의 중심각은 40°이고 원둘레는 2π×9=18π에서 반지름은 9이다. 정답은 ④이다.",
+      "solutionImageAlt": "두 현 AB, CD가 점 P에서 만나 ∠APD=60°(분홍)이다. 선분 AC를 그으면 삼각형 APC에서 ∠PAC(주황)와 ∠ACP(파랑)의 합은 120°의 보각인 60°이고, 두 각은 호 BC(4π)와 호 AD(2π)에 대한 원주각이므로 2:1이다. 호 AD의 중심각을 구해 원의 반지름을 구한다.",
+      "solutionImageCaption": "두 현 AB, CD가 점 P에서 만나 ∠APD=60°(분홍)이다. 선분 AC를 그으면 삼각형 APC에서 ∠PAC(주황)와 ∠ACP(파랑)의 합은 120°의 보각인 60°이고, 두 각은 호 BC(4π)와 호 AD(2π)에 대한 원주각이므로 2:1이다. 호 AD의 중심각을 구해 원의 반지름을 구한다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -519,7 +563,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "보조 현 AC를 그어 두 원주각의 합과 호 길이의 비를 연결하고 원주각→중심각→전체 원둘레로 이어 반지름을 역산한다.",
-    "decisiveStep": "보조 현 AC를 그어 두 원주각의 합과 호 길이의 비를 연결하고 원주각→중심각→전체 원둘레로 이어 반지름을 역산한다."
+    "decisiveStep": "보조 현 AC를 그어 두 원주각의 합과 호 길이의 비를 연결하고 원주각→중심각→전체 원둘레로 이어 반지름을 역산한다.",
+    "image": "assets/images/21_연향중_2학기_기말_중3_수학/q13-problem.svg",
+    "imageAlt": "두 현 AB·CD의 교점각 60도와 호 AD=2pi·BC=4pi가 주어진 원",
+    "imageCaption": "두 현 AB·CD의 교점각 60도와 호 AD=2pi·BC=4pi가 주어진 원",
+    "imageSize": "full"
   },
     {
       "id": "q14",
@@ -536,8 +584,8 @@ window.examData = {
       "answer": "③",
       "solution": "AC와 BD는 지름이다. ∠BAC와 ∠BDC는 같은 현 BC를 바라보는 원주각이므로 ∠BDC=48°이다. BD가 지름이므로 ∠BCD=90°이다. 삼각형 BCD에서 x=∠DBC=180°−90°−48°=42°이다. 따라서 정답은 ③이다.",
       "solutionImage": "assets/images/21_연향중_2학기_기말_중3_수학/q14-solution.svg",
-      "solutionImageAlt": "해설 그림: 중심 O인 원에 두 지름 AC와 BD가 그려져 있고 사각형 A, B, C, D의 네 변이 이어져 있다. 각 BAC와 각 BDC는 48도(파란색, 같은 각 표시)이고 각 BCD는 직각, 각 DBC는 x(분홍색)이다.",
-      "solutionImageCaption": "AC와 BD는 원 O의 지름이다. ∠BAC=48°(파랑)와 같은 호 BC에 대한 원주각 ∠BDC도 48°이다. BD가 지름이므로 ∠BCD=90°이고, 삼각형 BCD의 내각으로 분홍색 x를 구한다. x=180°−90°−48°=42°이다. 정답은 ③이다.",
+      "solutionImageAlt": "AC와 BD는 원 O의 지름이다. ∠BAC=48°(파랑)와 같은 호 BC에 대한 원주각 ∠BDC도 48°이다. BD가 지름이므로 ∠BCD=90°이고, 삼각형 BCD의 내각으로 분홍색 x를 구한다.",
+      "solutionImageCaption": "AC와 BD는 원 O의 지름이다. ∠BAC=48°(파랑)와 같은 호 BC에 대한 원주각 ∠BDC도 48°이다. BD가 지름이므로 ∠BCD=90°이고, 삼각형 BCD의 내각으로 분홍색 x를 구한다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -558,7 +606,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "같은 현 BC에 대한 원주각으로48도를 옮기고 지름 BD의 원주각90도와 삼각형 내각합으로 목표각을 구한다.",
-    "decisiveStep": "같은 현 BC에 대한 원주각으로48도를 옮기고 지름 BD의 원주각90도와 삼각형 내각합으로 목표각을 구한다."
+    "decisiveStep": "같은 현 BC에 대한 원주각으로48도를 옮기고 지름 BD의 원주각90도와 삼각형 내각합으로 목표각을 구한다.",
+    "image": "assets/images/21_연향중_2학기_기말_중3_수학/q14-problem.svg",
+    "imageAlt": "지름 AC·BD를 가진 원 O의 원주각 BAC=48도와 구할 DBC=x",
+    "imageCaption": "지름 AC·BD를 가진 원 O의 원주각 BAC=48도와 구할 DBC=x",
+    "imageSize": "full"
   },
     {
       "id": "q15",
@@ -710,7 +762,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "산점도의 두 좌표가 동시에80 이상인 점을 세고 전체20명에 대한 백분율로 바꾼다.",
-    "decisiveStep": "산점도의 두 좌표가 동시에80 이상인 점을 세고 전체20명에 대한 백분율로 바꾼다."
+    "decisiveStep": "산점도의 두 좌표가 동시에80 이상인 점을 세고 전체20명에 대한 백분율로 바꾼다.",
+    "image": "assets/images/21_연향중_2학기_기말_중3_수학/q18-problem.svg",
+    "imageAlt": "원본 20명 수학·과학 점수 산점도의 모든 점과 축 눈금",
+    "imageCaption": "원본 20명 수학·과학 점수 산점도의 모든 점과 축 눈금",
+    "imageSize": "full"
   },
     {
       "id": "s01",

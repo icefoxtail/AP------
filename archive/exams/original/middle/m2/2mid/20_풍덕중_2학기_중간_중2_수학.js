@@ -528,7 +528,11 @@ window.examData = {
     "solutionImage": "assets/images/20_풍덕중_2학기_중간_중2_수학/q12-solution.svg",
     "solutionImageAlt": "크기가 다른 두 사각기둥이 같은 배율로 나란히 놓여 있고 왼쪽 (가)는 높이 4, 오른쪽 (나)는 높이 8이 표시되어 있다.",
     "solutionImageCaption": "예: 해설의 값에 맞춘 두 닮은 사각기둥이다(밑면의 가로 길이는 모양만 나타낸 예이다). (가)의 높이 4cm와 (나)의 높이 8cm가 대응하므로 닮음비는 1:2이다. 대응하는 모서리의 길이는 2배이므로 JK=2×3=6cm이고, 부피의 비는 1³:2³=1:8이다. (가)의 부피가 12cm³이면 (나)의 부피는 12×8=96cm³이므로 36cm³라는 ④가 옳지 않다. 따라서 답은 ④이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "image": "assets/images/20_풍덕중_2학기_중간_중2_수학/q12-problem.svg",
+    "imageAlt": "서로 닮은 두 사각기둥의 대응 모서리를 비교한다.",
+    "imageCaption": "서로 닮은 두 사각기둥의 대응 모서리를 비교한다.",
+    "imageSize": "full"
   },
   {
     "id": 13,
@@ -579,7 +583,11 @@ window.examData = {
     "solutionImage": "assets/images/20_풍덕중_2학기_중간_중2_수학/q13-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형 ABC 안에 세 선분 AF, BD, CE가 서로 교차해 안쪽에 작은 삼각형 DEF가 만들어져 있고 세 꼭짓점 B, C, A에서 같은 크기의 각이 같은 표시로 있으며 변 AB 6, BC 10, CA 8이 적혀 있다.",
     "solutionImageCaption": "예: ∠ABD=∠BCE=∠CAF를 20°로 둔 그림이다(안쪽 삼각형의 크기는 모양만 나타낸다). 외각의 성질로 ∠FDE=∠DAB+∠ABD=∠DAB+∠CAF=∠A, ∠DEF=∠EBC+∠BCE=∠EBC+∠ABD=∠B, ∠EFD=∠FCA+∠CAF=∠FCA+∠BCE=∠C이다. 세 각이 각각 같으므로 △DEF∽△ABC(AA 닮음)이다. DE=3cm이고 AB=6cm이므로 닮음비는 1:2이고 DF=(1/2)×AC=(1/2)×8=4cm이다. 따라서 답은 ③이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "image": "assets/images/20_풍덕중_2학기_중간_중2_수학/q13-problem.svg",
+    "imageAlt": "20_풍덕중 13번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "imageCaption": "20_풍덕중 13번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "imageSize": "full"
   },
   {
     "id": 14,
@@ -628,7 +636,11 @@ window.examData = {
     "solutionImage": "assets/images/20_풍덕중_2학기_중간_중2_수학/q14-solution.svg",
     "solutionImageAlt": "해설 그림: 꼭짓점 A에서 직각인 직각삼각형 ABC의 빗변 BC에 수선 AD가 내려져 있고 BD 4, AD 6, DC 9가 적혀 있으며 빗변 BC 아래에 13이 적혀 있다.",
     "solutionImageCaption": "직각삼각형의 닮음에서 AD²=BD×CD이므로 6²=4×CD, CD=9cm이다. 따라서 BC=4+9=13cm이다. 삼각형 ABC의 넓이는 (1/2)×BC×AD=(1/2)×13×6=39cm²이다. 답은 ②이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "image": "assets/images/20_풍덕중_2학기_중간_중2_수학/q14-problem.svg",
+    "imageAlt": "20_풍덕중 14번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "imageCaption": "20_풍덕중 14번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "imageSize": "full"
   },
   {
     "id": 15,
@@ -677,7 +689,11 @@ window.examData = {
     "solutionImage": "assets/images/20_풍덕중_2학기_중간_중2_수학/q15-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형 ABC의 두 변 AB, AC 위의 점 D, E를 이은 선분 DE가 밑변 BC와 평행하게 그어져 있고 AD 10, DB 5, AE 8, EC x=4, DE y=10, BC 15가 적혀 있다.",
     "solutionImageCaption": "BC∥DE이므로 AD:DB=AE:EC에서 10:5=8:x, x=4이다. 또 AD:AB=DE:BC에서 10:15=y:15이므로 y=10이다. 따라서 x+y=4+10=14cm이고 답은 ③이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "image": "assets/images/20_풍덕중_2학기_중간_중2_수학/q15-problem.svg",
+    "imageAlt": "20_풍덕중 15번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "imageCaption": "20_풍덕중 15번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "imageSize": "full"
   },
   {
     "id": 16,
@@ -771,7 +787,11 @@ window.examData = {
     "solutionImage": "assets/images/20_풍덕중_2학기_중간_중2_수학/q17-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형 ABC의 꼭짓점 A에서 변 BC 위의 점 D로 각의 이등분선 AD가 그어져 있고 A에서 이등분된 두 각에 같은 표시가 있으며 AB 8, AC 6, CD 3, BD 4가 적혀 있다.",
     "solutionImageCaption": "삼각형의 내각의 이등분선 정리에 의해 AB:AC=BD:CD이다. 8:6=BD:3에서 BD=4cm이다. 따라서 답은 ②이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "image": "assets/images/20_풍덕중_2학기_중간_중2_수학/q17-problem.svg",
+    "imageAlt": "20_풍덕중 17번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "imageCaption": "20_풍덕중 17번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "imageSize": "full"
   },
   {
     "id": 18,
@@ -821,7 +841,11 @@ window.examData = {
     "solutionImageAlt": "해설 그림: 사다리꼴 ABCD의 두 대각선이 점 F에서 만나고 F를 지나 밑변 BC에 평행한 선분 EF가 변 AB 위의 점 E까지 그어져 있다. AD 7, BC 3, EF x=2.1, AE y=7이 적혀 있다.",
     "solutionImageCaption": "예: AD=7cm, BC=3cm, AB=10cm인 사다리꼴로 그렸다. AD∥BC이므로 △AFD∽△CFB이고 AF:FC=7:3이다. △ABC에서 EF∥BC이므로 AE:AB=AF:AC=7:10이고 y=AE=7, x=EF=(7/10)×3=2.1이다. 따라서 x+y=2.1+7=9.1cm이고 답은 ⑤이다.",
     "solutionImageSize": "full",
-    "solutionImageScale": 90
+    "solutionImageScale": 90,
+    "image": "assets/images/20_풍덕중_2학기_중간_중2_수학/q18-problem.svg",
+    "imageAlt": "20_풍덕중 18번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "imageCaption": "20_풍덕중 18번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "imageSize": "full"
   },
   {
     "id": 19,
@@ -866,7 +890,15 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "중첩된 두 무게중심의 중선비",
-    "decisiveStep": "AG의절반GD를 얻고 그1/3인G′D를 구한다."
+    "decisiveStep": "AG의절반GD를 얻고 그1/3인G′D를 구한다.",
+    "image": "assets/images/20_풍덕중_2학기_중간_중2_수학/q19-problem.svg",
+    "imageAlt": "20_풍덕중 19번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "imageCaption": "20_풍덕중 19번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/20_풍덕중_2학기_중간_중2_수학/q19-solution.svg",
+    "solutionImageAlt": "20_풍덕중 19번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "solutionImageCaption": "20_풍덕중 19번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -915,7 +947,11 @@ window.examData = {
     "solutionImage": "assets/images/20_풍덕중_2학기_중간_중2_수학/q20-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형 ABC의 중선 AD 위에 무게중심 G가 있고 GC의 중점 E에서 D로 선분이 그어져 있다. 삼각형 GDC는 연하게, 그 절반인 삼각형 EDC는 진하게 칠해져 있고 넓이 14와 7이 적혀 있다.",
     "solutionImageCaption": "삼각형의 세 중선은 삼각형을 넓이가 같은 6개로 나누므로 △GDC=(1/6)×84=14cm²이다(연한 색). E가 GC의 중점이므로 △GDC에서 꼭짓점 D를 공유하고 밑변 GE, EC가 같은 △GDE와 △EDC의 넓이가 같다. 따라서 △EDC=(1/2)×14=7cm²(진한 색)이고 답은 ③이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "image": "assets/images/20_풍덕중_2학기_중간_중2_수학/q20-problem.svg",
+    "imageAlt": "20_풍덕중 20번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "imageCaption": "20_풍덕중 20번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "imageSize": "full"
   },
   {
     "id": 21,
@@ -1036,7 +1072,11 @@ window.examData = {
     "solutionImage": "assets/images/20_풍덕중_2학기_중간_중2_수학/q23-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형 ABC의 변 BC 위에 점 D가 있고 선분 AD가 그어져 있다. AB 12, AC 8, BD 9, DC 7, AD 6이 적혀 있고 꼭짓점 B의 각 β, 같은 크기의 각 ACB와 BAD에 같은 표시가 있다.",
     "solutionImageCaption": "△ABC와 △DBA에서 ∠B는 공통이고 BA:BD=12:9=4:3, BC:BA=16:12=4:3이므로 두 변의 길이의 비와 그 끼인각이 같아 △ABC∽△DBA(SAS 닮음)이다. 대응변의 비가 4:3이므로 AC:DA=4:3에서 8:AD=4:3이고 AD=6cm이다. 따라서 AD의 길이는 6cm이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "image": "assets/images/20_풍덕중_2학기_중간_중2_수학/q23-problem.svg",
+    "imageAlt": "20_풍덕중 23번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "imageCaption": "20_풍덕중 23번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "imageSize": "full"
   },
   {
     "id": 24,
@@ -1072,7 +1112,11 @@ window.examData = {
     "solutionImage": "assets/images/20_풍덕중_2학기_중간_중2_수학/q24-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형 ABC의 두 변의 중점 F, E를 이은 선분 EF와 중선 AD가 점 P에서 만나고 무게중심 G가 AD 위에 있다. 세 선분 AP, PG, GD에 3k, k, 2k가 적혀 있고 중점으로 나뉜 변에 같은 눈금이 있다.",
     "solutionImageCaption": "F, E는 AB, AC의 중점이므로 중점연결정리에 의해 EF∥BC이고 △ABD에서 F를 지나 BD에 평행한 선분 FP는 AD를 이등분하여 AP=(1/2)AD이다. G는 무게중심이므로 AG=(2/3)AD이고 PG=AG−AP=(2/3−1/2)AD=(1/6)AD이다. 따라서 AP:PG:GD=3:1:2이다(그림에서 k=AD/6). 그림의 각 길이는 이 비를 나타낸다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "image": "assets/images/20_풍덕중_2학기_중간_중2_수학/q24-problem.svg",
+    "imageAlt": "20_풍덕중 24번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "imageCaption": "20_풍덕중 24번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "imageSize": "full"
   }
 ]
 };

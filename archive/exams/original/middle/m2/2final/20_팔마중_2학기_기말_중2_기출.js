@@ -62,7 +62,7 @@ window.questionBank = [
       "$16\\pi\\text{ cm}$",
       "$64\\pi\\text{ cm}$"
     ],
-    "image": "assets/images/20_팔마중_2학기_기말_중2_기출/q02.png",
+    "image": "assets/images/20_팔마중_2학기_기말_중2_기출/q2-problem.svg",
     "level": "중",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -95,7 +95,10 @@ window.questionBank = [
     "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q2-solution.svg",
     "solutionImageAlt": "해설 그림: 원뿔 A는 모선이 10 cm이고 원뿔 B는 모선이 15 cm이며 밑면 반지름이 12 cm이다. 세 번째 그림은 두 원뿔의 축을 지나는 단면인 이등변삼각형 두 개로 모선은 10과 15이고 밑변은 작은 쪽이 2r, 큰 쪽이 24이다.",
     "solutionImageCaption": "두 원뿔은 닮았으므로 모선의 길이의 비 10 대 15, 곧 2 대 3이 닮음비이다. 원뿔 A의 밑면 반지름은 B의 12에 3분의 2를 곱한 값이다. 밑면의 둘레는 2π에 밑면의 반지름을 곱해 구한다. 정답은 ④이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "2020 팔마중 2번: 닮은 두 원뿔의 모선과 반지름",
+    "imageCaption": "2020 팔마중 2번: 닮은 두 원뿔의 모선과 반지름",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -113,7 +116,7 @@ window.questionBank = [
       "$AB:DE=3:2$이다.",
       "$AB:DF=3:2$이다."
     ],
-    "image": "assets/images/20_팔마중_2학기_기말_중2_기출/q03.png",
+    "image": "assets/images/20_팔마중_2학기_기말_중2_기출/q3-problem.svg",
     "level": "중",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -161,7 +164,10 @@ window.questionBank = [
     "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q3-solution.svg",
     "solutionImageAlt": "해설 그림: 왼쪽에는 삼각형 ABC와 삼각형 DEF가 있고 BC는 15, DE는 6, DF는 8, EF는 10이다. 오른쪽에는 같은 두 삼각형의 대응변이 같은 색으로 칠해져 있고 AB는 9, AC는 12이다.",
     "solutionImageCaption": "삼각형 ABC와 DEF에서 대응변 BC와 EF의 길이의 비는 15 대 10, 곧 3 대 2이다. AB는 DE의 2분의 3배이므로 9, AC는 DF의 2분의 3배이므로 12이다. 그러면 AB 대 DF는 9 대 8이어서 3 대 2가 아니다. 정답은 ⑤이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "2020 팔마중 중2 2학기 기말 3번 문제 조건도",
+    "imageCaption": "2020 팔마중 중2 2학기 기말 3번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -179,7 +185,7 @@ window.questionBank = [
       "$AC=6\\text{ cm}$, $DF=9\\text{ cm}$",
       "$\\angle F=50^\\circ$, $\\angle D=90^\\circ$"
     ],
-    "image": "assets/images/20_팔마중_2학기_기말_중2_기출/q04.png",
+    "image": "assets/images/20_팔마중_2학기_기말_중2_기출/q4-problem.svg",
     "level": "중",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -210,7 +216,10 @@ window.questionBank = [
     "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q4-solution.svg",
     "solutionImageAlt": "해설 그림: 첫 번째 그림은 삼각형 ABC와 DEF로 BC는 10, 각 C는 50도, EF는 15, 각 E는 40도이다. 두 번째 그림은 각 A와 각 D가 직각일 때로, 각 B와 각 E가 40도, 각 C와 각 F가 50도로 같은 색이다. 세 번째 그림은 각 D가 직각이고 각 F가 50도일 때로 삼각형 DEF만 세 각이 정해진다.",
     "solutionImageCaption": "각 A와 각 D가 직각이면 삼각형 ABC에서 각 B는 180도에서 90도와 50도를 뺀 40도이고, 삼각형 DEF에서 각 F는 180도에서 90도와 40도를 뺀 50도이다. 세 각이 모두 대응하여 같으므로 닮음이다. 반면 각 F가 50도, 각 D가 90도인 조건은 삼각형 DEF의 각만 정할 뿐 삼각형 ABC의 각 A와 각 B를 정하지 못한다. 정답은 ①이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "2020 팔마중 중2 2학기 기말 4번 문제 조건도",
+    "imageCaption": "2020 팔마중 중2 2학기 기말 4번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -228,7 +237,7 @@ window.questionBank = [
       "$\\frac{27}{2}\\text{ cm}$",
       "$14\\text{ cm}$"
     ],
-    "image": "assets/images/20_팔마중_2학기_기말_중2_기출/q05.png",
+    "image": "assets/images/20_팔마중_2학기_기말_중2_기출/q5-problem.svg",
     "level": "중",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -261,7 +270,10 @@ window.questionBank = [
     "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q5-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 첫 번째 그림은 직사각형 A, B, C, D로 AB는 12, BC는 16이고 대각선 BD 위의 점 O에서 BO는 10이며 점 O를 지나는 선분 EF가 BD와 수직으로 만난다. 두 번째 그림은 직각삼각형 ABD로 AD는 16, AB는 12, BD는 20이다. 세 번째 그림은 직각삼각형 EOD로 OD는 10이고 DE의 길이는 x이다. 두 삼각형은 각 D가 공통이고 대응하는 변이 같은 색이다.",
     "solutionImageCaption": "직사각형의 대각선 BD는 20이고, O는 BD의 중점이므로 OD는 10이다. 직각삼각형 EOD와 ABD는 각 D가 공통이고 직각이 하나씩 있어 닮음이다. 그래서 DE 대 BD가 OD 대 AD와 같고, DE는 20에 16분의 10을 곱한 값이다. 정답은 ②이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "2020 팔마중 중2 2학기 기말 5번 문제 조건도",
+    "imageCaption": "2020 팔마중 중2 2학기 기말 5번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -279,7 +291,7 @@ window.questionBank = [
       "$15\\text{ cm}$",
       "$16\\text{ cm}$"
     ],
-    "image": "assets/images/20_팔마중_2학기_기말_중2_기출/q06.png",
+    "image": "assets/images/20_팔마중_2학기_기말_중2_기출/q6-problem.svg",
     "level": "중",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -310,7 +322,10 @@ window.questionBank = [
     "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q6-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 첫 번째 그림은 삼각형 ABC 안에 DE가 BC와 평행하고 EF가 AB와 평행하도록 그은 그림으로 AD는 12, DB는 8, FC는 10이다. 두 번째 그림은 네 점 B, D, E, F를 꼭짓점으로 하는 평행사변형으로 BF와 DE의 길이가 x이고 BD는 8이다. 세 번째는 삼각형 ABC로 AB는 20, BC는 x+10이고 네 번째는 삼각형 ADE로 AD는 12, DE는 x이다.",
     "solutionImageCaption": "BC와 DE, AB와 EF가 각각 평행하므로 네 점 B, D, E, F를 꼭짓점으로 하는 사각형은 평행사변형이고 BF는 DE와 같다. DE를 x라 하면 BC는 x+10이다. 삼각형 ADE와 ABC가 닮음이므로 DE 대 BC가 AD 대 AB, 곧 12 대 20과 같다. 따라서 x를 x+10으로 나눈 값이 5분의 3이고 이를 풀면 x는 15이다. 정답은 ④이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "2020 팔마중 중2 2학기 기말 6번 문제 조건도",
+    "imageCaption": "2020 팔마중 중2 2학기 기말 6번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -328,7 +343,7 @@ window.questionBank = [
       "$108\\text{ cm}^2$",
       "$120\\text{ cm}^2$"
     ],
-    "image": "assets/images/20_팔마중_2학기_기말_중2_기출/q07.png",
+    "image": "assets/images/20_팔마중_2학기_기말_중2_기출/q7-problem.svg",
     "level": "상",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -361,7 +376,10 @@ window.questionBank = [
     "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q7-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 첫 번째 그림은 세 평행한 선분 AB, EF, CD가 선분 BD에 수직으로 서 있고 AB는 10, CD는 15, FD는 12이며 선분 AD와 BC가 점 E에서 만난다. 두 번째 그림은 선분 BD를 BF 8과 FD 12로 나눈 그림이다. 세 번째와 네 번째는 직각삼각형 ABD와 EFD로 AB는 10, BD는 20, EF는 6, FD는 12이다.",
     "solutionImageCaption": "AB와 EF와 CD가 평행하므로 BF 대 FD는 AB 대 CD, 곧 2 대 3이다. FD가 12이므로 BF는 8이고 BD는 20이다. 삼각형 EFD와 ABD가 닮음이므로 EF 대 AB가 FD 대 BD, 곧 12 대 20이고 EF는 6이다. 삼각형 EBD는 밑변 BD가 20이고 높이 EF가 6이므로 넓이를 구할 수 있다. 정답은 ②이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "2020 팔마중 중2 2학기 기말 7번 문제 조건도",
+    "imageCaption": "2020 팔마중 중2 2학기 기말 7번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -428,7 +446,7 @@ window.questionBank = [
       "$24\\text{ cm}^2$",
       "$27\\text{ cm}^2$"
     ],
-    "image": "assets/images/20_팔마중_2학기_기말_중2_기출/q09.png",
+    "image": "assets/images/20_팔마중_2학기_기말_중2_기출/q9-problem.svg",
     "level": "중",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -459,7 +477,10 @@ window.questionBank = [
     "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q9-solution.svg",
     "solutionImageAlt": "해설 그림: 첫 번째 그림은 삼각형 ABC의 무게중심 G와 두 변의 중점 E, F를 이은 그림으로 사각형 A, E, G, F가 색칠되어 있고 삼각형 ABC의 넓이는 54이다. 두 번째 그림은 EF가 BC와 평행하고 삼각형 AEF의 넓이가 2분의 27이다. 세 번째 그림은 A와 G에서 EF에 내린 높이가 3h와 h이고 삼각형 AEF의 넓이는 2분의 27, 삼각형 EGF의 넓이는 2분의 9이다.",
     "solutionImageCaption": "G가 무게중심이므로 E, F는 AB, AC의 중점이고 EF는 BC와 평행하다. 삼각형 AEF는 삼각형 ABC와 닮음비가 1 대 2이므로 넓이가 4분의 1인 2분의 27이다. 같은 밑변 EF에서 G의 높이는 A의 높이의 3분의 1이므로 삼각형 EGF의 넓이는 2분의 9이다. 두 삼각형의 넓이를 더하면 사각형 A, E, G, F의 넓이가 된다. 정답은 ③이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "2020 팔마중 중2 2학기 기말 9번 문제 조건도",
+    "imageCaption": "2020 팔마중 중2 2학기 기말 9번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -477,7 +498,7 @@ window.questionBank = [
       "$15\\text{ cm}$",
       "$18\\text{ cm}$"
     ],
-    "image": "assets/images/20_팔마중_2학기_기말_중2_기출/q10.png",
+    "image": "assets/images/20_팔마중_2학기_기말_중2_기출/q10-problem.svg",
     "level": "상",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -510,7 +531,10 @@ window.questionBank = [
     "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q10-solution.svg",
     "solutionImageAlt": "해설 그림: 첫 번째 그림은 삼각형 ABC의 중선 AD 위에 점 F와 무게중심 G가 있고 BE도 중선이며 FE가 BC와 평행하다. AD의 길이는 54이다. 두 번째 그림은 삼각형 ADC에서 F와 E가 각각 AD와 AC의 중점이고 AF와 FD가 27이다. 세 번째 그림은 중선 AD를 따라 A, F, G, D가 놓여 있고 AF는 27, AG는 36, GD는 18이다.",
     "solutionImageCaption": "점 B, G, E가 한 직선 위에 있으므로 BE는 중선이고 E는 AC의 중점이다. 삼각형 ADC에서 FE가 DC와 평행하므로 F는 AD의 중점이고 AF는 27이다. 무게중심 G는 AD를 2 대 1로 나누므로 AG는 36이다. FG는 AG에서 AF를 뺀 길이이다. 정답은 ①이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "2020 팔마중 중2 2학기 기말 10번 문제 조건도",
+    "imageCaption": "2020 팔마중 중2 2학기 기말 10번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 11,
@@ -571,7 +595,7 @@ window.questionBank = [
       "13",
       "25"
     ],
-    "image": "assets/images/20_팔마중_2학기_기말_중2_기출/q12.png",
+    "image": "assets/images/20_팔마중_2학기_기말_중2_기출/q12-problem.svg",
     "level": "하",
     "category": "피타고라스 정리",
     "originalCategory": "피타고라스 정리",
@@ -602,7 +626,10 @@ window.questionBank = [
     "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q12-solution.svg",
     "solutionImageAlt": "해설 그림: 왼쪽에는 A와 B가 직각인 사다리꼴 A, B, C, D가 있고 AD는 2, AB는 3, BC는 4이며 변 DC의 길이는 x이다. 오른쪽에는 D에서 BC에 수선 DH를 그은 그림으로 직각삼각형 DHC의 직각변 DH는 3, HC는 2이고 빗변 DC는 x이다.",
     "solutionImageCaption": "D에서 BC에 내린 수선의 발을 H라 하면 사각형 A, B, H, D는 직사각형이어서 DH는 3, BH는 2이고 HC는 4에서 2를 뺀 2이다. 직각삼각형 DHC에서 피타고라스 정리에 따라 x의 제곱은 2의 제곱에 3의 제곱을 더한 값이다. 정답은 ④이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "2020 팔마중 중2 2학기 기말 12번 문제 조건도",
+    "imageCaption": "2020 팔마중 중2 2학기 기말 12번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 13,
@@ -621,7 +648,7 @@ window.questionBank = [
       "$\\frac{18}{5}$",
       "$\\frac{24}{5}$"
     ],
-    "image": "assets/images/20_팔마중_2학기_기말_중2_기출/q13.png",
+    "image": "assets/images/20_팔마중_2학기_기말_중2_기출/q13-problem.svg",
     "level": "상",
     "category": "피타고라스 정리",
     "originalCategory": "피타고라스 정리",
@@ -654,7 +681,10 @@ window.questionBank = [
     "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q13-solution.svg",
     "solutionImageAlt": "해설 그림: 첫 번째 그림은 AB가 6, BC가 8인 직사각형 A, B, C, D와 대각선 BD에 수직인 AP, CQ이다. 두 번째 그림은 직각삼각형 ABD로 AB는 6, AD는 8, BD는 10이고 점 P에서 AP가 BD와 수직이며, 아래에 BD를 펴서 그린 선분 위에 BP의 길이 3.6이 표시되어 있다. 세 번째 그림은 직각삼각형 CBD로 BC는 8, CD는 6, BD는 10이고 점 Q에서 CQ가 BD와 수직이며, 아래에 펴서 그린 선분 위에 BQ의 길이 6.4가 표시되어 있다.",
     "solutionImageCaption": "직사각형의 대각선 BD는 10이다. 직각삼각형 ABD에서 BP는 AB의 제곱 36을 BD 10으로 나눈 5분의 18, 곧 3.6이고, 직각삼각형 CBD에서 BQ는 BC의 제곱 64를 10으로 나눈 5분의 32, 곧 6.4이다. PQ는 BQ에서 BP를 뺀 값이다. 정답은 ②이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "2020 팔마중 중2 2학기 기말 13번 문제 조건도",
+    "imageCaption": "2020 팔마중 중2 2학기 기말 13번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 14,
@@ -672,7 +702,7 @@ window.questionBank = [
       "10",
       "5"
     ],
-    "image": "assets/images/20_팔마중_2학기_기말_중2_기출/q14.png",
+    "image": "assets/images/20_팔마중_2학기_기말_중2_기출/q14-problem.svg",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -703,7 +733,10 @@ window.questionBank = [
     "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q14-solution.svg",
     "solutionImageAlt": "해설 그림: 왼쪽에는 한 변이 7인 정사각형 A, B, C, D의 각 변 위에 점 E, F, G, H가 있고 AH, BE, CF, DG의 길이가 같은 4이다. 오른쪽에는 네 모서리의 직각삼각형이 색칠되어 있고 직각변이 4와 3으로 표시되어 있다.",
     "solutionImageCaption": "정사각형의 한 변이 7이므로 넓이는 49이다. 네 모서리의 삼각형은 직각변이 4와 7에서 4를 뺀 3인 합동인 직각삼각형이고 각각의 넓이는 6이다. 네 삼각형의 넓이의 합 24를 바깥 정사각형의 넓이에서 빼면 사각형 E, F, G, H의 넓이가 된다. 정답은 ①이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "2020 팔마중 중2 2학기 기말 14번 문제 조건도",
+    "imageCaption": "2020 팔마중 중2 2학기 기말 14번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 15,
@@ -721,7 +754,7 @@ window.questionBank = [
       "40",
       "45"
     ],
-    "image": "assets/images/20_팔마중_2학기_기말_중2_기출/q15.png",
+    "image": "assets/images/20_팔마중_2학기_기말_중2_기출/q15-problem.svg",
     "level": "상",
     "category": "피타고라스 정리",
     "originalCategory": "피타고라스 정리",
@@ -754,7 +787,10 @@ window.questionBank = [
     "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q15-solution.svg",
     "solutionImageAlt": "해설 그림: 왼쪽에는 C에서 직각인 삼각형 ABC와 빗변 AB의 삼등분점 M, N이 있고 MC는 3, NC는 4이다. 오른쪽에는 삼등분한 세 조각의 길이가 모두 x로 표시되어 있고 C에서 AB에 내린 수선의 발 H와 수선 CH의 길이 h가 있다. 오른쪽 아래에는 AB를 펴서 그린 선분 위에 B에서 H까지의 길이 y가 표시되어 있다.",
     "solutionImageCaption": "삼등분한 조각의 길이를 x라 하면 AB는 3x이다. C에서 AB에 내린 수선의 발을 H라 하고 BH를 y, CH를 h라 하면 직각삼각형 CHN과 CHM에서 2xy에서 3x의 제곱을 뺀 값이 7이다. 삼각형 ABC에서는 y의 제곱에서 3xy를 뺀 값에 h의 제곱을 더하면 0이어서 xy는 16에서 x의 제곱을 뺀 값과 같다. 이를 대입하면 x의 제곱이 5이고 AB의 제곱은 9배이다. 정답은 ⑤이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "2020 팔마중 중2 2학기 기말 15번 문제 조건도",
+    "imageCaption": "2020 팔마중 중2 2학기 기말 15번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 16,
@@ -958,7 +994,7 @@ window.questionBank = [
       "72",
       "108"
     ],
-    "image": "assets/images/20_팔마중_2학기_기말_중2_기출/q20.png",
+    "image": "assets/images/20_팔마중_2학기_기말_중2_기출/q20-problem.svg",
     "level": "상",
     "category": "확률",
     "originalCategory": "확률",
@@ -989,9 +1025,13 @@ window.questionBank = [
     "decisiveStep": "A를 먼저 정하고 B,C,D 순서로 이미 색이 정해진 인접 영역의 색을 제외하며 선택수를 곱한다.",
     "sourceMode": "ORIGINAL",
     "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q20-solution.svg",
-    "solutionImageAlt": "해설 그림: 왼쪽에는 위쪽에 가로로 긴 부분 A가 있고 그 아래에 B, C, D 세 부분이 나란히 있다. 오른쪽에는 같은 그림의 부분마다 색이 다르고 A는 4가지, B는 3가지, C는 2가지, D는 2가지 색을 고를 수 있다고 적혀 있다. 이 그림은 부분마다 고를 수 있는 색의 수를 보여 주는 풀이 단계 그림이다.",
-    "solutionImageCaption": "A는 B, C, D 모두와 이웃하므로 A를 먼저 칠하면 4가지이다. B는 A와 다른 색이어서 3가지, C는 A와 B 모두와 달라야 하므로 2가지, D는 A와 C와 달라야 하므로 2가지이다. 각 단계의 가짓수를 곱의 법칙으로 곱한다. 정답은 ③이다.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "A, B, C, D 순서로 색을 고르고 이웃한 부분과 다른 색만 고를 수 있는 가짓수를 센다. 각 단계의 가짓수를 곱한다.",
+    "solutionImageCaption": "A, B, C, D 순서로 색을 고르고 이웃한 부분과 다른 색만 고를 수 있는 가짓수를 센다. 각 단계의 가짓수를 곱한다.",
+    "solutionImageSize": "full",
+    "imageAlt": "2020 팔마중 중2 2학기 기말 20번 문제 조건도",
+    "imageCaption": "2020 팔마중 중2 2학기 기말 20번 문제 조건도",
+    "imageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 21,
@@ -1004,7 +1044,7 @@ window.questionBank = [
     ],
     "content": "서술형 1. 다음 그림과 같은 $\\triangle ABC$에서 $AB\\perp CD$, $AC\\perp BE$라 하자. [4점]\n(1) $x$를 구하는 데 필요한 닮음인 두 삼각형을 찾아 기호로 나타내고, 그 이유를 설명하시오.\n(2) (1)을 이용하여 $x$의 값을 구하고, 그 과정을 설명하시오.",
     "choices": [],
-    "image": "assets/images/20_팔마중_2학기_기말_중2_기출/q21.png",
+    "image": "assets/images/20_팔마중_2학기_기말_중2_기출/q21-problem.svg",
     "level": "상",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -1035,7 +1075,10 @@ window.questionBank = [
     "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q21-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 첫 번째 그림은 삼각형 ABC로 AB는 9, AC는 12이고 CD는 AB에, BE는 AC에 수직이며 AD는 6, AE의 길이는 x이다. 두 번째 그림은 직각삼각형 ADC로 AD는 6, AC는 12이다. 세 번째 그림은 직각삼각형 AEB로 AE는 x, AB는 9이고 두 삼각형의 각 A가 같은 색으로 표시되어 있다.",
     "solutionImageCaption": "삼각형 ADC와 AEB는 각 D와 각 E가 직각이고 각 A가 공통이므로 AA 닮음이다. 대응변의 비에서 AC 대 AB가 AD 대 AE이므로 12 대 9가 6 대 x와 같다. 12x는 54이므로 x는 2분의 9이다. 정답은 2분의 9 cm이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "2020 팔마중 중2 2학기 기말 21번 문제 조건도",
+    "imageCaption": "2020 팔마중 중2 2학기 기말 21번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 22,
@@ -1048,7 +1091,7 @@ window.questionBank = [
     ],
     "content": "서술형 2. 다음 그림에서 $\\angle A=90^\\circ$, $BM=CM$, $AG\\perp BC$, $GH\\perp AM$이다. $BG=8\\text{ cm}$, $CG=2\\text{ cm}$로 주어졌을 때, $AH$의 길이를 구하고 그 과정을 설명하여라. [6점]",
     "choices": [],
-    "image": "assets/images/20_팔마중_2학기_기말_중2_기출/q22.png",
+    "image": "assets/images/20_팔마중_2학기_기말_중2_기출/q22-problem.svg",
     "level": "상",
     "category": "피타고라스 정리",
     "originalCategory": "피타고라스 정리",
@@ -1081,7 +1124,10 @@ window.questionBank = [
     "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q22-solution.svg",
     "solutionImageAlt": "해설 그림: 첫 번째 그림은 A가 직각인 삼각형 ABC로 BC의 중점 M, 높이의 발 G, 점 H가 있고 BG는 8, GC는 2이다. 두 번째 그림은 AM, BM, CM이 같은 5이고 AG는 4이다. 세 번째 그림은 직각삼각형 AGM으로 AG는 4, GM은 3, AM은 5이고 GH가 AM에 수직이며 AH가 주황색이다.",
     "solutionImageCaption": "BC는 10이고 M은 빗변 BC의 중점이므로 AM은 5이다. 높이 정리에서 AG의 제곱은 8과 2의 곱 16이므로 AG는 4이다. 직각삼각형 AGM에서 GH가 빗변 AM에 내린 높이이므로 AG의 제곱이 AH와 AM의 곱과 같다. 따라서 AH는 16을 5로 나눈 값이다. 정답은 5분의 16 cm이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "2020 팔마중 중2 2학기 기말 22번 문제 조건도",
+    "imageCaption": "2020 팔마중 중2 2학기 기말 22번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 23,
@@ -1095,7 +1141,7 @@ window.questionBank = [
     ],
     "content": "서술형 3. 다음 그림과 같이 $\\angle A=90^\\circ$인 직각삼각형 $ABC$에서 점 $G$는 삼각형 $ABC$의 무게중심이다.\n$AC=18\\text{ cm}$이고 $GD=5\\text{ cm}$일 때,\n$\\triangle ABC$의 넓이를 구하고 그 과정을 설명하시오. [5점]",
     "choices": [],
-    "image": "assets/images/20_팔마중_2학기_기말_중2_기출/q23.png",
+    "image": "assets/images/20_팔마중_2학기_기말_중2_기출/q23-problem.svg",
     "level": "상",
     "category": "피타고라스 정리",
     "originalCategory": "피타고라스 정리",
@@ -1130,7 +1176,10 @@ window.questionBank = [
     "solutionImage": "assets/images/20_팔마중_2학기_기말_중2_기출/q23-solution.svg",
     "solutionImageAlt": "해설 그림: 첫 번째 그림은 A가 직각인 삼각형 ABC로 AC는 18이고 빗변 BC의 중점 D와 중선 AD 위의 무게중심 G가 있으며 GD는 5이다. 두 번째 그림은 BD, DC, AD가 같고 AG는 10, GD는 5, BC는 30이다. 세 번째 그림은 직각삼각형 ABC로 AB는 24, AC는 18, BC는 30이다.",
     "solutionImageCaption": "직각삼각형에서 빗변의 중점 D는 세 꼭짓점에서 같은 거리에 있다. 무게중심 G는 중선 AD를 2 대 1로 나누므로 GD가 5이면 AD는 15이고 BC는 30이다. 피타고라스 정리로 AB는 24이므로 넓이는 24와 18의 곱의 절반이다. 정답은 216 cm²이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "2020 팔마중 중2 2학기 기말 23번 문제 조건도",
+    "imageCaption": "2020 팔마중 중2 2학기 기말 23번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 24,

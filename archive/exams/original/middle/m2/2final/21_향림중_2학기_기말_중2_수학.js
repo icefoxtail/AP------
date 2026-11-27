@@ -43,11 +43,11 @@ window.examData = {
     "images": [
       "assets/images/21_향림중_2학기_기말_중2_수학/q01.png"
     ],
-    "image": "assets/images/21_향림중_2학기_기말_중2_수학/q01.png",
+    "image": "assets/images/21_향림중_2학기_기말_중2_수학/q1-problem.svg",
     "accessibility": "평행사변형 ABCD에서 두 대각선 AC와 BD의 교점 O, 각 BAC는 60도, 각 CAD는 50도, 변 CD는 7cm, 대각선 BD는 10cm인 도형",
     "solutionImage": "assets/images/21_향림중_2학기_기말_중2_수학/q1-solution.svg",
-    "solutionImageAlt": "해설 그림: 각 관계만 따로 나타낸 그림. 평행선 AB, CD와 횡단선 AC에서 두 엇각이 각각 60도이다.",
-    "solutionImageCaption": "각 관계만 따로 나타낸 그림: AB∥CD이므로 ∠BAC와 ∠OCD는 모두 60°이다. 답: ④",
+    "solutionImageAlt": "해설: 두 대각선 AC와 BD가 O에서 만나는 평행사변형의 각과 길이.",
+    "solutionImageCaption": "해설: 두 대각선 AC와 BD가 O에서 만나는 평행사변형의 각과 길이.",
     "solutionImageSize": "full",
     "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
     "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
@@ -60,7 +60,10 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "평행사변형의 각·변·대각선 성질 비교",
-    "decisiveStep": "대각과 이웃각·대각선 중점을 확인하고 엇각으로 OCD를 정한다."
+    "decisiveStep": "대각과 이웃각·대각선 중점을 확인하고 엇각으로 OCD를 정한다.",
+    "imageAlt": "두 대각선 AC와 BD가 O에서 만나는 평행사변형의 각과 길이.",
+    "imageCaption": "두 대각선 AC와 BD가 O에서 만나는 평행사변형의 각과 길이.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -100,8 +103,8 @@ window.examData = {
     "images": [],
     "accessibility": "",
     "solutionImage": "assets/images/21_향림중_2학기_기말_중2_수학/q2-solution.svg",
-    "solutionImageAlt": "해설 그림: 대각선의 교점 O에서 네 꼭짓점까지의 거리가 같은 사각형의 한 예.",
-    "solutionImageCaption": "예: OA=OC이고 OB=OD이므로 두 대각선은 서로 이등분한다. 답: ⑤",
+    "solutionImageAlt": "평행사변형의 두 대각선이 서로를 이등분하여 OA=OC=3cm, OB=OD를 만족하는 해설 도형.",
+    "solutionImageCaption": "평행사변형의 두 대각선이 서로를 이등분하여 OA=OC=3cm, OB=OD를 만족하는 해설 도형.",
     "solutionImageSize": "full",
     "templateKey": "TPL_QUADRILATERAL_CRITERIA",
     "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
@@ -156,8 +159,8 @@ window.examData = {
     "images": [],
     "accessibility": "",
     "solutionImage": "assets/images/21_향림중_2학기_기말_중2_수학/q3-solution.svg",
-    "solutionImageAlt": "해설 그림: 서로 수직인 두 대각선이 같은 길이로 이등분되는 직사각형을 나타낸 그림.",
-    "solutionImageCaption": "예: 직사각형의 두 대각선이 수직이면 대각선의 네 반으로 만들어진 직각삼각형이 합동이다. 답: ③",
+    "solutionImageAlt": "직사각형의 두 대각선이 수직으로 만나는 경우 네 변이 모두 같아 정사각형이 된다.",
+    "solutionImageCaption": "직사각형의 두 대각선이 수직으로 만나는 경우 네 변이 모두 같아 정사각형이 된다.",
     "solutionImageSize": "full",
     "templateKey": "TPL_SPECIAL_QUADRILATERALS",
     "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
@@ -196,7 +199,7 @@ window.examData = {
     "hasVisual": false,
     "sourceParity": "EXACT",
     "question": "4. 오른쪽 삼각형 ABC에서 $\\overline{\\text{AD}} \\perp \\overline{\\text{BC}}$이고 $\\overline{\\text{AB}}=13$, $\\overline{\\text{BD}}=5$, $\\overline{\\text{CD}}=16$일 때, $\\overline{\\text{AC}}$의 길이를 구하면? [3점]",
-    "image": "",
+    "image": "assets/images/21_향림중_2학기_기말_중2_수학/q4-problem.svg",
     "choices": [
       "$16$",
       "$17$",
@@ -210,8 +213,8 @@ window.examData = {
     "images": [],
     "accessibility": "",
     "solutionImage": "assets/images/21_향림중_2학기_기말_중2_수학/q4-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼각형 ABC를 수선 AD로 나눈 두 직각삼각형을 색으로 구분하고 공통 높이 12를 표시한다.",
-    "solutionImageCaption": "왼쪽 직각삼각형에서 공통 높이는 12이고 오른쪽 직각삼각형에서 피타고라스 정리를 한 번 더 쓴다. 답: ⑤ 20",
+    "solutionImageAlt": "해설: 삼각형 ABC에서 D는 BC 위의 수선의 발이며 AB=13, BD=5, DC=16.",
+    "solutionImageCaption": "해설: 삼각형 ABC에서 D는 BC 위의 수선의 발이며 AB=13, BD=5, DC=16.",
     "solutionImageSize": "full",
     "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
     "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
@@ -226,7 +229,10 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "공통 높이를 매개로 두 피타고라스식",
-    "decisiveStep": "AB와BD로AD를 구한 뒤 AD와CD로AC를 구한다."
+    "decisiveStep": "AB와BD로AD를 구한 뒤 AD와CD로AC를 구한다.",
+    "imageAlt": "삼각형 ABC에서 D는 BC 위의 수선의 발이며 AB=13, BD=5, DC=16.",
+    "imageCaption": "삼각형 ABC에서 D는 BC 위의 수선의 발이며 AB=13, BD=5, DC=16.",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -280,8 +286,8 @@ window.examData = {
   },
   {
     "id": 6,
-    "imageSize": "tall",
-    "imageAlt": "작은 삼각기둥의 AD는 4 cm, DE는 2 cm이다. 큰 삼각기둥의 대응 모서리 A′D′는 6 cm이고, 윗면 A′C′는 5 cm, 각 B′A′C′는 30°이다.",
+    "imageSize": "full",
+    "imageAlt": "서로 닮은 작은 삼각기둥 ABC-DEF와 큰 삼각기둥 A′B′C′-D′E′F′의 주어진 치수.",
     "number": 6,
     "type": "multiple_choice",
     "questionType": "객관식",
@@ -319,8 +325,8 @@ window.examData = {
     "image": "assets/images/21_향림중_2학기_기말_중2_수학/q6-problem-visual-v2.svg",
     "accessibility": "두 삼각기둥 ABC-DEF와 A 프라임 B 프라임 C 프라임-D 프라임 E 프라임 F 프라임이 서로 닮음이고, 모서리 AD는 4cm, DE는 2cm, A 프라임 D 프라임은 6cm, A 프라임 C 프라임은 5cm, 각 B 프라임 A 프라임 C 프라임은 30도인 도형",
     "solutionImage": "assets/images/21_향림중_2학기_기말_중2_수학/q6-solution-visual-v2.svg",
-    "solutionImageAlt": "작은 삼각기둥의 AD는 4 cm, DE는 2 cm이다. 큰 삼각기둥의 대응 모서리 A′D′는 6 cm이고, 윗면 A′C′는 5 cm, 각 B′A′C′는 30°이다.",
-    "solutionImageCaption": "닮음비는 4:6=2:3이다. 따라서 AC=5×2/3=10/3 cm이므로 5/2 cm라고 한 ②가 옳지 않다.",
+    "solutionImageAlt": "해설: 서로 닮은 작은 삼각기둥 ABC-DEF와 큰 삼각기둥 A′B′C′-D′E′F′의 주어진 치수. 작은 윗변 AC의 길이 10/3cm는 해설 본문에서 계산한다.",
+    "solutionImageCaption": "해설: 서로 닮은 작은 삼각기둥 ABC-DEF와 큰 삼각기둥 A′B′C′-D′E′F′의 주어진 치수. 작은 윗변 AC의 길이 10/3cm는 해설 본문에서 계산한다.",
     "solutionImageSize": "full",
     "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
     "problemTypeKey": "PT_SIMILAR_FIGURES",
@@ -333,12 +339,13 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "닮은 입체의 대응변·각·면 판정",
-    "decisiveStep": "기둥 높이4:6으로 닮음비2:3을 만들고 모서리와 각 대응을 확인한다."
+    "decisiveStep": "기둥 높이4:6으로 닮음비2:3을 만들고 모서리와 각 대응을 확인한다.",
+    "imageCaption": "서로 닮은 작은 삼각기둥 ABC-DEF와 큰 삼각기둥 A′B′C′-D′E′F′의 주어진 치수."
   },
   {
     "id": 7,
-    "imageSize": "tall",
-    "imageAlt": "작은 원기둥의 반지름은 6 cm이고 높이는 9 cm이다. 큰 원기둥의 높이는 12 cm이다.",
+    "imageSize": "full",
+    "imageAlt": "작은 원기둥의 반지름은 6cm와 높이 9cm, 큰 원기둥의 높이는 12cm.",
     "number": 7,
     "type": "multiple_choice",
     "questionType": "객관식",
@@ -376,8 +383,8 @@ window.examData = {
     "image": "assets/images/21_향림중_2학기_기말_중2_수학/q7-problem-visual-v2.svg",
     "accessibility": "두 원기둥이 서로 닮음이고, 작은 원기둥의 밑면의 반지름은 6cm, 높이는 9cm이며, 큰 원기둥의 높이는 12cm인 도형",
     "solutionImage": "assets/images/21_향림중_2학기_기말_중2_수학/q7-solution-visual-v2.svg",
-    "solutionImageAlt": "작은 원기둥의 반지름은 6 cm이고 높이는 9 cm이다. 큰 원기둥의 높이는 12 cm이다. 같은 비로 구한 큰 원기둥의 반지름 8 cm를 표시했다.",
-    "solutionImageCaption": "높이의 비가 9:12=3:4이므로 큰 반지름은 6×4/3=8 cm이다. 밑면의 넓이는 64π cm²이고 정답은 ③이다.",
+    "solutionImageAlt": "해설: 작은 원기둥의 반지름은 6cm와 높이 9cm, 큰 원기둥의 높이는 12cm.",
+    "solutionImageCaption": "해설: 작은 원기둥의 반지름은 6cm와 높이 9cm, 큰 원기둥의 높이는 12cm.",
     "solutionImageSize": "full",
     "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
     "problemTypeKey": "PT_SIMILAR_FIGURES",
@@ -390,12 +397,13 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "높이의 닮음비를 밑면 넓이에 전달",
-    "decisiveStep": "높이9:12로 반지름6:R을 만들고 큰 밑면 넓이를 구한다."
+    "decisiveStep": "높이9:12로 반지름6:R을 만들고 큰 밑면 넓이를 구한다.",
+    "imageCaption": "작은 원기둥의 반지름은 6cm와 높이 9cm, 큰 원기둥의 높이는 12cm."
   },
   {
     "id": 8,
-    "imageSize": "tall",
-    "imageAlt": "BC=12 cm이고 AB=9 cm이다. BC의 중점 M에서 수직선을 올려 AB와 만나는 점 D의 BD는 x cm이다.",
+    "imageSize": "full",
+    "imageAlt": "∠BAC가 직각이고 M은 BC의 중점이며 DM⊥BC인 삼각형.",
     "number": 8,
     "type": "multiple_choice",
     "questionType": "객관식",
@@ -433,8 +441,8 @@ window.examData = {
     "image": "assets/images/21_향림중_2학기_기말_중2_수학/q8-problem-visual-v2.svg",
     "accessibility": "직각삼각형 ABC에서 각 A가 90도, AB는 9cm, BC는 12cm이고, 변 BC의 중점 M에서 선분 BC에 수직인 직선이 선분 AB와 만나는 점 D까지의 선분 BD의 길이가 x cm인 도형",
     "solutionImage": "assets/images/21_향림중_2학기_기말_중2_수학/q8-solution-visual-v2.svg",
-    "solutionImageAlt": "BC=12 cm이고 AB=9 cm이다. BC의 중점 M에서 수직선을 올려 AB와 만나는 점 D의 BD는 x cm이다. 왼쪽 BDM과 큰 BCA를 비교하며 BM의 중간 길이 6 cm를 표시한다.",
-    "solutionImageCaption": "BM=12÷2=6 cm이다. △BDM∼△BCA에서 BD:BC=BM:BA=6:9이므로 BD=8 cm이고 정답은 ②이다.",
+    "solutionImageAlt": "해설: ∠BAC가 직각이고 M은 BC의 중점이며 DM⊥BC인 삼각형.",
+    "solutionImageCaption": "해설: ∠BAC가 직각이고 M은 BC의 중점이며 DM⊥BC인 삼각형.",
     "solutionImageSize": "full",
     "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
     "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
@@ -447,12 +455,13 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "중점을 전처리한 AA 닮음 길이",
-    "decisiveStep": "BM=BC/2를 만든 후 직각·공통각의 닮음에서BD:BC=BM:BA를 적용한다."
+    "decisiveStep": "BM=BC/2를 만든 후 직각·공통각의 닮음에서BD:BC=BM:BA를 적용한다.",
+    "imageCaption": "∠BAC가 직각이고 M은 BC의 중점이며 DM⊥BC인 삼각형."
   },
   {
     "id": 9,
-    "imageSize": "tall",
-    "imageAlt": "A에서 BC에 내린 수선은 AD이고 B에서 AC에 내린 수선은 BE이다. 두 수선의 교점 F는 삼각형 내부에 놓인다. 각 DAC와 각 EBC에는 같은 x를 붙였다.",
+    "imageSize": "full",
+    "imageAlt": "A와 B에서 내린 두 수선 AD와 BE가 F에서 만나는 삼각형.",
     "number": 9,
     "type": "multiple_choice",
     "questionType": "객관식",
@@ -490,8 +499,8 @@ window.examData = {
     "image": "assets/images/21_향림중_2학기_기말_중2_수학/q9-problem-visual-v2.svg",
     "accessibility": "삼각형 ABC의 꼭짓점 A, B에서 대변에 내린 수선의 발 D, E와 두 수선의 교점 F를 나타낸 도형",
     "solutionImage": "assets/images/21_향림중_2학기_기말_중2_수학/q9-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼각형의 두 수선과 교점 F를 그리고 서로 같은 예각을 같은 색의 호로 나타낸다.",
-    "solutionImageCaption": "두 수선의 직각과 같은 예각을 이용해 네 직각삼각형의 닮음을 확인한다. 답: ③",
+    "solutionImageAlt": "해설: A와 B에서 내린 두 수선 AD와 BE가 F에서 만나는 삼각형.",
+    "solutionImageCaption": "해설: A와 B에서 내린 두 수선 AD와 BE가 F에서 만나는 삼각형.",
     "solutionImageSize": "full",
     "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
     "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
@@ -504,12 +513,13 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "직각·공통각·맞꼭지각으로 닮음 묶음",
-    "decisiveStep": "C와90°−C를 공유하는 네 삼각형과 B를 포함하는 ADB를 구분한다."
+    "decisiveStep": "C와90°−C를 공유하는 네 삼각형과 B를 포함하는 ADB를 구분한다.",
+    "imageCaption": "A와 B에서 내린 두 수선 AD와 BE가 F에서 만나는 삼각형."
   },
   {
     "id": 10,
-    "imageSize": "tall",
-    "imageAlt": "윗변 AD는 x cm, 아랫변 BC는 16 cm이다. 중점 M과 N 사이에서 AC를 만나는 점이 P이고, MP=y cm, PN=5 cm이다.",
+    "imageSize": "full",
+    "imageAlt": "AD∥BC이고 M,N이 양 옆변의 중점인 사다리꼴에서 AC와 MN은 P에서 만난다.",
     "number": 10,
     "type": "multiple_choice",
     "questionType": "객관식",
@@ -547,8 +557,8 @@ window.examData = {
     "image": "assets/images/21_향림중_2학기_기말_중2_수학/q10-problem-visual-v2.svg",
     "accessibility": "사다리꼴 ABCD에서 AD와 BC가 평행하고, AB의 중점 M과 CD의 중점 N을 잇는 선분이 대각선 AC와 만나는 점 P에 대해 AD=x cm, PN=5cm, MP=y cm, BC=16cm인 도형",
     "solutionImage": "assets/images/21_향림중_2학기_기말_중2_수학/q10-solution.svg",
-    "solutionImageAlt": "해설 그림: 사다리꼴의 중점 연결선을 끌어내고 AD와 PN, BC와 MP의 대응을 색으로 표시한다.",
-    "solutionImageCaption": "중점 연결 정리에서 x=10cm, y=8cm이다. 답: ② 2",
+    "solutionImageAlt": "해설: AD∥BC이고 M,N이 양 옆변의 중점인 사다리꼴에서 AC와 MN은 P에서 만난다.",
+    "solutionImageCaption": "해설: AD∥BC이고 M,N이 양 옆변의 중점인 사다리꼴에서 AC와 MN은 P에서 만난다.",
     "solutionImageSize": "full",
     "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
     "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
@@ -561,12 +571,13 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "사다리꼴 대각선을 가르는 중점선",
-    "decisiveStep": "두 부분삼각형의 중점연결정리로PN=AD/2와MP=BC/2를 적용한다."
+    "decisiveStep": "두 부분삼각형의 중점연결정리로PN=AD/2와MP=BC/2를 적용한다.",
+    "imageCaption": "AD∥BC이고 M,N이 양 옆변의 중점인 사다리꼴에서 AC와 MN은 P에서 만난다."
   },
   {
     "id": 11,
-    "imageSize": "tall",
-    "imageAlt": "삼각형 ABC에서 AD가 각 A를 두 같은 각으로 나눈다.",
+    "imageSize": "full",
+    "imageAlt": "원문 두 그림: 각의 이등분선이 있는 △ABC와, 점 C를 지나 AD에 평행한 CE를 추가한 보조 작도.",
     "number": 11,
     "type": "multiple_choice",
     "questionType": "객관식",
@@ -601,11 +612,11 @@ window.examData = {
     "solution": "<p><b>1단계 [원문 조건 및 구할 대상]</b><br>삼각형의 내각의 이등분선의 성질 증명 과정에서 빈칸 (가), (나), (다)에 알맞은 식을 찾습니다.</p><p><b>2단계 [핵심 발상/공식/보조선]</b><br>평행선 $\\overline{\\text{AD}} // \\overline{\\text{EC}}$에서 동위각과 엇각의 성질을 추론하고, 두 밑각의 크기가 같은 삼각형이 이등변삼각형임을 활용합니다.</p><p><b>3단계 [연속 등식 및 충분한 중간 계산]</b><br>1) $\\overline{\\text{AD}} // \\overline{\\text{EC}}$에서 직선 AC와 만나는 엇각이므로 $\\angle\\text{CAD} = \\angle\\text{ACE}$ (엇각)입니다. 따라서 $\\text{(가)} = \\angle\\text{ACE}$입니다.<br>2) $\\angle\\text{BAD}=\\angle\\text{CAD}$이고 $\\angle\\text{BAD}=\\angle\\text{E}$이며 $\\angle\\text{CAD}=\\angle\\text{ACE}$이므로,<br>$\\angle\\text{E} = \\angle\\text{ACE}$입니다. 따라서 $\\text{(나)} = \\angle\\text{ACE}$입니다.<br>3) $\\triangle\\text{ACE}$에서 두 각의 크기 $\\angle\\text{E}=\\angle\\text{ACE}$가 같으므로 두 변의 길이가 같은 이등변삼각형입니다.<br>따라서 $\\overline{\\text{AE}} = \\overline{\\text{AC}}$입니다. 따라서 $\\text{(다)} = \\overline{\\text{AC}}$입니다.</p><p><b>4단계 [경우 나눔 및 5개 선지 검토]</b><br>(가) $\\angle\\text{ACE}$, (나) $\\angle\\text{ACE}$, (다) $\\overline{\\text{AC}}$의 조합은 ④뿐입니다.</p><p><b>5단계 [명확한 결론]</b><br>따라서 알맞은 것을 써넣은 것은 ④입니다.",
     "questionNumber": 11,
     "images": [],
-    "image": "",
+    "image": "assets/images/21_향림중_2학기_기말_중2_수학/q11-problem.svg",
     "accessibility": "삼각형 ABC에서 각 A의 이등분선 AD가 변 BC와 만나는 점 D를 나타낸 도형 / 점 C를 지나고 선분 AD에 평행한 직선과 선분 BA의 연장선의 교점 E를 잡은 보조선 다이어그램",
     "solutionImage": "assets/images/21_향림중_2학기_기말_중2_수학/q11-solution.svg",
-    "solutionImageAlt": "해설 그림: 각의 이등분선 AD와 평행한 보조선 CE를 표시하고 같은 각과 같은 변을 각각 묶은 그림.",
-    "solutionImageCaption": "평행선의 동위각·엇각과 이등분선 성질로 삼각형 ACE는 이등변삼각형이다. 답: ④",
+    "solutionImageAlt": "각의 이등분선 AD와 점 C에서 AD에 평행한 연장선 CE의 교점 E를 이용한 증명.",
+    "solutionImageCaption": "각의 이등분선 AD와 점 C에서 AD에 평행한 연장선 CE의 교점 E를 이용한 증명.",
     "solutionImageSize": "full",
     "templateKey": "",
     "problemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR",
@@ -618,12 +629,13 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "평행 보조선으로 각이등분선 선분비 증명",
-    "decisiveStep": "동위각·엇각으로 ACE의 두 밑각을 같게 한 뒤 AE=AC를 평행 선분비에 넣는다."
+    "decisiveStep": "동위각·엇각으로 ACE의 두 밑각을 같게 한 뒤 AE=AC를 평행 선분비에 넣는다.",
+    "imageCaption": "원문 두 그림: 각의 이등분선이 있는 △ABC와, 점 C를 지나 AD에 평행한 CE를 추가한 보조 작도."
   },
   {
     "id": 12,
-    "imageSize": "tall",
-    "imageAlt": "B, F, D, A 순서로 같은 사선에 있다. BF는 18 cm, FD는 12 cm이다. AC와 DE는 평행하고 CD와 EF도 평행하다.",
+    "imageSize": "full",
+    "imageAlt": "두 쌍의 평행선 AC∥DE, CD∥FE가 있는 삼각형에서 BF=18, FD=12.",
     "number": 12,
     "type": "multiple_choice",
     "questionType": "객관식",
@@ -675,12 +687,13 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "공통 분할비로 두 평행삼각형 연결",
-    "decisiveStep": "BF:FD를BE:EC로 옮긴 뒤BD:DA에 다시 적용한다."
+    "decisiveStep": "BF:FD를BE:EC로 옮긴 뒤BD:DA에 다시 적용한다.",
+    "imageCaption": "두 쌍의 평행선 AC∥DE, CD∥FE가 있는 삼각형에서 BF=18, FD=12."
   },
   {
     "id": 13,
-    "imageSize": "tall",
-    "imageAlt": "사다리꼴의 두 대각선이 교차하는 O를 EF가 지나고 AD, EF, BC가 나란하다. 왼쪽 AE=6 cm, EB=9 cm, 아래 BC=15 cm이다.",
+    "imageSize": "full",
+    "imageAlt": "평행한 AD, EF, BC와 대각선 AC, BD가 교차하는 사다리꼴.",
     "number": 13,
     "type": "multiple_choice",
     "questionType": "객관식",
@@ -732,12 +745,13 @@ window.examData = {
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "사다리꼴 대각선 교점의 평행 단면",
-    "decisiveStep": "AE:AB에서EO와AO:OC를 얻고 교차삼각형의 비로AD를 복원해OF를 합한다."
+    "decisiveStep": "AE:AB에서EO와AO:OC를 얻고 교차삼각형의 비로AD를 복원해OF를 합한다.",
+    "imageCaption": "평행한 AD, EF, BC와 대각선 AC, BD가 교차하는 사다리꼴."
   },
   {
     "id": 14,
-    "imageSize": "tall",
-    "imageAlt": "세 평행선 l, m, n을 세 사선이 가로지른다. 왼쪽 사선의 위와 아래는 6 cm와 8 cm, 가운데는 x cm와 10 cm, 오른쪽은 y cm와 12 cm이다.",
+    "imageSize": "full",
+    "imageAlt": "세 평행선 l,m,n을 세 횡단선이 자르는 길이비 도식.",
     "number": 14,
     "type": "multiple_choice",
     "questionType": "객관식",
@@ -775,8 +789,8 @@ window.examData = {
     "image": "assets/images/21_향림중_2학기_기말_중2_수학/q14-problem-visual-v2.svg",
     "accessibility": "세 평행선 l, m, n을 지나는 세 직선에서 왼쪽 직선의 분할 길이는 6cm, 8cm, 가운데 직선은 x cm, 10cm, 오른쪽 직선은 y cm, 12cm인 도형",
     "solutionImage": "assets/images/21_향림중_2학기_기말_중2_수학/q14-solution-visual-v2.svg",
-    "solutionImageAlt": "세 평행선 l, m, n을 세 사선이 가로지른다. 왼쪽 사선의 위와 아래는 6 cm와 8 cm, 가운데는 x cm와 10 cm, 오른쪽은 y cm와 12 cm이다.",
-    "solutionImageCaption": "세 사선 모두 위쪽과 아래쪽 구간의 비가 6:8=3:4이다. x=10×3/4=15/2, y=12×3/4=9이므로 y−x=3/2이며 정답은 ①이다.",
+    "solutionImageAlt": "해설: 세 평행선 l,m,n을 세 횡단선이 자르는 길이비 도식.",
+    "solutionImageCaption": "해설: 세 평행선 l,m,n을 세 횡단선이 자르는 길이비 도식.",
     "solutionImageSize": "full",
     "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
     "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
@@ -789,12 +803,13 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "세 평행선의 한 비를 두 길이에 적용",
-    "decisiveStep": "6:8=x:10=y:12를 풀고y−x를 구한다."
+    "decisiveStep": "6:8=x:10=y:12를 풀고y−x를 구한다.",
+    "imageCaption": "세 평행선 l,m,n을 세 횡단선이 자르는 길이비 도식."
   },
   {
     "id": 15,
-    "imageSize": "tall",
-    "imageAlt": "무게중심 G는 AM과 CN이 만나는 점이다. BC=14 cm, CG=10 cm이고 NG=x cm와 BM=y cm이다.",
+    "imageSize": "full",
+    "imageAlt": "중선 AM과 CN이 G에서 만나는 △ABC의 무게중심 도식.",
     "number": 15,
     "type": "multiple_choice",
     "questionType": "객관식",
@@ -832,8 +847,8 @@ window.examData = {
     "image": "assets/images/21_향림중_2학기_기말_중2_수학/q15-problem-visual-v2.svg",
     "accessibility": "삼각형 ABC에서 점 G는 무게중심이고, 변 BC의 중점 M에 대해 BC는 14cm, BM은 y cm이며, 중선 CN에서 GC는 10cm, NG는 x cm인 도형",
     "solutionImage": "assets/images/21_향림중_2학기_기말_중2_수학/q15-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼각형의 중선 위 무게중심 G와 변의 중점 M, N을 나타낸다.",
-    "solutionImageCaption": "CG:GN=2:1이므로 x=5, BM은 BC의 절반이므로 y=7이다. 답: ③ 12",
+    "solutionImageAlt": "해설: 중선 AM과 CN이 G에서 만나는 △ABC의 무게중심 도식.",
+    "solutionImageCaption": "해설: 중선 AM과 CN이 G에서 만나는 △ABC의 무게중심 도식.",
     "solutionImageSize": "full",
     "templateKey": "",
     "problemTypeKey": "PT_COORD_CENTROID",
@@ -846,12 +861,13 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "무게중심의 중선 분할과 밑변 중점",
-    "decisiveStep": "CG:GN=2:1과BM=BC/2를 각각 계산해 합한다."
+    "decisiveStep": "CG:GN=2:1과BM=BC/2를 각각 계산해 합한다.",
+    "imageCaption": "중선 AM과 CN이 G에서 만나는 △ABC의 무게중심 도식."
   },
   {
     "id": 16,
-    "imageSize": "tall",
-    "imageAlt": "E는 BG의 중점, F는 CG의 중점이다. 각 길이의 양쪽을 같은 눈금으로 표시했다. 가운데 사각형 AEGF만 옅게 칠했다.",
+    "imageSize": "full",
+    "imageAlt": "무게중심 G에서 GB와 GC의 중점 E,F를 연결한 사각형 AEGF만 음영 처리한 그림.",
     "number": 16,
     "type": "multiple_choice",
     "questionType": "객관식",
@@ -889,8 +905,8 @@ window.examData = {
     "image": "assets/images/21_향림중_2학기_기말_중2_수학/q16-problem-visual-v2.svg",
     "accessibility": "삼각형 ABC에서 점 G는 무게중심이고, 점 E, F는 각각 선분 GB, GC의 중점일 때 사각형 AEGF가 음영 처리된 도형",
     "solutionImage": "assets/images/21_향림중_2학기_기말_중2_수학/q16-solution.svg",
-    "solutionImageAlt": "해설 그림: 무게중심 G를 이용해 사각형 AEGF를 넓이 8cm²인 두 삼각형으로 나눈다.",
-    "solutionImageCaption": "무게중심이 만드는 삼각형 두 개의 넓이는 각각 16cm²이며, 그 절반은 각각 8cm²이다. 답: ② 16cm²",
+    "solutionImageAlt": "해설: 무게중심 G에서 GB와 GC의 중점 E,F를 연결한 사각형 AEGF만 음영 처리한 그림.",
+    "solutionImageCaption": "해설: 무게중심 G에서 GB와 GC의 중점 E,F를 연결한 사각형 AEGF만 음영 처리한 그림.",
     "solutionImageSize": "full",
     "templateKey": "",
     "problemTypeKey": "PT_COORD_CENTROID",
@@ -903,7 +919,8 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "무게중심 등넓이와 중점 넓이 분할",
-    "decisiveStep": "GAB와GCA의1/3넓이를 각각중점으로반분하고 두 목표부분을 합한다."
+    "decisiveStep": "GAB와GCA의1/3넓이를 각각중점으로반분하고 두 목표부분을 합한다.",
+    "imageCaption": "무게중심 G에서 GB와 GC의 중점 E,F를 연결한 사각형 AEGF만 음영 처리한 그림."
   },
   {
     "id": 17,
@@ -1117,8 +1134,8 @@ window.examData = {
   },
   {
     "id": 21,
-    "imageSize": "tall",
-    "imageAlt": "흰색 카드 다섯 장은 같은 크기로 놓여 있다. 위쪽의 카드 위치는 왼쪽부터 1, 2, 3이며 아래쪽에는 4, 5가 놓여 있다.",
+    "imageSize": "full",
+    "imageAlt": "자연수 1부터 5까지 하나씩 적힌 다섯 장의 카드.",
     "number": 21,
     "type": "multiple_choice",
     "questionType": "객관식",
@@ -1170,7 +1187,8 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "최대 차로 필연 사건 판정",
-    "decisiveStep": "가능한 두 수 차의 최대가5−1=4라서 모든 표본이 사건에 포함됨을 확인한다."
+    "decisiveStep": "가능한 두 수 차의 최대가5−1=4라서 모든 표본이 사건에 포함됨을 확인한다.",
+    "imageCaption": "자연수 1부터 5까지 하나씩 적힌 다섯 장의 카드."
   },
   {
     "id": 22,
@@ -1263,8 +1281,8 @@ window.examData = {
     "image": "assets/images/21_향림중_2학기_기말_중2_수학/q23-problem-visual-v2.svg",
     "accessibility": "변 AB와 AC의 길이가 5cm이고 밑변 BC의 길이가 6cm인 이등변삼각형 ABC",
     "solutionImage": "assets/images/21_향림중_2학기_기말_중2_수학/q23-solution.svg",
-    "solutionImageAlt": "해설 그림: 이등변삼각형에서 꼭짓점 A로부터 밑변 중점 D에 내린 수선과 BD=3cm, AD=4cm를 표시한다.",
-    "solutionImageCaption": "꼭짓점에서 내린 수선은 밑변을 이등분하므로 BD=3cm이고 피타고라스 정리로 AD=4cm이다. 답: 12cm²",
+    "solutionImageAlt": "이등변삼각형의 꼭짓점에서 밑변에 내린 수선 AD=4, BD=DC=3인 해설 그림.",
+    "solutionImageCaption": "이등변삼각형의 꼭짓점에서 밑변에 내린 수선 AD=4, BD=DC=3인 해설 그림.",
     "solutionImageSize": "full",
     "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
     "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
@@ -1285,8 +1303,8 @@ window.examData = {
   },
   {
     "id": 24,
-    "imageSize": "tall",
-    "imageAlt": "D는 선분 AB 위에 있다. 변의 길이 AD는 4 cm, BD는 5 cm, AC는 6 cm, CD는 3 cm이다.",
+    "imageSize": "full",
+    "imageAlt": "AB 위의 D와 C를 이은 △ABC, AD=4, BD=5, AC=6, CD=3의 원문 도식.",
     "number": 24,
     "type": "essay",
     "questionType": "서술형",
@@ -1332,12 +1350,13 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "SAS 닮음을 수치 길이로 전달",
-    "decisiveStep": "AB=AD+BD를 구성해 두 변의3:2비와 공통각으로 닮음을 보인 뒤BC를 구한다."
+    "decisiveStep": "AB=AD+BD를 구성해 두 변의3:2비와 공통각으로 닮음을 보인 뒤BC를 구한다.",
+    "imageCaption": "AB 위의 D와 C를 이은 △ABC, AD=4, BD=5, AC=6, CD=3의 원문 도식."
   },
   {
     "id": 25,
-    "imageSize": "tall",
-    "imageAlt": "평행사변형 ABCD의 대각선은 O에서 교차하고 BD=18 cm이다. BC의 중점 M과 A를 이은 선이 BD와 P에서 만난다.",
+    "imageSize": "full",
+    "imageAlt": "두 대각선의 교점 O와 BC의 중점 M, AM과 BD의 교점 P가 있는 평행사변형.",
     "number": 25,
     "type": "essay",
     "questionType": "서술형",
@@ -1369,8 +1388,8 @@ window.examData = {
     "image": "assets/images/21_향림중_2학기_기말_중2_수학/q25-problem-visual-v2.svg",
     "accessibility": "평행사변형 ABCD에서 두 대각선 AC와 BD의 교점 O, BC의 중점 M과 A를 잇는 선분 AM이 대각선 BD와 만나는 점 P, BD=18cm인 도형",
     "solutionImage": "assets/images/21_향림중_2학기_기말_중2_수학/q25-solution.svg",
-    "solutionImageAlt": "해설 그림: 평행사변형의 대각선과 중선 AM의 교점 P를 나타내고 BD, BO를 끌어내 비교한다.",
-    "solutionImageCaption": "대각선은 서로 이등분하므로 BO=9cm이고 P는 삼각형 ABC의 무게중심이다. 답: 6cm",
+    "solutionImageAlt": "해설: 두 대각선의 교점 O와 BC의 중점 M, AM과 BD의 교점 P가 있는 평행사변형.",
+    "solutionImageCaption": "해설: 두 대각선의 교점 O와 BC의 중점 M, AM과 BD의 교점 P가 있는 평행사변형.",
     "solutionImageSize": "full",
     "templateKey": "TPL_CENTROID_APPLICATION",
     "problemTypeKey": "PT_COORD_CENTROID",
@@ -1385,12 +1404,13 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "STRONG_CONFLICT",
     "primaryMethod": "평행사변형 중점으로 무게중심 발견",
-    "decisiveStep": "두 대각선의 중점에서 BO와AM이중선임을 확인하여P의2:1비를 적용한다."
+    "decisiveStep": "두 대각선의 중점에서 BO와AM이중선임을 확인하여P의2:1비를 적용한다.",
+    "imageCaption": "두 대각선의 교점 O와 BC의 중점 M, AM과 BD의 교점 P가 있는 평행사변형."
   },
   {
     "id": 26,
-    "imageSize": "tall",
-    "imageAlt": "A 주머니 안에는 검은 공 4개와 노란 공 2개가 있다. B 주머니 안에는 같은 크기의 검은 공 4개와 노란 공 4개가 있다. 공의 수량을 색마다 비교할 수 있도록 배열했다.",
+    "imageSize": "full",
+    "imageAlt": "A에 파란 공 4개·노란 공 2개, B에 파란 공 4개·노란 공 4개가 들어 있는 두 주머니.",
     "number": 26,
     "type": "essay",
     "questionType": "서술형",
@@ -1432,7 +1452,8 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "두 주머니의 다른 색 경로 확률",
-    "decisiveStep": "파랑-노랑과노랑-파랑 두 경로의 독립확률을 각각 곱하고 더한다."
+    "decisiveStep": "파랑-노랑과노랑-파랑 두 경로의 독립확률을 각각 곱하고 더한다.",
+    "imageCaption": "A에 파란 공 4개·노란 공 2개, B에 파란 공 4개·노란 공 4개가 들어 있는 두 주머니."
   }
 ]
 };

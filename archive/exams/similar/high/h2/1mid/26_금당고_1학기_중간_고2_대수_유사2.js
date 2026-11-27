@@ -380,8 +380,9 @@ window.questionBank = [
     "variationType": "EXAM_FOLLOWUP",
     "problemPlanRef": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사2_plans/q08-problem.plan.json",
     "image": "assets/images/26_금당고_1학기_중간_고2_대수_유사2/q08-problem.svg",
-    "imageAlt": "지수함수 y=2의 x제곱 더하기 3의 그래프 위에 두 점 P(p,7)과 Q(4,q)가 있고, 각 점에서 좌표축으로 내린 점선 보조선과 p, q 눈금이 표시된 그래프이다.",
-    "imageSize": "medium"
+    "imageAlt": "세로로 3만큼 이동한 지수함수 y=2^x+3과 점 P(p,7), Q(4,q)를 표시하는 문제 보조 그래프",
+    "imageSize": "medium",
+    "imageCaption": "세로로 3만큼 이동한 지수함수 y=2^x+3과 점 P(p,7), Q(4,q)를 표시하는 문제 보조 그래프"
   },
   {
     "id": 9,

@@ -336,7 +336,7 @@ window.questionBank = [
   {
     "id": 8,
     "imageSize": "full",
-    "imageAlt": "평행사변형 ABCD의 중점 M과 N은 아래쪽과 오른쪽 변에 있다. A에서 그은 AM과 AN은 대각선 BD와 P, Q에서 만난다. P, M, C, N, Q가 둘러싼 부분을 칠했다.",
+    "imageAlt": "평행사변형 ABCD와 두 중점 M, N, 교점 P, Q를 그리고 구하는 오각형 PMCNQ만 칠한 그림.",
     "level": "상",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -383,7 +383,8 @@ window.questionBank = [
     "solutionImageCaption": "△BCD=72÷2=36이고 △BPM=△DQN=6이므로 오각형 PMCNQ의 넓이는 36−6−6=24이다(정답 ①).",
     "solutionImageSize": "full",
     "primaryMethod": "평행사변형 교차선의 선분비",
-    "decisiveStep": "중점과 평행선에서 대각선 삼등분을 얻고 양 끝 삼각형 넓이를 전체에서 뺀다."
+    "decisiveStep": "중점과 평행선에서 대각선 삼등분을 얻고 양 끝 삼각형 넓이를 전체에서 뺀다.",
+    "imageCaption": "평행사변형 ABCD와 두 중점 M, N, 교점 P, Q를 그리고 구하는 오각형 PMCNQ만 칠한 그림."
   },
   {
     "id": 9,
@@ -574,7 +575,7 @@ window.questionBank = [
   {
     "id": 13,
     "imageSize": "full",
-    "imageAlt": "가로로 긴 직사각형에서 가로선 두 개가 세 층을 가른다. 위쪽 층은 A이고 아래쪽 층은 D이다. 가운데 층에만 세로 경계가 있어 왼쪽 B와 오른쪽 C로 나뉜다.",
+    "imageAlt": "직사각형의 위쪽 A, 가운데 왼쪽 B와 오른쪽 C, 아래쪽 D의 네 영역을 선만으로 구분한 문제 그림.",
     "level": "중",
     "category": "확률",
     "originalCategory": "확률",
@@ -615,7 +616,8 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "인접 영역의 색칠 순서 선택",
-    "decisiveStep": "서로 이웃한 가운데 두 영역을 먼저 정해 나머지 두 영역의 색 선택 수를 독립시키고 곱한다."
+    "decisiveStep": "서로 이웃한 가운데 두 영역을 먼저 정해 나머지 두 영역의 색 선택 수를 독립시키고 곱한다.",
+    "imageCaption": "직사각형의 위쪽 A, 가운데 왼쪽 B와 오른쪽 C, 아래쪽 D의 네 영역을 선만으로 구분한 문제 그림."
   },
   {
     "id": 14,

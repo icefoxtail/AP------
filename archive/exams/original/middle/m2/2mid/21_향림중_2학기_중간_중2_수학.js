@@ -470,7 +470,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "x절편 좌표와 기울기로 y절편 결정",
-    "decisiveStep": "x절편을 y=0인 점으로 읽어 주어진 기울기의 식에 넣고 상수항을 정한다."
+    "decisiveStep": "x절편을 y=0인 점으로 읽어 주어진 기울기의 식에 넣고 상수항을 정한다.",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중2_수학/q4-solution.svg",
+    "solutionImageAlt": "x절편 5/2에서 0=−2×5/2+b이므로 b=5이고 y절편은 5이다.",
+    "solutionImageCaption": "x절편 5/2에서 0=−2×5/2+b이므로 b=5이고 y절편은 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -501,7 +505,15 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "그래프의 기울기 판독과 계수 대응",
-    "decisiveStep": "실제 그래프의 두 절편에서 기울기를 읽고 y=ax-1의 x계수와 같은 값으로 대응한다."
+    "decisiveStep": "실제 그래프의 두 절편에서 기울기를 읽고 y=ax-1의 x계수와 같은 값으로 대응한다.",
+    "image": "assets/images/21_향림중_2학기_중간_중2_수학/q5-problem.svg",
+    "imageAlt": "그림의 직선은 y축의 3과 x축의 1을 지난다. 이 직선의 기울기와 평행한 다른 직선을 비교한다.",
+    "imageCaption": "그림의 직선은 y축의 3과 x축의 1을 지난다. 이 직선의 기울기와 평행한 다른 직선을 비교한다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중2_수학/q5-solution.svg",
+    "solutionImageAlt": "두 절편 (0,3), (1,0)에서 기울기는 (0−3)/(1−0)=−3으로 구한다.",
+    "solutionImageCaption": "두 절편 (0,3), (1,0)에서 기울기는 (0−3)/(1−0)=−3으로 구한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -532,7 +544,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "두 선행 직선의 축 위 교점으로 목표 직선 결정",
-    "decisiveStep": "첫 직선의 x절편과 둘째 직선의 y절편을 좌표로 정해 두 점을 지나는 직선을 세운다."
+    "decisiveStep": "첫 직선의 x절편과 둘째 직선의 y절편을 좌표로 정해 두 점을 지나는 직선을 세운다.",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중2_수학/q6-solution.svg",
+    "solutionImageAlt": "원래 두 직선의 x·y절편 중 (2,0), (0,−3)을 연결하여 기울기 3/2의 일차함수를 얻는다.",
+    "solutionImageCaption": "원래 두 직선의 x·y절편 중 (2,0), (0,−3)을 연결하여 기울기 3/2의 일차함수를 얻는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -563,7 +579,15 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "그래프의 감소와 y절편 부호 판독",
-    "decisiveStep": "그림에서 감소 방향과 음의 y절편을 읽고 식의 -b 부호를 b의 부호로 바꾼다."
+    "decisiveStep": "그림에서 감소 방향과 음의 y절편을 읽고 식의 -b 부호를 b의 부호로 바꾼다.",
+    "image": "assets/images/21_향림중_2학기_중간_중2_수학/q7-problem.svg",
+    "imageAlt": "기울기가 음수이고 y절편도 음수인 일차함수 y=ax−b의 개형이다. 숫자 절편은 원문에서 주어지지 않았으므로 주장하지 않는다.",
+    "imageCaption": "기울기가 음수이고 y절편도 음수인 일차함수 y=ax−b의 개형이다. 숫자 절편은 원문에서 주어지지 않았으므로 주장하지 않는다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중2_수학/q7-solution.svg",
+    "solutionImageAlt": "기울기 a는 음수이고 y절편 −b도 음수이다. 개형 위의 y=ax−b는 원문 식이며 수치 절편을 주장하지 않는다.",
+    "solutionImageCaption": "기울기 a는 음수이고 y절편 −b도 음수이다. 개형 위의 y=ax−b는 원문 식이며 수치 절편을 주장하지 않는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -594,7 +618,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "두 점의 좌표 차로 직선식 결정",
-    "decisiveStep": "두 점에서 기울기를 구한 뒤 한 점을 대입해 상수항을 정한다."
+    "decisiveStep": "두 점에서 기울기를 구한 뒤 한 점을 대입해 상수항을 정한다.",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중2_수학/q8-solution.svg",
+    "solutionImageAlt": "두 점 (1,1), (4,−2)를 잇는 직선의 기울기는 −1이고 식은 y=−x+2이다.",
+    "solutionImageCaption": "두 점 (1,1), (4,−2)를 잇는 직선의 기울기는 −1이고 식은 y=−x+2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -656,7 +684,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "두 직선 교점과 y축 절편의 삼각형 넓이",
-    "decisiveStep": "두 직선의 교점과 y축의 두 절편을 찾아 수직 밑변 길이와 수평 높이로 넓이를 정한다."
+    "decisiveStep": "두 직선의 교점과 y축의 두 절편을 찾아 수직 밑변 길이와 수평 높이로 넓이를 정한다.",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중2_수학/q10-solution.svg",
+    "solutionImageAlt": "y=−x−3, y=x/4+2, x=0의 교점 세 개를 연결하면 밑변 5, 높이 4의 삼각형이 된다.",
+    "solutionImageCaption": "y=−x−3, y=x/4+2, x=0의 교점 세 개를 연결하면 밑변 5, 높이 4의 삼각형이 된다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -718,7 +750,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "교점의 한 좌표 대입으로 나머지 좌표와 계수 결정",
-    "decisiveStep": "교점의 x좌표를 알려진 식에 넣어 y를 구하고 그 점을 다른 식에 대입해 a를 정한다."
+    "decisiveStep": "교점의 x좌표를 알려진 식에 넣어 y를 구하고 그 점을 다른 식에 대입해 a를 정한다.",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중2_수학/q12-solution.svg",
+    "solutionImageAlt": "x=3인 교점은 (3,−1)이고 두 직선 y=(x−5)/2, y=(1−x)/2가 만난다.",
+    "solutionImageCaption": "x=3인 교점은 (3,−1)이고 두 직선 y=(x−5)/2, y=(1−x)/2가 만난다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -770,7 +806,11 @@ window.questionBank = [
     "solutionImage": "assets/images/21_향림중_2학기_중간_중2_수학/q14-solution.svg",
     "solutionImageAlt": "해설 그림: 꼭짓점 A와 밑변 BC로 이루어진 이등변삼각형에 꼭짓각의 이등분선 AD가 그려져 있고, D에 직각 표시와 두 변 AB, AC의 같은 길이 표시가 있다. B의 각에는 68도, A의 두 각에는 같은 크기의 각 표시가 있고, 밑변 아래에는 두 변 BD, DC의 길이 표시가 나란히 있다.",
     "solutionImageCaption": "AB = AC인 이등변삼각형에서 꼭짓각 A의 이등분선 AD는 밑변 BC를 수직이등분하므로 BD = 8 ÷ 2 = 4, 즉 x = 4이다. 직각삼각형 ABD에서 각 ADB = 90도이고 각 B = 68도이므로 각 BAD = 180도 − 90도 − 68도 = 22도, 즉 y = 22이다. 따라서 x + y = 4 + 22 = 26이다. 따라서 답은 ②이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "image": "assets/images/21_향림중_2학기_중간_중2_수학/q14-problem.svg",
+    "imageAlt": "AB=AC인 이등변삼각형에서 AD는 같은 색의 두 꼭짓각을 만드는 이등분선. ∠B=68°, BC=8 cm.",
+    "imageCaption": "AB=AC인 이등변삼각형에서 AD는 같은 색의 두 꼭짓각을 만드는 이등분선. ∠B=68°, BC=8 cm.",
+    "imageSize": "full"
   },
   {
     "id": 15,
@@ -803,7 +843,15 @@ window.questionBank = [
     "difficultyBucket": 2,
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "등변삼각형의 밑각과 내·외각 이등분선 연결",
-    "decisiveStep": "같은 밑각을 정한 뒤 내각 이등분과 외각 이등분으로 삼각형 BCD의 각을 연결한다."
+    "decisiveStep": "같은 밑각을 정한 뒤 내각 이등분과 외각 이등분으로 삼각형 BCD의 각을 연결한다.",
+    "image": "assets/images/21_향림중_2학기_중간_중2_수학/q15-problem.svg",
+    "imageAlt": "AB=AC, BD는 B의 내각, CD는 C의 외각의 이등분선이다. 밑변의 오른쪽 연장선은 점선이며 ∠ABD=22°이다.",
+    "imageCaption": "AB=AC, BD는 B의 내각, CD는 C의 외각의 이등분선이다. 밑변의 오른쪽 연장선은 점선이며 ∠ABD=22°이다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중2_수학/q15-solution.svg",
+    "solutionImageAlt": "∠B=44°, C의 외각을 이등분한 한쪽 각은 68°이다. △BDC에서 ∠BDC=46°를 얻는다.",
+    "solutionImageCaption": "∠B=44°, C의 외각을 이등분한 한쪽 각은 68°이다. △BDC에서 ∠BDC=46°를 얻는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -834,7 +882,15 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "직각삼각형의 빗변·예각 합동 판정",
-    "decisiveStep": "본문과 선지5개의 실제 그림에서 빗변10과 예각40 또는 그 여각50을 대응시킨다."
+    "decisiveStep": "본문과 선지5개의 실제 그림에서 빗변10과 예각40 또는 그 여각50을 대응시킨다.",
+    "image": "assets/images/21_향림중_2학기_중간_중2_수학/q16-problem.svg",
+    "imageAlt": "빗변이 10 cm, 한 예각이 40°인 직각삼각형을 선택지 그림과 비교한다.",
+    "imageCaption": "빗변이 10 cm, 한 예각이 40°인 직각삼각형을 선택지 그림과 비교한다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중2_수학/q16-solution.svg",
+    "solutionImageAlt": "직각삼각형에서 나머지 예각은 50°이다. 선택지 ⑤의 같은 빗변과 각을 확인해 합동 판정한다.",
+    "solutionImageCaption": "직각삼각형에서 나머지 예각은 50°이다. 선택지 ⑤의 같은 빗변과 각을 확인해 합동 판정한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -867,7 +923,15 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "RHA 합동과 수직이등분선 등거리 결합",
-    "decisiveStep": "각이등분선과 두 직각으로 ADC,ADM의 RHA를 확인하고 M이 AB 중점인 수직이등분선 조건을 추가해 선지들을 판정한다."
+    "decisiveStep": "각이등분선과 두 직각으로 ADC,ADM의 RHA를 확인하고 M이 AB 중점인 수직이등분선 조건을 추가해 선지들을 판정한다.",
+    "image": "assets/images/21_향림중_2학기_중간_중2_수학/q17-problem.svg",
+    "imageAlt": "∠C=90°인 △ABC에서 AD는 두 같은 호로 나타낸 ∠A의 이등분선이고 DM⊥AB, AM=BM이다.",
+    "imageCaption": "∠C=90°인 △ABC에서 AD는 두 같은 호로 나타낸 ∠A의 이등분선이고 DM⊥AB, AM=BM이다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중2_수학/q17-solution.svg",
+    "solutionImageAlt": "DM은 AB의 수직이등분선이고 △ACD≡△AMD에서 CD=DM임을 보여 준다.",
+    "solutionImageCaption": "DM은 AB의 수직이등분선이고 △ACD≡△AMD에서 CD=DM임을 보여 준다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -898,7 +962,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "직각이등변삼각형의 수선 투영 RHA와 넓이",
-    "decisiveStep": "B가 직선 l 위인 실제 그림에서 ABD와 BCE의 빗변·예각 대응을 찾아 밑변 길이를 옮긴 뒤 사다리꼴 넓이로 연결한다."
+    "decisiveStep": "B가 직선 l 위인 실제 그림에서 ABD와 BCE의 빗변·예각 대응을 찾아 밑변 길이를 옮긴 뒤 사다리꼴 넓이로 연결한다.",
+    "image": "assets/images/21_향림중_2학기_중간_중2_수학/q18-problem.svg",
+    "imageAlt": "B에서 직각인 직각이등변삼각형 ABC와 직선 l의 수선 AD, CE. AD=6, CE=8, AB=10 cm.",
+    "imageCaption": "B에서 직각인 직각이등변삼각형 ABC와 직선 l의 수선 AD, CE. AD=6, CE=8, AB=10 cm.",
+    "imageSize": "full"
   },
   {
     "id": 19,
@@ -929,7 +997,15 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "외심의 중심각과 꼭지각 관계",
-    "decisiveStep": "실제 복원그림의 중심각 BOC와 이에 대응하는 A각을 외심 관계로 읽는다."
+    "decisiveStep": "실제 복원그림의 중심각 BOC와 이에 대응하는 A각을 외심 관계로 읽는다.",
+    "image": "assets/images/21_향림중_2학기_중간_중2_수학/q19-problem.svg",
+    "imageAlt": "삼각형 ABC의 외심 O를 세 꼭짓점과 이었다. 중심각 BOC=110°이고 ∠OCA=20°이다.",
+    "imageCaption": "삼각형 ABC의 외심 O를 세 꼭짓점과 이었다. 중심각 BOC=110°이고 ∠OCA=20°이다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중2_수학/q19-solution.svg",
+    "solutionImageAlt": "같은 호 BC를 보는 원주각 ∠BAC는 중심각 110°의 절반인 55°이다.",
+    "solutionImageCaption": "같은 호 BC를 보는 원주각 ∠BAC는 중심각 110°의 절반인 55°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -964,7 +1040,11 @@ window.questionBank = [
     "solutionImage": "assets/images/21_향림중_2학기_중간_중2_수학/q20-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형 ABC의 내심 I에서 세 변 AB, BC, AC에 내린 수선의 발 D, E, F가 표시되어 있다. ID, IE, IF에 같은 길이 표시와 D, E, F의 직각 표시가 있고, AI, BI, CI가 그려져 있다.",
     "solutionImageCaption": "I가 내심이므로 ID, IE, IF는 각각 세 변에 수직이고 그 길이가 모두 같다. 또한 AI, BI, CI는 각 꼭짓점의 각을 이등분하므로 각 IAD=각 IAF, 각 ICE=각 ICF가 성립한다. 그러나 삼각형 IDA와 삼각형 IDB는 ID가 공통이고 각 IDA=각 IDB=90°이지만 AD와 BD가 같다는 보장이 없으므로 항상 합동은 아니다. 따라서 답은 ⑤이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "image": "assets/images/21_향림중_2학기_중간_중2_수학/q20-problem.svg",
+    "imageAlt": "삼각형 ABC의 내심 I에서 세 변에 내린 수선의 발이 D, E, F이다. 각 수선의 직각 표식을 보인다.",
+    "imageCaption": "삼각형 ABC의 내심 I에서 세 변에 내린 수선의 발이 D, E, F이다. 각 수선의 직각 표식을 보인다.",
+    "imageSize": "full"
   },
   {
     "id": 21,
@@ -1052,7 +1132,15 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "image": "assets/images/21_향림중_2학기_중간_중2_수학/q22-problem.svg",
+    "imageAlt": "직각삼각형 ABC에 외접원(반지름 17/2)과 내접원(반지름 3)이 있다. 두 원의 크기를 구분한다.",
+    "imageCaption": "직각삼각형 ABC에 외접원(반지름 17/2)과 내접원(반지름 3)이 있다. 두 원의 크기를 구분한다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중2_수학/q22-solution.svg",
+    "solutionImageAlt": "외접원의 지름은 17, 내접원의 반지름은 3이다. 둘레와 반지름으로 직각삼각형의 넓이를 구한다.",
+    "solutionImageCaption": "외접원의 지름은 17, 내접원의 반지름은 3이다. 둘레와 반지름으로 직각삼각형의 넓이를 구한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1077,7 +1165,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "직선의 수직 평행이동 후 통과점 조건",
-    "decisiveStep": "y축 방향 이동량을 상수항에 더한 식에 지정된 점을 대입해 기울기 계수를 정한다."
+    "decisiveStep": "y축 방향 이동량을 상수항에 더한 식에 지정된 점을 대입해 기울기 계수를 정한다.",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중2_수학/q23-solution.svg",
+    "solutionImageAlt": "y=ax를 위로 3만큼 이동하면 y=ax+3이고 (2,5)를 지나므로 a=1이다.",
+    "solutionImageCaption": "y=ax를 위로 3만큼 이동하면 y=ax+3이고 (2,5)를 지나므로 a=1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -1102,7 +1194,15 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "선분 양 끝점을 지나는 경계 직선",
-    "decisiveStep": "기울기를 고정하고 A와 B를 각각 지나는 상수항을 경계로 구하여 끝점 포함 범위를 정한다."
+    "decisiveStep": "기울기를 고정하고 A와 B를 각각 지나는 상수항을 경계로 구하여 끝점 포함 범위를 정한다.",
+    "image": "assets/images/21_향림중_2학기_중간_중2_수학/q24-problem.svg",
+    "imageAlt": "A(1,4)와 B(3,3)를 연결하는 주어진 선분 AB만 표시한다.",
+    "imageCaption": "A(1,4)와 B(3,3)를 연결하는 주어진 선분 AB만 표시한다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중2_수학/q24-solution.svg",
+    "solutionImageAlt": "기울기 3인 두 평행선 중 하나는 A(1,4)를, 다른 하나는 B(3,3)를 통과한다. 이에 따라 b의 범위를 읽는다.",
+    "solutionImageCaption": "기울기 3인 두 평행선 중 하나는 A(1,4)를, 다른 하나는 B(3,3)를 통과한다. 이에 따라 b의 범위를 읽는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,
@@ -1127,7 +1227,15 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "두 시간·높이 관측으로 수위의 일차모형과 목표 시간",
-    "decisiveStep": "일정 유입량과 직육면체의 일정 밑면으로 수위가 시간의 일차함수임을 읽고 두 관측값으로 식을 정한 뒤 목표 높이에 대응하는 시간을 구한다."
+    "decisiveStep": "일정 유입량과 직육면체의 일정 밑면으로 수위가 시간의 일차함수임을 읽고 두 관측값으로 식을 정한 뒤 목표 높이에 대응하는 시간을 구한다.",
+    "image": "assets/images/21_향림중_2학기_중간_중2_수학/q25-problem.svg",
+    "imageAlt": "직육면체 수조의 모서리와 숨은 모서리를 표시한다. 원본의 낮은 수면·수도꼭지·물줄기는 ENGINE_CAPABILITY_PENDING이다.",
+    "imageCaption": "직육면체 수조의 모서리와 숨은 모서리를 표시한다. 원본의 낮은 수면·수도꼭지·물줄기는 ENGINE_CAPABILITY_PENDING이다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중2_수학/q25-solution.svg",
+    "solutionImageAlt": "물의 높이는 5분에 20 cm, 15분에 40 cm로 선형 증가한다. 40분에는 90 cm가 된다.",
+    "solutionImageCaption": "물의 높이는 5분에 20 cm, 15분에 40 cm로 선형 증가한다. 40분에는 90 cm가 된다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 26,
@@ -1152,6 +1260,14 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "외심 반지름 등거리로 중심각 복원 후 호 길이",
-    "decisiveStep": "등거리 반지름으로 A각의 두 부분을 읽고 BOC 중심각을 정하여 반지름9의 부채꼴 호 길이와 연결한다."
+    "decisiveStep": "등거리 반지름으로 A각의 두 부분을 읽고 BOC 중심각을 정하여 반지름9의 부채꼴 호 길이와 연결한다.",
+    "image": "assets/images/21_향림중_2학기_중간_중2_수학/q26-problem.svg",
+    "imageAlt": "O는 △ABC의 외심으로 OA=OB=OC이다. ∠OAB=48°, ∠OCA=32°, OA=9 cm.",
+    "imageCaption": "O는 △ABC의 외심으로 OA=OB=OC이다. ∠OAB=48°, ∠OCA=32°, OA=9 cm.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중2_수학/q26-solution.svg",
+    "solutionImageAlt": "OA=OB=OC를 이용해 중심각 AOB=84°, AOC=116°, BOC=160°를 얻고 반지름 9로 호 BC 길이를 계산한다.",
+    "solutionImageCaption": "OA=OB=OC를 이용해 중심각 AOB=84°, AOC=116°, BOC=160°를 얻고 반지름 9로 호 BC 길이를 계산한다.",
+    "solutionImageSize": "full"
   }
 ];

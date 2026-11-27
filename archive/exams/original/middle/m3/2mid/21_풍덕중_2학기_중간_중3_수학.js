@@ -34,7 +34,15 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "두직각변5,12에서 빗변13을 구한 뒤 A의 대변12와 대응해 사인을 구한다.",
-    "decisiveStep": "두직각변5,12에서 빗변13을 구한 뒤 A의 대변12와 대응해 사인을 구한다."
+    "decisiveStep": "두직각변5,12에서 빗변13을 구한 뒤 A의 대변12와 대응해 사인을 구한다.",
+    "image": "assets/images/21_풍덕중_2학기_중간_중3_수학/q1-problem.svg",
+    "imageAlt": "직각 B, 두 직각변 AB=5·BC=12와 값 없는 각 A 표식을 표시한 흰 바탕 삼각형",
+    "imageCaption": "직각 B, 두 직각변 AB=5·BC=12와 값 없는 각 A 표식을 표시한 흰 바탕 삼각형",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_풍덕중_2학기_중간_중3_수학/q1-solution.svg",
+    "solutionImageAlt": "두 직각변 5·12와 빗변 13을 표시하여 sin A=12/13의 대응을 밝힌다",
+    "solutionImageCaption": "두 직각변 5·12와 빗변 13을 표시하여 sin A=12/13의 대응을 밝힌다",
+    "solutionImageSize": "full"
   },
     {
       "id": 2,
@@ -102,7 +110,15 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "단위사분원의 반지름AC1과 이웃변AB를 코사인정의에 직접 대응한다.",
-    "decisiveStep": "단위사분원의 반지름AC1과 이웃변AB를 코사인정의에 직접 대응한다."
+    "decisiveStep": "단위사분원의 반지름AC1과 이웃변AB를 코사인정의에 직접 대응한다.",
+    "image": "assets/images/21_풍덕중_2학기_중간_중3_수학/q3-problem.svg",
+    "imageAlt": "반지름 1인 단위 사분원 중심 A, 호 위 C, 수선 CB와 점 D·E 및 x각을 그린다",
+    "imageCaption": "반지름 1인 단위 사분원 중심 A, 호 위 C, 수선 CB와 점 D·E 및 x각을 그린다",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_풍덕중_2학기_중간_중3_수학/q3-solution.svg",
+    "solutionImageAlt": "단위 사분원에서 cos x가 표시하는 선분 AB를 굵은 윤곽으로 구분한다",
+    "solutionImageCaption": "단위 사분원에서 cos x가 표시하는 선분 AB를 굵은 윤곽으로 구분한다",
+    "solutionImageSize": "full"
   },
     {
       "id": 4,
@@ -136,7 +152,15 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "빗변4와30°에 코사인·사인정의를 각각 직접 적용해 이웃변x,대변y를 구한다.",
-    "decisiveStep": "빗변4와30°에 코사인·사인정의를 각각 직접 적용해 이웃변x,대변y를 구한다."
+    "decisiveStep": "빗변4와30°에 코사인·사인정의를 각각 직접 적용해 이웃변x,대변y를 구한다.",
+    "image": "assets/images/21_풍덕중_2학기_중간_중3_수학/q4-problem.svg",
+    "imageAlt": "30°와 빗변 4, 미지 직각변 x·y를 빠짐없이 표시한다",
+    "imageCaption": "30°와 빗변 4, 미지 직각변 x·y를 빠짐없이 표시한다",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_풍덕중_2학기_중간_중3_수학/q4-solution.svg",
+    "solutionImageAlt": "빗변 4에서 코사인·사인으로 구한 두 직각변 2√3,2를 표시한다",
+    "solutionImageCaption": "빗변 4에서 코사인·사인으로 구한 두 직각변 2√3,2를 표시한다",
+    "solutionImageSize": "full"
   },
     {
       "id": 5,
@@ -170,7 +194,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "tanA1/3을 두직각변의 비1:3으로 읽어 빗변√10을 정하고 sin,cos의 합을 유리화한다.",
-    "decisiveStep": "tanA1/3을 두직각변의 비1:3으로 읽어 빗변√10을 정하고 sin,cos의 합을 유리화한다."
+    "decisiveStep": "tanA1/3을 두직각변의 비1:3으로 읽어 빗변√10을 정하고 sin,cos의 합을 유리화한다.",
+    "solutionImage": "assets/images/21_풍덕중_2학기_중간_중3_수학/q5-solution.svg",
+    "solutionImageAlt": "탄젠트 비 1:3의 직각변 k·3k와 빗변 √10k를 구별한다",
+    "solutionImageCaption": "탄젠트 비 1:3의 직각변 k·3k와 빗변 √10k를 구별한다",
+    "solutionImageSize": "full"
   },
     {
       "id": 6,
@@ -204,7 +232,15 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "중심에서 현에 내린 수선이 현을 이등분하므로 반현5의 두배10을 얻는다.",
-    "decisiveStep": "중심에서 현에 내린 수선이 현을 이등분하므로 반현5의 두배10을 얻는다."
+    "decisiveStep": "중심에서 현에 내린 수선이 현을 이등분하므로 반현5의 두배10을 얻는다.",
+    "image": "assets/images/21_풍덕중_2학기_중간_중3_수학/q6-problem.svg",
+    "imageAlt": "현 LR과 중심 O에서 내린 수선, 한쪽 현 5cm와 전체 현 x를 구분한다",
+    "imageCaption": "현 LR과 중심 O에서 내린 수선, 한쪽 현 5cm와 전체 현 x를 구분한다",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_풍덕중_2학기_중간_중3_수학/q6-solution.svg",
+    "solutionImageAlt": "중심에서 현에 수직인 선분이 현을 5cm씩 이등분함을 보인다",
+    "solutionImageCaption": "중심에서 현에 수직인 선분이 현을 5cm씩 이등분함을 보인다",
+    "solutionImageSize": "full"
   },
     {
       "id": 7,
@@ -238,7 +274,15 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "중심거리5가 같은 두현의 길이는 같으므로 위반현7의 두배14가 아래현길이다. 해설의 두피타고라스도 같은 등거리성질을 전개한 것이다.",
-    "decisiveStep": "중심거리5가 같은 두현의 길이는 같으므로 위반현7의 두배14가 아래현길이다. 해설의 두피타고라스도 같은 등거리성질을 전개한 것이다."
+    "decisiveStep": "중심거리5가 같은 두현의 길이는 같으므로 위반현7의 두배14가 아래현길이다. 해설의 두피타고라스도 같은 등거리성질을 전개한 것이다.",
+    "image": "assets/images/21_풍덕중_2학기_중간_중3_수학/q7-problem.svg",
+    "imageAlt": "중심에서 5cm씩 떨어진 평행한 두 현과 윗현 반쪽 7cm, 아랫현 x를 표시한다",
+    "imageCaption": "중심에서 5cm씩 떨어진 평행한 두 현과 윗현 반쪽 7cm, 아랫현 x를 표시한다",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_풍덕중_2학기_중간_중3_수학/q7-solution.svg",
+    "solutionImageAlt": "두 현의 중심거리 5cm와 반현 길이 7cm가 같아 전체 현이 14cm임을 설명한다",
+    "solutionImageCaption": "두 현의 중심거리 5cm와 반현 길이 7cm가 같아 전체 현이 14cm임을 설명한다",
+    "solutionImageSize": "full"
   },
     {
       "id": 8,
@@ -310,7 +354,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "135°의 보각45°인 외부직각삼각형으로 높이4√2를 구해 밑변6의 넓이에 넣는다.",
-    "decisiveStep": "135°의 보각45°인 외부직각삼각형으로 높이4√2를 구해 밑변6의 넓이에 넣는다."
+    "decisiveStep": "135°의 보각45°인 외부직각삼각형으로 높이4√2를 구해 밑변6의 넓이에 넣는다.",
+    "image": "assets/images/21_풍덕중_2학기_중간_중3_수학/q9-problem.svg",
+    "imageAlt": "BC=6cm, CA=8cm와 C의 둔각 135°가 있는 삼각형",
+    "imageCaption": "BC=6cm, CA=8cm와 C의 둔각 135°가 있는 삼각형",
+    "imageSize": "full"
   },
     {
       "id": 10,
@@ -382,7 +430,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "반지름1의 가로·세로성분을 cos a,sin a로 읽고 큰직각삼각형의 여각 a+b90으로 가로성분을 sin b로 바꾼다.",
-    "decisiveStep": "반지름1의 가로·세로성분을 cos a,sin a로 읽고 큰직각삼각형의 여각 a+b90으로 가로성분을 sin b로 바꾼다."
+    "decisiveStep": "반지름1의 가로·세로성분을 cos a,sin a로 읽고 큰직각삼각형의 여각 a+b90으로 가로성분을 sin b로 바꾼다.",
+    "image": "assets/images/21_풍덕중_2학기_중간_중3_수학/q11-problem.svg",
+    "imageAlt": "x·y 좌표축, 반지름 1의 단위 사분원과 B의 수선 발 A, D의 수선 발 C, a·b각",
+    "imageCaption": "x·y 좌표축, 반지름 1의 단위 사분원과 B의 수선 발 A, D의 수선 발 C, a·b각",
+    "imageSize": "full"
   },
     {
       "id": 12,
@@ -416,7 +468,15 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "코사인4/5와 이웃변24에서 빗변30을 복원한 뒤 피타고라스로 남은변18을 구한다.",
-    "decisiveStep": "코사인4/5와 이웃변24에서 빗변30을 복원한 뒤 피타고라스로 남은변18을 구한다."
+    "decisiveStep": "코사인4/5와 이웃변24에서 빗변30을 복원한 뒤 피타고라스로 남은변18을 구한다.",
+    "image": "assets/images/21_풍덕중_2학기_중간_중3_수학/q12-problem.svg",
+    "imageAlt": "B가 직각, BC=24이며 AB를 묻는 직각삼각형",
+    "imageCaption": "B가 직각, BC=24이며 AB를 묻는 직각삼각형",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_풍덕중_2학기_중간_중3_수학/q12-solution.svg",
+    "solutionImageAlt": "BC=24, AC=30과 피타고라스 정리로 AB=18을 대응한다",
+    "solutionImageCaption": "BC=24, AC=30과 피타고라스 정리로 AB=18을 대응한다",
+    "solutionImageSize": "full"
   },
     {
       "id": 13,
@@ -432,8 +492,8 @@ window.examData = {
       "answer": "①",
       "solution": "정육각형은 한 변이 $3$인 정삼각형 6개로 나뉜다.\n정삼각형의 높이는 $\\sqrt{3^2-(\\frac32)^2}=\\dfrac{3\\sqrt3}{2}$이다.\n한 조각의 넓이는 $\\dfrac12\\cdot3\\cdot\\dfrac{3\\sqrt3}{2}=\\dfrac{9\\sqrt3}{4}$이다.\n전체 넓이는 $6\\cdot\\dfrac{9\\sqrt3}{4}=\\dfrac{27\\sqrt3}{2}$ cm$^2$이므로 정답은 ①이다.",
       "solutionImage": "assets/images/21_풍덕중_2학기_중간_중3_수학/q13-solution.svg",
-      "solutionImageAlt": "해설 그림: 한 변이 3cm인 정육각형을 중심 O에서 꼭짓점으로 이은 여섯 정삼각형으로 나누고, 같은 색으로 표시했다.",
-      "solutionImageCaption": "한 조각의 넓이는 1/2×3×(3√3/2)=9√3/4cm²이다. 여섯 조각의 넓이는 27√3/2cm²이다. 답은 ①이다.",
+      "solutionImageAlt": "정육각형을 한 변 3cm의 여섯 정삼각형으로 분할하되 내부 면 채움은 제거한다",
+      "solutionImageCaption": "정육각형을 한 변 3cm의 여섯 정삼각형으로 분할하되 내부 면 채움은 제거한다",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중2 수학",
@@ -454,7 +514,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "정육각형을 여섯정삼각형으로 분할하여 피타고라스로 높이3√3/2를 얻고 같은넓이를 여섯배한다. 실제해설은 삼각비를 사용하지 않는다.",
-    "decisiveStep": "정육각형을 여섯정삼각형으로 분할하여 피타고라스로 높이3√3/2를 얻고 같은넓이를 여섯배한다. 실제해설은 삼각비를 사용하지 않는다."
+    "decisiveStep": "정육각형을 여섯정삼각형으로 분할하여 피타고라스로 높이3√3/2를 얻고 같은넓이를 여섯배한다. 실제해설은 삼각비를 사용하지 않는다.",
+    "image": "assets/images/21_풍덕중_2학기_중간_중3_수학/q13-problem.svg",
+    "imageAlt": "한 변의 길이 3cm인 정육각형을 면 채움 없이 나타낸다",
+    "imageCaption": "한 변의 길이 3cm인 정육각형을 면 채움 없이 나타낸다",
+    "imageSize": "full"
   },
     {
       "id": 14,
@@ -492,7 +556,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "호수섬의 수선높이h를 두직각삼각형의 탄젠트에 공통으로 두고 양쪽수평거리의 합40으로 정한다.",
-    "decisiveStep": "호수섬의 수선높이h를 두직각삼각형의 탄젠트에 공통으로 두고 양쪽수평거리의 합40으로 정한다."
+    "decisiveStep": "호수섬의 수선높이h를 두직각삼각형의 탄젠트에 공통으로 두고 양쪽수평거리의 합40으로 정한다.",
+    "image": "assets/images/21_풍덕중_2학기_중간_중3_수학/q14-problem.svg",
+    "imageAlt": "40m 떨어진 두 관측점에서 30°·45°로 올려본 섬 C와 높이 h를 나타낸다",
+    "imageCaption": "40m 떨어진 두 관측점에서 30°·45°로 올려본 섬 C와 높이 h를 나타낸다",
+    "imageSize": "full"
   },
     {
       "id": 15,
@@ -530,7 +598,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "작은원과 접하는 현의 중심거리가 작은반지름2임을 읽어 큰반지름√6의 반현을 구한다.",
-    "decisiveStep": "작은원과 접하는 현의 중심거리가 작은반지름2임을 읽어 큰반지름√6의 반현을 구한다."
+    "decisiveStep": "작은원과 접하는 현의 중심거리가 작은반지름2임을 읽어 큰반지름√6의 반현을 구한다.",
+    "image": "assets/images/21_풍덕중_2학기_중간_중3_수학/q15-problem.svg",
+    "imageAlt": "동심원 반지름 √6cm·2cm와 작은 원에 접하는 큰 원의 현 AB",
+    "imageCaption": "동심원 반지름 √6cm·2cm와 작은 원에 접하는 큰 원의 현 AB",
+    "imageSize": "full"
   },
     {
       "id": 16,
@@ -568,7 +640,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "할선의 외부길이3과 반지름2로 PO5를 만들고 접점직각삼각형에서 접선√21을 구한다.",
-    "decisiveStep": "할선의 외부길이3과 반지름2로 PO5를 만들고 접점직각삼각형에서 접선√21을 구한다."
+    "decisiveStep": "할선의 외부길이3과 반지름2로 PO5를 만들고 접점직각삼각형에서 접선√21을 구한다.",
+    "image": "assets/images/21_풍덕중_2학기_중간_중3_수학/q16-problem.svg",
+    "imageAlt": "P에서 원 O에 그은 두 접선, 반지름 2cm·외부 할선 3cm·접선 x",
+    "imageCaption": "P에서 원 O에 그은 두 접선, 반지름 2cm·외부 할선 3cm·접선 x",
+    "imageSize": "full"
   },
     {
       "id": 17,
@@ -644,7 +720,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "세외부점의 접선길이 같음으로 PA=PB10,CE3,DE=DB1을 구하여 PD9를 얻는다.",
-    "decisiveStep": "세외부점의 접선길이 같음으로 PA=PB10,CE3,DE=DB1을 구하여 PD9를 얻는다."
+    "decisiveStep": "세외부점의 접선길이 같음으로 PA=PB10,CE3,DE=DB1을 구하여 PD9를 얻는다.",
+    "image": "assets/images/21_풍덕중_2학기_중간_중3_수학/q18-problem.svg",
+    "imageAlt": "한 원에 접하는 PA·PB·CD, P-C-A·P-D-B·C-E-D의 점 순서와 7·3·4cm를 정확히 재구성한다",
+    "imageCaption": "한 원에 접하는 PA·PB·CD, P-C-A·P-D-B·C-E-D의 점 순서와 7·3·4cm를 정확히 재구성한다",
+    "imageSize": "full"
   },
     {
       "id": 19,
@@ -660,8 +740,8 @@ window.examData = {
       "answer": "①",
       "solution": "$x=\\angle DAC$이고 $\\angle ACB=90^\\circ$이므로 $\\triangle ADC$는 C에서 직각이다.\n$\\sin x=\\dfrac{\\overline{DC}}{\\overline{AD}}=\\dfrac12$, $\\overline{DC}=4$이므로 $\\overline{AD}=8$이다.\n피타고라스 정리로 $\\overline{AC}=\\sqrt{8^2-4^2}=4\\sqrt3$이다. 또 $\\overline{BD}=\\overline{DC}=4$이므로 $\\overline{BC}=8$이다.\n$\\triangle ABC$에서 $\\overline{AB}=\\sqrt{(4\\sqrt3)^2+8^2}=4\\sqrt7$이다.\n$\\overline{BD}=\\overline{DC}$이고 두 삼각형 ABD, ADC의 높이는 같으므로 두 삼각형의 넓이는 같다. 따라서 $[ADC]=\\dfrac12\\cdot4\\cdot4\\sqrt3=8\\sqrt3$이다.\nD에서 AB에 내린 수선의 발을 H라 하자. 직각삼각형 ADH에서 $\\overline{DH}=\\overline{AD}\\sin y=8\\sin y$이다. 그러므로 $[ABD]=\\dfrac12\\cdot\\overline{AB}\\cdot\\overline{DH}=\\dfrac12\\cdot4\\sqrt7\\cdot8\\sin y=16\\sqrt7\\sin y$이다.\n두 넓이를 같게 놓으면 $16\\sqrt7\\sin y=8\\sqrt3$이므로 $\\sin y=\\dfrac{\\sqrt3}{2\\sqrt7}=\\dfrac{\\sqrt{21}}{14}$이다.\n정답은 ①이다.",
       "solutionImage": "assets/images/21_풍덕중_2학기_중간_중3_수학/q19-solution.svg",
-      "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 D는 BC의 중점이고, AD와 D에서 AB에 내린 수선 DH를 표시했다. x=∠DAC, y=∠BAD이며 △ABD와 △ADC의 넓이는 같은 색이다.",
-      "solutionImageCaption": "sin x=1/2, DC=4cm에서 AD=8cm이고 AC=4√3cm이다. △ADC의 넓이는 8√3cm²이다. 두 삼각형의 넓이가 같으므로 16√7 sin y=8√3, 따라서 sin y=√21/14이다. 답은 ①이다.",
+      "solutionImageAlt": "BD=DC=4, AC=4√3, AD=8과 D에서 AB로 내린 수선 DH를 표시하고 불필요한 면 채움을 제거한다",
+      "solutionImageCaption": "BD=DC=4, AC=4√3, AD=8과 D에서 AB로 내린 수선 DH를 표시하고 불필요한 면 채움을 제거한다",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -682,7 +762,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "sinx와반변4로 AD,AC,AB를 복원하고 등넓이인 ABD·ADC를 서로 다른 밑변으로 표현하여 필요한 보조높이 또는 siny를 얻는다.",
-    "decisiveStep": "sinx와반변4로 AD,AC,AB를 복원하고 등넓이인 ABD·ADC를 서로 다른 밑변으로 표현하여 필요한 보조높이 또는 siny를 얻는다."
+    "decisiveStep": "sinx와반변4로 AD,AC,AB를 복원하고 등넓이인 ABD·ADC를 서로 다른 밑변으로 표현하여 필요한 보조높이 또는 siny를 얻는다.",
+    "image": "assets/images/21_풍덕중_2학기_중간_중3_수학/q19-problem.svg",
+    "imageAlt": "BD=DC=4cm, C의 직각, A에서 분할되는 x·y각을 서로 다른 호로 표시한다",
+    "imageCaption": "BD=DC=4cm, C의 직각, A에서 분할되는 x·y각을 서로 다른 호로 표시한다",
+    "imageSize": "full"
   },
     {
       "id": 20,
@@ -720,7 +804,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "EB=x이면 같은점의 접선으로 ED=x+8,정사각형의 나머지높이8−x를 얻어 피타고라스방정식으로 결정한다.",
-    "decisiveStep": "EB=x이면 같은점의 접선으로 ED=x+8,정사각형의 나머지높이8−x를 얻어 피타고라스방정식으로 결정한다."
+    "decisiveStep": "EB=x이면 같은점의 접선으로 ED=x+8,정사각형의 나머지높이8−x를 얻어 피타고라스방정식으로 결정한다.",
+    "image": "assets/images/21_풍덕중_2학기_중간_중3_수학/q20-problem.svg",
+    "imageAlt": "8cm 정사각형의 BC 위 반원과 점 F에서 접하는 ED, EB는 미지 길이로 둔다",
+    "imageCaption": "8cm 정사각형의 BC 위 반원과 점 F에서 접하는 ED, EB는 미지 길이로 둔다",
+    "imageSize": "full"
   },
     {
       "id": 21,
@@ -758,7 +846,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "중심수선·반현5로 R²−r²=25를 얻어 두원의 넓이차에 그대로 대입한다.",
-    "decisiveStep": "중심수선·반현5로 R²−r²=25를 얻어 두원의 넓이차에 그대로 대입한다."
+    "decisiveStep": "중심수선·반현5로 R²−r²=25를 얻어 두원의 넓이차에 그대로 대입한다.",
+    "image": "assets/images/21_풍덕중_2학기_중간_중3_수학/q21-problem.svg",
+    "imageAlt": "동심원에서 작은 원에 접하는 큰 원의 현 AB=10cm와 실제 요구된 고리 음영만 칠한다",
+    "imageCaption": "동심원에서 작은 원에 접하는 큰 원의 현 AB=10cm와 실제 요구된 고리 음영만 칠한다",
+    "imageSize": "full"
   },
     {
       "id": 22,
@@ -822,7 +914,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "같은반지름 두변의 이등변삼각형으로 중심각120°를 얻고 부채꼴넓이에서 보각60° 높이로 구한 삼각형넓이를 뺀다.",
-    "decisiveStep": "같은반지름 두변의 이등변삼각형으로 중심각120°를 얻고 부채꼴넓이에서 보각60° 높이로 구한 삼각형넓이를 뺀다."
+    "decisiveStep": "같은반지름 두변의 이등변삼각형으로 중심각120°를 얻고 부채꼴넓이에서 보각60° 높이로 구한 삼각형넓이를 뺀다.",
+    "image": "assets/images/21_풍덕중_2학기_중간_중3_수학/q23-problem.svg",
+    "imageAlt": "반지름 3cm인 반원에서 B의 30°와 CB 위쪽 색칠된 활꼴을 구별한다",
+    "imageCaption": "반지름 3cm인 반원에서 B의 30°와 CB 위쪽 색칠된 활꼴을 구별한다",
+    "imageSize": "full"
   },
     {
       "id": 24,
@@ -854,7 +950,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "직각꼭짓점의 접선구간이 반지름r임을 이용하고 세변의 접선분할로 2r=6+8−10을 세운 뒤 길이와 넓이차를 모두 구한다.",
-    "decisiveStep": "직각꼭짓점의 접선구간이 반지름r임을 이용하고 세변의 접선분할로 2r=6+8−10을 세운 뒤 길이와 넓이차를 모두 구한다."
+    "decisiveStep": "직각꼭짓점의 접선구간이 반지름r임을 이용하고 세변의 접선분할로 2r=6+8−10을 세운 뒤 길이와 넓이차를 모두 구한다.",
+    "image": "assets/images/21_풍덕중_2학기_중간_중3_수학/q24-problem.svg",
+    "imageAlt": "직각삼각형 ABC(AB=6cm,AC=8cm)과 내접원, 원 밖의 색칠된 부분",
+    "imageCaption": "직각삼각형 ABC(AB=6cm,AC=8cm)과 내접원, 원 밖의 색칠된 부분",
+    "imageSize": "full"
   }
   ]
 };

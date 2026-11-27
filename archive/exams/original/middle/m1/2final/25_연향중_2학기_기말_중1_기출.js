@@ -1034,9 +1034,9 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q21-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 한 꼭짓점 A에서 그은 대각선 4개가 칠각형을 서로 다른 색의 삼각형 5개로 나누는 예이다(번호 1~5).",
-    "solutionImageCaption": "예: 칠각형이면 a=4, b=5이고, 일반적으로 a=n−3, b=n−2이므로 n=20, 내각의 합은 3240°이다.",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "20각형의 한 꼭짓점 A에서 그은 대각선 17개가 내부를 삼각형 18개로 나누는 대표 도식이다.",
+    "solutionImageCaption": "20각형의 한 꼭짓점 A에서 그은 대각선 17개가 내부를 삼각형 18개로 나누는 대표 도식이다.",
+    "solutionImageSize": "full",
     "curriculum": "2022",
     "courseKey": "M1-2",
     "difficultyBucket": 2,
@@ -1050,7 +1050,8 @@ window.questionBank = [
     "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PARTITION_TO_DIAGONALS",
     "primaryMethod": "한 꼭짓점 대각선 수와 분할 삼각형 수를 변의 수로 나타내 일차관계를 풀고 내각의 합을 구한다.",
     "decisiveStep": "한 꼭짓점 대각선 수와 분할 삼각형 수를 변의 수로 나타내 일차관계를 풀고 내각의 합을 구한다.",
-    "rpmPrimaryPath": {"curriculumKey": "2022", "courseKey": "M1-2", "L1": "평면도형", "L2": "다각형", "L3": "삼각형·다각형의 각", "L4": "변·대각선 개수"}
+    "rpmPrimaryPath": {"curriculumKey": "2022", "courseKey": "M1-2", "L1": "평면도형", "L2": "다각형", "L3": "삼각형·다각형의 각", "L4": "변·대각선 개수"},
+    "solutionImageScale": 90
   },
   {
     "id": 22,

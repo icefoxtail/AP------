@@ -58,8 +58,9 @@ window.questionBank = [
     ],
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/BV-BAKBAL-H-COM2-P22-Q01-T1-R2-solution.svg",
-    "solutionImageAlt": "해설 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원의 중심 (0,0)과 반지름 √5, 직선 2x - y + k = 0의 위치관계를 k=0인 실제 표본으로 보여 준다. 두 교점 조건은 -5<k<5이다. 이 표본에서 수선의 발 H는 중심 O와 같으므로 중복 이름표를 붙이지 않는다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원의 중심 (0,0)과 반지름 √5, 직선 2x - y + k = 0의 위치관계를 k=0인 실제 표본으로 보여 준다. 두 교점 조건은 -5<k<5이다. 이 표본에서 수선의 발 H는 중심 O와 같으므로 중복 이름표를 붙이지 않는다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P22-Q01-S1-R1",
@@ -119,8 +120,9 @@ window.questionBank = [
     ],
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/BV-BAKBAL-H-COM2-P22-Q01-S1-R1-solution.svg",
-    "solutionImageAlt": "해설 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원의 중심 (1,0)과 반지름 √8, 직선 x + y + k = 0의 위치관계를 k=0인 실제 표본으로 보여 준다. 두 교점 조건은 -5<k<3이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원의 중심 (1,0)과 반지름 √8, 직선 x + y + k = 0의 위치관계를 k=0인 실제 표본으로 보여 준다. 두 교점 조건은 -5<k<3이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P22-Q01-S2-R1",
@@ -181,8 +183,9 @@ window.questionBank = [
     ],
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/BV-BAKBAL-H-COM2-P22-Q01-S2-R1-solution.svg",
-    "solutionImageAlt": "해설 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원의 중심 (0,0)과 반지름 √10, 직선 3x + y - k = 0의 위치관계를 k=0인 실제 표본으로 보여 준다. 두 교점 조건은 -10<k<10이다. 이 표본에서 수선의 발 H는 중심 O와 같으므로 중복 이름표를 붙이지 않는다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원의 중심 (0,0)과 반지름 √10, 직선 3x + y - k = 0의 위치관계를 k=0인 실제 표본으로 보여 준다. 두 교점 조건은 -10<k<10이다. 이 표본에서 수선의 발 H는 중심 O와 같으므로 중복 이름표를 붙이지 않는다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P22-Q02-T1-R2",
@@ -242,8 +245,9 @@ window.questionBank = [
     ],
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/BV-BAKBAL-H-COM2-P22-Q02-T1-R2-solution.svg",
-    "solutionImageAlt": "해설 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원의 중심 (0,0), r²=4. 접선 조건 d=r로 k=10 또는 -10를 얻고 양수인 접선만 표시한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원의 중심 (0,0), r²=4. 접선 조건 d=r로 k=10 또는 -10를 얻고 양수인 접선만 표시한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P22-Q02-S1-R1",
@@ -303,8 +307,9 @@ window.questionBank = [
     ],
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/BV-BAKBAL-H-COM2-P22-Q02-S1-R1-solution.svg",
-    "solutionImageAlt": "해설 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원의 중심 (2,-1), r²=5. 접선 조건 d=r로 k=2 또는 -8를 얻고 양수인 접선만 표시한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원의 중심 (2,-1), r²=5. 접선 조건 d=r로 k=2 또는 -8를 얻고 양수인 접선만 표시한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P22-Q02-S2-R1",
@@ -363,8 +368,9 @@ window.questionBank = [
     ],
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/BV-BAKBAL-H-COM2-P22-Q02-S2-R1-solution.svg",
-    "solutionImageAlt": "해설 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원의 중심 (0,0), r²=2. 접선 조건 d=r로 k=2 또는 -2를 얻고 양쪽 접선을 모두 표시한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원의 중심 (0,0), r²=2. 접선 조건 d=r로 k=2 또는 -2를 얻고 양쪽 접선을 모두 표시한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P22-Q03-T1-R1",
@@ -425,8 +431,9 @@ window.questionBank = [
     ],
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/BV-BAKBAL-H-COM2-P22-Q03-T1-R1-solution.svg",
-    "solutionImageAlt": "해설 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원의 중심 (0,0)과 반지름 √9, 직선 4x + 3y + k = 0의 위치관계를 k=16인 실제 표본으로 보여 준다. 교점 없음 조건은 k<-15 또는 k>15이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원의 중심 (0,0)과 반지름 √9, 직선 4x + 3y + k = 0의 위치관계를 k=16인 실제 표본으로 보여 준다. 교점 없음 조건은 k<-15 또는 k>15이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P22-Q03-S1-R1",
@@ -485,8 +492,9 @@ window.questionBank = [
     ],
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/BV-BAKBAL-H-COM2-P22-Q03-S1-R1-solution.svg",
-    "solutionImageAlt": "해설 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원의 중심 (-1,2)과 반지름 √2, 직선 x - y + k = 0의 위치관계를 k=6인 실제 표본으로 보여 준다. 교점 없음 조건은 k<1 또는 k>5이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원의 중심 (-1,2)과 반지름 √2, 직선 x - y + k = 0의 위치관계를 k=6인 실제 표본으로 보여 준다. 교점 없음 조건은 k<1 또는 k>5이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P22-Q03-S2-R1",
@@ -547,8 +555,9 @@ window.questionBank = [
     ],
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/BV-BAKBAL-H-COM2-P22-Q03-S2-R1-solution.svg",
-    "solutionImageAlt": "해설 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원의 중심 (0,0)과 반지름 √13, 직선 3x - 2y + k = 0의 위치관계를 k=14인 실제 표본으로 보여 준다. 교점 없음 조건은 k<-13 또는 k>13이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원의 중심 (0,0)과 반지름 √13, 직선 3x - 2y + k = 0의 위치관계를 k=14인 실제 표본으로 보여 준다. 교점 없음 조건은 k<-13 또는 k>13이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P22-Q04-T1-R1",
@@ -605,10 +614,11 @@ window.questionBank = [
     ],
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/BV-BAKBAL-H-COM2-P22-Q04-T1-R1-solution.svg",
-    "solutionImageAlt": "해설 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "중심 (0,0), r²=25인 원과 직선 3x + 4y - 15 = 0의 두 교점이 A,B다. H는 수선의 발·현의 중점이고 AH²=16, AB=2√16.",
+    "solutionImageSize": "full",
     "image": "assets/images/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/BV-BAKBAL-H-COM2-P22-Q04-T1-R1-problem.svg",
-    "imageAlt": "문항 도형"
+    "imageAlt": "문항 도형",
+    "solutionImageCaption": "중심 (0,0), r²=25인 원과 직선 3x + 4y - 15 = 0의 두 교점이 A,B다. H는 수선의 발·현의 중점이고 AH²=16, AB=2√16."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P22-Q04-S1-R1",
@@ -665,10 +675,11 @@ window.questionBank = [
     ],
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/BV-BAKBAL-H-COM2-P22-Q04-S1-R1-solution.svg",
-    "solutionImageAlt": "해설 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "중심 (0,0), r²=20인 원과 직선 x - 2y + 5 = 0의 두 교점이 A,B다. H는 수선의 발·현의 중점이고 AH²=15, AB=2√15.",
+    "solutionImageSize": "full",
     "image": "assets/images/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/BV-BAKBAL-H-COM2-P22-Q04-S1-R1-problem.svg",
-    "imageAlt": "문항 도형"
+    "imageAlt": "문항 도형",
+    "solutionImageCaption": "중심 (0,0), r²=20인 원과 직선 x - 2y + 5 = 0의 두 교점이 A,B다. H는 수선의 발·현의 중점이고 AH²=15, AB=2√15."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P22-Q04-S2-R1",
@@ -725,10 +736,11 @@ window.questionBank = [
     ],
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/BV-BAKBAL-H-COM2-P22-Q04-S2-R1-solution.svg",
-    "solutionImageAlt": "해설 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "중심 (1,1), r²=16인 원과 직선 x + y - 6 = 0의 두 교점이 A,B다. H는 수선의 발·현의 중점이고 AH²=8, AB=2√8.",
+    "solutionImageSize": "full",
     "image": "assets/images/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/BV-BAKBAL-H-COM2-P22-Q04-S2-R1-problem.svg",
-    "imageAlt": "문항 도형"
+    "imageAlt": "문항 도형",
+    "solutionImageCaption": "중심 (1,1), r²=16인 원과 직선 x + y - 6 = 0의 두 교점이 A,B다. H는 수선의 발·현의 중점이고 AH²=8, AB=2√8."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P22-Q05-T1-R1",
@@ -785,8 +797,9 @@ window.questionBank = [
     ],
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/BV-BAKBAL-H-COM2-P22-Q05-T1-R1-solution.svg",
-    "solutionImageAlt": "해설 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원의 중심 O(0,0)에서 현의 중점 M(2,1)을 이은 OM은 현과 직각이다. 현의 직선은 2x+y-5=0이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원의 중심 O(0,0)에서 현의 중점 M(2,1)을 이은 OM은 현과 직각이다. 현의 직선은 2x+y-5=0이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P22-Q05-S1-R1",

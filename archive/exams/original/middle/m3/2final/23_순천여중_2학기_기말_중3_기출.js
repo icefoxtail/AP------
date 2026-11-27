@@ -76,7 +76,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "$\\angle BED=60^\\circ$가 보는 호 $BD$의 중심각은\n$\\angle BOD=2\\times60^\\circ=120^\\circ$\n이다.\n또 $\\angle COD=70^\\circ$이므로\n$\\angle BOC=120^\\circ-70^\\circ=50^\\circ$\n이다.\n\n$x$는 호 $BC$를 보는 원주각이므로\n$x=\\dfrac{50^\\circ}{2}=25^\\circ$\n이다.\n따라서 $x=2\\angle BOC=100^\\circ$라고 한 ⑤가 옳지 않다.\n정답은 ⑤이다.",
-    "image": "assets/images/23_순천여중_2학기_기말_중3_기출/q2.png",
+    "image": "assets/images/23_순천여중_2학기_기말_중3_기출/q2-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -99,7 +99,10 @@ window.questionBank = [
     "decisiveStep": "호BD의 중심각을 만든 뒤 COD를 빼서 BOC를 복원하고 그 절반이 목표 원주각임을 확인하여 잘못된 계산 단계를 고른다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원 O 위의 A,B,C,D,E에 대해 E에서의 원주각 60°와 중심각 COD 70°가 주어졌고 A에서의 x를 구한다.",
+    "imageCaption": "원 O 위의 A,B,C,D,E에 대해 E에서의 원주각 60°와 중심각 COD 70°가 주어졌고 A에서의 x를 구한다.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -177,7 +180,7 @@ window.questionBank = [
     ],
     "answer": "②, ④",
     "solution": "$AB$는 지름이므로 지름 $AB$를 보는 원주각은 직각이다.\n따라서 $\\angle ADB=90^\\circ$이고, $A,D,E$가 한 직선 위이므로\n$\\angle EDB=90^\\circ$\n이다.\n그러므로 삼각형 $EDB$에서\n$\\angle DEB+\\angle DBE=90^\\circ$\n이어서 ②는 옳다.\n\n또 $\\angle DOC=46^\\circ$이므로 같은 호 $DC$를 보는 원주각은\n$\\angle DBC=\\dfrac{46^\\circ}{2}=23^\\circ$\n이다. 따라서 ④도 옳다.\n이때 $x=\\angle DEB=180^\\circ-90^\\circ-23^\\circ=67^\\circ$이므로 ⑤의 $113^\\circ$도 옳지 않다.\n따라서 정답은 ②, ④이다.",
-    "image": "assets/images/23_순천여중_2학기_기말_중3_기출/q4.png",
+    "image": "assets/images/23_순천여중_2학기_기말_중3_기출/q4-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -185,8 +188,8 @@ window.questionBank = [
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
     "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q4-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 원에 내접한 도형과 지름 AB, 중심 O, 세 각을 크게 나타낸 보조 각 그림",
-    "solutionImageCaption": "AB가 지름이므로 ∠ADB는 직각이고, A, D, E가 한 직선에 있어 ∠EDB도 직각이다. 46도 중심각과 같은 호를 보는 원주각은 23도이다. 정답은 ②, ④이다.",
+    "solutionImageAlt": "지름을 보는 원주각과 내접사각형의 각 관계를 나타낸다.",
+    "solutionImageCaption": "지름을 보는 원주각과 내접사각형의 각 관계를 나타낸다.",
     "solutionImageSize": "full"
   ,
     "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM","CC_SUPPLEMENTARY_ANGLES"],
@@ -200,7 +203,11 @@ window.questionBank = [
     "decisiveStep": "지름에 대한 직각과 같은 호의 중심각·원주각 배수 관계로 각 진술을 확인하고 연장선 삼각형의 내각합으로 잘못된 값을 배제한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "AB를 지름으로 하는 위쪽 반원에서 두 할선의 연장선이 E에서 만나며 중심각 DOC는 46°이고 E의 각 x는 미지수이다.",
+    "imageCaption": "AB를 지름으로 하는 위쪽 반원에서 두 할선의 연장선이 E에서 만나며 중심각 DOC는 46°이고 E의 각 x는 미지수이다.",
+    "imageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 5,
@@ -523,8 +530,8 @@ window.questionBank = [
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
     "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q11-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 원과 이등변삼각형, 접선 PT, 두 35도 각 및 x 표시와 확대된 35도 각",
-    "solutionImageCaption": "AP=AT이므로 두 밑각이 각각 35도이고, 접선과 현 AT가 이루는 각도 35도이다. 삼각형 ABT의 나머지 각은 75도이다. 정답은 ⑤이다.",
+    "solutionImageAlt": "이등변삼각형과 접선·현의 각 관계를 나타낸다.",
+    "solutionImageCaption": "이등변삼각형과 접선·현의 각 관계를 나타낸다.",
     "solutionImageSize": "full"
   ,
     "crossConceptKeys": ["CC_ISOSCELES_TRIANGLE","CC_SUPPLEMENTARY_ANGLES","CC_TRIANGLE_ANGLE_SUM"],
@@ -538,7 +545,8 @@ window.questionBank = [
     "decisiveStep": "AP=AT로 밑각35°를 얻어 접현각으로 원 안의 각에 옮기고, P/A/B 일직선의 보각을 거쳐 목표 삼각형의 각을 결정한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageScale": 90
   },
   {
     "id": 12,

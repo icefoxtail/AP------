@@ -126,8 +126,8 @@ window.questionBank = [
   },
   {
     "id": 3,
-    "imageSize": "tall",
-    "imageAlt": "왼쪽 삼각형 ABC는 BC가 9 cm, C의 각이 50°이다. 대응하는 두 번째 삼각형 DEF는 같은 모양으로 더 크다.",
+    "imageSize": "full",
+    "imageAlt": "원문 닮은 두 삼각형: ABC에는 BC=9 cm와 ∠C=50°, DEF에는 풀이로 얻는 길이·각도 미표시",
     "questionType": "객관식",
     "tags": [
       "도형의 닮음",
@@ -189,12 +189,13 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
     "solutionImageCaption": "대응 A↔D, B↔E, C↔F. 길이비 3:5여서 BC9→EF15, 각 C=F50°이고 각의 비는 1:1. 잘못된 ③⑤. AC6인 대표형이며 원문이 AC 길이를 정한 것은 아니다.",
     "solutionImageSize": "full",
-    "solutionImageScale": 90
+    "solutionImageScale": 90,
+    "imageCaption": "원문 닮은 두 삼각형: ABC에는 BC=9 cm와 ∠C=50°, DEF에는 풀이로 얻는 길이·각도 미표시"
   },
   {
     "id": 4,
-    "imageSize": "tall",
-    "imageAlt": "뜀틀 정면의 양쪽 변은 곧게 이어진다. 위에서부터 구간에 적힌 가로 길이는 48 cm, x cm, 72 cm이다. 1단은 아래에 있다.",
+    "imageSize": "full",
+    "imageAlt": "뜀틀 전면의 수평 단면 폭 48, x, 72 cm는 등높이 간격에 따라 등차",
     "questionType": "객관식",
     "tags": [
       "닮음",
@@ -255,7 +256,8 @@ window.questionBank = [
     "solutionImage": "assets/images/21_왕운중_2학기_기말_중2_기출/q4-solution.svg",
     "solutionImageAlt": "해설 그림: 아래로 갈수록 넓어지는 세 단의 사다리꼴이 포개진 뜀틀 앞면이 있고, 세 단의 가로 변에 72, 60, 48이 적혀 있다.",
     "solutionImageCaption": "각 단은 등변사다리꼴이고 양쪽 옆선이 곧으므로 같은 높이만큼 올라갈 때마다 평행한 변의 길이가 같은 양만큼 줄어든다. 가장 아래 72와 가장 위 48의 차 24를 같은 높이의 두 구간으로 나누면 한 구간마다 12씩 줄어든다. 따라서 가운데 변의 길이는 72−12=60이다. 따라서 답은 ③이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageCaption": "뜀틀 전면의 수평 단면 폭 48, x, 72 cm는 등높이 간격에 따라 등차"
   },
   {
     "id": 5,
@@ -325,7 +327,7 @@ window.questionBank = [
   },
   {
     "id": 6,
-    "imageAlt": "AB는 20, BD는 16이다. AD가 x, AC가 y, DC가 z이다. A와 D에 직각 표시가 있다.",
+    "imageAlt": "원문 문제 그림: 직각삼각형 ABC, AB=20, BD=16, AD=x, AC=y, DC=z",
     "questionType": "객관식",
     "tags": [
       "직각삼각형",
@@ -388,12 +390,13 @@ window.questionBank = [
     "solutionImage": "assets/images/21_왕운중_2학기_기말_중2_기출/q6-solution.svg",
     "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
     "solutionImageCaption": "20²=16(16+z)에서 z9. x²16×9라 x12,y²9×25라 y15. x−y+z=12−15+9=6,정답③.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageCaption": "원문 문제 그림: 직각삼각형 ABC, AB=20, BD=16, AD=x, AC=y, DC=z"
   },
   {
     "id": 7,
-    "imageSize": "tall",
-    "imageAlt": "AB는 6 cm, BD는 4 cm, DC는 5 cm이고 AD는 3 cm이다. AC의 길이는 x이다.",
+    "imageSize": "full",
+    "imageAlt": "원문 문제 그림: 삼각형 ABC 내부 점 D, AB=6, BD=4, DC=5, AD=3, AC=x",
     "questionType": "객관식",
     "tags": [
       "삼각형",
@@ -454,12 +457,13 @@ window.questionBank = [
     "solutionImage": "assets/images/21_왕운중_2학기_기말_중2_기출/q7-solution.svg",
     "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
     "solutionImageCaption": "AH를내려 BH=t라두면 36−9=t²−(t−4)²이므로 t43/8. AC²=(9−t)²+36−t²=81/4,AC9/2,정답④.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageCaption": "원문 문제 그림: 삼각형 ABC 내부 점 D, AB=6, BD=4, DC=5, AD=3, AC=x"
   },
   {
     "id": 8,
-    "imageSize": "tall",
-    "imageAlt": "왼쪽 원뿔 (가)와 오른쪽 원뿔 (나)의 모양이 닮았다. 바닥 원 둘레와 높이가 각각 같은 비 2:3으로 표현된다.",
+    "imageSize": "full",
+    "imageAlt": "원문의 크기가 다른 원뿔 (가)와 (나)",
     "questionType": "객관식",
     "tags": [
       "닮음",
@@ -521,12 +525,13 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
     "solutionImageCaption": "밑면의 둘레의 비 2 : 3은 대응하는 길이의 비와 같으므로 길이의 비는 2 : 3이다. 부피의 비는 길이의 비의 세제곱인 8 : 27이므로 (나)의 부피는 40×(27/8)=135이다. 따라서 답은 ② 135이다.",
     "solutionImageSize": "full",
-    "solutionImageScale": 90
+    "solutionImageScale": 90,
+    "imageCaption": "원문의 크기가 다른 원뿔 (가)와 (나)"
   },
   {
     "id": 9,
-    "imageSize": "tall",
-    "imageAlt": "윗변 AD는 6 cm, 아랫변 BC는 9 cm이다. M은 BC의 중점이다. AM과 BD는 P, DM과 AC는 Q에서 만난다.",
+    "imageSize": "full",
+    "imageAlt": "원문 문제 그림: AD∥BC 사다리꼴 ABCD, BC의 중점 M, AD=6, BC=9, 두 선의 교점 P,Q",
     "questionType": "객관식",
     "tags": [
       "사다리꼴",
@@ -588,12 +593,13 @@ window.questionBank = [
     "solutionImage": "assets/images/21_왕운중_2학기_기말_중2_기출/q9-solution.svg",
     "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
     "solutionImageCaption": "BM=MC9/2, AP:PM=DQ:QM=4:3. PQ∥AD이고 PQ/AD=3/7라 PQ18/7, 정답 ②. 높이 6/윗변 위치 1은 원문이 정하지 않은 대표형이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageCaption": "원문 문제 그림: AD∥BC 사다리꼴 ABCD, BC의 중점 M, AD=6, BC=9, 두 선의 교점 P,Q"
   },
   {
     "id": 10,
-    "imageSize": "tall",
-    "imageAlt": "삼각형 그림에서 D와 F는 왼쪽 AB에 있고 E는 오른쪽 AC에 있다. BC와 DE는 청록선, CD와 EF는 보라색 선이다. AD는 8 cm, BD는 x cm이다.",
+    "imageSize": "full",
+    "imageAlt": "원문 문제 그림: BC∥DE, CD∥EF, AD=8 cm, AF:FD=6:5, BD=x cm",
     "questionType": "객관식",
     "tags": [
       "평행선",
@@ -654,7 +660,8 @@ window.questionBank = [
     "solutionImage": "assets/images/21_왕운중_2학기_기말_중2_기출/q10-solution.svg",
     "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
     "solutionImageCaption": "AF : FD=6 : 5이고 AD=8이므로 AF=48/11이다. 평행선으로 생기는 닮음에서 AD/AB=AF/AD이므로 AB=AD²/AF=44/3이다. 따라서 x=BD=44/3-8=20/3이고 답은 ⑤ 20/3이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageCaption": "원문 문제 그림: BC∥DE, CD∥EF, AD=8 cm, AF:FD=6:5, BD=x cm"
   },
   {
     "id": 11,
@@ -772,8 +779,8 @@ window.questionBank = [
   },
   {
     "id": 13,
-    "imageSize": "tall",
-    "imageAlt": "E는 AD의 중점이고 BD와 EC가 G에서 만난다. 윗변 AD의 두 반쪽은 같은 색과 눈금이고, GDE만 칠했다.",
+    "imageSize": "full",
+    "imageAlt": "원문 문제 그림: 평행사변형 ABCD, E는 AD의 중점, 교점 G, 음영 △GDE 넓이 15",
     "questionType": "객관식",
     "tags": [
       "평행사변형",
@@ -836,7 +843,8 @@ window.questionBank = [
     "solutionImage": "assets/images/21_왕운중_2학기_기말_중2_기출/q13-solution.svg",
     "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
     "solutionImageCaption": "E는 AD중점이어서 GAE=GDE15. 교차닮음 GE:GC1:2에서 GDC30. 합 30+15=45,정답④.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageCaption": "원문 문제 그림: 평행사변형 ABCD, E는 AD의 중점, 교점 G, 음영 △GDE 넓이 15"
   },
   {
     "id": 14,
@@ -898,8 +906,8 @@ window.questionBank = [
   },
   {
     "id": 15,
-    "imageSize": "tall",
-    "imageAlt": "A와 B는 아래 수평선에 있고 C가 위의 직각 꼭짓점이다. AB 바깥 반원은 S₁, BC 바깥 반원은 S₂, CA 바깥 반원은 S₃이다.",
+    "imageSize": "full",
+    "imageAlt": "원문 문제: 직각삼각형의 세 변을 지름으로 하는 외측 반원 S1, S2, S3",
     "questionType": "객관식",
     "tags": [
       "직각삼각형",
@@ -963,7 +971,8 @@ window.questionBank = [
     "solutionImage": "assets/images/21_왕운중_2학기_기말_중2_기출/q15-solution.svg",
     "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
     "solutionImageCaption": "반원의 넓이는 지름이 d일 때 (π/8)d²이다. S₁=(25/2)π에서 AB=10, S₂=(9/2)π에서 BC=6이고, 피타고라스 정리로 AC=8이다. 따라서 삼각형 ABC의 넓이는 (1/2)×6×8=24이고 답은 ② 24이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageCaption": "원문 문제: 직각삼각형의 세 변을 지름으로 하는 외측 반원 S1, S2, S3"
   },
   {
     "id": 16,
@@ -1094,10 +1103,10 @@ window.questionBank = [
   {
     "id": 18,
     "solutionImageSize": "full",
-    "solutionImageCaption": "D가 BC 위에 있으므로 △ABC∼△DAC이다. AC:DC=BC:AC에서 9:6=BC:9이므로 BC=27/2이다. BD=BC−6=15/2이고 정답은 ⑤이다.",
-    "solutionImageAlt": "각 ABD와 CAD에 같은 갈색 호가 붙어 있다. AC는 9 cm, CD는 6 cm이다. 작은 닮은 삼각형 ACD를 옅게 칠해 큰 삼각형 ABC 안에서 구분했다.",
-    "imageSize": "tall",
-    "imageAlt": "각 ABD와 CAD에 같은 갈색 호가 붙어 있다. AC는 9 cm, CD는 6 cm이다.",
+    "solutionImageCaption": "해설 그림: ∠ABD=∠CAD와 공통인 C각, 닮은 △ABC와 △DAC를 구분",
+    "solutionImageAlt": "해설 그림: ∠ABD=∠CAD와 공통인 C각, 닮은 △ABC와 △DAC를 구분",
+    "imageSize": "full",
+    "imageAlt": "원문 기출의 도형·주어진 길이와 표식을 재구성",
     "questionType": "객관식",
     "tags": [
       "삼각형",
@@ -1156,7 +1165,8 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "STRONG_CONFLICT"
+    "legacyLevelCompatibility": "STRONG_CONFLICT",
+    "imageCaption": "원문 기출의 도형·주어진 길이와 표식을 재구성"
   },
   {
     "id": 19,
@@ -1335,8 +1345,8 @@ window.questionBank = [
   },
   {
     "id": 22,
-    "imageSize": "tall",
-    "imageAlt": "왼쪽 ABC는 C에서 직각이며 두 변은 AC 8 cm와 BC 4 cm이다. 오른쪽 DEF는 F에서 직각이며 DF는 10 cm이다.",
+    "imageSize": "full",
+    "imageAlt": "원문 닮음인 두 직각삼각형",
     "questionType": "서술형",
     "tags": [
       "도형의 닮음",
@@ -1394,12 +1404,13 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
     "solutionImageCaption": "대응 AC8:DF10=4:5. BC4→EF5이고큰넓이 10×5/2=25.",
     "solutionImageSize": "full",
-    "solutionImageScale": 90
+    "solutionImageScale": 90,
+    "imageCaption": "원문 닮음인 두 직각삼각형"
   },
   {
     "id": 23,
-    "imageSize": "tall",
-    "imageAlt": "그림의 세 선분 AB, CD, EF는 서로 평행하다. AB는 6 cm, EF는 9 cm, BF는 10 cm이다. BD에는 x cm, CD에는 y cm가 붙는다.",
+    "imageSize": "full",
+    "imageAlt": "원문 문제 그림: AB∥CD∥EF, AB=6, EF=9, BF=10, BD=x, CD=y",
     "questionType": "서술형",
     "tags": [
       "도형의 닮음",
@@ -1454,7 +1465,8 @@ window.questionBank = [
     "solutionImage": "assets/images/21_왕운중_2학기_기말_중2_기출/q23-solution.svg",
     "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
     "solutionImageCaption": "AB∥EF이므로 △ABC∽△FCE이고 AB : EF=6 : 9=2 : 3이므로 BC : CE=2 : 3, BC : BE=2 : 5이다. 이어서 △BCD∽△BFE에서 x=BD=10×(2/5)=4, y=CD=9×(2/5)=18/5이다. 따라서 x+y=38/5이다. 그림은 주어진 세 길이로 그린 대표 모양이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageCaption": "원문 문제 그림: AB∥CD∥EF, AB=6, EF=9, BF=10, BD=x, CD=y"
   },
   {
     "id": 24,

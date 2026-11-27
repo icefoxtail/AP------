@@ -103,8 +103,8 @@ window.examData = {
       "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q02-problem-v3.svg",
       "imageSize": "full",
       "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q02-solution-v2.svg",
-      "solutionImageAlt": "초록 AC는 A에 붙은 변이고 파랑 AB는 빗변이다. 주황 BC는 A의 맞은편이다.",
-      "solutionImageCaption": "cos A=AC/AB=15/17이므로 정답은 ②이다.",
+      "solutionImageAlt": "각 A에 이웃한 변 AC는 파란색, 빗변 AB는 주황색, 맞은편 변 BC는 초록색이고 각 A는 분홍색이다.",
+      "solutionImageCaption": "각 A에 이웃한 변 AC는 파란색, 빗변 AB는 주황색, 맞은편 변 BC는 초록색이고 각 A는 분홍색이다.",
       "solutionImageSize": "full"
     ,
     "conceptClusterKey": "TRIG_RATIO",
@@ -117,7 +117,9 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "직각삼각형의 주어진 세 변에서 cos A=AC/AB=15/17을 고른다.",
-    "decisiveStep": "직각삼각형의 주어진 세 변에서 cos A=AC/AB=15/17을 고른다."
+    "decisiveStep": "직각삼각형의 주어진 세 변에서 cos A=AC/AB=15/17을 고른다.",
+    "imageAlt": "q02번 문제 도형: 주어진 점·선·각·치수만 보이고 미지값은 유지한다.",
+    "imageCaption": "q02번 문제 도형: 주어진 점·선·각·치수만 보이고 미지값은 유지한다."
   },
     {
       "id": "q03",
@@ -157,8 +159,8 @@ window.examData = {
         "직각삼각형"
       ],
       "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q03-solution.svg",
-      "solutionImageAlt": "해설 그림: 세 변이 1, √3, 2이고 각이 30도, 60도, 90도인 직각삼각형과, 두 변이 1이고 빗변이 √2이며 각이 45도, 45도, 90도인 직각삼각형이다. 길이가 1인 변은 파란색, √3인 변은 초록색, 가장 긴 변은 주황색으로 표시되어 있다.",
-      "solutionImageCaption": "30°, 60°, 90° 직각삼각형에서 60°에 이웃한 변은 1, 빗변은 2이므로 cos 60°는 2분의 1이다. 30°의 맞은편 변은 1, 이웃한 변은 √3이므로 tan 30°는 √3분의 1, 곧 3분의 √3이다. 정답은 ①이다.",
+      "solutionImageAlt": "30°, 60°, 90° 직각삼각형의 세 변은 1, √3, 2이고, 45°, 45°, 90° 직각삼각형의 세 변은 1, 1, √2이다. 길이가 같은 변은 같은 색(1은 파랑)이다.",
+      "solutionImageCaption": "30°, 60°, 90° 직각삼각형의 세 변은 1, √3, 2이고, 45°, 45°, 90° 직각삼각형의 세 변은 1, 1, √2이다. 길이가 같은 변은 같은 색(1은 파랑)이다.",
       "solutionImageSize": "full"
     ,
     "conceptClusterKey": "TRIG_RATIO",
@@ -211,8 +213,8 @@ window.examData = {
         "직각삼각형"
       ],
       "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q04-solution.svg",
-      "solutionImageAlt": "해설 그림: 세 변이 1, √3, 2이고 각이 30도, 60도, 90도인 직각삼각형과, 두 변이 1이고 빗변이 √2이며 각이 45도, 45도, 90도인 직각삼각형이다. 길이가 1인 변은 파란색, √3인 변은 초록색, 가장 긴 변은 주황색으로 표시되어 있다.",
-      "solutionImageCaption": "30°, 60°, 90° 직각삼각형에서 tan 30°는 3분의 √3, tan 60°는 √3, sin 60°는 2분의 √3, cos 60°는 2분의 1이다. 45°, 45°, 90° 직각삼각형에서 tan 45°는 1, cos 45°는 2분의 √2이다. sin 0°=0, cos 0°=1, sin 90°=1이다. 따라서 옳은 것은 ①, ③이다. 정답은 ①, ③이다.",
+      "solutionImageAlt": "30°, 60°, 90° 직각삼각형의 세 변은 1, √3, 2이고, 45°, 45°, 90° 직각삼각형의 세 변은 1, 1, √2이다. 길이가 같은 변은 같은 색(1은 파랑)이다.",
+      "solutionImageCaption": "30°, 60°, 90° 직각삼각형의 세 변은 1, √3, 2이고, 45°, 45°, 90° 직각삼각형의 세 변은 1, 1, √2이다. 길이가 같은 변은 같은 색(1은 파랑)이다.",
       "solutionImageSize": "full"
     ,
     "conceptClusterKey": "TRIG_RATIO",
@@ -267,8 +269,8 @@ window.examData = {
       "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q05-problem-v3.svg",
       "imageSize": "full",
       "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q05-solution-v2.svg",
-      "solutionImageAlt": "파란 빗변 AB와 주황 세로변 BC를 다른 선으로 표시했다. A에서 30도, C에서 직각이다.",
-      "solutionImageCaption": "30도의 맞은편 길이는 빗변의 절반이므로 BC=2√3 cm이다. 정답은 ②이다.",
+      "solutionImageAlt": "빗변 AB는 주황색이고 각 A의 맞은편 변 BC는 초록색이다. 사인은 맞은편 변을 빗변으로 나눈 값이다.",
+      "solutionImageCaption": "빗변 AB는 주황색이고 각 A의 맞은편 변 BC는 초록색이다. 사인은 맞은편 변을 빗변으로 나눈 값이다.",
       "solutionImageSize": "full"
     ,
     "conceptClusterKey": "TRIG_RATIO",
@@ -281,7 +283,9 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "빗변 AB와 각 A가 주어졌으므로 BC=AB sin30°를 바로 계산한다.",
-    "decisiveStep": "빗변 AB와 각 A가 주어졌으므로 BC=AB sin30°를 바로 계산한다."
+    "decisiveStep": "빗변 AB와 각 A가 주어졌으므로 BC=AB sin30°를 바로 계산한다.",
+    "imageAlt": "q05번 문제 도형: 주어진 점·선·각·치수만 보이고 미지값은 유지한다.",
+    "imageCaption": "q05번 문제 도형: 주어진 점·선·각·치수만 보이고 미지값은 유지한다."
   },
     {
       "id": "q06",
@@ -373,8 +377,8 @@ window.examData = {
       "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q07-problem-v3.svg",
       "imageSize": "full",
       "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q07-solution-v2.svg",
-      "solutionImageAlt": "45도 삼각형의 가로 BC와 세로 CD에 같은 초록 눈금을 썼다. 주황 삼각형 ABC에서는 같은 BC가 빗변이다.",
-      "solutionImageCaption": "BC=CD=√3 cm이다. 삼각형 ABC에서 cos 60°=AB/BC이므로 AB=√3/2 cm, 정답은 ①이다.",
+      "solutionImageAlt": "삼각형 BCD는 각 C가 직각이고 각 D가 45°이므로 BC와 DC의 길이가 같다(주황). 직각삼각형 ABC에서 BC는 빗변이고 각 B는 60°이다(분홍).",
+      "solutionImageCaption": "삼각형 BCD는 각 C가 직각이고 각 D가 45°이므로 BC와 DC의 길이가 같다(주황). 직각삼각형 ABC에서 BC는 빗변이고 각 B는 60°이다(분홍).",
       "solutionImageSize": "full"
     ,
     "conceptClusterKey": "TRIG_RATIO",
@@ -387,7 +391,10 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "45° 직각삼각형에서 BC=DC를 구한 뒤 다른 직각삼각형에서 AB=BC cos60°를 쓴다.",
-    "decisiveStep": "45° 직각삼각형에서 BC=DC를 구한 뒤 다른 직각삼각형에서 AB=BC cos60°를 쓴다."
+    "decisiveStep": "45° 직각삼각형에서 BC=DC를 구한 뒤 다른 직각삼각형에서 AB=BC cos60°를 쓴다.",
+    "imageAlt": "q07번 문제 도형: 주어진 점·선·각·치수만 보이고 미지값은 유지한다.",
+    "imageCaption": "q07번 문제 도형: 주어진 점·선·각·치수만 보이고 미지값은 유지한다.",
+    "solutionImageScale": 94
   },
     {
       "id": "q08",
@@ -429,8 +436,8 @@ window.examData = {
       "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q08-problem-v3.svg",
       "imageSize": "full",
       "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q08-solution-v2.svg",
-      "solutionImageAlt": "주황 수선 AH로 두 직각삼각형을 나누었다. 초록 눈금이 있는 BH와 HC는 같은 길이이다.",
-      "solutionImageCaption": "AH=4√3 cm이고 BC=8 cm이므로 넓이는 16√3 cm²이며 정답은 ③이다.",
+      "solutionImageAlt": "높이 AH는 초록색이고 BH와 HC는 같은 길이(파랑)이다. 각 B와 각 C는 모두 60°이다(분홍).",
+      "solutionImageCaption": "높이 AH는 초록색이고 BH와 HC는 같은 길이(파랑)이다. 각 B와 각 C는 모두 60°이다(분홍).",
       "solutionImageSize": "full"
     ,
     "conceptClusterKey": "TRIG_RATIO_APPLICATION",
@@ -443,7 +450,9 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "tan60°로 높이 AH를 구하고 정삼각형/이등변 관계로 밑변 BC=8을 정해 삼각형 넓이를 구한다.",
-    "decisiveStep": "tan60°로 높이 AH를 구하고 정삼각형/이등변 관계로 밑변 BC=8을 정해 삼각형 넓이를 구한다."
+    "decisiveStep": "tan60°로 높이 AH를 구하고 정삼각형/이등변 관계로 밑변 BC=8을 정해 삼각형 넓이를 구한다.",
+    "imageAlt": "q08번 문제 도형: 주어진 점·선·각·치수만 보이고 미지값은 유지한다.",
+    "imageCaption": "q08번 문제 도형: 주어진 점·선·각·치수만 보이고 미지값은 유지한다."
   },
     {
       "id": "q09",
@@ -486,8 +495,8 @@ window.examData = {
       ],
       "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q09-problem-v3.svg",
       "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q09-solution-v2.svg",
-      "solutionImageAlt": "중심에서 꼭짓점으로 그은 선으로 같은 삼각형 여섯 개를 만들었다. 위쪽 삼각형의 파랑 반지름과 파랑 변은 같은 길이이다.",
-      "solutionImageCaption": "반지름이 6 cm이므로 정육각형의 넓이는 한 변 6 cm인 정삼각형 여섯 개의 넓이인 54√3 cm²이다. 정답은 ③이다.",
+      "solutionImageAlt": "원의 반지름과 정육각형의 한 변은 같은 길이(파랑)이고, 중심 O와 꼭짓점을 이으면 한 변이 6 cm인 정삼각형 6개로 나뉜다(주황 영역이 그중 하나).",
+      "solutionImageCaption": "원의 반지름과 정육각형의 한 변은 같은 길이(파랑)이고, 중심 O와 꼭짓점을 이으면 한 변이 6 cm인 정삼각형 6개로 나뉜다(주황 영역이 그중 하나).",
       "solutionImageSize": "full"
     ,
     "conceptClusterKey": "TRIG_RATIO_APPLICATION",
@@ -500,7 +509,8 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "지름에서 반지름 6을 얻고 정육각형을 정삼각형 여섯 개로 분할하여 각 넓이를 합한다.",
-    "decisiveStep": "지름에서 반지름 6을 얻고 정육각형을 정삼각형 여섯 개로 분할하여 각 넓이를 합한다."
+    "decisiveStep": "지름에서 반지름 6을 얻고 정육각형을 정삼각형 여섯 개로 분할하여 각 넓이를 합한다.",
+    "solutionImageScale": 94
   },
     {
       "id": "q10",
@@ -542,8 +552,8 @@ window.examData = {
       ],
       "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q10-problem-v3.svg",
       "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q10-solution-v2.svg",
-      "solutionImageAlt": "왼쪽 관측점과 오른쪽 건축물 사이에 눈높이 수평선을 그었다. 꼭대기까지의 위쪽 높이는 주황, 지면부터 눈높이까지의 1.4 m는 회색이다.",
-      "solutionImageCaption": "윗높이는 5√3 tan 60°=15 m이다. 눈높이를 더한 건축물 높이는 16.4 m, 정답은 ②이다.",
+      "solutionImageAlt": "눈높이에서 건축물까지의 수평 거리(파랑)와 올려다본 각(분홍)으로 눈높이 위쪽 높이(초록)를 구하고, 눈높이(보라)를 더한다.",
+      "solutionImageCaption": "눈높이에서 건축물까지의 수평 거리(파랑)와 올려다본 각(분홍)으로 눈높이 위쪽 높이(초록)를 구하고, 눈높이(보라)를 더한다.",
       "solutionImageSize": "full"
     ,
     "conceptClusterKey": "TRIG_RATIO_APPLICATION",
@@ -556,7 +566,9 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "수평거리와 올려본각으로 눈높이부터 꼭대기까지 높이를 tan60°로 구한 뒤 눈높이 1.4를 합한다.",
-    "decisiveStep": "수평거리와 올려본각으로 눈높이부터 꼭대기까지 높이를 tan60°로 구한 뒤 눈높이 1.4를 합한다."
+    "decisiveStep": "수평거리와 올려본각으로 눈높이부터 꼭대기까지 높이를 tan60°로 구한 뒤 눈높이 1.4를 합한다.",
+    "imageAlt": "q10번 문제 도형: 주어진 점·선·각·치수만 보이고 미지값은 유지한다.",
+    "imageCaption": "q10번 문제 도형: 주어진 점·선·각·치수만 보이고 미지값은 유지한다."
   },
     {
       "id": "q11",
@@ -598,8 +610,8 @@ window.examData = {
       "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q11-problem-v3.svg",
       "imageSize": "full",
       "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q11-solution-v2.svg",
-      "solutionImageAlt": "가까운 B에서 산 아래 H까지와 CH의 높이가 같은 길이이다. 초록 두 눈금으로 짝을 표시했다.",
-      "solutionImageCaption": "CH를 h라 하면 BH=h이고 AH=1000+h이다. tan 30°=h/(1000+h)에서 h=500(√3+1) m이다. 정답은 ①이다.",
+      "solutionImageAlt": "각 B가 45°이므로 BH=CH=h(파랑)이고 AH=1000+h이다. 각 A는 30°(분홍)이다.",
+      "solutionImageCaption": "각 B가 45°이므로 BH=CH=h(파랑)이고 AH=1000+h이다. 각 A는 30°(분홍)이다.",
       "solutionImageSize": "full"
     ,
     "conceptClusterKey": "TRIG_RATIO_APPLICATION",
@@ -612,7 +624,9 @@ window.examData = {
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "공통 높이 h에 대해 BH=h, AH=h+1000을 세우고 tan30°=h/(h+1000)으로 h를 결정한다.",
-    "decisiveStep": "공통 높이 h에 대해 BH=h, AH=h+1000을 세우고 tan30°=h/(h+1000)으로 h를 결정한다."
+    "decisiveStep": "공통 높이 h에 대해 BH=h, AH=h+1000을 세우고 tan30°=h/(h+1000)으로 h를 결정한다.",
+    "imageAlt": "q11번 문제 도형: 주어진 점·선·각·치수만 보이고 미지값은 유지한다.",
+    "imageCaption": "q11번 문제 도형: 주어진 점·선·각·치수만 보이고 미지값은 유지한다."
   },
     {
       "id": "q12",
@@ -653,8 +667,8 @@ window.examData = {
         "원"
       ],
       "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q12-solution.svg",
-      "solutionImageAlt": "해설 그림: 세 그림이다. 첫째는 원 밖의 점 P에서 원에 그은 두 접선 PA, PB이고 접점에서 반지름과 직각이다. 둘째는 중심에서 같은 거리 초록색으로 떨어진 두 현이 수선의 발에서 같은 길이의 주황색 반으로 나뉜 그림이다. 셋째는 같은 호 AB를 보는 원주각 두 개가 파란색으로 같게 표시되고 중심각은 분홍색인 그림이다.",
-      "solutionImageCaption": "원 밖의 한 점에서 원에 그을 수 있는 접선은 2개이므로 ①이 옳지 않다. 중심에서 같은 거리에 있는 두 현은 길이가 같고, 중심에서 현에 내린 수선은 그 현을 이등분한다. 같은 호를 보는 원주각은 모두 같고 그 크기는 중심각의 2분의 1이다. 정답은 ①이다.",
+      "solutionImageAlt": "원 밖의 한 점 P에서 그은 접선, 중심에서 같은 거리(초록)에 있는 두 현과 수선의 발이 나눈 같은 길이의 반(주황), 같은 호 AB를 보는 원주각(파랑)과 중심각(분홍)을 차례로 보인다.",
+      "solutionImageCaption": "원 밖의 한 점 P에서 그은 접선, 중심에서 같은 거리(초록)에 있는 두 현과 수선의 발이 나눈 같은 길이의 반(주황), 같은 호 AB를 보는 원주각(파랑)과 중심각(분홍)을 차례로 보인다.",
       "solutionImageSize": "full"
     ,
     "conceptClusterKey": "CIRCLE_LINE",
@@ -667,7 +681,8 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "한 외부점에서 원에 그은 접선은 두 개라는 성질로 1개라고 한 진술을 거짓으로 판정한다. 나머지 현·원주각 진술은 보조 검토이다.",
-    "decisiveStep": "한 외부점에서 원에 그은 접선은 두 개라는 성질로 1개라고 한 진술을 거짓으로 판정한다. 나머지 현·원주각 진술은 보조 검토이다."
+    "decisiveStep": "한 외부점에서 원에 그은 접선은 두 개라는 성질로 1개라고 한 진술을 거짓으로 판정한다. 나머지 현·원주각 진술은 보조 검토이다.",
+    "solutionImageScale": 94
   },
     {
       "id": "q13",
@@ -724,7 +739,9 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "중심에서 현에 내린 수선의 이등분 성질과 r²=d²+(현/2)²를 이용한다.",
-    "decisiveStep": "중심에서 현에 내린 수선의 이등분 성질과 r²=d²+(현/2)²를 이용한다."
+    "decisiveStep": "중심에서 현에 내린 수선의 이등분 성질과 r²=d²+(현/2)²를 이용한다.",
+    "imageAlt": "q13번 문제 도형: 주어진 점·선·각·치수만 보이고 미지값은 유지한다.",
+    "imageCaption": "q13번 문제 도형: 주어진 점·선·각·치수만 보이고 미지값은 유지한다."
   },
     {
       "id": "q14",
@@ -781,7 +798,9 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "지름12와 AM4로 중심거리 OM2를 복원한 뒤 반현을 피타고라스로 구해 2배한다.",
-    "decisiveStep": "지름12와 AM4로 중심거리 OM2를 복원한 뒤 반현을 피타고라스로 구해 2배한다."
+    "decisiveStep": "지름12와 AM4로 중심거리 OM2를 복원한 뒤 반현을 피타고라스로 구해 2배한다.",
+    "imageAlt": "q14번 현행 v4 문제: 지름 12cm와 수직 현의 교점 M, AM=4cm를 표시한다.",
+    "imageCaption": "q14번 현행 v4 문제: 지름 12cm와 수직 현의 교점 M, AM=4cm를 표시한다."
   },
     {
       "id": "q15",
@@ -823,8 +842,8 @@ window.examData = {
       ],
       "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q15-problem-v3.svg",
       "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q15-solution-v2.svg",
-      "solutionImageAlt": "P와 R이 같은 초록 호 AQ를 본다. R에서 지름 AB를 보는 전체 각이 바깥의 직각을 이룬다.",
-      "solutionImageCaption": "∠ARQ=∠APQ=32°이고 ∠ARB=90°이므로 x=58°이다. 정답은 ④이다.",
+      "solutionImageAlt": "호 AQ(파랑)를 보는 원주각 APQ와 ARQ는 같고, 지름 AB를 보는 각 ARB는 직각이다. 구하는 각 QRB는 분홍색이다.",
+      "solutionImageCaption": "호 AQ(파랑)를 보는 원주각 APQ와 ARQ는 같고, 지름 AB를 보는 각 ARB는 직각이다. 구하는 각 QRB는 분홍색이다.",
       "solutionImageSize": "full"
     ,
     "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
@@ -837,7 +856,9 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "같은 호 AQ의 원주각 ARQ=32°와 지름 AB에 대한 ARB=90°를 결합해 QRB=58°를 구한다. 목표는 중심각이 아니다.",
-    "decisiveStep": "같은 호 AQ의 원주각 ARQ=32°와 지름 AB에 대한 ARB=90°를 결합해 QRB=58°를 구한다. 목표는 중심각이 아니다."
+    "decisiveStep": "같은 호 AQ의 원주각 ARQ=32°와 지름 AB에 대한 ARB=90°를 결합해 QRB=58°를 구한다. 목표는 중심각이 아니다.",
+    "imageAlt": "q15번 문제 도형: 주어진 점·선·각·치수만 보이고 미지값은 유지한다.",
+    "imageCaption": "q15번 문제 도형: 주어진 점·선·각·치수만 보이고 미지값은 유지한다."
   },
     {
       "id": "q16",
@@ -880,8 +901,8 @@ window.examData = {
       "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q16-problem-v3.svg",
       "imageSize": "full",
       "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q16-solution-v2.svg",
-      "solutionImageAlt": "초록 호 AC를 보는 두 주황 각은 모두 30도이다. 삼각형 ACB의 C가 직각이다.",
-      "solutionImageCaption": "AB는 30도 맞은편 4 cm의 두 배인 8 cm이다. BC=4√3 cm이고 정답은 ⑤이다.",
+      "solutionImageAlt": "같은 호 AC를 보는 원주각 APC와 ABC는 같다(파랑). 지름 AB 위의 각 ACB는 직각이다. 구하는 변 BC는 초록색이다.",
+      "solutionImageCaption": "같은 호 AC를 보는 원주각 APC와 ABC는 같다(파랑). 지름 AB 위의 각 ACB는 직각이다. 구하는 변 BC는 초록색이다.",
       "solutionImageSize": "full"
     ,
     "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
@@ -894,7 +915,9 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "지름 AB에 대한 ACB=90°와 동일호 원주각 ABC=30°를 이용해 직각삼각형을 복원하고 사인·코사인으로 길이를 구한다.",
-    "decisiveStep": "지름 AB에 대한 ACB=90°와 동일호 원주각 ABC=30°를 이용해 직각삼각형을 복원하고 사인·코사인으로 길이를 구한다."
+    "decisiveStep": "지름 AB에 대한 ACB=90°와 동일호 원주각 ABC=30°를 이용해 직각삼각형을 복원하고 사인·코사인으로 길이를 구한다.",
+    "imageAlt": "q16번 문제 도형: 주어진 점·선·각·치수만 보이고 미지값은 유지한다.",
+    "imageCaption": "q16번 문제 도형: 주어진 점·선·각·치수만 보이고 미지값은 유지한다."
   },
     {
       "id": "q17",
@@ -936,8 +959,8 @@ window.examData = {
       "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q17-problem-v3.svg",
       "imageSize": "full",
       "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q17-solution.svg",
-      "solutionImageAlt": "해설 그림: 원 위의 네 점 A, B, C, D를 이은 사각형이다. 각 C는 85도로 파란색이고 마주 보는 각 A는 분홍색이다.",
-      "solutionImageCaption": "네 점이 한 원 위에 있으므로 네 점을 이은 사각형은 원에 내접한다. 마주 보는 두 각의 합이 180°이므로 각 BAD=180°−85°=95°이다. 정답은 ③이다.",
+      "solutionImageAlt": "원에 내접한 사각형에서 마주 보는 각 BCD(파랑)와 각 BAD(분홍)를 비교한다.",
+      "solutionImageCaption": "원에 내접한 사각형에서 마주 보는 각 BCD(파랑)와 각 BAD(분홍)를 비교한다.",
       "solutionImageSize": "full"
     ,
     "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
@@ -950,7 +973,9 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "원에 내접한 사각형의 대각 합180°로 BAD=180°-85°를 구한다.",
-    "decisiveStep": "원에 내접한 사각형의 대각 합180°로 BAD=180°-85°를 구한다."
+    "decisiveStep": "원에 내접한 사각형의 대각 합180°로 BAD=180°-85°를 구한다.",
+    "imageAlt": "q17번 문제 도형: 주어진 점·선·각·치수만 보이고 미지값은 유지한다.",
+    "imageCaption": "q17번 문제 도형: 주어진 점·선·각·치수만 보이고 미지값은 유지한다."
   },
     {
       "id": "q18",
@@ -992,8 +1017,8 @@ window.examData = {
       "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q18-problem-v3.svg",
       "imageSize": "full",
       "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q18-solution.svg",
-      "solutionImageAlt": "해설 그림: 지름 AB가 10인 원 O 위의 점 C와 직각삼각형 ABC이다. BC는 6인 초록색, AC는 8인 파란색, AB는 10인 주황색 변이고 각 A는 분홍색이다.",
-      "solutionImageCaption": "AB가 지름이므로 각 ACB=90°이고 AC=√(10²−6²)=8이다. sin A는 BC÷AB, cos A는 AC÷AB이므로 두 값의 합은 10분의 (6+8)이다. 정답은 ③이다.",
+      "solutionImageAlt": "지름 AB 위의 각 C는 직각이다. 각 A의 맞은편 변 BC는 초록색, 이웃한 변 AC는 파란색, 빗변 AB는 주황색이다.",
+      "solutionImageCaption": "지름 AB 위의 각 C는 직각이다. 각 A의 맞은편 변 BC는 초록색, 이웃한 변 AC는 파란색, 빗변 AB는 주황색이다.",
       "solutionImageSize": "full"
     ,
     "conceptClusterKey": "TRIG_RATIO",
@@ -1006,7 +1031,9 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "반원의 원주각으로 직각을 확인하고 피타고라스로 AC를 구한 뒤 sin A+cos A를 계산한다.",
-    "decisiveStep": "반원의 원주각으로 직각을 확인하고 피타고라스로 AC를 구한 뒤 sin A+cos A를 계산한다."
+    "decisiveStep": "반원의 원주각으로 직각을 확인하고 피타고라스로 AC를 구한 뒤 sin A+cos A를 계산한다.",
+    "imageAlt": "q18번 문제 도형: 주어진 점·선·각·치수만 보이고 미지값은 유지한다.",
+    "imageCaption": "q18번 문제 도형: 주어진 점·선·각·치수만 보이고 미지값은 유지한다."
   },
     {
       "id": "q19",
@@ -1048,8 +1075,8 @@ window.examData = {
       "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q19-problem-v3.svg",
       "imageSize": "full",
       "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q19-solution.svg",
-      "solutionImageAlt": "해설 그림: 원 O 밖의 점 P에서 원에 그은 두 접선 PA, PB와 접점 A, B가 있다. 반지름 OA, OB는 점선이고 접점에서 직각이며, 각 P는 35도로 파란색, 중심각 x는 분홍색이다.",
-      "solutionImageCaption": "접점에서 반지름과 접선이 수직이므로 각 OAP=각 OBP=90°이다. 꼭짓점이 A, O, B, P인 사각형의 내각의 합이 360°이므로 x+90°+35°+90°=360°이다. 정답은 ⑤이다.",
+      "solutionImageAlt": "접점에서 반지름과 접선은 수직이다. 꼭짓점이 A, O, B, P인 사각형에서 각 P(파랑)와 각 x(분홍)의 합을 구한다.",
+      "solutionImageCaption": "접점에서 반지름과 접선은 수직이다. 꼭짓점이 A, O, B, P인 사각형에서 각 P(파랑)와 각 x(분홍)의 합을 구한다.",
       "solutionImageSize": "full"
     ,
     "conceptClusterKey": "CIRCLE_LINE",
@@ -1062,7 +1089,9 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "접점의 반지름은 접선에 수직이므로 사각형의 두 각90°를 확보하고 중심각을 180°-35°로 구한다.",
-    "decisiveStep": "접점의 반지름은 접선에 수직이므로 사각형의 두 각90°를 확보하고 중심각을 180°-35°로 구한다."
+    "decisiveStep": "접점의 반지름은 접선에 수직이므로 사각형의 두 각90°를 확보하고 중심각을 180°-35°로 구한다.",
+    "imageAlt": "q19번 문제 도형: 주어진 점·선·각·치수만 보이고 미지값은 유지한다.",
+    "imageCaption": "q19번 문제 도형: 주어진 점·선·각·치수만 보이고 미지값은 유지한다."
   },
     {
       "id": "q20",
@@ -1104,8 +1133,8 @@ window.examData = {
       "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q20-problem-v3.svg",
       "imageSize": "full",
       "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q20-solution-v2.svg",
-      "solutionImageAlt": "A의 두 접선 길이는 주황 한 눈금, B는 보라 두 눈금, C는 초록 세 눈금으로 짝지었다.",
-      "solutionImageCaption": "AD=AF, BD=BE, CE=CF이다. 2CF=AC+BC−AB=10이므로 CF=5 cm이다. 정답은 ④이다.",
+      "solutionImageAlt": "현행 q20 solution-v2 SVG에 대응하는 해설용 plan. 한 점에서 원에 그은 두 접선의 길이는 같다. A에서 u(파랑), B에서 v(주황), C에서 t(초록)이다.",
+      "solutionImageCaption": "현행 q20 solution-v2 SVG에 대응하는 해설용 plan. 한 점에서 원에 그은 두 접선의 길이는 같다. A에서 u(파랑), B에서 v(주황), C에서 t(초록)이다.",
       "solutionImageSize": "full"
     ,
     "conceptClusterKey": "CIRCLE_LINE",
@@ -1118,7 +1147,9 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "세 꼭짓점에서 내접원에 그은 접선 쌍을 같은 길이로 놓고 세 변의 합·차로 CF를 결정한다.",
-    "decisiveStep": "세 꼭짓점에서 내접원에 그은 접선 쌍을 같은 길이로 놓고 세 변의 합·차로 CF를 결정한다."
+    "decisiveStep": "세 꼭짓점에서 내접원에 그은 접선 쌍을 같은 길이로 놓고 세 변의 합·차로 CF를 결정한다.",
+    "imageAlt": "q20번 문제 도형: 주어진 점·선·각·치수만 보이고 미지값은 유지한다.",
+    "imageCaption": "q20번 문제 도형: 주어진 점·선·각·치수만 보이고 미지값은 유지한다."
   },
     {
       "id": "q21",
@@ -1160,8 +1191,8 @@ window.examData = {
       "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q21-problem-v3.svg",
       "imageSize": "full",
       "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q21-solution.svg",
-      "solutionImageAlt": "해설 그림: 지름 AT가 놓인 원 O와 점 T에서의 접선 위의 점 P이다. 각 A는 25도로 파란색, 각 APT는 분홍색이고 점 T에서 직각이다.",
-      "solutionImageCaption": "접선과 반지름은 수직이므로 각 ATP=90°이다. 삼각형 APT의 내각의 합이 180°이므로 각 APT=180°−90°−25°=65°이다. 정답은 ⑤이다.",
+      "solutionImageAlt": "접선 PT와 반지름 OT는 수직이므로 각 ATP는 직각이다. 각 A는 파란색, 구하는 각 APT는 분홍색이다.",
+      "solutionImageCaption": "접선 PT와 반지름 OT는 수직이므로 각 ATP는 직각이다. 각 A는 파란색, 구하는 각 APT는 분홍색이다.",
       "solutionImageSize": "full"
     ,
     "conceptClusterKey": "CIRCLE_LINE",
@@ -1174,7 +1205,9 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "지름 AT와 접선 PT가 수직이므로 삼각형 APT에서 P각=180°-90°-25°를 구한다.",
-    "decisiveStep": "지름 AT와 접선 PT가 수직이므로 삼각형 APT에서 P각=180°-90°-25°를 구한다."
+    "decisiveStep": "지름 AT와 접선 PT가 수직이므로 삼각형 APT에서 P각=180°-90°-25°를 구한다.",
+    "imageAlt": "q21번 문제 도형: 주어진 점·선·각·치수만 보이고 미지값은 유지한다.",
+    "imageCaption": "q21번 문제 도형: 주어진 점·선·각·치수만 보이고 미지값은 유지한다."
   },
     {
       "id": "s01",

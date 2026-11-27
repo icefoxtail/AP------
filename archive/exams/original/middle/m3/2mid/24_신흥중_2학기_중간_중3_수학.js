@@ -19,7 +19,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "다음 직각삼각형 $ABC$에서 옳지 않은 것을 모두 고르면? (정답 2개) [3점]",
-    "image": "assets/images/24_신흥중_2학기_중간_중3_수학/q1.png",
+    "image": "assets/images/24_신흥중_2학기_중간_중3_수학/q1-problem.svg",
     "choices": [
       "$\\sin A=\\dfrac{17}{8}$",
       "$\\cos A=\\dfrac{15}{17}$",
@@ -49,7 +49,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 1,
     "primaryMethod": "각A와각B의 맞은편·이웃한 변·빗변을 구별하여sin과tan을 뒤집어 쓴 두 선지를 찾는다.",
-    "decisiveStep": "각A와각B의 맞은편·이웃한 변·빗변을 구별하여sin과tan을 뒤집어 쓴 두 선지를 찾는다."
+    "decisiveStep": "각A와각B의 맞은편·이웃한 변·빗변을 구별하여sin과tan을 뒤집어 쓴 두 선지를 찾는다.",
+    "imageAlt": "직각삼각형 ABC의 세 변 8, 15, 17과 C에서의 직각을 원본 치수 지시선으로 표시한다.",
+    "imageCaption": "직각삼각형 ABC의 세 변 8, 15, 17과 C에서의 직각을 원본 치수 지시선으로 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -351,7 +354,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "다음 그림에서 $\\angle ABC=30^\\circ$, $\\angle AEC=60^\\circ$이고, $\\overline{BE}=6$일 때, $x$의 값은? [4점]",
-    "image": "assets/images/24_신흥중_2학기_중간_중3_수학/q8.png",
+    "image": "assets/images/24_신흥중_2학기_중간_중3_수학/q8-problem.svg",
     "choices": [
       "$2$",
       "$\\sqrt5$",
@@ -381,7 +384,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 3,
     "primaryMethod": "공통높이AC를 두 관측각의tan으로 각각 나타내고 두 밑변의 길이차6을 이용한 같은높이 식으로x를 정한다.",
-    "decisiveStep": "공통높이AC를 두 관측각의tan으로 각각 나타내고 두 밑변의 길이차6을 이용한 같은높이 식으로x를 정한다."
+    "decisiveStep": "공통높이AC를 두 관측각의tan으로 각각 나타내고 두 밑변의 길이차6을 이용한 같은높이 식으로x를 정한다.",
+    "imageAlt": "BC 위의 E에서 그은 선분 AE와 두 특수각, BE=6 및 EC=x를 표시한다.",
+    "imageCaption": "BC 위의 E에서 그은 선분 AE와 두 특수각, BE=6 및 EC=x를 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -400,7 +406,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "다음 $\\triangle ABC$의 넓이를 구하면? [4점]",
-    "image": "assets/images/24_신흥중_2학기_중간_중3_수학/q9.png",
+    "image": "assets/images/24_신흥중_2학기_중간_중3_수학/q9-problem.svg",
     "choices": [
       "$8\\sqrt3\\,\\mathrm{cm}^2$",
       "$8(2-\\sqrt3)\\,\\mathrm{cm}^2$",
@@ -430,7 +436,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBucket": 3,
     "primaryMethod": "삼각형내각합으로45°를 찾고 보조 수선을 그어30°와45°의 두 직각삼각형에서 밑변과높이를 만들어 넓이를 계산한다.",
-    "decisiveStep": "삼각형내각합으로45°를 찾고 보조 수선을 그어30°와45°의 두 직각삼각형에서 밑변과높이를 만들어 넓이를 계산한다."
+    "decisiveStep": "삼각형내각합으로45°를 찾고 보조 수선을 그어30°와45°의 두 직각삼각형에서 밑변과높이를 만들어 넓이를 계산한다.",
+    "imageAlt": "원본의 삼각형 ABC에서 BC=8 cm와 밑각 B=30°, C=105°를 한 도형에 남긴다.",
+    "imageCaption": "원본의 삼각형 ABC에서 BC=8 cm와 밑각 B=30°, C=105°를 한 도형에 남긴다.",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -614,8 +623,8 @@ window.questionBank = [
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
     "solutionImage": "assets/images/24_신흥중_2학기_중간_중3_수학/q13-solution.svg",
-    "solutionImageAlt": "해설 그림: 각 A의 이등분선 AP를 굵은 밑변으로 표시했다. 점 B와 C에서 이 밑변을 포함한 직선으로 내린 높이는 각각 2√3과 4√3이다.",
-    "solutionImageCaption": "두 삼각형의 넓이를 공통 밑변 AP와 두 높이로 나타내어 더한다. 정답 ②.",
+    "solutionImageAlt": "AB=4, AC=8 및 각 A의 120° 이등분선을 보존하고, 두 높이 2√3·4√3과 직각 표식을 함께 보인다.",
+    "solutionImageCaption": "AB=4, AC=8 및 각 A의 120° 이등분선을 보존하고, 두 높이 2√3·4√3과 직각 표식을 함께 보인다.",
     "solutionImageSize": "full"
   ,
     "conceptClusterKey": "TRIG_RATIO_APPLICATION",
@@ -627,7 +636,8 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 4,
     "primaryMethod": "각이등분으로60°인 두 삼각형을 얻고 삼각비로 표현한 세 넓이의 합 관계에 AP를 미지수로 넣어 길이를 역산한다.",
-    "decisiveStep": "각이등분으로60°인 두 삼각형을 얻고 삼각비로 표현한 세 넓이의 합 관계에 AP를 미지수로 넣어 길이를 역산한다."
+    "decisiveStep": "각이등분으로60°인 두 삼각형을 얻고 삼각비로 표현한 세 넓이의 합 관계에 AP를 미지수로 넣어 길이를 역산한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 14,
@@ -856,8 +866,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/24_신흥중_2학기_중간_중3_수학/q18-solution.svg",
-    "solutionImageAlt": "해설 그림: 사각형의 네 접점 E, F, G, I를 표시했다. 점 D에서 나온 접선 두 개와 점 H에서 나온 접선 두 개에 서로 다른 표시를 붙였다.",
-    "solutionImageCaption": "DH는 12+x, HC는 12−x이므로 두 변을 더하면 x가 사라진다. 정답 ④.",
+    "solutionImageAlt": "AB=12 cm, BC=18 cm인 직사각형 안의 접원과 접선 DH에서 접선 길이 관계 및 GH=3 cm, HC=9 cm를 구분한다.",
+    "solutionImageCaption": "AB=12 cm, BC=18 cm인 직사각형 안의 접원과 접선 DH에서 접선 길이 관계 및 GH=3 cm, HC=9 cm를 구분한다.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_CIRCLE_TANGENT",
@@ -871,7 +881,8 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBucket": 3,
     "primaryMethod": "평행한 두 접선 사이 거리를 지름으로 읽고 동일 접선길이 조각을 옮긴 뒤 삼각형 둘레식에서 미지접선조각이 소거됨을 이용한다.",
-    "decisiveStep": "평행한 두 접선 사이 거리를 지름으로 읽고 동일 접선길이 조각을 옮긴 뒤 삼각형 둘레식에서 미지접선조각이 소거됨을 이용한다."
+    "decisiveStep": "평행한 두 접선 사이 거리를 지름으로 읽고 동일 접선길이 조각을 옮긴 뒤 삼각형 둘레식에서 미지접선조각이 소거됨을 이용한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 19,
@@ -988,7 +999,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "[서술형 1] 다음 그림과 같이 한 변의 길이가 $6\\,\\mathrm{cm}$인 정사각형 $ABCD$에서 $\\overline{CD}$ 위의 한 점 $E$에 대하여 $\\overline{BE}$를 한 변으로 하는 정사각형 $BEFG$를 그렸더니 $\\angle ABE=60^\\circ$가 되었다. 이때 색칠한 부분의 넓이를 구하는 과정과 답을 쓰시오. [6점]",
-    "image": "assets/images/24_신흥중_2학기_중간_중3_수학/q21.png",
+    "image": "assets/images/24_신흥중_2학기_중간_중3_수학/q21-problem.svg",
     "choices": [],
     "answer": "$48-14\\sqrt3\\,\\mathrm{cm}^2$",
     "solution": "$\\angle ABC=90^\\circ$이고 $\\angle ABE=60^\\circ$이므로\n$\\angle EBC=30^\\circ$이다.\n\n직각삼각형 $BCE$에서\n$\\tan30^\\circ=\\dfrac{CE}{BC}$이므로\n$\\dfrac1{\\sqrt3}=\\dfrac{CE}{6}$\n$CE=2\\sqrt3$이다.\n따라서\n$DE=DC-CE=6-2\\sqrt3$이다.\n\n정사각형 $BEFG$에서 $BE\\perp EF$이다.\n$BE$가 수평선과 $30^\\circ$를 이루므로 $EF$는 수평선과 $60^\\circ$를 이룬다.\n직각삼각형 $DHE$에서\n$\\tan60^\\circ=\\dfrac{DE}{HD}$이므로\n$HD=\\dfrac{6-2\\sqrt3}{\\sqrt3}=2\\sqrt3-2$이다.\n\n$[\\triangle BCE]=\\dfrac12\\cdot6\\cdot2\\sqrt3=6\\sqrt3$\n$[\\triangle EHD]=\\dfrac12(6-2\\sqrt3)(2\\sqrt3-2)=8\\sqrt3-12$이다.\n\n따라서 색칠한 부분의 넓이는\n$6^2-6\\sqrt3-(8\\sqrt3-12)$\n$=48-14\\sqrt3\\,\\mathrm{cm}^2$이다.",
@@ -1012,7 +1023,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 4,
     "primaryMethod": "두 정사각형의 수직변에서30°와60°를 옮겨 두 삼각형의 높이를 구하고 원정사각형에서 두 넓이를 뺀다.",
-    "decisiveStep": "두 정사각형의 수직변에서30°와60°를 옮겨 두 삼각형의 높이를 구하고 원정사각형에서 두 넓이를 뺀다."
+    "decisiveStep": "두 정사각형의 수직변에서30°와60°를 옮겨 두 삼각형의 높이를 구하고 원정사각형에서 두 넓이를 뺀다.",
+    "imageAlt": "정사각형 ABCD와 BEFG가 겹치는 AHEB 영역만 원본처럼 회색으로 칠하고 각 ABE=60°를 표시한다.",
+    "imageCaption": "정사각형 ABCD와 BEFG가 겹치는 AHEB 영역만 원본처럼 회색으로 칠하고 각 ABE=60°를 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 22,
@@ -1127,8 +1141,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/24_신흥중_2학기_중간_중3_수학/q24-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼각형의 변 BC가 원과 만나는 점은 F이다. B에서 그은 접선 BD와 BF, C에서 그은 접선 CE와 CF는 각각 같은 눈금을 갖는다.",
-    "solutionImageCaption": "삼각형의 둘레에서 BF와 FC를 BD와 CE로 바꾸면 AD와 AE의 합이 된다. 정답 22 cm.",
+    "solutionImageAlt": "AE=11 cm인 외접삼각형에서 D·E·F의 접점과 BD=BF, CE=CF를 표시하고 기본 면은 흰색으로 둔다.",
+    "solutionImageCaption": "AE=11 cm인 외접삼각형에서 D·E·F의 접점과 BD=BF, CE=CF를 표시하고 기본 면은 흰색으로 둔다.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_CIRCLE_TANGENT",
@@ -1142,6 +1156,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "세 외부점의 같은 접선 길이를 옮겨 삼각형 둘레를 AD+AE로 다시 묶고 주어진 접선 길이의 두 배로 계산한다.",
-    "decisiveStep": "세 외부점의 같은 접선 길이를 옮겨 삼각형 둘레를 AD+AE로 다시 묶고 주어진 접선 길이의 두 배로 계산한다."
+    "decisiveStep": "세 외부점의 같은 접선 길이를 옮겨 삼각형 둘레를 AD+AE로 다시 묶고 주어진 접선 길이의 두 배로 계산한다.",
+    "solutionImageScale": 90
   }
 ];

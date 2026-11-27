@@ -216,8 +216,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q5-solution.svg",
-    "solutionImageAlt": "해설 그림: 정사면체 밑면의 무게중심 H와 중점 M, 파란색으로 강조한 ADH 단면.",
-    "solutionImageCaption": "직각삼각형 ADH에서 sin x=AH/AD=√6/3이다. 정답: ①",
+    "solutionImageAlt": "한 변 4인 정사면체 ABCD. 밑면 BCD의 무게중심 H와 중선 DM에 내려진 높이 AH의 길이 관계를 사용한다.",
+    "solutionImageCaption": "한 변 4인 정사면체 ABCD. 밑면 BCD의 무게중심 H와 중선 DM에 내려진 높이 AH의 길이 관계를 사용한다.",
     "solutionImageSize": "full"
   ,
     "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
@@ -473,7 +473,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 4,
     "primaryMethod": "정사각형의 남는 삼각형 넓이를 구하고 그 넓이로 새 수선의 길이를 복원한 뒤 피타고라스와 tan 정의로 각 사이의 비를 구한다.",
-    "decisiveStep": "정사각형의 남는 삼각형 넓이를 구하고 그 넓이로 새 수선의 길이를 복원한 뒤 피타고라스와 tan 정의로 각 사이의 비를 구한다."
+    "decisiveStep": "정사각형의 남는 삼각형 넓이를 구하고 그 넓이로 새 수선의 길이를 복원한 뒤 피타고라스와 tan 정의로 각 사이의 비를 구한다.",
+    "solutionImageAlt": "정사각형 ABCD에서 E와 F는 각각 AD, CD의 중점이며 ∠EBF=x이다.",
+    "solutionImageCaption": "정사각형 ABCD에서 E와 F는 각각 AD, CD의 중점이며 ∠EBF=x이다.",
+    "solutionImageScale": 90
   },
   {
     "id": 11,
@@ -900,8 +903,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q19-solution.svg",
-    "solutionImageAlt": "해설 그림: 직각삼각형의 내접원, 세 변에 수직인 반지름과 세 삼각형 분할.",
-    "solutionImageCaption": "전체 넓이 54 cm²는 반둘레 18 cm와 반지름 r의 곱이므로 r=3 cm이다. 정답: ③",
+    "solutionImageAlt": "직각삼각형 ABC의 내접원 중심 O와 접점 D,E,F, 내접원 반지름을 계산한다.",
+    "solutionImageCaption": "직각삼각형 ABC의 내접원 중심 O와 접점 D,E,F, 내접원 반지름을 계산한다.",
     "solutionImageSize": "full"
   ,
     "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
@@ -915,7 +918,8 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBucket": 2,
     "primaryMethod": "직각삼각형의 빗변과 넓이를 구하고 내심에서 세 변의 거리가 같음을 이용한 세 삼각형 넓이 합 S=rs로 내접반지름을 구한다. 접선 길이 성질을 사용하지 않는다.",
-    "decisiveStep": "직각삼각형의 빗변과 넓이를 구하고 내심에서 세 변의 거리가 같음을 이용한 세 삼각형 넓이 합 S=rs로 내접반지름을 구한다. 접선 길이 성질을 사용하지 않는다."
+    "decisiveStep": "직각삼각형의 빗변과 넓이를 구하고 내심에서 세 변의 거리가 같음을 이용한 세 삼각형 넓이 합 S=rs로 내접반지름을 구한다. 접선 길이 성질을 사용하지 않는다.",
+    "solutionImageScale": 90
   },
   {
     "id": 20,
@@ -949,8 +953,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_신흥중_2학기_중간_중3_수학/q20-solution.svg",
-    "solutionImageAlt": "해설 그림: 반원 지름 AB, D/E에서 그은 접선 쌍, 접선 DE와 수선 CF.",
-    "solutionImageCaption": "비례식 1:3=(CF−3):(9−CF)에서 CF=9/2 cm이다. 정답: ③",
+    "solutionImageAlt": "반원 O의 두 끝점에서 길이 3,9인 접선과 공통 접선, C에서 바닥으로 내린 수선의 길이를 구한다.",
+    "solutionImageCaption": "반원 O의 두 끝점에서 길이 3,9인 접선과 공통 접선, C에서 바닥으로 내린 수선의 길이를 구한다.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_CIRCLE_TANGENT",
@@ -964,7 +968,8 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBucket": 3,
     "primaryMethod": "접선 동일길이에서 DC:CE=1:3을 얻고 C를 지나는 평행선으로 만든 닮은 삼각형의 높이차 비로 CF를 결정한다.",
-    "decisiveStep": "접선 동일길이에서 DC:CE=1:3을 얻고 C를 지나는 평행선으로 만든 닮은 삼각형의 높이차 비로 CF를 결정한다."
+    "decisiveStep": "접선 동일길이에서 DC:CE=1:3을 얻고 C를 지나는 평행선으로 만든 닮은 삼각형의 높이차 비로 CF를 결정한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 21,
@@ -1092,7 +1097,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "원호 위의 세 점으로 두 현을 잡고 두 현의 수직이등분선 교점이 원의 중심임을 사용해 어느 조각에서도 복원할 수 있음을 설명한다.",
-    "decisiveStep": "원호 위의 세 점으로 두 현을 잡고 두 현의 수직이등분선 교점이 원의 중심임을 사용해 어느 조각에서도 복원할 수 있음을 설명한다."
+    "decisiveStep": "원호 위의 세 점으로 두 현을 잡고 두 현의 수직이등분선 교점이 원의 중심임을 사용해 어느 조각에서도 복원할 수 있음을 설명한다.",
+    "solutionImageAlt": "원형 기물의 남은 원호에서 두 현을 긋고 수직이등분선의 교점으로 중심 O를 복원한다.",
+    "solutionImageCaption": "원형 기물의 남은 원호에서 두 현을 긋고 수직이등분선의 교점으로 중심 O를 복원한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 24,

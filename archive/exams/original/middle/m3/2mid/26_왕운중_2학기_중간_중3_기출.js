@@ -621,9 +621,9 @@ window.questionBank = [
     "tagStatus": "reviewed_pass",
     "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q10_question-v2.png",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q10-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 좌표축 위에서 x축과 y축 위의 점 A, B를 지나는 직선 AB와 원점 O로 만든 삼각형 OAB를 그렸다. O에서 AB에 내린 수선 OH=2이고 OA=26/5, OB=13/6, AB=169/30이며 ∠BAO와 ∠BOH는 같은 크기 α로 파랑으로 표시했다.",
-    "solutionImageCaption": "tanα=m=5/12, n=OB=13/6이므로 m+n=31/12이다(정답 ①).",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "직선 AB와 원점 O의 수선 OH가 이루는 두 직각삼각형에서 OH는 2이고 기울기는 5/12이다.",
+    "solutionImageCaption": "직선 AB와 원점 O의 수선 OH가 이루는 두 직각삼각형에서 OH는 2이고 기울기는 5/12이다.",
+    "solutionImageSize": "full"
   ,
     "primaryMethod": "tan α로 두 절편의 길이비 12:5를 정하고 피타고라스 및 같은 삼각형의 두 넓이 식을 결합하여 배율과 y절편을 얻는다.",
     "decisiveStep": "tan α로 두 절편의 길이비 12:5를 정하고 피타고라스 및 같은 삼각형의 두 넓이 식을 결합하여 배율과 y절편을 얻는다.",
@@ -1151,9 +1151,9 @@ window.questionBank = [
     "tagStatus": "reviewed_pass",
     "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q18_question-v2.png",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q18-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 원 O의 접선 PA, PB와 합동인 두 직각삼각형 OAP, OBP(파란색), ∠APO=∠BPO=30°, PA=PB=3√3, OA=OB=3을 보이는 그림이다.",
-    "solutionImageCaption": "PA+PB=6√3, 정답 ②.",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "원 O에서 P가 그은 두 접선 PA와 PB의 길이가 같고, OP가 60도 각을 이등분한다.",
+    "solutionImageCaption": "원 O에서 P가 그은 두 접선 PA와 PB의 길이가 같고, OP가 60도 각을 이등분한다.",
+    "solutionImageSize": "full"
   ,
     "primaryMethod": "접점의 반지름이 접선과 수직이고 두 직각삼각형이 합동이므로 OP가 60도를 이등분한다. 30도의 탄젠트로 한 접선의 길이를 구한 뒤 같은 길이의 두 접선을 합한다.",
     "decisiveStep": "접점의 반지름이 접선과 수직이고 두 직각삼각형이 합동이므로 OP가 60도를 이등분한다. 30도의 탄젠트로 한 접선의 길이를 구한 뒤 같은 길이의 두 접선을 합한다.",
@@ -1455,9 +1455,9 @@ window.questionBank = [
     "tagStatus": "reviewed_pass",
     "image": "assets/images/26_왕운중_2학기_중간_중3_기출/q23_question-v2.png",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중3_기출/q23-solution.svg",
-    "solutionImageAlt": "해설 그림: 눈높이 1.6m인 측정자가 10m 떨어진 나무의 꼭대기를 올려다보는 그림이다. 올려본각은 30°(빨대와 수직 기준선이 이루는 각 60°의 여각)이고, 눈높이 위로 올라간 나무의 높이 H−1.6과 수평거리 10m가 직각삼각형(주황)을 이룬다. 문제 그림에 빠진 클리노미터 각 60°는 해설 기준이다.",
-    "solutionImageCaption": "tan30°=(H−1.6)/10이므로 H=1.6+10√3/3≈7.37m이다. 문제 그림에 빠진 클리노미터 각 60°는 해설 기준.",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "눈높이 1.6m에서 10m 떨어진 나무를 보는 각은 수평에서 30도이며, 나무 높이는 H로 둔다.",
+    "solutionImageCaption": "눈높이 1.6m에서 10m 떨어진 나무를 보는 각은 수평에서 30도이며, 나무 높이는 H로 둔다.",
+    "solutionImageSize": "full"
   ,
     "primaryMethod": "실과 빨대의 각을 여각으로 바꾸어 올려본각 30도를 얻고 수평거리와 탄젠트로 눈높이 위 높이를 구한 뒤 눈높이를 더한다.",
     "decisiveStep": "실과 빨대의 각을 여각으로 바꾸어 올려본각 30도를 얻고 수평거리와 탄젠트로 눈높이 위 높이를 구한 뒤 눈높이를 더한다.",

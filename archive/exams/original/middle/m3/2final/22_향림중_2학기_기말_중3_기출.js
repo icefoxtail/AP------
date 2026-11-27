@@ -16,7 +16,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "image": "assets/images/22_향림중_2학기_기말_중3_기출/q1.png",
+    "image": "assets/images/22_향림중_2학기_기말_중3_기출/q1-problem.svg",
     "content": "다음 그림에서 $x$의 값은? [3점]",
     "choices": [
       "$7$",
@@ -32,8 +32,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/22_향림중_2학기_기말_중3_기출/q1-solution.svg",
-    "solutionImageAlt": "해설 그림: 원의 중심 O에서 현 AB에 내린 수선의 발 M을 잡은 그림. 현의 절반 AM과 MB는 같은 파란 표시로 같은 길이이고, AM은 12cm, OM은 5cm이며 OA는 x이다. 점 M에서 직각이다.",
-    "solutionImageCaption": "중심에서 현에 내린 수선은 현을 이등분하므로 AM=12cm이다. 직각삼각형 AOM에서 OM=5cm이므로 피타고라스 정리로 x를 구한다. 정답은 13이다.",
+    "solutionImageAlt": "해설에 필요한 도형 관계: 다음 그림에서 $x$의 값은? [3점]",
+    "solutionImageCaption": "해설에 필요한 도형 관계: 다음 그림에서 $x$의 값은? [3점]",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
@@ -49,7 +49,10 @@ window.questionBank = [
     "decisiveStep": "중심에서 현에 내린 수선으로 반현12를 얻고 중심거리5와 피타고라스로 반지름을 구한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "문제에 주어진 도형과 조건: 다음 그림에서 $x$의 값은? [3점]",
+    "imageCaption": "문제에 주어진 도형과 조건: 다음 그림에서 $x$의 값은? [3점]",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -66,7 +69,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "image": "assets/images/22_향림중_2학기_기말_중3_기출/q2.png",
+    "image": "assets/images/22_향림중_2학기_기말_중3_기출/q2-problem.svg",
     "content": "다음 그림과 같이 두 현 $AB$, $AC$가 원 $O$의 중심으로부터 같은 거리에 있다. $\\angle BAC=44^\\circ$일 때, $\\angle ABC$의 크기는? [3점]",
     "choices": [
       "$63^\\circ$",
@@ -82,8 +85,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/22_향림중_2학기_기말_중3_기출/q2-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 O의 두 현 AB, AC와 현 BC로 이루어진 삼각형 ABC. 중심에서 두 현에 내린 수선 OD, OE는 길이가 같고(파란 표시), 두 현 AB, AC도 길이가 같다(주황 표시). 꼭짓점 A의 각은 44도이고 두 밑각은 같은 초록 표시이다.",
-    "solutionImageCaption": "중심에서 같은 거리에 있는 두 현의 길이는 같으므로 AB=AC이고, 삼각형 ABC는 이등변삼각형이다. 꼭지각이 44도이므로 두 밑각은 각각 2분의 (180도−44도)이다. 정답은 68도이다.",
+    "solutionImageAlt": "해설에 필요한 도형 관계: 다음 그림과 같이 두 현 $AB$, $AC$가 원 $O$의 중심으로부터 같은 거리에 있다. $\\angle BAC=44^\\circ$일 때, $\\angle ABC$의",
+    "solutionImageCaption": "해설에 필요한 도형 관계: 다음 그림과 같이 두 현 $AB$, $AC$가 원 $O$의 중심으로부터 같은 거리에 있다. $\\angle BAC=44^\\circ$일 때, $\\angle ABC$의",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
@@ -99,7 +102,10 @@ window.questionBank = [
     "decisiveStep": "중심에서 두 현까지의 등거리로 두 현의 길이가 같음을 얻고 이등변삼각형의 밑각을 구한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "문제에 주어진 도형과 조건: 다음 그림과 같이 두 현 $AB$, $AC$가 원 $O$의 중심으로부터 같은 거리에 있다. $\\angle BAC=44^\\circ$일 때, $\\angle ABC$의",
+    "imageCaption": "문제에 주어진 도형과 조건: 다음 그림과 같이 두 현 $AB$, $AC$가 원 $O$의 중심으로부터 같은 거리에 있다. $\\angle BAC=44^\\circ$일 때, $\\angle ABC$의",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -458,7 +464,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "image": "assets/images/22_향림중_2학기_기말_중3_기출/q10.png",
+    "image": "assets/images/22_향림중_2학기_기말_중3_기출/q10-problem.svg",
     "content": "다음 그림에서 두 점 $A$, $B$는 점 $P$에서 원 $O$에 그은 두 접선의 접점이다. $\\angle APB=60^\\circ$이고 $\\overline{AP}=3\\sqrt3\\rm\\,cm$일 때, 색칠한 부분의 넓이는? [5점]",
     "choices": [
       "$3\\pi\\rm\\,cm^2$",
@@ -474,8 +480,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/22_향림중_2학기_기말_중3_기출/q10-solution.svg",
-    "solutionImageAlt": "해설 그림: 점 P에서 원 O에 그은 두 접선 PA, PB(접점 A, B). 두 접선의 길이는 같고(주황 표시) 3√3cm이며 각 APB는 60도이다. 반지름 OA는 3cm이고 접점에서 직각이다. 색칠한 파란 부분은 중심각 AOB가 120도인 부채꼴이다.",
-    "solutionImageCaption": "두 접선의 길이가 같으므로 삼각형 PAB는 정삼각형이고 각 APO=30도이다. 직각삼각형 OAP에서 반지름 OA=3cm이고, 각 AOB=180도−60도=120도이다. 부채꼴의 넓이는 3분의 1×π×3²이다. 정답은 3π cm²이다.",
+    "solutionImageAlt": "해설에 필요한 도형 관계: 다음 그림에서 두 점 $A$, $B$는 점 $P$에서 원 $O$에 그은 두 접선의 접점이다. $\\angle APB=60^\\circ$이고 $\\overline{AP}",
+    "solutionImageCaption": "해설에 필요한 도형 관계: 다음 그림에서 두 점 $A$, $B$는 점 $P$에서 원 $O$에 그은 두 접선의 접점이다. $\\angle APB=60^\\circ$이고 $\\overline{AP}",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
@@ -491,7 +497,10 @@ window.questionBank = [
     "decisiveStep": "접선의 등길이·각이등분과 접점의 직각에서30-60-90 삼각형의 변비로 반지름을 복원하고, 두 접선 사이 각의 보각으로 중심각을 정해 부채꼴 넓이를 구한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "문제에 주어진 도형과 조건: 다음 그림에서 두 점 $A$, $B$는 점 $P$에서 원 $O$에 그은 두 접선의 접점이다. $\\angle APB=60^\\circ$이고 $\\overline{AP}",
+    "imageCaption": "문제에 주어진 도형과 조건: 다음 그림에서 두 점 $A$, $B$는 점 $P$에서 원 $O$에 그은 두 접선의 접점이다. $\\angle APB=60^\\circ$이고 $\\overline{AP}",
+    "imageSize": "full"
   },
   {
     "id": 11,
@@ -953,7 +962,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "image": "assets/images/22_향림중_2학기_기말_중3_기출/q21.png",
+    "image": "assets/images/22_향림중_2학기_기말_중3_기출/q21-problem.svg",
     "content": "[서술형 1] 다음 그림과 같이 $\\angle B=90^\\circ$인 직각삼각형 $ABC$가 원 $O$에 외접하고, 세 점 $D$, $E$, $F$는 각각 원 $O$의 접점이다. $\\overline{AF}=2\\rm\\,cm$, $\\overline{CF}=3\\rm\\,cm$일 때, 원 $O$의 둘레의 길이를 구하시오. [5점]",
     "choices": [],
     "answer": "$2\\pi\\rm\\,cm$",
@@ -963,8 +972,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/22_향림중_2학기_기말_중3_기출/q21-solution.svg",
-    "solutionImageAlt": "해설 그림: 각 B가 직각인 삼각형 ABC에 내접하는 원과 접점 D, E, F. 꼭짓점에서 접점까지의 길이가 같은 쌍을 같은 색으로 표시했다. AD와 AF는 2cm(주황), BD와 BE는 t cm(파랑), CE와 CF는 3cm(초록)이다.",
-    "solutionImageCaption": "접선의 길이가 같으므로 AD=AF=2cm, CE=CF=3cm이고 BD=BE=t cm라 하면 AB=t+2, BC=t+3, AC=5이다. 피타고라스 정리 (t+2)²+(t+3)²=5²에서 t=1이므로 세 변은 3, 4, 5cm이고 내접원의 반지름은 1cm이다. 정답은 2π cm이다.",
+    "solutionImageAlt": "해설에 필요한 도형 관계: [서술형 1] 다음 그림과 같이 $\\angle B=90^\\circ$인 직각삼각형 $ABC$가 원 $O$에 외접하고, 세 점 $D$, $E$, $F$는 각각 원 $",
+    "solutionImageCaption": "해설에 필요한 도형 관계: [서술형 1] 다음 그림과 같이 $\\angle B=90^\\circ$인 직각삼각형 $ABC$가 원 $O$에 외접하고, 세 점 $D$, $E$, $F$는 각각 원 $",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_CIRCLE_TANGENT",
@@ -977,7 +986,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "등접선으로 두 직각변을t+2,t+3으로 표현해 피타고라스 이차식의 허용길이를 택하고 넓이/반둘레로 내접반지름을 구해 원주를 계산한다.",
-    "decisiveStep": "등접선으로 두 직각변을t+2,t+3으로 표현해 피타고라스 이차식의 허용길이를 택하고 넓이/반둘레로 내접반지름을 구해 원주를 계산한다."
+    "decisiveStep": "등접선으로 두 직각변을t+2,t+3으로 표현해 피타고라스 이차식의 허용길이를 택하고 넓이/반둘레로 내접반지름을 구해 원주를 계산한다.",
+    "imageAlt": "문제에 주어진 도형과 조건: [서술형 1] 다음 그림과 같이 $\\angle B=90^\\circ$인 직각삼각형 $ABC$가 원 $O$에 외접하고, 세 점 $D$, $E$, $F$는 각각 원 $",
+    "imageCaption": "문제에 주어진 도형과 조건: [서술형 1] 다음 그림과 같이 $\\angle B=90^\\circ$인 직각삼각형 $ABC$가 원 $O$에 외접하고, 세 점 $D$, $E$, $F$는 각각 원 $",
+    "imageSize": "full"
   },
   {
     "id": 22,

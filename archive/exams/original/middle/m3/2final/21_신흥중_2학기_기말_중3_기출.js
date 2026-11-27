@@ -16,7 +16,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_신흥중_2학기_기말_중3_기출/q01.png",
+    "image": "assets/images/21_신흥중_2학기_기말_중3_기출/q1-problem.svg",
     "decisiveStep": "같은 호의 원주각·중심각 관계로 호 AC와 BC를 읽고 차인 호 AB를 구해 원주각으로 돌려놓는다.",
     "primaryMethod": "같은 호의 원주각·중심각 관계로 호 AC와 BC를 읽고 차인 호 AB를 구해 원주각으로 돌려놓는다.",
     "questionType": "객관식",
@@ -43,11 +43,14 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "solutionImage": "assets/images/21_신흥중_2학기_기말_중3_기출/q1-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 O에서 원주각 ADC는 파란색 42도, 중심각 BOC는 주황색 48도이고 호 BC도 주황색 48도, 각 AEB는 초록색 x이고 그것이 보는 호 AB는 초록색 36도로 표시되어 있다.",
-    "solutionImageCaption": "파란색 원주각 ADC=42°가 보는 호 AC는 그 두 배인 84°이고, 주황색 중심각 BOC=48°가 보는 호 BC는 48°이므로 호 AB=84°−48°=36°이다. 초록색 각 AEB(x)는 호 AB를 보는 원주각이다. 정답은 18°이다.",
+    "solutionImageAlt": "원주각과 호의 크기",
+    "solutionImageCaption": "원주각과 호의 크기",
     "solutionImageSize": "full"
   ,
-    "curriculum": "2015"
+    "curriculum": "2015",
+    "imageAlt": "원의 점 A B C D E, 중심 O와 주어진 원주각 42도·중심각 48도, 미지각 x의 문제 배치",
+    "imageCaption": "원의 점 A B C D E, 중심 O와 주어진 원주각 42도·중심각 48도, 미지각 x의 문제 배치",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -65,7 +68,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_신흥중_2학기_기말_중3_기출/q02.png",
+    "image": "assets/images/21_신흥중_2학기_기말_중3_기출/q2-problem.svg",
     "decisiveStep": "BM=BC/2=5/2와 ∠BOM=∠A를 이용해 sin A=BM/OB에 주어진5/8을 대입한다.",
     "primaryMethod": "중심에서 현에 내린 수선의 이등분과 원주각 관계를 이용해 직각삼각형의 사인비로 반지름 계산",
     "questionType": "객관식",
@@ -92,13 +95,16 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "solutionImage": "assets/images/21_신흥중_2학기_기말_중3_기출/q2-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 O에 삼각형 ABC가 내접해 있고 중심 O에서 현 BC에 수선 OM을 내린 그림. 각 BAC와 각 BOM은 같은 크기의 파란색 각 A이고, BM과 MC는 각각 2분의 5cm, 반지름 OB는 R로 표시되어 있다.",
-    "solutionImageCaption": "중심 O에서 현 BC에 수선 OM을 내리면 BM은 BC의 절반인 2분의 5cm이고, 중심각의 성질로 ∠BOM=∠A이다. 직각삼각형 OBM에서 sin A=(2분의 5)/R=8분의 5이므로 R=4이다. 정답은 4cm이다.",
+    "solutionImageAlt": "원의 현에 내린 수선과 직각삼각형",
+    "solutionImageCaption": "원의 현에 내린 수선과 직각삼각형",
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원 O에 내접한 삼각형 ABC와 현 BC의 길이 5cm 및 sin A가 주어진 문제 도형",
+    "imageCaption": "원 O에 내접한 삼각형 ABC와 현 BC의 길이 5cm 및 sin A가 주어진 문제 도형",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -117,7 +123,7 @@ window.questionBank = [
       "원의 성질"
     ],
     "image": "assets/images/21_신흥중_2학기_기말_중3_기출/q03-problem-visual-v2.svg",
-    "imageAlt": "원 안에서 두 현 AC와 BD가 점 E에서 만난다. 호 AB는 원주의 6분의 1, 호 CD는 원주의 4분의 1이고, 각 DEC의 크기를 x로 나타냈다.",
+    "imageAlt": "원의 두 현 AC·BD와 교점 E의 미지각 x, 원주에 대한 호 AB의 1/6 및 CD의 1/4 비율",
     "imageSize": "full",
     "decisiveStep": "원주에 대한 두 호의 비율을 각각60도와90도로 바꾸고 원 내부 두 현의 교점각=대응 호 각도합의 절반을 직접 적용한다.",
     "primaryMethod": "원주에 대한 두 호의 비율을 각각60도와90도로 바꾸고 원 내부 두 현의 교점각=대응 호 각도합의 절반을 직접 적용한다.",
@@ -145,11 +151,12 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "solutionImage": "assets/images/21_신흥중_2학기_기말_중3_기출/q3-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 안에서 두 현 AC와 BD가 점 E에서 만나는 그림. 호 AB는 파란색 60도, 호 CD는 주황색 90도로 표시되어 있고, 각 DEC는 초록색 x이다.",
-    "solutionImageCaption": "호 AB는 원주의 6분의 1이므로 60°(파랑), 호 CD는 원주의 4분의 1이므로 90°(주황)이다. 원 안에서 두 현이 이루는 각 x는 마주 보는 두 호의 합의 절반이다. 정답은 75°이다.",
+    "solutionImageAlt": "원 안에서 만나는 두 현의 각",
+    "solutionImageCaption": "원 안에서 만나는 두 현의 각",
     "solutionImageSize": "full"
   ,
-    "curriculum": "2015"
+    "curriculum": "2015",
+    "imageCaption": "원의 두 현 AC·BD와 교점 E의 미지각 x, 원주에 대한 호 AB의 1/6 및 CD의 1/4 비율"
   },
   {
     "id": 4,
@@ -167,7 +174,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_신흥중_2학기_기말_중3_기출/q04.png",
+    "image": "assets/images/21_신흥중_2학기_기말_중3_기출/q4-problem.svg",
     "decisiveStep": "내부 교차현각60도의 두 배로 두 호의 중심각 합120도를 구하고, 호길이 합8π가 원주2πr의120/360임을 이용해 반지름을 구한다.",
     "primaryMethod": "내부 교차현각60도의 두 배로 두 호의 중심각 합120도를 구하고, 호길이 합8π가 원주2πr의120/360임을 이용해 반지름을 구한다.",
     "questionType": "객관식",
@@ -194,11 +201,14 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "solutionImage": "assets/images/21_신흥중_2학기_기말_중3_기출/q4-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 O에서 두 현 AB와 CD가 점 P에서 만나는 그림. 각 APD는 초록색 60도이고 호 AD는 파란색 3파이, 호 BC는 주황색 5파이로 표시되어 있다.",
-    "solutionImageCaption": "교차하는 두 현의 각 ∠APD=60°는 두 호 AD와 BC에 대응하는 중심각의 합의 절반이므로 두 중심각의 합은 120°이다. 따라서 두 호의 길이의 합 8π는 원주의 3분의 1이므로 8π=3분의 1×2πr에서 r=12이다. 정답은 12이다.",
+    "solutionImageAlt": "두 현이 이루는 각과 두 호",
+    "solutionImageCaption": "두 현이 이루는 각과 두 호",
     "solutionImageSize": "full"
   ,
-    "curriculum": "2015"
+    "curriculum": "2015",
+    "imageAlt": "원 O 안에서 만나는 현 AB·CD, 교점 P의 60도 각과 두 호의 길이 3pi·5pi",
+    "imageCaption": "원 O 안에서 만나는 현 AB·CD, 교점 P의 60도 각과 두 호의 길이 3pi·5pi",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -216,7 +226,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_신흥중_2학기_기말_중3_기출/q05.png",
+    "image": "assets/images/21_신흥중_2학기_기말_중3_기출/q5-problem.svg",
     "decisiveStep": "두 원주각이 보는 큰 호와 작은 호를 구별해 보완 호 EDC를 만든 뒤 BCDE에서 빼서 목표 중심각 BOC를 정한다.",
     "primaryMethod": "두 원주각이 보는 큰 호와 작은 호를 구별해 보완 호 EDC를 만든 뒤 BCDE에서 빼서 목표 중심각 BOC를 정한다.",
     "questionType": "객관식",
@@ -243,11 +253,14 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "solutionImage": "assets/images/21_신흥중_2학기_기말_중3_기출/q5-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 O에 꼭짓점이 A, B, C, D, E인 오각형이 내접한 그림. 각 BAE는 파란색 80도, 각 EDC는 주황색 140도이고, 호 CE는 주황색 80도, 호 BC와 중심각 BOC는 초록색으로 표시되어 있다.",
-    "solutionImageCaption": "파란색 원주각 ∠BAE=80°가 보는 B에서 C, D를 지나 E까지의 호는 160°이다. 주황색 ∠EDC=140°가 보는 E에서 A, B를 지나 C까지의 큰 호는 280°이므로 호 CE는 360°−280°=80°이다. 따라서 호 BC=160°−80°=80°(초록)이고 중심각 ∠BOC는 호 BC와 같다. 정답은 80°이다.",
+    "solutionImageAlt": "내접오각형의 원주각과 호",
+    "solutionImageCaption": "내접오각형의 원주각과 호",
     "solutionImageSize": "full"
   ,
-    "curriculum": "2015"
+    "curriculum": "2015",
+    "imageAlt": "원 O에 내접한 오각형 ABCDE와 주어진 내각 80도·140도",
+    "imageCaption": "원 O에 내접한 오각형 ABCDE와 주어진 내각 80도·140도",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -265,7 +278,7 @@ window.questionBank = [
       "도형",
       "도형의 이동"
     ],
-    "image": "assets/images/21_신흥중_2학기_기말_중3_기출/q06.png",
+    "image": "assets/images/21_신흥중_2학기_기말_중3_기출/q6-problem.svg",
     "decisiveStep": "직각 UPV의 자취를 UV가 지름인 원으로 바꾸고 정사각형 외부 조건으로 각 변의 바깥쪽 반원만 남긴 뒤 네 반원의 길이를 합한다.",
     "primaryMethod": "직각 UPV의 자취를 UV가 지름인 원으로 바꾸고 정사각형 외부 조건으로 각 변의 바깥쪽 반원만 남긴 뒤 네 반원의 길이를 합한다.",
     "questionType": "객관식",
@@ -296,7 +309,10 @@ window.questionBank = [
     "solutionImageCaption": "이웃한 두 꼭짓점을 U, V라 하면 ∠UPV=90°이므로 P는 UV를 지름으로 하는 원 위에 있고, 정사각형 바깥에서는 변마다 반원 하나이다(파랑). 반지름이 2분의 a이므로 반원 하나의 길이는 2분의 πa이고 네 개를 더한다. 정답은 2πa이다.",
     "solutionImageSize": "full"
   ,
-    "curriculum": "2015"
+    "curriculum": "2015",
+    "imageAlt": "한 변이 a인 정사각형 ABCD의 문제 배치",
+    "imageCaption": "한 변이 a인 정사각형 ABCD의 문제 배치",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -314,7 +330,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_신흥중_2학기_기말_중3_기출/q07.png",
+    "image": "assets/images/21_신흥중_2학기_기말_중3_기출/q7-problem.svg",
     "decisiveStep": "두 외부 할선각을 호의 차 식 두 개로 바꾸어 합하고 전체 호360도와 함께 목표 호 ADC를 정한 뒤 원주각의 절반 관계를 적용한다.",
     "primaryMethod": "두 외부 할선각을 호의 차 식 두 개로 바꾸어 합하고 전체 호360도와 함께 목표 호 ADC를 정한 뒤 원주각의 절반 관계를 적용한다.",
     "questionType": "객관식",
@@ -341,11 +357,14 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "solutionImage": "assets/images/21_신흥중_2학기_기말_중3_기출/q7-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 O에 꼭짓점이 A, B, C, D인 사각형이 내접하고 두 쌍의 변의 연장선이 점 E와 점 F에서 만나는 그림. 각 E는 파란색 36도, 각 F는 주황색 46도이고 각 ABC는 초록색 x이다. 호 ADC는 초록색 98도로 표시되어 있다.",
-    "solutionImageCaption": "점 E에서 호 AB−호 CD=2×36°=72°(파랑), 점 F에서 호 BC−호 AD=2×46°=92°(주황)이다. 두 식을 더하면 (호 AB+호 BC)−(호 CD+호 AD)=164°이고 네 호의 합이 360°이므로 호 ADC=98°이다. x는 호 ADC를 보는 원주각이므로 정답은 49°이다.",
+    "solutionImageAlt": "원 밖에서 만나는 두 할선의 각",
+    "solutionImageCaption": "원 밖에서 만나는 두 할선의 각",
     "solutionImageSize": "full"
   ,
-    "curriculum": "2015"
+    "curriculum": "2015",
+    "imageAlt": "원에 내접한 사각형 ABCD와 두 외부 교점 E·F의 각 36도·46도, 미지각 x",
+    "imageCaption": "원에 내접한 사각형 ABCD와 두 외부 교점 E·F의 각 36도·46도, 미지각 x",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -363,7 +382,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_신흥중_2학기_기말_중3_기출/q08.png",
+    "image": "assets/images/21_신흥중_2학기_기말_중3_기출/q8-problem.svg",
     "decisiveStep": "등변 TA=AB의 밑각으로 TAB를 구하고 접현각으로 PTB에 옮긴 뒤 삼각형 PBT의 내각합에서 PBT를 구한다.",
     "primaryMethod": "등변 TA=AB의 밑각으로 TAB를 구하고 접현각으로 PTB에 옮긴 뒤 삼각형 PBT의 내각합에서 PBT를 구한다.",
     "questionType": "객관식",
@@ -394,7 +413,10 @@ window.questionBank = [
     "solutionImageCaption": "TA=AB이므로 ∠TBA=∠BTA=25°이고 ∠TAB=180°−25°−25°=130°이다. 접선과 현이 이루는 각 ∠PTB는 호 TB를 보는 원주각 ∠TAB와 같은 130°이다. 삼각형 PBT에서 ∠PBT=180°−40°−130°이므로 정답은 10°이다.",
     "solutionImageSize": "full"
   ,
-    "curriculum": "2015"
+    "curriculum": "2015",
+    "imageAlt": "원 O의 접선 PQ와 접점 T, 같은 길이 TA·AB 및 주어진 40도·25도, 미지각 x",
+    "imageCaption": "원 O의 접선 PQ와 접점 T, 같은 길이 TA·AB 및 주어진 40도·25도, 미지각 x",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -412,7 +434,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_신흥중_2학기_기말_중3_기출/q09.png",
+    "image": "assets/images/21_신흥중_2학기_기말_중3_기출/q9-problem.svg",
     "decisiveStep": "구하는 두 접현각을 원주각 두 개의 합으로 바꾼다. 접점의 반지름 수직으로 작은 중심각116도를 구하고 큰 호에 대한 원주각122도를 삼각형 내각합에서 뺀다.",
     "primaryMethod": "구하는 두 접현각을 원주각 두 개의 합으로 바꾼다. 접점의 반지름 수직으로 작은 중심각116도를 구하고 큰 호에 대한 원주각122도를 삼각형 내각합에서 뺀다.",
     "questionType": "객관식",
@@ -439,11 +461,14 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "solutionImage": "assets/images/21_신흥중_2학기_기말_중3_기출/q9-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 O의 두 접선 PA, PB가 접점 A, B에서 반지름과 수직을 이루는 그림. 각 P는 파란색 64도, 중심각 AOB는 주황색, C가 보는 큰 호 AB는 초록색 244도이고, 각 PAC와 각 PBC는 분홍색과 보라색으로 표시되어 있다.",
-    "solutionImageCaption": "∠P=64°이고 접점에서 반지름과 접선이 수직이므로 ∠AOB=180°−64°=116°(주황)이다. 점 C가 보는 큰 호 AB는 360°−116°=244°(초록)이므로 ∠ACB=122°이다. 접선과 현이 이루는 각의 성질로 ∠PAC(분홍)+∠PBC(보라)는 ∠ABC+∠BAC와 같고, 삼각형 ABC의 내각으로 180°−122°이다. 정답은 58°이다.",
+    "solutionImageAlt": "접선과 접점의 반지름",
+    "solutionImageCaption": "접선과 접점의 반지름",
     "solutionImageSize": "full"
   ,
-    "curriculum": "2015"
+    "curriculum": "2015",
+    "imageAlt": "원 O의 두 접선 PA·PB, 원 위 점 C와 주어진 접선 사이의 각 64도",
+    "imageCaption": "원 O의 두 접선 PA·PB, 원 위 점 C와 주어진 접선 사이의 각 64도",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -461,7 +486,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_신흥중_2학기_기말_중3_기출/q10.png",
+    "image": "assets/images/21_신흥중_2학기_기말_중3_기출/q10-problem.svg",
     "decisiveStep": "지름에 대한 원주각90도에20도를 더하고, 평행선의 각으로 BAD를 구해 접현각 DBT에 옮긴 뒤 한 직선의 보각으로 EBD를 구한다.",
     "primaryMethod": "지름에 대한 원주각90도에20도를 더하고, 평행선의 각으로 BAD를 구해 접현각 DBT에 옮긴 뒤 한 직선의 보각으로 EBD를 구한다.",
     "questionType": "객관식",
@@ -488,11 +513,14 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "solutionImage": "assets/images/21_신흥중_2학기_기말_중3_기출/q10-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 O에서 AC는 지름이고 직선 ET는 점 B에서 원에 접하며 현 AD는 접선 ET와 평행한 그림. 각 ABC는 직각, 각 CBT는 파란색 20도, 각 BAD와 각 DBT는 같은 초록색 70도, 각 EBD는 분홍색 x로 표시되어 있다.",
-    "solutionImageCaption": "AC가 지름이므로 ∠ABC=90°이고 ∠ABT=90°+20°=110°이다. AD∥ET이므로 ∠BAD=180°−110°=70°이고 접선과 현이 이루는 각의 성질로 ∠DBT=∠BAD=70°이다. E, B, T는 한 직선 위에 있으므로 ∠EBD=180°−70°이다. 정답은 110°이다.",
+    "solutionImageAlt": "지름, 접선, 평행선과 접선과 현이 이루는 각",
+    "solutionImageCaption": "지름, 접선, 평행선과 접선과 현이 이루는 각",
     "solutionImageSize": "full"
   ,
-    "curriculum": "2015"
+    "curriculum": "2015",
+    "imageAlt": "원 O의 지름 AC와 접선 ET, 평행한 현 AD, 주어진 20도 각과 구하는 x각",
+    "imageCaption": "원 O의 지름 AC와 접선 ET, 평행한 현 AD, 주어진 20도 각과 구하는 x각",
+    "imageSize": "full"
   },
   {
     "id": 11,
@@ -954,7 +982,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_신흥중_2학기_기말_중3_기출/q21.png",
+    "image": "assets/images/21_신흥중_2학기_기말_중3_기출/q21-problem.svg",
     "decisiveStep": "내접 정오각형의 이웃 호는 원주를5등분하므로72도이다. 두 대각선의 교점각을 대응 호 두 개 합의 절반으로 직접 구한다.",
     "primaryMethod": "내접 정오각형의 이웃 호는 원주를5등분하므로72도이다. 두 대각선의 교점각을 대응 호 두 개 합의 절반으로 직접 구한다.",
     "questionType": "서술형",
@@ -981,11 +1009,14 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "solutionImage": "assets/images/21_신흥중_2학기_기말_중3_기출/q21-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 O에 내접하는 꼭짓점이 A, B, C, D, E인 정오각형과 두 대각선 AC, BE가 점 F에서 만나는 그림. 호 BC와 호 AE는 같은 크기의 파란색 72도이고, 각 BFC는 초록색 x로 표시되어 있다.",
-    "solutionImageCaption": "정오각형에서 이웃한 두 꼭짓점이 보는 중심각은 360°÷5=72°이므로 호 BC와 호 AE는 각각 72°(파랑)이다. ∠BFC를 x라 하면 원 안에서 두 현이 만날 때 x는 마주 보는 두 호의 합의 절반이다. 정답은 72°이다.",
+    "solutionImageAlt": "정오각형과 두 대각선이 만드는 각",
+    "solutionImageCaption": "정오각형과 두 대각선이 만드는 각",
     "solutionImageSize": "full"
   ,
-    "curriculum": "2015"
+    "curriculum": "2015",
+    "imageAlt": "원 O에 내접하는 정오각형 ABCDE와 대각선 AC·BE 및 교점 F의 미지각 x",
+    "imageCaption": "원 O에 내접하는 정오각형 ABCDE와 대각선 AC·BE 및 교점 F의 미지각 x",
+    "imageSize": "full"
   },
   {
     "id": 22,
@@ -997,7 +1028,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_신흥중_2학기_기말_중3_기출/q22.png",
+    "image": "assets/images/21_신흥중_2학기_기말_중3_기출/q22-problem.svg",
     "decisiveStep": "지름 원주각과 접선·수선 도형에서 AA 닮음인 ABC와 ACH를 확인하고 AB:AC=AC:AH로 AC를 복원한다. 그 길이를 피타고라스에 전달해 목표 CH를 구한다.",
     "primaryMethod": "지름 원주각과 접선·수선 도형에서 AA 닮음인 ABC와 ACH를 확인하고 AB:AC=AC:AH로 AC를 복원한다. 그 길이를 피타고라스에 전달해 목표 CH를 구한다.",
     "questionType": "서술형",
@@ -1028,7 +1059,10 @@ window.questionBank = [
     "solutionImageCaption": "AB가 지름이므로 ∠ACB=90°이고 AH⊥CT이므로 ∠AHC=90°이다. 삼각형 ABC와 삼각형 ACH는 닮음이고 대응변은 AB↔AC, BC↔CH, AC↔AH이다. AB:AC=AC:AH에서 AC²=12×9=108이고 직각삼각형 ACH에서 CH²=108−81=27이다. 정답은 (1) 삼각형 ABC와 삼각형 ACH, (2) 3√3cm이다.",
     "solutionImageSize": "full"
   ,
-    "curriculum": "2015"
+    "curriculum": "2015",
+    "imageAlt": "지름 AB=12cm인 원과 접선 CT, A에서 접선에 내린 수선 AH=9cm 및 발 H의 문제 도형",
+    "imageCaption": "지름 AB=12cm인 원과 접선 CT, A에서 접선에 내린 수선 AH=9cm 및 발 H의 문제 도형",
+    "imageSize": "full"
   },
   {
     "id": 23,

@@ -53,7 +53,15 @@ window.questionBank = [
     "level": "하",
     "curriculum": "2015",
     "primaryMethod": "그림의 대변AC3과 빗변AB√13을 사인 정의에 바로 대응한다.",
-    "decisiveStep": "그림의 대변AC3과 빗변AB√13을 사인 정의에 바로 대응한다."
+    "decisiveStep": "그림의 대변AC3과 빗변AB√13을 사인 정의에 바로 대응한다.",
+    "image": "assets/images/21_왕운중_2학기_중간_중3_수학/q1-problem.svg",
+    "imageAlt": "원본 직각삼각형 ABC: C의 직각, AC=3, BC=2, AB=√13, 꼭짓점 이름과 B각",
+    "imageCaption": "원본 직각삼각형 ABC: C의 직각, AC=3, BC=2, AB=√13, 꼭짓점 이름과 B각",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q1-solution.svg",
+    "solutionImageAlt": "빗변 √13과 B의 대변 AC=3을 대응시키고 C의 직각 표시를 유지한다",
+    "solutionImageCaption": "빗변 √13과 B의 대변 AC=3을 대응시키고 C의 직각 표시를 유지한다",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -275,7 +283,12 @@ window.questionBank = [
     "level": "중",
     "curriculum": "2015",
     "primaryMethod": "−5(x+2)²+13으로 축x=−2와 아래로 열린 개형을 읽고 축 왼쪽의 증가구간을 선택한다. 원점축 y=ax²만의 증감RPM046으로 제한하지 않는다.",
-    "decisiveStep": "−5(x+2)²+13으로 축x=−2와 아래로 열린 개형을 읽고 축 왼쪽의 증가구간을 선택한다. 원점축 y=ax²만의 증감RPM046으로 제한하지 않는다."
+    "decisiveStep": "−5(x+2)²+13으로 축x=−2와 아래로 열린 개형을 읽고 축 왼쪽의 증가구간을 선택한다. 원점축 y=ax²만의 증감RPM046으로 제한하지 않는다.",
+    "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q5-solution.svg",
+    "solutionImageAlt": "y=−5(x+2)²+13의 꼭짓점 x=−2와 좌우 증가·감소 구간",
+    "solutionImageCaption": "y=−5(x+2)²+13의 꼭짓점 x=−2와 좌우 증가·감소 구간",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 6,
@@ -326,14 +339,18 @@ window.questionBank = [
     "metaDebtFields": [],
     "semanticMeta": {"primaryConcept":"삼각비의 뜻","subConcept":"sin·cos·tan","conditionsUsed":"기울기 1/2, 점 (−2,3), 축 절편 A·B.","integrationPatternExplanation":"한 점과 기울기로 직선을 복원해 절편과빗변을 구하고 두 여각의 sin·cos가 같음을 확인해 tan b만 남긴다."},
     "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q6-solution.svg",
-    "solutionImageAlt": "해설 그림: P(−2,3)을 지나는 직선이 x축의 A=(−8,0), y축의 B=(0,4)와 만나고, OAB 직각삼각형에서 각 a와 b를 표시한다.",
-    "solutionImageCaption": "직선은 y=1/2x+4이므로 A=(−8,0), B=(0,4)이다. AB=4√5, AO=8, BO=4에서 cos a=sin b=2√5/5, tan b=2이다. 따라서 cos a−sin b+tan b=2, 정답은 ①이다.",
+    "solutionImageAlt": "직선의 절편 A=(−8,0), B=(0,4)에 의해 OA=8, OB=4, a+b=90°인 직각삼각형",
+    "solutionImageCaption": "직선의 절편 A=(−8,0), B=(0,4)에 의해 OA=8, OB=4, a+b=90°인 직각삼각형",
     "solutionImageSize": "full"
   ,
     "level": "중",
     "curriculum": "2015",
     "primaryMethod": "한 점과 기울기로 직선을 복원해 절편과빗변을 구하고 두 여각의 sin·cos가 같음을 확인해 tan b만 남긴다.",
-    "decisiveStep": "한 점과 기울기로 직선을 복원해 절편과빗변을 구하고 두 여각의 sin·cos가 같음을 확인해 tan b만 남긴다."
+    "decisiveStep": "한 점과 기울기로 직선을 복원해 절편과빗변을 구하고 두 여각의 sin·cos가 같음을 확인해 tan b만 남긴다.",
+    "image": "assets/images/21_왕운중_2학기_중간_중3_수학/q6-problem.svg",
+    "imageAlt": "원본 x·y좌표축, A(x절편)·B(y절편), 양의 기울기 직선과 두 예각 a·b(계산 전 절편값은 숨김)",
+    "imageCaption": "원본 x·y좌표축, A(x절편)·B(y절편), 양의 기울기 직선과 두 예각 a·b(계산 전 절편값은 숨김)",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -441,7 +458,15 @@ window.questionBank = [
     "level": "하",
     "curriculum": "2015",
     "primaryMethod": "빗변100과43°에 표의 사인·코사인을 바로 대입해 두 직각변의 차를 구한다.",
-    "decisiveStep": "빗변100과43°에 표의 사인·코사인을 바로 대입해 두 직각변의 차를 구한다."
+    "decisiveStep": "빗변100과43°에 표의 사인·코사인을 바로 대입해 두 직각변의 차를 구한다.",
+    "image": "assets/images/21_왕운중_2학기_중간_중3_수학/q8-problem.svg",
+    "imageAlt": "사다리/높이 도식의 직각삼각형 ABC: 빗변 100, A=43°, BC=x, AC=y",
+    "imageCaption": "사다리/높이 도식의 직각삼각형 ABC: 빗변 100, A=43°, BC=x, AC=y",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q8-solution.svg",
+    "solutionImageAlt": "sin43°=BC/100, cos43°=AC/100을 이용한 BC=68.20, AC=73.14 표시",
+    "solutionImageCaption": "sin43°=BC/100, cos43°=AC/100을 이용한 BC=68.20, AC=73.14 표시",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -495,7 +520,15 @@ window.questionBank = [
     "level": "하",
     "curriculum": "2015",
     "primaryMethod": "빗변10과35°에서 두직각변을 직접 구하고 세변을 합해둘레를 얻는다. 최종둘레 연결을 CHAINED로 보존한다.",
-    "decisiveStep": "빗변10과35°에서 두직각변을 직접 구하고 세변을 합해둘레를 얻는다. 최종둘레 연결을 CHAINED로 보존한다."
+    "decisiveStep": "빗변10과35°에서 두직각변을 직접 구하고 세변을 합해둘레를 얻는다. 최종둘레 연결을 CHAINED로 보존한다.",
+    "image": "assets/images/21_왕운중_2학기_중간_중3_수학/q9-problem.svg",
+    "imageAlt": "원본 A=35°, B 직각, 빗변 AC=10인 삼각형",
+    "imageCaption": "원본 A=35°, B 직각, 빗변 AC=10인 삼각형",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q9-solution.svg",
+    "solutionImageAlt": "근삿값 AB≈8.19·BC≈5.74를 보여 둘레≈23.9를 확인하는 직각삼각형",
+    "solutionImageCaption": "근삿값 AB≈8.19·BC≈5.74를 보여 둘레≈23.9를 확인하는 직각삼각형",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -546,14 +579,18 @@ window.questionBank = [
     "metaDebtFields": [],
     "semanticMeta": {"primaryConcept":"평면도형","subConcept":"다각형의 길이·넓이","conditionsUsed":"AB=9, BC=12, ∠B=60°, AD=3√3, DC=6, ∠D=150°.","integrationPatternExplanation":"대각선으로 두삼각형을 나누고60° 높이와 둔각150°의 보각30°를 사용한 외부높이를 각각 구해 넓이를합한다."},
     "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q10-solution.svg",
-    "solutionImageAlt": "해설 그림: 파란 △ABC와 주황 △ACD는 대각선 AC를 공유하며 주어진 변 길이와 각을 표시한다.",
-    "solutionImageCaption": "△ABC의 넓이는 27√3이고 △ACD의 넓이는 9√3/2이다. 합은 63√3/2 cm²이며 정답은 ④이다.",
+    "solutionImageAlt": "면 채움 없이 대각선 AC를 점선 보조선으로 추가해 두 삼각형의 넓이를 구분한다",
+    "solutionImageCaption": "면 채움 없이 대각선 AC를 점선 보조선으로 추가해 두 삼각형의 넓이를 구분한다",
     "solutionImageSize": "full"
   ,
     "level": "중",
     "curriculum": "2015",
     "primaryMethod": "대각선으로 두삼각형을 나누고60° 높이와 둔각150°의 보각30°를 사용한 외부높이를 각각 구해 넓이를합한다.",
-    "decisiveStep": "대각선으로 두삼각형을 나누고60° 높이와 둔각150°의 보각30°를 사용한 외부높이를 각각 구해 넓이를합한다."
+    "decisiveStep": "대각선으로 두삼각형을 나누고60° 높이와 둔각150°의 보각30°를 사용한 외부높이를 각각 구해 넓이를합한다.",
+    "image": "assets/images/21_왕운중_2학기_중간_중3_수학/q10-problem.svg",
+    "imageAlt": "BC=12, AB=9, AD=3√3, DC=6, B=60°·D=150°인 사각형 ABCD(흰 바탕)",
+    "imageCaption": "BC=12, AB=9, AD=3√3, DC=6, B=60°·D=150°인 사각형 ABCD(흰 바탕)",
+    "imageSize": "full"
   },
   {
     "id": 11,
@@ -714,14 +751,18 @@ window.questionBank = [
     "metaDebtFields": [],
     "semanticMeta": {"primaryConcept":"삼각비의 뜻","subConcept":"sin·cos·tan","conditionsUsed":"∠A=90°, AD⊥BC, AB=√7, AC=3.","integrationPatternExplanation":"빗변4를 구하고 주어진 높이AD의 닮음관계로 작은 삼각형의 길이를 복원해 sinx·tany를 구한다. 목표가 삼각비식이므로 CHAINED길이측정에서 교정한다."},
     "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q13-solution.svg",
-    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 AD가 빗변 BC에 수직이고, x/y가 A의 직각을 나눈다. 두 색 삼각형의 대응각 표식을 나타낸다.",
-    "solutionImageCaption": "BC=4, BD=7/4, DC=9/4, AD=3√7/4이다. sin x=√7/4, tan y=3/√7이므로 sin x·tan y=3/4. 정답은 ③이다.",
+    "solutionImageAlt": "빗변 BC=4를 풀이에서만 추가하고 AD⊥BC와 A의 x·y각을 보존",
+    "solutionImageCaption": "빗변 BC=4를 풀이에서만 추가하고 AD⊥BC와 A의 x·y각을 보존",
     "solutionImageSize": "full"
   ,
     "level": "중",
     "curriculum": "2015",
     "primaryMethod": "빗변4를 구하고 주어진 높이AD의 닮음관계로 작은 삼각형의 길이를 복원해 sinx·tany를 구한다. 목표가 삼각비식이므로 CHAINED길이측정에서 교정한다.",
-    "decisiveStep": "빗변4를 구하고 주어진 높이AD의 닮음관계로 작은 삼각형의 길이를 복원해 sinx·tany를 구한다. 목표가 삼각비식이므로 CHAINED길이측정에서 교정한다."
+    "decisiveStep": "빗변4를 구하고 주어진 높이AD의 닮음관계로 작은 삼각형의 길이를 복원해 sinx·tany를 구한다. 목표가 삼각비식이므로 CHAINED길이측정에서 교정한다.",
+    "image": "assets/images/21_왕운중_2학기_중간_중3_수학/q13-problem.svg",
+    "imageAlt": "A 직각인 ABC, AB=√7, AC=3, AD⊥BC, A에서 나뉜 x·y각과 수선 발 D",
+    "imageCaption": "A 직각인 ABC, AB=√7, AC=3, AD⊥BC, A에서 나뉜 x·y각과 수선 발 D",
+    "imageSize": "full"
   },
   {
     "id": 14,
@@ -828,14 +869,18 @@ window.questionBank = [
     "metaDebtFields": [],
     "semanticMeta": {"primaryConcept":"측정 문제","subConcept":"앙각·부각","conditionsUsed":"두 지점 거리 100m, 앙각 45°,60°.","integrationPatternExplanation":"수선의 발이두 관측점 사이에 있어 두수평거리의 합100을 공통높이h의 두탄젠트식과 연결한다."},
     "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q15-solution.svg",
-    "solutionImageAlt": "해설 그림: 지면의 A,B 두 지점은 100m 떨어져 있고, 수선의 발 D는 그 사이에 있다. C까지의 시선각은 A에서 45°, B에서 60°이며 높이 수치는 표시하지 않는다.",
-    "solutionImageCaption": "AD=x, CD=x이므로 tan60°=x/(100−x). 이를 풀면 x=CD=50(3−√3)m이다. 정답은 ②이다.",
+    "solutionImageAlt": "지면 위 수선 CD=h 및 45°·60° 두 직각삼각형으로 높이를 유도하는 선 도형",
+    "solutionImageCaption": "지면 위 수선 CD=h 및 45°·60° 두 직각삼각형으로 높이를 유도하는 선 도형",
     "solutionImageSize": "full"
   ,
     "level": "중",
     "curriculum": "2015",
     "primaryMethod": "수선의 발이두 관측점 사이에 있어 두수평거리의 합100을 공통높이h의 두탄젠트식과 연결한다.",
-    "decisiveStep": "수선의 발이두 관측점 사이에 있어 두수평거리의 합100을 공통높이h의 두탄젠트식과 연결한다."
+    "decisiveStep": "수선의 발이두 관측점 사이에 있어 두수평거리의 합100을 공통높이h의 두탄젠트식과 연결한다.",
+    "image": "assets/images/21_왕운중_2학기_중간_중3_수학/q15-problem.svg",
+    "imageAlt": "풍선 C의 수직 높이 CD, 지면 AB=100m, A의 45°·B의 60°(원본의 풍선·나무 사진은 보존 대상)",
+    "imageCaption": "풍선 C의 수직 높이 CD, 지면 AB=100m, A의 45°·B의 60°(원본의 풍선·나무 사진은 보존 대상)",
+    "imageSize": "full"
   },
   {
     "id": 16,
@@ -886,14 +931,18 @@ window.questionBank = [
     "metaDebtFields": [],
     "semanticMeta": {"primaryConcept":"삼각비의 뜻","subConcept":"sin·cos·tan","conditionsUsed":"AC=2, ∠AOC=30°, ∠ACB=90°, C-O-B 일직선.","integrationPatternExplanation":"30° 직각삼각형으로 반지름AO4와OC2√3을 구해 CB=OC+OB를 만든 후 B에서 tanx를 구한다. 최종은 비값이므로 GEOMETRIC_DERIVATION이다."},
     "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q16-solution.svg",
-    "solutionImageAlt": "해설 그림: O를 중심으로 하는 위쪽 반원에서 A는 호 위에 있고 C는 지름 안쪽에 있다. AC=2, 중심각 AOC=30°, C에서 직각이며 B의 각은 x이다.",
-    "solutionImageCaption": "OA=OB=4이고 OC=2√3이다. 따라서 CB=OC+OB=2√3+4이며, tan x=AC/CB=2/(2√3+4)=2−√3이다. 정답은 ③이다.",
+    "solutionImageAlt": "반지름 OA=OB=4를 풀이에서 보이고 C의 직각·30° 중심각·x각을 보존",
+    "solutionImageCaption": "반지름 OA=OB=4를 풀이에서 보이고 C의 직각·30° 중심각·x각을 보존",
     "solutionImageSize": "full"
   ,
     "level": "중",
     "curriculum": "2015",
     "primaryMethod": "30° 직각삼각형으로 반지름AO4와OC2√3을 구해 CB=OC+OB를 만든 후 B에서 tanx를 구한다. 최종은 비값이므로 GEOMETRIC_DERIVATION이다.",
-    "decisiveStep": "30° 직각삼각형으로 반지름AO4와OC2√3을 구해 CB=OC+OB를 만든 후 B에서 tanx를 구한다. 최종은 비값이므로 GEOMETRIC_DERIVATION이다."
+    "decisiveStep": "30° 직각삼각형으로 반지름AO4와OC2√3을 구해 CB=OC+OB를 만든 후 B에서 tanx를 구한다. 최종은 비값이므로 GEOMETRIC_DERIVATION이다.",
+    "image": "assets/images/21_왕운중_2학기_중간_중3_수학/q16-problem.svg",
+    "imageAlt": "반원 지름 LB·중심 O, C 위의 수선 AC=2, 중심각 30°, 원주각 x, A와 B의 현",
+    "imageCaption": "반원 지름 LB·중심 O, C 위의 수선 AC=2, 중심각 30°, 원주각 x, A와 B의 현",
+    "imageSize": "full"
   },
   {
     "id": 17,
@@ -950,7 +999,11 @@ window.questionBank = [
     "level": "중",
     "curriculum": "2015",
     "primaryMethod": "같은함숫값의 두x중점에서 축−1, 이동조건에서계수−2, 직선위꼭짓점에서높이2를 얻어 함수계수의합을 구한다.",
-    "decisiveStep": "같은함숫값의 두x중점에서 축−1, 이동조건에서계수−2, 직선위꼭짓점에서높이2를 얻어 함수계수의합을 구한다."
+    "decisiveStep": "같은함숫값의 두x중점에서 축−1, 이동조건에서계수−2, 직선위꼭짓점에서높이2를 얻어 함수계수의합을 구한다.",
+    "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q17-solution.svg",
+    "solutionImageAlt": "f(x)=−2(x+1)²+2의 축 x=−1과 꼭짓점 (−1,2)",
+    "solutionImageCaption": "f(x)=−2(x+1)²+2의 축 x=−1과 꼭짓점 (−1,2)",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1004,7 +1057,15 @@ window.questionBank = [
     "level": "중",
     "curriculum": "2015",
     "primaryMethod": "공통높이h에 대해 두수평거리 h/tan35와h/tan65를 더해10으로 두고 여각의탄젠트 역수관계로 요구식을 표현한다.",
-    "decisiveStep": "공통높이h에 대해 두수평거리 h/tan35와h/tan65를 더해10으로 두고 여각의탄젠트 역수관계로 요구식을 표현한다."
+    "decisiveStep": "공통높이h에 대해 두수평거리 h/tan35와h/tan65를 더해10으로 두고 여각의탄젠트 역수관계로 요구식을 표현한다.",
+    "image": "assets/images/21_왕운중_2학기_중간_중3_수학/q18-problem.svg",
+    "imageAlt": "BC=10, 밑각 35°·65°, A에서 BC에 내린 높이 AH⊥BC",
+    "imageCaption": "BC=10, 밑각 35°·65°, A에서 BC에 내린 높이 AH⊥BC",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q18-solution.svg",
+    "solutionImageAlt": "수선 AH=h, BH=h/tan35°, HC=h/tan65°를 통해 BC=10을 나누는 선 도형",
+    "solutionImageCaption": "수선 AH=h, BH=h/tan35°, HC=h/tan65°를 통해 BC=10을 나누는 선 도형",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1049,14 +1110,18 @@ window.questionBank = [
     "metaDebtFields": [],
     "semanticMeta": {"primaryConcept":"평면도형","subConcept":"삼각형의 높이·넓이","conditionsUsed":"AC=6, BC=9, ∠C=60°, G는 무게중심.","integrationPatternExplanation":"두변과끼인각으로 전체넓이를 구하고 무게중심의2:1로 목표삼각형의 높이가1/3임을 적용한다."},
     "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q19-solution.svg",
-    "solutionImageAlt": "해설 그림: 중선 CM 위에 무게중심 G가 있고 M은 AB의 중점인 삼각형 ABC에서 영역 ABG를 표시한다.",
-    "solutionImageCaption": "△ABC의 넓이는 ½·6·9·sin60°=27√3/2이다. 무게중심 성질에 따라 △ABG의 넓이는 △ABC의 넓이의 1/3이므로 9√3/2 cm²이다.",
+    "solutionImageAlt": "무게중심 G의 세 꼭짓점 넓이 비율을 확인하도록 중선을 보이고 불필요한 해설 면색을 제거",
+    "solutionImageCaption": "무게중심 G의 세 꼭짓점 넓이 비율을 확인하도록 중선을 보이고 불필요한 해설 면색을 제거",
     "solutionImageSize": "full"
   ,
     "level": "중",
     "curriculum": "2015",
     "primaryMethod": "두변과끼인각으로 전체넓이를 구하고 무게중심의2:1로 목표삼각형의 높이가1/3임을 적용한다.",
-    "decisiveStep": "두변과끼인각으로 전체넓이를 구하고 무게중심의2:1로 목표삼각형의 높이가1/3임을 적용한다."
+    "decisiveStep": "두변과끼인각으로 전체넓이를 구하고 무게중심의2:1로 목표삼각형의 높이가1/3임을 적용한다.",
+    "image": "assets/images/21_왕운중_2학기_중간_중3_수학/q19-problem.svg",
+    "imageAlt": "삼각형 ABC(BC=9, AC=6, C=60°)에서 무게중심 G, 중선 BM·CG와 문제의 △ABG만 명암 표시",
+    "imageCaption": "삼각형 ABC(BC=9, AC=6, C=60°)에서 무게중심 G, 중선 BM·CG와 문제의 △ABG만 명암 표시",
+    "imageSize": "full"
   },
   {
     "id": 20,
@@ -1101,14 +1166,18 @@ window.questionBank = [
     "metaDebtFields": [],
     "semanticMeta": {"primaryConcept":"측정 문제","subConcept":"앙각·부각","conditionsUsed":"BC=60m, ∠B=45°, ∠C=60°.","integrationPatternExplanation":"같은쪽 관측점에서 수평거리x와x+60을 공통높이의두 탄젠트식에 넣어 연립한다."},
     "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q20-solution.svg",
-    "solutionImageAlt": "해설 그림: 지면 위에 B, C, D가 차례로 놓이고 BC는 60 m이다. B와 C에서 꼭대기 A를 보는 두 시선은 각각 45°와 60°이며, D에서 A까지의 높이를 초록색 수선으로 표시한다.",
-    "solutionImageCaption": "CD=x, AD=h라 두면 tan60°=h/x이므로 h=√3x이다. 또한 tan45°=h/(60+x)=1이므로 h=30(3+√3)m이다.",
+    "solutionImageAlt": "지면 두 지점에서 본 고도각과 수선 높이 h=AD를 면색 없이 분리",
+    "solutionImageCaption": "지면 두 지점에서 본 고도각과 수선 높이 h=AD를 면색 없이 분리",
     "solutionImageSize": "full"
   ,
     "level": "중",
     "curriculum": "2015",
     "primaryMethod": "같은쪽 관측점에서 수평거리x와x+60을 공통높이의두 탄젠트식에 넣어 연립한다.",
-    "decisiveStep": "같은쪽 관측점에서 수평거리x와x+60을 공통높이의두 탄젠트식에 넣어 연립한다."
+    "decisiveStep": "같은쪽 관측점에서 수평거리x와x+60을 공통높이의두 탄젠트식에 넣어 연립한다.",
+    "image": "assets/images/21_왕운중_2학기_중간_중3_수학/q20-problem.svg",
+    "imageAlt": "산 정상 A와 지면 B-C-D, BC=60m, 고도각 45°·60°, 산 높이 AD 수선(사진의 산 실루엣은 보존)",
+    "imageCaption": "산 정상 A와 지면 B-C-D, BC=60m, 고도각 45°·60°, 산 높이 AD 수선(사진의 산 실루엣은 보존)",
+    "imageSize": "full"
   },
   {
     "id": 21,
@@ -1161,7 +1230,15 @@ window.questionBank = [
     "level": "중",
     "curriculum": "2015",
     "primaryMethod": "완전제곱식으로 A(−2,k+2)를 얻고 B(0,k),그림의k>0과삼각형넓이4를 연결해 매개변수k를 역산한다. 소문항의 함수식·꼭짓점·계수목표를 모두 보존한다.",
-    "decisiveStep": "완전제곱식으로 A(−2,k+2)를 얻고 B(0,k),그림의k>0과삼각형넓이4를 연결해 매개변수k를 역산한다. 소문항의 함수식·꼭짓점·계수목표를 모두 보존한다."
+    "decisiveStep": "완전제곱식으로 A(−2,k+2)를 얻고 B(0,k),그림의k>0과삼각형넓이4를 연결해 매개변수k를 역산한다. 소문항의 함수식·꼭짓점·계수목표를 모두 보존한다.",
+    "image": "assets/images/21_왕운중_2학기_중간_중3_수학/q21-problem.svg",
+    "imageAlt": "미지 k가 있는 아래로 열린 포물선의 예시 모양: 꼭짓점 A, y축 위 B, 원점 O(계수 k 및 좌표는 노출하지 않음)",
+    "imageCaption": "미지 k가 있는 아래로 열린 포물선의 예시 모양: 꼭짓점 A, y축 위 B, 원점 O(계수 k 및 좌표는 노출하지 않음)",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q21-solution.svg",
+    "solutionImageAlt": "삼각형 AOB의 넓이 4에서 k=4를 얻은 후 A(−2,6), B(0,4)의 포물선",
+    "solutionImageCaption": "삼각형 AOB의 넓이 4에서 k=4를 얻은 후 A(−2,6), B(0,4)의 포물선",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1206,14 +1283,18 @@ window.questionBank = [
     "metaDebtFields": [],
     "semanticMeta": {"primaryConcept":"복합도형","subConcept":"보조선 활용","conditionsUsed":"모선 4cm, 모선과 밑면의 각 60°.","integrationPatternExplanation":"원뿔의축단면에서 모선4의 수직·수평성분으로 높이와반지름을 구해부피식에 넣는다."},
     "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q22-solution.svg",
-    "solutionImageAlt": "해설 그림: 원뿔에서 모선 4 cm와 밑면이 이루는 각은 60도이다. 단면의 밑변은 반지름이고 다른 직각변은 높이이다.",
-    "solutionImageCaption": "반지름은 4cos60°=2 cm이고, 높이는 4sin60°=2√3 cm이다. 따라서 부피는 8√3π/3 cm³이다.",
+    "solutionImageAlt": "원뿔의 축단면 직각삼각형: 모선 4cm, 밑면 반지름 2cm, 높이 2√3cm, 모선·밑면 사이 60°",
+    "solutionImageCaption": "원뿔의 축단면 직각삼각형: 모선 4cm, 밑면 반지름 2cm, 높이 2√3cm, 모선·밑면 사이 60°",
     "solutionImageSize": "full"
   ,
     "level": "중",
     "curriculum": "2015",
     "primaryMethod": "원뿔의축단면에서 모선4의 수직·수평성분으로 높이와반지름을 구해부피식에 넣는다.",
-    "decisiveStep": "원뿔의축단면에서 모선4의 수직·수평성분으로 높이와반지름을 구해부피식에 넣는다."
+    "decisiveStep": "원뿔의축단면에서 모선4의 수직·수평성분으로 높이와반지름을 구해부피식에 넣는다.",
+    "image": "assets/images/21_왕운중_2학기_중간_중3_수학/q22-problem.svg",
+    "imageAlt": "원본 원뿔의 빗면 모선 4cm, 숨은 밑원 점선 및 중심축; 밑원 양끝 B·C 이름과 C의 모선-밑면 60°는 엔진 표식 미지원",
+    "imageCaption": "원본 원뿔의 빗면 모선 4cm, 숨은 밑원 점선 및 중심축; 밑원 양끝 B·C 이름과 C의 모선-밑면 60°는 엔진 표식 미지원",
+    "imageSize": "full"
   },
   {
     "id": 23,
@@ -1261,13 +1342,17 @@ window.questionBank = [
     "metaDebtFields": [],
     "semanticMeta": {"primaryConcept":"삼각비의 뜻","subConcept":"sin·cos·tan","conditionsUsed":"AD=DC=BC=3cm, ∠C=90°, x=∠ABD.","integrationPatternExplanation":"피타고라스로 AB,BD를 구하고 ABD넓이를 밑변AD·높이BC와 밑변AB·높이DE 두방식으로 표현해 DE를복원한뒤 sinx를 구한다."},
     "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q23-solution.svg",
-    "solutionImageAlt": "해설 그림: A,D,C가 일직선 위에 있는 직각삼각형 ABC에서 AD, DC, BC는 각각 3 cm이다. AB에 내린 D의 수선의 발 E를 표시한다.",
-    "solutionImageCaption": "피타고라스 정리에 따라 AB=3√5, BD=3√2이다. 넓이로 구한 DE=3/√5를 이용하면 sin x=DE/BD=√10/10이다.",
+    "solutionImageAlt": "AD=DC=BC=3으로 비율 정규화해 AB=3√5, BD=3√2와 x각을 설명",
+    "solutionImageCaption": "AD=DC=BC=3으로 비율 정규화해 AB=3√5, BD=3√2와 x각을 설명",
     "solutionImageSize": "full"
   ,
     "level": "중",
     "curriculum": "2015",
     "primaryMethod": "피타고라스로 AB,BD를 구하고 ABD넓이를 밑변AD·높이BC와 밑변AB·높이DE 두방식으로 표현해 DE를복원한뒤 sinx를 구한다.",
-    "decisiveStep": "피타고라스로 AB,BD를 구하고 ABD넓이를 밑변AD·높이BC와 밑변AB·높이DE 두방식으로 표현해 DE를복원한뒤 sinx를 구한다."
+    "decisiveStep": "피타고라스로 AB,BD를 구하고 ABD넓이를 밑변AD·높이BC와 밑변AB·높이DE 두방식으로 표현해 DE를복원한뒤 sinx를 구한다.",
+    "image": "assets/images/21_왕운중_2학기_중간_중3_수학/q23-problem.svg",
+    "imageAlt": "A-D-C가 일직선, AD=DC=BC의 세 길이 동등 표식, C 직각, B에서 BA와 BD 사이 x각",
+    "imageCaption": "A-D-C가 일직선, AD=DC=BC의 세 길이 동등 표식, C 직각, B에서 BA와 BD 사이 x각",
+    "imageSize": "full"
   }
 ];

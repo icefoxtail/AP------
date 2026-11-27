@@ -366,8 +366,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/24_금당중_2학기_중간_중3_수학/q8-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 D는 B에서 AC에 내린 수선의 발이다. △BCD는 60° 직각삼각형이고 △ABD는 45° 직각삼각형이다.",
-    "solutionImageCaption": "△BCD에서 BD=4√3이고 △ABD는 직각이등변삼각형이므로 AB=4√6 cm이다. 정답은 ②이다.",
+    "solutionImageAlt": "BC=8 cm, B=75°, C=60°인 삼각형에서 BD⊥AC를 내려 45°와 BD=4√3 cm를 표시한다.",
+    "solutionImageCaption": "BC=8 cm, B=75°, C=60°인 삼각형에서 BD⊥AC를 내려 45°와 BD=4√3 cm를 표시한다.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
@@ -462,8 +462,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/24_금당중_2학기_중간_중3_수학/q10-solution.svg",
-    "solutionImageAlt": "해설 그림: 사각형 ABCD를 대각선 AC로 나누어 파란 삼각형 ABC와 주황 삼각형 ACD를 구분한다. AC=8, AD=5, 두 끼인각이 표시되어 있다.",
-    "solutionImageCaption": "△ABC의 넓이는 32이고 △ACD의 넓이는 10√3이므로 사각형의 넓이는 32+10√3 cm²이다. 정답은 ③이다.",
+    "solutionImageAlt": "사각형 BADC의 넓이 대상은 옅은 단일 음영으로 표시하고, 대각선 AC가 나누는 두 삼각형을 직각·45°·60°로 확인한다.",
+    "solutionImageCaption": "사각형 BADC의 넓이 대상은 옅은 단일 음영으로 표시하고, 대각선 AC가 나누는 두 삼각형을 직각·45°·60°로 확인한다.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
@@ -476,7 +476,8 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "직각이등변삼각형에서 공통 대각선을 구하고 두 변과 끼인각의 사인으로 나머지 삼각형 넓이를 구해 합한다.",
-    "decisiveStep": "직각이등변삼각형에서 공통 대각선을 구하고 두 변과 끼인각의 사인으로 나머지 삼각형 넓이를 구해 합한다."
+    "decisiveStep": "직각이등변삼각형에서 공통 대각선을 구하고 두 변과 끼인각의 사인으로 나머지 삼각형 넓이를 구해 합한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 11,
@@ -511,8 +512,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/24_금당중_2학기_중간_중3_수학/q11-solution.svg",
-    "solutionImageAlt": "해설 그림: 두 직각삼각형이 겹친 원래 배치와 분리한 △ADF를 함께 보인다. 분리된 삼각형에는 30°와 직각, 두 변의 길이가 표시되어 있다.",
-    "solutionImageCaption": "AD=3√2, DF=√6이므로 △ADF의 넓이는 3√3 cm²이다. 정답은 ②이다.",
+    "solutionImageAlt": "AC=AE=6 cm인 두 직각삼각형이 겹치는 ADF를 보조선과 길이만으로 드러내고 면 채움은 쓰지 않는다.",
+    "solutionImageCaption": "AC=AE=6 cm인 두 직각삼각형이 겹치는 ADF를 보조선과 길이만으로 드러내고 면 채움은 쓰지 않는다.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
@@ -525,7 +526,8 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "겹친 작은 삼각형의 밑변을 큰 45도 삼각형에서 정하고 30도 탄젠트로 높이를 얻어 넓이를 구한다.",
-    "decisiveStep": "겹친 작은 삼각형의 밑변을 큰 45도 삼각형에서 정하고 30도 탄젠트로 높이를 얻어 넓이를 구한다."
+    "decisiveStep": "겹친 작은 삼각형의 밑변을 큰 45도 삼각형에서 정하고 30도 탄젠트로 높이를 얻어 넓이를 구한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 12,
@@ -649,7 +651,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "중심을 지나는 현 $AB$는 지름이고, 중심에서 현 $CD$에 내린 수선은 현을 이등분한다.\n$AB=AM+MB=10+4=14\\,\\mathrm{cm}$이고 중심 $O$가 $AB$ 위에 있다.\n\n반지름과 $OM$을 구한 뒤 직각삼각형 $OMC$에서 $CM$을 구한다.\n\n$AB$는 지름이므로 반지름은 $7\\,\\mathrm{cm}$이다.\n$AO=7\\,\\mathrm{cm}$이고 $AM=10\\,\\mathrm{cm}$이므로 $OM=3\\,\\mathrm{cm}$이다.\n$AB\\perp CD$이고 $O$가 $AB$ 위에 있으므로 $M$은 현 $CD$의 중점이다.\n따라서 $CM=DM$이다.\n직각삼각형 $OMC$에서 $CM=\\sqrt{OC^2-OM^2}=\\sqrt{7^2-3^2}=2\\sqrt{10}$이다.\n그러므로 $CD=2CM=4\\sqrt{10}\\,\\mathrm{cm}$이다.\n따라서 정답은 ⑤이다.",
-    "image": "assets/images/24_금당중_2학기_중간_중3_수학/q14.png",
+    "image": "assets/images/24_금당중_2학기_중간_중3_수학/q14-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
@@ -669,7 +671,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "지름의 합에서 반지름과 중심거리를 정하고 현의 수직이등분으로 반현을 피타고라스에서 구한다.",
-    "decisiveStep": "지름의 합에서 반지름과 중심거리를 정하고 현의 수직이등분으로 반현을 피타고라스에서 구한다."
+    "decisiveStep": "지름의 합에서 반지름과 중심거리를 정하고 현의 수직이등분으로 반현을 피타고라스에서 구한다.",
+    "imageAlt": "원 O에서 지름 AB와 이에 수직인 현 CD가 M에서 만나며 AM=10 cm, MB=4 cm이다.",
+    "imageCaption": "원 O에서 지름 AB와 이에 수직인 현 CD가 M에서 만나며 AM=10 cm, MB=4 cm이다.",
+    "imageSize": "full"
   },
   {
     "id": 15,
@@ -839,7 +844,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "$\\triangle DCE$는 $C$에서 직각이고\n$DC=12$, $DE=13$이다.\n피타고라스 정리에 의하여\n$CE=\\sqrt{13^2-12^2}=5\\,\\mathrm{cm}$이다.\n\n원은 직사각형의 위아래 두 변에 접하므로 지름이 $12\\,\\mathrm{cm}$이고\n반지름은 $6\\,\\mathrm{cm}$이다.\n따라서\n$AF=AG=6$, $BH=BG=6$이다.\n\n직사각형의 가로 길이를 $BC=AD=w$라 하자.\n그러면\n$DF=AD-AF=w-6$이다.\n\n점 $D$에서 원에 그은 두 접선의 길이는 같으므로\n$DI=DF=w-6$이다.\n\n또\n$BE=BC-CE=w-5$이고\n$EH=BE-BH=w-11$이다.\n점 $E$에서 원에 그은 두 접선의 길이는 같으므로\n$EI=EH=w-11$이다.\n\n따라서\n$DE=DI+IE$\n$=(w-6)+(w-11)=13$이다.\n$2w-17=13$이므로\n$w=15$이다.\n\n그러므로\n$BE=w-5=10\\,\\mathrm{cm}$이다.\n정답은 ④이다.",
-    "image": "assets/images/24_금당중_2학기_중간_중3_수학/q18.png",
+    "image": "assets/images/24_금당중_2학기_중간_중3_수학/q18-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
@@ -859,7 +864,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "직사각형의 높이에서 반지름을 얻고 피타고라스로 짧은 변 조각을 구한 뒤 양끝 접선 길이를 가로 길이 한 변수로 표현해 합한다.",
-    "decisiveStep": "직사각형의 높이에서 반지름을 얻고 피타고라스로 짧은 변 조각을 구한 뒤 양끝 접선 길이를 가로 길이 한 변수로 표현해 합한다."
+    "decisiveStep": "직사각형의 높이에서 반지름을 얻고 피타고라스로 짧은 변 조각을 구한 뒤 양끝 접선 길이를 가로 길이 한 변수로 표현해 합한다.",
+    "imageAlt": "직사각형 ABCD의 세 변과 DE에 접하는 원, 네 접점 F·G·H·I 및 원본 길이 DC=12 cm, DE=13 cm을 표시한다.",
+    "imageCaption": "직사각형 ABCD의 세 변과 DE에 접하는 원, 네 접점 F·G·H·I 및 원본 길이 DC=12 cm, DE=13 cm을 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 19,
@@ -893,8 +901,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/24_금당중_2학기_중간_중3_수학/q19-solution.svg",
-    "solutionImageAlt": "해설 그림: P에서 그은 두 접선은 파란색 한 눈금, 두 반지름은 주황색 두 눈금이다. 접점의 직각과 중심각 120도를 표시했다.",
-    "solutionImageCaption": "두 직각삼각형의 넓이를 더한 뒤 중심각 120°의 부채꼴 넓이를 뺀다. 정답 ⑤.",
+    "solutionImageAlt": "접선 PA·PB와 원호 AB 사이 영역만 원본처럼 회색으로 칠하고, 나머지 원판은 무채움으로 둔다.",
+    "solutionImageCaption": "접선 PA·PB와 원호 AB 사이 영역만 원본처럼 회색으로 칠하고, 나머지 원판은 무채움으로 둔다.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
@@ -907,7 +915,8 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "접점 수직으로 길이와 특수각을 구하고 접선 삼각형의 합에서 중심각 120도의 부채꼴 넓이를 빼어 진술을 판정한다.",
-    "decisiveStep": "접점 수직으로 길이와 특수각을 구하고 접선 삼각형의 합에서 중심각 120도의 부채꼴 넓이를 빼어 진술을 판정한다."
+    "decisiveStep": "접점 수직으로 길이와 특수각을 구하고 접선 삼각형의 합에서 중심각 120도의 부채꼴 넓이를 빼어 진술을 판정한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 20,
@@ -953,7 +962,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "작은 원 반지름이 현까지 거리임을 이용해 피타고라스로 두 반지름 제곱의 차를 직접 구하고 고리 넓이에 대입한다.",
-    "decisiveStep": "작은 원 반지름이 현까지 거리임을 이용해 피타고라스로 두 반지름 제곱의 차를 직접 구하고 고리 넓이에 대입한다."
+    "decisiveStep": "작은 원 반지름이 현까지 거리임을 이용해 피타고라스로 두 반지름 제곱의 차를 직접 구하고 고리 넓이에 대입한다.",
+    "solutionImageAlt": "길이 2인 현의 회전 궤적은 두 동심원 사이의 고리 전체이므로, 고리만 원본처럼 회색으로 칠한다.",
+    "solutionImageCaption": "길이 2인 현의 회전 궤적은 두 동심원 사이의 고리 전체이므로, 고리만 원본처럼 회색으로 칠한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1102,7 +1114,7 @@ window.questionBank = [
     "choices": [],
     "answer": "$14\\pi\\,\\mathrm{cm}^2$",
     "solution": "$AB\\perp OM$이므로 중심 $O$에서 현 $AB$에 내린 수선의 발이 $M$이다.\n따라서 $M$은 현 $AB$의 중점이고\n$AM=MB$이다.\n\n직각삼각형 $OAM$에서\n$OA=6$, $OM=2$이므로\n$AM=\\sqrt{OA^2-OM^2}$\n$=\\sqrt{6^2-2^2}=4\\sqrt2\\,\\mathrm{cm}$이다.\n따라서\n$MB=4\\sqrt2\\,\\mathrm{cm}$이다.\n\n그림에서 $D$는 $M$과 $B$ 사이에 있고\n$DB=\\sqrt2\\,\\mathrm{cm}$이므로\n$MD=MB-DB$\n$=4\\sqrt2-\\sqrt2=3\\sqrt2\\,\\mathrm{cm}$이다.\n\n직각삼각형 $OMD$에서 작은 원의 반지름은 $OD$이므로\n$OD=\\sqrt{OM^2+MD^2}$\n$=\\sqrt{2^2+(3\\sqrt2)^2}$\n$=\\sqrt{22}\\,\\mathrm{cm}$이다.\n\n따라서 어두운 부분의 넓이는\n$\\pi\\cdot OA^2-\\pi\\cdot OD^2$\n$=36\\pi-22\\pi$\n$=14\\pi\\,\\mathrm{cm}^2$이다.",
-    "image": "assets/images/24_금당중_2학기_중간_중3_수학/q24.png",
+    "image": "assets/images/24_금당중_2학기_중간_중3_수학/q24-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
@@ -1122,6 +1134,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "STRONG_CONFLICT",
     "primaryMethod": "큰 원의 반현을 피타고라스로 구하고 공통 현의 안쪽 조각을 빼서 작은 원 반지름을 복원한 뒤 두 원 넓이를 뺀다.",
-    "decisiveStep": "큰 원의 반현을 피타고라스로 구하고 공통 현의 안쪽 조각을 빼서 작은 원 반지름을 복원한 뒤 두 원 넓이를 뺀다."
+    "decisiveStep": "큰 원의 반현을 피타고라스로 구하고 공통 현의 안쪽 조각을 빼서 작은 원 반지름을 복원한 뒤 두 원 넓이를 뺀다.",
+    "imageAlt": "동심원 사이의 고리만 음영 처리하고 OA=6 cm, OM=2 cm, DB=√2 cm 및 직각을 보인다.",
+    "imageCaption": "동심원 사이의 고리만 음영 처리하고 OA=6 cm, OM=2 cm, DB=√2 cm 및 직각을 보인다.",
+    "imageSize": "full"
   }
 ];

@@ -39,8 +39,8 @@ window.examData = {
         "canonicalKeyDebt": "Canonical enum/key dictionary was not conclusively matched; null retained pending R1/R2 source-of-truth lookup."
       },
       "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q1-solution-v2.svg",
-      "solutionImageAlt": "파란 빗변 AC는 길이 3인 치수선이 붙어 있다. 초록 밑변은 A의 맞은편이면서 C에 붙은 직각변이다.",
-      "solutionImageCaption": "sin A=2/3, cos C=2/3, tan C=√5/2이므로 식은 (2+√5)/3이다. 정답은 ④이다.",
+      "solutionImageAlt": "세 변 길이로 비교하는 두 기준각 — 파란 빗변 AC는 길이 3인 치수선이 붙어 있다. 초록 밑변은 A의 맞은편이면서 C에 붙은 직각변이다.",
+      "solutionImageCaption": "세 변 길이로 비교하는 두 기준각 — 파란 빗변 AC는 길이 3인 치수선이 붙어 있다. 초록 밑변은 A의 맞은편이면서 C에 붙은 직각변이다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -59,7 +59,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "피타고라스로 빗변3을 복원하고 A와 C 각각의 삼각비를 정의에 맞춰 식에 대입한다.",
-    "decisiveStep": "피타고라스로 빗변3을 복원하고 A와 C 각각의 삼각비를 정의에 맞춰 식에 대입한다."
+    "decisiveStep": "피타고라스로 빗변3을 복원하고 A와 C 각각의 삼각비를 정의에 맞춰 식에 대입한다.",
+    "image": "assets/images/19_연향중_2학기_기말_중3_수학/q1-problem.svg",
+    "imageAlt": "세 변 길이로 비교하는 두 기준각 — 직각삼각형 ABC에서 B가 직각이다. 세로 AB는 √5이고 밑변 BC는 2이다.",
+    "imageCaption": "세 변 길이로 비교하는 두 기준각 — 직각삼각형 ABC에서 B가 직각이다. 세로 AB는 √5이고 밑변 BC는 2이다.",
+    "imageSize": "full"
   },
     {
       "id": 2,
@@ -277,8 +281,8 @@ window.examData = {
         "canonicalKeyDebt": "Canonical enum/key dictionary was not conclusively matched; null retained pending R1/R2 source-of-truth lookup."
       },
       "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q5-solution-v2.svg",
-      "solutionImageAlt": "파랑 사분원 안쪽의 작은 직각삼각형을 옅은 주황으로 칠했다. 초록 접선 CD가 오른쪽의 큰 높이이다.",
-      "solutionImageCaption": "OA=OD=1이므로 sin a=AB, cos a=OB, tan a=CD이다. b는 a의 여각이다. 옳은 선택지는 ②와 ④이다.",
+      "solutionImageAlt": "연향중 5번 해설: 반지름 1인 정확한 제1사분원 호, OAB·OCD 두 직각삼각형, a와 b의 여각 관계를 표시한다. 구체적인 a는 주어지지 않아 대표 배치로 그린다.",
+      "solutionImageCaption": "연향중 5번 해설: 반지름 1인 정확한 제1사분원 호, OAB·OCD 두 직각삼각형, a와 b의 여각 관계를 표시한다. 구체적인 a는 주어지지 않아 대표 배치로 그린다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -297,7 +301,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "단위 사분원 OAB에서 sin a=AB, cos a=OB이고 큰 직각삼각형의 b는 a의 여각임을 이용한다.",
-    "decisiveStep": "단위 사분원 OAB에서 sin a=AB, cos a=OB이고 큰 직각삼각형의 b는 a의 여각임을 이용한다."
+    "decisiveStep": "단위 사분원 OAB에서 sin a=AB, cos a=OB이고 큰 직각삼각형의 b는 a의 여각임을 이용한다.",
+    "image": "assets/images/19_연향중_2학기_기말_중3_수학/q5-problem.svg",
+    "imageAlt": "연향중 5번 문제: 반지름 1인 정확한 제1사분원 호, OAB·OCD 두 직각삼각형, a와 b의 여각 관계를 표시한다. 구체적인 a는 주어지지 않아 대표 배치로 그린다.",
+    "imageCaption": "연향중 5번 문제: 반지름 1인 정확한 제1사분원 호, OAB·OCD 두 직각삼각형, a와 b의 여각 관계를 표시한다. 구체적인 a는 주어지지 않아 대표 배치로 그린다.",
+    "imageSize": "full"
   },
     {
       "id": 6,
@@ -397,8 +405,8 @@ window.examData = {
         "canonicalKeyDebt": "Canonical enum/key dictionary was not conclusively matched; null retained pending R1/R2 source-of-truth lookup."
       },
       "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q7-solution-v2.svg",
-      "solutionImageAlt": "파란 대각선을 기준으로 주황과 파랑 면을 나누고 두 꼭짓점에서 보라 수선을 내렸다.",
-      "solutionImageCaption": "넓이=AC·BD·sin45°/2=3√2·AC이다. 30√2인 경우 AC=10 cm이고 정답은 ③이다.",
+      "solutionImageAlt": "사각형 넓이와 두 대각선의 각 — 파란 대각선을 기준으로 주황과 파랑 면을 나누고 두 꼭짓점에서 보라 수선을 내렸다.",
+      "solutionImageCaption": "사각형 넓이와 두 대각선의 각 — 파란 대각선을 기준으로 주황과 파랑 면을 나누고 두 꼭짓점에서 보라 수선을 내렸다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -417,7 +425,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "대각선으로 나눈 삼각형의 넓이 합 S=AC·BD·sin45°/2에서 AC를 역산한다.",
-    "decisiveStep": "대각선으로 나눈 삼각형의 넓이 합 S=AC·BD·sin45°/2에서 AC를 역산한다."
+    "decisiveStep": "대각선으로 나눈 삼각형의 넓이 합 S=AC·BD·sin45°/2에서 AC를 역산한다.",
+    "image": "assets/images/19_연향중_2학기_기말_중3_수학/q7-problem.svg",
+    "imageAlt": "사각형 넓이와 두 대각선의 각 — 주황 대각선 BD 길이는 12 cm이다. 파랑 AC와 주황 BD가 만나는 곳의 오른쪽 각이 45도이다.",
+    "imageCaption": "사각형 넓이와 두 대각선의 각 — 주황 대각선 BD 길이는 12 cm이다. 파랑 AC와 주황 BD가 만나는 곳의 오른쪽 각이 45도이다.",
+    "imageSize": "full"
   },
     {
       "id": 8,
@@ -579,8 +591,8 @@ window.examData = {
         "canonicalKeyDebt": "Canonical enum/key dictionary was not conclusively matched; null retained pending R1/R2 source-of-truth lookup."
       },
       "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q10-solution-v2.svg",
-      "solutionImageAlt": "두 같은 거리 OM과 ON은 주황 눈금이다. 그에 해당하는 두 현 AC와 BC에 같은 초록 눈금을 표시했다.",
-      "solutionImageCaption": "AC=BC이므로 A와 B의 각은 각각 70°이다. 따라서 x=40°이고 정답은 ②이다.",
+      "solutionImageAlt": "중심에서 두 현까지의 같은 거리 — 두 같은 거리 OM과 ON은 주황 눈금이다. 그에 해당하는 두 현 AC와 BC에 같은 초록 눈금을 표시했다.",
+      "solutionImageCaption": "중심에서 두 현까지의 같은 거리 — 두 같은 거리 OM과 ON은 주황 눈금이다. 그에 해당하는 두 현 AC와 BC에 같은 초록 눈금을 표시했다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -599,7 +611,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "같은 중심거리에서 두 현 AC,BC의 길이가 같음을 얻고 이등변삼각형의 밑각을 이용해 C각을 구한다.",
-    "decisiveStep": "같은 중심거리에서 두 현 AC,BC의 길이가 같음을 얻고 이등변삼각형의 밑각을 이용해 C각을 구한다."
+    "decisiveStep": "같은 중심거리에서 두 현 AC,BC의 길이가 같음을 얻고 이등변삼각형의 밑각을 이용해 C각을 구한다.",
+    "image": "assets/images/19_연향중_2학기_기말_중3_수학/q10-problem.svg",
+    "imageAlt": "중심에서 두 현까지의 같은 거리 — 중심 O에서 BC와 AC에 내린 두 수선은 같은 길이이다. A의 각은 70도이고 C의 각을 x로 표시했다.",
+    "imageCaption": "중심에서 두 현까지의 같은 거리 — 중심 O에서 BC와 AC에 내린 두 수선은 같은 길이이다. A의 각은 70도이고 C의 각을 x로 표시했다.",
+    "imageSize": "full"
   },
     {
       "id": 11,
@@ -762,8 +778,8 @@ window.examData = {
         "canonicalKeyDebt": "Canonical enum/key dictionary was not conclusively matched; null retained pending R1/R2 source-of-truth lookup."
       },
       "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q13-solution-v2.svg",
-      "solutionImageAlt": "C의 두 접선이 초록, D의 두 접선이 주황이다. C에서 상대편 접선까지 그은 점선은 지름과 평행하다.",
-      "solutionImageCaption": "CD=4+9=13 cm, 높이 차는 5 cm이다. 피타고라스 정리로 지름은 12 cm이므로 반지름은 6 cm이다. 정답은 ④이다.",
+      "solutionImageAlt": "연향중 13번 해설: C에서 AC=CE=4cm, D에서 BD=DE=9cm인 접선 구간을 표시한다. 따라서 CD=4+9=13cm이다.",
+      "solutionImageCaption": "연향중 13번 해설: C에서 AC=CE=4cm, D에서 BD=DE=9cm인 접선 구간을 표시한다. 따라서 CD=4+9=13cm이다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -782,7 +798,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "접선 길이의 동일성으로 CD=13을 구하고 두 접선 끝점의 높이 차5를 사용하여 지름2r를 피타고라스로 구한다.",
-    "decisiveStep": "접선 길이의 동일성으로 CD=13을 구하고 두 접선 끝점의 높이 차5를 사용하여 지름2r를 피타고라스로 구한다."
+    "decisiveStep": "접선 길이의 동일성으로 CD=13을 구하고 두 접선 끝점의 높이 차5를 사용하여 지름2r를 피타고라스로 구한다.",
+    "image": "assets/images/19_연향중_2학기_기말_중3_수학/q13-problem.svg",
+    "imageAlt": "연향중 13번 문제: 지름 AB의 정확한 위쪽 반원, A·B 접선 AC=4cm·BD=9cm, 두 접선을 잇는 원의 접선 CD와 접점 E를 표시한다. CD의 값은 공개하지 않는다.",
+    "imageCaption": "연향중 13번 문제: 지름 AB의 정확한 위쪽 반원, A·B 접선 AC=4cm·BD=9cm, 두 접선을 잇는 원의 접선 CD와 접점 E를 표시한다. CD의 값은 공개하지 않는다.",
+    "imageSize": "full"
   },
     {
       "id": 14,
@@ -1062,8 +1082,8 @@ window.examData = {
         "canonicalKeyDebt": "Canonical enum/key dictionary was not conclusively matched; null retained pending R1/R2 source-of-truth lookup."
       },
       "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q18-solution-v2.svg",
-      "solutionImageAlt": "같은 파랑 25도는 현 AD에 대응하고, 주황 35도는 현 AB를 본다. 위쪽 y는 아래쪽 호 DB를 본다.",
-      "solutionImageCaption": "x=35°이고 ∠ABD=25°이다. 따라서 ∠DAB=120°이며 내접사각형에서 y=60°이다. x+y=95°, 정답은 ⑤이다.",
+      "solutionImageAlt": "접점에서 두 현이 만드는 각 — 같은 파랑 25도는 현 AD에 대응하고, 주황 35도는 현 AB를 본다. 위쪽 y는 아래쪽 호 DB를 본다.",
+      "solutionImageCaption": "접점에서 두 현이 만드는 각 — 같은 파랑 25도는 현 AD에 대응하고, 주황 35도는 현 AB를 본다. 위쪽 y는 아래쪽 호 DB를 본다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -1082,7 +1102,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "접선-현각으로 x와 삼각형의 두 각을 구하고 내접사각형의 대각 보각으로 y를 구한다.",
-    "decisiveStep": "접선-현각으로 x와 삼각형의 두 각을 구하고 내접사각형의 대각 보각으로 y를 구한다."
+    "decisiveStep": "접선-현각으로 x와 삼각형의 두 각을 구하고 내접사각형의 대각 보각으로 y를 구한다.",
+    "image": "assets/images/19_연향중_2학기_기말_중3_수학/q18-problem.svg",
+    "imageAlt": "접점에서 두 현이 만드는 각 — 원의 아래쪽 A를 지나는 직선 AT가 접선이다. 왼쪽 AD와 접선의 각은 25도, 오른쪽 AB와 접선의 각은 35도이다.",
+    "imageCaption": "접점에서 두 현이 만드는 각 — 원의 아래쪽 A를 지나는 직선 AT가 접선이다. 왼쪽 AD와 접선의 각은 25도, 오른쪽 AB와 접선의 각은 35도이다.",
+    "imageSize": "full"
   },
     {
       "id": 19,
@@ -1294,8 +1318,8 @@ window.examData = {
         "canonicalKeyDebt": "Canonical enum/key dictionary was not conclusively matched; null retained pending R1/R2 source-of-truth lookup."
       },
       "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q22-solution-v2.svg",
-      "solutionImageAlt": "물 위는 주황이고 물 아래 원의 완전한 둘레를 파랑으로 표시했다. 중심 O에서 현의 중점 D까지 수직선을 이었다.",
-      "solutionImageCaption": "r²=40²+(r−20)²이므로 r=50 cm이다. 통나무의 지름은 100 cm이다.",
+      "solutionImageAlt": "연향중 서술형 2 해설: 현 BD=CD=40, 높이 AD=20에서 r²=(r−20)²+40², r=50cm, 지름=100cm. 물 위의 원활꼴만 면 채움.",
+      "solutionImageCaption": "연향중 서술형 2 해설: 현 BD=CD=40, 높이 AD=20에서 r²=(r−20)²+40², r=50cm, 지름=100cm. 물 위의 원활꼴만 면 채움.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -1314,7 +1338,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "현의 수직이등분선에 중심을 두고 중심거리 r-20과 반현40을 피타고라스 식 r²=(r-20)²+40²에 넣어 반지름을 역산한다.",
-    "decisiveStep": "현의 수직이등분선에 중심을 두고 중심거리 r-20과 반현40을 피타고라스 식 r²=(r-20)²+40²에 넣어 반지름을 역산한다."
+    "decisiveStep": "현의 수직이등분선에 중심을 두고 중심거리 r-20과 반현40을 피타고라스 식 r²=(r-20)²+40²에 넣어 반지름을 역산한다.",
+    "image": "assets/images/19_연향중_2학기_기말_중3_수학/q22-problem.svg",
+    "imageAlt": "연향중 서술형 2: 물 위로 보이는 통나무의 둥근 원호와 검게 칠해진 원활꼴, AD=20cm, BD=DC=40cm, 직각을 표시한다. 미지 지름은 보이지 않는다.",
+    "imageCaption": "연향중 서술형 2: 물 위로 보이는 통나무의 둥근 원호와 검게 칠해진 원활꼴, AD=20cm, BD=DC=40cm, 직각을 표시한다. 미지 지름은 보이지 않는다.",
+    "imageSize": "full"
   },
     {
       "id": 23,
@@ -1348,8 +1376,8 @@ window.examData = {
         "canonicalKeyDebt": "Canonical enum/key dictionary was not conclusively matched; null retained pending R1/R2 source-of-truth lookup."
       },
       "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q23-solution-v2.svg",
-      "solutionImageAlt": "반원 전체와 주황 작은 호 CD, 원 바깥의 x를 서로 다른 색으로 표시해 대응을 비교한다.",
-      "solutionImageCaption": "x는 180°에서 30°를 뺀 값의 절반이므로 75°이다.",
+      "solutionImageAlt": "연향중 서술형 3 해설: 반원 호 AB는 180°, 중심각 COD=30°이므로 두 할선의 외각 x=(180°−30°)/2=75°를 호·각으로 나타낸다.",
+      "solutionImageCaption": "연향중 서술형 3 해설: 반원 호 AB는 180°, 중심각 COD=30°이므로 두 할선의 외각 x=(180°−30°)/2=75°를 호·각으로 나타낸다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -1368,7 +1396,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "외부 두 할선 각을 먼 반원호180°와 가까운 중심각호30° 차의 절반으로 구한다.",
-    "decisiveStep": "외부 두 할선 각을 먼 반원호180°와 가까운 중심각호30° 차의 절반으로 구한다."
+    "decisiveStep": "외부 두 할선 각을 먼 반원호180°와 가까운 중심각호30° 차의 절반으로 구한다.",
+    "image": "assets/images/19_연향중_2학기_기말_중3_수학/q23-problem.svg",
+    "imageAlt": "연향중 서술형 3 문제: 지름 AB의 위쪽 반원, 원주 위의 C·D, 중심각 COD=30°, 두 연장선 PAC/PDB와 바깥점 P의 미지각 x를 표시한다.",
+    "imageCaption": "연향중 서술형 3 문제: 지름 AB의 위쪽 반원, 원주 위의 C·D, 중심각 COD=30°, 두 연장선 PAC/PDB와 바깥점 P의 미지각 x를 표시한다.",
+    "imageSize": "full"
   }
   ],
   "sourceIdentity": {

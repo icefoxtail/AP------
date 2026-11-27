@@ -352,7 +352,12 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "외심각과 내심각의 결합",
-    "decisiveStep": "외심각96도와 내심각114도를 각각 얻어 두 배 차로 결합한다."
+    "decisiveStep": "외심각96도와 내심각114도를 각각 얻어 두 배 차로 결합한다.",
+    "solutionImage": "assets/images/21_왕운중_2학기_중간_중2_수학/q8-solution.svg",
+    "solutionImageAlt": "외심 O의 96°와 내심 I의 114°를 실제 중심에 그려 2·96−114=78 확인",
+    "solutionImageCaption": "외심 O의 96°와 내심 I의 114°를 실제 중심에 그려 2·96−114=78 확인",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 9,
@@ -491,8 +496,8 @@ window.examData = {
   },
   {
     "id": 12,
-    "imageSize": "tall",
-    "imageAlt": "ADB, ACF, BCE는 정삼각형이다. BCE와 A는 BC의 같은 쪽에 있다. 세 종류의 같은 길이는 각각 같은 색과 눈금이다. AFED만 칠했다.",
+    "imageSize": "full",
+    "imageAlt": "원본 문제의 정삼각형 세 개와 빠진 사각형 AFED 음영을 1:1 복구",
     "questionNumber": 12,
     "score": 4,
     "level": "중",
@@ -535,7 +540,13 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "정삼각형의 SAS 합동으로 평행사변형 판정",
-    "decisiveStep": "정삼각형의 등변·60도에서 두 SAS 합동을 구성하여 두 쌍 대변의 같음을 증명한다."
+    "decisiveStep": "정삼각형의 등변·60도에서 두 SAS 합동을 구성하여 두 쌍 대변의 같음을 증명한다.",
+    "solutionImage": "assets/images/21_왕운중_2학기_중간_중2_수학/q12-solution.svg",
+    "solutionImageAlt": "합동을 통해 AF∥DE·AD∥FE를 표시한 AFED 평행사변형 해설",
+    "solutionImageCaption": "합동을 통해 AF∥DE·AD∥FE를 표시한 AFED 평행사변형 해설",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90,
+    "imageCaption": "원본 문제의 정삼각형 세 개와 빠진 사각형 AFED 음영을 1:1 복구"
   },
   {
     "id": 13,

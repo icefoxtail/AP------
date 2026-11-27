@@ -136,7 +136,7 @@ window.questionBank = [
   {
     "id": 4,
     "imageSize": "full",
-    "imageAlt": "직사각형 ABCD에서 두 대각선 AC와 BD가 O에서 교차한다. 오른쪽 CD에 6 cm, 아랫변 BC에 8 cm, 대각선 BD에 10 cm가 적혀 있다.",
+    "imageAlt": "가로 8 cm, 세로 6 cm인 직사각형 ABCD의 두 대각선이 O에서 만난다.",
     "level": "하",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -166,9 +166,9 @@ window.questionBank = [
     "solution": "직사각형의 두 대각선은 길이가 같고 서로를 이등분한다.\n$BD=10$cm이므로 $OA=OB=5$cm이고, $AB=DC=6$cm이다.\n따라서 $\\triangle OAB$의 둘레는 $5+5+6=16$cm이다.\n따라서 정답은 ①이다.",
     "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q4-problem-visual-v2.svg",
     "solutionImage": "assets/images/26_신흥중_2학기_중간_중2_기출/q4-solution.svg",
-    "solutionImageAlt": "해설 그림: 직사각형 ABCD의 두 대각선이 만나는 점 O에서 OA, OB, OC, OD가 모두 같고 OA=OB=5cm, AB=6cm인 삼각형 OAB를 색칠한 그림. 둘레는 16cm이다. 색: 파란색으로 OA=OB=OC=OD.",
-    "solutionImageCaption": "△OAB에서 OA=OB=5cm, AB=6cm이므로 둘레는 16cm이다.",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "직사각형의 대각선은 서로를 이등분하므로 OA=OB=5 cm이고 AB=6 cm이다.",
+    "solutionImageCaption": "직사각형의 대각선은 서로를 이등분하므로 OA=OB=5 cm이고 AB=6 cm이다.",
+    "solutionImageSize": "full",
     "templateKey": "TPL_SPECIAL_QUADRILATERALS",
     "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
     "integrationPattern": "NONE",
@@ -177,7 +177,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "primaryMethod": "직사각형의 같은 대각선이 서로를 이등분",
-    "decisiveStep": "대각선 반 길이를 OA=OB로 읽고 대변 길이를 더해 삼각형 둘레를 만든다."
+    "decisiveStep": "대각선 반 길이를 OA=OB로 읽고 대변 길이를 더해 삼각형 둘레를 만든다.",
+    "imageCaption": "가로 8 cm, 세로 6 cm인 직사각형 ABCD의 두 대각선이 O에서 만난다.",
+    "solutionImageScale": 90
   },
   {
     "id": 5,
@@ -414,7 +416,7 @@ window.questionBank = [
   {
     "id": 10,
     "imageSize": "full",
-    "imageAlt": "평행사변형 ABCD에서 AB는 12 cm이고 BC는 18 cm이다. B의 각을 나누는 선이 위쪽 변 AD의 F, 오른쪽 변 CD를 연장한 E와 만난다.",
+    "imageAlt": "평행사변형 ABCD에서 AB=12 cm, BC=18 cm이고 B의 각 이등분선 B-F-E가 CD를 E까지 실선으로 연장한 선과 만난다.",
     "level": "상",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -460,12 +462,13 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "difficultyBucket": 3,
     "primaryMethod": "각 이등분·평행선으로 얻은 길이를 닮음비에 전달",
-    "decisiveStep": "ABF를 이등변으로 만들어 AF,FD를 정한 뒤 ABF~DEF의 대응변 비로 DE를 구한다."
+    "decisiveStep": "ABF를 이등변으로 만들어 AF,FD를 정한 뒤 ABF~DEF의 대응변 비로 DE를 구한다.",
+    "imageCaption": "평행사변형 ABCD에서 AB=12 cm, BC=18 cm이고 B의 각 이등분선 B-F-E가 CD를 E까지 실선으로 연장한 선과 만난다."
   },
   {
     "id": 11,
     "imageSize": "full",
-    "imageAlt": "왼쪽 삼각형 ABC와 오른쪽 삼각형 DEF를 나란히 보인다. 왼쪽 AB는 8 cm이고 오른쪽의 대응변 DE는 10 cm이다.",
+    "imageAlt": "원본처럼 닮은 두 삼각형 ABC와 DEF의 내부만 연하게 표시하고, 대응변 AB=8 cm와 DE=10 cm를 적는다.",
     "level": "하",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -502,7 +505,8 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "primaryMethod": "닮음비의 제곱으로 넓이비",
-    "decisiveStep": "대응변 8:10을 4:5로 정리하고 넓이비 16:25를 적용한다."
+    "decisiveStep": "대응변 8:10을 4:5로 정리하고 넓이비 16:25를 적용한다.",
+    "imageCaption": "원본처럼 닮은 두 삼각형 ABC와 DEF의 내부만 연하게 표시하고, 대응변 AB=8 cm와 DE=10 cm를 적는다."
   },
   {
     "id": 12,
@@ -553,7 +557,7 @@ window.questionBank = [
   {
     "id": 13,
     "imageSize": "full",
-    "imageAlt": "평행사변형 ABCD의 왼쪽 AB는 18 cm, 위쪽 AD는 24 cm이다. A의 이등분선은 아래쪽 E, D의 이등분선은 아래쪽 F에 닿는다. 밑변에서 B, F, E, C 순서이다.",
+    "imageAlt": "평행사변형 ABCD의 AD=24 cm, AB=18 cm이고 A-E, D-F는 각 꼭짓점의 각 이등분선이다. 밑변의 점은 B-F-E-C 순서이다.",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -594,7 +598,8 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 3,
     "primaryMethod": "평행사변형의 두 각 이등분선이 만드는 겹친 선분 계산",
-    "decisiveStep": "두 이등분선의 엇각을 이용해 BE=AB, CF=CD를 얻고 겹치는 선분 FE를 계산한다."
+    "decisiveStep": "두 이등분선의 엇각을 이용해 BE=AB, CF=CD를 얻고 겹치는 선분 FE를 계산한다.",
+    "imageCaption": "평행사변형 ABCD의 AD=24 cm, AB=18 cm이고 A-E, D-F는 각 꼭짓점의 각 이등분선이다. 밑변의 점은 B-F-E-C 순서이다."
   },
   {
     "id": 14,
@@ -814,7 +819,7 @@ window.questionBank = [
   {
     "id": 19,
     "imageSize": "full",
-    "imageAlt": "입구가 위에 있고 꼭짓점이 아래에 있는 원뿔 그릇이다. 전체 높이의 3분의 1까지 아래쪽에 물을 채웠다. 물의 수면과 원뿔의 입구를 타원으로 보인다.",
+    "imageAlt": "꼭짓점이 아래인 원뿔 그릇에서 물은 전체 높이의 1/3 지점까지만 차 있다.",
     "level": "상",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -858,12 +863,13 @@ window.questionBank = [
     ],
     "difficultyBucket": 3,
     "primaryMethod": "원뿔 높이비의 세제곱을 채우는 시간비로 변환",
-    "decisiveStep": "작은 원뿔과 전체 원뿔의 부피비를 구한 뒤 일정 유량으로 시간비에 옮기고 이미 지난 시간을 뺀다."
+    "decisiveStep": "작은 원뿔과 전체 원뿔의 부피비를 구한 뒤 일정 유량으로 시간비에 옮기고 이미 지난 시간을 뺀다.",
+    "imageCaption": "꼭짓점이 아래인 원뿔 그릇에서 물은 전체 높이의 1/3 지점까지만 차 있다."
   },
   {
     "id": 20,
     "imageSize": "full",
-    "imageAlt": "정사각형 ABCD 안의 직선 BE에 A와 C에서 수선을 내려 F와 G에 닿는다. AF는 18 cm, CG는 12 cm이다. 삼각형 AFG를 칠했다.",
+    "imageAlt": "정사각형 ABCD에서 BFGE는 한 직선 위에 있고 AF와 CG는 그 선에 수직이다. 원본처럼 삼각형 AFG만 옅게 구분한다.",
     "level": "상",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -907,7 +913,8 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "difficultyBucket": 3,
     "primaryMethod": "같은 빗변과 한 예각으로 직각삼각형 합동",
-    "decisiveStep": "정사각형의 같은 변과 직각 관계에서 ABF,BCG의 RHA 합동을 얻어 대응변을 옮긴 뒤 목표 삼각형 넓이를 구한다."
+    "decisiveStep": "정사각형의 같은 변과 직각 관계에서 ABF,BCG의 RHA 합동을 얻어 대응변을 옮긴 뒤 목표 삼각형 넓이를 구한다.",
+    "imageCaption": "정사각형 ABCD에서 BFGE는 한 직선 위에 있고 AF와 CG는 그 선에 수직이다. 원본처럼 삼각형 AFG만 옅게 구분한다."
   },
   {
     "id": 21,
@@ -1000,8 +1007,8 @@ window.questionBank = [
   },
   {
     "id": 23,
-    "imageSize": "large",
-    "imageAlt": "삼각형 ABC에서 AC와 BC는 같은 길이이고 O는 이 삼각형의 외심이다. 삼각형 ABO의 내심 I와 외심 O′를 A에 각각 이었다.",
+    "imageSize": "full",
+    "imageAlt": "AC=BC인 삼각형 ABC의 외심 O, 삼각형 ABO의 내심 I와 외심 O′를 표시하고 A에서 이 점들로 실선을 잇는다.",
     "level": "상",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -1037,6 +1044,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 4,
     "primaryMethod": "중첩된 두 외심과 내심의 각 관계",
-    "decisiveStep": "내심 반각 y를 공통 변수로 잡고 원래 외심·작은 삼각형 외심의 등거리 및 수직이등분선 위치를 함께 연결한다."
+    "decisiveStep": "내심 반각 y를 공통 변수로 잡고 원래 외심·작은 삼각형 외심의 등거리 및 수직이등분선 위치를 함께 연결한다.",
+    "imageCaption": "AC=BC인 삼각형 ABC의 외심 O, 삼각형 ABO의 내심 I와 외심 O′를 표시하고 A에서 이 점들로 실선을 잇는다."
   }
 ];

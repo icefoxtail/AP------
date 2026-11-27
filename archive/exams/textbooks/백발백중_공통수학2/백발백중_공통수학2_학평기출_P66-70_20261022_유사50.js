@@ -48,8 +48,9 @@ window.questionBank = [
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "원본 PDF 인쇄 P66 Q01: 제2사분면의 중심, 두 좌표축 동시 접선, 곡선 위의 중심 조건으로 원 방정식 계수합 산출. 구조 동일.",
     "solutionImage": "assets/images/백발백중_공통수학2_학평기출_P66-70_20261022_유사50/BV-BAKBAL-H-COM2-P66-Q01-T1-R3-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "제2사분면의 중심 C(-2,2)에서 두 좌표축까지의 거리는 각각 반지름 2이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "제2사분면의 중심 C(-2,2)에서 두 좌표축까지의 거리는 각각 반지름 2이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P66-Q01-S1-R3",
@@ -99,8 +100,9 @@ window.questionBank = [
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "원본 PDF 인쇄 P66 Q01: 제2사분면의 중심, 두 좌표축 동시 접선, 곡선 위의 중심 조건으로 원 방정식 계수합 산출. 구조 동일.",
     "solutionImage": "assets/images/백발백중_공통수학2_학평기출_P66-70_20261022_유사50/BV-BAKBAL-H-COM2-P66-Q01-S1-R3-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "제2사분면의 중심 C(-3,3)에서 두 좌표축까지의 거리는 각각 반지름 3이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "제2사분면의 중심 C(-3,3)에서 두 좌표축까지의 거리는 각각 반지름 3이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P66-Q01-S2-R3",
@@ -150,8 +152,9 @@ window.questionBank = [
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "원본 PDF 인쇄 P66 Q01: 제2사분면의 중심, 두 좌표축 동시 접선, 곡선 위의 중심 조건으로 원 방정식 계수합 산출. 구조 동일.",
     "solutionImage": "assets/images/백발백중_공통수학2_학평기출_P66-70_20261022_유사50/BV-BAKBAL-H-COM2-P66-Q01-S2-R3-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "제2사분면의 중심 C(-4,4)에서 두 좌표축까지의 거리는 각각 반지름 4이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "제2사분면의 중심 C(-4,4)에서 두 좌표축까지의 거리는 각각 반지름 4이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P66-Q02-T1-R3",
@@ -201,8 +204,9 @@ window.questionBank = [
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "인쇄 P66 Q02: 제1사분면의 중심, 두 좌표축에 동시에 접하는 원, 이차함수 그래프 위의 중심, 원의 넓이 구조를 유지.",
     "solutionImage": "assets/images/백발백중_공통수학2_학평기출_P66-70_20261022_유사50/BV-BAKBAL-H-COM2-P66-Q02-T1-R3-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "제1사분면의 중심 C(4,4)에서 두 좌표축까지의 거리는 각각 반지름 4이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "제1사분면의 중심 C(4,4)에서 두 좌표축까지의 거리는 각각 반지름 4이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P66-Q02-S1-R3",
@@ -252,8 +256,9 @@ window.questionBank = [
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "인쇄 P66 Q02: 제1사분면의 중심, 두 좌표축에 동시에 접하는 원, 이차함수 그래프 위의 중심, 원의 넓이 구조를 유지.",
     "solutionImage": "assets/images/백발백중_공통수학2_학평기출_P66-70_20261022_유사50/BV-BAKBAL-H-COM2-P66-Q02-S1-R3-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "제1사분면의 중심 C(5,5)에서 두 좌표축까지의 거리는 각각 반지름 5이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "제1사분면의 중심 C(5,5)에서 두 좌표축까지의 거리는 각각 반지름 5이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P66-Q02-S2-R3",
@@ -303,8 +308,9 @@ window.questionBank = [
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "인쇄 P66 Q02: 제1사분면의 중심, 두 좌표축에 동시에 접하는 원, 이차함수 그래프 위의 중심, 원의 넓이 구조를 유지.",
     "solutionImage": "assets/images/백발백중_공통수학2_학평기출_P66-70_20261022_유사50/BV-BAKBAL-H-COM2-P66-Q02-S2-R3-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "제1사분면의 중심 C(6,6)에서 두 좌표축까지의 거리는 각각 반지름 6이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "제1사분면의 중심 C(6,6)에서 두 좌표축까지의 거리는 각각 반지름 6이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P67-Q03-T1-R3",
@@ -456,8 +462,9 @@ window.questionBank = [
     "integrationPattern": "GEOMETRY_ALGEBRA",
     "metaRationale": "인쇄 P67 Q03: 원 중심이 지정 직선 위, 그 직선과 원의 두 교점 A/B, 원 위 P로 만든 삼각형 넓이의 최댓값을 이용해 a+b 산출. 수치 변형.",
     "solutionImage": "assets/images/백발백중_공통수학2_학평기출_P66-70_20261022_유사50/BV-BAKBAL-H-COM2-P67-Q03-S2-R3-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "직선 AB는 중심 O를 지나 원의 지름이 되고, 반지름 OP가 AB에 수직일 때 삼각형 ABP의 넓이가 최대이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "직선 AB는 중심 O를 지나 원의 지름이 되고, 반지름 OP가 AB에 수직일 때 삼각형 ABP의 넓이가 최대이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P67-Q04-T1-R3",
@@ -507,8 +514,9 @@ window.questionBank = [
     "integrationPattern": "GEOMETRY_ALGEBRA",
     "metaRationale": "인쇄 P67 Q04: 원의 미정계수 a를 중심의 직선 조건으로 결정하고, 지름 양 끝 A/B 및 원 위 P로 만든 삼각형 넓이의 최댓값을 구하는 구조. 수치 변형.",
     "solutionImage": "assets/images/백발백중_공통수학2_학평기출_P66-70_20261022_유사50/BV-BAKBAL-H-COM2-P67-Q04-T1-R3-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "직선 AB는 중심 O를 지나 원의 지름이 되고, 반지름 OP가 AB에 수직일 때 삼각형 ABP의 넓이가 최대이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "직선 AB는 중심 O를 지나 원의 지름이 되고, 반지름 OP가 AB에 수직일 때 삼각형 ABP의 넓이가 최대이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P67-Q04-S1-R3",
@@ -558,8 +566,9 @@ window.questionBank = [
     "integrationPattern": "GEOMETRY_ALGEBRA",
     "metaRationale": "인쇄 P67 Q04: 원의 미정계수 a를 중심의 직선 조건으로 결정하고, 지름 양 끝 A/B 및 원 위 P로 만든 삼각형 넓이의 최댓값을 구하는 구조. 수치 변형.",
     "solutionImage": "assets/images/백발백중_공통수학2_학평기출_P66-70_20261022_유사50/BV-BAKBAL-H-COM2-P67-Q04-S1-R3-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "직선 AB는 중심 O를 지나 원의 지름이 되고, 반지름 OP가 AB에 수직일 때 삼각형 ABP의 넓이가 최대이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "직선 AB는 중심 O를 지나 원의 지름이 되고, 반지름 OP가 AB에 수직일 때 삼각형 ABP의 넓이가 최대이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P67-Q04-S2-R3",
@@ -609,8 +618,9 @@ window.questionBank = [
     "integrationPattern": "GEOMETRY_ALGEBRA",
     "metaRationale": "인쇄 P67 Q04: 원의 미정계수 a를 중심의 직선 조건으로 결정하고, 지름 양 끝 A/B 및 원 위 P로 만든 삼각형 넓이의 최댓값을 구하는 구조. 수치 변형.",
     "solutionImage": "assets/images/백발백중_공통수학2_학평기출_P66-70_20261022_유사50/BV-BAKBAL-H-COM2-P67-Q04-S2-R3-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "직선 AB는 중심 O를 지나 원의 지름이 되고, 반지름 OP가 AB에 수직일 때 삼각형 ABP의 넓이가 최대이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "직선 AB는 중심 O를 지나 원의 지름이 되고, 반지름 OP가 AB에 수직일 때 삼각형 ABP의 넓이가 최대이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P68-Q05-T1-R3",
@@ -660,12 +670,13 @@ window.questionBank = [
     "integrationPattern": "GEOMETRY_ALGEBRA",
     "metaRationale": "인쇄 P68 Q05: 두 점의 내분점에서 원과 직선이 접하는 조건을 이용하여 a+b를 구하는 구조. 좌표와 내분비를 변형.",
     "solutionImage": "assets/images/백발백중_공통수학2_학평기출_P66-70_20261022_유사50/BV-BAKBAL-H-COM2-P68-Q05-T1-R3-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "AB의 2:1 내분점 P에서 반지름 OP와 접선 AB가 수직인 원을 나타낸다.",
+    "solutionImageSize": "full",
     "image": "assets/images/백발백중_공통수학2_학평기출_P66-70_20261022_유사50/BV-BAKBAL-H-COM2-P68-Q05-T1-R3-problem.svg",
     "imageAlt": "AB의 2:1 내분점 P가 선분 AB 위에 있음을 같은 간격의 세 조각으로 표시한다.",
     "imageCaption": "AB의 2:1 내분점 P가 선분 AB 위에 있음을 같은 간격의 세 조각으로 표시한다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageCaption": "AB의 2:1 내분점 P에서 반지름 OP와 접선 AB가 수직인 원을 나타낸다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P68-Q05-S1-R3",

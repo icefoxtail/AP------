@@ -1034,7 +1034,7 @@ window.questionBank = [
     "choices": [],
     "answer": "$40^\\circ$",
     "solution": "직각과 평각을 이용해 주어진 비례 관계에서 각의 크기를 차례로 구한다.\n$\\overline{AE} \\perp \\overline{BO}$이므로 $\\angle AOB=90^\\circ$이다.\n$\\angle AOB=6\\angle BOC$이므로 $90^\\circ=6\\angle BOC$에서 $\\angle BOC=15^\\circ$이다.\n$\\angle AOC=\\angle AOB+\\angle BOC=90^\\circ+15^\\circ=105^\\circ$이다.\n점 $O$에서 $\\angle AOE$는 평각이므로 $\\angle COE=180^\\circ-105^\\circ=75^\\circ$이다.\n$\\angle COE=3\\angle COD$이므로 $75^\\circ=3\\angle COD$에서 $\\angle COD=25^\\circ$이다.\n따라서 $\\angle BOD=\\angle BOC+\\angle COD=15^\\circ+25^\\circ=40^\\circ$이다.",
-    "image": "assets/images/25_왕의중_2학기_중간_중1_수학/q21.png",
+    "image": "assets/images/25_왕의중_2학기_중간_중1_수학/q21-problem.svg",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -1056,7 +1056,10 @@ window.questionBank = [
     "primaryMethod": "직각·평각과 각의 비",
     "decisiveStep": "수직인 두 선에서 얻는 직각, 연속 두 배수조건과 평각을 연결한다. 기존 ANGLE_RATIO의 perpendicular pair + multiple + straight + second ratio 정의에 정확하다.",
     "rpmPrimaryPath": {"curriculumKey": "2022", "courseKey": "M1-2", "L1": "기본 도형", "L2": "기본 도형", "L3": "각", "L4": "각의 크기"},
-    "courseKey": "M1-2"
+    "courseKey": "M1-2",
+    "imageAlt": "직선 AE 위 O에서 직각 OB를 올리고, 그 오른쪽에 OC와 OD 두 반직선이 놓인 문제 그림",
+    "imageCaption": "직선 AE 위 O에서 직각 OB를 올리고, 그 오른쪽에 OC와 OD 두 반직선이 놓인 문제 그림",
+    "imageSize": "full"
   },
   {
     "id": 22,
@@ -1174,7 +1177,7 @@ window.questionBank = [
     "choices": [],
     "answer": "(1) $\\triangle DCB$ (SAS 합동), (2) $60^\\circ$",
     "solution": "정삼각형의 성질로 SAS 합동을 보인 뒤, 합동으로 옮긴 각과 삼각형의 외각을 이용한다.\n(1) $\\triangle ACD$가 정삼각형이므로 $\\overline{CA}=\\overline{CD}$이고 $\\angle ACD=60^\\circ$이다.\n$\\triangle CBE$가 정삼각형이므로 $\\overline{CE}=\\overline{CB}$이고 $\\angle BCE=60^\\circ$이다.\n점 $C$는 $\\overline{AB}$ 위의 점이므로 $\\angle DCE=180^\\circ-60^\\circ-60^\\circ=60^\\circ$이다.\n이때 $\\angle ACE=\\angle ACD+\\angle DCE=60^\\circ+60^\\circ=120^\\circ$이고, $\\angle DCB=\\angle DCE+\\angle ECB=60^\\circ+60^\\circ=120^\\circ$이므로 $\\angle ACE=\\angle DCB$이다.\n따라서 $\\triangle ACE$와 $\\triangle DCB$에서 $\\overline{CA}=\\overline{CD}$, $\\overline{CE}=\\overline{CB}$, $\\angle ACE=\\angle DCB$이므로 두 삼각형은 SAS 합동이다.\n즉 $\\triangle ACE \\equiv \\triangle DCB$이다.\n(2) (1)의 합동에서 대응각이 같으므로 $\\angle CAE=\\angle CDB$이다.\n점 $F$는 $\\overline{AE}$와 $\\overline{DB}$의 교점이고, $\\triangle AFD$에서 $\\angle AFD$의 외각인 $\\angle GFE$를 생각한다.\n$\\triangle AHC$와 $\\triangle FHD$에서 $\\angle AHC=\\angle FHD$(맞꼭지각)이고 $\\angle HAC=\\angle HDF$이므로 나머지 한 각도 같아 $\\angle DFH=\\angle ACH=\\angle ACD=60^\\circ$이다.\n$\\angle GFE$는 $\\angle DFH$의 맞꼭지각이므로 $\\angle GFE=60^\\circ$이다.\n따라서 $\\angle GFE=60^\\circ$이다.",
-    "image": "assets/images/25_왕의중_2학기_중간_중1_수학/q24.png",
+    "image": "assets/images/25_왕의중_2학기_중간_중1_수학/q24-problem.svg",
     "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
     "subUnit": "작도와 합동",
     "subUnitConfidence": "rule_inferred",
@@ -1196,6 +1199,9 @@ window.questionBank = [
     "primaryMethod": "정삼각형 배치의 SAS 합동",
     "decisiveStep": "두 정삼각형의 두 변과 끼인각으로 보조삼각형을 합동시킨 뒤 대응각을 교차선에 옮겨 목표각을 구한다. 이미 등록된 EQUILATERAL_SAS_TRANSFER 재사용.",
     "rpmPrimaryPath": {"curriculumKey": "2022", "courseKey": "M1-2", "L1": "기본 도형", "L2": "작도와 합동", "L3": "삼각형의 합동", "L4": "SAS 합동"},
-    "courseKey": "M1-2"
+    "courseKey": "M1-2",
+    "imageAlt": "정삼각형 ACD와 CBE의 내부를 칠하지 않고 두 선분 AE, DB와 세 교점 F, G, H를 원본 위치에 표시한다.",
+    "imageCaption": "정삼각형 ACD와 CBE의 내부를 칠하지 않고 두 선분 AE, DB와 세 교점 F, G, H를 원본 위치에 표시한다.",
+    "imageSize": "full"
   }
 ];

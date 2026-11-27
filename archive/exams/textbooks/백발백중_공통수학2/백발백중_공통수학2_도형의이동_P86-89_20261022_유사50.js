@@ -382,8 +382,9 @@ window.questionBank = [
     "confidence": "MEDIUM_TEXT_ONLY",
     "decisionOwner": "GPT_BOOK_MATH_META",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P86-89_20261022_유사50/BV-BAKBAL-H-COM2-P86-Q03-T1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원의 중심 이동량 (3, 3)과 함께 옮겨진 직선 2x-y-2=0",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원의 중심 이동량 (3, 3)과 함께 옮겨진 직선 2x-y-2=0"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P86-Q03-S1-R2",
@@ -437,8 +438,9 @@ window.questionBank = [
     "confidence": "MEDIUM_TEXT_ONLY",
     "decisionOwner": "GPT_BOOK_MATH_META",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P86-89_20261022_유사50/BV-BAKBAL-H-COM2-P86-Q03-S1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원의 중심 이동량 (-2, 2)과 함께 옮겨진 직선 x+2y-6=0",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원의 중심 이동량 (-2, 2)과 함께 옮겨진 직선 x+2y-6=0"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P86-Q03-S2-R2",
@@ -547,8 +549,9 @@ window.questionBank = [
     "confidence": "MEDIUM_TEXT_ONLY",
     "decisionOwner": "GPT_BOOK_MATH_META",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P86-89_20261022_유사50/BV-BAKBAL-H-COM2-P86-Q04-T1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원의 중심 이동 (3, -3)를 포물선 꼭짓점에 적용",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원의 중심 이동 (3, -3)를 포물선 꼭짓점에 적용"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P86-Q04-S1-R2",
@@ -602,8 +605,9 @@ window.questionBank = [
     "confidence": "MEDIUM_TEXT_ONLY",
     "decisionOwner": "GPT_BOOK_MATH_META",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P86-89_20261022_유사50/BV-BAKBAL-H-COM2-P86-Q04-S1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원의 중심 이동 (2, 4)를 포물선 꼭짓점에 적용",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원의 중심 이동 (2, 4)를 포물선 꼭짓점에 적용"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P86-Q04-S2-R2",
@@ -712,8 +716,9 @@ window.questionBank = [
     "confidence": "MEDIUM_TEXT_ONLY",
     "decisionOwner": "GPT_BOOK_MATH_META",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P86-89_20261022_유사50/BV-BAKBAL-H-COM2-P86-Q05-T1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "평행이동·y=x 대칭 후 직선 y-x-1=0은 원의 중심을 지난다",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "평행이동·y=x 대칭 후 직선 y-x-1=0은 원의 중심을 지난다"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P86-Q05-S1-R2",
@@ -767,8 +772,9 @@ window.questionBank = [
     "confidence": "MEDIUM_TEXT_ONLY",
     "decisionOwner": "GPT_BOOK_MATH_META",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P86-89_20261022_유사50/BV-BAKBAL-H-COM2-P86-Q05-S1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "평행이동·y=x 대칭 후 직선 x+2y+1=0은 원의 중심을 지난다",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "평행이동·y=x 대칭 후 직선 x+2y+1=0은 원의 중심을 지난다"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P86-Q05-S2-R2",
@@ -822,8 +828,9 @@ window.questionBank = [
     "confidence": "MEDIUM_TEXT_ONLY",
     "decisionOwner": "GPT_BOOK_MATH_META",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P86-89_20261022_유사50/BV-BAKBAL-H-COM2-P86-Q05-S2-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "평행이동·y=x 대칭 후 직선 x+y-5=0은 원의 중심을 지난다",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "평행이동·y=x 대칭 후 직선 x+y-5=0은 원의 중심을 지난다"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P87-Q06-T1-R2",

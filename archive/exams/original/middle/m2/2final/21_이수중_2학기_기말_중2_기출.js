@@ -50,8 +50,8 @@ window.questionBank = [
   },
   {
     "id": 2,
-    "imageSize": "tall",
-    "imageAlt": "왼쪽 ABC와 오른쪽 DEF는 닮음이다. 각 A와 D가 65°이고 AB=15 cm, AC=9 cm, DE=5 cm이다.",
+    "imageSize": "full",
+    "imageAlt": "삼각형 ABC와 DEF",
     "questionType": "객관식",
     "tags": [
       "도형의 닮음",
@@ -97,7 +97,8 @@ window.questionBank = [
     "solutionImageCaption": "닮음의 순서에서 AB와 DE, AC와 DF가 각각 대응하므로 닮음비는 15:5=3:1이고, AC=9의 대응변은 DF=3 cm이다. 따라서 답은 ① 3 cm이다.",
     "solutionImageSize": "full",
     "primaryMethod": "주어진 닮음의 대응변비",
-    "decisiveStep": "닮음기호의순서로AB↔DE,AC↔DF를읽고3:1비로DF를구한다."
+    "decisiveStep": "닮음기호의순서로AB↔DE,AC↔DF를읽고3:1비로DF를구한다.",
+    "imageCaption": "삼각형 ABC와 DEF"
   },
   {
     "id": 3,
@@ -155,8 +156,8 @@ window.questionBank = [
   },
   {
     "id": 4,
-    "imageSize": "tall",
-    "imageAlt": "A와 B를 잇는 빗변 위에 D가 있다. 점 C에서 빗변으로 수선을 내려 C와 D에 각각 직각이 표시되어 있다.",
+    "imageSize": "full",
+    "imageAlt": "직각삼각형 ABC와 수선의 발 D",
     "questionType": "객관식",
     "tags": [
       "직각삼각형",
@@ -202,12 +203,13 @@ window.questionBank = [
     "solutionImageCaption": "세 직각삼각형은 서로 닮는다. BC²=DB×AB가 맞으므로 BC²=DB×AD라고 한 ④가 옳지 않다.",
     "solutionImageSize": "full",
     "primaryMethod": "직각삼각형 높이가 만드는 세 닮음 성질",
-    "decisiveStep": "두직각과공통예각의AA닮음에서직각변·높이의제곱관계와대응각명제를판정한다."
+    "decisiveStep": "두직각과공통예각의AA닮음에서직각변·높이의제곱관계와대응각명제를판정한다.",
+    "imageCaption": "직각삼각형 ABC와 수선의 발 D"
   },
   {
     "id": 5,
-    "imageSize": "tall",
-    "imageAlt": "AB, BC, AC는 각각 8 cm, 12 cm, 10 cm이다. 그 중점 D, E, F를 이었다.",
+    "imageSize": "full",
+    "imageAlt": "삼각형 ABC와 세 변의 중점 D, E, F",
     "questionType": "객관식",
     "tags": [
       "중점연결정리",
@@ -255,12 +257,13 @@ window.questionBank = [
     "solutionImageCaption": "DE=10÷2=5 cm, EF=8÷2=4 cm, FD=12÷2=6 cm이다. 둘레는 15 cm이고 정답은 ③이다.",
     "solutionImageSize": "full",
     "primaryMethod": "중점삼각형의 세변과 둘레",
-    "decisiveStep": "세중점연결선이원래변의절반임을각변에적용하여합한다."
+    "decisiveStep": "세중점연결선이원래변의절반임을각변에적용하여합한다.",
+    "imageCaption": "삼각형 ABC와 세 변의 중점 D, E, F"
   },
   {
     "id": 6,
-    "imageSize": "tall",
-    "imageAlt": "가로 평행선 l, m, n을 두 사선이 가로지른다. 왼쪽 사선은 위 7 cm와 아래 x cm, 오른쪽 사선은 위 6 cm와 아래 12 cm이다.",
+    "imageSize": "full",
+    "imageAlt": "평행한 세 직선 l, m, n",
     "questionType": "객관식",
     "tags": [
       "평행선",
@@ -306,12 +309,13 @@ window.questionBank = [
     "solutionImageCaption": "같은 높이 구간의 비를 이용하면 7:x=6:12이다. 따라서 x=14 cm이고 정답은 ⑤이다.",
     "solutionImageSize": "full",
     "primaryMethod": "세 평행선의 대응 선분비",
-    "decisiveStep": "7:x=6:12의대응비를바로풀어x를구한다."
+    "decisiveStep": "7:x=6:12의대응비를바로풀어x를구한다.",
+    "imageCaption": "평행한 세 직선 l, m, n"
   },
   {
     "id": 7,
-    "imageSize": "tall",
-    "imageAlt": "아래 BC=8 cm와 위 DE=y는 서로 평행하다. A에서 B로 6 cm, D로 9 cm, E로 7.5 cm이며 C 쪽은 x이다.",
+    "imageSize": "full",
+    "imageAlt": "BC와 DE가 평행한 그림",
     "questionType": "객관식",
     "tags": [
       "평행선",
@@ -357,12 +361,13 @@ window.questionBank = [
     "solutionImageCaption": "DA:AB=9:6이고 해당 변은 EA:AC와 ED:BC이다. 그러므로 x=5 cm, y=12 cm, x+y=17 cm이고 정답은 ④이다.",
     "solutionImageSize": "full",
     "primaryMethod": "교차 삼각형의 같은 닮음비 적용",
-    "decisiveStep": "평행선과교차선의3:2비를x와y에각각적용하고합한다."
+    "decisiveStep": "평행선과교차선의3:2비를x와y에각각적용하고합한다.",
+    "imageCaption": "BC와 DE가 평행한 그림"
   },
   {
     "id": 8,
-    "imageSize": "tall",
-    "imageAlt": "AG는 4 cm이다. D는 BC, E는 AB, F는 BD의 중점이다. E에서 F로 선을 이었다.",
+    "imageSize": "full",
+    "imageAlt": "무게중심 G와 중점 D, E, F",
     "questionType": "객관식",
     "tags": [
       "무게중심",
@@ -411,12 +416,13 @@ window.questionBank = [
     "solutionImageCaption": "AG:GD=2:1이므로 AD=6 cm이다. E와 F는 △ABD 두 변의 중점이므로 EF=AD÷2=3 cm이고 정답은 ②이다.",
     "solutionImageSize": "full",
     "primaryMethod": "무게중심의 전체 중선과 중점선 연결",
-    "decisiveStep": "AG:GD로AD를완성한뒤별도삼각형ABD의중점선EF=AD/2에넣는다."
+    "decisiveStep": "AG:GD로AD를완성한뒤별도삼각형ABD의중점선EF=AD/2에넣는다.",
+    "imageCaption": "무게중심 G와 중점 D, E, F"
   },
   {
     "id": 9,
-    "imageSize": "tall",
-    "imageAlt": "윗변 AD는 2 cm, 왼쪽 높이 AB는 4 cm, 오른쪽 기울어진 DC는 5 cm이다. 밑변 BC는 x cm이다.",
+    "imageSize": "full",
+    "imageAlt": "직각사다리꼴",
     "questionType": "객관식",
     "tags": [
       "사다리꼴",
@@ -464,12 +470,13 @@ window.questionBank = [
     "solutionImageCaption": "높이를 내려 얻는 직각삼각형에서 (x−2)²+4²=5²이다. x−2=3이므로 x=5이고 정답은 ①이다.",
     "solutionImageSize": "full",
     "primaryMethod": "사다리꼴 밑변 차의 피타고라스",
-    "decisiveStep": "가로길이x-2와높이4,빗변5의제곱관계에서양의차3을고른다."
+    "decisiveStep": "가로길이x-2와높이4,빗변5의제곱관계에서양의차3을고른다.",
+    "imageCaption": "직각사다리꼴"
   },
   {
     "id": 10,
-    "imageSize": "tall",
-    "imageAlt": "E, B, C는 한 직선 위에 있다. ∠E와 ∠C에 직각 표시가 있고, DE=6 cm과 AC=8 cm이다. 가운데 ABD가 색칠되어 있다.",
+    "imageSize": "full",
+    "imageAlt": "세 점 E, B, C가 한 직선 위에 있는 그림",
     "questionType": "객관식",
     "tags": [
       "합동",
@@ -517,7 +524,8 @@ window.questionBank = [
     "solutionImageCaption": "두 빗변 AB와 BD는 각각 10 cm이다. ∠ABD가 직각이므로 △ABD의 넓이는 10×10÷2=50 cm²이고 정답은 ④이다.",
     "solutionImageSize": "full",
     "primaryMethod": "같은 빗변의 제곱을 사이 삼각형 넓이로 전환",
-    "decisiveStep": "주어진합동에서두빗변동등과사이각90°를얻고AB²=6²+8²를사이삼각형넓이AB²/2로옮긴다."
+    "decisiveStep": "주어진합동에서두빗변동등과사이각90°를얻고AB²=6²+8²를사이삼각형넓이AB²/2로옮긴다.",
+    "imageCaption": "세 점 E, B, C가 한 직선 위에 있는 그림"
   },
   {
     "id": 11,
@@ -704,8 +712,8 @@ window.questionBank = [
   },
   {
     "id": 15,
-    "imageSize": "tall",
-    "imageAlt": "원 위에 A, B, C, D, E가 차례로 놓인다.",
+    "imageSize": "full",
+    "imageAlt": "원 위의 다섯 점",
     "questionType": "객관식",
     "tags": [
       "경우의 수",
@@ -753,7 +761,8 @@ window.questionBank = [
     "solutionImageCaption": "한 직선은 원과 많아야 두 점에서 만나므로 세 점을 고르면 언제나 삼각형 하나가 된다. 모두 10개이고 정답은 ①이다.",
     "solutionImageSize": "full",
     "primaryMethod": "원 위 세 점의 삼각형 선택",
-    "decisiveStep": "원위서로다른세점은공선이아니므로5점중3점을순서없이선택하여삼각형을센다."
+    "decisiveStep": "원위서로다른세점은공선이아니므로5점중3점을순서없이선택하여삼각형을센다.",
+    "imageCaption": "원 위의 다섯 점"
   },
   {
     "id": 16,
@@ -1093,8 +1102,8 @@ window.questionBank = [
   },
   {
     "id": 23,
-    "imageSize": "tall",
-    "imageAlt": "AB 위의 D까지 4 cm와 8 cm, AC 위 E까지 6 cm와 x cm가 놓인다. ∠ACB와 ∠ADE에 같은 호를 표시했다.",
+    "imageSize": "full",
+    "imageAlt": "각 ACB와 각 ADE가 같은 그림",
     "questionType": "서술형",
     "tags": [
       "도형의 닮음",
@@ -1134,12 +1143,13 @@ window.questionBank = [
     "solutionImageCaption": "∠A가 공통이고 ∠ACB=∠ADE이므로 두 각이 같은 AA 닮음으로 삼각형 ABC와 삼각형 AED가 닮음이고, AB=12, AE=6에서 닮음비가 2:1이다. AC=AD×2=8 cm이므로 x=EC=8−6=2 cm이고, 따라서 답은 2 cm이다.",
     "solutionImageSize": "full",
     "primaryMethod": "공통각의 AA와 전체·부분 길이 연결",
-    "decisiveStep": "공통A와주어진등각으로ABC↔AED대응을정하고AB전체12를만들어AC를구한뒤AE를뺀다."
+    "decisiveStep": "공통A와주어진등각으로ABC↔AED대응을정하고AB전체12를만들어AC를구한뒤AE를뺀다.",
+    "imageCaption": "각 ACB와 각 ADE가 같은 그림"
   },
   {
     "id": 24,
-    "imageSize": "tall",
-    "imageAlt": "삼각형 ABM, AMC의 무게중심 G와 G′를 잇는 선은 9 cm이다. 두 점은 A에서 D와 E로 향하는 중선에 있다.",
+    "imageSize": "full",
+    "imageAlt": "삼각형 ABM, AMC의 무게중심 G, G′",
     "questionType": "서술형",
     "tags": [
       "무게중심",
@@ -1181,7 +1191,8 @@ window.questionBank = [
     "solutionImageCaption": "AG:AD=AG′:AE=2:3, 따라서 GG′:DE=2:3이다. DE는 (BM+MC)/2이므로 BC=2×(9×3/2)=27 cm이다.",
     "solutionImageSize": "full",
     "primaryMethod": "두 중선의 같은 분할비와 연결선 길이",
-    "decisiveStep": "두무게중심의2/3위치를삼각형ANN′의닮음비로해석하고NN′=BC/2를연결한다."
+    "decisiveStep": "두무게중심의2/3위치를삼각형ANN′의닮음비로해석하고NN′=BC/2를연결한다.",
+    "imageCaption": "삼각형 ABM, AMC의 무게중심 G, G′"
   },
   {
     "id": 25,

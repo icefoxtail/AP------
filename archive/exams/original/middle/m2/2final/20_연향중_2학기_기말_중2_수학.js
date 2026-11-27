@@ -34,7 +34,11 @@ window.examData = {
     "difficultyConfidence": "medium",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "꼭짓각 이등분선의 밑변 수직이등분",
-    "decisiveStep": "이등변삼각형의 꼭짓각 이등분선이 밑변을 수직이등분한다는 성질을 보기와 대조한다."
+    "decisiveStep": "이등변삼각형의 꼭짓각 이등분선이 밑변을 수직이등분한다는 성질을 보기와 대조한다.",
+    "image": "assets/images/20_연향중_2학기_기말_중2_수학/q1-problem.svg",
+    "imageAlt": "2020 연향중 중2 2학기 기말 1번 문제 조건도",
+    "imageCaption": "2020 연향중 중2 2학기 기말 1번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -68,7 +72,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "두 이등변삼각형의 밑각 차",
-    "decisiveStep": "ABC의 밑각과 DAB의 밑각을 각각 얻어 B에서 두 각의 차를 계산한다."
+    "decisiveStep": "ABC의 밑각과 DAB의 밑각을 각각 얻어 B에서 두 각의 차를 계산한다.",
+    "image": "assets/images/20_연향중_2학기_기말_중2_수학/q2-problem.svg",
+    "imageAlt": "2020 연향중 중2 2학기 기말 2번 문제 조건도",
+    "imageCaption": "2020 연향중 중2 2학기 기말 2번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -102,7 +110,11 @@ window.examData = {
     "difficultyBucket": 2,
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "반지름 등거리로 중심각과 꼭지각 연결",
-    "decisiveStep": "OBC의 같은 밑각에서 중심각을 얻고 대응하는 A각을 반으로 읽는다."
+    "decisiveStep": "OBC의 같은 밑각에서 중심각을 얻고 대응하는 A각을 반으로 읽는다.",
+    "image": "assets/images/20_연향중_2학기_기말_중2_수학/q3-problem.svg",
+    "imageAlt": "2020 연향중 중2 2학기 기말 3번 문제 조건도",
+    "imageCaption": "2020 연향중 중2 2학기 기말 3번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -136,7 +148,11 @@ window.examData = {
     "difficultyConfidence": "medium",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "내심의 반각 전이와 내각합",
-    "decisiveStep": "B와C의 주어진 반각을 IBC의 두 각으로 옮겨 내각합을 적용한다."
+    "decisiveStep": "B와C의 주어진 반각을 IBC의 두 각으로 옮겨 내각합을 적용한다.",
+    "image": "assets/images/20_연향중_2학기_기말_중2_수학/q4-problem.svg",
+    "imageAlt": "2020 연향중 중2 2학기 기말 4번 문제 조건도",
+    "imageCaption": "2020 연향중 중2 2학기 기말 4번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -170,7 +186,11 @@ window.examData = {
     "difficultyBucket": 1,
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "평행사변형 대변과 이웃각",
-    "decisiveStep": "대변의 같은 길이로 x를 정하고 이웃각의 합180도로 y를 정한다."
+    "decisiveStep": "대변의 같은 길이로 x를 정하고 이웃각의 합180도로 y를 정한다.",
+    "image": "assets/images/20_연향중_2학기_기말_중2_수학/q5-problem.svg",
+    "imageAlt": "2020 연향중 중2 2학기 기말 5번 문제 조건도",
+    "imageCaption": "2020 연향중 중2 2학기 기말 5번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -238,7 +258,11 @@ window.examData = {
     "difficultyBucket": 2,
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "마름모의 등변삼각형과 대각",
-    "decisiveStep": "마름모의 같은 변으로 ABD의 같은 밑각을 얻고 마주 보는 전체 각으로 옮긴다."
+    "decisiveStep": "마름모의 같은 변으로 ABD의 같은 밑각을 얻고 마주 보는 전체 각으로 옮긴다.",
+    "image": "assets/images/20_연향중_2학기_기말_중2_수학/q7-problem.svg",
+    "imageAlt": "2020 연향중 중2 2학기 기말 7번 문제 조건도",
+    "imageCaption": "2020 연향중 중2 2학기 기말 7번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -306,7 +330,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "닮음 표기의 대응 순서와 비례",
-    "decisiveStep": "주어진 닮음기호의 꼭짓점 순서로 대응각·변을 정하고 길이비와 각합을 보기별로 적용한다."
+    "decisiveStep": "주어진 닮음기호의 꼭짓점 순서로 대응각·변을 정하고 길이비와 각합을 보기별로 적용한다.",
+    "image": "assets/images/20_연향중_2학기_기말_중2_수학/q9-problem.svg",
+    "imageAlt": "2020 연향중 중2 2학기 기말 9번 문제 조건도",
+    "imageCaption": "2020 연향중 중2 2학기 기말 9번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -340,7 +368,11 @@ window.examData = {
     "difficultyBucket": 2,
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "직각삼각형 높이의 AA 닮음 길이",
-    "decisiveStep": "공통각과 직각으로 작은 삼각형과 전체 삼각형의 닮음을 확인하고 전체 빗변에서 부분을 뺀다."
+    "decisiveStep": "공통각과 직각으로 작은 삼각형과 전체 삼각형의 닮음을 확인하고 전체 빗변에서 부분을 뺀다.",
+    "image": "assets/images/20_연향중_2학기_기말_중2_수학/q10-problem.svg",
+    "imageAlt": "2020 연향중 중2 2학기 기말 10번 문제 조건도",
+    "imageCaption": "2020 연향중 중2 2학기 기말 10번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 11,
@@ -374,7 +406,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "교차선의 닮음비와 내부 평행선비",
-    "decisiveStep": "교차한 두 삼각형의 닮음비를 전체 선분비로 바꾸고 BCD 내부 평행선비에 이어 적용한다."
+    "decisiveStep": "교차한 두 삼각형의 닮음비를 전체 선분비로 바꾸고 BCD 내부 평행선비에 이어 적용한다.",
+    "image": "assets/images/20_연향중_2학기_기말_중2_수학/q11-problem.svg",
+    "imageAlt": "2020 연향중 중2 2학기 기말 11번 문제 조건도",
+    "imageCaption": "2020 연향중 중2 2학기 기말 11번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 12,
@@ -410,7 +446,11 @@ window.examData = {
     "difficultyBucket": 1,
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "세 중점 연결선의 길이와 둘레",
-    "decisiveStep": "그림의 중점표시를 읽어 세 내부 변을 각각 원래 변의 절반으로 정하고 둘레를 합한다."
+    "decisiveStep": "그림의 중점표시를 읽어 세 내부 변을 각각 원래 변의 절반으로 정하고 둘레를 합한다.",
+    "image": "assets/images/20_연향중_2학기_기말_중2_수학/q12-problem.svg",
+    "imageAlt": "2020 연향중 중2 2학기 기말 12번 문제 조건도",
+    "imageCaption": "2020 연향중 중2 2학기 기말 12번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 13,
@@ -426,8 +466,8 @@ window.examData = {
     "answer": "①",
     "solution": "평행선이 세 개이므로 두 직선 위에서 평행선 사이의 선분의 길이의 비가 같다.\n왼쪽 직선에서 $l$과 $m$ 사이는 $4\\text{ cm}$이고 $l$과 $n$ 사이는 $12\\text{ cm}$이므로 $m$과 $n$ 사이는 $12-4=8\\text{ cm}$이다.\n$4:8=6:x$\n$4x=48$\n$x=12\\text{ cm}$이다.\n정답은 ①이다.",
     "solutionImage": "assets/images/20_연향중_2학기_기말_중2_수학/q13-solution.svg",
-    "solutionImageAlt": "해설 그림: 첫 그림은 평행한 세 직선 l, m, n과 이를 가로지르는 두 직선으로, 왼쪽 직선에서 l과 m 사이가 4, l과 n 사이가 12이고 오른쪽 직선에서 l과 m 사이가 6, m과 n 사이가 x이다. 둘째 그림은 같은 모양에서 왼쪽 직선의 m과 n 사이를 8로 나타내고, l과 m 사이의 선분 4와 6은 파랑, m과 n 사이의 선분 8과 x는 주황으로 대응시킨 것이다.",
-    "solutionImageCaption": "왼쪽 직선에서 l과 n 사이가 12이고 l과 m 사이가 4이므로 m과 n 사이는 12에서 4를 뺀 8이다. 평행선 사이의 선분의 길이의 비는 같으므로 4 대 8이 6 대 x이다. 4x는 48이므로 x를 구할 수 있다. 정답은 ① 12 cm이다.",
+    "solutionImageAlt": "평행선 사이에서 두 직선이 잘린 선분의 길이의 비는 같다. l과 m 사이(파랑)와 m과 n 사이(주황)의 비가 두 직선에서 같다.",
+    "solutionImageCaption": "평행선 사이에서 두 직선이 잘린 선분의 길이의 비는 같다. l과 m 사이(파랑)와 m과 n 사이(주황)의 비가 두 직선에서 같다.",
     "solutionImageSize": "full",
     "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
     "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
@@ -444,7 +484,12 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "세 평행선 사이의 대응 선분비",
-    "decisiveStep": "전체12에서 위쪽4를 빼 아래쪽을 구한 뒤 두 가로지르는 직선의 대응 구간 비를 적용한다."
+    "decisiveStep": "전체12에서 위쪽4를 빼 아래쪽을 구한 뒤 두 가로지르는 직선의 대응 구간 비를 적용한다.",
+    "image": "assets/images/20_연향중_2학기_기말_중2_수학/q13-problem.svg",
+    "imageAlt": "2020 연향중 중2 2학기 기말 13번 문제 조건도",
+    "imageCaption": "2020 연향중 중2 2학기 기말 13번 문제 조건도",
+    "imageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 14,
@@ -516,7 +561,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "무게중심 길이비와 넓이 성질의 종합 판정",
-    "decisiveStep": "같은 중선의2:1과 넓이분할은 확인하고 서로 다른 두 중선 일부의 길이 같음은 보장되지 않음을 구별한다."
+    "decisiveStep": "같은 중선의2:1과 넓이분할은 확인하고 서로 다른 두 중선 일부의 길이 같음은 보장되지 않음을 구별한다.",
+    "image": "assets/images/20_연향중_2학기_기말_중2_수학/q15-problem.svg",
+    "imageAlt": "2020 연향중 중2 2학기 기말 15번 문제 조건도",
+    "imageCaption": "2020 연향중 중2 2학기 기말 15번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 16,
@@ -566,8 +615,8 @@ window.examData = {
     "answer": "③",
     "solution": "$\\triangle ABC$의 넓이를 $S$라 하자.\n$G$는 $\\triangle ABC$의 무게중심이므로 $\\triangle GBC=\\dfrac{1}{3}S$이고, $D$는 $\\overline{BC}$의 중점이므로 $\\triangle GBD=\\dfrac{1}{2}\\triangle GBC=\\dfrac{1}{6}S$이다.\n$G'$은 $\\triangle GBC$의 무게중심이므로 $\\overline{G'D}=\\dfrac{1}{3}\\overline{GD}$이고, 높이가 같은 삼각형이므로 $\\triangle G'BD=\\dfrac{1}{3}\\triangle GBD=\\dfrac{1}{18}S$이다.\n$\\dfrac{1}{18}S=7$이므로 $S=126\\text{ cm}^2$이다.\n정답은 ③이다.",
     "solutionImage": "assets/images/20_연향중_2학기_기말_중2_수학/q17-solution.svg",
-    "solutionImageAlt": "해설 그림: 첫 그림은 삼각형 ABC의 무게중심 G, 삼각형 GBC의 무게중심 G′, BC의 중점 D와 색칠한 삼각형 G′BD(7 cm²)를 나타낸다. 둘째 그림은 삼각형 ABC를 G에서 세 꼭짓점으로 이은 세 삼각형을 같은 파랑으로 칠한 것이다. 셋째 그림은 BD와 DC가 같아 삼각형 GBD와 GDC를 같은 초록으로 칠한 것이다. 넷째 그림은 삼각형 GBD를 G′과 GG′의 중점 M으로 나눈 같은 넓이의 세 삼각형(주황)이며 그중 하나가 삼각형 G′BD이다.",
-    "solutionImageCaption": "삼각형 ABC의 넓이를 S라 하면 G가 무게중심이므로 삼각형 GBC는 S의 3분의 1이다. D가 BC의 중점이므로 삼각형 GBD는 GBC의 2분의 1인 S의 6분의 1이다. G′이 삼각형 GBC의 무게중심이므로 G′D는 GD의 3분의 1이고, 높이가 같으므로 삼각형 G′BD는 GBD의 3분의 1인 S의 18분의 1이다. 이것이 7 cm²이다. 정답은 ③ 126 cm²이다.",
+    "solutionImageAlt": "G가 무게중심이므로 삼각형 GBC는 삼각형 ABC의 3분의 1, D가 중점이므로 삼각형 GBD는 GBC의 2분의 1, G′이 GD를 2 대 1로 나누므로 삼각형 G′BD는 GBD의 3분의 1이다.",
+    "solutionImageCaption": "G가 무게중심이므로 삼각형 GBC는 삼각형 ABC의 3분의 1, D가 중점이므로 삼각형 GBD는 GBC의 2분의 1, G′이 GD를 2 대 1로 나누므로 삼각형 G′BD는 GBD의 3분의 1이다.",
     "solutionImageSize": "full",
     "templateKey": "",
     "problemTypeKey": "PT_COORD_CENTROID",
@@ -584,7 +633,12 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "중첩 무게중심의 넓이 분할",
-    "decisiveStep": "전체의1/3인 GBC를 중점으로 반분하고 작은 무게중심에서 다시1/3인 부분넓이를 연결한다."
+    "decisiveStep": "전체의1/3인 GBC를 중점으로 반분하고 작은 무게중심에서 다시1/3인 부분넓이를 연결한다.",
+    "image": "assets/images/20_연향중_2학기_기말_중2_수학/q17-problem.svg",
+    "imageAlt": "2020 연향중 중2 2학기 기말 17번 문제 조건도",
+    "imageCaption": "2020 연향중 중2 2학기 기말 17번 문제 조건도",
+    "imageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 18,
@@ -618,7 +672,11 @@ window.examData = {
     "difficultyBucket": 2,
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "연속 직각삼각형의 피타고라스",
-    "decisiveStep": "작은 직각삼각형에서 높이를 구해 큰 직각삼각형의 빗변 계산에 사용한다."
+    "decisiveStep": "작은 직각삼각형에서 높이를 구해 큰 직각삼각형의 빗변 계산에 사용한다.",
+    "image": "assets/images/20_연향중_2학기_기말_중2_수학/q18-problem.svg",
+    "imageAlt": "2020 연향중 중2 2학기 기말 18번 문제 조건도",
+    "imageCaption": "2020 연향중 중2 2학기 기말 18번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 19,
@@ -654,7 +712,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "붙인 정사각형 넓이로 직각 판정 후 삼각형 넓이",
-    "decisiveStep": "세 정사각형의 변 길이를 읽어 제곱합 관계로 직각을 판정하고 직각변 둘의 곱으로 넓이를 계산한다."
+    "decisiveStep": "세 정사각형의 변 길이를 읽어 제곱합 관계로 직각을 판정하고 직각변 둘의 곱으로 넓이를 계산한다.",
+    "image": "assets/images/20_연향중_2학기_기말_중2_수학/q19-problem.svg",
+    "imageAlt": "2020 연향중 중2 2학기 기말 19번 문제 조건도",
+    "imageCaption": "2020 연향중 중2 2학기 기말 19번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 20,
@@ -740,7 +802,11 @@ window.examData = {
     "difficultyBucket": 2,
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "삼각형 내부 평행선의 길이비",
-    "decisiveStep": "부분과 전체 길이로 닮음비를 정하고 밑변과 다른 변의 남은 구간에 적용한다."
+    "decisiveStep": "부분과 전체 길이로 닮음비를 정하고 밑변과 다른 변의 남은 구간에 적용한다.",
+    "image": "assets/images/20_연향중_2학기_기말_중2_수학/q22-problem.svg",
+    "imageAlt": "2020 연향중 중2 2학기 기말 22번 문제 조건도",
+    "imageCaption": "2020 연향중 중2 2학기 기말 22번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 23,
@@ -770,7 +836,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "대각선의 피타고라스와 넓이 보존 높이",
-    "decisiveStep": "직사각형 대각선을 먼저 구하고 같은 직각삼각형 넓이를 두 밑변·높이로 표현해 대각선에 내린 높이를 정한다."
+    "decisiveStep": "직사각형 대각선을 먼저 구하고 같은 직각삼각형 넓이를 두 밑변·높이로 표현해 대각선에 내린 높이를 정한다.",
+    "image": "assets/images/20_연향중_2학기_기말_중2_수학/q23-problem.svg",
+    "imageAlt": "2020 연향중 중2 2학기 기말 23번 문제 조건도",
+    "imageCaption": "2020 연향중 중2 2학기 기말 23번 문제 조건도",
+    "imageSize": "full"
   }
 ]
 };

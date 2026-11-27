@@ -234,7 +234,7 @@ window.questionBank = [
   {
     "id": 5,
     "imageSize": "full",
-    "imageAlt": "삼각형 ABC에서 BC의 중점 D와 A를 이었다. AD 위의 G는 무게중심이다. B와 G를 연결하고 삼각형 GBD를 청록으로 칠했다.",
+    "imageAlt": "삼각형 ABC의 무게중심 G, BC의 중점 D, 중선 AD와 선분 BG. 원본에서 색칠한 △GBD만 채운다.",
     "level": "중",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -288,7 +288,8 @@ window.questionBank = [
       "l4": "넓이 분할"
     },
     "primaryMethod": "무게중심에 의한 여섯 등넓이 분할",
-    "decisiveStep": "GBD가 전체의1/6임을 바로 적용한다."
+    "decisiveStep": "GBD가 전체의1/6임을 바로 적용한다.",
+    "imageCaption": "삼각형 ABC의 무게중심 G, BC의 중점 D, 중선 AD와 선분 BG. 원본에서 색칠한 △GBD만 채운다."
   },
   {
     "id": 6,
@@ -1009,7 +1010,7 @@ window.questionBank = [
   {
     "id": 19,
     "imageSize": "full",
-    "imageAlt": "M과 N은 변 AB와 AC의 중점이고 L은 BC의 가운데이다. M과 N을 이은 선은 중선 AL과 P에서 만난다. 무게중심 G를 지나며 BC와 평행한 선은 D와 E를 잇는다.",
+    "imageAlt": "△ABC의 중점 M·N·L, 중선 AL, 무게중심 G와 G를 지나는 BC의 평행선 DE, MN과 AL의 교점 P",
     "level": "상",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -1066,7 +1067,8 @@ window.questionBank = [
       "l4": "무게중심을 이용한 복합도형"
     },
     "primaryMethod": "무게중심비·중점연결·등고 넓이비",
-    "decisiveStep": "BC를 공통 기준으로 MP,DG,BL을 나타낸 뒤 z를 넓이비로 구한다."
+    "decisiveStep": "BC를 공통 기준으로 MP,DG,BL을 나타낸 뒤 z를 넓이비로 구한다.",
+    "imageCaption": "△ABC의 중점 M·N·L, 중선 AL, 무게중심 G와 G를 지나는 BC의 평행선 DE, MN과 AL의 교점 P"
   },
   {
     "id": 20,
