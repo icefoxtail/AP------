@@ -1,0 +1,32 @@
+{
+  "capability":"construction-spike-v1",
+  "caption":"A를 y축에 대칭이동한 A′와 B를 잇는 선 위의 Q, P를 선택하면 AP+PQ가 최소이고 △APQ의 넓이는 9/5다.",
+  "accessibilityDescription":"좌표평면의 A(-2,-2), B(-2,1), 대칭점 A′(2,-2), y축 위 P(0,-1/2), 원 위 Q(-6/5,2/5)를 그린다. 원의 중심은 B이고 반지름 BQ=1이다. B, Q, P, A′는 일직선이며 A에서 P로 가는 선과 A′P는 대칭 관계다.",
+  "sourceConditions":[
+    {"id":"s1","condition":"A=(-2,-2)를 y축에 대칭이동하면 A′=(2,-2)이고 AP=A′P다.","mappedTo":["mathPlan.nodes[0]","mathPlan.nodes[2]","mathPlan.nodes[3]","displaySegments[0]","displaySegments[1]"]},
+    {"id":"s2","condition":"BQ=1인 원 위 Q와 A′ 사이 거리가 최소가 되면 B,Q,P,A′가 한 직선 위에 있고 BQ=1, A′B=5이다.","mappedTo":["mathPlan.nodes[4]","mathPlan.nodes[5]","mathPlan.nodes[7]","displayCircles","displaySegments[2]","displaySegments[3]","planeMarks.expressionLabels[0]"]},
+    {"id":"s3","condition":"P는 직선 A′B와 y축의 교점 (0,-1/2), Q는 B에서 A′로 1/5만큼 내분한 (-6/5,2/5)이고 △APQ의 넓이는 9/5이다.","mappedTo":["mathPlan.nodes[6]","mathPlan.nodes[7]","coordinateLabels","caption"]}
+  ],
+  "newVisualInformation":["y축 대칭을 보여 주는 A와 A′를 동시에 놓고 A′P는 점선 보조선으로 구분한다.","B-Q-P-A′의 정확한 직선 순서와 반지름 BQ=1을 그린다.","선분과 점 이외의 영역 색칠이나 흰색 배경은 두지 않는다."],
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-2"},{"kind":"integer","value":"-2"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-2"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"yaxis","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"1"},"b":{"kind":"integer","value":"0"},"c":{"kind":"integer","value":"0"}},"outputType":"LINE","factRole":"GIVEN"},
+    {"id":"A1","op":"LINE_REFLECTION","inputs":["A","yaxis"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["B"],"args":{"radius":{"kind":"integer","value":"1"}},"outputType":"CIRCLE","factRole":"GIVEN"},
+    {"id":"l","op":"LINE_THROUGH","inputs":["B","A1"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"P","op":"LINE_INTERSECTION","inputs":["l","yaxis"],"args":{},"outputType":"POINT","factRole":"CONCLUSION"},
+    {"id":"Q","op":"DIVISION_POINT","inputs":["B","A1"],"args":{"m":{"kind":"integer","value":"1"},"n":{"kind":"integer","value":"4"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"CONCLUSION"}
+  ]},
+  "displayPoints":["A","B","A1","P","Q"],"pointNames":{"A1":"A′"},
+  "coordinateLabels":["P","Q"],
+  "displayLines":["yaxis"],"displayCircles":["k"],
+  "displaySegments":[
+    {"id":"sAP","refs":["A","P"]},
+    {"id":"sA1P","refs":["A1","P"],"dashed":true},
+    {"id":"sBQ","refs":["B","Q"]},
+    {"id":"sQP","refs":["Q","P"]}
+  ],
+  "planeMarks":{"expressionLabels":[{"id":"radius","ownerSegment":"sBQ","text":"1"}]},
+  "coordinateCanvas":{"width":580,"height":510}
+}
