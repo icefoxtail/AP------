@@ -1,0 +1,20 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "graphPlan":{"family":"multi-curve","viewport":[0,6,-4,3],"curves":[
+    {"id":"upper","kind":"LOGARITHMIC","base":"3","coefficients":["1","1","0","0"],"domain":["1","5"],"color":"BLUE"},
+    {"id":"lower","kind":"LOGARITHMIC","base":"3","coefficients":["1","1","0","-3"],"domain":["1","5"],"color":"WARM"}
+  ],"axisTickValues":{"x":["1","5"],"y":["-3"]},
+  "overlays":{"lines":[{"id":"left","x":"1","label":"x=1"},{"id":"right","x":"5","label":"x=5"}],
+    "points":[{"id":"A","x":"1","y":"0","unnamed":true},{"id":"B","x":"1","y":"-3","unnamed":true}],
+    "segments":[{"id":"gap","from":"A","to":"B","length":true}]}},
+  "caption":"log₃(x/27)=log₃x−3이므로 두 곡선의 세로 간격은 항상 3이다. x=1부터 5까지 가로 폭 4인 띠의 넓이는 4×3=12이다.",
+  "accessibilityDescription":"로그함수 y=log₃x와 그보다 정확히 3만큼 아래에 있는 y=log₃x−3 곡선을 서로 다른 선색으로 표시한다. x=1, x=5 두 세로 경계, x=1에서 길이 3인 간격 선분이 있다. 영역을 어설픈 다각형으로 메우지 않고 면 채움은 없다.",
+  "sourceConditions":[
+    {"id":"upper","condition":"상단 곡선 y=log_3 x","mappedTo":["upper"]},
+    {"id":"lower","condition":"하단 곡선 y=log_3(x/27)=log_3 x-3","mappedTo":["lower"]},
+    {"id":"walls","condition":"두 세로 경계 x=1,x=5","mappedTo":["left","right"]},
+    {"id":"gap","condition":"두 곡선의 세로 차는 정확히 3","mappedTo":["A","B","gap"]},
+    {"id":"area","condition":"가로 길이 4×세로 차 3=12","mappedTo":["caption"]}
+  ],
+  "newVisualInformation":["두 평행이동 로그 곡선의 식과 두 수직 경계, 차이 3을 실제 세로 선분·자동 길이 라벨로 표현; 곡선 영역을 다각형으로 오인시키는 근사 채움을 만들지 않음"]
+}

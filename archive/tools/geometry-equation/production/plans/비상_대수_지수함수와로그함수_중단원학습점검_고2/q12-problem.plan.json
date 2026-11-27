@@ -1,0 +1,19 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "graphPlan":{"family":"multi-curve","viewport":[0,6,-1,3],"curves":[
+    {"id":"f","kind":"LOGARITHMIC","base":"2","coefficients":["1","1","0","0"],"domain":["1/4","6"],"color":"BLUE"},
+    {"id":"g","kind":"LOGARITHMIC","base":"8","coefficients":["1","1","0","0"],"domain":["1/4","6"],"color":"WARM"}
+  ],"axisTickValues":{"x":["1"],"y":["1"]},
+  "overlays":{"lines":[{"id":"kline","x":"4","label":"x=k"}],
+    "points":[{"id":"A","x":"4","y":"2"},{"id":"B","x":"4","y":"2/3"}],
+    "segments":[{"id":"AB","from":"A","to":"B","length":true}]}},
+  "pointNames":{"A":"A","B":"B"},
+  "caption":"y=log₂x와 y=log₈x가 x=k에서 만나는 두 점 A, B 사이의 길이 4/3을 표시한다. k>1이고, k의 수치는 문제 그림에 적지 않는다.",
+  "accessibilityDescription":"두 증가 로그곡선이 (1,0)을 함께 지나며 x=k인 수직선에서 높은 점 A와 낮은 점 B로 만난다. 선분 AB는 정확한 길이 4/3의 치수 글자와 함께 표시된다. k의 값은 표시하지 않는다.",
+  "sourceConditions":[
+    {"id":"curves","condition":"y=log_2 x 및 y=log_8 x, k>1","mappedTo":["f","g"]},
+    {"id":"vertical","condition":"A, B는 같은 x=k의 수직선 위","mappedTo":["kline","A","B"]},
+    {"id":"length","condition":"AB=4/3이라는 원문 주어진 길이를 숫자 라벨로 표시","mappedTo":["AB"]}
+  ],
+  "newVisualInformation":["원본 q12.png에서 빠진 AB=4/3 길이 표식을 실제 선분 길이로 표시, 두 곡선·A/B·x=k를 유지; 문제 그림에 k의 정답 숫자는 표기하지 않음"]
+}

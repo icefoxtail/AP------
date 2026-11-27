@@ -1,0 +1,26 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "graphPlan":{"family":"multi-curve","viewport":[-5,1,0,18],"curves":[
+    {"id":"f","kind":"EXPONENTIAL","base":"4","coefficients":["1","-1","0"],"domain":["-2","1"],"color":"BLUE"},
+    {"id":"g","kind":"EXPONENTIAL","base":"2","coefficients":["1","-1","0"],"domain":["-4","1"],"color":"WARM"}
+  ],"axisTickValues":{"x":["-4","-2","-1"],"y":["4","16"]},
+  "overlays":{"points":[
+    {"id":"A","x":"-1","y":"4"},{"id":"B","x":"-2","y":"4"},
+    {"id":"C","x":"-2","y":"16"},{"id":"D","x":"-4","y":"16"}
+  ],"segments":[
+    {"id":"AB","from":"A","to":"B","length":true},
+    {"id":"BC","from":"B","to":"C"},
+    {"id":"CD","from":"C","to":"D","length":true}
+  ]}},
+  "pointNames":{"A":"A","B":"B","C":"C","D":"D"},
+  "caption":"예: s=1인 경우 A(-1,4), B(-2,4), C(-2,16), D(-4,16)이다. 실제 수평 길이는 AB=1, CD=2로 CD/AB=2. 일반 s에서도 두 길이는 s와 2s이다.",
+  "accessibilityDescription":"제2사분면에서 서로 다른 두 감소 지수곡선 y=4^{-x}, y=2^{-x}와 A-B 수평 구간, B-C 수직 구간, C-D 수평 구간을 실제 선분으로 보인다. AB 위 길이 1, CD 위 길이 2가 표시된다. 대표값 s=1에 대한 그림이며 내부 면을 칠하지 않는다.",
+  "sourceConditions":[
+    {"id":"curve1","condition":"A,C는 y=4^{-x} 위","mappedTo":["f","A","C"]},
+    {"id":"curve2","condition":"B,D는 y=2^{-x} 위","mappedTo":["g","B","D"]},
+    {"id":"horizontal","condition":"AB와 CD는 x축과 평행","mappedTo":["AB","CD"]},
+    {"id":"vertical","condition":"BC는 y축과 평행","mappedTo":["BC"]},
+    {"id":"ratio","condition":"일반 s에서 AB=s, CD=2s; 예시 s=1은 1과 2","mappedTo":["AB","CD"]}
+  ],
+  "newVisualInformation":["원본에 없던 실제 AB·CD 길이 관계를 대표 좌표 s=1에서 치수로 표시하고 원래 곡선 두 개·A/B/C/D·수평/수직 보조선을 보존"]
+}

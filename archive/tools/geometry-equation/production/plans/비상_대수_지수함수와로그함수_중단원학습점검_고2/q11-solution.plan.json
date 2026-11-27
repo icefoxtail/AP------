@@ -1,0 +1,16 @@
+{
+  "capability":"logarithmic-affine-spike-v1",
+  "graphPlan":{"family":"logarithmic-affine","base":"1/3","coefficients":["1","1","3","1"],"sourceDomain":{"kind":"NATURAL_LOG_AFFINE"},"domain":[-2.9,3],"viewport":[-4,4,-3,6],
+    "requiredPoints":[{"id":"O","x":0,"y":0}],
+    "axisTickValues":{"x":["-3"],"y":["1"]},
+    "overlays":{"lines":[{"id":"v","x":"-3","label":"x=-3"}],"quadrants":[{"id":"q3","quadrant":3,"label":"제3사분면"}]}},
+  "pointNames":{"O":"O"},
+  "caption":"경계값 k=1의 대표 그래프. 감소 로그곡선이 원점 (0,0)을 지나며 -3<x<0에서는 x축 위쪽에 있다. k≥1이면 곡선이 제3사분면에 닿지 않는다.",
+  "accessibilityDescription":"수직 점근선 x=-3 오른쪽에서 시작해 오른쪽 아래로 감소하는 로그함수가 원점 O를 지나며 제3사분면은 글자로 표시하지만 채우지 않는다. x가 음수인 곡선 부분은 x축 위에 있다.",
+  "sourceConditions":[
+    {"id":"function","condition":"y=log_(1/3)(x+3)+k의 경계 k=1을 사용","mappedTo":["graphPlan.coefficients","graphPlan.base"]},
+    {"id":"boundary","condition":"x=-3 점근선","mappedTo":["v"]},
+    {"id":"noq3","condition":"k=1일 때 x<0이면 y>0, 따라서 제3사분면을 지나지 않음","mappedTo":["O","q3"]}
+  ],
+  "newVisualInformation":["주어진 사분면 회피 조건의 경계 그래프를 실제 원점·점근선·사분면 이름으로 표시하며 k=1 대표값을 명시, 면 채움 없음"]
+}
