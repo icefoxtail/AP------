@@ -537,8 +537,8 @@ window.questionBank = [
     "reviewStatus": "review_required",
     "rpmL4": "무게중심을 이용한 복합도형",
     "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q7-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 변 AB의 길이는 18 cm, 변 AC의 길이는 12 cm이다. 파란색 선분 DE는 BC와 평행하며 무게중심 G와 내심 I를 지나고, 점선은 A에서 변 BC의 중점으로 그은 중선이다. 오른쪽 그림은 삼각형 ABC의 내접원과 A에서 BC에 내린 점선 높이 h, 내심 I에서 BC에 내린 점선 반지름 r을 나타내고 파란색 DE가 I를 지난다.",
-    "solutionImageCaption": "DE는 BC에 평행하고 무게중심 G를 지나므로 DE:BC=2:3이고, BC에서 DE까지의 거리는 높이 h의 3분의 1이다. 내심 I가 DE 위에 있으므로 r=h의 3분의 1이다. BC=a라 하면 넓이 S=2분의 1 곱하기 a 곱하기 h이고 S=r×s(s는 둘레의 절반)에서 h를 없애면 3a=a+30이므로 a=15 cm이다. 정답은 DE=3분의 2 곱하기 15=10 cm이다.",
+    "solutionImageAlt": "G가 무게중심이므로 DE는 BC에서 높이의 3분의 1 지점을 지나고, 내심 I도 DE 위에 있으므로 내접원의 반지름 r은 높이 h의 3분의 1이다. DE와 BC는 평행하고 DE는 BC의 3분의 2이다(파란색).",
+    "solutionImageCaption": "G가 무게중심이므로 DE는 BC에서 높이의 3분의 1 지점을 지나고, 내심 I도 DE 위에 있으므로 내접원의 반지름 r은 높이 h의 3분의 1이다. DE와 BC는 평행하고 DE는 BC의 3분의 2이다(파란색).",
     "solutionImageSize": "full",
     "curriculum": "2015",
     "rpmL1": "도형의 닮음과 피타고라스 정리",
@@ -548,7 +548,8 @@ window.questionBank = [
       "midUnit": "삼각형의 무게중심",
       "l3": "넓이와 무게중심",
       "l4": "무게중심을 이용한 복합도형"
-    }
+    },
+    "solutionImageScale": 94
   },
   {
     "id": 8,
@@ -614,8 +615,8 @@ window.questionBank = [
     "reviewStatus": "review_required",
     "rpmL4": "정사각형 넓이와 변 길이",
     "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q8-solution.svg",
-    "solutionImageAlt": "해설 그림: 각 C가 직각인 직각삼각형 ABC의 세 변 위에 정사각형이 있다. 빗변 AB 위의 주황색 정사각형의 넓이는 100 cm², BC 위의 파란색 정사각형의 넓이는 64 cm²이고, AC 위의 초록색 정사각형은 넓이가 쓰여 있지 않다.",
-    "solutionImageCaption": "빗변 AB 위의 정사각형 넓이는 AB²=100이고 BC²=64이다. 피타고라스 정리 AB²=AC²+BC²에서 초록색 AC² = 100−64이다. 정답은 36 cm²이다.",
+    "solutionImageAlt": "직각삼각형의 빗변 AB 위 주황색 정사각형의 넓이는 BC 위 파란색 정사각형과 AC 위 색을 채우지 않은 정사각형의 넓이의 합과 같다.",
+    "solutionImageCaption": "직각삼각형의 빗변 AB 위 주황색 정사각형의 넓이는 BC 위 파란색 정사각형과 AC 위 색을 채우지 않은 정사각형의 넓이의 합과 같다.",
     "solutionImageSize": "full",
     "curriculum": "2015"
   },
@@ -686,10 +687,11 @@ window.questionBank = [
     "reviewStatus": "review_required",
     "rpmL4": "직각삼각형과 정사각형 넓이",
     "solutionImage": "assets/images/19_신흥중_2학기_기말_중2_기출/q9-solution.svg",
-    "solutionImageAlt": "해설 그림: 직각삼각형 ABC의 세 변 위에 정사각형을 그린 문제 그림과, 같은 넓이의 정사각형(변 AB 위)과 직사각형(점 B, F, K, J)을 주황색으로 보인 그림, 그 절반인 삼각형 EBA와 삼각형 BFJ를 파란색으로 보인 그림, EB와 AC가 평행하고 AJ와 BF가 평행하여 삼각형 EBA와 EBC, 삼각형 ABF와 BFJ가 같은 밑변과 높이를 가짐을 보인 그림이다.",
-    "solutionImageCaption": "A에서 BC에 내린 수선의 발 J에 대해 AB²=BC×BJ이므로 AB 위의 정사각형과 직사각형(점 B, F, K, J)의 넓이가 같다. 삼각형 EBA와 BFJ는 각각 그 절반이다. EB∥AC이므로 삼각형 EBC는 EBA와, AJ∥BF이므로 삼각형 ABF는 BFJ와 넓이가 같다. 이 네 삼각형은 모두 AB² 의 절반으로 넓이가 같고 삼각형 BCI만 다르다. 정답은 ④이다.",
+    "solutionImageAlt": "AB²=BC×BJ이므로 AB 위의 정사각형과 BC 쪽의 직사각형(점 B, F, K, J)의 넓이가 같다. 삼각형 EBA와 BFJ는 그 절반이고, 삼각형 EBC는 EBA와, ABF는 BFJ와 밑변과 높이가 같다. 면은 채우지 않고 대응선으로 비교한다.",
+    "solutionImageCaption": "AB²=BC×BJ이므로 AB 위의 정사각형과 BC 쪽의 직사각형(점 B, F, K, J)의 넓이가 같다. 삼각형 EBA와 BFJ는 그 절반이고, 삼각형 EBC는 EBA와, ABF는 BFJ와 밑변과 높이가 같다. 면은 채우지 않고 대응선으로 비교한다.",
     "solutionImageSize": "full",
-    "curriculum": "2015"
+    "curriculum": "2015",
+    "solutionImageScale": 94
   },
   {
     "id": 10,
