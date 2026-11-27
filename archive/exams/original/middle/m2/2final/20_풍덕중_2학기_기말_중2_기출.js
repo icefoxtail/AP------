@@ -202,8 +202,8 @@ window.questionBank = [
     "primaryMethod": "두 고정점 직선에 세번째점 대입",
     "decisiveStep": "두 고정점의 직선식을 정하고 미지좌표점이 그 식을 만족하게 한다.",
     "solutionImage": "assets/images/20_풍덕중_2학기_기말_중2_기출/q4-solution.svg",
-    "solutionImageAlt": "오른쪽 아래로 내려가는 직선 위에 세 점 (−2,0), (1,−6), (−3,2)가 있고 좌표가 표시되어 있다.",
-    "solutionImageCaption": "(−2,0), (1,−6)을 지나는 직선의 기울기는 (−6−0)/(1−(−2))=−2이고 0=4+b에서 b=−4이므로 y=−2x−4이다. 점 (a,a+5)도 이 직선 위에 있으므로 a+5=−2a−4에서 a=−3이고 점 (−3,2)이다. 따라서 답은 ①이다.",
+    "solutionImageAlt": "(-2,0),(1,-6)을 지나는 직선과 그 위의 점 (-3,2).",
+    "solutionImageCaption": "(-2,0),(1,-6)을 지나는 직선과 그 위의 점 (-3,2).",
     "solutionImageSize": "full"
   },
   {
@@ -222,7 +222,7 @@ window.questionBank = [
       "5",
       "6"
     ],
-    "image": "assets/images/20_풍덕중_2학기_기말_중2_기출/q05.png",
+    "image": "assets/images/20_풍덕중_2학기_기말_중2_기출/q5-problem.svg",
     "answer": "⑤",
     "solution": "그림의 직선은 $(0,-3)$과 $(1,0)$을 지난다.\n\n기울기는\n$\\dfrac{0-(-3)}{1-0}=3$이다.\n\n$y=\\dfrac{k}{2}x-1$의 기울기는 $\\dfrac{k}{2}$이므로 평행 조건에서\n$\\dfrac{k}{2}=3$\n$k=6$\n\n정답은 ⑤이다.",
     "level": "하",
@@ -261,10 +261,13 @@ window.questionBank = [
     "primaryMethod": "그래프의 기울기와 평행 계수 조건",
     "decisiveStep": "실제 두절편의 기울기3을 k/2와 같게 놓는다.",
     "solutionImage": "assets/images/20_풍덕중_2학기_기말_중2_기출/q5-solution.svg",
-    "solutionImageAlt": "해설 그림: 서로 평행한 두 직선이 있고 파란 직선은 점 (0,−3)과 (1,0)을 지나며 주황 직선은 y축과 (0,−1)에서 만난다.",
-    "solutionImageCaption": "그림의 직선은 (0,−3)과 (1,0)을 지나므로 기울기가 (0−(−3))/(1−0)=3이다. y=(k/2)x−1은 기울기 k/2이고, 평행하려면 기울기가 같아야 하므로 k/2=3, 즉 k=6이다. 이때 y=3x−1이 그림의 직선과 평행하다. 따라서 답은 ⑤이다.",
+    "solutionImageAlt": "원본 직선의 기울기는 3이고 y=(k/2)x-1이 평행하려면 k=6이다.",
+    "solutionImageCaption": "원본 직선의 기울기는 3이고 y=(k/2)x-1이 평행하려면 k=6이다.",
     "solutionImageSize": "full",
-    "solutionImageScale": 80
+    "solutionImageScale": 80,
+    "imageAlt": "문제의 오른쪽 그래프: x절편 1, y절편 -3. 일차함수 식이나 k값은 표시하지 않는다.",
+    "imageCaption": "문제의 오른쪽 그래프: x절편 1, y절편 -3. 일차함수 식이나 k값은 표시하지 않는다.",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -281,7 +284,7 @@ window.questionBank = [
       "$x$의 값이 4만큼 증가할 때, $y$의 값은 2만큼 증가한다.",
       "$y=-\\frac{1}{2}x-2$의 그래프와 평행하다."
     ],
-    "image": "assets/images/20_풍덕중_2학기_기말_중2_기출/q06.png",
+    "image": "assets/images/20_풍덕중_2학기_기말_중2_기출/q6-problem.svg",
     "answer": "①, ⑤",
     "solution": "그래프는 $(0,2)$와 $(4,0)$을 지난다.\n\n기울기는\n$\\dfrac{0-2}{4-0}=-\\dfrac12$이다.\n\n① 기울기가 $-\\dfrac12$이므로 옳다.\n\n② $x$절편은 $4$, $y$절편은 $2$이므로 옳지 않다.\n\n③ $x=2$일 때 $y=-\\dfrac12\\cdot2+2=1$이다. $(2,-1)$은 그래프 위에 있지 않다.\n\n④ $x$가 $4$만큼 증가하면 $y$는 $-\\dfrac12\\cdot4=-2$만큼 감소한다.\n\n⑤ $y=-\\dfrac12x-2$의 기울기도 $-\\dfrac12$이므로 두 그래프는 평행하다.\n\n옳은 것은 ①, ⑤이다.",
     "level": "중",
@@ -320,9 +323,12 @@ window.questionBank = [
     "primaryMethod": "한 직선의 기울기·절편·증가량 명제 비교",
     "decisiveStep": "두절편에서 직선식을 정해 기울기,통과점,증가량과 평행 여부를 대조한다.",
     "solutionImage": "assets/images/20_풍덕중_2학기_기말_중2_기출/q6-solution.svg",
-    "solutionImageAlt": "해설 그림: 오른쪽 아래로 내려가는 실선 직선이 점 (0,2)와 (4,0)을 지나고 그 아래에 평행한 점선 직선이 있으며 실선 위의 점 (2,1)도 표시되어 있다.",
-    "solutionImageCaption": "그래프는 (0,2)와 (4,0)을 지나므로 기울기는 (0−2)/(4−0)=−1/2이고 x절편 4, y절편 2이다. x=2일 때 y=1이므로 (2,−1)은 그래프 위에 있지 않다. y=−x/2−2도 기울기가 −1/2이므로 그래프와 평행하다. 따라서 옳은 것은 ①, ⑤이다.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "y=-x/2+2, 원본의 x절편 4, y절편 2 및 (2,1)을 정확히 보인다.",
+    "solutionImageCaption": "y=-x/2+2, 원본의 x절편 4, y절편 2 및 (2,1)을 정확히 보인다.",
+    "solutionImageSize": "full",
+    "imageAlt": "문제 그래프: 원본에 표시된 x절편 4와 y절편 2. 기울기·식·정답은 생략한다.",
+    "imageCaption": "문제 그래프: 원본에 표시된 x절편 4와 y절편 2. 기울기·식·정답은 생략한다.",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -377,8 +383,8 @@ window.questionBank = [
     "primaryMethod": "두점으로 직선식 결정",
     "decisiveStep": "두 좌표의 변화량비로 기울기를 구한 뒤 한점을 대입한다.",
     "solutionImage": "assets/images/20_풍덕중_2학기_기말_중2_기출/q7-solution.svg",
-    "solutionImageAlt": "오른쪽 위로 올라가는 직선이 점 (−1,3), (5,9)와 y축 위의 점 (0,4)를 지나며 좌표가 표시되어 있다.",
-    "solutionImageCaption": "두 점 (−1,3), (5,9)를 지나는 직선의 기울기는 (9−3)/(5−(−1))=1이다. y=x+b에 (−1,3)을 대입하면 3=−1+b에서 b=4이다. 따라서 y절편이 4인 y=x+4이고 답은 ⑤이다.",
+    "solutionImageAlt": "(-1,3),(5,9)를 지나는 직선 y=x+4.",
+    "solutionImageCaption": "(-1,3),(5,9)를 지나는 직선 y=x+4.",
     "solutionImageSize": "full"
   },
   {
@@ -429,8 +435,8 @@ window.questionBank = [
     "primaryMethod": "일차방정식의 두절편으로 그래프 선택",
     "decisiveStep": "주어진 방정식을 y에 관해 정리하고 x절편3,y절편2를 가지는 보기를 찾는다.",
     "solutionImage": "assets/images/20_풍덕중_2학기_기말_중2_기출/q8-solution.svg",
-    "solutionImageAlt": "오른쪽 아래로 내려가는 직선이 x축과 (3,0)에서, y축과 (0,2)에서 만나며 두 점의 좌표가 표시되어 있다.",
-    "solutionImageCaption": "2x+3y−6=0을 y에 대해 정리하면 y=−(2/3)x+2이다. 기울기가 −2/3이므로 오른쪽으로 갈수록 내려가고, y절편은 2, x절편은 3이다. 따라서 그림에서 y절편 2, x절편 3인 그래프는 ⑤이다.",
+    "solutionImageAlt": "2x+3y-6=0에서 y=-2x/3+2로 정리하여 x절편 3, y절편 2를 그린다.",
+    "solutionImageCaption": "2x+3y-6=0에서 y=-2x/3+2로 정리하여 x절편 3, y절편 2를 그린다.",
     "solutionImageSize": "full"
   },
   {
@@ -486,8 +492,8 @@ window.questionBank = [
     "primaryMethod": "x절편을 지나는 수직선",
     "decisiveStep": "주어진 직선에서 y=0인 x값을 구하고 모든점의x가같은 수직선식으로 옮긴다.",
     "solutionImage": "assets/images/20_풍덕중_2학기_기말_중2_기출/q9-solution.svg",
-    "solutionImageAlt": "오른쪽 아래로 내려가는 직선이 x축과 (1/2,0)에서 만나고 그 점을 지나는 위아래 방향의 수직선이 함께 그려져 있다.",
-    "solutionImageCaption": "점 (a,0)이 y=−2x+1 위에 있으므로 0=−2a+1에서 a=1/2이다. y축에 평행한 직선은 x좌표가 일정하므로 점 (1/2,0)을 지나는 직선은 x=1/2이다. 따라서 답은 ③이다.",
+    "solutionImageAlt": "y=-2x+1 위의 (1/2,0)을 지나고 y축에 평행한 직선 x=1/2.",
+    "solutionImageCaption": "y=-2x+1 위의 (1/2,0)을 지나고 y축에 평행한 직선 x=1/2.",
     "solutionImageSize": "full"
   },
   {

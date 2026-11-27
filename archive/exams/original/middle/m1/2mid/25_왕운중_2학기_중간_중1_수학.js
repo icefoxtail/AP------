@@ -558,9 +558,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중1_수학/q9-solution.svg",
-    "solutionImageAlt": "해설 그림: 정삼각형 ACD와 CBE가 선분 AB 위의 점 C에서 만나는 그림에서 합동인 △ACE와 △DCB를 칠하고 ∠DAE=34°, ∠DAC=60°, ∠EAC=∠BDC=26°, ∠ACE=∠DCB=120°를 표시한다.",
-    "solutionImageCaption": "△ACE≡△DCB이므로 ∠EAC=∠BDC=26°이다.",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "정삼각형 ACD와 CBE의 교차 선분 및 SAS 합동에서 얻는 26°와 120° 각을 선 표식만으로 비교한다.",
+    "solutionImageCaption": "정삼각형 ACD와 CBE의 교차 선분 및 SAS 합동에서 얻는 26°와 120° 각을 선 표식만으로 비교한다.",
+    "solutionImageSize": "full",
     "primaryMethod": "정삼각형 성질로 보조 삼각형의 SAS 합동 증명",
     "decisiveStep": "정삼각형의 같은 변과 60도 각으로 ACE와 DCB의 SAS 합동을 만든 뒤 대응각을 옮긴다.",
     "rpmPrimaryPath": {
@@ -574,7 +574,8 @@ window.questionBank = [
     "rpmL1": "기본 도형",
     "rpmL2": "작도와 합동",
     "rpmL3": "삼각형의 합동",
-    "rpmL4": "SAS 합동"
+    "rpmL4": "SAS 합동",
+    "solutionImageScale": 90
   },
   {
     "id": 10,
@@ -908,9 +909,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중1_수학/q15-solution.svg",
-    "solutionImageAlt": "해설 그림: 직선 l 위의 세 점 A, B, C와 l 밖의 점 P로 만든 도형을 다섯 칸으로 나누어 그렸다. 첫째 칸은 양쪽 화살표인 직선 l, PA, PB, PC 4개, 둘째~넷째 칸은 한쪽 화살표인 반직선 BA(검정), BC(빨강) / AB, AP, BP, CP / CB, PA, PB, PC 10개, 다섯째 칸은 화살표 없는 선분 AB, BC, AC, PA, PB, PC 6개를 나타낸다. 둘째 칸의 반직선 BA와 BC는 같은 점 B에서 시작하지만 방향이 반대인 서로 다른 반직선이다.",
-    "solutionImageCaption": "직선, 반직선, 선분을 화살표와 시작점으로 구분해 센다. 반직선 BA(검정)와 BC(빨강)는 B에서 시작하는 서로 다른 반직선이다.",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "일직선 A, B, C와 직선 밖 P에서 정해지는 네 직선을 한 그림에 모아 확인한다.",
+    "solutionImageCaption": "일직선 A, B, C와 직선 밖 P에서 정해지는 네 직선을 한 그림에 모아 확인한다.",
+    "solutionImageSize": "full",
     "primaryMethod": "공선점에서 중복되는 직선·반직선 구별",
     "decisiveStep": "시작점과 방향이 같은 반직선을 한 번만 세고 직선·반직선·선분 각각의 정의에 따라 수를 합한다.",
     "rpmPrimaryPath": {

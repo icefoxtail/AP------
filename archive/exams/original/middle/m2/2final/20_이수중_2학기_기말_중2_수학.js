@@ -146,8 +146,8 @@ window.examData = {
     "answer": "⑤",
     "solution": "[원문 조건 및 구할 대상]\n$\\triangle\\mathrm{ABC} \\sim \\triangle\\mathrm{DEF}$이고 $\\overline{\\mathrm{AB}}=6\\text{ cm}, \\overline{\\mathrm{DE}}=8\\text{ cm}$일 때, $\\triangle\\mathrm{ABC}$의 넓이가 $27\\text{ cm}^2$이면 $\\triangle\\mathrm{DEF}$의 넓이를 구한다.\n\n[핵심 발상/공식/보조선]\n닮음비가 $m : n$인 두 평면도형의 넓이의 비는 $m^2 : n^2$이다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 닮음비 계산\n$\\overline{\\mathrm{AB}} : \\overline{\\mathrm{DE}} = 6 : 8 = 3 : 4$\n\n2단계: 넓이의 비 계산\n넓이의 비 $= 3^2 : 4^2 = 9 : 16$\n\n3단계: $\\triangle\\mathrm{DEF}$의 넓이 계산\n$27 : \\text{Area}(\\triangle\\mathrm{DEF}) = 9 : 16$\n$\\text{Area}(\\triangle\\mathrm{DEF}) = 27 \\times \\dfrac{16}{9} = 3 \\times 16 = 48\\text{ cm}^2$\n\n[경우 나눔 및 5개 선지 검토]\n① $36\\text{ cm}^2$: 오답\n② $39\\text{ cm}^2$: 오답\n③ $42\\text{ cm}^2$: 오답\n④ $45\\text{ cm}^2$: 오답\n⑤ $48\\text{ cm}^2$: 계산 결과와 일치함 (정답)\n\n[명확한 결론]\n따라서 $\\triangle\\mathrm{DEF}$의 넓이는 ⑤ $48\\text{ cm}^2$이다.",
     "solutionImage": "assets/images/20_이수중_2학기_기말_중2_수학/q3-solution.svg",
-    "solutionImageAlt": "해설 그림: 왼쪽에는 닮은 두 삼각형이 있고 작은 삼각형의 AB는 6 cm, 넓이는 27 제곱센티미터이며 큰 삼각형의 DE는 8 cm이다. 오른쪽에는 작은 삼각형을 같은 크기의 작은 삼각형 9개로, 큰 삼각형을 16개로 나누어 파란색 작은 삼각형이 서로 합동임을 보였다.",
-    "solutionImageCaption": "AB 대 DE는 6 대 8, 곧 3 대 4가 닮음비이다. 닮음비가 3 대 4이면 넓이의 비는 3의 제곱 대 4의 제곱, 곧 9 대 16이다. 작은 삼각형의 넓이가 27이므로 27 대 큰 삼각형의 넓이는 9 대 16이고 큰 삼각형의 넓이는 27의 9분의 16배이다. 정답은 ⑤ 48 제곱센티미터이다.",
+    "solutionImageAlt": "닮음비가 3 대 4이므로 AB를 3등분, DE를 4등분하면 두 삼각형은 같은 크기의 작은 삼각형으로 나뉜다. 파란색 작은 삼각형은 두 그림에서 합동이다.",
+    "solutionImageCaption": "닮음비가 3 대 4이므로 AB를 3등분, DE를 4등분하면 두 삼각형은 같은 크기의 작은 삼각형으로 나뉜다. 파란색 작은 삼각형은 두 그림에서 합동이다.",
     "solutionImageSize": "full",
     "crossConceptKeys": [],
     "conditionKeys": [],
@@ -160,7 +160,8 @@ window.examData = {
     "image": "assets/images/20_이수중_2학기_기말_중2_수학/q3-problem.svg",
     "imageAlt": "2020 이수중 중2 2학기 기말 3번 문제 조건도",
     "imageCaption": "2020 이수중 중2 2학기 기말 3번 문제 조건도",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 4,
@@ -458,8 +459,8 @@ window.examData = {
     "answer": "②",
     "solution": "[원문 조건 및 구할 대상]\n$\\overline{\\mathrm{AB}} \\parallel \\overline{\\mathrm{EF}} \\parallel \\overline{\\mathrm{DC}}$이고 $\\overline{\\mathrm{AB}}=12\\text{ cm}, \\overline{\\mathrm{DC}}=24\\text{ cm}$일 때, 선분 $\\overline{\\mathrm{EF}}$의 길이를 구한다.\n\n[핵심 발상/공식/보조선]\n평행선이 만드는 두 쌍의 닮은 삼각형을 차례로 이용한다.\n1. $\\overline{\\mathrm{AB}} \\parallel \\overline{\\mathrm{DC}}$이므로 $\\triangle\\mathrm{EAB} \\sim \\triangle\\mathrm{ECD}$ (AA 닮음)이다.\n   대응변의 비: $\\overline{\\mathrm{BE}} : \\overline{\\mathrm{ED}} = \\overline{\\mathrm{AB}} : \\overline{\\mathrm{CD}} = 12 : 24 = 1 : 2$.\n2. $\\overline{\\mathrm{BD}}$ 전체에서 $\\overline{\\mathrm{BE}} : \\overline{\\mathrm{BD}} = 1 : (1 + 2) = 1 : 3$이다.\n3. $\\triangle\\mathrm{BCD}$에서 $\\overline{\\mathrm{EF}} \\parallel \\overline{\\mathrm{DC}}$이므로 $\\triangle\\mathrm{BEF} \\sim \\triangle\\mathrm{BDC}$이다.\n   따라서 $\\overline{\\mathrm{EF}} : \\overline{\\mathrm{DC}} = \\overline{\\mathrm{BE}} : \\overline{\\mathrm{BD}} = 1 : 3$이다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 닮음비 적용\n$\\overline{\\mathrm{EF}} : 24 = 1 : 3$\n$3\\overline{\\mathrm{EF}} = 24 \\implies \\overline{\\mathrm{EF}} = 8\\text{ cm}$\n\n[경우 나눔 및 5개 선지 검토]\n① $7\\text{ cm}$: 오답\n② $8\\text{ cm}$: 계산 결과와 일치함 (정답)\n③ $9\\text{ cm}$: 오답\n④ $10\\text{ cm}$: 오답\n⑤ $11\\text{ cm}$: 오답\n\n[명확한 결론]\n따라서 $\\overline{\\mathrm{EF}}$의 길이는 ② $8\\text{ cm}$이다.",
     "solutionImage": "assets/images/20_이수중_2학기_기말_중2_수학/q9-solution.svg",
-    "solutionImageAlt": "해설 그림: 왼쪽 위에는 사다리꼴 모양의 도형에서 두 대각선이 점 E에서 만나고 E를 지나 밑변과 평행한 선분 EF가 있으며 AB는 12 cm, DC는 24 cm이다. 나머지 두 칸에는 삼각형 EAB와 ECD, 삼각형 BEF와 BDC의 대응변을 같은 색으로 나타냈다.",
-    "solutionImageCaption": "AB와 DC가 평행하므로 삼각형 EAB와 삼각형 ECD는 닮음이고 닮음비는 12 대 24, 곧 1 대 2이다. 그래서 BE 대 ED가 1 대 2이므로 BE 대 BD는 1 대 3이다. 삼각형 BEF와 삼각형 BDC에서도 EF와 DC가 평행하므로 닮음비는 1 대 3이다. EF는 DC의 3분의 1이므로 24 cm의 3분의 1이다. 정답은 ② 8 cm이다.",
+    "solutionImageAlt": "AB와 DC가 평행하므로 삼각형 EAB와 ECD가 닮고 BE 대 ED는 1 대 2이다. BD 전체로는 BE 대 BD가 1 대 3이다. 같은 색의 변이 서로 대응한다.",
+    "solutionImageCaption": "AB와 DC가 평행하므로 삼각형 EAB와 ECD가 닮고 BE 대 ED는 1 대 2이다. BD 전체로는 BE 대 BD가 1 대 3이다. 같은 색의 변이 서로 대응한다.",
     "solutionImageSize": "full",
     "crossConceptKeys": [],
     "conditionKeys": [],
@@ -472,7 +473,8 @@ window.examData = {
     "image": "assets/images/20_이수중_2학기_기말_중2_수학/q9-problem.svg",
     "imageAlt": "2020 이수중 중2 2학기 기말 9번 문제 조건도",
     "imageCaption": "2020 이수중 중2 2학기 기말 9번 문제 조건도",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 10,
@@ -511,8 +513,8 @@ window.examData = {
     "answer": "③",
     "solution": "[원문 조건 및 구할 대상]\n사다리꼴 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AD}} \\parallel \\overline{\\mathrm{BC}} \\parallel \\overline{\\mathrm{EF}}$이고 $\\overline{\\mathrm{AE}}=\\overline{\\mathrm{EB}}$일 때, 선분 $\\overline{\\mathrm{EF}}$의 길이를 구한다.\n조건: 윗변 $\\overline{\\mathrm{AD}}=8\\text{ cm}$, 아랫변 $\\overline{\\mathrm{BC}}=12\\text{ cm}$.\n\n[핵심 발상/공식/보조선]\n사다리꼴의 중점연결정리 및 보조선 대각선 분할:\n1. 보조선으로 대각선 $\\overline{\\mathrm{BD}}$를 긋고, 선분 $\\overline{\\mathrm{EF}}$와의 교점을 $\\mathrm{M}$이라 하자.\n2. $\\triangle\\mathrm{ABD}$에서 $\\mathrm{E}$는 $\\overline{\\mathrm{AB}}$의 중점이고 $\\overline{\\mathrm{EM}} \\parallel \\overline{\\mathrm{AD}}$이므로, 중점연결정리에 의해 $\\mathrm{M}$은 $\\overline{\\mathrm{BD}}$의 중점이며:\n   $\\overline{\\mathrm{EM}} = \\dfrac{1}{2}\\overline{\\mathrm{AD}} = \\dfrac{1}{2} \\times 8 = 4\\text{ cm}$\n3. $\\triangle\\mathrm{DBC}$에서 $\\mathrm{M}$은 $\\overline{\\mathrm{BD}}$의 중점이고 $\\overline{\\mathrm{MF}} \\parallel \\overline{\\mathrm{BC}}$이므로:\n   $\\overline{\\mathrm{MF}} = \\dfrac{1}{2}\\overline{\\mathrm{BC}} = \\dfrac{1}{2} \\times 12 = 6\\text{ cm}$\n4. $\\overline{\\mathrm{EF}} = \\overline{\\mathrm{EM}} + \\overline{\\mathrm{MF}} = \\dfrac{\\overline{\\mathrm{AD}} + \\overline{\\mathrm{BC}}}{2}$\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 각 분할 선분의 길이 계산\n$\\overline{\\mathrm{EM}} = \\dfrac{1}{2} \\times 8 = 4\\text{ cm}$\n$\\overline{\\mathrm{MF}} = \\dfrac{1}{2} \\times 12 = 6\\text{ cm}$\n\n2단계: $\\overline{\\mathrm{EF}}$의 전체 길이 계산\n$\\overline{\\mathrm{EF}} = 4 + 6 = 10\\text{ cm}$\n(공식 적용 시: $\\overline{\\mathrm{EF}} = \\dfrac{8 + 12}{2} = \\dfrac{20}{2} = 10\\text{ cm}$)\n\n[경우 나눔 및 5개 선지 검토]\n① $9\\text{ cm}$: 오답\n② $9.5\\text{ cm}$: 오답\n③ $10\\text{ cm}$: 계산 결과와 일치함 (정답)\n④ $10.5\\text{ cm}$: 오답\n⑤ $11\\text{ cm}$: 오답\n\n[명확한 결론]\n따라서 $\\overline{\\mathrm{EF}}$의 길이는 ③ $10\\text{ cm}$이다.",
     "solutionImage": "assets/images/20_이수중_2학기_기말_중2_수학/q10-solution.svg",
-    "solutionImageAlt": "해설 그림: 왼쪽에는 사다리꼴에서 윗변 AD가 8 cm, 아랫변 BC가 12 cm이고 변 AB의 중점 E와 변 DC 위의 점 F를 잇는 선분 EF가 있다. 오른쪽에는 대각선 BD를 점선으로 그어 EF와 만나는 점 M을 표시하고 EM은 4 cm, MF는 6 cm로 적었다.",
-    "solutionImageCaption": "대각선 BD를 긋고 EF와의 교점을 M이라 하자. 삼각형 ABD에서 E가 AB의 중점이고 EM이 AD와 평행하므로 M은 BD의 중점이고 EM은 AD의 절반인 4 cm이다. 삼각형 DBC에서 M이 BD의 중점이고 MF가 BC와 평행하므로 MF는 BC의 절반인 6 cm이다. 그러므로 EF는 EM과 MF의 합이다. 정답은 ③ 10 cm이다.",
+    "solutionImageAlt": "대각선 BD와 EF가 만나는 점 M은 BD의 중점이다. 파란색 EM은 AD와, 주황색 MF는 BC와 평행하며 길이가 각각 절반이다.",
+    "solutionImageCaption": "대각선 BD와 EF가 만나는 점 M은 BD의 중점이다. 파란색 EM은 AD와, 주황색 MF는 BC와 평행하며 길이가 각각 절반이다.",
     "solutionImageSize": "full",
     "crossConceptKeys": [],
     "conditionKeys": [],
@@ -1046,8 +1048,8 @@ window.examData = {
     "answer": "⑤",
     "solution": "[원문 조건 및 구할 대상]\n$\\triangle\\mathrm{ABC} \\equiv \\triangle\\mathrm{DCE}$이고 세 점 $\\mathrm{A}, \\mathrm{C}, \\mathrm{D}$가 한 직선 위에 있으며 $\\overline{\\mathrm{AB}}=6\\text{ cm}, \\overline{\\mathrm{DE}}=8\\text{ cm}$일 때, 가운데 삼각형 $\\triangle\\mathrm{BCE}$의 넓이를 구한다.\n\n[핵심 발상/공식/보조선]\n1. 두 직각삼각형이 합동이므로 대응변의 길이가 같다:\n$\\overline{\\mathrm{AB}} = \\overline{\\mathrm{DC}} = 6\\text{ cm}$, $\\overline{\\mathrm{AC}} = \\overline{\\mathrm{DE}} = 8\\text{ cm}$\n2. 직각삼각형 $\\triangle\\mathrm{ABC}$에서 피타고라스 정리에 의해 빗변의 길이를 구한다:\n$\\overline{\\mathrm{BC}}^2 = \\overline{\\mathrm{AB}}^2 + \\overline{\\mathrm{AC}}^2 = 6^2 + 8^2 = 100 \\implies \\overline{\\mathrm{BC}} = 10\\text{ cm}$\n합동에 의해 $\\overline{\\mathrm{CE}} = \\overline{\\mathrm{BC}} = 10\\text{ cm}$이다.\n3. $\\angle\\mathrm{BCA} + \\angle\\mathrm{ECD} = 90^\\circ$이므로 $\\angle\\mathrm{BCE} = 180^\\circ - 90^\\circ = 90^\\circ$이다.\n따라서 $\\triangle\\mathrm{BCE}$는 밑변과 높이가 모두 $10\\text{ cm}$인 직각이등변삼각형이다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 빗변 $\\overline{\\mathrm{BC}}$의 길이 계산\n$\\overline{\\mathrm{BC}} = \\sqrt{6^2 + 8^2} = \\sqrt{36 + 64} = \\sqrt{100} = 10\\text{ cm}$\n\n2단계: $\\triangle\\mathrm{BCE}$의 넓이 계산\n$\\angle\\mathrm{BCE} = 90^\\circ, \\overline{\\mathrm{BC}} = \\overline{\\mathrm{CE}} = 10\\text{ cm}$이므로:\n$\\text{Area}(\\triangle\\mathrm{BCE}) = \\dfrac{1}{2} \\times \\overline{\\mathrm{BC}} \\times \\overline{\\mathrm{CE}} = \\dfrac{1}{2} \\times 10 \\times 10 = 50\\text{ cm}^2$\n\n[경우 나눔 및 5개 선지 검토]\n① $46\\text{ cm}^2$: 오답\n② $47\\text{ cm}^2$: 오답\n③ $48\\text{ cm}^2$: 오답\n④ $49\\text{ cm}^2$: 오답\n⑤ $50\\text{ cm}^2$: 계산 결과와 일치함 (정답)\n\n[명확한 결론]\n따라서 $\\triangle\\mathrm{BCE}$의 넓이는 ⑤ $50\\text{ cm}^2$이다.",
     "solutionImage": "assets/images/20_이수중_2학기_기말_중2_수학/q20-solution.svg",
-    "solutionImageAlt": "해설 그림: 왼쪽에는 한 직선 위의 세 점 A, C, D와 직각삼각형 ABC, DCE가 있고 AB는 6 cm, DE는 8 cm이며 대응하는 변이 같은 색이다. 가운데에는 같은 크기의 각을 분홍색과 보라색으로 나타내고 점 C에서 각 BCE가 직각임을 표시했다. 오른쪽에는 BC와 CE가 같고 각 C가 직각인 삼각형 BCE가 있다.",
-    "solutionImageCaption": "삼각형 ABC와 DCE가 합동이므로 DC는 AB인 6 cm이고 AC는 DE인 8 cm이다. 피타고라스 정리에서 BC는 6과 8로 만든 직각삼각형의 빗변이므로 10 cm이고 합동에서 CE도 10 cm이다. 각 ACB와 각 DCE의 합은 90도이므로 각 BCE는 직각이다. 삼각형 BCE는 두 직각변이 10 cm인 직각이등변삼각형이다. 정답은 ⑤ 50 제곱센티미터이다.",
+    "solutionImageAlt": "합동인 삼각형의 대응변은 같은 색이다. 분홍색 각끼리, 보라색 각끼리 크기가 같고, 직각삼각형 ABC에서 분홍색 각과 보라색 각의 합은 90도이므로 점 C에서 각 BCE는 직각이다.",
+    "solutionImageCaption": "합동인 삼각형의 대응변은 같은 색이다. 분홍색 각끼리, 보라색 각끼리 크기가 같고, 직각삼각형 ABC에서 분홍색 각과 보라색 각의 합은 90도이므로 점 C에서 각 BCE는 직각이다.",
     "solutionImageSize": "full",
     "crossConceptKeys": [
       "CC_TRIANGLE_CONGRUENCE",
@@ -1063,7 +1065,8 @@ window.examData = {
     "image": "assets/images/20_이수중_2학기_기말_중2_수학/q20-problem.svg",
     "imageAlt": "2020 이수중 중2 2학기 기말 20번 문제 조건도",
     "imageCaption": "2020 이수중 중2 2학기 기말 20번 문제 조건도",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 21,

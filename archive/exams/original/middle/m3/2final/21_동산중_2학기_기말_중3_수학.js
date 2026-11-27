@@ -812,8 +812,8 @@ window.questionBank = [
     "semanticStatus": "CANDIDATE",
     "meaningMeta": {"semanticStatus":"CANDIDATE","rpmPrimaryId":"M3-RPM-080","rpmPrimaryPath":{"majorUnit":"원의 성질","midUnit":"원주각","l3":"원주각의 활용","l4":"복합 각 추론"},"rpmL3":"원주각의 활용","rpmL4":"복합 각 추론","subUnitKey":"M3-06-CIRCLE_INSCRIBED_ANGLE","problemTypeKey":"PT_CIRCLE_ANGLE_RELATIONS","templateKey":"TPL_CIRCLE_ANGLE_COMPOSITE","projectionStatus":"PROJECTION_UNMATERIALIZED","projectionReason":"GLOBAL ACTIVE TPL_CIRCLE_ANGLE_COMPOSITE와 parent PT_CIRCLE_ANGLE_RELATIONS를 읽어 재사용했다. canonical owner MIDDLE_GEOMETRY, 2015 source binding owner MIDDLE_GEOMETRY를 별도로 확인했으며 신규 finalization은 수행하지 않았다."},
     "solutionImage": "assets/images/21_동산중_2학기_기말_중3_수학/q10-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 O의 두 현 AD, BC가 원 안의 점 P에서 만나 ∠CPD=80°를 이루고, 현 BD를 그은 그림.",
-    "solutionImageCaption": "두 현이 원 안에서 만나므로 ∠CPD는 호 CD와 호 AB의 합의 절반이다. 호 CD=3×호 AB이므로 (3a+a)/2=80°에서 호 AB=40°, 호 CD=120°이다. ∠PBD는 호 CD를 보는 원주각이다. 정답은 60°이다.",
+    "solutionImageAlt": "원 O의 두 현 AD, BC가 원 안의 점 P에서 만나 ∠CPD=80°를 이루고, 현 BD를 그은 그림.",
+    "solutionImageCaption": "원 O의 두 현 AD, BC가 원 안의 점 P에서 만나 ∠CPD=80°를 이루고, 현 BD를 그은 그림.",
     "solutionImageSize": "full"
   ,
     "legacyLevelCompatibility": "STRONG_CONFLICT",
