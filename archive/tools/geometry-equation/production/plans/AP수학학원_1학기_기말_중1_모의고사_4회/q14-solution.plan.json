@@ -1,0 +1,120 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "U"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "P",
+          "L"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "Q"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ],
+      "dashed": true
+    }
+  ],
+  "axisTickValues": {
+    "x": [
+      5
+    ],
+    "y": [
+      -2,
+      2
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 490
+  },
+  "caption": "P(5,-2)를 x축에 대칭시키면 x좌표는 그대로이고 y좌표의 부호가 바뀌어 Q(5,2)가 된다.",
+  "accessibilityDescription": "좌표평면에서 x축을 사이에 두고 같은 세로선 위에 있는 P와 Q를 점선으로 연결한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 점 (5,-2)의 x축 대칭점은 직선 y=0에 대한 LINE_REFLECTION 연산으로 구성한다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayPoints",
+        "displaySegments",
+        "axisTickValues"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 점 P,Q, x=5 점선, x축을 기준으로 y=-2와 y=2가 대칭인 관계"
+  ]
+}

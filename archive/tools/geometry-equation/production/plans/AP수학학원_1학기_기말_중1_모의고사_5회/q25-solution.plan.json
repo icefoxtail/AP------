@@ -1,0 +1,96 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "r",
+        "kind": "RATIONAL",
+        "numerator": [
+          "20",
+          "0"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-8",
+          "7"
+        ],
+        "color": "BLUE",
+        "hideLabel": true
+      }
+    ],
+    "viewport": [
+      -8,
+      7,
+      -8,
+      13
+    ],
+    "axisTickValues": {
+      "x": [
+        "-5",
+        "2"
+      ],
+      "y": [
+        "10",
+        "-4"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "G",
+          "x": "2",
+          "y": "10",
+          "unnamed": true
+        },
+        {
+          "id": "K",
+          "x": "-5",
+          "y": "-4",
+          "unnamed": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "x2",
+          "from": "G",
+          "axis": "x"
+        },
+        {
+          "id": "y10",
+          "from": "G",
+          "axis": "y"
+        },
+        {
+          "id": "xm5",
+          "from": "K",
+          "axis": "x"
+        },
+        {
+          "id": "yk",
+          "from": "K",
+          "axis": "y"
+        }
+      ]
+    }
+  },
+  "caption": "두 점 (2,10), (-5,-4)는 같은 반비례 곡선 y=20/x 위에 있으므로 k=-4이다.",
+  "accessibilityDescription": "두 점 (2,10), (-5,-4)는 같은 반비례 곡선 y=20/x 위에 있으므로 k=-4이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "반비례상수 a=2×10=20이고 x=-5에서 y=20/(-5)=-4이다.",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.axisTickValues",
+        "graphPlan.overlays"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 가지 반비례 곡선·x=2 및 -5·y=10 및 -4와 연결 점선"
+  ]
+}

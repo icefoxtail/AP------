@@ -1,0 +1,87 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "prop",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "-5/3"
+        ],
+        "domain": [
+          "-5",
+          "7"
+        ],
+        "color": "BLUE",
+        "hideLabel": true
+      }
+    ],
+    "viewport": [
+      -5,
+      7,
+      -12,
+      7
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "6"
+      ],
+      "y": [
+        "5",
+        "-10"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "G",
+          "x": "-3",
+          "y": "5",
+          "unnamed": true
+        },
+        {
+          "id": "K",
+          "x": "6",
+          "y": "-10",
+          "unnamed": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "gx",
+          "from": "G",
+          "axis": "x"
+        },
+        {
+          "id": "gy",
+          "from": "G",
+          "axis": "y"
+        },
+        {
+          "id": "gk",
+          "from": "K",
+          "axis": "y"
+        }
+      ]
+    }
+  },
+  "caption": "원점과 (-3,5), (6,-10)을 잇는 직선으로 정비례상수 -5/3을 설명한다.",
+  "accessibilityDescription": "원점과 (-3,5), (6,-10)을 잇는 직선으로 정비례상수 -5/3을 설명한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "주어진 점 (-3,5)에서 기울기는 -5/3, x=6일 때 y=-10이다.",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.axisTickValues",
+        "graphPlan.overlays"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 좌표점의 x·y 눈금 및 점선, 기울기 음수"
+  ]
+}

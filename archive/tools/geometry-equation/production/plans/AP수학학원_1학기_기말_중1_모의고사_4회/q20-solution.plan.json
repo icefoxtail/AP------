@@ -1,0 +1,83 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "inv",
+        "kind": "RATIONAL",
+        "numerator": [
+          "15",
+          "0"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-6",
+          "9"
+        ],
+        "label": "y=a/x",
+        "color": "BLUE"
+      }
+    ],
+    "viewport": [
+      -6,
+      9,
+      -5,
+      8
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "3",
+          "y": "5"
+        },
+        {
+          "id": "A",
+          "x": "3",
+          "y": "0"
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "5"
+        }
+      ],
+      "segments": [
+        {
+          "id": "sPA",
+          "from": "P",
+          "to": "A"
+        },
+        {
+          "id": "sPB",
+          "from": "P",
+          "to": "B"
+        }
+      ]
+    }
+  },
+  "caption": "반비례 그래프의 점 P에서 만든 직사각형 넓이 xy는 주어진 15로 일정하다.",
+  "accessibilityDescription": "반비례 그래프의 점 P에서 만든 직사각형 넓이 xy는 주어진 15로 일정하다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "P는 제1사분면의 y=a/x 위에 있고 A와 B는 각각 x축과 y축 위의 수선의 발이다. 사각형 OAPB 넓이는 15이다. 그림의 (3,5)는 주어진 넓이 15를 만족시키는 대표적 배치이며 좌표를 표시하지 않는다.",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.overlays",
+        "graphPlan.axisTickValues"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "곡선 y=a/x, P·A·B·O 관계, 두 수선 PA/PB, 무색 내부"
+  ]
+}
