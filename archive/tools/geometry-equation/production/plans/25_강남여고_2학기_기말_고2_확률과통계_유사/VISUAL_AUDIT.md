@@ -58,3 +58,41 @@
 | 25_강남여고_2학기_기말_고2_확률과통계_유사/q23 | 해설 | PLAN: n=225의 표본평균 N(50,(2/3)²): 49·50·51의 좌우 대칭 구간 넓이 0.4332씩 | `원문 수식·조건` | — | `stat-chart-figure-v1` | `archive/tools/geometry-equation/production/plans/25_강남여고_2학기_기말_고2_확률과통계_유사/q23-solution.plan.json` | PASS/PASS | REVIEWED | STATIC_1_TO_1 / RENDER_NOT_RUN | NOT_RUN |
 | 25_강남여고_2학기_기말_고2_확률과통계_유사/q24 | 문항 | EXEMPT: 정규분포의 일차변환: 도형 없이 발문·수식·표가 조건을 완결한다. | `원문 수식·조건` | — | `—` | `—` | N/A | REVIEWED | N/A | NOT_RUN |
 | 25_강남여고_2학기_기말_고2_확률과통계_유사/q24 | 해설 | PLAN: 두 독립 정규분포 X,Y의 기준점·평균·확률 구간을 각각 한 패널에서 정확히 보여줌 | `원문 수식·조건` | — | `composite-panels-v1` | `archive/tools/geometry-equation/production/plans/25_강남여고_2학기_기말_고2_확률과통계_유사/q24-solution.plan.json` | PASS/PASS | REVIEWED | STATIC_1_TO_1 / RENDER_NOT_RUN | NOT_RUN |
+
+## 2026-11-27 독립 재검증: 문항별 2축 요약
+
+- 최신 확인 기준: 원격 `origin/main`의 `ddb73cdab92709f7b7b85a9353595d59b7b0262f`. 이 시험지의 17개 plan과 48축 상세 감사는 앞선 `aaa40c235`에서 **이미 main에 존재**했다. 누락 없이 재확인하고 필요한 메타데이터·영역 경계만 수정했다.
+- 문제 24축 + 해설 24축 = **48/48축**. `REQUIRED` **0축**, `BENEFICIAL` **17축**, `EXEMPT` **31축**. 기존 공식 plan **17개**, 이번 수정 **4개**(q07/08/12/16 해설), 신규 **0개**. 면제 사유는 위의 독립 48축 감사표에 기록했다.
+- `STATIC_FIELD_PARITY` 개선: q07(61·75의 중점 m=68), q08(밀도함수 a=1/2), q12((0,2/5)→(2,0)→(5,2/5) 및 확률구간), q16(두 신뢰구간과 정수 22~26)의 원문 조건을 `sourceConditions[].mappedTo`에 명시했다. q12의 유의미한 음영은 영점 `x=2`를 기준으로 **[1,2]와 [2,5] 두 삼각형으로 분리**, 총 확률 7/10을 보존했다.
+- 직접 연결 SVG **4개**. q08·q12는 실제 축·곡선·영역이 있지만 q07·q16의 레거시 SVG는 확인 결과 **caption-only 합성 컨테이너**로서 본체 점·선·구간 그림이 없다. 이 두 원본은 `ORIGINAL_CAPTION_ONLY`이며 해설 수식에 근거해 수직선 plan을 복원했다. 기존 상세 표의 이 두 건의 `STATIC_1_TO_1`은 **원문 해설 ↔ plan 의미 정합성**으로만 읽어야 하며 원본 그림의 점·선 일치라는 뜻이 아니다.
+- `JSON 파싱·스키마 17/17 PASS`, `Shallow lint 17/17 PASS`, `Full lint 17/17 PASS`, `STATIC_FIELD_PARITY 17 PASS / 31 N/A`, `ENGINE_CAPABILITY_PENDING 0`, `DRAWN_FEATURE_PARITY 실제 렌더 확인 0/17`.
+- **RENDER_NOT_RUN**: 공식 `render-plan.mjs`의 q08 수학Ⅱ 대표 plan에 대해 `GEOMETRY_BROWSER_EXECUTABLE=/usr/bin/chromium`으로 재시도했으나 `ARCHIVE_PREFLIGHT_FAIL`. Chromium 실행 래퍼가 가리키는 실제 `/usr/lib/chromium/chromium` 파일이 없어 `exitCode=127`. 본 17개 plan도 실제 출력 SVG·학생화면·원본 픽셀 대조를 통과했다고 선언하지 않는다.
+
+아래 표에서 `원본 SVG`는 `archive/assets/images/25_강남여고_2학기_기말_고2_확률과통계_유사/` 기준, `plan 파일`은 이 문서와 같은 디렉터리 기준이다. 원본이 없는 축은 원문·해설 수식을 근거로 새 도해가 유익한지 판단했다.
+
+| 문항 | 문제 축 판정 | 해설 축 판정 | 원본 SVG | plan 파일 | STATIC_FIELD_PARITY | DRAWN_FEATURE_PARITY | 비고 |
+|---|---|---|---|---|---|---|---|
+| 01 | EXEMPT | EXEMPT | 없음 | 없음 | N/A | N/A | 확률분포표 수치·계산식으로 완결. |
+| 02 | EXEMPT | EXEMPT | 없음 | 없음 | N/A | N/A | 이항분포 기대값 공식 적용. |
+| 03 | EXEMPT | BENEFICIAL | 없음 | `q03-solution.plan.json` | PASS | 원본 없음 / 렌더 보류 | −1.5~1.5 표준정규분포의 대칭 면적. |
+| 04 | EXEMPT | BENEFICIAL | 없음 | `q04-solution.plan.json` | PASS | 원본 없음 / 렌더 보류 | N(20,4²)의 X≤14 왼쪽 꼬리. |
+| 05 | EXEMPT | BENEFICIAL | 없음 | `q05-solution.plan.json` | PASS | 원본 없음 / 렌더 보류 | 51~66 구간을 평균 60 기준으로 분리. |
+| 06 | EXEMPT | EXEMPT | 없음 | 없음 | N/A | N/A | 일차변환 기대값·분산만 계산. |
+| 07 | EXEMPT | BENEFICIAL | `q07-solution.svg`(caption-only) | `q07-solution.plan.json` | PASS | 원본 그림 미완성 / 렌더 보류 | 평균 68을 중점으로 61·75를 배치; 원본에는 실제 수직선 없음. |
+| 08 | EXEMPT | BENEFICIAL | `q08-solution.svg` | `q08-solution.plan.json` | PASS | 정적 일치 / 렌더 보류 | (1,0)~(3,1)의 밀도 삼각형 넓이 1. |
+| 09 | EXEMPT | BENEFICIAL | 없음 | `q09-solution.plan.json` | PASS | 원본 없음 / 렌더 보류 | 세 정규곡선 평균 70·80 및 표준편차 10·15 비교. |
+| 10 | EXEMPT | BENEFICIAL | 없음 | `q10-solution.plan.json` | PASS | 원본 없음 / 렌더 보류 | 정규근사 N(80,8²), 구간 68~88. |
+| 11 | EXEMPT | BENEFICIAL | 없음 | `q11-solution.plan.json` | PASS | 원본 없음 / 렌더 보류 | 표본평균 N(80,2²)의 77 이상 꼬리. |
+| 12 | EXEMPT | BENEFICIAL | `q12-solution.svg` | `q12-solution.plan.json` | PASS | 정적 경계 개선 / 렌더 보류 | 1~2와 2~5 음영을 영점에서 분리. |
+| 13 | EXEMPT | EXEMPT | 없음 | 없음 | N/A | N/A | 표본 크기와 신뢰구간 폭의 대수식. |
+| 14 | EXEMPT | EXEMPT | 없음 | 없음 | N/A | N/A | 4장 선택 경우의 수와 확률표 산출. |
+| 15 | EXEMPT | EXEMPT | 없음 | 없음 | N/A | N/A | 이항확률 다항방정식. |
+| 16 | EXEMPT | BENEFICIAL | `q16-solution.svg`(caption-only) | `q16-solution.plan.json` | PASS | 원본 그림 미완성 / 렌더 보류 | 99%·95% 두 구간과 정수 22~26; 원본은 caption만 존재. |
+| 17 | EXEMPT | BENEFICIAL | 없음 | `q17-solution.plan.json` | PASS | 원본 없음 / 렌더 보류 | 근사 정규분포 X≤16 또는 X≥26의 두 꼬리. |
+| 18 | EXEMPT | EXEMPT | 없음 | 없음 | N/A | N/A | 대칭 확률표·분산 계산으로 완결. |
+| 19 | EXEMPT | BENEFICIAL | 없음 | `q19-solution.plan.json` | PASS | 원본 없음 / 렌더 보류 | 과일 상자 표본평균의 양쪽 불량 영역. |
+| 20 | EXEMPT | BENEFICIAL | 없음 | `q20-solution.plan.json` | PASS | 원본 없음 / 렌더 보류 | z=−1.96 기준 왼쪽 꼬리의 확률. |
+| 21 | EXEMPT | BENEFICIAL | 없음 | `q21-solution.plan.json` | PASS | 원본 없음 / 렌더 보류 | 정규근사 N(32,4²)의 38 이상 꼬리. |
+| 22 | EXEMPT | BENEFICIAL | 없음 | `q22-solution.plan.json` | PASS | 원본 없음 / 렌더 보류 | Y~N(70,10²)의 55 이상 꼬리. |
+| 23 | EXEMPT | BENEFICIAL | 없음 | `q23-solution.plan.json` | PASS | 원본 없음 / 렌더 보류 | 표본평균 49~51 중앙확률 .8664. |
+| 24 | EXEMPT | BENEFICIAL | 없음 | `q24-solution.plan.json` | PASS | 원본 없음 / 렌더 보류 | X와 Y 두 정규분포의 구간을 두 패널로 별도 표현. |
