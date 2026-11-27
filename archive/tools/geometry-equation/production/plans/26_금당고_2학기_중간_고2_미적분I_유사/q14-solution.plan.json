@@ -1,0 +1,20 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "xWindow": [-1, 7],
+    "pieces": [
+      {"coefficients": ["9", "0", "1"], "domain": [0, 3], "end": "CLOSED"},
+      {"coefficients": ["0", "6"], "domain": [3, 6], "start": "OPEN", "end": "CLOSED"}
+    ],
+    "axisTickValues": {"x": ["3", "6"], "y": ["9", "18"]},
+    "functionName": "f"
+  },
+  "caption": "x=3에서 왼쪽 f(x)=x^2+9와 오른쪽 f(x)=6x는 값 18, 접선 기울기 6으로 만난다.",
+  "accessibilityDescription": "왼쪽 곡선 y=x제곱+9가 (3,18)에 닿고 오른쪽 직선 y=6x이 그 점에서 같은 방향으로 이어진다. x=3과 y=18의 눈금이 표시된다.",
+  "newVisualInformation": ["x=3의 연속 조건 두 그래프의 높이 18", "좌도함수와 우도함수의 기울기 6 일치", "같은 경계점에서 파란 면 채움 없이 이어지는 두 가지"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "x<=3에서는 f(x)=x^2+a, x>3에서는 f(x)=bx이다.", "mappedTo": "graphPlan.pieces"},
+    {"id": "c2", "condition": "미분가능 조건에서 a=9, b=6이며 두 구간의 값과 기울기가 x=3에서 일치한다.", "mappedTo": ["graphPlan.pieces[0]", "graphPlan.pieces[1]"]}
+  ]
+}

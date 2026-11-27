@@ -1,0 +1,28 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "xWindow": [-2, 5],
+    "pieces": [
+      {"coefficients": ["1", "3"], "domain": [-1, 0], "end": "OPEN"},
+      {"coefficients": ["1", "-1"], "domain": [0, 1], "start": "OPEN", "end": "CLOSED"},
+      {"coefficients": ["-2", "4", "-1"], "domain": [1, 2], "start": "OPEN", "end": "OPEN"},
+      {"coefficients": ["-2", "4", "-1"], "domain": [2, 4], "start": "OPEN", "end": "CLOSED"}
+    ],
+    "jumpValues": [{"x": "0", "y": "-2"}, {"x": "2", "y": "1"}],
+    "axisTickValues": {"x": ["1", "2", "3"], "y": ["-2", "1", "2"]},
+    "limitArrows": [
+      {"at": "0", "side": "LEFT", "toY": "1"},
+      {"at": "0", "side": "RIGHT", "toY": "1"},
+      {"at": "2", "side": "LEFT", "toY": "2"}
+    ],
+    "functionName": "f"
+  },
+  "caption": "x=0에서는 양쪽 극한이 1이지만 함수값은 -2다. x=2에서는 좌극한이 2지만 함수값은 1이고, (1,3)에서 최솟값 1을 갖는다.",
+  "accessibilityDescription": "x=0의 두 접근 화살표와 x=2의 왼쪽 접근 화살표가 각각 빈 점 (0,1), (2,2)로 다가간다. 채운 점 (0,-2), (2,1)과 차이가 보인다.",
+  "newVisualInformation": ["x=0에서 양쪽 극한값 1", "x=0에서 실제 함수값 -2", "x=2에서 좌극한값 2와 실제 함수값 1", "오목한 호의 열린 꼭짓점 (2,2)"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "f(0)=-2이고 x가 0으로 접근할 때 함수의 극한은 1이다.", "mappedTo": ["graphPlan.jumpValues[0]", "graphPlan.limitArrows"]},
+    {"id": "c2", "condition": "f(2)=1이고 x가 2의 왼쪽에서 접근할 때 함수의 극한은 2이다.", "mappedTo": ["graphPlan.jumpValues[1]", "graphPlan.limitArrows[2]"]}
+  ]
+}

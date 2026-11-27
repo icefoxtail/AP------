@@ -1,0 +1,22 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{"coefficients": ["11", "-6", "1"]}],
+    "breakpoints": [],
+    "sourceDomain": {"kind": "INTERVAL", "range": ["1", "5"], "states": ["CLOSED", "CLOSED"]},
+    "requiredPoints": [
+      {"id": "A", "x": "1", "y": "6"},
+      {"id": "V", "x": "3", "y": "2"},
+      {"id": "B", "x": "5", "y": "6"}
+    ],
+    "axisTickValues": {"x": ["1", "3", "5"], "y": ["2", "6"]}
+  },
+  "caption": "구간 [1,5]에서 포물선의 꼭짓점 (3,2)가 최솟값이고 양 끝 (1,6), (5,6)이 최댓값이다.",
+  "accessibilityDescription": "포물선 y=x제곱-6x+11은 (3,2)에서 가장 낮고 x=1, x=5의 두 끝점에서 높이 6으로 같다.",
+  "newVisualInformation": ["좌우 대칭 구간에서 두 끝점의 같은 최대높이 6", "꼭짓점 최소높이 2", "포물선 꼭짓점과 양 끝의 위치 관계"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "f(x)=x^2-6x+11이고 구간은 [1,5]이다.", "mappedTo": ["graphPlan.pieces", "graphPlan.sourceDomain"]},
+    {"id": "c2", "condition": "f(1)=f(5)=6, f(3)=2이다.", "mappedTo": ["graphPlan.requiredPoints", "graphPlan.axisTickValues"]}
+  ]
+}

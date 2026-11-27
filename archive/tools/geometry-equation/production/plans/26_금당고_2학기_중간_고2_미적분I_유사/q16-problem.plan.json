@@ -1,0 +1,37 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": ["4", "0"],
+    "denominator": ["0", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [0.5, 5.5],
+    "viewport": [-0.5, 5.5, -0.5, 5.5],
+    "equalUnits": true,
+    "axisTickValues": {"x": [], "y": []},
+    "overlays": {
+      "points": [
+        {"id": "O", "x": "0", "y": "0"},
+        {"id": "P", "curveX": "2"},
+        {"id": "Q", "axis": "x", "value": "4"},
+        {"id": "R", "axis": "y", "value": "4"}
+      ],
+      "lines": [{"id": "l", "slope": "-1", "intercept": "4", "label": "l"}],
+      "segments": [
+        {"id": "OP", "from": "O", "to": "P"},
+        {"id": "OQ", "from": "O", "to": "Q"},
+        {"id": "OR", "from": "O", "to": "R"}
+      ],
+      "rightAngles": [{"at": "P", "from": ["O", "Q"]}]
+    }
+  },
+  "pointNames": {"O": "O", "P": "P", "Q": "Q", "R": "R"},
+  "caption": "곡선 y=4/x 위의 점 P에서 OP와 수직인 직선 l을 그려 x축의 Q, y축의 R을 나타낸 도식. 모양은 t=2인 대표 경우이다.",
+  "accessibilityDescription": "실제 반비례곡선 y=4/x의 제1사분면 가지, 원점 O, 점 P, x축 위 Q, y축 위 R과 직선 l, OP의 선분, P의 직각표식이 함께 그려져 있다.",
+  "newVisualInformation": ["기존 8개 직선으로 이은 근사 쌍곡선을 정확한 유리함수 그래프로 대체", "P를 지나는 l과 OP의 수직표식", "Q는 x축, R은 y축 위라는 연결관계를 축·점으로 표시", "답 또는 계산으로 구한 치수 라벨은 문제축에 표시하지 않음"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "곡선 y=4/x (x>0) 위에 점 P(t,4/t)가 있다.", "mappedTo": ["graphPlan.numerator", "graphPlan.denominator", "graphPlan.overlays.points[1]"]},
+    {"id": "c2", "condition": "직선 l은 P를 지나 OP와 수직이며 x축과 Q, y축과 R에서 만난다.", "mappedTo": ["graphPlan.overlays.lines[0]", "graphPlan.overlays.rightAngles[0]", "graphPlan.overlays.points"]},
+    {"id": "c3", "condition": "t=2인 그림은 일반 t에 대한 관계를 설명하기 위한 동형 대표 도식이다.", "mappedTo": "PRESERVED_ARCHIVE_BANK"}
+  ]
+}

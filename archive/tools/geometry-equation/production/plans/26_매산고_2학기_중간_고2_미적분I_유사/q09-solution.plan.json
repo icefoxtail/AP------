@@ -1,0 +1,30 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["1", "5", "-3", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-1, 4],
+    "viewport": [-1, 4, -5, 20],
+    "axisTickValues": {"x": ["2", "3"], "y": ["-3", "1", "7"]},
+    "overlays": {
+      "lines": [
+        {"id": "ta", "slope": "5", "intercept": "1", "label": "y=5x+1"},
+        {"id": "tb", "slope": "5", "intercept": "-3", "label": "y=5x-3"}
+      ],
+      "points": [
+        {"id": "A", "curveX": "0"},
+        {"id": "B", "curveX": "2"},
+        {"id": "P", "x": "3", "y": "12"}
+      ]
+    }
+  },
+  "pointNames": {"A": "A", "B": "B", "P": "P"},
+  "caption": "기울기 5의 두 평행 접선 가운데 y절편이 음수인 y=5x-3은 접점 B(2,7)과 P(3,12)를 지난다.",
+  "accessibilityDescription": "삼차함수 y=x세제곱-3x제곱+5x+1에 접하는 두 평행직선 y=5x+1과 y=5x-3을 그린다. (0,1)의 A와 (2,7)의 B가 각 접점이고 P(3,12)는 낮은 직선 위이다.",
+  "newVisualInformation": ["x=0과 x=2의 실제 접점", "기울기 5의 두 평행 접선", "음의 y절편 조건으로 선택되는 직선", "직선 위에 놓인 점 P(3,12)"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "곡선 y=x^3-3x^2+5x+1에 기울기 5의 직선이 접한다.", "mappedTo": ["graphPlan.coefficients", "graphPlan.overlays.lines"]},
+    {"id": "c2", "condition": "두 후보 접선 가운데 y절편이 음수인 접선은 (3,k)를 지난다.", "mappedTo": ["graphPlan.overlays.points", "graphPlan.overlays.lines[1]"]}
+  ]
+}
