@@ -26,7 +26,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
-    "image": "assets/images/AP수학학원_1학기_기말_중1_모의고사_2회/q1.png",
+    "image": "assets/images/AP수학학원_1학기_기말_중1_모의고사_2회/q1-problem.svg",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
@@ -34,7 +34,10 @@ window.questionBank = [
     "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_모의고사_2회/q1-solution.svg",
     "solutionImageAlt": "대각선 5를 밑변으로 하는 삼각형과 두 변 b, 3을 갖는 삼각형의 넓이를 더해 (5a+3b)/2를 구한다.",
     "solutionImageCaption": "대각선 5를 밑변으로 하는 삼각형과 두 변 b, 3을 갖는 삼각형의 넓이를 더해 (5a+3b)/2를 구한다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "길이 5인 대각선으로 나뉜 두 직각삼각형과 변 a, b, 3을 표시한다.",
+    "imageCaption": "길이 5인 대각선으로 나뉜 두 직각삼각형과 변 a, b, 3을 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -397,8 +400,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
-    "image": "assets/images/AP수학학원_1학기_기말_중1_모의고사_2회/q14.png",
-    "imageSize": "large",
+    "image": "assets/images/AP수학학원_1학기_기말_중1_모의고사_2회/q14-problem.svg",
+    "imageSize": "full",
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
@@ -406,7 +409,9 @@ window.questionBank = [
     "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_모의고사_2회/q14-solution.svg",
     "solutionImageAlt": "C는 x축 위의 (-1,0)이므로 보기의 (0,-1) 표기가 틀리다.",
     "solutionImageCaption": "C는 x축 위의 (-1,0)이므로 보기의 (0,-1) 표기가 틀리다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "좌표평면에 A, B, C, D, E의 위치를 원본 격자와 같이 표시한다.",
+    "imageCaption": "좌표평면에 A, B, C, D, E의 위치를 원본 격자와 같이 표시한다."
   },
   {
     "id": 15,
@@ -461,7 +466,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
-    "image": "assets/images/AP수학학원_1학기_기말_중1_모의고사_2회/q16.png",
+    "image": "assets/images/AP수학학원_1학기_기말_중1_모의고사_2회/q16-problem.svg",
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
@@ -469,7 +474,10 @@ window.questionBank = [
     "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_모의고사_2회/q16-solution.svg",
     "solutionImageAlt": "재홍의 그래프에는 수평 구간이 없으므로 그는 출발 후 쉬지 않고 이동하였다.",
     "solutionImageCaption": "재홍의 그래프에는 수평 구간이 없으므로 그는 출발 후 쉬지 않고 이동하였다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "재홍은 50분 동안 일정하게 5km 이동하고 우희는 10~40분에 거리 3km에서 멈춘다.",
+    "imageCaption": "재홍은 50분 동안 일정하게 5km 이동하고 우희는 10~40분에 거리 3km에서 멈춘다.",
+    "imageSize": "full"
   },
   {
     "id": 17,
@@ -524,7 +532,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
-    "image": "assets/images/AP수학학원_1학기_기말_중1_모의고사_2회/q18.png",
+    "image": "assets/images/AP수학학원_1학기_기말_중1_모의고사_2회/q18-problem.svg",
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
@@ -532,7 +540,10 @@ window.questionBank = [
     "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_모의고사_2회/q18-solution.svg",
     "solutionImageAlt": "높이 5와 넓이 20으로 OB=8이고, A=(8,5)이므로 비례상수는 5/8이다.",
     "solutionImageCaption": "높이 5와 넓이 20으로 OB=8이고, A=(8,5)이므로 비례상수는 5/8이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "y=ax 위의 A에서 x축에 내린 수선 AB와 넓이 20인 직각삼각형 AOB가 보인다.",
+    "imageCaption": "y=ax 위의 A에서 x축에 내린 수선 AB와 넓이 20인 직각삼각형 AOB가 보인다.",
+    "imageSize": "full"
   },
   {
     "id": 19,

@@ -678,7 +678,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "오른쪽 그림과 같이 윗변의 길이가 $a$ cm, 아랫변의 길이가 $b$ cm, 높이가 $h$ cm인 사다리꼴이 있다. 다음 물음에 답하고, 그 과정을 서술하시오.<br>(1) 사다리꼴의 넓이를 $a$, $b$, $h$를 사용한 식으로 나타내시오.<br>(2) $a=7$, $b=11$, $h=8$일 때, 사다리꼴의 넓이를 구하시오.",
-    "image": "assets/images/AP수학학원_1학기_중간_중1_모의고사_1회/q25.png",
+    "image": "assets/images/AP수학학원_1학기_중간_중1_모의고사_1회/q25-problem.svg",
     "choices": [],
     "answer": "(1) $\\dfrac{1}{2}(a+b)h\\ \\mathrm{cm}^2$  (2) $72\\ \\mathrm{cm}^2$",
     "solution": "(1) 사다리꼴 넓이는 $\\dfrac12\\times(\\text{윗변}+\\text{아랫변})\\times\\text{높이}$이므로 $\\dfrac12(a+b)h\\ \\mathrm{cm}^2$이다.<br>(2) $\\dfrac12(7+11)\\times8=72\\ \\mathrm{cm}^2$이다.",
@@ -689,6 +689,9 @@ window.questionBank = [
     "solutionImage": "assets/images/AP수학학원_1학기_중간_중1_모의고사_1회/q25-solution.svg",
     "solutionImageAlt": "넓이=(a+b)h/2 cm²이다. a=7, b=11, h=8을 대입하면 (7+11)×8/2=72 cm²이다.",
     "solutionImageCaption": "넓이=(a+b)h/2 cm²이다. a=7, b=11, h=8을 대입하면 (7+11)×8/2=72 cm²이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "원본 그림처럼 윗변 a cm, 아랫변 b cm, 수직 높이 h cm를 가진 사다리꼴이다. 넓이의 식과 대입값을 구한다.",
+    "imageCaption": "원본 그림처럼 윗변 a cm, 아랫변 b cm, 수직 높이 h cm를 가진 사다리꼴이다. 넓이의 식과 대입값을 구한다.",
+    "imageSize": "full"
   }
 ];

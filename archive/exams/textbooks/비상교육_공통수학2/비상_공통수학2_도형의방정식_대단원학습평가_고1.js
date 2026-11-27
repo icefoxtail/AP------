@@ -61,9 +61,9 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/비상_공통수학2_도형의방정식_대단원학습평가_고1/q02-solution-reviewed.svg",
-    "solutionImageAlt": "선분 AB에서 A, M, P, B의 순서와 두 내분 관계를 나타낸 그림.",
-    "solutionImageCaption": "M은 AB의 중점이고 P는 AP:PB=3:1인 점이다.",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "중점 M(2,3), 내분점 P(4,5)의 순서 A−M−P−B와 길이 MP=2√2를 표시한다.",
+    "solutionImageCaption": "중점 M(2,3), 내분점 P(4,5)의 순서 A−M−P−B와 길이 MP=2√2를 표시한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -90,9 +90,9 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/비상_공통수학2_도형의방정식_대단원학습평가_고1/q03-solution.svg",
-    "solutionImageAlt": "삼각형의 꼭짓점 A, 무게중심 G, 변 BC의 중점 M을 잇는 중선.",
-    "solutionImageCaption": "중선 AM 위에서 AG:GM=2:1임을 표시한다.",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "중선 AM을 무게중심 G가 AG:GM=2:1로 나누는 관계를 나타낸다.",
+    "solutionImageCaption": "중선 AM을 무게중심 G가 AG:GM=2:1로 나누는 관계를 나타낸다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -119,9 +119,9 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/비상_공통수학2_도형의방정식_대단원학습평가_고1/q04-solution.svg",
-    "solutionImageAlt": "교점 P를 지나는 수직선과 주어진 직선에 평행한 방향선.",
-    "solutionImageCaption": "P=(-2,1)는 처음 두 직선의 교점이다. 그림의 방향선은 x+4y+5=0과 평행한 보조선이며, 그에 수직인 직선의 기울기는 4이다.",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "두 직선의 교점 P(−2,1)과 x+4y+5=0에 수직인 구하는 직선 y=4x+9.",
+    "solutionImageCaption": "두 직선의 교점 P(−2,1)과 x+4y+5=0에 수직인 구하는 직선 y=4x+9.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -142,7 +142,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "다음 그림과 같이 세 점 $A(1, 5)$, $B(7, 2)$, $C(4, 8)$을 꼭짓점으로 하는 삼각형 $ABC$에 대하여 두 점 $A$, $C$에서 각각 두 변 $BC$, $AB$에 내린 수선의 교점을 $H$라고 하자. 이때 삼각형 $HBC$의 넓이를 구하시오.",
-    "image": "assets/images/비상_공통수학2_도형의방정식_대단원학습평가_고1/q05_altitudes.png",
+    "image": "assets/images/비상_공통수학2_도형의방정식_대단원학습평가_고1/q5-problem.svg",
     "choices": [],
     "answer": "6",
     "solution": "두 수선의 교점 $H$를 구하기 위해 먼저 두 높이의 방정식을 세운다.\n$BC$의 기울기는 $\\dfrac{2-8}{7-4}=-2$이므로, $BC$에 수직인 높이의 기울기는 $\\dfrac12$이다. 점 $A(1,5)$를 지나는 높이를 $h_A$라 하면\n$h_A:y-5=\\dfrac12(x-1)$\n$y=\\dfrac12x+\\dfrac92$이다.\n$AB$의 기울기는 $\\dfrac{2-5}{7-1}=-\\dfrac12$이므로, $AB$에 수직인 높이의 기울기는 $2$이다. 점 $C(4,8)$를 지나는 높이를 $h_C$라 하면\n$h_C:y-8=2(x-4)$\n$y=2x$이다.\n두 높이의 교점에서 두 $y$좌표가 같으므로\n$\\dfrac12x+\\dfrac92=2x$\n$9=3x$, $x=3$이고 $y=2\\cdot3=6$이다. 따라서 $H=(3,6)$이다.\n이제 $\\triangle HBC$의 밑변을 $BC$로 둔다. 두 점 사이의 거리 공식으로\n$BC=\\sqrt{(7-4)^2+(2-8)^2}=\\sqrt{9+36}=3\\sqrt5$이다.\n직선 $BC$의 기울기는 $-2$이고 점 $C(4,8)$을 지나므로 $BC$의 방정식은 $2x+y-16=0$이다. $H$에서 이 직선에 내린 수선의 발을 $D$라 하면 높이 $HD$는 점과 직선 사이의 거리이다.\n$HD=\\dfrac{|2\\cdot3+6-16|}{\\sqrt{2^2+1^2}}=\\dfrac4{\\sqrt5}$이다.\n따라서\n$[\\triangle HBC]=\\dfrac12\\cdot BC\\cdot HD$\n$=\\dfrac12\\cdot3\\sqrt5\\cdot\\dfrac4{\\sqrt5}=6$이다.",
@@ -153,7 +153,10 @@ window.questionBank = [
     "solutionImage": "assets/images/비상_공통수학2_도형의방정식_대단원학습평가_고1/q05-solution.svg",
     "solutionImageAlt": "삼각형 ABC의 두 높이와 수심 H, 두 높이의 밑점.",
     "solutionImageCaption": "높이 AD와 BC, 높이 CE와 AB가 각각 수직이며 H=(3,6)이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "imageAlt": "삼각형 ABC의 두 높이 AD, CE와 수심 H, 직각 두 개(밑점 이름은 숨김).",
+    "imageCaption": "삼각형 ABC의 두 높이 AD, CE와 수심 H, 직각 두 개(밑점 이름은 숨김).",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -180,9 +183,9 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/비상_공통수학2_도형의방정식_대단원학습평가_고1/q06-solution.svg",
-    "solutionImageAlt": "원 중심 O를 지나는 직선 y=3x+5.",
-    "solutionImageCaption": "중심은 O=(3,14)이고 주어진 직선 위에 놓인다.",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "원의 중심 O(3,14)가 직선 y=3x+5 위에 있으므로 a=7, 반지름 제곱 217.",
+    "solutionImageCaption": "원의 중심 O(3,14)가 직선 y=3x+5 위에 있으므로 a=7, 반지름 제곱 217.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -238,9 +241,9 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/비상_공통수학2_도형의방정식_대단원학습평가_고1/q08-solution.svg",
-    "solutionImageAlt": "원과 현 AB 및 중심에서 현에 내린 수선의 발 M. 도형은 등거리 좌표변환을 적용한 그림이다.",
-    "solutionImageCaption": "등거리 좌표변환 뒤 O=(0,0), M=(0,2), AB는 y=2이며, 원의 반지름은 3이다. 변환 전 문제 좌표는 풀이에 그대로 사용한다.",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "반지름 3, 중심에서 현 AB까지 거리 CH=2이고 현 길이 AB=2√5.",
+    "solutionImageCaption": "반지름 3, 중심에서 현 AB까지 거리 CH=2이고 현 길이 AB=2√5.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -267,9 +270,9 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/비상_공통수학2_도형의방정식_대단원학습평가_고1/q09-solution.svg",
-    "solutionImageAlt": "공통 중심 O를 갖는 반지름 √5와 3의 두 원, 그리고 작은 원 위의 점 A.",
-    "solutionImageCaption": "점 A=(1,2)는 작은 원 위에 있다. 두 접선의 수직 조건은 풀이에서 접선 기울기로 처리한다.",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "동심원 두 개와 각 원의 접선 l,m이 수직인 경우를 정확한 접점 P,Q로 나타낸다.",
+    "solutionImageCaption": "동심원 두 개와 각 원의 접선 l,m이 수직인 경우를 정확한 접점 P,Q로 나타낸다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -296,9 +299,9 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/비상_공통수학2_도형의방정식_대단원학습평가_고1/q10-solution-reviewed-v2.svg",
-    "solutionImageAlt": "제2사분면에 중심을 둔 원과 두 좌표축에 접하는 점.",
-    "solutionImageCaption": "이동과 원점대칭을 마친 원의 중심은 (-2,2), 반지름은 2이며 두 좌표축에 접한다.",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "처음 원의 중심 A(−5,−6)가 평행이동·원점대칭 후 B(−2,2)에 놓여 양 축에 접한다. 접점 X(−2,0), Y(0,2)까지의 두 반지름을 나타낸다.",
+    "solutionImageCaption": "처음 원의 중심 A(−5,−6)가 평행이동·원점대칭 후 B(−2,2)에 놓여 양 축에 접한다. 접점 X(−2,0), Y(0,2)까지의 두 반지름을 나타낸다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -325,9 +328,9 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/비상_공통수학2_도형의방정식_대단원학습평가_고1/q11-solution-reviewed.svg",
-    "solutionImageAlt": "A를 x축에 대칭한 점 A′와 선분 A′B가 x축과 만나는 점 C.",
-    "solutionImageCaption": "최단 경로는 A′, C, B가 한 직선 위에 놓일 때이며 C=(5/2,0)이다.",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "x축 대칭점 A′=(3,−1)을 이용해 A−C−B 최단 경로를 구한다. 최솟값 2√2+2√5.",
+    "solutionImageCaption": "x축 대칭점 A′=(3,−1)을 이용해 A−C−B 최단 경로를 구한다. 최솟값 2√2+2√5.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -387,8 +390,8 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/비상_공통수학2_도형의방정식_대단원학습평가_고1/q13-solution-cases-v2.svg",
-    "solutionImageAlt": "삼각형을 만들지 못하는 세 경우를 정리한 표.",
-    "solutionImageCaption": "a=-1이면 l∥m, a=2이면 m∥n, a=3이면 세 직선이 (-1,2)에서 만난다.",
+    "solutionImageAlt": "a=3: 세 직선 동시점. 세 직선 모두 P(-1,2)를 지나는 동시점 경우.",
+    "solutionImageCaption": "a=3: 세 직선 동시점. 세 직선 모두 P(-1,2)를 지나는 동시점 경우.",
     "solutionImageSize": "full"
   },
   {
@@ -418,9 +421,9 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/비상_공통수학2_도형의방정식_대단원학습평가_고1/q14-solution.svg",
-    "solutionImageAlt": "원점 O와 중심 C인 원 위의 가장 가까운 점 및 가장 먼 점.",
-    "solutionImageCaption": "OC=5, 반지름은 2이므로 OP의 최솟값은 3, 최댓값은 7이다.",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "중심 C에서 원점 O를 지나는 직선의 원 접경점 중 최단 거리 3과 최장 거리 7.",
+    "solutionImageCaption": "중심 C에서 원점 O를 지나는 직선의 원 접경점 중 최단 거리 3과 최장 거리 7.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -442,7 +445,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "[12~17] 다음 문제의 풀이 과정을 자세히 쓰시오.\n다음 그림과 같이 원 $x^2+y^2=25$ 위의 두 점 $A(3, 4)$, $B(-5, 0)$에 대하여 호 $AB$ 위를 움직이는 점을 $P$라고 할 때, 물음에 답하시오.\n(1) 원의 중심과 직선 $AB$ 사이의 거리를 구하시오.\n(2) 삼각형 $APB$의 넓이의 최댓값을 구하시오.",
-    "image": "assets/images/비상_공통수학2_도형의방정식_대단원학습평가_고1/q15_circle_arc.png",
+    "image": "assets/images/비상_공통수학2_도형의방정식_대단원학습평가_고1/q15-problem.svg",
     "choices": [],
     "answer": "(1) $\\sqrt5$\\n(2) $10\\sqrt5-10$",
     "solution": "(1) 먼저 $A(3,4)$와 $B(-5,0)$를 지나는 직선의 기울기는\n$\\dfrac{4-0}{3-(-5)}=\\dfrac12$이다.\n점 $B(-5,0)$을 이용하면 직선 $AB$는 $y=\\dfrac12(x+5)$, 즉 $x-2y+5=0$이다. 원의 중심은 $O(0,0)$이므로 중심에서 직선까지의 거리는\n$\\dfrac{|5|}{\\sqrt{1^2+(-2)^2}}=\\sqrt5$이다.\n\n(2) 밑변의 길이는\n$AB=\\sqrt{(3+5)^2+(4-0)^2}=\\sqrt{80}=4\\sqrt5$이다.\n호 $AB$ 위에서 직선 $AB$와 가장 멀리 떨어지는 점을 $P$라 하자. 원의 중심에서 현 $AB$에 내린 수선의 발을 $M$이라 하면, 그 수선은 호의 중점을 지나므로 이 점에서 $AB$까지의 거리가 호 위에서 가장 크다. 여기서 $OM=\\sqrt5$, $OP=5$이므로 높이는\n$PM=OP-OM=5-\\sqrt5$이다.\n따라서 삼각형의 넓이의 최댓값은\n$\\dfrac12\\cdot AB\\cdot PM$\n$=\\dfrac12\\cdot4\\sqrt5\\cdot(5-\\sqrt5)$\n$=10\\sqrt5-10$이다.\n따라서 (1)의 답은 $\\sqrt5$, (2)의 답은 $10\\sqrt5-10$이다.",
@@ -451,9 +454,12 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/비상_공통수학2_도형의방정식_대단원학습평가_고1/q15-solution-reviewed.svg",
-    "solutionImageAlt": "원 위의 A, B와 현 AB, 중심에서 현에 내린 수선의 발 M.",
-    "solutionImageCaption": "M=(-1,2)이고 OM⊥AB이다. 물음 (2)의 P는 작은 호 AB 위에서 현 AB로부터 가장 멀어지는 점이다.",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "현 AB에 수직인 방향으로 P가 가장 멀어질 때, OM=√5 및 최댓넓이 10√5−10.",
+    "solutionImageCaption": "현 AB에 수직인 방향으로 P가 가장 멀어질 때, OM=√5 및 최댓넓이 10√5−10.",
+    "solutionImageSize": "full",
+    "imageAlt": "원 x²+y²=25, A(3,4), B(−5,0)와 위쪽 작은 호 BA 위의 이동점 P(예시).",
+    "imageCaption": "원 x²+y²=25, A(3,4), B(−5,0)와 위쪽 작은 호 BA 위의 이동점 P(예시).",
+    "imageSize": "full"
   },
   {
     "id": 16,
@@ -482,9 +488,9 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/비상_공통수학2_도형의방정식_대단원학습평가_고1/q16-solution.svg",
-    "solutionImageAlt": "A에서 원점 대칭 B, x축 대칭점 D, y=x 대칭점 C와 무게중심 G.",
-    "solutionImageCaption": "A=(6,3), B=(-6,-3), D=(-6,3), C=(3,-6), G=(1,-2)이다.",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "A(6,3)에서 원점대칭 B, x축 대칭 D, y=x 대칭 C와 삼각형 ACD의 무게중심 G(1,−2).",
+    "solutionImageCaption": "A(6,3)에서 원점대칭 B, x축 대칭 D, y=x 대칭 C와 삼각형 ACD의 무게중심 G(1,−2).",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

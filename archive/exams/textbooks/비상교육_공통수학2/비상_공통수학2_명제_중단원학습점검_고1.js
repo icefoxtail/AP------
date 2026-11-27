@@ -163,10 +163,11 @@ window.questionBank = [
     "content": "다음 명제가 참이 되도록 하는 실수 $k$의 값의 범위를 구하시오.\n$x\\le2k$이면 $2x+7>5x-17$이다.",
     "choices": [],
     "solutionImage": "assets/images/비상_공통수학2_명제_중단원학습점검_고1/q07_truth-set-inclusion.svg",
-    "solutionImageAlt": "진리집합 P는 x가 2k 이하인 수의 집합이고 Q는 x가 8보다 작은 수의 집합이다. P가 Q에 포함되려면 k<4이다.",
+    "solutionImageAlt": "x≤2k인 진리집합이 x<8인 진리집합에 포함되려면 오른쪽 끝 2k가 8보다 작아야 한다.",
     "solutionImageSize": "full",
     "answer": "$k<4$",
-    "solution": "뒤의 부등식을 먼저 풀어 $x$의 범위를 구한다.\n$2x+7>5x-17$\n$24>3x$\n$x<8$\n따라서 주어진 명제는 ‘$x\\le2k$이면 $x<8$이다’이다.\n$p:x\\le2k$, $q:x<8$의 진리집합은 각각 $P=\\{x\\mid x\\le2k\\}$, $Q=\\{x\\mid x<8\\}$이다. $p\\Rightarrow q$가 참이 되려면 $P\\subset Q$여야 한다. $P$의 끝점 $2k$도 $Q$에 들어가야 하므로\n$2k<8$\n$k<4$이다.\n따라서 $k<4$이다."
+    "solution": "뒤의 부등식을 먼저 풀어 $x$의 범위를 구한다.\n$2x+7>5x-17$\n$24>3x$\n$x<8$\n따라서 주어진 명제는 ‘$x\\le2k$이면 $x<8$이다’이다.\n$p:x\\le2k$, $q:x<8$의 진리집합은 각각 $P=\\{x\\mid x\\le2k\\}$, $Q=\\{x\\mid x<8\\}$이다. $p\\Rightarrow q$가 참이 되려면 $P\\subset Q$여야 한다. $P$의 끝점 $2k$도 $Q$에 들어가야 하므로\n$2k<8$\n$k<4$이다.\n따라서 $k<4$이다.",
+    "solutionImageCaption": "x≤2k인 진리집합이 x<8인 진리집합에 포함되려면 오른쪽 끝 2k가 8보다 작아야 한다."
   },
   {
     "id": "qid_v1_3f235c7ec790e64edfa5bbd496df454958c4759c5520e9e958b5b00e72ad3a51",
@@ -188,10 +189,11 @@ window.questionBank = [
     "content": "두 조건 $p$, $q$\n$p$: $x<a$, $q$: $-5<x<6$\n에 대하여 $p$는 $q$이기 위한 필요조건일 때, 실수 $a$의 최솟값을 구하시오.",
     "choices": [],
     "solutionImage": "assets/images/비상_공통수학2_명제_중단원학습점검_고1/q08_necessary-condition.svg",
-    "solutionImageAlt": "q의 진리집합인 열린구간 (−5, 6)이 p의 진리집합 x<a에 포함되려면 a≥6이다.",
+    "solutionImageAlt": "필요조건의 진리집합 포함관계 Q⊂P에서 -5<x<6은 x<a 안에 모두 들어가야 하므로 a≥6이다.",
     "solutionImageSize": "full",
     "answer": "$6$",
-    "solution": "$p$가 $q$이기 위한 필요조건이면 $q\\Rightarrow p$이다. 따라서 $q$의 진리집합이 $p$의 진리집합에 포함되어야 한다.\n$Q=\\{x\\mid -5<x<6\\}$, $P=\\{x\\mid x<a\\}$이므로 $Q\\subset P$가 되려면 $-5<x<6$인 모든 $x$가 $x<a$를 만족해야 한다. 특히 $x$가 6에 한없이 가까워질 수 있으므로 $a\\ge6$이어야 한다.\n따라서 $a$의 최솟값은 $6$이다."
+    "solution": "$p$가 $q$이기 위한 필요조건이면 $q\\Rightarrow p$이다. 따라서 $q$의 진리집합이 $p$의 진리집합에 포함되어야 한다.\n$Q=\\{x\\mid -5<x<6\\}$, $P=\\{x\\mid x<a\\}$이므로 $Q\\subset P$가 되려면 $-5<x<6$인 모든 $x$가 $x<a$를 만족해야 한다. 특히 $x$가 6에 한없이 가까워질 수 있으므로 $a\\ge6$이어야 한다.\n따라서 $a$의 최솟값은 $6$이다.",
+    "solutionImageCaption": "필요조건의 진리집합 포함관계 Q⊂P에서 -5<x<6은 x<a 안에 모두 들어가야 하므로 a≥6이다."
   },
   {
     "id": "qid_v1_8b2064a8de97353966c699642d18052c71867dbffce0939e4c91a1279526a5cf",
@@ -255,13 +257,16 @@ window.questionBank = [
     "tags": ["비상교육", "교과서", "고1", "공통수학2", "집합과 명제", "명제", "도형", "최댓값", "중단원학습점검"],
     "wide": false,
     "content": "다음 그림과 같이 지름의 길이가 $5\\sqrt2$인 원에 가로의 길이가 $x$, 세로의 길이가 $y$인 직사각형이 내접할 때, 직사각형의 넓이 $xy$의 최댓값을 구하시오.",
-    "image": "assets/images/비상_공통수학2_명제_중단원학습점검_고1/q11_source.png",
-    "imageAlt": "지름 5√2인 원에 내접한 가로 x, 세로 y인 직사각형",
-    "solutionImage": "assets/images/비상_공통수학2_명제_중단원학습점검_고1/q11_source.png",
-    "solutionImageAlt": "지름 5√2인 원에 내접한 가로 x, 세로 y인 직사각형",
-    "solutionImageSize": "medium",
+    "image": "assets/images/비상_공통수학2_명제_중단원학습점검_고1/qid_v1_4acdeae5dbe0f670e3727d26b68ee39b881ce13bdc019c133ddf67633d460e66-problem.svg",
+    "imageAlt": "원의 지름과 내접 직사각형의 대각선이 같고, 직사각형의 가로와 세로가 각각 x, y이다.",
+    "solutionImage": "assets/images/비상_공통수학2_명제_중단원학습점검_고1/qid_v1_4acdeae5dbe0f670e3727d26b68ee39b881ce13bdc019c133ddf67633d460e66-solution.svg",
+    "solutionImageAlt": "x²+y²=50에서 xy가 최대일 때 x=y=5이고 내접 직사각형은 정사각형이다.",
+    "solutionImageSize": "full",
     "choices": [],
     "answer": "$25$",
-    "solution": "직사각형의 대각선은 원의 지름과 같으므로 피타고라스 정리에 의해\n$x^2+y^2=(5\\sqrt2)^2=50$이다.\n또한\n$(x-y)^2\\ge0$\n$x^2-2xy+y^2\\ge0$\n이므로\n$2xy\\le x^2+y^2=50$\n$xy\\le25$이다.\n$x=y=5$일 때 원에 내접하는 정사각형이 되어 등호가 성립한다. 따라서 직사각형의 넓이 $xy$의 최댓값은 $25$이다."
+    "solution": "직사각형의 대각선은 원의 지름과 같으므로 피타고라스 정리에 의해\n$x^2+y^2=(5\\sqrt2)^2=50$이다.\n또한\n$(x-y)^2\\ge0$\n$x^2-2xy+y^2\\ge0$\n이므로\n$2xy\\le x^2+y^2=50$\n$xy\\le25$이다.\n$x=y=5$일 때 원에 내접하는 정사각형이 되어 등호가 성립한다. 따라서 직사각형의 넓이 $xy$의 최댓값은 $25$이다.",
+    "imageCaption": "원의 지름과 내접 직사각형의 대각선이 같고, 직사각형의 가로와 세로가 각각 x, y이다.",
+    "imageSize": "full",
+    "solutionImageCaption": "x²+y²=50에서 xy가 최대일 때 x=y=5이고 내접 직사각형은 정사각형이다."
   }
 ];
