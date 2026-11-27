@@ -621,13 +621,16 @@ window.examData = {
     ],
     "answer": "②",
     "solution": "<p>조건: 각 $\\text{C}$와 각 $\\text{F}$가 각각 $90^\\circ$인 두 직각삼각형 $\\text{ABC}$와 $\\text{DEF}$가 있습니다.<br/>구할 대상: 두 직각삼각형이 서로 합동이 될 수 '없는 경우'를 고릅니다.</p><p>직각삼각형의 합동 조건:<br/>1) $\\text{RHA}$ 합동: 빗변의 길이와 한 예각의 크기가 각각 같을 때<br/>2) $\\text{RHS}$ 합동: 빗변의 길이와 다른 한 변의 길이가 각각 같을 때<br/>3) 일반 삼각형의 합동 조건($\\text{SAS}, \\text{ASA}, \\text{SSS}$)도 적용 가능합니다.<br/>4) 세 각의 크기만 같은 경우($\\text{AAA}$)는 닮음일 뿐 크기가 보장되지 않아 합동이 아닙니다.</p><p>각 선지의 조건을 검토합니다:<br/>- ① $\\overline{\\text{AB}}=\\overline{\\text{DE}}$(빗변), $\\angle\\text{A}=\\angle\\text{D}$(한 예각): $\\text{RHA}$ 합동 성립.<br/>- ② $\\angle\\text{B}=\\angle\\text{E}, \\angle\\text{A}=\\angle\\text{D}$: 세 내각의 크기만 각각 같은 경우로, 두 삼각형은 닮음이지만 변의 길이가 주어지지 않아 합동이 될 수 없습니다. (합동 불가, 정답)<br/>- ③ $\\overline{\\text{AB}}=\\overline{\\text{DE}}$(빗변), $\\overline{\\text{AC}}=\\overline{\\text{DF}}$(한 직각변): $\\text{RHS}$ 합동 성립.<br/>- ④ $\\overline{\\text{AB}}=\\overline{\\text{DE}}$(빗변), $\\overline{\\text{BC}}=\\overline{\\text{EF}}$(한 직각변): $\\text{RHS}$ 합동 성립.<br/>- ⑤ $\\overline{\\text{BC}}=\\overline{\\text{EF}}, \\overline{\\text{AC}}=\\overline{\\text{DF}}$: 두 변의 길이가 같고 그 끼인각이 $\\angle\\text{C}=\\angle\\text{F}=90^\\circ$로 같으므로 $\\text{SAS}$ 합동 성립.</p><p>① $\\text{RHA}$ 합동 성립<br/>② 합동 될 수 없음 (세 각만 같으면 닮음, 정답)<br/>③ $\\text{RHS}$ 합동 성립<br/>④ $\\text{RHS}$ 합동 성립<br/>⑤ $\\text{SAS}$ 합동 성립</p><p>따라서 합동이 될 수 없는 것은 ②입니다.</p>",
-    "image": "assets/images/18_동산중_2학기_중간_중2_수학/q13.png",
+    "image": "assets/images/18_동산중_2학기_중간_중2_수학/q13-problem.svg",
     "accessibility": "각 C와 각 F가 90도인 두 직각삼각형 ABC와 DEF의 기하 도형",
     "solutionImage": "assets/images/18_동산중_2학기_중간_중2_수학/q13-solution.svg",
     "solutionImageAlt": "해설 그림: 왼쪽에 직각삼각형 ABC, 오른쪽에 직각삼각형 DEF가 있고, 꼭짓점 C와 F에 직각 표시가 있다. 두 삼각형은 모양이 비슷하지만 크기가 다르다.",
     "solutionImageCaption": "두 직각삼각형에서 ①은 빗변과 한 예각, ③과 ④는 빗변과 한 변, ⑤는 두 변과 끼인각이 각각 같아 합동이다. ②는 세 각의 크기만 같아 닮음일 뿐 크기가 같다는 보장이 없으므로 합동이 될 수 없다. 따라서 답은 ②이다.",
     "solutionImageSize": "full",
-    "solutionImageScale": 90
+    "solutionImageScale": 90,
+    "imageAlt": "합동 조건을 판정할 서로 다른 두 직각삼각형 ABC와 DEF.",
+    "imageCaption": "합동 조건을 판정할 서로 다른 두 직각삼각형 ABC와 DEF.",
+    "imageSize": "full"
   },
   {
     "id": 14,
@@ -706,7 +709,7 @@ window.examData = {
     ],
     "answer": "①, ④",
     "solution": "<p>조건: 점 $\\text{O}$에 대한 5개의 삼각형 그림(①~⑤)이 제시되어 있습니다.<br/>구할 대상: 점 $\\text{O}$가 삼각형의 외심을 나타낸 것을 '모두' 고릅니다.</p><p>1) 외심의 정의: 삼각형의 세 변의 수직이등분선의 교점입니다.<br/>2) 외심의 성질: 외심에서 세 꼭짓점에 이르는 거리는 외접원의 반지름으로 모두 같습니다 ($\\overline{\\text{OA}}=\\overline{\\text{OB}}=\\overline{\\text{OC}}$).<br/>3) 내심의 정의는 세 내각의 이등분선의 교점이며, 성질은 세 변에 이르는 거리가 같습니다.</p><p>각 그림을 기하학적으로 검토합니다:<br/>- ①: 점 $\\text{O}$에서 세 꼭짓점까지 이르는 거리에 같은 선분 기호가 표시되어 있습니다 ($\\overline{\\text{OA}}=\\overline{\\text{OB}}=\\overline{\\text{OC}}$). 이는 외심의 핵심 성질이므로 외심을 나타냅니다. (외심 맞음, 정답)<br/>- ②: 점 $\\text{O}$에서 세 변에 수선을 내렸으나 변의 중점을 지나지 않으므로 수직이등분선이 아닙니다. (외심 아님)<br/>- ③: 세 내각의 이등분선이 만나는 점이므로 이는 '내심'을 나타냅니다. (외심 아님)<br/>- ④: 세 변의 중점에서 각각 수선을 올린 '세 변의 수직이등분선의 교점'이 점 $\\text{O}$로 명시되어 있습니다. 이는 외심의 정확한 정의입니다. (외심 맞음, 정답)<br/>- ⑤: 원이 삼각형에 내접하고 변과 점의 관계가 내접원/내심을 나타냅니다. (외심 아님)<br/>따라서 외심을 나타낸 그림은 ①과 ④입니다.</p><p>① 외심의 성질 (세 꼭짓점에 이르는 거리 일치): 참<br/>② 무관한 수선의 교점: 거짓<br/>③ 내심의 정의 (각의 이등분선): 거짓<br/>④ 외심의 정의 (세 변의 수직이등분선 교점): 참<br/>⑤ 내접원 관련: 거짓</p><p>따라서 정답은 ①, ④입니다.</p>",
-    "image": "assets/images/18_동산중_2학기_중간_중2_수학/q15.png",
+    "image": "assets/images/18_동산중_2학기_중간_중2_수학/q15-problem.svg",
     "accessibility": "삼각형의 외심과 관련된 5개의 기하 작도 그림 1번부터 5번까지를 비교하는 그림",
     "crossConceptKeys": [],
     "conditionKeys": [],
@@ -717,7 +720,10 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "외심의 등거리와 수직이등분선 정의 판정",
-    "decisiveStep": "세 꼭짓점까지 같은 거리 또는 세 변의 수직이등분선을 나타내는 그림을 고른다."
+    "decisiveStep": "세 꼭짓점까지 같은 거리 또는 세 변의 수직이등분선을 나타내는 그림을 고른다.",
+    "imageAlt": "외심을 나타내는 그림을 찾기 위한 다섯 개의 독립적인 삼각형 보기.",
+    "imageCaption": "외심을 나타내는 그림을 찾기 위한 다섯 개의 독립적인 삼각형 보기.",
+    "imageSize": "full"
   },
   {
     "id": 16,
