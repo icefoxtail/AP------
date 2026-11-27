@@ -518,7 +518,7 @@ window.questionBank=[
   },
   {
     "id": 13,
-    "imageAlt": "직사각형 ABCD의 세로변 AB는 4x³y, 가로변 BC는 2x³y이다. 왼쪽 AB를 지름으로 하는 청록색 반원을 그리고 A와 C를 이어 주황색 직각삼각형 ABC를 표시했다.",
+    "imageAlt": "직사각형 ABCD에서 AB를 지름으로 하는 반원 O와 직각삼각형 ABC를 겹쳐 나타낸 원본의 무채움 그림.",
     "level": "상",
     "category": "수학",
     "originalCategory": "수학",
@@ -564,7 +564,8 @@ window.questionBank=[
     "solutionImage": "assets/images/26_왕운중_1학기_중간_중2_기출/q13-solution.svg",
     "solutionImageAlt": "해설 그림: AB를 축으로 회전시켜 생기는 원뿔(꼭짓점 A, 밑면 중심 B, 밑면 반지름 2x³y, 높이 4x³y)과 반지름이 2x³y인 구(중심 O)를 나란히 보여 준다.",
     "solutionImageCaption": "원뿔의 밑면 반지름과 구의 반지름은 2x³y로 같고, 원뿔의 높이 4x³y는 구의 지름과 같다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "imageCaption": "직사각형 ABCD에서 AB를 지름으로 하는 반원 O와 직각삼각형 ABC를 겹쳐 나타낸 원본의 무채움 그림."
   },
   {
     "id": 14,
@@ -994,7 +995,7 @@ window.questionBank=[
   },
   {
     "id": 23,
-    "imageAlt": "왼쪽의 파란 직사각형 A는 세로가 5xy이고 오른쪽 청록색 직사각형 B는 세로가 3x²y²이다. 두 도형의 가로 길이의 합에 L을 표시했다.",
+    "imageAlt": "직사각형 A와 B를 밑변에 맞춰 붙인 그림으로, 원본 접합부의 두 직각표식과 두 세로 길이 및 가로 전체 L을 표시한다.",
     "level": "중",
     "category": "수학",
     "originalCategory": "수학",
@@ -1034,7 +1035,8 @@ window.questionBank=[
     "solutionImage": "assets/images/26_왕운중_1학기_중간_중2_기출/q23-solution.svg",
     "solutionImageAlt": "해설 그림: 직사각형 A(세로 5xy, 가로 2x+3y²)와 B(세로 3x²y², 가로 7x-4y²)를 이어 붙인 그림으로, 두 가로의 합이 전체 가로 L임을 보여 준다.",
     "solutionImageCaption": "각 직사각형의 가로 길이는 넓이를 세로로 나눈 값이고 L은 두 가로의 합이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "imageCaption": "직사각형 A와 B를 밑변에 맞춰 붙인 그림으로, 원본 접합부의 두 직각표식과 두 세로 길이 및 가로 전체 L을 표시한다."
   },
   {
     "id": 24,

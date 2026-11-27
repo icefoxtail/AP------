@@ -970,11 +970,12 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_TEXT_ONLY",
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P143-Q06-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "원의 중심 O, 외부 점 A와 가까운 원 위 점 P가 한 직선에 놓인다.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "source_page_image_comparison"
-    ]
+    ],
+    "solutionImageCaption": "원의 중심 O, 외부 점 A와 가까운 원 위 점 P가 한 직선에 놓인다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P143-Q06-S1-R1",
@@ -1031,11 +1032,12 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_TEXT_ONLY",
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P143-Q06-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "원의 중심 O, 외부 점 A와 가까운 원 위 점 P가 한 직선에 놓인다.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "source_page_image_comparison"
-    ]
+    ],
+    "solutionImageCaption": "원의 중심 O, 외부 점 A와 가까운 원 위 점 P가 한 직선에 놓인다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P143-Q06-S2-R1",
@@ -1092,11 +1094,12 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_TEXT_ONLY",
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P143-Q06-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "원의 중심 O, 외부 점 A와 가까운 원 위 점 P가 한 직선에 놓인다.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "source_page_image_comparison"
-    ]
+    ],
+    "solutionImageCaption": "원의 중심 O, 외부 점 A와 가까운 원 위 점 P가 한 직선에 놓인다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P143-Q07-T1-R1",
@@ -1214,11 +1217,12 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_TEXT_ONLY",
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P143-Q07-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "원과 y축이 만나는 두 점 A, B를 연결한 현의 길이가 4이다.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "source_page_image_comparison"
-    ]
+    ],
+    "solutionImageCaption": "원과 y축이 만나는 두 점 A, B를 연결한 현의 길이가 4이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P143-Q07-S2-R1",
@@ -1275,11 +1279,12 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_TEXT_ONLY",
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P143-Q07-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "원과 y축이 만나는 두 점 A, B를 연결한 현의 길이가 8이다.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "source_page_image_comparison"
-    ]
+    ],
+    "solutionImageCaption": "원과 y축이 만나는 두 점 A, B를 연결한 현의 길이가 8이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P143-Q08-T1-R1",
@@ -1336,8 +1341,8 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P143-Q08-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "실제 f와 g의 사각형을 같은 좌표평면에서 비교한다. 직선 y=x 대칭 후 평행이동한다.",
+    "solutionImageSize": "full",
     "inferredFields": [],
     "problemImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P143-Q08-T1-R1-problem.svg",
     "problemImageAlt": "문항 도형",
@@ -1345,7 +1350,9 @@ window.questionBank = [
     "image": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P143-Q08-T1-R1-problem.svg",
     "imageAlt": "발문에 주어진 f의 직사각형과 g의 직사각형을 같은 좌표평면에 표시한다.",
     "imageCaption": "발문에 주어진 f의 직사각형과 g의 직사각형을 같은 좌표평면에 표시한다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageCaption": "실제 f와 g의 사각형을 같은 좌표평면에서 비교한다. 직선 y=x 대칭 후 평행이동한다.",
+    "solutionImageScale": 90
   },
   {
     "id": "BV-BAKBAL-H-COM2-P143-Q08-S1-R1",
@@ -1402,8 +1409,8 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P143-Q08-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "실제 f와 g의 사각형을 같은 좌표평면에서 비교한다. 직선 y=x 대칭 후 평행이동한다.",
+    "solutionImageSize": "full",
     "inferredFields": [],
     "problemImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P143-Q08-S1-R1-problem.svg",
     "problemImageAlt": "문항 도형",
@@ -1411,7 +1418,9 @@ window.questionBank = [
     "image": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P143-Q08-S1-R1-problem.svg",
     "imageAlt": "발문에 주어진 f의 직사각형과 g의 직사각형을 같은 좌표평면에 표시한다.",
     "imageCaption": "발문에 주어진 f의 직사각형과 g의 직사각형을 같은 좌표평면에 표시한다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageCaption": "실제 f와 g의 사각형을 같은 좌표평면에서 비교한다. 직선 y=x 대칭 후 평행이동한다.",
+    "solutionImageScale": 90
   },
   {
     "id": "BV-BAKBAL-H-COM2-P143-Q08-S2-R1",
@@ -1468,8 +1477,8 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P143-Q08-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "실제 f와 g의 사각형을 같은 좌표평면에서 비교한다. 직선 y=x 대칭 후 평행이동한다.",
+    "solutionImageSize": "full",
     "inferredFields": [],
     "problemImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P143-Q08-S2-R1-problem.svg",
     "problemImageAlt": "문항 도형",
@@ -1477,7 +1486,9 @@ window.questionBank = [
     "image": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P143-Q08-S2-R1-problem.svg",
     "imageAlt": "발문에 주어진 f의 직사각형과 g의 직사각형을 같은 좌표평면에 표시한다.",
     "imageCaption": "발문에 주어진 f의 직사각형과 g의 직사각형을 같은 좌표평면에 표시한다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageCaption": "실제 f와 g의 사각형을 같은 좌표평면에서 비교한다. 직선 y=x 대칭 후 평행이동한다.",
+    "solutionImageScale": 90
   },
   {
     "id": "BV-BAKBAL-H-COM2-P143-Q09-T1-R1",
@@ -1711,9 +1722,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P143-Q10-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "A=[3,7]와 B=(-2,3)의 경계 포함 여부를 나란히 비교한다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "A=[3,7]와 B=(-2,3)의 경계 포함 여부를 나란히 비교한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P143-Q10-S1-R1",
@@ -1770,9 +1782,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P143-Q10-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "A=[4,8]와 B=(1,4)의 경계 포함 여부를 나란히 비교한다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "A=[4,8]와 B=(1,4)의 경계 포함 여부를 나란히 비교한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P143-Q10-S2-R1",
@@ -1829,9 +1842,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P143-Q10-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "A=[-1,3]와 B=(-5,-1)의 경계 포함 여부를 나란히 비교한다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "A=[-1,3]와 B=(-5,-1)의 경계 포함 여부를 나란히 비교한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P144-Q11-T1-R1",
@@ -1888,8 +1902,8 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P144-Q11-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "P의 원과 Q의 자취 원은 E를 중심으로 한 닮음에 의해 반지름 비가 일정하다.",
+    "solutionImageSize": "full",
     "inferredFields": [],
     "problemImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P144-Q11-T1-R1-problem.svg",
     "problemImageAlt": "문항 도형",
@@ -1897,7 +1911,8 @@ window.questionBank = [
     "image": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P144-Q11-T1-R1-problem.svg",
     "imageAlt": "직사각형 세 변에 접하는 원, CD 위의 E, 원 위의 P와 PE를 내분하는 Q를 보인다.",
     "imageCaption": "직사각형 세 변에 접하는 원, CD 위의 E, 원 위의 P와 PE를 내분하는 Q를 보인다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageCaption": "P의 원과 Q의 자취 원은 E를 중심으로 한 닮음에 의해 반지름 비가 일정하다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P144-Q11-S1-R1",
@@ -1954,8 +1969,8 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P144-Q11-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "P의 원과 Q의 자취 원은 E를 중심으로 한 닮음에 의해 반지름 비가 일정하다.",
+    "solutionImageSize": "full",
     "inferredFields": [],
     "problemImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P144-Q11-S1-R1-problem.svg",
     "problemImageAlt": "문항 도형",
@@ -1963,7 +1978,8 @@ window.questionBank = [
     "image": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P144-Q11-S1-R1-problem.svg",
     "imageAlt": "직사각형 세 변에 접하는 원, CD 위의 E, 원 위의 P와 PE를 내분하는 Q를 보인다.",
     "imageCaption": "직사각형 세 변에 접하는 원, CD 위의 E, 원 위의 P와 PE를 내분하는 Q를 보인다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageCaption": "P의 원과 Q의 자취 원은 E를 중심으로 한 닮음에 의해 반지름 비가 일정하다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P144-Q12-T1-R1",
@@ -2020,9 +2036,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P144-Q12-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "중심이 같은 직선 위에 있으며 한 점을 지나고 y축에 접하는 서로 다른 두 원을 보인다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "중심이 같은 직선 위에 있으며 한 점을 지나고 y축에 접하는 서로 다른 두 원을 보인다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P144-Q12-S1-R1",
@@ -2079,9 +2096,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P144-Q12-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "중심이 같은 직선 위에 있으며 한 점을 지나고 y축에 접하는 서로 다른 두 원을 보인다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "중심이 같은 직선 위에 있으며 한 점을 지나고 y축에 접하는 서로 다른 두 원을 보인다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P144-Q13-T1-R1",
@@ -2138,9 +2156,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P144-Q13-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "분할 항등식에서 A가 B의 진부분집합임을 확인한다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "분할 항등식에서 A가 B의 진부분집합임을 확인한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P144-Q13-S1-R1",
@@ -2197,9 +2216,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P144-Q13-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "분할 항등식에서 B가 A의 진부분집합임을 확인한다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "분할 항등식에서 B가 A의 진부분집합임을 확인한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P144-Q14-T1-R1",
@@ -2256,9 +2276,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P144-Q14-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "x축 대칭과 원점 대칭이 번갈아 적용되어 네 좌표가 주기적으로 반복된다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "x축 대칭과 원점 대칭이 번갈아 적용되어 네 좌표가 주기적으로 반복된다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P144-Q14-S1-R1",
@@ -2315,9 +2336,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P144-Q14-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "x축 대칭과 원점 대칭이 번갈아 적용되어 네 좌표가 주기적으로 반복된다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "x축 대칭과 원점 대칭이 번갈아 적용되어 네 좌표가 주기적으로 반복된다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P144-Q15-T1-R1",
@@ -2374,9 +2396,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P144-Q15-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "두 직선이 만나는 C와 x축 위의 B, D를 이용해 두 삼각형의 넓이를 비교한다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "두 직선이 만나는 C와 x축 위의 B, D를 이용해 두 삼각형의 넓이를 비교한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P144-Q15-S1-R1",

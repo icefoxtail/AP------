@@ -998,7 +998,10 @@ window.questionBank = [
     "rpmPrimaryRecordId": "M3-RPM-011",
     "sourceQid": 21,
     "variationType": "STRICT_VARIANT",
-    "problemPlanRef": "archive/exams/similar/middle/m3/1mid/24_삼산중_1학기_중간_중3_유사_plans/q21-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/middle/m3/1mid/24_삼산중_1학기_중간_중3_유사_plans/q21-problem.plan.json",
+    "imageAlt": "수직선 위의 점 A와 이를 한 변으로 하는 정사각형, 그리고 점 A의 좌우에 위치한 두 점 P와 Q를 나타낸 그림이다.",
+    "imageCaption": "수직선 위의 점 A와 이를 한 변으로 하는 정사각형, 그리고 점 A의 좌우에 위치한 두 점 P와 Q를 나타낸 그림이다.",
+    "imageSize": "full"
   },
   {
     "id": 22,
