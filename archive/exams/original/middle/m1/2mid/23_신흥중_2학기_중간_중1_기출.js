@@ -28,7 +28,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "사각뿔의 꼭짓점은 5개이고 모서리는 8개이다. 따라서 b-a=8-5=3이므로 정답은 ①이다.",
-    "image": "assets/images/23_신흥중_2학기_중간_중1_기출/q1.png",
+    "image": "assets/images/23_신흥중_2학기_중간_중1_기출/q1-problem.svg",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
@@ -54,7 +54,10 @@ window.questionBank = [
       "l4": "면·모서리·꼭짓점"
     },
     "rpmScope": "M1-2",
-    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE",
+    "imageAlt": "밑면이 사각형인 사각뿔의 윤곽과 뒤쪽 가려진 모서리를 점선으로 보여 준다.",
+    "imageCaption": "밑면이 사각형인 사각뿔의 윤곽과 뒤쪽 가려진 모서리를 점선으로 보여 준다.",
+    "imageSize": "full"
   },
   {
     "id": 2,

@@ -109,7 +109,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "image": "assets/images/23_왕운중_2학기_중간_중1_기출/q3.png",
+    "image": "assets/images/23_왕운중_2학기_중간_중1_기출/q3-problem.svg",
     "content": "다음 그림과 같은 입체도형에서 교선과 교점은 각각 몇 개인가? [3.5점]",
     "choices": [
       "교선 10개, 교점 6개",
@@ -134,9 +134,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q3-solution.svg",
-    "solutionImageAlt": "해설 그림: 오각뿔의 꼭짓점에 번호를 붙이고, 밑면의 모서리(검정)와 옆모서리(빨강)에 번호를 붙여 보이지 않는 모서리를 점선으로 나타낸 그림이다.",
-    "solutionImageCaption": "오각뿔의 꼭짓점과 밑면, 옆모서리에 번호를 붙여 센 그림",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "오각뿔의 6개 꼭짓점과 10개 모서리를 번호로 구별하며 가려진 모서리를 점선으로 표현한다.",
+    "solutionImageCaption": "오각뿔의 6개 꼭짓점과 10개 모서리를 번호로 구별하며 가려진 모서리를 점선으로 표현한다.",
+    "solutionImageSize": "full",
     "curriculum": "2015",
     "rpmPrimaryRecordId": "M1-RPM-094",
     "rpmPrimaryPath": {
@@ -146,7 +146,10 @@ window.questionBank = [
       "l4": "면·모서리·꼭짓점"
     },
     "rpmCrosswalkStatus": "DIRECT_ACTIVE",
-    "rpmScope": "M1-2"
+    "rpmScope": "M1-2",
+    "imageAlt": "오각형 밑면의 꼭대기를 잇는 오각뿔이며 안쪽에 가려지는 모서리는 점선으로 나타낸다.",
+    "imageCaption": "오각형 밑면의 꼭대기를 잇는 오각뿔이며 안쪽에 가려지는 모서리는 점선으로 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -308,7 +311,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "image": "assets/images/23_왕운중_2학기_중간_중1_기출/q7.png",
+    "image": "assets/images/23_왕운중_2학기_중간_중1_기출/q7-problem.svg",
     "content": "그림에서 $\\angle x$의 크기는? [4점]",
     "choices": [
       "$15^\\circ$",
@@ -333,9 +336,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q7-solution.svg",
-    "solutionImageAlt": "해설 그림: 한 점에서 만나는 세 직선에서, 아래쪽 2x°와 (2x+10)°의 맞꼭지각을 같은 색의 호로 위쪽에 옮겨 놓아 한 직선 위에 2x°, (4x+50)°, (2x+10)°가 이어짐을 보여 주는 그림",
-    "solutionImageCaption": "맞꼭지각을 위쪽에 옮기면 한 직선 위의 세 각 2x°, (4x+50)°, (2x+10)°의 합이 180°이다.",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "두 맞꼭지각을 위쪽으로 대응시켜 평각을 세 부분으로 나눈다.",
+    "solutionImageCaption": "두 맞꼭지각을 위쪽으로 대응시켜 평각을 세 부분으로 나눈다.",
+    "solutionImageSize": "full",
     "curriculum": "2015",
     "rpmPrimaryRecordId": "M1-RPM-063",
     "rpmPrimaryPath": {
@@ -345,7 +348,10 @@ window.questionBank = [
       "l4": "맞꼭지각"
     },
     "rpmCrosswalkStatus": "FAMILY_ACTIVE",
-    "rpmScope": "M1-2"
+    "rpmScope": "M1-2",
+    "imageAlt": "세 직선이 한 점에서 만나며 각 4x+50°, 2x, 2x+10°가 주어진다.",
+    "imageCaption": "세 직선이 한 점에서 만나며 각 4x+50°, 2x, 2x+10°가 주어진다.",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -410,7 +416,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "image": "assets/images/23_왕운중_2학기_중간_중1_기출/q9.png",
+    "image": "assets/images/23_왕운중_2학기_중간_중1_기출/q9-problem.svg",
     "content": "그림과 같이 직선 $l$ 위에 네 점 $A$, $B$, $C$, $D$가 있다. 다음 중 옳지 않은 것은? [4점]",
     "choices": [
       "$\\overrightarrow{AB}$와 $\\overrightarrow{AC}$는 같은 반직선이다.",
@@ -435,9 +441,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q9-solution.svg",
-    "solutionImageAlt": "해설 그림: 직선 l 위의 네 점 A, B, C, D에서 반직선 AB·AC, BC, CD가 각각 어느 점에서 시작해 오른쪽으로 뻗는지 네 칸으로 나누어 빨간색으로 보이고, 반직선 AD와 CD가 겹치는 부분을 함께 보여 주는 그림",
-    "solutionImageCaption": "반직선은 시작점과 뻗는 방향으로 정해지며, 반직선 AD와 CD가 겹치는 부분은 C에서 시작한다.",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "점의 순서 A–B–C–D와 B·C에서 각각 시작하는 두 반직선의 출발점을 비교한다.",
+    "solutionImageCaption": "점의 순서 A–B–C–D와 B·C에서 각각 시작하는 두 반직선의 출발점을 비교한다.",
+    "solutionImageSize": "full",
     "curriculum": "2015",
     "rpmPrimaryRecordId": "M1-RPM-060",
     "rpmPrimaryPath": {
@@ -447,7 +453,10 @@ window.questionBank = [
       "l4": "직선·반직선·선분"
     },
     "rpmCrosswalkStatus": "DIRECT_ACTIVE",
-    "rpmScope": "M1-2"
+    "rpmScope": "M1-2",
+    "imageAlt": "직선 l 위에 네 점 A, B, C, D를 차례로 표시한다.",
+    "imageCaption": "직선 l 위에 네 점 A, B, C, D를 차례로 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -860,7 +869,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "image": "assets/images/23_왕운중_2학기_중간_중1_기출/q18.png",
+    "image": "assets/images/23_왕운중_2학기_중간_중1_기출/q18-problem.svg",
     "content": "다음 그림에서 $\\overline{AC}=\\dfrac14\\overline{AB}$, $\\overline{CM}=\\overline{BM}$, $\\overline{AM}=5\\,\\mathrm{cm}$일 때, $\\overline{AB}$의 길이는? [4.5점]",
     "choices": [
       "$7\\,\\mathrm{cm}$",
@@ -897,7 +906,10 @@ window.questionBank = [
       "l4": "두 점 사이의 거리와 중점"
     },
     "rpmCrosswalkStatus": "RPM_ONLY",
-    "rpmScope": "M1-2"
+    "rpmScope": "M1-2",
+    "imageAlt": "A–C–M–B의 수직선 위에서 CM과 MB의 같은 길이 눈금과 AM=5cm를 나타낸다.",
+    "imageCaption": "A–C–M–B의 수직선 위에서 CM과 MB의 같은 길이 눈금과 AM=5cm를 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": 19,
@@ -1025,9 +1037,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/23_왕운중_2학기_중간_중1_기출/q21-solution.svg",
-    "solutionImageAlt": "해설 그림: 좌표평면 위의 사각형 ABCD에서 세로로 평행한 변 AB=7, CD=3과 두 변 사이의 거리인 BC=10을 표시하고 사각형 안을 연하게 칠한 그림이다.",
-    "solutionImageCaption": "평행한 두 변 AB, CD와 두 변 사이의 거리 BC를 나타낸 사다리꼴 ABCD",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "좌표 사각형 ABCD에서 AB=7, CD=3, 두 평행변 사이의 거리 BC=10을 비교한다.",
+    "solutionImageCaption": "좌표 사각형 ABCD에서 AB=7, CD=3, 두 평행변 사이의 거리 BC=10을 비교한다.",
+    "solutionImageSize": "full",
     "curriculum": "2015",
     "rpmPrimaryRecordId": null,
     "rpmPrimaryPath": null,

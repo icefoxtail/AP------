@@ -578,12 +578,15 @@ window.questionBank = [
     "sourceIdentityKey": "sha256:bbf6697783c0f2536ede6666c68fa3f47d28bf70c0802f54205a19617789941e|9",
     "decisiveStep": "∠ABC=90°, ∠ACB=65°이므로 같은 현 AB를 보는 x도65°이다.",
     "solutionImage": "assets/images/20_이수중_2학기_기말_중3_기출/q9-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 O에서 AC는 지름이고 B에서 직각이다. 각 CAB는 25도(주황)이다. 같은 현 AB를 보는 원주각 ACB와 ADB(초록)는 크기가 같고, ADB가 x이다.",
-    "solutionImageCaption": "AC가 지름이므로 각 ABC는 90°이다. 삼각형 ABC에서 각 ACB는 180°−90°−25°=65°이다. 같은 현 AB를 보는 원주각이므로 x=65°이다. 정답은 ④이다.",
+    "solutionImageAlt": "AC는 지름이므로 각 ABC는 직각이다. 삼각형 ABC에서 각 ACB를 구하고, 같은 현 AB를 보는 두 원주각 ADB와 ACB(초록)는 크기가 같다.",
+    "solutionImageCaption": "AC는 지름이므로 각 ABC는 직각이다. 삼각형 ABC에서 각 ACB를 구하고, 같은 현 AB를 보는 두 원주각 ADB와 ACB(초록)는 크기가 같다.",
     "solutionImageSize": "full"
   ,
     "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
-    "primaryMethod": "지름의 원주각과 삼각형 내각합을 구한 뒤 같은 현의 원주각으로 전달"
+    "primaryMethod": "지름의 원주각과 삼각형 내각합을 구한 뒤 같은 현의 원주각으로 전달",
+    "imageAlt": "이수중 9번 문제: 원본 점·선·각·치수와 해답 비노출을 보존한 도형.",
+    "imageCaption": "이수중 9번 문제: 원본 점·선·각·치수와 해답 비노출을 보존한 도형.",
+    "imageSize": "full"
   },
   {
     "id": 10,

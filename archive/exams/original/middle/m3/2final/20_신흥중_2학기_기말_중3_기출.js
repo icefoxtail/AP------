@@ -45,8 +45,8 @@ window.questionBank = [
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
     "visualEvidence": "The original PDF crop is retained in the image field; source full page and crop were compared; no solution-only SVG is mathematically necessary.",
     "solutionImage": "assets/images/20_신흥중_2학기_기말_중3_기출/q1-solution.svg",
-    "solutionImageAlt": "해설 그림: 직각삼각형 ABC. 각 B가 직각이고 AB는 4, BC는 3, 빗변 AC는 5이다. 각 C는 초록색 x이고, 그 맞은편 변 AB는 주황색, 빗변 AC는 파란색이다.",
-    "solutionImageCaption": "피타고라스 정리로 빗변 AC=5(파랑)이다. 각 x의 맞은편 변은 AB=4(주황)이므로 sin x는 맞은편 변을 빗변으로 나눈 값이다. 정답은 5분의 4이다.",
+    "solutionImageAlt": "직각삼각형의 사인",
+    "solutionImageCaption": "직각삼각형의 사인",
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
@@ -96,8 +96,8 @@ window.questionBank = [
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
     "visualEvidence": "The original PDF crop is retained in the image field; source full page and crop were compared; no solution-only SVG is mathematically necessary.",
     "solutionImage": "assets/images/20_신흥중_2학기_기말_중3_기출/q2-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 꼭짓점 A에서 변 BC에 내린 수선의 발이 H인 그림. AB는 4cm, BH는 2, AH는 2√3이고, 각 BAH는 파란색 30도, 각 HAC는 주황색 45도이다.",
-    "solutionImageCaption": "직각삼각형 ABH에서 BH=4sin30°=2, AH=4cos30°=2√3이다(파란 30° 쪽). 직각삼각형 AHC(주황 45° 쪽)에서 AC는 AH를 cos45°로 나눈 값이다. 정답은 2√6cm이다.",
+    "solutionImageAlt": "높이로 나눈 두 직각삼각형",
+    "solutionImageCaption": "높이로 나눈 두 직각삼각형",
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
@@ -152,7 +152,10 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
-    "primaryMethod": "두변8,10과끼인각60°가 주어져 높이8sin60을 넓이식에 직접 넣는다. 공통높이의 두미지식은 없어 SHARED_HEIGHT가 아니다."
+    "primaryMethod": "두변8,10과끼인각60°가 주어져 높이8sin60을 넓이식에 직접 넣는다. 공통높이의 두미지식은 없어 SHARED_HEIGHT가 아니다.",
+    "imageAlt": "원문 문제 그림 3번: 풀이값 노출 없이 주어진 구성 요소와 보조선/호를 표시한다.",
+    "imageCaption": "원문 문제 그림 3번: 풀이값 노출 없이 주어진 구성 요소와 보조선/호를 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -198,8 +201,8 @@ window.questionBank = [
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
     "visualEvidence": "The original PDF crop is retained in the image field; source full page and crop were compared; no solution-only SVG is mathematically necessary.",
     "solutionImage": "assets/images/20_신흥중_2학기_기말_중3_기출/q4-solution.svg",
-    "solutionImageAlt": "해설 그림: 꼭짓점이 A, B, C, D인 평행사변형에서 AB는 8cm, AD는 10cm, 각 B는 초록색 60도이다. 변 BC의 중점 M과 꼭짓점 A, C를 이은 삼각형 AMC가 파란색으로 칠해져 있고, 높이는 4√3cm, MC는 5cm이다.",
-    "solutionImageCaption": "평행사변형이므로 BC=AD=10cm이고, 높이는 AB sin60°=4√3cm이다. M이 BC의 중점이므로 MC=5cm이고 삼각형 AMC(파랑)의 넓이는 밑변과 높이의 곱의 절반이다. 정답은 10√3cm²이다.",
+    "solutionImageAlt": "평행사변형의 높이와 삼각형 AMC",
+    "solutionImageCaption": "평행사변형의 높이와 삼각형 AMC",
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
@@ -249,8 +252,8 @@ window.questionBank = [
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
     "visualEvidence": "The original PDF crop is retained in the image field; source full page and crop were compared; no solution-only SVG is mathematically necessary.",
     "solutionImage": "assets/images/20_신흥중_2학기_기말_중3_기출/q5-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼각형 ABC의 꼭짓점 A에서 변 BC의 연장선에 내린 수선의 발이 H인 그림. BC, CH, AH는 주황색 눈금으로 같은 길이 k이고 각 ACH는 주황색 45도이다. 점 B에서 직선 AC에 내린 수선의 발 D는 C의 연장선 위에 있고 각 BCD도 주황색 45도이다. BD와 CD는 파란색 눈금으로 같은 길이이고, 각 BAC는 초록색 x이다.",
-    "solutionImageCaption": "AH=CH=BC=k이므로 AC=√2k이다. B에서 직선 AC에 내린 수선의 발 D에서 ∠BCD=45°(맞꼭지각)이므로 BD=CD=k÷√2(파랑)이다. 직각삼각형 ABD에서 AD=AC+CD이고 x=∠BAD이므로 tan x는 BD÷AD이다. 정답은 3분의 1이다.",
+    "solutionImageAlt": "수선 BD로 만든 두 직각삼각형",
+    "solutionImageCaption": "수선 BD로 만든 두 직각삼각형",
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
@@ -302,12 +305,15 @@ window.questionBank = [
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
     "visualEvidence": "The original PDF crop is retained in the image field; source full page and crop were compared; no solution-only SVG is mathematically necessary.",
     "solutionImage": "assets/images/20_신흥중_2학기_기말_중3_기출/q6-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 O의 지름 AB와 원 위의 점 C. 호 AC는 주황색, 호 BC는 파란색이고 비는 3대 1이다. 중심각 BOC는 파란색 x이다.",
-    "solutionImageCaption": "지름 AB가 만드는 반원은 180°이고, 호 AC(주황)와 호 BC(파랑)의 비가 3:1이므로 호 BC는 반원의 4분의 1이다. 중심각 ∠BOC(x)는 호 BC와 같다. 정답은 45°이다.",
+    "solutionImageAlt": "지름과 호의 비",
+    "solutionImageCaption": "지름과 호의 비",
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
-    "primaryMethod": "지름의 반원180°를 호의비3:1에 따라 나누고 호BC의45°를 대응중심각으로 읽는다. 원주각을 사용하지 않는다."
+    "primaryMethod": "지름의 반원180°를 호의비3:1에 따라 나누고 호BC의45°를 대응중심각으로 읽는다. 원주각을 사용하지 않는다.",
+    "imageAlt": "원문 문제 그림 6번: 풀이값 노출 없이 주어진 구성 요소와 보조선/호를 표시한다.",
+    "imageCaption": "원문 문제 그림 6번: 풀이값 노출 없이 주어진 구성 요소와 보조선/호를 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -353,8 +359,8 @@ window.questionBank = [
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
     "visualEvidence": "The original q07 diagram visibly carries the same-circle central angles 40° and 80° used by the replacement; no solution-only SVG is required.",
     "solutionImage": "assets/images/20_신흥중_2학기_기말_중3_기출/q7-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 O에서 중심각 AOB는 파란색 40도, 중심각 COD는 주황색 80도이다. 현 AB는 파란색, 현 CD는 주황색이다.",
-    "solutionImageCaption": "같은 원에서 중심각이 클수록 호와 현이 길다. 파란 중심각 40°의 현 AB는 주황 중심각 80°의 현 CD보다 짧다. 정답은 AB<CD이다.",
+    "solutionImageAlt": "중심각과 현",
+    "solutionImageCaption": "중심각과 현",
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
@@ -616,12 +622,15 @@ window.questionBank = [
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
     "visualEvidence": "The original PDF crop is retained in the image field; source full page and crop were compared; no solution-only SVG is mathematically necessary.",
     "solutionImage": "assets/images/20_신흥중_2학기_기말_중3_기출/q12-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 O에서 중심각 AOB는 주황색 108도, 원주각 CDB는 파란색 32도이고 그 호 CB는 파란색 64도이다. 호 AC는 초록색 44도이고 원주각 AEC는 초록색 x이다.",
-    "solutionImageCaption": "파란 원주각 32°가 보는 호 CB는 2배인 64°이다. 호 ACB는 중심각과 같은 108°이므로 호 AC=108°−64°=44°(초록)이다. 원주각 x는 호 AC의 절반이다. 정답은 22°이다.",
+    "solutionImageAlt": "중심각과 원주각, 호의 크기",
+    "solutionImageCaption": "중심각과 원주각, 호의 크기",
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
-    "primaryMethod": "중심각108°의 호에서 원주각32°에 대응하는 호64°를 빼고 남은호44°의 원주각22°를 구한다."
+    "primaryMethod": "중심각108°의 호에서 원주각32°에 대응하는 호64°를 빼고 남은호44°의 원주각22°를 구한다.",
+    "imageAlt": "원문 문제 그림 12번: 풀이값 노출 없이 주어진 구성 요소와 보조선/호를 표시한다.",
+    "imageCaption": "원문 문제 그림 12번: 풀이값 노출 없이 주어진 구성 요소와 보조선/호를 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 13,
@@ -667,8 +676,8 @@ window.questionBank = [
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
     "visualEvidence": "The original PDF crop is retained in the image field; source full page and crop were compared; no solution-only SVG is mathematically necessary.",
     "solutionImage": "assets/images/20_신흥중_2학기_기말_중3_기출/q13-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 O 위의 네 점 A, B, C, D에서 호 BC, 호 AB, 호 CD는 파란색으로 같은 크기이고 호 AD는 주황색으로 짧고 중심각 AOD는 주황색 15도이다. 두 직선 BA와 CD가 원 밖의 점 E에서 만나 각 AED는 초록색 50도이고, 원주각 ACD는 보라색 x이다.",
-    "solutionImageCaption": "같은 세 호를 각각 t라 하면 원 밖의 각 50°는 호 BC에서 호 AD를 뺀 값의 절반이다. 그 식으로 t=115°(파랑)를 얻고 남은 호 AD=360°−3×115°=15°(주황)이다. 보라색 원주각 x는 호 AD의 절반이다. 정답은 7.5°이다.",
+    "solutionImageAlt": "같은 세 호와 원 밖의 각",
+    "solutionImageCaption": "같은 세 호와 원 밖의 각",
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
@@ -718,8 +727,8 @@ window.questionBank = [
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
     "visualEvidence": "Source crop was repaired from the provenance PDF, page 3, preserving the original diagram and restoring the source-labeled point E and tangent extension required by ∠CBE; all labels and geometry remain visible, choices excluded. No solution-only SVG is needed.",
     "solutionImage": "assets/images/20_신흥중_2학기_기말_중3_기출/q14-solution.svg",
-    "solutionImageAlt": "해설 그림: 점 P에서 원 O에 그은 두 접선이 접점 A, B에서 원에 닿는 그림. 각 APB는 보라색 44도, 중심각 AOB는 주황색 136도이다. 접선 PA와 현 AC가 이루는 각은 초록색 84도이고 호 AC는 168도, 접선 PB와 현 BC가 이루는 각은 파란색 x이며 호 BC는 파란색 56도이다.",
-    "solutionImageCaption": "두 접선이 이루는 각 44°와 중심각 AOB의 합은 180°이므로 ∠AOB=136°(주황)이다. 접선과 현의 각 84°가 보는 호 AC는 168°(초록)이므로 호 BC=360°−136°−168°=56°(파랑)이다. 접선과 현의 각 x는 호 BC의 원주각과 같다. 정답은 28°이다.",
+    "solutionImageAlt": "접선과 현이 이루는 각",
+    "solutionImageCaption": "접선과 현이 이루는 각",
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
@@ -769,8 +778,8 @@ window.questionBank = [
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
     "visualEvidence": "The full source diagram shows A,B,C,D,E on the circle; after correcting the single contradictory word to 내접, the retained q15 crop matches the corrected cyclic condition.",
     "solutionImage": "assets/images/20_신흥중_2학기_기말_중3_기출/q15-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 O에 내접하는 꼭짓점이 A, B, C, D, E인 오각형. 중심각 COD는 주황색 86도이고 호 CD도 주황색이다. 꼭짓점 B의 각은 파란색, 꼭짓점 E의 각은 초록색으로 표시되어 있다.",
-    "solutionImageCaption": "파란 각 B는 호(C에서 D, E를 지나 A까지)의 절반, 초록 각 E는 호(D에서 C, B를 지나 A까지)의 절반인 원주각이다. 두 호를 합하면 원 전체 360°에 호 CD(주황)가 한 번 더 포함되므로 ∠B+∠E는 360°와 86°의 합의 절반이다. 정답은 223°이다.",
+    "solutionImageAlt": "내접오각형의 두 원주각",
+    "solutionImageCaption": "내접오각형의 두 원주각",
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
@@ -1064,8 +1073,8 @@ window.questionBank = [
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
     "visualEvidence": "The original PDF crop is retained in the image field; source full page and crop were compared; no solution-only SVG is mathematically necessary.",
     "solutionImage": "assets/images/20_신흥중_2학기_기말_중3_기출/q21-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 A에서 변 BC에 내린 수선의 발이 H인 그림. 각 B는 파란색 60도, 각 C는 주황색 45도이고 BC는 10cm이다. AH와 HC는 주황색 눈금으로 같은 길이 h, BH는 h를 루트 3으로 나눈 값이다.",
-    "solutionImageCaption": "높이 AH를 h라 하면 ∠C=45°이므로 CH=h(주황 눈금)이고, ∠B=60°이므로 BH=h÷√3이다. BC=BH+CH=10을 풀어 h=5(3−√3)cm를 얻고 넓이는 밑변과 높이의 곱의 절반이다. 정답은 25(3−√3)cm²이다.",
+    "solutionImageAlt": "높이로 나눈 두 직각삼각형",
+    "solutionImageCaption": "높이로 나눈 두 직각삼각형",
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
@@ -1109,8 +1118,8 @@ window.questionBank = [
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
     "visualEvidence": "The original PDF crop is retained in the image field; source full page and crop were compared; no solution-only SVG is mathematically necessary.",
     "solutionImage": "assets/images/20_신흥중_2학기_기말_중3_기출/q22-solution.svg",
-    "solutionImageAlt": "해설 그림: 원에 내접하는 꼭짓점이 A, B, C, D인 사각형의 변 BA와 CD의 연장선이 점 E에서, 변 BC와 AD의 연장선이 점 F에서 만난다. 각 E는 파란색 35도, 각 F는 주황색 45도이다. 사각형의 네 내각에는 A, B, C, D 이름이 붙어 있다.",
-    "solutionImageCaption": "삼각형 EAD에서 ∠A+∠D=215°, 삼각형 FCD에서 ∠C+∠D=225°이다. 내접사각형의 마주 보는 각의 합은 180°이므로 ∠D를 먼저 구하고 나머지 각을 구한다. 정답은 ∠A=85°, ∠B=50°, ∠C=95°, ∠D=130°이다.",
+    "solutionImageAlt": "원에 내접하는 사각형과 두 교점",
+    "solutionImageCaption": "원에 내접하는 사각형과 두 교점",
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
@@ -1159,7 +1168,10 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
-    "primaryMethod": "접점직각·공통빗변·반지름같음의 RHS합동을 완성하여 대응접선길이 같음을 증명한다. 수치접선길이 TPL과구분한다."
+    "primaryMethod": "접점직각·공통빗변·반지름같음의 RHS합동을 완성하여 대응접선길이 같음을 증명한다. 수치접선길이 TPL과구분한다.",
+    "imageAlt": "원문 문제 그림 23번: 풀이값 노출 없이 주어진 구성 요소와 보조선/호를 표시한다.",
+    "imageCaption": "원문 문제 그림 23번: 풀이값 노출 없이 주어진 구성 요소와 보조선/호를 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 24,
