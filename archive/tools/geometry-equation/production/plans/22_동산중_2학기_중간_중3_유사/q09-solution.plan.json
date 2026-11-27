@@ -1,0 +1,53 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "6",
+          "-8",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -8,
+      0
+    ],
+    "viewport": [
+      -8.5,
+      0.5,
+      13,
+      31
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": -4,
+        "y": 22
+      }
+    ]
+  },
+  "caption": "동산중 9번 해설: 주어진 이차함수의 꼭짓점과 대칭축을 나타낸 해설 그래프",
+  "accessibilityDescription": "동산중 9번 해설: 주어진 이차함수의 꼭짓점과 대칭축을 나타낸 해설 그래프",
+  "newVisualInformation": [
+    "동산중 9번 해설: 주어진 이차함수의 꼭짓점과 대칭축을 나타낸 해설 그래프"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y = -x^2 - 4ax + 3a$의 그래프는 $x < -4$일 때 $x$의 값이 증가하면 $y$의 값도 증가하고, $x > -4$일 때 $x$의 값이 증가하면 $y$의 값은 감소한다고 한다. 이때 상수 $a$의 값은?",
+      "mappedTo": "CURRENT_EXAM_TEXT_AND_GEOMETRY"
+    },
+    {
+      "id": "solution",
+      "condition": "원문 해설의 수학적 관계를 독립적으로 확인: 이차항의 계수가 $-1 < 0$이므로 위로 볼록한 포물선이고, 증가와 감소가 바뀌는 경계는 축의 방정식 $x = -4$이다. 식을 완전제곱식으로 변형하면 $$\\begin{aligned} y &= -(x^2 + 4ax) + 3a \\ &= -(x + 2a)^2 + 4a^2 + 3a \\end{aligned}$$ 축의 방정식이 $x = -2a$이므로 $$-2a =",
+      "mappedTo": "SOLUTION_AXIS_INDEPENDENT_REVIEW"
+    }
+  ]
+}

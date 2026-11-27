@@ -1,0 +1,153 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lsAB",
+        "ownerSegment": "sAB",
+        "text": "12",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lsBC",
+        "ownerSegment": "sBC",
+        "text": "5",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lsAC",
+        "ownerSegment": "sAC",
+        "text": "13",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rABC",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 430
+  },
+  "caption": "풍덕중 1번 문제: 직각삼각형 ABC에서 ∠B=90°, AB=12, BC=5, AC=13이다.",
+  "accessibilityDescription": "직각삼각형 ABC에서 ∠B=90°, AB=12, BC=5, AC=13이다.",
+  "newVisualInformation": [
+    "직각삼각형 ABC에서 ∠B=90°, AB=12, BC=5, AC=13이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 직각삼각형 $\\text{ABC}$에서 $\\angle\\text{B}=90^\\circ$, $\\overline{\\text{AB}}=12$, $\\overline{\\text{BC}}=5$, $\\overline{\\text{AC}}=13$일 때, $\\cos A$의 값은?",
+      "mappedTo": "CURRENT_EXAM_TEXT_AND_GEOMETRY"
+    },
+    {
+      "id": "problem",
+      "condition": "오른쪽 직각삼각형 $\\text{ABC}$에서 $\\angle\\text{B}=90^\\circ$, $\\overline{\\text{AB}}=12$, $\\overline{\\text{BC}}=5$, $\\overline{\\text{AC}}=13$일 때, $\\cos A$의 값은?",
+      "mappedTo": "PROBLEM_AXIS_INDEPENDENT_REVIEW"
+    }
+  ]
+}

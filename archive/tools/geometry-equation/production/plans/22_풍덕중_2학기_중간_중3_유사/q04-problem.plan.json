@@ -1,0 +1,166 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aBAC",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 45,
+        "label": "45",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lsAB",
+        "ownerSegment": "sAB",
+        "text": "x",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lsBC",
+        "ownerSegment": "sBC",
+        "text": "7",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lsAC",
+        "ownerSegment": "sAC",
+        "text": "y",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rABC",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 430
+  },
+  "caption": "풍덕중 4번 문제: 직각삼각형 ABC에서 ∠A=45°이고 BC=7이다.",
+  "accessibilityDescription": "직각삼각형 ABC에서 ∠A=45°이고 BC=7이다.",
+  "newVisualInformation": [
+    "직각삼각형 ABC에서 ∠A=45°이고 BC=7이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 직각삼각형 $\\text{ABC}$에서 $\\angle\\text{B}=90^\\circ$, $\\angle\\text{A}=45^\\circ$, $\\overline{\\text{BC}}=7$, $\\overline{\\text{AB}}=x$, $\\overline{\\text{AC}}=y$일 때, $\\angle\\text{A}$의 삼각비를 이용하여 $x+y$의 값을 구한 것은?",
+      "mappedTo": "CURRENT_EXAM_TEXT_AND_GEOMETRY"
+    },
+    {
+      "id": "problem",
+      "condition": "오른쪽 직각삼각형 $\\text{ABC}$에서 $\\angle\\text{B}=90^\\circ$, $\\angle\\text{A}=45^\\circ$, $\\overline{\\text{BC}}=7$, $\\overline{\\text{AB}}=x$, $\\overline{\\text{AC}}=y$일 때, $\\angle\\text{A}$의 삼각비를 이용하여 $x+y$의 값을 구한 것은?",
+      "mappedTo": "PROBLEM_AXIS_INDEPENDENT_REVIEW"
+    }
+  ]
+}

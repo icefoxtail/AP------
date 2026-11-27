@@ -1,0 +1,246 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "4"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "add",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "4"
+              },
+              {
+                "kind": "expression",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "3"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 580
+  },
+  "displayLines": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BH",
+      "refs": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "HC",
+      "refs": [
+        "H",
+        "C"
+      ]
+    },
+    {
+      "id": "AH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "A",
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "H"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aHAC",
+        "refs": [
+          "H",
+          "A",
+          "C"
+        ],
+        "value": 45,
+        "label": "45",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "AB",
+        "text": "8",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "solAC",
+        "ownerSegment": "AC",
+        "text": "4*sqrt(6)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "풍덕중 8번 해설: 삼각형 ABC의 꼭짓점 A에서 밑변 BC에 내린 수선의 발을 H라 하고 선분 AB의 길이와 각의 크기가 주어진 그림이다.",
+  "accessibilityDescription": "삼각형 ABC에서 꼭짓점 A에서 밑변 BC에 수선 AH가 내려져 있고 각 B는 60도, 각 HAC는 45도이며 선분 AB의 길이는 8이다.",
+  "newVisualInformation": [
+    "삼각형 ABC에서 선분 AB의 길이 8, 각 B 60도, 각 HAC 45도, 수선의 발 H"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같은 $\\triangle\\text{ABC}$에서 꼭짓점 $\\text{A}$에서 $\\overline{\\text{BC}}$에 내린 수선의 발을 $\\text{H}$라고 하자. $\\overline{\\text{AB}}=8$, $\\angle\\text{B}=60^\\circ$, $\\angle\\text{HAC}=45^\\circ$일 때, $\\overline{\\text{AC}}$의 길이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "solution",
+      "condition": "원문 해설의 수학적 관계를 독립적으로 확인: $\\overline{\\text{AH}} \\perp \\overline{\\text{BC}}$이므로 직각삼각형 $\\text{ABH}$에서 $$\\overline{\\text{AH}} = \\overline{\\text{AB}}\\sin 60^\\circ = 8 \\times \\frac{\\sqrt{3}}{2} = 4\\sqrt{3}$$ 직각삼각형 $\\text{AHC}$에서 $\\",
+      "mappedTo": "SOLUTION_AXIS_INDEPENDENT_REVIEW"
+    }
+  ]
+}

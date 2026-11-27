@@ -1,0 +1,95 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      7
+    ],
+    "viewport": [
+      -3.5,
+      7.5,
+      -5,
+      36
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 2,
+        "y": 32
+      },
+      {
+        "id": "B",
+        "x": -2,
+        "y": 0
+      },
+      {
+        "id": "C",
+        "x": 6,
+        "y": 0
+      }
+    ],
+    "overlays": {
+      "polygons": [
+        {
+          "id": "T",
+          "points": [
+            "PA",
+            "PB",
+            "PC"
+          ]
+        }
+      ],
+      "points": [
+        {
+          "id": "PA",
+          "x": "2",
+          "y": "32",
+          "unnamed": true
+        },
+        {
+          "id": "PB",
+          "x": "-2",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "PC",
+          "x": "6",
+          "y": "0",
+          "unnamed": true
+        }
+      ]
+    },
+    "pieces": [
+      {
+        "coefficients": [
+          "24",
+          "8",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": []
+  },
+  "caption": "동산중 23번 해설: 포물선 y=-2x^2+8x+24의 꼭짓점 A와 x축 교점 B, C로 이루어진 삼각형 ABC",
+  "accessibilityDescription": "동산중 23번 해설: 포물선 y=-2x^2+8x+24의 꼭짓점 A와 x축 교점 B, C로 이루어진 삼각형 ABC",
+  "newVisualInformation": [
+    "동산중 23번 해설: 포물선 y=-2x^2+8x+24의 꼭짓점 A와 x축 교점 B, C로 이루어진 삼각형 ABC"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림은 이차함수 $y = -2x^2 + 8x + 24$의 그래프이다. 꼭짓점을 $\\mathrm{A}$, $x$축과의 두 교점을 각각 $\\mathrm{B}$, $\\mathrm{C}$라 할 때, $\\triangle\\mathrm{ABC}$의 넓이를 구하여라.",
+      "mappedTo": "CURRENT_EXAM_TEXT_AND_GEOMETRY"
+    },
+    {
+      "id": "solution",
+      "condition": "원문 해설의 수학적 관계를 독립적으로 확인: 주어진 식을 완전제곱식으로 변형하면 $$\\begin{aligned} y &= -2x^2 + 8x + 24 \\ &= -2(x^2 - 4x) + 24 \\ &= -2(x - 2)^2 + 32 \\end{aligned}$$ 따라서 꼭짓점 $\\mathrm{A}$의 좌표는 $(2, 32)$이므로 삼각형의 높이는 $32$이다. $x$축과의 교점을 구하기 위해 $y = 0",
+      "mappedTo": "SOLUTION_AXIS_INDEPENDENT_REVIEW"
+    }
+  ]
+}

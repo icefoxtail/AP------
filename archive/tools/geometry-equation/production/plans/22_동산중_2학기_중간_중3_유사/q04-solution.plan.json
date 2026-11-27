@@ -1,0 +1,53 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-47/5",
+          "-18/5",
+          "-3/5"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -7,
+      1
+    ],
+    "viewport": [
+      -7.5,
+      1.5,
+      -13,
+      5
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": -3,
+        "y": -4
+      }
+    ]
+  },
+  "caption": "동산중 4번 해설: 주어진 이차함수의 꼭짓점과 대칭축을 나타낸 해설 그래프",
+  "accessibilityDescription": "동산중 4번 해설: 주어진 이차함수의 꼭짓점과 대칭축을 나타낸 해설 그래프",
+  "newVisualInformation": [
+    "동산중 4번 해설: 주어진 이차함수의 꼭짓점과 대칭축을 나타낸 해설 그래프"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 이차함수 $y = -\\dfrac{3}{5}(x+3)^2 - 4$의 그래프에 대한 설명으로 옳지 않은 것은?",
+      "mappedTo": "CURRENT_EXAM_TEXT_AND_GEOMETRY"
+    },
+    {
+      "id": "solution",
+      "condition": "원문 해설의 수학적 관계를 독립적으로 확인: $y = -\\dfrac{3}{5}(x+3)^2 - 4$의 그래프는 위로 볼록하고 꼭짓점이 $(-3, -4)$, 축의 방정식이 $x = -3$이다. ① $x$축 방향으로 $-3$, $y$축 방향으로 $-4$만큼 평행이동한 것이다. (참) ② 축의 방정식은 $x = 3$이 아니라 $x = -3$이다. (거짓) ③ 꼭짓점의 좌표는 $(-3, -4)$이다. (참)",
+      "mappedTo": "SOLUTION_AXIS_INDEPENDENT_REVIEW"
+    }
+  ]
+}

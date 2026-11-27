@@ -1,0 +1,58 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      1.5
+    ],
+    "viewport": [
+      -3.5,
+      2,
+      -6,
+      3
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": -1,
+        "y": -5
+      },
+      {
+        "id": "Y",
+        "x": 0,
+        "y": -3
+      }
+    ],
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "4",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": []
+  },
+  "caption": "동산중 7번 문제: 꼭짓점이 (-1, -5)이고 y절편이 -3인 이차함수의 그래프",
+  "accessibilityDescription": "동산중 7번 문제: 꼭짓점이 (-1, -5)이고 y절편이 -3인 이차함수의 그래프",
+  "newVisualInformation": [
+    "동산중 7번 문제: 꼭짓점이 (-1, -5)이고 y절편이 -3인 이차함수의 그래프"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y = ax^2 + bx + c$의 그래프가 그림과 같을 때, $a + b + c$의 값은?",
+      "mappedTo": "CURRENT_EXAM_TEXT_AND_GEOMETRY"
+    },
+    {
+      "id": "problem",
+      "condition": "이차함수 $y = ax^2 + bx + c$의 그래프가 그림과 같을 때, $a + b + c$의 값은?",
+      "mappedTo": "PROBLEM_AXIS_INDEPENDENT_REVIEW"
+    }
+  ]
+}
