@@ -1,0 +1,61 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "universe": {
+      "name": "U",
+      "count": "36",
+      "countUnit": "개"
+    },
+    "sets": [
+      {
+        "id": "A",
+        "name": "A",
+        "count": "12",
+        "countUnit": "개"
+      },
+      {
+        "id": "B",
+        "name": "B",
+        "count": "6",
+        "countUnit": "개"
+      }
+    ],
+    "shade": "A∪B"
+  },
+  "caption": "두 자리 수 36개 중 3의 배수 12개, 11의 배수 6개가 겹치는 33과 66을 한 번만 센다.",
+  "accessibilityDescription": "전체 36개 두 자리 수에서 A 12개와 B 6개의 겹친 합집합을 강조한 벤다이어그램이다.",
+  "sourceConditions": [
+    {
+      "id": "sample",
+      "condition": "십의 자리와 일의 자리는 각각 1~6으로 전체 36개",
+      "mappedTo": [
+        "diagram.universe"
+      ]
+    },
+    {
+      "id": "div3",
+      "condition": "3의 배수 12개",
+      "mappedTo": [
+        "diagram.sets"
+      ]
+    },
+    {
+      "id": "div11",
+      "condition": "11의 배수 6개",
+      "mappedTo": [
+        "diagram.sets"
+      ]
+    },
+    {
+      "id": "overlap",
+      "condition": "A∩B={33,66}, 합집합16개",
+      "mappedTo": [
+        "diagram.shade"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "33과 66이 교집합에 속해 두 사건에서 중복되는 원리. 영역 안에 2개 수치 표기는 SET_REGION_COUNT_LABEL 미지원."
+  ]
+}

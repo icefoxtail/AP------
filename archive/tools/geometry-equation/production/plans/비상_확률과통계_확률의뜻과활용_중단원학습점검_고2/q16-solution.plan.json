@@ -1,0 +1,59 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "universe": {
+      "name": "U",
+      "count": "30",
+      "countUnit": "개"
+    },
+    "sets": [
+      {
+        "id": "A",
+        "count": "10",
+        "countUnit": "개"
+      },
+      {
+        "id": "B",
+        "count": "7",
+        "countUnit": "개"
+      }
+    ],
+    "shade": "A∪B"
+  },
+  "caption": "방정식의 두 자연수 해 후보 n/3 또는 n/4가 자연수가 되려면 3의 배수 또는 4의 배수이므로 n은 15개이다.",
+  "accessibilityDescription": "1부터 30까지 자연수에서 3의 배수 10개와 4의 배수 7개가 12의 배수 2개에서 겹치는 벤다이어그램이다.",
+  "sourceConditions": [
+    {
+      "id": "sample",
+      "condition": "n은 1부터 30까지 30개",
+      "mappedTo": [
+        "diagram.universe"
+      ]
+    },
+    {
+      "id": "div3",
+      "condition": "n/3이 자연수인 3의 배수 10개",
+      "mappedTo": [
+        "diagram.sets"
+      ]
+    },
+    {
+      "id": "div4",
+      "condition": "n/4가 자연수인 4의 배수 7개",
+      "mappedTo": [
+        "diagram.sets"
+      ]
+    },
+    {
+      "id": "overlap",
+      "condition": "12의 배수 2개가 공통",
+      "mappedTo": [
+        "diagram.shade"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "방정식의 인수분해가 두 집합의 합집합에 대응함을 보인다. 교집합 '2개' 직접 배치 기능 SET_REGION_COUNT_LABEL 미지원."
+  ]
+}

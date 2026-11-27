@@ -1,0 +1,52 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "universe": {
+      "name": "U",
+      "count": "100",
+      "countUnit": "%"
+    },
+    "sets": [
+      {
+        "id": "A",
+        "count": "50",
+        "countUnit": "%"
+      },
+      {
+        "id": "B",
+        "count": "40",
+        "countUnit": "%"
+      }
+    ],
+    "shade": "A∪B"
+  },
+  "caption": "A와 B의 공통 영역을 중복 차감하면 P(A∪B)=70%이다.",
+  "accessibilityDescription": "전체 100퍼센트 중 A 50퍼센트와 B 40퍼센트가 겹치는 두 원의 합집합 부분을 강조한다.",
+  "sourceConditions": [
+    {
+      "id": "a",
+      "condition": "P(A)=1/2=50%",
+      "mappedTo": [
+        "diagram.sets"
+      ]
+    },
+    {
+      "id": "b",
+      "condition": "P(B)=2/5=40%",
+      "mappedTo": [
+        "diagram.sets"
+      ]
+    },
+    {
+      "id": "intersection",
+      "condition": "P(A∩B)=1/5=20%이며 합집합은 70%",
+      "mappedTo": [
+        "diagram.shade"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "교집합 20%를 한 번 빼야 함을 겹친 영역으로 보여 준다. 영역 안에 20% 직접 쓰기는 SET_REGION_COUNT_LABEL 미지원."
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "universe": {
+      "name": "U",
+      "count": "100",
+      "countUnit": "개"
+    },
+    "sets": [
+      {
+        "id": "A",
+        "count": "50",
+        "countUnit": "개"
+      },
+      {
+        "id": "B",
+        "count": "33",
+        "countUnit": "개"
+      }
+    ],
+    "shade": "(A∪B)^c"
+  },
+  "caption": "101~200에서 2의 배수 50개, 3의 배수 33개, 두 배수인 6의 배수 17개를 빼면 서로소인 수가 34개이다.",
+  "accessibilityDescription": "100개 자연수 전체에서 2의 배수와 3의 배수 원 바깥 영역을 강조하고 두 집합의 공통 영역을 보인다.",
+  "sourceConditions": [
+    {
+      "id": "interval",
+      "condition": "101~200 자연수 100개",
+      "mappedTo": [
+        "diagram.universe"
+      ]
+    },
+    {
+      "id": "even",
+      "condition": "2의 배수 50개",
+      "mappedTo": [
+        "diagram.sets"
+      ]
+    },
+    {
+      "id": "three",
+      "condition": "3의 배수 33개",
+      "mappedTo": [
+        "diagram.sets"
+      ]
+    },
+    {
+      "id": "coprime",
+      "condition": "두 배수 집합의 합집합 여집합이 12와 서로소인 수",
+      "mappedTo": [
+        "diagram.shade"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "공배수 17개를 두 번 빼지 않게 교집합 구조를 보여 준다. 영역 숫자 17 직접 표기는 SET_REGION_COUNT_LABEL 미지원."
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "HISTOGRAM",
+    "boundaries": [
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21"
+    ],
+    "series": [
+      {
+        "name": "결과 수",
+        "frequencies": [
+          1,
+          7,
+          21,
+          35,
+          35,
+          21,
+          7,
+          1
+        ]
+      }
+    ],
+    "total": 128,
+    "xTitle": "일곱 수의 합",
+    "yTitle": "경우의 수",
+    "showValues": true,
+    "highlightClasses": [
+      0,
+      1
+    ],
+    "classSums": [
+      {
+        "series": 0,
+        "from": 0,
+        "to": 1,
+        "label": "8"
+      }
+    ]
+  },
+  "caption": "가장 작은 합 13에서 7번 선택 중 높은 면이 나온 횟수 k만큼 더한 결과는 13+k이다. 14 이하인 경우는 1+7=8가지이므로 14보다 클 확률은 15/16이다.",
+  "accessibilityDescription": "합 13부터 20까지의 결과 수가 1,7,21,35,35,21,7,1인 여덟 막대가 있다. 합 13과 14의 두 막대만 강조되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "faces",
+      "condition": "파란 카드 네 번은 1 또는2, 노란 카드 세 번은 3 또는4",
+      "mappedTo": "chart.series"
+    },
+    {
+      "id": "outcomes",
+      "condition": "전체 경우 2^7=128, 최소합 13, 합 14 이하 8가지",
+      "mappedTo": [
+        "chart.total",
+        "chart.boundaries",
+        "chart.highlightClasses",
+        "chart.classSums"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 카드 모두 높은 숫자 여부만 합의 13 대비 증가분을 결정한다. 여사건인 첫 두 합 구간을 시각적으로 분리한다."
+  ]
+}
