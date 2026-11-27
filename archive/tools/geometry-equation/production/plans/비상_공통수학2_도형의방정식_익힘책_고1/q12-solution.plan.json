@@ -1,0 +1,15 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[{"id":"before","kind":"CIRCLE","center":["3","6"],"rSquared":"9"},{"id":"after","kind":"CIRCLE","center":["-3","3"],"rSquared":"9"}],
+  "points":[{"id":"A","kind":"CENTER","curve":"before","coordinates":true},{"id":"C","kind":"CENTER","curve":"after","coordinates":true},{"id":"T","kind":"POINT","x":"-3","y":"0"},{"id":"U","kind":"POINT","x":"0","y":"3"}],
+  "segments":[{"id":"move","from":"A","to":"C"},{"id":"r1","from":"C","to":"T","label":"3"},{"id":"r2","from":"C","to":"U","label":"3"}],
+  "caption":"a=3, b=6일 때 처음 중심 (3,6)을 (−6,−3)만큼 이동하면 (−3,3)이 된다. 반지름 3인 옮겨진 원은 두 축에 접한다.",
+  "accessibilityDescription":"이동 전·후 반지름 3인 두 원과 중심을 그리고, 이동된 원에서 두 좌표축에 닿는 반지름을 표시한다.",
+  "sourceQuote":"x축의 방향으로 -6만큼, y축의 방향으로 -3만큼 평행이동",
+  "sourceConditions":[
+    {"id":"before","condition":"처음 중심 (a,b)=(3,6), 반지름 a=3","mappedTo":"conics[0]"},
+    {"id":"after","condition":"이동 중심 (−3,3), 반지름 3","mappedTo":"conics[1]"},
+    {"id":"touch","condition":"x축·y축과 각각 한 점에서 접함","mappedTo":["points[2]","points[3]","segments"]}
+  ],
+  "newVisualInformation":["두 방향 평행이동과 최종 두 축 접점을 한 그림에서 구별한다."]
+}

@@ -1,0 +1,16 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"CIRCLE","center":["5","3"],"rSquared":"25"},
+  "points":[{"id":"C","kind":"CENTER","coordinates":true},{"id":"A","kind":"POINT","x":"0","y":"3"},{"id":"B","kind":"POINT","x":"18/5","y":"39/5"},{"id":"M","kind":"FOOT","from":"C","onto":"l","rightAngle":true}],
+  "lines":[{"id":"l","slope":"4/3","intercept":"3","label":"AB"}],
+  "segments":[{"id":"AB","from":"A","to":"B","label":"6"},{"id":"CM","from":"C","to":"M","label":"4"},{"id":"AM","from":"A","to":"M","label":"3"},{"id":"CA","from":"C","to":"A"}],
+  "caption":"대표 경우 k=3. 중심 C(5,3)에서 현 AB까지의 높이 CM=4, 현 AB=6이므로 삼각형 ABC의 넓이는 12다. k=−3도 같은 크기이다.",
+  "accessibilityDescription":"원 중심 C에서 현 AB에 내린 수선 CM, 직각 표식, 반현 AM=3과 현 AB=6을 표시한 면 채움 없는 삼각형이다.",
+  "sourceQuote":"삼각형 ABC의 넓이가 12가 되도록 하는 실수 k",
+  "sourceConditions":[
+    {"id":"circle","condition":"k=3 예시: 중심 (5,3), 반지름 5","mappedTo":"conic"},
+    {"id":"chord","condition":"AB=6, AM=3, CM=4, CM⊥AB","mappedTo":["segments","points[3]"]},
+    {"id":"cases","condition":"k=±3 두 해 중 k=3의 정확한 대표 그림","mappedTo":"caption"}
+  ],
+  "newVisualInformation":["넓이 12의 밑변·높이 및 직각을 현·수선으로 표시한다."]
+}

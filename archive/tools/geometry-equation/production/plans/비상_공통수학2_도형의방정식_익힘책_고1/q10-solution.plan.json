@@ -1,0 +1,18 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"X","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-3"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"CONCLUSION"},
+    {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"-6"}]},"outputType":"POINT","factRole":"CONCLUSION"},
+    {"id":"L","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"-1"},"b":{"kind":"integer","value":"1"},"c":{"kind":"integer","value":"9"}},"outputType":"LINE","factRole":"CONCLUSION"}
+  ]},
+  "displayPoints":["O","A","P"],"displayLines":["L"],
+  "displaySegments":[{"id":"AO","refs":["A","O"],"dashed":true},{"id":"OP","refs":["O","P"],"dashed":true}],
+  "coordinateLabels":["A","P"],"lineLabels":[{"nodeId":"L","form":"SLOPE_INTERCEPT"}],
+  "caption":"a=−3에서 A(−3,6)의 원점 대칭점은 P(3,−6)이고, P는 y=x−9 위에 있다.",
+  "accessibilityDescription":"좌표평면에서 A와 P가 원점을 사이에 두고 대칭이며, 점 P를 지나는 직선 y=x−9가 함께 그려져 있다.",
+  "sourceQuote":"점 (a, 6)을 원점에 대하여 대칭이동한 점을 P",
+  "sourceConditions":[{"id":"reflection","condition":"A(−3,6), P(3,−6), 원점에 대해 대칭","mappedTo":["mathPlan.nodes","displaySegments"]},{"id":"line","condition":"a=−3이므로 y=x−9","mappedTo":"displayLines"}],
+  "newVisualInformation":["원점을 연결한 두 반선과 대칭점, 실제 직선을 표시한다."]
+}
