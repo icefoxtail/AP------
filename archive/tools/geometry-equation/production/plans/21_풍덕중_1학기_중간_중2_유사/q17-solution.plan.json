@@ -1,0 +1,150 @@
+{
+  "sourceQuote": "$\\angle C = 90^\\circ$인 직각삼각형 $ABC$",
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "hyp20",
+        "from": "A",
+        "to": "B",
+        "label": "20",
+        "side": "RIGHT",
+        "style": "BAR"
+      },
+      {
+        "id": "bc12",
+        "from": "B",
+        "to": "C",
+        "label": "12",
+        "side": "BELOW",
+        "style": "BAR"
+      },
+      {
+        "id": "ac16",
+        "from": "C",
+        "to": "A",
+        "label": "16",
+        "side": "LEFT",
+        "style": "BAR"
+      }
+    ]
+  },
+  "rightAngles": [{"id": "rightC", "refs": ["A","C","B"]}],
+  "caption": "피타고라스 정리로 AC=16, 넓이는 12×16/2=96이다.",
+  "accessibilityDescription": "직각삼각형의 세 변에 각각 12,16,20이 보이고 C는 직각이다.",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "빗변 AB=20",
+      "mappedTo": "planeMarks.dimensions[0]"
+    },
+    {
+      "id": "condition2",
+      "condition": "BC=12",
+      "mappedTo": "planeMarks.dimensions[1]"
+    },
+    {
+      "id": "condition3",
+      "condition": "AC=16",
+      "mappedTo": "planeMarks.dimensions[2]"
+    }
+  ],
+  "newVisualInformation": [
+    "점·선분·각호·길이/등분·직각표식 중 원문과 해당 축에 필요한 요소를 실제 표시 필드로 기록한다."
+  ]
+}

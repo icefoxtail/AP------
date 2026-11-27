@@ -1,0 +1,129 @@
+{
+  "sourceQuote": "$\\frac{5}{4}\\pi$는 제몇 사분면의 각인가?",
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "outputType": "POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "inputs": []
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "inputs": []
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "X",
+    "P"
+  ],
+  "hiddenPointNames": [
+    "X",
+    "P"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "OP",
+      "refs": [
+        "O",
+        "P"
+      ],
+      "arrow": "END"
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "theta",
+        "refs": [
+          "X",
+          "O",
+          "P"
+        ],
+        "value": 225,
+        "side": "OUTER",
+        "label": "5pi/4",
+        "labelKind": "MATH",
+        "style": "ARC"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "q3",
+        "at": [
+          -4,
+          -2
+        ],
+        "text": "제3사분면"
+      }
+    ]
+  },
+  "caption": "5π/4=225°인 동경은 제3사분면에 있다.",
+  "sourceConditions": [
+    {
+      "id": "h04",
+      "condition": "θ=5π/4",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "원점에서 제3사분면으로 향하는 225° 동경"
+  ]
+}

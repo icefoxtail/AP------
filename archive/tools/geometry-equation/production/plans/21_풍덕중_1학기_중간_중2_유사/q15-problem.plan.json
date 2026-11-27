@@ -1,0 +1,260 @@
+{
+  "sourceQuote": "두 직각삼각형 $ABC$, $DEF$에서 $\\angle C =",
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "840249045852",
+              "denominator": "100000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "rational",
+              "numerator": "840249045852",
+              "denominator": "100000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "32"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "EF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "FD",
+      "refs": [
+        "F",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eqHyp",
+        "count": 1,
+        "segments": [
+          "AB",
+          "DE"
+        ]
+      },
+      {
+        "id": "eqLeg",
+        "count": 2,
+        "segments": [
+          "BC",
+          "EF"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "B35",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 35,
+        "label": "35",
+        "style": "ARC"
+      }
+    ]
+  },
+  "caption": "직각삼각형 ABC, DEF는 빗변 AB=DE, 한 변 BC=EF이며 ∠B=35°이다.",
+  "accessibilityDescription": "두 직각삼각형을 나란히 놓고 직각 C,F 네모와 같은 빗변 및 한 변의 눈금, B의 35도 각호를 보여 준다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "∠C=∠F=90°",
+      "mappedTo": "rightAngles"
+    },
+    {
+      "id": "c2",
+      "condition": "AB=DE",
+      "mappedTo": "planeMarks.equalLengths[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "BC=EF",
+      "mappedTo": "planeMarks.equalLengths[1]"
+    },
+    {
+      "id": "c4",
+      "condition": "∠B=35°",
+      "mappedTo": "planeMarks.angles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "실제 점과 선분의 관계에 각호·직각 네모·치수선·등변 표시를 연결한다."
+  ],
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "rF",
+      "refs": [
+        "D",
+        "F",
+        "E"
+      ]
+    }
+  ]
+}

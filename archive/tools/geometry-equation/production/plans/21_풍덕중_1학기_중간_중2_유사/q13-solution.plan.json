@@ -1,0 +1,197 @@
+{
+  "sourceQuote": "$\\overline{AB} = \\overline{AC}$인 이",
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "11"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "22"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "11"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "DC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "equalABAC",
+        "count": 1,
+        "segments": [
+          "AB",
+          "AC"
+        ]
+      },
+      {
+        "id": "equalBDDC",
+        "count": 2,
+        "segments": [
+          "BD",
+          "DC"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "bc22",
+        "from": "B",
+        "to": "C",
+        "label": "22",
+        "side": "BELOW",
+        "style": "BAR",
+        "unit": "cm"
+      },
+      {
+        "id": "bd11",
+        "from": "B",
+        "to": "D",
+        "label": "11",
+        "side": "ABOVE",
+        "style": "BAR",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [{"id": "rightD", "refs": ["A","D","C"]}],
+  "caption": "밑변은 수직이등분되어 BD=DC=11cm이다.",
+  "accessibilityDescription": "A에서 내린 수선이 밑변을 11cm씩 나누고 두 반쪽의 같은 길이 표시가 있다.",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "AD⊥BC",
+      "mappedTo": "rightAngles[0]"
+    },
+    {
+      "id": "condition2",
+      "condition": "BC=22cm",
+      "mappedTo": "planeMarks.dimensions[0]"
+    },
+    {
+      "id": "condition3",
+      "condition": "BD=DC=11cm",
+      "mappedTo": "planeMarks.equalLengths[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "점·선분·각호·길이/등분·직각표식 중 원문과 해당 축에 필요한 요소를 실제 표시 필드로 기록한다."
+  ]
+}

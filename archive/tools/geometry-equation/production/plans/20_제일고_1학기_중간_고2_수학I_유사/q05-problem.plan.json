@@ -1,0 +1,120 @@
+{
+  "sourceQuote": "원점 $\\mathrm{O}$와 점 $\\mathrm{P}(-5,",
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "outputType": "POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "inputs": []
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN",
+        "inputs": []
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "X",
+    "P"
+  ],
+  "hiddenPointNames": [
+    "X"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "OP",
+      "refs": [
+        "O",
+        "P"
+      ],
+      "arrow": "END"
+    }
+  ],
+  "coordinateLabels": [
+    "P"
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "theta",
+        "refs": [
+          "X",
+          "O",
+          "P"
+        ],
+        "value": 112.619864948,
+        "style": "ARC",
+        "label": "θ",
+        "labelKind": "MATH"
+      }
+    ]
+  },
+  "caption": "원점 O와 P(-5,12)를 잇는 동경 OP와 θ.",
+  "sourceConditions": [
+    {
+      "id": "h05",
+      "condition": "P(-5,12), θ=∠XOP",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "제2사분면의 동경과 주어진 좌표"
+  ]
+}
