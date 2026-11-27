@@ -1,0 +1,213 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "D",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sDF",
+      "refs": [
+        "D",
+        "F"
+      ],
+      "dashed": true
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 470
+  },
+  "caption": "D에서 BC에 내린 수선 DF와 AB가 같은 길이인 직각사다리꼴",
+  "sourceConditions": [
+    {
+      "id": "q3-solution",
+      "condition": "평행선 사이 거리는 AB=DF이며 수선과 두 직각을 점선으로 표시",
+      "mappedTo": "A,B,C,D,F"
+    }
+  ],
+  "newVisualInformation": [
+    "평행선 사이 거리는 AB=DF이며 수선과 두 직각을 점선으로 표시"
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "adbc",
+        "count": 1,
+        "segments": [
+          "sDA",
+          "sBC"
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rightB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "rightF",
+      "refs": [
+        "D",
+        "F",
+        "C"
+      ]
+    }
+  ],
+  "sourceQuote": "다음 그림의 사다리꼴 $ABCD$에서 $\\overline{AD}\\parallel\\overline{BC}$이고 $\\overline{AB}\\perp\\overline{BC}$일 때, 다",
+  "accessibilityDescription": "D에서 BC에 내린 수선 DF와 AB가 같은 길이인 직각사다리꼴"
+}

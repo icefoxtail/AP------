@@ -1,0 +1,206 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "40"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "160"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 470
+  },
+  "caption": "호의 길이가 중심각에 비례하여 120°의 호가 12cm임을 표시",
+  "sourceConditions": [
+    {
+      "id": "q6-solution",
+      "condition": "중심각 두 개의 호/40°·120°와 실제 호 길이 라벨 4cm·x를 표시",
+      "mappedTo": "O,A"
+    }
+  ],
+  "newVisualInformation": [
+    "중심각 두 개의 호/40°·120°와 실제 호 길이 라벨 4cm·x를 표시"
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aAOB",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 40,
+        "label": "40",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aBOC",
+        "refs": [
+          "B",
+          "O",
+          "C"
+        ],
+        "value": 120,
+        "label": "120",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "short",
+        "circle": "k",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR",
+        "label": "4",
+        "unit": "cm"
+      },
+      {
+        "id": "long",
+        "circle": "k",
+        "center": "O",
+        "from": "B",
+        "to": "C",
+        "side": "MINOR",
+        "label": "12",
+        "unit": "cm"
+      }
+    ]
+  },
+  "sourceQuote": "다음 그림의 원 $O$에서 중심각의 크기가 각각 $40^\\circ, 120^\\circ$인 두 부채꼴이 있다. 중심각이 $40^\\circ$인 부채꼴의 호의 길이가 $4\\mathrm{",
+  "accessibilityDescription": "호의 길이가 중심각에 비례하여 120°의 호가 12cm임을 표시"
+}

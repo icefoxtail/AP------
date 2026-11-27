@@ -1,0 +1,237 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "qB",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "qD",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 470
+  },
+  "caption": "한 변 6cm인 정사각형 안에서 B와 D를 중심으로 그린 두 사분원이 겹친 렌즈 영역",
+  "sourceConditions": [
+    {
+      "id": "q23-problem",
+      "condition": "정사각형 네 변·6cm 길이, 서로 다른 중심의 두 90° 호 및 실제 렌즈 교집합만 면 채움",
+      "mappedTo": "A,B,C,D"
+    }
+  ],
+  "newVisualInformation": [
+    "정사각형 네 변·6cm 길이, 서로 다른 중심의 두 90° 호 및 실제 렌즈 교집합만 면 채움"
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "6",
+        "side": "BELOW",
+        "style": "BAR",
+        "unit": "cm"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "quarterB",
+        "circle": "qB",
+        "center": "B",
+        "from": "A",
+        "to": "C",
+        "side": "CW",
+        "highlight": false
+      },
+      {
+        "id": "quarterD",
+        "circle": "qD",
+        "center": "D",
+        "from": "C",
+        "to": "A",
+        "side": "CW",
+        "highlight": false
+      }
+    ],
+    "regions": [
+      {
+        "id": "lens",
+        "fill": "LIGHT",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "loop": {
+              "start": "A",
+              "steps": [
+                {
+                  "to": "C",
+                  "arc": {
+                    "center": "B",
+                    "side": "CW"
+                  }
+                },
+                {
+                  "to": "A",
+                  "arc": {
+                    "center": "D",
+                    "side": "CW"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "sourceQuote": "[서술형 3] 다음 그림은 한 변의 길이가 $6\\mathrm{cm}$인 정사각형 $ABCD$의 꼭짓점 $B, D$를 각각 중심으로 하고 반지름이 $6\\mathrm{cm}$인 사분원",
+  "accessibilityDescription": "한 변 6cm인 정사각형 안에서 B와 D를 중심으로 그린 두 사분원이 겹친 렌즈 영역"
+}

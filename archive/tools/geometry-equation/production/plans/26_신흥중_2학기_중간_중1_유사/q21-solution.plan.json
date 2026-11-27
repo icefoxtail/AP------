@@ -1,0 +1,202 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "M",
+    "B",
+    "N",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "sBN",
+      "refs": [
+        "B",
+        "N"
+      ]
+    },
+    {
+      "id": "sNC",
+      "refs": [
+        "N",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 470
+  },
+  "caption": "AB:BC=4:5이고 각각의 중점 M,N을 표시한 비례 선분",
+  "sourceConditions": [
+    {
+      "id": "q21-solution",
+      "condition": "중점 눈금과 길이비 4k:5k, A-M-B-N-C 점 순서",
+      "mappedTo": "A,M,B,N,C"
+    }
+  ],
+  "newVisualInformation": [
+    "중점 눈금과 길이비 4k:5k, A-M-B-N-C 점 순서"
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "4k",
+        "side": "ABOVE",
+        "style": "BAR"
+      },
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "5k",
+        "side": "ABOVE",
+        "style": "BAR"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "ab",
+        "count": 1,
+        "segments": [
+          "sAM",
+          "sMB"
+        ]
+      },
+      {
+        "id": "bc",
+        "count": 2,
+        "segments": [
+          "sBN",
+          "sNC"
+        ]
+      }
+    ]
+  },
+  "sourceQuote": "[서술형 1] 한 직선 위에 세 점 $A, B, C$가 차례대로 놓여 있다. $\\overline{AB} : \\overline{BC} = 4 : 5$이고 선분 $AB$의 중점을 $M",
+  "accessibilityDescription": "AB:BC=4:5이고 각각의 중점 M,N을 표시한 비례 선분"
+}
