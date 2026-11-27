@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1","conic":{"kind":"CIRCLE","center":["0","0"],"rSquared":"5"},
+  "lines":[{"id":"l","slope":"-2","intercept":"3"}],
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"A","kind":"LINE_CONIC","line":"l","which":1},{"id":"B","kind":"LINE_CONIC","line":"l","which":2},{"id":"H","kind":"FOOT","from":"O","onto":"l","rightAngle":true}],
+  "segments":[{"id":"OH","from":"O","to":"H"},{"id":"OA","from":"O","to":"A"},{"id":"OB","from":"O","to":"B"},{"id":"AB","from":"A","to":"B"}],
+  "caption":"ㄱ은 중심에서 직선까지 거리가 반지름보다 작아 두 교점을 갖는다.",
+  "accessibilityDescription":"ㄱ의 원과 직선은 A,B 두 점에서 만난다. 중심 O에서 직선으로 내린 OH는 수직이다.",
+  "sourceQuote":"ㄱ. $x^2+y^2=5$, $2x+y-3=0$",
+  "sourceConditions":[{"id":"a","condition":"r=√5, d=3/√5<r, 교점 두 개","mappedTo":["conic","lines","points"]}],
+  "newVisualInformation":["교점 A,B를 실제 교점으로 구하고 중심의 수선에 직각 표시를 둔다."]
+}

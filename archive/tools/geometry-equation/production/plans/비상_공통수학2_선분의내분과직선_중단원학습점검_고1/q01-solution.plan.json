@@ -1,0 +1,17 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"X","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-2"},{"kind":"integer","value":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"8"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"P","op":"DIVISION_POINT","inputs":["A","B"],"args":{"m":{"kind":"integer","value":"2"},"n":{"kind":"integer","value":"1"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"Q","op":"DIVISION_POINT","inputs":["A","B"],"args":{"m":{"kind":"integer","value":"1"},"n":{"kind":"integer","value":"2"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["A","B","P","Q"],"displaySegments":[{"id":"AB","refs":["A","B"]},{"id":"AP","refs":["A","P"],"emphasis":"ACCENT"},{"id":"BQ","refs":["B","Q"]}],"coordinateLabels":["A","B","P","Q"],
+  "caption":"AB의 2:1 내분점 P(2,7)와 BA의 2:1 내분점 Q(0,6)는 같은 선분 위 서로 다른 점이다.",
+  "accessibilityDescription":"A(-2,5)와 B(4,8)를 잇는 선분 위에 A,Q,P,B 순서로 점이 있고 각 내분점의 좌표가 표시된다.",
+  "sourceQuote":"선분 AB를 2:1로 내분하는 P, 선분 BA를 2:1로 내분하는 Q",
+  "sourceConditions":[{"id":"p","condition":"AP:PB=2:1","mappedTo":"mathPlan.nodes.P"},{"id":"q","condition":"BQ:QA=2:1","mappedTo":"mathPlan.nodes.Q"}],
+  "newVisualInformation":["두 내분 방향의 차이를 A,Q,P,B 순서로 보여 주며 선분을 면으로 채우지 않는다."]
+}

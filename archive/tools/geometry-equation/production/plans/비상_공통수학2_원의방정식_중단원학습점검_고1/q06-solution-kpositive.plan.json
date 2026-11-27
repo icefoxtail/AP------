@@ -1,0 +1,10 @@
+{
+  "capability":"ellipse-figure-v1","conic":{"kind":"CIRCLE","center":["3","2"],"rSquared":"4"},
+  "points":[{"id":"C","kind":"CENTER"},{"id":"R","kind":"POINT","x":"5","y":"2"}],
+  "segments":[{"id":"CR","from":"C","to":"R","label":"2"}],
+  "caption":"k=1이면 중심 C(3,2), 반지름 2로 실제 원이 생긴다.",
+  "accessibilityDescription":"k=1일 때 중심이 (3,2), 반지름이 2인 원.",
+  "sourceQuote":"방정식 $x^2+y^2-6kx-4y+5k+4=0$",
+  "sourceConditions":[{"id":"positive","condition":"k=1: r²=9-5=4>0","mappedTo":["conic","segments"]}],
+  "newVisualInformation":["허용 구간 k>5/9의 대표 원을 면 채움 없이 그린다."]
+}

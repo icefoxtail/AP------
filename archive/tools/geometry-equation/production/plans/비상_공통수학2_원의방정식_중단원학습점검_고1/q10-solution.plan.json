@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1","conic":{"kind":"CIRCLE","center":["1","1"],"rSquared":"4"},
+  "lines":[{"id":"l1","slope":"(-4+2*sqrt(13))/3","intercept":"-3","label":"l_1","tangent":true},{"id":"l2","slope":"(-4-2*sqrt(13))/3","intercept":"-3","label":"l_2","tangent":true}],
+  "points":[{"id":"C","kind":"CENTER"},{"id":"A","kind":"POINT","x":"0","y":"-3"},{"id":"T1","kind":"FOOT","from":"C","onto":"l1","rightAngle":true},{"id":"T2","kind":"FOOT","from":"C","onto":"l2","rightAngle":true}],
+  "segments":[{"id":"CT1","from":"C","to":"T1","label":"2"},{"id":"CT2","from":"C","to":"T2"},{"id":"AT1","from":"A","to":"T1"},{"id":"AT2","from":"A","to":"T2"}],
+  "caption":"외부 점 A(0,-3)에서 원에 그은 두 접선과 각 접점의 직각 반지름을 표시한다.",
+  "accessibilityDescription":"중심 C(1,1), 반지름 2인 원 밖의 점 A(0,-3)에서 두 접점 T1,T2까지 접선이 이어진다.",
+  "sourceQuote":"점 $(0,-3)$에서 원 $(x-1)^2+(y-1)^2=4$에 그은 두 접선",
+  "sourceConditions":[{"id":"two-tangents","condition":"m₁,m₂=(-4±2√13)/3, m₁m₂=-4","mappedTo":["lines","points","segments"]}],
+  "newVisualInformation":["두 접점의 위치와 직각 관계를 별도 표식으로 표시한다."]
+}

@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1","conic":{"kind":"CIRCLE","center":["1","0"],"rSquared":"16"},
+  "lines":[{"id":"l","slope":"4/3","intercept":"-2/3","label":"l"}],
+  "points":[{"id":"C","kind":"CENTER"},{"id":"A","kind":"LINE_CONIC","line":"l","which":1},{"id":"B","kind":"LINE_CONIC","line":"l","which":2},{"id":"H","kind":"FOOT","from":"C","onto":"l","rightAngle":true}],
+  "segments":[{"id":"CA","from":"C","to":"A"},{"id":"CB","from":"C","to":"B"},{"id":"CH","from":"C","to":"H"},{"id":"AB","from":"A","to":"B"}],
+  "caption":"a=0이면 중심에서 직선까지 거리 2/5가 반지름 4보다 작아 두 점에서 만난다.",
+  "accessibilityDescription":"a=0인 경우 반지름 4의 원을 직선이 가로질러 교점 A,B를 만들고 CH가 수직이다.",
+  "sourceQuote":"원 $(x-1)^2+(y-a)^2=16$과 직선",
+  "sourceConditions":[{"id":"inside","condition":"a=0: C(1,0), l:4x-3y-2=0, d=2/5<4","mappedTo":["conic","lines","points"]}],
+  "newVisualInformation":["범위 내부의 두 교점과 중심의 수선 발을 표시한다."]
+}

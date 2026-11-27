@@ -1,0 +1,16 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"X","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"20"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"10"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"l","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"1"},"b":{"kind":"integer","value":"2"},"c":{"kind":"integer","value":"-20"}},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["O","A","B"],"displayLines":["l"],"displaySegments":[{"id":"OA","refs":["O","A"]},{"id":"OB","refs":["O","B"]},{"id":"AB","refs":["A","B"]}],"rightAngles":[{"id":"axes","refs":["A","O","B"]}],"coordinateLabels":["A","B"],
+  "caption":"k=5일 때 x절편 20, y절편 10이 만드는 직각삼각형의 넓이는 100이다.",
+  "accessibilityDescription":"좌표축과 직선 x+2y=20이 둘러싼 직각삼각형 OAB, 축절편 A(20,0), B(0,10)를 표시한다. 면 채움은 없다.",
+  "sourceQuote":"직선 x+2y-4k=0과 x축, y축으로 둘러싸인 삼각형의 넓이가 100",
+  "sourceConditions":[{"id":"intercepts","condition":"k=5라서 A=(4k,0), B=(0,2k)","mappedTo":["mathPlan.nodes.A","mathPlan.nodes.B"]},{"id":"area","condition":"1/2×20×10=100","mappedTo":"displaySegments"}],
+  "newVisualInformation":["절편·직각표식을 추가하고 기본 면 채움 없이 면적은 발문과 캡션에만 적는다."]
+}
