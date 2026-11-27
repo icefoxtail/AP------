@@ -886,7 +886,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-008",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/19_매산여고_1학기_중간_고2_수학I_유사/q20-solution.svg",
+    "solutionImageAlt": "두 부등식의 교집합은 3≤x<7이고 정수해는 3,4,5,6으로 합은 18이다.",
+    "solutionImageCaption": "두 부등식의 교집합은 3≤x<7이고 정수해는 3,4,5,6으로 합은 18이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -962,6 +966,10 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-028",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/19_매산여고_1학기_중간_고2_수학I_유사/q22-solution.svg",
+    "solutionImageAlt": "모형에서 P≤40이 되는 달의 범위는 t≥8이며 최소 정수 개월 수는 8이다.",
+    "solutionImageCaption": "모형에서 P≤40이 되는 달의 범위는 t≥8이며 최소 정수 개월 수는 8이다.",
+    "solutionImageSize": "full"
   }
 ];
