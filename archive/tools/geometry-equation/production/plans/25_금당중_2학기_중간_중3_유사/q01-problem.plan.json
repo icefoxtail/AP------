@@ -1,0 +1,148 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "직각 B, AB=12, BC=5, AC=13인 직각삼각형",
+  "accessibilityDescription": "직각 B, AB=12, BC=5, AC=13인 직각삼각형",
+  "newVisualInformation": [
+    "직각 B, AB=12, BC=5, AC=13인 직각삼각형"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q01-archive",
+      "condition": "다음 직각삼각형 $ABC$에서 $\\angle B = 90^\\circ$이고 $\\overline{AB} = 12, \\overline{BC} = 5$일 때, $\\sin A + \\cos A$의 값을 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [],
+    "expressionLabels": [
+      {
+        "id": "lenAB",
+        "ownerSegment": "sAB",
+        "text": "12"
+      },
+      {
+        "id": "lenBC",
+        "ownerSegment": "sBC",
+        "text": "5"
+      },
+      {
+        "id": "lenAC",
+        "ownerSegment": "sAC",
+        "text": "13"
+      }
+    ],
+    "arcs": []
+  },
+  "rightAngles": [
+    {
+      "id": "b90",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 450
+  }
+}

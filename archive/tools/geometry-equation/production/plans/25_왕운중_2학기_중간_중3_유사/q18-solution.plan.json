@@ -1,0 +1,233 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "해설 작도 — 접선 길이 AB30, BC24, CD20, DE14, EF10의 연결점 A-B-C-D-E-F: 4개 연속 접원은 기능 대기",
+  "accessibilityDescription": "해설 작도 — 접선 길이 AB30, BC24, CD20, DE14, EF10의 연결점 A-B-C-D-E-F: 4개 연속 접원은 기능 대기",
+  "newVisualInformation": [
+    "접선 길이 AB30, BC24, CD20, DE14, EF10의 연결점 A-B-C-D-E-F: 4개 연속 접원은 기능 대기",
+    "해설의 보조선·계산된 길이와 각도는 문제 도형과 독립 검수"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q18-archive",
+      "condition": "다음 그림과 같이 4개의 원은 각각 네 삼각형의 내접원이고, $AB, AC, AD, AE, AF$는 접선이며 $AC, AD, AE$는 공통접선이다. 이웃한 두 원은 서로 접한다. $AB=30, BC=24, CD=20, DE=14, EF=10$일 때, $AD+AF$의 길이를 구하면? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "audit-1",
+      "condition": "ENGINE_CAPABILITY_PENDING: 네 개의 크기가 다른 접원이 연속으로 두 공통접선 사이를 채우는 엄밀한 공통접점/공통접선 솔버. 현재는 문제의 거리 대응만 보존하며 원 4개와 접선은 생성하지 않음.",
+      "mappedTo": "DRAWN_FEATURE_PARITY"
+    },
+    {
+      "id": "audit-2",
+      "condition": "ENGINE_CAPABILITY_PENDING: 원의 공통접선·접점이 생성되지 않아 실제 이미지와 도형 픽셀 패리티를 판정할 수 없음. 접선 길이의 교대 합 AD=30−24+20=26, AF=26−14+10=22만 해설 근거로 별도 명시.",
+      "mappedTo": "DRAWN_FEATURE_PARITY"
+    }
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "integer",
+              "value": "24"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "50"
+            },
+            {
+              "kind": "integer",
+              "value": "24"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "50"
+            },
+            {
+              "kind": "integer",
+              "value": "38"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "60"
+            },
+            {
+              "kind": "integer",
+              "value": "38"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [],
+    "expressionLabels": [
+      {
+        "id": "lenAB",
+        "ownerSegment": "sAB",
+        "text": "30"
+      },
+      {
+        "id": "lenBC",
+        "ownerSegment": "sBC",
+        "text": "24"
+      },
+      {
+        "id": "lenCD",
+        "ownerSegment": "sCD",
+        "text": "20"
+      },
+      {
+        "id": "lenDE",
+        "ownerSegment": "sDE",
+        "text": "14"
+      },
+      {
+        "id": "lenEF",
+        "ownerSegment": "sEF",
+        "text": "10"
+      }
+    ],
+    "arcs": []
+  },
+  "rightAngles": [],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 450
+  }
+}

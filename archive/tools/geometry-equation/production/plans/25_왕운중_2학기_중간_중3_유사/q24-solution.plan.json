@@ -1,0 +1,214 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "해설 작도 — 높이 PH=600m인 드론 P와 지면 A-H-B; 각 APH45°, HPB55°",
+  "accessibilityDescription": "해설 작도 — 높이 PH=600m인 드론 P와 지면 A-H-B; 각 APH45°, HPB55°",
+  "newVisualInformation": [
+    "높이 PH=600m인 드론 P와 지면 A-H-B; 각 APH45°, HPB55°",
+    "해설의 보조선·계산된 길이와 각도는 문제 도형과 독립 검수"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q24-archive",
+      "condition": "[서술형 4] 다음 그림과 같이 상공 $600\\,\\mathrm{m}$ 높이에 떠 있는 드론에서 지상의 양 끝 두 지점 $A, B$를 내려다본 각의 크기가 각각 $45^\\circ, 35^\\circ$이었다. 이때 두 지점 $A, B$ 사이의 거리를 구하고, 그 과정을 서술하시오. (단, $\\tan 45^\\circ=1.00, \\tan 55^\\circ=1.43$으로 계산한다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "audit-1",
+      "condition": "35° 앙각은 P에서 수직선과 약 55°를 이룸. B의 거리 858m는 교과서의 tan55≈1.43 적용값이므로 P-허공 좌표는 소수 근사이며 각 표식은 근삿값으로 표시함.",
+      "mappedTo": "DRAWN_FEATURE_PARITY"
+    }
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "600"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-600"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "858"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "A",
+    "H",
+    "B"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "sHB",
+      "refs": [
+        "H",
+        "B"
+      ]
+    },
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sPH",
+      "refs": [
+        "P",
+        "H"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a45",
+        "refs": [
+          "A",
+          "P",
+          "H"
+        ],
+        "value": 45,
+        "label": "45",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b55",
+        "refs": [
+          "H",
+          "P",
+          "B"
+        ],
+        "value": 54.97,
+        "label": "55",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lenPH",
+        "ownerSegment": "sPH",
+        "text": "600 m"
+      },
+      {
+        "id": "lenAH",
+        "ownerSegment": "sAH",
+        "text": "600 m"
+      },
+      {
+        "id": "lenHB",
+        "ownerSegment": "sHB",
+        "text": "≈858 m"
+      }
+    ],
+    "arcs": []
+  },
+  "rightAngles": [
+    {
+      "id": "h90",
+      "refs": [
+        "P",
+        "H",
+        "B"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 450
+  }
+}

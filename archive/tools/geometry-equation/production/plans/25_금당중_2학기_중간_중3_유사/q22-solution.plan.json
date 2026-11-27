@@ -1,0 +1,277 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "해설 작도 — 좌표평면에서 직선 y=-3x/4+6, 절편 A(8,0), B(0,6), 원점 O와 두 각 a,b",
+  "accessibilityDescription": "해설 작도 — 좌표평면에서 직선 y=-3x/4+6, 절편 A(8,0), B(0,6), 원점 O와 두 각 a,b",
+  "newVisualInformation": [
+    "좌표평면에서 직선 y=-3x/4+6, 절편 A(8,0), B(0,6), 원점 O와 두 각 a,b",
+    "해설 원문에 필요한 추가 길이·높이·합동 표식을 독립 검수"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q22-archive",
+      "condition": "[서술형 2] 다음 그림과 같이 일차함수 $y = -\\dfrac{3}{4}x + 6$의 그래프가 $x$축, $y$축과 만나는 점을 각각 $A, B$라 하자. $\\angle OAB = a^\\circ, \\angle OBA = b^\\circ$라 할 때, 다음 물음에 답하시오.<br>(1) 선분 $AB$의 길이를 구하시오.<br>(2) $\\sin a^\\circ + \\cos a^\\circ - \\tan b^\\circ$의 값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "XL",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "XR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "11"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "YD",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "YU",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "XL",
+    "XR",
+    "YD",
+    "YU"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sXLXR",
+      "refs": [
+        "XL",
+        "XR"
+      ]
+    },
+    {
+      "id": "sYDYU",
+      "refs": [
+        "YD",
+        "YU"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "alpha",
+        "refs": [
+          "O",
+          "A",
+          "B"
+        ],
+        "value": 36.86989764584402,
+        "label": "a",
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "beta",
+        "refs": [
+          "O",
+          "B",
+          "A"
+        ],
+        "value": 53.13010235415598,
+        "label": "b",
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "labelKind": "MATH"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lenOA",
+        "ownerSegment": "sOA",
+        "text": "8"
+      },
+      {
+        "id": "lenOB",
+        "ownerSegment": "sOB",
+        "text": "6"
+      },
+      {
+        "id": "lenAB",
+        "ownerSegment": "sAB",
+        "text": "10"
+      }
+    ],
+    "arcs": []
+  },
+  "rightAngles": [
+    {
+      "id": "o90",
+      "refs": [
+        "A",
+        "O",
+        "B"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "hiddenPointNames": [
+    "XL",
+    "XR",
+    "YD",
+    "YU"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 450
+  }
+}

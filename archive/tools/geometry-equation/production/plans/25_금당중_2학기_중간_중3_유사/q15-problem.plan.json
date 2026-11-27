@@ -1,0 +1,218 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "현 AB=12와 현 중점 M, 호의 중점 C에서 내린 수선 CM=2; 원호만 그림",
+  "accessibilityDescription": "현 AB=12와 현 중점 M, 호의 중점 C에서 내린 수선 CM=2; 원호만 그림",
+  "newVisualInformation": [
+    "현 AB=12와 현 중점 M, 호의 중점 C에서 내린 수선 CM=2; 원호만 그림"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q15-archive",
+      "condition": "다음 그림과 같이 깨진 원 모양의 접시 조각에서 현 $AB = 12\\,\\mathrm{cm}$이고, 선분 $AB$의 수직이등분선이 호 $AB$와 만나는 점을 $C$, 선분 $AB$와 만나는 점을 $M$이라 할 때 $\\overline{CM} = 2\\,\\mathrm{cm}$이다. 이 접시의 원래 반지름의 길이를 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "M",
+    "C",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "sCM",
+      "refs": [
+        "C",
+        "M"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [],
+    "expressionLabels": [
+      {
+        "id": "lenCM",
+        "ownerSegment": "sCM",
+        "text": "2 cm"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "cap",
+        "circle": "k",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR",
+        "factRole": "GIVEN"
+      }
+    ],
+    "pathLabels": [
+      {
+        "id": "fullAB",
+        "points": [
+          "A",
+          "M",
+          "B"
+        ],
+        "label": "12"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "m90",
+      "refs": [
+        "A",
+        "M",
+        "C"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "hiddenPointNames": [
+    "O"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 450
+  }
+}

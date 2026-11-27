@@ -1,0 +1,515 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "해설 작도 — 반지름4인 세 개의 동일한 외접원이 삼각형으로 맞닿음; 바깥 밧줄은 직선3개와 원호3개",
+  "accessibilityDescription": "해설 작도 — 반지름4인 세 개의 동일한 외접원이 삼각형으로 맞닿음; 바깥 밧줄은 직선3개와 원호3개",
+  "newVisualInformation": [
+    "반지름4인 세 개의 동일한 외접원이 삼각형으로 맞닿음; 바깥 밧줄은 직선3개와 원호3개",
+    "해설 원문에 필요한 추가 길이·높이·합동 표식을 독립 검수"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q16-archive",
+      "condition": "다음 그림과 같이 밑면의 반지름의 길이가 $4\\,\\mathrm{cm}$인 원기둥 모양의 캔 $3$개를 서로 외접하게 끈으로 팽팽하게 둘러 묶으려고 한다. 매듭의 길이를 생각하지 않을 때, 필요한 끈의 최소 길이를 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "audit-1",
+      "condition": "세 외접원의 중심을 이은 정삼각형 한 변8. 접선 직선 3×8=24, 외측 원호 세 개는 중심각 각각120°이므로 총 원호 길이8π.",
+      "mappedTo": "DRAWN_FEATURE_PARITY"
+    }
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "LB",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "RB",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "RR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "UR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "4"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "UL",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-1"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "4"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "LL",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "sub",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "left",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "L"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "right",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "R"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "top",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "U"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "L",
+    "R",
+    "U",
+    "LB",
+    "RB",
+    "RR",
+    "UR",
+    "UL",
+    "LL"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "left",
+    "right",
+    "top"
+  ],
+  "displaySegments": [
+    {
+      "id": "sLBRB",
+      "refs": [
+        "LB",
+        "RB"
+      ]
+    },
+    {
+      "id": "sRRUR",
+      "refs": [
+        "RR",
+        "UR"
+      ]
+    },
+    {
+      "id": "sULLL",
+      "refs": [
+        "UL",
+        "LL"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [],
+    "expressionLabels": [
+      {
+        "id": "lenLBRB",
+        "ownerSegment": "sLBRB",
+        "text": "8"
+      },
+      {
+        "id": "lenRRUR",
+        "ownerSegment": "sRRUR",
+        "text": "8"
+      },
+      {
+        "id": "lenULLL",
+        "ownerSegment": "sULLL",
+        "text": "8"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "ropeRight",
+        "circle": "right",
+        "center": "R",
+        "from": "RB",
+        "to": "RR",
+        "side": "MINOR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ropeUpper",
+        "circle": "top",
+        "center": "U",
+        "from": "UR",
+        "to": "UL",
+        "side": "MINOR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ropeLeft",
+        "circle": "left",
+        "center": "L",
+        "from": "LL",
+        "to": "LB",
+        "side": "MINOR",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [],
+  "hiddenPointNames": [
+    "L",
+    "R",
+    "U",
+    "LB",
+    "RB",
+    "RR",
+    "UR",
+    "UL",
+    "LL"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 450
+  }
+}
