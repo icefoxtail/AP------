@@ -1,0 +1,427 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-39",
+              "denominator": "4"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "-27"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "7"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "4"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "81",
+              "denominator": "4"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "-27"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "7"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "4"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "33",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "9"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "7"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lBD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lA2B",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A2",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lCD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lA2B",
+          "lCD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "A2"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sA2B",
+      "refs": [
+        "A2",
+        "B"
+      ]
+    },
+    {
+      "id": "sDA2",
+      "refs": [
+        "D",
+        "A2"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sEB",
+      "refs": [
+        "E",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "30",
+        "side": "BELOW",
+        "style": "ARROW",
+        "value": "30",
+        "factRole": "GIVEN"
+      }
+    ],
+    "parallels": [
+      {
+        "id": "ABCD",
+        "segments": [
+          "sAB",
+          "sCD"
+        ],
+        "count": 1
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "isosc",
+        "segments": [
+          "sDE",
+          "sEB"
+        ],
+        "count": 1
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "de",
+        "ownerSegment": "sDE",
+        "text": "18",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ec",
+        "ownerSegment": "sEC",
+        "text": "12",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "eb",
+        "ownerSegment": "sEB",
+        "text": "18",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bd",
+        "ownerSegment": "sBD",
+        "text": "27",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "angles": [
+      {
+        "id": "fold1",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "value": 41.40962210927086,
+        "arcs": 1,
+        "equalGroup": 1,
+        "noLabel": true,
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "fold2",
+        "refs": [
+          "D",
+          "B",
+          "E"
+        ],
+        "value": 41.40962210927086,
+        "arcs": 1,
+        "equalGroup": 1,
+        "noLabel": true,
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 420
+  },
+  "hiddenPointNames": [
+    "A2"
+  ],
+  "caption": "BD를 축으로 접은 평행사변형의 원래 두 점선과 새 선분 A′B를 구분한다. CE12·DE18·EB18·BD27과 DE=EB 눈금, 접힌 두 등각 호를 표시하여 AD=3√46을 설명한다.",
+  "accessibilityDescription": "BD를 축으로 접은 평행사변형의 원래 두 점선과 새 선분 A′B를 구분한다. CE12·DE18·EB18·BD27과 DE=EB 눈금, 접힌 두 등각 호를 표시하여 AD=3√46을 설명한다.",
+  "newVisualInformation": [
+    "평행사변형 ABCD와 대각선 BD",
+    "접힌 선분과 변 CD의 교점 E",
+    "변 AB의 길이 30 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\overline{AB} = 30$인 평행사변형 $ABCD$를 대각선 $BD$를 따라 접었을 때 선분 $AB$가 옮겨진 선분과 선분 $CD$가 만나는 점을 $E$라 하자. 삼각형 $EBC$의 넓이가 평행사변형 $ABCD$의 넓이의 $\\frac{1}{5}$이고, $\\overline{CE}, \\overline{EB}, \\overline{BD}$의 길이가 이 순서대로 등비수열을 이룰 때, 선분 $AD$의 길이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circum",
+        "op": "CIRCLE_THROUGH_3",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "circum"
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "givenAB",
+        "ownerSegment": "AB",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "givenAC",
+        "ownerSegment": "AC",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "derivedBC",
+        "ownerSegment": "BC",
+        "text": "2sqrt(7)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "∠A=60°, AB=6, AC=4를 외접원과 함께 표시하고, 코사인법칙의 결과 BC=2√7을 해당 변에 표시한다.",
+  "accessibilityDescription": "끼인각 60도와 두 변 AB, AC를 표시한 삼각형 및 세 꼭짓점을 지나는 원이다.",
+  "sourceConditions": [
+    {
+      "id": "G1",
+      "condition": "AB:AC=3:2, AC=4, A=60°로부터 AB=6, BC²=28.",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "angA"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "코사인법칙의 대변 BC와 외접원의 반지름을 연결할 변의 위치를 보인다."
+  ],
+  "sourceQuote": "코사인법칙으로 $BC^2"
+}

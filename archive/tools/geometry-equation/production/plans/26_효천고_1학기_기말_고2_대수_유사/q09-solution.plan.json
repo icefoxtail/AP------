@@ -1,0 +1,222 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "5"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "N",
+    "R",
+    "S"
+  ],
+  "displaySegments": [
+    {
+      "id": "sNP",
+      "refs": [
+        "N",
+        "P"
+      ]
+    },
+    {
+      "id": "sRS",
+      "refs": [
+        "R",
+        "S"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "radius",
+        "ownerSegment": "sOP",
+        "text": "sqrt(5)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "quadrant",
+        "at": [
+          2,
+          -1.5
+        ],
+        "text": "제4사분면",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "원 x²+y²=5에서 기울기 1/2의 보조선에 수직인 직선 y=−2x가 제4사분면의 P(1,−2)를 지나며, OP=√5이다.",
+  "accessibilityDescription": "원 x²+y²=5에서 기울기 1/2의 보조선에 수직인 직선 y=−2x가 제4사분면의 P(1,−2)를 지나며, OP=√5이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "원 x²+y²=5, 원점 O를 지나는 y=x/2와 수직인 직선, P는 제4사분면, sinθcosθ=−2/5.",
+      "mappedTo": [
+        "O",
+        "P",
+        "N",
+        "R",
+        "S"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 수학 조건에 대응하는 선·각·지시선·길이·점선만 표시하며 도형 면 채움과 흰색 배경은 없다."
+  ],
+  "displayCircles": [
+    "circle"
+  ],
+  "hiddenPointNames": [
+    "N",
+    "R",
+    "S"
+  ],
+  "coordinateLabels": [
+    "P"
+  ],
+  "rightAngles": [
+    {
+      "id": "perp",
+      "refs": [
+        "P",
+        "O",
+        "R"
+      ],
+      "factRole": "GIVEN"
+    }
+  ]
+}

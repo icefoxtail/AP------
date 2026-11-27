@@ -1,0 +1,260 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "55",
+              "denominator": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "div",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "55"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "8"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "55"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "8"
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "legs",
+        "segments": [
+          "sAB",
+          "sAC"
+        ],
+        "count": 1
+      },
+      {
+        "id": "halves",
+        "segments": [
+          "sBD",
+          "sDC"
+        ],
+        "count": 2
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "ab",
+        "ownerSegment": "sAB",
+        "text": "sqrt(55)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ad",
+        "ownerSegment": "sAD",
+        "text": "55/8",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "caption": "이등변삼각형 AB=AC=√55, BD=DC=3√55/8을 같은 눈금으로 표시하고 중선 AD의 수선·직각 및 AD=55/8을 표기한다.",
+  "accessibilityDescription": "이등변삼각형 AB=AC=√55, BD=DC=3√55/8을 같은 눈금으로 표시하고 중선 AD의 수선·직각 및 AD=55/8을 표기한다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "4sin A=3sin B, AB=AC, 외접원의 넓이 16π(R=4), D는 BC의 중점, AD=55/8.",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 수학 조건에 대응하는 선·각·지시선·길이·점선만 표시하며 도형 면 채움과 흰색 배경은 없다."
+  ],
+  "rightAngles": [
+    {
+      "id": "rightD",
+      "refs": [
+        "A",
+        "D",
+        "C"
+      ],
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ]
+}

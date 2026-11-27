@@ -1,0 +1,208 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "CA",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "B",
+          "CA"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBH",
+      "refs": [
+        "B",
+        "H"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "B",
+        "H",
+        "A"
+      ],
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 650,
+    "height": 430
+  },
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 36.86989764584402,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "ca",
+        "ownerSegment": "sCA",
+        "text": "8",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "cb",
+        "ownerSegment": "sCB",
+        "text": "5",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "height",
+        "ownerSegment": "sBH",
+        "text": "3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "sin",
+        "at": [
+          1.5,
+          0.55
+        ],
+        "text": "sin C = 3/5",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "넓이가 12인 삼각형의 한 실현: CA=8, CB=5, sin C=3/5, 높이 BH=3과 수선·직각 표시를 통해 ab=40을 확인한다.",
+  "accessibilityDescription": "삼각형 ABC의 CA=8, CB=5, sin C=3/5, 넓이 12를 나타낸다. B에서 CA에 내린 높이 BH=3은 점선이며 H에 직각 표시가 있다.",
+  "sourceConditions": [
+    {
+      "id": "P10",
+      "condition": "삼각형 넓이 12, sin(A+B)=3/5, a=BC, b=CA. ∠C는 A+B의 보각이고 sinC=3/5.",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "H"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "실현 좌표 C=(0,0), A=(8,0), B=(4,3), H=(4,0)에서 길이와 넓이 조건을 정확히 검증했다. 점선 높이·직각·변 길이를 표시했고 면 채움은 없다."
+  ]
+}
