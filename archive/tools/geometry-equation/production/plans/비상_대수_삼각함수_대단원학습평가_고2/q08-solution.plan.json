@@ -1,0 +1,63 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "coefficients": [
+      "1",
+      "1",
+      "0"
+    ],
+    "phasePi": "0",
+    "absolute": true,
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "OPEN",
+        "OPEN"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "h",
+        "y": "1/3",
+        "intersectionCount": 4,
+        "intersectionMarker": "OPEN"
+      }
+    ],
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "1/3",
+        "1"
+      ]
+    },
+    "keyPoints": true,
+    "displaySize": "full"
+  },
+  "caption": "0<x<2π에서 |cos x|와 y=1/3의 교점 네 개를 경계로 세 해 구간을 구분한다.",
+  "accessibilityDescription": "0과 2파이 사이의 절댓값 코사인 곡선에 3개 봉우리가 보이고, 높이 1/3 수평선과 네 번 교차한다. 네 교점은 열린 원이다.",
+  "sourceQuote": "$0 < x < 2\\pi$에서 부등식",
+  "sourceConditions": [
+    {
+      "id": "domain",
+      "condition": "정의역 0<x<2π (두 끝 제외)",
+      "mappedTo": "graphPlan.sourceDomain"
+    },
+    {
+      "id": "threshold",
+      "condition": "|cos x|>1/3, 경계는 1/3의 수평선과 네 교점",
+      "mappedTo": "graphPlan.referenceLines"
+    }
+  ],
+  "newVisualInformation": [
+    "|cos x| 곡선과 기준선 y=1/3",
+    "경계의 네 교점 열린 원",
+    "원문의 세 해 구간을 시각적으로 구분하되 면색 없음"
+  ]
+}

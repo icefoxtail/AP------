@@ -1,0 +1,153 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "12"
+      },
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "9"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "15"
+      }
+    ]
+  },
+  "caption": "공차 3을 구한 뒤 세 변이 9, 12, 15인 직각삼각형. 직각과 빗변 15를 표시한다.",
+  "accessibilityDescription": "직각이 A에 있고 두 직각변은 9와 12, 맞은편 빗변은 15인 직각삼각형이다.",
+  "sourceQuote": "직각삼각형의 세 변의 길이가 등차수열을 이루고",
+  "sourceConditions": [
+    {
+      "id": "sides",
+      "condition": "풀이로 확정된 세 변 9,12,15는 공차 3인 등차수열",
+      "mappedTo": "planeMarks.expressionLabels"
+    },
+    {
+      "id": "right",
+      "condition": "직각삼각형의 두 변 9와 12가 수직",
+      "mappedTo": "rightAngles"
+    }
+  ],
+  "newVisualInformation": [
+    "세 변의 길이 9·12·15를 서로 혼동하지 않도록 각각 라벨",
+    "A 꼭짓점에 작은 직각 표식",
+    "면 채움 없는 삼각형"
+  ]
+}

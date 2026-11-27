@@ -1,0 +1,312 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "kB",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "kC",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "meet",
+        "op": "INTERSECTION",
+        "inputs": [
+          "kB",
+          "kC"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "meet"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "B",
+            "C"
+          ],
+          "sign": 1
+        }
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ],
+      "emphasis": "BOLD"
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "C",
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "B",
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "rE",
+      "refs": [
+        "D",
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "rC",
+      "refs": [
+        "B",
+        "C",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "ab4",
+        "ownerSegment": "sAB",
+        "text": "4"
+      },
+      {
+        "id": "ac3",
+        "ownerSegment": "sAC",
+        "text": "3"
+      },
+      {
+        "id": "bc6",
+        "ownerSegment": "sBC",
+        "text": "6"
+      },
+      {
+        "id": "ce6",
+        "ownerSegment": "sEC",
+        "text": "6"
+      }
+    ],
+    "regions": [
+      {
+        "id": "targetAEC",
+        "fill": "ROSE",
+        "shapes": [
+          {"polygon": ["A", "E", "C"]}
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 560
+  },
+  "caption": "△AEC의 세 변을 굵게 보여 주고 BC⊥CE를 이용해 넓이 29/4로 이어지는 도형 관계를 설명한다.",
+  "accessibilityDescription": "삼각형 ABC는 정사각형 BDEC 위에 있고, AB는 4, AC는 3, BC와 CE는 6이다. 정사각형의 네 꼭짓점에 직각 표시가 있다.",
+  "sourceQuote": "인 삼각형 $\\mathrm{ABC}$에서 선분",
+  "sourceConditions": [
+    {
+      "id": "len",
+      "condition": "AB=4, AC=3, BC=CE=6",
+      "mappedTo": "planeMarks.expressionLabels"
+    },
+    {
+      "id": "square",
+      "condition": "BDEC는 BC를 윗변으로 하는 정사각형",
+      "mappedTo": "rightAngles"
+    },
+    {
+      "id": "area",
+      "condition": "구할 영역은 △AEC",
+      "mappedTo": "displaySegments"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 BDEC 사각형 네 변 및 네 직각 표식",
+    "AB 4·AC 3·BC 6·CE 6 라벨",
+    "A와 E를 잇는 선분 및 △AEC 경계, 면 채움 없음",
+    "넓이를 계산할 △AEC의 세 변만 굵게 강조하고 면 채움 없음"
+  ]
+}

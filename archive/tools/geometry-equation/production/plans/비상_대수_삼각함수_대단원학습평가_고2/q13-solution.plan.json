@@ -1,0 +1,55 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "coefficients": [
+      "2",
+      "4",
+      "5"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "3",
+        "5",
+        "7"
+      ]
+    },
+    "keyPoints": true,
+    "displaySize": "full"
+  },
+  "caption": "a=2, b=4, c=5가 결정된 함수 y=2cos4x+5의 최고점 7·최저점 3과 주기 π/2를 보인다.",
+  "accessibilityDescription": "한 파이 구간에 두 주기의 코사인 곡선 y=2cos4x+5가 그려져 최댓값은 7, 최솟값은 3, 중앙선은 y=5다.",
+  "sourceQuote": "함수 $f(x)=a\\cos bx + c$의 최댓값이 $7$",
+  "sourceConditions": [
+    {
+      "id": "amplitude",
+      "condition": "최댓값 7, 최솟값 3, 중심선 5와 진폭 2",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "period",
+      "condition": "주기 π/2로 b=4, [0,π]에 두 주기",
+      "mappedTo": "graphPlan.sourceDomain"
+    }
+  ],
+  "newVisualInformation": [
+    "최대 7, 최소 3, 중심선 5의 정확한 눈금",
+    "한 파이에 두 완전한 주기",
+    "필요 없는 면 채움 없음"
+  ]
+}
