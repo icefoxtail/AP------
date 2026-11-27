@@ -1,0 +1,55 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "2",
+      "-4",
+      "-2"
+    ],
+    "domain": [
+      -4,
+      3
+    ],
+    "viewport": [
+      -5,
+      4,
+      -6,
+      7
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": -1,
+        "y": 4
+      },
+      {
+        "id": "B",
+        "x": 0,
+        "y": 2
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "꼭짓점 P(-1,4)와 y절편 (0,2)를 지나는 y=-2(x+1)²+4.",
+  "sourceQuote": "[서술형 1] 이차함수 $y=ax^2+bx+c$의 그래프가 꼭짓",
+  "accessibilityDescription": "꼭짓점 P(-1,4)와 y절편 (0,2)를 지나는 y=-2(x+1)²+4.",
+  "sourceConditions": [
+    {
+      "id": "q21-solution-current",
+      "condition": "꼭짓점이 $P(-1, 4)$이므로 $y = a(x+1)^2 + 4$로 놓는다. 점 $(0, 2)$를 지나므로 $2 = a(0+1)^2 + 4 \\implies a = -2$이다. 따라서 $y = -2(x+1)^2 + 4 = -2x^2 - 4x + 2$이므로 $a=-2$, $b=-4$, $c=2$이다.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "q21 해설에서 도출한 조건을 실제 점·선·각·호·라벨로 표시"
+  ]
+}

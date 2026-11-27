@@ -1,0 +1,60 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "-4/3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "coefficients": [
+          "0",
+          "0",
+          "-1"
+        ],
+        "intersectionX": [
+          "0"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "아래로 열린 두 포물선의 폭을 비교하면 -4/3<a<0이다.",
+  "sourceQuote": "다음 그림과 같이 이차함수 $y=-\\dfrac{4}{3}x^2$",
+  "accessibilityDescription": "아래로 열린 두 포물선의 폭을 비교하면 -4/3<a<0이다.",
+  "sourceConditions": [
+    {
+      "id": "q05-solution-current",
+      "condition": "위로 볼록하므로 $a<0$이고, $y=-\\dfrac{4}{3}x^2$보다 폭이 넓으므로 $|a| < \\dfrac{4}{3}$이다. 따라서 $-\\dfrac{4}{3} < a < 0$이므로 정답은 ②이다.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "q05 해설에서 도출한 조건을 실제 점·선·각·호·라벨로 표시"
+  ]
+}

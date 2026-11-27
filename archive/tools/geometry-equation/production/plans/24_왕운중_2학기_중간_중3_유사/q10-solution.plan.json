@@ -1,0 +1,55 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "2",
+      "-4",
+      "1"
+    ],
+    "domain": [
+      -2.5,
+      5.8
+    ],
+    "viewport": [
+      -3,
+      6,
+      -4,
+      12
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 2,
+        "y": -2
+      },
+      {
+        "id": "Y",
+        "x": 0,
+        "y": 2
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "a=1, p=-2, q=-2인 예시에서는 제3사분면을 지나지 않는다.",
+  "sourceQuote": "이차함수 $y=a(x+p)^2+q$의 그래프가 지나는 사분면이 ",
+  "accessibilityDescription": "a=1, p=-2, q=-2인 예시에서는 제3사분면을 지나지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "q10-solution-current",
+      "condition": "제$1$, $2$사분면을 지나고 아래로 볼록하므로 $a>0$이고, 제$4$사분면을 지나며 제$3$사분면을 지나지 않으므로 꼭짓점 $(-p, q)$는 제$4$사분면에 있어 $-p>0$($p<0$), $q<0$이다. 또 $x=0$일 때 $y$절편 $ap^2+q \\ge 0$이어야 제$3$사분면을 지나지 않는다. 따라서 옳은 것은 ㄴ, ㄷ, ㄹ이므로 정답은 ④이다.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "q10 해설에서 도출한 조건을 실제 점·선·각·호·라벨로 표시"
+  ]
+}

@@ -1,0 +1,212 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "Q",
+    "A",
+    "B"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sQB",
+      "refs": [
+        "Q",
+        "B"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "rightAngles": [
+    {
+      "id": "rP",
+      "refs": [
+        "A",
+        "P",
+        "Q"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "rQ",
+      "refs": [
+        "P",
+        "Q",
+        "B"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "planeMarks": {
+    "angles": [],
+    "expressionLabels": [
+      {
+        "id": "h",
+        "ownerSegment": "sPA",
+        "text": "5"
+      },
+      {
+        "id": "w",
+        "ownerSegment": "sPQ",
+        "text": "6"
+      },
+      {
+        "id": "xP",
+        "ownerSegment": "sPA",
+        "text": "P(-2,-5)",
+        "labelKind": "TEXT"
+      }
+    ],
+    "arcs": [],
+    "regions": [
+      {
+        "id": "rect",
+        "fill": "LIGHT",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "P",
+              "Q",
+              "B",
+              "A"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "hiddenPointNames": [
+    "A",
+    "B"
+  ],
+  "hiddenPointStyle": "NONE",
+  "sourceQuote": "두 이차함수 $y=(x+2)^2-5$, $y=x^2+ax+11$",
+  "caption": "15번 해설의 수학적 도형 관계",
+  "accessibilityDescription": "15번 해설의 수학적 도형 관계",
+  "sourceConditions": [
+    {
+      "id": "q15-solution-current",
+      "condition": "$P(-2, -5)$이고, 직사각형의 높이가 $5$, 넓이가 $30$이므로 $PQ = 30\\div 5 = 6$이다. $Q$는 $P$의 오른쪽에 있으므로 $Q(4, -5)$이다. $y=x^2+ax+11$의 꼭짓점의 $x$좌표가 $-\\dfrac{a}{2}=4$이므로 $a=-8$이다. 정답은 ③이다.",
+      "mappedTo": [
+        "mathPlan",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "q15 해설에서 도출한 조건을 실제 점·선·각·호·라벨로 표시"
+  ]
+}

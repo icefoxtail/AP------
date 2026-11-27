@@ -1,0 +1,75 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-46",
+          "24",
+          "-3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "coefficients": [
+          "58",
+          "-24",
+          "3"
+        ],
+        "intersectionX": []
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 4,
+        "y": 2
+      },
+      {
+        "id": "W",
+        "x": 4,
+        "y": 10
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisFold": false,
+    "overlays": {
+      "lines": [
+        {
+          "id": "axis",
+          "slope": "0",
+          "intercept": "6",
+          "label": "y=6",
+          "labelAt": "END"
+        }
+      ]
+    }
+  },
+  "caption": "직선 y=6을 기준으로 두 포물선의 꼭짓점 높이 2와 10이 대칭이다.",
+  "sourceQuote": "이차함수 $y=-3x^2$의 그래프를 $x$축의 방향으로 $p$",
+  "accessibilityDescription": "직선 y=6을 기준으로 두 포물선의 꼭짓점 높이 2와 10이 대칭이다.",
+  "sourceConditions": [
+    {
+      "id": "q09-solution-current",
+      "condition": "평행이동한 그래프의 식은 $y = -3(x-p)^2 + 2$이다. 이 그래프를 직선 $y=6$에 대하여 대칭이동하면 $$ y = 12 - {-3(x-p)^2 + 2} = 3(x-p)^2 + 10 $$ $y=3(x-4)^2+q$와 일치하므로 $p=4$, $q=10$이다. 따라서 $p+q=14$이므로 정답은 ②이다.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "q09 해설에서 도출한 조건을 실제 점·선·각·호·라벨로 표시"
+  ]
+}

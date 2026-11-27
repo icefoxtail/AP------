@@ -1,0 +1,55 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-3",
+      "0",
+      "2"
+    ],
+    "domain": [
+      -3.3,
+      3.3
+    ],
+    "viewport": [
+      -4,
+      4,
+      -5,
+      15
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 0,
+        "y": -3
+      },
+      {
+        "id": "A",
+        "x": -2,
+        "y": 5
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "점 (-2,5)를 지나는 평행이동 포물선의 꼭짓점은 (0,-3)이다.",
+  "sourceQuote": "이차함수 $y=2x^2$의 그래프를 $y$축의 방향으로 $q$만",
+  "accessibilityDescription": "점 (-2,5)를 지나는 평행이동 포물선의 꼭짓점은 (0,-3)이다.",
+  "sourceConditions": [
+    {
+      "id": "q07-solution-current",
+      "condition": "평행이동한 식은 $y=2x^2+q$이고 점 $(-2, 5)$를 지나므로 $$ 5 = 2(-2)^2 + q = 8 + q \\implies q = -3 $$ 따라서 정답은 ③이다.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "q07 해설에서 도출한 조건을 실제 점·선·각·호·라벨로 표시"
+  ]
+}

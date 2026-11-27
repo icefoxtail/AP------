@@ -1,0 +1,56 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 2
+      },
+      "height": 2,
+      "names": "EFGHABCD"
+    }
+  ],
+  "segments": [
+    {
+      "from": "E",
+      "to": "G",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "A",
+      "to": "G",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AE",
+      "label": "2"
+    }
+  ],
+  "solidCaption": {
+    "text": "모서리 2인 정육면체와 대각선"
+  },
+  "caption": "정육면체의 A,E,G 사이 선분과 각 AGE를 나타냈다.",
+  "sourceQuote": "다음 그림과 같이 한 모서리의 길이가 $2$인 정육면체 $ABC",
+  "accessibilityDescription": "정육면체의 A,E,G 사이 선분과 각 AGE를 나타냈다.",
+  "sourceConditions": [
+    {
+      "id": "q19-problem-current",
+      "condition": "다음 그림과 같이 한 모서리의 길이가 $2$인 정육면체 $ABCD-EFGH$에서 $\\angle AGE=x$일 때, 다음 중 옳은 것은?",
+      "mappedTo": [
+        "solids",
+        "segments",
+        "dims"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "q19 문제 조건을 실제 점·선·각·호·라벨로 표시"
+  ]
+}

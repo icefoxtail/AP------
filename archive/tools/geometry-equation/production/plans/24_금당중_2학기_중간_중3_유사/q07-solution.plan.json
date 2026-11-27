@@ -1,0 +1,89 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 12,
+      "names": "BCDA",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "B",
+              "C"
+            ]
+          }
+        },
+        {
+          "id": "H",
+          "at": {
+            "centroid": [
+              "B",
+              "C",
+              "D"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "D",
+      "to": "M",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "A",
+      "to": "H",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "M",
+      "to": "H",
+      "style": "DASHED",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AD",
+      "label": "12"
+    },
+    {
+      "from": "A",
+      "to": "H",
+      "label": "4\\sqrt{6}"
+    }
+  ],
+  "solidCaption": {
+    "text": "정사면체의 높이 AH"
+  },
+  "caption": "모서리 12인 정사면체에서 M은 BC의 중점, H는 밑면 BCD의 무게중심이다.",
+  "sourceQuote": "다음 그림과 같이 한 모서리의 길이가 $12$인 정사면체 $AB",
+  "accessibilityDescription": "모서리 12인 정사면체에서 M은 BC의 중점, H는 밑면 BCD의 무게중심이다.",
+  "sourceConditions": [
+    {
+      "id": "q07-solution-current",
+      "condition": "밑면 $BCD$는 한 변의 길이가 $12$인 정삼각형이므로 $MC=6$, $MD=\\sqrt{12^2-6^2}=6\\sqrt{3}$이다. 무게중심 $H$는 중선 $MD$를 $2:1$로 나누므로 $DH=4\\sqrt{3}$, $MH=2\\sqrt{3}$이다. 직각삼각형 $ADH$에서 $$ AH = \\sqrt{AD^2 - DH^2} = \\sqrt{12^2 - (4\\sqrt{3})^2} = \\sqrt{144-48} = \\sqrt{96} = 4\\sqrt{6} $$ 따라서 옳은 것은 ①이다.",
+      "mappedTo": [
+        "solids",
+        "segments",
+        "dims"
+      ]
+    },
+    {
+      "id": "q07-source-asset",
+      "condition": "archive/assets/images/24_금당중_2학기_중간_중3_유사/q07-problem.svg",
+      "mappedTo": "SOLUTION_INDEPENDENT_REVIEW"
+    }
+  ],
+  "newVisualInformation": [
+    "q07 해설에서 도출한 조건을 실제 점·선·각·호·라벨로 표시"
+  ]
+}
