@@ -614,7 +614,11 @@ window.questionBank = [
     "sourceQid": 11,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q11-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q11-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q11-solution.plan.json",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고1_유사/q11-solution.svg",
+    "solutionImageAlt": "두 열린 해 구간 (-2,a)와 (-6,-a)는 a=2에서 x=-2로 맞닿을 뿐 겹치지 않는다. 양수 a≥2가 무해 구간이다.",
+    "solutionImageCaption": "두 열린 해 구간 (-2,a)와 (-6,-a)는 a=2에서 x=-2로 맞닿을 뿐 겹치지 않는다. 양수 a≥2가 무해 구간이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -1252,7 +1256,11 @@ window.questionBank = [
     "sourceQid": 23,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q23-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q23-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q23-solution.plan.json",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고1_유사/q23-solution.svg",
+    "solutionImageAlt": "3<x<(a+5)/2의 정수해가 4,5,6만 되려면 6<(a+5)/2≤7, 즉 7<a≤9이다.",
+    "solutionImageCaption": "3<x<(a+5)/2의 정수해가 4,5,6만 되려면 6<(a+5)/2≤7, 즉 7<a≤9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

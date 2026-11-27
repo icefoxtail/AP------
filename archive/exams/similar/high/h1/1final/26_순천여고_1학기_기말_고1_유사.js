@@ -564,7 +564,12 @@ window.questionBank = [
     "sourceQid": 10,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q10-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q10-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q10-solution.plan.json",
+    "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_유사/q10-solution.svg",
+    "solutionImageAlt": "t=x²−2x는 −1≤t≤3이고 y=t²−4t−3의 최소 −7은 t=2, 최대 2는 t=−1이다.",
+    "solutionImageCaption": "t=x²−2x는 −1≤t≤3이고 y=t²−4t−3의 최소 −7은 t=2, 최대 2는 t=−1이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   },
   {
     "id": 11,
@@ -623,7 +628,11 @@ window.questionBank = [
     "sourceQid": 11,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q11-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q11-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q11-solution.plan.json",
+    "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_유사/q11-solution.svg",
+    "solutionImageAlt": "이차식이 0≤x≤2에서 항상 0 이상인 a의 범위는 -2≤a≤4이며 최솟값은 -2이다.",
+    "solutionImageCaption": "이차식이 0≤x≤2에서 항상 0 이상인 a의 범위는 -2≤a≤4이며 최솟값은 -2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -682,7 +691,12 @@ window.questionBank = [
     "sourceQid": 12,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q12-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q12-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q12-solution.plan.json",
+    "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_유사/q12-solution.svg",
+    "solutionImageAlt": "t=|x|의 범위 [0,4]에서 y=3t²−6t는 t=1일 때 −3, t=4일 때 24이다.",
+    "solutionImageCaption": "t=|x|의 범위 [0,4]에서 y=3t²−6t는 t=1일 때 −3, t=4일 때 24이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 13,
@@ -1209,7 +1223,11 @@ window.questionBank = [
     "sourceQid": 21,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q21-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q21-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q21-solution.plan.json",
+    "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_유사/q21-solution.svg",
+    "solutionImageAlt": "이차식의 판별식으로 -5<a<5이고, 일차근과 겹치는 a=0을 제외하여 -5<a<0 또는 0<a<5이다.",
+    "solutionImageCaption": "이차식의 판별식으로 -5<a<5이고, 일차근과 겹치는 a=0을 제외하여 -5<a<0 또는 0<a<5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

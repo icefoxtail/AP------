@@ -499,7 +499,11 @@ window.questionBank = [
     "sourceQid": 9,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q09-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q09-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q09-solution.plan.json",
+    "solutionImage": "assets/images/26_순천고_1학기_기말_고1_유사/q9-solution.svg",
+    "solutionImageAlt": "열량 조건 x≤75와 단백질 조건 x≥50의 공통 범위는 50≤x≤75(g)이다.",
+    "solutionImageCaption": "열량 조건 x≤75와 단백질 조건 x≥50의 공통 범위는 50≤x≤75(g)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
