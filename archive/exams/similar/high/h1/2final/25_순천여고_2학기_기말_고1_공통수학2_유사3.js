@@ -211,9 +211,10 @@ window.questionBank = [
     "sourceQid": 5,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사3/q5-solution.svg",
-    "solutionImageAlt": "해설 그림: ",
-    "solutionImageCaption": "",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "(가) P∪Q=Q는 P⊂Q를, (나) Q∩Rᶜ=Q는 Q∩R=∅를 뜻한다. U={1,2,3,4}, P={1}, Q={1,2}, R={3}인 예시에서 두 조건과 P∩R=∅를 함께 확인할 수 있다. 따라서 p이면 r이 거짓이고 p→∼r은 항상 참이다. 답은 ⑤이다.",
+    "solutionImageCaption": "(가) P∪Q=Q는 P⊂Q를, (나) Q∩Rᶜ=Q는 Q∩R=∅를 뜻한다. U={1,2,3,4}, P={1}, Q={1,2}, R={3}인 예시에서 두 조건과 P∩R=∅를 함께 확인할 수 있다. 따라서 p이면 r이 거짓이고 p→∼r은 항상 참이다. 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 6,
@@ -858,9 +859,9 @@ window.questionBank = [
     "sourceQid": 20,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사3/q20-solution.svg",
-    "solutionImageAlt": "해설 그림: ",
-    "solutionImageCaption": "",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "조건을 만족하는 예시 (a,b,c)=(1,3,1)은 y=-√(x+3)+1이다. 시작점 S(-3,1)은 제2사분면, x절편 Z(-2,0) 뒤로 그래프는 제3사분면을 거쳐 y절편 Y(0,1-√3) 아래 제4사분면으로 이어진다. 가능한 (a,b,c)는 14개이다. 그림은 이 중 한 예시이다.",
+    "solutionImageCaption": "조건을 만족하는 예시 (a,b,c)=(1,3,1)은 y=-√(x+3)+1이다. 시작점 S(-3,1)은 제2사분면, x절편 Z(-2,0) 뒤로 그래프는 제3사분면을 거쳐 y절편 Y(0,1-√3) 아래 제4사분면으로 이어진다. 가능한 (a,b,c)는 14개이다. 그림은 이 중 한 예시이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -897,8 +898,8 @@ window.questionBank = [
     "sourceQid": 21,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사3/q21-solution.svg",
-    "solutionImageAlt": "해설 그림: ",
-    "solutionImageCaption": "",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "x≤3인 f(x)=(x-3)²-1의 역함수는 y=3-√(x+1), x≥-1이다. y=5-x와의 교점 후보 x=(5±√13)/2 중 제곱 전 조건 x≥2를 만족하는 것은 (5+√13)/2뿐이다. 유일한 교점은 P((5+√13)/2,(5-√13)/2), 답은 (5+√13)/2이다.",
+    "solutionImageCaption": "x≤3인 f(x)=(x-3)²-1의 역함수는 y=3-√(x+1), x≥-1이다. y=5-x와의 교점 후보 x=(5±√13)/2 중 제곱 전 조건 x≥2를 만족하는 것은 (5+√13)/2뿐이다. 유일한 교점은 P((5+√13)/2,(5-√13)/2), 답은 (5+√13)/2이다.",
+    "solutionImageSize": "medium"
   }
 ];

@@ -264,8 +264,8 @@ window.questionBank = [
     "sourceQid": 6,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_순천고_2학기_기말_고1_유사3/q06-solution.svg",
-    "solutionImageAlt": "전체집합 U 안에 두 원 P, Q가 겹쳐 있고 두 원의 합집합이 색칠되어 있다",
-    "solutionImageCaption": "¬p가 q이기 위한 충분조건이므로 ¬p→q가 참이어서 Pᶜ⊆Q이다. P의 바깥이 모두 Q에 들어 있으므로 P∪Q=U이고, 따라서 (P∪Q)ᶜ=∅, 즉 Pᶜ∩Qᶜ=∅이다. 답은 ⑤이다.",
+    "solutionImageAlt": "¬p가 q의 충분조건이므로 Pᶜ⊆Q이다. Pᶜ의 전 영역이 Q 안에 있다는 포함관계에서 Qᶜ⊆P, P∪Q=U, Pᶜ∩Qᶜ=∅가 따라온다. 따라서 항상 옳은 보기는 ⑤이다.",
+    "solutionImageCaption": "¬p가 q의 충분조건이므로 Pᶜ⊆Q이다. Pᶜ의 전 영역이 Q 안에 있다는 포함관계에서 Qᶜ⊆P, P∪Q=U, Pᶜ∩Qᶜ=∅가 따라온다. 따라서 항상 옳은 보기는 ⑤이다.",
     "solutionImageSize": "full"
   },
   {
