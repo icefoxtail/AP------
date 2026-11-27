@@ -265,6 +265,13 @@ function getClassroomExamDisplayTitle(row = {}) {
         return `${withoutDuplicateSuffix} · 단원별 기출`;
     }
 
+    // 시험지 보관함 평가팩은 저장된 원래 제목에 '모의고사 1회' 등의 구분이 있다.
+    // MIXED:assessment_ 키를 파싱하면 회차가 사라지므로 읽을 수 있는 제목을 우선한다.
+    if (/^MIXED:assessment_/i.test(archive) && rawExamTitle &&
+        !globalThis.ExamDisplayTitle?.looksInternal?.(rawExamTitle)) {
+        return rawExamTitle;
+    }
+
     return getClassroomExamArchiveDisplayTitle(archive, rawExamTitle)
         || globalThis.ExamDisplayTitle?.displayTitleOf?.(rawExamTitle) || rawExamTitle || '원내평가';
 }
