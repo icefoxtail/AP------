@@ -1,0 +1,23 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{"coefficients": ["-5", "4", "1"]}],
+    "breakpoints": [],
+    "sourceDomain": {"kind": "INTERVAL", "range": ["-4", "0"], "states": ["CLOSED", "CLOSED"]},
+    "requiredPoints": [
+      {"id": "A", "x": "-4", "y": "-5"},
+      {"id": "C", "x": "-2", "y": "-9"},
+      {"id": "B", "x": "0", "y": "-5"}
+    ],
+    "referenceLines": [{"id": "tangent", "y": "-9", "intersectionX": ["-2"]}],
+    "axisTickValues": {"x": ["-4", "-2"], "y": ["-9", "-5"]}
+  },
+  "caption": "구간 [-4,0]의 두 끝 함숫값은 -5로 같고, 중간 c=-2에서 접선의 기울기가 0이다.",
+  "accessibilityDescription": "아래로 내려갔다 다시 올라가는 포물선의 양쪽 점 A(-4,-5), B(0,-5)는 같은 높이이며 가운데 꼭짓점 C(-2,-9)에서 수평 접선을 생각할 수 있다.",
+  "newVisualInformation": ["롤의 정리의 양 끝점 높이 일치", "구간 내부 c=-2의 수평접선을 실제 수평선으로 표시", "필요 없는 면 색칠 제거"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "f(x)=x^2+4x-5이고 구간은 [-4,0]이다.", "mappedTo": ["graphPlan.pieces", "graphPlan.sourceDomain"]},
+    {"id": "c2", "condition": "f(-4)=f(0)=-5이고 f'(-2)=0이다.", "mappedTo": ["graphPlan.requiredPoints", "graphPlan.axisTickValues"]}
+  ]
+}

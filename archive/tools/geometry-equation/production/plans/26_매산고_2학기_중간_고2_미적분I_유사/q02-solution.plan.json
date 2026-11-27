@@ -1,0 +1,23 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["-5", "2", "-3", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [0, 4],
+    "viewport": [-1, 4, -7, 4],
+    "axisTickValues": {"x": ["2", "3"], "y": ["-5", "1"]},
+    "overlays": {
+      "points": [{"id": "A", "curveX": "2"}, {"id": "B", "curveX": "3"}],
+      "guides": [{"id": "ga", "from": "A", "axis": "BOTH"}, {"id": "gb", "from": "B", "axis": "BOTH"}]
+    }
+  },
+  "pointNames": {"A": "A", "B": "B"},
+  "caption": "f(2)=-5, f(3)=1이므로 연속인 삼차함수는 x=2와 x=3 사이에서 x축과 만난다.",
+  "accessibilityDescription": "삼차함수 곡선 위 A(2,-5)는 x축 아래, B(3,1)는 x축 위에 있고 두 점의 x좌표와 y좌표에 점선 가이드가 있다.",
+  "newVisualInformation": ["f(2)와 f(3)의 부호 변화", "연속 곡선의 x축 교차를 보여 주는 두 점과 점선", "무의미한 그래프 면 채움 없음"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "f(x)=x^3-3x^2+2x-5는 다항함수이므로 연속이다.", "mappedTo": ["graphPlan.coefficients", "graphPlan.sourceDomain"]},
+    {"id": "c2", "condition": "f(2)=-5, f(3)=1으로 부호가 달라 구간 (2,3)에 근이 있다.", "mappedTo": ["graphPlan.overlays.points", "graphPlan.axisTickValues"]}
+  ]
+}
