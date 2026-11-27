@@ -1,0 +1,44 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "Z",
+        "mean": "0",
+        "sd": "1",
+        "label": "Z"
+      }
+    ],
+    "ticks": [
+      "-1.5",
+      "0",
+      "1"
+    ],
+    "shades": [
+      {
+        "curve": "Z",
+        "from": "-1.5",
+        "to": "1"
+      }
+    ],
+    "xLabel": "z"
+  },
+  "caption": "문제 SVG를 따라 표준정규 N(0,1)의 -1.5≤Z≤1을 칠한다. 원본 기출 PNG의 [-1,2]와는 달라 SVG/현재 JS 기준이며 답의 a=46은 노출하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "q10-problem-source",
+      "condition": "문제 SVG를 따라 표준정규 N(0,1)의 -1.5≤Z≤1을 칠한다. 원본 기출 PNG의 [-1,2]와는 달라 SVG/현재 JS 기준이며 답의 a=46은 노출하지 않는다.",
+      "mappedTo": [
+        "chart.kind",
+        "chart.curves",
+        "chart.ticks",
+        "chart.shades"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "문제 SVG를 따라 표준정규 N(0,1)의 -1.5≤Z≤1을 칠한다. 원본 기출 PNG의 [-1,2]와는 달라 SVG/현재 JS 기준이며 답의 a=46은 노출하지 않는다."
+  ],
+  "accessibilityDescription": "문제 SVG를 따라 표준정규 N(0,1)의 -1.5≤Z≤1을 칠한다. 원본 기출 PNG의 [-1,2]와는 달라 SVG/현재 JS 기준이며 답의 a=46은 노출하지 않는다."
+}

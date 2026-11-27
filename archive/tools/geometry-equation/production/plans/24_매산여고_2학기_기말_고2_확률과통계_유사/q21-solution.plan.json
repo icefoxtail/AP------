@@ -1,0 +1,43 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "X",
+        "mean": "48",
+        "sd": "6",
+        "label": "X"
+      }
+    ],
+    "ticks": [
+      "48",
+      "60"
+    ],
+    "zAxis": true,
+    "shades": [
+      {
+        "curve": "X",
+        "from": "60",
+        "to": null
+      }
+    ]
+  },
+  "caption": "이항분포 B(192,1/4)를 N(48,6²)로 근사하고 X≥60, z≥2의 오른쪽 꼬리 0.0228을 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "q21-solution-source",
+      "condition": "이항분포 B(192,1/4)를 N(48,6²)로 근사하고 X≥60, z≥2의 오른쪽 꼬리 0.0228을 나타낸다.",
+      "mappedTo": [
+        "chart.kind",
+        "chart.curves",
+        "chart.ticks",
+        "chart.shades"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "이항분포 B(192,1/4)를 N(48,6²)로 근사하고 X≥60, z≥2의 오른쪽 꼬리 0.0228을 나타낸다."
+  ],
+  "accessibilityDescription": "이항분포 B(192,1/4)를 N(48,6²)로 근사하고 X≥60, z≥2의 오른쪽 꼬리 0.0228을 나타낸다."
+}
