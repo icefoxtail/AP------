@@ -1,0 +1,241 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P1",
+    "P2",
+    "T3",
+    "Q1",
+    "T4",
+    "Q2",
+    "T5"
+  ],
+  "hiddenPointNames": [
+    "T3",
+    "T4",
+    "T5"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sTop",
+      "refs": [
+        "P1",
+        "T3"
+      ]
+    },
+    {
+      "id": "sBottom",
+      "refs": [
+        "Q1",
+        "T5"
+      ]
+    },
+    {
+      "id": "sCross1",
+      "refs": [
+        "P1",
+        "Q2"
+      ]
+    },
+    {
+      "id": "sCross2",
+      "refs": [
+        "P2",
+        "Q1"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "tL",
+        "at": [
+          6,
+          2.4
+        ],
+        "text": "l"
+      },
+      {
+        "id": "tM",
+        "at": [
+          6,
+          -1
+        ],
+        "text": "m"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 380
+  },
+  "caption": "위쪽 직선 l에서 두 점 P₁, P₂, 아래쪽 직선 m에서 두 점 Q₁, Q₂를 왼쪽부터 택하면 P₁Q₂와 P₂Q₁만 내부에서 교차한다. 점 선택 수는 3C2×4C2=18이다.",
+  "accessibilityDescription": "위 평행선 l에는 점 셋, 아래 평행선 m에는 점 넷이 있다. 선택한 위의 P1과 P2, 아래의 Q1과 Q2를 엇갈리게 이은 선분 P1Q2와 P2Q1은 두 선 사이에서 교차한다.",
+  "sourceQuote": "다음 그림과 같이 서로 평행한 두 직선 $l$, $m$ 위에 각각 $3$개, $4$개의 점이 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "평행한 직선 l과 m",
+      "mappedTo": "displaySegments[0:2]"
+    },
+    {
+      "id": "c2",
+      "condition": "직선 l 위에 점 세 개, m 위에 점 네 개",
+      "mappedTo": "displayPoints"
+    },
+    {
+      "id": "c3",
+      "condition": "두 선분의 교점이 l이나 m 위가 아닌 내부에 있다.",
+      "mappedTo": "displaySegments[2:4]"
+    }
+  ],
+  "newVisualInformation": [
+    "l 위 P1,P2와 m 위 Q1,Q2의 위치·이름",
+    "P1Q2와 P2Q1의 X자 교차",
+    "동일 평행선상의 나머지 점과 선택점 표시"
+  ]
+}

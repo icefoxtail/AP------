@@ -1,0 +1,21 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "cube",
+      "kind": "PRISM",
+      "base": {"kind": "RECT", "width": 3, "depth": 3},
+      "height": 3,
+      "names": "ABCDEFGH"
+    }
+  ],
+  "caption": "정육면체의 꼭짓점 A에서 G까지 모서리를 따라 이동한다. 보이지 않는 세 모서리는 점선이다.",
+  "accessibilityDescription": "정육면체의 아래쪽 꼭짓점은 A B C D, 위쪽 꼭짓점은 E F G H이다. A와 G는 서로 마주 보는 꼭짓점이다.",
+  "sourceQuote": "오른쪽 그림과 같은 정육면체의 꼭짓점 A에서 출발하여 모서리를 따라 꼭짓점 G까지 최단 거리로 가는 방법의 수를 구하시오.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "정육면체의 여덟 꼭짓점은 A B C D E F G H이다.", "mappedTo": "solids[0].names"},
+    {"id": "c2", "condition": "A에서 출발하여 G까지 모서리만 따라 이동한다.", "mappedTo": "solids[0]"}
+  ],
+  "newVisualInformation": ["ABCD 및 EFGH로 이어진 정육면체의 12개 모서리와 보이지 않는 세 모서리의 점선"]
+}

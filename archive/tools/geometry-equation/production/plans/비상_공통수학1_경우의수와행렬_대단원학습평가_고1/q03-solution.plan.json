@@ -1,0 +1,26 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "cube",
+      "kind": "PRISM",
+      "base": {"kind": "RECT", "width": 3, "depth": 3},
+      "height": 3,
+      "names": "ABCDEFGH"
+    }
+  ],
+  "segments": [
+    {"from": "A", "to": "B", "style": "SOLID", "role": "ACCENT"},
+    {"from": "B", "to": "C", "style": "SOLID", "role": "ACCENT"},
+    {"from": "C", "to": "G", "style": "SOLID", "role": "ACCENT"}
+  ],
+  "caption": "최단 경로의 한 예 A→B→C→G는 서로 수직인 세 방향으로 한 번씩 이동한다. 세 방향의 순서를 바꾸어 여섯 경로를 얻는다.",
+  "accessibilityDescription": "정육면체의 12개 모서리 중 A에서 B, B에서 C, C에서 G로 이어지는 한 최단 경로가 강조되어 있다. 보이지 않는 모서리는 점선이다.",
+  "sourceQuote": "가로, 세로, 높이의 세 방향으로 각각 한 번씩 이동해야 한다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "정육면체의 꼭짓점 이름 A B C D E F G H", "mappedTo": "solids[0].names"},
+    {"id": "c2", "condition": "해설의 최단 경로 예시 A→B→C→G", "mappedTo": "segments"}
+  ],
+  "newVisualInformation": ["정육면체의 12개 모서리 위에서 세 방향을 한 번씩 지나는 예시 경로 AB, BC, CG의 실선 강조"]
+}
