@@ -1,0 +1,48 @@
+{
+  "capability": "lattice-path-figure-v1",
+  "lattice": {
+    "grid": {
+      "cols": 3,
+      "rows": 3
+    },
+    "points": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        3,
+        3
+      ]
+    },
+    "from": "A",
+    "to": "B",
+    "forbidden": [
+      [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ]
+      ]
+    ],
+    "counts": false
+  },
+  "caption": "A에서 B까지 가는 3×3 격자 도로망과 윗줄 가운데 끊긴 도로",
+  "sourceConditions": [
+    {
+      "id": "broken-road",
+      "condition": "윗줄의 가운데 한 도로가 연결되지 않는 격자 경로이다.",
+      "mappedTo": [
+        "lattice.grid",
+        "lattice.forbidden"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "해설 중간 경로 수와 최종 경우의 수를 표시하지 않는다."
+  ]
+}
