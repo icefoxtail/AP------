@@ -1,0 +1,79 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "parameter": {
+      "name": "k",
+      "value": "5"
+    },
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-3",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "2",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "이차식 해"
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "param": {
+                "mul": "1",
+                "add": "-4"
+              },
+              "state": "OPEN"
+            },
+            "hi": {
+              "param": {
+                "mul": "1",
+                "add": "4"
+              },
+              "state": "OPEN"
+            }
+          }
+        ],
+        "label": "절댓값 해"
+      },
+      {
+        "kind": "RESULT",
+        "label": "공통 정수",
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "k=5에서 고정 닫힌 구간과 열린"
+  },
+  "caption": "대표 정수 k=5에서 −3≤x≤2와 k−4<x<k+4의 공통 정수 합은 2이다. k=2,5만 |p|=2를 만족한다.",
+  "accessibilityDescription": "k=5에서 고정 닫힌 구간과 열린 이동 구간의 교집합, 공통 정수점을 실제 수직선에 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "(x+3)(x−2)≤0의 정수후보 −3,…,2",
+      "mappedTo": [
+        "numberLine.rows[0].pieces"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "|x−k|<4에서 k−4<x<k+4",
+      "mappedTo": [
+        "numberLine.rows[1].pieces"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "k=5에서 고정 닫힌 구간과 열린 이동 구간의 교집합, 공통 정수점을 실제 수직선에 표시한다."
+  ]
+}

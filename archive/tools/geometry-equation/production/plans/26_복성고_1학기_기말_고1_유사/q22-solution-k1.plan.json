@@ -1,0 +1,86 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "parameter": {
+      "name": "k",
+      "value": "1"
+    },
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "5",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "이차식 범위"
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "param": {
+                "mul": "1",
+                "add": "-3"
+              },
+              "state": "OPEN"
+            },
+            "hi": {
+              "param": {
+                "mul": "1",
+                "add": "3"
+              },
+              "state": "OPEN"
+            }
+          }
+        ],
+        "label": "절댓값 범위"
+      },
+      {
+        "kind": "RESULT",
+        "label": "공통 정수",
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "k=1일 때 고정된 닫힌 구간과 매개"
+  },
+  "caption": "대표 정수 k=1에서 고정 범위 −2≤x≤5와 이동 범위 k−3<x<k+3의 교집합 정수 합은 5이다. k=1과 7만 조건을 만족한다.",
+  "accessibilityDescription": "k=1일 때 고정된 닫힌 구간과 매개변수의 열린 구간을 겹쳐 실제 공통 정수점을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x²−3x−10≤0 → −2≤x≤5",
+      "mappedTo": [
+        "numberLine.rows[0].pieces"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "|x−k|<3 → k−3<x<k+3",
+      "mappedTo": [
+        "numberLine.rows[1].pieces"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "공통 범위의 정수",
+      "mappedTo": [
+        "numberLine.rows[2].integerPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "k=1일 때 고정된 닫힌 구간과 매개변수의 열린 구간을 겹쳐 실제 공통 정수점을 표시한다."
+  ]
+}

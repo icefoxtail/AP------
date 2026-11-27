@@ -1,0 +1,49 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "k",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "2-2*sqrt(3)",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "2+2*sqrt(3)",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "label": "해가 없는 k",
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "판별식이 음수가 되는 열린 근호 경계"
+  },
+  "caption": "판별식 D<0인 범위 2−2√3<k<2+2√3에 드는 정수 −1,0,1,2,3,4,5의 합은 14다.",
+  "accessibilityDescription": "판별식이 음수가 되는 열린 근호 경계 두 개와 그 사이 일곱 정수점을 수직선에 그린다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "D/4=(k−2)²−12<0",
+      "mappedTo": [
+        "numberLine.rows[0].pieces"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "정수 k는 −1부터 5",
+      "mappedTo": [
+        "numberLine.rows[0].integerPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "판별식이 음수가 되는 열린 근호 경계 두 개와 그 사이 일곱 정수점을 수직선에 그린다."
+  ]
+}

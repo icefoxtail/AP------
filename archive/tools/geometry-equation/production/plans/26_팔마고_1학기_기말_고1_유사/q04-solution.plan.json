@@ -1,0 +1,68 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-12",
+      "8",
+      "-1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      3,
+      7
+    ],
+    "viewport": [
+      2,
+      8,
+      -8,
+      6
+    ],
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": 3,
+        "y": 3
+      },
+      {
+        "id": "V",
+        "x": 4,
+        "y": 4
+      },
+      {
+        "id": "R",
+        "x": 7,
+        "y": -5
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "y=−(x−4)²+4는 3≤x≤7에서 꼭짓점 (4,4)가 포함되므로 최댓값이 4다.",
+  "accessibilityDescription": "아래로 열린 이차함수의 제한 구간 양끝과 최댓값을 주는 꼭짓점(4,4)을 그림 위에 그린다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=−x²+8x−12, 3≤x≤7",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.domain"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "꼭짓점 (4,4) 및 양끝 (3,3),(7,−5)",
+      "mappedTo": [
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "아래로 열린 이차함수의 제한 구간 양끝과 최댓값을 주는 꼭짓점(4,4)을 그림 위에 그린다."
+  ]
+}
