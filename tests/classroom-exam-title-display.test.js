@@ -150,5 +150,30 @@ async function renderListWith({ sessions = [], assignments = [] } = {}) {
     'MIXED archive display should strip prefix and .js'
   );
 
+  // 실제 평가팩 출제 제목에는 1회·2회가 저장되어 있다. MIXED 파일 키의 축약 제목이 이를 덮지 않아야 한다.
+  context.ExamDisplayTitle = require('../archive/exam-display-title.js');
+  const mock1 = makeAssignment({
+    id: 'mock-1', exam_title: '중1 2학기 기말 모의고사 1회', exam_date: '2026-11-27',
+    archive_file: 'MIXED:assessment_MOCK_2026_2SEM_FINAL_M1_01_12345678', question_count: 24
+  });
+  const mock2 = makeAssignment({
+    id: 'mock-2', exam_title: '중1 2학기 기말 모의고사 2회', exam_date: '2026-11-27',
+    archive_file: 'MIXED:assessment_MOCK_2026_2SEM_FINAL_M1_02_87654321', question_count: 24
+  });
+  html = await renderListWith({
+    assignments: [mock1, mock2],
+    sessions: [makeSession({
+      assignment_id: mock1.id, exam_title: mock1.exam_title,
+      exam_date: mock1.exam_date, archive_file: mock1.archive_file, question_count: 24
+    })]
+  });
+  assert(html.includes('wsx-exam-item__title">중1 2학기 기말 모의고사 1회</span>'), 'submitted mock round 1 title must stay complete');
+  assert(html.includes('wsx-exam-item__title">중1 2학기 기말 모의고사 2회</span>'), 'assignment-only mock round 2 title must stay complete');
+  await context.openExamDetail('c1', mock2.exam_title, mock2.exam_date, mock2.archive_file);
+  assert(lastModal.html.includes('wsx-detail__title">중1 2학기 기말 모의고사 2회</div>'), 'mock detail heading must include round');
+  assert.strictEqual(context.getClassroomExamDisplayTitle({
+    exam_title: mock1.archive_file, archive_file: mock1.archive_file
+  }), '중1 2학기 기말', 'internal title must still use the existing fallback');
+
   console.log('classroom exam title display test passed');
 })();
