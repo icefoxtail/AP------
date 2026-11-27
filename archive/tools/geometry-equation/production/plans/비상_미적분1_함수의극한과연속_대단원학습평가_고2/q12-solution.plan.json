@@ -1,0 +1,27 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {"coefficients": ["-1", "0", "1"]},
+      {"coefficients": ["-1", "1"]}
+    ],
+    "breakpoints": [{"x": "1", "y": "0"}],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "functionName": "g",
+    "requiredPoints": [
+      {"id": "V", "x": 0, "y": -1},
+      {"id": "J", "x": 1, "y": 0}
+    ],
+    "axisTickValues": {"x": [1], "y": [-1]}
+  },
+  "caption": "a=1일 때 g(x)=(x-1)f(x)는 왼쪽에서 x²-1, 오른쪽에서 x-1로서 (1,0)에서 연속이다.",
+  "accessibilityDescription": "원본의 f 그래프에 x-1을 곱해 만든 g는 x=1까지 포물선 x²-1, 그 오른쪽은 직선 x-1로 이어지며 (1,0)에서 두 조각이 만난다.",
+  "sourceQuote": "g(x)=(x-a)f(x)",
+  "sourceConditions": [
+    {"id": "c1", "condition": "원본 q12.png에서 x<=1일 때 f(x)=x+1", "mappedTo": ["graphPlan.pieces[0].coefficients"]},
+    {"id": "c2", "condition": "원본 q12.png에서 x>1일 때 f(x)=1", "mappedTo": ["graphPlan.pieces[1].coefficients"]},
+    {"id": "c3", "condition": "연속 조건으로 a=1; g의 좌우 극한과 함수값이 0", "mappedTo": ["graphPlan.breakpoints", "graphPlan.requiredPoints"]}
+  ],
+  "newVisualInformation": ["원본 f 그래프만으로는 보이지 않는 g(x)의 두 조각과 x=1에서의 실제 연결점", "x=0에서 g(0)=-1인 포물선 꼭짓점"]
+}
