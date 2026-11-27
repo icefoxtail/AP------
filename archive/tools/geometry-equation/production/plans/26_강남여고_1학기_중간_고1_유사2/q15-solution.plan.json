@@ -1,0 +1,73 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "-5",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -1.5,
+      5.5,
+      -4,
+      6
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 4
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": -2
+      },
+      {
+        "id": "C",
+        "x": 1,
+        "y": 0
+      },
+      {
+        "id": "D",
+        "x": 4,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": "5/2",
+        "y": "-9/4"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "m=4일 때 f(0)>0, f(2)<0이므로 두 근은 1과 4이다.",
+  "accessibilityDescription": "m=4일 때 f(0)>0, f(2)<0이므로 두 근은 1과 4이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "m=4이면 f(x)=x²-5x+4이고 f(0)=4>0, f(2)=-2<0이다.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "f(0)>0, f(2)<0인 아래로 볼록한 포물선의 두 근이 0과 2 사이, 2보다 큰 구간에 각각 있음을 보여 준다."
+  ]
+}

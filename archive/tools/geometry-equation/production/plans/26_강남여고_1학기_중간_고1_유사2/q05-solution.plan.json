@@ -1,0 +1,52 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "11",
+          "6",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": -3,
+        "y": 2
+      }
+    ],
+    "sampleNote": "k=2",
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "k=2일 때 y=(x+3)²+2는 꼭짓점 (-3,2)이 x축 위에 있어 x축과 만나지 않는다.",
+  "accessibilityDescription": "위로 열린 포물선이 꼭짓점 (-3,2)에서 최소 높이 2를 가지며 x축과 교차하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "quadratic",
+      "condition": "y=x²+2(k+1)x+k²+5k-3=(x+k+1)²+3k-4",
+      "mappedTo": [
+        "graphPlan.pieces"
+      ]
+    },
+    {
+      "id": "no-real-zeros",
+      "condition": "x축과 만나지 않으려면 3k-4>0, 정수 k의 최솟값은 2, 대입한 포물선은 x²+6x+11이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "k=2에서 포물선 전체가 x축 위에 있으며 V(-3,2)가 최소점임을 보여 준다."
+  ]
+}

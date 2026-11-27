@@ -1,0 +1,169 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "15",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "atC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lab1",
+        "ownerSegment": "sBC",
+        "text": "a"
+      },
+      {
+        "id": "lab2",
+        "ownerSegment": "sAC",
+        "text": "b"
+      },
+      {
+        "id": "lab3",
+        "ownerSegment": "sAB",
+        "text": "17/2"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "prod",
+        "at": [
+          -2.7,
+          5.5
+        ],
+        "text": "ab=30"
+      },
+      {
+        "id": "area",
+        "at": [
+          4.8,
+          5.5
+        ],
+        "text": "S=15"
+      }
+    ]
+  },
+  "caption": "a²+b²=c²이므로 C가 직각이고, ab=30이므로 삼각형 넓이는 15이다.",
+  "accessibilityDescription": "삼각형 ABC에서 C의 직각 표식, 두 직각변 a와 b, 빗변 17/2, 곱 ab=30과 넓이 15를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "pythagoras",
+      "condition": "(a+b+c)(a+b-c)=2ab에서 a²+b²=c²이므로 C가 직각이다.",
+      "mappedTo": [
+        "rightAngles"
+      ]
+    },
+    {
+      "id": "lengths",
+      "condition": "c=17/2, a-b=7/2, a²+b²=c²에서 ab=30, 넓이=15이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "planeMarks.expressionLabels",
+        "planeMarks.textLabels"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "C의 직각 표식, 두 직각변의 문자 이름 a와 b, 그 곱 ab=30과 넓이 결론을 함께 표시한다."
+  ]
+}
