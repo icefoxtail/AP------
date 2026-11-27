@@ -1,0 +1,34 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"F","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"G","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"}
+  ]},
+  "coordinateCanvas":{"width":550,"height":380},
+  "displayPoints":["A","B","C","D","E","F","G","H"],
+  "hiddenPointNames":["A","B","C","D","E","F","G","H"],"hiddenPointStyle":"NONE",
+  "displayLines":[],"displayCircles":[],
+  "displaySegments":[
+    {"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sDA","refs":["D","A"]},
+    {"id":"sEF","refs":["E","F"]},{"id":"sFG","refs":["F","G"]},{"id":"sGH","refs":["G","H"]},{"id":"sHE","refs":["H","E"]}
+  ],
+  "planeMarks":{
+    "dimensions":[
+      {"id":"d1","from":"A","to":"B","label":"1","side":"BELOW"},
+      {"id":"d2","from":"A","to":"D","label":"2","side":"LEFT"},
+      {"id":"d3","from":"E","to":"F","label":"2","side":"BELOW"},
+      {"id":"d4","from":"F","to":"G","label":"2","side":"RIGHT"}
+    ],
+    "textLabels":[{"id":"rectName","at":[0.5,2.7],"text":"직사각형 타일","labelKind":"TEXT"},{"id":"squareName","at":[4,2.7],"text":"정사각형 타일","labelKind":"TEXT"}]
+  },
+  "caption":"첫째 타일은 가로 1·세로 2의 직사각형이고, 둘째 타일은 한 변이 2인 정사각형이다. 타일 내부에 불필요한 면 채움은 없다.",
+  "accessibilityDescription":"왼쪽에는 폭1 높이2인 길쭉한 직사각형 한 장, 오른쪽에는 폭2 높이2인 정사각형 한 장이 따로 있다. 네 치수선에 1,2,2,2가 표시되고 두 타일의 이름이 위에 있다.",
+  "sourceConditions":[{"id":"rect","condition":"타일 1: 가로 1, 세로 2","mappedTo":["sAB","sBC","sCD","sDA","d1","d2"]},{"id":"square","condition":"타일 2: 한 변의 길이 2","mappedTo":["sEF","sFG","sGH","sHE","d3","d4"]}],
+  "newVisualInformation":["q26.png가 원본 타일 그림 대신 문제 본문만 잘라 담는 심각한 크롭 오류여서 실제 타일 두 종류의 경계·치수선·라벨을 엔진 필드로 새로 제작"]
+}

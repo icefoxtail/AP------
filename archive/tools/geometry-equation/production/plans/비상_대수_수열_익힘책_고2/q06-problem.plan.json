@@ -1,0 +1,51 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"B0","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B11","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"11"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"T0","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"12"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"T11","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"11"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B1","op":"DIVISION_POINT","inputs":["B0","B11"],"args":{"m":{"kind":"integer","value":"1"},"n":{"kind":"integer","value":"10"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"B2","op":"DIVISION_POINT","inputs":["B0","B11"],"args":{"m":{"kind":"integer","value":"2"},"n":{"kind":"integer","value":"9"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"B3","op":"DIVISION_POINT","inputs":["B0","B11"],"args":{"m":{"kind":"integer","value":"3"},"n":{"kind":"integer","value":"8"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"B4","op":"DIVISION_POINT","inputs":["B0","B11"],"args":{"m":{"kind":"integer","value":"4"},"n":{"kind":"integer","value":"7"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"B5","op":"DIVISION_POINT","inputs":["B0","B11"],"args":{"m":{"kind":"integer","value":"5"},"n":{"kind":"integer","value":"6"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"B6","op":"DIVISION_POINT","inputs":["B0","B11"],"args":{"m":{"kind":"integer","value":"6"},"n":{"kind":"integer","value":"5"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"B7","op":"DIVISION_POINT","inputs":["B0","B11"],"args":{"m":{"kind":"integer","value":"7"},"n":{"kind":"integer","value":"4"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"B8","op":"DIVISION_POINT","inputs":["B0","B11"],"args":{"m":{"kind":"integer","value":"8"},"n":{"kind":"integer","value":"3"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"B9","op":"DIVISION_POINT","inputs":["B0","B11"],"args":{"m":{"kind":"integer","value":"9"},"n":{"kind":"integer","value":"2"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"B10","op":"DIVISION_POINT","inputs":["B0","B11"],"args":{"m":{"kind":"integer","value":"10"},"n":{"kind":"integer","value":"1"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"T1","op":"DIVISION_POINT","inputs":["T0","T11"],"args":{"m":{"kind":"integer","value":"1"},"n":{"kind":"integer","value":"10"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"T2","op":"DIVISION_POINT","inputs":["T0","T11"],"args":{"m":{"kind":"integer","value":"2"},"n":{"kind":"integer","value":"9"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"T3","op":"DIVISION_POINT","inputs":["T0","T11"],"args":{"m":{"kind":"integer","value":"3"},"n":{"kind":"integer","value":"8"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"T4","op":"DIVISION_POINT","inputs":["T0","T11"],"args":{"m":{"kind":"integer","value":"4"},"n":{"kind":"integer","value":"7"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"T5","op":"DIVISION_POINT","inputs":["T0","T11"],"args":{"m":{"kind":"integer","value":"5"},"n":{"kind":"integer","value":"6"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"T6","op":"DIVISION_POINT","inputs":["T0","T11"],"args":{"m":{"kind":"integer","value":"6"},"n":{"kind":"integer","value":"5"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"T7","op":"DIVISION_POINT","inputs":["T0","T11"],"args":{"m":{"kind":"integer","value":"7"},"n":{"kind":"integer","value":"4"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"T8","op":"DIVISION_POINT","inputs":["T0","T11"],"args":{"m":{"kind":"integer","value":"8"},"n":{"kind":"integer","value":"3"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"T9","op":"DIVISION_POINT","inputs":["T0","T11"],"args":{"m":{"kind":"integer","value":"9"},"n":{"kind":"integer","value":"2"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"T10","op":"DIVISION_POINT","inputs":["T0","T11"],"args":{"m":{"kind":"integer","value":"10"},"n":{"kind":"integer","value":"1"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "coordinateCanvas":{"width":700,"height":460},
+  "displayPoints":["B0","B1","B2","B3","B4","B5","B6","B7","B8","B9","B10","B11","T0","T1","T2","T3","T4","T5","T6","T7","T8","T9","T10","T11"],
+  "hiddenPointNames":["B0","B1","B2","B3","B4","B5","B6","B7","B8","B9","B10","B11","T0","T1","T2","T3","T4","T5","T6","T7","T8","T9","T10","T11"],"hiddenPointStyle":"NONE",
+  "displayLines":[],"displayCircles":[],
+  "displaySegments":[
+    {"id":"sTop","refs":["T0","T11"]},{"id":"sBottom","refs":["B0","B11"]},
+    {"id":"s0","refs":["B0","T0"]},{"id":"s1","refs":["B1","T1"]},{"id":"s2","refs":["B2","T2"]},{"id":"s3","refs":["B3","T3"]},{"id":"s4","refs":["B4","T4"]},{"id":"s5","refs":["B5","T5"]},{"id":"s6","refs":["B6","T6"]},{"id":"s7","refs":["B7","T7"]},{"id":"s8","refs":["B8","T8"]},{"id":"s9","refs":["B9","T9"]},{"id":"s10","refs":["B10","T10"]},{"id":"s11","refs":["B11","T11"]}
+  ],
+  "rightAngles":[{"id":"r0","refs":["T0","B0","B1"]},{"id":"r1","refs":["T1","B1","B2"]},{"id":"r2","refs":["T2","B2","B3"]},{"id":"r11","refs":["T11","B11","B10"]}],
+  "planeMarks":{"expressionLabels":[
+    {"id":"ll","ownerSegment":"sTop","text":"l"},{"id":"lm","ownerSegment":"sBottom","text":"m"},
+    {"id":"la1","ownerSegment":"s0","text":"a_1=12"},{"id":"la2","ownerSegment":"s1","text":"a_2"},
+    {"id":"la3","ownerSegment":"s2","text":"a_3"},{"id":"la12","ownerSegment":"s11","text":"a_12=6"}
+  ]},
+  "caption":"서로 평행하지 않은 직선 l, m 사이에 일정한 간격으로 배치된 12개의 수직선분. 첫 선분은 12, 끝 선분은 6이다.",
+  "accessibilityDescription":"아래 직선 m은 수평이고 위 직선 l은 오른쪽으로 갈수록 낮아진다. 두 직선을 잇는 수직선분 12개가 같은 수평 간격으로 서 있고, 첫째 a₁=12, 마지막 a₁₂=6, 네 곳에 직각 표시가 있다.",
+  "sourceConditions":[
+    {"id":"lines","condition":"l과 m은 평행하지 않다","mappedTo":["sTop","sBottom"]},
+    {"id":"equalSpacing","condition":"m에 수직인 12개 선분의 발 간격이 같다","mappedTo":["B0","B1","B2","B3","B4","B5","B6","B7","B8","B9","B10","B11","r0","r1","r2","r11"]},
+    {"id":"lengths","condition":"a1=12, a12=6; a1부터 a12까지","mappedTo":["s0","s1","s2","s3","s4","s5","s6","s7","s8","s9","s10","s11","la1","la12"]}
+  ],
+  "newVisualInformation":["원본 q06.png에 섞인 스캔 본문을 제거하고, 생략된 열까지 12개 실선 수선과 실제 직각표식, a₁=12/a₁₂=6 라벨을 엔진 필드로 복원. 해답 72는 문제 그림에 노출하지 않음."]
+}

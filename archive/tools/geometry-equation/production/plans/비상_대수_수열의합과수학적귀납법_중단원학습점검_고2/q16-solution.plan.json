@@ -1,0 +1,30 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"-2"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"R","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"-2"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"-5"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"3"}},"outputType":"CIRCLE","factRole":"GIVEN"}
+  ]},
+  "coordinateCanvas":{"width":580,"height":400},
+  "displayPoints":["O","R","A","B"],"hiddenPointNames":["R","A","B"],"hiddenPointStyle":"NONE",
+  "displayLines":[],"displayCircles":["k"],
+  "displaySegments":[
+    {"id":"diameterLine","refs":["A","B"],"emphasis":"ACCENT"},
+    {"id":"radiusOR","refs":["O","R"],"dashed":true}
+  ],
+  "planeMarks":{"expressionLabels":[
+    {"id":"equation","ownerSegment":"diameterLine","text":"y=x-5"},
+    {"id":"radius3","ownerSegment":"radiusOR","text":"3"}
+  ],"textLabels":[{"id":"centerName","at":[3,-3.1],"text":"(3,-2)","labelKind":"TEXT"}]},
+  "caption":"n=1을 대입한 대표 그림. 원의 중심 O=(3,-2), 반지름 3, 이등분 직선 y=x-5는 중심을 지난다. 일반 n에서는 중심 (3n,n²-3n)을 대입해 a_n=n²-6n.",
+  "accessibilityDescription":"반지름 3인 원의 중심 O=(3,-2)를 대각선 직선 y=x-5가 통과한다. 중심에서 오른쪽 원주까지 점선 반지름이 있고 길이 3을 표시한다. 원 내부의 불필요한 면 채움은 없다.",
+  "sourceConditions":[
+    {"id":"center","condition":"일반 중심 (3n,n²-3n), n=1에서는 (3,-2)","mappedTo":["O","centerName"]},
+    {"id":"bisect","condition":"y=x+a_n이 원의 중심을 통과하므로 a_n=n²-6n, n=1의 직선 y=x-5","mappedTo":["diameterLine","O","equation"]},
+    {"id":"radius","condition":"원 반지름 √(9n), n=1에서는 3","mappedTo":["k","radiusOR","radius3"]},
+    {"id":"sum","condition":"Σ_{k=1}^{5} k a_k=-105","mappedTo":["caption"]}
+  ],
+  "newVisualInformation":["대표값 n=1을 명시해 일반 n의 중심 조건을 왜곡하지 않고 직선이 실제 원 중심을 통과하도록 정합; 반지름 보조점선과 길이, 직선 식, 중심 좌표 라벨 포함; 면 채움 없음"]
+}

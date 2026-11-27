@@ -1,0 +1,53 @@
+{
+  "capability":"composite-panels-v1",
+  "panels":[
+    {"caption":{"text":"① 세운 타일 1개 → aₙ₊₁"},"plan":{
+      "capability":"construction-spike-v1",
+      "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+        {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"F","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"}
+      ]},"coordinateCanvas":{"width":384,"height":320},
+      "displayPoints":["A","B","C","D","E","F"],"hiddenPointNames":["A","B","C","D","E","F"],"hiddenPointStyle":"NONE","displayLines":[],"displayCircles":[],
+      "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sDE","refs":["D","E"]},{"id":"sEF","refs":["E","F"]},{"id":"sFA","refs":["F","A"]},{"id":"sBE","refs":["B","E"]}],
+      "planeMarks":{"textLabels":[{"id":"prefix","at":[1.5,1],"text":"남은 구간","labelKind":"TEXT"},{"id":"end","at":[3.5,1],"text":"1"}]}
+    }},
+    {"caption":{"text":"② 정사각형 1개 → aₙ"},"plan":{
+      "capability":"construction-spike-v1",
+      "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+        {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"F","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"}
+      ]},"coordinateCanvas":{"width":384,"height":320},
+      "displayPoints":["A","B","C","D","E","F"],"hiddenPointNames":["A","B","C","D","E","F"],"hiddenPointStyle":"NONE","displayLines":[],"displayCircles":[],
+      "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sDE","refs":["D","E"]},{"id":"sEF","refs":["E","F"]},{"id":"sFA","refs":["F","A"]},{"id":"sBE","refs":["B","E"]}],
+      "planeMarks":{"textLabels":[{"id":"prefix","at":[1,1],"text":"남은 구간","labelKind":"TEXT"},{"id":"end","at":[3,1],"text":"2×2","labelKind":"TEXT"}]}
+    }},
+    {"caption":{"text":"③ 누운 타일 2개 → aₙ"},"plan":{
+      "capability":"construction-spike-v1",
+      "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+        {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"F","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"G","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+        {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+      ]},"coordinateCanvas":{"width":384,"height":320},
+      "displayPoints":["A","B","C","D","E","F","G","H"],"hiddenPointNames":["A","B","C","D","E","F","G","H"],"hiddenPointStyle":"NONE","displayLines":[],"displayCircles":[],
+      "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sDE","refs":["D","E"]},{"id":"sEF","refs":["E","F"]},{"id":"sFA","refs":["F","A"]},{"id":"sBE","refs":["B","E"]},{"id":"sGH","refs":["G","H"]}],
+      "planeMarks":{"textLabels":[{"id":"prefix","at":[1,1],"text":"남은 구간","labelKind":"TEXT"},{"id":"top","at":[3,1.5],"text":"2×1","labelKind":"TEXT"},{"id":"bottom","at":[3,0.5],"text":"2×1","labelKind":"TEXT"}]}
+    }}
+  ],
+  "caption":"바닥의 오른쪽 끝에 놓이는 모양은 세로 타일 1장, 2×2 정사각형 1장, 눕힌 타일 2장으로 정확히 세 가지다. 따라서 a_(n+2)=a_(n+1)+2a_n.",
+  "accessibilityDescription":"왼쪽 위 그림은 오른쪽 끝 폭 1을 세운 타일 하나로 채우고, 오른쪽 위 그림은 폭 2를 정사각형 하나로 채우며, 아래 그림은 폭 2를 누운 직사각형 둘로 채운다. 각 패널의 제목은 남은 부분의 배치 경우의 수 a_(n+1) 또는 a_n을 표시한다.",
+  "sourceConditions":[{"id":"vertical","condition":"세운 타일 1개를 끝에 두면 a_(n+1)가지","mappedTo":["panels[0]"]},{"id":"square","condition":"정사각형 타일 하나를 끝에 두면 a_n가지","mappedTo":["panels[1]"]},{"id":"horizontal","condition":"눕힌 타일 두 개를 끝에 두면 a_n가지","mappedTo":["panels[2]"]}],
+  "newVisualInformation":["원문 해설의 마지막 타일 3가지 경우를 실제 타일 구분선과 폭 1·2, 남은 부분 이름으로 별도 패널에 표현. 범위 밖의 예시·장식 면채움 없음."]
+}
