@@ -12,21 +12,21 @@
         "id": "A", "op": "SOURCE_POINT", "inputs": [],
         "args": {"coordinates": [
           {"kind": "integer", "value": "0"},
-          {"kind": "rational", "numerator": "2598076211353", "denominator": "1000000000000"}
+          {"kind":"expression","op":"div","args": [{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"3"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]},{"kind":"integer","value":"2"}]}
         ]}, "outputType": "POINT", "factRole": "GIVEN"
       },
       {
         "id": "B", "op": "SOURCE_POINT", "inputs": [],
         "args": {"coordinates": [
           {"kind": "integer", "value": "3"},
-          {"kind": "rational", "numerator": "2598076211353", "denominator": "1000000000000"}
+          {"kind":"expression","op":"div","args": [{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"3"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]},{"kind":"integer","value":"2"}]}
         ]}, "outputType": "POINT", "factRole": "GIVEN"
       },
       {
         "id": "C", "op": "SOURCE_POINT", "inputs": [],
         "args": {"coordinates": [
           {"kind": "rational", "numerator": "9", "denominator": "2"},
-          {"kind": "rational", "numerator": "2598076211353", "denominator": "1000000000000"}
+          {"kind":"expression","op":"div","args": [{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"3"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]},{"kind":"integer","value":"2"}]}
         ]}, "outputType": "POINT", "factRole": "GIVEN"
       },
       {

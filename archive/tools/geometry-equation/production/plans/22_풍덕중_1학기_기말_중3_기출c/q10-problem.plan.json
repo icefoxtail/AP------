@@ -8,10 +8,10 @@
       {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
       {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"12"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
       {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"12"},{"kind":"integer","value":"12"}]},"outputType":"POINT","factRole":"GIVEN"},
-      {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"rational","numerator":"2258342613226","denominator":"1000000000000"}]},"outputType":"POINT","factRole":"GIVEN"},
-      {"id":"F","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"9741657386774","denominator":"1000000000000"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
-      {"id":"G","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"12"},{"kind":"rational","numerator":"9741657386774","denominator":"1000000000000"}]},"outputType":"POINT","factRole":"GIVEN"},
-      {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"2258342613226","denominator":"1000000000000"},{"kind":"integer","value":"12"}]},"outputType":"POINT","factRole":"GIVEN"}
+      {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"expression","op":"sub","args": [{"kind":"integer","value":"6"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"14"}]}]}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"F","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"expression","op":"add","args": [{"kind":"integer","value":"6"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"14"}]}]},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"G","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"12"},{"kind":"expression","op":"add","args": [{"kind":"integer","value":"6"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"14"}]}]}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"expression","op":"sub","args": [{"kind":"integer","value":"6"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"14"}]}]},{"kind":"integer","value":"12"}]},"outputType":"POINT","factRole":"GIVEN"}
     ]
   },
   "displayPoints": ["A","B","C","D","E","F","G","H"],
