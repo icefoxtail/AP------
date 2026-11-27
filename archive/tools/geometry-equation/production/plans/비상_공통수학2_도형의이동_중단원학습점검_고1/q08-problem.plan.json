@@ -1,0 +1,26 @@
+{
+  "capability":"construction-spike-v1",
+  "caption":"원 x²+y²=4 위의 A(2,0), B(1,√3)와 A에서 AB에 수직인 현 AC를 나타낸다.",
+  "accessibilityDescription":"원점 중심 반지름 2의 원 위에 A(2,0), B(1,√3), C가 있다. 현 AB와 AC가 A에서 직각을 이루고 C의 좌표는 문제 그림에 표시하지 않는다.",
+  "sourceConditions":[
+    {"id":"s1","condition":"x²+y²=4는 원점 중심, 반지름 2이고 A(2,0), B(1,√3)는 원 위에 있다. 원본은 원의 방정식을 호로 향한 지시선과 함께 쓴다.","mappedTo":["mathPlan.nodes[0]","mathPlan.nodes[1]","mathPlan.nodes[2]","mathPlan.nodes[4]","displayCircles","planeMarks.arcs[0]"]},
+    {"id":"s2","condition":"C는 원 위에서 A를 지나고 AB에 수직인 직선의 두 번째 교점이다. ∠BAC=90°다. 원본은 두 직선을 원 밖까지 연장한다.","mappedTo":["mathPlan.nodes[3]","mathPlan.nodes[5]","mathPlan.nodes[6]","displayLines","rightAngles"]},
+    {"id":"s3","condition":"문제는 C의 좌표를 물으므로 문제 그림에는 C의 좌표를 미리 쓰지 않는다.","mappedTo":["displayPoints","coordinateLabels"]}
+  ],
+  "newVisualInformation":["AB, AC가 놓인 두 직선을 원 밖까지 연장하고 꼭짓점 A에 직각 표식을 놓는다.","원의 방정식 x²+y²=4를 왼쪽 위 호에 지시선으로 연결한다.","문제에서 주어진 두 점의 좌표는 보이되 미지점 C의 좌표는 숨긴다.","원 둘레 이외의 불필요한 영역 채움은 없다."],
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"POINT_REFLECTION","inputs":["B","O"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"2"}},"outputType":"CIRCLE","factRole":"GIVEN"},
+    {"id":"lAB","op":"LINE_THROUGH","inputs":["A","B"],"args":{},"outputType":"LINE","factRole":"GIVEN"},
+    {"id":"lAC","op":"LINE_THROUGH","inputs":["A","C"],"args":{},"outputType":"LINE","factRole":"GIVEN"}
+  ]},
+  "displayPoints":["O","A","B","C"],"coordinateLabels":["A","B"],
+  "displayLines":["lAB","lAC"],"displayCircles":["k"],
+  "displaySegments":[],
+  "rightAngles":[{"id":"rA","refs":["B","A","C"]}],
+  "planeMarks":{"arcs":[{"id":"circleEquation","circle":"k","center":"O","from":"B","to":"C","side":"CCW","highlight":false,"label":"x^2+y^2=4","labelKind":"MATH","labelPlacement":"LEADER"}]},
+  "coordinateCanvas":{"width":550,"height":480}
+}
