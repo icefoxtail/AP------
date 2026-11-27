@@ -1,0 +1,21 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": true,
+    "rows": [{
+      "kind": "SET",
+      "pieces": [{
+        "lo": { "value": "-1", "state": "CLOSED" },
+        "hi": { "value": "2", "state": "CLOSED" }
+      }]
+    }]
+  },
+  "numberLineCaption": { "text": "⑤의 바른 부등식" },
+  "caption": "-1 이상이고 2보다 크지 않다는 말은 -1≤x≤2이다. 두 끝점 -1과 2를 모두 포함한다.",
+  "accessibilityDescription": "수직선에서 음의 1부터 양의 2까지 굵은 구간이며 양끝이 모두 닫힌 점이다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "-1 이상이라는 조건의 경계 -1은 포함한다.", "mappedTo": ["numberLine.rows.0.pieces.0.lo"] },
+    { "id": "c2", "condition": "2보다 크지 않다는 조건은 x≤2이므로 2를 포함한다. 보기 ⑤의 x<2는 오답이다.", "mappedTo": ["numberLine.rows.0.pieces.0.hi"] }
+  ],
+  "newVisualInformation": ["-1·2의 닫힌 점 두 개 및 그 사이 구간; 2가 열린 점이 아님을 실제 끝점 상태로 표현한다."]
+}

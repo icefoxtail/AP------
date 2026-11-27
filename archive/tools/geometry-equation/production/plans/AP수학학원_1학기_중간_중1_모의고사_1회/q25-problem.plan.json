@@ -1,0 +1,46 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "5" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "3" }, { "kind": "integer", "value": "5" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "E", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "5" }, { "kind": "integer", "value": "5" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "F", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "5" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "G", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "-1" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "H", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "-1" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "E", "F", "G", "H"],
+  "hiddenPointNames": ["A", "B", "C", "D", "E", "F", "G", "H"],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sCD", "refs": ["C", "D"] },
+    { "id": "sDA", "refs": ["D", "A"] },
+    { "id": "sEF", "refs": ["E", "F"] },
+    { "id": "sGH", "refs": ["G", "H"], "dashed": true }
+  ],
+  "rightAngles": [{ "id": "raE", "refs": ["D", "E", "F"], "factRole": "GIVEN" }],
+  "planeMarks": {
+    "dimensions": [
+      { "id": "top", "from": "D", "to": "C", "label": "a", "unit": "cm", "side": "ABOVE", "factRole": "GIVEN" },
+      { "id": "bottom", "from": "A", "to": "B", "label": "b", "unit": "cm", "side": "BELOW", "factRole": "GIVEN" },
+      { "id": "height", "from": "E", "to": "F", "label": "h", "unit": "cm", "side": "RIGHT", "factRole": "GIVEN" }
+    ]
+  },
+  "coordinateCanvas": { "width": 700, "height": 520 },
+  "caption": "원본 그림처럼 윗변 a cm, 아랫변 b cm, 수직 높이 h cm를 가진 사다리꼴이다. 넓이의 식과 대입값을 구한다.",
+  "accessibilityDescription": "무채움 사다리꼴 윤곽, 중앙 부근의 실선 높이와 윗변에서의 직각 표시, 밑변 아래 점선, a·b·h cm 치수 라벨.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "윗변 a cm, 아랫변 b cm인 사다리꼴의 네 변을 그린다. 변수 길이는 비례가 정해지지 않아 대표 모양이다.", "mappedTo": ["mathPlan.nodes", "displaySegments", "planeMarks.dimensions.0", "planeMarks.dimensions.1"] },
+    { "id": "c2", "condition": "원본 그림에서 윗변 위의 수선 시작점부터 밑변까지 높이 h cm가 실선이고 윗변 접점 왼쪽에 직각 표식이 있다.", "mappedTo": ["displaySegments.4", "rightAngles.0", "planeMarks.dimensions.2"] },
+    { "id": "c3", "condition": "원본 밑변 바로 아래의 별도 수평 점선은 윤곽선과 구별하며, 회색 면 채움은 교육 내용과 무관해 제거한다.", "mappedTo": ["displaySegments.5", "planeMarks"] },
+    { "id": "c4", "condition": "(2) a=7,b=11,h=8은 계산에 대입할 값이며 문제 그림의 치수 문자 자체를 바꾸지 않는다.", "mappedTo": ["planeMarks.dimensions"] }
+  ],
+  "newVisualInformation": ["사다리꼴 네 실선 변, 윗변에서 밑변까지 실선 높이, 접점 직각 표식, 밑변 아래 독립 점선, a cm·b cm·h cm 라벨, 배경·면 채움 없음."]
+}

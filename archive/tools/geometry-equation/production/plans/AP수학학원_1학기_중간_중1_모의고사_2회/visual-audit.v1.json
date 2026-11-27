@@ -1,0 +1,181 @@
+{
+  "schemaVersion": "visual-audit-v1",
+  "examFile": "archive/exams/similar/middle/m1/1mid/AP수학학원_1학기_중간_중1_모의고사_2회.js",
+  "sourceGitBlobSha": "1e168bf194bcb37c384a7957b5cb292de23f0248",
+  "reviewBaseMain": "8ec13c2",
+  "questionCount": 25,
+  "axisCount": 50,
+  "exemptDefaults": {
+    "capability": "TEXT_OR_FORMULA_ONLY",
+    "planPath": null,
+    "planLint": "NOT_APPLICABLE",
+    "drawnFeatureParity": "NO_SVG_REQUIRED",
+    "render": "NOT_APPLICABLE"
+  },
+  "planDefaultChecks": {
+    "planLintShallow": "PASS",
+    "planLintFull": "PASS",
+    "renderedSvg": "NOT_RUN",
+    "pngReview": "NOT_RUN",
+    "studentScreen": "NOT_RUN",
+    "imageBinding": "NOT_RUN",
+    "drawnFeatureParityInterpretation": "Static source-to-rendering-field 1:1 audit, except the explicitly named fractional arrow-label engine gap; no rendered image claim"
+  },
+  "summary": {
+    "planFiles": 6,
+    "shallowPass": 6,
+    "fullPass": 6,
+    "drawnFeatureStaticPass": 5,
+    "drawnFeatureStaticPartial": 1,
+    "engineCapabilityPendingAxes": 1,
+    "exemptAxes": 44
+  },
+  "sourceJSFindings": [
+    "The source JS has no image/solutionImage fields. Number-line and rectangle plans are engine-executable specifications only; no JS binding, PNG or publication is claimed.",
+    "q14 solution needs left/right displacement arrow labels in the original fractional form 3/2 and 1/4. The current number-line-v1 span label grammar rejects slash fractions (NUMBER_LINE_SPAN_LABEL_INVALID). Exact 3/2 and 1/4 movement lengths and arrow directions are mapped to coordinates and arrows; drawable span labels show equivalent 1.5 and 0.25. Literal fraction labels on arrows remain ENGINE_CAPABILITY_PENDING."
+  ],
+  "entries": [
+    { "qid": "q01", "axes": { "problem": { "verdict": "EXEMPT", "reason": "40과 50 사이 소수를 찾아 합하는 숫자 문제" }, "solution": { "verdict": "EXEMPT", "reason": "41+43+47=131의 열거와 덧셈으로 완결" } } },
+    { "qid": "q02", "axes": { "problem": { "verdict": "EXEMPT", "reason": "세 번 곱해서 125가 되는 자연수를 찾는 계산" }, "solution": { "verdict": "EXEMPT", "reason": "125=5³의 거듭제곱 관계를 식으로 설명" } } },
+    { "qid": "q03", "axes": { "problem": { "verdict": "EXEMPT", "reason": "소인수 2·3과 각각의 지수 2를 조합하는 보기" }, "solution": { "verdict": "EXEMPT", "reason": "2²×3²=36의 소인수분해식이 풀이 전체" } } },
+    { "qid": "q04", "axes": { "problem": { "verdict": "EXEMPT", "reason": "약수 세 개인 수를 5개 보기에서 고름" }, "solution": { "verdict": "EXEMPT", "reason": "p²의 약수가 1,p,p² 세 개임을 식으로 제시" } } },
+    { "qid": "q05", "axes": { "problem": { "verdict": "EXEMPT", "reason": "36 cm·48 cm 끈을 같은 최대 길이로 자르는 최대공약수 문제; 절단 지점 그림 미요구" }, "solution": { "verdict": "EXEMPT", "reason": "36과 48의 최대공약수가 12라는 산술 풀이" } } },
+    { "qid": "q06", "axes": { "problem": { "verdict": "EXEMPT", "reason": "12분·18분 간격 버스의 다음 동시 출발 시각 계산" }, "solution": { "verdict": "EXEMPT", "reason": "최소공배수 36분을 9시에 더하는 계산" } } },
+    { "qid": "q07", "axes": { "problem": { "verdict": "EXEMPT", "reason": "6명·8명씩 나누고 40~60 사이 배수 결정" }, "solution": { "verdict": "EXEMPT", "reason": "24의 배수 중 48 하나임을 텍스트·식으로 증명" } } },
+    { "qid": "q08", "axes": { "problem": { "verdict": "EXEMPT", "reason": "12와 A의 최대공약수·최소공배수로 A 계산" }, "solution": { "verdict": "EXEMPT", "reason": "12A=4×60 및 A=20의 수식 풀이" } } },
+    { "qid": "q09", "axes": { "problem": { "verdict": "EXEMPT", "reason": "영하 3℃에서 5℃ 상승한 기온을 숫자로 물음" }, "solution": { "verdict": "EXEMPT", "reason": "-3+5=2의 산술과 영상 표기로 설명" } } },
+    {
+      "qid": "q10",
+      "axes": {
+        "problem": { "verdict": "EXEMPT", "reason": "-5/4와 -1/2 사이의 정수 고르기; 문제축에 답을 표시하지 않음" },
+        "solution": {
+          "verdict": "BENEFICIAL",
+          "reason": "두 음의 분수 사이가 열린 구간이고 정수 -1 하나만 들어감을 같은 수직선에 보임.",
+          "capability": "number-line-figure-v1",
+          "planPath": "archive/tools/geometry-equation/production/plans/AP수학학원_1학기_중간_중1_모의고사_2회/q10-solution.plan.json",
+          "requiredFeatures": ["-5/4 열린 경계", "-1/2 열린 경계", "구간 안의 유일한 정수 -1", "수직선 눈금", "불필요한 채움 없음"],
+          "featureFieldMapping": [
+            { "sourceFeature": "-5/4=-1.25의 열린 왼쪽 경계", "renderField": "numberLine.rows[0].pieces[0].lo" },
+            { "sourceFeature": "-1/2=-0.5의 열린 오른쪽 경계", "renderField": "numberLine.rows[0].pieces[0].hi" },
+            { "sourceFeature": "정수 -1", "renderField": "numberLine.rows[0].integerPoints=true" },
+            { "sourceFeature": "연속 열린 구간", "renderField": "numberLine.rows[0].kind=SET" }
+          ],
+          "drawnFeatureParity": "STATIC_1_TO_1_FEATURE_MATCH__RENDER_NOT_RUN"
+        }
+      }
+    },
+    {
+      "qid": "q11",
+      "axes": {
+        "problem": { "verdict": "EXEMPT", "reason": "절댓값이 4인 두 수를 생각해 거리 구하기; 수치 거리의 문제축 노출 방지" },
+        "solution": {
+          "verdict": "BENEFICIAL",
+          "reason": "절댓값 4인 두 점이 원점을 기준으로 -4·4에 있고 거리가 8인 것을 보여 줌.",
+          "capability": "number-line-figure-v1",
+          "planPath": "archive/tools/geometry-equation/production/plans/AP수학학원_1학기_중간_중1_모의고사_2회/q11-solution.plan.json",
+          "requiredFeatures": ["-4 위치", "4 위치", "원점 눈금", "두 점 거리 8 괄호", "별도 색칠 없음"],
+          "featureFieldMapping": [
+            { "sourceFeature": "절댓값이 4인 -4와 4", "renderField": "numberLine.rows[0].points A/B values" },
+            { "sourceFeature": "수직선 위 두 점", "renderField": "numberLine.rows[0].kind=POINTS,band=false" },
+            { "sourceFeature": "두 점 사이 거리 8", "renderField": "numberLine.rows[0].spans[0] BRACE label=8" }
+          ],
+          "drawnFeatureParity": "STATIC_1_TO_1_FEATURE_MATCH__RENDER_NOT_RUN"
+        }
+      }
+    },
+    { "qid": "q12", "axes": { "problem": { "verdict": "EXEMPT", "reason": "게임 점수 -7과 +12의 합을 묻는 상황" }, "solution": { "verdict": "EXEMPT", "reason": "-7+12=5를 부호와 함께 설명" } } },
+    { "qid": "q13", "axes": { "problem": { "verdict": "EXEMPT", "reason": "-3/4+1/2-1/8의 통분 계산" }, "solution": { "verdict": "EXEMPT", "reason": "분모를 8로 맞춘 -6/8+4/8-1/8 연산식" } } },
+    {
+      "qid": "q14",
+      "axes": {
+        "problem": { "verdict": "EXEMPT", "reason": "수직선 출발·이동이 발문으로 모두 지정됨; 정답 위치를 문제축에서 선표시하지 않음" },
+        "solution": {
+          "verdict": "BENEFICIAL",
+          "reason": "-2 출발, 오른쪽 3/2, 왼쪽 1/4의 순서·방향·도착 -3/4를 실제 화살표로 표현하되 분수형 화살표 라벨은 엔진 제약이 있다.",
+          "capability": "number-line-figure-v1",
+          "planPath": "archive/tools/geometry-equation/production/plans/AP수학학원_1학기_중간_중1_모의고사_2회/q14-solution.plan.json",
+          "requiredFeatures": ["출발 -2", "중간 -1/2", "도착 -3/4", "오른쪽 3/2만큼 향하는 화살표", "왼쪽 1/4만큼 향하는 화살표", "각 화살표에 원문 분수형 거리 라벨", "면 채움 없음"],
+          "featureFieldMapping": [
+            { "sourceFeature": "출발 -2·중간 -1/2·도착 -3/4", "renderField": "numberLine.rows[0].points A/B/C.value" },
+            { "sourceFeature": "첫 이동 방향·길이 +3/2", "renderField": "numberLine.rows[0].spans[0] ARROW A→B; exact positions; label=1.5" },
+            { "sourceFeature": "둘째 이동 방향·길이 -1/4", "renderField": "numberLine.rows[0].spans[1] ARROW B→C; exact positions; label=0.25" },
+            { "sourceFeature": "3/2·1/4 원문 분수 그대로 화살표 위 라벨", "renderField": "ENGINE_CAPABILITY_PENDING: number-line-v1 SPAN_LABEL_MATH must accept slash fractions and render TeX fractions" },
+            { "sourceFeature": "속이 빈 채움 없는 수직선", "renderField": "numberLine.rows[0].band=false" }
+          ],
+          "engineCapabilityPending": {
+            "status": "ENGINE_CAPABILITY_PENDING",
+            "requiredFeature": "number-line-v1 ARROW/BRACE span.label can draw rational fraction text '3/2' and '1/4' as fractions anchored to arrows",
+            "currentEngineError": "NUMBER_LINE_SPAN_LABEL_INVALID",
+            "fallback": "Exact arrow geometry and directions retained; numerical equivalent labels 1.5 and 0.25 are drawn; source fractions remain in caption/conditions.",
+            "doNotClaim": "The original fractional glyph labels are not 1:1 visual parity"
+          },
+          "drawnFeatureParity": "STATIC_PARTIAL__ENGINE_CAPABILITY_PENDING__FRACTION_SPAN_LABEL__RENDER_NOT_RUN"
+        }
+      }
+    },
+    { "qid": "q15", "axes": { "problem": { "verdict": "EXEMPT", "reason": "(-2)^4-3²의 거듭제곱 차 계산" }, "solution": { "verdict": "EXEMPT", "reason": "16-9=7로 지수 계산을 문자·식으로 설명" } } },
+    { "qid": "q16", "axes": { "problem": { "verdict": "EXEMPT", "reason": "분수 -2/3와 9/4의 곱" }, "solution": { "verdict": "EXEMPT", "reason": "-18/12=-3/2의 약분식이 전 과정" } } },
+    { "qid": "q17", "axes": { "problem": { "verdict": "EXEMPT", "reason": "분수 나눗셈과 덧셈을 차례로 계산" }, "solution": { "verdict": "EXEMPT", "reason": "역수 곱하기와 통분으로 -1 도출" } } },
+    { "qid": "q18", "axes": { "problem": { "verdict": "EXEMPT", "reason": "3x-5+2를 식으로 간단히 나타내기" }, "solution": { "verdict": "EXEMPT", "reason": "3x-3의 동류항 합치기만 필요" } } },
+    { "qid": "q19", "axes": { "problem": { "verdict": "EXEMPT", "reason": "-3a와 동류항인 보기 식 선택" }, "solution": { "verdict": "EXEMPT", "reason": "문자 a와 차수 1이 같다는 정의 설명" } } },
+    { "qid": "q20", "axes": { "problem": { "verdict": "EXEMPT", "reason": "a=-2에서 2(a-3)-(a+1) 대입" }, "solution": { "verdict": "EXEMPT", "reason": "a-7에 -2를 대입해 -9로 계산" } } },
+    { "qid": "q21", "axes": { "problem": { "verdict": "EXEMPT", "reason": "180의 소인수분해와 홀수 약수 나열 서술형" }, "solution": { "verdict": "EXEMPT", "reason": "2를 제외한 3^a5^b 조건과 여섯 약수 목록으로 완결" } } },
+    { "qid": "q22", "axes": { "problem": { "verdict": "EXEMPT", "reason": "연필 42자루·지우개 56개의 최대 동일 세트 수 계산; 물체 그림 미요구" }, "solution": { "verdict": "EXEMPT", "reason": "42와 56의 최대공약수 14, 각 3·4의 산술 설명" } } },
+    {
+      "qid": "q23",
+      "axes": {
+        "problem": { "verdict": "EXEMPT", "reason": "두 음의 유리수 사이 정수 나열 문제로 수치 답을 문제축에서 미리 노출하지 않음" },
+        "solution": {
+          "verdict": "BENEFICIAL",
+          "reason": "-5/3<-1<-2/3을 열린 양끝 경계와 정수점으로 표시해 유일성을 설명.",
+          "capability": "number-line-figure-v1",
+          "planPath": "archive/tools/geometry-equation/production/plans/AP수학학원_1학기_중간_중1_모의고사_2회/q23-solution.plan.json",
+          "requiredFeatures": ["-5/3 열린 왼쪽 경계", "-2/3 열린 오른쪽 경계", "정수점 -1", "같은 수직선 눈금", "불필요한 채움 없음"],
+          "featureFieldMapping": [
+            { "sourceFeature": "-5/3 왼쪽 경계 제외", "renderField": "numberLine.rows[0].pieces[0].lo" },
+            { "sourceFeature": "-2/3 오른쪽 경계 제외", "renderField": "numberLine.rows[0].pieces[0].hi" },
+            { "sourceFeature": "유일한 정수 -1", "renderField": "numberLine.rows[0].integerPoints=true" },
+            { "sourceFeature": "-5/3<-1<-2/3", "renderField": "numberLine.rows[0] SET interval and integerPoints" }
+          ],
+          "drawnFeatureParity": "STATIC_1_TO_1_FEATURE_MATCH__RENDER_NOT_RUN"
+        }
+      }
+    },
+    { "qid": "q24", "axes": { "problem": { "verdict": "EXEMPT", "reason": "기온 -1.5℃에서 +3/4℃와 -2.25℃를 계산" }, "solution": { "verdict": "EXEMPT", "reason": "-1.5+0.75-2.25=-3의 숫자식으로 완결" } } },
+    {
+      "qid": "q25",
+      "axes": {
+        "problem": {
+          "verdict": "BENEFICIAL",
+          "reason": "텍스트만으로 주어진 직사각형의 가로 (2x+3) cm와 세로 x cm를 무채움 그림의 서로 수직인 변에 정확히 배치.",
+          "capability": "construction-spike-v1",
+          "planPath": "archive/tools/geometry-equation/production/plans/AP수학학원_1학기_중간_중1_모의고사_2회/q25-problem.plan.json",
+          "requiredFeatures": ["직사각형 네 실선 변", "직각", "가로 2x+3 cm", "세로 x cm", "배경·영역 채움 없음", "정답 30 비노출"],
+          "featureFieldMapping": [
+            { "sourceFeature": "직사각형 네 변", "renderField": "displaySegments sAB/sBC/sCD/sDA" },
+            { "sourceFeature": "직각 모서리", "renderField": "rightAngles raA" },
+            { "sourceFeature": "가로 2x+3 cm", "renderField": "planeMarks.dimensions.width.label/unit" },
+            { "sourceFeature": "세로 x cm", "renderField": "planeMarks.dimensions.height.label/unit" },
+            { "sourceFeature": "면 채움 없음", "renderField": "no regions/fill fields" },
+            { "sourceFeature": "문제축에 둘레 정답 비노출", "renderField": "no dimension labels 6x+6 or 30" }
+          ],
+          "drawnFeatureParity": "STATIC_1_TO_1_FEATURE_MATCH__RENDER_NOT_RUN"
+        },
+        "solution": {
+          "verdict": "BENEFICIAL",
+          "reason": "그림에서 가로·세로 길이를 따라 2[(2x+3)+x]=6x+6 및 x=4이면 30 cm를 연결.",
+          "capability": "construction-spike-v1",
+          "planPath": "archive/tools/geometry-equation/production/plans/AP수학학원_1학기_중간_중1_모의고사_2회/q25-solution.plan.json",
+          "requiredFeatures": ["가로 2x+3 cm", "세로 x cm", "직사각형 4변", "직각", "채움 없음", "둘레 6x+6과 x=4일 때 30 cm 풀이"],
+          "featureFieldMapping": [
+            { "sourceFeature": "가로 (2x+3) cm 및 세로 x cm", "renderField": "planeMarks.dimensions width/height" },
+            { "sourceFeature": "직사각형 네 변·직각", "renderField": "displaySegments sAB/sBC/sCD/sDA; rightAngles raA" },
+            { "sourceFeature": "둘레=6x+6, x=4이면 30 cm", "renderField": "caption; no invented numeric geometry scale" },
+            { "sourceFeature": "면 채움 없음", "renderField": "no regions/fill fields" }
+          ],
+          "drawnFeatureParity": "STATIC_1_TO_1_FEATURE_MATCH__RENDER_NOT_RUN"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [{
+      "kind": "POINTS",
+      "band": false,
+      "points": [
+        { "id": "A", "value": "-4", "hideName": true, "valueSide": "ABOVE" },
+        { "id": "B", "value": "4", "hideName": true, "valueSide": "ABOVE" }
+      ],
+      "spans": [{ "from": "A", "to": "B", "style": "BRACE", "side": "BELOW", "label": "8" }]
+    }]
+  },
+  "numberLineCaption": { "text": "절댓값이 4인 두 수" },
+  "caption": "절댓값이 4인 점은 원점 왼쪽 -4와 오른쪽 4이다. 두 점 사이의 거리는 4-(-4)=8이다.",
+  "accessibilityDescription": "수직선의 음의 4와 양의 4에 점을 찍고 두 점 사이 거리를 8로 묶어 표시한다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "절댓값이 4인 두 수는 -4와 4이다.", "mappedTo": ["numberLine.rows.0.points"] },
+    { "id": "c2", "condition": "두 점 사이의 거리는 4-(-4)=8이다.", "mappedTo": ["numberLine.rows.0.spans"] }
+  ],
+  "newVisualInformation": ["원점 양쪽의 -4·4 점, 두 점을 가로지르는 길이 8 괄호 및 숫자 라벨."]
+}

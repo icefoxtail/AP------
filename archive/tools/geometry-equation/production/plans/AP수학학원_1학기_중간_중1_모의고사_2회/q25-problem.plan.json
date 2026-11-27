@@ -1,0 +1,40 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "4" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "4" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D"],
+  "hiddenPointNames": ["A", "B", "C", "D"],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sCD", "refs": ["C", "D"] },
+    { "id": "sDA", "refs": ["D", "A"] }
+  ],
+  "rightAngles": [
+    { "id": "raA", "refs": ["D", "A", "B"], "factRole": "GIVEN" }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      { "id": "width", "from": "D", "to": "C", "label": "2x+3", "unit": "cm", "side": "ABOVE", "factRole": "GIVEN" },
+      { "id": "height", "from": "B", "to": "C", "label": "x", "unit": "cm", "side": "RIGHT", "factRole": "GIVEN" }
+    ]
+  },
+  "coordinateCanvas": { "width": 700, "height": 480 },
+  "caption": "가로 (2x+3) cm, 세로 x cm인 직사각형. 두 길이의 합에 2를 곱해 둘레를 구한다.",
+  "accessibilityDescription": "채움 없는 직사각형, 윗변에 (2x+3) cm, 오른쪽 변에 x cm 치수 라벨과 한 모서리 직각 표시.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "가로는 (2x+3) cm, 세로는 x cm인 직사각형이다. 두 변수 길이 사이의 비는 주어지지 않았으므로 대표 모양만 취한다.", "mappedTo": ["mathPlan.nodes", "displaySegments", "planeMarks.dimensions"] },
+    { "id": "c2", "condition": "직사각형은 네 변이 직각으로 만나는 도형이며 불필요한 면 채움은 없다.", "mappedTo": ["rightAngles.0", "displaySegments"] },
+    { "id": "c3", "condition": "x=4는 둘레 계산에 대입할 값으로 문제 축 그림에 정답 30을 미리 표시하지 않는다.", "mappedTo": ["planeMarks.dimensions"] }
+  ],
+  "newVisualInformation": ["네 직선 변과 직각 표식, 가로 (2x+3) cm 및 세로 x cm의 그려지는 치수 필드; 영역 무채움."]
+}

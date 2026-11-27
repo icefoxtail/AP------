@@ -1,0 +1,22 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [{
+      "kind": "SET",
+      "pieces": [{
+        "lo": { "value": "-5/4", "state": "OPEN" },
+        "hi": { "value": "-1/2", "state": "OPEN" }
+      }],
+      "integerPoints": true
+    }]
+  },
+  "numberLineCaption": { "text": "두 음의 유리수 사이의 정수" },
+  "caption": "-5/4=-1.25, -1/2=-0.5 사이의 정수는 -1 하나이다. 두 경계 수 자체는 제외한다.",
+  "accessibilityDescription": "-5/4와 -1/2에 열린 점, 그 사이의 음의 정수 -1에 정수해 점을 표시한 수직선.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "-5/4와 -1/2 사이의 정수를 묻는다. 양쪽 끝 수는 제외한다.", "mappedTo": ["numberLine.rows.0.pieces"] },
+    { "id": "c2", "condition": "사이에 있는 정수 -1 하나가 답이다.", "mappedTo": ["numberLine.rows.0.integerPoints"] }
+  ],
+  "newVisualInformation": ["열린 양끝 -5/4·-1/2 및 그 사이 정수 -1을 동일한 눈금 위에 그린다."]
+}
