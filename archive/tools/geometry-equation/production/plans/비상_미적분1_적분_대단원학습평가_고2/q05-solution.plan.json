@@ -1,0 +1,26 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["0", "2", "-3/2", "1/3"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [0, 3.5],
+    "viewport": [-0.3, 3.8, -0.3, 2.2],
+    "axisTickValues": {"x": [1, 2], "y": []},
+    "overlays": {
+      "points": [
+        {"id": "M", "curveX": "1", "coordinates": true},
+        {"id": "N", "curveX": "2", "coordinates": true}
+      ]
+    }
+  },
+  "pointNames": {"M": "M", "N": "N"},
+  "caption": "x≥0에서 f(x)=x³/3-3x²/2+2x는 x=1에서 극댓값 5/6, x=2에서 극솟값 2/3을 갖는다. x≥0인 부분만 그린다.",
+  "accessibilityDescription": "적분으로 정의된 삼차함수의 그래프에서 처음 증가하다 x=1에서 극대, x=2에서 극소가 된 뒤 다시 증가하는 위치를 표시한다.",
+  "sourceQuote": "$x \\ge 0$에서 정의된 함수 $f(x)=\\int_0^x (t^2-3t+2) dt$의 극댓값을 구하시오.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "적분으로 정의된 f(x)=x³/3-3x²/2+2x, x≥0", "mappedTo": "graphPlan.coefficients,graphPlan.domain"},
+    {"id": "c2", "condition": "f'(x)=(x-1)(x-2), 극대 (1,5/6), 극소 (2,2/3)", "mappedTo": "graphPlan.overlays.points[M,N]"}
+  ],
+  "newVisualInformation": ["x≥0에서 극대와 극소의 순서 및 실제 y좌표를 그래프 위에 표시한다."]
+}

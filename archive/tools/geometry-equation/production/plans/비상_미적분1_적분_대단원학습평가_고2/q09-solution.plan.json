@@ -1,0 +1,26 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{"coefficients": ["20", "-4"]}],
+    "sourceDomain": {"kind": "INTERVAL", "range": ["0", "5"], "states": ["CLOSED", "CLOSED"]},
+    "functionName": "v",
+    "nameVariable": "t",
+    "requiredPoints": [
+      {"id": "A", "x": "0", "y": "20"},
+      {"id": "B", "x": "5", "y": "0"}
+    ],
+    "axisTickValues": {"x": [], "y": []},
+    "regions": [{"id": "S", "upper": "f", "lower": "axis", "from": "0", "to": "5", "fill": "LIGHT", "label": "S"}]
+  },
+  "pointNames": {"A": "A", "B": "B"},
+  "caption": "제동 이후 속도 v(t)=20-4t가 t=5에 0이 된다. 0≤t≤5 구간에서 속도와 t축 사이 삼각형 넓이로 이동거리 50m를 나타냈다.",
+  "accessibilityDescription": "시각 0에서 속도 20으로 시작해 5초에 속도 0이 되는 하강 직선과 그 아래 삼각형 넓이가 표시돼 있다.",
+  "sourceQuote": "자동차가 제동을 걸고 t초 후의 속도가 v(t)=(20-4t) m/s일 때, 정지할 때까지 달린 거리를 구하시오.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "속도 v(t)=20-4t", "mappedTo": "graphPlan.pieces[0].coefficients"},
+    {"id": "c2", "condition": "정지 시각 t=5, 적분구간 [0,5]", "mappedTo": "graphPlan.sourceDomain,graphPlan.requiredPoints[B]"},
+    {"id": "c3", "condition": "속도가 음수가 아닌 영역의 정적분이 이동거리 50", "mappedTo": "graphPlan.regions[S]"}
+  ],
+  "newVisualInformation": ["주어진 속도식의 정지점과 적분구간의 삼각형 면적을 실제 채움으로 보여 준다."]
+}
