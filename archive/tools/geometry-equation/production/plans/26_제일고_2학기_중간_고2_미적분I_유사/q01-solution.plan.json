@@ -1,0 +1,95 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "xWindow": [
+      -5,
+      6
+    ],
+    "pieces": [
+      {
+        "coefficients": [
+          "2"
+        ],
+        "domain": [
+          -5,
+          -2
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "-5",
+          "-3"
+        ],
+        "domain": [
+          -2,
+          -1
+        ],
+        "start": "CLOSED",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          -1,
+          0
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "1",
+          "-1"
+        ],
+        "domain": [
+          0,
+          1
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "3"
+        ],
+        "domain": [
+          1,
+          5
+        ],
+        "start": "CLOSED",
+        "end": "CLOSED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "1"
+      ],
+      "y": [
+        "-1",
+        "2",
+        "4"
+      ]
+    }
+  },
+  "caption": "해설: x=-2의 점프, -1의 꺾임, x=0·x=1의 열린 점과 채운 점을 구별한 구간별 함수.",
+  "accessibilityDescription": "왼쪽 수평선은 x=-2의 열린 점으로 끝난다. 다른 높이의 채워진 점에서 V자 선분이 시작되어 x=-1에서 꺾이고 x=0의 채워진 점으로 끝난다. x=0의 오른쪽 가지는 열린 점에서 시작하고 x=1의 열린 점에서 끝나며, x=1의 채워진 점에서 오른쪽으로 수평선이 이어진다.",
+  "newVisualInformation": [
+    "x=-2에서 오른쪽 극한은 1이다.",
+    "x=0에서 왼쪽 극한은 -1이다.",
+    "x=1에서 함숫값은 오른쪽 수평 부분의 높이와 같다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)$의 그래프가 그림과 같을 때, $\\lim_{x\\to 0^-}f(x)+f(1)+\\lim_{x\\to -2^+}f(x)$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "sourceQuote": "함수 $f(x)$의 그래프가 그림과 같을 때, $\\lim_{x\\t"
+}

@@ -1,0 +1,292 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "8",
+            "denominator": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Rend",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Rlow",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "X",
+    "A",
+    "B",
+    "C",
+    "E",
+    "Rend",
+    "Rlow"
+  ],
+  "pointNames": {
+    "O": "O",
+    "A": "A",
+    "B": "B",
+    "C": "C"
+  },
+  "hiddenPointNames": [
+    "X",
+    "E",
+    "Rend",
+    "Rlow"
+  ],
+  "unmarkedPointNames": [
+    "X",
+    "E",
+    "Rend",
+    "Rlow"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sOR",
+      "refs": [
+        "O",
+        "Rend"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sOL",
+      "refs": [
+        "O",
+        "Rlow"
+      ],
+      "arrow": "END"
+    }
+  ],
+  "coordinateLabels": [
+    "A",
+    "B",
+    "C"
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lytx",
+        "ownerSegment": "sOR",
+        "text": "y=tx",
+        "labelAt": "END",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lylow",
+        "ownerSegment": "sOL",
+        "text": "y=tx",
+        "labelAt": "END",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "정사각형 OABC 위에 t가 작은 경우와 큰 경우의 두 경계 직선을 겹쳐 표시한다.",
+  "accessibilityDescription": "정사각형 OABC가 원점을 지나는 두 기울기의 반직선으로 나뉘는 두 대표 사례를 면색 없이 보여 준다. 더 가파른 선은 윗변, 완만한 선은 오른쪽 변을 통과한다.",
+  "sourceQuote": "[서답형 6] (서술) 그림과 같이 좌표평면 위의 원점 $O$와 ",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정사각형 O(0,0), A(4,0), B(4,4), C(0,4)",
+      "mappedTo": [
+        "O",
+        "A",
+        "B",
+        "C",
+        "sOA",
+        "sAB",
+        "sBE",
+        "sEC",
+        "sOC"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "직선 y=tx와 점 A를 포함하는 영역",
+      "mappedTo": [
+        "sOR",
+        "lytx",
+        "sOL",
+        "lylow"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정사각형에서 두 기울기의 경계 직선과 점 A가 속한 영역의 형태를 면색 없이 대조한다."
+  ]
+}
