@@ -1,0 +1,71 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A", "op": "SOURCE_POINT", "inputs": [],
+        "args": {"coordinates": [
+          {"kind": "integer", "value": "0"},
+          {"kind": "rational", "numerator": "2598076211353", "denominator": "1000000000000"}
+        ]}, "outputType": "POINT", "factRole": "GIVEN"
+      },
+      {
+        "id": "B", "op": "SOURCE_POINT", "inputs": [],
+        "args": {"coordinates": [
+          {"kind": "integer", "value": "3"},
+          {"kind": "rational", "numerator": "2598076211353", "denominator": "1000000000000"}
+        ]}, "outputType": "POINT", "factRole": "GIVEN"
+      },
+      {
+        "id": "C", "op": "SOURCE_POINT", "inputs": [],
+        "args": {"coordinates": [
+          {"kind": "rational", "numerator": "9", "denominator": "2"},
+          {"kind": "rational", "numerator": "2598076211353", "denominator": "1000000000000"}
+        ]}, "outputType": "POINT", "factRole": "GIVEN"
+      },
+      {
+        "id": "D", "op": "SOURCE_POINT", "inputs": [],
+        "args": {"coordinates": [
+          {"kind": "rational", "numerator": "9", "denominator": "2"},
+          {"kind": "integer", "value": "0"}
+        ]}, "outputType": "POINT", "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D"],
+  "hiddenPointNames": ["A", "B", "C", "D"],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {"id": "sAB", "refs": ["A", "B"]},
+    {"id": "sBC", "refs": ["B", "C"], "dashed": true},
+    {"id": "sAD", "refs": ["A", "D"]},
+    {"id": "sBD", "refs": ["B", "D"]},
+    {"id": "sCD", "refs": ["C", "D"]}
+  ],
+  "planeMarks": {
+    "angles": [
+      {"id": "angle30", "refs": ["B", "A", "D"], "value": 30, "label": "30", "style": "ARC", "factRole": "GIVEN"},
+      {"id": "angle60", "refs": ["C", "B", "D"], "value": 60, "label": "60", "style": "ARC", "factRole": "GIVEN"}
+    ]
+  },
+  "rightAngles": [{"id": "vertical", "refs": ["B", "C", "D"]}],
+  "coordinateCanvas": {"width": 600, "height": 420},
+  "caption": "헬리콥터가 수평으로 이동하며 같은 배를 각각 30도와 60도의 하강각으로 관측한 그림",
+  "accessibilityDescription": "같은 높이의 두 헬리콥터 관측 지점에서 수면 위 배를 향한 시선이 아래쪽으로 뻗어 있다. 첫 관측 각은 30도, 두 번째 관측 각은 60도이며, 배 바로 위에는 수직선이 있다.",
+  "sourceConditions": [
+    {"id": "source-problem", "condition": "좌초된 배를 향해 헬리콥터가 일정한 높이와 시속 90km로 이동한다. 처음 관측한 배의 하강각은 30도이고, 2분 후 두 번째 관측의 하강각은 60도이다. 두 번째 위치에서 배 바로 위까지 가는 시간을 묻는다.", "mappedTo": "mathPlan.nodes, displaySegments, planeMarks.angles"}
+  ],
+  "newVisualInformation": [
+    "두 관측 위치는 같은 수평선상에 있다.",
+    "배를 내려다보는 시선의 하강각은 각각 30도와 60도이다.",
+    "배의 바로 위 수평선 위치에서 수면까지의 선은 수직이다."
+  ]
+}
