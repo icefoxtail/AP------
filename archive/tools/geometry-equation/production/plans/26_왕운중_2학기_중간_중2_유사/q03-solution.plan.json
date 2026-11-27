@@ -1,0 +1,376 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3074708",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "6304086",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3506969",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2191398",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "30795965",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4145188",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "23"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "31345653",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-3715724",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "28"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I",
+    "D",
+    "E",
+    "F",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAI",
+      "refs": [
+        "A",
+        "I"
+      ]
+    },
+    {
+      "id": "sBI",
+      "refs": [
+        "B",
+        "I"
+      ]
+    },
+    {
+      "id": "sCI",
+      "refs": [
+        "C",
+        "I"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFD",
+      "refs": [
+        "F",
+        "D"
+      ]
+    },
+    {
+      "id": "sOE",
+      "refs": [
+        "O",
+        "E"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "sOF",
+      "refs": [
+        "O",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angle0",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 64,
+        "label": "64",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angle1",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 52,
+        "label": "52",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angle2",
+        "refs": [
+          "A",
+          "I",
+          "B"
+        ],
+        "value": 122,
+        "label": "122",
+        "arcs": 1,
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "angle3",
+        "refs": [
+          "E",
+          "O",
+          "D"
+        ],
+        "value": 124,
+        "label": "124",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angle4",
+        "refs": [
+          "O",
+          "E",
+          "F"
+        ],
+        "value": 24,
+        "label": "24",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angle5",
+        "refs": [
+          "O",
+          "F",
+          "D"
+        ],
+        "value": 38,
+        "label": "38",
+        "arcs": 1,
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "circum",
+        "count": 1,
+        "segments": [
+          "sOE",
+          "sOD",
+          "sOF"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "caption": "해설: 내심 각 AIB=122°, 외심 각 OFD=38°, 합 160°. 내심각=90°+C/2, 외심각의 이등변 성질.",
+  "accessibilityDescription": "해설용: 내심 각 AIB=122°, 외심 각 OFD=38°, 합 160°.; 원문의 점선·길이·각·점 표기 유지.",
+  "newVisualInformation": [
+    "내심 I: ABC의 각 A64°, B52°",
+    "외심 O: EOD124°, OEF24°",
+    "D와 F는 OE 양측"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "점 $I$는 $\\triangle ABC$의 내심이고 $\\angle A = 64^\\circ$, $\\angle B = 52^\\circ$일 때 $\\angle AIB = x$라 하자. 또 점 $O$는 예각삼각형 $DEF$의 외심이고 $\\angle EOD = 124^\\circ$, $\\angle OEF = 24^\\circ$이며 두 점 $D$, $F$가 직선 $OE$에 대하여 서로 반대쪽에 있을 때 $\\angle OFD = y$라 하자. 이때 $x + y$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
