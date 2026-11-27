@@ -1,0 +1,25 @@
+{
+  "capability":"solid-figure-v1",
+  "space":{
+    "points":[
+      {"id":"A","at":[5,-3,6]},
+      {"id":"P","at":[0,"24/7","2/7"]},
+      {"id":"B","at":[-2,6,-2]},
+      {"id":"O","at":[0,0,0],"hideName":true,"hideDot":true},
+      {"id":"Y","at":[0,1,0],"hideName":true,"hideDot":true},
+      {"id":"Z","at":[0,0,1],"hideName":true,"hideDot":true}
+    ],
+    "planes":[{"id":"alpha","name":"\\alpha","through":["O","Y","Z"]}],
+    "segments":[{"from":"A","to":"P"},{"from":"P","to":"B"}]
+  },
+  "dims":[{"from":"A","to":"P","label":"5t"},{"from":"P","to":"B","label":"2t"}],
+  "caption":"A(5,−3,6)와 B(−2,6,−2)를 잇는 선분이 yz평면 x=0과 만나는 점 P는 AP:PB=5:2이다 (t=AB/7).",
+  "accessibilityDescription":"x좌표가 양수인 A와 음수인 B 사이 선분이 yz평면 알파를 P(0,24/7,2/7)에서 가로지른다. 두 구간 AP, PB의 길이 비를 각각 5t, 2t로 표기한다.",
+  "sourceQuote":"A(5,−3,6), B(−2,6,−2), P∈yz평면, AP:PB=m:n, 서로소 m+n=7",
+  "sourceConditions":[
+    {"id":"c1","condition":"A와 B는 yz평면의 반대쪽에 있다","mappedTo":"space.points[0],space.points[2],space.planes[0]"},
+    {"id":"c2","condition":"P는 AB와 x=0의 교점","mappedTo":"space.points[1],space.segments"},
+    {"id":"c3","condition":"AP:PB=5:2","mappedTo":"dims[0],dims[1]"}
+  ],
+  "newVisualInformation":["문제에서 구해야 하는 두 정수의 비가 해설에서 확정된 뒤 이를 5t와 2t 치수 라벨로 나타내고, AB가 yz평면을 실제로 통과하는 관계를 시각화한다."]
+}

@@ -1,0 +1,29 @@
+{
+  "capability":"solid-figure-v1",
+  "space":{
+    "points":[
+      {"id":"C","at":[0,0,0]},
+      {"id":"Q","at":[5,0,0]},
+      {"id":"P","at":[5,5,0]}
+    ],
+    "segments":[
+      {"from":"C","to":"Q"}, {"from":"Q","to":"P"}, {"from":"C","to":"P"}
+    ]
+  },
+  "marks":{"rightAngles":[{"at":"Q","refs":["C","P"]}]},
+  "dims":[
+    {"from":"C","to":"Q","label":"5"},
+    {"from":"C","to":"P","label":"5\\sqrt{2}"},
+    {"from":"Q","to":"P","label":"5"}
+  ],
+  "caption":"구의 중심 C와 외부 점 P, 접점 Q의 삼각형은 CQ⊥PQ이므로 접선 길이는 5이다.",
+  "accessibilityDescription":"C를 중심, Q를 접점, P를 구 밖의 점으로 하는 직각삼각형. CQ는 반지름 5, CP는 5루트2, 접선 PQ는 5이고 Q에 직각표식이 있다. 구의 곡면은 해설 핵심이 아니므로 면을 칠하지 않는다.",
+  "sourceQuote":"구의 중심 C(2,−1,4), 반지름5, 외부점 P(−1,4,8), CP²=50, 접선 PQ의 길이5",
+  "sourceConditions":[
+    {"id":"c1","condition":"CQ는 구의 반지름5","mappedTo":"dims[0],space.segments[0]"},
+    {"id":"c2","condition":"CP²=50","mappedTo":"dims[1],space.segments[2]"},
+    {"id":"c3","condition":"접점 Q에서는 반지름과 접선이 수직","mappedTo":"marks.rightAngles,space.segments[1]"},
+    {"id":"c4","condition":"PQ=5","mappedTo":"dims[2]"}
+  ],
+  "newVisualInformation":["원문 절대좌표를 재표시하는 그림이 아니라 세 변의 길이가 정확한 합동 대표 직각삼각형이다. 꼭짓점·반지름·접선·빗변과 직각을 실제 치수·표식 필드에 배치한다."]
+}

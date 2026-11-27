@@ -1,0 +1,38 @@
+{
+  "capability":"solid-figure-v1",
+  "space":{
+    "points":[
+      {"id":"A","at":[-1,2,-5]},
+      {"id":"B","at":[1,3,-4]},
+      {"id":"A′","at":["7/3","-4/3","5/3"]},
+      {"id":"B′","at":["23/6","1/6","5/3"]},
+      {"id":"T","at":["13/3","-4/3","2/3"],"hideName":true,"hideDot":true}
+    ],
+    "planes":[{"id":"alpha","name":"\\alpha","through":["A′","B′","T"]}],
+    "segments":[
+      {"from":"A","to":"B"},
+      {"from":"A","to":"A′","style":"DASHED"},
+      {"from":"B","to":"B′","style":"DASHED"},
+      {"from":"A′","to":"B′"},
+      {"from":"A′","to":"T","style":"DASHED"}
+    ]
+  },
+  "marks":{"rightAngles":[
+    {"at":"A′","refs":["A","B′"]},
+    {"at":"B′","refs":["B","A′"]}
+  ]},
+  "dims":[
+    {"from":"A","to":"B","label":"\\sqrt{6}"},
+    {"from":"A′","to":"B′","label":"\\frac{3\\sqrt{2}}{2}"}
+  ],
+  "caption":"AB 길이 √6인 선분을 평면 x−y+2z−7=0에 직교사영하면 A′B′ 길이는 3√2/2이다.",
+  "accessibilityDescription":"공간 점 A와 B를 잇는 선분이 있고 각각 평면 알파로 내린 수선의 발 A′, B′까지 점선이 연결된다. 두 수선발에는 직각 표식이 있으며 사영 선분 A′B′에 3루트2/2 치수가 있다.",
+  "sourceQuote":"A(−1,2,−5), B(1,3,−4), α:x−y+2z−7=0; 사영 길이3√2/2",
+  "sourceConditions":[
+    {"id":"c1","condition":"A,B의 실제 좌표","mappedTo":"space.points[0],space.points[1]"},
+    {"id":"c2","condition":"평면 α의 법선 (1,−1,2)","mappedTo":"space.planes[0],marks.rightAngles"},
+    {"id":"c3","condition":"A′,B′는 α로 내린 수선발","mappedTo":"space.points[2],space.points[3],space.segments[1],space.segments[2]"},
+    {"id":"c4","condition":"AB=√6, A′B′=3√2/2","mappedTo":"dims[0],dims[1]"}
+  ],
+  "newVisualInformation":["발문의 평면 법선과 정확히 맞는 두 사영점을 독립 계산하고, 두 점선·두 직각표식·원 선분 및 사영 선분 길이를 함께 보여 준다."]
+}

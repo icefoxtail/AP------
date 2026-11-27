@@ -1,0 +1,36 @@
+{
+  "capability":"solid-figure-v1",
+  "space":{
+    "points":[
+      {"id":"P","at":[3,-6,9]},
+      {"id":"A","at":[3,-6,0]},
+      {"id":"B","at":[0,-6,9]},
+      {"id":"C","at":[3,0,9]},
+      {"id":"G","at":[2,-4,6]},
+      {"id":"M","at":["3/2",-3,9],"hideName":true,"hideDot":true}
+    ],
+    "segments":[
+      {"from":"P","to":"A","style":"DASHED"},
+      {"from":"P","to":"B","style":"DASHED"},
+      {"from":"P","to":"C","style":"DASHED"},
+      {"from":"A","to":"B"},
+      {"from":"B","to":"C"},
+      {"from":"C","to":"A"},
+      {"from":"A","to":"M","style":"DASHED"}
+    ]
+  },
+  "marks":{"rightAngles":[
+    {"at":"P","refs":["A","B"]},
+    {"at":"P","refs":["B","C"]}
+  ]},
+  "caption":"P(3,−6,9)를 세 좌표평면에 사영한 A(3,−6,0), B(0,−6,9), C(3,0,9)의 무게중심은 G(2,−4,6)이다.",
+  "accessibilityDescription":"공간 점 P에서 세 좌표축 방향의 직교 점선 PA, PB, PC가 뻗고 A, B, C를 이으면 삼각형이 된다. P에는 수직 관계의 직각 표식 두 개, 삼각형 내부에는 무게중심 G와 A에서 중점 M으로 향하는 점선 중선이 있다.",
+  "sourceQuote":"P(3,−6,9), xy·yz·zx 평면 위 사영 A(3,−6,0), B(0,−6,9), C(3,0,9); 무게중심 G(2,−4,6)",
+  "sourceConditions":[
+    {"id":"c1","condition":"A는 xy평면 사영, z=0","mappedTo":"space.points[1],space.segments[0]"},
+    {"id":"c2","condition":"B는 yz평면 사영, x=0","mappedTo":"space.points[2],space.segments[1]"},
+    {"id":"c3","condition":"C는 zx평면 사영, y=0","mappedTo":"space.points[3],space.segments[2]"},
+    {"id":"c4","condition":"G는 삼각형 ABC의 무게중심 (2,−4,6)","mappedTo":"space.points[4],space.segments[6]"}
+  ],
+  "newVisualInformation":["세 정사영이 서로 다른 좌표를 하나씩 0으로 만든다는 점을 세 직교 점선으로 강조하고, 삼각형의 무게중심과 한 중선을 추가한다."]
+}

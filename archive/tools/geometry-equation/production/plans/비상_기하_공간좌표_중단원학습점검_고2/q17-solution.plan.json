@@ -1,0 +1,31 @@
+{
+  "capability":"solid-figure-v1",
+  "space":{
+    "points":[
+      {"id":"P","at":[2,4,0]},
+      {"id":"Q","at":[-1,1,0]},
+      {"id":"R","at":[0,2,5]},
+      {"id":"H","at":[0,2,0]},
+      {"id":"O","at":[0,0,0],"hideName":true,"hideDot":true}
+    ],
+    "planes":[{"id":"alpha","name":"\\alpha","through":["P","Q","O"]}],
+    "segments":[
+      {"from":"P","to":"Q"},{"from":"Q","to":"R"},{"from":"R","to":"P"},
+      {"from":"R","to":"H","style":"DASHED"},
+      {"from":"H","to":"P","style":"DASHED"},
+      {"from":"H","to":"Q","style":"DASHED"}
+    ]
+  },
+  "marks":{"rightAngles":[{"at":"H","refs":["R","P"]}]},
+  "dims":[{"from":"P","to":"Q","label":"3\\sqrt2"},{"from":"R","to":"H","label":"5"}],
+  "caption":"P와 Q는 xy평면의 정사영이고 R(0,2,5)의 수선발 H는 PQ 위에 있어 삼각형 PQR의 높이는 5다.",
+  "accessibilityDescription":"xy평면 위 P(2,4,0), Q(−1,1,0)에 밑변 길이 3루트2가 표시되고 그 위 R(0,2,5)에서 선분 PQ의 H(0,2,0)까지 점선을 내린다. RH=5이며 H에 직각 표식이 있다.",
+  "sourceQuote":"A(2,4,3), B(−1,1,6), P(2,4,0), Q(−1,1,0), R(0,2,5), 면적 15√2/2",
+  "sourceConditions":[
+    {"id":"c1","condition":"P,Q는 A,B의 xy평면 사영","mappedTo":"space.points[0],space.points[1],space.planes[0]"},
+    {"id":"c2","condition":"R은 AB의 2:1 내분점 (0,2,5)","mappedTo":"space.points[2]"},
+    {"id":"c3","condition":"R의 xy평면 수선발 H=(0,2,0)은 PQ 위","mappedTo":"space.points[3],space.segments[3],marks.rightAngles[0]"},
+    {"id":"c4","condition":"밑변 PQ=3√2, 높이 RH=5","mappedTo":"dims[0],dims[1]"}
+  ],
+  "newVisualInformation":["원문 해설의 투영발 H와 선분 PQ 위의 위치를 명시하고, 높이 RH에 점선과 직각표식을 붙여 넓이 계산의 두 수치를 그림에 결속한다."]
+}

@@ -1,0 +1,34 @@
+{
+  "capability":"solid-figure-v1",
+  "space":{
+    "points":[
+      {"id":"C","at":[0,0,"sqrt(14)"]},
+      {"id":"H","at":[0,0,0]},
+      {"id":"Q","at":["sqrt(2)",0,0]},
+      {"id":"D","at":[0,2,0],"hideName":true,"hideDot":true}
+    ],
+    "planes":[{"id":"alpha","name":"\\alpha","through":["H","Q","D"]}],
+    "segments":[
+      {"from":"C","to":"H","style":"DASHED"},
+      {"from":"H","to":"Q"},
+      {"from":"C","to":"Q"},
+      {"from":"H","to":"D","style":"DASHED"}
+    ]
+  },
+  "marks":{"rightAngles":[{"at":"H","refs":["C","Q"]}]},
+  "dims":[
+    {"from":"C","to":"H","label":"\\sqrt{14}"},
+    {"from":"H","to":"Q","label":"\\sqrt{2}"},
+    {"from":"C","to":"Q","label":"4"}
+  ],
+  "caption":"구의 중심 C에서 단면 평면 α에 내린 수선 CH의 길이는 √14, 구 반지름 CQ는 4이므로 단면 원의 반지름 HQ는 √2이다.",
+  "accessibilityDescription":"단면 평면 알파 위 원의 중심 H에서 원주 위 점 Q까지 반지름 루트2를 표시하고, 구 중심 C는 평면 위로 루트14만큼 떨어져 있다. 구의 반지름 CQ=4이며 H에서 직각 표식이 있다.",
+  "sourceQuote":"구 중심 (2,−3,−1), 반지름4, 평면 3x−2y−z+1=0, 중심-평면 거리√14, 단면 반지름√2",
+  "sourceConditions":[
+    {"id":"c1","condition":"구의 반지름은 4","mappedTo":"dims[2]"},
+    {"id":"c2","condition":"구 중심에서 평면까지 거리√14","mappedTo":"space.segments[0],dims[0]"},
+    {"id":"c3","condition":"중심 C의 정사영 H는 평면 위이며 CH⊥α","mappedTo":"space.planes[0],marks.rightAngles[0]"},
+    {"id":"c4","condition":"단면 원의 반지름 HQ=√2","mappedTo":"dims[1],space.segments[1]"}
+  ],
+  "newVisualInformation":["원문과 거리·각을 보존하는 국소 직각단면 대표 좌표를 썼다. 구의 면 채움 없이 중심-단면 거리, 단면 반지름, 원래 구의 반지름과 직각을 표시한다."]
+}
