@@ -1342,8 +1342,8 @@ window.questionBank = [
     "level": "상",
     "levelReason": "주어진 넓이와 삼각비로 AB 길이를 찾고 피타고라스 정리로 AC를 구한다.",
     "solutionImage": "assets/images/22_신흥중_2학기_중간_중3_수학/q22-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼각형의 C에서 밑변 AB에 내린 수선이 H에 닿는다. B의 60도와 BC=5로 높이를 구하고, AB를 BH와 HA로 나눈다.",
-    "solutionImageCaption": "CH=5√3/2 cm이고 삼각형의 넓이에서 AB=8 cm이다. BH=5/2 cm이므로 AH=11/2 cm이다. 직각삼각형 ACH에서 AC=7 cm이다.",
+    "solutionImageAlt": "풀이용 높이 AH⊥BC를 점선으로 그려 CH=1과 AC=7을 구한다.",
+    "solutionImageCaption": "풀이용 높이 AH⊥BC를 점선으로 그려 CH=1과 AC=7을 구한다.",
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",

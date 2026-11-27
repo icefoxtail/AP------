@@ -417,8 +417,8 @@ window.examData = {
   },
   {
     "id": 11,
-    "imageSize": "tall",
-    "imageAlt": "사각형 ABCD와 EFGH가 닮았다. 닮음비는 2:3이고 C의 각은 70°이다. 큰 사각형의 EH는 6 cm이다.",
+    "imageSize": "full",
+    "imageAlt": "두 닮은 사각형 ABCD와 EFGH의 대응 꼭짓점·각, EH=6 cm와 닮음비 2:3을 나타낸다.",
     "questionNumber": 11,
     "score": 3,
     "level": "하",
@@ -455,7 +455,8 @@ window.examData = {
     "solutionImage": "assets/images/21_풍덕중_2학기_중간_중2_수학/q11-solution.svg",
     "solutionImageAlt": "닮음비 2:3에서 AD=4 cm, 대응각 G=70°로 연결되는 구조를 함께 표시한다.",
     "solutionImageCaption": "닮음비 2:3에서 AD=4 cm, 대응각 G=70°로 연결되는 구조를 함께 표시한다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageCaption": "두 닮은 사각형 ABCD와 EFGH의 대응 꼭짓점·각, EH=6 cm와 닮음비 2:3을 나타낸다."
   },
   {
     "id": 12,
@@ -502,8 +503,8 @@ window.examData = {
   },
   {
     "id": 13,
-    "imageSize": "tall",
-    "imageAlt": "사각기둥 (가)의 높이는 4 cm이고 사각기둥 (나)의 대응 높이는 8 cm이다. 보이지 않는 뒤쪽 선은 점선이다.",
+    "imageSize": "full",
+    "imageAlt": "서로 닮은 두 직육면체 (가)·(나)의 대응 높이가 각각 4 cm, 8 cm이다.",
     "questionNumber": 13,
     "score": 4,
     "level": "중",
@@ -548,12 +549,13 @@ window.examData = {
     "solutionImage": "assets/images/21_풍덕중_2학기_중간_중2_수학/q13-solution.svg",
     "solutionImageAlt": "대응 길이의 비 1:2에 대해 부피의 비는 1:8로 계산한다.",
     "solutionImageCaption": "대응 길이의 비 1:2에 대해 부피의 비는 1:8로 계산한다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageCaption": "서로 닮은 두 직육면체 (가)·(나)의 대응 높이가 각각 4 cm, 8 cm이다."
   },
   {
     "id": 14,
-    "imageSize": "tall",
-    "imageAlt": "왼쪽 ABC에서 B의 각은 50°, BC는 8 cm이다. 오른쪽 DEF에서도 E의 각은 50°이고 EF는 4 cm이다.",
+    "imageSize": "full",
+    "imageAlt": "두 삼각형 ABC, DEF에서 각 B와 E가 각각 50°이고 BC=8 cm, EF=4 cm인 조건을 표시한다.",
     "questionNumber": 14,
     "score": 4,
     "level": "중",
@@ -598,7 +600,8 @@ window.examData = {
     "solutionImage": "assets/images/21_풍덕중_2학기_중간_중2_수학/q14-solution.svg",
     "solutionImageAlt": "정답 추가 조건 AB=12 cm, DE=6 cm를 그리면 ∠B=∠E=50°, AB:DE=BC:EF=2:1이어서 SAS 닮음이다.",
     "solutionImageCaption": "정답 추가 조건 AB=12 cm, DE=6 cm를 그리면 ∠B=∠E=50°, AB:DE=BC:EF=2:1이어서 SAS 닮음이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageCaption": "두 삼각형 ABC, DEF에서 각 B와 E가 각각 50°이고 BC=8 cm, EF=4 cm인 조건을 표시한다."
   },
   {
     "id": 15,
@@ -648,8 +651,8 @@ window.examData = {
   },
   {
     "id": 16,
-    "imageSize": "tall",
-    "imageAlt": "A와 D에 직각 표시가 있다. AD는 4 cm, BD는 2 cm, DC는 x cm이다.",
+    "imageSize": "full",
+    "imageAlt": "직각삼각형 ABC에서 AD는 빗변 BC에 내린 높이이다. BD=2 cm, AD=4 cm, DC=x cm.",
     "questionNumber": 16,
     "score": 3,
     "level": "하",
@@ -686,12 +689,13 @@ window.examData = {
     "solutionImage": "assets/images/21_풍덕중_2학기_중간_중2_수학/q16-solution.svg",
     "solutionImageAlt": "닮은 삼각형 DBA와 DAC에서 AD²=BD·DC, 따라서 DC=8 cm이다.",
     "solutionImageCaption": "닮은 삼각형 DBA와 DAC에서 AD²=BD·DC, 따라서 DC=8 cm이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageCaption": "직각삼각형 ABC에서 AD는 빗변 BC에 내린 높이이다. BD=2 cm, AD=4 cm, DC=x cm."
   },
   {
     "id": 17,
-    "imageSize": "tall",
-    "imageAlt": "AD는 5 cm, AB는 6 cm, BF는 4 cm이다. AB를 연장하면 F가 되며, DF가 아래 변 BC를 E에서 지나간다.",
+    "imageSize": "full",
+    "imageAlt": "평행사변형 ABCD에서 F는 AB의 연장선에 있고 D, E, F는 한 직선에 있다. AD=5, AB=6, BF=4 cm.",
     "questionNumber": 17,
     "score": 4,
     "level": "중",
@@ -724,12 +728,13 @@ window.examData = {
     "image": "assets/images/21_풍덕중_2학기_중간_중2_수학/q17-problem-visual-v2.svg",
     "images": ["assets/images/21_풍덕중_2학기_중간_중2_수학/q17-problem-visual-v2.svg"],
     "answer": "④",
-    "solution": "평행사변형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AD}}=5\\text{ cm}, \\overline{\\mathrm{AB}}=6\\text{ cm}$이고, $\\overline{\\mathrm{AB}}$의 연장선 위의 점 $\\mathrm{F}$에 대하여 $\\overline{\\mathrm{BF}}=4\\text{ cm}$일 때, $\\overline{\\mathrm{DF}}$와 $\\overline{\\mathrm{BC}}$의 교점 $\\mathrm{E}$에 대한 선분 $\\overline{\\mathrm{EC}}$의 길이를 구한다.\n\n- $\\overline{\\mathrm{BE}} \\parallel \\overline{\\mathrm{AD}}$이므로 $\\triangle\\mathrm{FBE} \\sim \\triangle\\mathrm{FAD}$ ($\\mathrm{AA}$ 닮음)이다.\n- 닮음비를 이용하여 $\\overline{\\mathrm{BE}}$의 길이를 구한다.\n- 평행사변형의 대변의 성질 $\\overline{\\mathrm{BC}} = \\overline{\\mathrm{AD}} = 5\\text{ cm}$에서 $\\overline{\\mathrm{EC}} = \\overline{\\mathrm{BC}} - \\overline{\\mathrm{BE}}$를 계산한다.\n\n1단계: $\\overline{\\mathrm{AF}}$의 전체 길이\n$\\overline{\\mathrm{AF}} = \\overline{\\mathrm{AB}} + \\overline{\\mathrm{BF}} = 6 + 4 = 10\\text{ cm}$\n\n2단계: $\\triangle\\mathrm{FBE} \\sim \\triangle\\mathrm{FAD}$ 닮음비 적용하여 $\\overline{\\mathrm{BE}}$ 구하기\n$\\dfrac{\\overline{\\mathrm{BE}}}{\\overline{\\mathrm{AD}}} = \\dfrac{\\overline{\\mathrm{FB}}}{\\overline{\\mathrm{FA}}}$\n$\\dfrac{\\overline{\\mathrm{BE}}}{5} = \\dfrac{4}{10} = \\dfrac{2}{5}$\n$\\overline{\\mathrm{BE}} = 5 \\times \\dfrac{2}{5} = 2\\text{ cm}$\n\n3단계: $\\overline{\\mathrm{EC}}$의 길이 계산하기\n평행사변형에서 대변의 길이는 같으므로 $\\overline{\\mathrm{BC}} = \\overline{\\mathrm{AD}} = 5\\text{ cm}$이다.\n따라서:\n$\\overline{\\mathrm{EC}} = \\overline{\\mathrm{BC}} - \\overline{\\mathrm{BE}} = 5 - 2 = 3\\text{ cm}$\n\n각 선지를 확인하면 다음과 같다.\n① $2\\text{ cm}$: $\\overline{\\mathrm{BE}}$의 길이이다.\n② $\\dfrac{12}{5}\\text{ cm}$: 오답\n③ $\\dfrac{13}{5}\\text{ cm}$: 오답\n④ $3\\text{ cm}$: 구한 $\\overline{\\mathrm{EC}}$의 길이와 정확히 일치함\n⑤ $\\dfrac{16}{5}\\text{ cm}$: 오답\n\n따라서 $\\overline{\\mathrm{EC}}$의 길이는 ④ $3\\text{ cm}$이다."
+    "solution": "평행사변형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AD}}=5\\text{ cm}, \\overline{\\mathrm{AB}}=6\\text{ cm}$이고, $\\overline{\\mathrm{AB}}$의 연장선 위의 점 $\\mathrm{F}$에 대하여 $\\overline{\\mathrm{BF}}=4\\text{ cm}$일 때, $\\overline{\\mathrm{DF}}$와 $\\overline{\\mathrm{BC}}$의 교점 $\\mathrm{E}$에 대한 선분 $\\overline{\\mathrm{EC}}$의 길이를 구한다.\n\n- $\\overline{\\mathrm{BE}} \\parallel \\overline{\\mathrm{AD}}$이므로 $\\triangle\\mathrm{FBE} \\sim \\triangle\\mathrm{FAD}$ ($\\mathrm{AA}$ 닮음)이다.\n- 닮음비를 이용하여 $\\overline{\\mathrm{BE}}$의 길이를 구한다.\n- 평행사변형의 대변의 성질 $\\overline{\\mathrm{BC}} = \\overline{\\mathrm{AD}} = 5\\text{ cm}$에서 $\\overline{\\mathrm{EC}} = \\overline{\\mathrm{BC}} - \\overline{\\mathrm{BE}}$를 계산한다.\n\n1단계: $\\overline{\\mathrm{AF}}$의 전체 길이\n$\\overline{\\mathrm{AF}} = \\overline{\\mathrm{AB}} + \\overline{\\mathrm{BF}} = 6 + 4 = 10\\text{ cm}$\n\n2단계: $\\triangle\\mathrm{FBE} \\sim \\triangle\\mathrm{FAD}$ 닮음비 적용하여 $\\overline{\\mathrm{BE}}$ 구하기\n$\\dfrac{\\overline{\\mathrm{BE}}}{\\overline{\\mathrm{AD}}} = \\dfrac{\\overline{\\mathrm{FB}}}{\\overline{\\mathrm{FA}}}$\n$\\dfrac{\\overline{\\mathrm{BE}}}{5} = \\dfrac{4}{10} = \\dfrac{2}{5}$\n$\\overline{\\mathrm{BE}} = 5 \\times \\dfrac{2}{5} = 2\\text{ cm}$\n\n3단계: $\\overline{\\mathrm{EC}}$의 길이 계산하기\n평행사변형에서 대변의 길이는 같으므로 $\\overline{\\mathrm{BC}} = \\overline{\\mathrm{AD}} = 5\\text{ cm}$이다.\n따라서:\n$\\overline{\\mathrm{EC}} = \\overline{\\mathrm{BC}} - \\overline{\\mathrm{BE}} = 5 - 2 = 3\\text{ cm}$\n\n각 선지를 확인하면 다음과 같다.\n① $2\\text{ cm}$: $\\overline{\\mathrm{BE}}$의 길이이다.\n② $\\dfrac{12}{5}\\text{ cm}$: 오답\n③ $\\dfrac{13}{5}\\text{ cm}$: 오답\n④ $3\\text{ cm}$: 구한 $\\overline{\\mathrm{EC}}$의 길이와 정확히 일치함\n⑤ $\\dfrac{16}{5}\\text{ cm}$: 오답\n\n따라서 $\\overline{\\mathrm{EC}}$의 길이는 ④ $3\\text{ cm}$이다.",
+    "imageCaption": "평행사변형 ABCD에서 F는 AB의 연장선에 있고 D, E, F는 한 직선에 있다. AD=5, AB=6, BF=4 cm."
   },
   {
     "id": 18,
-    "imageSize": "tall",
-    "imageAlt": "AD=8 cm, BC=14 cm이다. M과 N의 가운데 선이 두 대각선과 P, Q에서 차례로 만난다. PQ는 x cm이다.",
+    "imageSize": "full",
+    "imageAlt": "윗변 AD=8 cm, 아랫변 BC=14 cm인 사다리꼴. M,N은 양 옆변의 중점이고 두 대각선이 MN을 P,Q에서 만난다.",
     "questionNumber": 18,
     "score": 4,
     "level": "중",
@@ -766,7 +771,8 @@ window.examData = {
     "solutionImage": "assets/images/21_풍덕중_2학기_중간_중2_수학/q18-solution.svg",
     "solutionImageAlt": "중점연결선에서 MP=AD/2=4, MQ=BC/2=7이므로 PQ=3 cm이다.",
     "solutionImageCaption": "중점연결선에서 MP=AD/2=4, MQ=BC/2=7이므로 PQ=3 cm이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageCaption": "윗변 AD=8 cm, 아랫변 BC=14 cm인 사다리꼴. M,N은 양 옆변의 중점이고 두 대각선이 MN을 P,Q에서 만난다."
   },
   {
     "id": 19,
