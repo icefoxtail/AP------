@@ -1,0 +1,27 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "functionName": "f",
+    "xWindow": [-1, 4],
+    "pieces": [
+      {"coefficients": ["2", "0", "-1"], "domain": [null, 2], "end": "OPEN"},
+      {"coefficients": ["1", "0", "1"], "domain": [2, null], "start": "CLOSED"}
+    ],
+    "limitArrows": [
+      {"at": "2", "side": "LEFT", "toY": "-2"},
+      {"at": "2", "side": "RIGHT", "toY": "5"}
+    ],
+    "requiredPoints": [{"id": "V", "x": 0, "y": 2}],
+    "axisTickValues": {"x": [2], "y": [-2, 5]}
+  },
+  "caption": "x=2에서 왼쪽은 열린 점 (2,-2), 오른쪽은 닫힌 점 (2,5)로 접근하는 f(x)의 좌우 극한",
+  "accessibilityDescription": "x=2의 왼쪽에서 그래프가 -2에 가까워지고 오른쪽에서 5에 가까워진다. 열린 점과 닫힌 점, 양쪽 접근 방향을 표시한 그래프다.",
+  "sourceQuote": "f(x)=\\begin{cases} x^2+1 & (x \\ge 2) \\\\ -x^2+2 & (x < 2) \\end{cases}",
+  "sourceConditions": [
+    {"id": "c1", "condition": "x<2에서는 f(x)=-x^2+2", "mappedTo": ["graphPlan.pieces[0].coefficients", "graphPlan.pieces[0].domain", "graphPlan.pieces[0].end"]},
+    {"id": "c2", "condition": "x>=2에서는 f(x)=x^2+1", "mappedTo": ["graphPlan.pieces[1].coefficients", "graphPlan.pieces[1].domain", "graphPlan.pieces[1].start"]},
+    {"id": "c3", "condition": "x=2의 좌극한은 -2, 우극한은 5", "mappedTo": ["graphPlan.limitArrows", "graphPlan.axisTickValues"]}
+  ],
+  "newVisualInformation": ["좌극한 -2의 빈 점과 우극한 5의 찬 점을 같은 x=2에서 분리해 실제 표시", "두 방향의 극한 접근 화살표와 좌표축 점선"]
+}
