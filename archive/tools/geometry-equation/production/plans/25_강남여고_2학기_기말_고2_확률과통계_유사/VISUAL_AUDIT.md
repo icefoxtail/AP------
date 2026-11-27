@@ -1,5 +1,18 @@
 # 25_강남여고_2학기_기말_고2_확률과통계_유사 — 2축 SVG plan 감사
 
+## 2026-11-28 독립 재검증 결과 (최신 기록)
+
+- 작업 전 원격 `origin/main` **90e538f1d596cd9ad9194832168976c863d92c9a**를 새로 조회했다. 아래 2026-11-27 기록의 `ddb73cda`는 당시 기준 SHA로서 최신 main을 뜻하지 않는다. 원문 JS, 직접 연결 유사 SVG 4개, 기출 PNG·SVG, 기존 `_plans/`, 공식 17개 plan 및 엔진 제약을 재대조했다.
+- **24문항 × 문제·해설 = 48/48축**. 문제 **EXEMPT 24**, 해설 **BENEFICIAL 17·EXEMPT 7**, 전체 **REQUIRED 0·BENEFICIAL 17·EXEMPT 31**. 아래 문항별 표에서 각각 면제 이유와 수학 도해 필요성을 확인한다.
+- 기존 공식 production plan **유지 17·수정 0·신규 0**. 모든 plan의 `sourceConditions`, `mappedTo`(문자열/배열 형태 모두 확인), `caption`, `newVisualInformation`, `accessibilityDescription`, 곡선·좌표·분절점·유효 정의역·음영 경계를 보존한다. `STATIC_FIELD_PARITY` **17 PASS / EXEMPT 31 N/A**이며 `DRAWN_FEATURE_PARITY` **실제 렌더 PASS 0·RENDER_NOT_RUN 17**. 정적 1:1 대응을 실물 SVG PASS로 해석하지 않는다.
+- 공식 검수(28개 합산과 구별): 이 폴더 JSON 파싱·필수 스키마 **17 PASS / FAIL 0 / SKIP 0**, 공식 Shallow lint **17 PASS / FAIL 0 / SKIP 0**, 공식 Full lint **17 PASS / FAIL 0 / SKIP 0**. Full lint에서는 lockfile의 NotoSansKR 글꼴 SHA256을 확인하고 `opentype.js`, `mathjax-full` 런타임을 준비해 재실행했다. 최초 의존성 누락으로 보였던 3개 SKIP은 plan 결함이 아니며 최종 집계에 포함하지 않는다.
+- **`ORIGINAL_EXAM_PNG_CONFLICT` 12번**: 기출 `q12_density_graph.png`는 꼭짓점 `(3,0)`과 끝점 `(4,a)`인 데 반해 현행 유사 JS는 `(2,0)`, `(5,a)` 및 `a=2/5`를 사용한다. **`ORIGINAL_EXAM_SVG_VARIANT_CONFLICT` 12번**: 기출 `q12-solution-v2.svg`도 `x=1`부터 `4`까지의 영역을 설명한다. 직접 연결된 유사판 `q12-solution.svg`와 현행 JS의 `(0,2/5) → (2,0) → (5,2/5)`, `[1,2]`·`[2,5]` 실제 음영을 제작 기준으로 유지했다. 다른 버전의 숫자를 섞어 그리지 않는다.
+- 직접 연결 유사 SVG는 07·08·12·16의 4개이고, 07·16은 **`ORIGINAL_CAPTION_ONLY`**, 08·12는 전체 흰색 배경 `rect`가 있다. plan JSON에는 불필요한 배경 채움 항목을 추가하지 않았으나 공식 `stat-chart-v1.mjs` 및 `number-line-v1.mjs`가 자체적으로 기본 흰 배경 `rect`를 삽입한다. **`ENGINE_CAPABILITY_PENDING:TRANSPARENT_CANVAS_OPTION`**은 관련됨(요청·우회 구현 금지). `MULTI_CURVE_INVERSE_CUBIC`과 `PIECEWISE_POLYNOMIAL_UPPERCASE_FUNCTION_NAME`은 해당 없음.
+- 대상 두 시험지의 production plan 폴더와 변경 파일이 겹치는 열린 PR 없음. 단, 오래된 draft [#1985](https://github.com/icefoxtail/AP------/pull/1985)가 **매산여고 유사 JS**를 변경하므로, 이후 이 PR을 병합한다면 **조건·계수·음영 재검증 필요**. 현재 작업은 최신 main JS를 기준으로 하며 기존 JS나 SVG는 수정하지 않는다.
+- **RENDER_NOT_RUN**: `/usr/bin/chromium --version` 실행 실패(`exitCode=127`, `/usr/lib/chromium/chromium` 부재). 공식 `render-plan.mjs`의 별도 대표 plan으로 재시도한 결과 `ARCHIVE_PREFLIGHT_FAIL`; 17개의 학생화면·A4·SVG 실출력 및 육안 대조는 수행하지 못했다.
+
+## 이전 상세 감사 및 이력
+
 - 원문: `archive/exams/similar/high/h2/2final/25_강남여고_2학기_기말_고2_확률과통계_유사.js` (현행 main).
 - 24문항 × 2축 = **48축**을 각각 판정.
 - 공식 실행형 plan: **17개**, 도형 불필요(EXEMPT): **31축**.
@@ -83,7 +96,7 @@
 | 09 | EXEMPT | BENEFICIAL | 없음 | `q09-solution.plan.json` | PASS | 원본 없음 / 렌더 보류 | 세 정규곡선 평균 70·80 및 표준편차 10·15 비교. |
 | 10 | EXEMPT | BENEFICIAL | 없음 | `q10-solution.plan.json` | PASS | 원본 없음 / 렌더 보류 | 정규근사 N(80,8²), 구간 68~88. |
 | 11 | EXEMPT | BENEFICIAL | 없음 | `q11-solution.plan.json` | PASS | 원본 없음 / 렌더 보류 | 표본평균 N(80,2²)의 77 이상 꼬리. |
-| 12 | EXEMPT | BENEFICIAL | `q12-solution.svg` | `q12-solution.plan.json` | PASS | 정적 경계 개선 / 렌더 보류 | 1~2와 2~5 음영을 영점에서 분리. |
+| 12 | EXEMPT | BENEFICIAL | `q12-solution.svg` | `q12-solution.plan.json` | PASS | ORIGINAL_EXAM_PNG_CONFLICT·ORIGINAL_EXAM_SVG_VARIANT_CONFLICT / RENDER_NOT_RUN | 유사판 1~2와 2~5 음영을 영점 2에서 분리. 기출은 영점 3·끝점 4, 유사판은 영점 2·끝점 5. |
 | 13 | EXEMPT | EXEMPT | 없음 | 없음 | N/A | N/A | 표본 크기와 신뢰구간 폭의 대수식. |
 | 14 | EXEMPT | EXEMPT | 없음 | 없음 | N/A | N/A | 4장 선택 경우의 수와 확률표 산출. |
 | 15 | EXEMPT | EXEMPT | 없음 | 없음 | N/A | N/A | 이항확률 다항방정식. |
