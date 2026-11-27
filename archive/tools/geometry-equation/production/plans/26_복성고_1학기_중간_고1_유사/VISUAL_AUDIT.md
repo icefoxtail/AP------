@@ -45,7 +45,7 @@
 | q16/문제 | 문제 그림에서 α·β 길이 라벨 누락; 검수: B 직각, A/B/C/D/P/Q, AB=α,BC=β | `construction-spike-v1` | [q16-problem.plan.json](./q16-problem.plan.json) | OK/OK | STRUCTURAL_1:1 / RENDER_UNVERIFIED |
 | q16/해설 | 해설 그림 BP=u,BQ=v 길이 라벨 누락; 검수: 직각 B, 직사각형 BPDQ, BP=u,BQ=v, D∈AC | `construction-spike-v1` | [q16-solution.plan.json](./q16-solution.plan.json) | OK/OK | STRUCTURAL_1:1 / RENDER_UNVERIFIED |
 | q17/문제 | 유사 원문에 문제/해설 SVG 연결 없음. 도형 없이 텍스트·수식으로 관계가 완결되는 축 | — (TEXT_ONLY) | — | N/A | N/A — NO_DRAWN_FEATURE |
-| q17/해설 | 복소평면 원 그림 있음에도 기존 EXEMPT, 보조선/좌표 계획 없음; 검수: 반지름 2, 점 (±√3,±1), AB/CD 수직 점선 | `construction-spike-v1` | [q17-solution.plan.json](./q17-solution.plan.json) | OK/OK | PARTIAL — ENGINE_CAPABILITY_PENDING:COMPLEX_PLANE_AXIS_TITLES(Re/Im); RENDER_UNVERIFIED |
+| q17/해설 | 복소평면 원 그림 있음에도 기존 EXEMPT, 보조선/좌표 계획 없음; 검수: 반지름 2, 점 (±√3,±1), AB/CD 보조선은 실선 (원본은 점선) | `construction-spike-v1` | [q17-solution.plan.json](./q17-solution.plan.json) | OK/OK | PARTIAL — ENGINE_CAPABILITY_PENDING:COMPLEX_PLANE_AXIS_TITLES(Re/Im)+COORDINATE_DASHED_GUIDES; RENDER_UNVERIFIED |
 | q18/문제 | 유사 원문에 문제/해설 SVG 연결 없음. 도형 없이 텍스트·수식으로 관계가 완결되는 축 | — (TEXT_ONLY) | — | N/A | N/A — NO_DRAWN_FEATURE |
 | q18/해설 | S1/S2 구별·보조선·모든 꼭짓점 원본 대비 검토; 검수: B(−3,0),O,D(0,18),C(−6,36),A(6,0), S1/S2 각기 다른 면 | `polynomial-spike-v1` | [q18-solution.plan.json](./q18-solution.plan.json) | OK/OK | STRUCTURAL_1:1 / RENDER_UNVERIFIED |
 | q19/문제 | 유사 원문에 문제/해설 SVG 연결 없음. 도형 없이 텍스트·수식으로 관계가 완결되는 축 | — (TEXT_ONLY) | — | N/A | N/A — NO_DRAWN_FEATURE |
@@ -66,6 +66,7 @@
 - 플랜 필드에 있는 각 점·길이·선·점선·영역은 린트의 모델/식 검증을 통과했지만, SVG 픽셀 출력·라벨 충돌·배경의 최종 확인은 **PENDING**이다.
 - `ENGINE_CAPABILITY_PENDING:TRANSPARENT_CANVAS_OPTION`: 흰색 기본 캔버스 제거(전역).
 - `ENGINE_CAPABILITY_PENDING:COMPLEX_PLANE_AXIS_TITLES`: 복성고 q17/해설의 Re·Im 축 제목을 construction-spike-v1에서 명시하는 기능. 현재 플랜은 수학적으로 동일한 좌표 x,y를 쓰며 원본과 글자 1:1은 미달이다.
+- `ENGINE_CAPABILITY_PENDING:COORDINATE_DASHED_GUIDES`: 복성고 q17/해설의 좌표평면 내 AB·CD 보조선을 점선으로 출력하는 옵션. `displaySegments[].dashed`는 PLANE_FIGURE_v1에만 허용되므로 좌표평면에서는 거절된다. 현재 플랜은 정확한 위치의 실선 보조선으로 처리한 부분 패리티이다.
 - 렌더/독립 관측 환경 정상화 후 모든 13개 플랜에서 `DRAWN_FEATURE_PARITY`를 최종 SVG 레이어·라벨·투명도까지 다시 1:1 확인해야 학생 운영 SVG 교체가 가능하다.
 
 ## 검사 명령
