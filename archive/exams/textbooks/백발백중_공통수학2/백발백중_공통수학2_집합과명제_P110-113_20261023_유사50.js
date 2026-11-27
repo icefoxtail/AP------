@@ -67,8 +67,9 @@ window.questionBank = [
     },
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P110-113_20261023_유사50/BV-BAKBAL-H-COM2-P110-Q01-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "서로소인 부분집합은 U에서 A를 뺀 원소만 선택할 수 있다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "서로소인 부분집합은 U에서 A를 뺀 원소만 선택할 수 있다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P110-Q01-S1-R1",
@@ -137,8 +138,9 @@ window.questionBank = [
     },
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P110-113_20261023_유사50/BV-BAKBAL-H-COM2-P110-Q01-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "서로소인 부분집합은 U에서 A를 뺀 원소만 선택할 수 있다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "서로소인 부분집합은 U에서 A를 뺀 원소만 선택할 수 있다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P110-Q01-S2-R1",
@@ -207,8 +209,9 @@ window.questionBank = [
     },
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P110-113_20261023_유사50/BV-BAKBAL-H-COM2-P110-Q01-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "서로소인 부분집합은 U에서 A를 뺀 원소만 선택할 수 있다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "서로소인 부분집합은 U에서 A를 뺀 원소만 선택할 수 있다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P110-Q02-T1-R1",
@@ -277,8 +280,9 @@ window.questionBank = [
     },
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P110-113_20261023_유사50/BV-BAKBAL-H-COM2-P110-Q02-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "각 원소의 두 집합 소속과 연산할 영역을 비교한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "각 원소의 두 집합 소속과 연산할 영역을 비교한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P110-Q02-S1-R1",
@@ -347,8 +351,9 @@ window.questionBank = [
     },
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P110-113_20261023_유사50/BV-BAKBAL-H-COM2-P110-Q02-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "각 원소의 두 집합 소속과 연산할 영역을 비교한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "각 원소의 두 집합 소속과 연산할 영역을 비교한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P110-Q02-S2-R1",
@@ -417,8 +422,9 @@ window.questionBank = [
     },
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P110-113_20261023_유사50/BV-BAKBAL-H-COM2-P110-Q02-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "각 원소의 두 집합 소속과 연산할 영역을 비교한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "각 원소의 두 집합 소속과 연산할 영역을 비교한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P110-Q03-T1-R1",
@@ -690,8 +696,9 @@ window.questionBank = [
     },
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P110-113_20261023_유사50/BV-BAKBAL-H-COM2-P110-Q04-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "A는 B 안에 들어 있고, 포함관계에서 교집합·합집합·여집합의 방향을 확인한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "A는 B 안에 들어 있고, 포함관계에서 교집합·합집합·여집합의 방향을 확인한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P110-Q04-S1-R1",
@@ -762,8 +769,9 @@ window.questionBank = [
     },
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P110-113_20261023_유사50/BV-BAKBAL-H-COM2-P110-Q04-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "A는 B 안에 들어 있고, 포함관계에서 교집합·합집합·여집합의 방향을 확인한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "A는 B 안에 들어 있고, 포함관계에서 교집합·합집합·여집합의 방향을 확인한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P110-Q04-S2-R1",
@@ -834,8 +842,9 @@ window.questionBank = [
     },
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P110-113_20261023_유사50/BV-BAKBAL-H-COM2-P110-Q04-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "A는 B 안에 들어 있고, 포함관계에서 교집합·합집합·여집합의 방향을 확인한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "A는 B 안에 들어 있고, 포함관계에서 교집합·합집합·여집합의 방향을 확인한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P110-Q05-T1-R1",

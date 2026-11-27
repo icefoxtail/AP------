@@ -66,8 +66,9 @@ window.questionBank = [
     },
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P114-117_20261023_유사50/BV-BAKBAL-H-COM2-P114-Q01-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "A=[2,3]이 B=[a,5]·C=[0,b]에 포함되므로 a≤2, b≥3. 경계에서 M=2, m=3이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "A=[2,3]이 B=[a,5]·C=[0,b]에 포함되므로 a≤2, b≥3. 경계에서 M=2, m=3이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P114-Q01-S1-R1",
@@ -135,8 +136,9 @@ window.questionBank = [
     },
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P114-117_20261023_유사50/BV-BAKBAL-H-COM2-P114-Q01-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "A⊆B⊆C의 각 포함 단계에서 미정 원소를 확정해 원 안의 원소를 대조한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "A⊆B⊆C의 각 포함 단계에서 미정 원소를 확정해 원 안의 원소를 대조한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P114-Q01-S2-R1",
@@ -204,8 +206,9 @@ window.questionBank = [
     },
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P114-117_20261023_유사50/BV-BAKBAL-H-COM2-P114-Q01-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "A⊆B⊆C의 각 포함 단계에서 미정 원소를 확정해 원 안의 원소를 대조한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "A⊆B⊆C의 각 포함 단계에서 미정 원소를 확정해 원 안의 원소를 대조한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P114-Q02-T1-R1",
@@ -687,8 +690,9 @@ window.questionBank = [
     },
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P114-117_20261023_유사50/BV-BAKBAL-H-COM2-P114-Q04-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "n(A)=2이고 가능한 X의 수는 2^(n(B)-2)이다. 주어진 개수로 n(B)=7를 결정한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "n(A)=2이고 가능한 X의 수는 2^(n(B)-2)이다. 주어진 개수로 n(B)=7를 결정한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P114-Q04-S1-R1",
@@ -756,8 +760,9 @@ window.questionBank = [
     },
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P114-117_20261023_유사50/BV-BAKBAL-H-COM2-P114-Q04-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "n(A)=3이고 가능한 X의 수는 2^(n(B)-3)이다. 주어진 개수로 n(B)=7를 결정한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "n(A)=3이고 가능한 X의 수는 2^(n(B)-3)이다. 주어진 개수로 n(B)=7를 결정한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P114-Q04-S2-R1",
@@ -825,8 +830,9 @@ window.questionBank = [
     },
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P114-117_20261023_유사50/BV-BAKBAL-H-COM2-P114-Q04-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "n(A)=1이고 가능한 X의 수는 2^(n(B)-1)이다. 주어진 개수로 n(B)=5를 결정한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "n(A)=1이고 가능한 X의 수는 2^(n(B)-1)이다. 주어진 개수로 n(B)=5를 결정한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P114-Q05-T1-R1",
@@ -892,8 +898,9 @@ window.questionBank = [
     },
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P114-117_20261023_유사50/BV-BAKBAL-H-COM2-P114-Q05-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "B의 여집합에는 a, e, f가 모두 있으므로 보기의 누락 원소를 확인한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "B의 여집합에는 a, e, f가 모두 있으므로 보기의 누락 원소를 확인한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P114-Q05-S1-R1",

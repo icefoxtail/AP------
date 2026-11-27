@@ -48,11 +48,13 @@ window.questionBank = [
     ],
     "integrationPattern": "NONE",
     "image": "assets/images/백발백중_공통수학2_유리함수_P85-88_20261021_유사50/BV-BAKBAL-H-COM2-P85-Q11-T1-R1-problem.svg",
-    "imageAlt": "문항 그래프",
-    "imageSize": "large",
+    "imageAlt": "점근선과 y절편을 읽는 문제 그래프",
+    "imageSize": "medium",
     "solutionImage": "assets/images/백발백중_공통수학2_유리함수_P85-88_20261021_유사50/BV-BAKBAL-H-COM2-P85-Q11-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 그래프",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "그래프에서 점근선 x=1, y=3과 y절편 -1을 읽는다.",
+    "solutionImageSize": "medium",
+    "imageCaption": "점근선과 y절편을 읽는 문제 그래프",
+    "solutionImageCaption": "그래프에서 점근선 x=1, y=3과 y절편 -1을 읽는다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P85-Q11-S1-R2",
@@ -153,8 +155,9 @@ window.questionBank = [
     ],
     "integrationPattern": "NONE",
     "solutionImage": "assets/images/백발백중_공통수학2_유리함수_P85-88_20261021_유사50/BV-BAKBAL-H-COM2-P85-Q11-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 그래프",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "점근선 교점 (2,-1)과 y절편 -2에서 계수를 구한다.",
+    "solutionImageSize": "medium",
+    "solutionImageCaption": "점근선 교점 (2,-1)과 y절편 -2에서 계수를 구한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P85-Q12-T1-R1",
