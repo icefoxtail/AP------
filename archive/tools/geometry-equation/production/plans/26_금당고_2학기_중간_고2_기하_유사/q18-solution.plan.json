@@ -1,0 +1,24 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": { "kind": "PARABOLA", "vertex": ["0", "0"], "p": "4", "axis": "X" },
+  "points": [
+    { "id": "O", "kind": "ORIGIN" },
+    { "id": "A", "kind": "ON_CONIC", "x": "4", "branch": "POS" },
+    { "id": "B", "kind": "LINE_LINE", "lines": ["l", "t"] },
+    { "id": "C", "kind": "LINE_LINE", "lines": ["l", "h"] }
+  ],
+  "lines": [
+    { "id": "l", "role": "DIRECTRIX", "label": "x=-4", "dashed": true },
+    { "id": "t", "at": "A", "tangent": true },
+    { "id": "h", "y": "8", "label": "y=8" }
+  ],
+  "segments": [
+    { "id": "sAB", "from": "A", "to": "B" },
+    { "id": "sBC", "from": "B", "to": "C" },
+    { "id": "sCA", "from": "C", "to": "A" }
+  ],
+  "caption": "준선 x=-4, 접선 y=x+4, 수평선 y=8이 만드는 넓이 32의 삼각형",
+  "accessibilityDescription": "포물선 y²=16x의 점 A(4,8) 접선, 준선 x=-4, 수평선 y=8의 세 교점으로 직각삼각형 ABC를 구성한다. 밑변과 높이가 각 8이므로 넓이는 32다.",
+  "sourceConditions": [ { "id": "q18", "condition": "준선·접선·직선 y=2p가 만드는 넓이32, p=4", "mappedTo": "lines,points,segments" } ],
+  "newVisualInformation": ["세 직선의 교점과 삼각형 세 변을 면 채움 없이 구성"]
+}

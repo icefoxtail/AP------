@@ -1,0 +1,14 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": { "kind": "ELLIPSE", "center": ["0", "0"], "aSquared": "12", "bSquared": "6", "major": "X" },
+  "points": [
+    { "id": "O", "kind": "ORIGIN" },
+    { "id": "P", "kind": "ON_CONIC", "x": "2", "branch": "POS", "coordinates": true },
+    { "id": "A", "kind": "POINT", "x": "6", "y": "0", "coordinates": true }
+  ],
+  "lines": [ { "id": "t", "at": "P", "tangent": true } ],
+  "caption": "타원 x²/12+y²/6=1 위 P(2,2)의 접선과 x절편 A(6,0)",
+  "accessibilityDescription": "타원 위의 제1사분면 점 P(2,2)에서의 접선을 그려 x축과 만나는 점 A(6,0)를 표시한다. 접선의 x절편은 6이다.",
+  "sourceConditions": [ { "id": "q07", "condition": "타원 위 P=(2,2)에서 접선의 x절편", "mappedTo": "points,lines" } ],
+  "newVisualInformation": ["접선과 그 축 교점 및 좌표를 한 그림에 검산"]
+}

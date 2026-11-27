@@ -1,0 +1,16 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [ { "id": "s1", "kind": "PYRAMID", "base": { "kind": "RECT", "width": 2, "depth": 2 }, "height": 1.4142135623730951, "names": "BCDEA", "points": [ { "id": "H", "at": { "edge": ["C", "D"], "t": "1/2" } } ] } ],
+  "segments": [
+    { "from": "A", "to": "H", "role": "ACCENT", "style": "AUTO" },
+    { "from": "B", "to": "C", "role": "REF", "style": "AUTO" },
+    { "from": "H", "to": "C", "style": "AUTO" }
+  ],
+  "dims": [ { "edge": "AB", "label": "2" } ],
+  "marks": { "rightAngles": [ { "at": "H", "refs": ["A", "C"] } ] },
+  "solidCaption": { "text": "모든 모서리가 길이 2인 정사각뿔" },
+  "caption": "정사각뿔 A-BCDE에서 AH⊥CD와 직선 BC의 위치 관계",
+  "accessibilityDescription": "정사각뿔의 다섯 꼭짓점과 점 H를 표시한다. H는 밑면 모서리 CD의 중점이며 AH와 CD 사이에 직각표식, AB에 길이 2의 치수표시가 있다. 숨은 모서리는 점선이다.",
+  "sourceConditions": [ { "id": "q12", "condition": "A에서 CD에 내린 수선 AH, 모든 모서리 길이 2, AH와 BC의 각", "mappedTo": "segments,dims,marks" } ],
+  "newVisualInformation": ["기존 임의 평면좌표를 정확한 공간 정사각뿔로 교체", "H의 직각과 전체 모서리 길이 기준을 추가"]
+}
