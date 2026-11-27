@@ -1,0 +1,27 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          { "id": "-a", "mirrorOf": "a" },
+          { "id": "O", "value": "0", "hideName": true, "showValue": false },
+          { "id": "a" }
+        ],
+        "order": ["-a", "O", "a"],
+        "spans": [{ "from": "-a", "to": "a", "label": "14", "style": "BRACE" }]
+      }
+    ]
+  },
+  "numberLineCaption": { "text": "원점 대칭인 두 점" },
+  "caption": "절댓값이 같은 서로 반대 부호의 수를 -a와 a라고 하면 원점의 양쪽에서 같은 거리에 있다. 두 점 사이의 거리는 14이며 a는 아직 정하지 않는다.",
+  "accessibilityDescription": "수직선에서 원점 왼쪽의 -a와 오른쪽의 a가 대칭이고 두 점 사이 거리는 14로 표시된다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "부호가 반대이고 절댓값이 같은 두 수를 원점 대칭인 -a, a로 둔다.", "mappedTo": ["numberLine.rows[0].points", "numberLine.rows[0].order"] },
+    { "id": "c2", "condition": "두 수 사이의 거리는 14이다.", "mappedTo": ["numberLine.rows[0].spans"] }
+  ],
+  "newVisualInformation": ["두 문자점의 대칭 관계와 거리 14를 표시하고 답 -7, 7은 문제축에 노출하지 않는다."]
+}

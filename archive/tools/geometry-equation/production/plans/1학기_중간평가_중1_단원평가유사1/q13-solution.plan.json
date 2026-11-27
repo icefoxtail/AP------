@@ -1,0 +1,26 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          { "id": "L", "value": "-5", "hideName": true, "showValue": false },
+          { "id": "O", "value": "0", "hideName": true, "showValue": false },
+          { "id": "R", "value": "5", "hideName": true, "showValue": false }
+        ],
+        "spans": [{ "from": "L", "to": "R", "label": "10", "style": "BRACE" }]
+      }
+    ]
+  },
+  "numberLineCaption": { "text": "해설: -5와 5의 거리" },
+  "caption": "-5에서 0까지 5, 0에서 5까지 5이므로 전체 거리는 10이다. 두 수는 -5와 5이다.",
+  "accessibilityDescription": "-5, 0, 5가 같은 간격으로 놓인 수직선 위에 -5부터 5까지 거리 10을 표시했다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "두 점의 거리가 10이므로 원점에서 양쪽으로 5씩 떨어진다.", "mappedTo": ["numberLine.rows[0].points"] },
+    { "id": "c2", "condition": "-5와 5 사이의 거리가 10이다.", "mappedTo": ["numberLine.rows[0].spans"] }
+  ],
+  "newVisualInformation": ["원점과 -5, 5의 동일한 간격을 수직선에 보이고 거리 10을 괄호로 직접 그린다."]
+}

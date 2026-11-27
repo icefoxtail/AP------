@@ -1,0 +1,26 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          { "id": "L", "value": "-7", "hideName": true, "showValue": false },
+          { "id": "O", "value": "0", "hideName": true, "showValue": false },
+          { "id": "R", "value": "7", "hideName": true, "showValue": false }
+        ],
+        "spans": [{ "from": "L", "to": "R", "label": "14", "style": "BRACE" }]
+      }
+    ]
+  },
+  "numberLineCaption": { "text": "해설: -7과 7의 거리" },
+  "caption": "원점을 중심으로 양쪽으로 7만큼 떨어진 -7, 7의 거리는 14이다. 따라서 두 수는 -7과 7이다.",
+  "accessibilityDescription": "-7, 0, 7이 표시된 수직선 위에 -7부터 7까지 거리 14의 괄호가 있다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "두 수 사이의 거리가 14이고 절댓값은 같으므로 각 점은 0에서 7 떨어져 있다.", "mappedTo": ["numberLine.rows[0].points"] },
+    { "id": "c2", "condition": "-7부터 7까지의 거리가 14임을 표시한다.", "mappedTo": ["numberLine.rows[0].spans"] }
+  ],
+  "newVisualInformation": ["-7과 7, 원점 0을 함께 표시하여 대칭과 거리 14를 한 수직선에서 읽는다."]
+}
