@@ -1,0 +1,131 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "value": "1",
+            "kind": "integer"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "value": "9",
+              "kind": "integer"
+            },
+            {
+              "value": "5",
+              "kind": "integer"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "value": "9",
+              "kind": "integer"
+            },
+            {
+              "value": "7",
+              "kind": "integer"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "h",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "value": "1",
+            "kind": "integer"
+          },
+          "b": {
+            "value": "0",
+            "kind": "integer"
+          },
+          "c": {
+            "value": "-9",
+            "kind": "integer"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "Q"
+  ],
+  "hiddenPointNames": [
+    "P",
+    "Q"
+  ],
+  "coordinateLabels": [
+    "P",
+    "Q"
+  ],
+  "displayLines": [
+    "h"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 540
+  },
+  "caption": "a=3일 때 두 점 (9,5), (9,7)은 수직선 x=9 위에 있다.",
+  "sourceConditions": [
+    {
+      "id": "origin",
+      "condition": "두 점 $(3a,\\ a + 2)$, $(-a + 12,\\ 7)$을 지나는 직선이 $y$축에 평행할 때, $a$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "x=9인 수직선",
+    "(9,5),(9,7) 두 점",
+    "y축 평행 관계"
+  ],
+  "accessibilityDescription": "x=9인 y축 평행 수직선 위에서 두 점 P(9,5), Q(9,7)가 나란히 y좌표만 달리하며 표시된다."
+}

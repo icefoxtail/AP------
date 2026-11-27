@@ -1,0 +1,82 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "l0",
+        "kind": "LINE",
+        "coefficients": [
+          "8",
+          "-3"
+        ],
+        "domain": [
+          "-1",
+          "6"
+        ],
+        "color": "BLUE",
+        "label": "y=-3x+8"
+      },
+      {
+        "id": "l1",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "2/5"
+        ],
+        "domain": [
+          "-1",
+          "6"
+        ],
+        "color": "WARM",
+        "label": "y=2x/5-2"
+      },
+      {
+        "id": "l2",
+        "kind": "LINE",
+        "coefficients": [
+          "8",
+          "2/5"
+        ],
+        "domain": [
+          "-1",
+          "6"
+        ],
+        "color": "GREEN",
+        "label": "y=2x/5+8"
+      }
+    ],
+    "viewport": [
+      -1,
+      6,
+      -6,
+      13
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "5",
+          "y": "10",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "잘못 본 기울기와 절편을 나누어 보면 원래 직선은 y=2x/5+8이다.",
+  "accessibilityDescription": "잘못 본 기울기와 절편을 나누어 보면 원래 직선은 y=2x/5+8이다.",
+  "sourceConditions": [
+    {
+      "id": "origin",
+      "condition": "민수와 수진이가 어떤 일차함수의 식을 보고 그래프를 그리는데 다음 보기와 같이 각각 잘못 그렸다. 처음 일차함수의 그래프가 점 $(5, k)$를 지난다고 할 때, 처음 일차함수의 식과 수 $k$의 값을 구하시오.\n\n- 민수: 기울기를 잘못 보고 그렸더니 두 점 $(3, -1)$, $(1, 5)$를 지나는 그래프를 그렸어.  \n- 수진: $y$절편을 잘못 보고 그렸더니 $x$절편이 $5$, $y$절편이 $-2$인 그래프를 그렸어.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "잘못 본 기울기와 절편을 나누어 보면 원래 직선은 y=2x/5+8이다."
+  ]
+}

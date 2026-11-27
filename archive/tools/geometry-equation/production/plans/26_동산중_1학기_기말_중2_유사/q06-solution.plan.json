@@ -1,0 +1,55 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "6",
+          "-3"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      5
+    ],
+    "viewport": [
+      -2,
+      5,
+      -7,
+      10
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "Y",
+        "x": "0",
+      "y": "6"
+      },
+      {
+        "id": "X",
+        "x": "2",
+      "y": "0"
+      }
+    ]
+  },
+  "caption": "y=-3x+6은 y절편 6, x절편 2이며 기울기 -3이다.",
+  "accessibilityDescription": "y=-3x+6은 y절편 6, x절편 2이며 기울기 -3이다.",
+  "sourceConditions": [
+    {
+      "id": "origin",
+      "condition": "일차함수 $y = -3x + 6$의 그래프에 대한 설명으로 옳은 것은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "y=-3x+6은 y절편 6, x절편 2이며 기울기 -3이다."
+  ]
+}

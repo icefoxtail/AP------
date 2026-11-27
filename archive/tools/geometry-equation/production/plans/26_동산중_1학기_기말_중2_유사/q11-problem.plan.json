@@ -1,0 +1,264 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "가로 20cm, 세로 8cm 직사각형 ABCD와 B에서 C로 이동하는 P, 사다리꼴 APCD를 나타낸다.",
+  "accessibilityDescription": "직사각형 ABCD의 가로 20cm, 세로 8cm 치수선과 아래 변 BC 위 이동점 P의 오른쪽 화살표가 있다. A에서 P로 선분이 그어져 APCD 부분이 연하게 구분된다.",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": ["P"],
+        "args": {
+          "dx": {"kind":"integer","value":"3"},
+          "dy": {"kind":"integer","value":"-2"}
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": ["P"],
+        "args": {
+          "dx": {"kind":"integer","value":"0"},
+          "dy": {"kind":"integer","value":"-2"}
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "P",
+    "Q",
+    "R"
+  ],
+  "hiddenPointNames": ["Q","R"],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "sPC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sRQ",
+      "refs": [
+        "R",
+        "Q"
+      ],
+      "arrow": "END"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "raB",
+      "refs": [
+        "A",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "raC",
+      "refs": [
+        "P",
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAD",
+        "from": "A",
+        "to": "D",
+        "label": "20",
+        "unit": "cm",
+        "side": "ABOVE",
+        "style": "BAR",
+        "offset": "AUTO"
+      },
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "8",
+        "unit": "cm",
+        "side": "LEFT",
+        "style": "BAR",
+        "offset": "AUTO"
+      }
+    ],
+    "regions": [
+      {
+        "id": "area",
+        "shapes": [{"polygon":["A","P","C","D"]}],
+        "fill": "LIGHT"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 340
+  },
+  "newVisualInformation": [
+    "ABCD의 전체 외곽선",
+    "AP와 이동점 P 및 이동 화살표",
+    "20cm·8cm 외부 치수선",
+    "사다리꼴 APCD 구분 면",
+    "직각 두 곳"
+  ],
+  "sourceConditions": [
+    {
+      "id": "origin",
+      "condition": "가로의 길이가 $20\\text{ cm}$, 세로의 길이가 $8\\text{ cm}$인 직사각형 $ABCD$에서 점 $P$는 점 $B$를 출발하여 변 $BC$를 따라 점 $C$까지 매초 $2\\text{ cm}$의 속력으로 움직인다. 점 $P$가 출발한 지 $x$초 후의 사다리꼴 $APCD$의 넓이를 $y\\text{ cm}^2$라 할 때, 보기에서 옳은 것만을 있는 대로 고른 것은? [5점]\n\n$$  \n\\begin{aligned}  \n&\\text{ㄱ. } y = -8x + 160 \\\\  \n&\\text{ㄴ. 사다리꼴의 넓이는 } 1\\text{초에 } 8\\text{ cm}^2\\text{씩 줄어든다.} \\\\  \n&\\text{ㄷ. 사다리꼴 } APCD\\text{의 넓이가 } 100\\text{ cm}^2\\text{가 되는 것은 점 } P\\text{가 출발한 지 } 8\\text{초 후이다.}  \n\\end{aligned}  \n$$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

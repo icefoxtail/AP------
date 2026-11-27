@@ -1,0 +1,68 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "4"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "y=4x"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-5",
+          "4"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ],
+        "color": "WARM",
+        "label": {
+          "hidden": true,
+          "reason": "ANSWER",
+          "name": "g"
+        }
+      }
+    ],
+    "viewport": [
+      -2,
+      3,
+      -10,
+      10
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "4"
+      ]
+    }
+  },
+  "caption": "직선 y=4x와 이 직선을 y축의 방향으로 -5만큼 평행이동한 직선이 좌표평면에 그려져 있다.",
+  "accessibilityDescription": "좌표평면에 원점을 지나고 기울기가 4인 파란 직선과, 그 직선을 아래로 5만큼 평행이동한 주황색 직선이 있다. 이동한 직선의 식은 표시되어 있지 않다.",
+  "newVisualInformation": [
+    "원점을 지나는 기울기 4의 직선",
+    "아래로 5만큼 평행이동한 직선",
+    "두 직선의 평행 관계"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y = 4x$의 그래프를 $y$축의 방향으로 $-5$만큼 평행이동한 직선의 식은? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
