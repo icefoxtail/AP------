@@ -882,8 +882,9 @@ window.questionBank = [
     "decisionOwner": "GPT_BOOK_MATH_META",
     "confidence": "HIGH_MATH_MEDIUM_SOURCE",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P94-97_20261023_유사50/BV-BAKBAL-H-COM2-P94-Q05-S2-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "포물선의 이동량 (2,1)만큼 옮긴 직선과 원의 현 AB",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "포물선의 이동량 (2,1)만큼 옮긴 직선과 원의 현 AB"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P95-Q06-T1-R2",

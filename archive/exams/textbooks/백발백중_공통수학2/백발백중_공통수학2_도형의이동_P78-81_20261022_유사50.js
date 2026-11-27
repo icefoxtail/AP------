@@ -507,8 +507,9 @@ window.questionBank = [
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "P78 Q14의 직선 평행이동 후 x축 대칭과 통과점 조건을 보존.",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P78-81_20261022_유사50/BV-BAKBAL-H-COM2-P78-Q14-T1-R3-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "역대칭·역평행이동으로 원래 직선 위의 점 찾기",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "역대칭·역평행이동으로 원래 직선 위의 점 찾기"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P78-Q14-S1-R3",
@@ -558,8 +559,9 @@ window.questionBank = [
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "P78 Q14의 역변환으로 원래 직선 기울기를 구하는 구조 유지.",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P78-81_20261022_유사50/BV-BAKBAL-H-COM2-P78-Q14-S1-R3-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "역대칭·역평행이동으로 원래 직선 위의 점 찾기",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "역대칭·역평행이동으로 원래 직선 위의 점 찾기"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P78-Q14-S2-R3",

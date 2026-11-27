@@ -64,8 +64,9 @@ window.questionBank = [
       "independentAnswerExact": "-3"
     },
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P98-101_20261023_유사50/BV-BAKBAL-H-COM2-P98-Q01-T1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "y=x 대칭 후 평행이동된 세 점 A,B,C의 공선성",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "y=x 대칭 후 평행이동된 세 점 A,B,C의 공선성"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P98-Q01-S1-R2",
@@ -131,8 +132,9 @@ window.questionBank = [
       "independentAnswerExact": "-1"
     },
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P98-101_20261023_유사50/BV-BAKBAL-H-COM2-P98-Q01-S1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "y=x 대칭 후 평행이동된 세 점 A,B,C의 공선성",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "y=x 대칭 후 평행이동된 세 점 A,B,C의 공선성"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P98-Q01-S2-R2",
@@ -198,8 +200,9 @@ window.questionBank = [
       "independentAnswerExact": "-2"
     },
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P98-101_20261023_유사50/BV-BAKBAL-H-COM2-P98-Q01-S2-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "y=x 대칭 후 평행이동된 세 점 A,B,C의 공선성",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "y=x 대칭 후 평행이동된 세 점 A,B,C의 공선성"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P98-Q02-T1-R2",
@@ -265,8 +268,9 @@ window.questionBank = [
       "independentAnswerExact": "5"
     },
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P98-101_20261023_유사50/BV-BAKBAL-H-COM2-P98-Q02-T1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원점대칭점 B와 수직인 두 직선 AC,BC",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원점대칭점 B와 수직인 두 직선 AC,BC"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P98-Q02-S1-R2",
@@ -332,8 +336,9 @@ window.questionBank = [
       "independentAnswerExact": "2"
     },
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P98-101_20261023_유사50/BV-BAKBAL-H-COM2-P98-Q02-S1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원점대칭점 B와 수직인 두 직선 AC,BC",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원점대칭점 B와 수직인 두 직선 AC,BC"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P98-Q02-S2-R2",
@@ -549,8 +554,9 @@ window.questionBank = [
       "sourceVariantRole": "S1"
     },
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P98-101_20261023_유사50/BV-BAKBAL-H-COM2-P98-Q03-S1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "중심 간 이동 (4,3)과 반지름 5, 두 원의 공통 접선",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "중심 간 이동 (4,3)과 반지름 5, 두 원의 공통 접선"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P98-Q03-S2-R2",
@@ -699,8 +705,9 @@ window.questionBank = [
       "sourceVariantRole": "T1"
     },
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P98-101_20261023_유사50/BV-BAKBAL-H-COM2-P98-Q04-T1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "중심 간 이동 (4,3)과 반지름 5, 두 원의 공통 접선",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "중심 간 이동 (4,3)과 반지름 5, 두 원의 공통 접선"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P98-Q04-S1-R2",
@@ -993,8 +1000,9 @@ window.questionBank = [
       "sourceVariantRole": "S1"
     },
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P98-101_20261023_유사50/BV-BAKBAL-H-COM2-P98-Q05-S1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원 위의 두 지름 A₁C₁, A₂C₂와 B에서의 직각",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원 위의 두 지름 A₁C₁, A₂C₂와 B에서의 직각"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P98-Q05-S2-R2",
@@ -1065,8 +1073,9 @@ window.questionBank = [
       "sourceVariantRole": "S2"
     },
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P98-101_20261023_유사50/BV-BAKBAL-H-COM2-P98-Q05-S2-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원 위의 두 지름 A₁C₁, A₂C₂와 B에서의 직각",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원 위의 두 지름 A₁C₁, A₂C₂와 B에서의 직각"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P99-Q06-T1-R2",
