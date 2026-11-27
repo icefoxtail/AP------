@@ -29,6 +29,15 @@
       "y": [
         "3"
       ]
+    },
+    "overlays": {
+      "names": [
+        {
+          "id": "dn",
+          "text": "도함수",
+          "curveX": "1"
+        }
+      ]
     }
   },
   "caption": "주어진 도함수 y=f′(x)는 x절편 −1, 3과 y절편 3을 지나는 아래로 열린 포물선이다.",
@@ -48,6 +57,11 @@
       "id": "intercept",
       "condition": "f′(0)=3, 이차계수 −1",
       "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "curveOwnership",
+      "condition": "원본의 y=f′(x) 곡선을 도함수라는 가리킴 라벨로 식별한다. 프라임을 포함한 원본 수식 라벨 자체는 엔진에서 아직 지원되지 않는다.",
+      "mappedTo": "graphPlan.overlays.names"
     }
   ],
   "newVisualInformation": [

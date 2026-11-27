@@ -2,11 +2,12 @@
   "schemaVersion": "VISANG_TWO_AXIS_DRAWN_FEATURE_PARITY_STATIC_20261127",
   "paper": "book",
   "stem": "비상_미적분1_미분_익힘책_고2",
-  "source": "archive/exams/textbooks/비상_미적분1/비상_미적분1_미분_익힘책_고2/비상_미적분1_미분_익힘책_고2.js",
+  "source": "archive/exams/textbooks/비상교육_미적분1/비상_미적분1_미분_익힘책_고2/비상_미적분1_미분_익힘책_고2.js",
   "limitations": [
     "정적 소스 특징↔플랜 필드 1:1 대응만 검수. 실제 SVG 렌더·원본 이미지의 픽셀 대조·A4 및 학생 화면은 실행하지 않았다.",
     "EXEMPT는 그림이 없는 축이며, ENGINE_CAPABILITY_PENDING은 실행 불가 허위 JSON을 만들지 않고 필요한 엔진 확장을 적었다.",
-    "문제은행의 <img src=\"qNN.png\"> 연결을 원본 그림으로 인정한다. solutionImage 필드는 두 시험지에서 모두 null이다."
+    "문제은행의 <img src=\"qNN.png\"> 연결을 원본 그림으로 인정한다. solutionImage 필드는 두 시험지에서 모두 null이다.",
+    "2026-11-27 재검수: q20 발문 그림의 y=f′(x) 및 q23의 y=x²−5 곡선 소유 라벨은 엔진이 수식 그대로 조판하지 못해 도함수/포물선 이름으로 보완했다. 숫자·곡선·원·안내선은 정적 대응하지만 정확한 원본 수식 라벨과 렌더 픽셀 1:1은 NOT_VERIFIED이다."
   ],
   "counts": {
     "questions": 24,
@@ -851,12 +852,12 @@
       "originalInlinePng": "q20.png",
       "problem": {
         "axis": "문항",
-        "verdict": "REWRITTEN",
+        "verdict": "LABEL_ALIAS_ADDED",
         "capability": "polynomial-spike-v1",
         "planPath": "archive/tools/geometry-equation/production/plans/비상_미적분1_미분_익힘책_고2/q20-problem.json",
         "lintShallow": "PASS",
         "lintFull": "PASS",
-        "drawnFeatureParity": "STATIC_FIELDS_1_TO_1_PASS / ORIGINAL_PNG_REVIEWED / RENDER_NOT_RUN",
+        "drawnFeatureParity": "STATIC_GEOMETRY_PASS / CURVE_FORMULA_LABEL_ALIAS_ONLY / RENDER_NOT_RUN",
         "sourceConditionToPlanFields": [
           {
             "id": "curve",
@@ -874,6 +875,12 @@
             "id": "intercept",
             "condition": "f′(0)=3, 이차계수 −1",
             "mappedTo": "graphPlan.coefficients",
+            "targetExists": true
+          },
+          {
+            "id": "curveOwnership",
+            "condition": "y=f′(x)의 곡선 소유를 도함수 라벨로 식별(원본 식 조판은 미지원)",
+            "mappedTo": "graphPlan.overlays.names",
             "targetExists": true
           }
         ],
@@ -1013,12 +1020,12 @@
       "originalInlinePng": "q23.png",
       "problem": {
         "axis": "문항",
-        "verdict": "REWRITTEN",
+        "verdict": "LABEL_ALIAS_ADDED",
         "capability": "polynomial-spike-v1",
         "planPath": "archive/tools/geometry-equation/production/plans/비상_미적분1_미분_익힘책_고2/q23-problem.json",
         "lintShallow": "PASS",
         "lintFull": "PASS",
-        "drawnFeatureParity": "STATIC_FIELDS_1_TO_1_PASS / ORIGINAL_PNG_REVIEWED / RENDER_NOT_RUN",
+        "drawnFeatureParity": "STATIC_GEOMETRY_PASS / CURVE_FORMULA_LABEL_ALIAS_ONLY / RENDER_NOT_RUN",
         "sourceConditionToPlanFields": [
           {
             "id": "curve",
@@ -1043,6 +1050,12 @@
             "condition": "원 중심 x=6, y=−2에 이르는 점선·P·Q",
             "mappedTo": "graphPlan.overlays",
             "targetExists": true
+          },
+          {
+            "id": "curveOwnership",
+            "condition": "포물선 y=x²−5의 그림 내 소유 라벨(정확한 식 표기는 원문에 존재)",
+            "mappedTo": "graphPlan.overlays.names",
+            "targetExists": true
           }
         ],
         "explicitFilledRegions": [],
@@ -1052,12 +1065,12 @@
       },
       "solution": {
         "axis": "해설",
-        "verdict": "BENEFICIAL",
+        "verdict": "LABEL_ALIAS_ADDED",
         "capability": "polynomial-spike-v1",
         "planPath": "archive/tools/geometry-equation/production/plans/비상_미적분1_미분_익힘책_고2/q23-solution.json",
         "lintShallow": "PASS",
         "lintFull": "PASS",
-        "drawnFeatureParity": "STATIC_FIELDS_1_TO_1_PASS / ORIGINAL_PNG_REVIEWED / RENDER_NOT_RUN",
+        "drawnFeatureParity": "STATIC_GEOMETRY_PASS / CURVE_FORMULA_LABEL_ALIAS_ONLY / RENDER_NOT_RUN",
         "sourceConditionToPlanFields": [
           {
             "id": "curve",
@@ -1081,6 +1094,12 @@
             "id": "segments",
             "condition": "P-Q는 실선, Q-C는 반지름의 점선 안내",
             "mappedTo": "graphPlan.overlays.segments",
+            "targetExists": true
+          },
+          {
+            "id": "curveOwnership",
+            "condition": "포물선 y=x²−5의 곡선 소유 라벨을 해설 그래프에도 표시",
+            "mappedTo": "graphPlan.overlays.names",
             "targetExists": true
           }
         ],
@@ -1155,10 +1174,10 @@
   ],
   "validation": {
     "sourceContentAndSolutions": "BOTH_AXES_SEPARATELY_SHA256_INVENTORIED",
-    "originalPng": "SIX_INLINE_SOURCE_IMAGES_VISUALLY_REVIEWED",
-    "planLintShallow": "ALL_16_PASS",
-    "planLintFull": "ALL_16_PASS",
-    "drawnFeatureParity": "STATIC_SOURCE_FEATURE_TO_PLAN_FIELD_1_TO_1_VERIFIED; RENDERED_PIXEL_PARITY_NOT_RUN",
+    "originalPng": "FIVE_INLINE_SOURCE_IMAGES_VISUALLY_REVIEWED",
+    "planLintShallow": "BOTH_PAPERS_ALL_16_PASS",
+    "planLintFull": "BOTH_PAPERS_ALL_16_PASS",
+    "drawnFeatureParity": "STATIC_GEOMETRY_CHECKED; THREE_CURVE_FORMULA_LABELS_ONLY_ALIASED; RENDERED_PIXEL_PARITY_NOT_RUN",
     "studentView": "NOT_RUN",
     "finalSvg": "NOT_RUN",
     "A4Fit": "NOT_RUN",

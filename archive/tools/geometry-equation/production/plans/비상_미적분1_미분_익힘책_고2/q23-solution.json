@@ -44,7 +44,7 @@
       "points": [
         {
           "id": "P",
-          "curveX": "2"
+          "curveX": "5/2"
         },
         {
           "id": "C",
@@ -76,6 +76,13 @@
           "from": "C",
           "axis": "BOTH"
         }
+      ],
+      "names": [
+        {
+          "id": "pn",
+          "text": "포물선",
+          "curveX": "2"
+        }
       ]
     }
   },
@@ -101,6 +108,11 @@
       "id": "segments",
       "condition": "P-Q는 실선, Q-C는 반지름의 점선 안내",
       "mappedTo": "graphPlan.overlays.segments"
+    },
+    {
+      "id": "curveOwnership",
+      "condition": "풀이의 포물선 식 y=x²−5에 대응하는 곡선을 포물선 라벨로 식별한다.",
+      "mappedTo": "graphPlan.overlays.names"
     }
   ],
   "newVisualInformation": [
