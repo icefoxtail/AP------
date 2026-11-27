@@ -1,0 +1,24 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {"coefficients": ["2", "4", "1"], "domain": [-5, 0]},
+      {"coefficients": ["-2", "4", "-1"], "domain": [0, 5], "start": "OPEN"}
+    ],
+    "referenceLines": [{"id": "t", "y": "2", "intersectionX": ["-4", "0", "2"]}],
+    "requiredPoints": [{"id": "L", "x": -2, "y": -2}, {"id": "R", "x": 2, "y": 2}],
+    "axisTickValues": {"x": [-4, -2, 2], "y": [-2, 2]},
+    "functionName": "g"
+  },
+  "caption": "a=5,b=2에서 g=f−x는 x=0에서 불연속이며 y=t=2가 x=−4, 0, 2에서 만난다.",
+  "accessibilityDescription": "왼쪽 위로 열린 포물선과 오른쪽 아래로 열린 포물선이 x=0에서 끊기고 수평선 y=2가 세 서로 다른 점과 만나는 그림.",
+  "sourceQuote": "f(x)=x²+ax+b (x≤0), −x²+ax−b (x>0)에서 f(x)=x+t의 서로 다른 실근 세 개",
+  "sourceConditions": [
+    {"id": "left", "condition": "a=5,b=2에서 x≤0이면 g=x²+4x+2", "mappedTo": ["graphPlan.pieces[0]"]},
+    {"id": "right", "condition": "x>0이면 g=−x²+4x−2, x=0은 열린 끝점", "mappedTo": ["graphPlan.pieces[1]"]},
+    {"id": "tangent", "condition": "유일하게 교점 3개인 t=2에서 x=−4,0,2", "mappedTo": ["graphPlan.referenceLines[0]"]},
+    {"id": "vertices", "condition": "왼쪽 꼭짓점 (−2,−2), 오른쪽 꼭짓점 (2,2)", "mappedTo": ["graphPlan.requiredPoints"]}
+  ],
+  "newVisualInformation": ["열린 끝점·닫힌 끝점을 구분하고 수평선이 접점 하나와 왼쪽 교점 둘을 만들어 세 실근이 되는 이유."]
+}

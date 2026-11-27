@@ -1,0 +1,20 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["-30", "6", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-11, 5],
+    "viewport": [-12, 5, -42, 12],
+    "requiredPoints": [{"id": "P", "x": 3, "y": -3}, {"id": "V", "x": -3, "y": -39}],
+    "axisTickValues": {"x": [3], "y": []}
+  },
+  "caption": "최소 정수 n=3이면 f(3)=−3으로 x=3은 이차방정식의 서로 다른 두 근 사이에 있다.",
+  "accessibilityDescription": "포물선 y=x²+6x−30에서 P(3, −3)가 x축 아래에 있어 x=3이 두 근 사이임을 나타낸다.",
+  "sourceQuote": "이차방정식 x^2 + 2nx - 10n = 0의 한 근은 3보다 작고 다른 한 근은 3보다 크다",
+  "sourceConditions": [
+    {"id": "n", "condition": "9−4n<0이므로 최소 정수 n=3", "mappedTo": ["graphPlan.coefficients"]},
+    {"id": "sign", "condition": "n=3일 때 f(3)=−3<0", "mappedTo": ["graphPlan.requiredPoints[0]"]}
+  ],
+  "newVisualInformation": ["f(3)<0일 때 x=3이 두 x절편 사이에 놓인다는 부호와 근의 위치 관계."]
+}

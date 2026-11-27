@@ -1,0 +1,26 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["5", "4", "-1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-2, 6],
+    "viewport": [-3, 6, -8, 11],
+    "requiredPoints": [
+      {"id": "L", "x": -1, "y": 0},
+      {"id": "V", "x": 2, "y": 9},
+      {"id": "A", "x": 4, "y": 5},
+      {"id": "B", "x": 5, "y": 0}
+    ],
+    "axisTickValues": {"x": [2, 4, 5], "y": []}
+  },
+  "caption": "대칭축 x=2, 꼭짓점 (2,9)이며 구간 [4,5]에서 (4,5)에서 (5,0)으로 감소한다.",
+  "accessibilityDescription": "아래로 열린 포물선에 대칭인 x절편 −1과 5, 꼭짓점 (2,9), 구간 양 끝점을 표시한다.",
+  "sourceQuote": "f(−1)=f(5), 최댓값 9인 f(x)=−x²+ax+b의 구간 [a,b] 최대·최소 차",
+  "sourceConditions": [
+    {"id": "symmetric", "condition": "f(−1)=f(5)이므로 대칭축 x=2", "mappedTo": ["graphPlan.requiredPoints[0]", "graphPlan.requiredPoints[1]", "graphPlan.requiredPoints[3]"]},
+    {"id": "f", "condition": "a=4,b=5이므로 f(x)=−x²+4x+5", "mappedTo": ["graphPlan.coefficients"]},
+    {"id": "range", "condition": "구간 [4,5]에서 f(4)=5, f(5)=0", "mappedTo": ["graphPlan.requiredPoints[2]", "graphPlan.requiredPoints[3]"]}
+  ],
+  "newVisualInformation": ["대칭축이 구간 왼쪽에 있어 함수가 구간 전체에서 감소하는 이유."]
+}

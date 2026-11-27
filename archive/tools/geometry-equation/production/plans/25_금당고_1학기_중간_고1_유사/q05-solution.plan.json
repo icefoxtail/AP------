@@ -1,0 +1,20 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["4", "-4", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-1, 5],
+    "viewport": [-1, 5, -2, 7],
+    "requiredPoints": [{"id": "T", "x": 2, "y": 0}],
+    "axisTickValues": {"x": [2], "y": []}
+  },
+  "caption": "y=(x−2)²은 (2, 0)에서 x축에 접하므로 서로 다른 교점은 하나다.",
+  "accessibilityDescription": "위로 열린 포물선이 꼭짓점 T(2, 0)에서 x축과 한 점으로 만나는 그래프.",
+  "sourceQuote": "이차함수 y = x^2 - 4x + 4의 그래프와 x축의 서로 다른 교점의 개수",
+  "sourceConditions": [
+    {"id": "parabola", "condition": "y=x²−4x+4=(x−2)²", "mappedTo": ["graphPlan.coefficients"]},
+    {"id": "tangent", "condition": "꼭짓점 (2,0)에서 x축과 한 점으로 접함", "mappedTo": ["graphPlan.requiredPoints[0]"]}
+  ],
+  "newVisualInformation": ["판별식이 0이라는 관계가 x축에 대한 접점 하나로 나타난다."]
+}
