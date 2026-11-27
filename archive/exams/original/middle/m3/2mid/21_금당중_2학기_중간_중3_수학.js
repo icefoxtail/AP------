@@ -798,8 +798,8 @@ window.questionBank = [
     "semanticStatus": "FINAL",
     "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-059","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비","l3":"삼각비와 길이","l4":"직각삼각형의 변"},"rpmL3":"삼각비와 길이","rpmL4":"직각삼각형의 변","subUnitKey":"M3-05-TRIG_RATIO","problemTypeKey":"PT_TRIG_RATIO_APPLICATION","templateKey":"TPL_TRIG_APPLICATION_DIRECT_MEASURE","projectionStatus":"PROJECTION_REUSE","projectionReason":"빗변c와 각A가 주어져 두 직각변을 c cosA,c sinA로 직접 표현한다."},
     "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q11-solution.svg",
-    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 AB=c는 초록 빗변, AC는 주황 이웃변, BC는 파란 맞은편 변이다. 직각은 C이다.",
-    "solutionImageCaption": "AB=c는 빗변이다. AC는 각 A의 이웃한 변이므로 AC=c cos A이고, BC는 맞은편 변이므로 BC=c sin A이다. 따라서 순서는 c cos A, c sin A이며 정답은 ③이다.",
+    "solutionImageAlt": "C가 직각이고 AB=c인 삼각형에서 ∠A의 이웃변 AC=c cos A, 맞은편 변 BC=c sin A이다. 문제의 미지 각을 수치로 가정하지 않는다.",
+    "solutionImageCaption": "C가 직각이고 AB=c인 삼각형에서 ∠A의 이웃변 AC=c cos A, 맞은편 변 BC=c sin A이다. 문제의 미지 각을 수치로 가정하지 않는다.",
     "solutionImageSize": "full"
   },
   {
