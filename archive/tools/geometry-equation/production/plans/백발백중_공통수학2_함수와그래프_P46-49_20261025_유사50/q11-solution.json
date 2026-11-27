@@ -1,0 +1,185 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      6,
+      -4,
+      6
+    ],
+    "curves": [
+      {
+        "id": "fl",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "2"
+        ],
+        "domain": [
+          "-2",
+          "0"
+        ],
+        "color": "BLUE",
+        "hideLabel": true
+      },
+      {
+        "id": "fr",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "1/2"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "gl",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "1/2"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "g"
+      },
+      {
+        "id": "gr",
+        "kind": "LINE",
+        "coefficients": [
+          "-4",
+          "2"
+        ],
+        "domain": [
+          "2",
+          "4"
+        ],
+        "color": "WARM",
+        "hideLabel": true
+      },
+      {
+        "id": "sym",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "4"
+        ],
+        "color": "GREEN",
+        "label": "y=x",
+        "style": "DASHED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "2",
+        "4"
+      ],
+      "y": [
+        "-2",
+        "2",
+        "4"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "L",
+          "x": "-2",
+          "y": "-2"
+        },
+        {
+          "id": "P",
+          "x": "0",
+          "y": "2"
+        },
+        {
+          "id": "Q",
+          "x": "2",
+          "y": "0"
+        },
+        {
+          "id": "R",
+          "x": "4",
+          "y": "4"
+        }
+      ]
+    },
+    "regions": [
+      {
+        "id": "s1",
+        "between": [
+          "fl",
+          "gl"
+        ],
+        "from": "-2",
+        "to": "0",
+        "fill": "LIGHT"
+      },
+      {
+        "id": "s2",
+        "between": [
+          "fr",
+          "gl"
+        ],
+        "from": "0",
+        "to": "2",
+        "fill": "LIGHT"
+      },
+      {
+        "id": "s3",
+        "between": [
+          "fr",
+          "gr"
+        ],
+        "from": "2",
+        "to": "4",
+        "fill": "LIGHT"
+      }
+    ]
+  },
+  "caption": "f와 g=f⁻¹는 y=x에 대칭이다. L(-2,-2), P(0,2), Q(2,0), R(4,4)의 닫힌 영역 넓이는 12.",
+  "accessibilityDescription": "f와 g=f⁻¹는 y=x에 대칭이다. L(-2,-2), P(0,2), Q(2,0), R(4,4)의 닫힌 영역 넓이는 12.",
+  "sourceConditions": [
+    {
+      "id": "fLeft",
+      "condition": "x<0: f(x)=2x+2",
+      "mappedTo": "graphPlan.curves[0]"
+    },
+    {
+      "id": "fRight",
+      "condition": "x≥0: f(x)=1/2x+2",
+      "mappedTo": "graphPlan.curves[1]"
+    },
+    {
+      "id": "inverse",
+      "condition": "g=f⁻¹; 역함수의 두 직선 조각과 y=x 대칭",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "corners",
+      "condition": "L,P,Q,R의 네 꼭짓점은 해설 계산과 정확히 일치",
+      "mappedTo": "graphPlan.overlays.points"
+    },
+    {
+      "id": "area",
+      "condition": "f와 g 사이의 영역을 3개 부구간으로 분리하여 표시",
+      "mappedTo": "graphPlan.regions"
+    }
+  ],
+  "newVisualInformation": [
+    "닫힌 영역 LPRQ는 y=x를 축으로 대칭인 두 삼각형이고, 세 구간별 정확한 경계만 면 채움한다."
+  ]
+}

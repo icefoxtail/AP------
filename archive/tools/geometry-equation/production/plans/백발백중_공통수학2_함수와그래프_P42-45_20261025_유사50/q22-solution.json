@@ -1,0 +1,68 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "7",
+          "-2"
+        ],
+        "domain": [
+          "-1",
+          "3"
+        ],
+        "start": "CLOSED",
+        "end": "CLOSED"
+      }
+    ],
+    "xWindow": [
+      -2,
+      4
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-1",
+        "y": "9"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "3"
+      ],
+      "y": [
+        "1",
+        "9"
+      ]
+    }
+  },
+  "caption": "정의역 [-1,3]을 감소하는 f(x)=−2x+7이 공역 [1,9]에 일대일로 대응시킨다.",
+  "accessibilityDescription": "정의역 [-1,3]을 감소하는 f(x)=−2x+7이 공역 [1,9]에 일대일로 대응시킨다.",
+  "sourceConditions": [
+    {
+      "id": "domain",
+      "condition": "X=[−1,3], Y=[1,9], a<0",
+      "mappedTo": "graphPlan.pieces[0].domain"
+    },
+    {
+      "id": "formula",
+      "condition": "끝점 f(−1)=9, f(3)=1에서 a=−2, b=7",
+      "mappedTo": "graphPlan.pieces[0].coefficients"
+    },
+    {
+      "id": "ends",
+      "condition": "양 끝점의 반대 순서 대응",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "구간별 기울기·끝점·함숫값을 같은 좌표축에서 구별한다."
+  ]
+}

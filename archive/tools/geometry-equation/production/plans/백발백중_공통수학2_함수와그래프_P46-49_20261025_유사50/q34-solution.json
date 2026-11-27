@@ -1,0 +1,61 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "2"
+        ],
+        "domain": [
+          null,
+          "0"
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "3",
+          "4"
+        ],
+        "domain": [
+          "0",
+          null
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "xWindow": [
+      -3,
+      3
+    ],
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1"
+      ],
+      "y": [
+        "3"
+      ]
+    }
+  },
+  "caption": "예: a=1이면 왼쪽 기울기 2, 오른쪽 기울기 4. 일반적인 조건은 −1<a<5이고 정수는 5개다.",
+  "accessibilityDescription": "예: a=1이면 왼쪽 기울기 2, 오른쪽 기울기 4. 일반적인 조건은 −1<a<5이고 정수는 5개다.",
+  "sourceConditions": [
+    {
+      "id": "formula",
+      "condition": "f(x)=(a+1)x+3 (x<0), (5−a)x+3 (x≥0)",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "example",
+      "condition": "a=1일 때 두 기울기 모두 양수이고 (0,3)에서 이어진다.",
+      "mappedTo": "graphPlan.pieces"
+    }
+  ],
+  "newVisualInformation": [
+    "구간별 기울기·끝점·함숫값을 같은 좌표축에서 구별한다."
+  ]
+}

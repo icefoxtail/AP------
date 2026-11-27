@@ -1,0 +1,86 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "0",
+          "-1"
+        ],
+        "domain": [
+          null,
+          "2"
+        ],
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "-3",
+          "2"
+        ],
+        "domain": [
+          "2",
+          null
+        ],
+        "start": "OPEN"
+      }
+    ],
+    "xWindow": [
+      -2,
+      5
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "4"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "5"
+      },
+      {
+        "id": "V",
+        "x": "0",
+        "y": "5"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "4"
+      ],
+      "y": [
+        "1",
+        "4",
+        "5"
+      ]
+    }
+  },
+  "caption": "x≤2의 포물선과 x>2의 직선은 (2,1)에서 이어진다. f(1)=4, f(4)=5.",
+  "accessibilityDescription": "x≤2의 포물선과 x>2의 직선은 (2,1)에서 이어진다. f(1)=4, f(4)=5.",
+  "sourceConditions": [
+    {
+      "id": "left",
+      "condition": "x≤2: f(x)=−x²+5",
+      "mappedTo": "graphPlan.pieces[0]"
+    },
+    {
+      "id": "right",
+      "condition": "x>2: f(x)=2x−3",
+      "mappedTo": "graphPlan.pieces[1]"
+    },
+    {
+      "id": "values",
+      "condition": "f(1)=4, f(4)=5",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "구간별 기울기·끝점·함숫값을 같은 좌표축에서 구별한다."
+  ]
+}

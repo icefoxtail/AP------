@@ -1,0 +1,90 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "Y",
+        "elements": [
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y",
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "f(2)=4, f(3)=2, f(4)=3, f(5)=5. 따라서 f²(2)=3이고 f(5)−f(4)=2이다.",
+  "accessibilityDescription": "f(2)=4, f(3)=2, f(4)=3, f(5)=5. 따라서 f²(2)=3이고 f(5)−f(4)=2이다.",
+  "sourceConditions": [
+    {
+      "id": "mapping0",
+      "condition": "f²(2)=3, f(5)−f(4)=2를 만족하는 유일한 전단사이다.",
+      "mappedTo": "diagram.arrows"
+    }
+  ],
+  "newVisualInformation": [
+    "입력 원소마다 정확한 출력 화살표 한 개를 표시한다."
+  ]
+}

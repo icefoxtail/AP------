@@ -1,0 +1,240 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "f: 전단사"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "MAPPING",
+          "columns": [
+            {
+              "id": "X",
+              "name": "X",
+              "elements": [
+                "1",
+                "2",
+                "3"
+              ]
+            },
+            {
+              "id": "Y",
+              "name": "Y",
+              "elements": [
+                "1",
+                "2",
+                "3"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 1
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 1
+              },
+              "to": {
+                "column": 1,
+                "element": 0
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 2
+              },
+              "to": {
+                "column": 1,
+                "element": 2
+              }
+            }
+          ],
+          "arrowGroups": [
+            {
+              "name": "f",
+              "from": "X",
+              "to": "Y",
+              "color": "BLUE"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "g: 항등"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "MAPPING",
+          "columns": [
+            {
+              "id": "X",
+              "name": "X",
+              "elements": [
+                "1",
+                "2",
+                "3"
+              ]
+            },
+            {
+              "id": "Y",
+              "name": "Y",
+              "elements": [
+                "1",
+                "2",
+                "3"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 0
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 1
+              },
+              "to": {
+                "column": 1,
+                "element": 1
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 2
+              },
+              "to": {
+                "column": 1,
+                "element": 2
+              }
+            }
+          ],
+          "arrowGroups": [
+            {
+              "name": "g",
+              "from": "X",
+              "to": "Y",
+              "color": "BLUE"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "h: 상수"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "MAPPING",
+          "columns": [
+            {
+              "id": "X",
+              "name": "X",
+              "elements": [
+                "1",
+                "2",
+                "3"
+              ]
+            },
+            {
+              "id": "Y",
+              "name": "Y",
+              "elements": [
+                "1",
+                "2",
+                "3"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 1
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 1
+              },
+              "to": {
+                "column": 1,
+                "element": 1
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 2
+              },
+              "to": {
+                "column": 1,
+                "element": 1
+              }
+            }
+          ],
+          "arrowGroups": [
+            {
+              "name": "h",
+              "from": "X",
+              "to": "Y",
+              "color": "BLUE"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "f(1)=2, f(2)=1, f(3)=3; g는 항등함수이고 h(x)=2이다.",
+  "accessibilityDescription": "f(1)=2, f(2)=1, f(3)=3; g는 항등함수이고 h(x)=2이다.",
+  "sourceConditions": [
+    {
+      "id": "function0",
+      "condition": "f(1)=2와 f(2)+2=f(3)을 만족하는 유일한 순열이다.",
+      "mappedTo": "panels[0].plan.diagram.arrows"
+    },
+    {
+      "id": "function1",
+      "condition": "g(x)=x이다.",
+      "mappedTo": "panels[1].plan.diagram.arrows"
+    },
+    {
+      "id": "function2",
+      "condition": "h(x)=2이다.",
+      "mappedTo": "panels[2].plan.diagram.arrows"
+    }
+  ],
+  "newVisualInformation": [
+    "각 함수의 대응을 독립 패널로 분리하여 합성·순열 조건을 확인한다."
+  ]
+}
