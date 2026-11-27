@@ -1,0 +1,100 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "m=3 음",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "2",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "m=6 음",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "1",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "m=6 양",
+        "color": "WARM",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "2",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "label": "속도 영점",
+        "points": [
+          {
+            "id": "Z1",
+            "value": "1",
+            "hideName": true
+          },
+          {
+            "id": "Z2",
+            "value": "2",
+            "hideName": true
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "시간 t에서 Q의 속도 부호"
+  },
+  "caption": "Q의 v₂(t)=mt−6에서 m=3이면 0≤t<2에서 음수, m=6이면 t=1을 경계로 음수에서 양수로 바뀐다. P의 이동거리는 6이다.",
+  "accessibilityDescription": "시간 0,1,2를 표시한 수직선 위에 m=3일 때 음속도 구간과 m=6일 때 t=1 전후 음속도·양속도 구간을 나눠 그렸다.",
+  "sourceConditions": [
+    {
+      "id": "P",
+      "condition": "0≤t≤2, v₁=3t²/4+2>0, P의 이동거리 6",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "Q1",
+      "condition": "m=3이면 v₂(t)=3t−6≤0, 영점 t=2",
+      "mappedTo": "numberLine.rows[0].pieces;numberLine.rows[3].points[Z2]"
+    },
+    {
+      "id": "Q2",
+      "condition": "m=6이면 v₂(t)=6t−6, 영점 t=1 전후 부호 변화",
+      "mappedTo": "numberLine.rows[1,2].pieces;numberLine.rows[3].points[Z1]"
+    }
+  ],
+  "newVisualInformation": [
+    "해설에서 실제 해가 된 두 m값 각각의 Q 속도 부호구간을 표시하며, 직선 그래프나 거리 면적을 임의로 근사하지 않는다."
+  ]
+}

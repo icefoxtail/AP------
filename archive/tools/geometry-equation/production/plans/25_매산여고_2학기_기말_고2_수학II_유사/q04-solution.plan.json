@@ -1,0 +1,55 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "15",
+      "12",
+      "-3"
+    ],
+    "domain": [
+      0,
+      6.2
+    ],
+    "viewport": [
+      -1,
+      7,
+      -8,
+      30
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisVariable": "t",
+    "functionName": "v",
+    "requiredPoints": [
+      {
+        "id": "T",
+        "x": 5,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 2,
+        "y": 27
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "시각 t≥0에서 속도 v(t)=−3t²+12t+15의 그래프는 t=5에서 t축과 만나 속도가 0이 된다.",
+  "sourceConditions": [
+    {
+      "id": "q4-c1",
+      "condition": "v(t)=-3(t-5)(t+1)에서 t≥0이므로 v=0인 시각은 t=5",
+      "mappedTo": "graphPlan.coefficients"
+    }
+  ],
+  "newVisualInformation": [
+    "시각 t≥0 범위에서 속도 그래프가 t=5에서 0이 되는 순간을 보인다."
+  ],
+  "accessibilityDescription": "시간 t에 따른 속도 v(t)는 아래로 열린 포물선이며 t=5에서 0이 되고 t=2에서 27의 극댓값을 갖는다."
+}

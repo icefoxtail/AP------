@@ -1,0 +1,81 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "x^2-6x+5",
+    "functionName": "f",
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "axis",
+        "lower": "f",
+        "from": "1",
+        "to": "5",
+        "fill": "LIGHT",
+        "label": "S"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 1,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 5,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 3,
+        "y": -4
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "domain": [
+      0,
+      6
+    ],
+    "viewport": [
+      -0.5,
+      6.5,
+      -5,
+      7
+    ]
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "f(x)=(x-1)(x-5)와 x축으로 둘러싸인 색칠한 부분은 1<x<5에서 x축 아래에 있다.",
+  "sourceConditions": [
+    {
+      "id": "q17-c1",
+      "condition": "f(x)=(x-1)(x-5)",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "q17-c2",
+      "condition": "1<x<5에서 f(x)<0",
+      "mappedTo": "graphPlan.regions"
+    }
+  ],
+  "newVisualInformation": [
+    "x축과 곡선으로 둘러싸인 부분의 범위 1<x<5."
+  ],
+  "accessibilityDescription": "위로 열린 이차함수 x²−6x+5가 x=1,5에서 x축과 교차하며 그 사이 x축 아래 영역만 칠한다."
+}

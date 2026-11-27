@@ -1,0 +1,55 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "30",
+      "-6"
+    ],
+    "domain": [
+      -0.8,
+      5.8
+    ],
+    "viewport": [
+      -1,
+      6.5,
+      -12,
+      42
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisVariable": "t",
+    "functionName": "g'",
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 2.5,
+        "y": 37.5
+      },
+      {
+        "id": "T",
+        "x": 5,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "a=11일 때 g'(t)=6t(5-t)는 0<t<5에서 양수이다.",
+  "sourceConditions": [
+    {
+      "id": "q8-c1",
+      "condition": "a=11이면 g'(t)=6t(5-t)",
+      "mappedTo": "graphPlan.coefficients"
+    }
+  ],
+  "newVisualInformation": [
+    "a=11일 때 열린 구간 (0,5)에서 g'(t)>0이고 양 끝에서 0이 됨을 보인다."
+  ],
+  "accessibilityDescription": "a=11의 경계에서 도함수 g'(t)는 t=0,5에서 0이고 0<t<5에서 양수이다."
+}

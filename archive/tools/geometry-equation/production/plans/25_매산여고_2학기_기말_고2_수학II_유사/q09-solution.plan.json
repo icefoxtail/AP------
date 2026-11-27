@@ -1,0 +1,58 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "5",
+      "-12",
+      "-3",
+      "2"
+    ],
+    "domain": [
+      -2.8,
+      3.8
+    ],
+    "viewport": [
+      -3.2,
+      4.2,
+      -22,
+      25
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "H",
+        "x": -1,
+        "y": 12
+      },
+      {
+        "id": "L",
+        "x": 2,
+        "y": -15
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "f(x)=2x³−3x²−12x+5는 x=−1에서 극대 12, x=2에서 극소 −15를 갖는다.",
+  "accessibilityDescription": "삼차함수가 왼쪽 극댓점 (−1,12)에서 내려오고 오른쪽 극솟점 (2,−15)에서 다시 올라간다.",
+  "sourceConditions": [
+    {
+      "id": "f",
+      "condition": "f′(x)=6(x+1)(x−2), a=−3, b=−12",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "extrema",
+      "condition": "극대 (−1,12), 극소 (2,−15)",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "도함수 부호 변화와 두 극점 좌표를 명시한다."
+  ]
+}
