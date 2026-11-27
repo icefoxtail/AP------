@@ -1,0 +1,95 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      100,
+      350,
+      150,
+      750
+    ],
+    "curves": [
+      {
+        "id": "profit",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-400",
+          "9",
+          "-1/50"
+        ],
+        "domain": [
+          "100",
+          "350"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "target",
+        "kind": "LINE",
+        "coefficients": [
+          "500",
+          "0"
+        ],
+        "domain": [
+          "100",
+          "350"
+        ],
+        "label": "y=500",
+        "color": "WARM",
+        "style": "DASHED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "150",
+        "300"
+      ],
+      "y": [
+        "500"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "L",
+          "x": "150",
+          "y": "500",
+          "coordinates": true
+        },
+        {
+          "id": "R",
+          "x": "300",
+          "y": "500",
+          "coordinates": true
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "판매량 x",
+      "y": "총이익(만원)"
+    }
+  },
+  "caption": "총이익 f(x)=−0.02x²+9x−400과 기준 500만원이 x=150,300에서 만나므로 150≤x≤300이 충족 범위다.",
+  "accessibilityDescription": "실제 총이익 이차곡선과 500만원 기준 수평선, 두 교점 (150,500),(300,500)을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "수입 x(12−0.02x)와 비용 (400+3x) 차이",
+      "mappedTo": [
+        "graphPlan.curves[0].coefficients"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "최소 이익 500만원, 교점 판매량 150·300",
+      "mappedTo": [
+        "graphPlan.curves[1].coefficients",
+        "graphPlan.overlays.points"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "실제 총이익 이차곡선과 500만원 기준 수평선, 두 교점 (150,500),(300,500)을 표시한다."
+  ]
+}

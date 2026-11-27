@@ -1,0 +1,90 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "1",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "2",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-2",
+          "5",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "2"
+      },
+      {
+        "x": "2",
+        "y": "4"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": 0,
+        "y": 2
+      },
+      {
+        "id": "R",
+        "x": 2,
+        "y": 4
+      },
+      {
+        "id": "V",
+        "x": "5/2",
+        "y": "17/4"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [
+        "2",
+        "5/2"
+      ],
+      "y": [
+        "4",
+        "17/4"
+      ]
+    }
+  },
+  "caption": "제한 구간 0≤x≤2에서 함수의 최솟값을 2로 두면 p+q는 p≤0, 0≤p≤2, p≥2에서 각각 다른 이차·일차식이다. p=5/2에서 전체 최댓값 17/4를 갖는다.",
+  "accessibilityDescription": "세 경우가 이어지는 연속 그래프, 전환점 (0,2),(2,4), 최댓값점 (5/2,17/4)을 실제 곡선으로 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "p≤0: p+q=2+p−p², 0≤p≤2: p+2, p≥2: −p²+5p−2",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.breakpoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "최댓값 p=5/2, p+q=17/4",
+      "mappedTo": [
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "세 경우가 이어지는 연속 그래프, 전환점 (0,2),(2,4), 최댓값점 (5/2,17/4)을 실제 곡선으로 표시한다."
+  ]
+}

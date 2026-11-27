@@ -1,0 +1,83 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -6,
+      2,
+      -14,
+      15
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "2",
+          "7",
+          "1"
+        ],
+        "domain": [
+          "-6",
+          "2"
+        ],
+        "label": "y=x^2+7x+2",
+        "color": "BLUE"
+      },
+      {
+        "id": "line",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "3"
+        ],
+        "domain": [
+          "-6",
+          "2"
+        ],
+        "label": "y=3x-2",
+        "color": "WARM"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2"
+      ],
+      "y": [
+        "-8"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "T",
+          "x": "-2",
+          "y": "-8",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "f(−1)<0 조건을 만족하는 a=7의 포물선 y=x²+7x+2와 직선 y=3x−2는 T(−2,−8)에서 접한다.",
+  "accessibilityDescription": "포물선과 직선의 한 점 접촉 관계를 실제 두 곡선과 좌표 있는 접점 T로 그린다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=x²+7x+2 (a=7)",
+      "mappedTo": [
+        "graphPlan.curves[0].coefficients"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "직선 y=3x−2와 중근 접점 T(−2,−8)",
+      "mappedTo": [
+        "graphPlan.curves[1].coefficients",
+        "graphPlan.overlays.points"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "포물선과 직선의 한 점 접촉 관계를 실제 두 곡선과 좌표 있는 접점 T로 그린다."
+  ]
+}

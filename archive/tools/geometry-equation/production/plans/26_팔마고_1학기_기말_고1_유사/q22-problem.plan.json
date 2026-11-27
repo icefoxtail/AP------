@@ -1,0 +1,445 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "F",
+          "G"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lEF",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "E",
+          "F"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lEG",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "E",
+          "G"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lCD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lEF",
+          "lAD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lEF",
+          "lAB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "J",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lEG",
+          "lAD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lEG",
+          "lCD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sFB",
+      "refs": [
+        "F",
+        "B"
+      ]
+    },
+    {
+      "id": "sCG",
+      "refs": [
+        "C",
+        "G"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sEG",
+      "refs": [
+        "E",
+        "G"
+      ]
+    },
+    {
+      "id": "sEH",
+      "refs": ["E", "H"]
+    },
+    {
+      "id": "sEJ",
+      "refs": ["E", "J"]
+    },
+    {
+      "id": "sHI",
+      "refs": ["H", "I"]
+    },
+    {
+      "id": "sAH",
+      "refs": ["A", "H"]
+    },
+    {
+      "id": "sHJ",
+      "refs": ["H", "J"]
+    },
+    {
+      "id": "sAI",
+      "refs": ["A", "I"]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 520
+  },
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eFG",
+        "count": 1,
+        "segments": [
+          "sFB",
+          "sCG"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "aF",
+        "refs": [
+          "E",
+          "F",
+          "G"
+        ],
+        "value": 60,
+        "label": "60",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "len6",
+        "ownerSegment": "sAB",
+        "text": "6"
+      }
+    ],
+    "regions": [
+      {
+        "id": "sumAreas",
+        "fill": "LIGHT",
+        "shapes": [
+          {"polygon": ["E", "H", "J"]},
+          {"polygon": ["A", "I", "H"]}
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "sqA",
+      "refs": [
+        "D",
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "caption": "정사각형 ABCD와 BC의 양쪽 연장선에 BF=CG인 F,G, 밑변 FG 위쪽의 정삼각형 EFG, 교점 H,I,J,K의 배치를 보여 준다.",
+  "accessibilityDescription": "정사각형과 정삼각형의 실제 선분, 네 교점 이름, BF·CG의 같은 길이 표식, 60° 각 호와 직각 표시를 그린다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "ABCD 정사각형, AB=6",
+      "mappedTo": [
+        "displaySegments",
+        "rightAngles",
+        "planeMarks.expressionLabels"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "F는 B 방향 연장선, G는 C 방향 연장선이며 BF=CG",
+      "mappedTo": [
+        "displaySegments",
+        "planeMarks.equalLengths"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "EFG 정삼각형, H,I,J,K는 지정 선분들의 교점",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "planeMarks.angles",
+        "displayPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정사각형과 정삼각형의 실제 선분, 네 교점 이름, BF·CG의 같은 길이 표식, 60° 각 호와 직각 표시를 그린다."
+  ]
+}

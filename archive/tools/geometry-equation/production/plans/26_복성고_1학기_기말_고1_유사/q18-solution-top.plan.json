@@ -1,0 +1,270 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "outer",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "R"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "R",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayCircles": [
+    "outer"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sOR",
+      "refs": [
+        "O",
+        "R"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "hiddenPointNames": [
+    "O",
+    "R",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 550,
+    "height": 460
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "radius",
+        "ownerSegment": "sOR",
+        "text": "a"
+      },
+      {
+        "id": "side",
+        "ownerSegment": "sAB",
+        "text": "b"
+      }
+    ],
+    "regions": [
+      {
+        "id": "topSurface",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "loop": {
+              "start": "R",
+              "steps": [
+                {
+                  "to": "R",
+                  "arc": {
+                    "center": "O",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "holes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "해설에서 구한 a=5, b=4인 윗면 단면: 반지름 a인 원에서 한 변 b인 정사각형 관통 구멍을 제외한 영역의 넓이는 πa²−b²이다. 입체 옆면은 별도 계산한다.",
+  "accessibilityDescription": "반지름 5의 원형 윗면과 그 안에 완전히 들어간 한 변 4의 정사각형 빈 구멍을 실제 원과 네 선분, 차집합 영역으로 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "radius",
+      "condition": "해설에서 a=5, b=4로 검산, 원의 반지름 a",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayCircles",
+        "planeMarks.expressionLabels"
+      ]
+    },
+    {
+      "id": "hole",
+      "condition": "한 변 b=4의 정사각형 구멍을 뺀 면",
+      "mappedTo": [
+        "displaySegments",
+        "planeMarks.regions"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원 위쪽 면에서 정사각형 구멍을 실제 비운 한 개의 원-정사각형 차집합 영역과 반지름·변 라벨을 그린다."
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "7",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "10",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "장미 송이",
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "열린 끝점 7과 닫힌 끝점 10 "
+  },
+  "caption": "장미를 x송이 사면 x>7이고 x≤10이므로 가능한 정수 8,9,10 중 최대는 10이다.",
+  "accessibilityDescription": "열린 끝점 7과 닫힌 끝점 10 사이에서 장미 송이 수 8,9,10을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "장미가 더 많아 x>7",
+      "mappedTo": [
+        "numberLine.rows[0].pieces"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "예산 34000원 이하에서 x≤10",
+      "mappedTo": [
+        "numberLine.rows[0].pieces"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "열린 끝점 7과 닫힌 끝점 10 사이에서 장미 송이 수 8,9,10을 표시한다."
+  ]
+}

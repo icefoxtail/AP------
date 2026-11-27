@@ -1,0 +1,62 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ],
+        "label": "첫째 조건"
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "3/2",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "둘째 조건"
+      },
+      {
+        "kind": "RESULT",
+        "label": "공통 범위"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "각 부등식의 반직선과 양끝을 포함하는"
+  },
+  "caption": "x≥−2와 x≤3/2의 교집합은 −2≤x≤3/2이므로 a+2b=1이다.",
+  "accessibilityDescription": "각 부등식의 반직선과 양끝을 포함하는 공통 구간을 실제 수직선에 그린다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x−4≤5x+4에서 x≥−2",
+      "mappedTo": [
+        "numberLine.rows[0].pieces"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "5x+4≤3x+7에서 x≤3/2",
+      "mappedTo": [
+        "numberLine.rows[1].pieces"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "각 부등식의 반직선과 양끝을 포함하는 공통 구간을 실제 수직선에 그린다."
+  ]
+}

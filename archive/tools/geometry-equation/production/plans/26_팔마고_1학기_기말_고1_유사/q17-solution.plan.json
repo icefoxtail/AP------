@@ -1,0 +1,76 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-3",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "2",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "첫째 식"
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "3",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "label": "둘째 식"
+      },
+      {
+        "kind": "RESULT",
+        "label": "공통 정수",
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "m=−2,n=1 예시"
+  },
+  "caption": "m=−2,n=1인 대표 경우 첫째 부등식은 −3≤x≤2, 둘째는 1<x<3이므로 공통 정수 x는 2 하나뿐이다. 전체 경우의 수는 별도로 조사한다.",
+  "accessibilityDescription": "두 부등식의 닫힌 구간과 열린 구간을 같은 수직선에 겹쳐 실제 정수 교점 2 하나를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "m",
+      "condition": "m=−2이면 (−2x−6)(x−2)≥0에서 −3≤x≤2",
+      "mappedTo": [
+        "numberLine.rows[0].pieces"
+      ]
+    },
+    {
+      "id": "n",
+      "condition": "n=1이면 (x−1)(x−3)<0에서 1<x<3",
+      "mappedTo": [
+        "numberLine.rows[1].pieces"
+      ]
+    },
+    {
+      "id": "integer",
+      "condition": "교집합 1<x≤2에 정수 2 하나",
+      "mappedTo": [
+        "numberLine.rows[2].integerPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "m=−2,n=1인 실재 허용 경우의 두 정수 경계와 공통 정수점 하나를 정확한 개폐점으로 그린다."
+  ]
+}

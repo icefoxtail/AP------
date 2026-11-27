@@ -1,0 +1,49 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-6",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "3",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "정수 해",
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "−6과 3을 포함하는 닫힌 구간 "
+  },
+  "caption": "|2x+3|≤9에서 −6≤x≤3이므로 양 끝을 포함하는 정수는 10개다.",
+  "accessibilityDescription": "−6과 3을 포함하는 닫힌 구간 및 정수점 10개를 수직선 위에 그린다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "−9≤2x+3≤9에서 −6≤x≤3",
+      "mappedTo": [
+        "numberLine.rows[0].pieces"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "정수 −6부터 3까지 10개",
+      "mappedTo": [
+        "numberLine.rows[0].integerPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "−6과 3을 포함하는 닫힌 구간 및 정수점 10개를 수직선 위에 그린다."
+  ]
+}

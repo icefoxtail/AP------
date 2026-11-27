@@ -1,0 +1,33 @@
+{
+  "capability": "quadratic-inequality-chain-v1",
+  "inequality": {
+    "coefficients": [
+      "-21",
+      "-8",
+      "4"
+    ],
+    "comparator": "<=",
+    "variable": "x"
+  },
+  "graphCaption": {
+    "text": "이차식의 부호"
+  },
+  "numberLineCaption": {
+    "text": "근 사이의 정수해"
+  },
+  "caption": "4x²−8x−21=(2x+3)(2x−7)≤0의 범위는 −3/2≤x≤7/2이고 정수해는 −1,0,1,2,3의 다섯 개다.",
+  "accessibilityDescription": "위로 열린 포물선의 영점 −3/2와 7/2 및 그 사이의 닫힌 해집합을 실제 그래프와 수직선에 그린다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "주어진 이차부등식 4x²−8x−21≤0",
+      "mappedTo": [
+        "inequality.coefficients",
+        "inequality.comparator"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "위로 열린 포물선의 영점 −3/2와 7/2 및 그 사이의 닫힌 해집합을 실제 그래프와 수직선에 그린다."
+  ]
+}
