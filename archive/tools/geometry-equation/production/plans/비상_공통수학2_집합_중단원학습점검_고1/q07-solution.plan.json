@@ -1,0 +1,81 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "좌변 C−(A∩B)"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A",
+              "name": "A"
+            },
+            {
+              "id": "B",
+              "name": "B"
+            },
+            {
+              "id": "C",
+              "name": "C"
+            }
+          ],
+          "shade": "C-(A∩B)",
+          "showUniverse": false
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "우변 (C−A)∪(C−B)"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A",
+              "name": "A"
+            },
+            {
+              "id": "B",
+              "name": "B"
+            },
+            {
+              "id": "C",
+              "name": "C"
+            }
+          ],
+          "shade": "(C-A)∪(C-B)",
+          "showUniverse": false
+        }
+      }
+    }
+  ],
+  "caption": "좌변 C−(A∩B)와 우변 (C−A)∪(C−B)는 각 벤다이어그램에서 C 중 A∩B∩C만 제외한 동일한 영역을 칠한다.",
+  "accessibilityDescription": "좌변 C−(A∩B)와 우변 (C−A)∪(C−B)는 각 벤다이어그램에서 C 중 A∩B∩C만 제외한 동일한 영역을 칠한다.",
+  "sourceConditions": [
+    {
+      "id": "S7-1",
+      "condition": "좌변 C−(A∩B)의 원자 영역",
+      "mappedTo": "panels[0].plan.diagram.shade"
+    },
+    {
+      "id": "S7-2",
+      "condition": "우변 (C−A)∪(C−B)의 원자 영역",
+      "mappedTo": "panels[1].plan.diagram.shade"
+    },
+    {
+      "id": "S7-3",
+      "condition": "양변의 공통 부분 A∩B∩C는 색칠 대상이 아님",
+      "mappedTo": "panels[0].plan.diagram,panels[1].plan.diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 흰 바탕/흰 원판 채움 제거, 좌우 동일 집합식 색칠"
+  ]
+}

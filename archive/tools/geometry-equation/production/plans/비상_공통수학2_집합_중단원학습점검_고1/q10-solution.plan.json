@@ -1,0 +1,78 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "name": "A"
+      },
+      {
+        "id": "B",
+        "name": "B"
+      }
+    ],
+    "subset": [
+      "A",
+      "B"
+    ],
+    "showUniverse": false,
+    "elements": [
+      {
+        "text": "1",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "5",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "2",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "4",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "10",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "20",
+        "in": [
+          "B"
+        ]
+      }
+    ]
+  },
+  "caption": "A={1,5}⊆X⊆B={1,2,4,5,10,20}. A의 1,5는 고정이고 B−A={2,4,10,20} 네 원소는 X에 자유롭게 포함하거나 제외한다.",
+  "accessibilityDescription": "A={1,5}⊆X⊆B={1,2,4,5,10,20}. A의 1,5는 고정이고 B−A={2,4,10,20} 네 원소는 X에 자유롭게 포함하거나 제외한다.",
+  "sourceConditions": [
+    {
+      "id": "S10-1",
+      "condition": "A∩X=A ⇒ A⊆X; B∪X=B ⇒ X⊆B",
+      "mappedTo": "diagram.subset"
+    },
+    {
+      "id": "S10-2",
+      "condition": "A={1,5}, B−A={2,4,10,20}; 선택 네 개",
+      "mappedTo": "diagram.elements"
+    }
+  ],
+  "newVisualInformation": [
+    "A의 고정 두 원소와 선택 가능한 B−A 네 원소 구분"
+  ]
+}

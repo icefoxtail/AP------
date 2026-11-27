@@ -1,0 +1,53 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "-1",
+      "2"
+    ],
+    "denominator": [
+      "-1",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      6
+    ],
+    "viewport": [
+      -5,
+      7,
+      -3,
+      8
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "2"
+      ]
+    },
+    "asymptoteLabelAt": "END"
+  },
+  "caption": "(1) y=1/(x−1)+2의 양쪽 가지, 수직 점근선 x=1, 수평 점근선 y=2를 구별한다.",
+  "accessibilityDescription": "(1) y=1/(x−1)+2의 양쪽 가지, 수직 점근선 x=1, 수평 점근선 y=2를 구별한다.",
+  "sourceConditions": [
+    {
+      "id": "R2A-1",
+      "condition": "(2x−1)/(x−1)=1/(x−1)+2",
+      "mappedTo": "graphPlan.numerator,graphPlan.denominator"
+    },
+    {
+      "id": "R2A-2",
+      "condition": "정의역 x≠1, 치역 y≠2, 점근선 x=1·y=2",
+      "mappedTo": "graphPlan.sourceDomain,graphPlan.axisTickValues"
+    }
+  ],
+  "newVisualInformation": [
+    "축·점근선 실선/점선 구분과 점근선 숫자"
+  ]
+}

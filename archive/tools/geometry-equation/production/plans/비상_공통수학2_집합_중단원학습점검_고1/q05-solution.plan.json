@@ -1,0 +1,80 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "name": "A"
+      },
+      {
+        "id": "B",
+        "name": "B"
+      }
+    ],
+    "showUniverse": false,
+    "elements": [
+      {
+        "text": "3",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "5",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "6",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "7",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "8",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "9",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "10",
+        "in": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "caption": "A∪B={3,5,6,7,8,9,10}의 영역에서 A∩B={6,9}는 겹친 부분, 3은 B에만, 5·7·8·10은 A에만 속한다.",
+  "accessibilityDescription": "A∪B={3,5,6,7,8,9,10}의 영역에서 A∩B={6,9}는 겹친 부분, 3은 B에만, 5·7·8·10은 A에만 속한다.",
+  "sourceConditions": [
+    {
+      "id": "S5-1",
+      "condition": "A={5,6,7,8,9,10}",
+      "mappedTo": "diagram.sets,diagram.elements"
+    },
+    {
+      "id": "S5-2",
+      "condition": "A∪B={3,5,6,7,8,9,10}; A∩B={6,9}",
+      "mappedTo": "diagram.elements"
+    }
+  ],
+  "newVisualInformation": [
+    "B={3,6,9}가 나오는 원소별 위치"
+  ]
+}

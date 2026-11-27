@@ -1,0 +1,121 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      9,
+      -1,
+      9
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "1",
+          "1"
+        ],
+        "denominator": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "2",
+          "9"
+        ],
+        "domainStates": [
+          "OPEN",
+          "NONE"
+        ],
+        "color": "BLUE",
+        "label": "y=3/(x-2)+1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": [
+        "1"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "2+sqrt(3)",
+          "y": "1+sqrt(3)",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "2+sqrt(3)",
+          "y": "0"
+        },
+        {
+          "id": "R",
+          "x": "0",
+          "y": "1+sqrt(3)"
+        },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "PQ",
+          "from": "P",
+          "to": "Q",
+          "dashed": true
+        },
+        {
+          "id": "PR",
+          "from": "P",
+          "to": "R",
+          "dashed": true
+        }
+      ],
+      "rightAngles": [
+        {
+          "at": "Q",
+          "from": [
+            "P",
+            "O"
+          ]
+        },
+        {
+          "at": "R",
+          "from": [
+            "P",
+            "O"
+          ]
+        }
+      ]
+    }
+  },
+  "caption": "x>2에서 y=3/(x−2)+1 위의 등호 성립점 P(2+√3,1+√3)와 두 축에 내린 수선 PQ, PR, 직각표식, 길이를 표시한다.",
+  "accessibilityDescription": "x>2에서 y=3/(x−2)+1 위의 등호 성립점 P(2+√3,1+√3)와 두 축에 내린 수선 PQ, PR, 직각표식, 길이를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "R11-1",
+      "condition": "P는 y=3/(x−2)+1 (x>2) 위의 점",
+      "mappedTo": "graphPlan.curves[f],graphPlan.overlays.points[P]"
+    },
+    {
+      "id": "R11-2",
+      "condition": "Q=(t,0), R=(0,y_P); PQ⊥x축, PR⊥y축",
+      "mappedTo": "graphPlan.overlays.points[Q,R],graphPlan.overlays.segments,graphPlan.overlays.rightAngles"
+    },
+    {
+      "id": "R11-3",
+      "condition": "등호에서 t=2+√3, PQ=1+√3, PR=2+√3",
+      "mappedTo": "graphPlan.overlays.points,graphPlan.overlays.segments"
+    }
+  ],
+  "newVisualInformation": [
+    "수선의 발·직각·실제 길이 라벨을 캡션 아닌 도형 요소로 표시"
+  ]
+}

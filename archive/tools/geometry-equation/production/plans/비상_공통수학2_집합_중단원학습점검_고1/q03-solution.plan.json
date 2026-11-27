@@ -1,0 +1,89 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "name": "A"
+      },
+      {
+        "id": "B",
+        "name": "B"
+      }
+    ],
+    "universe": {
+      "name": "U"
+    },
+    "elements": [
+      {
+        "text": "1",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "2",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "3",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "4",
+        "in": []
+      },
+      {
+        "text": "5",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "6",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "7",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "8",
+        "in": []
+      },
+      {
+        "text": "9",
+        "in": []
+      }
+    ]
+  },
+  "caption": "U={1,…,9}에서 A∩B={1,2,3}, A−B={6}, B−A={5,7}, 두 집합 밖={4,8,9}를 원소마다 정확히 배치하고 기본 면 채움은 두지 않는다.",
+  "accessibilityDescription": "U={1,…,9}에서 A∩B={1,2,3}, A−B={6}, B−A={5,7}, 두 집합 밖={4,8,9}를 원소마다 정확히 배치하고 기본 면 채움은 두지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "S3-1",
+      "condition": "U={1,…,9}, A={1,2,3,6}, B={1,2,3,5,7}",
+      "mappedTo": "diagram.universe,diagram.sets,diagram.elements"
+    },
+    {
+      "id": "S3-2",
+      "condition": "(1) A∩B, (2) Aᶜ, (3) A∩Bᶜ, (4) B−A",
+      "mappedTo": "diagram.elements"
+    }
+  ],
+  "newVisualInformation": [
+    "전체 9원소의 소속을 1:1 표시, 불필요한 색칠 없음"
+  ]
+}
