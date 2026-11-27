@@ -1,0 +1,53 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-5",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "0",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "0",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "5",
+              "state": "OPEN"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "세 실근이 모두 서로 다른 a"
+  },
+  "caption": "이차식의 판별식으로 -5<a<5이고, 일차근과 겹치는 a=0을 제외하여 -5<a<0 또는 0<a<5이다.",
+  "accessibilityDescription": "-5,0,5의 세 열린 점과 -5에서 0, 0에서 5 사이의 두 열린 구간을 표시하는 수직선.",
+  "sourceConditions": [
+    {
+      "id": "sy-21-1",
+      "condition": "a²<25",
+      "mappedTo": "numberLine.rows[0].pieces"
+    },
+    {
+      "id": "sy-21-2",
+      "condition": "a=0에서 일차근·이차근이 일치하므로 제외",
+      "mappedTo": "numberLine.rows[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "중간 값 a=0을 반드시 뺀 두 구간임을 표시한다."
+  ]
+}

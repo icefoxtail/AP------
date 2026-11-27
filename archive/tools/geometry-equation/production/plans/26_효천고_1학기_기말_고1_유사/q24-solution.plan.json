@@ -1,0 +1,73 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "7",
+      "-8",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      7
+    ],
+    "viewport": [
+      -1,
+      8,
+      -11,
+      13
+    ],
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": 0,
+        "y": 7
+      },
+      {
+        "id": "A",
+        "x": 1,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 4,
+        "y": -9
+      },
+      {
+        "id": "R",
+        "x": 5,
+        "y": -8
+      },
+      {
+        "id": "B",
+        "x": 7,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "h=f−g=(x−1)(x−7)이며 0≤x≤5에서 최솟값 -9는 x=4, 최댓값 7은 x=0이다.",
+  "accessibilityDescription": "위로 열린 포물선 h(x)가 근 1,7과 꼭짓점 (4,-9), 구간 양 끝 (0,7),(5,-8)을 지난다.",
+  "sourceConditions": [
+    {
+      "id": "24-0",
+      "condition": "h(x)의 계수 7,-8,1",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "24-1",
+      "condition": "두 근·꼭짓점·문제의 구간 끝점",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 해설의 꼭짓점·경계·근에 대응하는 점과 구간 끝의 상대 높이를 직접 표시한다."
+  ]
+}

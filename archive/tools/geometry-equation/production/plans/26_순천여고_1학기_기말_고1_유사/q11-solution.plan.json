@@ -1,0 +1,38 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "4",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "모든 x∈[0,2]에서 성립하는 a"
+  },
+  "caption": "이차식이 0≤x≤2에서 항상 0 이상인 a의 범위는 -2≤a≤4이며 최솟값은 -2이다.",
+  "accessibilityDescription": "a 수직선의 -2와 4가 닫힌 점이고 사이 전체를 선택한 그림.",
+  "sourceConditions": [
+    {
+      "id": "sy-11-1",
+      "condition": "꼭짓점 위치에 따른 세 경우를 합치면 -2≤a≤4",
+      "mappedTo": "numberLine.rows[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "매개변수 범위에서 두 끝이 모두 포함됨을 분명히 한다."
+  ]
+}
