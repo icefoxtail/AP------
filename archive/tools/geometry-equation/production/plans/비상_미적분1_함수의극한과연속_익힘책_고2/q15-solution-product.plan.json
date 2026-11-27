@@ -1,0 +1,9 @@
+{
+  "capability":"piecewise-discontinuous-spike-v1",
+  "graphPlan":{"family":"piecewise-discontinuous","functionName":"p","pieces":[{"coefficients":["-1"],"domain":[null,-1],"end":"CLOSED"},{"coefficients":["0","-1"],"domain":[-1,1],"start":"OPEN","end":"OPEN"},{"coefficients":["-1"],"domain":[1,null],"start":"CLOSED"}],"limitArrows":[{"at":"-1","side":"LEFT","toY":"-1"},{"at":"-1","side":"RIGHT","toY":"1"}],"axisTickValues":{"x":[-1,1],"y":[-1,1]}},
+  "caption":"p(x)=f(x)g(x)는 x=-1에서 좌극한 -1, 우극한 1로 불연속이고 x=1에서는 양쪽과 함숫값 모두 -1이다.",
+  "accessibilityDescription":"곱함수는 x=-1에서 서로 다른 -1과 1의 빈·찬 점이 있고 x=1에서 높이 -1로 이어진다.",
+  "sourceQuote":"ㄷ. 함수 $f(x)g(x)$는 $x=1$에서 연속이다.",
+  "sourceConditions":[{"id":"c1","condition":"fg는 |x|≥1에서 -1, |x|<1에서 -x","mappedTo":"graphPlan.pieces"},{"id":"c2","condition":"x=-1 점프, x=1에서 극한=-1=함숫값","mappedTo":"graphPlan.limitArrows,graphPlan.pieces"}],
+  "newVisualInformation":["곱함수의 한쪽 점프와 다른 쪽 연속을 명확한 열린·닫힌 끝으로 구별"]
+}

@@ -1,0 +1,9 @@
+{
+  "capability":"piecewise-polynomial-spike-v1",
+  "graphPlan":{"family":"piecewise-polynomial","functionName":"f","pieces":[{"coefficients":["-2","1"]}],"sourceDomain":{"kind":"ALL_REALS"},"requiredPoints":[{"id":"P","x":"-1","y":"-3"}],"axisTickValues":{"x":[-1],"y":[-3]}},
+  "caption":"연속 조건을 적용하면 x≠-1에서 f(x)=x-2이고 f(-1)=-3이다. (-1,-3)을 빈 구멍이 아닌 정의된 점으로 표시한다.",
+  "accessibilityDescription":"직선 y=x-2 위에 x=-1에서 함수값 -3인 찬 점이 있어 그래프가 끊기지 않는다.",
+  "sourceQuote":"가 모든 실수 $x$에서 연속일 때, 실수 $a, b, c$의 값을 구하시오.",
+  "sourceConditions":[{"id":"c1","condition":"a=-3,b=2이면 x³+ax-b=(x+1)²(x-2)","mappedTo":"graphPlan.pieces"},{"id":"c2","condition":"연속 조건으로 f(-1)=c=-3","mappedTo":"graphPlan.requiredPoints"}],
+  "newVisualInformation":["약분 전의 분모가 0인 점을 연속 조건이 메운다는 해설 내용을 표시"]
+}

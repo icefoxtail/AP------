@@ -1,0 +1,9 @@
+{
+  "capability":"piecewise-polynomial-spike-v1",
+  "graphPlan":{"family":"piecewise-polynomial","functionName":"f","pieces":[{"coefficients":["3"]},{"coefficients":["1","1"]}],"breakpoints":[{"x":"2","y":"3"}],"sourceDomain":{"kind":"ALL_REALS"},"requiredPoints":[{"id":"P","x":"2","y":"3"}],"axisTickValues":{"x":[2],"y":[3]}},
+  "caption":"연속 조건을 적용한 f(x)는 x≤2에서 3, x>2에서 x+1이므로 두 조각이 (2,3)에서 빈틈 없이 만난다.",
+  "accessibilityDescription":"높이 3인 왼쪽 수평선과 기울기 1인 오른쪽 직선이 점 (2,3)에서 연결된 연속함수 그래프.",
+  "sourceQuote":"이 모든 실수 $x$에서 연속일 때, 실수 $a, b$의 값을 구하시오.",
+  "sourceConditions":[{"id":"c1","condition":"a=-1,b=-2 ⇒ x>2에서 (x²-x-2)/(x-2)=x+1","mappedTo":"graphPlan.pieces[1]"},{"id":"c2","condition":"x≤2에서 3, x=2에서 두 값 모두3","mappedTo":"graphPlan.pieces[0],graphPlan.breakpoints,graphPlan.requiredPoints"}],
+  "newVisualInformation":["해설에서 결정된 계수로 좌우 조각이 정확히 이어지는 접합점 표시"]
+}

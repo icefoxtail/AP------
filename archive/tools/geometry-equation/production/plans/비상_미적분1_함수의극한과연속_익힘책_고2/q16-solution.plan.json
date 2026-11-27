@@ -1,0 +1,9 @@
+{
+  "capability":"piecewise-discontinuous-spike-v1",
+  "graphPlan":{"family":"piecewise-discontinuous","functionName":"f","axisVariable":"a","pieces":[{"coefficients":["0"],"domain":[null,"-2*sqrt(2)"],"end":"OPEN"},{"coefficients":["2"],"domain":["-2*sqrt(2)","2*sqrt(2)"],"start":"OPEN","end":"OPEN"},{"coefficients":["0"],"domain":["2*sqrt(2)",null],"start":"OPEN"}],"jumpValues":[{"x":"-2*sqrt(2)","y":"1"},{"x":"2*sqrt(2)","y":"1"}],"requiredPoints":[{"id":"L","x":"-2*sqrt(2)","y":"1"},{"id":"R","x":"2*sqrt(2)","y":"1"}],"exactCoordinates":{"L":["-2*sqrt(2)","1"],"R":["2*sqrt(2)","1"]},"axisTickValues":{"x":[],"y":[1,2]}},
+  "caption":"원 x²+y²=4와 직선 y=x+a의 교점 개수 f(a)는 |a|<2√2에서 2개, 접하는 ±2√2에서 1개, 그 밖에서 0개이다.",
+  "accessibilityDescription":"가로축 a의 -2√2와 2√2에서 함수값 1인 점을 찍고 그 사이 높이 2, 바깥 높이 0으로 그린 불연속 계단 그래프.",
+  "sourceQuote":"함수 $f(a)$가 불연속인 모든 $a$의 값의 곱을 구하시오.",
+  "sourceConditions":[{"id":"c1","condition":"원과 직선 사이 거리 |a|/sqrt(2)가 반지름 2와 비교됨","mappedTo":"graphPlan.pieces"},{"id":"c2","condition":"a=±2sqrt(2)에서 접점 하나","mappedTo":"graphPlan.jumpValues,graphPlan.requiredPoints"},{"id":"c3","condition":"가로축은 매개변수 a, 세로축은 교점 개수","mappedTo":"graphPlan.axisVariable,graphPlan.functionName"}],
+  "newVisualInformation":["접할 때 값 1인 고립점과 그 좌우 교점 개수의 점프를 같은 축에 표시"]
+}

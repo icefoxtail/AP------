@@ -1,0 +1,9 @@
+{
+  "capability":"piecewise-discontinuous-spike-v1",
+  "graphPlan":{"family":"piecewise-discontinuous","functionName":"f","pieces":[{"coefficients":["1","1"],"domain":[null,3],"end":"OPEN"},{"coefficients":["1","1"],"domain":[3,null],"start":"OPEN"}],"jumpValues":[{"x":"3","y":"-2"}],"requiredPoints":[{"id":"P","x":3,"y":-2}],"limitArrows":[{"at":"3","side":"LEFT","toY":"4"},{"at":"3","side":"RIGHT","toY":"4"}],"axisTickValues":{"x":[3],"y":[-2,4]}},
+  "caption":"⑵ x=3에서 좌우극한은 모두 4이지만 실제 함수값 f(3)=-2이므로 그래프의 (3,4)는 빈 점이고 (3,-2)는 찬 점이다.",
+  "accessibilityDescription":"직선 y=x+1의 (3,4)에 구멍이 있고 그 아래 (3,-2)에 별도의 찬 점이 있는 제거 가능 불연속 그래프.",
+  "sourceQuote":"⑵ $f(x)=\\begin{cases} x+1 & (x \\ne 3) \\\\ -2 & (x=3) \\end{cases}$",
+  "sourceConditions":[{"id":"c1","condition":"x≠3에서 f=x+1이고 양쪽 극한은 4","mappedTo":"graphPlan.pieces,graphPlan.limitArrows"},{"id":"c2","condition":"f(3)=-2","mappedTo":"graphPlan.jumpValues,graphPlan.requiredPoints"}],
+  "newVisualInformation":["극한이 존재하는 점 (3,4)과 실제 함숫값 (3,-2)의 불일치 표시"]
+}
