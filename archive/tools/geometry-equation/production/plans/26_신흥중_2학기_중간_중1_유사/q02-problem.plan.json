@@ -1,0 +1,312 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "L1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-25"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "25"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-25"
+            },
+            {
+              "kind": "integer",
+              "value": "-10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "25"
+            },
+            {
+              "kind": "integer",
+              "value": "-10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-57",
+              "denominator": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-15"
+            },
+            {
+              "kind": "integer",
+              "value": "-10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "-10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "L1",
+    "R1",
+    "L2",
+    "R2",
+    "T1",
+    "B1",
+    "T2",
+    "B2"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sL1R1",
+      "refs": [
+        "L1",
+        "R1"
+      ]
+    },
+    {
+      "id": "sL2R2",
+      "refs": [
+        "L2",
+        "R2"
+      ]
+    },
+    {
+      "id": "sT1B1",
+      "refs": [
+        "T1",
+        "B1"
+      ]
+    },
+    {
+      "id": "sT2B2",
+      "refs": [
+        "T2",
+        "B2"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 470
+  },
+  "caption": "평행한 두 직선 l과 m을 가로지르는 횡단선 두 개와 65°, 55°, x, y 각",
+  "sourceConditions": [
+    {
+      "id": "q2-problem",
+      "condition": "위·아래 평행선, 두 횡단선, 주어진 65°·55° 각호 및 미지각 x·y를 모두 직접 그림",
+      "mappedTo": "L1,R1,L2,R2,T1"
+    }
+  ],
+  "newVisualInformation": [
+    "위·아래 평행선, 두 횡단선, 주어진 65°·55° 각호 및 미지각 x·y를 모두 직접 그림"
+  ],
+  "hiddenPointNames": [
+    "L1",
+    "R1",
+    "L2",
+    "R2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aL1T1B1",
+        "refs": [
+          "L1",
+          "T1",
+          "B1"
+        ],
+        "value": 65,
+        "label": "65",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aR1T2B2",
+        "refs": [
+          "R1",
+          "T2",
+          "B2"
+        ],
+        "value": 55,
+        "label": "55",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aR2B1T1",
+        "refs": [
+          "R2",
+          "B1",
+          "T1"
+        ],
+        "value": 65,
+        "label": "x",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aL2B2T2",
+        "refs": [
+          "L2",
+          "B2",
+          "T2"
+        ],
+        "value": 55,
+        "label": "y",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "parallels": [
+      {
+        "id": "paraLM",
+        "count": 1,
+        "segments": [
+          "sL1R1",
+          "sL2R2"
+        ]
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "lLabel",
+        "at": [
+          23,
+          12
+        ],
+        "text": "l"
+      },
+      {
+        "id": "mLabel",
+        "at": [
+          23,
+          -8
+        ],
+        "text": "m"
+      }
+    ]
+  },
+  "sourceQuote": "다음 그림에서 두 직선 $l$과 $m$이 서로 평행할 때, $\\angle x+\\angle y$의 크기는? [3점]",
+  "accessibilityDescription": "평행한 두 직선 l과 m을 가로지르는 횡단선 두 개와 65°, 55°, x, y 각"
+}

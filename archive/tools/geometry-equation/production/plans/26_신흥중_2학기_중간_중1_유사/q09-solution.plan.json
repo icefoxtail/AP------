@@ -1,0 +1,333 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "L1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-14"
+            },
+            {
+              "kind": "integer",
+              "value": "11"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "11"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-14"
+            },
+            {
+              "kind": "integer",
+              "value": "-11"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "-11"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "11"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "971",
+              "denominator": "100"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "48",
+              "denominator": "100"
+            },
+            {
+              "kind": "integer",
+              "value": "-11"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Nl",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-14"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Nr",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "L1",
+    "R1",
+    "L2",
+    "R2",
+    "T",
+    "K",
+    "B",
+    "Nl",
+    "Nr"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sL1R1",
+      "refs": [
+        "L1",
+        "R1"
+      ]
+    },
+    {
+      "id": "sL2R2",
+      "refs": [
+        "L2",
+        "R2"
+      ]
+    },
+    {
+      "id": "sTK",
+      "refs": [
+        "T",
+        "K"
+      ]
+    },
+    {
+      "id": "sKB",
+      "refs": [
+        "K",
+        "B"
+      ]
+    },
+    {
+      "id": "sNlNr",
+      "refs": [
+        "Nl",
+        "Nr"
+      ],
+      "dashed": true
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 470
+  },
+  "caption": "꺾인 점 K를 지나는 점선 보조선 n이 85°를 35°와 50°로 나눔",
+  "sourceConditions": [
+    {
+      "id": "q9-solution",
+      "condition": "원본의 평행선·꺾인 지점·35°·85°·미지각 x 및 해설의 평행 보조선",
+      "mappedTo": "L1,R1,L2,R2,T"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 평행선·꺾인 지점·35°·85°·미지각 x 및 해설의 평행 보조선"
+  ],
+  "hiddenPointNames": [
+    "L1",
+    "R1",
+    "L2",
+    "R2",
+    "Nl",
+    "Nr"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aR1TK",
+        "refs": [
+          "R1",
+          "T",
+          "K"
+        ],
+        "value": 35,
+        "label": "35",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aTKB",
+        "refs": [
+          "T",
+          "K",
+          "B"
+        ],
+        "value": 85,
+        "label": "85",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aR2BK",
+        "refs": [
+          "R2",
+          "B",
+          "K"
+        ],
+        "value": 50,
+        "label": "x",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aNlKB",
+        "refs": [
+          "Nl",
+          "K",
+          "B"
+        ],
+        "value": 50,
+        "label": "50",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "lName",
+        "at": [
+          17,
+          12.5
+        ],
+        "text": "l"
+      },
+      {
+        "id": "mName",
+        "at": [
+          17,
+          -9.5
+        ],
+        "text": "m"
+      }
+    ]
+  },
+  "sourceQuote": "다음 그림에서 두 직선 $l$과 $m$이 서로 평행할 때, $\\angle x$의 크기는? [4점]",
+  "accessibilityDescription": "꺾인 점 K를 지나는 점선 보조선 n이 85°를 35°와 50°로 나눔"
+}

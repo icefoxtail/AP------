@@ -1,0 +1,264 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "140"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "100"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sem",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "O",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 470
+  },
+  "caption": "호비 2:5와 중심각 40°, 100° 및 이등변삼각형 OBD의 밑각 40°",
+  "sourceConditions": [
+    {
+      "id": "q15-solution",
+      "condition": "지름 AB, 반원호, 평행 표식, 두 호의 2:5 대응과 모든 점 라벨",
+      "mappedTo": "A,B,O"
+    }
+  ],
+  "newVisualInformation": [
+    "지름 AB, 반원호, 평행 표식, 두 호의 2:5 대응과 모든 점 라벨"
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aAOC",
+        "refs": [
+          "A",
+          "O",
+          "C"
+        ],
+        "value": 40,
+        "label": "40",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aBOD",
+        "refs": [
+          "B",
+          "O",
+          "D"
+        ],
+        "value": 100,
+        "label": "100",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aOBD",
+        "refs": [
+          "O",
+          "B",
+          "D"
+        ],
+        "value": 40,
+        "label": "40",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "parallels": [
+      {
+        "id": "parOCBD",
+        "count": 1,
+        "segments": [
+          "sOC",
+          "sBD"
+        ]
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAC",
+        "circle": "sem",
+        "center": "O",
+        "from": "A",
+        "to": "C",
+        "side": "MINOR",
+        "label": "2",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "arcBD",
+        "circle": "sem",
+        "center": "O",
+        "from": "B",
+        "to": "D",
+        "side": "MINOR",
+        "label": "5",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "upper",
+        "circle": "sem",
+        "center": "O",
+        "from": "B",
+        "to": "A",
+        "side": "CCW",
+        "highlight": false
+      }
+    ]
+  },
+  "sourceQuote": "다음 그림과 같이 선분 $AB$를 지름으로 하는 반원 $O$ 위의 두 점 $C, D$에 대하여 $\\overline{OC}\\parallel\\overline{BD}$이다. $\\over",
+  "accessibilityDescription": "호비 2:5와 중심각 40°, 100° 및 이등변삼각형 OBD의 밑각 40°"
+}
