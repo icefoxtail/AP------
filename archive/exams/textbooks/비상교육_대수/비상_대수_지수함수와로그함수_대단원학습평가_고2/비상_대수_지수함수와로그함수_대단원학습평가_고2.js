@@ -351,7 +351,11 @@ window.questionBank = [
     "content": "$x$에 대한 부등식\n$$\\log_{\\frac{1}{2}}(x-6) \\ge \\log_{\\frac{1}{2}}\\left(\\frac{1}{3}x+k\\right)$$\n를 만족시키는 모든 정수 $x$의 개수가 $7$일 때, 자연수 $k$의 값을 구하시오.",
     "choices": [],
     "answer": "$3$",
-    "solution": "진수의 조건에서 $x-6>0$이므로 $x>6$이고, 이때 $\\frac{1}{3}x+k>0$도 성립한다.\n밑 $\\frac{1}{2}$이 $1$보다 작으므로 부등식은 $x-6\\le\\frac{1}{3}x+k$이다. 정리하면 $\\frac{2}{3}x\\le 6+k$에서 $x\\le 9+\\frac{3}{2}k$이다.\n따라서 해는 $6<x\\le 9+\\frac{3}{2}k$이고 정수 $x$가 $7,\\ 8,\\ \\cdots$로 $7$개이려면 가장 큰 정수가 $13$이어야 한다.\n$$13\\le 9+\\frac{3}{2}k<14,\\quad\\frac{8}{3}\\le k<\\frac{10}{3}$$\n$k$는 자연수이므로 $k=3$"
+    "solution": "진수의 조건에서 $x-6>0$이므로 $x>6$이고, 이때 $\\frac{1}{3}x+k>0$도 성립한다.\n밑 $\\frac{1}{2}$이 $1$보다 작으므로 부등식은 $x-6\\le\\frac{1}{3}x+k$이다. 정리하면 $\\frac{2}{3}x\\le 6+k$에서 $x\\le 9+\\frac{3}{2}k$이다.\n따라서 해는 $6<x\\le 9+\\frac{3}{2}k$이고 정수 $x$가 $7,\\ 8,\\ \\cdots$로 $7$개이려면 가장 큰 정수가 $13$이어야 한다.\n$$13\\le 9+\\frac{3}{2}k<14,\\quad\\frac{8}{3}\\le k<\\frac{10}{3}$$\n$k$는 자연수이므로 $k=3$",
+    "solutionImage": "assets/images/비상_대수_지수함수와로그함수_대단원학습평가_고2/q12-solution.svg",
+    "solutionImageAlt": "k=3이면 진수의 조건과 감소하는 로그함수의 부등식에서 6<x≤27/2이다. 이 구간의 정수 7, 8, 9, 10, 11, 12, 13은 모두 일곱 개다.",
+    "solutionImageCaption": "k=3이면 진수의 조건과 감소하는 로그함수의 부등식에서 6<x≤27/2이다. 이 구간의 정수 7, 8, 9, 10, 11, 12, 13은 모두 일곱 개다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -491,6 +495,10 @@ window.questionBank = [
     "content": "두 집합\n$$A=\\{x \\mid x^2-9x+8\\le 0\\},$$\n$$B=\\{x \\mid (\\log_2 x)^2-2k\\log_2 x+k^2-1\\le 0\\}$$\n에 대하여 $A\\cap B=\\varnothing$이 되도록 하는 실수 $k$의 값의 범위를 구하시오.",
     "choices": [],
     "answer": "$k<-1$ 또는 $k>4$",
-    "solution": "$A$: $x^2-9x+8=(x-1)(x-8)\\le 0$에서 $A=\\{x\\mid 1\\le x\\le 8\\}$\n$B$: $\\log_2 x=t$로 놓으면 $t^2-2kt+k^2-1=(t-k)^2-1\\le 0$에서 $k-1\\le t\\le k+1$이다. 즉 $k-1\\le\\log_2 x\\le k+1$이므로 $B=\\{x\\mid 2^{k-1}\\le x\\le 2^{k+1}\\}$이다.\n$A\\cap B=\\varnothing$이려면 $B$가 $A$의 왼쪽에 있거나 오른쪽에 있어야 한다.\n(i) $2^{k+1}<1$인 경우: $k+1<0$에서 $k<-1$\n(ii) $2^{k-1}>8$인 경우: $k-1>3$에서 $k>4$\n따라서 $k<-1$ 또는 $k>4$"
+    "solution": "$A$: $x^2-9x+8=(x-1)(x-8)\\le 0$에서 $A=\\{x\\mid 1\\le x\\le 8\\}$\n$B$: $\\log_2 x=t$로 놓으면 $t^2-2kt+k^2-1=(t-k)^2-1\\le 0$에서 $k-1\\le t\\le k+1$이다. 즉 $k-1\\le\\log_2 x\\le k+1$이므로 $B=\\{x\\mid 2^{k-1}\\le x\\le 2^{k+1}\\}$이다.\n$A\\cap B=\\varnothing$이려면 $B$가 $A$의 왼쪽에 있거나 오른쪽에 있어야 한다.\n(i) $2^{k+1}<1$인 경우: $k+1<0$에서 $k<-1$\n(ii) $2^{k-1}>8$인 경우: $k-1>3$에서 $k>4$\n따라서 $k<-1$ 또는 $k>4$",
+    "solutionImage": "assets/images/비상_대수_지수함수와로그함수_대단원학습평가_고2/q17-solution.svg",
+    "solutionImageAlt": "A=[1,8], B=[2^(k-1),2^(k+1)]이다. B의 오른쪽 끝이 1보다 작으면 k<−1이고, B의 왼쪽 끝이 8보다 크면 k>4다. 두 경계는 A에 닿으므로 모두 열린 끝점이다.",
+    "solutionImageCaption": "A=[1,8], B=[2^(k-1),2^(k+1)]이다. B의 오른쪽 끝이 1보다 작으면 k<−1이고, B의 왼쪽 끝이 8보다 크면 k>4다. 두 경계는 A에 닿으므로 모두 열린 끝점이다.",
+    "solutionImageSize": "full"
   }
 ];

@@ -83,7 +83,11 @@ window.questionBank = [
     "content": "원점 $\\mathrm{O}$와 점 $\\mathrm{P}(-1, \\sqrt{3})$을 지나는 동경 $\\mathrm{OP}$가 나타내는 각의 크기를 $\\theta$라고 할 때, $\\sin\\theta, \\cos\\theta, \\tan\\theta$의 값을 구하시오.",
     "choices": [],
     "answer": "$\\sin\\theta=\\frac{\\sqrt{3}}{2},\\ \\cos\\theta=-\\frac{1}{2},\\ \\tan\\theta=-\\sqrt{3}$",
-    "solution": "$\\overline{\\mathrm{OP}}=r=\\sqrt{(-1)^2+(\\sqrt{3})^2}=2$이므로\n$$\\sin\\theta=\\frac{y}{r}=\\frac{\\sqrt{3}}{2},\\quad\\cos\\theta=\\frac{x}{r}=-\\frac{1}{2},\\quad\\tan\\theta=\\frac{y}{x}=\\frac{\\sqrt{3}}{-1}=-\\sqrt{3}$$"
+    "solution": "$\\overline{\\mathrm{OP}}=r=\\sqrt{(-1)^2+(\\sqrt{3})^2}=2$이므로\n$$\\sin\\theta=\\frac{y}{r}=\\frac{\\sqrt{3}}{2},\\quad\\cos\\theta=\\frac{x}{r}=-\\frac{1}{2},\\quad\\tan\\theta=\\frac{y}{x}=\\frac{\\sqrt{3}}{-1}=-\\sqrt{3}$$",
+    "solutionImage": "assets/images/비상_대수_삼각함수_중단원학습점검_고2/q3-solution.svg",
+    "solutionImageAlt": "P(−1,√3)는 제2사분면에 있고 OP=2, 가로 절댓값 1, 세로 √3인 직각삼각형을 이룬다.",
+    "solutionImageCaption": "P(−1,√3)는 제2사분면에 있고 OP=2, 가로 절댓값 1, 세로 √3인 직각삼각형을 이룬다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -111,7 +115,11 @@ window.questionBank = [
     "content": "다음 방정식과 부등식을 푸시오. (단, $0\\le x < 2\\pi$)\n⑴ $\\sin x = -\\frac{\\sqrt{3}}{2}$\n⑵ $\\tan x < \\frac{\\sqrt{3}}{3}$",
     "choices": [],
     "answer": "⑴ $x=\\frac{4}{3}\\pi$ 또는 $x=\\frac{5}{3}\\pi$\n⑵ $0\\le x<\\frac{\\pi}{6}$ 또는 $\\frac{\\pi}{2}<x<\\frac{7}{6}\\pi$ 또는 $\\frac{3}{2}\\pi<x<2\\pi$",
-    "solution": "⑴ $\\sin x=-\\frac{\\sqrt{3}}{2}$이면 $x$는 제3, 제4사분면의 각이고 기준각이 $\\frac{\\pi}{3}$이다. 따라서 $x=\\pi+\\frac{\\pi}{3}=\\frac{4}{3}\\pi$ 또는 $x=2\\pi-\\frac{\\pi}{3}=\\frac{5}{3}\\pi$\n⑵ $y=\\tan x$의 그래프와 직선 $y=\\frac{\\sqrt{3}}{3}$의 교점의 $x$좌표는 $\\frac{\\pi}{6},\\ \\frac{7}{6}\\pi$이고, $x=\\frac{\\pi}{2},\\ \\frac{3}{2}\\pi$에서 $\\tan x$가 정의되지 않는다. 그래프가 직선보다 아래쪽에 있는 구간은\n$$0\\le x<\\frac{\\pi}{6},\\quad\\frac{\\pi}{2}<x<\\frac{7}{6}\\pi,\\quad\\frac{3}{2}\\pi<x<2\\pi$$"
+    "solution": "⑴ $\\sin x=-\\frac{\\sqrt{3}}{2}$이면 $x$는 제3, 제4사분면의 각이고 기준각이 $\\frac{\\pi}{3}$이다. 따라서 $x=\\pi+\\frac{\\pi}{3}=\\frac{4}{3}\\pi$ 또는 $x=2\\pi-\\frac{\\pi}{3}=\\frac{5}{3}\\pi$\n⑵ $y=\\tan x$의 그래프와 직선 $y=\\frac{\\sqrt{3}}{3}$의 교점의 $x$좌표는 $\\frac{\\pi}{6},\\ \\frac{7}{6}\\pi$이고, $x=\\frac{\\pi}{2},\\ \\frac{3}{2}\\pi$에서 $\\tan x$가 정의되지 않는다. 그래프가 직선보다 아래쪽에 있는 구간은\n$$0\\le x<\\frac{\\pi}{6},\\quad\\frac{\\pi}{2}<x<\\frac{7}{6}\\pi,\\quad\\frac{3}{2}\\pi<x<2\\pi$$",
+    "solutionImage": "assets/images/비상_대수_삼각함수_중단원학습점검_고2/q4-solution.svg",
+    "solutionImageAlt": "⑴ 0≤x<2π에서 sin x=−√3/2의 해는 4π/3과 5π/3이다.",
+    "solutionImageCaption": "⑴ 0≤x<2π에서 sin x=−√3/2의 해는 4π/3과 5π/3이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -223,7 +231,11 @@ window.questionBank = [
     "content": "각 $\\theta$가 제2사분면의 각이고 $\\cos\\theta = -\\frac{4}{5}$일 때, $\\sin\\theta - \\tan\\theta$의 값을 구하시오.",
     "choices": [],
     "answer": "$\\frac{27}{20}$",
-    "solution": "$\\theta$가 제2사분면의 각이므로 $\\sin\\theta>0$이다.\n$$\\sin\\theta=\\sqrt{1-\\cos^2\\theta}=\\sqrt{1-\\frac{16}{25}}=\\frac{3}{5}$$\n$$\\tan\\theta=\\frac{\\sin\\theta}{\\cos\\theta}=\\frac{\\frac{3}{5}}{-\\frac{4}{5}}=-\\frac{3}{4}$$\n$$\\sin\\theta-\\tan\\theta=\\frac{3}{5}+\\frac{3}{4}=\\frac{12+15}{20}=\\frac{27}{20}$$"
+    "solution": "$\\theta$가 제2사분면의 각이므로 $\\sin\\theta>0$이다.\n$$\\sin\\theta=\\sqrt{1-\\cos^2\\theta}=\\sqrt{1-\\frac{16}{25}}=\\frac{3}{5}$$\n$$\\tan\\theta=\\frac{\\sin\\theta}{\\cos\\theta}=\\frac{\\frac{3}{5}}{-\\frac{4}{5}}=-\\frac{3}{4}$$\n$$\\sin\\theta-\\tan\\theta=\\frac{3}{5}+\\frac{3}{4}=\\frac{12+15}{20}=\\frac{27}{20}$$",
+    "solutionImage": "assets/images/비상_대수_삼각함수_중단원학습점검_고2/q8-solution.svg",
+    "solutionImageAlt": "제2사분면에서 cosθ=−4/5는 왼쪽 4, 위쪽 3, 빗변 5인 직각삼각형이고 sinθ−tanθ=27/20이다.",
+    "solutionImageCaption": "제2사분면에서 cosθ=−4/5는 왼쪽 4, 위쪽 3, 빗변 5인 직각삼각형이고 sinθ−tanθ=27/20이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -279,7 +291,12 @@ window.questionBank = [
     "content": "다음 함수의 주기와 최댓값, 최솟값을 구하시오.\n⑴ $y = 2\\sin\\left(\\frac{x}{2} - \\frac{\\pi}{3}\\right) - 1$\n⑵ $y = \\frac{1}{2}\\cos 2\\left(x - \\frac{\\pi}{6}\\right) + 2$",
     "choices": [],
     "answer": "⑴ 주기 $4\\pi$, 최댓값 $1$, 최솟값 $-3$\n⑵ 주기 $\\pi$, 최댓값 $\\frac{5}{2}$, 최솟값 $\\frac{3}{2}$",
-    "solution": "⑴ $y=2\\sin\\left(\\frac{x}{2}-\\frac{\\pi}{3}\\right)-1$에서 주기는 $\\frac{2\\pi}{\\frac{1}{2}}=4\\pi$이고, $-1\\le\\sin\\left(\\frac{x}{2}-\\frac{\\pi}{3}\\right)\\le 1$이므로 $-2-1\\le y\\le 2-1$에서 최댓값 $1$, 최솟값 $-3$이다.\n⑵ $y=\\frac{1}{2}\\cos 2\\left(x-\\frac{\\pi}{6}\\right)+2$에서 주기는 $\\frac{2\\pi}{2}=\\pi$이고, $-1\\le\\cos 2\\left(x-\\frac{\\pi}{6}\\right)\\le 1$이므로 $-\\frac{1}{2}+2\\le y\\le\\frac{1}{2}+2$에서 최댓값 $\\frac{5}{2}$, 최솟값 $\\frac{3}{2}$이다."
+    "solution": "⑴ $y=2\\sin\\left(\\frac{x}{2}-\\frac{\\pi}{3}\\right)-1$에서 주기는 $\\frac{2\\pi}{\\frac{1}{2}}=4\\pi$이고, $-1\\le\\sin\\left(\\frac{x}{2}-\\frac{\\pi}{3}\\right)\\le 1$이므로 $-2-1\\le y\\le 2-1$에서 최댓값 $1$, 최솟값 $-3$이다.\n⑵ $y=\\frac{1}{2}\\cos 2\\left(x-\\frac{\\pi}{6}\\right)+2$에서 주기는 $\\frac{2\\pi}{2}=\\pi$이고, $-1\\le\\cos 2\\left(x-\\frac{\\pi}{6}\\right)\\le 1$이므로 $-\\frac{1}{2}+2\\le y\\le\\frac{1}{2}+2$에서 최댓값 $\\frac{5}{2}$, 최솟값 $\\frac{3}{2}$이다.",
+    "solutionImage": "assets/images/비상_대수_삼각함수_중단원학습점검_고2/q10-solution.svg",
+    "solutionImageAlt": "⑴ y=2sin(x/2−π/3)−1의 주기는 4π, 최댓값 1, 최솟값 −3이다.",
+    "solutionImageCaption": "⑴ y=2sin(x/2−π/3)−1의 주기는 4π, 최댓값 1, 최솟값 −3이다.",
+    "solutionImageSize": "medium",
+    "solutionImageScale": 90
   },
   {
     "id": 11,
