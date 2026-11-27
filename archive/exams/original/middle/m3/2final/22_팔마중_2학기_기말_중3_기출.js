@@ -26,7 +26,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 같은 호에 대한 중심각은 원주각의 두 배이다.\n그림에서 $\\angle APB=20^\\circ$이고, 이 각과 중심각 $\\angle AOB$가 같은 호 $\\wideparen{AB}$를 본다.\n따라서 $x=\\angle AOB=40^\\circ$이다. 또 $\\angle AQB$도 같은 호 $\\wideparen{AB}$에 대한 원주각이므로 $y=20^\\circ$이다.\n그러므로 $x-y=20^\\circ$이고 정답은 ③이다.",
-    "image": "assets/images/22_팔마중_2학기_기말_중3_기출/q1.png",
+    "image": "assets/images/22_팔마중_2학기_기말_중3_기출/q1-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -34,8 +34,8 @@ window.questionBank = [
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
     "solutionImage": "assets/images/22_팔마중_2학기_기말_중3_기출/q1-solution.svg",
-    "solutionImageAlt": "해설 그림: 같은 호 AB를 보는 두 원주각과 중심각",
-    "solutionImageCaption": "같은 호의 원주각은 서로 같고 중심각은 그 두 배이다. 정답은 ③ (20°)이다.",
+    "solutionImageAlt": "∠APB와 ∠AQB는 같은 호 AB를 보는 원주각이고 ∠AOB는 그 호의 중심각이다.",
+    "solutionImageCaption": "∠APB와 ∠AQB는 같은 호 AB를 보는 원주각이고 ∠AOB는 그 호의 중심각이다.",
     "solutionImageSize": "full"
   ,
     "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
@@ -50,7 +50,10 @@ window.questionBank = [
     "decisiveStep": "같은 호AB를 보는 중심각과 두 원주각의 배각·동일 관계를 바로 적용해 x-y를 구한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원본 문제 도형: 원주각 20°, 중심각 x와 같은 호를 보는 원주각 y.",
+    "imageCaption": "원본 문제 도형: 원주각 20°, 중심각 x와 같은 호를 보는 원주각 y.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -77,7 +80,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 같은 원에서 길이가 같은 현은 같은 크기의 호에 대응한다.\n그림에서 $BC=CD$이므로 $\\wideparen{BC}=\\wideparen{CD}$이다.\n$\\angle BAC=30^\\circ$이므로 $\\wideparen{BC}=60^\\circ$이고 $\\wideparen{CD}=60^\\circ$이다.\n따라서 $\\angle x$가 보는 호 $\\wideparen{BCD}$는 $120^\\circ$이므로 $x=60^\\circ$이다.\n정답은 ④이다.",
-    "image": "assets/images/22_팔마중_2학기_기말_중3_기출/q2.png",
+    "image": "assets/images/22_팔마중_2학기_기말_중3_기출/q2-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -85,8 +88,8 @@ window.questionBank = [
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
     "solutionImage": "assets/images/22_팔마중_2학기_기말_중3_기출/q2-solution.svg",
-    "solutionImageAlt": "해설 그림: 같은 길이의 두 호와 이를 보는 원주각",
-    "solutionImageCaption": "두 같은 호의 크기와 원주각의 관계를 이용한다. 정답은 ④ (60°)이다.",
+    "solutionImageAlt": "같은 길이의 두 호는 크기도 같고, 이를 보는 원주각은 각 호의 절반이다.",
+    "solutionImageCaption": "같은 길이의 두 호는 크기도 같고, 이를 보는 원주각은 각 호의 절반이다.",
     "solutionImageSize": "full"
   ,
     "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
@@ -101,7 +104,10 @@ window.questionBank = [
     "decisiveStep": "같은 길이의 연속 두 호BC·CD를 합쳐 목표 원주각이 보는 호의 크기를 두 배로 정한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원본 문제 도형: 호 BC와 CD는 각각 3 cm이고 원주각 A는 30°.",
+    "imageCaption": "원본 문제 도형: 호 BC와 CD는 각각 3 cm이고 원주각 A는 30°.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -128,7 +134,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 접선과 현이 이루는 각은 그 현이 만드는 원주각과 같다.\n그림에서 점 $A$에서 왼쪽으로 뻗은 접선과 현 $AC$가 이루는 각이 $65^\\circ$이므로 $\\angle ABC=65^\\circ$이다.\n또 $\\angle ACB=54^\\circ$이므로 삼각형 $ABC$에서\n$x=180^\\circ-65^\\circ-54^\\circ=61^\\circ$이다.\n정답은 ①이다.",
-    "image": "assets/images/22_팔마중_2학기_기말_중3_기출/q3.png",
+    "image": "assets/images/22_팔마중_2학기_기말_중3_기출/q3-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -152,7 +158,10 @@ window.questionBank = [
     "decisiveStep": "접선-현 각65도를 원주각으로 옮긴 뒤 삼각형의 내각 합에서 목표각을 구한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원본 문제 도형: 접선 AT, 원주각 C=54°, 접현각 65°와 미지각 x.",
+    "imageCaption": "원본 문제 도형: 접선 AT, 원주각 C=54°, 접현각 65°와 미지각 x.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -179,7 +188,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 원주각으로 호를 구한 뒤 같은 호의 관계를 연결한다.\n$\\angle ACD=59^\\circ$이므로 $\\wideparen{AD}=118^\\circ$이다.\n$\\angle BAC=34^\\circ$이므로 $\\wideparen{BC}=68^\\circ$이고, $\\wideparen{BC}=\\wideparen{CD}$이므로 $\\wideparen{CD}=68^\\circ$이다.\n따라서 $\\angle ABC$가 보는 호 $\\wideparen{ADC}$는 $186^\\circ$이므로 $\\angle ABC=93^\\circ$이다.\n$B,E,C$가 한 직선 위이므로 $\\angle EBA=87^\\circ$이다.\n정답은 ③이다.",
-    "image": "assets/images/22_팔마중_2학기_기말_중3_기출/q4.png",
+    "image": "assets/images/22_팔마중_2학기_기말_중3_기출/q4-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -203,7 +212,10 @@ window.questionBank = [
     "decisiveStep": "두 주어진 원주각을 대응 호로 바꾸고 같은 호를 연결하여 ABC를 정한 뒤 외각EBA를 평각에서 뺀다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원본 문제 도형: 원에 내접하는 사각형 ABCD, 같은 호 BC·CD와 각 34°·59°.",
+    "imageCaption": "원본 문제 도형: 원에 내접하는 사각형 ABCD, 같은 호 BC·CD와 각 34°·59°.",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -230,7 +242,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 접선-현의 각, 이등변삼각형, 내접사각형의 성질을 차례로 이용한다.\n접선 $AT$와 현 $AD$가 이루는 각이 $55^\\circ$이므로 $x=\\angle ABD=55^\\circ$이다.\n그림에서 $AD=BD$이므로 $\\triangle ABD$는 이등변삼각형이고 $\\angle BAD=55^\\circ$이다.\n사각형 $ABCD$가 원에 내접하므로 $y=\\angle BCD=180^\\circ-55^\\circ=125^\\circ$이다.\n따라서 $y-x=70^\\circ$이고 정답은 ④이다.",
-    "image": "assets/images/22_팔마중_2학기_기말_중3_기출/q5.png",
+    "image": "assets/images/22_팔마중_2학기_기말_중3_기출/q5-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -254,7 +266,10 @@ window.questionBank = [
     "decisiveStep": "접현각으로 ABD를 정하고 등변AD=BD에서 BAD를 옮겨 내접사각형의 대각 관계로 y를 구한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원본 문제 도형: 접선 AT, 같은 길이인 AD·BD, 접현각 55°와 미지각 x·y.",
+    "imageCaption": "원본 문제 도형: 접선 AT, 같은 길이인 AD·BD, 접현각 55°와 미지각 x·y.",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -281,7 +296,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 내접사각형의 맞은각과 접선-현의 각을 이용한다.\n$\\angle ADC=180^\\circ-83^\\circ=97^\\circ$이다.\n$C,D,P$가 한 직선 위이므로 $\\angle ADP=83^\\circ$이고, 삼각형 $APD$에서 $\\angle PAD=50^\\circ$이다.\n접선과 현 $AD$가 이루는 각과 같은 호 $\\wideparen{AD}$를 보는 원주각이 같으므로 $\\angle ACD=50^\\circ$이다.\n따라서 $\\angle CAD=180^\\circ-97^\\circ-50^\\circ=33^\\circ$이다.\n정답은 ③이다.",
-    "image": "assets/images/22_팔마중_2학기_기말_중3_기출/q6.png",
+    "image": "assets/images/22_팔마중_2학기_기말_중3_기출/q6-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -305,7 +320,10 @@ window.questionBank = [
     "decisiveStep": "내접사각형의 대각과 연장선의 보각으로 APD의 각을 복원한 뒤 접현각을 ACD로 전달해 CAD를 정한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원본 문제 도형: 접선 AP, 두 할선 PC·PD, 원주각 83°, 외각 47°.",
+    "imageCaption": "원본 문제 도형: 접선 AP, 두 할선 PC·PD, 원주각 83°, 외각 47°.",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -332,7 +350,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 원 밖의 두 할선이 이루는 각은 두 호의 크기 차의 절반이다.\n$\\wideparen{AB}=360^\\circ\\times\\dfrac25=144^\\circ$, $\\wideparen{CD}=360^\\circ\\times\\dfrac1{10}=36^\\circ$이다.\n따라서 $x=\\dfrac{144^\\circ-36^\\circ}{2}=54^\\circ$이고 정답은 ⑤이다.",
-    "image": "assets/images/22_팔마중_2학기_기말_중3_기출/q7.png",
+    "image": "assets/images/22_팔마중_2학기_기말_중3_기출/q7-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -340,8 +358,8 @@ window.questionBank = [
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": null,
     "solutionImage": "assets/images/22_팔마중_2학기_기말_중3_기출/q7-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 O와 원 밖의 점 P에서 그은 두 할선을 나타낸 그림. 호 AB는 파랑, 호 CD는 주황으로 구분하고 P에서의 각을 x로 표시한다.",
-    "solutionImageCaption": "원 밖의 두 할선이 이루는 각은 두 호의 크기 차의 절반이다. 정답은 ⑤ (54°)이다.",
+    "solutionImageAlt": "원과 두 외부 할선이 자르는 두 호를 나타낸 그림.",
+    "solutionImageCaption": "원과 두 외부 할선이 자르는 두 호를 나타낸 그림.",
     "solutionImageSize": "full"
   ,
     "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
@@ -353,7 +371,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "원주에 대한 두 호의 비율을 각각 각도로 바꾸고 원 밖 두 할선의 각은 호의 차의 절반이라는 정리를 직접 적용한다.",
-    "decisiveStep": "원주에 대한 두 호의 비율을 각각 각도로 바꾸고 원 밖 두 할선의 각은 호의 차의 절반이라는 정리를 직접 적용한다."
+    "decisiveStep": "원주에 대한 두 호의 비율을 각각 각도로 바꾸고 원 밖 두 할선의 각은 호의 차의 절반이라는 정리를 직접 적용한다.",
+    "imageAlt": "원본 문제 도형: 두 할선의 원 밖의 각 x, 먼 호 AB가 원주의 2/5, 가까운 호 CD가 1/10.",
+    "imageCaption": "원본 문제 도형: 두 할선의 원 밖의 각 x, 먼 호 AB가 원주의 2/5, 가까운 호 CD가 1/10.",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -380,7 +401,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 두 접선이 이루는 각으로 작은 호를 구하고 남은 큰 호를 비로 나눈다.\n그림에서 두 접선이 이루는 각이 $44^\\circ$이므로 작은 호 $\\wideparen{AB}$는 $136^\\circ$, 점 $C$를 지나는 큰 호 $\\wideparen{ACB}$는 $224^\\circ$이다.\n$\\wideparen{AC}:\\wideparen{BC}=2:5$이므로 $\\wideparen{AC}=224^\\circ\\times\\dfrac27=64^\\circ$이다.\n따라서 $x=\\angle ABC=32^\\circ$이고 정답은 ②이다.",
-    "image": "assets/images/22_팔마중_2학기_기말_중3_기출/q8.png",
+    "image": "assets/images/22_팔마중_2학기_기말_중3_기출/q8-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -388,8 +409,8 @@ window.questionBank = [
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
     "solutionImage": "assets/images/22_팔마중_2학기_기말_중3_기출/q8-solution.svg",
-    "solutionImageAlt": "해설 그림: 두 접선의 각과 비로 나눈 큰 호, 원주각의 관계",
-    "solutionImageCaption": "예: 두 접선으로 큰 호를 구하고 호의 비와 원주각을 연결한다. 정답은 ② (32°)이다.",
+    "solutionImageAlt": "점 P에서 원에 그은 두 접선과 접점 A, B 및 큰 호 위의 점 C를 나타낸 그림.",
+    "solutionImageCaption": "점 P에서 원에 그은 두 접선과 접점 A, B 및 큰 호 위의 점 C를 나타낸 그림.",
     "solutionImageSize": "full"
   ,
     "difficultyBoundaryFlag": "B34",
@@ -404,7 +425,10 @@ window.questionBank = [
     "decisiveStep": "두 접선 사이 각에서 작은 호와 큰 호를 구별하고 C를 지나는 큰 호를2:5로 나눈 뒤 목표 원주각을 정한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원본 문제 도형: 두 접선 PA·PB의 각 44°와 호 AC:BC=2:5.",
+    "imageCaption": "원본 문제 도형: 두 접선 PA·PB의 각 44°와 호 AC:BC=2:5.",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -431,7 +455,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 두 외부 할선각을 호의 차로 나타내고 원 전체의 호와 함께 연립한다.\n호 $AD,DC,CB,BA$를 각각 $a,b,c,d$라 하면 $\\angle E=48^\\circ$에서 $d-b=96^\\circ$, $\\angle F=30^\\circ$에서 $c-a=60^\\circ$이다.\n또 $a+b+c+d=360^\\circ$이므로 $2(a+b)+156^\\circ=360^\\circ$, 따라서 $a+b=102^\\circ$이다.\n$\\angle x=\\angle ABC$는 호 $\\wideparen{ADC}$를 보므로 $x=51^\\circ$이다.\n정답은 ②이다.",
-    "image": "assets/images/22_팔마중_2학기_기말_중3_기출/q9.png",
+    "image": "assets/images/22_팔마중_2학기_기말_중3_기출/q9-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -455,7 +479,10 @@ window.questionBank = [
     "decisiveStep": "두 외부 할선각을 네 호의 차 방정식으로 표현하고 전체360도와 연립하여 필요한 호의 합만 복원한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원본 문제 도형: 두 외부 할선과 48°·30° 및 내접사각형의 각 x.",
+    "imageCaption": "원본 문제 도형: 두 외부 할선과 48°·30° 및 내접사각형의 각 x.",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -482,7 +509,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 두 직각으로 네 점이 한 원 위에 있음을 확인한 뒤 교차하는 두 현의 각을 이용한다.\n$\\angle BAC=\\angle BDC=90^\\circ$이므로 $A,B,C,D$는 $BC$를 지름으로 하는 같은 원 위에 있다.\n$BQ=CQ$이므로 $Q$는 이 원의 중심이고 호 $\\wideparen{BC}=180^\\circ$이다.\n현 $AC$와 $BD$가 원 안의 점 $P$에서 만나므로\n$119^\\circ=\\dfrac12(\\wideparen{AD}+180^\\circ)$이다.\n따라서 $\\wideparen{AD}=58^\\circ$이고 중심각 $\\angle AQD=58^\\circ$이다.\n정답은 ①이다.",
-    "image": "assets/images/22_팔마중_2학기_기말_중3_기출/q10.png",
+    "image": "assets/images/22_팔마중_2학기_기말_중3_기출/q10-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -490,8 +517,8 @@ window.questionBank = [
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
     "solutionImage": "assets/images/22_팔마중_2학기_기말_중3_기출/q10-solution.svg",
-    "solutionImageAlt": "해설 그림: 두 직각으로 정한 원의 지름과 교차하는 두 현, 중심각",
-    "solutionImageCaption": "두 직각으로 지름을 확인하고 교차하는 현의 각으로 중심각을 구한다. 정답은 ① (58°)이다.",
+    "solutionImageAlt": "BC를 지름으로 하는 원과 교차하는 현 AC, BD 및 중심 Q를 나타낸 그림.",
+    "solutionImageCaption": "BC를 지름으로 하는 원과 교차하는 현 AC, BD 및 중심 Q를 나타낸 그림.",
     "solutionImageSize": "full"
   ,
     "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
@@ -506,7 +533,11 @@ window.questionBank = [
     "decisiveStep": "두 직각으로 BC를 지름으로 하는 공통 원을 구성하고 중점Q를 중심으로 해석하여 교차현각 정리에서 중심각AQD를 구한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원본 문제 도형: 두 직각 BAC·BDC, 교점 P에서 119°, BQ=CQ.",
+    "imageCaption": "원본 문제 도형: 두 직각 BAC·BDC, 교점 P에서 119°, BQ=CQ.",
+    "imageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 11,
@@ -927,8 +958,8 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 산점도에서 분모 조건과 분자 조건을 나누어 센다.\n1회 횟수가 $5$ 이상인 점은 $14$개이고, 그중 2회 횟수가 $7$ 미만인 점은 $7$개이다.\n따라서 비율은 $\\dfrac7{14}=\\dfrac12$이고 정답은 ①이다.",
-    "image": "assets/images/22_팔마중_2학기_기말_중3_기출/q20.png",
-    "imageSize": "tall",
+    "image": "assets/images/22_팔마중_2학기_기말_중3_기출/q20-problem.svg",
+    "imageSize": "full",
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
@@ -949,7 +980,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "산점도에서 x≥5인 집단을 분모로 정하고 그 안의y<7인 점을 분자로 세어 조건부 비율을 구한다.",
-    "decisiveStep": "산점도에서 x≥5인 집단을 분모로 정하고 그 안의y<7인 점을 분자로 세어 조건부 비율을 구한다."
+    "decisiveStep": "산점도에서 x≥5인 집단을 분모로 정하고 그 안의y<7인 점을 분자로 세어 조건부 비율을 구한다.",
+    "imageAlt": "문제 산점도: 관광객 30명의 두 차례 제기차기 횟수 원본 산점도. 각 점과 축·눈금만 원본과 같이 표시한다.",
+    "imageCaption": "문제 산점도: 관광객 30명의 두 차례 제기차기 횟수 원본 산점도. 각 점과 축·눈금만 원본과 같이 표시한다."
   },
   {
     "id": 21,
@@ -1017,7 +1050,7 @@ window.questionBank = [
     "choices": [],
     "answer": "$72^\\circ$",
     "solution": "[키포인트] 큰 호와 작은 호를 구분한 뒤 중심각과 두 접선이 이루는 각을 연결한다.\n$\\angle ACB=126^\\circ$이 보는 큰 호 $\\wideparen{AB}$의 크기는 $252^\\circ$이다.\n따라서 작은 호 $\\wideparen{AB}$는 $108^\\circ$이고 중심각 $\\angle AOB=108^\\circ$이다.\n접점에서 반지름과 접선이 수직이므로 $\\angle OAP=\\angle OBP=90^\\circ$이다.\n사각형 $AOBP$의 내각의 합에서\n$\\angle P=360^\\circ-90^\\circ-90^\\circ-108^\\circ=72^\\circ$이다.\n따라서 구하는 각은 $72^\\circ$이다.",
-    "image": "assets/images/22_팔마중_2학기_기말_중3_기출/q22.png",
+    "image": "assets/images/22_팔마중_2학기_기말_중3_기출/q22-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -1025,8 +1058,8 @@ window.questionBank = [
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
     "solutionImage": "assets/images/22_팔마중_2학기_기말_중3_기출/q22-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 원 O 밖의 점 P에서 그은 두 접선과 접점 A, B, 원 위의 점 C를 나타낸 그림. 각 ACB 126°, 중심각 108°, 큰 호 252°를 표시하고 구하는 각 P를 x로 표시한다.",
-    "solutionImageCaption": "큰 호와 작은 중심각의 관계로 두 접선이 이루는 각을 구한다. 정답은 72°이다.",
+    "solutionImageAlt": "원 위의 각과 중심각, 두 접선이 이루는 각 및 호 AB를 나타낸 그림.",
+    "solutionImageCaption": "원 위의 각과 중심각, 두 접선이 이루는 각 및 호 AB를 나타낸 그림.",
     "solutionImageSize": "full"
   ,
     "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
@@ -1041,7 +1074,10 @@ window.questionBank = [
     "decisiveStep": "원주각126도가 보는 큰 호를 먼저 정하고 반대 작은 호의 중심각108도를 두 접점의 직각과 사각형 내각 합에 연결한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원본 문제 도형: 두 접선 PA·PB, 원주각 ACB=126°와 구할 외각 P.",
+    "imageCaption": "원본 문제 도형: 두 접선 PA·PB, 원주각 ACB=126°와 구할 외각 P.",
+    "imageSize": "full"
   },
   {
     "id": 23,
@@ -1063,7 +1099,7 @@ window.questionBank = [
     "choices": [],
     "answer": "$58^\\circ$",
     "solution": "[키포인트] 접선-현의 각, 삼각형의 내각의 합, 각의 이등분선을 순서대로 연결한다.\n그림에서 $\\angle BAC=64^\\circ$이고 $\\angle ABC=\\beta$라 하자.\n그러면 $\\angle ACB=116^\\circ-\\beta$이다.\n접선과 현 $AB$가 이루는 바깥쪽 각은 이 원주각의 보각이므로 $\\angle DAB=64^\\circ+\\beta$이고, $B,C,D$가 한 직선이므로 $\\angle ABD=\\beta$이다.\n따라서 $\\angle ADB=116^\\circ-2\\beta$이다.\n$DE$가 $\\angle ADB$의 이등분선이므로 $\\angle ADE=58^\\circ-\\beta$이다.\n또 $E$는 $AB$ 위에 있으므로 $\\angle DAE=64^\\circ+\\beta$이다.\n삼각형 $ADE$에서\n$x=180^\\circ-(64^\\circ+\\beta)-(58^\\circ-\\beta)=58^\\circ$이다.\n따라서 구하는 각은 $58^\\circ$이다.",
-    "image": "assets/images/22_팔마중_2학기_기말_중3_기출/q23.png",
+    "image": "assets/images/22_팔마중_2학기_기말_중3_기출/q23-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -1071,8 +1107,8 @@ window.questionBank = [
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
     "solutionImage": "assets/images/22_팔마중_2학기_기말_중3_기출/q23-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 원에 내접한 삼각형 ABC와 점 A에서의 접선, 점 D 및 선분 AB 위의 점 E를 나타낸 그림. ∠BAC는 64°이고 구하는 ∠AED를 x로 표시한다.",
-    "solutionImageCaption": "접선과 현의 각으로 각을 연결하고 DE가 ∠ADB의 이등분선임을 이용하면 β가 소거된다. 정답은 58°이다.",
+    "solutionImageAlt": "접선과 현, 외부 삼각형 및 삼각형 안의 각 이등분선을 나타낸 그림.",
+    "solutionImageCaption": "접선과 현, 외부 삼각형 및 삼각형 안의 각 이등분선을 나타낸 그림.",
     "solutionImageSize": "full"
   ,
     "difficultyBoundaryFlag": "B34",
@@ -1087,7 +1123,11 @@ window.questionBank = [
     "decisiveStep": "접선-현 관계와 삼각형 내각 합에서 미지각β를 사용해 D의 각을 표현하고 그 이등분각을 목표 삼각형에 넣어β를 소거한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원본 문제 도형: 원에 내접한 삼각형 ABC, 접선 AD, 각 A=64°, D의 각 이등분선 DE와 구할 x.",
+    "imageCaption": "원본 문제 도형: 원에 내접한 삼각형 ABC, 접선 AD, 각 A=64°, D의 각 이등분선 DE와 구할 x.",
+    "imageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 24,

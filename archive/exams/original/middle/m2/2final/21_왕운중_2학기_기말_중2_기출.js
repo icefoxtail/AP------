@@ -395,8 +395,8 @@ window.questionBank = [
   },
   {
     "id": 7,
-    "imageSize": "tall",
-    "imageAlt": "AB는 6 cm, BD는 4 cm, DC는 5 cm이고 AD는 3 cm이다. AC의 길이는 x이다.",
+    "imageSize": "full",
+    "imageAlt": "원문 문제 그림: 삼각형 ABC 내부 점 D, AB=6, BD=4, DC=5, AD=3, AC=x",
     "questionType": "객관식",
     "tags": [
       "삼각형",
@@ -457,12 +457,13 @@ window.questionBank = [
     "solutionImage": "assets/images/21_왕운중_2학기_기말_중2_기출/q7-solution.svg",
     "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
     "solutionImageCaption": "AH를내려 BH=t라두면 36−9=t²−(t−4)²이므로 t43/8. AC²=(9−t)²+36−t²=81/4,AC9/2,정답④.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageCaption": "원문 문제 그림: 삼각형 ABC 내부 점 D, AB=6, BD=4, DC=5, AD=3, AC=x"
   },
   {
     "id": 8,
-    "imageSize": "tall",
-    "imageAlt": "왼쪽 원뿔 (가)와 오른쪽 원뿔 (나)의 모양이 닮았다. 바닥 원 둘레와 높이가 각각 같은 비 2:3으로 표현된다.",
+    "imageSize": "full",
+    "imageAlt": "원문의 크기가 다른 원뿔 (가)와 (나)",
     "questionType": "객관식",
     "tags": [
       "닮음",
@@ -524,12 +525,13 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
     "solutionImageCaption": "밑면의 둘레의 비 2 : 3은 대응하는 길이의 비와 같으므로 길이의 비는 2 : 3이다. 부피의 비는 길이의 비의 세제곱인 8 : 27이므로 (나)의 부피는 40×(27/8)=135이다. 따라서 답은 ② 135이다.",
     "solutionImageSize": "full",
-    "solutionImageScale": 90
+    "solutionImageScale": 90,
+    "imageCaption": "원문의 크기가 다른 원뿔 (가)와 (나)"
   },
   {
     "id": 9,
-    "imageSize": "tall",
-    "imageAlt": "윗변 AD는 6 cm, 아랫변 BC는 9 cm이다. M은 BC의 중점이다. AM과 BD는 P, DM과 AC는 Q에서 만난다.",
+    "imageSize": "full",
+    "imageAlt": "원문 문제 그림: AD∥BC 사다리꼴 ABCD, BC의 중점 M, AD=6, BC=9, 두 선의 교점 P,Q",
     "questionType": "객관식",
     "tags": [
       "사다리꼴",
@@ -591,7 +593,8 @@ window.questionBank = [
     "solutionImage": "assets/images/21_왕운중_2학기_기말_중2_기출/q9-solution.svg",
     "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
     "solutionImageCaption": "BM=MC9/2, AP:PM=DQ:QM=4:3. PQ∥AD이고 PQ/AD=3/7라 PQ18/7, 정답 ②. 높이 6/윗변 위치 1은 원문이 정하지 않은 대표형이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageCaption": "원문 문제 그림: AD∥BC 사다리꼴 ABCD, BC의 중점 M, AD=6, BC=9, 두 선의 교점 P,Q"
   },
   {
     "id": 10,
