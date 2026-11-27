@@ -1,0 +1,232 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "44",
+              "denominator": "7"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "20",
+                  "denominator": "7"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sIF",
+      "refs": [
+        "I",
+        "F"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "a8",
+        "ownerSegment": "sBC",
+        "text": "8"
+      },
+      {
+        "id": "b7",
+        "ownerSegment": "sCA",
+        "text": "7"
+      },
+      {
+        "id": "c5",
+        "ownerSegment": "sAB",
+        "text": "5"
+      },
+      {
+        "id": "r",
+        "ownerSegment": "sIF",
+        "text": "√3"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rF",
+      "refs": [
+        "C",
+        "F",
+        "I"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 500,
+    "height": 430
+  },
+  "caption": "ABC의 내심 I에서 CA에 내린 수선 IF의 길이가 내접원 반지름 √3이다.",
+  "accessibilityDescription": "AB5, BC8, CA7인 삼각형의 내심 I와 수선 IF, 직각 F, 반지름 √3.",
+  "sourceQuote": "삼각형 $\\mathrm{ABC}$에서 $a=8",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a=8,b=7,c=5",
+      "mappedTo": "planeMarks.expressionLabels"
+    },
+    {
+      "id": "c2",
+      "condition": "내접원 반지름 r=√3",
+      "mappedTo": "rightAngles"
+    }
+  ],
+  "newVisualInformation": [
+    "해설에서 코사인법칙으로 구한 AB=5 표시",
+    "내심 I와 변 CA에 수직인 IF=√3"
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sBP",
+      "refs": ["B", "P"]
+    },
+    {
+      "id": "sPC",
+      "refs": ["P", "C"]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "P"
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "theta",
+        "refs": [
+          "B",
+          "A",
+          "P"
+        ],
+        "value": 34.695,
+        "label": "θ",
+        "style": "ARC",
+        "labelKind": "MATH"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "ac3",
+        "ownerSegment": "sAC",
+        "text": "3"
+      },
+      {
+        "id": "bc4",
+        "ownerSegment": "sBC",
+        "text": "4"
+      },
+      {
+        "id": "bp3",
+        "ownerSegment": "sBP",
+        "text": "3"
+      },
+      {
+        "id": "pc1",
+        "ownerSegment": "sPC",
+        "text": "1"
+      },
+      {
+        "id": "ab5",
+        "ownerSegment": "sAB",
+        "text": "5"
+      },
+      {
+        "id": "ap",
+        "ownerSegment": "sAP",
+        "text": "√10"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "raC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 570,
+    "height": 480
+  },
+  "caption": "3:1 내분으로 BP=3, PC=1, AP=√10, AB=5를 보여 준다.",
+  "accessibilityDescription": "원문 조건의 삼각형을 선분과 각 호로 표시한다.",
+  "sourceQuote": "인 직각삼각형 $\\mathrm{ABC}$에서",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "∠C=90°",
+      "mappedTo": "rightAngles"
+    },
+    {
+      "id": "c2",
+      "condition": "AC=3, BC=4",
+      "mappedTo": "planeMarks.expressionLabels"
+    },
+    {
+      "id": "c3",
+      "condition": "BP:PC=3:1",
+      "mappedTo": "displaySegments"
+    },
+    {
+      "id": "c4",
+      "condition": "∠BAP=θ",
+      "mappedTo": "planeMarks.angles"
+    }
+  ],
+  "newVisualInformation": [
+    "직각 C 정사각 표식과 A·B·C 라벨",
+    "P의 3:1 위치, AP 연결선, θ호",
+    "풀이의 3·1·5·√10 길이 추가"
+  ]
+}

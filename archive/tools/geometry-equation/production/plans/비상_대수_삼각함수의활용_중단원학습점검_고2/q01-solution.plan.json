@@ -1,0 +1,241 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O"
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "Bangle",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "AC",
+        "ownerSegment": "sAC",
+        "text": "6√3"
+      },
+      {
+        "id": "R",
+        "ownerSegment": "sOA",
+        "text": "6"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 570,
+    "height": 480
+  },
+  "caption": "사인법칙으로 얻은 외접원 반지름 OA=6을 표시한다.",
+  "accessibilityDescription": "원문 조건의 삼각형을 선분과 각 호로 표시한다.",
+  "sourceQuote": "삼각형 $\\mathrm{ABC}$에서 외접원의",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "∠B=60°",
+      "mappedTo": "planeMarks.angles"
+    },
+    {
+      "id": "c2",
+      "condition": "AC=6√3",
+      "mappedTo": "planeMarks.expressionLabels"
+    },
+    {
+      "id": "c3",
+      "condition": "ABC는 원에 내접",
+      "mappedTo": "displayCircles"
+    },
+    {
+      "id": "c4",
+      "condition": "해설의 외접원 반지름 R=6",
+      "mappedTo": "planeMarks.expressionLabels"
+    }
+  ],
+  "newVisualInformation": [
+    "외접원과 내접삼각형 ABC의 정확한 상대 위치",
+    "∠B=60° 호 및 AC=6√3 길이 라벨",
+    "외심 O와 반지름 OA=6 보강"
+  ]
+}
