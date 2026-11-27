@@ -1,0 +1,28 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["4", "1", "0", "-1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-2.2, 2.2],
+    "viewport": [-2.3, 2.3, -2, 6],
+    "equalUnits": true,
+    "axisTickValues": {"x": [1], "y": [2, 4]},
+    "overlays": {
+      "lines": [{"id": "tangent", "slope": "-2", "intercept": "2", "label": "y=-2x+2"}],
+      "points": [{"id": "T", "curveX": "-1", "coordinates": true}, {"id": "O", "x": "0", "y": "0"}, {"id": "A", "x": "0", "y": "2"}, {"id": "B", "x": "1", "y": "0"}],
+      "polygons": [{"id": "area", "points": ["O", "A", "B"], "fill": "NONE"}],
+      "rightAngles": [{"at": "O", "from": ["A", "B"]}]
+    }
+  },
+  "pointNames": {"T": "T", "O": "O", "A": "A", "B": "B"},
+  "caption": "곡선의 접점 T(-1,4), 접선 y=-2x+2와 두 좌표축으로 만들어진 직각삼각형의 두 직각변 길이는 각각 1, 2이다.",
+  "accessibilityDescription": "곡선 위 접점 T를 지나는 접선이 세로축의 2와 가로축의 1을 지나며, 두 좌표축과 직각삼각형을 만든다.",
+  "sourceQuote": "점 $(0, 2)$에서 곡선 $y=-x^3+x+4$에 그은 접선과 $x$축, $y$축으로 둘러싸인 부분의 넓이를 구하시오.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "곡선 y=-x³+x+4", "mappedTo": "graphPlan.coefficients"},
+    {"id": "c2", "condition": "점 (0,2)를 지나는 접선의 접점 (-1,4)", "mappedTo": "graphPlan.overlays.points[T],graphPlan.overlays.lines[tangent]"},
+    {"id": "c3", "condition": "접선의 두 축 절편 1,2와 직각삼각형", "mappedTo": "graphPlan.overlays.points[O,A,B],graphPlan.overlays.polygons[area],graphPlan.overlays.rightAngles"}
+  ],
+  "newVisualInformation": ["접점 T와 접선이 정확히 접한다.", "두 절편과 축에 놓인 직각 표식, 넓이 계산에 쓰는 세 꼭짓점을 함께 표시한다."]
+}

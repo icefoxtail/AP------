@@ -1,0 +1,21 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["0", "-27", "0", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [2, 5.5], "viewport": [1.7, 5.8, -60, 30],
+    "axisVariable": "t",
+    "axisTickValues": {"x": [2, 3], "y": [-54]},
+    "overlays": {"points": [{"id": "M", "curveX": "3", "coordinates": true}]}
+  },
+  "pointNames": {"M": "M"},
+  "caption": "t=x+1/x≥2에서 h(t)=t³-27t는 t=3에서 최솟값 -54를 가지며 양쪽으로 증가한다.",
+  "accessibilityDescription": "t가 2 이상인 부분의 삼차곡선에서 가장 낮은 점 M의 좌표는 3, -54이다.",
+  "sourceQuote": "$x>0$인 모든 실수 $x$에 대하여 부등식",
+  "sourceConditions": [
+    {"id": "c1", "condition": "x+1/x=t≥2", "mappedTo": "graphPlan.domain,caption"},
+    {"id": "c2", "condition": "t³-27t", "mappedTo": "graphPlan.coefficients"},
+    {"id": "c3", "condition": "t=3에서 최솟값 -54", "mappedTo": "graphPlan.overlays.points[M]"}
+  ],
+  "newVisualInformation": ["t≥2의 도함수 부호와 최소점 위치를 시각화한다."]
+}

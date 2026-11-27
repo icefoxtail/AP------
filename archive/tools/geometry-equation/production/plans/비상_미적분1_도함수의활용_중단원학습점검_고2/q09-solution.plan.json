@@ -1,0 +1,26 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["0", "9", "6", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-4.5, 0.5], "viewport": [-5, 1, -9, 7],
+    "axisTickValues": {"x": [-3, -1], "y": [-4]},
+    "overlays": {
+      "lines": [
+        {"id": "upper", "slope": "0", "intercept": "0", "label": "y=0"},
+        {"id": "lower", "slope": "0", "intercept": "-4", "label": "y=-4"}
+      ],
+      "points": [{"id": "H", "curveX": "-3", "coordinates": true}, {"id": "L", "curveX": "-1", "coordinates": true}]
+    }
+  },
+  "pointNames": {"H": "H", "L": "L"},
+  "caption": "교점 개수 판정용 h(x)=x³+6x²+9x의 극댓값 0과 극솟값 -4 사이에 수평선 y=k가 놓이면 교점은 세 개이다.",
+  "accessibilityDescription": "극대점 (-3,0)과 극소점 (-1,-4)을 지나는 두 가로 기준선 사이에서 삼차곡선의 교점 수를 비교한다.",
+  "sourceQuote": "두 곡선 $y=x^3+4x^2, y=-2x^2-9x+k$가 서로 다른 세 점에서 만나도록 하는 실수 $k$의 값의 범위를 구하시오.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "두 원곡선의 차를 모은 h(x)=x³+6x²+9x", "mappedTo": "graphPlan.coefficients"},
+    {"id": "c2", "condition": "극대 (-3,0), 극소 (-1,-4)", "mappedTo": "graphPlan.overlays.points[H,L]"},
+    {"id": "c3", "condition": "수평선 k가 지나야 하는 양쪽 경계", "mappedTo": "graphPlan.overlays.lines[upper,lower]"}
+  ],
+  "newVisualInformation": ["세 교점의 조건을 판정하는 극대·극소 높이를 실제 기준선 두 개로 표시한다."]
+}
