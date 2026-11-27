@@ -1,0 +1,149 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      4,
+      -1,
+      7
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "3",
+        "coefficients": [
+          "1",
+          "1/2",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ],
+        "label": "y=3^(x/2)"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "rightEdge",
+          "x": "3"
+        }
+      ],
+      "points": [
+        {
+          "id": "P10",
+          "x": "1",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "P11",
+          "x": "1",
+          "y": "1",
+          "unnamed": true
+        },
+        {
+          "id": "P20",
+          "x": "2",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "P21",
+          "x": "2",
+          "y": "1",
+          "unnamed": true
+        },
+        {
+          "id": "P22",
+          "x": "2",
+          "y": "2",
+          "unnamed": true
+        },
+        {
+          "id": "P23",
+          "x": "2",
+          "y": "3",
+          "unnamed": true
+        },
+        {
+          "id": "P30",
+          "x": "3",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "P31",
+          "x": "3",
+          "y": "1",
+          "unnamed": true
+        },
+        {
+          "id": "P32",
+          "x": "3",
+          "y": "2",
+          "unnamed": true
+        },
+        {
+          "id": "P33",
+          "x": "3",
+          "y": "3",
+          "unnamed": true
+        },
+        {
+          "id": "P34",
+          "x": "3",
+          "y": "4",
+          "unnamed": true
+        },
+        {
+          "id": "P35",
+          "x": "3",
+          "y": "5",
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "x=1,2,3의 12점을 표시했다. x=0의 2점까지 합해 14점이나 현 엔진의 점 오버레이 상한으로 두 점은 미표시이다.",
+  "accessibilityDescription": "0부터 3까지의 x범위에서 3의 x/2제곱 곡선이 오른쪽 위로 상승하고 x=3 경계선이 있다. 면은 칠하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "P1",
+      "condition": "y=3^(x/2), x=0, x=3, y=0이 둘러싼 영역의 정수 격자점 개수",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.overlays.lines",
+        "graphPlan.axisTickValues"
+      ]
+    },
+    {
+      "id": "S1",
+      "condition": "x=0,1,2,3에서 가능한 정수 y는 각각 0..1,0..1,0..3,0..5",
+      "mappedTo": [
+        "graphPlan.overlays.points"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "곡선 아래 정수좌표 12개를 실제 점 표식으로 표시한다. x=0의 나머지 2점은 ENGINE_CAPABILITY_PENDING(OVERLAY_TOO_MANY)이다.",
+    "곡선과 좌표축으로 닫히는 영역 내부의 면 채움은 ENGINE_CAPABILITY_PENDING으로 분리한다."
+  ]
+}

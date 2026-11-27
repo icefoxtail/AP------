@@ -1,0 +1,47 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "TAN",
+    "coefficients": [
+      "1",
+      "1",
+      "0"
+    ],
+    "phasePi": "-1/2",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "OPEN",
+        "OPEN"
+      ]
+    },
+    "axisTickPi": true,
+    "axisTickPiStep": "1/3",
+    "axisTickValues": {
+      "x": ["1"],
+      "y": []
+    }
+  },
+  "caption": "y=tan(x−π/2)은 0, π, 2π에서 정의되지 않고, (0,π), (π,2π)의 두 증가 구간에서 각 조건을 따져야 한다.",
+  "accessibilityDescription": "가로 x=0부터 2π 사이 탄젠트 그래프는 0, π, 2π에서 수직 점근선으로 끊어지며 각 이어지는 구간에서 위로 증가한다. 부등식 해집합의 양 끝은 별도 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "G1",
+      "condition": "0≤x≤2π에서 y=tan(x−π/2), x=0,π,2π는 제외",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.phasePi",
+        "graphPlan.sourceDomain"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 빈 해설 그림에 평행이동한 tan 곡선·주기·세 극점(점근선)을 공식 엔진 형태로 표현한다.",
+    "ENGINE_CAPABILITY_PENDING: TAN 그래프에서 y=1/√3 기준선과 해 구간 (0,2π/3], (π,5π/3]의 경계·음영을 표시하는 기능이 필요하다."
+  ]
+}

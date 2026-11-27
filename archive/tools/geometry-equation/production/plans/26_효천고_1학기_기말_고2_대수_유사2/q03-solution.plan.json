@@ -1,0 +1,195 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "bc",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ah",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "A",
+          "bc"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ah",
+          "bc"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "hiddenPointNames": [
+    "H"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "AH",
+      "refs": [
+        "A",
+        "H"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rh",
+      "refs": [
+        "A",
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "arcs": 1,
+        "label": "sin(B)=3/5",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "삼각형 ABC에서 넓이 15와 sin B=3/5인 관계를 높이의 점선 수선과 직각 표시로 보여 준다. 넓이는 AB×BC×sin B/2이다.",
+  "accessibilityDescription": "삼각형 ABC에서 A에서 변 BC에 내린 수선은 점선이며 발에 직각 표식, 꼭짓점 B의 각 호에 sin B=3/5가 적혀 있다. 길이들은 문제에서 개별적으로 주어지지 않아 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "G1",
+      "condition": "삼각형 ABC의 넓이=15, sin B=3/5",
+      "mappedTo": [
+        "planeMarks.angles",
+        "displaySegments.AH",
+        "rightAngles"
+      ]
+    },
+    {
+      "id": "S1",
+      "condition": "면적 S=1/2 AB·BC sin B → AB·BC=50",
+      "mappedTo": [
+        "displaySegments",
+        "planeMarks.angles"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "높이 수선과 직각 및 B각의 사인값을 숫자와 연결해 면적 공식의 각/변 소속을 보여 준다.",
+    "AB 또는 BC의 개별 수치는 조건으로 결정되지 않으므로 그리지 않는다."
+  ]
+}

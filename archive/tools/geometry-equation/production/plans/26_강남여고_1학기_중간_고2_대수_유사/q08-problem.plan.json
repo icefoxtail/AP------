@@ -1,0 +1,100 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -6,
+      6,
+      -1,
+      20
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "1",
+          "0"
+        ],
+        "domain": [
+          "-5",
+          "4"
+        ],
+        "label": "y=2^x"
+      },
+      {
+        "id": "g",
+        "kind": "EXPONENTIAL",
+        "base": "2",
+        "coefficients": [
+          "8",
+          "1",
+          "0"
+        ],
+        "domain": [
+          "-5",
+          "1"
+        ],
+        "label": "y=8*2^x"
+      },
+      {
+        "id": "low",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "0"
+        ],
+        "domain": [
+          "-5",
+          "5"
+        ],
+        "style": "DASHED",
+        "label": "y=1"
+      },
+      {
+        "id": "high",
+        "kind": "LINE",
+        "coefficients": [
+          "9",
+          "0"
+        ],
+        "domain": [
+          "-5",
+          "5"
+        ],
+        "style": "DASHED",
+        "label": "y=9"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "3"
+      ],
+      "y": [
+        "1",
+        "9"
+      ]
+    }
+  },
+  "caption": "y=2^x와 y=8×2^x 및 두 수평 경계선 y=1, y=9를 같은 좌표계에서 나타낸다.",
+  "accessibilityDescription": "두 증가 지수함수는 가로로 3만큼 떨어져 있으며 점선 y=1, y=9 사이에 물음의 둘러싸인 영역이 있다. 배경과 도형 면은 기본 흰색이다.",
+  "sourceConditions": [
+    {
+      "id": "G1",
+      "condition": "y=2^x, y=8×2^x, y=1, y=9의 네 경계",
+      "mappedTo": [
+        "graphPlan.curves.f",
+        "graphPlan.curves.g",
+        "graphPlan.curves.low",
+        "graphPlan.curves.high"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "지수함수 두 개와 위아래 두 수평선의 실제 식·위치를 표시한다.",
+    "곡선 경계를 그대로 따르는 정확한 y-띠 영역 채움은 엔진의 별도 공통 capability가 필요해 현재 채우지 않는다."
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -6,
+      6,
+      -1,
+      20
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "1",
+          "0"
+        ],
+        "domain": [
+          "-5",
+          "4"
+        ],
+        "label": "y=2^x"
+      },
+      {
+        "id": "g",
+        "kind": "EXPONENTIAL",
+        "base": "2",
+        "coefficients": [
+          "8",
+          "1",
+          "0"
+        ],
+        "domain": [
+          "-5",
+          "1"
+        ],
+        "label": "y=8*2^x"
+      },
+      {
+        "id": "low",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "0"
+        ],
+        "domain": [
+          "-5",
+          "5"
+        ],
+        "style": "DASHED",
+        "label": "y=1"
+      },
+      {
+        "id": "high",
+        "kind": "LINE",
+        "coefficients": [
+          "9",
+          "0"
+        ],
+        "domain": [
+          "-5",
+          "5"
+        ],
+        "style": "DASHED",
+        "label": "y=9"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "3"
+      ],
+      "y": [
+        "1",
+        "9"
+      ]
+    }
+  },
+  "caption": "y=8×2^x=2^(x+3)은 y=2^x를 왼쪽으로 3 이동한 곡선이다. y=1과 y=9 사이 높이 8의 띠에서 둘의 수평 거리 3으로 넓이 24를 설명한다.",
+  "accessibilityDescription": "두 증가 지수함수는 가로로 3만큼 떨어져 있으며 점선 y=1, y=9 사이에 물음의 둘러싸인 영역이 있다. 배경과 도형 면은 기본 흰색이다.",
+  "sourceConditions": [
+    {
+      "id": "G1",
+      "condition": "y=2^x, y=8×2^x, y=1, y=9의 네 경계",
+      "mappedTo": [
+        "graphPlan.curves.f",
+        "graphPlan.curves.g",
+        "graphPlan.curves.low",
+        "graphPlan.curves.high"
+      ]
+    },
+    {
+      "id": "S1",
+      "condition": "두 지수함수는 x방향 거리 3의 평행이동; 위아래 높이 9−1=8",
+      "mappedTo": [
+        "graphPlan.curves.f",
+        "graphPlan.curves.g",
+        "graphPlan.curves.low",
+        "graphPlan.curves.high"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정확한 곡선 두 개와 y=1,9 두 경계를 그려 좌우 이동 관계를 비교한다.",
+    "곡선 사이 닫힌 영역의 색칠/경계 절단은 ENGINE_CAPABILITY_PENDING으로 분리한다."
+  ]
+}

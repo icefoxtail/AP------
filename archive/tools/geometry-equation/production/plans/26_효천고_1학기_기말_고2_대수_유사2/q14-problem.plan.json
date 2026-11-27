@@ -1,0 +1,279 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a4",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c4",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "hitsB",
+        "op": "INTERSECTION",
+        "inputs": [
+          "a4",
+          "c4"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "hitsB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "A",
+            "C"
+          ],
+          "sign": -1
+        }
+      },
+      {
+        "id": "a5",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "hitsD",
+        "op": "INTERSECTION",
+        "inputs": [
+          "a5",
+          "c4"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "hitsD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "A",
+            "C"
+          ],
+          "sign": 1
+        }
+      },
+      {
+        "id": "circum",
+        "op": "CIRCLE_THROUGH_3",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayCircles": [
+    "circum"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "caption": "원에 내접한 사각형 ABCD에서 AB=4, AC=6, AD=5이며 ∠BAC=∠CAD인 조건만을 나타낸 그림이다.",
+  "accessibilityDescription": "A가 위, C가 아래, B는 왼쪽, D는 오른쪽의 한 원에 내접한 사각형. 세 길이와 A의 두 같은 각만 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "P1",
+      "condition": "한 원에 내접한 ABCD, AB=4, AC=6, AD=5, ∠BAC=∠CAD",
+      "mappedTo": [
+        "displayCircles",
+        "displaySegments",
+        "planeMarks.angles",
+        "planeMarks.expressionLabels"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "문제에서 주어진 세 길이와 같은 각 호를 드로잉 필드로 직접 표시한다.",
+    "미지인 현 BC·CD의 길이와 원의 넓이는 표시하지 않는다."
+  ],
+  "sourceQuote": "같은 크기의 원주각이 보는 현은 같으므로",
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angBAC",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "arcs": 1,
+        "equalGroup": 1,
+        "noLabel": true,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angCAD",
+        "refs": [
+          "C",
+          "A",
+          "D"
+        ],
+        "arcs": 1,
+        "equalGroup": 1,
+        "noLabel": true,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "sAB",
+        "ownerSegment": "AB",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sAC",
+        "ownerSegment": "AC",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sAD",
+        "ownerSegment": "AD",
+        "text": "5",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}
