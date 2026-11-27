@@ -312,7 +312,12 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js#q6",
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_매산여고_1학기_중간_고1_유사_plans/q06-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산여고_1학기_중간_고1_유사_plans/q06-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산여고_1학기_중간_고1_유사_plans/q06-solution.plan.json",
+    "solutionImage": "assets/images/26_매산여고_1학기_중간_고1_유사/q6-solution.svg",
+    "solutionImageAlt": "판별식 D=0인 k=-1과 k=4 두 경우에 포물선이 x축에 각각 한 점에서 접한다.",
+    "solutionImageCaption": "판별식 D=0인 k=-1과 k=4 두 경우에 포물선이 x축에 각각 한 점에서 접한다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 7,
@@ -1028,7 +1033,11 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js#q19",
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_매산여고_1학기_중간_고1_유사_plans/q19-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산여고_1학기_중간_고1_유사_plans/q19-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산여고_1학기_중간_고1_유사_plans/q19-solution.plan.json",
+    "solutionImage": "assets/images/26_매산여고_1학기_중간_고1_유사/q19-solution.svg",
+    "solutionImageAlt": "두 포물선 f(x)=(x−2)²−3과 g(x)=−(x−3)²+10의 교점 (0,1),(5,6) 및 각 꼭짓점을 함께 표시한다.",
+    "solutionImageCaption": "두 포물선 f(x)=(x−2)²−3과 g(x)=−(x−3)²+10의 교점 (0,1),(5,6) 및 각 꼭짓점을 함께 표시한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

@@ -269,7 +269,11 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js#q5",
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/q05-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/q05-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/q05-solution.plan.json",
+    "solutionImage": "assets/images/26_복성고_1학기_중간_고1_유사/q5-solution.svg",
+    "solutionImageAlt": "직육면체 ABCD–EFGH에서 세 면 대각선 AF, FC, AC로 만들어진 삼각형 AFC를 굵게 나타냈다.",
+    "solutionImageCaption": "직육면체 ABCD–EFGH에서 세 면 대각선 AF, FC, AC로 만들어진 삼각형 AFC를 굵게 나타냈다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -379,7 +383,12 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js#q7",
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/q07-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/q07-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/q07-solution.plan.json",
+    "solutionImage": "assets/images/26_복성고_1학기_중간_고1_유사/q7-solution.svg",
+    "solutionImageAlt": "k=0을 예로 들면 직선 y=−x가 두 이차함수 y=x²+2x+6, y=−x²+x−4 중 어느 그래프와도 만나지 않는다.",
+    "solutionImageCaption": "k=0을 예로 들면 직선 y=−x가 두 이차함수 y=x²+2x+6, y=−x²+x−4 중 어느 그래프와도 만나지 않는다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 8,
@@ -1069,7 +1078,11 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js#q19",
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/q19-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/q19-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/q19-solution.plan.json",
+    "solutionImage": "assets/images/26_복성고_1학기_중간_고1_유사/q19-solution.svg",
+    "solutionImageAlt": "한 변이 6인 정사각형 ABCD 안에서 왼쪽과 윗변에 접하고 밑변과 오른쪽 변을 가로지르는 원 O 및 P,Q를 나타냈다.",
+    "solutionImageCaption": "한 변이 6인 정사각형 ABCD 안에서 왼쪽과 윗변에 접하고 밑변과 오른쪽 변을 가로지르는 원 O 및 P,Q를 나타냈다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1126,7 +1139,12 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js#q20",
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/q20-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/q20-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/q20-solution.plan.json",
+    "solutionImage": "assets/images/26_복성고_1학기_중간_고1_유사/q20-solution.svg",
+    "solutionImageAlt": "k=√5이고 P=A, Q=−B인 경우 두 포물선 P(x)와 Q(x+k)가 점 T에서 접한다.",
+    "solutionImageCaption": "k=√5이고 P=A, Q=−B인 경우 두 포물선 P(x)와 Q(x+k)가 점 T에서 접한다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 21,

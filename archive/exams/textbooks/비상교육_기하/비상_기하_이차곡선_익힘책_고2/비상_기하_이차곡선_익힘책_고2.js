@@ -675,7 +675,11 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선_익힘책_고2/q18-solution.svg",
+    "solutionImageAlt": "두 소리의 도착 시간이 일치하는 위치 P와 거리 6,8,10",
+    "solutionImageCaption": "두 소리의 도착 시간이 일치하는 위치 P와 거리 6,8,10",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -710,7 +714,11 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선_익힘책_고2/q19-solution.svg",
+    "solutionImageAlt": "기울기가 1인 접선 y=x+3과 두 축의 삼각형",
+    "solutionImageCaption": "기울기가 1인 접선 y=x+3과 두 축의 삼각형",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -745,7 +753,11 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선_익힘책_고2/q20-solution.svg",
+    "solutionImageAlt": "포물선의 접점 P,Q를 잇는 접촉현 PQ와 외부점 C의 두 접선",
+    "solutionImageCaption": "포물선의 접점 P,Q를 잇는 접촉현 PQ와 외부점 C의 두 접선",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -780,7 +792,11 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선_익힘책_고2/q21-solution.svg",
+    "solutionImageAlt": "기울기 -2인 타원 접선이 A(2,2)를 지나는 해설 그림",
+    "solutionImageCaption": "기울기 -2인 타원 접선이 A(2,2)를 지나는 해설 그림",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -815,7 +831,11 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선_익힘책_고2/q22-solution.svg",
+    "solutionImageAlt": "타원 바깥 점 A에서 그은 접선 AP와 OA=AP의 관계",
+    "solutionImageCaption": "타원 바깥 점 A에서 그은 접선 AP와 OA=AP의 관계",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -850,7 +870,11 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선_익힘책_고2/q23-solution.svg",
+    "solutionImageAlt": "직선 AF의 x절편이 초점 F, y절편이 타원의 꼭짓점 A",
+    "solutionImageCaption": "직선 AF의 x절편이 초점 F, y절편이 타원의 꼭짓점 A",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -885,7 +909,11 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선_익힘책_고2/q24-solution.svg",
+    "solutionImageAlt": "쌍곡선 밖의 점 A에서 오른쪽 가지에 그은 접선의 접점 P",
+    "solutionImageCaption": "쌍곡선 밖의 점 A에서 오른쪽 가지에 그은 접선의 접점 P",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,
@@ -920,7 +948,11 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선_익힘책_고2/q25-solution.svg",
+    "solutionImageAlt": "쌍곡선 접선이 타원의 중심 C를 지나 넓이를 두 부분으로 나눈다",
+    "solutionImageCaption": "쌍곡선 접선이 타원의 중심 C를 지나 넓이를 두 부분으로 나눈다",
+    "solutionImageSize": "full"
   },
   {
     "id": 26,
@@ -955,6 +987,10 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선_익힘책_고2/q26-solution.svg",
+    "solutionImageAlt": "접선 l 양쪽의 초점 F,F′에서 내린 두 수선과 AB",
+    "solutionImageCaption": "접선 l 양쪽의 초점 F,F′에서 내린 두 수선과 AB",
+    "solutionImageSize": "full"
   }
 ];
