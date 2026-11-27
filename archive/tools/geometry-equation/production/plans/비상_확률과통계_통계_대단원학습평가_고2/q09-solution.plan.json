@@ -1,0 +1,16 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE", "curves": [{"id": "Z", "mean": "0", "sd": "1", "label": "Z"}],
+    "ticks": ["-0.7", "0", "0.7"],
+    "shades": [{"from": null, "to": "-0.7", "color": "BLUE"}, {"from": "0.7", "to": null, "color": "WARM"}],
+    "xLabel": "z"
+  },
+  "caption": "X≥37은 Z≥0.7이고 표본평균의 같은 확률은 Z≤−0.7이므로, 표본평균의 경계는 30−0.7=29.3이다.",
+  "accessibilityDescription": "표준정규분포의 중심 0과 두 대칭 경계 −0.7, 0.7을 표시하고, 양쪽 꼬리 넓이가 같음을 보여 준다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "X는 N(30,10²), 표본평균은 N(30,1²)이다.", "mappedTo": "chart.curves[0] (공통 표준정규 Z)"},
+    {"id": "c2", "condition": "P(X≥37)=P(표본평균≤k)이다.", "mappedTo": "chart.ticks,chart.shades"}
+  ],
+  "newVisualInformation": ["두 확률의 같음이 표준화된 축에서 0을 중심으로 반대편 꼬리의 대칭임을 보인다."]
+}

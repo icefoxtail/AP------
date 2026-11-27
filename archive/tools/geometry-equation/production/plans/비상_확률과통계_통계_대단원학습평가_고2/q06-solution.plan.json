@@ -1,0 +1,16 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE", "curves": [{"id": "Z", "mean": "0", "sd": "1", "label": "Z"}],
+    "ticks": ["-2", "0", "2"],
+    "shades": [{"from": null, "to": "-2", "color": "BLUE"}, {"from": "2", "to": null, "color": "WARM"}],
+    "xLabel": "z"
+  },
+  "caption": "제품 A의 경계 104는 z=2, 제품 B의 같은 경계 104는 z=−2이므로 두 꼬리 확률은 표준정규분포의 대칭성에 따라 같다.",
+  "accessibilityDescription": "표준정규분포의 왼쪽 z=−2 이하 꼬리와 오른쪽 z=2 이상 꼬리를 서로 다른 선 색과 면색으로 표시한 그림이다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "A의 무게는 N(100,4), B의 무게는 N(110,9)을 따른다.", "mappedTo": "chart.curves[0] (각각 표준화한 공통 Z)"},
+    {"id": "c2", "condition": "A≥a와 B≤a의 확률이 같다.", "mappedTo": "chart.ticks,chart.shades"}
+  ],
+  "newVisualInformation": ["각기 다른 평균과 표준편차를 표준화하면 경계가 +2와 −2로 대칭이라는 결정적 관계를 나타낸다."]
+}

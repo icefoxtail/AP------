@@ -1,0 +1,14 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE", "curves": [{"id": "X", "mean": "30", "sd": "5", "label": "X"}],
+    "ticks": ["30", "35"], "shades": [{"from": null, "to": "35", "color": "BLUE"}], "xLabel": "x"
+  },
+  "caption": "수리 시간 35분은 평균 30분보다 한 표준편차 크다. 35분 이하의 넓이는 0.5+0.3413=0.8413이다.",
+  "accessibilityDescription": "수리 시간의 정규분포에서 평균 30과 기준 35를 표시하고, 35분 이하의 왼쪽 누적 영역을 색으로 구분한다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "평균 30분, 표준편차 5분이다.", "mappedTo": "chart.curves[0]"},
+    {"id": "c2", "condition": "35분 이하일 확률을 구한다.", "mappedTo": "chart.ticks[1],chart.shades[0]"}
+  ],
+  "newVisualInformation": ["경계가 평균 오른쪽이어서 누적 넓이가 1/2보다 크다는 사실을 시각적으로 확인한다."]
+}

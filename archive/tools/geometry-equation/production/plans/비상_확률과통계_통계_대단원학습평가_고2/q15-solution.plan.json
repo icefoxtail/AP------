@@ -1,0 +1,20 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {"text": "⑴ 표본 36명: 평균 무게 16 이하"},
+      "plan": {"capability": "stat-chart-figure-v1", "chart": {"kind": "NORMAL_CURVE", "curves": [{"id": "X", "mean": "15", "sd": "0.5", "label": "X"}], "ticks": ["15", "16"], "shades": [{"from": null, "to": "16", "color": "BLUE"}], "xLabel": "x"}}
+    },
+    {
+      "caption": {"text": "⑵ 표본 4명: 평균 무게 16.5 이상"},
+      "plan": {"capability": "stat-chart-figure-v1", "chart": {"kind": "NORMAL_CURVE", "curves": [{"id": "Y", "mean": "15", "sd": "1.5", "label": "Y"}], "ticks": ["15", "16.5"], "shades": [{"from": "16.5", "to": null, "color": "WARM"}], "xLabel": "y"}}
+    }
+  ],
+  "caption": "⑴ n=36일 때 표본평균의 표준편차는 0.5이므로 P(평균≤16)=0.9772이다. ⑵ n=4일 때 표본평균의 표준편차는 1.5이므로 P(평균≥16.5)=0.1587이다.",
+  "accessibilityDescription": "위쪽은 평균 15, 표준편차 0.5인 곡선의 16 이하를, 아래쪽은 평균 15, 표준편차 1.5인 곡선의 16.5 이상을 서로 별도로 표시한다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "짐 무게의 평균은 15, 표준편차는 3이며 ⑴에서는 36명 표본평균을 쓴다.", "mappedTo": "panels[0].plan.chart"},
+    {"id": "c2", "condition": "⑵에서는 4명 합계 66 이상, 즉 표본평균 16.5 이상이다.", "mappedTo": "panels[1].plan.chart"}
+  ],
+  "newVisualInformation": ["같은 모집단에서 표본 크기에 따라 표본평균 분포 폭이 달라지며 구하려는 쪽도 서로 반대임을 두 패널로 대조한다."]
+}
