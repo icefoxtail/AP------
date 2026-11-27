@@ -505,7 +505,7 @@ window.questionBank = [
       "$OM=ON$",
       "$\\triangle OBN=\\triangle OBM$"
     ],
-    "image": "assets/images/20_신흥중_2학기_기말_중2_기출/q09.png",
+    "image": "assets/images/20_신흥중_2학기_기말_중2_기출/q9-problem.svg",
     "answer": "①",
     "solution": "외심 $O$는 삼각형의 세 꼭짓점에서 같은 거리에 있다.\n$OA=OB=OC$\n\n그림에 다른 변 길이나 중점 조건은 없으므로 나머지 등식·합동 관계는 항상 성립하지 않는다.\n정답은 ①이다.",
     "layoutTag": "",
@@ -551,7 +551,10 @@ window.questionBank = [
     "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q9-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형 ABC 안의 점 O에서 세 꼭짓점으로 선분을 긋고 같은 길이 표시(분홍색)를 했다. 점 O에서 세 변에 내린 수선의 발 M, N, L에 직각 표시가 있다.",
     "solutionImageCaption": "외심 O는 삼각형의 세 꼭짓점에서 같은 거리에 있으므로 OA=OB=OC이다(분홍색 표시). 그림에는 다른 변의 길이나 중점 조건이 없으므로 나머지 등식과 합동 관계는 항상 성립하지 않는다. 정답은 ①이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "원본 문제: 외심 O와 세 변에 그은 수선의 발 M,N,L. 외심의 같은 반지름 길이는 문제 그림에 표시하지 않음.",
+    "imageCaption": "원본 문제: 외심 O와 세 변에 그은 수선의 발 M,N,L. 외심의 같은 반지름 길이는 문제 그림에 표시하지 않음.",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -569,7 +572,7 @@ window.questionBank = [
       "$14\\text{ cm}$",
       "$15\\text{ cm}$"
     ],
-    "image": "assets/images/20_신흥중_2학기_기말_중2_기출/q10.png",
+    "image": "assets/images/20_신흥중_2학기_기말_중2_기출/q10-problem.svg",
     "answer": "②",
     "solution": "$DE\\parallel BC$이므로 $\\triangle ADE\\sim\\triangle ABC$이다.\n$DE=20-AD-AE=20-5-6=9$이다.\n\n삼각형 $ABC$의 넓이는 $rs$이고, 동시에 $\\dfrac12 BC\\cdot h$이다.\n따라서 $\\frac{r}{h}=BC/(2s)$이다. 작은 삼각형과 큰 삼각형은 닮았으므로 $BC/s_{ABC}=DE/s_{ADE}$이다.\n작은 삼각형의 반둘레는 $10$이므로\n$\\frac{r}{h}=DE/(2\\cdot10)=\\frac{9}{20}$이다.\n\n$AD/AB=AE/AC=\\frac{h-r}{h}=\\frac{11}{20}$이다.\n$AB=5\\cdot20/11$, $AC=6\\cdot20/11$\n$BD+EC=(AB-5)+(AC-6)=11(\\frac{20}{11}-1)=9$\n\n정답은 ②이다.",
     "layoutTag": "",
@@ -618,7 +621,10 @@ window.questionBank = [
     "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q10-solution.svg",
     "solutionImageAlt": "해설 그림: 왼쪽은 삼각형 ABC에서 내심 I를 지나고 BC에 평행한 파란 선분 DE가 있고 AD=5 cm, AE=6 cm이며 삼각형 ADE의 둘레가 20 cm이다. 오른쪽은 내접원이 있는 삼각형의 예시로, 높이 h가 h-r과 r로 나뉜 모습이다.",
     "solutionImageCaption": "DE와 BC가 평행하므로 삼각형 ADE와 ABC는 닮음이고, DE=20-5-6=9 cm이다. 넓이를 rs로 나타내어 비교하면 r÷h=20분의 9이므로 AD÷AB=(h-r)÷h=20분의 11이다. 따라서 AB=11분의 100 cm, AC=11분의 120 cm이고 BD+EC=(AB-5)+(AC-6)이다. 정답은 ② 9 cm이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "원본 기출 문제 그림: 삼각형 ABC의 내심 I, DE∥BC, AD=5, AE=6, ADE 둘레=20",
+    "imageCaption": "원본 기출 문제 그림: 삼각형 ABC의 내심 I, DE∥BC, AD=5, AE=6, ADE 둘레=20",
+    "imageSize": "full"
   },
   {
     "id": 11,
@@ -636,7 +642,7 @@ window.questionBank = [
       "$20^\\circ$",
       "$25^\\circ$"
     ],
-    "image": "assets/images/20_신흥중_2학기_기말_중2_기출/q11.png",
+    "image": "assets/images/20_신흥중_2학기_기말_중2_기출/q11-problem.svg",
     "answer": "②",
     "solution": "외심이므로 $OA=OB=OC$이다. 그림에서 $\\angle OBC=30^\\circ$, $\\angle OCA=50^\\circ$이다.\n\n$OA=OC$이므로 $\\angle OAC=50^\\circ$이고, $OB=OC$이므로 $\\angle BCO=30^\\circ$이다. 따라서\n$\\angle ACB=50^\\circ+30^\\circ=80^\\circ$이다.\n\n$OA=OB$이므로 $\\angle OAB=\\angle ABO=x$이다.\n삼각형 $ABC$의 내각의 합을 쓰면\n$(x+50^\\circ)+(x+30^\\circ)+80^\\circ=180^\\circ$\n$2x+160^\\circ=180^\\circ$\n$2x=20^\\circ$\n$x=10^\\circ$\n\n정답은 ②이다.",
     "layoutTag": "",
@@ -682,7 +688,10 @@ window.questionBank = [
     "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q11-solution.svg",
     "solutionImageAlt": "해설 그림: 왼쪽은 외심 O가 있는 삼각형 ABC에서 각 OBC=30°, 각 OCA=50°, 각 OAB=x로 표시한 그림이다. 오른쪽은 OA, OB, OC가 같아서 생긴 세 이등변삼각형에서 같은 색 호가 같은 크기의 밑각을 나타낸 그림으로, 파랑은 30°, 주황은 50°, 초록은 x이다.",
     "solutionImageCaption": "외심이므로 OA=OB=OC이다. 삼각형 OCA에서 각 OAC=50°, 삼각형 OBC에서 각 OCB=30°이므로 각 ACB=80°이다. 삼각형 OAB에서 각 OAB=각 OBA=x이므로 (x+50°)+(x+30°)+80°=180°이다. 정답은 ② 10°이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "원본 기출 문제 그림: 외심 O인 삼각형 ABC, 30°, 50°와 미지각 x",
+    "imageCaption": "원본 기출 문제 그림: 외심 O인 삼각형 ABC, 30°, 50°와 미지각 x",
+    "imageSize": "full"
   },
   {
     "id": 12,
@@ -700,7 +709,7 @@ window.questionBank = [
       "$10^\\circ$",
       "$20^\\circ$"
     ],
-    "image": "assets/images/20_신흥중_2학기_기말_중2_기출/q12.png",
+    "image": "assets/images/20_신흥중_2학기_기말_중2_기출/q12-problem.svg",
     "answer": "⑤",
     "solution": "평행사변형의 이웃각의 합은 $180^\\circ$이다.\n$5t+4t=180^\\circ$\n$9t=180^\\circ$\n$t=20^\\circ$\n\n$\\angle DAB=100^\\circ$, $\\angle ADC=80^\\circ$이다. 그림에서 $x=80^\\circ$는 바깥각이고 $y=100^\\circ$는 $\\angle BCD$이다.\n$y-x=100^\\circ-80^\\circ=20^\\circ$\n\n정답은 ⑤이다.",
     "layoutTag": "",
@@ -746,7 +755,10 @@ window.questionBank = [
     "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q12-solution.svg",
     "solutionImageAlt": "해설 그림: 왼쪽은 평행사변형에서 점 A의 바깥각 x와 점 C의 각 y를 나타낸 그림이다. 오른쪽은 크기가 같은 각을 같은 색으로 나타낸 그림으로 각 DAB와 y는 100°(주황), 각 ADC와 x는 80°(파랑)이다.",
     "solutionImageCaption": "이웃한 두 각의 합이 180°이므로 5t+4t=180°에서 t=20°이고, 각 DAB=100°, 각 ADC=80°이다. 바깥각 x는 각 ADC와 같아 80°이고, y는 각 DAB와 같아 100°이다. 따라서 y-x=20°이다. 정답은 ⑤ 20°이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "원본 기출 문제 그림: 평행사변형 ABCD, 외각 x와 내각 y 및 이웃한 두 각의 비 5:4",
+    "imageCaption": "원본 기출 문제 그림: 평행사변형 ABCD, 외각 x와 내각 y 및 이웃한 두 각의 비 5:4",
+    "imageSize": "full"
   },
   {
     "id": 13,
@@ -764,7 +776,7 @@ window.questionBank = [
       "48",
       "56"
     ],
-    "image": "assets/images/20_신흥중_2학기_기말_중2_기출/q13.png",
+    "image": "assets/images/20_신흥중_2학기_기말_중2_기출/q13-problem.svg",
     "answer": "⑤",
     "solution": "대응하는 면이 $\\triangle BCD$와 $\\triangle FGH$이므로 $B\\leftrightarrow F$, $C\\leftrightarrow G$, $D\\leftrightarrow H$이다.\n$BC=6$, $FG=12$에서 닮음비는 $2:1$이다.\n$CD=4$에 대응하는 $GH=y$이므로 $y=8$이다.\n\n$EF=14$는 $AB=x$에 대응하므로\n$2x=14$\n$x=7$\n\n$xy=7\\cdot8=56$이므로 정답은 ⑤이다.",
     "layoutTag": "",
@@ -810,7 +822,10 @@ window.questionBank = [
     "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q13-solution.svg",
     "solutionImageAlt": "해설 그림: 닮은 두 사면체가 나란히 있고 대응하는 모서리가 같은 색이다. 작은 사면체는 AB 7 cm, BC 6 cm, CD 4 cm이고 큰 사면체는 EF 14 cm, FG 12 cm, GH 8 cm이며 삼각형 BCD와 FGH 면이 연하게 칠해져 있다.",
     "solutionImageCaption": "대응하는 면이 삼각형 BCD와 FGH이므로 BC와 FG가 대응하고 닮음비는 6대 12, 즉 1대 2이다. CD에 대응하는 GH=y이므로 y=8이고, AB=x에 대응하는 EF=14이므로 x=7이다. 정답은 ⑤ 56이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "닮은 두 사면체. 작은 사면체 AB=x, BC=6, CD=4, 큰 사면체 EF=14, FG=12, GH=y.",
+    "imageCaption": "닮은 두 사면체. 작은 사면체 AB=x, BC=6, CD=4, 큰 사면체 EF=14, FG=12, GH=y.",
+    "imageSize": "full"
   },
   {
     "id": 14,
@@ -828,7 +843,7 @@ window.questionBank = [
       "$45\\text{ cm}^2$",
       "$50\\text{ cm}^2$"
     ],
-    "image": "assets/images/20_신흥중_2학기_기말_중2_기출/q14.png",
+    "image": "assets/images/20_신흥중_2학기_기말_중2_기출/q14-problem.svg",
     "answer": "③",
     "solution": "$D$는 $BC$의 중점이고 $G$는 무게중심이다.\n$B=(0,0)$, $C=(2,0)$, $A=(u,h)$로 두면 $G$의 높이는 $\\frac{h}{3}$이다.\n$G\\prime$은 $\\triangle GBC$의 무게중심이므로 높이는 $\\frac{h}{9}$이다.\n\n$[G\\prime BD]=\\dfrac12\\cdot1\\cdot\\dfrac h9=\\dfrac h{18}=5$\n$h=5\\cdot18=90$\n$[ABC]=\\dfrac12\\cdot2\\cdot90=90$\n\n무게중심은 세 작은 삼각형의 넓이를 같게 나누므로\n$[AGC]=[ABC]/3=30\\text{ cm}^2$이다.\n\n정답은 ③이다.",
     "layoutTag": "",
@@ -874,7 +889,10 @@ window.questionBank = [
     "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q14-solution.svg",
     "solutionImageAlt": "해설 그림: 왼쪽 위는 삼각형 ABC의 중선 AD 위에 무게중심 G와 삼각형 GBC의 무게중심 G′이 있고 A, G, G′에서 변 BC에 내린 높이를 파랑, 초록, 주황으로 나타낸 그림이다. 오른쪽 위는 그 높이를 나란히 펴서 h, 3분의 h, 9분의 h로 나타낸 그림이다. 아래는 파란색의 넓이가 같은 세 삼각형(AGB, AGC, GBC)과 그 안의 주황색 두 삼각형(G′BD, G′DC)을 나타낸 그림이다.",
     "solutionImageCaption": "변 BC를 밑변으로 보면 G의 높이는 A의 높이 h의 3분의 1이고, G′의 높이는 G의 높이의 3분의 1이므로 9분의 h이다(파랑 h, 초록 3분의 h, 주황 9분의 h). BC=2로 두면 BD=1이므로 삼각형 G′BD의 넓이는 2분의 1 곱하기 1 곱하기 9분의 h이고 삼각형 ABC의 넓이의 18분의 1이다. 삼각형 ABC의 넓이는 5 곱하기 18, 즉 90 cm²이고, 삼각형 AGC는 삼각형 ABC의 3분의 1이다. 정답은 ③ 30 cm²이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "원본 기출 문제 그림: 무게중심 G,G'인 두 삼각형 ABC,GBC 및 밑변 BC와 D",
+    "imageCaption": "원본 기출 문제 그림: 무게중심 G,G'인 두 삼각형 ABC,GBC 및 밑변 BC와 D",
+    "imageSize": "full"
   },
   {
     "id": 15,
@@ -950,7 +968,7 @@ window.questionBank = [
       "$24\\text{ cm}$",
       "$48\\text{ cm}$"
     ],
-    "image": "assets/images/20_신흥중_2학기_기말_중2_기출/q16.png",
+    "image": "assets/images/20_신흥중_2학기_기말_중2_기출/q16-problem.svg",
     "answer": "④",
     "solution": "$AC=14\\text{ cm}$, $BD=10\\text{ cm}$이다.\n중점연결정리에 의해 $PQ=AC/2=7\\text{ cm}$, $QR=BD/2=5\\text{ cm}$이다.\n\n$PQRS$의 둘레는 $2(PQ+QR)=2(7+5)=24\\text{ cm}$이다.\n정답은 ④이다.",
     "layoutTag": "",
@@ -996,7 +1014,10 @@ window.questionBank = [
     "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q16-solution.svg",
     "solutionImageAlt": "해설 그림: 왼쪽 위는 사각형의 각 변의 중점 P, Q, R, S를 이은 그림으로 대각선 AC=14 cm, BD=10 cm이고 파란 선분은 AC와 평행, 주황 선분은 BD와 평행하다. 오른쪽 위와 아래는 삼각형 ABC에서 AC=14 cm, PQ=7 cm, 삼각형 BCD에서 BD=10 cm, QR=5 cm를 나타낸 그림이다.",
     "solutionImageCaption": "삼각형 ABC에서 중점연결정리에 의해 PQ=AC÷2=7 cm이고, 삼각형 BCD에서 QR=BD÷2=5 cm이다. 점 P, Q, R, S를 이은 사각형은 마주 보는 변의 길이가 같으므로 둘레는 2(PQ+QR)이다. 정답은 ④ 24 cm이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "원본 기출 문제 그림: 사각형 ABCD와 변의 중점 P,Q,R,S, 대각선 길이 AC=14, BD=10",
+    "imageCaption": "원본 기출 문제 그림: 사각형 ABCD와 변의 중점 P,Q,R,S, 대각선 길이 AC=14, BD=10",
+    "imageSize": "full"
   },
   {
     "id": 17,
@@ -1014,7 +1035,7 @@ window.questionBank = [
       "$81\\text{ cm}^2$",
       "$100\\text{ cm}^2$"
     ],
-    "image": "assets/images/20_신흥중_2학기_기말_중2_기출/q17.png",
+    "image": "assets/images/20_신흥중_2학기_기말_중2_기출/q17-problem.svg",
     "answer": "②",
     "solution": "두 직각삼각형 $ABD$, $CAE$를 보자.\n$\\angle ADB=\\angle CEA=90^\\circ$이고 $AB=AC$이다.\n$D,A,E$는 한 직선 위에 있으므로\n$\\angle BAD+\\angle BAC+\\angle CAE=180^\\circ$\n$\\angle BAC=90^\\circ$에서\n$\\angle CAE=90^\\circ-\\angle BAD$이다.\n\n따라서 $\\angle ABD=90^\\circ-\\angle BAD=\\angle CAE$이다. 두 직각삼각형은 빗변과 한 예각이 같으므로 합동이다.\n$AD=CE=6$, $BD=AE=8$\n\n직각삼각형 $ABD$에서\n$AB^2=AD^2+BD^2=6^2+8^2=100$\n$AB=10$\n\n$[ABC]=\\dfrac12\\cdot10\\cdot10=50\\text{ cm}^2$\n정답은 ②이다.",
     "layoutTag": "",
@@ -1063,7 +1084,10 @@ window.questionBank = [
     "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q17-solution.svg",
     "solutionImageAlt": "해설 그림: 직선 위의 점 D, A, E와 수선 BD=8 cm, CE=6 cm, 직각이등변삼각형 ABC가 있는 문제 그림이다. 두 직각삼각형 ABD와 CAE를 같은 방향으로 놓고 대응하는 변을 같은 색(빗변 분홍, 세로 파랑, 가로 주황)으로 나타냈다.",
     "solutionImageCaption": "삼각형 ABD와 CAE는 직각이 있고 AB=AC이며 각 ABD=각 CAE이므로 합동이다. 따라서 AD=CE=6 cm, AE=BD=8 cm이다. 삼각형 ABD에서 AB²=6²+8²=100이므로 AB=10 cm이고, 삼각형 ABC의 넓이는 2분의 1 곱하기 10 곱하기 10이다. 정답은 ② 50 cm²이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "원본 기출 문제 그림: 직각이등변삼각형 ABC 및 직선 l, BD⊥l, CE⊥l, BD=8, CE=6",
+    "imageCaption": "원본 기출 문제 그림: 직각이등변삼각형 ABC 및 직선 l, BD⊥l, CE⊥l, BD=8, CE=6",
+    "imageSize": "full"
   },
   {
     "id": 18,
@@ -1080,7 +1104,7 @@ window.questionBank = [
       "$-3$",
       "$-2$"
     ],
-    "image": "assets/images/20_신흥중_2학기_기말_중2_기출/q18.png",
+    "image": "assets/images/20_신흥중_2학기_기말_중2_기출/q18-problem.svg",
     "answer": "①",
     "solution": "$BC\\parallel DE$이므로 $\\triangle AED\\sim\\triangle ACB$이다. 대응하는 변의 길이의 비는 같으므로\n$AE:AC=AD:AB=ED:CB$이다.\n\n$ED:CB=10:15=2:3$이므로\n$\\frac{x}{9}=\\frac{2}{3}$에서 $x=6$이다.\n$\\frac{8}{y}=\\frac{2}{3}$에서 $2y=24$, $y=12$이다.\n\n$x-y=6-12=-6$이므로 정답은 ①이다.",
     "layoutTag": "",
@@ -1126,7 +1150,10 @@ window.questionBank = [
     "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q18-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 왼쪽 위는 BC와 DE가 평행하고 선분 EC와 DB가 A에서 만나는 문제 그림으로 DE=10 cm, AD=8 cm, AC=9 cm, BC=15 cm이고 AE=x cm, AB=y cm이다. 가운데와 오른쪽 아래는 닮은 두 삼각형 AED와 ACB를 같은 방향으로 나란히 놓고 대응하는 변을 같은 색(파랑, 주황, 초록)으로 나타낸 그림이다.",
     "solutionImageCaption": "BC와 DE가 평행하므로 삼각형 AED와 삼각형 ACB는 닮음이고, 대응하는 변의 비 AE:AC=AD:AB=ED:CB가 같다. ED:CB=10:15=2:3이므로 x:9=2:3에서 x=6이고 8:y=2:3에서 y=12이다. 정답은 ① -6이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "원본 기출 문제 그림: 평행선 ED∥BC, ED=10, BC=15, 교점 A 및 길이 x,y,8,9",
+    "imageCaption": "원본 기출 문제 그림: 평행선 ED∥BC, ED=10, BC=15, 교점 A 및 길이 x,y,8,9",
+    "imageSize": "full"
   },
   {
     "id": 19,
@@ -1144,7 +1171,7 @@ window.questionBank = [
       "15",
       "16"
     ],
-    "image": "assets/images/20_신흥중_2학기_기말_중2_기출/q19.png",
+    "image": "assets/images/20_신흥중_2학기_기말_중2_기출/q19-problem.svg",
     "answer": "④",
     "solution": "두 정사각형의 변은 $\\sqrt9=3$, $\\sqrt{81}=9$이다.\n붙인 직사각형의 가로는 $3+9=12$, 세로는 $9$이다.\n\n$x^2=12^2+9^2=144+81=225$\n$x=15$\n정답은 ④이다.",
     "layoutTag": "",
@@ -1190,7 +1217,10 @@ window.questionBank = [
     "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q19-solution.svg",
     "solutionImageAlt": "해설 그림: 왼쪽은 넓이가 9 cm², 81 cm²인 두 정사각형이 아래가 맞춰져 붙어 있고 대각선이 x cm인 그림이다. 오른쪽은 아래변 3 cm와 9 cm, 세로 9 cm이고 빗변이 x cm인 직각삼각형이다.",
     "solutionImageCaption": "두 정사각형의 한 변은 3 cm, 9 cm이다. x는 가로 3+9=12 cm, 세로 9 cm인 직각삼각형의 빗변이므로 x²=12²+9²=225이다. 정답은 ④ 15이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "원본 기출 문제 그림: 넓이 9과 81인 두 정사각형과 사선 x",
+    "imageCaption": "원본 기출 문제 그림: 넓이 9과 81인 두 정사각형과 사선 x",
+    "imageSize": "full"
   },
   {
     "id": 20,
@@ -1320,7 +1350,7 @@ window.questionBank = [
     ],
     "content": "[서술형2] 오른쪽 $\\triangle ABC$는 $\\angle C=90^\\circ$이고 $AB=10\\text{ cm}$, $BC=8\\text{ cm}$, $CA=6\\text{ cm}$인 직각삼각형이다. 이때 직각삼각형 $ABC$의 외접원의 넓이를 구하시오. [3점]",
     "choices": [],
-    "image": "assets/images/20_신흥중_2학기_기말_중2_기출/q22.png",
+    "image": "assets/images/20_신흥중_2학기_기말_중2_기출/q22-problem.svg",
     "answer": "$25\\pi\\text{ cm}^2$",
     "solution": "직각삼각형의 외심은 빗변의 중점이다.\n외접원의 지름은 $AB=10\\text{ cm}$이므로 반지름은 $r=5\\text{ cm}$이다.\n\n$\\pi r^2=\\pi\\cdot5^2=25\\pi\\text{ cm}^2$이다.",
     "layoutTag": "",
@@ -1368,7 +1398,10 @@ window.questionBank = [
     "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q22-solution.svg",
     "solutionImageAlt": "해설 그림: 왼쪽은 직각이 꼭짓점 C에 있고 AB=10 cm, BC=8 cm, CA=6 cm인 직각삼각형이다. 오른쪽은 빗변 AB의 중점 O를 중심으로 하는 외접원이고, OA, OB, OC에 같은 길이 표시(분홍색)가 있으며 OC=5 cm이다.",
     "solutionImageCaption": "직각삼각형의 외심은 빗변의 중점이므로 외접원의 지름은 AB=10 cm이고 반지름은 5 cm이다. 외접원의 넓이는 π 곱하기 5²이다. 정답은 25π cm²이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "원본 기출 문제 그림: 직각삼각형 ABC, AB=10, BC=8, CA=6",
+    "imageCaption": "원본 기출 문제 그림: 직각삼각형 ABC, AB=10, BC=8, CA=6",
+    "imageSize": "full"
   },
   {
     "id": 23,
@@ -1381,7 +1414,7 @@ window.questionBank = [
     ],
     "content": "[서술형3] 다음 그림에서 $x+y$값을 구하시오. [3점]",
     "choices": [],
-    "image": "assets/images/20_신흥중_2학기_기말_중2_기출/q23.png",
+    "image": "assets/images/20_신흥중_2학기_기말_중2_기출/q23-problem.svg",
     "answer": "$25$",
     "solution": "작은 직각삼각형에서\n$x^2+6^2=10^2$\n$x^2=100-36=64$\n$x=8$\n\n큰 직각삼각형의 밑변은 $6+9=15$이다.\n$y^2=8^2+15^2=64+225=289$\n$y=17$\n\n$x+y=8+17=25$이다.",
     "layoutTag": "",
@@ -1427,7 +1460,10 @@ window.questionBank = [
     "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q23-solution.svg",
     "solutionImageAlt": "해설 그림: 왼쪽은 변이 x, 6, 10 cm인 직각삼각형이고, 오른쪽은 세로 8 cm, 밑변이 6+9 cm이고 빗변이 y cm인 큰 직각삼각형이다.",
     "solutionImageCaption": "작은 직각삼각형에서 x²+6²=10²이므로 x=8이다. 큰 직각삼각형의 밑변은 6+9=15이므로 y²=8²+15²=289, y=17이다. 정답은 25이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "원본 오른쪽 직각삼각형: AB=x cm, BD=6 cm, DC=9 cm, AD=10 cm, AC=y cm. 풀이값 비노출.",
+    "imageCaption": "원본 오른쪽 직각삼각형: AB=x cm, BD=6 cm, DC=9 cm, AD=10 cm, AC=y cm. 풀이값 비노출.",
+    "imageSize": "full"
   },
   {
     "id": 24,
@@ -1441,7 +1477,7 @@ window.questionBank = [
     ],
     "content": "[서술형4] 다음 직사각형 $ABCD$에서 대각선 $BD$의 중점을 $O$라 하고, 점 $O$에서 $BD$에 수직인 직선과 $AD$, $BC$의 교점을 각각 $E$, $F$라 하고, 점 $O$에서 $AD$에 내린 수선의 발을 $H$라 하자. $BO=5\\text{ cm}$, $BC=8\\text{ cm}$, $DC=6\\text{ cm}$일 때, $\\triangle EOD$의 넓이와 $OH$의 길이를 각각 구하시오. [10점]",
     "choices": [],
-    "image": "assets/images/20_신흥중_2학기_기말_중2_기출/q24.png",
+    "image": "assets/images/20_신흥중_2학기_기말_중2_기출/q24-problem.svg",
     "answer": "(1) $\\dfrac{75}{8}\\text{ cm}^2$  (2) $3\\text{ cm}$",
     "solution": "$O$는 $BD$의 중점이고 $BO=5\\text{ cm}$이므로\n$OD=5\\text{ cm}$\n$BD=BO+OD=10\\text{ cm}$이다.\n$EO\\perp BD$, 그리고 $BC\\perp CD$이므로 $\\triangle EOD\\sim\\triangle BCD$이다.\n\n$OD/BC=ED/BD$에서\n$\\frac{5}{8}=ED/10$\n$ED=\\frac{25}{4}$이다.\n\n직각삼각형 $EOD$에서\n$EO^2=ED^2-OD^2=(\\frac{25}{4})^2-5^2=225/16$\n$EO=\\frac{15}{4}$이다.\n$[EOD]=\\dfrac12\\cdot5\\cdot15/4=75/8\\text{ cm}^2$이다.\n\n$O$는 직사각형의 중심이므로 위 변 $AD$까지의 거리는 세로 길이의 절반이다.\n$OH=DC/2=3\\text{ cm}$이다.",
     "layoutTag": "",
@@ -1491,6 +1527,9 @@ window.questionBank = [
     "solutionImage": "assets/images/20_신흥중_2학기_기말_중2_기출/q24-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 왼쪽 위는 직사각형에 대각선 BD의 중점 O, 수직선 EF, 수선의 발 H를 나타낸 문제 그림이다. 오른쪽 위와 왼쪽 아래는 닮은 직각삼각형 BCD와 EOD를 같은 방향으로 놓고 대응하는 변을 같은 색으로 나타냈다. 오른쪽 아래는 점 O에서 변 AD와 BC까지의 거리를 나타낸 그림이다.",
     "solutionImageCaption": "삼각형 EOD와 BCD는 닮음이므로 OD÷BC=ED÷BD에서 ED=4분의 25 cm이고 EO=4분의 15 cm이다. 삼각형 EOD의 넓이는 2분의 1 곱하기 5 곱하기 4분의 15이다. O는 직사각형의 중심이므로 OH는 세로 변 DC의 절반이다. 정답은 (1) 8분의 75 cm², (2) 3 cm이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "원본 기출 문제 그림: 직사각형 ABCD, BD의 중점 O, BO=5, BC=8, DC=6, OH⊥AD",
+    "imageCaption": "원본 기출 문제 그림: 직사각형 ABCD, BD의 중점 O, BO=5, BC=8, DC=6, OH⊥AD",
+    "imageSize": "full"
   }
 ];

@@ -279,7 +279,7 @@ window.questionBank = [
       "$\\overline{OA}=\\overline{OC}$",
       "$\\overline{OB}=\\overline{OD}$"
     ],
-    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q05.png",
+    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q5-problem.svg",
     "level": "하",
     "category": "사각형의 성질",
     "originalCategory": "사각형의 성질",
@@ -305,8 +305,8 @@ window.questionBank = [
     "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
     "templateKey": "TPL_SPECIAL_QUADRILATERALS",
     "solutionImage": "assets/images/20_왕의중_2학기_기말_중2_기출/q5-solution.svg",
-    "solutionImageAlt": "해설 그림: 왼쪽 위에는 마름모의 두 대각선이 점 O에서 직각으로 만나고 AO와 OC, BO와 OD에 같은 길이 표시가 있다. 오른쪽 위에는 대각선이 각을 이등분하는 것을 분홍색과 초록색 같은 크기의 각으로 나타냈다. 아래에는 두 대각선의 길이가 같아 네 반쪽 대각선에 같은 길이 표시가 있고 각 A가 직각인 마름모가 있다.",
-    "solutionImageCaption": "마름모의 두 대각선은 서로를 수직이등분하고 꼭짓점의 각을 이등분한다. 마주 보는 각도 크기가 같다. 그러나 두 대각선의 길이는 서로 같지 않은 것이 보통이다. 두 대각선의 길이가 같은 마름모는 정사각형뿐이다. 따라서 옳지 않은 것은 두 대각선의 길이가 같다는 보기이다. 정답은 ①이다.",
+    "solutionImageAlt": "마름모의 두 대각선은 O에서 수직으로 만나고 서로를 이등분한다(파란색, 주황색 같은 길이 표시). 대각선은 각을 이등분하고 마주 보는 각은 같다. 한편 두 대각선의 길이가 같은 마름모는 네 각이 모두 직각이어서 정사각형이다.",
+    "solutionImageCaption": "마름모의 두 대각선은 O에서 수직으로 만나고 서로를 이등분한다(파란색, 주황색 같은 길이 표시). 대각선은 각을 이등분하고 마주 보는 각은 같다. 한편 두 대각선의 길이가 같은 마름모는 네 각이 모두 직각이어서 정사각형이다.",
     "solutionImageSize": "full",
     "curriculum": "2015",
     "rpmL1": "사각형의 성질",
@@ -324,7 +324,11 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "imageAlt": "2020 왕의중 중2 2학기 기말 5번 문제 조건도",
+    "imageCaption": "2020 왕의중 중2 2학기 기말 5번 문제 조건도",
+    "imageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 6,
@@ -404,7 +408,7 @@ window.questionBank = [
       "12",
       "13"
     ],
-    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q07.png",
+    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q7-problem.svg",
     "level": "중",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -449,7 +453,10 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "imageAlt": "2020 왕의중 중2 2학기 기말 7번 문제 조건도",
+    "imageCaption": "2020 왕의중 중2 2학기 기말 7번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -467,7 +474,7 @@ window.questionBank = [
       "$16:1$",
       "$32:1$"
     ],
-    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q08.png",
+    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q8-problem.svg",
     "level": "중",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -510,7 +517,10 @@ window.questionBank = [
       "l4": "넓이·부피 비"
     },
     "primaryMethod": "넓이 반분의 반복에서 닮음비 역산",
-    "decisiveStep": "네번 넓이반분으로16:1을 얻고 양의닮음비의 제곱이16임을 사용한다."
+    "decisiveStep": "네번 넓이반분으로16:1을 얻고 양의닮음비의 제곱이16임을 사용한다.",
+    "imageAlt": "2020 왕의중 중2 2학기 기말 8번 문제 조건도",
+    "imageCaption": "2020 왕의중 중2 2학기 기말 8번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -528,7 +538,7 @@ window.questionBank = [
       "$\\angle B=\\angle ACD$",
       "$\\triangle ABC\\sim\\triangle CBD$"
     ],
-    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q09.png",
+    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q9-problem.svg",
     "level": "중",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -559,7 +569,10 @@ window.questionBank = [
     "solutionImageSize": "full",
     "curriculum": "2015",
     "primaryMethod": "직각삼각형 높이의 닮음 관계 비교",
-    "decisiveStep": "세 직각삼각형의 AA대응에서 같은각과 직각변의 비례중항 관계를 대조한다."
+    "decisiveStep": "세 직각삼각형의 AA대응에서 같은각과 직각변의 비례중항 관계를 대조한다.",
+    "imageAlt": "2020 왕의중 중2 2학기 기말 9번 문제 조건도",
+    "imageCaption": "2020 왕의중 중2 2학기 기말 9번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 10,
