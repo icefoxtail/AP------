@@ -1,0 +1,12 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{"family":"polynomial","coefficients":["4","2","-2"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[-3,4],"viewport":[-3,4,-4,6],"requiredPoints":[{"id":"A","x":2,"y":0},{"id":"B","x":-1,"y":0}],"axisTickValues":{"x":[-1,2],"y":[4]}},
+  "caption":"A(2,0)을 대입하면 a=2이고 y=−2(x−2)(x+1)이므로 다른 x절편 B는 (−1,0)이다.",
+  "accessibilityDescription":"아래로 열린 포물선 y=−2x²+2x+4가 x축과 A(2,0), B(−1,0) 두 점에서 만난다.",
+  "sourceQuote":"y=−2x²+ax+4의 x축 교점 A(2,0), B(b,0). 해설 a=2, b=−1.",
+  "sourceConditions":[
+    {"id":"derivedCurve","condition":"a=2로 얻은 y=−2x²+2x+4","mappedTo":"graphPlan.coefficients"},
+    {"id":"roots","condition":"교점 A(2,0), B(−1,0)","mappedTo":["graphPlan.requiredPoints","graphPlan.axisTickValues"]}
+  ],
+  "newVisualInformation":["두 x절편과 아래로 열린 포물선의 위치 관계를 정확히 표기한다."]
+}

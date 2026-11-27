@@ -1,0 +1,16 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "graphPlan":{"family":"multi-curve","viewport":[-3,8,-8,15],"curves":[
+    {"id":"f","kind":"Y_OF_X","coefficients":["4","-6","1"],"domain":["-2","7"],"color":"BLUE","label":"y=x^2-6x+4"},
+    {"id":"g","kind":"LINE","coefficients":["5","-2"],"domain":["-2","7"],"color":"WARM","label":"y=-2x+5"}
+  ],"axisTickValues":{"x":["2","4"],"y":["5"]}},
+  "caption":"m=−6, n=5인 포물선과 직선의 교점 x좌표는 2−√5, 2+√5이다.",
+  "accessibilityDescription":"위로 열린 포물선 y=x²−6x+4와 내려가는 직선 y=−2x+5가 서로 다른 두 점에서 교차한다.",
+  "sourceQuote":"x²+mx+4와 −2x+n의 교점 x좌표 하나가 2−√5; 다른 근 2+√5로 m=−6,n=5.",
+  "sourceConditions":[
+    {"id":"parabola","condition":"m=−6을 대입한 포물선 y=x²−6x+4","mappedTo":"graphPlan.curves[0].coefficients"},
+    {"id":"line","condition":"n=5를 대입한 직선 y=−2x+5","mappedTo":"graphPlan.curves[1].coefficients"},
+    {"id":"intersections","condition":"교점 x좌표 2±√5는 두 곡선의 교차로 직접 보임","mappedTo":"graphPlan.curves"}
+  ],
+  "newVisualInformation":["직선과 포물선이 정확히 두 번 만나는 형태를 두 곡선의 다른 선색과 식 라벨로 제시한다."]
+}

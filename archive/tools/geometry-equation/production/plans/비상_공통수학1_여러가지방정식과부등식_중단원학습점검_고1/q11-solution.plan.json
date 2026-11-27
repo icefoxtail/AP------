@@ -1,0 +1,22 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"expression","op":"div","args":[{"kind":"expression","op":"add","args":[{"kind":"integer","value":"4"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"2"}]}]},{"kind":"integer","value":"2"}]},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"expression","op":"div","args":[{"kind":"expression","op":"sub","args":[{"kind":"integer","value":"4"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"2"}]}]},{"kind":"integer","value":"2"}]}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["O","B","C"],
+  "displaySegments":[{"id":"sOB","refs":["O","B"]},{"id":"sOC","refs":["O","C"]},{"id":"sBC","refs":["B","C"]}],
+  "hiddenPointNames":["O","B","C"],"hiddenPointStyle":"NONE",
+  "rightAngles":[{"id":"rO","refs":["B","O","C"]}],
+  "planeMarks":{"dimensions":[{"id":"dBC","from":"B","to":"C","label":"3","unit":"m","side":"ABOVE","style":"ARROW","factRole":"GIVEN"}],"expressionLabels":[{"id":"p","ownerSegment":"sOB","text":"p"},{"id":"q","ownerSegment":"sOC","text":"q"}]},
+  "coordinateCanvas":{"width":480,"height":380},
+  "caption":"빗변 3m와 넓이 7/4m²에서 pq=7/2, p²+q²=9이고 p>q이다. 따라서 p+q=4, p−q=√2이다.",
+  "accessibilityDescription":"직각삼각형의 긴 직각변 p, 짧은 직각변 q 및 빗변 3m를 각 변 가까이에 표시하고 직각 표식을 그린다.",
+  "sourceConditions":[
+    {"id":"legs","condition":"서로 직각인 두 변 p>q","mappedTo":["rightAngles","planeMarks.expressionLabels"]},
+    {"id":"hypotenuse","condition":"p²+q²=9, 빗변 3m","mappedTo":"planeMarks.dimensions[0]"},
+    {"id":"area","condition":"pq=7/2를 만족하는 실제 변 비율로 모델링","mappedTo":"mathPlan.nodes"}
+  ],
+  "newVisualInformation":["긴 직각변 p·짧은 직각변 q를 구분하고 직각·빗변 길이 3m를 같은 단면에 함께 보여 준다."]
+}

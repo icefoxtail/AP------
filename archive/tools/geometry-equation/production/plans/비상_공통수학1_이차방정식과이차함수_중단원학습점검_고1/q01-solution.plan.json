@@ -1,0 +1,17 @@
+{
+  "capability":"composite-panels-v1",
+  "panels":[
+    {"caption":{"text":"⑴ 두 점에서 만남"},"plan":{"capability":"polynomial-spike-v1","graphPlan":{"family":"polynomial","coefficients":["-1","1","1"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[-3,2],"viewport":[-3,2,-3,5],"axisTickValues":{"x":[-2,2],"y":[]}}}},
+    {"caption":{"text":"⑵ 만나지 않음"},"plan":{"capability":"polynomial-spike-v1","graphPlan":{"family":"polynomial","coefficients":["4","3","1"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[-4,1],"viewport":[-4,1,-1,8],"axisTickValues":{"x":[-2],"y":[]}}}},
+    {"caption":{"text":"⑶ 한 점에서 접함"},"plan":{"capability":"polynomial-spike-v1","graphPlan":{"family":"polynomial","coefficients":["-9","12","-4"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[0,3],"viewport":[0,3,-11,2],"requiredPoints":[{"id":"T","x":1.5,"y":0}],"axisTickValues":{"x":[1,2],"y":[]}}}}
+  ],
+  "caption":"x축과 교점의 개수는 판별식의 부호에 따라 각각 2, 0, 1이다.",
+  "accessibilityDescription":"포물선 세 가지를 각각 그려 ⑴ x축을 두 번 가로지르고 ⑵ x축 위쪽에 떠 있으며 ⑶ x축에 한 번 접하는 위치 관계를 비교한다.",
+  "sourceQuote":"⑴ y=x²+x−1 ⑵ y=x²+3x+4 ⑶ y=−4x²+12x−9, 해설: D>0, D<0, D=0.",
+  "sourceConditions":[
+    {"id":"case1","condition":"⑴ x²+x−1의 판별식 5>0","mappedTo":"panels[0].plan.graphPlan.coefficients"},
+    {"id":"case2","condition":"⑵ x²+3x+4의 판별식 −7<0","mappedTo":"panels[1].plan.graphPlan.coefficients"},
+    {"id":"case3","condition":"⑶ −4x²+12x−9의 판별식 0","mappedTo":["panels[2].plan.graphPlan.coefficients","panels[2].plan.graphPlan.requiredPoints"]}
+  ],
+  "newVisualInformation":["3개 함수의 x축 교점 개수와 접점 위치를 별도 그래프에서 정확하게 비교한다."]
+}

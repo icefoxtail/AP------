@@ -1,0 +1,22 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "graphPlan":{"family":"multi-curve","viewport":[-3,3,-5,4],"curves":[
+    {"id":"upper","kind":"Y_OF_X","coefficients":["2","0","-1/2"],"domain":["-3","3"],"color":"BLUE","label":"y=-1/2*x^2+2"},
+    {"id":"lower","kind":"Y_OF_X","coefficients":["-4","0","1"],"domain":["-3","3"],"color":"WARM","label":"y=x^2-4"}
+  ],"axisTickValues":{"x":["-2","2"],"y":["-4","2"]},"overlays":{
+    "points":[{"id":"A","x":"1","y":"3/2"},{"id":"B","x":"-1","y":"3/2"},{"id":"C","x":"-1","y":"-3"},{"id":"D","x":"1","y":"-3"}],
+    "segments":[{"id":"AB","from":"A","to":"B"},{"id":"BC","from":"B","to":"C"},{"id":"CD","from":"C","to":"D"},{"id":"DA","from":"D","to":"A"}],
+    "rightAngles":[{"id":"ra","at":"A","from":["B","D"]},{"id":"rb","at":"B","from":["A","C"]},{"id":"rc","at":"C","from":["B","D"]}]
+  }},
+  "caption":"두 포물선 y=−x²/2+2와 y=x²−4에 꼭짓점이 놓인 직사각형 ABCD의 한 가능한 배치다. 미지 가로폭은 쓰지 않는다.",
+  "accessibilityDescription":"두 이차함수 곡선, 좌표축의 −2·2와 −4·2 눈금, 곡선 사이의 직사각형 A B C D 및 세 직각 표식이 있다. 내부 면은 흰색이다.",
+  "sourceQuote":"직사각형 ABCD의 A,B는 y=−1/2 x²+2 위, C,D는 y=x²−4 위, A는 제1사분면, D는 제4사분면.",
+  "sourceConditions":[
+    {"id":"upper","condition":"위 포물선 y=−x²/2+2","mappedTo":"graphPlan.curves[0]"},
+    {"id":"lower","condition":"아래 포물선 y=x²−4","mappedTo":"graphPlan.curves[1]"},
+    {"id":"rectangle","condition":"A·B는 위, C·D는 아래 곡선; AB·CD는 수평, BC·DA는 수직","mappedTo":["graphPlan.overlays.points","graphPlan.overlays.segments"]},
+    {"id":"quadrants","condition":"A는 1사분면, D는 4사분면","mappedTo":"graphPlan.overlays.points"},
+    {"id":"rightAngles","condition":"원본 네 모서리 직각 중 세 표식; 엔진 허용량 최대 세 개","mappedTo":"graphPlan.overlays.rightAngles"}
+  ],
+  "newVisualInformation":["원본의 두 포물선과 A B C D, 좌표축 눈금, 직사각형 변을 직접 도식화한다.","ENGINE_CAPABILITY_PENDING: 원본 네 꼭짓점 모두의 직각 사각 표식과 1:1 일치를 위해 graphPlan.overlays.rightAngles 최대 3개 제한을 4개로 확장해야 한다."]
+}
