@@ -1,0 +1,12 @@
+{
+  "capability":"ellipse-figure-v1",
+  "sourceQuote":"포물선 y²=12x 위 P, A(4,5), B(3,0)의 PA+PB 최솟값",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"3","axis":"X"},
+  "points":[{"id":"A","kind":"POINT","x":"4","y":"5","coordinates":true},{"id":"B","kind":"FOCUS"},{"id":"P","kind":"ON_CONIC","y":"5"},{"id":"H","kind":"FOOT","from":"P","onto":"d","rightAngle":true}],
+  "lines":[{"id":"d","role":"DIRECTRIX","label":"x=-3"}],
+  "segments":[{"id":"pa","from":"P","to":"A"},{"id":"pb","from":"P","to":"B","dashed":true},{"id":"ph","from":"P","to":"H"},{"id":"ah","from":"A","to":"H","label":"7"}],
+  "caption":"초점 B와 준선까지의 거리 PB=PH를 이용한 최단거리",
+  "accessibilityDescription":"A(4,5)에서 준선 x=-3에 내린 수선 AH 위에 포물선 점 P와 수선의 발 H가 있으며, P에서 초점 B까지의 거리와 PH는 같다.",
+  "sourceConditions":[{"id":"c1","condition":"포물선 y²=12x의 초점 B=(3,0), 준선 x=-3","mappedTo":["conic","B","d"]},{"id":"c2","condition":"P가 준선과 A를 잇는 수평선과 만나는 위치에서 최솟값","mappedTo":["P","H","pa","ph","ah"]}],
+  "newVisualInformation":["최소가 되는 위치에서 PA와 PH가 한 직선이고 H에는 실제 직각 표식", "PB=PH를 비교하기 위한 보조선"]
+}

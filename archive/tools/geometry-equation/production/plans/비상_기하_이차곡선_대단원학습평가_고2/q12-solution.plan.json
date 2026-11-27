@@ -1,0 +1,32 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "점 A(-2,0)에서 포물선 y²=24x에 그은 두 접선의 접점을 B, C, 초점을 D라 할 때 사각형 ACDB의 넓이",
+  "conic": {"kind":"PARABOLA","vertex":["0","0"],"p":"6","axis":"X"},
+  "points": [
+    {"id":"A","kind":"POINT","x":"-2","y":"0"},
+    {"id":"B","kind":"TANGENT_FROM","from":"A","which":2,"coordinates":true},
+    {"id":"C","kind":"TANGENT_FROM","from":"A","which":1,"coordinates":true},
+    {"id":"D","kind":"FOCUS"}
+  ],
+  "lines": [
+    {"id":"tB","tangent":true,"at":"B"},
+    {"id":"tC","tangent":true,"at":"C"}
+  ],
+  "segments": [
+    {"id":"sAB","from":"A","to":"B"},
+    {"id":"sAC","from":"A","to":"C"},
+    {"id":"sCD","from":"C","to":"D"},
+    {"id":"sDB","from":"D","to":"B"},
+    {"id":"sAD","from":"A","to":"D","dashed":true},
+    {"id":"sBC","from":"B","to":"C","dashed":true}
+  ],
+  "polygons": [{"id":"area","points":["A","C","D","B"],"fill":"LIGHT"}],
+  "caption": "초점 D와 두 접점 B,C, A가 만드는 사각형 ACDB",
+  "accessibilityDescription": "포물선 y²=24x, A(-2,0)에서 그은 두 접선 AB, AC, 초점 D(6,0), 대각선 AD 및 BC가 직교하는 사각형 ACDB의 영역을 표시한다.",
+  "sourceConditions": [
+    {"id":"s1","condition":"A=(-2,0), 포물선 y²=24x의 초점은 D=(6,0)","mappedTo":["conic","A","D"]},
+    {"id":"s2","condition":"B,C는 A에서 그은 서로 다른 접선의 접점이며 B가 위쪽","mappedTo":["B","C","tB","tC"]},
+    {"id":"s3","condition":"풀이의 넓이 대상은 A-C-D-B 사각형","mappedTo":["area","sAD","sBC"]}
+  ],
+  "newVisualInformation": ["접점을 엔진에서 대수 계산하고 대각선 AD, BC 및 실제 면적 대상만 밝게 표시한다."]
+}

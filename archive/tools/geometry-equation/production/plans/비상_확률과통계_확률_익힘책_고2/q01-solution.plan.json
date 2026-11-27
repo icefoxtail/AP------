@@ -1,0 +1,101 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      },
+      {
+        "id": "C"
+      }
+    ],
+    "elements": [
+      {
+        "text": "1",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "3",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "5",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "7",
+        "in": []
+      },
+      {
+        "text": "9",
+        "in": [
+          "A",
+          "C"
+        ]
+      },
+      {
+        "text": "11",
+        "in": [
+          "C"
+        ]
+      },
+      {
+        "text": "13",
+        "in": [
+          "C"
+        ]
+      },
+      {
+        "text": "15",
+        "in": [
+          "A",
+          "C"
+        ]
+      },
+      {
+        "text": "17",
+        "in": [
+          "C"
+        ]
+      },
+      {
+        "text": "19",
+        "in": [
+          "C"
+        ]
+      }
+    ]
+  },
+  "caption": "서로 배반인 쌍은 A와 B, B와 C이며, A와 C에는 9와 15가 함께 속한다.",
+  "accessibilityDescription": "1부터 19까지 홀수 열 개를 세 사건 A, B, C의 벤다이어그램 영역에 배치한다. B는 다른 두 사건과 겹치지 않으며 9와 15는 A와 C에 함께 속한다.",
+  "sourceConditions": [
+    {
+      "id": "s",
+      "condition": "1부터 19까지의 홀수 10개",
+      "mappedTo": [
+        "diagram.elements"
+      ]
+    },
+    {
+      "id": "events",
+      "condition": "A는 3의 배수, B는 10의 약수, C는 7보다 큰 수",
+      "mappedTo": [
+        "diagram.sets",
+        "diagram.elements"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원소 9와 15가 A∩C에 들어가지만 B와 겹치는 원소는 없다는 사실을 영역별 실제 원소로 보여 준다."
+  ]
+}

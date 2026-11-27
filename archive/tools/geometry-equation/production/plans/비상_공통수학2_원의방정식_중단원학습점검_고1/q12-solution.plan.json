@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1","conic":{"kind":"CIRCLE","center":["3","3"],"rSquared":"2"},
+  "lines":[{"id":"l","slope":"-1","intercept":"2"}],
+  "points":[{"id":"C","kind":"CENTER"},{"id":"A","kind":"POINT","x":"2","y":"0"},{"id":"B","kind":"POINT","x":"0","y":"2"},{"id":"P","kind":"POINT","x":"2","y":"2"},{"id":"H","kind":"FOOT","from":"C","onto":"l","rightAngle":true}],
+  "segments":[{"id":"AB","from":"A","to":"B"},{"id":"CH","from":"C","to":"H"},{"id":"CP","from":"C","to":"P"},{"id":"PH","from":"P","to":"H"},{"id":"AP","from":"A","to":"P"},{"id":"BP","from":"B","to":"P"}],
+  "caption":"원 위 최근접 점 P(2,2)에서 밑변 AB까지 높이 PH=√2로 넓이가 최소가 된다.",
+  "accessibilityDescription":"원 중심 C(3,3)와 직선 AB:x+y=2 사이의 수선 위에 H(1,1), P(2,2), C(3,3)가 순서대로 있다.",
+  "sourceQuote":"삼각형 $APB$의 넓이의 최솟값을 구하시오",
+  "sourceConditions":[{"id":"height","condition":"CH=2√2, CP=√2, PH=√2, CH⊥AB","mappedTo":["points","segments"]}],
+  "newVisualInformation":["최소 높이 PH와 직각 표시, 원의 반지름 CP와 AB의 길이를 독립 라벨로 표시한다."]
+}

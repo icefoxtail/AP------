@@ -1,0 +1,108 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      3,
+      -3,
+      10
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "gL",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "-2"
+        ],
+        "domain": [
+          "-3",
+          "0"
+        ],
+        "color": "WARM",
+        "hideLabel": true
+      },
+      {
+        "id": "gR",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "2"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ],
+        "color": "WARM",
+        "label": "g"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "2"
+      ],
+      "y": [
+        "1",
+        "4"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P1",
+          "x": "-2",
+          "y": "4"
+        },
+        {
+          "id": "P2",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "P3",
+          "x": "2",
+          "y": "4"
+        }
+      ]
+    }
+  },
+  "caption": "f(x)=x²와 g(x)=2|x|은 x=−2,0,2에서 만난다. 가능한 비공집합 정의역은 2³−1개.",
+  "accessibilityDescription": "f(x)=x²와 g(x)=2|x|은 x=−2,0,2에서 만난다. 가능한 비공집합 정의역은 2³−1개.",
+  "sourceConditions": [
+    {
+      "id": "parabola",
+      "condition": "f(x)=x²",
+      "mappedTo": "graphPlan.curves[0]"
+    },
+    {
+      "id": "absolute",
+      "condition": "g(x)는 좌우 일차 조각으로 나타낸 절댓값 함수",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "roots",
+      "condition": "f(x)=g(x)의 모든 실근과 교점",
+      "mappedTo": "graphPlan.overlays.points"
+    }
+  ],
+  "newVisualInformation": [
+    "두 그래프가 실제로 만나는 x의 원소들만 정의역 후보가 된다."
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "capability":"exponential-affine-spike-v1",
+  "graphPlan": {
+    "family":"exponential-affine", "base":"1/2", "coefficients":["1","1/30","0"],
+    "sourceDomain":{"kind":"ALL_REALS"},
+    "domain":[0,125],"viewport":[-5,130,-0.1,1.1],
+    "requiredPoints":[{"id":"A","x":0,"y":1},{"id":"B","x":30,"y":0.5},{"id":"C","x":120,"y":0.0625}],
+    "axisTickValues":{"x":["30","120"],"y":["1/2","1/16"]}
+  },
+  "caption":"처음 양을 1로 정규화하면 남은 비율은 (1/2)^(t/30)이고 t=30에 1/2, t=120에 1/16이 된다.",
+  "accessibilityDescription":"방사성 물질의 남은 비율이 시간 30년마다 절반으로 감소하고 120년에 1/16에 도달하는 지수곡선이다.",
+  "sourceQuote":"어떤 방사성 물질은 $30$년마다 그 양이 반으로 줄어든다고 한다",
+  "sourceConditions":[
+    {"id":"half-life","condition":"반감기 30년, 남은 비율 (1/2)^(t/30)","mappedTo":"graphPlan.base,graphPlan.coefficients"},
+    {"id":"target","condition":"t=120에서 M/M0=1/16","mappedTo":"graphPlan.requiredPoints[2],graphPlan.axisTickValues"}
+  ],
+  "newVisualInformation":["매 30년마다 감소하는 양의 연속 그래프", "1/16에 도달하는 120년 시점"]
+}

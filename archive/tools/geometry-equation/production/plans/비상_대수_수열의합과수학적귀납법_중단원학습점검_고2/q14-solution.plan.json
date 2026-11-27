@@ -1,0 +1,40 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"A1","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A2","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B1","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"-4"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B2","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"8"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C1","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-4"},{"kind":"integer","value":"-2"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C2","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"8"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D1","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-4"},{"kind":"integer","value":"8"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D2","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"-4"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"L1","op":"LINE_THROUGH","inputs":["A1","A2"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"L2","op":"LINE_THROUGH","inputs":["B1","B2"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"L3","op":"LINE_THROUGH","inputs":["C1","C2"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"L4","op":"LINE_THROUGH","inputs":["D1","D2"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"P","op":"LINE_INTERSECTION","inputs":["L1","L4"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"Q","op":"LINE_INTERSECTION","inputs":["L2","L4"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"R","op":"LINE_INTERSECTION","inputs":["L3","L4"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "coordinateCanvas":{"width":680,"height":460},
+  "displayPoints":["A1","A2","B1","B2","C1","C2","D1","D2","P","Q","R"],
+  "hiddenPointNames":["A1","A2","B1","B2","C1","C2","D1","D2"],"hiddenPointStyle":"NONE",
+  "displayLines":[],"displayCircles":[],
+  "displaySegments":[
+    {"id":"sL1","refs":["A1","A2"]},{"id":"sL2","refs":["B1","B2"]},
+    {"id":"sL3","refs":["C1","C2"]},{"id":"sL4","refs":["D1","D2"],"emphasis":"ACCENT"}
+  ],
+  "planeMarks":{"expressionLabels":[
+    {"id":"labelL1","ownerSegment":"sL1","text":"l_1"},{"id":"labelL2","ownerSegment":"sL2","text":"l_2"},
+    {"id":"labelL3","ownerSegment":"sL3","text":"l_3"},{"id":"labelL4","ownerSegment":"sL4","text":"l_4"}
+  ]},
+  "caption":"n=3에서 새 직선 l₄을 추가한 예. 기존 직선 l₁,l₂,l₃과 만나는 서로 다른 점 P,Q,R 세 개가 새로 생긴다. 따라서 a_(n+1)=a_n+n.",
+  "accessibilityDescription":"기존 세 직선과 강조된 네 번째 직선이 있다. 강조선 위에 서로 다른 세 교점 P, Q, R을 점과 글자로 모두 표시한다.",
+  "sourceConditions":[
+    {"id":"existing","condition":"서로 다른 3개의 직선이 기존 a3=3개의 교점을 만들 수 있다","mappedTo":["L1","L2","L3"]},
+    {"id":"new","condition":"네 번째 직선은 앞의 세 직선 각각과 서로 다른 세 점에서 만난다","mappedTo":["L4","P","Q","R"]},
+    {"id":"general","condition":"일반화 a_(n+1)=a_n+n","mappedTo":["caption"]}
+  ],
+  "newVisualInformation":["겹치는 교점 없이 새 직선의 교점 세 개를 정확히 표시; 기존선과 새선을 강조선으로 구별; 선·점·라벨 누락 없음; 면 채움 없음"]
+}

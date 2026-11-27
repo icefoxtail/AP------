@@ -1,0 +1,70 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "-4"
+        ],
+        "domain": [
+          "-3",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "y=-4x"
+      }
+    ],
+    "viewport": [
+      -3.5,
+      2,
+      -7,
+      13
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "1"
+      ],
+      "y": [
+        "12",
+        "-4"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-3",
+          "y": "12",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "-1/4",
+          "y": "-1",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "y=-4x 위에는 (-3,12)가 있으나 (-1/4,-1)은 직선 밖에 있어 정답은 ②이다.",
+  "accessibilityDescription": "y=-4x 위에는 (-3,12)가 있으나 (-1/4,-1)은 직선 밖에 있어 정답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "대입하면 x=-1/4일 때 y는 1이어야 하므로 (-1/4,-1)은 그래프 위에 있지 않다.",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.axisTickValues",
+        "graphPlan.overlays"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원점을 지나는 기울기 -4 직선과 원본 보기의 참·거짓 좌표점을 비교한다."
+  ]
+}

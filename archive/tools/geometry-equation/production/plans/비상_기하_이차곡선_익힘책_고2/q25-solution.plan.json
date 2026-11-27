@@ -1,0 +1,12 @@
+{
+  "capability":"ellipse-figure-v1",
+  "sourceQuote":"쌍곡선 x²/12−y²/8=1의 접선이 타원 (x−2)²+4y²=4의 넓이를 이등분",
+  "conics":[{"id":"h","kind":"HYPERBOLA","center":["0","0"],"aSquared":"12","bSquared":"8","transverse":"X"},{"id":"e","kind":"ELLIPSE","center":["2","0"],"aSquared":"4","bSquared":"1","major":"X"}],
+  "points":[{"id":"P","kind":"ON_CONIC","curve":"h","x":"6","sign":"POS"},{"id":"C","kind":"CENTER","curve":"e"}],
+  "lines":[{"id":"t","tangent":true,"at":"P","curve":"h"}],
+  "segments":[{"id":"pc","from":"P","to":"C","dashed":true}],
+  "caption":"쌍곡선 접선이 타원의 중심 C를 지나 넓이를 두 부분으로 나눈다",
+  "accessibilityDescription":"쌍곡선의 점 P(6,4)에서 그은 접선이 타원 중심 C(2,0)를 지나는 것을 나타낸다.",
+  "sourceConditions":[{"id":"c1","condition":"타원 (x−2)²/4+y²=1의 중심 C=(2,0), 넓이 이등분 접선은 C를 지남","mappedTo":["conics","C","t"]},{"id":"c2","condition":"타원 중심을 지나는 쌍곡선 접점은 x=6,y=±4, 위쪽으로 대표","mappedTo":["P","t"]}],
+  "newVisualInformation":["타원 중심을 지나는 실제 쌍곡선 접선의 위치", "면 채움 없이 선만으로 양쪽 영역을 구분"]
+}

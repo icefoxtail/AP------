@@ -1,0 +1,85 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "-3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      4
+    ],
+    "viewport": [
+      -3,
+      4,
+      -3,
+      12
+    ],
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "coefficients": [
+              "-2+3*sqrt(5)",
+              "3-2*sqrt(5)",
+              "-1"
+            ]
+          }
+        ],
+        "intersectionX": [
+          "(3-sqrt(5))/2"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "T",
+        "x": "(3-sqrt(5))/2",
+        "y": "4"
+      },
+      {
+        "id": "V",
+        "x": "3/2",
+        "y": "11/4"
+      },
+      {
+        "id": "W",
+        "x": "(3-2*sqrt(5))/2",
+        "y": "21/4"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "k=√5이고 P=A, Q=−B인 경우 두 포물선 P(x)와 Q(x+k)가 점 T에서 접한다.",
+  "accessibilityDescription": "위로 열린 포물선 P(x)=x²−3x+5와 아래로 열린 포물선 Q(x+√5)=−x²+(3−2√5)x−2+3√5는 T((3−√5)/2,4)에서 한 점으로 접한다. 각 꼭짓점도 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "P(x)=A(x), Q(x)=-B(x), k=√5일 때 중근",
+      "mappedTo": [
+        "graphPlan.referenceCurves",
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 기출의 두 함수가 접하는 모습은 정확한 √5 계수를 유지한 두 포물선과 접점으로 표시한다.",
+    "두 가능한 부호 중 k=√5의 대표 그림임을 캡션에 명시한다."
+  ]
+}

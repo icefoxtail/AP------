@@ -1,0 +1,392 @@
+{
+  "capability": "composite-panels-v1",
+  "caption": "두 삼각형의 넓이는 차례대로 15와 8이다.",
+  "accessibilityDescription": "⑴ A의 끼인각 60도, 두 변 5와 4루트3. ⑵ B의 끼인각 135도, 두 변 4루트2와 4.",
+  "sourceQuote": "다음 그림과 같은 삼각형",
+  "sourceConditions": [
+    {
+      "id": "fig1",
+      "condition": "⑴ AB=5, AC=4√3, ∠A=60°",
+      "mappedTo": "panels"
+    },
+    {
+      "id": "fig2",
+      "condition": "⑵ AB=4√2, BC=4, ∠B=135°",
+      "mappedTo": "panels"
+    }
+  ],
+  "newVisualInformation": [
+    "2개의 원본 소도형을 분리해 끼인각과 변 길이를 보존",
+    "넓이를 묻는 삼각형 영역만 선택적으로 표시"
+  ],
+  "panels": [
+    {
+      "caption": {
+        "text": "⑴"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          }
+        ],
+        "displayPoints": [
+          "A",
+          "B",
+          "C"
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "a",
+              "refs": [
+                "B",
+                "A",
+                "C"
+              ],
+              "value": 60,
+              "label": "60",
+              "style": "ARC"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "ab",
+              "ownerSegment": "sAB",
+              "text": "5"
+            },
+            {
+              "id": "ac",
+              "ownerSegment": "sCA",
+              "text": "4√3"
+            }
+          ],
+          "regions": [
+            {
+              "id": "target",
+              "fill": "ROSE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "A",
+                    "B",
+                    "C"
+                  ]
+                }
+              ],
+              "label": "15"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 560,
+          "height": 480
+        },
+        "caption": "원문의 도형에 주어진 길이와 각도를 표시한다.",
+        "accessibilityDescription": "주어진 삼각형을 선분과 각 호로 표시한다.",
+        "sourceQuote": "다음 그림과 같은 삼각형",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "⑴ AB=5, AC=4√3, ∠A=60°",
+            "mappedTo": "planeMarks.expressionLabels"
+          },
+          {
+            "id": "c2",
+            "condition": "구할 영역 △ABC",
+            "mappedTo": "planeMarks.regions"
+          }
+        ],
+        "newVisualInformation": [
+          "⑴ 삼각형의 두 기지변과 끼인각 표시",
+          "넓이 계산 대상만 옅게 색칠",
+          "해설에서 넓이15 표기"
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "⑵"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          }
+        ],
+        "displayPoints": [
+          "A",
+          "B",
+          "C"
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "b",
+              "refs": [
+                "A",
+                "B",
+                "C"
+              ],
+              "value": 135,
+              "label": "135",
+              "style": "ARC"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "ab",
+              "ownerSegment": "sAB",
+              "text": "4√2"
+            },
+            {
+              "id": "bc",
+              "ownerSegment": "sBC",
+              "text": "4"
+            }
+          ],
+          "regions": [
+            {
+              "id": "target",
+              "fill": "ROSE",
+              "shapes": [
+                {
+                  "polygon": [
+                    "A",
+                    "B",
+                    "C"
+                  ]
+                }
+              ],
+              "label": "8"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 560,
+          "height": 480
+        },
+        "caption": "원문의 도형에 주어진 길이와 각도를 표시한다.",
+        "accessibilityDescription": "주어진 삼각형을 선분과 각 호로 표시한다.",
+        "sourceQuote": "다음 그림과 같은 삼각형",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "⑵ AB=4√2, BC=4, ∠B=135°",
+            "mappedTo": "planeMarks.expressionLabels"
+          },
+          {
+            "id": "c2",
+            "condition": "구할 영역 △ABC",
+            "mappedTo": "planeMarks.regions"
+          }
+        ],
+        "newVisualInformation": [
+          "⑵ B135°의 둔각과 두 기지변",
+          "넓이 계산 대상만 옅게 색칠",
+          "해설에서 넓이8 표기"
+        ]
+      }
+    }
+  ]
+}

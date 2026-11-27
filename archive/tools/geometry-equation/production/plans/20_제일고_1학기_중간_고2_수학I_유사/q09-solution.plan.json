@@ -1,0 +1,130 @@
+{
+  "sourceQuote": "$\\pi < \\theta < \\frac{3}{2}\\pi$일 때",
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "outputType": "POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "inputs": []
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "inputs": []
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "X",
+    "P"
+  ],
+  "hiddenPointNames": [
+    "X",
+    "P"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "OP",
+      "refs": [
+        "O",
+        "P"
+      ],
+      "arrow": "END"
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "theta",
+        "refs": [
+          "X",
+          "O",
+          "P"
+        ],
+        "value": 216.869897646,
+        "side": "OUTER",
+        "style": "ARC",
+        "label": "θ",
+        "labelKind": "MATH"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "sign",
+        "at": [
+          -3,
+          -2
+        ],
+        "text": "sinθ<0, cosθ<0, tanθ>0",
+        "labelKind": "TEXT"
+      }
+    ]
+  },
+  "caption": "π<θ<3π/2의 제3사분면에서 sinθ와 cosθ는 음수, tanθ는 양수이다.",
+  "sourceConditions": [
+    {
+      "id": "h09",
+      "condition": "π<θ<3π/2",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "사분면별 부호와 해당 동경"
+  ]
+}

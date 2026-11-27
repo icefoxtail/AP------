@@ -1,0 +1,19 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    { "id": "c1", "kind": "ELLIPSE", "center": ["0", "0"], "aSquared": "64", "bSquared": "16", "major": "X" },
+    { "id": "c2", "kind": "PARABOLA", "vertex": ["0", "0"], "p": "3/4", "axis": "X" }
+  ],
+  "points": [
+    { "id": "O", "kind": "ORIGIN" },
+    { "id": "P", "kind": "CONIC_CONIC", "curves": ["c1", "c2"], "which": 1, "coordinates": true }
+  ],
+  "lines": [
+    { "id": "te", "at": "P", "tangent": true, "curve": "c1" },
+    { "id": "tp", "at": "P", "tangent": true, "curve": "c2" }
+  ],
+  "caption": "P(4,-2√3)에서 타원과 포물선에 각각 그은 두 접선의 기울기 비교",
+  "accessibilityDescription": "타원 x²/64+y²/16=1과 포물선 y²=3x의 아래쪽 교점 P(4,-2√3)에 각각의 접선을 그려 두 기울기 곱이 -1/8임을 보인다. 영역 채움은 없다.",
+  "sourceConditions": [ { "id": "q13", "condition": "공통점 P(4,-2√3), 두 곡선의 접선 기울기 곱 -1/8", "mappedTo": "conics,points,lines" } ],
+  "newVisualInformation": ["기존 발문도에서 누락된 두 접선을 해설 축에 엔진 계산으로 추가"]
+}

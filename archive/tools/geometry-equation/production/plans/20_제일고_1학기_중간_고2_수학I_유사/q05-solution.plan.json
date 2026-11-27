@@ -1,0 +1,197 @@
+{
+  "sourceQuote": "원점 $\\mathrm{O}$와 점 $\\mathrm{P}(-5,",
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "outputType": "POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "inputs": []
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN",
+        "inputs": []
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "inputs": []
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "X",
+    "P",
+    "F"
+  ],
+  "hiddenPointNames": [
+    "X",
+    "F"
+  ],
+  "unmarkedPointNames": [
+    "X",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "OP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "PF",
+      "refs": [
+        "P",
+        "F"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "OF",
+      "refs": [
+        "O",
+        "F"
+      ],
+      "dashed": true
+    }
+  ],
+  "coordinateLabels": [
+    "P"
+  ],
+  "rightAngles": [
+    {
+      "id": "ra",
+      "refs": [
+        "O",
+        "F",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "theta",
+        "refs": [
+          "X",
+          "O",
+          "P"
+        ],
+        "value": 112.619864948,
+        "style": "ARC",
+        "label": "θ",
+        "labelKind": "MATH"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dy",
+        "from": "F",
+        "to": "P",
+        "label": "12",
+        "side": "LEFT"
+      },
+      {
+        "id": "dx",
+        "from": "O",
+        "to": "F",
+        "label": "5",
+        "side": "BELOW"
+      },
+      {
+        "id": "rad",
+        "from": "O",
+        "to": "P",
+        "label": "13",
+        "side": "RIGHT"
+      }
+    ]
+  },
+  "caption": "점 P에서 x축에 수선을 내려 가로 길이 5, 세로 길이 12, OP=13을 얻는다. 따라서 sinθ+cosθ=7/13이다.",
+  "sourceConditions": [
+    {
+      "id": "h05a",
+      "condition": "P(-5,12)",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "h05b",
+      "condition": "r=√(25+144)=13",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "수선 PF와 직각표식, 변 길이 5·12·13"
+  ]
+}

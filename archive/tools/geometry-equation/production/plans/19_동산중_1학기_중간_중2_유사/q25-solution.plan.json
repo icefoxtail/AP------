@@ -1,0 +1,43 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+            "state": "OPEN"
+            },
+            "hi": {
+              "value": "4.5",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "부등식의 해"
+  },
+  "caption": "걷는 거리 x에 대해 x/6+(18−x)/54≤1을 풀면 x≤4.5이고, 처음에 실제로 걸은 거리는 양수이므로 0<x≤4.5에서 최대 4.5km이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "총 거리 18km, 걸을 때 시속 6km, 버스 시속 54km",
+      "mappedTo": "numberLine.rows"
+    },
+    {
+      "id": "c2",
+      "condition": "걸을 때 x/6시간, 버스 (18−x)/54시간, 합≤1 → x≤4.5",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "경계점의 열린·닫힌 구별과 부등식의 해인 수직선 범위"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"12"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"12"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"}
+  ]},
+  "coordinateCanvas":{"width":680,"height":380},
+  "axisTickValues":{"x":[],"y":[]},"displayLines":[],"displayCircles":[],
+  "displaySegments":[{"id":"sAB","refs":["A","B"],"arrow":"END"},{"id":"sCD","refs":["C","D"],"arrow":"END"}],
+  "displayPoints":["A","B","C","D"],"hiddenPointNames":["A","B","C","D"],"hiddenPointStyle":"NONE",
+  "planeMarks":{"equalLengths":[{"id":"eSame","count":1,"segments":["sAB","sCD"]}],"dimensions":[
+    {"id":"dUp","from":"A","to":"B","label":"8","unit":"km","side":"ABOVE","style":"BAR","factRole":"CONCLUSION"},
+    {"id":"dDown","from":"C","to":"D","label":"8","unit":"km","side":"BELOW","style":"BAR","factRole":"CONCLUSION"}
+  ],"expressionLabels":[
+    {"id":"tUp","ownerSegment":"sAB","text":"시속 3km/h","labelKind":"TEXT"},
+    {"id":"tDown","ownerSegment":"sCD","text":"시속 6km/h","labelKind":"TEXT"}
+  ]},
+  "caption":"상행 거리와 하행 거리가 같으므로 x/3+x/6≤4, 즉 x≤8이다. 최대 x=8km이면 올라가는 데 8/3시간, 내려오는 데 4/3시간으로 총 4시간이다.",
+  "accessibilityDescription":"위쪽 화살표는 시속 3킬로미터로 최대 8킬로미터 올라가는 길, 아래쪽 반대 화살표는 시속 6킬로미터로 8킬로미터 내려오는 길을 나타낸다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"오르막·내리막 길이는 같아 x/3+x/6≤4","mappedTo":["displaySegments","planeMarks.equalLengths","caption"]},
+    {"id":"c2","condition":"시속 3km/h와 6km/h","mappedTo":["planeMarks.expressionLabels"]},
+    {"id":"c3","condition":"최댓값 x=8km, 걸리는 시간은 각각 8/3시간과 4/3시간","mappedTo":["planeMarks.dimensions","caption"]}
+  ],
+  "newVisualInformation":["서로 반대 방향의 같은 8km 구간과 속력 라벨", "해설에서 구한 최대 8km를 치수선에 표시"]
+}

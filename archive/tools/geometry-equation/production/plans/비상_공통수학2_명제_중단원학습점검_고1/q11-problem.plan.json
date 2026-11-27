@@ -1,0 +1,31 @@
+{
+  "capability":"construction-spike-v1",
+  "caption":"원의 지름과 내접 직사각형의 대각선이 같고, 직사각형의 가로와 세로가 각각 x, y이다.",
+  "accessibilityDescription":"아무 면도 칠하지 않은 원 안에 직사각형이 내접한다. 가로변에 x, 세로변에 y, 직사각형의 대각선에 5√2의 길이표시가 있으며 네 모서리는 직각이다. 크기의 비는 대표 예시다.",
+  "sourceConditions":[
+    {"id":"s1","condition":"원에 내접하는 직사각형은 네 꼭짓점이 원 위에 있고 두 대각선이 원의 지름이다. 대표 배치의 변은 4√2,3√2이므로 대각선이 정확히 5√2다.","mappedTo":["mathPlan.nodes","displayCircles","displaySegments","rightAngles"]},
+    {"id":"s2","condition":"발문에서 가로와 세로는 고정 수치가 아니라 각각 x,y이므로 숫자를 변에 쓰지 않는다.","mappedTo":["planeMarks.expressionLabels[0]","planeMarks.expressionLabels[1]"]},
+    {"id":"s3","condition":"원의 지름 5√2는 직사각형의 대각선 길이이고, x²+y²=50을 만족한다.","mappedTo":["displaySegments[4]","planeMarks.expressionLabels[2]"]}
+  ],
+  "newVisualInformation":["직사각형 대각선을 보조선으로 추가해 원의 지름과 같다는 근거를 표시한다.","네 꼭짓점의 직각과 x·y 변 및 지름 길이를 해당 소유 선분에 연결한다.","흰색 기본 사각형과 면 채움은 넣지 않는다."],
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"4"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"2"}]}]},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"4"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"2"}]}]},{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"3"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"2"}]}]}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"3"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"2"}]}]}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"O","op":"MIDPOINT","inputs":["A","C"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"expression","op":"div","args":[{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"5"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"2"}]}]},{"kind":"integer","value":"2"}]}},"outputType":"CIRCLE","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints":["A","B","C","D","O"],
+  "hiddenPointNames":["A","B","C","D","O"],
+  "unmarkedPointNames":["A","B","C","D"],
+  "displayLines":[],"displayCircles":["k"],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sDA","refs":["D","A"]},{"id":"sAC","refs":["A","C"]}],
+  "rightAngles":[{"id":"rB","refs":["A","B","C"]},{"id":"rC","refs":["B","C","D"]}],
+  "planeMarks":{"expressionLabels":[{"id":"width","ownerSegment":"sAB","text":"x"},{"id":"height","ownerSegment":"sBC","text":"y"},{"id":"diagonal","ownerSegment":"sAC","text":"5√2"}]},
+  "coordinateCanvas":{"width":540,"height":430}
+}

@@ -1,0 +1,31 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "두 대각의 크기가 각각 90도인 사각형 ABCD에서 AB=2, BC=6을 표시한 문제 도형이다.",
+  "accessibilityDescription": "사각형 ABCD에서 AB는 길이 2, BC는 길이 6이다. A와 C에는 각각 직각표식이 있으며 대각선 BD나 구할 둘레는 표시하지 않는다.",
+  "sourceQuote": "오른쪽 그림과 같은 사각형 ABCD에서 AB=2, BC=6, 각 A=각 C=90도이다. 사각형 ABCD의 넓이가 30일 때 둘레의 길이를 구하시오.",
+  "sourceConditions": [
+    {"id":"p1","condition":"A, B, C, D를 원문 그림과 같은 순서로 잇고 A, C의 직각을 실제 좌표에서 검증하며 표시한다.","mappedTo":["mathPlan.nodes","displaySegments","rightAngles"]},
+    {"id":"p2","condition":"AB=2, BC=6은 해당 변의 실제 길이와 숫자 라벨로 표시한다.","mappedTo":["mathPlan.nodes","planeMarks.expressionLabels[0]","planeMarks.expressionLabels[1]"]},
+    {"id":"p3","condition":"사각형 넓이 30은 발문 조건이며, 대표 좌표는 이 넓이와 직각, 두 길이를 모두 만족한다. 둘레의 정답과 보조대각선은 문제 그림에 노출하지 않는다.","mappedTo":["mathPlan.nodes","caption"]}
+  ],
+  "newVisualInformation": ["원본과 같은 ABCD 꼭짓점 배치와 둘레 선분만 그린다.","두 직각 표식을 서로 다른 꼭짓점 A, C에 각각 둔다.","AB의 2와 BC의 6은 해당 변에 직접 연결하고 면 채움은 쓰지 않는다."],
+  "mathPlan": {
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"8","denominator":"5"},{"kind":"rational","numerator":"36","denominator":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"7"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints":["A","B","C","D"],
+  "displayLines":[],
+  "displayCircles":[],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sDA","refs":["D","A"]}],
+  "rightAngles":[{"id":"rA","refs":["B","A","D"]},{"id":"rC","refs":["B","C","D"]}],
+  "planeMarks":{
+    "expressionLabels":[{"id":"lengthAB","ownerSegment":"sAB","text":"2"},{"id":"lengthBC","ownerSegment":"sBC","text":"6"}]
+  },
+  "coordinateCanvas":{"width":480,"height":360}
+}

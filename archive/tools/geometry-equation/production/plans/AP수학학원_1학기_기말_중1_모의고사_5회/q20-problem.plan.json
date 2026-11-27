@@ -1,0 +1,84 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "p",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "2/3"
+        ],
+        "domain": [
+          "-6",
+          "10"
+        ],
+        "color": "BLUE",
+        "label": "y=2x/3"
+      },
+      {
+        "id": "i",
+        "kind": "RATIONAL",
+        "numerator": [
+          "24",
+          "0"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-6",
+          "10"
+        ],
+        "color": "WARM",
+        "label": "y=a/x"
+      }
+    ],
+    "viewport": [
+      -6,
+      10,
+      -5,
+      8
+    ],
+    "axisTickValues": {
+      "x": [
+        "6"
+      ],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "6",
+          "y": "4"
+        }
+      ],
+      "guides": [
+        {
+          "id": "x6",
+          "from": "A",
+          "axis": "x"
+        }
+      ]
+    }
+  },
+  "caption": "정비례 y=2x/3 직선과 반비례 y=a/x 곡선의 제1사분면 교점 A의 x좌표가 6이다.",
+  "accessibilityDescription": "정비례 y=2x/3 직선과 반비례 y=a/x 곡선의 제1사분면 교점 A의 x좌표가 6이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정비례 직선은 y=2x/3, 반비례 곡선은 y=a/x이며 교점 A의 x좌표만 6이라고 주어졌다. 모델 좌표 (6,4)는 직선으로부터 결정되나 문제 축에는 y=4를 표기하지 않는다.",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.axisTickValues",
+        "graphPlan.overlays"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 곡선·교점 A·x=6 수선 및 눈금, 미지 a 숫자 비노출"
+  ]
+}

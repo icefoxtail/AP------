@@ -1,0 +1,39 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-9/2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "3",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "조건과 정수의 위치"
+  },
+  "caption": "-9/2<a≤3의 범위에서 정수는 -4부터 3까지 8개이다.",
+  "accessibilityDescription": "왼쪽 끝 -9/2는 열린 점, 오른쪽 끝 3은 닫힌 점이고 사이 정수 -4부터 3까지를 표시한 수직선.",
+  "sourceConditions": [
+    {
+      "id": "m1-10-1",
+      "condition": "-9/2<a≤3",
+      "mappedTo": "numberLine.rows[0].pieces[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "개구간과 폐구간의 끝점 차이, 포함되는 8개 정수를 시각적으로 확인한다."
+  ]
+}

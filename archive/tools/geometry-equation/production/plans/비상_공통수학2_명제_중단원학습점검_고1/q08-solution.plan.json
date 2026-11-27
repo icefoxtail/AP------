@@ -1,0 +1,18 @@
+{
+  "capability":"number-line-figure-v1",
+  "caption":"필요조건의 진리집합 포함관계 Q⊂P에서 -5<x<6은 x<a 안에 모두 들어가야 하므로 a≥6이다.",
+  "accessibilityDescription":"수직선 P는 x<6, Q는 -5<x<6인 최솟값 a=6인 경계 사례를 그린다. 양쪽의 6은 열린 끝점이다.",
+  "sourceConditions":[
+    {"id":"s1","condition":"p:x<a, q:-5<x<6이고 p가 q의 필요조건이므로 Q⊂P다.","mappedTo":["numberLine.rows[0]","numberLine.rows[1]","caption"]},
+    {"id":"s2","condition":"최솟값 a=6일 때 x<6은 -5<x<6을 모두 포함한다. a<6이면 q의 일부 원소가 빠진다.","mappedTo":["numberLine.parameter","numberLine.rows[0].pieces[0]","numberLine.rows[1].pieces[0]"]}
+  ],
+  "newVisualInformation":["최솟값인 a=6의 경계 사례를 명시해 변수 전체를 하나의 그림인 듯 제시하지 않는다.","-5와 6의 열린 끝점 및 왼쪽으로 무한히 이어지는 P를 정확히 구분한다.","흰 배경 사각형이나 영역 내부 면 채움을 사용하지 않는다."],
+  "numberLine":{
+    "parameter":{"name":"a","value":"6","hideNote":false},
+    "rows":[
+      {"kind":"SET","label":"P","color":"BLUE","pieces":[{"lo":null,"hi":{"param":{"mul":"1","add":"0"},"state":"OPEN"}}]},
+      {"kind":"SET","label":"Q","pieces":[{"lo":{"value":"-5","state":"OPEN"},"hi":{"value":"6","state":"OPEN"}}]}
+    ]
+  },
+  "numberLineCaption":{"text":"a=6인 경계에서 Q⊂P"}
+}

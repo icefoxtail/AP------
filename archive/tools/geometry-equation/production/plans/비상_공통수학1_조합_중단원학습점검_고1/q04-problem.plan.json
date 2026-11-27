@@ -1,0 +1,66 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "높이 4m, 전체 가로 폭 10m인 여덟 단의 계단을 대표 개형으로 배치한 문제 도식이다. 각 단 높이는 0.5m이며 가로 폭은 자연수로 고정되지 않았다.",
+  "accessibilityDescription": "왼쪽에서 오른쪽으로 여덟 개의 수평 단이 차례로 낮아지는 계단의 외곽선이다. 왼쪽 전체 높이는 4m, 아래 전체 폭은 10m로 치수선을 연결했고, 길이가 같은 여덟 수직 낙차에 같은 표시를 두었다. 내부 면은 칠하지 않았다.",
+  "sourceQuote": "높이가 4m, 폭이 10m인 계단 모양의 구조물. 각 단 높이는 0.5m로 같고 각 단 폭은 자연수이며 서로 같지 않아도 된다.",
+  "sourceConditions": [
+    {"id":"p1","condition":"계단 전체 높이는 4m, 가로 폭은 10m다.","mappedTo":["mathPlan.nodes","planeMarks.dimensions"]},
+    {"id":"p2","condition":"4/0.5=8개의 수평 단과 8개의 높이 0.5m짜리 수직 낙차가 교대로 이어진다.","mappedTo":["displaySegments","planeMarks.equalLengths"]},
+    {"id":"p3","condition":"8개의 가로 폭은 각기 양의 정수이고 합이 10m다. 그림의 폭 1,1,2,1,1,1,1,2는 정답 분포나 유일한 모양이 아닌 하나의 가능한 예시다.","mappedTo":["mathPlan.nodes","caption"]}
+  ],
+  "newVisualInformation": [
+    "원본의 계단 외곽과 여덟 수직 낙차의 동일 표시를 빠짐없이 표시한다.",
+    "총높이 4m와 총폭 10m를 각각 자기 방향의 바깥 치수선으로 잇는다.",
+    "원본의 불필요한 연한 황색 면 채움과 흰색 배경 사각형은 생성하지 않는다.",
+    "문제 그림에 최종 경우의 수나 정답을 표시하지 않는다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"L","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"T0","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"T1","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"V1","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"rational","numerator":"7","denominator":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"T2","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"rational","numerator":"7","denominator":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"V2","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"T3","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"V3","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"rational","numerator":"5","denominator":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"T4","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"rational","numerator":"5","denominator":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"V4","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"T5","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"V5","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"rational","numerator":"3","denominator":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"T6","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"7"},{"kind":"rational","numerator":"3","denominator":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"V6","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"7"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"T7","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"V7","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"rational","numerator":"1","denominator":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"T8","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"10"},{"kind":"rational","numerator":"1","denominator":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"R","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"10"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints": ["L","T0","T1","V1","T2","V2","T3","V3","T4","V4","T5","V5","T6","V6","T7","V7","T8","R"],
+  "hiddenPointNames": ["L","T0","T1","V1","T2","V2","T3","V3","T4","V4","T5","V5","T6","V6","T7","V7","T8","R"],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {"id":"sLeft","refs":["L","T0"]},
+    {"id":"sH1","refs":["T0","T1"]},{"id":"sR1","refs":["T1","V1"]},
+    {"id":"sH2","refs":["V1","T2"]},{"id":"sR2","refs":["T2","V2"]},
+    {"id":"sH3","refs":["V2","T3"]},{"id":"sR3","refs":["T3","V3"]},
+    {"id":"sH4","refs":["V3","T4"]},{"id":"sR4","refs":["T4","V4"]},
+    {"id":"sH5","refs":["V4","T5"]},{"id":"sR5","refs":["T5","V5"]},
+    {"id":"sH6","refs":["V5","T6"]},{"id":"sR6","refs":["T6","V6"]},
+    {"id":"sH7","refs":["V6","T7"]},{"id":"sR7","refs":["T7","V7"]},
+    {"id":"sH8","refs":["V7","T8"]},{"id":"sR8","refs":["T8","R"]},
+    {"id":"sBottom","refs":["R","L"]}
+  ],
+  "planeMarks": {
+    "equalLengths": [{"id":"equalRisers","count":2,"segments":["sR1","sR2","sR3","sR4","sR5","sR6","sR7","sR8"]}],
+    "dimensions": [
+      {"id":"dHeight","from":"L","to":"T0","label":"4","unit":"m","side":"LEFT","value":"4","style":"BRACE"},
+      {"id":"dWidth","from":"L","to":"R","label":"10","unit":"m","side":"BELOW","value":"10","style":"BRACE"}
+    ]
+  },
+  "coordinateCanvas": {"width":680,"height":420}
+}

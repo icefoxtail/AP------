@@ -1,0 +1,36 @@
+{
+  "capability":"solid-figure-v1",
+  "unit":"m",
+  "space":{
+    "points":[
+      {"id":"A","at":[0,0,500]},
+      {"id":"X","at":[500,0,500],"hideName":true,"hideDot":true},
+      {"id":"C","at":[500,300,500]},
+      {"id":"B","at":[500,300,700]}
+    ],
+    "planes":[{"id":"ground","through":["A","X","C"]}],
+    "segments":[
+      {"from":"A","to":"X"}, {"from":"X","to":"C"},
+      {"from":"A","to":"C","style":"DASHED"},
+      {"from":"C","to":"B","style":"DASHED"},
+      {"from":"A","to":"B"}
+    ]
+  },
+  "dims":[
+    {"from":"A","to":"X","label":"500"},
+    {"from":"X","to":"C","label":"300"},
+    {"from":"C","to":"B","label":"200"},
+    {"from":"A","to":"B","label":"100\\sqrt{38}"}
+  ],
+  "marks":{"rightAngles":[{"at":"X","refs":["A","C"]},{"at":"C","refs":["A","B"]}]},
+  "caption":"지도의 가로 5칸·세로 3칸과 해발 고도차 200 m를 공간 직각삼각형으로 나타낸다.",
+  "accessibilityDescription":"A에서 수평 방향 500미터, 이어서 수직 방향 300미터 이동한 지점 C의 위로 200미터에 B가 있다. 수평 보조선 AC, 높이 BC는 점선이며 대각선 AB가 실제 거리다. X와 C에 직각 표식이 있다.",
+  "sourceQuote":"지도 눈금 한 칸 100m, A와 B의 해발 고도 500m·700m, 수평 눈금 차 가로5·세로3",
+  "sourceConditions":[
+    {"id":"c1","condition":"수평 지도에서 가로 5칸=500m","mappedTo":"space.points[1],dims[0]"},
+    {"id":"c2","condition":"수평 지도에서 세로 3칸=300m","mappedTo":"space.points[2],dims[1]"},
+    {"id":"c3","condition":"고도차 700−500=200m","mappedTo":"space.points[3],dims[2]"},
+    {"id":"c4","condition":"직선거리 AB=100√38m","mappedTo":"dims[3],space.segments[4]"}
+  ],
+  "newVisualInformation":["원본 지형도는 문제 이미지로 유지한다. 해설에 5칸·3칸의 수평 이동과 200m 고도차, 두 직각표식, 실제 대각거리 AB를 개별 실선·점선으로 추가한다."]
+}

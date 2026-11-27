@@ -1,0 +1,12 @@
+{
+  "capability":"ellipse-figure-v1",
+  "sourceQuote":"점 (a,a)에서 타원 5x²+y²=20에 그은 기울기 -2인 접선, a>0",
+  "conic":{"kind":"ELLIPSE","center":["0","0"],"aSquared":"20","bSquared":"4","major":"Y"},
+  "points":[{"id":"A","kind":"POINT","x":"2","y":"2","coordinates":true},{"id":"P","kind":"ON_CONIC","x":"4/3","branch":"POS"}],
+  "lines":[{"id":"t","slope":"-2","intercept":"6","tangent":true}],
+  "segments":[{"id":"ap","from":"A","to":"P"}],
+  "caption":"기울기 -2인 타원 접선이 A(2,2)를 지나는 해설 그림",
+  "accessibilityDescription":"세로 장축인 타원 x²/4+y²/20=1에서 P(4/3,10/3)의 접선 기울기는 -2이며 그 직선은 A(2,2)를 지난다.",
+  "sourceConditions":[{"id":"c1","condition":"타원 x²/4+y²/20=1과 외부 점 A=(a,a), a>0","mappedTo":["conic","A"]},{"id":"c2","condition":"기울기 -2 접선의 절편 6, A=(2,2), P=(4/3,10/3)","mappedTo":["P","t","ap"]}],
+  "newVisualInformation":["기울기 조건을 정확히 만족하는 접점과 외부점의 관계"]
+}

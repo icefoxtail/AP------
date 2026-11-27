@@ -1,0 +1,300 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1161895003862225",
+              "denominator": "100000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1161895003862225",
+              "denominator": "100000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "25",
+              "denominator": "10"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5809475019311125",
+              "denominator": "1000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-5",
+              "denominator": "10"
+            },
+            {
+              "kind": "rational",
+              "numerator": "17428425057933374",
+              "denominator": "1000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1161895003862225",
+              "denominator": "100000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sEO",
+      "refs": [
+        "E",
+        "O"
+      ]
+    },
+    {
+      "id": "sED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    },
+    {
+      "id": "sOF",
+      "refs": [
+        "O",
+        "F"
+      ]
+    },
+    {
+      "id": "sAF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 455
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l0",
+        "ownerSegment": "sAB",
+        "text": "12"
+      },
+      {
+        "id": "l1",
+        "ownerSegment": "sBC",
+        "text": "8"
+      },
+      {
+        "id": "l2",
+        "ownerSegment": "sAF",
+        "text": "4"
+      },
+      {
+        "id": "l3",
+        "ownerSegment": "sOF",
+        "text": "6"
+      }
+    ],
+    "equalLengths": [],
+    "parallels": [
+      {
+        "id": "par0",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sCD"
+        ]
+      },
+      {
+        "id": "par1",
+        "count": 2,
+        "segments": [
+          "sDA",
+          "sBC"
+        ]
+      }
+    ]
+  },
+  "caption": "12번 문제: 평행사변형 ABCD·OCDE의 실제 대응변, AC 중점 O, AD∩EO=F, AB12 BC8.",
+  "accessibilityDescription": "12번 문제 그림: 평행사변형 ABCD·OCDE의 실제 대응변, AC 중점 O, AD∩EO=F, AB12 BC8.",
+  "sourceConditions": [
+    {
+      "id": "src-q12",
+      "condition": " 조건: $\\square\\mathrm{ABCD}$와 $\\square\\mathrm{OCDE}$는 모두 평행사변형입니다. 점 $\\mathrm{O}$는 대각선 $\\overline{\\mathrm{AC}}$의 중점이고, $\\overline{\\mathrm{AD}}$와 $\\overline{\\mathrm{EO}}$의 교점은 $\\mathrm{F}$입니다. 변의 길이는 $\\overline{\\mathrm{AB}}=12\\text{cm}$, $\\overline{\\mathrm{BC}}=8\\text{cm}$입니다. 구할 대상: $\\overline{\\mathrm{AF}}+\\overline{\\mathrm{OF}}$의 값을 구합니다.  먼저 풀이에 쓸 성질을 순서대로 정리합니다. 1) 평행사변형 $\\mathrm{ABCD}$에서 대변의 길이는 같으므로 $\\overline{\\mathrm{CD}}=\\overline{\\mathrm{AB}}=12\\text{cm}$, $\\overline{\\mathrm{AD}}=\\overline{\\mathrm{BC}}=8\\text{cm}$입니다. 2) 평행사변형 $\\mathrm{OCDE}$에서 대변이 평행하므로 $\\overline{\\mathrm{OE}} \\parallel \\overline{\\mathrm{CD}}$입니다. 따라서 직선 $\\overline{\\mathrm{OF}}$는 $\\overline{\\mathrm{CD}}$와 평행합니다. 3) $\\triangle\\mathrm{ACD}$에서 점 $\\mathrm{O}$가 $\\overline{\\mathrm{AC}}$의 중점이고 $\\overline{\\mathrm{OF}} \\parallel \\overline{\\mathrm{CD}}$이므로 삼각형의 중점연결정리에 의해 점 $\\mathrm{F}$는 $\\overline{\\mathrm{AD}}$의 중점이 됩니다.  위에서 정리한 성질을 이용해 차례로 계산합니다. 평행사변형 $\\mathrm{ABCD}$의 대변의 성질에 의해: $$\\overline{\\mathrm{CD}} = \\overline{\\mathrm{AB}} = 12\\text{ cm}, \\quad \\overline{\\mathrm{AD}} = \\overline{\\mathrm{BC}} = 8\\text{ cm}$$ 평행사변형 $\\mathrm{OCDE}$에서 대변이 평행하므로: $$\\overline{\\mathrm{OF}} \\parallel \\overline{\\mathrm{CD}}$$ $\\triangle\\mathrm{ACD}$에서 점 $\\mathrm{O}$는 $\\overline{\\mathrm{AC}}$의 중점이므로, $\\mathrm{O}$를 지나고 변 $\\overline{\\mathrm{CD}}$에 평행한 직선은 변 $\\overline{\\mathrm{AD}}$를 이등분합니다 (삼각형의 두 변의 중점을 연결한 선분의 성질): $$\\overline{\\mathrm{AF}} = \\frac{1}{2}\\overline{\\mathrm{AD}} = \\frac{1}{2} \\times 8 = 4\\text{ cm}$$ 또한 중점연결정리에 의해 선분 $\\overline{\\mathrm{OF}}$의 길이는 밑변 $\\overline{\\mathrm{CD}}$의 절반입니다: $$\\overline{\\mathrm{OF}} = \\frac{1}{2}\\overline{\\mathrm{CD}} = \\frac{1}{2} \\times 12 = 6\\text{ cm}$$ 따라서 두 선분의 길이의 합은 다음과 같습니다: $$\\overline{\\mathrm{AF}} + \\overline{\\mathrm{OF}} = 4 + 6 = 10\\text{ cm}$$  각 선지를 확인하면 다음과 같습니다. ① $8\\text{cm}$: 거짓 ② $9\\text{cm}$: 거짓 ③ $10\\text{cm}$: 참 (계산 결과와 완벽히 일치) ④ $11\\text{cm}$: 거짓 ⑤ $12\\text{cm}$: 거짓  따라서 정답은 ③입니다. ",
+      "mappedTo": "mathPlan.nodes;displaySegments;planeMarks"
+    },
+    {
+      "id": "source-visual-feature",
+      "condition": "평행사변형 ABCD·OCDE의 실제 대응변, AC 중점 O, AD∩EO=F, AB12 BC8; 풀이에 필요한 추가 관계",
+      "mappedTo": "displaySegments;planeMarks"
+    }
+  ],
+  "newVisualInformation": [
+    "평행사변형 ABCD·OCDE의 실제 대응변, AC 중점 O, AD∩EO=F, AB12 BC8; 풀이에 필요한 추가 관계"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "graphPlan":{
+    "family":"multi-curve","viewport":[0,5,-5,12],
+    "curves":[{"id":"f","kind":"EXPONENTIAL","base":"2","coefficients":["1","1","-5"],"domain":["1","4"],"color":"BLUE","label":"y=2^x-5"}],
+    "axisTickValues":{"x":["4"],"y":[]},
+    "overlays":{"lines":[{"id":"asym","x":"4","label":"x=4","style":"DASHED"}]}
+  },
+  "caption":"주어진 지수곡선 y=2^x−5, x축, 로그함수의 수직 점근선 x=4가 이루는 경계를 스케치한다. 내부 격자점 수나 경계 교점 값은 표시하지 않는다.",
+  "accessibilityDescription":"증가하는 지수곡선, x축과 수직 점선 x=4 사이의 영역을 생각할 수 있도록 세 경계가 보인다.",
+  "sourceQuote":"곡선 $y = 2^x - 5$와 함수 $y = -\\log(x - 4) + 2$의 점근선 그리고 $x$축으로 둘러싸인 영역",
+  "sourceConditions":[
+    {"id":"curve","condition":"지수곡선 y=2^x−5","mappedTo":"graphPlan.curves[0]"},
+    {"id":"boundary","condition":"로그함수 y=−log(x−4)+2의 점근선 x=4","mappedTo":"graphPlan.overlays.lines[0]"},
+    {"id":"axis","condition":"나머지 영역 경계는 x축","mappedTo":"graphPlan.viewport,graphPlan.axisTickValues"},
+    {"id":"no-answer","condition":"정수 격자점 개수는 그림에 표기하지 않음","mappedTo":"graphPlan.overlays"}
+  ],
+  "newVisualInformation":["곡선·점근선·x축의 상대적 위치와 둘러싸인 영역"]
+}

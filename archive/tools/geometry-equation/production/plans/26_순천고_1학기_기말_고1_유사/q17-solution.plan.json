@@ -1,0 +1,39 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-5",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "6",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "절댓값 부등식의 정수해"
+  },
+  "caption": "|x+2|+|x-3|≤11의 해는 -5≤x≤6이고, 양 끝 포함 정수는 12개이다.",
+  "accessibilityDescription": "-5와 6을 닫힌 점으로 연결하고, 사이의 12개 정수를 나타낸 수직선.",
+  "sourceConditions": [
+    {
+      "id": "h1-17-1",
+      "condition": "세 구간을 합친 해가 -5≤x≤6",
+      "mappedTo": "numberLine.rows[0].pieces[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "경계값 포함과 정수 12개를 실제 점으로 확인한다."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "capability":"composite-panels-v1",
+  "panels":[
+    {"caption":{"text":"첫 함수: 최솟값 3"},"plan":{"capability":"polynomial-spike-v1","graphPlan":{"family":"polynomial","coefficients":["4","2","1"],"sourceDomain":{"kind":"INTERVAL","range":[-2,1]},"requiredPoints":[{"id":"L","x":-2,"y":4},{"id":"V","x":-1,"y":3},{"id":"R","x":1,"y":7}],"axisTickValues":{"x":[-2,-1,1],"y":[3,4,7]}}}},
+    {"caption":{"text":"둘째 함수: k=8"},"plan":{"capability":"polynomial-spike-v1","graphPlan":{"family":"polynomial","coefficients":["8","-6","1"],"sourceDomain":{"kind":"INTERVAL","range":[-2,1]},"requiredPoints":[{"id":"L","x":-2,"y":24},{"id":"R","x":1,"y":3}],"axisTickValues":{"x":[-2,1],"y":[3,24]}}}}
+  ],
+  "caption":"−2≤x≤1에서 첫 함수는 꼭짓점 x=−1에서, 둘째 함수는 오른쪽 끝 x=1에서 최솟값이 3으로 같다.",
+  "accessibilityDescription":"같은 제한 구간에서 첫 포물선은 구간 안의 꼭짓점에서 3을, 둘째 포물선은 오른쪽 끝에서 3을 취한다.",
+  "sourceQuote":"−2≤x≤1, y=x²+2x+4와 y=x²−6x+k의 최솟값이 같다. 풀이 k=8.",
+  "sourceConditions":[
+    {"id":"first","condition":"f(x)=(x+1)²+3, f(−1)=3","mappedTo":"panels[0].plan.graphPlan"},
+    {"id":"second","condition":"g(x)=x²−6x+8, g(1)=3","mappedTo":"panels[1].plan.graphPlan"}
+  ],
+  "newVisualInformation":["두 함수의 서로 다른 최소 위치를 지정 구간의 곡선과 끝점으로 대조한다."]
+}

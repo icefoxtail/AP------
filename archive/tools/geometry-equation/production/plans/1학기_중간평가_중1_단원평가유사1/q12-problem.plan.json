@@ -1,0 +1,34 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          { "id": "ㄱ", "value": "-4", "showValue": false },
+          { "id": "ㄴ", "value": "-8/3", "showValue": false },
+          { "id": "ㄷ", "value": "-3/4", "showValue": false },
+          { "id": "ㄹ", "value": "3/2", "showValue": false },
+          { "id": "ㅁ", "value": "14/3", "showValue": false }
+        ],
+        "subdivisions": [
+          { "from": "-3", "to": "-2", "parts": 3 },
+          { "from": "-1", "to": "0", "parts": 4 },
+          { "from": "1", "to": "2", "parts": 2 },
+          { "from": "4", "to": "5", "parts": 3 }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": { "text": "수직선의 ㄱ~ㅁ 위치" },
+  "caption": "-5부터 5까지의 수직선 위에 ㄱ, ㄴ, ㄷ, ㄹ, ㅁ을 표시하였다. 보기에 있는 수와 각 점의 위치를 비교한다.",
+  "accessibilityDescription": "-5부터 5까지 정수 눈금과 필요한 등분 눈금이 있는 수직선 위에 ㄱ, ㄴ, ㄷ, ㄹ, ㅁ 다섯 점의 이름만 나타낸다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "원본 수직선의 정수 눈금 범위는 -5부터 5까지이다.", "mappedTo": ["numberLine.rows[0].points", "numberLine.rows[0].subdivisions"] },
+    { "id": "c2", "condition": "ㄱ, ㄴ, ㄷ, ㄹ, ㅁ의 위치는 순서대로 -4, -8/3, -3/4, 3/2, 14/3이다.", "mappedTo": ["numberLine.rows[0].points"] },
+    { "id": "c3", "condition": "문제 그림에는 정답이 되는 ㄴ의 정확한 값을 문자나 숫자로 적지 않는다.", "mappedTo": ["numberLine.rows[0].points"] }
+  ],
+  "newVisualInformation": ["원본 인라인 수동 SVG 대신 엔진 수직선에 11개 정수 눈금·등분 눈금·다섯 한글 자모 점 이름을 직접 그리며, 답 숫자는 노출하지 않는다."]
+}

@@ -1,0 +1,17 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [{"id": "X", "mean": "40", "sd": "5", "label": "X"}],
+    "ticks": ["40", "45"],
+    "shades": [{"from": null, "to": "45", "color": "BLUE"}],
+    "xLabel": "x"
+  },
+  "caption": "평균 40에서 한 표준편차 오른쪽인 45 이하를 구하므로 왼쪽 누적 넓이는 0.5+0.3413=0.8413이다.",
+  "accessibilityDescription": "평균이 40이고 표준편차가 5인 정규분포에서 x=45의 왼쪽 전체 영역을 강조한 그림이다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "X는 정규분포 N(40, 5²)를 따른다.", "mappedTo": "chart.curves[0]"},
+    {"id": "c2", "condition": "P(X≤45)를 구한다.", "mappedTo": "chart.ticks[1],chart.shades[0]"}
+  ],
+  "newVisualInformation": ["x=45가 평균보다 오른쪽에 있어 누적 확률이 절반보다 큰 사실을 표현한다."]
+}

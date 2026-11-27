@@ -1,0 +1,15 @@
+{
+  "capability":"composite-panels-v1",
+  "panels":[
+    {"caption":{"text":"⑴ 닫힌 구간 [1,6]"},"plan":{"capability":"polynomial-spike-v1","graphPlan":{"family":"polynomial","coefficients":["-8","6","-1"],"sourceDomain":{"kind":"INTERVAL","range":[1,6]},"requiredPoints":[{"id":"L","x":1,"y":-3},{"id":"V","x":3,"y":1},{"id":"R","x":6,"y":-8}],"axisTickValues":{"x":[1,3,6],"y":[-8,-3,1]}}}},
+    {"caption":{"text":"⑵ 닫힌 구간 [0,2]"},"plan":{"capability":"polynomial-spike-v1","graphPlan":{"family":"polynomial","coefficients":["-5","1","3"],"sourceDomain":{"kind":"INTERVAL","range":[0,2]},"requiredPoints":[{"id":"L","x":0,"y":-5},{"id":"R","x":2,"y":9}],"axisTickValues":{"x":[2],"y":[-5,9]}}}}
+  ],
+  "caption":"⑴ 꼭짓점 (3,1)이 최대, 끝점 (6,−8)이 최소. ⑵ 구간에서 증가하므로 왼쪽 −5가 최소, 오른쪽 9가 최대.",
+  "accessibilityDescription":"각 함수의 지정된 닫힌 구간 부분만 그린 두 그림이다. 꼭짓점과 구간 끝점을 표시해 최대·최소를 비교한다.",
+  "sourceQuote":"⑴ y=−x²+6x−8, 1≤x≤6 ⑵ y=3x²+x−5, 0≤x≤2.",
+  "sourceConditions":[
+    {"id":"first","condition":"구간 [1,6]과 함수값 f(1)=−3,f(3)=1,f(6)=−8","mappedTo":["panels[0].plan.graphPlan.sourceDomain","panels[0].plan.graphPlan.requiredPoints"]},
+    {"id":"second","condition":"구간 [0,2]과 함수값 g(0)=−5,g(2)=9","mappedTo":["panels[1].plan.graphPlan.sourceDomain","panels[1].plan.graphPlan.requiredPoints"]}
+  ],
+  "newVisualInformation":["구간 밖 그래프를 제거하고 끝점과 꼭짓점, 실제 함수값을 동시에 표시한다."]
+}

@@ -1,0 +1,106 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      6
+    ],
+    "viewport": [
+      -2,
+      7,
+      -4,
+      12
+    ],
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "coefficients": [
+              "1",
+              "6",
+              "-1"
+            ]
+          }
+        ],
+        "intersectionX": [
+          "0",
+          "5"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      { "id": "V", "x": "2", "y": "-3" },
+      { "id": "W", "x": "3", "y": "10" }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "0",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "curveX": "5",
+          "coordinates": true
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "pointNames": {
+    "P": "P",
+    "Q": "Q",
+    "V": "V",
+    "W": "W"
+  },
+  "caption": "두 포물선 f(x)=(x−2)²−3과 g(x)=−(x−3)²+10의 교점 (0,1),(5,6) 및 각 꼭짓점을 함께 표시한다.",
+  "accessibilityDescription": "한 축에 위로 열린 포물선 f와 아래로 열린 포물선 g가 서로 다른 색으로 그려지고, 두 그래프의 공통점 (0,1), (5,6), 꼭짓점 (2,−3), (3,10)을 표시했다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f의 꼭짓점 (2,-3)",
+      "mappedTo": [
+        "graphPlan.overlays.points"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "g의 꼭짓점 (3,10)",
+      "mappedTo": [
+        "graphPlan.overlays.points"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "교점 (0,1),(5,6)",
+      "mappedTo": [
+        "graphPlan.referenceCurves",
+        "graphPlan.overlays.points"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 미생성 해설 그래프를 두 곡선의 구별된 선 스타일과 교점·꼭짓점의 소유 관계가 검증되는 하나의 공유 좌표축으로 복원한다."
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "graphPlan":{
+    "family":"multi-curve","viewport":[-5,5,-3.5,3.5],
+    "curves":[
+      {"id":"positive","kind":"LOGARITHMIC","base":"10","coefficients":["4","1","0","0"],"domain":["1/4","4"],"color":"BLUE","label":"g"},
+      {"id":"negative","kind":"LOGARITHMIC","base":"10","coefficients":["4","-1","0","0"],"domain":["-4","-1/4"],"color":"WARM","label":"f"}
+    ],
+    "axisTickValues":{"x":["-1","1"],"y":[]}
+  },
+  "caption":"x>0에서 두 식 log(x^4)와 4log x는 일치한다. 그러나 log(x^4)는 음의 x에도 정의되어 왼쪽 가지가 있으므로 두 함수의 그래프 전체는 같지 않다.",
+  "accessibilityDescription":"오른쪽 파란 로그곡선은 두 함수가 일치하는 양의 x 영역이고, 왼쪽의 따뜻한 색 로그곡선은 log(x^4)에만 있는 음의 x 영역이다.",
+  "sourceQuote":"함수 $y = \\log x^4$의 그래프와 함수 $y = 4\\log x$의 그래프는 서로 같다",
+  "sourceConditions":[
+    {"id":"positive","condition":"x>0에서 log(x⁴)=4log x","mappedTo":"graphPlan.curves[0]"},
+    {"id":"negative","condition":"x<0에서 log(x⁴)=4log(−x), 4log x는 정의되지 않음","mappedTo":"graphPlan.curves[1]"}
+  ],
+  "newVisualInformation":["정의역의 차이로 생기는 음의 x쪽 로그곡선의 추가 가지"]
+}

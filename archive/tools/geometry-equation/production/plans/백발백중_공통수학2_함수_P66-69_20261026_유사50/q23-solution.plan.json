@@ -1,0 +1,98 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "layout": "STACKED",
+    "xWindow": [
+      -4,
+      4
+    ],
+    "pieces": [
+      {
+        "coefficients": [
+          "-3"
+        ],
+        "domain": [
+          null,
+          "-3"
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "start": "CLOSED",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "3"
+        ],
+        "domain": [
+          "3",
+          null
+        ],
+        "start": "OPEN"
+      }
+    ],
+    "referenceCurves": [
+      {
+        "id": "g",
+        "pieces": [
+          {
+            "coefficients": [
+              "-7",
+              "0",
+              "1"
+            ],
+            "domain": [
+              null,
+              null
+            ]
+          }
+        ],
+        "requiredPoints": [
+          {
+            "id": "V",
+            "x": "0",
+            "y": "-7"
+          }
+        ]
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "3"
+      ],
+      "y": [
+        "-3",
+        "3"
+      ]
+    }
+  },
+  "caption": "f는 −3과 3에서 값이 고정되는 홀함수, g(x)=x²−7는 짝함수이다. 두 함수를 위아래에 별도 축으로 그려 합성 순서를 확인한다.",
+  "accessibilityDescription": "위 패널은 −3 이상 3 이하에서는 y=x, 왼쪽에서는 −3, 오른쪽에서는 3인 홀함수. 아래 패널은 y=x²−7의 좌우 대칭 포물선.",
+  "sourceConditions": [
+    {
+      "id": "f",
+      "condition": "f(x)=-3(x<-3), x(-3≤x≤3), 3(x>3)",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "g",
+      "condition": "g(x)=x²−7",
+      "mappedTo": "graphPlan.referenceCurves"
+    }
+  ],
+  "newVisualInformation": [
+    "f(-x)=-f(x)와 g(-u)=g(u)의 대칭성을 두 패널에서 읽을 수 있다."
+  ],
+  "sourceQuote": "실수 전체의 집합에서 정의된 함수 $f(x)=\\begin{cases} 3 & (x>3) \\\\ x & (|x| \\le 3) \\\\ -3 & (x<-3) \\end{cases}$, $g(x)=x^2-7$에 대하여 보기에서 옳은 것만을 있는 대로 고른 것은?\n[보기]\nㄱ. $(f \\circ g)(3)=2$\nㄴ. $(g \\circ f)(2)=-3$\nㄷ. $(f \\circ g)(-1) = (g \\circ f)(1)$"
+}

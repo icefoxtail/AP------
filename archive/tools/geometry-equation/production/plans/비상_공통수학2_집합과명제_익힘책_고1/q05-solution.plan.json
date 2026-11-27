@@ -1,0 +1,18 @@
+{
+  "capability":"set-diagram-figure-v1",
+  "diagram":{
+    "kind":"VENN",
+    "universe":{"name":"U","count":"32","countUnit":"명"},
+    "sets":[{"id":"A","name":"가방","count":"17","countUnit":"명"},{"id":"B","name":"수세미","count":"20","countUnit":"명"}],
+    "shade":"A∩B"
+  },
+  "caption":"A는 가방을 만든 17명, B는 수세미를 만든 20명, 전체 U는 32명이다. 색칠한 교집합의 인원을 x라 하면 5≤x≤17이고 두 경계값 모두 가능하다.",
+  "accessibilityDescription":"전체 32명 안에서 가방 17명과 수세미 20명의 두 집합이 겹치는 교집합을 색칠해 공통 인원 x를 나타낸다. 교집합에 구체적인 값은 쓰지 않는다.",
+  "sourceConditions":[
+    {"id":"total","condition":"n(U)=32명","mappedTo":"diagram.universe.count"},
+    {"id":"bags","condition":"n(A)=17명","mappedTo":"diagram.sets[0].count"},
+    {"id":"scrubbers","condition":"n(B)=20명","mappedTo":"diagram.sets[1].count"},
+    {"id":"intersection","condition":"n(A∩B)=x, x는 미정","mappedTo":"diagram.shade"}
+  ],
+  "newVisualInformation":["변수 x를 임의의 수로 그림에 고정하지 않고 교집합 위치만 강조한다."]
+}

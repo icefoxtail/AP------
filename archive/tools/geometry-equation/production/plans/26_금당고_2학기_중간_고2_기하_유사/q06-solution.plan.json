@@ -1,0 +1,23 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": { "kind": "HYPERBOLA", "center": ["0", "0"], "aSquared": "9", "bSquared": "1", "transverse": "X" },
+  "points": [
+    { "id": "O", "kind": "ORIGIN" },
+    { "id": "A", "kind": "POINT", "x": "-9", "y": "3" },
+    { "id": "B", "kind": "POINT", "x": "9", "y": "3" }
+  ],
+  "lines": [
+    { "id": "u", "role": "ASYMPTOTE", "sign": 1, "dashed": true },
+    { "id": "d", "role": "ASYMPTOTE", "sign": -1, "dashed": true },
+    { "id": "h", "y": "3", "label": "y=3" }
+  ],
+  "segments": [
+    { "id": "sOA", "from": "O", "to": "A" },
+    { "id": "sOB", "from": "O", "to": "B" },
+    { "id": "sAB", "from": "A", "to": "B" }
+  ],
+  "caption": "점근선 y=±x/3과 y=3이 만드는 밑변 18, 높이 3의 삼각형",
+  "accessibilityDescription": "쌍곡선 x²/9-y²=1의 두 점근선을 점선으로 그리고 원점 O에서 만나는 두 선과 y=3이 교차하는 A(-9,3), B(9,3)를 잇는다. 삼각형 OAB의 넓이는 27이다.",
+  "sourceConditions": [ { "id": "q06", "condition": "쌍곡선 점근선 y=±x/3과 직선 y=3으로 둘러싸인 영역의 넓이", "mappedTo": "lines,segments" } ],
+  "newVisualInformation": ["해설에서 쓰는 삼각형 세 변·두 점근선의 점선 구분·교점 라벨"]
+}

@@ -1,0 +1,28 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["9", "-8", "1"],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "requiredPoints": [{ "id": "V", "x": 4, "y": -7 }],
+    "axisTickValues": { "x": [2, 4], "y": [-3] },
+    "overlays": {
+      "points": [
+        { "id": "A", "axis": "x", "value": "4-sqrt(7)", "unnamed": true, "coordinates": true },
+        { "id": "B", "axis": "x", "value": "4+sqrt(7)", "unnamed": true, "coordinates": true },
+        { "id": "P", "curveX": "2", "coordinates": true, "unnamed": true }
+      ],
+      "guides": [{ "id": "pX", "from": "P", "axis": "x" }]
+    }
+  },
+  "coordinateBand": { "hide": ["V"] },
+  "caption": "예: a=4이면 f(x)=x²−8x+9, 근은 4±√7이다. x=2에서 f(2)=−3<0이므로 2가 두 실근 사이에 놓인다. 일반 조건은 a>3이다.",
+  "accessibilityDescription": "a=4인 포물선의 두 x절편 4−√7, 4+√7과 그 사이 x=2에 있는 함수값 −3을 점과 점선으로 보여 준다.",
+  "sourceQuote": "x²−2ax+a+5=0의 두 실근 사이에 2가 있도록 하는 a의 범위를 구하시오. 해설: f(2)=9−3a<0, 예시 a=4.",
+  "sourceConditions": [
+    { "id": "example", "condition": "해설에 제시된 검산 a=4에서 f(x)=x²−8x+9", "mappedTo": "graphPlan.coefficients" },
+    { "id": "roots", "condition": "해설의 두 근 4−√7,4+√7", "mappedTo": "graphPlan.overlays.points" },
+    { "id": "middle", "condition": "x=2에서 f(2)=−3<0", "mappedTo": ["graphPlan.overlays.points", "graphPlan.overlays.guides", "graphPlan.axisTickValues.x"] }
+  ],
+  "newVisualInformation": ["해설의 a=4 검산 예시에 한정해 두 x절편과 중간 위치 x=2를 표시하며 매개변수 전체를 일반화한 그림으로 표시하지 않는다."]
+}

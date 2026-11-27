@@ -1,0 +1,71 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "5",
+          "-2"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "Y",
+        "elements": [
+          "5",
+          "-2"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y",
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "f(x)=−x+3이므로 5↔−2의 2주기이다.",
+  "accessibilityDescription": "f(x)=−x+3이므로 5↔−2의 2주기이다.",
+  "sourceConditions": [
+    {
+      "id": "arrowMap",
+      "condition": "발문·해설의 모든 명시 대응과 각 입력의 이미지가 그래프 화살표에 대응한다.",
+      "mappedTo": "diagram.arrows"
+    },
+    {
+      "id": "nodeLabels",
+      "condition": "각 집합의 원소·라벨을 정확히 보존한다.",
+      "mappedTo": "diagram.columns"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 표식·좌표·관계를 정확한 계획 필드에 보존한다."
+  ]
+}

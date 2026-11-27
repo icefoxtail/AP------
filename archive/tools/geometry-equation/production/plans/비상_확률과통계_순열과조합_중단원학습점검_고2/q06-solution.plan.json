@@ -1,0 +1,22 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {"id": "X", "elements": ["-2", "-1", "1", "2"]},
+      {"id": "Y", "elements": ["5", "10", "15"]}
+    ],
+    "arrows": [
+      {"from": {"column": 0, "element": 1}, "to": {"column": 1, "element": 0}},
+      {"from": {"column": 0, "element": 2}, "to": {"column": 1, "element": 2}}
+    ]
+  },
+  "caption": "f(-1)=5와 f(1)=15인 두 대응만 고정되어 있다. -2와 2의 대응은 아직 정해지지 않아 각각 Y의 세 원소 중 하나를 선택하며, 3×3=9가지이다.",
+  "accessibilityDescription": "왼쪽 X의 -1에서 오른쪽 Y의 5로, X의 1에서 Y의 15로 향하는 두 화살표만 있다. X의 -2와 2에는 화살표가 없어 자유롭게 선택하는 대응임을 나타낸다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "X={-2,-1,1,2}, Y={5,10,15}", "mappedTo": "diagram.columns"},
+    {"id": "c2", "condition": "f(-1)=5, f(1)=15 두 개의 고정 화살표", "mappedTo": "diagram.arrows"},
+    {"id": "c3", "condition": "-2와 2의 대응은 미지정 상태로 두어 각자 3개 선택지가 남음", "mappedTo": "diagram.columns,diagram.arrows"}
+  ],
+  "newVisualInformation": ["정해진 대응 두 개만 화살표로 보이고, 아직 선택해야 할 정의역 원소 둘을 구분한다."]
+}

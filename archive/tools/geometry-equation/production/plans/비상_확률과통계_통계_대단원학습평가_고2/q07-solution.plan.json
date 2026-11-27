@@ -1,0 +1,17 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [{"id": "X", "mean": "12000", "sd": "2000", "label": "X"}],
+    "ticks": ["12000", "16000"],
+    "shades": [{"from": "16000", "to": null, "color": "BLUE"}],
+    "xLabel": "x"
+  },
+  "caption": "평균 12000원에서 표준편차 2000원의 두 배만큼 오른쪽인 16000원 이상 영역의 확률은 0.0228이다.",
+  "accessibilityDescription": "구매 금액의 정규분포에서 평균 12000원과 기준 16000원을 표시하고, 기준보다 큰 오른쪽 꼬리의 넓이를 강조한다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "구매 금액은 평균 12000원, 표준편차 2000원인 정규분포를 따른다.", "mappedTo": "chart.curves[0]"},
+    {"id": "c2", "condition": "16000원 이상 구매한 사람 수를 구한다.", "mappedTo": "chart.ticks[1],chart.shades[0]"}
+  ],
+  "newVisualInformation": ["표준화 경계 z=2에 해당하는 오른쪽 꼬리만이 세려는 손님 비율임을 보여 준다."]
+}

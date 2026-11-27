@@ -1,0 +1,20 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [{ "kind": "PRISM", "base": { "kind": "RECT", "width": 5, "depth": 3 }, "height": 4, "names": "........" }],
+  "dims": [
+    { "edge": ["#b0", "#b1"], "label": "5a^2" },
+    { "edge": ["#b1", "#b2"], "label": "3ab^2" },
+    { "edge": ["#b2", "#t2"], "label": "h" }
+  ],
+  "solidCaption": { "math": "V=90a^5b^4", "text": "직육면체, cm³" },
+  "caption": "밑면의 두 변이 5a² cm와 3ab² cm이고 부피가 90a⁵b⁴ cm³인 직육면체의 높이 h를 묻는 모식도",
+  "accessibilityDescription": "직육면체 밑면의 가로 5a²센티미터, 세로 3ab²센티미터, 미지의 높이 h를 표시하고 부피 조건을 제목으로 적은 도식이다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "밑면 가로 5a² cm", "mappedTo": "dims[0].label" },
+    { "id": "c2", "condition": "밑면 세로 3ab² cm", "mappedTo": "dims[1].label" },
+    { "id": "c3", "condition": "부피 90a⁵b⁴ cm³", "mappedTo": "solidCaption.math" },
+    { "id": "c4", "condition": "a,b가 미정이므로 엔진의 5×3×4 좌표는 표본 배치이며 실제 길이 비례를 주장하지 않는다", "mappedTo": "solids[0]" }
+  ],
+  "newVisualInformation": ["밑면의 두 치수와 아직 구하지 않은 높이 h를 서로 다른 모서리에 연결한다", "숨은 모서리는 엔진이 자동 점선으로 표시하며 불필요한 면 채움은 사용하지 않는다"]
+}

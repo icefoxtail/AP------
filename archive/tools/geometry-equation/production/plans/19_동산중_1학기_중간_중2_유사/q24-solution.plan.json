@@ -1,0 +1,39 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "7",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true,
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "부등식의 해"
+  },
+  "caption": "4(x−2)≤2x+6을 만족하는 자연수는 1부터 7까지 7개다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x≤7이며 x는 자연수",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "경계점의 열린·닫힌 구별과 부등식의 해인 수직선 범위"
+  ]
+}

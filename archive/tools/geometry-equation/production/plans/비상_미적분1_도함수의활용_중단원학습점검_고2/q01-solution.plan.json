@@ -1,0 +1,24 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial", "pieces": [{"coefficients": ["4", "0", "-3", "1"]}],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-2.4, 3.5], "viewport": [-2.5, 3.7, -9, 9],
+    "requiredPoints": [{"id": "M", "x": "0", "y": "4"}, {"id": "R", "x": "2", "y": "0"}],
+    "axisTickValues": {"x": [], "y": []},
+    "overlays": {
+      "lines": [{"id": "tangent", "slope": "-3", "intercept": "5", "label": "y=-3x+5"}],
+      "points": [{"id": "T", "curveX": "1", "coordinates": true}]
+    }
+  },
+  "pointNames": {"T": "T", "R": "R", "M": "M"},
+  "caption": "곡선 y=x³-3x²+4와 접점 T(1,2)를 지나는 기울기 -3인 접선 y=-3x+5.",
+  "accessibilityDescription": "삼차곡선 위 T(1,2)에서 그은 접선은 기울기 -3이며 세로축의 5를 지난다.",
+  "sourceQuote": "곡선 $y=x^3-3x^2+4$ 위의 점 $(1, 2)$에서의 접선의 방정식을 구하시오.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "곡선 y=x³-3x²+4", "mappedTo": "graphPlan.pieces[0].coefficients"},
+    {"id": "c2", "condition": "주어진 접점 (1,2)", "mappedTo": "graphPlan.overlays.points[T]"},
+    {"id": "c3", "condition": "도함수에 따른 기울기 -3", "mappedTo": "graphPlan.overlays.lines[tangent]"}
+  ],
+  "newVisualInformation": ["접점을 지나는 접선의 기울기와 두 직선이 접하는 위치를 같은 축에 표시한다."]
+}

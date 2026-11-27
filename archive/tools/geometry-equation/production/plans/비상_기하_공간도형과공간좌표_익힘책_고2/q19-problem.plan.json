@@ -1,0 +1,10 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [{"id":"A","at":[0,0,"sqrt(14)"]},{"id":"B","at":[0,0,0]},{"id":"C","at":["9*sqrt(42)/14",0,"-11*sqrt(14)/14"]},{"id":"D","at":["9*sqrt(42)/14",0,"3*sqrt(14)/14"]},{"id":"M","at":{"midpoint":["C","D"]}},{"id":"P","at":{"centroid":["A","C","D"]}}],
+    "segments": [{"from":"A","to":"B"},{"from":"B","to":"C"},{"from":"C","to":"D"},{"from":"D","to":"A"},{"from":"A","to":"M"},{"from":"B","to":"D"}]
+  },
+  "caption": "좌표공간 평행사변형 ABCD; CD 중점 M; AM과 BD의 교점 P",
+  "sourceConditions": ["A=(1,1,0)", "B=(3,2,3)", "C=(2,6,6)", "ABCD 평행사변형", "M은 CD 중점", "P=AM∩BD"],
+  "newVisualInformation": ["원본 좌표에서 강체변환한 평행사변형(모든 거리·내분비 보존, 축은 표시하지 않음)", "중점 M과 교점 P의 정확한 위치", "중선 AM·대각선 BD"]
+}

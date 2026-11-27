@@ -1,0 +1,18 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [ { "id": "s1", "kind": "PYRAMID", "base": { "kind": "RECT", "width": 2, "depth": 2 }, "height": 1.4142135623730951, "names": "BCDEA", "points": [ { "id": "H", "at": { "edge": ["C", "D"], "t": "1/2" } }, { "id": "O", "at": { "base": "center" } } ] } ],
+  "segments": [
+    { "from": "A", "to": "H", "role": "ACCENT", "style": "AUTO" },
+    { "from": "B", "to": "C", "role": "REF", "style": "AUTO" },
+    { "from": "O", "to": "H", "role": "ACCENT", "style": "AUTO" },
+    { "from": "A", "to": "O", "style": "DASHED" },
+    { "from": "H", "to": "C", "style": "AUTO" }
+  ],
+  "dims": [ { "edge": "AB", "label": "2" }, { "from": "O", "to": "H", "label": "1" } ],
+  "marks": { "rightAngles": [ { "at": "H", "refs": ["A", "C"] }, { "at": "O", "refs": ["A", "H"] } ] },
+  "solidCaption": { "text": "AH=√3, OH=1, OH∥BC" },
+  "caption": "직각삼각형 AOH와 밑면의 OH∥BC를 사용하는 해설 그림",
+  "accessibilityDescription": "정사각뿔의 A에서 밑면 중심 O로 내린 수선 AO가 점선이고, 선분 OH는 변 BC와 평행하며 길이 1이다. AH와 CD, AO와 OH의 직각표식이 있고 삼각형 AOH로 기울어진 선분 AH와 BC 사이의 각을 구한다.",
+  "sourceConditions": [ { "id": "q12", "condition": "H는 CD의 중점, O는 밑면 중심, OH∥BC, AH=√3, OH=1", "mappedTo": "segments,dims,marks" } ],
+  "newVisualInformation": ["풀이 핵심인 중심 O, AO⊥OH, OH∥BC, OH=1을 같은 공간 기하 모델에 표현"]
+}

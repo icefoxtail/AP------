@@ -1,0 +1,133 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -6,
+      5,
+      -1,
+      11
+    ],
+    "curves": [
+      {
+        "id": "left",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "-2"
+        ],
+        "domain": [
+          "-6",
+          "-3"
+        ],
+        "color": "BLUE",
+        "hideLabel": true
+      },
+      {
+        "id": "flat",
+        "kind": "LINE",
+        "coefficients": [
+          "5",
+          "0"
+        ],
+        "domain": [
+          "-3",
+          "2"
+        ],
+        "color": "BLUE",
+        "hideLabel": true
+      },
+      {
+        "id": "right",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "2"
+        ],
+        "domain": [
+          "2",
+          "5"
+        ],
+        "color": "BLUE",
+        "hideLabel": true
+      },
+      {
+        "id": "threshold",
+        "kind": "LINE",
+        "coefficients": [
+          "7",
+          "0"
+        ],
+        "domain": [
+          "-5",
+          "4"
+        ],
+        "style": "DASHED",
+        "color": "WARM",
+        "label": "y=7"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-4",
+        "-3",
+        "2",
+        "3"
+      ],
+      "y": [
+        "5",
+        "7"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-4",
+          "y": "7",
+          "unnamed": true
+        },
+        {
+          "id": "B",
+          "x": "-3",
+          "y": "5",
+          "unnamed": true
+        },
+        {
+          "id": "C",
+          "x": "2",
+          "y": "5",
+          "unnamed": true
+        },
+        {
+          "id": "D",
+          "x": "3",
+          "y": "7",
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "|x+3|+|x-2|는 x<-3에서 -2x-1, -3≤x≤2에서 5, x>2에서 2x+1이다. y=7 미만인 구간은 -4<x<3이다.",
+  "accessibilityDescription": "세 직선 조각을 이은 절댓값 합 그래프와 점선 y=7. 교점 x=-4와 x=3, 수평 바닥 x=-3부터 2를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "hc-22-1",
+      "condition": "절댓값 합의 왼쪽 식 -2x-1",
+      "mappedTo": "graphPlan.curves[0]"
+    },
+    {
+      "id": "hc-22-2",
+      "condition": "가운데 값 5, 오른쪽 식 2x+1",
+      "mappedTo": "graphPlan.curves[1],graphPlan.curves[2]"
+    },
+    {
+      "id": "hc-22-3",
+      "condition": "기준 y=7과 교점 x=-4,3",
+      "mappedTo": "graphPlan.curves[3],graphPlan.overlays.points"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 꺾은선과 기준 y=7 점선, 양쪽 교점을 엔진 곡선·직선 데이터로 재현한다."
+  ]
+}

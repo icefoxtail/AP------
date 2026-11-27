@@ -1,0 +1,19 @@
+{
+  "capability":"solid-figure-v1",
+  "unit":"cm",
+  "solids":[
+    {"id":"ga","kind":"CONE","radius":3,"height":6},
+    {"id":"na","kind":"CONE","radius":4,"height":8}
+  ],
+  "labels":[
+    {"text":"(가)","at":{"slant":true,"solid":"ga"}},
+    {"text":"(나)","at":{"slant":true,"solid":"na"}}
+  ],
+  "solidCaption":{"text":"닮은 원뿔 (가)와 (나)"},
+  "caption":"두 원뿔의 밑넓이비 9:16에서 길이비 3:4를 얻고, 부피비 27:64로 환산한다. (가)의 부피가 54cm³이면 (나)의 부피는 128cm³이다.",
+  "sourceConditions":[
+    {"id":"similar-cones","condition":"원본에는 원뿔 (가), (나) 두 개가 있으며 (가)가 더 작고 두 원뿔의 밑면 넓이비는 9:16이다.","mappedTo":"solids:ga,na"},
+    {"id":"volume-condition","condition":"(가)의 부피 54cm³를 이용한 해설이며 원본 원뿔 그림에는 임의의 높이/반지름 수치 라벨을 추가하지 않는다.","mappedTo":"caption"}
+  ],
+  "newVisualInformation":["별개인 두 원뿔을 반지름 3:4, 높이 3:4의 실제 닮음비로 엔진 투영한다.","사용자가 지시하지 않은 배경 흰색 채움 또는 원뿔 내부 면 채움을 만들지 않는다."]
+}

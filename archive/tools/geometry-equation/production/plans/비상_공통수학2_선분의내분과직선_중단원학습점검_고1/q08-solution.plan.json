@@ -1,0 +1,18 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"X","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"-1"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"P","op":"DIVISION_POINT","inputs":["A","B"],"args":{"m":{"kind":"integer","value":"3"},"n":{"kind":"integer","value":"1"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"-2"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"l","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"1"},"b":{"kind":"integer","value":"1"},"c":{"kind":"integer","value":"-3"}},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["A","B","P","E"],"hiddenPointNames":["E"],"unmarkedPointNames":["E"],"displayLines":["l"],"displaySegments":[{"id":"AB","refs":["A","B"]},{"id":"PE","refs":["P","E"],"emphasis":"ACCENT"}],"rightAngles":[{"id":"perp","refs":["A","P","E"]}],"coordinateLabels":["A","B","P"],
+  "caption":"AB의 3:1 내분점 P(3,0)에서 AB에 수직인 직선의 식은 y=−x+3이다.",
+  "accessibilityDescription":"A(6,3), B(2,-1) 사이의 3대1 내분점 P(3,0)를 지나 내려가는 기울기 -1 직선과 직각표식을 보인다.",
+  "sourceQuote":"선분 AB를 3:1로 내분하는 P를 지나고 AB와 수직",
+  "sourceConditions":[{"id":"division","condition":"AP:PB=3:1","mappedTo":"mathPlan.nodes.P"},{"id":"perpendicular","condition":"기울기 AB=1, 결과 기울기=-1","mappedTo":["mathPlan.nodes.l","rightAngles"]}],
+  "newVisualInformation":["기울기 관계를 수선과 직각표식으로 명시한다."]
+}

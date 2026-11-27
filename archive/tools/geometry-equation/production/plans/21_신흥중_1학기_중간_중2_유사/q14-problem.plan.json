@@ -1,0 +1,15 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [ { "id": "cone", "kind": "CONE", "radius": 3, "height": 6 } ],
+  "dims": [
+    { "solid": "cone", "radius": "bottom", "label": "3ab" },
+    { "solid": "cone", "height": true, "label": "h" }
+  ],
+  "solidCaption": { "text": "원뿔(모양 예시)" },
+  "caption": "원뿔의 밑면 반지름은 3ab, 높이는 h로 나타냈다. 외형 비례는 임의 모식도이며 부피 식을 그림에 쓰지 않는다.",
+  "accessibilityDescription": "원뿔의 밑면 중심에서 원둘레까지 반지름 3ab, 꼭짓점까지 수직 높이 h가 표시된다.",
+  "sourceConditions": [
+    { "id": "radius", "condition": "원뿔의 밑면 반지름 3ab", "mappedTo": "dims[0]" }
+  ],
+  "newVisualInformation": [ "반지름과 높이가 서로 수직이라는 원뿔 부피식의 구조를 수직 높이 점선과 반지름선으로 보여 준다." ]
+}

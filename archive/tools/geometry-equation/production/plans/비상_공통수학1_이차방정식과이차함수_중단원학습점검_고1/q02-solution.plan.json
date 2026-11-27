@@ -1,0 +1,12 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{"family":"polynomial","coefficients":["9","-6","1"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[0,6],"viewport":[0,6,-1,10],"requiredPoints":[{"id":"T","x":3,"y":0}],"axisTickValues":{"x":[3],"y":[]}},
+  "caption":"k=±5를 대입하면 y=(x−3)²이므로 x축과 꼭짓점 T(3,0)에서 접한다.",
+  "accessibilityDescription":"위로 열린 이차함수 y=(x−3)²의 꼭짓점 T(3,0)가 x축 위에 있어 한 점에서 만남을 보여 준다.",
+  "sourceQuote":"y=x²−6x+k²−16이 x축과 한 점에서 만날 조건 D=0; k²=25.",
+  "sourceConditions":[
+    {"id":"vertex","condition":"k=±5에서 y=x²−6x+9=(x−3)²","mappedTo":"graphPlan.coefficients"},
+    {"id":"contact","condition":"접점 (3,0)","mappedTo":["graphPlan.requiredPoints","graphPlan.axisTickValues"]}
+  ],
+  "newVisualInformation":["판별식 0의 결과를 한 개의 접점과 포물선 꼭짓점이 일치하는 모습으로 보여 준다."]
+}

@@ -1,0 +1,8 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{"family":"polynomial","coefficients":["-1","1","-2"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[-1,1],"viewport":[-1.4,1.4,-4.5,0],"requiredPoints":[{"id":"M","x":0.25,"y":-0.875},{"id":"L","x":-1,"y":-4}],"axisTitles":{"x":"t","y":"y"},"axisTickValues":{"x":[-1,0.25,1],"y":[-4,-0.875]}},
+  "caption":"t=sin x (−1≤t≤1)로 바꾸면 y=−2t²+t−1의 최댓값 −7/8, 최솟값 −4가 그래프에 나타난다.",
+  "accessibilityDescription":"t=−1부터 1까지의 표시 창에 아래로 볼록한 포물선, 최고점 t=1/4 및 최저점 t=−1을 표시한다. 닫힌 구간 끝점 표식은 엔진 보강이 필요하다.",
+  "sourceConditions":[{"id":"sub","condition":"t=sin x, −1≤t≤1, y=−2t²+t−1","mappedTo":["graphPlan"]},{"id":"extreme","condition":"최댓값 −7/8, 최솟값 −4","mappedTo":["M","L"]}],
+  "newVisualInformation":["포물선 극값은 정확하나 엔진이 CLOSED_INTERVAL polynomial을 거절하므로 양끝 포함 표식은 ENGINE_CAPABILITY_PENDING:POLYNOMIAL_RESTRICTED_DOMAIN_CLOSED_ENDPOINTS"]
+}

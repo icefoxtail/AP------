@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1","conic":{"kind":"CIRCLE","center":["0","0"],"rSquared":"8"},
+  "lines":[{"id":"l","slope":"1","intercept":"4","label":"y=x+4","tangent":true}],
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"T","kind":"FOOT","from":"O","onto":"l","rightAngle":true},{"id":"A","kind":"POINT","x":"-4","y":"0"},{"id":"B","kind":"POINT","x":"0","y":"4"}],
+  "segments":[{"id":"OT","from":"O","to":"T","label":"2sqrt(2)"},{"id":"OA","from":"O","to":"A","label":"4"},{"id":"OB","from":"O","to":"B","label":"4"},{"id":"AB","from":"A","to":"B"}],
+  "caption":"접선 y=x+4가 두 좌표축에 만드는 절편 OA=OB=4와 삼각형 OAB를 나타낸다.",
+  "accessibilityDescription":"원 x²+y²=8의 접점 T(-2,2)에서 그은 접선이 A(-4,0),B(0,4)를 지나고, OAB는 직각삼각형이다.",
+  "sourceQuote":"접선이 $x$축, $y$축과 만나는 점을 각각 $A$, $B$",
+  "sourceConditions":[{"id":"intercepts","condition":"A(-4,0), B(0,4), OT⊥AB, OA=OB=4","mappedTo":["points","segments","lines"]}],
+  "newVisualInformation":["접선에 내린 반지름의 직각과 두 절편 길이를 함께 표시한다."]
+}

@@ -1,0 +1,163 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "8485281374238571",
+              "denominator": "1000000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "E",
+    "A",
+    "G"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "E",
+        "G"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "A",
+        "G"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "A",
+        "E",
+        "G"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "length0",
+        "ownerSegment": "s0",
+        "text": "6"
+      },
+      {
+        "id": "length1",
+        "ownerSegment": "s1",
+        "text": "6√2"
+      },
+      {
+        "id": "length2",
+        "ownerSegment": "s2",
+        "text": "6√3"
+      }
+    ],
+    "angles": [
+      {
+        "id": "angle0",
+        "refs": [
+          "A",
+          "G",
+          "E"
+        ],
+        "value": 35.26439,
+        "label": "x",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "정육면체의 대각선 단면 △AEG: AE=6·EG=6√2·AG=6√3 및 E 직각과 G의 x각",
+  "accessibilityDescription": "정육면체의 대각선 단면 △AEG: AE=6·EG=6√2·AG=6√3 및 E 직각과 G의 x각",
+  "sourceQuote": "다음 그림과 같이 한 모서리의 길이가 $6$인 정육면체에서 $\\angle \\mathrm{AGE} = x^\\circ$일 때, $\\cos x^\\circ \\times \\tan x^\\circ$의 값은?",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "정육면체의 대각선 단면 △AEG: AE=6·EG=6√2·AG=6√3 및 E 직각과 G의 x각",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정육면체의 대각선 단면 △AEG: AE=6·EG=6√2·AG=6√3 및 E 직각과 G의 x각"
+  ]
+}

@@ -1,0 +1,246 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "64",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "25",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sBP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "sPC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 430
+  },
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eq0",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sCA"
+        ]
+      },
+      {
+        "id": "eq1",
+        "count": 2,
+        "segments": [
+          "sBP",
+          "sPC"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 25.11,
+        "noLabel": true,
+        "equalGroup": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "value": 25.11,
+        "noLabel": true,
+        "equalGroup": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "3번 문제: 꼭짓각 이등분선 AD 위 P, 선분 BP/CP와 AB=AC 표식.",
+  "accessibilityDescription": "3번 문제 그림: 꼭짓각 이등분선 AD 위 P, 선분 BP/CP와 AB=AC 표식.",
+  "sourceConditions": [
+    {
+      "id": "src-q3",
+      "condition": " 조건: $\\triangle\\mathrm{ABC}$는 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$인 이등변삼각형이고, $\\overline{\\mathrm{AD}}$는 꼭지각 $\\angle\\mathrm{A}$의 이등분선이며 $\\overline{\\mathrm{BC}}$와 만나는 점이 $\\mathrm{D}$입니다. 점 $\\mathrm{P}$는 선분 $\\overline{\\mathrm{AD}}$ 위의 임의의 점입니다. 구할 대상: 5개의 선지 중 수학적으로 '옳지 않은 것'을 고릅니다.  먼저 풀이에 쓸 성질을 순서대로 정리합니다. 1) 이등변삼각형의 꼭지각의 이등분선은 밑변을 수직이등분합니다: $$\\overline{\\mathrm{AD}} \\perp \\overline{\\mathrm{BC}}, \\quad \\overline{\\mathrm{BD}} = \\overline{\\mathrm{CD}}$$ 2) 점 $\\mathrm{P}$는 선분 $\\overline{\\mathrm{BC}}$의 수직이등분선 위에 있으므로 $\\overline{\\mathrm{PB}} = \\overline{\\mathrm{PC}}$입니다. 3) 이를 바탕으로 $\\triangle\\mathrm{PBD}$와 $\\triangle\\mathrm{PCD}$, $\\triangle\\mathrm{ABP}$와 $\\triangle\\mathrm{ACP}$의 합동 관계를 엄밀히 검토합니다.  각 선지를 차례로 검토합니다. - $\\triangle\\mathrm{PBD}$와 $\\triangle\\mathrm{PCD}$에서: $$\\overline{\\mathrm{BD}} = \\overline{\\mathrm{CD}}, \\quad \\angle\\mathrm{PDB} = \\angle\\mathrm{PDC} = 90^\\circ, \\quad \\overline{\\mathrm{PD}}\\text{는 공통}$$ 따라서 $\\triangle\\mathrm{PBD} \\equiv \\triangle\\mathrm{PCD}$ (SAS 합동)입니다. (선지 ④ 참) - 대응각의 크기가 같으므로: $$\\angle\\mathrm{BPD} = \\angle\\mathrm{CPD} \\quad (\\text{선지 ① 참})$$ $$\\angle\\mathrm{PBD} = \\angle\\mathrm{PCD} \\implies \\angle\\mathrm{PBC} = \\angle\\mathrm{PCB} \\quad (\\text{선지 ② 참})$$ - $\\triangle\\mathrm{ABP}$와 $\\triangle\\mathrm{ACP}$에서: $$\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AC}}, \\quad \\angle\\mathrm{BAP} = \\angle\\mathrm{CAP}, \\quad \\overline{\\mathrm{AP}}\\text{는 공통}$$ 따라서 $\\triangle\\mathrm{ABP} \\equiv \\triangle\\mathrm{ACP}$ (SAS 합동)입니다. (선지 ③ 참) - 선지 ⑤의 $\\angle\\mathrm{BPC}=90^\\circ$ 검토: 점 $\\mathrm{P}$는 $\\overline{\\mathrm{AD}}$ 위의 임의의 점이므로 점 $\\mathrm{P}$의 위치에 따라 $\\angle\\mathrm{BPC}$의 크기는 $\\angle\\mathrm{BAC}$에서 $180^\\circ$ 미만까지 연속적으로 변합니다. 특수한 한 위치를 제외하고는 일반적으로 $90^\\circ$가 되지 않으므로 항상 성립한다고 할 수 없습니다.  선지별 결과를 정리하면 다음과 같습니다. ① $\\angle\\mathrm{BPD}=\\angle\\mathrm{CPD}$: 참 ($\\triangle\\mathrm{PBD}\\equiv\\triangle\\mathrm{PCD}$의 대응각) ② $\\angle\\mathrm{PBC}=\\angle\\mathrm{PCB}$: 참 ($\\triangle\\mathrm{PBC}$는 $\\overline{\\mathrm{PB}}=\\overline{\\mathrm{PC}}$인 이등변삼각형) ③ $\\triangle\\mathrm{ABP}\\equiv\\triangle\\mathrm{ACP}$: 참 (SAS 합동) ④ $\\triangle\\mathrm{PBD}\\equiv\\triangle\\mathrm{PCD}$: 참 (SAS 합동) ⑤ $\\angle\\mathrm{BPC}=90^\\circ$: 거짓 (임의의 점 $\\mathrm{P}$에 대해 항상 $90^\\circ$가 되지는 않음, 옳지 않은 것)  따라서 옳지 않은 것은 ⑤입니다. ",
+      "mappedTo": "mathPlan.nodes;displaySegments;planeMarks"
+    },
+    {
+      "id": "source-visual-feature",
+      "condition": "꼭짓각 이등분선 AD 위 P, 선분 BP/CP와 AB=AC 표식; 풀이에 필요한 추가 관계",
+      "mappedTo": "displaySegments;planeMarks"
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓각 이등분선 AD 위 P, 선분 BP/CP와 AB=AC 표식; 풀이에 필요한 추가 관계"
+  ]
+}

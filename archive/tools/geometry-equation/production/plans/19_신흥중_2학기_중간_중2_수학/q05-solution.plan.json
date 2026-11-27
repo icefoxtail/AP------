@@ -1,0 +1,285 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8333333333333333",
+              "denominator": "100000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-25",
+              "denominator": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "35",
+              "denominator": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "M",
+    "L",
+    "N"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "sOL",
+      "refs": [
+        "O",
+        "L"
+      ]
+    },
+    {
+      "id": "sON",
+      "refs": [
+        "O",
+        "N"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 430
+  },
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eq0",
+        "count": 1,
+        "segments": [
+          "sOA",
+          "sOB",
+          "sOC"
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "M",
+        "O"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "L",
+        "O"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "B",
+        "N",
+        "O"
+      ]
+    }
+  ],
+  "caption": "5번 문제: 외심 O와 세 변의 중점 M/L/N, 세 직각과 대응선.",
+  "accessibilityDescription": "5번 문제 그림: 외심 O와 세 변의 중점 M/L/N, 세 직각과 대응선.",
+  "sourceConditions": [
+    {
+      "id": "src-q5",
+      "condition": " 조건: 점 $\\mathrm{O}$가 $\\triangle\\mathrm{ABC}$의 외심이고, $\\mathrm{M}, \\mathrm{N}, \\mathrm{L}$은 각각 외심 $\\mathrm{O}$에서 세 변 $\\overline{\\mathrm{AB}}, \\overline{\\mathrm{BC}}, \\overline{\\mathrm{CA}}$에 내린 수선의 발입니다. 구할 대상: 외심의 성질로 옳지 않은 것을 고릅니다.  먼저 풀이에 쓸 성질을 순서대로 정리합니다. 1) 삼각형의 외심은 세 변의 수직이등분선의 교점입니다. 2) 따라서 점 $\\mathrm{M}, \\mathrm{N}, \\mathrm{L}$은 각각 세 변의 중점이 됩니다. 3) 외심에서 세 꼭짓점에 이르는 거리는 외접원의 반지름으로 모두 같습니다: $\\overline{\\mathrm{OA}}=\\overline{\\mathrm{OB}}=\\overline{\\mathrm{OC}}$. 4) 외심에서 각 변에 이르는 거리($\\overline{\\mathrm{OM}}, \\overline{\\mathrm{ON}}, \\overline{\\mathrm{OL}}$)가 같다는 성질은 내심의 성질이거나 정삼각형과 같은 특수한 경우에만 성립합니다.  각 선지의 수학적 참/거짓을 검증합니다: - 선지 ①: $\\overline{\\mathrm{OA}}=\\overline{\\mathrm{OB}}=\\overline{\\mathrm{OC}}$는 외접원의 반지름이므로 항상 성립합니다. (참) - 선지 ②: $\\overline{\\mathrm{OM}}$이 $\\overline{\\mathrm{AB}}$의 수직이등분선이므로 $\\mathrm{M}$은 $\\overline{\\mathrm{AB}}$의 중점입니다. 즉 $\\overline{\\mathrm{AM}}=\\overline{\\mathrm{BM}}$입니다. (참) - 선지 ③: $\\triangle\\mathrm{OAL}$과 $\\triangle\\mathrm{OCL}$에서 $\\angle\\mathrm{OLA}=\\angle\\mathrm{OLC}=90^\\circ$, $\\overline{\\mathrm{OA}}=\\overline{\\mathrm{OC}}$, $\\overline{\\mathrm{OL}}$은 공통이므로 RHS 합동입니다. 대응각의 크기가 같으므로 $\\angle\\mathrm{OAL}=\\angle\\mathrm{OCL}$입니다. (참) - 선지 ④: $\\triangle\\mathrm{OBN}$과 $\\triangle\\mathrm{OCN}$에서 $\\angle\\mathrm{ONB}=\\angle\\mathrm{ONC}=90^\\circ$, $\\overline{\\mathrm{OB}}=\\overline{\\mathrm{OC}}$, $\\overline{\\mathrm{ON}}$은 공통이므로 RHS 합동입니다. 즉 $\\triangle\\mathrm{OBN} \\equiv \\triangle\\mathrm{OCN}$입니다. (참) - 선지 ⑤: $\\overline{\\mathrm{OM}}=\\overline{\\mathrm{ON}}$은 외심에서 두 변에 이르는 거리가 같다는 것을 의미하는데, 이는 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{BC}}$인 이등변삼각형 이상에서만 성립하며 일반적인 삼각형에서는 성립하지 않습니다. (세 변에 이르는 거리가 같은 점은 내심 $\\mathrm{I}$입니다.) (거짓)  선지별 결과를 정리하면 다음과 같습니다. ① $\\overline{\\mathrm{OA}}=\\overline{\\mathrm{OB}}=\\overline{\\mathrm{OC}}$: 참 (외접원의 반지름) ② $\\overline{\\mathrm{AM}}=\\overline{\\mathrm{BM}}$: 참 (수직이등분선의 정의) ③ $\\angle\\mathrm{OAL}=\\angle\\mathrm{OCL}$: 참 ($\\triangle\\mathrm{OAL}\\equiv\\triangle\\mathrm{OCL}$의 대응각) ④ $\\triangle\\mathrm{OBN}\\equiv\\triangle\\mathrm{OCN}$: 참 (RHS 합동) ⑤ $\\overline{\\mathrm{OM}}=\\overline{\\mathrm{ON}}$: 거짓 (일반적인 삼각형에서 외심으로부터 변까지의 거리는 서로 다름, 옳지 않은 것)  따라서 옳지 않은 것은 ⑤입니다. ",
+      "mappedTo": "mathPlan.nodes;displaySegments;planeMarks"
+    },
+    {
+      "id": "source-visual-feature",
+      "condition": "외심 O와 세 변의 중점 M/L/N, 세 직각과 대응선; 풀이에 필요한 추가 관계",
+      "mappedTo": "displaySegments;planeMarks"
+    }
+  ],
+  "newVisualInformation": [
+    "외심 O와 세 변의 중점 M/L/N, 세 직각과 대응선; 풀이에 필요한 추가 관계"
+  ]
+}

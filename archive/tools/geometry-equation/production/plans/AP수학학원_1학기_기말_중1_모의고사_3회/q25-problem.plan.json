@@ -1,0 +1,104 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "6"
+        ],
+        "domain": [
+          "0",
+          "3/2"
+        ],
+        "color": "BLUE",
+        "label": "y=6x"
+      },
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "2/3"
+        ],
+        "domain": [
+          "0",
+          "10"
+        ],
+        "color": "WARM",
+        "label": "y=2x/3"
+      }
+    ],
+    "viewport": [
+      0,
+      10.5,
+      0,
+      9
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "6"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "6",
+          "coordinates": false
+        },
+        {
+          "id": "B",
+          "x": "9",
+          "y": "6",
+          "coordinates": false
+        },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0",
+          "unnamed": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "triangle",
+          "points": [
+            "O",
+            "A",
+            "B"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "caption": "원점을 지나는 정비례 직선 y=6x와 y=(2/3)x 위의 두 점 A, B가 y=6 높이에 있다.",
+  "accessibilityDescription": "원점을 지나는 정비례 직선 y=6x와 y=(2/3)x 위의 두 점 A, B가 y=6 높이에 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 원점 통과 정비례 직선은 y=6x, y=(2/3)x이고 A,B의 y좌표가 모두 6이라 A=(1,6),B=(9,6)이다.",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.axisTickValues",
+        "graphPlan.overlays"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원점 O와 두 직선, 수평 선분 AB, y=6 눈금과 A·B 라벨을 그린다."
+  ]
+}

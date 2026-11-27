@@ -1,0 +1,22 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"R","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"A","op":"POLAR_POINT","inputs":["O","R"],"args":{"length":{"kind":"integer","value":"4"},"angleDeg":{"kind":"integer","value":"60"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"T","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["O","R","A","T"],"displaySegments":[{"id":"sOT","refs":["O","T"],"dashed":true}],
+  "planeMarks":{"vectors":[{"id":"va","from":"O","to":"A","label":"vec(a)","side":"LEFT"},{"id":"vb","from":"O","to":"R","label":"vec(b)","side":"RIGHT"},{"id":"vres","from":"T","to":"A","label":"vec(a)-2vec(b)","side":"LEFT","emphasis":"ACCENT"}],"dimensions":[{"id":"dOA","from":"O","to":"A","label":"4","side":"LEFT","style":"BAR"},{"id":"dOR","from":"O","to":"R","label":"1","side":"BELOW","style":"BAR"},{"id":"dTA","from":"T","to":"A","label":"2sqrt(3)","side":"RIGHT","style":"BAR"}]},
+  "rightAngles":[{"id":"rightT","refs":["O","T","A"]}],
+  "coordinateCanvas":{"width":720,"height":540},
+  "caption":"a·b=2에서 a의 b방향 성분은 2b이고, a−2b가 b에 수직이 되는 최소 길이는 2√3이다.",
+  "accessibilityDescription":"길이 1인 수평 벡터 b와 길이 4인 비스듬한 벡터 a가 원점에서 시작한다. T는 원점에서 b방향으로 2만큼 이동한 점이고 T에서 A로 향하는 a−2b 벡터는 수평선에 수직이다. 수직 길이는 2루트3이다.",
+  "sourceQuote":"|a|=4, |b|=1, |a+2b|=2√7일 때 |a−tb|의 최솟값",
+  "sourceConditions":[
+    {"id":"c1","condition":"|a|=4, |b|=1","mappedTo":"mathPlan.nodes[2],planeMarks.dimensions[0],planeMarks.dimensions[1]"},
+    {"id":"c2","condition":"a·b=2, 끼인각 60°","mappedTo":"mathPlan.nodes[2],planeMarks.vectors[0],planeMarks.vectors[1]"},
+    {"id":"c3","condition":"t=2에서 a−2b⊥b, 길이 2√3","mappedTo":"mathPlan.nodes[3],planeMarks.vectors[2],rightAngles[0],planeMarks.dimensions[2]"}
+  ],
+  "newVisualInformation":["제곱 완성과 동일한 기하학적 정사영을 보여 주기 위해 실제 60° 배치로 b방향의 2배 성분, 직각표식, 잔여 벡터와 최솟값 길이를 추가한다."]
+}

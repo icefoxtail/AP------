@@ -1,0 +1,144 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "J",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1/10"
+        ],
+        "domain": [
+          "0",
+          "50"
+        ],
+        "color": "BLUE",
+        "hideLabel": true
+      },
+      {
+        "id": "U1",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "3/10"
+        ],
+        "domain": [
+          "0",
+          "10"
+        ],
+        "color": "WARM",
+        "hideLabel": true
+      },
+      {
+        "id": "U2",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "0"
+        ],
+        "domain": [
+          "10",
+          "40"
+        ],
+        "color": "WARM",
+        "hideLabel": true
+      },
+      {
+        "id": "U3",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "1/10"
+        ],
+        "domain": [
+          "40",
+          "60"
+        ],
+        "color": "WARM",
+        "hideLabel": true
+      }
+    ],
+    "viewport": [
+      0,
+      62,
+      0,
+      6
+    ],
+    "axisTickValues": {
+      "x": [
+        "10",
+        "20",
+        "30",
+        "40",
+        "50",
+        "60"
+      ],
+      "y": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ]
+    },
+    "axisScale": {
+      "x": 1,
+      "y": 10
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "Jend",
+          "x": "50",
+          "y": "5",
+          "unnamed": true
+        },
+        {
+          "id": "Uend",
+          "x": "60",
+          "y": "5",
+          "unnamed": true
+        }
+      ],
+      "callouts": [
+        {
+          "id": "rej",
+          "point": "Jend",
+          "text": "재홍",
+          "labelKind": "TEXT",
+          "direction": "NW"
+        },
+        {
+          "id": "wu",
+          "point": "Uend",
+          "text": "우희",
+          "labelKind": "TEXT",
+          "direction": "N"
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "시간(분)",
+      "y": "거리(km)"
+    }
+  },
+  "caption": "재홍은 50분 동안 일정하게 5km 이동하고 우희는 10~40분에 거리 3km에서 멈춘다.",
+  "accessibilityDescription": "재홍은 50분 동안 일정하게 5km 이동하고 우희는 10~40분에 거리 3km에서 멈춘다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "재홍은 (0,0)에서 (50,5)까지 쉼 없이 직진하고 우희는 (0,0)→(10,3)→(40,3)→(60,5)로 이동한다.",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.axisTickValues",
+        "graphPlan.overlays"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 거리-시간 꺾은선, 10~40분 우희의 수평 정지 구간, 5km 도착점과 좌표 눈금을 재현한다."
+  ]
+}

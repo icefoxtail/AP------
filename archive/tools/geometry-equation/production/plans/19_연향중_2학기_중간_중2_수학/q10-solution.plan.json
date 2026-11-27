@@ -1,0 +1,266 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "circle"
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 430
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "D",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "B",
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l0",
+        "ownerSegment": "sAC",
+        "text": "20"
+      },
+      {
+        "id": "l1",
+        "ownerSegment": "sDE",
+        "text": "10"
+      }
+    ]
+  },
+  "caption": "10번 문제: 원본 q10.png: 직사각형 AC20, 대각선 교점 E와 DE 지름의 원.",
+  "accessibilityDescription": "10번 문제 그림: 원본 q10.png: 직사각형 AC20, 대각선 교점 E와 DE 지름의 원.",
+  "sourceConditions": [
+    {
+      "id": "src-q10",
+      "condition": " 조건: $\\square\\text{ABCD}$에서 $\\angle\\text{A}=\\angle\\text{B}=\\angle\\text{C}=90^\\circ$이고, 대각선 $\\overline{\\text{AC}}=20\\text{cm}$이며 두 대각선의 교점은 $\\text{E}$입니다. 구할 대상: 선분 $\\overline{\\text{DE}}$를 '지름'으로 하는 원의 넓이입니다.  1) 사각형의 세 내각이 $90^\\circ$이면 네 번째 내각도 $90^\\circ$이므로 $\\square\\text{ABCD}$는 직사각형입니다. 2) 직사각형의 두 대각선은 길이가 같고 서로를 이등분합니다: $\\overline{\\text{BD}} = \\overline{\\text{AC}} = 20\\text{cm}$, $\\overline{\\text{DE}} = \\dfrac{1}{2}\\overline{\\text{BD}} = 10\\text{cm}$. 3) 원의 지름이 $\\overline{\\text{DE}}=10\\text{cm}$이므로 반지름 $r = \\dfrac{10}{2} = 5\\text{cm}$. 4) 원의 넓이 공식: $S = \\pi r^2$.  1) 대각선의 길이 및 $\\overline{\\text{DE}}$ 계산: $\\overline{\\text{BD}} = \\overline{\\text{AC}} = 20\\text{cm}$, $\\overline{\\text{DE}} = \\dfrac{1}{2} \\times 20 = 10\\text{cm}$. 2) 원의 반지름 및 넓이 계산: 지름이 $10\\text{cm}$이므로 반지름은 $5\\text{cm}$입니다. $\\text{원의 넓이} = \\pi \\times 5^2 = 25\\pi\\text{ cm}^2$.  ① $5\\pi$: 오답. ② $10\\pi$: 오답. ③ $20\\pi$: 오답. ④ $25\\pi$: 계산 결과 $25\\pi$와 정확히 일치합니다. ⑤ $100\\pi$: 지름 $10$을 반지름으로 잘못 계산했을 때의 오답.  따라서 정답은 ④입니다. ",
+      "mappedTo": "mathPlan.nodes;displaySegments;planeMarks"
+    },
+    {
+      "id": "source-visual-feature",
+      "condition": "원본 q10.png: 직사각형 AC20, 대각선 교점 E와 DE 지름의 원; 풀이에 필요한 추가 관계",
+      "mappedTo": "displaySegments;planeMarks"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 q10.png: 직사각형 AC20, 대각선 교점 E와 DE 지름의 원; 풀이에 필요한 추가 관계"
+  ]
+}

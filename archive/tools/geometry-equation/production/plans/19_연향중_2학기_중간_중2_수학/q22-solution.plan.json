@@ -1,0 +1,252 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "inc",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "I"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "inc"
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAI",
+      "refs": [
+        "A",
+        "I"
+      ]
+    },
+    {
+      "id": "sBI",
+      "refs": [
+        "B",
+        "I"
+      ]
+    },
+    {
+      "id": "sCI",
+      "refs": [
+        "C",
+        "I"
+      ]
+    },
+    {
+      "id": "sIF",
+      "refs": [
+        "I",
+        "F"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 430
+  },
+  "hiddenPointNames": [
+    "F"
+  ],
+  "hiddenPointStyle": "NONE",
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "B",
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "I",
+        "F",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l0",
+        "ownerSegment": "sAB",
+        "text": "10"
+      },
+      {
+        "id": "l1",
+        "ownerSegment": "sBC",
+        "text": "8"
+      },
+      {
+        "id": "l2",
+        "ownerSegment": "sCA",
+        "text": "6"
+      },
+      {
+        "id": "l3",
+        "ownerSegment": "sIF",
+        "text": "2"
+      }
+    ]
+  },
+  "caption": "22번 문제: 서술형 q22 원본 이미지 없음: 6·8·10 직각삼각형의 내접원과 내심 I.",
+  "accessibilityDescription": "22번 문제 그림: 서술형 q22 원본 이미지 없음: 6·8·10 직각삼각형의 내접원과 내심 I.",
+  "sourceConditions": [
+    {
+      "id": "src-q22",
+      "condition": " 조건: $\\triangle\\text{ABC}$에서 $\\angle\\text{C}=90^\\circ$이고 세 변의 길이는 $\\overline{\\text{AB}}=10\\text{cm}, \\overline{\\text{BC}}=8\\text{cm}, \\overline{\\text{CA}}=6\\text{cm}$입니다. 점 $\\text{I}$는 내심입니다. 구할 대상: (1) 내접원의 반지름의 길이 [3점] (2) $\\triangle\\text{IBC}$의 넓이 [2점]  1) 직각삼각형의 넓이를 구하는 두 가지 방법: $S = \\dfrac{1}{2} \\times \\overline{\\text{BC}} \\times \\overline{\\text{CA}}$ $S = \\dfrac{1}{2} r (a + b + c)$ ($r$은 내접원의 반지름, $a, b, c$는 세 변의 길이) 2) $\\triangle\\text{IBC}$의 넓이: 밑변은 $\\overline{\\text{BC}}=8\\text{cm}$이고 높이는 내접원의 반지름 $r$입니다: $\\triangle\\text{IBC} = \\dfrac{1}{2} \\times \\overline{\\text{BC}} \\times r$.  (1) 내접원의 반지름 $r$ 구하기: $\\triangle\\text{ABC}$의 넓이는 $S = \\dfrac{1}{2} \\times 8 \\times 6 = 24\\text{cm}^2$. 내접원의 반지름을 이용한 넓이 공식에 대입하면 $24 = \\dfrac{1}{2} r (10 + 8 + 6) = \\dfrac{1}{2} r \\times 24 = 12r$, $12r = 24 \\implies r = 2\\text{cm}$. (2) $\\triangle\\text{IBC}$의 넓이 구하기: $\\triangle\\text{IBC} = \\dfrac{1}{2} \\times \\overline{\\text{BC}} \\times r = \\dfrac{1}{2} \\times 8 \\times 2 = 8\\text{cm}^2$.  (1) 넓이 관계식 세우기 및 반지름 $r=2\\text{cm}$ 도출 [3점] (2) 밑변 $8\\text{cm}$, 높이 $2\\text{cm}$를 이용한 넓이 $8\\text{cm}^2$ 계산 [2점]  (1) $2\\text{ cm}$ (2) $8\\text{ cm}^2$ ",
+      "mappedTo": "mathPlan.nodes;displaySegments;planeMarks"
+    },
+    {
+      "id": "source-visual-feature",
+      "condition": "서술형 q22 원본 이미지 없음: 6·8·10 직각삼각형의 내접원과 내심 I; 풀이에 필요한 추가 관계",
+      "mappedTo": "displaySegments;planeMarks"
+    }
+  ],
+  "newVisualInformation": [
+    "서술형 q22 원본 이미지 없음: 6·8·10 직각삼각형의 내접원과 내심 I; 풀이에 필요한 추가 관계"
+  ]
+}

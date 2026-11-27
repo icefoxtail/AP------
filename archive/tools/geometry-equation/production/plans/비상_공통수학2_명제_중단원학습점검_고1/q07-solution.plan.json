@@ -1,0 +1,18 @@
+{
+  "capability": "number-line-figure-v1",
+  "caption": "x≤2k인 진리집합이 x<8인 진리집합에 포함되려면 오른쪽 끝 2k가 8보다 작아야 한다.",
+  "accessibilityDescription": "첫째 수직선에는 x가 2k 이하인 부분을 닫힌 끝점으로, 둘째 수직선에는 x가 8 미만인 부분을 열린 끝점으로 표시한다. 2k<8인 예시 배치다.",
+  "sourceConditions": [
+    {"id":"s1","condition":"뒤의 부등식 2x+7>5x-17은 x<8이다.","mappedTo":["numberLine.rows[1].pieces[0]","caption"]},
+    {"id":"s2","condition":"명제 x≤2k ⇒ x<8의 참 조건은 P⊂Q이고 2k<8, 즉 k<4다. 이 도식은 이를 만족하는 k=3의 배치만 예시한다.","mappedTo":["numberLine.parameter","numberLine.rows[0].pieces[0]","caption"]}
+  ],
+  "newVisualInformation": ["k=3의 예시에서 2k=6의 닫힌 점과 8의 열린 점을 같은 축 척도로 대조한다.","명제 전체의 k값 범위를 그림 하나로 일반화하지 않고 캡션에서 2k<8의 조건을 명시한다.","면 채움 없이 두 범위의 구간선과 끝점만 쓴다."],
+  "numberLine": {
+    "parameter": {"name":"k","value":"3","hideNote":false},
+    "rows": [
+      {"kind":"SET","label":"P","color":"BLUE","pieces":[{"lo":null,"hi":{"param":{"mul":"2","add":"0"},"state":"CLOSED"}}]},
+      {"kind":"SET","label":"Q","pieces":[{"lo":null,"hi":{"value":"8","state":"OPEN"}}]}
+    ]
+  },
+  "numberLineCaption": {"text":"2k<8일 때 P⊂Q"}
+}

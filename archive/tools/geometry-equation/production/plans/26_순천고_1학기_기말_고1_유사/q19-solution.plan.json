@@ -1,0 +1,71 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-5",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "1",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-7",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "0",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "f>0과 f<g의 공통 범위"
+  },
+  "caption": "f(x)>0은 x<-5 또는 x>1이고 f(x)<g(x)는 -7<x<0이므로 공통 범위는 -7<x<-5이다.",
+  "accessibilityDescription": "세 줄 수직선. 첫째는 f가 양수인 두 구간, 둘째는 f가 g보다 작은 구간, 셋째는 교집합 -7부터 -5 사이의 열린 구간과 정수 -6이다.",
+  "sourceConditions": [
+    {
+      "id": "h1-19-1",
+      "condition": "f의 x절편은 -5, 1이고 위로 열린다.",
+      "mappedTo": "numberLine.rows[0].pieces"
+    },
+    {
+      "id": "h1-19-2",
+      "condition": "f와 g의 교점 x=-7,0 사이에서 f<g이다.",
+      "mappedTo": "numberLine.rows[1].pieces"
+    },
+    {
+      "id": "h1-19-3",
+      "condition": "0<f(x)<g(x) 공통해를 구한다.",
+      "mappedTo": "numberLine.rows[2]"
+    }
+  ],
+  "newVisualInformation": [
+    "두 부등식의 해를 같은 축척의 두 줄로 나타내고 교집합의 유일한 정수 -6을 표시한다."
+  ]
+}

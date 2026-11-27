@@ -1,0 +1,142 @@
+{
+  "sourceQuote": "$\\angle C = 90^\\circ$인 직각삼각형 $ABC$",
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "hyp20",
+        "from": "A",
+        "to": "B",
+        "label": "20",
+        "side": "RIGHT",
+        "style": "BAR"
+      },
+      {
+        "id": "bc12",
+        "from": "B",
+        "to": "C",
+        "label": "12",
+        "side": "BELOW",
+        "style": "BAR"
+      }
+    ]
+  },
+  "rightAngles": [{"id": "rightC", "refs": ["A","C","B"]}],
+  "caption": "∠C=90°, AB=20, BC=12인 직각삼각형 ABC.",
+  "accessibilityDescription": "직각 C의 네모 표식과 빗변 20, 밑변 12의 길이 치수선이 있다.",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "∠C=90°",
+      "mappedTo": "rightAngles[0]"
+    },
+    {
+      "id": "condition2",
+      "condition": "AB=20",
+      "mappedTo": "planeMarks.dimensions[0]"
+    },
+    {
+      "id": "condition3",
+      "condition": "BC=12",
+      "mappedTo": "planeMarks.dimensions[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "점·선분·각호·길이/등분·직각표식 중 원문과 해당 축에 필요한 요소를 실제 표시 필드로 기록한다."
+  ]
+}

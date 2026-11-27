@@ -1,0 +1,12 @@
+{
+  "capability":"ellipse-figure-v1",
+  "sourceQuote":"x²+8y−8=0의 준선 l과 y²+6y+8x−7=0의 초점 F 사이의 거리",
+  "conics":[{"id":"p1","kind":"PARABOLA","vertex":["0","1"],"p":"-2","axis":"Y"},{"id":"p2","kind":"PARABOLA","vertex":["2","-3"],"p":"-2","axis":"X"}],
+  "points":[{"id":"F","kind":"FOCUS","curve":"p2","coordinates":true},{"id":"H","kind":"FOOT","from":"F","onto":"l","rightAngle":true}],
+  "lines":[{"id":"l","role":"DIRECTRIX","curve":"p1","label":"l"}],
+  "segments":[{"id":"fh","from":"F","to":"H","label":"6"}],
+  "caption":"서로 방향이 다른 두 포물선의 초점 F와 준선 l 사이 거리",
+  "accessibilityDescription":"아래로 열린 첫 포물선의 준선은 y=3, 왼쪽으로 열린 두 번째 포물선의 초점은 F(0,-3)이다. F에서 l에 내린 수선 FH의 길이는 6이다.",
+  "sourceConditions":[{"id":"c1","condition":"x²=-8(y−1): 꼭짓점 (0,1), p=-2, 준선 y=3","mappedTo":["conics","l"]},{"id":"c2","condition":"(y+3)²=-8(x−2): 꼭짓점(2,-3), 초점 F=(0,-3)","mappedTo":["conics","F"]},{"id":"c3","condition":"F에서 l까지의 수선 길이 6","mappedTo":["H","fh"]}],
+  "newVisualInformation":["서로 다른 포물선 축 방향과 준선-초점 거리 사이의 수선 및 직각 표시"]
+}

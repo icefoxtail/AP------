@@ -1,0 +1,22 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {"axisVariable": false, "rows": [{"kind": "POINTS", "band": false, "points": [
+    {"id": "A", "value": "0", "name": "우리집", "showValue": false},
+    {"id": "B", "value": "3", "name": "문구점", "showValue": false},
+    {"id": "C", "value": "7", "name": "서점", "showValue": false},
+    {"id": "D", "value": "12", "name": "학교", "showValue": false}
+  ], "spans": [
+    {"from": "A", "to": "B", "label": "3km", "style": "BRACE", "side": "ABOVE"},
+    {"from": "B", "to": "C", "label": "4km", "style": "BRACE", "side": "ABOVE"},
+    {"from": "C", "to": "D", "label": "5km", "style": "BRACE", "side": "ABOVE"}
+  ]}]},
+  "numberLineCaption": {"text": "집과 세 지점 사이의 거리"},
+  "caption": "집에서 문구점까지 3km는 시속 6km로 걷고, 이어 서점까지 4km, 학교까지 5km를 걷는다. 문구점 이후 평균 속력은 미지수이다.",
+  "accessibilityDescription": "집, 문구점, 서점, 학교 네 위치가 순서대로 있고 인접 구간에 3킬로미터, 4킬로미터, 5킬로미터 거리 괄호가 있다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "집→문구점은 3km, 시속 6km", "mappedTo": ["numberLine.rows[0].points", "numberLine.rows[0].spans[0]"]},
+    {"id": "c2", "condition": "문구점→서점 4km, 서점→학교 5km", "mappedTo": ["numberLine.rows[0].points", "numberLine.rows[0].spans[1]", "numberLine.rows[0].spans[2]"]},
+    {"id": "c3", "condition": "전체 소요 시간은 2시간 이내이며 두 번째 구간의 속력이 미지수", "mappedTo": "caption"}
+  ],
+  "newVisualInformation": ["주어진 순서의 세 이동 구간과 각각의 거리, 누적거리 0·3·7·12의 상대 위치"]
+}

@@ -1,0 +1,264 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "part1",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 60,
+        "noLabel": true,
+        "style": "ARC"
+      },
+      {
+        "id": "part2",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "value": 60,
+        "noLabel": true,
+        "style": "ARC"
+      }
+    ],
+    "equalAngles": [
+      {
+        "angles": [
+          "part1",
+          "part2"
+        ],
+        "color": "BLUE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "ab",
+        "ownerSegment": "sAB",
+        "text": "6"
+      },
+      {
+        "id": "ac",
+        "ownerSegment": "sCA",
+        "text": "12"
+      },
+      {
+        "id": "bc",
+        "ownerSegment": "sBC",
+        "text": "a"
+      }
+    ],
+    "regions": [
+      {
+        "id": "target",
+        "fill": "BLUE",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "D"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 480
+  },
+  "caption": "원문의 도형에 주어진 길이와 각도를 표시한다.",
+  "accessibilityDescription": "주어진 삼각형을 선분과 각 호로 표시한다.",
+  "sourceQuote": "인 삼각형 $\\mathrm{ABC}$에서",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=6, AC=12",
+      "mappedTo": "planeMarks.expressionLabels"
+    },
+    {
+      "id": "c2",
+      "condition": "AD는 ∠A의 이등분선",
+      "mappedTo": "planeMarks.equalAngles"
+    },
+    {
+      "id": "c3",
+      "condition": "BC=a, ∠A>90°",
+      "mappedTo": "displaySegments"
+    },
+    {
+      "id": "c4",
+      "condition": "구할 영역 △ABD",
+      "mappedTo": "planeMarks.regions"
+    }
+  ],
+  "newVisualInformation": [
+    "BC 위 이등분점 D 및 AD 보조선",
+    "A의 두 동일 각 호, AB6 AC12 BC=a",
+    "△ABD 한정 색칠, 해설 전 120° 미표시"
+  ]
+}

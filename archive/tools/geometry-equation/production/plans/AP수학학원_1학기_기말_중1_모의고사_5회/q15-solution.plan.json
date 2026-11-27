@@ -1,0 +1,128 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "s1",
+        "kind": "LINE",
+        "coefficients": [
+          "-100",
+          "10"
+        ],
+        "domain": [
+          "10",
+          "11"
+        ],
+        "color": "BLUE",
+        "hideLabel": true
+      },
+      {
+        "id": "s2",
+        "kind": "LINE",
+        "coefficients": [
+          "10",
+          "0"
+        ],
+        "domain": [
+          "11",
+          "23/2"
+        ],
+        "color": "BLUE",
+        "hideLabel": true
+      },
+      {
+        "id": "s3",
+        "kind": "LINE",
+        "coefficients": [
+          "-325/2",
+          "15"
+        ],
+        "domain": [
+          "23/2",
+          "25/2"
+        ],
+        "color": "BLUE",
+        "hideLabel": true
+      },
+      {
+        "id": "s4",
+        "kind": "LINE",
+        "coefficients": [
+          "25",
+          "0"
+        ],
+        "domain": [
+          "25/2",
+          "14"
+        ],
+        "color": "BLUE",
+        "hideLabel": true
+      },
+      {
+        "id": "s5",
+        "kind": "LINE",
+        "coefficients": [
+          "200",
+          "-25/2"
+        ],
+        "domain": [
+          "14",
+          "16"
+        ],
+        "color": "BLUE",
+        "hideLabel": true
+      }
+    ],
+    "viewport": [
+      9.5,
+      16.5,
+      -2,
+      31
+    ],
+    "axisTickValues": {
+      "x": [
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16"
+      ],
+      "y": [
+        "5",
+        "10",
+        "15",
+        "20",
+        "25",
+        "30"
+      ]
+    },
+    "axisTitles": {
+      "x": "시각(시)",
+      "y": "거리(km)"
+    },
+    "axisScale": {
+      "x": 1,
+      "y": "1/5"
+    },
+    "overlays": {}
+  },
+  "caption": "10시부터 12시 30분까지 2시간 30분을 이동하여 공연장에 도착하고 14시부터 16시까지 귀가한다.",
+  "accessibilityDescription": "10시부터 12시 30분까지 2시간 30분을 이동하여 공연장에 도착하고 14시부터 16시까지 귀가한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원본 그래프의 주요 지점은 (10,0),(11,10),(11.5,10),(12.5,25),(14,25),(16,0)이다. x는 시각(시), y는 집과의 거리(km).",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.axisTickValues",
+        "graphPlan.overlays"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 다섯 선분·두 정차 수평선·출발 및 귀가 시간·5km 간격 눈금·무채움"
+  ]
+}

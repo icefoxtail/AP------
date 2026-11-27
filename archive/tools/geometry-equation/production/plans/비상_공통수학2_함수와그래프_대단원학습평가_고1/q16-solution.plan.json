@@ -1,0 +1,8 @@
+{
+  "capability":"sqrt-affine-spike-v1",
+  "graphPlan":{"family":"sqrt-affine","radicand":["4","2"],"sign":1,"offset":"5","sourceDomain":{"kind":"NATURAL_SQRT_AFFINE"},"domain":[-2,8],"viewport":[-4,9,3,11],"requiredPoints":[{"id":"A","x":-2,"y":5},{"id":"B","x":0,"y":7}],"axisTickValues":{"x":[],"y":[]}},
+  "caption":"f(x)=√(2x+4)+5, 최솟값 5와 f(0)=7을 나타낸 그래프",
+  "accessibilityDescription":"시작점 (-2,5)와 점 (0,7)을 지나는 오른쪽 위로 증가하는 무리함수 그래프다.",
+  "sourceConditions":[{"id":"a","condition":"a=-4이면 근호 내부 2x+4","mappedTo":"graphPlan.radicand"},{"id":"min","condition":"b=5는 치역의 최솟값","mappedTo":"graphPlan.offset"},{"id":"inverse","condition":"f⁻¹(7)=0이므로 (0,7)이 그래프 위","mappedTo":"graphPlan.requiredPoints"}],
+  "newVisualInformation":["양의 근호 가지, 닫힌 시작점과 역함수 조건의 점을 직접 표시한다."]
+}

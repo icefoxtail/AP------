@@ -1,0 +1,22 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "graphPlan": {
+    "family":"multi-curve","viewport":[0,5,-5,12],
+    "curves":[{"id":"f","kind":"EXPONENTIAL","base":"2","coefficients":["1","1","-5"],"domain":["1","4"],"color":"BLUE","label":"y=2^x-5"}],
+    "axisTickValues":{"x":["3","4"],"y":["3","11"]},
+    "overlays":{
+      "lines":[{"id":"asym","x":"4","label":"x=4","style":"DASHED"}],
+      "points":[{"id":"P","x":"3","y":"3"},{"id":"Q","x":"4","y":"11"},{"id":"R","axis":"x","value":"3"},{"id":"S","axis":"x","value":"4"}],
+      "segments":[{"id":"three","from":"R","to":"P","dashed":true},{"id":"four","from":"S","to":"Q","dashed":true}]
+    }
+  },
+  "caption":"y=2^x−5와 x축 및 로그함수의 수직 점근선 x=4 사이의 영역에서 정수 x는 3 또는 4이다. 이때 정수 y는 각각 0~3, 0~11이다.",
+  "accessibilityDescription":"증가하는 지수곡선 y=2^x−5, x축과 세로 경계 x=4가 보이고 x=3에서 높이 3, x=4에서 높이 11인 정수 열의 끝이 표시된다.",
+  "sourceQuote":"곡선 $y = 2^x - 5$와 함수 $y = -\\log(x - 4) + 2$의 점근선",
+  "sourceConditions":[
+    {"id":"curve","condition":"y=2^x−5","mappedTo":"graphPlan.curves[0]"},
+    {"id":"asymptote","condition":"y=−log(x−4)+2의 수직 점근선 x=4","mappedTo":"graphPlan.overlays.lines[0]"},
+    {"id":"count","condition":"정수 열 x=3의 y 상한3, x=4의 y 상한11","mappedTo":"graphPlan.overlays.points,graphPlan.overlays.segments"}
+  ],
+  "newVisualInformation":["곡선과 세로 점근선이 만드는 경계", "정수 x=3,4에서 y 상한 3,11"]
+}

@@ -1,0 +1,15 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"POLAR_POINT","inputs":["O","A"],"args":{"length":{"kind":"integer","value":"3"},"angleDeg":{"kind":"integer","value":"120"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"3"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["O","A","B"],"displayLines":[],"displayCircles":[],"displaySegments":[{"id":"sOA","refs":["O","A"]},{"id":"sOB","refs":["O","B"]},{"id":"sAB","refs":["A","B"]}],
+  "planeMarks":{"angles":[{"id":"aO","refs":["A","O","B"],"value":120,"label":"2pi/3","labelKind":"MATH","style":"ARC","factRole":"GIVEN"}],"arcs":[{"id":"arcAB","circle":"k","center":"O","from":"A","to":"B","side":"MINOR","label":"2pi","labelKind":"MATH"}]},
+  "caption":"중심각 2π/3, 호 AB의 길이 2π인 부채꼴. 반지름 값은 문제 그림에서 숨긴다.",
+  "accessibilityDescription":"중심 O에서 A,B로 뻗은 두 반지름과 현 AB, 중심각 호 2π/3과 바깥 원호 길이 2π. 기본 면 채움 없음.",
+  "sourceConditions":[{"id":"angle","condition":"중심각 ∠AOB=2π/3","mappedTo":["aO"]},{"id":"arc","condition":"호 AB의 길이 2π","mappedTo":["arcAB"]}],
+  "newVisualInformation":["원본의 연한 파란 면을 제거하고 각 호·원호 길이 표식만 유지"]
+}

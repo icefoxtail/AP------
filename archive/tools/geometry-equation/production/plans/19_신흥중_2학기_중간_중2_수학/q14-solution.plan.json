@@ -1,0 +1,244 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3872983346",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3872983346",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3872983346",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "967741937088844",
+              "denominator": "10000000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2998438719639272",
+              "denominator": "1000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sCF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "sDF",
+      "refs": [
+        "D",
+        "F"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 430
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l0",
+        "ownerSegment": "sAB",
+        "text": "4"
+      },
+      {
+        "id": "l1",
+        "ownerSegment": "sBC",
+        "text": "6"
+      },
+      {
+        "id": "l2",
+        "ownerSegment": "sDF",
+        "text": "4"
+      }
+    ],
+    "equalLengths": []
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "C",
+        "F",
+        "E"
+      ]
+    }
+  ],
+  "caption": "14번 문제: 평행사변형 ABCD의 AD 중점 E와 CF⊥BE의 발 F, AB4 BC6.",
+  "accessibilityDescription": "14번 문제 그림: 평행사변형 ABCD의 AD 중점 E와 CF⊥BE의 발 F, AB4 BC6.",
+  "sourceConditions": [
+    {
+      "id": "src-q14",
+      "condition": " 조건: 평행사변형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}}=4\\text{cm}$, $\\overline{\\mathrm{BC}}=6\\text{cm}$입니다. 점 $\\mathrm{E}$는 $\\overline{\\mathrm{AD}}$의 중점이고, 점 $\\mathrm{C}$에서 직선 $\\overline{\\mathrm{BE}}$에 내린 수선의 발이 $\\mathrm{F}$입니다. 구할 대상: 선분 $\\overline{\\mathrm{DF}}$의 길이를 구합니다.  먼저 풀이에 쓸 성질을 순서대로 정리합니다. 1) 보조선: 반직선 $\\overline{\\mathrm{BE}}$와 직선 $\\overline{\\mathrm{CD}}$의 연장선이 만나는 교점을 $\\mathrm{G}$라고 놓습니다. 2) $\\triangle\\mathrm{AEB}$와 $\\triangle\\mathrm{DEG}$의 합동 관계(ASA 합동)를 통해 선분 $\\overline{\\mathrm{DG}}$의 길이를 구합니다. 3) $\\triangle\\mathrm{GCF}$는 $\\angle\\mathrm{GFC}=90^\\circ$인 직각삼각형이고, 점 $\\mathrm{D}$가 빗변 $\\overline{\\mathrm{GC}}$의 중점(즉, 직각삼각형의 외심)임을 증명합니다. 4) 직각삼각형의 빗변의 중점에서 꼭짓점에 이르는 거리는 모두 같다는 외심의 성질을 적용합니다.  위에서 정리한 성질을 이용해 차례로 계산합니다. 반직선 $\\overline{\\mathrm{BE}}$와 $\\overline{\\mathrm{CD}}$의 연장선의 교점을 $\\mathrm{G}$라 하면: $\\overline{\\mathrm{AB}} \\parallel \\overline{\\mathrm{CD}}$이므로 엇각 $\\angle\\mathrm{BAE} = \\angle\\mathrm{GDE}$입니다. 맞꼭지각 $\\angle\\mathrm{AEB} = \\angle\\mathrm{DEG}$이고, $\\mathrm{E}$가 $\\overline{\\mathrm{AD}}$의 중점이므로 $\\overline{\\mathrm{AE}} = \\overline{\\mathrm{DE}}$입니다. 따라서 한 변의 길이와 양 끝 각의 크기가 같으므로: $$\\triangle\\mathrm{AEB} \\equiv \\triangle\\mathrm{DEG} \\quad (\\text{ASA 합동})$$ 합동인 두 삼각형의 대응변의 길이가 같으므로: $$\\overline{\\mathrm{DG}} = \\overline{\\mathrm{AB}} = 4\\text{ cm}$$ 평행사변형 $\\mathrm{ABCD}$에서 대변의 길이가 같으므로 $\\overline{\\mathrm{DC}} = \\overline{\\mathrm{AB}} = 4\\text{ cm}$입니다. 그러므로 선분 $\\overline{\\mathrm{GC}}$의 길이는 다음과 같습니다: $$\\overline{\\mathrm{GC}} = \\overline{\\mathrm{GD}} + \\overline{\\mathrm{DC}} = 4 + 4 = 8\\text{ cm}$$ 이때 $\\overline{\\mathrm{GD}} = \\overline{\\mathrm{DC}} = 4\\text{ cm}$이므로, 점 $\\mathrm{D}$는 선분 $\\overline{\\mathrm{GC}}$의 정확한 중점입니다. 이제 $\\triangle\\mathrm{GCF}$를 살펴보면, $\\overline{\\mathrm{CF}} \\perp \\overline{\\mathrm{BG}}$이므로 $\\angle\\mathrm{GFC} = 90^\\circ$인 직각삼각형입니다. 직각삼각형의 빗변의 중점 $\\mathrm{D}$는 이 직각삼각형의 외심이므로, 외심에서 세 꼭짓점에 이르는 거리는 외접원의 반지름으로 모두 같습니다: $$\\overline{\\mathrm{DF}} = \\overline{\\mathrm{DG}} = \\overline{\\mathrm{DC}} = \\frac{1}{2}\\overline{\\mathrm{GC}} = \\frac{8}{2} = 4\\text{ cm}$$  각 선지를 확인하면 다음과 같습니다. ① $\\dfrac{7}{2}\\text{cm}$: 거짓 ② $4\\text{cm}$: 참 (외심의 성질에 의해 $4\\text{cm}$로 일치) ③ $\\dfrac{9}{2}\\text{cm}$: 거짓 ④ $5\\text{cm}$: 거짓 ⑤ $\\dfrac{11}{2}\\text{cm}$: 거짓  따라서 정답은 ②입니다. ",
+      "mappedTo": "mathPlan.nodes;displaySegments;planeMarks"
+    },
+    {
+      "id": "source-visual-feature",
+      "condition": "평행사변형 ABCD의 AD 중점 E와 CF⊥BE의 발 F, AB4 BC6; 풀이에 필요한 추가 관계",
+      "mappedTo": "displaySegments;planeMarks"
+    }
+  ],
+  "newVisualInformation": [
+    "평행사변형 ABCD의 AD 중점 E와 CF⊥BE의 발 F, AB4 BC6; 풀이에 필요한 추가 관계"
+  ]
+}

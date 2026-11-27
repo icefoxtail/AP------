@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1","conic":{"kind":"CIRCLE","center":["0","0"],"rSquared":"25"},
+  "lines":[{"id":"l","slope":"-1","intercept":"3*sqrt(2)"}],
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"A","kind":"LINE_CONIC","line":"l","which":1},{"id":"B","kind":"LINE_CONIC","line":"l","which":2},{"id":"H","kind":"FOOT","from":"O","onto":"l","rightAngle":true}],
+  "segments":[{"id":"AB","from":"A","to":"B"},{"id":"OH","from":"O","to":"H","label":"3"},{"id":"OA","from":"O","to":"A","label":"5"},{"id":"AH","from":"A","to":"H","label":"4"}],
+  "caption":"현 AB=8을 수선 OH가 이등분하여 AH=4, OH=3, OA=5인 직각삼각형을 이룬다.",
+  "accessibilityDescription":"반지름 5인 원, 길이 8인 현 AB와 중심에서 내린 수선 OH, 직각 표시 및 길이 3,4,5를 그린다.",
+  "sourceQuote":"$\\overline{AB}=8$일 때, 양수 $k$의 값을 구하시오",
+  "sourceConditions":[{"id":"chord","condition":"AB=8, AH=4, OH=3, OA=5, OH⊥AB","mappedTo":["conic","points","segments"]}],
+  "newVisualInformation":["현 중점 H의 직각 표시와 3-4-5 길이를 선분 소유 라벨로 표시한다."]
+}

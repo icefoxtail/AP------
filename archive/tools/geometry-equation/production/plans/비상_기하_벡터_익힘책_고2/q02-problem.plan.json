@@ -1,0 +1,68 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            2,
+            0
+          ]
+        ]
+      },
+      "height": 2,
+      "names": "DEFABC"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "B",
+        "refs": [
+          "A",
+          "C"
+        ]
+      },
+      {
+        "at": "E",
+        "refs": [
+          "D",
+          "F"
+        ]
+      }
+    ],
+    "equalLengths": [
+      {
+        "count": 2,
+        "segments": [
+          "AB",
+          "BC"
+        ]
+      }
+    ]
+  },
+  "caption": "직각이등변삼각형 ABC, DEF를 위아래 밑면으로 하는 삼각기둥의 직각·같은 길이 표시",
+  "sourceConditions": [
+    {
+      "id": "shape",
+      "condition": "직각이등변삼각형 ABC, DEF를 위아래 밑면으로 하는 삼각기둥의 직각·같은 길이 표시",
+      "mappedTo": [
+        "solids",
+        "marks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점 라벨, 숨은선 점선, 길이·직각·동변 표시를 보존하고 면 채움 없음."
+  ]
+}

@@ -1,0 +1,304 @@
+{
+  "sourceQuote": "$\\angle C = 90^\\circ$, $\\overline{",
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "outer",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "inner",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "I"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "I",
+    "T"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "IC",
+      "refs": [
+        "I",
+        "C"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "IT",
+      "refs": [
+        "I",
+        "T"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "bc12",
+        "from": "B",
+        "to": "C",
+        "label": "12",
+        "side": "BELOW",
+        "style": "BAR"
+      },
+      {
+        "id": "ca16",
+        "from": "C",
+        "to": "A",
+        "label": "16",
+        "side": "LEFT",
+        "style": "BAR"
+      },
+      {
+        "id": "ab20",
+        "from": "A",
+        "to": "B",
+        "label": "20",
+        "side": "RIGHT",
+        "style": "BAR"
+      },
+      {
+        "id": "ob10",
+        "from": "O",
+        "to": "B",
+        "label": "10",
+        "side": "ABOVE",
+        "style": "BAR"
+      },
+      {
+        "id": "ic",
+        "from": "I",
+        "to": "T",
+        "label": "4",
+        "side": "RIGHT",
+        "style": "BAR"
+      }
+    ]
+  },
+  "caption": "빗변 AB=20, 외접원 R=10, 내접원 r=4이므로 넓이 차 M−N=84π이다.",
+  "accessibilityDescription": "외접원과 내접원, 빗변20, 외접 반지름 OB=10, 내접원 중심 I에서 접점 T까지 내린 반지름 IT=4의 길이선이 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "BC=12,CA=16",
+      "mappedTo": "planeMarks.dimensions"
+    },
+    {
+      "id": "c2",
+      "condition": "AB=20",
+      "mappedTo": "planeMarks.dimensions[2]"
+    },
+    {
+      "id": "c3",
+      "condition": "외접 반지름10",
+      "mappedTo": "planeMarks.dimensions[3]"
+    },
+    {
+      "id": "c4",
+      "condition": "내접 반지름4",
+      "mappedTo": "planeMarks.dimensions[4]"
+    }
+  ],
+  "newVisualInformation": [
+    "실제 점과 선분의 관계에 각호·직각 네모·치수선·등변 표시를 연결한다."
+  ],
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "outer",
+    "inner"
+  ],
+  "hiddenPointNames": [
+    "T"
+  ],
+  "unmarkedPointNames": [
+    "T"
+  ]
+}

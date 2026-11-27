@@ -1,0 +1,109 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-5",
+      "0",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1.8,
+      4
+    ],
+    "viewport": [
+      -2.5,
+      8,
+      -6.3,
+      4.5
+    ],
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [
+        "6"
+      ],
+      "y": [
+        "-5",
+        "-2"
+      ]
+    },
+    "overlays": {
+      "circles": [
+        {
+          "id": "circle",
+          "center": [
+            "6",
+            "-2"
+          ],
+          "radiusSquared": "1"
+        }
+      ],
+      "points": [
+        {
+          "id": "P",
+          "curveX": "2"
+        },
+        {
+          "id": "C",
+          "x": "6",
+          "y": "-2"
+        },
+        {
+          "id": "Q",
+          "x": "6-4*sqrt(17)/17",
+          "y": "-2+sqrt(17)/17"
+        }
+      ],
+      "segments": [
+        {
+          "id": "PQ",
+          "from": "P",
+          "to": "Q"
+        },
+        {
+          "id": "CQ",
+          "from": "C",
+          "to": "Q",
+          "dashed": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "cg",
+          "from": "C",
+          "axis": "BOTH"
+        }
+      ]
+    }
+  },
+  "caption": "가장 가까운 P=(2,−1), 원 중심 C=(6,−2), 원 위 Q가 일직선에 놓이고 PC=√17, CQ=1로 PQ=√17−1이다.",
+  "accessibilityDescription": "가장 가까운 P=(2,−1), 원 중심 C=(6,−2), 원 위 Q가 일직선에 놓이고 PC=√17, CQ=1로 PQ=√17−1이다.",
+  "sourceConditions": [
+    {
+      "id": "curve",
+      "condition": "원문·해설의 -5,0,1 다항식 계수를 상수항부터 정확히 옮긴다.",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "center",
+      "condition": "원 중심 C=(6,−2)와 원 반지름 1",
+      "mappedTo": "graphPlan.overlays.circles"
+    },
+    {
+      "id": "minimum",
+      "condition": "P=(2,−1), Q=C+(P−C)/√17",
+      "mappedTo": "graphPlan.overlays.points"
+    },
+    {
+      "id": "segments",
+      "condition": "P-Q는 실선, Q-C는 반지름의 점선 안내",
+      "mappedTo": "graphPlan.overlays.segments"
+    }
+  ],
+  "newVisualInformation": [
+    "원문·해설의 결정적 선·점·관계만 나타내며 배경과 임의의 면 채움을 두지 않는다."
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "capability":"ellipse-figure-v1",
+  "sourceQuote":"포물선 x²=12y 위 A,B,C의 무게중심이 초점 F일 때 AF+BF+CF",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"3","axis":"Y"},
+  "points":[{"id":"A","kind":"ON_CONIC","x":"-3*sqrt(6)"},{"id":"B","kind":"VERTEX"},{"id":"C","kind":"ON_CONIC","x":"3*sqrt(6)"},{"id":"F","kind":"FOCUS"}],
+  "lines":[{"id":"d","role":"DIRECTRIX","label":"l"}],
+  "segments":[{"id":"ab","from":"A","to":"B"},{"id":"bc","from":"B","to":"C"},{"id":"ca","from":"C","to":"A"},{"id":"af","from":"A","to":"F"},{"id":"bf","from":"B","to":"F"},{"id":"cf","from":"C","to":"F"}],
+  "caption":"무게중심이 초점 F인 포물선 위 삼각형의 한 예",
+  "accessibilityDescription":"포물선 x²=12y의 A,B,C를 잇는 삼각형과 초점 F(0,3), 준선 y=-3을 표시한다. 이 대표 배치에서 F는 삼각형의 무게중심이다.",
+  "sourceConditions":[{"id":"c1","condition":"포물선의 초점 F=(0,3), 준선 y=-3","mappedTo":["conic","F","d"]},{"id":"c2","condition":"대표 배치 A=(-3√6,9/2),B=(0,0),C=(3√6,9/2), 무게중심은 F=(0,3)","mappedTo":["A","B","C","F"]}],
+  "newVisualInformation":["세 꼭짓점에서 초점까지의 선분을 그려 각 거리의 합을 읽게 한다", "준선을 추가해 PF=준선까지의 거리 성질을 보여 준다"]
+}

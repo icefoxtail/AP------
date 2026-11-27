@@ -1,0 +1,12 @@
+{
+  "capability":"ellipse-figure-v1",
+  "sourceQuote":"타원 x²/9+y²/5=1과 포물선 y²=8x의 제1사분면 교점 P, x=-2 위의 수선의 발 Q, A=(-2,0)",
+  "conics":[{"id":"e","kind":"ELLIPSE","center":["0","0"],"aSquared":"9","bSquared":"5","major":"X"},{"id":"p","kind":"PARABOLA","vertex":["0","0"],"p":"2","axis":"X"}],
+  "points":[{"id":"P","kind":"CONIC_CONIC","curves":["e","p"],"which":2},{"id":"A","kind":"FOCUS","curve":"e","side":-1},{"id":"F","kind":"FOCUS","curve":"e","side":1},{"id":"Q","kind":"FOOT","from":"P","onto":"d","rightAngle":true},{"id":"O","kind":"ORIGIN"}],
+  "lines":[{"id":"d","x":"-2","label":"x=-2"}],
+  "segments":[{"id":"ap","from":"A","to":"P"},{"id":"pq","from":"P","to":"Q"},{"id":"pf","from":"P","to":"F","dashed":true}],
+  "caption":"타원의 두 초점 A,F와 포물선의 준선 x=-2에 내린 수선 PQ",
+  "accessibilityDescription":"제1사분면의 두 곡선 교점 P에서 준선 x=-2에 내린 수선 PQ에 직각 표식을 두고, 타원의 두 초점 A,F와 P를 연결했다.",
+  "sourceConditions":[{"id":"c1","condition":"포물선 y²=8x의 초점 F=(2,0), 준선 x=-2","mappedTo":["conics","F","d"]},{"id":"c2","condition":"타원 x²/9+y²/5=1의 초점 A=(-2,0),F=(2,0)","mappedTo":["conics","A","F"]},{"id":"c3","condition":"P는 제1사분면의 공통점, Q는 P에서 준선에 내린 수선의 발","mappedTo":["P","Q","pq"]}],
+  "newVisualInformation":["Q의 FOOT.rightAngle 실제 표식, PF=PQ를 읽게 하는 점선 PF", "수학적으로 AP+PQ=AP+PF=6", "ENGINE_CAPABILITY_PENDING: 원본의 두 곡선 수식 지시선이 다른 라벨과 충돌하여 라벨 배치 개선 필요"]
+}

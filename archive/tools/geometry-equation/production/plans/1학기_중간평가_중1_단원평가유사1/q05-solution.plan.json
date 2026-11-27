@@ -1,0 +1,24 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          { "id": "L", "value": "-7", "hideName": true, "showValue": false },
+          { "id": "R", "value": "-2", "hideName": true, "showValue": false }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": { "text": "음수의 대소관계" },
+  "caption": "수직선에서 -7은 -2보다 왼쪽에 있으므로 -7<-2이다. 따라서 -2<-7은 성립하지 않는다.",
+  "accessibilityDescription": "수직선의 왼쪽에 -7, 오른쪽에 -2가 표시되어 음수의 대소관계를 비교할 수 있다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "보기 ③의 두 음수 -2와 -7을 비교한다.", "mappedTo": ["numberLine.rows[0].points"] },
+    { "id": "c2", "condition": "왼쪽에 놓인 -7이 오른쪽의 -2보다 작다.", "mappedTo": ["numberLine.rows[0].points"] }
+  ],
+  "newVisualInformation": ["-7과 -2를 같은 수직선에 표시하되 점 이외의 면 채움이나 장식은 넣지 않는다."]
+}

@@ -1,0 +1,10 @@
+{
+  "capability":"ellipse-figure-v1",
+  "sourceQuote":"타원 x²/4+y²/a²=1의 한 초점이 포물선 y²=4x의 초점과 일치, 단축의 길이",
+  "conics":[{"id":"e","kind":"ELLIPSE","center":["0","0"],"aSquared":"4","bSquared":"3","major":"X"},{"id":"p","kind":"PARABOLA","vertex":["0","0"],"p":"1","axis":"X"}],
+  "points":[{"id":"F","kind":"FOCUS","curve":"e","side":1},{"id":"F'","kind":"FOCUS","curve":"e","side":-1},{"id":"O","kind":"ORIGIN"}],
+  "caption":"타원과 포물선의 공통 초점 F",
+  "accessibilityDescription":"타원의 오른쪽 초점과 포물선의 초점이 공통 F(1,0)이며 타원은 가로로 장축, 세로로 단축을 갖는다.",
+  "sourceConditions":[{"id":"c1","condition":"포물선 y²=4x의 초점은 (1,0)","mappedTo":["conics","F"]},{"id":"c2","condition":"타원 가로 반지름²=4, 초점거리²=1이므로 세로 반지름²=3","mappedTo":["conics"]}],
+  "newVisualInformation":["두 곡선의 초점 일치라는 핵심 조건을 동일한 점 F로 표현", "구하는 단축의 길이는 해설 수식에서 확인"]
+}

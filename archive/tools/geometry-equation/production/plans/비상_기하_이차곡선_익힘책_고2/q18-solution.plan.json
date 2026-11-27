@@ -1,0 +1,12 @@
+{
+  "capability":"ellipse-figure-v1",
+  "sourceQuote":"총구 A와 표적 B 사이 6, AB와 평행한 거리 8의 직선 위 P, 두 소리를 동시에 들음",
+  "conic":{"kind":"HYPERBOLA","center":["3","0"],"aSquared":"1","bSquared":"8","transverse":"X"},
+  "points":[{"id":"A","kind":"FOCUS","side":-1},{"id":"B","kind":"FOCUS","side":1},{"id":"P","kind":"ON_CONIC","x":"6","sign":"POS"}],
+  "lines":[{"id":"h","y":"8","label":"y=8"}],
+  "segments":[{"id":"ab","from":"A","to":"B","label":"6"},{"id":"bp","from":"B","to":"P","label":"8"},{"id":"ap","from":"A","to":"P","label":"10"}],
+  "caption":"두 소리의 도착 시간이 일치하는 위치 P와 거리 6,8,10",
+  "accessibilityDescription":"A에서 B까지 6, B에서 P까지 8, A에서 P까지 10인 직각삼각형에 초점 거리 차 2의 쌍곡선이 지난다.",
+  "sourceConditions":[{"id":"c1","condition":"총알 속도 3v, AB=6이므로 표적 소리는 2/v 뒤에 출발; PA−PB=2","mappedTo":["conic"]},{"id":"c2","condition":"A=(0,0),B=(6,0),P가 y=8 직선 위; 해설의 P=(6,8)에서 PA=10,PB=8","mappedTo":["A","B","P","h","ab","ap","bp"]}],
+  "newVisualInformation":["도착 시각의 차를 두 초점까지 거리 차로 나타내는 쌍곡선 및 6·8·10 삼각형", "ENGINE_CAPABILITY_PENDING: B에서의 직각 표식을 기존 초점과 중복 점 없이 그리는 기능 필요"]
+}

@@ -1,0 +1,219 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "D",
+    "A",
+    "B"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sBA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "id": "ax",
+        "refs": [
+          "D",
+          "B",
+          "C"
+        ],
+        "value": 26.565051177,
+        "label": "x",
+        "labelKind": "MATH"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eg1",
+        "count": 1,
+        "segments": [
+          {
+            "path": [
+              "sCD",
+              "sDA"
+            ]
+          },
+          "sBC"
+        ]
+      },
+      {
+        "id": "eg2",
+        "count": 2,
+        "segments": [
+          "sCD",
+          "sDA"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lCD",
+        "ownerSegment": "sCD",
+        "text": "2"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "4"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "C에서 직각이고 AC=BC인 직각이등변삼각형에서 D는 AC의 중점이다. DC/BC=1/2이므로 tan x=1/2이다.",
+  "accessibilityDescription": "C에서 직각이고 AC=BC인 직각이등변삼각형에서 D는 AC의 중점이다. DC/BC=1/2이므로 tan x=1/2이다.",
+  "sourceConditions": [
+    {
+      "id": "problem-stem",
+      "condition": "$\\angle \\mathrm{C} = 90^\\circ$이고 $\\overline{\\mathrm{AC}} = \\overline{\\mathrm{BC}}$인 직각이등변삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AC}}$의 중점이 $\\mathrm{D}$, $\\angle \\mathrm{DBC} = x$라고 할 때, $\\tan x$의 값을 구하면? (3점)",
+      "mappedTo": "mathPlan.nodes, displaySegments, planeMarks, rightAngles"
+    },
+    {
+      "id": "worked-solution",
+      "condition": "$D$는 $AC$의 중점이므로 $CD=AC/2$. 또 $AC=BC$이므로 $\\tan x=CD/BC=1/2$. 정답은 ①이다.",
+      "mappedTo": "planeMarks, displaySegments, caption"
+    }
+  ],
+  "newVisualInformation": [
+    "C 직각과 AC=BC 동일길이 표식",
+    "D 중점 표식과 BD 보조선",
+    "B의 x 각 호와 DC/BC 대응"
+  ]
+}

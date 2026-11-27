@@ -1,0 +1,42 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "disjoint": [
+      [
+        "A",
+        "B"
+      ]
+    ],
+    "shade": "A∪B"
+  },
+  "caption": "배반사건 A와 B의 합집합은 떨어진 두 원의 영역이며 P(A∪B)=6/7이다.",
+  "accessibilityDescription": "전체집합 안에서 사건 A와 B를 겹치지 않는 두 원으로 배치하고 두 원의 합집합을 강조한다.",
+  "sourceConditions": [
+    {
+      "id": "disjoint",
+      "condition": "두 사건 A,B가 서로 배반사건",
+      "mappedTo": [
+        "diagram.disjoint"
+      ]
+    },
+    {
+      "id": "union",
+      "condition": "합집합 A∪B의 확률",
+      "mappedTo": [
+        "diagram.shade"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "A와 B가 서로 겹치지 않아 A∪B의 확률은 확률의 합이라는 관계를 도형으로 확인한다."
+  ]
+}

@@ -1,0 +1,219 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "11",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "D",
+    "P",
+    "R",
+    "Q"
+  ],
+  "displaySegments": [
+    {
+      "id": "sDP",
+      "refs": [
+        "D",
+        "P"
+      ]
+    },
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQR",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    },
+    {
+      "id": "sRD",
+      "refs": [
+        "R",
+        "D"
+      ]
+    },
+    {
+      "id": "sPR",
+      "refs": [
+        "P",
+        "R"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "hiddenPointNames": [
+    "D",
+    "P",
+    "R",
+    "Q"
+  ],
+  "hiddenPointStyle": "NONE",
+  "rightAngles": [
+    {
+      "id": "rD",
+      "refs": [
+        "P",
+        "D",
+        "R"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "rP",
+      "refs": [
+        "Q",
+        "P",
+        "R"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dA",
+        "from": "P",
+        "to": "Q",
+        "label": "a",
+        "side": "ABOVE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dB",
+        "from": "D",
+        "to": "P",
+        "label": "b",
+        "side": "LEFT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dThree",
+        "from": "D",
+        "to": "R",
+        "label": "3",
+        "side": "BELOW",
+        "value": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dFive",
+        "from": "P",
+        "to": "R",
+        "label": "5",
+        "side": "RIGHT",
+        "value": "5",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 700,
+    "height": 540
+  },
+  "caption": "길이 5인 대각선으로 나뉜 두 직각삼각형과 변 a, b, 3을 표시한다.",
+  "accessibilityDescription": "길이 5인 대각선으로 나뉜 두 직각삼각형과 변 a, b, 3을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "사각형은 길이 5의 대각선으로 두 직각삼각형으로 나뉘며 그 대각선에 수직인 변의 길이는 a, 다른 삼각형의 서로 수직인 변은 b와 3이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 삼각형의 공통 대각선, 길이 a·b·3·5와 직각 두 개를 직접 표기한다."
+  ]
+}

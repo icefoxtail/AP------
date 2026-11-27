@@ -1,0 +1,243 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5291502622129181",
+              "denominator": "1000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "75",
+              "denominator": "10"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3968626966596886",
+              "denominator": "1000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 460
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l0",
+        "ownerSegment": "sDC",
+        "text": "6"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dim0",
+        "from": "A",
+        "to": "D",
+        "label": "2",
+        "side": "ABOVE"
+      },
+      {
+        "id": "dim1",
+        "from": "E",
+        "to": "C",
+        "label": "4",
+        "side": "ABOVE"
+      },
+      {
+        "id": "dim2",
+        "from": "B",
+        "to": "E",
+        "label": "8",
+        "side": "ABOVE"
+      }
+    ],
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 97.18,
+        "label": "x",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "D",
+          "E",
+          "C"
+        ],
+        "value": 97.18,
+        "label": "x",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "23번 문제: 삼각형 ABC 내부 선분 DE, 같은 각 A와 DEC, AD2·DC6·EC4.",
+  "accessibilityDescription": "23번 문제 그림: 삼각형 ABC 내부 선분 DE, 같은 각 A와 DEC, AD2·DC6·EC4.",
+  "sourceConditions": [
+    {
+      "id": "src-q23",
+      "condition": " 조건: $\\triangle\\mathrm{ABC}$에서 $\\angle\\mathrm{A}=\\angle\\mathrm{DEC}$이고, 선분의 길이는 $\\overline{\\mathrm{AD}}=2\\text{cm}$, $\\overline{\\mathrm{DC}}=6\\text{cm}$, $\\overline{\\mathrm{EC}}=4\\text{cm}$입니다. 구할 대상: (1) 서로 닮음인 두 삼각형을 찾아 닮음조건을 설명하고 기호 $\\sim$를 사용하여 나타냅니다. (4점) (2) $\\overline{\\mathrm{BE}}$의 길이를 풀이과정과 함께 구합니다. (2점)  먼저 풀이에 쓸 성질을 순서대로 정리합니다. 1) $\\triangle\\mathrm{ABC}$와 $\\triangle\\mathrm{EDC}$에서 주어진 조건 $\\angle\\mathrm{A}=\\angle\\mathrm{DEC}$와 공통각 $\\angle\\mathrm{C}$를 확인합니다. 2) 두 각의 크기가 각각 같으므로 AA 닮음 조건을 만족함을 보이고 대응점 순서에 맞게 $\\triangle\\mathrm{ABC} \\sim \\triangle\\mathrm{EDC}$로 표기합니다. 3) 닮은 삼각형의 대응변의 길이의 비례식을 세워 변 $\\overline{\\mathrm{BC}}$의 길이를 구한 후 $\\overline{\\mathrm{BE}} = \\overline{\\mathrm{BC}} - \\overline{\\mathrm{EC}}$로 계산합니다.  (1) 닮음 조건 및 기호 표현: $\\triangle\\mathrm{ABC}$와 $\\triangle\\mathrm{EDC}$에서: $$\\angle\\mathrm{A} = \\angle\\mathrm{DEC} \\quad (\\text{조건})$$ $$\\angle\\mathrm{C}\\text{는 공통각}$$ 따라서 두 쌍의 대응각의 크기가 각각 같으므로 AA 닮음입니다: $$\\triangle\\mathrm{ABC} \\sim \\triangle\\mathrm{EDC} \\quad (\\text{AA 닮음})$$  (2) $\\overline{\\mathrm{BE}}$의 길이 계산: $\\overline{\\mathrm{AC}} = \\overline{\\mathrm{AD}} + \\overline{\\mathrm{DC}} = 2 + 6 = 8\\text{ cm}$입니다. $\\triangle\\mathrm{ABC} \\sim \\triangle\\mathrm{EDC}$이므로 대응변의 길이의 비는 다음과 같습니다: $$\\overline{\\mathrm{AC}} : \\overline{\\mathrm{EC}} = \\overline{\\mathrm{BC}} : \\overline{\\mathrm{DC}}$$ 주어진 길이를 대입하면: $$8 : 4 = \\overline{\\mathrm{BC}} : 6$$ $$2 : 1 = \\overline{\\mathrm{BC}} : 6 \\implies \\overline{\\mathrm{BC}} = 2 \\times 6 = 12\\text{ cm}$$ 점 $\\mathrm{E}$는 선분 $\\overline{\\mathrm{BC}}$ 위의 점이므로 $\\overline{\\mathrm{BE}}$의 길이는 다음과 같습니다: $$\\overline{\\mathrm{BE}} = \\overline{\\mathrm{BC}} - \\overline{\\mathrm{EC}} = 12 - 4 = 8\\text{ cm}$$  각 소문항의 핵심 근거를 정리하면 다음과 같습니다. - (1) 대응각 $\\angle\\mathrm{A}=\\angle\\mathrm{DEC}$와 공통각 $\\angle\\mathrm{C}$를 정확히 명시하고, 대응점 순서 $\\triangle\\mathrm{ABC} \\sim \\triangle\\mathrm{EDC}$ 및 AA 닮음 조건을 올바르게 기술함. - (2) 대응변 비례식 $8:4 = \\overline{\\mathrm{BC}}:6$을 통해 $\\overline{\\mathrm{BC}}=12\\text{cm}$를 도출하고, $\\overline{\\mathrm{EC}}=4\\text{cm}$를 감하여 $\\overline{\\mathrm{BE}}=8\\text{cm}$를 논리 비약 없이 유도함.  따라서 최종 정답은 다음과 같습니다: (1) $\\triangle\\mathrm{ABC} \\sim \\triangle\\mathrm{EDC}$ (AA 닮음) (2) $8\\text{ cm}$ ",
+      "mappedTo": "mathPlan.nodes;displaySegments;planeMarks"
+    },
+    {
+      "id": "source-visual-feature",
+      "condition": "AA 닮음 △ABC∽△EDC와 대응 BE8 보조 라벨",
+      "mappedTo": "displaySegments;planeMarks"
+    }
+  ],
+  "newVisualInformation": [
+    "AA 닮음 △ABC∽△EDC와 대응 BE8 보조 라벨"
+  ]
+}

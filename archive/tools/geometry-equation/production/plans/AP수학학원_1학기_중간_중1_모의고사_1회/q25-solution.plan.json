@@ -1,0 +1,45 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "5" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "3" }, { "kind": "integer", "value": "5" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "E", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "5" }, { "kind": "integer", "value": "5" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "F", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "5" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "G", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "-1" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "H", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "-1" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "E", "F", "G", "H"],
+  "hiddenPointNames": ["A", "B", "C", "D", "E", "F", "G", "H"],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sCD", "refs": ["C", "D"] },
+    { "id": "sDA", "refs": ["D", "A"] },
+    { "id": "sEF", "refs": ["E", "F"] },
+    { "id": "sGH", "refs": ["G", "H"], "dashed": true }
+  ],
+  "rightAngles": [{ "id": "raE", "refs": ["D", "E", "F"], "factRole": "GIVEN" }],
+  "planeMarks": {
+    "dimensions": [
+      { "id": "top", "from": "D", "to": "C", "label": "a", "unit": "cm", "side": "ABOVE", "factRole": "GIVEN" },
+      { "id": "bottom", "from": "A", "to": "B", "label": "b", "unit": "cm", "side": "BELOW", "factRole": "GIVEN" },
+      { "id": "height", "from": "E", "to": "F", "label": "h", "unit": "cm", "side": "RIGHT", "factRole": "GIVEN" }
+    ]
+  },
+  "coordinateCanvas": { "width": 700, "height": 520 },
+  "caption": "넓이=(a+b)h/2 cm²이다. a=7, b=11, h=8을 대입하면 (7+11)×8/2=72 cm²이다.",
+  "accessibilityDescription": "무채움 사다리꼴에 a·b·h 길이 라벨, 실선 높이, 직각 표식과 밑변 아래 점선이 모두 남아 있는 풀이 그림.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "윗변 a, 아랫변 b, 수직 높이 h로 사다리꼴의 넓이는 (a+b)h/2이다. 변수의 길이비를 임의로 수치 확정하지 않는다.", "mappedTo": ["displaySegments", "rightAngles", "planeMarks.dimensions"] },
+    { "id": "c2", "condition": "원본에는 높이 실선, 위쪽 직각 표식, 밑변 아래 독립 수평 점선이 있으며 내부 회색 칠은 제거한다.", "mappedTo": ["displaySegments.4", "displaySegments.5", "rightAngles.0"] },
+    { "id": "c3", "condition": "(2) a=7, b=11, h=8을 식에 대입해 72 cm²를 구한다. 수치는 식 풀이에 반영하되 원본 그림의 변수 라벨을 유지한다.", "mappedTo": ["planeMarks.dimensions", "caption"] }
+  ],
+  "newVisualInformation": ["문제 그림과 동일한 네 변·높이 실선·윗변 직각·아래 점선·세 변수 길이 라벨, 채움 없는 배경; 풀이에는 넓이 식과 72 cm²를 설명한다."]
+}

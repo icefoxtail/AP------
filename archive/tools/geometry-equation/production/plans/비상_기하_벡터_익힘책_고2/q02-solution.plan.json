@@ -1,0 +1,89 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            2,
+            0
+          ]
+        ]
+      },
+      "height": 2,
+      "names": "DEFABC"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "B",
+        "refs": [
+          "A",
+          "C"
+        ]
+      },
+      {
+        "at": "E",
+        "refs": [
+          "D",
+          "F"
+        ]
+      }
+    ],
+    "equalLengths": [
+      {
+        "count": 2,
+        "segments": [
+          "AB",
+          "BC"
+        ]
+      }
+    ]
+  },
+  "segments": [
+    {
+      "from": "B",
+      "to": "A",
+      "style": "AUTO",
+      "color": "BLUE"
+    },
+    {
+      "from": "E",
+      "to": "D",
+      "style": "AUTO",
+      "color": "BLUE"
+    },
+    {
+      "from": "A",
+      "to": "D",
+      "style": "AUTO",
+      "color": "WARM"
+    }
+  ],
+  "caption": "삼각기둥의 BA·ED는 AB의 역방향이며 두 밑면의 벡터는 AD에 수직",
+  "sourceConditions": [
+    {
+      "id": "shape",
+      "condition": "삼각기둥의 BA·ED는 AB의 역방향이며 두 밑면의 벡터는 AD에 수직",
+      "mappedTo": [
+        "solids",
+        "segments",
+        "marks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점 라벨, 숨은선 점선, 길이·직각·동변 표시를 보존하고 면 채움 없음."
+  ]
+}

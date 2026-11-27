@@ -1,0 +1,25 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"12"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"12"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "coordinateCanvas":{"width":570,"height":340},"displayPoints":["A","B","C","D"],"displayLines":[],"displayCircles":[],
+  "displaySegments":[
+    {"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},
+    {"id":"sCD","refs":["C","D"]},{"id":"sDA","refs":["D","A"]},
+    {"id":"sAC","refs":["A","C"]},{"id":"sBD","refs":["B","D"]}
+  ],
+  "rightAngles":[{"id":"rB","refs":["A","B","C"]}],
+  "planeMarks":{"equalLengths":[{"id":"equal-diagonal","count":1,"segments":["sAC","sBD"]}]},
+  "caption":"문짝의 두 대각선 AC와 BD 길이가 같은지 확인하면 평행사변형 문틀이 직사각형으로 바르게 만들어졌는지 점검할 수 있다.",
+  "accessibilityDescription":"가로로 긴 사각형 문틀 ABCD에 왼쪽 위에서 오른쪽 아래를 잇는 대각선 AC와 왼쪽 아래에서 오른쪽 위를 잇는 대각선 BD가 서로 교차한다. 두 대각선은 같은 길이 표시를 하고 모서리 B는 직각 표시가 있다.",
+  "sourceConditions":[{"id":"door-diagonals","condition":"원본은 직사각형 문틀의 두 대각선 AC, BD가 그려진 그림이고 이 둘의 길이가 같음을 확인하는 문제이다.","mappedTo":"displaySegments:sAB,sBC,sCD,sDA,sAC,sBD;planeMarks.equalLengths:equal-diagonal"}],
+  "newVisualInformation":["두 대각선을 원본과 같은 대각 방향으로 교차시키고 일치하는 길이 눈금을 추가한다.","기본 배경 및 사각형 안쪽에 불필요한 채움을 추가하지 않는다."]
+}

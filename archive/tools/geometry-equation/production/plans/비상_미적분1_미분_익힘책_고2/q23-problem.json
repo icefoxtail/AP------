@@ -1,0 +1,97 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-5",
+      "0",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1.8,
+      4
+    ],
+    "viewport": [
+      -2.5,
+      8,
+      -6.3,
+      4.5
+    ],
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [
+        "6"
+      ],
+      "y": [
+        "-5",
+        "-2"
+      ]
+    },
+    "overlays": {
+      "circles": [
+        {
+          "id": "circle",
+          "center": [
+            "6",
+            "-2"
+          ],
+          "radiusSquared": "1"
+        }
+      ],
+      "points": [
+        {
+          "id": "P",
+          "curveX": "2"
+        },
+        {
+          "id": "C",
+          "x": "6",
+          "y": "-2",
+          "unnamed": true
+        },
+        {
+          "id": "Q",
+          "x": "27/5",
+          "y": "-6/5"
+        }
+      ],
+      "guides": [
+        {
+          "id": "cg",
+          "from": "C",
+          "axis": "BOTH"
+        }
+      ]
+    }
+  },
+  "caption": "포물선 y=x²−5와 중심 (6,−2), 반지름 1인 원 위에 P와 Q를 표시하고 원 중심의 좌표를 점선으로 안내한다.",
+  "accessibilityDescription": "포물선 y=x²−5와 중심 (6,−2), 반지름 1인 원 위에 P와 Q를 표시하고 원 중심의 좌표를 점선으로 안내한다.",
+  "sourceConditions": [
+    {
+      "id": "curve",
+      "condition": "원문·해설의 -5,0,1 다항식 계수를 상수항부터 정확히 옮긴다.",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "parabola",
+      "condition": "원본의 포물선 y=x²−5, 꼭짓점 (0,−5)",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "circle",
+      "condition": "(x−6)²+(y+2)²=1, 중심과 반지름을 고정",
+      "mappedTo": "graphPlan.overlays.circles"
+    },
+    {
+      "id": "guides",
+      "condition": "원 중심 x=6, y=−2에 이르는 점선·P·Q",
+      "mappedTo": "graphPlan.overlays"
+    }
+  ],
+  "newVisualInformation": [
+    "원문·해설의 결정적 선·점·관계만 나타내며 배경과 임의의 면 채움을 두지 않는다."
+  ]
+}

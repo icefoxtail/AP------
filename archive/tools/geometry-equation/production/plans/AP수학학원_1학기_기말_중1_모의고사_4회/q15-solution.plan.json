@@ -1,0 +1,146 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "hyung",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1/10"
+        ],
+        "domain": [
+          "0",
+          "20"
+        ],
+        "color": "BLUE",
+        "hideLabel": true
+      },
+      {
+        "id": "dong",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "1/5"
+        ],
+        "domain": [
+          "5",
+          "15"
+        ],
+        "color": "WARM",
+        "hideLabel": true
+      }
+    ],
+    "viewport": [
+      -1,
+      22,
+      -0.3,
+      2.7
+    ],
+    "axisTickValues": {
+      "x": [
+        "5",
+        "10",
+        "15",
+        "20"
+      ],
+      "y": [
+        "1",
+        "2"
+      ]
+    },
+    "axisTitles": {
+      "x": "시간(분)",
+      "y": "거리(km)"
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "H",
+          "x": "17",
+          "y": "17/10",
+          "unnamed": true
+        },
+        {
+          "id": "D",
+          "x": "13",
+          "y": "8/5",
+          "unnamed": true
+        },
+        {
+          "id": "M",
+          "x": "10",
+          "y": "1",
+          "unnamed": true
+        },
+        {
+          "id": "T",
+          "x": "15",
+          "y": "2",
+          "unnamed": true
+        },
+        {
+          "id": "E20",
+          "x": "20",
+          "y": "2",
+          "unnamed": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "gM",
+          "from": "M",
+          "axis": "x"
+        },
+        {
+          "id": "gY",
+          "from": "M",
+          "axis": "y"
+        },
+        {
+          "id": "g15",
+          "from": "T",
+          "axis": "x"
+        },
+        {
+          "id": "g20",
+          "from": "E20",
+          "axis": "x"
+        }
+      ],
+      "callouts": [
+        {
+          "id": "nameH",
+          "point": "H",
+          "text": "형",
+          "labelKind": "TEXT",
+          "direction": "SE"
+        },
+        {
+          "id": "nameD",
+          "point": "D",
+          "text": "동생",
+          "labelKind": "TEXT",
+          "direction": "NE"
+        }
+      ]
+    }
+  },
+  "caption": "형은 0~20분, 동생은 5~15분에 각각 2km 이동하므로 동생의 이동 시간은 10분이다.",
+  "accessibilityDescription": "형은 0~20분, 동생은 5~15분에 각각 2km 이동하므로 동생의 이동 시간은 10분이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "형은 (0,0)부터 (20,2)까지, 동생은 (5,0)부터 (15,2)까지 움직이고 (10,1)에서 만난다. x는 형 출발 후 분, y는 집과의 거리(km).",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.overlays",
+        "graphPlan.axisTickValues"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 직선, 이름 지시선, 5·10·15·20분 및 1·2km 눈금, 교점 안내선과 x=20 도착 시각 점선"
+  ]
+}

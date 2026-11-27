@@ -1,0 +1,66 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-2",
+      "2",
+      "2"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      1
+    ],
+    "viewport": [
+      -1.4,
+      1.4,
+      -3,
+      3
+    ],
+    "axisVariable": "t",
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "-1/2",
+        "1"
+      ],
+      "y": [
+        "-5/2",
+        "-2",
+        "2"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": -1,
+        "y": -2
+      },
+      {
+        "id": "V",
+        "x": -0.5,
+        "y": -2.5
+      },
+      {
+        "id": "R",
+        "x": 1,
+        "y": 2
+      }
+    ]
+  },
+  "caption": "t=sin x∈[−1,1]에서 a=2t²+2t−2의 최솟값은 −5/2, 최댓값은 2이므로 pq=−5이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "t=sin x, a=2t²+2t−2, −1≤t≤1",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점 t=−1/2와 양 끝점 t=−1,1의 함숫값 비교"
+  ],
+  "sourceQuote": "[단답형2] 방정식 $-2\\cos^2 x + 2\\sin x = "
+}

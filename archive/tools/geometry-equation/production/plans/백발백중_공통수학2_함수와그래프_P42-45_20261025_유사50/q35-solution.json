@@ -1,0 +1,90 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      6,
+      0,
+      7
+    ],
+    "curves": [
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "6",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "6"
+        ],
+        "color": "BLUE",
+        "label": "f1"
+      },
+      {
+        "id": "f2",
+        "kind": "LINE",
+        "coefficients": [
+          "3/2",
+          "1/2"
+        ],
+        "domain": [
+          "0",
+          "6"
+        ],
+        "color": "WARM",
+        "label": "f2"
+      },
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "2"
+        ],
+        "domain": [
+          "0",
+          "6"
+        ],
+        "color": "GREEN",
+        "label": "g"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "3"
+      ],
+      "y": [
+        "3"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "3",
+          "y": "3"
+        }
+      ]
+    }
+  },
+  "caption": "예: a=−1 및 a=1/2인 두 직선 f1,f2와 g(x)=2x−3은 항상 P(3,3)을 지난다.",
+  "accessibilityDescription": "예: a=−1 및 a=1/2인 두 직선 f1,f2와 g(x)=2x−3은 항상 P(3,3)을 지난다.",
+  "sourceConditions": [
+    {
+      "id": "identity",
+      "condition": "f∘g=g∘f에서 b=3−3a, f(x)=a(x−3)+3",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "fixed",
+      "condition": "g(x)=2x−3의 고정점 P(3,3)",
+      "mappedTo": "graphPlan.overlays.points"
+    }
+  ],
+  "newVisualInformation": [
+    "곡선의 교점과 기준선 관계를 한 좌표계에서 드러낸다."
+  ]
+}

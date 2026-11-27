@@ -1,0 +1,293 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4330127018922193",
+              "denominator": "1250000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-4330127018922193",
+              "denominator": "2500000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-4330127018922193",
+              "denominator": "2500000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-3",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4330127018922193",
+              "denominator": "5000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-4330127018922193",
+              "denominator": "2500000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4330127018922193",
+              "denominator": "5000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "4330127018922193",
+            "denominator": "1250000000000000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "O",
+        "E"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "O",
+        "F"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "A",
+        "D",
+        "O"
+      ]
+    },
+    {
+      "id": "right1",
+      "refs": [
+        "B",
+        "E",
+        "O"
+      ]
+    },
+    {
+      "id": "right2",
+      "refs": [
+        "C",
+        "F",
+        "O"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "length0",
+        "ownerSegment": "s0",
+        "text": "6"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "dist",
+        "segments": [
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "count": 1
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "원에 내접한 ABC, 세 변 AB·BC·CA에 내린 수선 OD·OE·OF, 동일 거리 눈금과 AB=6",
+  "accessibilityDescription": "원에 내접한 ABC, 세 변 AB·BC·CA에 내린 수선 OD·OE·OF, 동일 거리 눈금과 AB=6",
+  "sourceQuote": "다음 그림의 원 $\\mathrm{O}$에서 $\\overline{\\mathrm{AB}} \\perp \\overline{\\mathrm{OD}}$, $\\overline{\\mathrm{BC}} \\perp \\overline{\\mathrm{OE}}$, $\\overline{\\mathrm{AC}} \\perp \\overline{\\mathrm{OF}}$이고 $\\overline{\\mathrm{OD}} = \\overline{\\mathrm{OE}} = \\overline{\\mathrm{OF}}$이다. $\\overline{\\mathrm{AB}} = 6\\,\\text{cm}$일 때, 원 $\\mathrm{O}$의 넓이는?",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "원에 내접한 ABC, 세 변 AB·BC·CA에 내린 수선 OD·OE·OF, 동일 거리 눈금과 AB=6",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원에 내접한 ABC, 세 변 AB·BC·CA에 내린 수선 OD·OE·OF, 동일 거리 눈금과 AB=6"
+  ]
+}

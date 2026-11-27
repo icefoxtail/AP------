@@ -1,0 +1,211 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "64335",
+              "denominator": "10000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 430
+  },
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eq0",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sCA"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 50,
+        "label": "50",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "value": 115,
+        "label": "x",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 65,
+        "label": "65",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a3",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "value": 65,
+        "label": "65",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "1번 문제: 등변 AB=AC, 꼭지각 50°, BC의 연장선과 C의 외각 x.",
+  "accessibilityDescription": "1번 문제 그림: 등변 AB=AC, 꼭지각 50°, BC의 연장선과 C의 외각 x.",
+  "sourceConditions": [
+    {
+      "id": "src-q1",
+      "condition": " 조건: $\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$인 이등변삼각형이고, 꼭지각 $\\angle\\mathrm{A}=50^\\circ$입니다. 구할 대상: 꼭짓점 $\\mathrm{C}$에서의 외각 $\\angle x$의 크기(도 단위)를 구합니다.  먼저 풀이에 쓸 성질을 순서대로 정리합니다. 1) 이등변삼각형의 두 밑각의 크기는 서로 같습니다: $\\angle\\mathrm{B} = \\angle\\mathrm{ACB}$. 2) 삼각형의 세 내각의 크기의 합은 $180^\\circ$이므로 $\\angle\\mathrm{ACB} = \\dfrac{180^\\circ - \\angle\\mathrm{A}}{2}$입니다. 3) 평각의 성질 또는 삼각형 외각의 성질에 의해 $\\angle x = 180^\\circ - \\angle\\mathrm{ACB} = \\angle\\mathrm{A} + \\angle\\mathrm{B}$입니다.  밑각 $\\angle\\mathrm{ACB}$의 크기를 계산하면 다음과 같습니다: $$\\angle\\mathrm{B} = \\angle\\mathrm{ACB} = \\frac{180^\\circ - 50^\\circ}{2} = \\frac{130^\\circ}{2} = 65^\\circ$$ 따라서 외각 $\\angle x$의 크기는 평각 $180^\\circ$에서 내각 $65^\\circ$를 뺀 값입니다: $$\\angle x = 180^\\circ - 65^\\circ = 115^\\circ$$ (또는 삼각형의 한 외각의 크기는 이웃하지 않는 두 내각의 크기의 합과 같으므로 $\\angle x = \\angle\\mathrm{A} + \\angle\\mathrm{B} = 50^\\circ + 65^\\circ = 115^\\circ$로 일치합니다.)  각 선지를 확인하면 다음과 같습니다. ① $100^\\circ$: 거짓 ($115^\\circ$와 불일치) ② $105^\\circ$: 거짓 ($115^\\circ$와 불일치) ③ $110^\\circ$: 거짓 ($115^\\circ$와 불일치) ④ $115^\\circ$: 참 (계산된 $\\angle x = 115^\\circ$와 정확히 일치) ⑤ $120^\\circ$: 거짓 ($115^\\circ$와 불일치)  따라서 정답은 ④입니다. ",
+      "mappedTo": "mathPlan.nodes;displaySegments;planeMarks"
+    },
+    {
+      "id": "source-visual-feature",
+      "condition": "등변 AB=AC, 꼭지각 50°, BC의 연장선과 C의 외각 x; 풀이에 필요한 추가 관계",
+      "mappedTo": "displaySegments;planeMarks"
+    }
+  ],
+  "newVisualInformation": [
+    "등변 AB=AC, 꼭지각 50°, BC의 연장선과 C의 외각 x; 풀이에 필요한 추가 관계"
+  ]
+}

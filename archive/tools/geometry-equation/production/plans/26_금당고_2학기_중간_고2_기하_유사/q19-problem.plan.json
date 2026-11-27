@@ -1,0 +1,26 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-2, 20, -12, 12],
+    "curves": [
+      { "id": "par", "kind": "X_OF_Y", "coefficients": ["0", "0", "1/60"], "domain": ["-12", "12"], "branch": "BOTH" }
+    ],
+    "axisTickValues": { "x": [], "y": [] },
+    "overlays": {
+      "points": [
+        { "id": "O", "x": "0", "y": "0" },
+        { "id": "A", "x": "15", "y": "0" },
+        { "id": "B", "x": "18", "y": "4" },
+        { "id": "P", "x": "3/5", "y": "6" }
+      ],
+      "segments": [
+        { "id": "sBP", "from": "B", "to": "P" },
+        { "id": "sPA", "from": "P", "to": "A" }
+      ]
+    }
+  },
+  "pointNames": { "O": "O", "A": "A", "B": "B", "P": "P" },
+  "caption": "원점 O가 꼭짓점이고 A가 초점인 포물선과 외부의 점 B, 임의의 점 P를 잇는 경로 B-P-A.",
+  "accessibilityDescription": "원점 O를 꼭짓점으로 하고 A를 초점으로 하는 포물선 위의 임의 점 P에서 공장 B와 초점 A로 향하는 선분 BP, PA를 그린 발문 관계도. 최단경로 점은 아직 지정하지 않았다."
+}

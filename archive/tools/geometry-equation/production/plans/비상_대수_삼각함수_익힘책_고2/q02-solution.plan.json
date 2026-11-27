@@ -1,0 +1,14 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"12"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"12"},{"kind":"integer","value":"-5"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["O","H","P"],"displayLines":[],"displayCircles":[],"displaySegments":[{"id":"sOH","refs":["O","H"]},{"id":"sHP","refs":["H","P"]},{"id":"sOP","refs":["O","P"]}],
+  "rightAngles":[{"id":"rH","refs":["O","H","P"]}],"planeMarks":{"expressionLabels":[{"id":"x","ownerSegment":"sOH","text":"12"},{"id":"y","ownerSegment":"sHP","text":"5"},{"id":"r","ownerSegment":"sOP","text":"13"}]},
+  "caption":"제4사분면에서 sinθ=−5/13이면 가로 12, 아래쪽 세로 5, 빗변 13인 직각삼각형이 된다.",
+  "accessibilityDescription":"원점 O에서 오른쪽 H까지 12, 아래쪽 P까지 5, 빗변 OP=13이며 H에는 직각표식이 있다.",
+  "sourceConditions":[{"id":"sin","condition":"sinθ=−5/13, θ는 제4사분면","mappedTo":["P","sHP","sOP"]},{"id":"cos","condition":"cosθ=12/13, tanθ=−5/12","mappedTo":["sOH","x","y","r"]}],
+  "newVisualInformation":["4사분면의 부호와 5-12-13 삼각형 변 길이를 동시에 시각화"]
+}

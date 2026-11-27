@@ -1,0 +1,32 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"16"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"24"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"F","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"40"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"40"},{"kind":"integer","value":"12"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"64"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "coordinateCanvas":{"width":680,"height":360},
+  "displayLines":[],
+  "displayCircles":[],
+  "displayPoints":["A","B","C","D","E","F"],
+  "displaySegments":[
+    {"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]},
+    {"id":"sDE","refs":["D","E"]},{"id":"sEF","refs":["E","F"]},{"id":"sFD","refs":["F","D"]}
+  ],
+  "rightAngles":[{"id":"rC","refs":["A","C","B"]},{"id":"rF","refs":["D","F","E"]}],
+  "caption":"합동 조건을 판정할 서로 다른 두 직각삼각형 ABC와 DEF.",
+  "accessibilityDescription":"왼쪽 직각삼각형 ABC에서 C가 직각이고, 오른쪽 직각삼각형 DEF에서 F가 직각이다. 두 직각 표식 외에 길이·각의 같음을 나타내는 표시는 없으며 선택지의 조건을 따로 적용한다.",
+  "sourceConditions":[
+    {"id":"two-triangles","condition":"원문은 서로 떨어진 두 직각삼각형 ABC, DEF를 제시한다. 두 삼각형의 크기는 달라도 되는 대표 배치이다.","mappedTo":"mathPlan.nodes:A,B,C,D,E,F;displaySegments:sAB,sBC,sCA,sDE,sEF,sFD"},
+    {"id":"right-angles","condition":"두 직각삼각형에서 ∠C=90°, ∠F=90°이다.","mappedTo":"rightAngles:rC,rF"},
+    {"id":"choices","condition":"①~⑤에서 가정하는 추가 동일 조건은 선택지 텍스트에서만 제공된다. 하나의 조건을 미리 그림에 적용하지 않는다.","mappedTo":"displaySegments;rightAngles"}
+  ],
+  "newVisualInformation":["찢겨 읽기 어려운 원본 스캔의 두 삼각형을 분리하여 모두 보인다.","C와 F의 직각표식을 엔진 rightAngles로 재현한다.","특정 선택지를 정답으로 암시하는 길이·예각 표식과 면 채움은 없다."]
+}

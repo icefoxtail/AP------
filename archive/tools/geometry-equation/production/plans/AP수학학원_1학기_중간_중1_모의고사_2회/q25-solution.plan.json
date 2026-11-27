@@ -1,0 +1,40 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "4" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "4" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D"],
+  "hiddenPointNames": ["A", "B", "C", "D"],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sCD", "refs": ["C", "D"] },
+    { "id": "sDA", "refs": ["D", "A"] }
+  ],
+  "rightAngles": [
+    { "id": "raA", "refs": ["D", "A", "B"], "factRole": "GIVEN" }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      { "id": "width", "from": "D", "to": "C", "label": "2x+3", "unit": "cm", "side": "ABOVE", "factRole": "GIVEN" },
+      { "id": "height", "from": "B", "to": "C", "label": "x", "unit": "cm", "side": "RIGHT", "factRole": "GIVEN" }
+    ]
+  },
+  "coordinateCanvas": { "width": 700, "height": 480 },
+  "caption": "직사각형 둘레는 2[(2x+3)+x]=6x+6 cm이다. x=4일 때 가로 11 cm·세로 4 cm이고 둘레는 30 cm이다.",
+  "accessibilityDescription": "무채움 직사각형의 윗변 (2x+3) cm, 오른쪽 변 x cm와 한 모서리 직각. 둘레 식은 6x+6 cm.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "가로 (2x+3) cm, 세로 x cm인 직사각형의 두 변 길이를 그대로 라벨로 보인다. 임의 비율은 계산 조건으로 쓰지 않는다.", "mappedTo": ["displaySegments", "planeMarks.dimensions"] },
+    { "id": "c2", "condition": "직각 모서리로 직사각형임을 표현하며 내부는 채우지 않는다.", "mappedTo": ["rightAngles.0"] },
+    { "id": "c3", "condition": "둘레는 6x+6 cm, x=4일 때 30 cm임을 풀이 캡션에 명시한다.", "mappedTo": ["caption", "planeMarks.dimensions"] }
+  ],
+  "newVisualInformation": ["가로 (2x+3) cm·세로 x cm 치수 두 개, 윤곽 네 선과 직각 표식, 면 채움 없음; 해설 식 6x+6과 결과 30 cm를 연결한다."]
+}

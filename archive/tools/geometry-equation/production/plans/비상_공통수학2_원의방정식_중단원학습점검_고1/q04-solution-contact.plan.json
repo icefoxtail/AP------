@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1","conic":{"kind":"CIRCLE","center":["0","0"],"rSquared":"36"},
+  "lines":[{"id":"l","slope":"2*sqrt(5)/5","intercept":"-18*sqrt(5)/5","label":"2x-sqrt(5)y=18","tangent":true}],
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"P","kind":"FOOT","from":"O","onto":"l","rightAngle":true}],
+  "segments":[{"id":"OP","from":"O","to":"P","label":"6"}],
+  "caption":"접점 P(4,-2√5)와 중심 O를 이으면 접선에 수직인 반지름 6이 된다.",
+  "accessibilityDescription":"원 위의 접점 P(4,-2√5)에서 그은 접선과 중심 O에서 P로 이어진 반지름.",
+  "sourceQuote":"원 위의 점 $(4,-2\\sqrt5)$를 지나는 접선",
+  "sourceConditions":[{"id":"contact","condition":"P(4,-2√5), OP=6, OP⊥l","mappedTo":["points.P","segments.OP","lines.l"]}],
+  "newVisualInformation":["접선과 반지름의 접점 직각 관계를 실제 기하 위치로 나타낸다."]
+}

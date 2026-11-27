@@ -1,0 +1,54 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "universe": {
+      "name": "U",
+      "count": "35",
+      "countUnit": "단위"
+    },
+    "sets": [
+      {
+        "id": "A",
+        "name": "A",
+        "count": "21",
+        "countUnit": "단위"
+      },
+      {
+        "id": "B",
+        "name": "B",
+        "count": "20",
+        "countUnit": "단위"
+      }
+    ],
+    "shade": "A∩B"
+  },
+  "caption": "확률을 35등분한 비율 모형에서 20대 A 21단위, 여자 B 20단위, 합집합 30단위이므로 교집합 11단위이다.",
+  "accessibilityDescription": "가상 확률 단위 35개를 기준으로 한 두 원의 교집합 강조 그림이며 실제 수영장 회원이 35명이란 뜻은 아니다.",
+  "sourceConditions": [
+    {
+      "id": "age",
+      "condition": "P(A)=3/5=21/35",
+      "mappedTo": [
+        "diagram.sets"
+      ]
+    },
+    {
+      "id": "women",
+      "condition": "P(B)=4/7=20/35",
+      "mappedTo": [
+        "diagram.sets"
+      ]
+    },
+    {
+      "id": "union",
+      "condition": "P(A∪B)=6/7=30/35",
+      "mappedTo": [
+        "diagram.shade"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "교집합 11/35는 21/35+20/35−30/35로 얻는다. 교집합 내부 직접 수치 표기는 SET_REGION_COUNT_LABEL 미지원."
+  ]
+}

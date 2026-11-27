@@ -1,0 +1,50 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-2",
+      "-1",
+      "1"
+    ],
+    "domain": [
+      -2.5,
+      3.5
+    ],
+    "viewport": [
+      -3,
+      4,
+      -3,
+      6
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [
+        -1,
+        2
+      ],
+      "y": []
+    }
+  },
+  "caption": "위로 열린 포물선의 x절편은 −1과 2이다. a>0인 경우의 대표 모양으로 a=1을 선택했으며 계수의 실제 값은 주어지지 않았다.",
+  "accessibilityDescription": "x축과 −1, 2에서 만나는 위로 열린 포물선 모양 예시.",
+  "sourceConditions": [
+    {
+      "id": "positive-leading-coefficient",
+      "condition": "위로 열린 포물선이므로 이차항 계수 a는 양수이다. 대표 그림으로만 a=1을 쓴다.",
+      "mappedTo": "graphPlan.coefficients, graphPlan.viewport"
+    },
+    {
+      "id": "roots",
+      "condition": "이차함수 $y=ax^2+bx+c$의 그래프는 아래로 볼록하고 $x$축과 $x=-1$, $x=2$에서 만난다. 다음 중 옳지 않은 것은? (4점)<br><img src=\"assets/images/21_동산중_2학기_중간_중3_수학/q09.png\" alt=\"근이 -1과 2이고 위로 열린 포물선\" />",
+      "mappedTo": "graphPlan.axisTickValues"
+    }
+  ],
+  "newVisualInformation": [
+    "흐릿한 원본 스캔 대신 x=-1, x=2 두 절편의 눈금을 명확히 한다.",
+    "문제에서 미지인 계수 a의 값을 확정하지 않는다."
+  ]
+}

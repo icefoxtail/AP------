@@ -1,0 +1,94 @@
+{
+  "sourceQuote": "실수 $\\theta$에 대하여 $\\sqrt{\\sin\\theta",
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "outputType": "POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "inputs": []
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P"
+  ],
+  "hiddenPointNames": [
+    "P"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "OP",
+      "refs": [
+        "O",
+        "P"
+      ],
+      "arrow": "END"
+    }
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "sign",
+        "at": [
+          -3,
+          2
+        ],
+        "text": "sinθ>0, cosθ<0",
+        "labelKind": "TEXT"
+      }
+    ]
+  },
+  "caption": "sinθ>0, cosθ<0은 제2사분면의 동경이다.",
+  "sourceConditions": [
+    {
+      "id": "h12",
+      "condition": "sinθ>0, cosθ<0",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x좌표 음수, y좌표 양수인 동경"
+  ]
+}

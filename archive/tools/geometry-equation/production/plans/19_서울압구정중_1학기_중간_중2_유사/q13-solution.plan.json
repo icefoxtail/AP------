@@ -1,0 +1,15 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [{ "kind": "SET", "pieces": [{ "lo": { "value": "1", "state": "OPEN" }, "hi": null }], "label": "둘째 식" }]
+  },
+  "numberLineCaption": { "text": "x가 1보다 큰 범위" },
+  "caption": "첫째 부등식의 해 x>−2에서 a=3b, b<0이므로 둘째 부등식 2bx<2b의 해는 x>1이다",
+  "accessibilityDescription": "수직선에서 1은 속이 빈 끝점으로 표시하고 1보다 큰 오른쪽 범위를 굵게 그렸다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "a=3b, b<0", "mappedTo": "numberLineCaption.text" },
+    { "id": "c2", "condition": "2bx<2b와 2b<0에서 x>1", "mappedTo": "numberLine.rows[0].pieces[0]" }
+  ],
+  "newVisualInformation": ["음수로 나누어 열린 경계 1의 오른쪽이 해가 되는 방향을 시각화한다"]
+}

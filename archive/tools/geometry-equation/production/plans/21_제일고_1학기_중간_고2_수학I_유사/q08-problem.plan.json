@@ -1,0 +1,22 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "graphPlan": {
+    "family":"multi-curve", "viewport":[0,14,-1,4],
+    "curves":[{"id":"f","kind":"LOGARITHMIC","base":"3","coefficients":["1","1","0","0"],"domain":["1","13"]}],
+    "axisTickValues":{"x":[],"y":[]},
+    "overlays": {
+      "points":[{"id":"A","x":"9","y":"2"},{"id":"B","x":"9","y":"0"},{"id":"C","x":"11","y":"0"},{"id":"D","x":"11","y":"2"}],
+      "segments":[{"id":"AB","from":"A","to":"B"},{"id":"BC","from":"B","to":"C","length":true},{"id":"CD","from":"C","to":"D"},{"id":"DA","from":"D","to":"A"}]
+    }
+  },
+  "pointNames":{"A":"A","B":"B","C":"C","D":"D"},
+  "caption":"로그곡선 y=log_3 x 위의 A에서 x축에 수선을 내려 B를 얻고, 오른쪽으로 BC=2인 정사각형 ABCD를 놓았다. 문제 그림에는 미지 점의 좌표를 적지 않는다.",
+  "accessibilityDescription":"증가하는 로그곡선 위 꼭짓점 A와 x축의 B,C 및 첫사분면의 D가 정사각형을 이루고 BC에 길이 2가 표시되어 있다.",
+  "sourceQuote":"한 변의 길이가 $2$인 정사각형 $ABCD$",
+  "sourceConditions":[
+    {"id":"curve","condition":"A는 y=log_3 x 위, 3²=9의 위치를 무좌표 라벨로 표시","mappedTo":"graphPlan.curves[0],graphPlan.overlays.points[0]"},
+    {"id":"square","condition":"AB⊥x축, B,C는 x축 위, C는 B 오른쪽, 정사각형 한 변=2","mappedTo":"graphPlan.overlays.points,graphPlan.overlays.segments"},
+    {"id":"no-answer","condition":"a+b를 묻지만 문제 그림에는 D 좌표를 표기하지 않음","mappedTo":"graphPlan.overlays.points[3],pointNames"}
+  ],
+  "newVisualInformation":["로그곡선과 정사각형의 실제 접점", "BC 길이 2와 점들의 위상 관계"]
+}

@@ -1,0 +1,102 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      9,
+      -15,
+      3
+    ],
+    "curves": [
+      {
+        "id": "mleft",
+        "kind": "LINE",
+        "coefficients": [
+          "-9",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ],
+        "domainStates": [
+          "OPEN",
+          "CLOSED"
+        ],
+        "color": "BLUE",
+        "hideLabel": true
+      },
+      {
+        "id": "mright",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "-7",
+          "1"
+        ],
+        "domain": [
+          "3",
+          "8"
+        ],
+        "color": "BLUE",
+        "hideLabel": true
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "3",
+        "7"
+      ],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "a",
+      "y": "m"
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "L",
+          "x": "0",
+          "y": "-9",
+          "unnamed": true
+        },
+        {
+          "id": "K",
+          "x": "3",
+          "y": "-12",
+          "unnamed": true
+        },
+        {
+          "id": "A",
+          "x": "7",
+          "y": "0",
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "최솟값 m(a)는 0<a≤3일 때 -a-9, a>3일 때 a(a-7)이며 m=0은 a=7에서만 성립한다.",
+  "accessibilityDescription": "a를 가로축으로 한 최솟값의 구간별 그래프. 0<a≤3은 내려가는 직선, a>3은 위로 열린 포물선이고 (7,0)을 지난다.",
+  "sourceConditions": [
+    {
+      "id": "hc-08-1",
+      "condition": "0<a≤3에서 최솟값 -a-9",
+      "mappedTo": "graphPlan.curves[0]"
+    },
+    {
+      "id": "hc-08-2",
+      "condition": "a>3에서 최솟값 a(a-7)",
+      "mappedTo": "graphPlan.curves[1]"
+    },
+    {
+      "id": "hc-08-3",
+      "condition": "a=7에서 최솟값 0",
+      "mappedTo": "graphPlan.overlays.points"
+    }
+  ],
+  "newVisualInformation": [
+    "매개변수 a=3에서 최솟값 식이 바뀌는 경계와 유일한 영점 a=7을 시각화한다."
+  ]
+}

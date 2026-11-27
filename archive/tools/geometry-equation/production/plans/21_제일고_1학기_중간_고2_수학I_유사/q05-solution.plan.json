@@ -1,0 +1,18 @@
+{
+  "capability":"trigonometric-spike-v1",
+  "graphPlan": {
+    "family":"trigonometric", "function":"SIN", "coefficients":["2","1","0"], "phasePi":"1/6",
+    "sourceDomain":{"kind":"INTERVAL_PI","rangePi":["0","2"],"states":["CLOSED","OPEN"]},
+    "keyPoints":true,"axisTickPi":true,
+    "axisTickValues":{"x":["5/6","11/6"],"y":["-2","2"]}
+  },
+  "caption":"원식 √3sin x+cos x=0은 2sin(x+π/6)=0과 같고, 범위 0≤x<2π의 두 해는 5π/6, 11π/6이다.",
+  "accessibilityDescription":"y=2sin(x+π/6) 그래프가 0부터 2π 미만의 구간에서 x축과 두 번 만난다.",
+  "sourceQuote":"$0 \\le x < 2\\pi$에서 방정식 $\\sqrt{3}\\sin x = -\\cos x$",
+  "sourceConditions":[
+    {"id":"equiv","condition":"√3sin x+cos x=2sin(x+π/6)","mappedTo":"graphPlan.coefficients,graphPlan.phasePi"},
+    {"id":"roots","condition":"x=5π/6,11π/6","mappedTo":"graphPlan.axisTickPi,graphPlan.axisTickValues.x"},
+    {"id":"domain","condition":"0≤x<2π","mappedTo":"graphPlan.sourceDomain"}
+  ],
+  "newVisualInformation":["삼각방정식의 두 x축 교점"]
+}

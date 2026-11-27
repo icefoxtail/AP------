@@ -1,0 +1,18 @@
+{
+  "capability":"number-line-figure-v1",
+  "caption":"자연수 x가 오직 3만 해가 되려면 상한 t=(a+2)/2가 3 이상 4 미만이어야 함을 수직선으로 보인다.",
+  "accessibilityDescription":"상한 t가 들어갈 구간은 3을 포함하고 4는 포함하지 않는 3 이상 4 미만이다. 점 3은 허용되는 첫 자연수이고 4는 두 번째 자연수가 생기는 경계이므로 제외된다.",
+  "sourceConditions":[
+    {"id":"s1","condition":"x²-3x+2>0인 자연수는 x=3,4,5,...이다. x=3은 들어오고 x=4는 들어오면 안 된다.","mappedTo":["numberLine.rows[0].pieces[0]","numberLine.rows[1].points"]},
+    {"id":"s2","condition":"2x-a≤2는 x≤t, t=(a+2)/2와 같다. 자연수해 하나의 조건은 3≤t<4이고 이것은 4≤a<6에 해당한다.","mappedTo":["numberLine.rows[0].pieces[0]","caption"]}
+  ],
+  "newVisualInformation":["3은 닫힌 끝점, 4는 열린 끝점으로 상한 t의 허용 범위를 정확히 구분한다.","점 3과 4를 대응시켜 자연수해가 두 개가 되는 경계를 시각적으로 드러낸다.","아래 구간의 채움은 없고 구간선·끝점과 숫자만 쓴다."],
+  "numberLine":{
+    "axisVariable":false,
+    "rows":[
+      {"kind":"SET","label":"상한 t","pieces":[{"lo":{"value":"3","state":"CLOSED"},"hi":{"value":"4","state":"OPEN"}}]},
+      {"kind":"POINTS","label":"경계 정수","within":1,"points":[{"id":"N3","value":"3","hideName":true},{"id":"N4","value":"4","hideName":true}]}
+    ]
+  },
+  "numberLineCaption":{"text":"3≤t<4에서 t=(a+2)/2"}
+}

@@ -1,0 +1,17 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {"parameter": {"name": "a", "value": "13"}, "rows": [
+    {"kind": "SET", "label": "첫째 해", "pieces": [{"lo": null, "hi": {"value": "6", "state": "OPEN"}}]},
+    {"kind": "SET", "label": "둘째 해", "pieces": [{"lo": {"param": {"mul": "1/2", "add": "-3"}, "state": "CLOSED"}, "hi": null}]},
+    {"kind": "RESULT", "label": "공통 해", "integerPoints": true}
+  ]},
+  "numberLineCaption": {"text": "예: a=13에서 정수해 둘"},
+  "caption": "첫째 해는 x<6이고 둘째 해는 x≥(a−6)/2이다. 예를 들어 a=13이면 3.5≤x<6이고 정수해가 4, 5뿐이다. 전체 가능한 범위는 12<a≤14이다.",
+  "accessibilityDescription": "a를 13으로 잡은 예시에서 6 미만의 반직선과 3.5 이상의 반직선이 겹치는 구간의 정수 4, 5를 표시한다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "5x−3<3(x+3)에서 x<6", "mappedTo": ["numberLine.rows[0].pieces"]},
+    {"id": "c2", "condition": "x+a≤3x+6에서 x≥(a−6)/2", "mappedTo": ["numberLine.rows[1].pieces"]},
+    {"id": "c3", "condition": "12<a≤14 중 예시 a=13에서 하한 7/2와 두 정수해 4,5", "mappedTo": ["numberLine.parameter", "numberLine.rows[2].integerPoints"]}
+  ],
+  "newVisualInformation": ["매개변수의 대표값 a=13을 명시한 두 반직선의 교집합과 정수점 4·5"]
+}

@@ -1,0 +1,76 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "-1≤x≤3에서 이차함수 y=2x²+8x−3의 최댓값",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "8",
+          "2"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -1,
+      3
+    ],
+    "viewport": [
+      -2,
+      4,
+      -12,
+      42
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1,
+        "y": -9
+      },
+      {
+        "id": "B",
+        "x": 3,
+        "y": 39
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-1",
+        "-9"
+      ],
+      "B": [
+        "3",
+        "39"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "−1≤x≤3에서 y=2x²+8x−3은 구간 내에서 증가한다. 왼쪽 끝점 A(−1,−9), 오른쪽 끝점 B(3,39)가 최댓값·최솟값의 위치이다.",
+  "accessibilityDescription": "포물선 y=2x²+8x−3의 폐구간 −1≤x≤3에서 왼쪽 끝점과 오른쪽 끝점을 표시한 그래프.",
+  "sourceConditions": [
+    {
+      "id": "G06S1",
+      "condition": "정의역 −1≤x≤3의 끝점에서 함수값은 −9와 39",
+      "mappedTo": "graphPlan.sourceDomain, graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "현재 수직선만 있는 해설에 실제 이차함수 그래프와 끝점의 y좌표를 보충하여 최댓값 39가 오른쪽 끝에서 나온다는 사실을 나타낸다."
+  ]
+}

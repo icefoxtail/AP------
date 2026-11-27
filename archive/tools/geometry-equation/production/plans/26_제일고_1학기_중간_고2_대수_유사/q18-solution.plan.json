@@ -1,0 +1,56 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-9, 13, -2, 3],
+    "curves": [
+      {
+        "id": "left",
+        "kind": "LOGARITHMIC",
+        "base": "3",
+        "coefficients": ["1", "-1", "2", "0"],
+        "domain": ["-9", "1999/1000"],
+        "color": "BLUE",
+        "label": "f(x)"
+      },
+      {
+        "id": "right",
+        "kind": "LOGARITHMIC",
+        "base": "3",
+        "coefficients": ["1", "1", "-2", "0"],
+        "domain": ["2001/1000", "13"],
+        "color": "BLUE",
+        "hideLabel": true
+      }
+    ],
+    "axisTickValues": {"x": ["2"], "y": ["2"]},
+    "overlays": {
+      "lines": [
+        {"id": "asym", "x": "2", "style": "DASHED", "label": "x=2"},
+        {"id": "top", "slope": "0", "intercept": "2", "style": "DASHED", "label": "y=2"}
+      ],
+      "points": [
+        {"id": "A", "x": "1", "y": "0", "coordinates": true},
+        {"id": "B", "x": "3", "y": "0", "coordinates": true},
+        {"id": "C", "x": "-7", "y": "2", "coordinates": true},
+        {"id": "D", "x": "11", "y": "2", "coordinates": true}
+      ],
+      "segments": [
+        {"id": "sCA", "from": "C", "to": "A"},
+        {"id": "sAB", "from": "A", "to": "B"},
+        {"id": "sBD", "from": "B", "to": "D"},
+        {"id": "sCD", "from": "C", "to": "D"}
+      ]
+    }
+  },
+  "caption": "y=log_3|x-2|의 두 가지와 x=2 점근선, y=2 수평선을 그린다. A(1,0), B(3,0), C(-7,2), D(11,2)가 만든 사다리꼴의 밑변은 2와 18, 높이는 2이므로 넓이는 20이다.",
+  "accessibilityDescription": "x=2의 좌우에 갈라진 대칭 로그곡선과 점선 y=2. x축의 A(1,0), B(3,0)와 윗변의 C(-7,2), D(11,2)를 잇는 사다리꼴의 네 변을 표시한다.",
+  "sourceQuote": "네 점 A, B, C, D로 이루어진 사각형의 넓이는?",
+  "sourceConditions": [
+    {"id": "c1", "condition": "f(x)=log_3|x-2|는 x<2에서 log_3(2-x), x>2에서 log_3(x-2)", "mappedTo": ["graphPlan.curves[0]", "graphPlan.curves[1]"]},
+    {"id": "c2", "condition": "x축 교점 A(1,0), B(3,0)", "mappedTo": ["graphPlan.overlays.points[0]", "graphPlan.overlays.points[1]"]},
+    {"id": "c3", "condition": "y=2 교점 C(-7,2), D(11,2)", "mappedTo": ["graphPlan.overlays.lines[1]", "graphPlan.overlays.points[2]", "graphPlan.overlays.points[3]"]},
+    {"id": "c4", "condition": "AB와 CD가 평행인 사다리꼴", "mappedTo": ["graphPlan.overlays.segments"]}
+  ],
+  "newVisualInformation": ["두 로그 가지, 수직 점근선, 네 교점의 실좌표, 사다리꼴의 네 변을 함께 그려 길이 2·18과 높이 2를 비교한다."]
+}

@@ -1,0 +1,21 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "graphPlan":{"family":"multi-curve","viewport":[-3,3,-5,4],"curves":[
+    {"id":"upper","kind":"Y_OF_X","coefficients":["2","0","-1/2"],"domain":["-3","3"],"color":"BLUE","label":"y=-1/2*x^2+2"},
+    {"id":"lower","kind":"Y_OF_X","coefficients":["-4","0","1"],"domain":["-3","3"],"color":"WARM","label":"y=x^2-4"}
+  ],"axisTickValues":{"x":["-2","2"],"y":["-4","2"]},"overlays":{
+    "points":[{"id":"A","x":"2/3","y":"16/9","coordinates":true},{"id":"B","x":"-2/3","y":"16/9"},{"id":"C","x":"-2/3","y":"-32/9"},{"id":"D","x":"2/3","y":"-32/9","coordinates":true}],
+    "segments":[{"id":"AB","from":"A","to":"B","length":true},{"id":"BC","from":"B","to":"C"},{"id":"CD","from":"C","to":"D"},{"id":"DA","from":"D","to":"A","length":true}],
+    "rightAngles":[{"id":"ra","at":"A","from":["B","D"]},{"id":"rb","at":"B","from":["A","C"]},{"id":"rc","at":"C","from":["B","D"]}]
+  }},
+  "caption":"A의 x좌표를 t로 두면 가로 2t, 세로 6−3t²/2이다. t=2/3에서 둘레가 최대 40/3이다.",
+  "accessibilityDescription":"위아래 두 포물선 사이의 최적 직사각형 A B C D를 보여 준다. 꼭짓점 A와 D 좌표, 수평 폭 4/3, 수직 높이 16/3과 직각 표식 세 개를 표시하고 면은 채우지 않는다.",
+  "sourceQuote":"P(t)=−3t²+4t+12=−3(t−2/3)²+40/3, 최댓값 40/3.",
+  "sourceConditions":[
+    {"id":"curves","condition":"A,B는 y=−x²/2+2 위, C,D는 y=x²−4 위","mappedTo":"graphPlan.curves"},
+    {"id":"extremizer","condition":"최적 t=2/3, A=(2/3,16/9), D=(2/3,−32/9)","mappedTo":"graphPlan.overlays.points"},
+    {"id":"dimensions","condition":"AB=4/3, AD=16/3, 둘레 40/3","mappedTo":"graphPlan.overlays.segments"},
+    {"id":"right","condition":"직사각형의 3개 직각표식; 4번째는 엔진 한도에 걸림","mappedTo":"graphPlan.overlays.rightAngles"}
+  ],
+  "newVisualInformation":["최대 둘레의 실제 t 값에서 네 점·가로/세로 길이를 선과 길이 라벨로 보인다.","ENGINE_CAPABILITY_PENDING: 네 꼭짓점의 직각 표식 전부를 보이려면 overlay rightAngles의 최대 수 3→4 지원이 필요하다."]
+}

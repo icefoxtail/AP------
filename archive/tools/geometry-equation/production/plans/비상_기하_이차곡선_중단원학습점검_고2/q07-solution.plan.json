@@ -1,0 +1,67 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "(x-2)²=-2(y+1/2), 초점 (2,-1), 준선 y=0",
+  "caption": "평행이동된 포물선의 초점과 준선",
+  "accessibilityDescription": "꼭짓점 V(2,-1/2)를 갖는 아래로 열린 포물선에서 초점 F(2,-1)와 준선 y=0을 표시한다.",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "2",
+      "-1/2"
+    ],
+    "p": "-1/2",
+    "axis": "Y"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "coordinates": true
+    },
+    {
+      "id": "V",
+      "kind": "VERTEX",
+      "coordinates": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "d",
+      "role": "DIRECTRIX",
+      "label": "y=0",
+      "dashed": true
+    }
+  ],
+  "segments": [
+    {
+      "id": "FV",
+      "from": "F",
+      "to": "V"
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "완전제곱식 (x-2)²=-2(y+1/2)",
+      "mappedTo": [
+        "conic",
+        "points[2]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "초점 (2,-1), 준선 y=0",
+      "mappedTo": [
+        "points[1]",
+        "lines[0]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "이동방향과 준선 위치를 수치 좌표로 직접 보인다."
+  ]
+}

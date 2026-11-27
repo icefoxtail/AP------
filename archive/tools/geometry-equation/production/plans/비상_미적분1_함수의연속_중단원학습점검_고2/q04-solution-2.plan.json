@@ -1,0 +1,9 @@
+{
+  "capability":"sqrt-affine-spike-v1",
+  "graphPlan":{"family":"sqrt-affine","radicand":["-2","1"],"sourceDomain":{"kind":"CLOSED_INTERVAL","range":["3","6"]},"domain":[3,6],"viewport":[2.5,6.5,0.5,2.5],"requiredPoints":[{"id":"A","x":3,"y":1},{"id":"B","x":6,"y":2}],"axisTickValues":{"x":[3,6],"y":[1,2]}},
+  "caption":"⑵ y=√(x-2)는 [3,6]에서 증가하므로 왼쪽 끝점 (3,1)이 최솟값, 오른쪽 (6,2)이 최댓값이다.",
+  "accessibilityDescription":"x=3에서 1로 시작해 x=6에서 2까지 증가하는 무리함수의 닫힌구간 그래프.",
+  "sourceQuote":"⑵ $f(x)=\\sqrt{x-2} \\quad [3, 6]$",
+  "sourceConditions":[{"id":"c1","condition":"y=sqrt(x-2), 제한 구간 [3,6]","mappedTo":"graphPlan.radicand,graphPlan.sourceDomain"},{"id":"c2","condition":"f(3)=1, f(6)=2","mappedTo":"graphPlan.requiredPoints"}],
+  "newVisualInformation":["증가함수의 닫힌구간 양 끝에서 최소·최대가 발생함을 표현"]
+}

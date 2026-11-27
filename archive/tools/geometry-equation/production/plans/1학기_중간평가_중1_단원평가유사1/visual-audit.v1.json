@@ -1,0 +1,145 @@
+{
+  "schemaVersion": "visual-audit-v1",
+  "examFile": "archive/exams/similar/middle/m1/1mid/1학기_중간평가_중1_단원평가유사1.js",
+  "sourceGitBlobSha": "29721aa92414673228ea1dc24ffa8ef39637796f",
+  "reviewBaseMain": "abf3ae778db287d57ad6738c8a25e0986a71e174",
+  "questionCount": 24,
+  "axisCount": 48,
+  "exemptDefaults": {
+    "capability": "TEXT_OR_FORMULA_ONLY",
+    "planPath": null,
+    "planLint": "NOT_APPLICABLE",
+    "drawnFeatureParity": "NO_SVG_REQUIRED",
+    "render": "NOT_APPLICABLE"
+  },
+  "planDefaultChecks": {
+    "planLintShallow": "PASS",
+    "planLintFull": "PASS",
+    "renderedSvg": "NOT_RUN",
+    "pngReview": "NOT_RUN",
+    "studentScreen": "NOT_RUN",
+    "a4": "NOT_RUN",
+    "drawnFeatureParityInterpretation": "Static source feature to rendering-field mapping only; no rendered image claim"
+  },
+  "summary": {
+    "planFiles": 5,
+    "shallowPass": 5,
+    "fullPass": 5,
+    "drawnFeatureStaticPass": 5,
+    "engineCapabilityPendingAxes": 0,
+    "exemptAxes": 43
+  },
+  "sourceJSFindings": [
+    "q12 content embeds a hand-authored inline SVG number line. The engine plan below is a replacement specification only; source JS remains untouched and the new drawing is not published or linked.",
+    "q14 source solution reassigns choice numbers in its checking steps, despite answer ⑤ matching the actual incorrect expression. No JS change was authorized."
+  ],
+  "entries": [
+    { "qid": "q01", "axes": { "problem": { "verdict": "EXEMPT", "reason": "소수를 보기의 자연수 중에서 고르는 정의 문제" }, "solution": { "verdict": "EXEMPT", "reason": "8·21·15·39의 소인수 관계를 수식으로 직접 설명" } } },
+    { "qid": "q02", "axes": { "problem": { "verdict": "EXEMPT", "reason": "2^4의 밑·지수와 계산값을 묻는 단일 식" }, "solution": { "verdict": "EXEMPT", "reason": "a=2,b=4,c=16을 대입하는 짧은 수식 풀이" } } },
+    { "qid": "q03", "axes": { "problem": { "verdict": "EXEMPT", "reason": "30의 소인수분해 결과를 보기의 식과 비교" }, "solution": { "verdict": "EXEMPT", "reason": "30=2×3×5의 순서 있는 인수분해가 이미 식으로 충분" } } },
+    { "qid": "q04", "axes": { "problem": { "verdict": "EXEMPT", "reason": "용돈 지출의 부호를 묻는 일상 언어 문제" }, "solution": { "verdict": "EXEMPT", "reason": "수입 +, 지출 -의 부호 대응은 텍스트만으로 명확" } } },
+    {
+      "qid": "q05",
+      "axes": {
+        "problem": { "verdict": "EXEMPT", "reason": "보기 다섯 개의 수 대소관계가 식으로 완전 제시됨" },
+        "solution": {
+          "verdict": "BENEFICIAL",
+          "reason": "음수 -7과 -2의 좌우 배치를 보여 주면 잘못된 -2<-7을 직관적으로 교정",
+          "capability": "number-line-figure-v1",
+          "planPath": "archive/tools/geometry-equation/production/plans/1학기_중간평가_중1_단원평가유사1/q05-solution.plan.json",
+          "requiredFeatures": ["수직선 정수 눈금 -7 및 -2", "-7이 -2보다 왼쪽", "면 채움·불필요한 선 없음"],
+          "featureFieldMapping": [
+            { "sourceFeature": "-7과 -2 위치", "renderField": "numberLine.rows[0].points L/R" },
+            { "sourceFeature": "수직선 정수 눈금", "renderField": "numberLine.rows[0] POINTS axis ticks" },
+            { "sourceFeature": "면 채움 없음", "renderField": "numberLine.rows[0].band=false" }
+          ],
+          "drawnFeatureParity": "STATIC_1_TO_1_FEATURE_MATCH__RENDER_NOT_RUN"
+        }
+      }
+    },
+    { "qid": "q06", "axes": { "problem": { "verdict": "EXEMPT", "reason": "5-21의 한 단계 정수 뺄셈" }, "solution": { "verdict": "EXEMPT", "reason": "21-5에 음부호를 붙이는 식 자체가 계산 과정을 제시" } } },
+    { "qid": "q07", "axes": { "problem": { "verdict": "EXEMPT", "reason": "소수와 합성수의 정의를 판단하는 문장형 보기" }, "solution": { "verdict": "EXEMPT", "reason": "각 문장의 참·거짓을 소수 정의와 반례로 검증" } } },
+    { "qid": "q08", "axes": { "problem": { "verdict": "EXEMPT", "reason": "108과 보기 수의 소인수를 비교하는 식 문제" }, "solution": { "verdict": "EXEMPT", "reason": "108=2²×3³과 보기의 소인수분해가 정확한 비교 자료" } } },
+    { "qid": "q09", "axes": { "problem": { "verdict": "EXEMPT", "reason": "ㄱ~ㅂ의 소인수 지수와 약수·배수 여부를 고름" }, "solution": { "verdict": "EXEMPT", "reason": "각 지수의 상하한 판단은 소인수식 비교로 충분" } } },
+    { "qid": "q10", "axes": { "problem": { "verdict": "EXEMPT", "reason": "25와 서로소인 두 자리 자연수 개수 계산" }, "solution": { "verdict": "EXEMPT", "reason": "90개에서 5의 배수 18개를 빼는 개수식 풀이" } } },
+    { "qid": "q11", "axes": { "problem": { "verdict": "EXEMPT", "reason": "정수·유리수 정의와 사이 정수 개수를 묻는 진술" }, "solution": { "verdict": "EXEMPT", "reason": "6/10과 -3~2 사이 정수 나열이 문자·식으로 명확" } } },
+    {
+      "qid": "q12",
+      "sourceImage": "INLINE_SVG_IN_CONTENT",
+      "axes": {
+        "problem": {
+          "verdict": "REQUIRED",
+          "reason": "발문이 실제 수직선에 찍힌 ㄱ~ㅁ 위치의 해석을 요구하며 인라인 수동 SVG 교체가 필요",
+          "capability": "number-line-figure-v1",
+          "planPath": "archive/tools/geometry-equation/production/plans/1학기_중간평가_중1_단원평가유사1/q12-problem.plan.json",
+          "requiredFeatures": ["-5~5 정수 눈금", "ㄱ=-4", "ㄴ=-8/3", "ㄷ=-3/4", "ㄹ=3/2", "ㅁ=14/3", "분수 정수 구간 등분 눈금", "답의 정확한 분수 비노출"],
+          "featureFieldMapping": [
+            { "sourceFeature": "원본 -5~5 눈금", "renderField": "numberLine.rows[0].points and subdivisions auto ticks" },
+            { "sourceFeature": "한글 ㄱ~ㅁ 및 다섯 점", "renderField": "numberLine.rows[0].points[0..4]" },
+            { "sourceFeature": "-3~-2, -1~0, 1~2, 4~5 등분", "renderField": "numberLine.rows[0].subdivisions" },
+            { "sourceFeature": "문제축에서 분수 정답 숨김", "renderField": "numberLine.rows[0].points[*].showValue=false" },
+            { "sourceFeature": "연결 영역 색칠 없음", "renderField": "numberLine.rows[0].band=false" }
+          ],
+          "drawnFeatureParity": "STATIC_1_TO_1_FEATURE_MATCH__RENDER_NOT_RUN",
+          "publicationBinding": "NOT_RUN; original inline SVG remains in source JS"
+        },
+        "solution": {
+          "verdict": "BENEFICIAL",
+          "reason": "원본 선택지 ④의 ㄴ=-7/3이 왜 틀리고 -8/3인지를 위치·눈금으로 설명",
+          "capability": "number-line-figure-v1",
+          "planPath": "archive/tools/geometry-equation/production/plans/1학기_중간평가_중1_단원평가유사1/q12-solution.plan.json",
+          "requiredFeatures": ["문제축의 다섯 점", "한글 이름", "ㄴ=-8/3", "ㄷ=-3/4", "ㄹ=3/2", "ㅁ=14/3", "눈금과 분수 위치 대응"],
+          "featureFieldMapping": [
+            { "sourceFeature": "다섯 점·이름·원본 정수 눈금", "renderField": "numberLine.rows[0].points" },
+            { "sourceFeature": "ㄴ, ㄷ, ㄹ, ㅁ의 정확한 분수", "renderField": "numberLine.rows[0].points[1..4].value with showValue enabled" },
+            { "sourceFeature": "분수 등분 눈금", "renderField": "numberLine.rows[0].subdivisions" },
+            { "sourceFeature": "면 채움 없음", "renderField": "numberLine.rows[0].band=false" }
+          ],
+          "drawnFeatureParity": "STATIC_1_TO_1_FEATURE_MATCH__RENDER_NOT_RUN"
+        }
+      }
+    },
+    {
+      "qid": "q13",
+      "axes": {
+        "problem": {
+          "verdict": "BENEFICIAL",
+          "reason": "절댓값이 같고 부호가 다른 두 수의 대칭과 거리 10을 답 노출 없이 시각화",
+          "capability": "number-line-figure-v1",
+          "planPath": "archive/tools/geometry-equation/production/plans/1학기_중간평가_중1_단원평가유사1/q13-problem.plan.json",
+          "requiredFeatures": ["문자점 -a, a", "원점 0", "원점 대칭", "거리 10의 양끝 괄호", "정답 ±5 미노출"],
+          "featureFieldMapping": [
+            { "sourceFeature": "두 수의 원점 대칭", "renderField": "numberLine.rows[0].points mirrorOf and order" },
+            { "sourceFeature": "두 점 사이 거리 10", "renderField": "numberLine.rows[0].spans[0].label" },
+            { "sourceFeature": "-5, 5 정답 미노출", "renderField": "numberLine.rows[0].points symbolic -a/a" }
+          ],
+          "drawnFeatureParity": "STATIC_1_TO_1_FEATURE_MATCH__RENDER_NOT_RUN"
+        },
+        "solution": {
+          "verdict": "BENEFICIAL",
+          "reason": "0에서 좌우 각 5씩인 두 수와 거리 10을 대응시켜 풀이식 2x=10을 설명",
+          "capability": "number-line-figure-v1",
+          "planPath": "archive/tools/geometry-equation/production/plans/1학기_중간평가_중1_단원평가유사1/q13-solution.plan.json",
+          "requiredFeatures": ["-5", "0", "5", "양끝 거리 10 괄호", "원점 좌우 대칭"],
+          "featureFieldMapping": [
+            { "sourceFeature": "-5,0,5의 수직선 배치", "renderField": "numberLine.rows[0].points" },
+            { "sourceFeature": "양끝 거리 10", "renderField": "numberLine.rows[0].spans[0]" },
+            { "sourceFeature": "원점 대칭", "renderField": "numberLine.rows[0].points L/O/R" }
+          ],
+          "drawnFeatureParity": "STATIC_1_TO_1_FEATURE_MATCH__RENDER_NOT_RUN"
+        }
+      }
+    },
+    { "qid": "q14", "axes": { "problem": { "verdict": "EXEMPT", "reason": "정수 덧셈·뺄셈 다섯 개의 등식 보기로 완결" }, "solution": { "verdict": "EXEMPT", "reason": "틀린 식 -4-(+5)=-1을 -9로 고치는 수식 풀이; 원본 해설의 보기 번호 착오는 별도 기록" } } },
+    { "qid": "q15", "axes": { "problem": { "verdict": "EXEMPT", "reason": "13+(-3), 2-(+7)을 뜻하는 수식 전환" }, "solution": { "verdict": "EXEMPT", "reason": "a=10,b=-5를 대입해 15를 얻는 직접 계산" } } },
+    { "qid": "q16", "axes": { "problem": { "verdict": "EXEMPT", "reason": "돌멩이·풍선의 위아래 작용이 원문 이야기로 완결되며 별도 그림은 장식" }, "solution": { "verdict": "EXEMPT", "reason": "음수 덧셈과 양수 뺄셈의 동치 관계를 문장과 부호식으로 설명" } } },
+    { "qid": "q17", "axes": { "problem": { "verdict": "EXEMPT", "reason": "정수·분수 곱셈 나눗셈 다섯 계산식" }, "solution": { "verdict": "EXEMPT", "reason": "역수의 곱으로 -6÷(4/3)=-9/2 검산" } } },
+    { "qid": "q18", "axes": { "problem": { "verdict": "EXEMPT", "reason": "서로 다른 세 소인수로 된 수의 크기순 나열" }, "solution": { "verdict": "EXEMPT", "reason": "30,42,60의 정확한 소인수 곱 나열" } } },
+    { "qid": "q19", "axes": { "problem": { "verdict": "EXEMPT", "reason": "최대공약수·최소공배수에서 소인수 지수 가능한 범위를 셈" }, "solution": { "verdict": "EXEMPT", "reason": "2·3·7의 지수 범위 및 42·54 중복 제외는 식과 목록으로 충분" } } },
+    { "qid": "q20", "axes": { "problem": { "verdict": "EXEMPT", "reason": "주어진 유리수 네 개에서 가장 작은 곱을 고름" }, "solution": { "verdict": "EXEMPT", "reason": "가장 큰 양수 4와 가장 작은 음수 -3의 곱 -12 계산" } } },
+    { "qid": "q21", "axes": { "problem": { "verdict": "EXEMPT", "reason": "괄호와 거듭제곱을 포함한 단일 산술식" }, "solution": { "verdict": "EXEMPT", "reason": "-5/4+8=27/4 뒤 곱셈·덧셈의 순서가 식으로 모두 드러남" } } },
+    { "qid": "q22", "axes": { "problem": { "verdict": "EXEMPT", "reason": "45a가 완전제곱이 되는 자연수 a의 두 번째 값을 찾음" }, "solution": { "verdict": "EXEMPT", "reason": "a=5k²에 k=1,2를 대입한 경우 나열" } } },
+    { "qid": "q23", "axes": { "problem": { "verdict": "EXEMPT", "reason": "잘못 더하고 뺀 유리수 계산을 방정식으로 역산" }, "solution": { "verdict": "EXEMPT", "reason": "x-(-5/6)=11/30을 풀고 다시 더하는 분수식으로 충분" } } },
+    { "qid": "q24", "axes": { "problem": { "verdict": "EXEMPT", "reason": "a-b, ac, bc 세 부등·부호식의 논리 관계" }, "solution": { "verdict": "EXEMPT", "reason": "c<0 가정의 모순으로 세 부호를 확정하는 식·문장 풀이" } } }
+  ]
+}

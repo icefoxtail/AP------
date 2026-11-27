@@ -1,0 +1,16 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"X","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"l","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"-3"},"b":{"kind":"integer","value":"2"},"c":{"kind":"integer","value":"0"}},"outputType":"LINE","factRole":"GIVEN"}
+  ]},
+  "displayPoints":["O","A","B"],"displayLines":["l"],"lineColors":[{"lines":["l"],"color":"ROSE"}],"displaySegments":[{"id":"OA","refs":["O","A"]},{"id":"AB","refs":["A","B"]},{"id":"BO","refs":["B","O"]}],"coordinateLabels":["A","B"],
+  "caption":"삼각형 OAB를 원점 O를 지나는 분홍색 직선 l이 넓이만 같게 나눈다.",
+  "accessibilityDescription":"좌표평면의 O(0,0), A(3,1), B(1,5)로 만든 삼각형을 원점에서 출발하는 직선 l이 가로지른다. 기울기 숫자는 적지 않는다.",
+  "sourceQuote":"직선 $l$이 이등분할 때, 직선 $l$의 방정식을 구하시오",
+  "sourceConditions":[{"id":"triangle","condition":"O(0,0),A(3,1),B(1,5)","mappedTo":["mathPlan.nodes","displaySegments"]},{"id":"bisector","condition":"l은 O를 지나 △OAB의 넓이를 이등분하며 식은 문제 그림에 노출하지 않음","mappedTo":"displayLines"}],
+  "newVisualInformation":["원문 PNG의 불필요한 파란 면 채움을 없애고 세 꼭짓점과 빨간 절단 직선의 관계만 남긴다."]
+}

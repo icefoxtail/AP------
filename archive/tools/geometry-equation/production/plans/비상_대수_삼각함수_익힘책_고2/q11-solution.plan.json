@@ -1,0 +1,8 @@
+{
+  "capability":"trigonometric-spike-v1",
+  "graphPlan":{"family":"trigonometric","function":"SIN","coefficients":["1","1","0"],"phasePi":"0","sourceDomain":{"kind":"INTERVAL_PI","rangePi":["0","2"],"states":["CLOSED","CLOSED"]},"referenceLines":[{"id":"h","y":"1/2","intersectionCount":2,"color":"BLUE"}],"axisTickPi":true,"axisTickValues":{"x":["1/6","5/6","1"],"y":["1/2","1"]}},
+  "caption":"t=πx/2.7로 치환하면 0≤t≤2π에서 sin t≥1/2이며 대응하는 x의 범위는 0.45≤x≤2.25이다.",
+  "accessibilityDescription":"0에서 2π까지의 사인 곡선과 y=1/2 기준선이 π/6,5π/6에서 만나고 그 사이 구간이 밝기 조건을 만족한다.",
+  "sourceConditions":[{"id":"brightness","condition":"4+0.35sin(πx/2.7)≥4.175 (0≤x≤5.4)","mappedTo":["graphPlan","h"]},{"id":"change","condition":"t=πx/2.7; sin t≥1/2","mappedTo":["graphPlan"]}],
+  "newVisualInformation":["수평 기준선과 한 주기의 두 경계각을 통해 부등식 해 구간 확인"]
+}

@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1","conic":{"kind":"CIRCLE","center":["0","0"],"rSquared":"4"},
+  "lines":[{"id":"l","slope":"sqrt(3)/3","intercept":"4*sqrt(3)/3","label":"-x+sqrt(3)y=4","tangent":true},{"id":"axis","slope":"0","intercept":"0"}],
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"A","kind":"POINT","x":"2","y":"0"},{"id":"B","kind":"POINT","x":"-4","y":"0"},{"id":"P","kind":"FOOT","from":"O","onto":"l","rightAngle":true},{"id":"H","kind":"FOOT","from":"P","onto":"axis","rightAngle":true}],
+  "segments":[{"id":"AB","from":"A","to":"B"},{"id":"OP","from":"O","to":"P","label":"2"},{"id":"PH","from":"P","to":"H"},{"id":"AH","from":"A","to":"H"},{"id":"HB","from":"H","to":"B"}],
+  "caption":"제2사분면의 접점 P에서 내린 PH가 AB에 수직이고 H는 AB의 중점이다.",
+  "accessibilityDescription":"원 x²+y²=4 위의 제2사분면 접점 P(-1,√3)와 x축 위 A(2,0), H(-1,0), B(-4,0)가 있다.",
+  "sourceQuote":"수선의 발 $H$가 선분 $AB$의 중점일 때",
+  "sourceConditions":[{"id":"midpoint","condition":"A(2,0), H(-1,0), B(-4,0)와 PH⊥x축","mappedTo":["points","segments"]},{"id":"tangent","condition":"P(-1,√3), OP⊥l","mappedTo":["points.P","lines.l"]}],
+  "newVisualInformation":["H를 중점으로 A-H-B의 순서를 보이고 접선의 직각 반지름을 그린다."]
+}

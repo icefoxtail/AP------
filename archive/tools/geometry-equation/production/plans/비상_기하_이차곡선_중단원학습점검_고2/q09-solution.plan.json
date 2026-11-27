@@ -1,0 +1,92 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "초점 (0,±5), 장축과 단축 길이차 2, 타원 x²/144+y²/169=1",
+  "caption": "초점과 두 반축 길이차",
+  "accessibilityDescription": "세로 타원의 초점 F,F′와 긴 축 꼭짓점 A,B, 짧은 축 꼭짓점 C,D를 표시한다.",
+  "ellipse": {
+    "center": [
+      "0",
+      "0"
+    ],
+    "semiAxisSquared": {
+      "major": "169",
+      "minor": "144"
+    },
+    "majorAxis": "Y"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1
+    },
+    {
+      "id": "A",
+      "kind": "VERTEX",
+      "end": "MAJOR_POS"
+    },
+    {
+      "id": "B",
+      "kind": "VERTEX",
+      "end": "MAJOR_NEG"
+    },
+    {
+      "id": "C",
+      "kind": "VERTEX",
+      "end": "MINOR_POS"
+    },
+    {
+      "id": "D",
+      "kind": "VERTEX",
+      "end": "MINOR_NEG"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "from": "A",
+      "to": "B",
+      "label": "26"
+    },
+    {
+      "id": "CD",
+      "from": "C",
+      "to": "D",
+      "label": "24"
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "타원의 두 초점 (0,±5)",
+      "mappedTo": [
+        "ellipse",
+        "points[1]",
+        "points[2]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "장축=26, 단축=24, 두 길이 차=2",
+      "mappedTo": [
+        "points[3]",
+        "points[4]",
+        "points[5]",
+        "points[6]",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "장축 26과 단축 24가 라벨로 대비된다."
+  ]
+}

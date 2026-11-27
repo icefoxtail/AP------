@@ -1,0 +1,21 @@
+{
+  "capability":"trigonometric-spike-v1",
+  "graphPlan": {
+    "family":"trigonometric", "function":"SIN", "ratePi":"1/6", "coefficients":["1","0"], "phasePi":"0",
+    "sourceDomain":{"kind":"INTERVAL","range":["0","6"],"states":["CLOSED","CLOSED"]},
+    "keyPoints":true,"axisTickValues":{"x":["3"],"y":["1"]},
+    "overlays":{
+      "points":[{"id":"A","curveX":"1"},{"id":"B","x":"1","y":"0"},{"id":"C","x":"5","y":"0"},{"id":"D","curveX":"5"}],
+      "segments":[{"id":"AB","from":"A","to":"B"},{"id":"BC","from":"B","to":"C","length":true},{"id":"CD","from":"C","to":"D"},{"id":"DA","from":"D","to":"A"}]
+    }
+  },
+  "pointNames":{"A":"A","B":"B","C":"C","D":"D"},
+  "caption":"0≤x≤6의 사인곡선 아래에 BC=4인 직사각형 ABCD가 내접한다. 문제에서는 A,D의 x좌표와 높이를 표시하지 않는다.",
+  "accessibilityDescription":"양 끝이 x축에 닿는 하나의 사인곡선 아래에 가로 길이 4인 직사각형 ABCD가 놓여 있고 위쪽 두 꼭짓점은 곡선 위에 있다.",
+  "sourceQuote":"$\\overline{BC}=4$일 때, 직사각형 $ABCD$의 넓이",
+  "sourceConditions":[
+    {"id":"curve","condition":"y=sin(πx/6), 0≤x≤6","mappedTo":"graphPlan.ratePi,graphPlan.sourceDomain"},
+    {"id":"rectangle","condition":"A,D는 곡선 위, B,C는 x축 위, BC=4","mappedTo":"graphPlan.overlays.points,graphPlan.overlays.segments[1]"}
+  ],
+  "newVisualInformation":["사인곡선 아래 내접 직사각형의 꼭짓점 관계", "밑변 BC의 길이 4"]
+}

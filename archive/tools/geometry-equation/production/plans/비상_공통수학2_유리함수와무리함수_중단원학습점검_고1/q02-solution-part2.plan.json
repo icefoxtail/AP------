@@ -1,0 +1,53 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "1",
+      "-2"
+    ],
+    "denominator": [
+      "1",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -6,
+      4
+    ],
+    "viewport": [
+      -7,
+      5,
+      -8,
+      6
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1"
+      ],
+      "y": [
+        "-2"
+      ]
+    },
+    "asymptoteLabelAt": "END"
+  },
+  "caption": "(2) y=−2+3/(x+1)의 양쪽 가지, 점근선 x=−1·y=−2를 표시한다.",
+  "accessibilityDescription": "(2) y=−2+3/(x+1)의 양쪽 가지, 점근선 x=−1·y=−2를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "R2B-1",
+      "condition": "(-2x+1)/(x+1)=−2+3/(x+1)",
+      "mappedTo": "graphPlan.numerator,graphPlan.denominator"
+    },
+    {
+      "id": "R2B-2",
+      "condition": "정의역 x≠−1, 치역 y≠−2, 점근선 x=−1·y=−2",
+      "mappedTo": "graphPlan.sourceDomain,graphPlan.axisTickValues"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 과밀 격자·바탕 없이 두 점근선과 가지"
+  ]
+}

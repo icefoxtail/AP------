@@ -1,0 +1,20 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"X","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"Q","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-1"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"E1","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"E2","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"-3"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"l1","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"2"},"b":{"kind":"integer","value":"3"},"c":{"kind":"integer","value":"-17"}},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"l2","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"2"},"b":{"kind":"integer","value":"3"},"c":{"kind":"integer","value":"9"}},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"H1","op":"PERPENDICULAR_FOOT","inputs":["Q","l1"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"H2","op":"PERPENDICULAR_FOOT","inputs":["Q","l2"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["Q","H1","H2","E1","E2"],"hiddenPointNames":["E1","E2"],"unmarkedPointNames":["E1","E2"],"displayLines":["l1","l2"],"displaySegments":[{"id":"QH1","refs":["Q","H1"],"dashed":true},{"id":"QH2","refs":["Q","H2"],"dashed":true}],"rightAngles":[{"id":"perp1","refs":["Q","H1","E1"]},{"id":"perp2","refs":["Q","H2","E2"]}],"coordinateLabels":["Q"],
+  "caption":"교점 Q(-1,2)를 기준으로 거리 √13만큼 떨어진 두 평행선 2x+3y−17=0, 2x+3y+9=0을 함께 그린다.",
+  "accessibilityDescription":"점 Q를 가운데 두고 양쪽으로 평행한 직선 두 개를 놓으며, 각각에 내린 점선 수선과 직각표식을 표시한다.",
+  "sourceQuote":"두 직선 4x-y+6=0, x+2y-3=0의 교점에서 거리 sqrt(13)인 직선",
+  "sourceConditions":[{"id":"intersection","condition":"두 직선의 교점 Q=(-1,2)","mappedTo":"mathPlan.nodes.Q"},{"id":"distance","condition":"두 직선 l1,l2에서 Q까지 거리 √13","mappedTo":["mathPlan.nodes.H1","mathPlan.nodes.H2","rightAngles"]}],
+  "newVisualInformation":["두 해를 같은 축에서 비교하고 각각의 수선·직각표식을 그린다."]
+}

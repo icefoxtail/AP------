@@ -1,0 +1,63 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-6",
+      "-4",
+      "2"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      4
+    ],
+    "viewport": [
+      -3,
+      5,
+      -11,
+      15
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 1,
+        "y": -8
+      },
+      {
+        "id": "B",
+        "x": 3,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "h=f−g=2(x+1)(x−3)이며 구간 -1≤x≤3에서 h≤0이고 h(1)=-8이다.",
+  "accessibilityDescription": "포물선 h(x)가 (-1,0),(1,-8),(3,0)을 지난다.",
+  "sourceConditions": [
+    {
+      "id": "13-0",
+      "condition": "차 함수의 계수 -6,-4,2",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "13-1",
+      "condition": "두 근과 꼭짓점",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 해설의 꼭짓점·경계·근에 대응하는 점과 구간 끝의 상대 높이를 직접 표시한다."
+  ]
+}

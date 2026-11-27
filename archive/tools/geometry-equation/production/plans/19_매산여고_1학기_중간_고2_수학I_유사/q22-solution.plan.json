@@ -1,0 +1,41 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "t",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "8",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ],
+        "hideSetLabel": true,
+        "integerPoints": {
+          "range": [
+            "8",
+            "10"
+          ]
+        }
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "해의 범위"
+  },
+  "caption": "모형에서 P≤40이 되는 달의 범위는 t≥8이며 최소 정수 개월 수는 8이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "P=120/(t+2)^0.48, P≤40 → t≥8",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "열린·닫힌 경계점, 범위, 조건에 맞는 정수 위치"
+  ]
+}

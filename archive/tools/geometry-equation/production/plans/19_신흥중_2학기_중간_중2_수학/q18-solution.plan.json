@@ -9,10 +9,29 @@
     },
     "nodes": [
       {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7937253933193772",
+              "denominator": "1000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
         "id": "B",
         "op": "SOURCE_POINT",
         "inputs": [],
-        "outputType": "POINT",
         "args": {
           "coordinates": [
             {
@@ -25,13 +44,13 @@
             }
           ]
         },
+        "outputType": "POINT",
         "factRole": "GIVEN"
       },
       {
         "id": "C",
         "op": "SOURCE_POINT",
         "inputs": [],
-        "outputType": "POINT",
         "args": {
           "coordinates": [
             {
@@ -44,89 +63,71 @@
             }
           ]
         },
-        "factRole": "GIVEN"
-      },
-      {
-        "id": "A",
-        "op": "SOURCE_POINT",
-        "inputs": [],
         "outputType": "POINT",
-        "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "9"
-            },
-            {
-              "kind": "integer",
-              "value": "8"
-            }
-          ]
-        },
         "factRole": "GIVEN"
       },
       {
         "id": "D",
         "op": "SOURCE_POINT",
         "inputs": [],
-        "outputType": "POINT",
         "args": {
           "coordinates": [
             {
               "kind": "rational",
-              "numerator": "767",
-              "denominator": "100"
+              "numerator": "7669646235619927",
+              "denominator": "1000000000000000"
             },
             {
               "kind": "rational",
-              "numerator": "121",
-              "denominator": "20"
+              "numerator": "60063252734140696",
+              "denominator": "10000000000000000"
             }
           ]
         },
-        "factRole": "DERIVED_INTERMEDIATE"
+        "outputType": "POINT",
+        "factRole": "GIVEN"
       },
       {
         "id": "E",
         "op": "SOURCE_POINT",
         "inputs": [],
-        "outputType": "POINT",
         "args": {
           "coordinates": [
             {
               "kind": "rational",
-              "numerator": "17",
-              "denominator": "4"
+              "numerator": "4265539840464639",
+              "denominator": "1000000000000000"
             },
             {
               "kind": "rational",
-              "numerator": "53",
-              "denominator": "50"
+              "numerator": "10654691076800714",
+              "denominator": "10000000000000000"
             }
           ]
         },
-        "factRole": "DERIVED_INTERMEDIATE"
+        "outputType": "POINT",
+        "factRole": "GIVEN"
       },
       {
         "id": "F",
         "op": "SOURCE_POINT",
         "inputs": [],
-        "outputType": "POINT",
         "args": {
           "coordinates": [
             {
               "kind": "rational",
-              "numerator": "228",
-              "denominator": "25"
+              "numerator": "9116497312076754",
+              "denominator": "1000000000000000"
             },
             {
               "kind": "rational",
-              "numerator": "57",
-              "denominator": "25"
+              "numerator": "22771669283501816",
+              "denominator": "10000000000000000"
             }
           ]
         },
-        "factRole": "DERIVED_INTERMEDIATE"
+        "outputType": "POINT",
+        "factRole": "GIVEN"
       }
     ]
   },
@@ -163,9 +164,23 @@
       ]
     },
     {
-      "id": "sAD",
+      "id": "sAE",
       "refs": [
         "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sBF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
         "D"
       ]
     },
@@ -174,28 +189,12 @@
       "refs": [
         "D",
         "E"
-      ],
-      "emphasis": "BOLD"
-    },
-    {
-      "id": "sBE",
-      "refs": [
-        "B",
-        "E"
       ]
     },
     {
       "id": "sEF",
       "refs": [
         "E",
-        "F"
-      ],
-      "emphasis": "BOLD"
-    },
-    {
-      "id": "sCF",
-      "refs": [
-        "C",
         "F"
       ]
     },
@@ -204,109 +203,93 @@
       "refs": [
         "F",
         "D"
-      ],
-      "emphasis": "BOLD"
+      ]
     }
   ],
-  "pointNames": {
-    "A": "A",
-    "B": "B",
-    "C": "C",
-    "D": "D",
-    "E": "E",
-    "F": "F"
+  "coordinateCanvas": {
+    "width": 550,
+    "height": 500
   },
   "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l0",
+        "ownerSegment": "sAB",
+        "text": "12"
+      },
+      {
+        "id": "l1",
+        "ownerSegment": "sBC",
+        "text": "10"
+      },
+      {
+        "id": "l2",
+        "ownerSegment": "sCA",
+        "text": "8"
+      },
+      {
+        "id": "l3",
+        "ownerSegment": "sDE",
+        "text": "6"
+      }
+    ],
     "angles": [
       {
-        "id": "aA",
+        "id": "a0",
         "refs": [
           "B",
           "A",
           "E"
         ],
-        "value": 14,
-        "label": "θ",
-        "arcs": 1,
+        "value": 14.02,
+        "noLabel": true,
         "equalGroup": 1,
-        "ring": 1,
+        "style": "ARC",
         "factRole": "GIVEN"
       },
       {
-        "id": "aB",
+        "id": "a1",
         "refs": [
           "C",
           "B",
           "F"
         ],
-        "value": 14,
-        "label": "θ",
-        "arcs": 1,
+        "value": 14.02,
+        "noLabel": true,
         "equalGroup": 1,
-        "ring": 1,
+        "style": "ARC",
         "factRole": "GIVEN"
       },
       {
-        "id": "aC",
+        "id": "a2",
         "refs": [
           "A",
           "C",
           "D"
         ],
-        "value": 14,
-        "label": "θ",
-        "arcs": 1,
+        "value": 14.02,
+        "noLabel": true,
         "equalGroup": 1,
-        "ring": 1,
-        "factRole": "GIVEN"
-      }
-    ],
-    "expressionLabels": [
-      {
-        "id": "lAB",
-        "ownerSegment": "sAB",
-        "text": "12",
-        "ownership": "NEAREST",
-        "factRole": "GIVEN"
-      },
-      {
-        "id": "lBC",
-        "ownerSegment": "sBC",
-        "text": "10",
-        "ownership": "NEAREST",
-        "factRole": "GIVEN"
-      },
-      {
-        "id": "lCA",
-        "ownerSegment": "sCA",
-        "text": "8",
-        "ownership": "NEAREST",
-        "factRole": "GIVEN"
-      },
-      {
-        "id": "lDE",
-        "ownerSegment": "sDE",
-        "text": "6",
-        "ownership": "NEAREST",
+        "style": "ARC",
         "factRole": "GIVEN"
       }
     ]
   },
-  "coordinateCanvas": {
-    "width": 560,
-    "height": 460
-  },
-  "caption": "∠BAE=∠CBF=∠ACD를 θ라 하면 외각의 성질에서 ∠DEF=∠B, ∠EFD=∠C, ∠FDE=∠A이다. 따라서 삼각형 DEF는 삼각형 ABC와 닮음이고, DE:AB=6:12=1:2이다. 삼각형 ABC의 둘레가 30이므로 삼각형 DEF의 둘레는 30×1/2=15이다. 따라서 답은 ②이다.",
-  "accessibilityDescription": "삼각형 ABC 안에 세 선분이 만나 작은 삼각형 DEF를 이루고 있다. 변 AB, BC, CA에 12, 10, 8, 변 DE에 6이 표시되어 있고 세 꼭짓점의 각에 같은 표시가 있다.",
-  "newVisualInformation": [
-    "삼각형 ABC와 내부 삼각형 DEF가 그려지고, AB=12, BC=10, CA=8, DE=6이 표시된다.",
-    "∠BAE, ∠CBF, ∠ACD에 같은 각 표시가 있다."
-  ],
+  "caption": "18번 문제: AB12·BC10·CA8과 실제 세 같은 편각, 내부 △DEF의 DE6.",
+  "accessibilityDescription": "18번 문제 그림: AB12·BC10·CA8과 실제 세 같은 편각, 내부 △DEF의 DE6.",
   "sourceConditions": [
     {
-      "id": "source",
-      "condition": "",
-      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+      "id": "src-q18",
+      "condition": " 조건: $\\triangle\\mathrm{ABC}$에서 $\\angle\\mathrm{BAE}=\\angle\\mathrm{CBF}=\\angle\\mathrm{ACD}$이고, 세 변의 길이는 $\\overline{\\mathrm{AB}}=12$, $\\overline{\\mathrm{BC}}=10$, $\\overline{\\mathrm{CA}}=8$입니다. 그림에서 내부 삼각형 $\\triangle\\mathrm{DEF}$의 한 변은 $\\overline{\\mathrm{DE}}=6$입니다. 구할 대상: $\\triangle\\mathrm{DEF}$의 둘레의 길이를 구합니다.  먼저 풀이에 쓸 성질을 순서대로 정리합니다. 1) $\\angle\\mathrm{BAE}=\\angle\\mathrm{CBF}=\\angle\\mathrm{ACD}=\\bullet$라 놓습니다. 2) 삼각형의 외각의 성질을 이용하여 $\\triangle\\mathrm{DEF}$의 세 내각의 크기를 구합니다: - $\\triangle\\mathrm{ABE}$에서 외각 $\\angle\\mathrm{FED} = \\angle\\mathrm{ABE} + \\angle\\mathrm{BAE} = (\\angle\\mathrm{B} - \\bullet) + \\bullet = \\angle\\mathrm{B}$ - $\\triangle\\mathrm{BCF}$에서 외각 $\\angle\\mathrm{EFD} = \\angle\\mathrm{BCF} + \\angle\\mathrm{CBF} = (\\angle\\mathrm{C} - \\bullet) + \\bullet = \\angle\\mathrm{C}$ - $\\triangle\\mathrm{CAD}$에서 외각 $\\angle\\mathrm{FDE} = \\angle\\mathrm{CAD} + \\angle\\mathrm{ACD} = (\\angle\\mathrm{A} - \\bullet) + \\bullet = \\angle\\mathrm{A}$ 3) 세 각의 크기가 각각 같으므로 $\\triangle\\mathrm{DEF} \\sim \\triangle\\mathrm{ABC}$ (AA 닮음)입니다. 4) 대응변 $\\overline{\\mathrm{DE}}$와 $\\overline{\\mathrm{AB}}$의 비를 통해 닮음비를 구하고 둘레의 길이를 계산합니다.  위에서 정리한 성질을 이용해 차례로 계산합니다. 외각의 성질에 의해 $\\triangle\\mathrm{DEF}$의 세 내각은 다음과 같습니다: $$\\angle\\mathrm{D} = \\angle\\mathrm{A}, \\quad \\angle\\mathrm{E} = \\angle\\mathrm{B}, \\quad \\angle\\mathrm{F} = \\angle\\mathrm{C}$$ 따라서 두 각의 크기가 각각 같으므로: $$\\triangle\\mathrm{DEF} \\sim \\triangle\\mathrm{ABC} \\quad (\\text{AA 닮음})$$ $\\angle\\mathrm{F} = \\angle\\mathrm{C}$에 대응하는 대변을 확인하면: $\\triangle\\mathrm{DEF}$에서 $\\angle\\mathrm{F}$의 대변은 $\\overline{\\mathrm{DE}}=6$이고, $\\triangle\\mathrm{ABC}$에서 $\\angle\\mathrm{C}$의 대변은 $\\overline{\\mathrm{AB}}=12$입니다. 따라서 닮음비는 다음과 같습니다: $$\\overline{\\mathrm{DE}} : \\overline{\\mathrm{AB}} = 6 : 12 = 1 : 2$$ $\\triangle\\mathrm{ABC}$의 둘레의 길이는 세 변의 합입니다: $$\\text{둘레}_{\\triangle\\mathrm{ABC}} = 12 + 10 + 8 = 30$$ 닮은 두 삼각형의 둘레의 길이의 비는 닮음비 $1:2$와 같으므로: $$\\text{둘레}_{\\triangle\\mathrm{DEF}} = \\frac{1}{2} \\times \\text{둘레}_{\\triangle\\mathrm{ABC}} = \\frac{1}{2} \\times 30 = 15$$  각 선지를 확인하면 다음과 같습니다. ① $10$: 거짓 ② $15$: 참 (계산 결과와 일치) ③ $20$: 거짓 ④ $25$: 거짓 ⑤ $30$: 거짓 ($\\triangle\\mathrm{ABC}$의 둘레임)  따라서 정답은 ②입니다. ",
+      "mappedTo": "mathPlan.nodes;displaySegments;planeMarks"
+    },
+    {
+      "id": "source-visual-feature",
+      "condition": "AB12·BC10·CA8과 실제 세 같은 편각, 내부 △DEF의 DE6; 풀이에 필요한 추가 관계",
+      "mappedTo": "displaySegments;planeMarks"
     }
+  ],
+  "newVisualInformation": [
+    "AB12·BC10·CA8과 실제 세 같은 편각, 내부 △DEF의 DE6; 풀이에 필요한 추가 관계"
   ]
 }

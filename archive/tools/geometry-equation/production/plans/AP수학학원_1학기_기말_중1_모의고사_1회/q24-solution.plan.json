@@ -1,0 +1,29 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"U","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-2"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"-4"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"lAC","op":"LINE_THROUGH","inputs":["A","C"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"D","op":"PERPENDICULAR_FOOT","inputs":["B","lAC"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["O","A","B","C","D"],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]},{"id":"sBD","refs":["B","D"],"dashed":true}],
+  "displayLines":[],"coordinateLabels":["A","B","C"],
+  "coordinateCanvas":{"width":620,"height":500},"axisTickValues":{"x":[-2,1,2],"y":[-4,-2,2]},
+  "rightAngles":[{"id":"rD","refs":["B","D","A"],"factRole":"DERIVED_INTERMEDIATE"}],
+  "planeMarks":{"dimensions":[
+    {"id":"dAC","from":"A","to":"C","label":"6","side":"RIGHT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"dBD","from":"B","to":"D","label":"3","side":"BELOW","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "caption":"세 점 A(1,2), B(-2,0), C(1,-4)의 삼각형에서 밑변 AC는 6, 높이 BD는 3이므로 넓이는 9이다.",
+  "accessibilityDescription":"좌표평면에 삼각형 ABC와 점 B에서 세로선 AC로 내린 점선 수선 BD, 직각 표식, 밑변 6과 높이 3의 치수선이 보인다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"A(1,2), B(-2,0), C(1,-4)이며 세 점을 이어 삼각형을 만든다.","mappedTo":["mathPlan.nodes","displaySegments","coordinateLabels"]},
+    {"id":"c2","condition":"AC는 세로 길이 6이고 점 B에서 x=1까지 수평 거리 BD는 3, BD는 AC에 수직이다.","mappedTo":["mathPlan.nodes.D","displaySegments.sBD","rightAngles","planeMarks.dimensions"]},
+    {"id":"c3","condition":"넓이는 6×3÷2=9이다.","mappedTo":"caption"}
+  ],
+  "newVisualInformation":["세 좌표점과 삼각형 변, 높이 점선, 직각 표식, 길이 6·3의 실제 치수선을 그린다."]
+}

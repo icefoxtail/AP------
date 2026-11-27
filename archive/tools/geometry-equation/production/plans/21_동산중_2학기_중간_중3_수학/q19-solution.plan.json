@@ -1,0 +1,231 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "rational",
+              "numerator": "6928203230276",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "D",
+    "C",
+    "A"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "value": 30,
+        "label": "30"
+      },
+      {
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "id": "aDlarge",
+        "refs": [
+          "B",
+          "D",
+          "A"
+        ],
+        "value": 120,
+        "label": "120"
+      },
+      {
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "id": "aDsmall",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "value": 60,
+        "label": "60"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAD",
+        "ownerSegment": "sAD",
+        "text": "8"
+      },
+      {
+        "id": "lAC",
+        "ownerSegment": "sCA",
+        "text": "4√3"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBD",
+        "from": "B",
+        "to": "D",
+        "label": "8",
+        "side": "BELOW",
+        "style": "BAR",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "B·D·C가 일직선이고 ∠ADB=120°이므로 ∠ADC=60°. AD=BD=8cm, C는 직각이라 AC=4√3cm이다.",
+  "accessibilityDescription": "B·D·C가 일직선이고 ∠ADB=120°이므로 ∠ADC=60°. AD=BD=8cm, C는 직각이라 AC=4√3cm이다.",
+  "sourceConditions": [
+    {
+      "id": "problem-stem",
+      "condition": "직각삼각형 $ABC$에서 $\\angle C=90^\\circ$이고 점 $D$는 선분 $BC$ 위에 있다. $BD=8\\,\\mathrm{cm}$, $\\angle B=30^\\circ$, $\\angle ADB=120^\\circ$일 때, $AC$의 길이를 구하면? (4점)<br><img src=\"assets/images/21_동산중_2학기_중간_중3_수학/q19-engine-upgrade.svg\" alt=\"직각삼각형\" />",
+      "mappedTo": "mathPlan.nodes, displaySegments, planeMarks, rightAngles"
+    },
+    {
+      "id": "worked-solution",
+      "condition": "$B,D,C$가 한 직선 위이고 $\\angle ADB=120^\\circ$이므로 $\\angle ADC=60^\\circ$이다. 삼각형 $ABD$에서 $\\angle ABD=30^\\circ$, 따라서 $\\angle BAD=30^\\circ$이고 마주 보는 변이 같아 $AD=BD=8$이다. 직각삼각형 $ACD$에서 빗변 $AD=8$, $\\angle D=60^\\circ$이므로 $AC=AD\\sin60^\\circ=8\\cdot\\frac{\\sqrt3}{2}=4\\sqrt3\\,\\mathrm{cm}$이다. 정답은 ⑤이다.",
+      "mappedTo": "planeMarks, displaySegments, caption"
+    }
+  ],
+  "newVisualInformation": [
+    "B 30°, D 120°와 60° 각 호",
+    "C 직각, BD=8, AD=8, AC=4√3 길이",
+    "원본 삼각형의 BD·DC 경계와 AD 보조선, 면 채움 없음"
+  ]
+}

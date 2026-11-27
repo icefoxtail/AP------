@@ -1,0 +1,98 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "타원 x²/16+y²/4=1의 제1사분면 P에서 접선과 두 좌표축이 이루는 삼각형의 최소 넓이",
+  "caption": "최소 넓이를 주는 접선 절편삼각형",
+  "accessibilityDescription": "가로 타원 위 P(2√2,√2)의 접선이 양의 축과 만나는 A(4√2,0), B(0,2√2)를 잇고 두 절편 길이를 표기한다.",
+  "conic": {
+    "kind": "ELLIPSE",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "16",
+    "bSquared": "4",
+    "major": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "2*sqrt(2)",
+      "branch": "POS"
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "x": "4*sqrt(2)",
+      "y": "0"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "x": "0",
+      "y": "2*sqrt(2)"
+    }
+  ],
+  "lines": [
+    {
+      "id": "t",
+      "tangent": true,
+      "at": "P",
+      "label": "t"
+    }
+  ],
+  "segments": [
+    {
+      "id": "OA",
+      "from": "O",
+      "to": "A",
+      "label": "4√2"
+    },
+    {
+      "id": "OB",
+      "from": "O",
+      "to": "B",
+      "label": "2√2"
+    },
+    {
+      "id": "AB",
+      "from": "A",
+      "to": "B"
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x²/16+y²/4=1, P는 제1사분면",
+      "mappedTo": [
+        "conic",
+        "points[1]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "P에서의 접선과 x,y축 교점 A,B",
+      "mappedTo": [
+        "lines[0]",
+        "points[2]",
+        "points[3]",
+        "segments[2]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "최소점에서 두 절편 4√2,2√2",
+      "mappedTo": [
+        "segments[0]",
+        "segments[1]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "채움 없이 직각 절편삼각형 넓이 8을 직접 검산."
+  ]
+}

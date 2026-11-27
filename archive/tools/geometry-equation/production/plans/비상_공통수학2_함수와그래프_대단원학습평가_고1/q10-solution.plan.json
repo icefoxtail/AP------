@@ -1,0 +1,8 @@
+{
+  "capability":"sqrt-affine-spike-v1",
+  "graphPlan":{"family":"sqrt-affine","radicand":["-1","4"],"sign":1,"offset":"-2","sourceDomain":{"kind":"NATURAL_SQRT_AFFINE"},"domain":[0.25,6],"viewport":[-1,7,-3,4],"requiredPoints":[{"id":"P","x":1.25,"y":0}],"exactCoordinates":{"P":["5/4","0"]},"axisTickValues":{"x":[],"y":[]}},
+  "caption":"이동·대칭 후 최종 그래프 y=√(4x−1)−2",
+  "accessibilityDescription":"끝점 (1/4,-2)에서 오른쪽 위로 증가하는 무리함수와 x축 교점 (5/4,0)을 표시한다.",
+  "sourceConditions":[{"id":"translation","condition":"y=-√(4x+3)을 오른쪽 1, 위로 2 이동 후 x축 대칭","mappedTo":"graphPlan.radicand"},{"id":"result","condition":"최종 y=√(4x−1)−2","mappedTo":["graphPlan.sign","graphPlan.offset"]}],
+  "newVisualInformation":["원본에 없는 중간 변환 그래프를 가정하지 않고 결과 함수의 시작점과 교점만 표시한다."]
+}

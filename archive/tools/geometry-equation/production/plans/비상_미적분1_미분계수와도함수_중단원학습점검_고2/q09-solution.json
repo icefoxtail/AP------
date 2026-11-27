@@ -1,0 +1,69 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "3"
+        ],
+        "domain": [
+          null,
+          "1"
+        ],
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "3",
+          "1",
+          "1"
+        ],
+        "domain": [
+          "1",
+          null
+        ],
+        "start": "OPEN"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "5"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "5"
+      ]
+    },
+    "functionName": "f"
+  },
+  "caption": "a=1, b=2일 때 x≤1에서는 y=3x+2, x>1에서는 y=x²+x+3이며 (1,5)에서 값과 기울기 3이 같다.",
+  "accessibilityDescription": "a=1, b=2일 때 x≤1에서는 y=3x+2, x>1에서는 y=x²+x+3이며 (1,5)에서 값과 기울기 3이 같다.",
+  "sourceConditions": [
+    {
+      "id": "linear",
+      "condition": "x≤1에서는 3x+2, (1,5) 포함",
+      "mappedTo": "graphPlan.pieces.0"
+    },
+    {
+      "id": "quadratic",
+      "condition": "x>1에서는 x²+x+3, (1,5) 접근",
+      "mappedTo": "graphPlan.pieces.1"
+    },
+    {
+      "id": "smooth",
+      "condition": "좌우 미분계수 3으로 일치",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "원문·해설의 결정적 선·점·관계만 나타내며 배경과 임의의 면 채움을 두지 않는다."
+  ]
+}

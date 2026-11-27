@@ -1,0 +1,13 @@
+{
+  "capability":"ellipse-figure-v1",
+  "sourceQuote":"포물선 y²=12x에 접하고 직선 x-y+1=0과 평행한 접선 및 좌표축이 이루는 삼각형 넓이",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"3","axis":"X"},
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"A","kind":"POINT","x":"-3","y":"0"},{"id":"B","kind":"POINT","x":"0","y":"3"},{"id":"P","kind":"ON_CONIC","x":"3","branch":"POS"}],
+  "lines":[{"id":"t","slope":"1","intercept":"3","tangent":true,"label":"y=x+3"}],
+  "segments":[{"id":"oa","from":"O","to":"A"},{"id":"ob","from":"O","to":"B"},{"id":"ab","from":"A","to":"B"}],
+  "polygons":[{"id":"tri","points":["O","A","B"],"fill":"LIGHT"}],
+  "caption":"기울기가 1인 접선 y=x+3과 두 축의 삼각형",
+  "accessibilityDescription":"포물선 y²=12x에 접하는 직선 y=x+3은 x절편 -3과 y절편 3을 가지며 좌표축과 삼각형 OAB를 이룬다.",
+  "sourceConditions":[{"id":"c1","condition":"주어진 직선 x−y+1=0과 평행하므로 기울기 1","mappedTo":["t"]},{"id":"c2","condition":"포물선 y²=12x의 접선 y=x+3과 좌표축의 교점 A(-3,0),B(0,3)","mappedTo":["conic","P","A","B"]},{"id":"c3","condition":"삼각형 넓이 9/2","mappedTo":["tri","oa","ob","ab"]}],
+  "newVisualInformation":["기울기·절편을 실제로 충족하는 접선", "삼각형 면적만 필요한 채움"]
+}

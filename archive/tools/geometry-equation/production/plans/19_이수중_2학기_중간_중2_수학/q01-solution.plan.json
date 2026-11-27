@@ -1,0 +1,37 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"8"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"MIDPOINT","inputs":["B","C"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "coordinateCanvas":{"width":480,"height":380},
+  "displayLines":[],"displayCircles":[],"displayPoints":["A","B","C","D"],
+  "displaySegments":[
+    {"id":"sAB","refs":["A","B"]},{"id":"sAC","refs":["A","C"]},
+    {"id":"sBD","refs":["B","D"]},{"id":"sDC","refs":["D","C"]},
+    {"id":"sAD","refs":["A","D"],"dashed":true}
+  ],
+  "planeMarks":{
+    "angles":[
+      {"id":"aB","refs":["A","B","D"],"arcs":1,"equalGroup":1,"noLabel":true,"style":"ARC"},
+      {"id":"aC","refs":["D","C","A"],"arcs":1,"equalGroup":1,"noLabel":true,"style":"ARC"},
+      {"id":"aBAD","refs":["B","A","D"],"arcs":2,"equalGroup":2,"noLabel":true,"style":"ARC"},
+      {"id":"aDAC","refs":["D","A","C"],"arcs":2,"equalGroup":2,"noLabel":true,"style":"ARC"}
+    ],
+    "equalLengths":[{"id":"eABAC","count":1,"segments":["sAB","sAC"]}]
+  },
+  "caption":"꼭지각의 이등분선 AD를 기준으로 두 삼각형의 같은 각과 공통변을 확인한다.",
+  "accessibilityDescription":"이등변삼각형 ABC에서 D가 BC 위에 있고 꼭짓점 A에서 D로 점선 보조선이 이어져 있다. B와 C의 밑각은 각각 같은 한 겹 호이고 A의 양쪽 각은 같은 두 겹 호이다. AB와 AC도 같은 길이 눈금이 있다.",
+  "sourceConditions":[
+    {"id":"equal-base-angles","condition":"원문 가정인 ∠B=∠C를 한 겹 같은 각호로 보인다.","mappedTo":"planeMarks.angles:aB,aC"},
+    {"id":"bisector","condition":"A에서 BC에 내린 각이등분선 AD는 점선이며 ∠BAD=∠DAC이다.","mappedTo":"mathPlan.nodes:D;displaySegments:sAD;planeMarks.angles:aBAD,aDAC"},
+    {"id":"congruence","condition":"공통변 AD와 대응각 두 쌍으로 ABD, ACD의 ASA 합동을 보여 AB=AC가 된다. 원본은 길이·절대 좌표를 주지 않아 비례형 대표 도형으로 작성했다.","mappedTo":"displaySegments:sAB,sAC,sAD;planeMarks.equalLengths:eABAC"}
+  ],
+  "newVisualInformation":["원본의 A-BC 각이등분 보조 점선을 살리고 두 쌍의 동일 각호를 엔진으로 표시한다.","풀이 결론인 AB=AC의 한 줄 길이 표식은 해설 축에만 둔다.","흰 바탕에 도형 면 채움 없음."]
+}

@@ -1,0 +1,9 @@
+{
+  "capability":"sqrt-affine-spike-v1",
+  "graphPlan":{"family":"sqrt-affine","radicand":["-4","2"],"sourceDomain":{"kind":"NATURAL_SQRT_AFFINE"},"domain":[2,8],"viewport":[1.5,8.5,-0.5,4],"requiredPoints":[{"id":"A","x":2,"y":0},{"id":"B","x":4,"y":2}],"axisTickValues":{"x":[2,4],"y":[2]},"domainRangeLabels":true},
+  "caption":"⑵ f(x)=√(2x-4)는 x=2에서 시작해 오른쪽으로 이어지며 정의역이자 연속인 구간은 [2,∞)이다.",
+  "accessibilityDescription":"닫힌 시작점 (2,0)에서 오른쪽 위로만 뻗는 제곱근 그래프와 x가 2 이상인 정의역 표시.",
+  "sourceQuote":"⑵ $f(x)=\\sqrt{2x-4}$",
+  "sourceConditions":[{"id":"c1","condition":"2x-4≥0 따라서 x≥2","mappedTo":"graphPlan.radicand,graphPlan.sourceDomain,graphPlan.domainRangeLabels"},{"id":"c2","condition":"(2,0)에서 시작하고 (4,2)를 통과","mappedTo":"graphPlan.requiredPoints"}],
+  "newVisualInformation":["닫힌 정의역 경계와 오른쪽 방향을 그래프에 표시"]
+}

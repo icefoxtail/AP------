@@ -1,0 +1,83 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "3",
+          "2/3",
+          "-1/2"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "Y",
+        "elements": [
+          "3",
+          "2/3",
+          "-1/2"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y",
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "3→2/3→−1/2→3의 3주기. 2026≡1 (mod 3)이다.",
+  "accessibilityDescription": "3→2/3→−1/2→3의 3주기. 2026≡1 (mod 3)이다.",
+  "sourceConditions": [
+    {
+      "id": "mapping0",
+      "condition": "f(x)=(x−1)/x을 3과 그 후속값들에 반복 대입한다.",
+      "mappedTo": "diagram.arrows"
+    },
+    {
+      "id": "mapping1",
+      "condition": "세 번째 합성에서 처음 값 3으로 돌아온다.",
+      "mappedTo": "diagram.arrows"
+    }
+  ],
+  "newVisualInformation": [
+    "입력 원소마다 정확한 출력 화살표 한 개를 표시한다."
+  ]
+}

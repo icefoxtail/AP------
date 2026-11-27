@@ -1,0 +1,218 @@
+{
+  "sourceQuote": "점 $O$가 $\\triangle ABC$의 외심이고 $\\tri",
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1189897948557",
+              "denominator": "100000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "489897948557",
+              "denominator": "100000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "7"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "radiusEq",
+        "count": 1,
+        "segments": [
+          "OA",
+          "OC",
+          "OB"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "ac10",
+        "from": "A",
+        "to": "C",
+        "label": "10",
+        "side": "BELOW",
+        "style": "BAR",
+        "unit": "cm"
+      },
+      {
+        "id": "oa7",
+        "from": "O",
+        "to": "A",
+        "label": "7",
+        "side": "LEFT",
+        "style": "BAR",
+        "unit": "cm"
+      }
+    ]
+  },
+  "caption": "△AOC 둘레에서 2R+10=24이므로 반지름 R=7cm이다.",
+  "accessibilityDescription": "O에서 A,C,B로 그은 점선 반지름이 같고 OA에는 7cm, AC에는 10cm 길이가 표시된다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "OA=OC=OB",
+      "mappedTo": "planeMarks.equalLengths[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "AC=10cm",
+      "mappedTo": "planeMarks.dimensions[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "OA=7cm",
+      "mappedTo": "planeMarks.dimensions[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "실제 점과 선분의 관계에 각호·직각 네모·치수선·등변 표시를 연결한다."
+  ],
+  "displayCircles": [
+    "circ"
+  ]
+}

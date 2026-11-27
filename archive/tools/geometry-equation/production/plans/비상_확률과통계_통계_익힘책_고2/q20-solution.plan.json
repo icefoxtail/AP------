@@ -1,0 +1,14 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE", "curves": [{"id": "Z", "mean": "0", "sd": "1", "label": "Z"}],
+    "ticks": ["-3", "0", "3"], "shades": [{"from": null, "to": "-3", "color": "BLUE"}, {"from": "3", "to": null, "color": "WARM"}], "xLabel": "z"
+  },
+  "caption": "P(X≤62)=P(Z≤3)이고 P(표본평균≥48)=P(Z≥−√n/2)이다. 두 누적 넓이가 같으려면 기준이 −3이어야 하므로 n=36이다.",
+  "accessibilityDescription": "표준정규분포에서 −3과 3을 중심 0의 양옆에 놓고, 서로 같은 작은 양쪽 꼬리의 넓이를 표시한다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "X는 N(50,16)을 따르고 표본평균의 분산은 16/n이다.", "mappedTo": "chart.curves[0] (표준화 Z)"},
+    {"id": "c2", "condition": "P(X≤62)=P(표본평균≥48)이다.", "mappedTo": "chart.ticks,chart.shades (두 여사건 꼬리의 대칭)"}
+  ],
+  "newVisualInformation": ["원래 두 사건의 보충 영역인 z≥3, z≤−3이 대칭임을 보여 주어 부호 착오를 막는다."]
+}

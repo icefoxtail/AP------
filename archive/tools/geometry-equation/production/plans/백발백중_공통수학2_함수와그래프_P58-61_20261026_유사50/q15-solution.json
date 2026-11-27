@@ -1,0 +1,90 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      3,
+      -2,
+      24
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "5",
+          "12",
+          "6"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "inverseOf": "f",
+        "color": "WARM",
+        "label": "g"
+      },
+      {
+        "id": "diag",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ],
+        "color": "GREEN",
+        "label": "y=x"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "-5/6"
+      ],
+      "y": [
+        "-1",
+        "-5/6"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-1",
+          "y": "-1"
+        },
+        {
+          "id": "B",
+          "x": "-5/6",
+          "y": "-5/6"
+        }
+      ]
+    }
+  },
+  "caption": "f(x)=6(x+1)²−1 (x≥−1), g=f⁻¹. y=x에서 A(−1,−1), B(-5/6,-5/6)와 만난다.",
+  "accessibilityDescription": "f(x)=6(x+1)²−1 (x≥−1), g=f⁻¹. y=x에서 A(−1,−1), B(-5/6,-5/6)와 만난다.",
+  "sourceConditions": [
+    {
+      "id": "curves",
+      "condition": "함수식·정의역·대칭축·정확한 두 그래프의 대응",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "points",
+      "condition": "정확한 원문 해설 좌표",
+      "mappedTo": "graphPlan.overlays.points"
+    }
+  ],
+  "newVisualInformation": [
+    "그래프에 임의의 배경/면 채움이 없다."
+  ]
+}

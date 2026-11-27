@@ -1,0 +1,253 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "6",
+              "denominator": "10"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "6",
+              "denominator": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "unit",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "R",
+    "P",
+    "H",
+    "A"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sOR",
+      "refs": [
+        "O",
+        "R"
+      ]
+    },
+    {
+      "id": "sOH",
+      "refs": [
+        "O",
+        "H"
+      ]
+    },
+    {
+      "id": "sHA",
+      "refs": [
+        "H",
+        "A"
+      ]
+    },
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sPH",
+      "refs": [
+        "P",
+        "H"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "id": "ax",
+        "refs": [
+          "H",
+          "O",
+          "P"
+        ],
+        "value": 53.130102354,
+        "label": "x",
+        "labelKind": "MATH"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "quarter",
+        "circle": "unit",
+        "center": "O",
+        "from": "R",
+        "to": "A",
+        "side": "MINOR"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lOP",
+        "ownerSegment": "sOP",
+        "text": "1"
+      },
+      {
+        "id": "lOH",
+        "ownerSegment": "sOH",
+        "text": "cos(x)"
+      },
+      {
+        "id": "lPH",
+        "ownerSegment": "sPH",
+        "text": "sin(x)"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "O",
+        "H",
+        "P"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "반지름 OP=1인 사분원에서 PH⊥OA이고, sin x=PH, cos x=OH임을 직각삼각형 OPH로 보여 준다.",
+  "accessibilityDescription": "반지름 OP=1인 사분원에서 PH⊥OA이고, sin x=PH, cos x=OH임을 직각삼각형 OPH로 보여 준다.",
+  "sourceConditions": [
+    {
+      "id": "problem-stem",
+      "condition": "중심이 $O$이고 반지름의 길이가 $1$인 사분원에서 점 $P$는 호 위에 있다. $H$는 $P$에서 사분원의 반지름에 내린 수선의 발이고 $\\angle POH=x$ ($0^\\circ<x<90^\\circ$)일 때, 다음 중 옳지 않은 것은? (3점)<br><img src=\"assets/images/21_동산중_2학기_중간_중3_수학/q16-problem-readable-v2.svg\" alt=\"반지름 1인 사분원과 직각삼각형 OPH\" />",
+      "mappedTo": "mathPlan.nodes, displaySegments, planeMarks, rightAngles"
+    },
+    {
+      "id": "worked-solution",
+      "condition": "빗변 $OP=1$인 직각삼각형에서 $\\sin x=PH/OP=PH$, $\\cos x=OH/OP=OH$, $\\tan x=PH/OH$, 그리고 $OP=1$은 참이다. $\\sin x$는 $OP$가 아니라 $PH$이므로 ④가 옳지 않다.",
+      "mappedTo": "planeMarks, displaySegments, caption"
+    }
+  ],
+  "newVisualInformation": [
+    "사분원의 둥근 호와 반지름 1",
+    "PH 수선·H 직각·O의 x 각 호",
+    "PH=sin x, OH=cos x의 선분 라벨, 면 채움 없음"
+  ],
+  "hiddenPointNames": [
+    "R"
+  ],
+  "hiddenPointStyle": "NONE"
+}

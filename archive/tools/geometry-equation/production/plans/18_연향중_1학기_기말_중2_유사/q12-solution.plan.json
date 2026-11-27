@@ -1,0 +1,12 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {"axisVariable": false, "rows": [{"kind": "SET", "pieces": [{"lo": {"value": "-7", "state": "OPEN"}, "hi": {"value": "11", "state": "CLOSED"}}]}]},
+  "numberLineCaption": {"text": "−3x+5의 값의 범위"},
+  "caption": "−2≤x<4에 음수 −3을 곱하고 5를 더하면 −7<−3x+5≤11이므로 아래쪽 −7은 열리고 위쪽 11은 닫힌다.",
+  "accessibilityDescription": "수직선에서 마이너스 7은 열린 끝점, 11은 닫힌 끝점이며 그 사이가 식 마이너스 3x 더하기 5의 범위이다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "x의 범위는 −2≤x<4", "mappedTo": "caption"},
+    {"id": "c2", "condition": "음수 −3을 곱하면 방향·열림이 바뀌고 5를 더해 −7<−3x+5≤11", "mappedTo": ["numberLine.rows[0].pieces"]}
+  ],
+  "newVisualInformation": ["−3x+5의 열린 최솟값 경계 −7과 닫힌 최댓값 경계 11을 수직선에 표시"]
+}

@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"CIRCLE","center":["1","2"],"rSquared":"25"},
+  "points":[{"id":"C","kind":"CENTER"},{"id":"A","kind":"POINT","x":"-2","y":"6"},{"id":"B","kind":"POINT","x":"4","y":"-2"}],
+  "segments":[{"id":"AB","from":"A","to":"B","label":"10"},{"id":"CA","from":"C","to":"A","label":"5"}],
+  "caption":"지름 AB의 양 끝점과 중점 C, 지름 10 및 반지름 5를 보여 준다.",
+  "accessibilityDescription":"원의 지름 양 끝점 A(-2,6), B(4,-2), 가운데 C(1,2)가 일직선상에 있다.",
+  "sourceQuote":"두 점 $(-2,6)$, $(4,-2)$를 지름의 양 끝점으로 하는 원",
+  "sourceConditions":[{"id":"diameter","condition":"A(-2,6),B(4,-2), C=(1,2), AB=10","mappedTo":["points","segments"]}],
+  "newVisualInformation":["원의 지름과 중심의 중점 관계를 선분과 길이로 표시한다."]
+}

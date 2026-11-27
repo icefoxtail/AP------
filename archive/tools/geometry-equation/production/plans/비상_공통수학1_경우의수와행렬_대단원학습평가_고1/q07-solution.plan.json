@@ -1,0 +1,452 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "Start",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "End",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "56"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Start"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Start"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "16"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S3",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Start"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "24"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S4",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Start"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "32"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S5",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Start"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "40"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S6",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Start"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "48"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "S1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "S2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k3",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "S3"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k4",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "S4"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k5",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "S5"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k6",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "S6"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "Start",
+    "End"
+  ],
+  "displaySegments": [],
+  "displayLines": [],
+  "displayCircles": [
+    "k1",
+    "k2",
+    "k3",
+    "k4",
+    "k5",
+    "k6"
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 340
+  },
+  "caption": "해설에서는 출발을 0번, 여섯 돌을 1~6번, 도착을 7번이라 두어 한 번에 한 칸·두 칸 이동하는 경우를 aₙ=aₙ₋₁+aₙ₋₂로 센다. 해당 위치의 방법 수는 차례로 1,1,2,3,5,8,13,21이다.",
+  "accessibilityDescription": "출발과 도착 사이 여섯 징검돌의 원형 외곽선이 순서대로 있고, 각 위치에 0번부터 7번까지의 번호와 그 위치에 도착하는 방법의 수가 표시되어 있다.",
+  "sourceQuote": "출발 지점을 $0$, 돌을 차례로 $1,\\ 2,\\ \\cdots,\\ 6$, 도착 지점을 $7$이라 하자.",
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "start",
+        "at": [
+          0,
+          -10
+        ],
+        "text": "출발",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "end",
+        "at": [
+          56,
+          -10
+        ],
+        "text": "도착",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "a0",
+        "at": [
+          0,
+          7
+        ],
+        "text": "1"
+      },
+      {
+        "id": "a1",
+        "at": [
+          8,
+          7
+        ],
+        "text": "1"
+      },
+      {
+        "id": "a2",
+        "at": [
+          16,
+          7
+        ],
+        "text": "2"
+      },
+      {
+        "id": "a3",
+        "at": [
+          24,
+          7
+        ],
+        "text": "3"
+      },
+      {
+        "id": "a4",
+        "at": [
+          32,
+          7
+        ],
+        "text": "5"
+      },
+      {
+        "id": "a5",
+        "at": [
+          40,
+          7
+        ],
+        "text": "8"
+      },
+      {
+        "id": "a6",
+        "at": [
+          48,
+          7
+        ],
+        "text": "13"
+      },
+      {
+        "id": "a7",
+        "at": [
+          56,
+          7
+        ],
+        "text": "21"
+      },
+      {
+        "id": "idx0",
+        "at": [
+          0,
+          -5
+        ],
+        "text": "0"
+      },
+      {
+        "id": "idx1",
+        "at": [
+          8,
+          -5
+        ],
+        "text": "1"
+      },
+      {
+        "id": "idx2",
+        "at": [
+          16,
+          -5
+        ],
+        "text": "2"
+      },
+      {
+        "id": "idx3",
+        "at": [
+          24,
+          -5
+        ],
+        "text": "3"
+      },
+      {
+        "id": "idx4",
+        "at": [
+          32,
+          -5
+        ],
+        "text": "4"
+      },
+      {
+        "id": "idx5",
+        "at": [
+          40,
+          -5
+        ],
+        "text": "5"
+      },
+      {
+        "id": "idx6",
+        "at": [
+          48,
+          -5
+        ],
+        "text": "6"
+      },
+      {
+        "id": "idx7",
+        "at": [
+          56,
+          -5
+        ],
+        "text": "7"
+      }
+    ]
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "여섯 징검돌은 출발 0번과 도착 7번 사이의 1~6번 위치",
+      "mappedTo": "displayCircles"
+    },
+    {
+      "id": "c2",
+      "condition": "해설의 위치별 도착 방법의 수 a0~a7은 1,1,2,3,5,8,13,21",
+      "mappedTo": "planeMarks.textLabels"
+    },
+    {
+      "id": "c3",
+      "condition": "한 번에 한 칸 또는 두 칸 이동할 수 있다",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "newVisualInformation": [
+    "여섯 돌과 출발·도착을 모두 그린 상태에서 각 번호 0~7을 표시",
+    "해설에서 직접 계산한 도착 경로 수 1,1,2,3,5,8,13,21을 위치별로 보이기",
+    "한 번에 한 칸 또는 두 칸이라는 관계는 원래 풀이의 점화식으로만 설명하며 그림에 존재하지 않는 화살표를 있다고 주장하지 않음"
+  ],
+  "hiddenPointNames": [
+    "Start",
+    "End"
+  ]
+}

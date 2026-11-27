@@ -1,0 +1,74 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "-8",
+          "3"
+        ],
+        "domain": [
+          null,
+          "2"
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "2",
+          "-4",
+          "1"
+        ],
+        "domain": [
+          "2",
+          null
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "B",
+        "x": "2",
+        "y": "-2"
+      },
+      {
+        "id": "A",
+        "x": "4",
+        "y": "2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2",
+        "4"
+      ],
+      "y": [
+        "-2",
+        "2"
+      ]
+    },
+    "xWindow": [
+      -3,
+      7
+    ]
+  },
+  "caption": "x<2의 직선과 x≥2의 포물선은 (2,-2)에서 이어진다. 해설의 (4,2)도 표시한다.",
+  "accessibilityDescription": "x<2의 직선과 x≥2의 포물선은 (2,-2)에서 이어진다. 해설의 (4,2)도 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "branches",
+      "condition": "x<2에서는 계수 -8,3, x≥2에서는 2,-4,1 (상수항부터)",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "marked",
+      "condition": "해설에서 지정한 점·경계·값을 보존한다.",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 표식·좌표·관계를 정확한 계획 필드에 보존한다."
+  ]
+}

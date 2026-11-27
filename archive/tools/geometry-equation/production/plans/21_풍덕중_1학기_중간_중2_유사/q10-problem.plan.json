@@ -1,0 +1,63 @@
+{
+  "sourceQuote": "밑면이 밑변의 길이가 $4x$, 높이가 $\\frac{3}{4}",
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s",
+      "kind": "PRISM",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            0,
+            3
+          ]
+        ]
+      },
+      "height": 6,
+      "names": "ABCDEF"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {"at": "A", "refs": ["B", "C"]}
+    ]
+  },
+  "dims": [
+    {
+      "edge": "AB",
+      "label": "4x"
+    },
+    {
+      "edge": "CA",
+      "label": "\\frac{3}{4}y"
+    },
+    {
+      "edge": "AD",
+      "label": "h"
+    }
+  ],
+  "solidCaption": {
+    "text": "직각삼각기둥"
+  },
+  "caption": "밑면은 서로 수직인 두 변 4x, 3y/4를 가진 직각삼각형이며 기둥 높이를 h로 표시했다. 외형 길이 비는 모식도이다.",
+  "accessibilityDescription": "직각삼각형의 밑변과 높이, 삼각기둥의 높이에 각각 4x, 3y/4, h가 표시된다.",
+  "sourceConditions": [
+    {
+      "id": "base",
+      "condition": "직각삼각형 밑면의 두 직교하는 변 4x,3y/4",
+      "mappedTo": "dims[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "삼각기둥의 깊이 점선과 밑면의 두 직각 변, 높이 치수를 표기한다."
+  ]
+}

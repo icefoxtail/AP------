@@ -1,0 +1,69 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      7,
+      -7,
+      5
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LOGARITHMIC",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "8",
+          "0",
+          "0"
+        ],
+        "domain": [
+          "1/64",
+          "7"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "kind": "LOGARITHMIC",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "1/4",
+          "0",
+          "0"
+        ],
+        "domain": [
+          "1/64",
+          "7"
+        ],
+        "color": "WARM",
+        "label": "g"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "두 로그곡선의 같은 x에서의 높이차는 log₂(8x)−log₂(x/4)=5로 일정하다. 곡선 사이의 경계 및 넓이 음영은 엔진 확장이 필요하다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=log₂(8x), y=log₂(x/4)",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "c2",
+      "condition": "ENGINE_CAPABILITY_PENDING: LOG_REGION_BOUNDARY_UNSUPPORTED, SYMBOLIC_K_INTERSECTION_AND_VERTICAL_CONNECTORS — 로그곡선 경계 사이 x=6/31~192/31 영역, 교점 A·B, 수직 선분 AC·BD와 AB=6 길이표식 자동 구성 필요",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 로그곡선은 같은 정의역에서 항상 수직 거리 5를 유지함"
+  ],
+  "sourceQuote": "두 함수 $y = \\log_2(8x)$, $y = \\log_2\\"
+}

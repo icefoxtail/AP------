@@ -1,0 +1,39 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+            "value": "1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "6",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true,
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "부등식의 해"
+  },
+  "caption": "볼펜을 x개, 지우개를 12−x개 사되 두 종류를 모두 사려면 x≥1이다. 예산을 만족하는 정수 x는 1에서 6까지이므로 최대 6개이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "700x+300(12−x)≤6000 → x≤6; 0≤x≤12",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "경계점의 열린·닫힌 구별과 부등식의 해인 수직선 범위"
+  ]
+}

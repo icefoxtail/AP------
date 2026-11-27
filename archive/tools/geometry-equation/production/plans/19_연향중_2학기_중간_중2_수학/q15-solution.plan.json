@@ -1,0 +1,72 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "원기둥 A"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "kind": "CYLINDER",
+            "radius": 2,
+            "height": 4
+          }
+        ],
+        "dims": [
+          {
+            "radius": "top"
+          },
+          {
+            "height": true,
+            "side": "RIGHT"
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "원기둥 B"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "kind": "CYLINDER",
+            "radius": 3,
+            "height": 6
+          }
+        ],
+        "dims": [
+          {
+            "radius": "top"
+          },
+          {
+            "height": true,
+            "side": "RIGHT"
+          }
+        ]
+      }
+    }
+  ],
+  "caption": "원본에 제시된 여러 도형의 구성을 비교한다.",
+  "accessibilityDescription": "원본의 여러 도형과 각 꼭짓점 및 길이 표식을 독립 패널로 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "src-q15",
+      "condition": " 조건: 그림에서 원기둥 A의 밑면 반지름은 $2\\text{cm}$, 높이는 $4\\text{cm}$이고, 원기둥 B의 높이는 $6\\text{cm}$입니다. 두 원기둥은 서로 닮았습니다. 구할 대상은 원기둥 B의 부피입니다.  1) 닮음비는 높이의 비와 같으므로 A:B = $4:6=2:3$입니다. 따라서 B의 밑면 반지름은 $2\\times\\frac{3}{2}=3\\text{cm}$입니다.  2) 원기둥의 부피는 밑면의 넓이에 높이를 곱하므로 $V=\\pi r^2h$입니다. 따라서 $V_B=\\pi\\times3^2\\times6=54\\pi\\text{cm}^3$입니다. 정답은 ④입니다. ",
+      "mappedTo": "mathPlan.nodes;displaySegments;planeMarks"
+    },
+    {
+      "id": "source-visual-feature",
+      "condition": "닮음비 2:3인 두 원기둥의 실제 반지름 2·3, 높이4·6",
+      "mappedTo": "displaySegments;planeMarks"
+    }
+  ],
+  "newVisualInformation": [
+    "닮음비 2:3인 두 원기둥의 실제 반지름 2·3, 높이4·6"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"-4"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"F","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"8"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"ae","op":"LINE_THROUGH","inputs":["A","E"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"bf","op":"LINE_THROUGH","inputs":["B","F"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"O","op":"LINE_INTERSECTION","inputs":["ae","bf"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "coordinateCanvas":{"width":610,"height":540},
+  "displayPoints":["A","B","C","D","E","F","O"],"displayLines":[],"displayCircles":[],
+  "displaySegments":[
+    {"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sDA","refs":["D","A"]},
+    {"id":"sCE","refs":["C","E"]},{"id":"sDF","refs":["D","F"]},
+    {"id":"sAE","refs":["A","E"]},{"id":"sBF","refs":["B","F"]}
+  ],
+  "planeMarks":{
+    "equalLengths":[{"id":"equal-extensions","count":1,"segments":["sCE","sCD","sDF"]}],
+    "angles":[
+      {"id":"x-at-e","refs":["A","E","C"],"value":45,"label":"x","arcs":1,"factRole":"GIVEN"},
+      {"id":"y-at-f","refs":["D","F","B"],"value":45,"label":"y","arcs":1,"factRole":"GIVEN"}
+    ]
+  },
+  "caption":"평행사변형 ABCD에서 AD=2AB이고 E, C, D, F는 한 직선 위에 순서대로 있다. EC=CD=DF의 세 눈금과 두 연장 삼각형의 각 x, y를 나타낸다.",
+  "accessibilityDescription":"가로로 긴 평행사변형 ABCD의 오른쪽 변 CD를 아래로 연장한 점 E, 위로 연장한 점 F가 있다. EC, CD, DF는 같은 길이로 표시되고 AE와 BF는 O에서 만난다. 점 E의 각 x와 점 F의 각 y에 각호가 있다.",
+  "sourceConditions":[
+    {"id":"parallelogram","condition":"ABCD는 평행사변형이고 AD=2AB이다.","mappedTo":"mathPlan.nodes:A,B,C,D;displaySegments:sAB,sBC,sCD,sDA"},
+    {"id":"collinear-extension","condition":"E,C,D,F는 CD 연장선 위에 차례로 있고 EC=CD=DF이다.","mappedTo":"mathPlan.nodes:E,C,D,F;planeMarks.equalLengths:equal-extensions"},
+    {"id":"two-rays","condition":"AE와 BF의 교점 O 및 E,F의 x,y가 그려진다.","mappedTo":"mathPlan.nodes:ae,bf,O;displaySegments:sAE,sBF;planeMarks.angles:x-at-e,y-at-f"}
+  ],
+  "newVisualInformation":["원본의 세 연장선 길이 눈금, 두 교차선 및 x·y 각호를 각각 엔진의 독립 표식으로 대응시킨다.","해설 도형에 면 색칠을 하지 않는다."]
+}

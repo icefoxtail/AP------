@@ -1,0 +1,28 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"-4"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-3"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"7"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"P","op":"DIVISION_POINT","inputs":["A","B"],"args":{"m":{"kind":"integer","value":"3"},"n":{"kind":"integer","value":"2"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"Q","op":"DIVISION_POINT","inputs":["B","A"],"args":{"m":{"kind":"integer","value":"4"},"n":{"kind":"integer","value":"1"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["O","A","B","P","Q"],
+  "displaySegments":[{"id":"sAQ","refs":["A","Q"]},{"id":"sQP","refs":["Q","P"]},{"id":"sPB","refs":["P","B"]}],
+  "planeMarks":{"vectors":[{"id":"va","from":"O","to":"A","label":"vec(a)","side":"LEFT"},{"id":"vb","from":"O","to":"B","label":"vec(b)","side":"RIGHT"}],"dimensions":[
+    {"id":"dAP","from":"A","to":"P","label":"3t","side":"ABOVE","offset":"AUTO","style":"BRACE"},
+    {"id":"dPB","from":"P","to":"B","label":"2t","side":"ABOVE","offset":"AUTO","style":"BRACE"},
+    {"id":"dBQ","from":"B","to":"Q","label":"4t","side":"BELOW","offset":"AUTO","style":"BRACE"},
+    {"id":"dQA","from":"Q","to":"A","label":"t","side":"BELOW","offset":"AUTO","style":"BRACE"}
+  ]},
+  "coordinateCanvas":{"width":720,"height":480},
+  "caption":"대표 배치에서 AP:PB=3:2, BQ:QA=4:1이며 각 점의 위치벡터는 OA, OB의 내분으로 정한다.",
+  "accessibilityDescription":"O에서 A로 향하는 벡터 a와 B로 향하는 벡터 b가 있고, 선분 AB 위에 A,Q,P,B 순서로 점이 놓인다. 위쪽에는 AP=3t, PB=2t, 아래쪽에는 BQ=4t, QA=t가 표시된다.",
+  "sourceQuote":"AB를 3:2로 내분하는 P, BA를 4:1로 내분하는 Q의 위치벡터",
+  "sourceConditions":[
+    {"id":"c1","condition":"P∈AB와 AP:PB=3:2","mappedTo":"mathPlan.nodes[3],planeMarks.dimensions[0],planeMarks.dimensions[1]"},
+    {"id":"c2","condition":"Q∈BA와 BQ:QA=4:1","mappedTo":"mathPlan.nodes[4],planeMarks.dimensions[2],planeMarks.dimensions[3]"},
+    {"id":"c3","condition":"OA=벡터 a, OB=벡터 b","mappedTo":"planeMarks.vectors[0],planeMarks.vectors[1]"}
+  ],
+  "newVisualInformation":["두 반대 방향 내분의 시작점과 끝점을 혼동하지 않도록 P와 Q를 한 선분 위에서 구별하고 3:2·4:1 치수선, 위치벡터 화살표를 배치한다. 좌표는 비를 보존하는 대표 배치이다."]
+}

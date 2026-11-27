@@ -1,0 +1,20 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"X","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-3"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-1"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"Q","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"L","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"-1"},"b":{"kind":"integer","value":"1"},"c":{"kind":"integer","value":"0"}},"outputType":"LINE","factRole":"GIVEN"}
+  ]},
+  "displayPoints":["A","B","P","Q"],"displayLines":["L"],
+  "displaySegments":[{"id":"AP","refs":["A","P"]},{"id":"PQ","refs":["P","Q"]},{"id":"QB","refs":["Q","B"]}],
+  "coordinateLabels":["A","B"],"lineLabels":[{"nodeId":"L","form":"SLOPE_INTERCEPT"}],
+  "caption":"A(−3,2)와 B(3,4) 사이에서 P는 x축, Q는 y=x 위를 움직인다. 표시한 P,Q는 위치를 설명하는 예시이며 최단 경로의 정답 좌표는 아니다.",
+  "accessibilityDescription":"두 고정점 A와 B 사이에 x축 위의 점 P, 대각선 y=x 위의 점 Q를 순서대로 연결한 세 구간 AP,PQ,QB를 표시한다.",
+  "sourceQuote":"두 점 A(-3, 2), B(3, 4)와 x축 위를 움직이는 점 P",
+  "sourceConditions":[{"id":"fixed","condition":"A(−3,2), B(3,4)","mappedTo":"mathPlan.nodes"},{"id":"loci","condition":"P는 x축 위, Q는 y=x 위","mappedTo":["displayPoints","displayLines"]},{"id":"path","condition":"이동 경로 A-P-Q-B","mappedTo":"displaySegments"}],
+  "newVisualInformation":["세 구간의 이어짐과 점 P,Q의 위치 제한을 발문대로 그린다.","최단 경로의 보조 대칭점·정답은 보이지 않는다."]
+}

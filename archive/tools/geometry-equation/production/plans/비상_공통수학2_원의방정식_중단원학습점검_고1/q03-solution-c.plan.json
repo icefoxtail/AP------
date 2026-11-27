@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1","conic":{"kind":"CIRCLE","center":["2","-1"],"rSquared":"15"},
+  "lines":[{"id":"l","slope":"2","intercept":"5"}],
+  "points":[{"id":"C","kind":"CENTER"},{"id":"H","kind":"FOOT","from":"C","onto":"l","rightAngle":true}],
+  "segments":[{"id":"CH","from":"C","to":"H"}],
+  "caption":"ㄷ은 중심에서 직선까지 거리 2√5가 반지름 √15보다 커 만나지 않는다.",
+  "accessibilityDescription":"ㄷ의 원과 직선은 떨어져 있으며 중심 C에서 직선으로 내린 수선 CH에 직각 표시가 있다.",
+  "sourceQuote":"ㄷ. $(x-2)^2+(y+1)^2=15$, $y=2x+5$",
+  "sourceConditions":[{"id":"c","condition":"C(2,-1), r=√15, d=2√5>r","mappedTo":["conic","lines","segments.CH"]}],
+  "newVisualInformation":["교점이 생기지 않는 간격과 중심의 최단거리 2√5를 표시한다."]
+}

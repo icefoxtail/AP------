@@ -1,0 +1,287 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "25730894764590190",
+              "denominator": "10000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-20938090314045176",
+              "denominator": "10000000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4068667356033675",
+              "denominator": "1000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "20938090314045176",
+              "denominator": "10000000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4068667356033675",
+              "denominator": "1000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAI",
+      "refs": [
+        "A",
+        "I"
+      ]
+    },
+    {
+      "id": "sBI",
+      "refs": [
+        "B",
+        "I"
+      ]
+    },
+    {
+      "id": "sCI",
+      "refs": [
+        "C",
+        "I"
+      ]
+    },
+    {
+      "id": "sID",
+      "refs": [
+        "I",
+        "D"
+      ]
+    },
+    {
+      "id": "sIE",
+      "refs": [
+        "I",
+        "E"
+      ]
+    },
+    {
+      "id": "sIF",
+      "refs": [
+        "I",
+        "F"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 430
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "D",
+        "I"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "B",
+        "E",
+        "I"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "A",
+        "F",
+        "I"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eq0",
+        "count": 1,
+        "segments": [
+          "sID",
+          "sIE",
+          "sIF"
+        ]
+      }
+    ]
+  },
+  "caption": "5번 문제: 원본 q05_incenter.png: 내심 I에서 AB·BC·AC로 내린 세 수선과 각의 이등분선.",
+  "accessibilityDescription": "5번 문제 그림: 원본 q05_incenter.png: 내심 I에서 AB·BC·AC로 내린 세 수선과 각의 이등분선.",
+  "sourceConditions": [
+    {
+      "id": "src-q5",
+      "condition": " 조건: 점 $\\text{I}$는 $\\triangle\\text{ABC}$의 내심이고, 점 $\\text{D, E, F}$는 내심에서 세 변에 내린 수선의 발입니다. 구할 대상: 5개 보기 중 항상 옳은 것 2개를 고릅니다.  삼각형의 내심의 정의와 성질: 1) 내심은 삼각형의 세 내각의 이등분선의 교점입니다. 따라서 선분 $\\overline{\\text{IA}}$는 $\\angle\\text{A}$의 이등분선이므로 $\\angle\\text{IAD} = \\angle\\text{IAF}$가 성립합니다. 2) 내심에서 세 변에 이르는 거리는 내접원의 반지름으로 같습니다: $\\overline{\\text{ID}} = \\overline{\\text{IE}} = \\overline{\\text{IF}}$. 3) $\\triangle\\text{IAD} \\equiv \\triangle\\text{IAF}$ (RHA 합동)입니다.  선지별 진위 판정: - ① $\\overline{\\text{ID}} = \\overline{\\text{IE}} = \\overline{\\text{IF}}$: 내심에서 세 변에 이르는 거리는 내접원의 반지름으로 모두 같으므로 항상 참입니다. - ② $\\overline{\\text{AD}} = \\overline{\\text{AI}}$: 직각삼각형 $\\triangle\\text{IAD}$에서 빗변 $\\overline{\\text{AI}}$와 밑변 $\\overline{\\text{AD}}$의 길이가 같을 수 없으므로 거짓입니다. - ③ $\\overline{\\text{IA}} = \\overline{\\text{IB}} = \\overline{\\text{IC}}$: 세 꼭짓점에 이르는 거리가 같은 것은 '외심'의 성질이므로 거짓입니다. - ④ $\\triangle\\text{IAF} \\equiv \\triangle\\text{ICF}$: $\\triangle\\text{IAF}$는 $\\triangle\\text{IAD}$와 합동이며 $\\triangle\\text{ICF}$와는 일반적으로 합동이 아닙니다. - ⑤ $\\angle\\text{IAD} = \\angle\\text{IAF}$: 선분 $\\overline{\\text{IA}}$가 꼭지각 $\\angle\\text{A}$의 이등분선이므로 항상 참입니다.  ① 참 (내심에서 세 변에 이르는 거리 일치) ② 거짓 (직각삼각형의 빗변과 밑변은 불일치) ③ 거짓 (외심의 성질) ④ 거짓 (합동 쌍 오류) ⑤ 참 (내심의 정의: 각의 이등분선)  따라서 정답은 ①, ⑤입니다. ",
+      "mappedTo": "mathPlan.nodes;displaySegments;planeMarks"
+    },
+    {
+      "id": "source-visual-feature",
+      "condition": "원본 q05_incenter.png: 내심 I에서 AB·BC·AC로 내린 세 수선과 각의 이등분선; 풀이에 필요한 추가 관계",
+      "mappedTo": "displaySegments;planeMarks"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 q05_incenter.png: 내심 I에서 AB·BC·AC로 내린 세 수선과 각의 이등분선; 풀이에 필요한 추가 관계"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "capability":"number-line-figure-v1",
+  "caption":"원래 이차부등식의 해 -1<x<3과 계수 관계를 대입한 뒤 구한 새 해 -3/2<x<1을 별도 수직선에 표시한다.",
+  "accessibilityDescription":"첫째 수직선의 열린 끝점 -1과 3 사이, 둘째 수직선의 열린 끝점 -3/2와 1 사이가 각각 굵게 표시되어 있다. 두 줄은 교집합 계산이 아니라 서로 다른 부등식의 해다.",
+  "sourceConditions":[
+    {"id":"s1","condition":"원래 해가 -1<x<3이고 양 끝을 포함하지 않는 엄격부등식이다.","mappedTo":["numberLine.rows[0].pieces[0]"]},
+    {"id":"s2","condition":"a<0, b=-2a, c=-3a를 대입하면 (2x+3)(x-1)<0으로 정리되어 -3/2<x<1이다.","mappedTo":["numberLine.rows[1].pieces[0]"]}
+  ],
+  "newVisualInformation":["원래 해와 구한 해를 별도 행에 두어 잘못된 교집합 해석을 방지한다.","-1, 3, -3/2, 1의 네 끝점 모두 열린 원으로 표시한다.","그림 바탕·구간 사이 면 채움은 없고 수직선의 구간선만 강조한다."],
+  "numberLine":{
+    "axisVariable":false,
+    "rows":[
+      {"kind":"SET","label":"원래 해","pieces":[{"lo":{"value":"-1","state":"OPEN"},"hi":{"value":"3","state":"OPEN"}}]},
+      {"kind":"SET","label":"새로운 해","pieces":[{"lo":{"value":"-3/2","state":"OPEN"},"hi":{"value":"1","state":"OPEN"}}]}
+    ]
+  },
+  "numberLineCaption":{"text":"서로 다른 두 부등식의 해"}
+}

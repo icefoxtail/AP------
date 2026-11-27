@@ -1,0 +1,21 @@
+{
+  "capability":"set-diagram-figure-v1",
+  "diagram":{
+    "kind":"VENN","showUniverse":false,
+    "sets":[{"id":"P"},{"id":"Q"}],
+    "elements":[
+      {"text":"3","in":["Q"]},
+      {"text":"4","in":["P","Q"]},
+      {"text":"5","in":["P"]},
+      {"text":"6","in":["P","Q"]},
+      {"text":"8","in":["Q"]}
+    ]
+  },
+  "caption":"P={4,5,6}, Q={3,4,6,8}이므로 P∪Q={3,4,5,6,8}이며 n(P∪Q)=5이다.",
+  "accessibilityDescription":"P에만 5, P와 Q의 공통 영역에 4와 6, Q에만 3과 8이 놓인 벤 다이어그램. 불필요한 면 채움은 없다.",
+  "sourceConditions":[
+    {"id":"sum","condition":"P={x+y | x∈{1,2}, y∈{3,4}}={4,5,6}","mappedTo":"diagram.elements"},
+    {"id":"product","condition":"Q={xy | x∈{1,2}, y∈{3,4}}={3,4,6,8}","mappedTo":"diagram.elements"}
+  ],
+  "newVisualInformation":["합집합의 중복 원소 4와 6을 교집합에 한 번씩만 표시한다."]
+}

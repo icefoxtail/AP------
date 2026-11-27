@@ -1,0 +1,35 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "흰",
+          "p": "2/5",
+          "children": [
+            { "label": "흰", "p": "1/3" },
+            { "label": "검", "p": "2/3" }
+          ]
+        },
+        {
+          "label": "검",
+          "p": "3/5",
+          "children": [
+            { "label": "흰", "p": "4/9" },
+            { "label": "검", "p": "5/9" }
+          ]
+        }
+      ]
+    },
+    "highlightPaths": [["흰", "흰"]],
+    "showPathProbability": true
+  },
+  "caption": "A가 흰 공을 뽑고 이어 B도 흰 공을 뽑는 경로를 강조한 비복원추출 수형도",
+  "accessibilityDescription": "처음 흰 공을 뽑을 확률은 2/5, 그다음 흰 공을 뽑을 조건부확률은 1/3이다. 흰 공 두 번 경로를 강조한다.",
+  "sourceConditions": [
+    { "id": "q05-c1", "condition": "첫 공은 흰 공 4개, 검은 공 6개 중 한 개를 뽑는다.", "mappedTo": ["chart.root.children"] },
+    { "id": "q05-c2", "condition": "공을 다시 넣지 않아 두 번째 추출은 9개에서 이루어진다.", "mappedTo": ["chart.root.children"] }
+  ],
+  "newVisualInformation": ["첫 추출 색별로 달라지는 두 번째 확률과 두 번 흰 공이 나온 경로의 곱을 시각적으로 분리한다"]
+}

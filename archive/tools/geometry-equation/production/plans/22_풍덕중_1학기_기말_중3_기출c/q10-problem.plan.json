@@ -1,0 +1,55 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"12"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"12"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"12"},{"kind":"integer","value":"12"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"expression","op":"sub","args": [{"kind":"integer","value":"6"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"14"}]}]}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"F","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"expression","op":"add","args": [{"kind":"integer","value":"6"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"14"}]}]},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"G","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"12"},{"kind":"expression","op":"add","args": [{"kind":"integer","value":"6"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"14"}]}]}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"expression","op":"sub","args": [{"kind":"integer","value":"6"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"14"}]}]},{"kind":"integer","value":"12"}]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints": ["A","B","C","D","E","F","G","H"],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {"id":"sAB","refs":["A","B"]},
+    {"id":"sBC","refs":["B","C"]},
+    {"id":"sCD","refs":["C","D"]},
+    {"id":"sDA","refs":["D","A"]},
+    {"id":"sEF","refs":["E","F"]},
+    {"id":"sFG","refs":["F","G"]},
+    {"id":"sGH","refs":["G","H"]},
+    {"id":"sHE","refs":["H","E"]},
+    {"id":"sAE","refs":["A","E"]},
+    {"id":"sBF","refs":["B","F"]},
+    {"id":"sCG","refs":["C","G"]},
+    {"id":"sDH","refs":["D","H"]}
+  ],
+  "planeMarks": {
+    "equalLengths": [{"id":"equalParts","count":1,"segments":["sAE","sBF","sCG","sDH"]}],
+    "expressionLabels": [
+      {"id":"outerSide","ownerSegment":"sDA","text":"12","unit":"cm"},
+      {"id":"innerSide","ownerSegment":"sEF","text":"10","unit":"cm"}
+    ]
+  },
+  "coordinateCanvas": {"width":600,"height":540},
+  "caption": "한 변이 12cm인 정사각형 ABCD의 네 변에 같은 길이의 선분 AE, BF, CG, DH를 잡고 한 변이 10cm인 정사각형 EFGH를 연결한 그림",
+  "accessibilityDescription": "큰 정사각형 ABCD 안에 기울어진 정사각형 EFGH가 있고, 바깥쪽 네 선분 AE, BF, CG, DH에 동일한 눈금이 표시되어 있다. 큰 정사각형의 한 변은 12cm, 작은 정사각형의 한 변은 10cm이다.",
+  "sourceConditions": [
+    {"id":"outer","sourceQuote":"정사각형 ABCD의 한 변은 12cm","mappedTo":["mathPlan.nodes","planeMarks.expressionLabels"]},
+    {"id":"equal","sourceQuote":"AE=BF=CG=DH","mappedTo":["mathPlan.nodes","planeMarks.equalLengths"]},
+    {"id":"inner","sourceQuote":"정사각형 EFGH의 한 변은 10cm","mappedTo":["mathPlan.nodes","displaySegments","planeMarks.expressionLabels"]},
+    {"id":"branch","sourceQuote":"DH>AH","mappedTo":["mathPlan.nodes"]}
+  ],
+  "newVisualInformation": [
+    "안쪽 정사각형의 네 꼭짓점을 각각 큰 정사각형의 변 위에 정확히 둔다.",
+    "같은 길이 표식은 주어진 네 부분 선분에만 붙인다.",
+    "문제가 구하는 AH의 길이와 해설 식은 그림에 노출하지 않는다."
+  ]
+}

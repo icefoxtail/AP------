@@ -1,0 +1,99 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      3,
+      -1,
+      5
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "1",
+          "0"
+        ],
+        "domain": [
+          "-4",
+          "5/2"
+        ],
+        "color": "BLUE",
+        "label": "y=2^x"
+      },
+      {
+        "id": "g",
+        "kind": "EXPONENTIAL",
+        "base": "2",
+        "coefficients": [
+          "4",
+          "1",
+          "0"
+        ],
+        "domain": [
+          "-4",
+          "1/2"
+        ],
+        "color": "WARM",
+        "label": "y=4*2^x"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "1",
+        "4"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "low",
+          "slope": "0",
+          "intercept": "1",
+          "label": "y=1"
+        },
+        {
+          "id": "high",
+          "slope": "0",
+          "intercept": "4",
+          "label": "y=4"
+        }
+      ]
+    }
+  },
+  "caption": "지수함수 y=2^x, y=4×2^x 및 y=1, y=4의 두 수평선 사이에 놓인 경계 곡선.",
+  "accessibilityDescription": "파랑 지수곡선과 주황 지수곡선, 수평선 y=1과 y=4. 네 경계의 위치만 나타내며 넓이의 값을 표시하지 않는다.",
+  "sourceQuote": "두 함수 $y=2^x$, $y=4\\times 2^x$의 그래프와 두 직선 $y=1$, $y=4$로 둘러싸인 도형의 넓이",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 지수함수 y=2^x, y=4×2^x",
+      "mappedTo": [
+        "graphPlan.curves[0]",
+        "graphPlan.curves[1]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "두 수평선 y=1과 y=4",
+      "mappedTo": [
+        "graphPlan.overlays.lines[0]",
+        "graphPlan.overlays.lines[1]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "둘러싸인 곡선형 영역의 면 채움",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: HORIZONTAL_CLIPPED_EXPONENTIAL_REGION_FILL — EXPONENTIAL 곡선 둘을 각각 y=1, y=4에서 절단한 정확한 닫힌 영역 채움 기능 필요; 선 경계는 정확히 구현"
+    }
+  ],
+  "newVisualInformation": [
+    "원문에 글로 주어진 네 경계의 위치를 좌표평면에 나타내되 넓이·교점 좌표의 해설 값은 숨긴다.",
+    "곡선 영역 채움이 미지원이므로 흰색이나 가짜 사각형을 칠하지 않는다."
+  ]
+}

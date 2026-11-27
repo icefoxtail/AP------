@@ -1,0 +1,22 @@
+{
+  "capability": "lattice-path-figure-v1",
+  "lattice": {
+    "grid": {"cols": 4, "rows": 2},
+    "points": {"A": [0, 0], "B": [4, 2], "P": [1, 2], "Q": [2, 1], "R": [3, 0]},
+    "from": "A",
+    "to": "B",
+    "counts": true
+  },
+  "caption": "가로 4칸·세로 2칸에서 두 사람이 동시에 세 칸씩 이동하면 만날 수 있는 곳은 P(1,2), Q(2,1), R(3,0)이다. 전체 경로 쌍 15²=225에서 만남 3²+9²+3²=99를 빼면 126이다.",
+  "accessibilityDescription": "A는 왼쪽 아래, B는 오른쪽 위인 가로 네 칸 세로 두 칸의 도로망이다. 출발점에서 세 칸 떨어진 P(1,2), Q(2,1), R(3,0)이 같은 시간에 두 사람이 만날 수 있는 지점이다. 각 교차점에는 A에서 가는 최단 경로 수가 표시되고 B까지는 15개다.",
+  "sourceQuote": "가로, 세로 한 칸의 크기가 모두 같은 도로망에서 A와 B를 동시에 출발한 두 사람이 같은 속력으로 최단 거리로 이동할 때 서로 만나지 않는 경우의 수",
+  "sourceConditions": [
+    {"id": "c1", "condition": "q05.png: 가로 4칸, 세로 2칸, A는 좌하단, B는 우상단", "mappedTo": ["lattice.grid", "lattice.points.A", "lattice.points.B"]},
+    {"id": "c2", "condition": "6칸을 같은 속력으로 마주 보아 출발 후 3칸 위치에서만 만남", "mappedTo": ["lattice.points.P", "lattice.points.Q", "lattice.points.R"]},
+    {"id": "c3", "condition": "A에서 B까지 한 사람의 최단 경로 15개, 중간 교차점까지의 경로 수", "mappedTo": ["lattice.from", "lattice.to", "lattice.counts"]}
+  ],
+  "newVisualInformation": [
+    "원본 문제 그림의 모든 도로·교차점을 유지하고, 해설의 세 만남 지점 P/Q/R를 좌표에 맞춰 표시한다.",
+    "엔진이 A 출발 최단 경로 수를 각 교차점에서 독립 계산하므로 15와 중간 3,3,1 등을 읽어 만남 경우 9+81+9를 이해할 수 있다."
+  ]
+}

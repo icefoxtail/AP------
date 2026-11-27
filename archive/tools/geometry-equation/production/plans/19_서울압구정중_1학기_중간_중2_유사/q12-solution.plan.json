@@ -1,0 +1,12 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [{ "kind": "SET", "pieces": [{ "lo": null, "hi": { "value": "-2", "state": "CLOSED" } }], "label": "해집합" }]
+  },
+  "numberLineCaption": { "text": "x가 −2 이하인 범위" },
+  "caption": "분모 2와 3을 없애 정리하면 −5x≥10이므로 x≤−2이다",
+  "accessibilityDescription": "−2에서 속이 찬 끝점으로 시작하여 왼쪽 무한대로 이어지는 해집합을 수직선에 표시한다.",
+  "sourceConditions": [{ "id": "c1", "condition": "(x+2)/2−(x−1)/3≥x+3에서 x≤−2", "mappedTo": "numberLine.rows[0].pieces[0]" }],
+  "newVisualInformation": ["음수 −5로 나눌 때 부등호가 바뀌므로 −2를 포함한 왼쪽 구간임을 보여 준다"]
+}

@@ -1,0 +1,80 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "0",
+          "2"
+        ],
+        "domain": [
+          null,
+          "0"
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "4",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          null
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "xWindow": [
+      -3,
+      5
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "7"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "3"
+      ],
+      "y": [
+        "1",
+        "4",
+        "7"
+      ]
+    }
+  },
+  "caption": "x<0에서 2x²−1, x≥0에서 −x+4. 경계 x=0에서 점프하며 f(−2)=7, f(3)=1.",
+  "accessibilityDescription": "x<0에서 2x²−1, x≥0에서 −x+4. 경계 x=0에서 점프하며 f(−2)=7, f(3)=1.",
+  "sourceConditions": [
+    {
+      "id": "left",
+      "condition": "x<0: f(x)=2x²−1",
+      "mappedTo": "graphPlan.pieces[0]"
+    },
+    {
+      "id": "right",
+      "condition": "x≥0: f(x)=−x+4",
+      "mappedTo": "graphPlan.pieces[1]"
+    },
+    {
+      "id": "values",
+      "condition": "f(−2)=7, f(3)=1",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "구간별 기울기·끝점·함숫값을 같은 좌표축에서 구별한다."
+  ]
+}

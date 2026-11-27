@@ -1,0 +1,80 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          null,
+          "2"
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1",
+          "2"
+        ],
+        "domain": [
+          "2",
+          null
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "xWindow": [
+      -1,
+      6
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "4"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "9"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "4"
+      ],
+      "y": [
+        "4",
+        "5",
+        "9"
+      ]
+    }
+  },
+  "caption": "f(1)=4, f(4)=9이며 f⁻¹(9)=4. x=2에서 두 직선 조각이 값 5로 연결된다.",
+  "accessibilityDescription": "f(1)=4, f(4)=9이며 f⁻¹(9)=4. x=2에서 두 직선 조각이 값 5로 연결된다.",
+  "sourceConditions": [
+    {
+      "id": "left",
+      "condition": "x<2: f(x)=x+3",
+      "mappedTo": "graphPlan.pieces[0]"
+    },
+    {
+      "id": "right",
+      "condition": "x≥2: f(x)=2x+1",
+      "mappedTo": "graphPlan.pieces[1]"
+    },
+    {
+      "id": "orbit",
+      "condition": "(1,4)와 (4,9)로 f∘f(1), f⁻¹(9)를 확인",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "구간별 기울기·끝점·함숫값을 같은 좌표축에서 구별한다."
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [{"id":"A","at":["sqrt(3)",1,1]},{"id":"B","at":["-sqrt(3)",-1,1]},{"id":"C","at":["-sqrt(3)",1,-1]},{"id":"D","at":["sqrt(3)",-1,-1]},{"id":"M","at":{"midpoint":["B","C"]}}],
+    "segments": [{"from":"A","to":"B"},{"from":"A","to":"C"},{"from":"B","to":"D"},{"from":"C","to":"D"},{"from":"B","to":"C","style":"DASHED"},{"from":"A","to":"D","style":"DASHED"},{"from":"A","to":"M"}]
+  },
+  "dims": [{"from":"A","to":"B"},{"from":"A","to":"C"},{"from":"B","to":"D"},{"from":"C","to":"D"},{"from":"B","to":"C"},{"from":"A","to":"D"}],
+  "caption": "사면체 AB=AC=BD=CD=4, BC=AD=2√2, M은 BC의 중점",
+  "sourceConditions": ["AB=AC=BD=CD=4", "BC=AD=2√2", "M은 BC 중점"],
+  "newVisualInformation": ["여섯 모서리의 정확한 길이", "BC 중점 M과 수선 후보 AM", "숨은 모서리 점선·A~D 이름"]
+}

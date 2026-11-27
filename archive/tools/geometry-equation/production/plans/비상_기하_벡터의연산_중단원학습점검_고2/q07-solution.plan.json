@@ -1,0 +1,23 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"P","op":"DIVISION_POINT","inputs":["B","C"],"args":{"m":{"kind":"integer","value":"1"},"n":{"kind":"integer","value":"1"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"Q","op":"DIVISION_POINT","inputs":["A","P"],"args":{"m":{"kind":"integer","value":"2"},"n":{"kind":"integer","value":"1"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["A","B","C","P","Q"],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBP","refs":["B","P"]},{"id":"sPC","refs":["P","C"]},{"id":"sCA","refs":["C","A"]},{"id":"sAQ","refs":["A","Q"],"dashed":true},{"id":"sQP","refs":["Q","P"],"dashed":true},{"id":"sBQ","refs":["B","Q"],"emphasis":"ACCENT"}],
+  "planeMarks":{"equalLengths":[{"id":"mid","count":1,"segments":["sBP","sPC"]}],"dimensions":[{"id":"dAQ","from":"A","to":"Q","label":"2t","side":"RIGHT","style":"BRACE"},{"id":"dQP","from":"Q","to":"P","label":"t","side":"RIGHT","style":"BRACE"}]},
+  "coordinateCanvas":{"width":720,"height":540},
+  "caption":"BP=PC이고 AQ:QP=2:1이므로 Q는 삼각형 ABC의 무게중심, 삼각형 ABQ 넓이는 ABC의 1/3이다.",
+  "accessibilityDescription":"삼각형 ABC의 밑변 BC 위에 중점 P가 있고 BP와 PC에 같은 길이 눈금이 있다. A에서 P를 잇는 점선 중선 위에 Q가 있으며 AQ와 QP에 2t와 t의 치수 표기가 있다. BQ가 강조되어 있다.",
+  "sourceQuote":"삼각형 ABC에서 BP+CP=0, AQ=2QP를 만족하는 P,Q; ABC와 ABQ의 넓이 비",
+  "sourceConditions":[
+    {"id":"c1","condition":"BP와 CP가 반대 벡터라 P는 BC의 중점","mappedTo":"mathPlan.nodes[3],planeMarks.equalLengths[0],displaySegments[1],displaySegments[2]"},
+    {"id":"c2","condition":"AQ=2QP, Q는 AP의 2:1 내분점","mappedTo":"mathPlan.nodes[4],planeMarks.dimensions[0],planeMarks.dimensions[1]"},
+    {"id":"c3","condition":"ABQ는 ABC의 1/3 면적","mappedTo":"displaySegments[0],displaySegments[6],mathPlan.nodes[4]"}
+  ],
+  "newVisualInformation":["원본 문제의 삼각형은 유지하고, 해설에 점 P·Q, 중점 동등 눈금, 중선 점선과 2:1 치수선 및 넓이를 비교할 BQ를 추가한다. 내부 면은 채우지 않는다."]
+}

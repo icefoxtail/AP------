@@ -1,0 +1,7 @@
+{
+  "capability":"piecewise-polynomial-spike-v1","graphPlan":{"family":"piecewise-polynomial","pieces":[{"coefficients":["6","-6","1"]}],"sourceDomain":{"kind":"ALL_REALS"},"functionName":"f","requiredPoints":[{"id":"K","x":"0","y":"6"},{"id":"V","x":"3","y":"-3"},{"id":"L","x":"3-sqrt(3)","y":"0"},{"id":"R","x":"3+sqrt(3)","y":"0"}],"axisTickValues":{"x":[3],"y":[]},"regions":[{"id":"A","upper":"f","lower":"axis","from":"0","to":"3-sqrt(3)","label":"A"},{"id":"B","upper":"axis","lower":"f","from":"3-sqrt(3)","to":"3+sqrt(3)","label":"B"}]},
+  "pointNames":{"K":"K","V":"V","L":"L","R":"R"},"caption":"해설에서 k=6일 때 대칭축 x=3, 두 근 3±√3이고, y축과의 사이 면적 A 및 x축 아래 전체 면적 B는 1:2이다.",
+  "accessibilityDescription":"포물선 y=x²-6x+6의 좌측 양의 넓이 A와 x축 아래 음의 넓이 B를 두 영점과 대칭축 위치에 맞춰 표시했다.",
+  "sourceQuote":"이차함수 $f(x)=x^2-6x+k$에 대하여 다음 그림과 같이 곡선 $y=f(x)$와 $x$축 및 $y$축으로 둘러싸인 도형의 넓이를 $A$라 하고, 곡선 $y=f(x)$와 $x$축으로 둘러싸인 도형의 넓이를 $B$라고 할 때, $A:B=1:2$이다.",
+  "sourceConditions":[{"id":"c1","condition":"A:B=1:2에서 k=6, 꼭짓점(3,-3)","mappedTo":"graphPlan.pieces,graphPlan.requiredPoints[V]"},{"id":"c2","condition":"A는 x=0~3-√3, B는 x=3-√3~3+√3","mappedTo":"graphPlan.regions"}],"newVisualInformation":["원문 A/B 위치와 실제로 구한 k=6의 영점·대칭을 일치"]
+}

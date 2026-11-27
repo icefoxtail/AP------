@@ -1,0 +1,24 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [{
+      "kind": "POINTS",
+      "band": false,
+      "points": [
+        { "id": "A", "value": "-3", "hideName": true, "showValue": false },
+        { "id": "B", "value": "-8/3", "hideName": true },
+        { "id": "C", "value": "7/4", "hideName": true },
+        { "id": "D", "value": "2", "hideName": true, "showValue": false }
+      ]
+    }]
+  },
+  "numberLineCaption": { "text": "-8/3 근처의 -3, 7/4 근처의 2" },
+  "caption": "-8/3=-2와 2/3만큼이므로 -3에 가장 가깝고, 7/4=1과 3/4이므로 2에 가장 가깝다. a=-3, b=2라서 a-b=-5이다.",
+  "accessibilityDescription": "-3 가까이의 -8/3 점과 2 가까이의 7/4 점을 같은 수직선에 찍고, 두 기준 정수 눈금을 표시한다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "-8/3에 가장 가까운 정수 a=-3이다.", "mappedTo": ["numberLine.rows.0.points.0", "numberLine.rows.0.points.1"] },
+    { "id": "c2", "condition": "7/4에 가장 가까운 정수 b=2이다.", "mappedTo": ["numberLine.rows.0.points.2", "numberLine.rows.0.points.3"] }
+  ],
+  "newVisualInformation": ["두 원문 분수의 정확한 점 좌표, 가장 가까운 정수 -3·2의 눈금, 답을 그림 선행 노출하지 않는 해설 축."]
+}

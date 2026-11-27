@@ -1,0 +1,219 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "G",
+    "M"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sAG",
+      "refs": [
+        "A",
+        "G"
+      ],
+      "emphasis": "ACCENT"
+    },
+    {
+      "id": "sGC",
+      "refs": [
+        "G",
+        "C"
+      ],
+      "emphasis": "ACCENT"
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dab",
+        "from": "A",
+        "to": "B",
+        "label": "2",
+        "side": "LEFT",
+        "style": "BRACE"
+      }
+    ],
+    "angles": [
+      {
+        "id": "bag",
+        "refs": [
+          "B",
+          "A",
+          "G"
+        ],
+        "value": 30,
+        "label": "30",
+        "arcs": 1
+      },
+      {
+        "id": "agc",
+        "refs": [
+          "A",
+          "G",
+          "C"
+        ],
+        "value": 120,
+        "label": "120",
+        "arcs": 1
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rm",
+      "refs": [
+        "A",
+        "M",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 540
+  },
+  "caption": "중선 AM, 무게중심 G, ∠BAG=30°와 ∠AGC=120°를 이용한 내적",
+  "sourceConditions": [
+    {
+      "id": "tri",
+      "condition": "정삼각형 ABC의 모든 변=2, G는 무게중심",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks.dimensions"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "삼각형의 길이 2를 외부 지시선으로 표기한다.",
+    "중선 AM 점선, 수선의 발 M 직각, 30°·120°의 각호·라벨, 내적에 쓰는 두 선분을 보인다."
+  ]
+}

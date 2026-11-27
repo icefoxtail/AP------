@@ -1,0 +1,92 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "2"
+        ],
+        "domain": [
+          "0",
+          "1/2"
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "2",
+          "-2"
+        ],
+        "domain": [
+          "1/2",
+          "1"
+        ],
+        "start": "CLOSED",
+        "end": "CLOSED"
+      }
+    ],
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "2/5",
+        "y": "4/5"
+      },
+      {
+        "id": "C",
+        "x": "2/3",
+        "y": "2/3"
+      },
+      {
+        "id": "D",
+        "x": "4/5",
+        "y": "2/5"
+      },
+      {
+        "id": "T",
+        "x": "1/2",
+        "y": "1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1/2",
+        "1"
+      ],
+      "y": [
+        "1"
+      ]
+    }
+  },
+  "caption": "f(f(x))=x를 만족하는 x=0, 2/5, 2/3, 4/5의 네 점을 f의 그래프에 표시한다. 원소의 합 28/15.",
+  "accessibilityDescription": "텐트 함수의 그래프 위에서 f를 두 번 적용했을 때 처음 x로 돌아오는 네 순환점과 꼭짓점이 표시돼 있다.",
+  "sourceConditions": [
+    {
+      "id": "graph",
+      "condition": "0≤x≤1에서 f(x)=2x (x≤1/2), f(x)=2−2x (x≥1/2)",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "vertices",
+      "condition": "(0,0), (1/2,1), (1,0)",
+      "mappedTo": "graphPlan.requiredPoints"
+    },
+    {
+      "id": "two-cycles",
+      "condition": "f²(x)=x의 해는 x=0, 2/5, 2/3, 4/5",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "2/5와 4/5는 서로 맞바뀌는 2주기이며 0과 2/3은 고정점임을 표시한다."
+  ],
+  "sourceQuote": "집합 $X=\\{x \\mid 0 \\le x \\le 1\\}$에 대하여 $X$에서 $X$로의 함수 $y=f(x)$의 그래프가 그림과 같다. 집합 $A$에서 $A$로의 함수 $(f \\circ f)(x)$가 항등함수일 때, 집합 $A$의 모든 원소의 합은? (단, $n(A)=4$)"
+}

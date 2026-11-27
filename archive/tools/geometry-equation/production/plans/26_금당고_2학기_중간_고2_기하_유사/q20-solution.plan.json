@@ -1,0 +1,27 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": { "kind": "ELLIPSE", "center": ["0", "0"], "aSquared": "32", "bSquared": "8", "major": "X" },
+  "points": [
+    { "id": "O", "kind": "ORIGIN" },
+    { "id": "A", "kind": "POINT", "x": "0", "y": "4", "coordinates": true },
+    { "id": "P", "kind": "ON_CONIC", "x": "4", "branch": "POS" },
+    { "id": "Q", "kind": "ON_CONIC", "x": "-4", "branch": "POS" },
+    { "id": "R", "kind": "POINT", "x": "8", "y": "0", "coordinates": true },
+    { "id": "S", "kind": "POINT", "x": "-8", "y": "0", "coordinates": true },
+    { "id": "H", "kind": "POINT", "x": "0", "y": "2" }
+  ],
+  "lines": [
+    { "id": "t1", "through": ["A", "R"], "tangent": true },
+    { "id": "t2", "through": ["A", "S"], "tangent": true }
+  ],
+  "segments": [
+    { "id": "sOP", "from": "O", "to": "P" },
+    { "id": "sOQ", "from": "O", "to": "Q" },
+    { "id": "sPQ", "from": "P", "to": "Q" },
+    { "id": "sOA", "from": "O", "to": "A" }
+  ],
+  "caption": "마름모 OPAQ의 대각선 OA·PQ와 접선의 x절편 R,S",
+  "accessibilityDescription": "타원 x²/32+y²/8=1, A(0,4), P(4,2), Q(-4,2), R(8,0), S(-8,0), 원점 O를 표시한다. 마름모 OPAQ의 두 대각선 OA와 PQ가 중점 H(0,2)에서 만난다. 삼각형 ARS의 밑변은 RS이다.",
+  "sourceConditions": [ { "id": "q20", "condition": "OPAQ 마름모이므로 OA와 PQ는 서로 수직이등분, k=4, R=(8,0), S=(-8,0)", "mappedTo": "points,lines,segments" } ],
+  "newVisualInformation": ["해설의 결정적 대각선 PQ와 OA, 중점 H를 표시"]
+}

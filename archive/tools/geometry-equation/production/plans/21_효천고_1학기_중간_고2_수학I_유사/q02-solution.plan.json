@@ -1,0 +1,23 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "공통 범위",
+        "pieces": [
+          { "lo": { "value": "3", "state": "OPEN" }, "hi": { "value": "4", "state": "OPEN" } },
+          { "lo": { "value": "4", "state": "OPEN" }, "hi": { "value": "7", "state": "OPEN" } }
+        ]
+      }
+    ]
+  },
+  "caption": "로그의 밑·진수 조건을 동시에 만족하는 a의 두 열린 구간을 수직선에 나타냈다.",
+  "accessibilityDescription": "a는 3과 4 사이 또는 4와 7 사이이며, 3, 4, 7은 포함되지 않는다.",
+  "sourceConditions": [
+    { "id": "base", "condition": "a-3>0, a-3≠1", "mappedTo": "numberLine.rows[0].pieces" },
+    { "id": "argument", "condition": "-a²+5a+14>0", "mappedTo": "numberLine.rows[0].pieces" }
+  ],
+  "newVisualInformation": [ "a=4가 양쪽 열린 구간의 공통 제외점인 것을 빈 원으로 표시한다." ]
+}

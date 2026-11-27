@@ -1,0 +1,78 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "120000",
+      "9000",
+      "-300"
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        0,
+        40
+      ]
+    },
+    "domain": [
+      0,
+      40
+    ],
+    "viewport": [
+      -3,
+      43,
+      -15000,
+      210000
+    ],
+    "applicationAxes": true,
+    "axisVariable": "x",
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 15,
+        "y": 187500
+      },
+      {
+        "id": "A",
+        "x": 0,
+        "y": 120000
+      },
+      {
+        "id": "B",
+        "x": 40,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        10,
+        20,
+        30,
+        40
+      ],
+      "y": [
+        50000,
+        100000,
+        150000
+      ]
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "판매가를 30원씩 x번 올렸을 때 하루 이익은 -300(x-15)²+187500이고 x=15에서 최대다.",
+  "accessibilityDescription": "x가 0부터 40까지 변할 때 하루 이익이 x=15에서 최댓값 187500원인 아래로 열린 포물선.",
+  "sourceConditions": [
+    {
+      "id": "h1-20-1",
+      "condition": "이익 y=(300+30x)(400-10x)",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "h1-20-2",
+      "condition": "0≤x≤40, 최대점 x=15",
+      "mappedTo": "graphPlan.sourceDomain, graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "최대 이익이 나오는 가격 인상 횟수의 꼭짓점 위치를 보여 준다."
+  ]
+}

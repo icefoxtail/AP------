@@ -1,0 +1,31 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-16, 20, -12, 12],
+    "curves": [ { "id": "par", "kind": "X_OF_Y", "coefficients": ["0", "0", "1/60"], "domain": ["-12", "12"], "branch": "BOTH" } ],
+    "axisTickValues": { "x": [], "y": [] },
+    "overlays": {
+      "lines": [ { "id": "l", "x": "-15", "label": "l" } ],
+      "points": [
+        { "id": "O", "x": "0", "y": "0" },
+        { "id": "A", "x": "15", "y": "0" },
+        { "id": "B", "x": "18", "y": "4" },
+        { "id": "P", "x": "4/15", "y": "4" },
+        { "id": "H", "x": "-15", "y": "4" },
+        { "id": "V", "x": "-15", "y": "0", "unnamed": true }
+      ],
+      "segments": [
+        { "id": "sBP", "from": "B", "to": "P" },
+        { "id": "sPA", "from": "P", "to": "A" },
+        { "id": "sPH", "from": "P", "to": "H", "dashed": true }
+      ],
+      "rightAngles": [ { "at": "H", "from": ["P", "V"] } ]
+    }
+  },
+  "pointNames": { "O": "O", "A": "A", "B": "B", "P": "P", "H": "H" },
+  "caption": "BP와 PH를 같은 수평선으로 두고 PA=PH인 최단경로",
+  "accessibilityDescription": "포물선 y²=60x의 초점 A(15,0), 공장 B(18,4), 해안선 위 P(4/15,4)와 준선 x=-15를 표시한다. P에서 준선으로 내린 수선의 발 H(-15,4)와 B,P,H가 한 수평선이다.",
+  "sourceConditions": [ { "id": "q19", "condition": "준선 x=-15, 초점 A=(15,0), B=(18,4), 최단 경로 조건 B-P-H 일직선", "mappedTo": "graphPlan.overlays" } ],
+  "newVisualInformation": ["주어진 준선과 평행한 경로 BPH, PA=PH를 원본 해설의 좌표와 일치시킴"]
+}

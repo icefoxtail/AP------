@@ -1,0 +1,17 @@
+{
+  "capability":"set-diagram-figure-v1",
+  "diagram":{
+    "kind":"VENN","sets":[{"id":"A"},{"id":"B"}],
+    "elements":[{"text":"1","in":["A"]},{"text":"2","in":["A"]},{"text":"3","in":["A","B"]},{"text":"4","in":["B"]},{"text":"5","in":["B"]},{"text":"6","in":[]},{"text":"7","in":[]}],
+    "shade":"(A∪B)^c"
+  },
+  "caption":"A-B={1,2}, A∩B={3}, B-A={4,5}. (A∪B)^c={6,7}이므로 원소의 합은 13이다.",
+  "accessibilityDescription":"A에만 1과 2, 교집합에 3, B에만 4와 5, 두 원 밖에 6과 7이 있으며 6과 7의 바깥 영역만 강조되어 있다.",
+  "sourceConditions":[
+    {"id":"Aonly","condition":"A-B={1,2}","mappedTo":"diagram.elements"},
+    {"id":"both","condition":"A∩B={3}","mappedTo":"diagram.elements"},
+    {"id":"Bonly","condition":"B-A={4,5}","mappedTo":"diagram.elements"},
+    {"id":"outside","condition":"(A∪B)^c={6,7}","mappedTo":"diagram.shade"}
+  ],
+  "newVisualInformation":["원본의 불필요한 전체 배경 채움을 제거하고 여집합 영역만 강조한다."]
+}

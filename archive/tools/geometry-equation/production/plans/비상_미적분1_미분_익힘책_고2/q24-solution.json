@@ -1,0 +1,246 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-7",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-7",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "S",
+    "H",
+    "A",
+    "L",
+    "T"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "groundShadow",
+      "refs": [
+        "S",
+        "H"
+      ]
+    },
+    {
+      "id": "groundWalk",
+      "refs": [
+        "H",
+        "L"
+      ]
+    },
+    {
+      "id": "shortHeight",
+      "refs": [
+        "H",
+        "A"
+      ]
+    },
+    {
+      "id": "lampHeight",
+      "refs": [
+        "L",
+        "T"
+      ]
+    },
+    {
+      "id": "lightRay",
+      "refs": [
+        "S",
+        "T"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "S",
+    "H",
+    "A",
+    "L",
+    "T"
+  ],
+  "hiddenPointStyle": "NONE",
+  "rightAngles": [
+    {
+      "id": "raH",
+      "refs": [
+        "S",
+        "H",
+        "A"
+      ]
+    },
+    {
+      "id": "raL",
+      "refs": [
+        "H",
+        "L",
+        "T"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "light3",
+        "from": "L",
+        "to": "T",
+        "label": "3",
+        "side": "RIGHT",
+        "unit": "m"
+      },
+      {
+        "id": "person16",
+        "from": "H",
+        "to": "A",
+        "label": "1.6",
+        "side": "RIGHT",
+        "unit": "m"
+      },
+      {
+        "id": "walkX",
+        "from": "H",
+        "to": "L",
+        "label": "x",
+        "side": "BELOW",
+        "unit": "m"
+      },
+      {
+        "id": "shadowS",
+        "from": "S",
+        "to": "H",
+        "label": "s",
+        "side": "BELOW",
+        "unit": "m"
+      }
+    ]
+  },
+  "caption": "가로등 높이 3 m, 사람 높이 1.6 m, 보행 거리 x와 그림자 길이 s를 광선과 두 직각삼각형의 닮음으로 표시한다.",
+  "accessibilityDescription": "높이가 3미터인 가로등과 높이가 1.6미터인 사람이 수직으로 서고, 가로등 꼭대기에서 그림자 끝까지 광선이 이어진다. 바닥은 두 구간 x와 s로 나뉜다.",
+  "sourceConditions": [
+    {
+      "id": "heights",
+      "condition": "실제 비례 높이 3m, 1.6m와 수선 두 개",
+      "mappedTo": "mathPlan.nodes"
+    },
+    {
+      "id": "rays",
+      "condition": "가로등 꼭대기·사람 머리·그림자 끝이 일직선",
+      "mappedTo": "displaySegments"
+    },
+    {
+      "id": "right",
+      "condition": "바닥에 수직인 두 높이선의 직각 표시",
+      "mappedTo": "rightAngles"
+    },
+    {
+      "id": "dimensions",
+      "condition": "길이 3m,1.6m,x,s는 각 소유 선분의 치수선",
+      "mappedTo": "planeMarks.dimensions"
+    }
+  ],
+  "newVisualInformation": [
+    "인물·등기구 실루엣이 아닌 닮음 해설 도식이며 배경·그림자 면 채움이 없다."
+  ]
+}

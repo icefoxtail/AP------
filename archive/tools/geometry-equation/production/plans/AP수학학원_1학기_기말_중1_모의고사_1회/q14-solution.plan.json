@@ -1,0 +1,21 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"U","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-3"},{"kind":"integer","value":"-1"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"-2"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-2"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"CONCLUSION"},
+    {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"}
+  ]},
+  "displayPoints":["O","A","B","C","D","E"],"displaySegments":[],"displayLines":[],"coordinateLabels":["A","B","C","D","E"],
+  "coordinateCanvas":{"width":600,"height":500},"axisTickValues":{"x":[-4,-2,2,4],"y":[-2,2,4]},
+  "caption":"제2사분면은 x<0, y>0이므로 다섯 보기 가운데 D(-2,4), 즉 ④만 해당한다.",
+  "accessibilityDescription":"다섯 점을 좌표평면에 찍으면 D(-2,4)만 왼쪽 위인 제2사분면에 있으며 E(-4,0)는 x축 위에 있다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"선택지 ①~⑤의 다섯 좌표를 정확히 찍는다.","mappedTo":["mathPlan.nodes","coordinateLabels"]},
+    {"id":"c2","condition":"제2사분면은 음의 x좌표와 양의 y좌표를 동시에 가져야 하며 x축 위의 E는 제외한다.","mappedTo":["mathPlan.nodes","caption"]}
+  ],
+  "newVisualInformation":["다섯 선택지의 실제 사분면과 x축 위의 예외를 한 좌표평면에서 대조한다."]
+}

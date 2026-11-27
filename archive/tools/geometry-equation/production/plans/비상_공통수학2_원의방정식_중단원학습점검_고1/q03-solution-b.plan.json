@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1","conic":{"kind":"CIRCLE","center":["0","0"],"rSquared":"10"},
+  "lines":[{"id":"l","slope":"-1/3","intercept":"10/3","label":"x+3y-10=0","tangent":true}],
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"T","kind":"FOOT","from":"O","onto":"l","rightAngle":true}],
+  "segments":[{"id":"OT","from":"O","to":"T"}],
+  "caption":"ㄴ은 중심과 직선의 거리가 반지름과 같아서 T에서 접한다.",
+  "accessibilityDescription":"ㄴ의 반지름 OT는 접선에 수직이며 원과 직선은 접점 T 하나만 공유한다.",
+  "sourceQuote":"ㄴ. $x^2+y^2=10$, $x+3y-10=0$",
+  "sourceConditions":[{"id":"b","condition":"r=d=√10, 접점 T(1,3)","mappedTo":["conic","lines","points.T"]}],
+  "newVisualInformation":["접점 T의 정확한 위치와 반지름-접선 직각 표시를 보인다."]
+}

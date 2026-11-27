@@ -1,0 +1,16 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve", "viewport": [-4, 3, -12, 18],
+    "curves": [{"id":"f","kind":"LINE","coefficients":["0","-5"],"domain":["-4","3"],"label":"y=-5x","color":"BLUE"}],
+    "axisTickValues": {"x":["-3","2"],"y":["15","-10"]},
+    "overlays": {"points":[{"id":"A","x":"-3","y":"15","coordinates":true},{"id":"B","x":"2","y":"-10","coordinates":true}]}
+  },
+  "caption": "(-3,15)를 지나는 정비례 직선의 비례상수는 -5이고, x=2이면 y=-10이다.",
+  "accessibilityDescription": "원점을 지나는 감소하는 직선 y=-5x와 두 점 (-3,15), (2,-10)이 나타나 있다.",
+  "sourceConditions": [
+    {"id":"c1","condition":"y=ax, x=-3일 때 y=15이므로 a=-5이다.","mappedTo":["graphPlan.curves.f","graphPlan.overlays.points"]},
+    {"id":"c2","condition":"x=2이면 y=-10이다.","mappedTo":["graphPlan.overlays.points","caption"]}
+  ],
+  "newVisualInformation": ["비례상수가 음수인 정비례 직선과 대입 전후의 두 점을 표시한다."]
+}

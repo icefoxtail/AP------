@@ -452,7 +452,7 @@ window.questionBank = [
     "sourceExamId": "21_금당중_2학기_중간_중3_수학",
     "provenance": "ORIGINAL",
     "score": 4.0,
-    "content": "아래 그림과 같이 반지름의 길이가 $1$인 사분원에서 다음 중 옳은 것은?<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q07.png\" />",
+    "content": "아래 그림과 같이 반지름의 길이가 $1$인 사분원에서 다음 중 옳은 것은?<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q07.png?v=20261127-p0-1\" />",
     "choices": [
       "$\\sin x^\\circ = \\overline{{\\mathrm{{AB}}}}$",
       "$\\cos y^\\circ = \\overline{{\\mathrm{{BC}}}}$",
@@ -661,7 +661,7 @@ window.questionBank = [
     "sourceExamId": "21_금당중_2학기_중간_중3_수학",
     "provenance": "ORIGINAL",
     "score": 5.0,
-    "content": "아래 그림과 같이 일차함수 $y = \\frac{3}{4}x + 2$의 그래프가 $x$축, $y$축과 만나는 점을 각각 $\\mathrm{A}$, $\\mathrm{B}$라 하고, $\\angle \\mathrm{BAO} = a^\\circ$, $\\angle \\mathrm{ABO} = b^\\circ$일 때, 다음 중 옳은 것은?<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q10.png\" />",
+    "content": "아래 그림과 같이 일차함수 $y = \\frac{3}{4}x + 2$의 그래프가 $x$축, $y$축과 만나는 점을 각각 $\\mathrm{A}$, $\\mathrm{B}$라 하고, $\\angle \\mathrm{BAO} = a^\\circ$, $\\angle \\mathrm{ABO} = b^\\circ$일 때, 다음 중 옳은 것은?<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q10.png?v=20261127-p0-1\" />",
     "choices": [
       "$\\sin a^\\circ = \\frac{2}{5}$",
       "$\\tan b^\\circ = \\sqrt{7}$",
@@ -1257,7 +1257,7 @@ window.questionBank = [
     "sourceExamId": "21_금당중_2학기_중간_중3_수학",
     "provenance": "ORIGINAL",
     "score": 3.0,
-    "content": "아래 그림과 같이 원 $\\mathrm{O}$는 삼각형 $\\mathrm{ABC}$의 내접원이고, 세 점 $\\mathrm{P}, \\mathrm{Q}, \\mathrm{R}$은 접점일 때, $\\overline{\\mathrm{AR}}$의 길이는?<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q18.png\" />",
+    "content": "아래 그림과 같이 원 $\\mathrm{O}$는 삼각형 $\\mathrm{ABC}$의 내접원이고, 세 점 $\\mathrm{P}, \\mathrm{Q}, \\mathrm{R}$은 접점일 때, $\\overline{\\mathrm{AR}}$의 길이는?<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q18.png?v=20261127-p0-1\" />",
     "choices": [
       "$8\\,\\text{cm}$",
       "$9\\,\\text{cm}$",

@@ -1,0 +1,12 @@
+{
+  "capability":"ellipse-figure-v1",
+  "sourceQuote":"포물선 y²=8x 위 A와 초점 사이 거리 10일 때 A에서 x축까지의 거리",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"2","axis":"X"},
+  "points":[{"id":"F","kind":"FOCUS"},{"id":"A","kind":"ON_CONIC","x":"8","branch":"POS"},{"id":"H","kind":"FOOT","from":"A","onto":"d","rightAngle":true},{"id":"B","kind":"FOOT","from":"A","onto":"axis","rightAngle":true}],
+  "lines":[{"id":"d","role":"DIRECTRIX"},{"id":"axis","y":"0","hidden":true}],
+  "segments":[{"id":"af","from":"A","to":"F","label":"10"},{"id":"ah","from":"A","to":"H","label":"10"},{"id":"ab","from":"A","to":"B","label":"8"}],
+  "caption":"포물선 위 점 A에서 초점과 준선까지의 거리가 각각 10",
+  "accessibilityDescription":"포물선 y²=8x의 제1사분면 A(8,8)에서 초점 F(2,0)와 준선 x=-2까지의 선분 길이 10, x축까지의 수선 8을 나타낸 한 예다.",
+  "sourceConditions":[{"id":"c1","condition":"포물선의 초점 F=(2,0), 준선 x=-2","mappedTo":["F","d","conic"]},{"id":"c2","condition":"AF=10이면 x_A+2=10, x_A=8, |y_A|=8; 윗가지로 대표","mappedTo":["A","H","B","af","ah","ab"]}],
+  "newVisualInformation":["준선과 x축 수선 두 개에 각각 직각 표식과 길이 라벨", "ENGINE_CAPABILITY_PENDING: 10·8 길이 라벨을 유지하면서 준선 식 x=-2를 추가하는 배치 개선 필요"]
+}

@@ -1,0 +1,194 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9509619",
+              "denominator": "50000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "300"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9509619",
+              "denominator": "50000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9509619",
+              "denominator": "50000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "H",
+    "C",
+    "A"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "A",
+        "H"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "A",
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "length0",
+        "ownerSegment": "s0",
+        "text": "300"
+      }
+    ],
+    "angles": [
+      {
+        "id": "angle0",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 45,
+        "label": "45",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angle1",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "탑 꼭대기 A와 지면 B-H-C, 두 고도각 45°·60° 및 BC=300m와 탑 높이 AH",
+  "accessibilityDescription": "탑 꼭대기 A와 지면 B-H-C, 두 고도각 45°·60° 및 BC=300m와 탑 높이 AH",
+  "sourceQuote": "다음 그림과 같이 두 지점 $\\mathrm{B}, \\mathrm{C}$에서 건물의 꼭대기 $\\mathrm{A}$지점을 올려다본 각의 크기가 각각 $45^\\circ, 60^\\circ$이고, $\\overline{\\mathrm{BC}} = 300\\,\\text{m}$일 때, 건물의 높이 $\\overline{\\mathrm{AH}}$의 길이는?",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "탑 꼭대기 A와 지면 B-H-C, 두 고도각 45°·60° 및 BC=300m와 탑 높이 AH",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "탑 꼭대기 A와 지면 B-H-C, 두 고도각 45°·60° 및 BC=300m와 탑 높이 AH",
+    "ENGINE_CAPABILITY_PENDING: 원본의 건물 외관 및 층별 창문 패턴의 래스터 장면/패턴 재현과 접합 기능이 필요하다. 직각·고도각 기하는 플랜에 보존."
+  ]
+}

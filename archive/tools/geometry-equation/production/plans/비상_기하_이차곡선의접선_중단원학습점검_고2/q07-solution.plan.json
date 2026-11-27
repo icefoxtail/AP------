@@ -1,0 +1,103 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "쌍곡선 x²-2y²+4=0, 점 R(2,0)에서 그은 두 접점 A(-2,2), B(-2,-2)",
+  "caption": "쌍곡선 접점 A,B를 잇는 세로 현",
+  "accessibilityDescription": "위아래 열린 쌍곡선의 왼쪽 두 접점 A,B에서 외부점 R(2,0)에 닿는 두 접선을 그리고 AB 길이 4를 표기한다.",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "2",
+    "bSquared": "4",
+    "transverse": "Y"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "R",
+      "kind": "POINT",
+      "x": "2",
+      "y": "0",
+      "coordinates": true
+    },
+    {
+      "id": "A",
+      "kind": "ON_CONIC",
+      "x": "-2",
+      "branch": "POS"
+    },
+    {
+      "id": "B",
+      "kind": "ON_CONIC",
+      "x": "-2",
+      "branch": "NEG"
+    }
+  ],
+  "lines": [
+    {
+      "id": "tA",
+      "tangent": true,
+      "at": "A"
+    },
+    {
+      "id": "tB",
+      "tangent": true,
+      "at": "B"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "from": "A",
+      "to": "B",
+      "label": "4"
+    },
+    {
+      "id": "RA",
+      "from": "R",
+      "to": "A"
+    },
+    {
+      "id": "RB",
+      "from": "R",
+      "to": "B"
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "쌍곡선 y²/2-x²/4=1",
+      "mappedTo": [
+        "conic"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "R(2,0)에서 접점 A(-2,2),B(-2,-2)까지의 두 접선",
+      "mappedTo": [
+        "points[1]",
+        "points[2]",
+        "points[3]",
+        "lines[0]",
+        "lines[1]",
+        "segments[1]",
+        "segments[2]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "선분 AB의 길이 4",
+      "mappedTo": [
+        "segments[0]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "점의 위치와 두 접선·세로 현을 일관되게 표시."
+  ]
+}

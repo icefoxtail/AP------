@@ -1,0 +1,153 @@
+{
+  "sourceQuote": "[서술형 2] $\\theta$가 제3사분면의 각이고 $\\cos",
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "outputType": "POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "-12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "inputs": []
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "inputs": []
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "F"
+  ],
+  "hiddenPointNames": [
+    "F"
+  ],
+  "unmarkedPointNames": [
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "OP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "FP",
+      "refs": [
+        "F",
+        "P"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "FO",
+      "refs": [
+        "F",
+        "O"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r",
+      "refs": [
+        "O",
+        "F",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "xh",
+        "from": "F",
+        "to": "O",
+        "label": "5",
+        "side": "ABOVE"
+      },
+      {
+        "id": "yh",
+        "from": "F",
+        "to": "P",
+        "label": "12",
+        "side": "LEFT"
+      },
+      {
+        "id": "rh",
+        "from": "O",
+        "to": "P",
+        "label": "13",
+        "side": "RIGHT"
+      }
+    ]
+  },
+  "caption": "제3사분면에서 x=-5, y=-12, r=13이므로 sinθ=-12/13, tanθ=12/5.",
+  "sourceConditions": [
+    {
+      "id": "h22",
+      "condition": "cosθ=-5/13, 제3사분면",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "제3사분면 5-12-13 직각삼각형과 수선·직각표식"
+  ]
+}

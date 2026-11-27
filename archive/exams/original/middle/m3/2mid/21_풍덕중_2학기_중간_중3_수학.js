@@ -523,7 +523,7 @@ window.examData = {
     {
       "id": 14,
       "score": 4.0,
-      "question": "다음 그림과 같이 $40\\,\\mathrm{m}$ 떨어져 있는 두 사람 $\\mathrm{A}$, $\\mathrm{B}$가 호수 중앙에 있는 섬 $\\mathrm{C}$를 바라본 각의 크기가 각각 $30^\\circ$, $45^\\circ$일 때, $h$의 값을 구하면? (4점)<br><img src=\"assets/images/21_풍덕중_2학기_중간_중3_수학/q14.png\" />",
+      "question": "다음 그림과 같이 $40\\,\\mathrm{m}$ 떨어져 있는 두 사람 $\\mathrm{A}$, $\\mathrm{B}$가 호수 중앙에 있는 섬 $\\mathrm{C}$를 바라본 각의 크기가 각각 $30^\\circ$, $45^\\circ$일 때, $h$의 값을 구하면? (4점)<br><img src=\"assets/images/21_풍덕중_2학기_중간_중3_수학/q14.png?v=20261127-p0-1\" />",
       "choices": [
         "$40(\\sqrt{2}-1)$",
         "$40(\\sqrt{2}+1)$",
@@ -729,7 +729,7 @@ window.examData = {
     {
       "id": 19,
       "score": 5.0,
-      "question": "오른쪽 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{BD}}=\\overline{\\mathrm{CD}}=4\\,\\mathrm{cm}$이고 $\\sin x^\\circ = \\frac{1}{2}$일 때, $\\sin y^\\circ$의 값을 구하면? 단, $\\angle \\mathrm{ACB}=90^\\circ$, 점 $D$는 $\\overline{\\mathrm{BC}}$ 위의 점이며, $x=\\angle \\mathrm{DAC}$, $y=\\angle \\mathrm{BAD}$이다. (5점)<br><img src=\"assets/images/21_풍덕중_2학기_중간_중3_수학/q19.png\" />",
+      "question": "오른쪽 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{BD}}=\\overline{\\mathrm{CD}}=4\\,\\mathrm{cm}$이고 $\\sin x^\\circ = \\frac{1}{2}$일 때, $\\sin y^\\circ$의 값을 구하면? 단, $\\angle \\mathrm{ACB}=90^\\circ$, 점 $D$는 $\\overline{\\mathrm{BC}}$ 위의 점이며, $x=\\angle \\mathrm{DAC}$, $y=\\angle \\mathrm{BAD}$이다. (5점)<br><img src=\"assets/images/21_풍덕중_2학기_중간_중3_수학/q19.png?v=20261127-p0-1\" />",
       "choices": [
         "$\\frac{\\sqrt{21}}{14}$",
         "$\\frac{\\sqrt{21}}{7}$",
@@ -771,7 +771,7 @@ window.examData = {
     {
       "id": 20,
       "score": 5.0,
-      "question": "아래 그림과 같이 한 변의 길이가 $8\\,\\mathrm{cm}$인 정사각형 $\\mathrm{ABCD}$의 변 $\\mathrm{BC}$를 지름으로 하는 반원 $\\mathrm{O}$가 있다. $\\overline{\\mathrm{ED}}$는 반원 $\\mathrm{O}$의 접선이고 점 $\\mathrm{F}$는 접점일 때, $\\overline{\\mathrm{EB}}$의 길이를 구하면? (5점)<br><img src=\"assets/images/21_풍덕중_2학기_중간_중3_수학/q20.png\" />",
+      "question": "아래 그림과 같이 한 변의 길이가 $8\\,\\mathrm{cm}$인 정사각형 $\\mathrm{ABCD}$의 변 $\\mathrm{BC}$를 지름으로 하는 반원 $\\mathrm{O}$가 있다. $\\overline{\\mathrm{ED}}$는 반원 $\\mathrm{O}$의 접선이고 점 $\\mathrm{F}$는 접점일 때, $\\overline{\\mathrm{EB}}$의 길이를 구하면? (5점)<br><img src=\"assets/images/21_풍덕중_2학기_중간_중3_수학/q20.png?v=20261127-p0-1\" />",
       "choices": [
         "$\\frac{5}{4}\\,\\mathrm{cm}$",
         "$\\frac{3}{2}\\,\\mathrm{cm}$",

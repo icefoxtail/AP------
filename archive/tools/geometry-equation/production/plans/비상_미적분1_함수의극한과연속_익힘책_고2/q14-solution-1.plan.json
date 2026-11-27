@@ -1,0 +1,9 @@
+{
+  "capability":"piecewise-polynomial-spike-v1",
+  "graphPlan":{"family":"piecewise-polynomial","pieces":[{"coefficients":["-1","-4","1"]}],"sourceDomain":{"kind":"INTERVAL","range":["-1","5"],"states":["CLOSED","CLOSED"]},"requiredPoints":[{"id":"A","x":"-1","y":"4"},{"id":"V","x":"2","y":"-5"},{"id":"B","x":"5","y":"4"}],"axisTickValues":{"x":[-1,2,5],"y":[]}},
+  "caption":"⑴ [-1,5]에서 포물선 y=(x-2)²-5의 꼭짓점 (2,-5)가 최솟값 -5를, 양 끝이 최댓값 4를 갖는다.",
+  "accessibilityDescription":"닫힌구간 -1에서 5까지의 위로 열린 포물선, 양 끝점 높이 4와 꼭짓점 높이 -5를 표시한다.",
+  "sourceQuote":"⑴ $f(x)=x^2-4x-1 \\quad [-1, 5]$",
+  "sourceConditions":[{"id":"c1","condition":"x²-4x-1, 닫힌구간 [-1,5]","mappedTo":"graphPlan.pieces,graphPlan.sourceDomain"},{"id":"c2","condition":"(-1,4),(2,-5),(5,4)에서 최대와 최소 비교","mappedTo":"graphPlan.requiredPoints"}],
+  "newVisualInformation":["꼭짓점과 양 끝점의 높이를 같은 축에서 비교"]
+}

@@ -1,0 +1,28 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-1"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"1"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"lAB","op":"LINE_THROUGH","inputs":["A","B"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"P1","op":"POLAR_POINT","inputs":["O","B"],"args":{"length":{"kind":"integer","value":"1"},"angleDeg":{"kind":"integer","value":"18"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"P2","op":"POLAR_POINT","inputs":["O","B"],"args":{"length":{"kind":"integer","value":"1"},"angleDeg":{"kind":"integer","value":"36"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"P3","op":"POLAR_POINT","inputs":["O","B"],"args":{"length":{"kind":"integer","value":"1"},"angleDeg":{"kind":"integer","value":"54"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"P9","op":"POLAR_POINT","inputs":["O","B"],"args":{"length":{"kind":"integer","value":"1"},"angleDeg":{"kind":"integer","value":"162"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"Q1","op":"PERPENDICULAR_FOOT","inputs":["P1","lAB"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"Q2","op":"PERPENDICULAR_FOOT","inputs":["P2","lAB"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"Q3","op":"PERPENDICULAR_FOOT","inputs":["P3","lAB"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"Q9","op":"PERPENDICULAR_FOOT","inputs":["P9","lAB"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["O","A","B","P1","P2","P3","P9","Q1","Q2","Q3","Q9"],"pointNames":{"P1":"P₁","P2":"P₂","P3":"P₃","P9":"P₉","Q1":"Q₁","Q2":"Q₂","Q3":"Q₃","Q9":"Q₉"},"coordinateCanvas":{"width":680,"height":510},"displayLines":[],"displayCircles":[],"displaySegments":[
+    {"id":"sAB","refs":["A","B"]},{"id":"sOB","refs":["O","B"]},{"id":"sOP1","refs":["O","P1"]},{"id":"sOP2","refs":["O","P2"]},{"id":"sOP3","refs":["O","P3"]},{"id":"sOP9","refs":["O","P9"]},
+    {"id":"sP1Q1","refs":["P1","Q1"]},{"id":"sP2Q2","refs":["P2","Q2"]},{"id":"sP3Q3","refs":["P3","Q3"]},{"id":"sP9Q9","refs":["P9","Q9"]}
+  ],
+  "rightAngles":[{"id":"rQ1","refs":["P1","Q1","B"]},{"id":"rQ2","refs":["P2","Q2","B"]},{"id":"rQ3","refs":["P3","Q3","B"]},{"id":"rQ9","refs":["P9","Q9","A"]}],
+  "planeMarks":{"arcs":[{"id":"semi","circle":"k","center":"O","from":"B","to":"A","side":"CCW"}],"expressionLabels":[{"id":"lOB","ownerSegment":"sOB","text":"1"}]},
+  "caption":"반지름 1의 반원에서 호 10등분 간격은 18°이며, 대표 P₁,P₂,P₃,P₉의 수선 PkQk가 sin(kπ/10)에 대응한다.",
+  "accessibilityDescription":"반원 AOB 위에 18°,36°,54°,162° 방향의 대표점 P₁,P₂,P₃,P₉와 x축에 내린 네 수선, 각 발의 직각표식이 있다. 생략한 나머지 점은 원문처럼 개념으로 설명한다.",
+  "sourceConditions":[{"id":"half","condition":"AB 지름, 중심 O, 반지름 1","mappedTo":["O","A","B","k","semi"]},{"id":"partition","condition":"호 AB 10등분, 보이는 대표점 P1,P2,P3,P9는 18°,36°,54°,162°","mappedTo":["P1","P2","P3","P9"]},{"id":"feet","condition":"Pk에서 AB에 내린 수선의 발 Qk","mappedTo":["Q1","Q2","Q3","Q9","rQ1","rQ2","rQ3","rQ9"]}],
+  "newVisualInformation":["원본의 대표 4개 수선과 직각을 실제 필드로 표현. 생략 기호/전체 9개 동시 표시는 ENGINE_CAPABILITY_PENDING:DENSE_SEMICIRCLE_DIVISION_ELLIPSIS"]
+}

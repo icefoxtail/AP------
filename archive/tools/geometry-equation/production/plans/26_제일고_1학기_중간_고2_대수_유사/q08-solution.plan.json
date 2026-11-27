@@ -1,0 +1,57 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-3, 6, -3, 6],
+    "curves": [
+      {
+        "id": "logf",
+        "kind": "LOGARITHMIC",
+        "base": "2",
+        "coefficients": ["1", "1", "-1", "0"],
+        "domain": ["9/8", "6"],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "wrongg",
+        "kind": "EXPONENTIAL",
+        "base": "2",
+        "coefficients": ["1", "1", "0"],
+        "shiftX": "1",
+        "domain": ["-3", "3"],
+        "color": "WARM",
+        "label": "y=g(x)"
+      },
+      {
+        "id": "inverse",
+        "kind": "EXPONENTIAL",
+        "base": "2",
+        "coefficients": ["1", "1", "1"],
+        "domain": ["-3", "2"],
+        "color": "GREEN",
+        "label": "y=h(x)"
+      }
+    ],
+    "axisTickValues": {"x": ["1"], "y": ["1"]},
+    "overlays": {
+      "lines": [
+        {"id": "mirror", "slope": "1", "intercept": "0", "style": "DASHED", "label": "y=x"},
+        {"id": "asym", "x": "1", "style": "DASHED", "label": "x=1"}
+      ],
+      "points": [
+        {"id": "P", "x": "2", "y": "0", "coordinates": true},
+        {"id": "Q", "x": "0", "y": "2", "coordinates": true}
+      ]
+    }
+  },
+  "caption": "c=2, a=1, b=0인 원문 해설의 반례를 정확히 그린다. 파랑 f(x)=log_2(x-1)의 진짜 역함수는 초록 h(x)=2^x+1이다. 주황 g(x)=2^(x-1)는 역함수가 아니다. f와 h의 대응점 (2,0), (0,2)는 점선 y=x에 대칭이다.",
+  "accessibilityDescription": "점선 y=x와 x=1이 있고 로그함수 f와 진짜 역함수 h는 y=x에 대칭이다. 문제의 잘못 제시된 g는 h와 다른 곡선이다. 대응점 P(2,0), Q(0,2)를 표시한다.",
+  "sourceQuote": "예를 들어 $c=2$, $a=1$, $b=0$이면 $f(x)=\\log_2(x-1)$, $g(x)=2^{x-1}$이고",
+  "sourceConditions": [
+    {"id": "c1", "condition": "반례 c=2, a=1, b=0에서 f(x)=log_2(x-1)", "mappedTo": ["graphPlan.curves[0]", "graphPlan.overlays.lines[1]"]},
+    {"id": "c2", "condition": "문제가 주장하는 g(x)=2^(x-1)은 역함수가 아님", "mappedTo": ["graphPlan.curves[1]"]},
+    {"id": "c3", "condition": "실제 역함수는 h(x)=2^x+1이고 y=x에 대칭", "mappedTo": ["graphPlan.curves[2]", "graphPlan.overlays.lines[0]", "graphPlan.overlays.points"]}
+  ],
+  "newVisualInformation": ["원문 해설의 구체적 반례에서 실제 역함수와 잘못 제시된 함수를 서로 다른 색의 실제 곡선으로 비교한다."]
+}

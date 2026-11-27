@@ -1,0 +1,58 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "ELLIPSE",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "16",
+    "bSquared": "12",
+    "major": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "2",
+      "branch": "POS",
+      "coordinates": true
+    },
+    {
+      "id": "R",
+      "kind": "POINT",
+      "x": "-12",
+      "y": "10",
+      "coordinates": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "t",
+      "tangent": true,
+      "at": "P",
+      "label": "l"
+    }
+  ],
+  "caption": "타원 위의 점 (2,3)에서의 접선 x+2y=8은 점 (−12,10)을 지난다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "접점 (2,3)에서의 접선 x+2y=8이 점 (-12,a)를 지나 a=10",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접선이 지나는 점 (-12,10)의 위치"
+  ],
+  "sourceQuote": "타원 $\\dfrac{x^2}{16}+\\dfrac{y^2",
+  "accessibilityDescription": "타원 위의 점 (2,3)에서의 접선 x+2y=8은 점 (−12,10)을 지난다."
+}

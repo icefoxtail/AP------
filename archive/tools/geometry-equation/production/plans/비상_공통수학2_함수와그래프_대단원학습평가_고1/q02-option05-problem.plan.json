@@ -1,0 +1,8 @@
+{
+  "capability":"piecewise-polynomial-spike-v1",
+  "graphPlan":{"family":"piecewise-polynomial","pieces":[{"coefficients":["-1","1/2"]},{"coefficients":["-1","1"]}],"breakpoints":[{"x":"0","y":"-1"}],"sourceDomain":{"kind":"ALL_REALS"},"requiredPoints":[{"id":"P","x":0,"y":-1}],"axisTickValues":{"x":[],"y":[]}},
+  "caption":"⑤ 음의 y절편에서 꺾이고 양쪽 모두 증가하는 일대일대응의 예시",
+  "accessibilityDescription":"음의 y절편에서 왼쪽의 완만한 증가 직선과 오른쪽의 가파른 증가 직선이 연속으로 만난다.",
+  "sourceConditions":[{"id":"left","condition":"⑤ x<0에서 증가하고 x축 아래 y절편으로 접근","mappedTo":"graphPlan.pieces.0"},{"id":"right","condition":"⑤ x≥0에서 더 가파르게 증가하여 전 실수 치역","mappedTo":"graphPlan.pieces.1"}],
+  "newVisualInformation":["원본은 눈금·식이 없는 개형이므로 양쪽 양의 기울기만 보존한 예시 계수를 사용한다."]
+}

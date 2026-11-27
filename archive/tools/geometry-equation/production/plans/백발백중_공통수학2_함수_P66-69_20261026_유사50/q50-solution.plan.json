@@ -1,0 +1,120 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "6",
+          "7"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "6",
+          "7"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 4
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 4
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y",
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "조건을 풀어 얻은 전단사 대응: 1→6→3→2→7→1. 이를 이용해 f²(6)=2, f²(1)=3을 확인한다.",
+  "accessibilityDescription": "집합 X={1,2,3,6,7} 위의 함수 f가 모든 원소를 중복 없이 하나씩 대응시켜 다섯 원소 순환을 만든다.",
+  "sourceConditions": [
+    {
+      "id": "bijection",
+      "condition": "f의 역함수가 존재하므로 X 위의 순열이다.",
+      "mappedTo": [
+        "diagram.columns",
+        "diagram.arrows"
+      ]
+    },
+    {
+      "id": "x1",
+      "condition": "f²(1)=f(1)−3에서 f(1)=6, f(6)=3",
+      "mappedTo": "diagram.arrows"
+    },
+    {
+      "id": "x2",
+      "condition": "f²(2)=f(2)−6에서 f(2)=7, f(7)=1",
+      "mappedTo": "diagram.arrows"
+    },
+    {
+      "id": "remaining",
+      "condition": "남는 대응은 f(3)=2",
+      "mappedTo": "diagram.arrows"
+    }
+  ],
+  "newVisualInformation": [
+    "다섯 원소의 순환 순서가 f² 입력을 따라 두 번 가야 하는 이유를 보여 준다."
+  ]
+}

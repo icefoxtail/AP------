@@ -1,0 +1,55 @@
+{
+  "capability": "container-fill-figure-v1",
+  "container": {
+    "pairs": [
+      {
+        "vessel": {
+          "name": "물통",
+          "profile": [
+            {
+              "kind": "FRUSTUM",
+              "r0": "2",
+              "r1": "4",
+              "height": "3"
+            },
+            {
+              "kind": "FRUSTUM",
+              "r0": "4",
+              "r1": "2",
+              "height": "3"
+            }
+          ]
+        },
+        "graphName": "높이",
+        "segmentNotes": [
+          {
+            "segment": 0,
+            "text": "단면 넓어짐"
+          },
+          {
+            "segment": 1,
+            "text": "단면 좁아짐"
+          }
+        ]
+      }
+    ],
+    "guides": true,
+    "xTitle": "시간(초)",
+    "yTitle": "높이(cm)"
+  },
+  "caption": "아래에서 위로 넓어졌다가 좁아지는 물통에 물을 채우면 높이 증가 속도가 처음에는 느려지고 다시 빨라진다.",
+  "accessibilityDescription": "물통 아래·위가 좁고 가운데가 넓어 처음 기울기가 감소했다가 나중에 증가하는 높이 그래프다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원본 물통은 아래가 좁고 가운데가 넓으며 다시 위로 좁아지는 두 원뿔대의 결합 형상이다. 반지름과 높이는 원문에서 수치가 주어지지 않아 상대 비율의 대표 도식이다.",
+      "mappedTo": [
+        "container.pairs.0.vessel.profile",
+        "container.pairs.0.segmentNotes"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "단면 너비 변화·구간 경계 점선·볼록 방향이 바뀌는 실제 계산 그래프"
+  ]
+}

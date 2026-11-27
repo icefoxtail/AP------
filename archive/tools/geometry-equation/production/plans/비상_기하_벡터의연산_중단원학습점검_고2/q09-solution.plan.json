@@ -1,0 +1,15 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[{"id":"e","kind":"ELLIPSE","center":["0","0"],"aSquared":"9","bSquared":"4","major":"X","label":"E"},{"id":"u","kind":"CIRCLE","center":["0","0"],"rSquared":"1","label":"U"}],
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"P","kind":"ON_CONIC","curve":"e","x":"0","branch":"POS"},{"id":"Q","kind":"ON_CONIC","curve":"u","x":"0","branch":"POS"}],
+  "segments":[{"id":"sOP","from":"O","to":"P","dashed":true},{"id":"sOQ","from":"O","to":"Q","label":"1"}],
+  "caption":"바깥 곡선 E는 x²/9+y²/4=1, 안쪽 곡선 U는 x²+y²=1이다. P가 E를 돌면 Q는 U를 돌아 넓이는 π이다.",
+  "accessibilityDescription":"한 좌표평면에 가로 반지름 3·세로 반지름 2인 타원과 원점 중심 반지름 1인 원을 함께 그린다. 원점 O에서 타원 위 P로의 방향과 단위원 위 Q로의 방향이 같고 OQ 길이 1이 표시된다. 두 곡선 내부는 채우지 않는다.",
+  "sourceQuote":"타원 x²/9+y²/4=1 위 P와 OQ=OP/|OP|, Q의 자취가 만드는 도형의 넓이",
+  "sourceConditions":[
+    {"id":"c1","condition":"출발 자취는 타원 x²/9+y²/4=1","mappedTo":"conics[0],points[1],segments[0]"},
+    {"id":"c2","condition":"|OQ|=1이고 OP와 같은 방향","mappedTo":"conics[1],points[2],segments[1]"},
+    {"id":"c3","condition":"Q의 전체 자취는 x²+y²=1로 원주이고 넓이 π","mappedTo":"conics[1]"}
+  ],
+  "newVisualInformation":["발문에는 샘플 방향만, 해설에는 완전한 단위원을 추가하여 정규화가 타원의 모든 방향을 원주로 옮기는 사실을 비교시킨다. 화면에서 실제 그리는 짧은 곡선 라벨 E·U를 캡션의 두 방정식에 대응시키고 면을 채우지 않는다."]
+}

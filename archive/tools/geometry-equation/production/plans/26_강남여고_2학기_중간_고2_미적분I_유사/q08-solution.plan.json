@@ -1,0 +1,19 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": ["1", "-2"],
+    "denominator": ["1", "1"],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "domain": [-5, 4],
+    "viewport": [-5, 4, -7, 7],
+    "axisTickValues": { "x": ["-1"], "y": ["-2", "1"] },
+    "overlays": {
+      "points": [ { "id": "P", "curveX": "0", "unnamed": true, "coordinates": true } ]
+    }
+  },
+  "caption": "f(x)=-2+3/(x+1)의 수직·수평 점근선과 분리된 두 가지",
+  "accessibilityDescription": "유리함수 (1-2x)/(x+1)의 그래프는 x=-1과 y=-2를 점근선으로 가지며 x=-1에서 정의되지 않는다. 두 가지의 발산 방향과 점 (0,1)을 나타낸다.",
+  "sourceConditions": [ { "id": "q08", "condition": "분모 x+1=0, 수직 점근선 x=-1, 수평 점근선 y=-2", "mappedTo": "graphPlan" } ],
+  "newVisualInformation": ["불연속점 포함 구간 판정을 위한 실제 두 그래프 가지와 점선 점근선"]
+}

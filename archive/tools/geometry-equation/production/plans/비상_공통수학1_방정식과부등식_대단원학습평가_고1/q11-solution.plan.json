@@ -1,0 +1,31 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "해집합",
+        "color": "BLUE",
+        "pieces": [{ "lo": { "value": "0", "state": "OPEN" }, "hi": { "value": "5", "state": "OPEN" } }]
+      },
+      {
+        "kind": "POINTS",
+        "band": false,
+        "label": "분기점",
+        "points": [
+          { "id": "T", "value": "2", "hideName": true },
+          { "id": "S", "value": "3", "hideName": true }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": { "text": "x=2,3에서 절댓값 식이 바뀐다" },
+  "caption": "|x−2|+|x−3|<5를 x<2, 2≤x<3, x≥3으로 나누어 풀고 합하면 0<x<5이다.",
+  "accessibilityDescription": "수직선 위에 열린 끝점 0과 5 사이 해집합을 보이고, 다른 줄에 절댓값 식의 분기점 2와 3을 표시한다.",
+  "sourceConditions": [
+    { "id": "bounds", "condition": "해설이 합친 열린 구간 0<x<5", "mappedTo": "numberLine.rows[0].pieces" },
+    { "id": "thresholds", "condition": "절댓값 식의 분기점 x=2, x=3", "mappedTo": "numberLine.rows[1].points" }
+  ],
+  "newVisualInformation": ["구간 양끝의 열린 점과 식이 바뀌는 내부 위치 2,3을 같은 수직선 눈금으로 대조한다."]
+}

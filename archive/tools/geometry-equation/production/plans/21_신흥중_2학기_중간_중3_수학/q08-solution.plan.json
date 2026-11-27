@@ -1,0 +1,206 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "H",
+    "C",
+    "A"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "H",
+        "C"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "A",
+        "H"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "B",
+        "H",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "length0",
+        "ownerSegment": "s0",
+        "text": "4√13"
+      },
+      {
+        "id": "length1",
+        "ownerSegment": "s1",
+        "text": "8"
+      },
+      {
+        "id": "length2",
+        "ownerSegment": "s2",
+        "text": "16"
+      },
+      {
+        "id": "length3",
+        "ownerSegment": "s3",
+        "text": "20"
+      },
+      {
+        "id": "length4",
+        "ownerSegment": "s4",
+        "text": "12"
+      }
+    ],
+    "angles": [
+      {
+        "id": "angle0",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 36.869898,
+        "label": "C",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "A에서 BC에 수선 AH⊥BC, CH16·AH12·BH8·AB4√13의 분해 직각삼각형",
+  "accessibilityDescription": "A에서 BC에 수선 AH⊥BC, CH16·AH12·BH8·AB4√13의 분해 직각삼각형",
+  "sourceQuote": "다음 그림의 $\\triangle \\mathrm{ABC}$에서 $\\overline{\\mathrm{AC}} = 20$, $\\overline{\\mathrm{BC}} = 24$이고 $\\sin C = \\frac35$, $\\cos C = \\frac45$일 때, $\\overline{\\mathrm{AB}}$의 길이는?",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "A에서 BC에 수선 AH⊥BC, CH16·AH12·BH8·AB4√13의 분해 직각삼각형",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "A에서 BC에 수선 AH⊥BC, CH16·AH12·BH8·AB4√13의 분해 직각삼각형"
+  ]
+}

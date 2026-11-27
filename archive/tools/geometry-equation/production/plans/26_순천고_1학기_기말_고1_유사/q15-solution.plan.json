@@ -1,0 +1,39 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "4",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "7",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "n=7의 자연수 해"
+  },
+  "caption": "n=7인 대표 경우의 이차부등식 (x-4)(x-7)<0은 4<x<7이고 자연수 해는 5와 6이다.",
+  "accessibilityDescription": "n=7일 때 4와 7을 열린 점으로 표시하고, 그 사이 정수 5와 6을 표시한 수직선.",
+  "sourceConditions": [
+    {
+      "id": "h1-15-1",
+      "condition": "n=7일 때 (x-4)(x-n)<0",
+      "mappedTo": "numberLine.rows[0].pieces[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "n>4인 경우의 대표 예를 보여 주며, 열린 끝점을 제외하고 자연수를 센다는 원리를 시각화한다."
+  ]
+}

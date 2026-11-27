@@ -1,0 +1,18 @@
+{
+  "capability":"number-line-figure-v1",
+  "numberLine":{"variable":"x","parameter":{"name":"a","value":"10"},"rows":[
+    {"kind":"SET","label":"아래 조건","color":"BLUE","pieces":[{"lo":{"value":"1","state":"OPEN"},"hi":null}]},
+    {"kind":"SET","label":"상한 조건","color":"WARM","pieces":[{"lo":null,"hi":{"param":{"mul":"1/2","add":"-1/2"},"state":"OPEN"}}]},
+    {"kind":"RESULT","label":"공통 범위"},
+    {"kind":"POINTS","label":"정수 해","band":false,"within":3,"points":[{"id":"P2","value":"2","hideName":true},{"id":"P3","value":"3","hideName":true},{"id":"P4","value":"4","hideName":true}]}
+  ]},
+  "numberLineCaption":{"text":"a=10일 때 정수 해 셋"},
+  "caption":"x>1과 x<(a−1)/2의 교집합에 정수가 정확히 세 개 있을 조건을 수직선으로 비교한다. a=10은 허용 범위 안의 예시다.",
+  "accessibilityDescription":"a=10을 대입한 수직선에서 x>1과 x<9/2의 공통 범위는 1과 9/2 사이 열린 구간이고, 내부 정수 2, 3, 4만 표시된다.",
+  "sourceConditions":[
+    {"id":"lower","condition":"x>1","mappedTo":"numberLine.rows[0].pieces"},
+    {"id":"upper","condition":"x<(a−1)/2; 대표값 a=10","mappedTo":["numberLine.parameter","numberLine.rows[1].pieces"]},
+    {"id":"integer","condition":"정수 해 2,3,4","mappedTo":"numberLine.rows[3].points"}
+  ],
+  "newVisualInformation":["두 부등식의 열린 끝점과 정확히 세 정수의 포함 여부를 다른 모양의 점으로 표현한다."]
+}

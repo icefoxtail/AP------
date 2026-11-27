@@ -1,0 +1,194 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 430
+  },
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "par0",
+        "count": 1,
+        "segments": [
+          "sDA",
+          "sBC"
+        ]
+      }
+    ]
+  },
+  "caption": "9번 문제: 원본 q09.png: 두 대각선 교점 O, 평행사변형 조건의 선분/각 대조 도형.",
+  "accessibilityDescription": "9번 문제 그림: 원본 q09.png: 두 대각선 교점 O, 평행사변형 조건의 선분/각 대조 도형.",
+  "sourceConditions": [
+    {
+      "id": "src-q9",
+      "condition": " 조건: 사각형 $\\text{ABCD}$에 대한 5개의 변, 각, 대각선 조건이 주어져 있습니다. 구할 대상: 항상 $\\square\\text{ABCD}$가 평행사변형이 되는 올바른 조건을 고릅니다.  사각형이 평행사변형이 되는 5가지 조건: 1) 두 쌍의 대변이 각각 평행하다. 2) 두 쌍의 대변의 길이가 각각 같다. 3) 두 쌍의 대각의 크기가 각각 같다. 4) 두 대각선이 서로 다른 것을 이등분한다. 5) 한 쌍의 대변이 평행하고 그 길이가 같다.  선지별 분석: - ① $\\angle\\text{A}=\\angle\\text{B}=\\angle\\text{C}=\\angle\\text{D}$: 사각형의 네 내각의 합은 $360^\\circ$이므로 네 각이 모두 $90^\\circ$입니다. 네 각이 모두 직각인 사각형은 직사각형이며, 두 쌍의 대각의 크기가 각각 같으므로 항상 평행사변형입니다. (참) - ② $\\overline{\\text{AD}}=\\overline{\\text{BC}}=4\\text{cm}, \\overline{\\text{AB}} \\parallel \\overline{\\text{CD}}$: 한 쌍이 평행하고 '다른' 한 쌍의 대변의 길이가 같은 조건으로, 등변사다리꼴이라는 반례가 존재합니다. (거짓) - ③ $\\angle\\text{A}+\\angle\\text{B}=\\angle\\text{C}+\\angle\\text{D}=180^\\circ$: 이는 $\\overline{\\text{AD}} \\parallel \\overline{\\text{BC}}$(한 쌍만 평행)인 일반 사다리꼴에서도 성립하므로 평행사변형 조건으로 부족합니다. (거짓) - ④ $\\overline{\\text{AB}}=\\overline{\\text{BC}}=3\\text{cm}, \\overline{\\text{CD}}=\\overline{\\text{DA}}=5\\text{cm}$: 이웃하는 두 변이 같은 연꼴이므로 평행사변형이 아닙니다. (거짓) - ⑤ $\\overline{\\text{OA}}=\\overline{\\text{OB}}=4\\text{cm}, \\overline{\\text{OC}}=\\overline{\\text{OD}}=5\\text{cm}$: 대각선이 서로를 이등분하는 조건($\\overline{\\text{OA}}=\\overline{\\text{OC}}, \\overline{\\text{OB}}=\\overline{\\text{OD}}$)이 아니므로 거짓입니다. (거짓)  ① 참 (네 각이 모두 $90^\\circ$이면 직사각형이므로 평행사변형 성립) ② 거짓 (등변사다리꼴 반례) ③ 거짓 (일반 사다리꼴 반례) ④ 거짓 (연꼴 반례) ⑤ 거짓 (대각선 이등분 불일치)  따라서 정답은 ①입니다. ",
+      "mappedTo": "mathPlan.nodes;displaySegments;planeMarks"
+    },
+    {
+      "id": "source-visual-feature",
+      "condition": "원본 q09.png: 두 대각선 교점 O, 평행사변형 조건의 선분/각 대조 도형; 풀이에 필요한 추가 관계",
+      "mappedTo": "displaySegments;planeMarks"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 q09.png: 두 대각선 교점 O, 평행사변형 조건의 선분/각 대조 도형; 풀이에 필요한 추가 관계"
+  ]
+}

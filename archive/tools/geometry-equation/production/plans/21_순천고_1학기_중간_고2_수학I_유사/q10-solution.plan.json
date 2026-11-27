@@ -1,0 +1,19 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric", "function": "COS", "coefficients": ["1", "1", "0"], "phasePi": "0",
+    "sourceDomain": {"kind": "INTERVAL_PI", "rangePi": ["0", "4"], "states": ["CLOSED", "OPEN"]},
+    "referenceLines": [{"id": "h", "y": "2/5", "intersectionCount": 4}],
+    "keyPoints": true, "axisTickPi": true,
+    "axisTickValues": {"x": ["1", "2", "3"], "y": ["2/5", "-1", "1"]}
+  },
+  "caption": "t=2x로 바꾼 0≤t<4π에서 cos t=2/5의 교점이 두 주기에 걸쳐 네 개이며 각 주기에서 교점 두 개의 합은 2π, 6π이다.",
+  "accessibilityDescription": "코사인 그래프의 두 주기와 높이 2/5인 수평선의 네 교점이 보인다.",
+  "sourceQuote": "방정식 $\\cos 2x = \\frac{2}{5}$의 모든 실근의 합",
+  "sourceConditions": [
+    {"id":"t-range","condition":"t=2x, 0≤x<2π이므로 0≤t<4π","mappedTo":"graphPlan.sourceDomain"},
+    {"id":"equation","condition":"cos t=2/5","mappedTo":"graphPlan.function,graphPlan.referenceLines[0]"},
+    {"id":"four","condition":"두 주기에서 네 교점","mappedTo":"graphPlan.referenceLines[0].intersectionCount"}
+  ],
+  "newVisualInformation": ["두 주기 내 수평선의 교점 네 개", "각 주기의 대칭축 t=π,3π"]
+}

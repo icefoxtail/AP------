@@ -1,0 +1,12 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {"rows": [{"kind": "SET", "pieces": [{"lo": {"value": "-4", "state": "CLOSED"}, "hi": null}]}]},
+  "numberLineCaption": {"text": "x≥−4"},
+  "caption": "3x−2≤4(x+1)−a에서 x≥a−6이다. 주어진 해가 x≥−4이므로 a−6=−4, 따라서 a=2이다.",
+  "accessibilityDescription": "마이너스 4에서 닫힌 원을 표시하고 오른쪽으로 뻗는 해집합이다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "주어진 해집합은 x≥−4", "mappedTo": ["numberLine.rows[0].pieces"]},
+    {"id": "c2", "condition": "x≥a−6의 경계를 맞추면 a=2", "mappedTo": "caption"}
+  ],
+  "newVisualInformation": ["주어진 해의 닫힌 경계 −4와 오른쪽 방향"]
+}

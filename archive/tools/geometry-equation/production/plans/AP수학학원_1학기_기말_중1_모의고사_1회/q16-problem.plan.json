@@ -1,0 +1,23 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family":"piecewise-polynomial",
+    "pieces":[{"coefficients":["0","90"]},{"coefficients":["90"]},{"coefficients":["-110","80"]}],
+    "breakpoints":[{"x":"1","y":"90"},{"x":"5/2","y":"90"}],
+    "sourceDomain":{"kind":"INTERVAL","range":["0","4"],"states":["CLOSED","CLOSED"]},
+    "domain":[0,4],"viewport":[0,4,0,240],
+    "requiredPoints":[{"id":"O","x":0,"y":0},{"id":"A","x":1,"y":90},{"id":"B","x":2.5,"y":90},{"id":"C","x":4,"y":210}],
+    "exactCoordinates":{"B":["5/2","90"]},
+    "coordinateBand":{"hide":["O","A","B","C"]},
+    "axisTickValues":{"x":["1","2","3","4"],"y":["30","60","90","120","150","180","210"]},
+    "axisTitles":{"x":"시간(h)","y":"거리(km)"},
+    "axisScale":{"x":1,"y":"1/60"}
+  },
+  "caption":"자동차의 이동 거리가 늘다가 잠시 일정하게 유지되고 다시 늘어나는 시간-거리 그래프이다.",
+  "accessibilityDescription":"0~4시간 동안 이동 거리는 0에서 90km로 증가하고, 90km에서 수평인 정차 구간 후 210km까지 증가한다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"그림은 시간 x시간, 이동 거리 y킬로미터를 나타낸다; 출발(0,0), 1시간 90km, 2.5시간 90km, 4시간 210km이다.","mappedTo":["graphPlan.pieces","graphPlan.breakpoints","graphPlan.requiredPoints"]},
+    {"id":"c2","condition":"휴게소 정차 시간은 수평 구간의 길이이며 문제 그림에는 계산값을 추가하지 않는다.","mappedTo":["graphPlan.breakpoints","graphPlan.coordinateBand"]}
+  ],
+  "newVisualInformation":["정차를 뜻하는 수평 구간의 시작과 끝, 이동 경로와 실제 축 눈금을 보존한다."]
+}

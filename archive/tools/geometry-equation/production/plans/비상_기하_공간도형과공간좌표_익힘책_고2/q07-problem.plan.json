@@ -1,0 +1,12 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [{"id":"A","at":[0,0,0]},{"id":"B","at":[0,-1,0]},{"id":"C","at":[1,-1,0]},{"id":"D","at":[0,0,"sqrt(6)/3"]}],
+    "planes": [{"id":"alpha","name":"\\alpha","through":["A","B","C"],"extent":{"center":[0.5,-0.5,0],"u":[1.8,0,0],"v":[0,1.6,0]}}],
+    "segments": [{"from":"A","to":"B"},{"from":"B","to":"C"},{"from":"C","to":"A"},{"from":"A","to":"D"},{"from":"D","to":"C"},{"from":"D","to":"B"}]
+  },
+  "marks": {"rightAngles":[{"at":"A","refs":["D","C"]},{"at":"B","refs":["A","C"]}],"angles":[{"refs":["A","C","D"],"value":30,"arcs":1},{"refs":["A","C","B"],"value":45,"arcs":2}]},
+  "caption": "평면 α 위 △ABC, 수직 평면의 △ACD: ∠ACD=30°, ∠ACB=45°",
+  "sourceConditions": ["△ABC는 평면 α의 B에서 직각", "△ACD는 A에서 직각이고 평면 α에 수직", "∠ACD=30°", "∠ACB=45°"],
+  "newVisualInformation": ["α 평면과 두 직각삼각형", "A,B의 직각 표식", "C에서 30°·45° 각 호 및 A~D 이름"]
+}

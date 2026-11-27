@@ -1,0 +1,7 @@
+{
+  "capability":"piecewise-polynomial-spike-v1","graphPlan":{"family":"piecewise-polynomial","pieces":[{"coefficients":["0","2","-3","1"]}],"sourceDomain":{"kind":"ALL_REALS"},"functionName":"f","requiredPoints":[{"id":"A","x":"0","y":"0"},{"id":"M","x":"1-sqrt(3)/3","y":"2*sqrt(3)/9"},{"id":"B","x":"1","y":"0"},{"id":"N","x":"1+sqrt(3)/3","y":"-2*sqrt(3)/9"},{"id":"C","x":"2","y":"0"}],"axisTickValues":{"x":[1,2],"y":[]},"regions":[{"id":"L","upper":"f","lower":"axis","from":"0","to":"1","label":"S_1"},{"id":"R","upper":"axis","lower":"f","from":"1","to":"2","label":"S_2"}]},
+  "pointNames":{"A":"A","M":"M","B":"B","N":"N","C":"C"},"caption":"풀이의 비 b/a=2를 a=1,b=2로 정규화한 대표 삼차곡선 x(x-1)(x-2). 0~1의 위 영역과 1~2의 아래 영역이 같다.",
+  "accessibilityDescription":"x=0,1,2에서 x축을 가로지르는 삼차함수와 좌우 부호가 다른 두 면적 영역 S1과 S2. a=1 대표 모형.",
+  "sourceQuote":"곡선 $y=x(x-a)(x-b)$와 $x$축으로 둘러싸인 두 부분의 넓이가 서로 같을 때, $\\dfrac{b}{a}$의 값을 구하시오.",
+  "sourceConditions":[{"id":"c1","condition":"a>0,b>a, 같은 넓이 조건으로 b=2a. 정규화 표본 a=1,b=2","mappedTo":"graphPlan.pieces[0].coefficients"},{"id":"c2","condition":"0,a,b에서 부호가 번갈아 바뀌어 같은 두 영역","mappedTo":"graphPlan.requiredPoints,graphPlan.regions"}],"newVisualInformation":["정규화한 대표 도식으로 두 넓이의 부호와 배치를 구분"]
+}

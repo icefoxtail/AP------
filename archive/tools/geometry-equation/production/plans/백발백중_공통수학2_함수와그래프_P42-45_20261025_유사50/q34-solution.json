@@ -1,0 +1,188 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "전단사 f"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "MAPPING",
+          "columns": [
+            {
+              "id": "X",
+              "name": "X",
+              "elements": [
+                "1",
+                "2",
+                "3",
+                "4"
+              ]
+            },
+            {
+              "id": "Y",
+              "name": "Y",
+              "elements": [
+                "1",
+                "2",
+                "3",
+                "4"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 3
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 1
+              },
+              "to": {
+                "column": 1,
+                "element": 2
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 2
+              },
+              "to": {
+                "column": 1,
+                "element": 1
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 3
+              },
+              "to": {
+                "column": 1,
+                "element": 0
+              }
+            }
+          ],
+          "arrowGroups": [
+            {
+              "name": "f",
+              "from": "X",
+              "to": "Y",
+              "color": "BLUE"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "전단사 g"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "MAPPING",
+          "columns": [
+            {
+              "id": "X",
+              "name": "X",
+              "elements": [
+                "1",
+                "2",
+                "3",
+                "4"
+              ]
+            },
+            {
+              "id": "Y",
+              "name": "Y",
+              "elements": [
+                "1",
+                "2",
+                "3",
+                "4"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 1
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 1
+              },
+              "to": {
+                "column": 1,
+                "element": 3
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 2
+              },
+              "to": {
+                "column": 1,
+                "element": 0
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 3
+              },
+              "to": {
+                "column": 1,
+                "element": 2
+              }
+            }
+          ],
+          "arrowGroups": [
+            {
+              "name": "g",
+              "from": "X",
+              "to": "Y",
+              "color": "BLUE"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "f=(1→4,2→3,3→2,4→1), g=(1→2,2→4,3→1,4→3).",
+  "accessibilityDescription": "f=(1→4,2→3,3→2,4→1), g=(1→2,2→4,3→1,4→3).",
+  "sourceConditions": [
+    {
+      "id": "function0",
+      "condition": "f(1)=4, f(3)=2, f∘g(4)=2에서 g(4)=3.",
+      "mappedTo": "panels[0].plan.diagram.arrows"
+    },
+    {
+      "id": "function1",
+      "condition": "g(1)=2, g∘f(2)=1에서 나머지 대응이 결정된다.",
+      "mappedTo": "panels[1].plan.diagram.arrows"
+    }
+  ],
+  "newVisualInformation": [
+    "각 함수의 대응을 독립 패널로 분리하여 합성·순열 조건을 확인한다."
+  ]
+}

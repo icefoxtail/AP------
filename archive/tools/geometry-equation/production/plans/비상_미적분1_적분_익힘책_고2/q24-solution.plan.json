@@ -1,0 +1,7 @@
+{
+  "capability":"piecewise-polynomial-spike-v1","graphPlan":{"family":"piecewise-polynomial","pieces":[{"coefficients":["0","-12","6"]},{"coefficients":["-12","0","3"]}],"breakpoints":[{"x":"2","y":"0"}],"sourceDomain":{"kind":"INTERVAL","range":["0","4"],"states":["OPEN","OPEN"]},"functionName":"v","nameVariable":"t","requiredPoints":[{"id":"V","x":"1","y":"-6"},{"id":"T","x":"2","y":"0"}],"axisTickValues":{"x":[1,2,3],"y":[]},"regions":[{"id":"back","upper":"axis","lower":"f","from":"1","to":"2","label":"S_1"},{"id":"forward","upper":"f","lower":"axis","from":"2","to":"3","label":"S_2"}]},
+  "pointNames":{"V":"V","T":"T"},"caption":"해설에서 a=6, b=3이다. 속도는 0<t≤2에서 6t(t-2), 2<t<4에서 3(t²-4)이고 1~3의 이동거리는 두 부호 영역의 합이다.",
+  "accessibilityDescription":"t=2에서 이어지는 두 포물선 조각의 속도 그래프. t=1부터 2까지 음의 속도 영역, 2부터 3까지 양의 속도 영역을 표시했다.",
+  "sourceQuote":"시각 $t=2$에서 점 $\\mathrm{P}$의 위치는 $-8$, 시각 $t=4$에서 점 $\\mathrm{P}$의 위치는 $24$일 때, 다음 물음에 답하시오.",
+  "sourceConditions":[{"id":"c1","condition":"x(2)=-8에서 a=6, x(4)=24에서 b=3","mappedTo":"graphPlan.pieces"},{"id":"c2","condition":"속도식의 경계 t=2에서 v=0","mappedTo":"graphPlan.breakpoints"},{"id":"c3","condition":"t=1~3 이동거리 계산","mappedTo":"graphPlan.regions"}],"newVisualInformation":["계수가 정해진 두 속도 조각과 경계·이동거리 영역"]
+}

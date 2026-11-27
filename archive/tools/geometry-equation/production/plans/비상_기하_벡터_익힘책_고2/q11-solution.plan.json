@@ -1,0 +1,199 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBD",
+        "op": "LINE_THROUGH",
+        "inputs": ["B", "D"],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": ["C", "lBD"],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCH",
+      "refs": [
+        "C",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sHD",
+      "refs": [
+        "H",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "vectors": [
+      {
+        "id": "vab",
+        "from": "A",
+        "to": "B",
+        "label": "vec(AB)",
+        "side": "LEFT"
+      },
+      {
+        "id": "vcd",
+        "from": "C",
+        "to": "D",
+        "label": "vec(CD)",
+        "side": "RIGHT"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dbd",
+        "from": "B",
+        "to": "D",
+        "label": "9",
+        "side": "ABOVE",
+        "style": "ARROW"
+      },
+      {
+        "id": "dch",
+        "from": "C",
+        "to": "H",
+        "label": "6",
+        "side": "LEFT",
+        "style": "ARROW"
+      }
+    ]
+  },
+  "rightAngles": [{"id":"rH","refs":["C","H","B"]}],
+  "caption": "AB=(2,2), CD=3AB=(6,6). 삼각형 BCD의 밑변 BD=9, 높이 CH=6.",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 540
+  },
+  "sourceConditions": [
+    {
+      "id": "figure",
+      "condition": "AB=(2,2), CD=3AB=(6,6). 삼각형 BCD의 밑변 BD=9, 높이 CH=6.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "해설의 정확한 내분점/평행이동벡터와 선분을 그리고 임의 면 채움은 넣지 않음."
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "원기둥 A"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "kind": "CYLINDER",
+            "radius": 2,
+            "height": 4
+          }
+        ],
+        "dims": [
+          {
+            "radius": "top"
+          },
+          {
+            "height": true,
+            "side": "RIGHT"
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "원기둥 B"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "kind": "CYLINDER",
+            "radius": 3,
+            "height": 6
+          }
+        ],
+        "dims": [
+          {
+            "height": true,
+            "side": "RIGHT"
+          }
+        ]
+      }
+    }
+  ],
+  "caption": "원본에 제시된 여러 도형의 구성을 비교한다.",
+  "accessibilityDescription": "원본의 여러 도형과 각 꼭짓점 및 길이 표식을 독립 패널로 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "src-q15",
+      "condition": " 15. 다음 그림에서 두 원기둥 $\\text{A, B}$가 서로 닮은 도형일 때, 원기둥 $\\text{B}$의 부피를 구하면? [4점]    ",
+      "mappedTo": "mathPlan.nodes;displaySegments;planeMarks"
+    },
+    {
+      "id": "source-visual-feature",
+      "condition": "원본 q15.png: A의 밑면 반지름2·높이4와 B의 높이6, 미지 반지름은 숨김",
+      "mappedTo": "displaySegments;planeMarks"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 q15.png: A의 밑면 반지름2·높이4와 B의 높이6, 미지 반지름은 숨김"
+  ]
+}

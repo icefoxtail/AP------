@@ -1,0 +1,21 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "graphPlan":{"family":"multi-curve","viewport":[-3,2,-1,5],"curves":[
+    {"id":"f","kind":"EXPONENTIAL","base":"1/2","coefficients":["1","1","0"],"domain":["-5/2","2"],"color":"BLUE"},
+    {"id":"g","kind":"EXPONENTIAL","base":"1/4","coefficients":["1","1","0"],"domain":["-5/2","2"],"color":"WARM"}
+  ],"axisTickValues":{"x":["-2","-1"],"y":["1","4"]},
+  "overlays":{"lines":[{"id":"horizontal","slope":"0","intercept":"4","label":"y=4"}],
+  "points":[{"id":"O","x":"0","y":"0"},{"id":"A","x":"-2","y":"4","coordinates":true},{"id":"B","x":"-1","y":"4","coordinates":true},{"id":"H","x":"0","y":"4"}],
+  "polygons":[{"id":"triangle","points":["A","B","O"],"fill":"LIGHT"}],
+  "segments":[{"id":"AB","from":"A","to":"B","length":true},{"id":"OA","from":"O","to":"A"},{"id":"OB","from":"O","to":"B"},{"id":"OH","from":"O","to":"H","dashed":true,"length":true}],
+  "rightAngles":[{"id":"hRight","at":"H","from":["O","A"]}]}},
+  "pointNames":{"O":"O","A":"A","B":"B","H":"H"},
+  "caption":"두 교점은 A(-2,4), B(-1,4)이다. 밑변 AB=1, 수평선 y=4까지의 높이 OH=4이므로 삼각형 AOB의 넓이는 1×4/2=2다.",
+  "accessibilityDescription":"두 감소 지수곡선과 y=4 수평선의 교점 A(-2,4), B(-1,4)를 나타내고 삼각형 AOB만 연하게 색칠한다. AB 길이 1, 원점 O에서 y=4까지의 높이 점선 OH 길이 4, 수선발 H의 직각 표식이 있다.",
+  "sourceConditions":[
+    {"id":"curves","condition":"y=(1/2)^x와 y=(1/4)^x","mappedTo":["f","g"]},
+    {"id":"intersections","condition":"y=4 교점 A=(-2,4), B=(-1,4)","mappedTo":["A","B","horizontal"]},
+    {"id":"area","condition":"△AOB의 밑변 AB=1, 높이 4, 넓이2","mappedTo":["triangle","AB","OH","hRight"]}
+  ],
+  "newVisualInformation":["원본 면 채움의 수학적 의미를 보존하고 실제 가로 밑변 길이 1, 세로 높이 점선 4, 직각표식을 해설에 추가"]
+}

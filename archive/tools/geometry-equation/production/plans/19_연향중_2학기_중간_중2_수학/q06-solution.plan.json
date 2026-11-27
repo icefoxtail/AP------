@@ -1,0 +1,206 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "10310912041257636",
+              "denominator": "10000000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "58476088003261736",
+              "denominator": "10000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "24202766254612064",
+              "denominator": "10000000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "20308532237714904",
+              "denominator": "10000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAI",
+      "refs": [
+        "A",
+        "I"
+      ]
+    },
+    {
+      "id": "sBI",
+      "refs": [
+        "B",
+        "I"
+      ]
+    },
+    {
+      "id": "sCI",
+      "refs": [
+        "C",
+        "I"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 430
+  },
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "A",
+          "I",
+          "B"
+        ],
+        "value": 110,
+        "label": "110",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "B",
+          "I",
+          "C"
+        ],
+        "value": 120,
+        "label": "120",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "A",
+          "I",
+          "C"
+        ],
+        "value": 130,
+        "label": "130",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "6번 문제: 원본 q06.png: 내심 I에서 세 꼭짓점으로 이어진 선과 세 중심각 비 11:12:13.",
+  "accessibilityDescription": "6번 문제 그림: 원본 q06.png: 내심 I에서 세 꼭짓점으로 이어진 선과 세 중심각 비 11:12:13.",
+  "sourceConditions": [
+    {
+      "id": "src-q6",
+      "condition": " 조건: 점 $\\text{I}$는 $\\triangle\\text{ABC}$의 내심이고, $\\angle\\text{AIB} : \\angle\\text{BIC} : \\angle\\text{AIC} = 11 : 12 : 13$입니다. 구할 대상: $\\angle\\text{ABC}$의 크기입니다.  1) 점 $\\text{I}$ 둘레의 세 각의 합은 한 바퀴인 $360^\\circ$입니다: $\\angle\\text{AIB} + \\angle\\text{BIC} + \\angle\\text{AIC} = 360^\\circ$. 비례배분을 이용하여 각 $\\angle\\text{AIC}$의 크기를 구합니다. 2) 내심의 각도 공식: $\\angle\\text{AIC} = 90^\\circ + \\dfrac{1}{2}\\angle\\text{ABC}$.  1) 비의 총합: $11 + 12 + 13 = 36$. 2) $\\angle\\text{AIC}$의 크기 계산: $\\angle\\text{AIC} = 360^\\circ \\times \\dfrac{13}{36} = 130^\\circ$. 3) 내심 공식에 대입하여 $\\angle\\text{ABC}$ 계산: $130^\\circ = 90^\\circ + \\dfrac{1}{2}\\angle\\text{ABC}$, $\\dfrac{1}{2}\\angle\\text{ABC} = 130^\\circ - 90^\\circ = 40^\\circ$, $\\angle\\text{ABC} = 40^\\circ \\times 2 = 80^\\circ$.  ① $78^\\circ$: 불일치. ② $80^\\circ$: 계산 결과 $80^\\circ$와 정확히 일치합니다. ③ $82^\\circ$: 불일치. ④ $84^\\circ$: 불일치. ⑤ $86^\\circ$: 불일치.  따라서 정답은 ②입니다. ",
+      "mappedTo": "mathPlan.nodes;displaySegments;planeMarks"
+    },
+    {
+      "id": "source-visual-feature",
+      "condition": "원본 q06.png: 내심 I에서 세 꼭짓점으로 이어진 선과 세 중심각 비 11:12:13; 풀이에 필요한 추가 관계",
+      "mappedTo": "displaySegments;planeMarks"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 q06.png: 내심 I에서 세 꼭짓점으로 이어진 선과 세 중심각 비 11:12:13; 풀이에 필요한 추가 관계"
+  ]
+}

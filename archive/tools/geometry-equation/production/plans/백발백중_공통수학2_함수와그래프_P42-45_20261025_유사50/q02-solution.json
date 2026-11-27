@@ -1,0 +1,83 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "Y",
+        "elements": [
+          "0",
+          "3",
+          "10"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y",
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "f(1)=0, f(2)=3, f(3)=10이므로 치역은 {0,3,10}이다.",
+  "accessibilityDescription": "f(1)=0, f(2)=3, f(3)=10이므로 치역은 {0,3,10}이다.",
+  "sourceConditions": [
+    {
+      "id": "mapping0",
+      "condition": "f(x)=2x²−3x+1을 정의역 {1,2,3}에 대입한다.",
+      "mappedTo": "diagram.arrows"
+    },
+    {
+      "id": "mapping1",
+      "condition": "세 입력값의 출력은 각각 0,3,10이다.",
+      "mappedTo": "diagram.arrows"
+    }
+  ],
+  "newVisualInformation": [
+    "원소의 중복 여부를 확인한 뒤 서로 다른 치역의 원소를 읽는다."
+  ]
+}

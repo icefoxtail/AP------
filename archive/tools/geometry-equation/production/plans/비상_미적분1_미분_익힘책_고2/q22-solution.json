@@ -1,0 +1,62 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "24",
+          "-18",
+          "3"
+        ],
+        "domain": [
+          "0",
+          null
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "2",
+        "y": "0"
+      },
+      {
+        "id": "Q",
+        "x": "4",
+        "y": "0"
+      },
+      {
+        "id": "M",
+        "x": "3",
+        "y": "-3"
+      }
+    ],
+    "axisVariable": "t",
+    "axisTickValues": {
+      "x": [
+        "2",
+        "4"
+      ],
+      "y": []
+    }
+  },
+  "caption": "시간 t≥0의 속도 v(t)=3(t−2)(t−4)는 t=2와 t=4에서 부호가 바뀌고 t=4에서 가속도는 6이다.",
+  "accessibilityDescription": "시간 t≥0의 속도 v(t)=3(t−2)(t−4)는 t=2와 t=4에서 부호가 바뀌고 t=4에서 가속도는 6이다.",
+  "sourceConditions": [
+    {
+      "id": "velocity",
+      "condition": "v(t)=3t²−18t+24, t≥0",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "switch",
+      "condition": "첫 방향 전환 t=2, 둘째 방향 전환 t=4",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "원문·해설의 결정적 선·점·관계만 나타내며 배경과 임의의 면 채움을 두지 않는다."
+  ]
+}

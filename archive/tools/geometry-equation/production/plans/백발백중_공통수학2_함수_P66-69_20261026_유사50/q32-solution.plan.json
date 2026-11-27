@@ -1,0 +1,67 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "7",
+          "1"
+        ],
+        "domain": [
+          null,
+          "2/3"
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "3",
+          "7"
+        ],
+        "domain": [
+          "2/3",
+          null
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "2/3",
+        "y": "23/3"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2/3"
+      ],
+      "y": [
+        "23/3"
+      ]
+    },
+    "functionName": "f"
+  },
+  "caption": "a=4에서 왼쪽 기울기 1, 오른쪽 기울기 7의 증가함수. 최소 자연수 a는 4.",
+  "accessibilityDescription": "절댓값이 꺾이는 x=2/3에서 두 증가 직선이 한 점으로 만나며 좌우 기울기가 모두 양수라 일대일함수가 된다.",
+  "sourceConditions": [
+    {
+      "id": "break",
+      "condition": "절댓값 안이 0이 되는 x=2/3",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "slopes",
+      "condition": "a=4일 때 왼쪽 1, 오른쪽 7",
+      "mappedTo": "graphPlan.pieces"
+    }
+  ],
+  "newVisualInformation": [
+    "함숫값의 중복이 생기지 않으려면 좌우 직선의 기울기 부호가 모두 같아야 한다."
+  ],
+  "sourceQuote": "함수 $f(x)=|3x-2|+ax+5$에 대하여 $(g \\circ f)(x)=x$를 만족시키는 함수 $g(x)$가 존재하도록 하는 자연수 $a$의 최솟값은?"
+}

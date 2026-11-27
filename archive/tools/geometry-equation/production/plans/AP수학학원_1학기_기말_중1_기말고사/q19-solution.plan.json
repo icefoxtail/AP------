@@ -1,0 +1,17 @@
+{
+  "capability":"trigonometric-spike-v1",
+  "graphPlan":{
+    "family":"trigonometric","function":"COS","ratePi":"1/10",
+    "coefficients":["-25/2","35/2"],"phasePi":"0",
+    "sourceDomain":{"kind":"INTERVAL","range":["0","60"],"states":["CLOSED","CLOSED"]},
+    "keyPoints":true,"axisTickValues":{"x":["10","20","30","40","50"],"y":["5","20","30"]},
+    "axisTitles":{"x":"시간(분)","y":"높이(m)"},"displaySize":"full"
+  },
+  "caption":"최저점으로 돌아오는 데 20분이 걸려 한 바퀴 30분이라는 ⑤는 틀리다. 30m 높이는 10분, 30분, 50분에 나타난다.",
+  "accessibilityDescription":"t=0,20,40,60분에 높이가 5m이고 t=10,30,50분에 30m인 세 주기 곡선이다. 한 바퀴는 20분이다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"해설에서 한 바퀴 주기 20분을 비교해 ⑤의 30분 주장을 반박한다.","mappedTo":["graphPlan.ratePi","graphPlan.sourceDomain"]},
+    {"id":"c2","condition":"최고 높이 30m와 t=30분의 최고점, 20m 높이를 지나는 6회를 원본 그림과 동일하게 표현한다.","mappedTo":["graphPlan.coefficients","graphPlan.keyPoints","graphPlan.axisTickValues"]}
+  ],
+  "newVisualInformation":["주기 20분, 최고 높이 30m라는 풀이 근거를 점과 축으로 대조한다."]
+}

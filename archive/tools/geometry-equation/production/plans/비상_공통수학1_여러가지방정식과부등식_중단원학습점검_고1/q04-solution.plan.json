@@ -1,0 +1,17 @@
+{
+  "capability":"number-line-figure-v1",
+  "numberLine":{"variable":"x","rows":[
+    {"kind":"SET","label":"첫 조건","color":"BLUE","pieces":[{"lo":{"value":"-4","state":"CLOSED"},"hi":{"value":"-1","state":"CLOSED"}}]},
+    {"kind":"SET","label":"둘째 조건","color":"WARM","pieces":[{"lo":null,"hi":{"value":"-3","state":"OPEN"}},{"lo":{"value":"1/2","state":"OPEN"},"hi":null}]},
+    {"kind":"RESULT","label":"공통 범위"}
+  ]},
+  "numberLineCaption":{"text":"⑵ 두 이차부등식의 해의 교집합"},
+  "caption":"⑵ −4≤x≤−1과 x<−3 또는 x>1/2의 공통 범위는 −4≤x<−3이다.",
+  "accessibilityDescription":"첫 번째 이차부등식의 닫힌 구간, 두 번째 이차부등식의 두 열린 구간, 두 구간의 교집합을 수직선 세 줄로 표현한다.",
+  "sourceConditions":[
+    {"id":"first","condition":"−4≤x≤−1","mappedTo":"numberLine.rows[0].pieces"},
+    {"id":"second","condition":"x<−3 또는 x>1/2","mappedTo":"numberLine.rows[1].pieces"},
+    {"id":"intersection","condition":"−4≤x<−3","mappedTo":"numberLine.rows[2]"}
+  ],
+  "newVisualInformation":["교집합의 −4는 닫힌 점, −3은 열린 점으로 실제 수직선에 표시한다."]
+}

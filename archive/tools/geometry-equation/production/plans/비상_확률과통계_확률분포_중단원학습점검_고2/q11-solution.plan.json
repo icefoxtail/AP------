@@ -1,0 +1,113 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4/5",
+          "-2/5"
+        ]
+      },
+      {
+        "coefficients": [
+          "-4/5",
+          "2/5"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "2",
+        "y": "0"
+      }
+    ],
+    "requiredPoints": [
+      {"id": "V", "x": "2", "y": "0"}
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "f",
+        "lower": "axis",
+        "from": "1",
+        "to": "2",
+        "fill": "LIGHT",
+        "label": "1/5"
+      },
+      {
+        "id": "S2",
+        "upper": "f",
+        "lower": "axis",
+        "from": "2",
+        "to": "3",
+        "fill": "LIGHT",
+        "label": "1/5"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {"id": "C3", "curveX": "3", "unnamed": true}
+      ],
+      "guides": [
+        {"id": "kGuides", "from": "C3", "axis": "BOTH"}
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "2/5",
+        "4/5"
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    }
+  },
+  "caption": "원본의 (0,2k)→(2,0)→(3,k)를 k=2/5로 정한 뒤 1≤x≤3 넓이 2/5를 칠한다.",
+  "accessibilityDescription": "밀도함수가 0에서 4/5, 2에서 0, 3에서 2/5가 되는 두 선분으로 그려지고, 1부터 3까지의 두 삼각형 영역이 강조되어 있다.",
+  "sourceQuote": "확률밀도함수 $f(x)$의 그래프가 다음 그림",
+  "sourceConditions": [
+    {
+      "id": "asset",
+      "condition": "q11.png는 (0,2k),(2,0),(3,k)을 직선으로 잇고 점선 y=k가 있다",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.breakpoints"
+      ]
+    },
+    {
+      "id": "normalization",
+      "condition": "총 넓이 2k+k/2=1에서 k=2/5",
+      "mappedTo": [
+        "graphPlan.pieces"
+      ]
+    },
+    {
+      "id": "area",
+      "condition": "1≤x≤3의 두 삼각형 넓이 합은 2/5",
+      "mappedTo": [
+        "graphPlan.regions"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "문항 이미지의 기하 모양과 두 삼각형의 확률 영역을 수치 확정하여 나타낸다."
+  ]
+}

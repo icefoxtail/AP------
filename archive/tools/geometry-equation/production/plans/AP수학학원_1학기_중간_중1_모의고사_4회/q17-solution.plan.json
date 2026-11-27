@@ -1,0 +1,57 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "111", "denominator": "4" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "111", "denominator": "4" }, { "kind": "integer", "value": "12" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "63", "denominator": "4" }, { "kind": "integer", "value": "21" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "E", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "59", "denominator": "4" }, { "kind": "integer", "value": "23" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "F", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "107", "denominator": "4" }, { "kind": "integer", "value": "14" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "G", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "30" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "H", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "30" }, { "kind": "integer", "value": "12" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "I", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "-2" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "J", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "111", "denominator": "4" }, { "kind": "integer", "value": "-2" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "K", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-2" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "L", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "55", "denominator": "4" }, { "kind": "integer", "value": "21" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"],
+  "hiddenPointNames": ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sCD", "refs": ["C", "D"] },
+    { "id": "sDA", "refs": ["D", "A"] },
+    { "id": "sAC", "refs": ["A", "C"] },
+    { "id": "gTop", "refs": ["E", "F"], "dashed": true },
+    { "id": "gRight", "refs": ["G", "H"], "dashed": true },
+    { "id": "gBottom", "refs": ["I", "J"], "dashed": true },
+    { "id": "gLeft", "refs": ["K", "L"], "dashed": true }
+  ],
+  "rightAngles": [
+    { "id": "raD", "refs": ["A", "D", "C"], "factRole": "GIVEN" },
+    { "id": "raB", "refs": ["A", "B", "C"], "factRole": "GIVEN" }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      { "id": "left", "from": "A", "to": "D", "label": "a", "side": "LEFT", "style": "BRACE", "factRole": "GIVEN" },
+      { "id": "top", "from": "D", "to": "C", "label": "15", "side": "ABOVE", "style": "BRACE", "factRole": "GIVEN" },
+      { "id": "right", "from": "B", "to": "C", "label": "12", "side": "RIGHT", "style": "BRACE", "factRole": "GIVEN" },
+      { "id": "bottom", "from": "A", "to": "B", "label": "b", "side": "BELOW", "style": "BRACE", "factRole": "GIVEN" }
+    ]
+  },
+  "coordinateCanvas": { "width": 720, "height": 560 },
+  "caption": "왼쪽 아래에서 오른쪽 위까지 대각선으로 나눈 두 직각삼각형의 넓이를 더한다. 15a/2+12b/2=15a/2+6b이므로 보기 ②이다.",
+  "accessibilityDescription": "사각형의 실선 네 변과 대각선, 두 직각 표식, a·15·12·b 네 길이와 바깥 점선 안내선이 있으며 내부는 채우지 않았다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "원본 q17에서 왼쪽 아래부터 오른쪽 위까지 그은 대각선이 두 직각삼각형을 분리하며 직각은 왼쪽 위와 오른쪽 아래에 있다.", "mappedTo": ["displaySegments.4", "rightAngles"] },
+    { "id": "c2", "condition": "위쪽 삼각형의 직각을 끼는 두 변 a와 15, 아래쪽 삼각형의 두 변 b와 12를 써서 넓이 15a/2+6b를 얻는다.", "mappedTo": ["planeMarks.dimensions"] },
+    { "id": "c3", "condition": "원본 곡선 점선 길이 안내선은 독립 점선 선분 네 개로 근사하고 회색 면 채움은 삭제한다.", "mappedTo": ["displaySegments.5", "displaySegments.6", "displaySegments.7", "displaySegments.8"] },
+    { "id": "c4", "condition": "보관된 JS 해설은 문제와 무관한 부등식 공통문구를 사용하므로 넓이 식은 발문·선택지 ②·원본 그림으로부터 독립 복원했다. JS 원문은 수정하지 않는다.", "mappedTo": ["caption"] }
+  ],
+  "newVisualInformation": ["두 직각 삼각형의 면 채움 없는 경계, 대각선, a/15/12/b 치수, 직각 두 개, 원본 점선 길이 안내의 직선 근사. 해설 식 15a/2+6b."]
+}

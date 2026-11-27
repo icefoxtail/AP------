@@ -1,0 +1,27 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{"coefficients": ["0", "0", "-2", "1/3"]}],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "functionName": "f",
+    "requiredPoints": [
+      {"id": "O", "x": "0", "y": "0"},
+      {"id": "M", "x": "4", "y": "-32/3"},
+      {"id": "B", "x": "6", "y": "0"}
+    ],
+    "exactCoordinates": {"M": ["4", "-32/3"]},
+    "axisTickValues": {"x": [], "y": []},
+    "regions": [{"id": "S", "upper": "axis", "lower": "f", "from": "0", "to": "6", "fill": "LIGHT", "label": "S"}]
+  },
+  "pointNames": {"O": "O", "M": "M", "B": "B"},
+  "caption": "해설로 얻은 f(x)=x³/3-2x²의 근 x=0,6 사이에서는 f(x)≤0이다. 구해야 할 넓이 36을 x축과 곡선 사이의 아래쪽 영역 S로 표시했다.",
+  "accessibilityDescription": "원점에 접한 삼차곡선이 x=4에서 최저점에 이르렀다가 x=6에서 다시 x축과 만나며, 0에서 6까지의 축 아래 영역만 연하게 칠했다.",
+  "sourceQuote": "다항함수 $f(x)$가 $x^2 f(x)=x^5/5-x^4+\\int_0^x 2t f(t)dt$와 $f(0)=0$을 만족시킬 때, $y=f(x)$의 그래프와 $x$축으로 둘러싸인 도형의 넓이를 구하시오.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "항등식 미분 및 f(0)=0에 의해 f(x)=x³/3-2x²", "mappedTo": "graphPlan.pieces[0].coefficients"},
+    {"id": "c2", "condition": "x축 교점 0과 6, x=4 극소 -32/3", "mappedTo": "graphPlan.requiredPoints[O,M,B]"},
+    {"id": "c3", "condition": "0≤x≤6에서 f≤0이므로 넓이 -∫f=36", "mappedTo": "graphPlan.regions[S]"}
+  ],
+  "newVisualInformation": ["둘러싸인 영역을 아래쪽 한 부분만 색칠해 부호가 뒤집히는 적분 이유를 보인다."]
+}

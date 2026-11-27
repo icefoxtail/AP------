@@ -1,0 +1,10 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [{"id":"A","at":[0,0,"sqrt(14)"]},{"id":"B","at":[0,0,0]},{"id":"C","at":["9*sqrt(42)/14",0,"-11*sqrt(14)/14"]},{"id":"D","at":["9*sqrt(42)/14",0,"3*sqrt(14)/14"]},{"id":"M","at":{"midpoint":["C","D"]}},{"id":"P","at":{"centroid":["A","C","D"]}},{"id":"O","at":{"midpoint":["A","C"]}}],
+    "segments": [{"from":"A","to":"B"},{"from":"B","to":"C"},{"from":"C","to":"D"},{"from":"D","to":"A"},{"from":"A","to":"M","role":"ACCENT"},{"from":"B","to":"D","role":"ACCENT"},{"from":"A","to":"C","style":"DASHED"},{"from":"D","to":"O","style":"DASHED"}]
+  },
+  "caption": "AC의 중점 O; △ACD의 두 중선 AM·DO가 P에서 교차",
+  "sourceConditions": ["D=A+C−B=(0,5,3)", "O는 AC 중점이자 BD 중점", "P=△ACD의 무게중심=(1,4,3)"],
+  "newVisualInformation": ["대각선 AC와 중점 O", "△ACD의 두 중선 AM·DO", "강체변환으로 좌표원본 거리·내분비를 보존한 P·M의 위치"]
+}

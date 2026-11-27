@@ -1,0 +1,52 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"F","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"G","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"7"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"I","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"7"},{"kind":"integer","value":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"J","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"5"}]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints": ["A","B","C","D","E","F","G","H","I","J"],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {"id":"sAB","refs":["A","B"]},
+    {"id":"sBC","refs":["B","C"]},
+    {"id":"sCD","refs":["C","D"]},
+    {"id":"sDA","refs":["D","A"]},
+    {"id":"sJF","refs":["J","F"]},
+    {"id":"sEG","refs":["E","G"]},
+    {"id":"sIH","refs":["I","H"]}
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {"id":"wide","ownerSegment":"sDA","text":"a"},
+      {"id":"high","ownerSegment":"sAB","text":"b"}
+    ]
+  },
+  "coordinateCanvas": {"width":640,"height":460},
+  "caption": "가로 a, 세로 b인 직사각형 ABCD 안에 정사각형 ABFJ, EFCG, JEHI가 차례로 놓여 있고 사각형 IHGD가 남아 있는 그림",
+  "accessibilityDescription": "직사각형의 왼쪽에 정사각형 ABFJ가, 그 오른쪽 아래에 정사각형 EFCG가, 위쪽 빈 공간에 정사각형 JEHI가 있다. 직사각형의 오른쪽 위에는 사각형 IHGD가 놓이고 가로 a와 세로 b가 표시된다.",
+  "sourceConditions": [
+    {"id":"rectangle","sourceQuote":"가로 a, 세로 b인 직사각형 ABCD, b<a<2b","mappedTo":["mathPlan.nodes","displaySegments","planeMarks.expressionLabels"]},
+    {"id":"square1","sourceQuote":"정사각형 ABFJ","mappedTo":["mathPlan.nodes","displaySegments"]},
+    {"id":"square2","sourceQuote":"정사각형 EFCG","mappedTo":["mathPlan.nodes","displaySegments"]},
+    {"id":"square3","sourceQuote":"정사각형 JEHI","mappedTo":["mathPlan.nodes","displaySegments"]},
+    {"id":"remaining","sourceQuote":"사각형 IHGD","mappedTo":["mathPlan.nodes","displaySegments"]}
+  ],
+  "newVisualInformation": [
+    "세 정사각형의 네 각은 모두 직각이고 대응하는 변의 길이가 각각 같다.",
+    "도식 비율은 b<a<2b 및 사각형 IHGD가 퇴화하지 않는 한 경우를 택했으며 표본 수치는 화면에 쓰지 않는다.",
+    "IH와 HG의 계산식과 사각형 넓이의 정답은 그림에 노출하지 않는다."
+  ]
+}

@@ -1,0 +1,678 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-40"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "30"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-30"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "40"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "AB1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "14"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "21"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "AB2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "20"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "15"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "AB3",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "26"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "9"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BD1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "57"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "7"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BD2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "63"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "23"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "AC1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "16"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-20"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "AC2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "24"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-10"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "CD1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "54"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-9"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "CD2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-15"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "CD3",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "66"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-21"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BC1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "31"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BC2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "37"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BC3",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "43"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BC4",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "49"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "AB1",
+    "AB2",
+    "AB3",
+    "BD1",
+    "BD2",
+    "AC1",
+    "AC2",
+    "CD1",
+    "CD2",
+    "CD3",
+    "BC1",
+    "BC2",
+    "BC3",
+    "BC4"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB1a",
+      "refs": [
+        "A",
+        "AB1"
+      ]
+    },
+    {
+      "id": "sAB1b",
+      "refs": [
+        "AB1",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB2a",
+      "refs": [
+        "A",
+        "AB2"
+      ]
+    },
+    {
+      "id": "sAB2b",
+      "refs": [
+        "AB2",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB3a",
+      "refs": [
+        "A",
+        "AB3"
+      ]
+    },
+    {
+      "id": "sAB3b",
+      "refs": [
+        "AB3",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD1a",
+      "refs": [
+        "B",
+        "BD1"
+      ]
+    },
+    {
+      "id": "sBD1b",
+      "refs": [
+        "BD1",
+        "D"
+      ]
+    },
+    {
+      "id": "sBD2a",
+      "refs": [
+        "B",
+        "BD2"
+      ]
+    },
+    {
+      "id": "sBD2b",
+      "refs": [
+        "BD2",
+        "D"
+      ]
+    },
+    {
+      "id": "sAC1a",
+      "refs": [
+        "A",
+        "AC1"
+      ]
+    },
+    {
+      "id": "sAC1b",
+      "refs": [
+        "AC1",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC2a",
+      "refs": [
+        "A",
+        "AC2"
+      ]
+    },
+    {
+      "id": "sAC2b",
+      "refs": [
+        "AC2",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD1a",
+      "refs": [
+        "C",
+        "CD1"
+      ]
+    },
+    {
+      "id": "sCD1b",
+      "refs": [
+        "CD1",
+        "D"
+      ]
+    },
+    {
+      "id": "sCD2a",
+      "refs": [
+        "C",
+        "CD2"
+      ]
+    },
+    {
+      "id": "sCD2b",
+      "refs": [
+        "CD2",
+        "D"
+      ]
+    },
+    {
+      "id": "sCD3a",
+      "refs": [
+        "C",
+        "CD3"
+      ]
+    },
+    {
+      "id": "sCD3b",
+      "refs": [
+        "CD3",
+        "D"
+      ]
+    },
+    {
+      "id": "sBC1a",
+      "refs": [
+        "B",
+        "BC1"
+      ]
+    },
+    {
+      "id": "sBC1b",
+      "refs": [
+        "BC1",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC2a",
+      "refs": [
+        "B",
+        "BC2"
+      ]
+    },
+    {
+      "id": "sBC2b",
+      "refs": [
+        "BC2",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC3a",
+      "refs": [
+        "B",
+        "BC3"
+      ]
+    },
+    {
+      "id": "sBC3b",
+      "refs": [
+        "BC3",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC4a",
+      "refs": [
+        "B",
+        "BC4"
+      ]
+    },
+    {
+      "id": "sBC4b",
+      "refs": [
+        "BC4",
+        "C"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 530
+  },
+  "caption": "건물 A-B 사이 3개, B-D 사이 2개, A-C 사이 2개, C-D 사이 3개 산책로에 B-C 사이 4개를 추가한 경우를 보여 주는 노선도이다. 경로 수는 3×2+2×3+3×4×3+2×4×2=64이다.",
+  "accessibilityDescription": "네 건물 A B C D 사이에 A-B 도로 세 개, B-D 두 개, A-C 두 개, C-D 세 개가 표시되고, 해설에서 새로 추가한 B-C 도로 네 개까지 서로 교차하지 않는 독립 선으로 표시되어 있다.",
+  "sourceQuote": "건물 B와 건물 C 사이에 산책로를 추가하여 건물 A에서 건물 D까지 가는 방법의 수가 $64$가 되도록 할 때, 추가해야 하는 산책로의 수를 구하시오.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A-B 사이 산책로 세 개",
+      "mappedTo": [
+        "sAB1a",
+        "sAB1b",
+        "sAB2a",
+        "sAB2b",
+        "sAB3a",
+        "sAB3b"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "B-D 사이 산책로 두 개",
+      "mappedTo": [
+        "sBD1a",
+        "sBD1b",
+        "sBD2a",
+        "sBD2b"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "A-C 사이 산책로 두 개",
+      "mappedTo": [
+        "sAC1a",
+        "sAC1b",
+        "sAC2a",
+        "sAC2b"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "C-D 사이 산책로 세 개",
+      "mappedTo": [
+        "sCD1a",
+        "sCD1b",
+        "sCD2a",
+        "sCD2b"
+      ]
+    },
+    {
+      "id": "c5",
+      "condition": "풀이에서 구한 B-C 사이 추가 산책로 네 개",
+      "mappedTo": [
+        "sBC1a",
+        "sBC1b",
+        "sBC2a",
+        "sBC2b",
+        "sBC3a",
+        "sBC3b",
+        "sBC4a",
+        "sBC4b"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "네 건물 사이 기존 10개 산책로와 새로 추가된 B-C 산책로 네 개를 중복 없이 각각 독립 굴절선으로 표시",
+    "건물 A, B, C, D 라벨과 각 도로의 양 끝을 실제 선으로 연결",
+    "새 도로가 없는 문제 그림에서는 정답을 나타내는 B-C 경로를 그리지 않음",
+    "길이와 각도 조건은 없으므로 임의 도식의 위치·각을 수학 조건으로 주장하지 않음"
+  ],
+  "hiddenPointNames": [
+    "AB1",
+    "AB2",
+    "AB3",
+    "BD1",
+    "BD2",
+    "AC1",
+    "AC2",
+    "CD1",
+    "CD2",
+    "CD3",
+    "BC1",
+    "BC2",
+    "BC3",
+    "BC4"
+  ],
+  "unmarkedPointNames": [
+    "AB1",
+    "AB2",
+    "AB3",
+    "BD1",
+    "BD2",
+    "AC1",
+    "AC2",
+    "CD1",
+    "CD2",
+    "CD3",
+    "BC1",
+    "BC2",
+    "BC3",
+    "BC4"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "sourceQuote":"y²=-8x와 x²=4y의 초점 F1,F2 사이 거리를 물음",
+  "conics":[{"id":"p1","kind":"PARABOLA","vertex":["0","0"],"p":"-2","axis":"X"},{"id":"p2","kind":"PARABOLA","vertex":["0","0"],"p":"1","axis":"Y"}],
+  "points":[{"id":"F1","kind":"FOCUS","curve":"p1"},{"id":"F2","kind":"FOCUS","curve":"p2"}],
+  "segments":[{"id":"ff","from":"F1","to":"F2"}],
+  "caption":"두 포물선의 초점 F1,F2와 두 초점 사이 선분",
+  "accessibilityDescription":"왼쪽으로 열리는 포물선과 위로 열리는 포물선이 있고 각각의 초점 F1,F2를 잇는 선분이 그려져 있다. 길이는 적지 않았다.",
+  "sourceConditions":[{"id":"c1","condition":"y²=-8x와 x²=4y를 각각의 포물선으로 표현","mappedTo":["conics"]},{"id":"c2","condition":"초점 F1,F2의 위치만 표시; 구하는 거리 수치는 노출하지 않음","mappedTo":["F1","F2","ff"]}],
+  "newVisualInformation":["초점의 좌표 방향을 헷갈리지 않도록 두 곡선을 같은 좌표축에 놓는다"]
+}

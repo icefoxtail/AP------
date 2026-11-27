@@ -1,0 +1,8 @@
+{
+  "capability":"rational-spike-v1",
+  "graphPlan":{"family":"rational","numerator":["4","-1"],"denominator":["-2","1"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[-7,10],"viewport":[-7,10,-8,8],"axisTickValues":{"x":[],"y":[]}},
+  "caption":"a=2,b=-2,c=1 예시에서 y=2/(x−2)−1의 점근선과 제2사분면 배제",
+  "accessibilityDescription":"점선 수직 점근선 x=2와 수평 점근선 y=-1을 기준으로 두 가지가 나뉘며, x<0에서 그래프가 y<0에 있다.",
+  "sourceConditions":[{"id":"asymptotes","condition":"b<0,c>0이므로 x=-b>0,y=-c<0","mappedTo":"graphPlan.denominator"},{"id":"branches","condition":"a>0과 x<0일 때 x+b<0에서 y<0","mappedTo":"graphPlan.numerator"}],
+  "newVisualInformation":["원래 문자 계수의 특정값을 단정하지 않고 부호 조건의 대표 예시로만 그린다.","점근선은 점선, 두 가지는 선이며 면 채움은 없다."]
+}

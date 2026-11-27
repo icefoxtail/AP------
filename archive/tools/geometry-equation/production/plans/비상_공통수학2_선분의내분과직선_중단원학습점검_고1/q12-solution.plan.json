@@ -1,0 +1,23 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"X","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"-4"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"l","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"4"},"b":{"kind":"integer","value":"3"},"c":{"kind":"integer","value":"-12"}},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"H","op":"PERPENDICULAR_FOOT","inputs":["P","l"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["A","B","C","D","P","H"],
+  "displaySegments":[{"id":"AB","refs":["A","B"]},{"id":"BC","refs":["B","C"]},{"id":"CD","refs":["C","D"]},{"id":"DA","refs":["D","A"]},{"id":"PB","refs":["P","B"],"emphasis":"BOLD"},{"id":"PH","refs":["P","H"],"emphasis":"ACCENT"}],
+  "rightAngles":[{"id":"raH","refs":["P","H","C"]}],"coordinateLabels":["B","C","D","P","H"],
+  "planeMarks":{"dimensions":[{"id":"dPH","from":"P","to":"H","label":"4","side":"RIGHT","style":"ARROW","factRole":"CONCLUSION"},{"id":"dPB","from":"P","to":"B","label":"sqrt(89)","side":"BELOW","style":"ARROW","factRole":"CONCLUSION"}]},
+  "caption":"최단거리는 CD에 내린 수선 PH=4, 최장거리는 꼭짓점 B까지 PB=√89이다.",
+  "accessibilityDescription":"마름모와 외부점 P에서 변 CD에 내린 직각 수선 PH, 멀리 있는 꼭짓점 B로 이은 선분 PB를 비교한다.",
+  "sourceQuote":"최댓값 $\\sqrt{89}$, 최솟값 $4$",
+  "sourceConditions":[{"id":"maximum","condition":"PB=√89는 네 꼭짓점까지 거리 중 최대","mappedTo":"displaySegments.PB"},{"id":"minimum","condition":"H=(9/5,8/5)∈CD, PH=4, PH⊥CD","mappedTo":["mathPlan.nodes.H","rightAngles","planeMarks.dimensions"]}],
+  "newVisualInformation":["최장·최단 선분을 구분하고 수선의 발과 직각·길이 라벨을 실제로 그린다."]
+}

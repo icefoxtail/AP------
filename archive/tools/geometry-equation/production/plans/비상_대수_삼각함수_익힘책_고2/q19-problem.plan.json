@@ -1,0 +1,22 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"POLAR_POINT","inputs":["B","C"],"args":{"length":{"kind":"integer","value":"5"},"angleDeg":{"kind":"integer","value":"60"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"lBC","op":"LINE_THROUGH","inputs":["B","C"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"lBA","op":"LINE_THROUGH","inputs":["B","A"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"M","op":"MIDPOINT","inputs":["B","C"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"N","op":"MIDPOINT","inputs":["B","A"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"perpBC","op":"PERPENDICULAR_THROUGH","inputs":["M","lBC"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"perpBA","op":"PERPENDICULAR_THROUGH","inputs":["N","lBA"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"O","op":"LINE_INTERSECTION","inputs":["perpBC","perpBA"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"7"}]}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["A","B","C"],"displayLines":[],"displayCircles":["k"],"displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]}],
+  "planeMarks":{"angles":[{"id":"aB","refs":["A","B","C"],"value":60,"label":"60","style":"ARC","factRole":"GIVEN"}],"expressionLabels":[{"id":"lAB","ownerSegment":"sAB","text":"5"},{"id":"lbBC","ownerSegment":"sBC","text":"4"}],"facts":[{"kind":"ON_CIRCLE","circle":"k","points":["A","B","C"]}]},
+  "caption":"외접원 위의 삼각형 ABC에서 AB=5, BC=4, ∠B=60°를 보이며 원의 넓이는 노출하지 않는다.",
+  "accessibilityDescription":"원에 내접한 ABC의 두 변에 5,4 라벨, B에 60° 각 호가 있으며 원 내부는 칠하지 않았다.",
+  "sourceConditions":[{"id":"triangle","condition":"AB=5, BC=4, ∠ABC=60°","mappedTo":["sAB","sBC","aB","lAB","lbBC"]},{"id":"circle","condition":"A,B,C는 한 외접원 위","mappedTo":["k"]}],
+  "newVisualInformation":["원본의 불필요한 파란 원 면 채움 제거, 원과 삼각형 접점 관계 유지"]
+}

@@ -1,0 +1,24 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"M","op":"DIVISION_POINT","inputs":["A","B"],"args":{"m":{"kind":"integer","value":"1"},"n":{"kind":"integer","value":"1"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"P","op":"DIVISION_POINT","inputs":["B","C"],"args":{"m":{"kind":"integer","value":"2"},"n":{"kind":"integer","value":"1"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["A","B","C","M","P"],
+  "displaySegments":[{"id":"sAM","refs":["A","M"]},{"id":"sMB","refs":["M","B"]},{"id":"sBP","refs":["B","P"]},{"id":"sPC","refs":["P","C"]}],
+  "planeMarks":{"vectors":[{"id":"va","from":"A","to":"B","label":"vec(a)","side":"RIGHT"},{"id":"vb","from":"A","to":"C","label":"vec(b)","side":"LEFT"},{"id":"vMP","from":"M","to":"P","label":"vec(MP)","side":"LEFT","emphasis":"ACCENT"},{"id":"vAP","from":"A","to":"P","label":"vec(AP)","side":"LEFT","dashed":true}],"equalLengths":[{"id":"mid","count":1,"segments":["sAM","sMB"]}],"dimensions":[{"id":"dBP","from":"B","to":"P","label":"2t","side":"RIGHT","style":"BRACE"},{"id":"dPC","from":"P","to":"C","label":"t","side":"RIGHT","style":"BRACE"}]},
+  "coordinateCanvas":{"width":720,"height":540},
+  "caption":"삼각형 ABC에서 M은 AB의 중점, P는 BC의 2:1 내분점이므로 MP=AP−AM으로 분해한다.",
+  "accessibilityDescription":"AB 벡터 a와 AC 벡터 b에 화살촉이 있다. AM과 MB에는 같은 길이 눈금, BP와 PC에는 2t와 t 치수선이 있다. AP는 점선 화살표, MP는 강조 화살표이다.",
+  "sourceQuote":"AB=a, AC=b, M은 AB의 중점, P는 BC의 2:1 내분점, MP를 a,b로 나타내시오",
+  "sourceConditions":[
+    {"id":"c1","condition":"AB=a, AC=b","mappedTo":"planeMarks.vectors[0],planeMarks.vectors[1]"},
+    {"id":"c2","condition":"AM=MB","mappedTo":"mathPlan.nodes[3],planeMarks.equalLengths[0]"},
+    {"id":"c3","condition":"BP:PC=2:1","mappedTo":"mathPlan.nodes[4],planeMarks.dimensions[0],planeMarks.dimensions[1]"},
+    {"id":"c4","condition":"MP=AP−AM","mappedTo":"planeMarks.vectors[2],planeMarks.vectors[3]"}
+  ],
+  "newVisualInformation":["원본 문제 PNG를 유지하면서 해설에 유향 MP와 분해용 AP, 중점 동등 눈금, 2:1 비율을 실제 벡터·치수·표식 필드로 추가한다. 도형 내부 면은 칠하지 않는다."]
+}

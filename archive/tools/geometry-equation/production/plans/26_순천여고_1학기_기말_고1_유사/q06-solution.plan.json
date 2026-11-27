@@ -1,0 +1,63 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-12",
+      "-1",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      5
+    ],
+    "viewport": [
+      -5,
+      6,
+      -15,
+      24
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -3,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 4,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 0.5,
+        "y": -12.25
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "y=x²−x−12의 두 근 -3,4의 합으로 일차항 계수 a=-1을 확인한다.",
+  "accessibilityDescription": "위로 열린 포물선의 x절편 (-3,0), (4,0), 꼭짓점 (1/2,-49/4).",
+  "sourceConditions": [
+    {
+      "id": "06-0",
+      "condition": "두 근은 -3,4, 계수는 [−12,−1,1]",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "06-1",
+      "condition": "두 근과 꼭짓점의 좌표",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 해설의 꼭짓점·경계·근에 대응하는 점과 구간 끝의 상대 높이를 직접 표시한다."
+  ]
+}

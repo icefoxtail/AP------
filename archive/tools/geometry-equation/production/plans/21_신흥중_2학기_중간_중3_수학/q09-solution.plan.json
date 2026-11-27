@@ -1,0 +1,222 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9509619",
+              "denominator": "50000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "300"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9509619",
+              "denominator": "50000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9509619",
+              "denominator": "50000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "H",
+    "C",
+    "A"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "A",
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "length0",
+        "ownerSegment": "s0",
+        "text": "300"
+      },
+      {
+        "id": "length3",
+        "ownerSegment": "s3",
+        "text": "h"
+      },
+      {
+        "id": "length4",
+        "ownerSegment": "s4",
+        "text": "h"
+      },
+      {
+        "id": "length5",
+        "ownerSegment": "s5",
+        "text": "h/√3"
+      }
+    ],
+    "angles": [
+      {
+        "id": "angle0",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 45,
+        "label": "45",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angle1",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "AH=h, BH=h, CH=h/√3과 B-H-C 순서를 보이며 두 고도각 수선",
+  "accessibilityDescription": "AH=h, BH=h, CH=h/√3과 B-H-C 순서를 보이며 두 고도각 수선",
+  "sourceQuote": "다음 그림과 같이 두 지점 $\\mathrm{B}, \\mathrm{C}$에서 건물의 꼭대기 $\\mathrm{A}$지점을 올려다본 각의 크기가 각각 $45^\\circ, 60^\\circ$이고, $\\overline{\\mathrm{BC}} = 300\\,\\text{m}$일 때, 건물의 높이 $\\overline{\\mathrm{AH}}$의 길이는?",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "AH=h, BH=h, CH=h/√3과 B-H-C 순서를 보이며 두 고도각 수선",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "AH=h, BH=h, CH=h/√3과 B-H-C 순서를 보이며 두 고도각 수선"
+  ]
+}

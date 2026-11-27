@@ -1,0 +1,14 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-1"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-1"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]},"outputType":"POINT","factRole":"GIVEN"}
+  ]},
+  "displayPoints":["O","H","P"],"displayLines":[],"displayCircles":[],"displaySegments":[{"id":"sOH","refs":["O","H"]},{"id":"sHP","refs":["H","P"]},{"id":"sOP","refs":["O","P"]}],
+  "rightAngles":[{"id":"rH","refs":["O","H","P"]}],"planeMarks":{"expressionLabels":[{"id":"x","ownerSegment":"sOH","text":"1"},{"id":"y","ownerSegment":"sHP","text":"sqrt(3)"},{"id":"r","ownerSegment":"sOP","text":"2"}]},
+  "caption":"P(−1,√3)는 제2사분면에 있고 OP=2, 가로 절댓값 1, 세로 √3인 직각삼각형을 이룬다.",
+  "accessibilityDescription":"원점 O의 왼쪽 위 P, 왼쪽 발 H, OP=2·OH=1·HP=√3과 H의 직각표식.",
+  "sourceConditions":[{"id":"point","condition":"P=(−1,√3), O=(0,0)","mappedTo":["O","P","H"]},{"id":"ratio","condition":"OP=2로 sinθ=√3/2, cosθ=−1/2","mappedTo":["r","x","y"]}],
+  "newVisualInformation":["주어진 점의 제2사분면 방향과 정확한 길이 1:√3:2"]
+}

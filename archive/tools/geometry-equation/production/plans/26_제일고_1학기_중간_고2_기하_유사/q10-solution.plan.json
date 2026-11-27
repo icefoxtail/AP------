@@ -1,0 +1,90 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 6,
+      "names": "BCDA",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "C",
+              "D"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 8,
+      "side": 6,
+      "names": "FGHIEJ"
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "M",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "B",
+      "to": "M",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "M",
+      "to": "C",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "M",
+        "refs": [
+          "A",
+          "C"
+        ]
+      },
+      {
+        "at": "M",
+        "refs": [
+          "B",
+          "C"
+        ]
+      }
+    ]
+  },
+  "caption": "정사면체에서 CD의 중점 M에 대하여 AM, BM은 CD에 수직이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정사면체 ABCD의 꼭짓점과 정팔면체 EFGHIJ의 입체적 배치",
+      "mappedTo": [
+        "solids"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "CD의 중점 M 및 AM과 BM이 CD에 수직",
+      "mappedTo": [
+        "solids[0].points",
+        "segments",
+        "marks.rightAngles"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "CD의 중점 M과 수직인 선분 AM, BM"
+  ],
+  "sourceQuote": "$CD$의 중점을 $M$이라 하자.",
+  "accessibilityDescription": "정사면체에서 CD의 중점 M에 대하여 AM, BM은 CD에 수직이다."
+}

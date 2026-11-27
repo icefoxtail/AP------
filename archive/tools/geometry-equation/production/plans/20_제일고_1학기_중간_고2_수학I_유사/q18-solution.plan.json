@@ -1,0 +1,352 @@
+{
+  "sourceQuote": "두 부채꼴 $\\mathrm{A, B}$가 있다. 부채꼴 $\\m",
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "부채꼴 A (호 길이 2)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "U",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "V",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "56697416778884",
+                    "denominator": "10000000000000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "19631681807769",
+                    "denominator": "10000000000000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "K",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "6"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "U",
+          "V"
+        ],
+        "hiddenPointNames": [
+          "O",
+          "U",
+          "V"
+        ],
+        "hiddenPointStyle": "NONE",
+        "displaySegments": [
+          {
+            "id": "OU",
+            "refs": [
+              "O",
+              "U"
+            ]
+          },
+          {
+            "id": "OV",
+            "refs": [
+              "O",
+              "V"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "arcs": [
+            {
+              "id": "arc",
+              "circle": "K",
+              "center": "O",
+              "from": "U",
+              "to": "V",
+              "side": "MINOR",
+              "label": "2",
+              "labelKind": "MATH"
+            }
+          ],
+          "angles": [
+            {
+              "id": "th",
+              "refs": [
+                "U",
+                "O",
+                "V"
+              ],
+              "value": 19.098593171027442,
+              "label": "1/3",
+              "labelKind": "MATH",
+              "style": "ARC",
+              "labelPlacement": "LEADER"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "r",
+              "from": "O",
+              "to": "U",
+              "label": "6",
+              "side": "BELOW"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 480,
+          "height": 360
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "부채꼴 B (넓이 16)"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "U",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "V",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "-16645873461886",
+                    "denominator": "10000000000000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "36371897073027",
+                    "denominator": "10000000000000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "K",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "4"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "U",
+          "V"
+        ],
+        "hiddenPointNames": [
+          "O",
+          "U",
+          "V"
+        ],
+        "hiddenPointStyle": "NONE",
+        "displaySegments": [
+          {
+            "id": "OU",
+            "refs": [
+              "O",
+              "U"
+            ]
+          },
+          {
+            "id": "OV",
+            "refs": [
+              "O",
+              "V"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "arcs": [
+            {
+              "id": "arc",
+              "circle": "K",
+              "center": "O",
+              "from": "U",
+              "to": "V",
+              "side": "MINOR"
+            }
+          ],
+          "angles": [
+            {
+              "id": "th",
+              "refs": [
+                "U",
+                "O",
+                "V"
+              ],
+              "value": 114.59155902616465,
+              "label": "2",
+              "labelKind": "MATH",
+              "style": "ARC"
+            }
+          ],
+          "textLabels": [
+            {
+              "id": "S16",
+              "at": [
+                1.65,
+                1.9
+              ],
+              "text": "16",
+              "labelKind": "MATH"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "r",
+              "from": "O",
+              "to": "U",
+              "label": "4",
+              "side": "BELOW"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 480,
+          "height": 360
+        }
+      }
+    }
+  ],
+  "caption": "A의 반지름은 2÷(1/3)=6, B의 반지름은 √16=4이므로 합은 10이다.",
+  "sourceConditions": [
+    {
+      "id": "A",
+      "condition": "중심각 1/3 rad, 호 길이 2",
+      "mappedTo": "panel-1"
+    },
+    {
+      "id": "B",
+      "condition": "중심각 2 rad, 넓이 16",
+      "mappedTo": "panel-2"
+    }
+  ],
+  "newVisualInformation": [
+    "두 부채꼴의 중심각과 호, 반지름의 관계를 나란히 보인다"
+  ]
+}

@@ -1,0 +1,211 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "11"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "10"
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "H",
+          "A"
+        ],
+        "args": {
+          "m": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          },
+          "n": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "H",
+    "P",
+    "A",
+    "X"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPH",
+      "refs": [
+        "P",
+        "H"
+      ]
+    },
+    {
+      "id": "sHX",
+      "refs": [
+        "H",
+        "X"
+      ],
+      "emphasis": "ACCENT"
+    },
+    {
+      "id": "sXA",
+      "refs": [
+        "X",
+        "A"
+      ]
+    },
+    {
+      "id": "sPX",
+      "refs": [
+        "P",
+        "X"
+      ],
+      "emphasis": "ACCENT"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rh",
+      "refs": [
+        "P",
+        "H",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dph",
+        "from": "P",
+        "to": "H",
+        "label": "sqrt(11)",
+        "side": "LEFT",
+        "style": "ARROW"
+      },
+      {
+        "id": "dax",
+        "from": "A",
+        "to": "X",
+        "label": "2",
+        "side": "BELOW",
+        "style": "ARROW"
+      }
+    ]
+  },
+  "caption": "평면 α에 수직인 PH와 평면 위 원의 최근점 X가 만드는 직각 단면; AH=√10, AX=2, PH=√11.",
+  "sourceConditions": [
+    {
+      "id": "foot",
+      "condition": "PH=√11, PH⊥α이고 H=(2,5,2)",
+      "mappedTo": [
+        "mathPlan.nodes.P",
+        "mathPlan.nodes.H",
+        "rightAngles"
+      ]
+    },
+    {
+      "id": "nearest",
+      "condition": "원 중심 A에서 H 방향의 원 위 최근점 X: AH=√10, AX=2",
+      "mappedTo": [
+        "mathPlan.nodes.X",
+        "displaySegments",
+        "planeMarks.dimensions"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "3차원 원과 평면 전체를 거짓 투시도로 그리지 않고 실제 해설의 직각 단면을 명시; 수선과 원 반지름을 길이로 표시"
+  ]
+}

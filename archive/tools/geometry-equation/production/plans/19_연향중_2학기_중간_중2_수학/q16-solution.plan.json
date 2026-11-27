@@ -1,0 +1,196 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 430
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l0",
+        "ownerSegment": "sCD",
+        "text": "6"
+      },
+      {
+        "id": "l1",
+        "ownerSegment": "sAB",
+        "text": "x"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dim0",
+        "from": "A",
+        "to": "D",
+        "label": "4",
+        "side": "ABOVE"
+      },
+      {
+        "id": "dim1",
+        "from": "D",
+        "to": "B",
+        "label": "9",
+        "side": "ABOVE"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "caption": "16번 문제: 원본 q16.png: C 직각, CD⊥AB, AD4·CD6·AB=x.",
+  "accessibilityDescription": "16번 문제 그림: 원본 q16.png: C 직각, CD⊥AB, AD4·CD6·AB=x.",
+  "sourceConditions": [
+    {
+      "id": "src-q16",
+      "condition": " $\\triangle\\text{ABC}$는 $\\angle\\text{C}=90^\\circ$인 직각삼각형이고 $\\overline{\\text{CD}}\\perp\\overline{\\text{AB}}$입니다. 그림에서 $\\overline{\\text{AD}}=4\\text{cm}$, $\\overline{\\text{CD}}=6\\text{cm}$, $x=\\overline{\\text{AB}}$입니다.  $\\triangle\\text{ACD}\\sim\\triangle\\text{CBD}$이므로 대응변의 비에서 $\\dfrac{\\overline{\\text{CD}}}{\\overline{\\text{AD}}}=\\dfrac{\\overline{\\text{DB}}}{\\overline{\\text{CD}}}$. 따라서 $\\overline{\\text{CD}}^2=\\overline{\\text{AD}}\\cdot\\overline{\\text{DB}}$입니다.  $6^2=4\\cdot\\overline{\\text{DB}}$이므로 $\\overline{\\text{DB}}=9\\text{cm}$. 따라서 $x=\\overline{\\text{AB}}=\\overline{\\text{AD}}+\\overline{\\text{DB}}=4+9=13\\text{cm}$이고 정답은 ③입니다. ",
+      "mappedTo": "mathPlan.nodes;displaySegments;planeMarks"
+    },
+    {
+      "id": "source-visual-feature",
+      "condition": "원본 q16.png: C 직각, CD⊥AB, AD4·CD6·AB=x; 풀이에 필요한 추가 관계",
+      "mappedTo": "displaySegments;planeMarks"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 q16.png: C 직각, CD⊥AB, AD4·CD6·AB=x; 풀이에 필요한 추가 관계"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "capability": "lattice-path-figure-v1",
+  "lattice": {
+    "grid": {
+      "cols": 6,
+      "rows": 6
+    },
+    "points": {
+      "P": [
+        0,
+        0
+      ],
+      "Q": [
+        4,
+        2
+      ]
+    },
+    "from": "P",
+    "to": "Q"
+  },
+  "caption": "원본의 가로 여섯 칸·세로 여섯 칸 격자와 P, Q 두 점의 위치를 그대로 나타낸다.",
+  "accessibilityDescription": "가로 세로 각각 여섯 칸인 도로망의 모든 길과 교차점을 유지한다. P는 왼쪽 아래 모서리, Q는 오른쪽 네 칸 위쪽 두 칸의 교차점이다. 풀이 경로나 정답 숫자는 나타내지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "asset",
+      "condition": "원본 q23.png는 6×6 격자, P=(0,0), Q=(4,2)",
+      "mappedTo": [
+        "lattice.grid",
+        "lattice.points"
+      ]
+    },
+    {
+      "id": "move",
+      "condition": "오른쪽 한 칸 또는 위로 한 칸씩 총 6회 이동",
+      "mappedTo": [
+        "lattice.from",
+        "lattice.to"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 84개 격자 단위 도로 선분과 P·Q 위치의 1:1 대응을 보존한다."
+  ]
+}

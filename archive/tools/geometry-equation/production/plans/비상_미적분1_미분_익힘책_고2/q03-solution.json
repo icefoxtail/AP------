@@ -1,0 +1,74 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "2"
+        ],
+        "domain": [
+          null,
+          "1"
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          "1",
+          null
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "2"
+      },
+      {
+        "id": "V",
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "2"
+      ]
+    },
+    "functionName": "f"
+  },
+  "caption": "x=1에서 (1,2)로 연속하지만 왼쪽 접선 기울기 4와 오른쪽 기울기 1이 달라 꺾인다.",
+  "accessibilityDescription": "x=1에서 (1,2)로 연속하지만 왼쪽 접선 기울기 4와 오른쪽 기울기 1이 달라 꺾인다.",
+  "sourceConditions": [
+    {
+      "id": "left",
+      "condition": "x<1: 2x², x=1에서는 열린 점",
+      "mappedTo": "graphPlan.pieces.0"
+    },
+    {
+      "id": "right",
+      "condition": "x≥1: x+1, (1,2)를 포함",
+      "mappedTo": "graphPlan.pieces.1"
+    },
+    {
+      "id": "join",
+      "condition": "한 점 (1,2), 양쪽 접선 기울기 불일치",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "원문·해설의 결정적 선·점·관계만 나타내며 배경과 임의의 면 채움을 두지 않는다."
+  ]
+}

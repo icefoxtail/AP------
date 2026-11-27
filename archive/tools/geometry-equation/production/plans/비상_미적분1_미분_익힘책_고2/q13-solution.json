@@ -1,0 +1,71 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "5",
+      "-1",
+      "0",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      2
+    ],
+    "viewport": [
+      -4,
+      3,
+      -8,
+      15
+    ],
+    "requiredPoints": [
+      {
+        "id": "T",
+        "x": -1,
+        "y": 5
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1"
+      ],
+      "y": [
+        "5"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "t",
+          "slope": "2",
+          "intercept": "7"
+        }
+      ]
+    }
+  },
+  "caption": "곡선 y=x³−x+5와 접선 y=2x+7은 (−1,5)에서 기울기 2로 접한다.",
+  "accessibilityDescription": "곡선 y=x³−x+5와 접선 y=2x+7은 (−1,5)에서 기울기 2로 접한다.",
+  "sourceConditions": [
+    {
+      "id": "curve",
+      "condition": "원문·해설의 5,-1,0,1 다항식 계수를 상수항부터 정확히 옮긴다.",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "contact",
+      "condition": "주어진 접점 (−1,5)",
+      "mappedTo": "graphPlan.requiredPoints"
+    },
+    {
+      "id": "tangent",
+      "condition": "미분계수 2, 접선 y=2x+7",
+      "mappedTo": "graphPlan.overlays.lines"
+    }
+  ],
+  "newVisualInformation": [
+    "원문·해설의 결정적 선·점·관계만 나타내며 배경과 임의의 면 채움을 두지 않는다."
+  ]
+}

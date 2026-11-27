@@ -1,0 +1,26 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [{"id":"A"},{"id":"B"}],
+    "elements": [
+      {"text":"0","in":["A"]},
+      {"text":"1","in":[]},
+      {"text":"2","in":["A"]},
+      {"text":"3","in":["A","B"]},
+      {"text":"4","in":["B"]},
+      {"text":"5","in":["A","B"]},
+      {"text":"6","in":["B"]}
+    ],
+    "shade": "(A-B)^c"
+  },
+  "caption": "전체집합 U 안의 A, B와 일곱 원소를 놓고 원본 문제의 음영 영역을 나타낸다.",
+  "accessibilityDescription": "전체집합 U의 두 집합 A와 B에 원소 0부터 6이 놓인 벤 다이어그램. 각 영역에는 원본 문제와 동일한 색칠이 있다.",
+  "sourceConditions": [
+    {"id":"universe","condition":"U={0,1,2,3,4,5,6}","mappedTo":"diagram.elements"},
+    {"id":"A","condition":"A={0,2,3,5}","mappedTo":"diagram.elements"},
+    {"id":"B","condition":"B={3,4,5,6}","mappedTo":"diagram.elements"},
+    {"id":"shade","condition":"원본 이미지 q04_source.png: A-B만 색칠되지 않음","mappedTo":"diagram.shade"}
+  ],
+  "newVisualInformation": []
+}

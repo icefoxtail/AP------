@@ -1,0 +1,157 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      6,
+      -1,
+      18
+    ],
+    "curves": [
+      {
+        "id": "exp",
+        "kind": "EXPONENTIAL",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "1",
+          "0"
+        ],
+        "domain": [
+          "-1",
+          "9/2"
+        ],
+        "color": "WARM",
+        "label": "y=2^x"
+      },
+      {
+        "id": "log",
+        "kind": "LOGARITHMIC",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "1",
+          "0",
+          "0"
+        ],
+        "domain": [
+          "1/16",
+          "6"
+        ],
+        "color": "BLUE",
+        "label": "g"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "aOnX",
+          "axis": "x",
+          "value": "1",
+          "unnamed": true
+        },
+        {
+          "id": "bOnX",
+          "axis": "x",
+          "value": "4",
+          "unnamed": true
+        },
+        {
+          "id": "cOnY",
+          "axis": "y",
+          "value": "2",
+          "unnamed": true
+        },
+        {
+          "id": "dOnY",
+          "axis": "y",
+          "value": "16",
+          "unnamed": true
+        },
+        {
+          "id": "ac",
+          "x": "1",
+          "y": "2",
+          "unnamed": true
+        },
+        {
+          "id": "bc",
+          "x": "4",
+          "y": "2",
+          "unnamed": true
+        },
+        {
+          "id": "bd",
+          "x": "4",
+          "y": "16",
+          "unnamed": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "guideAC",
+          "from": "ac",
+          "axis": "BOTH"
+        },
+        {
+          "id": "guideBC",
+          "from": "bc",
+          "axis": "BOTH"
+        },
+        {
+          "id": "guideBD",
+          "from": "bd",
+          "axis": "BOTH"
+        }
+      ],
+      "callouts": [
+        {"id":"ca","point":"aOnX","text":"a","direction":"SE"},
+        {"id":"cb","point":"bOnX","text":"b","direction":"SE"},
+        {"id":"cc","point":"cOnY","text":"c","direction":"W"},
+        {"id":"cd","point":"dOnY","text":"d","direction":"W"}
+      ]
+    }
+  },
+  "caption": "지수함수 y=2^x와 로그함수 y=log_2 x, 점선으로 표시한 a, b, c, d의 대응 관계.",
+  "accessibilityDescription": "주황 지수곡선, 파랑 로그곡선과 좌표축의 a, b, c, d를 연결하는 수평·수직 점선. 숫자 값은 표시하지 않는다.",
+  "sourceQuote": "오른쪽 그림은 두 함수 $y=2^x$, $y=\\log_2 x$의 그래프이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "지수함수 y=2^x와 로그함수 y=log_2 x 두 곡선",
+      "mappedTo": [
+        "graphPlan.curves[0]",
+        "graphPlan.curves[1]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "a와 c, b와 c, b와 d의 점선 수직·수평 관계",
+      "mappedTo": [
+        "graphPlan.overlays.points",
+        "graphPlan.overlays.guides"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "각 축에 a, b, c, d 라벨 배치",
+      "mappedTo": [
+        "graphPlan.overlays.points",
+        "graphPlan.overlays.callouts"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "원본 로그곡선 옆의 밑 첨자 수식 y=log₂ x 라벨",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: MULTI_CURVE_LOG_FORMULA_LABEL — LOGARITHMIC 곡선 label에 밑 첨자 ₂를 포함한 수식 y=log_2(x)를 표시·조판·관측하는 엔진 기능 필요; 현재 g 라벨로만 구별"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 q10.png의 세 모서리 점에서 양 축으로 이어지는 점선과 미지수 축 라벨을 1:1로 재현한다."
+  ]
+}

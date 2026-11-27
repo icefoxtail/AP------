@@ -1,0 +1,35 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "5",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "부등식의 해"
+  },
+  "caption": "7−2x>−3은 x<5이므로 5는 해가 아니며 1,2,3,4는 해이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "7−2x>−3 → x<5",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "경계점의 열린·닫힌 구별과 부등식의 해인 수직선 범위"
+  ]
+}

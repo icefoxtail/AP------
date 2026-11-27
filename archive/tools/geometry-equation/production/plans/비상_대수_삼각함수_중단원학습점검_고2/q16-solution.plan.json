@@ -1,0 +1,8 @@
+{
+  "capability":"trigonometric-spike-v1",
+  "graphPlan":{"family":"trigonometric","function":"SIN","ratePi":"1/2","coefficients":["5/2","0"],"phasePi":"0","sourceDomain":{"kind":"INTERVAL","range":["0","6"],"states":["CLOSED","CLOSED"]},"referenceLines":[{"id":"h","y":"5*sqrt(2)/4","intersectionCount":4,"color":"BLUE"}],"axisTickValues":{"x":["1/2","3/2","9/2","11/2"],"y":[]},"overlays":{"points":[{"id":"O","x":"0","y":"0"},{"id":"B","curveX":"3/2","coordinates":true},{"id":"C","curveX":"9/2","coordinates":true}],"segments":[{"id":"sOB","from":"O","to":"B"},{"id":"sOC","from":"O","to":"C"},{"id":"sBC","from":"B","to":"C"}],"polygons":[{"id":"S","points":["O","B","C"],"fill":"LIGHT"}]},"displaySize":"full"},
+  "caption":"네 교점의 x좌표는 1/2,3/2,9/2,11/2이고 삼각형 BOC의 밑변 BC=3, 높이 5√2/4이다.",
+  "accessibilityDescription":"사인 곡선과 수평 기준선이 네 번 만나며 그중 B와 C를 원점 O에 연결한 삼각형만 연하게 칠해져 있다.",
+  "sourceConditions":[{"id":"curve","condition":"0≤x≤6, y=(5/2)sin(πx/2)","mappedTo":["graphPlan"]},{"id":"line","condition":"y=5√2/4, 서로 다른 네 교점 A,B,C,D","mappedTo":["h"]},{"id":"area","condition":"삼각형 BOC 넓이=15√2/8","mappedTo":["B","C","O","S"]}],
+  "newVisualInformation":["교점 B,C의 정확한 좌표와 넓이 대상 삼각형 연결"]
+}

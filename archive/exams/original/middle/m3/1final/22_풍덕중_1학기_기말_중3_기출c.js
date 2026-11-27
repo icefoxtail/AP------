@@ -435,7 +435,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림은 한 변의 길이가 $12\\text{cm}$인 정사각형 $\\text{ABCD}$에서 $\\overline{\\text{AE}}=\\overline{\\text{BF}}=\\overline{\\text{CG}}=\\overline{\\text{DH}}$가 되도록 네 점 $\\text{E, F, G, H}$를 잡아 $\\square\\text{EFGH}$를 그린 것이다. $\\square\\text{EFGH}$는 한 변의 길이가 $10\\text{cm}$인 정사각형일 때, $\\overline{\\text{AH}}$의 길이를 구하면? (단, $\\overline{\\text{DH}}>\\overline{\\text{AH}}$)<br><br><img src=\"assets/images/22_풍덕중_1학기_기말_중3_수학/q10.png\" class=\"exam-img\">",
+    "content": "다음 그림은 한 변의 길이가 $12\\text{cm}$인 정사각형 $\\text{ABCD}$에서 $\\overline{\\text{AE}}=\\overline{\\text{BF}}=\\overline{\\text{CG}}=\\overline{\\text{DH}}$가 되도록 네 점 $\\text{E, F, G, H}$를 잡아 $\\square\\text{EFGH}$를 그린 것이다. $\\square\\text{EFGH}$는 한 변의 길이가 $10\\text{cm}$인 정사각형일 때, $\\overline{\\text{AH}}$의 길이를 구하면? (단, $\\overline{\\text{DH}}>\\overline{\\text{AH}}$)<br><br><img src=\"assets/images/22_풍덕중_1학기_기말_중3_기출c/q10-problem.svg\" class=\"exam-img\">",
     "choices": [
       "$5+\\sqrt{14}\\text{ cm}$",
       "$5-\\sqrt{14}\\text{ cm}$",
@@ -970,7 +970,7 @@ window.questionBank = [
       "꼭짓점형"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 이차함수 $y=-2x^2+4x+6$의 그래프의 꼭짓점을 $\\text{A}$라 하고, 이 그래프가 $x$축의 양의 부분과 만나는 점을 $\\text{B}$, $y$축과 만나는 점을 $\\text{C}$라고 하자. 점 $\\text{B}$의 좌표가 $(3, 0)$일 때, 삼각형 $\\text{ABC}$의 넓이를 구하면?<br><br><img src=\"assets/images/22_풍덕중_1학기_기말_중3_수학/q21.png\" class=\"exam-img\">",
+    "content": "다음 그림과 같이 이차함수 $y=-2x^2+4x+6$의 그래프의 꼭짓점을 $\\text{A}$라 하고, 이 그래프가 $x$축의 양의 부분과 만나는 점을 $\\text{B}$, $y$축과 만나는 점을 $\\text{C}$라고 하자. 점 $\\text{B}$의 좌표가 $(3, 0)$일 때, 삼각형 $\\text{ABC}$의 넓이를 구하면?<br><br><img src=\"assets/images/22_풍덕중_1학기_기말_중3_기출c/q21-problem.svg\" class=\"exam-img\">",
     "choices": [
       "4",
       "$\\frac{9}{2}$",

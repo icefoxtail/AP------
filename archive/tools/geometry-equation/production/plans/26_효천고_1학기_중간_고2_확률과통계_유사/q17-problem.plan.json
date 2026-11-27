@@ -1,0 +1,33 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "선분 AB",
+        "color": "BLUE",
+        "pieces": [{ "lo": { "value": "-3", "state": "CLOSED" }, "hi": { "value": "3", "state": "CLOSED" } }]
+      },
+      {
+        "kind": "POINTS",
+        "label": "주어진 점",
+        "band": false,
+        "points": [
+          { "id": "A", "value": "-3", "showValue": false },
+          { "id": "P", "value": "0" },
+          { "id": "B", "value": "3", "showValue": false }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": { "text": "A(-3), P(0), B(3)" },
+  "caption": "점 P의 시작 위치 0과 두 끝점을 포함하는 선분 AB의 범위",
+  "accessibilityDescription": "수직선에서 A는 -3, P는 0, B는 3에 있으며 선분 AB는 양 끝점이 포함된 -3부터 3까지이다.",
+  "sourceConditions": [
+    { "id": "q17-p1", "condition": "점 A(-3), 점 B(3)은 선분 AB의 양 끝점이다.", "mappedTo": ["numberLine.rows"] },
+    { "id": "q17-p2", "condition": "점 P는 시행 전 원점 0에 놓여 있다.", "mappedTo": ["numberLine.rows"] }
+  ],
+  "newVisualInformation": ["시작점 P와 선분 AB의 양 끝점 포함 여부를 구별하되 이동 후의 답은 노출하지 않는다"]
+}

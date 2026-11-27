@@ -1,0 +1,324 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "Start",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "End",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "56"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Start"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Start"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "16"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S3",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Start"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "24"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S4",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Start"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "32"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S5",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Start"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "40"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S6",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Start"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "48"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "S1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "S2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k3",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "S3"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k4",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "S4"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k5",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "S5"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k6",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "S6"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "Start",
+    "End"
+  ],
+  "displaySegments": [],
+  "displayLines": [],
+  "displayCircles": [
+    "k1",
+    "k2",
+    "k3",
+    "k4",
+    "k5",
+    "k6"
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 340
+  },
+  "caption": "출발과 도착 사이에 징검돌 여섯 개가 왼쪽부터 순서대로 놓여 있는 모습을 흰 바탕의 원형 기호 여섯 개로 나타낸 도식이다. 사진 속 바위의 모양과 물결은 수학적 조건이 아니다.",
+  "accessibilityDescription": "왼쪽에 출발, 오른쪽에 도착이 적혀 있고 그 사이에 서로 구분되는 원형 징검돌 여섯 개가 일렬로 나열되어 있다. 건널 때 한 번에 한 칸 또는 두 칸 이동한다.",
+  "sourceQuote": "다음 그림과 같이 $6$개의 돌을 놓아 만든 징검다리가 있다.",
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "start",
+        "at": [
+          0,
+          -8
+        ],
+        "text": "출발",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "end",
+        "at": [
+          56,
+          -8
+        ],
+        "text": "도착",
+        "labelKind": "TEXT"
+      }
+    ]
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "출발 지점과 도착 지점 사이에 서로 다른 위치의 징검돌 여섯 개",
+      "mappedTo": "displayCircles"
+    },
+    {
+      "id": "c2",
+      "condition": "출발·도착 표시",
+      "mappedTo": "planeMarks.textLabels"
+    },
+    {
+      "id": "c3",
+      "condition": "한 번에 한 칸 또는 두 칸을 건널 수 있다",
+      "mappedTo": "displayCircles"
+    }
+  ],
+  "newVisualInformation": [
+    "출발→여섯 돌→도착의 여덟 위치와 여섯 원형 돌 외곽선",
+    "원문에 없는 순서 수치나 정답 횟수 없이 문제 상황만 표시",
+    "흰 기본 바탕, 불필요한 면 채움·풍경 색상 없음"
+  ],
+  "hiddenPointNames": [
+    "Start",
+    "End"
+  ]
+}

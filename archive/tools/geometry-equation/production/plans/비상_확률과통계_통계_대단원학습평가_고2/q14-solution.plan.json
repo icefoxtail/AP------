@@ -1,0 +1,17 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE", "curves": [{"id": "X", "mean": "320", "sd": "8", "label": "X"}],
+    "ticks": ["304", "320", "328"],
+    "shades": [{"from": "304", "to": "320", "color": "BLUE"}, {"from": "320", "to": "328", "color": "WARM"}],
+    "areaLabels": [{"shade": 0, "text": "0.4772"}, {"shade": 1, "text": "0.3413"}],
+    "xLabel": "x"
+  },
+  "caption": "참여 학생 수를 평균 320, 표준편차 8인 정규분포로 근사한다. 304부터 320까지 0.4772와 320부터 328까지 0.3413을 합한다.",
+  "accessibilityDescription": "평균 320인 종 모양 곡선 아래 304부터 320까지를 한 색으로, 320부터 328까지를 다른 색으로 표시하고 두 넓이의 숫자를 붙였다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "400명 중 각자 참여할 확률이 0.8이고 정규근사의 평균은 320, 표준편차는 8이다.", "mappedTo": "chart.curves[0]"},
+    {"id": "c2", "condition": "304명 이상 328명 이하일 확률이다.", "mappedTo": "chart.ticks,chart.shades"}
+  ],
+  "newVisualInformation": ["구간을 평균에서 나누어 Z의 음수 쪽과 양수 쪽 넓이를 각각 합하는 구조를 정확히 표현한다."]
+}

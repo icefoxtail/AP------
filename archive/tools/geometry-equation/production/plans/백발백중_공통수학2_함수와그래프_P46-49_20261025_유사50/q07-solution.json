@@ -1,0 +1,88 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "Y",
+        "elements": [
+          "b",
+          "c",
+          "d"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y",
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "원본 그래프의 f(a)=b, f(b)=c, f(c)=d. 역방향으로 d→c→b→a를 따라간다.",
+  "accessibilityDescription": "원본 그래프의 f(a)=b, f(b)=c, f(c)=d. 역방향으로 d→c→b→a를 따라간다.",
+  "sourceConditions": [
+    {
+      "id": "mapping0",
+      "condition": "그래프에서 f(c)=d이다.",
+      "mappedTo": "diagram.arrows"
+    },
+    {
+      "id": "mapping1",
+      "condition": "그래프에서 f(b)=c이다.",
+      "mappedTo": "diagram.arrows"
+    },
+    {
+      "id": "mapping2",
+      "condition": "그래프에서 f(a)=b이다.",
+      "mappedTo": "diagram.arrows"
+    }
+  ],
+  "newVisualInformation": [
+    "정방향 f의 화살표를 거꾸로 세 번 따라 f⁻³(d)=a를 읽는다."
+  ]
+}

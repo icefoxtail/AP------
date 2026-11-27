@@ -1,0 +1,46 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "universe": {
+      "name": "U",
+      "count": "100",
+      "countUnit": "%"
+    },
+    "sets": [
+      {
+        "id": "A",
+        "count": "20",
+        "countUnit": "%"
+      },
+      {
+        "id": "B",
+        "count": "45",
+        "countUnit": "%"
+      }
+    ],
+    "shade": "A∩B"
+  },
+  "caption": "가전제품 A와 생활 가구 B의 교집합은 전체의 10%이며 P(A|B)=2/9이다.",
+  "accessibilityDescription": "전체 이용자 100퍼센트에서 A는 20퍼센트, B는 45퍼센트의 두 원으로 나타내고 A와 B가 겹치는 영역을 강조한다.",
+  "sourceConditions": [
+    {
+      "id": "given",
+      "condition": "P(A)=20%, P(B)=45%, P(A∪B)=55%",
+      "mappedTo": [
+        "diagram.universe",
+        "diagram.sets"
+      ]
+    },
+    {
+      "id": "intersection",
+      "condition": "P(A∩B)=10%",
+      "mappedTo": [
+        "diagram.shade"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "조건부확률의 분모가 B 전체이고 분자가 B 안의 A∩B임을 강조한다. 교집합 수치 직접 표기는 엔진 미지원이다."
+  ]
+}

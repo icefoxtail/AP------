@@ -1,0 +1,254 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8242",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3575016015530212",
+              "denominator": "1000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "21006226146291292",
+              "denominator": "10000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "I"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sBO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "sCO",
+      "refs": [
+        "C",
+        "O"
+      ]
+    },
+    {
+      "id": "sBI",
+      "refs": [
+        "B",
+        "I"
+      ]
+    },
+    {
+      "id": "sCI",
+      "refs": [
+        "C",
+        "I"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 430
+  },
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eq0",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sCA"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 40,
+        "label": "40",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "A",
+          "B",
+          "O"
+        ],
+        "value": 20,
+        "label": "20",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "A",
+          "B",
+          "I"
+        ],
+        "value": 35,
+        "label": "35",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a3",
+        "refs": [
+          "O",
+          "B",
+          "I"
+        ],
+        "value": 15,
+        "label": "15",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "7번 문제: 원본 q07.png: 외심 O·내심 I, 이등변 AB=AC와 ∠A40°.",
+  "accessibilityDescription": "7번 문제 그림: 원본 q07.png: 외심 O·내심 I, 이등변 AB=AC와 ∠A40°.",
+  "sourceConditions": [
+    {
+      "id": "src-q7",
+      "condition": " 조건: $\\triangle\\text{ABC}$는 $\\overline{\\text{AB}}=\\overline{\\text{AC}}$인 이등변삼각형이고 $\\angle\\text{A}=40^\\circ$입니다. 점 $\\text{O}$는 외심, 점 $\\text{I}$는 내심입니다. 구할 대상: $\\angle\\text{OBA} + \\angle\\text{IBA} + \\angle\\text{OBI}$의 크기입니다.  1) $\\triangle\\text{ABC}$의 두 밑각: $\\angle\\text{B} = \\angle\\text{C} = \\dfrac{180^\\circ - 40^\\circ}{2} = 70^\\circ$. 2) 내심 $\\text{I}$에서 $\\overline{\\text{BI}}$는 $\\angle\\text{B}$의 이등분선이므로 $\\angle\\text{IBA} = \\dfrac{1}{2}\\angle\\text{B} = 35^\\circ$. 3) 외심 $\\text{O}$에서 $\\overline{\\text{OA}}=\\overline{\\text{OB}}$이므로 $\\triangle\\text{OAB}$는 이등변삼각형입니다. 외심각 $\\angle\\text{BOC} = 2\\angle\\text{A} = 80^\\circ$이고, $\\triangle\\text{OBC}$에서 $\\angle\\text{OBC} = \\dfrac{180^\\circ - 80^\\circ}{2} = 50^\\circ$. 따라서 $\\angle\\text{OBA} = \\angle\\text{B} - \\angle\\text{OBC} = 70^\\circ - 50^\\circ = 20^\\circ$. 4) $\\angle\\text{OBI} = \\angle\\text{IBA} - \\angle\\text{OBA} = 35^\\circ - 20^\\circ = 15^\\circ$.  각 각의 크기 계산 및 합: $\\angle\\text{OBA} = 20^\\circ$, $\\angle\\text{IBA} = 35^\\circ$, $\\angle\\text{OBI} = 15^\\circ$. 따라서 구하는 식의 값은 $\\angle\\text{OBA} + \\angle\\text{IBA} + \\angle\\text{OBI} = 20^\\circ + 35^\\circ + 15^\\circ = 70^\\circ$. (기하학적 검증: $\\angle\\text{OBA} + \\angle\\text{OBI} = \\angle\\text{IBA}$이므로 전체 식은 $2\\angle\\text{IBA} = 2 \\times 35^\\circ = 70^\\circ$)  ① $55^\\circ$: 불일치. ② $60^\\circ$: 불일치. ③ $65^\\circ$: 불일치. ④ $70^\\circ$: 계산 결과 $70^\\circ$와 정확히 일치합니다. ⑤ $75^\\circ$: 불일치.  따라서 정답은 ④입니다. ",
+      "mappedTo": "mathPlan.nodes;displaySegments;planeMarks"
+    },
+    {
+      "id": "source-visual-feature",
+      "condition": "원본 q07.png: 외심 O·내심 I, 이등변 AB=AC와 ∠A40°; 풀이에 필요한 추가 관계",
+      "mappedTo": "displaySegments;planeMarks"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 q07.png: 외심 O·내심 I, 이등변 AB=AC와 ∠A40°; 풀이에 필요한 추가 관계"
+  ]
+}

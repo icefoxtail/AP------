@@ -1,0 +1,32 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [0, 10, -2, 8],
+    "curves": [
+      { "id": "f", "kind": "LOGARITHMIC", "base": "2", "coefficients": ["1", "1", "-1", "4"], "domain": ["9/8", "10"], "color": "BLUE", "label": "f(x)" },
+      { "id": "g", "kind": "LOGARITHMIC", "base": "2", "coefficients": ["1", "4", "-16", "0"], "domain": ["33/8", "10"], "color": "WARM", "label": "g(x)" }
+    ],
+    "axisTickValues": { "x": ["1", "4"], "y": ["2", "4"] },
+    "overlays": {
+      "points": [
+        { "id": "A", "x": "2", "y": "4" },
+        { "id": "H", "x": "5", "y": "4", "unnamed": true },
+        { "id": "B", "x": "5", "y": "2" }
+      ],
+      "segments": [
+        { "id": "right", "from": "A", "to": "H", "dashed": true },
+        { "id": "down", "from": "H", "to": "B", "dashed": true }
+      ]
+    }
+  },
+  "pointNames": { "A": "A", "B": "B" },
+  "caption": "파란 f(x)=log₂(x−1)+4를 오른쪽 3, 아래쪽 2만큼 옮긴 주황 g(x)=log₂(4x−16). 점선은 A(2,4)가 B(5,2)로 가는 이동을 보인다.",
+  "accessibilityDescription": "두 로그곡선의 수직 점근선은 각각 x=1과 x=4이다. 점 A에서 오른쪽으로 3, 아래로 2 이동한 B는 둘째 곡선 위에 있다.",
+  "sourceConditions": [
+    { "id": "first", "condition": "y=log₂(x−1)+4", "mappedTo": "graphPlan.curves[0]" },
+    { "id": "second", "condition": "y=log₂(4x−16)", "mappedTo": "graphPlan.curves[1]" },
+    { "id": "translate", "condition": "a=3, b=−2인 평행이동", "mappedTo": "graphPlan.overlays.segments" }
+  ],
+  "newVisualInformation": [ "두 곡선의 동일한 상대적 모양과 오른쪽·아래쪽 이동을 점선 경로로 나타낸다." ]
+}
