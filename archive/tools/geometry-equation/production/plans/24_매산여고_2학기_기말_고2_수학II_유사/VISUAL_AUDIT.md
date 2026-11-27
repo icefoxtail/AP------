@@ -1,10 +1,11 @@
 # 24_매산여고_2학기_기말_고2_수학II_유사 — production SVG plan 전축 감사
 
-- 기준: 원격 `origin/main` **cc74a04c496b9a4425991850c84544b80c76d45f**의 현행 JS 및 그 직접 연결 SVG. 기출 원본 `archive/assets/images/24_매산여고_2학기_기말_고2_수학II/q11.png` 및 구형 `_plans/`도 검토했다.
-- 문제 **23축**, 해설 **23축**, 합계 **46/46축** 독립 판정. **REQUIRED 1축**, **BENEFICIAL 12축**, **EXEMPT 33축**. 공식 생산 plan **13개**(문제 1·해설 12), 기존 production plan **0개**, 신규 13개.
-- JSON 파싱·스키마 및 shallow/full plan-lint **13/13 PASS**. `STATIC_FIELD_PARITY` **12 PASS, 1 PARTIAL(22번 기호)**, 면제 33 N/A. `DRAWN_FEATURE_PARITY`는 원본 SVG와 JSON 필드를 정적으로 비교했으며 실제 출력 시각 검사 **0/13**, **RENDER_NOT_RUN**이다.
+- 재감사 기준: 원격 `origin/main` **e14c8ed3e07da646f4cdcc20faf9a40e9761623b** (2026-11-28 KST, 병합 전 조회)의 현행 JS 및 직접 연결 SVG. 기출 원본 `archive/assets/images/24_매산여고_2학기_기말_고2_수학II/q11.png` 및 기존 `_plans/`와 대조했다.
+- 문제 **23축**, 해설 **23축**, 합계 **46/46축** 독립 재판정. **REQUIRED 1축**, **BENEFICIAL 12축**, **EXEMPT 33축**. 공식 production plan **13개**(문제 1·해설 12), **기존 13개 전부 유지·수정 0·신규 0**.
+- JSON 파싱·필수 필드·`sourceConditions[].mappedTo` 경로 검사 **13/13 PASS**, shallow/full 공식 plan-lint **13/13 PASS** (FAIL/SKIP 0). `STATIC_FIELD_PARITY` **12 PASS, 1 PARTIAL(22번 F/f 표기)**, 면제 33 N/A. 실제 production 렌더 SVG/PNG·학생 화면·A4 관측 **0/13, RENDER_NOT_RUN**이다. `/usr/bin/chromium` 래퍼 실행 실패: `/usr/lib/chromium/chromium: not found`.
 - SVG 에셋 **13개 직접 참조**(11번 문제·해설 각각 하나). 기존 SVG에는 모두 흰색 전체 캔버스 `rect fill="#fff"`가 있으며 공식 plan에는 배경 채움을 별도로 지시하지 않았다. 수학적으로 필요한 넓이 음영은 유지했다.
-- **원본 이미지 충돌**: 원래 기출 `q11.png`는 (0,0)에서 (2,a), (4,−a), (6,a)로 이어지며 t=3·5에서 축과 교차한다. 그러나 현행 JS는 (0,0)→(1,4)→(2,4)→(4,−4)→(6,0)과 t=3 하나의 교차를 풀이로 사용한다. 공식 plan은 **현행 JS·직접 연결 `q11-audit-rework.svg`**를 따랐다. 기출 이미지와 의미상 1:1 일치한다고 주장하지 않는다. 구형 `q11.svg`와 직접 연결 경로를 혼동하지 않는다.
+- **ENGINE_CAPABILITY_PENDING:TRANSPARENT_CANVAS_OPTION** — 불필요한 기본 흰색 캔버스를 없애는 옵션은 현재 엔진에서 지원하지 않는다. SVG 태그 수동 수정 없이 엔진 공통 기능이 필요하다.
+- **ORIGINAL_EXAM_PNG_CONFLICT**: 원 기출 `q11.png`는 (0,0)에서 (2,a), (4,−a), (6,a)로 이어지며 t=3·5에서 축과 교차한다. 현행 유사 JS는 (0,0)→(1,4)→(2,4)→(4,−4)→(6,0)과 t=3 하나의 교차를 풀이로 사용한다. 공식 plan은 **학생이 실제로 푸는 현행 JS·직접 연결 `q11-audit-rework.svg`**를 따랐다. 원 기출 이미지와 동일하다는 뜻이 아니다. 구형 `q11.svg`와 직접 연결 경로를 혼동하지 않는다.
 - **ENGINE_CAPABILITY_PENDING:PIECEWISE_POLYNOMIAL_UPPERCASE_FUNCTION_NAME** — 22번은 원문 해설의 차함수 `F=f−g`를 그래프로 제시하지만 엔진의 구간별 다항함수 `functionName:"F"`는 `PIECEWISE_POLY_FUNCTION_NAME_INVALID`로 거절됐다. 실행 가능한 소문자 `f` 라벨의 정적 그래프·명확한 캡션을 제공하고 기호 완전 일치는 보류한다. 이는 렌더 PASS가 아니다.
 
 | 문항 | 문제 축 판정 | 해설 축 판정 | 원본 SVG | plan 파일 | STATIC_FIELD_PARITY | DRAWN_FEATURE_PARITY | 비고 |
@@ -19,7 +20,7 @@
 | 08 | EXEMPT | EXEMPT | 없음 | 없음 | N/A | N/A | 문제: 극한을 이용한 도함수 식이다. 해설: 미분계수의 극한과 다항식 대입만 사용한다. |
 | 09 | EXEMPT | EXEMPT | 없음 | 없음 | N/A | N/A | 문제: 극한과 정적분의 대수식이다. 해설: 적분구간 합치기와 다항식 적분만 수행한다. |
 | 10 | EXEMPT | EXEMPT | 없음 | 없음 | N/A | N/A | 문제: 조각 도함수의 식과 초기값이 모두 적혔다. 해설: 접합점 연속·적분상수 계산으로 완결된다. |
-| 11 | REQUIRED | BENEFICIAL | `q11-audit-rework.svg`, `q11-solution.svg` | `q11-problem.plan.json`, `q11-solution.plan.json` | PASS | 원본 기출 PNG 불일치 / RENDER_NOT_RUN | 문제: 원문에서 속도 곡선의 실제 모양이 조건이므로 REQUIRED. 연결 `q11-audit-rework.svg`의 (0,0)→(1,4)→(2,4)→(4,−4)→(6,0)을 보존한다. 해설: 동일 꺾은선에 영점 t=3과 부호별 영역 [0,3] 넓이8·[3,6] 넓이6을 추가한다. |
+| 11 | REQUIRED | BENEFICIAL | `q11-audit-rework.svg`, `q11-solution.svg` | `q11-problem.plan.json`, `q11-solution.plan.json` | PASS (유사 JS) | RENDER_NOT_RUN | **ORIGINAL_EXAM_PNG_CONFLICT**. 문제: 속도 곡선 자체가 발문 조건. 현행 유사판 (0,0)→(1,4)→(2,4)→(4,−4)→(6,0), t=3 영점을 따른다. 해설은 부호별 영역 [0,3] 넓이8·[3,6] 넓이6으로 분리. |
 | 12 | EXEMPT | BENEFICIAL | `q12-solution.svg` | `q12-solution.plan.json` | PASS | 정적 특징 대조 / RENDER_NOT_RUN | 문제: 함수 y=x|x−4|, x=8로 경계가 식에서 완결된다. 해설: x=4를 기준으로 포물선 두 조각과 경계 [0,4], [4,8]를 서로 다른 음영으로 분리한다. |
 | 13 | EXEMPT | BENEFICIAL | `q13-solution.svg` | `q13-solution.plan.json` | PASS | 정적 특징 대조 / RENDER_NOT_RUN | 문제: 적분 상수 결정 전 함수의 정확한 형태가 미정이다. 해설: f=x³−6x²+9x−11/3, 극대 (1,1/3)·극소 (3,−11/3)을 복원한다. |
 | 14 | EXEMPT | EXEMPT | 없음 | 없음 | N/A | N/A | 문제: 적분 정의·함수 연립식이다. 해설: 대수 연산으로 적분 상수를 결정한다. |
