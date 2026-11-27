@@ -1,0 +1,24 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"-24","denominator":"17"},{"kind":"rational","numerator":"45","denominator":"17"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"M","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"27","denominator":"34"},{"kind":"rational","numerator":"45","denominator":"34"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"3"}},"outputType":"CIRCLE","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints":["O","A","B","P","M"],"displayCircles":["k"],
+  "displaySegments":[{"id":"sOA","refs":["O","A"]},{"id":"sOB","refs":["O","B"]},{"id":"sAP","refs":["A","P"]},{"id":"sBP","refs":["B","P"]},{"id":"sAB","refs":["A","B"]},{"id":"sOP","refs":["O","P"],"dashed":true},{"id":"sOM","refs":["O","M"],"dashed":true}],
+  "rightAngles":[{"id":"rA","refs":["O","A","P"],"factRole":"GIVEN"},{"id":"rB","refs":["O","B","P"],"factRole":"GIVEN"},{"id":"rM","refs":["A","M","O"],"factRole":"DERIVED_INTERMEDIATE"}],
+  "coordinateCanvas":{"width":660,"height":450},
+  "planeMarks":{"expressionLabels":[{"id":"r","ownerSegment":"sOA","text":"3","factRole":"GIVEN"},{"id":"t","ownerSegment":"sAP","text":"5","factRole":"GIVEN"},{"id":"op","ownerSegment":"sOP","text":"sqrt(34)","factRole":"DERIVED_INTERMEDIATE"},{"id":"ab","ownerSegment":"sAB","text":"15sqrt(34)/17","factRole":"CONCLUSION"}]},
+  "caption":"OA⊥AP, OB⊥BP, OP=√34. OP와 현 AB가 만나는 중점 M을 표시하고 AB=15√34/17로 마무리한다.",
+  "accessibilityDescription":"원과 두 접선, OA·OB 두 반지름, 점선 OP·OM, 접점 두 직각 및 M의 직각, OP=√34와 AB=15√34/17의 길이 라벨.",
+  "sourceConditions":[{"id":"S1","condition":"OA=3, AP=5, OP=√34","mappedTo":["planeMarks.expressionLabels","rightAngles"]},{"id":"S2","condition":"AB⊥OP, AM=BM, AB=15√34/17","mappedTo":["mathPlan.nodes","displaySegments","planeMarks.expressionLabels"]}],
+  "newVisualInformation":["해설에서 빠지기 쉬운 OP·OM 점선, 현의 중점·직각, 최종 현 길이 라벨을 복원한다."]
+}

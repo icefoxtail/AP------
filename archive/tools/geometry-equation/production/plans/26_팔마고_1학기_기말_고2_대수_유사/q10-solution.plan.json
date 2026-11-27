@@ -1,0 +1,30 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"21"}]},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"CA","op":"LINE_THROUGH","inputs":["C","A"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"H","op":"PERPENDICULAR_FOOT","inputs":["B","CA"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints":["A","B","C","H"],
+  "displaySegments":[{"id":"sCA","refs":["C","A"]},{"id":"sCB","refs":["C","B"]},{"id":"sAB","refs":["A","B"]},{"id":"sBH","refs":["B","H"],"dashed":true}],
+  "rightAngles":[{"id":"rH","refs":["B","H","A"],"factRole":"DERIVED_INTERMEDIATE"}],
+  "coordinateCanvas":{"width":650,"height":430},
+  "planeMarks":{
+    "angles":[{"id":"angC","refs":["A","C","B"],"value":23.57817847820183,"style":"ARC","factRole":"GIVEN"}],
+    "expressionLabels":[{"id":"ca","ownerSegment":"sCA","text":"6","factRole":"GIVEN"},{"id":"cb","ownerSegment":"sCB","text":"5","factRole":"GIVEN"},{"id":"height","ownerSegment":"sBH","text":"2","factRole":"DERIVED_INTERMEDIATE"}],
+    "textLabels":[{"id":"sin","at":[1.5,0.6],"text":"sin C=2/5","labelKind":"TEXT","factRole":"GIVEN"}]
+  },
+  "caption":"CA=b=6, CB=a=5, sin C=2/5. 변 CA에 내린 높이 BH=a sin C=2이므로 넓이는 1/2·6·2=6이다.",
+  "accessibilityDescription":"삼각형 ABC에서 CA=6, CB=5를 표시하고 ∠C의 호와 sin C=2/5 라벨을 둔다. B에서 CA에 내린 높이 BH=2는 점선이며 H에서 직각을 표시한다. 넓이는 6이다.",
+  "sourceConditions":[
+    {"id":"S1","condition":"삼각형 ABC에서 a=BC=5, b=CA=6, sin(A+B)=sin C=2/5","mappedTo":["mathPlan.nodes","displaySegments","planeMarks.angles","planeMarks.textLabels","planeMarks.expressionLabels"]},
+    {"id":"S2","condition":"BH=5·2/5=2, 면적 6","mappedTo":["mathPlan.nodes","displaySegments","rightAngles","planeMarks.expressionLabels"]}
+  ],
+  "newVisualInformation":["원본의 두 변·끼인각 해설 삼각형을 수학적으로 정확한 좌표 B=(√21,2)로 재구성하고, 빠진 점선 높이·직각·변 길이를 추가했다. 면 채움 없음."]
+}

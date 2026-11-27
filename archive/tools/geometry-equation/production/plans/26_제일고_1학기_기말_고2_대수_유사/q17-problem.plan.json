@@ -1,0 +1,23 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"-24","denominator":"17"},{"kind":"rational","numerator":"45","denominator":"17"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"3"}},"outputType":"CIRCLE","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints":["O","A","B","P"],"displayCircles":["k"],
+  "displaySegments":[{"id":"sOA","refs":["O","A"]},{"id":"sOB","refs":["O","B"]},{"id":"sAP","refs":["A","P"]},{"id":"sBP","refs":["B","P"]},{"id":"sAB","refs":["A","B"]}],
+  "rightAngles":[{"id":"rA","refs":["O","A","P"],"factRole":"GIVEN"},{"id":"rB","refs":["O","B","P"],"factRole":"GIVEN"}],
+  "coordinateCanvas":{"width":640,"height":420},
+  "planeMarks":{"expressionLabels":[{"id":"r","ownerSegment":"sOA","text":"3","factRole":"GIVEN"},{"id":"t","ownerSegment":"sAP","text":"5","factRole":"GIVEN"}]},
+  "caption":"반지름 3인 원과 P에서 그은 두 접선 PA,PB를 구성하고, 접점의 직각과 현 AB를 표시한다. 문제축에서 AB의 계산값은 숨긴다.",
+  "accessibilityDescription":"원 중심 O, 접점 A·B, 외부 점 P, OA=3, PA=5, 두 접선과 반지름의 직각표식, 현 AB. 배경과 원 내부를 채우지 않는다.",
+  "sourceConditions":[{"id":"S1","condition":"OA=OB=3, AP=BP=5, OA⊥AP, OB⊥BP","mappedTo":["mathPlan.nodes","rightAngles","planeMarks.expressionLabels"]},{"id":"S2","condition":"AB를 구하는 문제","mappedTo":["displaySegments"]}],
+  "newVisualInformation":["접점 양쪽 직각을 명시하고 현 AB를 별도 선분으로 복원한다. 면 채움·흰색 배경은 사용하지 않는다."]
+}

@@ -1,0 +1,20 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"17"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"9"},{"kind":"integer","value":"15"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"225","denominator":"17"},{"kind":"rational","numerator":"120","denominator":"17"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"16"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"17","denominator":"2"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"rational","numerator":"17","denominator":"2"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["A","B","C","D","E","O"],"hiddenPointNames":["O"],"hiddenPointStyle":"NONE","displayCircles":[],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sAC","refs":["A","C"]},{"id":"sBC","refs":["B","C"]},{"id":"sBD","refs":["B","D"]},{"id":"sDE","refs":["D","E"]},{"id":"sEC","refs":["E","C"]},{"id":"sDC","refs":["D","C"]}],
+  "coordinateCanvas":{"width":700,"height":440},
+  "planeMarks":{"arcs":[{"id":"semi","circle":"k","center":"O","from":"B","to":"C","side":"CW","highlight":true}],"equalLengths":[{"id":"eq","count":1,"segments":["sDE","sEC"]}],"expressionLabels":[{"id":"ab","ownerSegment":"sAB","text":"3sqrt(34)","factRole":"GIVEN"},{"id":"ac","ownerSegment":"sAC","text":"17","factRole":"GIVEN"},{"id":"bc","ownerSegment":"sBC","text":"17","factRole":"GIVEN"}]},
+  "caption":"BC를 지름으로 하는 윗반원과 삼각형 ABC, D∈AC∩반원, E∈호 CD, DE=CE를 표시한다. 문제축에는 면적값을 노출하지 않는다.",
+  "accessibilityDescription":"길이 AB=3√34, AC=BC=17인 삼각형 위에 지름 BC의 윗반원, 교점 D, 호 위의 E, DE=CE 등길이 눈금. 배경·면 채움 없음.",
+  "sourceConditions":[{"id":"S1","condition":"AB=3√34, AC=BC=17","mappedTo":["mathPlan.nodes","planeMarks.expressionLabels"]},{"id":"S2","condition":"BC 지름의 반원, D∈AC, E∈호 CD, DE=CE","mappedTo":["planeMarks.arcs","displaySegments","planeMarks.equalLengths"]}],
+  "newVisualInformation":["원본의 BC 윗반원만 선택하고 DE·CE 길이 동등 표식, 원과 직선의 교점 D·E를 복원한다. 회색 영역은 생략한다."]
+}

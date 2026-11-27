@@ -1,0 +1,57 @@
+{
+  "capability":"composite-panels-v1",
+  "panels":[
+    {
+      "caption":{"text":"두 제곱근 함수의 그래프"},
+      "plan":{
+        "capability":"multi-curve-figure-v1",
+        "graphPlan":{
+          "family":"multi-curve",
+          "viewport":[-1,6,-1,9],
+          "curves":[
+            {"id":"u","kind":"SQRT","radicand":["0","1"],"amplitude":"3","domain":["0","6"],"color":"BLUE","label":"y=3*sqrt(x)"},
+            {"id":"v","kind":"SQRT","radicand":["0","1"],"amplitude":"1","domain":["0","6"],"color":"WARM","label":"y=sqrt(x)"}
+          ],
+          "axisTickValues":{"x":["3"],"y":[]}
+        }
+      }
+    },
+    {
+      "caption":{"text":"k=3의 길이 BC, OC, AC"},
+      "plan":{
+        "capability":"multi-curve-figure-v1",
+        "graphPlan":{
+          "family":"multi-curve",
+          "viewport":[-1,5,-1,8],
+          "curves":[
+            {"id":"u","kind":"SQRT","radicand":["0","1"],"amplitude":"3","domain":["0","5"],"color":"BLUE","label":"y=3*sqrt(x)"},
+            {"id":"v","kind":"SQRT","radicand":["0","1"],"amplitude":"1","domain":["0","5"],"color":"WARM","label":"y=sqrt(x)"}
+          ],
+          "overlays":{
+            "lines":[{"id":"k","x":"3","label":"x=3"}],
+            "points":[
+              {"id":"A","x":"3","y":"3*sqrt(3)"},
+              {"id":"B","x":"3","y":"sqrt(3)"},
+              {"id":"C","axis":"x","value":"3"},
+              {"id":"O","axis":"x","value":"0"}
+            ],
+            "segments":[
+              {"id":"ac","from":"A","to":"C","length":true},
+              {"id":"bc","from":"B","to":"C","length":true},
+              {"id":"oc","from":"O","to":"C","length":true}
+            ]
+          },
+          "axisTickValues":{"x":["3"],"y":[]}
+        }
+      }
+    }
+  ],
+  "caption":"해설: A(k,3√k), B(k,√k), C(k,0)이고 BC·AC=OC²이므로 k=3이다. 위 패널은 두 곡선, 아래 패널은 k=3의 세 길이를 보여 준다.",
+  "accessibilityDescription":"두 패널의 좌표축과 y=3√x 및 y=√x 그래프. 아래 패널에는 x=3 세로선, 위쪽 A, 중간 B, 축 위 C와 원점 O, 길이 AC=3√3, BC=√3, OC=3을 표시한다.",
+  "sourceConditions":[
+    {"id":"S1","condition":"두 함수 y=3√x와 y=√x","mappedTo":["panels[0].plan.graphPlan.curves","panels[1].plan.graphPlan.curves"]},
+    {"id":"S2","condition":"세로선 x=k가 두 그래프와 축에 만나는 점 A B C; O는 원점","mappedTo":["panels[1].plan.graphPlan.overlays.lines","panels[1].plan.graphPlan.overlays.points"]},
+    {"id":"S3","condition":"BC=√k, OC=k, AC=3√k이고 OC²=BC·AC; 양수 k=3","mappedTo":["panels[1].plan.graphPlan.overlays.segments","caption"]}
+  ],
+  "newVisualInformation":["유사 문항의 누락된 해설 좌표 그래프를 원본 기출의 두 패널 구성으로 복구하고, 변형된 함수 계수 3과 풀이값 k=3에 맞추어 교점·세 길이를 다시 산출하였다. 면 채움 없음."]
+}

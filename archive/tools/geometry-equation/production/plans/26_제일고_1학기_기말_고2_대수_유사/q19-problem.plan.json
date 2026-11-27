@@ -1,0 +1,17 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"Q","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"-2"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"L","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"-3"},"b":{"kind":"integer","value":"1"},"c":{"kind":"integer","value":"0"}},"outputType":"LINE","factRole":"GIVEN"},
+    {"id":"M","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"2"},"b":{"kind":"integer","value":"1"},"c":{"kind":"integer","value":"0"}},"outputType":"LINE","factRole":"GIVEN"}
+  ]},
+  "displayPoints":["O","P","Q"],"hiddenPointNames":["P","Q"],"hiddenPointStyle":"NONE","displayLines":["L","M"],"lineLabels":[{"nodeId":"L","form":"SLOPE_INTERCEPT"},{"nodeId":"M","form":"SLOPE_INTERCEPT"}],
+  "coordinateCanvas":{"width":670,"height":490},"axisTickValues":{"x":[],"y":[]},
+  "planeMarks":{"angles":[{"id":"theta","refs":["P","O","Q"],"value":135,"label":"theta","labelKind":"MATH","style":"ARC","factRole":"GIVEN"}]},
+  "caption":"좌표축과 y=3x 및 y=-2x의 두 직선 전체를 표시하고, 원점 O에서 오른쪽으로 벌어지는 둔각 θ만 호로 표시한다. 답 135°는 문제축에 표시하지 않는다.",
+  "accessibilityDescription":"원점에서 교차하는 양방향 직선 y=3x, y=-2x, 수평·수직 좌표축과 두 오른쪽 반직선이 이루는 둔각 θ. 회색 부채꼴 채움 없음.",
+  "sourceConditions":[{"id":"S1","condition":"y=3x, y=-2x의 두 직선","mappedTo":["mathPlan.nodes","displayLines","lineLabels"]},{"id":"S2","condition":"90°<θ<180°인 두 직선의 각","mappedTo":["planeMarks.angles"]}],
+  "newVisualInformation":["원본 기출의 좌표축·양쪽 직선 연장을 보존하고, 기존의 잘린 두 반직선·회색 각 영역을 교체한다."]
+}

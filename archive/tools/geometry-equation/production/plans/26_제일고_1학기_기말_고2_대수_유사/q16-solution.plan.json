@@ -1,0 +1,22 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"17"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"9"},{"kind":"integer","value":"15"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"225","denominator":"17"},{"kind":"rational","numerator":"120","denominator":"17"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"16"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"17","denominator":"2"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"257","denominator":"17"},{"kind":"rational","numerator":"60","denominator":"17"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"rational","numerator":"17","denominator":"2"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["A","B","C","D","E","O","H"],"displayCircles":[],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sAC","refs":["A","C"]},{"id":"sBC","refs":["B","C"]},{"id":"sBD","refs":["B","D"]},{"id":"sDE","refs":["D","E"]},{"id":"sEC","refs":["E","C"]},{"id":"sDC","refs":["D","C"]},{"id":"sOH","refs":["O","H"],"dashed":true},{"id":"sEH","refs":["E","H"],"dashed":true}],
+  "rightAngles":[{"id":"rD","refs":["B","D","C"],"factRole":"DERIVED_INTERMEDIATE"},{"id":"rH","refs":["C","H","O"],"factRole":"DERIVED_INTERMEDIATE"}],
+  "coordinateCanvas":{"width":710,"height":460},
+  "planeMarks":{"arcs":[{"id":"semi","circle":"k","center":"O","from":"B","to":"C","side":"CW","highlight":true}],"equalLengths":[{"id":"eq","count":1,"segments":["sDE","sEC"]}],"expressionLabels":[{"id":"ab","ownerSegment":"sAB","text":"3sqrt(34)","factRole":"GIVEN"},{"id":"bc","ownerSegment":"sBC","text":"17","factRole":"GIVEN"},{"id":"cd","ownerSegment":"sDC","text":"8","factRole":"DERIVED_INTERMEDIATE"},{"id":"eh","ownerSegment":"sEH","text":"1","factRole":"DERIVED_INTERMEDIATE"}]},
+  "caption":"BC가 지름이므로 ∠BDC=90°. 호 CD의 중점 E에서 현 CD에 내린 수선의 발 H에 대하여 CD=8, EH=1이고 [EDC]=4이다.",
+  "accessibilityDescription":"윗반원과 삼각형 ABC, 현 CD, 점 D의 직각, E와 중심 O에서 H로 내려온 점선 수선·직각, CD=8 및 EH=1 라벨.",
+  "sourceConditions":[{"id":"S1","condition":"BC 지름, ∠BDC=90°, CD=8","mappedTo":["planeMarks.arcs","rightAngles","planeMarks.expressionLabels"]},{"id":"S2","condition":"DE=CE, OH⊥CD, EH=1, 삼각형 EDC 넓이=4","mappedTo":["planeMarks.equalLengths","displaySegments","planeMarks.expressionLabels"]}],
+  "newVisualInformation":["해설의 수선 OH·EH와 두 직각, 높이 EH=1, 밑변 CD=8을 실제 도형 라벨로 복구한다."]
+}
