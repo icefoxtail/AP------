@@ -1,0 +1,82 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "l0",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "-3"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "color": "BLUE",
+        "label": "y=-3x+4"
+      },
+      {
+        "id": "l1",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "2"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "color": "WARM",
+        "label": "y=2x-3"
+      },
+      {
+        "id": "l2",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "-3"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "color": "GREEN",
+        "label": "y=-3x-3"
+      }
+    ],
+    "viewport": [
+      -3,
+      3,
+      -12,
+      12
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "Y",
+          "x": "0",
+          "y": "-3",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "y=-3x-3은 주어진 -3 기울기의 직선과 평행하고 y=2x-3과 y절편이 같다.",
+  "accessibilityDescription": "y=-3x-3은 주어진 -3 기울기의 직선과 평행하고 y=2x-3과 y절편이 같다.",
+  "sourceConditions": [
+    {
+      "id": "origin",
+      "condition": "일차함수 $y = ax + b$의 그래프는 $y = -3x + 4$의 그래프와 평행하고, $y = 2x - 3$의 그래프와 $y$축 위에서 만난다. 이때 상수 $a, b$에 대하여 $ab$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "y=-3x-3은 주어진 -3 기울기의 직선과 평행하고 y=2x-3과 y절편이 같다."
+  ]
+}

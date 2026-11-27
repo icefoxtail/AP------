@@ -1,0 +1,63 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "100",
+          "-4/5"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        0,
+        125
+      ]
+    },
+    "domain": [
+      0,
+      125
+    ],
+    "viewport": [
+      -5,
+      135,
+      -10,
+      110
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+      "y": "100"
+      },
+      {
+        "id": "B",
+        "x": "125",
+      "y": "0"
+      }
+    ],
+    "axisScale": {
+      "x": 1,
+      "y": 1
+    }
+  },
+  "caption": "100%에서 5분당 4% 감소하면 125분 후 0%이다.",
+  "accessibilityDescription": "100%에서 5분당 4% 감소하면 125분 후 0%이다.",
+  "sourceConditions": [
+    {
+      "id": "origin",
+      "condition": "어떤 스마트폰 배터리가 $5$분마다 $4\\%$씩 감소한다고 하자. 현재 이 스마트폰의 배터리가 $100\\%$라고 할 때, 배터리가 완전히 방전되는 것은 몇 시간 몇 분 후인가? (단, 다른 상황은 생각하지 않는다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "100%에서 5분당 4% 감소하면 125분 후 0%이다."
+  ]
+}

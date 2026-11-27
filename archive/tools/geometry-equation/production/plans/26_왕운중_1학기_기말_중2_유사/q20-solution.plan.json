@@ -1,0 +1,58 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "l0",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "1/2"
+        ],
+        "domain": [
+          "-4",
+          "6"
+        ],
+        "color": "BLUE",
+        "label": "-x+2y=4"
+      },
+      {
+        "id": "l1",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1/2"
+        ],
+        "domain": [
+          "-4",
+          "6"
+        ],
+        "color": "WARM",
+        "label": "-3x+6y=3b"
+      }
+    ],
+    "viewport": [
+      -4,
+      6,
+      -4,
+      7
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "a=2이면 두 직선이 일치하고 b가 4가 아니면 셋째 직선이 평행하다.",
+  "accessibilityDescription": "a=2이면 두 직선이 일치하고 b가 4가 아니면 셋째 직선이 평행하다.",
+  "sourceConditions": [
+    {
+      "id": "origin",
+      "condition": "일차방정식 $-x + 2y = 4$의 그래프는 $ax - 4y = -8$의 그래프와는 일치하고, $-3x + 6y = 3b$의 그래프와는 만나지 않는다고 할 때, $a + b$의 값이 될 수 없는 것은? (단, $a, b$는 상수)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "a=2이면 두 직선이 일치하고 b가 4가 아니면 셋째 직선이 평행하다."
+  ]
+}
