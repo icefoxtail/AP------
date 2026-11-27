@@ -1,0 +1,221 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sCH",
+      "refs": [
+        "C",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sAG",
+      "refs": [
+        "A",
+        "G"
+      ],
+      "emphasis": "ACCENT"
+    },
+    {
+      "id": "sBG",
+      "refs": [
+        "B",
+        "G"
+      ],
+      "emphasis": "ACCENT"
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 540
+  },
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "C",
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dch",
+        "from": "C",
+        "to": "H",
+        "label": "sqrt(6)",
+        "side": "RIGHT",
+        "style": "ARROW"
+      },
+      {
+        "id": "dab",
+        "from": "A",
+        "to": "B",
+        "label": "2sqrt(2)",
+        "side": "BELOW",
+        "style": "ARROW"
+      }
+    ]
+  },
+  "caption": "직선 l 위 AB가 정삼각형의 밑변인 단면; CH=√6이고 무게중심 G는 높이를 2:1로 나눈다.",
+  "sourceConditions": [
+    {
+      "id": "math",
+      "condition": "직선 l 위 AB가 정삼각형의 밑변인 단면; CH=√6이고 무게중심 G는 높이를 2:1로 나눈다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "rightAngles"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "길이·직각·점 이름·풀이 보조선을 실제 그림 필드에 보존; 면 채움 사용 안 함."
+  ]
+}

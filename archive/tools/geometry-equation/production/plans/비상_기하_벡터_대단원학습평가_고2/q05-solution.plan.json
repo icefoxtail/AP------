@@ -1,0 +1,43 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 3
+      },
+      "height": 2,
+      "names": "EFGHABCD"
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "D",
+      "style": "AUTO",
+      "color": "BLUE"
+    },
+    {
+      "from": "F",
+      "to": "G",
+      "style": "AUTO",
+      "color": "BLUE"
+    }
+  ],
+  "caption": "AD와 FG의 같은 방향·길이; d-a=g-f",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "AD와 FG의 같은 방향·길이; d-a=g-f",
+      "mappedTo": [
+        "solids",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점 이름과 자동 숨은선 점선 유지; 별도 면 채움 없음"
+  ]
+}

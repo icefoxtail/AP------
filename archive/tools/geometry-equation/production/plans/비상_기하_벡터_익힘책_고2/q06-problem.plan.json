@@ -1,0 +1,227 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "D",
+          "B"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sDF",
+      "refs": [
+        "D",
+        "F"
+      ]
+    },
+    {
+      "id": "sFB",
+      "refs": [
+        "F",
+        "B"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "vectors": [
+      {
+        "id": "va",
+        "from": "A",
+        "to": "B",
+        "label": "vec(a)",
+        "side": "RIGHT"
+      },
+      {
+        "id": "vb",
+        "from": "A",
+        "to": "D",
+        "label": "vec(b)",
+        "side": "LEFT"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "mid",
+        "count": 1,
+        "segments": [
+          "sAE",
+          "sED"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 540
+  },
+  "caption": "평행사변형 ABCD에서 E는 AD의 중점, F는 DB를 1:2로 내분하고 AB=a, AD=b.",
+  "sourceConditions": [
+    {
+      "id": "diagram",
+      "condition": "평행사변형 ABCD에서 E는 AD의 중점, F는 DB를 1:2로 내분하고 AB=a, AD=b.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 꼭짓점·중점·대각선·벡터 방향을 정확한 좌표와 선분에 매핑; 불필요한 면 채움 없음."
+  ]
+}

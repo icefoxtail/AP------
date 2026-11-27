@@ -1,0 +1,58 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 3,
+        "depth": 3
+      },
+      "height": 2,
+      "names": "FGHEBCDA"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "FG",
+      "label": "3"
+    },
+    {
+      "edge": "GH",
+      "label": "3"
+    },
+    {
+      "edge": "DH",
+      "label": "2"
+    }
+  ],
+  "segments": [
+    {
+      "from": "C",
+      "to": "H",
+      "style": "AUTO",
+      "color": "BLUE"
+    },
+    {
+      "from": "D",
+      "to": "F",
+      "style": "AUTO",
+      "color": "WARM"
+    }
+  ],
+  "caption": "CH와 DF의 공간벡터 방향을 구분하여 내적 -5를 얻는다",
+  "sourceConditions": [
+    {
+      "id": "shape",
+      "condition": "CH와 DF의 공간벡터 방향을 구분하여 내적 -5를 얻는다",
+      "mappedTo": [
+        "solids",
+        "segments",
+        "dims"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점 라벨, 숨은선 점선, 길이·직각·동변 표시를 보존하고 면 채움 없음."
+  ]
+}

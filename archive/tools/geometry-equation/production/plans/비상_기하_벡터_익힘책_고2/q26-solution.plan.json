@@ -1,0 +1,257 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "21"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "14"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "21"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "14"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "21"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "77"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "H",
+    "A",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "sHB",
+      "refs": [
+        "H",
+        "B"
+      ]
+    },
+    {
+      "id": "sOH",
+      "refs": [
+        "O",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ],
+      "dashed": true
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 540
+  },
+  "displayCircles": [
+    "circ"
+  ],
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "O",
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "doh",
+        "from": "O",
+        "to": "H",
+        "label": "sqrt(21)",
+        "side": "LEFT",
+        "style": "ARROW"
+      },
+      {
+        "id": "dah",
+        "from": "A",
+        "to": "H",
+        "label": "2sqrt(14)",
+        "side": "ABOVE",
+        "style": "ARROW"
+      }
+    ]
+  },
+  "caption": "구의 반지름 √77, 중심 O에서 현 AB까지 OH=√21이고 AH=HB=2√14의 대원 단면.",
+  "sourceConditions": [
+    {
+      "id": "math",
+      "condition": "구의 반지름 √77, 중심 O에서 현 AB까지 OH=√21이고 AH=HB=2√14의 대원 단면.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "rightAngles"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "길이·직각·점 이름·풀이 보조선을 실제 그림 필드에 보존; 면 채움 사용 안 함."
+  ]
+}
