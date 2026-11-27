@@ -1,0 +1,52 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "따라서 $y=-2x+7$이므로 $a=-2$, $b=7$이다.",
+  "conic": {
+    "kind": "ELLIPSE",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "21",
+    "bSquared": "7",
+    "major": "Y"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "2",
+      "branch": "POS",
+      "coordinates": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "t",
+      "slope": "-2",
+      "intercept": "7",
+      "tangent": true,
+      "label": "y=-2x+7"
+    }
+  ],
+  "caption": "타원 3x^2+y^2=21 위의 점 P(2,3)에서의 접선 y=-2x+7",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "타원 3x^2+y^2=21 위의 점 (2,3)에서의 접선을 구한다.",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접점 P(2,3)과 접선 y=-2x+7의 위치"
+  ],
+  "accessibilityDescription": "타원 3x^2+y^2=21 위의 점 P(2,3)에서의 접선 y=-2x+7"
+}

@@ -1,0 +1,44 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": [
+      "-2",
+      "3",
+      "4"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      2.0943951023931953
+    ],
+    "viewport": [
+      -0.3,
+      2.4,
+      0,
+      8
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": ["2", "6"]
+    }
+  },
+  "caption": "y=4-2sin3x의 한 주기에서 최솟값 2와 최댓값 6을 확인하는 해설 그래프",
+  "accessibilityDescription": "y=4-2sin3x 그래프의 한 주기가 2부터 6 사이에서 진동하는 모습을 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "-1≤sin3x≤1이므로 2≤y=4-2sin3x≤6",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "한 주기의 곡선과 y=2, y=6의 극값 수준"
+  ]
+}

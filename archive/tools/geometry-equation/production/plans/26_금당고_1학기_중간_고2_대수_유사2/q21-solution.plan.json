@@ -1,0 +1,66 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "$Q(u)=u^2-u+2^{-k}$라 하자.",
+  "caption": "u>0에서 Q(u)=u²-u+1/2와 y=5/16의 두 교점",
+  "accessibilityDescription": "위로 열린 포물선 Q(u)=u제곱-u+1/2과 수평선 y=5/16이 양의 구간에서 서로 다른 두 점에서 만난다.",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "1/2",
+      "-1",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -0.3,
+      1.3
+    ],
+    "viewport": [
+      -0.4,
+      1.4,
+      -0.1,
+      1.1
+    ],
+    "axisVariable": "u",
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "1/4",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "curveX": "3/4",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "L",
+          "slope": "0",
+          "intercept": "5/16"
+        }
+      ]
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "$Q(u)=u^2-u+2^{-k}$라 하자.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문을 따르는 점, 선, 좌표, 보조선"
+  ]
+}
