@@ -174,7 +174,11 @@ window.questionBank = [
       "standardUnit": "이차곡선의 접선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선의접선_중단원학습점검_고2/q5-solution.svg",
+    "solutionImageAlt": "한 점에서 포물선에 그은 두 접선",
+    "solutionImageCaption": "한 점에서 포물선에 그은 두 접선",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -209,7 +213,15 @@ window.questionBank = [
       "standardUnit": "이차곡선의 접선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "image": "assets/images/비상_기하_이차곡선의접선_중단원학습점검_고2/q6-problem.svg",
+    "imageAlt": "타원의 두 접선과 삼각형 PQR",
+    "imageCaption": "타원의 두 접선과 삼각형 PQR",
+    "imageSize": "full",
+    "solutionImage": "assets/images/비상_기하_이차곡선의접선_중단원학습점검_고2/q6-solution.svg",
+    "solutionImageAlt": "접점과 접선 교점으로 계산한 삼각형 PQR",
+    "solutionImageCaption": "접점과 접선 교점으로 계산한 삼각형 PQR",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -244,7 +256,11 @@ window.questionBank = [
       "standardUnit": "이차곡선의 접선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선의접선_중단원학습점검_고2/q7-solution.svg",
+    "solutionImageAlt": "쌍곡선 접점 A,B를 잇는 세로 현",
+    "solutionImageCaption": "쌍곡선 접점 A,B를 잇는 세로 현",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -279,7 +295,15 @@ window.questionBank = [
       "standardUnit": "이차곡선의 접선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "image": "assets/images/비상_기하_이차곡선의접선_중단원학습점검_고2/q8-problem.svg",
+    "imageAlt": "포물선 접선과 준선의 교점 B",
+    "imageCaption": "포물선 접선과 준선의 교점 B",
+    "imageSize": "full",
+    "solutionImage": "assets/images/비상_기하_이차곡선의접선_중단원학습점검_고2/q8-solution.svg",
+    "solutionImageAlt": "접선과 준선에서 AB=2AF 검증",
+    "solutionImageCaption": "접선과 준선에서 AB=2AF 검증",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -314,7 +338,11 @@ window.questionBank = [
       "standardUnit": "이차곡선의 접선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선의접선_중단원학습점검_고2/q9-solution.svg",
+    "solutionImageAlt": "최소 넓이를 주는 접선 절편삼각형",
+    "solutionImageCaption": "최소 넓이를 주는 접선 절편삼각형",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -349,6 +377,15 @@ window.questionBank = [
       "standardUnit": "이차곡선의 접선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "image": "assets/images/비상_기하_이차곡선의접선_중단원학습점검_고2/q10-problem.svg",
+    "imageAlt": "접선 l, 수선의 발 H 및 교점 Q",
+    "imageCaption": "접선 l, 수선의 발 H 및 교점 Q",
+    "imageSize": "full",
+    "solutionImage": "assets/images/비상_기하_이차곡선의접선_중단원학습점검_고2/q10-solution.svg",
+    "solutionImageAlt": "수선 길이와 제1사분면 교점의 곱",
+    "solutionImageCaption": "수선 길이와 제1사분면 교점의 곱",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   }
 ];

@@ -110,7 +110,11 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선_익힘책_고2/q3-solution.svg",
+    "solutionImageAlt": "무게중심이 초점 F인 포물선 위 삼각형의 한 예",
+    "solutionImageCaption": "무게중심이 초점 F인 포물선 위 삼각형의 한 예",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -145,7 +149,11 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선_익힘책_고2/q4-solution.svg",
+    "solutionImageAlt": "포물선 위 점 A에서 초점과 준선까지의 거리가 각각 10",
+    "solutionImageCaption": "포물선 위 점 A에서 초점과 준선까지의 거리가 각각 10",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -215,7 +223,11 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선_익힘책_고2/q6-solution.svg",
+    "solutionImageAlt": "타원과 포물선의 공통 초점 F",
+    "solutionImageCaption": "타원과 포물선의 공통 초점 F",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -320,7 +332,15 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "image": "assets/images/비상_기하_이차곡선_익힘책_고2/q9-problem.svg",
+    "imageAlt": "넓이를 묻는 삼각형 PFF′의 위치",
+    "imageCaption": "넓이를 묻는 삼각형 PFF′의 위치",
+    "imageSize": "full",
+    "solutionImage": "assets/images/비상_기하_이차곡선_익힘책_고2/q9-solution.svg",
+    "solutionImageAlt": "P에서 x축 위 초점 두 개에 이르는 삼각형 PFF′의 넓이",
+    "solutionImageCaption": "P에서 x축 위 초점 두 개에 이르는 삼각형 PFF′의 넓이",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -355,7 +375,11 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선_익힘책_고2/q10-solution.svg",
+    "solutionImageAlt": "OP=OF인 점 P에서 두 초점까지의 선분이 만드는 직각삼각형",
+    "solutionImageCaption": "OP=OF인 점 P에서 두 초점까지의 선분이 만드는 직각삼각형",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -390,7 +414,11 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선_익힘책_고2/q11-solution.svg",
+    "solutionImageAlt": "두 타원이 같은 두 초점을 가지며 PFF′의 둘레 24인 대표 배치",
+    "solutionImageCaption": "두 타원이 같은 두 초점을 가지며 PFF′의 둘레 24인 대표 배치",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -425,7 +453,11 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선_익힘책_고2/q12-solution.svg",
+    "solutionImageAlt": "두 대각선 AB와 DC가 수직인 사각형 ADBC의 넓이",
+    "solutionImageCaption": "두 대각선 AB와 DC가 수직인 사각형 ADBC의 넓이",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -530,7 +562,11 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선_익힘책_고2/q15-solution.svg",
+    "solutionImageAlt": "세로 주축 쌍곡선과 기울기 ±1/√6인 점근선",
+    "solutionImageCaption": "세로 주축 쌍곡선과 기울기 ±1/√6인 점근선",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -565,7 +601,11 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선_익힘책_고2/q16-solution.svg",
+    "solutionImageAlt": "초점 간 20, 초점 거리의 차 12, 둘레 50인 삼각형",
+    "solutionImageCaption": "초점 간 20, 초점 거리의 차 12, 둘레 50인 삼각형",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

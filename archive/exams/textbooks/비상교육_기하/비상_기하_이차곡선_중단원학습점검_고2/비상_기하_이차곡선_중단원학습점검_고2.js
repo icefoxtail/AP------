@@ -174,7 +174,11 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선_중단원학습점검_고2/q5-solution.svg",
+    "solutionImageAlt": "아래로 열린 포물선과 P(4,-2)",
+    "solutionImageCaption": "아래로 열린 포물선과 P(4,-2)",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -209,7 +213,15 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "image": "assets/images/비상_기하_이차곡선_중단원학습점검_고2/q6-problem.svg",
+    "imageAlt": "포물선 y²=4x 위 점 P와 초점 F",
+    "imageCaption": "포물선 y²=4x 위 점 P와 초점 F",
+    "imageSize": "full",
+    "solutionImage": "assets/images/비상_기하_이차곡선_중단원학습점검_고2/q6-solution.svg",
+    "solutionImageAlt": "PF=PH=5를 보여 주는 초점·준선 보조선",
+    "solutionImageCaption": "PF=PH=5를 보여 주는 초점·준선 보조선",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -244,7 +256,11 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선_중단원학습점검_고2/q7-solution.svg",
+    "solutionImageAlt": "평행이동된 포물선의 초점과 준선",
+    "solutionImageCaption": "평행이동된 포물선의 초점과 준선",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -279,7 +295,15 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "image": "assets/images/비상_기하_이차곡선_중단원학습점검_고2/q8-problem.svg",
+    "imageAlt": "타원 위 평행사변형 PF′P′F",
+    "imageCaption": "타원 위 평행사변형 PF′P′F",
+    "imageSize": "full",
+    "solutionImage": "assets/images/비상_기하_이차곡선_중단원학습점검_고2/q8-solution.svg",
+    "solutionImageAlt": "초점거리의 합으로 읽는 평행사변형 둘레",
+    "solutionImageCaption": "초점거리의 합으로 읽는 평행사변형 둘레",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -314,7 +338,11 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선_중단원학습점검_고2/q9-solution.svg",
+    "solutionImageAlt": "초점과 두 반축 길이차",
+    "solutionImageCaption": "초점과 두 반축 길이차",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -349,7 +377,11 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선_중단원학습점검_고2/q10-solution.svg",
+    "solutionImageAlt": "초점을 공유하는 두 타원",
+    "solutionImageCaption": "초점을 공유하는 두 타원",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -384,7 +416,15 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "image": "assets/images/비상_기하_이차곡선_중단원학습점검_고2/q11-problem.svg",
+    "imageAlt": "쌍곡선과 직각삼각형 FPF′",
+    "imageCaption": "쌍곡선과 직각삼각형 FPF′",
+    "imageSize": "full",
+    "solutionImage": "assets/images/비상_기하_이차곡선_중단원학습점검_고2/q11-solution.svg",
+    "solutionImageAlt": "피타고라스와 쌍곡선 거리차를 쓰는 삼각형",
+    "solutionImageCaption": "피타고라스와 쌍곡선 거리차를 쓰는 삼각형",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -419,7 +459,15 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "image": "assets/images/비상_기하_이차곡선_중단원학습점검_고2/q12-problem.svg",
+    "imageAlt": "기지국을 초점으로 하는 위치 자취",
+    "imageCaption": "기지국을 초점으로 하는 위치 자취",
+    "imageSize": "full",
+    "solutionImage": "assets/images/비상_기하_이차곡선_중단원학습점검_고2/q12-solution.svg",
+    "solutionImageAlt": "초점 사이 거리와 주축의 길이",
+    "solutionImageCaption": "초점 사이 거리와 주축의 길이",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -454,7 +502,11 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선_중단원학습점검_고2/q13-solution.svg",
+    "solutionImageAlt": "점근선과 y축이 이루는 삼각형",
+    "solutionImageCaption": "점근선과 y축이 이루는 삼각형",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -489,7 +541,11 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선_중단원학습점검_고2/q14-solution.svg",
+    "solutionImageAlt": "공초점 타원·쌍곡선 교점에서의 거리합과 거리차",
+    "solutionImageCaption": "공초점 타원·쌍곡선 교점에서의 거리합과 거리차",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -524,7 +580,15 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "image": "assets/images/비상_기하_이차곡선_중단원학습점검_고2/q15-problem.svg",
+    "imageAlt": "포물선 궤도와 태양-혜성 거리",
+    "imageCaption": "포물선 궤도와 태양-혜성 거리",
+    "imageSize": "full",
+    "solutionImage": "assets/images/비상_기하_이차곡선_중단원학습점검_고2/q15-solution.svg",
+    "solutionImageAlt": "포물선 초점과 꼭짓점의 최단거리",
+    "solutionImageCaption": "포물선 초점과 꼭짓점의 최단거리",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -559,7 +623,15 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "image": "assets/images/비상_기하_이차곡선_중단원학습점검_고2/q16-problem.svg",
+    "imageAlt": "타원·포물선의 두 교점 P,Q",
+    "imageCaption": "타원·포물선의 두 교점 P,Q",
+    "imageSize": "full",
+    "solutionImage": "assets/images/비상_기하_이차곡선_중단원학습점검_고2/q16-solution.svg",
+    "solutionImageAlt": "포물선 준선과 타원 초점의 직각 보조삼각형",
+    "solutionImageCaption": "포물선 준선과 타원 초점의 직각 보조삼각형",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -594,6 +666,10 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선_중단원학습점검_고2/q17-solution.svg",
+    "solutionImageAlt": "삼각부등식의 등호가 되는 최단거리 경로",
+    "solutionImageCaption": "삼각부등식의 등호가 되는 최단거리 경로",
+    "solutionImageSize": "full"
   }
 ];
