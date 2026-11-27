@@ -1,0 +1,20 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "caption": "−4x+y−1=0은 y=4x+1로, 기울기가 양수이므로 오른쪽으로 갈수록 증가한다. 점 (1,5)를 지나며 y=4x와 평행하고, x절편은 −1/4이다.",
+  "accessibilityDescription": "기울기 4인 두 평행한 직선 y=4x+1, y=4x와 주어진 점 (1,5)를 표시한다.",
+  "sourceConditions": [
+    {"id": "q6-s-line", "condition": "−4x+y−1=0은 y=4x+1이고 점 (1,5)를 지난다.", "mappedTo": "graphPlan.curves,graphPlan.overlays.points"},
+    {"id": "q6-s-parallel", "condition": "y=4x와 기울기가 4로 같다. 두 직선은 서로 다른 y절편을 갖는다.", "mappedTo": "graphPlan.curves"}
+  ],
+  "newVisualInformation": ["원래 직선과 평행인 비교 직선을 분리해 양의 기울기 관계 표현", "주어진 점 (1,5)를 좌표 라벨로 표기"],
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-2, 2, -8, 10],
+    "curves": [
+      {"id": "given", "kind": "LINE", "coefficients": ["1", "4"], "domain": ["-2", "2"], "color": "BLUE", "label": "y=4x+1"},
+      {"id": "compare", "kind": "LINE", "coefficients": ["0", "4"], "domain": ["-2", "2"], "color": "WARM", "style": "DASHED", "label": "y=4x"}
+    ],
+    "axisTickValues": {"x": ["-1", "1"], "y": ["1", "5"]},
+    "overlays": {"points": [{"id": "Q", "x": "1", "y": "5", "coordinates": true}]}
+  }
+}

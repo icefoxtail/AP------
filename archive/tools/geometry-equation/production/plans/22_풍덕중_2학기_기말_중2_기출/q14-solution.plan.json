@@ -1,0 +1,25 @@
+{
+  "capability": "lattice-path-figure-v1",
+  "caption": "A에서 P까지 오른쪽 2번·위쪽 1번의 순서가 3가지이고, P에서 B까지는 연못 때문에 오른쪽을 먼저 거치는 1가지뿐이다. 최단 경로는 3×1=3가지.",
+  "accessibilityDescription": "3×3 격자에서 A에서 P까지 경로 3가지, P에서 B까지 경로 1가지이다. 연못에 가린 도로는 점선으로 끊긴다.",
+  "sourceConditions": [
+    {"id": "q14-s-route", "condition": "P는 (2,1)에서 반드시 거치며 A→P는 세 경로, P→B는 한 경로다.", "mappedTo": "lattice.viaPoints,lattice.counts"},
+    {"id": "q14-s-pond", "condition": "P 바로 위의 길을 포함해 연못에 가린 도로 일곱 구간은 통행 불가다.", "mappedTo": "lattice.forbidden"}
+  ],
+  "newVisualInformation": [
+    "A→P와 P→B를 독립 구간으로 세는 누적 경로 수 표시",
+    "P 위쪽 연못에 막힌 도로와 오른쪽 가장자리로 돌아가는 유일 경로의 구조 강조",
+    "연못 물결 경계의 실제 곡선은 ENGINE_CAPABILITY_PENDING"
+  ],
+  "lattice": {
+    "grid": {"cols": 3, "rows": 3},
+    "points": {"A": [0, 0], "P": [2, 1], "B": [3, 3]},
+    "from": "A", "to": "B", "viaPoints": ["P"],
+    "forbidden": [
+      [[0, 2], [1, 2]], [[1, 2], [2, 2]], [[2, 2], [3, 2]],
+      [[1, 1], [1, 2]], [[1, 2], [1, 3]],
+      [[2, 1], [2, 2]], [[2, 2], [2, 3]]
+    ],
+    "counts": "segments"
+  }
+}

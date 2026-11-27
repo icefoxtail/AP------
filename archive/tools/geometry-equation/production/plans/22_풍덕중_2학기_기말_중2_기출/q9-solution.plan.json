@@ -1,0 +1,18 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "caption": "두 직선의 기울기는 모두 2/3이고 y절편은 각각 −1/3, 7/6이다. a=6일 때 두 직선은 평행하지만 일치하지 않아 해가 없다.",
+  "accessibilityDescription": "기울기 2/3인 서로 다른 두 직선이 평행하게 놓여 교점이 없음을 보인다.",
+  "sourceConditions": [
+    {"id": "q9-s", "condition": "2x−3y=1, −4x+6y=7을 y=2x/3−1/3 및 y=2x/3+7/6으로 비교한다.", "mappedTo": "graphPlan.curves"}
+  ],
+  "newVisualInformation": ["원본 해설의 서로 다른 절편을 갖는 두 직선을 실제 평행한 선으로 재현"],
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-4, 4, -4, 5],
+    "curves": [
+      {"id": "first", "kind": "LINE", "coefficients": ["-1/3", "2/3"], "domain": ["-4", "4"], "color": "BLUE", "label": "2x-3y=1"},
+      {"id": "second", "kind": "LINE", "coefficients": ["7/6", "2/3"], "domain": ["-4", "4"], "color": "WARM", "label": "-4x+6y=7"}
+    ],
+    "axisTickValues": {"x": ["-3", "3"], "y": ["-1", "1", "3"]}
+  }
+}
