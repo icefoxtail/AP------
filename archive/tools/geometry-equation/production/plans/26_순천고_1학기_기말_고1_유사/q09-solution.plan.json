@@ -1,0 +1,43 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "50",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "75",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "A의 무게 범위"
+  },
+  "caption": "열량 조건 x≤75와 단백질 조건 x≥50의 공통 범위는 50≤x≤75(g)이다.",
+  "accessibilityDescription": "식품 A 무게 x의 허용 범위인 50 이상 75 이하를 두 닫힌 점 사이의 선으로 표시한 수직선.",
+  "sourceConditions": [
+    {
+      "id": "h1-09-1",
+      "condition": "열량 조건에서 x≤75",
+      "mappedTo": "numberLine.rows[0].pieces[0].hi"
+    },
+    {
+      "id": "h1-09-2",
+      "condition": "단백질 조건에서 x≥50",
+      "mappedTo": "numberLine.rows[0].pieces[0].lo"
+    }
+  ],
+  "newVisualInformation": [
+    "두 영양조건을 만족하는 50~75 g 공통 구간과 양 끝점을 보인다."
+  ]
+}
