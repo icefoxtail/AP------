@@ -1,0 +1,190 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "PF+PF′=10, PQ=2√10, 준선 x=-c를 지나가는 F′, H는 P의 수선의 발",
+  "caption": "포물선 준선과 타원 초점의 직각 보조삼각형",
+  "accessibilityDescription": "두 곡선의 교점 P,Q, 타원의 두 초점과 포물선의 준선, P의 준선 수선 H를 표시하고 PQ=2√10을 표기한다.",
+  "conics": [
+    {
+      "id": "e",
+      "kind": "ELLIPSE",
+      "center": [
+        "0",
+        "0"
+      ],
+      "aSquared": "25",
+      "bSquared": "(139-9*sqrt(41))/8",
+      "major": "X"
+    },
+    {
+      "id": "p",
+      "kind": "PARABOLA",
+      "vertex": [
+        "0",
+        "0"
+      ],
+      "p": "(9+sqrt(41))/4",
+      "axis": "X"
+    }
+  ],
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "A",
+      "kind": "VERTEX",
+      "curve": "e",
+      "side": 1
+    },
+    {
+      "id": "B",
+      "kind": "VERTEX",
+      "curve": "e",
+      "side": -1
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "curve": "e",
+      "side": 1
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "curve": "e",
+      "side": -1
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "curve": "e",
+      "x": "(9-sqrt(41))/4",
+      "branch": "POS"
+    },
+    {
+      "id": "Q",
+      "kind": "ON_CONIC",
+      "curve": "e",
+      "x": "(9-sqrt(41))/4",
+      "branch": "NEG"
+    },
+    {
+      "id": "H",
+      "kind": "FOOT",
+      "from": "P",
+      "onto": "d",
+      "rightAngle": true
+    },
+    {
+      "id": "U",
+      "kind": "POINT",
+      "x": "10",
+      "y": "sqrt(10)",
+      "label": false
+    },
+    {
+      "id": "V",
+      "kind": "POINT",
+      "x": "10",
+      "y": "-sqrt(10)",
+      "label": false
+    }
+  ],
+  "lines": [
+    {
+      "id": "d",
+      "role": "DIRECTRIX",
+      "curve": "p",
+      "dashed": true,
+      "label": "l"
+    }
+  ],
+  "segments": [
+    {
+      "id": "PQ",
+      "from": "P",
+      "to": "Q"
+    },
+    {
+      "id": "PF",
+      "from": "P",
+      "to": "F"
+    },
+    {
+      "id": "PFp",
+      "from": "P",
+      "to": "F'"
+    },
+    {
+      "id": "PH",
+      "from": "P",
+      "to": "H",
+      "dashed": true
+    },
+    {
+      "id": "HFp",
+      "from": "H",
+      "to": "F'",
+      "dashed": true
+    },
+    {
+      "id": "PU",
+      "from": "P",
+      "to": "U",
+      "dashed": true
+    },
+    {
+      "id": "QV",
+      "from": "Q",
+      "to": "V",
+      "dashed": true
+    },
+    {
+      "id": "UV",
+      "from": "U",
+      "to": "V",
+      "label": "2√10"
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "PF+PF′=AB=10",
+      "mappedTo": [
+        "conics[0]",
+        "points[1]",
+        "points[2]",
+        "segments[1]",
+        "segments[2]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "포물선의 준선은 F′를 지나며 PH=PF",
+      "mappedTo": [
+        "conics[1]",
+        "lines[0]",
+        "points[4]",
+        "points[7]",
+        "segments[3]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "PQ=2√10, H는 P에서 준선에 내린 수선의 발",
+      "mappedTo": [
+        "points[5]",
+        "points[6]",
+        "segments[0]",
+        "segments[7]",
+        "points[7]",
+        "segments[4]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "직각 H와 포물선 정의 및 초점거리의 합을 함께 제시.",
+    "ENGINE_CAPABILITY_PENDING: CONIC_CONIC_VISUAL_CROSS_MEMBERSHIP: 쌍곡선·타원 교점 등 복합 곡선의 점 다중 소속 검증"
+  ]
+}

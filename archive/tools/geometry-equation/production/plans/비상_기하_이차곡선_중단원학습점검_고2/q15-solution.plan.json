@@ -1,0 +1,69 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "FP=8×10⁸ km, ∠PFO=60°, 가장 가까운 거리 OF=2×10⁸ km",
+  "caption": "포물선 초점과 꼭짓점의 최단거리",
+  "accessibilityDescription": "단위 10⁸ km인 포물선에서 F(2,0), P(6,4√3)을 잇는 8 길이와 OF=2를 보인다. 각 60° 표식은 기능 대기.",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "2",
+    "axis": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "6",
+      "branch": "POS"
+    }
+  ],
+  "segments": [
+    {
+      "id": "OF",
+      "from": "O",
+      "to": "F",
+      "label": "2"
+    },
+    {
+      "id": "FP",
+      "from": "F",
+      "to": "P",
+      "label": "8"
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "초점 F와 꼭짓점 O 사이 최단거리 p",
+      "mappedTo": [
+        "conic",
+        "points[0]",
+        "points[1]",
+        "segments[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "FP는 8×10⁸ km, 축과 이루는 각 60°",
+      "mappedTo": [
+        "points[2]",
+        "segments[1]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "길이 2와 8은 단위 10⁸ km로 수학적으로 일관.",
+    "ENGINE_CAPABILITY_PENDING: ANGLE_ARC_MARKER: 초점 F에서 FP와 축 사이 60° 각도 호·라벨 표시 API"
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "AB=120 km, PA와 PB의 차=60 km, 자취는 x²/900-y²/2700=1",
+  "caption": "초점 사이 거리와 주축의 길이",
+  "accessibilityDescription": "중심 O에서 기지국 초점 A,B까지 각각 60 km, 쌍곡선 주축 양끝 V,W의 거리 60 km를 표시한다.",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "9",
+    "bSquared": "27",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "A",
+      "kind": "FOCUS",
+      "side": -1
+    },
+    {
+      "id": "B",
+      "kind": "FOCUS",
+      "side": 1
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "5",
+      "sign": "POS"
+    },
+    {
+      "id": "V",
+      "kind": "VERTEX",
+      "side": 1
+    },
+    {
+      "id": "W",
+      "kind": "VERTEX",
+      "side": -1
+    }
+  ],
+  "segments": [
+    {
+      "id": "AO",
+      "from": "A",
+      "to": "O"
+    },
+    {
+      "id": "OB",
+      "from": "O",
+      "to": "B"
+    },
+    {
+      "id": "WV",
+      "from": "W",
+      "to": "V"
+    },
+    {
+      "id": "AP",
+      "from": "A",
+      "to": "P"
+    },
+    {
+      "id": "BP",
+      "from": "B",
+      "to": "P"
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "c=60, 초점 A(-60,0), B(60,0)",
+      "mappedTo": [
+        "conic",
+        "points[1]",
+        "points[2]",
+        "segments[0]",
+        "segments[1]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "2a=60, 두 꼭짓점 V,W",
+      "mappedTo": [
+        "points[4]",
+        "points[5]",
+        "segments[2]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "P의 PA-PB 거리차 60",
+      "mappedTo": [
+        "points[3]",
+        "segments[3]",
+        "segments[4]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "좌표 단위 10 km: c=6, a=3, b²=27이므로 실제 a²=900 km², b²=2700 km²이다.",
+    "ENGINE_CAPABILITY_PENDING: AXIS_DIMENSION_LABEL_EXTERNAL_LEADER (축을 따른 AO=OB=WV=60 km 치수 숫자를 외부 지시선에 배치)"
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "쌍곡선 x²/4-y²/5=1, A(3,0) 초점, B(5,√17), P는 오른쪽 쌍곡선 위",
+  "caption": "삼각부등식의 등호가 되는 최단거리 경로",
+  "accessibilityDescription": "두 초점 F,F′와 B(5,√17)를 잇는 보조 직선이 오른쪽 가지에서 만나는 P를 강조하여 PF+PB의 최소 경로를 보인다.",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "4",
+    "bSquared": "5",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "A",
+      "kind": "FOCUS",
+      "side": 1
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": -1
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "x": "5",
+      "y": "sqrt(17)",
+      "coordinates": true
+    },
+    {
+      "id": "P",
+      "kind": "LINE_CONIC",
+      "line": "k",
+      "which": 2
+    }
+  ],
+  "lines": [
+    {
+      "id": "k",
+      "through": [
+        "F",
+        "B"
+      ],
+      "hidden": true
+    }
+  ],
+  "segments": [
+    {
+      "id": "FP",
+      "from": "F",
+      "to": "P"
+    },
+    {
+      "id": "PB",
+      "from": "P",
+      "to": "B"
+    },
+    {
+      "id": "PA",
+      "from": "P",
+      "to": "A"
+    },
+    {
+      "id": "FB",
+      "from": "F",
+      "to": "B",
+      "dashed": true,
+      "label": "9"
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A(3,0)는 오른쪽 초점이고 F(-3,0)는 왼쪽 초점",
+      "mappedTo": [
+        "conic",
+        "points[1]",
+        "points[2]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "B(5,√17), 직선 FB가 오른쪽 가지에서 P를 지남",
+      "mappedTo": [
+        "points[3]",
+        "points[4]",
+        "lines[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "PF+PB=FB=9에서 주축 길이 4를 뺀 최소값 5",
+      "mappedTo": [
+        "segments[0]",
+        "segments[1]",
+        "segments[2]",
+        "segments[3]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "점 P가 최솟값을 주는 경로의 접점이 아니라 선분 FB의 교점이라는 사실을 표시."
+  ]
+}

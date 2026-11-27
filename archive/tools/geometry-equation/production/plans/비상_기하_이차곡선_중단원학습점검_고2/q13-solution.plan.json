@@ -1,0 +1,117 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "3x²-4y²-6ax=0, 양수 a=2일 때 점근선과 y축으로 생기는 넓이 2√3",
+  "caption": "점근선과 y축이 이루는 삼각형",
+  "accessibilityDescription": "중심 M(2,0)인 쌍곡선의 점근선 두 개와 y축 교점 U,V를 잇는 삼각형, 밑변 2√3과 높이 2를 그린다.",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "2",
+      "0"
+    ],
+    "aSquared": "4",
+    "bSquared": "3",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "M",
+      "kind": "POINT",
+      "x": "2",
+      "y": "0"
+    },
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "U",
+      "kind": "LINE_LINE",
+      "lines": [
+        "ap",
+        "axis"
+      ]
+    },
+    {
+      "id": "V",
+      "kind": "LINE_LINE",
+      "lines": [
+        "am",
+        "axis"
+      ]
+    }
+  ],
+  "lines": [
+    {
+      "id": "ap",
+      "role": "ASYMPTOTE",
+      "sign": 1,
+      "dashed": true
+    },
+    {
+      "id": "am",
+      "role": "ASYMPTOTE",
+      "sign": -1,
+      "dashed": true
+    },
+    {
+      "id": "axis",
+      "x": "0"
+    }
+  ],
+  "segments": [
+    {
+      "id": "UV",
+      "from": "U",
+      "to": "V"
+    },
+    {
+      "id": "UM",
+      "from": "U",
+      "to": "M"
+    },
+    {
+      "id": "VM",
+      "from": "V",
+      "to": "M"
+    },
+    {
+      "id": "MO",
+      "from": "M",
+      "to": "O",
+      "label": "2"
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a=2에서 쌍곡선 중심 (2,0)",
+      "mappedTo": [
+        "conic",
+        "points[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "점근선은 y=±√3/2(x-2), y축과 U,V에서 만남",
+      "mappedTo": [
+        "lines[0]",
+        "lines[1]",
+        "lines[2]",
+        "points[2]",
+        "points[3]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "삼각형의 높이 2, 밑변 2√3",
+      "mappedTo": [
+        "segments[0]",
+        "segments[3]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "불필요한 영역 채움 없이 면적을 결정하는 세 변·높이만 표시."
+  ]
+}

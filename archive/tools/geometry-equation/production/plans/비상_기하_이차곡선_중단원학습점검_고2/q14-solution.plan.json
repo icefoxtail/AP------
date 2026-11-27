@@ -1,0 +1,100 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "x²/25+y²/16=1와 x²-y²/8=1, 공통 초점 F,F′, 교점 P",
+  "caption": "공초점 타원·쌍곡선 교점에서의 거리합과 거리차",
+  "accessibilityDescription": "초점 ±3을 공유하는 두 이차곡선의 제1사분면 교점 P와 각 초점까지의 거리 4,6을 표시한다.",
+  "conics": [
+    {
+      "id": "e",
+      "kind": "ELLIPSE",
+      "center": [
+        "0",
+        "0"
+      ],
+      "aSquared": "25",
+      "bSquared": "16",
+      "major": "X"
+    },
+    {
+      "id": "h",
+      "kind": "HYPERBOLA",
+      "center": [
+        "0",
+        "0"
+      ],
+      "aSquared": "1",
+      "bSquared": "8",
+      "transverse": "X"
+    }
+  ],
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "curve": "e",
+      "side": 1
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "curve": "e",
+      "side": -1
+    },
+    {
+      "id": "P",
+      "kind": "CONIC_CONIC",
+      "curves": [
+        "e",
+        "h"
+      ],
+      "which": 4
+    }
+  ],
+  "segments": [
+    {
+      "id": "PF",
+      "from": "P",
+      "to": "F",
+      "label": "4"
+    },
+    {
+      "id": "PFp",
+      "from": "P",
+      "to": "F'",
+      "label": "6"
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "타원·쌍곡선은 초점 ±3을 공유한다.",
+      "mappedTo": [
+        "conics",
+        "points[1]",
+        "points[2]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "P는 두 곡선의 제1사분면 공통 교점",
+      "mappedTo": [
+        "points[3]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "PF+PF′=10, |PF-PF′|=2",
+      "mappedTo": [
+        "segments[0]",
+        "segments[1]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 초점거리의 제곱 차 6²−4²=20을 직접 읽을 수 있다."
+  ]
+}

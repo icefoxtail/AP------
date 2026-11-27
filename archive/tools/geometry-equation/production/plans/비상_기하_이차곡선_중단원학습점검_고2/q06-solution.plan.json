@@ -1,0 +1,90 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "PF=5, 초점 F(1,0), 준선 x=-1, P에서 준선으로 내린 수선 PH",
+  "caption": "PF=PH=5를 보여 주는 초점·준선 보조선",
+  "accessibilityDescription": "포물선, 초점 F, 점 P, 점선 준선 x=-1, 수선의 발 H와 직각표시 및 같은 길이 5를 나타낸다.",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "1",
+    "axis": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "4",
+      "branch": "POS"
+    },
+    {
+      "id": "H",
+      "kind": "FOOT",
+      "from": "P",
+      "onto": "d",
+      "rightAngle": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "d",
+      "role": "DIRECTRIX",
+      "label": "l",
+      "dashed": true
+    }
+  ],
+  "segments": [
+    {
+      "id": "PF",
+      "from": "P",
+      "to": "F",
+      "label": "5"
+    },
+    {
+      "id": "PH",
+      "from": "P",
+      "to": "H",
+      "label": "5"
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "포물선 y²=4x, F(1,0).",
+      "mappedTo": [
+        "conic",
+        "points[1]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "준선 x=-1와 수선 PH",
+      "mappedTo": [
+        "lines[0]",
+        "points[3]",
+        "segments[1]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "PF=PH=5",
+      "mappedTo": [
+        "segments[0]",
+        "segments[1]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "직각 H와 준선·보조선이 거리 정의를 직접 보여 준다."
+  ]
+}

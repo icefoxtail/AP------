@@ -1,0 +1,107 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "쌍곡선 x²-y²=32 위 P(-6,2)의 접선 l, 원점에서 l에 내린 수선의 발 H, OH와 제1사분면 교점 Q",
+  "caption": "접선 l, 수선의 발 H 및 교점 Q",
+  "accessibilityDescription": "좌우 쌍곡선과 P의 접선, O에서 접선에 수직인 H까지의 선분, 이 수선과 쌍곡선이 만나는 Q를 그린다.",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "32",
+    "bSquared": "32",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "-6",
+      "sign": "POS",
+      "coordinates": true
+    },
+    {
+      "id": "Q",
+      "kind": "ON_CONIC",
+      "x": "6",
+      "sign": "POS"
+    },
+    {
+      "id": "H",
+      "kind": "FOOT",
+      "from": "O",
+      "onto": "t",
+      "rightAngle": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "t",
+      "tangent": true,
+      "at": "P",
+      "label": "l"
+    },
+    {
+      "id": "k",
+      "through": [
+        "O",
+        "Q"
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "id": "OH",
+      "from": "O",
+      "to": "H"
+    },
+    {
+      "id": "OQ",
+      "from": "O",
+      "to": "Q"
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x²-y²=32, P(-6,2)는 왼쪽 가지",
+      "mappedTo": [
+        "conic",
+        "points[1]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "P의 접선 l",
+      "mappedTo": [
+        "lines[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "H는 O에서 l에 내린 수선의 발과 직각",
+      "mappedTo": [
+        "points[0]",
+        "points[3]",
+        "segments[0]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "OH 직선과 제1사분면 가지의 교점 Q",
+      "mappedTo": [
+        "lines[1]",
+        "points[2]",
+        "segments[1]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 H 직각과 l·O·P·Q 점/선분 표식을 보존."
+  ]
+}

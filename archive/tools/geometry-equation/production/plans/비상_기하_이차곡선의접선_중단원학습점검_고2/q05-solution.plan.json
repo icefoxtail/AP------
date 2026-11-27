@@ -1,0 +1,88 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "외부 점 (2,-1)에서 포물선 y²=-2x에 그은 두 접선 기울기 합",
+  "caption": "한 점에서 포물선에 그은 두 접선",
+  "accessibilityDescription": "왼쪽으로 열린 포물선 밖의 A(2,-1)에서 두 서로 다른 접점 T1,T2로 그은 접선 두 개를 보인다.",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "-1/2",
+    "axis": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "x": "2",
+      "y": "-1",
+      "coordinates": true
+    },
+    {
+      "id": "T1",
+      "kind": "TANGENT_FROM",
+      "from": "A",
+      "which": 1
+    },
+    {
+      "id": "T2",
+      "kind": "TANGENT_FROM",
+      "from": "A",
+      "which": 2
+    }
+  ],
+  "lines": [
+    {
+      "id": "t1",
+      "tangent": true,
+      "at": "T1"
+    },
+    {
+      "id": "t2",
+      "tangent": true,
+      "at": "T2"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AT1",
+      "from": "A",
+      "to": "T1"
+    },
+    {
+      "id": "AT2",
+      "from": "A",
+      "to": "T2"
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y²=-2x, 꼭짓점 O, 왼쪽 방향",
+      "mappedTo": [
+        "conic",
+        "points[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "A(2,-1)에서 서로 다른 두 접선을 그림",
+      "mappedTo": [
+        "points[1]",
+        "points[2]",
+        "points[3]",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기울기 두 해가 별개의 접선으로 대응한다."
+  ]
+}

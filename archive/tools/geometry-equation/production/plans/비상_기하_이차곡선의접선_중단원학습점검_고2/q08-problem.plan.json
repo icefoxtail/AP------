@@ -1,0 +1,102 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "포물선 y²=24x, 초점 F, 첫사분면 A에서의 접선과 준선의 교점 B, AB=2AF",
+  "caption": "포물선 접선과 준선의 교점 B",
+  "accessibilityDescription": "오른쪽 포물선의 초점 F와 A를 잇고, A의 접선과 세로 준선 x=-6가 만나는 B를 나타낸다.",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "6",
+    "axis": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS"
+    },
+    {
+      "id": "A",
+      "kind": "ON_CONIC",
+      "x": "2",
+      "branch": "POS"
+    },
+    {
+      "id": "B",
+      "kind": "LINE_LINE",
+      "lines": [
+        "t",
+        "d"
+      ]
+    }
+  ],
+  "lines": [
+    {
+      "id": "t",
+      "tangent": true,
+      "at": "A",
+      "label": "t"
+    },
+    {
+      "id": "d",
+      "role": "DIRECTRIX",
+      "label": "x=-6"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AF",
+      "from": "A",
+      "to": "F"
+    },
+    {
+      "id": "AB",
+      "from": "A",
+      "to": "B",
+      "label": "2AF"
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y²=24x는 초점 F(6,0)인 포물선",
+      "mappedTo": [
+        "conic",
+        "points[1]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "A는 1사분면의 포물선 위 접점",
+      "mappedTo": [
+        "points[2]",
+        "lines[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "B는 A의 접선과 준선 x=-6의 교점",
+      "mappedTo": [
+        "points[3]",
+        "lines[1]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "AB=2AF",
+      "mappedTo": [
+        "segments[0]",
+        "segments[1]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 두 직선, 교점 B, A-F 선분과 모든 점 라벨을 보존."
+  ]
+}

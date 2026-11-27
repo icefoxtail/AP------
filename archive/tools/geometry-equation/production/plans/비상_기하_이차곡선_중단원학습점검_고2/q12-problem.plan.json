@@ -1,0 +1,87 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "기지국 A,B가 120 km 떨어져 있고 배에서 두 기지국까지의 거리차는 60 km",
+  "caption": "기지국을 초점으로 하는 위치 자취",
+  "accessibilityDescription": "가로로 120 km 떨어진 기지국 A,B와 제1사분면 배 위치 P를 두 초점과 잇고 거리차가 60 km인 쌍곡선 위에 표시한다.",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "9",
+    "bSquared": "27",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "A",
+      "kind": "FOCUS",
+      "side": -1
+    },
+    {
+      "id": "B",
+      "kind": "FOCUS",
+      "side": 1
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "5",
+      "sign": "POS"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AO",
+      "from": "A",
+      "to": "O"
+    },
+    {
+      "id": "OB",
+      "from": "O",
+      "to": "B"
+    },
+    {
+      "id": "AP",
+      "from": "A",
+      "to": "P"
+    },
+    {
+      "id": "BP",
+      "from": "B",
+      "to": "P"
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "기지국 A,B는 x축 위 ±60 km, AB=120 km",
+      "mappedTo": [
+        "conic",
+        "points[1]",
+        "points[2]",
+        "segments[0]",
+        "segments[1]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "배 P는 두 기지국으로부터 거리차 60 km인 자취 위의 한 점",
+      "mappedTo": [
+        "points[3]",
+        "segments[2]",
+        "segments[3]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 바다 사진·배 아이콘은 원본 PNG에 남기고 수학 요소만 엔진 플랜으로 재구성. 좌표 단위는 10 km이며 AO=OB=60 km이다.",
+    "ENGINE_CAPABILITY_PENDING: AXIS_DIMENSION_LABEL_EXTERNAL_LEADER (x축과 초점 라벨을 피해 AO·OB에 각각 60 km를 붙이는 치수선 레이아웃)",
+    "ENGINE_CAPABILITY_PENDING: RASTER_SCENE_COMPOSITOR (배·기지국 아이콘과 바다 배경을 원본 에셋 그대로 합성하는 기능 필요)"
+  ]
+}

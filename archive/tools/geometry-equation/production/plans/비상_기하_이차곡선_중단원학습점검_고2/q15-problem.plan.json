@@ -1,0 +1,70 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "태양 F는 혜성 포물선의 초점, FP=8×10⁸ km, FP와 축의 각 60°",
+  "caption": "포물선 궤도와 태양-혜성 거리",
+  "accessibilityDescription": "오른쪽으로 열린 포물선, 초점 태양 F, 위쪽 가지 혜성 P, 선분 FP에 8×10⁸ km 라벨을 보인다. 60도 호 표기는 엔진 지원 대기.",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "2",
+    "axis": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "6",
+      "branch": "POS"
+    }
+  ],
+  "segments": [
+    {
+      "id": "FP",
+      "from": "F",
+      "to": "P",
+      "label": "8"
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "태양은 포물선의 초점 F이고 혜성 P는 포물선 위",
+      "mappedTo": [
+        "conic",
+        "points[1]",
+        "points[2]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "태양과 혜성의 거리 8×10⁸ km",
+      "mappedTo": [
+        "segments[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "FP와 포물선 축의 각 60°",
+      "mappedTo": [
+        "points[1]",
+        "points[2]",
+        "segments[0]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "거리 단위를 10⁸ km로 잡아 실제 x=6,y=4√3인 도형을 사용.",
+    "ENGINE_CAPABILITY_PENDING: ANGLE_ARC_MARKER: FP와 포물선 축 사이 60° 호·각도 라벨 표시 API"
+  ]
+}

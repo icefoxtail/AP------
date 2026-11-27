@@ -1,0 +1,170 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "장축 AB(±5,0)인 타원, 초점 F인 원점 꼭짓점 포물선, 교점 P,Q와 PQ=2√10",
+  "caption": "타원·포물선의 두 교점 P,Q",
+  "accessibilityDescription": "장축 AB=10인 타원과 초점 F를 공유하는 포물선이 교차한 위아래 점 P,Q를 그려 세로 현 PQ의 길이 2√10을 표시한다.",
+  "conics": [
+    {
+      "id": "e",
+      "kind": "ELLIPSE",
+      "center": [
+        "0",
+        "0"
+      ],
+      "aSquared": "25",
+      "bSquared": "(139-9*sqrt(41))/8",
+      "major": "X"
+    },
+    {
+      "id": "p",
+      "kind": "PARABOLA",
+      "vertex": [
+        "0",
+        "0"
+      ],
+      "p": "(9+sqrt(41))/4",
+      "axis": "X"
+    }
+  ],
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "A",
+      "kind": "VERTEX",
+      "curve": "e",
+      "side": 1
+    },
+    {
+      "id": "B",
+      "kind": "VERTEX",
+      "curve": "e",
+      "side": -1
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "curve": "e",
+      "side": 1
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "curve": "e",
+      "side": -1
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "curve": "e",
+      "x": "(9-sqrt(41))/4",
+      "branch": "POS"
+    },
+    {
+      "id": "Q",
+      "kind": "ON_CONIC",
+      "curve": "e",
+      "x": "(9-sqrt(41))/4",
+      "branch": "NEG"
+    },
+    {
+      "id": "U",
+      "kind": "POINT",
+      "x": "10",
+      "y": "sqrt(10)",
+      "label": false
+    },
+    {
+      "id": "V",
+      "kind": "POINT",
+      "x": "10",
+      "y": "-sqrt(10)",
+      "label": false
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "from": "A",
+      "to": "B"
+    },
+    {
+      "id": "PQ",
+      "from": "P",
+      "to": "Q"
+    },
+    {
+      "id": "PF",
+      "from": "P",
+      "to": "F"
+    },
+    {
+      "id": "PFp",
+      "from": "P",
+      "to": "F'"
+    },
+    {
+      "id": "PU",
+      "from": "P",
+      "to": "U",
+      "dashed": true
+    },
+    {
+      "id": "QV",
+      "from": "Q",
+      "to": "V",
+      "dashed": true
+    },
+    {
+      "id": "UV",
+      "from": "U",
+      "to": "V",
+      "label": "2√10"
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A(5,0),B(-5,0)와 장축 AB인 타원",
+      "mappedTo": [
+        "conics[0]",
+        "points[1]",
+        "points[2]",
+        "segments[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "포물선은 원점 O를 꼭짓점, 타원의 오른쪽 초점 F를 초점으로 함",
+      "mappedTo": [
+        "conics[1]",
+        "points[0]",
+        "points[3]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "타원과 포물선의 두 교점 P,Q는 x축 대칭이고 PQ=2√10",
+      "mappedTo": [
+        "points[5]",
+        "points[6]",
+        "segments[1]",
+        "segments[6]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "PF 및 PF′를 잇는 선분",
+      "mappedTo": [
+        "segments[2]",
+        "segments[3]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "인쇄 원본의 곡선 2개, A,B,F,F′,O,P,Q와 거리·네 선분을 면 채움 없이 유지.",
+    "ENGINE_CAPABILITY_PENDING: CONIC_CONIC_VISUAL_CROSS_MEMBERSHIP: ON_CONIC 점이 두 곡선 모두에 속하는지 복합 검증(엔진은 지정 곡선 하나의 소속만 검사)"
+  ]
+}
