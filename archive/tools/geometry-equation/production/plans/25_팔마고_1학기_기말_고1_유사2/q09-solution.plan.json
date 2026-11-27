@@ -1,0 +1,56 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-2",
+              "state": "CLOSED"
+            }
+          },
+          {
+            "lo": {
+              "value": "2",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ],
+        "label": "f(1-x)≥0"
+      },
+      {
+        "kind": "POINTS",
+        "points": [
+          {
+            "id": "N2",
+            "value": "2",
+            "hideName": true,
+            "showValue": true,
+            "style": "FILLED"
+          }
+        ],
+        "label": "최소 자연수"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "두 바깥 구간"
+  },
+  "caption": "f(1-x)=(x-2)(x+2)≥0의 해는 x≤-2 또는 x≥2이고 자연수 최솟값은 2이다.",
+  "accessibilityDescription": "f(1-x)=(x-2)(x+2)≥0의 해는 x≤-2 또는 x≥2이고 자연수 최솟값은 2이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "(x-2)(x+2)≥0",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "열린 점과 닫힌 점, 유효 범위 및 필요한 정수점을 실제 수직선 필드로 표시한다."
+  ]
+}

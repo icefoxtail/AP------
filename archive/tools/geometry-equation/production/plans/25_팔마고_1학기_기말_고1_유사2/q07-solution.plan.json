@@ -1,0 +1,57 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "points": [
+          {
+            "id": "A",
+            "value": "-2",
+            "hideName": true,
+            "showValue": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "B",
+            "value": "-1",
+            "hideName": true,
+            "showValue": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "C",
+            "value": "3",
+            "hideName": true,
+            "showValue": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "D",
+            "value": "4",
+            "hideName": true,
+            "showValue": true,
+            "style": "FILLED"
+          }
+        ],
+        "label": "항상 포함"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "네 개의 정수해"
+  },
+  "caption": "정확한 정수해가 -2,-1,3,4일 조건은 4<a≤5이다.",
+  "accessibilityDescription": "정확한 정수해가 -2,-1,3,4일 조건은 4<a≤5이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "|x-1|≥2, -2≤x<a, 4<a≤5",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "열린 점과 닫힌 점, 유효 범위 및 필요한 정수점을 실제 수직선 필드로 표시한다."
+  ]
+}

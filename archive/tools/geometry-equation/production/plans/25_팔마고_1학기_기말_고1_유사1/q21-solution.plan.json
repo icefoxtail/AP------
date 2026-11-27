@@ -1,0 +1,40 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-4/3",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "4",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": true,
+        "label": "정수해"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "절댓값 합의 해집합"
+  },
+  "caption": "|x-3|+|2x-1|≤8의 해는 -4/3≤x≤4이며 정수 -1,0,1,2,3,4의 합은 9이다.",
+  "accessibilityDescription": "|x-3|+|2x-1|≤8의 해는 -4/3≤x≤4이며 정수 -1,0,1,2,3,4의 합은 9이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "-4/3≤x≤4",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "열린 점과 닫힌 점, 유효 범위 및 필요한 정수점을 실제 수직선 필드로 표시한다."
+  ]
+}

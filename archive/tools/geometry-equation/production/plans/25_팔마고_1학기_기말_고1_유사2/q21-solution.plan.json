@@ -1,0 +1,40 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "6",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "9",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": true,
+        "label": "가능한 자연수 a"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "다섯 정수해를 갖는 a"
+  },
+  "caption": "정수해가 정확히 -2,-1,0,1,2일 조건은 6<a≤9이므로 자연수 a는 7,8,9이다.",
+  "accessibilityDescription": "정수해가 정확히 -2,-1,0,1,2일 조건은 6<a≤9이므로 자연수 a는 7,8,9이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "6<a≤9, a 자연수",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "열린 점과 닫힌 점, 유효 범위 및 필요한 정수점을 실제 수직선 필드로 표시한다."
+  ]
+}

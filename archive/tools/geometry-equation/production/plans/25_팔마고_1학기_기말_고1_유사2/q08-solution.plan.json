@@ -1,0 +1,39 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "b",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "3",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "가능한 b"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "매개변수 b의 범위"
+  },
+  "caption": "모든 실수에서 두 부등식이 성립하려면 a=2, -1≤b≤3이고 a+b의 최댓값은 5이다.",
+  "accessibilityDescription": "모든 실수에서 두 부등식이 성립하려면 a=2, -1≤b≤3이고 a+b의 최댓값은 5이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a=2, -1≤b≤3",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "열린 점과 닫힌 점, 유효 범위 및 필요한 정수점을 실제 수직선 필드로 표시한다."
+  ]
+}

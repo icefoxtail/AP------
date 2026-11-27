@@ -1,0 +1,60 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-1",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "1",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "label": "첫 부등식"
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "label": "둘째 부등식"
+      },
+      {
+        "kind": "RESULT",
+        "label": "공통해"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "연립이차부등식의 해"
+  },
+  "caption": "a=2,b=-2에서 첫 부등식의 해는 x<-1 또는 x>1, 둘째는 x>1이므로 p=1이다.",
+  "accessibilityDescription": "a=2,b=-2에서 첫 부등식의 해는 x<-1 또는 x>1, 둘째는 x>1이므로 p=1이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "(x-1)(x+1)>0, -2x+2<0",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "열린 점과 닫힌 점, 유효 범위 및 필요한 정수점을 실제 수직선 필드로 표시한다."
+  ]
+}

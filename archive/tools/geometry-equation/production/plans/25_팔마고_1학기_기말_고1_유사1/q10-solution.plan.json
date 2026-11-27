@@ -1,0 +1,71 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "points": [
+          {
+            "id": "A",
+            "value": "7",
+            "hideName": true,
+            "showValue": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "B",
+            "value": "8",
+            "hideName": true,
+            "showValue": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "C",
+            "value": "9",
+            "hideName": true,
+            "showValue": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "D",
+            "value": "10",
+            "hideName": true,
+            "showValue": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "E",
+            "value": "11",
+            "hideName": true,
+            "showValue": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "F",
+            "value": "12",
+            "hideName": true,
+            "showValue": true,
+            "style": "FILLED"
+          }
+        ],
+        "label": "가능한 정수"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "예각삼각형의 정수 변"
+  },
+  "caption": "예각 조건은 6<x<√164이므로 정수 x는 7부터 12까지 6개이다.",
+  "accessibilityDescription": "예각 조건은 6<x<√164이므로 정수 x는 7부터 12까지 6개이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "세 변 x,8,10이 예각삼각형일 조건 6<x<√164",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "x=7,8,9,10,11,12 여섯 점을 수직선 위에 실제 후보점으로 배치한다."
+  ]
+}

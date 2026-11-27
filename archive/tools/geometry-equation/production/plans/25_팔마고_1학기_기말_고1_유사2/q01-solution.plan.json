@@ -1,0 +1,40 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "3",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": true,
+        "label": "a=1일 때"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "정수해 2개"
+  },
+  "caption": "정수 a=1일 때 x의 해는 1<x≤3이고 정수해 2,3 두 개이다.",
+  "accessibilityDescription": "정수 a=1일 때 x의 해는 1<x≤3이고 정수해 2,3 두 개이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x>a, x≤3 및 정확히 두 정수해",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "열린 점과 닫힌 점, 유효 범위 및 필요한 정수점을 실제 수직선 필드로 표시한다."
+  ]
+}
