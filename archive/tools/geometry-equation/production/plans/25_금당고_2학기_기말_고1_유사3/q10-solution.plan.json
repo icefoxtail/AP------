@@ -1,0 +1,51 @@
+{
+ "capability": "number-line-figure-v1",
+ "numberLineCaption": {
+  "text": "두 조건의 공통 범위"
+ },
+ "numberLine": {
+  "rows": [
+   {
+    "kind": "SET",
+    "pieces": [
+     {
+      "lo": {
+       "value": "-5",
+       "state": "CLOSED"
+      },
+      "hi": null
+     }
+    ]
+   },
+   {
+    "kind": "SET",
+    "pieces": [
+     {
+      "lo": null,
+      "hi": {
+       "value": "5",
+       "state": "CLOSED"
+      }
+     }
+    ]
+   },
+   {
+    "kind": "RESULT",
+    "integerPoints": true
+   }
+  ]
+ },
+ "caption": "첫째 근호 안은 x+5≥0이므로 x≥-5, 둘째 근호 안은 10-2x≥0이므로 x≤5이다. 공통 범위 -5≤x≤5 안의 자연수는 1, 2, 3, 4, 5이고 그 합은 15이므로 답은 ②이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "x≥-5, x≤5",
+   "mappedTo": [
+    "numberLine.rows"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "두 조건의 공통 범위와 그 안의 정수점"
+ ]
+}
