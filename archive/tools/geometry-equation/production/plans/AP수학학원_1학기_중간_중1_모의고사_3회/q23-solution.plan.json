@@ -1,0 +1,22 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [{
+      "kind": "SET",
+      "pieces": [{
+        "lo": { "value": "-3", "state": "CLOSED" },
+        "hi": { "value": "0", "state": "OPEN" }
+      }],
+      "integerPoints": true
+    }]
+  },
+  "numberLineCaption": { "text": "절댓값 3 이하인 음의 정수" },
+  "caption": "|a|≤3에 해당하면서 음수인 정수는 -3,-2,-1이고 합은 -6이다. -3은 포함하고 0은 음수가 아니므로 제외한다.",
+  "accessibilityDescription": "-3에 닫힌 점, 0에 열린 점, 사이 정수 -3,-2,-1을 표시한 수직선.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "|a|≤3이므로 a≥-3이고 음의 정수 조건 a<0을 추가한다.", "mappedTo": ["numberLine.rows.0.pieces"] },
+    { "id": "c2", "condition": "해당 정수 -3,-2,-1을 모두 쓰고 합 -6을 구한다.", "mappedTo": ["numberLine.rows.0.integerPoints"] }
+  ],
+  "newVisualInformation": ["-3 포함·0 제외의 구간 끝표식, 음의 정수 세 점, 영역 채움 없는 수직선."]
+}

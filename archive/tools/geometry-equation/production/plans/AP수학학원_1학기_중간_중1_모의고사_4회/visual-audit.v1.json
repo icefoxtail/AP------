@@ -1,0 +1,199 @@
+{
+  "schemaVersion": "visual-audit-v1",
+  "examFile": "archive/exams/similar/middle/m1/1mid/AP수학학원_1학기_중간_중1_모의고사_4회.js",
+  "sourceGitBlobSha": "e491305814dfdfb189c5dbbfec08f3605f0f5de4",
+  "reviewBaseMain": "dddc2c5206d61cd92315c5bbf8dcdbf4e434e4b3",
+  "questionCount": 25,
+  "axisCount": 50,
+  "exemptDefaults": { "capability": "TEXT_OR_FORMULA_ONLY", "planPath": null, "planLint": "NOT_APPLICABLE", "drawnFeatureParity": "NO_SVG_REQUIRED", "render": "NOT_APPLICABLE" },
+  "planDefaultChecks": { "planLintShallow": "PASS", "planLintFull": "PASS", "renderedSvg": "NOT_RUN", "pngReview": "NOT_RUN", "studentScreen": "NOT_RUN", "imageBinding": "NOT_RUN", "drawnFeatureParityInterpretation": "Static source/image-to-engine-render-field inventory only; a curved dotted guide is approximated by dashed straight guides and remains explicitly PARTIAL" },
+  "sourceSolutionGlobalDefect": {
+    "status": "P0_SOURCE_SOLUTION_MISMATCH",
+    "affectedQids": "q01-q25",
+    "affectedAxis": "solution",
+    "axisCount": 25,
+    "finding": "Every solution starts '[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고...' regardless of whether the question is prime factorization, GCD/LCM, cube reciprocals, operator order, area, or magic square. These are not mathematically explanatory solutions. The plan-only lane did not alter the archive JS.",
+    "planConsequences": "Supplementary visual plans are derived from original question, correct option, and bound image, not from the invalid generic solution. A static feature match does not cure the malformed source solution or qualify the exam for publication.",
+    "requiredSeparateFix": "Rewrite and independently verify all 25 solution fields in the owning JS/content lane before student publication."
+  },
+  "summary": {
+    "planFiles": 5,
+    "shallowPass": 5,
+    "fullPass": 5,
+    "drawnFeatureStaticPass": 3,
+    "drawnFeatureStaticPartial": 2,
+    "engineCapabilityPendingAxes": 4,
+    "pendingWithoutExecutablePlanAxes": 2,
+    "exemptAxes": 43,
+    "sourceSolutionDefectAxes": 25
+  },
+  "sourceJSFindings": [
+    "q15, q16 and q17 are bound to original PNG assets, all visually inspected. q15 cube face labels are -5, -1/3 and 3/2. q16 image contains the entire expression with five arrowed ㄱ~ㅁ operation annotations. q17 has four side lengths a,15,12,b, two right-angle marks, a diagonal, gray face fill, and four dotted curved exterior length guides.",
+    "q15 solid-figure-v1 supports a cube, but visible face labels.text only accepts plain words or math containing =,+,×,√; exact negative or fractional face values -5,-1/3,3/2 are rejected (SOLID_LABEL_TEXT_INVALID). A label-free cube would delete the essential question information and is not supplied as a parity plan.",
+    "q16 has no official capability that can faithfully place the full nested arithmetic expression, five circled operation names and leader arrows under their precise subexpressions. No hand SVG or inaccurate expression diagram was used.",
+    "q17 construction-spike-v1 plans replace gray face fill with no fill and draw all four side labels, both right angles, diagonal, four explicit dashed exterior leaders. The original curved dotted arcs are approximated by straight dashed guides; literal arc curvature+dotted stroke requires engine support and is not declared parity PASS.",
+    "q24 embeds an existing 3×3 HTML table directly in the question content. The problem's cell values are visibly present without an SVG plan. Its generic stored solution is nevertheless invalid.",
+    "No source JS, PNG, existing HTML table or engine code was edited. Render/PNG/student publication checks are NOT_RUN."
+  ],
+  "entries": [
+    { "qid": "q01", "axes": { "problem": { "verdict": "EXEMPT", "reason": "소수 관련 참거짓 발언을 다섯 보기에서 판단" }, "solution": { "verdict": "EXEMPT", "reason": "그림은 불필요하나 저장된 부등식 공통 해설은 문제와 불일치" } } },
+    { "qid": "q02", "axes": { "problem": { "verdict": "EXEMPT", "reason": "162 소인수분해 식" }, "solution": { "verdict": "EXEMPT", "reason": "산술식으로 해결 가능; JS 공통 해설은 오염" } } },
+    { "qid": "q03", "axes": { "problem": { "verdict": "EXEMPT", "reason": "420의 소인수 목록 계산" }, "solution": { "verdict": "EXEMPT", "reason": "소인수분해 텍스트로 충분; 해설 공통문구 불일치" } } },
+    { "qid": "q04", "axes": { "problem": { "verdict": "EXEMPT", "reason": "540을 제곱수로 만드는 곱수의 두 번째 최소값 계산" }, "solution": { "verdict": "EXEMPT", "reason": "지수의 짝수 조건으로 풀이; 저장된 해설은 불일치" } } },
+    { "qid": "q05", "axes": { "problem": { "verdict": "EXEMPT", "reason": "12와 45의 최대공약수+최소공배수" }, "solution": { "verdict": "EXEMPT", "reason": "소인수식 계산; 저장된 부등식 해설 불일치" } } },
+    { "qid": "q06", "axes": { "problem": { "verdict": "EXEMPT", "reason": "2^a·3²·5와 2·3·5^b의 최소공배수 지수" }, "solution": { "verdict": "EXEMPT", "reason": "지수 최댓값 비교; 해설 공통문구 불일치" } } },
+    { "qid": "q07", "axes": { "problem": { "verdict": "EXEMPT", "reason": "150/n,180/n이 자연수인 가장 큰 n" }, "solution": { "verdict": "EXEMPT", "reason": "최대공약수 관계의 산술; 저장된 해설 불일치" } } },
+    { "qid": "q08", "axes": { "problem": { "verdict": "EXEMPT", "reason": "정수·유리수의 옳지 않은 진술 고르기" }, "solution": { "verdict": "EXEMPT", "reason": "문장별 수 개념 비교; 저장된 해설 불일치" } } },
+    {
+      "qid": "q09",
+      "axes": {
+        "problem": { "verdict": "EXEMPT", "reason": "절댓값 4 미만인 정수 개수 문제에 그림은 필수 아님" },
+        "solution": {
+          "verdict": "BENEFICIAL",
+          "reason": "-4<x<4의 열린 경계와 일곱 정수점을 보인다. JS의 해설은 공통 오염문구여서 발문과 정답을 근거로 그림을 작성했다.",
+          "capability": "number-line-figure-v1",
+          "planPath": "archive/tools/geometry-equation/production/plans/AP수학학원_1학기_중간_중1_모의고사_4회/q09-solution.plan.json",
+          "requiredFeatures": ["-4 열린 경계", "4 열린 경계", "-3~3 정수 일곱 점", "면 채움 없음"],
+          "featureFieldMapping": [
+            { "sourceFeature": "|x|<4의 좌측 제외 경계", "renderField": "numberLine.rows[0].pieces[0].lo state=OPEN" },
+            { "sourceFeature": "|x|<4의 우측 제외 경계", "renderField": "numberLine.rows[0].pieces[0].hi state=OPEN" },
+            { "sourceFeature": "정수 일곱 개", "renderField": "numberLine.rows[0].integerPoints=true" }
+          ],
+          "drawnFeatureParity": "STATIC_1_TO_1_FEATURE_MATCH__RENDER_NOT_RUN"
+        }
+      }
+    },
+    { "qid": "q10", "axes": { "problem": { "verdict": "EXEMPT", "reason": "유리수 두 수의 대소관계 판단" }, "solution": { "verdict": "EXEMPT", "reason": "부호·대소관계 반례 식으로 충분; 보관 해설은 오염" } } },
+    { "qid": "q11", "axes": { "problem": { "verdict": "EXEMPT", "reason": "다섯 연산식 결과 중 최솟값 고르기" }, "solution": { "verdict": "EXEMPT", "reason": "실수 산술식 풀이가 충분하나 저장된 해설이 공통문구" } } },
+    {
+      "qid": "q12",
+      "axes": {
+        "problem": { "verdict": "EXEMPT", "reason": "두 분수에서 가장 가까운 정수를 찾는 계산 문제, 정답을 문제축에서 노출하지 않음" },
+        "solution": {
+          "verdict": "BENEFICIAL",
+          "reason": "-8/3과 7/4의 수직선 점, 가까운 정수 -3과 2를 표시해 a-b=-5를 설명한다. JS 원문 해설은 별도 수정 필요.",
+          "capability": "number-line-figure-v1",
+          "planPath": "archive/tools/geometry-equation/production/plans/AP수학학원_1학기_중간_중1_모의고사_4회/q12-solution.plan.json",
+          "requiredFeatures": ["-8/3 정확한 점", "7/4 정확한 점", "가까운 정수 -3", "가까운 정수 2", "면 채움 없는 수직선"],
+          "featureFieldMapping": [
+            { "sourceFeature": "-8/3", "renderField": "numberLine.rows[0].points B.value" },
+            { "sourceFeature": "7/4", "renderField": "numberLine.rows[0].points C.value" },
+            { "sourceFeature": "a=-3", "renderField": "numberLine.rows[0].points A.value, integer tick" },
+            { "sourceFeature": "b=2", "renderField": "numberLine.rows[0].points D.value, integer tick" },
+            { "sourceFeature": "선 위 칠 없음", "renderField": "numberLine.rows[0].band=false" }
+          ],
+          "drawnFeatureParity": "STATIC_1_TO_1_FEATURE_MATCH__RENDER_NOT_RUN"
+        }
+      }
+    },
+    { "qid": "q13", "axes": { "problem": { "verdict": "EXEMPT", "reason": "-3에서 +6, -6에서 -7/2 이동을 식으로 계산" }, "solution": { "verdict": "EXEMPT", "reason": "문장식·유리수 산술로 충분하지만 저장된 해설 불일치" } } },
+    { "qid": "q14", "axes": { "problem": { "verdict": "EXEMPT", "reason": "3,-2/3,-5의 두 수 곱 최댓값" }, "solution": { "verdict": "EXEMPT", "reason": "세 쌍의 곱 비교; 공통 해설은 문제와 무관" } } },
+    {
+      "qid": "q15",
+      "sourceImage": "assets/images/AP수학학원_1학기_중간_중1_모의고사_4회/q15.png",
+      "axes": {
+        "problem": {
+          "verdict": "ENGINE_CAPABILITY_PENDING",
+          "reason": "원본 그림의 정육면체 보이는 세 면 -5,-1/3,3/2가 역수 쌍의 필수 데이터다. 입체 외형은 지원하지만 면에 음수·분수 라벨을 정확히 그릴 수 없으므로 부분 무라벨 큐브를 정답 그림으로 공급하지 않는다.",
+          "capability": "solid-figure-v1 (fractional signed face labels unsupported)",
+          "planPath": null,
+          "planLint": "NOT_APPLICABLE__NO_VALID_PARITY_PLAN",
+          "requiredFeatures": ["정육면체 3면", "윗면 -5", "정면 -1/3", "오른쪽 면 3/2", "전면 윤곽", "기본 흰 배경 없음", "불필요한 면 채움 없음"],
+          "featureFieldMapping": [
+            { "sourceFeature": "정육면체 외형", "renderField": "solid-figure-v1 solids[0] PRISM RECT" },
+            { "sourceFeature": "3개의 원문 음수·분수 면 라벨", "renderField": "ENGINE_CAPABILITY_PENDING: labels[{at:{face:'top'|'side0'|'side1'},text:'-5'|'-1/3'|'3/2'}] parser must accept signed rationals and TeX fraction forms" }
+          ],
+          "engineCapabilityPending": { "status": "ENGINE_CAPABILITY_PENDING", "requiredFeature": "solid-figure-v1 labels.text on visible prism faces supports exact signed integer and negative/positive rational fraction notation", "currentEngineError": "SOLID_LABEL_TEXT_INVALID", "reasonNoPartialPlan": "The three labels are the only numeric information needed to solve the question; an unlabeled cube destroys correctness." },
+          "drawnFeatureParity": "BLOCKED__NO_EXECUTABLE_1_TO_1_PLAN"
+        },
+        "solution": { "verdict": "EXEMPT", "reason": "역수의 곱은 보이는 세 면 값 곱의 역수 2/5라는 계산; 원본 JS의 풀이 공통문구는 P0 불일치" }
+      }
+    },
+    {
+      "qid": "q16",
+      "sourceImage": "assets/images/AP수학학원_1학기_중간_중1_모의고사_4회/q16.png",
+      "axes": {
+        "problem": {
+          "verdict": "ENGINE_CAPABILITY_PENDING",
+          "reason": "원본 PNG는 다중 괄호·분수·나눗셈을 포함한 식 전체와 정확한 부분식 5개에 달린 ㄱ~ㅁ 지시 화살표를 제시한다. 엔진이 해당 연산순서 라벨 주석을 지원하지 않으므로 임의 SVG·부정확한 plan을 만들지 않는다.",
+          "capability": "ENGINE_CAPABILITY_PENDING: annotated-arithmetic-expression-figure-v1",
+          "planPath": null,
+          "planLint": "NOT_APPLICABLE__NO_VALID_PARITY_PLAN",
+          "requiredFeatures": ["7+[1/2-(-8)÷{3×(-4)+10}] 전체 식", "분수형 숫자·중첩 괄호", "서로 다른 다섯 부분식 정확한 위치", "다섯 지시 화살표", "ㄱ·ㄴ·ㄷ·ㄹ·ㅁ 원형 문자 라벨", "불필요한 면 채움 없음"],
+          "featureFieldMapping": [
+            { "sourceFeature": "전체 식 및 하위 부분식 좌표", "renderField": "ENGINE_CAPABILITY_PENDING: operator-annotated expression layout with subexpression anchors" },
+            { "sourceFeature": "5개 상향 지시 화살표와 원형 ㄱ~ㅁ", "renderField": "ENGINE_CAPABILITY_PENDING: expression callouts with arrows anchored to source tokens" }
+          ],
+          "engineCapabilityPending": { "status": "ENGINE_CAPABILITY_PENDING", "requiredFeature": "Official expression plan emits exact nested math typography and token/subexpression-anchored leader arrows with five circled Korean labels", "reasonNoPartialPlan": "Problem asks which of the five annotated subexpressions is calculated third; a diagram omitting any marker is not answerable." },
+          "drawnFeatureParity": "BLOCKED__NO_EXECUTABLE_1_TO_1_PLAN"
+        },
+        "solution": { "verdict": "EXEMPT", "reason": "연산 순서 서술·숫자 풀이에 별도 SVG가 필요 없으나 원본 JS 해설은 P0 공통문구" }
+      }
+    },
+    {
+      "qid": "q17",
+      "sourceImage": "assets/images/AP수학학원_1학기_중간_중1_모의고사_4회/q17.png",
+      "axes": {
+        "problem": {
+          "verdict": "REQUIRED",
+          "reason": "발문이 그림에 의존하며, 네 변 a,15,12,b·직각 두 개·대각선·점선 길이 안내를 실제 그리기 필드로 복원한다. 원본 점선 호의 곡률은 엔진이 직접 지원하지 않아 근사다.",
+          "capability": "construction-spike-v1",
+          "planPath": "archive/tools/geometry-equation/production/plans/AP수학학원_1학기_중간_중1_모의고사_4회/q17-problem.plan.json",
+          "requiredFeatures": ["사각형 네 실선", "왼쪽 위 직각", "오른쪽 아래 직각", "왼쪽 아래에서 오른쪽 위로 가는 대각선", "왼쪽 a", "윗변 15", "오른쪽 12", "아랫변 b", "외곽 점선 안내 호 네 개", "불필요한 회색 면 채움 제거"],
+          "featureFieldMapping": [
+            { "sourceFeature": "네 변 실선", "renderField": "displaySegments sAB/sBC/sCD/sDA" },
+            { "sourceFeature": "두 직각", "renderField": "rightAngles raD/raB" },
+            { "sourceFeature": "대각선", "renderField": "displaySegments sAC" },
+            { "sourceFeature": "a,15,12,b 네 길이", "renderField": "planeMarks.dimensions left/top/right/bottom" },
+            { "sourceFeature": "원본 네 바깥 점선 안내 호", "renderField": "displaySegments gTop/gRight/gBottom/gLeft.dashed=true; straight-line approximation, ARC_CURVATURE_PENDING" },
+            { "sourceFeature": "회색 면/흰 배경 객체 제거", "renderField": "no planeMarks.regions, polygons, background or fill fields" }
+          ],
+          "engineCapabilityPending": { "status": "ENGINE_CAPABILITY_PENDING", "requiredFeature": "Plane-figure exterior dimension leader supports both dashed/dotted stroke and curved arc path exactly as source", "fallback": "Four explicit dotted-style straight support lines preserve count and side ownership, but not the original curved path." },
+          "drawnFeatureParity": "STATIC_PARTIAL__DASHED_CURVED_GUIDE_APPROXIMATION__RENDER_NOT_RUN"
+        },
+        "solution": {
+          "verdict": "BENEFICIAL",
+          "reason": "발문 이미지의 두 직각삼각형 분할을 유지하고 넓이 15a/2+6b를 계산한다. 원본 JS 풀이 공통문구는 P0 별도 오류다.",
+          "capability": "construction-spike-v1",
+          "planPath": "archive/tools/geometry-equation/production/plans/AP수학학원_1학기_중간_중1_모의고사_4회/q17-solution.plan.json",
+          "requiredFeatures": ["사각형 네 변", "직각 두 개", "대각선", "a,15,12,b 네 길이", "외곽 점선 안내 호", "무채움", "넓이 15a/2+6b"],
+          "featureFieldMapping": [
+            { "sourceFeature": "두 직각삼각형을 분리하는 대각선", "renderField": "displaySegments sAC and rightAngles raD/raB" },
+            { "sourceFeature": "직각삼각형의 네 길이", "renderField": "planeMarks.dimensions left/top/right/bottom" },
+            { "sourceFeature": "외곽 원본 점선 호", "renderField": "displaySegments gTop/gRight/gBottom/gLeft.dashed=true; curvature approximation pending" },
+            { "sourceFeature": "넓이 15a/2+6b", "renderField": "caption derived from problem image/choice ②, not corrupt JS solution" },
+            { "sourceFeature": "회색 면 채움 없음", "renderField": "no fill/regions fields" }
+          ],
+          "engineCapabilityPending": { "status": "ENGINE_CAPABILITY_PENDING", "requiredFeature": "Curved dotted leader for external dimension labels in construction-spike-v1", "fallback": "Dotted straight guide in plan; all dimension values and right angles remain exact." },
+          "drawnFeatureParity": "STATIC_PARTIAL__DASHED_CURVED_GUIDE_APPROXIMATION__RENDER_NOT_RUN"
+        }
+      }
+    },
+    { "qid": "q18", "axes": { "problem": { "verdict": "EXEMPT", "reason": "a=-2에서 대수식 대입 결과 비교" }, "solution": { "verdict": "EXEMPT", "reason": "치환 산술로 충분; 공통 해설은 P0 오염" } } },
+    { "qid": "q19", "axes": { "problem": { "verdict": "EXEMPT", "reason": "a=1,b=-3의 수식 최댓값" }, "solution": { "verdict": "EXEMPT", "reason": "보기별 대입 계산; 저장된 설명은 무관" } } },
+    { "qid": "q20", "axes": { "problem": { "verdict": "EXEMPT", "reason": "동류항의 문자·차수 비교" }, "solution": { "verdict": "EXEMPT", "reason": "동류항 정의를 말로 판별 가능; JS 해설은 오염" } } },
+    { "qid": "q21", "axes": { "problem": { "verdict": "EXEMPT", "reason": "168 소인수분해·약수 개수 서술형" }, "solution": { "verdict": "EXEMPT", "reason": "2³×3×7의 약수 16개 식, 원본 저장 해설은 불일치" } } },
+    { "qid": "q22", "axes": { "problem": { "verdict": "EXEMPT", "reason": "40·72·180 최대공약수 산술 증명" }, "solution": { "verdict": "EXEMPT", "reason": "소인수 최솟값으로 4를 계산, 저장 해설은 오염" } } },
+    {
+      "qid": "q23",
+      "axes": {
+        "problem": { "verdict": "EXEMPT", "reason": "-5 초과 2 이하 부등식과 정수 목록을 문장으로 묻는다" },
+        "solution": {
+          "verdict": "BENEFICIAL",
+          "reason": "-5 열린 점, 2 닫힌 점과 정수 -4부터 2를 같은 수직선에 보인다. JS 공통 해설은 별도 수정 대상.",
+          "capability": "number-line-figure-v1",
+          "planPath": "archive/tools/geometry-equation/production/plans/AP수학학원_1학기_중간_중1_모의고사_4회/q23-solution.plan.json",
+          "requiredFeatures": ["-5 제외", "2 포함", "중간 정수 일곱 점", "수직선", "면 채움 없음"],
+          "featureFieldMapping": [
+            { "sourceFeature": "-5 초과의 열린 왼쪽 경계", "renderField": "numberLine.rows[0].pieces[0].lo state=OPEN" },
+            { "sourceFeature": "2 이하의 닫힌 오른쪽 경계", "renderField": "numberLine.rows[0].pieces[0].hi state=CLOSED" },
+            { "sourceFeature": "-4,-3,-2,-1,0,1,2 일곱 정수", "renderField": "numberLine.rows[0].integerPoints=true" }
+          ],
+          "drawnFeatureParity": "STATIC_1_TO_1_FEATURE_MATCH__RENDER_NOT_RUN"
+        }
+      }
+    },
+    { "qid": "q24", "sourceImage": "INLINE_HTML_TABLE_IN_CONTENT", "axes": { "problem": { "verdict": "EXEMPT", "reason": "기존 HTML 3×3 마방진의 행들은 (A,-2,5), (4,2,B), (-1,C,1)로 실제 칸에 이미 있다. SVG 전용 원본 이미지가 없고 표 렌더가 유지된다" }, "solution": { "verdict": "EXEMPT", "reason": "행·열·대각선 합으로 A=3,B=0,C=6 구하나 보관 해설 공통문구는 P0 오염" } } },
+    { "qid": "q25", "axes": { "problem": { "verdict": "EXEMPT", "reason": "3-1/2[2x-6-{4+2(-5x-4)}]의 다항식 연산" }, "solution": { "verdict": "EXEMPT", "reason": "괄호 제거·동류항 계산만으로 충분하나 저장 해설 공통문구는 불일치" } } }
+  ]
+}
