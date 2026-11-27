@@ -1,0 +1,103 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "k=0: 접점 (0,0)"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "0",
+                "0",
+                "1"
+              ]
+            }
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "domain": [
+            -2,
+            2
+          ],
+          "viewport": [
+            -2,
+            2,
+            -1,
+            6
+          ],
+          "requiredPoints": [
+            {
+              "id": "V",
+              "x": 0,
+              "y": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "k=1: 접점 (-1,0)"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "1",
+                "2",
+                "1"
+              ]
+            }
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "domain": [
+            -3,
+            1
+          ],
+          "viewport": [
+            -3,
+            1,
+            -1,
+            6
+          ],
+          "requiredPoints": [
+            {
+              "id": "V",
+              "x": -1,
+              "y": 0
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "k=0 또는 k=1에서 두 포물선이 각각 x축에 접한다.",
+  "accessibilityDescription": "k=0 또는 k=1에서 두 포물선이 각각 x축에 접한다.",
+  "sourceQuote": "x²+2kx+k의 판별식이 0, k=0 또는 1",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x²+2kx+k의 판별식이 0, k=0 또는 1",
+      "mappedTo": "panels"
+    },
+    {
+      "id": "c2",
+      "condition": "각 패널의 실제 이차식 계수와 접점 y=0을 독립적으로 표현한다.",
+      "mappedTo": "panels"
+    }
+  ],
+  "newVisualInformation": [
+    "판별식이 0인 두 매개변수 경우의 그래프를 서로 독립된 패널에 그리고 접점 좌표를 실제 requiredPoints로 표시한다."
+  ]
+}

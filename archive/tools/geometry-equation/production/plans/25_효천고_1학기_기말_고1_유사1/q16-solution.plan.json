@@ -1,0 +1,83 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "4",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-3",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -3,
+      1
+    ],
+    "viewport": [
+      -4,
+      2,
+      -6,
+      7
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": -2,
+        "y": -4
+      },
+      {
+        "id": "L",
+        "x": -3,
+        "y": -3
+      },
+      {
+        "id": "R",
+        "x": 1,
+        "y": 5
+      },
+      {
+        "id": "Z",
+        "x": 0,
+        "y": 0
+      }
+    ]
+  },
+  "pointNames": {
+    "V": "V",
+    "L": "L",
+    "R": "R",
+    "Z": "Z"
+  },
+  "caption": "h(x)=x(x+4)의 제한 구간 [-3,1]에서 최솟값 -4와 최댓값 5.",
+  "accessibilityDescription": "h(x)=x(x+4)의 제한 구간 [-3,1]에서 최솟값 -4와 최댓값 5.",
+  "sourceQuote": "h(x)=f(x)-g(x), 교점 x=-4,0, 구간 [-3,1]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "교점으로 h(x)=ax(x+4), a>0, 최대값 5로 a=1",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "c2",
+      "condition": "꼭짓점(-2,-4), 끝점(-3,-3),(1,5)와 근(0,0)",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "정확한 이차함수 계수와 제한 정의역, 계산된 핵심점의 좌표를 실제 곡선·점 필드로 표현한다."
+  ]
+}
