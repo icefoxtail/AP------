@@ -1,0 +1,133 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "P(1,4),Q(1,-4), 접선 y=-2x+6와 y=2x-6의 교점 R(3,0), PQ=8",
+  "caption": "접점과 접선 교점으로 계산한 삼각형 PQR",
+  "accessibilityDescription": "P-Q 세로 밑변 길이 8과 x=1에서 R(3,0)까지 수평거리 2를 나타내는 두 접선의 교차 도형.",
+  "conic": {
+    "kind": "ELLIPSE",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "24",
+    "bSquared": "3",
+    "major": "Y"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "1",
+      "branch": "POS"
+    },
+    {
+      "id": "Q",
+      "kind": "ON_CONIC",
+      "x": "1",
+      "branch": "NEG"
+    },
+    {
+      "id": "R",
+      "kind": "POINT",
+      "x": "3",
+      "y": "0"
+    },
+    {
+      "id": "U",
+      "kind": "POINT",
+      "x": "0",
+      "y": "4",
+      "label": false
+    },
+    {
+      "id": "V",
+      "kind": "POINT",
+      "x": "0",
+      "y": "-4",
+      "label": false
+    },
+    {
+      "id": "H",
+      "kind": "POINT",
+      "x": "1",
+      "y": "0",
+      "label": false
+    }
+  ],
+  "lines": [
+    {
+      "id": "tP",
+      "tangent": true,
+      "at": "P",
+      "label": "t_P"
+    },
+    {
+      "id": "tQ",
+      "tangent": true,
+      "at": "Q",
+      "label": "t_Q"
+    }
+  ],
+  "segments": [
+    {
+      "id": "PQ",
+      "from": "P",
+      "to": "Q",
+      "label": "8"
+    },
+    {
+      "id": "PU",
+      "from": "P",
+      "to": "U",
+      "dashed": true
+    },
+    {
+      "id": "QV",
+      "from": "Q",
+      "to": "V",
+      "dashed": true
+    },
+    {
+      "id": "HR",
+      "from": "H",
+      "to": "R",
+      "label": "2"
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "P,Q는 타원 위 (1,±4)",
+      "mappedTo": [
+        "conic",
+        "points[1]",
+        "points[2]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "두 접선 교점 R(3,0)",
+      "mappedTo": [
+        "lines[0]",
+        "lines[1]",
+        "points[3]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "PQ=8이고 밑변 x=1에서 R까지 거리 2",
+      "mappedTo": [
+        "segments[0]",
+        "points[6]",
+        "segments[3]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 접선과 좌표 투영 보조선을 통해 면적 8을 확인."
+  ]
+}

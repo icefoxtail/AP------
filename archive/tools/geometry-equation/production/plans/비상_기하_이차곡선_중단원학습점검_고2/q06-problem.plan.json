@@ -1,0 +1,67 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "포물선 y²=4x 위 P, 초점 F, PF=5",
+  "caption": "포물선 y²=4x 위 점 P와 초점 F",
+  "accessibilityDescription": "원점 O를 꼭짓점으로 오른쪽으로 열린 포물선 위 P와 초점 F를 선분으로 잇고 길이 5를 표시한다.",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "1",
+    "axis": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "4",
+      "branch": "POS"
+    }
+  ],
+  "segments": [
+    {
+      "id": "PF",
+      "from": "P",
+      "to": "F",
+      "label": "5"
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y²=4x는 꼭짓점 O, 초점 F(1,0)인 포물선이다.",
+      "mappedTo": [
+        "conic",
+        "points[0]",
+        "points[1]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "P는 포물선 위 제1사분면 점이다.",
+      "mappedTo": [
+        "points[2]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "PF=5",
+      "mappedTo": [
+        "segments[0]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 P-F 선분과 5 표기를 재구성하며 면은 칠하지 않는다."
+  ]
+}

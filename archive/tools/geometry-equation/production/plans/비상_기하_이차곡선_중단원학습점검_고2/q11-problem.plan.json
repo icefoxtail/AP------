@@ -1,0 +1,84 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "쌍곡선 x²/4-y²/10=1의 초점 F,F′와 P, 각 FPF′=90°",
+  "caption": "쌍곡선과 직각삼각형 FPF′",
+  "accessibilityDescription": "쌍곡선의 왼쪽 위 가지 위 P와 두 초점 F,F′, 세 변 PF, PF′, FF′을 그린다. P의 직각표시는 엔진의 임의 각 표식 지원이 필요하다.",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "4",
+    "bSquared": "10",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "-sqrt(48/7)",
+      "sign": "POS"
+    }
+  ],
+  "segments": [
+    {
+      "id": "PF",
+      "from": "P",
+      "to": "F"
+    },
+    {
+      "id": "PFp",
+      "from": "P",
+      "to": "F'"
+    },
+    {
+      "id": "FFp",
+      "from": "F",
+      "to": "F'"
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "쌍곡선과 두 초점",
+      "mappedTo": [
+        "conic",
+        "points[1]",
+        "points[2]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "P는 왼쪽 가지 위의 점",
+      "mappedTo": [
+        "points[3]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "삼각형 FPF′의 세 변과 P의 90° 조건",
+      "mappedTo": [
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 불필요한 삼각형 내부 채움을 제거한다.",
+    "ENGINE_CAPABILITY_PENDING: ANGLE_RIGHT_MARK_AT_ARBITRARY_CONIC_POINT: 직각을 이루는 두 선분 PF·PF′의 꼭짓점 P에 □ 기호를 붙이는 기능"
+  ]
+}

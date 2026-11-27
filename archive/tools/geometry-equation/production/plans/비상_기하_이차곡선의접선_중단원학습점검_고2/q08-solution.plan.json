@@ -1,0 +1,97 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "A(2,4√3), F(6,0), B(-6,-4√3), AF=8, AB=16",
+  "caption": "접선과 준선에서 AB=2AF 검증",
+  "accessibilityDescription": "초점과 접선·준선의 교점을 보여 주고 AB 길이 16과 AF 길이 8을 함께 표기한다.",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "6",
+    "axis": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS"
+    },
+    {
+      "id": "A",
+      "kind": "ON_CONIC",
+      "x": "2",
+      "branch": "POS"
+    },
+    {
+      "id": "B",
+      "kind": "LINE_LINE",
+      "lines": [
+        "t",
+        "d"
+      ]
+    }
+  ],
+  "lines": [
+    {
+      "id": "t",
+      "tangent": true,
+      "at": "A",
+      "label": "t"
+    },
+    {
+      "id": "d",
+      "role": "DIRECTRIX",
+      "label": "x=-6"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AF",
+      "from": "A",
+      "to": "F",
+      "label": "8"
+    },
+    {
+      "id": "AB",
+      "from": "A",
+      "to": "B",
+      "label": "16"
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A와 포물선의 접선, B는 준선 위",
+      "mappedTo": [
+        "conic",
+        "points[2]",
+        "points[3]",
+        "lines[0]",
+        "lines[1]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "AF=x_A+6=8",
+      "mappedTo": [
+        "points[1]",
+        "segments[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "AB=2AF=16",
+      "mappedTo": [
+        "segments[1]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "길이 곱 AB·AF=128을 도형에서 직접 검산."
+  ]
+}

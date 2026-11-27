@@ -1,0 +1,117 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "타원 x²/3+y²/24=1, P(1,4), Q(1,-4)에서 접선의 교점 R",
+  "caption": "타원의 두 접선과 삼각형 PQR",
+  "accessibilityDescription": "세로 타원의 오른쪽 점 P,Q에서 그은 두 접선이 R(3,0)에서 만나고 두 점의 높이가 ±4임을 점선으로 표시한다.",
+  "conic": {
+    "kind": "ELLIPSE",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "24",
+    "bSquared": "3",
+    "major": "Y"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "1",
+      "branch": "POS"
+    },
+    {
+      "id": "Q",
+      "kind": "ON_CONIC",
+      "x": "1",
+      "branch": "NEG"
+    },
+    {
+      "id": "R",
+      "kind": "POINT",
+      "x": "3",
+      "y": "0"
+    },
+    {
+      "id": "U",
+      "kind": "POINT",
+      "x": "0",
+      "y": "4",
+      "label": false
+    },
+    {
+      "id": "V",
+      "kind": "POINT",
+      "x": "0",
+      "y": "-4",
+      "label": false
+    }
+  ],
+  "lines": [
+    {
+      "id": "tP",
+      "tangent": true,
+      "at": "P"
+    },
+    {
+      "id": "tQ",
+      "tangent": true,
+      "at": "Q"
+    }
+  ],
+  "segments": [
+    {
+      "id": "PQ",
+      "from": "P",
+      "to": "Q"
+    },
+    {
+      "id": "PU",
+      "from": "P",
+      "to": "U",
+      "dashed": true
+    },
+    {
+      "id": "QV",
+      "from": "Q",
+      "to": "V",
+      "dashed": true
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "주어진 타원 x²/3+y²/24=1",
+      "mappedTo": [
+        "conic"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "P(1,4),Q(1,-4), x=1과 y=±4의 보조선",
+      "mappedTo": [
+        "points[1]",
+        "points[2]",
+        "segments[0]",
+        "segments[1]",
+        "segments[2]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "P,Q 접선이 R에서 만남",
+      "mappedTo": [
+        "lines[0]",
+        "lines[1]",
+        "points[3]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 불필요한 파란 면 채움을 없애고 두 접선·좌표 점선·라벨을 보존."
+  ]
+}
