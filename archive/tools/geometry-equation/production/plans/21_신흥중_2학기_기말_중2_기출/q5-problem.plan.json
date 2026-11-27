@@ -123,14 +123,16 @@
       "refs": [
         "A",
         "G"
-      ]
+      ],
+      "dashed": true
     },
     {
       "id": "sGD",
       "refs": [
         "G",
         "D"
-      ]
+      ],
+      "dashed": true
     },
     {
       "id": "sBD",
@@ -172,8 +174,7 @@
       "refs": [
         "B",
         "J"
-      ],
-      "dashed": true
+      ]
     },
     {
       "id": "sJD",
@@ -196,24 +197,6 @@
           "sDC"
         ]
       }
-    ],
-    "regions": [
-      {
-        "id": "knownArea",
-        "fill": "LIGHT",
-        "label": "6",
-        "unit": "cm^2",
-        "factRole": "GIVEN",
-        "shapes": [
-          {
-            "polygon": [
-              "B",
-              "J",
-              "D"
-            ]
-          }
-        ]
-      }
     ]
   },
   "rightAngles": [],
@@ -234,7 +217,7 @@
     }
   ],
   "newVisualInformation": [
-    "무게중심을 원문 그대로 이중으로 만들고 주어진 6 cm² 영역만 연하게 표시한다."
+    "무게중심 G와 G' 및 삼각형 GBC와 BG'를 표시한다. 원본의 점선 중선 AD와 실선 BG'를 구분하고, 원본에 없는 삼각형 면 채움은 생략한다."
   ],
   "pointNames": {
     "J": "G'"
