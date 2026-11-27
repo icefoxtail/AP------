@@ -1058,6 +1058,10 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "M2-RPM-010",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "image": "assets/images/21_풍덕중_1학기_중간_중2_유사/q24-problem.svg",
+    "imageAlt": "∠C=90°, BC=12, CA=16인 직각삼각형의 외접원·내접원.",
+    "imageCaption": "∠C=90°, BC=12, CA=16인 직각삼각형의 외접원·내접원.",
+    "imageSize": "full"
   }
 ];

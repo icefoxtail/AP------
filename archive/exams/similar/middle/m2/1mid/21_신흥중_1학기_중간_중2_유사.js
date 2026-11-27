@@ -616,7 +616,15 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "M2-RPM-010",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "image": "assets/images/21_신흥중_1학기_중간_중2_유사/q14-problem.svg",
+    "imageAlt": "원뿔의 밑면 반지름은 3ab, 높이는 h로 나타냈다. 외형 비례는 임의 모식도이며 부피 식을 그림에 쓰지 않는다.",
+    "imageCaption": "원뿔의 밑면 반지름은 3ab, 높이는 h로 나타냈다. 외형 비례는 임의 모식도이며 부피 식을 그림에 쓰지 않는다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_신흥중_1학기_중간_중2_유사/q14-solution.svg",
+    "solutionImageAlt": "V=πr²h/3에 r=3ab를 대입하면 높이는 h=9a−6b가 된다. 외형 비례는 임의 모식도이다.",
+    "solutionImageCaption": "V=πr²h/3에 r=3ab를 대입하면 높이는 h=9a−6b가 된다. 외형 비례는 임의 모식도이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -836,7 +844,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "M2-RPM-010",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/21_신흥중_1학기_중간_중2_유사/q19-solution.svg",
+    "solutionImageAlt": "−2x>−6을 음수 −2로 나누면 부등호가 뒤집혀 x<3이다. 3은 해에 포함되지 않는다.",
+    "solutionImageCaption": "−2x>−6을 음수 −2로 나누면 부등호가 뒤집혀 x<3이다. 3은 해에 포함되지 않는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -880,7 +892,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "M2-RPM-011",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/21_신흥중_1학기_중간_중2_유사/q20-solution.svg",
+    "solutionImageAlt": "x<23/5=4.6의 해에서 자연수 1·2·3·4는 포함되고, 5는 제외된다.",
+    "solutionImageCaption": "x<23/5=4.6의 해에서 자연수 1·2·3·4는 포함되고, 5는 제외된다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -924,7 +940,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "M2-RPM-007",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/21_신흥중_1학기_중간_중2_유사/q21-solution.svg",
+    "solutionImageAlt": "꽃집 900x원과 도매 600x+2400원을 비교하면 도매가 유리한 범위는 x>8이다. 정수 송이 수는 9부터 가능하다.",
+    "solutionImageCaption": "꽃집 900x원과 도매 600x+2400원을 비교하면 도매가 유리한 범위는 x>8이다. 정수 송이 수는 9부터 가능하다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1038,6 +1058,10 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "M2-RPM-010",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/21_신흥중_1학기_중간_중2_유사/q24-solution.svg",
+    "solutionImageAlt": "가는 시간 x/80, 오는 시간 x/60, 책 고르는 15분의 합이 50분 이하이므로 거리 x는 0 이상 1200m 이하이다.",
+    "solutionImageCaption": "가는 시간 x/80, 오는 시간 x/60, 책 고르는 15분의 합이 50분 이하이므로 거리 x는 0 이상 1200m 이하이다.",
+    "solutionImageSize": "full"
   }
 ];

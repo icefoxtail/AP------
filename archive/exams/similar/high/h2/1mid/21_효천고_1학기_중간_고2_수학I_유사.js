@@ -88,7 +88,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-002",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/21_효천고_1학기_중간_고2_수학I_유사/q2-solution.svg",
+    "solutionImageAlt": "로그의 밑·진수 조건을 동시에 만족하는 a의 두 열린 구간을 수직선에 나타냈다.",
+    "solutionImageCaption": "로그의 밑·진수 조건을 동시에 만족하는 a의 두 열린 구간을 수직선에 나타냈다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -308,7 +312,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-037",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/21_효천고_1학기_중간_고2_수학I_유사/q7-solution.svg",
+    "solutionImageAlt": "파란 f(x)=log₂(x−1)+4를 오른쪽 3, 아래쪽 2만큼 옮긴 주황 g(x)=log₂(4x−16). 점선은 A(2,4)가 B(5,2)로 가는 이동을 보인다.",
+    "solutionImageCaption": "파란 f(x)=log₂(x−1)+4를 오른쪽 3, 아래쪽 2만큼 옮긴 주황 g(x)=log₂(4x−16). 점선은 A(2,4)가 B(5,2)로 가는 이동을 보인다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -572,7 +580,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-016",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/21_효천고_1학기_중간_고2_수학I_유사/q13-solution.svg",
+    "solutionImageAlt": "−500°와 동경이 같은 220°는 제3사분면의 각이다. 보기의 210°와 −510°도 제3사분면에 속한다.",
+    "solutionImageCaption": "−500°와 동경이 같은 220°는 제3사분면의 각이다. 보기의 210°와 −510°도 제3사분면에 속한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
