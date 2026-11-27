@@ -1,0 +1,25 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {"label": "스팸", "p": "1/5", "children": [{"label": "문구 있음", "p": "17/20"}, {"label": "문구 없음", "p": "3/20"}]},
+        {"label": "정상", "p": "4/5", "children": [{"label": "문구 있음", "p": "1/100"}, {"label": "문구 없음", "p": "99/100"}]}
+      ]
+    },
+    "showPathProbability": true,
+    "highlightPaths": [
+      {"path": ["스팸", "문구 있음"], "color": "BLUE"},
+      {"path": ["정상", "문구 있음"], "color": "WARM"}
+    ]
+  },
+  "caption": "문구가 있는 경우는 스팸→문구 있음(17/100)과 정상→문구 있음(1/125)의 두 배반경로다. 이 가운데 스팸인 비율은 (17/100)/(17/100+1/125)=85/89이다.",
+  "accessibilityDescription": "스팸 1/5과 정상 4/5에서 각각 문구 있음과 문구 없음으로 나뉘는 확률 수형도이다. 스팸이면서 문구 있는 경로와 정상이면서 문구 있는 경로를 각각 파랑·주황으로 강조한다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "스팸 20%, 정상 80%", "mappedTo": "chart.root.children"},
+    {"id": "c2", "condition": "문구 포함 조건부확률: 스팸 0.85, 정상 0.01", "mappedTo": "chart.root.children[0].children,chart.root.children[1].children"},
+    {"id": "c3", "condition": "문구가 있는 두 경로를 조건부 표본으로 사용", "mappedTo": "chart.highlightPaths,chart.showPathProbability"}
+  ],
+  "newVisualInformation": ["P(스팸|문구)와 P(문구|스팸)를 혼동하지 않도록 가지의 조건부확률과 끝 확률을 분리한다."]
+}

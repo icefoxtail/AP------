@@ -1,0 +1,25 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {"label": "비", "p": "7/10", "children": [{"label": "배송", "p": "2/5"}, {"label": "미배송", "p": "3/5"}]},
+        {"label": "맑음", "p": "3/10", "children": [{"label": "배송", "p": "9/10"}, {"label": "미배송", "p": "1/10"}]}
+      ]
+    },
+    "showPathProbability": true,
+    "highlightPaths": [
+      {"path": ["비", "배송"], "color": "BLUE"},
+      {"path": ["맑음", "배송"], "color": "WARM"}
+    ]
+  },
+  "caption": "비가 올 때 배송될 확률 7/10×2/5=7/25와 맑을 때 배송될 확률 3/10×9/10=27/100의 두 경로를 더하여 0.55를 얻는다.",
+  "accessibilityDescription": "비 7/10과 맑음 3/10의 두 갈래에서 각각 배송과 미배송으로 나뉘는 수형도이다. 두 배송 경로를 서로 다른 색의 선으로 강조한다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "P(비)=0.7, P(맑음)=0.3", "mappedTo": "chart.root.children"},
+    {"id": "c2", "condition": "P(배송|비)=0.4, P(배송|맑음)=0.9", "mappedTo": "chart.root.children[0].children,chart.root.children[1].children"},
+    {"id": "c3", "condition": "배송은 배반인 비·맑음의 두 경로의 합", "mappedTo": "chart.highlightPaths,chart.showPathProbability"}
+  ],
+  "newVisualInformation": ["0.4와 0.9가 전체 확률이 아닌 조건부확률임을 가지에 배치하고, 배송 두 가지 경로를 구분한다."]
+}
