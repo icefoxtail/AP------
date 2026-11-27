@@ -25,7 +25,7 @@ window.examData = {
       "증명"
     ],
     "hasVisual": true,
-    "image": "assets/images/19_연향중_2학기_중간_중2_수학/q01.png",
+    "image": "assets/images/19_연향중_2학기_중간_중2_수학/q1-problem.svg",
     "sourceParity": "EXACT",
     "accessibility": "이등변삼각형 ABC에서 꼭지각 A의 이등분선 AD를 그어 두 삼각형 ABD와 ACD가 합동임을 보이는 증명 과정 도형",
     "question": "<p>1. 다음은 「이등변삼각형의 두 밑각의 크기는 같음」을 설명하는 과정이다. 각 빈칸에 들어갈 것으로 잘못된 것을 고르면? (정답 2개) [4점]</p><p>$$\\begin{array}{|l|}\\hline \\overline{\\text{AB}}=\\overline{\\text{AC}}\\text{인 } \\triangle \\text{ABC}\\text{에서 꼭지각}(\\angle \\text{A}\\text{의) 이등분선과} \\\\ \\text{밑변 } \\text{BC}\\text{의 교점을 } \\text{D}\\text{라고 하면,} \\\\ \\triangle \\text{ABD} \\equiv \\triangle \\text{ACD}\\text{이다. 그 이유는} \\\\ \\quad \\overline{\\text{AB}} = \\fbox{\\quad \\text{①} \\quad} \\\\ \\quad \\angle \\text{BAD} = \\fbox{\\quad \\text{②} \\quad} \\\\ \\quad \\fbox{\\quad \\text{③} \\quad} \\text{는 공통} \\\\ \\text{①, ②, ③에서 대응하는 두 변의 길이가 각각 같고,} \\\\ \\text{그 끼인각의 크기가 같으므로} \\\\ \\quad \\triangle \\text{ABD} \\equiv \\triangle \\text{ACD} \\ (\\fbox{\\quad \\text{④} \\quad}\\text{합동}) \\\\ \\text{따라서 } \\angle \\text{B} = \\fbox{\\quad \\text{⑤} \\quad} \\\\ \\hline \\end{array}$$</p><p><img src=\"assets/images/19_연향중_2학기_중간_중2_수학/q01.png\" alt=\"이등변삼각형 ABC에서 꼭지각 A의 이등분선 AD가 밑변 BC와 만나는 기하 도형\" /></p>",
@@ -76,7 +76,10 @@ window.examData = {
     "solutionImage": "assets/images/19_연향중_2학기_중간_중2_수학/q1-solution.svg",
     "solutionImageAlt": "1번 문제: 원본 q01: AB=AC, A에서 BC까지 이어진 AD와 꼭짓각의 이등분 표식.",
     "solutionImageCaption": "1번 문제: 원본 q01: AB=AC, A에서 BC까지 이어진 AD와 꼭짓각의 이등분 표식.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "1번 문제: 원본 q01: AB=AC, A에서 BC까지 이어진 AD와 꼭짓각의 이등분 표식.",
+    "imageCaption": "1번 문제: 원본 q01: AB=AC, A에서 BC까지 이어진 AD와 꼭짓각의 이등분 표식.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -535,7 +538,7 @@ window.examData = {
       "평행사변형"
     ],
     "hasVisual": true,
-    "image": "assets/images/19_연향중_2학기_중간_중2_수학/q08.png",
+    "image": "assets/images/19_연향중_2학기_중간_중2_수학/q8-problem.svg",
     "sourceParity": "EXACT",
     "accessibility": "평행사변형 ABCD에서 대각선 AC와 BD가 O에서 교차하며 AC=6cm, BD=4cm이고 AO, BO, OC의 길이를 각각 x, y, z로 둔 기하 도형",
     "question": "<p>8. 다음 평행사변형 $\\text{ABCD}$에서 두 대각선 $\\overline{\\text{AC}}=6\\text{cm}$, $\\overline{\\text{BD}}=4\\text{cm}$이고, 두 대각선의 교점을 $\\text{O}$라 하자. $x=\\overline{\\text{AO}}$, $y=\\overline{\\text{BO}}$, $z=\\overline{\\text{OC}}$일 때, $x+y+z$의 값은? [4점]</p><p><img src=\"assets/images/19_연향중_2학기_중간_중2_수학/q08.png\" alt=\"평행사변형 ABCD의 대각선 AC=6cm, BD=4cm가 O에서 교차하고 x=AO, y=BO, z=OC로 표시된 도형\" /></p>",
@@ -582,7 +585,10 @@ window.examData = {
     "integrationPattern": "NONE",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "imageAlt": "8번 문제: 원본 q08.png: AC6·BD4의 대각선 교점 O와 AO=x, BO=y, OC=z.",
+    "imageCaption": "8번 문제: 원본 q08.png: AC6·BD4의 대각선 교점 O와 AO=x, BO=y, OC=z.",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -606,7 +612,7 @@ window.examData = {
       "평행사변형"
     ],
     "hasVisual": true,
-    "image": "assets/images/19_연향중_2학기_중간_중2_수학/q09.png",
+    "image": "assets/images/19_연향중_2학기_중간_중2_수학/q9-problem.svg",
     "sourceParity": "EXACT",
     "accessibility": "사각형 ABCD의 변과 각의 조건들을 검토하는 기하 도형",
     "question": "<p>9. 다음 중 $\\square \\text{ABCD}$가 평행사변형이 되기 위한 조건으로 적절한 것은? [4점]</p><p><img src=\"assets/images/19_연향중_2학기_중간_중2_수학/q09.png\" alt=\"사각형 ABCD의 평행사변형 판별 도형\" /></p>",
@@ -657,7 +663,10 @@ window.examData = {
     "solutionImage": "assets/images/19_연향중_2학기_중간_중2_수학/q9-solution.svg",
     "solutionImageAlt": "9번 문제: 원본 q09.png: 두 대각선 교점 O, 평행사변형 조건의 선분/각 대조 도형.",
     "solutionImageCaption": "9번 문제: 원본 q09.png: 두 대각선 교점 O, 평행사변형 조건의 선분/각 대조 도형.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "9번 문제: 원본 q09.png: 두 대각선 교점 O, 평행사변형 조건의 선분/각 대조 도형.",
+    "imageCaption": "9번 문제: 원본 q09.png: 두 대각선 교점 O, 평행사변형 조건의 선분/각 대조 도형.",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -682,7 +691,7 @@ window.examData = {
       "원의넓이"
     ],
     "hasVisual": true,
-    "image": "assets/images/19_연향중_2학기_중간_중2_수학/q10.png",
+    "image": "assets/images/19_연향중_2학기_중간_중2_수학/q10-problem.svg",
     "sourceParity": "EXACT",
     "accessibility": "직사각형 ABCD에서 대각선 AC가 20cm이고 두 대각선의 교점 E에 대하여 선분 DE를 지름으로 하는 원이 그려진 도형",
     "question": "<p>10. 다음 $\\square \\text{ABCD}$에 대해 $\\angle \\text{A} = \\angle \\text{B} = \\angle \\text{C} = 90^\\circ$, $\\overline{\\text{AC}}=20\\text{cm}$이고 두 대각선의 교점을 $\\text{E}$라고 할 때, $\\overline{\\text{DE}}$를 지름으로 하는 원의 넓이를 구하면? [4점]</p><p><img src=\"assets/images/19_연향중_2학기_중간_중2_수학/q10.png\" alt=\"직사각형 ABCD와 대각선 교점 E에서 DE를 지름으로 하는 원 도형\" /></p>",
@@ -735,7 +744,10 @@ window.examData = {
     "solutionImage": "assets/images/19_연향중_2학기_중간_중2_수학/q10-solution.svg",
     "solutionImageAlt": "10번 문제: 원본 q10.png: 직사각형 AC20, 대각선 교점 E와 DE 지름의 원.",
     "solutionImageCaption": "10번 문제: 원본 q10.png: 직사각형 AC20, 대각선 교점 E와 DE 지름의 원.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "10번 문제: 원본 q10.png: 직사각형 AC20, 대각선 교점 E와 DE 지름의 원.",
+    "imageCaption": "10번 문제: 원본 q10.png: 직사각형 AC20, 대각선 교점 E와 DE 지름의 원.",
+    "imageSize": "full"
   },
   {
     "id": 11,
@@ -760,7 +772,7 @@ window.examData = {
       "넓이"
     ],
     "hasVisual": true,
-    "image": "assets/images/19_연향중_2학기_중간_중2_수학/q11.png",
+    "image": "assets/images/19_연향중_2학기_중간_중2_수학/q11-problem.svg",
     "sourceParity": "EXACT",
     "accessibility": "마름모 ABCD의 대각선 교점 F와 일직선 EFG가 마주 보는 변 DC, AB를 각각 E, G에서 만나며 삼각형 AGF와 DEF 넓이의 합이 주어진 기하 도형",
     "question": "<p>11. 다음 마름모 $\\square \\text{ABCD}$의 두 대각선 $\\overline{\\text{AC}}$, $\\overline{\\text{BD}}$는 서로를 수직이등분한다. 교점을 $\\text{F}$라 하고, 그림과 같이 $\\text{G}\\in\\overline{\\text{AB}}$, $\\text{E}\\in\\overline{\\text{DC}}$이며 $\\text{E,F,G}$가 한 직선 위에 있다. $\\triangle \\text{AGF}$와 $\\triangle \\text{DEF}$의 넓이의 합이 $20\\text{cm}^2$일 때, $\\square \\text{ABCD}$의 넓이를 구하면? [4점]</p><p><img src=\"assets/images/19_연향중_2학기_중간_중2_수학/q11.png\" alt=\"마름모 ABCD의 대각선 교점 F와 일직선 위의 G,F,E에서 삼각형 AGF와 DEF가 표시된 도형\" /></p>",
@@ -813,7 +825,10 @@ window.examData = {
     "solutionImage": "assets/images/19_연향중_2학기_중간_중2_수학/q11-solution.svg",
     "solutionImageAlt": "11번 문제: 원본 q11.png: 마름모 대각선의 수직, E-F-G 직선, 색칠한 △AGF·△DEF 두 영역.",
     "solutionImageCaption": "11번 문제: 원본 q11.png: 마름모 대각선의 수직, E-F-G 직선, 색칠한 △AGF·△DEF 두 영역.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "11번 문제: 원본 q11.png: 마름모 대각선의 수직, E-F-G 직선, 색칠한 △AGF·△DEF 두 영역.",
+    "imageCaption": "11번 문제: 원본 q11.png: 마름모 대각선의 수직, E-F-G 직선, 색칠한 △AGF·△DEF 두 영역.",
+    "imageSize": "full"
   },
   {
     "id": 12,
@@ -1054,7 +1069,7 @@ window.examData = {
       "닮음"
     ],
     "hasVisual": true,
-    "image": "assets/images/19_연향중_2학기_중간_중2_수학/q15.png",
+    "image": "assets/images/19_연향중_2학기_중간_중2_수학/q15-problem.svg",
     "sourceParity": "EXACT",
     "accessibility": "서로 닮은 두 원기둥 A와 B에서 원기둥 A의 밑면의 반지름이 2cm, 원기둥 B의 밑면의 반지름이 3cm, 높이가 6cm일 때 원기둥 B의 부피를 구하는 도형",
     "question": "<p>15. 다음 그림에서 두 원기둥 $\\text{A, B}$가 서로 닮은 도형일 때, 원기둥 $\\text{B}$의 부피를 구하면? [4점]</p><p><img src=\"assets/images/19_연향중_2학기_중간_중2_수학/q15.png\" alt=\"서로 닮은 두 원기둥 A와 B가 제시된 기하 도형\" /></p>",
@@ -1108,7 +1123,10 @@ window.examData = {
     "solutionImageAlt": "원본에 제시된 여러 도형의 구성을 비교한다.",
     "solutionImageCaption": "원본에 제시된 여러 도형의 구성을 비교한다.",
     "solutionImageSize": "full",
-    "solutionImageScale": 90
+    "solutionImageScale": 90,
+    "imageAlt": "원본에 제시된 여러 도형의 구성을 비교한다.",
+    "imageCaption": "원본에 제시된 여러 도형의 구성을 비교한다.",
+    "imageSize": "full"
   },
   {
     "id": 16,
@@ -1133,7 +1151,7 @@ window.examData = {
       "닮음"
     ],
     "hasVisual": true,
-    "image": "assets/images/19_연향중_2학기_중간_중2_수학/q16.png",
+    "image": "assets/images/19_연향중_2학기_중간_중2_수학/q16-problem.svg",
     "sourceParity": "EXACT",
     "accessibility": "직각삼각형 ABC의 꼭짓점 C에서 빗변 AB에 내린 수선의 발 D에 대해 미지수 x의 길이를 구하는 기하 도형",
     "question": "<p>16. 다음 직각삼각형 $\\text{ABC}$의 점 $\\text{C}$에서 $\\overline{\\text{AB}}$에 내린 수선의 발을 $\\text{D}$라고 할 때, 다음 중 $x$의 값으로 적절한 것은? [4점]</p><p><img src=\"assets/images/19_연향중_2학기_중간_중2_수학/q16.png\" alt=\"직각삼각형 ABC의 꼭짓점 C에서 내린 수선 CD와 변의 길이가 주어진 기하 도형\" /></p>",
@@ -1184,7 +1202,10 @@ window.examData = {
     "solutionImage": "assets/images/19_연향중_2학기_중간_중2_수학/q16-solution.svg",
     "solutionImageAlt": "16번 문제: 원본 q16.png: C 직각, CD⊥AB, AD4·CD6·AB=x.",
     "solutionImageCaption": "16번 문제: 원본 q16.png: C 직각, CD⊥AB, AD4·CD6·AB=x.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "16번 문제: 원본 q16.png: C 직각, CD⊥AB, AD4·CD6·AB=x.",
+    "imageCaption": "16번 문제: 원본 q16.png: C 직각, CD⊥AB, AD4·CD6·AB=x.",
+    "imageSize": "full"
   },
   {
     "id": 17,
@@ -1422,7 +1443,7 @@ window.examData = {
       "넓이의비"
     ],
     "hasVisual": true,
-    "image": "assets/images/19_연향중_2학기_중간_중2_수학/q20.png",
+    "image": "assets/images/19_연향중_2학기_중간_중2_수학/q20-problem.svg",
     "sourceParity": "EXACT",
     "accessibility": "삼각형 BFG에서 DE가 2cm이고 각 변의 중점 조건과 넓이의 비가 주어졌을 때 x의 값을 구하는 기하 도형",
     "question": "<p>20. 그림에서 $\\triangle\\text{BFG}$에 대해 $\\overline{\\text{DE}}=2\\text{cm}$, $\\overline{\\text{BD}}=\\overline{\\text{DF}}$, $\\overline{\\text{BE}}=\\overline{\\text{EG}}$이고, $\\triangle\\text{AGH}$에 대해 $\\overline{\\text{AB}}=\\overline{\\text{BG}}$, $\\overline{\\text{AC}}=\\overline{\\text{CH}}$이다. $\\triangle\\text{BFG}$와 $\\triangle\\text{CGH}$의 넓이의 비가 $1:2$일 때, $x$의 값은? [4점]</p><p><img src=\"assets/images/19_연향중_2학기_중간_중2_수학/q20.png\" alt=\"삼각형 AGH에서 B,C가 중점이고, 삼각형 BFG에서 D,E가 중점이며 넓이비와 x=BC가 주어진 도형\" /></p>",
@@ -1475,7 +1496,10 @@ window.examData = {
     "solutionImage": "assets/images/19_연향중_2학기_중간_중2_수학/q20-solution.svg",
     "solutionImageAlt": "20번 문제: 원본 q20.png: 두 중점삼각형과 BFG·CGH의 빗금 넓이 대비, DE2·BC=x.",
     "solutionImageCaption": "20번 문제: 원본 q20.png: 두 중점삼각형과 BFG·CGH의 빗금 넓이 대비, DE2·BC=x.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "20번 문제: 원본 q20.png: 두 중점삼각형과 BFG·CGH의 빗금 넓이 대비, DE2·BC=x.",
+    "imageCaption": "20번 문제: 원본 q20.png: 두 중점삼각형과 BFG·CGH의 빗금 넓이 대비, DE2·BC=x.",
+    "imageSize": "full"
   },
   {
     "id": 21,
@@ -1500,7 +1524,7 @@ window.examData = {
       "합동"
     ],
     "hasVisual": true,
-    "image": "assets/images/19_연향중_2학기_중간_중2_수학/s01.png",
+    "image": "assets/images/19_연향중_2학기_중간_중2_수학/q21-problem.svg",
     "sourceParity": "EXACT",
     "accessibility": "사각형 ABCD에서 각 B,C가 직각이고 AE=DE인 도형으로, 그림에 AB=3cm, CD=5cm가 표시됨",
     "question": "<p>[서술형1] 다음 그림과 같은 사각형 $\\text{ABCD}$에서 $\\overline{\\text{AE}} = \\overline{\\text{DE}}$일 때, 물음에 답하여라.</p><p>(1) 합동인 두 삼각형을 찾아 합동기호($\\equiv$)를 사용하여 나타내고 합동조건을 말하여라. [3점]</p><p>(2) $\\overline{\\text{BC}}$의 길이를 구하여라. [2점]</p><p><img src=\"assets/images/19_연향중_2학기_중간_중2_수학/s01.png\" alt=\"직각사다리꼴 형태의 사각형 ABCD에서 AE=DE이고 AB=3cm, CD=5cm인 도형\" /></p>",
@@ -1545,7 +1569,10 @@ window.examData = {
     "solutionImage": "assets/images/19_연향중_2학기_중간_중2_수학/q21-solution.svg",
     "solutionImageAlt": "21번 문제: 서술형 q21 원본 이미지 없음: ∠B=∠C=∠AED=90°, AE=DE, 실제 AB3·CD5 도형.",
     "solutionImageCaption": "21번 문제: 서술형 q21 원본 이미지 없음: ∠B=∠C=∠AED=90°, AE=DE, 실제 AB3·CD5 도형.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "21번 문제: 서술형 q21 원본 이미지 없음: ∠B=∠C=∠AED=90°, AE=DE, 실제 AB3·CD5 도형.",
+    "imageCaption": "21번 문제: 서술형 q21 원본 이미지 없음: ∠B=∠C=∠AED=90°, AE=DE, 실제 AB3·CD5 도형.",
+    "imageSize": "full"
   },
   {
     "id": 22,
@@ -1571,7 +1598,7 @@ window.examData = {
       "넓이"
     ],
     "hasVisual": true,
-    "image": "assets/images/19_연향중_2학기_중간_중2_수학/s02.png",
+    "image": "assets/images/19_연향중_2학기_중간_중2_수학/q22-problem.svg",
     "sourceParity": "EXACT",
     "accessibility": "각 C가 90도인 직각삼각형 ABC에서 세 변이 10cm, 8cm, 6cm이고 내심 I가 있을 때 내접원의 반지름과 삼각형 IBC의 넓이를 구하는 서술형 기하 도형",
     "question": "<p>[서술형2] 다음 그림에서 점 $\\text{I}$는 $\\angle \\text{C} = 90^\\circ$인 직각삼각형 $\\text{ABC}$의 내심이다. $\\overline{\\text{AB}} = 10\\text{cm}, \\overline{\\text{BC}} = 8\\text{cm}, \\overline{\\text{CA}} = 6\\text{cm}$일 때, 물음에 답하여라.</p><p>(1) $\\triangle \\text{ABC}$의 내접원의 반지름의 길이를 구하여라. [3점]</p><p>(2) $\\triangle \\text{IBC}$의 넓이를 구하여라. [2점]</p><p><img src=\"assets/images/19_연향중_2학기_중간_중2_수학/s02.png\" alt=\"세 변이 10, 8, 6cm인 직각삼각형 ABC와 내심 I 도형\" /></p>",
@@ -1618,7 +1645,10 @@ window.examData = {
     "solutionImage": "assets/images/19_연향중_2학기_중간_중2_수학/q22-solution.svg",
     "solutionImageAlt": "22번 문제: 서술형 q22 원본 이미지 없음: 6·8·10 직각삼각형의 내접원과 내심 I.",
     "solutionImageCaption": "22번 문제: 서술형 q22 원본 이미지 없음: 6·8·10 직각삼각형의 내접원과 내심 I.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "22번 문제: 서술형 q22 원본 이미지 없음: 6·8·10 직각삼각형의 내접원과 내심 I.",
+    "imageCaption": "22번 문제: 서술형 q22 원본 이미지 없음: 6·8·10 직각삼각형의 내접원과 내심 I.",
+    "imageSize": "full"
   },
   {
     "id": 23,
