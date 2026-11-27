@@ -1095,7 +1095,8 @@ window.questionBank = [
     "standardUnit": "기본도형",
     "standardUnitOrder": 5,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
+    "layoutForce": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
@@ -1107,6 +1108,7 @@ window.questionBank = [
     "solution": "(1) 정사각형 $ABCD$의 대각선은 서로 수직이고 서로를 이등분하므로\n$OC=OD$이고 $\\angle PCO=\\angle QDO=45^\\circ$이다.\n또 정사각형 $OHIJ$에서 $OP\\perp OQ$, 정사각형 $ABCD$에서 $OC\\perp OD$이므로\n$\\angle POC=\\angle QOD$이다.\n따라서\n$\\triangle OPC\\equiv\\triangle OQD$\n(ASA 합동)이다.\n\n(2) (1)에서\n$[\\triangle OPC]=[\\triangle OQD]$이다.\n따라서\n$[OPCQ]=[\\triangle OPC]+[\\triangle OCQ]\n=[\\triangle OQD]+[\\triangle OCQ]\n=[\\triangle OCD]$\n이다.\n정사각형 $ABCD$의 넓이는\n$8^2=64\\,\\mathrm{cm}^2$\n이고 두 대각선이 넓이를 $4$등분하므로\n$[\\triangle OCD]=\\dfrac{64}{4}=16\\,\\mathrm{cm}^2$이다.\n\n(3) 반대쪽 색칠 부분도 정사각형 $OEFG$에 대해 같은 방법으로 $16\\,\\mathrm{cm}^2$이다.\n따라서 색칠한 부분의 넓이는\n$16+16=32\\,\\mathrm{cm}^2$이다.",
     "image": "assets/images/25_연향중_2학기_중간_중1_기출/q24.png",
     "imageSize": "tall",
+    "imageScale": 100,
     "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
     "subUnit": "작도와 합동",
     "subUnitConfidence": "rule_inferred",
