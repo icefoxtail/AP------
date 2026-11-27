@@ -1,0 +1,27 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {"coefficients": ["-8", "-6"], "domain": ["-2", "-1"], "start": "CLOSED", "end": "OPEN"},
+      {"coefficients": ["3", "5"], "domain": ["-1", "0"], "start": "CLOSED", "end": "OPEN"},
+      {"coefficients": ["3", "-5"], "domain": ["0", "1"], "start": "CLOSED", "end": "OPEN"},
+      {"coefficients": ["-8", "6"], "domain": ["1", "2"], "start": "CLOSED", "end": "OPEN"},
+      {"coefficients": ["16", "-6"], "domain": ["2", "3"], "start": "CLOSED", "end": "OPEN"},
+      {"coefficients": ["-17", "5"], "domain": ["3", "4"], "start": "CLOSED", "end": "OPEN"},
+      {"coefficients": ["23", "-5"], "domain": ["4", "5"], "start": "CLOSED", "end": "OPEN"},
+      {"coefficients": ["-32", "6"], "domain": ["5", "6"], "start": "CLOSED", "end": "CLOSED"}
+    ],
+    "xWindow": [-2, 6],
+    "functionName": "f",
+    "requiredPoints": [],
+    "axisTickValues": {"x": ["-2", "-1", "1", "2", "3", "4", "5", "6"], "y": ["-2", "3", "4"]}
+  },
+  "caption": "f(-x)=f(x), f(x+4)=f(x)를 만족하는 한 연속 대표 개형. [-2,6]의 인접한 정수점 8구간에서 부호가 번갈아 바뀐다.",
+  "accessibilityDescription": "구간 [-2,6]에서 주어진 아홉 정수점의 함수값을 직선으로 연결한 한 가지 가능한 짝함수 겸 4주기 함수이다. 각 인접 정수 사이에 영점이 한 개씩 있음을 보인다. 원래 함수의 구체적인 모양을 확정하는 그림은 아니다.",
+  "newVisualInformation": ["주어진 값 4,-2,3,-2,4,-2,3,-2,4를 잇는 가능한 연속·짝·4주기 예시", "8개의 연속 정수 구간에서 x축 횡단과 사잇값 정리 대응", "임의로 정한 영점 좌표를 숫자로 쓰지 않음"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "짝함수와 주기 4의 조건으로 정수 -2부터 6까지의 함수값은 4,-2,3,-2,4,-2,3,-2,4 순서이다.", "mappedTo": ["graphPlan.pieces", "graphPlan.axisTickValues"]},
+    {"id": "c2", "condition": "실제 f는 주어진 조건 이외의 모양이 미정이므로 그림은 조건을 만족하는 하나의 선형보간 예시일 뿐이다.", "mappedTo": ["graphPlan.pieces", "caption"]}
+  ]
+}

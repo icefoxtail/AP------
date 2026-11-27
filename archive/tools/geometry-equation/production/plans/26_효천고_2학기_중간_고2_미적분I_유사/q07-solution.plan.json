@@ -1,0 +1,24 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": ["2", "6"],
+    "denominator": ["-1", "2"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-3, 4],
+    "viewport": [-3, 4, -4, 10],
+    "axisTickValues": {"x": [], "y": ["3", "4"]},
+    "overlays": {
+      "lines": [{"id": "T", "slope": "0", "intercept": "4", "label": "y=t", "labelValues": {"t": "4"}, "color": "BLUE"}],
+      "points": [{"id": "P", "curveX": "3"}]
+    }
+  },
+  "pointNames": {"P": "P"},
+  "caption": "t=4의 한 수평선 예시는 유리곡선과 P(3,4)에서 한 번 만난다. 수평 점근선 y=3에서는 만나지 않아 교점 개수가 0으로 달라진다.",
+  "accessibilityDescription": "세로 점근선 x=1/2, 가로 점근선 y=3이 있는 유리함수 그래프에 y=4인 파란 수평선이 그어지고 우측 가지의 P(3,4)에서 한 번 만난다.",
+  "newVisualInformation": ["주어진 유리함수의 정확한 수직·수평 점근선", "대표 t=4에서는 정확히 한 교점 P(3,4) 형성", "y=3의 수평 점근선은 그래프와 만나지 않는 사실"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "원래 유리함수 y=5/(2x-1)+3은 x=1/2을 제외해 정의되고 y=3에 접근하되 같아지지 않는다.", "mappedTo": ["graphPlan.numerator", "graphPlan.denominator"]},
+    {"id": "c2", "condition": "대표 t=4에서 y=4와의 교점은 x=3 하나이다.", "mappedTo": ["graphPlan.overlays.lines", "graphPlan.overlays.points"]}
+  ]
+}
