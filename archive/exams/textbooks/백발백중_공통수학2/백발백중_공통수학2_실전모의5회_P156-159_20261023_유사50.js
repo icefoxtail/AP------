@@ -56,8 +56,9 @@ window.questionBank = [
     "targetChoiceSlot": 1,
     "inferredFields": [],
     "solutionImage": "assets/images/백발백중_공통수학2_실전모의5회_P156-159_20261023_유사50/BV-BAKBAL-H-COM2-P154-Q01-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "완전제곱으로 원의 중심 O=(3,-4)와 반지름 3를 확인한다. a+b+r=2.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "완전제곱으로 원의 중심 O=(3,-4)와 반지름 3를 확인한다. a+b+r=2."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P154-Q01-S1-R1",
@@ -115,8 +116,9 @@ window.questionBank = [
     "targetChoiceSlot": 5,
     "inferredFields": [],
     "solutionImage": "assets/images/백발백중_공통수학2_실전모의5회_P156-159_20261023_유사50/BV-BAKBAL-H-COM2-P154-Q01-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "완전제곱으로 원의 중심 O=(-2,3)와 반지름 3를 확인한다. a+b+r=4.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "완전제곱으로 원의 중심 O=(-2,3)와 반지름 3를 확인한다. a+b+r=4."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P154-Q01-S2-R1",
@@ -174,8 +176,9 @@ window.questionBank = [
     "targetChoiceSlot": 2,
     "inferredFields": [],
     "solutionImage": "assets/images/백발백중_공통수학2_실전모의5회_P156-159_20261023_유사50/BV-BAKBAL-H-COM2-P154-Q01-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "완전제곱으로 원의 중심 O=(5,-2)와 반지름 4를 확인한다. a+b+r=7.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "완전제곱으로 원의 중심 O=(5,-2)와 반지름 4를 확인한다. a+b+r=7."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P154-Q02-T1-R1",
@@ -233,8 +236,9 @@ window.questionBank = [
     "targetChoiceSlot": 4,
     "inferredFields": [],
     "solutionImage": "assets/images/백발백중_공통수학2_실전모의5회_P156-159_20261023_유사50/BV-BAKBAL-H-COM2-P154-Q02-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "PA=PB 및 QA=QB이므로 P,Q 모두 AB의 수직이등분선 위에 있다. P=(1,0), Q=(0,-1), PQ=1√2.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "PA=PB 및 QA=QB이므로 P,Q 모두 AB의 수직이등분선 위에 있다. P=(1,0), Q=(0,-1), PQ=1√2."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P154-Q02-S1-R1",
@@ -292,8 +296,9 @@ window.questionBank = [
     "targetChoiceSlot": 2,
     "inferredFields": [],
     "solutionImage": "assets/images/백발백중_공통수학2_실전모의5회_P156-159_20261023_유사50/BV-BAKBAL-H-COM2-P154-Q02-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "PA=PB 및 QA=QB이므로 P,Q 모두 AB의 수직이등분선 위에 있다. P=(3,0), Q=(0,-3), PQ=3√2.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "PA=PB 및 QA=QB이므로 P,Q 모두 AB의 수직이등분선 위에 있다. P=(3,0), Q=(0,-3), PQ=3√2."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P154-Q02-S2-R1",
@@ -351,8 +356,9 @@ window.questionBank = [
     "targetChoiceSlot": 3,
     "inferredFields": [],
     "solutionImage": "assets/images/백발백중_공통수학2_실전모의5회_P156-159_20261023_유사50/BV-BAKBAL-H-COM2-P154-Q02-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "PA=PB 및 QA=QB이므로 P,Q 모두 AB의 수직이등분선 위에 있다. P=(4,0), Q=(0,-4), PQ=4√2.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "PA=PB 및 QA=QB이므로 P,Q 모두 AB의 수직이등분선 위에 있다. P=(4,0), Q=(0,-4), PQ=4√2."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P154-Q03-T1-R1",
@@ -412,8 +418,9 @@ window.questionBank = [
       "sourceImageValidation"
     ],
     "solutionImage": "assets/images/백발백중_공통수학2_실전모의5회_P156-159_20261023_유사50/BV-BAKBAL-H-COM2-P154-Q03-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원의 중심 O1(-2,3)→O2(1,-1) 이동량은 (3,-4). 직선 2x+(-3)y+(5)=0을 같은 벡터로 옮기면 2x+(-3)y+(-13)=0.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원의 중심 O1(-2,3)→O2(1,-1) 이동량은 (3,-4). 직선 2x+(-3)y+(5)=0을 같은 벡터로 옮기면 2x+(-3)y+(-13)=0."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P154-Q03-S1-R1",
@@ -473,8 +480,9 @@ window.questionBank = [
       "sourceImageValidation"
     ],
     "solutionImage": "assets/images/백발백중_공통수학2_실전모의5회_P156-159_20261023_유사50/BV-BAKBAL-H-COM2-P154-Q03-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원의 중심 O1(4,-2)→O2(-1,1) 이동량은 (-5,3). 직선 4x+(1)y+(-6)=0을 같은 벡터로 옮기면 4x+(1)y+(11)=0.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원의 중심 O1(4,-2)→O2(-1,1) 이동량은 (-5,3). 직선 4x+(1)y+(-6)=0을 같은 벡터로 옮기면 4x+(1)y+(11)=0."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P154-Q03-S2-R1",
@@ -534,8 +542,9 @@ window.questionBank = [
       "sourceImageValidation"
     ],
     "solutionImage": "assets/images/백발백중_공통수학2_실전모의5회_P156-159_20261023_유사50/BV-BAKBAL-H-COM2-P154-Q03-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원의 중심 O1(0,2)→O2(2,-3) 이동량은 (2,-5). 직선 3x+(2)y+(1)=0을 같은 벡터로 옮기면 3x+(2)y+(5)=0.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원의 중심 O1(0,2)→O2(2,-3) 이동량은 (2,-5). 직선 3x+(2)y+(1)=0을 같은 벡터로 옮기면 3x+(2)y+(5)=0."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P154-Q04-T1-R1",
@@ -595,8 +604,9 @@ window.questionBank = [
       "sourceImageValidation"
     ],
     "solutionImage": "assets/images/백발백중_공통수학2_실전모의5회_P156-159_20261023_유사50/BV-BAKBAL-H-COM2-P154-Q04-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "지름 양 끝점 A(8,4), B(-2,0)의 중점 O를 원의 중심으로 잡고 반지름 제곱 r²=29를 표시한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "지름 양 끝점 A(8,4), B(-2,0)의 중점 O를 원의 중심으로 잡고 반지름 제곱 r²=29를 표시한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P154-Q04-S1-R1",
@@ -656,8 +666,9 @@ window.questionBank = [
       "sourceImageValidation"
     ],
     "solutionImage": "assets/images/백발백중_공통수학2_실전모의5회_P156-159_20261023_유사50/BV-BAKBAL-H-COM2-P154-Q04-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "지름 양 끝점 A(6,7), B(-2,1)의 중점 O를 원의 중심으로 잡고 반지름 제곱 r²=25를 표시한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "지름 양 끝점 A(6,7), B(-2,1)의 중점 O를 원의 중심으로 잡고 반지름 제곱 r²=25를 표시한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P154-Q04-S2-R1",
@@ -717,8 +728,9 @@ window.questionBank = [
       "sourceImageValidation"
     ],
     "solutionImage": "assets/images/백발백중_공통수학2_실전모의5회_P156-159_20261023_유사50/BV-BAKBAL-H-COM2-P154-Q04-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "지름 양 끝점 A(-4,5), B(2,-3)의 중점 O를 원의 중심으로 잡고 반지름 제곱 r²=25를 표시한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "지름 양 끝점 A(-4,5), B(2,-3)의 중점 O를 원의 중심으로 잡고 반지름 제곱 r²=25를 표시한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P154-Q05-T1-R1",

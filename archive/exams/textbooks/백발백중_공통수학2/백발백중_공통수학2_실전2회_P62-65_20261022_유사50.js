@@ -193,8 +193,9 @@ window.questionBank = [
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "원본 PDF 인쇄 P62 Q07: 두 원의 교점이 한 원의 지름 양 끝점인 조건, 직각삼각형 중심거리 계산 구조 보존.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P62-Q07-T1-R3-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "두 원의 교점 A,B가 C2의 지름 끝점이고 O2는 AB의 중점이다. 회전 동형 대표 배치에서 O1O2⊥AB, O1A=5, d²=13, r₂²=12를 확인한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "두 원의 교점 A,B가 C2의 지름 끝점이고 O2는 AB의 중점이다. 회전 동형 대표 배치에서 O1O2⊥AB, O1A=5, d²=13, r₂²=12를 확인한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P62-Q07-S1-R3",
@@ -242,8 +243,9 @@ window.questionBank = [
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "원본 PDF 인쇄 P62 Q07: 두 원의 교점이 한 원의 지름 양 끝점인 조건, 직각삼각형 중심거리 계산 구조 보존.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P62-Q07-S1-R3-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "두 원의 교점 A,B가 C2의 지름 끝점이고 O2는 AB의 중점이다. 회전 동형 대표 배치에서 O1O2⊥AB, O1A=4, d²=9, r₂²=7를 확인한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "두 원의 교점 A,B가 C2의 지름 끝점이고 O2는 AB의 중점이다. 회전 동형 대표 배치에서 O1O2⊥AB, O1A=4, d²=9, r₂²=7를 확인한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P62-Q07-S2-R3",
@@ -291,8 +293,9 @@ window.questionBank = [
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "원본 PDF 인쇄 P62 Q07: 두 원의 교점이 한 원의 지름 양 끝점인 조건, 직각삼각형 중심거리 계산 구조 보존.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P62-Q07-S2-R3-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "두 원의 교점 A,B가 C2의 지름 끝점이고 O2는 AB의 중점이다. 회전 동형 대표 배치에서 O1O2⊥AB, O1A=5, d²=16, r₂²=9를 확인한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "두 원의 교점 A,B가 C2의 지름 끝점이고 O2는 AB의 중점이다. 회전 동형 대표 배치에서 O1O2⊥AB, O1A=5, d²=16, r₂²=9를 확인한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P62-Q08-T1-R3",
@@ -496,8 +499,9 @@ window.questionBank = [
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "인쇄 P62 Q09: 원과 직선의 두 교점을 지나는 원 중 넓이 최소. 공통현의 반길이와 점-직선 거리 제곱으로 최소 넓이 산출; 원본 구조 유지.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P62-Q09-T1-R3-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "중심 O=(2,-1), 원 반지름 5과 직선 3x−4y-5=0의 수선거리 제곱 1. 두 교점 A,B와 중점 H를 그려 최소 원의 반지름 제곱이 24임을 보인다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "중심 O=(2,-1), 원 반지름 5과 직선 3x−4y-5=0의 수선거리 제곱 1. 두 교점 A,B와 중점 H를 그려 최소 원의 반지름 제곱이 24임을 보인다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P62-Q09-S1-R3",
@@ -545,8 +549,9 @@ window.questionBank = [
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "인쇄 P62 Q09: 원과 직선의 두 교점을 지나는 원 중 넓이 최소. 공통현의 반길이와 점-직선 거리 제곱으로 최소 넓이 산출; 원본 구조 유지.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P62-Q09-S1-R3-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "중심 O=(-1,2), 원 반지름 6과 직선 3x−4y+16=0의 수선거리 제곱 1. 두 교점 A,B와 중점 H를 그려 최소 원의 반지름 제곱이 35임을 보인다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "중심 O=(-1,2), 원 반지름 6과 직선 3x−4y+16=0의 수선거리 제곱 1. 두 교점 A,B와 중점 H를 그려 최소 원의 반지름 제곱이 35임을 보인다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P62-Q09-S2-R3",
@@ -790,8 +795,9 @@ window.questionBank = [
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "인쇄 P63 Q11: 원의 중심과 반지름이 매개변수 a에 의존하고, 직선과의 교점 존재 조건에서 정수 a 개수를 세는 원본 구조 유지. 접점 포함.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P63-Q11-T1-R3-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "중심 (a,2)와 직선 3x−3y−a+4=0의 거리 d가 반지름 √2 이하인 조건은 -2≤a≤4이다. 양끝 접하는 값도 포함하여 정수는 7개.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "중심 (a,2)와 직선 3x−3y−a+4=0의 거리 d가 반지름 √2 이하인 조건은 -2≤a≤4이다. 양끝 접하는 값도 포함하여 정수는 7개."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P63-Q11-S1-R3",
@@ -839,8 +845,9 @@ window.questionBank = [
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "인쇄 P63 Q11: 원의 중심과 반지름이 매개변수 a에 의존하고, 직선과의 교점 존재 조건에서 정수 a 개수를 세는 원본 구조 유지. 접점 포함.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P63-Q11-S1-R3-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "중심 (a,1)와 직선 3x−3y−a+1=0의 거리 d가 반지름 √8 이하인 조건은 -5≤a≤7이다. 양끝 접하는 값도 포함하여 정수는 13개.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "중심 (a,1)와 직선 3x−3y−a+1=0의 거리 d가 반지름 √8 이하인 조건은 -5≤a≤7이다. 양끝 접하는 값도 포함하여 정수는 13개."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P63-Q11-S2-R3",
@@ -888,8 +895,9 @@ window.questionBank = [
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "인쇄 P63 Q11: 원의 중심과 반지름이 매개변수 a에 의존하고, 직선과의 교점 존재 조건에서 정수 a 개수를 세는 원본 구조 유지. 접점 포함.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P63-Q11-S2-R3-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "중심 (a,3)와 직선 3x−3y−a+5=0의 거리 d가 반지름 √18 이하인 조건은 -7≤a≤11이다. 양끝 접하는 값도 포함하여 정수는 19개.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "중심 (a,3)와 직선 3x−3y−a+5=0의 거리 d가 반지름 √18 이하인 조건은 -7≤a≤11이다. 양끝 접하는 값도 포함하여 정수는 19개."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P63-Q12-T1-R3",

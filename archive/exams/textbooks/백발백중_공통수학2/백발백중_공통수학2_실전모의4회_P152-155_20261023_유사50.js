@@ -115,8 +115,9 @@ window.questionBank = [
     "targetChoiceSlot": 2,
     "inferredFields": [],
     "solutionImage": "assets/images/백발백중_공통수학2_실전모의4회_P152-155_20261023_유사50/BV-BAKBAL-H-COM2-P150-Q01-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원 중심 (-1,3)를 y=x에 대칭시키면 (3,-1), 다시 x축 대칭시키면 (3,1)이다. 최종 중심은 y=1x-2 위에 있고 각 원 반지름은 2로 같다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원 중심 (-1,3)를 y=x에 대칭시키면 (3,-1), 다시 x축 대칭시키면 (3,1)이다. 최종 중심은 y=1x-2 위에 있고 각 원 반지름은 2로 같다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P150-Q01-S2-R1",
@@ -174,8 +175,9 @@ window.questionBank = [
     "targetChoiceSlot": 5,
     "inferredFields": [],
     "solutionImage": "assets/images/백발백중_공통수학2_실전모의4회_P152-155_20261023_유사50/BV-BAKBAL-H-COM2-P150-Q01-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원 중심 (3,5)를 y=x에 대칭시키면 (5,3), 다시 x축 대칭시키면 (5,-3)이다. 최종 중심은 y=-1x+2 위에 있고 각 원 반지름은 4로 같다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원 중심 (3,5)를 y=x에 대칭시키면 (5,3), 다시 x축 대칭시키면 (5,-3)이다. 최종 중심은 y=-1x+2 위에 있고 각 원 반지름은 4로 같다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P150-Q02-T1-R1",
@@ -233,8 +235,10 @@ window.questionBank = [
     "targetChoiceSlot": 1,
     "inferredFields": [],
     "solutionImage": "assets/images/백발백중_공통수학2_실전모의4회_P152-155_20261023_유사50/BV-BAKBAL-H-COM2-P150-Q02-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "수평축을 매개변수 a로 읽으면 r²=10a²+8a+5; 꼭짓점 a=-0.4에서 최소 r²=3.4이고 그때 원의 중심은 (0.4,-1.2)이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "수평축을 매개변수 a로 읽으면 r²=10a²+8a+5; 꼭짓점 a=-0.4에서 최소 r²=3.4이고 그때 원의 중심은 (0.4,-1.2)이다.",
+    "solutionImageScale": 90
   },
   {
     "id": "BV-BAKBAL-H-COM2-P150-Q02-S1-R1",
@@ -292,8 +296,10 @@ window.questionBank = [
     "targetChoiceSlot": 3,
     "inferredFields": [],
     "solutionImage": "assets/images/백발백중_공통수학2_실전모의4회_P152-155_20261023_유사50/BV-BAKBAL-H-COM2-P150-Q02-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "수평축을 매개변수 a로 읽으면 r²=5a²+10a+7; 꼭짓점 a=-1에서 최소 r²=2이고 그때 원의 중심은 (-2,1)이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "수평축을 매개변수 a로 읽으면 r²=5a²+10a+7; 꼭짓점 a=-1에서 최소 r²=2이고 그때 원의 중심은 (-2,1)이다.",
+    "solutionImageScale": 90
   },
   {
     "id": "BV-BAKBAL-H-COM2-P150-Q02-S2-R1",
@@ -351,8 +357,9 @@ window.questionBank = [
     "targetChoiceSlot": 4,
     "inferredFields": [],
     "solutionImage": "assets/images/백발백중_공통수학2_실전모의4회_P152-155_20261023_유사50/BV-BAKBAL-H-COM2-P150-Q02-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "수평축을 매개변수 a로 읽으면 r²=2a²-8a+12; 꼭짓점 a=2에서 최소 r²=4이고 그때 원의 중심은 (-2,-2)이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "수평축을 매개변수 a로 읽으면 r²=2a²-8a+12; 꼭짓점 a=2에서 최소 r²=4이고 그때 원의 중심은 (-2,-2)이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P150-Q03-T1-R1",
@@ -410,8 +417,9 @@ window.questionBank = [
     "targetChoiceSlot": 2,
     "inferredFields": [],
     "solutionImage": "assets/images/백발백중_공통수학2_실전모의4회_P152-155_20261023_유사50/BV-BAKBAL-H-COM2-P150-Q03-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "해설의 a=2, b=-4를 대입한 l₁, l₂, l₃를 표시한다. 두 직선 l₁⊥l₂는 교점 X의 직각표식, l₁∥l₃는 같은 평행표식으로 확인한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "해설의 a=2, b=-4를 대입한 l₁, l₂, l₃를 표시한다. 두 직선 l₁⊥l₂는 교점 X의 직각표식, l₁∥l₃는 같은 평행표식으로 확인한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P150-Q03-S1-R1",
@@ -469,8 +477,9 @@ window.questionBank = [
     "targetChoiceSlot": 5,
     "inferredFields": [],
     "solutionImage": "assets/images/백발백중_공통수학2_실전모의4회_P152-155_20261023_유사50/BV-BAKBAL-H-COM2-P150-Q03-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "해설의 a=2, b=-6를 대입한 l₁, l₂, l₃를 표시한다. 두 직선 l₁⊥l₂는 교점 X의 직각표식, l₁∥l₃는 같은 평행표식으로 확인한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "해설의 a=2, b=-6를 대입한 l₁, l₂, l₃를 표시한다. 두 직선 l₁⊥l₂는 교점 X의 직각표식, l₁∥l₃는 같은 평행표식으로 확인한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P150-Q03-S2-R1",
@@ -528,8 +537,9 @@ window.questionBank = [
     "targetChoiceSlot": 1,
     "inferredFields": [],
     "solutionImage": "assets/images/백발백중_공통수학2_실전모의4회_P152-155_20261023_유사50/BV-BAKBAL-H-COM2-P150-Q03-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "해설의 a=3, b=-12를 대입한 l₁, l₂, l₃를 표시한다. 두 직선 l₁⊥l₂는 교점 X의 직각표식, l₁∥l₃는 같은 평행표식으로 확인한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "해설의 a=3, b=-12를 대입한 l₁, l₂, l₃를 표시한다. 두 직선 l₁⊥l₂는 교점 X의 직각표식, l₁∥l₃는 같은 평행표식으로 확인한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P150-Q04-T1-R1",
@@ -646,8 +656,9 @@ window.questionBank = [
     "targetChoiceSlot": 1,
     "inferredFields": [],
     "solutionImage": "assets/images/백발백중_공통수학2_실전모의4회_P152-155_20261023_유사50/BV-BAKBAL-H-COM2-P150-Q04-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "A=(3,2), B=(-1,4)에서 등거리인 P=(-1,-1)는 수직이등분선과 y=x의 교점이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "A=(3,2), B=(-1,4)에서 등거리인 P=(-1,-1)는 수직이등분선과 y=x의 교점이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P150-Q04-S2-R1",
@@ -705,8 +716,9 @@ window.questionBank = [
     "targetChoiceSlot": 2,
     "inferredFields": [],
     "solutionImage": "assets/images/백발백중_공통수학2_실전모의4회_P152-155_20261023_유사50/BV-BAKBAL-H-COM2-P150-Q04-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "A=(4,1), B=(-2,5)에서 등거리인 P=(-3,-3)는 수직이등분선과 y=x의 교점이다. 삼각형 ABP의 무게중심은 G=(-0.3333333333333333,1)이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "A=(4,1), B=(-2,5)에서 등거리인 P=(-3,-3)는 수직이등분선과 y=x의 교점이다. 삼각형 ABP의 무게중심은 G=(-0.3333333333333333,1)이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P150-Q05-T1-R1",
@@ -764,8 +776,9 @@ window.questionBank = [
     "targetChoiceSlot": 5,
     "inferredFields": [],
     "solutionImage": "assets/images/백발백중_공통수학2_실전모의4회_P152-155_20261023_유사50/BV-BAKBAL-H-COM2-P150-Q05-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "A(0,0), B(3,4), C(8,4)이므로 AB²=BC²=25, CA²=80이다. AB=BC=5인 이등변삼각형을 표시한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "A(0,0), B(3,4), C(8,4)이므로 AB²=BC²=25, CA²=80이다. AB=BC=5인 이등변삼각형을 표시한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P150-Q05-S1-R1",
