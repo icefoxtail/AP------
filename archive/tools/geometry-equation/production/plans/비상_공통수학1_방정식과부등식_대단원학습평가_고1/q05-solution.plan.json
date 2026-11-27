@@ -1,0 +1,37 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{ "coefficients": ["3", "-2", "1/2"] }],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "functionName": "f",
+    "formula": "x^2/2-2*x+3",
+    "referenceCurves": [{ "id": "g", "name": "g", "coefficients": ["13", "1", "-1/2"], "intersectionX": ["-2", "5"] }],
+    "requiredPoints": [
+      { "id": "U", "x": "2", "y": "1", "marker": "NONE" },
+      { "id": "V", "x": "1", "y": "27/2", "marker": "NONE" }
+    ],
+    "axisTickValues": { "x": [-2, 5], "y": [] },
+    "overlays": {
+      "points": [
+        { "id": "A", "x": "-2", "y": "9", "unnamed": true, "coordinates": true },
+        { "id": "B", "x": "5", "y": "11/2", "unnamed": true }
+      ],
+      "guides": [
+        { "id": "gA", "from": "A", "axis": "x" },
+        { "id": "gB", "from": "B", "axis": "x" }
+      ]
+    }
+  },
+  "coordinateBand": { "hide": ["U", "V"] },
+  "caption": "주어진 x=−2 교점을 대입하면 k=13. 두 포물선의 다른 교점은 x=5에 있으므로 두 점에서 x축으로 점선을 내려 비교한다.",
+  "accessibilityDescription": "위로 열린 포물선과 아래로 열린 포물선이 x가 −2와 5인 두 점에서 만난다. 두 교점에서 x축으로 점선 안내선이 내려간다.",
+  "sourceQuote": "x=−2에서 y=9, k=13이고, 두 식을 연립하면 (x−5)(x+2)=0이므로 다른 교점의 x좌표는 5이다.",
+  "sourceConditions": [
+    { "id": "f", "condition": "y=1/2x²−2x+3", "mappedTo": "graphPlan.pieces" },
+    { "id": "g", "condition": "k=13으로 결정되어 y=−1/2x²+x+13", "mappedTo": "graphPlan.referenceCurves[g].coefficients" },
+    { "id": "roots", "condition": "교점 x=−2, 5", "mappedTo": ["graphPlan.referenceCurves[g].intersectionX", "graphPlan.axisTickValues.x", "graphPlan.overlays.points"] },
+    { "id": "guides", "condition": "각 교점에서 x축까지 수직 점선", "mappedTo": "graphPlan.overlays.guides" }
+  ],
+  "newVisualInformation": ["해설이 구한 교점 x=−2,5에 점과 두 수직 점선으로 대응시키며 면을 채우지 않는다."]
+}

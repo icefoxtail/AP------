@@ -1,0 +1,24 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "해집합",
+        "color": "BLUE",
+        "pieces": [{ "lo": { "value": "-2/3", "state": "OPEN" }, "hi": { "value": "3", "state": "OPEN" } }],
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": { "text": "열린 구간 안의 정수는 0, 1, 2" },
+  "caption": "a=7, b=−3 대입 후 (3x+2)(x−3)<0의 해 −2/3<x<3. 양 끝은 제외하므로 정수해는 0, 1, 2이다.",
+  "accessibilityDescription": "열린 끝점 −2/3과 3 사이의 해집합과 그 안의 정수 0, 1, 2를 수직선 위에 표시한다.",
+  "sourceConditions": [
+    { "id": "coefficient", "condition": "a=7, b=−3, 두 번째 이차부등식은 −3x²+7x+6>0", "mappedTo": "numberLine.rows[0].pieces" },
+    { "id": "range", "condition": "(3x+2)(x−3)<0의 해 −2/3<x<3", "mappedTo": "numberLine.rows[0].pieces" },
+    { "id": "integers", "condition": "정수 0, 1, 2", "mappedTo": "numberLine.rows[0].integerPoints" }
+  ],
+  "newVisualInformation": ["분수 열린 끝점과 내부 정수 세 개를 수직선의 서로 다른 표식으로 표시한다."]
+}

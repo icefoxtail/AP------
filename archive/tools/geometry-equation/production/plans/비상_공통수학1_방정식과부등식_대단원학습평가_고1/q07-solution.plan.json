@@ -1,0 +1,23 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["-3", "5", "-1"],
+    "sourceDomain": { "kind": "INTERVAL", "range": [-1, 2] },
+    "requiredPoints": [
+      { "id": "L", "x": -1, "y": -9 },
+      { "id": "R", "x": 2, "y": 3 }
+    ],
+    "axisTickValues": { "x": [-1, 2], "y": [-9, 3] }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "y=−x²+5x−3은 꼭짓점 x=5/2가 구간 [−1,2]의 오른쪽에 있어 증가한다. 최솟값 −9는 x=−1, 최댓값 3은 x=2에서 얻는다.",
+  "accessibilityDescription": "구간 −1≤x≤2에 제한된 아래로 열린 포물선의 증가 부분. 양 끝점 L(−1,−9), R(2,3)이 표시된다.",
+  "sourceQuote": "−1≤x≤a에서 y=−x²+5x−3의 최댓값은 3, 최솟값은 b이다. 해설: 꼭짓점 x=5/2가 구간 밖이므로 a=2, b=−9.",
+  "sourceConditions": [
+    { "id": "eq", "condition": "y=−x²+5x−3", "mappedTo": "graphPlan.coefficients" },
+    { "id": "range", "condition": "해설에서 결정한 구간 −1≤x≤2", "mappedTo": "graphPlan.sourceDomain.range" },
+    { "id": "endpoints", "condition": "최소 (−1,−9), 최대 (2,3)", "mappedTo": ["graphPlan.requiredPoints", "graphPlan.axisTickValues"] }
+  ],
+  "newVisualInformation": ["꼭짓점에 도달하기 전의 증가 구간과 양 끝 함수값을 곡선·점·축 눈금으로 확인한다."]
+}

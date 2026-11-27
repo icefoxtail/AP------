@@ -1,0 +1,36 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "parameter": { "name": "a", "value": "1" },
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "첫째",
+        "color": "BLUE",
+        "pieces": [
+          { "lo": null, "hi": { "value": "-3", "state": "OPEN" } },
+          { "lo": { "value": "2", "state": "OPEN" }, "hi": null }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "둘째",
+        "color": "GREEN",
+        "pieces": [
+          { "lo": { "param": { "mul": "1", "add": "-1" }, "state": "CLOSED" }, "hi": { "value": "3", "state": "CLOSED" } }
+        ]
+      },
+      { "kind": "RESULT", "label": "공통" }
+    ]
+  },
+  "numberLineCaption": { "text": "예: a=1일 때 두 해집합의 공통 구간" },
+  "caption": "첫째 부등식의 해는 x<−3 또는 x>2. −2≤a≤3이면 둘째 해는 a−1≤x≤3이고 공통 범위가 2<x≤3이다. a=1을 예로 그렸다.",
+  "accessibilityDescription": "세 줄 수직선. 첫째 해는 x<−3 또는 x>2, 둘째 해는 a=1의 예에서 0≤x≤3이고, 공통인 2<x≤3을 마지막 줄에 표시한다.",
+  "sourceConditions": [
+    { "id": "first", "condition": "(x+3)(x−2)>0의 해 x<−3 또는 x>2", "mappedTo": "numberLine.rows[0].pieces" },
+    { "id": "second", "condition": "(x−3)(x−(a−1))≤0이며 −2≤a≤3에서 a−1≤x≤3", "mappedTo": ["numberLine.rows[1].pieces", "numberLine.parameter"] },
+    { "id": "intersection", "condition": "a=1 예시에서 공통 해집합 2<x≤3", "mappedTo": "numberLine.rows[2]" }
+  ],
+  "newVisualInformation": ["매개변수 a의 구간 내부 예시에서 두 이차부등식의 해를 각기 다른 줄에 그려 마지막 줄의 열린 2·닫힌 3을 엔진이 교집합으로 계산한다."]
+}
