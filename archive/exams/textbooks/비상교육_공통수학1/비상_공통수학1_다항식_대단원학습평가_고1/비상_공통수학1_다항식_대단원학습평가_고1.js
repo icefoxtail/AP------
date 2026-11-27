@@ -481,6 +481,10 @@ window.questionBank = [
     "content": "삼각형 $ABC$의 세 변의 길이 $a$, $b$, $c$에 대하여 등식\n$$a^3+a^2b-ab^2-ac^2+bc^2-b^3=0$$\n이 성립할 때, 삼각형 $ABC$는 어떤 삼각형인지 말하시오.",
     "choices": [],
     "answer": "$a=b$인 이등변삼각형",
-    "solution": "주어진 식을 묶어서 인수분해한다.\n$$a^3+a^2b-ab^2-ac^2+bc^2-b^3=a^2(a+b)-b^2(a+b)-c^2(a-b)$$\n$$=(a+b)(a^2-b^2)-c^2(a-b)=(a-b)\\{(a+b)^2-c^2\\}=(a-b)(a+b-c)(a+b+c)=0$$\n삼각형의 세 변의 길이이므로 $a+b+c>0$이고 $a+b-c>0$이다. 따라서 $a-b=0$, 즉 $a=b$이다.\n따라서 삼각형 $\\mathrm{ABC}$는 $a=b$인 이등변삼각형이다."
+    "solution": "주어진 식을 묶어서 인수분해한다.\n$$a^3+a^2b-ab^2-ac^2+bc^2-b^3=a^2(a+b)-b^2(a+b)-c^2(a-b)$$\n$$=(a+b)(a^2-b^2)-c^2(a-b)=(a-b)\\{(a+b)^2-c^2\\}=(a-b)(a+b-c)(a+b+c)=0$$\n삼각형의 세 변의 길이이므로 $a+b+c>0$이고 $a+b-c>0$이다. 따라서 $a-b=0$, 즉 $a=b$이다.\n따라서 삼각형 $\\mathrm{ABC}$는 $a=b$인 이등변삼각형이다.",
+    "solutionImage": "assets/images/비상_공통수학1_다항식_대단원학습평가_고1/q17-solution.svg",
+    "solutionImageAlt": "인수분해와 삼각형의 두 변 길이의 합 조건에 따라 a=b, 즉 BC=CA가 되어 삼각형 ABC는 이등변삼각형이다.",
+    "solutionImageCaption": "인수분해와 삼각형의 두 변 길이의 합 조건에 따라 a=b, 즉 BC=CA가 되어 삼각형 ABC는 이등변삼각형이다.",
+    "solutionImageSize": "full"
   }
 ];

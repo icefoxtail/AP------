@@ -423,7 +423,11 @@ window.questionBank = [
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_기말고사/q15-solution.svg",
+    "solutionImageAlt": "선택지 중 좌표가 맞는 점은 C(4,3)이며 정답은 ③이다.",
+    "solutionImageCaption": "선택지 중 좌표가 맞는 점은 C(4,3)이며 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -598,7 +602,11 @@ window.questionBank = [
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_기말고사/q21-solution.svg",
+    "solutionImageAlt": "교점 (-6,2)를 대입하면 a=-1/3, b=-12이고 ab=4이다.",
+    "solutionImageCaption": "교점 (-6,2)를 대입하면 a=-1/3, b=-12이고 ab=4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

@@ -242,7 +242,12 @@ window.questionBank = [
     "image": "assets/images/비상_공통수학1_방정식과부등식_익힘책_고1/q8-problem.svg",
     "imageAlt": "직각삼각형 밑면의 두 직각변은 16, 20이고 삼각기둥 높이는 24이다. 직육면체의 밑면은 빗변에 닿는 내접 직사각형이다.",
     "imageCaption": "직각삼각형 밑면의 두 직각변은 16, 20이고 삼각기둥 높이는 24이다. 직육면체의 밑면은 빗변에 닿는 내접 직사각형이다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImage": "assets/images/비상_공통수학1_방정식과부등식_익힘책_고1/q8-solution.svg",
+    "solutionImageAlt": "밑면 직각삼각형에서 a/16+b/20=1이며, 최대 넓이 80인 내접 직사각형의 두 변은 8,10이다. 높이 24를 곱해 부피 1920을 얻는다.",
+    "solutionImageCaption": "밑면 직각삼각형에서 a/16+b/20=1이며, 최대 넓이 80인 내접 직사각형의 두 변은 8,10이다. 높이 24를 곱해 부피 1920을 얻는다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 9,
@@ -326,7 +331,15 @@ window.questionBank = [
     "content": "오른쪽 그림과 같은 사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}}=2$, $\\overline{\\mathrm{BC}}=6$, $\\angle\\mathrm{A}=\\angle\\mathrm{C}=90^\\circ$이다. 사각형 $\\mathrm{ABCD}$의 넓이가 30일 때, 사각형 $\\mathrm{ABCD}$의 둘레의 길이를 구하시오.\n<img src=\"q11.png\" />",
     "choices": [],
     "answer": "$24$",
-    "solution": "대각선 $\\mathrm{BD}$를 그으면 삼각형 $\\mathrm{ABD}$는 $\\angle\\mathrm{A}=90^\\circ$, 삼각형 $\\mathrm{CBD}$는 $\\angle\\mathrm{C}=90^\\circ$인 직각삼각형이다.\n$\\overline{\\mathrm{AD}}=x,\\ \\overline{\\mathrm{CD}}=y$라 하자.\n넓이: $\\frac{1}{2}\\times 2\\times x+\\frac{1}{2}\\times 6\\times y=30$에서 $x+3y=30\\qquad\\cdots\\ ①$\n$\\overline{\\mathrm{BD}}$가 공통이므로 피타고라스 정리에 의하여 $2^2+x^2=6^2+y^2$에서 $x^2-y^2=32\\qquad\\cdots\\ ②$\n①에서 $x=30-3y$를 ②에 대입하면\n$$(30-3y)^2-y^2=32,\\quad 8y^2-180y+868=0,\\quad 2y^2-45y+217=0$$\n$(2y-31)(y-7)=0$에서 $y=\\frac{31}{2}$ 또는 $y=7$\n$y=\\frac{31}{2}$이면 $x=30-\\frac{93}{2}<0$이므로 불가능하다. 따라서 $y=7,\\ x=9$이다.\n사각형 $\\mathrm{ABCD}$의 둘레의 길이는 $2+6+7+9=24$"
+    "solution": "대각선 $\\mathrm{BD}$를 그으면 삼각형 $\\mathrm{ABD}$는 $\\angle\\mathrm{A}=90^\\circ$, 삼각형 $\\mathrm{CBD}$는 $\\angle\\mathrm{C}=90^\\circ$인 직각삼각형이다.\n$\\overline{\\mathrm{AD}}=x,\\ \\overline{\\mathrm{CD}}=y$라 하자.\n넓이: $\\frac{1}{2}\\times 2\\times x+\\frac{1}{2}\\times 6\\times y=30$에서 $x+3y=30\\qquad\\cdots\\ ①$\n$\\overline{\\mathrm{BD}}$가 공통이므로 피타고라스 정리에 의하여 $2^2+x^2=6^2+y^2$에서 $x^2-y^2=32\\qquad\\cdots\\ ②$\n①에서 $x=30-3y$를 ②에 대입하면\n$$(30-3y)^2-y^2=32,\\quad 8y^2-180y+868=0,\\quad 2y^2-45y+217=0$$\n$(2y-31)(y-7)=0$에서 $y=\\frac{31}{2}$ 또는 $y=7$\n$y=\\frac{31}{2}$이면 $x=30-\\frac{93}{2}<0$이므로 불가능하다. 따라서 $y=7,\\ x=9$이다.\n사각형 $\\mathrm{ABCD}$의 둘레의 길이는 $2+6+7+9=24$",
+    "image": "assets/images/비상_공통수학1_방정식과부등식_익힘책_고1/q11-problem.svg",
+    "imageAlt": "두 대각의 크기가 각각 90도인 사각형 ABCD에서 AB=2, BC=6을 표시한 문제 도형이다.",
+    "imageCaption": "두 대각의 크기가 각각 90도인 사각형 ABCD에서 AB=2, BC=6을 표시한 문제 도형이다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/비상_공통수학1_방정식과부등식_익힘책_고1/q11-solution.svg",
+    "solutionImageAlt": "직각삼각형 ABD와 CBD를 나누는 보조대각선 BD를 긋고, AD=x와 CD=y를 두어 넓이와 피타고라스 관계를 비교한다.",
+    "solutionImageCaption": "직각삼각형 ABD와 CBD를 나누는 보조대각선 BD를 긋고, AD=x와 CD=y를 두어 넓이와 피타고라스 관계를 비교한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -382,7 +395,11 @@ window.questionBank = [
     "content": "실수 $a$, $b$, $c$에 대하여 이차부등식 $ax^2+bx+c>0$의 해가 $-1<x<3$일 때, 이차부등식 $bx^2-ax-c<0$의 해를 구하시오.",
     "choices": [],
     "answer": "$-\\frac{3}{2}<x<1$",
-    "solution": "$ax^2+bx+c>0$의 해가 $-1<x<3$이므로 $a<0$이고\n$$ax^2+bx+c=a(x+1)(x-3)=ax^2-2ax-3a$$\n이므로 $b=-2a,\\ c=-3a$이다.\n$bx^2-ax-c<0$에 대입하면\n$$-2ax^2-ax+3a<0$$\n$a<0$이므로 양변을 $a$로 나누면 부등호의 방향이 바뀌어 $-2x^2-x+3>0$이다.\n$2x^2+x-3<0$이므로 $(2x+3)(x-1)<0$에서 $-\\frac{3}{2}<x<1$"
+    "solution": "$ax^2+bx+c>0$의 해가 $-1<x<3$이므로 $a<0$이고\n$$ax^2+bx+c=a(x+1)(x-3)=ax^2-2ax-3a$$\n이므로 $b=-2a,\\ c=-3a$이다.\n$bx^2-ax-c<0$에 대입하면\n$$-2ax^2-ax+3a<0$$\n$a<0$이므로 양변을 $a$로 나누면 부등호의 방향이 바뀌어 $-2x^2-x+3>0$이다.\n$2x^2+x-3<0$이므로 $(2x+3)(x-1)<0$에서 $-\\frac{3}{2}<x<1$",
+    "solutionImage": "assets/images/비상_공통수학1_방정식과부등식_익힘책_고1/q13-solution.svg",
+    "solutionImageAlt": "원래 이차부등식의 해 -1<x<3과 계수 관계를 대입한 뒤 구한 새 해 -3/2<x<1을 별도 수직선에 표시한다.",
+    "solutionImageCaption": "원래 이차부등식의 해 -1<x<3과 계수 관계를 대입한 뒤 구한 새 해 -3/2<x<1을 별도 수직선에 표시한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -410,6 +427,10 @@ window.questionBank = [
     "content": "연립부등식 $\\begin{cases} x^2-3x+2>0 \\\\ 2x-a\\le2 \\end{cases}$를 만족시키는 자연수 $x$가 1개가 되도록 하는 실수 $a$의 값의 범위를 구하시오.",
     "choices": [],
     "answer": "$4\\le a<6$",
-    "solution": "$x^2-3x+2>0$에서 $(x-1)(x-2)>0$이므로 $x<1$ 또는 $x>2$\n$2x-a\\le 2$에서 $x\\le\\frac{a+2}{2}$\n자연수 $x$ 중 $x<1$을 만족시키는 것은 없으므로 연립부등식을 만족시키는 자연수는 $x>2$, 즉 $3,\\ 4,\\ 5,\\ \\cdots$ 중에서 $x\\le\\frac{a+2}{2}$인 것이다.\n자연수가 $1$개이려면 $x=3$만 만족해야 하므로\n$$3\\le\\frac{a+2}{2}<4$$\n$6\\le a+2<8$이므로 $4\\le a<6$"
+    "solution": "$x^2-3x+2>0$에서 $(x-1)(x-2)>0$이므로 $x<1$ 또는 $x>2$\n$2x-a\\le 2$에서 $x\\le\\frac{a+2}{2}$\n자연수 $x$ 중 $x<1$을 만족시키는 것은 없으므로 연립부등식을 만족시키는 자연수는 $x>2$, 즉 $3,\\ 4,\\ 5,\\ \\cdots$ 중에서 $x\\le\\frac{a+2}{2}$인 것이다.\n자연수가 $1$개이려면 $x=3$만 만족해야 하므로\n$$3\\le\\frac{a+2}{2}<4$$\n$6\\le a+2<8$이므로 $4\\le a<6$",
+    "solutionImage": "assets/images/비상_공통수학1_방정식과부등식_익힘책_고1/q14-solution.svg",
+    "solutionImageAlt": "자연수 x가 오직 3만 해가 되려면 상한 t=(a+2)/2가 3 이상 4 미만이어야 함을 수직선으로 보인다.",
+    "solutionImageCaption": "자연수 x가 오직 3만 해가 되려면 상한 t=(a+2)/2가 3 이상 4 미만이어야 함을 수직선으로 보인다.",
+    "solutionImageSize": "full"
   }
 ];
