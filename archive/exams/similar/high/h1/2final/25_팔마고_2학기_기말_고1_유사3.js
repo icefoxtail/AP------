@@ -44,9 +44,13 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "image": "assets/images/25_팔마고_2학기_기말_고1_유사3/q01-problem.svg",
     "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_유사3/q01-solution.svg",
-    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageAlt": "y축에 평행한 점선(수직선)을 그어 그래프와 만나는 점의 수를 센다. (1), (3), (5)는 수직선이 그래프와 한 점에서 만나고, (2)는 x=0에서 닫힌 점 (0,1)만 그래프 위에 있어 한 점에서 만나므로 함수의 그래프이다. (4)는 x=1에서 닫힌 점 (1,1)과 (1,2)가 모두 그래프 위에 있어 두 점에서 만나므로 함수의 그래프가 아니다. 따라서 답은 ④이다.",
     "solutionImageCaption": "y축에 평행한 점선(수직선)을 그어 그래프와 만나는 점의 수를 센다. (1), (3), (5)는 수직선이 그래프와 한 점에서 만나고, (2)는 x=0에서 닫힌 점 (0,1)만 그래프 위에 있어 한 점에서 만나므로 함수의 그래프이다. (4)는 x=1에서 닫힌 점 (1,1)과 (1,2)가 모두 그래프 위에 있어 두 점에서 만나므로 함수의 그래프가 아니다. 따라서 답은 ④이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "다섯 개의 좌표평면에 그린 그래프 (1)~(5)",
+    "imageCaption": "다섯 개의 좌표평면에 그린 그래프 (1)~(5)",
+    "imageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 2,
@@ -90,9 +94,12 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "image": "assets/images/25_팔마고_2학기_기말_고1_유사3/q02-problem.svg",
     "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_유사3/q02-solution.svg",
-    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
-    "solutionImageCaption": "g의 대응도에서 함숫값이 4인 원소는 3뿐이므로 f(a)=3이고, f의 대응도에서 함숫값이 3인 원소는 2뿐이므로 a=2이다. 그림은 풀이에 쓰이는 원소만 골라 a에 g를 적용한 뒤 f를 적용하는 과정을 나타냈고, 초록 경로 2→5→5에서 g(2)=5, f(5)=5이다. 따라서 (f∘g)(2)=5이고 답은 ⑤이다. (그림 둘째 줄은 g(3)=4, f(4)=2이다.)",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "g의 대응도에서 함숫값이 4인 원소는 3뿐이므로 f(a)=3이고, f의 대응도에서 함숫값이 3인 원소는 2뿐이므로 a=2이다. 그림의 보라 경로는 2 -f→ 3 -g→ 4로 (g∘f)(2)=4를 나타내고, 초록 경로는 2 -g→ 5 -f→ 5로 (f∘g)(2)=f(g(2))=f(5)=5를 나타낸다. 따라서 답은 ⑤이다.",
+    "solutionImageCaption": "g의 대응도에서 함숫값이 4인 원소는 3뿐이므로 f(a)=3이고, f의 대응도에서 함숫값이 3인 원소는 2뿐이므로 a=2이다. 그림의 보라 경로는 2 -f→ 3 -g→ 4로 (g∘f)(2)=4를 나타내고, 초록 경로는 2 -g→ 5 -f→ 5로 (f∘g)(2)=f(g(2))=f(5)=5를 나타낸다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "imageAlt": "집합 X={1,2,3,4,5}에서 X로의 두 함수 f, g의 대응도",
+    "imageCaption": "집합 X={1,2,3,4,5}에서 X로의 두 함수 f, g의 대응도",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -136,9 +143,12 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "image": "assets/images/25_팔마고_2학기_기말_고1_유사3/q03-problem.svg",
     "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_유사3/q03-solution.svg",
-    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageAlt": "g의 대응도에서 g(4)=3(초록 화살표)이다. f(1)=3(분홍 화살표)이므로 f⁻¹(3)=1이다. 또 g(3)=1(보라 화살표)이므로 g⁻¹(1)=3이다. 따라서 (f⁻¹∘g)(4)+g⁻¹(1)=1+3=4이고 답은 ③이다.",
     "solutionImageCaption": "g의 대응도에서 g(4)=3(초록 화살표)이다. f(1)=3(분홍 화살표)이므로 f⁻¹(3)=1이다. 또 g(3)=1(보라 화살표)이므로 g⁻¹(1)=3이다. 따라서 (f⁻¹∘g)(4)+g⁻¹(1)=1+3=4이고 답은 ③이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "집합 X={1,2,3,4}에서 X로의 두 함수 f, g의 대응도",
+    "imageCaption": "집합 X={1,2,3,4}에서 X로의 두 함수 f, g의 대응도",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -181,7 +191,7 @@ window.questionBank = [
     "sourceQid": 4,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_유사3/q04-solution.svg",
-    "solutionImageAlt": "해설 그림: x=-1과 y=-3을 점근선으로 하는 두 유리함수 곡선이 그려져 있다. 파랑 곡선은 원점을 지나고 주황 점선은 y축 위의 점 A를 지난다.",
+    "solutionImageAlt": "y=−3+(k+3)/(x+1)이므로 점근선은 x=−1, y=−3이다. x>0에서 y≤0이려면 x=0에서의 값 k가 0 이하이어야 한다. 파랑 곡선은 k=0일 때로 원점 O를 지나며 x>0에서 y<0이어서 제1사분면을 지나지 않고, 주황 점선은 k=1일 때로 점 A(0,1)을 지나 x>0에서 y가 양수인 부분이 생긴다. 따라서 k의 최댓값은 0이고 답은 ⑤이다.",
     "solutionImageCaption": "y=−3+(k+3)/(x+1)이므로 점근선은 x=−1, y=−3이다. x>0에서 y≤0이려면 x=0에서의 값 k가 0 이하이어야 한다. 파랑 곡선은 k=0일 때로 원점 O를 지나며 x>0에서 y<0이어서 제1사분면을 지나지 않고, 주황 점선은 k=1일 때로 점 A(0,1)을 지나 x>0에서 y가 양수인 부분이 생긴다. 따라서 k의 최댓값은 0이고 답은 ⑤이다.",
     "solutionImageSize": "full"
   },
@@ -227,9 +237,12 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "image": "assets/images/25_팔마고_2학기_기말_고1_유사3/q05-problem.svg",
     "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_유사3/q05-solution.svg",
-    "solutionImageAlt": "해설 그림: 끝점에서 시작해 오른쪽 위로 뻗는 무리함수 곡선 위에 점 E, P, T가 있고 y=5인 점선이 점 T를 지난다.",
+    "solutionImageAlt": "끝점 E(2,1)에서 c=1, a+2b=0이고 점 P(6,3)에서 √(a+6b)+1=3이므로 b=1, a=−2, f(x)=√(x−2)+1이다. f⁻¹(5)는 f(t)=5의 해이므로 점선 y=5와 곡선이 만나는 점 T의 x좌표이다. √(t−2)=4에서 t=18이므로 T(18,5)이다. 따라서 답은 ③이다.",
     "solutionImageCaption": "끝점 E(2,1)에서 c=1, a+2b=0이고 점 P(6,3)에서 √(a+6b)+1=3이므로 b=1, a=−2, f(x)=√(x−2)+1이다. f⁻¹(5)는 f(t)=5의 해이므로 점선 y=5와 곡선이 만나는 점 T의 x좌표이다. √(t−2)=4에서 t=18이므로 T(18,5)이다. 따라서 답은 ③이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "끝점이 E(2,1)이고 점 P(6,3)을 지나는 무리함수의 그래프",
+    "imageCaption": "끝점이 E(2,1)이고 점 P(6,3)을 지나는 무리함수의 그래프",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -317,8 +330,8 @@ window.questionBank = [
     "sourceQid": 7,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_유사3/q07-solution.svg",
-    "solutionImageAlt": "해설 그림: 점근선 y=2를 향해 내려가는 유리함수 곡선에서 정의역 구간이 강조되어 있고 그 양 끝점 A와 B가 표시되어 있다.",
-    "solutionImageCaption": "y=2+7/(x+1)은 x가 커질수록 작아지는 감소함수이다. 주황으로 강조한 정의역 1≤x≤a에서 최댓값은 x=1일 때 A(1, 11/2)이고 최솟값은 x=a일 때 2+7/(a+1)이다. 합이 17/2이려면 7/(a+1)=1이므로 a=6이고 끝점은 B(6,3)이다. 따라서 답은 ⑤이다.",
+    "solutionImageAlt": "y=2+7/(x+1)은 x가 커질수록 작아지는 감소함수이다. 그림은 실제 정의역 1≤x≤6의 곡선만 그리며 양 끝점을 포함한다. 최댓값은 x=1일 때 A(1, 11/2)이고 최솟값은 x=a일 때 2+7/(a+1)이다. 합이 17/2이려면 7/(a+1)=1이므로 a=6이고 끝점은 B(6,3)이다. 따라서 답은 ⑤이다.",
+    "solutionImageCaption": "y=2+7/(x+1)은 x가 커질수록 작아지는 감소함수이다. 그림은 실제 정의역 1≤x≤6의 곡선만 그리며 양 끝점을 포함한다. 최댓값은 x=1일 때 A(1, 11/2)이고 최솟값은 x=a일 때 2+7/(a+1)이다. 합이 17/2이려면 7/(a+1)=1이므로 a=6이고 끝점은 B(6,3)이다. 따라서 답은 ⑤이다.",
     "solutionImageSize": "full"
   },
   {
@@ -484,7 +497,7 @@ window.questionBank = [
     "sourceQid": 11,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_유사3/q11-solution.svg",
-    "solutionImageAlt": "해설 그림: 증가하는 이차곡선 조각과 그 역함수의 곡선, 점선 직선 y=x가 그려져 있고 세 그래프가 점 T에서 만난다.",
+    "solutionImageAlt": "파랑 곡선이 y=f(x), 주황 곡선이 y=f⁻¹(x)이다. x≥−a/2에서 f는 증가하므로 y=f(x)와 y=f⁻¹(x)의 그래프는 직선 y=x에 대칭이고 교점은 y=x 위에 있다. 두 그래프가 점 T(3,3)에서 접하려면 x²+(a−1)x+b=0이 x=3을 중근으로 가져야 하므로 (x−3)²=x²−6x+9와 비교하여 a=−5, b=9이다(그림은 이때의 그래프). 따라서 a+b=4이고 답은 ③이다.",
     "solutionImageCaption": "파랑 곡선이 y=f(x), 주황 곡선이 y=f⁻¹(x)이다. x≥−a/2에서 f는 증가하므로 y=f(x)와 y=f⁻¹(x)의 그래프는 직선 y=x에 대칭이고 교점은 y=x 위에 있다. 두 그래프가 점 T(3,3)에서 접하려면 x²+(a−1)x+b=0이 x=3을 중근으로 가져야 하므로 (x−3)²=x²−6x+9와 비교하여 a=−5, b=9이다(그림은 이때의 그래프). 따라서 a+b=4이고 답은 ③이다.",
     "solutionImageSize": "full"
   },
