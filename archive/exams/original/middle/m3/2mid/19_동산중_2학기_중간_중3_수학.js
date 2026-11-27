@@ -256,7 +256,11 @@ window.questionBank = [
     "semanticStatus": "CANDIDATE",
     "meaningMeta": {"semanticStatus":"CANDIDATE","historicalSourceCurriculum":"2009","sourceExamGrade":"M3","displayAlignment2022":{"curriculum":"2022","standardCourse":"중3 수학","standardUnitKey":"M3-04","standardUnit":"이차함수와 그래프","standardUnitOrder":4,"subUnitKey":"M3-04-QUADRATIC_FUNCTION_GRAPH","subUnit":"이차함수의 그래프","evidencePath":"docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md@main:8c1952b6fab0347a673fa29a8e878ecd4c910d47","status":"CONFIRMED_CURRENT_MASTER_LABEL_MATCH"},"rpmPrimaryId":null,"rpmPrimaryPath":null,"rpmL3":null,"rpmL4":null,"subUnitKey":"M3-04-QUADRATIC_FUNCTION_GRAPH","problemTypeKey":"PT_H1_QUADRATIC_EXTREMA","templateKey":"TPL_H1_QUADRATIC_EXTREMA_MODEL","projectionStatus":"PROJECTION_UNMATERIALIZED","projectionReason":"GPT CREATE candidate only. No consumer/index projection or release has run; historical 2009 exact RPM binding remains unmaterialized.","metaEvidenceDebt":"HISTORICAL_2009_RPM_BINDING_UNMATERIALIZED"}
   ,
-    "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH"
+    "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
+    "image": "assets/images/19_동산중_2학기_중간_중3_수학/q3-problem.svg",
+    "imageAlt": "벽에 맞닿는 위쪽 변을 제외한 직사각형 닭장 철망 세 변은 총 12m이며 한쪽 변은 x m이다.",
+    "imageCaption": "벽에 맞닿는 위쪽 변을 제외한 직사각형 닭장 철망 세 변은 총 12m이며 한쪽 변은 x m이다.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -1002,7 +1006,11 @@ window.questionBank = [
     "semanticStatus": "CANDIDATE",
     "meaningMeta": {"semanticStatus":"CANDIDATE","historicalSourceCurriculum":"2009","sourceExamGrade":"M3","displayAlignment2022":{"curriculum":"2022","standardCourse":"중2 수학","standardUnitKey":"M2-07","standardUnit":"피타고라스 정리","standardUnitOrder":7,"subUnitKey":"M2-07-PYTHAGOREAN_THEOREM","subUnit":"피타고라스 정리","evidencePath":"docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md@main:8c1952b6fab0347a673fa29a8e878ecd4c910d47","status":"CONFIRMED_CURRENT_MASTER_LABEL_MATCH"},"rpmPrimaryId":"M2-RPM-101","rpmPrimaryPath":{"majorUnit":"도형의 닮음과 피타고라스 정리","midUnit":"피타고라스 정리","l3":"피타고라스 정리","l4":"직각삼각형의 변 길이"},"rpmL3":"피타고라스 정리","rpmL4":"직각삼각형의 변 길이","subUnitKey":"M2-07-PYTHAGOREAN_THEOREM","problemTypeKey":"PT_M2_PYTHAGOREAN_RELATION","templateKey":"TPL_M2_PYTHAGOREAN_SIDE_LENGTH","projectionStatus":"PROJECTION_UNMATERIALIZED","projectionReason":"GPT CREATE candidate only. No consumer/index projection or release has run; historical 2009 exact RPM binding remains unmaterialized.","metaEvidenceDebt":"HISTORICAL_2009_RPM_BINDING_UNMATERIALIZED"}
   ,
-    "conceptClusterKey": "PYTHAGOREAN_THEOREM"
+    "conceptClusterKey": "PYTHAGOREAN_THEOREM",
+    "image": "assets/images/19_동산중_2학기_중간_중3_수학/q12-problem.svg",
+    "imageAlt": "직각삼각형의 밑변 7, 빗변 8, 미지의 높이 x와 직각 표식을 원본 위치에 표시한다.",
+    "imageCaption": "직각삼각형의 밑변 7, 빗변 8, 미지의 높이 x와 직각 표식을 원본 위치에 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 13,
@@ -1090,7 +1098,11 @@ window.questionBank = [
     "semanticStatus": "CANDIDATE",
     "meaningMeta": {"semanticStatus":"CANDIDATE","historicalSourceCurriculum":"2009","sourceExamGrade":"M3","displayAlignment2022":{"curriculum":"2022","standardCourse":"중2 수학","standardUnitKey":"M2-07","standardUnit":"피타고라스 정리","standardUnitOrder":7,"subUnitKey":"M2-07-PYTHAGOREAN_APPLICATION","subUnit":"피타고라스 정리의 활용","evidencePath":"docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md@main:8c1952b6fab0347a673fa29a8e878ecd4c910d47","status":"CONFIRMED_CURRENT_MASTER_LABEL_MATCH"},"rpmPrimaryId":"M2-RPM-105","rpmPrimaryPath":{"majorUnit":"도형의 닮음과 피타고라스 정리","midUnit":"피타고라스 정리","l3":"도형에의 활용","l4":"평면도형 길이"},"rpmL3":"도형에의 활용","rpmL4":"평면도형 길이","subUnitKey":"M2-07-PYTHAGOREAN_APPLICATION","problemTypeKey":"PT_M2_PYTHAGOREAN_RELATION","templateKey":"TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION","projectionStatus":"PROJECTION_UNMATERIALIZED","projectionReason":"GPT CREATE candidate only. No consumer/index projection or release has run; historical 2009 exact RPM binding remains unmaterialized.","metaEvidenceDebt":"HISTORICAL_2009_RPM_BINDING_UNMATERIALIZED"}
   ,
-    "conceptClusterKey": "PYTHAGOREAN_APPLICATION"
+    "conceptClusterKey": "PYTHAGOREAN_APPLICATION",
+    "image": "assets/images/19_동산중_2학기_중간_중3_수학/q13-problem.svg",
+    "imageAlt": "8 cm×4 cm 직사각형을 대각선 BD로 접어 A′의 삼각형을 표시하고 BC 위 E 및 해설의 수선 발 H를 보인다.",
+    "imageCaption": "8 cm×4 cm 직사각형을 대각선 BD로 접어 A′의 삼각형을 표시하고 BC 위 E 및 해설의 수선 발 H를 보인다.",
+    "imageSize": "full"
   },
   {
     "id": 14,
@@ -1177,7 +1189,11 @@ window.questionBank = [
     "semanticStatus": "CANDIDATE",
     "meaningMeta": {"semanticStatus":"CANDIDATE","historicalSourceCurriculum":"2009","sourceExamGrade":"M3","displayAlignment2022":{"curriculum":"2022","standardCourse":"중2 수학","standardUnitKey":"M2-07","standardUnit":"피타고라스 정리","standardUnitOrder":7,"subUnitKey":"M2-07-PYTHAGOREAN_APPLICATION","subUnit":"피타고라스 정리의 활용","evidencePath":"docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md@main:8c1952b6fab0347a673fa29a8e878ecd4c910d47","status":"CONFIRMED_CURRENT_MASTER_LABEL_MATCH"},"rpmPrimaryId":"M2-RPM-105","rpmPrimaryPath":{"majorUnit":"도형의 닮음과 피타고라스 정리","midUnit":"피타고라스 정리","l3":"도형에의 활용","l4":"평면도형 길이"},"rpmL3":"도형에의 활용","rpmL4":"평면도형 길이","subUnitKey":"M2-07-PYTHAGOREAN_APPLICATION","problemTypeKey":"PT_M2_PYTHAGOREAN_RELATION","templateKey":"TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION","projectionStatus":"PROJECTION_UNMATERIALIZED","projectionReason":"GPT CREATE candidate only. No consumer/index projection or release has run; historical 2009 exact RPM binding remains unmaterialized.","metaEvidenceDebt":"HISTORICAL_2009_RPM_BINDING_UNMATERIALIZED"}
   ,
-    "conceptClusterKey": "PYTHAGOREAN_APPLICATION"
+    "conceptClusterKey": "PYTHAGOREAN_APPLICATION",
+    "image": "assets/images/19_동산중_2학기_중간_중3_수학/q14-problem.svg",
+    "imageAlt": "연속된 직각삼각형의 AB=BC=CD=DE=EF, B·C·D·E 네 직각 및 최종 AF=10cm를 모두 표시한다.",
+    "imageCaption": "연속된 직각삼각형의 AB=BC=CD=DE=EF, B·C·D·E 네 직각 및 최종 AF=10cm를 모두 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 15,
@@ -1265,7 +1281,11 @@ window.questionBank = [
     "semanticStatus": "CANDIDATE",
     "meaningMeta": {"semanticStatus":"CANDIDATE","historicalSourceCurriculum":"2009","sourceExamGrade":"M3","displayAlignment2022":{"curriculum":"2022","standardCourse":"중3 수학","standardUnitKey":"M3-05","standardUnit":"삼각비","standardUnitOrder":5,"subUnitKey":"M3-05-TRIG_RATIO_APPLICATION","subUnit":"삼각비의 활용","evidencePath":"docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md@main:8c1952b6fab0347a673fa29a8e878ecd4c910d47","status":"CONFIRMED_CURRENT_MASTER_LABEL_MATCH"},"rpmPrimaryId":"M3-RPM-061","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비의 활용","l3":"평면도형","l4":"삼각형의 높이·넓이"},"rpmL3":"평면도형","rpmL4":"삼각형의 높이·넓이","subUnitKey":"M3-05-TRIG_RATIO_APPLICATION","problemTypeKey":"PT_TRIG_RATIO_APPLICATION","templateKey":"TPL_TRIG_APPLICATION_CHAINED_MEASURE","projectionStatus":"PROJECTION_UNMATERIALIZED","projectionReason":"GPT CREATE candidate only. No consumer/index projection or release has run; historical 2009 exact RPM binding remains unmaterialized.","metaEvidenceDebt":"HISTORICAL_2009_RPM_BINDING_UNMATERIALIZED"}
   ,
-    "conceptClusterKey": "TRIG_RATIO_APPLICATION"
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+    "image": "assets/images/19_동산중_2학기_중간_중3_수학/q15-problem.svg",
+    "imageAlt": "삼각형 ABC에서 AD는 BC에 수직이고 AD=BD, AB=3√2, 각 C=60°이다.",
+    "imageCaption": "삼각형 ABC에서 AD는 BC에 수직이고 AD=BD, AB=3√2, 각 C=60°이다.",
+    "imageSize": "full"
   },
   {
     "id": 16,
@@ -1353,7 +1373,11 @@ window.questionBank = [
     "semanticStatus": "CANDIDATE",
     "meaningMeta": {"semanticStatus":"CANDIDATE","historicalSourceCurriculum":"2009","sourceExamGrade":"M3","displayAlignment2022":{"curriculum":"2022","standardCourse":"중2 수학","standardUnitKey":"M2-07","standardUnit":"피타고라스 정리","standardUnitOrder":7,"subUnitKey":"M2-07-PYTHAGOREAN_APPLICATION","subUnit":"피타고라스 정리의 활용","evidencePath":"docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md@main:8c1952b6fab0347a673fa29a8e878ecd4c910d47","status":"CONFIRMED_CURRENT_MASTER_LABEL_MATCH"},"rpmPrimaryId":"M2-RPM-105","rpmPrimaryPath":{"majorUnit":"도형의 닮음과 피타고라스 정리","midUnit":"피타고라스 정리","l3":"도형에의 활용","l4":"평면도형 길이"},"rpmL3":"도형에의 활용","rpmL4":"평면도형 길이","subUnitKey":"M2-07-PYTHAGOREAN_APPLICATION","problemTypeKey":"PT_M2_PYTHAGOREAN_RELATION","templateKey":"TPL_M2_PYTHAGOREAN_AREA_TRANSFER","projectionStatus":"PROJECTION_UNMATERIALIZED","projectionReason":"GPT CREATE candidate only. No consumer/index projection or release has run; historical 2009 exact RPM binding remains unmaterialized.","metaEvidenceDebt":"HISTORICAL_2009_RPM_BINDING_UNMATERIALIZED"}
   ,
-    "conceptClusterKey": "PYTHAGOREAN_APPLICATION"
+    "conceptClusterKey": "PYTHAGOREAN_APPLICATION",
+    "image": "assets/images/19_동산중_2학기_중간_중3_수학/q16-problem.svg",
+    "imageAlt": "한 변 15인 정사각형 ABCD에서 네 합동 직각삼각형과 내부 정사각형 EFGH가 있고 AE=12이다.",
+    "imageCaption": "한 변 15인 정사각형 ABCD에서 네 합동 직각삼각형과 내부 정사각형 EFGH가 있고 AE=12이다.",
+    "imageSize": "full"
   },
   {
     "id": 17,
@@ -1529,7 +1553,11 @@ window.questionBank = [
     "semanticStatus": "CANDIDATE",
     "meaningMeta": {"semanticStatus":"CANDIDATE","historicalSourceCurriculum":"2009","sourceExamGrade":"M3","displayAlignment2022":{"curriculum":"2022","standardCourse":"중2 수학","standardUnitKey":"M2-07","standardUnit":"피타고라스 정리","standardUnitOrder":7,"subUnitKey":"M2-07-PYTHAGOREAN_APPLICATION","subUnit":"피타고라스 정리의 활용","evidencePath":"docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md@main:8c1952b6fab0347a673fa29a8e878ecd4c910d47","status":"CONFIRMED_CURRENT_MASTER_LABEL_MATCH"},"rpmPrimaryId":"M2-RPM-106","rpmPrimaryPath":{"majorUnit":"도형의 닮음과 피타고라스 정리","midUnit":"피타고라스 정리","l3":"도형에의 활용","l4":"입체도형 거리"},"rpmL3":"도형에의 활용","rpmL4":"입체도형 거리","subUnitKey":"M2-07-PYTHAGOREAN_APPLICATION","problemTypeKey":"PT_M2_PYTHAGOREAN_RELATION","templateKey":"TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION","projectionStatus":"PROJECTION_UNMATERIALIZED","projectionReason":"GPT CREATE candidate only. No consumer/index projection or release has run; historical 2009 exact RPM binding remains unmaterialized.","metaEvidenceDebt":"HISTORICAL_2009_RPM_BINDING_UNMATERIALIZED"}
   ,
-    "conceptClusterKey": "PYTHAGOREAN_APPLICATION"
+    "conceptClusterKey": "PYTHAGOREAN_APPLICATION",
+    "image": "assets/images/19_동산중_2학기_중간_중3_수학/q18-problem.svg",
+    "imageAlt": "가로 5cm·높이 8cm, 공간대각선 5√5cm인 직육면체와 숨은 모서리·대각선을 그린다.",
+    "imageCaption": "가로 5cm·높이 8cm, 공간대각선 5√5cm인 직육면체와 숨은 모서리·대각선을 그린다.",
+    "imageSize": "full"
   },
   {
     "id": 19,
@@ -1705,7 +1733,11 @@ window.questionBank = [
     "semanticStatus": "CANDIDATE",
     "meaningMeta": {"semanticStatus":"CANDIDATE","historicalSourceCurriculum":"2009","sourceExamGrade":"M3","displayAlignment2022":{"curriculum":"2022","standardCourse":"중2 수학","standardUnitKey":"M2-07","standardUnit":"피타고라스 정리","standardUnitOrder":7,"subUnitKey":"M2-07-PYTHAGOREAN_APPLICATION","subUnit":"피타고라스 정리의 활용","evidencePath":"docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md@main:8c1952b6fab0347a673fa29a8e878ecd4c910d47","status":"CONFIRMED_CURRENT_MASTER_LABEL_MATCH"},"rpmPrimaryId":"M2-RPM-106","rpmPrimaryPath":{"majorUnit":"도형의 닮음과 피타고라스 정리","midUnit":"피타고라스 정리","l3":"도형에의 활용","l4":"입체도형 거리"},"rpmL3":"도형에의 활용","rpmL4":"입체도형 거리","subUnitKey":"M2-07-PYTHAGOREAN_APPLICATION","problemTypeKey":"PT_M2_PYTHAGOREAN_RELATION","templateKey":"TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION","projectionStatus":"PROJECTION_UNMATERIALIZED","projectionReason":"GPT CREATE candidate only. No consumer/index projection or release has run; historical 2009 exact RPM binding remains unmaterialized.","metaEvidenceDebt":"HISTORICAL_2009_RPM_BINDING_UNMATERIALIZED"}
   ,
-    "conceptClusterKey": "PYTHAGOREAN_APPLICATION"
+    "conceptClusterKey": "PYTHAGOREAN_APPLICATION",
+    "image": "assets/images/19_동산중_2학기_중간_중3_수학/q20-problem.svg",
+    "imageAlt": "모선이 8cm이고 밑면 넓이가 36πcm²인 원뿔의 타원 밑면·가려진 호와 모선을 표시한다.",
+    "imageCaption": "모선이 8cm이고 밑면 넓이가 36πcm²인 원뿔의 타원 밑면·가려진 호와 모선을 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 21,
@@ -2108,6 +2140,10 @@ window.questionBank = [
     "semanticStatus": "CANDIDATE",
     "meaningMeta": {"semanticStatus":"CANDIDATE","historicalSourceCurriculum":"2009","sourceExamGrade":"M3","displayAlignment2022":{"curriculum":"2022","standardCourse":"중2 수학","standardUnitKey":"M2-07","standardUnit":"피타고라스 정리","standardUnitOrder":7,"subUnitKey":"M2-07-PYTHAGOREAN_APPLICATION","subUnit":"피타고라스 정리의 활용","evidencePath":"docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md@main:8c1952b6fab0347a673fa29a8e878ecd4c910d47","status":"CONFIRMED_CURRENT_MASTER_LABEL_MATCH"},"rpmPrimaryId":"M2-RPM-106","rpmPrimaryPath":{"majorUnit":"도형의 닮음과 피타고라스 정리","midUnit":"피타고라스 정리","l3":"도형에의 활용","l4":"입체도형 거리"},"rpmL3":"도형에의 활용","rpmL4":"입체도형 거리","subUnitKey":"M2-07-PYTHAGOREAN_APPLICATION","problemTypeKey":"PT_M2_PYTHAGOREAN_RELATION","templateKey":"TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION","projectionStatus":"PROJECTION_UNMATERIALIZED","projectionReason":"GPT CREATE candidate only. No consumer/index projection or release has run; historical 2009 exact RPM binding remains unmaterialized.","metaEvidenceDebt":"HISTORICAL_2009_RPM_BINDING_UNMATERIALIZED"}
   ,
-    "conceptClusterKey": "PYTHAGOREAN_APPLICATION"
+    "conceptClusterKey": "PYTHAGOREAN_APPLICATION",
+    "image": "assets/images/19_동산중_2학기_중간_중3_수학/q25-problem.svg",
+    "imageAlt": "한 모서리 6cm인 정육면체 ABCD-EFGH에서 단면 삼각형 AFC와 B에서 그 평면에 내린 수선 BJ를 보인다.",
+    "imageCaption": "한 모서리 6cm인 정육면체 ABCD-EFGH에서 단면 삼각형 AFC와 B에서 그 평면에 내린 수선 BJ를 보인다.",
+    "imageSize": "full"
   }
 ];

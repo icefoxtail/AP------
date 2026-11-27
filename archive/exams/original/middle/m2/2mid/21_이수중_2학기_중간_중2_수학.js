@@ -178,7 +178,12 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "두 직선 교점과 축절편의 넓이",
-    "decisiveStep": "공통 교점의높이4와두x절편의차6을밑변·높이로사용한다."
+    "decisiveStep": "공통 교점의높이4와두x절편의차6을밑변·높이로사용한다.",
+    "solutionImage": "assets/images/21_이수중_2학기_중간_중2_수학/q4-solution.svg",
+    "solutionImageAlt": "두 직선과 x축이 둘러싼 삼각형 ABC의 넓이 영역",
+    "solutionImageCaption": "두 직선과 x축이 둘러싼 삼각형 ABC의 넓이 영역",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 5,
@@ -357,7 +362,12 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "전체 빗변과 남은 변을 잇는 두 직각삼각형",
-    "decisiveStep": "BC를구해EC를빼BE를만든후BDE에서BD를구한다."
+    "decisiveStep": "BC를구해EC를빼BE를만든후BDE에서BD를구한다.",
+    "solutionImage": "assets/images/21_이수중_2학기_중간_중2_수학/q8-solution.svg",
+    "solutionImageAlt": "직각삼각형의 9·12·4cm와 빗변에 내린 DE 수선",
+    "solutionImageCaption": "직각삼각형의 9·12·4cm와 빗변에 내린 DE 수선",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 9,
@@ -405,7 +415,12 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "직각삼각형 합동의 충분조건 비교",
-    "decisiveStep": "RHA·RHS·ASA·SAS와달리각만같은AAA는크기를확정하지못한다."
+    "decisiveStep": "RHA·RHS·ASA·SAS와달리각만같은AAA는크기를확정하지못한다.",
+    "solutionImage": "assets/images/21_이수중_2학기_중간_중2_수학/q9-solution.svg",
+    "solutionImageAlt": "서로 다른 두 직각삼각형 ABC와 DEF의 직각 위치",
+    "solutionImageCaption": "서로 다른 두 직각삼각형 ABC와 DEF의 직각 위치",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 10,
@@ -453,7 +468,12 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "외심의 등거리와 중점 성질 판정",
-    "decisiveStep": "꼭짓점까지등거리와변의중점을확인하고내심의변까지등거리를구별한다."
+    "decisiveStep": "꼭짓점까지등거리와변의중점을확인하고내심의변까지등거리를구별한다.",
+    "solutionImage": "assets/images/21_이수중_2학기_중간_중2_수학/q10-solution.svg",
+    "solutionImageAlt": "외심 O를 지나는 세 수직이등분선과 중점 눈금",
+    "solutionImageCaption": "외심 O를 지나는 세 수직이등분선과 중점 눈금",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 11,

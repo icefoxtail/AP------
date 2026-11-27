@@ -917,7 +917,11 @@ window.questionBank =[
     "solutionImage": "assets/images/22_동산중_2학기_중간_중3_수학/q12-solution.svg",
     "solutionImageAlt": "해설 그림: 반지름 1인 사분원에서 x,y,z 각과 AB⊥OD, AB∥DC를 표시한다.",
     "solutionImageCaption": "OA=OD=1이다. sin x=AB, sin z=OB, cos y=AB, tan x=CD는 맞다. 그러나 tan z=OD/CD=1/CD이므로 OD와 같다는 진술이 틀렸다. 답: ⑤.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "image": "assets/images/22_동산중_2학기_중간_중3_수학/q12-problem.svg",
+    "imageAlt": "반지름 1, 사분원 호, 두 수직선과 각 x·y·z를 별도의 호로 표시한다.",
+    "imageCaption": "반지름 1, 사분원 호, 두 수직선과 각 x·y·z를 별도의 호로 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 13,
@@ -1921,6 +1925,10 @@ window.questionBank =[
     "solutionImage": "assets/images/22_동산중_2학기_중간_중3_수학/q25-solution.svg",
     "solutionImageAlt": "해설 그림: 원 O에 외접하는 사각형 ABCD와 직교 대각선 AC,BD를 나타내고, BC=9, CD=6, x=AB, y=AD를 표시한다.",
     "solutionImageCaption": "그림은 조건을 만족하는 한 예이다. u=AB, v=AD라 두면 접선 길이로 u−v=3, 직교 대각선으로 u²−v²=45이므로 u+v=15이다. 답: 15.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "image": "assets/images/22_동산중_2학기_중간_중3_수학/q25-problem.svg",
+    "imageAlt": "원에 외접한 사각형과 직교하는 대각선을 무채움으로 그린다.",
+    "imageCaption": "원에 외접한 사각형과 직교하는 대각선을 무채움으로 그린다.",
+    "imageSize": "full"
   }
 ];

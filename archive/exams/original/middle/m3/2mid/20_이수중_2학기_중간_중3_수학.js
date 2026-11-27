@@ -86,7 +86,11 @@ window.questionBank = [
   ,
     "conceptClusterKey": "TRIG_RATIO",
     "primaryMethod": "빗변·대변·인접변을 구별하여 각별 삼각비 판정",
-    "decisiveStep": "AC=13, AB=12, BC=5에서 cos A=12/13이다. 나머지 선택지는 sin A=5/13, tan A=5/12, cos C=5/13, tan C=12/5와 다르다."
+    "decisiveStep": "AC=13, AB=12, BC=5에서 cos A=12/13이다. 나머지 선택지는 sin A=5/13, tan A=5/12, cos C=5/13, tan C=12/5와 다르다.",
+    "image": "assets/images/20_이수중_2학기_중간_중3_수학/q1-problem.svg",
+    "imageAlt": "직각삼각형 ABC에서 B의 직각표식 및 AB=12, BC=5, AC=13을 나타낸다.",
+    "imageCaption": "직각삼각형 ABC에서 B의 직각표식 및 AB=12, BC=5, AC=13을 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -177,7 +181,11 @@ window.questionBank = [
   ,
     "conceptClusterKey": "TRIG_RATIO",
     "primaryMethod": "탄젠트로 한 직각변을 정한 뒤 피타고라스로 빗변 계산",
-    "decisiveStep": "8/BC=2/3이므로 BC=12이다. AB²=8²+12²=208에서 AB=4√13이다."
+    "decisiveStep": "8/BC=2/3이므로 BC=12이다. AB²=8²+12²=208에서 AB=4√13이다.",
+    "image": "assets/images/20_이수중_2학기_중간_중3_수학/q2-problem.svg",
+    "imageAlt": "직각삼각형 ABC에서 각 C가 직각이고 AC=8 cm, tan B=2/3이다.",
+    "imageCaption": "직각삼각형 ABC에서 각 C가 직각이고 AC=8 cm, tan B=2/3이다.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -434,7 +442,11 @@ window.questionBank = [
   ,
     "conceptClusterKey": "TRIG_RATIO",
     "primaryMethod": "높이로 나뉜 닮은 직각삼각형의 각을 큰 삼각형에 대응",
-    "decisiveStep": "AB=√(10²−8²)=6이고 x=∠C, y=∠B이므로 sin x=cos y=6/10, 합은6/5이다."
+    "decisiveStep": "AB=√(10²−8²)=6이고 x=∠C, y=∠B이므로 sin x=cos y=6/10, 합은6/5이다.",
+    "image": "assets/images/20_이수중_2학기_중간_중3_수학/q5-problem.svg",
+    "imageAlt": "직각삼각형 ABC의 A에서 BC에 내린 수선 AH, 두 직각표식, AC=8cm, BC=10cm와 각 x,y이다.",
+    "imageCaption": "직각삼각형 ABC의 A에서 BC에 내린 수선 AH, 두 직각표식, AC=8cm, BC=10cm와 각 x,y이다.",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -523,7 +535,11 @@ window.questionBank = [
   ,
     "conceptClusterKey": "TRIG_RATIO",
     "primaryMethod": "45° 직각삼각형의 같은 두 직각변과 빗변 관계",
-    "decisiveStep": "A=B=45°이므로 BC=AC=8이다. AB²=8²+8²=128에서 AB=8√2이다."
+    "decisiveStep": "A=B=45°이므로 BC=AC=8이다. AB²=8²+8²=128에서 AB=8√2이다.",
+    "image": "assets/images/20_이수중_2학기_중간_중3_수학/q6-problem.svg",
+    "imageAlt": "직각삼각형 ABC의 C에서 직각, B에서 45°, 세로 변 AC=8을 표시한다.",
+    "imageCaption": "직각삼각형 ABC의 C에서 직각, B에서 45°, 세로 변 AC=8을 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -610,7 +626,11 @@ window.questionBank = [
   ,
     "conceptClusterKey": "TRIG_RATIO_APPLICATION",
     "primaryMethod": "두 특수각 삼각형의 밑변을 높이 하나로 표현하여 합산",
-    "decisiveStep": "∠B=30°이므로 BH=√3h, ∠C=45°이므로 HC=h이다. (√3+1)h=10에서 h=5(√3−1)이다."
+    "decisiveStep": "∠B=30°이므로 BH=√3h, ∠C=45°이므로 HC=h이다. (√3+1)h=10에서 h=5(√3−1)이다.",
+    "image": "assets/images/20_이수중_2학기_중간_중3_수학/q7-problem.svg",
+    "imageAlt": "삼각형 ABC에서 각 BAC=105°, 각 ACB=45°, BC=10cm, AH⊥BC이며 풀이에서는 B=30°를 확인한다.",
+    "imageCaption": "삼각형 ABC에서 각 BAC=105°, 각 ACB=45°, BC=10cm, AH⊥BC이며 풀이에서는 B=30°를 확인한다.",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -699,7 +719,11 @@ window.questionBank = [
   ,
     "conceptClusterKey": "TRIG_RATIO_APPLICATION",
     "primaryMethod": "공통변 BC를 특수각으로 구한 후 다른 직각삼각형의 빗변 계산",
-    "decisiveStep": "tan60°=BC/√3에서 BC=3이다. BCD는45° 직각삼각형이므로 CD=3, BD=√18=3√2이다."
+    "decisiveStep": "tan60°=BC/√3에서 BC=3이다. BCD는45° 직각삼각형이므로 CD=3, BD=√18=3√2이다.",
+    "image": "assets/images/20_이수중_2학기_중간_중3_수학/q8-problem.svg",
+    "imageAlt": "AB=√3인 두 직각삼각형에서 A=60°, D=45°, AC와 BD의 교차선 및 B/C의 직각표식을 나타낸다.",
+    "imageCaption": "AB=√3인 두 직각삼각형에서 A=60°, D=45°, AC와 BD의 교차선 및 B/C의 직각표식을 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -1393,7 +1417,11 @@ window.questionBank = [
   ,
     "conceptClusterKey": "TRIG_RATIO_APPLICATION",
     "primaryMethod": "끼인각30°로 높이를 내려 삼각형 넓이 계산",
-    "decisiveStep": "CH=6sin30=3이고 넓이(1/2)×8×3=12cm²이다."
+    "decisiveStep": "CH=6sin30=3이고 넓이(1/2)×8×3=12cm²이다.",
+    "image": "assets/images/20_이수중_2학기_중간_중3_수학/q16-problem.svg",
+    "imageAlt": "삼각형 ABC는 AB=8cm, AC=6cm, A=30°이고 해설에서 CH⊥AB, CH=3cm를 추가한다.",
+    "imageCaption": "삼각형 ABC는 AB=8cm, AC=6cm, A=30°이고 해설에서 CH⊥AB, CH=3cm를 추가한다.",
+    "imageSize": "full"
   },
   {
     "id": 17,
@@ -1654,7 +1682,11 @@ window.questionBank = [
   ,
     "conceptClusterKey": "TRIG_RATIO",
     "primaryMethod": "세 변이 주어진 직각삼각형에서 각별 삼각비를 직접 합산",
-    "decisiveStep": "sinA=3/5, cosC=3/5, tanA=3/4이므로6/5+3/4=39/20이다."
+    "decisiveStep": "sinA=3/5, cosC=3/5, tanA=3/4이므로6/5+3/4=39/20이다.",
+    "image": "assets/images/20_이수중_2학기_중간_중3_수학/q19-problem.svg",
+    "imageAlt": "직각삼각형 ABC의 B는 직각이며 AB=4, BC=3, AC=5이다.",
+    "imageCaption": "직각삼각형 ABC의 B는 직각이며 AB=4, BC=3, AC=5이다.",
+    "imageSize": "full"
   },
   {
     "id": 20,
@@ -1736,7 +1768,11 @@ window.questionBank = [
   ,
     "conceptClusterKey": "TRIG_RATIO",
     "primaryMethod": "공통 높이4의 두 특수각 삼각형 밑변 차로 거리 계산",
-    "decisiveStep": "ADC의45°등변관계로DC=4, ABC의30°변비로BC=4√3이다. D가B와C사이에있으므로BD=4√3−4이다."
+    "decisiveStep": "ADC의45°등변관계로DC=4, ABC의30°변비로BC=4√3이다. D가B와C사이에있으므로BD=4√3−4이다.",
+    "image": "assets/images/20_이수중_2학기_중간_중3_수학/q20-problem.svg",
+    "imageAlt": "BC 위 D와 꼭짓점 A에서 AC⊥BC, AC=4, 각 ABC=30°, 각 ADC=45°이다.",
+    "imageCaption": "BC 위 D와 꼭짓점 A에서 AC⊥BC, AC=4, 각 ABC=30°, 각 ADC=45°이다.",
+    "imageSize": "full"
   },
   {
     "id": 21,
@@ -1818,7 +1854,11 @@ window.questionBank = [
   ,
     "conceptClusterKey": "TRIG_RATIO_APPLICATION",
     "primaryMethod": "보조 높이를 내려 두 특수각 삼각형의 밑변 합으로 강폭 계산",
-    "decisiveStep": "∠C=45°이다. AB1000과B60°에서BH=500, AH=500√3이고 HC=AH이다. BC=500(1+√3)m이다."
+    "decisiveStep": "∠C=45°이다. AB1000과B60°에서BH=500, AH=500√3이고 HC=AH이다. BC=500(1+√3)m이다.",
+    "image": "assets/images/20_이수중_2학기_중간_중3_수학/q21-problem.svg",
+    "imageAlt": "삼각형 ABC에서 AB=1000m, 각 B=60°, 각 A=75°이고 해설에서는 A에서 BC로 수선 AH를 내린다.",
+    "imageCaption": "삼각형 ABC에서 AB=1000m, 각 B=60°, 각 A=75°이고 해설에서는 A에서 BC로 수선 AH를 내린다.",
+    "imageSize": "full"
   },
   {
     "id": 22,
