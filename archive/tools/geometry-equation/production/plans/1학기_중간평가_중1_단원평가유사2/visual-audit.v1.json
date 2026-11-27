@@ -1,0 +1,109 @@
+{
+  "schemaVersion": "visual-audit-v1",
+  "examFile": "archive/exams/similar/middle/m1/1mid/1학기_중간평가_중1_단원평가유사2.js",
+  "sourceGitBlobSha": "0e01bd4d3fca14b2c75d7162083bc2a64028241d",
+  "reviewBaseMain": "abf3ae778db287d57ad6738c8a25e0986a71e174",
+  "questionCount": 24,
+  "axisCount": 48,
+  "exemptDefaults": {
+    "capability": "TEXT_OR_FORMULA_ONLY",
+    "planPath": null,
+    "planLint": "NOT_APPLICABLE",
+    "drawnFeatureParity": "NO_SVG_REQUIRED",
+    "render": "NOT_APPLICABLE"
+  },
+  "planDefaultChecks": {
+    "planLintShallow": "PASS",
+    "planLintFull": "PASS",
+    "renderedSvg": "NOT_RUN",
+    "pngReview": "NOT_RUN",
+    "studentScreen": "NOT_RUN",
+    "a4": "NOT_RUN",
+    "drawnFeatureParityInterpretation": "Static source feature to rendering-field mapping only; no rendered image claim"
+  },
+  "summary": {
+    "planFiles": 3,
+    "shallowPass": 3,
+    "fullPass": 3,
+    "drawnFeatureStaticPass": 3,
+    "engineCapabilityPendingAxes": 0,
+    "exemptAxes": 45
+  },
+  "sourceJSFindings": [
+    "q02 source solution has outdated choice-number annotations: it discusses ① as if it were the proposition '1 is prime', even though actual choice ① concerns prime multiples of 11. Correct answer ① remains mathematically valid, but the explanatory choice numbering is defective. No JS change was authorized."
+  ],
+  "entries": [
+    { "qid": "q01", "axes": { "problem": { "verdict": "EXEMPT", "reason": "주어진 4,9,17,21,27 중 소수를 선택하는 정의 문제" }, "solution": { "verdict": "EXEMPT", "reason": "17의 약수 성질과 다른 보기의 합성수 판정으로 충분" } } },
+    { "qid": "q02", "axes": { "problem": { "verdict": "EXEMPT", "reason": "소수·합성수에 관한 다섯 진술의 참거짓 비교" }, "solution": { "verdict": "EXEMPT", "reason": "11의 배수 중 소수는 11 하나인 성질을 텍스트로 설명; 원본 해설 번호 불일치는 별도 기록" } } },
+    { "qid": "q03", "axes": { "problem": { "verdict": "EXEMPT", "reason": "3³의 밑·지수·값의 합을 계산" }, "solution": { "verdict": "EXEMPT", "reason": "3+3+27=33의 직접 산술 풀이" } } },
+    { "qid": "q04", "axes": { "problem": { "verdict": "EXEMPT", "reason": "42를 소수의 곱으로 나타낸 보기를 선택" }, "solution": { "verdict": "EXEMPT", "reason": "42=2×3×7 소인수분해 식 자체로 완결" } } },
+    { "qid": "q05", "axes": { "problem": { "verdict": "EXEMPT", "reason": "200과 소인수가 같은 후보 수를 찾는 소인수식 비교" }, "solution": { "verdict": "EXEMPT", "reason": "200=2³×5²와 40=2³×5의 소인수 일치 확인" } } },
+    { "qid": "q06", "axes": { "problem": { "verdict": "EXEMPT", "reason": "2×3²×5의 약수·배수 여부는 ㄱ~ㅂ 식의 소인수 지수로 결정" }, "solution": { "verdict": "EXEMPT", "reason": "약수는 지수 상한, 배수는 지수 하한을 비교하는 수식 설명" } } },
+    { "qid": "q07", "axes": { "problem": { "verdict": "EXEMPT", "reason": "서로 다른 소인수 세 개인 수의 크기 순서" }, "solution": { "verdict": "EXEMPT", "reason": "30,42,60,66의 소인수 곱을 크기 순으로 기록" } } },
+    { "qid": "q08", "axes": { "problem": { "verdict": "EXEMPT", "reason": "27과 서로소인 두 자리 자연수 개수 계산" }, "solution": { "verdict": "EXEMPT", "reason": "두 자리 수 90개 중 3의 배수 30개를 빼는 개수식" } } },
+    { "qid": "q09", "axes": { "problem": { "verdict": "EXEMPT", "reason": "18,30과 세 번째 수의 최대공약수·최소공배수 조건" }, "solution": { "verdict": "EXEMPT", "reason": "후보 6,18,30,90에서 중복 18,30 제외는 소인수 지수식으로 충분" } } },
+    { "qid": "q10", "axes": { "problem": { "verdict": "EXEMPT", "reason": "수입과 지출을 양·음의 부호로 구분" }, "solution": { "verdict": "EXEMPT", "reason": "7000원 지출을 -7000원으로 표현하는 일대일 대응" } } },
+    { "qid": "q11", "axes": { "problem": { "verdict": "EXEMPT", "reason": "정수·유리수 정의와 정수 개수의 문장형 보기" }, "solution": { "verdict": "EXEMPT", "reason": "8/12=2/3 및 -4와 +3 사이 정수 나열로 충분" } } },
+    { "qid": "q12", "axes": { "problem": { "verdict": "EXEMPT", "reason": "8×(-3/4)÷(3/7)의 한 개 분수식 계산" }, "solution": { "verdict": "EXEMPT", "reason": "나눗셈을 7/3의 곱으로 바꾸는 순차 수식으로 완결" } } },
+    {
+      "qid": "q13",
+      "axes": {
+        "problem": {
+          "verdict": "BENEFICIAL",
+          "reason": "수직선 위 원점 대칭점의 간격 14를 미지값과 구별하여 시각화",
+          "capability": "number-line-figure-v1",
+          "planPath": "archive/tools/geometry-equation/production/plans/1학기_중간평가_중1_단원평가유사2/q13-problem.plan.json",
+          "requiredFeatures": ["-a와 a 문자점", "원점", "정확한 대칭 배치", "간격 14 표식", "-7,7 정답 비노출"],
+          "featureFieldMapping": [
+            { "sourceFeature": "절댓값 같고 반대 부호", "renderField": "numberLine.rows[0].points mirrorOf/order" },
+            { "sourceFeature": "양 끝 거리 14", "renderField": "numberLine.rows[0].spans[0].label" },
+            { "sourceFeature": "문제에 없는 답 수치 비노출", "renderField": "numberLine.rows[0].points symbolic -a/a" }
+          ],
+          "drawnFeatureParity": "STATIC_1_TO_1_FEATURE_MATCH__RENDER_NOT_RUN"
+        },
+        "solution": {
+          "verdict": "BENEFICIAL",
+          "reason": "원점 좌우 7씩과 전체 거리 14를 함께 보여 해설의 반거리 계산을 설명",
+          "capability": "number-line-figure-v1",
+          "planPath": "archive/tools/geometry-equation/production/plans/1학기_중간평가_중1_단원평가유사2/q13-solution.plan.json",
+          "requiredFeatures": ["-7,0,7", "두 끝 거리 14", "원점 대칭"],
+          "featureFieldMapping": [
+            { "sourceFeature": "세 수 -7,0,7 위치", "renderField": "numberLine.rows[0].points" },
+            { "sourceFeature": "전체 거리 14", "renderField": "numberLine.rows[0].spans[0]" },
+            { "sourceFeature": "원점 대칭", "renderField": "numberLine.rows[0].points L/O/R" }
+          ],
+          "drawnFeatureParity": "STATIC_1_TO_1_FEATURE_MATCH__RENDER_NOT_RUN"
+        }
+      }
+    },
+    {
+      "qid": "q14",
+      "axes": {
+        "problem": { "verdict": "EXEMPT", "reason": "다섯 대소관계가 식으로 정확히 제시되어 추가 그림 없이 판별 가능" },
+        "solution": {
+          "verdict": "BENEFICIAL",
+          "reason": "음수 -8과 -3의 수직선 위치로 잘못된 -3<-8을 직관적으로 설명",
+          "capability": "number-line-figure-v1",
+          "planPath": "archive/tools/geometry-equation/production/plans/1학기_중간평가_중1_단원평가유사2/q14-solution.plan.json",
+          "requiredFeatures": ["-8이 -3 왼쪽", "정수 눈금", "면 채움 없음"],
+          "featureFieldMapping": [
+            { "sourceFeature": "-8,-3 위치와 부등호 방향", "renderField": "numberLine.rows[0].points L/R" },
+            { "sourceFeature": "수직선 눈금", "renderField": "numberLine.rows[0] POINTS auto ticks" },
+            { "sourceFeature": "면 채움 없음", "renderField": "numberLine.rows[0].band=false" }
+          ],
+          "drawnFeatureParity": "STATIC_1_TO_1_FEATURE_MATCH__RENDER_NOT_RUN"
+        }
+      }
+    },
+    { "qid": "q15", "axes": { "problem": { "verdict": "EXEMPT", "reason": "다섯 정수 덧셈·뺄셈의 계산식 맞춤 여부를 묻는 보기" }, "solution": { "verdict": "EXEMPT", "reason": "-5-(+4)=-9를 식으로 직접 계산하면 오류가 확정" } } },
+    { "qid": "q16", "axes": { "problem": { "verdict": "EXEMPT", "reason": "7-25의 단일 정수 뺄셈 계산" }, "solution": { "verdict": "EXEMPT", "reason": "25-7의 차에 음부호를 붙이는 한 단계 계산" } } },
+    { "qid": "q17", "axes": { "problem": { "verdict": "EXEMPT", "reason": "15+(-4)와 3-(+8)의 두 수식 대입" }, "solution": { "verdict": "EXEMPT", "reason": "a=11,b=-5를 구해 11-(-5)=16으로 마무리" } } },
+    { "qid": "q18", "axes": { "problem": { "verdict": "EXEMPT", "reason": "도비의 풍선·돌멩이 증감 효과가 표 설명에 구체적으로 제시됨" }, "solution": { "verdict": "EXEMPT", "reason": "음수 더하기와 양수 빼기의 같은 효과를 문장으로 바로 대응" } } },
+    { "qid": "q19", "axes": { "problem": { "verdict": "EXEMPT", "reason": "곱셈·나눗셈 결과 다섯 계산식 비교" }, "solution": { "verdict": "EXEMPT", "reason": "-8÷(4/5)=-10을 역수 곱으로 계산" } } },
+    { "qid": "q20", "axes": { "problem": { "verdict": "EXEMPT", "reason": "유리수 네 개 중 두 수를 곱한 최솟값 찾기" }, "solution": { "verdict": "EXEMPT", "reason": "6×(-4)=-24를 선택하는 곱의 부호·절댓값 판단" } } },
+    { "qid": "q21", "axes": { "problem": { "verdict": "EXEMPT", "reason": "괄호·거듭제곱·분수 연산을 포함한 단일 식" }, "solution": { "verdict": "EXEMPT", "reason": "괄호 안 15/2를 얻어 최종 1/2를 계산하는 단계별 식" } } },
+    { "qid": "q22", "axes": { "problem": { "verdict": "EXEMPT", "reason": "28a가 제곱수가 되는 두 번째 자연수 값을 계산" }, "solution": { "verdict": "EXEMPT", "reason": "a=7k², k=1,2를 대입하는 소인수 지수 풀이" } } },
+    { "qid": "q23", "axes": { "problem": { "verdict": "EXEMPT", "reason": "분수 -3/4의 덧셈·뺄셈 착오를 역산" }, "solution": { "verdict": "EXEMPT", "reason": "x-(-3/4)=5/12로 수를 구하고 바른 값을 계산" } } },
+    { "qid": "q24", "axes": { "problem": { "verdict": "EXEMPT", "reason": "a-b, ac, bc의 부호 조건이 식으로 완결" }, "solution": { "verdict": "EXEMPT", "reason": "c<0을 가정해 a<b에 모순을 도출하고 c>0을 확정" } } }
+  ]
+}

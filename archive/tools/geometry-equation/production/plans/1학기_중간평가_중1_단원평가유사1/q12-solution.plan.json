@@ -1,0 +1,33 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          { "id": "ㄱ", "value": "-4", "showValue": false },
+          { "id": "ㄴ", "value": "-8/3" },
+          { "id": "ㄷ", "value": "-3/4" },
+          { "id": "ㄹ", "value": "3/2" },
+          { "id": "ㅁ", "value": "14/3" }
+        ],
+        "subdivisions": [
+          { "from": "-3", "to": "-2", "parts": 3 },
+          { "from": "-1", "to": "0", "parts": 4 },
+          { "from": "1", "to": "2", "parts": 2 },
+          { "from": "4", "to": "5", "parts": 3 }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": { "text": "각 점에 대응하는 수" },
+  "caption": "ㄱ=-4, ㄴ=-8/3, ㄷ=-3/4, ㄹ=3/2, ㅁ=14/3이다. 보기 ④의 ㄴ=-7/3은 틀리다.",
+  "accessibilityDescription": "수직선에서 다섯 점의 수를 읽을 수 있으며 특히 ㄴ은 -3과 -2 사이의 -8/3 위치에 있다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "원본 수직선의 ㄱ~ㅁ 다섯 점의 위치는 -4, -8/3, -3/4, 3/2, 14/3이다.", "mappedTo": ["numberLine.rows[0].points"] },
+    { "id": "c2", "condition": "ㄴ의 수는 -7/3이 아니라 -8/3이므로 선택지 ④가 오답이다.", "mappedTo": ["numberLine.rows[0].points"] }
+  ],
+  "newVisualInformation": ["문제 그림의 위치와 한글 점 이름을 유지하고, 해설에서 각 분수 위치와 ㄴ=-8/3을 읽을 수 있게 표시한다."]
+}
