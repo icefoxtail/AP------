@@ -1,0 +1,41 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"8"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"18"},{"kind":"integer","value":"8"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"20"},{"kind":"integer","value":"8"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"F","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "coordinateCanvas": {"width": 700, "height": 440},
+  "axisTickValues": {"x": [], "y": []},
+  "displayLines": [], "displayCircles": [],
+  "displaySegments": [
+    {"id":"sAB","refs":["A","B"]}, {"id":"sBC","refs":["B","C"],"arrow":"END"},
+    {"id":"sDE","refs":["D","E"]}, {"id":"sEF","refs":["E","F"],"arrow":"END"}
+  ],
+  "displayPoints": ["A","B","C","D","E","F"],
+  "hiddenPointNames": ["A","B","C","D","E","F"],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {"dimensions": [
+    {"id":"dTunnel","from":"A","to":"B","label":"1750","unit":"m","side":"ABOVE","style":"BAR","offset":"AUTO","factRole":"GIVEN"},
+    {"id":"dTrain1","from":"B","to":"C","label":"200","unit":"m","side":"ABOVE","style":"BAR","offset":"AUTO","factRole":"CONCLUSION"},
+    {"id":"dTotal1","from":"A","to":"C","label":"1950","unit":"m","side":"ABOVE","style":"BAR","offset":"AUTO","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"dBridge","from":"D","to":"E","label":"400","unit":"m","side":"BELOW","style":"BAR","offset":"AUTO","factRole":"GIVEN"},
+    {"id":"dTrain2","from":"E","to":"F","label":"200","unit":"m","side":"BELOW","style":"BAR","offset":"AUTO","factRole":"CONCLUSION"},
+    {"id":"dTotal2","from":"D","to":"F","label":"600","unit":"m","side":"BELOW","style":"BAR","offset":"AUTO","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "caption": "차이 1350m를 90초 동안 이동하므로 속력은 15m/s, 즉 900m/분이다. 기차 길이는 200m이어서 터널 통과거리는 1950m, 다리 통과거리는 600m이다. 선분 길이는 축척이 아니다.",
+  "accessibilityDescription": "위쪽에는 1750미터 터널과 200미터 기차, 합계 1950미터 치수선이 있고 아래쪽에는 400미터 다리와 200미터 기차, 합계 600미터 치수선이 있다.",
+  "sourceConditions": [
+    {"id":"c1","condition":"1750+x=130y, 400+x=40y의 차로 1350=90y, y=15m/s","mappedTo":["planeMarks.dimensions", "caption"]},
+    {"id":"c2","condition":"기차 길이 x=200m, 터널 이동 1950m, 다리 이동 600m","mappedTo":["planeMarks.dimensions", "caption"]},
+    {"id":"c3","condition":"속력 15m/s=900m/분","mappedTo":"caption"}
+  ],
+  "newVisualInformation": ["두 통과 거리의 두 부분과 합계 치수선을 별도 단으로 표기", "시간 차 90초에 해당하는 거리 차 1350m의 식을 캡션으로 연결"]
+}

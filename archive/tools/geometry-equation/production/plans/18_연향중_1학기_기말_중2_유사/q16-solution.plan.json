@@ -1,0 +1,12 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {"variable": "a", "rows": [{"kind": "SET", "integerPoints": true, "pieces": [{"lo": {"value": "4", "state": "OPEN"}, "hi": {"value": "7", "state": "CLOSED"}}]}]},
+  "numberLineCaption": {"text": "4<a≤7의 정수"},
+  "caption": "자연수 x가 1, 2 두 개만 해가 되려면 2<(a+2)/3≤3이고, 따라서 4<a≤7이다. 이 범위의 정수 a는 5, 6, 7이다.",
+  "accessibilityDescription": "변수 a의 수직선에서 4는 열린 끝점, 7은 닫힌 끝점이다. 그 사이의 정수 5, 6, 7이 표시된다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "자연수 x의 해가 1,2뿐이려면 4<a≤7", "mappedTo": ["numberLine.rows[0].pieces"]},
+    {"id": "c2", "condition": "조건에 속하는 정수 a는 5,6,7", "mappedTo": ["numberLine.rows[0].integerPoints"]}
+  ],
+  "newVisualInformation": ["a 축의 (4,7] 구간과 정수 5·6·7의 포함 표시"]
+}

@@ -1,0 +1,12 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {"rows": [{"kind": "SET", "integerPoints": true, "pieces": [{"lo": {"value": "-3", "state": "OPEN"}, "hi": {"value": "1", "state": "OPEN"}}]}]},
+  "numberLineCaption": {"text": "−3<x<1의 정수해"},
+  "caption": "−7<3x+2<5의 양쪽을 정리하면 −3<x<1이므로 열린 양 끝점 사이의 정수는 −2, −1, 0의 세 개이다.",
+  "accessibilityDescription": "마이너스 3과 1에 열린 원이 있고 그 사이에 포함되는 정수 마이너스 2, 마이너스 1, 0이 강조된다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "−7<3x+2<5는 −3<x<1과 동치", "mappedTo": ["numberLine.rows[0].pieces"]},
+    {"id": "c2", "condition": "정수해는 −2, −1, 0 세 개", "mappedTo": ["numberLine.rows[0].integerPoints"]}
+  ],
+  "newVisualInformation": ["양쪽 열린 구간 (−3,1)과 그 안의 정수 −2·−1·0 표시"]
+}

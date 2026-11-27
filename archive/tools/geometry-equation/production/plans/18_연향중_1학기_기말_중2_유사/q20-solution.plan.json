@@ -1,0 +1,21 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {"rows": [
+    {"kind":"SET","integerPoints":true,"pieces":[{"lo":{"value":"16","state":"CLOSED"},"hi":{"value":"19","state":"CLOSED"}}]},
+    {"kind":"POINTS","label":"보기","within":1,"band":false,"points":[
+      {"id":"A","value":"13","hideName":true},
+      {"id":"B","value":"14","hideName":true},
+      {"id":"C","value":"15","hideName":true},
+      {"id":"D","value":"17","hideName":true},
+      {"id":"E","value":"20","hideName":true}
+    ]}
+  ]},
+  "numberLineCaption":{"text":"의자 수 16~19와 보기"},
+  "caption":"의자 수 x에 대해 학생 수는 3x+4이고, 네 명씩 앉아 빈 의자가 정확히 세 개가 되는 조건에서 16≤x≤19이다. 보기 13, 14, 15, 20, 17 중 이 범위의 값은 17이다.",
+  "accessibilityDescription":"의자 수 x가 16부터 19까지의 닫힌 구간이고 이 범위의 정수점이 표시된다. 보기 중 17만 범위 안에 있고 나머지는 제외된다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"3명씩 앉으면 4명 남고, 4명씩 앉으면 의자 3개가 남는 조건에서 16≤x≤19","mappedTo":["numberLine.rows[0].pieces","numberLine.rows[0].integerPoints"]},
+    {"id":"c2","condition":"보기는 의자 수 13,14,15,20,17","mappedTo":["numberLine.rows[1].points","numberLine.rows[1].within"]}
+  ],
+  "newVisualInformation":["닫힌 의자 수 16~19와 그 안의 정수 후보", "다섯 보기 중 17 포함, 다른 네 값 제외"]
+}

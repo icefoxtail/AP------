@@ -1,0 +1,23 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {"axisVariable": false, "rows": [{"kind": "POINTS", "band": false, "points": [
+    {"id": "A", "value": "0", "name": "우리집", "showValue": false},
+    {"id": "B", "value": "3", "name": "문구점", "showValue": false},
+    {"id": "C", "value": "7", "name": "서점", "showValue": false},
+    {"id": "D", "value": "12", "name": "학교", "showValue": false}
+  ], "spans": [
+    {"from": "A", "to": "B", "label": "3km", "style": "BRACE", "side": "ABOVE"},
+    {"from": "B", "to": "C", "label": "4km", "style": "BRACE", "side": "ABOVE"},
+    {"from": "C", "to": "D", "label": "5km", "style": "BRACE", "side": "ABOVE"},
+    {"from": "B", "to": "D", "label": "9km", "style": "BRACE", "side": "BELOW"}
+  ]}]},
+  "numberLineCaption": {"text": "처음 3km와 나머지 9km의 구분"},
+  "caption": "집→문구점 3km에 1/2시간이 걸린다. 문구점→학교는 4+5=9km이므로 남은 3/2시간에 이동하려면 평균 속력이 최소 6km/h여야 한다.",
+  "accessibilityDescription": "네 위치의 거리 구간 3, 4, 5킬로미터와 문구점부터 학교까지 합친 9킬로미터의 길이 괄호를 보여 준다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "집→문구점 3km / 시속 6km = 1/2시간", "mappedTo": ["numberLine.rows[0].spans[0]"]},
+    {"id": "c2", "condition": "문구점→서점 4km와 서점→학교 5km의 합은 9km", "mappedTo": ["numberLine.rows[0].spans[1]", "numberLine.rows[0].spans[2]", "numberLine.rows[0].spans[3]"]},
+    {"id": "c3", "condition": "문구점→학교의 허용 시간은 2−1/2=3/2시간", "mappedTo": "caption"}
+  ],
+  "newVisualInformation": ["세 부분 거리와 뒤의 두 구간을 합친 9km 구간을 각각 다른 층의 괄호로 표시"]
+}

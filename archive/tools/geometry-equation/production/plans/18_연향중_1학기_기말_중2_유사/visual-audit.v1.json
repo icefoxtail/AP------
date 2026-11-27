@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "similar-exam-two-axis-svg-audit-v1",
+  "sourcePath": "archive/exams/similar/middle/m2/1final/18_연향중_1학기_기말_중2_유사.js",
+  "sourceBlobSha1": "3dc6a3205c0942da5f3b89f0a1caf2c640a72289",
+  "baseMainSha": "b2f557063f381c23b08f5691b28885ab7755c2da",
+  "questionCount": 24,
+  "axisCount": 48,
+  "actualExecutablePlans": 14,
+  "classificationDefaults": {
+    "EXEMPT": {"plan": null, "capability": "N/A", "planLintShallow": "N/A", "planLintFull": "N/A", "drawnFeatureParity": "NOT_APPLICABLE", "renderParity": "NOT_RUN"},
+    "BENEFICIAL": {"planLintShallow": "OK", "planLintFull": "OK", "drawnFeatureParity": "PASS_STATIC_FIELDS", "renderParity": "NOT_RUN"}
+  },
+  "assessmentScope": "each source question, choices, answer and solution checked independently for problem and solution axes",
+  "renderAndStudentScreen": "NOT_RUN",
+  "renderAttempt": {"axis": "q11/solution", "status": "ENV_BLOCKED", "code": "ARCHIVE_PREFLIGHT_FAIL", "detail": "/usr/bin/chromium wrapper points to absent /usr/lib/chromium/chromium; no output SVG, PNG or student-screen/A4 parity"},
+  "engineCapabilityPending": {
+    "code": "SVG_CANVAS_BACKGROUND_CONTROL_MISSING",
+    "affectedAxes": ["q09/problem", "q09/solution", "q11/solution", "q12/solution", "q13/problem", "q13/solution", "q15/solution", "q16/solution", "q17/solution", "q19/solution", "q20/solution", "q23/solution", "q24/problem", "q24/solution"],
+    "requiredFeature": "plan-selectable transparent canvas/no default opaque white rect for number-line-figure-v1 and construction-spike-v1 PLANE_FIGURE_v1; preserve required closed dots, line/mark strokes and other semantic fills",
+    "observedImplementation": "archive/tools/geometry-equation/production/number-line-v1.mjs:1012; archive/tools/geometry-equation/visual_engine/svg_composer.py:204 emit unconditional root white rectangle",
+    "disposition": "rendered no-background parity cannot pass until official engine capability is added; no hand-edited SVG or fabricated bindings"
+  },
+  "sourceFindingsOutsideSvgScope": [
+    {"qid":"q03","axis":"problem","finding":"⑤ 보기의 '2x+3y=5x−6y=7' 연속 등호 표기는 연립방정식 표기로 오독될 수 있으니 별도 발문 확인 필요"},
+    {"qid":"q17","axis":"solution","finding":"최종 식 'M = 8, ; m = 0'의 불필요한 세미콜론 표시; JS 수정은 본 SVG plan 범위 밖"}
+  ],
+  "items": [
+    {"qid":"q01","problem":{"decision":"EXEMPT","reason":"다섯 좌표쌍을 일차방정식 2x−3y=7에 대입해 판정"},"solution":{"decision":"EXEMPT","reason":"② (3,−1/2) 대입 계산이 식으로 완결; 좌표 배치 필요 없음"}},
+    {"qid":"q02","problem":{"decision":"EXEMPT","reason":"연립식의 두 미지수를 가감하여 x+y를 계산"},"solution":{"decision":"EXEMPT","reason":"19x=57, x=3,y=−2를 대수적으로 구하는 풀이"}},
+    {"qid":"q03","problem":{"decision":"EXEMPT","reason":"연립식의 계수 비례로 해가 무수히 많은 보기를 찾음; 5개 좌표그래프는 자료보다 복잡"},"solution":{"decision":"EXEMPT","reason":"①의 두 방정식이 동일식임을 −3배로 직접 확인하므로 추가 직선은 중복"}},
+    {"qid":"q04","problem":{"decision":"EXEMPT","reason":"두 좌표쌍 대입으로 a,b를 구하는 일차식 계산"},"solution":{"decision":"EXEMPT","reason":"a=4,b=6을 각각 대입해 계산"}},
+    {"qid":"q05","problem":{"decision":"EXEMPT","reason":"연립식의 해 (2,−5)를 대입해 매개변수 두 개 계산"},"solution":{"decision":"EXEMPT","reason":"b=5a+8과 2a−10=12−b의 대수 대입"}},
+    {"qid":"q06","problem":{"decision":"EXEMPT","reason":"공통 해를 y=10−3x와 5x+2y=14로 계산"},"solution":{"decision":"EXEMPT","reason":"(6,−8) 대입으로 a=2,b=−3을 결정"}},
+    {"qid":"q07","problem":{"decision":"EXEMPT","reason":"y=3x 대입으로 미지 계수 a를 구함"},"solution":{"decision":"EXEMPT","reason":"x=3,y=9 대입 후 3a+9=21이 완결"}},
+    {"qid":"q08","problem":{"decision":"EXEMPT","reason":"십의 자리 5 고정, 각 자리 숫자 합과 495의 차로 연립식 생성"},"solution":{"decision":"EXEMPT","reason":"x+y=9, x−y=5의 해 7,2로 자릿수 완결"}},
+    {"qid":"q09","problem":{"decision":"BENEFICIAL","reason":"기차가 터널·다리를 통과할 때 이동한 길이는 각 시설 길이+기차 길이라는 두 공간 관계가 핵심","capability":"construction-spike-v1 / PLANE_FIGURE_v1","plan":"archive/tools/geometry-equation/production/plans/18_연향중_1학기_기말_중2_유사/q09-problem.plan.json","expectedFeatures":["top 1750m plus unknown x; 130s transit in caption","bottom 400m plus same unknown x; 40s in caption","arrowheads on two travel segments and four dimension leader lines","not-to-scale note; no train length or speed answer"]},"solution":{"decision":"BENEFICIAL","reason":"x=200m를 구한 뒤 총 이동 거리 1950m·600m를 분할 치수선과 합계 치수선으로 재확인","capability":"construction-spike-v1 / PLANE_FIGURE_v1","plan":"archive/tools/geometry-equation/production/plans/18_연향중_1학기_기말_중2_유사/q09-solution.plan.json","expectedFeatures":["1750+200=1950m, 400+200=600m with six dimension labels","arrowheads on travel segments","speed 15m/s=900m/min and difference 1350m/90s in caption"]}},
+    {"qid":"q10","problem":{"decision":"EXEMPT","reason":"학생 수 500명과 남·여 인원 비율 증감 연립식"},"solution":{"decision":"EXEMPT","reason":"x+y=500과 0.1x−0.15y=−30의 계산으로 완결"}},
+    {"qid":"q11","problem":{"decision":"EXEMPT","reason":"−7<3x+2<5의 정수해 개수는 미지, 사전 수직선은 결론을 노출"},"solution":{"decision":"BENEFICIAL","reason":"−3·1의 열린 경계와 사이 정수 −2·−1·0의 포함을 도식화","capability":"number-line-figure-v1","plan":"archive/tools/geometry-equation/production/plans/18_연향중_1학기_기말_중2_유사/q11-solution.plan.json","expectedFeatures":["−3<x<1; both endpoints OPEN","integer dots −2,−1,0"]}},
+    {"qid":"q12","problem":{"decision":"EXEMPT","reason":"−2≤x<4의 음수배에 따른 값의 범위 판단; 변환한 수직선은 답을 미리 노출"},"solution":{"decision":"BENEFICIAL","reason":"음수 −3을 곱할 때 반전되어 −7 개방·11 포함으로 바뀌는 경계 확인","capability":"number-line-figure-v1","plan":"archive/tools/geometry-equation/production/plans/18_연향중_1학기_기말_중2_유사/q12-solution.plan.json","expectedFeatures":["expression −3x+5 in caption; axis end variable hidden","lower −7 OPEN and upper 11 CLOSED"]}},
+    {"qid":"q13","problem":{"decision":"BENEFICIAL","reason":"이미 주어진 공통 해 −5≤x≤2의 두 닫힌 경계를 시각화하되 a,b는 숨김","capability":"number-line-figure-v1","plan":"archive/tools/geometry-equation/production/plans/18_연향중_1학기_기말_중2_유사/q13-problem.plan.json","expectedFeatures":["closed segment −5≤x≤2","no a=1,b=4,ab=4 exposure"]},"solution":{"decision":"BENEFICIAL","reason":"첫째 해 x≥−5와 둘째 해 x≤2를 따로 보인 뒤 공통 구간을 결합","capability":"number-line-figure-v1","plan":"archive/tools/geometry-equation/production/plans/18_연향중_1학기_기말_중2_유사/q13-solution.plan.json","expectedFeatures":["first x≥−5 closed left ray RIGHT","second x≤2 closed right ray LEFT","RESULT −5≤x≤2 both CLOSED"]}},
+    {"qid":"q14","problem":{"decision":"EXEMPT","reason":"a<b에 대한 다섯 대수적 명제의 전칭·반례 판단"},"solution":{"decision":"EXEMPT","reason":"㉢·㉣ 반례와 ㉠㉡㉤ 부등식 변형으로 완결"}},
+    {"qid":"q15","problem":{"decision":"EXEMPT","reason":"소수계수 일차부등식의 해를 고르는 발문; 시각화는 답 노출"},"solution":{"decision":"BENEFICIAL","reason":"−24x>48을 음수로 나눈 뒤 열린 −2와 왼쪽 반직선 표시","capability":"number-line-figure-v1","plan":"archive/tools/geometry-equation/production/plans/18_연향중_1학기_기말_중2_유사/q15-solution.plan.json","expectedFeatures":["x<−2; endpoint −2 OPEN; ray LEFT"]}},
+    {"qid":"q16","problem":{"decision":"EXEMPT","reason":"자연수 해가 두 개라는 문장으로 매개변수의 범위를 도출"},"solution":{"decision":"BENEFICIAL","reason":"a의 열린 4와 닫힌 7 사이 정수 5·6·7을 확인","capability":"number-line-figure-v1","plan":"archive/tools/geometry-equation/production/plans/18_연향중_1학기_기말_중2_유사/q16-solution.plan.json","expectedFeatures":["variable a not x; 4<a≤7","integer points 5,6,7"]}},
+    {"qid":"q17","problem":{"decision":"EXEMPT","reason":"두 부등식의 공통 정수해 최솟값·최댓값을 묻고 있어 결과 구간을 사전 제시하지 않음"},"solution":{"decision":"BENEFICIAL","reason":"x<9와 x≥0의 공통 범위와 정수 0~8을 세 줄로 확인","capability":"number-line-figure-v1","plan":"archive/tools/geometry-equation/production/plans/18_연향중_1학기_기말_중2_유사/q17-solution.plan.json","expectedFeatures":["x<9 OPEN and x≥0 CLOSED","RESULT 0≤x<9 with integer points 0..8"]}},
+    {"qid":"q18","problem":{"decision":"EXEMPT","reason":"네 번 시험 평균 90점 조건의 1변수 점수 합"},"solution":{"decision":"EXEMPT","reason":"266+x≥360, x≥94로 완결; 점수 수직선은 계산 중복"}},
+    {"qid":"q19","problem":{"decision":"EXEMPT","reason":"a가 미지인 두 연립 부등식의 정수해 개수; 특정 a로 먼저 그리면 조건을 가정함"},"solution":{"decision":"BENEFICIAL","reason":"a=13 예를 명시하여 x<6과 x≥(a−6)/2의 교집합에 4,5만 포함됨을 보여 줌","capability":"number-line-figure-v1","plan":"archive/tools/geometry-equation/production/plans/18_연향중_1학기_기말_중2_유사/q19-solution.plan.json","expectedFeatures":["parameter a=13 explicitly labeled as example","first x<6 OPEN; second x≥7/2 CLOSED","RESULT 7/2≤x<6 integer 4,5","full range 12<a≤14 stated in caption, not falsely drawn as full param sweep"]}},
+    {"qid":"q20","problem":{"decision":"EXEMPT","reason":"3인 의자와 4인 의자의 남는 학생·의자 수 조건이 문장으로 완전; 그림에 특정 의자 수를 그리면 선택지 답 노출"},"solution":{"decision":"BENEFICIAL","reason":"계산한 정수 의자 범위 16~19와 다섯 보기 중 17의 포함·나머지 제외를 보여 줌","capability":"number-line-figure-v1","plan":"archive/tools/geometry-equation/production/plans/18_연향중_1학기_기말_중2_유사/q20-solution.plan.json","expectedFeatures":["16≤x≤19 both CLOSED, integer points 16,17,18,19","choices 13,14,15,20 crossed and 17 included"]}},
+    {"qid":"q21","problem":{"decision":"EXEMPT","reason":"무수히 많은 해의 조건은 연립식 계수와 상수의 비례"},"solution":{"decision":"EXEMPT","reason":"a/2=−8/b=−4에서 a=−8,b=2로 대수적으로 완결"}},
+    {"qid":"q22","problem":{"decision":"EXEMPT","reason":"두 사람의 공동 작업량·일일 작업량을 연립식으로 푸는 계산"},"solution":{"decision":"EXEMPT","reason":"12x+12y=1,6x+15y=1의 가감으로 36일 결정"}},
+    {"qid":"q23","problem":{"decision":"EXEMPT","reason":"x≥−4가 발문에 주어져 있지만 계수 a는 미지; 같은 해의 그림을 필수 정보로 중복하지 않음"},"solution":{"decision":"BENEFICIAL","reason":"x≥a−6의 기준이 주어진 닫힌 −4와 일치하는지 경계 확인","capability":"number-line-figure-v1","plan":"archive/tools/geometry-equation/production/plans/18_연향중_1학기_기말_중2_유사/q23-solution.plan.json","expectedFeatures":["x≥−4; endpoint −4 CLOSED; ray RIGHT","a−6=−4 and a=2 stated in caption"]}},
+    {"qid":"q24","problem":{"decision":"BENEFICIAL","reason":"올라가는 길과 내려오는 길의 동일 거리·반대 방향·다른 속력을 비교해야 왕복 시간을 세움","capability":"construction-spike-v1 / PLANE_FIGURE_v1","plan":"archive/tools/geometry-equation/production/plans/18_연향중_1학기_기말_중2_유사/q24-problem.plan.json","expectedFeatures":["two opposite arrowheads on equal paths","two x distance dimension marks, same-length ticks","speed labels uphill 3km/h, downhill 6km/h; no max 8km exposure"]},"solution":{"decision":"BENEFICIAL","reason":"최대 x=8일 때 두 거리 8km가 같고 속력 차로 왕복 4시간이 됨을 치수선으로 보임","capability":"construction-spike-v1 / PLANE_FIGURE_v1","plan":"archive/tools/geometry-equation/production/plans/18_연향중_1학기_기말_중2_유사/q24-solution.plan.json","expectedFeatures":["two opposite arrowheads, same-length ticks","two 8km labels and speeds 3km/h,6km/h","x/3+x/6≤4 and x≤8 in caption"]}}
+  ]
+}
