@@ -1,0 +1,52 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "label": "동전",
+      "children": [
+        {
+          "label": "앞면",
+          "p": "1/2",
+          "children": [
+            {
+              "label": "흰 공 2개",
+              "p": "15/56"
+            },
+            {
+              "label": "그 밖",
+              "p": "41/56"
+            }
+          ]
+        },
+        {
+          "label": "뒷면",
+          "p": "1/2",
+          "children": [
+            {
+              "label": "흰 공 2개",
+              "p": "3/7"
+            },
+            {
+              "label": "그 밖",
+              "p": "4/7"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "caption": "앞면의 조건부확률은 15/56, 뒷면의 조건부확률은 3/7이다. 각 경우에 1/2씩 곱하면 정확히 흰 공 2개일 확률은 39/112이다.",
+  "accessibilityDescription": "흰 공 3개, 검은 공 5개에서 동전 앞면 3개 추출과 뒷면 4개 추출을 구분하고, 두 분기의 흰 공 2개 확률을 보여 주는 수형도.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "흰 공 3개, 검은 공 5개; 앞면이면 3개, 뒷면이면 4개를 뽑아 흰 공이 정확히 2개일 확률.",
+      "mappedTo": "chart.root.children"
+    }
+  ],
+  "newVisualInformation": [
+    "앞면 1/2 → 흰 공 2개 15/56, 나머지 41/56",
+    "뒷면 1/2 → 흰 공 2개 3/7, 나머지 4/7"
+  ]
+}
