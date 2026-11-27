@@ -425,7 +425,11 @@ window.questionBank = [
     "content": "두 함수\n$f(x)=\\begin{cases} -1 & (|x| \\ge 1) \\\\ 1 & (|x| < 1) \\end{cases}$\n$g(x)=\\begin{cases} 1 & (|x| \\ge 1) \\\\ -x & (|x| < 1) \\end{cases}$\n에 대하여 다음 보기 중 옳은 것을 모두 고르시오.\n[보기]\nㄱ. $\\lim_{x \\to -1} f(x)g(x)=1$\nㄴ. 함수 $f(x)+g(x)$는 $x=-1$에서 불연속이다.\nㄷ. 함수 $f(x)g(x)$는 $x=1$에서 연속이다.",
     "choices": [],
     "answer": "ㄴ, ㄷ",
-    "solution": "ㄱ. $x\\to-1-$ ($|x|>1$)일 때 $f(x)g(x)=(-1)\\times 1=-1$이고, $x\\to-1+$ ($|x|<1$)일 때 $f(x)g(x)=1\\times(-x)\\to 1$이다. 좌극한과 우극한이 다르므로 $\\lim_{x\\to-1}f(x)g(x)$는 존재하지 않는다. (거짓)\nㄴ. $x\\to-1-$일 때 $f(x)+g(x)=-1+1=0$, $x\\to-1+$일 때 $f(x)+g(x)=1+(-x)\\to 2$이므로 $x=-1$에서 극한값이 없어 불연속이다. (참)\nㄷ. $x\\to 1-$ ($|x|<1$)일 때 $f(x)g(x)=1\\times(-x)\\to-1$, $x\\to 1+$일 때 $f(x)g(x)=(-1)\\times 1=-1$이고 $f(1)g(1)=(-1)\\times 1=-1$이므로 $x=1$에서 연속이다. (참)\n따라서 옳은 것은 ㄴ, ㄷ이다."
+    "solution": "ㄱ. $x\\to-1-$ ($|x|>1$)일 때 $f(x)g(x)=(-1)\\times 1=-1$이고, $x\\to-1+$ ($|x|<1$)일 때 $f(x)g(x)=1\\times(-x)\\to 1$이다. 좌극한과 우극한이 다르므로 $\\lim_{x\\to-1}f(x)g(x)$는 존재하지 않는다. (거짓)\nㄴ. $x\\to-1-$일 때 $f(x)+g(x)=-1+1=0$, $x\\to-1+$일 때 $f(x)+g(x)=1+(-x)\\to 2$이므로 $x=-1$에서 극한값이 없어 불연속이다. (참)\nㄷ. $x\\to 1-$ ($|x|<1$)일 때 $f(x)g(x)=1\\times(-x)\\to-1$, $x\\to 1+$일 때 $f(x)g(x)=(-1)\\times 1=-1$이고 $f(1)g(1)=(-1)\\times 1=-1$이므로 $x=1$에서 연속이다. (참)\n따라서 옳은 것은 ㄴ, ㄷ이다.",
+    "solutionImage": "assets/images/비상_미적분1_함수의극한과연속_익힘책_고2/q15-solution.svg",
+    "solutionImageAlt": "p(x)=f(x)g(x)는 x=-1에서 좌극한 -1, 우극한 1로 불연속이고 x=1에서는 양쪽과 함숫값 모두 -1이다.",
+    "solutionImageCaption": "p(x)=f(x)g(x)는 x=-1에서 좌극한 -1, 우극한 1로 불연속이고 x=1에서는 양쪽과 함숫값 모두 -1이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -453,7 +457,11 @@ window.questionBank = [
     "content": "실수 $a$에 대하여 원 $x^2+y^2=4$와 직선 $y=x+a$의 교점의 개수를 $f(a)$라고 하자. 함수 $f(a)$가 불연속인 모든 $a$의 값의 곱을 구하시오.",
     "choices": [],
     "answer": "$-8$",
-    "solution": "원 $x^2+y^2=4$ (중심 $(0,\\ 0)$, 반지름 $2$)와 직선 $x-y+a=0$ 사이의 거리는 $\\frac{|a|}{\\sqrt{2}}$이다.\n$\\frac{|a|}{\\sqrt{2}}<2$, 즉 $|a|<2\\sqrt{2}$이면 교점이 $2$개이므로 $f(a)=2$\n$|a|=2\\sqrt{2}$이면 접하여 교점이 $1$개이므로 $f(a)=1$\n$|a|>2\\sqrt{2}$이면 교점이 없으므로 $f(a)=0$\n따라서 $f(a)$는 $a=-2\\sqrt{2}$와 $a=2\\sqrt{2}$에서 불연속이고, 모든 $a$의 값의 곱은 $(-2\\sqrt{2})\\times 2\\sqrt{2}=-8$"
+    "solution": "원 $x^2+y^2=4$ (중심 $(0,\\ 0)$, 반지름 $2$)와 직선 $x-y+a=0$ 사이의 거리는 $\\frac{|a|}{\\sqrt{2}}$이다.\n$\\frac{|a|}{\\sqrt{2}}<2$, 즉 $|a|<2\\sqrt{2}$이면 교점이 $2$개이므로 $f(a)=2$\n$|a|=2\\sqrt{2}$이면 접하여 교점이 $1$개이므로 $f(a)=1$\n$|a|>2\\sqrt{2}$이면 교점이 없으므로 $f(a)=0$\n따라서 $f(a)$는 $a=-2\\sqrt{2}$와 $a=2\\sqrt{2}$에서 불연속이고, 모든 $a$의 값의 곱은 $(-2\\sqrt{2})\\times 2\\sqrt{2}=-8$",
+    "solutionImage": "assets/images/비상_미적분1_함수의극한과연속_익힘책_고2/q16-solution.svg",
+    "solutionImageAlt": "원 x²+y²=4와 직선 y=x+a의 교점 개수 f(a)는 |a|<2√2에서 2개, 접하는 ±2√2에서 1개, 그 밖에서 0개이다.",
+    "solutionImageCaption": "원 x²+y²=4와 직선 y=x+a의 교점 개수 f(a)는 |a|<2√2에서 2개, 접하는 ±2√2에서 1개, 그 밖에서 0개이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,

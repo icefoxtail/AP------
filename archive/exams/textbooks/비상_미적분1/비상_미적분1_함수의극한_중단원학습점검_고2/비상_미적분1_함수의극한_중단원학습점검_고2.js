@@ -111,7 +111,11 @@ window.questionBank = [
     "content": "$\\lim_{x \\to 2} \\frac{x^2-5x+6}{|x-2|}$을 조사하시오.",
     "choices": [],
     "answer": "극한값이 존재하지 않는다. (좌극한 $1$, 우극한 $-1$)",
-    "solution": "$x^2-5x+6=(x-2)(x-3)$이므로 $\\frac{x^2-5x+6}{|x-2|}=\\frac{(x-2)(x-3)}{|x-2|}$이다.\n$x\\to 2+$일 때 $x-2>0$이므로 $|x-2|=x-2$이고\n$$\\lim_{x\\to 2+}\\frac{(x-2)(x-3)}{x-2}=\\lim_{x\\to 2+}(x-3)=-1$$\n$x\\to 2-$일 때 $x-2<0$이므로 $|x-2|=-(x-2)$이고\n$$\\lim_{x\\to 2-}\\frac{(x-2)(x-3)}{-(x-2)}=\\lim_{x\\to 2-}\\{-(x-3)\\}=1$$\n우극한과 좌극한이 서로 다르므로 극한값이 존재하지 않는다."
+    "solution": "$x^2-5x+6=(x-2)(x-3)$이므로 $\\frac{x^2-5x+6}{|x-2|}=\\frac{(x-2)(x-3)}{|x-2|}$이다.\n$x\\to 2+$일 때 $x-2>0$이므로 $|x-2|=x-2$이고\n$$\\lim_{x\\to 2+}\\frac{(x-2)(x-3)}{x-2}=\\lim_{x\\to 2+}(x-3)=-1$$\n$x\\to 2-$일 때 $x-2<0$이므로 $|x-2|=-(x-2)$이고\n$$\\lim_{x\\to 2-}\\frac{(x-2)(x-3)}{-(x-2)}=\\lim_{x\\to 2-}\\{-(x-3)\\}=1$$\n우극한과 좌극한이 서로 다르므로 극한값이 존재하지 않는다.",
+    "solutionImage": "assets/images/비상_미적분1_함수의극한_중단원학습점검_고2/q4-solution.svg",
+    "solutionImageAlt": "x≠2에서 절댓값을 분기하면 왼쪽은 3-x, 오른쪽은 x-3이다. (2,1), (2,-1)은 모두 열린 점이므로 좌우 극한은 다르고 함수값은 없다.",
+    "solutionImageCaption": "x≠2에서 절댓값을 분기하면 왼쪽은 3-x, 오른쪽은 x-3이다. (2,1), (2,-1)은 모두 열린 점이므로 좌우 극한은 다르고 함수값은 없다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -139,7 +143,11 @@ window.questionBank = [
     "content": "함수 $f(x)=\\begin{cases} -x^2+4 & (x \\ge 1) \\\\ 2x+a & (x < 1) \\end{cases}$에서 극한값 $\\lim_{x \\to 1} f(x)$가 존재할 때, 실수 $a$의 값을 구하시오.",
     "choices": [],
     "answer": "$1$",
-    "solution": "$\\lim_{x\\to 1}f(x)$가 존재하려면 우극한과 좌극한이 같아야 한다.\n$\\lim_{x\\to 1+}f(x)=-1+4=3$\n$\\lim_{x\\to 1-}f(x)=2+a$\n$3=2+a$이므로 $a=1$"
+    "solution": "$\\lim_{x\\to 1}f(x)$가 존재하려면 우극한과 좌극한이 같아야 한다.\n$\\lim_{x\\to 1+}f(x)=-1+4=3$\n$\\lim_{x\\to 1-}f(x)=2+a$\n$3=2+a$이므로 $a=1$",
+    "solutionImage": "assets/images/비상_미적분1_함수의극한_중단원학습점검_고2/q5-solution.svg",
+    "solutionImageAlt": "a=1일 때 직선 2x+1과 포물선 -x²+4가 (1,3)에서 만나 f의 극한이 존재한다.",
+    "solutionImageCaption": "a=1일 때 직선 2x+1과 포물선 -x²+4가 (1,3)에서 만나 f의 극한이 존재한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
