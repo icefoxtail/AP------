@@ -1,0 +1,284 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "20"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "60"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "36"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "36"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "T",
+    "R",
+    "L",
+    "Q",
+    "F"
+  ],
+  "hiddenPointNames": [
+    "O",
+    "T",
+    "R",
+    "L",
+    "Q",
+    "F"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "leg-a-lower",
+      "refs": [
+        "O",
+        "L"
+      ]
+    },
+    {
+      "id": "leg-a-upper",
+      "refs": [
+        "L",
+        "T"
+      ]
+    },
+    {
+      "id": "base-a-lower",
+      "refs": [
+        "O",
+        "F"
+      ]
+    },
+    {
+      "id": "base-a-upper",
+      "refs": [
+        "F",
+        "R"
+      ]
+    },
+    {
+      "id": "hypotenuse",
+      "refs": [
+        "T",
+        "R"
+      ]
+    },
+    {
+      "id": "rectangle-top",
+      "refs": [
+        "L",
+        "Q"
+      ]
+    },
+    {
+      "id": "rectangle-right",
+      "refs": [
+        "Q",
+        "F"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right-at-O",
+      "refs": [
+        "T",
+        "O",
+        "R"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "right-at-L",
+      "refs": [
+        "O",
+        "L",
+        "Q"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "right-at-Q",
+      "refs": [
+        "L",
+        "Q",
+        "F"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "right-at-F",
+      "refs": [
+        "Q",
+        "F",
+        "O"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 540
+  },
+  "planeMarks": {
+    "pathLabels": [
+      {
+        "id": "leg30",
+        "points": [
+          "O",
+          "L",
+          "T"
+        ],
+        "label": "h",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "base60",
+        "points": [
+          "O",
+          "F",
+          "R"
+        ],
+        "label": "60",
+        "unit": "cm",
+        "value": "60",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "a-side",
+        "ownerSegment": "rectangle-right",
+        "text": "a",
+        "unit": "cm",
+        "labelAt": "MID",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "높이 h인 직각삼각형에 놓인 내접 직사각형",
+  "sourceQuote": "직각을 낀 두 변의 길이가 h cm와 60 cm인 직각삼각형",
+  "sourceConditions": [
+    "밑변 60cm, 다른 직각변 h cm와 내접 직사각형의 세로 a cm는 발문에서 주어진 기호 그대로 표시한다.",
+    "좌표상의 예시 높이 20과 직사각형 높이 8은 h의 정답값을 뜻하지 않는 닮음 관계 개략도다."
+  ],
+  "newVisualInformation": [
+    "직각삼각형 안에서 높이 a인 직사각형을 나타낸다."
+  ],
+  "accessibilityDescription": "밑변 60cm, 미지의 높이 h cm를 가진 직각삼각형 내부에 높이 a cm인 직사각형이 놓인 개략도."
+}

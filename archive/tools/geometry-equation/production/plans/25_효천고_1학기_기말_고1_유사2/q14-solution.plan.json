@@ -1,0 +1,87 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-3/2",
+        "5/2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -1.5,
+      2.5
+    ],
+    "viewport": [
+      -2,
+      3,
+      -2,
+      8
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "T",
+        "x": 1,
+        "y": 1
+      },
+      {
+        "id": "L",
+        "x": -1,
+        "y": 1
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "l",
+          "slope": "2",
+          "intercept": "-1",
+          "label": "y=2x-1"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "V": "V",
+    "T": "T",
+    "L": "L"
+  },
+  "caption": "k=1인 경우 y=x²와 y=2x-1은 (1,1)에서 접하고 f(-1)=f(1)=1이다.",
+  "accessibilityDescription": "k=1인 경우 y=x²와 y=2x-1은 (1,1)에서 접하고 f(-1)=f(1)=1이다.",
+  "sourceQuote": "f(-1)=f(k), y=f(x)와 y=2x-1이 접한다",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "k=1에서 a=0,b=0으로 f(x)=x²",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "c2",
+      "condition": "접점(1,1), 대칭 위치(-1,1)",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "정확한 이차함수 계수와 제한 정의역, 계산된 핵심점의 좌표를 실제 곡선·점 필드로 표현한다."
+  ]
+}

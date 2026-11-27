@@ -1,0 +1,77 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "-6",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-3",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -3,
+      1
+    ],
+    "viewport": [
+      -4,
+      2,
+      -5,
+      52
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 1,
+        "y": -2
+      },
+      {
+        "id": "L",
+        "x": -3,
+        "y": 46
+      },
+      {
+        "id": "Z",
+        "x": 0,
+        "y": 1
+      }
+    ]
+  },
+  "pointNames": {
+    "V": "V",
+    "L": "L",
+    "Z": "Z"
+  },
+  "caption": "y=3(x-1)²-2의 정의역 [-3,1]에서 최솟값 -2는 오른쪽 끝점 (1,-2)에 있다.",
+  "accessibilityDescription": "y=3(x-1)²-2의 정의역 [-3,1]에서 최솟값 -2는 오른쪽 끝점 (1,-2)에 있다.",
+  "sourceQuote": "y=3x²-6x+1, -3≤x≤1",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "완전제곱식 3(x-1)²-2",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "c2",
+      "condition": "끝점(1,-2) 최솟값, 왼쪽 끝점(-3,46)",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "정확한 이차함수 계수와 제한 정의역, 계산된 핵심점의 좌표를 실제 곡선·점 필드로 표현한다."
+  ]
+}

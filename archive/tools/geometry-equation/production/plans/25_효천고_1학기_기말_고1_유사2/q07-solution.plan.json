@@ -1,0 +1,77 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "60",
+          "-6"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "10"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      10
+    ],
+    "viewport": [
+      -1,
+      11,
+      -15,
+      175
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 5,
+        "y": 150
+      },
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "R",
+        "x": 10,
+        "y": 0
+      }
+    ]
+  },
+  "pointNames": {
+    "V": "V",
+    "O": "O",
+    "R": "R"
+  },
+  "caption": "h=10일 때 S(a)=60a-6a²이고 최대 넓이는 a=5에서 150cm²이다.",
+  "accessibilityDescription": "h=10일 때 S(a)=60a-6a²이고 최대 넓이는 a=5에서 150cm²이다.",
+  "sourceQuote": "최대넓이 150 cm² → 15h=150, h=10",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "해설로 확정한 h=10을 대입해 S(a)=60a-6a²",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "c2",
+      "condition": "a=5에서 최대 S=150, 정의역 a∈[0,10]",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "정확한 이차함수 계수와 제한 정의역, 계산된 핵심점의 좌표를 실제 곡선·점 필드로 표현한다."
+  ]
+}

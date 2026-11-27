@@ -1,0 +1,44 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "-1/2",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "공통해"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "해집합과 주요 경계"
+  },
+  "caption": "두 일차부등식의 공통해는 -1≤x≤-1/2이다.",
+  "accessibilityDescription": "두 일차부등식의 공통해는 -1≤x≤-1/2이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x≥-1",
+      "mappedTo": "numberLine.rows"
+    },
+    {
+      "id": "c2",
+      "condition": "x≤-1/2",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "부등식의 실제 끝점·개폐와 필요한 정수 해를 numberLine.rows의 구간·점 필드에 표시한다."
+  ]
+}

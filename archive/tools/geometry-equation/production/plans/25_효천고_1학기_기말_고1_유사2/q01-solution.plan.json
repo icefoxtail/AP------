@@ -1,0 +1,103 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "a=4: 접점 (-1/2,0)"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "1",
+                "4",
+                "4"
+              ]
+            }
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "domain": [
+            -2,
+            1
+          ],
+          "viewport": [
+            -2,
+            1,
+            -1,
+            9
+          ],
+          "requiredPoints": [
+            {
+              "id": "V",
+              "x": "-1/2",
+              "y": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "a=-1: 접점 (2,0)"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "-4",
+                "4",
+                "-1"
+              ]
+            }
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "domain": [
+            0.5,
+            3.5
+          ],
+          "viewport": [
+            0.5,
+            3.5,
+            -5,
+            1
+          ],
+          "requiredPoints": [
+            {
+              "id": "V",
+              "x": 2,
+              "y": 0
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "a=4인 위로 열린 포물선과 a=-1인 아래로 열린 포물선이 모두 x축에 접한다.",
+  "accessibilityDescription": "a=4인 위로 열린 포물선과 a=-1인 아래로 열린 포물선이 모두 x축에 접한다.",
+  "sourceQuote": "ax²+4x+a-3의 판별식이 0, a=4 또는 -1",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "ax²+4x+a-3의 판별식이 0, a=4 또는 -1",
+      "mappedTo": "panels"
+    },
+    {
+      "id": "c2",
+      "condition": "각 패널의 실제 이차식 계수와 접점 y=0을 독립적으로 표현한다.",
+      "mappedTo": "panels"
+    }
+  ],
+  "newVisualInformation": [
+    "판별식이 0인 두 매개변수 경우의 그래프를 서로 독립된 패널에 그리고 접점 좌표를 실제 requiredPoints로 표시한다."
+  ]
+}

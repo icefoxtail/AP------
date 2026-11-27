@@ -1,0 +1,68 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "4",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "label": "첫 부등식"
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "1",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "3",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "label": "b=4 때 둘째"
+      },
+      {
+        "kind": "RESULT",
+        "label": "공통해"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "해집합과 주요 경계"
+  },
+  "caption": "b=4일 때 둘째 부등식의 해는 x<1 또는 x>3이며 첫째와 공통인 3<x<4에는 정수가 없다.",
+  "accessibilityDescription": "b=4일 때 둘째 부등식의 해는 x<1 또는 x>3이며 첫째와 공통인 3<x<4에는 정수가 없다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "첫 부등식 1<x<4",
+      "mappedTo": "numberLine.rows"
+    },
+    {
+      "id": "c2",
+      "condition": "임계 b=4에서 둘째 x<1 또는 x>3; 교집합(3,4)에는 정수해 없음",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "부등식의 실제 끝점·개폐와 필요한 정수 해를 numberLine.rows의 구간·점 필드에 표시한다."
+  ]
+}

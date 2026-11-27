@@ -1,0 +1,54 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "m",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "label": "세 실근 조건"
+      },
+      {
+        "kind": "POINTS",
+        "points": [
+          {
+            "id": "P0",
+            "value": "2",
+            "hideName": true,
+            "showValue": true,
+            "style": "FILLED"
+          }
+        ],
+        "label": "최소 자연수"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "해집합과 주요 경계"
+  },
+  "caption": "세 실근을 위한 m>1이고 양의 정수 최솟값은 2이다.",
+  "accessibilityDescription": "세 실근을 위한 m>1이고 양의 정수 최솟값은 2이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 극값의 부호가 반대이면 m>1",
+      "mappedTo": "numberLine.rows"
+    },
+    {
+      "id": "c2",
+      "condition": "가장 작은 양의 정수 m=2",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "부등식의 실제 끝점·개폐와 필요한 정수 해를 numberLine.rows의 구간·점 필드에 표시한다."
+  ]
+}

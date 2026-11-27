@@ -1,0 +1,77 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "60",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "30"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      30
+    ],
+    "viewport": [
+      -3,
+      33,
+      -30,
+      510
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 15,
+        "y": 450
+      },
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "R",
+        "x": 30,
+        "y": 0
+      }
+    ]
+  },
+  "pointNames": {
+    "V": "V",
+    "O": "O",
+    "R": "R"
+  },
+  "caption": "직사각형 넓이 S(a)=-2a²+60a는 a=15에서 최대 450이다.",
+  "accessibilityDescription": "직사각형 넓이 S(a)=-2a²+60a는 a=15에서 최대 450이다.",
+  "sourceQuote": "S(a)=a(60-2a)=-2(a-15)^2+450",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "밑변60cm·높이30cm를 이용한 닮음으로 S(a)=-2a²+60a",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "c2",
+      "condition": "a=15에서 S=450인 꼭짓점과 양끝 0,30",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "정확한 이차함수 계수와 제한 정의역, 계산된 핵심점의 좌표를 실제 곡선·점 필드로 표현한다."
+  ]
+}
