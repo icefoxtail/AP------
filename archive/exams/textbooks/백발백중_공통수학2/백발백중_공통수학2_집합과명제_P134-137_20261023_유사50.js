@@ -54,8 +54,9 @@ window.questionBank = [
     "targetChoiceSlot": 1,
     "metaRationale": "여러 집합 조건 또는 두 계산 단계를 결합: 여집합·교집합 조건을 함께 이용해 A를 복원하고 원소 합을 계산한다.",
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P134-137_20261023_유사50/BV-BAKBAL-H-COM2-P134-Q01-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "D=A-B={4,32}, I=A∩B={2,8}이므로 A=D∪I={2,4,8,32}이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "D=A-B={4,32}, I=A∩B={2,8}이므로 A=D∪I={2,4,8,32}이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P134-Q01-S1-R1",
@@ -111,8 +112,9 @@ window.questionBank = [
     "targetChoiceSlot": 4,
     "metaRationale": "기본 정의나 공식의 직접 적용: 여집합·교집합 조건을 함께 이용해 A를 복원하고 원소 합을 계산한다.",
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P134-137_20261023_유사50/BV-BAKBAL-H-COM2-P134-Q01-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "D=A-B={2,4}, I=A∩B={1,3}이므로 A=D∪I={1,2,3,4}이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "D=A-B={2,4}, I=A∩B={1,3}이므로 A=D∪I={1,2,3,4}이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P134-Q01-S2-R1",
@@ -168,8 +170,9 @@ window.questionBank = [
     "targetChoiceSlot": 2,
     "metaRationale": "기본 정의나 공식의 직접 적용: 여집합·교집합 조건을 함께 이용해 A를 복원하고 원소 합을 계산한다.",
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P134-137_20261023_유사50/BV-BAKBAL-H-COM2-P134-Q01-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "D=A-B={2,8}, I=A∩B={4}이므로 A=D∪I={2,4,8}이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "D=A-B={2,8}, I=A∩B={4}이므로 A=D∪I={2,4,8}이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-B32-INF-G01-T1-R2",

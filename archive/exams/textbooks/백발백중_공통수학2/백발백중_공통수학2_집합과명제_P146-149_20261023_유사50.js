@@ -55,9 +55,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P146-Q01-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "두 집합에서 한쪽에만 속하는 원소는 1, 4, 5, 6, 10이고, 색칠된 두 차집합이 그 부분이다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "두 집합에서 한쪽에만 속하는 원소는 1, 4, 5, 6, 10이고, 색칠된 두 차집합이 그 부분이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P146-Q01-S1-R1",
@@ -114,9 +115,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P146-Q01-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "두 집합에서 한쪽에만 속하는 원소는 1, 2, 7, 9이고, 색칠된 두 차집합이 그 부분이다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "두 집합에서 한쪽에만 속하는 원소는 1, 2, 7, 9이고, 색칠된 두 차집합이 그 부분이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P146-Q01-S2-R1",
@@ -173,9 +175,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P146-Q01-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "두 집합에서 한쪽에만 속하는 원소는 1, 3, 5, 6, 8, 10, 12이고, 색칠된 두 차집합이 그 부분이다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "두 집합에서 한쪽에만 속하는 원소는 1, 3, 5, 6, 8, 10, 12이고, 색칠된 두 차집합이 그 부분이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P146-Q02-T1-R1",
@@ -232,13 +235,15 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P146-Q02-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "세 변의 길이가 정해진 삼각형 ABC에서 M은 BC의 중점이고, N은 AM을 2:3으로 내분한다.",
+    "solutionImageSize": "full",
     "inferredFields": [],
     "image": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P146-Q02-T1-R1-problem.svg",
     "imageAlt": "삼각형 ABC에서 BC의 중점 M과 AM을 2:3으로 내분하는 N의 위치. 세 변의 길이와 비율은 주어진 조건이다.",
     "imageCaption": "삼각형 ABC에서 BC의 중점 M과 AM을 2:3으로 내분하는 N의 위치. 세 변의 길이와 비율은 주어진 조건이다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageCaption": "세 변의 길이가 정해진 삼각형 ABC에서 M은 BC의 중점이고, N은 AM을 2:3으로 내분한다.",
+    "solutionImageScale": 90
   },
   {
     "id": "BV-BAKBAL-H-COM2-P146-Q02-S1-R1",
@@ -295,13 +300,15 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P146-Q02-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "세 변의 길이가 정해진 삼각형 ABC에서 M은 BC의 중점이고, N은 AM을 3:2으로 내분한다.",
+    "solutionImageSize": "full",
     "inferredFields": [],
     "image": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P146-Q02-S1-R1-problem.svg",
     "imageAlt": "삼각형 ABC에서 BC의 중점 M과 AM을 3:2으로 내분하는 N의 위치. 세 변의 길이와 비율은 주어진 조건이다.",
     "imageCaption": "삼각형 ABC에서 BC의 중점 M과 AM을 3:2으로 내분하는 N의 위치. 세 변의 길이와 비율은 주어진 조건이다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageCaption": "세 변의 길이가 정해진 삼각형 ABC에서 M은 BC의 중점이고, N은 AM을 3:2으로 내분한다.",
+    "solutionImageScale": 90
   },
   {
     "id": "BV-BAKBAL-H-COM2-P146-Q02-S2-R1",
@@ -358,13 +365,15 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P146-Q02-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "세 변의 길이가 정해진 삼각형 ABC에서 M은 BC의 중점이고, N은 AM을 4:1으로 내분한다.",
+    "solutionImageSize": "full",
     "inferredFields": [],
     "image": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P146-Q02-S2-R1-problem.svg",
     "imageAlt": "삼각형 ABC에서 BC의 중점 M과 AM을 4:1으로 내분하는 N의 위치. 세 변의 길이와 비율은 주어진 조건이다.",
     "imageCaption": "삼각형 ABC에서 BC의 중점 M과 AM을 4:1으로 내분하는 N의 위치. 세 변의 길이와 비율은 주어진 조건이다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageCaption": "세 변의 길이가 정해진 삼각형 ABC에서 M은 BC의 중점이고, N은 AM을 4:1으로 내분한다.",
+    "solutionImageScale": 90
   },
   {
     "id": "BV-BAKBAL-H-COM2-P146-Q03-T1-R1",
@@ -598,9 +607,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P146-Q04-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "A와 B에 같은 평행이동을 적용하면 각각 A′와 B′로 옮겨진다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "A와 B에 같은 평행이동을 적용하면 각각 A′와 B′로 옮겨진다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P146-Q04-S1-R1",
@@ -657,9 +667,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P146-Q04-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "A와 B에 같은 평행이동을 적용하면 각각 A′와 B′로 옮겨진다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "A와 B에 같은 평행이동을 적용하면 각각 A′와 B′로 옮겨진다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P146-Q04-S2-R1",
@@ -716,9 +727,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P146-Q04-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "A와 B에 같은 평행이동을 적용하면 각각 A′와 B′로 옮겨진다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "A와 B에 같은 평행이동을 적용하면 각각 A′와 B′로 옮겨진다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P146-Q05-T1-R1",
@@ -775,9 +787,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P146-Q05-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "주어진 직선과 그 직선에 수직인 직선이 주어진 점 T에서 만나는 수선 관계. 진한 직선은 수직인 직선이다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "주어진 직선과 그 직선에 수직인 직선이 주어진 점 T에서 만나는 수선 관계. 진한 직선은 수직인 직선이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P146-Q05-S1-R1",

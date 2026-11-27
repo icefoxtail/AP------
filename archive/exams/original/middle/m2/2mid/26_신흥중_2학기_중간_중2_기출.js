@@ -816,7 +816,7 @@ window.questionBank = [
   {
     "id": 19,
     "imageSize": "full",
-    "imageAlt": "입구가 위에 있고 꼭짓점이 아래에 있는 원뿔 그릇이다. 전체 높이의 3분의 1까지 아래쪽에 물을 채웠다. 물의 수면과 원뿔의 입구를 타원으로 보인다.",
+    "imageAlt": "꼭짓점이 아래인 원뿔 그릇에서 물은 전체 높이의 1/3 지점까지만 차 있다.",
     "level": "상",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -860,12 +860,13 @@ window.questionBank = [
     ],
     "difficultyBucket": 3,
     "primaryMethod": "원뿔 높이비의 세제곱을 채우는 시간비로 변환",
-    "decisiveStep": "작은 원뿔과 전체 원뿔의 부피비를 구한 뒤 일정 유량으로 시간비에 옮기고 이미 지난 시간을 뺀다."
+    "decisiveStep": "작은 원뿔과 전체 원뿔의 부피비를 구한 뒤 일정 유량으로 시간비에 옮기고 이미 지난 시간을 뺀다.",
+    "imageCaption": "꼭짓점이 아래인 원뿔 그릇에서 물은 전체 높이의 1/3 지점까지만 차 있다."
   },
   {
     "id": 20,
     "imageSize": "full",
-    "imageAlt": "정사각형 ABCD 안의 직선 BE에 A와 C에서 수선을 내려 F와 G에 닿는다. AF는 18 cm, CG는 12 cm이다. 삼각형 AFG를 칠했다.",
+    "imageAlt": "정사각형 ABCD에서 BFGE는 한 직선 위에 있고 AF와 CG는 그 선에 수직이다. 원본처럼 삼각형 AFG만 옅게 구분한다.",
     "level": "상",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -909,7 +910,8 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "difficultyBucket": 3,
     "primaryMethod": "같은 빗변과 한 예각으로 직각삼각형 합동",
-    "decisiveStep": "정사각형의 같은 변과 직각 관계에서 ABF,BCG의 RHA 합동을 얻어 대응변을 옮긴 뒤 목표 삼각형 넓이를 구한다."
+    "decisiveStep": "정사각형의 같은 변과 직각 관계에서 ABF,BCG의 RHA 합동을 얻어 대응변을 옮긴 뒤 목표 삼각형 넓이를 구한다.",
+    "imageCaption": "정사각형 ABCD에서 BFGE는 한 직선 위에 있고 AF와 CG는 그 선에 수직이다. 원본처럼 삼각형 AFG만 옅게 구분한다."
   },
   {
     "id": 21,

@@ -238,11 +238,12 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_TEXT_ONLY",
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P142-Q02-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "중심 O의 원을 수평 3만큼 오른쪽으로 옮기면 중심 C(3,0), 반지름 5인 원이 된다.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "source_page_image_comparison"
-    ]
+    ],
+    "solutionImageCaption": "중심 O의 원을 수평 3만큼 오른쪽으로 옮기면 중심 C(3,0), 반지름 5인 원이 된다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P142-Q02-S1-R1",
@@ -360,11 +361,12 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_TEXT_ONLY",
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P142-Q02-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "중심 O의 원을 수평 1만큼 오른쪽으로 옮기면 중심 C(1,0), 반지름 4인 원이 된다.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "source_page_image_comparison"
-    ]
+    ],
+    "solutionImageCaption": "중심 O의 원을 수평 1만큼 오른쪽으로 옮기면 중심 C(1,0), 반지름 4인 원이 된다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P142-Q03-T1-R1",
@@ -421,11 +423,12 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_TEXT_ONLY",
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P142-Q03-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "원점 대칭으로 얻은 P와 직선 y=x 대칭으로 얻은 Q를 연결한 선분 PQ.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "source_page_image_comparison"
-    ]
+    ],
+    "solutionImageCaption": "원점 대칭으로 얻은 P와 직선 y=x 대칭으로 얻은 Q를 연결한 선분 PQ."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P142-Q03-S1-R1",
@@ -482,11 +485,12 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_TEXT_ONLY",
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P142-Q03-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "원점 대칭으로 얻은 P와 직선 y=x 대칭으로 얻은 Q를 연결한 선분 PQ.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "source_page_image_comparison"
-    ]
+    ],
+    "solutionImageCaption": "원점 대칭으로 얻은 P와 직선 y=x 대칭으로 얻은 Q를 연결한 선분 PQ."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P142-Q03-S2-R1",
@@ -543,11 +547,12 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_TEXT_ONLY",
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P142-Q03-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "원점 대칭으로 얻은 P와 직선 y=x 대칭으로 얻은 Q를 연결한 선분 PQ.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "source_page_image_comparison"
-    ]
+    ],
+    "solutionImageCaption": "원점 대칭으로 얻은 P와 직선 y=x 대칭으로 얻은 Q를 연결한 선분 PQ."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P142-Q04-T1-R1",
@@ -604,11 +609,12 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_TEXT_ONLY",
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P142-Q04-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "선분 AB의 중점 M을 지나는 수직이등분선과 y=x-1의 교점 P.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "source_page_image_comparison"
-    ]
+    ],
+    "solutionImageCaption": "선분 AB의 중점 M을 지나는 수직이등분선과 y=x-1의 교점 P."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P142-Q04-S1-R1",
@@ -665,11 +671,12 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_TEXT_ONLY",
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P142-Q04-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "선분 AB의 중점 M을 지나는 수직이등분선과 y=x의 교점 P.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "source_page_image_comparison"
-    ]
+    ],
+    "solutionImageCaption": "선분 AB의 중점 M을 지나는 수직이등분선과 y=x의 교점 P."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P142-Q04-S2-R1",
@@ -726,11 +733,12 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_TEXT_ONLY",
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P142-Q04-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "선분 AB의 중점 M을 지나는 수직이등분선과 y=x+2의 교점 P.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "source_page_image_comparison"
-    ]
+    ],
+    "solutionImageCaption": "선분 AB의 중점 M을 지나는 수직이등분선과 y=x+2의 교점 P."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P142-Q05-T1-R1",
