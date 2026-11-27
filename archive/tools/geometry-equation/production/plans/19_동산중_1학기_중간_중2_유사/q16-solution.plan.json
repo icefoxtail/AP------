@@ -1,0 +1,196 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "outputType": "POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "outputType": "POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "outputType": "POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "outputType": "POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "ra",
+      "refs": [
+        "D",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "rb",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "rc",
+      "refs": [
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "rd",
+      "refs": [
+        "C",
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "h",
+        "from": "D",
+        "to": "A",
+        "label": "4xy",
+        "side": "LEFT"
+      },
+      {
+        "id": "w",
+        "from": "A",
+        "to": "B",
+        "label": "6x^2+2xy^2",
+        "side": "BELOW"
+      }
+    ]
+  },
+  "caption": "직사각형의 넓이를 세로 4xy로 나누면 가로는 6x²+2xy²이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "세로 4xy, 넓이 24x³y+8x²y³",
+      "mappedTo": "mathPlan;planeMarks.dimensions"
+    }
+  ],
+  "newVisualInformation": [
+    "네 변과 네 직각표식, 세로 길이 4xy",
+    "계산한 가로 길이 6x²+2xy²의 치수선"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "1/2",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "부등식의 해"
+  },
+  "caption": "0.4(x+3)>1.6x+0.6의 해는 x<1/2이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "0.4(x+3)>1.6x+0.6 → x<1/2",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "경계점의 열린·닫힌 구별과 부등식의 해인 수직선 범위"
+  ]
+}

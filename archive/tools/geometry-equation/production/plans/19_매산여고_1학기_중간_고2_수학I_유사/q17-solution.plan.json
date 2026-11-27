@@ -1,0 +1,55 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "coefficients": [
+      "1",
+      "1",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "k",
+        "y": "-sqrt(3)/2",
+        "intersectionCount": 2
+      }
+    ],
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [
+        "5/6",
+        "7/6"
+      ],
+      "y": [
+        -1,
+        1
+      ]
+    },
+    "displaySize": "full"
+  },
+  "caption": "cosθ=−√3/2의 두 해는 5π/6과 7π/6이며 그 합은 2π이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "0≤θ≤2π, cosθ=−√3/2",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "근호 높이의 기준 수평선과 두 교점 및 π 눈금"
+  ],
+  "sourceQuote": "$0 \\le \\theta \\le 2\\pi$일 때, 방정식 $\\c"
+}
