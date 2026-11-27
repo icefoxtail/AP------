@@ -1,0 +1,134 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "아래 그림과 같이 폭이 $6$이고 높이가 $6$인 포물선",
+  "caption": "폭이 6, 높이가 6인 포물선 모양의 도형 안에 그린 직사각형의 한 예이다. 밑변은 가로축 위에 있고 윗변의 두 꼭짓점이 포물선 위에 있다.",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "6",
+          "0",
+          "-2/3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -4,
+      4,
+      -1,
+      7
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 0,
+        "y": 6
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "2"
+        },
+        {
+          "id": "Q",
+          "curveX": "-2"
+        },
+        {
+          "id": "R",
+          "axis": "x",
+          "value": "2"
+        },
+        {
+          "id": "S",
+          "axis": "x",
+          "value": "-2"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "T",
+          "points": [
+            "S",
+            "R",
+            "P",
+            "Q"
+          ],
+          "fill": "NONE"
+        }
+      ],
+      "rightAngles": [
+        {
+          "id": "rS",
+          "at": "S",
+          "from": [
+            "Q",
+            "R"
+          ]
+        },
+        {
+          "id": "rR",
+          "at": "R",
+          "from": [
+            "S",
+            "P"
+          ]
+        },
+        {
+          "id": "rP",
+          "at": "P",
+          "from": [
+            "R",
+            "Q"
+          ]
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "P": "P",
+    "Q": "Q",
+    "R": "R",
+    "S": "S"
+  },
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "폭 6, 높이 6인 포물선 안에 밑변이 포물선의 밑변 위에 있고 윗변의 두 꼭짓점이 포물선 위에 있는 직사각형",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.overlays"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "직사각형의 밑변은 포물선의 밑변 위, 윗변의 두 꼭짓점은 포물선 위에 있는 배치를 보여 준다.",
+    "사각형 내부의 자동 면 채움을 제거하고 직각 표시를 추가한다. 엔진 제한으로 네 번째 직각은 ENGINE_CAPABILITY_PENDING(OVERLAY_RIGHT_ANGLE_MAX_3)."
+  ],
+  "accessibilityDescription": "금당고 q14-problem의 그래프. 폭이 6, 높이가 6인 포물선 모양의 도형 안에 그린 직사각형의 한 예이다. 밑변은 가로축 위에 있고 윗변의 두 꼭짓점이 포물선 위에 있다.",
+  "hiddenPointNames": [
+    "P",
+    "Q",
+    "R",
+    "S"
+  ]
+}

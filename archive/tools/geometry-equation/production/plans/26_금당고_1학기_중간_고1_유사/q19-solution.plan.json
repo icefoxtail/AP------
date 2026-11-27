@@ -1,0 +1,170 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cL",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "L"
+        ],
+        "outputType": "CIRCLE",
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cR",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "R"
+        ],
+        "outputType": "CIRCLE",
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "L",
+    "R",
+    "T"
+  ],
+  "displayCircles": [
+    "cL",
+    "cR"
+  ],
+  "displaySegments": [
+    {
+      "id": "sLT",
+      "refs": [
+        "L",
+        "T"
+      ]
+    },
+    {
+      "id": "sTR",
+      "refs": [
+        "T",
+        "R"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "rLeft",
+        "ownerSegment": "sLT",
+        "text": "3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "rRight",
+        "ownerSegment": "sTR",
+        "text": "4",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "centerDistance",
+        "from": "L",
+        "to": "R",
+        "label": "7",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "외접하는 두 구의 중심간 거리는 7이며, 해설에서 구한 반지름 3과 4의 합도 7이다. 원은 구의 중심을 지나는 평면 단면으로 나타냈다.",
+  "accessibilityDescription": "크기가 다른 두 원이 한 점 T에서 외접한다. 두 중심 L,R을 잇는 길이가 7이고 반지름은 각각 3, 4이다.",
+  "sourceConditions": [
+    {
+      "id": "G19S1",
+      "condition": "서로 외접하는 두 구의 중심 간 거리 7",
+      "mappedTo": "mathPlan.nodes[L,R,T,cL,cR], planeMarks.dimensions[centerDistance]"
+    },
+    {
+      "id": "G19S2",
+      "condition": "4π(r₁²+r₂²)=100π, r₁+r₂=7을 만족하는 두 반지름은 3,4",
+      "mappedTo": "mathPlan.nodes[cL,cR], planeMarks.expressionLabels"
+    }
+  ],
+  "newVisualInformation": [
+    "구의 중심을 지나는 평면 단면에서 접점, 두 반지름, 중심거리 7을 실제 수학 좌표로 확인한다.",
+    "구의 구면 명암과 3차원 외접 표현은 ENGINE_CAPABILITY_PENDING: solid-figure-v1 내 두 독립 구의 정확한 external tangency 배치 및 unfilled sphere projection 필요."
+  ]
+}
