@@ -1,0 +1,253 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "G",
+    "N",
+    "D",
+    "R",
+    "M"
+  ],
+  "hiddenPointNames": [
+    "G",
+    "N",
+    "D",
+    "R",
+    "M"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "G",
+        "N"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "G",
+        "R"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "N",
+        "R"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "N",
+        "D"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "N",
+        "M"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "D",
+        "M"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "R",
+        "M"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "g",
+        "at": [
+          -4,
+          2.5
+        ],
+        "text": "가",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "n",
+        "at": [
+          0,
+          0.6
+        ],
+        "text": "나",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "d",
+        "at": [
+          4,
+          2.5
+        ],
+        "text": "다",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "r",
+        "at": [
+          -4,
+          -2.6
+        ],
+        "text": "라",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "m",
+        "at": [
+          4,
+          -2.6
+        ],
+        "text": "마",
+        "labelKind": "TEXT"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 500
+  },
+  "caption": "해설용 인접 관계 그래프(영역의 실제 모양이 아님). 나와 나머지 네 영역이 맞닿고, 나 이외에 가–라, 라–마, 다–마가 맞닿는다. 일곱 연결선이 모든 인접 쌍을 나타낸다.",
+  "accessibilityDescription": "가, 나, 다, 라, 마를 다섯 점으로 놓고 실제 문제의 인접 쌍만 일곱 선으로 연결한 그래프이다. 가–나, 가–라, 나–라, 나–다, 나–마, 다–마, 라–마가 연결되어 있고 영역에는 면 채움이 없다.",
+  "sourceQuote": "다섯 개의 영역을 서로 다른 $5$가지 이하의 색으로 칠하려고 한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "다섯 영역 가·나·다·라·마",
+      "mappedTo": "mathPlan.nodes"
+    },
+    {
+      "id": "c2",
+      "condition": "원문 해설에 명시된 인접 쌍 정확히 일곱 개",
+      "mappedTo": "displaySegments"
+    },
+    {
+      "id": "c3",
+      "condition": "인접한 영역은 서로 다른 색을 사용해야 한다.",
+      "mappedTo": "displaySegments"
+    }
+  ],
+  "newVisualInformation": [
+    "가–나, 가–라, 나–라, 나–다, 나–마, 다–마, 라–마의 일곱 간선만 그려진 인접 관계",
+    "원본 곡선 지역도를 복제하지 않는 해설 전용 위상 그래프",
+    "색칠 여부를 판단하기 위한 인접성에만 집중하며 면색 없음"
+  ]
+}
