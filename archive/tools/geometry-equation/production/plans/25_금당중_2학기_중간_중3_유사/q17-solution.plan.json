@@ -1,0 +1,294 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "해설 작도 — 원 O의 접선 PA=PB=12, 움직이는 접선 CD는 T에서 접하고 PC+CD+DP를 구함",
+  "accessibilityDescription": "해설 작도 — 원 O의 접선 PA=PB=12, 움직이는 접선 CD는 T에서 접하고 PC+CD+DP를 구함",
+  "newVisualInformation": [
+    "원 O의 접선 PA=PB=12, 움직이는 접선 CD는 T에서 접하고 PC+CD+DP를 구함",
+    "해설 원문에 필요한 추가 길이·높이·합동 표식을 독립 검수"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q17-archive",
+      "condition": "다음 그림과 같이 원 $O$ 밖의 한 점 $P$에서 원 $O$에 그은 두 접선의 접점을 $A, B$라 하고, 호 $AB$ 위의 한 점 $T$에서 그은 접선이 선분 $PA, PB$와 만나는 점을 각각 $C, D$라 하자. $\\overline{PA} = 12\\,\\mathrm{cm}$일 때, $\\triangle PCD$의 둘레의 길이를 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "audit-1",
+      "condition": "외접점 A,B와 중간 접점 T를 이용한 접선의 길이 등식 PC+CD+DP=PA+PB=24.",
+      "mappedTo": "DRAWN_FEATURE_PARITY"
+    }
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-25",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "60",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-25",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-60",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "10",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-10",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "A",
+    "B",
+    "T",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sPD",
+      "refs": [
+        "P",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sCT",
+      "refs": [
+        "C",
+        "T"
+      ]
+    },
+    {
+      "id": "sTD",
+      "refs": [
+        "T",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [],
+    "expressionLabels": [
+      {
+        "id": "lenPC",
+        "ownerSegment": "sPC",
+        "text": "26/3"
+      },
+      {
+        "id": "lenPD",
+        "ownerSegment": "sPD",
+        "text": "26/3"
+      },
+      {
+        "id": "lenCT",
+        "ownerSegment": "sCT",
+        "text": "10/3"
+      },
+      {
+        "id": "lenTD",
+        "ownerSegment": "sTD",
+        "text": "10/3"
+      }
+    ],
+    "arcs": [],
+    "pathLabels": [
+      {
+        "id": "givenPA",
+        "points": [
+          "P",
+          "C",
+          "A"
+        ],
+        "label": "12 cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "t90",
+      "refs": [
+        "C",
+        "T",
+        "O"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 450
+  }
+}

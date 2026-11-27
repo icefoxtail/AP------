@@ -1,0 +1,313 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "해설 작도 — 원 O 안의 두 현 AB와 CD, 수선 OM 및 ON이 같아 현의 길이도 같음",
+  "accessibilityDescription": "해설 작도 — 원 O 안의 두 현 AB와 CD, 수선 OM 및 ON이 같아 현의 길이도 같음",
+  "newVisualInformation": [
+    "원 O 안의 두 현 AB와 CD, 수선 OM 및 ON이 같아 현의 길이도 같음",
+    "해설 원문에 필요한 추가 길이·높이·합동 표식을 독립 검수"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q24-archive",
+      "condition": "[서술형 4] 다음 그림의 원 $O$에서 두 현 $AB, CD$의 길이가 같을 때($\\overline{AB} = \\overline{CD}$), 원의 중심 $O$에서 두 현에 내린 수선의 발을 각각 $M, N$이라 하자. 다음 물음에 답하시오.<br>(1) $\\triangle OAM \\equiv \\triangle OCN$임을 증명하시오.<br>(2) (1)을 이용하여 $\\overline{OM} = \\overline{ON}$임을 보이시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "-8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "M",
+    "N"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "sCN",
+      "refs": [
+        "C",
+        "N"
+      ]
+    },
+    {
+      "id": "sND",
+      "refs": [
+        "N",
+        "D"
+      ]
+    },
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "sON",
+      "refs": [
+        "O",
+        "N"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [],
+    "expressionLabels": [
+      {
+        "id": "lenAM",
+        "ownerSegment": "sAM",
+        "text": "8"
+      },
+      {
+        "id": "lenCN",
+        "ownerSegment": "sCN",
+        "text": "8"
+      }
+    ],
+    "arcs": [],
+    "equalLengths": [
+      {
+        "id": "perpDistances",
+        "count": 1,
+        "segments": [
+          "sOM",
+          "sON"
+        ]
+      },
+      {
+        "id": "circleRadii",
+        "count": 2,
+        "segments": [
+          "sOA",
+          "sOC"
+        ]
+      },
+      {
+        "id": "equalHalfChords",
+        "count": 3,
+        "segments": [
+          "sAM",
+          "sMB",
+          "sCN",
+          "sND"
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "m90",
+      "refs": [
+        "O",
+        "M",
+        "A"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "n90",
+      "refs": [
+        "O",
+        "N",
+        "C"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 450
+  }
+}

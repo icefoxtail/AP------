@@ -1,0 +1,212 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "해설 작도 — 반지름 5인 원 O, 바깥점 P에서 가장 가까운 원까지 거리8, 접선 PA",
+  "accessibilityDescription": "해설 작도 — 반지름 5인 원 O, 바깥점 P에서 가장 가까운 원까지 거리8, 접선 PA",
+  "newVisualInformation": [
+    "반지름 5인 원 O, 바깥점 P에서 가장 가까운 원까지 거리8, 접선 PA",
+    "해설 원문에 필요한 추가 길이·높이·합동 표식을 독립 검수"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q19-archive",
+      "condition": "다음 그림과 같이 점 $P$에서 반지름의 길이가 $5\\,\\mathrm{cm}$인 원 $O$까지의 최단 거리가 $8\\,\\mathrm{cm}$이다. 점 $P$에서 원 $O$에 그은 접선의 접점을 $A$라 할 때, 선분 $PA$의 길이를 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-25",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "60",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "O",
+    "A",
+    "N"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sPN",
+      "refs": [
+        "P",
+        "N"
+      ]
+    },
+    {
+      "id": "sNO",
+      "refs": [
+        "N",
+        "O"
+      ]
+    },
+    {
+      "id": "sPO",
+      "refs": [
+        "P",
+        "O"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "angles": [],
+    "expressionLabels": [
+      {
+        "id": "lenPN",
+        "ownerSegment": "sPN",
+        "text": "8"
+      },
+      {
+        "id": "lenOA",
+        "ownerSegment": "sOA",
+        "text": "5"
+      },
+      {
+        "id": "lenPA",
+        "ownerSegment": "sPA",
+        "text": "12"
+      },
+      {
+        "id": "lenPO",
+        "ownerSegment": "sPO",
+        "text": "13"
+      }
+    ],
+    "arcs": []
+  },
+  "rightAngles": [
+    {
+      "id": "a90",
+      "refs": [
+        "P",
+        "A",
+        "O"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "hiddenPointNames": [
+    "N"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 450
+  }
+}
