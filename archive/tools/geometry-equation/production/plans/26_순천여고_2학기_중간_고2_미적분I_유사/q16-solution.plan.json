@@ -1,0 +1,57 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-12",
+      "-8",
+      "1",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      5
+    ],
+    "viewport": [
+      -4,
+      5,
+      -28,
+      11
+    ],
+    "requiredPoints": [
+      {
+        "id": "T",
+        "x": -2,
+        "y": 0
+      },
+      {
+        "id": "Z",
+        "x": 3,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "3"
+      ],
+      "y": []
+    }
+  },
+  "caption": "함수 f(x)와 접선 g(x)의 차가 x=-2에서 중근, x=3에서 단순근임을 보여 주는 그래프.",
+  "accessibilityDescription": "y=f(x)-g(x)=(x+2)^2(x-3)는 x=-2에서 가로축에 접하고 x=3에서 가로축을 가로지른다.",
+  "sourceQuote": "최고차항의 계수가 $1$인 삼차함수 $f(x)$에 대하여 곡선 $",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "접선 ℓ이 x=-2에서 접하고 x=3에서 곡선과 만난다",
+      "mappedTo": "POLYNOMIAL_DIFFERENCE"
+    }
+  ],
+  "newVisualInformation": [
+    "x=-2의 중근과 x=3의 단순근"
+  ]
+}

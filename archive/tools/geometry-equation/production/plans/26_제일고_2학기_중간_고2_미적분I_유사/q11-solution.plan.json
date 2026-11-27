@@ -1,0 +1,64 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "2",
+      "-1",
+      "0",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -3,
+      3,
+      -7,
+      10
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1,
+        "y": 2
+      },
+      {
+        "id": "B",
+        "x": 1,
+        "y": 2
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "ta",
+          "slope": "2",
+          "intercept": "0"
+        },
+        {
+          "id": "tb",
+          "slope": "2",
+          "intercept": "4"
+        }
+      ]
+    }
+  },
+  "caption": "삼차함수에 접하고 기울기가 2로 같은 두 평행선.",
+  "accessibilityDescription": "A(-1,2)와 B(1,2)에서 그은 y=2x+4, y=2x가 평행하다.",
+  "sourceQuote": "곡선 $y=x^3-x+2$에 접하고, 직선 $y=2x$에 평행한 ",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "곡선 $y=x^3-x+2$에 접하고, 직선 $y=2x$에 평행한 서로",
+      "mappedTo": "ARCHIVE_SIMILAR_JS"
+    }
+  ],
+  "newVisualInformation": [
+    "A(-1,2)와 B(1,2)에서 그은 y=2x+4, y=2x가 평행하다."
+  ]
+}

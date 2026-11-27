@@ -1,0 +1,54 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "2",
+      "0",
+      "-1",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -3,
+      3,
+      -5,
+      13
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1,
+        "y": 0
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "t",
+          "slope": "5",
+          "intercept": "5"
+        }
+      ]
+    }
+  },
+  "caption": "삼차함수와 x축의 교점 A 및 접선.",
+  "accessibilityDescription": "점 A(-1,0)에서 y=x³-x²+2에 접하는 y=5x+5의 직선을 표시한다.",
+  "sourceQuote": "함수 $f(x)=x^3-x^2+2$의 그래프가 $x$축과 만나는 ",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=x^3-x^2+2$의 그래프가 $x$축과 만나는 점을",
+      "mappedTo": "ARCHIVE_SIMILAR_JS"
+    }
+  ],
+  "newVisualInformation": [
+    "점 A(-1,0)에서 y=x³-x²+2에 접하는 y=5x+5의 직선을 표시한다."
+  ]
+}
