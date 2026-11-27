@@ -61,13 +61,16 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculumApplicability": "CORE",
-    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q01.png",
+    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q1-problem.svg",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q01.png"
     ]
   ,
     "primaryMethod": "직각 표시로 빗변을 확인하고 피타고라스로 남은 변을 복원한 뒤 코사인과 탄젠트의 정의를 적용한다.",
-    "decisiveStep": "직각 표시로 빗변을 확인하고 피타고라스로 남은 변을 복원한 뒤 코사인과 탄젠트의 정의를 적용한다."
+    "decisiveStep": "직각 표시로 빗변을 확인하고 피타고라스로 남은 변을 복원한 뒤 코사인과 탄젠트의 정의를 적용한다.",
+    "imageAlt": "1번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "imageCaption": "1번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -131,13 +134,16 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculumApplicability": "CORE",
-    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q02.png",
+    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q2-problem.svg",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q02.png"
     ]
   ,
     "primaryMethod": "탄젠트 관계로 한 직각변을 정한 뒤 피타고라스로 최종 빗변을 구한다.",
-    "decisiveStep": "탄젠트 관계로 한 직각변을 정한 뒤 피타고라스로 최종 빗변을 구한다."
+    "decisiveStep": "탄젠트 관계로 한 직각변을 정한 뒤 피타고라스로 최종 빗변을 구한다.",
+    "imageAlt": "2번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "imageCaption": "2번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -197,17 +203,20 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculumApplicability": "CORE",
-    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q03.png",
+    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q3-problem.svg",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q03.png"
     ],
     "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q3-solution.svg",
-    "solutionImageAlt": "해설 그림: 공통 변 BD를 기준으로 분리한 두 직각삼각형 ABD와 BCD. 두 45° 각은 초록색으로 묶이고, 변 길이는 각 선분에 붙여 표시했다.",
-    "solutionImageCaption": "△ABD에서 AD=2√6, △BCD에서 BC=4이므로 AD×BC=8√6. 답: 8√6, ⑤.",
+    "solutionImageAlt": "3번 해설 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "solutionImageCaption": "3번 해설 도형: 주어진 변·원·각과 표식을 보존한다.",
     "solutionImageSize": "full"
   ,
     "primaryMethod": "두 연결된 직각삼각형에서30-60-90과45-45-90의 고정 변비를 직접 적용하여 공유변과 목표 두 변의 곱을 복원한다.",
-    "decisiveStep": "두 연결된 직각삼각형에서30-60-90과45-45-90의 고정 변비를 직접 적용하여 공유변과 목표 두 변의 곱을 복원한다."
+    "decisiveStep": "두 연결된 직각삼각형에서30-60-90과45-45-90의 고정 변비를 직접 적용하여 공유변과 목표 두 변의 곱을 복원한다.",
+    "imageAlt": "3번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "imageCaption": "3번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -393,13 +402,16 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculumApplicability": "CORE",
-    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q06.png",
+    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q6-problem.svg",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q06.png"
     ]
   ,
     "primaryMethod": "사분원 반지름과 차이 길이로 코사인 값을 구해 표에서 각을 역조회하고 같은 행의 사인·탄젠트로 두 길이를 정한다.",
-    "decisiveStep": "사분원 반지름과 차이 길이로 코사인 값을 구해 표에서 각을 역조회하고 같은 행의 사인·탄젠트로 두 길이를 정한다."
+    "decisiveStep": "사분원 반지름과 차이 길이로 코사인 값을 구해 표에서 각을 역조회하고 같은 행의 사인·탄젠트로 두 길이를 정한다.",
+    "imageAlt": "원본 사분원 O를 중심으로 OB=1, AC=0.17, AB=a, CD=b와 x각, 두 수선의 발 A·C를 그린다.",
+    "imageCaption": "원본 사분원 O를 중심으로 OB=1, AC=0.17, AB=a, CD=b와 x각, 두 수선의 발 A·C를 그린다.",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -463,17 +475,21 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculumApplicability": "CORE",
-    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q07.png",
+    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q7-problem.svg",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q07.png"
     ],
     "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q7-solution.svg",
-    "solutionImageAlt": "해설 그림: 정육면체 속 삼각형 EGC와 같은 이름으로 분리한 평면 직각삼각형 EGC. EG는 파랑, CG는 주황으로 나타냈다.",
-    "solutionImageCaption": "sin x/cos x=tan x=CG/EG=5/(5√2)=√2/2. 답: ①.",
+    "solutionImageAlt": "원본 정육면체에서 EG는 밑면 대각선 5√2, CG는 수직 모서리 5이므로 tan x=CG/EG이다.",
+    "solutionImageCaption": "원본 정육면체에서 EG는 밑면 대각선 5√2, CG는 수직 모서리 5이므로 tan x=CG/EG이다.",
     "solutionImageSize": "full"
   ,
     "primaryMethod": "정육면체에서 면대각선과 수직 모서리의 길이를 복원하여 탄젠트를 구하고 sin/cos를 그 값으로 읽는다.",
-    "decisiveStep": "정육면체에서 면대각선과 수직 모서리의 길이를 복원하여 탄젠트를 구하고 sin/cos를 그 값으로 읽는다."
+    "decisiveStep": "정육면체에서 면대각선과 수직 모서리의 길이를 복원하여 탄젠트를 구하고 sin/cos를 그 값으로 읽는다.",
+    "imageAlt": "밑면 EG와 수직 모서리 CG, 공간 대각선 EC가 만드는 ∠CEG=x. 보이지 않는 모서리는 엔진이 점선 처리한다.",
+    "imageCaption": "밑면 EG와 수직 모서리 CG, 공간 대각선 EC가 만드는 ∠CEG=x. 보이지 않는 모서리는 엔진이 점선 처리한다.",
+    "imageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 8,
@@ -537,17 +553,20 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculumApplicability": "CORE",
-    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q08.png",
+    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q8-problem.svg",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q08.png"
     ],
     "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q8-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼각형 OPQ와 Q에서 OP에 내린 수선 H. 두 직각삼각형 OHQ, PHQ를 색으로 구분하고 OP=8 m, OQ=12 m, ∠O=60°를 표시했다.",
-    "solutionImageCaption": "OH=6 m, QH=6√3 m, PH=2 m이므로 PQ²=2²+(6√3)²=112. 답: 4√7 m, ③.",
+    "solutionImageAlt": "8번 해설 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "solutionImageCaption": "8번 해설 도형: 주어진 변·원·각과 표식을 보존한다.",
     "solutionImageSize": "full"
   ,
     "primaryMethod": "두 변 사이 각에서 수선을 선택해 사인·코사인으로 높이와 사영을 구하고 남은 밑변과 피타고라스로 두 지점 사이 거리를 구한다.",
-    "decisiveStep": "두 변 사이 각에서 수선을 선택해 사인·코사인으로 높이와 사영을 구하고 남은 밑변과 피타고라스로 두 지점 사이 거리를 구한다."
+    "decisiveStep": "두 변 사이 각에서 수선을 선택해 사인·코사인으로 높이와 사영을 구하고 남은 밑변과 피타고라스로 두 지점 사이 거리를 구한다.",
+    "imageAlt": "8번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "imageCaption": "8번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -607,17 +626,20 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculumApplicability": "CORE",
-    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q09.png",
+    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q9-problem.svg",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q09.png"
     ],
     "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q9-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼각형 ABC에 보조선 BD를 그려 두 직각삼각형으로 나눈 그림. 파랑은 45° 두 각, 주황은 다른 삼각형을 표시한다.",
-    "solutionImageCaption": "△BCD에서 BD=90/√2=45√2 m. △ABD에서 AB=2BD/√3=30√6 m. 답: 30√6 m, ④.",
+    "solutionImageAlt": "9번 해설 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "solutionImageCaption": "9번 해설 도형: 주어진 변·원·각과 표식을 보존한다.",
     "solutionImageSize": "full"
   ,
     "primaryMethod": "삼각형 내각 합에서45°를 찾고 보조선으로45-45-90과30-60-90 두 직각삼각형을 만들어 고정 변비로 거리를 전달한다.",
-    "decisiveStep": "삼각형 내각 합에서45°를 찾고 보조선으로45-45-90과30-60-90 두 직각삼각형을 만들어 고정 변비로 거리를 전달한다."
+    "decisiveStep": "삼각형 내각 합에서45°를 찾고 보조선으로45-45-90과30-60-90 두 직각삼각형을 만들어 고정 변비로 거리를 전달한다.",
+    "imageAlt": "9번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "imageCaption": "9번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -747,17 +769,20 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculumApplicability": "CORE",
-    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q11.png",
+    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q11-problem.svg",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q11.png"
     ],
     "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q11-solution.svg",
-    "solutionImageAlt": "해설 그림: 대각선 AC와 BD의 교각은 60°이고, 두 대각선으로 나뉜 △ABC와 △ACD를 서로 다른 색으로 구분했다.",
-    "solutionImageCaption": "대각선 전체는 AC=8 cm, BD=5√3 cm이고 그 교각은 60°이다. 넓이=1/2·AC·BD·sin60°=30 cm². 답: 30 cm², ④.",
+    "solutionImageAlt": "11번 해설 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "solutionImageCaption": "11번 해설 도형: 주어진 변·원·각과 표식을 보존한다.",
     "solutionImageSize": "full"
   ,
     "primaryMethod": "대각선으로 나눈 두 삼각형의 높이를 대각선의 수직 성분으로 합쳐 대각선 곱과 끼인각 사인으로 사각형 넓이를 계산한다.",
-    "decisiveStep": "대각선으로 나눈 두 삼각형의 높이를 대각선의 수직 성분으로 합쳐 대각선 곱과 끼인각 사인으로 사각형 넓이를 계산한다."
+    "decisiveStep": "대각선으로 나눈 두 삼각형의 높이를 대각선의 수직 성분으로 합쳐 대각선 곱과 끼인각 사인으로 사각형 넓이를 계산한다.",
+    "imageAlt": "11번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "imageCaption": "11번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "imageSize": "full"
   },
   {
     "id": 12,
@@ -817,7 +842,7 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculumApplicability": "CORE",
-    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q12.png",
+    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q12-problem.svg",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q12.png"
     ],
@@ -827,7 +852,10 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "primaryMethod": "정사각형의 대칭축과 이등변 조건으로 각을 정하고 사인 넓이식에서 두 같은 변을 역산한 뒤 코사인으로 정사각형 한 변을 얻는다.",
-    "decisiveStep": "정사각형의 대칭축과 이등변 조건으로 각을 정하고 사인 넓이식에서 두 같은 변을 역산한 뒤 코사인으로 정사각형 한 변을 얻는다."
+    "decisiveStep": "정사각형의 대칭축과 이등변 조건으로 각을 정하고 사인 넓이식에서 두 같은 변을 역산한 뒤 코사인으로 정사각형 한 변을 얻는다.",
+    "imageAlt": "12번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "imageCaption": "12번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "imageSize": "full"
   },
   {
     "id": 13,
@@ -887,17 +915,20 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculumApplicability": "CORE",
-    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q13.png",
+    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q13-problem.svg",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q13.png"
     ],
     "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q13-solution.svg",
-    "solutionImageAlt": "해설 그림: 원의 세 현에 내린 중심 수선은 파랑 한 눈금으로 같다. 수선이 각 현을 이등분하며 같은 주황 두 눈금의 여섯 반현 중 AD는 3 cm이다.",
-    "solutionImageCaption": "중심에서 같은 거리의 현 세 개는 길이가 같고, 각 수선은 현을 반으로 나눈다. AD=3 cm이므로 세 변은 각각 6 cm, 둘레는 18 cm이다. 정답은 ②이다.",
+    "solutionImageAlt": "13번 해설 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "solutionImageCaption": "13번 해설 도형: 주어진 변·원·각과 표식을 보존한다.",
     "solutionImageSize": "full"
   ,
     "primaryMethod": "중심에서 세 현에 이르는 거리가 같아 세 현이 같음을 정하고 한 현의 중점 조건으로 변을 복원하여 둘레를 구한다.",
-    "decisiveStep": "중심에서 세 현에 이르는 거리가 같아 세 현이 같음을 정하고 한 현의 중점 조건으로 변을 복원하여 둘레를 구한다."
+    "decisiveStep": "중심에서 세 현에 이르는 거리가 같아 세 현이 같음을 정하고 한 현의 중점 조건으로 변을 복원하여 둘레를 구한다.",
+    "imageAlt": "13번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "imageCaption": "13번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "imageSize": "full"
   },
   {
     "id": 14,
@@ -1027,17 +1058,20 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculumApplicability": "CORE",
-    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q15.png",
+    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q15-problem.svg",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q15.png"
     ],
     "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q15-solution.svg",
-    "solutionImageAlt": "해설 그림: 중심 O에서 내린 같은 두 수선 OM과 ON은 파랑 한 눈금이며 두 수선 사이 보라 각은 110도이다. 주황 호 AB가 원주각 ACB와 중심각 AOB의 공통 호이다.",
-    "solutionImageCaption": "같은 현 AB와 BC에 대응하는 중심각은 같다. OM과 ON이 각 중심각을 반으로 나누므로 ∠AOB=∠MON=110°이다. 같은 호 AB를 보는 ∠ACB는 55°이다. 정답은 ③이다.",
+    "solutionImageAlt": "15번 해설 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "solutionImageCaption": "15번 해설 도형: 주어진 변·원·각과 표식을 보존한다.",
     "solutionImageSize": "full"
   ,
     "primaryMethod": "같은 중심거리의 두 현과 중심각이 같음을 이용하고 수선의 각이등분으로 주어진 각을 중심각에 대응시킨 뒤 원주각을 구한다.",
-    "decisiveStep": "같은 중심거리의 두 현과 중심각이 같음을 이용하고 수선의 각이등분으로 주어진 각을 중심각에 대응시킨 뒤 원주각을 구한다."
+    "decisiveStep": "같은 중심거리의 두 현과 중심각이 같음을 이용하고 수선의 각이등분으로 주어진 각을 중심각에 대응시킨 뒤 원주각을 구한다.",
+    "imageAlt": "15번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "imageCaption": "15번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "imageSize": "full"
   },
   {
     "id": 16,
@@ -1097,7 +1131,7 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculumApplicability": "CORE",
-    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q16.png",
+    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q16-problem.svg",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q16.png"
     ],
@@ -1107,7 +1141,10 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "primaryMethod": "접힌 원호가 원래 중심을 지난다는 조건을 반사된 중심 간 거리로 옮겨 중심과 접는 현의 거리를 정하고 반현에 피타고라스를 적용한다.",
-    "decisiveStep": "접힌 원호가 원래 중심을 지난다는 조건을 반사된 중심 간 거리로 옮겨 중심과 접는 현의 거리를 정하고 반현에 피타고라스를 적용한다."
+    "decisiveStep": "접힌 원호가 원래 중심을 지난다는 조건을 반사된 중심 간 거리로 옮겨 중심과 접는 현의 거리를 정하고 반현에 피타고라스를 적용한다.",
+    "imageAlt": "현 AB를 접어 아래쪽 원호가 O를 지나는 안쪽 접힘호로 나타나며, 접힘선 AB와 중심까지의 거리 OM을 그린다.",
+    "imageCaption": "현 AB를 접어 아래쪽 원호가 O를 지나는 안쪽 접힘호로 나타나며, 접힘선 AB와 중심까지의 거리 OM을 그린다.",
+    "imageSize": "full"
   },
   {
     "id": 17,

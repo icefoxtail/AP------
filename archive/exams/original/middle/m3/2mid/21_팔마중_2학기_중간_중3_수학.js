@@ -2042,8 +2042,8 @@ window.questionBank = [
       }
     ],
     "solutionImage": "assets/images/21_팔마중_2학기_중간_중3_수학/q25-solution.svg",
-    "solutionImageAlt": "해설 그림: 중심 O에서 현 AB, AC에 내린 같은 길이의 수선 OD, OE와 ∠B=60°, ∠A=x를 나타낸다.",
-    "solutionImageCaption": "∠A=60°이다. 또 OD=2cm이면 정삼각형의 한 변은 4√3cm, 높이는 6cm이므로 넓이는 12√3cm²이다. 정답은 (1) 60°, (2) 12√3cm²이다.",
+    "solutionImageAlt": "현 AB=AC인 원주각의 관계와 OD=OE=2를 유지해 x=60°를 유도",
+    "solutionImageCaption": "현 AB=AC인 원주각의 관계와 OD=OE=2를 유지해 x=60°를 유도",
     "solutionImageSize": "full",
     "image": "assets/images/21_팔마중_2학기_중간_중3_수학/q25-problem.svg",
     "imageAlt": "원 O에 내접한 △ABC, B=60°, OD⊥AB, OE⊥AC, OD=OE=2, 구하는 꼭짓점 A의 각 x",
