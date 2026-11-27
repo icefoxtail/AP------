@@ -478,13 +478,16 @@ window.questionBank = [
     "rpmL4": "중심에서 현에 내린 수선",
     "primaryMethod": "중심 수선이 현을 이등분함을 이용해 반현에 피타고라스를 적용하고 두 배하여 전체현을 구한다.",
     "decisiveStep": "중심 수선이 현을 이등분함을 이용해 반현에 피타고라스를 적용하고 두 배하여 전체현을 구한다.",
-    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q07-student-clean.png",
+    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q7-problem.svg",
     "solutionImage": "assets/images/24_왕운중_2학기_기말_중3_수학/q7-solution.svg",
     "solutionImageAlt": "해설 그림: 반지름 10cm인 원 O의 현 AB와 중심에서 내린 수선 OM(6cm, M에서 직각). 직각삼각형 OAM이 파랑으로 칠해지고 AM=8cm, AM=BM(주황 눈금)이며 현 전체 AB는 x cm이다.",
     "solutionImageCaption": "직각삼각형 OAM에서 AM²=10²−6²=64이므로 AM=8cm이고 AM=BM이므로 x=AB=16cm (정답 ⑤)",
     "solutionImageSize": "medium"
   ,
-    "curriculum": "2015"
+    "curriculum": "2015",
+    "imageAlt": "원 O의 반지름은 10cm이고, 중심에서 현 AB까지의 수직 거리는 6cm이며 현 AB의 길이가 xcm로 표시되어 있다.",
+    "imageCaption": "원 O의 반지름은 10cm이고, 중심에서 현 AB까지의 수직 거리는 6cm이며 현 AB의 길이가 xcm로 표시되어 있다.",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -544,13 +547,16 @@ window.questionBank = [
     "rpmL4": "중심거리와 현의 길이",
     "primaryMethod": "RHS 합동으로 반현 두 개가 같음을 보인 뒤 중심의 수선이 현을 이등분함을 써 전체현의 같음을 결론내린다.",
     "decisiveStep": "RHS 합동으로 반현 두 개가 같음을 보인 뒤 중심의 수선이 현을 이등분함을 써 전체현의 같음을 결론내린다.",
-    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q08-student-clean.png",
+    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q8-problem.svg",
     "solutionImage": "assets/images/24_왕운중_2학기_기말_중3_수학/q8-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 O에서 OM⊥AB, ON⊥CD이고 OM=ON(파랑), OA=OC(초록)이며 합동인 직각삼각형 OAM, OCN(주황)과 AM=MB=CN=ND(분홍) 표시가 있는 그림.",
-    "solutionImageCaption": "△OAM≡△OCN(RHS 합동)이므로 AM=CN이다. 중심에서 현에 내린 수선은 현을 이등분하므로 AB=2AM, CD=2CN이다. 따라서 AB=CD이므로 (㉮)에는 AB=2AM, CD=2CN이므로 AB=CD가 들어간다. 정답 ③.",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "중심 O에서 현 AB, CD에 내린 수선 OM과 ON의 길이가 같고, OA와 OC는 반지름이므로 두 직각삼각형 OAM과 OCN이 합동이다.",
+    "solutionImageCaption": "중심 O에서 현 AB, CD에 내린 수선 OM과 ON의 길이가 같고, OA와 OC는 반지름이므로 두 직각삼각형 OAM과 OCN이 합동이다.",
+    "solutionImageSize": "full"
   ,
-    "curriculum": "2015"
+    "curriculum": "2015",
+    "imageAlt": "원 O의 두 현 AB와 CD에 내린 수선 OM, ON은 길이가 같고 반지름 OA, OC도 서로 같다.",
+    "imageCaption": "원 O의 두 현 AB와 CD에 내린 수선 OM, ON은 길이가 같고 반지름 OA, OC도 서로 같다.",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -616,13 +622,16 @@ window.questionBank = [
     "rpmL4": "중심에서 현에 내린 수선",
     "primaryMethod": "원의 반지름x에서 원주까지 남은5를 빼 중심거리x−5로 나타내고 직각삼각형에서 필요한 식을 세운다.",
     "decisiveStep": "원의 반지름x에서 원주까지 남은5를 빼 중심거리x−5로 나타내고 직각삼각형에서 필요한 식을 세운다.",
-    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q09-student-clean.png",
+    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q9-problem.svg",
     "solutionImage": "assets/images/24_왕운중_2학기_기말_중3_수학/q9-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 O에서 중심 O에서 현 AB에 내린 수선의 발 M, OM의 연장선이 원과 만나는 점 C가 있다. 반지름 OA, OB는 같은 색으로 x cm, AM=8cm, MC=5cm, OM=(x−5)cm인 직각삼각형 OMA이다.",
-    "solutionImageCaption": "직각삼각형 OMA에서 OA=x, AM=8, OM=OC−MC=x−5이다. 따라서 x²=8²+(x−5)²이고 정답은 ④이다.",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "원 O의 반지름 OB는 xcm, 현의 반쪽 AM은 8cm, 중심에서 현까지 OM은 (x-5)cm이다. 삼각형 OMA는 직각삼각형이다.",
+    "solutionImageCaption": "원 O의 반지름 OB는 xcm, 현의 반쪽 AM은 8cm, 중심에서 현까지 OM은 (x-5)cm이다. 삼각형 OMA는 직각삼각형이다.",
+    "solutionImageSize": "full"
   ,
-    "curriculum": "2015"
+    "curriculum": "2015",
+    "imageAlt": "중심 O에서 현 AB에 내린 수선의 발 M을 지나 원과 만나는 점 C까지의 길이는 5cm, 반현 AM은 8cm, 반지름 OB는 xcm이다.",
+    "imageCaption": "중심 O에서 현 AB에 내린 수선의 발 M을 지나 원과 만나는 점 C까지의 길이는 5cm, 반현 AM은 8cm, 반지름 OB는 xcm이다.",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -1102,13 +1111,16 @@ window.questionBank = [
     "rpmL4": "접선과 현이 이루는 각",
     "primaryMethod": "접점의 반지름과접선이 수직이라는 성질 및 두 반지름의 이등변 밑각으로 90°에서 목표각을 뺀다. 실제 해설은 원주각·접현각 정리를 사용하지 않는다.",
     "decisiveStep": "접점의 반지름과접선이 수직이라는 성질 및 두 반지름의 이등변 밑각으로 90°에서 목표각을 뺀다. 실제 해설은 원주각·접현각 정리를 사용하지 않는다.",
-    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q16-student-clean-v2.png",
+    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q16-problem.svg",
     "solutionImage": "assets/images/24_왕운중_2학기_기말_중3_수학/q16-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 O의 접선 AT에서 OA는 AT에 수직이고 OA와 OC는 반지름으로 같은 색이다. 각 COA=96도이고 점 A의 각을 오른쪽에 크게 따로 그려 각 OAC=42도, 각 CAT=x, 전체 직각을 보였다.",
-    "solutionImageCaption": "삼각형 AOC는 OA=OC인 이등변삼각형이므로 ∠OAC=(180°−96°)÷2=42°이다. OA⊥AT이므로 x=90°−42°=48°이다. 정답은 ①이다.",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "OA=OC인 이등변삼각형의 밑각 OAC는 42도이고 접선의 직각 90도에서 빼면 각 CAT는 48도이다.",
+    "solutionImageCaption": "OA=OC인 이등변삼각형의 밑각 OAC는 42도이고 접선의 직각 90도에서 빼면 각 CAT는 48도이다.",
+    "solutionImageSize": "full"
   ,
-    "curriculum": "2015"
+    "curriculum": "2015",
+    "imageAlt": "원 O의 접점 A에서 접선 AT와 현 AC가 만드는 각 x와 중심각 COA 96도가 표시되어 있다.",
+    "imageCaption": "원 O의 접점 A에서 접선 AT와 현 AC가 만드는 각 x와 중심각 COA 96도가 표시되어 있다.",
+    "imageSize": "full"
   },
   {
     "id": 17,

@@ -142,8 +142,8 @@ window.questionBank = [
   {
     "id": 4,
     "curriculum": "2015",
-    "imageSize": "tall",
-    "imageAlt": "직사각형의 가로는 10, 세로는 8이다. AP를 접는 선으로 하여 D를 BC 위 D′으로 옮겼다.",
+    "imageSize": "full",
+    "imageAlt": "가로 10, 세로 8의 직사각형에서 AP를 접는 선으로 하여 D가 D′에 겹친다. 원래 모서리 AD와 DP는 점선으로 나타낸다.",
     "level": "중",
     "category": "피타고라스 정리",
     "originalCategory": "피타고라스 정리",
@@ -173,8 +173,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_이수중_2학기_기말_중2_기출/q4-solution-visual-v2.svg",
-    "solutionImageAlt": "직사각형의 가로는 10, 세로는 8이다. AP를 접는 선으로 하여 D를 BC 위 D′으로 옮겼다. 포개지는 같은 선분을 색과 눈금으로 연결했다.",
-    "solutionImageCaption": "AD′=AD=10이고 AB=8이어서 BD′=6이다. 따라서 D′C=10−6=4이다.",
+    "solutionImageAlt": "접기를 통해 AD=AD′=10 cm이며 AB=8 cm이므로 BD′=6 cm, D′C=4 cm이다.",
+    "solutionImageCaption": "접기를 통해 AD=AD′=10 cm이며 AB=8 cm이므로 BD′=6 cm, D′C=4 cm이다.",
     "solutionImageSize": "full",
     "crossConceptKeys": [
       "CC_GEOMETRIC_FOLDING"
@@ -189,7 +189,8 @@ window.questionBank = [
     "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
     "primaryMethod": "접기의 같은 길이와 피타고라스",
     "decisiveStep": "접힌 점까지의 같은 거리를 빗변으로 잡고 직각변을 구하여 남은 선분을 뺀다.",
-    "courseKey": "M2-2"
+    "courseKey": "M2-2",
+    "imageCaption": "가로 10, 세로 8의 직사각형에서 AP를 접는 선으로 하여 D가 D′에 겹친다. 원래 모서리 AD와 DP는 점선으로 나타낸다."
   },
   {
     "id": 5,
@@ -882,7 +883,7 @@ window.questionBank = [
   {
     "id": 22,
     "imageSize": "full",
-    "imageAlt": "가로로 긴 직사각형을 둘로 이등분하였다. 왼쪽은 A, 오른쪽은 B이고 두 부분 모두 아직 칠하지 않았다.",
+    "imageAlt": "두 개의 동등한 직사각형 A와 B가 가로로 나뉘고 어느 영역도 아직 칠해지지 않았다.",
     "level": "상",
     "category": "확률",
     "originalCategory": "확률",
@@ -921,7 +922,8 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
     "solutionImageCaption": "한 번 던질 때 두 눈의 곱이 짝수일 확률은 3/4, 홀수일 확률은 1/4이다. 세 번째에 처음으로 두 부분이 모두 색칠되려면 순서가 AAB 또는 BBA이고, 그 확률은 각각 (3/4)×(3/4)×(1/4)=9/64, (1/4)×(1/4)×(3/4)=3/64이다. 두 경우를 더하면 9/64+3/64=12/64=3/16이다. 따라서 답은 3/16이다.",
     "solutionImageSize": "full",
-    "solutionImageScale": 94
+    "solutionImageScale": 94,
+    "imageCaption": "두 개의 동등한 직사각형 A와 B가 가로로 나뉘고 어느 영역도 아직 칠해지지 않았다."
   },
   {
     "id": 23,
