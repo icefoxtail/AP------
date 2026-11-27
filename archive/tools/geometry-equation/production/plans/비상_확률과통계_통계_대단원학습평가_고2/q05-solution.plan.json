@@ -1,0 +1,24 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{"coefficients": ["0", "1/5"]}, {"coefficients": ["2/3", "-2/15"]}],
+    "breakpoints": [{"x": "2", "y": "2/5"}],
+    "sourceDomain": {"kind": "INTERVAL", "range": ["0", "5"], "states": ["CLOSED", "CLOSED"]},
+    "requiredPoints": [{"id": "A", "x": "2", "y": "2/5"}, {"id": "B", "x": "1", "y": "1/5"}],
+    "regions": [{"id": "S", "upper": "f", "lower": "axis", "from": "0", "to": "1", "fill": "LIGHT", "label": "1/10"}],
+    "overlays": {"points": [{"id": "P", "curveX": "2", "unnamed": true}], "guides": [{"id": "peakGuides", "from": "P", "axis": "BOTH"}]},
+    "axisTickValues": {"x": ["1", "2", "5"], "y": ["1/5", "2/5"]},
+    "axisTitles": {"x": "x", "y": "f(x)"}
+  },
+  "caption": "원본의 (0,0), (2,a), (5,0)을 지나도록 높이 a=2/5를 구한 뒤, 0부터 b=1까지 확률밀도 아래 넓이 1/10을 표시한다.",
+  "accessibilityDescription": "0에서 2까지 증가하고 2에서 5까지 감소하는 삼각형 모양의 확률밀도함수와, 0부터 1까지의 확률 1/10에 해당하는 밑부분을 나타낸다.",
+  "sourceQuote": "전체 그래프와 x축으로 둘러싸인 넓이는",
+  "sourceConditions": [
+    {"id": "c1", "condition": "원본 그래프는 (0,0), (2,a), (5,0)을 지난다.", "mappedTo": "graphPlan.pieces,graphPlan.breakpoints,graphPlan.sourceDomain"},
+    {"id": "c2", "condition": "확률밀도함수의 전체 넓이가 1이므로 a=2/5이다.", "mappedTo": "graphPlan.breakpoints[0].y"},
+    {"id": "c3", "condition": "P(0≤X≤b)=1/10, b=1이다.", "mappedTo": "graphPlan.regions[0],graphPlan.requiredPoints[1]"},
+    {"id": "c4", "condition": "원본 꼭짓점의 가로·세로 점선 안내를 유지한다.", "mappedTo": "graphPlan.overlays.guides[0]"}
+  ],
+  "newVisualInformation": ["원본 문제 그림의 변형이 아닌 해설용 수치 확정 그래프로서 0≤x≤1의 삼각형 부분만 색칠한다."]
+}
