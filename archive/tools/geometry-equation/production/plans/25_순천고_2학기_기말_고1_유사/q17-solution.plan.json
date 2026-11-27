@@ -1,0 +1,29 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-2, 6, -2, 4],
+    "curves": [
+      {"id": "left", "kind": "SQRT", "radicand": ["1", "1"], "amplitude": "-1", "offset": "2", "domain": ["-1", "3"], "label": "y=f(x)", "color": "BLUE"},
+      {"id": "right", "kind": "SQRT", "radicand": ["1", "1"], "amplitude": "1", "offset": "-2", "domain": ["3", "6"], "hideLabel": true, "color": "BLUE"},
+      {"id": "line", "kind": "LINE", "coefficients": ["1", "-1"], "domain": ["-2", "6"], "label": "y=-x+1"}
+    ],
+    "axisTickValues": {"x": ["-1", "3"], "y": ["1", "2"]},
+    "overlays": {
+      "points": [
+        {"id": "P", "x": "-1", "y": "2"},
+        {"id": "Q", "x": "0", "y": "1"},
+        {"id": "V", "x": "3", "y": "0"}
+      ],
+      "segments": [{"id": "PQ", "from": "P", "to": "Q", "dashed": true}]
+    }
+  },
+  "pointNames": {"P": "P", "Q": "Q", "V": "V"},
+  "caption": "k의 최솟값 -1에서 직선 y=-x+1은 f(x)=|sqrt(x+1)-2|와 P(-1,2), Q(0,1)에서 만난다. 정답 -2.",
+  "accessibilityDescription": "x=3에서 최소점을 갖는 절댓값 무리함수 두 가지와 기울기 -1인 직선의 두 교점 P,Q 및 그래프 끝점·꼭짓점이 표시된다.",
+  "newVisualInformation": ["절댓값에 의해 x=3에서 연결되는 두 무리함수 가지", "경계 기울기 k=-1에서 나타나는 두 교점 (-1,2),(0,1)"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "f(x)=|sqrt(x+1)-2|는 x≤3에서 2-sqrt(x+1), x≥3에서 sqrt(x+1)-2이다.", "mappedTo": ["graphPlan.curves"]},
+    {"id": "c2", "condition": "k=-1인 직선 y=-x+1과의 교점은 P(-1,2),Q(0,1)이다.", "mappedTo": ["graphPlan.curves", "graphPlan.overlays.points"]}
+  ]
+}

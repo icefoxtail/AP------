@@ -1,0 +1,28 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {"coefficients": ["4", "1"]},
+      {"coefficients": ["7", "-4", "2"]}
+    ],
+    "breakpoints": [{"x": "1", "y": "5"}],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-3, 5],
+    "viewport": [-3, 5, -1, 17],
+    "requiredPoints": [{"id": "J", "x": 1, "y": 5}],
+    "axisTickValues": {"x": ["-1", "1"], "y": ["3", "5"]},
+    "overlays": {
+      "points": [{"id": "G", "x": "-1", "y": "3", "coordinates": true}],
+      "guides": [{"id": "hG", "from": "G", "axis": "BOTH"}]
+    }
+  },
+  "pointNames": {"J": "J", "G": "G"},
+  "caption": "왼쪽 x+4 (x<1)과 오른쪽 2x²-4x+7 (x≥1)은 (1,5)에서 연결되며 치역이 갈라진다. y=3은 왼쪽의 x=-1에서만 나오므로 g(3)=-1; 정답 5.",
+  "accessibilityDescription": "x=1을 기준으로 오른쪽 위로 증가하는 이차함수 가지와 왼쪽 직선 가지가 (1,5)에서 만나며, (-1,3)의 점선 보조선이 역함숫값을 설명한다.",
+  "newVisualInformation": ["두 조각의 치역 경계값 y=5와 꼭짓점 x=1", "역함수 g(3)=-1을 읽는 점 G(-1,3)의 수직·수평 점선"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "a=2,b=-4,c=4일 때 f는 x<1에서 x+4, x≥1에서 2x²-4x+7이다.", "mappedTo": ["graphPlan.pieces", "graphPlan.breakpoints"]},
+    {"id": "c2", "condition": "첫째 조각의 치역은 (-∞,5), 둘째는 [5,∞), y=3일 때 역함수값은 -1이다.", "mappedTo": ["graphPlan.requiredPoints", "graphPlan.overlays.points", "graphPlan.overlays.guides"]}
+  ]
+}

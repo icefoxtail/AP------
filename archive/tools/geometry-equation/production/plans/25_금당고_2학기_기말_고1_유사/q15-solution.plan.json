@@ -1,0 +1,25 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [4, 9, 4, 9],
+    "curves": [
+      {"id": "f", "kind": "Y_OF_X", "coefficients": ["30", "-10", "1"], "domain": ["5", "7"], "label": "y=f(x)", "color": "BLUE"},
+      {"id": "inv", "inverseOf": "f", "label": "y=f^-1(x)", "color": "WARM"},
+      {"id": "yx", "kind": "LINE", "coefficients": ["0", "1"], "domain": ["4", "9"], "style": "DASHED", "label": "y=x"}
+    ],
+    "axisTickValues": {"x": ["5", "6"], "y": ["5", "6"]},
+    "overlays": {
+      "points": [{"id": "P", "x": "5", "y": "5"}, {"id": "Q", "x": "6", "y": "6"}, {"id": "M", "x": "11/2", "y": "11/2"}],
+      "segments": [{"id": "PQ", "from": "P", "to": "Q", "color": "BLUE"}]
+    }
+  },
+  "pointNames": {"P": "P", "Q": "Q", "M": "M"},
+  "caption": "x≥5에서 증가하는 f와 역함수는 y=x에 대칭이다. 두 고정점은 (5,5), (6,6)이고 중점 M=(11/2,11/2). 정답 11.",
+  "accessibilityDescription": "푸른 포물선 오른쪽 가지, 주황색 역함수 곡선, 점선 y=x가 두 점 P(5,5), Q(6,6)에서 만나고 그 중앙에 M이 있다.",
+  "newVisualInformation": ["f와 역함수의 y=x 대칭을 같은 축에 표시", "두 교점 P·Q와 중점 M의 정확한 연결"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "f(x)=(x-5)^2+5 (x≥5)와 역함수는 y=x에 대칭이다.", "mappedTo": ["graphPlan.curves"]},
+    {"id": "c2", "condition": "두 교점 (5,5), (6,6)의 중점은 (11/2,11/2)이다.", "mappedTo": ["graphPlan.overlays.points", "graphPlan.overlays.segments"]}
+  ]
+}

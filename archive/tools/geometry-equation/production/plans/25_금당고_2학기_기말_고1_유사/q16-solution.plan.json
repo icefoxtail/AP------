@@ -1,0 +1,21 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-3, 6, 0, 8],
+    "curves": [
+      {"id": "g", "kind": "SQRT", "radicand": ["3", "2"], "amplitude": "1", "offset": "3", "domain": ["-3/2", "6"], "label": "y=sqrt(2x+3)+3", "color": "BLUE"},
+      {"id": "base", "kind": "LINE", "coefficients": ["3", "0"], "domain": ["-3", "6"], "style": "DASHED", "label": "y=3"}
+    ],
+    "axisTickValues": {"x": ["-3/2"], "y": ["3"]},
+    "overlays": {"points": [{"id": "S", "x": "-3/2", "y": "3", "coordinates": true}]}
+  },
+  "pointNames": {"S": "S"},
+  "caption": "a=2,b=3,c=3에서 무리함수는 y=sqrt(2x+3)+3이며 왼쪽 끝점 S=(-3/2,3). 정답 p+q=3/2.",
+  "accessibilityDescription": "점 (-3/2,3)을 시작점으로 오른쪽 위로 증가하는 무리함수와 수평 보조선 y=3이 있다.",
+  "newVisualInformation": ["원본 점근선에서 읽은 a,b,c가 무리함수의 시작점을 결정함을 표시", "진수=0인 끝점과 y=3 수평 관계"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "원본 점근선과 (0,1)에 의해 a=2,b=3,c=3이다.", "mappedTo": ["graphPlan.curves"]},
+    {"id": "c2", "condition": "y=sqrt(2x+3)+3의 끝점은 (-3/2,3)이다.", "mappedTo": ["graphPlan.overlays.points", "graphPlan.axisTickValues"]}
+  ]
+}

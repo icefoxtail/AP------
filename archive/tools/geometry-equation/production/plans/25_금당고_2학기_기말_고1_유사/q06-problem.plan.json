@@ -1,0 +1,24 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {"id": "X", "elements": ["-2", "-1", "0", "1"]},
+      {"id": "Y", "elements": ["0", "1", "2", "3"]}
+    ],
+    "arrows": [
+      {"from": {"column": 0, "element": 0}, "to": {"column": 1, "element": 1}},
+      {"from": {"column": 0, "element": 1}, "to": {"column": 1, "element": 3}},
+      {"from": {"column": 0, "element": 2}, "to": {"column": 1, "element": 0}},
+      {"from": {"column": 0, "element": 3}, "to": {"column": 1, "element": 2}}
+    ],
+    "arrowGroups": [{"name": "f", "from": "X", "to": "Y"}]
+  },
+  "caption": "원문과 같이 -2→1, -1→3, 0→0, 1→2의 네 화살표가 X에서 Y로 이어진다.",
+  "accessibilityDescription": "두 타원 X, Y 사이에 X의 원소 네 개와 Y의 원소 네 개, 그리고 각 원소를 연결하는 함수 f의 네 화살표가 표시된다. 원본과 동일한 대응이며 정답은 표시하지 않는다.",
+  "newVisualInformation": ["문제 그림의 X·Y 네 원소와 각 화살표의 1:1 대응", "무의미한 색칠 없이 양방향 추론에 필요한 네 화살표 유지"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "X={-2,-1,0,1}, Y={0,1,2,3}이다.", "mappedTo": ["diagram.columns"]},
+    {"id": "c2", "condition": "문제의 f는 -2↦1, -1↦3, 0↦0, 1↦2의 대응도이다.", "mappedTo": ["diagram.arrows", "diagram.arrowGroups"]}
+  ]
+}

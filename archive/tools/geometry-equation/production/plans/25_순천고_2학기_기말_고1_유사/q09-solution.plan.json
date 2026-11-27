@@ -1,0 +1,21 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{"coefficients": ["6", "2", "1"]}, {"coefficients": ["4", "-1"]}],
+    "breakpoints": [{"x": "-1", "y": "5"}],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-5, 4],
+    "viewport": [-5, 4, -1, 15],
+    "requiredPoints": [{"id": "J", "x": -1, "y": 5}],
+    "axisTickValues": {"x": ["-1"], "y": ["5"]}
+  },
+  "pointNames": {"J": "J"},
+  "caption": "a=1, b=5에서 x<-1의 포물선 왼쪽 가지는 치역 (5,∞), x≥-1의 직선은 (-∞,5]를 차지해 일대일대응이 된다. 경계 J(-1,5). 정답 4.",
+  "accessibilityDescription": "x=-1을 경계로 왼쪽에는 위로 뻗는 포물선 가지, 오른쪽에는 오른쪽 아래로 감소하는 직선이 점 J에서 만나며 y=5가 두 치역의 경계다.",
+  "newVisualInformation": ["경계 J(-1,5)를 중심으로 분리되는 위쪽·아래쪽 치역", "정수 a=1,b=5를 대입한 가능한 일대일대응 그림"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "최댓값을 주는 a=1,b=5에서 좌측은 (x+1)^2+5, 우측은 -x+4이다.", "mappedTo": ["graphPlan.pieces", "graphPlan.breakpoints"]},
+    {"id": "c2", "condition": "두 치역은 (5,∞)와 (-∞,5]로 겹치지 않고 실수 전체를 채운다.", "mappedTo": ["graphPlan.requiredPoints", "graphPlan.axisTickValues"]}
+  ]
+}
