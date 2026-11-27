@@ -1,0 +1,21 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-0.8, 3.5, -4.5, 2.5],
+    "curves": [
+      {"id": "f", "kind": "RATIONAL", "numerator": ["0", "-3"], "denominator": ["1", "1"], "domain": ["-4/5", "7/2"], "color": "BLUE", "label": "f(x)", "hideLabels": ["asymptotes"]},
+      {"id": "g", "kind": "RATIONAL", "numerator": ["2", "-3"], "denominator": ["1", "1"], "domain": ["-4/5", "7/2"], "color": "WARM", "label": "g(x)", "hideLabels": ["asymptotes"]}
+    ],
+    "axisTickValues": {"x": [], "y": []},
+    "overlays": {"points": [{"id": "O", "x": "0", "y": "0"}]}
+  },
+  "caption": "예: 파란 f는 k=3일 때, 주황 g는 k=5일 때 y=k/(x+1)-3이다. f는 제1사분면을 지나지 않고 g는 지난다.",
+  "accessibilityDescription": "같은 좌표평면에 k가 3일 때와 5일 때의 평행이동 유리함수 두 개를 그렸다. 원점 오른쪽에서 파란 그래프는 x축 아래, 주황 그래프는 일부 위에 있다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "평행이동한 함수 y=k/(x+1)-3", "mappedTo": "graphPlan.curves"},
+    {"id": "c2", "condition": "x>0에서 그래프가 제1사분면을 지나지 않아야 함", "mappedTo": "graphPlan.viewport,graphPlan.axisTickValues"},
+    {"id": "c3", "condition": "경계 경우 k=3과 비교 경우 k=5", "mappedTo": "graphPlan.curves[0],graphPlan.curves[1]"}
+  ],
+  "newVisualInformation": ["k=3에서는 x>0인 구간의 y가 음수이고 k=5에서는 양수 구간이 생김을 비교한다."]
+}

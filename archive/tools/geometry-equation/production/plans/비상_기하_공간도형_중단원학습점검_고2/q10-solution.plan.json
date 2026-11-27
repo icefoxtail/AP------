@@ -1,0 +1,30 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {"id":"O","at":[0,0,0],"hideName":true},{"id":"U","at":[2,0,0],"hideName":true},
+      {"id":"V","at":[1,"sqrt(3)",0],"hideName":true},{"id":"W","at":[3,"sqrt(3)",0],"hideName":true},
+      {"id":"F","at":[1,"sqrt(3)",1],"hideName":true},{"id":"G","at":[3,"sqrt(3)",1],"hideName":true},
+      {"id":"T","at":[1,0,0],"hideName":true}
+    ],
+    "planes":[{"id":"alpha","name":"\\alpha","through":["O","U","F"]},{"id":"beta","name":"\\beta","through":["O","U","V"]}],
+    "lines":[{"id":"l","intersection":["alpha","beta"]}],
+    "segments":[
+      {"from":"O","to":"U"},{"from":"U","to":"W"},{"from":"W","to":"V"},{"from":"V","to":"O"},
+      {"from":"U","to":"G"},{"from":"G","to":"F"},{"from":"F","to":"O"},
+      {"from":"V","to":"F","style":"DASHED"},{"from":"W","to":"G","style":"DASHED"},
+      {"from":"T","to":"V","style":"SOLID"},{"from":"T","to":"F","style":"SOLID"}
+    ]
+  },
+  "dims":[{"from":"O","to":"U","label":"2"},{"from":"O","to":"V","label":"2"}],
+  "marks":{"angles":[{"refs":["U","O","V"],"arcs":1,"label":"60^\\circ"},{"refs":["V","T","F"],"arcs":2,"label":"30^\\circ"}]},
+  "caption":"B의 넓이 2√3을 구한 뒤 30° 정사영의 넓이 배율 cos 30°를 적용하여 A의 넓이 4를 얻는다.",
+  "accessibilityDescription":"마름모 B의 인접한 두 변에 2가 표시되고 60도 각호가 있다. 정사영 전 도형의 윤곽은 파란 선, 대응점으로 향하는 정사영 보조선은 점선, 이면각 30도는 두 보조선 사이 각호로 표현된다.",
+  "sourceQuote":"S_B=4 sin60°=2√3, S_B=S_A cos30°, S_A=4",
+  "sourceConditions":[
+    {"id":"c1","condition":"마름모의 변 길이 2와 내각 60°","mappedTo":"dims,marks.angles[0]"},
+    {"id":"c2","condition":"이면각은 30°","mappedTo":"marks.angles[1]"},
+    {"id":"c3","condition":"B는 A의 정사영","mappedTo":"space.segments[7],space.segments[8]"}
+  ],
+  "newVisualInformation":["30도 각호가 있는 단면을 통해 사영 넓이가 cos30°배로 감소함을 보여 준다."]
+}

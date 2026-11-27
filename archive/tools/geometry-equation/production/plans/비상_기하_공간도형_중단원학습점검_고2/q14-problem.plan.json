@@ -1,0 +1,36 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {"id": "B", "at": [0,0,0]},
+      {"id": "D", "at": [5,0,0], "hideName": true, "hideDot": true},
+      {"id": "C", "at": [0,2,"2*sqrt(3)"], "hideName": true, "hideDot": true},
+      {"id": "E", "at": [0,4,0], "hideName": true, "hideDot": true},
+      {"id": "A", "at": ["4*sqrt(3)",2,"2*sqrt(3)"]}
+    ],
+    "planes": [
+      {"id": "alpha", "name": "\\alpha", "through": ["B", "C", "D"]},
+      {"id": "beta", "name": "\\beta", "through": ["B", "E", "D"]}
+    ],
+    "lines": [{"id": "l", "name": "l", "intersection": ["alpha", "beta"]}],
+    "segments": [
+      {"from": "A", "to": "B"},
+      {"from": "B", "to": "C", "style": "DASHED"},
+      {"from": "B", "to": "E", "style": "DASHED"}
+    ]
+  },
+  "marks": {"angles": [
+    {"refs": ["A", "B", "D"], "arcs": 1, "label": "30^\\circ"},
+    {"refs": ["C", "B", "E"], "arcs": 2, "label": "60^\\circ"}
+  ]},
+  "dims": [{"from": "A", "to": "B", "label": "8"}],
+  "caption": "두 평면 α·β의 각은 60°, α 위 선분 AB의 길이는 8이고 교선 l과 이루는 각은 30°다.",
+  "accessibilityDescription": "평면 알파와 베타가 교선 l을 공유하고 두 평면의 수직 단면에서 60도 각을 보인다. 알파 위 AB와 l 사이에는 30도 각호, AB에는 길이 8이 있다.",
+  "sourceQuote": "두 평면 α,β의 이면각 60°, AB와 교선이 이루는 각 30°, AB=8",
+  "sourceConditions": [
+    {"id": "c1", "condition": "α와 β는 교선 l을 중심으로 60°", "mappedTo": "space.planes,marks.angles[1]"},
+    {"id": "c2", "condition": "AB와 l은 30°", "mappedTo": "marks.angles[0]"},
+    {"id": "c3", "condition": "AB=8", "mappedTo": "dims[0]"}
+  ],
+  "newVisualInformation": ["교선에 수직인 보조방향으로 이면각 60°를 실제 각호로 표현한다. 구하는 사영 길이는 숨긴다."]
+}

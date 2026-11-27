@@ -1,0 +1,24 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [{"kind": "PRISM", "base": {"kind": "RECT", "width": 2, "depth": 2}, "height": 2, "names": "EFGHABCD",
+    "points": [
+      {"id": "M", "at": {"edge": ["B", "F"], "t": "1/2"}},
+      {"id": "M′", "at": {"edge": ["A", "E"], "t": "1/2"}}
+    ]}],
+  "segments": [
+    {"from": "M", "to": "H", "style": "SOLID", "color": "BLUE"},
+    {"from": "M", "to": "M′", "style": "DASHED", "color": "WARM"},
+    {"from": "M′", "to": "H", "style": "SOLID", "color": "WARM"}
+  ],
+  "marks": {"rightAngles": [{"at": "M′", "refs": ["M", "H"]}]},
+  "dims": [{"edge": "EF", "label": "2"}, {"from": "M", "to": "M′", "label": "2"}, {"from": "M′", "to": "H", "label": "\\sqrt{5}"}, {"from": "M", "to": "H", "label": "3"}],
+  "caption": "M의 평면 AEHD 위 정사영 M′와 H를 연결하면 MM′=2, M′H=√5, MH=3인 직각삼각형이 된다.",
+  "accessibilityDescription": "정육면체에서 M의 정사영 M′는 AE의 중점이다. 주황 수선 MM′와 평면 위 M′H, 파란 MH가 직각삼각형을 이루며 길이는 2, √5, 3이다.",
+  "sourceQuote": "MM′⊥평면 AEHD, MM′=2, M′H=√5, MH=3",
+  "sourceConditions": [
+    {"id": "c1", "condition": "M′는 AE의 중점", "mappedTo": "solids[0].points[1]"},
+    {"id": "c2", "condition": "MM′⊥M′H", "mappedTo": "marks.rightAngles"},
+    {"id": "c3", "condition": "MM′=2, M′H=√5, MH=3", "mappedTo": "dims[1],dims[2],dims[3]"}
+  ],
+  "newVisualInformation": ["보조 수선 MM′와 평면 위 사영선 M′H, 빗변 MH의 각 관계를 추가한다."]
+}

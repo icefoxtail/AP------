@@ -1,0 +1,45 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {"id": "B", "at": [0,0,0]},
+      {"id": "D", "at": [5,0,0], "hideName": true, "hideDot": true},
+      {"id": "C", "at": [0,2,"2*sqrt(3)"], "hideName": true, "hideDot": true},
+      {"id": "E", "at": [0,4,0], "hideName": true, "hideDot": true},
+      {"id": "A", "at": ["4*sqrt(3)",2,"2*sqrt(3)" ]},
+      {"id": "A′", "at": ["4*sqrt(3)",2,0]},
+      {"id": "T", "at": ["4*sqrt(3)",0,0]}
+    ],
+    "planes": [
+      {"id": "alpha", "name": "\\alpha", "through": ["B", "C", "D"]},
+      {"id": "beta", "name": "\\beta", "through": ["B", "E", "D"]}
+    ],
+    "lines": [{"id": "l", "name": "l", "intersection": ["alpha", "beta"]}],
+    "segments": [
+      {"from": "A", "to": "B"},
+      {"from": "A", "to": "A′", "style": "DASHED"},
+      {"from": "A′", "to": "B", "style": "SOLID"},
+      {"from": "B", "to": "T", "style": "DASHED"},
+      {"from": "T", "to": "A′", "style": "DASHED"},
+      {"from": "B", "to": "C", "style": "DASHED"},
+      {"from": "B", "to": "E", "style": "DASHED"}
+    ]
+  },
+  "marks": {
+    "rightAngles": [{"at": "T", "refs": ["B", "A′"]}],
+    "angles": [
+      {"refs": ["A", "B", "D"], "arcs": 1, "label": "30^\\circ"},
+      {"refs": ["C", "B", "E"], "arcs": 2, "label": "60^\\circ"}
+    ]
+  },
+  "dims": [{"from": "A", "to": "B", "label": "8"}, {"from": "A′", "to": "B", "label": "2\\sqrt{13}"}],
+  "caption": "AB의 교선 방향 성분 4√3과 이에 수직인 성분의 사영 2가 직각을 이루어 BA′=2√13이다.",
+  "accessibilityDescription": "평면 알파의 A를 베타 위 A′로 내리고, 교선 위 T와 연결해 직각삼각형 BA′T를 만들었다. 선분 AB=8, BA′=2√13, 각 30도와 이면각 60도를 표시했다.",
+  "sourceQuote": "교선 방향 성분 4√3, 수직 사영 성분 2, 전체 사영 길이 2√13",
+  "sourceConditions": [
+    {"id": "c1", "condition": "A′는 A의 β 정사영", "mappedTo": "space.points[5],space.segments[1]"},
+    {"id": "c2", "condition": "BT=4√3, TA′=2, BA′=2√13", "mappedTo": "space.points[6],space.segments[3],space.segments[4],dims[1]"},
+    {"id": "c3", "condition": "두 성분은 서로 수직", "mappedTo": "marks.rightAngles"}
+  ],
+  "newVisualInformation": ["사영점 A′와 교선 위의 분해점 T, 직각 및 실제 사영 길이를 해설에만 추가한다."]
+}

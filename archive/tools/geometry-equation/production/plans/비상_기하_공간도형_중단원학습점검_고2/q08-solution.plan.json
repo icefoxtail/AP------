@@ -1,0 +1,30 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [{"kind": "PYRAMID", "base": {"kind": "POLYGON", "points": [[0,0],[2,0],[0,2]]}, "height": 1.4142135623730951, "apex": [0,0], "names": "OBCA",
+    "points": [{"id": "H", "at": {"foot": {"from": "A", "to": ["B", "C"]}}}]
+  }],
+  "segments": [
+    {"from": "A", "to": "H", "style": "SOLID", "color": "BLUE"},
+    {"from": "O", "to": "H", "style": "AUTO", "color": "WARM"},
+    {"from": "H", "to": "B", "style": "AUTO", "role": "REF"}
+  ],
+  "dims": [
+    {"edge": "AO", "label": "\\sqrt{2}"},
+    {"edge": "OB", "label": "2"},
+    {"edge": "OC", "label": "2"},
+    {"from": "A", "to": "H", "label": "2"}
+  ],
+  "marks": {"rightAngles": [
+    {"at": "O", "refs": ["A", "H"]},
+    {"at": "H", "refs": ["A", "B"]}
+  ]},
+  "caption": "밑면 직각이등변삼각형 OBC에서 H는 BC의 중점이므로 OH=√2, OA=√2이고 AH=2다.",
+  "accessibilityDescription": "사면체에서 밑면의 보조선 OH와 수선 AH가 직각삼각형 AOH를 이룬다. OA와 OH는 √2, AH는 2로 표시했다.",
+  "sourceQuote": "삼수선의 정리에 의해 AH⊥BC, H는 BC의 중점이고 AH=2",
+  "sourceConditions": [
+    {"id": "c1", "condition": "H는 BC의 중점", "mappedTo": "solids[0].points"},
+    {"id": "c2", "condition": "OA⊥OH, AH⊥BC", "mappedTo": "marks.rightAngles"},
+    {"id": "c3", "condition": "OA=OH=√2, AH=2", "mappedTo": "dims,segments"}
+  ],
+  "newVisualInformation": ["풀이에 필요한 OH 보조선, 직각과 구한 AH의 길이를 넣는다."]
+}

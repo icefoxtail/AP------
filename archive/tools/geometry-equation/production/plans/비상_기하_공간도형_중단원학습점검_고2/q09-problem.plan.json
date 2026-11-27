@@ -1,0 +1,24 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [{"kind": "PRISM", "base": {"kind": "RECT", "width": 2, "depth": 2}, "height": 2, "names": "EFGHABCD",
+    "points": [
+      {"id": "M", "at": {"edge": ["A", "D"], "t": "1/2"}},
+      {"id": "N", "at": {"edge": ["B", "C"], "t": "1/2"}}
+    ]}],
+  "segments": [
+    {"from": "M", "to": "N", "style": "AUTO", "color": "BLUE"},
+    {"from": "N", "to": "G", "style": "SOLID", "color": "BLUE"},
+    {"from": "G", "to": "H", "style": "AUTO", "color": "BLUE"},
+    {"from": "H", "to": "M", "style": "SOLID", "color": "BLUE"}
+  ],
+  "dims": [{"edge": "EF", "label": "2"}],
+  "caption": "모서리 2인 정육면체에서 M과 N은 각각 AD, BC의 중점이고 파란 사각형 MNGH가 밑면 EFGH와 교선 GH를 공유한다.",
+  "accessibilityDescription": "정육면체의 윗면 모서리 AD와 BC 각각에 중점 M,N을 찍고 M-N-G-H 경계를 파란색으로 이었다. 두 평면의 공통 모서리는 GH다.",
+  "sourceQuote": "AD, BC의 중점을 M,N; 평면 MNGH와 평면 EFGH가 이루는 각 θ",
+  "sourceConditions": [
+    {"id": "c1", "condition": "정육면체 한 모서리 2", "mappedTo": "solids[0].base,solids[0].height,dims"},
+    {"id": "c2", "condition": "M,N은 각각 AD,BC의 중점", "mappedTo": "solids[0].points"},
+    {"id": "c3", "condition": "평면 MNGH", "mappedTo": "segments"}
+  ],
+  "newVisualInformation": ["교선 GH와 중점이 정하는 경사 사각형을 면 채움 없이 굵은 테두리로 나타낸다."]
+}

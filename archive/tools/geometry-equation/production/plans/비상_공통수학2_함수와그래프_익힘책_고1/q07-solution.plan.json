@@ -1,0 +1,23 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {"id": "X", "name": "X", "elements": ["1", "2", "3", "4"]},
+      {"id": "Y", "name": "X", "elements": ["1", "2", "3", "4"]}
+    ],
+    "arrows": [
+      {"from": {"column": 0, "element": 0}, "to": {"column": 1, "element": 0}},
+      {"from": {"column": 0, "element": 1}, "to": {"column": 1, "element": 2}},
+      {"from": {"column": 0, "element": 2}, "to": {"column": 1, "element": 1}},
+      {"from": {"column": 0, "element": 3}, "to": {"column": 1, "element": 3}}
+    ]
+  },
+  "caption": "f의 대응에서 1과 4는 고정되고 2와 3은 서로 바뀌므로 합성의 반복을 확인할 수 있다.",
+  "accessibilityDescription": "집합 X의 네 원소에서 자기 자신으로 향하는 대응을 나타낸다. 1은 1로, 2는 3으로, 3은 2로, 4는 4로 향한다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "X={1,2,3,4}", "mappedTo": "diagram.columns"},
+    {"id": "c2", "condition": "f(x)는 x^3을 5로 나눈 나머지", "mappedTo": "diagram.arrows"}
+  ],
+  "newVisualInformation": ["2와 3이 서로 교환되는 2주기 순환을 대응 화살표로 확인한다."]
+}

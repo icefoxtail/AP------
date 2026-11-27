@@ -1,0 +1,36 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {"id": "A′", "at": [0,0,0]},
+      {"id": "B′", "at": [6,0,0]},
+      {"id": "C", "at": [0,3,0], "hideName": true, "hideDot": true},
+      {"id": "A", "at": [0,0,1]},
+      {"id": "B", "at": [6,0,"1+2*sqrt(3)"]},
+      {"id": "Q", "at": [6,0,1]}
+    ],
+    "planes": [{"id": "alpha", "name": "\\alpha", "through": ["A′", "B′", "C"]}],
+    "segments": [
+      {"from": "A", "to": "B"},
+      {"from": "A′", "to": "B′"},
+      {"from": "A", "to": "A′", "style": "DASHED"},
+      {"from": "B", "to": "B′", "style": "DASHED"},
+      {"from": "A", "to": "Q", "style": "SOLID"},
+      {"from": "B", "to": "Q", "style": "SOLID"}
+    ]
+  },
+  "marks": {"rightAngles": [{"at": "Q", "refs": ["A", "B"]}], "angles": [{"refs": ["B", "A", "Q"], "arcs": 1, "label": "30^\\circ"}]},
+  "dims": [
+    {"from": "A′", "to": "B′", "label": "6"},
+    {"from": "A", "to": "B", "label": "4\\sqrt{3}"}
+  ],
+  "caption": "직각삼각형 ABQ에서 AQ=A′B′=6이고 30°에 대한 인접변이므로 AB=6/cos30°=4√3이다.",
+  "accessibilityDescription": "정사영 선분 A′B′와 평행한 AQ를 그어 직각삼각형 ABQ를 만들었다. AQ는 6, 빗변 AB는 4√3, 각 BAQ는 30도다.",
+  "sourceQuote": "A′B′=AB cos30°이고 AB=4√3",
+  "sourceConditions": [
+    {"id": "c1", "condition": "AQ∥A′B′", "mappedTo": "space.segments[1],space.segments[4]"},
+    {"id": "c2", "condition": "BQ⊥AQ", "mappedTo": "marks.rightAngles"},
+    {"id": "c3", "condition": "AQ=6, AB=4√3", "mappedTo": "dims"}
+  ],
+  "newVisualInformation": ["해설에서 사용할 직각삼각형 ABQ를 추가해 정사영 길이 공식과 구한 빗변 값을 연결한다."]
+}

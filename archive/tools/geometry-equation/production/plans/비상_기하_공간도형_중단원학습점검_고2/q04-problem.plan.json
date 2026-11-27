@@ -1,0 +1,14 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {"kind": "PRISM", "base": {"kind": "RECT", "width": 2, "depth": 2}, "height": 3, "names": "EFGHABCD"}
+  ],
+  "caption": "직육면체의 다섯 꼭짓점 A, B, C, G, H를 같은 입체 위에서 비교한다.",
+  "accessibilityDescription": "윗면 ABCD, 아랫면 EFGH인 직육면체. 문제에서 선택하는 다섯 꼭짓점 A B C G H의 공간적인 위치를 확인할 수 있다.",
+  "sourceQuote": "다섯 개의 꼭짓점 A, B, C, G, H 중 서로 다른 세 점에 의하여 결정되는 평면의 개수",
+  "sourceConditions": [
+    {"id": "c1", "condition": "직육면체 ABCD-EFGH", "mappedTo": "solids[0]"},
+    {"id": "c2", "condition": "A,B,C,G,H가 출제 대상", "mappedTo": "solids[0].names"}
+  ],
+  "newVisualInformation": ["뒤쪽 가려진 모서리는 점선으로 남기고, 같은 평면에 놓인 네 점을 공간상에서 찾도록 한다."]
+}

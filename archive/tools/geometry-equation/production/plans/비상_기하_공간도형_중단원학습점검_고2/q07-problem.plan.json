@@ -1,0 +1,30 @@
+{
+  "capability":"solid-figure-v1",
+  "unit":"m",
+  "space":{
+    "points":[
+      {"id":"A","at":[0,0,0]},
+      {"id":"B","at":[200,0,0]},
+      {"id":"C","at":[200,100,0]},
+      {"id":"P","at":[200,100,"100*sqrt(11)"]}
+    ],
+    "planes":[{"id":"ground","through":["A","B","C"]}],
+    "lines":[{"id":"road","name":"l","through":["A","B"]}],
+    "segments":[
+      {"from":"A","to":"B"},{"from":"B","to":"C"},
+      {"from":"C","to":"P"},{"from":"A","to":"P"}
+    ]
+  },
+  "marks":{"rightAngles":[{"at":"B","refs":["A","C"]},{"at":"C","refs":["B","P"]}],"angles":[{"refs":["P","A","B"],"arcs":1,"label":"60^\\circ"}]},
+  "dims":[{"from":"A","to":"B","label":"200"},{"from":"B","to":"C","label":"100"}],
+  "caption":"도로 위 학교 A에서 진입로 입구 B까지 200m, 건물 위치 C까지 진입로 100m이며, 옥상 P를 바라보는 각 PAB는 60°이다.",
+  "accessibilityDescription":"평면 위 도로 AB와 수직 진입로 BC, 지면과 수직인 건물 높이 PC, 시선 AP를 선으로 나타낸다. 길이 200m, 100m와 각 60도를 표시하고 구하는 PC의 길이는 숨긴다.",
+  "sourceQuote":"AB=200m, BC=100m, AB⊥BC, PC⊥지면, ∠PAB=60°, PC의 높이 구하기",
+  "sourceConditions":[
+    {"id":"c1","condition":"학교 A와 도로 위 B 사이 길이 200m","mappedTo":"dims[0]"},
+    {"id":"c2","condition":"진입로 BC는 도로 AB와 수직, 길이 100m","mappedTo":"dims[1],marks.rightAngles[0]"},
+    {"id":"c3","condition":"건물 PC는 지면과 수직","mappedTo":"space.planes,marks.rightAngles[1]"},
+    {"id":"c4","condition":"∠PAB=60°","mappedTo":"marks.angles[0]"}
+  ],
+  "newVisualInformation":["일러스트 배경을 없애고 도로·진입로·건물·시선의 네 선분, 두 직각 표식, 한 각호를 명시한다. 해설용 보조선 PB와 답 PC의 길이는 넣지 않는다."]
+}

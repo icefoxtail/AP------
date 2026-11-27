@@ -1,0 +1,20 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {"kind": "PRISM", "base": {"kind": "RECT", "width": 3, "depth": 2}, "height": 4, "names": "EFGHABCD"}
+  ],
+  "segments": [
+    {"from": "B", "to": "F", "style": "AUTO", "color": "BLUE"},
+    {"from": "D", "to": "H", "style": "AUTO", "color": "BLUE"},
+    {"from": "A", "to": "D", "style": "AUTO", "color": "WARM"},
+    {"from": "C", "to": "G", "style": "AUTO", "color": "WARM"}
+  ],
+  "caption": "파란 BF와 DH는 평행하고, 주황 AD와 CG는 꼬인 위치에 있다. 평면 결정 조건을 비교한다.",
+  "accessibilityDescription": "직육면체에서 두 세로 모서리 BF와 DH를 파란색으로, 서로 만나지도 평행하지도 않는 AD와 CG를 주황색으로 표시했다.",
+  "sourceQuote": "두 직선 AD, CG; 두 직선 BF, DH",
+  "sourceConditions": [
+    {"id": "c1", "condition": "BF와 DH는 서로 평행", "mappedTo": "segments[0],segments[1]"},
+    {"id": "c2", "condition": "AD와 CG는 서로 꼬인 위치", "mappedTo": "segments[2],segments[3]"}
+  ],
+  "newVisualInformation": ["해설에서 비교하는 평행 모서리 쌍과 꼬인 모서리 쌍을 실선/숨은선 규칙을 지킨 색 선분으로 구분한다."]
+}

@@ -1,0 +1,17 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {"kind": "PRISM", "base": {"kind": "REGULAR", "n": 5, "side": 2}, "height": 3, "names": "FGHIJABCDE"}
+  ],
+  "segments": [
+    {"from": "A", "to": "F", "style": "AUTO", "role": "REF"}
+  ],
+  "caption": "정오각기둥의 윗면 ABCDE, 아랫면 FGHIJ와 모서리 AF를 나타낸다.",
+  "accessibilityDescription": "정오각기둥의 윗면 A부터 E까지와 아랫면 F부터 J까지의 대응점을 그리고, 꼬인 위치를 판단할 기준 모서리 AF를 굵게 표시했다.",
+  "sourceQuote": "정오각기둥에서 모서리 AF와 꼬인 위치에 있는 모서리의 개수를 구하시오.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "정오각기둥", "mappedTo": "solids[0].base"},
+    {"id": "c2", "condition": "기준 모서리 AF", "mappedTo": "solids[0].names,segments[0]"}
+  ],
+  "newVisualInformation": ["다섯 모서리 쌍의 일대일 대응과 숨은 모서리를 점선으로 표시한다. 크기는 형태만을 나타내는 예시다."]
+}

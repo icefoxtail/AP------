@@ -1,0 +1,30 @@
+{
+  "capability":"solid-figure-v1",
+  "space":{
+    "points":[
+      {"id":"A","at":[0,0,0]},{"id":"B","at":["2*sqrt(2)",0,0]},
+      {"id":"C","at":["2*sqrt(2)","2*sqrt(2)",0]},{"id":"D","at":[0,"2*sqrt(2)",0]},
+      {"id":"P","at":[0,0,2]},{"id":"Q","at":["2*sqrt(2)",0,"2+2*sqrt(2)"]},
+      {"id":"R","at":["2*sqrt(2)","2*sqrt(2)","2+2*sqrt(2)"]},{"id":"S","at":[0,"2*sqrt(2)",2]},
+      {"id":"T","at":["2*sqrt(2)",0,2],"hideName":true,"hideDot":true}
+    ],
+    "planes":[{"id":"alpha","name":"\\alpha","through":["A","B","D"]},{"id":"beta","name":"\\beta","through":["P","Q","S"]}],
+    "segments":[
+      {"from":"A","to":"B"},{"from":"B","to":"C"},{"from":"C","to":"D"},{"from":"D","to":"A"},
+      {"from":"P","to":"Q"},{"from":"Q","to":"R"},{"from":"R","to":"S"},{"from":"S","to":"P"},
+      {"from":"A","to":"P"},{"from":"B","to":"Q"},{"from":"C","to":"R"},{"from":"D","to":"S"},
+      {"from":"P","to":"T","style":"DASHED"},{"from":"T","to":"Q","style":"DASHED"}
+    ]
+  },
+  "marks":{"angles":[{"refs":["Q","P","T"],"label":"45^\\circ"}],"rightAngles":[{"at":"T","refs":["P","Q"]}]},
+  "dims":[{"from":"A","to":"B","label":"2\\sqrt2"}],
+  "caption":"경사 단면 8√2를 밑면에 정사영하면 8이므로 정사각형의 한 변은 2√2이다.",
+  "accessibilityDescription":"잘린 직육면체의 경사진 상단 PQRS와 밑면 ABCD, 45도 각호, 투영 높이 보조 점선, 밑면 AB의 길이 2루트2가 표시된다.",
+  "sourceQuote":"S_ABCD=8√2 cos45°=8, AB=2√2",
+  "sourceConditions":[
+    {"id":"c1","condition":"단면과 밑면은 45°","mappedTo":"marks.angles"},
+    {"id":"c2","condition":"밑면은 단면의 정사영","mappedTo":"space.segments[8:12]"},
+    {"id":"c3","condition":"밑면 변 길이 2√2","mappedTo":"dims[0]"}
+  ],
+  "newVisualInformation":["45도 경사 단면의 투영 관계와 직각 보조선, 계산된 밑면 한 변의 치수를 함께 보여 준다."]
+}

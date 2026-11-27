@@ -1,0 +1,20 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {"kind": "PRISM", "base": {"kind": "RECT", "width": 2, "depth": 2}, "height": 3, "names": "EFGHABCD"}
+  ],
+  "segments": [
+    {"from": "A", "to": "B", "style": "AUTO", "color": "BLUE"},
+    {"from": "B", "to": "G", "style": "AUTO", "color": "BLUE"},
+    {"from": "G", "to": "H", "style": "AUTO", "color": "BLUE"},
+    {"from": "H", "to": "A", "style": "AUTO", "color": "BLUE"}
+  ],
+  "caption": "파란 사각형 ABGH의 네 점은 한 평면에 있으므로 이 네 점에서 만든 네 세 점 조합은 같은 평면이다.",
+  "accessibilityDescription": "직육면체 내부에 네 점 A B G H를 연결한 대각 단면의 경계선을 파란색으로 표시했다. 나머지 꼭짓점 C는 그 평면 밖이다.",
+  "sourceQuote": "A, B, G, H 네 점은 한 평면 위에 존재",
+  "sourceConditions": [
+    {"id": "c1", "condition": "ABGH는 공평면인 네 점", "mappedTo": "segments"},
+    {"id": "c2", "condition": "점 C는 평면 ABGH 밖에 있음", "mappedTo": "solids[0].names"}
+  ],
+  "newVisualInformation": ["중복으로 세는 ABGH의 네 세 점 조합을 하나의 대각단면 윤곽으로 드러낸다."]
+}
