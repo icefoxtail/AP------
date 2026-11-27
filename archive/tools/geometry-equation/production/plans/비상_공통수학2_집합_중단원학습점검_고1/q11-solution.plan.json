@@ -1,0 +1,43 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "name": "A",
+        "count": "14",
+        "countUnit": "명"
+      },
+      {
+        "id": "B",
+        "name": "B",
+        "count": "19",
+        "countUnit": "명"
+      }
+    ],
+    "universe": {
+      "name": "U",
+      "count": "30",
+      "countUnit": "명"
+    },
+    "countStyle": "n"
+  },
+  "caption": "전체 30명, A 선호 14명, B 선호 19명. 교집합 x는 3≤x≤14이고, 네 원자 영역 수는 각각 14−x, x, 19−x, x−3이다(현재 엔진은 원자 영역 안 기호식 개수 라벨 미지원).",
+  "accessibilityDescription": "전체 30명, A 선호 14명, B 선호 19명. 교집합 x는 3≤x≤14이고, 네 원자 영역 수는 각각 14−x, x, 19−x, x−3이다(현재 엔진은 원자 영역 안 기호식 개수 라벨 미지원).",
+  "sourceConditions": [
+    {
+      "id": "S11-1",
+      "condition": "n(U)=30, n(A)=14, n(B)=19",
+      "mappedTo": "diagram.universe,diagram.sets"
+    },
+    {
+      "id": "S11-2",
+      "condition": "교집합 x와 원자 영역 인원 (14−x, x, 19−x, x−3)",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "기본 바탕/원판 채움 없는 집합수 표기; 기호식 원자 영역 라벨 엔진 기능 대기"
+  ]
+}

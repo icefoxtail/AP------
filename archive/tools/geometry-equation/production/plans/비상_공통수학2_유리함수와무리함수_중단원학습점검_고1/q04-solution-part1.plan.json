@@ -1,0 +1,69 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "-1",
+      "1"
+    ],
+    "sign": -1,
+    "offset": "2",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      1,
+      9
+    ],
+    "viewport": [
+      -1,
+      10,
+      -3,
+      5
+    ],
+    "requiredPoints": [
+      {
+        "id": "E",
+        "x": 1,
+        "y": 2
+      },
+      {
+        "id": "T",
+        "x": 5,
+        "y": 0
+      }
+    ],
+    "exactCoordinates": {
+      "E": [
+        "1",
+        "2"
+      ],
+      "T": [
+        "5",
+        "0"
+      ]
+    },
+    "domainRangeLabels": true,
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "(1) 끝점 E(1,2)에서 오른쪽 아래로 감소하며 T(5,0)을 지나는 y=−√(x−1)+2의 그래프. 정의역 x≥1, 치역 y≤2.",
+  "accessibilityDescription": "(1) 끝점 E(1,2)에서 오른쪽 아래로 감소하며 T(5,0)을 지나는 y=−√(x−1)+2의 그래프. 정의역 x≥1, 치역 y≤2.",
+  "sourceConditions": [
+    {
+      "id": "R4A-1",
+      "condition": "y=−√(x−1)+2, 끝점 (1,2), 오른쪽 하향",
+      "mappedTo": "graphPlan.radicand,graphPlan.sign,graphPlan.offset,graphPlan.requiredPoints"
+    },
+    {
+      "id": "R4A-2",
+      "condition": "정의역 x≥1, 치역 y≤2",
+      "mappedTo": "graphPlan.sourceDomain,graphPlan.domainRangeLabels"
+    }
+  ],
+  "newVisualInformation": [
+    "경계점과 x축 절편의 정확한 좌표"
+  ]
+}

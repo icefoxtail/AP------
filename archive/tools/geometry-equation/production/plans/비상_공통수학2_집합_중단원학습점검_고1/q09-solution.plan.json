@@ -1,0 +1,37 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "name": "A"
+      },
+      {
+        "id": "B",
+        "name": "B"
+      }
+    ],
+    "subset": [
+      "A",
+      "B"
+    ]
+  },
+  "caption": "A∩B=A 이므로 A⊆B; A의 원을 B의 원 안에 완전히 놓아 포함관계와 여집합 역포함을 확인한다.",
+  "accessibilityDescription": "A∩B=A 이므로 A⊆B; A의 원을 B의 원 안에 완전히 놓아 포함관계와 여집합 역포함을 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "S9-1",
+      "condition": "A∩B=A ⇔ A⊆B",
+      "mappedTo": "diagram.subset"
+    },
+    {
+      "id": "S9-2",
+      "condition": "Bᶜ⊆Aᶜ; A∪B=B; (Aᶜ∪B)ᶜ=∅",
+      "mappedTo": "diagram.subset"
+    }
+  ],
+  "newVisualInformation": [
+    "불필요한 칠 없이 A⊆B를 정확히 도형으로 제시"
+  ]
+}

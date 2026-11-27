@@ -1,0 +1,84 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      5,
+      -2,
+      6
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "9",
+          "-3"
+        ],
+        "amplitude": "1",
+        "offset": "-1",
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "color": "BLUE",
+        "label": "y=sqrt(ax+b)+c"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "3"
+      ],
+      "y": [
+        "-1",
+        "2"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "E",
+          "x": "3",
+          "y": "-1",
+          "unnamed": true
+        },
+        {
+          "id": "I",
+          "x": "0",
+          "y": "2",
+          "unnamed": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "endGuide",
+          "from": "E",
+          "axis": "BOTH"
+        }
+      ]
+    }
+  },
+  "caption": "원본 문제 그림의 y=√(ax+b)+c 곡선: y절편 2, 오른쪽 끝점 (3,−1), 끝점에서 두 축까지 점선. 계수 a,b,c는 문제 그림에 밝히지 않는다.",
+  "accessibilityDescription": "원본 문제 그림의 y=√(ax+b)+c 곡선: y절편 2, 오른쪽 끝점 (3,−1), 끝점에서 두 축까지 점선. 계수 a,b,c는 문제 그림에 밝히지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "R8-1",
+      "condition": "문제 원본 곡선은 (3,−1)을 끝점으로 왼쪽 위로 뻗음",
+      "mappedTo": "graphPlan.curves[f]"
+    },
+    {
+      "id": "R8-2",
+      "condition": "(0,2)를 지나며 x=3, y=−1에 점선 보조선",
+      "mappedTo": "graphPlan.overlays.points,graphPlan.overlays.guides,graphPlan.axisTickValues"
+    },
+    {
+      "id": "R8-3",
+      "condition": "원본 식 라벨 y=√(ax+b)+c(숫자 계수 비공개)",
+      "mappedTo": "graphPlan.curves[f].label"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 PNG의 끝점·절편·점선·문자식 정보를 문제 스포일러 없이 보존"
+  ]
+}

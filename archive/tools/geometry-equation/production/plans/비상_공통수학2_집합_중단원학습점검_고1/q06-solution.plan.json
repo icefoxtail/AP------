@@ -1,0 +1,82 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MEMBERSHIP_TABLE",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      },
+      {
+        "id": "C"
+      }
+    ],
+    "elements": [
+      {
+        "text": "-2",
+        "in": [
+          "C"
+        ]
+      },
+      {
+        "text": "-1",
+        "in": [
+          "C"
+        ]
+      },
+      {
+        "text": "0",
+        "in": [
+          "A",
+          "C"
+        ]
+      },
+      {
+        "text": "1",
+        "in": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      {
+        "text": "2",
+        "in": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      {
+        "text": "3",
+        "in": [
+          "B"
+        ]
+      }
+    ]
+  },
+  "caption": "A={0,1,2}, B={1,2,3}, C={−2,−1,0,1,2}의 모든 원소 소속을 표식으로 비교하면 C−A={−2,−1}, (C∩Aᶜ)∪B={−2,−1,1,2,3}이다.",
+  "accessibilityDescription": "A={0,1,2}, B={1,2,3}, C={−2,−1,0,1,2}의 모든 원소 소속을 표식으로 비교하면 C−A={−2,−1}, (C∩Aᶜ)∪B={−2,−1,1,2,3}이다.",
+  "sourceConditions": [
+    {
+      "id": "S6-1",
+      "condition": "A={0,1,2}; B={x+1|x∈A}={1,2,3}",
+      "mappedTo": "diagram.sets,diagram.elements"
+    },
+    {
+      "id": "S6-2",
+      "condition": "C={x−y|x,y∈A}={−2,−1,0,1,2}",
+      "mappedTo": "diagram.elements"
+    },
+    {
+      "id": "S6-3",
+      "condition": "(C∩Aᶜ)∪B={−2,−1,1,2,3}",
+      "mappedTo": "diagram.elements"
+    }
+  ],
+  "newVisualInformation": [
+    "세 집합의 실제 포함관계를 6행 유한원소 소속표로 보존"
+  ]
+}
