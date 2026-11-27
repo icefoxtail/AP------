@@ -1,0 +1,22 @@
+{
+  "capability":"number-line-figure-v1",
+  "numberLine":{
+    "variable":"t",
+    "rows":[{"kind":"POINTS","label":"시각","band":false,"points":[
+      {"id":"O","name":"동생출발","value":"0","showValue":true},
+      {"id":"B","name":"형출발","value":"12","showValue":true},
+      {"id":"C","name":"만남","value":"20","showValue":true}
+    ],"spans":[
+      {"from":"O","to":"B","label":"시간차","style":"BRACE","side":"ABOVE"},
+      {"from":"B","to":"C","label":"추격","style":"ARROW","side":"BELOW"}
+    ]}]
+  },
+  "numberLineCaption":{"text":"동생의 출발을 0분으로 둔다"},
+  "caption":"동생의 선행 거리 80×12=960m를 형이 분속 120m 차이로 따라잡으므로 형의 출발 8분 뒤 만난다.",
+  "accessibilityDescription":"동생 출발 0분, 형 출발 12분, 만난 때 20분의 세 시각과 형이 출발한 후 8분의 간격을 시간축에 표시한다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"동생이 먼저 출발하고 12분 뒤 형이 출발한다.","mappedTo":["numberLine.rows","numberLine.rows.spans"]},
+    {"id":"c2","condition":"동생 80m/분, 형 200m/분으로 선행 거리 960m와 속력 차 120m/분을 계산하면 따라잡는 시간은 8분이다.","mappedTo":["caption","numberLine.rows"]}
+  ],
+  "newVisualInformation":["두 사람의 출발 시각 차이와 따라잡는 데 걸리는 시간을 구분한다."]
+}

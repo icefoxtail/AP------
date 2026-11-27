@@ -1,0 +1,68 @@
+{
+  "schema":"visual-audit.v1",
+  "exam":"AP수학학원_1학기_기말_중1_모의고사_1회",
+  "source":"archive/exams/similar/middle/m1/1final/AP수학학원_1학기_기말_중1_모의고사_1회.js",
+  "scope":{"questions":25,"axes":50,"axesReviewed":50,"planFiles":9},
+  "method":"Question, choices, original source image and solution independently inspected for each qid. All 25 solution strings are unrelated generic absolute-value-inequality boilerplate; executable drawings are reconstructed from the actual question and answer, not falsely attributed to the bad solution string.",
+  "axisCodeLegend":{
+    "EXEMPT":"Verbal or algebraic problem with no necessary SVG shape.",
+    "EXEMPT_SOURCE_ERROR":"No geometry figure needed, but stored solution prose is unrelated to the question and must be repaired before educational publication.",
+    "PLAN":"Source problem and drawn fields reviewed and full lint passed.",
+    "PLAN_SOURCE_ERROR":"Drawable solution follows the actual question/answer; stored solution prose is unrelated and still requires separate editing.",
+    "ENGINE_CAPABILITY_PENDING":"The required original multi-panel figure exceeds the production engine; original PNG retained.",
+    "ENGINE_CAPABILITY_PENDING_SOURCE_ERROR":"The figure exceeds the current engine and original solution prose is unrelated.",
+    "PRESERVED_BLANK_GRID":"The problem requires students to place their own triangle points; original unfilled grid retained, no answer leaked."
+  },
+  "axisDefaults":{"planLintShallow":"NOT_APPLICABLE","planLintFull":"NOT_APPLICABLE","DRAWN_FEATURE_PARITY":"NOT_APPLICABLE","render":"NOT_RUN","PNG":"NOT_RUN","studentScreen":"NOT_RUN","A4":"NOT_RUN"},
+  "items":[
+    {"qid":"q01","problem":"EXEMPT","solution":"EXEMPT_SOURCE_ERROR"},
+    {"qid":"q02","problem":"EXEMPT","solution":"EXEMPT_SOURCE_ERROR"},
+    {"qid":"q03","problem":"EXEMPT","solution":"EXEMPT_SOURCE_ERROR"},
+    {"qid":"q04","problem":"EXEMPT","solution":"EXEMPT_SOURCE_ERROR"},
+    {"qid":"q05","problem":"EXEMPT","solution":"EXEMPT_SOURCE_ERROR"},
+    {"qid":"q06","problem":"EXEMPT","solution":"EXEMPT_SOURCE_ERROR"},
+    {"qid":"q07","problem":"EXEMPT","solution":"EXEMPT_SOURCE_ERROR"},
+    {"qid":"q08","problem":"EXEMPT","solution":"EXEMPT_SOURCE_ERROR"},
+    {"qid":"q09","problem":"EXEMPT","solution":"EXEMPT_SOURCE_ERROR"},
+    {"qid":"q10","problem":"EXEMPT","solution":"EXEMPT_SOURCE_ERROR"},
+    {"qid":"q11","problem":"EXEMPT","solution":"EXEMPT_SOURCE_ERROR"},
+    {"qid":"q12","problem":"EXEMPT","solution":"PLAN_SOURCE_ERROR"},
+    {"qid":"q13","problem":"EXEMPT","solution":"EXEMPT_SOURCE_ERROR"},
+    {"qid":"q14","problem":"EXEMPT","solution":"PLAN_SOURCE_ERROR"},
+    {"qid":"q15","problem":"ENGINE_CAPABILITY_PENDING","solution":"ENGINE_CAPABILITY_PENDING_SOURCE_ERROR"},
+    {"qid":"q16","problem":"PLAN","solution":"PLAN_SOURCE_ERROR"},
+    {"qid":"q17","problem":"EXEMPT","solution":"PLAN_SOURCE_ERROR"},
+    {"qid":"q18","problem":"PLAN","solution":"PLAN_SOURCE_ERROR"},
+    {"qid":"q19","problem":"EXEMPT","solution":"EXEMPT_SOURCE_ERROR"},
+    {"qid":"q20","problem":"EXEMPT","solution":"PLAN_SOURCE_ERROR"},
+    {"qid":"q21","problem":"EXEMPT","solution":"EXEMPT_SOURCE_ERROR"},
+    {"qid":"q22","problem":"EXEMPT","solution":"EXEMPT_SOURCE_ERROR"},
+    {"qid":"q23","problem":"EXEMPT","solution":"EXEMPT_SOURCE_ERROR"},
+    {"qid":"q24","problem":"PRESERVED_BLANK_GRID","solution":"PLAN_SOURCE_ERROR"},
+    {"qid":"q25","problem":"EXEMPT","solution":"EXEMPT_SOURCE_ERROR"}
+  ],
+  "planAxes":{
+    "q12-solution":{"plan":"q12-solution.plan.json","capability":"number-line-figure-v1","sourceVsPlan":"EVIDENCE_DEBT","DRAWN_FEATURE_PARITY":"PASS_STATIC_FIELDS_TO_PROBLEM","planLintShallow":"PASS","planLintFull":"PASS","drawn":["brother departs 12min late","chases for 8min","meeting at 20min"],"caveat":"The original solution string is about absolute-value inequalities, not the chasing problem."},
+    "q14-solution":{"plan":"q14-solution.plan.json","capability":"construction-spike-v1","sourceVsPlan":"EVIDENCE_DEBT","DRAWN_FEATURE_PARITY":"PASS_STATIC_FIELDS_TO_PROBLEM","planLintShallow":"PASS","planLintFull":"PASS","drawn":["quadrant axes","choice point D(-2,4) in second quadrant"],"caveat":"The generic original solution string does not discuss coordinates."},
+    "q16-problem":{"plan":"q16-problem.plan.json","capability":"piecewise-polynomial-spike-v1","sourceVsPlan":"REVIEWED","DRAWN_FEATURE_PARITY":"PASS_STATIC_FIELDS","planLintShallow":"PASS","planLintFull":"PASS","drawn":["(0,0) to (1h,90km)","plateau to 2.5h","(4h,210km)","time-distance axes and ticks"],"caveat":"No solution duration text is revealed in problem plan."},
+    "q16-solution":{"plan":"q16-solution.plan.json","capability":"piecewise-polynomial-spike-v1","sourceVsPlan":"EVIDENCE_DEBT","DRAWN_FEATURE_PARITY":"PASS_STATIC_FIELDS_TO_PROBLEM","planLintShallow":"PASS","planLintFull":"PASS","drawn":["same driving and stopping segments","1.5-hour plateau duration"],"caveat":"Stored explanation is unrelated absolute-value-inequality text."},
+    "q17-solution":{"plan":"q17-solution.plan.json","capability":"multi-curve-figure-v1","sourceVsPlan":"EVIDENCE_DEBT","DRAWN_FEATURE_PARITY":"PASS_STATIC_FIELDS_TO_PROBLEM","planLintShallow":"PASS","planLintFull":"PASS","drawn":["y=-5x through (-3,15) and (2,-10)"],"caveat":"Stored explanation is unrelated."},
+    "q18-problem":{"plan":"q18-problem.plan.json","capability":"multi-curve-figure-v1","sourceVsPlan":"REVIEWED","DRAWN_FEATURE_PARITY":"PASS_STATIC_FIELDS","planLintShallow":"PASS","planLintFull":"PASS","drawn":["symbolic y=ax straight line through (1,-2)","guide to b on negative x-axis","point (b,4)"],"caveat":"Numeric slope and b are not shown in problem labels."},
+    "q18-solution":{"plan":"q18-solution.plan.json","capability":"multi-curve-figure-v1","sourceVsPlan":"EVIDENCE_DEBT","DRAWN_FEATURE_PARITY":"PASS_STATIC_FIELDS_TO_PROBLEM","planLintShallow":"PASS","planLintFull":"PASS","drawn":["slope a=-2","b=-2","a+b=-4"],"caveat":"Stored explanation is unrelated."},
+    "q20-solution":{"plan":"q20-solution.plan.json","capability":"multi-curve-figure-v1","sourceVsPlan":"EVIDENCE_DEBT","DRAWN_FEATURE_PARITY":"PASS_STATIC_FIELDS_TO_PROBLEM","planLintShallow":"PASS","planLintFull":"PASS","drawn":["y=-36/x hyperbola","(-9,4)","(3,-12)"],"caveat":"Stored explanation is unrelated."},
+    "q24-solution":{"plan":"q24-solution.plan.json","capability":"construction-spike-v1","sourceVsPlan":"EVIDENCE_DEBT","DRAWN_FEATURE_PARITY":"PASS_STATIC_FIELDS_TO_PROBLEM","planLintShallow":"PASS","planLintFull":"PASS","drawn":["triangle A(1,2),B(-2,0),C(1,-4)","dashed perpendicular height","right-angle marker","base 6 and height 3","area 9"],"caveat":"Stored explanation is unrelated; this explanatory triangle is based on the question only."}
+  },
+  "pendingAxes":{
+    "q15-problem":{"sourceVsPlan":"REVIEWED","DRAWN_FEATURE_PARITY":"ENGINE_CAPABILITY_PENDING","originalImage":"assets/images/AP수학학원_1학기_기말_중1_모의고사_1회/q15.png","needed":["Five numbered distinct three-dimensional vessel silhouettes, not the current 1-to-3-pair container profile limit","original rising-rate vs cross-section relationship and drawing line fidelity","engine support for any curved or stepped source walls absent from frustum/cylinder profile"],"fallback":"PRESERVE_PNG"},
+    "q15-solution":{"sourceVsPlan":"EVIDENCE_DEBT","DRAWN_FEATURE_PARITY":"ENGINE_CAPABILITY_PENDING","originalImage":"assets/images/AP수학학원_1학기_기말_중1_모의고사_1회/q15.png","needed":["Same five-vessel comparison","highlight correct choice ⑤ only in solution","first repair generic unrelated JS solution"],"fallback":"PRESERVE_PNG"},
+    "q24-problem":{"sourceVsPlan":"REVIEWED","DRAWN_FEATURE_PARITY":"PRESERVED_EXISTING_BLANK_GRID","originalImage":"assets/images/AP수학학원_1학기_기말_중1_모의고사_1회/q24.png","needed":["Do not place answer triangle on question's blank coordinate grid"],"fallback":"PRESERVE_PNG"}
+  },
+  "sourceContentBlocker":{
+    "affectedQids":"q01-q25",
+    "severity":"CONTENT_CORRECTION_PENDING",
+    "observed":"Every stored solution is the same generic instruction to divide an absolute-value inequality into intervals, even when the question is algebra arithmetic, proportionality, graph reading, or written geometry.",
+    "releaseRule":"No student-facing statement that problem and solution sources are 1:1 matched until these 25 original JS solution strings are corrected in the separate content lane."
+  },
+  "globalEngineGap":"Root white SVG canvas rectangle is currently composer-generated and cannot be suppressed by a plan field. All 9 plans omit region and shape fills. Render/PNG/student-screen/A4 remain NOT_RUN under the plan-only workflow.",
+  "summary":{"totalAxes":50,"planAxes":9,"shallowPASS":9,"fullPASS":9,"exemptAxes":38,"pendingWithoutPlan":3,"sourceSolutionErrors":25,"originalPNGPreserved":3}
+}

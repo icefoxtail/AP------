@@ -1,0 +1,22 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family":"piecewise-polynomial",
+    "pieces":[{"coefficients":["0","90"]},{"coefficients":["90"]},{"coefficients":["-110","80"]}],
+    "breakpoints":[{"x":"1","y":"90"},{"x":"5/2","y":"90"}],
+    "sourceDomain":{"kind":"INTERVAL","range":["0","4"],"states":["CLOSED","CLOSED"]},
+    "domain":[0,4],"viewport":[0,4,0,240],
+    "requiredPoints":[{"id":"O","x":0,"y":0},{"id":"A","x":1,"y":90},{"id":"B","x":2.5,"y":90},{"id":"C","x":4,"y":210}],
+    "exactCoordinates":{"B":["5/2","90"]},
+    "axisTickValues":{"x":["1","2","5/2","3","4"],"y":["90","210"]},
+    "axisTitles":{"x":"시간(h)","y":"거리(km)"},
+    "axisScale":{"x":1,"y":"1/60"}
+  },
+  "caption":"이동 거리가 90km에서 일정한 시간은 1시간부터 2.5시간까지이므로 정차 시간은 1시간 30분이다.",
+  "accessibilityDescription":"1시간의 점 A와 2시간 30분의 점 B는 같은 높이인 90km에 놓인다. 두 점 사이 수평 구간이 휴게소 정차 시간이다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"90km에서 정차한 시작 시각 1시간과 끝 시각 2.5시간을 풀이에서 읽는다.","mappedTo":["graphPlan.breakpoints","graphPlan.axisTickValues"]},
+    {"id":"c2","condition":"정차시간은 2.5-1=1.5시간, 즉 1시간 30분이다.","mappedTo":"caption"}
+  ],
+  "newVisualInformation":["수평 정차 구간 양 끝의 시각을 눈금과 꺾임점으로 확인한다."]
+}
