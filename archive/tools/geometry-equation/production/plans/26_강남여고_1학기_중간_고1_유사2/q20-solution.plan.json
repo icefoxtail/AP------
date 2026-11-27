@@ -1,0 +1,72 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "25600",
+      "1600",
+      "-200"
+    ],
+    "domain": [
+      -8,
+      16
+    ],
+    "viewport": [
+      -8,
+      16,
+      0,
+      30000
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        -8,
+        16
+      ]
+    },
+    "applicationAxes": true,
+    "axisVariable": "x",
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 4,
+        "y": 28800
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        5,
+        10,
+        15
+      ],
+      "y": [
+        10000,
+        20000,
+        30000
+      ]
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "가격을 100원씩 올리는 횟수 x가 4일 때 하루 이익이 28800원으로 최대가 된다.",
+  "accessibilityDescription": "가격을 100원씩 올리는 횟수 x가 4일 때 하루 이익이 28800원으로 최대가 된다.",
+  "sourceConditions": [
+    {
+      "id": "profit-model",
+      "condition": "판매가격 5000+100x원, 수요 32-2x개, 매입가 4200원에서 이익 I(x)=-200x²+1600x+25600이다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.pieces"
+      ]
+    },
+    {
+      "id": "vertex",
+      "condition": "완전제곱 I(x)=-200(x-4)²+28800에서 최댓값은 x=4, 28800원이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "가격을 올리는 횟수와 하루 전체 이익의 관계를 포물선으로 보이며 꼭짓점에서 최대를 얻음을 보여 준다."
+  ]
+}
