@@ -466,8 +466,8 @@ window.examData = {
     "answer": "①",
     "solution": "평행선이 세 개이므로 두 직선 위에서 평행선 사이의 선분의 길이의 비가 같다.\n왼쪽 직선에서 $l$과 $m$ 사이는 $4\\text{ cm}$이고 $l$과 $n$ 사이는 $12\\text{ cm}$이므로 $m$과 $n$ 사이는 $12-4=8\\text{ cm}$이다.\n$4:8=6:x$\n$4x=48$\n$x=12\\text{ cm}$이다.\n정답은 ①이다.",
     "solutionImage": "assets/images/20_연향중_2학기_기말_중2_수학/q13-solution.svg",
-    "solutionImageAlt": "해설 그림: 첫 그림은 평행한 세 직선 l, m, n과 이를 가로지르는 두 직선으로, 왼쪽 직선에서 l과 m 사이가 4, l과 n 사이가 12이고 오른쪽 직선에서 l과 m 사이가 6, m과 n 사이가 x이다. 둘째 그림은 같은 모양에서 왼쪽 직선의 m과 n 사이를 8로 나타내고, l과 m 사이의 선분 4와 6은 파랑, m과 n 사이의 선분 8과 x는 주황으로 대응시킨 것이다.",
-    "solutionImageCaption": "왼쪽 직선에서 l과 n 사이가 12이고 l과 m 사이가 4이므로 m과 n 사이는 12에서 4를 뺀 8이다. 평행선 사이의 선분의 길이의 비는 같으므로 4 대 8이 6 대 x이다. 4x는 48이므로 x를 구할 수 있다. 정답은 ① 12 cm이다.",
+    "solutionImageAlt": "평행선 사이에서 두 직선이 잘린 선분의 길이의 비는 같다. l과 m 사이(파랑)와 m과 n 사이(주황)의 비가 두 직선에서 같다.",
+    "solutionImageCaption": "평행선 사이에서 두 직선이 잘린 선분의 길이의 비는 같다. l과 m 사이(파랑)와 m과 n 사이(주황)의 비가 두 직선에서 같다.",
     "solutionImageSize": "full",
     "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
     "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
@@ -488,7 +488,8 @@ window.examData = {
     "image": "assets/images/20_연향중_2학기_기말_중2_수학/q13-problem.svg",
     "imageAlt": "2020 연향중 중2 2학기 기말 13번 문제 조건도",
     "imageCaption": "2020 연향중 중2 2학기 기말 13번 문제 조건도",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 14,
@@ -614,8 +615,8 @@ window.examData = {
     "answer": "③",
     "solution": "$\\triangle ABC$의 넓이를 $S$라 하자.\n$G$는 $\\triangle ABC$의 무게중심이므로 $\\triangle GBC=\\dfrac{1}{3}S$이고, $D$는 $\\overline{BC}$의 중점이므로 $\\triangle GBD=\\dfrac{1}{2}\\triangle GBC=\\dfrac{1}{6}S$이다.\n$G'$은 $\\triangle GBC$의 무게중심이므로 $\\overline{G'D}=\\dfrac{1}{3}\\overline{GD}$이고, 높이가 같은 삼각형이므로 $\\triangle G'BD=\\dfrac{1}{3}\\triangle GBD=\\dfrac{1}{18}S$이다.\n$\\dfrac{1}{18}S=7$이므로 $S=126\\text{ cm}^2$이다.\n정답은 ③이다.",
     "solutionImage": "assets/images/20_연향중_2학기_기말_중2_수학/q17-solution.svg",
-    "solutionImageAlt": "해설 그림: 첫 그림은 삼각형 ABC의 무게중심 G, 삼각형 GBC의 무게중심 G′, BC의 중점 D와 색칠한 삼각형 G′BD(7 cm²)를 나타낸다. 둘째 그림은 삼각형 ABC를 G에서 세 꼭짓점으로 이은 세 삼각형을 같은 파랑으로 칠한 것이다. 셋째 그림은 BD와 DC가 같아 삼각형 GBD와 GDC를 같은 초록으로 칠한 것이다. 넷째 그림은 삼각형 GBD를 G′과 GG′의 중점 M으로 나눈 같은 넓이의 세 삼각형(주황)이며 그중 하나가 삼각형 G′BD이다.",
-    "solutionImageCaption": "삼각형 ABC의 넓이를 S라 하면 G가 무게중심이므로 삼각형 GBC는 S의 3분의 1이다. D가 BC의 중점이므로 삼각형 GBD는 GBC의 2분의 1인 S의 6분의 1이다. G′이 삼각형 GBC의 무게중심이므로 G′D는 GD의 3분의 1이고, 높이가 같으므로 삼각형 G′BD는 GBD의 3분의 1인 S의 18분의 1이다. 이것이 7 cm²이다. 정답은 ③ 126 cm²이다.",
+    "solutionImageAlt": "G가 무게중심이므로 삼각형 GBC는 삼각형 ABC의 3분의 1, D가 중점이므로 삼각형 GBD는 GBC의 2분의 1, G′이 GD를 2 대 1로 나누므로 삼각형 G′BD는 GBD의 3분의 1이다.",
+    "solutionImageCaption": "G가 무게중심이므로 삼각형 GBC는 삼각형 ABC의 3분의 1, D가 중점이므로 삼각형 GBD는 GBC의 2분의 1, G′이 GD를 2 대 1로 나누므로 삼각형 G′BD는 GBD의 3분의 1이다.",
     "solutionImageSize": "full",
     "templateKey": "",
     "problemTypeKey": "PT_COORD_CENTROID",
@@ -636,7 +637,8 @@ window.examData = {
     "image": "assets/images/20_연향중_2학기_기말_중2_수학/q17-problem.svg",
     "imageAlt": "2020 연향중 중2 2학기 기말 17번 문제 조건도",
     "imageCaption": "2020 연향중 중2 2학기 기말 17번 문제 조건도",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 18,

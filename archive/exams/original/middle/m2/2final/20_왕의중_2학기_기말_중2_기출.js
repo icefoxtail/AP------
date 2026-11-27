@@ -17,7 +17,7 @@ window.questionBank = [
       "$80^\\circ$",
       "$84^\\circ$"
     ],
-    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q01.png",
+    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q1-problem.svg",
     "level": "하",
     "category": "사각형의 성질",
     "originalCategory": "사각형의 성질",
@@ -62,7 +62,10 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "imageAlt": "2020 왕의중 중2 2학기 기말 1번 문제 조건도",
+    "imageCaption": "2020 왕의중 중2 2학기 기말 1번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -142,7 +145,7 @@ window.questionBank = [
       "$\\overline{OA}=\\overline{OC},\\;\\overline{OB}=\\overline{OD}$",
       "$\\overline{AB}=\\overline{CD},\\;\\overline{AB}\\parallel\\overline{DC}$"
     ],
-    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q03.png",
+    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q3-problem.svg",
     "level": "중",
     "category": "사각형의 성질",
     "originalCategory": "사각형의 성질",
@@ -187,7 +190,10 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "imageAlt": "2020 왕의중 중2 2학기 기말 3번 문제 조건도",
+    "imageCaption": "2020 왕의중 중2 2학기 기말 3번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -205,7 +211,7 @@ window.questionBank = [
       "$\\angle ABD=\\angle BCA$",
       "$\\angle BDC+\\angle DBC=90^\\circ$"
     ],
-    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q04.png",
+    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q4-problem.svg",
     "level": "상",
     "category": "사각형의 성질",
     "originalCategory": "사각형의 성질",
@@ -252,7 +258,10 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "imageAlt": "2020 왕의중 중2 2학기 기말 4번 문제 조건도",
+    "imageCaption": "2020 왕의중 중2 2학기 기말 4번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -568,7 +577,7 @@ window.questionBank = [
       "$\\frac{33}{7}$",
       "$\\frac{36}{7}$"
     ],
-    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q10.png",
+    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q10-problem.svg",
     "level": "상",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -613,7 +622,10 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "imageAlt": "2020 왕의중 중2 2학기 기말 10번 문제 조건도",
+    "imageCaption": "2020 왕의중 중2 2학기 기말 10번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 11,
@@ -631,7 +643,7 @@ window.questionBank = [
       "16",
       "18"
     ],
-    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q11.png",
+    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q11-problem.svg",
     "level": "중",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -672,7 +684,10 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "imageAlt": "2020 왕의중 중2 2학기 기말 11번 문제 조건도",
+    "imageCaption": "2020 왕의중 중2 2학기 기말 11번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 12,
@@ -690,7 +705,7 @@ window.questionBank = [
       "$\\angle CEF=\\angle BDE$",
       "$\\angle BAC=\\angle BDE$"
     ],
-    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q12.png",
+    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q12-problem.svg",
     "level": "중",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -731,7 +746,10 @@ window.questionBank = [
       "l4": "평행선 판정"
     },
     "primaryMethod": "같은 분할비에서 평행을 판정",
-    "decisiveStep": "AD:AB=AF:AC=3:7을 확인하여 DF∥BC를 얻고 동위각 상등을 판단한다."
+    "decisiveStep": "AD:AB=AF:AC=3:7을 확인하여 DF∥BC를 얻고 동위각 상등을 판단한다.",
+    "imageAlt": "2020 왕의중 중2 2학기 기말 12번 문제 조건도",
+    "imageCaption": "2020 왕의중 중2 2학기 기말 12번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 13,
@@ -749,7 +767,7 @@ window.questionBank = [
       "4",
       "5"
     ],
-    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q13.png",
+    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q13-problem.svg",
     "level": "중",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -794,7 +812,10 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "imageAlt": "2020 왕의중 중2 2학기 기말 13번 문제 조건도",
+    "imageCaption": "2020 왕의중 중2 2학기 기말 13번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 14,
@@ -812,7 +833,7 @@ window.questionBank = [
       "8 cm",
       "9 cm"
     ],
-    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q14.png",
+    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q14-problem.svg",
     "level": "상",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -859,7 +880,10 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "imageAlt": "2020 왕의중 중2 2학기 기말 14번 문제 조건도",
+    "imageCaption": "2020 왕의중 중2 2학기 기말 14번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 15,
@@ -877,7 +901,7 @@ window.questionBank = [
       "$40\\text{ cm}^{2}$",
       "$48\\text{ cm}^{2}$"
     ],
-    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q15.png",
+    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q15-problem.svg",
     "level": "상",
     "category": "삼각형의 성질",
     "originalCategory": "삼각형의 성질",
@@ -903,8 +927,8 @@ window.questionBank = [
     "problemTypeKey": "PT_COORD_CENTROID",
     "templateKey": "",
     "solutionImage": "assets/images/20_왕의중_2학기_기말_중2_기출/q15-solution.svg",
-    "solutionImageAlt": "해설 그림: 왼쪽 위에는 삼각형 ABC의 무게중심 G, 중점 M, BG의 중점 N이 있고 BN과 NG에 같은 길이 표시가 있으며 삼각형 GNM이 주황색으로 칠해져 넓이 4 cm²가 적혀 있다. 나머지 세 그림은 삼각형 ABM을 파란색으로 칠한 그림, 삼각형 BGM을 주황색으로 칠한 그림, 삼각형 BNM과 삼각형 GNM을 넓이 4 cm²씩 주황색으로 칠한 그림이다.",
-    "solutionImageCaption": "삼각형 ABC의 넓이를 S라 하자. M이 BC의 중점이므로 삼각형 ABM은 S의 2분의 1이다. G는 중선 AM을 2대 1로 나누므로 삼각형 BGM은 삼각형 ABM의 3분의 1, 곧 S의 6분의 1이다. N이 BG의 중점이므로 삼각형 GNM은 삼각형 BGM의 2분의 1, 곧 S의 12분의 1이다. 삼각형 GNM이 4이므로 S는 4의 12배이다. 정답은 ⑤이다.",
+    "solutionImageAlt": "중점과 무게중심으로 삼각형을 나누어 넓이를 비교한다. M이 BC의 중점이라 삼각형 ABM은 삼각형 ABC의 2분의 1이고, G가 중선 AM을 2대 1로 나누므로 삼각형 BGM은 삼각형 ABM의 3분의 1이다. N이 BG의 중점이라 삼각형 BNM과 삼각형 GNM의 넓이는 같다(주황색).",
+    "solutionImageCaption": "중점과 무게중심으로 삼각형을 나누어 넓이를 비교한다. M이 BC의 중점이라 삼각형 ABM은 삼각형 ABC의 2분의 1이고, G가 중선 AM을 2대 1로 나누므로 삼각형 BGM은 삼각형 ABM의 3분의 1이다. N이 BG의 중점이라 삼각형 BNM과 삼각형 GNM의 넓이는 같다(주황색).",
     "solutionImageSize": "full",
     "curriculum": "2015",
     "rpmL1": "도형의 닮음과 피타고라스 정리",
@@ -918,7 +942,11 @@ window.questionBank = [
       "l4": "넓이 분할"
     },
     "primaryMethod": "무게중심과 중점의 연속 넓이분할",
-    "decisiveStep": "중선의 밑변반분과 무게중심 높이1/3, BG의중점에 따른1/2를 연결한다."
+    "decisiveStep": "중선의 밑변반분과 무게중심 높이1/3, BG의중점에 따른1/2를 연결한다.",
+    "imageAlt": "2020 왕의중 중2 2학기 기말 15번 문제 조건도",
+    "imageCaption": "2020 왕의중 중2 2학기 기말 15번 문제 조건도",
+    "imageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 16,
@@ -994,7 +1022,7 @@ window.questionBank = [
       "$25\\text{ cm}^{2}$",
       "$36\\text{ cm}^{2}$"
     ],
-    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q17.png",
+    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q17-problem.svg",
     "level": "중",
     "category": "사각형의 성질",
     "originalCategory": "사각형의 성질",
@@ -1025,7 +1053,10 @@ window.questionBank = [
     "solutionImageSize": "full",
     "curriculum": "2015",
     "primaryMethod": "정사각형에서 네 직각삼각형 넓이 빼기",
-    "decisiveStep": "외부정사각형 넓이에서 직각삼각형 네개의 넓이를 제외한다."
+    "decisiveStep": "외부정사각형 넓이에서 직각삼각형 네개의 넓이를 제외한다.",
+    "imageAlt": "2020 왕의중 중2 2학기 기말 17번 문제 조건도",
+    "imageCaption": "2020 왕의중 중2 2학기 기말 17번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 18,
@@ -1043,7 +1074,7 @@ window.questionBank = [
       "6 cm",
       "7 cm"
     ],
-    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q18.png",
+    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q18-problem.svg",
     "level": "중",
     "category": "피타고라스 정리",
     "originalCategory": "피타고라스 정리",
@@ -1088,7 +1119,10 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "imageAlt": "2020 왕의중 중2 2학기 기말 18번 문제 조건도",
+    "imageCaption": "2020 왕의중 중2 2학기 기말 18번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 19,
@@ -1171,7 +1205,7 @@ window.questionBank = [
       "$\\frac{44}{5}$",
       "$\\frac{48}{5}$"
     ],
-    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q20.png",
+    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q20-problem.svg",
     "level": "중",
     "category": "피타고라스 정리",
     "originalCategory": "피타고라스 정리",
@@ -1218,7 +1252,10 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "imageAlt": "2020 왕의중 중2 2학기 기말 20번 문제 조건도",
+    "imageCaption": "2020 왕의중 중2 2학기 기말 20번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 21,
@@ -1272,7 +1309,7 @@ window.questionBank = [
     ],
     "content": "서술형2. 아래 그림에서 두 사면체는 서로 닮은 도형이다. $\\triangle BCD$와 $\\triangle FGH$가 대응하는 면일 때, $xy$의 값을 구하시오. << 풀이 과정과 정답을 명확하게 쓰기 >> [5점]",
     "choices": [],
-    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q22.png",
+    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q22-problem.svg",
     "level": "상",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -1317,7 +1354,10 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "imageAlt": "20년 왕의중 기말 22번: 닮은 두 삼각뿔과 주어진 모서리 길이",
+    "imageCaption": "20년 왕의중 기말 22번: 닮은 두 삼각뿔과 주어진 모서리 길이",
+    "imageSize": "full"
   },
   {
     "id": 23,
@@ -1329,7 +1369,7 @@ window.questionBank = [
     ],
     "content": "서술형3. 아래 그림에서 점 $I$, $G$는 각각 $\\triangle ABC$의 내심과 무게중심이다. $\\overline{AB}=8\\text{ cm}$, $\\overline{AC}=6\\text{ cm}$, $\\angle BAC=90^\\circ$일 때, $\\triangle ADE$의 넓이를 구하시오. [5점]\n답안 작성할 때, 풀이과정에 있는 번호 ①②③④⑤를 쓰고 밑줄에 해당되는 정답을 순서대로 쓰기\n점 $I$는 $\\triangle ABC$의 내심이므로 $\\overline{BE}:\\overline{EC}=①$ (빈칸)\n점 $G$는 $\\triangle ABC$의 무게중심이므로 $\\overline{BD}:\\overline{DC}=②$ (빈칸)\n따라서 $\\overline{BD}:\\overline{DE}:\\overline{EC}=③$ (빈칸)\n$\\triangle ADE$의 넓이는 $④$ (빈칸) $=⑤$ (빈칸)이다.",
     "choices": [],
-    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q23.png",
+    "image": "assets/images/20_왕의중_2학기_기말_중2_기출/q23-problem.svg",
     "level": "중",
     "category": "삼각형의 성질",
     "originalCategory": "삼각형의 성질",
@@ -1378,7 +1418,10 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "imageAlt": "2020 왕의중 중2 2학기 기말 23번 문제 조건도",
+    "imageCaption": "2020 왕의중 중2 2학기 기말 23번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 24,

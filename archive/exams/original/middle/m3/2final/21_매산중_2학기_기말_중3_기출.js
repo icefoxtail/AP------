@@ -16,7 +16,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_매산중_2학기_기말_중3_기출/q01.png",
+    "image": "assets/images/21_매산중_2학기_기말_중3_기출/q1-problem.svg",
     "level": "하",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
@@ -57,11 +57,14 @@ window.questionBank = [
     "decisiveStep": "같은 호를 보는 중심각은 원주각의 두 배",
     "sourceIdentityKey": "sha256:d3ba802eab781b4c2395276f915f9136845fa65a8e71fa9bdbdebdddabcf253b|1",
     "solutionImage": "assets/images/21_매산중_2학기_기말_중3_기출/q1-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 위의 세 점 P, A, B와 중심 O가 있고, 호 AB를 보는 원주각 ∠APB=40°와 반지름 OA, OB가 그려져 있다.",
-    "solutionImageCaption": "같은 호 AB를 보는 중심각은 원주각의 2배이다. 원주각이 40°이므로 중심각 ∠AOB는 2×40°이다. 정답은 80°이다.",
+    "solutionImageAlt": "원주각과 같은 호에 대응하는 중심각의 관계를 나타낸다.",
+    "solutionImageCaption": "원주각과 같은 호에 대응하는 중심각의 관계를 나타낸다.",
     "solutionImageSize": "full"
   ,
-    "primaryMethod": "그림에 제시된40도 원주각과 같은 호의 중심각을 두 배 관계로 바로 읽는다. 기존 CENTER_ARC와 결정단계는 정상이다."
+    "primaryMethod": "그림에 제시된40도 원주각과 같은 호의 중심각을 두 배 관계로 바로 읽는다. 기존 CENTER_ARC와 결정단계는 정상이다.",
+    "imageAlt": "21년 매산중 기말 1번 문제에서 주어진 원본 스캔의 원·호·현·접선과 주어진 각·길이 관계.",
+    "imageCaption": "21년 매산중 기말 1번 문제에서 주어진 원본 스캔의 원·호·현·접선과 주어진 각·길이 관계.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -79,7 +82,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_매산중_2학기_기말_중3_기출/q02.png",
+    "image": "assets/images/21_매산중_2학기_기말_중3_기출/q2-problem.svg",
     "level": "중",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
@@ -120,11 +123,14 @@ window.questionBank = [
     "decisiveStep": "호의 길이는 중심각의 크기에 비례",
     "sourceIdentityKey": "sha256:f7ba520d5d5dd884c4df77206fe088ca36b5aedc8888d3a75772fa1146308f5f|2",
     "solutionImage": "assets/images/21_매산중_2학기_기말_중3_기출/q2-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 위에서 호 x는 파란색, 길이 8인 호는 주황색으로 구분되어 있고, 점 P에서 30°, 점 Q에서 60°의 원주각이 표시되어 있다.",
-    "solutionImageCaption": "호 x를 보는 원주각이 30°이므로 중심각은 60°이고, 길이 8인 호를 보는 원주각이 60°이므로 중심각은 120°이다. 호의 길이는 중심각에 비례하므로 x:8=60:120이다. 정답은 4이다.",
+    "solutionImageAlt": "같은 원에서 호의 길이는 이에 대응하는 중심각의 크기에 비례한다.",
+    "solutionImageCaption": "같은 원에서 호의 길이는 이에 대응하는 중심각의 크기에 비례한다.",
     "solutionImageSize": "full"
   ,
-    "primaryMethod": "30도·60도 원주각을 각각 중심각으로 바꾸고 길이8인 호와 목표 호의 비를 세운다. 기존 호·중심각·원주각 대응 TPL이 이 계산을 포함한다."
+    "primaryMethod": "30도·60도 원주각을 각각 중심각으로 바꾸고 길이8인 호와 목표 호의 비를 세운다. 기존 호·중심각·원주각 대응 TPL이 이 계산을 포함한다.",
+    "imageAlt": "21년 매산중 기말 2번 문제에서 주어진 원본 스캔의 원·호·현·접선과 주어진 각·길이 관계.",
+    "imageCaption": "21년 매산중 기말 2번 문제에서 주어진 원본 스캔의 원·호·현·접선과 주어진 각·길이 관계.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -142,7 +148,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_매산중_2학기_기말_중3_기출/q03.png",
+    "image": "assets/images/21_매산중_2학기_기말_중3_기출/q3-problem.svg",
     "level": "중",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
@@ -183,11 +189,14 @@ window.questionBank = [
     "decisiveStep": "내접사각형의 대각과 삼각형 내각 합",
     "sourceIdentityKey": "sha256:4124cb87982cd1db1b6af355450a5d5bebf4398aa4772d13f46e5c5783168c49|3",
     "solutionImage": "assets/images/21_매산중_2학기_기말_중3_기출/q3-solution.svg",
-    "solutionImageAlt": "해설 그림: 원에 내접하는 사각형 ABCD와 대각선 AC가 그려져 있고, ∠D=80°, ∠ACB=40°와 대응하는 ∠B, ∠BAC가 표시되어 있다.",
-    "solutionImageCaption": "내접사각형에서 마주 보는 두 각의 합은 180°이므로 ∠B=100°이다. 삼각형 ABC의 내각의 합이 180°이므로 ∠BAC=180°−100°−40°이다. 정답은 40°이다.",
+    "solutionImageAlt": "원에 내접한 사각형의 마주 보는 각과 삼각형의 내각의 합을 이용한다.",
+    "solutionImageCaption": "원에 내접한 사각형의 마주 보는 각과 삼각형의 내각의 합을 이용한다.",
     "solutionImageSize": "full"
   ,
-    "primaryMethod": "내접사각형의 마주 보는 각이 보각인 성질로 ABC를 구한 뒤 삼각형ABC의 내각합으로 BAC를 정한다. 실제 주제는 원주각의 활용이고 기존 복합 각 관계 TPL은 유효하다."
+    "primaryMethod": "내접사각형의 마주 보는 각이 보각인 성질로 ABC를 구한 뒤 삼각형ABC의 내각합으로 BAC를 정한다. 실제 주제는 원주각의 활용이고 기존 복합 각 관계 TPL은 유효하다.",
+    "imageAlt": "21년 매산중 기말 3번 문제에서 주어진 원본 스캔의 원·호·현·접선과 주어진 각·길이 관계.",
+    "imageCaption": "21년 매산중 기말 3번 문제에서 주어진 원본 스캔의 원·호·현·접선과 주어진 각·길이 관계.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -205,7 +214,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_매산중_2학기_기말_중3_기출/q04.png",
+    "image": "assets/images/21_매산중_2학기_기말_중3_기출/q4-problem.svg",
     "level": "중",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
@@ -246,11 +255,14 @@ window.questionBank = [
     "decisiveStep": "교차하는 두 현의 교각은 마주 보는 두 호의 합의 절반",
     "sourceIdentityKey": "sha256:0911bc56073556b45b6aa4749558db29dff64555810d829f7d6ac3a7256719c1|4",
     "solutionImage": "assets/images/21_매산중_2학기_기말_중3_기출/q4-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 안에서 두 현 AC, BD가 점 P에서 만나고, 현 BC가 그려져 있으며, 같은 크기의 호 AB와 호 CD가 파란색으로 표시되어 있고 ∠ACB=20°가 표시되어 있다.",
-    "solutionImageCaption": "∠ACB=20°는 호 AB를 보는 원주각이므로 호 AB는 40°이고, 호 AB=호 CD이므로 호 CD도 40°이다. 교각 ∠APB는 두 호의 합의 절반인 (40°+40°)÷2이다. 정답은 40°이다.",
+    "solutionImageAlt": "같은 크기의 두 호에 대응하는 원주각과 원 안에서 만나는 현의 각 관계를 보인다.",
+    "solutionImageCaption": "같은 크기의 두 호에 대응하는 원주각과 원 안에서 만나는 현의 각 관계를 보인다.",
     "solutionImageSize": "full"
   ,
-    "primaryMethod": "원주각20도를 호AB40도로 옮기고 같은 호CD를 정한 뒤 이미 그려진 두 현의 내부 교각을 반합으로 계산한다. 원주각과 현 교각의 결합이므로 기존 COMPOSITE를 재사용한다."
+    "primaryMethod": "원주각20도를 호AB40도로 옮기고 같은 호CD를 정한 뒤 이미 그려진 두 현의 내부 교각을 반합으로 계산한다. 원주각과 현 교각의 결합이므로 기존 COMPOSITE를 재사용한다.",
+    "imageAlt": "21년 매산중 기말 4번 문제에서 주어진 원본 스캔의 원·호·현·접선과 주어진 각·길이 관계.",
+    "imageCaption": "21년 매산중 기말 4번 문제에서 주어진 원본 스캔의 원·호·현·접선과 주어진 각·길이 관계.",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -268,7 +280,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_매산중_2학기_기말_중3_기출/q05.png",
+    "image": "assets/images/21_매산중_2학기_기말_중3_기출/q5-problem.svg",
     "level": "중",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
@@ -309,11 +321,14 @@ window.questionBank = [
     "decisiveStep": "호의 비를 360도 분할과 원주각으로 연결",
     "sourceIdentityKey": "sha256:cf172fc7dddd0d22009b0a95f1dda51714ac093edbe3fca457c246369a5f68fc|5",
     "solutionImage": "assets/images/21_매산중_2학기_기말_중3_기출/q5-solution.svg",
-    "solutionImageAlt": "해설 그림: 원에 내접하는 삼각형 ABC가 있고, 호 AB는 파란색, 호 BC는 주황색, 호 CA는 초록색으로 구분되어 각각 3, 4, 2가 표시되어 있으며 ∠A가 표시되어 있다.",
-    "solutionImageCaption": "호의 비가 3:4:2이므로 전체 360°를 9등분하면 한 부분이 40°이고 호 BC는 4×40°=160°이다. ∠A는 호 BC를 보는 원주각이므로 160°의 절반이다. 정답은 80°이다.",
+    "solutionImageAlt": "호의 비를 이용해 호 BC와 그 호에 대응하는 원주각의 관계를 나타낸다.",
+    "solutionImageCaption": "호의 비를 이용해 호 BC와 그 호에 대응하는 원주각의 관계를 나타낸다.",
     "solutionImageSize": "full"
   ,
-    "primaryMethod": "원의 전체360도를 호의 비3:4:2로 나누어 BC에 대응하는 중심각을 얻고 같은 호의 원주각으로 바꾼다. 기존 CENTER_ARC의 호 비례 범위 안이다."
+    "primaryMethod": "원의 전체360도를 호의 비3:4:2로 나누어 BC에 대응하는 중심각을 얻고 같은 호의 원주각으로 바꾼다. 기존 CENTER_ARC의 호 비례 범위 안이다.",
+    "imageAlt": "21년 매산중 기말 5번 문제에서 주어진 원본 스캔의 원·호·현·접선과 주어진 각·길이 관계.",
+    "imageCaption": "21년 매산중 기말 5번 문제에서 주어진 원본 스캔의 원·호·현·접선과 주어진 각·길이 관계.",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -331,7 +346,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_매산중_2학기_기말_중3_기출/q06.png",
+    "image": "assets/images/21_매산중_2학기_기말_중3_기출/q6-problem.svg",
     "level": "중",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
@@ -376,7 +391,10 @@ window.questionBank = [
     "solutionImageCaption": "내접사각형에서 ∠DAB=180°−80°=100°이므로 삼각형 DAB에서 x=∠ADB=180°−100°−35°=45°이다. 접선과 현이 이루는 각 ∠BAT는 호 AB를 보는 원주각 ∠ADB와 같으므로 y=45°이다. 정답은 y−x=0이다.",
     "solutionImageSize": "full"
   ,
-    "primaryMethod": "그림의 x는 ADB, y는 접선AT와 현AB의 각이다. 현재 기하 adjudication 해설의 내접사각형→삼각형내각합→접현각 순서를 재사용하며 원과직선 일반성질이 아닌 접선과현의 원주각 관계로 분류한다."
+    "primaryMethod": "그림의 x는 ADB, y는 접선AT와 현AB의 각이다. 현재 기하 adjudication 해설의 내접사각형→삼각형내각합→접현각 순서를 재사용하며 원과직선 일반성질이 아닌 접선과현의 원주각 관계로 분류한다.",
+    "imageAlt": "21년 매산중 기말 6번 문제에서 주어진 원본 스캔의 원·호·현·접선과 주어진 각·길이 관계.",
+    "imageCaption": "21년 매산중 기말 6번 문제에서 주어진 원본 스캔의 원·호·현·접선과 주어진 각·길이 관계.",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -394,7 +412,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_매산중_2학기_기말_중3_기출/q07.png",
+    "image": "assets/images/21_매산중_2학기_기말_중3_기출/q7-problem.svg",
     "level": "중",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
@@ -435,11 +453,14 @@ window.questionBank = [
     "decisiveStep": "두 접선 각에서 중심각을 구한 뒤 원주각으로 전환",
     "sourceIdentityKey": "sha256:d9adf33b70fe46aaa9be3a67e5bc24df8238d3ffcdd656d03c3e3c5bc22dd5c7|7",
     "solutionImage": "assets/images/21_매산중_2학기_기말_중3_기출/q7-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 O 밖의 점 T에서 접점 A, B로 접선이 그려져 있고 ∠ATB=50°, 접점에서 반지름과 접선이 이루는 직각, 중심각 ∠AOB, 원 위의 점 C에서의 원주각 ∠ACB가 표시되어 있다.",
-    "solutionImageCaption": "반지름은 접선에 수직이므로 사각형 TAOB에서 ∠AOB=180°−50°=130°이다. ∠ACB는 호 AB를 보는 원주각이므로 중심각의 절반이다. 정답은 65°이다.",
+    "solutionImageAlt": "두 접선이 이루는 각과 중심각, 같은 호를 보는 원주각의 관계를 나타낸다.",
+    "solutionImageCaption": "두 접선이 이루는 각과 중심각, 같은 호를 보는 원주각의 관계를 나타낸다.",
     "solutionImageSize": "full"
   ,
-    "primaryMethod": "두 접선이 이루는50도와 접점 반지름의 직각으로 중심각130도를 얻고 원주각65도로 옮긴다. 접선-현 각을 직접 사용하는 문제가 아니므로 TANGENT_CHORD를 기존 ACTIVE COMPOSITE로 정정한다."
+    "primaryMethod": "두 접선이 이루는50도와 접점 반지름의 직각으로 중심각130도를 얻고 원주각65도로 옮긴다. 접선-현 각을 직접 사용하는 문제가 아니므로 TANGENT_CHORD를 기존 ACTIVE COMPOSITE로 정정한다.",
+    "imageAlt": "21년 매산중 기말 7번 문제에서 주어진 원본 스캔의 원·호·현·접선과 주어진 각·길이 관계.",
+    "imageCaption": "21년 매산중 기말 7번 문제에서 주어진 원본 스캔의 원·호·현·접선과 주어진 각·길이 관계.",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -457,7 +478,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_매산중_2학기_기말_중3_기출/q08.png",
+    "image": "assets/images/21_매산중_2학기_기말_중3_기출/q8-problem.svg",
     "level": "중",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
@@ -498,11 +519,14 @@ window.questionBank = [
     "decisiveStep": "접선 길이와 현 길이의 등식 및 tangent-chord 관계",
     "sourceIdentityKey": "sha256:8b9f225eb87df166cd028bc32d54c01acb6c4929d16c92d20dde7985f7c6bb39|8",
     "solutionImage": "assets/images/21_매산중_2학기_기말_중3_기출/q8-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 O의 지름 AB의 연장선 위의 점 P와 접선 PT, 접점 C가 있고, ∠P=30°, ∠ACB=90°, 접현각 ∠BCT가 표시되어 있다.",
-    "solutionImageCaption": "AB가 지름이므로 ∠ACB=90°이다. PC=BC이므로 ∠P=∠PBC이고, 접선과 현이 이루는 각 ∠BCT=∠BAC이다. 삼각형 ABC의 내각에서 ∠ABC=30°, ∠BAC=60°이다. 정답은 60°이다.",
+    "solutionImageAlt": "지름에 대한 직각과 이등변삼각형, 접선과 현의 각 관계를 나타낸다.",
+    "solutionImageCaption": "지름에 대한 직각과 이등변삼각형, 접선과 현의 각 관계를 나타낸다.",
     "solutionImageSize": "full"
   ,
-    "primaryMethod": "지름의 원주각 직각, PC=BC인 이등변삼각형의 밑각, CP와CT의 반대방향, 접현각을 연결하여 같은 미지각의 식을 만든다. 기존 접현각 TPL이 최종 제약을 제공한다."
+    "primaryMethod": "지름의 원주각 직각, PC=BC인 이등변삼각형의 밑각, CP와CT의 반대방향, 접현각을 연결하여 같은 미지각의 식을 만든다. 기존 접현각 TPL이 최종 제약을 제공한다.",
+    "imageAlt": "21년 매산중 기말 8번 문제에서 주어진 원본 스캔의 원·호·현·접선과 주어진 각·길이 관계.",
+    "imageCaption": "21년 매산중 기말 8번 문제에서 주어진 원본 스캔의 원·호·현·접선과 주어진 각·길이 관계.",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -583,7 +607,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_매산중_2학기_기말_중3_기출/q10.png",
+    "image": "assets/images/21_매산중_2학기_기말_중3_기출/q10-problem.svg",
     "level": "상",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
@@ -624,11 +648,15 @@ window.questionBank = [
     "decisiveStep": "두 할선의 외각과 전체 원호의 합",
     "sourceIdentityKey": "sha256:e42889b973af37e27bf26833579d3a112e51fed61c60d9ca0d092791cac619b2|10",
     "solutionImage": "assets/images/21_매산중_2학기_기말_중3_기출/q10-solution.svg",
-    "solutionImageAlt": "해설 그림: 왼쪽에는 원 위의 점 A, B, C, D와 원 밖의 점 P에서 만나는 두 할선, ∠BPC=30°, ∠BDC=x가 표시되어 있다. 오른쪽에는 같은 크기 t의 세 호는 파란색, 호 BC는 주황색 u로 구분되어 있다.",
-    "solutionImageCaption": "원 밖의 점 P에서 두 할선이 만나므로 ∠BPC=(호 AD−호 BC)÷2이다. 호 AD−호 BC=60°와 3t+u=360을 연립하면 t=105, u=45이다. ∠BDC는 호 BC의 원주각이므로 x=22.5°이다. 정답은 2x=45°이다.",
+    "solutionImageAlt": "? ?? ?? t, ? BC? u? ?? ? ??? ? ??? ????.",
+    "solutionImageCaption": "? ?? ?? t, ? BC? u? ?? ? ??? ? ??? ????.",
     "solutionImageSize": "full"
   ,
-    "primaryMethod": "같은 세 호를t, 남은 호를u로 두어 전체각3t+u=360과 외부 두 할선각에서t-u=60을 만들고 목표 원주각으로 바꾼다. 단일 외부 할선각 공식 문제와 달리 호 분할·연립·원주각을 실제 연쇄하므로 RPM 복합 각 추론과 기존 COMPOSITE가 맞는다."
+    "primaryMethod": "같은 세 호를t, 남은 호를u로 두어 전체각3t+u=360과 외부 두 할선각에서t-u=60을 만들고 목표 원주각으로 바꾼다. 단일 외부 할선각 공식 문제와 달리 호 분할·연립·원주각을 실제 연쇄하므로 RPM 복합 각 추론과 기존 COMPOSITE가 맞는다.",
+    "imageAlt": "21년 매산중 기말 10번 문제에서 주어진 원본 스캔의 원·호·현·접선과 주어진 각·길이 관계.",
+    "imageCaption": "21년 매산중 기말 10번 문제에서 주어진 원본 스캔의 원·호·현·접선과 주어진 각·길이 관계.",
+    "imageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 11,
@@ -646,7 +674,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_매산중_2학기_기말_중3_기출/q11.png",
+    "image": "assets/images/21_매산중_2학기_기말_중3_기출/q11-problem.svg",
     "level": "중",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
@@ -687,11 +715,14 @@ window.questionBank = [
     "decisiveStep": "호의 길이비에서 중심각을 구한 뒤 교차현 각으로 연결",
     "sourceIdentityKey": "sha256:14a4893747e97121141b3dca5c15b2a33cd45729d35a0ff92dc06232df27b707|11",
     "solutionImage": "assets/images/21_매산중_2학기_기말_중3_기출/q11-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 안에서 두 현 AB, CD가 점 P에서 만나고, 호 AB는 파란색 72°, 호 CD는 주황색 96°로 구분되어 있으며 교각 ∠APB가 x로 표시되어 있다.",
-    "solutionImageCaption": "호 AB는 원둘레의 5분의 1이므로 72°이다. 호 AB:호 CD=3:4이므로 호 CD=96°이다. 원 안에서 두 현이 만나는 교각은 마주 보는 두 호의 합의 절반이므로 (72°+96°)÷2이다. 정답은 84°이다.",
+    "solutionImageAlt": "두 현이 원 안에서 만날 때 교각은 마주 보는 두 호의 합의 절반이다.",
+    "solutionImageCaption": "두 현이 원 안에서 만날 때 교각은 마주 보는 두 호의 합의 절반이다.",
     "solutionImageSize": "full"
   ,
-    "primaryMethod": "원주 전체의1/5인 호AB를72도로 정하고3:4의 비로 호CD를 얻은 뒤 내부 교각의 반합을 적용한다. 기존 COMPOSITE 및 결정단계의 호 비율→현 교각 흐름은 유효하다."
+    "primaryMethod": "원주 전체의1/5인 호AB를72도로 정하고3:4의 비로 호CD를 얻은 뒤 내부 교각의 반합을 적용한다. 기존 COMPOSITE 및 결정단계의 호 비율→현 교각 흐름은 유효하다.",
+    "imageAlt": "21년 매산중 기말 11번 문제에서 주어진 원본 스캔의 원·호·현·접선과 주어진 각·길이 관계.",
+    "imageCaption": "21년 매산중 기말 11번 문제에서 주어진 원본 스캔의 원·호·현·접선과 주어진 각·길이 관계.",
+    "imageSize": "full"
   },
   {
     "id": 12,
@@ -1298,7 +1329,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_매산중_2학기_기말_중3_기출/q22.png",
+    "image": "assets/images/21_매산중_2학기_기말_중3_기출/q22-problem.svg",
     "level": "상",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
@@ -1339,11 +1370,14 @@ window.questionBank = [
     "solutionImage": "assets/images/21_매산중_2학기_기말_중3_기출/q22-solution-v2.svg",
     "decisiveStep": "직각삼각형과 고도선으로 평행사변형, 중점연결정리로 길이비",
     "sourceIdentityKey": "sha256:7e5bcbdd03096394d7e6d737f3cc04d7b613d888ffa261d1b7747ab10b7f3a7c|22",
-    "solutionImageAlt": "해설 그림: 원 O 위의 삼각형 ABC와 외심 O에서 BC에 내린 수선의 발 D, 점 A와 C에서 내린 수선의 발 E, F, 수심 G, 지름 BH가 있고 OD의 길이 2와 평행사변형 AGCH가 초록색으로 칠해져 있으며 BH와 AC는 점선이다.",
-    "solutionImageCaption": "BH가 지름이므로 AH∥CG, AG∥CH이어서 AGCH는 평행사변형이다. 삼각형 BHC에서 O, D는 중점이므로 OD=HC÷2이고 OD=2cm이므로 HC=4cm, OD:HC=1:2이다. 평행사변형의 마주 보는 변이 같으므로 AG=HC이다. 정답은 (1) 평행사변형, (2) 1:2, (3) 4cm이다.",
+    "solutionImageAlt": "수선과 지름으로 생기는 평행한 변 및 중점연결선을 나타낸다.",
+    "solutionImageCaption": "수선과 지름으로 생기는 평행한 변 및 중점연결선을 나타낸다.",
     "solutionImageSize": "full"
   ,
-    "primaryMethod": "BH가 외접원의 지름임을 이용해 두 직각과 평행사변형을 얻고, 중심수선의 현 이등분 및 지름 중점O를 두 중점 연결로 옮긴다. 기존 TPL은 외심·외접원·빗변 중점으로 각·길이를 정하는 정의이므로 정상 재사용한다. 주어진 외심을 찾는 문제로 좁게 오해하지 않는다."
+    "primaryMethod": "BH가 외접원의 지름임을 이용해 두 직각과 평행사변형을 얻고, 중심수선의 현 이등분 및 지름 중점O를 두 중점 연결로 옮긴다. 기존 TPL은 외심·외접원·빗변 중점으로 각·길이를 정하는 정의이므로 정상 재사용한다. 주어진 외심을 찾는 문제로 좁게 오해하지 않는다.",
+    "imageAlt": "21년 매산중 기말 22번 문제에서 주어진 외심 O와 세 수선 OD·AE·CF, 지름 BH 및 OD=2cm.",
+    "imageCaption": "21년 매산중 기말 22번 문제에서 주어진 외심 O와 세 수선 OD·AE·CF, 지름 BH 및 OD=2cm.",
+    "imageSize": "full"
   },
   {
     "id": 23,
@@ -1448,8 +1482,11 @@ window.questionBank = [
     "nullReason": "정확 메타 판단은 완료하였으나 (1)의 원자료 직접분산은 기존 E034Q24 후보를 재사용한다. 미지편차 복원이나 고등 확률변수 유형으로 치환하지 않는다. / (2)는 PT_M3_DISPERSION_FREQUENCY_TABLE/TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE ACTIVE를 재사용할 수 있으나 (1)까지 같은 정확 골격으로 주장하지 않는다. 개별 구성 판단은 별도 evidence에 두고 source PT/TPL null은 유지한다. / 현재 source는 CREATE_SELF_CHECK_DONE이며 기존 해설을 읽은 메타검토이다. VERIFIED_FINAL이나 새 R1/R2/R3 완료로 승격하지 않는다. source에는 임의 키를 넣지 않으며 기존 ACTIVE 후보와 정확 공백을 review/proposals에 분리하였다.",
     "decisiveStep": "(1) 평균 5와 편차 제곱 평균으로 6을 구한다. (2) 그래프의 도수 1,2,4,2,1을 읽어 가중평균 3을 구한 뒤 가중 편차 제곱 평균을 계산해 1.2를 얻는다.",
     "sourceIdentityKey": "sha256:10b71560272ff61e4fb8f1141e2d3e0056249fd748c654a189bae93a17012149|24",
-    "image": "assets/images/21_매산중_2학기_기말_중3_기출/q24.png"
+    "image": "assets/images/21_매산중_2학기_기말_중3_기출/q24-problem.svg"
   ,
-    "primaryMethod": "동일 UID의 수준별 (1)은 원자료5개의 평균과 직접 분산, (2)는 그래프 도수1,2,4,2,1에서 가중평균과 가중 편차제곱평균이다. (2)는 그래프를 도수 자료로 읽은 뒤 기존 ACTIVE frequency variance 골격을 그대로 사용한다. (1)의 직접분산 exact 공백과 구별한다."
+    "primaryMethod": "동일 UID의 수준별 (1)은 원자료5개의 평균과 직접 분산, (2)는 그래프 도수1,2,4,2,1에서 가중평균과 가중 편차제곱평균이다. (2)는 그래프를 도수 자료로 읽은 뒤 기존 ACTIVE frequency variance 골격을 그대로 사용한다. (1)의 직접분산 exact 공백과 구별한다.",
+    "imageAlt": "아이폰 평점 1점부터 5점까지의 도수 1, 2, 4, 2, 1을 보이는 문제 그래프.",
+    "imageCaption": "아이폰 평점 1점부터 5점까지의 도수 1, 2, 4, 2, 1을 보이는 문제 그래프.",
+    "imageSize": "full"
   }
 ];
