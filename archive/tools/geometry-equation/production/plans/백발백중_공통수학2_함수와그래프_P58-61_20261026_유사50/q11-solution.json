@@ -1,0 +1,90 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      9,
+      -1,
+      9
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "5/6",
+          "0",
+          "1/6"
+        ],
+        "domain": [
+          "0",
+          "8"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "inverseOf": "f",
+        "color": "WARM",
+        "label": "g"
+      },
+      {
+        "id": "diag",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "8"
+        ],
+        "color": "GREEN",
+        "label": "y=x"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "5"
+      ],
+      "y": [
+        "1",
+        "5"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "1"
+        },
+        {
+          "id": "B",
+          "x": "5",
+          "y": "5"
+        }
+      ]
+    }
+  },
+  "caption": "f(x)=(x²+5)/6 (x≥0), g=f⁻¹. y=x 위 교점 (1,1),(5,5); 제곱거리 32.",
+  "accessibilityDescription": "f(x)=(x²+5)/6 (x≥0), g=f⁻¹. y=x 위 교점 (1,1),(5,5); 제곱거리 32.",
+  "sourceConditions": [
+    {
+      "id": "curves",
+      "condition": "함수식·정의역·대칭축·정확한 두 그래프의 대응",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "points",
+      "condition": "정확한 원문 해설 좌표",
+      "mappedTo": "graphPlan.overlays.points"
+    }
+  ],
+  "newVisualInformation": [
+    "그래프에 임의의 배경/면 채움이 없다."
+  ]
+}

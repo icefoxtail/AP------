@@ -1,0 +1,108 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "4",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "-3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-3",
+        "y": "-3"
+      },
+      {
+        "id": "P1",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "P2",
+        "x": "4",
+        "y": "4"
+      },
+      {
+        "id": "V0",
+        "x": "-2",
+        "y": "-4"
+      },
+      {
+        "id": "V1",
+        "x": "3/2",
+        "y": "-9/4"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "4"
+      ],
+      "y": [
+        "-3",
+        "4"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "diag",
+        "slope": "1",
+        "intercept": "0",
+        "intersectionX": [
+          "-3",
+          "0",
+          "4"
+        ]
+      }
+    ],
+    "functionName": "f"
+  },
+  "caption": "x<0: x²+4x, x≥0: x²−3x. 점선 y=x와 세 교점의 입력 -3, 0, 4을 정확히 표시한다.",
+  "accessibilityDescription": "x<0: x²+4x, x≥0: x²−3x. 점선 y=x와 세 교점의 입력 -3, 0, 4을 정확히 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "pieces",
+      "condition": "원문 두 구간의 이차식과 x=0의 포함 관계",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "symmetry",
+      "condition": "이차식마다 해설에서 도출한 꼭짓점",
+      "mappedTo": "graphPlan.requiredPoints"
+    },
+    {
+      "id": "line",
+      "condition": "직선 y=x와의 세 교점 모두에 정확히 점을 표시",
+      "mappedTo": "graphPlan.referenceLines"
+    },
+    {
+      "id": "join",
+      "condition": "x=0에서 두 조각이 O(0,0)으로 만남",
+      "mappedTo": "graphPlan.breakpoints"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 표식·좌표·관계를 정확한 계획 필드에 보존한다."
+  ]
+}
