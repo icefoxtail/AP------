@@ -1,0 +1,26 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {"kind":"CIRCLE","center":["0","0"],"rSquared":"169"},
+  "points": [
+    {"id":"O","kind":"CENTER"},
+    {"id":"A","kind":"ON_CONIC","x":"-13","branch":"POS"},
+    {"id":"B","kind":"ON_CONIC","x":"13","branch":"POS"},
+    {"id":"P","kind":"POINT","x":"sqrt(89)","y":"0"},
+    {"id":"C","kind":"ON_CONIC","x":"79/sqrt(89)","branch":"POS"},
+    {"id":"D","kind":"ON_CONIC","x":"97/sqrt(89)","branch":"NEG"}
+  ],
+  "segments": [
+    {"id":"sAP","from":"A","to":"P","label":"a"},
+    {"id":"sPB","from":"P","to":"B","label":"b"},
+    {"id":"sCP","from":"C","to":"P","label":"10"},
+    {"id":"sPD","from":"P","to":"D","label":"8"}
+  ],
+  "caption": "교차하는 두 현의 관계 AP·PB=10·8=80과 지름 AP+PB=26에서 AP, PB는 방정식 x²−26x+80=0의 두 근이다.",
+  "accessibilityDescription": "반지름 13인 원에서 지름의 두 부분 AP=a, PB=b 및 현의 두 부분 CP=10, PD=8을 비교한다. 지름 전체가 26이고 방멱에 따라 ab=80이다.",
+  "sourceQuote": "AP·PB=CP·DP=80, AP+PB=26, x²−26x+80=0",
+  "sourceConditions": [
+    {"id":"diameter","condition":"AB=26, AP=a, PB=b로 두면 a+b=26","mappedTo":["conic","segments[0]","segments[1]"]},
+    {"id":"power","condition":"CP=10, DP=8이므로 AP·PB=80","mappedTo":["segments[0]","segments[1]","segments[2]","segments[3]"]}
+  ],
+  "newVisualInformation": ["원래 구해야 할 두 근을 지름의 두 부분 a,b에 직접 대응시키며, 그림의 10·8 및 지름 26에서 합 26, 곱 80을 검산한다."]
+}

@@ -1,0 +1,20 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {"kind":"PRISM","base":{"kind":"RECT","width":1,"depth":4},"height":6,"names":"........"}
+  ],
+  "dims": [
+    {"edge":["#b0","#b1"],"label":"x-2"},
+    {"edge":["#b1","#b2"],"label":"x+1"},
+    {"edge":["#b2","#t2"],"label":"x+3"}
+  ],
+  "solidCaption": {"text":"세 방향의 길이가 다른 직육면체"},
+  "caption": "서로 직교하는 세 모서리가 각각 x−2, x+1, x+3인 직육면체이며 x≥2의 조건이 붙는다.",
+  "accessibilityDescription": "직육면체의 세 방향 모서리에 각각 x−2, x+1, x+3을 식으로 표시했다. 그림의 비율은 x=3을 대표한 것으로 최솟값을 뜻하지 않는다.",
+  "sourceQuote": "x≥2, 세 모서리 길이 x−2, x+1, x+3인 직육면체의 겉넓이 최솟값",
+  "sourceConditions": [
+    {"id":"dimensions","condition":"세 변의 수치 아닌 문자 길이 x−2,x+1,x+3","mappedTo":["dims[0]","dims[1]","dims[2]"]},
+    {"id":"geometry","condition":"직육면체의 각 모서리는 이웃 두 방향과 수직","mappedTo":["solids[0]"]}
+  ],
+  "newVisualInformation": ["원문이 비율을 정하지 않았으므로 x=3의 1:4:6을 대표 도식으로만 쓰며, 각 모서리에는 정답과 무관하게 문자 길이를 표시한다."]
+}

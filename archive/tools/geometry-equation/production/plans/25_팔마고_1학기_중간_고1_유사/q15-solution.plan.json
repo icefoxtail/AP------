@@ -1,0 +1,18 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["4", "-4", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-1, 5], "viewport": [-2, 6, -2, 12],
+    "requiredPoints": [{"id": "T", "x": 2, "y": 0}],
+    "axisTickValues": {"x": [2], "y": [4]}
+  },
+  "caption": "실근이 한 개이므로 y=x²−4x+4=(x−2)²는 x축에 T(2,0)에서 접하고 상수 k=6이다.",
+  "accessibilityDescription": "위로 열린 포물선 y=(x−2)²가 x축과 T(2,0)에서 한 번만 만나는 접점 그래프이다.",
+  "sourceQuote": "2−i가 근이고 y=x²+ax+k−2가 x축과 한 점에서 만날 조건",
+  "sourceConditions": [
+    {"id": "conjugate", "condition": "켤레복소수 근에 의해 a=−4", "mappedTo": ["graphPlan.coefficients"]},
+    {"id": "tangent", "condition": "판별식 0으로 k=6, y=(x−2)²", "mappedTo": ["graphPlan.coefficients", "graphPlan.requiredPoints"]}
+  ],
+  "newVisualInformation": ["해설이 구한 중근과 포물선의 x축 접촉을 실제 곡선과 접점으로 확인한다."]
+}
