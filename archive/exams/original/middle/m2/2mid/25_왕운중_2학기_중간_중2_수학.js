@@ -663,7 +663,7 @@ window.questionBank = [
   },
   {
     "id": 12,
-    "imageAlt": "삼각형 ABC의 C는 직각이며 AB 20 cm, AC 12 cm, BC 16 cm이다. 내심 I를 중심으로 원이 세 변에 닿고, 삼각형 IAB가 색칠돼 있다.",
+    "imageAlt": "25_왕운중_2학기_중간_중2_수학 q12번 문제 조건 도형",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -696,7 +696,7 @@ window.questionBank = [
     "solution": "내심에서 세 변까지의 거리가 같음을 이용해 내접원의 반지름을 구한다.\n직각삼각형 $ABC$의 넓이는 $\\dfrac12\\times12\\times16=96\\mathrm{cm}^2$이다.\n내접원의 반지름을 $r$이라 하면 점 $I$에서 세 변까지의 거리는 모두 $r$이다.\n따라서 $96=\\dfrac12(12+16+20)r=24r$이므로 $r=4\\mathrm{cm}$이다.\n점 $I$에서 변 $AB$까지의 거리가 $4\\mathrm{cm}$이고 $AB=20\\mathrm{cm}$이므로 $\\triangle IAB$의 넓이는 $\\dfrac12\\times20\\times4=40\\mathrm{cm}^2$이다.\n따라서 정답은 ②이다.",
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중2_수학/q12-solution.svg",
     "image": "assets/images/25_왕운중_2학기_중간_중2_수학/q12-problem-visual-v2.svg",
-    "imageSize": "tall",
+    "imageSize": "full",
     "problemTypeKey": "PT_TRIANGLE_CENTERS",
     "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
     "crossConceptKeys": [
@@ -722,7 +722,8 @@ window.questionBank = [
       "l4": "반지름·각 계산"
     },
     "primaryMethod": "내심의 등거리와 세삼각형 넓이합",
-    "decisiveStep": "전체넓이96=반둘레24×r로r=4를 얻어 IAB넓이에 넣는다."
+    "decisiveStep": "전체넓이96=반둘레24×r로r=4를 얻어 IAB넓이에 넣는다.",
+    "imageCaption": "25_왕운중_2학기_중간_중2_수학 q12번 문제 조건 도형"
   },
   {
     "id": 13,
@@ -968,7 +969,7 @@ window.questionBank = [
   },
   {
     "id": 17,
-    "imageAlt": "평행사변형의 두 대각선과 별도의 직선이 O에서 만난다. 그 직선은 윗변 AD의 E와 아랫변 BC의 F를 지난다. 삼각형 BFO를 칠했다.",
+    "imageAlt": "25_왕운중_2학기_중간_중2_수학 q17번 문제 조건 도형",
     "level": "상",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -1001,7 +1002,7 @@ window.questionBank = [
     "solution": "평행사변형의 대각선 넓이 분할과 중심대칭을 이용해 넓이 관계를 확인한다.\n평행사변형의 두 대각선은 서로를 이등분하므로 $\\triangle AOB$, $\\triangle BOC$, $\\triangle COD$, $\\triangle DOA$의 넓이는 모두 $32\\div4=8\\mathrm{cm}^2$이다.\n따라서 ①과 ③은 참이다.\n점 $O$를 중심으로 $180^\\circ$ 회전하면 $A$와 $C$, $B$와 $D$, $E$와 $F$가 서로 대응한다.\n따라서 $\\triangle DOE$와 $\\triangle BOF$의 넓이는 같고, $\\triangle AOD=\\triangle AOE+\\triangle DOE$이므로 $\\triangle AOE$와 $\\triangle BFO$의 넓이의 합은 $8\\mathrm{cm}^2$이다.\n따라서 ②는 참이다.\n또 직선 $EF$를 경계로 나뉜 평행사변형의 두 부분도 이 $180^\\circ$ 회전으로 서로 대응하므로 넓이가 같다.\n따라서 사각형 $FCDE$의 넓이는 $32\\div2=16\\mathrm{cm}^2$이고 ④는 참이다.\n한편 점 $F$의 위치는 직선 $EF$의 방향에 따라 달라지므로 $\\triangle FOB$의 넓이가 항상 $\\triangle AOB$와 같지는 않다.\n따라서 옳지 않은 것은 ⑤이다.",
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중2_수학/q17-solution.svg",
     "image": "assets/images/25_왕운중_2학기_중간_중2_수학/q17-problem-visual-v2.svg",
-    "imageSize": "tall",
+    "imageSize": "full",
     "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
     "templateKey": "",
     "crossConceptKeys": [
@@ -1027,7 +1028,8 @@ window.questionBank = [
       "l4": "분할도형"
     },
     "primaryMethod": "대각선 넓이분할과 중심대칭",
-    "decisiveStep": "4등넓이와 O중심180도회전으로 부분넓이합·이등분을 판정한다."
+    "decisiveStep": "4등넓이와 O중심180도회전으로 부분넓이합·이등분을 판정한다.",
+    "imageCaption": "25_왕운중_2학기_중간_중2_수학 q17번 문제 조건 도형"
   },
   {
     "id": 18,
@@ -1335,7 +1337,7 @@ window.questionBank = [
   {
     "id": 23,
     "imageSize": "full",
-    "imageAlt": "연한 단위 격자에 올라가는 직선 두 개가 있다. 파란 실선은 완만하고 주황 점선은 가파르다. 가로축은 −2와 2, 세로축은 −2가 표기돼 있다.",
+    "imageAlt": "25_왕운중_2학기_중간_중2_수학 q23번 문제 조건 도형",
     "level": "중",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
@@ -1389,7 +1391,8 @@ window.questionBank = [
       "l4": "교점과 연립방정식"
     },
     "primaryMethod": "두점으로 두직선을 정한 뒤 교점계산",
-    "decisiveStep": "각기울기와절편을 구해 두식을 연립한다."
+    "decisiveStep": "각기울기와절편을 구해 두식을 연립한다.",
+    "imageCaption": "25_왕운중_2학기_중간_중2_수학 q23번 문제 조건 도형"
   },
   {
     "id": 24,

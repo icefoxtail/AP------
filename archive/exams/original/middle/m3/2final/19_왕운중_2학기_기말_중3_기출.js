@@ -259,7 +259,7 @@ window.questionBank = [
   },
   {
     "id": 5,
-    "imageSize": "large",
+    "imageSize": "full",
     "content": "오른쪽 그림에서 $\\angle B=\\angle E=90^\\circ$, $\\overline{BD}=\\overline{DC}=12\\rm\\,cm$이고 $\\sin x=\\dfrac{3}{4}$일 때, $\\tan y$의 값은? (5점)",
     "choices": [
       "$\\dfrac{\\sqrt5}{13}$",
@@ -320,7 +320,9 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "conceptClusterKey": "TRIG_RATIO",
-    "primaryMethod": "sin x로 AD를 복원하고 AB·AC를 계산한 뒤 D에서 AC에 내린 수선K의 두 피타고라스 식을 빼 AK,DK를 정하여 tan y를 얻는다."
+    "primaryMethod": "sin x로 AD를 복원하고 AB·AC를 계산한 뒤 D에서 AC에 내린 수선K의 두 피타고라스 식을 빼 AK,DK를 정하여 tan y를 얻는다.",
+    "imageAlt": "한 변의 중점과 삼각형의 두 수선 — B와 E에서 직각이며 D는 가로변 BC의 가운데이다. A에서 B와 D와 C를 잇고 AD선을 E까지 연장했다.",
+    "imageCaption": "한 변의 중점과 삼각형의 두 수선 — B와 E에서 직각이며 D는 가로변 BC의 가운데이다. A에서 B와 D와 C를 잇고 AD선을 E까지 연장했다."
   },
   {
     "id": 6,
@@ -521,7 +523,7 @@ window.questionBank = [
   },
   {
     "id": 9,
-    "imageSize": "large",
+    "imageSize": "full",
     "content": "오른쪽 그림의 정사각형 $ABCD$에서 $\\overline{AD}$, $\\overline{DC}$의 중점을 각각 $M,N$이라 하고 $\\angle MBN=x$라 할 때, $\\sin x$의 값은? (5점)",
     "choices": [
       "$\\dfrac{3}{5}$",
@@ -577,12 +579,14 @@ window.questionBank = [
     "sourceIdentityKey": "sha256:08ec6156cca27316447d010dbf8a4950d4c847b6a3a8728574539ed1f01954e0|9",
     "decisiveStep": "정사각형에서 세 바깥 삼각형 넓이를 빼 BMN 넓이를 구하고 피타고라스로 얻은 BM,BN과 삼각형 넓이의 사인 관계에서 sin x를 역산한다.",
     "solutionImage": "assets/images/19_왕운중_2학기_기말_중3_기출/q9-solution-v2.svg",
-    "solutionImageAlt": "보라 삼각형 BMN과 둘레에 남는 세 직각삼각형을 다른 면으로 표시했다. 두 긴 보라 변은 같은 길이이다.",
-    "solutionImageCaption": "[BMN]=3s²/8이고 BM²=BN²=5s²/4이다. 넓이를 끼인각으로 계산하면 sin x=3/5이고 정답은 ①이다.",
+    "solutionImageAlt": "정사각형 두 중점과 기준각 x — 보라 삼각형 BMN과 둘레에 남는 세 직각삼각형을 다른 면으로 표시했다. 두 긴 보라 변은 같은 길이이다.",
+    "solutionImageCaption": "정사각형 두 중점과 기준각 x — 보라 삼각형 BMN과 둘레에 남는 세 직각삼각형을 다른 면으로 표시했다. 두 긴 보라 변은 같은 길이이다.",
     "solutionImageSize": "full"
   ,
     "conceptClusterKey": "TRIG_RATIO",
-    "primaryMethod": "정사각형에서 세 바깥 삼각형 넓이를 빼 BMN 넓이를 구하고 피타고라스로 얻은 BM,BN과 삼각형 넓이의 사인 관계에서 sin x를 역산한다."
+    "primaryMethod": "정사각형에서 세 바깥 삼각형 넓이를 빼 BMN 넓이를 구하고 피타고라스로 얻은 BM,BN과 삼각형 넓이의 사인 관계에서 sin x를 역산한다.",
+    "imageAlt": "정사각형 두 중점과 기준각 x — 정사각형의 윗변 가운데 M과 오른쪽 변 가운데 N을 B와 이었다. 초록 눈금이 있는 네 반변은 같은 길이이다.",
+    "imageCaption": "정사각형 두 중점과 기준각 x — 정사각형의 윗변 가운데 M과 오른쪽 변 가운데 N을 B와 이었다. 초록 눈금이 있는 네 반변은 같은 길이이다."
   },
   {
     "id": 10,
