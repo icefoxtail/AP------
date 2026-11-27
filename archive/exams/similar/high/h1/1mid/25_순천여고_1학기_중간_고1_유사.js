@@ -166,9 +166,10 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_순천여고_1학기_중간_고1_유사/q5-solution.svg",
-    "solutionImageAlt": "해설 그림: 대칭축 T=2는 구간 [−1,1]의 오른쪽에 있다. 왼쪽 끝점 L은 축에서3, 오른쪽 끝점 R은1만큼 떨어져 있다. 위로 볼록한 포물선이므로 축에 가까운 쪽 값이 더 크다.",
-    "solutionImageCaption": "대칭축 T=2는 구간 [−1,1]의 오른쪽에 있다. 왼쪽 끝점 L은 축에서3, 오른쪽 끝점 R은1만큼 떨어져 있다. 위로 볼록한 포물선이므로 축에 가까운 쪽 값이 더 크다.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "정의역 비교 [-1,1]에서 오른쪽 끝 (1,8)이 최대, 왼쪽 끝 (-1,0)이 최소이며 축 x=2는 구간 밖에 있다.",
+    "solutionImageCaption": "정의역 비교 [-1,1]에서 오른쪽 끝 (1,8)이 최대, 왼쪽 끝 (-1,0)이 최소이며 축 x=2는 구간 밖에 있다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 6,
