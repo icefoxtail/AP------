@@ -1,0 +1,21 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{"coefficients": ["-1", "2"]}],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-3, 4],
+    "requiredPoints": [
+      {"id": "P", "x": "-1", "y": "-3"},
+      {"id": "Q", "x": "2", "y": "3"}
+    ],
+    "axisTickValues": {"x": [-1, 2], "y": [-3, 3]}
+  },
+  "caption": "원본의 일차함수 그래프와 주어진 두 점 (−1,−3), (2,3)을 나타낸 문제 그림. 기울기·절편·정답은 표시하지 않는다.",
+  "accessibilityDescription": "원점을 지나는 좌표축과 증가하는 직선 위에 점 (−1,−3), (2,3)을 표시하였다.",
+  "sourceConditions": [
+    {"id": "q04-p", "condition": "q4.png에는 (−1,−3)과 (2,3)을 지나는 증가 직선과 좌표축이 있다.", "mappedTo": "graphPlan.pieces,graphPlan.requiredPoints"},
+    {"id": "q04-p-secret", "condition": "발문에서 구하는 b/a와 풀이로 얻는 기울기, 절편은 문제 화면에 표기하지 않는다.", "mappedTo": "graphPlan.axisTickValues,caption"}
+  ],
+  "newVisualInformation": ["원본 스캔에서 흐린 주어진 두 좌표와 기울기 방향을 고해상도 엔진 선으로 복원", "답을 누설하는 새 함수식·절편 라벨을 추가하지 않음"]
+}

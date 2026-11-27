@@ -1,0 +1,15 @@
+{
+  "capability": "lattice-path-figure-v1",
+  "caption": "A(0,0)→P(2,2)의 최단 경로는 6가지, P(2,2)→B(4,3)는 3가지이다. 두 구간을 독립적으로 선택하므로 6×3=18가지이다.",
+  "accessibilityDescription": "4×3 도로망의 A, P, B와 각 교점까지의 경로 수가 표시된다. A에서 P까지 여섯 가지, P에서 B까지 세 가지이다.",
+  "sourceConditions": [
+    {"id": "q16-s", "condition": "A에서 P까지 오른쪽 두 번·위 두 번, P에서 B까지 오른쪽 두 번·위 한 번 움직인다.", "mappedTo": "lattice.grid,lattice.points,lattice.viaPoints,lattice.counts"}
+  ],
+  "newVisualInformation": ["원본 격자의 모든 길과 각 구간 누적 경로 수를 공식 엔진의 독립 경로 계산으로 표시"],
+  "lattice": {
+    "grid": {"cols": 4, "rows": 3},
+    "points": {"A": [0, 0], "P": [2, 2], "B": [4, 3]},
+    "from": "A", "to": "B", "viaPoints": ["P"],
+    "counts": "segments"
+  }
+}

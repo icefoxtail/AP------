@@ -1,0 +1,18 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{"coefficients": ["1", "-1"]}],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-3, 4],
+    "axisTickValues": {"x": [], "y": []},
+    "overlays": {"names": [{"id": "nb", "text": "y=ax-b", "labelKind": "MATH", "curveX": "0"}]}
+  },
+  "caption": "원본 q5.png와 같이 오른쪽 아래로 내려가며 두 좌표축의 양의 부분과 만나는 직선의 대표 개형이다. 수치 눈금과 a·b의 값을 표시하지 않는다.",
+  "accessibilityDescription": "x가 증가할 때 내려가는 직선이 y축의 양의 부분과 x축의 양의 부분을 지난다. 좌표 눈금에 숫자는 없다.",
+  "sourceConditions": [
+    {"id": "q05-p-sign", "condition": "원본 q5.png는 기울기 음수이고 y절편 양수인 직선이며 계수의 정확한 값은 주어지지 않는다.", "mappedTo": "graphPlan.pieces"},
+    {"id": "q05-p-example", "condition": "엔진 입력 계수는 동일한 부호·절편 관계를 나타내는 대표 값이며 발문의 고정 수치가 아니다.", "mappedTo": "graphPlan.pieces,caption"}
+  ],
+  "newVisualInformation": ["스캔의 기울기 방향·두 양의 절편을 좌표축 위에 선명하게 표현", "문제에 없는 절편 숫자와 계수값 라벨을 넣지 않음"]
+}

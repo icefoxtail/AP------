@@ -1,0 +1,21 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "caption": "문제 원본 q23.png와 같은 네 직선과 좌표축. 소문항 네 개가 묻는 교점 좌표는 문제용 그림에 표시하지 않는다.",
+  "accessibilityDescription": "한 좌표평면에 기울기 양수인 직선 두 개와 기울기 음수인 직선 두 개가 교차한다. x축과 y축에는 주요 눈금만 표시한다.",
+  "sourceConditions": [
+    {"id": "q23-p-1", "condition": "x−2y=2, x+2y=2, 3x−2y=2, 3x+2y=10의 네 일차방정식이 같은 좌표평면에 그려진다.", "mappedTo": "graphPlan.curves"},
+    {"id": "q23-p-2", "condition": "문제 그림에는 네 교점 (2,0), (0,-1), (2,2), (4,-1)을 별도 좌표 라벨로 노출하지 않는다.", "mappedTo": "graphPlan.overlays"}
+  ],
+  "newVisualInformation": ["기울기가 다른 네 직선의 계수와 교차 위치를 같은 눈금 비율로 복원", "원본 문제 그림에 없던 교점 답 라벨을 새로 추가하지 않음"],
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-5, 5, -5, 5],
+    "curves": [
+      {"id": "lineA", "kind": "LINE", "coefficients": ["-1", "1/2"], "domain": ["-5", "5"], "color": "BLUE"},
+      {"id": "lineB", "kind": "LINE", "coefficients": ["1", "-1/2"], "domain": ["-5", "5"], "color": "WARM"},
+      {"id": "lineC", "kind": "LINE", "coefficients": ["-1", "3/2"], "domain": ["-5", "5"], "color": "GREEN"},
+      {"id": "lineD", "kind": "LINE", "coefficients": ["5", "-3/2"], "domain": ["-5", "5"], "color": "VIOLET"}
+    ],
+    "axisTickValues": {"x": ["-4", "-2", "2", "4"], "y": ["-4", "-2", "2", "4"]}
+  }
+}
