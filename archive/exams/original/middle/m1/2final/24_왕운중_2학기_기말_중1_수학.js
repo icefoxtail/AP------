@@ -114,9 +114,9 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/q2-solution.svg",
-    "solutionImageAlt": "해설 그림: 정다각형의 한 꼭짓점에서 두 변이 이루는 내각 135°(파랑)와, 한 변을 연장해 생긴 이웃한 외각 45°(주황)를 나타낸 그림이다. 두 각의 합은 평각 180°이다.",
-    "solutionImageCaption": "내각:외각=3:1이고 합이 180°이므로 외각은 45°이다. 외각의 합 360°÷45°=8이므로 정팔각형이어서 정답은 ③이다.",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "정다각형의 한 내각과 이웃한 외각",
+    "solutionImageCaption": "정다각형의 한 내각과 이웃한 외각",
+    "solutionImageSize": "full",
     "primaryMethod": "내각·외각 비로 정다각형의 변 수 결정",
     "decisiveStep": "한 내각과 외각의 보각 관계로 외각을 정한 뒤 한 바퀴를 외각으로 나눈다."
   },

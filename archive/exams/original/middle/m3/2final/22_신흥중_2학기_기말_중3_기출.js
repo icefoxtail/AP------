@@ -35,8 +35,8 @@ window.questionBank = [
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_CHORD_LENGTH",
     "crossConceptKeys": ["CC_PYTHAGOREAN"],
-    "solutionImageAlt": "해설 그림: 원의 중심 O에서 현 AB의 중점 M까지 수선을 그은 그림. 현의 절반 AM은 4cm, 반지름 OA는 6cm, 구하는 거리 OM은 d로 표시한 직각삼각형 OAM이 파란색으로 칠해져 있다.",
-    "solutionImageCaption": "막대 AB의 중점을 M, 접시의 중심을 O라 하면 OM은 AB에 수직이다. 직각삼각형 OAM에서 AM=4cm, OA=6cm이므로 피타고라스 정리로 OM을 구한다. 정답은 2√5cm이다.",
+    "solutionImageAlt": "원의 중심에서 현의 중점까지의 직각삼각형",
+    "solutionImageCaption": "원의 중심에서 현의 중점까지의 직각삼각형",
     "solutionImageSize": "full"
   ,
     "conditionKeys": [],
@@ -470,7 +470,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 원 밖의 두 할선이 이루는 각과 원 안에서 두 현이 이루는 각을 호의 크기로 나타낸다.\n호 $BD$의 크기를 $u$, 호 $AC$의 크기를 $v$라 하자. 원 밖의 점 $P$에서 두 할선이 이루는 각이 $40^\\circ$이므로 $u-v=80^\\circ$이다.\n두 현 $AD$, $BC$가 원 안의 점 $Q$에서 만나고 $\\angle BQD=80^\\circ$이므로 $u+v=160^\\circ$이다.\n두 식을 풀면 $u=120^\\circ$, $v=40^\\circ$이다.\n$\\angle x=\\angle CDA$는 호 $CA$에 대한 원주각이므로 $x=\\dfrac{40^\\circ}{2}=20^\\circ$이다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q10.png",
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q10-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -493,7 +493,10 @@ window.questionBank = [
     "decisiveStep": "외부 두 할선의 각으로 두 호의 차를, 내부 두 현의 각으로 같은 두 호의 합을 얻어 연립한 뒤 목표 호의 절반을 원주각으로 읽는다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "문제 원본 도형: 외부 두 할선의 각 40°와 교차현 각 80°, 구할 x.",
+    "imageCaption": "문제 원본 도형: 외부 두 할선의 각 40°와 교차현 각 80°, 구할 x.",
+    "imageSize": "full"
   },
   {
     "id": 11,
@@ -520,7 +523,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 원주각은 대응하는 호의 절반이므로 주어진 두 각에서 호의 크기를 차례로 구한다.\n그림에서 $\\angle ADB=30^\\circ$이므로 호 $AB$의 크기는 $60^\\circ$이다. $\\wideparen{AB}=\\wideparen{BC}$이므로 호 $BC$도 $60^\\circ$이다.\n또 $\\angle DAC=67^\\circ$이므로 호 $DC$의 크기는 $134^\\circ$이다.\n따라서 나머지 호 $AD$의 크기는 $360^\\circ-(60^\\circ+60^\\circ+134^\\circ)=106^\\circ$이다.\n$\\angle ABD$는 호 $AD$에 대한 원주각이므로 $53^\\circ$이다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q11.png",
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q11-problem.svg",
     "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q11-solution-v2.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
@@ -540,7 +543,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "동일한 두 호AB·BC를 각각60으로 정하고 주어진 다른 원주각에서 호DC를134로 얻어 전체360에서 뺀 나머지 호AD를 반으로 나눈다.",
-    "decisiveStep": "동일한 두 호AB·BC를 각각60으로 정하고 주어진 다른 원주각에서 호DC를134로 얻어 전체360에서 뺀 나머지 호AD를 반으로 나눈다."
+    "decisiveStep": "동일한 두 호AB·BC를 각각60으로 정하고 주어진 다른 원주각에서 호DC를134로 얻어 전체360에서 뺀 나머지 호AD를 반으로 나눈다.",
+    "imageAlt": "문제 원본 도형: 같은 호 AB·BC와 30°·67° 및 구할 x.",
+    "imageCaption": "문제 원본 도형: 같은 호 AB·BC와 30°·67° 및 구할 x.",
+    "imageSize": "full"
   },
   {
     "id": 12,
@@ -567,7 +573,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 두 맞은각의 합이 180도이면 한 원에 내접한다. 높이의 발에서 생기는 직각을 이용한다.\n① AFHE: 두 맞은각이 각각 90도이므로 내접한다.\n② FBCE: 두 맞은각이 각각 90도이므로 내접한다.\n③ EHDC: 두 맞은각이 각각 90도이므로 내접한다.\n④ FDCE: 한 쌍의 맞은 직각이 만들어지지 않아 내접 조건이 성립하지 않는다.\n⑤ EABD: 두 맞은각이 각각 90도이므로 내접한다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q12.png",
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q12-problem.svg",
     "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q12-solution-v2.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
@@ -587,7 +593,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "STRONG_CONFLICT",
     "primaryMethod": "수심과 수선의 발이 만드는 직각을 각 사각형의 맞은각으로 대응시켜 합이180이 되는지 확인한다. FDCE는 필요한 맞은 직각 쌍이 형성되지 않는다.",
-    "decisiveStep": "수심과 수선의 발이 만드는 직각을 각 사각형의 맞은각으로 대응시켜 합이180이 되는지 확인한다. FDCE는 필요한 맞은 직각 쌍이 형성되지 않는다."
+    "decisiveStep": "수심과 수선의 발이 만드는 직각을 각 사각형의 맞은각으로 대응시켜 합이180이 되는지 확인한다. FDCE는 필요한 맞은 직각 쌍이 형성되지 않는다.",
+    "imageAlt": "문제 원본 도형: 삼각형 ABC의 세 높이와 수심 H 및 직각발 D·E·F.",
+    "imageCaption": "문제 원본 도형: 삼각형 ABC의 세 높이와 수심 H 및 직각발 D·E·F.",
+    "imageSize": "full"
   },
   {
     "id": 13,
@@ -614,7 +623,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 원에 내접하는 사각형의 맞은각의 합과 접선과 현이 이루는 각의 성질을 이용한다.\n사각형 $ABCD$가 원에 내접하므로 $\\angle DCB=180^\\circ-105^\\circ=75^\\circ$이다.\n$\\triangle DBC$에서 $\\angle DBC=40^\\circ$이므로 $\\angle BDC=180^\\circ-75^\\circ-40^\\circ=65^\\circ$이다.\n접선과 현 $BC$가 이루는 각 $\\angle CBE$는 현 $BC$에 대한 원주각 $\\angle BDC$와 같으므로 $65^\\circ$이다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q13.png",
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q13-problem.svg",
     "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q13-solution-v2.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
@@ -622,8 +631,8 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
-    "solutionImageAlt": "해설 그림: 원 위의 네 점 A, B, C, D를 꼭짓점으로 하는 사각형과 대각선 BD, 점 B에서 원에 접하는 직선 BE를 나타낸 그림. 각 DAB는 105도 파란색, 맞은편 각 DCB는 75도 초록색, 각 DBC는 40도 분홍색이다. 각 BDC와 접선과 현이 이루는 각 CBE는 같은 크기로 주황색이며 각 CBE에는 x가 쓰여 있다.",
-    "solutionImageCaption": "원에 내접하는 사각형의 맞은각의 합은 180°이므로 ∠DCB=180°−105°=75°이다. 삼각형 DBC에서 ∠BDC=180°−75°−40°=65°이다. 접선과 현이 이루는 각 ∠CBE는 그 현에 대한 원주각 ∠BDC와 같다. 정답은 65°이다.",
+    "solutionImageAlt": "내접사각형의 맞은각과 접선과 현이 이루는 각",
+    "solutionImageCaption": "내접사각형의 맞은각과 접선과 현이 이루는 각",
     "solutionImageSize": "full"
   ,
     "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
@@ -637,7 +646,10 @@ window.questionBank = [
     "decisiveStep": "내접사각형의 맞은각으로75를 얻고 삼각형 DBC의 내각합으로65를 구한 뒤 접선과 현BC의 각을 같은 호의 원주각과 대응한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "문제 원본 도형: 접선 BE, 원주각 105°·40°, 구할 접현각 x.",
+    "imageCaption": "문제 원본 도형: 접선 BE, 원주각 105°·40°, 구할 접현각 x.",
+    "imageSize": "full"
   },
   {
     "id": 14,
@@ -664,7 +676,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 두 원주각이 보는 호를 각각 나타낸 뒤 합하면 원 전체의 호에 호 $BC$가 한 번 더해진다.\n$\\angle BOC=60^\\circ$이므로 호 $BC$의 크기는 $60^\\circ$이다.\n$2x$는 점 $A$를 포함하지 않는 호 $BE$, 즉 호 $BC+CD+DE$의 크기이고, $2y$는 점 $D$를 포함하지 않는 호 $CE$, 즉 호 $CB+BA+AE$의 크기이다.\n따라서 $2(x+y)=360^\\circ+60^\\circ=420^\\circ$이다.\n그러므로 $x+y=210^\\circ$이다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q14.png",
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q14-problem.svg",
     "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q14-solution-v2.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
@@ -687,7 +699,10 @@ window.questionBank = [
     "decisiveStep": "두 원주각이 보는 서로 다른 호를 합하면 원 전체에 호BC가 한 번 중복됨을 읽어2(x+y)=360+60으로 목표 합을 직접 구성한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "문제 원본 도형: 원에 내접하는 오각형과 중심각 60°, 각 x·y.",
+    "imageCaption": "문제 원본 도형: 원에 내접하는 오각형과 중심각 60°, 각 x·y.",
+    "imageSize": "full"
   },
   {
     "id": 15,
@@ -714,7 +729,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 중심 $O$를 지나는 할선과 접선으로 이루어진 삼각형에서 지름에 대한 원주각과 각의 합을 이용한다.\n직선 $AB$가 중심 $O$를 지나므로 원과 만나는 가까운 점을 $C$라 하면 $CB$는 지름이다. 따라서 $\\angle CTB=90^\\circ$이다.\n그림에서 접선의 오른쪽 방향과 $TB$가 이루는 각이 $70^\\circ$이므로 삼각형 $ATB$의 내각 $\\angle ATB=110^\\circ$이다.\n따라서 $\\angle ATC=110^\\circ-90^\\circ=20^\\circ$이다. 접선과 현의 성질에 의해 $\\angle CBT=20^\\circ$이고, $A,C,B$는 한 직선 위이므로 $\\angle ABT=20^\\circ$이다.\n$\\triangle ABT$에서 $x=180^\\circ-110^\\circ-20^\\circ=50^\\circ$이다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q15.png",
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q15-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -722,8 +737,8 @@ window.questionBank = [
     "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q15-solution-v2.svg",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
-    "solutionImageAlt": "해설 그림: 원 O와 점 T에서 접하는 직선, 접선 위의 점 A에서 중심 O를 지나 원 위의 점 B까지 그은 직선과 현 TB, TC를 나타낸 그림. 점 C는 직선 AB가 원과 만나는 가까운 점이고 각 CTB는 직각이다. 접선의 오른쪽 방향과 TB가 이루는 각은 70도 파란색이다. 각 ATC와 각 CBT는 같은 크기 20도로 주황색이고 각 BAT는 x로 초록색이다. 오른쪽에는 점 T에서 각 ATB가 110도임을 크게 따로 그려 두었다.",
-    "solutionImageCaption": "CB가 지름이므로 ∠CTB=90°이다. 접선 AT와 TB의 반대쪽 접선이 이루는 각이 70°이므로 ∠ATB=110°이고 ∠ATC=110°−90°=20°이다. 접선과 현의 성질로 ∠CBT=∠ATC=20°이고, 삼각형 ABT에서 ∠x=180°−110°−20°이다. 정답은 50°이다.",
+    "solutionImageAlt": "지름에 대한 원주각과 접선과 현이 이루는 각",
+    "solutionImageCaption": "지름에 대한 원주각과 접선과 현이 이루는 각",
     "solutionImageSize": "full"
   ,
     "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
@@ -737,7 +752,10 @@ window.questionBank = [
     "decisiveStep": "중심을 지나는 할선에서 지름CB를 확인해 직각CTB를 만들고, 접선 방향의70을 삼각형 내각110으로 바꾼 뒤 접현각 대응과 내각합으로 외부각x를 구한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "문제 원본 도형: 접선 AT, 원의 중심을 지나는 할선과 70°, 구할 x.",
+    "imageCaption": "문제 원본 도형: 접선 AT, 원의 중심을 지나는 할선과 70°, 구할 x.",
+    "imageSize": "full"
   },
   {
     "id": 16,
@@ -759,8 +777,8 @@ window.questionBank = [
     "choices": [],
     "answer": "작도, $\\overline{OB}$, $\\overline{OM}$, $\\overline{BM}$",
     "solution": "[키포인트] 반지름의 길이가 같고 공통변이 있으며 두 삼각형이 모두 직각삼각형이라는 점을 이용한다.\n(1) 지시대로 현 $AB$, 수선 $OM$, 두 반지름 $OA$, $OB$를 그린다.\n(2) $\\triangle OAM$과 $\\triangle OBM$에서 $\\angle OMA=\\angle OMB=90^\\circ$이다. 또한 $OA=OB$는 같은 원의 반지름이고, $OM$은 공통이다.\n따라서 두 직각삼각형은 RHS 합동이므로 대응변의 길이가 같아 $AM=BM$이다.\n따라서 빈칸은 차례대로 $\\overline{OB}$, $\\overline{OM}$, $\\overline{BM}$이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q16.png",
-    "imageSize": "tall",
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q16-problem.svg",
+    "imageSize": "full",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
@@ -783,7 +801,9 @@ window.questionBank = [
     "decisiveStep": "중심에서 현에 내린 수선으로 생긴 두 직각삼각형에 같은 반지름과 공통변을 대응시켜 RHS 합동을 확인하고 현의 두 조각이 같음을 설명한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "문제용 원 O. 지름이 아닌 현과 수선, 두 반지름을 학생이 직접 그린다.",
+    "imageCaption": "문제용 원 O. 지름이 아닌 현과 수선, 두 반지름을 학생이 직접 그린다."
   },
   {
     "id": 17,
@@ -805,7 +825,7 @@ window.questionBank = [
     "choices": [],
     "answer": "두 현의 수직이등분선을 그어 그 교점을 원의 중심으로 정한다.",
     "solution": "[키포인트] 원의 중심은 모든 현의 수직이등분선 위에 있다.\n원 위의 서로 다른 두 현을 그린다.\n각 현의 수직이등분선을 각각 그린다.\n두 수직이등분선의 교점은 두 현의 양 끝점에서 같은 거리에 있으므로 원의 중심과 일치한다.\n따라서 두 현의 수직이등분선의 교점이 원의 중심이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q17.png",
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q17-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
@@ -828,7 +848,10 @@ window.questionBank = [
     "decisiveStep": "두 현의 수직이등분선은 각각 원의 중심을 지나므로 그 교점을 중심으로 지정한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "문제 원본 도형: 원 위 두 현의 수직이등분선으로 중심을 구하는 작도.",
+    "imageCaption": "문제 원본 도형: 원 위 두 현의 수직이등분선으로 중심을 구하는 작도.",
+    "imageSize": "full"
   },
   {
     "id": 18,

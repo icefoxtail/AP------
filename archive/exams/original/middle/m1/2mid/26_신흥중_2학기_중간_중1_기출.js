@@ -211,9 +211,9 @@ window.questionBank = [
     "tagConfidence": "approved_final_qa",
     "tagStatus": "reviewed_pass",
     "solutionImage": "assets/images/26_신흥중_2학기_중간_중1_기출/q3-solution.svg",
-    "solutionImageAlt": "해설 그림: AD와 BC가 평행하고 점 A, B에서 직각인 사다리꼴 ABCD에 대각선 AC, BD가 점 O에서 만난다. AB⊥BC이므로 점 A에서 BC에 내린 수선의 발이 B임을 보여 준다. 수선 AB는 굵은 빨간 선으로 강조했다.",
-    "solutionImageCaption": "AD∥BC이고 ∠B=90°이므로 점 A에서 BC에 내린 수선의 발은 B이다.",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "사다리꼴 ABCD의 평행선, 직각 표식과 대각선의 교점",
+    "solutionImageCaption": "사다리꼴 ABCD의 평행선, 직각 표식과 대각선의 교점",
+    "solutionImageSize": "full",
     "primaryMethod": "같은 평면에 표시된 직선의 평행·수직·교점과 수선의 발을 구분한다.",
     "decisiveStep": "그림의 평행·직각 표시와 점의 위치로 직선 관계와 수선의 발 진술을 대조한다.",
     "integrationReason": "표시된 평행·수직·교점·수선의 발을 판단하는 현재 위치 관계 primary의 정의 적용만 필요하므로 NONE으로 고친다."

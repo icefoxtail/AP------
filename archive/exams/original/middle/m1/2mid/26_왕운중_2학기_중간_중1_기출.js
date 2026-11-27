@@ -1149,8 +1149,8 @@ window.questionBank = [
     "itemHoldReasons": [],
     "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q15-readable-v3.svg",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/q15-solution-v4.svg",
-    "solutionImageAlt": "해설 그림: 두 패널. 위 패널은 위쪽 교점에서 95° 각과 맞꼭지각 위치인 ∠b를 같은 파란색 호로 표시했고, 아래 패널은 ∠d와 ∠b를 같은 회색 부채꼴로 표시해 두 각이 엇각 위치임을 보여 준다.",
-    "solutionImageCaption": "위 교점에서 ∠b는 95°의 맞꼭지각이므로 ∠b=95°이다. ∠d와 엇각인 각은 ∠b이므로 구하는 크기는 95°이다. 정답은 ④이다.",
+    "solutionImageAlt": "직선 l, m, n에서 맞꼭지각과 엇각의 위치",
+    "solutionImageCaption": "직선 l, m, n에서 맞꼭지각과 엇각의 위치",
     "solutionImageSize": "full",
     "primaryMethod": "두 직선의 평행 여부와 무관하게 횡단선에 대한 엇각의 위치를 찾는다.",
     "decisiveStep": "다른 교점의 맞꼭지각에서 크기를 읽으며 평행선의 각 같음 성질을 임의 적용하지 않는다."
