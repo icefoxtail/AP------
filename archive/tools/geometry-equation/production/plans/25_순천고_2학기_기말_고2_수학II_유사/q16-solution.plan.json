@@ -1,0 +1,92 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "$S(t)=\\dfrac12\\cdot t\\cdot t^2(4-t)$",
+  "caption": "곡선 위의 점 P(t, f(t))와 수선의 발 H로 이루어진 삼각형 POH이며, 넓이는 t=3에서 최대이다.",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "0",
+      "4",
+      "-1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      4
+    ],
+    "viewport": [
+      -0.5,
+      4.5,
+      -0.5,
+      12
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 4,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "3"
+        },
+        {
+          "id": "H",
+          "axis": "x",
+          "value": "3"
+        },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "PH",
+          "from": "P",
+          "to": "H",
+          "dashed": true
+        }
+      ],
+      "polygons": [
+        {
+          "id": "T",
+          "points": [
+            "P",
+            "O",
+            "H"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    },
+    "pointNames": {
+      "P": "P",
+      "H": "H",
+      "O": "O",
+      "A": "A"
+    }
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "다음 그림과 같이 곡선 $f(x)=x^2(4-x)$가 $x$축과 만나는 두 점 중 원점 $O$가 아닌 점을 $A(4,0)$이라 하자. 이 곡선 위를 움직이는 점 $P(t,f(t))$에서 $x$축에 내린 수선의 발을 $H$라 할 때, 삼각형 $POH$의 넓이는 $t=p$에서 최댓값 $M$을 가진다. 이때, $\\dfrac{M}{p}$의 값은? (단, $0\\lt t\\lt 4$이다.) [4.4점]",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "곡선 위의 점 P(t, f(t))와 수선의 발 H로 이루어진 삼각형 POH이며, 넓이는 t=3에서 최대이다."
+  ],
+  "accessibilityDescription": "곡선 위의 점 P(t, f(t))와 수선의 발 H로 이루어진 삼각형 POH이며, 넓이는 t=3에서 최대이다."
+}

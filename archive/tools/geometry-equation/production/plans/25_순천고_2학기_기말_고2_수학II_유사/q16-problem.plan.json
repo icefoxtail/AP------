@@ -1,0 +1,92 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "곡선 $f(x)=x^2(4-x)$가 $x$축과 만나는 두 점",
+  "caption": "곡선 y=f(x)와 x축이 원점 O와 점 A에서 만나고, 곡선 위의 점 P에서 x축에 내린 수선의 발 H를 나타낸 그림이다.",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "0",
+      "4",
+      "-1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -1.5,
+      5.5,
+      -3,
+      11
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 4,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "2"
+        },
+        {
+          "id": "H",
+          "axis": "x",
+          "value": "2"
+        },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "PH",
+          "from": "P",
+          "to": "H",
+          "dashed": true
+        }
+      ],
+      "polygons": [
+        {
+          "id": "T",
+          "points": [
+            "P",
+            "O",
+            "H"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    },
+    "pointNames": {
+      "P": "P",
+      "H": "H",
+      "O": "O",
+      "A": "A"
+    }
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "다음 그림과 같이 곡선 $f(x)=x^2(4-x)$가 $x$축과 만나는 두 점 중 원점 $O$가 아닌 점을 $A(4,0)$이라 하자. 이 곡선 위를 움직이는 점 $P(t,f(t))$에서 $x$축에 내린 수선의 발을 $H$라 할 때, 삼각형 $POH$의 넓이는 $t=p$에서 최댓값 $M$을 가진다. 이때, $\\dfrac{M}{p}$의 값은? (단, $0\\lt t\\lt 4$이다.) [4.4점]",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "곡선 y=f(x)와 x축이 원점 O와 점 A에서 만나고, 곡선 위의 점 P에서 x축에 내린 수선의 발 H를 나타낸 그림이다."
+  ],
+  "accessibilityDescription": "곡선 y=f(x)와 x축이 원점 O와 점 A에서 만나고, 곡선 위의 점 P에서 x축에 내린 수선의 발 H를 나타낸 그림이다."
+}

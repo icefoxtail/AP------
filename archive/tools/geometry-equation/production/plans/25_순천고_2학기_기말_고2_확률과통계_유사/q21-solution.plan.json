@@ -1,0 +1,170 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "math": "g(x)",
+        "text": "x=2 대칭"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "1/8",
+                "1/36"
+              ]
+            },
+            {
+              "coefficients": [
+                "17/72",
+                "-1/36"
+              ]
+            }
+          ],
+          "breakpoints": [
+            {
+              "x": "2",
+              "y": "13/72"
+            }
+          ],
+          "sourceDomain": {
+            "kind": "INTERVAL",
+            "range": [
+              "-2",
+              "6"
+            ],
+            "states": [
+              "CLOSED",
+              "CLOSED"
+            ]
+          },
+          "functionName": "g",
+          "requiredPoints": [
+            {
+              "id": "D",
+              "x": -2,
+              "y": "5/72"
+            },
+            {
+              "id": "E",
+              "x": 2,
+              "y": "13/72"
+            },
+            {
+              "id": "F",
+              "x": 6,
+              "y": "5/72"
+            }
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "math": "f(x)",
+        "text": "y축 대칭"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "1/8",
+                "-1/36"
+              ]
+            },
+            {
+              "coefficients": [
+                "1/8",
+                "1/36"
+              ]
+            }
+          ],
+          "breakpoints": [
+            {
+              "x": "0",
+              "y": "1/8"
+            }
+          ],
+          "sourceDomain": {
+            "kind": "INTERVAL",
+            "range": [
+              "-3",
+              "3"
+            ],
+            "states": [
+              "CLOSED",
+              "CLOSED"
+            ]
+          },
+          "functionName": "f",
+          "regions": [
+            {
+              "id": "S1",
+              "upper": "f",
+              "lower": "axis",
+              "from": "-1",
+              "to": "0",
+              "fill": "LIGHT"
+            },
+            {
+              "id": "S2",
+              "upper": "f",
+              "lower": "axis",
+              "from": "0",
+              "to": "2",
+              "fill": "MEDIUM"
+            }
+          ],
+          "requiredPoints": [
+            {
+              "id": "A",
+              "x": -3,
+              "y": "5/24"
+            },
+            {
+              "id": "B",
+              "x": 0,
+              "y": "1/8"
+            },
+            {
+              "id": "C",
+              "x": 3,
+              "y": "5/24"
+            }
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          }
+        }
+      }
+    }
+  ],
+  "caption": "확률밀도함수 g는 x=2 대칭, f는 y축 대칭이며 f 아래 −1≤x≤2의 두 부분이 구하는 확률이다.",
+  "accessibilityDescription": "위쪽은 x=2에 대칭인 g 그래프, 아래쪽은 y축 대칭 f 그래프에서 음의 일부터 이까지 넓이를 두 부분으로 칠한 그림",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "g(x)=ax+b (−2≤x≤2), g(2+t)=g(2−t), b=1/8",
+      "mappedTo": "panels[0].plan.graphPlan"
+    },
+    {
+      "id": "c2",
+      "condition": "f(x)=a|x|+b (−3≤x≤3), a=1/36, P(−1≤X≤2) 영역",
+      "mappedTo": "panels[1].plan.graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 밀도함수의 서로 다른 대칭축과 실제 확률 계산에 쓰는 두 사다리꼴의 경계를 시각화"
+  ]
+}
