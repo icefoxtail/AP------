@@ -1,0 +1,31 @@
+{
+  "capability":"construction-spike-v1",
+  "caption":"직각삼각형 ABD와 CBD를 나누는 보조대각선 BD를 긋고, AD=x와 CD=y를 두어 넓이와 피타고라스 관계를 비교한다.",
+  "accessibilityDescription":"사각형 ABCD의 A와 C에 직각표식이 있고 AB=2, BC=6, AD=x, CD=y이다. 보조대각선 BD가 두 직각삼각형을 나눈다. 빈 내부 면을 채우지 않는다.",
+  "sourceQuote":"대각선 BD를 그으면 삼각형 ABD는 각 A=90도, 삼각형 CBD는 각 C=90도인 직각삼각형이다. AD=x, CD=y라 하자.",
+  "sourceConditions":[
+    {"id":"s1","condition":"원본의 AB=2, BC=6과 A, C의 직각을 그대로 유지한다.","mappedTo":["mathPlan.nodes","rightAngles","planeMarks.expressionLabels[0]","planeMarks.expressionLabels[1]"]},
+    {"id":"s2","condition":"해설의 유일한 보조선 BD를 선분으로 추가하고 두 삼각형의 공통 빗변으로 쓴다.","mappedTo":["displaySegments[4]"]},
+    {"id":"s3","condition":"AD=x, CD=y가 각각 올바른 선분에 속하며 넓이 조건 x+3y=30과 피타고라스 x²-y²=32가 동시에 성립한다.","mappedTo":["mathPlan.nodes","planeMarks.expressionLabels[2]","planeMarks.expressionLabels[3]"]}
+  ],
+  "newVisualInformation":["BD를 실선 보조선으로 표시해 두 직각삼각형을 분리한다.","AD에는 x, CD에는 y, AB에는 2, BC에는 6을 각각 붙인다.","결과인 둘레 24를 그림 안에 중복 기재하지 않고 면 채움을 사용하지 않는다."],
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"8","denominator":"5"},{"kind":"rational","numerator":"36","denominator":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"7"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints":["A","B","C","D"],
+  "displayLines":[],
+  "displayCircles":[],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sDA","refs":["D","A"]},{"id":"sBD","refs":["B","D"]}],
+  "rightAngles":[{"id":"rA","refs":["B","A","D"]},{"id":"rC","refs":["B","C","D"]}],
+  "planeMarks":{
+    "expressionLabels":[{"id":"lengthAB","ownerSegment":"sAB","text":"2"},{"id":"lengthBC","ownerSegment":"sBC","text":"6"},{"id":"lengthAD","ownerSegment":"sDA","text":"x"},{"id":"lengthCD","ownerSegment":"sCD","text":"y"}]
+  },
+  "coordinateCanvas":{"width":520,"height":400}
+}
