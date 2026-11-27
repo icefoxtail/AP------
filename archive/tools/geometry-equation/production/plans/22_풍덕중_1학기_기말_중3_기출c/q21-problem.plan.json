@@ -1,0 +1,34 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["6","4","-2"],
+    "sourceDomain": {"kind":"ALL_REALS"},
+    "domain": [-1,4],
+    "viewport": [-1.5,4.5,-2,10],
+    "axisTickValues": {"x":[],"y":[]},
+    "requiredPoints": [],
+    "overlays": {
+      "points": [
+        {"id":"A","curveX":"1"},
+        {"id":"B","axis":"x","value":"3","coordinates":true},
+        {"id":"C","curveX":"0"}
+      ],
+      "polygons": [{"id":"ABC","points":["A","B","C"],"fill":"NONE"}]
+    }
+  },
+  "pointNames": {"A":"A","B":"B","C":"C"},
+  "caption": "이차함수 y=-2x²+4x+6의 그래프 위 꼭짓점 A, 양의 x축 교점 B, y축 교점 C를 잇는 삼각형",
+  "accessibilityDescription": "아래로 열린 포물선과 좌표축이 있다. 꼭짓점은 A, 오른쪽의 x축과 만나는 점은 B, y축과 만나는 점은 C이고, 세 점이 삼각형의 꼭짓점으로 연결되어 있다. B의 좌표는 (3,0)이다.",
+  "sourceConditions": [
+    {"id":"curve","sourceQuote":"y=-2x²+4x+6","mappedTo":["graphPlan.coefficients"]},
+    {"id":"vertex","sourceQuote":"꼭짓점 A","mappedTo":["graphPlan.overlays.points"]},
+    {"id":"intercepts","sourceQuote":"양의 x축 교점 B=(3,0), y축 교점 C","mappedTo":["graphPlan.overlays.points"]},
+    {"id":"triangle","sourceQuote":"삼각형 ABC","mappedTo":["graphPlan.overlays.polygons"]}
+  ],
+  "newVisualInformation": [
+    "주어진 이차함수에 대한 포물선과 이름 있는 A, B, C를 표시한다.",
+    "삼각형은 경계선만 표시하며 넓이를 색칠하거나 숫자로 쓰지 않는다.",
+    "점 A와 C의 계산 좌표 및 구해야 하는 넓이의 정답은 그림에 노출하지 않는다."
+  ]
+}
