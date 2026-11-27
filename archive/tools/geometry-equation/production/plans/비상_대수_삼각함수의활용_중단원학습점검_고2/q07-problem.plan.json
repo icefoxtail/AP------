@@ -1,0 +1,328 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Br",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "40"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Cr",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "110"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lb",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "Br"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lc",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "Cr"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lb",
+          "lc"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Mbc",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Mba",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "A"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lbc",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lba",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "pb",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "Mbc",
+          "lbc"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "pa",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "Mba",
+          "lba"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "pb",
+          "pa"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lake",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "lake"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O"
+  ],
+  "hiddenPointNames": ["O"],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "pondArea",
+        "fill": "BLUE",
+        "shapes": [
+          {"loop": {"start": "B", "steps": [{"to": "B", "arc": {"center": "O", "side": "FULL"}}]}}
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "bang",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 40,
+        "label": "40",
+        "style": "ARC"
+      },
+      {
+        "id": "cang",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "value": 110,
+        "label": "110",
+        "style": "ARC"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "bc10",
+        "ownerSegment": "sBC",
+        "text": "10",
+        "unit": "m"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 570,
+    "height": 480
+  },
+  "caption": "원문의 삼각형에 주어진 길이와 각도를 표시한다.",
+  "accessibilityDescription": "원문 조건의 삼각형을 선분과 각 호로 표시한다.",
+  "sourceQuote": "오른쪽 그림과 같이 원 모양의 연못가에",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "세 지점 A B C는 원형 연못가에 존재",
+      "mappedTo": "displayCircles"
+    },
+    {
+      "id": "c2",
+      "condition": "∠B=40°,∠C=110°",
+      "mappedTo": "planeMarks.angles"
+    },
+    {
+      "id": "c3",
+      "condition": "BC=10 m",
+      "mappedTo": "planeMarks.expressionLabels"
+    }
+  ],
+  "newVisualInformation": [
+    "원에 내접하는 ABC와 B40° C110°",
+    "BC=10m 길이 표식; 연못 장식 배경 제거"
+  ]
+}

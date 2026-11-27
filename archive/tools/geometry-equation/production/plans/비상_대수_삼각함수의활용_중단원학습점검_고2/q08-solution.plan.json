@@ -1,0 +1,311 @@
+{
+  "capability": "composite-panels-v1",
+  "caption": "첫째 등식은 a=b인 이등변삼각형, 둘째 등식은 A가 직각인 삼각형을 나타낸다.",
+  "accessibilityDescription": "첫 번째 삼각형의 BC와 CA는 같은 길이로 표시되며 두 번째 삼각형은 A에 직각 표식이 있다.",
+  "sourceQuote": "다음 등식을 만족시키는 삼각형",
+  "sourceConditions": [
+    {
+      "id": "sym",
+      "condition": "⑴ a=b인 이등변삼각형",
+      "mappedTo": "panels"
+    },
+    {
+      "id": "right",
+      "condition": "⑵ ∠A=90°인 직각삼각형",
+      "mappedTo": "panels"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 두 등식의 기하학적 결론을 서로 다른 패널로 표현",
+    "첫 패널의 같은 변 길이 눈금, 둘째의 A 직각 표식"
+  ],
+  "panels": [
+    {
+      "caption": {
+        "text": "⑴ a=b"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "planeMarks": {
+          "equalLengths": [
+            {
+              "id": "eq",
+              "count": 1,
+              "segments": [
+                "sBC",
+                "sCA"
+              ]
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "a",
+              "ownerSegment": "sBC",
+              "text": "a"
+            },
+            {
+              "id": "b",
+              "ownerSegment": "sCA",
+              "text": "b"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 500,
+          "height": 430
+        },
+        "caption": "두 변 BC와 CA의 길이가 같다.",
+        "accessibilityDescription": "C를 꼭짓점으로 두 변이 같은 이등변삼각형.",
+        "sourceQuote": "다음 등식을 만족시키는 삼각형",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "a=b",
+            "mappedTo": "planeMarks.equalLengths"
+          }
+        ],
+        "newVisualInformation": [
+          "BC와 CA에 같은 길이 한 줄 눈금"
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "⑵ ∠A=90°"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "planeMarks": {},
+        "rightAngles": [
+          {
+            "id": "rightA",
+            "refs": [
+              "B",
+              "A",
+              "C"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 500,
+          "height": 430
+        },
+        "caption": "A에서 두 변이 수직이다.",
+        "accessibilityDescription": "A가 직각인 삼각형 ABC.",
+        "sourceQuote": "다음 등식을 만족시키는 삼각형",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "∠A=90°",
+            "mappedTo": "rightAngles"
+          }
+        ],
+        "newVisualInformation": [
+          "A에 직각 표식"
+        ]
+      }
+    }
+  ]
+}
