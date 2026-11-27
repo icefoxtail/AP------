@@ -1,0 +1,37 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "Y",
+        "mean": "70",
+        "sd": "10",
+        "label": "Y"
+      }
+    ],
+    "ticks": [
+      "55",
+      "70"
+    ],
+    "shades": [
+      {
+        "from": "55",
+        "to": null
+      }
+    ],
+    "zAxis": true
+  },
+  "caption": "일차변환 Y=2X−30의 평균70·표준편차10 및 P(Y≥55), z≥−1.5",
+  "sourceConditions": [
+    {
+      "id": "N22",
+      "condition": "일차변환 Y=2X−30의 평균70·표준편차10 및 P(Y≥55), z≥−1.5",
+      "mappedTo": "chart.curves,chart.ticks,chart.shades"
+    }
+  ],
+  "newVisualInformation": [
+    "일차변환 Y=2X−30의 평균70·표준편차10 및 P(Y≥55), z≥−1.5"
+  ],
+  "accessibilityDescription": "일차변환 Y=2X−30의 평균70·표준편차10 및 P(Y≥55), z≥−1.5"
+}

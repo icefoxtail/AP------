@@ -1,0 +1,56 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "X",
+        "mean": "500",
+        "sd": "5",
+        "label": "X"
+      }
+    ],
+    "ticks": [
+      "495",
+      "500",
+      "509"
+    ],
+    "shades": [
+      {
+        "from": null,
+        "to": "495",
+        "color": "BLUE"
+      },
+      {
+        "from": "509",
+        "to": null,
+        "color": "WARM"
+      }
+    ],
+    "zAxis": true,
+    "areaLabels": [
+      {
+        "shade": 0,
+        "text": "0.16",
+        "source": "TABLE"
+      },
+      {
+        "shade": 1,
+        "text": "0.04",
+        "source": "TABLE"
+      }
+    ]
+  },
+  "caption": "과일 상자 평균 N(500,5²)의 불량 판정 X̄<495 또는 X̄>509 양쪽 꼬리",
+  "sourceConditions": [
+    {
+      "id": "N19",
+      "condition": "과일 상자 평균 N(500,5²)의 불량 판정 X̄<495 또는 X̄>509 양쪽 꼬리",
+      "mappedTo": "chart.curves,chart.ticks,chart.shades"
+    }
+  ],
+  "newVisualInformation": [
+    "과일 상자 평균 N(500,5²)의 불량 판정 X̄<495 또는 X̄>509 양쪽 꼬리"
+  ],
+  "accessibilityDescription": "과일 상자 평균 N(500,5²)의 불량 판정 X̄<495 또는 X̄>509 양쪽 꼬리"
+}
