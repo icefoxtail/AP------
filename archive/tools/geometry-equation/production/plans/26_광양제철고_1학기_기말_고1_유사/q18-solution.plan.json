@@ -1,0 +1,57 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "points": [
+          {
+            "id": "K",
+            "value": "-2/3",
+            "hideName": true,
+            "showValue": true
+          },
+          {
+            "id": "T",
+            "value": "2",
+            "hideName": true,
+            "showValue": true
+          }
+        ],
+        "band": false,
+        "label": "절댓값 분기점"
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1/6",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "label": "최종 해"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "절댓값 분기와 열린 해"
+  },
+  "caption": "두 절댓값의 부호는 x=-2/3, 2에서 바뀐다. 세 구간의 부등식을 풀어 합치면 x>1/6이고 1/6은 열린 끝점이다.",
+  "accessibilityDescription": "두 절댓값의 부호는 x=-2/3, 2에서 바뀐다. 세 구간의 부등식을 풀어 합치면 x>1/6이고 1/6은 열린 끝점이다.",
+  "sourceConditions": [
+    {
+      "id": "geometry",
+      "condition": "√완전제곱의 절댓값 변환과 분기점 -2/3,2; 전체 해 x>1/6.",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 절댓값의 부호는 x=-2/3, 2에서 바뀐다. 세 구간의 부등식을 풀어 합치면 x>1/6이고 1/6은 열린 끝점이다."
+  ]
+}

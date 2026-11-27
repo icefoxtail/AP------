@@ -1,0 +1,119 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "6",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "2",
+          "-5"
+        ]
+      },
+      {
+        "coefficients": [
+          "-6",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-2/3",
+        "y": "16/3"
+      },
+      {
+        "x": "2",
+        "y": "-8"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      4
+    ],
+    "viewport": [
+      -3,
+      4,
+      -11,
+      8
+    ],
+    "functionName": "f",
+    "referenceLines": [
+      {
+        "id": "g",
+        "slope": "1",
+        "intercept": "1",
+        "intersectionX": [
+          "1/6"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "K",
+        "x": "-2/3",
+        "y": "16/3"
+      },
+      {
+        "id": "T",
+        "x": "2",
+        "y": "-8"
+      },
+      {
+        "id": "I",
+        "x": "1/6",
+        "y": "7/6"
+      }
+    ],
+    "exactCoordinates": {
+      "K": [
+        "-2/3",
+        "16/3"
+      ],
+      "T": [
+        "2",
+        "-8"
+      ],
+      "I": [
+        "1/6",
+        "7/6"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "2|x-2|-|3x+2|<x+1에서 왼쪽 조각함수 f와 오른쪽 직선 g의 실제 교점은 x=1/6 한 개다. 세 조각의 그래프를 비교하면 x>1/6이 해이다.",
+  "accessibilityDescription": "x=-2/3, x=2에서 꺾이는 실선 조각함수와 기울기 1인 직선이 x=1/6에서 만나며, 실제 정의식 계수를 그리기 필드로 검산한다.",
+  "sourceConditions": [
+    {
+      "id": "break",
+      "condition": "절댓값 분기점은 -2/3,2이며 연속인 세 일차식이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.breakpoints"
+      ]
+    },
+    {
+      "id": "intersection",
+      "condition": "2|x-2|-|3x+2|<x+1의 등호 경계 x=1/6.",
+      "mappedTo": [
+        "graphPlan.referenceLines",
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "절댓값 두 항의 그래프가 분기점에서 이어지는 방향과 직선의 교점 및 양쪽 부등호를 보여 준다."
+  ]
+}

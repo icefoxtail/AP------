@@ -1,0 +1,142 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "a=1, b=2인 예시"
+      },
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "0",
+            "2",
+            "1"
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "domain": [
+            -2,
+            2
+          ],
+          "viewport": [
+            -2.5,
+            2.5,
+            -5,
+            9
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "requiredPoints": [
+            {
+              "id": "O",
+              "x": 0,
+              "y": 0
+            },
+            {
+              "id": "V",
+              "x": -1,
+              "y": -1
+            }
+          ],
+          "overlays": {
+            "quadrants": [
+              {
+                "id": "qi",
+                "quadrant": 1,
+                "label": "제1사분면",
+                "fill": "LIGHT"
+              },
+              {
+                "id": "qiii",
+                "quadrant": 3,
+                "label": "제3사분면",
+                "fill": "LIGHT"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "a=−1, b=2인 예시"
+      },
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "0",
+            "2",
+            "-1"
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "domain": [
+            -2,
+            2
+          ],
+          "viewport": [
+            -2.5,
+            2.5,
+            -9,
+            5
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "requiredPoints": [
+            {
+              "id": "O",
+              "x": 0,
+              "y": 0
+            },
+            {
+              "id": "V",
+              "x": 1,
+              "y": 1
+            }
+          ],
+          "overlays": {
+            "quadrants": [
+              {
+                "id": "qi",
+                "quadrant": 1,
+                "label": "제1사분면",
+                "fill": "LIGHT"
+              },
+              {
+                "id": "qiii",
+                "quadrant": 3,
+                "label": "제3사분면",
+                "fill": "LIGHT"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "caption": "a=1,b=2인 위로 열린 포물선과 a=−1,b=2인 아래로 열린 포물선은 모두 원점과 제1·3사분면을 지난다. 두 대표 그림은 b>0 조건의 충분성을 보여 준다.",
+  "accessibilityDescription": "두 좌표평면을 세로로 비교한다. 각각 y=x²+2x, y=−x²+2x이며 원점과 1·3사분면에 곡선이 실제로 지나가는 부분을 그린다.",
+  "sourceConditions": [
+    {
+      "id": "quadrants",
+      "condition": "c=0, b>0이면 x가 원점에 가까운 양수/음수일 때 y=x(ax+b)는 x와 같은 부호이다.",
+      "mappedTo": [
+        "panel-1",
+        "panel-2"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원점과 제1·제3사분면을 실제로 지나는 두 부호의 대표 곡선을 따로 제시하고 사분면을 연회색으로 구분한다."
+  ]
+}

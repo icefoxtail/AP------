@@ -1,0 +1,337 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "11"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "11"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "EF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "FG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "GH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "HE",
+      "refs": [
+        "H",
+        "E"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 500
+  },
+  "pointNames": {
+    "E": "A'",
+    "F": "B'",
+    "G": "C'",
+    "H": "D'"
+  },
+  "rightAngles": [
+    {
+      "id": "rAB",
+      "refs": [
+        "B",
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "rEF",
+      "refs": [
+        "F",
+        "E",
+        "H"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "diag1",
+        "ownerSegment": "AC",
+        "text": "sqrt(170)"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "width1",
+        "from": "A",
+        "to": "B",
+        "label": "7",
+        "side": "BELOW",
+        "style": "BAR"
+      },
+      {
+        "id": "height1",
+        "from": "B",
+        "to": "C",
+        "label": "11",
+        "side": "RIGHT",
+        "style": "BAR"
+      },
+      {
+        "id": "width2",
+        "from": "E",
+        "to": "F",
+        "label": "3",
+        "side": "BELOW",
+        "style": "BAR"
+      },
+      {
+        "id": "height2",
+        "from": "F",
+        "to": "G",
+        "label": "15",
+        "side": "RIGHT",
+        "style": "BAR"
+      }
+    ]
+  },
+  "caption": "직사각형 ABCD는 7×11, 대각선 sqrt(170); 가로 4 감소·세로 4 증가한 A'B'C'D'는 3×15이므로 넓이는 45이다.",
+  "accessibilityDescription": "원래와 변경된 직사각형의 네 변을 실선, 원래 대각선을 점선으로 그리고 두 직사각형 각각 가로·세로 치수선을 실제 엔진 필드로 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "geometry",
+      "condition": "x²+y²=170, y−x=4에서 (x,y)=(7,11), (x−4,y+4)=(3,15).",
+      "mappedTo": [
+        "AB",
+        "BC",
+        "AC",
+        "EF",
+        "FG",
+        "width1",
+        "height1",
+        "diag1",
+        "width2",
+        "height2",
+        "rAB",
+        "rEF"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원래 직사각형의 네 변·실선 대각선과 새 직사각형의 네 변을 각각 실선으로 그리고 모든 가로·세로 길이 및 대각선 값을 선분 옆에 표시한다."
+  ]
+}

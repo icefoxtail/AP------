@@ -1,0 +1,56 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "t",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "13",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ],
+        "label": "텐트 수 하한"
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "17",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "label": "텐트 수 상한"
+      },
+      {
+        "kind": "RESULT",
+        "integerPoints": true,
+        "label": "가능한 정수 t"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "텐트 정수 범위"
+  },
+  "caption": "텐트 수는 13≤t<17의 정수이다. N=6t+10이므로 양 끝 학생 수 88과 106을 얻는다.",
+  "accessibilityDescription": "텐트 수는 13≤t<17의 정수이다. N=6t+10이므로 양 끝 학생 수 88과 106을 얻는다.",
+  "sourceConditions": [
+    {
+      "id": "geometry",
+      "condition": "8(t−3)<6t+10≤8(t−2)의 정수 텐트 범위.",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "텐트 수는 13≤t<17의 정수이다. N=6t+10이므로 양 끝 학생 수 88과 106을 얻는다."
+  ]
+}
