@@ -5,6 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { execFileSync, spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { classifyRegistrationFailure, issueBody, shouldTriage } from '../tools/ci/archive-registration-assistant.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const workflow = name => fs.readFileSync(path.join(root, '.github/workflows', name), 'utf8');
@@ -13,6 +14,35 @@ const pages = workflow('archive-pages-release.yml');
 const problemBankMeta = workflow('problem-bank-meta.yml');
 const compatibility = workflow('archive-reviewed-exam-meta-register.yml');
 const legacy = workflow('archive-reviewed-apply.yml');
+const assistant = workflow('archive-registration-assistant.yml');
+
+test('registration assistant diagnoses one SVG source blocker without copying arbitrary logs into issues', () => {
+  const finding = classifyRegistrationFailure('secret=DO_NOT_COPY SVG_STUDENT_LANGUAGE_CONTRACT_FAIL:assets/images/21_팔마중/q23.svg:SVG_SCALE_GUIDANCE_FORBIDDEN@title\\n');
+  assert.deepEqual({ type: finding.type, code: finding.code, asset: finding.asset, location: finding.location },
+    { type: 'SOURCE_VALIDATION', code: 'SVG_SCALE_GUIDANCE_FORBIDDEN', asset: 'archive/assets/images/21_팔마중/q23.svg', location: 'title' });
+  const body = issueBody({ id: 123, repository: 'o/r' }, { id: 456, name: 'register' }, finding);
+  assert.match(body, /SVG_SCALE_GUIDANCE_FORBIDDEN/);
+  assert.doesNotMatch(body, /DO_NOT_COPY/);
+  assert.match(body, /actions\/runs\/123\/job\/456/);
+});
+
+test('registration assistant ignores stale and pull-request workflow runs', () => {
+  const newest = { id: 42 };
+  assert.equal(shouldTriage({ id: 41, head_branch: 'main', event: 'push' }, newest), false);
+  assert.equal(shouldTriage({ id: 42, head_branch: 'main', event: 'pull_request' }, newest), false);
+  assert.equal(shouldTriage({ id: 42, head_branch: 'main', event: 'push' }, newest), true);
+  assert.equal(classifyRegistrationFailure('NATIVE_COMMAND_FAILED:sharedDb:1').location, 'sharedDb');
+});
+
+test('registration assistant only triages and never launches or bypasses the registration writer', () => {
+  assert.match(assistant, /workflow_run:/);
+  assert.match(assistant, /issues: write/);
+  assert.doesNotMatch(assistant, /archive-registration-writer\.mjs|gh workflow run|--force/);
+  const invoked = spawnSync(process.execPath, ['tools/ci/archive-registration-assistant.mjs'],
+    { cwd: root, encoding: 'utf8', env: { ...process.env, GITHUB_REPOSITORY: '' } });
+  assert.equal(invoked.status, 1, 'the assistant CLI must execute instead of silently doing nothing');
+  assert.match(invoked.stderr, /GITHUB_REPOSITORY required/);
+});
 
 // Read only the small YAML blocks under test; execution below uses the workflow's actual shell.
 function job(text, id) {

@@ -8,6 +8,7 @@ on:
     branches: [main]
     paths:
       - 'tools/ci/archive-registration-writer.mjs'
+      - 'tools/ci/archive-registration-assistant.mjs'
       - 'tools/ci/archive-registration-build-db.mjs'
       - 'tools/ci/archive-registration-whitespace.mjs'
       - 'tools/ci/git-push-derived-with-retry.mjs'
@@ -32,6 +33,7 @@ on:
       - 'tests/item-4slot-runtime.test.cjs'
       - '.archive-meta-register/auto/config.json'
       - '.github/workflows/archive-main-auto-meta.yml'
+      - '.github/workflows/archive-registration-assistant.yml'
       - '.github/workflows/archive-reviewed-exam-meta-register.yml'
       - '.github/workflows/archive-reviewed-apply.yml'
       - '.github/workflows/archive-pages-release.yml'
