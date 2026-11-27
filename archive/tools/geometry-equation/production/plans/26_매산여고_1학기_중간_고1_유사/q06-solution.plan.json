@@ -1,0 +1,104 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "k=-1 접점 x=-1"
+      },
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "1",
+            "2",
+            "1"
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "domain": [
+            -4,
+            2
+          ],
+          "viewport": [
+            -4,
+            2,
+            -1,
+            8
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "overlays": {
+            "points": [
+              {
+                "id": "T",
+                "curveX": "-1",
+                "coordinates": true
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "k=4 접점 x=4"
+      },
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "16",
+            "-8",
+            "1"
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "domain": [
+            1,
+            7
+          ],
+          "viewport": [
+            1,
+            7,
+            -1,
+            8
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "overlays": {
+            "points": [
+              {
+                "id": "T",
+                "curveX": "4",
+                "coordinates": true
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "caption": "판별식 D=0인 k=-1과 k=4 두 경우에 포물선이 x축에 각각 한 점에서 접한다.",
+  "accessibilityDescription": "좌우 두 패널에 y=(x+1)², y=(x−4)²를 그리고 x축과의 유일한 접점 (−1,0), (4,0)을 각각 표시했다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "판별식 D=0인 k=-1과 k=4 두 경우에 포물선이 x축에 각각 한 점에서 접한다.",
+      "mappedTo": [
+        "panel-1",
+        "panel-2"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 경우의 접점을 구별된 패널로 검증하며 다른 교점은 만들지 않는다."
+  ]
+}

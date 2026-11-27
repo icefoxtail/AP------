@@ -1,0 +1,144 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "가: x축과 두 교점"
+      },
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "3",
+            "2",
+            "-1"
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "domain": [
+            -3,
+            5
+          ],
+          "viewport": [
+            -4,
+            6,
+            -3,
+            8
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "requiredPoints": [
+            { "id": "A", "x": -1, "y": 0 },
+            { "id": "B", "x": 3, "y": 0 }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "나: 교점 없음"
+      },
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "3",
+            "2",
+            "-1"
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "domain": [
+            -3,
+            5
+          ],
+          "viewport": [
+            -4,
+            6,
+            -3,
+            9
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "overlays": {
+            "lines": [
+              {
+                "id": "L",
+                "slope": "1",
+                "intercept": "5"
+              }
+            ],
+            "points": []
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "다: 교점 두 개"
+      },
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "3",
+            "2",
+            "-1"
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "domain": [
+            -3,
+            5
+          ],
+          "viewport": [
+            -4,
+            6,
+            -3,
+            9
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "overlays": {
+            "lines": [
+              {
+                "id": "L",
+                "slope": "3",
+                "intercept": "-1"
+              }
+            ],
+            "points": []
+          }
+        }
+      }
+    }
+  ],
+  "caption": "세 직선 (가) x축, (나) y=x+5, (다) y=3x−1과 이차함수 y=−x²+2x+3의 교점 존재를 비교했다.",
+  "accessibilityDescription": "세 패널 모두 같은 이차함수와 각기 다른 직선을 그렸다. (가)와 (다)는 두 점에서 만나고 (나)는 만나지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "세 직선 (가) x축, (나) y=x+5, (다) y=3x−1과 이차함수 y=−x²+2x+3의 교점 존재를 비교했다.",
+      "mappedTo": [
+        "panel-1",
+        "panel-2",
+        "panel-3"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 기출의 판별식 비교를 동일 포물선의 세 경우로 분리하여 교점 누락 여부를 식별한다."
+  ]
+}

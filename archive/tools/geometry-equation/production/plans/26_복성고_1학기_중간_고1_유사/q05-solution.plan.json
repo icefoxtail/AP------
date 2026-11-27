@@ -1,0 +1,58 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 4
+      },
+      "height": 5,
+      "names": "FGHEBCDA"
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "F",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "F",
+      "to": "C",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "A",
+      "to": "C",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "caption": "직육면체 ABCD–EFGH에서 세 면 대각선 AF, FC, AC로 만들어진 삼각형 AFC를 굵게 나타냈다.",
+  "accessibilityDescription": "직육면체의 윗면 A B C D와 아랫면 E F G H를 잇는 숨은 모서리는 점선, 삼각형 A F C를 이루는 면의 대각선 세 개는 굵게 표시한다. 길이 비례는 조건을 만족하는 한 예이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "직육면체 ABCD–EFGH",
+      "mappedTo": [
+        "solids"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "삼각형 AFC의 세 변 AF,FC,AC는 면 대각선",
+      "mappedTo": [
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "길이 a,b,c는 식에서 미정이므로 a=2,b=4,c=5인 조건 충족 예시 형태로 제시한다.",
+    "입체가 가리는 모서리는 점선으로, 핵심 세 면 대각선은 굵게 표시한다."
+  ]
+}
