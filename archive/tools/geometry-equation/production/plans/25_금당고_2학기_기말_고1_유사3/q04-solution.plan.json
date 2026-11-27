@@ -1,0 +1,21 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      { "id": "P" },
+      { "id": "Q" }
+    ],
+    "disjoint": [["P", "Q"]]
+  },
+  "caption": "P⊂Qᶜ는 P와 Q에 동시에 속하는 원소가 없다는 뜻이다. 따라서 p이면 q가 아니고, 대우로 q이면 p가 아니므로 q→¬p가 참이다.",
+  "accessibilityDescription": "전체집합 U 안에 서로 겹치지 않는 두 원 P와 Q가 있다. P에 속하는 점은 Q에 속하지 않고 Q에 속하는 점도 P에 속하지 않는다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "P⊂Qᶜ", "mappedTo": "diagram.disjoint=[[P,Q]], diagram.sets=[P,Q]" },
+    { "id": "c2", "condition": "p→¬q와 그 대우 q→¬p는 모두 참", "mappedTo": "diagram.disjoint의 양 방향 소속 배제 관계" }
+  ],
+  "newVisualInformation": [
+    "P와 Q가 겹치지 않으므로 P 안쪽에서 Q 바깥쪽으로, Q 안쪽에서 P 바깥쪽으로 각각 참인 함의를 읽을 수 있다.",
+    "대우가 문장만 뒤집는 조작이 아니라 같은 두 집합의 서로소 관계임을 보여 준다."
+  ]
+}

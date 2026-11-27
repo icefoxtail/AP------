@@ -1,0 +1,43 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "개수 조건",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": { "value": "56", "state": "CLOSED" },
+            "hi": { "value": "76", "state": "CLOSED" }
+          }
+        ],
+        "integerPoints": true
+      },
+      {
+        "kind": "POINTS",
+        "label": "약수 조건",
+        "band": false,
+        "within": 1,
+        "points": [
+          { "id": "K1", "value": "60", "hideName": true },
+          { "id": "K2", "value": "63", "hideName": true }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": { "text": "개수 범위와 약수 조건" },
+  "caption": "A∩B의 원소 합이 10이면 k는 21의 배수이거나 30의 배수이므로 7∈C, A∩C={7}이다. 따라서 11≤n(A∪C)≤13은 56≤k≤76을 주고, 그 범위에서 가능한 값은 60과 63뿐이다.",
+  "accessibilityDescription": "위 수직선은 56부터 76까지의 닫힌 정수 범위이며, 아래 수직선은 집합의 약수 조건을 만족하는 60과 63에 점을 찍어 표시한다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "A={2,3,5,7}, 가능한 A∩B는 {3,7} 또는 {2,3,5}", "mappedTo": "numberLine.rows[1].points[K2]=63, [K1]=60" },
+    { "id": "c2", "condition": "두 경우 모두 k≥21, C는 7의 배수 집합 ⇒ A∩C={7}", "mappedTo": "numberLine.rows[0]의 개수 조건에서 A∩C의 중복 원소 7 한 개를 제외" },
+    { "id": "c3", "condition": "11≤3+floor(k/7)≤13 ⇒ 56≤k≤76", "mappedTo": "numberLine.rows[0].pieces[0]=[56,76], integerPoints=true" },
+    { "id": "c4", "condition": "60과 63은 모두 정수 구간 [56,76] 안에 있음", "mappedTo": "numberLine.rows[1].within=1" }
+  ],
+  "newVisualInformation": [
+    "A∩C={7}의 중복을 제외하면 집합 개수 조건이 연속된 정수 범위를 정함을 보여 준다.",
+    "그 범위에서 A∩B의 두 소수 조합에 해당하는 값이 각각 60,63임을 분리해 표시한다."
+  ]
+}
