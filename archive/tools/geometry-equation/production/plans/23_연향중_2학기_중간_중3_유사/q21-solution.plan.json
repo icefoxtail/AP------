@@ -1,0 +1,296 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "H",
+          "U"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "40"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "37"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lGround",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "G",
+          "G2"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lEye",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "H",
+          "U"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "K",
+          "lGround"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "K",
+          "lEye"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "G",
+    "H",
+    "U",
+    "K",
+    "F",
+    "E",
+    "G2"
+  ],
+  "displaySegments": [
+    {
+      "id": "sGH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "sHK",
+      "refs": [
+        "H",
+        "K"
+      ]
+    },
+    {
+      "id": "sGF",
+      "refs": [
+        "G",
+        "F"
+      ]
+    },
+    {
+      "id": "sKF",
+      "refs": [
+        "K",
+        "F"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sHE",
+      "refs": [
+        "H",
+        "E"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sKE",
+      "refs": [
+        "K",
+        "E"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayCircles": [],
+  "rightAngles": [
+    {
+      "id": "rG",
+      "refs": [
+        "H",
+        "G",
+        "F"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "rE",
+      "refs": [
+        "H",
+        "E",
+        "K"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aH",
+        "refs": [
+          "U",
+          "H",
+          "K"
+        ],
+        "value": 37,
+        "label": "37",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "rope",
+        "ownerSegment": "sHK",
+        "text": "40",
+        "unit": "m"
+      },
+      {
+        "id": "hand",
+        "ownerSegment": "sGH",
+        "text": "1.5",
+        "unit": "m"
+      }
+    ],
+    "arcs": [],
+    "regions": [],
+    "equalLengths": [],
+    "parallels": [],
+    "facts": []
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "연줄의 실제 기울기는 37°; 원문 반올림 sin37°≈0.60으로 높이 40×0.60+1.5=25.5m를 계산한다.",
+  "hiddenPointNames": [
+    "U",
+    "G2",
+    "E"
+  ],
+  "hiddenPointStyle": "NONE",
+  "accessibilityDescription": "연줄의 실제 기울기는 37°; 원문 반올림 sin37°≈0.60으로 높이 40×0.60+1.5=25.5m를 계산한다.",
+  "sourceConditions": [
+    {
+      "id": "q21-solution",
+      "condition": "손높이에서 연까지의 수직 높이는 $40\\sin 37^\\circ = 40\\times 0.60 = 24,\\mathrm{m}$이다. 지면에서 손까지의 높이 $1.5,\\mathrm{m}$를 더하면 $24 + 1.5 = 25.5,\\mathrm{m}$이다.",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    },
+    {
+      "id": "q21-original-svg",
+      "condition": "archive/assets/images/23_연향중_2학기_중간_중3_유사/q21-problem.svg",
+      "mappedTo": "DRAWN_FEATURE_PARITY_STATIC"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 해설에서 결정적 관계를 별도 구성"
+  ]
+}

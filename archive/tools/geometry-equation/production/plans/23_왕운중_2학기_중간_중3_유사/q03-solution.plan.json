@@ -1,0 +1,52 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "-8",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 2,
+        "y": -5
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -2,
+      6,
+      -7,
+      14
+    ]
+  },
+  "caption": "왕운중 3번 해설 기하 조건",
+  "accessibilityDescription": "왕운중 3번 해설 기하 조건",
+  "sourceConditions": [
+    {
+      "id": "q03-solution",
+      "condition": "$y = 2(x^2-4x)+3 = 2{(x-2)^2-4}+3 = 2(x-2)^2 - 5$이므로 꼭짓점의 좌표는 $(2, -5)$이다. 따라서 $p=2$, $q=-5$이므로 $p+q = 2 + (-5) = -3$이다. 정답은 ①이다.",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 해설에서 결정적 관계를 별도 구성"
+  ]
+}

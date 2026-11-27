@@ -1,0 +1,52 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-4",
+          "4",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 2,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -2,
+      6,
+      -10,
+      3
+    ]
+  },
+  "caption": "왕운중 5번 해설 기하 조건",
+  "accessibilityDescription": "왕운중 5번 해설 기하 조건",
+  "sourceConditions": [
+    {
+      "id": "q05-solution",
+      "condition": "$y = -(x^2-4x)+a = -(x-2)^2 + a + 4$이므로 꼭짓점은 $(2, a+4)$이다. 꼭짓점이 $x$축 위에 있으므로 $a+4=0$, 즉 $a=-4$이다. 정답은 ②이다.",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 해설에서 결정적 관계를 별도 구성"
+  ]
+}
