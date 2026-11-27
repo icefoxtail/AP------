@@ -1,0 +1,54 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "X1",
+        "mean": "22",
+        "sd": "2",
+        "label": "X1"
+      },
+      {
+        "id": "X2",
+        "mean": "22",
+        "sd": "3",
+        "label": "X2"
+      }
+    ],
+    "ticks": [
+      "19",
+      "22",
+      "25"
+    ],
+    "shades": [
+      {
+        "curve": "X1",
+        "from": "25",
+        "to": null
+      },
+      {
+        "curve": "X2",
+        "from": null,
+        "to": "19"
+      }
+    ]
+  },
+  "caption": "모평균 m=22, 표본평균 X1~N(22,2²)의 X1≥25 우측꼬리와 X2~N(22,3²)의 X2≤19 좌측꼬리를 분리한다.",
+  "sourceConditions": [
+    {
+      "id": "q12-solution-source",
+      "condition": "모평균 m=22, 표본평균 X1~N(22,2²)의 X1≥25 우측꼬리와 X2~N(22,3²)의 X2≤19 좌측꼬리를 분리한다.",
+      "mappedTo": [
+        "chart.kind",
+        "chart.curves",
+        "chart.ticks",
+        "chart.shades"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "모평균 m=22, 표본평균 X1~N(22,2²)의 X1≥25 우측꼬리와 X2~N(22,3²)의 X2≤19 좌측꼬리를 분리한다."
+  ],
+  "accessibilityDescription": "모평균 m=22, 표본평균 X1~N(22,2²)의 X1≥25 우측꼬리와 X2~N(22,3²)의 X2≤19 좌측꼬리를 분리한다."
+}
