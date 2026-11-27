@@ -122,7 +122,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 원의 중심에서 같은 거리에 있는 두 현의 길이는 같다.\n두 현 $\\overline{AB}$와 $\\overline{AC}$에 이르는 거리가 같으므로 $\\overline{AB}=\\overline{AC}$이다.\n따라서 $\\triangle ABC$는 이등변삼각형이고 $\\angle B=\\angle C$이다.\n$\\angle B=\\angle C=\\dfrac{180^\\circ-52^\\circ}{2}=64^\\circ$이므로 $x=64^\\circ$이다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q3.png",
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q3-problem.svg",
     "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q3-solution-v2.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
@@ -145,7 +145,10 @@ window.questionBank = [
     "decisiveStep": "중심에서 두 현까지의 같은 거리를 AB=AC로 옮긴 뒤 이등변삼각형의 두 밑각과 내각합으로 목표각을 구한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "문제 원본 도형: 52°인 꼭짓각과 같은 중심거리의 두 현, 구할 각 x.",
+    "imageCaption": "문제 원본 도형: 52°인 꼭짓각과 같은 중심거리의 두 현, 구할 각 x.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -172,7 +175,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 중심에서 현에 내린 수선은 현을 이등분하고, 길이가 같은 현은 중심에서의 거리도 같다.\n$\\overline{OA}=10\\rm\\,cm$, $\\overline{OM}=8\\rm\\,cm$이므로 직각삼각형 $OAM$에서 $AM=\\sqrt{10^2-8^2}=6\\rm\\,cm$이다.\n따라서 $AB=12\\rm\\,cm$이고 $CD=12\\rm\\,cm$이다. 같은 길이의 현이므로 중심 $O$에서 현 $CD$까지의 거리도 $8\\rm\\,cm$이다.\n그러므로 $\\triangle OCD$의 넓이는 $\\dfrac12\\times12\\times8=48\\rm\\,cm^2$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q4.png",
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q4-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
@@ -195,7 +198,10 @@ window.questionBank = [
     "decisiveStep": "반지름10과 수선거리8로 현의 절반6을 얻고 AB=CD를 이용해 밑변12와 높이8을 다른 현의 삼각형으로 옮겨 넓이를 구한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "문제 원본 도형: 두 현 AB=CD, 수선 OM=8cm, 반지름 OD=10cm.",
+    "imageCaption": "문제 원본 도형: 두 현 AB=CD, 수선 OM=8cm, 반지름 OD=10cm.",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -222,7 +228,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 한 점에서 원에 그은 두 접선의 길이는 같다.\n그림에서 $AP=AR=9\\rm\\,cm$, $BQ=BP=7\\rm\\,cm$, $CR=CQ=12\\rm\\,cm$이다.\n따라서 $AB=9+7=16$, $BC=7+12=19$, $CA=12+9=21$이다.\n둘레는 $16+19+21=56\\rm\\,cm$이다.\n따라서 정답은 ⑤이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q5.png",
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q5-problem.svg",
     "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q5-solution-v2.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
@@ -245,7 +251,10 @@ window.questionBank = [
     "decisiveStep": "세 꼭짓점에서 그은 두 접선의 길이가 같아 접선 조각9·7·12가 각각 두 번 나타나므로 그 합의 두 배로 둘레를 정한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "문제 원본 도형: 세 접점 P·Q·R, 접선 조각 9cm·7cm·12cm.",
+    "imageCaption": "문제 원본 도형: 세 접점 P·Q·R, 접선 조각 9cm·7cm·12cm.",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -272,7 +281,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 접점에서 반지름은 접선에 수직이고, 두 접선의 길이는 같다.\n$OA\\perp PA$, $OB\\perp PB$이고 $PA=PB=6\\rm\\,cm$이다. 또한 $\\angle APB=60^\\circ$이므로 대칭에 의해 $\\angle APO=30^\\circ$이다.\n직각삼각형 $AOP$에서 $OA=PA\\tan30^\\circ=6\\times\\dfrac1{\\sqrt3}=2\\sqrt3\\rm\\,cm$이다.\n사각형 $OAPB$의 각의 합에서 $\\angle AOB=360^\\circ-90^\\circ-90^\\circ-60^\\circ=120^\\circ$이다.\n따라서 부채꼴의 넓이는 $\\dfrac{120}{360}\\pi(2\\sqrt3)^2=4\\pi\\rm\\,cm^2$이다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q6.png",
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q6-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
@@ -295,7 +304,10 @@ window.questionBank = [
     "decisiveStep": "접선과 반지름의 수직·두 접선의 대칭으로30도 직각삼각형을 만들고 tan30으로 반지름을 얻는다. 접선 사이 각60으로 중심각120을 구해 부채꼴 넓이에 연결한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "문제 원본 도형: 각 APB=60°, 접선 길이 PA=6cm, 넓이를 구하는 부채꼴.",
+    "imageCaption": "문제 원본 도형: 각 APB=60°, 접선 길이 PA=6cm, 넓이를 구하는 부채꼴.",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -322,7 +334,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 큰 원 네 개의 중심을 이으면 한 변이 $2\\rm\\,cm$인 정사각형이 되고, 작은 원의 중심은 그 정사각형의 중심이다.\n서로 이웃한 큰 원의 중심 사이의 거리는 $2\\rm\\,cm$이다. 큰 원의 중심과 가운데 점 사이의 거리는 한 변 $2$인 정사각형의 대각선의 절반이므로 $\\sqrt2\\rm\\,cm$이다.\n작은 원의 반지름을 $r$라 하면 큰 원과 작은 원이 접하므로 중심 사이의 거리는 $1+r$이다.\n따라서 $1+r=\\sqrt2$이므로 $r=\\sqrt2-1$이다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q7.png",
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q7-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
@@ -331,8 +343,8 @@ window.questionBank = [
     "problemTypeKey": "PT_TWO_CIRCLES",
     "templateKey": "TM_TWO_CIRCLES_TANGENT_CIRCLE",
     "crossConceptKeys": ["CC_SQUARE","CC_PYTHAGOREAN"],
-    "solutionImageAlt": "해설 그림: 왼쪽에는 정사각형 안에 반지름 1cm인 큰 원 4개와 가운데 작은 원 1개가 있고, 왼쪽 아래 큰 원의 중심에서 가운데 점까지의 선분이 파란색과 주황색으로 나뉘어 있다. 오른쪽에는 그 선분을 곧게 펴서 큰 원의 반지름 1cm는 파란색, 작은 원의 반지름 r은 주황색, 전체 길이는 √2cm로 나타내었다.",
-    "solutionImageCaption": "큰 원 4개의 중심을 이으면 한 변이 2cm인 정사각형이고, 큰 원의 중심에서 가운데 점까지의 거리는 그 대각선의 절반 √2cm이다. 큰 원과 작은 원이 접하므로 같은 거리는 1+r이어서 1+r=√2이다. 정답은 (√2−1)cm이다.",
+    "solutionImageAlt": "큰 원 네 개의 중심을 이은 정사각형의 대각선의 절반이 큰 원과 작은 원의 중심 사이의 거리이다.",
+    "solutionImageCaption": "큰 원 네 개의 중심을 이은 정사각형의 대각선의 절반이 큰 원과 작은 원의 중심 사이의 거리이다.",
     "solutionImageSize": "full"
   ,
     "conditionKeys": [],
@@ -345,7 +357,11 @@ window.questionBank = [
     "decisiveStep": "큰 원 네 중심의 정사각형에서 중심까지의 반대각선 길이를 구하고, 큰 원과 작은 원이 외접하므로 그 거리를 두 반지름의 합1+r로 나타낸다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원본의 정사각형, 서로 접하는 반지름 1cm인 네 원, 가운데 색칠한 작은 원.",
+    "imageCaption": "원본의 정사각형, 서로 접하는 반지름 1cm인 네 원, 가운데 색칠한 작은 원.",
+    "imageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 8,
@@ -372,7 +388,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 지름에 대한 원주각은 $90^\\circ$이고, 원주각의 크기는 대응하는 호의 절반이다.\n$\\angle ACD=50^\\circ$이므로 호 $AD$의 크기는 $100^\\circ$이다.\n$AC$가 지름이므로 호 $ADC$의 크기는 $180^\\circ$이고, 따라서 호 $DC$의 크기는 $180^\\circ-100^\\circ=80^\\circ$이다.\n$\\angle x=\\angle DBC$는 호 $DC$에 대한 원주각이므로 $x=40^\\circ$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q8.png",
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q8-problem.svg",
     "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q8-solution-v2.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
@@ -395,7 +411,10 @@ window.questionBank = [
     "decisiveStep": "주어진 원주각50의 호AD를100으로 바꾸고 지름의 반원180에서 빼 호DC를 구한 뒤 그 호의 원주각으로 되돌린다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "문제 원본 도형: 지름 AC와 50° 원주각 및 구할 x.",
+    "imageCaption": "문제 원본 도형: 지름 AC와 50° 원주각 및 구할 x.",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -873,7 +892,7 @@ window.questionBank = [
     "choices": [],
     "answer": "$5\\rm\\,cm$",
     "solution": "[키포인트] 중심에서 현에 내린 수선은 현을 이등분하며, 그림의 $2\\rm\\,cm$를 이용해 중심에서 현까지의 거리를 반지름으로 나타낸다.\n반지름을 $x\\rm\\,cm$라 하면 현에서 원의 아래쪽 끝까지의 길이가 $2\\rm\\,cm$이므로 중심에서 현까지의 거리는 $(x-2)\\rm\\,cm$이다.\n현의 절반 길이는 그림에서 $4\\rm\\,cm$이다. 따라서 직각삼각형에서 $x^2=(x-2)^2+4^2$이다.\n정리하면 $x^2=x^2-4x+4+16$이므로 $4x=20$, 따라서 $x=5$이다.\n따라서 구하는 값은 $5\\rm\\,cm$이다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q18.png",
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q18-problem.svg",
     "solutionImage": "assets/images/22_신흥중_2학기_기말_중3_기출/q18-solution-v2.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
@@ -882,8 +901,8 @@ window.questionBank = [
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_CHORD_LENGTH",
     "crossConceptKeys": ["CC_PYTHAGOREAN"],
-    "solutionImageAlt": "해설 그림: 원 O의 현 AB에 중심 O에서 내린 수선의 발이 M이고, 수선의 연장이 원과 만나는 점이 T인 그림. 반지름 OA는 x cm, OM은 (x-2) cm, AM은 4 cm, MT는 2 cm로 표시되어 있다. 반지름 OA와 OT에는 같은 파란색 눈금이 있고 직각삼각형 OAM이 주황색으로 칠해져 있다.",
-    "solutionImageCaption": "반지름을 x cm라 하면 MT=2cm이므로 OM=(x-2)cm이다. 현의 절반 AM=4cm이므로 직각삼각형 OAM에서 x²=(x-2)²+4²이다. 이를 정리하여 x를 구한다. 구하는 값은 5cm이다.",
+    "solutionImageAlt": "반지름으로 나타낸 직각삼각형",
+    "solutionImageCaption": "반지름으로 나타낸 직각삼각형",
     "solutionImageSize": "full"
   ,
     "conditionKeys": [],
@@ -896,7 +915,10 @@ window.questionBank = [
     "decisiveStep": "그림의 현 반길이4와 활꼴 높이2를 이용해 중심거리x−2를 만든 뒤 직각삼각형의 피타고라스 식에서 제곱항을 소거하여 반지름을 정한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "문제 원본 도형: 중심 O·현 AB·4cm·2cm·반지름 x.",
+    "imageCaption": "문제 원본 도형: 중심 O·현 AB·4cm·2cm·반지름 x.",
+    "imageSize": "full"
   },
   {
     "id": 19,
@@ -918,7 +940,7 @@ window.questionBank = [
     "choices": [],
     "answer": "원에 내접하지 않는다. 한 내각은 $110^\\circ$이고 그 맞은각은 $60^\\circ$이므로 합이 $170^\\circ$이다.",
     "solution": "[키포인트] 원에 내접하는 사각형의 맞은각의 합은 180도이다.\n① 판정: 이 사각형은 원에 내접하지 않는다.\n② 이유: 오른쪽 아래 120도는 외각이므로 그 내각은 60도이다. 맞은편 110도와의 합이 170도로 180도가 아니므로 원에 내접하지 않는다.",
-    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q19.png",
+    "image": "assets/images/22_신흥중_2학기_기말_중3_기출/q19-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -938,7 +960,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "외각120을 내각60으로 먼저 바꾸고 맞은편110과의 합170을 내접사각형의 필요충분조건180과 비교해 부정한다.",
-    "decisiveStep": "외각120을 내각60으로 먼저 바꾸고 맞은편110과의 합170을 내접사각형의 필요충분조건180과 비교해 부정한다."
+    "decisiveStep": "외각120을 내각60으로 먼저 바꾸고 맞은편110과의 합170을 내접사각형의 필요충분조건180과 비교해 부정한다.",
+    "imageAlt": "문제 원본 도형: 110° 내각과 120° 외각이 있는 사각형.",
+    "imageCaption": "문제 원본 도형: 110° 내각과 120° 외각이 있는 사각형.",
+    "imageSize": "full"
   },
   {
     "id": 20,

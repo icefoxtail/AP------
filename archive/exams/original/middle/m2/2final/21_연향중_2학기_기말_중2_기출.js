@@ -95,8 +95,8 @@ window.questionBank = [
   },
   {
     "id": 3,
-    "imageSize": "tall",
-    "imageAlt": "왼쪽 (1)은 세 가로 평행선이다. 왼쪽 사선에서 위 구간은 3이고 전체는 9이다. 오른쪽 사선의 위는 3.5이고 아래는 x이다. 오른쪽 (2)는 세 세로 평행선이다. 내리는 사선은 6과 x, 올라가는 사선은 5와 4이다.",
+    "imageSize": "full",
+    "imageAlt": "원문 두 그림의 대응선·주어진 길이와 미지수 x",
     "questionType": "객관식",
     "tags": [
       "평행선",
@@ -152,12 +152,13 @@ window.questionBank = [
       "l4": "여러 평행선"
     },
     "primaryMethod": "세 평행선의 대응구간 비례",
-    "decisiveStep": "전체9에서 윗구간3을 빼 아래6을 정하고 두 그림의 대응비로 미지 길이를 구한다."
+    "decisiveStep": "전체9에서 윗구간3을 빼 아래6을 정하고 두 그림의 대응비로 미지 길이를 구한다.",
+    "imageCaption": "원문 두 그림의 대응선·주어진 길이와 미지수 x"
   },
   {
     "id": 4,
-    "imageSize": "tall",
-    "imageAlt": "삼각형 ABC에서 G가 두 중선의 교점이다. BE와 DF는 나란하고 GE는 8 cm이다. BG는 x, DF는 y이다.",
+    "imageSize": "full",
+    "imageAlt": "원문 문제 그림: 무게중심 G, BE∥DF, GE=8 cm, 미지 길이 x와 y",
     "questionType": "객관식",
     "tags": [
       "무게중심",
@@ -215,12 +216,13 @@ window.questionBank = [
       "l4": "무게중심을 이용한 복합도형"
     },
     "primaryMethod": "중선2대1과 작은 삼각형 중점선",
-    "decisiveStep": "BG16과BE24를 구한 뒤 CBE의 중점선 DF12를 합한다."
+    "decisiveStep": "BG16과BE24를 구한 뒤 CBE의 중점선 DF12를 합한다.",
+    "imageCaption": "원문 문제 그림: 무게중심 G, BE∥DF, GE=8 cm, 미지 길이 x와 y"
   },
   {
     "id": 5,
-    "imageSize": "tall",
-    "imageAlt": "AB와 AC는 같은 청록색과 눈금이며 밑변 BC는 10 cm이다.",
+    "imageSize": "full",
+    "imageAlt": "원문 문제 그림: AB=AC, BC=10 cm인 이등변삼각형과 같은 길이 표식",
     "questionType": "객관식",
     "tags": [
       "이등변삼각형",
@@ -264,8 +266,8 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/21_연향중_2학기_기말_중2_기출/q5-solution-visual-v2.svg",
-    "solutionImageAlt": "AB와 AC는 같은 청록색과 눈금이며 밑변 BC는 10 cm이다. A에서 중점 D로 내린 수선은 12 cm이다. 옅게 색칠한 직각삼각형의 아래는 5 cm이다.",
-    "solutionImageCaption": "높이는 60×2÷10=12 cm이고 밑변의 절반은 5 cm이다. 두 같은 변은 각각 √(12²+5²)=13 cm이므로 둘레는 36 cm이고 정답은 ②이다.",
+    "solutionImageAlt": "둘레를 구하는 이등변삼각형: 원문에는 색칠 영역이 없으므로 면 채움 제외",
+    "solutionImageCaption": "둘레를 구하는 이등변삼각형: 원문에는 색칠 영역이 없으므로 면 채움 제외",
     "solutionImageSize": "full",
     "curriculum": "2015",
     "rpmL1": "도형의 닮음과 피타고라스 정리",
@@ -279,12 +281,14 @@ window.questionBank = [
       "l4": "평면도형 길이"
     },
     "primaryMethod": "넓이에서 높이를 복원한 직각변 계산",
-    "decisiveStep": "넓이60과 밑변10에서 높이12를 얻고 이등변 높이의 밑변반5로 같은변13을 구한다."
+    "decisiveStep": "넓이60과 밑변10에서 높이12를 얻고 이등변 높이의 밑변반5로 같은변13을 구한다.",
+    "imageCaption": "원문 문제 그림: AB=AC, BC=10 cm인 이등변삼각형과 같은 길이 표식",
+    "solutionImageScale": 94
   },
   {
     "id": 6,
-    "imageSize": "tall",
-    "imageAlt": "바깥은 정사각형 DECF다. 그 안의 기울어진 GBAH만 색칠되어 있다. 오른쪽 아래의 AC는 2이다.",
+    "imageSize": "full",
+    "imageAlt": "원문 문제 그림: 정사각형 DECF와 GBAH, AC=2, 직각 표식",
     "questionType": "객관식",
     "tags": [
       "정사각형",
@@ -332,7 +336,8 @@ window.questionBank = [
     "solutionImageSize": "full",
     "curriculum": "2015",
     "primaryMethod": "삼각형 넓이로 직각변을 얻어 제곱넓이 계산",
-    "decisiveStep": "AC2와 넓이5에서BC5를 얻고 BA²=2²+5²를 정사각형 넓이로 읽는다."
+    "decisiveStep": "AC2와 넓이5에서BC5를 얻고 BA²=2²+5²를 정사각형 넓이로 읽는다.",
+    "imageCaption": "원문 문제 그림: 정사각형 DECF와 GBAH, AC=2, 직각 표식"
   },
   {
     "id": 7,
@@ -451,8 +456,8 @@ window.questionBank = [
   },
   {
     "id": 9,
-    "imageSize": "tall",
-    "imageAlt": "B, A, D가 같은 직선이고 M은 AC의 중점이다. A와 N을 잇는 선이 밑변 BC와 나란하다. BC는 15 cm이다.",
+    "imageSize": "full",
+    "imageAlt": "원문 문제 그림: AN∥BC, AD=AB, AM=CM, BC=15 cm",
     "questionType": "객관식",
     "tags": [
       "평행선",
@@ -508,12 +513,13 @@ window.questionBank = [
       "l4": "선분비를 이용한 복합도형"
     },
     "primaryMethod": "두 중점과 평행선으로 삼등분 관계",
-    "decisiveStep": "중점 A와M에서 얻는 두 평행선 비례를 연결해 BE가BC의2/3임을 정한다."
+    "decisiveStep": "중점 A와M에서 얻는 두 평행선 비례를 연결해 BE가BC의2/3임을 정한다.",
+    "imageCaption": "원문 문제 그림: AN∥BC, AD=AB, AM=CM, BC=15 cm"
   },
   {
     "id": 10,
-    "imageSize": "tall",
-    "imageAlt": "AD에 무게중심 G와 G′가 차례로 놓인다. G′는 삼각형 GBC의 무게중심이다.",
+    "imageSize": "full",
+    "imageAlt": "원문 문제 그림: 삼각형 ABC와 두 무게중심 G,G′ 및 연결된 중선",
     "questionType": "객관식",
     "tags": [
       "무게중심",
@@ -569,12 +575,13 @@ window.questionBank = [
       "l4": "넓이 분할"
     },
     "primaryMethod": "중첩 무게중심의 삼등넓이 반복",
-    "decisiveStep": "GBC가ABC의1/3이고 GG′C가GBC의1/3임을 연결한다."
+    "decisiveStep": "GBC가ABC의1/3이고 GG′C가GBC의1/3임을 연결한다.",
+    "imageCaption": "원문 문제 그림: 삼각형 ABC와 두 무게중심 G,G′ 및 연결된 중선"
   },
   {
     "id": 11,
-    "imageSize": "tall",
-    "imageAlt": "삼각형의 중선 AM 위의 G에서 밑변과 같은 방향으로 DE를 그었다.",
+    "imageSize": "full",
+    "imageAlt": "원문 문제 그림: 무게중심 G를 지나는 DE∥BC, 중선 AM",
     "questionType": "객관식",
     "tags": [
       "무게중심",
@@ -634,12 +641,13 @@ window.questionBank = [
       "l4": "무게중심을 이용한 복합도형"
     },
     "primaryMethod": "무게중심 평행단면의 닮음비와 남은 넓이비",
-    "decisiveStep": "2:3 닮음비를4:9 넓이비로 바꾸고 남은5와작은4를 비교한다."
+    "decisiveStep": "2:3 닮음비를4:9 넓이비로 바꾸고 남은5와작은4를 비교한다.",
+    "imageCaption": "원문 문제 그림: 무게중심 G를 지나는 DE∥BC, 중선 AM"
   },
   {
     "id": 12,
-    "imageSize": "tall",
-    "imageAlt": "직각삼각형 ABC의 빗변 중점은 D이다. AC는 18 cm, GD는 5 cm이다.",
+    "imageSize": "full",
+    "imageAlt": "원문 문제 그림: ∠A=90°, 무게중심 G, AC=18 cm, GD=5 cm",
     "questionType": "객관식",
     "tags": [
       "직각삼각형",
@@ -699,12 +707,13 @@ window.questionBank = [
       "l4": "반지름·각 계산"
     },
     "primaryMethod": "빗변중점 반지름으로 직각삼각형 복원",
-    "decisiveStep": "중선AD15를 빗변 절반으로 해석하여BC30을 얻고 직각변AB24를 계산한다."
+    "decisiveStep": "중선AD15를 빗변 절반으로 해석하여BC30을 얻고 직각변AB24를 계산한다.",
+    "imageCaption": "원문 문제 그림: ∠A=90°, 무게중심 G, AC=18 cm, GD=5 cm"
   },
   {
     "id": 13,
-    "imageSize": "tall",
-    "imageAlt": "OA, AB, BC, CD는 같은 청록색과 눈금이다. O를 공통 꼭짓점으로 하는 직각삼각형 세 개가 이어진다.",
+    "imageSize": "full",
+    "imageAlt": "원문 문제 그림: OA=AB=BC=CD, 연속된 직각 및 길이 동치 표식",
     "questionType": "객관식",
     "tags": [
       "도형의 길이",
@@ -745,8 +754,8 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/21_연향중_2학기_기말_중2_기출/q13-solution-visual-v2.svg",
-    "solutionImageAlt": "OA, AB, BC, CD는 같은 청록색과 눈금이다. O를 공통 꼭짓점으로 하는 직각삼각형 세 개가 이어진다. 첫 두 빗변의 제곱이 차례로 2a²과 3a²임을 표시했다.",
-    "solutionImageCaption": "OB²=2a², OC²=3a², OD²=4a²이다. 따라서 OA:OD=a:2a=1:2이며 정답은 ①이다.",
+    "solutionImageAlt": "연속된 직각삼각형에서 변의 길이 관계를 비교하며, 불필요한 면 채움은 제외",
+    "solutionImageCaption": "연속된 직각삼각형에서 변의 길이 관계를 비교하며, 불필요한 면 채움은 제외",
     "solutionImageSize": "full",
     "curriculum": "2015",
     "rpmL1": "도형의 닮음과 피타고라스 정리",
@@ -760,7 +769,9 @@ window.questionBank = [
       "l4": "직각삼각형의 변 길이"
     },
     "primaryMethod": "이어진 직각삼각형의 제곱합 누적",
-    "decisiveStep": "같은 새 직각변의 제곱을 세 번 더해 마지막 빗변2a를 얻는다."
+    "decisiveStep": "같은 새 직각변의 제곱을 세 번 더해 마지막 빗변2a를 얻는다.",
+    "imageCaption": "원문 문제 그림: OA=AB=BC=CD, 연속된 직각 및 길이 동치 표식",
+    "solutionImageScale": 94
   },
   {
     "id": 14,
@@ -939,8 +950,8 @@ window.questionBank = [
   },
   {
     "id": 17,
-    "imageSize": "tall",
-    "imageAlt": "가로세로 세 칸씩인 격자 그림에서 A는 왼쪽 아래, C는 오른쪽 위, B는 왼쪽에서 두 칸과 아래에서 두 칸인 곳이다. 가로·세로의 선분이 교차하는 곳에서 방향을 바꿀 수 있다.",
+    "imageSize": "full",
+    "imageAlt": "원문 3×3 정사각형 도로망과 경유점 B",
     "questionType": "객관식",
     "tags": [
       "경우의 수",
@@ -996,12 +1007,13 @@ window.questionBank = [
       "l4": "최단경로"
     },
     "primaryMethod": "지정 통과점 양쪽 격자경로 곱",
-    "decisiveStep": "A→B의 여섯 경로와B→C의 두 경로를 독립 선택으로 곱한다."
+    "decisiveStep": "A→B의 여섯 경로와B→C의 두 경로를 독립 선택으로 곱한다.",
+    "imageCaption": "원문 3×3 정사각형 도로망과 경유점 B"
   },
   {
     "id": 18,
-    "imageSize": "tall",
-    "imageAlt": "A는 위, B는 왼쪽, C는 아래, D는 오른쪽이다. 원에서 시계 방향은 A에서 D 쪽이다.",
+    "imageSize": "full",
+    "imageAlt": "원문 문제 그림: 원 위 자리 A,B,C,D 네 곳에 놓는 말",
     "questionType": "객관식",
     "tags": [
       "확률",
@@ -1059,12 +1071,13 @@ window.questionBank = [
       "l4": "경우를 나누어 구하는 확률"
     },
     "primaryMethod": "원형 네 자리의 순환 이동을 눈 쌍으로 변환",
-    "decisiveStep": "각 말의 상대자리 도착 눈을3과1·5로 바꾸어 두 순서쌍을 센다."
+    "decisiveStep": "각 말의 상대자리 도착 눈을3과1·5로 바꾸어 두 순서쌍을 센다.",
+    "imageCaption": "원문 문제 그림: 원 위 자리 A,B,C,D 네 곳에 놓는 말"
   },
   {
     "id": 19,
-    "imageSize": "tall",
-    "imageAlt": "D는 밑변 BC 위에 있으며 E와 F는 각각 BD와 DC의 중점이다. 두 중선 위 G와 G′를 이었다. BC는 30 cm이다.",
+    "imageSize": "full",
+    "imageAlt": "원문 문제 그림: 삼각형 ABD, ADC의 무게중심 G,G′과 BC=30 cm",
     "questionType": "서술형",
     "tags": [
       "무게중심",
@@ -1116,12 +1129,13 @@ window.questionBank = [
       "l4": "무게중심을 이용한 복합도형"
     },
     "primaryMethod": "두 무게중심을 잇는 선분의 닮음비",
-    "decisiveStep": "밑변 위 두 반구간의 합EF15에 공통 중선분할2/3을 적용한다."
+    "decisiveStep": "밑변 위 두 반구간의 합EF15에 공통 중선분할2/3을 적용한다.",
+    "imageCaption": "원문 문제 그림: 삼각형 ABD, ADC의 무게중심 G,G′과 BC=30 cm"
   },
   {
     "id": 20,
-    "imageSize": "tall",
-    "imageAlt": "AB는 12, AC는 5, BC는 13이다. A에서 내려오는 AH는 BC와 직각이다.",
+    "imageSize": "full",
+    "imageAlt": "원문 문제 그림: AB=12, AC=5, BC=13, AH⊥BC",
     "questionType": "서술형",
     "tags": [
       "직각삼각형",
@@ -1164,7 +1178,8 @@ window.questionBank = [
     "solutionImageSize": "full",
     "curriculum": "2015",
     "primaryMethod": "같은 삼각형의 다른 밑변 넓이식",
-    "decisiveStep": "5²+12²=13²로 직각을 확인하고 두 밑변에 대한 동일 넓이식으로 높이를 구한다."
+    "decisiveStep": "5²+12²=13²로 직각을 확인하고 두 밑변에 대한 동일 넓이식으로 높이를 구한다.",
+    "imageCaption": "원문 문제 그림: AB=12, AC=5, BC=13, AH⊥BC"
   },
   {
     "id": 21,
