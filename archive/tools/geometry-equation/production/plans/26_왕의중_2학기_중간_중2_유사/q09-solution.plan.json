@@ -1,0 +1,238 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "해설:  이므로 엇각에 의해 가 의 이등분선이므로 평행사변형에서 이웃한 두 각의 합은 이므로 ④. 평행사변형 ABCD에서 각 B의 이등분선이 변 AD와 만나는 점 F를 나타낸 그림이다. 각 AFB와 각 C가 표시되어 있다. [원본 에셋과 발문을 대조한 문제 그림]",
+  "accessibilityDescription": "해설:  이므로 엇각에 의해 가 의 이등분선이므로 평행사변형에서 이웃한 두 각의 합은 이므로 ④. 평행사변형 ABCD에서 각 B의 이등분선이 변 AD와 만나는 점 F를 나타낸 그림이다. 각 AFB와 각 C가 표시되어 있다. [원본 에셋과 발문을 대조한 문제 그림]",
+  "newVisualInformation": [
+    "원문 해설의 풀이 과정을 문제 축과 분리해 선·등변·각 표식을 유지한다.",
+    "평행사변형 ABCD",
+    "각 B의 이등분선 BF",
+    "점 F",
+    "각 AFB 44",
+    "각 C x"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2443",
+              "denominator": "10000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "69957",
+              "denominator": "10000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "102443",
+              "denominator": "10000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "69957",
+              "denominator": "10000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "72444",
+              "denominator": "10000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "69957",
+              "denominator": "10000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sBF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aAFB",
+        "refs": [
+          "A",
+          "F",
+          "B"
+        ],
+        "value": 44,
+        "label": "44",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aABF",
+        "refs": [
+          "A",
+          "B",
+          "F"
+        ],
+        "value": 44,
+        "noLabel": true,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aFBC",
+        "refs": [
+          "F",
+          "B",
+          "C"
+        ],
+        "value": 44,
+        "noLabel": true,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 92,
+        "label": "92°",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "equalAngles": [
+      {
+        "angles": [
+          "aABF",
+          "aFBC"
+        ],
+        "color": "BLUE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 380
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "평행사변형 $ABCD$에서 $\\angle B$의 이등분선이 변 $AD$와 만나는 점을 $F$라고 하자. $\\angle AFB = 44^\\circ$일 때, $\\angle C$의 크기는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

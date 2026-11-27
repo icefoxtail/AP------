@@ -1,0 +1,164 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8258000000",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 540,
+    "height": 440
+  },
+  "caption": "팔마중 12번: 원본의 세 꼭짓각 호와 문자식 12y°, 3x+5y°, 9x−3y°를 유지한 이등변삼각형 ABC; AB=AC 등변 눈금 추가. 해설: 밑각이 같으므로 3x+5y=9x−3y, 내각합을 이용해 y=6, x=8, x+y=14.",
+  "accessibilityDescription": "팔마중 12번: 원본의 세 꼭짓각 호와 문자식 12y°, 3x+5y°, 9x−3y°를 유지한 이등변삼각형 ABC; AB=AC 등변 눈금 추가. 해설: 밑각이 같으므로 3x+5y=9x−3y, 내각합을 이용해 y=6, x=8, x+y=14.",
+  "newVisualInformation": [
+    "해설의 결론 '밑각이 같으므로 3x+5y=9x−3y, 내각합을 이용해 y=6, x=8, x+y=14.'을 별도 축에 표시한다."
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "ang0",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 72,
+        "label": "72°",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ang1",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 54,
+        "label": "54°",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ang2",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 54,
+        "label": "54°",
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eq0",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sCA"
+        ]
+      }
+    ]
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\triangle ABC$에서 $\\angle A = (12y)^\\circ$, $\\angle B = (3x + 5y)^\\circ$, $\\angle C = (9x - 3y)^\\circ$일 때, $\\triangle ABC$가 $\\overline{AB} = \\overline{AC}$인 이등변삼각형이 되도록 하는 $x + y$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
