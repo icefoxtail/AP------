@@ -1,0 +1,204 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "D",
+    "A"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayCircles": [],
+  "rightAngles": [
+    {
+      "id": "rD",
+      "refs": [
+        "A",
+        "D",
+        "C"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "atB",
+        "refs": [
+          "C",
+          "B",
+          "A"
+        ],
+        "value": 60,
+        "label": "60",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "ab",
+        "ownerSegment": "AB",
+        "text": "8"
+      },
+      {
+        "id": "bc",
+        "ownerSegment": "BC",
+        "text": "10"
+      }
+    ],
+    "arcs": [],
+    "regions": [],
+    "equalLengths": [],
+    "parallels": [],
+    "facts": []
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "AB=8,BC=10,∠B=60°이고 A에서 BC에 내린 수선의 발 D",
+  "accessibilityDescription": "AB=8,BC=10,∠B=60°이고 A에서 BC에 내린 수선의 발 D",
+  "sourceConditions": [
+    {
+      "id": "q09-problem",
+      "condition": "다음 그림과 같이 $\\triangle ABC$에서 $\\overline{AB}=8$, $\\overline{BC}=10$, $\\angle B=60^\\circ$이고 꼭짓점 $A$에서 $\\overline{BC}$에 내린 수선의 발을 $D$라 할 때, $\\overline{AC}$의 길이는?",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    }
+  ],
+  "newVisualInformation": [
+    "문제에서 주어진 정보에 한정하며 해설의 미지 답을 선노출하지 않는다"
+  ]
+}

@@ -1,0 +1,288 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T1",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "U"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "34"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lTop",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "T1"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lMast",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "F",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lTop",
+          "lMast"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "G",
+    "A",
+    "B",
+    "F",
+    "T",
+    "U",
+    "T1"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sGA",
+      "refs": [
+        "G",
+        "A"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sFT",
+      "refs": [
+        "F",
+        "T"
+      ]
+    },
+    {
+      "id": "sAT",
+      "refs": [
+        "A",
+        "T"
+      ]
+    },
+    {
+      "id": "sGF",
+      "refs": [
+        "G",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "T"
+        ],
+        "value": 34,
+        "label": "34",
+        "color": "BLUE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lGA",
+        "ownerSegment": "sGA",
+        "text": "1.5",
+        "unit": "m",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "15",
+        "unit": "m",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "T"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "hiddenPointNames": [
+    "G",
+    "A",
+    "B",
+    "F",
+    "T",
+    "U",
+    "T1"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 520
+  },
+  "caption": "34°의 정확한 상승선과 수평 15m를 교차시킨 꼭대기. tan34°≈0.67은 원문 계산용 근삿값으로 실제 좌표와 구분한다.",
+  "accessibilityDescription": "지면에 선 사람의 눈높이 1.5 m가 세로 선분으로 표시되고, 눈에서 깃대까지의 수평거리 15 m와 깃대 꼭대기를 올려본 각 34도가 나타나 있다. 깃대는 지면에 수직으로 서 있다.",
+  "newVisualInformation": [
+    "원문 해설에서 결정적 관계를 별도 구성"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q17-solution",
+      "condition": "눈높이 위쪽 깃대의 높이는 $15\\tan 34^\\circ = 15\\times 0.67 = 10.05,\\mathrm{m}$이다. 깃대의 전체 높이는 $10.05 + 1.5 = 11.55,\\mathrm{m}$이다. 정답은 ①이다.",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    },
+    {
+      "id": "q17-original-svg",
+      "condition": "archive/assets/images/23_왕운중_2학기_중간_중3_유사/q17-problem.svg",
+      "mappedTo": "DRAWN_FEATURE_PARITY_STATIC"
+    }
+  ]
+}

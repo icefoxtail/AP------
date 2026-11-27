@@ -1,0 +1,262 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "R"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "16"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l1",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "R"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l2",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "V"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "l1",
+          "l2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 30,
+        "label": "30",
+        "arcs": 1,
+        "side": "INNER",
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eD",
+        "count": 1,
+        "segments": [
+          "sAD",
+          "sDC"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "16",
+        "unit": "cm",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "bc",
+        "ownerSegment": "sBC",
+        "text": "8",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "unit": "cm"
+      },
+      {
+        "id": "cd",
+        "ownerSegment": "sDC",
+        "text": "4sqrt(3)",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 380
+  },
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "B",
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "caption": "C가 직각인 직각삼각형 ABC에서 빗변 AB가 16cm, 각 A가 30도로 적혀 있고 변 AC 위의 점 D에 AD와 DC의 길이가 같다는 표시가 있다.",
+  "accessibilityDescription": "직각삼각형 ABC가 있고 꼭짓점 C에 직각 표시, 꼭짓점 A에 30도 각 표시가 있다. 변 AB 옆에 16cm가 적혀 있고, 밑변 AC 위의 점 D에서 선분 BD가 그려져 있으며 AD와 DC에 같은 길이 눈금이 있다.",
+  "newVisualInformation": [
+    "원문 해설에서 결정적 관계를 별도 구성"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q14-solution",
+      "condition": "$BC = 16\\sin 30^\\circ = 8,\\mathrm{cm}$, $AC = 16\\cos 30^\\circ = 8\\sqrt{3},\\mathrm{cm}$이다. $AD=CD$이므로 $CD = 4\\sqrt{3},\\mathrm{cm}$이고, 직각삼각형 $BCD$에서 $\\tan\\angle BDC = \\dfrac{8}{4\\sqrt{3}} = \\dfrac{2\\sqrt{3}}{3}$이다. 정답은 ⑤이다.",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    },
+    {
+      "id": "q14-original-svg",
+      "condition": "archive/assets/images/23_왕운중_2학기_중간_중3_유사/q14-problem.svg",
+      "mappedTo": "DRAWN_FEATURE_PARITY_STATIC"
+    }
+  ]
+}

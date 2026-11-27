@@ -1,0 +1,52 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-5",
+          "6",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 3,
+        "y": 4
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "domain": [
+      -1,
+      7
+    ],
+    "viewport": [
+      -2,
+      8,
+      -8,
+      7
+    ]
+  },
+  "caption": "왕운중 6번 해설 기하 조건",
+  "accessibilityDescription": "왕운중 6번 해설 기하 조건",
+  "sourceConditions": [
+    {
+      "id": "q06-solution",
+      "condition": "꼭짓점이 $(3, 4)$이므로 $y = a(x-3)^2 + 4$로 놓고 $(0, -5)$를 대입하면 $$ -5 = 9a + 4 \\implies 9a = -9 \\implies a = -1 $$ 따라서 $y = -(x-3)^2 + 4 = -x^2 + 6x - 5$이므로 $b=6$, $c=-5$이고, $abc = (-1)\\times 6\\times(-5) = 30$이다. 정답은 ④이다.",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 해설에서 결정적 관계를 별도 구성"
+  ]
+}

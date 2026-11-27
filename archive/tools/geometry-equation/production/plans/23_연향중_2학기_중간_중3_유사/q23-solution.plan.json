@@ -1,0 +1,303 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "20",
+            "denominator": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "10",
+            "denominator": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circO",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circP",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circQ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "Q"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "10",
+            "denominator": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "Q",
+    "A",
+    "B",
+    "T",
+    "L"
+  ],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "T",
+    "L"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [
+    "circP"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "OT",
+      "refs": [
+        "O",
+        "T"
+      ]
+    },
+    {
+      "id": "PQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rO",
+      "refs": [
+        "P",
+        "O",
+        "Q"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcO",
+        "circle": "circO",
+        "center": "O",
+        "from": "B",
+        "to": "A",
+        "side": "CCW",
+        "highlight": false
+      },
+      {
+        "id": "arcQ",
+        "circle": "circQ",
+        "center": "Q",
+        "from": "B",
+        "to": "L",
+        "side": "CCW",
+        "highlight": false
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lDiam",
+        "ownerSegment": "OT",
+        "text": "10"
+      },
+      {
+        "id": "pq",
+        "ownerSegment": "PQ",
+        "text": "25/3",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 380
+  },
+  "caption": "원 P의 반지름 5, 반원 Q의 반지름 10/3에서 PQ=25/3을 검산한다.",
+  "accessibilityDescription": "반원 O 내부에서 원 P가 밑변과 반원의 최고점에 접하고, 반원 Q는 원 P에 외접하며 밑변 위에 놓여 있다. 원 P의 지름은 10이고, 중심 O에서 선분 OP와 OQ는 서로 수직이다.",
+  "newVisualInformation": [
+    "원문 해설에서 결정적 관계를 별도 구성"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q23-solution",
+      "condition": "$OP=5$이고 반원 $O$의 반지름은 $10$이다. 반원 $Q$의 반지름을 $r$이라 하면 $OQ=10-r$, $PQ=5+r$이다. $OP \\perp OQ$이므로 $(5+r)^2 = 5^2 + (10-r)^2 \\implies 25+10r+r^2 = 125-20r+r^2 \\implies 30r = 100 \\implies r = \\dfrac{10}{3}$이다. 따라서 $\\overline{PQ} = 5 + \\dfrac{10}{3} = \\dfrac{25}{3}$이다.",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    },
+    {
+      "id": "q23-original-svg",
+      "condition": "archive/assets/images/23_연향중_2학기_중간_중3_유사/q23-problem.svg",
+      "mappedTo": "DRAWN_FEATURE_PARITY_STATIC"
+    }
+  ]
+}

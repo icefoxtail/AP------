@@ -1,0 +1,75 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-5/4",
+          "9",
+          "-9"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 0.5,
+        "y": 1,
+        "marker": "NONE"
+      }
+    ],
+    "exactCoordinates": {
+      "V": [
+        "1/2",
+        "1"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "5/6"
+      ],
+      "y": []
+    },
+    "domain": [
+      -1,
+      2
+    ],
+    "viewport": [
+      -1,
+      2,
+      -2,
+      2
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "sym",
+          "x": "1/2",
+          "label": "x=1/2"
+        }
+      ]
+    }
+  },
+  "caption": "축 x=1/2에 대해 x절편 5/6과 1/6이 대칭이다. 표본 곡선 a=-9는 그래프 형태 예시이며 a의 값은 주어지지 않았다.",
+  "accessibilityDescription": "좌표평면에 위로 볼록한 포물선이 그려져 있고, 대칭축을 나타내는 직선 x=1/2과 x축 위의 눈금 5/6가 표시되어 있다.",
+  "newVisualInformation": [
+    "원문 해설에서 결정적 관계를 별도 구성"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q16-solution",
+      "condition": "다른 한 $x$절편은 $\\dfrac{1}{6}$이므로 $f(x)=a\\left(x-\\dfrac{1}{6}\\right)\\left(x-\\dfrac{5}{6}\\right)$($a<0$)이다. $b=-a>0$, $c=\\dfrac{5a}{36}<0$, $ac>0$, $a+b+c=f(1)=c<0$이므로 ①, ③, ④, ⑤는 옳다. 한편 $a+2b+4c = 4f\\left(\\dfrac{1}{2}\\right) > 0$이므로 ②가 옳지 않다.",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    },
+    {
+      "id": "q16-original-svg",
+      "condition": "archive/assets/images/23_왕운중_2학기_중간_중3_유사/q16-problem.svg",
+      "mappedTo": "DRAWN_FEATURE_PARITY_STATIC"
+    }
+  ]
+}

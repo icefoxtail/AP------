@@ -1,0 +1,373 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "add",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "13"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "3"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "add",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "7"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "3"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sBH",
+      "refs": [
+        "B",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sCH",
+      "refs": [
+        "C",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "C",
+          "B",
+          "A"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sAD",
+          "sCD"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "B",
+        "to": "A",
+        "label": "6",
+        "side": "LEFT",
+        "style": "BRACE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "10",
+        "side": "BELOW",
+        "style": "BRACE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "bh",
+        "ownerSegment": "sBH",
+        "text": "3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ah",
+        "ownerSegment": "sAH",
+        "text": "3sqrt(3)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ch",
+        "ownerSegment": "sCH",
+        "text": "7",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rD",
+      "refs": [
+        "A",
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "rH",
+      "refs": [
+        "A",
+        "H",
+        "C"
+      ],
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 440,
+    "height": 360
+  },
+  "caption": "선분 AB의 길이가 6, 선분 BC의 길이가 10이고 각 B가 60도인 사각형 ABCD를 나타낸 그림이다. 꼭짓점 D에서 각 ADC는 직각이고 선분 AD와 선분 DC의 길이가 같다.",
+  "accessibilityDescription": "사각형 ABCD에서 선분 AB 바깥쪽에 6, 선분 BC 아래쪽에 10이라는 치수가 표시되어 있다. 꼭짓점 B에는 60도 각 표시가 있고, 꼭짓점 D에는 직각 표시가 있다. 선분 AD와 선분 DC에는 길이가 같음을 나타내는 같은 길이 기호가 표시되어 있다.",
+  "newVisualInformation": [
+    "원문 해설에서 결정적 관계를 별도 구성"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q11-solution",
+      "condition": "$A$에서 $BC$에 내린 수선의 발을 $H$라 하면 $AH=6\\sin 60^\\circ=3\\sqrt{3}$, $BH=6\\cos 60^\\circ=3$이므로 $CH=10-3=7$이다. $AC^2 = (3\\sqrt{3})^2 + 7^2 = 27 + 49 = 76$이고 $\\triangle ABC = \\dfrac{1}{2}\\times 10\\times 3\\sqrt{3} = 15\\sqrt{3}$이다. $\\triangle ADC$는 $AD=DC$인 직각이등변삼각형이므로 $2AD^2 = 76 \\implies AD^2 = 38$, $\\triangle ADC = \\dfrac{1}{2}AD^2 = 19$이다. 따라서 사각형 $ABCD$의 넓이는 $19+15\\sqrt{3}$이다. 정답은 ①이다.",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    },
+    {
+      "id": "q11-original-svg",
+      "condition": "archive/assets/images/23_왕운중_2학기_중간_중3_유사/q11-problem.svg",
+      "mappedTo": "DRAWN_FEATURE_PARITY_STATIC"
+    }
+  ]
+}

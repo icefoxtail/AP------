@@ -1,0 +1,52 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-2",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": -1,
+        "y": 3
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "domain": [
+      -5,
+      3
+    ],
+    "viewport": [
+      -6,
+      4,
+      -12,
+      5
+    ]
+  },
+  "caption": "왕운중 7번 해설 기하 조건",
+  "accessibilityDescription": "왕운중 7번 해설 기하 조건",
+  "sourceConditions": [
+    {
+      "id": "q07-solution",
+      "condition": "$y=ax^2+bx+c$에서 위로 볼록하므로 $a<0$, 축 $-\\dfrac{b}{2a}>0$이므로 $b>0$, $y$절편이 음수이므로 $c<0$이다. 따라서 $y=cx^2+ax+b$는 $c<0$이므로 위로 볼록하고, 축 $x=-\\dfrac{a}{2c}<0$이므로 $y$축의 왼쪽에 있으며, $y$절편 $b>0$이므로 양수이다. 정답은 ③이다.",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 해설에서 결정적 관계를 별도 구성"
+  ]
+}

@@ -1,0 +1,167 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "10"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "planeMarks": {
+    "angles": [],
+    "expressionLabels": [
+      {
+        "id": "adj",
+        "ownerSegment": "AB",
+        "text": "3"
+      },
+      {
+        "id": "hyp",
+        "ownerSegment": "CA",
+        "text": "7"
+      },
+      {
+        "id": "opp",
+        "ownerSegment": "BC",
+        "text": "2sqrt(10)"
+      }
+    ],
+    "arcs": [],
+    "regions": [],
+    "equalLengths": [],
+    "parallels": [],
+    "facts": []
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "왕운중 4번 해설 기하 조건",
+  "accessibilityDescription": "왕운중 4번 해설 기하 조건",
+  "sourceConditions": [
+    {
+      "id": "q04-solution",
+      "condition": "예각 $A$에 대하여 $\\sin^2 A + \\cos^2 A = 1$이므로 $$ \\sin^2 A = 1 - \\left(\\dfrac{3}{7}\\right)^2 = 1 - \\dfrac{9}{49} = \\dfrac{40}{49} $$ 따라서 $\\sin A = \\dfrac{\\sqrt{40}}{7} = \\dfrac{2\\sqrt{10}}{7}$이다. 정답은 ⑤이다.",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 해설에서 결정적 관계를 별도 구성"
+  ]
+}

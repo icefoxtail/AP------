@@ -1,0 +1,158 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "C",
+          "A",
+          "B"
+        ],
+        "value": 120,
+        "label": "120",
+        "arcs": 1,
+        "side": "INNER",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lCA",
+        "ownerSegment": "sCA",
+        "text": "6",
+        "unit": "cm",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "10",
+        "unit": "cm",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 440,
+    "height": 380
+  },
+  "caption": "두 변 6,10과 끼인각 120°에서 높이 6sin120°로 삼각형 넓이 15√3을 얻는다.",
+  "accessibilityDescription": "삼각형 ABC가 있고 꼭짓점 A에 120도 각 표시가 있다. 변 AC 옆에 6cm, 변 AB 옆에 10cm가 적혀 있다.",
+  "newVisualInformation": [
+    "원문 해설에서 결정적 관계를 별도 구성"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q21-solution",
+      "condition": "$\\triangle ABC$의 넓이는 $\\dfrac{1}{2}\\times 6\\times 10\\times\\sin(180^\\circ-120^\\circ) = 30\\times\\dfrac{\\sqrt{3}}{2} = 15\\sqrt{3},\\mathrm{cm}^2$이다.",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    },
+    {
+      "id": "q21-original-svg",
+      "condition": "archive/assets/images/23_왕운중_2학기_중간_중3_유사/q21-problem.svg",
+      "mappedTo": "DRAWN_FEATURE_PARITY_STATIC"
+    }
+  ]
+}

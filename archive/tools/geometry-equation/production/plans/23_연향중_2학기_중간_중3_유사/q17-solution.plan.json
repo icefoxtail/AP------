@@ -1,0 +1,292 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-4"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-4"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circFolded",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "O1",
+    "M"
+  ],
+  "hiddenPointNames": [
+    "O1"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "OM",
+      "refs": [
+        "O",
+        "M"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rM",
+      "refs": [
+        "O",
+        "M",
+        "A"
+      ],
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcFolded",
+        "circle": "circFolded",
+        "center": "O1",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "om",
+        "ownerSegment": "OM",
+        "text": "4",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "oa",
+        "ownerSegment": "OA",
+        "text": "8",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ab",
+        "ownerSegment": "sAB",
+        "text": "8sqrt(3)",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "caption": "반지름의 길이가 8인 원 O에서 원주 위의 한 점이 중심 O에 겹치도록 현 AB를 따라 접은 모양을 나타낸 그림이다.",
+  "accessibilityDescription": "원 O의 현 AB를 접는 선으로 하여 원주의 일부가 중심 O를 지나도록 접혀 있고, 점 O, A, B가 표시되어 있다.",
+  "newVisualInformation": [
+    "원문 해설에서 결정적 관계를 별도 구성"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q17-solution",
+      "condition": "중심 $O$에서 현 $AB$까지의 거리는 반지름의 절반인 $4$이다. 현의 절반의 길이는 $\\sqrt{8^2 - 4^2} = 4\\sqrt{3}$이므로 $\\overline{AB} = 8\\sqrt{3}$이다. 정답은 ③이다.",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    },
+    {
+      "id": "q17-original-svg",
+      "condition": "archive/assets/images/23_연향중_2학기_중간_중3_유사/q17-problem.svg",
+      "mappedTo": "DRAWN_FEATURE_PARITY_STATIC"
+    }
+  ]
+}
