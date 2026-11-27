@@ -143,11 +143,11 @@ window.questionBank = [
     "wide": true,
     "content": "다음 중 이차함수 $y=\\dfrac{1}{4}(x-4)^2-1$의 그래프는? (4점)",
     "choices": [
-      "<img src=\"assets/images/22_신흥중_2학기_중간_중3_수학/q03_1.png\" alt=\"보기 1번 그래프\">",
-      "<img src=\"assets/images/22_신흥중_2학기_중간_중3_수학/q03_2.png\" alt=\"보기 2번 그래프\">",
-      "<img src=\"assets/images/22_신흥중_2학기_중간_중3_수학/q03_3.png\" alt=\"보기 3번 그래프\">",
-      "<img src=\"assets/images/22_신흥중_2학기_중간_중3_수학/q03_4.png\" alt=\"보기 4번 그래프\">",
-      "<img src=\"assets/images/22_신흥중_2학기_중간_중3_수학/q03_5.png\" alt=\"보기 5번 그래프\">"
+      "<img src=\"assets/images/22_신흥중_2학기_중간_중3_수학/q03_1.png?v=20261127-p0-1\" alt=\"보기 1번 그래프\">",
+      "<img src=\"assets/images/22_신흥중_2학기_중간_중3_수학/q03_2.png?v=20261127-p0-1\" alt=\"보기 2번 그래프\">",
+      "<img src=\"assets/images/22_신흥중_2학기_중간_중3_수학/q03_3.png?v=20261127-p0-1\" alt=\"보기 3번 그래프\">",
+      "<img src=\"assets/images/22_신흥중_2학기_중간_중3_수학/q03_4.png?v=20261127-p0-1\" alt=\"보기 4번 그래프\">",
+      "<img src=\"assets/images/22_신흥중_2학기_중간_중3_수학/q03_5.png?v=20261127-p0-1\" alt=\"보기 5번 그래프\">"
     ],
     "answer": "①",
     "solution": "[풀이] $y=\\frac14(x-4)^2-1$에서 꼭짓점은 $(4,-1)$이고 대칭축은 $x=4$이며, 계수 $\\frac14>0$이므로 아래로 볼록하다. $x=0$을 대입하면 $y=\\frac14\\cdot16-1=3$이므로 $y$절편은 $3$이다. 이 조건에 맞는 그림은 ①이다.",

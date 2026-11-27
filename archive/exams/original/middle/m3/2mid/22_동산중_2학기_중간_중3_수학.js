@@ -1158,7 +1158,7 @@ window.questionBank =[
     "sourceExamId": "22_동산중_2학기_중간_중3_수학",
     "provenance": "ORIGINAL",
     "score": 4,
-    "content": "다음 그림의 $\\triangle ABC$에서 $\\angle C = 90^\\circ$, $\\angle B = 30^\\circ$, $\\overline{AB} = 4$이고, $\\angle A$의 이등분선이 $\\overline{BC}$와 만나는 점을 $D$라 할 때, $\\overline{CD}$의 길이를 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q16.png\" alt=\"문제 16번 그림\" style=\"max-width: 250px;\">",
+    "content": "다음 그림의 $\\triangle ABC$에서 $\\angle C = 90^\\circ$, $\\angle B = 30^\\circ$, $\\overline{AB} = 4$이고, $\\angle A$의 이등분선이 $\\overline{BC}$와 만나는 점을 $D$라 할 때, $\\overline{CD}$의 길이를 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q16.png?v=20261127-p0-1\" alt=\"문제 16번 그림\" style=\"max-width: 250px;\">",
     "choices": [
       "$\\sqrt{3}$",
       "$2$",
@@ -1232,7 +1232,7 @@ window.questionBank =[
     "sourceExamId": "22_동산중_2학기_중간_중3_수학",
     "provenance": "ORIGINAL",
     "score": 4,
-    "content": "그림과 같은 삼각형 $ABC$에서 $\\overline{AC} = 12$, $\\angle BAC = 75^\\circ$, $\\angle ACB = 60^\\circ$일 때, $\\overline{BC}$의 길이를 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q17.png\" alt=\"문제 17번 그림\" style=\"max-width: 250px;\">",
+    "content": "그림과 같은 삼각형 $ABC$에서 $\\overline{AC} = 12$, $\\angle BAC = 75^\\circ$, $\\angle ACB = 60^\\circ$일 때, $\\overline{BC}$의 길이를 구하면? (4점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q17.png?v=20261127-p0-1\" alt=\"문제 17번 그림\" style=\"max-width: 250px;\">",
     "choices": [
       "$6(\\sqrt{3}+1)$",
       "$6(\\sqrt{3}-1)$",
@@ -1785,7 +1785,7 @@ window.questionBank =[
     "sourceExamId": "22_동산중_2학기_중간_중3_수학",
     "provenance": "ORIGINAL",
     "score": 7,
-    "content": "그림과 같이 $\\overline{AD} = 3$, $\\overline{CD} = 6$, $\\angle ADB = 30^\\circ$, $\\angle DBC = 60^\\circ$인 사각형 $ABCD$의 넓이를 구하여라. (7점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/s02.png\" alt=\"서술형 2번 그림\" style=\"max-width: 250px;\">",
+    "content": "그림과 같이 $\\overline{AD} = 3$, $\\overline{CD} = 6$, $\\angle ADB = 30^\\circ$, $\\angle DBC = 60^\\circ$인 사각형 $ABCD$의 넓이를 구하여라. (7점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/s02.png?v=20261127-p0-1\" alt=\"서술형 2번 그림\" style=\"max-width: 250px;\">",
     "choices": [],
     "answer": "9√3",
     "solution": "\\(\\triangle BCD\\)에서 \\(\\angle C=90^\\circ\\), \\(\\angle B=60^\\circ\\)이므로 \\(\\angle D=30^\\circ\\)이다. 30°-60°-90° 삼각형에서 \\(CD=6\\)은 60°의 대변이므로 \\(BC=2\\sqrt3\\), \\(BD=4\\sqrt3\\). 따라서 \\(\\triangle BCD\\)의 넓이는 \\(\\frac12\\cdot6\\cdot2\\sqrt3=6\\sqrt3\\)이다. \\(\\triangle ABD\\)에서 A에서 DB에 내린 높이는 \\(AD\\sin30^\\circ=3\\cdot\\frac12=\\frac32\\)이므로 넓이는 \\(\\frac12\\cdot4\\sqrt3\\cdot\\frac32=3\\sqrt3\\)이다. 두 넓이의 합은 \\(9\\sqrt3\\)이다.",

@@ -29,7 +29,7 @@ window.questionBank = [
       "다각형"
     ],
     "wide": false,
-    "content": "다음 그림에서 $\\angle x$의 크기를 구하면? (3점)<br><br><img src=\"assets/images/24_왕운중_2학기_기말_중1_수학/q01.png\" style=\"max-width: 400px; display: block; margin: 10px 0;\">",
+    "content": "다음 그림에서 $\\angle x$의 크기를 구하면? (3점)<br><br><img src=\"assets/images/24_왕운중_2학기_기말_중1_수학/q01.png?v=20261127-p0-1\" style=\"max-width: 400px; display: block; margin: 10px 0;\">",
     "choices": [
       "$35^\\circ$",
       "$40^\\circ$",

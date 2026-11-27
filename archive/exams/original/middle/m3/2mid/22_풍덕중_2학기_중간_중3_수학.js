@@ -696,7 +696,7 @@ window.questionBank = [
       "삼각비 계산/적용"
     ],
     "wide": false,
-    "content": "오른쪽 이등변삼각형 $\\mathrm{ABC}$를 이용하여 $\\tan 15^\\circ$의 값을 구하면? (4점)<br><br><img src=\"assets/images/22_풍덕중_2학기_중간_중3_수학/q13.png\" alt=\"문제 13번 그림\" style=\"max-width: 320px;\">",
+    "content": "오른쪽 이등변삼각형 $\\mathrm{ABC}$를 이용하여 $\\tan 15^\\circ$의 값을 구하면? (4점)<br><br><img src=\"assets/images/22_풍덕중_2학기_중간_중3_수학/q13.png?v=20261127-p0-1\" alt=\"문제 13번 그림\" style=\"max-width: 320px;\">",
     "choices": [
       "$\\sqrt{2}-1$",
       "$\\frac{\\sqrt{3}}{2}$",

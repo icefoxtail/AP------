@@ -584,7 +584,7 @@ window.questionBank = [
     "sourceExamId": "21_동산중_2학기_중간_중3_수학",
     "provenance": "AUDITED_REPAIR",
     "score": 4,
-    "content": "이차함수 $y=ax^2+bx+c$의 그래프는 아래로 볼록하고 $x$축과 $x=-1$, $x=2$에서 만난다. 다음 중 옳지 않은 것은? (4점)<br><img src=\"assets/images/21_동산중_2학기_중간_중3_수학/q09.png\" alt=\"근이 -1과 2이고 위로 열린 포물선\" />",
+    "content": "이차함수 $y=ax^2+bx+c$의 그래프는 아래로 볼록하고 $x$축과 $x=-1$, $x=2$에서 만난다. 다음 중 옳지 않은 것은? (4점)<br><img src=\"assets/images/21_동산중_2학기_중간_중3_수학/q09.png?v=20261127-p0-1\" alt=\"근이 -1과 2이고 위로 열린 포물선\" />",
     "choices": [
       "$abc > 0$",
       "$a > 0, b < 0$",
