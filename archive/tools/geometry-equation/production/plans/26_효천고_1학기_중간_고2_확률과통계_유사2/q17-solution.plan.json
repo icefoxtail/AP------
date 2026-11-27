@@ -1,0 +1,30 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "5회 후 위치",
+        "band": false,
+        "points": [
+          { "id": "P0", "value": "-5", "hideName": true, "style": "TICK" },
+          { "id": "P1", "value": "-2", "hideName": true, "style": "FILLED" },
+          { "id": "P2", "value": "1", "hideName": true, "style": "TICK" },
+          { "id": "P3", "value": "4", "hideName": true, "style": "FILLED" },
+          { "id": "P4", "value": "7", "hideName": true, "style": "TICK" },
+          { "id": "P5", "value": "10", "hideName": true, "style": "TICK" }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": { "text": "진한 점: 거리 조건 충족" },
+  "caption": "5회 후 가능한 위치 -5,-2,1,4,7,10 중 원점으로부터의 거리가 2 이상 4 이하인 위치는 -2와 4이다.",
+  "accessibilityDescription": "5회 이동 뒤 가능한 위치 여섯 개를 표시하고 거리 조건을 만족하는 -2와 4만 진한 점으로 강조한다.",
+  "sourceConditions": [
+    { "id": "q17-s1", "condition": "오른쪽으로 2 이동한 횟수가 n이면 최종 위치는 3n-5이다.", "mappedTo": ["numberLine.rows"] },
+    { "id": "q17-s2", "condition": "거리가 2 이상 4 이하인 위치는 -2와 4이다.", "mappedTo": ["numberLine.rows"] }
+  ],
+  "newVisualInformation": ["여섯 개의 가능한 끝 위치 중 사건에 해당하는 두 위치를 시각적으로 강조한다"]
+}
