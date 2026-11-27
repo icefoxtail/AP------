@@ -103,7 +103,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "주어진 닮음비의 한 대응변",
-    "decisiveStep": "명시된 대응순서에서6:9를 AC:12에 적용한다."
+    "decisiveStep": "명시된 대응순서에서6:9를 AC:12에 적용한다.",
+    "image": "assets/images/20_이수중_2학기_기말_중2_수학/q2-problem.svg",
+    "imageAlt": "2020 이수중 중2 2학기 기말 2번 문제 조건도",
+    "imageCaption": "2020 이수중 중2 2학기 기말 2번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -152,7 +156,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "닮음비를 제곱해 넓이 환산",
-    "decisiveStep": "6:8을3:4로 정리하고 넓이비9:16으로 알려진27을 환산한다."
+    "decisiveStep": "6:8을3:4로 정리하고 넓이비9:16으로 알려진27을 환산한다.",
+    "image": "assets/images/20_이수중_2학기_기말_중2_수학/q3-problem.svg",
+    "imageAlt": "2020 이수중 중2 2학기 기말 3번 문제 조건도",
+    "imageCaption": "2020 이수중 중2 2학기 기말 3번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -201,7 +209,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "닮은 삼각기둥의 모서리 비",
-    "decisiveStep": "윗면 대응변6:9로 높이x와 다른모서리y를 각각 결정한다."
+    "decisiveStep": "윗면 대응변6:9로 높이x와 다른모서리y를 각각 결정한다.",
+    "image": "assets/images/20_이수중_2학기_기말_중2_수학/q4-problem.svg",
+    "imageAlt": "2020 이수중 중2 2학기 기말 4번 문제 조건도",
+    "imageCaption": "2020 이수중 중2 2학기 기말 4번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -295,7 +307,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "공통각을 끼는 뒤바뀐 SAS 대응",
-    "decisiveStep": "AB9,BC12를 복원하고 BD:BC=BE:BA=1:3인 대응을 선택한다."
+    "decisiveStep": "AB9,BC12를 복원하고 BD:BC=BE:BA=1:3인 대응을 선택한다.",
+    "image": "assets/images/20_이수중_2학기_기말_중2_수학/q6-problem.svg",
+    "imageAlt": "2020 이수중 중2 2학기 기말 6번 문제 조건도",
+    "imageCaption": "2020 이수중 중2 2학기 기말 6번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -344,7 +360,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "직각삼각형 높이의 비례중항",
-    "decisiveStep": "두 작은 직각삼각형의AA닮음에서4:8=8:x를 세운다."
+    "decisiveStep": "두 작은 직각삼각형의AA닮음에서4:8=8:x를 세운다.",
+    "image": "assets/images/20_이수중_2학기_기말_중2_수학/q7-problem.svg",
+    "imageAlt": "2020 이수중 중2 2학기 기말 7번 문제 조건도",
+    "imageCaption": "2020 이수중 중2 2학기 기말 7번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -395,7 +415,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "접기에서 길이와 직각을 옮긴 닮음",
-    "decisiveStep": "접기 합동으로PQ=9-4와직각을 얻어 ABP와DPQ의AA비를 적용한다."
+    "decisiveStep": "접기 합동으로PQ=9-4와직각을 얻어 ABP와DPQ의AA비를 적용한다.",
+    "image": "assets/images/20_이수중_2학기_기말_중2_수학/q8-problem.svg",
+    "imageAlt": "2020 이수중 중2 2학기 기말 8번 문제 조건도",
+    "imageCaption": "2020 이수중 중2 2학기 기말 8번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -444,7 +468,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "교차선 닮음과 내부 평행선 비의 연속 적용",
-    "decisiveStep": "교차삼각형에서BE:ED=1:2를 얻어BE:BD=1:3으로 바꾼 뒤 EF를 구한다."
+    "decisiveStep": "교차삼각형에서BE:ED=1:2를 얻어BE:BD=1:3으로 바꾼 뒤 EF를 구한다.",
+    "image": "assets/images/20_이수중_2학기_기말_중2_수학/q9-problem.svg",
+    "imageAlt": "2020 이수중 중2 2학기 기말 9번 문제 조건도",
+    "imageCaption": "2020 이수중 중2 2학기 기말 9번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -493,7 +521,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "사다리꼴 중점선의 평균 길이",
-    "decisiveStep": "양 밑변의 절반을 대각선 양쪽 중점연결선에서 합한다."
+    "decisiveStep": "양 밑변의 절반을 대각선 양쪽 중점연결선에서 합한다.",
+    "image": "assets/images/20_이수중_2학기_기말_중2_수학/q10-problem.svg",
+    "imageAlt": "2020 이수중 중2 2학기 기말 10번 문제 조건도",
+    "imageCaption": "2020 이수중 중2 2학기 기말 10번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 11,
@@ -542,7 +574,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "중점삼각형 둘레의 절반",
-    "decisiveStep": "각 변이 원래 삼각형의 절반이므로 둘레24의절반을 구한다."
+    "decisiveStep": "각 변이 원래 삼각형의 절반이므로 둘레24의절반을 구한다.",
+    "image": "assets/images/20_이수중_2학기_기말_중2_수학/q11-problem.svg",
+    "imageAlt": "2020 이수중 중2 2학기 기말 11번 문제 조건도",
+    "imageCaption": "2020 이수중 중2 2학기 기말 11번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 12,
@@ -591,7 +627,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "무게중심의 기본 성질 진술 비교",
-    "decisiveStep": "중선2:1·중점·등넓이 성질과 서로 다른 중선 길이의 불변 여부를 구별한다."
+    "decisiveStep": "중선2:1·중점·등넓이 성질과 서로 다른 중선 길이의 불변 여부를 구별한다.",
+    "image": "assets/images/20_이수중_2학기_기말_중2_수학/q12-problem.svg",
+    "imageAlt": "2020 이수중 중2 2학기 기말 12번 문제 조건도",
+    "imageCaption": "2020 이수중 중2 2학기 기말 12번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 13,
@@ -640,7 +680,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "연속된 중선의2:1 분할",
-    "decisiveStep": "AD의1/3인GD를 구하고 다시 그2/3인GG′를 구한다."
+    "decisiveStep": "AD의1/3인GD를 구하고 다시 그2/3인GG′를 구한다.",
+    "image": "assets/images/20_이수중_2학기_기말_중2_수학/q13-problem.svg",
+    "imageAlt": "2020 이수중 중2 2학기 기말 13번 문제 조건도",
+    "imageCaption": "2020 이수중 중2 2학기 기말 13번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 14,
@@ -691,7 +735,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "두 무게중심의 중선비로 SAS 닮음",
-    "decisiveStep": "두 작은 삼각형 중선의 끝점사이 길이를 구하고 같은2:3으로 GG′를 환산한다."
+    "decisiveStep": "두 작은 삼각형 중선의 끝점사이 길이를 구하고 같은2:3으로 GG′를 환산한다.",
+    "image": "assets/images/20_이수중_2학기_기말_중2_수학/q14-problem.svg",
+    "imageAlt": "2020 이수중 중2 2학기 기말 14번 문제 조건도",
+    "imageCaption": "2020 이수중 중2 2학기 기말 14번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 15,
@@ -740,7 +788,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "부분 중점의 넓이와 무게중심의1/6",
-    "decisiveStep": "GNM을 두 배하여GBM을 얻고 중선 등적분할로 전체를 여섯배 한다."
+    "decisiveStep": "GNM을 두 배하여GBM을 얻고 중선 등적분할로 전체를 여섯배 한다.",
+    "image": "assets/images/20_이수중_2학기_기말_중2_수학/q15-problem.svg",
+    "imageAlt": "2020 이수중 중2 2학기 기말 15번 문제 조건도",
+    "imageCaption": "2020 이수중 중2 2학기 기말 15번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 16,
@@ -789,7 +841,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "세 변 위 정사각형 넓이의 제곱합",
-    "decisiveStep": "빗변 위169에서 한 직각변 위25를 빼 다른 정사각형 넓이를 얻는다."
+    "decisiveStep": "빗변 위169에서 한 직각변 위25를 빼 다른 정사각형 넓이를 얻는다.",
+    "image": "assets/images/20_이수중_2학기_기말_중2_수학/q16-problem.svg",
+    "imageAlt": "2020 이수중 중2 2학기 기말 16번 문제 조건도",
+    "imageCaption": "2020 이수중 중2 2학기 기말 16번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 17,
@@ -838,7 +894,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "사다리꼴의 밑변차로 직각삼각형 구성",
-    "decisiveStep": "수선을 내려 가로16-8과높이15의 직각삼각형에서 빗변을 구한다."
+    "decisiveStep": "수선을 내려 가로16-8과높이15의 직각삼각형에서 빗변을 구한다.",
+    "image": "assets/images/20_이수중_2학기_기말_중2_수학/q17-problem.svg",
+    "imageAlt": "2020 이수중 중2 2학기 기말 17번 문제 조건도",
+    "imageCaption": "2020 이수중 중2 2학기 기말 17번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 18,
@@ -887,7 +947,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "붙인 정사각형의 대각선 길이",
-    "decisiveStep": "넓이에서 두 변5,7을 얻어 전체가로12와높이5의 제곱합을 쓴다."
+    "decisiveStep": "넓이에서 두 변5,7을 얻어 전체가로12와높이5의 제곱합을 쓴다.",
+    "image": "assets/images/20_이수중_2학기_기말_중2_수학/q18-problem.svg",
+    "imageAlt": "2020 이수중 중2 2학기 기말 18번 문제 조건도",
+    "imageCaption": "2020 이수중 중2 2학기 기말 18번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 19,
@@ -939,7 +1003,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "상한 조건으로 빗변을 확정한 길이",
-    "decisiveStep": "x<15로 빗변15를 확정하고 x²=15²-9²를 푼다."
+    "decisiveStep": "x<15로 빗변15를 확정하고 x²=15²-9²를 푼다.",
+    "image": "assets/images/20_이수중_2학기_기말_중2_수학/q19-problem.svg",
+    "imageAlt": "2020 이수중 중2 2학기 기말 19번 문제 조건도",
+    "imageCaption": "2020 이수중 중2 2학기 기말 19번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 20,
@@ -991,7 +1059,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "합동으로 옮긴 길이와 여각의 넓이",
-    "decisiveStep": "합동에서6,8의 대응과중앙직각을 확보하고 빗변10 두개로 중앙넓이를 구한다."
+    "decisiveStep": "합동에서6,8의 대응과중앙직각을 확보하고 빗변10 두개로 중앙넓이를 구한다.",
+    "image": "assets/images/20_이수중_2학기_기말_중2_수학/q20-problem.svg",
+    "imageAlt": "2020 이수중 중2 2학기 기말 20번 문제 조건도",
+    "imageCaption": "2020 이수중 중2 2학기 기말 20번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 21,
@@ -1035,7 +1107,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "두 대응변 비와 끼인각의 SAS 확인",
-    "decisiveStep": "3:6=4:8과40도 끼인각으로 SAS를 적고 같은1:2로 후속 길이를 구한다."
+    "decisiveStep": "3:6=4:8과40도 끼인각으로 SAS를 적고 같은1:2로 후속 길이를 구한다.",
+    "image": "assets/images/20_이수중_2학기_기말_중2_수학/q21-problem.svg",
+    "imageAlt": "2020 이수중 중2 2학기 기말 21번 문제 조건도",
+    "imageCaption": "2020 이수중 중2 2학기 기말 21번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 22,
@@ -1079,7 +1155,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "같은 그림자 끝점에서 AA 높이 측정",
-    "decisiveStep": "나무 전체그림자8.4+2.1을 사람그림자와 비교해 높이를 환산한다."
+    "decisiveStep": "나무 전체그림자8.4+2.1을 사람그림자와 비교해 높이를 환산한다.",
+    "image": "assets/images/20_이수중_2학기_기말_중2_수학/q22-problem.svg",
+    "imageAlt": "2020 이수중 중2 2학기 기말 22번 문제 조건도",
+    "imageCaption": "2020 이수중 중2 2학기 기말 22번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 23,
@@ -1123,7 +1203,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "중점 넓이의 절반과 중선2:1 연결",
-    "decisiveStep": "두 중점으로DBE넓이를1/4로 구한 후 GE의1/3밑변비를 적용한다."
+    "decisiveStep": "두 중점으로DBE넓이를1/4로 구한 후 GE의1/3밑변비를 적용한다.",
+    "image": "assets/images/20_이수중_2학기_기말_중2_수학/q23-problem.svg",
+    "imageAlt": "2020 이수중 중2 2학기 기말 23번 문제 조건도",
+    "imageCaption": "2020 이수중 중2 2학기 기말 23번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 24,
@@ -1170,7 +1254,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "피타고라스의 반원 넓이 상쇄",
-    "decisiveStep": "세 반원의 제곱넓이관계를 소거하여 초승달합을 직각삼각형 넓이로 바꾼다."
+    "decisiveStep": "세 반원의 제곱넓이관계를 소거하여 초승달합을 직각삼각형 넓이로 바꾼다.",
+    "image": "assets/images/20_이수중_2학기_기말_중2_수학/q24-problem.svg",
+    "imageAlt": "2020 이수중 중2 2학기 기말 24번 문제 조건도",
+    "imageCaption": "2020 이수중 중2 2학기 기말 24번 문제 조건도",
+    "imageSize": "full"
   }
 ]
 };

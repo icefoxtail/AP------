@@ -135,7 +135,11 @@ window.questionBank = [
     "solutionImageCaption": "OM=ON이면 중심에서 같은 거리의 현이므로 AB=AC=9이다. OM이 AB에, ON이 AC에 수직이므로 M, N은 각 현의 중점이고 AM=AN=4.5이다. 삼각형 ABC에서 중점연결정리로 MN=BC의 절반=3이다. 정답은 12이다.",
     "solutionImageSize": "full"
   ,
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "image": "assets/images/21_동산중_2학기_기말_중3_수학/q2-problem.svg",
+    "imageAlt": "21년 동산중 기말 2번 문제에서 주어진 원본에 표시된 원과 선분, 접선·각도·길이의 관계.",
+    "imageCaption": "21년 동산중 기말 2번 문제에서 주어진 원본에 표시된 원과 선분, 접선·각도·길이의 관계.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -228,7 +232,11 @@ window.questionBank = [
     "solutionImageCaption": "AB는 OC의 수직이등분선이므로 OH=HC=r의 절반이고 AH=6이다. 직각삼각형 OHA에서 r²=6²+(r의 절반)²이다. 이를 풀면 r²=48이다. 정답은 4√3이다.",
     "solutionImageSize": "full"
   ,
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "image": "assets/images/21_동산중_2학기_기말_중3_수학/q3-problem.svg",
+    "imageAlt": "21년 동산중 기말 3번 문제에서 주어진 원본에 표시된 원과 선분, 접선·각도·길이의 관계.",
+    "imageCaption": "21년 동산중 기말 3번 문제에서 주어진 원본에 표시된 원과 선분, 접선·각도·길이의 관계.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -305,7 +313,11 @@ window.questionBank = [
     "solutionImageCaption": "AB와 CD가 평행하므로 엇각 ∠DAB=∠ADC=20°이다. 20°가 보는 호 AC와 호 DB는 각각 40°이고, 위쪽 반원이 180°이므로 호 CD는 100°이다. 호 DB 40°의 길이가 3π이므로 원둘레는 27π이고, 호 CD의 길이는 27π×100/360이다. 정답은 15π/2이다.",
     "solutionImageSize": "full"
   ,
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "image": "assets/images/21_동산중_2학기_기말_중3_수학/q4-problem.svg",
+    "imageAlt": "21년 동산중 기말 4번 문제에서 주어진 원본에 표시된 원과 선분, 접선·각도·길이의 관계.",
+    "imageCaption": "21년 동산중 기말 4번 문제에서 주어진 원본에 표시된 원과 선분, 접선·각도·길이의 관계.",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -377,7 +389,11 @@ window.questionBank = [
     "solutionImageCaption": "중심각 46°이므로 호 BC는 46°이고, 원주각 21°가 보는 호 CD는 42°이다. 호 BD=46°+42°=88°이다. ∠BAD는 호 BD를 보는 원주각이므로 호의 절반이다. 정답은 44°이다.",
     "solutionImageSize": "full"
   ,
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "image": "assets/images/21_동산중_2학기_기말_중3_수학/q5-problem.svg",
+    "imageAlt": "21년 동산중 기말 5번 문제에서 주어진 원본에 표시된 원과 선분, 접선·각도·길이의 관계.",
+    "imageCaption": "21년 동산중 기말 5번 문제에서 주어진 원본에 표시된 원과 선분, 접선·각도·길이의 관계.",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -449,7 +465,11 @@ window.questionBank = [
     "solutionImageCaption": "꼭짓점 B에서 원에 그은 두 접선의 길이는 같아 BP=BR=(10+12−6)/2=8이다. D, E에서 원에 그은 접선의 길이도 각각 같으므로 DP=DT, ER=ET이다. 삼각형 DBE의 둘레는 BD+BE+DE=(BP−DP)+(BR−ER)+(DT+TE)=BP+BR이다. 정답은 16이다.",
     "solutionImageSize": "full"
   ,
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "image": "assets/images/21_동산중_2학기_기말_중3_수학/q6-problem.svg",
+    "imageAlt": "21년 동산중 기말 6번 문제에서 주어진 원본에 표시된 원과 선분, 접선·각도·길이의 관계.",
+    "imageCaption": "21년 동산중 기말 6번 문제에서 주어진 원본에 표시된 원과 선분, 접선·각도·길이의 관계.",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -542,7 +562,11 @@ window.questionBank = [
     "solutionImageCaption": "원의 반지름은 높이 4의 절반인 2이다. 한 점에서 원에 그은 두 접선의 길이는 같으므로 DR=DS=4이고, ER=EQ=4−x이다. DE=8−x이고 직각삼각형 DCE에서 (8−x)²=4²+x²이다. 이를 풀면 x=3이다. 정답은 3이다.",
     "solutionImageSize": "full"
   ,
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "image": "assets/images/21_동산중_2학기_기말_중3_수학/q7-problem.svg",
+    "imageAlt": "21년 동산중 기말 7번 문제에서 주어진 원본에 표시된 원과 선분, 접선·각도·길이의 관계.",
+    "imageCaption": "21년 동산중 기말 7번 문제에서 주어진 원본에 표시된 원과 선분, 접선·각도·길이의 관계.",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -614,7 +638,11 @@ window.questionBank = [
     "solutionImageCaption": "대각선이 수직이므로 피타고라스 정리로 AB²+CD²=BC²+DA²이고 AB²−DA²=6²−4²=20이다. 원에 외접하는 사각형이므로 AB+CD=BC+DA에서 AB−DA=2이다. 따라서 (AB−DA)(AB+DA)=20에서 AB+DA=10이다. 정답은 10이다.",
     "solutionImageSize": "full"
   ,
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "image": "assets/images/21_동산중_2학기_기말_중3_수학/q8-problem.svg",
+    "imageAlt": "21년 동산중 기말 8번 문제에서 주어진 원본에 표시된 원과 선분, 접선·각도·길이의 관계.",
+    "imageCaption": "21년 동산중 기말 8번 문제에서 주어진 원본에 표시된 원과 선분, 접선·각도·길이의 관계.",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -707,7 +735,11 @@ window.questionBank = [
     "solutionImageCaption": "작은 원의 반지름을 r, 큰 원의 반지름을 R이라 하자. 현 AB는 작은 원의 접선이므로 중심에서 AB까지의 거리가 r이고 AH=16/2=8이다. 직각삼각형 OHA에서 R²=r²+8²이다. 빗금친 넓이는 π(R²−r²)이다. 정답은 64π이다.",
     "solutionImageSize": "full"
   ,
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "image": "assets/images/21_동산중_2학기_기말_중3_수학/q9-problem.svg",
+    "imageAlt": "21년 동산중 기말 9번 문제에서 주어진 원본에 표시된 원과 선분, 접선·각도·길이의 관계.",
+    "imageCaption": "21년 동산중 기말 9번 문제에서 주어진 원본에 표시된 원과 선분, 접선·각도·길이의 관계.",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -784,7 +816,11 @@ window.questionBank = [
     "solutionImageCaption": "두 현이 원 안에서 만나므로 ∠CPD는 호 CD와 호 AB의 합의 절반이다. 호 CD=3×호 AB이므로 (3a+a)/2=80°에서 호 AB=40°, 호 CD=120°이다. ∠PBD는 호 CD를 보는 원주각이다. 정답은 60°이다.",
     "solutionImageSize": "full"
   ,
-    "legacyLevelCompatibility": "STRONG_CONFLICT"
+    "legacyLevelCompatibility": "STRONG_CONFLICT",
+    "image": "assets/images/21_동산중_2학기_기말_중3_수학/q10-problem.svg",
+    "imageAlt": "21년 동산중 기말 10번 문제에서 주어진 원본에 표시된 원과 선분, 접선·각도·길이의 관계.",
+    "imageCaption": "21년 동산중 기말 10번 문제에서 주어진 원본에 표시된 원과 선분, 접선·각도·길이의 관계.",
+    "imageSize": "full"
   },
   {
     "id": 11,
@@ -877,7 +913,11 @@ window.questionBank = [
     "solutionImageCaption": "OA=OD이므로 삼각형 AOD는 이등변삼각형이고 ∠ADO=35°이다. 따라서 ∠AOD=180°−35°−35°=110°이다. ∠ACD는 호 AD를 보는 원주각이므로 중심각의 절반이다. 정답은 55°이다.",
     "solutionImageSize": "full"
   ,
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "image": "assets/images/21_동산중_2학기_기말_중3_수학/q11-problem.svg",
+    "imageAlt": "21년 동산중 기말 11번 문제에서 주어진 원본에 표시된 원과 선분, 접선·각도·길이의 관계.",
+    "imageCaption": "21년 동산중 기말 11번 문제에서 주어진 원본에 표시된 원과 선분, 접선·각도·길이의 관계.",
+    "imageSize": "full"
   },
   {
     "id": 12,
@@ -949,7 +989,11 @@ window.questionBank = [
     "solutionImageCaption": "AB가 지름이므로 호 AB는 180°이고, ∠COD=50°이므로 호 CD는 50°이다. 원 밖의 점 P에서 만나는 두 할선이 이루는 각은 큰 호와 작은 호의 차의 절반이다. ∠CPD=(180°−50°)/2이다. 정답은 65°이다.",
     "solutionImageSize": "full"
   ,
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "image": "assets/images/21_동산중_2학기_기말_중3_수학/q12-problem.svg",
+    "imageAlt": "21년 동산중 기말 12번 문제에서 주어진 원본에 표시된 원과 선분, 접선·각도·길이의 관계.",
+    "imageCaption": "21년 동산중 기말 12번 문제에서 주어진 원본에 표시된 원과 선분, 접선·각도·길이의 관계.",
+    "imageSize": "full"
   },
   {
     "id": 13,
@@ -1026,7 +1070,11 @@ window.questionBank = [
     "solutionImageCaption": "∠BAC=∠BEC=43°이므로 A, B, C, E는 한 원 위에 있다. ∠BDC=40°는 ∠BAC보다 작아 D는 원 ABC의 바깥에 있다. 세 점 A, B, C를 지나는 원은 하나뿐이므로 두 개 이상 그릴 수 있다는 보기가 틀렸다. 정답은 ⑤이다.",
     "solutionImageSize": "full"
   ,
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "image": "assets/images/21_동산중_2학기_기말_중3_수학/q13-problem.svg",
+    "imageAlt": "21년 동산중 기말 13번 문제에서 주어진 원본에 표시된 원과 선분, 접선·각도·길이의 관계.",
+    "imageCaption": "21년 동산중 기말 13번 문제에서 주어진 원본에 표시된 원과 선분, 접선·각도·길이의 관계.",
+    "imageSize": "full"
   },
   {
     "id": 14,
@@ -1119,7 +1167,11 @@ window.questionBank = [
     "solutionImageCaption": "∠ABC=100°가 보는 호 AEDC는 200°이고, 호 CD=50°이므로 점 E를 지나는 호 AD는 150°이다. 점 E를 포함하지 않는 호 AD는 360°−150°=210°이다. ∠AED는 이 호를 보는 원주각이므로 그 절반이다. 정답은 105°이다.",
     "solutionImageSize": "full"
   ,
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "image": "assets/images/21_동산중_2학기_기말_중3_수학/q14-problem.svg",
+    "imageAlt": "21년 동산중 기말 14번 문제에서 주어진 원본에 표시된 원과 선분, 접선·각도·길이의 관계.",
+    "imageCaption": "21년 동산중 기말 14번 문제에서 주어진 원본에 표시된 원과 선분, 접선·각도·길이의 관계.",
+    "imageSize": "full"
   },
   {
     "id": 15,

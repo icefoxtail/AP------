@@ -196,7 +196,7 @@ window.examData = {
     "hasVisual": false,
     "sourceParity": "EXACT",
     "question": "4. 오른쪽 삼각형 ABC에서 $\\overline{\\text{AD}} \\perp \\overline{\\text{BC}}$이고 $\\overline{\\text{AB}}=13$, $\\overline{\\text{BD}}=5$, $\\overline{\\text{CD}}=16$일 때, $\\overline{\\text{AC}}$의 길이를 구하면? [3점]",
-    "image": "",
+    "image": "assets/images/21_향림중_2학기_기말_중2_수학/q4-problem.svg",
     "choices": [
       "$16$",
       "$17$",
@@ -226,7 +226,10 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "공통 높이를 매개로 두 피타고라스식",
-    "decisiveStep": "AB와BD로AD를 구한 뒤 AD와CD로AC를 구한다."
+    "decisiveStep": "AB와BD로AD를 구한 뒤 AD와CD로AC를 구한다.",
+    "imageAlt": "삼각형 ABC에서 D는 BC 위의 수선의 발이며 AB=13, BD=5, DC=16.",
+    "imageCaption": "삼각형 ABC에서 D는 BC 위의 수선의 발이며 AB=13, BD=5, DC=16.",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -565,8 +568,8 @@ window.examData = {
   },
   {
     "id": 11,
-    "imageSize": "tall",
-    "imageAlt": "삼각형 ABC에서 AD가 각 A를 두 같은 각으로 나눈다.",
+    "imageSize": "full",
+    "imageAlt": "원문 두 그림: 각의 이등분선이 있는 △ABC와, 점 C를 지나 AD에 평행한 CE를 추가한 보조 작도.",
     "number": 11,
     "type": "multiple_choice",
     "questionType": "객관식",
@@ -601,7 +604,7 @@ window.examData = {
     "solution": "<p><b>1단계 [원문 조건 및 구할 대상]</b><br>삼각형의 내각의 이등분선의 성질 증명 과정에서 빈칸 (가), (나), (다)에 알맞은 식을 찾습니다.</p><p><b>2단계 [핵심 발상/공식/보조선]</b><br>평행선 $\\overline{\\text{AD}} // \\overline{\\text{EC}}$에서 동위각과 엇각의 성질을 추론하고, 두 밑각의 크기가 같은 삼각형이 이등변삼각형임을 활용합니다.</p><p><b>3단계 [연속 등식 및 충분한 중간 계산]</b><br>1) $\\overline{\\text{AD}} // \\overline{\\text{EC}}$에서 직선 AC와 만나는 엇각이므로 $\\angle\\text{CAD} = \\angle\\text{ACE}$ (엇각)입니다. 따라서 $\\text{(가)} = \\angle\\text{ACE}$입니다.<br>2) $\\angle\\text{BAD}=\\angle\\text{CAD}$이고 $\\angle\\text{BAD}=\\angle\\text{E}$이며 $\\angle\\text{CAD}=\\angle\\text{ACE}$이므로,<br>$\\angle\\text{E} = \\angle\\text{ACE}$입니다. 따라서 $\\text{(나)} = \\angle\\text{ACE}$입니다.<br>3) $\\triangle\\text{ACE}$에서 두 각의 크기 $\\angle\\text{E}=\\angle\\text{ACE}$가 같으므로 두 변의 길이가 같은 이등변삼각형입니다.<br>따라서 $\\overline{\\text{AE}} = \\overline{\\text{AC}}$입니다. 따라서 $\\text{(다)} = \\overline{\\text{AC}}$입니다.</p><p><b>4단계 [경우 나눔 및 5개 선지 검토]</b><br>(가) $\\angle\\text{ACE}$, (나) $\\angle\\text{ACE}$, (다) $\\overline{\\text{AC}}$의 조합은 ④뿐입니다.</p><p><b>5단계 [명확한 결론]</b><br>따라서 알맞은 것을 써넣은 것은 ④입니다.",
     "questionNumber": 11,
     "images": [],
-    "image": "",
+    "image": "assets/images/21_향림중_2학기_기말_중2_수학/q11-problem.svg",
     "accessibility": "삼각형 ABC에서 각 A의 이등분선 AD가 변 BC와 만나는 점 D를 나타낸 도형 / 점 C를 지나고 선분 AD에 평행한 직선과 선분 BA의 연장선의 교점 E를 잡은 보조선 다이어그램",
     "solutionImage": "assets/images/21_향림중_2학기_기말_중2_수학/q11-solution.svg",
     "solutionImageAlt": "해설 그림: 각의 이등분선 AD와 평행한 보조선 CE를 표시하고 같은 각과 같은 변을 각각 묶은 그림.",
@@ -618,7 +621,8 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "평행 보조선으로 각이등분선 선분비 증명",
-    "decisiveStep": "동위각·엇각으로 ACE의 두 밑각을 같게 한 뒤 AE=AC를 평행 선분비에 넣는다."
+    "decisiveStep": "동위각·엇각으로 ACE의 두 밑각을 같게 한 뒤 AE=AC를 평행 선분비에 넣는다.",
+    "imageCaption": "원문 두 그림: 각의 이등분선이 있는 △ABC와, 점 C를 지나 AD에 평행한 CE를 추가한 보조 작도."
   },
   {
     "id": 12,
