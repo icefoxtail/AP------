@@ -1,0 +1,57 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "k=−6",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-5",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "-3",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": true
+      },
+      {
+        "kind": "SET",
+        "label": "k=9",
+        "pieces": [
+          {
+            "lo": {
+              "value": "6",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "8",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "해집합과 경계 확인"
+  },
+  "caption": "k=−6이면 −5,−4,−3 / k=9이면 6,7,8",
+  "accessibilityDescription": "k=−6이면 −5,−4,−3 / k=9이면 6,7,8",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "(x−k)(x+2)<0, (x−6)(x+2)≥0, k=−6 또는 9",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "두 매개변수 경우에서 서로 다른 각 3개의 정수해를 독립 행으로 표시"
+  ]
+}

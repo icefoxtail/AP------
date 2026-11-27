@@ -1,0 +1,118 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "viewport": [
+      -3,
+      6,
+      -3,
+      11
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 1,
+        "y": -1,
+        "marker": "NONE"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "L",
+          "slope": "1",
+          "intercept": "4"
+        }
+      ],
+      "points": [
+        {
+          "id": "A",
+          "x": "-1",
+          "y": "3",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "4",
+          "y": "8",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "3",
+          "y": "3",
+          "coordinates": true
+        },
+        {
+          "id": "D",
+          "x": "-2",
+          "y": "8",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "AC",
+          "from": "A",
+          "to": "C",
+          "length": true
+        },
+        {
+          "id": "BD",
+          "from": "B",
+          "to": "D",
+          "length": true
+        },
+        {
+          "id": "AD",
+          "from": "A",
+          "to": "D",
+          "dashed": true
+        },
+        {
+          "id": "BC",
+          "from": "B",
+          "to": "C",
+          "dashed": true
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "A": "A",
+    "B": "B",
+    "C": "C",
+    "D": "D"
+  },
+  "caption": "A(−1,3), B(4,8), C(3,3), D(−2,8), AC=4, BD=6, S:T=3:2",
+  "accessibilityDescription": "A(−1,3), B(4,8), C(3,3), D(−2,8), AC=4, BD=6, S:T=3:2",
+  "sourceQuote": "y=x²−2x, y=x+4, A(−1,3), B(4,8), C(3,3), D(−2,8)",
+  "sourceConditions": [
+    {
+      "id": "poly",
+      "condition": "y=x²−2x, y=x+4, A(−1,3), B(4,8), C(3,3), D(−2,8)",
+      "mappedTo": "graphPlan.pieces,graphPlan.sourceDomain"
+    },
+    {
+      "id": "dots",
+      "condition": "네 교점의 정확 좌표, 수평선 AC/BD의 실제 길이, 삼각형 AD·BC 보조선",
+      "mappedTo": "graphPlan.overlays,graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "그려지는 함수 그래프·교점·보조선·선분의 방향과 개별 점 이름을 실제 그리기 필드로 표시한다."
+  ]
+}

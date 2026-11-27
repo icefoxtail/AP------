@@ -1,0 +1,102 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-2",
+          "-2"
+        ]
+      },
+      {
+        "coefficients": [
+          "4"
+        ]
+      },
+      {
+        "coefficients": [
+          "2",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-3",
+        "y": "4"
+      },
+      {
+        "x": "1",
+        "y": "4"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -6,
+      4
+    ],
+    "viewport": [
+      -6,
+      4,
+      0,
+      12
+    ],
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": -3,
+        "y": 4
+      },
+      {
+        "id": "R",
+        "x": 1,
+        "y": 4
+      },
+      {
+        "id": "A",
+        "x": -4,
+        "y": 6
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 6
+      }
+    ],
+    "referenceLines": [
+      {
+        "id": "h",
+        "y": "6",
+        "intersectionX": [
+          "-4",
+          "2"
+        ]
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "절댓값 합의 세 조각 그래프와 기준선 y=6의 두 교점 x=−4,2",
+  "accessibilityDescription": "절댓값 합의 세 조각 그래프와 기준선 y=6의 두 교점 x=−4,2",
+  "sourceQuote": "|x−1|+|x+3|≤6, 세 구간 경계 −3,1, 해 [−4,2]",
+  "sourceConditions": [
+    {
+      "id": "func",
+      "condition": "|x−1|+|x+3|≤6, 세 구간 경계 −3,1, 해 [−4,2]",
+      "mappedTo": "graphPlan.pieces,graphPlan.breakpoints"
+    },
+    {
+      "id": "line",
+      "condition": "y=6와의 실제 교점 x=-4, 2",
+      "mappedTo": "graphPlan.referenceLines,graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "절댓값 함수의 세 실제 직선 조각, 두 경계 꼭짓점과 수평 기준선 및 근을 그림에 나타낸다."
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      6
+    ],
+    "viewport": [
+      0,
+      6,
+      -11,
+      1
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 3,
+        "y": -9,
+        "marker": "NONE"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "L",
+          "slope": "-1",
+          "intercept": "-4"
+        }
+      ],
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "-5",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "4",
+          "y": "-8",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "5",
+          "y": "-5",
+          "coordinates": true
+        },
+        {
+          "id": "D",
+          "x": "2",
+          "y": "-8",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "AC",
+          "from": "A",
+          "to": "C",
+          "length": true
+        },
+        {
+          "id": "BD",
+          "from": "B",
+          "to": "D",
+          "length": true
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "A": "A",
+    "B": "B",
+    "C": "C",
+    "D": "D"
+  },
+  "caption": "B의 x좌표가 4일 때 선분 AC=4, BD=2이고 m+n=−5다.",
+  "accessibilityDescription": "포물선 y=x²−6x와 직선의 교점 A·B, 같은 높이의 점 C·D와 두 수평선의 실제 길이를 표시한다. B의 x좌표 4인 경우다.",
+  "sourceQuote": "f(x)=x²−6x, x_A=1, S(ABD):S(ABC)=1:2, x_B=2 또는 4",
+  "sourceConditions": [
+    {
+      "id": "curve",
+      "condition": "f(x)=x²−6x",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "case",
+      "condition": "x_B=4, x_C=5, x_D=2, m=-1, n=-4",
+      "mappedTo": "graphPlan.overlays"
+    }
+  ],
+  "newVisualInformation": [
+    "경우 x_B=4에서 실제 그려지는 A,B,C,D 네 점과 같은 높이의 AC,BD 선분 및 길이를 도식화한다."
+  ]
+}

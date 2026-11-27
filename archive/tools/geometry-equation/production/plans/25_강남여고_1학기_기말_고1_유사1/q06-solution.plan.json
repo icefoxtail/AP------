@@ -1,0 +1,40 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "정수해",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "6",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "해집합과 경계 확인"
+  },
+  "caption": "|2x−3|<x+3의 정수해는 1,2,3,4,5",
+  "accessibilityDescription": "|2x−3|<x+3의 정수해는 1,2,3,4,5",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "0<x<6, 정수 x=1,2,3,4,5",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "양 끝의 열린 점 및 구간 안의 5개 정수 눈금을 실체화"
+  ]
+}

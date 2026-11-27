@@ -1,0 +1,103 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "6",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "viewport": [
+      -1,
+      6,
+      -2,
+      12
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 3,
+        "y": 9,
+        "marker": "NONE"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "L",
+          "slope": "2",
+          "intercept": "0"
+        },
+        {
+          "id": "t",
+          "x": "1",
+          "label": "x=t",
+          "labelValues": {
+            "t": "1"
+          }
+        }
+      ],
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "A",
+          "x": "4",
+          "y": "8"
+        },
+        {
+          "id": "P",
+          "x": "1",
+          "y": "5"
+        },
+        {
+          "id": "Q",
+          "x": "1",
+          "y": "2"
+        }
+      ],
+      "segments": [
+        {
+          "id": "PQ",
+          "from": "P",
+          "to": "Q"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "O": "O",
+    "A": "A",
+    "P": "P",
+    "Q": "Q"
+  },
+  "caption": "y=−x²+6x와 y=2x 사이의 세로 선분 PQ (t의 예시 위치)",
+  "accessibilityDescription": "y=−x²+6x와 y=2x 사이의 세로 선분 PQ (t의 예시 위치)",
+  "sourceQuote": "y=−x²+6x 와 y=2x, O(0,0), A(4,8), t∈(0,4), P=(t,f(t)),Q=(t,2t)",
+  "sourceConditions": [
+    {
+      "id": "poly",
+      "condition": "y=−x²+6x 와 y=2x, O(0,0), A(4,8), t∈(0,4), P=(t,f(t)),Q=(t,2t)",
+      "mappedTo": "graphPlan.pieces,graphPlan.sourceDomain"
+    },
+    {
+      "id": "dots",
+      "condition": "임의의 t=1을 배치 예시로 사용하되 문제에서 구할 최대값 및 t의 답은 노출하지 않음",
+      "mappedTo": "graphPlan.overlays,graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "그려지는 함수 그래프·교점·보조선·선분의 방향과 개별 점 이름을 실제 그리기 필드로 표시한다."
+  ]
+}

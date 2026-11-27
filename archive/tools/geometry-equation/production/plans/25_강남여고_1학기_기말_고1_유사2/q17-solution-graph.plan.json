@@ -1,0 +1,102 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "-2"
+        ]
+      },
+      {
+        "coefficients": [
+          "2"
+        ]
+      },
+      {
+        "coefficients": [
+          "-4",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "1",
+        "y": "2"
+      },
+      {
+        "x": "3",
+        "y": "2"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      8
+    ],
+    "viewport": [
+      -4,
+      8,
+      0,
+      15
+    ],
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": 1,
+        "y": 2
+      },
+      {
+        "id": "R",
+        "x": 3,
+        "y": 2
+      },
+      {
+        "id": "A",
+        "x": -2,
+        "y": 8
+      },
+      {
+        "id": "B",
+        "x": 6,
+        "y": 8
+      }
+    ],
+    "referenceLines": [
+      {
+        "id": "h",
+        "y": "8",
+        "intersectionX": [
+          "-2",
+          "6"
+        ]
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "k=1인 절댓값 합의 세 조각 그래프와 y=8의 교점 x=−2,6",
+  "accessibilityDescription": "k=1인 절댓값 합의 세 조각 그래프와 y=8의 교점 x=−2,6",
+  "sourceQuote": "k=1에서 |x−1|+|x−3|≤8, 세 구간 경계 1,3, 해 [−2,6]",
+  "sourceConditions": [
+    {
+      "id": "func",
+      "condition": "k=1에서 |x−1|+|x−3|≤8, 세 구간 경계 1,3, 해 [−2,6]",
+      "mappedTo": "graphPlan.pieces,graphPlan.breakpoints"
+    },
+    {
+      "id": "line",
+      "condition": "y=8와의 실제 교점 x=-2, 6",
+      "mappedTo": "graphPlan.referenceLines,graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "절댓값 함수의 세 실제 직선 조각, 두 경계 꼭짓점과 수평 기준선 및 근을 그림에 나타낸다."
+  ]
+}

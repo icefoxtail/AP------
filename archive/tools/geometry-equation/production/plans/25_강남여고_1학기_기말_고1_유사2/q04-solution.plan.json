@@ -1,0 +1,40 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "a=0 예",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-1/2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "2",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "해집합과 경계 확인"
+  },
+  "caption": "a=0이면 부등식 정수해는 0,1,2",
+  "accessibilityDescription": "a=0이면 부등식 정수해는 0,1,2",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "x>−(a+1)/2, x≤2. a=0일 때 −1/2<x≤2",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "열린 하한과 닫힌 상한 및 세 정수의 포함을 표시"
+  ]
+}
