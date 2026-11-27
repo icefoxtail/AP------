@@ -1,0 +1,78 @@
+{
+  "capability": "exponential-affine-spike-v1",
+  "sourceQuote": "함수 $y=2^x+1$의 그래프가 오른쪽 그림과 같다.",
+  "caption": "지수함수 y=2^x+1의 그래프 위의 두 점 P, Q이다. 점 P와 점 Q에서 x축과 y축에 각각 점선을 내려 두 점의 위치를 보였다.",
+  "graphPlan": {
+    "family": "exponential-affine",
+    "base": "2",
+    "coefficients": [
+      "1",
+      "1",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      4.4
+    ],
+    "viewport": [
+      -4,
+      5,
+      -3,
+      22
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "3"
+        },
+        {
+          "id": "Q",
+          "curveX": "2"
+        }
+      ],
+      "guides": [
+        {
+          "id": "gp",
+          "from": "P",
+          "axis": "BOTH"
+        },
+        {
+          "id": "gq",
+          "from": "Q",
+          "axis": "BOTH"
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": [
+        "9"
+      ]
+    },
+    "axisTickLabels": {
+      "x": {
+        "3": "a"
+      },
+      "y": {
+        "5": "b"
+      }
+    }
+  },
+  "sourceConditions": [
+    {
+      "id": "given",
+      "condition": "함수 y=2^x+1 위에 P(a,9)와 Q(2,b)가 있다",
+      "mappedTo": "P,Q,gp,gq"
+    }
+  ],
+  "newVisualInformation": [
+    "P의 x축 발은 미지수 a, Q의 y축 발은 미지수 b로 표기한다",
+    "원본 수작업 SVG의 잘못된 값 20 눈금을 제거하고, 문제 축에 a=3·b=5를 누설하지 않는다"
+  ]
+}

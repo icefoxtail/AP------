@@ -1,0 +1,59 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "S=r(14-r)=-(r-7)^2+49, r=7에서 최대",
+  "sourceConditions": [
+    {
+      "id": "range",
+      "condition": "0<r<14에서 넓이 S(r)=r(14-r)",
+      "mappedTo": "parabola"
+    },
+    {
+      "id": "vertex",
+      "condition": "최대점 (7,49)",
+      "mappedTo": "P"
+    }
+  ],
+  "newVisualInformation": [
+    "반지름 r에 대한 넓이 S 그래프 및 꼭짓점 (7,49), 양끝 경계 0과 14를 표시"
+  ],
+  "caption": "둘레 28인 부채꼴의 넓이는 S=r(14-r), 0<r<14. 꼭짓점 (7,49)에서 최댓값 49이다.",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "14",
+      "-1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      14
+    ],
+    "viewport": [
+      -1,
+      15,
+      -5,
+      52
+    ],
+    "axisVariable": "r",
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "7",
+          "y": "49",
+          "coordinates": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "gp",
+          "from": "P",
+          "axis": "BOTH"
+        }
+      ]
+    }
+  }
+}

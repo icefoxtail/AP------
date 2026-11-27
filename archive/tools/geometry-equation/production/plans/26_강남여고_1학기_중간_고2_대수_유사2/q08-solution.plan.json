@@ -1,0 +1,113 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "같은 높이에서 두 그래프의 가로 간격은 log_2 m; m=8",
+  "sourceConditions": [
+    {
+      "id": "a",
+      "condition": "y=2^x 와 y=8×2^x 의 수평거리 3",
+      "mappedTo": "f,g"
+    },
+    {
+      "id": "b",
+      "condition": "y=1과 y=9 사이 높이 8",
+      "mappedTo": "low,high"
+    }
+  ],
+  "newVisualInformation": [
+    "두 지수곡선, 두 가로 점선, 동일한 y값을 지나는 대응점의 수평 간격을 한 축에서 확인",
+    "곡선 사이 곡면을 임의로 채우지 않고 실제 영역 경계만 표시",
+    "y=9에서의 초월수 로그 좌표 눈금은 쓰지 않고 수평선만 표시"
+  ],
+  "caption": "해설: m=8이므로 두 곡선의 같은 높이에서 x좌표 차는 3이다. y=1과 y=9 사이 높이는 8, 넓이는 3×8=24.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      4,
+      -1,
+      10
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "1",
+          "0"
+        ],
+        "domain": [
+          "-5",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "y=2^x"
+      },
+      {
+        "id": "g",
+        "kind": "EXPONENTIAL",
+        "base": "2",
+        "coefficients": [
+          "8",
+          "1",
+          "0"
+        ],
+        "domain": [
+          "-5",
+          "4"
+        ],
+        "color": "WARM",
+        "label": "y=8*2^x"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "3"
+      ],
+      "y": [
+        "1",
+        "9"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "low",
+          "slope": "0",
+          "intercept": "1",
+          "style": "DASHED"
+        },
+        {
+          "id": "high",
+          "slope": "0",
+          "intercept": "9",
+          "style": "DASHED"
+        }
+      ],
+      "points": [
+        {
+          "id": "F1",
+          "x": "0",
+          "y": "1",
+          "unnamed": true
+        },
+        {
+          "id": "G1",
+          "x": "-3",
+          "y": "1",
+          "unnamed": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "width",
+          "from": "F1",
+          "to": "G1",
+          "length": true
+        }
+      ]
+    }
+  }
+}

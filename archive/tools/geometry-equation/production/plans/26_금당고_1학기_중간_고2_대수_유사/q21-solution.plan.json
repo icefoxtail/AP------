@@ -1,0 +1,99 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "k=2에서 f(x)=2^x, g(x)=2·4^x+1/4; t=-3일 때 AB=5/32",
+  "sourceConditions": [
+    {
+      "id": "diff",
+      "condition": "한 수직선 x=t에서 두 곡선 위 점 A,B 사이 거리가 5/32",
+      "mappedTo": "a,b,ab"
+    },
+    {
+      "id": "k",
+      "condition": "k=2인 해설 그래프, t=-3 및 log₂(3/8)의 두 위치",
+      "mappedTo": "f,g"
+    }
+  ],
+  "newVisualInformation": [
+    "해설의 실제 두 지수곡선과 x=-3 수직선을 같은 축에 표시",
+    "t=-3에 두 교점과 길이 5/32의 세로 선분; 두 번째 위치의 초월로그 x눈금은 엔진 미지원"
+  ],
+  "caption": "해설 k=2: y=2^x와 y=2·4^x+1/4. t=-3에서 A(-3,1/8), B(-3,9/32), AB=5/32. 다른 t=log₂(3/8)도 성립한다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      1,
+      -1,
+      6
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "1",
+          "0"
+        ],
+        "domain": [
+          "-4",
+          "1"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "g",
+        "kind": "EXPONENTIAL",
+        "base": "4",
+        "coefficients": [
+          "2",
+          "1",
+          "1/4"
+        ],
+        "domain": [
+          "-4",
+          "1"
+        ],
+        "color": "WARM",
+        "label": "y=g(x)"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3"
+      ],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "tfirst",
+          "x": "-3",
+          "style": "DASHED"
+        }
+      ],
+      "points": [
+        {
+          "id": "A",
+          "x": "-3",
+          "y": "1/8"
+        },
+        {
+          "id": "B",
+          "x": "-3",
+          "y": "9/32"
+        }
+      ],
+      "segments": [
+        {
+          "id": "ab",
+          "from": "A",
+          "to": "B",
+          "length": true
+        }
+      ]
+    }
+  }
+}

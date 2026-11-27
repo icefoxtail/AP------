@@ -1,0 +1,118 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "f(x)=log_2(3x+6), g(x)=log_2(-3x-6), 공통 점근선 x=-2",
+  "sourceConditions": [
+    {
+      "id": "both",
+      "condition": "두 곡선은 x=-2를 축으로 서로 반사 대칭",
+      "mappedTo": "f,g,vertical"
+    },
+    {
+      "id": "equal",
+      "condition": "t=0의 수평선에서 PR=QR=1/3",
+      "mappedTo": "P,Q,R"
+    }
+  ],
+  "newVisualInformation": [
+    "왼쪽·오른쪽 로그곡선과 공통 점근선 점선",
+    "t=0 대표 수평선에 P,Q,R과 동일한 거리 PR,QR 표시"
+  ],
+  "caption": "해설: a=1/2, b=-3, c=-6. 두 로그곡선은 x=-2를 기준으로 반사 대칭이며 높이 t=0에서 PR=QR=1/3이다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      1,
+      -5,
+      4
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LOGARITHMIC",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "3",
+          "6",
+          "0"
+        ],
+        "domain": [
+          "-199/100",
+          "1"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "g",
+        "kind": "LOGARITHMIC",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "-3",
+          "-6",
+          "0"
+        ],
+        "domain": [
+          "-5",
+          "-201/100"
+        ],
+        "color": "WARM",
+        "label": "y=g(x)"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2"
+      ],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "vertical",
+          "x": "-2",
+          "style": "DASHED"
+        },
+        {
+          "id": "level",
+          "slope": "0",
+          "intercept": "0",
+          "style": "DASHED"
+        }
+      ],
+      "points": [
+        {
+          "id": "P",
+          "x": "-5/3",
+          "y": "0"
+        },
+        {
+          "id": "Q",
+          "x": "-7/3",
+          "y": "0"
+        },
+        {
+          "id": "R",
+          "x": "-2",
+          "y": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "PR",
+          "from": "P",
+          "to": "R",
+          "length": true
+        },
+        {
+          "id": "QR",
+          "from": "Q",
+          "to": "R",
+          "length": true
+        }
+      ]
+    }
+  }
+}

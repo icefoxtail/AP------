@@ -1,0 +1,103 @@
+{
+  "capability": "logarithmic-affine-spike-v1",
+  "sourceQuote": "a=2, A(1,0), B(4,2), C(4,0), D(0,2)",
+  "sourceConditions": [
+    {
+      "id": "curve",
+      "condition": "y=log_2x, A(1,0), B(4,2)",
+      "mappedTo": "A,B"
+    },
+    {
+      "id": "guides",
+      "condition": "B에서 x축과 y축에 내린 수선, C(4,0),D(0,2)",
+      "mappedTo": "BC,BD"
+    }
+  ],
+  "newVisualInformation": [
+    "A-C-B-D를 잇는 사다리꼴의 수선 두 개를 점선 표시",
+    "점 A,B,C,D 좌표를 보여 넓이 7을 검증",
+    "로그곡선의 축 비율에서는 직각 사각형 렌더가 미지원이므로 수평·수직 선분과 점선으로 수선만 명시"
+  ],
+  "caption": "a=2인 해설 도식: y=log₂x 위의 A(1,0), B(4,2), 발 C(4,0), D(0,2); ACBD의 넓이는 7.",
+  "graphPlan": {
+    "family": "logarithmic-affine",
+    "base": "2",
+    "coefficients": [
+      "1",
+      "1",
+      "0",
+      "0"
+    ],
+    "sourceDomain": {
+      "kind": "NATURAL_LOG_AFFINE"
+    },
+    "domain": [
+      0.125,
+      8
+    ],
+    "viewport": [
+      -1,
+      8,
+      -2,
+      4
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "0"
+        },
+        {
+          "id": "B",
+          "x": "4",
+          "y": "2"
+        },
+        {
+          "id": "C",
+          "x": "4",
+          "y": "0"
+        },
+        {
+          "id": "D",
+          "x": "0",
+          "y": "2"
+        },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AC",
+          "from": "A",
+          "to": "C"
+        },
+        {
+          "id": "CB",
+          "from": "C",
+          "to": "B"
+        },
+        {
+          "id": "BD",
+          "from": "B",
+          "to": "D"
+        },
+        {
+          "id": "DA",
+          "from": "D",
+          "to": "A"
+        }
+      ],
+      "guides": [
+        {
+          "id": "gb",
+          "from": "B",
+          "axis": "BOTH"
+        }
+      ]
+    }
+  }
+}

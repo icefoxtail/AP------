@@ -1,0 +1,76 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "y=2^x와 x축, y축, x=4로 둘러싸인 영역 내부의 정수점",
+  "sourceConditions": [
+    {
+      "id": "enclosure",
+      "condition": "0<x<4,0<y<2^x의 내부 (경계 제외)",
+      "mappedTo": "f,right,inside"
+    }
+  ],
+  "newVisualInformation": [
+    "그래프와 네 경계를 정확히 표시하고 내부 영역만 연하게 구분",
+    "문제 축에는 정수점이나 정답 개수를 표시하지 않음"
+  ],
+  "caption": "경계는 x=0, x=4, y=0, y=2^x이며 색칠한 부분은 세어야 할 영역이다. 경계 위의 점은 세지 않는다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      4.5,
+      -1,
+      17
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "1",
+          "0"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "y=2^x"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "y": [
+        "1",
+        "2",
+        "4",
+        "8",
+        "16"
+      ]
+    },
+    "regions": [
+      {
+        "id": "inside",
+        "under": "f",
+        "from": "0",
+        "to": "4",
+        "fill": "LIGHT"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "right",
+          "x": "4",
+          "style": "SOLID"
+        }
+      ]
+    }
+  }
+}
