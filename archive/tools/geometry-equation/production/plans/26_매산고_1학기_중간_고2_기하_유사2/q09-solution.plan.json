@@ -1,0 +1,51 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "4",
+    "bSquared": "9",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "T",
+      "kind": "ON_CONIC",
+      "x": "-5/2",
+      "sign": "NEG",
+      "coordinates": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "t",
+      "slope": "5/2",
+      "intercept": "4",
+      "tangent": true,
+      "label": "②"
+    }
+  ],
+  "caption": "쌍곡선 x²/4-y²/9=1에 접하는 y=5x/2+4",
+  "accessibilityDescription": "쌍곡선 x²/4-y²/9=1에 접하는 y=5x/2+4 접선과 실제 접점 (-5/2,-9/4) 표시",
+  "sourceConditions": [
+    {
+      "id": "math",
+      "condition": "쌍곡선 x²/4-y²/9=1에 접하는 y=5x/2+4",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접선과 실제 접점 (-5/2,-9/4) 표시"
+  ]
+}

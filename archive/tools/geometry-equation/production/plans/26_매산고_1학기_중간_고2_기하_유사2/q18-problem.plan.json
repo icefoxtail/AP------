@@ -1,0 +1,112 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 6
+      },
+      "height": 6,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "L",
+          "at": {
+            "divide": [
+              "A",
+              "B"
+            ],
+            "ratio": "2:1"
+          }
+        },
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "H",
+              "G"
+            ]
+          }
+        },
+        {
+          "id": "N",
+          "at": {
+            "footOnLine": {
+              "from": "M",
+              "line": [
+                "D",
+                "L"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "D",
+      "to": "L",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "D",
+      "to": "M",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "L",
+      "to": "M",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "M",
+      "to": "N",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "D",
+      "to": "N",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "N",
+        "refs": [
+          "M",
+          "D"
+        ]
+      }
+    ]
+  },
+  "dims": [
+    {
+      "edge": "AB"
+    }
+  ],
+  "caption": "정육면체 ABCD-EFGH의 한 모서리 6, AL:LB=2:1, HG 중점 M과 DL 위 수선의 발 N",
+  "accessibilityDescription": "정육면체 ABCD-EFGH의 한 모서리 6, AL:LB=2:1, HG 중점 M과 DL 위 수선의 발 N 내분점 L, 중점 M, 수선 MN, 직각표식 및 주어진 길이만 그림에 표시",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "정육면체 ABCD-EFGH의 한 모서리 6, AL:LB=2:1, HG 중점 M과 DL 위 수선의 발 N",
+      "mappedTo": [
+        "solids",
+        "segments",
+        "marks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "내분점 L, 중점 M, 수선 MN, 직각표식 및 주어진 길이만 그림에 표시"
+  ]
+}

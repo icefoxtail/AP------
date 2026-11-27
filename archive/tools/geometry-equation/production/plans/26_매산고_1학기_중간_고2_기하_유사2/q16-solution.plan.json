@@ -1,0 +1,70 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "7",
+    "bSquared": "12",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "P",
+      "kind": "POINT",
+      "x": "0",
+      "y": "4",
+      "coordinates": true
+    },
+    {
+      "id": "T",
+      "kind": "ON_CONIC",
+      "x": "-7/2",
+      "sign": "NEG",
+      "coordinates": true
+    },
+    {
+      "id": "S",
+      "kind": "ON_CONIC",
+      "x": "7/2",
+      "sign": "NEG",
+      "coordinates": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "a",
+      "slope": "2",
+      "intercept": "4",
+      "tangent": true
+    },
+    {
+      "id": "b",
+      "slope": "-2",
+      "intercept": "4",
+      "tangent": true
+    }
+  ],
+  "caption": "점 P(0,4)에서 쌍곡선 x²/7-y²/12=1에 그은 양쪽 접선",
+  "accessibilityDescription": "점 P(0,4)에서 쌍곡선 x²/7-y²/12=1에 그은 양쪽 접선 접선 두 개와 각 접점, P의 좌표 표시",
+  "sourceConditions": [
+    {
+      "id": "math",
+      "condition": "점 P(0,4)에서 쌍곡선 x²/7-y²/12=1에 그은 양쪽 접선",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접선 두 개와 각 접점, P의 좌표 표시"
+  ]
+}

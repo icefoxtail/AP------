@@ -1,0 +1,87 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "초점이 $F$인 포물선 $y^2=4px$ 위의 한 점 $A$에서 포물선의",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "1",
+    "axis": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS"
+    },
+    {
+      "id": "A",
+      "kind": "ON_CONIC",
+      "x": "3",
+      "branch": "POS"
+    },
+    {
+      "id": "B",
+      "kind": "FOOT",
+      "from": "A",
+      "onto": "l",
+      "rightAngle": true
+    },
+    {
+      "id": "C",
+      "kind": "LINE_CONIC",
+      "line": "k1",
+      "which": 1
+    }
+  ],
+  "lines": [
+    {
+      "id": "l",
+      "role": "DIRECTRIX",
+      "label": "l"
+    },
+    {
+      "id": "k1",
+      "through": [
+        "B",
+        "F"
+      ],
+      "hidden": true
+    }
+  ],
+  "segments": [
+    {
+      "id": "sAB",
+      "from": "A",
+      "to": "B"
+    },
+    {
+      "id": "sBF",
+      "from": "B",
+      "to": "F"
+    }
+  ],
+  "caption": "포물선 y²=4px 위 점 A의 준선 수선의 발 B, 초점 F 및 선분 BF와 포물선의 교점 C를 나타낸 대표 그림(p=1 배치).",
+  "sourceConditions": [
+    {
+      "id": "given",
+      "condition": "포물선 y²=4px, AB=BF, C는 선분 BF와 포물선의 교점",
+      "mappedTo": [
+        "conic",
+        "points",
+        "segments",
+        "lines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "준선과 수선 AB의 직각",
+    "선분 BF 위의 교점 C와 해설에 쓰는 길이 관계"
+  ],
+  "accessibilityDescription": "포물선 y²=4px 위 점 A의 준선 수선의 발 B, 초점 F 및 선분 BF와 포물선의 교점 C를 나타낸 대표 그림(p=1 배치)."
+}

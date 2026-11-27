@@ -1,0 +1,94 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "12",
+    "bSquared": "12",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "4",
+      "sign": "POS",
+      "coordinates": true
+    },
+    {
+      "id": "U",
+      "kind": "LINE_LINE",
+      "lines": [
+        "t",
+        "a1"
+      ],
+      "label": false
+    },
+    {
+      "id": "V",
+      "kind": "LINE_LINE",
+      "lines": [
+        "t",
+        "a2"
+      ],
+      "label": false
+    }
+  ],
+  "lines": [
+    {
+      "id": "a1",
+      "role": "ASYMPTOTE",
+      "sign": 1,
+      "dashed": true,
+      "label": "y=x"
+    },
+    {
+      "id": "a2",
+      "role": "ASYMPTOTE",
+      "sign": -1,
+      "dashed": true,
+      "label": "y=-x"
+    },
+    {
+      "id": "t",
+      "slope": "2",
+      "intercept": "-6",
+      "tangent": true
+    }
+  ],
+  "polygons": [
+    {
+      "id": "tri",
+      "points": [
+        "O",
+        "U",
+        "V"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "caption": "P(4,2)에서의 쌍곡선 접선과 두 점근선의 삼각형, 둘레를 묻는 문제 그림",
+  "accessibilityDescription": "P(4,2)에서의 쌍곡선 접선과 두 점근선의 삼각형, 둘레를 묻는 문제 그림 P 좌표, 두 점근선 점선, 접선, 삼각형 내부만 원본 해칭을 대체한 옅은 강조; 교점 좌표 미노출",
+  "sourceConditions": [
+    {
+      "id": "math",
+      "condition": "P(4,2)에서의 쌍곡선 접선과 두 점근선의 삼각형, 둘레를 묻는 문제 그림",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "polygons"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "P 좌표, 두 점근선 점선, 접선, 원본 해칭 삼각형의 최소 강조 채움; 교점 좌표 미노출"
+  ]
+}

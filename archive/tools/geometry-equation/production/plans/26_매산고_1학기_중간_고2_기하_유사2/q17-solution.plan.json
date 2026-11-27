@@ -1,0 +1,69 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "5",
+    "bSquared": "4",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "S",
+      "kind": "ON_CONIC",
+      "x": "-5/2",
+      "sign": "NEG"
+    },
+    {
+      "id": "T",
+      "kind": "ON_CONIC",
+      "x": "5/2",
+      "sign": "POS"
+    }
+  ],
+  "lines": [
+    {
+      "id": "a",
+      "slope": "2",
+      "intercept": "4",
+      "tangent": true
+    },
+    {
+      "id": "b",
+      "slope": "2",
+      "intercept": "-4",
+      "tangent": true
+    }
+  ],
+  "caption": "대표 예 a²=5, b²=4, m=2에서 절편이 ±4인 서로 평행한 접선",
+  "accessibilityDescription": "대표 예 a²=5, b²=4, m=2에서 절편이 ±4인 서로 평행한 접선 원문 미지수의 적법한 대표 수치와 서로 평행한 두 접선을 명시",
+  "sourceConditions": [
+    {
+      "id": "math",
+      "condition": "대표 예 a²=5, b²=4, m=2에서 절편이 ±4인 서로 평행한 접선",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines"
+      ]
+    },
+    {
+      "id": "sample",
+      "condition": "계수 문자가 주어진 일반식의 한 적법한 대표 예(a²=5,b²=4,m=2)이며 문제의 특정 값으로 제시하지 않는다.",
+      "mappedTo": [
+        "conic",
+        "lines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 미지수의 적법한 대표 수치와 서로 평행한 두 접선을 명시"
+  ]
+}

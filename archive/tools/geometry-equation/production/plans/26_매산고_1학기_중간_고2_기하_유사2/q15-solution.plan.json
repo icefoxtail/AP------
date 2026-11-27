@@ -1,0 +1,102 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "따라서 $BC=\\dfrac23\\times4p=\\dfrac{8p}{3}$",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "3",
+    "axis": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS"
+    },
+    {
+      "id": "A",
+      "kind": "ON_CONIC",
+      "x": "9",
+      "branch": "POS"
+    },
+    {
+      "id": "B",
+      "kind": "FOOT",
+      "from": "A",
+      "onto": "l",
+      "rightAngle": true
+    },
+    {
+      "id": "C",
+      "kind": "LINE_CONIC",
+      "line": "k1",
+      "which": 1
+    }
+  ],
+  "lines": [
+    {
+      "id": "l",
+      "role": "DIRECTRIX",
+      "label": "l"
+    },
+    {
+      "id": "k1",
+      "through": [
+        "B",
+        "F"
+      ],
+      "hidden": true
+    }
+  ],
+  "segments": [
+    {
+      "id": "sAB",
+      "from": "A",
+      "to": "B",
+      "label": "12"
+    },
+    {
+      "id": "sBC",
+      "from": "B",
+      "to": "C",
+      "label": "8"
+    },
+    {
+      "id": "sCF",
+      "from": "C",
+      "to": "F",
+      "label": "4"
+    },
+    {
+      "id": "sAF",
+      "from": "A",
+      "to": "F",
+      "label": "12",
+      "dashed": true
+    }
+  ],
+  "caption": "p=3에서 포물선 y²=12x, 준선, 초점 F와 정삼각형 ABF, BC=8, CF=4, AF=12의 관계",
+  "sourceConditions": [
+    {
+      "id": "given",
+      "condition": "포물선 y²=4px, AB=BF, C는 선분 BF와 포물선의 교점",
+      "mappedTo": [
+        "conic",
+        "points",
+        "segments",
+        "lines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "준선과 수선 AB의 직각",
+    "선분 BF 위의 교점 C와 해설에 쓰는 길이 관계"
+  ],
+  "accessibilityDescription": "p=3에서 포물선 y²=12x, 준선, 초점 F와 정삼각형 ABF, BC=8, CF=4, AF=12의 관계"
+}

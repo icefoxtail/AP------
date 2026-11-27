@@ -1,0 +1,50 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "5",
+    "bSquared": "4",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "T",
+      "kind": "ON_CONIC",
+      "x": "-5/2",
+      "sign": "NEG",
+      "coordinates": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "t",
+      "slope": "2",
+      "intercept": "4",
+      "tangent": true
+    }
+  ],
+  "caption": "x²/5-y²/4=1의 양의 기울기 접선 y=2x+4와 접점 (-5/2,-1)",
+  "accessibilityDescription": "x²/5-y²/4=1의 양의 기울기 접선 y=2x+4와 접점 (-5/2,-1) 접점 T와 y절편 4, 접선의 위치",
+  "sourceConditions": [
+    {
+      "id": "math",
+      "condition": "x²/5-y²/4=1의 양의 기울기 접선 y=2x+4와 접점 (-5/2,-1)",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접점 T와 y절편 4, 접선의 위치"
+  ]
+}

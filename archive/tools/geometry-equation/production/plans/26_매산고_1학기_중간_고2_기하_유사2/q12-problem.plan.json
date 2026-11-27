@@ -1,0 +1,57 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 8,
+      "names": "BCDA",
+      "points": [
+        {
+          "id": "G",
+          "at": {
+            "centroid": [
+              "B",
+              "C",
+              "D"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "G",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "C",
+      "to": "G",
+      "style": "AUTO",
+      "role": "ACCENT"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AB"
+    }
+  ],
+  "caption": "한 모서리 8인 정사면체 ABCD와 밑면 BCD 무게중심 G 및 삼각형 ACG",
+  "accessibilityDescription": "한 모서리 8인 정사면체 ABCD와 밑면 BCD 무게중심 G 및 삼각형 ACG 주어진 점 G와 AG,CG 보조선 및 한 모서리 8",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "한 모서리 8인 정사면체 ABCD와 밑면 BCD 무게중심 G 및 삼각형 ACG",
+      "mappedTo": [
+        "solids",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 점 G와 AG,CG 보조선 및 한 모서리 8"
+  ]
+}

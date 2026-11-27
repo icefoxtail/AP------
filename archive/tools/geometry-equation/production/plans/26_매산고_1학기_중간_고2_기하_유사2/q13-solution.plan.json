@@ -1,0 +1,101 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "점 $(4,2)$에서 접선은 $4x-2y=12$, 즉 $y=2x-6$이다.",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "12",
+    "bSquared": "12",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "4",
+      "sign": "POS"
+    },
+    {
+      "id": "U",
+      "kind": "LINE_LINE",
+      "lines": [
+        "t",
+        "a1"
+      ],
+      "coordinates": true
+    },
+    {
+      "id": "V",
+      "kind": "LINE_LINE",
+      "lines": [
+        "t",
+        "a2"
+      ],
+      "coordinates": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "a1",
+      "role": "ASYMPTOTE",
+      "sign": 1,
+      "dashed": true,
+      "label": "y=x"
+    },
+    {
+      "id": "a2",
+      "role": "ASYMPTOTE",
+      "sign": -1,
+      "dashed": true,
+      "label": "y=-x"
+    },
+    {
+      "id": "t",
+      "slope": "2",
+      "intercept": "-6",
+      "tangent": true
+    }
+  ],
+  "polygons": [
+    {
+      "id": "OUV",
+      "points": [
+        "O",
+        "U",
+        "V"
+      ],
+      "fill": "NONE"
+    }
+  ],
+  "caption": "쌍곡선의 접선과 두 점근선이 만드는 삼각형 OUV",
+  "sourceConditions": [
+    {
+      "id": "hyperbola",
+      "condition": "x^2-y^2=12, P(4,2)",
+      "mappedTo": [
+        "conic",
+        "points"
+      ]
+    },
+    {
+      "id": "tangent",
+      "condition": "tangent y=2x-6 and asymptotes y=x, y=-x",
+      "mappedTo": [
+        "lines",
+        "polygons"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접선·점근선과 세 꼭짓점 O,U(6,6),V(2,-2) 표시",
+    "둘레 문항이므로 내부 면 채움 없음"
+  ],
+  "accessibilityDescription": "쌍곡선의 접선과 두 점근선이 만드는 삼각형 OUV"
+}

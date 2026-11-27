@@ -1,0 +1,132 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "O",
+        "at": [
+          0,
+          0,
+          0
+        ],
+        "on": "alpha"
+      },
+      {
+        "id": "H",
+        "at": [
+          0,
+          1,
+          0
+        ],
+        "on": "alpha"
+      },
+      {
+        "id": "P",
+        "at": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "id": "L",
+        "at": [
+          -2,
+          1,
+          0
+        ],
+        "on": "alpha",
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "R",
+        "at": [
+          2,
+          1,
+          0
+        ],
+        "on": "alpha",
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "normal": [
+          0,
+          0,
+          1
+        ],
+        "point": "O",
+        "extent": {
+          "center": [
+            0,
+            0.2,
+            0
+          ],
+          "u": [
+            2.7,
+            0,
+            0
+          ],
+          "v": [
+            0,
+            1.9,
+            0
+          ]
+        }
+      }
+    ],
+    "lines": [
+      {
+        "id": "l",
+        "name": "l",
+        "through": [
+          "L",
+          "R"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "P",
+        "to": "O",
+        "role": "ACCENT"
+      },
+      {
+        "from": "P",
+        "to": "H",
+        "role": "ACCENT"
+      },
+      {
+        "from": "O",
+        "to": "H",
+        "role": "REF"
+      }
+    ]
+  },
+  "marks": {
+    "rightAngles": [
+      {"at": "H", "refs": ["P", "L"]},
+      {"at": "H", "refs": ["O", "R"]}
+    ]
+  },
+  "caption": "PO와 PH가 모두 직선 l에 수직이지만 PO는 평면 α에 수직이 아닌 반례",
+  "accessibilityDescription": "PO와 PH가 모두 직선 l에 수직이지만 PO는 평면 α에 수직이 아닌 반례 같은 한 직선에 대한 수직 조건만으로 평면 수직을 결론낼 수 없음을 공간 위치로 설명",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "PO와 PH가 모두 직선 l에 수직이지만 PO는 평면 α에 수직이 아닌 반례",
+      "mappedTo": [
+        "space"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "같은 한 직선에 대한 수직 조건만으로 평면 수직을 결론낼 수 없음을 공간 위치로 설명",
+    "H에서 PH⊥l과 OH⊥l 두 직각을 실제 표시"
+  ]
+}
