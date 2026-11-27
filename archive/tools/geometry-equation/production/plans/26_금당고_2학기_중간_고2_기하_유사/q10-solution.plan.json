@@ -1,0 +1,22 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": { "kind": "PARABOLA", "vertex": ["0", "0"], "p": "-1", "axis": "X" },
+  "points": [
+    { "id": "O", "kind": "ORIGIN" },
+    { "id": "T", "kind": "POINT", "x": "1", "y": "2", "coordinates": true },
+    { "id": "P", "kind": "TANGENT_FROM", "from": "T", "which": 1 },
+    { "id": "Q", "kind": "TANGENT_FROM", "from": "T", "which": 2 }
+  ],
+  "lines": [
+    { "id": "t1", "through": ["T", "P"], "tangent": true },
+    { "id": "t2", "through": ["T", "Q"], "tangent": true }
+  ],
+  "segments": [
+    { "id": "sTP", "from": "T", "to": "P" },
+    { "id": "sTQ", "from": "T", "to": "Q" }
+  ],
+  "caption": "외부 점 T(1,2)에서 포물선 y²=-4x에 그은 두 접선",
+  "accessibilityDescription": "왼쪽으로 열린 포물선 y²=-4x와 외부 점 T(1,2), 서로 다른 접점 P와 Q, 두 접선 TP·TQ가 보인다. 두 접선 기울기의 곱은 -1이다.",
+  "sourceConditions": [ { "id": "q10", "condition": "T(1,2)에서 포물선 y²=-4x로 그은 두 접선", "mappedTo": "points,lines,segments" } ],
+  "newVisualInformation": ["접점 두 개와 각각의 접선·외부 점 연결을 분리해 표시"]
+}

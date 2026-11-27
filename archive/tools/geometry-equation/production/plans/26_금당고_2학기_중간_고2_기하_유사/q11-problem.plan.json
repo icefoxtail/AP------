@@ -1,0 +1,22 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": { "kind": "PARABOLA", "vertex": ["0", "0"], "p": "3", "axis": "Y" },
+  "points": [
+    { "id": "O", "kind": "ORIGIN" },
+    { "id": "F", "kind": "FOCUS" },
+    { "id": "A", "kind": "ON_CONIC", "x": "-3-3*sqrt(3)" },
+    { "id": "B", "kind": "ON_CONIC", "x": "6" },
+    { "id": "C", "kind": "ON_CONIC", "x": "-3+3*sqrt(3)" }
+  ],
+  "segments": [
+    { "id": "sAB", "from": "A", "to": "B" },
+    { "id": "sBC", "from": "B", "to": "C" },
+    { "id": "sCA", "from": "C", "to": "A" }
+  ],
+  "caption": "포물선 x²=12y 위의 세 점 A, B, C와 무게중심이자 초점인 F",
+  "accessibilityDescription": "매끄러운 포물선 x²=12y 위의 서로 다른 점 A, B, C가 삼각형을 만들고, 그 삼각형의 무게중심 F는 포물선의 초점이다. 꼭짓점은 O이다.",
+  "sourceConditions": [
+    { "id": "q11", "condition": "포물선 x^2=12y 위의 A,B,C의 무게중심이 초점 F", "mappedTo": "points,segments" }
+  ],
+  "newVisualInformation": ["x좌표 합 0 및 y좌표 합 9를 정확히 만족하는 세 점을 곡선에서 엔진이 계산", "기존 10개 직선 조각으로 꺾여 보이던 포물선을 실제 포물선으로 대체"]
+}

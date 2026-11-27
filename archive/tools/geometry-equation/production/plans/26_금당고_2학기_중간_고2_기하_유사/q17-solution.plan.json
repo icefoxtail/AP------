@@ -1,0 +1,20 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": { "kind": "ELLIPSE", "center": ["0", "0"], "aSquared": "36", "bSquared": "9", "major": "X" },
+  "points": [
+    { "id": "O", "kind": "ORIGIN" },
+    { "id": "P", "kind": "ON_CONIC", "x": "3*sqrt(2)", "branch": "POS" },
+    { "id": "A", "kind": "POINT", "x": "6*sqrt(2)", "y": "0" },
+    { "id": "B", "kind": "POINT", "x": "0", "y": "3*sqrt(2)" }
+  ],
+  "lines": [ { "id": "t", "at": "P", "tangent": true } ],
+  "segments": [
+    { "id": "sOA", "from": "O", "to": "A" },
+    { "id": "sOB", "from": "O", "to": "B" },
+    { "id": "sAB", "from": "A", "to": "B" }
+  ],
+  "caption": "제1사분면 접선이 축과 만드는 삼각형의 최소 넓이 18",
+  "accessibilityDescription": "타원 x²/36+y²/9=1 위 P(3√2,3√2/2)에서 접선을 그어 x절편 A(6√2,0), y절편 B(0,3√2)를 만든다. OAB 삼각형의 넓이가 최소 18이다.",
+  "sourceConditions": [ { "id": "q17", "condition": "제1사분면 접선과 양 좌표축으로 둘러싸인 삼각형의 최소 넓이", "mappedTo": "points,lines,segments" } ],
+  "newVisualInformation": ["최소조건에 맞는 접점과 두 축 절편·삼각형 변을 정확좌표로 표현"]
+}

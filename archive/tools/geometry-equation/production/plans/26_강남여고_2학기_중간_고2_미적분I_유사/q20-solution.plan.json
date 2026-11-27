@@ -1,0 +1,42 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [ { "coefficients": ["0", "1", "-1", "1/6"] } ],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "domain": [0, 5],
+    "viewport": [-0.5, 5.5, -3.2, 2.8],
+    "requiredPoints": [
+      { "id": "K1", "x": "4", "y": "-4/3", "marker": "NONE" },
+      { "id": "K2", "x": "2", "y": "-2/3", "marker": "NONE" },
+      { "id": "T1", "x": "2-sqrt(2)", "y": "-2/3+2*sqrt(2)/3", "marker": "NONE" },
+      { "id": "T2", "x": "2+sqrt(2)", "y": "-2/3-2*sqrt(2)/3", "marker": "NONE" }
+    ],
+    "coordinateBand": { "hide": ["K1", "K2", "T1", "T2"] },
+    "axisTickValues": { "x": [], "y": [] },
+    "overlays": {
+      "lines": [
+        { "id": "ta", "slope": "1", "intercept": "-16/3" },
+        { "id": "tb", "slope": "-1", "intercept": "4/3" }
+      ],
+      "circles": [ { "id": "omega", "center": ["3", "-1"], "radiusSquared": "10/9" } ],
+      "points": [
+        { "id": "A", "curveX": "4" },
+        { "id": "B", "curveX": "2" },
+        { "id": "C", "x": "10/3", "y": "-2" },
+        { "id": "M", "x": "3", "y": "-1", "unnamed": true }
+      ],
+      "segments": [
+        { "id": "sCA", "from": "C", "to": "A" },
+        { "id": "sCB", "from": "C", "to": "B" },
+        { "id": "sAB", "from": "A", "to": "B" }
+      ],
+      "rightAngles": [ { "at": "C", "from": ["A", "B"] } ]
+    }
+  },
+  "pointNames": { "A": "A", "B": "B", "C": "C" },
+  "caption": "A와 B에서의 두 접선이 C에서 직교하고 지름 AB인 외접원이 있다",
+  "accessibilityDescription": "곡선 y=x³/6-x²+x 위의 A(4,-4/3), B(2,-2/3)에서의 접선은 C(10/3,-2)에서 직각으로 만난다. 빗변 AB를 지름으로 한 외접원은 중심 (3,-1), 반지름 제곱 10/9이다.",
+  "sourceConditions": [ { "id": "q20", "condition": "A,B 접선 직교, 삼각형 ABC의 외접원 지름 AB", "mappedTo": "graphPlan.overlays" } ],
+  "newVisualInformation": ["원문에 없던 해설 핵심의 직각표식·두 접선·외접원·빗변 길이 표시"]
+}
