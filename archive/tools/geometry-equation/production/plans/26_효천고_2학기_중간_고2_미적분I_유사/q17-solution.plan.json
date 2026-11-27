@@ -1,0 +1,34 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "layout": "STACKED",
+    "xWindow": [-2, 2],
+    "pieces": [
+      {"coefficients": ["0", "1"], "domain": ["-2", "-1"], "start": "OPEN", "end": "OPEN"},
+      {"coefficients": ["1", "1"], "domain": ["-1", "0"], "start": "CLOSED", "end": "CLOSED"},
+      {"coefficients": ["0", "-1"], "domain": ["0", "1"], "start": "OPEN", "end": "CLOSED"},
+      {"coefficients": ["3", "-1"], "domain": ["1", "2"], "start": "OPEN", "end": "OPEN"}
+    ],
+    "referenceCurves": [{
+      "id": "g",
+      "pieces": [
+        {"coefficients": ["0", "1"], "domain": ["-2", "-1"], "start": "OPEN", "end": "OPEN"},
+        {"coefficients": ["0", "-1"], "domain": ["-1", "0"], "start": "CLOSED", "end": "OPEN"},
+        {"coefficients": ["-1", "1"], "domain": ["0", "1"], "start": "CLOSED", "end": "CLOSED"},
+        {"coefficients": ["3", "-1"], "domain": ["1", "2"], "start": "OPEN", "end": "OPEN"}
+      ],
+      "requiredPoints": [],
+      "axisTickValues": {"x": ["-2", "-1", "1", "2"], "y": ["-2", "-1", "1", "2"]}
+    }],
+    "requiredPoints": [],
+    "axisTickValues": {"x": ["-2", "-1", "1", "2"], "y": ["-2", "-1", "1", "2"]}
+  },
+  "caption": "위 패널은 주어진 f, 아래 패널은 x와 y를 뒤집은 역함수 f^{-1}의 네 조각. x=1^+에서 역함수는 2로 접근한다.",
+  "accessibilityDescription": "같은 x 눈금을 쓰는 두 그래프. 위에는 문제의 네 조각이, 아래에는 각각 y=x, y=-x, y=x-1, y=3-x의 정의역별 역함수 조각이 열린·닫힌 끝점과 함께 나타난다.",
+  "newVisualInformation": ["주어진 f와 역함수의 정확한 네 구간별 대응을 한 화면에서 비교", "역함수 x=1 오른쪽에서 열린 꼭짓점의 y값 2 접근을 시각적으로 확인", "a=-1/4 주변의 역함수 f^{-1}(a)=1/4가 연속인 조각을 확인"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "원래 f는 네 선분 조각이며 양끝의 열린·닫힌 상태가 문제 그림에 주어졌다.", "mappedTo": ["graphPlan.pieces", "graphPlan.axisTickValues"]},
+    {"id": "c2", "condition": "역함수 f^{-1}는 (-2,-1)에서 x, [-1,0)에서 -x, [0,1]에서 x-1, (1,2)에서 3-x이다.", "mappedTo": ["graphPlan.referenceCurves", "graphPlan.layout"]}
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{"coefficients": ["2", "0", "3", "-1"]}, {"coefficients": ["10", "0", "-3", "1"]}],
+    "breakpoints": [{"x": "2", "y": "6"}],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "functionName": "g",
+    "domain": [-1, 4],
+    "viewport": [-1.5, 4.5, -1, 27],
+    "requiredPoints": [{"id": "M", "x": 0, "y": 2}, {"id": "J", "x": 2, "y": 6}],
+    "axisTickValues": {"x": ["2"], "y": ["2", "6"]}
+  },
+  "caption": "미분가능 조건으로 a=0,b=12가 정해진 뒤 g의 두 삼차 조각이 (2,6)에서 매끄럽게 이어지고, (0,2)에서 극솟값을 갖는다.",
+  "accessibilityDescription": "왼쪽 삼차함수 -x^3+3x^2+2의 골짜기 (0,2)에서 x=2의 연결점 (2,6)으로 이어지고 오른쪽 x^3-3x^2+10과 도함수 0으로 부드럽게 연결되는 그래프.",
+  "newVisualInformation": ["x=2에서 값 6과 접선 기울기 0이 동시에 일치", "왼쪽 가지의 극솟점 (0,2)와 그 값 c=2", "미분가능 결합이 단순한 점프 연결과 다른 점"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "a=0, b=12이면 x<2에서 g=-x^3+3x^2+2, x>=2에서 g=x^3-3x^2+10이다.", "mappedTo": ["graphPlan.pieces", "graphPlan.breakpoints"]},
+    {"id": "c2", "condition": "x=0에서 왼쪽 가지가 극솟값 g(0)=2를 가지며 x=2에서 두 가지의 도함수는 0이다.", "mappedTo": ["graphPlan.requiredPoints", "graphPlan.axisTickValues"]}
+  ]
+}

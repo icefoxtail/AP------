@@ -1,0 +1,26 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-4, 4, -1, 1],
+    "curves": [
+      {"id": "outerL", "kind": "LINE", "coefficients": ["-1/4", "0"], "domain": ["-4", "-2"], "domainStates": ["NONE", "CLOSED"], "hideLabel": true},
+      {"id": "innerL", "kind": "RATIONAL", "numerator": ["-1", "0"], "denominator": ["2", "-1"], "domain": ["-2", "0"], "domainStates": ["OPEN", "CLOSED"], "hideLabel": true},
+      {"id": "innerR", "kind": "RATIONAL", "numerator": ["-1", "0"], "denominator": ["2", "1"], "domain": ["0", "2"], "domainStates": ["OPEN", "OPEN"], "hideLabel": true},
+      {"id": "outerR", "kind": "LINE", "coefficients": ["-1/4", "0"], "domain": ["2", "4"], "domainStates": ["CLOSED", "NONE"], "hideLabel": true}
+    ],
+    "axisTickValues": {"x": ["-2", "2"], "y": ["-1/2", "-1/4"]},
+    "overlays": {
+      "points": [{"id": "A", "x": "-2", "y": "-1/4"}, {"id": "B", "x": "2", "y": "-1/4"}, {"id": "M", "x": "0", "y": "-1/2"}],
+      "guides": [{"id": "gA", "from": "A", "axis": "x"}, {"id": "gB", "from": "B", "axis": "x"}]
+    }
+  },
+  "pointNames": {"A": "A", "B": "B", "M": "M"},
+  "caption": "연속 조건으로 a=0,b=-1/4일 때 f(x)는 |x|<2에서 -1/(2+|x|), |x|>=2에서 -1/4이다. 양 끝 x=±2의 극한값과 함수값이 같다.",
+  "accessibilityDescription": "양 바깥쪽은 높이 -1/4의 수평선, 가운데 -2와 2 사이는 아래로 내려가는 대칭 곡선이다. x=-2와 x=2에서 이어지는 점과 그 위치의 점선 가이드가 있다.",
+  "newVisualInformation": ["|x|=2 두 경계에서 안쪽 유리곡선과 바깥 상수 가지가 같은 -1/4에 연결", "안쪽 식 -1/(2+|x|)의 대칭 구조", "연속 조건에서 a=0,b=-1/4가 정해진 후의 해설 개형"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "연속조건은 a=0, b=-1/4이며 |x|>=2에서 상수 -1/4다.", "mappedTo": ["graphPlan.curves", "graphPlan.overlays.points"]},
+    {"id": "c2", "condition": "|x|<2에서는 f(x)=-1/(2+|x|)이고 경계 x=-2,2에 접근하면 -1/4이다.", "mappedTo": ["graphPlan.curves", "graphPlan.overlays.guides"]}
+  ]
+}

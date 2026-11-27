@@ -1,0 +1,44 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{"coefficients": ["0", "0", "1"]}],
+    "breakpoints": [],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "formula": "x^2",
+    "domain": [-1, 4],
+    "viewport": [-1, 5, -1, 5],
+    "requiredPoints": [{"id": "V", "x": 0, "y": 0, "marker": "NONE"}],
+    "coordinateBand": {"hide": ["V"]},
+    "axisTickValues": {"x": [], "y": []},
+    "sampleNote": "t=1",
+    "overlays": {
+      "circles": [{"id": "C", "center": ["0", "0"], "radiusSquared": "20"}],
+      "lines": [{"id": "L", "slope": "1", "intercept": "0", "label": "y=tx", "labelValues": {"t": "1"}}],
+      "points": [
+        {"id": "O", "x": "0", "y": "0"},
+        {"id": "A", "curveX": "2", "onCircle": "C"},
+        {"id": "P", "intersect": ["L", "C"], "pick": "MAX_X"},
+        {"id": "Q", "curveX": "1"}
+      ],
+      "callouts": [
+        {"id": "circleEq", "point": "A", "text": "x^2+y^2=20", "labelKind": "MATH", "direction": "NW"},
+        {"id": "lenOP", "point": "P", "text": "OP=2√5", "labelKind": "MATH", "direction": "NE"},
+        {"id": "lenOQ", "point": "Q", "text": "OQ=√2", "labelKind": "MATH", "direction": "SE"}
+      ],
+      "segments": [
+        {"id": "OP", "from": "O", "to": "P"},
+        {"id": "OQ", "from": "O", "to": "Q"},
+        {"id": "PQ", "from": "P", "to": "Q", "color": "BLUE"}
+      ]
+    }
+  },
+  "pointNames": {"O": "O", "A": "A", "P": "P", "Q": "Q"},
+  "caption": "t=1의 관계 예시에서 O,Q,P가 한 직선에 놓이고 OP=2sqrt(5), OQ=sqrt(2)이다. 일반 0<t<2에서는 l(t)=OP-OQ가 된다.",
+  "accessibilityDescription": "원점 O에서 한 직선 위의 Q와 P로 이어진 두 선분의 길이를 표시한다. 원의 반지름 OP는 2루트5, 예시 t=1에서 OQ는 루트2이고, 파란 구간 PQ는 두 거리의 차다.",
+  "newVisualInformation": ["문제의 선분 PQ를 OP-OQ로 계산하는 이유", "원 반지름 OP=2sqrt(5)와 대표점 OQ=sqrt(2)의 정확한 길이 라벨", "원점 O, 포물선 교점 Q, 원 교점 P의 일직선상 순서"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "t=1인 예시에서 OQ=sqrt(2), OP=2sqrt(5)이고 O,Q,P는 일직선 위에 있다.", "mappedTo": ["graphPlan.overlays.points", "graphPlan.overlays.segments"]},
+    {"id": "c2", "condition": "0<t<2에서는 l(t)=OP-OQ=2sqrt(5)-t sqrt(1+t^2)이다.", "mappedTo": ["graphPlan.overlays.segments", "caption"]}
+  ]
+}

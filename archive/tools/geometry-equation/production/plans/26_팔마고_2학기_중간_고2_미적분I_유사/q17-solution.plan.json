@@ -1,0 +1,26 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{"coefficients": ["10", "4", "1"]}, {"coefficients": ["10", "-6", "1"]}],
+    "breakpoints": [{"x": "0", "y": "10"}],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "functionName": "g",
+    "domain": [-5, 6],
+    "viewport": [-5.5, 6.5, -1, 15],
+    "requiredPoints": [{"id": "L", "x": -2, "y": 6}, {"id": "R", "x": 3, "y": 1}, {"id": "J", "x": 0, "y": 10}],
+    "axisTickValues": {"x": ["-2", "3"], "y": ["1", "6", "10"]},
+    "overlays": {"lines": [
+      {"id": "h1", "slope": "0", "intercept": "1", "label": "y=1", "style": "DASHED"},
+      {"id": "h6", "slope": "0", "intercept": "6", "label": "y=6", "style": "DASHED"},
+      {"id": "h10", "slope": "0", "intercept": "10", "label": "y=10", "style": "DASHED"}
+    ]}
+  },
+  "caption": "a=5, b=5일 때 g(x)는 왼쪽 (x+2)^2+6, 오른쪽 (x-3)^2+1이며 x=0에서 이어진다. 교점 개수가 변하는 높이 1,6,10을 비교한다.",
+  "accessibilityDescription": "x=0의 (0,10)에서 만나는 두 위로 볼록한 포물선 가지. 왼쪽 꼭짓점 (-2,6)과 오른쪽 꼭짓점 (3,1), 세 수평선 y=1,6,10을 표시해 수평선과의 교점 개수가 달라지는 과정을 설명한다.",
+  "newVisualInformation": ["연속 연결점 (0,10)과 좌우 두 꼭짓점의 정확한 좌표", "교점 개수 함수 h(t)의 변화가 일어나는 높이 1,6,10을 점선으로 표시", "풀이로 정해진 a=5,b=5를 해설에만 사용"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "g(x)는 x<0에서 (x+2)^2+6, x>=0에서 (x-3)^2+1이므로 (0,10)에서 연속이다.", "mappedTo": ["graphPlan.pieces", "graphPlan.breakpoints", "graphPlan.requiredPoints"]},
+    {"id": "c2", "condition": "수평선 교점 수의 점프 높이는 오른쪽 최소 1, 왼쪽 최소 6, 경계 높이 10이다.", "mappedTo": ["graphPlan.overlays.lines", "graphPlan.axisTickValues"]}
+  ]
+}
