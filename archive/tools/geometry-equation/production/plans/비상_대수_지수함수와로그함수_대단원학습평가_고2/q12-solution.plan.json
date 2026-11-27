@@ -1,0 +1,49 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "정수해",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "6",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "27/2",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "6<x≤27/2의 정수해 일곱 개"
+  },
+  "caption": "k=3이면 진수의 조건과 감소하는 로그함수의 부등식에서 6<x≤27/2이다. 이 구간의 정수 7, 8, 9, 10, 11, 12, 13은 모두 일곱 개다.",
+  "accessibilityDescription": "6은 열린 끝점, 13과 14 사이의 27/2는 닫힌 끝점으로 표시한 수직선. 구간 안의 정수 7부터 13까지를 점으로 보여 준다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x>6이면서 x≤9+(3/2)k",
+      "mappedTo": "numberLine.rows[0].pieces"
+    },
+    {
+      "id": "c2",
+      "condition": "k=3일 때 6<x≤27/2, 정수 x=7~13 일곱 개",
+      "mappedTo": [
+        "numberLine.rows[0].pieces",
+        "numberLine.rows[0].integerPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "진수 조건 x>6의 열린 끝점, k=3일 때의 닫힌 위끝 27/2, 정수해 일곱 개를 정확한 위치에 표시한다."
+  ]
+}

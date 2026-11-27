@@ -1,0 +1,150 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      3,
+      -1,
+      5
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "1",
+          "0"
+        ],
+        "domain": [
+          "-4",
+          "5/2"
+        ],
+        "color": "BLUE",
+        "label": "y=2^x"
+      },
+      {
+        "id": "g",
+        "kind": "EXPONENTIAL",
+        "base": "2",
+        "coefficients": [
+          "4",
+          "1",
+          "0"
+        ],
+        "domain": [
+          "-4",
+          "1/2"
+        ],
+        "color": "WARM",
+        "label": "y=4*2^x"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "2"
+      ],
+      "y": [
+        "1",
+        "4"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "low",
+          "slope": "0",
+          "intercept": "1",
+          "label": "y=1"
+        },
+        {
+          "id": "high",
+          "slope": "0",
+          "intercept": "4",
+          "label": "y=4"
+        }
+      ],
+      "points": [
+        {
+          "id": "A",
+          "x": "-2",
+          "y": "1",
+          "unnamed": true
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "1",
+          "unnamed": true
+        },
+        {
+          "id": "C",
+          "x": "0",
+          "y": "4",
+          "unnamed": true
+        },
+        {
+          "id": "D",
+          "x": "2",
+          "y": "4",
+          "unnamed": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "bottomWidth",
+          "from": "A",
+          "to": "B",
+          "length": true
+        },
+        {
+          "id": "topWidth",
+          "from": "C",
+          "to": "D",
+          "length": true
+        }
+      ]
+    }
+  },
+  "caption": "y=1과 y=4에서 두 지수곡선의 수평 거리 2를 확인한다. 수직 높이는 3이므로 둘러싸인 넓이는 2×3=6이다.",
+  "accessibilityDescription": "지수함수 y=2^x와 y=4·2^x 사이를 가로지르는 두 직선 y=1, y=4. 각 높이의 두 곡선 사이 수평 길이가 2이며 높이 차가 3이다.",
+  "sourceQuote": "두 함수 $y=2^x$, $y=4\\times 2^x$의 그래프와 두 직선 $y=1$, $y=4$로 둘러싸인 도형의 넓이",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 지수함수 y=2^x, y=4×2^x",
+      "mappedTo": [
+        "graphPlan.curves[0]",
+        "graphPlan.curves[1]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "두 수평선 y=1과 y=4",
+      "mappedTo": [
+        "graphPlan.overlays.lines[0]",
+        "graphPlan.overlays.lines[1]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "같은 y에서 두 곡선 사이 가로 길이가 2",
+      "mappedTo": [
+        "graphPlan.overlays.points",
+        "graphPlan.overlays.segments"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "두 지수곡선과 수평선으로 둘러싸인 비직선형 영역 내부",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: HORIZONTAL_CLIPPED_EXPONENTIAL_REGION_FILL — 두 EXPONENTIAL 곡선을 y=1 및 y=4로 자른 닫힌 곡선 영역을 정확히 채우는 경계 조합 지원 필요; 현재 선과 길이는 표현하되 면 채움은 생략"
+    }
+  ],
+  "newVisualInformation": [
+    "y=1에서 x=-2와 0, y=4에서 x=0과 2의 가로 길이가 모두 2임을 수치와 선분으로 보인다.",
+    "필요한 영역 채움 기능이 엔진에 없으므로 임의의 사다리꼴 면을 칠하지 않는다."
+  ]
+}
