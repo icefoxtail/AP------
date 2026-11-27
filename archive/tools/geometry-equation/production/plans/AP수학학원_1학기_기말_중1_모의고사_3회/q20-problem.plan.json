@@ -1,0 +1,77 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "10",
+          "0"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-7",
+          "9"
+        ],
+        "hideLabel": true
+      }
+    ],
+    "viewport": [
+      -7,
+      9,
+      -6,
+      8
+    ],
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": [
+        "5"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "2",
+          "y": "5",
+          "unnamed": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "gx",
+          "from": "P",
+          "axis": "x"
+        },
+        {
+          "id": "gy",
+          "from": "P",
+          "axis": "y"
+        }
+      ]
+    }
+  },
+  "caption": "제1·3사분면의 반비례 그래프가 x=2, y=5인 점을 지나며 점선 보조선이 있다.",
+  "accessibilityDescription": "제1·3사분면의 반비례 그래프가 x=2, y=5인 점을 지나며 점선 보조선이 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "그래프는 제1·3사분면을 지나는 반비례 곡선으로 점 (2,5)를 지난다. xy=10이다.",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.axisTickValues",
+        "graphPlan.overlays"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 두 반비례 곡선, 점 (2,5), x=2·y=5의 점선 보조선, 두 좌표축을 보인다."
+  ]
+}

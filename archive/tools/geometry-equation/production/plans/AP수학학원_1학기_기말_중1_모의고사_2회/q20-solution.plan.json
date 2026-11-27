@@ -1,0 +1,76 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-10",
+          "0"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-8",
+          "8"
+        ],
+        "hideLabel": true
+      }
+    ],
+    "viewport": [
+      -8,
+      8,
+      -9,
+      9
+    ],
+    "axisTickValues": {
+      "x": [
+        "-5",
+        "2",
+        "5"
+      ],
+      "y": [
+        "-5",
+        "-2",
+        "2",
+        "5"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "2",
+          "y": "-5",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "5",
+          "y": "-2",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "반비례 y=-10/x는 제2·4사분면에 있고 x가 양수일 때 x가 커지면 y도 증가한다.",
+  "accessibilityDescription": "반비례 y=-10/x는 제2·4사분면에 있고 x가 양수일 때 x가 커지면 y도 증가한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "반비례식 y=-10/x는 원점과 축을 지나지 않고 (2,-5),(5,-2)를 지난다.",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.axisTickValues",
+        "graphPlan.overlays"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "반비례 두 곡선과 증가하는 값 두 점을 나타낸다."
+  ]
+}
