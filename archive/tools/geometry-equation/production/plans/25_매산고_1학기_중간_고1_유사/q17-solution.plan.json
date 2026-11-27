@@ -1,0 +1,23 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "가능한 a",
+        "pieces": [{"lo": {"value": "0", "state": "OPEN"}, "hi": {"value": "5", "state": "OPEN"}}],
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {"text": "자연수 a=1, 2, 3, 4"},
+  "caption": "b=a²이고 0<b<25이므로 자연수 a는 0<a<5의 정수 1,2,3,4뿐이다.",
+  "accessibilityDescription": "수직선에서 0과 5는 제외하고 그 사이 네 정수 1, 2, 3, 4를 정수 후보로 표시한다.",
+  "sourceConditions": [
+    {"id": "vieta", "condition": "중근 조건에서 b=a²", "mappedTo": ["numberLine.rows[0].pieces"]},
+    {"id": "discriminant", "condition": "둘째 방정식의 판별식으로 b<25, 따라서 자연수 0<a<5", "mappedTo": ["numberLine.rows[0].pieces"]},
+    {"id": "integers", "condition": "a=1,2,3,4에 대응하는 b=1,4,9,16", "mappedTo": ["numberLine.rows[0].integerPoints"]}
+  ],
+  "newVisualInformation": ["엄격한 상한 a<5 때문에 5는 제외되고 네 정수만 남는 경계를 열린 점으로 나타낸다."]
+}

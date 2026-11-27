@@ -1,0 +1,22 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["0", "40", "-4"],
+    "sourceDomain": {"kind": "INTERVAL", "range": [0, 10], "states": ["OPEN", "OPEN"]},
+    "domain": [0, 10],
+    "viewport": [-1, 11, -5, 110],
+    "requiredPoints": [{"id": "V", "x": 5, "y": 100}],
+    "axisVariable": "a",
+    "axisTickValues": {"x": [5, 10], "y": [100]}
+  },
+  "caption": "b²=−4(a−5)²+100이고 0<a<10이므로 꼭짓점 (5,100)에서 최댓값을 갖는다.",
+  "accessibilityDescription": "a를 가로축으로 한 아래로 열린 포물선이 (5,100)에 꼭짓점을 가지며 a의 양끝 0과 10은 포함하지 않는다.",
+  "sourceQuote": "b²=4a(h−a), 0<a<h, h=10일 때 b²의 최댓값",
+  "sourceConditions": [
+    {"id": "formula", "condition": "h=10에서 b²=−4a²+40a", "mappedTo": ["graphPlan.coefficients"]},
+    {"id": "domain", "condition": "0<a<10로 양 끝 열린 구간", "mappedTo": ["graphPlan.sourceDomain"]},
+    {"id": "max", "condition": "a=5에서 b²=100", "mappedTo": ["graphPlan.requiredPoints[0]"]}
+  ],
+  "newVisualInformation": ["물구멍 높이에 대한 수평거리 제곱의 포물선과 그 최대 위치."]
+}

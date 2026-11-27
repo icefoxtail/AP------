@@ -1,0 +1,41 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {"text": "a=1: 최대 −4"},
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial", "coefficients": ["-5", "2", "-1"],
+          "sourceDomain": {"kind": "INTERVAL", "range": [0, 4]},
+          "domain": [0, 4], "viewport": [-1, 5, -15, 1],
+          "requiredPoints": [{"id": "V", "x": 1, "y": -4}],
+          "axisTickValues": {"x": [1, 4], "y": []}
+        },
+        "caption": "a=1일 때 꼭짓점 x=1은 구간 안에 있다."
+      }
+    },
+    {
+      "caption": {"text": "a=3: 최대 4"},
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial", "coefficients": ["-5", "6", "-1"],
+          "sourceDomain": {"kind": "INTERVAL", "range": [0, 4]},
+          "domain": [0, 4], "viewport": [-1, 5, -7, 6],
+          "requiredPoints": [{"id": "V", "x": 3, "y": 4}],
+          "axisTickValues": {"x": [3, 4], "y": []}
+        },
+        "caption": "a=3일 때 꼭짓점 x=3은 구간 안에 있다."
+      }
+    }
+  ],
+  "caption": "0≤x≤4에서 a=1과 a=3의 두 포물선은 구간 안의 꼭짓점에서 각각 −4와 4의 최댓값을 갖는다.",
+  "accessibilityDescription": "두 패널에서 a=1과 a=3일 때 구간 안 꼭짓점에서 최댓값을 얻는 포물선을 비교한다.",
+  "sourceQuote": "0≤x≤4에서 f(x)=−x²+2ax−5의 최댓값 g(a); g(1)+g(3)+g(5)",
+  "sourceConditions": [
+    {"id": "a1", "condition": "a=1: f(1)=−4", "mappedTo": ["panels[0].plan.graphPlan.requiredPoints"]},
+    {"id": "a3", "condition": "a=3: f(3)=4", "mappedTo": ["panels[1].plan.graphPlan.requiredPoints"]}
+  ],
+  "newVisualInformation": ["두 매개변수에서 구간 안의 꼭짓점이 최댓값인 경우를 비교한다. a=5의 경계 경우는 별도 수직선 plan에 담는다."]
+}
