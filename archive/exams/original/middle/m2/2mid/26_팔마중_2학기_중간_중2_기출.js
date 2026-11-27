@@ -113,7 +113,7 @@ window.questionBank = [
   {
     "id": 3,
     "imageSize": "full",
-    "imageAlt": "평행사변형 ABCD 안의 점 P를 네 꼭짓점과 이었다. 위쪽 AD와 아래쪽 BC를 각각 밑변으로 하는 두 삼각형을 같은 청록색으로 칠했다.",
+    "imageAlt": "평행사변형 ABCD 내부 P에서 네 꼭짓점으로 선분을 잇고 원본의 두 쌍둥이 색칠 영역 APD와 BPC를 구별한다.",
     "level": "중",
     "category": "평행사변형과 넓이",
     "originalCategory": "평행사변형과 넓이",
@@ -166,12 +166,13 @@ window.questionBank = [
     "solutionImageCaption": "점 P에서 평행한 두 변까지의 거리와 네 삼각형의 두 쌍",
     "solutionImageSize": "medium",
     "primaryMethod": "평행사변형 내부점의 대변 삼각형 넓이 합",
-    "decisiveStep": "서로 마주 보는 두 삼각형 넓이 합은 각각 전체의 절반이라는 관계로 다른 쌍의 합을 옮긴다."
+    "decisiveStep": "서로 마주 보는 두 삼각형 넓이 합은 각각 전체의 절반이라는 관계로 다른 쌍의 합을 옮긴다.",
+    "imageCaption": "평행사변형 ABCD 내부 P에서 네 꼭짓점으로 선분을 잇고 원본의 두 쌍둥이 색칠 영역 APD와 BPC를 구별한다."
   },
   {
     "id": 4,
     "imageSize": "full",
-    "imageAlt": "평행사변형 ABDE 안에서 대각선 AD와 BE는 O에서 만난다. 아래쪽의 BC는 OD와 같은 길이이고 AD와 평행하다. BC와 OD를 같은 색과 눈금으로 표시했다.",
+    "imageAlt": "평행사변형 ABDE의 대각선 AD와 BE의 교점 O, BC와 OD의 길이·평행 표시, 넓이 10 조건을 원본 모양대로 나타낸다.",
     "level": "상",
     "category": "평행사변형의 넓이",
     "originalCategory": "평행사변형의 넓이",
@@ -227,7 +228,8 @@ window.questionBank = [
     "solutionImageCaption": "대각선의 이등분과 BC=OD, BC∥OD로 평행사변형 BCDO를 확인",
     "solutionImageSize": "medium",
     "primaryMethod": "한 쌍의 대변이 평행하고 같은 사각형 판정",
-    "decisiveStep": "대각선 중점으로 BC=OD인 평행한 한 쌍을 찾아 새 평행사변형을 판정하고 같은 높이의 넓이비로 옮긴다."
+    "decisiveStep": "대각선 중점으로 BC=OD인 평행한 한 쌍을 찾아 새 평행사변형을 판정하고 같은 높이의 넓이비로 옮긴다.",
+    "imageCaption": "평행사변형 ABDE의 대각선 AD와 BE의 교점 O, BC와 OD의 길이·평행 표시, 넓이 10 조건을 원본 모양대로 나타낸다."
   },
   {
     "id": 5,
@@ -290,7 +292,7 @@ window.questionBank = [
   {
     "id": 6,
     "imageSize": "full",
-    "imageAlt": "오른쪽 아래 C가 왼쪽 위 A에 오도록 접었다. 접기 전 직사각형의 오른쪽 부분을 점선으로, 접은 부분을 청록색으로 그렸다. 접히는 선은 EF이고 왼쪽 각 AEB는 60도이다. 점 F의 바깥 각 EFD가 표시돼 있다.",
+    "imageAlt": "C가 A에 겹치도록 접은 직사각형의 원래 점선 테두리와 접힌 윤곽선, E의 60° 각 및 F의 물음 각을 표시한다.",
     "level": "상",
     "category": "직사각형의 접기",
     "originalCategory": "직사각형의 접기",
@@ -345,12 +347,13 @@ window.questionBank = [
     "solutionImageCaption": "접은 선 EF가 ∠AEC=120°를 60°씩 이등분하는 모양",
     "solutionImageSize": "medium",
     "primaryMethod": "접기 대칭각과 직사각형의 평행변",
-    "decisiveStep": "접힌 두 선분 사이 각을 접는 선이 이등분함을 이용한 뒤 평행변 사이 같은 쪽 각을 보완한다."
+    "decisiveStep": "접힌 두 선분 사이 각을 접는 선이 이등분함을 이용한 뒤 평행변 사이 같은 쪽 각을 보완한다.",
+    "imageCaption": "C가 A에 겹치도록 접은 직사각형의 원래 점선 테두리와 접힌 윤곽선, E의 60° 각 및 F의 물음 각을 표시한다."
   },
   {
     "id": 7,
     "imageSize": "full",
-    "imageAlt": "마름모 ABCD 안의 두 대각선 AC와 BD는 O에서 교차한다. OD가 3 cm, OC가 2 cm이다. BC의 중점 P와 A를 연결해 삼각형 ABP를 칠했다.",
+    "imageAlt": "마름모 ABCD의 수직 대각선과 OD=3cm, OC=2cm, 중점 P를 표시하고 원본에서 색칠된 삼각형 ABP만 채운다.",
     "level": "중",
     "category": "마름모의 넓이",
     "originalCategory": "마름모의 넓이",
@@ -405,7 +408,8 @@ window.questionBank = [
     "solutionImageCaption": "대각선의 이등분과 P가 BC의 중점일 때 △ABC가 나뉘는 모양",
     "solutionImageSize": "medium",
     "primaryMethod": "마름모 대각선 넓이와 중점 넓이 분할",
-    "decisiveStep": "대각선 길이로 마름모 넓이를 얻고 대각선과 중점으로 두 번 반분한다."
+    "decisiveStep": "대각선 길이로 마름모 넓이를 얻고 대각선과 중점으로 두 번 반분한다.",
+    "imageCaption": "마름모 ABCD의 수직 대각선과 OD=3cm, OC=2cm, 중점 P를 표시하고 원본에서 색칠된 삼각형 ABP만 채운다."
   },
   {
     "id": 8,
@@ -1271,7 +1275,7 @@ window.questionBank = [
   {
     "id": 23,
     "imageSize": "full",
-    "imageAlt": "평행사변형 ABCD에서 대각선 AC와 BD는 O에서 교차한다. BD의 점은 B, E, O, F, D 순서이다. BE와 DF에 같은 색 눈금을 썼고 안쪽에 AECF를 그렸다.",
+    "imageAlt": "평행사변형 ABCD의 대각선 AC·BD, 대각선 위 두 점 E·F와 주어진 BE=DF 표식을 원래와 같이 무채움으로 나타낸다.",
     "level": "상",
     "category": "평행사변형의 대각선과 판정",
     "originalCategory": "평행사변형의 대각선과 판정",
@@ -1318,7 +1322,8 @@ window.questionBank = [
     "solutionImageCaption": "대각선의 교점 O에서 이등분되는 선분의 같은 길이 표시와 사각형 AECF를 나타낸 그림이다.",
     "solutionImageSize": "medium",
     "primaryMethod": "대각선의 이등분으로 안쪽 평행사변형 판정",
-    "decisiveStep": "원래 대각선 중점에서 같은 양을 뺀 두 선분이 같음을 얻어 안쪽 사각형의 대각선도 이등분됨을 보인다."
+    "decisiveStep": "원래 대각선 중점에서 같은 양을 뺀 두 선분이 같음을 얻어 안쪽 사각형의 대각선도 이등분됨을 보인다.",
+    "imageCaption": "평행사변형 ABCD의 대각선 AC·BD, 대각선 위 두 점 E·F와 주어진 BE=DF 표식을 원래와 같이 무채움으로 나타낸다."
   },
   {
     "id": 24,

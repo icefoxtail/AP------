@@ -250,14 +250,14 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q7-solution.svg",
-    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
-    "solutionImageCaption": "④의 첫 식은 수평선 y=−c/b,둘째 식은 수직선 x=−c′/a′이므로 항상 하나의 교점이다. 이 패널은 y2,x1의 설명용 대표값이며 실제 상수의 값을 정하지 않는다. 정답④.",
+    "solutionImageAlt": "④는 한 식이 수평선, 다른 식이 수직선이라 언제나 한 교점이다. 좌표 (1,2)는 상수의 값을 정한 것이 아닌 설명용 대표 그림이며 교점 라벨은 한 번만 표시한다. 정답 ④.",
+    "solutionImageCaption": "④는 한 식이 수평선, 다른 식이 수직선이라 언제나 한 교점이다. 좌표 (1,2)는 상수의 값을 정한 것이 아닌 설명용 대표 그림이며 교점 라벨은 한 번만 표시한다. 정답 ④.",
     "solutionImageSize": "full"
   },
   {
     "id": 8,
     "imageSize": "full",
-    "imageAlt": "위와 아래 줄에 각각 가로로 놓인 타일 세 장이 있다. 그 사이에는 세로로 놓인 타일 다섯 장이 있다. 모든 타일의 모양과 크기는 같다.",
+    "imageAlt": "원본과 같이 가로로 놓인 타일 3장, 세로로 놓인 타일 5장, 가로로 놓인 타일 3장으로 구성된 큰 직사각형. 색칠 없이 분할선만 나타낸다.",
     "level": "상",
     "category": "연립일차방정식",
     "originalCategory": "연립일차방정식",
@@ -294,7 +294,8 @@ window.questionBank = [
     "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q8-solution.svg",
     "solutionImageAlt": "해설 그림: 타일 11장으로 만든 큰 직사각형이다. 위와 아래에는 긴 변 x가 가로인 타일 3장씩, 가운데에는 짧은 변 y가 가로인 타일 5장이 놓여 가로는 3x와 5y로, 세로는 y, x, y를 합한 x+2y로 표시되어 있다.",
     "solutionImageCaption": "타일의 긴 변을 x, 짧은 변을 y라 하면 가로는 3x=5y, 세로는 y+x+y=x+2y이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "imageCaption": "원본과 같이 가로로 놓인 타일 3장, 세로로 놓인 타일 5장, 가로로 놓인 타일 3장으로 구성된 큰 직사각형. 색칠 없이 분할선만 나타낸다."
   },
   {
     "id": 9,
@@ -402,9 +403,10 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q11-solution.svg",
-    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
-    "solutionImageCaption": "아래로 3 이동한 y−4x+a−3이(−2,0)을 지나므로 a−5. 원래점(−2,3)이(−2,0)으로 내려가는 관계를 보인다. 정답②.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "원래 직선 y=−4x−5를 아래로 3만큼 평행이동하면 y=−4x−8이며 이 직선은 (−2,0)을 지난다. 같은 x에서 아래로 3을 나타내는 화살표 두 개를 추가했다.",
+    "solutionImageCaption": "원래 직선 y=−4x−5를 아래로 3만큼 평행이동하면 y=−4x−8이며 이 직선은 (−2,0)을 지난다. 같은 x에서 아래로 3을 나타내는 화살표 두 개를 추가했다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 12,
@@ -519,7 +521,7 @@ window.questionBank = [
   {
     "id": 15,
     "imageSize": "full",
-    "imageAlt": "점선으로 그린 y=bx−a는 오른쪽으로 갈수록 낮아진다. 이 직선은 세로축에서 원점 위를 지나고 가로축에서 원점 오른쪽을 지난다.",
+    "imageAlt": "실선 그래프 y=bx−a가 오른쪽 아래로 기울고 y축의 양의 부분과 만난다는 원본의 부호 정보만 나타낸다. 수치는 주어지지 않았다.",
     "level": "중",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
@@ -556,7 +558,8 @@ window.questionBank = [
     "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q15-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 예시 값으로 그린 좌표평면 개략도이다. 직선 y=bx-a와 직선 y=abx+(a+b)가 그려져 있고, 각 직선 옆에 그 식이 적혀 있으며, 네 사분면에 제1사분면부터 제4사분면까지 이름이 적혀 있다.",
     "solutionImageCaption": "직선 y=bx-a와 y=abx+(a+b)를 예시 값으로 좌표평면에 그린 개략도이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "imageCaption": "실선 그래프 y=bx−a가 오른쪽 아래로 기울고 y축의 양의 부분과 만난다는 원본의 부호 정보만 나타낸다. 수치는 주어지지 않았다."
   },
   {
     "id": 16,
@@ -636,7 +639,7 @@ window.questionBank = [
   {
     "id": 18,
     "imageSize": "full",
-    "imageAlt": "일차방정식 ax+y+b=0의 파란 실선과 y=−2x+9의 주황 점선이 A에서 만난다. 가로선 y=3은 두 직선과 각각 B와 C에서 만나고 B는 y축 위이다. A 아래 x축에 k를 표시했다.",
+    "imageAlt": "세 개의 실선이 A, B, C에서 이루는 삼각형과 A의 x좌표 k를 표시한다. 점선은 A에서 두 좌표축까지의 보조선만 사용하며 영역은 칠하지 않는다.",
     "level": "상",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
@@ -673,7 +676,8 @@ window.questionBank = [
     "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q18-solution.svg",
     "solutionImageAlt": "해설 그림: 좌표평면에서 직선 y=-2x+9, y=x+3, y=3이 둘러싸는 삼각형 ABC를 색칠한 그림이다. B는 y축 위, C는 직선 y=-2x+9 위의 점이며 밑변 BC의 길이는 3, 점 A에서 BC에 내린 수선의 길이(높이)는 2로 표시되어 있다.",
     "solutionImageCaption": "삼각형 ABC에서 밑변 BC=3, 높이는 2이고, 꼭짓점은 A(2,5), B(0,3), C(3,3)이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "imageCaption": "세 개의 실선이 A, B, C에서 이루는 삼각형과 A의 x좌표 k를 표시한다. 점선은 A에서 두 좌표축까지의 보조선만 사용하며 영역은 칠하지 않는다."
   },
   {
     "id": 19,
@@ -746,8 +750,8 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q20-solution.svg",
-    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
-    "solutionImageCaption": "일치조건에서 a2. 다른식은 y=x/3+b/3이므로 만나지 않으려면 b≠5. a+b=7만불가능,정답④.",
+    "solutionImageAlt": "일치 조건으로 a=2. 만나지 않는 다른 직선은 y=x/3+b/3이므로 b≠5이고 a+b=7만 불가능하다. 두 평행선은 조건을 만족하는 대표 예 b=4를 그린 것이지 b=4로 확정하는 것이 아니다. 정답 ④.",
+    "solutionImageCaption": "일치 조건으로 a=2. 만나지 않는 다른 직선은 y=x/3+b/3이므로 b≠5이고 a+b=7만 불가능하다. 두 평행선은 조건을 만족하는 대표 예 b=4를 그린 것이지 b=4로 확정하는 것이 아니다. 정답 ④.",
     "solutionImageSize": "full"
   },
   {
@@ -848,7 +852,7 @@ window.questionBank = [
   {
     "id": 24,
     "imageSize": "full",
-    "imageAlt": "파란 실선 −x+y−4=0과 주황 점선 3x+y+4=0이 세로축 왼쪽에서 교차한다. 파란 선은 오른쪽 위로, 주황 선은 오른쪽 아래로 향한다.",
+    "imageAlt": "두 방정식 −x+y−4=0과 3x+y+4=0의 직선을 모두 실선으로 그린다. 세 번째 미지의 직선이나 세 직선의 공통점은 문제 그림에 표시하지 않는다.",
     "choices": [],
     "level": "상",
     "category": "일차함수와 그래프",
@@ -880,6 +884,7 @@ window.questionBank = [
     "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q24-solution-visual-v2.svg",
     "solutionImageAlt": "모든 그림에서 기존 두 직선은 파란 실선과 주황 점선이다. 청록 짧은 점선은 세로축의 3을 지나는 세 번째 직선이다. 첫째는 파란 직선과 평행, 둘째는 주황 직선과 평행, 셋째는 세 직선이 한 점에서 만나는 경우이다.",
     "solutionImageCaption": "세 번째 직선 y=ax+3이 첫째 직선과 평행하면 a=1이고 둘째와 평행하면 a=−3이다. 기존 두 직선의 교점 (−2, 2)를 지나면 2=−2a+3이므로 a=1/2이다. 삼각형을 만들지 않는 a는 −3, 1/2, 1이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageCaption": "두 방정식 −x+y−4=0과 3x+y+4=0의 직선을 모두 실선으로 그린다. 세 번째 미지의 직선이나 세 직선의 공통점은 문제 그림에 표시하지 않는다."
   }
 ];

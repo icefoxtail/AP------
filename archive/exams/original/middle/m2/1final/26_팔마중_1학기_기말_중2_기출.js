@@ -644,7 +644,7 @@ window.questionBank = [
   {
     "id": 16,
     "imageSize": "full",
-    "imageAlt": "가로 15 cm, 세로 8 cm인 직사각형 ABCD이다. P는 밑변을 따라 B에서 C로 움직이는 점이다. DP를 경계로 왼쪽 사다리꼴 ABPD를 옅은 청록으로 표시했다.",
+    "imageAlt": "가로 15cm, 세로 8cm인 직사각형 ABCD에서 P는 B에서 C로 움직인다. 원본처럼 사각형 ABPD만 옅게 칠하고 이동 방향을 화살표로 나타낸다.",
     "level": "상",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
@@ -686,7 +686,8 @@ window.questionBank = [
     "solutionImage": "assets/images/26_팔마중_1학기_기말_중2_기출/q16-solution.svg",
     "solutionImageAlt": "해설 그림: 직사각형 ABCD에서 AD=15 cm, DC=8 cm이고 점 P가 변 BC 위에 있다. BP=3x cm, PC=(15-3x) cm로 표시했고, 사각형 ABPD와 오른쪽 삼각형(넓이 60-12x)이 서로 다른 색으로 구분되어 있다.",
     "solutionImageCaption": "BP=3x, PC=15-3x이므로 사각형 ABPD는 직사각형에서 오른쪽 삼각형을 뺀 부분이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "imageCaption": "가로 15cm, 세로 8cm인 직사각형 ABCD에서 P는 B에서 C로 움직인다. 원본처럼 사각형 ABPD만 옅게 칠하고 이동 방향을 화살표로 나타낸다."
   },
   {
     "id": 17,

@@ -907,7 +907,10 @@ window.questionBank = [
     "rpmPrimaryRecordId": "M3-RPM-015",
     "sourceQid": 19,
     "variationType": "NUMERIC",
-    "problemPlanRef": "archive/exams/similar/middle/m3/1mid/23_향림중_1학기_중간_중3_유사_plans/q19-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/middle/m3/1mid/23_향림중_1학기_중간_중3_유사_plans/q19-problem.plan.json",
+    "imageAlt": "직각삼각형의 빗변에 b, 밑변에 2a가 표시되어 있고, 밑변과 높이가 만나는 꼭짓점에 직각 표시가 있다.",
+    "imageCaption": "직각삼각형의 빗변에 b, 밑변에 2a가 표시되어 있고, 밑변과 높이가 만나는 꼭짓점에 직각 표시가 있다.",
+    "imageSize": "full"
   },
   {
     "id": 20,

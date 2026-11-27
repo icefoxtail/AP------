@@ -954,9 +954,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P147-Q06-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "해설에서 구한 첫 번째 가능한 k의 직선은 원과 만나지 않는다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "해설에서 구한 첫 번째 가능한 k의 직선은 원과 만나지 않는다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P147-Q06-S1-R1",
@@ -1308,9 +1309,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P147-Q08-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "삼각형 ABC의 세 중선이 만나는 무게중심 G에서 거리 제곱합이 최소가 된다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "삼각형 ABC의 세 중선이 만나는 무게중심 G에서 거리 제곱합이 최소가 된다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P147-Q08-S1-R1",
@@ -1367,9 +1369,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P147-Q08-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "삼각형 ABC의 세 중선이 만나는 무게중심 G에서 거리 제곱합이 최소가 된다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "삼각형 ABC의 세 중선이 만나는 무게중심 G에서 거리 제곱합이 최소가 된다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P147-Q08-S2-R1",
@@ -1426,9 +1429,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P147-Q08-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "삼각형 ABC의 세 중선이 만나는 무게중심 G에서 거리 제곱합이 최소가 된다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "삼각형 ABC의 세 중선이 만나는 무게중심 G에서 거리 제곱합이 최소가 된다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P147-Q09-T1-R1",
@@ -1485,9 +1489,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P147-Q09-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "포물선과 평행이동한 직선이 접점 T에서 만나 중근을 갖는다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "포물선과 평행이동한 직선이 접점 T에서 만나 중근을 갖는다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P147-Q09-S1-R1",
@@ -1544,9 +1549,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P147-Q09-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "포물선과 평행이동한 직선이 접점 T에서 만나 중근을 갖는다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "포물선과 평행이동한 직선이 접점 T에서 만나 중근을 갖는다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P147-Q09-S2-R1",
