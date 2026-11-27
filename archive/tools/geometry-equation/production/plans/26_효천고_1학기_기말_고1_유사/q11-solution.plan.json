@@ -1,0 +1,35 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "2",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "공통해가 없을 조건"
+  },
+  "caption": "두 열린 해 구간 (-2,a)와 (-6,-a)는 a=2에서 x=-2로 맞닿을 뿐 겹치지 않는다. 양수 a≥2가 무해 구간이다.",
+  "accessibilityDescription": "양수 매개변수 a가 2 이상인 닫힌 시작점과 오른쪽 반직선.",
+  "sourceConditions": [
+    {
+      "id": "hc-11-1",
+      "condition": "a>0, 해가 없도록 하는 최소값은 a=2",
+      "mappedTo": "numberLine.rows[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "열린 해 구간의 경계 a=2를 포함해야 함을 별도로 표시한다."
+  ]
+}

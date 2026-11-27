@@ -1,0 +1,23 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [{
+      "kind": "SET",
+      "pieces": [{
+        "lo": {"value": "-7", "state": "OPEN"},
+        "hi": {"value": "5", "state": "OPEN"}
+      }],
+      "integerPoints": true
+    }]
+  },
+  "numberLineCaption": {"text": "|x+1|<6의 정수해"},
+  "caption": "-7<x<5에서 양 끝점은 제외한다. 포함되는 정수는 -6부터 4까지 11개이다.",
+  "accessibilityDescription": "수직선에서 -7과 5는 열린 점이며 사이의 정수 -6부터 4까지 모두 11개를 표시한다.",
+  "sourceConditions": [{
+    "id": "sy-05-1",
+    "condition": "|x+1|<6의 해는 -7<x<5이며 정수는 -6부터 4까지이다.",
+    "mappedTo": "numberLine.rows[0]"
+  }],
+  "newVisualInformation": ["열린 경계 두 곳과 정수 11개의 위치를 한 눈에 비교한다."]
+}

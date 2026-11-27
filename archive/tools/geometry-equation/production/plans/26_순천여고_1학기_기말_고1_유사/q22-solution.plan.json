@@ -1,0 +1,72 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "7",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": true
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "3",
+              "state": "CLOSED"
+            }
+          },
+          {
+            "lo": {
+              "value": "6",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "n=6의 대표 경우: 네 정수해"
+  },
+  "caption": "첫째 조건은 2≤x≤7이고, n=6일 때 둘째 조건은 x≤3 또는 x≥6이다. 교집합 정수는 2,3,6,7의 네 개다.",
+  "accessibilityDescription": "첫째 수직선 2~7의 여섯 정수, 둘째 수직선 x≤3 또는 x≥6, 마지막 공통 정수 2,3,6,7 표시.",
+  "sourceConditions": [
+    {
+      "id": "sy-22-1",
+      "condition": "첫 이차부등식 해 [2,7]",
+      "mappedTo": "numberLine.rows[0]"
+    },
+    {
+      "id": "sy-22-2",
+      "condition": "예시 n=6에서 두 근 3,6의 바깥을 포함",
+      "mappedTo": "numberLine.rows[1]"
+    },
+    {
+      "id": "sy-22-3",
+      "condition": "두 정수가 제외되고 네 정수만 남음",
+      "mappedTo": "numberLine.rows[2]"
+    }
+  ],
+  "newVisualInformation": [
+    "n=6은 전체 일반론의 대표 예이며 제외 정수 4,5를 정확히 보여 준다."
+  ]
+}

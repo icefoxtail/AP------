@@ -1,0 +1,63 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-14",
+      "-5",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      8
+    ],
+    "viewport": [
+      -4,
+      9,
+      -24,
+      18
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -2,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 7,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 2.5,
+        "y": -20.25
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "y=x²−5x−14의 두 x절편은 -2와 7이므로 합은 5이다.",
+  "accessibilityDescription": "위로 열린 포물선의 x절편 (-2,0),(7,0), 꼭짓점 (5/2,-81/4).",
+  "sourceConditions": [
+    {
+      "id": "04-0",
+      "condition": "함수 y=x²−5x−14",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "04-1",
+      "condition": "x절편과 꼭짓점 좌표",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 해설의 꼭짓점·경계·근에 대응하는 점과 구간 끝의 상대 높이를 직접 표시한다."
+  ]
+}
