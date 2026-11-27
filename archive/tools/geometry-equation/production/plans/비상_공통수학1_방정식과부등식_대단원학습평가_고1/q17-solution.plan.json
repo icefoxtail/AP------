@@ -1,0 +1,23 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{ "coefficients": ["-5", "-4", "1"] }],
+    "sourceDomain": { "kind": "INTERVAL", "range": [4, 5] },
+    "requiredPoints": [
+      { "id": "L", "x": 4, "y": -5 },
+      { "id": "R", "x": 5, "y": 0 }
+    ],
+    "axisTickValues": { "x": [4, 5], "y": [-5] }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "경계값 k=3의 예에서 f(x)=(x−2)²−9는 4≤x≤5에 증가하며 오른쪽 끝 f(5)=0이 최대이다. 따라서 모든 x에 대해 f(x)≤0이려면 k≥3이다.",
+  "accessibilityDescription": "x가 4부터 5까지인 구간에서 증가하는 포물선의 일부. 왼쪽 끝 (4,−5), 오른쪽 끝 (5,0)이 표시된다.",
+  "sourceQuote": "4≤x≤5일 때 x²−4x−3k+4≤0이 성립하도록 하는 k의 범위. 해설: f(x)=(x−2)²−3k가 증가하므로 f(5)=9−3k≤0.",
+  "sourceConditions": [
+    { "id": "sample", "condition": "k=3 경계 예시에서 f(x)=x²−4x−5", "mappedTo": "graphPlan.pieces" },
+    { "id": "domain", "condition": "4≤x≤5", "mappedTo": "graphPlan.sourceDomain.range" },
+    { "id": "extremum", "condition": "f(4)=−5, f(5)=0이며 구간에서 증가", "mappedTo": "graphPlan.requiredPoints" }
+  ],
+  "newVisualInformation": ["매개변수 경계 k=3의 대표 개형에 구간 양끝·증가 방향·최대 0을 표시한다. 다른 k 전체의 그래프라고 주장하지 않는다."]
+}

@@ -1,0 +1,24 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["0", "0", "1"],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "requiredPoints": [{ "id": "V", "x": 0, "y": 0 }],
+    "axisTickValues": { "x": [-2], "y": [4] },
+    "overlays": {
+      "lines": [{ "id": "t", "slope": "-4", "intercept": "-4", "label": "y=-4x-4" }],
+      "points": [{ "id": "T", "curveX": "-2", "coordinates": true }]
+    }
+  },
+  "coordinateBand": { "hide": ["V"] },
+  "caption": "a=−2, b=−4를 얻은 뒤 k=0인 예에서는 포물선 y=x²과 직선 y=−4x−4가 T(−2,4)에서 접한다. 임의 k에서도 판별식은 0이다.",
+  "accessibilityDescription": "위로 열린 포물선 y=x²과 기울기 −4, 절편 −4인 직선이 점 T(−2,4)에서 접한다.",
+  "sourceQuote": "y=x²−2kx+k²−4k의 그래프와 y=2ax+b가 모든 실수 k에서 접한다. 해설: D/4=(2a+4)k+a²+b=0, a=−2, b=−4.",
+  "sourceConditions": [
+    { "id": "curve", "condition": "k=0 예시에서 원함수는 y=x²", "mappedTo": "graphPlan.coefficients" },
+    { "id": "tangent", "condition": "a=−2,b=−4일 때 y=−4x−4", "mappedTo": "graphPlan.overlays.lines[0]" },
+    { "id": "contact", "condition": "예시 접점 T(−2,4)는 연립식 (x+2)²=0의 중근", "mappedTo": "graphPlan.overlays.points[0]" }
+  ],
+  "newVisualInformation": ["모든 k에 대해 접한다는 항등식 조건을 k=0의 구체적 접점으로 검산하는 한 개의 그래프. 불필요한 면 채움은 없다."]
+}
