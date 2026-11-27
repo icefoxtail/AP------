@@ -139,7 +139,11 @@ window.questionBank = [
     "decisiveStep": "반지름1인 사분원의 점 좌표를 cos·sin으로 읽고 여각 관계 및 sin/cos의 비로 tan 근삿값을 비교한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "반지름 1인 사분원에서 42°의 동경과 B의 0.74·0.67, D의 높이 0.90 안내 점선을 원본대로 보인다.",
+    "solutionImageCaption": "반지름 1인 사분원에서 42°의 동경과 B의 0.74·0.67, D의 높이 0.90 안내 점선을 원본대로 보인다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 4,
@@ -374,7 +378,11 @@ window.questionBank = [
     "decisiveStep": "내각합으로45도를 정하고 보조수선 높이를 sin30으로 구한 뒤45도 직각이등변삼각형에서 목표변을 복원한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "BC=20, ∠B=30°, ∠C=105°와 보조 높이 CH=10, ∠A=45°, CH⊥AB를 원본 각·길이 그대로 보인다.",
+    "solutionImageCaption": "BC=20, ∠B=30°, ∠C=105°와 보조 높이 CH=10, ∠A=45°, CH⊥AB를 원본 각·길이 그대로 보인다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 9,
@@ -456,8 +464,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q10-solution.svg",
-    "solutionImageAlt": "해설 그림: 평행사변형 ABCD와 밑변 BC에 내린 수선 AH, ∠B=45° 및 변 길이.",
-    "solutionImageCaption": "BC=6√2 cm, AH=7√2/2 cm이므로 넓이는 BC×AH=42 cm²이다. 정답: ④",
+    "solutionImageAlt": "평행사변형 ABCD에 높이 AH를 점선으로 표시하고, 내부는 무채움으로 둔다.",
+    "solutionImageCaption": "평행사변형 ABCD에 높이 AH를 점선으로 표시하고, 내부는 무채움으로 둔다.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
@@ -611,7 +619,10 @@ window.questionBank = [
     "decisiveStep": "좌표에서 세 변의 제곱을 구해 등변과 피타고라스의 역을 확인하여45도 직각이등변삼각형을 복원하고 최종 삼각비 곱을 계산한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "A(-1,-1), B(-4,1), C(1,2)를 연결하고 축으로 내린 점선 및 A의 직각과 두 같은 변을 보인다.",
+    "solutionImageCaption": "A(-1,-1), B(-4,1), C(1,2)를 연결하고 축으로 내린 점선 및 A의 직각과 두 같은 변을 보인다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -882,8 +893,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q19-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 삼각형의 내접원과 세 접점 D, E, F가 보인다. 같은 꼭짓점의 두 접선은 같은 색과 같은 개수의 눈금으로 표시했다. A는 파란색 한 눈금, B는 주황색 두 눈금, C는 초록색 세 눈금이다.",
-    "solutionImageCaption": "CF=CE=8−5/2=11/2 cm이다. 정답: ③",
+    "solutionImageAlt": "변 길이 6·8·9 cm인 삼각형의 내접원과 D·E·F 접점, 접선 길이 눈금·직각을 원본대로 표시한다.",
+    "solutionImageCaption": "변 길이 6·8·9 cm인 삼각형의 내접원과 D·E·F 접점, 접선 길이 눈금·직각을 원본대로 표시한다.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_CIRCLE_TANGENT",
@@ -896,7 +907,8 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "각 꼭짓점의 두 접선길이를 같게 놓아 미지 접선조각 x로 나머지 변을 표현하고 한 일차식으로 CF를 구한다.",
-    "decisiveStep": "각 꼭짓점의 두 접선길이를 같게 놓아 미지 접선조각 x로 나머지 변을 표현하고 한 일차식으로 CF를 구한다."
+    "decisiveStep": "각 꼭짓점의 두 접선길이를 같게 놓아 미지 접선조각 x로 나머지 변을 표현하고 한 일차식으로 CF를 구한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 20,

@@ -496,8 +496,8 @@ window.examData = {
   },
   {
     "id": 12,
-    "imageSize": "tall",
-    "imageAlt": "ADB, ACF, BCE는 정삼각형이다. BCE와 A는 BC의 같은 쪽에 있다. 세 종류의 같은 길이는 각각 같은 색과 눈금이다. AFED만 칠했다.",
+    "imageSize": "full",
+    "imageAlt": "원본 문제의 정삼각형 세 개와 빠진 사각형 AFED 음영을 1:1 복구",
     "questionNumber": 12,
     "score": 4,
     "level": "중",
@@ -545,7 +545,8 @@ window.examData = {
     "solutionImageAlt": "합동을 통해 AF∥DE·AD∥FE를 표시한 AFED 평행사변형 해설",
     "solutionImageCaption": "합동을 통해 AF∥DE·AD∥FE를 표시한 AFED 평행사변형 해설",
     "solutionImageSize": "full",
-    "solutionImageScale": 90
+    "solutionImageScale": 90,
+    "imageCaption": "원본 문제의 정삼각형 세 개와 빠진 사각형 AFED 음영을 1:1 복구"
   },
   {
     "id": 13,

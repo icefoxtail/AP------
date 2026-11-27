@@ -168,8 +168,8 @@ window.questionBank = [
   },
   {
     "id": 5,
-    "imageSize": "tall",
-    "imageAlt": "평행사변형 ABCD의 대각선 AC와 BD가 O에서 만난다.",
+    "imageSize": "full",
+    "imageAlt": "평행사변형 ABCD의 교점 O에서 AO와 BO가 같고 두 대각선이 수직이다",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -209,7 +209,8 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "대각선의 같은 길이와 수직 조건의 결합",
-    "decisiveStep": "반대각선 길이의 같음을 전체 대각선 같음으로 바꾸고 직사각형·마름모 조건을 함께 만족함을 판정한다."
+    "decisiveStep": "반대각선 길이의 같음을 전체 대각선 같음으로 바꾸고 직사각형·마름모 조건을 함께 만족함을 판정한다.",
+    "imageCaption": "평행사변형 ABCD의 교점 O에서 AO와 BO가 같고 두 대각선이 수직이다"
   },
   {
     "id": 6,
@@ -447,8 +448,8 @@ window.questionBank = [
   {
     "id": 11,
     "solutionImageSize": "full",
-    "solutionImageCaption": "각의 이등분선과 평행선에서 AB=BE=AF=10 cm이다. ABEF가 평행사변형이므로 EF도 같은 10 cm이며 둘레는 40 cm이다.",
-    "solutionImageAlt": "가로 BC는 12 cm, 옆변 CD는 10 cm이다. A의 각의 이등분선이 E에, B의 각의 이등분선은 F에 닿는다. 네 같은 변에 동일한 표시를 붙였다.",
+    "solutionImageCaption": "각의 이등분선으로 만들어진 사각형 ABEF의 네 변은 각각 10 cm",
+    "solutionImageAlt": "각의 이등분선으로 만들어진 사각형 ABEF의 네 변은 각각 10 cm",
     "imageSize": "tall",
     "imageAlt": "가로 BC는 12 cm, 옆변 CD는 10 cm이다. A의 각의 이등분선이 E에, B의 각의 이등분선은 F에 닿는다.",
     "level": "상",
@@ -645,8 +646,8 @@ window.questionBank = [
   {
     "id": 15,
     "solutionImageSize": "full",
-    "solutionImageCaption": "M은 빗변 AB의 중점이므로 MH=CE이다. 두 삼각형 HMD와 CEB가 SAS 합동이며 DH=CB=AD이다. 각 DAH가 70°라서 각 ADH는 40°이다.",
-    "solutionImageAlt": "E는 CD의 중점이고 H는 A에서 BE로 내린 수선의 발이다. B의 두 각은 50도와 20도, C는 110도이다. AB의 중점 M을 표시하고 같은 길이에 같은 눈금을 붙였다.",
+    "solutionImageCaption": "각 추적과 직각삼각형의 빗변 중점 M을 함께 나타낸 평행사변형",
+    "solutionImageAlt": "각 추적과 직각삼각형의 빗변 중점 M을 함께 나타낸 평행사변형",
     "imageSize": "tall",
     "imageAlt": "E는 CD의 중점이고 H는 A에서 BE로 내린 수선의 발이다. B의 두 각은 50도와 20도, C는 110도이다.",
     "level": "상",
@@ -694,7 +695,8 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "보조 중점으로 SAS 합동을 구성해 길이 전달",
-    "decisiveStep": "빗변 중점M의 등거리와 새 평행사변형의MD=BE를 결합하여 HMD와CEB의SAS를 만든 뒤 HD=AD로 목표 이등변각을 정한다."
+    "decisiveStep": "빗변 중점M의 등거리와 새 평행사변형의MD=BE를 결합하여 HMD와CEB의SAS를 만든 뒤 HD=AD로 목표 이등변각을 정한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 16,
@@ -879,8 +881,8 @@ window.questionBank = [
   {
     "id": 20,
     "solutionImageSize": "full",
-    "solutionImageCaption": "외심의 거리 성질로 OBC와 OCB는 각각 42°이다. BOC가 96°고 수선 OD가 이를 두 같은 각으로 나누므로 x=48°이다.",
-    "solutionImageAlt": "삼각형 ABC의 외심 O와 각 꼭짓점을 이었다. O에서 BC에 내린 수선은 D에 닿는다. OAB각은 33도이고 ABC각은 75도이다. 두 밑각 42도와 O에서 나뉜 두 같은 각을 표시했다.",
+    "solutionImageCaption": "외심 O의 같은 반지름과 수선 OD로 두 각 42°와 목표 각 48°를 읽는다",
+    "solutionImageAlt": "외심 O의 같은 반지름과 수선 OD로 두 각 42°와 목표 각 48°를 읽는다",
     "imageSize": "tall",
     "imageAlt": "삼각형 ABC의 외심 O와 각 꼭짓점을 이었다. O에서 BC에 내린 수선은 D에 닿는다. OAB각은 33도이고 ABC각은 75도이다.",
     "level": "상",

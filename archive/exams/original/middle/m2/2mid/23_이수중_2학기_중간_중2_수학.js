@@ -47,9 +47,10 @@ window.questionBank = [
     "tagStatus": "reviewed_pass",
     "tagConfidence": "approved_final_qa",
     "solutionImage": "assets/images/23_이수중_2학기_중간_중2_수학/q1-solution.svg",
-    "solutionImageAlt": "해설 그림: 이등변삼각형 ABC의 변 CB를 B쪽으로 연장해 점 D를 잡은 그림이며 외각 ABD, 두 밑각, 꼭지각 x가 각각 표시되어 있고 변 AB와 AC에 같은 길이 눈금이 있다.",
-    "solutionImageCaption": "∠ABD=120°이므로 ∠ABC=180°−120°=60°이다. AB=AC인 이등변삼각형의 두 밑각이 같아 ∠ACB=60°이고, 삼각형의 세 각의 합에서 x=180°−60°−60°=60°이다. 따라서 답은 ⑤이다.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "이등변삼각형의 외각 120°에서 밑각 60°씩과 꼭지각 60°가 나온다",
+    "solutionImageCaption": "이등변삼각형의 외각 120°에서 밑각 60°씩과 꼭지각 60°가 나온다",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 2,
@@ -510,8 +511,8 @@ window.questionBank = [
     "tagStatus": "reviewed_pass",
     "tagConfidence": "approved_final_qa",
     "solutionImage": "assets/images/23_이수중_2학기_중간_중2_수학/q11-solution.svg",
-    "solutionImageAlt": "해설 그림: 마름모 ABCD와 두 대각선 AC, BD가 그려져 있고, 두 대각선이 만나는 점 O에 직각 표시가 있다. 점 A와 점 B의 한 각에 각각 60과 30이 적혀 있고, 선분 BO에는 x=8, 선분 OD에는 8이 적혀 있다.",
-    "solutionImageCaption": "마름모의 두 대각선은 서로를 수직이등분하므로 BO=OD=8에서 x=8이다. 대각선 AC가 각 A를 이등분하므로 각 A=120°이고, 마름모는 평행사변형이므로 각 B=60°이다. 대각선 BD가 각 B를 이등분하므로 y=30°이다. 따라서 x+y=8+30=38이다. 따라서 답은 ②이다.",
+    "solutionImageAlt": "마름모 대각선의 수직이등분과 A의 60°, B의 30°에서 x+y=38",
+    "solutionImageCaption": "마름모 대각선의 수직이등분과 A의 60°, B의 30°에서 x+y=38",
     "solutionImageSize": "full",
     "solutionImageScale": 90
   },
@@ -885,9 +886,10 @@ window.questionBank = [
     "tagStatus": "reviewed_pass",
     "tagConfidence": "approved_final_qa",
     "solutionImage": "assets/images/23_이수중_2학기_중간_중2_수학/q19-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼각형 ABC의 두 변 AB, AC 위의 점 D, E를 이은 선분 DE가 밑변 BC와 평행하게 그어져 있고 AD 10, DB 5, DE 12, BC x=18이 적혀 있으며 같은 위치의 각에 같은 표시가 있다.",
-    "solutionImageCaption": "DE∥BC이므로 ∠ADE=∠ABC, ∠AED=∠ACB이다. 따라서 △ADE∽△ABC이다. AD:AB=10:15=2:3이므로 DE:BC=2:3이다. 12:x=2:3에서 x=18이다. 따라서 답은 ②이다.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "대각선 DB와 EC가 A에서 교차하는 두 역삼각형의 닮음과 밑변 18",
+    "solutionImageCaption": "대각선 DB와 EC가 A에서 교차하는 두 역삼각형의 닮음과 밑변 18",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 20,
@@ -968,7 +970,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageAlt": "외심 O와 내심 I에서 각각 160°와 130°를 읽는다",
+    "solutionImageCaption": "외심 O와 내심 I에서 각각 160°와 130°를 읽는다",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 22,
@@ -1005,9 +1011,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
-    "solutionImageAlt": "해설 그림: 정사각형 ABCD의 대각선 BD 위에 점 E가 있고 A와 C에서 E로 선분이 그어져 있다. 각 DAE와 각 DCE에 같은 크기 20°, 꼭짓점 D에서 이등분된 두 각에 45°, 외각 BEC에 65°가 표시되어 있다.",
-    "solutionImageCaption": "정사각형에서 AD=CD, DE는 공통, ∠ADE=∠CDE=45°이므로 △ADE≡△CDE(SAS 합동)이다. 대응각이므로 ∠DCE=∠DAE=20°이다. B, E, D가 한 직선 위에 있으므로 ∠BEC는 △CDE의 꼭짓점 E에서의 외각이고, 외각의 성질에 의해 ∠BEC=∠CDE+∠DCE=45°+20°=65°이다. 따라서 답은 65°이다.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "정사각형에서 보조선 A-E-F와 합동 삼각형 ADE, CDE 및 외각 65°",
+    "solutionImageCaption": "정사각형에서 보조선 A-E-F와 합동 삼각형 ADE, CDE 및 외각 65°",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 23,
@@ -1088,8 +1095,9 @@ window.questionBank = [
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
     "tagConfidence": "approved_final_qa",
-    "solutionImageAlt": "해설 그림: 꼭짓점 A에서 직각인 직각삼각형 ABC의 빗변 BC에 수선 AD가 내려져 있고 AB 10, BD 8이 적혀 있으며 닮은 삼각형의 대응각에 같은 표시가 있다. DC 9/2, AD 6, CA 15/2도 표시되어 있다.",
-    "solutionImageCaption": "△ABD와 △CBA는 ∠B가 공통이고 ∠ADB=∠CAB=90°이므로 △ABD∽△CBA이다. 대응변의 비에서 AB:BC=BD:AB이므로 AB²=BD×BC, 10²=8×BC에서 BC=25/2이다. 그러므로 CD=BC−BD=25/2−8=9/2이다. 따라서 답은 9/2이다.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "빗변에 내린 높이 AD에서 AB²=BD·BC이고 남은 CD는 9/2",
+    "solutionImageCaption": "빗변에 내린 높이 AD에서 AB²=BD·BC이고 남은 CD는 9/2",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   }
 ];
