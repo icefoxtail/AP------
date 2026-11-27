@@ -341,7 +341,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "primaryMethod": "원주각30°에서 중심각60°를 구해 활꼴을 부채꼴에서 삼각형을 뺀 영역으로 계산한다.",
-    "decisiveStep": "반지름8,BOC60°이므로부채꼴32π/3,삼각형16√3. 색칠넓이는32π/3−16√3,⑤이다."
+    "decisiveStep": "반지름8,BOC60°이므로부채꼴32π/3,삼각형16√3. 색칠넓이는32π/3−16√3,⑤이다.",
+    "image": "assets/images/15_신흥중_2학기_기말_중3_수학/q9-problem.svg",
+    "imageAlt": "q9 문제 원문 대응 도형 · 원 O의 지름 AB=16cm, ∠CAB=30°, 현 BC와 작은 호 BC로 둘러싸인 활꼴만 음영 표시한다.",
+    "imageCaption": "q9 문제 원문 대응 도형 · 원 O의 지름 AB=16cm, ∠CAB=30°, 현 BC와 작은 호 BC로 둘러싸인 활꼴만 음영 표시한다.",
+    "imageSize": "full"
   },
     {
       "id": 10,
@@ -379,7 +383,11 @@ window.examData = {
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
     "primaryMethod": "경사면 그림자를 수평·수직 성분으로 나누고 태양광선의60° 높이차에 끝점 높이를 더한다.",
-    "decisiveStep": "경사그림자3√3의수평성분9/2,높이3√3/2. 총수평거리19/2의광선높이차19√3/2를더해광고판11√3m,②이다."
+    "decisiveStep": "경사그림자3√3의수평성분9/2,높이3√3/2. 총수평거리19/2의광선높이차19√3/2를더해광고판11√3m,②이다.",
+    "image": "assets/images/15_신흥중_2학기_기말_중3_수학/q10-problem.svg",
+    "imageAlt": "q10 문제 원문 대응 도형 · 원문 광고판과 빛·경사면 그림에서 그림자 5m, 높이 방향 3√3m, 경사각 30°, 광선각 60°가 주어진다.",
+    "imageCaption": "q10 문제 원문 대응 도형 · 원문 광고판과 빛·경사면 그림에서 그림자 5m, 높이 방향 3√3m, 경사각 30°, 광선각 60°가 주어진다.",
+    "imageSize": "full"
   },
     {
       "id": 11,
@@ -455,7 +463,11 @@ window.examData = {
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_CHORD_LENGTH",
     "primaryMethod": "이등변삼각형의 높이와 외심의 위치를 이용해 반지름과 중심거리의 방정식을 세운다.",
-    "decisiveStep": "AM6,BM=√(45−36)=3. 외심은AC반대편이라OM=x,OB=x+3. (x+3)²=x²+36에서x=9/2,반지름15/2,④이다."
+    "decisiveStep": "AM6,BM=√(45−36)=3. 외심은AC반대편이라OM=x,OB=x+3. (x+3)²=x²+36에서x=9/2,반지름15/2,④이다.",
+    "image": "assets/images/15_신흥중_2학기_기말_중3_수학/q12-problem.svg",
+    "imageAlt": "q12 문제 원문 대응 도형 · 원 O에 내접한 △ABC에서 AB=BC=3√5cm, AC=12cm가 주어진다.",
+    "imageCaption": "q12 문제 원문 대응 도형 · 원 O에 내접한 △ABC에서 AB=BC=3√5cm, AC=12cm가 주어진다.",
+    "imageSize": "full"
   },
     {
       "id": 13,
@@ -838,7 +850,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "primaryMethod": "반지름과 같은 현으로 정삼각형을 찾아 원주각30°를 만든 뒤 높이에서 목표 변을 구한다.",
-    "decisiveStep": "OA=OB=AB=6으로AOB60°,ACB30°. AH=√(36−20)=4,HC=4√3,AC=√64=8이다."
+    "decisiveStep": "OA=OB=AB=6으로AOB60°,ACB30°. AH=√(36−20)=4,HC=4√3,AC=√64=8이다.",
+    "image": "assets/images/15_신흥중_2학기_기말_중3_수학/q23-problem.svg",
+    "imageAlt": "q23 문제 원문 대응 도형 · △ABC의 외접원 반지름 6cm, AB=6cm, BH=2√5cm, AH⊥BC가 주어진다.",
+    "imageCaption": "q23 문제 원문 대응 도형 · △ABC의 외접원 반지름 6cm, AB=6cm, BH=2√5cm, AH⊥BC가 주어진다.",
+    "imageSize": "full"
   },
     {
       "id": 24,
@@ -869,7 +885,11 @@ window.examData = {
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "problemTypeKey": "PT_CIRCLE_TANGENT",
     "primaryMethod": "중심에서 현 중점으로 내린 수선을 공유하는 두 제곱식을 빼서 접선 길이를 구하고 삼각비 높이로 넓이를 계산한다.",
-    "decisiveStep": "PM6,AM2에서OP²−OA²=36−4=32. 접점직각으로PB²=32라PB4√2. 높이=PBsin30=2√2,넓이PBA=4√2이다."
+    "decisiveStep": "PM6,AM2에서OP²−OA²=36−4=32. 접점직각으로PB²=32라PB4√2. 높이=PBsin30=2√2,넓이PBA=4√2이다.",
+    "image": "assets/images/15_신흥중_2학기_기말_중3_수학/q24-problem.svg",
+    "imageAlt": "q24 문제 원문 대응 도형 · 접선 PB와 할선 PCA, ∠BPC=30°, PA=4cm, AC=4cm에서 △PBA의 넓이를 구한다.",
+    "imageCaption": "q24 문제 원문 대응 도형 · 접선 PB와 할선 PCA, ∠BPC=30°, PA=4cm, AC=4cm에서 △PBA의 넓이를 구한다.",
+    "imageSize": "full"
   }
   ]
 };

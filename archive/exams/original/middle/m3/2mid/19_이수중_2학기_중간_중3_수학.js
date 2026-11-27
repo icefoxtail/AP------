@@ -984,7 +984,11 @@ window.questionBank = [
     "rpmL3": null,
     "rpmL4": null,
     "primaryMethod": "모눈 외곽4×4정사각형에서 목표삼각형 바깥의 세 직각삼각형 넓이6·4·1을 빼5를 구한다.",
-    "decisiveStep": "모눈 외곽4×4정사각형에서 목표삼각형 바깥의 세 직각삼각형 넓이6·4·1을 빼5를 구한다."
+    "decisiveStep": "모눈 외곽4×4정사각형에서 목표삼각형 바깥의 세 직각삼각형 넓이6·4·1을 빼5를 구한다.",
+    "image": "assets/images/19_이수중_2학기_중간_중3_수학/q16-problem.svg",
+    "imageAlt": "한 칸 1인 4×4 정사각 모눈에 A=(0,1), B=(2,0), C=(4,4)를 연결해 △ABC를 그린다.",
+    "imageCaption": "한 칸 1인 4×4 정사각 모눈에 A=(0,1), B=(2,0), C=(4,4)를 연결해 △ABC를 그린다.",
+    "imageSize": "full"
   },
   {
     "id": 17,

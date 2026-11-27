@@ -42,7 +42,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "꼭지각 이등분선의 수직이등분과 합동",
-    "decisiveStep": "밑변 수직이등분선 위의 점에서 두 밑변 끝까지 거리는 같지만 꼭짓점까지 거리는 정해지지 않는다."
+    "decisiveStep": "밑변 수직이등분선 위의 점에서 두 밑변 끝까지 거리는 같지만 꼭짓점까지 거리는 정해지지 않는다.",
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중2_수학/q1-solution.svg",
+    "solutionImageAlt": "이등변삼각형 ABC에서 AD는 밑변의 수직이등분선이고 P에서 B,C까지 거리가 같다",
+    "solutionImageCaption": "이등변삼각형 ABC에서 AD는 밑변의 수직이등분선이고 P에서 B,C까지 거리가 같다",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,

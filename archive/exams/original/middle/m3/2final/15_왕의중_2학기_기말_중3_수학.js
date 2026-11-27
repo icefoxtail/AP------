@@ -263,7 +263,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "대각선으로 나눈 정삼각형과 이등변삼각형의 높이를 피타고라스로 구한다.",
-    "decisiveStep": "AC=6이고 두 높이가3√3,√3이어서 넓이합12√3이다."
+    "decisiveStep": "AC=6이고 두 높이가3√3,√3이어서 넓이합12√3이다.",
+    "image": "assets/images/15_왕의중_2학기_기말_중3_수학/q7-problem.svg",
+    "imageAlt": "q7 문제 원문 대응 도형 · AB=BC=6cm, AD=DC=2√3cm, ∠B=60°, ∠D=120°인 사각형 ABCD이다.",
+    "imageCaption": "q7 문제 원문 대응 도형 · AB=BC=6cm, AD=DC=2√3cm, ∠B=60°, ∠D=120°인 사각형 ABCD이다.",
+    "imageSize": "full"
   },
     {
       "id": 8,
@@ -338,7 +342,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "외접사각형과 내접사각형의 조건을 구별하여 대각합 주장을 판단한다.",
-    "decisiveStep": "대각합180°는 내접사각형의 성질이며 외접만으로는 보장되지 않는다."
+    "decisiveStep": "대각합180°는 내접사각형의 성질이며 외접만으로는 보장되지 않는다.",
+    "image": "assets/images/15_왕의중_2학기_기말_중3_수학/q9-problem.svg",
+    "imageAlt": "q9 원문 보기 전체의 문제 도형 — 풀이 후 얻는 수치와 강조를 추가하지 않음",
+    "imageCaption": "q9 원문 보기 전체의 문제 도형 — 풀이 후 얻는 수치와 강조를 추가하지 않음",
+    "imageSize": "full"
   },
     {
       "id": 10,
@@ -376,7 +384,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_CIRCLE_TANGENT",
     "primaryMethod": "내접사각형에 접선의 대변합 성질을 적용할 수 있는지 반례로 판단한다.",
-    "decisiveStep": "1×2 직사각형은 원에 내접하지만 두 대변합이2와4로 달라③이 거짓이다."
+    "decisiveStep": "1×2 직사각형은 원에 내접하지만 두 대변합이2와4로 달라③이 거짓이다.",
+    "image": "assets/images/15_왕의중_2학기_기말_중3_수학/q10-problem.svg",
+    "imageAlt": "q10 원문 보기 전체의 문제 도형 — 풀이 후 얻는 수치와 강조를 추가하지 않음",
+    "imageCaption": "q10 원문 보기 전체의 문제 도형 — 풀이 후 얻는 수치와 강조를 추가하지 않음",
+    "imageSize": "full"
   },
     {
       "id": 11,
@@ -601,7 +613,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "같은 현에 대한 각의 같음 또는 대각합180°를 네 그림에서 확인한다.",
-    "decisiveStep": "가와 나의 숨은 각이 각각50°,30°이고 다는55°=55°, 라는85°+95°=180°이다."
+    "decisiveStep": "가와 나의 숨은 각이 각각50°,30°이고 다는55°=55°, 라는85°+95°=180°이다.",
+    "image": "assets/images/15_왕의중_2학기_기말_중3_수학/q16-problem.svg",
+    "imageAlt": "q16 원문 보기 전체의 문제 도형 — 풀이 후 얻는 수치와 강조를 추가하지 않음",
+    "imageCaption": "q16 원문 보기 전체의 문제 도형 — 풀이 후 얻는 수치와 강조를 추가하지 않음",
+    "imageSize": "full"
   },
     {
       "id": 17,
@@ -812,7 +828,11 @@ window.examData = {
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
     "primaryMethod": "수선 CH로 삼각형을45°·60° 직각삼각형으로 나누어 변과 넓이를 계산한다.",
-    "decisiveStep": "CH=BH=6, AH=2√3, AC=4√3에서 둘레와 넓이를 구한다."
+    "decisiveStep": "CH=BH=6, AH=2√3, AC=4√3에서 둘레와 넓이를 구한다.",
+    "image": "assets/images/15_왕의중_2학기_기말_중3_수학/q22-problem.svg",
+    "imageAlt": "q22 문제 원문 대응 도형 · △ABC에서 BC=6√2cm, ∠B=45°, ∠C=75°가 주어진다.",
+    "imageCaption": "q22 문제 원문 대응 도형 · △ABC에서 BC=6√2cm, ∠B=45°, ∠C=75°가 주어진다.",
+    "imageSize": "full"
   },
     {
       "id": 23,

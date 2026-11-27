@@ -378,7 +378,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "primaryMethod": "원주각30°에서 중심각60°를 구해 색칠 영역을 부채꼴과 삼각형으로 나눈다.",
-    "decisiveStep": "AOC=60°, 부채꼴넓이=3π/6=π/2. 높이CH=√3 sin60=3/2이므로 OBC넓이=3√3/4, 합이③이다."
+    "decisiveStep": "AOC=60°, 부채꼴넓이=3π/6=π/2. 높이CH=√3 sin60=3/2이므로 OBC넓이=3√3/4, 합이③이다.",
+    "image": "assets/images/16_왕의중_2학기_기말_중3_수학/q10-problem.svg",
+    "imageAlt": "반지름 √3 cm인 반원에서 ∠ABC=30°이며, 호 AC·선분 CB·지름 AB로 둘러싸인 부분만 한 가지 옅은 색으로 표시한다.",
+    "imageCaption": "반지름 √3 cm인 반원에서 ∠ABC=30°이며, 호 AC·선분 CB·지름 AB로 둘러싸인 부분만 한 가지 옅은 색으로 표시한다.",
+    "imageSize": "full"
   },
     {
       "id": 11,
@@ -639,7 +643,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "대각의 합180° 또는 같은 현을 보는 각의 동일성을 이용해 내접사각형을 판정한다.",
-    "decisiveStep": "ㄱ은 같은 현 각40°≠50°로불가. ㄴ은110+70=180, ㄷ은100+100=200, ㄹ은ABC80과ADC100의합180이므로ㄴㄹ,④이다."
+    "decisiveStep": "ㄱ은 같은 현 각40°≠50°로불가. ㄴ은110+70=180, ㄷ은100+100=200, ㄹ은ABC80과ADC100의합180이므로ㄴㄹ,④이다.",
+    "image": "assets/images/16_왕의중_2학기_기말_중3_수학/q17-problem.svg",
+    "imageAlt": "보기 ㄱ~ㄹ의 네 사각형에 제시된 40°·50°, 바깥각 70°·110°, 바깥각 80°·80°, 56°·100°·44°만 그린다.",
+    "imageCaption": "보기 ㄱ~ㄹ의 네 사각형에 제시된 40°·50°, 바깥각 70°·110°, 바깥각 80°·80°, 56°·100°·44°만 그린다.",
+    "imageSize": "full"
   },
     {
       "id": 18,
