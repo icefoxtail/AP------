@@ -32,10 +32,10 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q1-solution-v2.svg",
-    "solutionImageSize": "medium",
+    "solutionImageSize": "full",
     "solutionImageLayout": "fullwidth",
-    "solutionImageAlt": "해설 그림: 원 O에서 길이 16 cm인 두 현에 내린 수선이 각 현을 8 cm씩 이등분하고, 반지름 10 cm와 수선 x, 현의 절반 8 cm가 직각삼각형을 이룬다.",
-    "solutionImageCaption": "중심 O에서 현에 내린 수선은 현을 이등분하므로 현의 절반은 8 cm이고, 반지름 10 cm를 빗변으로 하는 직각삼각형에서 x²+8²=10²이다. 따라서 x=6이고 정답은 ①이다."
+    "solutionImageAlt": "반지름이 10cm인 원에서 길이가 각각 16cm인 두 현의 중심 수선은 중점을 지나며 x의 값을 결정한다.",
+    "solutionImageCaption": "반지름이 10cm인 원에서 길이가 각각 16cm인 두 현의 중심 수선은 중점을 지나며 x의 값을 결정한다."
   ,
     "templateKey": "TM_CIRCLE_CHORD_LENGTH",
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
@@ -188,10 +188,10 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q4-solution-v2.svg",
-    "solutionImageSize": "medium",
+    "solutionImageSize": "full",
     "solutionImageLayout": "fullwidth",
-    "solutionImageAlt": "해설 그림: 점 P에서 원 O에 그은 접선 PA, PB와 접점의 직각 표시, ∠P=50°, 파랗게 칠한 사각형 OAPB, 호 AB(주황)를 보는 중심각 130°와 원주각 x를 나타낸 그림.",
-    "solutionImageCaption": "접점에서 반지름과 접선이 수직이므로 ∠OAP=∠OBP=90°이고 사각형 OAPB에서 ∠AOB=360°−90°−90°−50°=130°이다. ∠x는 호 AB를 보는 원주각이므로 x=130°÷2=65°이다. 정답 ④."
+    "solutionImageAlt": "접선 PA, PB의 두 직각과 끼인각 50°를 이용하면 중심각 AOB는 130°, 원주각 x는 그 절반이다.",
+    "solutionImageCaption": "접선 PA, PB의 두 직각과 끼인각 50°를 이용하면 중심각 AOB는 130°, 원주각 x는 그 절반이다."
   ,
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
@@ -240,10 +240,10 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q5-solution-v2.svg",
-    "solutionImageSize": "medium",
+    "solutionImageSize": "full",
     "solutionImageLayout": "fullwidth",
-    "solutionImageAlt": "해설 그림: 원 O의 지름 AB에서 각 AOC=62도, 각 BOC=118도이다. OB와 OC는 같은 반지름이어서 같은 색이고 삼각형 BOC의 두 밑각도 같은 색이다.",
-    "solutionImageCaption": "∠BOC=180°−62°=118°이고 OB=OC이므로 두 밑각은 같다. ∠BCO=(180°−118°)÷2=31°이므로 정답은 ⑤이다."
+    "solutionImageAlt": "AB가 지름이고 AOC가 62°이므로 BOC는 118°, 이등변삼각형 BOC의 밑각 BCO는 31°이다.",
+    "solutionImageCaption": "AB가 지름이고 AOC가 62°이므로 BOC는 118°, 이등변삼각형 BOC의 밑각 BCO는 31°이다."
   ,
     "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
     "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
@@ -1040,9 +1040,9 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q22-solution-v2.svg",
-    "solutionImageSize": "medium",
-    "solutionImageAlt": "해설 그림: 원 O에 내접하는 육각형 ABCDEF. 여섯 호를 a~f로 나타내고 원을 a+b(파랑, ∠B 쪽), c+d(주황, ∠D 쪽), e+f(초록, ∠F 쪽) 세 부분으로 나누었다. ∠B가 보는 호는 파랑을 뺀 나머지 두 색, ∠D는 주황을 뺀 나머지 두 색, ∠F는 초록을 뺀 나머지 두 색이다.",
-    "solutionImageCaption": "2∠B=c+d+e+f, 2∠D=e+f+a+b, 2∠F=a+b+c+d를 더하면 2(∠B+∠D+∠F)=2(a+b+c+d+e+f)=2×360°이므로 ∠B+∠D+∠F=360°"
+    "solutionImageSize": "full",
+    "solutionImageAlt": "원에 내접하는 육각형에서 B,D,F의 원주각을 읽고, 여섯 호 a,b,c,d,e,f가 각각 두 번 쓰임을 확인한다.",
+    "solutionImageCaption": "원에 내접하는 육각형에서 B,D,F의 원주각을 읽고, 여섯 호 a,b,c,d,e,f가 각각 두 번 쓰임을 확인한다."
   ,
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",

@@ -924,15 +924,15 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "읽기 점수를 $x$, 듣기 점수를 $y$라 하자.\n두 점수의 평균이 $7$점 이상이므로\n$\\dfrac{x+y}{2}\\ge7$\n$x+y\\ge14$이다.\n따라서 산점도에서 직선 $x+y=14$ 위 또는 그 오른쪽 위에 있는 점을 세면 된다.\n그러한 점은 $(6,8),(7,8),(8,9),(8,10),(9,5),(9,8),(10,9)$의 $7$개이고 전체 응시자는 $15$명이므로 구하는 비율은\n$\\dfrac{7}{15}$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/24_신흥중_2학기_기말_중3_기출/q20.png",
+    "image": "assets/images/24_신흥중_2학기_기말_중3_기출/q20-problem.svg",
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/24_신흥중_2학기_기말_중3_기출/q20-solution.svg",
-    "solutionImageAlt": "해설 그림: 읽기 점수(가로)와 듣기 점수(세로)의 산점도 15개 점에 점선 x+y=14와 그 위쪽 영역을 옅게 칠한 그림. 영역 안과 선 위의 7개 점 (6,8), (7,8), (8,9), (8,10), (9,5), (9,8), (10,9)에 동그라미가 쳐져 있다.",
-    "solutionImageCaption": "평균이 7점 이상이면 x+y≥14이므로 직선 x+y=14 위 또는 그 위쪽의 점 7개를 센다. 따라서 비율은 7/15이고 정답은 ③이다.",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "원본 산점도의 모든 좌표·축 눈금·축 제목 보존: 읽기와 듣기 15명 중 합 14점 이상이 7명.",
+    "solutionImageCaption": "원본 산점도의 모든 좌표·축 눈금·축 제목 보존: 읽기와 듣기 15명 중 합 14점 이상이 7명.",
+    "solutionImageSize": "full"
   ,
     "problemTypeKey": "",
     "templateKey": "",
@@ -944,7 +944,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "두 점수의 평균7점 이상을 x+y≥14로 바꾸어 그 선 위와 위쪽의 점을 세고 전체15명으로 나눈다.",
-    "decisiveStep": "두 점수의 평균7점 이상을 x+y≥14로 바꾸어 그 선 위와 위쪽의 점을 세고 전체15명으로 나눈다."
+    "decisiveStep": "두 점수의 평균7점 이상을 x+y≥14로 바꾸어 그 선 위와 위쪽의 점을 세고 전체15명으로 나눈다.",
+    "imageAlt": "원본 산점도의 모든 좌표·축 눈금·축 제목 보존: 읽기와 듣기 15명 중 합 14점 이상이 7명.",
+    "imageCaption": "원본 산점도의 모든 좌표·축 눈금·축 제목 보존: 읽기와 듣기 15명 중 합 14점 이상이 7명.",
+    "imageSize": "full"
   },
   {
     "id": 21,
@@ -967,7 +970,7 @@ window.questionBank = [
     "answer": "$75+25\\sqrt3$",
     "solution": "호의 길이의 비는 같은 원에서 중심각의 크기의 비와 같다.\n$5+4+3=12$이므로\n$\\angle AOB=360^\\circ\\times\\dfrac{5}{12}=150^\\circ$\n$\\angle BOC=360^\\circ\\times\\dfrac{4}{12}=120^\\circ$\n$\\angle COA=360^\\circ\\times\\dfrac{3}{12}=90^\\circ$이다.\n$\\triangle AOB$에서 $B$에서 직선 $OA$에 내린 높이는 $5$이므로\n$[\\triangle AOB]=\\dfrac12\\times10\\times5=25$이다.\n$\\triangle BOC$의 중심각을 반으로 나누면 $60^\\circ$인 직각삼각형이 된다. 따라서 $BC=10\\sqrt3$이고 $O$에서 $BC$에 내린 높이는 $5$이므로\n$[\\triangle BOC]=\\dfrac12\\times10\\sqrt3\\times5=25\\sqrt3$이다.\n$\\triangle COA$는 두 직각변의 길이가 모두 $10$이므로\n$[\\triangle COA]=\\dfrac12\\times10\\times10=50$이다.\n따라서\n$[\\triangle ABC]=25+25\\sqrt3+50=75+25\\sqrt3$이다.",
     "solutionImage": "assets/images/24_신흥중_2학기_기말_중3_기출/q21-solution-v2.svg",
-    "image": "assets/images/24_신흥중_2학기_기말_중3_기출/q21.png",
+    "image": "assets/images/24_신흥중_2학기_기말_중3_기출/q21-problem.svg",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
@@ -989,7 +992,10 @@ window.questionBank = [
     "decisiveStep": "호의 비를 세 중심각으로 배분하고 중심과 꼭짓점을 이은 삼각형들의 높이·현을 특수각의 삼각비로 복원하여 세 넓이를 합한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원본 문제 재설계: 반지름10인 원의 세 호 AB:BC:CA=5:4:3이고 삼각형 ABC의 넓이를 구한다 — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageCaption": "원본 문제 재설계: 반지름10인 원의 세 호 AB:BC:CA=5:4:3이고 삼각형 ABC의 넓이를 구한다 — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageSize": "full"
   },
   {
     "id": 22,
@@ -1012,7 +1018,7 @@ window.questionBank = [
     "answer": "$72^\\circ$",
     "solution": "$\\angle BDC=54^\\circ$는 호 $\\wideparen{BC}$를 보는 원주각이므로 중심각은\n$\\angle BOC=2\\times54^\\circ=108^\\circ$이다.\n$AB$, $AC$는 각각 점 $B$, $C$에서의 접선이므로 반지름과 수직이다.\n따라서\n$\\angle ABO=90^\\circ$, $\\angle ACO=90^\\circ$이다.\n사각형 $ABOC$의 내각의 합은 $360^\\circ$이므로\n$\\angle BAC=360^\\circ-90^\\circ-90^\\circ-108^\\circ$\n$=72^\\circ$이다.\n따라서 구하는 각의 크기는 $72^\\circ$이다.",
     "solutionImage": "assets/images/24_신흥중_2학기_기말_중3_기출/q22-solution-v2.svg",
-    "image": "assets/images/24_신흥중_2학기_기말_중3_기출/q22.png",
+    "image": "assets/images/24_신흥중_2학기_기말_중3_기출/q22-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -1034,7 +1040,10 @@ window.questionBank = [
     "decisiveStep": "54도 원주각을108도 중심각으로 바꾸고 접점의 두 직각을 사각형 내각합에서 빼 두 접선의 끼인각을 구한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원본 문제 재설계: 원 밖 점 A의 접선 AB·AC, 원 위 D, ∠BDC=54°에서 ∠BAC를 구한다 — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageCaption": "원본 문제 재설계: 원 밖 점 A의 접선 AB·AC, 원 위 D, ∠BDC=54°에서 ∠BAC를 구한다 — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageSize": "full"
   },
   {
     "id": 23,
@@ -1061,9 +1070,9 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/24_신흥중_2학기_기말_중3_기출/q23-solution.svg",
-    "solutionImageAlt": "해설 그림: 세 개의 점도표. (1) 책의 수는 30권이 가로축을 끊은 뒤 멀리 떨어져 있고 평균 점선이 중앙값 점선보다 오른쪽에 있다. (2) USB 용량은 점이 가장 높이 쌓인 값이 파란색이다. (3) 통학 시간은 점들이 고르게 모여 있고 평균 점선이 가운데에 있다.",
-    "solutionImageCaption": "점 하나가 자료 하나이다. (1) 30권이 다른 값보다 매우 커서 평균이 중앙값보다 크게 오른쪽으로 끌려가므로 중앙값이 특징을 더 잘 나타낸다. 작은 순서로 3, 3, 4, 5, 5, 6, 7, 7, 8, 30에서 가운데 두 값 5, 6의 평균이 중앙값이다. (2) 파란 점이 가장 많이 나타나는 값(5번)이므로 최빈값이 적절하다. (3) 동떨어진 값이 없어 모든 자료를 반영하는 평균이 적절하고, 합 120을 10으로 나눈다. 따라서 (1) 중앙값 5.5권, (2) 최빈값 4GB, (3) 평균 12분이다.",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "원문 대푯값 비교의 모든 자료를 점 하나당 변량 하나로 보존한 비교 그림.",
+    "solutionImageCaption": "원문 대푯값 비교의 모든 자료를 점 하나당 변량 하나로 보존한 비교 그림.",
+    "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
     "templateKey": "",
@@ -1075,7 +1084,8 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "극단값이 있는 책 자료에는 중앙값, 자주 쓰는 USB용량에는 최빈값, 극단값 없는 통학시간에는 평균을 선택해 각각 계산하고 이유를 설명한다.",
-    "decisiveStep": "극단값이 있는 책 자료에는 중앙값, 자주 쓰는 USB용량에는 최빈값, 극단값 없는 통학시간에는 평균을 선택해 각각 계산하고 이유를 설명한다."
+    "decisiveStep": "극단값이 있는 책 자료에는 중앙값, 자주 쓰는 USB용량에는 최빈값, 극단값 없는 통학시간에는 평균을 선택해 각각 계산하고 이유를 설명한다.",
+    "solutionImageScale": 94
   },
   {
     "id": 24,
