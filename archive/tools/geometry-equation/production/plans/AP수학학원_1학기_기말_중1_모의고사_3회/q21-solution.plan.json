@@ -1,0 +1,288 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "Q",
+    "R",
+    "S",
+    "E",
+    "F",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQR",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    },
+    {
+      "id": "sRS",
+      "refs": [
+        "R",
+        "S"
+      ]
+    },
+    {
+      "id": "sSP",
+      "refs": [
+        "S",
+        "P"
+      ]
+    },
+    {
+      "id": "sGF",
+      "refs": [
+        "G",
+        "F"
+      ]
+    },
+    {
+      "id": "sFE",
+      "refs": [
+        "F",
+        "E"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "hiddenPointNames": [
+    "P",
+    "Q",
+    "R",
+    "S",
+    "E",
+    "F",
+    "G"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dTop",
+        "from": "S",
+        "to": "R",
+        "label": "9",
+        "unit": "cm",
+        "side": "ABOVE",
+        "value": "9",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dRight",
+        "from": "Q",
+        "to": "R",
+        "label": "9",
+        "unit": "cm",
+        "side": "RIGHT",
+        "value": "9",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dX",
+        "from": "E",
+        "to": "Q",
+        "label": "x",
+        "unit": "cm",
+        "side": "BELOW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dY",
+        "from": "G",
+        "to": "S",
+        "label": "2x-3",
+        "unit": "cm",
+        "side": "LEFT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "shaded",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "P",
+              "E",
+              "F",
+              "G"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 700,
+    "height": 540
+  },
+  "caption": "색칠한 직사각형의 가로는 9-x, 세로는 9-(2x-3)이므로 둘레는 42-6x cm이다.",
+  "accessibilityDescription": "색칠한 직사각형의 가로는 9-x, 세로는 9-(2x-3)이므로 둘레는 42-6x cm이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "한 변이 9cm인 정사각형에서 오른쪽으로 xcm, 위쪽으로 (2x-3)cm를 잘라내고 왼쪽 아래에 남은 직사각형을 색칠한다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "9cm의 두 외곽 치수, x와 2x-3의 잘린 길이, 남은 사각형 영역의 회색 면만 강조한다."
+  ]
+}

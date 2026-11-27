@@ -1,0 +1,198 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "rational",
+              "numerator": "25",
+              "denominator": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "T"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sAT",
+      "refs": [
+        "A",
+        "T"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "hiddenPointNames": [
+    "T"
+  ],
+  "hiddenPointStyle": "NONE",
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "O",
+        "B",
+        "A"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dB",
+        "from": "O",
+        "to": "B",
+        "label": "8",
+        "side": "BELOW",
+        "value": "8",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "regions": [
+      {
+        "id": "area",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "O",
+              "A",
+              "B"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": [
+      5
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 700,
+    "height": 540
+  },
+  "caption": "높이 5와 넓이 20으로 OB=8이고, A=(8,5)이므로 비례상수는 5/8이다.",
+  "accessibilityDescription": "높이 5와 넓이 20으로 OB=8이고, A=(8,5)이므로 비례상수는 5/8이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A는 y=ax 위의 점, y좌표는 5이고 B는 x축에 내린 수선의 발, 삼각형 AOB의 넓이는 20이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "axisTickValues"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정비례 그래프 위 A, 수선 AB와 직각 표식, 삼각형의 영역, y=5 눈금을 표시한다."
+  ]
+}

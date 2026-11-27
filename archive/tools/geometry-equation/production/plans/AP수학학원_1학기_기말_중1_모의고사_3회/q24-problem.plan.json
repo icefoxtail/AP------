@@ -1,0 +1,136 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "200"
+        ],
+        "domain": [
+          "0",
+          "2"
+        ],
+        "color": "BLUE",
+        "hideLabel": true
+      },
+      {
+        "id": "f2",
+        "kind": "LINE",
+        "coefficients": [
+          "600",
+          "-100"
+        ],
+        "domain": [
+          "2",
+          "3"
+        ],
+        "color": "BLUE",
+        "hideLabel": true
+      },
+      {
+        "id": "f3",
+        "kind": "LINE",
+        "coefficients": [
+          "300",
+          "0"
+        ],
+        "domain": [
+          "3",
+          "4"
+        ],
+        "color": "BLUE",
+        "hideLabel": true
+      },
+      {
+        "id": "f4",
+        "kind": "LINE",
+        "coefficients": [
+          "-900",
+          "300"
+        ],
+        "domain": [
+          "4",
+          "5"
+        ],
+        "color": "BLUE",
+        "hideLabel": true
+      },
+      {
+        "id": "f5",
+        "kind": "LINE",
+        "coefficients": [
+          "3800/3",
+          "-400/3"
+        ],
+        "domain": [
+          "5",
+          "8"
+        ],
+        "color": "BLUE",
+        "hideLabel": true
+      },
+      {
+        "id": "f6",
+        "kind": "LINE",
+        "coefficients": [
+          "-1000",
+          "150"
+        ],
+        "domain": [
+          "8",
+          "10"
+        ],
+        "color": "BLUE",
+        "hideLabel": true
+      }
+    ],
+    "viewport": [
+      0,
+      10.5,
+      0,
+      650
+    ],
+    "axisTickValues": {
+      "x": [
+        "2",
+        "4",
+        "6",
+        "8",
+        "10"
+      ],
+      "y": [
+        "200",
+        "400",
+        "600"
+      ]
+    },
+    "axisScale": {
+      "x": 1,
+      "y": "1/60"
+    },
+    "axisTitles": {
+      "x": "시간(분)",
+      "y": "거리(m)"
+    }
+  },
+  "caption": "다정이의 출발점에서의 거리가 시간 0~10분에 따라 변하는 여섯 조각의 그래프이다.",
+  "accessibilityDescription": "다정이의 출발점에서의 거리가 시간 0~10분에 따라 변하는 여섯 조각의 그래프이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "시간-거리 그래프의 꼭짓점은 (0,0),(2,400),(3,300),(4,300),(5,600),(8,200),(10,500)으로 구간마다 직선으로 이어진다.",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.axisTickValues",
+        "graphPlan.overlays"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 6개 선분·정차 수평선·큰·작은 꺾임 4개·거리 눈금 200,400,600을 표시한다."
+  ]
+}

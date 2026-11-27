@@ -1,0 +1,74 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "5/3"
+        ],
+        "domain": [
+          "-3",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "y=5x/3"
+      }
+    ],
+    "viewport": [
+      -3,
+      4,
+      -5,
+      7
+    ],
+    "axisTickValues": {
+      "x": [
+        "3"
+      ],
+      "y": [
+        "5"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "3",
+          "y": "5",
+          "coordinates": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "hP",
+          "from": "P",
+          "axis": "x"
+        },
+        {
+          "id": "vP",
+          "from": "P",
+          "axis": "y"
+        }
+      ]
+    }
+  },
+  "caption": "정비례 y=5x/3의 직선은 원점과 (3,5)를 지나므로 ⑤의 기울기와 일치한다.",
+  "accessibilityDescription": "정비례 y=5x/3의 직선은 원점과 (3,5)를 지나므로 ⑤의 기울기와 일치한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=(5/3)x에 x=3을 대입하면 y=5이다.",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.axisTickValues",
+        "graphPlan.overlays"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원점을 지나는 직선과 (3,5)의 보조점·좌표 점선."
+  ]
+}
