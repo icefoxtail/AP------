@@ -1,0 +1,43 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{ "coefficients": ["-28", "11", "-1"] }],
+    "breakpoints": [],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "formula": "-(x-4)(x-7)",
+    "referenceCurves": [{
+      "id": "f",
+      "coefficients": ["-10", "7", "-1"],
+      "intersectionX": ["9/2"]
+    }],
+    "domain": [0, 9],
+    "viewport": [0, 9, -7, 4],
+    "requiredPoints": [
+      { "id": "S1", "x": 4, "y": 0, "marker": "NONE" },
+      { "id": "S2", "x": 7, "y": 0, "marker": "NONE" },
+      { "id": "V", "x": "11/2", "y": "9/4", "marker": "NONE" },
+      { "id": "Vf", "x": "7/2", "y": "9/4", "marker": "NONE" }
+    ],
+    "axisTickValues": { "x": [2, 4, 5, 7], "y": [] },
+    "overlays": {
+      "points": [
+        { "id": "R4", "x": "4", "y": "0" },
+        { "id": "R7", "x": "7", "y": "0" },
+        { "id": "R2", "x": "2", "y": "0" },
+        { "id": "R5", "x": "5", "y": "0" }
+      ],
+      "segments": [
+        { "id": "shift2", "from": "R2", "to": "R4", "dashed": true }
+      ]
+    }
+  },
+  "sampleNote": "함수의 계수를 -1로 둔 예시이며 x절편의 이동량만 모든 경우에 같다.",
+  "caption": "x절편 2, 5가 오른쪽으로 a=2만큼 이동하여 f(x-2)=0의 두 근이 4, 7이 된다. 두 곡선은 이동 관계를 보이기 위한 축척 예시다.",
+  "accessibilityDescription": "원래 포물선의 x절편 2, 5와 오른쪽으로 2만큼 평행이동한 포물선의 x절편 4, 7을 한 좌표축에서 비교한다. 면은 채우지 않았다.",
+  "sourceConditions": [
+    { "id": "S1", "condition": "f(x)=0의 근은 2와 5이다.", "mappedTo": ["graphPlan.referenceCurves", "graphPlan.overlays.points"] },
+    { "id": "S2", "condition": "(a+2)(a+5)=a²+24에서 a=2이고, f(x-a)=0의 근은 4와 7이다.", "mappedTo": ["graphPlan.pieces", "graphPlan.overlays.points", "graphPlan.overlays.segments"] }
+  ],
+  "newVisualInformation": ["x절편의 두 쌍과 +2의 이동 대응을 점선으로 표시하여 식의 치환을 시각적으로 연결한다."]
+}

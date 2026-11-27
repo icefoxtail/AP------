@@ -1,0 +1,140 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "12",
+          "-8",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "vertex",
+        "x": 4,
+        "y": -4,
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "2",
+          "y": "0"
+        },
+        {
+          "id": "B",
+          "x": "6",
+          "y": "0"
+        },
+        {
+          "id": "P",
+          "x": "4",
+          "y": "-4"
+        },
+        {
+          "id": "Q",
+          "x": "8",
+          "y": "12"
+        },
+        {
+          "id": "R",
+          "x": "8",
+          "y": "0"
+        }
+      ],
+      "lines": [
+        {
+          "id": "aq",
+          "slope": "2",
+          "intercept": "-4",
+          "label": "AQ",
+          "color": "BLUE"
+        },
+        {
+          "id": "pb",
+          "slope": "2",
+          "intercept": "-12",
+          "label": "PB",
+          "color": "BLUE"
+        }
+      ],
+      "segments": [
+        {
+          "id": "qr",
+          "from": "Q",
+          "to": "R",
+          "length": true
+        },
+        {
+          "id": "br",
+          "from": "B",
+          "to": "R",
+          "length": true
+        }
+      ],
+      "rightAngles": [
+        {
+          "at": "R",
+          "from": [
+            "Q",
+            "B"
+          ]
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "A": "A",
+    "B": "B",
+    "P": "P",
+    "Q": "Q",
+    "R": "R"
+  },
+  "sampleNote": "a=6 예시",
+  "caption": "해설에서 m=2인 경우: BR=2, QR=12, 직각삼각형 BQR의 넓이가 12이다.",
+  "accessibilityDescription": "포물선의 점 A,B,P,Q와 수선의 발 R, 평행한 두 직선, BR 길이 2와 QR 길이 12, R의 직각표식.",
+  "sourceConditions": [
+    {
+      "id": "A1",
+      "condition": "A=(2,0), B=(a,0), P는 포물선의 꼭짓점이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.overlays.points"
+      ]
+    },
+    {
+      "id": "A2",
+      "condition": "AQ∥PB이고 R은 Q에서 x축에 내린 수선의 발이다.",
+      "mappedTo": [
+        "graphPlan.overlays.lines",
+        "graphPlan.overlays.segments",
+        "graphPlan.overlays.rightAngles"
+      ]
+    },
+    {
+      "id": "A3",
+      "condition": "m=2이면 a=6, Q=(8,12), BR=2, QR=12이므로 넓이가 12이다.",
+      "mappedTo": [
+        "graphPlan.overlays.points",
+        "graphPlan.overlays.segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 평행선의 기울기가 같고 직각삼각형 BQR에서 밑변과 높이로 넓이를 계산한다."
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-2",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-4",
+          "0",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "-2",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-2",
+        "y": "0"
+      },
+      {
+        "x": "1",
+        "y": "-3"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "h",
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": -2,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 0,
+        "y": -4
+      },
+      {
+        "id": "R",
+        "x": 1,
+        "y": -3
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        -2,
+        1
+      ],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "mcase",
+          "slope": "-5/2",
+          "intercept": "-5",
+          "label": "y=-5x/2-5"
+        },
+        {
+          "id": "bL",
+          "x": "-2",
+          "style": "DASHED"
+        },
+        {
+          "id": "bR",
+          "x": "1",
+          "style": "DASHED"
+        }
+      ],
+      "points": [
+        {
+          "id": "I1",
+          "x": "-2",
+          "y": "0"
+        },
+        {
+          "id": "I2",
+          "x": "-1/2",
+          "y": "-15/4"
+        },
+        {
+          "id": "I3",
+          "x": "5/2",
+          "y": "-45/4"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "L": "L",
+    "V": "V",
+    "R": "R",
+    "I1": "A",
+    "I2": "B",
+    "I3": "C"
+  },
+  "caption": "m=−5/2일 때 세 구간의 교점은 x=−2, −1/2, 5/2의 세 개다. x=−2는 바깥 구간에 포함된다.",
+  "accessibilityDescription": "구간별 함수 y=h(x)와 직선 y=−5x/2−5가 세 곳에서 만나고, x=−2와 x=1의 경계가 점선으로 표시된다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "x≤−2 또는 x≥1에서 h=−x²−2x, −2<x<1에서 h=x²−4이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.breakpoints",
+        "graphPlan.sourceDomain"
+      ]
+    },
+    {
+      "id": "S2",
+      "condition": "경계값은 h(−2)=0, h(1)=−3이며 가운데 곡선의 꼭짓점은 (0,−4)이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.breakpoints"
+      ]
+    },
+    {
+      "id": "S3",
+      "condition": "m=−5/2일 때 바깥 구간의 교점 x=−2,5/2와 안쪽 구간의 교점 x=−1/2만 센다.",
+      "mappedTo": [
+        "graphPlan.overlays.lines",
+        "graphPlan.overlays.points"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "각 구간의 경계, m=−5/2의 직선, 유효한 세 교점을 실제 좌표값과 함께 그린다."
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "(x-2)^2-3",
+    "domain": [
+      -3,
+      7
+    ],
+    "viewport": [
+      -3,
+      7,
+      -4,
+      15
+    ],
+    "requiredPoints": [
+      {
+        "id": "Lmax",
+        "x": -2,
+        "y": 13,
+        "marker": "NONE"
+      },
+      {
+        "id": "Lmin",
+        "x": 0,
+        "y": 1,
+        "marker": "NONE"
+      },
+      {
+        "id": "V",
+        "x": 2,
+        "y": -3
+      },
+      {
+        "id": "Rmin",
+        "x": 4,
+        "y": 1,
+        "marker": "NONE"
+      },
+      {
+        "id": "Rmax",
+        "x": 6,
+        "y": 13,
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [-2, 4, 6],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {"id":"A","curveX":"-2"},
+        {"id":"B","curveX":"0"},
+        {"id":"C","curveX":"4"},
+        {"id":"D","curveX":"6"}
+      ],
+      "guides": [
+        {
+          "id": "gl",
+          "from": "A",
+          "axis": "x"
+        },
+        {
+          "id": "gl2",
+          "from": "B",
+          "axis": "x"
+        },
+        {
+          "id": "gr",
+          "from": "C",
+          "axis": "x"
+        },
+        {
+          "id": "gr2",
+          "from": "D",
+          "axis": "x"
+        }
+      ]
+    }
+  },
+  "pointNames": {"V":"V"},
+  "caption": "조건을 만족하는 두 구간은 [−2,0]과 [4,6]이다. 각 구간에서 최소 1, 최대 13을 갖는다.",
+  "accessibilityDescription": "포물선 꼭짓점 V(2,-3), 왼쪽 구간의 끝점 (-2,13),(0,1), 오른쪽 구간의 끝점 (4,1),(6,13)이 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "f(x)=(x−2)^2−3이고 k≤x≤k+2에서 최댓값 13, 최솟값 1이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.requiredPoints",
+        "graphPlan.overlays.guides"
+      ]
+    },
+    {
+      "id": "S2",
+      "condition": "가능한 두 구간의 왼쪽 끝은 k=−2, k=4이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 후보 구간의 끝점과 꼭짓점을 하나의 동일 좌표계에서 표시하고 끝점의 x좌표를 점선으로 가리킨다."
+  ]
+}

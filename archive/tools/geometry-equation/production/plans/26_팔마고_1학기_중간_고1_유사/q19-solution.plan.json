@@ -1,0 +1,150 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "abac",
+        "count": 1,
+        "segments": [
+          "AB",
+          "CA"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lab",
+        "ownerSegment": "AB",
+        "text": "c"
+      },
+      {
+        "id": "lbc",
+        "ownerSegment": "BC",
+        "text": "a"
+      },
+      {
+        "id": "lca",
+        "ownerSegment": "CA",
+        "text": "b"
+      }
+    ]
+  },
+  "caption": "(b−c)(ab+ac+bc)=0에서 b=c이므로 AB와 AC가 같은 이등변삼각형이다. 길이 5,5,6은 모양 예시다.",
+  "accessibilityDescription": "삼각형 ABC의 밑변 BC에는 a, 같은 길이인 변 AB와 AC에는 각각 c,b가 표시되고 두 변에 동일한 길이 눈금이 있다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "BC=a, CA=b, AB=c이고 모든 변의 길이가 양수다.",
+      "mappedTo": [
+        "displaySegments",
+        "planeMarks.expressionLabels"
+      ]
+    },
+    {
+      "id": "S2",
+      "condition": "b=c이므로 AB=AC이다.",
+      "mappedTo": [
+        "planeMarks.equalLengths",
+        "mathPlan.nodes"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "AB와 AC의 같은 길이 표시를 실제 선분에 표시하고 세 변의 문자 라벨을 각 선분에 결속한다."
+  ]
+}

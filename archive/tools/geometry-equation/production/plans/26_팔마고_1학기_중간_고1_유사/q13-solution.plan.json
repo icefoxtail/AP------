@@ -1,0 +1,295 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "11"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "11"
+            },
+            {
+              "kind": "integer",
+              "value": "11"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "11"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "23"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "23"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H"
+  ],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "s8",
+      "refs": [
+        "H",
+        "E"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 650,
+    "height": 380
+  },
+  "rightAngles": [
+    {
+      "id": "ra1",
+      "refs": ["D", "A", "B"]
+    },
+    {
+      "id": "ra2",
+      "refs": ["H", "E", "F"]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l11",
+        "ownerSegment": "s1",
+        "text": "11"
+      },
+      {
+        "id": "l7",
+        "ownerSegment": "s5",
+        "text": "7"
+      }
+    ]
+  },
+  "caption": "철사 72 cm로 만든 두 정사각형의 한 변은 각각 11 cm, 7 cm이며 면 내부는 칠하지 않았다.",
+  "accessibilityDescription": "변의 길이 11 cm인 큰 정사각형과 7 cm인 작은 정사각형이 각각 흰 바탕의 윤곽선, 직각표식, 길이 라벨로 나타나 있다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "4a+4b=72, a²+b²=170, a>b에서 a=11, b=7이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "planeMarks.expressionLabels"
+      ]
+    },
+    {
+      "id": "S2",
+      "condition": "두 도형은 모두 정사각형이다.",
+      "mappedTo": [
+        "displaySegments",
+        "rightAngles"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "각 정사각형의 네 변과 직각, 유도된 한 변의 길이 11과 7을 그림 자체에서 읽을 수 있다."
+  ]
+}
