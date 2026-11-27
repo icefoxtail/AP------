@@ -823,8 +823,8 @@ window.questionBank = [
     "primaryMethod": "두 배수 집합의 공통부분 제외",
     "decisiveStep": "2배수6개와3배수4개에서6배수2개 중복을 뺀다.",
     "solutionImage": "assets/images/22_풍덕중_2학기_기말_중2_기출/q15-solution.svg",
-    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
-    "solutionImageCaption": "가운데 합집합에는 서로 다른 카드 번호 8개를 한 번씩 적었다. 양쪽에서 6과 12로 화살표가 겹쳐 들어오므로 중복 2개를 빼야 한다. 6+4−2=8.",
+    "solutionImageAlt": "1부터 12까지의 카드에서 2의 배수와 3의 배수를 겹치는 두 집합으로 나타내며, 공통원소 6·12를 한 번만 세어 합집합은 8개다.",
+    "solutionImageCaption": "1부터 12까지의 카드에서 2의 배수와 3의 배수를 겹치는 두 집합으로 나타내며, 공통원소 6·12를 한 번만 세어 합집합은 8개다.",
     "solutionImageSize": "full"
   },
   {
@@ -1139,8 +1139,8 @@ window.questionBank = [
     "primaryMethod": "중단 점수 이후 종료 경로와 확률 배분",
     "decisiveStep": "한 판 후와 두 판 후 승리 경로를 더해 승리확률대로 상금을 나눈다.",
     "solutionImage": "assets/images/22_풍덕중_2학기_기말_중2_기출/q21-solution.svg",
-    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
-    "solutionImageCaption": "A가 다음 판에 바로 이기면 확률은 1/2이고, B가 이긴 뒤 그 다음 판에 A가 이기면 1/2×1/2=1/4이다. 따라서 A가 이길 확률은 1/2+1/4=3/4이고, B가 이길 확률은 1-3/4=1/4이다. 상금은 A가 64×3/4=48피스톨, B가 64×1/4=16피스톨이다. 따라서 답은 (1) 3/4, (2) 1/4, (3) A는 48피스톨, B는 16피스톨이다.",
+    "solutionImageAlt": "A 즉시 승리 경로 확률 1/2, B 다음 A 승리 경로 1/4를 더해 A승 3/4이다. B가 남은 두 판을 모두 이기는 확률 1/4(동등한 분수 2/8로 표기), 최종 상금은 A 48·B 16피스톨이다.",
+    "solutionImageCaption": "A 즉시 승리 경로 확률 1/2, B 다음 A 승리 경로 1/4를 더해 A승 3/4이다. B가 남은 두 판을 모두 이기는 확률 1/4(동등한 분수 2/8로 표기), 최종 상금은 A 48·B 16피스톨이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1192,8 +1192,8 @@ window.questionBank = [
     "primaryMethod": "선두0 제외와 짝수 끝자리 분류",
     "decisiveStep": "끝자리0과2·4에서 선두선택수가 다름을 구분해 순열을 더한다.",
     "solutionImage": "assets/images/22_풍덕중_2학기_기말_중2_기출/q22-solution.svg",
-    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
-    "solutionImageCaption": "두 자리 자연수는 십의 자리 5가지와 일의 자리 5가지로 5×5=25가지이다. 세 자리 짝수에서 일의 자리가 0이면 5×4=20가지이고, 일의 자리가 2 또는 4이면 2×4×4=32가지이다. 따라서 20+32=52가지이다. 따라서 답은 (1) 25, (2) 52이다.",
+    "solutionImageAlt": "두 자리 자연수는 5×5=25개이다. 세 자리 짝수는 끝수가 0이면 5×4=20개, 끝수가 2 또는 4이면 2×4×4=32개이므로 합계 52개다.",
+    "solutionImageCaption": "두 자리 자연수는 5×5=25개이다. 세 자리 짝수는 끝수가 0이면 5×4=20개, 끝수가 2 또는 4이면 2×4×4=32개이므로 합계 52개다.",
     "solutionImageSize": "full"
   },
   {

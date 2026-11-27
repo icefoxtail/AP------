@@ -25,7 +25,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "원의 중심 $O$에서 두 현에 내린 수선의 길이가 같으므로\n두 현의 길이는 서로 같다.\n따라서 두 현을 두 변으로 갖는 삼각형은 이등변삼각형이다.\n그림의 두 밑각이 각각 $50^\\circ$이므로\n삼각형의 내각의 합에서\n$x+50^\\circ+50^\\circ=180^\\circ$이다.\n따라서\n$x=180^\\circ-100^\\circ\n=80^\\circ$이다.\n정답은 ⑤이다.",
-    "image": "assets/images/23_향림중_2학기_기말_중3_기출/q1.png",
+    "image": "assets/images/23_향림중_2학기_기말_중3_기출/q1-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
@@ -48,7 +48,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원에 내린 두 수선의 길이가 같고 왼쪽 밑각이 50°인 그림에서 꼭짓각 x를 읽는다.",
+    "imageCaption": "원에 내린 두 수선의 길이가 같고 왼쪽 밑각이 50°인 그림에서 꼭짓각 x를 읽는다.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -75,7 +78,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "$OM\\perp AB$이므로\n원의 중심에서 현에 내린 수선은 그 현을 이등분한다.\n따라서\n$AM=MB$이다.\n직각삼각형 $OAM$에서\n$OA=6$, $OM=3$이므로\n피타고라스 정리에 의해\n$AM=\\sqrt{OA^2-OM^2}$\n$=\\sqrt{6^2-3^2}$\n$=\\sqrt{27}$\n$=3\\sqrt3$이다.\n그러므로\n$AB=2AM=6\\sqrt3$이다.\n정답은 ④이다.",
-    "image": "assets/images/23_향림중_2학기_기말_중3_기출/q2.png",
+    "image": "assets/images/23_향림중_2학기_기말_중3_기출/q2-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
@@ -98,7 +101,10 @@ window.questionBank = [
     "decisiveStep": "중심에서 현에 내린 수선이 현을 이등분하므로 반현을 피타고라스로 구한 뒤 두 배 한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "반지름 6과 중심에서 현까지 거리 3, 현의 길이 x를 나타낸 문제 그림이다.",
+    "imageCaption": "반지름 6과 중심에서 현까지 거리 3, 현의 길이 x를 나타낸 문제 그림이다.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -125,7 +131,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "현 $AB$의 중점을 $M$이라 하자.\n$AB=6\\,\\mathrm{cm}$이므로\n$AM=3\\,\\mathrm{cm}$이다.\n원의 중심 $O$는 현 $AB$의 수직이등분선 위에 있으므로\n$OM\\perp AB$이다.\n원의 반지름을 $r$라 하면\n그림에서\n$CM=1\\,\\mathrm{cm}$이므로\n$OM=r-1$이다.\n직각삼각형 $OAM$에서\n$OA=r$이므로\n$r^2=(r-1)^2+3^2$이다.\n전개하면\n$r^2=r^2-2r+1+9$,\n$2r=10$,\n$r=5$이다.\n따라서 정답은 ⑤이다.",
-    "image": "assets/images/23_향림중_2학기_기말_중3_기출/q3.png",
+    "image": "assets/images/23_향림중_2학기_기말_중3_기출/q3-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
@@ -148,7 +154,10 @@ window.questionBank = [
     "decisiveStep": "현 중점과 원호 사이 높이1을 이용해 중심거리를 r−1로 표현하고 반현3과 반지름r의 피타고라스 식을 세운다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "길이 6cm인 현 AB와 높이 1cm인 원호의 모양을 나타낸 문제 그림이다.",
+    "imageCaption": "길이 6cm인 현 AB와 높이 1cm인 원호의 모양을 나타낸 문제 그림이다.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -175,7 +184,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "한 점에서 같은 원에 그은 두 접선의 길이는 같다.\n따라서\n$AD=AF=2$,\n$CF=CE=5$이다.\n또\n$BC=12$이므로\n$BE=BC-CE=12-5=7$이고\n$BD=BE=7$이다.\n\n$OD\\perp AB$이고\n$OA=3$, $AD=2$이므로\n직각삼각형 $OAD$에서\n$OD=\\sqrt{OA^2-AD^2}$\n$=\\sqrt{3^2-2^2}$\n$=\\sqrt5$이다.\n따라서 내접원의 반지름은 $\\sqrt5$이다.\n\n삼각형 $ABC$의 반둘레는\n$AD+BE+CF$\n$=2+7+5$\n$=14$이다.\n삼각형의 넓이는\n$(\\text{반둘레})\\times(\\text{내접원 반지름})$이므로\n$[ABC]=14\\sqrt5$이다.\n정답은 ②이다.",
-    "image": "assets/images/23_향림중_2학기_기말_중3_기출/q4.png",
+    "image": "assets/images/23_향림중_2학기_기말_중3_기출/q4-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
@@ -195,7 +204,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "등접선으로 반둘레14를 복원하고 접점의 직각삼각형에서 반지름√5를 구한 뒤 반둘레×반지름으로 삼각형 넓이를 구한다.",
-    "decisiveStep": "등접선으로 반둘레14를 복원하고 접점의 직각삼각형에서 반지름√5를 구한 뒤 반둘레×반지름으로 삼각형 넓이를 구한다."
+    "decisiveStep": "등접선으로 반둘레14를 복원하고 접점의 직각삼각형에서 반지름√5를 구한 뒤 반둘레×반지름으로 삼각형 넓이를 구한다.",
+    "imageAlt": "삼각형 ABC의 내접원과 길이 AD=2, CF=5, OA=3, BC=12를 표시한다.",
+    "imageCaption": "삼각형 ABC의 내접원과 길이 AD=2, CF=5, OA=3, BC=12를 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -222,7 +234,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "$OA=OC$는 같은 원의 반지름이므로\n$\\triangle AOC$는 이등변삼각형이다.\n$\\angle OAC=30^\\circ$이므로\n$\\angle OCA=30^\\circ$이고,\n$\\angle AOC=180^\\circ-30^\\circ-30^\\circ\n=120^\\circ$이다.\n따라서 호 $AC$의 중심각은 $120^\\circ$이다.\n\n접선과 현 $BC$가 이루는 각이 $54^\\circ$이므로\n같은 현 $BC$를 보는 원주각도 $54^\\circ$이다.\n따라서 호 $BC$의 중심각은\n$2\\times54^\\circ=108^\\circ$이다.\n\n작은 호 $AB$의 중심각은\n$360^\\circ-120^\\circ-108^\\circ\n=132^\\circ$이다.\n두 접선 $PA$, $PB$가 이루는 각은\n$180^\\circ-132^\\circ\n=48^\\circ$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/23_향림중_2학기_기말_중3_기출/q5.png",
+    "image": "assets/images/23_향림중_2학기_기말_중3_기출/q5-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -245,7 +257,10 @@ window.questionBank = [
     "decisiveStep": "반지름 이등변삼각형에서 호AC의 중심각120°를 얻고 접현각54°로 호BC의108°를 얻어 나머지 중심각과 두 접선 사이 각을 결정한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원에 그은 두 접선 PA, PB와 주어진 각 30°, 54°, 구하는 각 APB를 나타낸다.",
+    "imageCaption": "원에 그은 두 접선 PA, PB와 주어진 각 30°, 54°, 구하는 각 APB를 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -272,7 +287,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "$AB$가 지름이므로\n호 $AB$에 대한 중심각은 $180^\\circ$이다.\n또\n$\\angle COD=50^\\circ$이므로\n호 $CD$의 중심각은 $50^\\circ$이다.\n원 밖의 점 $P$에서 그은 두 할선이 이루는 각의 크기는\n먼 두 호와 가까운 두 호의 크기 차의 절반이다.\n따라서\n$\\angle CPD\n=\\dfrac{180^\\circ-50^\\circ}{2}$\n$=\\dfrac{130^\\circ}{2}$\n$=65^\\circ$이다.\n정답은 ④이다.",
-    "image": "assets/images/23_향림중_2학기_기말_중3_기출/q6.png",
+    "image": "assets/images/23_향림중_2학기_기말_중3_기출/q6-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -295,7 +310,10 @@ window.questionBank = [
     "decisiveStep": "지름이 정한180° 호와50° 호의 차를 두 할선이 만드는 원 밖 각의 두 배로 연결한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "지름 AB와 두 할선 PC, PD, 중심각 COD=50° 및 구하는 각 CPD를 나타낸다.",
+    "imageCaption": "지름 AB와 두 할선 PC, PD, 중심각 COD=50° 및 구하는 각 CPD를 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -322,7 +340,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "$15^\\circ$인 원주각이 보는 호의 중심각은\n$2\\times15^\\circ=30^\\circ$이다.\n그 호의 길이가 $4\\,\\mathrm{cm}$이므로\n원의 둘레를 $L$이라 하면\n$4=L\\times\\dfrac{30}{360}$이다.\n따라서\n$L=4\\times\\dfrac{360}{30}\n=48\\,\\mathrm{cm}$이다.\n\n길이가 $8\\,\\mathrm{cm}$인 호의 중심각을 $y$라 하면\n$\\dfrac{8}{48}\n=\\dfrac{y}{360}$이다.\n따라서\n$y=60^\\circ$이다.\n같은 호를 보는 원주각 $x$는\n$\\dfrac{60^\\circ}{2}\n=30^\\circ$이다.\n그러므로\n$x+y=30^\\circ+60^\\circ\n=90^\\circ$이다.\n정답은 ②이다.",
-    "image": "assets/images/23_향림중_2학기_기말_중3_기출/q7.png",
+    "image": "assets/images/23_향림중_2학기_기말_중3_기출/q7-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -345,7 +363,10 @@ window.questionBank = [
     "decisiveStep": "15° 원주각과 길이4인 호에서 원주를 정하고 길이8인 호의 중심각60° 및 같은 호의 원주각30°를 비례로 구한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "두 호 길이 4cm, 8cm와 주어진 원주각 15°, 미지 각 x와 y의 관계를 나타낸다.",
+    "imageCaption": "두 호 길이 4cm, 8cm와 주어진 원주각 15°, 미지 각 x와 y의 관계를 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -372,7 +393,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "원 안에서 두 현이 만날 때\n교점에서 생기는 각의 크기는\n마주 보는 두 호의 크기 합의 절반이다.\n$\\angle APD=80^\\circ$이므로\n호 $AD$와 호 $BC$의 중심각의 합은\n$2\\times80^\\circ\n=160^\\circ$이다.\n\n두 호의 길이의 합은\n$3\\pi+5\\pi=8\\pi$이다.\n원의 반지름을 $r$라 하면\n원의 둘레는 $2\\pi r$이므로\n$\\dfrac{8\\pi}{2\\pi r}\n=\\dfrac{160}{360}\n=\\dfrac49$이다.\n따라서\n$2\\pi r=18\\pi$이고\n$r=9$이다.\n정답은 ③이다.",
-    "image": "assets/images/23_향림중_2학기_기말_중3_기출/q8.png",
+    "image": "assets/images/23_향림중_2학기_기말_중3_기출/q8-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -395,7 +416,10 @@ window.questionBank = [
     "decisiveStep": "교차현의80°가 보는 두 호의 중심각 합160°와 호 길이 합8π를 원주에 대한 같은 비로 놓아 반지름을 정한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "교차하는 두 현과 교점의 각 80°, 마주 보는 두 호 길이 3π와 5π를 나타낸다.",
+    "imageCaption": "교차하는 두 현과 교점의 각 80°, 마주 보는 두 호 길이 3π와 5π를 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -422,7 +446,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "$OD=OC$는 같은 원의 반지름이므로\n$\\triangle ODC$는 이등변삼각형이다.\n$\\angle ODC=44^\\circ$이므로\n$\\angle OCD=44^\\circ$이다.\n따라서\n$\\angle DOC\n=180^\\circ-44^\\circ-44^\\circ\n=92^\\circ$이다.\n즉 호 $DC$의 크기는 $92^\\circ$이다.\n\n$\\angle ABC=115^\\circ$는 큰 호 $ADC$를 보는 원주각이므로\n큰 호 $ADC$의 크기는\n$2\\times115^\\circ\n=230^\\circ$이다.\n따라서\n호 $AD$의 크기는\n$230^\\circ-92^\\circ\n=138^\\circ$이다.\n$\\angle ACD$는 호 $AD$를 보는 원주각이므로\n$\\angle ACD\n=\\dfrac{138^\\circ}{2}\n=69^\\circ$이다.\n정답은 ②이다.",
-    "image": "assets/images/23_향림중_2학기_기말_중3_기출/q9.png",
+    "image": "assets/images/23_향림중_2학기_기말_중3_기출/q9-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -445,7 +469,10 @@ window.questionBank = [
     "decisiveStep": "반지름 이등변삼각형에서 호DC의92°를 정하고 큰 호ADC의230°에서 빼서 호AD의 원주각을 구한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원 O에서 주어진 44°와 115°, 그리고 구하는 원주각 ACD를 나타낸다.",
+    "imageCaption": "원 O에서 주어진 44°와 115°, 그리고 구하는 원주각 ACD를 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -472,7 +499,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "원에 내접하는 사각형에서\n마주 보는 두 각의 합은 $180^\\circ$이다.\n따라서\n$\\angle BAD\n=180^\\circ-124^\\circ\n=56^\\circ$이다.\n또 $AD$가 지름이므로\n지름 $AD$를 보는 원주각\n$\\angle ABD=90^\\circ$이다.\n삼각형 $ABD$에서\n$\\angle ADB\n=180^\\circ-90^\\circ-56^\\circ\n=34^\\circ$이다.\n접선 $BT$와 현 $AB$가 이루는 각은\n같은 현 $AB$를 보는 원주각 $\\angle ADB$와 같으므로\n$\\angle ABT=34^\\circ$이다.\n정답은 ①이다.",
-    "image": "assets/images/23_향림중_2학기_기말_중3_기출/q10.png",
+    "image": "assets/images/23_향림중_2학기_기말_중3_기출/q10-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -495,7 +522,10 @@ window.questionBank = [
     "decisiveStep": "내접사각형 대각합으로 BAD를 구하고 지름직각과 삼각형 내각합으로 ADB를 만든 뒤 접현각 ABT에 옮긴다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원에 내접하는 사각형과 접선에서 124°가 주어진 그림이다. 미지 각 ABT를 x로 표시한다.",
+    "imageCaption": "원에 내접하는 사각형과 접선에서 124°가 주어진 그림이다. 미지 각 ABT를 x로 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 11,
@@ -522,7 +552,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "원의 중심 $O$에서 세 현 $AB,AC,BC$까지의 거리가 모두 같으므로\n세 현의 길이도 모두 같다.\n따라서\n$AB=AC=BC$이고\n$\\triangle ABC$는 정삼각형이다.\n그러므로 중심각\n$\\angle AOB=120^\\circ$이다.\n\n$M$은 현 $AB$의 중점이므로\n$AM=\\dfrac{AB}{2}\n=2\\sqrt3$이다.\n또 $OM\\perp AB$이므로\n$\\triangle AOM$은 직각삼각형이고,\n$\\angle AOM=60^\\circ$이다.\n따라서\n$\\sin60^\\circ\n=\\dfrac{AM}{OA}\n=\\dfrac{2\\sqrt3}{OA}$이다.\n$\\dfrac{\\sqrt3}{2}\n=\\dfrac{2\\sqrt3}{OA}$이므로\n$OA=4$이다.\n따라서 원 $O$의 넓이는\n$\\pi\\times4^2\n=16\\pi\\,\\mathrm{cm}^2$이다.\n정답은 ⑤이다.",
-    "image": "assets/images/23_향림중_2학기_기말_중3_기출/q11.png",
+    "image": "assets/images/23_향림중_2학기_기말_중3_기출/q11-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
@@ -545,7 +575,10 @@ window.questionBank = [
     "decisiveStep": "세 현까지의 등거리로 정삼각형을 복원하고 반현과60°의 사인 관계로 반지름을 구해 원넓이로 연결한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "중심에서 세 현에 내린 수선의 길이가 같고 AB=4√3cm인 원을 나타낸다.",
+    "imageCaption": "중심에서 세 현에 내린 수선의 길이가 같고 AB=4√3cm인 원을 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": 12,
@@ -884,8 +917,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_향림중_2학기_기말_중3_기출/q19-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 수학 점수와 과학 점수의 산점도 10개 점과 직선 x+y=160, 그 위쪽 영역",
-    "solutionImageCaption": "산점도의 한 점을 (수학 점수, 과학 점수)라 하면 두 과목의 평균이 80점 이상일 조건은 x+y≥160이다. 직선 x+y=160 위와 그 위쪽에 있는 점을 세면 네 개이다. 정답은 ①이다.",
+    "solutionImageAlt": "두 과목의 평균이 80점 이상이라는 조건 x+y≥160의 경계선과 그 위쪽의 점을 센다. 원본의 A~E 이름도 유지한다.",
+    "solutionImageCaption": "두 과목의 평균이 80점 이상이라는 조건 x+y≥160의 경계선과 그 위쪽의 점을 센다. 원본의 A~E 이름도 유지한다.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": null,
@@ -960,7 +993,7 @@ window.questionBank = [
     "choices": [],
     "answer": "$36^\\circ$",
     "solution": "$AB=BC$이므로\n같은 원에서 같은 길이의 현이 보는 작은 호의 크기도 같다.\n따라서\n$\\wideparen{AB}=\\wideparen{BC}$이다.\n문제에서\n$\\wideparen{AB}:\\wideparen{AC}=2:1$이므로\n호 $AC$의 크기를 $t^\\circ$라 하면\n호 $AB$와 호 $BC$의 크기는 각각 $2t^\\circ$이다.\n원의 한 바퀴는 $360^\\circ$이므로\n$2t+2t+t=360$이다.\n따라서\n$5t=360$,\n$t=72$이다.\n즉 호 $AC$의 크기는 $72^\\circ$이다.\n접선 $AT$와 현 $AC$가 이루는 각은\n같은 현 $AC$를 보는 원주각과 같으므로\n$\\angle CAT=\\dfrac{72^\\circ}{2}=36^\\circ$이다.\n따라서 구하는 각은 $36^\\circ$이다.",
-    "image": "assets/images/23_향림중_2학기_기말_중3_기출/q21.png",
+    "image": "assets/images/23_향림중_2학기_기말_중3_기출/q21-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -983,7 +1016,10 @@ window.questionBank = [
     "decisiveStep": "같은 현AB=BC에서 같은 호를 얻고 호비2:1로 원 전체를2:2:1로 나눈 뒤 접현각을 해당 호의 절반으로 구한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "접선 TA와 같은 길이의 현 AB, BC, 그리고 호 AB 대 호 AC의 비 2:1을 나타낸다.",
+    "imageCaption": "접선 TA와 같은 길이의 현 AB, BC, 그리고 호 AB 대 호 AC의 비 2:1을 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": 22,
@@ -1005,7 +1041,7 @@ window.questionBank = [
     "choices": [],
     "answer": "$83^\\circ$",
     "solution": "$\\angle B=121^\\circ$이므로 이 각이 보는 호의 크기는\n$242^\\circ$이다.\n$\\angle COD=48^\\circ$이므로\n호 $CD$의 크기는 $48^\\circ$이다.\n따라서 호 $AED$의 크기는\n$242^\\circ-48^\\circ=194^\\circ$이다.\n원의 전체 호는 $360^\\circ$이므로\n나머지 호 $ABCD$의 크기는\n$360^\\circ-194^\\circ=166^\\circ$이다.\n$\\angle E$는 호 $ABCD$를 보는 원주각이므로\n$\\angle E=\\dfrac{166^\\circ}{2}=83^\\circ$이다.\n따라서 구하는 각은 $83^\\circ$이다.",
-    "image": "assets/images/23_향림중_2학기_기말_중3_기출/q22.png",
+    "image": "assets/images/23_향림중_2학기_기말_중3_기출/q22-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -1028,7 +1064,10 @@ window.questionBank = [
     "decisiveStep": "121° 원주각이 보는242° 큰 호에서 CD의48°를 빼고 전체360°에서 보완호를 복원하여 E의 원주각을 정한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원에 내접한 오각형에서 내각 B=121°와 중심각 COD=48°, 구하는 내각 E를 표시한다.",
+    "imageCaption": "원에 내접한 오각형에서 내각 B=121°와 중심각 COD=48°, 구하는 내각 E를 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 23,
