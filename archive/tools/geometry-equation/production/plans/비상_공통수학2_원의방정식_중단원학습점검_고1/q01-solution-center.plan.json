@@ -1,0 +1,11 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {"kind":"CIRCLE","center":["3","-2"],"rSquared":"16"},
+  "points": [{"id":"C","kind":"CENTER"},{"id":"R","kind":"POINT","x":"7","y":"-2"}],
+  "segments": [{"id":"CR","from":"C","to":"R","label":"4"}],
+  "caption":"중심 C(3,-2)에서 원 위의 점까지 반지름 4를 표시한다.",
+  "accessibilityDescription":"중심 C(3,-2), 반지름 4인 원과 오른쪽 반지름 CR이 있다.",
+  "sourceQuote":"중심이 점 $(3,-2)$이고 반지름의 길이가 $4$인 원",
+  "sourceConditions":[{"id":"center","condition":"C(3,-2), r=4","mappedTo":["conic","segments.CR"]}],
+  "newVisualInformation":["반지름을 실제 중심-원둘레 선분과 4 라벨로 표시한다."]
+}

@@ -1,0 +1,18 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"X","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-1"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"-3"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"P","op":"DIVISION_POINT","inputs":["A","B"],"args":{"m":{"kind":"integer","value":"1"},"n":{"kind":"integer","value":"2"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"Q","op":"DIVISION_POINT","inputs":["A","C"],"args":{"m":{"kind":"integer","value":"1"},"n":{"kind":"integer","value":"2"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["A","B","C","P","Q"],"displaySegments":[{"id":"AB","refs":["A","B"]},{"id":"BC","refs":["B","C"]},{"id":"CA","refs":["C","A"]},{"id":"PQ","refs":["P","Q"],"emphasis":"ACCENT"}],"coordinateLabels":["A","B","C"],"planeMarks":{"parallels":[{"id":"similar","count":1,"segments":["BC","PQ"]}]},
+  "caption":"PQ∥BC와 넓이비 [ABC]:[APQ]=9:1을 나타내되 미지점 P,Q의 좌표는 드러내지 않는다.",
+  "accessibilityDescription":"삼각형 ABC에서 P는 AB, Q는 AC 위에 있고 두 점을 이은 PQ는 BC와 평행하다. 문제에서 구할 점의 좌표는 숨겨져 있다.",
+  "sourceQuote":"PQ가 BC와 평행, 삼각형 ABC의 넓이가 삼각형 APQ의 넓이의 9배",
+  "sourceConditions":[{"id":"parallel","condition":"P∈AB,Q∈AC,PQ∥BC","mappedTo":["mathPlan.nodes.P","mathPlan.nodes.Q","planeMarks.parallels"]},{"id":"area","condition":"[ABC]:[APQ]=9:1","mappedTo":"displaySegments"}],
+  "newVisualInformation":["발문에 없던 도형을 추가하며 점 P,Q의 정답 좌표 표기는 해설 축으로 제한한다."]
+}

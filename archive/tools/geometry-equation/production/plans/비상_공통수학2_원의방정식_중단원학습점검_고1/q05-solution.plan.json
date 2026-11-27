@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1","conic":{"kind":"CIRCLE","center":["2","3"],"rSquared":"26"},
+  "lines":[{"id":"l","slope":"-3/2","intercept":"-1/2"},{"id":"m","slope":"1","intercept":"1"},{"id":"n","slope":"2/3","intercept":"5/3"}],
+  "points":[{"id":"C","kind":"CENTER"},{"id":"P","kind":"POINT","x":"-3","y":"4"},{"id":"Q","kind":"POINT","x":"1","y":"-2"},{"id":"M","kind":"FOOT","from":"C","onto":"l","rightAngle":true}],
+  "segments":[{"id":"PQ","from":"P","to":"Q"},{"id":"CP","from":"C","to":"P"},{"id":"CQ","from":"C","to":"Q"},{"id":"CM","from":"C","to":"M"}],
+  "caption":"중심 조건 직선과 PQ의 수직이등분선이 만나는 C(2,3)를 보인다.",
+  "accessibilityDescription":"원 위 P(-3,4), Q(1,-2)의 등거리 중심 C(2,3)가 두 직선의 교점이며 CM은 PQ에 수직이다.",
+  "sourceQuote":"중심이 직선 $y=x+1$ 위에 있고, 두 점 $(-3,4)$, $(1,-2)$를 지나는 원",
+  "sourceConditions":[{"id":"center-condition","condition":"C는 y=x+1 위에 있고 CP=CQ=√26","mappedTo":["conic","lines.m","segments.CP","segments.CQ"]}],
+  "newVisualInformation":["두 조건의 실제 교차점과 PQ에 내린 수선·직각을 보여 준다."]
+}

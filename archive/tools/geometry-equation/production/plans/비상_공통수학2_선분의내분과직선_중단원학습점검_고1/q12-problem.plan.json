@@ -1,0 +1,22 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"X","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"-4"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"F","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"}
+  ]},
+  "displayPoints":["A","B","C","D","P","F"],"hiddenPointNames":["F"],"unmarkedPointNames":["F"],
+  "displaySegments":[{"id":"AB","refs":["A","B"]},{"id":"BC","refs":["B","C"]},{"id":"CD","refs":["C","D"]},{"id":"DA","refs":["D","A"]},{"id":"DP","refs":["D","P"],"dashed":true},{"id":"PF","refs":["P","F"],"dashed":true}],
+  "segmentColors":[{"segments":["AB","BC","CD","DA"],"color":"ROSE"}],
+  "coordinateLabels":["A","B","C","D","P"],
+  "caption":"좌표축 위 분홍색 마름모 ABCD와 바깥 점 P(5,4), 점선 좌표 보조선을 그린다.",
+  "accessibilityDescription":"A(-3,0),B(0,-4),C(3,0),D(0,4)의 마름모와 점 P(5,4), P에서 좌표축으로 그은 점선이 있다.",
+  "sourceQuote":"점 $P(5, 4)$에서 마름모 위의 한 점까지 거리",
+  "sourceConditions":[{"id":"rhombus","condition":"A(-3,0), B(0,-4), C(3,0), D(0,4)","mappedTo":["mathPlan.nodes","displaySegments"]},{"id":"point","condition":"P(5,4), DP 수평, PF 수직 점선","mappedTo":["mathPlan.nodes.P","displaySegments.DP","displaySegments.PF"]}],
+  "newVisualInformation":["원문 PNG의 네 붉은 변·좌표점·수평/수직 점선을 재현하되 면 채움과 정답 표시를 넣지 않는다."]
+}

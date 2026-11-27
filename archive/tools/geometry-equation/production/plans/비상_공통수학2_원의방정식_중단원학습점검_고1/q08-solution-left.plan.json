@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1","conic":{"kind":"CIRCLE","center":["1","-11"],"rSquared":"16"},
+  "lines":[{"id":"l","slope":"4/3","intercept":"-19","tangent":true,"label":"l"}],
+  "points":[{"id":"C","kind":"CENTER"},{"id":"T","kind":"FOOT","from":"C","onto":"l","rightAngle":true}],
+  "segments":[{"id":"CT","from":"C","to":"T","label":"4"}],
+  "caption":"a=-11일 때 중심에서 직선까지 거리가 4로 원과 직선이 접한다.",
+  "accessibilityDescription":"a=-11인 경우 반지름 4의 원과 접선 및 직각 반지름 CT가 있다.",
+  "sourceQuote":"$-11\\le a\\le9$",
+  "sourceConditions":[{"id":"left","condition":"a=-11: C(1,-11), l:y=4x/3-19, d=4","mappedTo":["conic","lines","segments"]}],
+  "newVisualInformation":["왼쪽 경계값의 접점·수선·반지름을 일치시킨다."]
+}

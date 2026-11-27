@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1","conic":{"kind":"CIRCLE","center":["0","0"],"rSquared":"36"},
+  "lines":[{"id":"l1","slope":"-2","intercept":"6*sqrt(5)","label":"l_1","tangent":true},{"id":"l2","slope":"-2","intercept":"-6*sqrt(5)","label":"l_2","tangent":true}],
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"T1","kind":"FOOT","from":"O","onto":"l1","rightAngle":true},{"id":"T2","kind":"FOOT","from":"O","onto":"l2","rightAngle":true}],
+  "segments":[{"id":"OT1","from":"O","to":"T1","label":"6"},{"id":"OT2","from":"O","to":"T2","label":"6"}],
+  "caption":"기울기가 -2인 평행 접선 두 개와 각각의 접점 반지름 6을 표시한다.",
+  "accessibilityDescription":"원점을 중심으로 하는 반지름 6인 원에 기울기 -2의 평행한 접선 둘이 닿고, 반지름이 접선에 수직이다.",
+  "sourceQuote":"원 $x^2+y^2=36$에 대한 다음 접선의 방정식",
+  "sourceConditions":[{"id":"parallel-tangents","condition":"y=-2x±6√5, d=6","mappedTo":["lines","points","segments"]}],
+  "newVisualInformation":["두 평행 접선 모두의 수선 발과 직각을 개별 표시한다."]
+}

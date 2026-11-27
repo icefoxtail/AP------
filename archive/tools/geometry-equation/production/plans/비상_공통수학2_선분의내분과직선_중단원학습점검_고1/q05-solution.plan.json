@@ -1,0 +1,17 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"X","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-3"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"P","op":"DIVISION_POINT","inputs":["A","B"],"args":{"m":{"kind":"integer","value":"1"},"n":{"kind":"integer","value":"3"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"M","op":"MIDPOINT","inputs":["A","B"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["A","B","P","M"],"displaySegments":[{"id":"AB","refs":["A","B"]},{"id":"PM","refs":["P","M"],"emphasis":"ACCENT"}],"coordinateLabels":["A","B","P","M"],
+  "caption":"내분점 P(-1,3)과 중점 M(1,4) 사이의 거리는 √5이다.",
+  "accessibilityDescription":"기울어진 선분 AB 위에 A,P,M,B 순서의 네 점이 표시되고 PM 구간이 강조된다.",
+  "sourceQuote":"선분 AB를 1:3으로 내분하는 P, 중점 M 사이의 거리",
+  "sourceConditions":[{"id":"division","condition":"AP:PB=1:3","mappedTo":"mathPlan.nodes.P"},{"id":"midpoint","condition":"AM=MB","mappedTo":"mathPlan.nodes.M"}],
+  "newVisualInformation":["두 점을 기하적으로 구분하되 거리값은 캡션에만 기록한다."]
+}

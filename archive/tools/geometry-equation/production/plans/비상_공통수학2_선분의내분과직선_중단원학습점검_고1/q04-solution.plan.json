@@ -1,0 +1,18 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"X","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"-1"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"l","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"5"},"b":{"kind":"integer","value":"-12"},"c":{"kind":"integer","value":"-1"}},"outputType":"LINE","factRole":"GIVEN"},
+    {"id":"H","op":"PERPENDICULAR_FOOT","inputs":["P","l"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["P","H","E"],"hiddenPointNames":["E"],"unmarkedPointNames":["E"],"displayLines":["l"],"displaySegments":[{"id":"PH","refs":["P","H"],"emphasis":"ACCENT"}],"rightAngles":[{"id":"perp","refs":["P","H","E"]}],"coordinateLabels":["P"],
+  "planeMarks":{"dimensions":[{"id":"dist","from":"P","to":"H","label":"2","side":"LEFT","style":"ARROW","factRole":"CONCLUSION"}]},
+  "caption":"점 P(3,-1)에서 5x−12y−1=0에 내린 수선 PH가 최단거리 2를 나타낸다.",
+  "accessibilityDescription":"좌표평면의 직선과 바깥 점 P 사이에 직각 표식이 있는 수선 PH를 긋고 그 길이를 2로 표시한다.",
+  "sourceQuote":"점 (3,-1)과 직선 5x-12y-1=0 사이의 거리",
+  "sourceConditions":[{"id":"perpendicular","condition":"H는 P에서 l에 내린 수선의 발이고 PH=2","mappedTo":["mathPlan.nodes.H","rightAngles","planeMarks.dimensions"]}],
+  "newVisualInformation":["원문에 없던 수선·직각·길이 도식을 해설에 보완한다."]
+}

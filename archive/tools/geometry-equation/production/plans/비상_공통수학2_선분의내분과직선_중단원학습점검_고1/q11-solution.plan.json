@@ -1,0 +1,19 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"X","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-1"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"-3"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"P","op":"DIVISION_POINT","inputs":["A","B"],"args":{"m":{"kind":"integer","value":"1"},"n":{"kind":"integer","value":"2"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"Q","op":"DIVISION_POINT","inputs":["A","C"],"args":{"m":{"kind":"integer","value":"1"},"n":{"kind":"integer","value":"2"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["A","B","C","P","Q"],"displaySegments":[{"id":"AB","refs":["A","B"]},{"id":"BC","refs":["B","C"]},{"id":"CA","refs":["C","A"]},{"id":"PQ","refs":["P","Q"],"emphasis":"ACCENT"}],"coordinateLabels":["A","B","C","P","Q"],
+  "planeMarks":{"parallels":[{"id":"par","count":1,"segments":["BC","PQ"]}]},
+  "caption":"PQ가 BC와 평행해 AP:AB=AQ:AC=1:3인 닮은 삼각형을 만든다.",
+  "accessibilityDescription":"삼각형 ABC 내부에서 P는 AB를 1대2, Q는 AC를 1대2로 나누고 PQ는 BC와 평행하다.",
+  "sourceQuote":"삼각형 $ABC$의 넓이가 삼각형 $APQ$의 넓이의 9배",
+  "sourceConditions":[{"id":"similarity","condition":"[ABC]:[APQ]=9:1, PQ∥BC, AP:PB=AQ:QC=1:2","mappedTo":["mathPlan.nodes.P","mathPlan.nodes.Q","planeMarks.parallels"]}],
+  "newVisualInformation":["평행 표시와 두 내분점 좌표 P(1,1),Q(2,4)를 동시에 보인다."]
+}

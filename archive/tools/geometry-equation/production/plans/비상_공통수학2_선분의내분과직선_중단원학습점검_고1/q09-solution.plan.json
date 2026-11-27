@@ -1,0 +1,16 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"X","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"M","op":"MIDPOINT","inputs":["A","B"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["O","A","B","M"],"displaySegments":[{"id":"OA","refs":["O","A"]},{"id":"AB","refs":["A","B"]},{"id":"BO","refs":["B","O"]},{"id":"OM","refs":["O","M"],"emphasis":"ACCENT"}],"coordinateLabels":["A","B","M"],
+  "caption":"변 AB의 중점 M(2,3)을 지나는 OM이 삼각형의 넓이를 정확히 이등분한다.",
+  "accessibilityDescription":"삼각형 OAB의 변 AB 중점 M(2,3)을 O와 이은 빨간 중선 OM이 두 삼각형을 나눈다.",
+  "sourceQuote":"변 $AB$의 중점을 지나야 한다",
+  "sourceConditions":[{"id":"median","condition":"M=(2,3)은 AB 중점, l=OM","mappedTo":["mathPlan.nodes.M","displaySegments.OM"]}],
+  "newVisualInformation":["원래 문제 그림의 분할 직선을 중선 OM으로 설명하고 중점 좌표를 해설에서만 표시한다."]
+}
