@@ -1,0 +1,7 @@
+{
+ "capability":"piecewise-polynomial-spike-v1", "sourceQuote":"a=4일 때 y=x²−4x와 x축 사이의 넓이 32/3",
+ "caption":"0≤x≤4에서 포물선 y=x²−4x가 x축 아래에 있어 그 사이의 넓이를 적분한다.",
+ "graphPlan":{"family":"piecewise-polynomial","pieces":[{"coefficients":["0","-4","1"]}],"breakpoints":[],"sourceDomain":{"kind":"ALL_REALS"},"domain":[-1,5],"viewport":[-2,6,-6,4],"requiredPoints":[{"id":"O","x":0,"y":0},{"id":"B","x":4,"y":0},{"id":"M","x":2,"y":-4}],"axisTickValues":{"x":[],"y":[]},"regions":[{"id":"S","upper":"axis","lower":"f","from":"0","to":"4","fill":"LIGHT"}]},
+ "sourceConditions":[{"id":"area","condition":"해설에서 a=4를 얻어 두 근 0,4 사이의 넓이를 적분한다.","mappedTo":["graphPlan.pieces","graphPlan.regions"]}],
+ "newVisualInformation":["0과 4에서 x축을 만나는 포물선 아래 영역"],"accessibilityDescription":"아래로 내려간 포물선과 x축 사이의 0에서 4까지 영역이 칠해져 있다."
+}

@@ -1,0 +1,19 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "0≤t≤7에서 속도 v(t)의 그래프가 그림과 같다.",
+  "caption": "속도 그래프는 (0,0), (2,2), (3,2), (5,−2), (7,0)을 차례로 잇는다.",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{"coefficients":["0","1"]},{"coefficients":["2","0"]},{"coefficients":["8","-2"]},{"coefficients":["-7","1"]}],
+    "breakpoints": [{"x":"2","y":"2"},{"x":"3","y":"2"},{"x":"5","y":"-2"}],
+    "sourceDomain": {"kind":"INTERVAL","range":["0","7"],"states":["CLOSED","CLOSED"]},
+    "functionName": "v", "domain": [0,7], "viewport": [-1,8,-3,3],
+    "axisTitles": {"x":"t","y":"v"},
+    "requiredPoints": [{"id":"O","x":0,"y":0},{"id":"A","x":2,"y":2},{"id":"B","x":3,"y":2},{"id":"C","x":5,"y":-2},{"id":"D","x":7,"y":0}],
+    "exactCoordinates": {"A":["2","2"],"B":["3","2"],"C":["5","-2"],"D":["7","0"]},
+    "axisTickValues": {"x":[],"y":[]}
+  },
+  "sourceConditions": [{"id":"graph","condition":"문항 그래프의 다섯 꼭짓점과 t=0~7의 닫힌 구간","mappedTo":["graphPlan.pieces","graphPlan.breakpoints","graphPlan.sourceDomain"]}],
+  "newVisualInformation": ["다섯 점과 네 선분의 연결 순서, v의 양/음 구간"],
+  "accessibilityDescription": "속도 v는 처음 증가했다가 일정해지고 음수가 된 뒤 7에서 0으로 돌아온다."
+}

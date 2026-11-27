@@ -1,0 +1,7 @@
+{
+ "capability":"stat-chart-figure-v1",
+ "caption":"표준정규분포에서 −1과 1 사이 대칭 영역의 확률은 0.68이다.",
+ "chart":{"kind":"NORMAL_CURVE","curves":[{"id":"Z","mean":"0","sd":"1","label":"Z"}],"ticks":["-1","0","1"],"xLabel":"z","zAxis":true,"shades":[{"curve":"Z","from":"-1","to":"1","color":"BLUE"}],"areaLabels":[{"shade":0,"text":"0.68","source":"TABLE"}]},
+ "sourceConditions":[{"id":"bound","condition":"X~B(n,1/3)의 정규근사에서 경계 18/√(2n)≥1을 판단한다.","mappedTo":["chart.curves","chart.shades"]}],
+ "newVisualInformation":["좌우 대칭인 중앙의 0.68 확률 영역"],"accessibilityDescription":"표준정규분포에서 z=-1부터 z=1까지의 중앙 영역을 칠했다."
+}

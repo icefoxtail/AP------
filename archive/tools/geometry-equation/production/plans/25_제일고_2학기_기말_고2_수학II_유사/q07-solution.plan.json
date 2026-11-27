@@ -1,0 +1,7 @@
+{
+ "capability":"piecewise-polynomial-spike-v1", "sourceQuote":"변위는 ∫v, 이동거리는 ∫|v|이며 부호 변화는 t=4",
+ "caption":"양의 속도 영역 0≤t≤4와 음의 속도 영역 4≤t≤7을 나눠 적분한다.",
+ "graphPlan":{"family":"piecewise-polynomial","pieces":[{"coefficients":["0","1"]},{"coefficients":["2","0"]},{"coefficients":["8","-2"]},{"coefficients":["-7","1"]}],"breakpoints":[{"x":"2","y":"2"},{"x":"3","y":"2"},{"x":"5","y":"-2"}],"sourceDomain":{"kind":"INTERVAL","range":["0","7"],"states":["CLOSED","CLOSED"]},"domain":[0,7],"viewport":[-1,8,-3,3],"axisTitles":{"x":"t","y":"v"},"functionName":"v","requiredPoints":[{"id":"O","x":0,"y":0},{"id":"A","x":2,"y":2},{"id":"B","x":3,"y":2},{"id":"C","x":5,"y":-2},{"id":"D","x":7,"y":0}],"axisTickValues":{"x":[4],"y":[]},"regions":[{"id":"P","upper":"f","lower":"axis","from":"0","to":"4","fill":"LIGHT"},{"id":"N","upper":"axis","lower":"f","from":"4","to":"7","fill":"MEDIUM"}]},
+ "sourceConditions":[{"id":"integrals","condition":"t=4에서 부호가 바뀌고 각 영역의 넓이는 양의 5, 음의 3이다.","mappedTo":["graphPlan.pieces","graphPlan.regions"]}],
+ "newVisualInformation":["속도의 양수/음수 면적을 분리하는 수직 경계 t=4"],"accessibilityDescription":"t=0~4는 x축 위를 옅게 칠하고, t=4~7은 x축 아래의 음수 영역을 짙게 칠했다."
+}

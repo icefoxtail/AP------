@@ -1,0 +1,16 @@
+{
+  "capability":"piecewise-polynomial-spike-v1",
+  "sourceQuote":"y=x², y=3, y축 및 x=k(k>√3)의 두 영역 S₁,S₂가 같다.",
+  "caption":"y=x²와 y=3 사이의 왼쪽 넓이 S₁, x=k까지의 오른쪽 넓이 S₂를 구별한다.",
+  "graphPlan":{
+    "family":"piecewise-polynomial","pieces":[{"coefficients":["0","0","1"]}],"breakpoints":[],
+    "sourceDomain":{"kind":"ALL_REALS"},"functionName":"f","domain":[-1.2,3.4],"viewport":[-1.5,4.5,-1,10],
+    "referenceLines":[{"id":"h","y":"3","intersectionX":["-sqrt(3)","sqrt(3)"]}],
+    "requiredPoints":[{"id":"O","x":0,"y":0},{"id":"P","x":3,"y":9}],"coordinateBand":{"hide":["P"]},
+    "axisTickValues":{"x":[],"y":[]},"overlays":{"lines":[{"id":"m","x":"3","label":"x=k"}]},
+    "regions":[{"id":"S1","upper":"h","lower":"f","from":"0","to":"sqrt(3)","fill":"LIGHT","label":"S_1"},{"id":"S2","upper":"f","lower":"h","from":"sqrt(3)","to":"3","fill":"MEDIUM","label":"S_2"}]
+  },
+  "sourceConditions":[{"id":"left","condition":"S₁은 x=0에서 √3까지 y=3과 포물선 사이 영역이다.","mappedTo":"graphPlan.regions"},{"id":"right","condition":"S₂는 √3에서 k까지 곡선이 직선 위에 있는 영역이다.","mappedTo":["graphPlan.regions","graphPlan.overlays.lines"]}],
+  "newVisualInformation":["경계 y=3, x=k, y축과 두 면적의 정확한 경계"],
+  "accessibilityDescription":"오른쪽으로 열리는 포물선 y=x² 위의 두 면적을 서로 다른 명도로 표시했다."
+}

@@ -1,0 +1,7 @@
+{
+ "capability":"polynomial-spike-v1", "sourceQuote":"f(x)=x³−6x²+32, f(0)=32, f(4)=0, f(6)=32",
+ "caption":"[0,t]의 최댓값 32, 최솟값 0을 결정하는 세 특징점이다.",
+ "graphPlan":{"family":"polynomial","coefficients":["32","0","-6","1"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[-0.5,6.3],"viewport":[-1,7,-5,43],"requiredPoints":[{"id":"A","x":0,"y":32},{"id":"B","x":4,"y":0},{"id":"C","x":6,"y":32}],"axisTickValues":{"x":[],"y":[]}},
+ "sourceConditions":[{"id":"bounds","condition":"[0,t]의 최소점 x=4, 이후 f(t)=32가 되는 t=6","mappedTo":["graphPlan.coefficients","graphPlan.requiredPoints"]}],
+ "newVisualInformation":["시작 높이 32, 최솟값 0, 오른쪽에서 다시 높이 32가 되는 점"],"accessibilityDescription":"함수는 (0,32)에서 내려가 (4,0)을 거쳐 (6,32)로 올라간다."
+}
