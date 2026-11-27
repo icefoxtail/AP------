@@ -1,0 +1,73 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1/2",
+          "1/2"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "regions": [
+      {
+        "id": "S",
+        "upper": "f",
+        "lower": "axis",
+        "from": "-1",
+        "to": "0",
+        "fill": "LIGHT",
+        "label": "1/4"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1"
+      ],
+      "y": [
+        "1/2",
+        "1"
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    }
+  },
+  "caption": "확률밀도 f(x)=(x+1)/2의 -1에서 0까지 삼각형 넓이가 1/4이다.",
+  "accessibilityDescription": "가로축 -1에서 1 사이에 직선 f(x)=(x+1)/2가 증가하고 -1부터 0까지 직선과 x축 사이의 작은 직각삼각형 영역만 연하게 칠해져 있다.",
+  "sourceQuote": "연속확률변수 $X$의 확률밀도함수가",
+  "sourceConditions": [
+    {
+      "id": "density",
+      "condition": "구간 [-1,1]에서 f(x)=(x+1)/2",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.sourceDomain"
+      ]
+    },
+    {
+      "id": "interval",
+      "condition": "P(-1≤X≤0)는 해당 밀도함수 아래의 넓이",
+      "mappedTo": [
+        "graphPlan.regions"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이의 밑변 1·높이 1/2를 원함수의 면적으로 정확히 대응시킨다."
+  ]
+}

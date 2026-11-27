@@ -1,0 +1,84 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "AI 글",
+          "p": "2/5",
+          "children": [
+            {
+              "label": "AI 판정",
+              "p": "3/4"
+            },
+            {
+              "label": "사람 판정",
+              "p": "1/4"
+            }
+          ]
+        },
+        {
+          "label": "사람 글",
+          "p": "3/5",
+          "children": [
+            {
+              "label": "AI 판정",
+              "p": "1/10"
+            },
+            {
+              "label": "사람 판정",
+              "p": "9/10"
+            }
+          ]
+        }
+      ]
+    },
+    "showPathProbability": true,
+    "highlightPaths": [
+      {
+        "path": [
+          "AI 글",
+          "AI 판정"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "사람 글",
+          "AI 판정"
+        ],
+        "color": "WARM"
+      }
+    ]
+  },
+  "caption": "AI 판정 두 경로는 0.30과 0.06이며 실제 AI 글의 조건부확률은 0.30/0.36=5/6이다.",
+  "accessibilityDescription": "실제 AI 글과 사람 글의 사전확률로 갈라진 뒤 분류기의 AI 판정 또는 사람 판정으로 나누는 네 경로의 수형도이다. AI로 판정되는 두 경로를 강조한다.",
+  "sourceConditions": [
+    {
+      "id": "prior",
+      "condition": "AI 작성 40%, 사람 작성 60%",
+      "mappedTo": [
+        "chart.root.children"
+      ]
+    },
+    {
+      "id": "likelihood",
+      "condition": "AI 글의 AI 판정률 75%, 사람 글의 오판률 10%",
+      "mappedTo": [
+        "chart.root.children[0].children",
+        "chart.root.children[1].children"
+      ]
+    },
+    {
+      "id": "posterior",
+      "condition": "AI 판정 중 실제 AI 글의 비율",
+      "mappedTo": [
+        "chart.highlightPaths"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "혼동하기 쉬운 조건부확률의 분모에 두 AI 판정 경로가 함께 들어감을 시각화한다."
+  ]
+}

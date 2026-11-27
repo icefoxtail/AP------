@@ -1,0 +1,56 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "첫 흰",
+          "p": "3/5"
+        },
+        {
+          "label": "첫 빨강",
+          "p": "2/5",
+          "children": [
+            {
+              "label": "둘 흰",
+              "p": "3/4"
+            },
+            {
+              "label": "둘 빨강",
+              "p": "1/4",
+              "children": [
+                {
+                  "label": "셋 흰",
+                  "p": "1"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "showPathProbability": true
+  },
+  "caption": "첫 흰 공은 1회(3/5), 빨강 뒤 흰 공은 2회(3/10), 빨강 둘 뒤 흰 공은 3회(1/10)이다.",
+  "accessibilityDescription": "빨강 두 개와 흰 공 세 개를 비복원으로 뽑을 때 처음 흰 공이 등장하는 세 종단 경로를 보여 주는 조건부확률 수형도이다.",
+  "sourceConditions": [
+    {
+      "id": "initial",
+      "condition": "흰 공 3, 빨간 공 2",
+      "mappedTo": [
+        "chart.root.children"
+      ]
+    },
+    {
+      "id": "stopping",
+      "condition": "처음 흰 공이 나올 때까지 횟수 1,2,3",
+      "mappedTo": [
+        "chart.root.children[1].children"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "흰 공을 뽑는 즉시 종료하고 빨간 공을 연속 두 번 뽑았을 때만 3회로 이어지는 구조를 정확히 드러낸다."
+  ]
+}

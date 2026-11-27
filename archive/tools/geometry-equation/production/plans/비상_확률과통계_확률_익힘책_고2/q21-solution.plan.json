@@ -1,0 +1,77 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "봉지 A",
+          "p": "1/2",
+          "children": [
+            {
+              "label": "아몬드",
+              "p": "1/4"
+            },
+            {
+              "label": "나머지",
+              "p": "3/4"
+            }
+          ]
+        },
+        {
+          "label": "봉지 B",
+          "p": "1/2",
+          "children": [
+            {
+              "label": "아몬드",
+              "p": "3/10"
+            },
+            {
+              "label": "나머지",
+              "p": "7/10"
+            }
+          ]
+        }
+      ]
+    },
+    "highlightPaths": [
+      {
+        "path": [
+          "봉지 A",
+          "아몬드"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "봉지 B",
+          "아몬드"
+        ],
+        "color": "WARM"
+      }
+    ],
+    "showPathProbability": true
+  },
+  "caption": "두 봉지 선택 확률에 각각의 아몬드 비율을 곱한 두 경로의 합은 11/40이다.",
+  "accessibilityDescription": "봉지 A와 B를 각각 절반의 확률로 선택한 뒤 아몬드와 나머지 견과류로 갈라지는 네 경로의 수형도이며 두 아몬드 경로를 강조한다.",
+  "sourceConditions": [
+    {
+      "id": "bag",
+      "condition": "A 또는 B를 같은 확률로 선택",
+      "mappedTo": [
+        "chart.root.children"
+      ]
+    },
+    {
+      "id": "nuts",
+      "condition": "A 아몬드 25%, B 아몬드 30%",
+      "mappedTo": [
+        "chart.root.children[0].children",
+        "chart.root.children[1].children"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "전확률 공식에서 더해야 할 두 아몬드 경로의 위치를 명확히 보여 준다."
+  ]
+}

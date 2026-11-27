@@ -1,0 +1,46 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "universe": {
+      "name": "U",
+      "count": "14",
+      "countUnit": "일"
+    },
+    "sets": [
+      {
+        "id": "A",
+        "count": "7",
+        "countUnit": "일"
+      },
+      {
+        "id": "B",
+        "count": "2",
+        "countUnit": "일"
+      }
+    ],
+    "shade": "A∪B"
+  },
+  "caption": "14일 중 짝숫날 7일과 일요일 2일이 겹치는 하루를 제외한 합집합은 8일이다.",
+  "accessibilityDescription": "전체 14일을 나타내는 테두리와 짝숫날 A, 일요일 B의 두 원을 그려 합집합을 강조한다. A에는 7일, B에는 2일의 개수가 표시된다.",
+  "sourceConditions": [
+    {
+      "id": "days",
+      "condition": "둘째 주와 셋째 주의 전체 14일",
+      "mappedTo": [
+        "diagram.universe"
+      ]
+    },
+    {
+      "id": "events",
+      "condition": "짝숫날 7일과 일요일 2일, 겹치는 날 1일",
+      "mappedTo": [
+        "diagram.sets",
+        "diagram.shade"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "합집합의 겹친 부분을 한 번만 세어야 하는 시각적 구조를 보여 준다. 교집합의 수 1은 엔진의 영역 개수 라벨 미지원으로 그림 내부에 나오지 않는다."
+  ]
+}

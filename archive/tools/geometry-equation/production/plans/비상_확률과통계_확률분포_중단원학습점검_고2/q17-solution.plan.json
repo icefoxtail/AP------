@@ -1,0 +1,49 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "X",
+        "mean": "31",
+        "sd": "5",
+        "label": "X"
+      }
+    ],
+    "ticks": [
+      "26",
+      "31",
+      "36",
+      "38"
+    ],
+    "zAxis": true,
+    "shades": [
+      {
+        "from": "26",
+        "to": "36"
+      }
+    ]
+  },
+  "caption": "평균 m=31을 중심으로 길이 10인 구간을 대칭 배치하면 [26,36]에서 확률이 최대다.",
+  "accessibilityDescription": "평균 31 표준편차 5인 정규곡선 아래 26부터 36까지의 대칭 구간을 강조하여 중앙 배치가 최대 확률이라는 사실을 보인다.",
+  "sourceConditions": [
+    {
+      "id": "mean",
+      "condition": "P(X≤38)=P(X≥m-7)로 평균 m=31",
+      "mappedTo": [
+        "chart.curves",
+        "chart.ticks"
+      ]
+    },
+    {
+      "id": "best",
+      "condition": "길이 10인 최대확률 구간은 26≤X≤36",
+      "mappedTo": [
+        "chart.shades"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "해설의 최적 구간이 평균 주위 양쪽 5씩인 것을 실제 음영과 눈금으로 보여 준다."
+  ]
+}

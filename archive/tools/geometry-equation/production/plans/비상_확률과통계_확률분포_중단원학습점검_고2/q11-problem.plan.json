@@ -1,0 +1,325 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Y",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "X",
+    "Y",
+    "A",
+    "B",
+    "C",
+    "H",
+    "D"
+  ],
+  "hiddenPointNames": [
+    "X",
+    "Y",
+    "A",
+    "B",
+    "C",
+    "H",
+    "D"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "xaxis",
+      "refs": [
+        "O",
+        "X"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "yaxis",
+      "refs": [
+        "O",
+        "Y"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "fall",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "rise",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "kGuide",
+      "refs": [
+        "H",
+        "C"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "x3Guide",
+      "refs": [
+        "D",
+        "C"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "y2k",
+        "at": [
+          -0.35,
+          2
+        ],
+        "text": "2k",
+        "labelKind": "MATH",
+        "anchor": "CENTER",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "yk",
+        "at": [
+          -0.35,
+          1
+        ],
+        "text": "k",
+        "labelKind": "MATH",
+        "anchor": "CENTER",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "x2",
+        "at": [
+          2,
+          -0.32
+        ],
+        "text": "2",
+        "labelKind": "MATH",
+        "anchor": "CENTER",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "x3",
+        "at": [
+          3,
+          -0.32
+        ],
+        "text": "3",
+        "labelKind": "MATH",
+        "anchor": "CENTER",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "xtitle",
+        "at": [
+          4.25,
+          -0.12
+        ],
+        "text": "x",
+        "labelKind": "MATH",
+        "anchor": "CENTER",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ytitle",
+        "at": [
+          -0.35,
+          3.16
+        ],
+        "text": "f(x)",
+        "labelKind": "MATH",
+        "anchor": "CENTER",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "원본의 f(x) 그래프는 (0,2k)에서 (2,0)으로 내려갔다가 (3,k)로 증가하고 k 높이에 점선이 있다.",
+  "accessibilityDescription": "원점에서 x축과 f(x)축이 교차하고, 높이 2k에서 시작한 선분이 x=2의 축에 내려온 뒤 x=3의 높이 k로 올라간다. k 높이 점선과 x=3에서 축까지의 점선을 보인다.",
+  "sourceConditions": [
+    {
+      "id": "asset",
+      "condition": "q11.png의 그래프 꺾임 x=2, 끝점 x=3, 높이 2k와 k 비 2:1",
+      "mappedTo": [
+        "displaySegments",
+        "planeMarks.textLabels"
+      ]
+    },
+    {
+      "id": "dashed",
+      "condition": "원본 k 높이 수평 점선과 x=3 수직 점선",
+      "mappedTo": [
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "문항 그림에 풀이로 구한 k=2/5를 공개하지 않으면서 원본의 양 선분·두 점선·일곱 라벨을 보존한다."
+  ]
+}
