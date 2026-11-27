@@ -1,0 +1,73 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "2",
+      "-4",
+      "0",
+      "4"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      2.5
+    ],
+    "viewport": [
+      -2.5,
+      3,
+      -16,
+      30
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1,
+        "y": 2
+      },
+      {
+        "id": "O",
+        "x": 0,
+        "y": 2
+      },
+      {
+        "id": "B",
+        "x": 1,
+        "y": 2
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1"
+      ],
+      "y": [
+        "2"
+      ]
+    }
+  },
+  "caption": "f(x)=4(x³−x)+2는 x=−1, 0, 1에서 모두 y=2이며 f′(1)=8이다.",
+  "accessibilityDescription": "f(x)=4(x³−x)+2는 x=−1, 0, 1에서 모두 y=2이며 f′(1)=8이다.",
+  "sourceConditions": [
+    {
+      "id": "curve",
+      "condition": "원문·해설의 2,-4,0,4 다항식 계수를 상수항부터 정확히 옮긴다.",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "roots",
+      "condition": "f(−1)=f(0)=f(1)=2라는 세 동일 높이",
+      "mappedTo": "graphPlan.requiredPoints"
+    },
+    {
+      "id": "derivative",
+      "condition": "f′(1)=8로 구한 세제곱항 계수 4",
+      "mappedTo": "graphPlan.coefficients"
+    }
+  ],
+  "newVisualInformation": [
+    "원문·해설의 결정적 선·점·관계만 나타내며 배경과 임의의 면 채움을 두지 않는다."
+  ]
+}

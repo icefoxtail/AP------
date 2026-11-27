@@ -1,0 +1,79 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "3",
+      "1",
+      "-1/3"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3.2,
+      5
+    ],
+    "viewport": [
+      -3.8,
+      5.7,
+      -8,
+      13
+    ],
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": -1,
+        "y": -1.6666666666666667
+      },
+      {
+        "id": "H",
+        "x": 3,
+        "y": 9
+      },
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "3"
+      ],
+      "y": [
+        "9"
+      ]
+    },
+    "exactCoordinates": {
+      "L": [
+        "-1",
+        "-5/3"
+      ]
+    }
+  },
+  "caption": "도함수를 적분하고 f(0)=0을 적용한 삼차함수는 (−1,−5/3)에서 극소, (3,9)에서 극대를 갖는다.",
+  "accessibilityDescription": "도함수를 적분하고 f(0)=0을 적용한 삼차함수는 (−1,−5/3)에서 극소, (3,9)에서 극대를 갖는다.",
+  "sourceConditions": [
+    {
+      "id": "curve",
+      "condition": "원문·해설의 0,3,1,-1/3 다항식 계수를 상수항부터 정확히 옮긴다.",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "integral",
+      "condition": "f′(x)=−x²+2x+3, f(0)=0",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "extrema",
+      "condition": "극솟값 −5/3과 극댓값 9 사이에서 수평선은 세 번 교차",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "원문·해설의 결정적 선·점·관계만 나타내며 배경과 임의의 면 채움을 두지 않는다."
+  ]
+}

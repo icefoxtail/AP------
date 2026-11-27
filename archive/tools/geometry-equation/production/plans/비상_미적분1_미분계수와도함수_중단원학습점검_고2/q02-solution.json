@@ -1,0 +1,70 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-2",
+      "7",
+      "-1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      6
+    ],
+    "viewport": [
+      -1.8,
+      7,
+      -4,
+      12
+    ],
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": 1,
+        "y": 4
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "4"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "tangent",
+          "slope": "5",
+          "intercept": "-1"
+        }
+      ]
+    }
+  },
+  "caption": "y=−x²+7x−2의 (1,4)에서 접선은 y=5x−1이므로 기울기는 5이다.",
+  "accessibilityDescription": "y=−x²+7x−2의 (1,4)에서 접선은 y=5x−1이므로 기울기는 5이다.",
+  "sourceConditions": [
+    {
+      "id": "curve",
+      "condition": "원문·해설의 -2,7,-1 다항식 계수를 상수항부터 정확히 옮긴다.",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "point",
+      "condition": "원문에서 (1,4)와 미분계수 5",
+      "mappedTo": "graphPlan.requiredPoints"
+    },
+    {
+      "id": "tangent",
+      "condition": "접선 y=5x−1",
+      "mappedTo": "graphPlan.overlays.lines"
+    }
+  ],
+  "newVisualInformation": [
+    "원문·해설의 결정적 선·점·관계만 나타내며 배경과 임의의 면 채움을 두지 않는다."
+  ]
+}
