@@ -244,8 +244,8 @@ window.examData = {
       "answer": "①",
       "solution": "BC를 C쪽으로 연장하고 A에서 연장선에 수선을 내려 발을 H라 하면, 그림의 외각으로 $\\angle ACH=45^\\circ$이다. 직각삼각형 ACH에서 $AH=6\\sin45^\\circ=3\\sqrt2$이고, 밑변 $BC=2\\sqrt2$이므로 넓이는 $\\frac12\\cdot2\\sqrt2\\cdot3\\sqrt2=6$이다. 따라서 ①이다.",
       "solutionImage": "assets/images/21_향림중_2학기_중간_중3_수학/q7-solution.svg",
-      "solutionImageAlt": "해설 그림: 삼각형 ABC의 AC=6, BC=2√2, ∠C=135°를 표시하고 BC의 C쪽 연장선 위로 높이 AH를 내렸다.",
-      "solutionImageCaption": "외각은 45°이므로 AH=6sin45°=3√2이다. 넓이는 ½·2√2·3√2=6이다. 정답은 ①이다.",
+      "solutionImageAlt": "BC 연장선에 수선 AH를 내려 높이 3√2를 보이고 불필요한 회색 면 채움을 제거한다",
+      "solutionImageCaption": "BC 연장선에 수선 AH를 내려 높이 3√2를 보이고 불필요한 회색 면 채움을 제거한다",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -604,8 +604,8 @@ window.examData = {
       "answer": "①",
       "solution": "$\\angle A=180^\\circ-75^\\circ-45^\\circ=60^\\circ$이다. B에서 AC에 수선을 내려 발을 H라 하자. 직각삼각형 BCH에서 $BH=8\\sin45^\\circ=4\\sqrt2$이고, 직각삼각형 ABH에서 $\\sin60^\\circ=BH/AB$이므로 $AB=4\\sqrt2/(\\sqrt3/2)=\\frac{8\\sqrt6}{3}$이다. 따라서 ①이다.",
       "solutionImage": "assets/images/21_향림중_2학기_중간_중3_수학/q16-solution.svg",
-      "solutionImageAlt": "해설 그림: BC=8cm, 각 B=75°, C=45°, A=60°인 삼각형에서 BH를 AC에 수직으로 내렸다. BH=4√2cm이다.",
-      "solutionImageCaption": "BH=8sin45°=4√2이므로 sin60°=BH/AB에서 AB=8√6/3cm이다. 정답은 ①이다.",
+      "solutionImageAlt": "B에서 AC에 내린 수선 BH=4√2를 표현하고 회색 삼각형 면 채움을 제거한다",
+      "solutionImageCaption": "B에서 AC에 내린 수선 BH=4√2를 표현하고 회색 삼각형 면 채움을 제거한다",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -646,8 +646,8 @@ window.examData = {
       "answer": "②",
       "solution": "큰 정삼각형 ABC의 한 변은 6 cm이다. 그림에서 $AD=2$, $AF=4$, $EC=4$이므로 $BD=AB-AD=4$, $FC=AC-AF=2$, $BE=BC-EC=2$이다. 따라서 바깥 꼭짓점에 생기는 작은 삼각형은 각각 두 변이 2와 4이고 끼인각이 $60^\\circ$이다. 예를 들어 $\\triangle ADF$에서 D에서 AF에 내린 수선의 발을 G라 하면, 직각삼각형 ADG에서 $DG=AD\\sin60^\\circ=\\sqrt3$이다. 그러므로 $\\triangle ADF$의 넓이는 $\\frac12\\cdot AF\\cdot DG=\\frac12\\cdot4\\cdot\\sqrt3=2\\sqrt3$이다. 나머지 두 작은 삼각형의 넓이도 각각 $2\\sqrt3$이다. 큰 정삼각형의 넓이는 $\\frac{\\sqrt3}{4}\\cdot6^2=9\\sqrt3$이므로, $\\triangle DEF$의 넓이는 $9\\sqrt3-3\\cdot2\\sqrt3=3\\sqrt3\\,\\mathrm{cm}^2$이다. 따라서 ②이다.",
       "solutionImage": "assets/images/21_향림중_2학기_중간_중3_수학/q17-solution.svg",
-      "solutionImageAlt": "해설 그림: 정삼각형 ABC 안의 DEF를 표시하고, 같은 넓이의 세 모서리 삼각형을 주황색, 중앙 DEF를 파란색으로 구분했다.",
-      "solutionImageCaption": "큰 넓이는 9√3이고 세 모서리 넓이는 각각 2√3이므로 [DEF]=9√3−3·2√3=3√3cm²이다. 정답은 ②이다.",
+      "solutionImageAlt": "정삼각형 DEF의 세 바깥 보조삼각형을 경계선만으로 분리하고 전체 면 채움을 없앤다",
+      "solutionImageCaption": "정삼각형 DEF의 세 바깥 보조삼각형을 경계선만으로 분리하고 전체 면 채움을 없앤다",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -936,8 +936,8 @@ window.examData = {
       "answer": "$20.4\\,\\mathrm{m}$",
       "solution": "높이 차를 $h$라 하면 $\\tan43^\\circ=\\frac{h}{20}=0.93$이므로 $h=20\\cdot0.93=18.6\\,\\mathrm{m}$이다. 눈높이 $1.8\\,\\mathrm{m}$를 더하면 점프대 높이는 $18.6+1.8=20.4\\,\\mathrm{m}$이다.",
       "solutionImage": "assets/images/21_향림중_2학기_중간_중3_수학/q25-solution.svg",
-      "solutionImageAlt": "해설 그림: 눈 위치 A는 지면보다 1.8m 높고, 점프대 밑 B까지 수평 거리는 20m이다. 시선 AC는 수평 눈높이 AH와 43°를 이룬다.",
-      "solutionImageCaption": "높이 차는 20tan43°≈20·0.93=18.6m이다. 눈높이 1.8m를 더하면 점프대 높이는 20.4m이다.",
+      "solutionImageAlt": "높이 차 18.6m와 눈높이 1.8m를 더해 전체 20.4m가 됨을 면 채움 없이 보인다",
+      "solutionImageCaption": "높이 차 18.6m와 눈높이 1.8m를 더해 전체 20.4m가 됨을 면 채움 없이 보인다",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",

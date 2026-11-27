@@ -62,8 +62,8 @@ window.examData = {
     "primaryMethod": "평행한 두 직선의 계수비",
     "decisiveStep": "상수항비는 이미 다르므로 x,y계수비를 같게 놓아 한 계수만 정한다.",
     "solutionImage": "assets/images/20_왕의중_2학기_중간_중2_수학/q1-solution.svg",
-    "solutionImageAlt": "기울기가 같은 두 직선이 서로 만나지 않고 평행하게 놓여 있으며 y축과 만나는 점 (0,3/2)와 (0,−1/2)가 표시되어 있다.",
-    "solutionImageCaption": "예: a=5/2일 때의 그림이다. 두 그래프가 만나지 않으려면 두 직선이 평행해야 한다. 계수의 비가 a/5=2/4이고 상수항의 비와는 달라야 하므로 a=5/2이다. 이때 두 직선은 기울기 −5/4로 같고 y절편 3/2, −1/2이 달라 만나지 않는다. 따라서 답은 ①이다. 그림의 첫 직선 5x+4y−6=0은 ax+2y−3=0에 a=5/2를 넣고 양변에 2를 곱한 식이다.",
+    "solutionImageAlt": "해가 없는 연립방정식은 기울기가 같고 y절편이 다른 두 평행 직선이다.",
+    "solutionImageCaption": "해가 없는 연립방정식은 기울기가 같고 y절편이 다른 두 평행 직선이다.",
     "solutionImageSize": "full"
   },
   {
@@ -120,8 +120,8 @@ window.examData = {
     "primaryMethod": "수직선의 계수 소거와 점대입",
     "decisiveStep": "y축 평행에서 y의계수를0으로 놓고 주어진점으로 나머지계수를 정한다.",
     "solutionImage": "assets/images/20_왕의중_2학기_중간_중2_수학/q2-solution.svg",
-    "solutionImageAlt": "위아래로 곧은 직선이 x좌표 2에서 y축에 평행하게 있고 그 위의 점 (2,1)의 좌표가 표시되어 있다.",
-    "solutionImageCaption": "그래프가 y축에 평행하려면 y의 계수 b=0이어야 하고 식은 ax−2=0, 즉 x=2/a이다. 점 (2,1)을 지나므로 x=2이고 2/a=2에서 a=1이다. 따라서 a−b=1−0=1이고 답은 ③이다.",
+    "solutionImageAlt": "방정식 x=2의 수직선이 점 (2,1)을 지나고 y축과 평행함을 실제 좌표축 위에 표시한다.",
+    "solutionImageCaption": "방정식 x=2의 수직선이 점 (2,1)을 지나고 y축과 평행함을 실제 좌표축 위에 표시한다.",
     "solutionImageSize": "full"
   },
   {
@@ -249,8 +249,8 @@ window.examData = {
     "primaryMethod": "계수 곱부호에서 직선의 사분면",
     "decisiveStep": "기울기−a/b는양수,y절편−c/b는음수임을 정해 지나지않는 사분면을 고른다.",
     "solutionImage": "assets/images/20_왕의중_2학기_중간_중2_수학/q4-solution.svg",
-    "solutionImageAlt": "오른쪽 위로 올라가는 직선이 y축의 아래쪽 점 (0,−1)과 x축의 오른쪽 점 (2,0)을 지나며 두 점의 좌표가 표시되어 있다.",
-    "solutionImageCaption": "예: 기울기가 양수이고 y절편이 음수인 직선의 한 예이다. ax+by+c=0을 y=−(a/b)x−c/b로 정리하면, ab<0이므로 기울기 −a/b는 양수이고 주어진 조건에서 y절편은 음수이다. 오른쪽 위로 올라가고 y축의 아래쪽을 지나는 직선은 제1, 3, 4사분면을 지나고 제2사분면을 지나지 않는다. 따라서 답은 ②이다.",
+    "solutionImageAlt": "ab<0, bc>0인 직선은 기울기가 양수이고 y절편이 음수인 대표 경우다. (0,-1), (2,0)을 지나 제2사분면을 지나지 않는다.",
+    "solutionImageCaption": "ab<0, bc>0인 직선은 기울기가 양수이고 y절편이 음수인 대표 경우다. (0,-1), (2,0)을 지나 제2사분면을 지나지 않는다.",
     "solutionImageSize": "full"
   },
   {
@@ -437,8 +437,8 @@ window.examData = {
     "primaryMethod": "내심의 거리·각이등분·합동 성질 비교",
     "decisiveStep": "같은변거리와 같은각,공통빗변 RHA를 사용하고 꼭짓점등거리의 일반화를 거부한다.",
     "solutionImage": "assets/images/20_왕의중_2학기_중간_중2_수학/q7-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼각형 ABC 안에 내심 I가 있고 I에서 세 변에 내린 수선의 발 D, E, F가 있으며, D, E, F에 직각 표시가 있다. ID, IE, IF와 AD와 FA, DB와 BE에 각각 같은 길이 표시가 있고, 세 꼭짓각이 이등분된 호와 20도, 40도, 30도가 적혀 있다.",
-    "solutionImageCaption": "내심 I에서 세 변에 내린 수선의 발이 D, E, F이므로 ID, IE, IF는 내접원의 반지름으로 같다. IA, IB, IC가 세 내각을 이등분하므로 삼각형 IAD와 IAF, IBD와 IBE, ICE와 ICF가 각각 합동이고 각 IBD와 각 IBE도 같다. 그러나 삼각형 IAF와 ICF는 AF와 CF가 일반적으로 같지 않아 합동이 아니며, IA, IB, IC가 모두 같은 것은 외심의 성질이지 내심의 성질이 아니다. 따라서 답은 ②, ④이다.",
+    "solutionImageAlt": "내심의 세 각 이등분선, 접점 D·E·F의 직각과 동일 거리·접선 길이만 표시한다. 원문에 없는 예시 각도 숫자는 제거한다.",
+    "solutionImageCaption": "내심의 세 각 이등분선, 접점 D·E·F의 직각과 동일 거리·접선 길이만 표시한다. 원문에 없는 예시 각도 숫자는 제거한다.",
     "solutionImageSize": "full",
     "image": "assets/images/20_왕의중_2학기_중간_중2_수학/q7-problem.svg",
     "imageAlt": "원문 7번의 점·선·각·치수를 답 노출 없이 재구성한 문제 그림.",
@@ -1216,8 +1216,8 @@ window.examData = {
     "primaryMethod": "수평선 위 두 y좌표의 상등",
     "decisiveStep": "x축에 평행하므로 두 y좌표를 같게 놓아 한 일차방정식을 푼다.",
     "solutionImage": "assets/images/20_왕의중_2학기_중간_중2_수학/q21-solution.svg",
-    "solutionImageAlt": "가로로 곧은 수평선 y=6이 있고 그 위의 두 점 (−1,6)과 (5,6)의 좌표가 표시되어 있다.",
-    "solutionImageCaption": "x축에 평행한 직선 위의 점은 y좌표가 모두 같다. 두 점 (5,a+2), (−1,3a−6)의 y좌표가 같으므로 a+2=3a−6이고 8=2a에서 a=4이다. 이때 두 점은 (5,6), (−1,6)이고 수평선 y=6 위에 있다. 따라서 a=4이다.",
+    "solutionImageAlt": "두 점 (-1,6), (5,6)의 y좌표가 같아 x축과 평행하며 a=4이다.",
+    "solutionImageCaption": "두 점 (-1,6), (5,6)의 y좌표가 같아 x축과 평행하며 a=4이다.",
     "solutionImageSize": "full"
   },
   {

@@ -1136,8 +1136,8 @@ window.questionBank = [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q16.png"
     ],
     "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q16-solution.svg",
-    "solutionImageAlt": "해설 그림: 원래 원 O, 접는 선 AB와 중점 M, 반사된 중심 O′ 및 A와 B를 잇는 접힌 원호. OM과 MO′ 및 AM과 MB에 같은 눈금을 표시했다.",
-    "solutionImageCaption": "OO′=8 cm이므로 OM=4 cm. 직각삼각형 OMA에서 AM=4√3 cm, 따라서 AB=8√3 cm. 답: 8√3 cm, ⑤.",
+    "solutionImageAlt": "현 AB를 접어 아래쪽 원호가 O를 지나는 안쪽 접힘호로 나타나며, 접힘선 AB와 중심까지의 거리 OM을 그린다.",
+    "solutionImageCaption": "현 AB를 접어 아래쪽 원호가 O를 지나는 안쪽 접힘호로 나타나며, 접힘선 AB와 중심까지의 거리 OM을 그린다.",
     "solutionImageSize": "full"
   ,
     "primaryMethod": "접힌 원호가 원래 중심을 지난다는 조건을 반사된 중심 간 거리로 옮겨 중심과 접는 현의 거리를 정하고 반현에 피타고라스를 적용한다.",
@@ -1204,17 +1204,20 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculumApplicability": "CORE",
-    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q17.png",
+    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q17-problem.svg",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q17.png"
     ],
     "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q17-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내접원과 접점 D, E, F. 파랑·주황·초록 표식은 각 꼭짓점에서 같은 길이의 접선 쌍을 나타낸다.",
-    "solutionImageCaption": "AD=AF=3 cm, BD=BE=7 cm, CE=CF=6 cm이므로 BC=BE+EC=13 cm. 답: 13, ④.",
+    "solutionImageAlt": "17번 해설 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "solutionImageCaption": "17번 해설 도형: 주어진 변·원·각과 표식을 보존한다.",
     "solutionImageSize": "full"
   ,
     "primaryMethod": "같은 꼭짓점에서의 두 접선 조각을 대응시키고 한 변의 차로 남은 조각을 구한 뒤 목표 삼각형 변의 두 조각을 합한다.",
-    "decisiveStep": "같은 꼭짓점에서의 두 접선 조각을 대응시키고 한 변의 차로 남은 조각을 구한 뒤 목표 삼각형 변의 두 조각을 합한다."
+    "decisiveStep": "같은 꼭짓점에서의 두 접선 조각을 대응시키고 한 변의 차로 남은 조각을 구한 뒤 목표 삼각형 변의 두 조각을 합한다.",
+    "imageAlt": "17번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "imageCaption": "17번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "imageSize": "full"
   },
   {
     "id": 18,
@@ -1274,7 +1277,7 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculumApplicability": "CORE",
-    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q18.png",
+    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q18-problem.svg",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q18.png"
     ],
@@ -1284,7 +1287,10 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "primaryMethod": "큰 삼각형의 세 변으로 한 꼭짓점의 두 접선 길이를 정하고 새 접선의 등길이 조각을 소거하여 잘린 삼각형 둘레의 불변 합을 구한다.",
-    "decisiveStep": "큰 삼각형의 세 변으로 한 꼭짓점의 두 접선 길이를 정하고 새 접선의 등길이 조각을 소거하여 잘린 삼각형 둘레의 불변 합을 구한다."
+    "decisiveStep": "큰 삼각형의 세 변으로 한 꼭짓점의 두 접선 길이를 정하고 새 접선의 등길이 조각을 소거하여 잘린 삼각형 둘레의 불변 합을 구한다.",
+    "imageAlt": "18번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "imageCaption": "18번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "imageSize": "full"
   },
   {
     "id": 19,
@@ -1348,17 +1354,20 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculumApplicability": "CORE",
-    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q19.png",
+    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q19-problem.svg",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q19.png"
     ],
     "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q19-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 O에 외접하는 사각형 ABCD, 네 접점과 C·D의 직각 표시. 같은 꼭짓점에서 그은 접선 길이를 색으로 구분했다.",
-    "solutionImageCaption": "A에서의 접선 길이를 u라 두면 AB=u+4, AD=u+2, BC=6, CD=4이다. (u+4)^2=(4−u)^2+16에서 u=1, 따라서 AB=5. 답: 5, ③.",
+    "solutionImageAlt": "19번 해설 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "solutionImageCaption": "19번 해설 도형: 주어진 변·원·각과 표식을 보존한다.",
     "solutionImageSize": "full"
   ,
     "primaryMethod": "외접사각형의 마주 보는 변 합으로 두 미지변을 연결하고 직각사다리꼴의 밑변 차·높이로 피타고라스 식을 세워 목표 변을 복원한다.",
-    "decisiveStep": "외접사각형의 마주 보는 변 합으로 두 미지변을 연결하고 직각사다리꼴의 밑변 차·높이로 피타고라스 식을 세워 목표 변을 복원한다."
+    "decisiveStep": "외접사각형의 마주 보는 변 합으로 두 미지변을 연결하고 직각사다리꼴의 밑변 차·높이로 피타고라스 식을 세워 목표 변을 복원한다.",
+    "imageAlt": "19번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "imageCaption": "19번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "imageSize": "full"
   },
   {
     "id": 20,
@@ -1418,7 +1427,7 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculumApplicability": "CORE",
-    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q20.png",
+    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q20-problem.svg",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q20.png"
     ],
@@ -1428,7 +1437,10 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "primaryMethod": "현길이와 반지름이 같은 두 정삼각형을 확인하고 현 중점까지의 중심거리를 피타고라스로 구한 뒤 끼인 중심각으로 목표 삼각형 넓이를 계산한다.",
-    "decisiveStep": "P,Q가 현의 중점이므로 중심에서 현까지의 수선거리 OP=OQ=√(6²−3²)=3√3을 구한다. 두 정삼각형의 중심각을 각각 이등분하여 ∠POQ=60°로 두고 넓이에 연결한다."
+    "decisiveStep": "P,Q가 현의 중점이므로 중심에서 현까지의 수선거리 OP=OQ=√(6²−3²)=3√3을 구한다. 두 정삼각형의 중심각을 각각 이등분하여 ∠POQ=60°로 두고 넓이에 연결한다.",
+    "imageAlt": "20번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "imageCaption": "20번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "imageSize": "full"
   },
   {
     "id": 21,
@@ -1488,17 +1500,20 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculumApplicability": "CORE",
-    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q21.png",
+    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q21-problem.svg",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q21.png"
     ],
     "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q21-solution.svg",
-    "solutionImageAlt": "해설 그림: AB=24의 중점 C에서 만나는 두 원, P 접선과 현 AQ·중점 H, 색칠한 △AOQ. 같은 반지름과 현의 두 반을 색으로 구분했다.",
-    "solutionImageCaption": "AB=24, C는 중점이다. O′P=6, AO′=18이므로 sin∠O′AP=1/3; AQ=8√2. 넓이=8√2. 답: 8√2, ③.",
+    "solutionImageAlt": "21번 해설 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "solutionImageCaption": "21번 해설 도형: 주어진 변·원·각과 표식을 보존한다.",
     "solutionImageSize": "full"
   ,
     "primaryMethod": "큰 원의 접선 직각삼각형에서 sin·cos를 구하고 같은 방향의 작은 원 현을 수직이등분하여 길이를 복원한 뒤 사인 넓이로 연결한다.",
-    "decisiveStep": "큰 원의 접선 직각삼각형에서 sin·cos를 구하고 같은 방향의 작은 원 현을 수직이등분하여 길이를 복원한 뒤 사인 넓이로 연결한다."
+    "decisiveStep": "큰 원의 접선 직각삼각형에서 sin·cos를 구하고 같은 방향의 작은 원 현을 수직이등분하여 길이를 복원한 뒤 사인 넓이로 연결한다.",
+    "imageAlt": "21번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "imageCaption": "21번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "imageSize": "full"
   },
   {
     "id": 22,
@@ -1552,17 +1567,20 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculumApplicability": "CORE",
-    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/s01.png",
+    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q22-problem.svg",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/s01.png"
     ],
     "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q22-solution.svg",
-    "solutionImageAlt": "해설 그림: 수선 AH로 나뉜 두 직각삼각형 △ABH·△ACH, AB=4 cm, B의 30°와 C의 60°.",
-    "solutionImageCaption": "(1) △ABH에서 AH=2 cm. (2) △ACH에서 AC=4√3/3 cm. 답: (1) 2 cm, (2) 4√3/3 cm.",
+    "solutionImageAlt": "22번 해설 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "solutionImageCaption": "22번 해설 도형: 주어진 변·원·각과 표식을 보존한다.",
     "solutionImageSize": "full"
   ,
     "primaryMethod": "첫 직각삼각형의 사인으로 공통 높이를 구한 뒤 두 번째 직각삼각형의 사인 관계에 전달해 목표 빗변을 구한다.",
-    "decisiveStep": "첫 직각삼각형의 사인으로 공통 높이를 구한 뒤 두 번째 직각삼각형의 사인 관계에 전달해 목표 빗변을 구한다."
+    "decisiveStep": "첫 직각삼각형의 사인으로 공통 높이를 구한 뒤 두 번째 직각삼각형의 사인 관계에 전달해 목표 빗변을 구한다.",
+    "imageAlt": "22번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "imageCaption": "22번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+    "imageSize": "full"
   },
   {
     "id": 23,
@@ -1677,17 +1695,20 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculumApplicability": "CORE",
-    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/s03.png",
+    "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q24-problem.svg",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/s03.png"
     ],
     "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q24-solution.svg",
-    "solutionImageAlt": "해설 그림: 접는 선 AC가 있는 삼각형 ABC와 밑변에 내린 수선 AH. 왼쪽에 테이프 폭 2 cm를 별도 구간으로 표시하고, 같은 눈금으로 AH와 연결했다.",
-    "solutionImageCaption": "∠ACB=67.5°이다. AH=2 cm, AB=BC=2√2 cm이므로 △ABC의 넓이는 2√2 cm². 답: (1) 67.5°, (2) 2√2 cm².",
+    "solutionImageAlt": "폭 2 cm 테이프의 서로 평행한 가장자리와 접는 선 AC, 접힌 선 AB 및 45° 각을 위치 관계로 나타낸다.",
+    "solutionImageCaption": "폭 2 cm 테이프의 서로 평행한 가장자리와 접는 선 AC, 접힌 선 AB 및 45° 각을 위치 관계로 나타낸다.",
     "solutionImageSize": "full"
   ,
     "primaryMethod": "접기 대칭과 평행선으로 두 각이 같음을 얻고 종이 폭을 높이로 해석하여 사인으로 밑변을 복원한 다음 삼각형 넓이를 구한다.",
-    "decisiveStep": "접기 대칭과 평행선으로 두 각이 같음을 얻고 종이 폭을 높이로 해석하여 사인으로 밑변을 복원한 다음 삼각형 넓이를 구한다."
+    "decisiveStep": "접기 대칭과 평행선으로 두 각이 같음을 얻고 종이 폭을 높이로 해석하여 사인으로 밑변을 복원한 다음 삼각형 넓이를 구한다.",
+    "imageAlt": "폭 2 cm 테이프의 서로 평행한 가장자리와 접는 선 AC, 접힌 선 AB 및 45° 각을 위치 관계로 나타낸다.",
+    "imageCaption": "폭 2 cm 테이프의 서로 평행한 가장자리와 접는 선 AC, 접힌 선 AB 및 45° 각을 위치 관계로 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": 25,

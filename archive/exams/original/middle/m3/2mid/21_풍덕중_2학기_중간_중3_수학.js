@@ -492,8 +492,8 @@ window.examData = {
       "answer": "①",
       "solution": "정육각형은 한 변이 $3$인 정삼각형 6개로 나뉜다.\n정삼각형의 높이는 $\\sqrt{3^2-(\\frac32)^2}=\\dfrac{3\\sqrt3}{2}$이다.\n한 조각의 넓이는 $\\dfrac12\\cdot3\\cdot\\dfrac{3\\sqrt3}{2}=\\dfrac{9\\sqrt3}{4}$이다.\n전체 넓이는 $6\\cdot\\dfrac{9\\sqrt3}{4}=\\dfrac{27\\sqrt3}{2}$ cm$^2$이므로 정답은 ①이다.",
       "solutionImage": "assets/images/21_풍덕중_2학기_중간_중3_수학/q13-solution.svg",
-      "solutionImageAlt": "해설 그림: 한 변이 3cm인 정육각형을 중심 O에서 꼭짓점으로 이은 여섯 정삼각형으로 나누고, 같은 색으로 표시했다.",
-      "solutionImageCaption": "한 조각의 넓이는 1/2×3×(3√3/2)=9√3/4cm²이다. 여섯 조각의 넓이는 27√3/2cm²이다. 답은 ①이다.",
+      "solutionImageAlt": "정육각형을 한 변 3cm의 여섯 정삼각형으로 분할하되 내부 면 채움은 제거한다",
+      "solutionImageCaption": "정육각형을 한 변 3cm의 여섯 정삼각형으로 분할하되 내부 면 채움은 제거한다",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중2 수학",
@@ -740,8 +740,8 @@ window.examData = {
       "answer": "①",
       "solution": "$x=\\angle DAC$이고 $\\angle ACB=90^\\circ$이므로 $\\triangle ADC$는 C에서 직각이다.\n$\\sin x=\\dfrac{\\overline{DC}}{\\overline{AD}}=\\dfrac12$, $\\overline{DC}=4$이므로 $\\overline{AD}=8$이다.\n피타고라스 정리로 $\\overline{AC}=\\sqrt{8^2-4^2}=4\\sqrt3$이다. 또 $\\overline{BD}=\\overline{DC}=4$이므로 $\\overline{BC}=8$이다.\n$\\triangle ABC$에서 $\\overline{AB}=\\sqrt{(4\\sqrt3)^2+8^2}=4\\sqrt7$이다.\n$\\overline{BD}=\\overline{DC}$이고 두 삼각형 ABD, ADC의 높이는 같으므로 두 삼각형의 넓이는 같다. 따라서 $[ADC]=\\dfrac12\\cdot4\\cdot4\\sqrt3=8\\sqrt3$이다.\nD에서 AB에 내린 수선의 발을 H라 하자. 직각삼각형 ADH에서 $\\overline{DH}=\\overline{AD}\\sin y=8\\sin y$이다. 그러므로 $[ABD]=\\dfrac12\\cdot\\overline{AB}\\cdot\\overline{DH}=\\dfrac12\\cdot4\\sqrt7\\cdot8\\sin y=16\\sqrt7\\sin y$이다.\n두 넓이를 같게 놓으면 $16\\sqrt7\\sin y=8\\sqrt3$이므로 $\\sin y=\\dfrac{\\sqrt3}{2\\sqrt7}=\\dfrac{\\sqrt{21}}{14}$이다.\n정답은 ①이다.",
       "solutionImage": "assets/images/21_풍덕중_2학기_중간_중3_수학/q19-solution.svg",
-      "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 D는 BC의 중점이고, AD와 D에서 AB에 내린 수선 DH를 표시했다. x=∠DAC, y=∠BAD이며 △ABD와 △ADC의 넓이는 같은 색이다.",
-      "solutionImageCaption": "sin x=1/2, DC=4cm에서 AD=8cm이고 AC=4√3cm이다. △ADC의 넓이는 8√3cm²이다. 두 삼각형의 넓이가 같으므로 16√7 sin y=8√3, 따라서 sin y=√21/14이다. 답은 ①이다.",
+      "solutionImageAlt": "BD=DC=4, AC=4√3, AD=8과 D에서 AB로 내린 수선 DH를 표시하고 불필요한 면 채움을 제거한다",
+      "solutionImageCaption": "BD=DC=4, AC=4√3, AD=8과 D에서 AB로 내린 수선 DH를 표시하고 불필요한 면 채움을 제거한다",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
