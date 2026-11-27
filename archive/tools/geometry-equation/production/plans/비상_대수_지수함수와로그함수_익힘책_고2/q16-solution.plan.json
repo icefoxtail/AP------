@@ -1,0 +1,17 @@
+{
+  "capability":"exponential-affine-spike-v1",
+  "graphPlan":{"family":"exponential-affine","base":"3","coefficients":["1","-1","2"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[-2,4],"viewport":[-3,5,1,12],
+    "requiredPoints":[{"id":"P","x":0,"y":3}],
+    "axisTickValues":{"x":["0","1"],"y":["2","3"]},
+    "overlays":{"lines":[{"id":"asym","slope":"0","intercept":"2","label":"y=2"}]}},
+  "pointNames":{"P":"P"},
+  "caption":"y=3^{-x}+2는 (0,3)을 지나며 x가 커질수록 감소하고 점근선 y=2 위쪽에서 그 선에 가까워진다. 따라서 증가한다고 한 ③은 옳지 않다.",
+  "accessibilityDescription":"오른쪽 아래로 감소하는 지수곡선, 좌표 (0,3)의 점 P와 수평 점선 y=2를 표시한 그래프. 곡선 아래 면 채움은 없다.",
+  "sourceConditions":[
+    {"id":"formula","condition":"y=3^{-x}+2","mappedTo":["graphPlan.coefficients","graphPlan.base"]},
+    {"id":"pass","condition":"원문 보기 ①의 점 (0,3)","mappedTo":["P"]},
+    {"id":"asym","condition":"점근선 y=2는 수평 점선","mappedTo":["asym"]},
+    {"id":"monotone","condition":"밑 1/3<1의 감소","mappedTo":["graphPlan.domain","caption"]}
+  ],
+  "newVisualInformation":["원문 선택지의 지나는 점과 수평 점근선·감소 방향을 실제 곡선·점·점선으로 결속, 기본 바탕과 면은 채우지 않음"]
+}

@@ -1,0 +1,20 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "graphPlan":{"family":"multi-curve","viewport":[-4,4,-5,12],"curves":[
+    {"id":"f","kind":"Y_OF_X","coefficients":["-4","0","1"],"domain":["-4","4"],"color":"BLUE","label":"y=f(x)",
+      "emphasis":[{"from":"-4","to":"-2","color":"WARM"},{"from":"3","to":"4","color":"WARM"}]},
+    {"id":"g","kind":"LINE","coefficients":["2","1"],"domain":["-4","4"],"color":"GREEN","label":"y=g(x)"}
+  ],"axisTickValues":{"x":["-2","3"],"y":["5"]},
+  "overlays":{"points":[{"id":"P","x":"-2","y":"0","coordinates":true},{"id":"Q","x":"3","y":"5","coordinates":true}],
+  "guides":[{"id":"qX","from":"Q","axis":"x"}]}},
+  "pointNames":{"P":"P","Q":"Q"},
+  "caption":"원본 개형의 두 교점 x=-2, 3을 그대로 재현한 대표식 f=x²-4, g=x+2의 비교. 밑 1/2는 감소하므로 f>g인 x<-2 또는 x>3을 곡선 굵은 구간으로 나타낸다.",
+  "accessibilityDescription":"파란 포물선 f와 초록 직선 g가 x=-2 및 x=3에서 만난다. 두 교점 바깥에서 포물선이 위에 있어 왼쪽·오른쪽 두 가지를 굵은 선으로 강조한다. x=3은 점선으로 x축에 연결한다.",
+  "sourceConditions":[
+    {"id":"crossings","condition":"원본 이미지 두 교점의 x좌표 -2 및 3","mappedTo":["P","Q"]},
+    {"id":"inequality","condition":"(1/2)^f < (1/2)^g 는 f>g 와 동치","mappedTo":["f","g"]},
+    {"id":"intervals","condition":"x<-2 또는 x>3 두 구간만 해","mappedTo":["f.emphasis","caption"]},
+    {"id":"representative","condition":"함수의 식은 원문 미제시; f=x²-4와 g=x+2는 그림의 모양·교점을 만족하는 대표식","mappedTo":["f","g"]}
+  ],
+  "newVisualInformation":["원본의 두 교점 -2,3과 포물선/직선 이름, 해당 두 바깥 구간의 실제 곡선 강조, x=3 보조점선을 보존; 문제용 이미지 자체는 유지"]
+}

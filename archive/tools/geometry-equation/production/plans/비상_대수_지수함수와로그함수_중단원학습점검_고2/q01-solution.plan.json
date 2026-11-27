@@ -1,0 +1,34 @@
+{
+  "capability":"composite-panels-v1",
+  "panels":[
+    {"caption":{"text":"⑴·⑵ 지수함수와 점근선"},"plan":{"capability":"multi-curve-figure-v1","graphPlan":{
+      "family":"multi-curve","viewport":[-3,5,-3,5],
+      "curves":[
+        {"id":"f1","kind":"EXPONENTIAL","base":"2","coefficients":["1","1","-1"],"shiftX":"2","domain":["-2","4"],"color":"BLUE"},
+        {"id":"f2","kind":"EXPONENTIAL","base":"1/3","coefficients":["-1","1","2"],"domain":["-1","5"],"color":"WARM"}
+      ],
+      "axisTickValues":{"x":["2","3"],"y":["-1","1","2"]},
+      "overlays":{"lines":[{"id":"h1","slope":"0","intercept":"-1","label":"y=-1"},{"id":"h2","slope":"0","intercept":"2","label":"y=2"}],
+        "points":[{"id":"A","x":"2","y":"0","coordinates":true},{"id":"B","x":"3","y":"1","coordinates":true},{"id":"C","x":"0","y":"1","coordinates":true},{"id":"D","x":"-1","y":"-1","coordinates":true}]}
+    }}},
+    {"caption":{"text":"⑶·⑷ 로그함수와 점근선"},"plan":{"capability":"multi-curve-figure-v1","graphPlan":{
+      "family":"multi-curve","viewport":[-5,8,-3,4],
+      "curves":[
+        {"id":"g3","kind":"LOGARITHMIC","base":"4","coefficients":["1","1","-3","0"],"domain":["13/4","7"],"color":"BLUE"},
+        {"id":"g4","kind":"LOGARITHMIC","base":"1/2","coefficients":["1","-1","0","1"],"domain":["-4","-1/4"],"color":"WARM"}
+      ],
+      "axisTickValues":{"x":["-2","-1","3","4","7"],"y":["1"]},
+      "overlays":{"lines":[{"id":"v3","x":"3","label":"x=3"}],
+        "points":[{"id":"E","x":"4","y":"0","coordinates":true},{"id":"F","x":"7","y":"1","coordinates":true},{"id":"G","x":"-1","y":"1","coordinates":true},{"id":"H","x":"-2","y":"0","coordinates":true}]}
+    }}}
+  ],
+  "caption":"⑴ y=2^(x-2)-1의 점근선 y=-1, ⑵ y=-(1/3)^x+2의 점근선 y=2, ⑶ y=log_4(x-3)의 점근선 x=3, ⑷ y=log_(1/2)(-x)+1의 점근선 x=0을 각각 분리된 두 좌표판에서 확인한다.",
+  "accessibilityDescription":"첫 패널에는 증가하는 파란 지수함수와 증가하는 주황색 지수함수 및 서로 다른 두 수평 점근선 y=-1, y=2가 점선으로 표시된다. 둘째 패널에는 x>3에서 정의되는 증가 로그함수와 x<0에서 정의되는 증가 로그함수, x=3의 수직 점근선 및 기준점들이 있다. x=0의 점근선은 y축 자체다.",
+  "sourceConditions":[
+    {"id":"e1","condition":"⑴ y=2^(x-2)-1, (2,0),(3,1), 점근선 y=-1","mappedTo":["panels[0].plan.graphPlan.curves[f1]","panels[0].plan.graphPlan.overlays.points[A]","panels[0].plan.graphPlan.overlays.points[B]","panels[0].plan.graphPlan.overlays.lines[h1]"]},
+    {"id":"e2","condition":"⑵ y=-(1/3)^x+2, (0,1),(-1,-1), 점근선 y=2","mappedTo":["panels[0].plan.graphPlan.curves[f2]","panels[0].plan.graphPlan.overlays.points[C]","panels[0].plan.graphPlan.overlays.points[D]","panels[0].plan.graphPlan.overlays.lines[h2]"]},
+    {"id":"l3","condition":"⑶ y=log_4(x-3), (4,0),(7,1), 점근선 x=3","mappedTo":["panels[1].plan.graphPlan.curves[g3]","panels[1].plan.graphPlan.overlays.points[E]","panels[1].plan.graphPlan.overlays.points[F]","panels[1].plan.graphPlan.overlays.lines[v3]"]},
+    {"id":"l4","condition":"⑷ y=log_(1/2)(-x)+1, (-1,1),(-2,0), 점근선 x=0","mappedTo":["panels[1].plan.graphPlan.curves[g4]","panels[1].plan.graphPlan.overlays.points[G]","panels[1].plan.graphPlan.overlays.points[H]"]}
+  ],
+  "newVisualInformation":["원문이 직접 요구한 4개 지수·로그 그래프를 두 종류별 패널에 빠짐없이 제공하며 4개 점근선(축과 겹치는 x=0 포함), 함수별 대표점 8개를 실제 필드에 표시; 의미 없는 면 채움 없음"]
+}

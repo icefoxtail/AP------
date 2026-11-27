@@ -1,0 +1,24 @@
+{
+  "capability":"composite-panels-v1",
+  "panels":[
+    {"caption":{"text":"⑴ 증가 지수함수"},"plan":{"capability":"multi-curve-figure-v1","graphPlan":{
+      "family":"multi-curve","viewport":[-2,2,-5,0],"curves":[
+        {"id":"f","kind":"EXPONENTIAL","base":"2","coefficients":["1","1","-5"],"shiftX":"-1","domain":["-1","1"],"color":"BLUE"}
+      ],"axisTickValues":{"x":["-1","1"],"y":["-4","-1"]},
+      "overlays":{"points":[{"id":"L","x":"-1","y":"-4","coordinates":true},{"id":"R","x":"1","y":"-1","coordinates":true}],"guides":[{"id":"l","from":"L","axis":"x"},{"id":"r","from":"R","axis":"x"}]}
+    }}},
+    {"caption":{"text":"⑵ 감소 로그함수"},"plan":{"capability":"multi-curve-figure-v1","graphPlan":{
+      "family":"multi-curve","viewport":[-2,2,0,3],"curves":[
+        {"id":"g","kind":"LOGARITHMIC","base":"1/5","coefficients":["1","2","3","2"],"domain":["-1","1"],"color":"WARM"}
+      ],"axisTickValues":{"x":["-1","1"],"y":["1","2"]},
+      "overlays":{"points":[{"id":"U","x":"-1","y":"2","coordinates":true},{"id":"V","x":"1","y":"1","coordinates":true}],"guides":[{"id":"u","from":"U","axis":"x"},{"id":"v","from":"V","axis":"x"}]}
+    }}}
+  ],
+  "caption":"같은 닫힌 정의역 -1≤x≤1에서 ⑴ 지수함수는 증가해 최솟값 -4, 최댓값 -1이고 ⑵ 로그함수는 감소해 최댓값 2, 최솟값 1이다.",
+  "accessibilityDescription":"두 그래프 모두 x가 -1부터 1까지인 구간만 그린다. 왼쪽의 증가 지수곡선은 (-1,-4)에서 (1,-1)까지, 오른쪽 감소 로그곡선은 (-1,2)에서 (1,1)까지 이어지며 끝점의 이름과 좌표, 점선 수선이 보인다.",
+  "sourceConditions":[
+    {"id":"first","condition":"⑴ y=2^(x+1)-5, x∈[-1,1], 양 끝 (-1,-4),(1,-1)","mappedTo":["panels[0].plan.graphPlan.curves[f]","panels[0].plan.graphPlan.overlays.points[L]","panels[0].plan.graphPlan.overlays.points[R]"]},
+    {"id":"second","condition":"⑵ y=log_(1/5)(2x+3)+2, x∈[-1,1], 양 끝 (-1,2),(1,1)","mappedTo":["panels[1].plan.graphPlan.curves[g]","panels[1].plan.graphPlan.overlays.points[U]","panels[1].plan.graphPlan.overlays.points[V]"]}
+  ],
+  "newVisualInformation":["증가·감소가 반대인 두 그래프를 별도 좌표판에 배치하고 원문 최대/최소의 실제 끝점을 좌표·보조점선으로 표시, 면 채움 없음"]
+}

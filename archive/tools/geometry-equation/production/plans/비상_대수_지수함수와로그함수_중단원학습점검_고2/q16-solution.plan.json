@@ -1,0 +1,39 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "graphPlan":{"family":"multi-curve","viewport":[-1,15,-3,16],"curves":[
+    {"id":"exp","kind":"EXPONENTIAL","base":"4","coefficients":["1","1","-2"],"domain":["-1","3"],"color":"BLUE"},
+    {"id":"log","kind":"LOGARITHMIC","base":"4","coefficients":["1","1","2","0"],"domain":["-1","15"],"color":"WARM"}
+  ],"axisTickValues":{"x":["1","2","14"],"y":["2","14"]},
+  "overlays":{"lines":[
+    {"id":"diagonal","slope":"-1","intercept":"16","label":"y=-x+16"},
+    {"id":"horizontal","slope":"0","intercept":"2","label":"y=2"},
+    {"id":"symmetry","slope":"1","intercept":"0","label":"y=x","style":"DASHED"}
+  ],
+  "points":[
+    {"id":"P","x":"14","y":"2","coordinates":true},
+    {"id":"Q","x":"2","y":"14","coordinates":true},
+    {"id":"R","x":"1","y":"2","coordinates":true},
+    {"id":"H","x":"2","y":"2"},
+    {"id":"M","x":"8","y":"8"}
+  ],
+  "polygons":[{"id":"area","points":["P","Q","R"],"fill":"LIGHT"}],
+  "segments":[
+    {"id":"PQ","from":"P","to":"Q"},
+    {"id":"PR","from":"P","to":"R","length":true},
+    {"id":"QR","from":"Q","to":"R"},
+    {"id":"QH","from":"Q","to":"H","dashed":true,"length":true}
+  ],
+  "rightAngles":[{"id":"qAngle","at":"H","from":["Q","P"]}]
+  }},
+  "pointNames":{"P":"P","Q":"Q","R":"R","H":"H","M":"M"},
+  "caption":"서로 역함수인 y=log₄(x+2), y=4^x−2의 대칭성으로 P(14,2)를 y=x에 반사하면 Q(2,14)다. Q에서 PR에 내린 수선 QH=12, PR=13이므로 넓이는 78이다. R(1,2)에서 a=4,b=2, log₂(ab)=3.",
+  "accessibilityDescription":"상단의 가파른 지수곡선 위 Q(2,14), R(1,2), 오른쪽 로그곡선 위 P(14,2)가 있다. 직선 y=x는 대칭선으로 점선, 직선 y=-x+16는 P와 Q를 지나는 실선이다. 삼각형 PQR의 밝은 음영, 밑변 PR=13, 수직 점선 높이 QH=12, H의 직각표식이 표시된다.",
+  "sourceConditions":[
+    {"id":"inverse","condition":"y=log_a(x+b)와 y=a^x-b는 역함수; P(14,2)에서 Q(2,14)로 y=x 대칭","mappedTo":["log","exp","P","Q","symmetry","M","PQ"]},
+    {"id":"slant","condition":"P와 Q를 지나는 기울기 -1인 직선 y=-x+16","mappedTo":["diagonal","PQ"]},
+    {"id":"height","condition":"QH=14-2=12 및 H=(2,2), PR 수평, H에서 직각","mappedTo":["Q","H","QH","qAngle","horizontal"]},
+    {"id":"base","condition":"넓이 78이므로 PR=13, R=(1,2)","mappedTo":["area","PR","R"]},
+    {"id":"parameters","condition":"R(1,2), Q(2,14)에서 a=4,b=2","mappedTo":["exp","R","Q"]}
+  ],
+  "newVisualInformation":["원문 해설에서 생략된 역함수 대칭의 필수 논거 P→Q와 y=x 점선, 수선발 H·높이 12·직각·밑변 13을 실제 객체로 표시; 삼각형 넓이의 필수 면 채움만 허용"]
+}

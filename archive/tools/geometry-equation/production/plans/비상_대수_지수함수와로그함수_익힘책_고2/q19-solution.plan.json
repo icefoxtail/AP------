@@ -1,0 +1,16 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "graphPlan":{"family":"multi-curve","viewport":[1,5,0,8],"curves":[
+    {"id":"f","kind":"EXPONENTIAL","base":"1/2","coefficients":["1","1","-1"],"shiftX":"5","domain":["2","4"],"color":"BLUE","label":"y=(1/2)^(x-5)-1"}
+  ],"axisTickValues":{"x":["2","4"],"y":["1","7"]},
+  "overlays":{"points":[{"id":"M","x":"2","y":"7","coordinates":true},{"id":"N","x":"4","y":"1","coordinates":true}],"guides":[{"id":"gM","from":"M","axis":"x"},{"id":"gN","from":"N","axis":"x"}]}},
+  "pointNames":{"M":"M","N":"N"},
+  "caption":"밑이 1/2인 함수는 감소하므로 왼쪽 끝 M(2,7)이 최댓값, 오른쪽 끝 N(4,1)이 최솟값이다. a=2, b=-5이므로 ab=-10.",
+  "accessibilityDescription":"x=2에서 함수값 7인 점 M에서 x=4일 때 함수값 1인 점 N까지 아래로 내려가는 유한 지수곡선. 두 끝점 좌표와 x축 점선 수선 표시. 면색 없음.",
+  "sourceConditions":[
+    {"id":"formula","condition":"y=(1/2)^(x+b)-1, 최솟값 조건으로 b=-5","mappedTo":["f"]},
+    {"id":"domain","condition":"구간 [a,4]에서 a=2","mappedTo":["f","M","N"]},
+    {"id":"maxmin","condition":"M=(2,7)은 최댓값, N=(4,1)은 최솟값","mappedTo":["M","N","gM","gN"]}
+  ],
+  "newVisualInformation":["왼쪽/오른쪽 끝점과 최대·최소값을 좌표·점선·단조곡선에 직접 표시하여 원문 해설의 구간 판정을 구현, 불필요한 면 채움 없음"]
+}

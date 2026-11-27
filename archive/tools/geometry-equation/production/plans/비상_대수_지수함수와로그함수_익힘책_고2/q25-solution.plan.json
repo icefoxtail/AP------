@@ -1,0 +1,25 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "graphPlan":{"family":"multi-curve","viewport":[-1,11,-2,2],"curves":[
+    {"id":"f","kind":"LOGARITHMIC","base":"10","coefficients":["1","1","0","0"],"domain":["1/10","10"],"color":"WARM"}
+  ],"axisTickValues":{"x":["1"],"y":["1","-1"]},
+  "overlays":{"points":[
+    {"id":"A","x":"1/10","y":"0"},{"id":"B","x":"10","y":"0"},
+    {"id":"C","x":"1/10","y":"-1"},{"id":"D","x":"10","y":"1"},
+    {"id":"M","x":"101/20","y":"0"}
+  ],"segments":[
+    {"id":"AC","from":"A","to":"C"},{"id":"CB","from":"C","to":"B"},
+    {"id":"BD","from":"B","to":"D"},{"id":"DA","from":"D","to":"A"},
+    {"id":"AB","from":"A","to":"B","dashed":true},{"id":"CD","from":"C","to":"D","dashed":true}
+  ]}},
+  "pointNames":{"A":"A","B":"B","C":"C","D":"D","M":"M"},
+  "caption":"예: a=1/10, b=10인 조건 충족 평행사변형. 두 대각선 AB와 CD는 같은 중점 M에서 교차하므로 log a+log b=0, 따라서 ab=1이다.",
+  "accessibilityDescription":"상용로그 곡선 위 C, D와 x축의 A, B를 이은 평행사변형 ACBD에 대각선 AB 및 CD가 점선으로 표시된다. 두 대각선이 교차하는 중점 M을 별도로 표시했다. 면색 없이 외곽선만 그린다.",
+  "sourceConditions":[
+    {"id":"log","condition":"C=(a,log a), D=(b,log b); 대표 예 a=1/10,b=10","mappedTo":["f","C","D"]},
+    {"id":"vertical","condition":"A=(a,0), B=(b,0), AC 및 BD가 x축에 수직","mappedTo":["A","B","AC","BD"]},
+    {"id":"parallelogram","condition":"ACBD의 평행사변형 대각선 AB,CD는 M에서 서로 이등분","mappedTo":["AB","CD","M"]},
+    {"id":"answer","condition":"log a+log b=0에서 ab=1","mappedTo":["caption"]}
+  ],
+  "newVisualInformation":["원본 문제 그림의 A/B/C/D를 유지하며 해설의 결정적 보조선 두 대각선과 실제 공통 중점 M을 추가; 예시 좌표는 대표값임을 밝힘, 면 채움 없음"]
+}
