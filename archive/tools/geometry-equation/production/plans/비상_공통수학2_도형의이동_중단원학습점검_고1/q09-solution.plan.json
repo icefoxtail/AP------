@@ -1,0 +1,31 @@
+{
+  "capability":"construction-spike-v1",
+  "caption":"대칭이동한 원의 중심은 (3,2), 반지름은 2이며 평행한 두 접선 3x−4y+9=0, 3x−4y−11=0이 각각 k=-9, 11에 대응한다.",
+  "accessibilityDescription":"좌표평면에서 원의 중심 O(3,2), 반지름 2인 원과 두 평행한 접선이 있다. 두 접선은 각각 한 점에서만 원에 닿는다. 중심에서 접점까지 반지름 보조선과 직각 표식이 있고 원 안쪽은 칠하지 않는다.",
+  "sourceConditions":[
+    {"id":"s1","condition":"원래 원 중심 (2,3)을 y=x에 대칭이동하면 새 원 중심 O(3,2)이고 반지름은 2다.","mappedTo":["mathPlan.nodes[0]","mathPlan.nodes[1]","mathPlan.nodes[2]","mathPlan.nodes[3]","displayCircles"]},
+    {"id":"s2","condition":"직선의 y축 대칭 결과는 3x−4y−k=0이다. 원 중심에서 거리 2가 되려면 |1−k|=10, 즉 k=-9 또는 11이다.","mappedTo":["mathPlan.nodes[4]","mathPlan.nodes[5]","displayLines","lineLabels","caption"]},
+    {"id":"s3","condition":"두 접선 각각의 접점은 원 중심에서 직선에 내린 수선의 발이다. 수선은 접선과 직각이고 길이는 반지름 2다.","mappedTo":["mathPlan.nodes[6]","mathPlan.nodes[7]","rightAngles","displaySegments"]}
+  ],
+  "newVisualInformation":["k의 두 결괏값을 하나의 원에 닿는 두 평행한 직선으로 정확히 분리한다.","중심에서 각 접선으로 내린 두 수선과 각각의 직각 표식을 빠짐없이 그린다.","원을 흰 면으로 채우지 않고 접선·반지름 선만 사용한다."],
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"O0","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"m","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"1"},"b":{"kind":"integer","value":"-1"},"c":{"kind":"integer","value":"0"}},"outputType":"LINE","factRole":"GIVEN"},
+    {"id":"O","op":"LINE_REFLECTION","inputs":["O0","m"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"kCircle","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"2"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"tMinus","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"3"},"b":{"kind":"integer","value":"-4"},"c":{"kind":"integer","value":"9"}},"outputType":"LINE","factRole":"CONCLUSION"},
+    {"id":"tPlus","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"3"},"b":{"kind":"integer","value":"-4"},"c":{"kind":"integer","value":"-11"}},"outputType":"LINE","factRole":"CONCLUSION"},
+    {"id":"T1","op":"PERPENDICULAR_FOOT","inputs":["O","tMinus"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"T2","op":"PERPENDICULAR_FOOT","inputs":["O","tPlus"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"E1","op":"TRANSLATE_POINT","inputs":["T1"],"args":{"dx":{"kind":"integer","value":"4"},"dy":{"kind":"integer","value":"3"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"E2","op":"TRANSLATE_POINT","inputs":["T2"],"args":{"dx":{"kind":"integer","value":"4"},"dy":{"kind":"integer","value":"3"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["O0","O","T1","T2","E1","E2"],"hiddenPointNames":["O0","E1","E2"],"unmarkedPointNames":["O0","E1","E2"],
+  "coordinateLabels":["O"],
+  "displayLines":["m","tMinus","tPlus"],"lineLabels":[{"nodeId":"tMinus","form":"GENERAL"},{"nodeId":"tPlus","form":"GENERAL"}],
+  "displayCircles":["kCircle"],
+  "displaySegments":[{"id":"r1","refs":["O","T1"]},{"id":"r2","refs":["O","T2"]}],
+  "rightAngles":[{"id":"rt1","refs":["O","T1","E1"]},{"id":"rt2","refs":["O","T2","E2"]}],
+  "planeMarks":{"expressionLabels":[{"id":"radius","ownerSegment":"r1","text":"2"}]},
+  "coordinateCanvas":{"width":600,"height":510}
+}
