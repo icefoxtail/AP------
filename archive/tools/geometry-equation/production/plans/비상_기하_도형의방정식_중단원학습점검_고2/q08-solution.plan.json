@@ -1,0 +1,41 @@
+{
+  "capability":"solid-figure-v1",
+  "unit":"m",
+  "space":{
+    "points":[
+      {"id":"O","at":[0,0,0]},
+      {"id":"A","at":[20,0,0]},
+      {"id":"B","at":[0,20,0]},
+      {"id":"P","at":[0,0,10]},
+      {"id":"H","at":["10/3","10/3","20/3"]}
+    ],
+    "planes":[{"id":"alpha","name":"\\alpha","through":["A","B","P"]}],
+    "segments":[
+      {"from":"O","to":"A"}, {"from":"O","to":"B"}, {"from":"O","to":"P"},
+      {"from":"A","to":"B"}, {"from":"B","to":"P"}, {"from":"P","to":"A"},
+      {"from":"O","to":"H","style":"DASHED"},
+      {"from":"H","to":"A","style":"DASHED"}
+    ]
+  },
+  "marks":{"rightAngles":[
+    {"at":"O","refs":["A","B"]},
+    {"at":"O","refs":["A","P"]},
+    {"at":"H","refs":["O","A"]}
+  ]},
+  "dims":[
+    {"from":"O","to":"A","label":"20"},
+    {"from":"O","to":"B","label":"20"},
+    {"from":"O","to":"P","label":"10"},
+    {"from":"O","to":"H","label":"\\frac{10\\sqrt{6}}{3}"}
+  ],
+  "caption":"OA=OB=20m, OP=10m가 서로 수직이고 평면 PAB의 원점으로부터의 거리 OH=10√6/3m이다.",
+  "accessibilityDescription":"지면의 그림자 끝 A와 B는 O에서 각각 20미터이고 서로 직각이다. 석탑 꼭대기 P는 O 바로 위 10미터, 세 점 PAB를 지나는 평면과 O 사이에는 수선 OH가 점선으로 그려지고 수선발 H에 직각 표식이 있다.",
+  "sourceQuote":"OP=10m, OA=OB=20m, ∠AOB=90°, OP⊥지면, 평면 PAB와 O 사이 거리",
+  "sourceConditions":[
+    {"id":"c1","condition":"OP=10m 및 OP는 지면에 수직","mappedTo":"space.points[3],dims[2],marks.rightAngles[1]"},
+    {"id":"c2","condition":"OA=OB=20m, ∠AOB=90°","mappedTo":"dims[0],dims[1],marks.rightAngles[0]"},
+    {"id":"c3","condition":"평면 PAB와 O의 수선발 H","mappedTo":"space.planes[0],space.segments[6],marks.rightAngles[2]"},
+    {"id":"c4","condition":"OH=10√6/3m","mappedTo":"dims[3]"}
+  ],
+  "newVisualInformation":["원본 석탑 PNG는 문제에 보존하고 해설에서는 수학적으로 필요한 세 직각, 세 원래 길이, 평면 PAB와 새 수선 OH를 실제 표시 필드로 그린다. 내부 면 채움은 하지 않는다."]
+}

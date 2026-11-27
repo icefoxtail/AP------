@@ -1,0 +1,26 @@
+{
+  "capability":"solid-figure-v1",
+  "space":{
+    "points":[
+      {"id":"A","at":[-1,0,2]}, {"id":"H","at":[3,-2,-1]},
+      {"id":"U","at":[5,2,-1],"hideName":true,"hideDot":true},
+      {"id":"V","at":[6,-2,3],"hideName":true,"hideDot":true}
+    ],
+    "planes":[{"id":"alpha","name":"\\alpha","through":["H","U","V"]}],
+    "segments":[
+      {"from":"A","to":"H"},
+      {"from":"H","to":"U","style":"DASHED"},
+      {"from":"H","to":"V","style":"DASHED"}
+    ]
+  },
+  "marks":{"rightAngles":[{"at":"H","refs":["A","U"]}]},
+  "caption":"A에서 평면 α에 내린 수선 AH의 방향벡터 (4,−2,−3)가 법선이므로 평면은 4x−2y−3z−19=0이다.",
+  "accessibilityDescription":"평면 알파 위 수선발 H(3,−2,−1)에서 A(−1,0,2)까지 선분 AH가 수직으로 솟아 있다. H에서 평면 내부 보조선 두 개가 점선으로 뻗고 H에 직각 표식이 있다.",
+  "sourceQuote":"A(−1,0,2)에서 평면 α로 내린 수선발 H(3,−2,−1), 법선 AH=(4,−2,−3)",
+  "sourceConditions":[
+    {"id":"c1","condition":"평면 위 H=(3,−2,−1)","mappedTo":"space.points[1],space.planes[0]"},
+    {"id":"c2","condition":"A=(−1,0,2)는 평면 밖의 점","mappedTo":"space.points[0]"},
+    {"id":"c3","condition":"AH⊥α","mappedTo":"space.segments[0],marks.rightAngles[0]"}
+  ],
+  "newVisualInformation":["법선 방향 AH와 평면 위 보조선, 수선발 H의 직각을 명시하고 문제에서 주지 않은 임의 길이·면 채움은 추가하지 않는다."]
+}
