@@ -1,0 +1,23 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["10", "20", "-5"],
+    "sourceDomain": {"kind": "INTERVAL", "range": [0, 4]},
+    "domain": [0, 4], "viewport": [-1, 5, -2, 34],
+    "requiredPoints": [{"id": "V", "x": 2, "y": 30}],
+    "overlays": {
+      "lines": [{"id": "h25", "slope": "0", "intercept": "25"}],
+      "points": [{"id": "L", "curveX": "1"}, {"id": "R", "curveX": "3"}]
+    },
+    "axisTickValues": {"x": [1, 2, 3], "y": [10, 25, 30]}
+  },
+  "caption": "h(t)=−5(t−2)²+30의 꼭짓점 (2,30)이 최고 높이이며 기준선 h=25와의 교점 t=1,3 사이가 25m 이상인 2초 구간이다.",
+  "accessibilityDescription": "시간 0부터 4까지 높이 포물선과 수평선 h=25가 t=1과 3에서 만나고 정점은 (2,30)이다.",
+  "sourceQuote": "h(t)=−5t²+20t+10, 최고 높이와 h≥25를 유지하는 시간",
+  "sourceConditions": [
+    {"id": "height", "condition": "높이 h=10+20t−5t²", "mappedTo": ["graphPlan.coefficients"]},
+    {"id": "peak", "condition": "t=2에서 h=30", "mappedTo": ["graphPlan.requiredPoints"]},
+    {"id": "threshold", "condition": "25m 기준선과 교점 t=1,3", "mappedTo": ["graphPlan.overlays.lines", "graphPlan.overlays.points"]}
+  ],
+  "newVisualInformation": ["해설의 2초 구간을 수평 기준선과 실제 두 교점으로 직접 표시한다."]
+}

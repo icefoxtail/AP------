@@ -1,0 +1,16 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "k",
+    "rows": [
+      {"kind": "SET", "label": "허근 조건", "pieces": [{"lo": {"value": "-2*sqrt(5)", "state": "OPEN"}, "hi": {"value": "2*sqrt(5)", "state": "OPEN"}}], "integerPoints": true}
+    ]
+  },
+  "caption": "모든 실수 a에서 a²+ka+5>0일 조건 −2√5<k<2√5 안의 정수는 −4부터 4까지 모두 9개이다.",
+  "accessibilityDescription": "−2√5와 2√5를 열린 끝점으로 한 구간과 내부의 정수점 −4부터 4까지 아홉 개를 표시한 수직선이다.",
+  "sourceConditions": [
+    {"id": "disc", "condition": "k²−20<0, 즉 −2√5<k<2√5", "mappedTo": ["numberLine.rows[0].pieces"]},
+    {"id": "int", "condition": "−4,−3,…,4의 정수 아홉 개", "mappedTo": ["numberLine.rows[0].integerPoints"]}
+  ],
+  "newVisualInformation": ["끝점이 제외됨을 빈 원으로, 가능한 정수 각각을 점으로 정확히 나타낸다."]
+}

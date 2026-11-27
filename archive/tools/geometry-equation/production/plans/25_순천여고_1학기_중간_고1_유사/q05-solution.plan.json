@@ -1,0 +1,19 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["5", "4", "-1"],
+    "sourceDomain": {"kind": "INTERVAL", "range": [-1, 1]},
+    "domain": [-1, 1], "viewport": [-2, 3, -1, 10],
+    "requiredPoints": [{"id": "L", "x": -1, "y": 0}, {"id": "R", "x": 1, "y": 8}],
+    "axisTickValues": {"x": [-1, 1], "y": [8]}
+  },
+  "caption": "−1≤x≤1에서 y=−x²+4x+5는 증가하여 왼쪽 끝의 최솟값은 0, 오른쪽 끝의 최댓값은 8이다.",
+  "accessibilityDescription": "두 닫힌 끝점 (-1,0), (1,8)을 가진 포물선의 해당 부분이 왼쪽에서 오른쪽으로 증가한다.",
+  "sourceQuote": "−1≤x≤1에서 y=−x²+4x+5의 최댓값과 최솟값",
+  "sourceConditions": [
+    {"id": "curve", "condition": "함수의 계수 5,4,−1", "mappedTo": ["graphPlan.coefficients"]},
+    {"id": "interval", "condition": "닫힌 정의역 [-1,1]", "mappedTo": ["graphPlan.sourceDomain", "graphPlan.domain"]},
+    {"id": "ends", "condition": "f(-1)=0, f(1)=8", "mappedTo": ["graphPlan.requiredPoints"]}
+  ],
+  "newVisualInformation": ["축 x=2가 범위 밖에 있어 제한된 구간에서 증가하는 모양과 실제 끝점 값을 대조한다."]
+}

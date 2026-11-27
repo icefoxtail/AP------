@@ -1,0 +1,42 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"L","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"-15","denominator":"8"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"R","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"15","denominator":"8"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"U","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"-15","denominator":"8"},{"kind":"rational","numerator":"3","denominator":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"V","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"15","denominator":"8"},{"kind":"rational","numerator":"3","denominator":"2"}]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints": ["A","B","C","H","L","R","U","V"],
+  "hiddenPointNames": ["A","B","C","H","L","R","U","V"],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [], "displayCircles": [],
+  "displaySegments": [
+    {"id":"sAB","refs":["A","B"]},{"id":"sAC","refs":["A","C"]},
+    {"id":"sBC","refs":["B","C"]},{"id":"sAH","refs":["A","H"],"dashed":true},
+    {"id":"sLU","refs":["L","U"]},{"id":"sUV","refs":["U","V"]},
+    {"id":"sVR","refs":["V","R"]}
+  ],
+  "rightAngles": [{"id":"rH","refs":["A","H","C"]}],
+  "planeMarks": {"dimensions": [
+    {"id":"base6","from":"B","to":"C","label":"6","side":"BELOW","factRole":"GIVEN"},
+    {"id":"height4","from":"A","to":"H","label":"4","side":"RIGHT","factRole":"GIVEN"}
+  ]},
+  "coordinateCanvas": {"width": 560,"height": 440},
+  "caption": "밑변 6과 높이 4인 이등변삼각형 안에 밑변과 평행한 직사각형이 내접한 문제 조건의 도식이다.",
+  "accessibilityDescription": "대칭인 이등변삼각형의 밑변 길이 6, 점선 높이 4, 두 빗변에 윗꼭짓점이 닿는 직사각형과 높이의 직각 표시를 그렸다.",
+  "sourceQuote": "밑변 6, 높이 4인 이등변삼각형 내부에 밑변과 평행한 직사각형 내접",
+  "sourceConditions": [
+    {"id":"triangle","condition":"이등변삼각형의 밑변 6과 높이 4","mappedTo":["mathPlan.nodes[0]","mathPlan.nodes[1]","mathPlan.nodes[2]","planeMarks.dimensions"]},
+    {"id":"rectangle","condition":"직사각형의 윗변이 삼각형의 두 빗변에 닿고 아랫변은 밑변에 있음","mappedTo":["displaySegments[4]","displaySegments[5]","displaySegments[6]"]},
+    {"id":"perpendicular","condition":"삼각형의 높이는 밑변에 수직","mappedTo":["displaySegments[3]","rightAngles[0]"]}
+  ],
+  "newVisualInformation": ["문제에는 직사각형의 높이나 최대 넓이를 표시하지 않는다. 시각화용 임의 내접 높이 3/2를 사용하고 값 라벨을 두지 않는다."]
+}
