@@ -1,0 +1,25 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [5, 15, 5, 15],
+    "curves": [
+      {"id": "f", "kind": "Y_OF_X", "coefficients": ["24", "-6", "1/2"], "domain": ["6", "10"], "label": "y=f(x)", "color": "BLUE"},
+      {"id": "inv", "inverseOf": "f", "label": "y=f^-1(x)", "color": "WARM"},
+      {"id": "yx", "kind": "LINE", "coefficients": ["0", "1"], "domain": ["5", "15"], "style": "DASHED", "label": "y=x"}
+    ],
+    "axisTickValues": {"x": ["6", "8"], "y": ["6", "8"]},
+    "overlays": {
+      "points": [{"id": "P", "x": "6", "y": "6"}, {"id": "Q", "x": "8", "y": "8"}],
+      "segments": [{"id": "PQ", "from": "P", "to": "Q", "color": "BLUE"}]
+    }
+  },
+  "pointNames": {"P": "P", "Q": "Q"},
+  "caption": "a=24일 때 f(x)=1/2(x-6)^2+6 (x≥6)와 역함수는 y=x에 대칭이고 P(6,6),Q(8,8)에서 만난다. 정답 38.",
+  "accessibilityDescription": "두 교점 P(6,6), Q(8,8)를 가지는 증가하는 이차함수의 오른쪽 가지와 그 역함수, 그리고 점선 y=x를 비교해 보여 준다.",
+  "newVisualInformation": ["두 교점이 x=6,8인 것과 y=x에 관한 역함수 대칭을 함께 표시", "P·Q를 연결해 두 좌표의 합을 읽기 쉽게 표시"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "a=24에서 f(x)=1/2x²-6x+24이고 x≥6에서 증가하며 역함수가 존재한다.", "mappedTo": ["graphPlan.curves"]},
+    {"id": "c2", "condition": "두 교점은 (6,6),(8,8)이다.", "mappedTo": ["graphPlan.overlays.points", "graphPlan.overlays.segments"]}
+  ]
+}

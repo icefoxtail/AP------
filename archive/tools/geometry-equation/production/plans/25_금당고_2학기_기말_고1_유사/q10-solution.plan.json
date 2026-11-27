@@ -1,0 +1,19 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {"kind": "SET", "pieces": [{"lo": {"value": "-2", "state": "CLOSED"}, "hi": null}], "label": "첫째 진수"},
+      {"kind": "SET", "pieces": [{"lo": null, "hi": {"value": "16", "state": "CLOSED"}}], "label": "둘째 진수"},
+      {"kind": "RESULT", "integerPoints": true, "label": "공통 정수"}
+    ]
+  },
+  "numberLineCaption": {"text": "정의역 교집합과 정수"},
+  "caption": "sqrt(2x+4), sqrt(16-x)의 실수 조건을 교집합으로 취해 -2≤x≤16, 정수 19개를 얻는다. 정답 33.",
+  "accessibilityDescription": "첫 번째 수직선은 -2 이상, 둘째는 16 이하, 마지막은 양끝이 닫힌 공통구간과 정수점들을 보여 준다.",
+  "newVisualInformation": ["두 무리식의 진수 조건을 따로 나란히 표시", "공통 범위 [-2,16]의 양 끝과 정수점 19개를 그래픽으로 구분"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "2x+4≥0에서 x≥-2, 16-x≥0에서 x≤16이다.", "mappedTo": ["numberLine.rows"]},
+    {"id": "c2", "condition": "교집합 [-2,16]의 정수점이 -2부터 16까지 19개이다.", "mappedTo": ["numberLine.rows", "caption"]}
+  ]
+}

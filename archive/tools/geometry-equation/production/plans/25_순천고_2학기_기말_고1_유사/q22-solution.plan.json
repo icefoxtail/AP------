@@ -1,0 +1,30 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {"coefficients": ["2", "1"], "domain": ["-3", "0"], "start": "OPEN", "end": "OPEN"},
+      {"coefficients": ["3", "2"], "domain": ["0", "1"], "start": "CLOSED", "end": "OPEN"},
+      {"coefficients": ["3", "4"], "domain": ["1", "4"], "start": "CLOSED", "end": "OPEN"}
+    ],
+    "xWindow": [-3, 4],
+    "requiredPoints": [],
+    "axisTickValues": {"x": ["1"], "y": ["2", "3", "5", "7"]},
+    "overlays": {
+      "points": [
+        {"id": "L", "x": "0", "y": "2", "marker": "OPEN", "unnamed": true},
+        {"id": "A", "x": "0", "y": "3", "unnamed": true},
+        {"id": "B", "x": "1", "y": "5", "marker": "OPEN", "unnamed": true},
+        {"id": "C", "x": "1", "y": "7", "unnamed": true}
+      ],
+      "guides": [{"id": "gA", "from": "A", "axis": "x"}, {"id": "gC", "from": "C", "axis": "x"}]
+    }
+  },
+  "caption": "f∘f의 세 식은 x<0에서 x+2, 0≤x<1에서 2x+3, x≥1에서 4x+3이다. x=0,1의 열린·닫힌 끝점을 구별해 준다.",
+  "accessibilityDescription": "세 개의 증가하는 직선 조각이 x=0과 x=1에서 점프한다. x=0에는 빈 점 (0,2)와 찬 점 (0,3), x=1에는 빈 점 (1,5)와 찬 점 (1,7)이 있고 축으로 점선이 연결된다.",
+  "newVisualInformation": ["합성함수 세 정의역의 경계 x=0,1 및 실제 함수값", "각 경계의 왼쪽 극한은 열린 점, 경계 함숫값은 닫힌 점으로 표시"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "합성함수는 x<0: x+2, 0≤x<1: 2x+3, x≥1: 4x+3의 세 조각이다.", "mappedTo": ["graphPlan.pieces"]},
+    {"id": "c2", "condition": "x=0에서 좌극한2/함숫값3, x=1에서 좌극한5/함숫값7로 점프한다.", "mappedTo": ["graphPlan.overlays.points", "graphPlan.overlays.guides"]}
+  ]
+}

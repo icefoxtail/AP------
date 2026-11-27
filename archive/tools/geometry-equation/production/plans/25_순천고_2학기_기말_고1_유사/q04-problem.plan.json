@@ -1,0 +1,30 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {"id": "X", "elements": ["1", "2", "3"]},
+      {"id": "Y", "elements": ["4", "5", "6"]},
+      {"id": "Z", "elements": ["7", "8", "9"]}
+    ],
+    "arrows": [
+      {"from": {"column": 0, "element": 0}, "to": {"column": 1, "element": 1}},
+      {"from": {"column": 0, "element": 1}, "to": {"column": 1, "element": 0}},
+      {"from": {"column": 0, "element": 2}, "to": {"column": 1, "element": 2}},
+      {"from": {"column": 1, "element": 0}, "to": {"column": 2, "element": 0}},
+      {"from": {"column": 1, "element": 1}, "to": {"column": 2, "element": 2}},
+      {"from": {"column": 1, "element": 2}, "to": {"column": 2, "element": 1}}
+    ],
+    "arrowGroups": [
+      {"name": "f", "from": "X", "to": "Y"},
+      {"name": "g", "from": "Y", "to": "Z"}
+    ]
+  },
+  "caption": "X→Y의 f는 1→5, 2→4, 3→6이고 Y→Z의 g는 4→7, 5→9, 6→8이다. 문제에 주어진 함수 화살표만 표시한다.",
+  "accessibilityDescription": "세 타원 X, Y, Z 안의 각 세 원소와 두 함수 f와 g의 총 여섯 화살표를 나타내는 합성함수 대응도이다. 답을 알아볼 색이나 강조는 문제 그림에 넣지 않았다.",
+  "newVisualInformation": ["원본 3열 대응도의 6개 화살표를 유사문항 변경값에 맞춰 정확히 복원", "f/g 경로의 소유를 그림의 윗쪽에 각각 표기", "문항의 구하려는 합·정답 숨김"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "X={1,2,3}, Y={4,5,6}, Z={7,8,9}이다.", "mappedTo": ["diagram.columns"]},
+    {"id": "c2", "condition": "f(1)=5,f(2)=4,f(3)=6이고 g(4)=7,g(5)=9,g(6)=8이다.", "mappedTo": ["diagram.arrows", "diagram.arrowGroups"]}
+  ]
+}

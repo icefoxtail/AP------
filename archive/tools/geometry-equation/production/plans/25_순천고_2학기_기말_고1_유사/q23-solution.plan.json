@@ -1,0 +1,35 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-2, 7, 0, 8],
+    "curves": [
+      {"id": "fleft", "kind": "SQRT", "radicand": ["2", "-1"], "amplitude": "-1", "offset": "3", "domain": ["-2", "2"], "label": "y=f(x)", "color": "BLUE"},
+      {"id": "fright", "kind": "SQRT", "radicand": ["-3", "1"], "amplitude": "1", "offset": "4", "domain": ["3", "7"], "hideLabel": true, "color": "BLUE"},
+      {"id": "line", "kind": "LINE", "coefficients": ["1", "1"], "domain": ["-2", "7"], "label": "y=x+1"}
+    ],
+    "axisTickValues": {"x": ["1", "2", "3", "4"], "y": ["2", "3", "4", "5"]},
+    "overlays": {
+      "points": [
+        {"id": "A", "x": "1", "y": "2"},
+        {"id": "B", "x": "2", "y": "3"},
+        {"id": "C", "x": "3", "y": "4"},
+        {"id": "D", "x": "4", "y": "5"}
+      ],
+      "guides": [
+        {"id": "gA", "from": "A", "axis": "x"},
+        {"id": "gB", "from": "B", "axis": "x"},
+        {"id": "gC", "from": "C", "axis": "x"},
+        {"id": "gD", "from": "D", "axis": "x"}
+      ]
+    }
+  },
+  "pointNames": {"A": "A", "B": "B", "C": "C", "D": "D"},
+  "caption": "왼쪽 무리함수와 오른쪽 무리함수 두 가지가 y=x+1과 각각 두 점에서 만나 x=1,2,3,4를 얻는다. 유일한 k=1, 네 x좌표 합 10.",
+  "accessibilityDescription": "서로 떨어진 두 무리함수 가지의 닫힌 끝점 (2,3),(3,4), 직선 y=x+1, 네 교점 A,B,C,D 및 각 교점에서 x축으로 향하는 점선을 보여 준다.",
+  "newVisualInformation": ["문제 (1)의 두 끊긴 정의역 가지와 끝점에 대한 정확한 개형", "문제 (2)의 네 교점 (1,2),(2,3),(3,4),(4,5)을 색 및 점선으로 대응"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "f는 x≤2에서 3-sqrt(2-x), x≥3에서 sqrt(x-3)+4이다.", "mappedTo": ["graphPlan.curves"]},
+    {"id": "c2", "condition": "k=1인 y=x+1이 네 교점 x=1,2,3,4를 만든다.", "mappedTo": ["graphPlan.overlays.points", "graphPlan.overlays.guides"]}
+  ]
+}
