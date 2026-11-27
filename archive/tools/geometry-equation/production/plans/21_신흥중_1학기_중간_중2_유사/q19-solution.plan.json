@@ -1,0 +1,13 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      { "kind": "SET", "label": "해", "pieces": [ { "lo": null, "hi": { "value": "3", "state": "OPEN" } } ] }
+    ]
+  },
+  "caption": "−2x>−6을 음수 −2로 나누면 부등호가 뒤집혀 x<3이다. 3은 해에 포함되지 않는다.",
+  "accessibilityDescription": "수직선의 3에 빈 원이 있고, 3의 왼쪽 방향이 해의 범위로 표시된다.",
+  "sourceConditions": [ { "id": "inequality", "condition": "3x+2>5x−4 ⇔ x<3", "mappedTo": "numberLine.rows[0].pieces" } ],
+  "newVisualInformation": [ "부등식의 엄격한 경계 x=3을 열린 점으로 보이고 왼쪽 해 방향을 구분한다." ]
+}

@@ -1,0 +1,26 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "O", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "5" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "POLAR_POINT", "inputs": ["O", "A"], "args": { "length": { "kind": "integer", "value": "5" }, "angleDeg": { "kind": "rational", "numerator": "45836623610465864", "denominator": "1000000000000000" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "k", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["O"], "args": { "radius": { "kind": "integer", "value": "5" } }, "outputType": "CIRCLE", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "displayPoints": ["O", "A", "B"],
+  "displaySegments": [ { "id": "OA", "refs": ["O", "A"] }, { "id": "OB", "refs": ["O", "B"] } ],
+  "planeMarks": {
+    "arcs": [ { "id": "arc", "circle": "k", "center": "O", "from": "A", "to": "B", "side": "MINOR", "label": "4", "unit": "cm", "labelPlacement": "LEADER" } ],
+    "dimensions": [ { "id": "r", "from": "O", "to": "A", "label": "5", "unit": "cm", "side": "BELOW", "style": "ARROW", "value": "5" } ]
+  },
+  "caption": "반지름 5cm, 호 AB의 길이 4cm인 부채꼴 OAB. 구하는 중심각 값은 그림에 쓰지 않는다.",
+  "accessibilityDescription": "두 반지름 OA와 OB가 원호 AB를 잇고, OA에는 5cm, 호 AB에는 지시선으로 4cm가 쓰여 있다.",
+  "sourceConditions": [
+    { "id": "radius", "condition": "반지름 5cm", "mappedTo": ["mathPlan.nodes[1]", "planeMarks.dimensions[0]"] },
+    { "id": "arc", "condition": "호의 길이 4cm", "mappedTo": "planeMarks.arcs[0]" }
+  ],
+  "newVisualInformation": [ "선분 두 개, 실제 호, 5cm 반지름 치수와 4cm 호 지시선이 각각 그려진다." ]
+}

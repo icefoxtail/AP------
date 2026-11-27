@@ -1,0 +1,16 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [ { "id": "cone", "kind": "CONE", "radius": 3, "height": 6 } ],
+  "dims": [
+    { "solid": "cone", "radius": "bottom", "label": "3ab" },
+    { "solid": "cone", "height": true, "label": "9a-6b" }
+  ],
+  "solidCaption": { "text": "원뿔 높이 계산" },
+  "caption": "V=πr²h/3에 r=3ab를 대입하면 높이는 h=9a−6b가 된다. 외형 비례는 임의 모식도이다.",
+  "accessibilityDescription": "원뿔의 반지름 3ab와 이에 수직인 높이 9a−6b가 각각 표시된다.",
+  "sourceConditions": [
+    { "id": "radius", "condition": "r=3ab", "mappedTo": "dims[0]" },
+    { "id": "height", "condition": "h=(27πa³b²−18πa²b³)/(3πa²b²)=9a−6b", "mappedTo": "dims[1]" }
+  ],
+  "newVisualInformation": [ "부피에서 구한 높이 식을 실제 높이 치수선에, 주어진 반지름을 밑면 반지름선에 각각 표시한다." ]
+}
