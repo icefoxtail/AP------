@@ -1,0 +1,63 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "9",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "x≤9"
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "2",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "label": "둘째 조건"
+      },
+      {
+        "kind": "RESULT",
+        "label": "정수해",
+        "integerPoints": true
+      }
+    ]
+  },
+  "caption": "x+3≤12와 2x−1>3의 공통 정수해는 3,4,5,6,7,8,9의 일곱 개다.",
+  "accessibilityDescription": "부등식의 끝점 포함 여부와 공통 범위·정수점을 실제 수직선에 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "first",
+      "condition": "x+3≤12에서 x≤9",
+      "mappedTo": [
+        "numberLine.rows[0].pieces"
+      ]
+    },
+    {
+      "id": "second",
+      "condition": "2x−1>3에서 x>2",
+      "mappedTo": [
+        "numberLine.rows[1].pieces"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "부등식의 끝점 포함 여부와 공통 범위·정수점을 실제 수직선에 나타낸다."
+  ],
+  "numberLineCaption": {
+    "text": "열린 2와 닫힌 9"
+  }
+}

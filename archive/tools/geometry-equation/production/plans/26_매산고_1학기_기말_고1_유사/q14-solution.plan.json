@@ -1,0 +1,110 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-6",
+          "-1",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "0"
+        ]
+      },
+      {
+        "coefficients": [
+          "-6",
+          "-1",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-2",
+        "y": "0"
+      },
+      {
+        "x": "3",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      8
+    ],
+    "viewport": [
+      -4,
+      8,
+      -10,
+      50
+    ],
+    "referenceLines": [
+      {
+        "id": "r",
+        "slope": "7/2",
+        "intercept": "7",
+        "intersectionX": [
+          "-2",
+          "13/2"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-2",
+        "y": "0"
+      },
+      {
+        "id": "R",
+        "x": "3",
+        "y": "0"
+      },
+      {
+        "id": "K",
+        "x": "13/2",
+        "y": "119/4"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        -2,
+        3,
+        6
+      ],
+      "y": []
+    }
+  },
+  "caption": "왼쪽은 max(x²−x−6,0), 직선은 해설의 허용 사례 a=7/2일 때 y=a(x+2)이다. 교차 x=−2,13/2 사이 정수 −2,…,6이 9개다.",
+  "accessibilityDescription": "절댓값 식이 만드는 평평한 구간과 양쪽 이차 곡선, 대표 직선의 교점을 실제 계수로 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "positive",
+      "condition": "max(f,0)의 조각은 x<−2와 x>3에서 f, 가운데서 0",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.breakpoints"
+      ]
+    },
+    {
+      "id": "test",
+      "condition": "a=7/2 대표 예에서 직선 y=(7/2)x+7의 두 교점 −2와 13/2",
+      "mappedTo": [
+        "graphPlan.referenceLines",
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "절댓값 식이 만드는 평평한 구간과 양쪽 이차 곡선, 대표 직선의 교점을 실제 계수로 나타낸다."
+  ],
+  "coordinatePlacement": "PANEL"
+}

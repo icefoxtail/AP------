@@ -1,0 +1,45 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-1",
+              "state": "CLOSED"
+            }
+          },
+          {
+            "lo": {
+              "value": "6",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ],
+        "label": "절댓값 부등식의 해"
+      }
+    ]
+  },
+  "caption": "|2x−5|≥7의 해는 x≤−1 또는 x≥6이고, 두 경계값을 포함한다.",
+  "accessibilityDescription": "부등식의 끝점 포함 여부와 공통 범위·정수점을 실제 수직선에 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "abs",
+      "condition": "|2x−5|≥7은 2x−5≤−7 또는 2x−5≥7",
+      "mappedTo": [
+        "numberLine.rows[0].pieces"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "부등식의 끝점 포함 여부와 공통 범위·정수점을 실제 수직선에 나타낸다."
+  ],
+  "numberLineCaption": {
+    "text": "양쪽의 닫힌 해집합"
+  }
+}

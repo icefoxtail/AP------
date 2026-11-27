@@ -1,0 +1,81 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      4
+    ],
+    "viewport": [
+      -2,
+      4,
+      -2,
+      21
+    ],
+    "referenceLines": [
+      {
+        "id": "t",
+        "slope": "2",
+        "intercept": "0",
+        "intersectionX": [
+          "1"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "0",
+        "y": "1"
+      },
+      {
+        "id": "T",
+        "x": "1",
+        "y": "2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        1
+      ],
+      "y": [
+        2
+      ]
+    }
+  },
+  "caption": "x²+1≥2x는 (x−1)²≥0과 같아 두 그래프 y=x²+1과 y=2x가 x=1에서 접한다. 따라서 공통해 존재 조건 2b>a+c를 얻는다.",
+  "accessibilityDescription": "두 곡선의 유일한 접점 (1,2)를 통해 모든 실수에서 x²+1≥2x인 이유를 보인다.",
+  "sourceConditions": [
+    {
+      "id": "curves",
+      "condition": "y=x²+1, y=2x의 차는 (x−1)²",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.referenceLines"
+      ]
+    },
+    {
+      "id": "touch",
+      "condition": "접점은 (1,2)",
+      "mappedTo": [
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 곡선의 유일한 접점 (1,2)를 통해 모든 실수에서 x²+1≥2x인 이유를 보인다."
+  ],
+  "coordinatePlacement": "PANEL"
+}

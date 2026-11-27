@@ -1,0 +1,180 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "A·B·C·D의 추상 도로망: AB·AD는 각 2개, BC 3개, BD 1개, CD 2개이며 A와 C는 직접 연결되지 않는다.",
+  "accessibilityDescription": "실제 도로 길이를 나타내지 않는 네 지역 연결도에서 다섯 연결선과 각 선의 도로 수를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "graph",
+      "condition": "도로는 AB 2, AD 2, BC 3, BD 1, CD 2개이며 AC 직통은 없음",
+      "mappedTo": [
+        "displaySegments",
+        "planeMarks.expressionLabels"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "실제 도로 길이를 나타내지 않는 네 지역 연결도에서 다섯 연결선과 각 선의 도로 수를 표시한다."
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 460
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "wAB",
+        "ownerSegment": "AB",
+        "text": "2"
+      },
+      {
+        "id": "wAD",
+        "ownerSegment": "AD",
+        "text": "2"
+      },
+      {
+        "id": "wBC",
+        "ownerSegment": "BC",
+        "text": "3"
+      },
+      {
+        "id": "wBD",
+        "ownerSegment": "BD",
+        "text": "1"
+      },
+      {
+        "id": "wCD",
+        "ownerSegment": "CD",
+        "text": "2"
+      }
+    ]
+  }
+}

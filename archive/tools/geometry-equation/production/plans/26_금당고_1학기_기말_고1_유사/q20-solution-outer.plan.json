@@ -1,0 +1,76 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "2",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "4",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "label": "첫째 구간"
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "1-sqrt(3)",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "1+sqrt(3)",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "label": "둘째 구간"
+      },
+      {
+        "kind": "RESULT",
+        "label": "공통해 ②"
+      }
+    ]
+  },
+  "caption": "k=5에서 g(x)<5<f(x)의 공통 범위는 x<1−√3 또는 x>4이다.",
+  "accessibilityDescription": "부등식의 끝점 포함 여부와 공통 범위·정수점을 실제 수직선에 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "g",
+      "condition": "g(x)=−(x−3)²+6<5의 두 바깥 구간",
+      "mappedTo": [
+        "numberLine.rows[0].pieces"
+      ]
+    },
+    {
+      "id": "f",
+      "condition": "f(x)=(x−1)²+2>5의 두 바깥 구간",
+      "mappedTo": [
+        "numberLine.rows[1].pieces"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "부등식의 끝점 포함 여부와 공통 범위·정수점을 실제 수직선에 나타낸다."
+  ],
+  "numberLineCaption": {
+    "text": "k=5에서 공통해 ②"
+  }
+}

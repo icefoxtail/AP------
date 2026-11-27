@@ -1,0 +1,111 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "9",
+          "-3"
+        ]
+      },
+      {
+        "coefficients": [
+          "1",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-9",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "2",
+        "y": "3"
+      },
+      {
+        "x": "5",
+        "y": "6"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      8
+    ],
+    "viewport": [
+      -1,
+      8,
+      0,
+      15
+    ],
+    "referenceLines": [
+      {
+        "id": "h",
+        "y": "6",
+        "intersectionX": [
+          "1",
+          "5"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "B",
+        "x": "2",
+        "y": "3"
+      },
+      {
+        "id": "C",
+        "x": "5",
+        "y": "6"
+      },
+      {
+        "id": "L",
+        "x": "1",
+        "y": "6"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        1,
+        2,
+        5
+      ],
+      "y": [
+        3,
+        6
+      ]
+    }
+  },
+  "caption": "F(x)=2|x−2|+|x−5|를 세 일차 조각으로 나타내면 y=6 이하인 구간이 1≤x≤5다.",
+  "accessibilityDescription": "x=2,5의 실제 꺾임과 y=6의 수평선·교점을 수학적으로 정확하게 그린다.",
+  "sourceConditions": [
+    {
+      "id": "pieces",
+      "condition": "x<2: 9−3x, 2≤x<5: x+1, x≥5: 3x−9",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.breakpoints"
+      ]
+    },
+    {
+      "id": "cut",
+      "condition": "F(x)=6의 경계가 x=1과 x=5",
+      "mappedTo": [
+        "graphPlan.referenceLines",
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "x=2,5의 실제 꺾임과 y=6의 수평선·교점을 수학적으로 정확하게 그린다."
+  ],
+  "coordinatePlacement": "PANEL"
+}

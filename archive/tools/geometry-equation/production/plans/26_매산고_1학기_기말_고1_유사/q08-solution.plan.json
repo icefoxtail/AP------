@@ -1,0 +1,63 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "21",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ],
+        "label": "x≥21"
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "29",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "label": "상한 조건"
+      },
+      {
+        "kind": "RESULT",
+        "label": "가능한 정수 x",
+        "integerPoints": true
+      }
+    ]
+  },
+  "caption": "8(x−3)<7x+5≤8(x−2)에서 21≤x<29이고 정수 x는 21부터 28까지다.",
+  "accessibilityDescription": "부등식의 끝점 포함 여부와 공통 범위·정수점을 실제 수직선에 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "minimum",
+      "condition": "7x+5≤8(x−2)에서 x≥21",
+      "mappedTo": [
+        "numberLine.rows[0].pieces"
+      ]
+    },
+    {
+      "id": "maximum",
+      "condition": "8(x−3)<7x+5에서 x<29",
+      "mappedTo": [
+        "numberLine.rows[1].pieces"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "부등식의 끝점 포함 여부와 공통 범위·정수점을 실제 수직선에 나타낸다."
+  ],
+  "numberLineCaption": {
+    "text": "사용 가능한 일수"
+  }
+}
