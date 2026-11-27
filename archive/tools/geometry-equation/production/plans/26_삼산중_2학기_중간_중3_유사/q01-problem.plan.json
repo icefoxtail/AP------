@@ -1,0 +1,180 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "다음 그림의 직각삼각형 $ABC$에서 $\\an",
+  "sourceConditions": [
+    {
+      "id": "q1-c1",
+      "condition": "각 B는 90도",
+      "mappedTo": "ra-B"
+    },
+    {
+      "id": "q1-c2",
+      "condition": "빗변 AC=13",
+      "mappedTo": "seg-AC"
+    },
+    {
+      "id": "q1-c3",
+      "condition": "대변 BC=5",
+      "mappedTo": "seg-BC"
+    },
+    {
+      "id": "verified-4",
+      "condition": "피타고라스 정리로 구한 AB의 길이는 12",
+      "mappedTo": "seg-AB"
+    }
+  ],
+  "newVisualInformation": [
+    "직각삼각형 ABC의 두 변과 빗변의 기하학적 배치"
+  ],
+  "caption": "빗변 AC=13이고 대변 BC=5인 직각삼각형 ABC",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "audit-AB",
+        "sourceConditionId": "verified-4",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "B",
+          "A"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "12"
+        }
+      },
+      {
+        "id": "audit-BC",
+        "sourceConditionId": "q1-c3",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "5"
+        }
+      }
+    ],
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    }
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "seg-BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "seg-AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "rightAngles": [
+    {
+      "id": "ra-B",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "assetPath": "assets/images/26_삼산중_2학기_중간_중3_유사/q1.svg",
+  "accessibilityDescription": "중학교 3학년 1번 발문에서 주어진 점과 도형, 길이와 각 관계를 나타낸 그림.",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "text-lenAC",
+        "ownerSegment": "seg-AC",
+        "text": "13"
+      },
+      {
+        "id": "text-lenBC",
+        "ownerSegment": "seg-BC",
+        "text": "5"
+      }
+    ]
+  }
+}

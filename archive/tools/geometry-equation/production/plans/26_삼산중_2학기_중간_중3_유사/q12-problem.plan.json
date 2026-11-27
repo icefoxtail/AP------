@@ -1,0 +1,232 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "다음 평행사변형 $ABCD$에서 두 대각선의 ",
+  "sourceConditions": [
+    {
+      "id": "q12-c1",
+      "condition": "BC=10, CD=6, 각 A:B=1:3",
+      "mappedTo": "poly-ABCD"
+    },
+    {
+      "id": "q12-c2",
+      "condition": "대각선 교점 O",
+      "mappedTo": "point-O"
+    },
+    {
+      "id": "verified-3",
+      "condition": "평행사변형의 A:B 각 비는 1:3으로 A는 45도",
+      "mappedTo": "seg-AB"
+    }
+  ],
+  "newVisualInformation": [
+    "평행사변형 ABCD의 대각선 분할 삼각형 OAB, OCD 음영"
+  ],
+  "caption": "BC=10, CD=6이고 대각선 교점이 O인 평행사변형 ABCD",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4242641",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4242641",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "14242641",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4242641",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "7121320",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2121320",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [],
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    }
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "seg-BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "seg-CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "seg-DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "seg-AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "seg-BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "assetPath": "assets/images/26_삼산중_2학기_중간_중3_유사/q12.svg",
+  "accessibilityDescription": "중학교 3학년 12번 발문에서 주어진 점과 도형, 길이와 각 관계를 나타낸 그림.",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "text-lenBC",
+        "ownerSegment": "seg-BC",
+        "text": "10"
+      },
+      {
+        "id": "text-lenCD",
+        "ownerSegment": "seg-CD",
+        "text": "6"
+      }
+    ],
+    "regions": [
+      {
+        "id": "shadeOAB",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "O",
+              "A",
+              "B"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "shadeOCD",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "O",
+              "C",
+              "D"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

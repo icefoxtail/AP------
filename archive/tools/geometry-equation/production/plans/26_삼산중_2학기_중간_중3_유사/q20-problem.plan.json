@@ -1,0 +1,304 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "다음 그림에서 원 $O$는 $\\angle A ",
+  "sourceConditions": [
+    {
+      "id": "q20-c1",
+      "condition": "각 A=90도, 내접원 O",
+      "mappedTo": "point-O"
+    },
+    {
+      "id": "q20-c2",
+      "condition": "BD=3, CE=10",
+      "mappedTo": "seg-BD"
+    },
+    {
+      "id": "verified-3",
+      "condition": "원 O의 세 접점 D,E,F가 삼각형의 세 변 위에 있음",
+      "mappedTo": "circleO"
+    }
+  ],
+  "newVisualInformation": [
+    "직각삼각형의 내접원과 꼭짓점 연결 선분 OA, OB, OC"
+  ],
+  "caption": "BD=3, CE=10인 직각삼각형 ABC의 내접원과 선분들",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "36",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "50",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circleO",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [],
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    }
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "seg-AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "seg-BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "seg-OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "seg-OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "seg-OC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "seg-OD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "seg-OE",
+      "refs": [
+        "O",
+        "E"
+      ]
+    },
+    {
+      "id": "seg-OF",
+      "refs": [
+        "O",
+        "F"
+      ]
+    },
+    {
+      "id": "seg-BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "seg-CE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "D",
+    "E",
+    "F"
+  ],
+  "assetPath": "assets/images/26_삼산중_2학기_중간_중3_유사/q20.svg",
+  "accessibilityDescription": "중학교 3학년 20번 발문에서 주어진 점과 도형, 길이와 각 관계를 나타낸 그림.",
+  "displayCircles": [
+    "circleO"
+  ],
+  "rightAngles": [
+    {
+      "id": "rightA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "text-lenBD",
+        "ownerSegment": "seg-BD",
+        "text": "3"
+      },
+      {
+        "id": "text-lenCE",
+        "ownerSegment": "seg-CE",
+        "text": "10"
+      }
+    ]
+  }
+}

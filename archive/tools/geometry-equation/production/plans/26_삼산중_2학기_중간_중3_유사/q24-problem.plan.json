@@ -1,0 +1,344 @@
+{
+  "capability": "composite-panels-v1",
+  "columns": 1,
+  "panels": [
+    {
+      "caption": {
+        "text": "(1) 깨진 원형 거울의 일부"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "caption": "깨진 거울에서 남아 있는 원호와 현",
+        "accessibilityDescription": "원형 거울이 일부 파손되어 남아 있는 원호와 그 두 점을 잇는 현을 보여 준다.",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-8"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "mirror",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "10"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "A",
+          "B"
+        ],
+        "hiddenPointNames": [
+          "O"
+        ],
+        "hiddenPointStyle": "NONE",
+        "displaySegments": [
+          {
+            "id": "chord",
+            "refs": [
+              "A",
+              "B"
+            ]
+          }
+        ],
+        "displayCircles": [],
+        "planeMarks": {
+          "arcs": [
+            {
+              "id": "remainingArc",
+              "circle": "mirror",
+              "center": "O",
+              "from": "B",
+              "to": "A",
+              "side": "MAJOR"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 480,
+          "height": 360
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "(2) 현의 수직이등분 성질"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "sourceQuote": "<서술형4> 다음 물음에 답하시오. [6점, ",
+        "sourceConditions": [
+          {
+            "id": "q24-c1",
+            "condition": "원 O의 현 AB와 수직인 선분 OM",
+            "mappedTo": "seg-OM"
+          },
+          {
+            "id": "q24-c2",
+            "condition": "반지름 OA=OB",
+            "mappedTo": "seg-OA"
+          },
+          {
+            "id": "verified-3",
+            "condition": "이 플랜은 원의 중심에서 현에 내린 수선 증명 패널이며 깨진 거울 복원 그림은 별도 패널 필요",
+            "mappedTo": "circleO"
+          }
+        ],
+        "newVisualInformation": [
+          "현 AB의 수직이등분선과 두 직각삼각형 OMA, OMB의 합동 구조"
+        ],
+        "caption": "원의 중심 O에서 현 AB에 내린 수선 OM과 두 직각삼각형",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "M",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-5"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-5"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-5"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "circleO",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "rational",
+                  "numerator": "7810250",
+                  "denominator": "1000000"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            }
+          ],
+          "conditionAudits": [],
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          }
+        },
+        "displaySegments": [
+          {
+            "id": "seg-AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "seg-OM",
+            "refs": [
+              "O",
+              "M"
+            ]
+          },
+          {
+            "id": "seg-OA",
+            "refs": [
+              "O",
+              "A"
+            ]
+          },
+          {
+            "id": "seg-OB",
+            "refs": [
+              "O",
+              "B"
+            ]
+          }
+        ],
+        "displayPoints": [
+          "O",
+          "A",
+          "B",
+          "M"
+        ],
+        "assetPath": "assets/images/26_삼산중_2학기_중간_중3_유사/q24.svg",
+        "accessibilityDescription": "중학교 3학년 24번 발문에서 주어진 점과 도형, 길이와 각 관계를 나타낸 그림.",
+        "rightAngles": [
+          {
+            "id": "rightM",
+            "refs": [
+              "O",
+              "M",
+              "A"
+            ],
+            "factRole": "GIVEN"
+          }
+        ],
+        "displayCircles": [
+          "circleO"
+        ],
+        "coordinateCanvas": {
+          "width": 480,
+          "height": 360
+        }
+      }
+    }
+  ],
+  "caption": "깨진 거울의 원호와 현 AB의 수직이등분 관계를 각각 보여 준 두 그림",
+  "accessibilityDescription": "첫 번째 패널에는 원호 일부와 현, 두 번째 패널에는 중심 O에서 현 AB에 내린 수선 OM이 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "mirror1",
+      "condition": "깨진 거울에서 남은 원호의 중심을 작도하는 문제",
+      "mappedTo": "panels[0]"
+    },
+    {
+      "id": "mirror2",
+      "condition": "OM은 현 AB에 수직",
+      "mappedTo": "panels[1]"
+    },
+    {
+      "id": "engineGap",
+      "condition": "ENGINE_CAPABILITY_PENDING: 훼손된 원둘레 중 추정 복원 부분만 점선 원호로 표시할 선 스타일 지원 필요",
+      "mappedTo": "REQUIRES_DASHED_PARTIAL_CIRCLE_ARC"
+    }
+  ],
+  "newVisualInformation": [
+    "서로 다른 두 원 그림의 역할을 분리하여 제시"
+  ]
+}

@@ -1,0 +1,216 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "$\\overline{AB} = \\overlin",
+  "sourceConditions": [
+    {
+      "id": "q18-c1",
+      "condition": "AB=AC, BC=1, 각 A=36도",
+      "mappedTo": "poly-ABC"
+    },
+    {
+      "id": "q18-c2",
+      "condition": "BD는 각 B의 이등분선",
+      "mappedTo": "seg-BD"
+    },
+    {
+      "id": "verified-3",
+      "condition": "이등변 삼각형의 꼭지각 A는 36도이고 BD는 각 B 이등분선",
+      "mappedTo": "seg-BD"
+    }
+  ],
+  "newVisualInformation": [
+    "황금삼각형 ABC와 각의 이등분선 BD"
+  ],
+  "caption": "AB=AC, 각 A=36도이고 각의 이등분선 BD가 있는 이등변삼각형",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1538842",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-500000",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "500000",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "309017",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "587785",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [],
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    }
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "seg-BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "seg-CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "seg-BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "assetPath": "assets/images/26_삼산중_2학기_중간_중3_유사/q18.svg",
+  "accessibilityDescription": "중학교 3학년 18번 발문에서 주어진 점과 도형, 길이와 각 관계를 나타낸 그림.",
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angleA36",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 36,
+        "label": "36",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "bisectB1",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "value": 36,
+        "arcs": 1,
+        "equalGroup": 1,
+        "noLabel": true,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "bisectB2",
+        "refs": [
+          "D",
+          "B",
+          "C"
+        ],
+        "value": 36,
+        "arcs": 1,
+        "equalGroup": 1,
+        "noLabel": true,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "text-lenBC",
+        "ownerSegment": "seg-BC",
+        "text": "1"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "iso",
+        "count": 1,
+        "segments": [
+          "seg-AB",
+          "seg-CA"
+        ]
+      }
+    ]
+  }
+}

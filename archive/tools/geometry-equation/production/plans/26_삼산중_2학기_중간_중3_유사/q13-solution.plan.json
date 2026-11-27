@@ -1,0 +1,217 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "다음 사각형 $ABCD$에서 $\\overlin",
+  "sourceConditions": [
+    {
+      "id": "q13-c1",
+      "condition": "AB=AD=2루트2, 각 A=120도",
+      "mappedTo": "poly-ABD"
+    },
+    {
+      "id": "q13-c2",
+      "condition": "BC=2루트3, CD=3루트2-루트6, 각 C=135도",
+      "mappedTo": "poly-BCD"
+    },
+    {
+      "id": "verified-3",
+      "condition": "대각선 BD는 넓이 분할을 설명하는 점선 보조선",
+      "mappedTo": "seg-BD"
+    }
+  ],
+  "newVisualInformation": [
+    "해설에서 도출한 수치와 도형 관계가 문제 그림에 추가 표시됨"
+  ],
+  "caption": "삼산중 13번 해설에서 보조선과 계산된 길이·각을 구분하여 표시한 그림",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2828427",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1414214",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2449490",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "378937",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2449490",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [],
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    }
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "seg-BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "seg-CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "seg-DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "seg-BD",
+      "refs": [
+        "B",
+        "D"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "accessibilityDescription": "문제에 제시된 점과 선에 해설 과정에서 계산한 길이, 각도 또는 보조선을 표시한 그림.",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "text-lenAB",
+        "ownerSegment": "seg-AB",
+        "text": "2sqrt(2)"
+      },
+      {
+        "id": "text-lenBC",
+        "ownerSegment": "seg-BC",
+        "text": "2sqrt(3)"
+      },
+      {
+        "id": "text-lenCD",
+        "ownerSegment": "seg-CD",
+        "text": "3sqrt(2)-sqrt(6)"
+      },
+      {
+        "id": "text-lenDA",
+        "ownerSegment": "seg-DA",
+        "text": "2sqrt(2)"
+      },
+      {
+        "id": "text-derivedBD",
+        "ownerSegment": "seg-BD",
+        "text": "2sqrt(6)"
+      }
+    ],
+    "angles": [
+      {
+        "id": "angle120",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 120,
+        "label": "120",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angle135",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 135,
+        "label": "135",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}
