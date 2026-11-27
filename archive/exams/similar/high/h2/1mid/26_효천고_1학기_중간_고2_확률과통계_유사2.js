@@ -214,7 +214,11 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H2-PS-RPM-046",
     "sourceQid": 5,
     "variationType": "CONFIRMATION",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js#q5"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js#q5",
+    "solutionImage": "assets/images/26_효천고_1학기_중간_고2_확률과통계_유사2/q5-solution.svg",
+    "solutionImageAlt": "A와 B의 공 색이 달라지는 두 경로를 각각 강조한 비복원추출 수형도",
+    "solutionImageCaption": "A와 B의 공 색이 달라지는 두 경로를 각각 강조한 비복원추출 수형도",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,

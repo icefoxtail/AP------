@@ -448,7 +448,11 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js#q8",
     "problemPlanRef": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/q08-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/q08-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/q08-solution.plan.json",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_대수_유사/q8-solution.svg",
+    "solutionImageAlt": "c=2, a=1, b=0인 원문 해설의 반례를 정확히 그린다. 파랑 f(x)=log_2(x-1)의 진짜 역함수는 초록 h(x)=2^x+1이다. 주황 g(x)=2^(x-1)는 역함수가 아니다. f와 h의 대응점 (2,0), (0,2)는 점선 y=x에 대칭이다.",
+    "solutionImageCaption": "c=2, a=1, b=0인 원문 해설의 반례를 정확히 그린다. 파랑 f(x)=log_2(x-1)의 진짜 역함수는 초록 h(x)=2^x+1이다. 주황 g(x)=2^(x-1)는 역함수가 아니다. f와 h의 대응점 (2,0), (0,2)는 점선 y=x에 대칭이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -783,7 +787,11 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js#q14",
     "problemPlanRef": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/q14-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/q14-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/q14-solution.plan.json",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_대수_유사/q14-solution.svg",
+    "solutionImageAlt": "0≤x≤5에서 f(x)=(x-2)^2+3의 꼭짓점 V(2,3)이 최솟값이고 닫힌 오른쪽 끝점 B(5,12)가 최댓값이다. 왼쪽 끝점 A(0,7)도 확인하여 3≤f(x)≤12임을 보인다. 두 로그함수의 단조성을 적용하면 M=log_3(13), m=log_(1/2)(27)이다.",
+    "solutionImageCaption": "0≤x≤5에서 f(x)=(x-2)^2+3의 꼭짓점 V(2,3)이 최솟값이고 닫힌 오른쪽 끝점 B(5,12)가 최댓값이다. 왼쪽 끝점 A(0,7)도 확인하여 3≤f(x)≤12임을 보인다. 두 로그함수의 단조성을 적용하면 M=log_3(13), m=log_(1/2)(27)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -897,7 +905,11 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js#q16",
     "problemPlanRef": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/q16-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/q16-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/q16-solution.plan.json",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_대수_유사/q16-solution.svg",
+    "solutionImageAlt": "원 C의 중심 C(4,-3)과 원점 O의 거리는 5, 원 C의 반지름은 2이다. 원점 중심 반지름 3인 원은 C와 내접하여 P가 하나이다. 3<OP<7인 다른 세 자연수 값 m=3,4,5의 반지름에서는 각각 교점이 둘씩 생긴다.",
+    "solutionImageCaption": "원 C의 중심 C(4,-3)과 원점 O의 거리는 5, 원 C의 반지름은 2이다. 원점 중심 반지름 3인 원은 C와 내접하여 P가 하나이다. 3<OP<7인 다른 세 자연수 값 m=3,4,5의 반지름에서는 각각 교점이 둘씩 생긴다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

@@ -358,7 +358,11 @@ window.questionBank = [
     "integrationPattern": "CASE_BRANCH",
     "rpmPrimaryRecordId": "H2-M2-RPM-055",
     "sourceQid": null,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "solutionImage": "assets/images/26_강남여고_2학기_중간_고2_미적분I_유사/q8-solution.svg",
+    "solutionImageAlt": "f(x)=-2+3/(x+1)의 수직·수평 점근선과 분리된 두 가지",
+    "solutionImageCaption": "f(x)=-2+3/(x+1)의 수직·수평 점근선과 분리된 두 가지",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -930,7 +934,11 @@ window.questionBank = [
     "integrationPattern": "DEEP_COMPOSITE",
     "rpmPrimaryRecordId": "H2-M2-RPM-067",
     "sourceQid": null,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "solutionImage": "assets/images/26_강남여고_2학기_중간_고2_미적분I_유사/q20-solution.svg",
+    "solutionImageAlt": "A와 B에서의 두 접선이 C에서 직교하고 지름 AB인 외접원이 있다",
+    "solutionImageCaption": "A와 B에서의 두 접선이 C에서 직교하고 지름 AB인 외접원이 있다",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1133,6 +1141,10 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "rpmPrimaryRecordId": "H2-M2-RPM-067",
     "sourceQid": null,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "solutionImage": "assets/images/26_강남여고_2학기_중간_고2_미적분I_유사/q25-solution.svg",
+    "solutionImageAlt": "삼차곡선에 접한 l과 평행 접선 m, 다른 교점 B와 접점 C의 거리",
+    "solutionImageCaption": "삼차곡선에 접한 l과 평행 접선 m, 다른 교점 B와 접점 C의 거리",
+    "solutionImageSize": "full"
   }
 ];

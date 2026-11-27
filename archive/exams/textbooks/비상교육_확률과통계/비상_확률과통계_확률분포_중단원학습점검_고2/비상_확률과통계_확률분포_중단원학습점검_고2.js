@@ -104,7 +104,11 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "solutionImage": "assets/images/비상_확률과통계_확률분포_중단원학습점검_고2/q3-solution.svg",
+    "solutionImageAlt": "확률밀도 f(x)=(x+1)/2의 -1에서 0까지 삼각형 넓이가 1/4이다.",
+    "solutionImageCaption": "확률밀도 f(x)=(x+1)/2의 -1에서 0까지 삼각형 넓이가 1/4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -139,7 +143,11 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "solutionImage": "assets/images/비상_확률과통계_확률분포_중단원학습점검_고2/q4-solution.svg",
+    "solutionImageAlt": "X~N(40,3²)에서 43은 평균보다 1표준편차 오른쪽이고 그 이하의 넓이는 0.8413이다.",
+    "solutionImageCaption": "X~N(40,3²)에서 43은 평균보다 1표준편차 오른쪽이고 그 이하의 넓이는 0.8413이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -174,7 +182,11 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "solutionImage": "assets/images/비상_확률과통계_확률분포_중단원학습점검_고2/q5-solution.svg",
+    "solutionImageAlt": "상수 a=6을 대입하면 X=1,2,3의 확률이 각각 1/6, 1/3, 1/2이다.",
+    "solutionImageCaption": "상수 a=6을 대입하면 X=1,2,3의 확률이 각각 1/6, 1/3, 1/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -209,7 +221,11 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "solutionImage": "assets/images/비상_확률과통계_확률분포_중단원학습점검_고2/q6-solution.svg",
+    "solutionImageAlt": "첫 흰 공은 1회(3/5), 빨강 뒤 흰 공은 2회(3/10), 빨강 둘 뒤 흰 공은 3회(1/10)이다.",
+    "solutionImageCaption": "첫 흰 공은 1회(3/5), 빨강 뒤 흰 공은 2회(3/10), 빨강 둘 뒤 흰 공은 3회(1/10)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -244,7 +260,11 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "solutionImage": "assets/images/비상_확률과통계_확률분포_중단원학습점검_고2/q7-solution.svg",
+    "solutionImageAlt": "뽑은 세 카드의 최댓값 X=3,4,5는 각각 1/10,3/10,3/5의 확률을 갖는다.",
+    "solutionImageCaption": "뽑은 세 카드의 최댓값 X=3,4,5는 각각 1/10,3/10,3/5의 확률을 갖는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -384,7 +404,11 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "image": "assets/images/비상_확률과통계_확률분포_중단원학습점검_고2/q11-problem.svg",
+    "imageAlt": "원본의 f(x) 그래프는 (0,2k)에서 (2,0)으로 내려갔다가 (3,k)로 증가하고 k 높이에 점선이 있다.",
+    "imageCaption": "원본의 f(x) 그래프는 (0,2k)에서 (2,0)으로 내려갔다가 (3,k)로 증가하고 k 높이에 점선이 있다.",
+    "imageSize": "full"
   },
   {
     "id": 12,
@@ -419,7 +443,11 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "solutionImage": "assets/images/비상_확률과통계_확률분포_중단원학습점검_고2/q12-solution.svg",
+    "solutionImageAlt": "8과 16의 중앙 95.44%에서 표준편차 2를 구하고 15까지의 누적확률 0.9332를 표시한다.",
+    "solutionImageCaption": "8과 16의 중앙 95.44%에서 표준편차 2를 구하고 15까지의 누적확률 0.9332를 표시한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -489,7 +517,11 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "solutionImage": "assets/images/비상_확률과통계_확률분포_중단원학습점검_고2/q14-solution.svg",
+    "solutionImageAlt": "평균 60g보다 3g 가벼운 57g 이하의 왼쪽 꼬리 면적은 0.1587이다.",
+    "solutionImageCaption": "평균 60g보다 3g 가벼운 57g 이하의 왼쪽 꼬리 면적은 0.1587이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -524,7 +556,11 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "solutionImage": "assets/images/비상_확률과통계_확률분포_중단원학습점검_고2/q15-solution.svg",
+    "solutionImageAlt": "400명 중 좋아요 수는 정규근사 N(80,8²)이므로 72~96 범위는 Z=-1~2의 넓이 0.8185이다.",
+    "solutionImageCaption": "400명 중 좋아요 수는 정규근사 N(80,8²)이므로 72~96 범위는 Z=-1~2의 넓이 0.8185이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -559,7 +595,11 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "solutionImage": "assets/images/비상_확률과통계_확률분포_중단원학습점검_고2/q16-solution.svg",
+    "solutionImageAlt": "세 주사위 중앙값의 분포는 1과 6, 2와 5, 3과 4가 대칭이므로 평균은 7/2이다.",
+    "solutionImageCaption": "세 주사위 중앙값의 분포는 1과 6, 2와 5, 3과 4가 대칭이므로 평균은 7/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -594,7 +634,11 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "solutionImage": "assets/images/비상_확률과통계_확률분포_중단원학습점검_고2/q17-solution.svg",
+    "solutionImageAlt": "평균 m=31을 중심으로 길이 10인 구간을 대칭 배치하면 [26,36]에서 확률이 최대다.",
+    "solutionImageCaption": "평균 m=31을 중심으로 길이 10인 구간을 대칭 배치하면 [26,36]에서 확률이 최대다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

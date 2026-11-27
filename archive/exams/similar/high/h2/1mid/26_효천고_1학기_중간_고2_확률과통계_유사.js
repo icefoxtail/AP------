@@ -927,7 +927,11 @@ window.questionBank = [
       "variationType": "STRICT_VARIANT",
       "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js#q17",
       "problemPlanRef": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사_plans/q17-problem.plan.json",
-      "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사_plans/q17-solution.plan.json"
+      "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사_plans/q17-solution.plan.json",
+      "solutionImage": "assets/images/26_효천고_1학기_중간_고2_확률과통계_유사/q17-solution.svg",
+      "solutionImageAlt": "양의 방향 2칸 이동을 n번 하면 최종 위치는 3n-6이다. n=1,2,3일 때 -3,0,3으로 선분 AB에 속한다.",
+      "solutionImageCaption": "양의 방향 2칸 이동을 n번 하면 최종 위치는 3n-6이다. n=1,2,3일 때 -3,0,3으로 선분 AB에 속한다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 18,
