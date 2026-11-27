@@ -1,0 +1,35 @@
+{
+  "capability": "quadratic-inequality-chain-v1",
+  "inequality": {
+    "coefficients": [
+      "8",
+      "-8",
+      "1"
+    ],
+    "comparator": "<=",
+    "variable": "x",
+    "integerPoints": true
+  },
+  "graphCaption": {
+    "text": "이차함수의 부호"
+  },
+  "numberLineCaption": {
+    "text": "해집합과 정수 후보"
+  },
+  "caption": "x²-8x+8≤0의 근은 4±2√2이다. 구간 안 정수는 2,3,4,5,6의 5개이다.",
+  "accessibilityDescription": "x²-8x+8≤0의 근은 4±2√2이다. 구간 안 정수는 2,3,4,5,6의 5개이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a=-2,b=-8이므로 x²+bx-4a=x²-8x+8≤0",
+      "mappedTo": [
+        "inequality.coefficients",
+        "inequality.comparator",
+        "inequality.integerPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "계수에서 계산된 영점과 포물선의 부호, 포함되는 양 끝점 및 정수 후보를 그래프와 수직선에 연결한다."
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "capability": "quadratic-inequality-chain-v1",
+  "inequality": {
+    "coefficients": [
+      "14",
+      "-9",
+      "1"
+    ],
+    "comparator": "<=",
+    "variable": "x",
+    "integerPoints": true
+  },
+  "graphCaption": {
+    "text": "이차함수의 부호"
+  },
+  "numberLineCaption": {
+    "text": "해집합과 정수 후보"
+  },
+  "caption": "(x-2)(x-7)≤0의 정수 해는 2,3,4,5,6,7의 6개이다.",
+  "accessibilityDescription": "(x-2)(x-7)≤0의 정수 해는 2,3,4,5,6,7의 6개이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x²-9x+14≤0",
+      "mappedTo": [
+        "inequality.coefficients",
+        "inequality.comparator",
+        "inequality.integerPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "계수에서 계산된 영점과 포물선의 부호, 포함되는 양 끝점 및 정수 후보를 그래프와 수직선에 연결한다."
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "6",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "절댓값"
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "label": "양수 조건"
+      },
+      {
+        "kind": "RESULT",
+        "integerPoints": true,
+        "label": "정수해"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "절댓값과 양수 조건"
+  },
+  "caption": "공통해 0<x≤6에서 정수 1부터 6까지가 포함된다.",
+  "accessibilityDescription": "공통해 0<x≤6에서 정수 1부터 6까지가 포함된다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "-2≤x≤6, x>0",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "열린 점과 닫힌 점, 유효 범위 및 필요한 정수점을 실제 수직선 필드로 표시한다."
+  ]
+}

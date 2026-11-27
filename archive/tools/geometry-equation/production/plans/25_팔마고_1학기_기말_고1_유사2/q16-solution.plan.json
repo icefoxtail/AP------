@@ -1,0 +1,60 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-3/2",
+              "state": "CLOSED"
+            }
+          },
+          {
+            "lo": {
+              "value": "2",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ],
+        "label": "첫 부등식"
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ],
+        "label": "둘째 부등식"
+      },
+      {
+        "kind": "RESULT",
+        "label": "공통해"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "두 해집합의 교집합"
+  },
+  "caption": "n=m에서 첫 부등식은 (2x+3)(x-2)≥0, 둘째는 x≥0이다. 공통해는 x≥2이므로 k=2이다.",
+  "accessibilityDescription": "n=m에서 첫 부등식은 (2x+3)(x-2)≥0, 둘째는 x≥0이다. 공통해는 x≥2이므로 k=2이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "(2x+3)(x-2)≥0, x≥0",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "열린 점과 닫힌 점, 유효 범위 및 필요한 정수점을 실제 수직선 필드로 표시한다."
+  ]
+}

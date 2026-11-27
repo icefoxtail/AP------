@@ -1,0 +1,53 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ],
+        "label": "첫째 조건"
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "4",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "label": "둘째 조건"
+      },
+      {
+        "kind": "RESULT",
+        "label": "공통해"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "두 조건의 공통해"
+  },
+  "caption": "연립부등식의 해 -2≤x<4에서 a=-2, b=4이다.",
+  "accessibilityDescription": "연립부등식의 해 -2≤x<4에서 a=-2, b=4이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x≥-2, x<4",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "열린 점과 닫힌 점, 유효 범위 및 필요한 정수점을 실제 수직선 필드로 표시한다."
+  ]
+}

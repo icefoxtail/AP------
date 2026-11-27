@@ -1,0 +1,40 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "4",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "8",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "integerPoints": true,
+        "label": "가능한 x"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "둔각삼각형의 정수 변"
+  },
+  "caption": "삼각형 조건 x>4와 둔각 조건 x<8을 결합하면 정수 x는 5,6,7이다.",
+  "accessibilityDescription": "삼각형 조건 x>4와 둔각 조건 x<8을 결합하면 정수 x는 5,6,7이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "4<x<8",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "열린 점과 닫힌 점, 유효 범위 및 필요한 정수점을 실제 수직선 필드로 표시한다."
+  ]
+}
