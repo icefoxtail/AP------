@@ -1,0 +1,38 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "0",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "매개변수 a의 범위"
+  },
+  "caption": "두 연립부등식의 공통해가 2<x<6이 되는 매개변수 a의 범위는 -2≤a≤0이다.",
+  "accessibilityDescription": "매개변수 a가 -2부터 0까지 양 끝을 포함하는 구간을 표시한 수직선.",
+  "sourceConditions": [
+    {
+      "id": "h1-13-1",
+      "condition": "주어진 연립부등식의 해가 정확히 2<x<6",
+      "mappedTo": "numberLine.rows[0].pieces[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "가능한 매개변수의 양 끝 포함 여부를 선분과 닫힌 점으로 나타낸다."
+  ]
+}
