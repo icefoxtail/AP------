@@ -1,0 +1,76 @@
+name: Temporary Wangun q14 net regeneration
+on:
+  push:
+    branches:
+      - work/fix-wangun-net-q14-20261127
+    paths:
+      - .github/workflows/ap-wangun-q14-render-once.yml
+      - archive/tools/geometry-equation/production/plans/24_왕운중_2학기_기말_중1_수학/q14-net-problem-v2.config.json
+
+permissions:
+  contents: write
+
+jobs:
+  official-render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          persist-credentials: true
+          sparse-checkout: |
+            archive/tools/geometry-equation
+            archive/tools/pipeline-core
+            archive/tools/past-exam-pipeline/lib
+            archive/exams/original/middle/m1/2final
+            archive/assets/images/24_왕운중_2학기_기말_중1_수학
+            archive/data/master_tables
+            alive/runtime/provider-bridge
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: 157.0.8103.78
+      - name: Set up official geometry SVG engine dependencies
+        run: node archive/tools/geometry-equation/production/setup-spikes.mjs
+      - name: Render problem-net SVG with official engine and static audit
+        env:
+          PYTHONPATH: ${{ github.workspace }}/.tmp/apmath-visual-engine/dependencies/python
+          PYTHONUTF8: '1'
+          GEOMETRY_BROWSER_EXECUTABLE: ${{ steps.chrome.outputs.chrome-path }}
+          GEOMETRY_WORKER_TIMEOUT_MS: '120000'
+        run: |
+          node archive/tools/geometry-equation/production/render-problem-figures.mjs \
+            archive/tools/geometry-equation/production/plans/24_왕운중_2학기_기말_중1_수학/q14-net-problem-v2.config.json \
+            "$RUNNER_TEMP/wangun-q14-output"
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          const svg=fs.readFileSync(process.env.RUNNER_TEMP+'/wangun-q14-output/body.svg','utf8');
+          const labels=[...svg.matchAll(/data-tex="([^"]+)"/g)].map(x=>x[1]);
+          if(labels.length!==4 || labels.some(x=>x.includes('\\times')) || labels.filter(x=>x.startsWith('10')).length!==2 || svg.includes('data-role="face-label"')) {
+            console.error('Unexpected net labels',labels);
+            process.exit(1);
+          }
+          console.log('Net labels verified:', labels);
+          NODE
+          cp "$RUNNER_TEMP/wangun-q14-output/body.svg" "archive/assets/images/24_왕운중_2학기_기말_중1_수학/q14-net-problem-v2.svg"
+      - name: Commit tested engine SVG onto the task branch
+        run: |
+          git add "archive/assets/images/24_왕운중_2학기_기말_중1_수학/q14-net-problem-v2.svg"
+          git diff --cached --check
+          if git diff --cached --quiet; then echo "ERROR: SVG did not change"; exit 1; fi
+          git -c user.name="AP SVG Engine" -c user.email="svg-engine@users.noreply.github.com" commit -m "Render corrected Wangun q14 net with official SVG engine [skip ci]"
+          git push origin "HEAD:$GITHUB_REF_NAME"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: wangun-q14-engine-svg
+          path: ${{ runner.temp }}/wangun-q14-output/
+          if-no-files-found: warn
+          retention-days: 3
