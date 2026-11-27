@@ -41,11 +41,12 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q1-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 세 중선 AE, BF, CD가 무게중심 G에서 만나고 D, E, F는 각 변의 중점이다. 첫째 그림(왼쪽 위)은 중선 AE를 꼭짓점 쪽 파란색 AG와 주황색 GE로 나눈 모양이고, 둘째 그림(오른쪽 위)은 세 중선이 나눈 넓이가 같은 6개의 파란 삼각형이며, 셋째 그림(왼쪽 아래)은 그중 2개로 이루어진 삼각형 AGC를 주황색으로 칠한 모양이다.",
-    "solutionImageCaption": "무게중심 G는 중선을 꼭짓점 쪽에서 2:1로 나누므로 AG:GE=2:1, CG:CD=2:3이다. 세 중선은 삼각형을 넓이가 같은 6개의 삼각형으로 나누므로 삼각형 BEG와 CEG의 넓이가 같고 삼각형 AGC는 ABC의 3분의 1이다. AG와 BG의 길이는 같다고 할 수 없다. 정답은 ④이다.",
+    "solutionImageAlt": "G는 중선을 2:1로 나누고 세 중선은 삼각형을 같은 넓이의 여섯 부분으로 나눈다. 해설에서 선과 점으로 넓이 관계를 확인한다.",
+    "solutionImageCaption": "G는 중선을 2:1로 나누고 세 중선은 삼각형을 같은 넓이의 여섯 부분으로 나눈다. 해설에서 선과 점으로 넓이 관계를 확인한다.",
     "solutionImageSize": "full",
     "primaryMethod": "무게중심의 중선비·넓이 성질 판정",
-    "decisiveStep": "2:1분할과등높이넓이,세부분1/3은성립하지만서로다른중선의길이는같지않음을구별한다."
+    "decisiveStep": "2:1분할과등높이넓이,세부분1/3은성립하지만서로다른중선의길이는같지않음을구별한다.",
+    "solutionImageScale": 94
   },
   {
     "id": 2,
@@ -655,11 +656,12 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q14-solution.svg",
-    "solutionImageAlt": "해설 그림: 평행한 두 직선 l과 m이 있고 l 위에 점 A, B, C, D가, m 위에 점 E, F, G가 있다. 둘째 그림(오른쪽 위)은 l 위의 두 점 A, C와 m 위의 점 F로 만든 파란색 삼각형이고, 셋째 그림(왼쪽 아래)은 l 위의 점 B와 m 위의 두 점 E, G로 만든 주황색 삼각형이다.",
-    "solutionImageCaption": "삼각형은 한 직선 위의 세 점으로는 만들 수 없다. l의 4점 중 2점과 m의 3점 중 1점을 고르는 경우는 6×3=18가지이고, l의 1점과 m의 3점 중 2점을 고르는 경우는 4×3=12가지이다. 합의 법칙으로 18+12를 구한다. 정답은 ① 30이다.",
+    "solutionImageAlt": "두 평행선 위의 점에서 삼각형을 만들려면 한 직선에서 두 점, 다른 직선에서 한 점을 고른다. 면은 채우지 않고 선택한 점과 선으로 나타낸다.",
+    "solutionImageCaption": "두 평행선 위의 점에서 삼각형을 만들려면 한 직선에서 두 점, 다른 직선에서 한 점을 고른다. 면은 채우지 않고 선택한 점과 선으로 나타낸다.",
     "solutionImageSize": "full",
     "primaryMethod": "두 평행선에서 점을 나누어 선택해 삼각형 세기",
-    "decisiveStep": "한직선두점과다른직선한점을고르는두배반경우를조합곱으로센다."
+    "decisiveStep": "한직선두점과다른직선한점을고르는두배반경우를조합곱으로센다.",
+    "solutionImageScale": 94
   },
   {
     "id": 15,
@@ -703,8 +705,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q15-solution.svg",
-    "solutionImageAlt": "해설 그림: 1부터 12까지의 수가 적힌 카드 12장이 두 줄로 놓여 있다. 3, 6, 9, 12가 적힌 네 장은 파란색이고 5, 10이 적힌 두 장은 주황색이며 나머지는 칠하지 않았다.",
-    "solutionImageCaption": "전체 카드는 12장이다. 3의 배수는 3, 6, 9, 12의 4장(파란색), 5의 배수는 5, 10의 2장(주황색)이고 둘 다에 속하는 카드는 없으므로 합의 법칙으로 4+2=6장이다. 확률은 12분의 6이다. 정답은 ① 2분의 1이다.",
+    "solutionImageAlt": "1부터 12까지 카드에서 3의 배수는 3,6,9,12이고 5의 배수는 5,10이다. 카드는 채우지 않고 숫자로 구분한다.",
+    "solutionImageCaption": "1부터 12까지 카드에서 3의 배수는 3,6,9,12이고 5의 배수는 5,10이다. 카드는 채우지 않고 숫자로 구분한다.",
     "solutionImageSize": "full",
     "primaryMethod": "겹치지 않는 두 배수 목록의 확률",
     "decisiveStep": "1..12의3배수4개와5배수2개를더하여전체12로나눈다."
@@ -748,8 +750,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q16-solution.svg",
-    "solutionImageAlt": "해설 그림: 1부터 9까지의 수가 적힌 카드 9장이 두 줄로 있다. 위쪽 줄에서는 짝수 2, 4, 6, 8이 파란색이고 아래쪽 줄에서는 6의 약수 1, 2, 3, 6이 주황색이다.",
-    "solutionImageCaption": "카드를 다시 넣으므로 두 번의 선택은 서로 영향을 주지 않는다. 처음에 짝수가 나올 확률은 9장 중 4장이므로 9분의 4이고, 두 번째에 6의 약수가 나올 확률도 9장 중 4장이므로 9분의 4이다. 두 확률을 곱한다. 정답은 ④ 81분의 16이다.",
+    "solutionImageAlt": "처음 카드의 짝수는 2,4,6,8이고 두 번째 카드의 6의 약수는 1,2,3,6이다. 카드의 숫자를 읽어 두 사건을 구분한다.",
+    "solutionImageCaption": "처음 카드의 짝수는 2,4,6,8이고 두 번째 카드의 6의 약수는 1,2,3,6이다. 카드의 숫자를 읽어 두 사건을 구분한다.",
     "solutionImageSize": "full",
     "primaryMethod": "복원 추출의 두 사건 확률 곱",
     "decisiveStep": "다시넣어같은9장인표본에서짝수4개와6약수4개의확률을곱한다."
@@ -800,11 +802,12 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q17-solution.svg",
-    "solutionImageAlt": "해설 그림: 네 영역 A, B, C, D로 나뉜 도형이다. 둘째 그림(오른쪽 위)은 B 4가지, A 3가지, C 2가지, D 2가지로 칠할 수 있음을 나타내고, 셋째 그림(왼쪽 아래)은 B를 빨간색으로 정한 경우를 주황색으로 나타내며 A 3가지, C 2가지, D 2가지가 남는다.",
-    "solutionImageCaption": "B를 먼저 칠하면 4가지, A는 B와 다른 3가지, C는 B, A와 다른 2가지, D는 B, C와 다른 2가지이므로 전체 색칠하는 방법은 4×3×2×2가지이다. B가 빨간색으로 정해진 경우는 3×2×2가지이다. 두 수의 비가 구하는 확률이다. 정답은 ① 4분의 1이다.",
+    "solutionImageAlt": "B는 A,C,D 모두와 이웃하며 A와 C도 이웃한다. B의 색을 정한 뒤 A,C,D의 가능한 색을 세고, 면은 채우지 않는다.",
+    "solutionImageCaption": "B는 A,C,D 모두와 이웃하며 A와 C도 이웃한다. B의 색을 정한 뒤 A,C,D의 가능한 색을 세고, 면은 채우지 않는다.",
     "solutionImageSize": "full",
     "primaryMethod": "인접 색칠의 전체 수와 지정색 경우의 비",
-    "decisiveStep": "그림의인접관계로전체48, B가빨강인경우12를세어비를취한다."
+    "decisiveStep": "그림의인접관계로전체48, B가빨강인경우12를세어비를취한다.",
+    "solutionImageScale": 94
   },
   {
     "id": 18,

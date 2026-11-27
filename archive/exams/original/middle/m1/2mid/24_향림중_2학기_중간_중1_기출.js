@@ -82,9 +82,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q2-solution.svg",
-    "solutionImageAlt": "해설 그림: 두 직선이 한 점에서 만나고, 마주 보는 두 각을 같은 빨간 호로 표시해 110°인 각과 a가 맞꼭지각 관계임을 보여 준다.",
-    "solutionImageCaption": "마주 보는 두 각(맞꼭지각)은 크기가 같다.",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "두 직선의 맞꼭지각 110°와 a를 빈 호로 표시하여 a=110°임을 보인다.",
+    "solutionImageCaption": "두 직선의 맞꼭지각 110°와 a를 빈 호로 표시하여 a=110°임을 보인다.",
+    "solutionImageSize": "full",
     "curriculum": "2015",
     "rpmPrimaryRecordId": "M1-RPM-063",
     "rpmPrimaryPath": {
@@ -120,7 +120,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "$l\\parallel m$이므로 표시된 두 각은 엇각이다.\n$\\angle a=45^\\circ$\n따라서 정답은 ②이다.",
-    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q3.png",
+    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q3-problem.svg",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -135,9 +135,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q3-solution.svg",
-    "solutionImageAlt": "해설 그림: 평행한 두 직선 l, m을 한 직선이 가로지르고, 45°로 표시한 각과 a를 같은 빨간 호로 표시해 두 각이 엇각 관계임을 보여 준다.",
-    "solutionImageCaption": "l∥m이므로 엇각의 크기는 서로 같다.",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "원본 그림에서 잘못 놓인 a 각호를 실제 엇각 위치로 고쳐 45°임을 입증한다.",
+    "solutionImageCaption": "원본 그림에서 잘못 놓인 a 각호를 실제 엇각 위치로 고쳐 45°임을 입증한다.",
+    "solutionImageSize": "full",
     "curriculum": "2015",
     "rpmPrimaryRecordId": "M1-RPM-064",
     "rpmPrimaryPath": {
@@ -146,7 +146,10 @@ window.questionBank = [
       "l3": "평행선과 각",
       "l4": "동위각·엇각"
     },
-    "rpmCrosswalkStatus": "FAMILY_BINDING_GAP"
+    "rpmCrosswalkStatus": "FAMILY_BINDING_GAP",
+    "imageAlt": "평행한 두 직선 사이의 엇각 a와 45°를 같은 크기 각호로 표시한다.",
+    "imageCaption": "평행한 두 직선 사이의 엇각 a와 45°를 같은 크기 각호로 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -234,9 +237,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q5-solution.svg",
-    "solutionImageAlt": "해설 그림: 밑변 위의 한 점에서 꼭대기로 그은 선이 삼각형을 나누고, 오른쪽 밑점의 바깥각 120°와 이웃한 안쪽 각 60°, 꼭대기 40°, 직선 위에서 서로 이웃한 두 각 x와 y를 표시한다.",
-    "solutionImageCaption": "직선 위의 이웃한 두 각 x, y와 오른쪽 밑점의 바깥각·안쪽 각을 표시한 그림",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "외각 120°와 안각 60°, 꼭짓점 40°, 이웃각 80°·100°를 빈 호로 표시한 삼각형 풀이.",
+    "solutionImageCaption": "외각 120°와 안각 60°, 꼭짓점 40°, 이웃각 80°·100°를 빈 호로 표시한 삼각형 풀이.",
+    "solutionImageSize": "full",
     "curriculum": "2015",
     "rpmPrimaryRecordId": "M1-RPM-084",
     "rpmPrimaryPath": {
@@ -287,9 +290,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q6-solution.svg",
-    "solutionImageAlt": "해설 그림: 오각형의 네 내각 110°, 110°, 120°, 78°를 표시하고, 나머지 꼭짓점에서 내각 y와 바깥쪽 이웃각 x가 한 직선 위에 이웃해 있음을 보여 준다.",
-    "solutionImageCaption": "오각형의 나머지 내각 y와 직선 위에서 이웃한 각 x를 표시한 그림",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "오각형의 네 내각 110°·110°·120°·78°와 연장선 바깥각 x=58°를 무채움 호로 나타낸다.",
+    "solutionImageCaption": "오각형의 네 내각 110°·110°·120°·78°와 연장선 바깥각 x=58°를 무채움 호로 나타낸다.",
+    "solutionImageSize": "full",
     "curriculum": "2015",
     "rpmPrimaryRecordId": "M1-RPM-081",
     "rpmPrimaryPath": {
@@ -378,7 +381,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "$OE\\perp AB$이므로 $\\angle EOB=90^\\circ$이다.\n$\\angle EOD=48^\\circ$이므로\n$\\angle DOB=90^\\circ-48^\\circ=42^\\circ$\n\n$OF\\perp CD$이므로\n$\\angle DOF=90^\\circ$\n\n따라서\n$\\angle BOF=90^\\circ-42^\\circ=48^\\circ$\n\n$A,O,B$는 한 직선 위에 있으므로\n$\\angle AOF=180^\\circ-48^\\circ=132^\\circ$\n\n정답은 ①이다.",
-    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q8.png",
+    "image": "assets/images/24_향림중_2학기_중간_중1_기출/q8-problem.svg",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
@@ -393,9 +396,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q8-solution.svg",
-    "solutionImageAlt": "해설 그림: 두 개의 그림. 왼쪽은 OE⊥AB로 직각 EOB 안에서 ∠EOD=48°와 ∠DOB를 나타내고, 오른쪽은 OF⊥CD로 직각 DOF, ∠DOB, 구하는 ∠AOF를 점 O 둘레에 표시한다.",
-    "solutionImageCaption": "수선 OE, OF를 이용해 ∠DOB를 거쳐 구하는 ∠AOF를 두 그림으로 보인 그림",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "OE⊥AB, OF⊥CD와 48°·42°를 빈 각호 및 직각 표식으로 명확히 보인다.",
+    "solutionImageCaption": "OE⊥AB, OF⊥CD와 48°·42°를 빈 각호 및 직각 표식으로 명확히 보인다.",
+    "solutionImageSize": "full",
     "curriculum": "2015",
     "rpmPrimaryRecordId": "M1-RPM-062",
     "rpmPrimaryPath": {
@@ -404,7 +407,10 @@ window.questionBank = [
       "l3": "각",
       "l4": "각의 크기"
     },
-    "rpmCrosswalkStatus": "FAMILY_ACTIVE"
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE",
+    "imageAlt": "서로 직교하는 OE·AB와 OF·CD, 교점 O, 주어진 ∠EOD=48°를 각호·직각 표식으로 그린다.",
+    "imageCaption": "서로 직교하는 OE·AB와 OF·CD, 교점 O, 주어진 ∠EOD=48°를 각호·직각 표식으로 그린다.",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -650,9 +656,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q13-solution.svg",
-    "solutionImageAlt": "해설 그림: 한 꼭짓점 둘레에 정사각형의 내각 90°, 정육각형의 내각 120°, 정n각형의 내각 150°가 모여 한 바퀴를 이루는 모습을 색이 다른 호로 구분해 보여 주고, 붙은 변은 같은 길이 눈금으로 나타낸다.",
-    "solutionImageCaption": "한 점 둘레에 모인 정사각형·정육각형·정n각형의 세 내각을 나타낸 그림이다.",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "공통 꼭짓점의 정사각형 90°, 정육각형 120°, 정n각형 150°를 세 영역의 채움 없이 각호와 직각으로 나타낸다.",
+    "solutionImageCaption": "공통 꼭짓점의 정사각형 90°, 정육각형 120°, 정n각형 150°를 세 영역의 채움 없이 각호와 직각으로 나타낸다.",
+    "solutionImageSize": "full",
     "curriculum": "2015",
     "rpmPrimaryRecordId": "M1-RPM-087",
     "rpmPrimaryPath": {
@@ -1153,9 +1159,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q23-solution.svg",
-    "solutionImageAlt": "해설 그림: AD∥BC, AD=BC=4인 사각형 ABCD에서 대각선 BD로 나눈 △ABD(연한 색)와 △CDB(진한 색)를 보여 준다. AD와 CB에 같은 눈금과 4, BD에 '공통' 표시, 엇각 ∠ADB와 ∠CBD에 같은 빨간 호가 있다.",
-    "solutionImageCaption": "AD=CB, BD는 공통, 엇각 ∠ADB=∠CBD이므로 △ABD와 △CDB는 SAS 합동이다.",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "대각선 BD, 평행한 AD와 BC, 길이 4, 공통변 BD, 엇각을 나타낸 SAS 합동 그림이다.",
+    "solutionImageCaption": "대각선 BD, 평행한 AD와 BC, 길이 4, 공통변 BD, 엇각을 나타낸 SAS 합동 그림이다.",
+    "solutionImageSize": "full",
     "curriculum": "2015",
     "rpmPrimaryRecordId": "M1-RPM-079",
     "rpmPrimaryPath": {

@@ -640,7 +640,7 @@ window.questionBank = [
   },
   {
     "id": 14,
-    "imageAlt": "평행사변형의 왼쪽 AB에는 중점 M, 오른쪽 CD에는 중점 N이 있다. 사각형 BMDN을 칠했다. ADM은 20도, BNC는 50도이다.",
+    "imageAlt": "14번 문제 조건 도형",
     "level": "상",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -667,7 +667,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "중점 조건과 평행사변형의 대변·대각을 이용해 두 삼각형의 합동을 보인다.\n평행사변형에서 $AB=CD$, $AD=BC$이다. $M,N$은 각각 $AB,CD$의 중점이므로 $AM=CN$이다.\n또한 $\\angle DAM=\\angle BCN$이다.\n따라서 $\\triangle AMD$와 $\\triangle CNB$는 두 변과 그 끼인각이 각각 같은 SAS 합동이다.\n그러므로 대응각 $\\angle AMD=\\angle CNB=\\angle BNC=50^\\circ$이다.\n$A,M,B$가 한 직선 위에 있으므로 $\\angle BMD=180^\\circ-50^\\circ=130^\\circ$이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/25_삼산중_2학기_중간_중2_수학/q14-problem-visual-v2.svg",
-    "imageSize": "tall",
+    "imageSize": "full",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
@@ -686,7 +686,11 @@ window.questionBank = [
     "semanticSourceScope": "M1-2",
     "semanticScopeRelation": "LOWER_GRADE_PREREQUISITE",
     "primaryMethod": "평행사변형 중점 조건으로 SAS를 만든 뒤 대응각 이동",
-    "decisiveStep": "대변과 중점에서 같은 두 변을 얻고 끼인각을 대응시켜 SAS 합동으로 목표 각을 옮긴다."
+    "decisiveStep": "대변과 중점에서 같은 두 변을 얻고 끼인각을 대응시켜 SAS 합동으로 목표 각을 옮긴다.",
+    "imageCaption": "14번 문제 조건 도형",
+    "solutionImageAlt": "14번 해설 관계 도형",
+    "solutionImageCaption": "14번 해설 관계 도형",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -949,7 +953,7 @@ window.questionBank = [
   {
     "id": 21,
     "imageSize": "full",
-    "imageAlt": "AB와 BC는 길이가 같다. B의 각은 36도이고 BD의 길이는 4 cm이다. C에서 각을 이등분하는 선이 AB 위의 D에 닿는다.",
+    "imageAlt": "21번 문제 조건 도형",
     "level": "상",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -985,7 +989,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "같은 두 각의 대변 연결",
-    "decisiveStep": "이등변 성질과 이등분선으로 같은 각을 만든 뒤 두 삼각형에 역 성질을 연속 적용한다."
+    "decisiveStep": "이등변 성질과 이등분선으로 같은 각을 만든 뒤 두 삼각형에 역 성질을 연속 적용한다.",
+    "imageCaption": "21번 문제 조건 도형",
+    "solutionImageAlt": "21번 해설 관계 도형",
+    "solutionImageCaption": "21번 해설 관계 도형",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

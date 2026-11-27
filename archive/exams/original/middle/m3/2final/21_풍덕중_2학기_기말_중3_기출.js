@@ -422,7 +422,7 @@ window.questionBank = [
       "원주각"
     ],
     "image": "assets/images/21_풍덕중_2학기_기말_중3_기출/q09-problem-visual-v2.svg",
-    "imageAlt": "큰 원 위에 점 A, P, Q, D가 있고 작은 원 위에 점 P, Q, B, C가 있다. 선분 AB는 점 P를, 선분 DC는 점 Q를 지난다. 각 BPQ는 52도, 각 ADQ는 x로 표시되어 있다.",
+    "imageAlt": "두 원이 점 P, Q에서 만나고, 점 A, P, B와 점 D, Q, C가 각각 한 직선 위에 있다. 각 BPQ는 52도이고 각 ADQ는 x이다.",
     "imageSize": "full",
     "level": "중",
     "category": "원의 성질",
@@ -455,7 +455,8 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "일직선APB에서52도의 보각128도를 얻고 한 원 위의 APQD 대각합으로 목표각을 구한다.",
-    "decisiveStep": "일직선APB에서52도의 보각128도를 얻고 한 원 위의 APQD 대각합으로 목표각을 구한다."
+    "decisiveStep": "일직선APB에서52도의 보각128도를 얻고 한 원 위의 APQD 대각합으로 목표각을 구한다.",
+    "imageCaption": "두 원이 점 P, Q에서 만나고, 점 A, P, B와 점 D, Q, C가 각각 한 직선 위에 있다. 각 BPQ는 52도이고 각 ADQ는 x이다."
   },
   {
     "id": 10,
@@ -606,8 +607,8 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "visualDisposition": "SOURCE_IMAGE_REUSED",
     "solutionImage": "assets/images/21_풍덕중_2학기_기말_중3_기출/q12-solution.svg",
-    "solutionImageAlt": "해설 그림: 원에 내접하는 삼각형 ABC, ABD에서 AB=AC=5cm는 파란색, 점 E에서 AE=3cm는 주황색, BE=EC=4cm는 초록색, 구하는 DE는 분홍색 선분이다. AE와 BC는 직각으로 만난다.",
-    "solutionImageCaption": "AB=AC=5cm인 이등변삼각형에서 AE는 BC에 수직이므로 BE=EC이고 BE=√(5²−3²)=4cm이다. 두 현 AD, BC가 E에서 만나므로 AE×DE=BE×EC, 즉 3×DE=4×4이다. 정답은 3분의 16cm이다.",
+    "solutionImageAlt": "AB=AC=5cm, AE=3cm이고 AE⊥BC이다. 직각삼각형에서 BE=EC=4cm, 교차현 정리에서 AE×DE=BE×EC이므로 DE=16/3cm이다.",
+    "solutionImageCaption": "AB=AC=5cm, AE=3cm이고 AE⊥BC이다. 직각삼각형에서 BE=EC=4cm, 교차현 정리에서 AE×DE=BE×EC이므로 DE=16/3cm이다.",
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
@@ -992,13 +993,14 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "visualDisposition": "SOURCE_IMAGE_REUSED",
     "solutionImage": "assets/images/21_풍덕중_2학기_기말_중3_기출/q20-solution.svg",
-    "solutionImageAlt": "해설 그림: 네 개의 도형이 두 줄로 놓여 있다. 왼쪽 위는 원 위에서 두 현 AC(파란색)와 BD(주황색)가 점 E에서 만나는 그림이고, 오른쪽 위는 점 P에서 시작하는 두 선분 위에 점 D, A와 점 C, B가 있는 그림이다. 아래 두 그림은 같은 방향으로 따로 그린 삼각형 PDC와 삼각형 PBA이며, 대응하는 변 PD와 PB는 파란색, PC와 PA는 주황색, DC와 BA는 초록색, 공통인 각 P는 보라색이다.",
-    "solutionImageCaption": "두 현이 만나는 경우는 AE×EC=2×6=12이고 BE×ED=4×3=12로 같으므로 한 원 위에 있다. 두 할선이 만나는 경우 한 원 위에 있다면 삼각형 PDC와 PBA가 닮아 PD×PA=PC×PB이어야 한다. 그런데 PD×PA=3×7=21, PC×PB=2×8=16으로 달라 한 원 위에 있지 않다. 정답은 ⑤이다.",
+    "solutionImageAlt": "보기 ①의 두 현은 AE×EC=2×6=12, BE×ED=4×3=12로 일치한다. 반면 보기 ⑤의 두 할선은 PD×PA=3×7=21, PC×PB=2×8=16으로 서로 달라 네 점이 한 원 위에 있을 수 없다. 정답은 ⑤이다.",
+    "solutionImageCaption": "보기 ①의 두 현은 AE×EC=2×6=12, BE×ED=4×3=12로 일치한다. 반면 보기 ⑤의 두 할선은 PD×PA=3×7=21, PC×PB=2×8=16으로 서로 달라 네 점이 한 원 위에 있을 수 없다. 정답은 ⑤이다.",
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
     "primaryMethod": "다섯 그림에 각각 같은 현 등각, 교차현 곱, 이등변사다리꼴, 대각합, 외부할선 곱 조건을 대응하여 네 점의 공원성을 검토한다.",
-    "decisiveStep": "다섯 그림에 각각 같은 현 등각, 교차현 곱, 이등변사다리꼴, 대각합, 외부할선 곱 조건을 대응하여 네 점의 공원성을 검토한다."
+    "decisiveStep": "다섯 그림에 각각 같은 현 등각, 교차현 곱, 이등변사다리꼴, 대각합, 외부할선 곱 조건을 대응하여 네 점의 공원성을 검토한다.",
+    "solutionImageScale": 94
   },
   {
     "id": 21,
@@ -1088,13 +1090,16 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "visualDisposition": "SOURCE_IMAGE_REUSED",
     "solutionImage": "assets/images/21_풍덕중_2학기_기말_중3_기출/q22-solution.svg",
-    "solutionImageAlt": "해설 그림: 원에 내접하는 꼭짓점이 A, B, C, D인 사각형에서 마주 보는 두 각 ∠B=x는 파란색, ∠ADC=(3x−20)°는 주황색으로 표시되어 있다.",
-    "solutionImageCaption": "원에 내접한 사각형에서 마주 보는 두 각의 합은 180°이므로 (3x−20)+x=180이다. 4x=200이다. 정답은 x=50이다.",
+    "solutionImageAlt": "원에 내접한 사각형 ABCD의 마주 보는 각 B=x°, D=(3x−20)°의 합은 180°이므로 x=50°이다.",
+    "solutionImageCaption": "원에 내접한 사각형 ABCD의 마주 보는 각 B=x°, D=(3x−20)°의 합은 180°이므로 x=50°이다.",
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
     "primaryMethod": "내접사각형의 마주 보는 두 각을 주어진 x의 일차식으로 나타내 합180의 방정식을 세워 x를 구한다.",
-    "decisiveStep": "내접사각형의 마주 보는 두 각을 주어진 x의 일차식으로 나타내 합180의 방정식을 세워 x를 구한다."
+    "decisiveStep": "내접사각형의 마주 보는 두 각을 주어진 x의 일차식으로 나타내 합180의 방정식을 세워 x를 구한다.",
+    "imageAlt": "목걸이를 본뜬 원에 내접한 사각형 ABCD에서 ∠B=x°, ∠ADC=(3x−20)°이다. 도형에서 두 각만 표시하고 답은 노출하지 않는다.",
+    "imageCaption": "목걸이를 본뜬 원에 내접한 사각형 ABCD에서 ∠B=x°, ∠ADC=(3x−20)°이다. 도형에서 두 각만 표시하고 답은 노출하지 않는다.",
+    "imageSize": "full"
   },
   {
     "id": 23,
@@ -1221,8 +1226,8 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "visualDisposition": "SOURCE_IMAGE_REUSED",
     "solutionImage": "assets/images/21_풍덕중_2학기_기말_중3_기출/q25-solution.svg",
-    "solutionImageAlt": "해설 그림: 지름 AB인 원 O에서 점 C에서의 접선 위에 점 T, H가 있고, AH는 접선에 수직이다. 점 O에서 AH에 내린 수선인 점선 보조선과 직각 표시(주황색)가 있고, 길이가 같은 OA, OC, 점선 보조선 끝에서 H까지의 선분은 파란색 눈금으로 표시되어 있다. 접선과의 두 직각 표시는 초록색이며 AH=6cm, 반지름 4.5cm가 표시되어 있다.",
-    "solutionImageCaption": "AB=9이므로 반지름은 4.5cm이다. OC와 AH는 모두 접선에 수직이라 평행하므로, 점 O에서 AH에 내린 수선(점선)의 발에서 H까지의 길이도 4.5cm이고 그 발에서 A까지는 6−4.5=1.5cm이다. 점선의 길이가 CH이므로 직각삼각형에서 CH²+1.5²=4.5²이다. 정답은 3√2cm이다.",
+    "solutionImageAlt": "AB=9cm는 지름이므로 반지름 OC=OA=4.5cm이다. OC⊥CT와 AH⊥CT에서 수직 높이 차는 6−4.5=1.5cm이고 CH²=4.5²−1.5²=18, 따라서 CH=3√2cm이다.",
+    "solutionImageCaption": "AB=9cm는 지름이므로 반지름 OC=OA=4.5cm이다. OC⊥CT와 AH⊥CT에서 수직 높이 차는 6−4.5=1.5cm이고 CH²=4.5²−1.5²=18, 따라서 CH=3√2cm이다.",
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
