@@ -1,0 +1,29 @@
+{
+  "capability":"construction-spike-v1",
+  "caption":"x²+y²=50에서 xy가 최대일 때 x=y=5이고 내접 직사각형은 정사각형이다.",
+  "accessibilityDescription":"반지름 5√2/2의 원에 가로와 세로가 5인 정사각형이 내접한다. 정사각형의 대각선은 원의 지름 5√2이고 한 꼭짓점에 직각 표식이 있다. 면 내부는 칠하지 않았다.",
+  "sourceConditions":[
+    {"id":"s1","condition":"내접 직사각형의 대각선은 원의 지름 5√2이고 x²+y²=50이다.","mappedTo":["mathPlan.nodes","displaySegments[4]","planeMarks.expressionLabels[2]"]},
+    {"id":"s2","condition":"(x-y)²≥0을 사용하면 xy≤25이고 등호 조건은 x=y=5이다.","mappedTo":["mathPlan.nodes","planeMarks.expressionLabels[0]","planeMarks.expressionLabels[1]","caption"]},
+    {"id":"s3","condition":"원과 정사각형의 내부는 기본적으로 채우지 않는다.","mappedTo":["displayCircles","displaySegments"]}
+  ],
+  "newVisualInformation":["문제의 임의의 직사각형이 등호 조건에서 정사각형으로 바뀐 것을 구분한다.","대각선이 지름인 보조선과 x=y=5인 양 변의 길이표시를 정확히 둔다.","불필요한 면 채움을 쓰지 않는다."],
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"CONCLUSION"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"5"}]},"outputType":"POINT","factRole":"CONCLUSION"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"5"}]},"outputType":"POINT","factRole":"CONCLUSION"},
+      {"id":"O","op":"MIDPOINT","inputs":["A","C"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"expression","op":"div","args":[{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"5"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"2"}]}]},{"kind":"integer","value":"2"}]}},"outputType":"CIRCLE","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints":["A","B","C","D","O"],"hiddenPointNames":["A","B","C","D","O"],"unmarkedPointNames":["A","B","C","D"],
+  "displayLines":[],"displayCircles":["k"],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sDA","refs":["D","A"]},{"id":"sAC","refs":["A","C"]}],
+  "rightAngles":[{"id":"rB","refs":["A","B","C"]}],
+  "planeMarks":{"expressionLabels":[{"id":"width","ownerSegment":"sAB","text":"5"},{"id":"height","ownerSegment":"sBC","text":"5"},{"id":"diagonal","ownerSegment":"sAC","text":"5√2"}]},
+  "coordinateCanvas":{"width":540,"height":430}
+}

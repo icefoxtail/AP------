@@ -1,0 +1,18 @@
+{
+  "capability":"number-line-figure-v1",
+  "caption":"-1<x<1은 -3≤x≤2에 포함되므로 조건 p는 조건 q의 충분조건이다.",
+  "accessibilityDescription":"첫째 수직선 P는 -1과 1을 제외한 사이 구간이고, 둘째 Q는 -3과 2를 포함하는 사이 구간이다. P가 Q 안에 있다.",
+  "sourceConditions":[
+    {"id":"s1","condition":"(2) p:-1<x<1이다.","mappedTo":["numberLine.rows[0].pieces[0]"]},
+    {"id":"s2","condition":"q:(x+3)(x-2)≤0의 해집합은 -3≤x≤2이고 P⊂Q이므로 p는 충분조건이다.","mappedTo":["numberLine.rows[1].pieces[0]","caption"]},
+    {"id":"s3","condition":"(1)의 |x|=|y|와 x=y는 실수 두 변수에 관한 대수 조건이며 해당 축은 본문 해설을 보존한다.","mappedTo":"PRESERVED_ARCHIVE_BANK"}
+  ],
+  "newVisualInformation":["열린 끝점 -1,1과 닫힌 끝점 -3,2를 비교한다.","서로 다른 포함 방향이 되지 않도록 P⊂Q만 시각화한다.","면 채움은 하지 않는다."],
+  "numberLine":{
+    "rows":[
+      {"kind":"SET","label":"P","color":"BLUE","pieces":[{"lo":{"value":"-1","state":"OPEN"},"hi":{"value":"1","state":"OPEN"}}]},
+      {"kind":"SET","label":"Q","pieces":[{"lo":{"value":"-3","state":"CLOSED"},"hi":{"value":"2","state":"CLOSED"}}]}
+    ]
+  },
+  "numberLineCaption":{"text":"(2) P⊂Q"}
+}
