@@ -1,0 +1,77 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "첫 팥",
+          "p": "7/10",
+          "children": [
+            {
+              "label": "둘 팥",
+              "p": "6/9"
+            },
+            {
+              "label": "둘 크림",
+              "p": "3/9"
+            }
+          ]
+        },
+        {
+          "label": "첫 크림",
+          "p": "3/10",
+          "children": [
+            {
+              "label": "둘 팥",
+              "p": "7/9"
+            },
+            {
+              "label": "둘 크림",
+              "p": "2/9"
+            }
+          ]
+        }
+      ]
+    },
+    "showPathProbability": true,
+    "highlightPaths": [
+      {
+        "path": [
+          "첫 팥",
+          "둘 크림"
+        ],
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "첫 팥 7/10 뒤에는 9개 중 크림 3개이므로 구하는 확률은 7/30이다.",
+  "accessibilityDescription": "팥 호두과자와 크림 호두과자를 다시 넣지 않고 연속 두 번 꺼내는 네 경로의 조건부확률 수형도이며 팥 다음 크림 경로를 강조한다.",
+  "sourceConditions": [
+    {
+      "id": "initial",
+      "condition": "처음 팥 7개, 크림 3개",
+      "mappedTo": [
+        "chart.root.children"
+      ]
+    },
+    {
+      "id": "without",
+      "condition": "다시 넣지 않아 두 번째 분모는 9",
+      "mappedTo": [
+        "chart.root.children[0].children",
+        "chart.root.children[1].children"
+      ]
+    },
+    {
+      "id": "event",
+      "condition": "첫 팥 두 번째 크림",
+      "mappedTo": [
+        "chart.highlightPaths"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 번째 확률 분모가 9로 줄고 첫 결과에 따라 수가 달라짐을 한눈에 비교한다."
+  ]
+}

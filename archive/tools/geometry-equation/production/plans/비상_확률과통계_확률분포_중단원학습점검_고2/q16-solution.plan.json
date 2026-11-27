@@ -1,0 +1,52 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "HISTOGRAM",
+    "yKind": "RELATIVE",
+    "boundaries": [
+      "1/2",
+      "3/2",
+      "5/2",
+      "7/2",
+      "9/2",
+      "11/2",
+      "13/2"
+    ],
+    "series": [
+      {
+        "relativeFrequencies": [
+          "2/27",
+          "5/27",
+          "13/54",
+          "13/54",
+          "5/27",
+          "2/27"
+        ]
+      }
+    ],
+    "xTitle": "중앙값 X",
+    "yTitle": "확률",
+    "showValues": false
+  },
+  "caption": "세 주사위 중앙값의 분포는 1과 6, 2와 5, 3과 4가 대칭이므로 평균은 7/2이다.",
+  "accessibilityDescription": "중앙값 1부터 6까지의 여섯 막대가 축 3.5를 기준으로 좌우 대칭인 확률분포를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "median",
+      "condition": "주사위 세 눈의 중앙값은 1부터 6까지",
+      "mappedTo": [
+        "chart.boundaries"
+      ]
+    },
+    {
+      "id": "prob",
+      "condition": "대칭확률 16,40,52,52,40,16 / 216",
+      "mappedTo": [
+        "chart.series"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "복잡한 경우의 수 대신 좌우 대칭인 분포의 구조를 막대 높이로 비교한다."
+  ]
+}

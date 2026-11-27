@@ -1,0 +1,123 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "형1",
+          "p": "1/3",
+          "children": [
+            {
+              "label": "동3",
+              "p": "1/3"
+            },
+            {
+              "label": "동5",
+              "p": "1/3"
+            },
+            {
+              "label": "동7",
+              "p": "1/3"
+            }
+          ]
+        },
+        {
+          "label": "형6",
+          "p": "1/3",
+          "children": [
+            {
+              "label": "동3",
+              "p": "1/3"
+            },
+            {
+              "label": "동5",
+              "p": "1/3"
+            },
+            {
+              "label": "동7",
+              "p": "1/3"
+            }
+          ]
+        },
+        {
+          "label": "형9",
+          "p": "1/3",
+          "children": [
+            {
+              "label": "동3",
+              "p": "1/3"
+            },
+            {
+              "label": "동5",
+              "p": "1/3"
+            },
+            {
+              "label": "동7",
+              "p": "1/3"
+            }
+          ]
+        }
+      ]
+    },
+    "highlightPaths": [
+      {
+        "path": [
+          "형6",
+          "동3"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "형6",
+          "동5"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "형9",
+          "동3"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "형9",
+          "동5"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "형9",
+          "동7"
+        ],
+        "color": "BLUE"
+      }
+    ],
+    "showPathProbability": true
+  },
+  "caption": "형이 이기는 다섯 경우는 형6에서 둘, 형9에서 셋이므로 5/9이다.",
+  "accessibilityDescription": "형의 카드 1, 6, 9와 동생의 카드 3, 5, 7에서 각각 한 장을 뽑는 두 단계 확률 수형도이다. 형의 카드 수가 더 큰 다섯 끝 경로를 강조한다.",
+  "sourceConditions": [
+    {
+      "id": "cards",
+      "condition": "형의 카드 1·6·9, 동생의 카드 3·5·7",
+      "mappedTo": [
+        "chart.root.children"
+      ]
+    },
+    {
+      "id": "wins",
+      "condition": "형6 동3·5, 형9 동3·5·7 다섯 경우",
+      "mappedTo": [
+        "chart.highlightPaths"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "각 카드 조합을 빠짐없이 9개의 종단 가지로 그리고 유리한 5개만 굵게 구분한다."
+  ]
+}

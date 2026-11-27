@@ -1,0 +1,46 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "HISTOGRAM",
+    "yKind": "RELATIVE",
+    "boundaries": [
+      "5/2",
+      "7/2",
+      "9/2",
+      "11/2"
+    ],
+    "series": [
+      {
+        "relativeFrequencies": [
+          "1/10",
+          "3/10",
+          "3/5"
+        ]
+      }
+    ],
+    "xTitle": "최댓값 X",
+    "yTitle": "확률",
+    "showValues": true
+  },
+  "caption": "뽑은 세 카드의 최댓값 X=3,4,5는 각각 1/10,3/10,3/5의 확률을 갖는다.",
+  "accessibilityDescription": "카드 세 장의 최댓값이 3, 4, 5일 때의 상대 확률을 높이 1/10, 3/10, 3/5의 막대 셋으로 보인다.",
+  "sourceConditions": [
+    {
+      "id": "outcomes",
+      "condition": "세 장을 뽑으면 X의 최솟값은 3, 최대는 5",
+      "mappedTo": [
+        "chart.boundaries"
+      ]
+    },
+    {
+      "id": "weights",
+      "condition": "경우 수 C(2,2),C(3,2),C(4,2) = 1,3,6",
+      "mappedTo": [
+        "chart.series"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "총 10개 조합의 분포를 최댓값별 세 막대로 대조해 기대값·분산의 기여를 이해하게 한다."
+  ]
+}

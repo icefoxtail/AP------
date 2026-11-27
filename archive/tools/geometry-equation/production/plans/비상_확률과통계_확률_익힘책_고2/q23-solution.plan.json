@@ -1,0 +1,79 @@
+{
+  "capability": "lattice-path-figure-v1",
+  "lattice": {
+    "grid": {
+      "cols": 6,
+      "rows": 6
+    },
+    "points": {
+      "P": [
+        0,
+        0
+      ],
+      "Q": [
+        4,
+        2
+      ]
+    },
+    "from": "P",
+    "to": "Q",
+    "counts": [
+      "Q"
+    ],
+    "highlightPath": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        4,
+        2
+      ]
+    ]
+  },
+  "caption": "P에서 Q까지 오른쪽 4칸과 위쪽 2칸의 순서를 정하는 길 15개에 이동 확률을 곱한다.",
+  "accessibilityDescription": "6×6 도로망에서 P는 왼쪽 아래, Q는 오른쪽 네 칸 위쪽 두 칸에 있다. P에서 Q로 도달하는 경로 하나를 강조하고 Q에 도달하는 최단 경로 수 15를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "asset",
+      "condition": "원본 q23.png는 6×6 격자, P=(0,0), Q=(4,2)",
+      "mappedTo": [
+        "lattice.grid",
+        "lattice.points"
+      ]
+    },
+    {
+      "id": "move",
+      "condition": "오른쪽 한 칸 또는 위로 한 칸씩 총 6회 이동",
+      "mappedTo": [
+        "lattice.from",
+        "lattice.to",
+        "lattice.counts",
+        "lattice.highlightPath"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "해설 전용으로 Q까지 4R·2U의 조합 15가 되는 격자 위 경우 수와 한 예시 경로를 실제 선으로 보여 준다."
+  ]
+}

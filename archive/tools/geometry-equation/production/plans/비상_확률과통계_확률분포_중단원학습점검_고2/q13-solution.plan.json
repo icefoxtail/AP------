@@ -1,0 +1,88 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "X: 평균 50, 표준편차 3"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "NORMAL_CURVE",
+          "curves": [
+            {
+              "id": "X",
+              "mean": "50",
+              "sd": "3",
+              "label": "X"
+            }
+          ],
+          "ticks": [
+            "47",
+            "50",
+            "56"
+          ],
+          "zAxis": true,
+          "shades": [
+            {
+              "from": "47",
+              "to": "56"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "Y: 평균 64, 표준편차 4"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "NORMAL_CURVE",
+          "curves": [
+            {
+              "id": "Y",
+              "mean": "64",
+              "sd": "4",
+              "label": "Y"
+            }
+          ],
+          "ticks": [
+            "56",
+            "64",
+            "68"
+          ],
+          "zAxis": true,
+          "shades": [
+            {
+              "from": "56",
+              "to": "68"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "각기 다른 정규분포의 해당 구간을 표준화하면 모두 Z∈[-1,2] 또는 대칭 구간이 되어 k=56이다.",
+  "accessibilityDescription": "두 장의 정규곡선 패널을 세로로 배치한다. X의 평균 50에서 47~56, Y의 평균 64에서 56~68 사이의 구간을 각각 강조하여 두 면적이 대칭임을 보인다.",
+  "sourceConditions": [
+    {
+      "id": "first",
+      "condition": "X~N(50,3²), P(47≤X≤k)",
+      "mappedTo": [
+        "panels[0].plan.chart"
+      ]
+    },
+    {
+      "id": "second",
+      "condition": "Y~N(64,4²), P(k≤Y≤68)",
+      "mappedTo": [
+        "panels[1].plan.chart"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "한 좌표계에서 섞어 그리면 곡선 배율이 잘못 읽히는 두 분포를 별도 축으로 정확하게 비교한다."
+  ]
+}
