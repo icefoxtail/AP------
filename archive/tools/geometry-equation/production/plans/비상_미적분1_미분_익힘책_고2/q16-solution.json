@@ -1,0 +1,81 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "1",
+      "0",
+      "-6",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1.5,
+      5
+    ],
+    "viewport": [
+      -2,
+      5.5,
+      -36,
+      12
+    ],
+    "requiredPoints": [
+      {
+        "id": "T",
+        "x": 2,
+        "y": -15
+      },
+      {
+        "id": "A",
+        "x": 0,
+        "y": 1
+      },
+      {
+        "id": "B",
+        "x": 4,
+        "y": -31
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": [
+        "-15"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "minSlope",
+          "slope": "-12",
+          "intercept": "9"
+        }
+      ]
+    }
+  },
+  "caption": "y=x³−6x²+1의 x=2인 점 (2,−15)에서 접선 y=−12x+9가 기울기 −12로 그어진다.",
+  "accessibilityDescription": "y=x³−6x²+1의 x=2인 점 (2,−15)에서 접선 y=−12x+9가 기울기 −12로 그어진다.",
+  "sourceConditions": [
+    {
+      "id": "curve",
+      "condition": "원문·해설의 1,0,-6,1 다항식 계수를 상수항부터 정확히 옮긴다.",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "slope",
+      "condition": "도함수 3(x−2)²−12의 최솟값 −12",
+      "mappedTo": "graphPlan.overlays.lines"
+    },
+    {
+      "id": "point",
+      "condition": "최소기울기의 접점 (2,−15)",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "원문·해설의 결정적 선·점·관계만 나타내며 배경과 임의의 면 채움을 두지 않는다."
+  ]
+}
