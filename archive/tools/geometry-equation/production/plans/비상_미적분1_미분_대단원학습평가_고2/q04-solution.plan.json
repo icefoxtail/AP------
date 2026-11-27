@@ -1,0 +1,119 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      4,
+      -5,
+      6
+    ],
+    "curves": [
+      {
+        "id": "lower",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "-1"
+        ],
+        "domain": [
+          "-2",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "y=-x-1"
+      },
+      {
+        "id": "upper",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "-1"
+        ],
+        "domain": [
+          "-2",
+          "4"
+        ],
+        "color": "WARM",
+        "label": "y=-x+3"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "3"
+      ],
+      "y": [
+        "-2",
+        "4"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "-2"
+        },
+        {
+          "id": "B",
+          "x": "-1",
+          "y": "4"
+        },
+        {
+          "id": "H",
+          "x": "3",
+          "y": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AH",
+          "from": "A",
+          "to": "H",
+          "length": true
+        }
+      ],
+      "rightAngles": [
+        {
+          "at": "H",
+          "from": [
+            "A",
+            "B"
+          ]
+        }
+      ]
+    }
+  },
+  "caption": "y=x³−4x+1의 x=1,−1에서 도출한 평행접선 y=−x−1과 y=−x+3. A(1,−2)에서 윗접선까지의 수선 AH는 길이 2√2다.",
+  "accessibilityDescription": "기울기가 모두 −1인 두 평행선, 아래 접점 A(1,−2), 윗접선의 점 B(−1,4), A에서 윗접선으로 내린 수선 AH, H의 직각 표식과 길이 2√2.",
+  "sourceQuote": "곡선 $y=x^3-4x+1$에 접하고 직선 $y=-x$와 평행한 두 접선 사이의 거리를 구하시오.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원래 곡선의 접점 x=±1에서 얻은 기울기 −1인 두 접선",
+      "mappedTo": [
+        "graphPlan.curves[0]",
+        "graphPlan.curves[1]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "접점 A(1,−2), B(−1,4)",
+      "mappedTo": "graphPlan.overlays.points"
+    },
+    {
+      "id": "c3",
+      "condition": "A에서 윗접선으로 내린 수선 AH와 H의 직각, 길이 2√2",
+      "mappedTo": [
+        "graphPlan.overlays.segments",
+        "graphPlan.overlays.rightAngles"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "곡선을 다시 그리는 대신 이미 계산된 두 평행접선과 그 사이의 실제 수직거리만 정확히 그린다.",
+    "선분 AH의 길이와 직각은 그래프 위 실제 기하 관계로 검증하며 면 채움은 없다."
+  ]
+}

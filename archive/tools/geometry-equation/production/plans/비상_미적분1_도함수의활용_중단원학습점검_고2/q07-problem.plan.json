@@ -1,0 +1,74 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "6",
+      "-3"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      3
+    ],
+    "viewport": [
+      -1.3,
+      3.3,
+      -5,
+      5
+    ],
+    "axisTickValues": {
+      "x": [
+        2
+      ],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "curveX": "1",
+          "unnamed": true
+        }
+      ],
+      "callouts": [
+        {
+          "id": "nameDeriv",
+          "point": "V",
+          "text": "y=f′(x)",
+          "direction": "NE"
+        }
+      ]
+    }
+  },
+  "caption": "최고차항 계수가 −1인 삼차함수의 도함수 그래프. x=0과 2를 지나는 아래로 열린 포물선이다.",
+  "accessibilityDescription": "y=f'(x)는 원점과 (2,0)을 지나고 x=1에서 꼭짓점이 있는 아래로 열린 포물선. 원본 문제의 축 눈금 2와 도함수 이름을 표시한다.",
+  "sourceQuote": "다음 그림은 최고차항의 계수가 $-1$인 삼차함수 $f(x)$의 도함수 $y=f'(x)$의 그래프이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "최고차항 계수 −1인 삼차의 도함수는 이차 최고차항 −3",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "c2",
+      "condition": "x축 교점 0, 2와 아래로 열린 도함수 포물선",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.axisTickValues.x"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "원본 곡선 식 이름 y=f'(x)",
+      "mappedTo": "graphPlan.overlays.callouts"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 q07.png의 포물선 개형·두 x절편·축 눈금 2를 해상도 독립적인 엔진 곡선으로 표현한다.",
+    "계수 −3은 최고차항 조건으로 결정되므로 임의 근삿값을 쓰지 않는다."
+  ]
+}
