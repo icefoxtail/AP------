@@ -1,0 +1,401 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1800000",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1800000",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "AG",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-400"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BG",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Aref",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Bref",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "aRay",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "Aref"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "100"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "18"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bRay",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "Bref"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "100"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "37"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "aLine",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "aRay"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bLine",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "bRay"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "aLine",
+          "bLine"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "eyeLine",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "T",
+          "eyeLine"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "E"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-1800000",
+            "denominator": "1000000"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "T",
+    "E",
+    "V",
+    "AG",
+    "BG"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAT",
+      "refs": [
+        "A",
+        "T"
+      ]
+    },
+    {
+      "id": "sBT",
+      "refs": [
+        "B",
+        "T"
+      ]
+    },
+    {
+      "id": "sTE",
+      "refs": [
+        "T",
+        "E"
+      ]
+    },
+    {
+      "id": "sEV",
+      "refs": [
+        "E",
+        "V"
+      ]
+    },
+    {
+      "id": "sAAG",
+      "refs": [
+        "A",
+        "AG"
+      ]
+    },
+    {
+      "id": "sBBG",
+      "refs": [
+        "B",
+        "BG"
+      ]
+    },
+    {
+      "id": "sAGBG",
+      "refs": [
+        "AG",
+        "BG"
+      ]
+    },
+    {
+      "id": "sBGV",
+      "refs": [
+        "BG",
+        "V"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 440
+  },
+  "caption": "풍덕중 14번 문제 조건: 원문 14번 문제에 필요한 점·선·라벨.",
+  "accessibilityDescription": "원문 14번 문제에 필요한 점·선·라벨",
+  "sourceConditions": [
+    {
+      "id": "q14-problem",
+      "condition": "민호가 산의 정상을 올려다본 각도를 측정하였더니 멀리 떨어진 지점에서 $18^\\circ$였고, 산을 향해 $400,\\mathrm{m}$ 걸어가서 측정한 각도가 $37^\\circ$였다. 민호의 눈높이가 $1.8,\\mathrm{m}$일 때, 산의 높이는? (단, $\\tan 72^\\circ=3$, $\\tan 37^\\circ=0.75$로 계산한다.)",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 14번 문제에 필요한 점·선·라벨"
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a18",
+        "refs": [
+          "B",
+          "A",
+          "T"
+        ],
+        "value": 18,
+        "label": "18",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a37",
+        "refs": [
+          "E",
+          "B",
+          "T"
+        ],
+        "value": 37,
+        "label": "37",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "l400",
+        "ownerSegment": "sAB",
+        "text": "400",
+        "factRole": "GIVEN",
+        "unit": "m"
+      },
+      {
+        "id": "lEye",
+        "ownerSegment": "sAAG",
+        "text": "1.8",
+        "factRole": "GIVEN",
+        "unit": "m"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rE",
+      "refs": [
+        "B",
+        "E",
+        "T"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "AG",
+    "BG",
+    "E",
+    "V"
+  ],
+  "hiddenPointStyle": "NONE"
+}

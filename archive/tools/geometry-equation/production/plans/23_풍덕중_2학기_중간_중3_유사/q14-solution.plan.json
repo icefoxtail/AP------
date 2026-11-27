@@ -1,0 +1,401 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-400"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1800000",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1800000",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "AG",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-400"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BG",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Aref",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Bref",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "aRay",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "Aref"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "100"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "18"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bRay",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "Bref"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "100"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "37"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "aLine",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "aRay"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bLine",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "bRay"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "aLine",
+          "bLine"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "eyeLine",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "T",
+          "eyeLine"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "E"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-1800000",
+            "denominator": "1000000"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "T",
+    "E",
+    "V",
+    "AG",
+    "BG"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAT",
+      "refs": [
+        "A",
+        "T"
+      ]
+    },
+    {
+      "id": "sBT",
+      "refs": [
+        "B",
+        "T"
+      ]
+    },
+    {
+      "id": "sTE",
+      "refs": [
+        "T",
+        "E"
+      ]
+    },
+    {
+      "id": "sEV",
+      "refs": [
+        "E",
+        "V"
+      ]
+    },
+    {
+      "id": "sAAG",
+      "refs": [
+        "A",
+        "AG"
+      ]
+    },
+    {
+      "id": "sBBG",
+      "refs": [
+        "B",
+        "BG"
+      ]
+    },
+    {
+      "id": "sAGBG",
+      "refs": [
+        "AG",
+        "BG"
+      ]
+    },
+    {
+      "id": "sBGV",
+      "refs": [
+        "BG",
+        "V"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 440
+  },
+  "caption": "풍덕중 14번 해설 과정: 원문 14번 해설에 필요한 풀이 관계.",
+  "accessibilityDescription": "원문 14번 해설에 필요한 풀이 관계",
+  "sourceConditions": [
+    {
+      "id": "q14-solution",
+      "condition": "가까운 지점에서 산까지의 수평 거리를 $x,\\mathrm{m}$, 눈높이 위 산의 높이를 $h,\\mathrm{m}$라 하면 $h=0.75x=\\dfrac{3}{4}x$이다. $\\tan 18^\\circ = \\dfrac{1}{\\tan 72^\\circ} = \\dfrac{1}{3}$이므로 $h = \\dfrac{x+400}{3}$이다. $\\dfrac{3}{4}x = \\dfrac{x+400}{3} \\implies 9x = 4x+1600 \\implies x=320$, $h=240,\\mathrm{m}$이다. 따라서 산의 전체 높이는 $240 + 1.8 = 241.8,\\mathrm{m}$이다. 정답은 ③이다.",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 14번 해설에 필요한 풀이 관계"
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a18",
+        "refs": [
+          "B",
+          "A",
+          "T"
+        ],
+        "value": 18,
+        "label": "18",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a37",
+        "refs": [
+          "E",
+          "B",
+          "T"
+        ],
+        "value": 37,
+        "label": "37",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "l400",
+        "ownerSegment": "sAB",
+        "text": "400",
+        "factRole": "GIVEN",
+        "unit": "m"
+      },
+      {
+        "id": "lEye",
+        "ownerSegment": "sAAG",
+        "text": "1.8",
+        "factRole": "GIVEN",
+        "unit": "m"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rE",
+      "refs": [
+        "B",
+        "E",
+        "T"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "AG",
+    "BG",
+    "E",
+    "V"
+  ],
+  "hiddenPointStyle": "NONE"
+}

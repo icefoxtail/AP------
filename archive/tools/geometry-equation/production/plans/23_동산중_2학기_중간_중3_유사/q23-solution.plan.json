@@ -1,0 +1,47 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-10",
+          "-8",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "2",
+        "y": "-18",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": [
+        "-18"
+      ]
+    }
+  },
+  "caption": "동산중 23번 해설 과정: 원문 23번 해설에 필요한 풀이 관계.",
+  "accessibilityDescription": "원문 23번 해설에 필요한 풀이 관계",
+  "sourceConditions": [
+    {
+      "id": "q23-solution",
+      "condition": "$y = 2(x^2-4x) - 10 = 2(x-2)^2 - 18$이므로 축의 방정식은 $x=2$($a=2$), 꼭짓점의 좌표는 $(2, -18)$($b=2, c=-18$)이다. 따라서 $a+b+c = 2 + 2 - 18 = -14$이다.",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 23번 해설에 필요한 풀이 관계"
+  ]
+}

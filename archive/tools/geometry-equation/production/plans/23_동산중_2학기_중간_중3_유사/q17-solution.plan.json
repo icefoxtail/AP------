@@ -1,0 +1,322 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "17"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1a",
+      "refs": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "id": "s1b",
+      "refs": [
+        "P1",
+        "P3"
+      ]
+    },
+    {
+      "id": "s1c",
+      "refs": [
+        "P2",
+        "P3"
+      ]
+    },
+    {
+      "id": "s2a",
+      "refs": [
+        "P4",
+        "P5"
+      ]
+    },
+    {
+      "id": "s2b",
+      "refs": [
+        "P4",
+        "P6"
+      ]
+    },
+    {
+      "id": "s2c",
+      "refs": [
+        "P5",
+        "P6"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a1",
+        "refs": [
+          "P2",
+          "P1",
+          "P3"
+        ],
+        "value": 60,
+        "label": "60",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "P5",
+          "P4",
+          "P6"
+        ],
+        "value": 135,
+        "label": "135",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "l1a",
+        "ownerSegment": "s1a",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l1b",
+        "ownerSegment": "s1b",
+        "text": "8",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l2a",
+        "ownerSegment": "s2a",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l2b",
+        "ownerSegment": "s2b",
+        "text": "3√2",
+        "factRole": "GIVEN"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "t1",
+        "at": [
+          2.5,
+          7.6
+        ],
+        "text": "ㄱ"
+      },
+      {
+        "id": "t2",
+        "at": [
+          13.5,
+          3.7
+        ],
+        "text": "ㄴ"
+      }
+    ],
+    "regions": [
+      {
+        "id": "r1",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "P1",
+              "P2",
+              "P3"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "r2",
+        "fill": "MEDIUM",
+        "shapes": [
+          {
+            "polygon": [
+              "P4",
+              "P5",
+              "P6"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 420
+  },
+  "hiddenPointNames": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "동산중 17번 해설 과정: 원문 17번 해설에 필요한 풀이 관계.",
+  "accessibilityDescription": "원문 17번 해설에 필요한 풀이 관계",
+  "newVisualInformation": [
+    "원문 17번 해설에 필요한 풀이 관계"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q17-solution",
+      "condition": "ㄱ의 넓이: $\\dfrac{1}{2}\\times 6\\times 8\\times\\sin 60^\\circ = 24\\times\\dfrac{\\sqrt{3}}{2} = 12\\sqrt{3}$ ㄴ의 넓이: $\\dfrac{1}{2}\\times 4\\times 3\\sqrt{2}\\times\\sin(180^\\circ-135^\\circ) = 6\\sqrt{2}\\times\\dfrac{\\sqrt{2}}{2} = 6$ 따라서 정답은 ④이다.",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    }
+  ]
+}

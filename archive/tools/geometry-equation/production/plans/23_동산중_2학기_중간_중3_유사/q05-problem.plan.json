@@ -1,0 +1,66 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "6",
+          "-8",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "0",
+        "marker": "NONE"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "0",
+        "marker": "NONE"
+      },
+      {
+        "id": "C",
+        "x": "0",
+        "y": "6",
+        "marker": "NONE"
+      },
+      {
+        "id": "V",
+        "x": "2",
+        "y": "-2",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "3"
+      ],
+      "y": [
+        "6"
+      ]
+    }
+  },
+  "caption": "동산중 5번 문제 조건: 원문 5번 문제에 필요한 점·선·라벨.",
+  "accessibilityDescription": "원문 5번 문제에 필요한 점·선·라벨",
+  "sourceConditions": [
+    {
+      "id": "q05-problem",
+      "condition": "다음 그림과 같이 $x$축과 두 점 $(1, 0)$, $(3, 0)$에서 만나고 $y$절편이 $6$인 이차함수의 식을 $y=ax^2+bx+c$라 할 때, $a+b+c$의 값은?",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 5번 문제에 필요한 점·선·라벨"
+  ]
+}
