@@ -1,0 +1,9 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [{"kind":"PRISM","base":{"kind":"RECT","width":4,"depth":4},"height":4,"names":"FGHEBCDA","points":[{"id":"P","at":{"edge":["A","B"],"t":"3/4"}},{"id":"Q","at":{"edge":["F","G"],"t":"3/4"}},{"id":"R","at":{"edge":["H","D"],"t":"3/4"}},{"id":"K","at":{"centroid":["P","Q","R"]}}]}],
+  "dims": [{"edge":"AD"}],
+  "segments": [{"from":"P","to":"Q","style":"DASHED","role":"ACCENT"},{"from":"Q","to":"R","style":"DASHED","role":"ACCENT"},{"from":"R","to":"P","style":"DASHED","role":"ACCENT"},{"from":"E","to":"K","style":"DASHED"}],
+  "caption": "K는 △PQR의 무게중심, EK=7√3/3",
+  "sourceConditions": ["E=(0,0,0)", "P=(3,0,4), Q=(4,3,0), R=(0,4,3)", "K=(7/3,7/3,7/3)"],
+  "newVisualInformation": ["세 내분점과 무게중심 K", "결과 길이를 재는 보조선 EK", "원문 삼각형 경계와 숨은 모서리"]
+}

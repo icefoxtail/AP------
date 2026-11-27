@@ -1,0 +1,9 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [{"kind":"REGULAR_POLYHEDRON","faces":4,"side":4,"names":"BCDA","points":[{"id":"E","at":{"midpoint":["A","B"]}},{"id":"F","at":{"midpoint":["C","D"]}}]}],
+  "segments": [{"from":"E","to":"F","style":"AUTO","role":"ACCENT"},{"from":"A","to":"F","style":"AUTO","role":"REF"},{"from":"B","to":"F","style":"AUTO","role":"REF"},{"from":"C","to":"E","style":"AUTO","role":"REF"},{"from":"D","to":"E","style":"AUTO","role":"REF"},{"from":"E","to":"A","role":"REF"},{"from":"F","to":"C","role":"REF"}],
+  "marks": {"rightAngles":[{"at":"E","refs":["A","F"]},{"at":"F","refs":["C","E"]}]},
+  "caption": "EF⊥AB, EF⊥CD, 그리고 AB⊥CD",
+  "sourceConditions": ["△ABF에서 E는 밑변 AB의 중점", "△CDE에서 F는 밑변 CD의 중점", "모든 면 정삼각형"],
+  "newVisualInformation": ["중점 E,F를 잇는 수선 EF", "E,F 직각표식", "이등변삼각형 ABF·CDE의 보조선"]
+}

@@ -1,0 +1,12 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [{"id":"A","at":[-3,0,0]},{"id":"B","at":[3,0,0]},{"id":"C","at":[0,10,0]},{"id":"O","at":[0,"4*sqrt(3)",4]},{"id":"H","at":[0,"4*sqrt(3)",0]},{"id":"M","at":{"midpoint":["A","B"]}}],
+    "segments": [{"from":"A","to":"B"},{"from":"B","to":"C"},{"from":"C","to":"A","style":"DASHED"},{"from":"O","to":"A"},{"from":"O","to":"B"},{"from":"O","to":"C"},{"from":"O","to":"H","style":"DASHED","role":"ACCENT"},{"from":"O","to":"M"},{"from":"H","to":"M","style":"DASHED"},{"from":"M","to":"A"}]
+  },
+  "dims": [{"from":"A","to":"B"},{"from":"O","to":"M"},{"from":"O","to":"H"}],
+  "marks": {"rightAngles":[{"at":"H","refs":["O","M"]},{"at":"M","refs":["O","A"]}],"angles":[{"refs":["O","M","H"],"value":30}]},
+  "caption": "OM=8; ∠OMH=30°, OH=4",
+  "sourceConditions": ["OM⊥AB", "HM⊥AB", "∠OMH=30°", "△OHM은 H에서 직각"],
+  "newVisualInformation": ["교선 AB에 대한 수선 OM·HM", "직각표식 2개와 이면각 호", "OM, OH 치수"]
+}

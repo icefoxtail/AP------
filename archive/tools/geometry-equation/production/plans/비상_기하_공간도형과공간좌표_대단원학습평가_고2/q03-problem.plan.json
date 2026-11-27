@@ -1,0 +1,12 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [{"id":"A","at":[-3,0,0]},{"id":"B","at":[3,0,0]},{"id":"C","at":[0,10,0]},{"id":"O","at":[0,"4*sqrt(3)",4]},{"id":"H","at":[0,"4*sqrt(3)",0]}],
+    "segments": [{"from":"A","to":"B"},{"from":"B","to":"C"},{"from":"C","to":"A","style":"DASHED"},{"from":"O","to":"A"},{"from":"O","to":"B"},{"from":"O","to":"C"},{"from":"O","to":"H","style":"DASHED","role":"ACCENT"},{"from":"H","to":"C","style":"DASHED"}]
+  },
+  "dims": [{"from":"A","to":"B"}],
+  "marks": {"rightAngles":[{"at":"H","refs":["O","C"]}]},
+  "caption": "사면체 OABC: AB=6, OH⊥평면 ABC, 이면각 30°",
+  "sourceConditions": ["AB=6", "삼각형 OAB의 넓이 24", "평면 OAB와 ABC의 이면각 30°", "OH는 평면 ABC에 수직"],
+  "newVisualInformation": ["밑면 ABC와 꼭짓점 O", "점 H와 수선 OH의 점선·직각", "AB 길이 6"]
+}

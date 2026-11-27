@@ -1,0 +1,11 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [{"id":"B","at":[0,0,0]},{"id":"C","at":["sqrt(3)",0,0]},{"id":"D","at":["sqrt(3)","sqrt(7)",0]},{"id":"H","at":["sqrt(3)","4*sqrt(7)/7",0]},{"id":"A","at":["sqrt(3)","4*sqrt(7)/7","2*sqrt(21)/7"]},{"id":"T","at":[0,"sqrt(7)",0],"hideName":true,"hideDot":true}],
+    "segments": [{"from":"B","to":"C"},{"from":"C","to":"D"},{"from":"D","to":"B"},{"from":"B","to":"A"},{"from":"A","to":"D"},{"from":"A","to":"H","style":"DASHED","role":"ACCENT"},{"from":"H","to":"D"},{"from":"B","to":"H","style":"DASHED"},{"from":"T","to":"B","style":"DASHED"},{"from":"T","to":"D","style":"DASHED"}]
+  },
+  "marks": {"rightAngles":[{"at":"H","refs":["A","D"]}]},
+  "caption": "△ABD의 정사영 △HBD; 면적비 HD/CD=3/7",
+  "sourceConditions": ["CH:HD=4:3", "정사영 △ABD→△HBD", "S(△ABD)=S(△BCD)"],
+  "newVisualInformation": ["A-H 정사영 점선", "투영된 삼각형 HBD의 보조선 BH", "BD 접는 선·H 직각표식·기존 직사각형 점선"]
+}
