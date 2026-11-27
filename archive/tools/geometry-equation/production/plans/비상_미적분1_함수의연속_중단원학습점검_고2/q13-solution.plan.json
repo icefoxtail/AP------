@@ -1,9 +1,9 @@
 {
   "capability":"piecewise-discontinuous-spike-v1",
-  "graphPlan":{"family":"piecewise-discontinuous","layout":"STACKED","xWindow":[-2,2],"pieces":[{"coefficients":["-1","0","1"],"domain":[null,null]}],"requiredPoints":[{"id":"V","x":0,"y":-1}],"referenceCurves":[{"id":"g","pieces":[{"coefficients":["2"],"domain":[null,-1],"end":"CLOSED"},{"coefficients":["0","0","1"],"domain":[-1,1],"start":"OPEN","end":"OPEN"},{"coefficients":["2"],"domain":[1,null],"start":"CLOSED"}],"requiredPoints":[{"id":"O","x":0,"y":0}]}],"axisTickValues":{"x":[-1,1],"y":[]}},
+  "graphPlan":{"family":"piecewise-discontinuous","layout":"STACKED","xWindow":[-2,2],"pieces":[{"coefficients":["-1","0","1"],"domain":[null,null]}],"requiredPoints":[{"id":"V","x":0,"y":-1}],"referenceCurves":[{"id":"g","pieces":[{"coefficients":["2"],"domain":[null,-1],"end":"CLOSED"},{"coefficients":["0","0","1"],"domain":[-1,1],"start":"OPEN","end":"OPEN"},{"coefficients":["2"],"domain":[1,null],"start":"CLOSED"}],"requiredPoints":[{"id":"O","x":0,"y":0}]}],"limitArrows":[{"curve":"g","at":"-1","side":"LEFT","toY":"2"},{"curve":"g","at":"-1","side":"RIGHT","toY":"1"},{"curve":"g","at":"1","side":"LEFT","toY":"1"},{"curve":"g","at":"1","side":"RIGHT","toY":"2"}],"axisTickValues":{"x":[-1,1],"y":[]}},
   "caption":"위쪽 f(x)=x²-1은 x=±1에서 0이고, 아래쪽 g(x)는 그곳에서 1에서 2로 점프한다. 따라서 곱 f(x)g(x)는 두 경계에서 연속일 수 있다.",
   "accessibilityDescription":"위 패널의 포물선 f는 x=-1과 1에서 0, 아래 패널의 g는 두 위치에서 열린 높이 1과 닫힌 높이 2로 불연속이다.",
   "sourceQuote":"함수 $f(x)g(x)$가 모든 실수 $x$에서 연속일 때, 실수 $a, b$의 값을 구하시오.",
-  "sourceConditions":[{"id":"c1","condition":"a=0,b=-1에서 f(x)=x²-1이고 f(±1)=0","mappedTo":"graphPlan.pieces"},{"id":"c2","condition":"g는 |x|<1에서 x², 그 밖에서2; x=±1에서 점프","mappedTo":"graphPlan.referenceCurves[g].pieces"}],
+  "sourceConditions":[{"id":"c1","condition":"a=0,b=-1에서 f(x)=x²-1이고 f(±1)=0","mappedTo":"graphPlan.pieces"},{"id":"c2","condition":"g는 |x|<1에서 x², 그 밖에서2; x=±1에서 점프","mappedTo":"graphPlan.referenceCurves[g].pieces,graphPlan.limitArrows"}],
   "newVisualInformation":["불연속인 g가 연속인 f의 영점에서 곱해져도 곱함수가 연속일 수 있음을 두 패널로 설명"]
 }
