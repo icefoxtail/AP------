@@ -648,8 +648,8 @@ window.questionBank = [
     "decisiveStep": "두 할선의 외각과 전체 원호의 합",
     "sourceIdentityKey": "sha256:e42889b973af37e27bf26833579d3a112e51fed61c60d9ca0d092791cac619b2|10",
     "solutionImage": "assets/images/21_매산중_2학기_기말_중3_기출/q10-solution.svg",
-    "solutionImageAlt": "? ?? ?? t, ? BC? u? ?? ? ??? ? ??? ????.",
-    "solutionImageCaption": "? ?? ?? t, ? BC? u? ?? ? ??? ? ??? ????.",
+    "solutionImageAlt": "두 할선이 만나는 점 P와 원의 네 호를 나타낸 그림. 같은 크기의 호 AB, AD, CD를 각각 t°, 호 BC를 u°로 두고 외각 30°와 원주각 x의 관계를 표시했다.",
+    "solutionImageCaption": "호 AB=AD=CD=t°, 호 BC=u°로 두면 3t+u=360°, t−u=60°이므로 t=105°, u=45°이다. 호 BC에 대한 원주각 x=22.5°이어서 2x=45°이다.",
     "solutionImageSize": "full"
   ,
     "primaryMethod": "같은 세 호를t, 남은 호를u로 두어 전체각3t+u=360과 외부 두 할선각에서t-u=60을 만들고 목표 원주각으로 바꾼다. 단일 외부 할선각 공식 문제와 달리 호 분할·연립·원주각을 실제 연쇄하므로 RPM 복합 각 추론과 기존 COMPOSITE가 맞는다.",
@@ -1310,11 +1310,11 @@ window.questionBank = [
     "curriculum": "2015",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "solutionImage": "assets/images/21_매산중_2학기_기말_중3_기출/q21-solution-v2.svg",
+    "solutionImage": "assets/images/21_매산중_2학기_기말_중3_기출/q21-solution.svg",
     "decisiveStep": "반원에서 지름에 대한 원주각과 큰·작은 반원 넓이 차",
     "sourceIdentityKey": "sha256:47904367a8e1efe84382e603e4a2a02199efa92f0a3263030c690287e0bcb841|21",
-    "solutionImageAlt": "해설 그림: 세 개의 그림이 있다. (1)은 지름 AB와 원 위의 점 C로 이루어진 삼각형에서 ∠A=45°, ∠C가 직각이고 ∠B=x이다. (2)는 큰 반원에서 두 작은 반원을 뺀 영역이 파란색으로 칠해져 있고 선분 CG가 지름 AB에 수직이며 AC=m, CB=n이다. 마지막 그림은 지름이 CG인 원이 파란색으로 칠해져 있다.",
-    "solutionImageCaption": "(1) AB가 지름이므로 ∠ACB=90°이고 x=180°−90°−45°이다. (2) 지름 AB에 대한 원주각 ∠AGB=90°이므로 CG²=AC×CB, 즉 mn=4r²이다. 색칠한 넓이는 큰 반원에서 두 작은 반원을 뺀 값 8분의 π에 (m+n)²−m²−n²을 곱한 것, 곧 4분의 π에 mn을 곱한 것이고 CG를 지름으로 하는 원의 넓이와 같다. m=4, n=6은 예시 값이다. 정답은 (1) 45°, (2) πr²이다.",
+    "solutionImageAlt": "(2)의 넓이 해설 그림. 지름 AB인 큰 반원에서 지름 AC=m, CB=n인 두 작은 반원을 제외한 파란색 영역을 오른쪽의 지름 CG=2r인 원과 비교한다. CG²=AC·CB이다.",
+    "solutionImageCaption": "(1) AB가 지름이므로 ∠ACB=90°, 따라서 x=180°−90°−40°=50°이다. (2) CG²=AC·CB=mn이고 큰 반원에서 두 작은 반원을 뺀 넓이는 πmn/4=π(CG)²/4=πr²이다.",
     "solutionImageSize": "full"
   ,
     "primaryMethod": "원본 한 UID 안에 수준별 두 소문항이 있다. (1)은 지름의 원주각과 내각합, (2)는 지름의 직각→빗변높이 닮음관계→세 반원 넓이차 전개이다. CENTER_ARC와 SECTOR_MEASURE는 각각 기존 ACTIVE이며 단일 template 필드로 두 골격을 동시에 표현하지 않는다."
