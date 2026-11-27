@@ -1,0 +1,17 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {"rows": [
+    {"kind": "SET", "label": "첫째 해", "pieces": [{"lo": null, "hi": {"value": "9", "state": "OPEN"}}]},
+    {"kind": "SET", "label": "둘째 해", "pieces": [{"lo": {"value": "0", "state": "CLOSED"}, "hi": null}]},
+    {"kind": "RESULT", "label": "공통 해", "integerPoints": true}
+  ]},
+  "numberLineCaption": {"text": "0≤x<9의 정수"},
+  "caption": "첫째 부등식은 x<9이고 둘째는 x≥0이다. 공통 범위 0≤x<9에서 가장 작은 정수 m은 0, 가장 큰 M은 8이므로 M+m=8이다.",
+  "accessibilityDescription": "첫째 줄은 9 미만, 둘째는 0 이상, 마지막 줄은 0 이상 9 미만의 구간에 0부터 8까지 정수점을 표시한다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "4x−3<3(x+2)에서 x<9", "mappedTo": ["numberLine.rows[0].pieces"]},
+    {"id": "c2", "condition": "(x−1)/2+1.5≤(2x+3)/3에서 x≥0", "mappedTo": ["numberLine.rows[1].pieces"]},
+    {"id": "c3", "condition": "공통 해의 정수는 0부터 8까지", "mappedTo": ["numberLine.rows[2].integerPoints"]}
+  ],
+  "newVisualInformation": ["두 반직선의 교집합, 0의 닫힘·9의 열림, 정수 0~8을 표시"]
+}

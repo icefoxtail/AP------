@@ -1,0 +1,23 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {"kind": "SET", "label": "x≤4", "pieces": [{"lo": null, "hi": {"value": "4", "state": "CLOSED"}}]},
+      {"kind": "POINTS", "label": "보기", "within": 1, "band": false, "points": [
+        {"id": "A", "value": "1", "hideName": true},
+        {"id": "B", "value": "2", "hideName": true},
+        {"id": "C", "value": "3", "hideName": true},
+        {"id": "D", "value": "4", "hideName": true},
+        {"id": "E", "value": "5", "hideName": true}
+      ]}
+    ]
+  },
+  "numberLineCaption": {"text": "x≤4와 보기 1~5"},
+  "caption": "2x−7≤13−3x의 해는 x≤4이다. 보기 1, 2, 3, 4는 해에 포함되고 5는 포함되지 않는다.",
+  "accessibilityDescription": "수직선의 4에는 닫힌 점이 있고 왼쪽으로 해집합이 뻗는다. 보기 1부터 4까지는 포함, 5는 제외로 표시한다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "2x−7≤13−3x를 정리하면 x≤4", "mappedTo": ["numberLine.rows[0].pieces"]},
+    {"id": "c2", "condition": "보기는 1, 2, 3, 4, 5이며 해가 아닌 수를 고른다", "mappedTo": ["numberLine.rows[1].points", "numberLine.rows[1].within"]}
+  ],
+  "newVisualInformation": ["닫힌 끝점 4와 왼쪽 방향, 보기 다섯 점의 포함·제외 표시"]
+}

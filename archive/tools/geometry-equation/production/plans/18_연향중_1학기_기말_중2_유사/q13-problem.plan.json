@@ -1,0 +1,12 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {"rows": [{"kind": "SET", "pieces": [{"lo": {"value": "-5", "state": "CLOSED"}, "hi": {"value": "2", "state": "CLOSED"}}]}]},
+  "numberLineCaption": {"text": "문제에 제시된 공통 해"},
+  "caption": "두 일차부등식의 공통 해는 주어진 −5≤x≤2이다. 양 끝을 모두 포함하며 a와 b는 아직 미지수이다.",
+  "accessibilityDescription": "수직선의 마이너스 5와 2에 닫힌 점이 있으며 그 사이가 두 부등식의 공통 해로 표시된다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "연립부등식의 해가 −5≤x≤2로 주어짐", "mappedTo": ["numberLine.rows[0].pieces"]},
+    {"id": "c2", "condition": "a와 b는 미지수이며 문제는 ab를 묻는다", "mappedTo": "caption"}
+  ],
+  "newVisualInformation": ["주어진 공통 범위의 양 끝 −5·2와 두 닫힌 점"]
+}

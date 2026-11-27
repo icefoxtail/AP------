@@ -1,0 +1,17 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {"rows": [
+    {"kind": "SET", "label": "첫째 해", "pieces": [{"lo": null, "hi": {"value": "1", "state": "OPEN"}}]},
+    {"kind": "SET", "label": "둘째 해", "pieces": [{"lo": null, "hi": {"value": "1", "state": "OPEN"}}]},
+    {"kind": "RESULT", "label": "공통 해"}
+  ]},
+  "numberLineCaption": {"text": "두 부등식의 같은 해"},
+  "caption": "3(2−x)>3x의 해는 x<1이다. a=−5를 두 번째 부등식에 대입하면 −5(x+2)>−15의 해도 x<1이 되어 두 해집합이 일치한다.",
+  "accessibilityDescription": "세 수직선에 모두 1에서 열린 끝점과 왼쪽으로 뻗는 구간이 표시되어 두 부등식의 해가 같음을 보여 준다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "3(2−x)>3x의 해는 x<1", "mappedTo": ["numberLine.rows[0].pieces"]},
+    {"id": "c2", "condition": "두 번째 부등식 a(x+2)>−15에서 a=−5이면 해는 x<1", "mappedTo": ["numberLine.rows[1].pieces"]},
+    {"id": "c3", "condition": "두 해집합은 같은 왼쪽 열린 반직선", "mappedTo": ["numberLine.rows[2]"]}
+  ],
+  "newVisualInformation": ["첫째·둘째·공통 해의 열린 끝점 1과 방향을 세 줄로 비교"]
+}

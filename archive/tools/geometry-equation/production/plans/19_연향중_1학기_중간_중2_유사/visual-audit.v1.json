@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "similar-exam-two-axis-svg-audit-v1",
+  "sourcePath": "archive/exams/similar/middle/m2/1mid/19_연향중_1학기_중간_중2_유사.js",
+  "sourceBlobSha1": "041b0794e317f25a9dd6c64397cfec006919b623",
+  "baseMainSha": "b2f557063f381c23b08f5691b28885ab7755c2da",
+  "questionCount": 24,
+  "axisCount": 48,
+  "actualExecutablePlans": 7,
+  "classificationDefaults": {
+    "EXEMPT": {"plan": null, "capability": "N/A", "planLintShallow": "N/A", "planLintFull": "N/A", "drawnFeatureParity": "NOT_APPLICABLE", "renderParity": "NOT_RUN"},
+    "BENEFICIAL": {"capability": "number-line-figure-v1", "planLintShallow": "OK", "planLintFull": "OK", "drawnFeatureParity": "PASS_STATIC_FIELDS", "renderParity": "NOT_RUN"}
+  },
+  "assessmentScope": "each source question, choices, answer and solution checked independently for problem and solution axes",
+  "renderAndStudentScreen": "NOT_RUN",
+  "renderAttempt": {"axis": "18_연향중/q11/solution sample, same number-line renderer", "status": "ENV_BLOCKED", "code": "ARCHIVE_PREFLIGHT_FAIL", "detail": "/usr/bin/chromium launches but /usr/lib/chromium/chromium is missing; no output SVG/PNG or student-screen parity"},
+  "engineCapabilityPending": {
+    "code": "SVG_CANVAS_BACKGROUND_CONTROL_MISSING",
+    "affectedAxes": ["q15/solution", "q17/solution", "q18/solution", "q20/problem", "q20/solution", "q23/solution", "q24/solution"],
+    "requiredFeature": "number-line-figure-v1: plan-selectable transparent canvas or removal of default opaque white root background rectangle, leaving closed endpoint dots and other mathematically necessary fills intact",
+    "observedImplementation": "archive/tools/geometry-equation/production/number-line-v1.mjs:1012 always emits <rect width=... height=... fill=#fff>",
+    "disposition": "engine-side feature is not a plan JSON field; do not patch SVG by hand; visual release pending engine support and physical render"
+  },
+  "sourceFindingsOutsideSvgScope": [
+    {"qid": "q05", "axis": "solution", "finding": "해설 ② 수식 문자열의 곱셈 명령이 'a^{3}  imes a^{5}'로 손상되어 보임; 원문 JS는 이 계획 PR에서 수정하지 않음"}
+  ],
+  "items": [
+    {"qid":"q01","problem":{"decision":"EXEMPT","reason":"보기 분수의 유한소수 여부를 고르는 소인수 문제; 공간·수직선 관계 없음"},"solution":{"decision":"EXEMPT","reason":"기약분수의 분모 2·5 인수 판별이 모두 텍스트로 제시됨"}},
+    {"qid":"q02","problem":{"decision":"EXEMPT","reason":"7/27의 50번째 소수 자리 계산; 자리 이동·반복주기 규칙 문제"},"solution":{"decision":"EXEMPT","reason":"순환마디 259와 50÷3의 나머지로 답이 결정됨"}},
+    {"qid":"q03","problem":{"decision":"EXEMPT","reason":"3.1818…을 100배 하는 대수적 자리소거 설명 자체가 발문에 있음"},"solution":{"decision":"EXEMPT","reason":"a=100,b=315,c=11의 대입·약분 계산만 필요"}},
+    {"qid":"q04","problem":{"decision":"EXEMPT","reason":"3/[n(n+1)]의 유한소수 조건과 자연수 n 전수 확인"},"solution":{"decision":"EXEMPT","reason":"n=1,2,3,4,5,15의 인수 분해 표기가 풀이를 완결"}},
+    {"qid":"q05","problem":{"decision":"EXEMPT","reason":"지수법칙 다섯 등식의 진위 판단"},"solution":{"decision":"EXEMPT","reason":"단항식 지수 덧셈·뺄셈의 대수 전개가 전부; 해설 식 오타는 별도 발견사항"}},
+    {"qid":"q06","problem":{"decision":"EXEMPT","reason":"x·y의 거듭제곱 지수 비교로 a,b를 구함"},"solution":{"decision":"EXEMPT","reason":"5a=15 및 15b=30 계산으로 완결"}},
+    {"qid":"q07","problem":{"decision":"EXEMPT","reason":"2^8×50^5의 자릿수는 10의 거듭제곱 변환으로 결정"},"solution":{"decision":"EXEMPT","reason":"8×10^10을 쓰는 지수 변형 자체가 충분한 시각 설명"}},
+    {"qid":"q08","problem":{"decision":"EXEMPT","reason":"여섯 자연수의 소인수분해에 따른 지수 합"},"solution":{"decision":"EXEMPT","reason":"2·3·5·7 각 지수 8,1,5,2를 문장/식으로 직접 대조"}},
+    {"qid":"q09","problem":{"decision":"EXEMPT","reason":"지수법칙 다섯 보기의 단항식 곱셈·나눗셈 계산"},"solution":{"decision":"EXEMPT","reason":"참인 보기 ②·⑤는 지수 계산 외의 기하·축 관계 없음"}},
+    {"qid":"q10","problem":{"decision":"EXEMPT","reason":"다항식 분모 3·4의 통분 후 계수의 합"},"solution":{"decision":"EXEMPT","reason":"A=5/12,B=2/3의 분수 덧셈으로 완결"}},
+    {"qid":"q11","problem":{"decision":"EXEMPT","reason":"두 다항식 전개 후 x²·xy 계수의 차"},"solution":{"decision":"EXEMPT","reason":"8x²−xy+2x를 정리하는 항의 계산"}},
+    {"qid":"q12","problem":{"decision":"EXEMPT","reason":"뺄셈을 덧셈한 오류를 바로잡는 다항식 계산"},"solution":{"decision":"EXEMPT","reason":"잘못 더한 식에서 같은 다항식을 두 번 빼는 계산"}},
+    {"qid":"q13","problem":{"decision":"EXEMPT","reason":"괄호를 풀고 동류항을 모으는 식 정리"},"solution":{"decision":"EXEMPT","reason":"중첩 괄호의 부호 분배 절차가 수식으로 완결"}},
+    {"qid":"q14","problem":{"decision":"EXEMPT","reason":"다항식의 항별 나눗셈 결과 선택"},"solution":{"decision":"EXEMPT","reason":"3x−1−(1−2x²)의 계산 외 그림 정보 없음"}},
+    {"qid":"q15","problem":{"decision":"EXEMPT","reason":"해가 아닌 보기 한 개를 찾는 부등식으로 문제 단계에서 경계를 그리면 풀이가 노출됨"},"solution":{"decision":"BENEFICIAL","reason":"x≤4에서 4 포함과 보기 5 제외를 열림·닫힘으로 비교","plan":"archive/tools/geometry-equation/production/plans/19_연향중_1학기_중간_중2_유사/q15-solution.plan.json","expectedFeatures":["x≤4; endpoint 4 CLOSED; ray LEFT","choices 1,2,3,4 inside and 5 outside"]}},
+    {"qid":"q16","problem":{"decision":"EXEMPT","reason":"a>b에 상수 곱셈·덧셈을 적용하는 성질의 참거짓"},"solution":{"decision":"EXEMPT","reason":"−2와 −1/3 곱셈 때 방향 변화가 식으로 완결"}},
+    {"qid":"q17","problem":{"decision":"EXEMPT","reason":"소수계수 부등식의 해를 보기에 대조; 사전 경계 그림은 정답을 노출"},"solution":{"decision":"BENEFICIAL","reason":"−2x<8에서 방향 반전과 −4 열린 경계의 오른쪽 범위를 보여 줌","plan":"archive/tools/geometry-equation/production/plans/19_연향중_1학기_중간_중2_유사/q17-solution.plan.json","expectedFeatures":["x>−4; endpoint −4 OPEN; ray RIGHT"]}},
+    {"qid":"q18","problem":{"decision":"EXEMPT","reason":"미지수 a가 있는 두 부등식의 해 동일성 판정; 풀기 전 수직선이 a의 정답을 암시할 수 있음"},"solution":{"decision":"BENEFICIAL","reason":"a=−5일 때 첫째·둘째·공통 해가 같은 왼쪽 열린 반직선임을 세 줄로 비교","plan":"archive/tools/geometry-equation/production/plans/19_연향중_1학기_중간_중2_유사/q18-solution.plan.json","expectedFeatures":["first x<1, second x<1, RESULT x<1","all three endpoints 1 OPEN and ray LEFT"]}},
+    {"qid":"q19","problem":{"decision":"EXEMPT","reason":"네 시험 평균 76점 이상 조건의 1변수 점수 합"},"solution":{"decision":"EXEMPT","reason":"224+x≥304, x≥80으로 완결; 점수 그래프는 식 중복"}},
+    {"qid":"q20","problem":{"decision":"BENEFICIAL","reason":"집·문구점·서점·학교 네 지점과 세 거리 3·4·5km의 순서를 정확히 고정","plan":"archive/tools/geometry-equation/production/plans/19_연향중_1학기_중간_중2_유사/q20-problem.plan.json","expectedFeatures":["points at cumulative 0,3,7,12 with place names","three ordered distance braces 3km,4km,5km","given first-leg speed 6km/h only in caption; no asked speed"]},"solution":{"decision":"BENEFICIAL","reason":"문구점부터 학교까지의 합친 9km를 세 개의 출처 구간과 한꺼번에 비교","plan":"archive/tools/geometry-equation/production/plans/19_연향중_1학기_중간_중2_유사/q20-solution.plan.json","expectedFeatures":["points 0,3,7,12 and three braces 3km,4km,5km","combined B→D brace 9km opposite side","first 3km in 1/2h, remainder 9km in 3/2h mentioned"]}},
+    {"qid":"q21","problem":{"decision":"EXEMPT","reason":"27·9 거듭제곱의 지수 차로 3의 거듭제곱 표현"},"solution":{"decision":"EXEMPT","reason":"3^9÷3^6의 대수 소거로 완결"}},
+    {"qid":"q22","problem":{"decision":"EXEMPT","reason":"A와 B 다항식의 항별 나눗셈과 합"},"solution":{"decision":"EXEMPT","reason":"A=5a−3b,B=12a−18b의 동류항 합으로 완결"}},
+    {"qid":"q23","problem":{"decision":"EXEMPT","reason":"부등식 4(3−x)<9 자체를 푸는 발문; 해 그림은 답을 미리 보여 줌"},"solution":{"decision":"BENEFICIAL","reason":"−4로 나눈 뒤 3/4의 열린 경계와 오른쪽 방향을 표현","plan":"archive/tools/geometry-equation/production/plans/19_연향중_1학기_중간_중2_유사/q23-solution.plan.json","expectedFeatures":["x>3/4; endpoint 3/4 OPEN; ray RIGHT"]}},
+    {"qid":"q24","problem":{"decision":"EXEMPT","reason":"구입·대여의 월 비용이 문자식으로 모두 제시; 교점 그래프는 구하려는 개월을 공개"},"solution":{"decision":"BENEFICIAL","reason":"x>50의 열린 경계와 자연수 개월 51부터 가능함을 구별","plan":"archive/tools/geometry-equation/production/plans/19_연향중_1학기_중간_중2_유사/q24-solution.plan.json","expectedFeatures":["x>50; endpoint 50 OPEN; ray RIGHT","49,50 outside and 51,52 inside"]}}
+  ]
+}

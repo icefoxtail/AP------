@@ -1,0 +1,17 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {"rows": [
+    {"kind": "SET", "label": "첫째 해", "pieces": [{"lo": {"value": "-5", "state": "CLOSED"}, "hi": null}]},
+    {"kind": "SET", "label": "둘째 해", "pieces": [{"lo": null, "hi": {"value": "2", "state": "CLOSED"}}]},
+    {"kind": "RESULT", "label": "공통 해"}
+  ]},
+  "numberLineCaption": {"text": "두 경계와 공통 해"},
+  "caption": "첫째 식은 x≥−a−4이고 둘째 식은 x≤(10−b)/3이다. 공통 해의 경계가 −5, 2이므로 a=1, b=4, ab=4이다.",
+  "accessibilityDescription": "첫째 수직선은 마이너스 5 이상, 둘째는 2 이하이고 두 구간의 공통 부분은 양끝을 포함한 마이너스 5부터 2까지이다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "a=1이므로 x≥−a−4는 x≥−5", "mappedTo": ["numberLine.rows[0].pieces"]},
+    {"id": "c2", "condition": "b=4이므로 x≤(10−b)/3은 x≤2", "mappedTo": ["numberLine.rows[1].pieces"]},
+    {"id": "c3", "condition": "해집합의 교집합은 −5≤x≤2", "mappedTo": ["numberLine.rows[2]"]}
+  ],
+  "newVisualInformation": ["닫힌 두 반직선과 최종 닫힌 구간을 서로 맞춰 세 줄로 표시"]
+}

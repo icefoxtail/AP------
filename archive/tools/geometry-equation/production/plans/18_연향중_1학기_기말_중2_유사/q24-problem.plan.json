@@ -1,0 +1,28 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"12"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"12"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"}
+  ]},
+  "coordinateCanvas":{"width":680,"height":380},
+  "axisTickValues":{"x":[],"y":[]},"displayLines":[],"displayCircles":[],
+  "displaySegments":[{"id":"sAB","refs":["A","B"],"arrow":"END"},{"id":"sCD","refs":["C","D"],"arrow":"END"}],
+  "displayPoints":["A","B","C","D"],"hiddenPointNames":["A","B","C","D"],"hiddenPointStyle":"NONE",
+  "planeMarks":{"equalLengths":[{"id":"eSame","count":1,"segments":["sAB","sCD"]}],"dimensions":[
+    {"id":"dUp","from":"A","to":"B","label":"x","unit":"km","side":"ABOVE","style":"BAR","factRole":"GIVEN"},
+    {"id":"dDown","from":"C","to":"D","label":"x","unit":"km","side":"BELOW","style":"BAR","factRole":"GIVEN"}
+  ],"expressionLabels":[
+    {"id":"tUp","ownerSegment":"sAB","text":"시속 3km/h","labelKind":"TEXT"},
+    {"id":"tDown","ownerSegment":"sCD","text":"시속 6km/h","labelKind":"TEXT"}
+  ]},
+  "caption":"같은 길 x km를 올라갈 때는 시속 3km, 내려올 때는 시속 6km로 걷는다. 왕복 시간은 4시간 이하이다.",
+  "accessibilityDescription":"위쪽 화살표는 시속 3킬로미터로 x킬로미터 올라가는 길, 아래쪽 반대 화살표는 시속 6킬로미터로 같은 x킬로미터 내려오는 길을 표시한다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"등산 오르막과 내리막은 동일 거리 xkm","mappedTo":["displaySegments","planeMarks.equalLengths","planeMarks.dimensions"]},
+    {"id":"c2","condition":"상행 시속 3km, 하행 시속 6km","mappedTo":["planeMarks.expressionLabels"]},
+    {"id":"c3","condition":"등산 전체 시간은 4시간 이내이고 최대 거리를 구함","mappedTo":"caption"}
+  ],
+  "newVisualInformation":["서로 반대 방향 화살촉과 같은 길이 눈금", "두 구간에 각 xkm 치수선, 시속 3km/h와 6km/h 소유 라벨"]
+}
