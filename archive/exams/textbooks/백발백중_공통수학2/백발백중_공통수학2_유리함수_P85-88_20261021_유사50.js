@@ -258,8 +258,9 @@ window.questionBank = [
     ],
     "integrationPattern": "NONE",
     "solutionImage": "assets/images/백발백중_공통수학2_유리함수_P85-88_20261021_유사50/BV-BAKBAL-H-COM2-P85-Q12-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 그래프",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "점근선의 교점 (2,1)과 그래프의 평행이동을 본다.",
+    "solutionImageSize": "medium",
+    "solutionImageCaption": "점근선의 교점 (2,1)과 그래프의 평행이동을 본다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P85-Q12-S2-R1",
@@ -360,8 +361,9 @@ window.questionBank = [
     ],
     "integrationPattern": "NONE",
     "solutionImage": "assets/images/백발백중_공통수학2_유리함수_P85-88_20261021_유사50/BV-BAKBAL-H-COM2-P85-Q13-T1-R2-solution.svg",
-    "solutionImageAlt": "풀이 그래프",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "증가하는 유리함수의 x=1과 x=3에서의 함숫값을 비교한다.",
+    "solutionImageSize": "medium",
+    "solutionImageCaption": "증가하는 유리함수의 x=1과 x=3에서의 함숫값을 비교한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P85-Q13-S1-R1",
@@ -411,8 +413,9 @@ window.questionBank = [
     ],
     "integrationPattern": "NONE",
     "solutionImage": "assets/images/백발백중_공통수학2_유리함수_P85-88_20261021_유사50/BV-BAKBAL-H-COM2-P85-Q13-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 그래프",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "증가하는 유리함수의 x=0과 x=5에서의 함숫값을 비교한다.",
+    "solutionImageSize": "medium",
+    "solutionImageCaption": "증가하는 유리함수의 x=0과 x=5에서의 함숫값을 비교한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P85-Q13-S2-R1",
@@ -462,8 +465,9 @@ window.questionBank = [
     ],
     "integrationPattern": "NONE",
     "solutionImage": "assets/images/백발백중_공통수학2_유리함수_P85-88_20261021_유사50/BV-BAKBAL-H-COM2-P85-Q13-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 그래프",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "감소하는 유리함수의 x=2와 x=6에서의 함숫값을 비교한다.",
+    "solutionImageSize": "medium",
+    "solutionImageCaption": "감소하는 유리함수의 x=2와 x=6에서의 함숫값을 비교한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P85-Q14-T1-R1",

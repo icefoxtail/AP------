@@ -54,8 +54,9 @@ window.questionBank = [
     "targetChoiceSlot": 3,
     "metaRationale": "현의 반길이와 중심-직선 거리의 직각삼각형 관계, 절댓값 방정식의 해를 검증한다.",
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_P54-57_20261022_유사50/BV-BAKBAL-H-COM2-P54-Q01-T1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원과 현을 이루는 직선, 중심에서 현에 내린 수선의 발을 보인다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원과 현을 이루는 직선, 중심에서 현에 내린 수선의 발을 보인다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P54-Q01-S1-R2",
@@ -111,8 +112,9 @@ window.questionBank = [
     "targetChoiceSlot": 4,
     "metaRationale": "현의 반길이와 중심-직선 거리의 직각삼각형 관계, 절댓값 방정식의 해를 검증한다.",
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_P54-57_20261022_유사50/BV-BAKBAL-H-COM2-P54-Q01-S1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원과 현을 이루는 직선, 중심에서 현에 내린 수선의 발을 보인다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원과 현을 이루는 직선, 중심에서 현에 내린 수선의 발을 보인다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P54-Q01-S2-R1",
@@ -167,8 +169,9 @@ window.questionBank = [
     "targetChoiceSlot": 1,
     "metaRationale": "현의 반길이와 중심-직선 거리의 직각삼각형 관계, 절댓값 방정식의 해를 검증한다.",
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_P54-57_20261022_유사50/BV-BAKBAL-H-COM2-P54-Q01-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원과 현을 이루는 직선, 중심에서 현에 내린 수선의 발을 보인다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원과 현을 이루는 직선, 중심에서 현에 내린 수선의 발을 보인다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P54-Q02-T1-R1",
@@ -226,8 +229,9 @@ window.questionBank = [
     "targetChoiceSlot": 1,
     "metaRationale": "원의 중심과 반지름을 완전제곱식으로 구한 뒤 접점의 직각 조건을 한 번 적용한다.",
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_P54-57_20261022_유사50/BV-BAKBAL-H-COM2-P54-Q02-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원 밖 점 P에서 접점을 이은 접선과 반지름의 직각을 나타낸다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원 밖 점 P에서 접점을 이은 접선과 반지름의 직각을 나타낸다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P54-Q02-S1-R1",
@@ -285,8 +289,9 @@ window.questionBank = [
     "targetChoiceSlot": 3,
     "metaRationale": "원점에서 점까지의 거리와 반지름을 구별하여 접선 길이를 계산한다.",
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_P54-57_20261022_유사50/BV-BAKBAL-H-COM2-P54-Q02-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원 밖 점 P에서 접점을 이은 접선과 반지름의 직각을 나타낸다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원 밖 점 P에서 접점을 이은 접선과 반지름의 직각을 나타낸다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P54-Q02-S2-R1",
@@ -344,8 +349,9 @@ window.questionBank = [
     "targetChoiceSlot": 1,
     "metaRationale": "접선 길이 조건을 제곱방정식으로 바꾸고 양수 해만 선택한다.",
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_P54-57_20261022_유사50/BV-BAKBAL-H-COM2-P54-Q02-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원 밖 점 P에서 접점을 이은 접선과 반지름의 직각을 나타낸다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원 밖 점 P에서 접점을 이은 접선과 반지름의 직각을 나타낸다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P54-Q03-T1-R1",
@@ -403,15 +409,16 @@ window.questionBank = [
     "targetChoiceSlot": 3,
     "metaRationale": "두 직각삼각형의 합동을 이용하여 사각형 넓이를 계산한다.",
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_P54-57_20261022_유사50/BV-BAKBAL-H-COM2-P54-Q03-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "원 밖 점 P에서 접점을 이은 접선과 반지름의 직각을 나타낸다.",
+    "solutionImageSize": "full",
     "problemImage": "assets/images/백발백중_공통수학2_원의방정식_P54-57_20261022_유사50/BV-BAKBAL-H-COM2-P54-Q03-T1-R1-problem.svg",
     "problemImageAlt": "발문 도형",
     "problemImageSize": "large",
     "image": "assets/images/백발백중_공통수학2_원의방정식_P54-57_20261022_유사50/BV-BAKBAL-H-COM2-P54-Q03-T1-R1-problem.svg",
     "imageAlt": "주어진 원과 외부 점에서 그은 접선의 배치를 나타낸다.",
     "imageCaption": "주어진 원과 외부 점에서 그은 접선의 배치를 나타낸다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageCaption": "원 밖 점 P에서 접점을 이은 접선과 반지름의 직각을 나타낸다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P54-Q03-S1-R1",
@@ -469,15 +476,16 @@ window.questionBank = [
     "targetChoiceSlot": 4,
     "metaRationale": "두 접점 좌표를 수직 조건과 원의 방정식으로 동시에 구해 현의 전체 길이를 계산한다.",
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_P54-57_20261022_유사50/BV-BAKBAL-H-COM2-P54-Q03-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "원 밖 점 P에서 접점을 이은 접선과 반지름의 직각을 나타낸다.",
+    "solutionImageSize": "full",
     "problemImage": "assets/images/백발백중_공통수학2_원의방정식_P54-57_20261022_유사50/BV-BAKBAL-H-COM2-P54-Q03-S1-R1-problem.svg",
     "problemImageAlt": "발문 도형",
     "problemImageSize": "large",
     "image": "assets/images/백발백중_공통수학2_원의방정식_P54-57_20261022_유사50/BV-BAKBAL-H-COM2-P54-Q03-S1-R1-problem.svg",
     "imageAlt": "주어진 원과 외부 점에서 그은 접선의 배치를 나타낸다.",
     "imageCaption": "주어진 원과 외부 점에서 그은 접선의 배치를 나타낸다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageCaption": "원 밖 점 P에서 접점을 이은 접선과 반지름의 직각을 나타낸다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P54-Q03-S2-R1",
@@ -535,15 +543,16 @@ window.questionBank = [
     "targetChoiceSlot": 4,
     "metaRationale": "접선 길이와 두 직각삼각형의 넓이를 합해 사각형 넓이를 구한다.",
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_P54-57_20261022_유사50/BV-BAKBAL-H-COM2-P54-Q03-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "원 밖 점 P에서 접점을 이은 접선과 반지름의 직각을 나타낸다.",
+    "solutionImageSize": "full",
     "problemImage": "assets/images/백발백중_공통수학2_원의방정식_P54-57_20261022_유사50/BV-BAKBAL-H-COM2-P54-Q03-S2-R1-problem.svg",
     "problemImageAlt": "발문 도형",
     "problemImageSize": "large",
     "image": "assets/images/백발백중_공통수학2_원의방정식_P54-57_20261022_유사50/BV-BAKBAL-H-COM2-P54-Q03-S2-R1-problem.svg",
     "imageAlt": "주어진 원과 외부 점에서 그은 접선의 배치를 나타낸다.",
     "imageCaption": "주어진 원과 외부 점에서 그은 접선의 배치를 나타낸다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageCaption": "원 밖 점 P에서 접점을 이은 접선과 반지름의 직각을 나타낸다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P54-Q04-T1-R1",
@@ -601,8 +610,9 @@ window.questionBank = [
     "targetChoiceSlot": 3,
     "metaRationale": "두 접선의 대칭성과 각의 이등분을 사용해 30도 직각삼각형에서 반지름을 구한다.",
     "solutionImage": "assets/images/백발백중_공통수학2_원의방정식_P54-57_20261022_유사50/BV-BAKBAL-H-COM2-P54-Q04-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원 밖 점 P에서 접점을 이은 접선과 반지름의 직각 및 접선 사이 각도 60°을 나타낸다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원 밖 점 P에서 접점을 이은 접선과 반지름의 직각 및 접선 사이 각도 60°을 나타낸다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P54-Q04-S1-R1",
