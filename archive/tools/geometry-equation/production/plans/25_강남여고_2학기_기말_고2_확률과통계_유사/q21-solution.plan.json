@@ -1,0 +1,37 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "X",
+        "mean": "32",
+        "sd": "4",
+        "label": "X"
+      }
+    ],
+    "ticks": [
+      "32",
+      "38"
+    ],
+    "shades": [
+      {
+        "from": "38",
+        "to": null
+      }
+    ],
+    "zAxis": true
+  },
+  "caption": "앞면 64회 중 X≥38이 되는 정규근사 N(32,4²) 오른쪽 꼬리 z≥1.5",
+  "sourceConditions": [
+    {
+      "id": "N21",
+      "condition": "앞면 64회 중 X≥38이 되는 정규근사 N(32,4²) 오른쪽 꼬리 z≥1.5",
+      "mappedTo": "chart.curves,chart.ticks,chart.shades"
+    }
+  ],
+  "newVisualInformation": [
+    "앞면 64회 중 X≥38이 되는 정규근사 N(32,4²) 오른쪽 꼬리 z≥1.5"
+  ],
+  "accessibilityDescription": "앞면 64회 중 X≥38이 되는 정규근사 N(32,4²) 오른쪽 꼬리 z≥1.5"
+}
