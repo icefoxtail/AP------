@@ -1,0 +1,28 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [{
+      "kind": "POINTS",
+      "band": false,
+      "points": [
+        { "id": "A", "name": "출발", "value": "-2", "showValue": true },
+        { "id": "B", "value": "-1/2", "hideName": true, "showValue": false },
+        { "id": "C", "name": "도착", "value": "-3/4", "showValue": true }
+      ],
+      "spans": [
+        { "from": "A", "to": "B", "style": "ARROW", "side": "ABOVE", "label": "1.5" },
+        { "from": "B", "to": "C", "style": "ARROW", "side": "BELOW", "label": "0.25" }
+      ]
+    }]
+  },
+  "numberLineCaption": { "text": "-2에서 오른쪽, 다시 왼쪽으로 이동" },
+  "caption": "-2에서 오른쪽으로 3/2 이동해 -1/2에 이르고, 왼쪽으로 1/4 이동하면 -3/4이다.",
+  "accessibilityDescription": "-2에서 -1/2까지 오른쪽으로 향하는 화살표, -1/2에서 -3/4까지 왼쪽 화살표와 최종 지점 -3/4가 보이는 수직선.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "처음 위치는 -2이다.", "mappedTo": ["numberLine.rows.0.points.0"] },
+    { "id": "c2", "condition": "첫 이동은 오른쪽 3/2만큼이므로 중간 위치는 -1/2이다.", "mappedTo": ["numberLine.rows.0.points.1", "numberLine.rows.0.spans.0"] },
+    { "id": "c3", "condition": "두 번째 이동은 왼쪽 1/4만큼이므로 도착 위치는 -3/4이다.", "mappedTo": ["numberLine.rows.0.points.2", "numberLine.rows.0.spans.1"] }
+  ],
+  "newVisualInformation": ["출발 -2·중간 -1/2·도착 -3/4의 세 점, 오른쪽 3/2(1.5) 화살표, 왼쪽 1/4(0.25) 화살표. 엔진의 span label은 슬래시 분수 표기를 거부하므로 동치 소수 라벨을 쓰며 분수 그대로의 화살표 라벨은 ENGINE_CAPABILITY_PENDING이다."]
+}

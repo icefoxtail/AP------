@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "visual-audit-v1",
+  "examFile": "archive/exams/similar/middle/m1/1mid/AP수학학원_1학기_중간_중1_모의고사_1회.js",
+  "sourceGitBlobSha": "2b3ded4b326fcf6b07a3b497406d77eb00b7c614",
+  "reviewBaseMain": "8ec13c2",
+  "questionCount": 25,
+  "axisCount": 50,
+  "exemptDefaults": {
+    "capability": "TEXT_OR_FORMULA_ONLY",
+    "planPath": null,
+    "planLint": "NOT_APPLICABLE",
+    "drawnFeatureParity": "NO_SVG_REQUIRED",
+    "render": "NOT_APPLICABLE"
+  },
+  "planDefaultChecks": {
+    "planLintShallow": "PASS",
+    "planLintFull": "PASS",
+    "renderedSvg": "NOT_RUN",
+    "pngReview": "NOT_RUN",
+    "studentScreen": "NOT_RUN",
+    "imageBinding": "NOT_RUN",
+    "drawnFeatureParityInterpretation": "Static source-to-rendering-field 1:1 audit; no SVG/PNG rendered or publication claim"
+  },
+  "summary": {
+    "planFiles": 3,
+    "shallowPass": 3,
+    "fullPass": 3,
+    "drawnFeatureStaticPass": 3,
+    "engineCapabilityPendingAxes": 0,
+    "exemptAxes": 47
+  },
+  "sourceJSFindings": [
+    "q25 problem image path exists at assets/images/AP수학학원_1학기_중간_중1_모의고사_1회/q25.png; its original PNG has gray trapezoid fill. Plan removes all face fill and has no background object. The original PNG and JS image binding were not altered in this plan-only task.",
+    "q25 source PNG has four solid boundary lines, a solid internal perpendicular from upper base to lower base, a right-angle marker at the upper intersection, an independent dashed line below the lower base, and three labels a cm/b cm/h cm. Both plans map each to a drawable engine field."
+  ],
+  "entries": [
+    { "qid": "q01", "axes": { "problem": { "verdict": "EXEMPT", "reason": "1·2·15·29·37·53·91·101의 소수·합성수 개수 계산" }, "solution": { "verdict": "EXEMPT", "reason": "소수·합성수 분류와 두 개수의 차를 문자·숫자로 제시" } } },
+    { "qid": "q02", "axes": { "problem": { "verdict": "EXEMPT", "reason": "2·3·7 지수 및 소인수식의 수치 비교" }, "solution": { "verdict": "EXEMPT", "reason": "소인수 지수의 대입·차를 식으로 설명" } } },
+    { "qid": "q03", "axes": { "problem": { "verdict": "EXEMPT", "reason": "18·24·32·48·54 소인수와 보기 대조" }, "solution": { "verdict": "EXEMPT", "reason": "각 수의 소인수분해가 식으로 주어져 별도 도형 없음" } } },
+    { "qid": "q04", "axes": { "problem": { "verdict": "EXEMPT", "reason": "약수 개수 공식과 27a의 자연수 조건을 묻는 대수 문제" }, "solution": { "verdict": "EXEMPT", "reason": "지수에 1을 더해 곱하는 개수식 자체가 풀이" } } },
+    { "qid": "q05", "axes": { "problem": { "verdict": "EXEMPT", "reason": "두 수의 소인수분해형과 최대공약수 계산" }, "solution": { "verdict": "EXEMPT", "reason": "공통 소인수 지수의 최솟값을 곱하는 공식 풀이" } } },
+    { "qid": "q06", "axes": { "problem": { "verdict": "EXEMPT", "reason": "ㄱ~ㅁ 공배수 후보의 소인수 조건 판단" }, "solution": { "verdict": "EXEMPT", "reason": "각 후보의 지수와 최소공배수 조건 비교로 완결" } } },
+    { "qid": "q07", "axes": { "problem": { "verdict": "EXEMPT", "reason": "4x·9x·12x의 최소공배수 108에서 x 계산" }, "solution": { "verdict": "EXEMPT", "reason": "최소공배수 비례식과 나눗셈으로 설명" } } },
+    { "qid": "q08", "axes": { "problem": { "verdict": "EXEMPT", "reason": "24/n 및 56/n의 자연수 조건을 공약수로 판별" }, "solution": { "verdict": "EXEMPT", "reason": "공약수 목록과 해당 값이 텍스트로 충분" } } },
+    { "qid": "q09", "axes": { "problem": { "verdict": "EXEMPT", "reason": "지출 금액의 음수 부호를 선택하는 문장형 문제" }, "solution": { "verdict": "EXEMPT", "reason": "수입·지출의 양·음 부호 대응이 설명 전체" } } },
+    { "qid": "q10", "axes": { "problem": { "verdict": "EXEMPT", "reason": "절댓값과 정수 부등식의 옳고 그름을 판단하는 문장형 보기" }, "solution": { "verdict": "EXEMPT", "reason": "절댓값 정의 및 반례의 숫자 비교가 완전한 풀이" } } },
+    {
+      "qid": "q11",
+      "axes": {
+        "problem": { "verdict": "EXEMPT", "reason": "5개 부등식 번역 보기를 글로 판단; 문제축에 바른 경계를 그리면 ⑤의 정답을 미리 보여 줌" },
+        "solution": {
+          "verdict": "BENEFICIAL",
+          "reason": "⑤의 '2보다 크지 않다'를 엄격부등식 x<2가 아닌 x≤2로 바로잡아 -1≤x≤2의 양끝 포함을 보여 준다.",
+          "capability": "number-line-figure-v1",
+          "planPath": "archive/tools/geometry-equation/production/plans/AP수학학원_1학기_중간_중1_모의고사_1회/q11-solution.plan.json",
+          "requiredFeatures": ["수직선", "-1과 2 양 끝 수", "양끝 모두 닫힌 점", "두 점 사이 해 구간", "면 채움 없음"],
+          "featureFieldMapping": [
+            { "sourceFeature": "-1 이상", "renderField": "numberLine.rows[0].pieces[0].lo.value/state=CLOSED" },
+            { "sourceFeature": "2보다 크지 않다", "renderField": "numberLine.rows[0].pieces[0].hi.value/state=CLOSED" },
+            { "sourceFeature": "-1≤x≤2의 연속된 범위", "renderField": "numberLine.rows[0].kind=SET and pieces[0]" }
+          ],
+          "drawnFeatureParity": "STATIC_1_TO_1_FEATURE_MATCH__RENDER_NOT_RUN"
+        }
+      }
+    },
+    { "qid": "q12", "axes": { "problem": { "verdict": "EXEMPT", "reason": "교환·결합법칙을 적용하는 수식 정리" }, "solution": { "verdict": "EXEMPT", "reason": "계산 순서와 중간 식이 원문에 직접 주어짐" } } },
+    { "qid": "q13", "axes": { "problem": { "verdict": "EXEMPT", "reason": "정수·유리수 가감의 보기 다섯 식을 계산" }, "solution": { "verdict": "EXEMPT", "reason": "각 가감 결과의 수식 비교로 충분" } } },
+    { "qid": "q14", "axes": { "problem": { "verdict": "EXEMPT", "reason": "음수·분수 곱셈의 부호와 크기 계산" }, "solution": { "verdict": "EXEMPT", "reason": "곱셈 부호법칙 및 약분식으로 설명" } } },
+    { "qid": "q15", "axes": { "problem": { "verdict": "EXEMPT", "reason": "음수 거듭제곱과 부호 판단" }, "solution": { "verdict": "EXEMPT", "reason": "짝수·홀수 지수의 부호와 계산식을 서술" } } },
+    { "qid": "q16", "axes": { "problem": { "verdict": "EXEMPT", "reason": "역수와 분수 비율에 대한 산술 관계" }, "solution": { "verdict": "EXEMPT", "reason": "역수 규칙과 곱셈·나눗셈 계산으로 끝남" } } },
+    { "qid": "q17", "axes": { "problem": { "verdict": "EXEMPT", "reason": "a>0,b<0에서 식의 부호·대소관계를 추론" }, "solution": { "verdict": "EXEMPT", "reason": "a-b=a+(-b)의 양수성 등 부호 설명이 직접적" } } },
+    { "qid": "q18", "axes": { "problem": { "verdict": "EXEMPT", "reason": "가격 5000원에서 2x+1000을 뺀 거스름돈의 식" }, "solution": { "verdict": "EXEMPT", "reason": "5000-(2x+1000)의 동류항 정리만 사용" } } },
+    { "qid": "q19", "axes": { "problem": { "verdict": "EXEMPT", "reason": "다항식의 항·계수·상수항 판별" }, "solution": { "verdict": "EXEMPT", "reason": "문자식의 구성 성분을 언어로 식별" } } },
+    { "qid": "q20", "axes": { "problem": { "verdict": "EXEMPT", "reason": "괄호를 풀고 동류항을 합치는 일차식 계산" }, "solution": { "verdict": "EXEMPT", "reason": "분배법칙의 중간 식과 결과로 충분" } } },
+    { "qid": "q21", "axes": { "problem": { "verdict": "EXEMPT", "reason": "완전제곱수 조건을 소인수 지수의 짝수성으로 서술" }, "solution": { "verdict": "EXEMPT", "reason": "홀수 지수를 짝수로 만드는 정수 곱셈식 풀이" } } },
+    { "qid": "q22", "axes": { "problem": { "verdict": "EXEMPT", "reason": "세 자연수의 최대공약수와 최소공배수 계산·서술" }, "solution": { "verdict": "EXEMPT", "reason": "소인수분해·지수 최소·최대의 식이 증명 과정" } } },
+    { "qid": "q23", "axes": { "problem": { "verdict": "EXEMPT", "reason": "유리수의 범주별 개수를 분류하는 서술형" }, "solution": { "verdict": "EXEMPT", "reason": "주어진 숫자를 해당 범주로 직접 열거하므로 도형 필요 없음" } } },
+    { "qid": "q24", "axes": { "problem": { "verdict": "EXEMPT", "reason": "분수·문자식 방정식 값을 계산하는 서술형" }, "solution": { "verdict": "EXEMPT", "reason": "이항과 분모 제거 과정은 수식만으로 명확" } } },
+    {
+      "qid": "q25",
+      "sourceImage": "assets/images/AP수학학원_1학기_중간_중1_모의고사_1회/q25.png",
+      "axes": {
+        "problem": {
+          "verdict": "REQUIRED",
+          "reason": "발문이 '오른쪽 그림'을 참조하며 실제 사다리꼴의 보조 실선·직각·독립 점선·3개 라벨을 1:1 보존해야 한다.",
+          "capability": "construction-spike-v1",
+          "planPath": "archive/tools/geometry-equation/production/plans/AP수학학원_1학기_중간_중1_모의고사_1회/q25-problem.plan.json",
+          "requiredFeatures": ["사다리꼴 실선 4변", "실선 높이", "윗변의 높이 접점 직각", "밑변 아래 별도 수평 점선", "윗변 a cm", "아랫변 b cm", "높이 h cm", "흰색 배경 도형 없음", "내부 회색 면 채움 없음"],
+          "featureFieldMapping": [
+            { "sourceFeature": "사다리꼴 윤곽 네 변", "renderField": "displaySegments sAB,sBC,sCD,sDA" },
+            { "sourceFeature": "높이 실선", "renderField": "displaySegments sEF (dashed omitted)" },
+            { "sourceFeature": "윗변-높이 직각", "renderField": "rightAngles raE: D,E,F" },
+            { "sourceFeature": "아랫변 아래 점선", "renderField": "displaySegments sGH.dashed=true, G·H are below A·B" },
+            { "sourceFeature": "a cm/b cm/h cm 길이 라벨", "renderField": "planeMarks.dimensions top/bottom/height.label/unit" },
+            { "sourceFeature": "불필요한 면 채움·기본 흰 배경 없음", "renderField": "no planeMarks.regions/polygons/background/fill fields" }
+          ],
+          "drawnFeatureParity": "STATIC_1_TO_1_FEATURE_MATCH__RENDER_NOT_RUN",
+          "publicationBinding": "NOT_RUN; original gray-filled PNG remains bound in the unchanged JS"
+        },
+        "solution": {
+          "verdict": "BENEFICIAL",
+          "reason": "사다리꼴 넓이 공식 (a+b)h/2와 a=7,b=11,h=8의 대입이 같은 높이·평행 두 변을 사용함을 보여 준다.",
+          "capability": "construction-spike-v1",
+          "planPath": "archive/tools/geometry-equation/production/plans/AP수학학원_1학기_중간_중1_모의고사_1회/q25-solution.plan.json",
+          "requiredFeatures": ["문제축과 동일한 4변", "높이 실선·직각", "밑변 아래 점선", "a·b·h cm 라벨", "면 채움 없음", "계산 설명 72 cm²"],
+          "featureFieldMapping": [
+            { "sourceFeature": "두 평행 밑변", "renderField": "displaySegments sAB/sCD" },
+            { "sourceFeature": "실선 높이 및 직각", "renderField": "displaySegments sEF and rightAngles raE" },
+            { "sourceFeature": "아랫변 아래 점선", "renderField": "displaySegments sGH.dashed=true" },
+            { "sourceFeature": "a,b,h 단위 표시", "renderField": "planeMarks.dimensions top/bottom/height" },
+            { "sourceFeature": "(7+11)×8/2=72 cm² 풀이", "renderField": "caption; no false numeric length scale added" },
+            { "sourceFeature": "불필요한 채움 없음", "renderField": "no regions/fill fields" }
+          ],
+          "drawnFeatureParity": "STATIC_1_TO_1_FEATURE_MATCH__RENDER_NOT_RUN"
+        }
+      }
+    }
+  ]
+}
