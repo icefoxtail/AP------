@@ -1,0 +1,33 @@
+{
+  "capability": "lattice-path-figure-v1",
+  "lattice": {
+    "grid": {"cols": 6, "rows": 5},
+    "points": {"A": [0, 0], "B": [6, 5], "P": [2, 2], "Q": [5, 4]},
+    "from": "A",
+    "to": "B",
+    "forbidden": [
+      [[1, 2], [2, 2]],
+      [[2, 2], [3, 2]],
+      [[2, 1], [2, 2]],
+      [[2, 2], [2, 3]],
+      [[4, 4], [5, 4]],
+      [[5, 4], [6, 4]],
+      [[5, 3], [5, 4]],
+      [[5, 4], [5, 5]]
+    ],
+    "counts": true
+  },
+  "caption": "원본 도로망은 가로 6칸·세로 5칸이며 교차점 P(2,2), Q(5,4)에 닿는 도로가 각각 네 개씩 빠져 있다. 점선은 통행할 수 없는 도로이고, A에서 B까지 실제 최단 경로의 수는 120이다.",
+  "accessibilityDescription": "A가 왼쪽 아래, B가 오른쪽 위인 가로 여섯 칸 세로 다섯 칸 도로망이다. 가운데 P(2,2)의 네 도로와 오른쪽 위 Q(5,4)의 네 도로가 빠져 있으며, 이를 점선 금지 도로로 구분한다. 남은 실선 도로의 각 교차점까지 도달하는 최단 경로 수가 표시되고 B에는 120이 있다.",
+  "sourceQuote": "q13.png의 도로망에서 A에서 B까지 가는 최단 경로의 수",
+  "sourceConditions": [
+    {"id": "c1", "condition": "q13.png 원본 격자는 가로 6칸, 세로 5칸, A(0,0), B(6,5)", "mappedTo": ["lattice.grid", "lattice.points.A", "lattice.points.B"]},
+    {"id": "c2", "condition": "중앙 P(2,2)에서 좌·우·상·하 네 도로가 끊어짐", "mappedTo": ["lattice.points.P", "lattice.forbidden[0]", "lattice.forbidden[1]", "lattice.forbidden[2]", "lattice.forbidden[3]"]},
+    {"id": "c3", "condition": "오른쪽 위 Q(5,4)에서 좌·우·상·하 네 도로가 끊어짐", "mappedTo": ["lattice.points.Q", "lattice.forbidden[4]", "lattice.forbidden[5]", "lattice.forbidden[6]", "lattice.forbidden[7]"]},
+    {"id": "c4", "condition": "금지 도로를 제외한 오른쪽·위쪽 최단 경로 120개", "mappedTo": ["lattice.from", "lattice.to", "lattice.forbidden", "lattice.counts"]}
+  ],
+  "newVisualInformation": [
+    "원본에서 보이지 않는 여덟 도로를 임의로 연결하지 않고 금지 도로 점선으로 구분한다.",
+    "풀이에서 사용하는 두 제외 교차점 P/Q의 정확한 위치와 각 교차점까지의 누적 경로 수를 엔진에서 계산해 보여 준다."
+  ]
+}
