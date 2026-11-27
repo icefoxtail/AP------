@@ -1,0 +1,20 @@
+{
+  "capability":"solid-figure-v1",
+  "space":{"points":[{"id":"A","at":[0,0,2]},{"id":"B","at":[2,0,2]},{"id":"C","at":[2,2,2]},{"id":"D","at":[0,2,2]},{"id":"E","at":[0,0,0]},{"id":"F","at":[2,0,0]},{"id":"G","at":[2,2,0]},{"id":"H","at":[0,2,0]}],"segments":[
+    {"from":"A","to":"B"},{"from":"B","to":"C"},{"from":"C","to":"D"},{"from":"D","to":"A"},
+    {"from":"A","to":"E"},{"from":"B","to":"F"},{"from":"C","to":"G"},{"from":"D","to":"H"},
+    {"from":"E","to":"F","style":"DASHED"},{"from":"F","to":"G"},{"from":"G","to":"H"},{"from":"H","to":"E","style":"DASHED"},
+    {"from":"E","to":"C","role":"ACCENT"}
+  ]},
+  "dims":[{"from":"A","to":"B","label":"2"},{"from":"A","to":"D","label":"2"},{"from":"A","to":"E","label":"2"},{"from":"E","to":"C","label":"2\\sqrt{3}"}],
+  "marks":{"rightAngles":[{"at":"A","refs":["B","D"]},{"at":"A","refs":["B","E"]},{"at":"A","refs":["D","E"]}]},
+  "caption":"서로 수직인 AB=a, AD=b, AE=c에서 a+b−c는 공간 대각선 EC와 같고 길이는 2√3이다.",
+  "accessibilityDescription":"모서리 2인 정육면체의 세 모서리 AB, AD, AE가 A에서 서로 직각을 이룬다. E에서 C로 향하는 공간 대각선이 강조되며 길이 2루트3이 적혀 있다. 뒤쪽 아래 모서리는 점선이고 면 내부는 칠하지 않는다.",
+  "sourceQuote":"모서리 길이 2인 정육면체에서 AB=a, AD=b, AE=c, |a+b−c|",
+  "sourceConditions":[
+    {"id":"c1","condition":"AB=AD=AE=2, 모두 서로 수직","mappedTo":"dims[0],dims[1],dims[2],marks.rightAngles[0],marks.rightAngles[1],marks.rightAngles[2]"},
+    {"id":"c2","condition":"a+b−c=EC","mappedTo":"space.segments[0],space.segments[3],space.segments[4],space.segments[12]"},
+    {"id":"c3","condition":"EC는 정육면체의 대각선이고 길이 2√3","mappedTo":"space.segments[12],dims[3]"}
+  ],
+  "newVisualInformation":["원본 정육면체의 벡터 표시를 문제에 보존하고 해설에 합·차로 대응하는 실제 공간 대각선 EC, 직각 3개와 길이 2√3을 그리는 필드로 추가한다. 면 채움 없음."]
+}

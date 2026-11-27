@@ -1,0 +1,26 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"F","op":"POLAR_POINT","inputs":["O","E"],"args":{"length":{"kind":"integer","value":"1"},"angleDeg":{"kind":"integer","value":"60"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"A","op":"POLAR_POINT","inputs":["O","E"],"args":{"length":{"kind":"integer","value":"1"},"angleDeg":{"kind":"integer","value":"120"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"B","op":"POLAR_POINT","inputs":["O","E"],"args":{"length":{"kind":"integer","value":"1"},"angleDeg":{"kind":"integer","value":"180"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"C","op":"POLAR_POINT","inputs":["O","E"],"args":{"length":{"kind":"integer","value":"1"},"angleDeg":{"kind":"integer","value":"240"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"D","op":"POLAR_POINT","inputs":["O","E"],"args":{"length":{"kind":"integer","value":"1"},"angleDeg":{"kind":"integer","value":"300"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["O","A","B","C","D","E","F"],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sDE","refs":["D","E"]},{"id":"sEF","refs":["E","F"]},{"id":"sFA","refs":["F","A"]},{"id":"sAD","refs":["A","D"],"dashed":true},{"id":"sBE","refs":["B","E"],"dashed":true},{"id":"sCF","refs":["C","F"],"dashed":true},{"id":"sBD","refs":["B","D"],"emphasis":"ACCENT"}],
+  "planeMarks":{"vectors":[{"id":"vBO","from":"B","to":"O","label":"vec(BO)","side":"LEFT"},{"id":"vOF","from":"O","to":"F","label":"vec(OF)","side":"LEFT"},{"id":"vCE","from":"C","to":"E","label":"vec(CE)","side":"RIGHT"},{"id":"vAF","from":"A","to":"F","label":"vec(AF)","side":"LEFT"},{"id":"vCO","from":"C","to":"O","label":"vec(CO)","side":"RIGHT"},{"id":"vOD","from":"O","to":"D","label":"vec(OD)","side":"LEFT"}],"angles":[{"id":"aBCD","refs":["B","C","D"],"value":120,"label":"120","style":"ARC","arcs":1}],"dimensions":[{"id":"dBD","from":"B","to":"D","label":"sqrt(3)","side":"BELOW","style":"BAR"}]},
+  "coordinateCanvas":{"width":720,"height":600},
+  "caption":"정육각형에서 BO+OF=BF=CE, AF−CO=OD이고 짧은 대각선 BD=√3이다.",
+  "accessibilityDescription":"한 변 길이 1인 정육각형 ABCDEF의 중심 O를 표시한다. BO, OF, CE, AF, CO, OD는 각각 화살표로 방향을 나타내고 B와 D 사이 짧은 대각선은 강조되며 길이 루트3이 적혀 있다. C의 내각 120도 호도 표시된다.",
+  "sourceQuote":"한 변 1인 정육각형 ABCDEF와 중심 O에서 BO+OF=CE, AF−CO=OD, |BD|=√2의 참거짓",
+  "sourceConditions":[
+    {"id":"c1","condition":"정육각형 ABCDEF, 대각선 AD·BE·CF는 O에서 만남","mappedTo":"mathPlan.nodes[0],mathPlan.nodes[2],mathPlan.nodes[6],displaySegments[6],displaySegments[7],displaySegments[8]"},
+    {"id":"c2","condition":"ㄱ BO+OF=CE의 유향 관계","mappedTo":"planeMarks.vectors[0],planeMarks.vectors[1],planeMarks.vectors[2]"},
+    {"id":"c3","condition":"ㄴ AF−CO=OD의 유향 관계","mappedTo":"planeMarks.vectors[3],planeMarks.vectors[4],planeMarks.vectors[5]"},
+    {"id":"c4","condition":"ㄷ BD=√3이며 ∠BCD=120°","mappedTo":"displaySegments[9],planeMarks.dimensions[0],planeMarks.angles[0]"}
+  ],
+  "newVisualInformation":["원본 육각형 문제 PNG는 유지한다. 해설에는 보기 ㄱ·ㄴ의 벡터마다 시점과 종점이 확인되는 화살표, 반례 ㄷ의 대각선 BD=√3 및 120° 호를 실제 표식으로 추가한다. 면 채움 없음."]
+}

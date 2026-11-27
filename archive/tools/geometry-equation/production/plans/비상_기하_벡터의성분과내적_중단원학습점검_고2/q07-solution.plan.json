@@ -1,0 +1,20 @@
+{
+  "capability":"solid-figure-v1",
+  "space":{"points":[{"id":"A","at":[0,0,4]},{"id":"B","at":[3,0,4]},{"id":"C","at":[3,5,4]},{"id":"D","at":[0,5,4]},{"id":"E","at":[0,0,0]},{"id":"F","at":[3,0,0]},{"id":"G","at":[3,5,0]},{"id":"H","at":[0,5,0]}],"segments":[
+    {"from":"A","to":"B"},{"from":"B","to":"C"},{"from":"C","to":"G"},{"from":"A","to":"G"},
+    {"from":"A","to":"D"},{"from":"D","to":"C"},{"from":"B","to":"F"},{"from":"F","to":"G"},
+    {"from":"G","to":"H"},{"from":"H","to":"D"},{"from":"E","to":"F","style":"DASHED"},
+    {"from":"E","to":"H","style":"DASHED"},{"from":"A","to":"E","style":"DASHED"}
+  ]},
+  "dims":[{"from":"F","to":"G","label":"5"},{"from":"G","to":"H","label":"3"},{"from":"H","to":"D","label":"4"},{"from":"A","to":"B","label":"3"}],
+  "marks":{"rightAngles":[{"at":"B","refs":["A","C"]},{"at":"C","refs":["B","G"]}]},
+  "caption":"직육면체의 AG를 AB+BC+CG로 분해하면 AB⊥BC, AB⊥CG이고 AB=3이다.",
+  "accessibilityDescription":"직육면체의 꼭짓점 A에서 G로 향하는 공간 대각선과 A-B-C-G 경로를 함께 보인다. FG=5, GH=3, HD=4, AB=3의 길이 표기가 있고 B와 C에는 직각 표식이 있다. 보이지 않는 모서리는 점선이다.",
+  "sourceQuote":"직육면체 FG=5, GH=3, HD=4에서 벡터 AB·AG를 구하시오",
+  "sourceConditions":[
+    {"id":"c1","condition":"FG=5, GH=3, HD=4","mappedTo":"dims[0],dims[1],dims[2]"},
+    {"id":"c2","condition":"AG=AB+BC+CG","mappedTo":"space.segments[0],space.segments[1],space.segments[2],space.segments[3]"},
+    {"id":"c3","condition":"AB=3이고 AB⊥BC, BC⊥CG","mappedTo":"dims[3],marks.rightAngles[0],marks.rightAngles[1]"}
+  ],
+  "newVisualInformation":["문제의 원본 직육면체 PNG를 보존하고, 해설의 3성분 경로 A→B→C→G와 대각선 AG, 두 직각 및 길이 정보를 개별 선·표식 필드로 그린다. 면 채움 없음."]
+}

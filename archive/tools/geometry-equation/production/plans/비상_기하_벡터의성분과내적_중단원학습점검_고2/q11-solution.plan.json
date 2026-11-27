@@ -1,0 +1,21 @@
+{
+  "capability":"solid-figure-v1",
+  "space":{"points":[{"id":"A","at":[0,0,0]},{"id":"B","at":[0,-15,0]},{"id":"C","at":[20,-15,0]},{"id":"D","at":[20,0,0]},{"id":"E","at":["36/5","-27/5",12]},{"id":"H","at":["36/5","-27/5",0]}],"segments":[
+    {"from":"A","to":"D"},{"from":"D","to":"C"},{"from":"C","to":"A"},
+    {"from":"A","to":"E"},{"from":"E","to":"C"},
+    {"from":"E","to":"H","style":"DASHED"},{"from":"A","to":"H","style":"DASHED"},{"from":"H","to":"C","style":"DASHED"},
+    {"from":"A","to":"B","style":"DASHED"},{"from":"B","to":"C","style":"DASHED"}
+  ]},
+  "dims":[{"from":"A","to":"D","label":"20"},{"from":"D","to":"C","label":"15"},{"from":"A","to":"C","label":"25"},{"from":"A","to":"H","label":"9"},{"from":"E","to":"H","label":"12"}],
+  "marks":{"rightAngles":[{"at":"H","refs":["E","A"]},{"at":"D","refs":["A","C"]}]},
+  "caption":"대각선 AC=25를 접는 축으로 삼으면 E에서 바닥면에 내린 수선발 H는 AC 위에 있고 AH=9, EH=12이다.",
+  "accessibilityDescription":"밑면 ACD와 그에 수직인 접힌 삼각형 ACE를 두 평면으로 나타낸다. 원래 점 B는 점선 모서리로 표시한다. AC=25, AD=20, DC=15, AH=9, EH=12이고 E에서 AC 위 H로 점선 수선을 내려 직각을 표시한다.",
+  "sourceQuote":"직사각형 AD=20, AB=15를 대각선 AC로 접어 B가 E로 이동, 평면 ACE⊥ACD, AE·DC",
+  "sourceConditions":[
+    {"id":"c1","condition":"원래 직사각형 AD=20, AB=DC=15","mappedTo":"space.points[0],space.points[1],space.points[2],space.points[3],dims[0],dims[1]"},
+    {"id":"c2","condition":"접기 축 AC=25 및 두 평면 ACE⊥ACD","mappedTo":"space.segments[0],space.segments[1],space.segments[2],space.segments[3],space.segments[4],dims[2]"},
+    {"id":"c3","condition":"H는 E에서 AC에 내린 수선발, AH=9, EH=12","mappedTo":"space.points[5],space.segments[5],marks.rightAngles[0],dims[3],dims[4]"},
+    {"id":"c4","condition":"AE·DC=81을 산출하는 두 유향 선분","mappedTo":"space.segments[1],space.segments[3]"}
+  ],
+  "newVisualInformation":["원본 접기 전후 2패널 PNG는 문제에 보존한다. 해설에는 실제 접힌 두 삼각형의 경계, 접는 축 AC, 수선발 H와 9·12·15·20·25 치수, 직각을 별도 필드로 넣고 불필요한 면 채움을 제외한다."]
+}

@@ -1,0 +1,15 @@
+{
+  "capability":"ellipse-figure-v1",
+  "ellipse":{"center":["0","0"],"semiAxisSquared":{"major":"9","minor":"4"},"majorAxis":"X"},
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"P","kind":"ON_ELLIPSE","x":"0","branch":"POS"},{"id":"Q","kind":"POINT","x":"0","y":"1"}],
+  "segments":[{"id":"sOP","from":"O","to":"P"},{"id":"sOQ","from":"O","to":"Q","dashed":true}],
+  "caption":"원점 중심 타원 위 대표점 P와 같은 방향의 단위벡터 종점 Q를 표시한 문제 도식이다.",
+  "accessibilityDescription":"가로 반지름 3, 세로 반지름 2인 타원과 중심 O가 있다. 대표점 P는 타원의 맨 위, Q는 같은 반직선의 원점으로부터 거리 1인 곳에 표시된다. Q 전체의 자취는 그려지지 않는다.",
+  "sourceQuote":"타원 x²/9+y²/4=1 위 P와 OQ=OP/|OP|로 정의되는 Q가 그리는 도형의 넓이",
+  "sourceConditions":[
+    {"id":"c1","condition":"원점 중심 타원 x²/9+y²/4=1","mappedTo":"ellipse"},
+    {"id":"c2","condition":"P는 타원 위 점, 그림은 P=(0,2) 대표 예시","mappedTo":"points[1],segments[0]"},
+    {"id":"c3","condition":"OQ는 OP와 같은 방향의 길이 1인 벡터, 대표 Q=(0,1)","mappedTo":"points[2],segments[1]"}
+  ],
+  "newVisualInformation":["문제 단계에서 전체 Q 자취나 넓이는 공개하지 않고, 원문에 정의된 OP와 OQ의 같은 방향·길이 1 관계를 대표점 한 쌍에만 보인다. 타원 내부 면은 칠하지 않는다."]
+}

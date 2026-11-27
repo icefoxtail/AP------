@@ -1,0 +1,28 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"-3"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"DIVISION_POINT","inputs":["A","B"],"args":{"m":{"kind":"integer","value":"1"},"n":{"kind":"integer","value":"2"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"E","op":"DIVISION_POINT","inputs":["A","C"],"args":{"m":{"kind":"integer","value":"1"},"n":{"kind":"integer","value":"2"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["O","A","B","C","D","E","H","P"],
+  "displaySegments":[{"id":"sAD","refs":["A","D"]},{"id":"sDB","refs":["D","B"]},{"id":"sAE","refs":["A","E"]},{"id":"sEC","refs":["E","C"]},{"id":"sBC","refs":["B","C"]},{"id":"sDE","refs":["D","E"],"emphasis":"ACCENT"},{"id":"sOH","refs":["O","H"],"dashed":true},{"id":"sAH","refs":["A","H"],"dashed":true}],
+  "planeMarks":{"vectors":[{"id":"vOP","from":"O","to":"P","label":"vec(OP)","side":"LEFT"},{"id":"vAP","from":"A","to":"P","label":"vec(AP)","side":"RIGHT"}],"dimensions":[{"id":"dDE","from":"D","to":"E","label":"3","side":"RIGHT","style":"BAR"}]},
+  "rightAngles":[{"id":"rH","refs":["O","H","D"]}],
+  "coordinateCanvas":{"width":720,"height":540},
+  "caption":"D(2,2)와 E(2,−1)를 잇는 세로 선분 위 P(2,y)에서 OP·AP=y²−2, −1≤y≤2이다.",
+  "accessibilityDescription":"A(3,0), B(0,6), C(0,-3)에서 각각 AB, AC를 1대2로 내분한 D(2,2), E(2,-1)가 세로 선분을 이룬다. 선분 DE 위의 예시 점 P에서 OP, AP 벡터가 화살표로 표시되고, y=0인 H에서 직각을 표시한다.",
+  "sourceQuote":"A(3,0), B(0,6), C(0,-3), D,E는 AB,AC의 1:2 내분점; P∈DE에서 OP·AP 최댓값·최솟값",
+  "sourceConditions":[
+    {"id":"c1","condition":"D=(2,2), E=(2,-1), 내분비 1:2","mappedTo":"mathPlan.nodes[4],mathPlan.nodes[5],displaySegments[5]"},
+    {"id":"c2","condition":"P는 DE 위에서 움직임; 예시 P=(2,1)","mappedTo":"mathPlan.nodes[7],planeMarks.vectors[0],planeMarks.vectors[1]"},
+    {"id":"c3","condition":"DE가 x=2인 수직선이고 H=(2,0)에서 최소","mappedTo":"mathPlan.nodes[6],rightAngles[0],displaySegments[5]"},
+    {"id":"c4","condition":"DE 길이 3, y범위 −1~2","mappedTo":"planeMarks.dimensions[0]"}
+  ],
+  "newVisualInformation":["해설에서 구한 D,E 및 P의 실제 자취와 수선발 H, 대표 두 벡터 OP·AP를 독립 표시한다. 점 P=(2,1)은 자취 위 대표 예시이지 최댓값·최솟값 점이 아니다."]
+}
