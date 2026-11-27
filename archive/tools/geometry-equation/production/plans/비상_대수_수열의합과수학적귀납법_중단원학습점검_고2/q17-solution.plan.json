@@ -1,0 +1,45 @@
+{
+  "capability":"composite-panels-v1",
+  "panels":[
+    {"caption":{"text":"① 끝이 [앞] → aₙ₊₁"},"plan":{
+      "capability":"construction-spike-v1",
+      "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+        {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"coinH","op":"CIRCLE_CENTER_RADIUS","inputs":["H"],"args":{"radius":{"kind":"integer","value":"1"}},"outputType":"CIRCLE","factRole":"GIVEN"}
+      ]},"coordinateCanvas":{"width":384,"height":320},
+      "displayPoints":["A","B","C","D","H"],"hiddenPointNames":["A","B","C","D","H"],"hiddenPointStyle":"NONE",
+      "displayLines":[],"displayCircles":["coinH"],
+      "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sDA","refs":["D","A"]}],
+      "planeMarks":{"textLabels":[{"id":"prefix","at":[1,1],"text":"앞의 n+1개","labelKind":"TEXT"},{"id":"head","at":[4,1],"text":"앞","labelKind":"TEXT"}]}
+    }},
+    {"caption":{"text":"② 끝이 [뒤] → aₙ"},"plan":{
+      "capability":"construction-spike-v1",
+      "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+        {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"T","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"coinH","op":"CIRCLE_CENTER_RADIUS","inputs":["H"],"args":{"radius":{"kind":"integer","value":"1"}},"outputType":"CIRCLE","factRole":"GIVEN"},
+        {"id":"coinT","op":"CIRCLE_CENTER_RADIUS","inputs":["T"],"args":{"radius":{"kind":"integer","value":"1"}},"outputType":"CIRCLE","factRole":"GIVEN"}
+      ]},"coordinateCanvas":{"width":384,"height":320},
+      "displayPoints":["A","B","C","D","H","T"],"hiddenPointNames":["A","B","C","D","H","T"],"hiddenPointStyle":"NONE",
+      "displayLines":[],"displayCircles":["coinH","coinT"],
+      "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sDA","refs":["D","A"]}],
+      "planeMarks":{"textLabels":[{"id":"prefix","at":[1,1],"text":"앞의 n개","labelKind":"TEXT"},{"id":"head","at":[4,1],"text":"앞","labelKind":"TEXT"},{"id":"tail","at":[6,1],"text":"뒤","labelKind":"TEXT"}]}
+    }}
+  ],
+  "caption":"길이 n+2의 올바른 동전열을 마지막 면으로 분류한다. 마지막이 앞면이면 앞의 n+1개는 임의의 올바른 배열이고, 마지막이 뒷면이면 직전은 반드시 앞면이다. 따라서 a_(n+2)=a_(n+1)+a_n.",
+  "accessibilityDescription":"왼쪽 패널은 앞의 n+1개를 담는 무채색 외곽 상자 다음에 앞면 동전 원 하나가 있다. 오른쪽 패널은 앞의 n개를 담는 외곽 상자 다음에 앞면과 뒷면 동전 원 두 개가 순서대로 있다. 동전 면의 글자가 모두 보이고 면 채움은 없다.",
+  "sourceConditions":[
+    {"id":"head","condition":"마지막 동전이 앞면이면 앞쪽 n+1개는 독립적으로 유효한 배열","mappedTo":["panels[0]"]},
+    {"id":"tail","condition":"마지막 동전이 뒷면이면 바로 앞은 반드시 앞면이며 앞쪽 n개는 유효한 배열","mappedTo":["panels[1]"]},
+    {"id":"recurrence","condition":"a_(n+2)=a_(n+1)+a_n","mappedTo":["caption"]}
+  ],
+  "newVisualInformation":["앞·뒤 실제 동전 외곽 원과 순서, 자유롭게 배열 가능한 접두부의 길이 n+1과 n을 두 패널로 분리; 뒷면 연속이 발생하는 그림 없음; 면 채움 없음"]
+}

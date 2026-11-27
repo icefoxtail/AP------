@@ -1,0 +1,35 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"B0","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B11","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"11"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"T0","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"12"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"T11","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"11"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B2","op":"DIVISION_POINT","inputs":["B0","B11"],"args":{"m":{"kind":"integer","value":"2"},"n":{"kind":"integer","value":"9"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"B9","op":"DIVISION_POINT","inputs":["B0","B11"],"args":{"m":{"kind":"integer","value":"9"},"n":{"kind":"integer","value":"2"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"T2","op":"DIVISION_POINT","inputs":["T0","T11"],"args":{"m":{"kind":"integer","value":"2"},"n":{"kind":"integer","value":"9"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"T9","op":"DIVISION_POINT","inputs":["T0","T11"],"args":{"m":{"kind":"integer","value":"9"},"n":{"kind":"integer","value":"2"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "coordinateCanvas":{"width":640,"height":410},"displayPoints":["B0","B2","B9","B11","T0","T2","T9","T11"],
+  "hiddenPointNames":["B0","B2","B9","B11","T0","T2","T9","T11"],"hiddenPointStyle":"NONE",
+  "displayLines":[],"displayCircles":[],
+  "displaySegments":[
+    {"id":"sTop","refs":["T0","T11"]},{"id":"sBottom","refs":["B0","B11"]},
+    {"id":"s0","refs":["B0","T0"]},{"id":"s2","refs":["B2","T2"],"emphasis":"ACCENT"},
+    {"id":"s9","refs":["B9","T9"],"emphasis":"ACCENT"},{"id":"s11","refs":["B11","T11"]}
+  ],
+  "rightAngles":[{"id":"r0","refs":["T0","B0","B2"]},{"id":"r2","refs":["T2","B2","B9"]},{"id":"r9","refs":["T9","B9","B11"]},{"id":"r11","refs":["T11","B11","B9"]}],
+  "planeMarks":{"expressionLabels":[
+    {"id":"ll","ownerSegment":"sTop","text":"l"},{"id":"lm","ownerSegment":"sBottom","text":"m"},
+    {"id":"la1","ownerSegment":"s0","text":"a_1=12"},{"id":"la3","ownerSegment":"s2","text":"a_3"},
+    {"id":"la10","ownerSegment":"s9","text":"a_10"},{"id":"la12","ownerSegment":"s11","text":"a_12=6"}
+  ],"textLabels":[{"id":"dots","at":[5.5,5],"text":"…","labelKind":"TEXT"}]},
+  "caption":"12개 수선의 길이는 등차수열. 양끝 a₁+a₁₂와 같은 합을 만드는 대칭항 a₃과 a₁₀을 강조한다. 여섯 가운데 선분은 생략했다.",
+  "accessibilityDescription":"서로 만나는 두 직선 l,m 사이에 첫째, 셋째, 열째, 열두째 수선만 대표로 보인다. 가운데에는 생략 기호가 있다. 셋째 a₃과 열째 a₁₀ 수선은 강조되며 네 발에는 직각 표시가 있다.",
+  "sourceConditions":[
+    {"id":"sequence","condition":"등간격에 따른 a1~a12가 등차수열","mappedTo":["B2","B9","T2","T9"]},
+    {"id":"pair","condition":"a3+a10=a1+a12=18","mappedTo":["s2","s9","la3","la10","la1","la12"]},
+    {"id":"sum","condition":"a3+...+a10은 8개 항이며 합 72","mappedTo":["caption"]}
+  ],
+  "newVisualInformation":["원본 대칭항 관계를 색만이 아니라 실제 셋째/열째 수선의 강조·라벨·발 직각으로 표시, 생략 표시는 …로 분명히 구별"]
+}
