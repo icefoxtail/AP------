@@ -760,7 +760,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-041",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/21_효천고_1학기_중간_고2_수학I_유사/q17-solution.svg",
+    "solutionImageAlt": "y=4cos(x+π/6)+1은 x=−π/6에서 5로 최대이고, 감소하여 x=π/6에서 처음으로 y=3을 지난다.",
+    "solutionImageCaption": "y=4cos(x+π/6)+1은 x=−π/6에서 5로 최대이고, 감소하여 x=π/6에서 처음으로 y=3을 지난다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -842,7 +846,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-037",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/21_효천고_1학기_중간_고2_수학I_유사/q19-solution.svg",
+    "solutionImageAlt": "교점 순서만을 위한 예시 k=4π, a=1/2: sin(πx)에서 α=1/6, β=5/6, γ=7/6, δ=11/6이다. 이 예시의 교점 합은 4로, 원문의 sin(합)=1/2 조건을 충족하지 않으며 k 최댓값 그래프가 아니다.",
+    "solutionImageCaption": "교점 순서만을 위한 예시 k=4π, a=1/2: sin(πx)에서 α=1/6, β=5/6, γ=7/6, δ=11/6이다. 이 예시의 교점 합은 4로, 원문의 sin(합)=1/2 조건을 충족하지 않으며 k 최댓값 그래프가 아니다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

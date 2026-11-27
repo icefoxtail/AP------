@@ -72,7 +72,11 @@ window.examData = {
     "integrationPattern": "NONE",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/19_연향중_2학기_중간_중2_수학/q1-solution.svg",
+    "solutionImageAlt": "1번 문제: 원본 q01: AB=AC, A에서 BC까지 이어진 AD와 꼭짓각의 이등분 표식.",
+    "solutionImageCaption": "1번 문제: 원본 q01: AB=AC, A에서 BC까지 이어진 AD와 꼭짓각의 이등분 표식.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -649,7 +653,11 @@ window.examData = {
     "integrationPattern": "NONE",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/19_연향중_2학기_중간_중2_수학/q9-solution.svg",
+    "solutionImageAlt": "9번 문제: 원본 q09.png: 두 대각선 교점 O, 평행사변형 조건의 선분/각 대조 도형.",
+    "solutionImageCaption": "9번 문제: 원본 q09.png: 두 대각선 교점 O, 평행사변형 조건의 선분/각 대조 도형.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -723,7 +731,11 @@ window.examData = {
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/19_연향중_2학기_중간_중2_수학/q10-solution.svg",
+    "solutionImageAlt": "10번 문제: 원본 q10.png: 직사각형 AC20, 대각선 교점 E와 DE 지름의 원.",
+    "solutionImageCaption": "10번 문제: 원본 q10.png: 직사각형 AC20, 대각선 교점 E와 DE 지름의 원.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -797,7 +809,11 @@ window.examData = {
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/19_연향중_2학기_중간_중2_수학/q11-solution.svg",
+    "solutionImageAlt": "11번 문제: 원본 q11.png: 마름모 대각선의 수직, E-F-G 직선, 색칠한 △AGF·△DEF 두 영역.",
+    "solutionImageCaption": "11번 문제: 원본 q11.png: 마름모 대각선의 수직, E-F-G 직선, 색칠한 △AGF·△DEF 두 영역.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -1087,7 +1103,12 @@ window.examData = {
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/19_연향중_2학기_중간_중2_수학/q15-solution.svg",
+    "solutionImageAlt": "원본에 제시된 여러 도형의 구성을 비교한다.",
+    "solutionImageCaption": "원본에 제시된 여러 도형의 구성을 비교한다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 16,
@@ -1159,7 +1180,11 @@ window.examData = {
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_연향중_2학기_중간_중2_수학/q16-solution.svg",
+    "solutionImageAlt": "16번 문제: 원본 q16.png: C 직각, CD⊥AB, AD4·CD6·AB=x.",
+    "solutionImageCaption": "16번 문제: 원본 q16.png: C 직각, CD⊥AB, AD4·CD6·AB=x.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1446,7 +1471,11 @@ window.examData = {
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/19_연향중_2학기_중간_중2_수학/q20-solution.svg",
+    "solutionImageAlt": "20번 문제: 원본 q20.png: 두 중점삼각형과 BFG·CGH의 빗금 넓이 대비, DE2·BC=x.",
+    "solutionImageCaption": "20번 문제: 원본 q20.png: 두 중점삼각형과 BFG·CGH의 빗금 넓이 대비, DE2·BC=x.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1512,7 +1541,11 @@ window.examData = {
     "integrationPattern": "NONE",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/19_연향중_2학기_중간_중2_수학/q21-solution.svg",
+    "solutionImageAlt": "21번 문제: 서술형 q21 원본 이미지 없음: ∠B=∠C=∠AED=90°, AE=DE, 실제 AB3·CD5 도형.",
+    "solutionImageCaption": "21번 문제: 서술형 q21 원본 이미지 없음: ∠B=∠C=∠AED=90°, AE=DE, 실제 AB3·CD5 도형.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1581,7 +1614,11 @@ window.examData = {
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/19_연향중_2학기_중간_중2_수학/q22-solution.svg",
+    "solutionImageAlt": "22번 문제: 서술형 q22 원본 이미지 없음: 6·8·10 직각삼각형의 내접원과 내심 I.",
+    "solutionImageCaption": "22번 문제: 서술형 q22 원본 이미지 없음: 6·8·10 직각삼각형의 내접원과 내심 I.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

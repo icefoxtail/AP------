@@ -43,7 +43,11 @@ window.examData = {
       "l4": "두 각 조건"
     },
     "primaryMethod": "같은 밑각 정리의 안내된 ASA 증명",
-    "decisiveStep": "이등분한 꼭지각과 같은 밑각에서 나머지 각도 같음을 확인하고 공통변 AD 양끝각으로 ASA를 선택한다."
+    "decisiveStep": "이등분한 꼭지각과 같은 밑각에서 나머지 각도 같음을 확인하고 공통변 AD 양끝각으로 ASA를 선택한다.",
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중2_수학/q1-solution.svg",
+    "solutionImageAlt": "꼭지각의 이등분선 AD를 기준으로 두 삼각형의 같은 각과 공통변을 확인한다.",
+    "solutionImageCaption": "꼭지각의 이등분선 AD를 기준으로 두 삼각형의 같은 각과 공통변을 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -86,7 +90,11 @@ window.examData = {
       "l4": "밑각"
     },
     "primaryMethod": "이어진 이등변삼각형의 각과 외각",
-    "decisiveStep": "AD=BD와BD=BC의 두 등변각을 x로 이어 외각78도가3x임을 얻는다."
+    "decisiveStep": "AD=BD와BD=BC의 두 등변각을 x로 이어 외각78도가3x임을 얻는다.",
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중2_수학/q2-solution.svg",
+    "solutionImageAlt": "연속한 세 등변 관계에서 외각 78도와 구하는 각 x를 표시한 도형.",
+    "solutionImageCaption": "연속한 세 등변 관계에서 외각 78도와 구하는 각 x를 표시한 도형.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -330,7 +338,11 @@ window.examData = {
       "l4": "반지름·각 계산"
     },
     "primaryMethod": "직각삼각형 내접반지름의 정형식",
-    "decisiveStep": "직각변6,8과 빗변10에 r=(a+b-c)/2를 적용한다."
+    "decisiveStep": "직각변6,8과 빗변10에 r=(a+b-c)/2를 적용한다.",
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중2_수학/q8-solution.svg",
+    "solutionImageAlt": "6·8·10 직각삼각형의 내접원 중심에서 변에 내린 수선이 반지름 2를 나타낸다.",
+    "solutionImageCaption": "6·8·10 직각삼각형의 내접원 중심에서 변에 내린 수선이 반지름 2를 나타낸다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -710,7 +722,11 @@ window.examData = {
     "solutionImage": "assets/images/19_이수중_2학기_중간_중2_수학/q17-solution.svg",
     "solutionImageAlt": "해설 그림: 평행사변형 ABCD의 네 변에 같은 길이 표시가 있고, 두 대각선 AC와 BD가 점 O에서 수직으로 만난다.",
     "solutionImageCaption": "평행사변형에서 이웃한 두 변의 길이가 같으면 마름모가 되고, 두 대각선이 수직으로 만나도 마름모가 된다. 그림과 같이 네 변의 길이가 같고 대각선 AC와 BD가 점 O에서 수직으로 만나므로 ①과 ④가 조건이다. 따라서 답은 ①, ④이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "image": "assets/images/19_이수중_2학기_중간_중2_수학/q17-problem.svg",
+    "imageAlt": "왼쪽의 평행사변형이 오른쪽의 마름모가 되기 위한 조건을 고르는 문제. 두 도형 모두 원본대로 ABCD로 표기한다.",
+    "imageCaption": "왼쪽의 평행사변형이 오른쪽의 마름모가 되기 위한 조건을 고르는 문제. 두 도형 모두 원본대로 ABCD로 표기한다.",
+    "imageSize": "full"
   },
   {
     "id": 18,
@@ -926,7 +942,11 @@ window.examData = {
       "l4": "밑각"
     },
     "primaryMethod": "연장된 두 이등변삼각형의 밑각 합",
-    "decisiveStep": "AD=DE와BC=CF인 두 큰 이등변삼각형을 찾아 평행사변형의 보각 관계로 두 밑각 합을 정한다."
+    "decisiveStep": "AD=DE와BC=CF인 두 큰 이등변삼각형을 찾아 평행사변형의 보각 관계로 두 밑각 합을 정한다.",
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중2_수학/q22-solution.svg",
+    "solutionImageAlt": "평행사변형 ABCD에서 AD=2AB이고 E, C, D, F는 한 직선 위에 순서대로 있다. EC=CD=DF의 세 눈금과 두 연장 삼각형의 각 x, y를 나타낸다.",
+    "solutionImageCaption": "평행사변형 ABCD에서 AD=2AB이고 E, C, D, F는 한 직선 위에 순서대로 있다. EC=CD=DF의 세 눈금과 두 연장 삼각형의 각 x, y를 나타낸다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1000,7 +1020,11 @@ window.examData = {
       "l4": "AA"
     },
     "primaryMethod": "두 평행쌍의 AA 증명과 대응길이",
-    "decisiveStep": "두 평행선 쌍으로 ABE와CDB의 대응각을 맞추고 BE:BD=8:12로 BC를 구한다."
+    "decisiveStep": "두 평행선 쌍으로 ABE와CDB의 대응각을 맞추고 BE:BD=8:12로 BC를 구한다.",
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중2_수학/q24-solution.svg",
+    "solutionImageAlt": "AB∥CD, AE∥BC이므로 △ABE∼△CDB이다. BE:BD=8:(8+4)=2:3, AE:BC=2:3에서 BC=9cm이다.",
+    "solutionImageCaption": "AB∥CD, AE∥BC이므로 △ABE∼△CDB이다. BE:BD=8:(8+4)=2:3, AE:BC=2:3에서 BC=9cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,
