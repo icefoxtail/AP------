@@ -1,0 +1,23 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{"coefficients": ["6", "0", "-3", "2"]}],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "functionName": "f",
+    "requiredPoints": [
+      {"id": "M", "x": "0", "y": "6"},
+      {"id": "N", "x": "1", "y": "5"}
+    ],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "pointNames": {"M": "M", "N": "N"},
+  "caption": "f'(x)=6x(x-1)의 부호가 0에서 +에서 -로, 1에서 -에서 +로 바뀐다. 따라서 f(x)=2x³-3x²+6의 극대는 (0,6), 극소는 (1,5)이다.",
+  "accessibilityDescription": "삼차곡선의 극대점 M(0,6)과 극소점 N(1,5)을 실제 곡선 위에 표시해 극값의 위치와 높이 차이를 보여 준다.",
+  "sourceQuote": "미분가능한 함수 $f(x)$에 대하여 $f'(x)=ax^2-ax$이고 함수 $f(x)$의 극댓값이 $6$, 극솟값이 $5$일 때, 함수 $f(x)$를 구하시오. (단, $a>0$)",
+  "sourceConditions": [
+    {"id": "c1", "condition": "a>0, f'(x)=ax(x-1), f의 극대와 극소는 각각 x=0, x=1", "mappedTo": "graphPlan.pieces[0].coefficients,graphPlan.requiredPoints[M,N]"},
+    {"id": "c2", "condition": "f(0)=6, f(1)=5에서 a=6, 적분상수 C=6", "mappedTo": "graphPlan.pieces[0].coefficients,graphPlan.requiredPoints[M,N]"}
+  ],
+  "newVisualInformation": ["원문에서 구한 극댓값 6과 극솟값 5를 각각 곡선 위의 점으로 표시한다."]
+}

@@ -1,0 +1,59 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {"coefficients": ["0", "2"]},
+      {"coefficients": ["4", "-2"]},
+      {"coefficients": ["-5", "1"]},
+      {"coefficients": ["7", "-2"]}
+    ],
+    "breakpoints": [
+      {"x": "1", "y": "2"},
+      {"x": "3", "y": "-2"},
+      {"x": "4", "y": "-1"}
+    ],
+    "sourceDomain": {"kind": "INTERVAL", "range": ["0", "5"], "states": ["CLOSED", "CLOSED"]},
+    "functionName": "v",
+    "nameVariable": "t",
+    "requiredPoints": [
+      {"id": "O", "x": "0", "y": "0"},
+      {"id": "X1", "x": "1", "y": "2", "marker": "NONE"},
+      {"id": "B", "x": "2", "y": "0"},
+      {"id": "X3", "x": "3", "y": "-2", "marker": "NONE"},
+      {"id": "X4", "x": "4", "y": "-1", "marker": "NONE"},
+      {"id": "X5", "x": "5", "y": "-3", "marker": "NONE"}
+    ],
+    "axisTickValues": {"x": [], "y": []},
+    "overlays": {
+      "points": [
+        {"id": "A", "x": "1", "y": "2", "coordinates": true},
+        {"id": "C", "x": "3", "y": "-2", "coordinates": true},
+        {"id": "D", "x": "4", "y": "-1", "coordinates": true},
+        {"id": "E", "x": "5", "y": "-3", "coordinates": true}
+      ],
+      "guides": [
+        {"id": "ga", "from": "A", "axis": "BOTH"},
+        {"id": "gc", "from": "C", "axis": "BOTH"},
+        {"id": "gd", "from": "D", "axis": "BOTH"},
+        {"id": "ge", "from": "E", "axis": "BOTH"}
+      ]
+    },
+    "regions": [
+      {"id": "positive", "upper": "f", "lower": "axis", "from": "0", "to": "2", "fill": "LIGHT", "label": "S_1"},
+      {"id": "negativeA", "upper": "axis", "lower": "f", "from": "2", "to": "3", "fill": "LIGHT", "label": "S_2"},
+      {"id": "negativeB", "upper": "axis", "lower": "f", "from": "3", "to": "4", "fill": "LIGHT", "label": "S_3"},
+      {"id": "negativeC", "upper": "axis", "lower": "f", "from": "4", "to": "5", "fill": "LIGHT", "label": "S_4"}
+    ]
+  },
+  "pointNames": {"O": "O", "A": "A", "B": "B", "C": "C", "D": "D", "E": "E"},
+  "caption": "원본 속도–시간 그래프에서 0..2의 양의 넓이는 2, 2..3은 -1, 3..4는 -3/2, 4..5는 -2이다. 합이 -5/2이므로 k=-3이다.",
+  "accessibilityDescription": "시간 0부터 5까지 네 직선 조각을 연결한다. t=1에서 2, t=3에서 -2, t=4에서 -1, t=5에서 -3이며 가로축 위 한 영역과 아래 세 영역을 따로 칠했다.",
+  "sourceQuote": "원점을 출발하여 수직선 위를 움직이는 점 P의 시각 t에서 속도 v(t)의 그래프가 다음 그림과 같다. 시각 t=5에서 점 P의 위치가 -5/2일 때, 실수 k의 값을 구하시오.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "원본 PNG: O(0,0), (1,2), (3,-2), (4,-1), (5,k)와 각 구간의 직선 연결 및 수평·수직 점선", "mappedTo": "graphPlan.pieces,graphPlan.breakpoints,graphPlan.overlays.points,graphPlan.overlays.guides"},
+    {"id": "c2", "condition": "풀이의 위치 -5/2를 만족하는 k=-3", "mappedTo": "graphPlan.pieces[3].coefficients,graphPlan.overlays.points[E]"},
+    {"id": "c3", "condition": "0..2의 양의 넓이와 2..3,3..4,4..5의 음의 넓이", "mappedTo": "graphPlan.regions"}
+  ],
+  "newVisualInformation": ["문제 PNG를 바꾸지 않고 해설에서만 k=-3과 넓이의 부호를 실제 네 영역으로 표시한다."]
+}

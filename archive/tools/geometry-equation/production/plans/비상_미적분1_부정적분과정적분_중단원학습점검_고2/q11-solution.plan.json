@@ -1,0 +1,34 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {"coefficients": ["0", "1", "1"]},
+      {"coefficients": ["0", "-1", "1"]}
+    ],
+    "breakpoints": [{"x": "0", "y": "0"}],
+    "sourceDomain": {"kind": "INTERVAL", "range": ["-1", "2"], "states": ["CLOSED", "CLOSED"]},
+    "functionName": "f",
+    "requiredPoints": [
+      {"id": "L", "x": "-1/2", "y": "-1/4"},
+      {"id": "O", "x": "0", "y": "0"},
+      {"id": "R", "x": "1/2", "y": "-1/4"}
+    ],
+    "axisTickValues": {"x": [-1, 1, 2], "y": []},
+    "regions": [
+      {"id": "negativeLeft", "upper": "axis", "lower": "f", "from": "-1", "to": "0", "fill": "LIGHT", "label": "S_1"},
+      {"id": "negativeRight", "upper": "axis", "lower": "f", "from": "0", "to": "1", "fill": "LIGHT", "label": "S_2"},
+      {"id": "positiveRight", "upper": "f", "lower": "axis", "from": "1", "to": "2", "fill": "LIGHT", "label": "S_3"}
+    ]
+  },
+  "pointNames": {"L": "L", "O": "O", "R": "R"},
+  "caption": "x²-|x|은 x=0에서 조각을 나눈다. x축 아래 두 영역 S₁,S₂는 정적분에서 빼고, x=1부터 2까지의 위쪽 영역 S₃은 더한다.",
+  "accessibilityDescription": "구간 -1에서 0과 0에서 1은 곡선이 가로축 아래로 내려가고, 1에서 2는 가로축 위로 올라간다. 세 구간의 넓이를 따로 연하게 표시했다.",
+  "sourceQuote": "정적분 $\\int_{-1}^2 (x^2-|x|) dx$의 값을 구하시오.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "x≤0이면 x²+x, x≥0이면 x²-x", "mappedTo": "graphPlan.pieces,graphPlan.breakpoints"},
+    {"id": "c2", "condition": "적분구간 [-1,2]과 부호 경계 -1,0,1,2", "mappedTo": "graphPlan.sourceDomain,graphPlan.regions"},
+    {"id": "c3", "condition": "음수 넓이 두 조각과 양수 넓이 한 조각을 부호에 맞게 합산", "mappedTo": "graphPlan.regions"}
+  ],
+  "newVisualInformation": ["절댓값 해제에 필요한 x=0 경계와 부호 있는 세 넓이 조각을 실제 영역 필드로 나타낸다."]
+}

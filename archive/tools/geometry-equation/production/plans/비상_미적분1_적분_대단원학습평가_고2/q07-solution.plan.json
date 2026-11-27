@@ -1,0 +1,29 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{"coefficients": ["0", "-1", "1"]}],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "functionName": "f",
+    "referenceLines": [{"id": "g", "slope": "4", "intercept": "-4", "intersectionX": ["1", "4"]}],
+    "requiredPoints": [
+      {"id": "V", "x": "1/2", "y": "-1/4"},
+      {"id": "A", "x": "1", "y": "0"},
+      {"id": "B", "x": "4", "y": "12"}
+    ],
+    "axisTickValues": {"x": [], "y": []},
+    "regions": [
+      {"id": "S", "upper": "g", "lower": "f", "from": "1", "to": "4", "fill": "LIGHT", "label": "S"}
+    ]
+  },
+  "pointNames": {"V": "V", "A": "A", "B": "B"},
+  "caption": "m=4일 때 포물선 y=x²-x와 직선 y=4(x-1)의 두 교점 x=1,4 사이 넓이가 9/2인 영역을 표시했다.",
+  "accessibilityDescription": "위쪽 직선과 아래쪽 포물선 사이의 x=1에서 4까지 닫힌 넓이 영역 S가 연하게 칠해져 있다.",
+  "sourceQuote": "곡선 $y=x^2-x$와 직선 $y=m(x-1)$로 둘러싸인 도형의 넓이가 $\\dfrac{9}{2}$일 때, 실수 $m$의 값을 구하시오. (단, $m>1$)",
+  "sourceConditions": [
+    {"id": "c1", "condition": "곡선 y=x²-x", "mappedTo": "graphPlan.pieces[0].coefficients"},
+    {"id": "c2", "condition": "해설에서 m=4, 직선 y=4(x-1)", "mappedTo": "graphPlan.referenceLines[g]"},
+    {"id": "c3", "condition": "교점의 x좌표 1과 4, 둘러싸인 넓이 9/2", "mappedTo": "graphPlan.referenceLines[g].intersectionX,graphPlan.regions[S]"}
+  ],
+  "newVisualInformation": ["답으로 정해진 직선과 포물선을 함께 그리고 주어진 넓이만 선택해서 면 채움을 적용한다."]
+}
