@@ -757,8 +757,8 @@ window.questionBank = [
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_매산여고_1학기_중간_고1_유사_plans/q14-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산여고_1학기_중간_고1_유사_plans/q14-solution.plan.json",
     "solutionImage": "assets/images/26_매산여고_1학기_중간_고1_유사/q14-solution.svg",
-    "solutionImageAlt": "해설 그림: 예: 수직선 위에 0부터 4까지의 닫힌 구간이 표시되어 있고, 그 안에 점 3이 있다.",
-    "solutionImageCaption": "f(x)=(x−3)²−2이므로 최솟값이 −2이려면 폭 4인 구간 [t,t+4]가 x=3을 포함해야 한다. t≤3≤t+4에서 −1≤t≤3이므로 답은 ② −1≤t≤3이다.",
+    "solutionImageAlt": "함수 f(x)=(x−3)²−2의 꼭짓점 x=3이 [t,t+4] 안에 들어오는 t의 범위 −1≤t≤3을 수직선으로 나타냈다.",
+    "solutionImageCaption": "함수 f(x)=(x−3)²−2의 꼭짓점 x=3이 [t,t+4] 안에 들어오는 t의 범위 −1≤t≤3을 수직선으로 나타냈다.",
     "solutionImageSize": "full"
   },
   {
@@ -1095,8 +1095,8 @@ window.questionBank = [
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_매산여고_1학기_중간_고1_유사_plans/q20-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산여고_1학기_중간_고1_유사_plans/q20-solution.plan.json",
     "solutionImage": "assets/images/26_매산여고_1학기_중간_고1_유사/q20-solution.svg",
-    "solutionImageAlt": "해설 그림: 예: 수직선 두 줄에 각각 1, 3/2, 3, 7과 1, 3, 5, 7이 표시되어 있고, 첫째 줄에는 3/2과 3 사이의 거리가 표시되어 있다.",
-    "solutionImageCaption": "예: a=3/2일 때 두 구간의 최댓값과 최솟값이 같아지고, a=5이면 조건 (나)를 만족하지 못한다. 1≤a≤2이고 f(−1)=(a+1)²의 최댓값 9와 최솟값 4의 합은 13이므로 답은 ④ 13이다.",
+    "solutionImageAlt": "두 구간에서의 최대·최소 조건을 모두 만족시키는 꼭짓점 x=a의 범위 1≤a≤2를 나타냈다.",
+    "solutionImageCaption": "두 구간에서의 최대·최소 조건을 모두 만족시키는 꼭짓점 x=a의 범위 1≤a≤2를 나타냈다.",
     "solutionImageSize": "full"
   },
   {
@@ -1170,9 +1170,9 @@ window.questionBank = [
     "points": 7,
     "image": "assets/images/26_매산여고_1학기_중간_고1_유사/q22.svg",
     "imageSize": "full",
-    "imageAlt": "∠A가 직각인 직각이등변삼각형 ABC, 변 AB 위의 점 P, P에서 BC에 내린 수선의 발 Q, 변 AC 위의 점 R, 색칠한 사각형 PQCR",
+    "imageAlt": "∠A가 직각인 직각이등변삼각형 ABC에서 변 AB 위의 점 P, P에서 변 BC에 내린 수선의 발 Q, P를 지나 BC에 평행한 직선과 변 AC의 교점 R을 나타내고 사각형 PQCR을 색칠한 그림",
     "solutionImage": "assets/images/26_매산여고_1학기_중간_고1_유사/q22-solution.svg",
-    "solutionImageAlt": "직각이등변삼각형 ABC에서 AP=AR=x, BP=12-x이고 삼각형 APR(파랑), 삼각형 BPQ(주황), 사각형 PQCR(회색)",
+    "solutionImageAlt": "직각이등변삼각형 ABC에서 AP=x일 때 삼각형 APR(파랑), 삼각형 BPQ(주황)를 빼고 남는 사각형 PQCR(회색)을 나타낸 그림",
     "solutionImageSize": "full",
     "curriculum": "2022",
     "curriculumKey": "2022",
@@ -1201,7 +1201,9 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js#q22",
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_매산여고_1학기_중간_고1_유사_plans/q22-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산여고_1학기_중간_고1_유사_plans/q22-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산여고_1학기_중간_고1_유사_plans/q22-solution.plan.json",
+    "imageCaption": "∠A가 직각인 직각이등변삼각형 ABC에서 변 AB 위의 점 P, P에서 변 BC에 내린 수선의 발 Q, P를 지나 BC에 평행한 직선과 변 AC의 교점 R을 나타내고 사각형 PQCR을 색칠한 그림",
+    "solutionImageCaption": "직각이등변삼각형 ABC에서 AP=x일 때 삼각형 APR(파랑), 삼각형 BPQ(주황)를 빼고 남는 사각형 PQCR(회색)을 나타낸 그림"
   },
   {
     "id": 23,

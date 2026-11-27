@@ -523,7 +523,10 @@ window.questionBank = [
     "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사/q11-solution.svg",
     "solutionImageAlt": "AF=AH, BF=BI, CF=CJ와 무게중심 F의 y좌표 3으로 세 거리 합을 구한다",
     "solutionImageCaption": "AF=AH, BF=BI, CF=CJ와 무게중심 F의 y좌표 3으로 세 거리 합을 구한다",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "포물선 x²=12y 위의 세 점 A, B, C와 무게중심이자 초점인 F",
+    "imageCaption": "포물선 x²=12y 위의 세 점 A, B, C와 무게중심이자 초점인 F",
+    "imageSize": "full"
   },
   {
     "id": 12,
@@ -573,7 +576,10 @@ window.questionBank = [
     "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사/q12-solution.svg",
     "solutionImageAlt": "직각삼각형 AOH와 밑면의 OH∥BC를 사용하는 해설 그림",
     "solutionImageCaption": "직각삼각형 AOH와 밑면의 OH∥BC를 사용하는 해설 그림",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "정사각뿔 A-BCDE에서 AH⊥CD와 직선 BC의 위치 관계",
+    "imageCaption": "정사각뿔 A-BCDE에서 AH⊥CD와 직선 BC의 위치 관계",
+    "imageSize": "full"
   },
   {
     "id": 13,
@@ -627,7 +633,8 @@ window.questionBank = [
     "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사/q13-solution.svg",
     "solutionImageAlt": "P(4,-2√3)에서 타원과 포물선에 각각 그은 두 접선의 기울기 비교",
     "solutionImageCaption": "P(4,-2√3)에서 타원과 포물선에 각각 그은 두 접선의 기울기 비교",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageCaption": "타원 x²/a²+y²/b²=1과 포물선 y²=3x가 제4사분면의 점 P(4, -2√3)에서 만나는 그림."
   },
   {
     "id": 14,
@@ -677,7 +684,8 @@ window.questionBank = [
     "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사_plans/q14-problem.plan.json",
     "image": "assets/images/26_금당고_2학기_중간_고2_기하_유사/q14-problem.svg",
     "imageAlt": "포물선 y²=12x 위의 점 P(3, 6)에서의 접선에 수직이고 점 A(3, 0)을 지나는 직선 l과 교점 Q, R.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "imageCaption": "포물선 y²=12x 위의 점 P(3, 6)에서의 접선에 수직이고 점 A(3, 0)을 지나는 직선 l과 교점 Q, R."
   },
   {
     "id": 15,
@@ -771,7 +779,8 @@ window.questionBank = [
     "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사_plans/q16-problem.plan.json",
     "image": "assets/images/26_금당고_2학기_중간_고2_기하_유사/q16-problem.svg",
     "imageAlt": "네 점 P, Q, R, S에서 만나는 포물선 C₁과 쌍곡선 C₂ 및 한 직선 위의 세 점 S, F, Q.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "imageCaption": "네 점 P, Q, R, S에서 만나는 포물선 C₁과 쌍곡선 C₂ 및 한 직선 위의 세 점 S, F, Q."
   },
   {
     "id": 17,
@@ -904,12 +913,13 @@ window.questionBank = [
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사_plans/q19-problem.plan.json",
     "image": "assets/images/26_금당고_2학기_중간_고2_기하_유사/q19-problem.svg",
-    "imageAlt": "원점 O가 꼭짓점이고 A가 초점인 포물선과 외부의 점 B, 포물선 위의 점 P를 잇는 경로 B-P-A.",
+    "imageAlt": "원점 O가 꼭짓점이고 A가 초점인 포물선과 외부의 점 B, 임의의 점 P를 잇는 경로 B-P-A.",
     "imageSize": "full",
     "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사/q19-solution.svg",
     "solutionImageAlt": "BP와 PH를 같은 수평선으로 두고 PA=PH인 최단경로",
     "solutionImageCaption": "BP와 PH를 같은 수평선으로 두고 PA=PH인 최단경로",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageCaption": "원점 O가 꼭짓점이고 A가 초점인 포물선과 외부의 점 B, 임의의 점 P를 잇는 경로 B-P-A."
   },
   {
     "id": 20,
@@ -960,6 +970,7 @@ window.questionBank = [
     "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사/q20-solution.svg",
     "solutionImageAlt": "마름모 OPAQ의 대각선 OA·PQ와 접선의 x절편 R,S",
     "solutionImageCaption": "마름모 OPAQ의 대각선 OA·PQ와 접선의 x절편 R,S",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageCaption": "y축 위의 점 A에서 타원 x²/32+y²/8=1에 그은 두 접선의 접점 P, Q와 x축 교점 R, S 및 마름모 OPAQ."
   }
 ];

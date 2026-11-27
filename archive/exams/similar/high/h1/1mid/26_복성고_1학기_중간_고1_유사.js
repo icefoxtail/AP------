@@ -472,7 +472,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "교점의 $x$좌표는 $f(x)=g(x)$의 해이다.\n$2x^2-x+1=-x^2+3x+5$\n$3x^2-4x-4=0$\n$(3x+2)(x-2)=0$\n$x=-\\dfrac23,\\ 2$이므로 $\\alpha=-\\dfrac23,\\ \\beta=2$이다.\n\n$h(x)=g(x)-f(x)=-3x^2+4x+4$\n$=-3\\left(x-\\dfrac23\\right)^2+\\dfrac{16}{3}$이다.\n\n꼭짓점의 $x$좌표 $\\dfrac23$은 구간 $-\\dfrac23\\le x\\le2$ 안에 있다.\n위로 볼록한 포물선이므로 최댓값은 꼭짓점에서 가지며\n$h\\left(\\dfrac23\\right)=\\dfrac{16}{3}$이다.\n정답은 ③이다.",
     "solutionImage": "assets/images/26_복성고_1학기_중간_고1_유사/q9-solution.svg",
-    "solutionImageAlt": "해설 그림: 위로 볼록한 포물선 y=-3(x-2/3)^2+16/3이 x축과 x=-2/3, x=2에서 만나고 꼭짓점 (2/3, 16/3)이 두 교점 사이에 있어 최댓값을 가진다.",
+    "solutionImageAlt": "h(x)=-3x²+4x+4의 그래프는 x축과 x=-2/3, x=2에서 만나고, 꼭짓점 (2/3, 16/3)이 구간 -2/3≤x≤2 안에 있어 최댓값 16/3을 갖는다.",
     "solutionImageSize": "full",
     "points": 4,
     "curriculum": "2022",
@@ -501,7 +501,8 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js#q9",
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/q09-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/q09-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/q09-solution.plan.json",
+    "solutionImageCaption": "h(x)=-3x²+4x+4의 그래프는 x축과 x=-2/3, x=2에서 만나고, 꼭짓점 (2/3, 16/3)이 구간 -2/3≤x≤2 안에 있어 최댓값 16/3을 갖는다."
   },
   {
     "id": 10,
@@ -698,7 +699,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "이차함수의 그래프는 두 교점의 중점을 지나는 축에 대하여 대칭이므로 꼭짓점의 $x$좌표는 $m=\\dfrac{\\alpha+\\beta}{2}$이고, 조건에서 꼭짓점의 $y$좌표는 $f(m)=-9$이다.\n최고차항의 계수가 $1$이므로\n$f(x)=(x-m)^2-9$이다.\n\n$f(3)=-5$에서\n$(3-m)^2-9=-5$\n$(3-m)^2=4$\n$3-m=\\pm2$이므로 $m=1$ 또는 $m=5$이다.\n\n$f(x)=0$에서 $(x-m)^2=9$이므로 $x=m\\pm3$, 즉 두 근은 $m-3,\\ m+3$이다.\n$m=1$이면 두 근이 $-2,\\ 4$로 $0<\\alpha$를 만족하지 않는다.\n$m=5$이면 두 근이 $2,\\ 8$로 $0<\\alpha<\\beta$를 만족한다.\n\n따라서 $f(x)=(x-5)^2-9$이고\n$f(0)=25-9=16$이다.\n정답은 ①이다.",
     "solutionImage": "assets/images/26_복성고_1학기_중간_고1_유사/q13-solution.svg",
-    "solutionImageAlt": "해설 그림: 꼭짓점 (5, -9)인 아래로 볼록한 포물선이 x축과 (2, 0), (8, 0)에서 만나고 점 (3, -5)를 지나며 y축과 (0, 16)에서 만난다.",
+    "solutionImageAlt": "f(x)=(x-5)²-9의 그래프는 꼭짓점 (5, -9)에서 x축과 두 점 (2, 0), (8, 0)에서 만나며, 점 (3, -5)를 지나고 y축과 (0, 16)에서 만난다.",
     "solutionImageSize": "full",
     "points": 4.2,
     "curriculum": "2022",
@@ -728,7 +729,9 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js#q13",
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/q13-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/q13-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/q13-solution.plan.json",
+    "solutionImageCaption": "f(x)=(x-5)²-9의 그래프는 꼭짓점 (5, -9)에서 x축과 두 점 (2, 0), (8, 0)에서 만나며, 점 (3, -5)를 지나고 y축과 (0, 16)에서 만난다.",
+    "solutionImageScale": 90
   },
   {
     "id": 14,
@@ -874,7 +877,7 @@ window.questionBank = [
     "image": "assets/images/26_복성고_1학기_중간_고1_유사/q16.svg",
     "imageSize": "full",
     "solutionImage": "assets/images/26_복성고_1학기_중간_고1_유사/q16-solution.svg",
-    "solutionImageAlt": "해설 그림: 직각삼각형 ABC 안의 직사각형 BPDQ에서 꼭짓점 D가 빗변 AC의 중점이고, 밑변 BP와 높이 BQ가 각각 직각변 BC, AB의 절반인 넓이 최대 배치이다.",
+    "solutionImageAlt": "직각삼각형 ABC 안의 직사각형 BPDQ에서 밑변 BP와 높이 BQ가 각각 직각변 BC, AB의 절반일 때 넓이가 최대가 되는 배치를 나타낸 그림이다.",
     "solutionImageSize": "full",
     "points": 4.3,
     "curriculum": "2022",
@@ -901,7 +904,10 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js#q16",
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/q16-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/q16-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/q16-solution.plan.json",
+    "imageAlt": "∠B가 직각인 직각삼각형 ABC 안에, 두 변이 선분 AB, BC 위에 있고 한 꼭짓점 D가 빗변 AC 위에 있는 직사각형을 그린 그림",
+    "imageCaption": "∠B가 직각인 직각삼각형 ABC 안에, 두 변이 선분 AB, BC 위에 있고 한 꼭짓점 D가 빗변 AC 위에 있는 직사각형을 그린 그림",
+    "solutionImageCaption": "직각삼각형 ABC 안의 직사각형 BPDQ에서 밑변 BP와 높이 BQ가 각각 직각변 BC, AB의 절반일 때 넓이가 최대가 되는 배치를 나타낸 그림이다."
   },
   {
     "id": 17,
@@ -958,8 +964,8 @@ window.questionBank = [
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/q17-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/q17-solution.plan.json",
     "solutionImage": "assets/images/26_복성고_1학기_중간_고1_유사/q17-solution.svg",
-    "solutionImageAlt": "해설 그림: 복소평면에 원점 O를 중심으로 하는 반지름 2인 원이 그려져 있고, 그 위의 네 점 A(√3, 1), B(√3, −1), C(−√3, 1), D(−√3, −1)이 표시되어 있다. 실수부가 같은 A와 B, C와 D를 각각 잇는 세로 점선이 있고, 가로 방향은 실수축, 세로 방향은 허수축이다.",
-    "solutionImageCaption": "z=a+bi라 하면 조건 나에서 a²+b²=4, 조건 가에서 2a²−2b²=4이므로 a²=3, b²=1이고, 근과 계수의 관계에서 m=−2a, n=4이므로 m²+n²=4×3+16=28이다. 따라서 답은 ⑤ 28이다.",
+    "solutionImageAlt": "반지름 2인 복소평면 원 위에 z=±√3±i의 네 가능 위치와 실수축·허수축을 표시한다.",
+    "solutionImageCaption": "반지름 2인 복소평면 원 위에 z=±√3±i의 네 가능 위치와 실수축·허수축을 표시한다.",
     "solutionImageSize": "full"
   },
   {
@@ -1221,7 +1227,7 @@ window.questionBank = [
     "answer": "8",
     "solution": "$f(x)=-x^2+4ax=-(x-2a)^2+4a^2$이므로 꼭짓점의 $x$좌표는 $2a$이다.\n$a>1$이므로 $2a>2$이다.\n\n(i) 꼭짓점이 구간 안에 있는 경우 ($2<2a\\le3$, 즉 $1<a\\le\\dfrac32$)\n최댓값은 $f(2a)=4a^2$이다.\n$4a^2=18$에서 $a^2=\\dfrac92$, 즉 $a=\\dfrac{3\\sqrt2}{2}$이다.\n이 값은 약 $2.12$로 $a\\le\\dfrac32$를 만족하지 않으므로 모순이다.\n\n(ii) 꼭짓점이 구간의 오른쪽에 있는 경우 ($2a>3$, 즉 $a>\\dfrac32$)\n구간 $1\\le x\\le3$에서 $f(x)$는 증가하므로 최댓값은 $f(3)$이다.\n$f(3)=-9+12a=18$에서\n$12a=27$\n$a=\\dfrac94$이다. 이 값은 $a>\\dfrac32$를 만족한다.\n\n따라서 $a=\\dfrac94$이고 $f(x)=-x^2+9x$이다.\n구간 $1\\le x\\le3$에서 $f(x)$는 증가하므로 최솟값은 $x=1$일 때이다.\n$f(1)=-1+9=8$이다.\n\n따라서 최솟값은 $8$이다.",
     "solutionImage": "assets/images/26_복성고_1학기_중간_고1_유사/q22-solution.svg",
-    "solutionImageAlt": "해설 그림: 위로 볼록한 포물선 y=-(x-9/2)^2+81/4에서 구간 1≤x≤3의 점 (1, 8), (3, 18)이 표시되어 있고 꼭짓점 (9/2, 81/4)은 구간의 오른쪽 밖에 있어 구간에서 함수가 증가한다.",
+    "solutionImageAlt": "f(x)=-x²+9x의 그래프에서 구간 1≤x≤3의 양 끝 점 (1, 8), (3, 18)을 표시했다. 꼭짓점 (9/2, 81/4)은 구간의 오른쪽 밖에 있어 구간에서 f는 증가한다.",
     "solutionImageSize": "full",
     "points": 5,
     "curriculum": "2022",
@@ -1251,7 +1257,9 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js#q22",
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/q22-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/q22-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/q22-solution.plan.json",
+    "solutionImageCaption": "f(x)=-x²+9x의 그래프에서 구간 1≤x≤3의 양 끝 점 (1, 8), (3, 18)을 표시했다. 꼭짓점 (9/2, 81/4)은 구간의 오른쪽 밖에 있어 구간에서 f는 증가한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 23,
@@ -1277,7 +1285,7 @@ window.questionBank = [
     "answer": "$\\dfrac{29}{5}$",
     "solution": "함수 $f(x)=-(x-p)^2+q$는 위로 볼록한 포물선이므로 꼭짓점 $x=p$에서 최댓값 $q$를 갖는다.\n\n조건 가, 나에서 두 구간의 최댓값이 모두 $m+10$이다.\n$p>3$이면 구간 $0\\le x\\le3$의 최댓값 $f(3)$이 $0\\le x\\le6$의 최댓값과 같을 수 없다. ($p\\le6$이면 $f(3)<q$, $p>6$이면 $f(3)<f(6)$)\n따라서 꼭짓점이 구간 $0\\le x\\le3$ 안에 있으므로 $0<p\\le3$이고 $q=m+10$이다.\n\n구간 $0\\le x\\le3$에서 최솟값은 꼭짓점에서 가장 먼 끝점에서 생긴다.\n양 끝에서의 함숫값은\n$f(0)=q-p^2$\n$f(3)=q-(3-p)^2$이다.\n최솟값이 $m+1=q-9$이므로\n$p^2=9$ 또는 $(3-p)^2=9$이어야 한다.\n$0<p\\le3$에서 $p^2=9$이면 $p=3$이고, $(3-p)^2=9$이면 $p=0$ 또는 $p=6$으로 범위 밖이다.\n따라서 $p=3$이다.\n\n그러면 $f(x)=-(x-3)^2+q$이다.\n구간 $0\\le x\\le6$은 꼭짓점 $x=3$에 대하여 대칭이므로 양 끝값이 같고\n$f(0)=f(6)=q-9$가 최솟값이다.\n조건 나의 최솟값이 $-4m$이므로\n$q-9=-4m$이다.\n$q=m+10$을 대입하면\n$m+1=-4m$\n$5m=-1$\n$m=-\\dfrac15$이고 $q=m+10=\\dfrac{49}{5}$이다.\n\n따라서\n$f(5)=-(5-3)^2+\\dfrac{49}{5}=-4+\\dfrac{49}{5}=\\dfrac{29}{5}$이다.",
     "solutionImage": "assets/images/26_복성고_1학기_중간_고1_유사/q23-solution.svg",
-    "solutionImageAlt": "해설 그림: 꼭짓점 (3, 49/5)인 위로 볼록한 포물선과 대칭축 x=3이 있고, 구간 0≤x≤6의 양 끝점 (0, 4/5), (6, 4/5)와 점 (5, 29/5)가 표시되어 있다.",
+    "solutionImageAlt": "f(x)=-(x-3)²+49/5의 그래프는 직선 x=3에 대하여 대칭이고 꼭짓점 (3, 49/5)에서 최대이며, 구간 0≤x≤6의 양 끝 (0, 4/5), (6, 4/5)에서 최소이고, 점 (5, 29/5)를 지난다.",
     "solutionImageSize": "full",
     "points": 5,
     "curriculum": "2022",
@@ -1307,7 +1315,9 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js#q23",
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/q23-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/q23-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/q23-solution.plan.json",
+    "solutionImageCaption": "f(x)=-(x-3)²+49/5의 그래프는 직선 x=3에 대하여 대칭이고 꼭짓점 (3, 49/5)에서 최대이며, 구간 0≤x≤6의 양 끝 (0, 4/5), (6, 4/5)에서 최소이고, 점 (5, 29/5)를 지난다.",
+    "solutionImageScale": 94
   },
   {
     "id": 24,

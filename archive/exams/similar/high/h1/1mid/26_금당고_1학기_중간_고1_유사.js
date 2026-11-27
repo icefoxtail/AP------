@@ -327,9 +327,10 @@ window.questionBank = [
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사_plans/q06-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사_plans/q06-solution.plan.json",
     "solutionImage": "assets/images/26_금당고_1학기_중간_고1_유사/q6-solution.svg",
-    "solutionImageAlt": "해설 그림: 축의 x좌표 A=−2보다 구간의 두 끝점 B=−1, C=3이 모두 오른쪽에 있다. C가 축에서 더 멀어 함수값이 더 크다.",
-    "solutionImageCaption": "축의 x좌표 A=−2보다 구간의 두 끝점 B=−1, C=3이 모두 오른쪽에 있다. C가 축에서 더 멀어 함수값이 더 크다.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "−1≤x≤3에서 y=2x²+8x−3은 구간 내에서 증가한다. 왼쪽 끝점 A(−1,−9), 오른쪽 끝점 B(3,39)가 최댓값·최솟값의 위치이다.",
+    "solutionImageCaption": "−1≤x≤3에서 y=2x²+8x−3은 구간 내에서 증가한다. 왼쪽 끝점 A(−1,−9), 오른쪽 끝점 B(3,39)가 최댓값·최솟값의 위치이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   },
   {
     "id": 7,
@@ -476,7 +477,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "solutionImage": "assets/images/26_금당고_1학기_중간_고1_유사/q09-solution.svg",
-    "solutionImageAlt": "이차함수 y=2x²+3x+9/8의 그래프가 꼭짓점 (-3/4, 0)에서 x축에 접하는 그림",
+    "solutionImageAlt": "이차함수 y=2x²+3x+9/8의 그래프는 꼭짓점 (-3/4, 0)에서 x축에 접한다.",
     "solutionImageCaption": "이차함수 y=2x²+3x+9/8의 그래프는 꼭짓점 (-3/4, 0)에서 x축에 접한다.",
     "solutionImageSize": "full",
     "difficultyBucket": 2,
@@ -763,10 +764,10 @@ window.questionBank = [
     "score": 4.8,
     "points": 4.8,
     "image": "assets/images/26_금당고_1학기_중간_고1_유사/q14-problem.svg",
-    "imageAlt": "폭이 6, 높이가 6인 포물선 모양의 도형 안에 밑변이 포물선의 밑변 위에 있고 윗변의 두 꼭짓점이 포물선 위에 있는 직사각형을 그린 그림",
-    "imageSize": "large",
+    "imageAlt": "폭이 6, 높이가 6인 포물선 모양의 도형 안에 그린 직사각형의 한 예이다. 밑변은 가로축 위에 있고 윗변의 두 꼭짓점이 포물선 위에 있다.",
+    "imageSize": "full",
     "solutionImage": "assets/images/26_금당고_1학기_중간_고1_유사/q14-solution.svg",
-    "solutionImageAlt": "포물선 y=6-(2/3)x² 안에 가로 3, 세로 9/2인 직사각형 SRPQ를 그린 그림",
+    "solutionImageAlt": "포물선 y=6-(2/3)x² 안의 직사각형 SRPQ이다. 오른쪽 윗꼭짓점의 x좌표가 t=3/2일 때 둘레가 최대가 된다.",
     "solutionImageCaption": "포물선 y=6-(2/3)x² 안의 직사각형 SRPQ이다. 오른쪽 윗꼭짓점의 x좌표가 t=3/2일 때 둘레가 최대가 된다.",
     "solutionImageSize": "full",
     "difficultyBucket": 4,
@@ -787,7 +788,8 @@ window.questionBank = [
     "sourceQid": 14,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사_plans/q14-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사_plans/q14-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사_plans/q14-solution.plan.json",
+    "imageCaption": "폭이 6, 높이가 6인 포물선 모양의 도형 안에 그린 직사각형의 한 예이다. 밑변은 가로축 위에 있고 윗변의 두 꼭짓점이 포물선 위에 있다."
   },
   {
     "id": 15,

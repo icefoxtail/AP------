@@ -235,7 +235,7 @@ window.questionBank = [
       "solution": "공을 다시 넣지 않으므로 A가 꺼낸 결과에 따라 B가 꺼낼 때의 공의 개수가 바뀐다. 두 사건이 연달아 일어날 확률은 첫 번째 사건의 확률과 그다음 사건의 조건부확률의 곱이다.\n\n흰 공 $4$개, 검은 공 $6$개 중에서 A, B가 차례로 꺼낸 공이 모두 흰 공일 확률을 구한다.\n\nA가 흰 공을 꺼낼 확률은 $\\dfrac{4}{10}=\\dfrac25$이다.\nA가 흰 공을 꺼낸 뒤에는 흰 공 $3$개, 검은 공 $6$개로 전체 $9$개가 남는다.\n이때 B가 흰 공을 꺼낼 확률은 $\\dfrac{3}{9}=\\dfrac13$이다.\n따라서 두 사람이 모두 흰 공을 꺼낼 확률은 $\\dfrac25\\times\\dfrac13=\\dfrac{2}{15}$이다.\n정답은 ①이다.",
       "points": 3.8,
       "solutionImage": "assets/images/26_효천고_1학기_중간_고2_확률과통계_유사/q5-solution.svg",
-      "solutionImageAlt": "흰 공 4개, 검은 공 6개가 든 주머니에서 공을 다시 넣지 않고 A, B가 차례로 꺼낼 때의 수형도. 첫 번째가 흰 공이면 두 번째가 흰 공일 확률은 1/3, 검은 공이면 흰 공일 확률은 4/9이며, 강조한 경로가 두 사람 모두 흰 공인 경우이다.",
+      "solutionImageAlt": "A가 흰 공을 뽑고 이어 B도 흰 공을 뽑는 경로를 강조한 비복원추출 수형도",
       "solutionImageSize": "full",
       "curriculum": "2022",
       "curriculumKey": "2022",
@@ -260,7 +260,8 @@ window.questionBank = [
       "variationType": "STRICT_VARIANT",
       "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js#q5",
       "problemPlanRef": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사_plans/q05-problem.plan.json",
-      "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사_plans/q05-solution.plan.json"
+      "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사_plans/q05-solution.plan.json",
+      "solutionImageCaption": "A가 흰 공을 뽑고 이어 B도 흰 공을 뽑는 경로를 강조한 비복원추출 수형도"
     },
     {
       "id": 6,
@@ -931,7 +932,9 @@ window.questionBank = [
       "solutionImage": "assets/images/26_효천고_1학기_중간_고2_확률과통계_유사/q17-solution.svg",
       "solutionImageAlt": "양의 방향 2칸 이동을 n번 하면 최종 위치는 3n-6이다. n=1,2,3일 때 -3,0,3으로 선분 AB에 속한다.",
       "solutionImageCaption": "양의 방향 2칸 이동을 n번 하면 최종 위치는 3n-6이다. n=1,2,3일 때 -3,0,3으로 선분 AB에 속한다.",
-      "solutionImageSize": "full"
+      "solutionImageSize": "full",
+      "imageAlt": "점 P의 시작 위치 0과 두 끝점을 포함하는 선분 AB의 범위",
+      "imageCaption": "점 P의 시작 위치 0과 두 끝점을 포함하는 선분 AB의 범위"
     },
     {
       "id": 18,

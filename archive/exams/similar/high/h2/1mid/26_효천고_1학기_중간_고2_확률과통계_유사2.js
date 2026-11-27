@@ -742,8 +742,8 @@ window.questionBank = [
     "imageAlt": "원점에 점 P가 표시된 수직선",
     "imageCaption": "점 P의 최초 위치",
     "solutionImage": "assets/images/26_효천고_1학기_중간_고2_확률과통계_유사2/q17-solution.svg",
-    "solutionImageAlt": "오른쪽으로 2칸 이동한 횟수 n=0,1,2,3,4,5에 대응하는 최종 위치는 -5,-2,1,4,7,10이다. 거리 2 이상 4 이하의 위치는 -2,4뿐이다.",
-    "solutionImageCaption": "오른쪽으로 2칸 이동한 횟수 n=0,1,2,3,4,5에 대응하는 최종 위치는 -5,-2,1,4,7,10이다. 거리 2 이상 4 이하의 위치는 -2,4뿐이다.",
+    "solutionImageAlt": "5회 후 가능한 위치 -5,-2,1,4,7,10 중 원점으로부터의 거리가 2 이상 4 이하인 위치는 -2와 4이다.",
+    "solutionImageCaption": "5회 후 가능한 위치 -5,-2,1,4,7,10 중 원점으로부터의 거리가 2 이상 4 이하인 위치는 -2와 4이다.",
     "solutionImageSize": "full"
   },
   {
