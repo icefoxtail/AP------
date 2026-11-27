@@ -1,0 +1,12 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [{"id":"A","at":["sqrt(3)",1,1]},{"id":"B","at":["-sqrt(3)",-1,1]},{"id":"C","at":["-sqrt(3)",1,-1]},{"id":"D","at":["sqrt(3)",-1,-1]},{"id":"M","at":{"midpoint":["B","C"]}},{"id":"N","at":{"midpoint":["A","D"]}}],
+    "segments": [{"from":"A","to":"B"},{"from":"A","to":"C"},{"from":"B","to":"D"},{"from":"C","to":"D"},{"from":"B","to":"C","style":"DASHED"},{"from":"A","to":"D","style":"DASHED"},{"from":"A","to":"M"},{"from":"D","to":"M"},{"from":"M","to":"N","style":"DASHED"},{"from":"M","to":"B"},{"from":"M","to":"C"},{"from":"N","to":"A"}]
+  },
+  "dims": [{"from":"A","to":"B"},{"from":"A","to":"C"},{"from":"B","to":"D"},{"from":"C","to":"D"},{"from":"B","to":"C"},{"from":"A","to":"D"}],
+  "marks": {"rightAngles":[{"at":"M","refs":["A","B"]},{"at":"M","refs":["D","C"]},{"at":"N","refs":["M","A"]}]},
+  "caption": "AM=DM=√14, MN=2√3, △AMD 넓이 2√6",
+  "sourceConditions": ["AM⊥BC", "DM⊥BC", "N은 AD의 중점", "MN⊥AD", "BC⊥평면 AMD"],
+  "newVisualInformation": ["중점 M,N 및 AM·DM·MN 높이선", "M,N의 직각표식", "6개 모서리 치수와 가림 점선"]
+}

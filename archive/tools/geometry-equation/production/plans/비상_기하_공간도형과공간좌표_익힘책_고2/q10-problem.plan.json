@@ -1,0 +1,11 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [{"id":"B","at":[0,0,0]},{"id":"C","at":["sqrt(3)",0,0]},{"id":"D","at":["sqrt(3)","sqrt(7)",0]},{"id":"H","at":["sqrt(3)","4*sqrt(7)/7",0]},{"id":"A","at":["sqrt(3)","4*sqrt(7)/7","2*sqrt(21)/7"]},{"id":"T","at":[0,"sqrt(7)",0],"hideName":true,"hideDot":true}],
+    "segments": [{"from":"B","to":"C"},{"from":"C","to":"D"},{"from":"D","to":"B"},{"from":"B","to":"A"},{"from":"A","to":"D"},{"from":"A","to":"H","style":"DASHED"},{"from":"H","to":"D"},{"from":"T","to":"B","style":"DASHED"},{"from":"T","to":"D","style":"DASHED"}]
+  },
+  "marks": {"rightAngles":[{"at":"H","refs":["A","D"]}]},
+  "caption": "직사각형을 BD 따라 접음: A의 정사영 H∈CD, CH:HD=4:3",
+  "sourceConditions": ["ABCD는 접기 전 직사각형", "접는 선 BD", "A의 평면 BCD 정사영 H", "CH:HD=4:3"],
+  "newVisualInformation": ["접힌 삼각형 ABD와 남은 △BCD", "A-H 수선 점선과 H 직각", "접기 전 꼭짓점의 원래 위치를 잇는 점선"]
+}
