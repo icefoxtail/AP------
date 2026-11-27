@@ -1,0 +1,104 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "8",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -0.5,
+      9.5
+    ],
+    "viewport": [
+      -1,
+      10,
+      -98,
+      16
+    ],
+    "referenceLines": [
+      {
+        "id": "line",
+        "slope": "-10",
+        "intercept": "0",
+        "intersectionX": [
+          "0",
+          "9"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 2,
+        "y": 8
+      },
+      {
+        "id": "T",
+        "x": 9,
+        "y": -90
+      }
+    ],
+    "regions": [
+      {
+        "id": "S",
+        "upper": "f",
+        "lower": "line",
+        "from": "0",
+        "to": "9",
+        "fill": "LIGHT",
+        "label": "S"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        2,
+        9
+      ],
+      "y": [
+        8
+      ]
+    }
+  },
+  "caption": "풀이로 결정된 m=5에서 포물선 y=−2x²+8x과 직선 y=−10x가 x=0,9에서 만나며, 그 사이의 넓이 S=243을 연한 회색으로 표시했다.",
+  "accessibilityDescription": "아래로 열린 포물선과 기울기 마이너스 10의 직선이 원점과 (9,−90)에서 교차한다. 두 곡선 사이 영역만 회색으로 채워져 있다.",
+  "sourceConditions": [
+    {
+      "id": "curve",
+      "condition": "y=−2x²+8x",
+      "mappedTo": "graphPlan.pieces[0].coefficients"
+    },
+    {
+      "id": "line",
+      "condition": "y=−2mx, m=5 in solution",
+      "mappedTo": "graphPlan.referenceLines[line].slope=−10"
+    },
+    {
+      "id": "intersection",
+      "condition": "x=0, m+4=9",
+      "mappedTo": "graphPlan.referenceLines[line].intersectionX;graphPlan.requiredPoints[O,T]"
+    },
+    {
+      "id": "area",
+      "condition": "area=(m+4)^3/3=729/3=243",
+      "mappedTo": "graphPlan.regions[S] between x=0 and x=9;caption"
+    }
+  ],
+  "newVisualInformation": [
+    "해설에서 구한 m의 값만 사용한다. 원문이 요구하는 곡선 사이의 면적에 한하여 채우며 다른 영역은 흰 바탕이다."
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "1/6"
+        ]
+      },
+      {
+        "coefficients": [
+          "1/3"
+        ]
+      },
+      {
+        "coefficients": [
+          "5/6",
+          "-1/6"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "2",
+        "y": "1/3"
+      },
+      {
+        "x": "3",
+        "y": "1/3"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "5"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      5
+    ],
+    "viewport": [
+      -0.5,
+      5.5,
+      -0.08,
+      0.47
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "A",
+        "x": 2,
+        "y": "1/3"
+      },
+      {
+        "id": "B",
+        "x": 3,
+        "y": "1/3"
+      },
+      {
+        "id": "C",
+        "x": 5,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    }
+  },
+  "pointNames": {
+    "O": "O",
+    "A": "(2,a)",
+    "B": "(3,a)",
+    "C": "C"
+  },
+  "caption": "발문에 명시된 O(0,0)·A(2,a)·B(3,a)·C(5,0) 등변 높이 a의 사다리꼴 꺾은선. 실제 풀이값 a=1/3은 축 라벨에 노출하지 않음",
+  "accessibilityDescription": "발문에 명시된 O(0,0)·A(2,a)·B(3,a)·C(5,0) 등변 높이 a의 사다리꼴 꺾은선. 실제 풀이값 a=1/3은 축 라벨에 노출하지 않음",
+  "sourceConditions": [
+    {
+      "id": "source-q07-problem",
+      "condition": "발문에 명시된 O(0,0)·A(2,a)·B(3,a)·C(5,0) 등변 높이 a의 사다리꼴 꺾은선. 실제 풀이값 a=1/3은 축 라벨에 노출하지 않음",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "발문에 명시된 O(0,0)·A(2,a)·B(3,a)·C(5,0) 등변 높이 a의 사다리꼴 꺾은선. 실제 풀이값 a=1/3은 축 라벨에 노출하지 않음"
+  ]
+}

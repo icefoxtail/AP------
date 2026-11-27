@@ -1,0 +1,99 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "math": "n=2"
+      },
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "0",
+            "-2",
+            "1"
+          ],
+          "domain": [
+            -1.5,
+            3.5
+          ],
+          "viewport": [
+            -2,
+            4,
+            -4,
+            16
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "requiredPoints": [
+            {
+              "id": "V",
+              "x": 1,
+              "y": -1
+            }
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "math": "n=4"
+      },
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "4",
+            "-4",
+            "0",
+            "0",
+            "1"
+          ],
+          "domain": [
+            -1.5,
+            3.5
+          ],
+          "viewport": [
+            -2,
+            4,
+            -4,
+            16
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "requiredPoints": [
+            {
+              "id": "V",
+              "x": 1,
+              "y": 1
+            }
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          }
+        }
+      }
+    }
+  ],
+  "caption": "짝수 n=2에서는 x=1의 최솟값 −1로 조건 실패, n=4에서는 최솟값 1>0으로 성공을 두 패널에서 대조",
+  "accessibilityDescription": "짝수 n=2에서는 x=1의 최솟값 −1로 조건 실패, n=4에서는 최솟값 1>0으로 성공을 두 패널에서 대조",
+  "sourceConditions": [
+    {
+      "id": "source-q10-solution",
+      "condition": "짝수 n=2에서는 x=1의 최솟값 −1로 조건 실패, n=4에서는 최솟값 1>0으로 성공을 두 패널에서 대조",
+      "mappedTo": "panels"
+    }
+  ],
+  "newVisualInformation": [
+    "짝수 n=2에서는 x=1의 최솟값 −1로 조건 실패, n=4에서는 최솟값 1>0으로 성공을 두 패널에서 대조"
+  ]
+}

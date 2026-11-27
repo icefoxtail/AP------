@@ -1,0 +1,97 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "f−g의 도함수"
+      },
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "-4/3",
+            "-8/3",
+            "-4/3"
+          ],
+          "domain": [
+            -3.5,
+            2
+          ],
+          "viewport": [
+            -4,
+            4,
+            -10,
+            4
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "requiredPoints": [
+            {
+              "id": "T",
+              "x": -1,
+              "y": 0
+            }
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "f−h의 도함수"
+      },
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "5/3",
+            "-10/3",
+            "5/3"
+          ],
+          "domain": [
+            -2,
+            4
+          ],
+          "viewport": [
+            -3,
+            5,
+            -4,
+            10
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "requiredPoints": [
+            {
+              "id": "T",
+              "x": 1,
+              "y": 0
+            }
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          }
+        }
+      }
+    }
+  ],
+  "caption": "등호 a=5/3에서 f′−g′=−4/3(x+1)²≤0, f′−h′=5/3(x−1)²≥0, x=−1·1 접점을 서로 다른 패널로 제시",
+  "accessibilityDescription": "등호 a=5/3에서 f′−g′=−4/3(x+1)²≤0, f′−h′=5/3(x−1)²≥0, x=−1·1 접점을 서로 다른 패널로 제시",
+  "sourceConditions": [
+    {
+      "id": "source-q21-solution",
+      "condition": "등호 a=5/3에서 f′−g′=−4/3(x+1)²≤0, f′−h′=5/3(x−1)²≥0, x=−1·1 접점을 서로 다른 패널로 제시",
+      "mappedTo": "panels"
+    }
+  ],
+  "newVisualInformation": [
+    "등호 a=5/3에서 f′−g′=−4/3(x+1)²≤0, f′−h′=5/3(x−1)²≥0, x=−1·1 접점을 서로 다른 패널로 제시"
+  ]
+}

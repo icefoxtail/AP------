@@ -1,0 +1,45 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "Z",
+        "mean": "0",
+        "sd": "1",
+        "label": "Z"
+      }
+    ],
+    "ticks": [
+      "-1.96",
+      "0",
+      "1.96"
+    ],
+    "shades": [
+      {
+        "from": "-1.96",
+        "to": "1.96"
+      }
+    ],
+    "xLabel": "z",
+    "zAxis": true,
+    "areaLabels": [
+      {
+        "shade": 0,
+        "text": "0.95"
+      }
+    ]
+  },
+  "sourceConditions": [
+    {
+      "id": "probq09",
+      "condition": "95% 신뢰구간의 표준정규 임계 −1.96·1.96과 중심 영역 0.95",
+      "mappedTo": "chart.curves,chart.ticks,chart.shades"
+    }
+  ],
+  "newVisualInformation": [
+    "95% 신뢰구간의 표준정규 임계 −1.96·1.96과 중심 영역 0.95"
+  ],
+  "caption": "95% 신뢰구간의 표준정규 임계 −1.96·1.96과 중심 영역 0.95",
+  "accessibilityDescription": "95% 신뢰구간의 표준정규 임계 −1.96·1.96과 중심 영역 0.95"
+}

@@ -1,0 +1,119 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "1/6"
+        ]
+      },
+      {
+        "coefficients": [
+          "1/3"
+        ]
+      },
+      {
+        "coefficients": [
+          "5/6",
+          "-1/6"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "2",
+        "y": "1/3"
+      },
+      {
+        "x": "3",
+        "y": "1/3"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "5"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      5
+    ],
+    "viewport": [
+      -0.5,
+      5.5,
+      -0.08,
+      0.47
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "A",
+        "x": 2,
+        "y": "1/3"
+      },
+      {
+        "id": "B",
+        "x": 3,
+        "y": "1/3"
+      },
+      {
+        "id": "C",
+        "x": 5,
+        "y": 0
+      },
+      {
+        "id": "T",
+        "x": 1,
+        "y": "1/6"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "regions": [
+      {
+        "id": "S",
+        "upper": "f",
+        "lower": "axis",
+        "from": "1",
+        "to": "3",
+        "fill": "LIGHT",
+        "label": "7/12"
+      }
+    ]
+  },
+  "caption": "A·B 높이 a=1/3, x=1에서 f=1/6, 사다리꼴 전체 면적 1과 [1,3]의 정답 면적 7/12",
+  "accessibilityDescription": "A·B 높이 a=1/3, x=1에서 f=1/6, 사다리꼴 전체 면적 1과 [1,3]의 정답 면적 7/12",
+  "sourceConditions": [
+    {
+      "id": "source-q07-solution",
+      "condition": "A·B 높이 a=1/3, x=1에서 f=1/6, 사다리꼴 전체 면적 1과 [1,3]의 정답 면적 7/12",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "A·B 높이 a=1/3, x=1에서 f=1/6, 사다리꼴 전체 면적 1과 [1,3]의 정답 면적 7/12"
+  ]
+}

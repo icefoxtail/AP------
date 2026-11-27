@@ -1,0 +1,90 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "10",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "5"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      5
+    ],
+    "viewport": [
+      -0.5,
+      5.5,
+      -8,
+      70
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "T",
+        "x": 3,
+        "y": 36
+      },
+      {
+        "id": "E",
+        "x": "10/3",
+        "y": "1000/27"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        3
+      ],
+      "y": [
+        18,
+        36
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "Q",
+        "slope": "6",
+        "intercept": "18",
+        "intersectionX": [
+          "3"
+        ]
+      }
+    ],
+    "axisTitles": {
+      "x": "t",
+      "y": "위치"
+    }
+  },
+  "caption": "최댓값 k=6인 경계에서 점 P의 위치 s₁(t)=10t²−2t³과 Q의 위치 s₂(t)=18+6t가 t=3, 위치 36에서 접함",
+  "accessibilityDescription": "최댓값 k=6인 경계에서 점 P의 위치 s₁(t)=10t²−2t³과 Q의 위치 s₂(t)=18+6t가 t=3, 위치 36에서 접함",
+  "sourceConditions": [
+    {
+      "id": "source-q15-solution",
+      "condition": "최댓값 k=6인 경계에서 점 P의 위치 s₁(t)=10t²−2t³과 Q의 위치 s₂(t)=18+6t가 t=3, 위치 36에서 접함",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "최댓값 k=6인 경계에서 점 P의 위치 s₁(t)=10t²−2t³과 Q의 위치 s₂(t)=18+6t가 t=3, 위치 36에서 접함"
+  ]
+}
