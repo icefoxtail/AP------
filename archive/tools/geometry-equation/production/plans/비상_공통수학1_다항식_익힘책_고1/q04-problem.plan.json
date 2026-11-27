@@ -1,0 +1,17 @@
+{
+  "capability": "solid-figure-v1",
+  "caption": "직육면체의 세 모서리를 a, b, c로 나타내고 공간대각선의 길이 10을 표시한 문제 그림이다.",
+  "accessibilityDescription": "직육면체의 세 방향 모서리에 a, b, c가 표시되어 있다. 한 꼭짓점에서 반대쪽 꼭짓점까지 공간대각선은 10이고, 가려진 구간은 점선이다. 모든 모서리의 길이의 합은 64이다.",
+  "sourceQuote": "어느 직육면체의 모든 모서리의 길이의 합은 $64$이고 대각선의 길이는 $10$일 때, 이 직육면체의 겉넓이를 구하시오.",
+  "sourceConditions": [
+    {"id":"p1","condition":"직육면체이므로 세 방향 모서리는 서로 수직이고, 동일 방향의 모서리는 길이가 같다.","mappedTo":["solids[0]","marks.rightAngles[0]"]},
+    {"id":"p2","condition":"모든 모서리 길이의 합은 64이므로 4(a+b+c)=64이다. a,b,c는 미지 길이이며 내부 모델의 수치는 이 두 조건을 만족하는 대표 배치일 뿐 발문에서 주어진 개별 길이가 아니다.","mappedTo":["solidCaption.math","dims[0]","dims[1]","dims[2]"]},
+    {"id":"p3","condition":"문제가 준 공간대각선 길이 10을 한 꼭짓점에서 마주 보는 꼭짓점까지 표시한다.","mappedTo":["segments[0]","dims[3]"]}
+  ],
+  "newVisualInformation": ["서로 다른 세 방향의 미지 모서리 a, b, c와 직각 관계를 표시한다.","직육면체 내부의 공간대각선을 선으로 그리고 길이 10을 그 선에 연결한다.","면 채움은 사용하지 않는다. 겉넓이 156과 풀이에서 구한 값은 문제 그림에 나타내지 않는다."],
+  "solids": [{"kind":"PRISM","base":{"kind":"RECT","width":4,"depth":3.550510257216822},"height":8.449489742783179,"names":"........"}],
+  "segments": [{"from":"#b0","to":"#t2","style":"AUTO","role":"REF"}],
+  "dims": [{"edge":["#b0","#b1"],"label":"a"},{"edge":["#b1","#b2"],"label":"b"},{"edge":["#b0","#t0"],"label":"c"},{"from":"#b0","to":"#t2","label":"10"}],
+  "marks": {"rightAngles":[{"at":"#b0","refs":["#b1","#t0"]}]},
+  "solidCaption": {"math":"4(a+b+c)=64"}
+}
