@@ -1,0 +1,28 @@
+{
+  "capability":"piecewise-polynomial-spike-v1",
+  "caption":"문제 원본과 같이 위로 열린 이차함수 f와 증가하는 직선 g가 x=1과 x=5에서 교차하는 개형이다. 계수와 높이는 미지 조건에 맞춘 대표 배치다.",
+  "accessibilityDescription":"좌표평면에서 위로 열린 포물선 y=f(x)와 오른쪽 위로 향하는 직선 y=g(x)가 두 번 만난다. 교점에서 x축까지 점선이 내려가며 두 x좌표는 1과 5다. f와 g의 정확한 식, h의 계수와 최댓값은 공개되지 않았다.",
+  "sourceQuote":"이차함수 y=f(x)의 그래프와 직선 y=g(x)가 만나는 두 점의 x좌표는 1, 5이다. h(x)=f(x)-g(x), 0≤x≤4에서 최솟값 -8일 때 최댓값을 구하시오.",
+  "sourceConditions":[
+    {"id":"p1","condition":"f는 위로 열린 이차함수이고 g는 증가 직선이다. 원본에는 함수식이 없으므로 예시 f=2x²-11x+8, g=x-2를 내부 배치에만 사용하고 그림에 계수식을 표시하지 않는다.","mappedTo":["graphPlan.pieces[0]","graphPlan.overlays.lines[0]"]},
+    {"id":"p2","condition":"대표 함수의 차는 2(x-1)(x-5)이므로 원문과 동일하게 두 교점 x좌표가 1, 5다.","mappedTo":["graphPlan.overlays.points","graphPlan.overlays.guides","graphPlan.axisTickValues.x"]},
+    {"id":"p3","condition":"0≤x≤4에서 h의 최솟값 -8 조건까지 만족하는 대표 계수 c=2를 선택했다. h의 최댓값·최소값 좌표는 문제 그림에 노출하지 않는다.","mappedTo":["graphPlan.pieces[0]","graphPlan.overlays.lines[0]","caption"]}
+  ],
+  "newVisualInformation":["포물선과 증가 직선, 두 교점과 그 x축 안내 점선을 표시한다.","x축의 1과 5만 숫자로 표시하고 원문에 없는 함수 계수를 라벨로 쓰지 않는다.","면 채움이나 불필요한 그래프 영역 색칠은 없다."],
+  "graphPlan":{
+    "family":"piecewise-polynomial",
+    "pieces":[{"coefficients":["8","-11","2"]}],
+    "breakpoints":[],
+    "sourceDomain":{"kind":"ALL_REALS"},
+    "domain":[-0.5,5.5],
+    "viewport":[-1,6,-10,10],
+    "functionName":"f",
+    "requiredPoints":[{"id":"V","x":"11/4","y":"-57/8","marker":"NONE"}],
+    "axisTickValues":{"x":[1,5],"y":[]},
+    "overlays":{
+      "lines":[{"id":"g","slope":"1","intercept":"-2","label":"g(x)"}],
+      "points":[{"id":"I1","curveX":"1","unnamed":true},{"id":"I5","curveX":"5","unnamed":true}],
+      "guides":[{"id":"I1X","from":"I1","axis":"x"},{"id":"I5X","from":"I5","axis":"x"}]
+    }
+  }
+}

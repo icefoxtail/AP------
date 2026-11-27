@@ -1,0 +1,23 @@
+{
+  "capability":"polynomial-spike-v1",
+  "caption":"교점의 두 근에 비에타 정리를 적용한 식 u(k)=4k²-2k-2는 0≤k≤1에서 k=1/4에 최솟값 -9/4, k=1에 최댓값 0을 갖는다.",
+  "accessibilityDescription":"가로축 변수 k가 0에서 1까지인 구간에서 위로 열린 이차함수의 그래프다. 왼쪽 끝점 k=0의 함수값은 -2, 꼭짓점 k=1/4의 함수값은 -9/4, 오른쪽 끝점 k=1의 함수값은 0이다.",
+  "sourceQuote":"0≤k≤1일 때 (2α-1)(2β-1)의 최댓값과 최솟값을 구하시오.",
+  "sourceConditions":[
+    {"id":"s1","condition":"근과 계수의 관계로 (2α-1)(2β-1)=4k²-2k-2로 변형된다.","mappedTo":["graphPlan.coefficients"]},
+    {"id":"s2","condition":"정의역 0≤k≤1은 양 끝을 포함하며 가로축의 변수는 k이다.","mappedTo":["graphPlan.sourceDomain","graphPlan.axisVariable"]},
+    {"id":"s3","condition":"꼭짓점 (1/4,-9/4), 양끝 (0,-2)와 (1,0)을 정확히 표시한다.","mappedTo":["graphPlan.requiredPoints","graphPlan.axisTickValues"]}
+  ],
+  "newVisualInformation":["k축 위에서 세 후보점의 함수값을 비교하고 꼭짓점이 구간 안에 있음을 보인다.","k=1/4는 최솟값 -9/4, k=1은 최댓값 0임을 좌표로 연결한다.","그래프 아래 면 채움은 사용하지 않는다."],
+  "graphPlan":{
+    "family":"polynomial",
+    "coefficients":["-2","-2","4"],
+    "sourceDomain":{"kind":"INTERVAL","range":[0,1],"states":["CLOSED","CLOSED"]},
+    "domain":[-0.2,1.2],
+    "viewport":[-0.25,1.25,-3,1],
+    "axisVariable":"k",
+    "requiredPoints":[{"id":"P0","x":0,"y":-2},{"id":"V","x":0.25,"y":-2.25},{"id":"P1","x":1,"y":0}],
+    "exactCoordinates":{"V":["1/4","-9/4"]},
+    "axisTickValues":{"x":[],"y":[]}
+  }
+}

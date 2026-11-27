@@ -1,0 +1,43 @@
+{
+  "capability":"composite-panels-v1",
+  "caption":"밑면 직각삼각형에서 a/16+b/20=1이며, 최대 넓이 80인 내접 직사각형의 두 변은 8,10이다. 높이 24를 곱해 부피 1920을 얻는다.",
+  "accessibilityDescription":"왼쪽 직각삼각기둥은 밑면 직각변이 16과 20, 높이가 24다. 오른쪽 직각삼각형 안에는 직사각형이 있고 가로 8, 세로 10인 최대 넓이의 배치가 빗변에 닿아 있다.",
+  "sourceConditions":[
+    {"id":"s1","condition":"밑면의 직각변 16,20과 기둥 높이 24는 원문과 동일하다.","mappedTo":["panels[0].plan.solids[0]","panels[0].plan.dims","panels[0].plan.marks.rightAngles"]},
+    {"id":"s2","condition":"직사각형의 꼭짓점 Q는 밑면 빗변 위에 있고 a/16+b/20=1이다.","mappedTo":["panels[1].plan.mathPlan.nodes","panels[1].plan.displaySegments"]},
+    {"id":"s3","condition":"넓이 ab는 b=10,a=8에서 80으로 최대이고 높이 24를 곱한 부피는 1920이다. 수치를 각각 자기 치수선에 표시한다.","mappedTo":["panels[1].plan.planeMarks.dimensions","panels[0].plan.dims[2]","caption"]}
+  ],
+  "newVisualInformation":["원래 기둥의 16,20,24와 최적 직사각형의 8,10을 서로 다른 패널에서 구분해 읽는다.","직사각형 꼭짓점이 빗변에 닿는 닮음 관계와 최대 직사각형을 표시한다.","해설에는 최적 길이를 허용하되 불필요한 파란 면 채움은 쓰지 않는다.","ENGINE_CAPABILITY_PENDING: 하나의 3D 입체 안에 최적 직육면체와 두 절단면을 포함시키고 숨은모서리를 점선 처리하는 compound-solid/CSG+hidden-edge 지원이 필요하다. 현재 플랜은 렌더 가능한 삼각기둥·단면의 2패널 설명이다."],
+  "panels":[
+    {"caption":{"text":"밑면 16,20 · 높이 24"},"plan":{
+      "capability":"solid-figure-v1",
+      "solids":[{"kind":"PRISM","base":{"kind":"POLYGON","points":[[0,0],[16,0],[0,20]]},"height":24,"names":"......"}],
+      "dims":[{"edge":["#b0","#b1"],"label":"16"},{"edge":["#b0","#b2"],"label":"20"},{"edge":["#b0","#t0"],"label":"24"}],
+      "marks":{"rightAngles":[{"at":"#b0","refs":["#b1","#b2"]}]}
+    }},
+    {"caption":{"text":"최대 넓이 8×10=80"},"plan":{
+      "capability":"construction-spike-v1",
+      "mathPlan":{
+        "schemaVersion":"construction-spike-v1",
+        "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+        "nodes":[
+          {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"16"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"20"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"Q","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"10"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"R","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"10"}]},"outputType":"POINT","factRole":"GIVEN"}
+        ]
+      },
+      "displayPoints":["A","B","C","P","Q","R"],
+      "hiddenPointNames":["A","B","C","P","Q","R"],
+      "hiddenPointStyle":"NONE",
+      "displayLines":[],
+      "displayCircles":[],
+      "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]},{"id":"sPQ","refs":["P","Q"]},{"id":"sQR","refs":["Q","R"]}],
+      "rightAngles":[{"id":"rA","refs":["B","A","C"]},{"id":"rP","refs":["A","P","Q"]}],
+      "planeMarks":{"dimensions":[{"id":"dAP","from":"A","to":"P","label":"8","side":"BELOW"},{"id":"dAR","from":"A","to":"R","label":"10","side":"LEFT"}]},
+      "coordinateCanvas":{"width":384,"height":320}
+    }}
+  ]
+}

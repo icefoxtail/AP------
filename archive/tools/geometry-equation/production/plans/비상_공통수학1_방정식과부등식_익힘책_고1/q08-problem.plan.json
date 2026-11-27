@@ -1,0 +1,43 @@
+{
+  "capability":"composite-panels-v1",
+  "caption":"직각삼각형 밑면의 두 직각변은 16, 20이고 삼각기둥 높이는 24이다. 직육면체의 밑면은 빗변에 닿는 내접 직사각형이다.",
+  "accessibilityDescription":"왼쪽에는 16과 20을 직각변으로 하고 높이가 24인 삼각기둥이 있다. 오른쪽에는 그 직각삼각형 속에 내접한 직사각형이 있고 가로 a, 세로 b가 빗변과 만난다. 직육면체의 3차원 겹침은 두 그림으로 나눠 표현한다.",
+  "sourceConditions":[
+    {"id":"p1","condition":"원본 그림의 직각삼각형 밑면 두 변은 16,20이고 이각은 90도이다.","mappedTo":["panels[0].plan.solids[0]","panels[0].plan.dims[0]","panels[0].plan.dims[1]","panels[0].plan.marks.rightAngles"]},
+    {"id":"p2","condition":"삼각기둥 높이는 24이고 잘라 만든 직육면체도 높이가 24이다.","mappedTo":["panels[0].plan.solids[0].height","panels[0].plan.dims[2]"]},
+    {"id":"p3","condition":"두 번 잘라 만드는 직육면체의 밑면 직사각형은 직각 꼭짓점을 공유하고 맞은편 꼭짓점이 빗변에 놓인다. 그림의 a=12,b=5는 가능한 대표 배치일 뿐 최댓값을 가리키지 않는다.","mappedTo":["panels[1].plan.mathPlan.nodes","panels[1].plan.displaySegments","panels[1].plan.planeMarks.dimensions"]}
+  ],
+  "newVisualInformation":["원문 한 장의 3차원 겹침 그림을 공식 엔진의 삼각기둥 패널과 평면 단면 패널로 나누어 모든 수학 조건을 보인다.","높이 24와 직각변 16,20은 입체 모서리 치수와 직각 표식에 붙인다.","문제 그림에는 최적 직사각형의 8,10이나 부피 1920을 표시하지 않고, 두 패널 모두 면 채움이 없다.","ENGINE_CAPABILITY_PENDING: 원본 한 장의 3D 삼각기둥 내부에 내접 직육면체, 두 절단면, 숨은모서리 점선을 중첩하는 compound-solid/CSG 절단 및 hidden-edge 표식 엔진 기능이 필요하다. 현재 플랜은 실행 가능한 2패널 수학 동치 대안이다."],
+  "panels":[
+    {"caption":{"text":"밑면 직각삼각형과 높이"},"plan":{
+      "capability":"solid-figure-v1",
+      "solids":[{"kind":"PRISM","base":{"kind":"POLYGON","points":[[0,0],[16,0],[0,20]]},"height":24,"names":"......"}],
+      "dims":[{"edge":["#b0","#b1"],"label":"16"},{"edge":["#b0","#b2"],"label":"20"},{"edge":["#b0","#t0"],"label":"24"}],
+      "marks":{"rightAngles":[{"at":"#b0","refs":["#b1","#b2"]}]}
+    }},
+    {"caption":{"text":"직육면체의 밑면 관계"},"plan":{
+      "capability":"construction-spike-v1",
+      "mathPlan":{
+        "schemaVersion":"construction-spike-v1",
+        "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+        "nodes":[
+          {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"16"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"20"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"12"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"Q","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"12"},{"kind":"integer","value":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"R","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"5"}]},"outputType":"POINT","factRole":"GIVEN"}
+        ]
+      },
+      "displayPoints":["A","B","C","P","Q","R"],
+      "hiddenPointNames":["A","B","C","P","Q","R"],
+      "hiddenPointStyle":"NONE",
+      "displayLines":[],
+      "displayCircles":[],
+      "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]},{"id":"sPQ","refs":["P","Q"]},{"id":"sQR","refs":["Q","R"]}],
+      "rightAngles":[{"id":"rA","refs":["B","A","C"]},{"id":"rP","refs":["A","P","Q"]}],
+      "planeMarks":{"dimensions":[{"id":"dAP","from":"A","to":"P","label":"a","side":"BELOW"},{"id":"dAR","from":"A","to":"R","label":"b","side":"LEFT"}]},
+      "coordinateCanvas":{"width":384,"height":320}
+    }}
+  ]
+}
