@@ -59,7 +59,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "피타고라스로 빗변3을 복원하고 A와 C 각각의 삼각비를 정의에 맞춰 식에 대입한다.",
-    "decisiveStep": "피타고라스로 빗변3을 복원하고 A와 C 각각의 삼각비를 정의에 맞춰 식에 대입한다."
+    "decisiveStep": "피타고라스로 빗변3을 복원하고 A와 C 각각의 삼각비를 정의에 맞춰 식에 대입한다.",
+    "image": "assets/images/19_연향중_2학기_기말_중3_수학/q1-problem.svg",
+    "imageAlt": "세 변 길이로 비교하는 두 기준각 — 직각삼각형 ABC에서 B가 직각이다. 세로 AB는 √5이고 밑변 BC는 2이다.",
+    "imageCaption": "세 변 길이로 비교하는 두 기준각 — 직각삼각형 ABC에서 B가 직각이다. 세로 AB는 √5이고 밑변 BC는 2이다.",
+    "imageSize": "full"
   },
     {
       "id": 2,
@@ -297,7 +301,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "단위 사분원 OAB에서 sin a=AB, cos a=OB이고 큰 직각삼각형의 b는 a의 여각임을 이용한다.",
-    "decisiveStep": "단위 사분원 OAB에서 sin a=AB, cos a=OB이고 큰 직각삼각형의 b는 a의 여각임을 이용한다."
+    "decisiveStep": "단위 사분원 OAB에서 sin a=AB, cos a=OB이고 큰 직각삼각형의 b는 a의 여각임을 이용한다.",
+    "image": "assets/images/19_연향중_2학기_기말_중3_수학/q5-problem.svg",
+    "imageAlt": "연향중 5번 문제: 반지름 1인 정확한 제1사분원 호, OAB·OCD 두 직각삼각형, a와 b의 여각 관계를 표시한다. 구체적인 a는 주어지지 않아 대표 배치로 그린다.",
+    "imageCaption": "연향중 5번 문제: 반지름 1인 정확한 제1사분원 호, OAB·OCD 두 직각삼각형, a와 b의 여각 관계를 표시한다. 구체적인 a는 주어지지 않아 대표 배치로 그린다.",
+    "imageSize": "full"
   },
     {
       "id": 6,
@@ -417,7 +425,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "대각선으로 나눈 삼각형의 넓이 합 S=AC·BD·sin45°/2에서 AC를 역산한다.",
-    "decisiveStep": "대각선으로 나눈 삼각형의 넓이 합 S=AC·BD·sin45°/2에서 AC를 역산한다."
+    "decisiveStep": "대각선으로 나눈 삼각형의 넓이 합 S=AC·BD·sin45°/2에서 AC를 역산한다.",
+    "image": "assets/images/19_연향중_2학기_기말_중3_수학/q7-problem.svg",
+    "imageAlt": "사각형 넓이와 두 대각선의 각 — 주황 대각선 BD 길이는 12 cm이다. 파랑 AC와 주황 BD가 만나는 곳의 오른쪽 각이 45도이다.",
+    "imageCaption": "사각형 넓이와 두 대각선의 각 — 주황 대각선 BD 길이는 12 cm이다. 파랑 AC와 주황 BD가 만나는 곳의 오른쪽 각이 45도이다.",
+    "imageSize": "full"
   },
     {
       "id": 8,
@@ -599,7 +611,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "같은 중심거리에서 두 현 AC,BC의 길이가 같음을 얻고 이등변삼각형의 밑각을 이용해 C각을 구한다.",
-    "decisiveStep": "같은 중심거리에서 두 현 AC,BC의 길이가 같음을 얻고 이등변삼각형의 밑각을 이용해 C각을 구한다."
+    "decisiveStep": "같은 중심거리에서 두 현 AC,BC의 길이가 같음을 얻고 이등변삼각형의 밑각을 이용해 C각을 구한다.",
+    "image": "assets/images/19_연향중_2학기_기말_중3_수학/q10-problem.svg",
+    "imageAlt": "중심에서 두 현까지의 같은 거리 — 중심 O에서 BC와 AC에 내린 두 수선은 같은 길이이다. A의 각은 70도이고 C의 각을 x로 표시했다.",
+    "imageCaption": "중심에서 두 현까지의 같은 거리 — 중심 O에서 BC와 AC에 내린 두 수선은 같은 길이이다. A의 각은 70도이고 C의 각을 x로 표시했다.",
+    "imageSize": "full"
   },
     {
       "id": 11,
@@ -782,7 +798,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "접선 길이의 동일성으로 CD=13을 구하고 두 접선 끝점의 높이 차5를 사용하여 지름2r를 피타고라스로 구한다.",
-    "decisiveStep": "접선 길이의 동일성으로 CD=13을 구하고 두 접선 끝점의 높이 차5를 사용하여 지름2r를 피타고라스로 구한다."
+    "decisiveStep": "접선 길이의 동일성으로 CD=13을 구하고 두 접선 끝점의 높이 차5를 사용하여 지름2r를 피타고라스로 구한다.",
+    "image": "assets/images/19_연향중_2학기_기말_중3_수학/q13-problem.svg",
+    "imageAlt": "연향중 13번 문제: 지름 AB의 정확한 위쪽 반원, A·B 접선 AC=4cm·BD=9cm, 두 접선을 잇는 원의 접선 CD와 접점 E를 표시한다. CD의 값은 공개하지 않는다.",
+    "imageCaption": "연향중 13번 문제: 지름 AB의 정확한 위쪽 반원, A·B 접선 AC=4cm·BD=9cm, 두 접선을 잇는 원의 접선 CD와 접점 E를 표시한다. CD의 값은 공개하지 않는다.",
+    "imageSize": "full"
   },
     {
       "id": 14,
@@ -1082,7 +1102,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "접선-현각으로 x와 삼각형의 두 각을 구하고 내접사각형의 대각 보각으로 y를 구한다.",
-    "decisiveStep": "접선-현각으로 x와 삼각형의 두 각을 구하고 내접사각형의 대각 보각으로 y를 구한다."
+    "decisiveStep": "접선-현각으로 x와 삼각형의 두 각을 구하고 내접사각형의 대각 보각으로 y를 구한다.",
+    "image": "assets/images/19_연향중_2학기_기말_중3_수학/q18-problem.svg",
+    "imageAlt": "접점에서 두 현이 만드는 각 — 원의 아래쪽 A를 지나는 직선 AT가 접선이다. 왼쪽 AD와 접선의 각은 25도, 오른쪽 AB와 접선의 각은 35도이다.",
+    "imageCaption": "접점에서 두 현이 만드는 각 — 원의 아래쪽 A를 지나는 직선 AT가 접선이다. 왼쪽 AD와 접선의 각은 25도, 오른쪽 AB와 접선의 각은 35도이다.",
+    "imageSize": "full"
   },
     {
       "id": 19,
@@ -1314,7 +1338,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "현의 수직이등분선에 중심을 두고 중심거리 r-20과 반현40을 피타고라스 식 r²=(r-20)²+40²에 넣어 반지름을 역산한다.",
-    "decisiveStep": "현의 수직이등분선에 중심을 두고 중심거리 r-20과 반현40을 피타고라스 식 r²=(r-20)²+40²에 넣어 반지름을 역산한다."
+    "decisiveStep": "현의 수직이등분선에 중심을 두고 중심거리 r-20과 반현40을 피타고라스 식 r²=(r-20)²+40²에 넣어 반지름을 역산한다.",
+    "image": "assets/images/19_연향중_2학기_기말_중3_수학/q22-problem.svg",
+    "imageAlt": "연향중 서술형 2: 물 위로 보이는 통나무의 둥근 원호와 검게 칠해진 원활꼴, AD=20cm, BD=DC=40cm, 직각을 표시한다. 미지 지름은 보이지 않는다.",
+    "imageCaption": "연향중 서술형 2: 물 위로 보이는 통나무의 둥근 원호와 검게 칠해진 원활꼴, AD=20cm, BD=DC=40cm, 직각을 표시한다. 미지 지름은 보이지 않는다.",
+    "imageSize": "full"
   },
     {
       "id": 23,
@@ -1368,7 +1396,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "외부 두 할선 각을 먼 반원호180°와 가까운 중심각호30° 차의 절반으로 구한다.",
-    "decisiveStep": "외부 두 할선 각을 먼 반원호180°와 가까운 중심각호30° 차의 절반으로 구한다."
+    "decisiveStep": "외부 두 할선 각을 먼 반원호180°와 가까운 중심각호30° 차의 절반으로 구한다.",
+    "image": "assets/images/19_연향중_2학기_기말_중3_수학/q23-problem.svg",
+    "imageAlt": "연향중 서술형 3 문제: 지름 AB의 위쪽 반원, 원주 위의 C·D, 중심각 COD=30°, 두 연장선 PAC/PDB와 바깥점 P의 미지각 x를 표시한다.",
+    "imageCaption": "연향중 서술형 3 문제: 지름 AB의 위쪽 반원, 원주 위의 C·D, 중심각 COD=30°, 두 연장선 PAC/PDB와 바깥점 P의 미지각 x를 표시한다.",
+    "imageSize": "full"
   }
   ],
   "sourceIdentity": {

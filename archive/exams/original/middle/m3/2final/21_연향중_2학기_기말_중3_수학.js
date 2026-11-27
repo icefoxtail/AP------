@@ -47,7 +47,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "한 직각삼각형에서 기준각 B의 이웃변 a와 맞은편 변 AC를 tan B의 정의에 직접 대응하여 길이식을 고른다.",
-    "decisiveStep": "한 직각삼각형에서 기준각 B의 이웃변 a와 맞은편 변 AC를 tan B의 정의에 직접 대응하여 길이식을 고른다."
+    "decisiveStep": "한 직각삼각형에서 기준각 B의 이웃변 a와 맞은편 변 AC를 tan B의 정의에 직접 대응하여 길이식을 고른다.",
+    "image": "assets/images/21_연향중_2학기_기말_중3_수학/q01-problem.svg",
+    "imageAlt": "직각 C인 삼각형 ABC, 빗변 c와 변 BC의 길이 a 및 구하는 변 AC",
+    "imageCaption": "직각 C인 삼각형 ABC, 빗변 c와 변 BC의 길이 a 및 구하는 변 AC",
+    "imageSize": "full"
   },
     {
       "id": "q02",
@@ -86,7 +90,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "주어진 두 변과 끼인각을 1/2 ab sin C에 바로 대입해 삼각형의 넓이를 계산한다.",
-    "decisiveStep": "주어진 두 변과 끼인각을 1/2 ab sin C에 바로 대입해 삼각형의 넓이를 계산한다."
+    "decisiveStep": "주어진 두 변과 끼인각을 1/2 ab sin C에 바로 대입해 삼각형의 넓이를 계산한다.",
+    "image": "assets/images/21_연향중_2학기_기말_중3_수학/q02-problem.svg",
+    "imageAlt": "AB가 sqrt(13), BC가 3, 끼인각 B가 30도인 삼각형 ABC",
+    "imageCaption": "AB가 sqrt(13), BC가 3, 끼인각 B가 30도인 삼각형 ABC",
+    "imageSize": "full"
   },
     {
       "id": "q03",
@@ -125,7 +133,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "같은 건물 높이를 미지수로 두고 두 관측점의 수평거리 차50과 tan45, tan30의 두 식을 연결해 공통 높이를 구한다.",
-    "decisiveStep": "같은 건물 높이를 미지수로 두고 두 관측점의 수평거리 차50과 tan45, tan30의 두 식을 연결해 공통 높이를 구한다."
+    "decisiveStep": "같은 건물 높이를 미지수로 두고 두 관측점의 수평거리 차50과 tan45, tan30의 두 식을 연결해 공통 높이를 구한다.",
+    "image": "assets/images/21_연향중_2학기_기말_중3_수학/q03-problem.svg",
+    "imageAlt": "수평선 위 A·B 두 지점이 50m 떨어지고 건물 C·D를 각각 30도·45도로 보는 도형",
+    "imageCaption": "수평선 위 A·B 두 지점이 50m 떨어지고 건물 C·D를 각각 30도·45도로 보는 도형",
+    "imageSize": "full"
   },
     {
       "id": "q04",
@@ -164,7 +176,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "등변 AD=BD에서 밑각을 옮기고 일직선의 보각으로45도를 구한 뒤 45-45-90 고정 변비에서 두 직각변의 길이를 구한다.",
-    "decisiveStep": "등변 AD=BD에서 밑각을 옮기고 일직선의 보각으로45도를 구한 뒤 45-45-90 고정 변비에서 두 직각변의 길이를 구한다."
+    "decisiveStep": "등변 AD=BD에서 밑각을 옮기고 일직선의 보각으로45도를 구한 뒤 45-45-90 고정 변비에서 두 직각변의 길이를 구한다.",
+    "image": "assets/images/21_연향중_2학기_기말_중3_수학/q04-problem.svg",
+    "imageAlt": "직각삼각형 ABC 안의 점 D, AD=BD=8cm와 22.5도, 미지변 x·y",
+    "imageCaption": "직각삼각형 ABC 안의 점 D, AD=BD=8cm와 22.5도, 미지변 x·y",
+    "imageSize": "full"
   },
     {
       "id": "q05",
@@ -203,7 +219,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "대각선으로 사각형을 두 삼각형으로 나누고 한 넓이는 사인 넓이공식, 다른 넓이는 연장선 위 수선의 높이를 sin30으로 구하여 더한다.",
-    "decisiveStep": "대각선으로 사각형을 두 삼각형으로 나누고 한 넓이는 사인 넓이공식, 다른 넓이는 연장선 위 수선의 높이를 sin30으로 구하여 더한다."
+    "decisiveStep": "대각선으로 사각형을 두 삼각형으로 나누고 한 넓이는 사인 넓이공식, 다른 넓이는 연장선 위 수선의 높이를 sin30으로 구하여 더한다.",
+    "image": "assets/images/21_연향중_2학기_기말_중3_수학/q05-problem.svg",
+    "imageAlt": "사각형 ABCD의 AB=6cm·BC=8cm·AD=4cm·CD=2sqrt(3)cm와 각 B=60도·D=150도",
+    "imageCaption": "사각형 ABCD의 AB=6cm·BC=8cm·AD=4cm·CD=2sqrt(3)cm와 각 B=60도·D=150도",
+    "imageSize": "full"
   },
     {
       "id": "q06",
@@ -242,7 +262,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "보조 수선의 높이를 공유하는45-45-90 및30-60-90 삼각형의 고정 변비를 사용해 두 밑변의 합5를 식으로 나타내고 빗변을 구한다.",
-    "decisiveStep": "보조 수선의 높이를 공유하는45-45-90 및30-60-90 삼각형의 고정 변비를 사용해 두 밑변의 합5를 식으로 나타내고 빗변을 구한다."
+    "decisiveStep": "보조 수선의 높이를 공유하는45-45-90 및30-60-90 삼각형의 고정 변비를 사용해 두 밑변의 합5를 식으로 나타내고 빗변을 구한다.",
+    "image": "assets/images/21_연향중_2학기_기말_중3_수학/q06-problem.svg",
+    "imageAlt": "밑변 BC=5cm이고 각 B=45도·C=60도인 삼각형 ABC",
+    "imageCaption": "밑변 BC=5cm이고 각 B=45도·C=60도인 삼각형 ABC",
+    "imageSize": "full"
   },
     {
       "id": "q07",
@@ -281,7 +305,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "지면의 삼각형을 수선으로 두 특수직각삼각형으로 나누어 지상거리 BC를 복원한 뒤 수직 단면에서 tan30으로 탑 높이를 구한다.",
-    "decisiveStep": "지면의 삼각형을 수선으로 두 특수직각삼각형으로 나누어 지상거리 BC를 복원한 뒤 수직 단면에서 tan30으로 탑 높이를 구한다."
+    "decisiveStep": "지면의 삼각형을 수선으로 두 특수직각삼각형으로 나누어 지상거리 BC를 복원한 뒤 수직 단면에서 tan30으로 탑 높이를 구한다.",
+    "image": "assets/images/21_연향중_2학기_기말_중3_수학/q07-problem.svg",
+    "imageAlt": "탑 꼭대기 A, 지면 B·C와 아래 지점 D, 관측각 30도·60도·75도 및 CD=390sqrt(3)m",
+    "imageCaption": "탑 꼭대기 A, 지면 B·C와 아래 지점 D, 관측각 30도·60도·75도 및 CD=390sqrt(3)m",
+    "imageSize": "full"
   },
     {
       "id": "q08",
@@ -320,7 +348,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "주어진15도 원주각을 중심각으로 옮기고 호의 길이 비2를 중심각에 적용한 뒤 목표 원주각과 중심각을 더한다.",
-    "decisiveStep": "주어진15도 원주각을 중심각으로 옮기고 호의 길이 비2를 중심각에 적용한 뒤 목표 원주각과 중심각을 더한다."
+    "decisiveStep": "주어진15도 원주각을 중심각으로 옮기고 호의 길이 비2를 중심각에 적용한 뒤 목표 원주각과 중심각을 더한다.",
+    "image": "assets/images/21_연향중_2학기_기말_중3_수학/q08-problem.svg",
+    "imageAlt": "원의 두 호 길이 4cm·8cm와 15도 원주각, 미지 원주각 x·중심각 y",
+    "imageCaption": "원의 두 호 길이 4cm·8cm와 15도 원주각, 미지 원주각 x·중심각 y",
+    "imageSize": "full"
   },
     {
       "id": "q09",
@@ -359,7 +391,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "지름 AB에 대한 원주각90도를 찾고 삼각형의 내각합으로 남은 목표각을 구한다.",
-    "decisiveStep": "지름 AB에 대한 원주각90도를 찾고 삼각형의 내각합으로 남은 목표각을 구한다."
+    "decisiveStep": "지름 AB에 대한 원주각90도를 찾고 삼각형의 내각합으로 남은 목표각을 구한다.",
+    "image": "assets/images/21_연향중_2학기_기말_중3_수학/q09-problem.svg",
+    "imageAlt": "지름 AB인 원 O에 내접한 삼각형 ABC, A의 22도와 B의 미지각 x",
+    "imageCaption": "지름 AB인 원 O에 내접한 삼각형 ABC, A의 22도와 B의 미지각 x",
+    "imageSize": "full"
   },
     {
       "id": "q10",
@@ -398,7 +434,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "일직선의 보각과 두 삼각형 내각합으로 각을 전달하고 같은 현 BD에 대한 두 원주각이 같음을 중간 연결로 사용한다.",
-    "decisiveStep": "일직선의 보각과 두 삼각형 내각합으로 각을 전달하고 같은 현 BD에 대한 두 원주각이 같음을 중간 연결로 사용한다."
+    "decisiveStep": "일직선의 보각과 두 삼각형 내각합으로 각을 전달하고 같은 현 BD에 대한 두 원주각이 같음을 중간 연결로 사용한다.",
+    "image": "assets/images/21_연향중_2학기_기말_중3_수학/q10-problem.svg",
+    "imageAlt": "원 O의 두 할선 PA·PB·PC·PD, 25도·70도가 주어진 교점 Q의 문제 배치",
+    "imageCaption": "원 O의 두 할선 PA·PB·PC·PD, 25도·70도가 주어진 교점 Q의 문제 배치",
+    "imageSize": "full"
   },
     {
       "id": "q11",
@@ -480,7 +520,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "외부 교점과 원 위 점의 일직선 관계에서 보각을 찾고 삼각형 내각합으로 구한 각을 같은 호 AB의 원주각에 옮긴다.",
-    "decisiveStep": "외부 교점과 원 위 점의 일직선 관계에서 보각을 찾고 삼각형 내각합으로 구한 각을 같은 호 AB의 원주각에 옮긴다."
+    "decisiveStep": "외부 교점과 원 위 점의 일직선 관계에서 보각을 찾고 삼각형 내각합으로 구한 각을 같은 호 AB의 원주각에 옮긴다.",
+    "image": "assets/images/21_연향중_2학기_기말_중3_수학/q12-problem.svg",
+    "imageAlt": "원에서 두 할선의 교점 P에 있는 25도, 원주각 DBC=55도와 구할 ACB",
+    "imageCaption": "원에서 두 할선의 교점 P에 있는 25도, 원주각 DBC=55도와 구할 ACB",
+    "imageSize": "full"
   },
     {
       "id": "q13",
@@ -519,7 +563,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "보조 현 AC를 그어 두 원주각의 합과 호 길이의 비를 연결하고 원주각→중심각→전체 원둘레로 이어 반지름을 역산한다.",
-    "decisiveStep": "보조 현 AC를 그어 두 원주각의 합과 호 길이의 비를 연결하고 원주각→중심각→전체 원둘레로 이어 반지름을 역산한다."
+    "decisiveStep": "보조 현 AC를 그어 두 원주각의 합과 호 길이의 비를 연결하고 원주각→중심각→전체 원둘레로 이어 반지름을 역산한다.",
+    "image": "assets/images/21_연향중_2학기_기말_중3_수학/q13-problem.svg",
+    "imageAlt": "두 현 AB·CD의 교점각 60도와 호 AD=2pi·BC=4pi가 주어진 원",
+    "imageCaption": "두 현 AB·CD의 교점각 60도와 호 AD=2pi·BC=4pi가 주어진 원",
+    "imageSize": "full"
   },
     {
       "id": "q14",
@@ -558,7 +606,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "같은 현 BC에 대한 원주각으로48도를 옮기고 지름 BD의 원주각90도와 삼각형 내각합으로 목표각을 구한다.",
-    "decisiveStep": "같은 현 BC에 대한 원주각으로48도를 옮기고 지름 BD의 원주각90도와 삼각형 내각합으로 목표각을 구한다."
+    "decisiveStep": "같은 현 BC에 대한 원주각으로48도를 옮기고 지름 BD의 원주각90도와 삼각형 내각합으로 목표각을 구한다.",
+    "image": "assets/images/21_연향중_2학기_기말_중3_수학/q14-problem.svg",
+    "imageAlt": "지름 AC·BD를 가진 원 O의 원주각 BAC=48도와 구할 DBC=x",
+    "imageCaption": "지름 AC·BD를 가진 원 O의 원주각 BAC=48도와 구할 DBC=x",
+    "imageSize": "full"
   },
     {
       "id": "q15",
@@ -710,7 +762,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "산점도의 두 좌표가 동시에80 이상인 점을 세고 전체20명에 대한 백분율로 바꾼다.",
-    "decisiveStep": "산점도의 두 좌표가 동시에80 이상인 점을 세고 전체20명에 대한 백분율로 바꾼다."
+    "decisiveStep": "산점도의 두 좌표가 동시에80 이상인 점을 세고 전체20명에 대한 백분율로 바꾼다.",
+    "image": "assets/images/21_연향중_2학기_기말_중3_수학/q18-problem.svg",
+    "imageAlt": "원본 20명 수학·과학 점수 산점도의 모든 점과 축 눈금",
+    "imageCaption": "원본 20명 수학·과학 점수 산점도의 모든 점과 축 눈금",
+    "imageSize": "full"
   },
     {
       "id": "s01",

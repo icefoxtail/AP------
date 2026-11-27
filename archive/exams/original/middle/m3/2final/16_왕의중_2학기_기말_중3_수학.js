@@ -855,7 +855,11 @@ window.examData = {
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
     "primaryMethod": "접는 선을 겹치는 두 점의 수직이등분선으로 해석해 중심에서 현까지의 거리를 구한다.",
-    "decisiveStep": "접힌 점X와 O의 거리8이므로 접는 선까지 OM=4. AM=√(64−16)=4√3, AB=8√3이고 넓이=AB·4/2=16√3이다."
+    "decisiveStep": "접힌 점X와 O의 거리8이므로 접는 선까지 OM=4. AM=√(64−16)=4√3, AB=8√3이고 넓이=AB·4/2=16√3이다.",
+    "image": "assets/images/16_왕의중_2학기_기말_중3_수학/q23-problem.svg",
+    "imageAlt": "반지름 8 cm인 원의 위쪽 호를 접어 중심 O와 겹친 모양이다. 접는 선 AB와 두 원호를 선으로만 구별한다.",
+    "imageCaption": "반지름 8 cm인 원의 위쪽 호를 접어 중심 O와 겹친 모양이다. 접는 선 AB와 두 원호를 선으로만 구별한다.",
+    "imageSize": "full"
   },
     {
       "id": 24,

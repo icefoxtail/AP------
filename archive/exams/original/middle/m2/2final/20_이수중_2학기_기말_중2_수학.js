@@ -50,7 +50,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "닮은 사각형의 대응변과 대응각 판정",
-    "decisiveStep": "닮음 순서의3:2와 사각형 내각합을 이용해 각 보기의 길이·각을 확인한다."
+    "decisiveStep": "닮음 순서의3:2와 사각형 내각합을 이용해 각 보기의 길이·각을 확인한다.",
+    "image": "assets/images/20_이수중_2학기_기말_중2_수학/q1-problem.svg",
+    "imageAlt": "2020 이수중 중2 2학기 기말 1번 문제 조건도",
+    "imageCaption": "2020 이수중 중2 2학기 기말 1번 문제 조건도",
+    "imageSize": "full"
   },
   {
     "id": 2,

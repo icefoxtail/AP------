@@ -1209,7 +1209,12 @@ window.questionBank = [
       "l4": "ASA 합동"
     },
     "primaryMethod": "평행사변형 대각선 양쪽 ASA 증명",
-    "decisiveStep": "두 평행쌍의 엇각과 공통 대각선을 대응시켜 합동을 설명한다."
+    "decisiveStep": "두 평행쌍의 엇각과 공통 대각선을 대응시켜 합동을 설명한다.",
+    "solutionImage": "assets/images/23_신흥중_2학기_중간_중2_수학/q22-solution.svg",
+    "solutionImageAlt": "평행사변형의 대각선 AC로 나눈 △ABC와 △CDA는 두 각과 끼인변이 같아 합동",
+    "solutionImageCaption": "평행사변형의 대각선 AC로 나눈 △ABC와 △CDA는 두 각과 끼인변이 같아 합동",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 23,
@@ -1259,7 +1264,11 @@ window.questionBank = [
       "l4": "평행선 조건"
     },
     "primaryMethod": "대각 동등에서 평행조건의 증명",
-    "decisiveStep": "내각합으로 이웃각합180을 만들고 동위각 동등으로 두 평행쌍을 도출한다."
+    "decisiveStep": "내각합으로 이웃각합180을 만들고 동위각 동등으로 두 평행쌍을 도출한다.",
+    "solutionImage": "assets/images/23_신흥중_2학기_중간_중2_수학/q23-solution.svg",
+    "solutionImageAlt": "대각 A=C, B=D와 일직선 E-A-B에서 ∠EAD=∠B이므로 AD∥BC",
+    "solutionImageCaption": "대각 A=C, B=D와 일직선 E-A-B에서 ∠EAD=∠B이므로 AD∥BC",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

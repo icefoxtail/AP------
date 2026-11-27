@@ -866,7 +866,11 @@ window.questionBank = [
       "l3": "상대도수",
       "l4": "상대도수 계산"
     },
-    "rpmCrosswalkStatus": "FAMILY_ACTIVE"
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE",
+    "image": "assets/images/24_왕운중_2학기_중간_중1_기출/q17-problem.svg",
+    "imageAlt": "16~17번 공통 신발 크기 줄기·잎 자료를 17번 독립 문제에 누락 없이 제공한다.",
+    "imageCaption": "16~17번 공통 신발 크기 줄기·잎 자료를 17번 독립 문제에 누락 없이 제공한다.",
+    "imageSize": "full"
   },
   {
     "id": 18,

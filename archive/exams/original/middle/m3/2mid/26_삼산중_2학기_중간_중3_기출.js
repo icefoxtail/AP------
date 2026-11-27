@@ -190,7 +190,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL"
   ,
     "primaryMethod": "tan A=3을 두 직각변 x, 3x로 표현하고 피타고라스로 빗변을 정해 다른 예각 B의 sin 값을 구한다.",
-    "decisiveStep": "tan A=3을 두 직각변 x, 3x로 표현하고 피타고라스로 빗변을 정해 다른 예각 B의 sin 값을 구한다."
+    "decisiveStep": "tan A=3을 두 직각변 x, 3x로 표현하고 피타고라스로 빗변을 정해 다른 예각 B의 sin 값을 구한다.",
+    "solutionImage": "assets/images/26_삼산중_2학기_중간_중3_기출/q4-solution.svg",
+    "solutionImageAlt": "탄젠트 A가 3인 직각삼각형에서 AC를 x로 두면 BC는 3x, 빗변 AB는 루트10x가 된다.",
+    "solutionImageCaption": "탄젠트 A가 3인 직각삼각형에서 AC를 x로 두면 BC는 3x, 빗변 AB는 루트10x가 된다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,

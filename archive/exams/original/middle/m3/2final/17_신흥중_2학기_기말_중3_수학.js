@@ -38,7 +38,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "직각변 두 개에서 빗변을 피타고라스로 구하고 기준각 A와 B의 대변·인접변을 구별하여 삼각비 진술을 비교한다.",
-    "decisiveStep": "직각변 두 개에서 빗변을 피타고라스로 구하고 기준각 A와 B의 대변·인접변을 구별하여 삼각비 진술을 비교한다."
+    "decisiveStep": "직각변 두 개에서 빗변을 피타고라스로 구하고 기준각 A와 B의 대변·인접변을 구별하여 삼각비 진술을 비교한다.",
+    "image": "assets/images/17_신흥중_2학기_기말_중3_수학/q1-problem.svg",
+    "imageAlt": "원본의 C가 직각인 삼각형이다. AC=√3과 BC=1을 실제 변 라벨로 표시한다. 문제에서 계산할 빗변 AB=2는 노출하지 않는다.",
+    "imageCaption": "원본의 C가 직각인 삼각형이다. AC=√3과 BC=1을 실제 변 라벨로 표시한다. 문제에서 계산할 빗변 AB=2는 노출하지 않는다.",
+    "imageSize": "full"
   },
     {
       "id": 2,

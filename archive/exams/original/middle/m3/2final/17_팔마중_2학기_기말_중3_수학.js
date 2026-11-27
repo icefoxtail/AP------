@@ -261,7 +261,11 @@ window.examData = {
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
     "primaryMethod": "평행사변형의보각과삼각비높이로넓이계산",
-    "decisiveStep": "B=180−150=30°이고높이4sin30=2이다. 밑변√3과곱해넓이2√3이다. 수선의발H가C밖이어도높이는같다."
+    "decisiveStep": "B=180−150=30°이고높이4sin30=2이다. 밑변√3과곱해넓이2√3이다. 수선의발H가C밖이어도높이는같다.",
+    "image": "assets/images/17_팔마중_2학기_기말_중3_수학/q7-problem.svg",
+    "imageAlt": "원본과 같이 평행사변형 ABCD의 AB=4 cm, BC=√3 cm 및 내각 BAD=150°를 보여 준다. 밑변 연장과 높이·30°는 풀이 정보이므로 문제 그림에 없다.",
+    "imageCaption": "원본과 같이 평행사변형 ABCD의 AB=4 cm, BC=√3 cm 및 내각 BAD=150°를 보여 준다. 밑변 연장과 높이·30°는 풀이 정보이므로 문제 그림에 없다.",
+    "imageSize": "full"
   },
     {
       "id": 8,
@@ -527,7 +531,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "primaryMethod": "두원주각의대응중심각합을원둘레비로변환",
-    "decisiveStep": "호AB중심각110°,CD40°이므로전체150°. 반지름2원의둘레4π에서150/360×4π=5π/3cm이다."
+    "decisiveStep": "호AB중심각110°,CD40°이므로전체150°. 반지름2원의둘레4π에서150/360×4π=5π/3cm이다.",
+    "image": "assets/images/17_팔마중_2학기_기말_중3_수학/q14-problem.svg",
+    "imageAlt": "원본 원주각 그림의 점 P에서 ∠DPC=20°, ∠CPB=30°, ∠BPA=55°를 각각 별도 각도 지시선으로 명확히 제시한다. 반지름 2 cm는 발문에 주어졌으며 해설용 중심각과 호 강조는 문제에 표시하지 않는다.",
+    "imageCaption": "원본 원주각 그림의 점 P에서 ∠DPC=20°, ∠CPB=30°, ∠BPA=55°를 각각 별도 각도 지시선으로 명확히 제시한다. 반지름 2 cm는 발문에 주어졌으며 해설용 중심각과 호 강조는 문제에 표시하지 않는다.",
+    "imageSize": "full"
   },
     {
       "id": 15,
@@ -640,7 +648,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "같은현을보는두각을복원하여공원성판정",
-    "decisiveStep": "①은BC를보는48°쌍,⑤는DAC=50°와DBC=50°쌍으로성립한다.②45≠47,③BDC40≠BAC35,④CBD50≠CAD40이므로불성립이다."
+    "decisiveStep": "①은BC를보는48°쌍,⑤는DAC=50°와DBC=50°쌍으로성립한다.②45≠47,③BDC40≠BAC35,④CBD50≠CAD40이므로불성립이다.",
+    "image": "assets/images/17_팔마중_2학기_기말_중3_수학/q17-problem.svg",
+    "imageAlt": "원본 선택지 ①~⑤를 서로 분리된 확대 패널로 제시한다. 각 보기의 주어진 48° / 45°·47° / 35°·80°·40° / 40°·100°·50° / 35°·15°·50°를 보존하되 판정용 도출각은 숨긴다.",
+    "imageCaption": "원본 선택지 ①~⑤를 서로 분리된 확대 패널로 제시한다. 각 보기의 주어진 48° / 45°·47° / 35°·80°·40° / 40°·100°·50° / 35°·15°·50°를 보존하되 판정용 도출각은 숨긴다.",
+    "imageSize": "full"
   },
     {
       "id": 18,
