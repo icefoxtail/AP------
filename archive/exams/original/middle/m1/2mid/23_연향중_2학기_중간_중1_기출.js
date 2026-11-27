@@ -356,7 +356,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "다음 그림에서 $\\angle AOB$는 평각이고 $\\angle AOC=4\\angle COD$, $\\angle BOE=4\\angle DOE$일 때, $\\angle COE$의 크기를 구하시오. [4점]",
-    "image": "assets/images/23_연향중_2학기_중간_중1_기출/q8.png",
+    "image": "assets/images/23_연향중_2학기_중간_중1_기출/q8-problem.svg",
     "choices": [
       "$30^\\circ$",
       "$36^\\circ$",
@@ -391,7 +391,10 @@ window.questionBank = [
       "l4": "각의 크기"
     },
     "rpmScope": "M1-2",
-    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT",
+    "imageAlt": "직선 AOB 위의 세 반직선 OC·OD·OE를 정확한 방향으로 놓고, 문제에 없는 각 값은 표시하지 않는다.",
+    "imageCaption": "직선 AOB 위의 세 반직선 OC·OD·OE를 정확한 방향으로 놓고, 문제에 없는 각 값은 표시하지 않는다.",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -462,7 +465,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "아래 그림에서 $l\\parallel m$일 때, $\\angle x-\\angle y$의 값을 구하시오. [5점]",
-    "image": "assets/images/23_연향중_2학기_중간_중1_기출/q10.png",
+    "image": "assets/images/23_연향중_2학기_중간_중1_기출/q10-problem.svg",
     "choices": [
       "$50^\\circ$",
       "$55^\\circ$",
@@ -488,9 +491,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q10-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 두 평행선 l, m 사이에 꺾인 선이 있고, 꺾인 점마다 l, m과 평행한 보조선(점선)을 그어 엇각을 같은 색 호로 표시한 그림. 각 35°, β, γ, 130°, 30°, 150°와 x, y가 적혀 있다.",
-    "solutionImageCaption": "각 꺾인 점을 지나 l, m과 평행한 보조선을 그어 엇각 35°, β, γ, 30°를 표시했다.",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "꺾인 세 점에 점선 평행 보조선을 그리고 엇각 β·γ와 35°·130°·150° 및 x−y=65°를 빈 호로 보인다.",
+    "solutionImageCaption": "꺾인 세 점에 점선 평행 보조선을 그리고 엇각 β·γ와 35°·130°·150° 및 x−y=65°를 빈 호로 보인다.",
+    "solutionImageSize": "full",
     "rpmPrimaryRecordId": null,
     "rpmPrimaryPath": {
       "majorUnit": "기본 도형",
@@ -499,7 +502,10 @@ window.questionBank = [
       "l4": "동위각·엇각"
     },
     "rpmScope": "M1-2",
-    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT",
+    "imageAlt": "두 수평 평행선과 꺾인 선의 다섯 각호 35°, y, 130°, x, 150°를 비채움 도형으로 그린다.",
+    "imageCaption": "두 수평 평행선과 꺾인 선의 다섯 각호 35°, y, 130°, x, 150°를 비채움 도형으로 그린다.",
+    "imageSize": "full"
   },
   {
     "id": 11,
@@ -673,7 +679,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "아래 그림과 같이 정사각형 $ABCD$의 변 $BC$를 한 변으로 하는 정삼각형 $BCE$가 있다. $\\overline{BC}=8\\,\\mathrm{cm}$이라고 할 때, $\\triangle ABE$의 넓이를 구하면? [4점]",
-    "image": "assets/images/23_연향중_2학기_중간_중1_기출/q14.png",
+    "image": "assets/images/23_연향중_2학기_중간_중1_기출/q14-problem.svg",
     "choices": [
       "$16\\,\\mathrm{cm}^2$",
       "$18\\,\\mathrm{cm}^2$",
@@ -697,9 +703,12 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q14-solution.svg",
-    "solutionImageAlt": "해설 그림: 정사각형 ABCD 안에 BC를 한 변으로 하는 정삼각형 BCE가 있고, E에서 AB와 BC에 내린 점선 수선이 표시되며 E에서 AB까지의 거리 4 cm와 밑변 AB=8 cm, 삼각형 ABE가 색칠된 그림.",
-    "solutionImageCaption": "E에서 AB까지의 거리는 4 cm, 밑변 AB는 8 cm",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "원본 정사각형과 정삼각형의 윤곽만 유지하고 E에서 내린 수평·수직 점선, 8cm·4cm 치수와 직각을 보인다.",
+    "solutionImageCaption": "원본 정사각형과 정삼각형의 윤곽만 유지하고 E에서 내린 수평·수직 점선, 8cm·4cm 치수와 직각을 보인다.",
+    "solutionImageSize": "full",
+    "imageAlt": "정사각형과 안쪽 정삼각형의 꼭짓점·선분을 면 채움 없이 그린다.",
+    "imageCaption": "정사각형과 안쪽 정삼각형의 꼭짓점·선분을 면 채움 없이 그린다.",
+    "imageSize": "full"
   },
   {
     "id": 15,
@@ -721,7 +730,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "아래 그림에서 $\\triangle ABC$는 $\\angle A=90^\\circ$이고 $\\overline{AB}=\\overline{AC}$인 직각이등변삼각형이다. 두 꼭짓점 $B$, $C$에서 $\\triangle ABC$의 꼭짓점 $A$를 지나는 직선 $l$ 위에 내린 수선의 발을 각각 $D$, $E$라 하자. $\\overline{DE}=28\\,\\mathrm{cm}$, $\\overline{EC}=7\\,\\mathrm{cm}$일 때, $\\overline{BD}$의 길이를 구하면? [4점]",
-    "image": "assets/images/23_연향중_2학기_중간_중1_기출/q15.png",
+    "image": "assets/images/23_연향중_2학기_중간_중1_기출/q15-problem.svg",
     "choices": [
       "$13\\,\\mathrm{cm}$",
       "$15\\,\\mathrm{cm}$",
@@ -747,7 +756,10 @@ window.questionBank = [
     "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q15-solution.svg",
     "solutionImageAlt": "해설 그림: 직선 l 위에 D, A, E가 차례로 있고 B, C에서 내린 수선의 발이 D, E인 직각이등변삼각형 ABC가 있다. 직각삼각형 ABD와 CAE는 합동으로 색칠되고, 같은 길이와 같은 각이 눈금과 호로 표시되며 DE=28 cm, EC=7 cm가 적힌 그림.",
     "solutionImageCaption": "△ABD≅△CAE이므로 AD=CE, BD=AE",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "imageAlt": "직선 D-A-E와 수선 BD·CE, 직각이등변삼각형 ABC를 면 채움 없이 정확한 비율로 그린다.",
+    "imageCaption": "직선 D-A-E와 수선 BD·CE, 직각이등변삼각형 ABC를 면 채움 없이 정확한 비율로 그린다.",
+    "imageSize": "full"
   },
   {
     "id": 16,
@@ -768,7 +780,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "아래 그림에서 $\\angle x$의 크기를 구하면? [4점]",
-    "image": "assets/images/23_연향중_2학기_중간_중1_기출/q16.png",
+    "image": "assets/images/23_연향중_2학기_중간_중1_기출/q16-problem.svg",
     "choices": [
       "$40^\\circ$",
       "$48^\\circ$",
@@ -792,9 +804,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q16-solution.svg",
-    "solutionImageAlt": "해설 그림: 두 삼각형이 한 점에서 꼭짓점이 마주 보며 겹쳐 있고, 왼쪽 삼각형의 각 40°, 35°, 오른쪽 삼각형의 각 27°와 x가 표시되며 교점에서 맞꼭지각 105°와 105°가 같은 호로 표시된 그림.",
-    "solutionImageCaption": "교점의 맞꼭지각 105°와 105°",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "양쪽 삼각형의 교점에 크기가 같은 두 105° 빈 호를 추가하고 나머지 40°·35°·27°·x를 유지한다.",
+    "solutionImageCaption": "양쪽 삼각형의 교점에 크기가 같은 두 105° 빈 호를 추가하고 나머지 40°·35°·27°·x를 유지한다.",
+    "solutionImageSize": "full",
     "rpmPrimaryRecordId": null,
     "rpmPrimaryPath": {
       "majorUnit": "평면도형",
@@ -803,7 +815,10 @@ window.questionBank = [
       "l4": "각의 크기 계산"
     },
     "rpmScope": "M1-2",
-    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT",
+    "imageAlt": "한 점에서 교차하는 두 직선과 양쪽 삼각형의 40°·35°·27°·x 각호를 면 채움 없이 그린다.",
+    "imageCaption": "한 점에서 교차하는 두 직선과 양쪽 삼각형의 40°·35°·27°·x 각호를 면 채움 없이 그린다.",
+    "imageSize": "full"
   },
   {
     "id": 17,
@@ -1045,7 +1060,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "아래 그림에서 $AD\\perp FC$일 때, $x$의 값을 구하고 그 풀이과정을 서술하시오. [5점]",
-    "image": "assets/images/23_연향중_2학기_중간_중1_기출/q21.png",
+    "image": "assets/images/23_연향중_2학기_중간_중1_기출/q21-problem.svg",
     "choices": [],
     "answer": "$15$",
     "solution": "AD⊥FC이므로 ∠AOF=90°이다.\n직선 BOE의 위쪽 각을 합하면 (x+20°)+90°+(3x+10°)=180°이다.\n따라서 4x+120=180, x=15이다.",
@@ -1063,9 +1078,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q21-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 세 직선 AD, BE, CF가 점 O에서 만나는 그림. 직선 BE 위의 평각에 180°가 적혀 있고, ∠BOA=x+20°, ∠FOE=3x+10°가 표시되어 있으며 ∠AOF에는 직각 표시가 있다.",
-    "solutionImageCaption": "직선 BE 위에서 이웃한 세 각 ∠BOA=(x+20)°, ∠AOF=90°, ∠FOE=(3x+10)°의 합이 평각 180°이다.",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "직선 위쪽 두 각의 식과 가운데 직각 90°를 빈 호 및 직각 네모로 표시한다.",
+    "solutionImageCaption": "직선 위쪽 두 각의 식과 가운데 직각 90°를 빈 호 및 직각 네모로 표시한다.",
+    "solutionImageSize": "full",
     "rpmPrimaryRecordId": null,
     "rpmPrimaryPath": {
       "majorUnit": "기본 도형",
@@ -1074,7 +1089,10 @@ window.questionBank = [
       "l4": "각의 크기"
     },
     "rpmScope": "M1-2",
-    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT",
+    "imageAlt": "세 직선과 두 식 x+20°, 3x+10°, 가운데 직각 표식을 그린다.",
+    "imageCaption": "세 직선과 두 식 x+20°, 3x+10°, 가운데 직각 표식을 그린다.",
+    "imageSize": "full"
   },
   {
     "id": 22,
@@ -1096,7 +1114,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "다음 그림에서 $l\\parallel m$일 때, $\\angle x$의 크기를 구하고 그 풀이과정을 서술하시오. [5점]",
-    "image": "assets/images/23_연향중_2학기_중간_중1_기출/q22.png",
+    "image": "assets/images/23_연향중_2학기_중간_중1_기출/q22-problem.svg",
     "choices": [],
     "answer": "$90^\\circ$",
     "solution": "l과 m이 평행하므로 각 선분을 수평선에 대한 방향으로 본다.\n위쪽 선분은 수평선과 40°, 아래쪽 선분은 30°를 이룬다.\n아래 꺾인 점의 80°를 이용하면 가운데 선분은 수평선과 50°를 이루므로 위 꺾인 점의 각은 x=40°+50°=90°이다.",
@@ -1114,9 +1132,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q22-solution.svg",
-    "solutionImageAlt": "해설 그림: 평행한 두 직선 l, m 사이의 꺾인 선에서 꺾인 두 점마다 보조 평행선을 긋고 엇각 40°, 50°, 30°를 같은 색 호로 짝지어 보이며 x가 40°와 50°로 나뉘는 그림",
-    "solutionImageCaption": "보조 평행선을 그으면 엇각 40°, 50°, 30°가 생기고 x는 40°와 50°로 나뉜다.",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "두 꺾인 점에 수평 점선 보조선을 추가하여 엇각 40°·50°·30°와 x=90°의 합을 빈 호로 표시한다.",
+    "solutionImageCaption": "두 꺾인 점에 수평 점선 보조선을 추가하여 엇각 40°·50°·30°와 x=90°의 합을 빈 호로 표시한다.",
+    "solutionImageSize": "full",
     "rpmPrimaryRecordId": null,
     "rpmPrimaryPath": {
       "majorUnit": "기본 도형",
@@ -1125,7 +1143,10 @@ window.questionBank = [
       "l4": "동위각·엇각"
     },
     "rpmScope": "M1-2",
-    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT",
+    "imageAlt": "평행한 위아래 직선과 세 꺾인 선분 및 원본 40°·80°·30°·x 각호를 보인다.",
+    "imageCaption": "평행한 위아래 직선과 세 꺾인 선분 및 원본 40°·80°·30°·x 각호를 보인다.",
+    "imageSize": "full"
   },
   {
     "id": 23,
@@ -1187,7 +1208,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "아래 그림에서 $\\angle x$의 크기를 구하고 그 풀이과정을 서술하시오. [5점]",
-    "image": "assets/images/23_연향중_2학기_중간_중1_기출/q24.png",
+    "image": "assets/images/23_연향중_2학기_중간_중1_기출/q24-problem.svg",
     "choices": [],
     "answer": "$20^\\circ$",
     "solution": "오른쪽 꼭짓점의 외각이 4x+40°이므로 내각은 180°−(4x+40°)=140°−4x이다.\n삼각형의 내각의 합으로 (85°−2x)+75°+(140°−4x)=180°이므로 6x=120, x=20이다.",
@@ -1205,9 +1226,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/23_연향중_2학기_중간_중1_기출/q24-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼각형의 세 내각 85-2x°, 75°, 140-4x°와 꼭짓점 C의 외각 4x+40°를 나타낸 그림",
-    "solutionImageCaption": "꼭짓점 C의 외각이 (4x+40)°이므로 내각은 (140-4x)°이다.",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "내각 45°·75°·60°와 외각 120°가 이루는 삼각형으로, 원문 식 라벨과 평각 관계를 빈 각호로 표시한다.",
+    "solutionImageCaption": "내각 45°·75°·60°와 외각 120°가 이루는 삼각형으로, 원문 식 라벨과 평각 관계를 빈 각호로 표시한다.",
+    "solutionImageSize": "full",
     "rpmPrimaryRecordId": null,
     "rpmPrimaryPath": {
       "majorUnit": "평면도형",
@@ -1216,6 +1237,9 @@ window.questionBank = [
       "l4": "각의 크기 계산"
     },
     "rpmScope": "M1-2",
-    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT",
+    "imageAlt": "밑변을 오른쪽으로 연장한 삼각형에 두 내각과 외각의 식을 원문대로 표시한다.",
+    "imageCaption": "밑변을 오른쪽으로 연장한 삼각형에 두 내각과 외각의 식을 원문대로 표시한다.",
+    "imageSize": "full"
   }
 ];
