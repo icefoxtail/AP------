@@ -1,0 +1,67 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "universe": {
+      "name": "U"
+    },
+    "sets": [
+      {
+        "id": "A",
+        "name": "A"
+      }
+    ],
+    "shade": "A",
+    "elements": [
+      {
+        "text": "1",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "2",
+        "in": []
+      },
+      {
+        "text": "3",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "4",
+        "in": []
+      },
+      {
+        "text": "5",
+        "in": [
+          "A"
+        ]
+      }
+    ]
+  },
+  "caption": "표본공간 S={1,2,3,4,5}에서 사건 A={1,3,5}를 그림으로 구분한다.",
+  "accessibilityDescription": "전체 결과 1,2,3,4,5에서 홀수 1,3,5만 A 내부에 놓이고 짝수 2,4는 바깥에 있다.",
+  "sourceConditions": [
+    {
+      "id": "sample",
+      "condition": "표본공간 S={1,2,3,4,5}",
+      "mappedTo": [
+        "diagram.elements",
+        "diagram.universe"
+      ]
+    },
+    {
+      "id": "odd",
+      "condition": "홀수 사건={1,3,5}",
+      "mappedTo": [
+        "diagram.elements",
+        "diagram.shade"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "표본공간의 각 원소를 빠짐없이 한 번씩 배치해 홀수 사건이 S의 부분집합임을 보여 준다."
+  ]
+}

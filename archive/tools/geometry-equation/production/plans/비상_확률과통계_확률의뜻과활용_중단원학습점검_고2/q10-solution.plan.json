@@ -1,0 +1,62 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "A와 B의 합집합"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A"
+            },
+            {
+              "id": "B"
+            }
+          ],
+          "shade": "A∪B"
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "여사건의 합집합"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A"
+            },
+            {
+              "id": "B"
+            }
+          ],
+          "shade": "(A∩B)^c"
+        }
+      }
+    }
+  ],
+  "caption": "P(A∪B)=4/5이고 드모르간 법칙으로 P(A∩B)=1−5/6=1/6이므로 P(A)+P(B)=29/30이다.",
+  "accessibilityDescription": "왼쪽에는 A 또는 B에 속하는 영역, 오른쪽에는 두 원의 교집합을 제외한 여사건의 합집합을 색으로 나타낸 두 벤다이어그램이 있다.",
+  "sourceConditions": [
+    {
+      "id": "union",
+      "condition": "P(A∪B)=4/5",
+      "mappedTo": "panels[0].plan.diagram.shade"
+    },
+    {
+      "id": "demorgan",
+      "condition": "Aᶜ∪Bᶜ=(A∩B)ᶜ, 확률 5/6",
+      "mappedTo": "panels[1].plan.diagram.shade"
+    }
+  ],
+  "newVisualInformation": [
+    "A∪B와 (A∩B)ᶜ가 다르게 생긴 영역임을 두 그림으로 직접 비교한다."
+  ]
+}

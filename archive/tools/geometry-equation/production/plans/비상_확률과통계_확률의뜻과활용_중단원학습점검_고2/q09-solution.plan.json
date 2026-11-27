@@ -1,0 +1,65 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "HISTOGRAM",
+    "boundaries": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "series": [
+      {
+        "name": "선택 수",
+        "frequencies": [
+          1,
+          16,
+          36,
+          16,
+          1
+        ]
+      }
+    ],
+    "total": 70,
+    "xTitle": "빨간 리본 수",
+    "yTitle": "조합 수",
+    "showValues": true,
+    "highlightClasses": [
+      3,
+      4
+    ],
+    "classSums": [
+      {
+        "series": 0,
+        "from": 3,
+        "to": 4,
+        "label": "17"
+      }
+    ]
+  },
+  "caption": "빨간 리본 4개와 녹색 리본 4개에서 네 개를 뽑을 때 빨간 리본이 세 개 또는 네 개인 17가지가 전체 70가지 중 조건에 맞는다.",
+  "accessibilityDescription": "빨간 리본 개수가 0부터 4까지일 때 가능한 조합 수가 1,16,36,16,1이고 3개와 4개의 막대가 강조되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "total",
+      "condition": "8개 중 4개를 택하는 조합 70가지",
+      "mappedTo": [
+        "chart.total",
+        "chart.series"
+      ]
+    },
+    {
+      "id": "favourable",
+      "condition": "빨간 리본 3개 초록 1개는 16가지, 빨간 4개 초록 0개는 1가지",
+      "mappedTo": [
+        "chart.highlightClasses",
+        "chart.classSums"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "빨간색이 더 많은 사건은 r=3,4 두 막대만 포함하고 r=2는 제외됨을 보여 준다."
+  ]
+}
