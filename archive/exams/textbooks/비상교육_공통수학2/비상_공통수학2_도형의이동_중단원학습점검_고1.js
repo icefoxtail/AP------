@@ -208,7 +208,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-04-CORE",
     "subUnit": "도형의 이동 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/비상_공통수학2_도형의이동_중단원학습점검_고1/q7-solution.svg",
+    "solutionImageAlt": "A(-2,3)를 y=x에 대칭이동한 B(3,-2)와, B를 (2,-2)만큼 옮긴 C(5,-4)는 한 직선 위에 있다.",
+    "solutionImageCaption": "A(-2,3)를 y=x에 대칭이동한 B(3,-2)와, B를 (2,-2)만큼 옮긴 C(5,-4)는 한 직선 위에 있다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,

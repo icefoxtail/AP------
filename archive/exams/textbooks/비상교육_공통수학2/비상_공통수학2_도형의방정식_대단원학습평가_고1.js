@@ -30,7 +30,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
     "subUnit": "평면좌표와 거리",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/비상_공통수학2_도형의방정식_대단원학습평가_고1/q1-solution.svg",
+    "solutionImageAlt": "t=1일 때 A(1,1), B(2,2)로 선분 AB의 길이는 √2, 제곱의 최솟값은 2.",
+    "solutionImageCaption": "t=1일 때 A(1,1), B(2,2)로 선분 AB의 길이는 √2, 제곱의 최솟값은 2.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -203,7 +207,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
     "subUnit": "원의 방정식",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/비상_공통수학2_도형의방정식_대단원학습평가_고1/q7-solution.svg",
+    "solutionImageAlt": "a=2에서 반지름 제곱이 최소 3인 원, 중심 C(−4,6).",
+    "solutionImageCaption": "a=2에서 반지름 제곱이 최소 3인 원, 중심 C(−4,6).",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,

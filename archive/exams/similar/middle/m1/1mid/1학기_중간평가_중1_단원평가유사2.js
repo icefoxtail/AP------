@@ -363,7 +363,15 @@ window.questionBank = [
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "image": "assets/images/1학기_중간평가_중1_단원평가유사2/q13-problem.svg",
+    "imageAlt": "절댓값이 같은 서로 반대 부호의 수를 -a와 a라고 하면 원점의 양쪽에서 같은 거리에 있다. 두 점 사이의 거리는 14이며 a는 아직 정하지 않는다.",
+    "imageCaption": "절댓값이 같은 서로 반대 부호의 수를 -a와 a라고 하면 원점의 양쪽에서 같은 거리에 있다. 두 점 사이의 거리는 14이며 a는 아직 정하지 않는다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/1학기_중간평가_중1_단원평가유사2/q13-solution.svg",
+    "solutionImageAlt": "원점을 중심으로 양쪽으로 7만큼 떨어진 -7, 7의 거리는 14이다. 따라서 두 수는 -7과 7이다.",
+    "solutionImageCaption": "원점을 중심으로 양쪽으로 7만큼 떨어진 -7, 7의 거리는 14이다. 따라서 두 수는 -7과 7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,

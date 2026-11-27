@@ -419,7 +419,11 @@ window.questionBank = [
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_모의고사_3회/q15-solution.svg",
+    "solutionImageAlt": "A(2,-3), B(5,-3), C(5,1), D(2,1)을 이은 직사각형은 가로 3, 세로 4로 넓이 12이다.",
+    "solutionImageCaption": "A(2,-3), B(5,-3), C(5,1), D(2,1)을 이은 직사각형은 가로 3, 세로 4로 넓이 12이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -445,7 +449,11 @@ window.questionBank = [
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_모의고사_3회/q16-solution.svg",
+    "solutionImageAlt": "속력이 일정하다가 점점 감소하여 0으로 멈추고 다시 증가한 뒤 일정해지는 그래프가 ⑤번이다.",
+    "solutionImageCaption": "속력이 일정하다가 점점 감소하여 0으로 멈추고 다시 증가한 뒤 일정해지는 그래프가 ⑤번이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -476,7 +484,11 @@ window.questionBank = [
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_모의고사_3회/q17-solution.svg",
+    "solutionImageAlt": "정비례 y=5x/3의 직선은 원점과 (3,5)를 지나므로 ⑤의 기울기와 일치한다.",
+    "solutionImageCaption": "정비례 y=5x/3의 직선은 원점과 (3,5)를 지나므로 ⑤의 기울기와 일치한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -504,7 +516,11 @@ window.questionBank = [
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_모의고사_3회/q18-solution.svg",
+    "solutionImageAlt": "y=-4x 위에는 (-3,12)가 있으나 (-1/4,-1)은 직선 밖에 있어 정답은 ②이다.",
+    "solutionImageCaption": "y=-4x 위에는 (-3,12)가 있으나 (-1/4,-1)은 직선 밖에 있어 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -567,7 +583,11 @@ window.questionBank = [
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_모의고사_3회/q20-solution.svg",
+    "solutionImageAlt": "점 (2,5)를 지나므로 반비례상수는 2×5=10이고 식은 y=10/x이다.",
+    "solutionImageCaption": "점 (2,5)를 지나므로 반비례상수는 2×5=10이고 식은 y=10/x이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -594,7 +614,11 @@ window.questionBank = [
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_모의고사_3회/q21-solution.svg",
+    "solutionImageAlt": "색칠한 직사각형의 가로는 9-x, 세로는 9-(2x-3)이므로 둘레는 42-6x cm이다.",
+    "solutionImageCaption": "색칠한 직사각형의 가로는 9-x, 세로는 9-(2x-3)이므로 둘레는 42-6x cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -668,7 +692,11 @@ window.questionBank = [
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_모의고사_3회/q24-solution.svg",
+    "solutionImageAlt": "방향이 바뀐 곳은 2,4,5,8분의 네 번이고 총 이동 거리는 400+100+300+400+300=1500m이다.",
+    "solutionImageCaption": "방향이 바뀐 곳은 2,4,5,8분의 네 번이고 총 이동 거리는 400+100+300+400+300=1500m이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,
@@ -695,6 +723,10 @@ window.questionBank = [
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_모의고사_3회/q25-solution.svg",
+    "solutionImageAlt": "A=(1,6), B=(9,6), AB=8이고 O에서 AB까지 높이가 6이므로 삼각형 넓이는 24이다.",
+    "solutionImageCaption": "A=(1,6), B=(9,6), AB=8이고 O에서 AB까지 높이가 6이므로 삼각형 넓이는 24이다.",
+    "solutionImageSize": "full"
   }
 ];

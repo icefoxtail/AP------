@@ -87,7 +87,11 @@ window.questionBank = [
     "content": "두 조건 $p$, $q$가 다음과 같을 때, $p$는 $q$이기 위한 무슨 조건인지 말하시오.\n(1) $p$: $|x|=|y|$, $q$: $x=y$\n(2) $p$: $-1<x<1$, $q$: $(x+3)(x-2)\\le0$",
     "choices": [],
     "answer": "(1) 필요조건 (2) 충분조건",
-    "solution": "$p$가 $q$이기 위한 필요조건이라는 것은 $q\\Rightarrow p$가 참이라는 뜻이고, 충분조건이라는 것은 $p\\Rightarrow q$가 참이라는 뜻이다.\n(1) $x=y$이면 $|x|=|y|$이므로 $q\\Rightarrow p$이다. 따라서 $p$는 $q$이기 위한 필요조건이다.\n(2) $-1<x<1$이면 $x+3>0$이고 $x-2<0$이므로 $(x+3)(x-2)<0$이다. 따라서 $(x+3)(x-2)\\le0$이고 $p\\Rightarrow q$이므로 $p$는 $q$이기 위한 충분조건이다."
+    "solution": "$p$가 $q$이기 위한 필요조건이라는 것은 $q\\Rightarrow p$가 참이라는 뜻이고, 충분조건이라는 것은 $p\\Rightarrow q$가 참이라는 뜻이다.\n(1) $x=y$이면 $|x|=|y|$이므로 $q\\Rightarrow p$이다. 따라서 $p$는 $q$이기 위한 필요조건이다.\n(2) $-1<x<1$이면 $x+3>0$이고 $x-2<0$이므로 $(x+3)(x-2)<0$이다. 따라서 $(x+3)(x-2)\\le0$이고 $p\\Rightarrow q$이므로 $p$는 $q$이기 위한 충분조건이다.",
+    "solutionImage": "assets/images/비상_공통수학2_명제_중단원학습점검_고1/qid_v1_1560637dc58248b8da018f2ac85b048e9e68fdb91d0d7ce704bfb0892dc2c58b-solution.svg",
+    "solutionImageAlt": "-1<x<1은 -3≤x≤2에 포함되므로 조건 p는 조건 q의 충분조건이다.",
+    "solutionImageCaption": "-1<x<1은 -3≤x≤2에 포함되므로 조건 p는 조건 q의 충분조건이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "qid_v1_e37c91673e971a7a30032c6494a7adabaf707a0cabcc225a753a47da1f4ade70",

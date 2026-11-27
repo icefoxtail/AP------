@@ -393,7 +393,11 @@ window.questionBank = [
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_모의고사_5회/q14-solution.svg",
+    "solutionImageAlt": "아래에서 위로 넓어졌다가 좁아지는 물통에 물을 채우면 높이 증가 속도가 처음에는 느려지고 다시 빨라진다.",
+    "solutionImageCaption": "아래에서 위로 넓어졌다가 좁아지는 물통에 물을 채우면 높이 증가 속도가 처음에는 느려지고 다시 빨라진다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -483,7 +487,11 @@ window.questionBank = [
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_모의고사_5회/q17-solution.svg",
+    "solutionImageAlt": "원점과 (-3,5), (6,-10)을 잇는 직선으로 정비례상수 -5/3을 설명한다.",
+    "solutionImageCaption": "원점과 (-3,5), (6,-10)을 잇는 직선으로 정비례상수 -5/3을 설명한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -571,7 +579,11 @@ window.questionBank = [
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_모의고사_5회/q20-solution.svg",
+    "solutionImageAlt": "x=6인 교점 A는 정비례 그래프에서 y=4이므로 반비례 곡선 위에서도 xy=24이다.",
+    "solutionImageCaption": "x=6인 교점 A는 정비례 그래프에서 y=4이므로 반비례 곡선 위에서도 xy=24이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -670,7 +682,11 @@ window.questionBank = [
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_모의고사_5회/q24-solution.svg",
+    "solutionImageAlt": "A(2,3), B(-3,4), C(-3,-3), D(2,1)을 연결한 사각형 ABCD와 좌표축.",
+    "solutionImageCaption": "A(2,3), B(-3,4), C(-3,-3), D(2,1)을 연결한 사각형 ABCD와 좌표축.",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,
@@ -697,6 +713,10 @@ window.questionBank = [
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_모의고사_5회/q25-solution.svg",
+    "solutionImageAlt": "두 점 (2,10), (-5,-4)는 같은 반비례 곡선 y=20/x 위에 있으므로 k=-4이다.",
+    "solutionImageCaption": "두 점 (2,10), (-5,-4)는 같은 반비례 곡선 y=20/x 위에 있으므로 k=-4이다.",
+    "solutionImageSize": "full"
   }
 ];

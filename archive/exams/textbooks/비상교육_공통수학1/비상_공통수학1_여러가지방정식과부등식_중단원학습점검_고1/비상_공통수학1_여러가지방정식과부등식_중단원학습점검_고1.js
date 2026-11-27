@@ -111,7 +111,11 @@ window.questionBank = [
     "content": "다음 연립부등식을 푸시오.\n⑴ $\\begin{cases} -3x-2<4 \\\\ 2x+3(x-1)\\le2 \\end{cases}$\n⑵ $\\begin{cases} x^2+5x+4\\le0 \\\\ 2x^2+5x-3>0 \\end{cases}$",
     "choices": [],
     "answer": "⑴ $-2<x\\le 1$\n⑵ $-4\\le x<-3$",
-    "solution": "⑴ $-3x-2<4$에서 $-3x<6$이므로 $x>-2$\n$2x+3(x-1)\\le 2$에서 $5x-3\\le 2$이므로 $x\\le 1$\n공통부분은 $-2<x\\le 1$\n⑵ $x^2+5x+4=(x+1)(x+4)\\le 0$에서 $-4\\le x\\le -1$\n$2x^2+5x-3=(2x-1)(x+3)>0$에서 $x<-3$ 또는 $x>\\frac{1}{2}$\n공통부분은 $-4\\le x<-3$"
+    "solution": "⑴ $-3x-2<4$에서 $-3x<6$이므로 $x>-2$\n$2x+3(x-1)\\le 2$에서 $5x-3\\le 2$이므로 $x\\le 1$\n공통부분은 $-2<x\\le 1$\n⑵ $x^2+5x+4=(x+1)(x+4)\\le 0$에서 $-4\\le x\\le -1$\n$2x^2+5x-3=(2x-1)(x+3)>0$에서 $x<-3$ 또는 $x>\\frac{1}{2}$\n공통부분은 $-4\\le x<-3$",
+    "solutionImage": "assets/images/비상_공통수학1_여러가지방정식과부등식_중단원학습점검_고1/q4-solution.svg",
+    "solutionImageAlt": "⑵ −4≤x≤−1과 x<−3 또는 x>1/2의 공통 범위는 −4≤x<−3이다.",
+    "solutionImageCaption": "⑵ −4≤x≤−1과 x<−3 또는 x>1/2의 공통 범위는 −4≤x<−3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -223,7 +227,11 @@ window.questionBank = [
     "content": "부등식 $|x-1|+2|x-2|\\le4$를 만족시키는 실수 $x$의 최댓값을 구하시오.",
     "choices": [],
     "answer": "$3$",
-    "solution": "$x=1,\\ 2$를 기준으로 범위를 나눈다.\n(i) $x<1$: $-(x-1)-2(x-2)=-3x+5\\le 4$에서 $x\\ge\\frac{1}{3}$이므로 $\\frac{1}{3}\\le x<1$\n(ii) $1\\le x<2$: $(x-1)-2(x-2)=-x+3\\le 4$에서 $x\\ge -1$이므로 $1\\le x<2$ 전체\n(iii) $x\\ge 2$: $(x-1)+2(x-2)=3x-5\\le 4$에서 $x\\le 3$이므로 $2\\le x\\le 3$\n해는 $\\frac{1}{3}\\le x\\le 3$이므로 $x$의 최댓값은 $3$이다."
+    "solution": "$x=1,\\ 2$를 기준으로 범위를 나눈다.\n(i) $x<1$: $-(x-1)-2(x-2)=-3x+5\\le 4$에서 $x\\ge\\frac{1}{3}$이므로 $\\frac{1}{3}\\le x<1$\n(ii) $1\\le x<2$: $(x-1)-2(x-2)=-x+3\\le 4$에서 $x\\ge -1$이므로 $1\\le x<2$ 전체\n(iii) $x\\ge 2$: $(x-1)+2(x-2)=3x-5\\le 4$에서 $x\\le 3$이므로 $2\\le x\\le 3$\n해는 $\\frac{1}{3}\\le x\\le 3$이므로 $x$의 최댓값은 $3$이다.",
+    "solutionImage": "assets/images/비상_공통수학1_여러가지방정식과부등식_중단원학습점검_고1/q8-solution.svg",
+    "solutionImageAlt": "|x−1|+2|x−2|≤4의 해는 1/3≤x≤3이며 절댓값의 식은 x=1과 x=2에서 바뀐다.",
+    "solutionImageCaption": "|x−1|+2|x−2|≤4의 해는 1/3≤x≤3이며 절댓값의 식은 x=1과 x=2에서 바뀐다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -279,7 +287,11 @@ window.questionBank = [
     "content": "두 이차방정식 $x^2+4x+a+6=0$, $x^2-2ax-4a+5=0$이 모두 허근을 갖도록 하는 실수 $a$의 값의 범위를 구하시오.",
     "choices": [],
     "answer": "$-2<a<1$",
-    "solution": "두 이차방정식이 모두 허근을 가지려면 두 판별식이 모두 $0$보다 작아야 한다.\n$x^2+4x+a+6=0$: $\\frac{D_1}{4}=4-(a+6)=-a-2<0$에서 $a>-2$\n$x^2-2ax-4a+5=0$: $\\frac{D_2}{4}=a^2-(-4a+5)=a^2+4a-5=(a+5)(a-1)<0$에서 $-5<a<1$\n공통부분은 $-2<a<1$"
+    "solution": "두 이차방정식이 모두 허근을 가지려면 두 판별식이 모두 $0$보다 작아야 한다.\n$x^2+4x+a+6=0$: $\\frac{D_1}{4}=4-(a+6)=-a-2<0$에서 $a>-2$\n$x^2-2ax-4a+5=0$: $\\frac{D_2}{4}=a^2-(-4a+5)=a^2+4a-5=(a+5)(a-1)<0$에서 $-5<a<1$\n공통부분은 $-2<a<1$",
+    "solutionImage": "assets/images/비상_공통수학1_여러가지방정식과부등식_중단원학습점검_고1/q10-solution.svg",
+    "solutionImageAlt": "두 이차방정식이 모두 허근을 가질 조건 a>−2와 −5<a<1의 공통 범위는 −2<a<1이다.",
+    "solutionImageCaption": "두 이차방정식이 모두 허근을 가질 조건 a>−2와 −5<a<1의 공통 범위는 −2<a<1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -307,7 +319,15 @@ window.questionBank = [
     "content": "다음 그림과 같은 다락방에 단면이 직각삼각형 모양인 수납공간을 만들려고 한다. 직각삼각형의 빗변의 길이가 $3\\text{ m}$이고 넓이가 $\\dfrac{7}{4}\\text{ m}^2$일 때, 직각삼각형의 가장 짧은 변의 길이는 몇 $\\text{m}$인지 구하시오.\n<img src=\"q11.png\" />",
     "choices": [],
     "answer": "$\\frac{4-\\sqrt{2}}{2}\\text{ m}$",
-    "solution": "직각삼각형에서 직각을 낀 두 변의 길이를 $p,\\ q$ ($p>q$)라 하자. 빗변의 길이가 $3$이므로 $p^2+q^2=9$이고, 넓이가 $\\frac{7}{4}$이므로 $\\frac{1}{2}pq=\\frac{7}{4}$에서 $pq=\\frac{7}{2}$이다.\n$$(p+q)^2=p^2+q^2+2pq=9+7=16\\ \\Rightarrow\\ p+q=4$$\n$$(p-q)^2=p^2+q^2-2pq=9-7=2\\ \\Rightarrow\\ p-q=\\sqrt{2}\\ (p>q)$$\n따라서 $p=\\frac{4+\\sqrt{2}}{2},\\ q=\\frac{4-\\sqrt{2}}{2}$이다. 가장 짧은 변은 $q$이고 빗변은 $3$보다 크므로 가장 짧은 변의 길이는\n$$\\frac{4-\\sqrt{2}}{2}=2-\\frac{\\sqrt{2}}{2}\\text{ m}$$"
+    "solution": "직각삼각형에서 직각을 낀 두 변의 길이를 $p,\\ q$ ($p>q$)라 하자. 빗변의 길이가 $3$이므로 $p^2+q^2=9$이고, 넓이가 $\\frac{7}{4}$이므로 $\\frac{1}{2}pq=\\frac{7}{4}$에서 $pq=\\frac{7}{2}$이다.\n$$(p+q)^2=p^2+q^2+2pq=9+7=16\\ \\Rightarrow\\ p+q=4$$\n$$(p-q)^2=p^2+q^2-2pq=9-7=2\\ \\Rightarrow\\ p-q=\\sqrt{2}\\ (p>q)$$\n따라서 $p=\\frac{4+\\sqrt{2}}{2},\\ q=\\frac{4-\\sqrt{2}}{2}$이다. 가장 짧은 변은 $q$이고 빗변은 $3$보다 크므로 가장 짧은 변의 길이는\n$$\\frac{4-\\sqrt{2}}{2}=2-\\frac{\\sqrt{2}}{2}\\text{ m}$$",
+    "image": "assets/images/비상_공통수학1_여러가지방정식과부등식_중단원학습점검_고1/q11-problem.svg",
+    "imageAlt": "다락방 수납공간의 단면은 빗변이 3m인 직각삼각형이다. 두 직각변의 길이는 문제 그림에 쓰지 않는다.",
+    "imageCaption": "다락방 수납공간의 단면은 빗변이 3m인 직각삼각형이다. 두 직각변의 길이는 문제 그림에 쓰지 않는다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/비상_공통수학1_여러가지방정식과부등식_중단원학습점검_고1/q11-solution.svg",
+    "solutionImageAlt": "빗변 3m와 넓이 7/4m²에서 pq=7/2, p²+q²=9이고 p>q이다. 따라서 p+q=4, p−q=√2이다.",
+    "solutionImageCaption": "빗변 3m와 넓이 7/4m²에서 pq=7/2, p²+q²=9이고 p>q이다. 따라서 p+q=4, p−q=√2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -335,6 +355,10 @@ window.questionBank = [
     "content": "$x$에 대한 연립부등식 $\\begin{cases} x^2-(a-1)x-a<0 \\\\ x^2+(a+5)x+5a<0 \\end{cases}$의 해가 존재하지 않도록 하는 양수 $a$의 값의 범위를 구하시오.",
     "choices": [],
     "answer": "$a\\ge 1$",
-    "solution": "$x^2-(a-1)x-a=(x-a)(x+1)<0$에서 $a>0$이므로 $-1<x<a$\n$x^2+(a+5)x+5a=(x+5)(x+a)<0$의 해는 $a$의 값에 따라 다르다.\n(i) $0<a<5$: $-5<x<-a$ ($-5<-a<0$)\n이 구간과 $-1<x<a$가 겹치지 않으려면 $-a\\le -1$이어야 한다. 따라서 $a\\ge 1$이므로 $1\\le a<5$\n(ii) $a=5$: $(x+5)^2<0$이므로 해가 없다. 따라서 연립부등식의 해도 없다.\n(iii) $a>5$: $-a<x<-5$이고 이는 $-1<x<a$와 겹치지 않는다. 따라서 연립부등식의 해가 없다.\n(i), (ii), (iii)을 합하면 $a\\ge 1$"
+    "solution": "$x^2-(a-1)x-a=(x-a)(x+1)<0$에서 $a>0$이므로 $-1<x<a$\n$x^2+(a+5)x+5a=(x+5)(x+a)<0$의 해는 $a$의 값에 따라 다르다.\n(i) $0<a<5$: $-5<x<-a$ ($-5<-a<0$)\n이 구간과 $-1<x<a$가 겹치지 않으려면 $-a\\le -1$이어야 한다. 따라서 $a\\ge 1$이므로 $1\\le a<5$\n(ii) $a=5$: $(x+5)^2<0$이므로 해가 없다. 따라서 연립부등식의 해도 없다.\n(iii) $a>5$: $-a<x<-5$이고 이는 $-1<x<a$와 겹치지 않는다. 따라서 연립부등식의 해가 없다.\n(i), (ii), (iii)을 합하면 $a\\ge 1$",
+    "solutionImage": "assets/images/비상_공통수학1_여러가지방정식과부등식_중단원학습점검_고1/q12-solution.svg",
+    "solutionImageAlt": "a=1이면 첫 조건의 해는 −1<x<1, 둘째 조건의 해는 −5<x<−1이므로 공통 해가 없다. 일반 판정은 a≥1이다.",
+    "solutionImageCaption": "a=1이면 첫 조건의 해는 −1<x<1, 둘째 조건의 해는 −5<x<−1이므로 공통 해가 없다. 일반 판정은 a≥1이다.",
+    "solutionImageSize": "full"
   }
 ];

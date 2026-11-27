@@ -30,7 +30,11 @@ window.questionBank = [
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_모의고사_2회/q1-solution.svg",
+    "solutionImageAlt": "대각선 5를 밑변으로 하는 삼각형과 두 변 b, 3을 갖는 삼각형의 넓이를 더해 (5a+3b)/2를 구한다.",
+    "solutionImageCaption": "대각선 5를 밑변으로 하는 삼각형과 두 변 b, 3을 갖는 삼각형의 넓이를 더해 (5a+3b)/2를 구한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -398,7 +402,11 @@ window.questionBank = [
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_모의고사_2회/q14-solution.svg",
+    "solutionImageAlt": "C는 x축 위의 (-1,0)이므로 보기의 (0,-1) 표기가 틀리다.",
+    "solutionImageCaption": "C는 x축 위의 (-1,0)이므로 보기의 (0,-1) 표기가 틀리다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -457,7 +465,11 @@ window.questionBank = [
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_모의고사_2회/q16-solution.svg",
+    "solutionImageAlt": "재홍의 그래프에는 수평 구간이 없으므로 그는 출발 후 쉬지 않고 이동하였다.",
+    "solutionImageCaption": "재홍의 그래프에는 수평 구간이 없으므로 그는 출발 후 쉬지 않고 이동하였다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -516,7 +528,11 @@ window.questionBank = [
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_모의고사_2회/q18-solution.svg",
+    "solutionImageAlt": "높이 5와 넓이 20으로 OB=8이고, A=(8,5)이므로 비례상수는 5/8이다.",
+    "solutionImageCaption": "높이 5와 넓이 20으로 OB=8이고, A=(8,5)이므로 비례상수는 5/8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -576,7 +592,11 @@ window.questionBank = [
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_모의고사_2회/q20-solution.svg",
+    "solutionImageAlt": "반비례 y=-10/x는 제2·4사분면에 있고 x가 양수일 때 x가 커지면 y도 증가한다.",
+    "solutionImageCaption": "반비례 y=-10/x는 제2·4사분면에 있고 x가 양수일 때 x가 커지면 y도 증가한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

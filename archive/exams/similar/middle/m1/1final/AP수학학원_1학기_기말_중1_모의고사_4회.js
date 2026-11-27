@@ -391,7 +391,11 @@ window.questionBank = [
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_모의고사_4회/q14-solution.svg",
+    "solutionImageAlt": "P(5,-2)를 x축에 대칭시키면 x좌표는 그대로이고 y좌표의 부호가 바뀌어 Q(5,2)가 된다.",
+    "solutionImageCaption": "P(5,-2)를 x축에 대칭시키면 x좌표는 그대로이고 y좌표의 부호가 바뀌어 Q(5,2)가 된다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -566,7 +570,11 @@ window.questionBank = [
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_모의고사_4회/q20-solution.svg",
+    "solutionImageAlt": "반비례 그래프의 점 P에서 만든 직사각형 넓이 xy는 주어진 15로 일정하다.",
+    "solutionImageCaption": "반비례 그래프의 점 P에서 만든 직사각형 넓이 xy는 주어진 15로 일정하다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -592,7 +600,11 @@ window.questionBank = [
     "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
     "subUnit": "평면도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_모의고사_4회/q21-solution.svg",
+    "solutionImageAlt": "평행한 두 밑변 a,b와 그 사이 수직 높이 h를 확인하는 사다리꼴 넓이 설명도.",
+    "solutionImageCaption": "평행한 두 밑변 a,b와 그 사이 수직 높이 h를 확인하는 사다리꼴 넓이 설명도.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
