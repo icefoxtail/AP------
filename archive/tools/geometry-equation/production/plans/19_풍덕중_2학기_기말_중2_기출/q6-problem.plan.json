@@ -1,0 +1,45 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      4,
+      -4,
+      4
+    ],
+    "curves": [
+      {
+        "id": "g1",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "y=ax-b"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "주어진 증가하는 직선 y=ax-b의 위치와 x축, y축",
+  "sourceConditions": [
+    {
+      "id": "given-line",
+      "condition": "y=ax-b는 오른쪽 위로 증가하고 y축의 양수 부분과 x축의 음수 부분을 지난다.",
+      "mappedTo": [
+        "graphPlan.curves.g1"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "문제에 없는 y=-ax+b의 그래프는 그리지 않는다."
+  ]
+}
