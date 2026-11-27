@@ -1,0 +1,23 @@
+{
+  "capability":"number-line-figure-v1",
+  "numberLine":{
+    "variable":"t",
+    "rows":[{"kind":"POINTS","label":"이동 시간","band":false,"points":[
+      {"id":"O","name":"출발","value":"0","showValue":true},
+      {"id":"B","name":"버스","value":"10","showValue":true},
+      {"id":"C","name":"자전거","value":"50","showValue":true}
+    ],"spans":[
+      {"from":"O","to":"B","label":"버스","style":"BRACE","side":"ABOVE"},
+      {"from":"O","to":"C","label":"자전거","style":"BRACE","side":"BELOW"},
+      {"from":"B","to":"C","label":"시간차","style":"ARROW","side":"ABOVE"}
+    ]}]
+  },
+  "numberLineCaption":{"text":"같은 거리, 다른 걸린 시간"},
+  "caption":"거리 x=20/3km이면 버스로 10분, 자전거로 50분 걸려 차이는 40분이다.",
+  "accessibilityDescription":"시간 수직선에서 출발 시각 0분, 버스 10분, 자전거 50분과 두 도착 시각 사이 40분의 차이가 표시되어 있다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"같은 거리 x를 버스 40km/h, 자전거 8km/h로 이동한다.","mappedTo":["caption","numberLine.rows"]},
+    {"id":"c2","condition":"x/8-x/40=2/3시간의 해 x=20/3km이므로 걸린 시간은 각각 50분, 10분이다.","mappedTo":["numberLine.rows","caption"]}
+  ],
+  "newVisualInformation":["동일 출발점에서 두 도착 시각의 차이 40분을 괄호와 화살표로 나타낸다."]
+}

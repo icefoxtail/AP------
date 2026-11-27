@@ -1,0 +1,19 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "graphPlan":{
+    "family":"multi-curve","viewport":[-4,4,-5,5],
+    "curves":[{"id":"f","kind":"LINE","coefficients":["0","-2"],"domain":["-4","4"],"label":"y=-2x","color":"BLUE"}],
+    "axisTickValues":{"x":["-2","1"],"y":["4","-2"]},
+    "overlays":{
+      "points":[{"id":"P","x":"1","y":"-2","coordinates":true},{"id":"Q","x":"-2","y":"4","coordinates":true}],
+      "guides":[{"id":"gQ","from":"Q","axis":"x"},{"id":"gP","from":"P","axis":"y"}]
+    }
+  },
+  "caption":"(1,-2)에서 a=-2이고 (-2,4)에서 b=-2이므로 a+b=-4이다.",
+  "accessibilityDescription":"기울기가 -2인 정비례 직선 위에 (1,-2)와 (-2,4)를 표시하고 두 점의 축 방향 보조선을 그렸다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"x=1일 때 y=-2이므로 비례상수 a=-2이다.","mappedTo":["graphPlan.curves","graphPlan.overlays.points"]},
+    {"id":"c2","condition":"y=4일 때 x=b=-2이며 두 값의 합은 -4이다.","mappedTo":["graphPlan.overlays.points","graphPlan.overlays.guides","caption"]}
+  ],
+  "newVisualInformation":["a=-2의 식과 b=-2인 축 값, 두 격자점의 보조선을 보인다."]
+}

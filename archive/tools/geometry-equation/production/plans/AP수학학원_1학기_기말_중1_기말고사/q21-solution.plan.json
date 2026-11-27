@@ -1,0 +1,21 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-9, 9, -5, 5],
+    "curves": [
+      {"id":"line","kind":"LINE","coefficients":["0","-1/3"],"domain":["-9","9"],"label":"y=-x/3","color":"BLUE"},
+      {"id":"inverse","kind":"RATIONAL","numerator":["-12","0"],"denominator":["0","1"],"domain":["-9","9"],"label":"y=-12/x","color":"WARM"}
+    ],
+    "axisTickValues": {"x":["-6"],"y":["2"]},
+    "overlays": {"points":[{"id":"P","x":"-6","y":"2","coordinates":true}]}
+  },
+  "caption": "교점 (-6,2)를 대입하면 a=-1/3, b=-12이고 ab=4이다.",
+  "accessibilityDescription": "점 (-6,2)를 지나는 직선 y=-x/3과 반비례 곡선 y=-12/x가 같은 좌표축에 표시되어 있다.",
+  "sourceConditions": [
+    {"id":"c1","condition":"(-6,2)를 y=ax에 대입하면 a=-1/3이다.","mappedTo":["graphPlan.curves.line","graphPlan.overlays.points"]},
+    {"id":"c2","condition":"(-6,2)를 y=b/x에 대입하면 b=-12이다.","mappedTo":["graphPlan.curves.inverse","graphPlan.overlays.points"]},
+    {"id":"c3","condition":"따라서 ab=4이다.","mappedTo":"caption"}
+  ],
+  "newVisualInformation": ["두 함수의 정확한 식과 공통 교점을 같은 축에서 대조한다."]
+}

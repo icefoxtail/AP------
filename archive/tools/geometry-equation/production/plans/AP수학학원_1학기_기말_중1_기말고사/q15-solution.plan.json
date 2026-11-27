@@ -1,0 +1,21 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"U","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-3"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"CONCLUSION"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"-2"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"}
+  ]},
+  "displayPoints":["O","A","B","C","D","E"],"displaySegments":[],"displayLines":[],"coordinateLabels":["C"],
+  "coordinateCanvas":{"width":560,"height":480},"axisTickValues":{"x":[-4,-2,2,4],"y":[-4,-2,2,4]},
+  "caption":"선택지 중 좌표가 맞는 점은 C(4,3)이며 정답은 ③이다.",
+  "accessibilityDescription":"다섯 점 중 C의 좌표 (4,3)를 정확히 읽을 수 있도록 C점 좌표를 표시한다. 다른 점도 기존 그림의 위치와 같다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"문제 PNG에서 C점은 x=4, y=3에 찍혀 있고 정답 선택지는 ③이다.","mappedTo":["mathPlan.nodes","coordinateLabels"]},
+    {"id":"c2","condition":"현재 JS 해설의 A(-2,2)는 PNG의 A(-3,2)와 일치하지 않는다; 좌표를 조용히 바꾸지 않고 원본 PNG 관계를 유지한다.","mappedTo":["mathPlan.nodes","PRESERVED_ARCHIVE_BANK"]}
+  ],
+  "newVisualInformation":["선택지 ③의 C점 좌표를 정확히 붙이되 나머지 점의 실제 PNG 위치는 유지한다."]
+}

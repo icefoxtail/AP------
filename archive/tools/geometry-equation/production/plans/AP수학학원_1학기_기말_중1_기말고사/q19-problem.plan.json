@@ -1,0 +1,17 @@
+{
+  "capability":"trigonometric-spike-v1",
+  "graphPlan":{
+    "family":"trigonometric","function":"COS","ratePi":"1/10",
+    "coefficients":["-25/2","35/2"],"phasePi":"0",
+    "sourceDomain":{"kind":"INTERVAL","range":["0","60"],"states":["CLOSED","CLOSED"]},
+    "keyPoints":true,"axisTickValues":{"x":["10","20","30","40","50"],"y":["5","20","30"]},
+    "axisTitles":{"x":"시간(분)","y":"높이(m)"},"displaySize":"full"
+  },
+  "caption":"관람차는 운행 시작 높이 5m에서 출발해 10분마다 최고·최저 높이가 번갈아 나타나며, 20분마다 한 바퀴를 돈다.",
+  "accessibilityDescription":"높이는 t=0분과 20분, 40분, 60분에 5m로 최소, t=10분, 30분, 50분에 30m로 최대인 주기 20분의 완만한 곡선이다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"원본 관람차 그림에서 출발점 높이 5m, 최고점 30m, 20분 간격 반복이다.","mappedTo":["graphPlan.coefficients","graphPlan.ratePi","graphPlan.keyPoints"]},
+    {"id":"c2","condition":"60분 동안 반복되는 원본 곡선의 시간·높이 축과 눈금을 보존한다.","mappedTo":["graphPlan.sourceDomain","graphPlan.axisTickValues","graphPlan.axisTitles"]}
+  ],
+  "newVisualInformation":["원본의 세 차례 최고점·최저점을 정확한 시간과 높이로 그린다."]
+}

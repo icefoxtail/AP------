@@ -1,0 +1,16 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve", "viewport": [-10, 10, -14, 15],
+    "curves": [{"id":"f","kind":"RATIONAL","numerator":["-36","0"],"denominator":["0","1"],"domain":["-10","10"],"label":"y=-36/x","color":"BLUE"}],
+    "axisTickValues": {"x":["-9","3"],"y":["4","-12"]},
+    "overlays": {"points":[{"id":"A","x":"-9","y":"4","coordinates":true},{"id":"B","x":"3","y":"-12","coordinates":true}]}
+  },
+  "caption": "y=-36/x에 x=-9를 넣으면 a=4이고 y=-12를 넣으면 b=3이어서 a+b=7이다.",
+  "accessibilityDescription": "제2사분면의 점 (-9,4), 제4사분면의 점 (3,-12)가 같은 반비례 곡선 y=-36/x 위에 있다.",
+  "sourceConditions": [
+    {"id":"c1","condition":"반비례식 y=-36/x이다.","mappedTo":"graphPlan.curves.f"},
+    {"id":"c2","condition":"(-9,a)에서 a=4, (b,-12)에서 b=3이다.","mappedTo":["graphPlan.overlays.points","caption"]}
+  ],
+  "newVisualInformation": ["두 주어진 점이 서로 다른 사분면에서 한 반비례 곡선에 놓임을 보여 준다."]
+}

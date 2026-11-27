@@ -1,0 +1,21 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"U","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-3"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"-2"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"}
+  ]},
+  "displayPoints":["O","A","B","C","D","E"],"displaySegments":[],"displayLines":[],"coordinateLabels":[],
+  "coordinateCanvas":{"width":560,"height":480},"axisTickValues":{"x":[-4,-2,2,4],"y":[-4,-2,2,4]},
+  "caption":"주어진 좌표평면에서 점 A, B, C, D, E의 위치를 보고 각 선택지의 좌표를 판단한다.",
+  "accessibilityDescription":"원점과 좌표축을 기준으로 A는 왼쪽 위, B는 y축 위, C는 오른쪽 위, D는 오른쪽 아래, E는 x축 왼쪽에 있다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"기존 문제 PNG에서 A(-3,2), B(0,1), C(4,3), D(3,-2), E(-4,0)가 확인된다.","mappedTo":["mathPlan.nodes","displayPoints"]},
+    {"id":"c2","condition":"발문은 네 점이라 하지만 실제 그림과 선택지는 E까지 다섯 점을 포함한다; 문제 그림에는 정답 선택지를 강조하지 않는다.","mappedTo":["displayPoints","PRESERVED_ARCHIVE_BANK"]}
+  ],
+  "newVisualInformation":["기존 PNG의 다섯 점과 x/y축 눈금의 관계를 그려지는 SOURCE_POINT로 복원한다."]
+}

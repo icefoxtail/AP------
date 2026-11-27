@@ -1,0 +1,20 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "graphPlan":{
+    "family":"multi-curve","viewport":[-4,4,-5,5],
+    "curves":[{"id":"f","kind":"LINE","coefficients":["0","-2"],"domain":["-4","4"],"label":"y=ax","color":"BLUE"}],
+    "axisTickValues":{"x":["1"],"y":["4","-2"]},
+    "overlays":{
+      "points":[{"id":"P","x":"1","y":"-2","unnamed":true},{"id":"Q","x":"-2","y":"4","unnamed":true},{"id":"R","x":"-2","y":"0","unnamed":true}],
+      "guides":[{"id":"gQ","from":"Q","axis":"x"},{"id":"gP","from":"P","axis":"y"}],
+      "callouts":[{"id":"bLabel","point":"R","text":"b","labelKind":"MATH"}]
+    }
+  },
+  "caption":"정비례 직선 y=ax가 주어진 격자점 (1,-2)와 (b,4)를 지나고 x축의 b 위치에 점선 안내가 그려져 있다.",
+  "accessibilityDescription":"원점을 지나는 오른쪽 하향 직선이 (1,-2)를 지나고 y=4인 점에서 x축으로 점선이 내려가 b라고 표시된 위치에 닿는다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"주어진 그림은 원점을 지나는 y=ax이며 x=1에서 y=-2이다. 문제 축에서는 a의 수치값을 쓰지 않는다.","mappedTo":["graphPlan.curves","graphPlan.overlays.points"]},
+    {"id":"c2","condition":"y=4인 지점의 x좌표는 그림에서 b라고 표시되며 a+b의 수치는 문제 그림에 쓰지 않는다.","mappedTo":["graphPlan.overlays.guides","graphPlan.overlays.callouts"]}
+  ],
+  "newVisualInformation":["계수가 문자 a인 하향 직선, 두 출처 점과 점선 안내, x축 b 라벨을 실제로 그린다."]
+}

@@ -1,0 +1,20 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-9, 9, -5, 5],
+    "curves": [
+      {"id":"line","kind":"LINE","coefficients":["0","-1/3"],"domain":["-9","9"],"label":"y=ax","color":"BLUE"},
+      {"id":"inverse","kind":"RATIONAL","numerator":["-12","0"],"denominator":["0","1"],"domain":["-9","9"],"label":"y=b/x","color":"WARM"}
+    ],
+    "axisTickValues": {"x":["-6"],"y":["2"]},
+    "overlays": {"points":[{"id":"P","x":"-6","y":"2","coordinates":true}]}
+  },
+  "caption": "직선 y=ax와 반비례 곡선 y=b/x가 주어진 점 (-6, 2)에서 만난다.",
+  "accessibilityDescription": "제2사분면에서 직선과 반비례 곡선이 점 (-6, 2)를 함께 지난다. 식의 계수는 문자 그대로 표시한다.",
+  "sourceConditions": [
+    {"id":"c1","condition":"문제 그림의 직선 y=ax는 원점을 지나며 점 (-6,2)를 지난다; 계수 a를 학생에게 표시하지 않는다.","mappedTo":["graphPlan.curves.line","graphPlan.overlays.points"]},
+    {"id":"c2","condition":"반비례 곡선 y=b/x도 점 (-6,2)를 지나고 x=0은 정의역 밖이다; 계수 b를 표시하지 않는다.","mappedTo":["graphPlan.curves.inverse","graphPlan.overlays.points"]}
+  ],
+  "newVisualInformation": ["교점 (-6,2), 두 함수의 곡선 모양과 축, y=ax 및 y=b/x의 구별을 그린다."]
+}

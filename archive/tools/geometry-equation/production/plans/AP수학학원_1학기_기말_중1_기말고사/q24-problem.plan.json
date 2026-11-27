@@ -1,0 +1,24 @@
+{
+  "capability":"piecewise-polynomial-spike-v1",
+  "graphPlan":{
+    "family":"piecewise-polynomial",
+    "pieces":[{"coefficients":["0"]},{"coefficients":["-2/3","1/15"]},{"coefficients":["2"]}],
+    "breakpoints":[{"x":"10","y":"0"},{"x":"40","y":"2"}],
+    "sourceDomain":{"kind":"INTERVAL","range":["0","60"],"states":["CLOSED","CLOSED"]},
+    "functionName":"r",
+    "overlays":{"lines":[{"id":"t","slope":"1/30","intercept":"0","label":"t"}]},
+    "requiredPoints":[{"id":"O","x":0,"y":0},{"id":"A","x":10,"y":0},{"id":"B","x":40,"y":2},{"id":"F","x":60,"y":2}],
+    "domain":[0,60],"viewport":[0,60,0,2.2],
+    "axisTickValues":{"x":["10","20","40","60"],"y":["1","2"]},
+    "axisTitles":{"x":"시간(분)","y":"거리(km)"},
+    "axisScale":{"x":1,"y":10}
+  },
+  "caption":"실선 t는 거북의 꾸준한 이동, 점선 r은 10분 동안 정지했다가 움직여 40분에 2km 지점에 도달하는 토끼의 이동을 표시한다.",
+  "accessibilityDescription":"거북의 선은 원점에서 60분 2km까지 일정하게 증가하고, 토끼의 선은 시작 후 10분간 수평이다가 40분에 2km에 도달한다.",
+    "sourceConditions":[
+    {"id":"c1","condition":"기존 PNG의 거북 그래프는 원점에서 (60분,2km)로 직선 증가한다.","mappedTo":["graphPlan.overlays.lines","graphPlan.requiredPoints"]},
+    {"id":"c2","condition":"기존 PNG의 토끼 그래프는 (0,0)-(10,0)-(40,2)-(60,2)로 이어진다.","mappedTo":["graphPlan.pieces","graphPlan.breakpoints","graphPlan.axisTickValues"]},
+    {"id":"c3","condition":"원본 JS 해설은 거북이 먼저 도착했다고 하지만 PNG에 따르면 토끼가 40분, 거북이 60분에 도착한다; 해설 불일치를 감사 기록에 남긴다.","mappedTo":["graphPlan.pieces","PRESERVED_ARCHIVE_BANK"]}
+  ],
+  "newVisualInformation":["두 경주자의 실제 시간-거리 꺾은선, 출발과 정지 구간, 2km 도착 시각을 원본 PNG와 1:1로 복원한다."]
+}

@@ -1,0 +1,61 @@
+{
+  "schema": "visual-audit.v1",
+  "exam": "AP수학학원_1학기_기말_중1_기말고사",
+  "source": "archive/exams/similar/middle/m1/1final/AP수학학원_1학기_기말_중1_기말고사.js",
+  "scope": {"questions":24,"axes":48,"axesReviewed":48,"planFiles":8},
+  "method": "Source JS question, choices, answer, solution and original PNG inspected separately. A PASS_STATIC_FIELDS finding checks actual drawing-model fields; it does not assert visual SVG/render parity, which remains for Antigravity.",
+  "axisCodeLegend": {
+    "EXEMPT": "This axis is verbal, algebraic or tabular; a geometry SVG adds no required graphic feature.",
+    "PLAN": "Executable production plan exists; sourceConditions and engine drawing fields independently reviewed.",
+    "PLAN_SOURCE_CONFLICT": "Executable plan follows the original raster graphic; source question or explanation contradicts that graphic.",
+    "PLAN_ENGINE_PENDING": "Executable partial plan exists, but one required visible feature needs an engine extension.",
+    "ENGINE_CAPABILITY_PENDING": "The complete source drawing cannot be expressed faithfully by the current production engine; original PNG preserved.",
+    "SOURCE_CORRECTION_PENDING": "Existing JS explanation conflicts with the original plotted quantities. A new solution image cannot legitimately claim full source parity."
+  },
+  "axisDefaults": {"planLintShallow":"NOT_APPLICABLE","planLintFull":"NOT_APPLICABLE","DRAWN_FEATURE_PARITY":"NOT_APPLICABLE","render":"NOT_RUN","PNG":"NOT_RUN","studentScreen":"NOT_RUN","A4":"NOT_RUN"},
+  "items": [
+    {"qid":"q01","problem":"EXEMPT","solution":"EXEMPT"},
+    {"qid":"q02","problem":"EXEMPT","solution":"EXEMPT"},
+    {"qid":"q03","problem":"EXEMPT","solution":"EXEMPT"},
+    {"qid":"q04","problem":"EXEMPT","solution":"EXEMPT"},
+    {"qid":"q05","problem":"EXEMPT","solution":"EXEMPT"},
+    {"qid":"q06","problem":"EXEMPT","solution":"EXEMPT"},
+    {"qid":"q07","problem":"EXEMPT","solution":"EXEMPT"},
+    {"qid":"q08","problem":"EXEMPT","solution":"EXEMPT"},
+    {"qid":"q09","problem":"EXEMPT","solution":"EXEMPT"},
+    {"qid":"q10","problem":"EXEMPT","solution":"EXEMPT"},
+    {"qid":"q11","problem":"EXEMPT","solution":"EXEMPT"},
+    {"qid":"q12","problem":"EXEMPT","solution":"EXEMPT"},
+    {"qid":"q13","problem":"EXEMPT","solution":"EXEMPT"},
+    {"qid":"q14","problem":"EXEMPT","solution":"EXEMPT"},
+    {"qid":"q15","problem":"PLAN_SOURCE_CONFLICT","solution":"PLAN_SOURCE_CONFLICT"},
+    {"qid":"q16","problem":"ENGINE_CAPABILITY_PENDING","solution":"ENGINE_CAPABILITY_PENDING"},
+    {"qid":"q17","problem":"EXEMPT","solution":"EXEMPT"},
+    {"qid":"q18","problem":"ENGINE_CAPABILITY_PENDING","solution":"ENGINE_CAPABILITY_PENDING"},
+    {"qid":"q19","problem":"PLAN","solution":"PLAN"},
+    {"qid":"q20","problem":"EXEMPT","solution":"EXEMPT"},
+    {"qid":"q21","problem":"PLAN","solution":"PLAN"},
+    {"qid":"q22","problem":"EXEMPT","solution":"EXEMPT"},
+    {"qid":"q23","problem":"EXEMPT","solution":"PLAN"},
+    {"qid":"q24","problem":"PLAN_ENGINE_PENDING","solution":"SOURCE_CORRECTION_PENDING"}
+  ],
+  "planAxes": {
+    "q15-problem": {"plan":"q15-problem.plan.json","capability":"construction-spike-v1","sourceVsPlan":"EVIDENCE_DEBT","DRAWN_FEATURE_PARITY":"PASS_STATIC_FIELDS_TO_PNG","planLintShallow":"PASS","planLintFull":"PASS","drawn":["A(-3,2)","B(0,1)","C(4,3)","D(3,-2)","E(-4,0)","coordinate axes"],"caveat":"Source question calls the drawing four points A-D although PNG also has E."},
+    "q15-solution": {"plan":"q15-solution.plan.json","capability":"construction-spike-v1","sourceVsPlan":"EVIDENCE_DEBT","DRAWN_FEATURE_PARITY":"PASS_STATIC_FIELDS_TO_PNG","planLintShallow":"PASS","planLintFull":"PASS","drawn":["all five PNG points","selected correct C(4,3)"],"caveat":"JS prose misstates A as (-2,2), not (-3,2)."},
+    "q19-problem": {"plan":"q19-problem.plan.json","capability":"trigonometric-spike-v1","sourceVsPlan":"REVIEWED","DRAWN_FEATURE_PARITY":"PASS_STATIC_FIELDS","planLintShallow":"PASS","planLintFull":"PASS","drawn":["smooth periodic line","minimum 5m at 0,20,40,60min","maximum 30m at 10,30,50min","20min period","time and height axes, ticks"]},
+    "q19-solution": {"plan":"q19-solution.plan.json","capability":"trigonometric-spike-v1","sourceVsPlan":"REVIEWED","DRAWN_FEATURE_PARITY":"PASS_STATIC_FIELDS","planLintShallow":"PASS","planLintFull":"PASS","drawn":["three exact cycles","30m maxima","20min period contradicts answer choice ⑤"]},
+    "q21-problem": {"plan":"q21-problem.plan.json","capability":"multi-curve-figure-v1","sourceVsPlan":"REVIEWED","DRAWN_FEATURE_PARITY":"PASS_STATIC_FIELDS","planLintShallow":"PASS","planLintFull":"PASS","drawn":["y=ax straight line","y=b/x inverse curve","intersection (-6,2)","symbolic coefficients concealed"]},
+    "q21-solution": {"plan":"q21-solution.plan.json","capability":"multi-curve-figure-v1","sourceVsPlan":"REVIEWED","DRAWN_FEATURE_PARITY":"PASS_STATIC_FIELDS","planLintShallow":"PASS","planLintFull":"PASS","drawn":["slope -1/3","inverse constant -12","intersection (-6,2)","a*b=4 in caption"]},
+    "q23-solution": {"plan":"q23-solution.plan.json","capability":"number-line-figure-v1","sourceVsPlan":"REVIEWED","DRAWN_FEATURE_PARITY":"PASS_STATIC_FIELDS","planLintShallow":"PASS","planLintFull":"PASS","drawn":["bike 50min","bus 10min","40min difference"],"caveat":"Supplementary solution timeline; the problem did not include a figure."},
+    "q24-problem": {"plan":"q24-problem.plan.json","capability":"piecewise-polynomial-spike-v1","sourceVsPlan":"EVIDENCE_DEBT","DRAWN_FEATURE_PARITY":"ENGINE_CAPABILITY_PENDING","planLintShallow":"PASS","planLintFull":"PASS","drawn":["tortoise straight line from (0,0) to (60,2)","hare pause 0-10min and arrival 40min","time and distance axes"],"missingCapability":"Overlaid graph-line labels in Korean ('토끼','거북') are refused (OVERLAY_LABEL_INVALID); line labels are r(x), t. Exact source-illustration label parity is not achieved."}
+  },
+  "pendingAxes": {
+    "q16-problem": {"sourceVsPlan":"REVIEWED","DRAWN_FEATURE_PARITY":"ENGINE_CAPABILITY_PENDING","originalImage":"assets/images/1학기_기말평가_중1_단원평가/q16.png","needed":["two independent coordinate-plane diagrams arranged as one choice illustration","symbolic P(a,b) without assigning numeric values"],"fallback":"PRESERVE_PNG"},
+    "q16-solution": {"sourceVsPlan":"REVIEWED","DRAWN_FEATURE_PARITY":"ENGINE_CAPABILITY_PENDING","originalImage":"assets/images/1학기_기말평가_중1_단원평가/q16.png","needed":["same symbolic dual-panel construction","separate solution labels and choice judgment"],"fallback":"PRESERVE_PNG"},
+    "q18-problem": {"sourceVsPlan":"REVIEWED","DRAWN_FEATURE_PARITY":"ENGINE_CAPABILITY_PENDING","originalImage":"assets/images/1학기_기말평가_중1_단원평가/q18.png","needed":["five time-speed graph choices in one numbered grid","all original piecewise slopes and plateau variants"],"fallback":"PRESERVE_PNG"},
+    "q18-solution": {"sourceVsPlan":"REVIEWED","DRAWN_FEATURE_PARITY":"ENGINE_CAPABILITY_PENDING","originalImage":"assets/images/1학기_기말평가_중1_단원평가/q18.png","needed":["five choice panels with solution highlight of increasing-then-constant option ①"],"fallback":"PRESERVE_PNG"},
+    "q24-solution": {"sourceVsPlan":"EVIDENCE_DEBT","DRAWN_FEATURE_PARITY":"NOT_RUN","originalImage":"assets/images/1학기_기말평가_중1_단원평가/q24.png","needed":["Correct the original JS solution before producing an authoritative solution plan: plotted hare reaches 2km at 40min, tortoise at 60min, while prose says tortoise wins."],"fallback":"SOURCE_CORRECTION_PENDING"}
+  },
+  "globalEngineGap": "Engine SVG composers insert a white canvas rectangle by default; a transparent/no-background-root-rect option is required. None of the 8 plan JSON files declares region or shape fill. SVG/PNG/student-view/A4 rendering and real drawn-feature inspection are deliberately NOT_RUN under the plan-only workflow.",
+  "summary": {"totalAxes":48,"planAxes":8,"shallowPASS":8,"fullPASS":8,"exemptAxes":35,"pendingWithoutPlan":5,"planWithEnginePending":1,"originalPNGPreserved":5}
+}
