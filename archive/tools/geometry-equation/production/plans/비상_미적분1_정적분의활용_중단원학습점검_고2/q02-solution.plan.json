@@ -1,0 +1,7 @@
+{
+  "capability":"piecewise-polynomial-spike-v1","graphPlan":{"family":"piecewise-polynomial","pieces":[{"coefficients":["0","6","-2"]}],"sourceDomain":{"kind":"ALL_REALS"},"functionName":"f","referenceCurves":[{"id":"g","name":"g","coefficients":["9","-6","1"],"intersectionX":["1","3"]}],"requiredPoints":[{"id":"F","x":"3/2","y":"9/2"},{"id":"G","x":"3","y":"0"}],"axisTickValues":{"x":[1,3],"y":[]},"regions":[{"id":"S","upper":"f","lower":"g","from":"1","to":"3","label":"S"}]},
+  "pointNames":{"F":"F","G":"G"},"caption":"y=-2x²+6x가 교점 x=1,3 사이 위쪽이고 y=x²-6x+9가 아래쪽이므로 두 함수의 차를 정적분한다.",
+  "accessibilityDescription":"x=1,3에서 만나는 두 포물선의 사이 영역 S와 각 포물선 꼭짓점의 위치를 나타낸다.",
+  "sourceQuote":"두 곡선 $y=x^2-6x+9$, $y=-2x^2+6x$로 둘러싸인 도형의 넓이를 구하시오.",
+  "sourceConditions":[{"id":"c1","condition":"위쪽 y=-2x²+6x","mappedTo":"graphPlan.pieces"},{"id":"c2","condition":"아래쪽 y=x²-6x+9","mappedTo":"graphPlan.referenceCurves[g].coefficients"},{"id":"c3","condition":"교점 x=1,3 사이 넓이","mappedTo":"graphPlan.referenceCurves[g].intersectionX,graphPlan.regions"}],"newVisualInformation":["두 그래프의 위아래를 명시한 단일 적분 영역"]
+}

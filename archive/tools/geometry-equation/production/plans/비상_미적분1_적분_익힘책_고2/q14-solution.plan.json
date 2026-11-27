@@ -1,0 +1,8 @@
+{
+  "capability":"piecewise-polynomial-spike-v1",
+  "graphPlan":{"family":"piecewise-polynomial","pieces":[{"coefficients":["0","7","-1"]}],"sourceDomain":{"kind":"ALL_REALS"},"functionName":"f","referenceCurves":[{"id":"g","name":"g","coefficients":["8","-3","1"],"intersectionX":["1","4"]}],"requiredPoints":[{"id":"F","x":"7/2","y":"49/4"},{"id":"G","x":"3/2","y":"23/4"}],"axisTickValues":{"x":[1,4],"y":[]},"regions":[{"id":"S","upper":"f","lower":"g","from":"1","to":"4","label":"S"}]},
+  "pointNames":{"F":"F","G":"G"},"caption":"두 포물선 y=-x²+7x, y=x²-3x+8의 교점 x=1,4 사이에서 첫 곡선이 위에 있는 영역을 표시한다.",
+  "accessibilityDescription":"x=1과 x=4에서 만나는 두 포물선 사이를 영역 S로 나타내고 각 포물선의 꼭짓점을 표시한다.",
+  "sourceQuote":"두 곡선 $y=-x^2+7x$, $y=x^2-3x+8$로 둘러싸인 도형의 넓이를 구하시오.",
+  "sourceConditions":[{"id":"c1","condition":"위 포물선 y=-x²+7x","mappedTo":"graphPlan.pieces[0].coefficients"},{"id":"c2","condition":"아래 포물선 y=x²-3x+8","mappedTo":"graphPlan.referenceCurves[g].coefficients"},{"id":"c3","condition":"교점 x=1,4 사이 넓이","mappedTo":"graphPlan.referenceCurves[g].intersectionX,graphPlan.regions[S]"}],"newVisualInformation":["두 포물선의 상하 관계를 적분 영역으로 고정"]
+}

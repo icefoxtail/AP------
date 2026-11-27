@@ -1,0 +1,7 @@
+{
+  "capability":"piecewise-polynomial-spike-v1","graphPlan":{"family":"piecewise-polynomial","pieces":[{"coefficients":["3","-4","1"]}],"sourceDomain":{"kind":"INTERVAL","range":["0","3"],"states":["CLOSED","CLOSED"]},"functionName":"v","nameVariable":"t","requiredPoints":[{"id":"A","x":"0","y":"3"},{"id":"R","x":"1","y":"0"},{"id":"M","x":"2","y":"-1"},{"id":"S","x":"3","y":"0"}],"axisTickValues":{"x":[1,2,3],"y":[]},"regions":[{"id":"pos","upper":"f","lower":"axis","from":"0","to":"1","label":"S_1"},{"id":"neg","upper":"axis","lower":"f","from":"1","to":"3","label":"S_2"}]},
+  "pointNames":{"A":"A","R":"R","M":"M","S":"S"},"caption":"속도 v(t)=(t-1)(t-3)는 t=1에서 양→음, t=3에서 0이 된다. 변위에는 부호를, 이동거리에는 절댓값을 사용한다.",
+  "accessibilityDescription":"시간 0~3에서 위로 열린 속도 포물선과 0~1 양의 영역 및 1~3 음의 영역을 따로 표시했다.",
+  "sourceQuote":"v(t)=t^2-4t+3",
+  "sourceConditions":[{"id":"c1","condition":"v(t)=t²-4t+3","mappedTo":"graphPlan.pieces"},{"id":"c2","condition":"속도 부호 전환 t=1,3과 이동거리·변위 구간","mappedTo":"graphPlan.requiredPoints,graphPlan.regions"}],"newVisualInformation":["위치 변화량과 실제 이동거리의 차이를 부호 영역으로 구별"]
+}

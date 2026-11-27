@@ -1,0 +1,7 @@
+{
+  "capability":"piecewise-polynomial-spike-v1","graphPlan":{"family":"piecewise-polynomial","pieces":[{"coefficients":["0","4","-1"]}],"sourceDomain":{"kind":"ALL_REALS"},"functionName":"f","referenceLines":[{"id":"g","slope":"2","intercept":"0","intersectionX":["0","2"]}],"requiredPoints":[{"id":"O","x":"0","y":"0"},{"id":"V","x":"2","y":"4"}],"axisTickValues":{"x":[2],"y":[]},"regions":[{"id":"S","upper":"f","lower":"g","from":"0","to":"2","label":"4/3"}]},
+  "pointNames":{"O":"O","V":"V"},"caption":"그림의 직선은 미지의 a를 숨긴 문제축과 달리 해설에서 a=2이므로 y=2x. x=0,2 사이 두 그래프의 넓이 4/3이다.",
+  "accessibilityDescription":"포물선 y=-x²+4x와 직선 y=2x의 두 교점 x=0,2 사이 영역을 4/3으로 표시한 해설 그래프.",
+  "sourceQuote":"곡선 $y=-x^2+4x$와 직선 $y=ax$로 둘러싸인 도형의 넓이가 $\\dfrac{4}{3}$일 때, 실수 $a$의 값을 구하시오.",
+  "sourceConditions":[{"id":"c1","condition":"포물선 y=-x²+4x","mappedTo":"graphPlan.pieces[0].coefficients"},{"id":"c2","condition":"해설 a=2, 직선 y=2x와 교점 0,2","mappedTo":"graphPlan.referenceLines[g]"},{"id":"c3","condition":"문제에 주어진 넓이 4/3","mappedTo":"graphPlan.regions[S]"}],"newVisualInformation":["원본 문제 PNG의 미지 a를 해설에서만 확정해 두 함수의 영역 표시"]
+}

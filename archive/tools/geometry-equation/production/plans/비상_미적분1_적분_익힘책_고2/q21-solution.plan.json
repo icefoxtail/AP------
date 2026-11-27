@@ -1,0 +1,7 @@
+{
+  "capability":"piecewise-polynomial-spike-v1","graphPlan":{"family":"piecewise-polynomial","pieces":[{"coefficients":["0","-1","1"]}],"sourceDomain":{"kind":"INTERVAL","range":["0","2"],"states":["CLOSED","CLOSED"]},"functionName":"v","nameVariable":"t","requiredPoints":[{"id":"O","x":"0","y":"0"},{"id":"V","x":"1/2","y":"-1/4"},{"id":"T","x":"1","y":"0"},{"id":"E","x":"2","y":"2"}],"axisTickValues":{"x":[1,2],"y":[]},"regions":[{"id":"back","upper":"axis","lower":"f","from":"0","to":"1","label":"S_1"},{"id":"forward","upper":"f","lower":"axis","from":"1","to":"2","label":"S_2"}]},
+  "pointNames":{"O":"O","V":"V","T":"T","E":"E"},"caption":"속도 v(t)=t(t-1)는 0<t<1에서 음수이고 1<t≤2에서 양수다. 총 이동거리는 두 영역의 넓이를 더한다.",
+  "accessibilityDescription":"t=0,1에서 0이 되고 t=1/2에서 -1/4인 속도 포물선; t=1 전후의 음·양 영역을 따로 칠했다.",
+  "sourceQuote":"시각 $t=0$에서 $t=2$까지 점 $\\mathrm{P}$가 움직인 거리를 구하시오.",
+  "sourceConditions":[{"id":"c1","condition":"v(t)=t(t-1)","mappedTo":"graphPlan.pieces"},{"id":"c2","condition":"[0,1] 음, [1,2] 양의 속도 절댓값 적분","mappedTo":"graphPlan.regions"}],"newVisualInformation":["변위가 아닌 이동거리로 합산해야 하는 두 영역을 분리"]
+}
