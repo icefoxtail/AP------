@@ -1,0 +1,198 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 500
+  },
+  "caption": "한 변의 길이가 1인 정사각형 ABCD의 꼭짓점과 두 대각선, 출발점 P를 표시한다.",
+  "accessibilityDescription": "좌하단 A, 우하단 B, 우상단 C, 좌상단 D인 정사각형에 두 대각선 AC와 BD가 그어져 있으며 출발점 P는 A에 있다. 윗변 DC의 길이는 1이다.",
+  "sourceConditions": [
+    {
+      "id": "square",
+      "condition": "정사각형 ABCD는 한 변이 1이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks.dimensions"
+      ]
+    },
+    {
+      "id": "diagonal",
+      "condition": "각 꼭짓점에서 마주보는 꼭짓점까지 대각선으로 이동할 수 있다.",
+      "mappedTo": [
+        "displaySegments"
+      ]
+    },
+    {
+      "id": "start",
+      "condition": "점 P의 처음 위치는 A이다.",
+      "mappedTo": [
+        "planeMarks.textLabels"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 PNG의 네 꼭짓점·두 대각선·변 길이 1과 출발점 P를 엔진이 그리는 필드로 대응한다.",
+    "원본의 곡선 점선 길이 안내는 같은 의미의 공식 BRACE 치수선으로 표현하고 내부 면은 칠하지 않는다."
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dDC",
+        "from": "D",
+        "to": "C",
+        "label": "1",
+        "side": "ABOVE",
+        "style": "BRACE"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "pStart",
+        "at": [
+          -0.3,
+          -0.35
+        ],
+        "text": "P",
+        "labelKind": "TEXT"
+      }
+    ]
+  },
+  "sourceQuote": "한 변의 길이가 1인 정사각형"
+}

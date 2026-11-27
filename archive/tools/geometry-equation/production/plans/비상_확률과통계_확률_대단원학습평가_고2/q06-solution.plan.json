@@ -1,0 +1,36 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "disjoint": [
+      [
+        "A",
+        "B"
+      ]
+    ]
+  },
+  "caption": "서로 배반인 두 사건 A와 B가 겹치지 않으므로 B는 A의 여집합에 포함된다.",
+  "accessibilityDescription": "전체집합 U 안에서 사건 A와 B를 서로 떨어진 두 원으로 그린 벤다이어그램이다. B 영역 전체는 A 바깥에 있다.",
+  "sourceConditions": [
+    {
+      "id": "disjoint",
+      "condition": "A∩B=∅인 두 사건이다.",
+      "mappedTo": [
+        "diagram.disjoint",
+        "diagram.sets"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 사건의 불포함 영역이 별개의 원으로 나타나 B⊂Aᶜ를 한눈에 확인할 수 있다.",
+    "원본 조건에 없는 각 사건의 확률 크기는 도형 면적에 암시하지 않는다."
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "universe": {
+      "name": "U",
+      "count": "72"
+    },
+    "sets": [
+      {
+        "id": "A",
+        "count": "32"
+      },
+      {
+        "id": "B",
+        "count": "11"
+      }
+    ],
+    "elements": [
+      {
+        "text": "12",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "16",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "14",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "28",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "42",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "21",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "35",
+        "in": [
+          "B"
+        ]
+      }
+    ],
+    "shade": "A∪B"
+  },
+  "caption": "두 자리 수 72개 중 짝수 A는 32개, 7의 배수 B는 11개이다. 14의 배수인 공통 6개를 한 번 빼 합사건 37개를 센다.",
+  "accessibilityDescription": "전체 72개 두 자리 수에 대한 벤다이어그램이다. 짝수 A와 7의 배수 B가 겹치며 합집합이 강조되고, 짝수 12와 공통 원소 14 등의 대표 수를 보여 준다.",
+  "sourceConditions": [
+    {
+      "id": "universe",
+      "condition": "1에서 9까지 서로 다른 두 카드로 만들 수 있는 두 자리 수는 9×8=72개이다.",
+      "mappedTo": [
+        "diagram.universe"
+      ]
+    },
+    {
+      "id": "events",
+      "condition": "2의 배수는 32개, 7의 배수는 11개이고 동시에 해당하는 14의 배수는 6개이다.",
+      "mappedTo": [
+        "diagram.sets",
+        "diagram.elements"
+      ]
+    },
+    {
+      "id": "target",
+      "condition": "2의 배수 또는 7의 배수는 A∪B이다.",
+      "mappedTo": [
+        "diagram.shade"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "같은 수 14, 28, 42 등이 두 사건에 동시에 속하므로 32+11에서 중복을 빼야 함을 보인다.",
+    "대표 원소는 원본에서 가능한 값만 적고 계산 가능한 집합의 크기를 집합 이름 옆에 표기한다."
+  ]
+}

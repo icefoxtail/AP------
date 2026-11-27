@@ -1,0 +1,8 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {"kind":"NORMAL_CURVE", "curves":[{"id":"X","mean":"45","sd":"2","label":"표본평균"}], "ticks":["39","45"], "zAxis":true, "shades":[{"from":"39","to":"45"}], "areaLabels":[{"shade":0,"text":"0.4987"}]},
+  "caption": "표본평균이 39에서 45 사이일 확률은 표준정규분포의 -3에서 0 사이의 넓이이다.",
+  "accessibilityDescription": "평균 45, 표준편차 2인 정규분포 곡선에서 39와 45 사이의 면적만 칠하고, 각 눈금에 대응하는 표준점수 -3과 0을 표시한다.",
+  "sourceConditions": [{"id":"distribution","condition":"표본평균은 평균 45, 표준편차 12/√36=2의 정규분포를 따른다.","mappedTo":["chart.curves"]},{"id":"interval","condition":"P(39≤표본평균≤45)는 P(-3≤Z≤0)과 같다.","mappedTo":["chart.ticks","chart.shades","chart.zAxis"]}],
+  "newVisualInformation": ["두 경계 39와 45가 평균을 기준으로 왼쪽 3표준편차 구간을 이룸을 보인다.","확률에 대응하는 곡선 아래 영역만 의미 있는 음영으로 강조한다."]
+}
