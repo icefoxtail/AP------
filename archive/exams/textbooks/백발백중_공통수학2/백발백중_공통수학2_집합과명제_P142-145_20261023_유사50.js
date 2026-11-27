@@ -2433,9 +2433,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P144-Q15-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "두 직선의 교점 C와 x축 위의 B,D를 이용하여 ABC와 ABD의 넓이를 비교한다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "두 직선의 교점 C와 x축 위의 B,D를 이용하여 ABC와 ABD의 넓이를 비교한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P144-Q16-T1-R1",
@@ -2492,13 +2493,14 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P144-Q16-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "내공통접선의 두 접점에서 중심으로 내린 반지름이 접선과 수직이다.",
+    "solutionImageSize": "full",
     "inferredFields": [],
     "image": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P144-Q16-T1-R1-problem.svg",
     "imageAlt": "두 원과 두 중심 사이를 지나는 내공통접선의 위치를 나타낸다.",
     "imageCaption": "두 원과 두 중심 사이를 지나는 내공통접선의 위치를 나타낸다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageCaption": "내공통접선의 두 접점에서 중심으로 내린 반지름이 접선과 수직이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P144-Q16-S1-R1",
@@ -2614,9 +2616,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P145-Q17-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "평행사변형 ABCD의 두 대각선은 중점 M에서 각각 이등분된다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "평행사변형 ABCD의 두 대각선은 중점 M에서 각각 이등분된다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P145-Q17-S1-R1",
@@ -2732,9 +2735,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P145-Q18-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "원래 원과 y=x+t에 대해 대칭인 원은 반지름이 같고 중심끼리 축 대칭이다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "원래 원과 y=x+t에 대해 대칭인 원은 반지름이 같고 중심끼리 축 대칭이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P145-Q18-S1-R1",
@@ -2791,9 +2795,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P145-Q18-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "원래 원과 y=x+t에 대해 대칭인 원은 반지름이 같고 중심끼리 축 대칭이다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "원래 원과 y=x+t에 대해 대칭인 원은 반지름이 같고 중심끼리 축 대칭이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P145-Q19-T1-R1",
@@ -2850,9 +2855,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P145-Q19-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "A를 A-B와 A∩B로 나누어 X의 선택 원리를 비교한다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "A를 A-B와 A∩B로 나누어 X의 선택 원리를 비교한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P145-Q19-S1-R1",
@@ -2909,9 +2915,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P145-Q19-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "A를 A-B와 A∩B로 나누어 X의 선택 원리를 비교한다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "A를 A-B와 A∩B로 나누어 X의 선택 원리를 비교한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P145-Q20-T1-R1",
@@ -2968,9 +2975,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P145-Q20-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "B와 C가 O에서 출발하는 같은 반직선 위에 있고 직선 CD가 삼각형 OAC를 분할한다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "B와 C가 O에서 출발하는 같은 반직선 위에 있고 직선 CD가 삼각형 OAC를 분할한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P145-Q20-S1-R1",
@@ -3027,8 +3035,9 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE_IMAGE",
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P145-Q20-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "B와 C가 O에서 출발하는 같은 반직선 위에 있고 직선 CD가 삼각형 OAC를 분할한다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "B와 C가 O에서 출발하는 같은 반직선 위에 있고 직선 CD가 삼각형 OAC를 분할한다."
   }
 ];

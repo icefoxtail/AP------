@@ -2390,9 +2390,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CONCEPT_AND_METHOD_VISUAL",
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P148-Q15-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "A를 직선 y=x에 대칭시킨 A′와 공통 밑변 BC를 쓰는 두 삼각형을 보여 준다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "A를 직선 y=x에 대칭시킨 A′와 공통 밑변 BC를 쓰는 두 삼각형을 보여 준다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P148-Q16-T1-R1",
@@ -2449,13 +2450,14 @@ window.questionBank = [
     "sourceMatch": "SAME_CONCEPT_AND_METHOD_VISUAL",
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P148-Q16-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "AB를 지름으로 하는 원과 y=x+t의 교점 P,Q가 현을 만들며 중심에서 현에 내린 수선은 이를 이등분한다.",
+    "solutionImageSize": "full",
     "inferredFields": [],
     "image": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P148-Q16-T1-R1-problem.svg",
     "imageAlt": "직선 y=x+t 위 두 점 P,Q에서 AB를 보는 각이 직각이다.",
     "imageCaption": "직선 y=x+t 위 두 점 P,Q에서 AB를 보는 각이 직각이다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageCaption": "AB를 지름으로 하는 원과 y=x+t의 교점 P,Q가 현을 만들며 중심에서 현에 내린 수선은 이를 이등분한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P148-Q16-S1-R1",
@@ -2512,13 +2514,14 @@ window.questionBank = [
     "sourceMatch": "SAME_CONCEPT_AND_METHOD_VISUAL",
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P148-Q16-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "AB를 지름으로 하는 원과 y=x+t의 교점 P,Q가 현을 만들며 중심에서 현에 내린 수선은 이를 이등분한다.",
+    "solutionImageSize": "full",
     "inferredFields": [],
     "image": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P148-Q16-S1-R1-problem.svg",
     "imageAlt": "직선 y=x+t 위 두 점 P,Q에서 AB를 보는 각이 직각이다.",
     "imageCaption": "직선 y=x+t 위 두 점 P,Q에서 AB를 보는 각이 직각이다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageCaption": "AB를 지름으로 하는 원과 y=x+t의 교점 P,Q가 현을 만들며 중심에서 현에 내린 수선은 이를 이등분한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P149-Q17-T1-R1",
@@ -2575,9 +2578,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CONCEPT_AND_METHOD_VISUAL",
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P149-Q17-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "선분 AB를 지정된 비로 나누는 P와 다른 점 T를 지나는 직선의 위치를 나타낸다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "선분 AB를 지정된 비로 나누는 P와 다른 점 T를 지나는 직선의 위치를 나타낸다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P149-Q17-S1-R1",
@@ -2634,9 +2638,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CONCEPT_AND_METHOD_VISUAL",
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P149-Q17-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "선분 AB를 지정된 비로 나누는 P와 다른 점 T를 지나는 직선의 위치를 나타낸다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "선분 AB를 지정된 비로 나누는 P와 다른 점 T를 지나는 직선의 위치를 나타낸다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P149-Q18-T1-R1",
@@ -2693,9 +2698,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CONCEPT_AND_METHOD_VISUAL",
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P149-Q18-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "전체집합과 B의 원소 수로 A∩B와 Aᶜ∩B의 크기를 구분한다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "전체집합과 B의 원소 수로 A∩B와 Aᶜ∩B의 크기를 구분한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P149-Q18-S1-R1",
@@ -2752,9 +2758,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CONCEPT_AND_METHOD_VISUAL",
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P149-Q18-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "전체집합과 B의 원소 수로 A∩B와 Aᶜ∩B의 크기를 구분한다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "전체집합과 B의 원소 수로 A∩B와 Aᶜ∩B의 크기를 구분한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P149-Q19-T1-R1",

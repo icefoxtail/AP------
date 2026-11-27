@@ -858,9 +858,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE",
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q05-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "원 중심 C(-2,4)에서 평행이동 (-1,2)을 거꾸로 적용하여 원래 점 P를 찾는다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "원 중심 C(-2,4)에서 평행이동 (-1,2)을 거꾸로 적용하여 원래 점 P를 찾는다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P140-Q05-S2-R1",
@@ -917,9 +918,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE",
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q05-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "원 중심 C(1,3)에서 평행이동 (4,-2)을 거꾸로 적용하여 원래 점 P를 찾는다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "원 중심 C(1,3)에서 평행이동 (4,-2)을 거꾸로 적용하여 원래 점 P를 찾는다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P140-Q06-T1-R1",
@@ -976,13 +978,14 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE",
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q06-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "원의 중심 O에서 현 AB에 내린 수선 OH는 현을 이등분한다. OA=5, AH=3, OH=4이다.",
+    "solutionImageSize": "full",
     "inferredFields": [],
     "image": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q06-T1-R1-problem.svg",
     "imageAlt": "반지름 5인 원에 길이 6의 현 AB가 놓인 모습이다.",
     "imageCaption": "반지름 5인 원에 길이 6의 현 AB가 놓인 모습이다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageCaption": "원의 중심 O에서 현 AB에 내린 수선 OH는 현을 이등분한다. OA=5, AH=3, OH=4이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P140-Q06-S1-R1",
@@ -1039,13 +1042,14 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE",
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q06-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "원의 중심 O에서 현 AB에 내린 수선 OH는 현을 이등분한다. OA=5, AH=4, OH=3이다.",
+    "solutionImageSize": "full",
     "inferredFields": [],
     "image": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q06-S1-R1-problem.svg",
     "imageAlt": "반지름 5인 원에 길이 8의 현 AB가 놓인 모습이다.",
     "imageCaption": "반지름 5인 원에 길이 8의 현 AB가 놓인 모습이다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageCaption": "원의 중심 O에서 현 AB에 내린 수선 OH는 현을 이등분한다. OA=5, AH=4, OH=3이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P140-Q06-S2-R1",
@@ -1102,13 +1106,14 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE",
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q06-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "원의 중심 O에서 현 AB에 내린 수선 OH는 현을 이등분한다. OA=sqrt(13), AH=3, OH=2이다.",
+    "solutionImageSize": "full",
     "inferredFields": [],
     "image": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q06-S2-R1-problem.svg",
     "imageAlt": "반지름 sqrt(13)인 원에 길이 6의 현 AB가 놓인 모습이다.",
     "imageCaption": "반지름 sqrt(13)인 원에 길이 6의 현 AB가 놓인 모습이다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageCaption": "원의 중심 O에서 현 AB에 내린 수선 OH는 현을 이등분한다. OA=sqrt(13), AH=3, OH=2이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P140-Q07-T1-R1",
@@ -1165,9 +1170,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE",
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q07-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "B의 부분집합 X는 F=B-A={2,4,6,8}를 반드시 포함하고, B-F={1,3,5,7,9}의 원소는 자유롭게 선택한다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "B의 부분집합 X는 F=B-A={2,4,6,8}를 반드시 포함하고, B-F={1,3,5,7,9}의 원소는 자유롭게 선택한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P140-Q07-S1-R1",
@@ -1224,9 +1230,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE",
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q07-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "B의 부분집합 X는 F=B-A={1,3,5,7,8}를 반드시 포함하고, B-F={2,4,6}의 원소는 자유롭게 선택한다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "B의 부분집합 X는 F=B-A={1,3,5,7,8}를 반드시 포함하고, B-F={2,4,6}의 원소는 자유롭게 선택한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P140-Q07-S2-R1",
@@ -1283,9 +1290,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE",
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q07-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "B의 부분집합 X는 F=B-A={2,3,5,6,8,9}를 반드시 포함하고, B-F={1,4,7,10}의 원소는 자유롭게 선택한다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "B의 부분집합 X는 F=B-A={2,3,5,6,8,9}를 반드시 포함하고, B-F={1,4,7,10}의 원소는 자유롭게 선택한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P140-Q08-T1-R1",
@@ -1342,9 +1350,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE",
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q08-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "중심 C(2,4), 반지름 4인 원을 두 수직인 지름이 네 등면적 부분으로 나눈다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "중심 C(2,4), 반지름 4인 원을 두 수직인 지름이 네 등면적 부분으로 나눈다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P140-Q08-S1-R1",
@@ -1401,9 +1410,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE",
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q08-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "중심 C(3,3), 반지름 4인 원을 두 수직인 지름이 네 등면적 부분으로 나눈다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "중심 C(3,3), 반지름 4인 원을 두 수직인 지름이 네 등면적 부분으로 나눈다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P140-Q08-S2-R1",
@@ -1460,9 +1470,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE",
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q08-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "중심 C(2,6), 반지름 6인 원을 두 수직인 지름이 네 등면적 부분으로 나눈다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "중심 C(2,6), 반지름 6인 원을 두 수직인 지름이 네 등면적 부분으로 나눈다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P140-Q09-T1-R1",
@@ -1519,13 +1530,14 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE",
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q09-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "외부 점 P에서 그은 두 접선 PT₁, PT₂에 접점 반지름 OT₁, OT₂가 수직이고 접선 길이는 같다.",
+    "solutionImageSize": "full",
     "inferredFields": [],
     "image": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q09-T1-R1-problem.svg",
     "imageAlt": "원 밖 점 P에서 한 원에 그은 두 접선 PT₁과 PT₂를 나타낸다.",
     "imageCaption": "원 밖 점 P에서 한 원에 그은 두 접선 PT₁과 PT₂를 나타낸다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageCaption": "외부 점 P에서 그은 두 접선 PT₁, PT₂에 접점 반지름 OT₁, OT₂가 수직이고 접선 길이는 같다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P140-Q09-S1-R1",
@@ -1582,13 +1594,14 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE",
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q09-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "외부 점 P에서 그은 두 접선 PT₁, PT₂에 접점 반지름 OT₁, OT₂가 수직이고 접선 길이는 같다.",
+    "solutionImageSize": "full",
     "inferredFields": [],
     "image": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q09-S1-R1-problem.svg",
     "imageAlt": "원 밖 점 P에서 한 원에 그은 두 접선 PT₁과 PT₂를 나타낸다.",
     "imageCaption": "원 밖 점 P에서 한 원에 그은 두 접선 PT₁과 PT₂를 나타낸다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImageCaption": "외부 점 P에서 그은 두 접선 PT₁, PT₂에 접점 반지름 OT₁, OT₂가 수직이고 접선 길이는 같다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P140-Q09-S2-R1",
