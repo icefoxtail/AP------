@@ -46,7 +46,10 @@ window.questionBank = [
     "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_유사2/q01-solution.svg",
     "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
     "solutionImageCaption": "y축에 평행한 점선 수직선을 그어 그래프와 만나는 점을 센다. (가)는 두 점, (나)는 닫힌 점 한 점만 만나고 열린 점은 세지 않으므로 한 점이다. (다)는 두 점, (라)는 직선 위의 모든 점이 같은 x값이어서 무수히 많은 점, (마)는 x=1에서 닫힌 점 두 개와 만난다. 따라서 함수의 그래프인 것은 (나)이므로 답은 ②이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "다섯 개의 좌표평면 그래프 (가)~(마)",
+    "imageCaption": "다섯 개의 좌표평면 그래프 (가)~(마)",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -90,9 +93,12 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "image": "assets/images/25_팔마고_2학기_기말_고1_유사2/q02-problem.svg",
     "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_유사2/q02-solution.svg",
-    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageAlt": "(f∘g)(a)=f(g(a))=5이다. f의 대응도에서 함숫값이 5인 원소는 2뿐이므로 g(a)=2이다. g의 대응도에서 함숫값이 2인 원소는 3뿐이므로 a=3이다. 그림은 이 풀이에 쓰이는 원소만 골라 초록색 경로 3→2→5로 나타냈다. 따라서 답은 ③이다.",
     "solutionImageCaption": "(f∘g)(a)=f(g(a))=5이다. f의 대응도에서 함숫값이 5인 원소는 2뿐이므로 g(a)=2이다. g의 대응도에서 함숫값이 2인 원소는 3뿐이므로 a=3이다. 그림은 이 풀이에 쓰이는 원소만 골라 초록색 경로 3→2→5로 나타냈다. 따라서 답은 ③이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "집합 X에서 X로의 두 함수 g, f의 대응도",
+    "imageCaption": "집합 X에서 X로의 두 함수 g, f의 대응도",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -136,9 +142,12 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "image": "assets/images/25_팔마고_2학기_기말_고1_유사2/q03-problem.svg",
     "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_유사2/q03-solution.svg",
-    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageAlt": "(g∘f)⁻¹(4)=f⁻¹(g⁻¹(4))이다. g(5)=4이므로 g⁻¹(4)=5이고, f(3)=5이므로 f⁻¹(5)=3이다. 초록색 경로 3→5→4가 이를 보여 준다. 또 f(5)=3이므로 f⁻¹(3)=5이고(분홍색 화살표), 구하는 값은 3+5=8이다. 따라서 답은 ⑤이다.",
     "solutionImageCaption": "(g∘f)⁻¹(4)=f⁻¹(g⁻¹(4))이다. g(5)=4이므로 g⁻¹(4)=5이고, f(3)=5이므로 f⁻¹(5)=3이다. 초록색 경로 3→5→4가 이를 보여 준다. 또 f(5)=3이므로 f⁻¹(3)=5이고(분홍색 화살표), 구하는 값은 3+5=8이다. 따라서 답은 ⑤이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "집합 X에서 X로의 두 함수 f, g의 대응도",
+    "imageCaption": "집합 X에서 X로의 두 함수 f, g의 대응도",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -181,9 +190,9 @@ window.questionBank = [
     "sourceQid": 4,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_유사2/q04-solution.svg",
-    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageAlt": "y=(-x-1)/(x+2)=1/(x+2)-1이므로 점근선은 x=-2, y=-1이다. x절편은 (-1,0), y절편은 (0,-1/2)이다. 그래프는 x<-2에서 제3사분면, -2<x<-1에서 제2사분면, x>0에서 제4사분면을 지나고 제1사분면은 지나지 않는다. 따라서 답은 ④이다.",
     "solutionImageCaption": "y=(-x-1)/(x+2)=1/(x+2)-1이므로 점근선은 x=-2, y=-1이다. x절편은 (-1,0), y절편은 (0,-1/2)이다. 그래프는 x<-2에서 제3사분면, -2<x<-1에서 제2사분면, x>0에서 제4사분면을 지나고 제1사분면은 지나지 않는다. 따라서 답은 ④이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -227,9 +236,12 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "image": "assets/images/25_팔마고_2학기_기말_고1_유사2/q05-problem.svg",
     "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_유사2/q05-solution.svg",
-    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageAlt": "끝점이 (-3,-2)이므로 c=-2이고 b=3a이다. 점 (1,0)을 지나므로 √(4a)=2에서 a=1, b=3이어서 f(x)=√(x+3)-2이다. f(k)=2에서 √(k+3)=4이므로 k+3=16, k=13이다. 따라서 답은 ①이다.",
     "solutionImageCaption": "끝점이 (-3,-2)이므로 c=-2이고 b=3a이다. 점 (1,0)을 지나므로 √(4a)=2에서 a=1, b=3이어서 f(x)=√(x+3)-2이다. f(k)=2에서 √(k+3)=4이므로 k+3=16, k=13이다. 따라서 답은 ①이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "끝점이 (-3,-2)이고 점 (1,0)을 지나 오른쪽 위로 뻗는 무리함수의 그래프",
+    "imageCaption": "끝점이 (-3,-2)이고 점 (1,0)을 지나 오른쪽 위로 뻗는 무리함수의 그래프",
+    "imageSize": "medium"
   },
   {
     "id": 6,
@@ -272,9 +284,9 @@ window.questionBank = [
     "sourceQid": 6,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_유사2/q06-solution.svg",
-    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageAlt": "두 점근선이 x=-b, y=a이고 교점이 (-2,3)이므로 a=3, b=2이다. f(x)=(3x+10)/(x+2)이다. f⁻¹(1)=t이면 f(t)=1이므로 3t+10=t+2에서 t=-4이다. 그래프에서 직선 y=1과 만나는 점 T(-4,1)로 확인된다. 따라서 답은 ②이다.",
     "solutionImageCaption": "두 점근선이 x=-b, y=a이고 교점이 (-2,3)이므로 a=3, b=2이다. f(x)=(3x+10)/(x+2)이다. f⁻¹(1)=t이면 f(t)=1이므로 3t+10=t+2에서 t=-4이다. 그래프에서 직선 y=1과 만나는 점 T(-4,1)로 확인된다. 따라서 답은 ②이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -317,8 +329,8 @@ window.questionBank = [
     "sourceQid": 7,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_유사2/q07-solution.svg",
-    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
-    "solutionImageCaption": "y=(7x-5)/(x+1)=7-12/(x+1)이고 정의역 1≤x≤5에서 증가한다. 최솟값은 x=1일 때 (7+k)/2=1이므로 k=-5이다. 최댓값은 x=5일 때 y=30/6=5이다. 굵은 부분이 정의역에 해당하는 그래프이다. 따라서 답은 ④이다.",
+    "solutionImageAlt": "y=(7x-5)/(x+1)=7-12/(x+1)이고 정의역 1≤x≤5에서 증가한다. 최솟값은 x=1일 때 (7+k)/2=1이므로 k=-5이다. 최댓값은 x=5일 때 y=30/6=5이다. 그래프는 실제 정의역 1≤x≤5 부분만 두 끝점 포함으로 그렸다. 따라서 답은 ④이다.",
+    "solutionImageCaption": "y=(7x-5)/(x+1)=7-12/(x+1)이고 정의역 1≤x≤5에서 증가한다. 최솟값은 x=1일 때 (7+k)/2=1이므로 k=-5이다. 최댓값은 x=5일 때 y=30/6=5이다. 그래프는 실제 정의역 1≤x≤5 부분만 두 끝점 포함으로 그렸다. 따라서 답은 ④이다.",
     "solutionImageSize": "full"
   },
   {
@@ -484,7 +496,7 @@ window.questionBank = [
     "sourceQid": 11,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_유사2/q11-solution.svg",
-    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageAlt": "x≥3에서 f(x)=x²/2-3x+a는 증가하므로 y=f(x)와 역함수 y=f⁻¹(x)의 그래프는 직선 y=x에 대하여 대칭이고, 접점은 y=x 위에 있다. f(x)=x에서 x²-8x+2a=0이 중근을 가지므로 a=8이고 접점은 T(4,4)이다. 따라서 답은 ①이다.",
     "solutionImageCaption": "x≥3에서 f(x)=x²/2-3x+a는 증가하므로 y=f(x)와 역함수 y=f⁻¹(x)의 그래프는 직선 y=x에 대하여 대칭이고, 접점은 y=x 위에 있다. f(x)=x에서 x²-8x+2a=0이 중근을 가지므로 a=8이고 접점은 T(4,4)이다. 따라서 답은 ①이다.",
     "solutionImageSize": "full"
   },

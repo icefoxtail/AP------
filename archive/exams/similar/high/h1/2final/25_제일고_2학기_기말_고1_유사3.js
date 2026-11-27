@@ -80,8 +80,8 @@ window.questionBank = [
     "sourceQid": 2,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사3/q2-solution.svg",
-    "solutionImageAlt": "해설 그림: ",
-    "solutionImageCaption": "",
+    "solutionImageAlt": "점 A(1,5)를 점 B(4,3)으로 옮기는 평행이동은 x축 방향으로 +3, y축 방향으로 −2만큼 옮기는 것이다. 같은 평행이동으로 점 C(a,1)이 점 D(5,b)로 옮겨지므로 a+3=5, 1−2=b에서 a=2, b=−1이고 C(2,1), D(5,−1)이다. 따라서 a+b=1이고 답은 ①이다.",
+    "solutionImageCaption": "점 A(1,5)를 점 B(4,3)으로 옮기는 평행이동은 x축 방향으로 +3, y축 방향으로 −2만큼 옮기는 것이다. 같은 평행이동으로 점 C(a,1)이 점 D(5,b)로 옮겨지므로 a+3=5, 1−2=b에서 a=2, b=−1이고 C(2,1), D(5,−1)이다. 따라서 a+b=1이고 답은 ①이다.",
     "solutionImageSize": "full"
   },
   {
@@ -123,8 +123,8 @@ window.questionBank = [
     "sourceQid": 3,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사3/q3-solution.svg",
-    "solutionImageAlt": "해설 그림: ",
-    "solutionImageCaption": "",
+    "solutionImageAlt": "원 위의 점 P(3,1)에서 반지름 OP의 기울기는 1/3이고 접선은 OP에 수직이므로 기울기가 −3이다. 접선은 3x+y=10이고 x축, y축과 만나는 점은 A(10/3, 0), B(0, 10)이다. 삼각형 OAB의 넓이는 1/2 × 10/3 × 10 = 50/3이므로 답은 ④이다.",
+    "solutionImageCaption": "원 위의 점 P(3,1)에서 반지름 OP의 기울기는 1/3이고 접선은 OP에 수직이므로 기울기가 −3이다. 접선은 3x+y=10이고 x축, y축과 만나는 점은 A(10/3, 0), B(0, 10)이다. 삼각형 OAB의 넓이는 1/2 × 10/3 × 10 = 50/3이므로 답은 ④이다.",
     "solutionImageSize": "full"
   },
   {
@@ -166,8 +166,8 @@ window.questionBank = [
     "sourceQid": 4,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사3/q4-solution.svg",
-    "solutionImageAlt": "해설 그림: ",
-    "solutionImageCaption": "",
+    "solutionImageAlt": "대우 \"x≤3이고 y≤2k이면 x+y≤9\"가 참이려면 x=3, y=2k일 때의 합 3+2k가 9 이하여야 한다. 그림은 k=3일 때 직선 x=3(파랑)과 y=6(주황)의 교점 (3,6)이 직선 x+y=9(분홍) 위에 놓인 경우이다. 따라서 k≤3이므로 최댓값은 3이고 답은 ①이다.",
+    "solutionImageCaption": "대우 \"x≤3이고 y≤2k이면 x+y≤9\"가 참이려면 x=3, y=2k일 때의 합 3+2k가 9 이하여야 한다. 그림은 k=3일 때 직선 x=3(파랑)과 y=6(주황)의 교점 (3,6)이 직선 x+y=9(분홍) 위에 놓인 경우이다. 따라서 k≤3이므로 최댓값은 3이고 답은 ①이다.",
     "solutionImageSize": "full"
   },
   {
@@ -209,8 +209,8 @@ window.questionBank = [
     "sourceQid": 5,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사3/q5-solution.svg",
-    "solutionImageAlt": "해설 그림: ",
-    "solutionImageCaption": "",
+    "solutionImageAlt": "진리집합을 P={x | x<−3 또는 1≤x≤4}(파랑 줄), Q={x | x≤a}, R={x | x<b}라 하면 필요조건이므로 P⊂Q이고 충분조건이므로 R⊂P이다. P⊂Q이려면 a≥4이므로 a의 최솟값은 4이고(초록 Q 줄은 a=4), R⊂P이려면 b≤−3이므로 b의 최댓값은 −3이다(주황 R 줄은 b=−3). 따라서 합은 4+(−3)=1이고 답은 ②이다.",
+    "solutionImageCaption": "진리집합을 P={x | x<−3 또는 1≤x≤4}(파랑 줄), Q={x | x≤a}, R={x | x<b}라 하면 필요조건이므로 P⊂Q이고 충분조건이므로 R⊂P이다. P⊂Q이려면 a≥4이므로 a의 최솟값은 4이고(초록 Q 줄은 a=4), R⊂P이려면 b≤−3이므로 b의 최댓값은 −3이다(주황 R 줄은 b=−3). 따라서 합은 4+(−3)=1이고 답은 ②이다.",
     "solutionImageSize": "full"
   },
   {
@@ -252,8 +252,8 @@ window.questionBank = [
     "sourceQid": 6,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사3/q6-solution.svg",
-    "solutionImageAlt": "해설 그림: ",
-    "solutionImageCaption": "",
+    "solutionImageAlt": "점 A(1,5)를 직선 y=x에 대하여 대칭이동한 점을 A'(5,1)이라 하면(직선 y=x는 파랑) AP=A'P이므로 AP+BP=A'P+BP≥A'B이다. 등호는 P가 선분 A'B와 직선 y=x의 교점일 때 성립한다. 직선 A'B(주황)는 y=−3x+16이고 y=x와의 교점은 P(4,4)이므로 x좌표는 4이고 답은 ④이다.",
+    "solutionImageCaption": "점 A(1,5)를 직선 y=x에 대하여 대칭이동한 점을 A'(5,1)이라 하면(직선 y=x는 파랑) AP=A'P이므로 AP+BP=A'P+BP≥A'B이다. 등호는 P가 선분 A'B와 직선 y=x의 교점일 때 성립한다. 직선 A'B(주황)는 y=−3x+16이고 y=x와의 교점은 P(4,4)이므로 x좌표는 4이고 답은 ④이다.",
     "solutionImageSize": "full"
   },
   {
@@ -295,8 +295,8 @@ window.questionBank = [
     "sourceQid": 7,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사3/q7-solution.svg",
-    "solutionImageAlt": "해설 그림: ",
-    "solutionImageCaption": "",
+    "solutionImageAlt": "점 P(5,4)를 지나는 접선의 기울기를 m이라 하면 mx−y−5m+4=0이고, 중심 C(1,1)에서 이 직선까지의 거리가 반지름 r이므로 (16−r²)m²−24m+9−r²=0이다. 두 접선의 기울기 m₁, m₂의 합은 24/(16−r²)=2이므로 r²=4, r=2이다. 그림은 r=2일 때의 두 접선이다. 파랑 접선의 기울기가 m₁, 초록 접선의 기울기가 m₂이고 접점은 각각 T1, T2이다. 따라서 답은 ②이다.",
+    "solutionImageCaption": "점 P(5,4)를 지나는 접선의 기울기를 m이라 하면 mx−y−5m+4=0이고, 중심 C(1,1)에서 이 직선까지의 거리가 반지름 r이므로 (16−r²)m²−24m+9−r²=0이다. 두 접선의 기울기 m₁, m₂의 합은 24/(16−r²)=2이므로 r²=4, r=2이다. 그림은 r=2일 때의 두 접선이다. 파랑 접선의 기울기가 m₁, 초록 접선의 기울기가 m₂이고 접점은 각각 T1, T2이다. 따라서 답은 ②이다.",
     "solutionImageSize": "full"
   },
   {
@@ -377,8 +377,8 @@ window.questionBank = [
     "sourceQid": 9,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사3/q9-solution.svg",
-    "solutionImageAlt": "해설 그림: ",
-    "solutionImageCaption": "",
+    "solutionImageAlt": "점 P(2,k)를 지나므로 2/a+k/b=1이고, OA+OB=a+b=(a+b)(2/a+k/b)≥(√k+√2)²이다. 이 최솟값이 18이므로 √k+√2=3√2에서 k=8이다. 그림은 k=8일 때 등호가 성립하는 a=6, b=12인 직선 x/6+y/12=1이고, 점 P(2,8)을 지나며 OA=6, OB=12이다. 따라서 답은 ③이다.",
+    "solutionImageCaption": "점 P(2,k)를 지나므로 2/a+k/b=1이고, OA+OB=a+b=(a+b)(2/a+k/b)≥(√k+√2)²이다. 이 최솟값이 18이므로 √k+√2=3√2에서 k=8이다. 그림은 k=8일 때 등호가 성립하는 a=6, b=12인 직선 x/6+y/12=1이고, 점 P(2,8)을 지나며 OA=6, OB=12이다. 따라서 답은 ③이다.",
     "solutionImageSize": "full"
   },
   {
@@ -422,9 +422,11 @@ window.questionBank = [
     "image": "assets/images/25_제일고_2학기_기말_고1_유사3/q10.svg",
     "imageSize": "full",
     "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사3/q10-solution.svg",
-    "solutionImageAlt": "해설 그림: ",
-    "solutionImageCaption": "",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "f는 일대일대응이므로 역함수 f⁻¹이 존재한다. f(4)=2(주황)이므로 f⁻¹(2)=4이고, f(1)=4(파랑)이므로 f⁻¹(4)=1이다. 따라서 (f⁻¹∘f⁻¹)(2)=f⁻¹(f⁻¹(2))=f⁻¹(4)=1이고 답은 ①이다.",
+    "solutionImageCaption": "f는 일대일대응이므로 역함수 f⁻¹이 존재한다. f(4)=2(주황)이므로 f⁻¹(2)=4이고, f(1)=4(파랑)이므로 f⁻¹(4)=1이다. 따라서 (f⁻¹∘f⁻¹)(2)=f⁻¹(f⁻¹(2))=f⁻¹(4)=1이고 답은 ①이다.",
+    "solutionImageSize": "full",
+    "imageAlt": "집합 X={1, 2, 3, 4, 5}에서 X로 가는 함수 f의 대응도이다.",
+    "imageCaption": "집합 X={1, 2, 3, 4, 5}에서 X로 가는 함수 f의 대응도이다."
   },
   {
     "id": 11,
@@ -465,8 +467,8 @@ window.questionBank = [
     "sourceQid": 11,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사3/q11-solution.svg",
-    "solutionImageAlt": "해설 그림: ",
-    "solutionImageCaption": "",
+    "solutionImageAlt": "y=-√(4-x)+k의 정의역은 x≤4이고 x가 커질수록 y도 커진다. 제1사분면을 지나려면 끝점 (4,k)에서 k>0이고, 제2사분면을 지나지 않으려면 x=0일 때 -2+k≤0이므로 k≤2이다. k=2(주황 점선)이면 원점을 지나 제4사분면을 지나지 않으므로 k=1이며, 파랑 곡선 y=-√(4-x)+1은 끝점 (4,1), (3,0), (0,-1)을 지난다. 따라서 답은 ②이다.",
+    "solutionImageCaption": "y=-√(4-x)+k의 정의역은 x≤4이고 x가 커질수록 y도 커진다. 제1사분면을 지나려면 끝점 (4,k)에서 k>0이고, 제2사분면을 지나지 않으려면 x=0일 때 -2+k≤0이므로 k≤2이다. k=2(주황 점선)이면 원점을 지나 제4사분면을 지나지 않으므로 k=1이며, 파랑 곡선 y=-√(4-x)+1은 끝점 (4,1), (3,0), (0,-1)을 지난다. 따라서 답은 ②이다.",
     "solutionImageSize": "full"
   },
   {
@@ -510,9 +512,11 @@ window.questionBank = [
     "image": "assets/images/25_제일고_2학기_기말_고1_유사3/q12.svg",
     "imageSize": "full",
     "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사3/q12-solution.svg",
-    "solutionImageAlt": "해설 그림: 곡선이 점 (6,4)를 지나므로 f(6)=4이고(파랑), 같은 점에서 x축의 6이 y=4에 대응하므로 f⁻¹(4)=6이다. y=4에서 직선 y=x까지 옮기면 x=4이고, 곡선이 점 (4,2)를 지나므로 f(4)=2이다(주황). 따라서 (f∘f)(6)=2이고 (f∘f)(6)+f⁻¹(4)=2+6=8이므로 답은 ③이다.",
+    "solutionImageAlt": "곡선이 점 (6,4)를 지나므로 f(6)=4이고(파랑), 같은 점에서 x축의 6이 y=4에 대응하므로 f⁻¹(4)=6이다. y=4에서 직선 y=x까지 옮기면 x=4이고, 곡선이 점 (4,2)를 지나므로 f(4)=2이다(주황). 따라서 (f∘f)(6)=2이고 (f∘f)(6)+f⁻¹(4)=2+6=8이므로 답은 ③이다.",
     "solutionImageCaption": "곡선이 점 (6,4)를 지나므로 f(6)=4이고(파랑), 같은 점에서 x축의 6이 y=4에 대응하므로 f⁻¹(4)=6이다. y=4에서 직선 y=x까지 옮기면 x=4이고, 곡선이 점 (4,2)를 지나므로 f(4)=2이다(주황). 따라서 (f∘f)(6)=2이고 (f∘f)(6)+f⁻¹(4)=2+6=8이므로 답은 ③이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "곡선 y=f(x)가 점선으로 표시한 네 점 (2,1), (4,2), (6,4), (9,6)을 지나고, 직선 y=x와 함께 그려져 있다.",
+    "imageCaption": "곡선 y=f(x)가 점선으로 표시한 네 점 (2,1), (4,2), (6,4), (9,6)을 지나고, 직선 y=x와 함께 그려져 있다."
   },
   {
     "id": 13,
