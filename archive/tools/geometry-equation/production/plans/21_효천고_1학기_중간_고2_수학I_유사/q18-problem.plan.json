@@ -1,0 +1,35 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "ratePi": "1/6",
+    "coefficients": ["1", "0"],
+    "phasePi": "0",
+    "sourceDomain": { "kind": "INTERVAL", "range": ["0", "6"], "states": ["CLOSED", "CLOSED"] },
+    "axisTickValues": { "x": ["6"], "y": ["1"] },
+    "overlays": {
+      "points": [
+        { "id": "A", "curveX": "2" },
+        { "id": "B", "axis": "x", "value": "2" },
+        { "id": "C", "axis": "x", "value": "4" },
+        { "id": "D", "curveX": "4" }
+      ],
+      "segments": [
+        { "id": "AB", "from": "A", "to": "B" },
+        { "id": "BC", "from": "B", "to": "C", "length": true },
+        { "id": "CD", "from": "C", "to": "D" },
+        { "id": "DA", "from": "D", "to": "A" }
+      ]
+    }
+  },
+  "pointNames": { "A": "A", "B": "B", "C": "C", "D": "D" },
+  "caption": "y=sin(πx/6)의 한 아치에 내접한 직사각형 ABCD. 밑변 BC의 길이는 2이고 A,D는 곡선 위에 있다.",
+  "accessibilityDescription": "x축 위 B와 C, 사인곡선 위 A와 D가 세로변과 수평변으로 연결되어 있고 BC에는 길이 2가 적혀 있다.",
+  "sourceConditions": [
+    { "id": "curve", "condition": "y=sin(πx/6), 0≤x≤6", "mappedTo": "graphPlan" },
+    { "id": "rectangle", "condition": "A,D는 곡선, B,C는 x축 위; ABCD는 직사각형", "mappedTo": ["graphPlan.overlays.points", "graphPlan.overlays.segments"] },
+    { "id": "base", "condition": "BC=2", "mappedTo": "graphPlan.overlays.segments[1].length" }
+  ],
+  "newVisualInformation": [ "곡선과 만나는 윗변, 점선이 아닌 네 실선 변, 밑변의 2 표기. 직각 사각 표식은 엔진이 비등배율 삼각함수 그래프에서 거절하여 후속 필요." ]
+}

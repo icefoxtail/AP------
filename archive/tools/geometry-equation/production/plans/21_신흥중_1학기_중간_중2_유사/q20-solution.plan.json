@@ -1,0 +1,23 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      { "kind": "SET", "label": "범위", "pieces": [ { "lo": null, "hi": { "value": "23/5", "state": "OPEN" } } ] },
+      { "kind": "POINTS", "label": "자연수", "within": 1, "band": false, "points": [
+        { "id": "p1", "value": "1", "hideName": true },
+        { "id": "p2", "value": "2", "hideName": true },
+        { "id": "p3", "value": "3", "hideName": true },
+        { "id": "p4", "value": "4", "hideName": true },
+        { "id": "p5", "value": "5", "hideName": true }
+      ] }
+    ]
+  },
+  "caption": "x<23/5=4.6의 해에서 자연수 1·2·3·4는 포함되고, 5는 제외된다.",
+  "accessibilityDescription": "23/5의 왼쪽에 열린 구간을 굵게 표시하고 자연수 1, 2, 3, 4는 해에 포함, 5는 해에서 제외됨을 점으로 나타낸다.",
+  "sourceConditions": [
+    { "id": "solve", "condition": "7−(x−1)/2>(2/3)(3x−6) ⇔ x<23/5", "mappedTo": "numberLine.rows[0]" },
+    { "id": "naturals", "condition": "자연수 x는 1,2,3,4", "mappedTo": "numberLine.rows[1]" }
+  ],
+  "newVisualInformation": [ "열린 경계 23/5와 자연수 해의 포함 여부를 독립 점 표시로 보여 준다." ]
+}

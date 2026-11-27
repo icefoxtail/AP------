@@ -1,0 +1,22 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      { "kind": "SET", "label": "도매 유리", "pieces": [ { "lo": { "value": "8", "state": "OPEN" }, "hi": null } ] },
+      { "kind": "POINTS", "label": "송이 수", "within": 1, "band": false, "points": [
+        { "id": "p8", "value": "8", "hideName": true },
+        { "id": "p9", "value": "9", "hideName": true },
+        { "id": "p10", "value": "10", "hideName": true },
+        { "id": "p11", "value": "11", "hideName": true }
+      ] }
+    ]
+  },
+  "caption": "꽃집 900x원과 도매 600x+2400원을 비교하면 도매가 유리한 범위는 x>8이다. 정수 송이 수는 9부터 가능하다.",
+  "accessibilityDescription": "8을 제외하고 오른쪽으로 향하는 수직선 위에 8송이는 불가능, 9송이 이상은 가능한 점으로 나타냈다.",
+  "sourceConditions": [
+    { "id": "cost", "condition": "900x>600x+2400 ⇔ x>8", "mappedTo": "numberLine.rows[0]" },
+    { "id": "natural", "condition": "최소 자연수 x=9", "mappedTo": "numberLine.rows[1]" }
+  ],
+  "newVisualInformation": [ "8은 제외점이며 정수 9부터 도매가 더 저렴하다는 기준을 해집합과 개별 점으로 보여 준다." ]
+}

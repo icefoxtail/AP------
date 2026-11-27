@@ -1,0 +1,35 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "ratePi": "1/6",
+    "coefficients": ["1", "0"],
+    "phasePi": "0",
+    "sourceDomain": { "kind": "INTERVAL", "range": ["0", "6"], "states": ["CLOSED", "CLOSED"] },
+    "axisTickValues": { "x": ["2", "3", "4", "6"], "y": ["1"] },
+    "overlays": {
+      "points": [
+        { "id": "A", "curveX": "2" },
+        { "id": "B", "axis": "x", "value": "2" },
+        { "id": "C", "axis": "x", "value": "4" },
+        { "id": "D", "curveX": "4" }
+      ],
+      "segments": [
+        { "id": "AB", "from": "A", "to": "B" },
+        { "id": "BC", "from": "B", "to": "C", "length": true },
+        { "id": "CD", "from": "C", "to": "D" },
+        { "id": "DA", "from": "D", "to": "A" }
+      ]
+    }
+  },
+  "pointNames": { "A": "A", "B": "B", "C": "C", "D": "D" },
+  "caption": "x=3 대칭성으로 B는 x=2, C는 x=4에 놓인다. 높이 AB=sin(π/3)=√3/2, BC=2이다.",
+  "accessibilityDescription": "사인곡선 아래 직사각형의 양 끝 B,C는 x=2와 x=4이며 중심은 x=3이다. 두 세로변은 x축에 수직이다.",
+  "sourceConditions": [
+    { "id": "symmetry", "condition": "사인곡선은 x=3에 대하여 대칭", "mappedTo": "graphPlan" },
+    { "id": "base", "condition": "B=(2,0), C=(4,0), BC=2", "mappedTo": ["graphPlan.overlays.points", "graphPlan.overlays.segments"] },
+    { "id": "height", "condition": "AB=sin(π/3)=√3/2", "mappedTo": "graphPlan.overlays.points[0]" }
+  ],
+  "newVisualInformation": [ "x축의 2·3·4 눈금과 2인 밑변, 수직인 높이가 곡선의 대칭축을 중심으로 놓인다. 직각 표식은 삼각함수 등배율 엔진 확장 후 추가한다." ]
+}

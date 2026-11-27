@@ -1,0 +1,16 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      { "kind": "SET", "label": "거리(m)", "pieces": [ { "lo": { "value": "0", "state": "CLOSED" }, "hi": { "value": "1200", "state": "CLOSED" } } ] }
+    ]
+  },
+  "caption": "가는 시간 x/80, 오는 시간 x/60, 책 고르는 15분의 합이 50분 이하이므로 거리 x는 0 이상 1200m 이하이다.",
+  "accessibilityDescription": "수직선 0부터 1200까지 닫힌 구간이며, 1200의 점이 채워져 허용되는 최대 거리가 포함된다.",
+  "sourceConditions": [
+    { "id": "times", "condition": "x/80+15+x/60≤50", "mappedTo": "numberLine.rows[0].pieces" },
+    { "id": "solution", "condition": "0≤x≤1200", "mappedTo": "numberLine.rows[0]" }
+  ],
+  "newVisualInformation": [ "왕복거리의 가능한 범위와 최대 1200m 포함 여부를 닫힌 구간으로 나타낸다." ]
+}

@@ -1,0 +1,27 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "SOURCE_COORDINATE_AXES_v1", "unit": "source-coordinate", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "O", "op": "NORMALIZATION_ORIGIN", "inputs": [], "args": {}, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "X", "op": "NORMALIZATION_AXIS", "inputs": [], "args": { "length": { "kind": "integer", "value": "1" } }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "P", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "-3830222", "denominator": "1000000" }, { "kind": "rational", "numerator": "-3213938", "denominator": "1000000" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["O", "X", "P"],
+  "hiddenPointNames": ["X"],
+  "unmarkedPointNames": ["X"],
+  "displaySegments": [ { "id": "radius", "refs": ["O", "P"], "emphasis": "BOLD" } ],
+  "planeMarks": {
+    "quadrants": [ { "id": "q3", "quadrant": 3, "label": "제3사분면" } ],
+    "angles": [ { "id": "turn", "refs": ["X", "O", "P"], "value": 220, "side": "OUTER", "label": "220", "style": "ARC", "factRole": "DERIVED_INTERMEDIATE" } ]
+  },
+  "caption": "−500°와 동경이 같은 220°는 제3사분면의 각이다. 보기의 210°와 −510°도 제3사분면에 속한다.",
+  "accessibilityDescription": "원점에서 왼쪽 아래로 향한 동경과 양의 x축에서 반시계 방향으로 재는 220°의 각호가 표시되어 있다.",
+  "sourceConditions": [
+    { "id": "given", "condition": "−500°와 같은 동경의 각 220°", "mappedTo": ["mathPlan.nodes[2]", "planeMarks.angles[0]"] },
+    { "id": "quadrant", "condition": "220°는 제3사분면", "mappedTo": "planeMarks.quadrants[0]" }
+  ],
+  "newVisualInformation": [ "정수 바퀴를 제거한 220° 동경, 각호와 제3사분면 라벨을 직접 그린다." ]
+}
