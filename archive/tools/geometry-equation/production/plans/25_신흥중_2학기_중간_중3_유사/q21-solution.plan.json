@@ -1,0 +1,153 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAC",
+        "from": "A",
+        "to": "C",
+        "label": "4",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "offset": "AUTO",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "derivedBC",
+        "ownerSegment": "sBC",
+        "text": "8"
+      },
+      {
+        "id": "derivedAB",
+        "ownerSegment": "sAB",
+        "text": "4sqrt(5)"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 360
+  },
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "caption": "직각삼각형 ABC에서 각 C=90도, AC=4 cm, tan A=2인 그림이다. — 풀이에서 계산한 길이·각과 보조선",
+  "accessibilityDescription": "21번 해설에서 주어진 도형에 보조선 또는 계산된 길이와 각도 관계를 더한 그림이다.",
+  "newVisualInformation": [
+    "해설 과정에서 계산하거나 작도한 21번의 추가 정보"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 1] 다음 직각삼각형 $ABC$($\\angle C=90^\\circ$)에서 $AC=4,\\mathrm{cm}$, $\\tan A=2$일 때, $\\cos A$의 값을 구하는 과정과 답을 쓰시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

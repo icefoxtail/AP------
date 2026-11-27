@@ -1,0 +1,314 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "반지름 1인 사분원과 닮은 두 직각삼각형 ABC, ADE — 풀이에서 계산한 길이·각과 보조선",
+  "accessibilityDescription": "4번 해설에서 주어진 도형에 보조선 또는 계산된 길이와 각도 관계를 더한 그림이다.",
+  "newVisualInformation": [
+    "해설 과정에서 계산하거나 작도한 4번의 추가 정보"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3441",
+              "denominator": "2500"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3441",
+              "denominator": "5000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "unit",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "D",
+    "E",
+    "B",
+    "C",
+    "T"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "AE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "x",
+        "refs": [
+          "D",
+          "A",
+          "E"
+        ],
+        "value": 54,
+        "label": "x",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "y",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 36,
+        "label": "y",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "solx",
+        "refs": [
+          "D",
+          "A",
+          "E"
+        ],
+        "value": 54,
+        "label": "54",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "soly",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 36,
+        "label": "36",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "r",
+        "ownerSegment": "AD",
+        "text": "1"
+      },
+      {
+        "id": "ratio",
+        "ownerSegment": "DE",
+        "text": "1.3764"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "quarter",
+        "circle": "unit",
+        "center": "A",
+        "from": "D",
+        "to": "T",
+        "side": "MINOR"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "A",
+        "D",
+        "E"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "hiddenPointNames": [
+    "T"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 390
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 반지름의 길이가 $1$인 사분원과 $\\triangle ABC$, $\\triangle ADE$를 그렸다. $DE=1.3764$일 때, 아래의 삼각비의 표를 이용하여 $\\cos y^\\circ$의 값을 구하면?\n\n| 각도 | $\\sin$ | $\\cos$ | $\\tan$ |\n| :---: | :---: | :---: | :---: |\n| $36^\\circ$ | $0.5878$ | $0.8090$ | $0.7265$ |\n| $37^\\circ$ | $0.6018$ | $0.7986$ | $0.7536$ |\n| $53^\\circ$ | $0.7986$ | $0.6018$ | $1.3270$ |\n| $54^\\circ$ | $0.8090$ | $0.5878$ | $1.3764$ |",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

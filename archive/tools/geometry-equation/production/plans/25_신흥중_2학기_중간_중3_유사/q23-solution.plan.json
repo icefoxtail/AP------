@@ -1,0 +1,241 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "깨진 원호 위 세 점에서 현의 수직이등분선으로 중심을 찾는 작도",
+  "accessibilityDescription": "23번 도형에서 주어진 점·선분과 각도 또는 길이 관계를 나타낸 그림이다.",
+  "newVisualInformation": [
+    "현 AB와 BC",
+    "중점 M/N에서 내린 수직이등분선",
+    "중심 O의 결정"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "M",
+    "N"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "OM",
+      "refs": [
+        "O",
+        "M"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "ON",
+      "refs": [
+        "O",
+        "N"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "angles": [],
+    "expressionLabels": [],
+    "arcs": [
+      {
+        "id": "fragmentArc",
+        "circle": "circ",
+        "center": "O",
+        "from": "A",
+        "to": "C",
+        "side": "MINOR"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rM",
+      "refs": [
+        "O",
+        "M",
+        "A"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "rN",
+      "refs": [
+        "O",
+        "N",
+        "B"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 390
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "접시 조각 하나의 원호 위에 A, B, C 세 점을 잡고 두 현의 수직이등분선의 교점 O로 중심을 찾는다",
+      "mappedTo": "fragmentArc"
+    },
+    {
+      "id": "pending-original-problem",
+      "condition": "ENGINE_CAPABILITY_PENDING: 문제 축은 서로 다른 형태로 깨진 도자기 접시 세 조각의 원본 삽화를 요구하지만 원본 SVG 에셋이 제공되지 않고 production 원·호 엔진은 임의의 파손 윤곽·세 조각 배열을 지원하지 않는다. 현재 구현 범위: 해설 축의 단일 원호와 현 2개, 수직이등분선 교점. 미구현: 세 조각별 불규칙 경계와 각각의 남은 원호.",
+      "mappedTo": "REQUIRES_IRREGULAR_CERAMIC_FRAGMENTS_MULTIPANEL"
+    }
+  ]
+}
