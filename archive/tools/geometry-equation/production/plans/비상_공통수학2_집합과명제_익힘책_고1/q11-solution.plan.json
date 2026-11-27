@@ -1,0 +1,17 @@
+{
+  "capability":"number-line-figure-v1",
+  "numberLine":{
+    "rows":[{"kind":"SET","label":"P","color":"BLUE","pieces":[
+      {"lo":{"value":"-2","state":"OPEN"},"hi":{"value":"3","state":"OPEN"}},
+      {"lo":{"value":"6","state":"OPEN"},"hi":null}
+    ]}]
+  },
+  "numberLineCaption":{"text":"조건 p의 두 열린 구간"},
+  "caption":"P에 포함되는 오른쪽 반직선 R=(b,∞)은 b≥6이어야 한다. P를 포함하는 오른쪽 반직선 Q=(a,∞)은 a≤-2여야 한다. 따라서 b-a의 최소는 6-(-2)=8이다.",
+  "accessibilityDescription":"수직선에서 -2와 3 사이의 양 끝이 열린 구간, 6을 제외하고 오른쪽으로 이어지는 반직선이 서로 떨어진 두 진리집합 조각이다.",
+  "sourceConditions":[
+    {"id":"Pleft","condition":"-2<x<3","mappedTo":"numberLine.rows[0].pieces[0]"},
+    {"id":"Pright","condition":"x>6","mappedTo":"numberLine.rows[0].pieces[1]"}
+  ],
+  "newVisualInformation":["3과 6 사이의 빠진 구간을 정확히 드러내어 b≥6 경계 판단을 돕는다."]
+}
