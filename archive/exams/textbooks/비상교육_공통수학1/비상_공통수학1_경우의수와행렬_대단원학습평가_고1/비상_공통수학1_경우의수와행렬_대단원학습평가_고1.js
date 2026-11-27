@@ -334,7 +334,16 @@ window.questionBank = [
     "content": "다음 그림과 같이 서로 평행한 두 직선 $l$, $m$ 위에 각각 $3$개, $4$개의 점이 있다. 직선 $l$ 위의 점과 직선 $m$ 위의 점을 이은 선분을 $2$개 그릴 때, 두 선분이 교점을 갖도록 그리는 경우의 수를 구하시오. (단, 교점이 두 직선 $l$, $m$ 위에 있는 경우는 생각하지 않는다.)\n<img src=\"q11.png\" />",
     "choices": [],
     "answer": "$18$",
-    "solution": "두 선분이 교점을 가지려면 (두 직선 $l,\\ m$ 위가 아닌 곳에서) 서로 엇갈려 만나야 한다.\n직선 $l$ 위의 두 점 $\\mathrm{P}_1,\\ \\mathrm{P}_2$와 직선 $m$ 위의 두 점 $\\mathrm{Q}_1,\\ \\mathrm{Q}_2$를 택하고 $\\mathrm{P}_1$이 $\\mathrm{P}_2$보다 왼쪽, $\\mathrm{Q}_1$이 $\\mathrm{Q}_2$보다 왼쪽에 있을 때, 선분 $\\mathrm{P}_1\\mathrm{Q}_2$와 $\\mathrm{P}_2\\mathrm{Q}_1$을 그리면 교점이 생기고, 이 방법 하나뿐이다.\n따라서 $l$ 위에서 $2$개의 점을 택하는 방법 $_{3}\\mathrm{C}_2=3$, $m$ 위에서 $2$개의 점을 택하는 방법 $_{4}\\mathrm{C}_2=6$이므로\n$$3\\times 6=18$$"
+    "solution": "두 선분이 교점을 가지려면 (두 직선 $l,\\ m$ 위가 아닌 곳에서) 서로 엇갈려 만나야 한다.\n직선 $l$ 위의 두 점 $\\mathrm{P}_1,\\ \\mathrm{P}_2$와 직선 $m$ 위의 두 점 $\\mathrm{Q}_1,\\ \\mathrm{Q}_2$를 택하고 $\\mathrm{P}_1$이 $\\mathrm{P}_2$보다 왼쪽, $\\mathrm{Q}_1$이 $\\mathrm{Q}_2$보다 왼쪽에 있을 때, 선분 $\\mathrm{P}_1\\mathrm{Q}_2$와 $\\mathrm{P}_2\\mathrm{Q}_1$을 그리면 교점이 생기고, 이 방법 하나뿐이다.\n따라서 $l$ 위에서 $2$개의 점을 택하는 방법 $_{3}\\mathrm{C}_2=3$, $m$ 위에서 $2$개의 점을 택하는 방법 $_{4}\\mathrm{C}_2=6$이므로\n$$3\\times 6=18$$",
+    "image": "assets/images/비상_공통수학1_경우의수와행렬_대단원학습평가_고1/q11-problem.svg",
+    "imageAlt": "평행한 직선 l과 m 위에 점이 각각 세 개와 네 개 있고, 서로 다른 직선의 점을 잇는 두 선분이 내부에서 교차하는 예시이다.",
+    "imageCaption": "평행한 직선 l과 m 위에 점이 각각 세 개와 네 개 있고, 서로 다른 직선의 점을 잇는 두 선분이 내부에서 교차하는 예시이다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/비상_공통수학1_경우의수와행렬_대단원학습평가_고1/q11-solution.svg",
+    "solutionImageAlt": "위쪽 직선 l에서 두 점 P₁, P₂, 아래쪽 직선 m에서 두 점 Q₁, Q₂를 왼쪽부터 택하면 P₁Q₂와 P₂Q₁만 내부에서 교차한다. 점 선택 수는 3C2×4C2=18이다.",
+    "solutionImageCaption": "위쪽 직선 l에서 두 점 P₁, P₂, 아래쪽 직선 m에서 두 점 Q₁, Q₂를 왼쪽부터 택하면 P₁Q₂와 P₂Q₁만 내부에서 교차한다. 점 선택 수는 3C2×4C2=18이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 12,

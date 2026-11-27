@@ -440,7 +440,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "M2-RPM-011",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/19_서울압구정중_1학기_중간_중2_유사/q10-solution.svg",
+    "solutionImageAlt": "9−2x≥3x−16을 풀면 x≤5이고 자연수 조건에서 1, 2, 3, 4, 5가 가능하다",
+    "solutionImageCaption": "9−2x≥3x−16을 풀면 x≤5이고 자연수 조건에서 1, 2, 3, 4, 5가 가능하다",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -528,7 +532,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "M2-RPM-008",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/19_서울압구정중_1학기_중간_중2_유사/q12-solution.svg",
+    "solutionImageAlt": "분모 2와 3을 없애 정리하면 −5x≥10이므로 x≤−2이다",
+    "solutionImageCaption": "분모 2와 3을 없애 정리하면 −5x≥10이므로 x≤−2이다",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -572,7 +580,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "M2-RPM-009",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/19_서울압구정중_1학기_중간_중2_유사/q13-solution.svg",
+    "solutionImageAlt": "첫째 부등식의 해 x>−2에서 a=3b, b<0이므로 둘째 부등식 2bx<2b의 해는 x>1이다",
+    "solutionImageCaption": "첫째 부등식의 해 x>−2에서 a=3b, b<0이므로 둘째 부등식 2bx<2b의 해는 x>1이다",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -616,7 +628,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "M2-RPM-010",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/19_서울압구정중_1학기_중간_중2_유사/q14-solution.svg",
+    "solutionImageAlt": "제한시간 20분을 적용하면 x/60+(2400−x)/180≤20에서 0≤x≤600이므로 최댓값은 600m이다",
+    "solutionImageCaption": "제한시간 20분을 적용하면 x/60+(2400−x)/180≤20에서 0≤x≤600이므로 최댓값은 600m이다",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,

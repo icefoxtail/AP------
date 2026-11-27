@@ -55,7 +55,11 @@ window.questionBank = [
     "content": "함수 $f(x)=\\begin{cases} x^2+1 & (x \\ge 2) \\\\ -x^2+2 & (x < 2) \\end{cases}$에서 다음 극한값을 구하시오.\n⑴ $\\lim_{x \\to 2+} f(x)$\n⑵ $\\lim_{x \\to 2-} f(x)$",
     "choices": [],
     "answer": "⑴ $5$\n⑵ $-2$",
-    "solution": "⑴ $x\\to 2+$일 때 $x\\ge 2$이므로 $f(x)=x^2+1$이다. $\\lim_{x\\to 2+}f(x)=2^2+1=5$\n⑵ $x\\to 2-$일 때 $x<2$이므로 $f(x)=-x^2+2$이다. $\\lim_{x\\to 2-}f(x)=-2^2+2=-2$"
+    "solution": "⑴ $x\\to 2+$일 때 $x\\ge 2$이므로 $f(x)=x^2+1$이다. $\\lim_{x\\to 2+}f(x)=2^2+1=5$\n⑵ $x\\to 2-$일 때 $x<2$이므로 $f(x)=-x^2+2$이다. $\\lim_{x\\to 2-}f(x)=-2^2+2=-2$",
+    "solutionImage": "assets/images/비상_미적분1_함수의극한_중단원학습점검_고2/q2-solution.svg",
+    "solutionImageAlt": "x=2에서 왼쪽은 열린 점 (2,-2), 오른쪽은 닫힌 점 (2,5)로 접근하는 f(x)의 좌우 극한",
+    "solutionImageCaption": "x=2에서 왼쪽은 열린 점 (2,-2), 오른쪽은 닫힌 점 (2,5)로 접근하는 f(x)의 좌우 극한",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
