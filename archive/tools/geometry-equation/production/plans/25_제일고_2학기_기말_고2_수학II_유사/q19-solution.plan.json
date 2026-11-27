@@ -1,0 +1,11 @@
+{
+ "capability":"piecewise-polynomial-spike-v1", "sourceQuote":"-3/2≤x≤0에서 f=x²+3x, g는 x<-1일 때 x²+5x+4, 이후 -x²+x+2",
+ "caption":"두 곡선 f와 g 사이의 영역을 x=−1 기준으로 나누어 적분한다.",
+ "graphPlan":{"family":"piecewise-polynomial","pieces":[{"coefficients":["0","3","1"]}],"breakpoints":[],"sourceDomain":{"kind":"INTERVAL","range":["-3/2","0"],"states":["CLOSED","CLOSED"]},"functionName":"f","domain":[-1.5,0],"viewport":[-2,1,-3,3],
+ "referenceCurves":[{"id":"g","name":"g","pieces":[{"coefficients":["4","5","1"]},{"coefficients":["2","1","-1"]}],"breakpoints":[{"x":"-1","y":"0"}],"sourceDomain":{"kind":"INTERVAL","range":["-3/2","0"],"states":["CLOSED","CLOSED"]},"intersectionX":[]}],
+ "requiredPoints":[{"id":"A","x":-1.5,"y":-2.25},{"id":"B","x":-1,"y":-2},{"id":"C","x":-1,"y":0},{"id":"O","x":0,"y":0},{"id":"D","x":0,"y":2}],
+ "exactCoordinates":{"A":["-3/2","-9/4"]},"axisTickValues":{"x":[],"y":[]},
+ "regions":[{"id":"S1","upper":"g","lower":"f","from":"-3/2","to":"-1","fill":"LIGHT"},{"id":"S2","upper":"g","lower":"f","from":"-1","to":"0","fill":"MEDIUM"}]},
+ "sourceConditions":[{"id":"f","condition":"구간 [-3/2,0]에서 f(x)=x²+3x","mappedTo":"graphPlan.pieces"},{"id":"g","condition":"g(x) 두 조각은 x=-1에서 연속으로 만나며 g≥f이다.","mappedTo":"graphPlan.referenceCurves"},{"id":"area","condition":"둘러싸인 넓이는 구간 [-3/2,-1], [-1,0]으로 나뉜다.","mappedTo":"graphPlan.regions"}],
+ "newVisualInformation":["f와 g의 실제 두 경계, x=-1 분할, 두 음영 영역"],"accessibilityDescription":"-3/2에서 0까지 두 곡선 사이 넓이를 x=-1을 기준으로 두 부분으로 나누어 표시했다."
+}

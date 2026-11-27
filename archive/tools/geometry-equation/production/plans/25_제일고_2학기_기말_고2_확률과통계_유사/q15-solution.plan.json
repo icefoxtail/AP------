@@ -1,0 +1,7 @@
+{
+ "capability":"stat-chart-figure-v1",
+ "caption":"평균 80, 표준편차 10인 귤의 무게 분포에서 100 이상 꼬리확률을 나타낸다.",
+ "chart":{"kind":"NORMAL_CURVE","curves":[{"id":"X","mean":"80","sd":"10","label":"X"}],"ticks":["80","90","100"],"zAxis":true,"shades":[{"curve":"X","from":"100","to":null,"color":"BLUE"}]},
+ "sourceConditions":[{"id":"premium","condition":"한 개의 귤 X의 무게가 100g 이상일 확률은 표준정규의 Z≥2에 대응한다.","mappedTo":["chart.curves","chart.shades"]}],
+ "newVisualInformation":["100g 오른쪽 꼬리확률"],"accessibilityDescription":"정규분포 N(80,10의 제곱)에서 100 이상인 오른쪽 꼬리 영역을 칠했다."
+}

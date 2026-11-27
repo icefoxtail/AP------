@@ -1,0 +1,15 @@
+{
+  "capability":"piecewise-polynomial-spike-v1",
+  "sourceQuote":"주기 6, -2≤x<0에서 3x/2+3, 0≤x<4에서 -3x/4+3",
+  "caption":"한 주기 [-2,4]의 그래프를 세 점 (-2,0), (0,3), (4,0)으로 나타냈다.",
+  "graphPlan": {
+    "family":"piecewise-polynomial","pieces":[{"coefficients":["3","3/2"]},{"coefficients":["3","-3/4"]}],
+    "breakpoints":[{"x":"0","y":"3"}],"sourceDomain":{"kind":"INTERVAL","range":["-2","4"],"states":["CLOSED","CLOSED"]},
+    "functionName":"f","domain":[-2,4],"viewport":[-3,5,-1,4.5],
+    "requiredPoints":[{"id":"A","x":-2,"y":0},{"id":"B","x":0,"y":3},{"id":"C","x":4,"y":0}],
+    "exactCoordinates":{"A":["-2","0"],"B":["0","3"],"C":["4","0"]},"axisTickValues":{"x":[],"y":[]}
+  },
+  "sourceConditions":[{"id":"piece","condition":"주어진 두 일차식이 0에서 연속으로 만나며 주기는 6이다.","mappedTo":["graphPlan.pieces","graphPlan.breakpoints","graphPlan.sourceDomain"]}],
+  "newVisualInformation":["한 주기의 두 삼각형과 세 꼭짓점"],
+  "accessibilityDescription":"-2에서 시작해 0에서 높이 3에 도달하고 4에서 다시 x축에 닿는 꺾은선 그래프."
+}
