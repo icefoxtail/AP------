@@ -1,0 +1,176 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l1",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l2",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "qr",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "Q",
+    "R"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    }
+  ],
+  "caption": "두 직선의 교점 Q와 R을 이은 기울기 -1/2인 선",
+  "accessibilityDescription": "a=1,b=3일 때 Q=(-1,1)에서 두 주어진 직선이 만나고 QR은 x+2y=1 위에 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a=1,b=3일 때 Q=(-1,1)에서 두 주어진 직선이 만나고 QR은 x+2y=1 위에 있다.",
+      "mappedTo": [
+        "Q",
+        "R",
+        "l1",
+        "l2",
+        "qr",
+        "s1"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "a=1,b=3일 때 Q=(-1,1)에서 두 주어진 직선이 만나고 QR은 x+2y=1 위에 있다."
+  ],
+  "coordinateLabels": [
+    "Q",
+    "R"
+  ],
+  "displayLines": [
+    "l1",
+    "l2",
+    "qr"
+  ]
+}

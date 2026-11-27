@@ -1,0 +1,158 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "11"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "mirror",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "Q",
+          "mirror"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "Q",
+    "R"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    }
+  ],
+  "caption": "이동한 Q와 y=x 대칭점 R의 정확한 좌표 관계",
+  "accessibilityDescription": "P(-4,1)→Q(7,-1)→R(-1,7) 좌표 순서를 그림으로 검산한다.",
+  "sourceConditions": [
+    {
+      "id": "drawn",
+      "condition": "P(-4,1)→Q(7,-1)→R(-1,7) 좌표 순서를 그림으로 검산한다.",
+      "mappedTo": [
+        "P",
+        "Q",
+        "R",
+        "s1",
+        "s2",
+        "mirror"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "P(-4,1)→Q(7,-1)→R(-1,7) 좌표 순서를 그림으로 검산한다."
+  ],
+  "coordinateLabels": [
+    "P",
+    "Q",
+    "R"
+  ],
+  "displayLines": [
+    "mirror"
+  ],
+  "lineLabels": [
+    {
+      "nodeId": "mirror",
+      "text": "y=x"
+    }
+  ]
+}

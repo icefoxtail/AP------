@@ -1,0 +1,223 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Pmax",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "-8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Pmin",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "40"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "C",
+    "Pmax",
+    "Pmin"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "A",
+        "Pmax"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "Pmax",
+        "O"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "A",
+        "Pmin"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "Pmin",
+        "O"
+      ]
+    }
+  ],
+  "caption": "직각이 A인 두 후보의 높이를 비교한 넓이 그림",
+  "accessibilityDescription": "Pmax(8,-8)와 Pmin(8,4)는 원 위에 있고 밑변 OA=8에 대한 높이 8과 4로 넓이 32와 16을 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "Pmax(8,-8)와 Pmin(8,4)는 원 위에 있고 밑변 OA=8에 대한 높이 8과 4로 넓이 32와 16을 확인한다.",
+      "mappedTo": [
+        "A",
+        "C",
+        "Pmax",
+        "Pmin",
+        "k",
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "Pmax(8,-8)와 Pmin(8,4)는 원 위에 있고 밑변 OA=8에 대한 높이 8과 4로 넓이 32와 16을 확인한다."
+  ],
+  "coordinateLabels": [
+    "Pmax",
+    "Pmin"
+  ],
+  "displayCircles": [
+    "k"
+  ],
+  "rightAngles": [
+    {
+      "id": "ra1",
+      "refs": [
+        "O",
+        "A",
+        "Pmax"
+      ]
+    },
+    {
+      "id": "ra2",
+      "refs": [
+        "O",
+        "A",
+        "Pmin"
+      ]
+    }
+  ]
+}

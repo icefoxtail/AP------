@@ -1,0 +1,190 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l1",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-3"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l2",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-3"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-21"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "13"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T1",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "C",
+          "l1"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T2",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "C",
+          "l2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "T1",
+    "T2"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "C",
+        "T1"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "C",
+        "T2"
+      ]
+    }
+  ],
+  "caption": "중심에서 두 접선까지의 거리는 모두 반지름 √13",
+  "accessibilityDescription": "k=5와 k=-21 두 직선 모두 원에 접하며 중심 C에서 접점 T1,T2에 내린 반지름은 수직이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "k=5와 k=-21 두 직선 모두 원에 접하며 중심 C에서 접점 T1,T2에 내린 반지름은 수직이다.",
+      "mappedTo": [
+        "C",
+        "T1",
+        "T2",
+        "k",
+        "l1",
+        "l2",
+        "s1",
+        "s2"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "k=5와 k=-21 두 직선 모두 원에 접하며 중심 C에서 접점 T1,T2에 내린 반지름은 수직이다."
+  ],
+  "coordinateLabels": [
+    "C"
+  ],
+  "displayCircles": [
+    "k"
+  ],
+  "displayLines": [
+    "l1",
+    "l2"
+  ]
+}

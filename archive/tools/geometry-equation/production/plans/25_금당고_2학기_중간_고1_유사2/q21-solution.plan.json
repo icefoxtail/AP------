@@ -1,0 +1,278 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "26"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "-14"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "15"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "P",
+    "M",
+    "A",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "C",
+        "P"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s8",
+      "refs": ["C", "M"]
+    },
+    {
+      "id": "s9",
+      "refs": ["M", "A"]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "P",
+        "M"
+      ]
+    }
+  ],
+  "caption": "공통 접선점 A,B와 PC⊥AB에 따른 밑변·높이",
+  "accessibilityDescription": "CP=25, CM=9, PM=16, AM=BM=12, AB=24를 반지름 15인 원의 두 접선 삼각형에 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "CP=25, CM=9, PM=16, AM=BM=12, AB=24를 반지름 15인 원의 두 접선 삼각형에 표시한다.",
+      "mappedTo": [
+        "C",
+        "P",
+        "M",
+        "A",
+        "B",
+        "k",
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6",
+        "s7"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "CP=25, CM=9, PM=16, AM=BM=12, AB=24를 반지름 15인 원의 두 접선 삼각형에 표시한다."
+  ],
+  "coordinateLabels": [
+    "C",
+    "P",
+    "M"
+  ],
+  "displayCircles": [
+    "k"
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {"id":"cp-length","ownerSegment":"s1","text":"25"},
+      {"id":"cm-length","ownerSegment":"s8","text":"9"},
+      {"id":"am-length","ownerSegment":"s9","text":"12"},
+      {"id":"pm-length","ownerSegment":"s7","text":"16"}
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "ra1",
+      "refs": [
+        "C",
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "ra2",
+      "refs": [
+        "C",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "ra3",
+      "refs": [
+        "A",
+        "M",
+        "P"
+      ]
+    }
+  ]
+}

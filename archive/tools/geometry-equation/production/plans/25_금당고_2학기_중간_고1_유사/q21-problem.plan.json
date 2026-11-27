@@ -1,0 +1,224 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "25"
+            },
+            {
+              "kind": "rational",
+              "numerator": "22",
+              "denominator": "25"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "P",
+    "A",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "C",
+        "P"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "caption": "원 밖의 점 P에서 그은 두 접선과 접점 A,B",
+  "accessibilityDescription": "P에서 그은 접선 PA,PB와 접점에서 각각 직각인 반지름 CA,CB를 표시한다. 접점현 길이와 답은 나타내지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "given",
+      "condition": "P에서 그은 접선 PA,PB와 접점에서 각각 직각인 반지름 CA,CB를 표시한다. 접점현 길이와 답은 나타내지 않는다.",
+      "mappedTo": [
+        "C",
+        "P",
+        "A",
+        "B",
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "k"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "문제에 명시된 위치·선·직각·같은 길이의 시각적 관계만 표시"
+  ],
+  "displayCircles": [
+    "k"
+  ],
+  "rightAngles": [
+    {
+      "id": "ra1",
+      "refs": [
+        "C",
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "ra2",
+      "refs": [
+        "C",
+        "B",
+        "P"
+      ]
+    }
+  ],
+  "coordinateLabels": [
+    "C"
+  ]
+}

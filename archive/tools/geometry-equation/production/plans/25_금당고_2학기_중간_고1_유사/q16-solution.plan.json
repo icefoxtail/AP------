@@ -1,0 +1,346 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "11",
+              "denominator": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "11",
+              "denominator": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "div",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "4"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "5"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "11",
+              "denominator": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "sub",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "div",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "4"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "5"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "P",
+    "M",
+    "A",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": ["C", "M"]
+    },
+    {
+      "id": "s8",
+      "refs": ["M", "A"]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "C",
+        "P"
+      ]
+    }
+  ],
+  "caption": "직각인 두 접선과 수직 대각선 PC,AB의 사각형",
+  "accessibilityDescription": "PC=6, CA=CB=4, CM=8/3을 이용한 접점과 AB⊥PC가 사각형 면적 계산의 핵심이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "PC=6, CA=CB=4, CM=8/3을 이용한 접점과 AB⊥PC가 사각형 면적 계산의 핵심이다.",
+      "mappedTo": [
+        "C",
+        "P",
+        "M",
+        "A",
+        "B",
+        "k",
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "PC=6, CA=CB=4, CM=8/3을 이용한 접점과 AB⊥PC가 사각형 면적 계산의 핵심이다."
+  ],
+  "coordinateLabels": [
+    "C",
+    "P"
+  ],
+  "hiddenPointNames": [
+    "M"
+  ],
+  "displayCircles": [
+    "k"
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {"id":"cp-length","ownerSegment":"s6","text":"6"},
+      {"id":"cm-length","ownerSegment":"s7","text":"8/3"},
+      {"id":"am-length","ownerSegment":"s8","text":"4*√5/3"}
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "ra1",
+      "refs": [
+        "C",
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "ra2",
+      "refs": [
+        "C",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "ra3",
+      "refs": [
+        "A",
+        "M",
+        "P"
+      ]
+    }
+  ]
+}

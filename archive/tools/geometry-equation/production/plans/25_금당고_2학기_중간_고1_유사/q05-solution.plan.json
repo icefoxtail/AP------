@@ -1,0 +1,188 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "axis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C1",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "C0",
+          "axis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C1"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k0",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C0"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C0",
+    "C1",
+    "C2"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "C0",
+        "C1"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "C1",
+        "C2"
+      ]
+    }
+  ],
+  "caption": "원 중심의 y축 대칭과 (4,-1) 평행이동",
+  "accessibilityDescription": "중심 (-3,2)→(3,2)→(7,1)과 반지름 보존을 두 원과 중간 중심으로 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "drawn",
+      "condition": "중심 (-3,2)→(3,2)→(7,1)과 반지름 보존을 두 원과 중간 중심으로 나타낸다.",
+      "mappedTo": [
+        "C0",
+        "C1",
+        "C2",
+        "s1",
+        "s2",
+        "k0",
+        "k2",
+        "axis"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "중심 (-3,2)→(3,2)→(7,1)과 반지름 보존을 두 원과 중간 중심으로 나타낸다."
+  ],
+  "coordinateLabels": [
+    "C0",
+    "C1",
+    "C2"
+  ],
+  "displayCircles": [
+    "k0",
+    "k2"
+  ],
+  "displayLines": [
+    "axis"
+  ]
+}

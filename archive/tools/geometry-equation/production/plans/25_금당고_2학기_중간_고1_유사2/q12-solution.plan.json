@@ -1,0 +1,277 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "B",
+          "P"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-25"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "m",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-25"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "A",
+    "B",
+    "P",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "caption": "원 위 두 점에서의 접선과 그 교점 P, 삼각형 무게중심",
+  "accessibilityDescription": "원점 C에서 접점으로 그은 두 반지름이 각 접선과 직각이며 P=(7,-1)을 보여준다.",
+  "sourceConditions": [
+    {
+      "id": "drawn",
+      "condition": "원점 C에서 접점으로 그은 두 반지름이 각 접선과 직각이며 P=(7,-1)을 보여준다.",
+      "mappedTo": [
+        "C",
+        "A",
+        "B",
+        "P",
+        "G",
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "k",
+        "l",
+        "m"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원점 C에서 접점으로 그은 두 반지름이 각 접선과 직각이며 P=(7,-1)을 보여준다."
+  ],
+  "coordinateLabels": [
+    "P",
+    "G"
+  ],
+  "displayCircles": [
+    "k"
+  ],
+  "displayLines": [
+    "l",
+    "m"
+  ],
+  "rightAngles": [
+    {
+      "id": "ra1",
+      "refs": [
+        "C",
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "ra2",
+      "refs": [
+        "C",
+        "B",
+        "P"
+      ]
+    }
+  ]
+}
