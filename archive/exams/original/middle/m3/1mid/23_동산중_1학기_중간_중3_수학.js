@@ -2642,7 +2642,7 @@ window.questionBank = [
       "정사각형 변의 관계와 넓이"
     ],
     "wide": true,
-    "content": "[서술형 3]<br>다음 그림과 같이 가로가 $a$, 세로가 $b$인 직사각형 $ABCD$에서 $\\square\\mathrm{ABFJ}$, $\\square\\mathrm{EFCG}$, $\\square\\mathrm{JEHI}$가 정사각형이다. $\\overline{IH}$와 $\\overline{HG}$의 길이를 $a$, $b$를 써서 나타내고, $\\square\\mathrm{IHGD}$의 넓이를 구하여라. (단, $b < a < 2b$) [7점]<br><img src=\"assets/images/23_동산중_1학기_중간_중3_수학/q25.png\">",
+    "content": "[서술형 3]<br>다음 그림과 같이 가로가 $a$, 세로가 $b$인 직사각형 $ABCD$에서 $\\square\\mathrm{ABFJ}$, $\\square\\mathrm{EFCG}$, $\\square\\mathrm{JEHI}$가 정사각형이다. $\\overline{IH}$와 $\\overline{HG}$의 길이를 $a$, $b$를 써서 나타내고, $\\square\\mathrm{IHGD}$의 넓이를 구하여라. (단, $b < a < 2b$) [7점]<br><img src=\"assets/images/23_동산중_1학기_중간_중3_수학/q25-problem.svg\">",
     "choices": [],
     "answer": "IH=2b-a; HG=|2a-3b|; (2b-a)|2a-3b|",
     "solution": "큰 직사각형의 좌표를 $B=(0,0)$, $A=(0,b)$, $C=(a,0)$, $D=(a,b)$로 둔다. $ABFJ$가 정사각형이므로 $BF=JF=b$이고, $FC=BC-BF=a-b$이다. $EFCG$가 정사각형이므로 $EF=a-b$이다. $J$, $E$, $F$는 한 직선 위에 있고 $JF=JE+EF$이다. $JF=b$, $EF=a-b$이므로 $JE=JF-EF=b-(a-b)=2b-a$이다. $JEHI$도 정사각형이므로 $IH=JE=2b-a$이고, $H$의 가로 좌표는 $I$와 같이 $b+IH=3b-a$이다. $G$와 $D$의 가로 좌표는 $a$이므로 $HG=|a-(3b-a)|=|2a-3b|$이다. 따라서 $\\square IHGD$의 넓이는 $(2b-a)|2a-3b|$이다. 부호를 나누면, $b<a<\\frac32b$일 때 $HG=3b-2a$이고 넓이는 $(2b-a)(3b-2a)$이다. $a=\\frac32b$이면 $I=D$, $H=G$여서 $HG=0$이고 도형은 겹치는 선분으로 퇴화하므로 넓이는 $0$이다. $\\frac32b<a<2b$일 때 $HG=2a-3b$이고 넓이는 $(2b-a)(2a-3b)$이다. 두 열린 구간에서는 $IHGD$가 단순한 직사각형이며, 주어진 조건만으로 $2a-3b$의 부호를 하나로 고정하지 않고 절댓값으로 처리한다.",
