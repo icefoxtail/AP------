@@ -1,0 +1,206 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "38"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "rightAngles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aP",
+        "refs": [
+          "A",
+          "O",
+          "P"
+        ],
+        "value": 38,
+        "label": "38",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "r",
+        "ownerSegment": "sOA",
+        "text": "1"
+      },
+      {
+        "id": "approx",
+        "ownerSegment": "sOP",
+        "text": "(0.79,0.62)",
+        "labelKind": "TEXT"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "quarter",
+        "circle": "circ",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "CCW"
+      }
+    ],
+    "regions": [],
+    "equalLengths": [],
+    "parallels": [],
+    "facts": []
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "반지름 1의 첫째 사분원에서 38°에 놓이는 점의 원문 반올림 좌표 (0.79,0.62)",
+  "hiddenPointNames": [
+    "B"
+  ],
+  "hiddenPointStyle": "NONE",
+  "sourceQuote": "아래 그림과 같이 좌표평면 위의 원점 $O$를 중심으로 하고 반지름의 길이가 $1$인 사분원에서 $",
+  "accessibilityDescription": "반지름 1의 첫째 사분원에서 38°에 놓이는 점의 원문 반올림 좌표 (0.79,0.62)",
+  "sourceConditions": [
+    {
+      "id": "q03-solution-text",
+      "condition": "반지름이 $1$인 사분원에서 $38^\\circ$에 해당하는 점의 좌표가 $(0.79, 0.62)$이므로 $$ \\cos 38^\\circ \\approx 0.79, \\qquad \\sin 38^\\circ \\approx 0.62 $$ 또 $\\sin 52^\\circ = \\cos 38^\\circ \\approx 0.79$, $\\cos 52^\\circ = \\sin 38^\\circ \\approx 0.62$이다. $\\tan 38^\\circ = \\dfrac{\\sin 38^\\circ}{\\cos 38^\\circ} \\approx \\dfrac{0.62}{0.79} \\approx 0.78$이므로 옳은 것은 ②이다.",
+      "mappedTo": [
+        "mathPlan",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 해설에서 필요한 보조선·길이·각을 독립 구성"
+  ]
+}
