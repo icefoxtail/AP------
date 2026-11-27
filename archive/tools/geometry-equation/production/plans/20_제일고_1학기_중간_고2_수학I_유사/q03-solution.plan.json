@@ -1,0 +1,54 @@
+{
+  "sourceQuote": "$1 < x < 27$일 때, $\\log_{\\frac{1}{3",
+  "capability": "logarithmic-affine-spike-v1",
+  "graphPlan": {
+    "family": "logarithmic-affine",
+    "base": "1/3",
+    "coefficients": [
+      "1",
+      "1",
+      "0",
+      "0"
+    ],
+    "sourceDomain": {
+      "kind": "NATURAL_LOG_AFFINE"
+    },
+    "domain": [
+      0.5,
+      30
+    ],
+    "viewport": [
+      -2,
+      31,
+      -4,
+      2
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 1,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 27,
+        "y": -3
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "y=log_(1/3)x는 감소한다. 1<x<27이면 -3<y<0이다.",
+  "sourceConditions": [
+    {
+      "id": "h03",
+      "condition": "1<x<27, y=log_(1/3)x",
+      "mappedTo": "graph"
+    }
+  ],
+  "newVisualInformation": [
+    "함수의 감소 방향과 양 끝에서의 y값 0, -3을 보인다"
+  ]
+}

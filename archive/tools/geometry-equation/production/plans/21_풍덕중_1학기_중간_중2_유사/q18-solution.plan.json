@@ -1,0 +1,204 @@
+{
+  "sourceQuote": "점 $I$가 $\\triangle ABC$의 내심이고 $\\ang",
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1280267623233",
+              "denominator": "100000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "443447241162",
+              "denominator": "100000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "AI",
+      "refs": [
+        "A",
+        "I"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "BI",
+      "refs": [
+        "B",
+        "I"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "CI",
+      "refs": [
+        "C",
+        "I"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "A64",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 64,
+        "label": "64",
+        "style": "ARC"
+      },
+      {
+        "id": "Ahalf",
+        "refs": [
+          "B",
+          "A",
+          "I"
+        ],
+        "value": 32,
+        "label": "32",
+        "style": "ARC"
+      },
+      {
+        "id": "BIC122",
+        "refs": [
+          "B",
+          "I",
+          "C"
+        ],
+        "value": 122,
+        "label": "122",
+        "style": "ARC"
+      }
+    ]
+  },
+  "caption": "∠BIC=90°+∠A/2=122°이다.",
+  "accessibilityDescription": "내심의 세 이등분선과 꼭짓각 64도, 그 절반 32도, 내심 각 BIC 122도의 각호가 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "∠A=64°",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "∠BAI=32°",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "c3",
+      "condition": "∠BIC=122°",
+      "mappedTo": "planeMarks.angles[2]"
+    }
+  ],
+  "newVisualInformation": [
+    "실제 점과 선분의 관계에 각호·직각 네모·치수선·등변 표시를 연결한다."
+  ]
+}

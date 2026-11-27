@@ -1,0 +1,207 @@
+{
+  "sourceQuote": "$\\overline{AB} = \\overline{AC}$인 이",
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "714074003371",
+              "denominator": "100000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "equalABAC",
+        "count": 1,
+        "segments": [
+          "AB",
+          "AC"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "outC",
+        "refs": [
+          "A",
+          "C",
+          "E"
+        ],
+        "value": 125,
+        "label": "125",
+        "style": "ARC"
+      },
+      {
+        "id": "B55",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 55,
+        "label": "55",
+        "style": "ARC"
+      },
+      {
+        "id": "C55",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "value": 55,
+        "label": "55",
+        "style": "ARC"
+      },
+      {
+        "id": "A70",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 70,
+        "label": "70",
+        "style": "ARC"
+      }
+    ]
+  },
+  "caption": "C의 내각과 B는 각각 55°, 꼭짓각 A는 70°이다.",
+  "accessibilityDescription": "C의 외각 125도와 안쪽 55도, B의 55도, 꼭짓점 A의 70도 호가 모두 표시된다.",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "C의 외각 125°",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "condition2",
+      "condition": "밑각 B,C=55°",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "condition3",
+      "condition": "∠A=70°",
+      "mappedTo": "planeMarks.angles[3]"
+    }
+  ],
+  "newVisualInformation": [
+    "점·선분·각호·길이/등분·직각표식 중 원문과 해당 축에 필요한 요소를 실제 표시 필드로 기록한다."
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "sourceQuote": "점 $I$가 $\\triangle ABC$의 내심이고 $\\ang",
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1280267623233",
+              "denominator": "100000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "443447241162",
+              "denominator": "100000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "AI",
+      "refs": [
+        "A",
+        "I"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "BI",
+      "refs": [
+        "B",
+        "I"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "CI",
+      "refs": [
+        "C",
+        "I"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "A64",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 64,
+        "label": "64",
+        "style": "ARC"
+      }
+    ]
+  },
+  "caption": "내심 I를 가진 삼각형 ABC에서 꼭짓각 A=64°이며 각 BIC를 묻는다.",
+  "accessibilityDescription": "삼각형 내심 I에서 세 꼭짓점으로 점선 각의 이등분선을 그리고 A에 64도 각호를 표시했다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "I는 내심",
+      "mappedTo": "displaySegments"
+    },
+    {
+      "id": "c2",
+      "condition": "∠A=64°",
+      "mappedTo": "planeMarks.angles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "실제 점과 선분의 관계에 각호·직각 네모·치수선·등변 표시를 연결한다."
+  ]
+}

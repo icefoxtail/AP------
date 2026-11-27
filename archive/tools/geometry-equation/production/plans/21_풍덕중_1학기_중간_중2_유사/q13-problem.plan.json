@@ -1,0 +1,173 @@
+{
+  "sourceQuote": "$\\overline{AB} = \\overline{AC}$인 이",
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "11"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "22"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "11"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "equalABAC",
+        "count": 1,
+        "segments": [
+          "AB",
+          "AC"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "bc22",
+        "from": "B",
+        "to": "C",
+        "label": "22",
+        "side": "BELOW",
+        "style": "BAR",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [{"id": "rightD", "refs": ["A","D","C"]}],
+  "caption": "이등변삼각형 ABC에서 A에서 BC로 내린 수선의 발 D, BC=22cm.",
+  "accessibilityDescription": "두 같은 변의 눈금, A에서 D로 향하는 점선 수선, D의 직각 네모, 밑변 전체 22cm 치수선이 있다.",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "AB=AC",
+      "mappedTo": "planeMarks.equalLengths[0]"
+    },
+    {
+      "id": "condition2",
+      "condition": "AD⊥BC",
+      "mappedTo": "rightAngles[0]"
+    },
+    {
+      "id": "condition3",
+      "condition": "BC=22cm",
+      "mappedTo": "planeMarks.dimensions[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "점·선분·각호·길이/등분·직각표식 중 원문과 해당 축에 필요한 요소를 실제 표시 필드로 기록한다."
+  ]
+}
