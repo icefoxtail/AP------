@@ -619,7 +619,12 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "내심과 평행선이 만드는 두 이등변삼각형",
-    "decisiveStep": "각이등분과엇각을결합해DI=BD,EI=CE로옮겨DE를합한다."
+    "decisiveStep": "각이등분과엇각을결합해DI=BD,EI=CE로옮겨DE를합한다.",
+    "solutionImage": "assets/images/21_이수중_2학기_중간_중2_수학/q13-solution.svg",
+    "solutionImageAlt": "내심 I를 지나는 평행선 DE와 양쪽 5·4cm 구간",
+    "solutionImageCaption": "내심 I를 지나는 평행선 DE와 양쪽 5·4cm 구간",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 14,
@@ -813,7 +818,12 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "두 각이등분선의 이등변과 겹친 구간",
-    "decisiveStep": "BF=AB,CE=CD를얻고BF+CE−BC로EF를구한다."
+    "decisiveStep": "BF=AB,CE=CD를얻고BF+CE−BC로EF를구한다.",
+    "solutionImage": "assets/images/21_이수중_2학기_중간_중2_수학/q17-solution.svg",
+    "solutionImageAlt": "평행사변형의 두 꼭짓각 이등분선과 바닥 교점 E·F",
+    "solutionImageCaption": "평행사변형의 두 꼭짓각 이등분선과 바닥 교점 E·F",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 18,
@@ -1173,7 +1183,12 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "각이등분선과 ASA로 이등변 판정 증명",
-    "decisiveStep": "밑각과꼭지각반각의동등에서나머지각도같아공통변AD로ASA합동을보인다."
+    "decisiveStep": "밑각과꼭지각반각의동등에서나머지각도같아공통변AD로ASA합동을보인다.",
+    "solutionImage": "assets/images/21_이수중_2학기_중간_중2_수학/q25-solution.svg",
+    "solutionImageAlt": "밑각이 같은 삼각형의 꼭지각 이등분선 AD와 대응각 눈금",
+    "solutionImageCaption": "밑각이 같은 삼각형의 꼭지각 이등분선 AD와 대응각 눈금",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 26,
