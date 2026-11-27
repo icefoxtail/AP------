@@ -1,5 +1,46 @@
 # DRAWN_FEATURE_PARITY · 문제/해설 2축 감사 — 25_순천고_2학기_기말_고2_확률과통계_유사
 
+## 2026-11-28 최신 main 재검증 (기존 실행형 plan 보존)
+
+- 기준 `origin/main`: `5ab9491e8e84548d4941841b9dbffab780777a8e`. 현행 유사 JS **24문항·해설 24개, 총 48축** 재확인. 열린 PR 82개의 전체 변경 파일 조회 결과 대상 경로 충돌 0건.
+- 기존 공식 production plan **9개 유지 / 수정 0 / 신규 0**. 문제축 24개 EXEMPT, 해설축 9개 BENEFICIAL·15개 EXEMPT. 총 **BENEFICIAL 9 / EXEMPT 39**. 기출의 `_plans` 및 기존 PNG·SVG는 공식 plan 수에 포함하지 않는다.
+- JSON 파싱·스키마 필수값 **9/9 PASS**, 공식 `plan-lint.cjs` **shallow 9/9 PASS**, **full 9/9 PASS**, 원문 수식·통계 파라미터·x경계·면적 분리·기출 변형과 구분한 **`STATIC_FIELD_PARITY` 9/9 PASS**. Chromium 런처만 있고 `/usr/lib/chromium/chromium` 바이너리 없음: 전체 plan **`DRAWN_FEATURE_PARITY=RENDER_NOT_RUN` 9건**. 정적 PASS를 시각 PASS로 간주하지 않는다.
+- 직접 연결된 유사판 SVG는 **해설 q15-solution.svg 1개**다. 원문에 따른 x=0,2,5 및 높이 2/3·0·2/9와 두 삼각형 회색 음영이 SVG 래스터 자료에서 확인되나, 배경 흰 `<rect>`도 확인됐다. **`ENGINE_CAPABILITY_PENDING:TRANSPARENT_CANVAS_OPTION`**: 공통 렌더러의 투명 배경 opt-out이 없으며 이 범위에서 SVG 태그를 직접 제거하지 않는다.
+- **원 기출과 유사판은 같은 번호여도 다른 문제다.** 기출 q15는 밀도 영역 [0,3]·[3,6], 현행 유사판은 [0,2]·[2,5]. 기출 q07·08·10·18·19·22·23 PNG 역시 모수·사건·기준점이 현행 JS와 다르므로 **`ORIGINAL_EXAM_PNG_CONFLICT`**를 기록한다. 원 기출 풀이 SVG의 수치가 다르면 **`ORIGINAL_EXAM_SVG_VARIANT_CONFLICT`**이며, 현행 유사 JS와 직접 연결된 SVG를 항상 우선한다.
+
+| 문항 | 문제 축 판정 | 해설 축 판정 | 원본 SVG | plan 파일 | STATIC_FIELD_PARITY | DRAWN_FEATURE_PARITY | 비고 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 01 | EXEMPT: 주사위 시행·성공조건 수치 | EXEMPT: 이항모멘트 공식과 E(X²) | 없음 | — | EXEMPT | N/A | 이산확률 계산 |
+| 02 | EXEMPT: 동전 세 개의 독립사건 | EXEMPT: 선형변환 평균식 | 없음 | — | EXEMPT | N/A | 수식만으로 경우 정의됨 |
+| 03 | EXEMPT: 표본크기·모집단 정규분포 | EXEMPT: 표본평균 모멘트 계산 | 없음 | — | EXEMPT | N/A | 곡선 없이 산술 가능 |
+| 04 | EXEMPT: 확률분포표는 KaTeX 배열 | EXEMPT: 분산·합계 계산 | 없음; 기출 문제 `q4.png` | — | EXEMPT | N/A | 기출 표의 표본크기 4 ≠ 유사 8: `ORIGINAL_EXAM_PNG_CONFLICT`; 유사는 배열 내 수치 우선 |
+| 05 | EXEMPT: 신뢰구간 데이터 수치 | EXEMPT: 오차한계 공식 | 없음 | — | EXEMPT | N/A | 도형 불필요 |
+| 06 | EXEMPT: 신뢰구간 끝값 명시 | EXEMPT: 표본평균과 폭 계산 | 없음 | — | EXEMPT | N/A | 수직선 없이 계산 가능 |
+| 07 | EXEMPT: 평균·표준편차·표준정규표 | BENEFICIAL: 표본평균 70 이하의 왼 꼬리 | 유사 없음; 기출 `q7-solution-v3.svg` | `q07-solution.plan.json` | PASS | RENDER_NOT_RUN | N(73,2²), z=−1.5; 기출 공부시간/표본 조건과 달라 PNG·SVG 변형 충돌 |
+| 08 | EXEMPT: KaTeX 표준정규표·구간 | BENEFICIAL: −1.5~0과 0~2 두 면적 | 유사 없음; 기출 `q8-solution-v2.svg` | `q08-solution.plan.json` | PASS | RENDER_NOT_RUN | N(50,1²), 48.5/50/52; 기출 N(65,5²)와 다름: `ORIGINAL_EXAM_PNG_CONFLICT` |
+| 09 | EXEMPT: 동전·Y=aX+b 모멘트 | EXEMPT: 선형변환 연립 | 없음 | — | EXEMPT | N/A | 좌표·도형 정보 없음 |
+| 10 | EXEMPT: 정규 불량 기준·분포표 | BENEFICIAL: 불량 개수 W≥57 오른쪽 꼬리 | 유사 없음; 기출 `q10-solution-v2.svg` | `q10-solution.plan.json` | PASS | RENDER_NOT_RUN | 기출 무게 40g 이상/64개와 유사 수명 60시간 이하/57개: `ORIGINAL_EXAM_PNG_CONFLICT` |
+| 11 | EXEMPT: 이산질량함수의 모든 식 | EXEMPT: 값별 합계와 분산 | 없음 | — | EXEMPT | N/A | 이산 분포 그림 생략 타당 |
+| 12 | EXEMPT: 모집단·표본값·누적확률 | EXEMPT: 표준화 역계산 | 유사 없음; 기출 `q12-solution-v2.svg` | — | EXEMPT | N/A | 기출 건전지/100개와 유사 부품/25개는 별개의 수치; 원본 SVG 복제 금지 |
+| 13 | EXEMPT: 이산 질량과 유한구간 | EXEMPT: 망원경 합·꼬리 계산 | 없음 | — | EXEMPT | N/A | 수식으로 충분 |
+| 14 | EXEMPT: 정규확률 대칭 조건 | EXEMPT: 대칭성·표본분산 방정식 | 유사 없음; 기출 `q14-solution.svg` | — | EXEMPT | N/A | 원 기출의 임계값과 유사 숫자가 달라 변형 SVG 복사하지 않음 |
+| 15 | EXEMPT: 조각 밀도함수를 식으로 제시 | BENEFICIAL: [0,2]·[2,5] 삼각형 두 영역 | **유사 `q15-solution.svg`**; 기출 `q15-solution-v2.svg` | `q15-solution.plan.json` | PASS | RENDER_NOT_RUN | 분할점 2·끝점 5·높이 2/3,2/9 검산. 기출 분할 3·끝 6: `ORIGINAL_EXAM_SVG_VARIANT_CONFLICT`; 유사 SVG의 흰 rect로 투명 배경 기능 보류 |
+| 16 | EXEMPT: 보기마다 신뢰구간 폭 조건 | EXEMPT: σ/√n 크기 비교 | 없음 | — | EXEMPT | N/A | 선택지 텍스트 완결 |
+| 17 | EXEMPT: 모표준편차와 표본크기 조건 | EXEMPT: 부등식으로 최소 n 계산 | 없음 | — | EXEMPT | N/A | 도형 추가 불필요 |
+| 18 | EXEMPT: 쿠키 합무게·구간·정규표 | BENEFICIAL: 1205~1250~1280g 두 확률영역 | 유사 없음; 기출 `q18-solution-v2.svg` | `q18-solution.plan.json` | PASS | RENDER_NOT_RUN | N(1250,30²), 0.43+0.34; 기출 소금빵과 달라 `ORIGINAL_EXAM_PNG_CONFLICT` |
+| 19 | EXEMPT: 표본평균 두 분포와 확률식 | BENEFICIAL: Y평균 80, 74·88 두 임계값 | 유사 없음; 기출 `q19-solution-v2.svg` | `q19-solution.plan.json` | PASS | RENDER_NOT_RUN | σ(Ybar)=4, 왼 꼬리·누적 영역 분리; 기출 N(20)/N(100)과 달라 PNG·SVG 변형 충돌 |
+| 20 | EXEMPT: 9개 관측값·95% 신뢰구간 | EXEMPT: 평균 4·표준편차 역산 | 없음 | — | EXEMPT | N/A | 그림 면제 |
+| 21 | EXEMPT: f,g의 대칭축·구간을 식으로 제시 | BENEFICIAL: g의 x=2 대칭, f의 0 분할과 [−1,2] 확률 영역 | 유사 없음; 기출 `q21-solution-v2.svg` | `q21-solution.plan.json` | PASS | RENDER_NOT_RUN | 유사 g[−2,6], f[−3,3], a=1/36·b=1/8; 기출 범위가 달라 `ORIGINAL_EXAM_SVG_VARIANT_CONFLICT` |
+| 22 | EXEMPT: 두 지역 모평균·σ비·표본수 | BENEFICIAL: B지역 표본평균 253 이하 누적 | 유사 없음; 기출 `q22-solution-v2.svg` | `q22-solution.plan.json` | PASS | RENDER_NOT_RUN | N(250,2²), 확률 0.9332; 기출 물 사용량/다른 평균과 달라 `ORIGINAL_EXAM_PNG_CONFLICT` |
+| 23 | EXEMPT: 두 유한집합·반복횟수 | BENEFICIAL: 정규근사 N(252,10.5²)의 273 이상 꼬리 | 유사 없음; 기출 `q23-solution-v3.svg` | `q23-solution.plan.json` | PASS | RENDER_NOT_RUN | 교집합 공집합 확률 9/16·448회; 기출 원소수 1 사건/8640회와 달라 `ORIGINAL_EXAM_PNG_CONFLICT` |
+| 24 | EXEMPT: 6면 숫자와 3회 반복 시행 | EXEMPT: 최댓값−최솟값 분포 계산 | 없음 | — | EXEMPT | N/A | 수식·확률 분할로 충분 |
+
+**축 합계:** 24문항 × 2축 = 48축. REQUIRED 0 / BENEFICIAL 9 / EXEMPT 39. 정규분포의 음영은 원문에 명시된 기준값에서 끊었고, q15·q21의 면적 영역은 영점·대칭점에서 정확히 분리했다. 남은 일은 실제 공식 엔진 출력의 시각적 라벨·획·배경·학생 화면 확인이며, **`ENGINE_CAPABILITY_PENDING:TRANSPARENT_CANVAS_OPTION`**과 **`RENDER_NOT_RUN`**을 분리 유지한다.
+
+---
+
+## 이전 제작 당시 감사 기록 (역사적 기준 SHA; 현재 재검증은 위 표 우선)
+
 - 기준 `origin/main`: `9c42437326d026f3a928f182515cb8aa3f440ab8`
 - 대상 JS blob: `45a8d905ef955628b30f311b43d842023007808f` (수정 없음)
 - 범위: **24문항 × 문제/해설 2축 = 48축**, production 실행형 plan **9개** (문제 0, 해설 9)
