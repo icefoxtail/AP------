@@ -1,0 +1,52 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "ratePi": "1/2",
+    "coefficients": [
+      "1",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-7",
+        "7"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "l",
+        "slope": "1/7",
+        "intercept": "0",
+        "intersectionCount": 7
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        -1,
+        1
+      ]
+    },
+    "displaySize": "full"
+  },
+  "caption": "y=cos(πx/2)와 y=x/7이 만나는 점은 −7≤x≤7 안에 7개이고 구간 밖에는 교점이 없다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "cos(πx/2)=x/7, |x|≤7",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "코사인 곡선과 기울기 1/7 직선의 7개 교점"
+  ],
+  "sourceQuote": "방정식 $\\cos\\left(\\frac{\\pi x}{2}\\righ"
+}

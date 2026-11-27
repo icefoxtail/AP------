@@ -1,0 +1,39 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "3",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "7",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "hideSetLabel": true,
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "해의 범위"
+  },
+  "caption": "두 부등식의 교집합은 3≤x<7이고 정수해는 3,4,5,6으로 합은 18이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "(가) log₂3<x<7, (나) x≥3",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "열린·닫힌 경계점, 범위, 조건에 맞는 정수 위치"
+  ]
+}

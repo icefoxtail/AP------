@@ -1,0 +1,158 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "F"
+  ],
+  "hiddenPointNames": [
+    "F"
+  ],
+  "unmarkedPointNames": [
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "OP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "PF",
+      "refs": [
+        "P",
+        "F"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "FO",
+      "refs": [
+        "F",
+        "O"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rightF",
+      "refs": [
+        "O",
+        "F",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "a",
+        "from": "O",
+        "to": "F",
+        "label": "3",
+        "side": "ABOVE"
+      },
+      {
+        "id": "b",
+        "from": "F",
+        "to": "P",
+        "label": "4",
+        "side": "LEFT"
+      },
+      {
+        "id": "radius",
+        "from": "O",
+        "to": "P",
+        "label": "5",
+        "side": "RIGHT"
+      }
+    ]
+  },
+  "caption": "제3사분면의 동경 위 점 P(−3,−4)에서 수선을 내리면 3–4–5 직각삼각형으로 sinθ=−4/5, tanθ=4/3이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "cosθ=−3/5, θ는 제3사분면",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "c2",
+      "condition": "보조 수선 PF와 직각표식, 길이 3·4·5",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "제3사분면 동경·점선 보조선·직각표식·세 길이"
+  ],
+  "sourceQuote": "$\\theta$가 제$3$사분면의 각이고 $\\cos\\theta "
+}
