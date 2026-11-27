@@ -1,0 +1,25 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    {"id": "c1", "kind": "CIRCLE", "center": ["4", "-3"], "rSquared": "4", "label": "C"},
+    {"id": "c2", "kind": "CIRCLE", "center": ["0", "0"], "rSquared": "9", "label": "r=3"}
+  ],
+  "points": [
+    {"id": "O", "kind": "ORIGIN"},
+    {"id": "C", "kind": "CENTER", "curve": "c1", "coordinates": true},
+    {"id": "P", "kind": "CONIC_CONIC", "curves": ["c1", "c2"], "which": 1}
+  ],
+  "segments": [
+    {"id": "sOC", "from": "O", "to": "C", "label": "5"},
+    {"id": "sCP", "from": "C", "to": "P", "label": "2"},
+    {"id": "sOP", "from": "O", "to": "P", "label": "3"}
+  ],
+  "caption": "원 C의 중심 C(4,-3)과 원점 O의 거리는 5, 원 C의 반지름은 2이다. 원점 중심 반지름 3인 원은 C와 내접하여 P가 하나이다. 3<OP<7인 다른 세 자연수 값 m=3,4,5의 반지름에서는 각각 교점이 둘씩 생긴다.",
+  "accessibilityDescription": "중심 C(4,-3), 반지름 2인 원과 원점 O 중심 반지름 3인 원이 O-C-P 일직선 위에서 한 점 P로 내접한다. OC=5, CP=2, OP=3의 길이를 표시한다.",
+  "sourceQuote": "m=2이면 OP=3이므로 점 P는 1개이다",
+  "sourceConditions": [
+    {"id": "c1", "condition": "원 (x-4)^2+(y+3)^2=4의 중심 (4,-3), 반지름 2", "mappedTo": ["conics[0]", "points[1]"]},
+    {"id": "c2", "condition": "원점에서 중심까지 거리 5, 최소 OP=3에서 내접", "mappedTo": ["conics[1]", "points[2]", "segments"]}
+  ],
+  "newVisualInformation": ["m=2의 유일한 접점과 거리 5=2+3을 보여 주는 두 원의 정확한 내접 장면. 다른 m=3,4,5의 두 교점은 도면에서 생략하고 해설에서 센다."]
+}
