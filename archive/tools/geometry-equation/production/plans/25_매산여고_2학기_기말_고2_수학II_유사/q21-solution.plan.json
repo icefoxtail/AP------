@@ -1,0 +1,63 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-4",
+      "9",
+      "-6",
+      "1"
+    ],
+    "domain": [
+      -0.5,
+      4.8
+    ],
+    "viewport": [
+      -1,
+      5.3,
+      -7,
+      6
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "H",
+        "x": 1,
+        "y": 0
+      },
+      {
+        "id": "L",
+        "x": 3,
+        "y": -4
+      },
+      {
+        "id": "Z",
+        "x": 4,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "a=−4이면 F′(x)=f(x)=(x−1)²(x−4)이며 x=1에서는 부호가 유지되고 x=4에서만 바뀐다.",
+  "accessibilityDescription": "삼차함수 f가 (1,0)에서 x축에 접하고 (3,−4)에서 극소, (4,0)에서 x축을 관통한다.",
+  "sourceConditions": [
+    {
+      "id": "boundary",
+      "condition": "a의 가능한 최댓값 −4",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "one_extremum",
+      "condition": "F′=f=(x−1)²(x−4), 부호는 x=4에서만 바뀜",
+      "mappedTo": "graphPlan.requiredPoints[H,L,Z]"
+    }
+  ],
+  "newVisualInformation": [
+    "F의 극값 개수는 f가 x축을 실제 횡단하는 교점 개수로 판별한다."
+  ]
+}
