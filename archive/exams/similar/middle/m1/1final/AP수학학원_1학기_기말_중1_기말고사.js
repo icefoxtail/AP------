@@ -418,8 +418,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 점의 좌표는 (x좌표, y좌표) 순서로 읽는다.\n조건 정리: 그래프상의 점 위치 확인.\n풀이 과정:\nA는 (-2, 2), B는 (0, 1), C는 (4, 3), D는 (3, -2), E는 (-4, 0)이다.\n결론: 따라서 정답은 ③이다.",
-    "image": "assets/images/1학기_기말평가_중1_단원평가/q15.png",
-    "imageSize": "medium",
+    "image": "assets/images/AP수학학원_1학기_기말_중1_기말고사/q15-problem.svg",
+    "imageSize": "full",
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
@@ -427,7 +427,9 @@ window.questionBank = [
     "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_기말고사/q15-solution.svg",
     "solutionImageAlt": "선택지 중 좌표가 맞는 점은 C(4,3)이며 정답은 ③이다.",
     "solutionImageCaption": "선택지 중 좌표가 맞는 점은 C(4,3)이며 정답은 ③이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "주어진 좌표평면에서 점 A, B, C, D, E의 위치를 보고 각 선택지의 좌표를 판단한다.",
+    "imageCaption": "주어진 좌표평면에서 점 A, B, C, D, E의 위치를 보고 각 선택지의 좌표를 판단한다."
   },
   {
     "id": 16,
@@ -597,8 +599,8 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 교점의 좌표는 두 식을 모두 만족한다.\n조건 정리: 점 (-6, 2) 대입.\n풀이 과정:\n1단계: $y=ax$에 대입하면 $2 = a(-6) \\Rightarrow a = -\\frac{1}{3}$\n2단계: $y=\\frac{b}{x}$에 대입하면 $2 = \\frac{b}{-6} \\Rightarrow b = -12$\n3단계: $ab = \\left(-\\frac{1}{3}\\right) \\times (-12) = 4$\n결론: 따라서 정답은 ④이다.",
-    "image": "assets/images/1학기_기말평가_중1_단원평가/q21.png",
-    "imageSize": "medium",
+    "image": "assets/images/AP수학학원_1학기_기말_중1_기말고사/q21-problem.svg",
+    "imageSize": "full",
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
@@ -606,7 +608,9 @@ window.questionBank = [
     "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_기말고사/q21-solution.svg",
     "solutionImageAlt": "교점 (-6,2)를 대입하면 a=-1/3, b=-12이고 ab=4이다.",
     "solutionImageCaption": "교점 (-6,2)를 대입하면 a=-1/3, b=-12이고 ab=4이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "직선 y=ax와 반비례 곡선 y=b/x가 주어진 점 (-6, 2)에서 만난다.",
+    "imageCaption": "직선 y=ax와 반비례 곡선 y=b/x가 주어진 점 (-6, 2)에서 만난다."
   },
   {
     "id": 22,
@@ -672,11 +676,13 @@ window.questionBank = [
     "choices": [],
     "answer": "자유 서술 (예: 거북이는 일정한 속도로 계속 달렸다.)",
     "solution": "[키포인트] 그래프의 기울기와 특정 지점을 해석한다.\n조건 정리: 시간에 따른 거리 변화 분석.\n풀이 과정:\n사실 1: 토끼는 중간에 쉬었지만 거북이는 쉬지 않고 일정한 속력으로 이동했다.\n사실 2: 거북이가 토끼보다 먼저 결승선(2km 지점)에 도달하여 우승했다.\n결론: 위와 같은 두 가지 사실을 도출할 수 있다.",
-    "image": "assets/images/1학기_기말평가_중1_단원평가/q24.png",
-    "imageSize": "medium",
+    "image": "assets/images/AP수학학원_1학기_기말_중1_기말고사/q24-problem.svg",
+    "imageSize": "full",
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "imageAlt": "실선 t는 거북의 꾸준한 이동, 점선 r은 10분 동안 정지했다가 움직여 40분에 2km 지점에 도달하는 토끼의 이동을 표시한다.",
+    "imageCaption": "실선 t는 거북의 꾸준한 이동, 점선 r은 10분 동안 정지했다가 움직여 40분에 2km 지점에 도달하는 토끼의 이동을 표시한다."
   }
 ];
