@@ -1,0 +1,7 @@
+{
+  "capability":"piecewise-polynomial-spike-v1","graphPlan":{"family":"piecewise-polynomial","pieces":[{"coefficients":["0","0","-12","4"]}],"sourceDomain":{"kind":"INTERVAL","range":["-1","7/2"],"states":["OPEN","OPEN"]},"functionName":"f","requiredPoints":[{"id":"O","x":"0","y":"0"},{"id":"V","x":"2","y":"-16"},{"id":"B","x":"3","y":"0"}],"axisTickValues":{"x":[2,3],"y":[]},"regions":[{"id":"S","upper":"axis","lower":"f","from":"0","to":"3","label":"27"}]},
+  "pointNames":{"O":"O","V":"V","B":"B"},"caption":"해설 결과 a=4일 때 y=4x²(x-3)은 x=0에서 접하고 x=3에서 지난다. 그림은 -1<x<7/2 구간만 보이며 0≤x≤3의 넓이 27을 표시한다.",
+  "accessibilityDescription":"x=0에 접하고 x=3에서 x축을 통과하는 삼차곡선; 꼭짓점 (2,-16)과 아래쪽 넓이 27.",
+  "sourceQuote":"곡선 $y=ax^2(x-3)$과 $x$축으로 둘러싸인 도형의 넓이가 $27$일 때, 양수 $a$의 값을 구하시오.",
+  "sourceConditions":[{"id":"c1","condition":"정적분 값 -27a/4=-27에서 a=4","mappedTo":"graphPlan.pieces"},{"id":"c2","condition":"0,3 사이 x축 아래 넓이 27","mappedTo":"graphPlan.requiredPoints,graphPlan.regions"}],"newVisualInformation":["중근 0의 접함, 다른 영점 3과 넓이 27을 일치시킴"]
+}

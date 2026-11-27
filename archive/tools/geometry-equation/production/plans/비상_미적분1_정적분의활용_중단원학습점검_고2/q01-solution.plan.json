@@ -1,0 +1,7 @@
+{
+  "capability":"piecewise-polynomial-spike-v1","graphPlan":{"family":"piecewise-polynomial","pieces":[{"coefficients":["-5","-4","1"]}],"sourceDomain":{"kind":"ALL_REALS"},"functionName":"f","requiredPoints":[{"id":"A","x":"-1","y":"0"},{"id":"V","x":"2","y":"-9"},{"id":"B","x":"5","y":"0"}],"axisTickValues":{"x":[-1,2,5],"y":[]},"regions":[{"id":"S","upper":"axis","lower":"f","from":"-1","to":"5","label":"S"}]},
+  "pointNames":{"A":"A","V":"V","B":"B"},"caption":"y=x²-4x-5의 두 영점 -1,5 사이에서 곡선이 x축 아래에 있어 넓이는 정적분의 음수로 구한다.",
+  "accessibilityDescription":"x=-1과 5에서 x축과 만나는 위로 열린 포물선. 꼭짓점 (2,-9)과 x축 아래 넓이 S를 보인다.",
+  "sourceQuote":"곡선 $y=x^2-4x-5$와 $x$축으로 둘러싸인 도형의 넓이를 구하시오.",
+  "sourceConditions":[{"id":"c1","condition":"y=x²-4x-5=(x+1)(x-5)","mappedTo":"graphPlan.pieces"},{"id":"c2","condition":"두 영점 -1,5 사이 x축 아래 넓이","mappedTo":"graphPlan.requiredPoints,graphPlan.regions"}],"newVisualInformation":["음의 정적분에 마이너스를 붙여야 하는 이유를 면적으로 표시"]
+}

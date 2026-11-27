@@ -1,0 +1,7 @@
+{
+  "capability":"piecewise-polynomial-spike-v1","graphPlan":{"family":"piecewise-polynomial","pieces":[{"coefficients":["0","1/2"]},{"coefficients":["15","-1"]}],"breakpoints":[{"x":"10","y":"5"}],"sourceDomain":{"kind":"INTERVAL","range":["0","15"],"states":["CLOSED","CLOSED"]},"functionName":"v","nameVariable":"t","requiredPoints":[{"id":"O","x":"0","y":"0"},{"id":"T","x":"10","y":"5"},{"id":"E","x":"15","y":"0"}],"axisTickValues":{"x":[10,12,15],"y":[]},"regions":[{"id":"S1","upper":"f","lower":"axis","from":"0","to":"10","label":"S_1"},{"id":"S2","upper":"f","lower":"axis","from":"10","to":"12","label":"S_2"}]},
+  "pointNames":{"O":"O","T":"T","E":"E"},"caption":"드론의 속도는 10초까지 선형 증가해 5m/s, 이후 감소한다. 출발부터 12초까지 두 구간의 속도 그래프 아래 넓이가 높이이다.",
+  "accessibilityDescription":"0에서 (10,5)까지 증가하고 (15,0)까지 감소하는 속도 그래프; 높이를 구하는 0~10,10~12 넓이를 나눠 칠했다.",
+  "sourceQuote":"출발한 지 $12$초 후의 드론의 높이를 구하시오.",
+  "sourceConditions":[{"id":"c1","condition":"v=t/2 (0~10), 15-t (10~15), 연결점(10,5)","mappedTo":"graphPlan.pieces,graphPlan.breakpoints"},{"id":"c2","condition":"높이=0~12 속도의 정적분, t=10에서 분할","mappedTo":"graphPlan.regions"}],"newVisualInformation":["구간별 속도의 접합점과 높이의 두 면적 합산"]
+}

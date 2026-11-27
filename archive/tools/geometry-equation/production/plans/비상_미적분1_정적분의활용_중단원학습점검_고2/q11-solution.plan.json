@@ -1,0 +1,7 @@
+{
+  "capability":"piecewise-polynomial-spike-v1","graphPlan":{"family":"piecewise-polynomial","pieces":[{"coefficients":["0","0","4","-2"]}],"sourceDomain":{"kind":"INTERVAL","range":["0","8/3"],"states":["CLOSED","CLOSED"]},"functionName":"v","nameVariable":"t","requiredPoints":[{"id":"O","x":"0","y":"0"},{"id":"M","x":"4/3","y":"64/27"},{"id":"R","x":"2","y":"0"}],"axisTickValues":{"x":[2],"y":[]},"regions":[{"id":"S1","upper":"f","lower":"axis","from":"0","to":"2","label":"S_1"},{"id":"S2","upper":"axis","lower":"f","from":"2","to":"8/3","label":"S_2"}]},
+  "pointNames":{"O":"O","M":"M","R":"R"},"caption":"v(t)=4t²-2t³의 부호는 t=2에서 양에서 음으로 바뀐다. 다시 원점에 오는 때 t=8/3까지 양의 넓이와 음의 넓이가 상쇄된다.",
+  "accessibilityDescription":"시간 0~8/3의 속도 그래프. t=2 전 양의 넓이와 t=2 후 음의 넓이를 따로 표시하여 변위가 0이 되는 이유를 나타낸다.",
+  "sourceQuote":"점 $\\mathrm{P}$가 다시 원점으로 돌아오는 시각을 구하시오.",
+  "sourceConditions":[{"id":"c1","condition":"v(t)=4t²-2t³, 부호 전환 t=2","mappedTo":"graphPlan.pieces,graphPlan.requiredPoints[R]"},{"id":"c2","condition":"x(8/3)=0이므로 적분의 두 부호 면적이 같다","mappedTo":"graphPlan.sourceDomain,graphPlan.regions"}],"newVisualInformation":["원점 복귀와 속도 0의 시점이 서로 다름을 시각적으로 분리"]
+}
