@@ -490,8 +490,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_왕운중_2학기_중간_중3_수학/q11-solution.svg",
-    "solutionImageAlt": "해설 그림: 대각선 AC와 높이 AH가 표시된 사각형 ABCD. △ABC는 파랑, △ADC는 주황이며 AD와 DC에는 같은 눈금이 있다.",
-    "solutionImageCaption": "AH=4sin60°=2√3cm이므로 △ABC의 넓이는 8√3cm²이다. AC²=AH²+CH²=48이고 AD=DC, ∠D=90°이므로 △ADC의 넓이는 12cm²이다. 합은 12+8√3cm²이다. 답: ②.",
+    "solutionImageAlt": "AB=4 cm, BC=8 cm, ∠B=60°, AD=DC, ∠D=90°의 사각형과 높이 AH.",
+    "solutionImageCaption": "AB=4 cm, BC=8 cm, ∠B=60°, AD=DC, ∠D=90°의 사각형과 높이 AH.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
@@ -539,8 +539,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_왕운중_2학기_중간_중3_수학/q12-solution.svg",
-    "solutionImageAlt": "해설 그림: 반지름 1인 사분원에서 중심각 x와 직각삼각형 OAB의 이웃변 OB를 파랑으로 강조한다.",
-    "solutionImageCaption": "OA=1이므로 cos x=OB/OA=OB이다. 따라서 길이가 같은 선분은 OB이다. 답: ④.",
+    "solutionImageAlt": "반지름 1인 사분원에서 빗변의 점과 수선의 발, 세 각 x·y·z의 관계.",
+    "solutionImageCaption": "반지름 1인 사분원에서 빗변의 점과 수선의 발, 세 각 x·y·z의 관계.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_TRIG_RATIO",
@@ -588,8 +588,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_왕운중_2학기_중간_중3_수학/q13-solution.svg",
-    "solutionImageAlt": "해설 그림: 위 패널은 단위원에서 cos x와 OB를 대응하고, 아래 패널은 직각삼각형에서 x와 z의 합이 90°임을 보인다.",
-    "solutionImageCaption": "OA=1이므로 OB=cos x이고, x+z=90°에서 sin z=cos x이다. 따라서 sin z=OB이다. 답: ④.",
+    "solutionImageAlt": "반지름 1인 사분원에서 빗변의 점과 수선의 발, 세 각 x·y·z의 관계.",
+    "solutionImageCaption": "반지름 1인 사분원에서 빗변의 점과 수선의 발, 세 각 x·y·z의 관계.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_TRIG_RATIO",
@@ -636,8 +636,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_왕운중_2학기_중간_중3_수학/q14-solution.svg",
-    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 AB=20cm, ∠A=30°, C 직각, D는 AC의 중점이다. AD=DC이고 x=∠BDC이다.",
-    "solutionImageCaption": "BC=10cm, CD=5√3cm이므로 tan∠BDC=10/(5√3)=2√3/3이다. 답: ④.",
+    "solutionImageAlt": "AB=20 cm, ∠A=30°인 직각삼각형, AC의 중점 D와 BD 보조선.",
+    "solutionImageCaption": "AB=20 cm, ∠A=30°인 직각삼각형, AC의 중점 D와 BD 보조선.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_TRIG_RATIO",
@@ -684,8 +684,8 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/23_왕운중_2학기_중간_중3_수학/q15-solution.svg",
-    "solutionImageAlt": "해설 그림: 두 포물선 사이의 영역과 세로 길이가 같은 삼각형을 같은 파랑으로 표시한다.",
-    "solutionImageCaption": "같은 x에서의 세로 길이가 12−4x로 같으므로 넓이도 같다. 삼각형의 밑변이 2, 높이가 8이어서 넓이는 8이다. 정답은 ②이다.",
+    "solutionImageAlt": "y=x²−2x−3과 y=x²−6x+9, P(1,−4)부터 Q(3,0)까지 원문의 두 곡선 사이 영역.",
+    "solutionImageCaption": "y=x²−2x−3과 y=x²−6x+9, P(1,−4)부터 Q(3,0)까지 원문의 두 곡선 사이 영역.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": null,
@@ -698,7 +698,8 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B45",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "두 포물선의 같은x에서의 세로 길이 차가 일차식12−4x임을 이용해 동일 단면 길이의 삼각형으로 넓이를 옮긴다.",
-    "decisiveStep": "두 포물선의 같은x에서의 세로 길이 차가 일차식12−4x임을 이용해 동일 단면 길이의 삼각형으로 넓이를 옮긴다."
+    "decisiveStep": "두 포물선의 같은x에서의 세로 길이 차가 일차식12−4x임을 이용해 동일 단면 길이의 삼각형으로 넓이를 옮긴다.",
+    "solutionImageScale": 94
   },
   {
     "id": 16,
@@ -732,8 +733,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_왕운중_2학기_중간_중3_수학/q16-solution.svg",
-    "solutionImageAlt": "해설 그림: 축 x=1/2에 대칭인 두 근과 x=0, 1, 1/3에서 그래프가 x축의 위아래 어느 쪽에 있는지 표시한다.",
-    "solutionImageCaption": "x=1/3에서 함수값은 양수이므로 a+3b+9c>0이다. 옳지 않은 것은 ⑤.",
+    "solutionImageAlt": "a=-16인 대표 예시로 그린 아래로 열린 포물선. 축 x=1/2, 두 근 1/4·3/4.",
+    "solutionImageCaption": "a=-16인 대표 예시로 그린 아래로 열린 포물선. 축 x=1/2, 두 근 1/4·3/4.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
@@ -959,8 +960,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_왕운중_2학기_중간_중3_수학/q21-solution.svg",
-    "solutionImageAlt": "해설 그림: 파란 삼각형 ABC의 외부 수선 H와 주황 보조 직각삼각형 AHC. ∠CAB=120°, ∠CAH=60°, CH=2√3 cm.",
-    "solutionImageCaption": "CH=4sin60°=2√3 cm이다. [△ABC]=½×8×2√3=8√3 cm²이다.",
+    "solutionImageAlt": "AB=8 cm, AC=4 cm, ∠A=120°인 삼각형 ABC와 밑변 연장 높이 CH.",
+    "solutionImageCaption": "AB=8 cm, AC=4 cm, ∠A=120°인 삼각형 ABC와 밑변 연장 높이 CH.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_H22A_05_TRIANGLE_AREA",
@@ -1083,8 +1084,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_왕운중_2학기_중간_중3_수학/q24-solution.svg",
-    "solutionImageAlt": "해설 그림: 왼쪽 정육면체의 AD 중점 M과 주황 선분 FM·GM이 푸른 단면을 이룬다. 오른쪽 이등변삼각형 FMG의 밑변은 2 cm이며, 중점 N에서 MN과 FG가 수직이다.",
-    "solutionImageCaption": "정육면체에서 FM=GM=3 cm이다. △FMG의 밑변 FG=2 cm, 중점 N에서 MN=√(3²−1²)=2√2 cm이다. 두 넓이를 같게 두면 2√2=(1/2)·3·3·sin x이므로 sin x=4√2/9이다.",
+    "solutionImageAlt": "정육면체 모서리 2, AD의 중점 M. △FMG와 중선 MN을 강조한다.",
+    "solutionImageCaption": "정육면체 모서리 2, AD의 중점 M. △FMG와 중선 MN을 강조한다.",
     "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_TRIG_RATIO",
