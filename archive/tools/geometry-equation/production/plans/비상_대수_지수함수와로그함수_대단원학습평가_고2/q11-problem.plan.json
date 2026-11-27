@@ -1,0 +1,88 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      6,
+      -1,
+      4
+    ],
+    "curves": [
+      {
+        "id": "log",
+        "kind": "LOGARITHMIC",
+        "base": "3",
+        "coefficients": [
+          "1",
+          "1",
+          "-1",
+          "2"
+        ],
+        "domain": [
+          "1001/1000",
+          "6"
+        ],
+        "color": "WARM",
+        "label": "f"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "4"
+      ],
+      "y": [
+        "3"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "asym",
+          "x": "1",
+          "style": "DASHED",
+          "label": "x=1"
+        }
+      ],
+      "points": [
+        {
+          "id": "through",
+          "x": "4",
+          "y": "3",
+          "unnamed": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "guidePQ",
+          "from": "through",
+          "axis": "BOTH"
+        }
+      ]
+    }
+  },
+  "caption": "점근선 x=1과 점 (4,3)을 지나는 로그함수 y=log_3(x-a)+b의 위치.",
+  "accessibilityDescription": "오른쪽으로 증가하는 로그곡선, x=1에 세로 점선 점근선, (4,3)을 x축과 y축으로 연결하는 점선. 미지수의 값은 쓰지 않는다.",
+  "sourceQuote": "함수 $y=\\log_3(x-a)+b$의 그래프가 다음 그림과 같고",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "밑이 3인 로그곡선 y=log_3(x-a)+b",
+      "mappedTo": "graphPlan.curves[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "x=1인 세로 점선 점근선",
+      "mappedTo": "graphPlan.overlays.lines[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "(4,3)에서 x=4와 y=3으로 내려가는 점선",
+      "mappedTo": "graphPlan.overlays.guides[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "q11.png의 점근선, y=3 수평 점선, x=4 수직 점선, 눈금 1·4·3을 모두 표시한다."
+  ]
+}

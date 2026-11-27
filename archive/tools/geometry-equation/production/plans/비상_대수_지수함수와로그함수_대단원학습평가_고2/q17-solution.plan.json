@@ -1,0 +1,49 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "k",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "교집합 없음",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-1",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "4",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "A와 B가 겹치지 않는 k의 범위"
+  },
+  "caption": "A=[1,8], B=[2^(k-1),2^(k+1)]이다. B의 오른쪽 끝이 1보다 작으면 k<−1이고, B의 왼쪽 끝이 8보다 크면 k>4다. 두 경계는 A에 닿으므로 모두 열린 끝점이다.",
+  "accessibilityDescription": "k를 나타내는 수직선에서 -1보다 작은 부분과 4보다 큰 부분을 별도 구간으로 표시하고 -1, 4는 빈 동그라미로 제외한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "B가 A의 왼쪽이면 k<−1, 오른쪽이면 k>4",
+      "mappedTo": "numberLine.rows[0].pieces"
+    },
+    {
+      "id": "c2",
+      "condition": "두 경계 -1,4는 A∩B가 비지 않는 경우이므로 제외",
+      "mappedTo": "numberLine.rows[0].pieces"
+    }
+  ],
+  "newVisualInformation": [
+    "경계 −1과 4에서 열린 점을 명확하게 사용하고, 왼쪽·오른쪽 무한 구간 두 조각을 표시한다."
+  ]
+}
