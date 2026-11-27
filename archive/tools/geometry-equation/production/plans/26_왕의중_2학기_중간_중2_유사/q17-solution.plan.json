@@ -1,0 +1,225 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "해설: AC∥DE, BC:CE=4:3이므로 ACD 넓이15, ABCD 넓이35 cm². 해설:  와 는 높이가 같으므로 넓이의 비는 밑변의 길이의 비 과 같다. 이므로 밑변 를 공유하는 와 의 넓이는 같다. 따라서 이므로 ④. 한 직선 위의 점 B, C, E와 그 같은 쪽의 점 A, D를 이은 그림이다. 삼각형 ABC의 넓이와 두 선분의 길이 비가 표시되어 있다. [원본 에셋과 발문을 대조한 문제 그림]",
+  "accessibilityDescription": "해설:  와 는 높이가 같으므로 넓이의 비는 밑변의 길이의 비 과 같다. 이므로 밑변 를 공유하는 와 의 넓이는 같다. 따라서 이므로 ④. 한 직선 위의 점 B, C, E와 그 같은 쪽의 점 A, D를 이은 그림이다. 삼각형 ABC의 넓이와 두 선분의 길이 비가 표시되어 있다. [원본 에셋과 발문을 대조한 문제 그림]",
+  "newVisualInformation": [
+    "원문 해설의 풀이 과정을 문제 축과 분리해 선·등변·각 표식을 유지한다.",
+    "점 B, C, E가 한 직선 위",
+    "삼각형 ABC의 넓이 20",
+    "BC와 CE의 비 4 대 3",
+    "AC와 DE의 평행"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lCE",
+        "ownerSegment": "sCE",
+        "text": "3",
+        "factRole": "GIVEN"
+      }
+    ],
+    "parallels": [
+      {
+        "id": "pACDE",
+        "count": 1,
+        "segments": [
+          "sAC",
+          "sDE"
+        ]
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "areaLabelrABC",
+        "at": [
+          1.67,
+          3.33
+        ],
+        "text": "20 cm^2",
+        "labelKind": "TEXT"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 420
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "한 직선 위의 세 점 $B$, $C$, $E$에 대하여 $\\overline{BC} : \\overline{CE} = 4 : 3$이고, 직선 $BE$의 같은 쪽에 있는 두 점 $A$, $D$에 대하여 $\\overline{AC} \\parallel \\overline{DE}$이다. $\\triangle ABC$의 넓이가 $20\\text{ cm}^2$일 때, 사각형 $ABCD$의 넓이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
