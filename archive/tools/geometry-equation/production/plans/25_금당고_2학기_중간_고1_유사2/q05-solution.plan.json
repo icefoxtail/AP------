@@ -1,0 +1,141 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C0"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k0",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C0"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C0",
+    "C1"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "C0",
+        "C1"
+      ]
+    }
+  ],
+  "caption": "원의 중심을 (4,-3)만큼 옮겨도 반지름은 일정",
+  "accessibilityDescription": "변환 전후 중심 (-2,1),(2,-2)와 같은 반지름 3을 보여준다.",
+  "sourceConditions": [
+    {
+      "id": "drawn",
+      "condition": "변환 전후 중심 (-2,1),(2,-2)와 같은 반지름 3을 보여준다.",
+      "mappedTo": [
+        "C0",
+        "C1",
+        "s1",
+        "k0",
+        "k1"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "변환 전후 중심 (-2,1),(2,-2)와 같은 반지름 3을 보여준다."
+  ],
+  "coordinateLabels": [
+    "C0",
+    "C1"
+  ],
+  "displayCircles": [
+    "k0",
+    "k1"
+  ]
+}

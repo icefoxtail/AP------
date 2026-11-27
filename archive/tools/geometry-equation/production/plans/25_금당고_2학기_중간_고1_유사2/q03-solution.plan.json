@@ -1,0 +1,93 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C"
+  ],
+  "displaySegments": [],
+  "caption": "원 (x+3)²+(y-4)²=16의 중심과 반지름",
+  "accessibilityDescription": "완전제곱식에서 구한 중심 (-3,4)과 반지름 4를 그림에서 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "drawn",
+      "condition": "완전제곱식에서 구한 중심 (-3,4)과 반지름 4를 그림에서 확인한다.",
+      "mappedTo": [
+        "C",
+        "k"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "완전제곱식에서 구한 중심 (-3,4)과 반지름 4를 그림에서 확인한다."
+  ],
+  "coordinateLabels": [
+    "C"
+  ],
+  "displayCircles": [
+    "k"
+  ]
+}

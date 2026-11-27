@@ -1,0 +1,190 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-6"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "P",
+        "B"
+      ]
+    }
+  ],
+  "caption": "두 고정점 A,B에서 같은 거리에 있으면서 지정된 직선 위에 있는 점 P",
+  "accessibilityDescription": "문제에 주어진 두 점 A,B, 직선 조건 및 PA=PB인 점 P를 그렸다. P의 좌표는 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "given",
+      "condition": "문제에 주어진 두 점 A,B, 직선 조건 및 PA=PB인 점 P를 그렸다. P의 좌표는 표시하지 않는다.",
+      "mappedTo": [
+        "A",
+        "B",
+        "P",
+        "s1",
+        "s2",
+        "s3",
+        "l"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "문제에 명시된 위치·선·직각·같은 길이의 시각적 관계만 표시"
+  ],
+  "displayLines": [
+    "l"
+  ],
+  "coordinateLabels": [
+    "A",
+    "B"
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eqPA",
+        "count": 1,
+        "segments": [
+          "s2",
+          "s3"
+        ]
+      }
+    ]
+  }
+}

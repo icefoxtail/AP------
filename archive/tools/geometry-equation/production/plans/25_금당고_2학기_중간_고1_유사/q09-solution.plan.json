@@ -1,0 +1,212 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "CENTROID",
+        "inputs": [
+          "O",
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "CENTROID",
+        "inputs": [
+          "G",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "G",
+    "T"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "G",
+        "B"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "G",
+        "C"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "caption": "각의 이등분점 C와 두 삼각형의 무게중심 G,T",
+  "accessibilityDescription": "C는 OB를 3:5로 나누고 G는 OAB, T는 GBC의 무게중심인 중첩 삼각형 구조다.",
+  "sourceConditions": [
+    {
+      "id": "drawn",
+      "condition": "C는 OB를 3:5로 나누고 G는 OAB, T는 GBC의 무게중심인 중첩 삼각형 구조다.",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "G",
+        "T",
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "C는 OB를 3:5로 나누고 G는 OAB, T는 GBC의 무게중심인 중첩 삼각형 구조다."
+  ],
+  "planeMarks": {
+    "angles": [
+      {"id":"bisect1","refs":["O","A","C"],"value":26.565,"arcs":1,"style":"ARC","equalGroup":1,"noLabel":true},
+      {"id":"bisect2","refs":["C","A","B"],"value":26.565,"arcs":1,"style":"ARC","equalGroup":1,"noLabel":true}
+    ],
+    "expressionLabels": [
+      {"id":"ratio","ownerSegment":"s3","text":"OC:CB=3:5"}
+    ]
+  },
+  "coordinateLabels": [
+    "C",
+    "G",
+    "T"
+  ]
+}

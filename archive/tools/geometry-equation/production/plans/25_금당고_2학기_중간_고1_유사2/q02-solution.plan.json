@@ -1,0 +1,142 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {"coordinates": [{"kind":"integer","value":"-1"},{"kind":"integer","value":"7"}]},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l1",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-4"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l2",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-3"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P", "Q"
+  ],
+  "hiddenPointNames": ["Q"],
+  "unmarkedPointNames": ["Q"],
+  "displaySegments": [],
+  "caption": "기울기가 같은 두 평행 직선과 새 직선 위의 점",
+  "accessibilityDescription": "두 직선의 기울기가 -3으로 같고 새 직선은 점 (-1,6)을 지나는 평행 관계를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "drawn",
+      "condition": "두 직선의 기울기가 -3으로 같고 새 직선은 점 (-1,6)을 지나는 평행 관계를 표시한다.",
+      "mappedTo": [
+        "P",
+        "l1",
+        "l2"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 직선의 기울기가 -3으로 같고 새 직선은 점 (-1,6)을 지나는 평행 관계를 표시한다."
+  ],
+  "coordinateLabels": [
+    "P"
+  ],
+  "displayLines": [
+    "l1",
+    "l2"
+  ],
+  "lineLabels": [
+    {
+      "nodeId": "l1",
+      "text": "3x+y-4=0"
+    },
+    {
+      "nodeId": "l2",
+      "text": "3x+y-3=0"
+    }
+  ]
+}

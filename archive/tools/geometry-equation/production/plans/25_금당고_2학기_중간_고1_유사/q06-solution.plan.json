@@ -1,0 +1,158 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "mirror",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "Q",
+          "mirror"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "Q",
+    "R"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    }
+  ],
+  "caption": "평행이동 뒤 y=-x 대칭으로 얻는 점의 변화",
+  "accessibilityDescription": "원점 P(2,-4)에서 Q(5,-1)로 옮기고 R(1,-5)로 반사한 위치를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "drawn",
+      "condition": "원점 P(2,-4)에서 Q(5,-1)로 옮기고 R(1,-5)로 반사한 위치를 표시한다.",
+      "mappedTo": [
+        "P",
+        "Q",
+        "R",
+        "s1",
+        "s2",
+        "mirror"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원점 P(2,-4)에서 Q(5,-1)로 옮기고 R(1,-5)로 반사한 위치를 표시한다."
+  ],
+  "coordinateLabels": [
+    "P",
+    "Q",
+    "R"
+  ],
+  "displayLines": [
+    "mirror"
+  ],
+  "lineLabels": [
+    {
+      "nodeId": "mirror",
+      "text": "y=-x"
+    }
+  ]
+}

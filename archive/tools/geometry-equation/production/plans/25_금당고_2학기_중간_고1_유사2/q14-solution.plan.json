@@ -1,0 +1,282 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "23",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displaySegments": [
+    {
+      "id": "ab",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "bc",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "ca",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "ad",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "ce",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "hb",
+      "refs": [
+        "H",
+        "B"
+      ]
+    },
+    {
+      "id": "hc",
+      "refs": [
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H",
+    "D",
+    "E"
+  ],
+  "hiddenPointNames": [
+    "D",
+    "E"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "caption": "두 수선의 교점 H와 삼각형 HBC의 넓이를 결정하는 좌표 도형",
+  "sourceConditions": [
+    {
+      "id": "given",
+      "condition": "문제에 주어진 A,B,C의 좌표",
+      "mappedTo": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "altitudes",
+      "condition": "AH⊥BC, CH⊥AB, H는 두 높이의 교점",
+      "mappedTo": [
+        "ad",
+        "ce",
+        "r1",
+        "r2",
+        "H"
+      ]
+    },
+    {
+      "id": "sol",
+      "condition": "H=(4,4), 삼각형 HBC의 넓이 5/2",
+      "mappedTo": [
+        "H",
+        "hb",
+        "hc"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "H의 정확한 좌표와 두 높이 및 수선 발의 직각 표식",
+    "HBC의 세 변과 삼각형 내부 관계"
+  ],
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "C",
+        "E",
+        "B"
+      ]
+    }
+  ],
+  "sourceQuote": "A(0,1), B(6,3), C(3,7), AH⊥BC, CH⊥AB",
+  "accessibilityDescription": "주어진 삼각형 ABC의 두 높이, 직각 표식, 수선 교점 H의 좌표와 삼각형 HBC를 함께 그린다.",
+  "coordinateLabels": [
+    "H"
+  ]
+}

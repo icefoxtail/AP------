@@ -1,0 +1,205 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-6"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "P",
+    "M"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "P",
+        "M"
+      ],
+      "dashed": true
+    }
+  ],
+  "caption": "P는 직선 2x-y-6=0과 AB의 수직이등분선 위에 있다",
+  "accessibilityDescription": "두 점까지의 같은 거리를 AB 중점 M을 통과하는 수선으로 표시하고 P(3,0)을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "drawn",
+      "condition": "두 점까지의 같은 거리를 AB 중점 M을 통과하는 수선으로 표시하고 P(3,0)을 표시한다.",
+      "mappedTo": [
+        "A",
+        "B",
+        "P",
+        "M",
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "l"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 점까지의 같은 거리를 AB 중점 M을 통과하는 수선으로 표시하고 P(3,0)을 표시한다."
+  ],
+  "coordinateLabels": [
+    "P",
+    "M"
+  ],
+  "displayLines": [
+    "l"
+  ],
+  "rightAngles": [
+    {
+      "id": "ra1",
+      "refs": [
+        "P",
+        "M",
+        "B"
+      ]
+    }
+  ],
+  "lineLabels": [
+    {
+      "nodeId": "l",
+      "text": "2x-y-6=0"
+    }
+  ]
+}
