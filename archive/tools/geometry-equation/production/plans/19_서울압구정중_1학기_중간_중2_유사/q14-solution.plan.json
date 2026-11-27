@@ -1,0 +1,15 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [{ "kind": "SET", "pieces": [{ "lo": { "value": "0", "state": "CLOSED" }, "hi": { "value": "600", "state": "CLOSED" } }], "label": "도보 거리" }]
+  },
+  "numberLineCaption": { "text": "걸은 거리는 최대 600m" },
+  "caption": "제한시간 20분을 적용하면 x/60+(2400−x)/180≤20에서 0≤x≤600이므로 최댓값은 600m이다",
+  "accessibilityDescription": "걸은 거리 x의 범위를 0미터에서 600미터까지 양 끝을 포함하는 수직선 구간으로 나타낸다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "걸은 거리 x는 음수가 아님", "mappedTo": "numberLine.rows[0].pieces[0].lo" },
+    { "id": "c2", "condition": "시간 제한을 일차부등식으로 풀면 x≤600", "mappedTo": "numberLine.rows[0].pieces[0].hi" }
+  ],
+  "newVisualInformation": ["시간 조건을 만족하는 도보 거리의 구간과 최대 가능 거리 600m를 시각화한다"]
+}
