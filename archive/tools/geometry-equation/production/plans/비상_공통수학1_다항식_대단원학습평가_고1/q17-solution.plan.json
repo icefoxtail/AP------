@@ -1,0 +1,30 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "인수분해와 삼각형의 두 변 길이의 합 조건에 따라 a=b, 즉 BC=CA가 되어 삼각형 ABC는 이등변삼각형이다.",
+  "accessibilityDescription": "삼각형 ABC에서 BC는 a, CA는 b, AB는 c로 표시되어 있다. 해설에서 증명된 a=b를 BC와 CA에 같은 길이 눈금 하나씩으로 보여 준다.",
+  "sourceQuote": "삼각형 $ABC$의 세 변의 길이 $a$, $b$, $c$에 대하여 $a^3+a^2b-ab^2-ac^2+bc^2-b^3=0$이 성립할 때, 삼각형 $ABC$는 어떤 삼각형인지 말하시오.",
+  "sourceConditions": [
+    {"id":"s1","condition":"삼각형 ABC에서 a=BC, b=CA, c=AB의 표준 변 표기를 사용한다. 좌표 A(-4,0), B(4,0), C(0,6)은 결론 a=b를 보이는 대표 도식일 뿐 원문이 제공한 길이 수치가 아니다.","mappedTo":["mathPlan.nodes","displaySegments","planeMarks.expressionLabels"]},
+    {"id":"s2","condition":"주어진 식은 (a-b)(a+b-c)(a+b+c)=0이고 삼각형 부등식 a+b>c, 양수 조건 a+b+c>0으로 a=b가 된다.","mappedTo":["caption","planeMarks.equalLengths[0]"]},
+    {"id":"s3","condition":"해설의 결론은 BC=CA인 이등변삼각형이다.","mappedTo":["planeMarks.equalLengths[0]","displaySegments"]}
+  ],
+  "newVisualInformation": ["식의 인수분해로 얻은 a=b를 선분 BC와 CA의 동일한 길이 눈금으로 표시한다.","세 변 a, b, c 라벨의 소속을 명확히 하여 어느 꼭짓점에서 두 같은 변이 만나는지 보여 준다.","답이 되는 이등변 구조는 해설에만 나타내며 면 채움은 사용하지 않는다."],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints": ["A","B","C"],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]}],
+  "planeMarks": {
+    "equalLengths": [{"id":"eqBC_CA","count":1,"segments":["sBC","sCA"]}],
+    "expressionLabels": [{"id":"lenA","ownerSegment":"sBC","text":"a"},{"id":"lenB","ownerSegment":"sCA","text":"b"},{"id":"lenC","ownerSegment":"sAB","text":"c"}]
+  },
+  "coordinateCanvas": {"width":480,"height":360}
+}
