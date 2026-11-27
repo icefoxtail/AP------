@@ -364,8 +364,8 @@ window.questionBank = [
   },
   {
     "id": 5,
-    "imageSize": "tall",
-    "imageAlt": "삼각형 ABC에서 AB 위의 D와 AC 위의 E를 연결했다. B에서 E, C에서 D로 이은 두 선이 G에서 만난다. BG는 6이고 GE는 x이다.",
+    "imageSize": "full",
+    "imageAlt": "D와 E는 각각 AB, AC의 중점이고 두 중선 CD, BE가 G에서 만나며 BG=6, GE=x이다.",
     "questionUid": "24_왕운중_2학기_기말_중2_수학|5",
     "sourceExamId": "24_왕운중_2학기_기말_중2_수학",
     "sourceOrdinal": 5,
@@ -409,7 +409,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "삼각형의 무게중심은 중선을 꼭짓점 쪽과 변 쪽으로 $2:1$로 나눈다.\n따라서 $BG:GE=2:1$이다.\n$BG=6$이므로 $GE=6\\div2=3$이다.\n정답은 ③이다.",
-    "image": "assets/images/24_왕운중_2학기_기말_중2_수학/q05-q06-source-crop.png",
+    "image": "assets/images/24_왕운중_2학기_기말_중2_수학/q5-problem.svg",
     "level": "중",
     "difficultyBucket": 1,
     "difficultyConfidence": "medium",
@@ -453,7 +453,8 @@ window.questionBank = [
     "solutionImage": "assets/images/24_왕운중_2학기_기말_중2_수학/q5-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형 ABC의 두 중선 BE, CD가 무게중심 G에서 만난다. 꼭짓점 쪽은 같은 길이 조각 2개(BG는 6), 변 쪽은 1개(GE는 x)로 나뉘고 같은 색 눈금으로 묶었다.",
     "solutionImageCaption": "BG:GE=2:1이므로 GE=6÷2=3이다. 정답 ③.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "imageCaption": "D와 E는 각각 AB, AC의 중점이고 두 중선 CD, BE가 G에서 만나며 BG=6, GE=x이다."
   },
   {
     "id": 6,
@@ -557,8 +558,8 @@ window.questionBank = [
   },
   {
     "id": 7,
-    "imageSize": "tall",
-    "imageAlt": "삼각형 ABC에서 D는 AB, E는 AC 위에 있다. DE와 BC는 평행하다. AB 전체는 15, BD는 5, AE는 8이며 EC는 x이다.",
+    "imageSize": "full",
+    "imageAlt": "DE∥BC인 삼각형 ABC에서 AB 전체 15, BD=5, AE=8, EC=x이다.",
     "questionUid": "24_왕운중_2학기_기말_중2_수학|7",
     "sourceExamId": "24_왕운중_2학기_기말_중2_수학",
     "sourceOrdinal": 7,
@@ -603,7 +604,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "$DE\\parallel BC$이므로 삼각형 $ADE$와 $ABC$는 닮음이다.\n$AB=15$, $BD=5$이므로 $AD=10$이다.\n닮음비에서 $\\dfrac{AD}{AB}=\\dfrac{AE}{AC}=\\dfrac{10}{15}=\\dfrac23$이다.\n$AE=8$이므로 $AC=12$, 따라서 $EC=AC-AE=4$이다.\n정답은 ②이다.",
-    "image": "assets/images/24_왕운중_2학기_기말_중2_수학/q07-source-crop.png",
+    "image": "assets/images/24_왕운중_2학기_기말_중2_수학/q7-problem.svg",
     "level": "중",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
@@ -649,7 +650,8 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "imageCaption": "DE∥BC인 삼각형 ABC에서 AB 전체 15, BD=5, AE=8, EC=x이다."
   },
   {
     "id": 8,
@@ -742,8 +744,8 @@ window.questionBank = [
   },
   {
     "id": 9,
-    "imageSize": "tall",
-    "imageAlt": "E는 BC 위, D는 AC 위에 있다. 각 B와 CDE에는 같은 각 표시가 있다. BE는 6, EC는 4, DC는 5이며 AD는 x이다.",
+    "imageSize": "full",
+    "imageAlt": "△ABC 안의 D∈AC, E∈BC이며 ∠B=∠CDE, BE=6, EC=4, DC=5, AD=x이다.",
     "questionUid": "24_왕운중_2학기_기말_중2_수학|9",
     "sourceExamId": "24_왕운중_2학기_기말_중2_수학",
     "sourceOrdinal": 9,
@@ -787,7 +789,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "삼각형 $ABC$와 $DCE$에서 $\\angle B=\\angle CDE$이고, $\\angle C$는 공통이다.\n따라서 두 삼각형은 AA 닮음이다. 대응은 $BC\\leftrightarrow DC$, $AC\\leftrightarrow EC$이다.\n$BC=BE+EC=6+4=10$, $DC=5$이므로 닮음비는 $2:1$이다.\n$AC=2\\cdot EC=8$이고 $AD=AC-DC=8-5=3$이다.\n정답은 ③이다.",
-    "image": "assets/images/24_왕운중_2학기_기말_중2_수학/q09-source-crop.png",
+    "image": "assets/images/24_왕운중_2학기_기말_중2_수학/q9-problem.svg",
     "level": "중",
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
@@ -833,12 +835,13 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "imageCaption": "△ABC 안의 D∈AC, E∈BC이며 ∠B=∠CDE, BE=6, EC=4, DC=5, AD=x이다."
   },
   {
     "id": 10,
     "imageSize": "full",
-    "imageAlt": "A는 직각이고 A에서 밑변에 내린 수선의 발은 D이다. AD는 4, DC는 2이며 BD는 x이다.",
+    "imageAlt": "∠BAC와 ∠ADC는 모두 직각인 삼각형이고 AD=4, DC=2, BD=x이다.",
     "questionUid": "24_왕운중_2학기_기말_중2_수학|10",
     "sourceExamId": "24_왕운중_2학기_기말_중2_수학",
     "sourceOrdinal": 10,
@@ -882,7 +885,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "$AD$는 직각삼각형 $ABC$의 빗변 $BC$에 내린 높이이다.\n높이 정리에서 $AD^2=BD\\cdot DC$이다.\n$4^2=x\\cdot2$이므로 $x=8$이다.\n정답은 ⑤이다.",
-    "image": "assets/images/24_왕운중_2학기_기말_중2_수학/q10-source-crop.png",
+    "image": "assets/images/24_왕운중_2학기_기말_중2_수학/q10-problem.svg",
     "level": "중",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
@@ -928,7 +931,8 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "imageCaption": "∠BAC와 ∠ADC는 모두 직각인 삼각형이고 AD=4, DC=2, BD=x이다."
   },
   {
     "id": 11,
@@ -1308,7 +1312,7 @@ window.questionBank = [
   {
     "id": 15,
     "imageSize": "full",
-    "imageAlt": "왼쪽 AB는 9, 오른쪽 DC는 6이다. 두 선분과 나란한 가운데 EF의 길이가 x이다. E에서 AC와 BD가 만나고, F는 밑변 BC 위에 있다. BC는 20이다.",
+    "imageAlt": "AB∥EF∥DC이고 E는 AC와 BD의 교점, F는 BC 위의 점이다. AB=9, DC=6, BC=20, EF=x이다.",
     "questionUid": "24_왕운중_2학기_기말_중2_수학|15",
     "sourceExamId": "24_왕운중_2학기_기말_중2_수학",
     "sourceOrdinal": 15,
@@ -1353,7 +1357,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "$AB\\parallel DC$이므로 $\\angle BAE=\\angle DCE$이고, $\\angle AEB=\\angle CED$는 맞꼭지각이다. 따라서 $\\triangle ABE\\sim\\triangle CDE$이다.\n$AB=9$, $DC=6$이므로 $AE:EC=AB:DC=3:2$이다.\n따라서 $BE:ED=3:2$이고, 삼각형 $BDC$에서 $EF\\parallel DC$이므로 $\\dfrac{EF}{DC}=\\dfrac{BE}{BD}=\\dfrac35$이다.\n$EF=6\\cdot\\dfrac35=\\dfrac{18}{5}$이다.\n정답은 ③이다.",
-    "image": "assets/images/24_왕운중_2학기_기말_중2_수학/q15-source-crop.png",
+    "image": "assets/images/24_왕운중_2학기_기말_중2_수학/q15-problem.svg",
     "level": "중",
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
@@ -1399,7 +1403,8 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "imageCaption": "AB∥EF∥DC이고 E는 AC와 BD의 교점, F는 BC 위의 점이다. AB=9, DC=6, BC=20, EF=x이다."
   },
   {
     "id": 16,
@@ -1489,9 +1494,9 @@ window.questionBank = [
       "EVIDENCE_DEBT: The ACTIVE shared probability case-count PT/TPL has no exact M2-08 curriculum binding."
     ],
     "solutionImage": "assets/images/24_왕운중_2학기_기말_중2_수학/q16-solution.svg",
-    "solutionImageAlt": "해설 그림: 주머니 A에서 빨강 4/7, 파랑 3/7, 각각에서 주머니 B 빨강 1/3, 파랑 2/3로 갈라지는 수형도. 색이 서로 다른 두 경로가 굵은 선과 동그라미로 표시되어 있다.",
-    "solutionImageCaption": "(빨강, 파랑) 4/7×4/6=16/42와 (파랑, 빨강) 3/7×2/6=6/42를 더하면 22/42=11/21이다. 정답 ② (그림의 1/3, 2/3은 2/6, 4/6을 약분한 값)",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "주머니 A(빨강 4/7, 파랑 3/7)와 B(빨강 1/3, 파랑 2/3)의 경로를 분리하고 색이 서로 다른 두 경로를 강조한다.",
+    "solutionImageCaption": "주머니 A(빨강 4/7, 파랑 3/7)와 B(빨강 1/3, 파랑 2/3)의 경로를 분리하고 색이 서로 다른 두 경로를 강조한다.",
+    "solutionImageSize": "full",
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
@@ -1595,9 +1600,9 @@ window.questionBank = [
       "EVIDENCE_DEBT: The linear-function intersection condition is decisive alongside probability, but the current ACTIVE cross-concept registry has no exact M2 linear-function concept key; no guessed key is inserted."
     ],
     "solutionImage": "assets/images/24_왕운중_2학기_기말_중2_수학/q17-solution.svg",
-    "solutionImageAlt": "해설 그림: 6×6 주사위 순서쌍 표. a=b인 대각선 6칸과 a=2이고 b=1,4,5,6인 4칸은 옅은 회색(제외), 나머지 26칸은 짙은 회색(두 조건 만족)이다.",
-    "solutionImageCaption": "짙은 회색 26칸은 두 조건을 모두 만족하는 칸이고, 옅은 회색 10칸(a=b인 6칸, a=2이면서 b=1,4,5,6인 4칸)은 제외되는 칸이다. 36-6-4=26이므로 확률은 26/36=13/18이다. 정답 ②",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "주사위 순서쌍 36가지에서 a=b인 대각선 6칸과 a=2, b∉{2,3}인 4칸을 각각 구별해 제외한다.",
+    "solutionImageCaption": "주사위 순서쌍 36가지에서 a=b인 대각선 6칸과 a=2, b∉{2,3}인 4칸을 각각 구별해 제외한다.",
+    "solutionImageSize": "full",
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
@@ -1605,8 +1610,8 @@ window.questionBank = [
   },
   {
     "id": 18,
-    "imageSize": "tall",
-    "imageAlt": "윗변에는 A, E, F, D, 아랫변에는 B, G, H, C가 왼쪽부터 있다. GF가 AH와 P에서, AC와 Q에서 만난다. 각 줄에 세 같은 간격을 눈금으로 표시했다.",
+    "imageSize": "full",
+    "imageAlt": "평행사변형 ABCD의 위·아래 변을 E,F와 G,H가 각각 삼등분하며 GF∩AH=P, GF∩AC=Q이다.",
     "questionUid": "24_왕운중_2학기_기말_중2_수학|18",
     "sourceExamId": "24_왕운중_2학기_기말_중2_수학",
     "sourceOrdinal": 18,
@@ -1651,7 +1656,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "평행사변형의 넓이를 $S$라 하고, 높이를 $h$라 두자. 삼등분점의 길이비와 넓이비로 $S$를 구한다.\n$AF=\\dfrac23AD$이고 $GC=\\dfrac23BC$이며 $AD=BC$이므로 $AF=GC$이다. 또 $AF\\parallel GC$이므로 $AFGC$는 평행사변형이고, 대각선 $AC$와 $FG$는 서로를 이등분한다. 따라서 $Q$는 $AC$의 중점이다.\n$GH=HC$이므로 $H$는 $GC$의 중점이다. 삼각형 $AGC$에서 $AH$와 $GQ$는 중선이므로, 교점 $P$는 무게중심이다. 따라서 $AP:PH=2:1$, 즉 $\\dfrac{AP}{AH}=\\dfrac23$이다.\n$AQ=\\dfrac12AC$이므로 같은 각 $A$를 끼는 삼각형의 넓이비에서 $\\dfrac{[APQ]}{[AHC]}=\\dfrac{AP}{AH}\\cdot\\dfrac{AQ}{AC}=\\dfrac23\\cdot\\dfrac12=\\dfrac13$이다.\n$HC=\\dfrac13BC$이고 $[ABCD]=BC\\cdot h$이므로 $[AHC]=\\dfrac12\\cdot\\dfrac13BC\\cdot h=\\dfrac16S$이다.\n따라서 $[APQ]=\\dfrac13\\cdot\\dfrac16S=\\dfrac1{18}S$이다. $[APQ]=2$이므로 $S=36$이다.\n정답은 ⑤이다.",
-    "image": "assets/images/24_왕운중_2학기_기말_중2_수학/q18-source-crop.png",
+    "image": "assets/images/24_왕운중_2학기_기말_중2_수학/q18-problem.svg",
     "solutionImage": "assets/images/24_왕운중_2학기_기말_중2_수학/q18-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 평행사변형 ABCD에서 삼등분점 E, F와 G, H의 같은 길이 표시(눈금 2개), Q가 AC의 중점(눈금 1개), △APQ=2(파랑)와 사각형 PHCQ(주황)를 나타내고, 아래에 AH를 펴서 AP:PH=2:1(비 2, 비 1)을 보였다.",
     "solutionImageCaption": "[APQ]=(1/3)[AHC]이고 [AHC]=S/6이므로 [APQ]=S/18=2에서 평행사변형의 넓이는 36이다. 정답 ⑤.",
@@ -1698,7 +1703,8 @@ window.questionBank = [
     "solutionVisualReason": "The inspected clean problem diagram preserves the labels and spatial relationships used in the text proof; adding a second static diagram would repeat the same topology without adding a new decisive relation.",
     "metaEvidenceDebt": [
       "EVIDENCE_DEBT: No exact ACTIVE PT/TPL represents this trisection-intersection area ratio."
-    ]
+    ],
+    "imageCaption": "평행사변형 ABCD의 위·아래 변을 E,F와 G,H가 각각 삼등분하며 GF∩AH=P, GF∩AC=Q이다."
   },
   {
     "id": 19,
@@ -1795,13 +1801,14 @@ window.questionBank = [
       "EVIDENCE_DEBT: The geometric movement condition is an essential cross-concept, but no exact ACTIVE M2 geometry-motion cross-concept key exists; no guessed key is inserted."
     ],
     "solutionImage": "assets/images/24_왕운중_2학기_기말_중2_수학/q19-solution-visual-v2.svg",
-    "solutionImageAlt": "왼쪽에서는 눈의 합이 4여서 두 점이 B에 표시된다. 오른쪽에서는 합이 11여서 두 점이 C에 표시된다. 두 정삼각형과 두 정사각형의 경계는 원래 문제와 같다.",
-    "solutionImageCaption": "이동을 마쳤을 때 합이 4이면 두 점이 B에, 11이면 C에 있다. 해당하는 주사위 눈의 순서쌍은 각각 3가지와 2가지이므로 확률은 5/36이다.",
+    "solutionImageAlt": "두 주사위 눈의 합이 4이면 두 점은 B에서, 합이 11이면 C에서 만난다. 나머지 합에서는 일치하지 않는다.",
+    "solutionImageCaption": "두 주사위 눈의 합이 4이면 두 점은 B에서, 합이 11이면 C에서 만난다. 나머지 합에서는 일치하지 않는다.",
     "solutionImageSize": "full",
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "solutionImageScale": 90
   },
   {
     "id": 20,
@@ -2162,18 +2169,19 @@ window.questionBank = [
       "EVIDENCE_DEBT: The ACTIVE shared probability count-ratio PT/TPL has no exact M2-08 curriculum binding."
     ],
     "solutionImage": "assets/images/24_왕운중_2학기_기말_중2_수학/q23-solution.svg",
-    "solutionImageAlt": "해설 그림: 일의 자리가 0, 2, 4인 경우로 나눈 두 자리 짝수 수형도. 일의 자리 0에 10, 20, 30, 40, 2에 12, 32, 42, 4에 14, 24, 34가 달린다.",
-    "solutionImageCaption": "두 자리 자연수는 전체 4×4=16가지이고 짝수는 4+3+3=10가지이므로 확률은 10/16=5/8이다.",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "두 자리 짝수는 일의 자리가 0이면 10·20·30·40, 2이면 12·32·42, 4이면 14·24·34의 열 가지다.",
+    "solutionImageCaption": "두 자리 짝수는 일의 자리가 0이면 10·20·30·40, 2이면 12·32·42, 4이면 14·24·34의 열 가지다.",
+    "solutionImageSize": "full",
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "solutionImageScale": 85
   },
   {
     "id": 24,
-    "imageSize": "tall",
-    "imageAlt": "평행한 직선 l, m, n을 사선 p, q가 가로지른다. 위부터 교점 쌍은 A와 D, B와 E, C와 F이다. AB는 4, BC는 6, AD는 11, CF는 16, BE는 x이다.",
+    "imageSize": "full",
+    "imageAlt": "세 직선 l,m,n은 평행이고 횡선 p 위의 AB=4, BC=6이다. 각 평행선 위에서 AD=11, BE=x, CF=16이다.",
     "questionUid": "24_왕운중_2학기_기말_중2_수학|24",
     "sourceExamId": "24_왕운중_2학기_기말_중2_수학",
     "sourceOrdinal": 24,
@@ -2211,7 +2219,7 @@ window.questionBank = [
     "choices": [],
     "answer": "$13$",
     "solution": "세 평행선 사이에서 두 횡선 위에 생기는 대응 선분의 길이는 같은 비로 늘어난다.\n$p$ 위에서 $AB=4$, $BC=6$이므로 위 평행선에서 아래 평행선까지의 구간 중 가운데 선까지의 비율은 $\\dfrac4{4+6}=\\dfrac25$이다.\n두 횡선 사이의 거리는 위에서 11, 아래에서 16이므로 가운데 평행선에서의 거리는\n$BE=AD+(CF-AD)\\cdot\\dfrac25=11+5\\cdot\\dfrac25=13$이다.",
-    "image": "assets/images/24_왕운중_2학기_기말_중2_수학/q24-source-crop.png",
+    "image": "assets/images/24_왕운중_2학기_기말_중2_수학/q24-problem.svg",
     "level": "중",
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
@@ -2257,6 +2265,7 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "imageCaption": "세 직선 l,m,n은 평행이고 횡선 p 위의 AB=4, BC=6이다. 각 평행선 위에서 AD=11, BE=x, CF=16이다."
   }
 ];

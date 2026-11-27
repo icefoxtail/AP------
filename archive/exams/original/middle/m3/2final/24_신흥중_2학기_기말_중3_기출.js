@@ -27,14 +27,14 @@ window.questionBank = [
     "answer": "④",
     "solution": "같은 호 $\\wideparen{AB}$를 보는 원주각은 중심각의 절반이다.\n$\\angle AOB=120^\\circ$이므로\n$\\angle APB=\\dfrac{120^\\circ}{2}=60^\\circ$이다.\n따라서 $x=60^\\circ$이므로 정답은 ④이다.",
     "solutionImage": "assets/images/24_신흥중_2학기_기말_중3_기출/q1-solution-v2.svg",
-    "image": "assets/images/24_신흥중_2학기_기말_중3_기출/q1.png",
+    "image": "assets/images/24_신흥중_2학기_기말_중3_기출/q1-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageAlt": "해설 그림: 원 O에서 호 AB를 보는 중심각 AOB=120도는 파란색이고 같은 호를 보는 원주각 APB=x는 주황색이다.",
-    "solutionImageCaption": "같은 호 AB를 보는 원주각은 중심각의 절반이므로 ∠APB=120°÷2=60°, 즉 x=60°이다. 정답은 ④이다.",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "중심각 120°와 원주각 x=60°, 호 AB, 네 반지름·현을 동일 호 관계로 배치한다.",
+    "solutionImageCaption": "중심각 120°와 원주각 x=60°, 호 AB, 네 반지름·현을 동일 호 관계로 배치한다.",
+    "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
@@ -49,7 +49,10 @@ window.questionBank = [
     "decisiveStep": "같은 호의 중심각120도와 원주각의1:2관계를 바로 적용한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원본 문제 재설계: 원 O의 중심각 AOB=120°, 원주각 APB=x — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageCaption": "원본 문제 재설계: 원 O의 중심각 AOB=120°, 원주각 APB=x — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -120,14 +123,14 @@ window.questionBank = [
     "answer": "②",
     "solution": "$\\angle AQC=60^\\circ$는 호 $\\wideparen{ABC}$를 보는 원주각이다.\n따라서 호 $\\wideparen{ABC}$의 크기는\n$2\\times60^\\circ=120^\\circ$이다.\n또 $\\angle BOC=90^\\circ$이므로 호 $\\wideparen{BC}$의 크기는 $90^\\circ$이다.\n따라서\n$\\wideparen{AB}=120^\\circ-90^\\circ=30^\\circ$이다.\n$\\angle APB$는 호 $\\wideparen{AB}$를 보는 원주각이므로\n$\\angle APB=\\dfrac{30^\\circ}{2}=15^\\circ$이다.\n따라서 정답은 ②이다.",
     "solutionImage": "assets/images/24_신흥중_2학기_기말_중3_기출/q3-solution-v2.svg",
-    "image": "assets/images/24_신흥중_2학기_기말_중3_기출/q3.png",
+    "image": "assets/images/24_신흥중_2학기_기말_중3_기출/q3-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageAlt": "해설 그림: 원 O에서 ∠AQC=60°가 보는 호 ABC 120°와 ∠BOC=90°가 보는 호 BC 90°를 색으로 구분하고, 두 호의 차인 호 AB 30°와 그 원주각 ∠APB를 같은 색으로 표시한다.",
-    "solutionImageCaption": "∠AQC=60°가 보는 호 ABC=120°이고 ∠BOC=90°이므로 호 BC=90°이다. 따라서 호 AB=120°−90°=30°이고, ∠APB는 호 AB의 원주각이므로 15°이다. 정답은 ②이다.",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "원본 중심의 90° 직각 네모 표식, A·B·C·P·Q 다섯 점, 호 AB=30°·BC=90°를 보존한다.",
+    "solutionImageCaption": "원본 중심의 90° 직각 네모 표식, A·B·C·P·Q 다섯 점, 호 AB=30°·BC=90°를 보존한다.",
+    "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
@@ -142,7 +145,10 @@ window.questionBank = [
     "decisiveStep": "원주각60도가 보는 호120도에서 중심각90도의 호를 빼고 남은 호의 절반으로 APB를 정한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원본 문제 재설계: ∠BOC=90°, ∠AQC=60°, 원주각 APB=x — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageCaption": "원본 문제 재설계: ∠BOC=90°, ∠AQC=60°, 원주각 APB=x — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -170,14 +176,14 @@ window.questionBank = [
     "answer": "③",
     "solution": "중심각 $\\angle BOC=70^\\circ$이므로 호 $\\wideparen{BC}$의 크기도 $70^\\circ$이다.\n$\\angle x$가 보는 호는 점 $A$를 포함하지 않는 호 $\\wideparen{BCDE}$이므로 그 크기는 $2x$이다.\n$\\angle y$가 보는 호는 점 $D$를 포함하지 않는 호 $\\wideparen{CBAE}$이므로 그 크기는 $2y$이다.\n이 두 호를 더하면 원 전체 $360^\\circ$에 호 $\\wideparen{BC}$가 한 번 더 들어간다.\n따라서\n$2x+2y=360^\\circ+70^\\circ=430^\\circ$\n$x+y=215^\\circ$이다.\n따라서 정답은 ③이다.",
     "solutionImage": "assets/images/24_신흥중_2학기_기말_중3_기출/q4-solution-v2.svg",
-    "image": "assets/images/24_신흥중_2학기_기말_중3_기출/q4.png",
+    "image": "assets/images/24_신흥중_2학기_기말_중3_기출/q4-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageAlt": "해설 그림: 원 O에 내접하는 오각형 ABCDE. ∠x(꼭짓점 A)가 보는 호 BCDE는 파랑(2x), ∠y(꼭짓점 D)가 보는 호 CBAE는 주황(2y)이고, 두 호가 겹치는 호 BC는 초록으로 중심각 ∠BOC=70°와 같게 표시되어 있다.",
-    "solutionImageCaption": "2x+2y=360°+70°=430°이므로 x+y=215° (정답 ③)",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "오각형의 5현과 중심각, 서로 중복 계산되는 호 BC 70°를 면 채움 없이 대응시킨다.",
+    "solutionImageCaption": "오각형의 5현과 중심각, 서로 중복 계산되는 호 BC 70°를 면 채움 없이 대응시킨다.",
+    "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
@@ -192,7 +198,10 @@ window.questionBank = [
     "decisiveStep": "두 원주각이 보는 큰 호의 합이 전체 원주와 공통 호 BC의 합임을 찾아 두 미지각의 합을 직접 구한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원본 문제 재설계: 원에 내접한 오각형 ABCDE, 중심각 BOC=70°, A의 x와 D의 y — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageCaption": "원본 문제 재설계: 원에 내접한 오각형 ABCDE, 중심각 BOC=70°, A의 x와 D의 y — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -220,14 +229,14 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "$\\angle DAB=19^\\circ$는 호 $\\wideparen{DB}$를 보는 원주각이므로\n$\\wideparen{DB}=38^\\circ$이다.\n점 $D$는 호 $\\wideparen{BC}$의 중점이므로\n$\\wideparen{CD}=\\wideparen{DB}=38^\\circ$이고\n$\\wideparen{CB}=76^\\circ$이다.\n$AB$가 지름이므로 위쪽 반원의 크기는 $180^\\circ$이다.\n따라서\n$\\wideparen{AC}=180^\\circ-76^\\circ=104^\\circ$이다.\n$\\angle ABC$는 호 $\\wideparen{AC}$를 보는 원주각이므로\n$x=\\angle ABC=\\dfrac{104^\\circ}{2}=52^\\circ$이다.\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/24_신흥중_2학기_기말_중3_기출/q5-solution-v2.svg",
-    "image": "assets/images/24_신흥중_2학기_기말_중3_기출/q5.png",
+    "image": "assets/images/24_신흥중_2학기_기말_중3_기출/q5-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageAlt": "해설 그림: 지름 AB인 원 O에서 ∠DAB=19°가 보는 호 DB=38°와 같은 길이의 호 CD=38°(둘 다 파랑), 호 AC=104°(주황)와 ∠x=∠ABC를 나타낸 그림.",
-    "solutionImageCaption": "∠DAB=19°는 호 DB를 보는 원주각이므로 호 DB=38°이고, D가 호 BC의 중점이므로 호 CD=38°, 호 BC=76°이다. AB가 지름이므로 호 AC=180°−76°=104°이고 ∠ABC는 호 AC를 보는 원주각이므로 x=104°÷2=52°이다. 정답 ⑤.",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "원의 지름 AB, 호 CD=DB=38°를 두 구분 호로 그리고 x=52°에 대응하는 호 AC=104°를 표시한다.",
+    "solutionImageCaption": "원의 지름 AB, 호 CD=DB=38°를 두 구분 호로 그리고 x=52°에 대응하는 호 AC=104°를 표시한다.",
+    "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
@@ -242,7 +251,10 @@ window.questionBank = [
     "decisiveStep": "19도 원주각의 호를 두 배로 읽고 호의 중점과 지름의 반원 관계를 연결하여 남은 호의 원주각을 정한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원본 문제 재설계: AB가 지름, 호 BC의 중점 D, ∠DAB=19°, ∠ABC=x — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageCaption": "원본 문제 재설계: AB가 지름, 호 BC의 중점 D, ∠DAB=19°, ∠ABC=x — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -270,14 +282,14 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "같은 원에서 호의 길이는 그 호에 대한 중심각의 크기에 비례한다.\n$40^\\circ$인 원주각이 보는 호의 크기는\n$2\\times40^\\circ=80^\\circ$이고, 이 호의 길이가 $10\\rm\\,cm$이다.\n$60^\\circ$인 원주각이 보는 호의 크기는\n$2\\times60^\\circ=120^\\circ$이다.\n따라서\n$10:x=80:120=2:3$\n$2x=30$\n$x=15$이다.\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/24_신흥중_2학기_기말_중3_기출/q6-solution-v2.svg",
-    "image": "assets/images/24_신흥중_2학기_기말_중3_기출/q6.png",
+    "image": "assets/images/24_신흥중_2학기_기말_중3_기출/q6-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageAlt": "해설 그림: 한 원 O에서 같은 점에서 그은 두 현이 이루는 원주각 40도, 60도가 보는 호의 중심각은 각각 80도, 120도이고 두 호는 다른 색이다. 호의 길이는 10cm와 x cm이다.",
-    "solutionImageCaption": "원주각 40°, 60°가 보는 호의 중심각은 80°, 120°이다. 호의 길이는 중심각에 비례하므로 10:x=80:120=2:3에서 x=15이고 정답은 ⑤이다.",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "원주각 40°·60°와 마주 보는 두 호 10cm·xcm를 원 둘레의 실제 서로 다른 구간에 표현한다.",
+    "solutionImageCaption": "원주각 40°·60°와 마주 보는 두 호 10cm·xcm를 원 둘레의 실제 서로 다른 구간에 표현한다.",
+    "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
@@ -292,7 +304,10 @@ window.questionBank = [
     "decisiveStep": "두 원주각을 대응 중심각으로 바꾸고 같은 원의 호 길이와 중심각 비례로 미지 호의 길이를 정한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원본 문제 재설계: 원주각 40°,60°가 보는 두 호 중 한 호는 10cm이고 다른 호는 xcm — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageCaption": "원본 문제 재설계: 원주각 40°,60°가 보는 두 호 중 한 호는 10cm이고 다른 호는 xcm — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -320,14 +335,14 @@ window.questionBank = [
     "answer": "①",
     "solution": "접선 $AT$와 현 $AB$가 이루는 각이 $32^\\circ$이므로 접선과 현의 성질에 의해\n$x=\\angle ADB=32^\\circ$이다.\n점 $D$에서\n$\\angle CDA=\\angle CDB+\\angle BDA$\n$=36^\\circ+32^\\circ=68^\\circ$이다.\n사각형 $ABCD$는 원에 내접하므로 마주 보는 두 각의 합은 $180^\\circ$이다.\n따라서\n$y=\\angle CBA=180^\\circ-68^\\circ=112^\\circ$이고\n$y-x=112^\\circ-32^\\circ=80^\\circ$이다.\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/24_신흥중_2학기_기말_중3_기출/q7-solution-v2.svg",
-    "image": "assets/images/24_신흥중_2학기_기말_중3_기출/q7.png",
+    "image": "assets/images/24_신흥중_2학기_기말_중3_기출/q7-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageAlt": "해설 그림: 원 O의 접선 AT와 현 AB가 이루는 각 BAT=32도와 각 ADB=32도가 같은 파란색이고 각 CDB=36도, 각 CDA=68도, 각 CBA=112도가 표시되어 있다.",
-    "solutionImageCaption": "접선과 현의 성질로 x=∠ADB=∠BAT=32°이고 ∠CDA=36°+32°=68°이다. 사각형 ABCD가 원에 내접하므로 y=∠CBA=180°−68°=112°이다. 따라서 y−x=112°−32°=80°이고 정답은 ①이다.",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "수평 접선 L–A–T와 두 분할 원주각 x=32°, 36° 및 맞은편 y=112°를 모두 각호로 보존한다.",
+    "solutionImageCaption": "수평 접선 L–A–T와 두 분할 원주각 x=32°, 36° 및 맞은편 y=112°를 모두 각호로 보존한다.",
+    "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
@@ -342,7 +357,10 @@ window.questionBank = [
     "decisiveStep": "접선현각으로 x를 얻어 같은 꼭짓점의 각에 더한 뒤 내접사각형 대각의 보각으로 y를 구해 차를 낸다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원본 문제 재설계: 원에 내접한 ABCD와 A에서의 접선 AT, ∠BAT=32°, ∠CDB=36°, y−x — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageCaption": "원본 문제 재설계: 원에 내접한 ABCD와 A에서의 접선 AT, ∠BAT=32°, ∠CDB=36°, y−x — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -370,14 +388,14 @@ window.questionBank = [
     "answer": "②",
     "solution": "$AB$가 지름이므로\n$\\angle ACB=90^\\circ$이다.\n$\\angle CAB=30^\\circ$이므로 $\\triangle ABC$에서\n$\\angle ABC=60^\\circ$이다.\n$CD$는 점 $C$에서의 접선이므로 접선과 현의 성질에 의해\n$\\angle BCD=\\angle BAC=30^\\circ$이다.\n또 $A,B,D$가 한 직선 위에 있으므로\n$\\angle CBD=180^\\circ-60^\\circ=120^\\circ$이다.\n따라서 $\\angle BDC=30^\\circ$이고 $\\triangle BCD$에서\n$BC=BD$이다.\n$\\triangle ABC$는 빗변이 $16\\rm\\,cm$인 $30^\\circ$-$60^\\circ$-$90^\\circ$ 삼각형이므로\n$BC=8\\rm\\,cm$이다. 따라서 $BD=8\\rm\\,cm$이고\n$AD=AB+BD=16+8=24\\rm\\,cm$이다.\n따라서 정답은 ②이다.",
     "solutionImage": "assets/images/24_신흥중_2학기_기말_중3_기출/q8-solution-v2.svg",
-    "image": "assets/images/24_신흥중_2학기_기말_중3_기출/q8.png",
+    "image": "assets/images/24_신흥중_2학기_기말_중3_기출/q8-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImageAlt": "해설 그림: 지름 AB=16cm인 원에서 ∠CAB, ∠BCD, ∠BDC가 모두 30°임을 파랑으로, BC=BD=8cm를 초록 눈금으로 보이고 ∠ACB=90°와 ∠CBD=120°를 표시한다.",
-    "solutionImageCaption": "BC=BD=8cm이므로 AD=AB+BD=16+8=24cm이다. 정답 ②.",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "연장선 BD와 C접선 CD, 직각 ACB·OCD 및 16cm/8cm 길이 라벨을 넣어 원문 기하를 복원한다.",
+    "solutionImageCaption": "연장선 BD와 C접선 CD, 직각 ACB·OCD 및 16cm/8cm 길이 라벨을 넣어 원문 기하를 복원한다.",
+    "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
@@ -392,7 +410,10 @@ window.questionBank = [
     "decisiveStep": "지름의 원주각과 접선현각으로 BCD의 두 각을 같게 만든 뒤 이등변 조건과30도 직각삼각형의 변비로 AD를 정한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원본 문제 재설계: AB가 지름 16cm, C에서의 접선 CD가 AB 연장 D와 만나고 ∠CAB=30°, AD 길이 — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageCaption": "원본 문제 재설계: AB가 지름 16cm, C에서의 접선 CD가 AB 연장 D와 만나고 ∠CAB=30°, AD 길이 — 원문에 주어진 선·점·각과 미지 표기만 제공.",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -557,9 +578,9 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/24_신흥중_2학기_기말_중3_기출/q12-solution.svg",
-    "solutionImageAlt": "해설 그림: 선수 A와 B의 점수를 각각 점도표로 나타낸 그림. 두 점도표 모두 평균 7에 점선이 있다. A는 중앙값 6.5와 최빈값 6의 파란 점 2개가, B는 중앙값 7.5와 최빈값 8의 파란 점 2개가 표시되어 있다.",
-    "solutionImageCaption": "점 하나가 화살 한 발이다. 파란 점은 가장 많이 나온 값(최빈값)이다. A는 작은 순서로 4, 6, 6, 7, 9, 10이어서 평균 7, 중앙값 (6+7)/2=6.5, 최빈값 6이다. B는 4, 6, 7, 8, 8, 9여서 평균 7, 중앙값 (7+8)/2=7.5, 최빈값 8 하나이다. 따라서 ①~④는 옳고, A의 중앙값 6.5와 최빈값 6이 같다는 ⑤가 옳지 않다. 정답은 ⑤이다.",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "원문 양궁 점수의 모든 자료를 점 하나당 변량 하나로 보존한 비교 그림.",
+    "solutionImageCaption": "원문 양궁 점수의 모든 자료를 점 하나당 변량 하나로 보존한 비교 그림.",
+    "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
     "templateKey": "TPL_M1_CENTRAL_TENDENCY_DATASET_CLAIM_COMPARISON",
@@ -643,9 +664,9 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/24_신흥중_2학기_기말_중3_기출/q14-solution.svg",
-    "solutionImageAlt": "해설 그림: 턱걸이 횟수 4, 5, 6, 8, 12, 13의 점도표. 중앙값 7과 평균 8에 점선이 있고 각 점 위에 평균과의 차 -4, -3, -2, 0, +4, +5가 쓰여 있다.",
-    "solutionImageCaption": "점 하나가 학생 한 명이다. 중앙값 7(점선)에서 가운데 두 값이 6과 a이므로 a=8이고 평균은 48÷6=8(점선)이다. 그림의 숫자는 편차 -4, -3, -2, 0, 4, 5이고 편차 제곱의 합은 16+9+4+0+16+25=70, 분산은 70÷6이므로 정답은 ③이다.",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "자료 4,5,6,8,12,13과 평균 8을 점도로 나타내 분산을 계산한다.",
+    "solutionImageCaption": "자료 4,5,6,8,12,13과 평균 8을 점도로 나타내 분산을 계산한다.",
+    "solutionImageSize": "full"
   ,
     "problemTypeKey": "",
     "templateKey": "",
@@ -853,15 +874,15 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "산점도의 점을 $y=x$, $x=80$, $y=80$과 비교하며 하나씩 센다.\n① 점들이 전체적으로 오른쪽 위 방향으로 분포하므로 양의 상관관계가 있다.\n② $y=x$ 위의 점은 $7$개이다.\n③ $y>x$인 점은 $5$개이므로\n$\\dfrac{5}{20}\\times100=25\\%$이다.\n④ 중간고사 성적이 $80$점 이상인 학생의 기말고사 성적은 $60,70,80,90$점이다. 따라서 평균은\n$\\dfrac{60+70+80+90}{4}=75$점이다. 그러므로 평균이 $70$점이라는 ④는 옳지 않다.\n⑤ 두 성적이 모두 $80$점 미만인 점은 $14$개이므로\n$\\dfrac{14}{20}\\times100=70\\%$이다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/24_신흥중_2학기_기말_중3_기출/q19.png",
+    "image": "assets/images/24_신흥중_2학기_기말_중3_기출/q19-problem.svg",
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/24_신흥중_2학기_기말_중3_기출/q19-solution.svg",
-    "solutionImageAlt": "해설 그림: 중간·기말 성적 산점도. 점선 y=x와 x=80, y=80 선이 있고, 중간 80점 이상인 점 4개에 동그라미가, 둘 다 80점 미만인 왼쪽 아래 영역에 옅은 칠이 있다.",
-    "solutionImageCaption": "중간 80점 이상인 점은 (80,60),(80,70),(80,80),(90,90)이므로 기말 평균은 (60+70+80+90)/4=75점이다. 따라서 70점이라고 한 ④가 옳지 않다. y=x 위 7개, y>x 5개, 둘 다 80점 미만 14개(70%)로 ①②③⑤는 옳다. 정답은 ④이다.",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "원본 산점도의 모든 좌표·축 눈금·축 제목 보존: 중간·기말 20명 점수, 대각선 및 80점 기준으로 분류.",
+    "solutionImageCaption": "원본 산점도의 모든 좌표·축 눈금·축 제목 보존: 중간·기말 20명 점수, 대각선 및 80점 기준으로 분류.",
+    "solutionImageSize": "full"
   ,
     "problemTypeKey": "",
     "templateKey": "",
@@ -873,7 +894,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "y=x와 y>x,80점 경계를 기준으로 점들을 나누어 개수·백분율·조건부 평균을 실제 산점도에서 읽고 진술을 판정한다.",
-    "decisiveStep": "y=x와 y>x,80점 경계를 기준으로 점들을 나누어 개수·백분율·조건부 평균을 실제 산점도에서 읽고 진술을 판정한다."
+    "decisiveStep": "y=x와 y>x,80점 경계를 기준으로 점들을 나누어 개수·백분율·조건부 평균을 실제 산점도에서 읽고 진술을 판정한다.",
+    "imageAlt": "원본 산점도의 모든 좌표·축 눈금·축 제목 보존: 중간·기말 20명 점수, 대각선 및 80점 기준으로 분류.",
+    "imageCaption": "원본 산점도의 모든 좌표·축 눈금·축 제목 보존: 중간·기말 20명 점수, 대각선 및 80점 기준으로 분류.",
+    "imageSize": "full"
   },
   {
     "id": 20,

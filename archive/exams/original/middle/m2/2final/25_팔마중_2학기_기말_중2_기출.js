@@ -4,7 +4,7 @@ window.questionBank = [
   {
     "id": 1,
     "imageSize": "full",
-    "imageAlt": "가로로는 A, C, D 순이고 세로로는 E, C, B 순이다. 평행한 두 사선 AB와 DE에 각각 12 cm와 8 cm가 적혀 있다. CE는 4 cm, CB는 x cm이다.",
+    "imageAlt": "수평 AD와 수직 EB는 C에서 만나고 AB∥DE이다. AB=12cm, DE=8cm, EC=4cm, BC=xcm이다.",
     "level": "중",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -58,7 +58,8 @@ window.questionBank = [
       "l4": "선분비를 이용한 복합도형"
     },
     "primaryMethod": "평행선으로 교차삼각형의 닮음",
-    "decisiveStep": "맞꼭지각과 엇각으로 두 삼각형을 대응시켜12:8=x:4를 쓴다."
+    "decisiveStep": "맞꼭지각과 엇각으로 두 삼각형을 대응시켜12:8=x:4를 쓴다.",
+    "imageCaption": "수평 AD와 수직 EB는 C에서 만나고 AB∥DE이다. AB=12cm, DE=8cm, EC=4cm, BC=xcm이다."
   },
   {
     "id": 2,
@@ -122,7 +123,7 @@ window.questionBank = [
   {
     "id": 3,
     "imageSize": "full",
-    "imageAlt": "삼각형 ABC에서 B와 F, C와 E를 이은 중선이 G에서 만난다. A와 두 중점 E, F와 G를 잇는 사각형 AEGF를 청록색으로 칠했다.",
+    "imageAlt": "중선 BF와 CE가 만나는 무게중심 G 위쪽의 사각형 AEGF가 빗금 친 부분이다.",
     "level": "중",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -176,7 +177,8 @@ window.questionBank = [
       "l4": "넓이 분할"
     },
     "primaryMethod": "중선과 무게중심의 넓이분할",
-    "decisiveStep": "중선으로 절반,무게중심으로 그1/3을 얻은 두 부분을 더한다."
+    "decisiveStep": "중선으로 절반,무게중심으로 그1/3을 얻은 두 부분을 더한다.",
+    "imageCaption": "중선 BF와 CE가 만나는 무게중심 G 위쪽의 사각형 AEGF가 빗금 친 부분이다."
   },
   {
     "id": 4,
@@ -298,8 +300,8 @@ window.questionBank = [
   },
   {
     "id": 6,
-    "imageSize": "tall",
-    "imageAlt": "삼각형 ABC에서 A에서 내린 수선의 발 D는 BC 위에 있다. BC는 14, DC는 9, AC는 15이다. 수선 AD는 x, AB는 y로 표시했다.",
+    "imageSize": "full",
+    "imageAlt": "D는 BC 위의 수선의 발로 AD⊥BC이고 AC=15, BC=14, DC=9, AD=x, AB=y이다.",
     "level": "중",
     "category": "피타고라스 정리",
     "originalCategory": "피타고라스 정리",
@@ -353,7 +355,8 @@ window.questionBank = [
       "l4": "직각삼각형의 변 길이"
     },
     "primaryMethod": "공통 수선 높이로 피타고라스 연쇄",
-    "decisiveStep": "DC9와AC15에서 높이12를 얻어 BD5와 새 빗변13을 구한다."
+    "decisiveStep": "DC9와AC15에서 높이12를 얻어 BD5와 새 빗변13을 구한다.",
+    "imageCaption": "D는 BC 위의 수선의 발로 AD⊥BC이고 AC=15, BC=14, DC=9, AD=x, AB=y이다."
   },
   {
     "id": 7,
@@ -668,9 +671,9 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q12-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 가로는 100원짜리 개수 a, 세로는 50원짜리 개수 b(각 1~3)인 3×3 표에 50원 단위 금액 2a+b가 적혀 있다. 값이 5인 두 칸은 옅은 회색, 값이 7인 두 칸은 짙은 회색이다.",
-    "solutionImageCaption": "표의 수는 50원 단위 금액 2a+b이다. 5가 두 번(옅은 회색), 7이 두 번(짙은 회색) 나오고 3, 4, 6, 8, 9는 한 번씩이므로 서로 다른 값은 3, 4, 5, 6, 7, 8, 9의 7가지이다. 정답 ③",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "100원 동전 개수 a와 50원 동전 개수 b가 각각 1~3일 때, 표의 각 값은 50원 단위 금액 2a+b이다. 같은 금액 5와 7이 서로 두 번씩 나온다.",
+    "solutionImageCaption": "100원 동전 개수 a와 50원 동전 개수 b가 각각 1~3일 때, 표의 각 값은 50원 단위 금액 2a+b이다. 같은 금액 5와 7이 서로 두 번씩 나온다.",
+    "solutionImageSize": "full",
     "curriculum": "2015",
     "problemTypeKey": "",
     "templateKey": "",
@@ -840,9 +843,9 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q15-solution.svg",
-    "solutionImageAlt": "해설 그림: 주사위 A의 눈 x를 가로, 주사위 B의 눈 y를 세로로 놓은 6×6 표에서 2x-y=5를 만족시키는 (3,1), (4,3), (5,5) 세 칸이 색칠되어 있다.",
-    "solutionImageCaption": "2x-y=5를 만족시키는 칸을 색칠한 두 주사위 A, B의 6×6 표",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "주사위 A의 눈을 가로 x, B의 눈을 세로 y로 두면 2x−y=5인 세 순서쌍은 (3,1), (4,3), (5,5)이다.",
+    "solutionImageCaption": "주사위 A의 눈을 가로 x, B의 눈을 세로 y로 두면 2x−y=5인 세 순서쌍은 (3,1), (4,3), (5,5)이다.",
+    "solutionImageSize": "full",
     "curriculum": "2015",
     "problemTypeKey": "PT_M2_BASIC_COUNTING_CASE_SPLIT",
     "templateKey": "TPL_M2_BASIC_COUNTING_ADD_CASES",
@@ -955,9 +958,9 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q17-solution.svg",
-    "solutionImageAlt": "해설 그림: 주머니 A에서 흰 5/9, 검 4/9, 각각에서 주머니 B 흰 2/3, 검 1/3으로 갈라지는 네 경로의 수형도. 서로 다른 색이 되는 두 경로(A흰·B검, A검·B흰)가 굵은 선과 동그라미로 표시되고 경로 확률의 곱이 적혀 있다.",
-    "solutionImageCaption": "서로 다른 색인 두 경우 5/9×2/6(=5/9×1/3)=5/27과 4/9×4/6(=4/9×2/3)=8/27을 더하면 13/27이다. 정답 ⑤",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "주머니 A의 흰색·검은색과 주머니 B의 두 색을 순서대로 나누고, 서로 다른 색인 두 경로만 강조한다.",
+    "solutionImageCaption": "주머니 A의 흰색·검은색과 주머니 B의 두 색을 순서대로 나누고, 서로 다른 색인 두 경로만 강조한다.",
+    "solutionImageSize": "full",
     "curriculum": "2015",
     "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
     "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
@@ -1072,9 +1075,9 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q19-solution.svg",
-    "solutionImageAlt": "해설 그림: 두 주사위의 눈의 곱을 적은 6×6 표. 두 눈이 모두 홀수여서 곱이 홀수인 9칸이 회색으로 칠해져 있고 나머지 27칸은 곱이 짝수이다.",
-    "solutionImageCaption": "곱이 홀수인 칸은 9칸이므로 홀수일 확률은 9/36=1/4이고, 곱이 짝수일 확률은 1-1/4=3/4이다. 정답 ②",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "각 주사위 눈의 곱을 6×6 표에 적고 두 눈이 모두 홀수인 9칸만 색칠했다. 그 여사건 27칸이 짝수 곱이다.",
+    "solutionImageCaption": "각 주사위 눈의 곱을 6×6 표에 적고 두 눈이 모두 홀수인 9칸만 색칠했다. 그 여사건 27칸이 짝수 곱이다.",
+    "solutionImageSize": "full",
     "curriculum": "2015",
     "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
     "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
@@ -1129,9 +1132,9 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q20-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 해인이가 각 판에서 이기면 승(확률 3/4), 지면 패(확률 1/4)로 가지를 나누고, 한 사람이 2승을 하면 끝나도록 그린 수형도이다. 여섯 경우마다 지나는 가지의 확률의 곱이 적혀 있고, 해인이가 이기는 승승, 승패승, 패승승은 굵은 선과 동그라미로 표시되어 있다.",
-    "solutionImageCaption": "해인이의 승패에 따라 먼저 2점을 얻으면 끝나는 게임을 나타낸 수형도(이기는 세 경우 표시, 각 경우의 확률)",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "먼저 2승을 얻는 순간 수형도가 끝나며 해인이가 승리하는 경로는 승승, 승패승, 패승승의 세 가지다.",
+    "solutionImageCaption": "먼저 2승을 얻는 순간 수형도가 끝나며 해인이가 승리하는 경로는 승승, 승패승, 패승승의 세 가지다.",
+    "solutionImageSize": "full",
     "curriculum": "2015",
     "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
     "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
@@ -1153,7 +1156,8 @@ window.questionBank = [
       "l4": "연속 시행"
     },
     "primaryMethod": "먼저2승의 종료시점별 분류",
-    "decisiveStep": "2판종료와3판종료의 허용 승패열을 분리해 곱·합한다."
+    "decisiveStep": "2판종료와3판종료의 허용 승패열을 분리해 곱·합한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 21,
@@ -1284,9 +1288,9 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q23-solution.svg",
-    "solutionImageAlt": "해설 그림: 가로는 첫째 원판의 수 1~8, 세로는 둘째 원판의 수 1~3인 8×3 표에 두 수의 합이 적혀 있다. 합이 5인 세 칸은 옅은 회색, 합이 9인 세 칸은 짙은 회색이다.",
-    "solutionImageCaption": "합이 5인 칸(옅은 회색)은 (2,3), (3,2), (4,1)의 3가지이고, 합이 9인 칸(짙은 회색)은 (6,3), (7,2), (8,1)의 3가지이다. 따라서 조건을 만족하는 경우의 수는 3+3=6가지이다.",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "8등분 첫 원판의 눈 a와 3등분 둘째 원판의 눈 b를 더해 8×3 표를 만들고, 합이 5인 세 칸과 9인 세 칸을 강조한다.",
+    "solutionImageCaption": "8등분 첫 원판의 눈 a와 3등분 둘째 원판의 눈 b를 더해 8×3 표를 만들고, 합이 5인 세 칸과 9인 세 칸을 강조한다.",
+    "solutionImageSize": "full",
     "curriculum": "2015",
     "problemTypeKey": "PT_M2_BASIC_COUNTING_CASE_SPLIT",
     "templateKey": "TPL_M2_BASIC_COUNTING_ADD_CASES",
@@ -1315,7 +1319,7 @@ window.questionBank = [
   {
     "id": 24,
     "imageSize": "full",
-    "imageAlt": "정오각형 꼭짓점은 위쪽 A에서 화살표의 방향을 따라 B, C, D, E 순으로 이어진다. 점 P는 A에서 출발하여 왼쪽 변을 따라 움직인다.",
+    "imageAlt": "정오각형 ABCDE의 꼭짓점 A에서 점 P가 출발하여 화살표 방향 A→B→C→D→E로 이동한다.",
     "level": "중",
     "category": "확률",
     "originalCategory": "확률",
@@ -1368,6 +1372,7 @@ window.questionBank = [
       "l4": "경우를 나누어 구하는 확률"
     },
     "primaryMethod": "오각형순환을 눈합의 나머지로 해석",
-    "decisiveStep": "합이5로나누어3남는3,8만 선택하여 두주사위쌍을 센다."
+    "decisiveStep": "합이5로나누어3남는3,8만 선택하여 두주사위쌍을 센다.",
+    "imageCaption": "정오각형 ABCDE의 꼭짓점 A에서 점 P가 출발하여 화살표 방향 A→B→C→D→E로 이동한다."
   }
 ];
