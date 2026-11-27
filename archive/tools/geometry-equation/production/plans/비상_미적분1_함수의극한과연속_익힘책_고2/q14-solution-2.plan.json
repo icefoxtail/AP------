@@ -1,0 +1,9 @@
+{
+  "capability":"sqrt-affine-spike-v1",
+  "graphPlan":{"family":"sqrt-affine","radicand":["1","1"],"sign":-1,"sourceDomain":{"kind":"CLOSED_INTERVAL","range":["0","3"]},"domain":[0,3],"viewport":[-0.5,3.5,-2.6,0.2],"requiredPoints":[{"id":"A","x":0,"y":-1},{"id":"B","x":3,"y":-2}],"axisTickValues":{"x":[3],"y":[]}},
+  "caption":"⑵ y=-√(x+1)은 [0,3]에서 감소하므로 왼쪽 끝점 (0,-1)이 최댓값, 오른쪽 끝점 (3,-2)이 최솟값이다.",
+  "accessibilityDescription":"x=0에서 -1로 시작하여 x=3에서 -2로 감소하는 무리함수의 닫힌구간 그래프.",
+  "sourceQuote":"⑵ $f(x)=-\\sqrt{x+1} \\quad [0, 3]$",
+  "sourceConditions":[{"id":"c1","condition":"y=-sqrt(x+1), x∈[0,3]","mappedTo":"graphPlan.radicand,graphPlan.sign,graphPlan.sourceDomain"},{"id":"c2","condition":"f(0)=-1 최대, f(3)=-2 최소","mappedTo":"graphPlan.requiredPoints"}],
+  "newVisualInformation":["감소함수의 최댓값·최솟값이 각각 양 끝점에서 나온다는 사실을 시각화"]
+}

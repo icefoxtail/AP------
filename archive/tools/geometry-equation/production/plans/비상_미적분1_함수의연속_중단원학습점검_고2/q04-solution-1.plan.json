@@ -1,0 +1,9 @@
+{
+  "capability":"piecewise-polynomial-spike-v1",
+  "graphPlan":{"family":"piecewise-polynomial","pieces":[{"coefficients":["-5","2","1"]}],"sourceDomain":{"kind":"INTERVAL","range":["-4","1"],"states":["CLOSED","CLOSED"]},"requiredPoints":[{"id":"A","x":"-4","y":"3"},{"id":"V","x":"-1","y":"-6"},{"id":"B","x":"1","y":"-2"}],"axisTickValues":{"x":[-4,-1,1],"y":[]}},
+  "caption":"⑴ 닫힌구간 [-4,1]의 포물선 꼭짓점 (-1,-6)이 최솟값, 왼쪽 끝점 (-4,3)이 최댓값이다.",
+  "accessibilityDescription":"구간 -4부터 1까지 위로 열린 포물선에서 (-4,3), (-1,-6), (1,-2)의 높이를 비교한 그림.",
+  "sourceQuote":"⑴ $f(x)=x^2+2x-5 \\quad [-4, 1]$",
+  "sourceConditions":[{"id":"c1","condition":"x²+2x-5, 구간 [-4,1]","mappedTo":"graphPlan.pieces,graphPlan.sourceDomain"},{"id":"c2","condition":"f(-4)=3, f(-1)=-6, f(1)=-2","mappedTo":"graphPlan.requiredPoints"}],
+  "newVisualInformation":["꼭짓점과 비대칭인 두 끝점의 높이를 비교"]
+}

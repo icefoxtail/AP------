@@ -1,0 +1,9 @@
+{
+  "capability":"piecewise-polynomial-spike-v1",
+  "graphPlan":{"family":"piecewise-polynomial","pieces":[{"coefficients":["0","-4","1"]}],"sourceDomain":{"kind":"INTERVAL","range":["-2","5"],"states":["CLOSED","CLOSED"]},"requiredPoints":[{"id":"A","x":"-2","y":"12"},{"id":"V","x":"2","y":"-4"},{"id":"B","x":"5","y":"5"}],"axisTickValues":{"x":[-2,2,5],"y":[]}},
+  "caption":"f(x)=x²-4x는 [-2,5]에서 꼭짓점 (2,-4)이 최솟값, 왼쪽 끝점 (-2,12)이 최댓값이다.",
+  "accessibilityDescription":"닫힌구간 -2부터 5까지 위로 열린 포물선에서 끝점 (-2,12), 꼭짓점 (2,-4), 끝점 (5,5)를 비교한 그래프.",
+  "sourceQuote":"함수 $f(x)$의 최댓값과 최솟값을 구하시오.",
+  "sourceConditions":[{"id":"c1","condition":"t→-∞에서 f(x)=x(x-4), 범위 [-2,5]","mappedTo":"graphPlan.pieces,graphPlan.sourceDomain"},{"id":"c2","condition":"f(-2)=12, f(2)=-4, f(5)=5","mappedTo":"graphPlan.requiredPoints"}],
+  "newVisualInformation":["좌우 끝점이 높이가 서로 다름을 보여 최대가 오른쪽이 아니라 왼쪽에 있음을 확인"]
+}

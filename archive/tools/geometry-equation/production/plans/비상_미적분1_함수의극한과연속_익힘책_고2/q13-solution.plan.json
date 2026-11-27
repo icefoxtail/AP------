@@ -1,0 +1,9 @@
+{
+  "capability":"rational-spike-v1",
+  "graphPlan":{"family":"rational","numerator":["-1","1"],"denominator":["-3","1"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[-1,7],"viewport":[-1,7,-5,7],"axisTickValues":{"x":[3],"y":[1]}},
+  "caption":"f(x)=1+2/(x-3)은 x=3에서 정의되지 않고, 두 가지는 수직 점근선 x=3 양쪽에서 따로 나타난다.",
+  "accessibilityDescription":"수직 점근선 x=3과 수평 점근선 y=1을 가진 유리함수의 두 가지가 x=3에서 끊어진 그래프.",
+  "sourceQuote":"⑵ $f(x)=1+\\frac{2}{x-3}$",
+  "sourceConditions":[{"id":"c1","condition":"f(x)=(x-1)/(x-3)","mappedTo":"graphPlan.numerator,graphPlan.denominator"},{"id":"c2","condition":"x=3에서 분모 0, 나머지 구간에서 연속","mappedTo":"graphPlan.sourceDomain,graphPlan.axisTickValues"}],
+  "newVisualInformation":["정의되지 않는 x=3을 지나는 그래프를 이어 그리지 않고 점근선과 두 가지로 구별"]
+}

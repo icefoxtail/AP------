@@ -1,0 +1,9 @@
+{
+  "capability":"piecewise-discontinuous-spike-v1",
+  "graphPlan":{"family":"piecewise-discontinuous","functionName":"s","pieces":[{"coefficients":["0"],"domain":[null,-1],"end":"CLOSED"},{"coefficients":["1","-1"],"domain":[-1,1],"start":"OPEN","end":"OPEN"},{"coefficients":["0"],"domain":[1,null],"start":"CLOSED"}],"limitArrows":[{"at":"-1","side":"LEFT","toY":"0"},{"at":"-1","side":"RIGHT","toY":"2"}],"axisTickValues":{"x":[-1,1],"y":[2]}},
+  "caption":"s(x)=f(x)+g(x)는 x=-1에서 좌극한 0, 우극한 2로 달라 불연속이다. x=1에서는 양쪽 값이 0으로 이어진다.",
+  "accessibilityDescription":"x=-1에서 왼쪽 가로선 0과 오른쪽 선분 높이 2가 서로 연결되지 않으며 x=1에서는 두 조각이 높이 0에서 만나는 그래프.",
+  "sourceQuote":"ㄴ. 함수 $f(x)+g(x)$는 $x=-1$에서 불연속이다.",
+  "sourceConditions":[{"id":"c1","condition":"f+g는 |x|≥1에서 0, |x|<1에서 1-x","mappedTo":"graphPlan.pieces"},{"id":"c2","condition":"x=-1에서 좌극한0·우극한2, x=1은 연속","mappedTo":"graphPlan.limitArrows,graphPlan.pieces"}],
+  "newVisualInformation":["합함수의 점프 불연속과 이어지는 경계를 열린·닫힌 점으로 표시"]
+}
