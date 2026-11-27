@@ -182,7 +182,10 @@ window.questionBank = [
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "UNKNOWN",
-    "image": "assets/images/비상_공통수학2_함수와그래프_대단원학습평가_고1/q05_composition-mappings.png"
+    "image": "assets/images/비상_공통수학2_함수와그래프_대단원학습평가_고1/qid_v1_eb0e28e5b618598bcba08bd35a3e8028e195ccbae0ac791b1f67cd86f20fe4a8-problem.svg",
+    "imageAlt": "집합 X={1,3,5}에서 함수 f, g를 잇는 원본 대응도",
+    "imageCaption": "집합 X={1,3,5}에서 함수 f, g를 잇는 원본 대응도",
+    "imageSize": "full"
   },
   {
     "id": "qid_v1_60410a397694db1270b37e525b395cb884c0ee4a0de0e8321cb67d787456e074",
@@ -654,10 +657,13 @@ window.questionBank = [
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "UNKNOWN",
-    "image": "assets/images/비상_공통수학2_함수와그래프_대단원학습평가_고1/q17_radical-function-graph.png",
+    "image": "assets/images/비상_공통수학2_함수와그래프_대단원학습평가_고1/qid_v1_b777c1fae0ac8aae968ed61da47dfd3cd57d4ffd20eff3887d3df7e35e787ae9-problem.svg",
     "solutionImage": "assets/images/비상_공통수학2_함수와그래프_대단원학습평가_고1/qid_v1_b777c1fae0ac8aae968ed61da47dfd3cd57d4ffd20eff3887d3df7e35e787ae9-solution.svg",
     "solutionImageAlt": "a=2,b=-2,c=1 예시에서 y=2/(x−2)−1의 점근선과 제2사분면 배제",
     "solutionImageCaption": "a=2,b=-2,c=1 예시에서 y=2/(x−2)−1의 점근선과 제2사분면 배제",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "imageAlt": "조건 a>0,b<0,c>0을 만족하는 예시 a=2,b=-2,c=1의 개형",
+    "imageCaption": "조건 a>0,b<0,c>0을 만족하는 예시 a=2,b=-2,c=1의 개형",
+    "imageSize": "medium"
   }
 ];

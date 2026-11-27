@@ -215,8 +215,8 @@ window.questionBank = [
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q04-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q04-solution.plan.json",
     "solutionImage": "assets/images/26_효천고_1학기_기말_고1_유사/q4-solution.svg",
-    "solutionImageAlt": "해설 그림: 좌표평면에 아래로 볼록한 포물선이 그려져 있고, x축과 만나는 두 점이 표시되어 있다.",
-    "solutionImageCaption": "y=(x+2)(x−7)에서 두 x절편은−2,7이다. 정답 a+b=5.",
+    "solutionImageAlt": "y=x²−5x−14의 두 x절편은 -2와 7이므로 합은 5이다.",
+    "solutionImageCaption": "y=x²−5x−14의 두 x절편은 -2와 7이므로 합은 5이다.",
     "solutionImageSize": "full"
   },
   {
@@ -728,8 +728,8 @@ window.questionBank = [
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q13-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q13-solution.plan.json",
     "solutionImage": "assets/images/26_효천고_1학기_기말_고1_유사/q13-solution.svg",
-    "solutionImageAlt": "해설 그림: 가로축 x, 세로축 h인 좌표평면에 아래로 볼록한 포물선이 그려져 있고, x축과 만나는 두 점과 꼭짓점이 점으로 표시되어 있다.",
-    "solutionImageCaption": "h=f−g의 최고차항 계수는2이다. h≤0의 경계−1,3에서 h=2(x+1)(x−3). h(1)=−8이므로 정답 g(1)−f(1)=8.",
+    "solutionImageAlt": "h=f−g=2(x+1)(x−3)이며 구간 -1≤x≤3에서 h≤0이고 h(1)=-8이다.",
+    "solutionImageCaption": "h=f−g=2(x+1)(x−3)이며 구간 -1≤x≤3에서 h≤0이고 h(1)=-8이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1316,9 +1316,10 @@ window.questionBank = [
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q24-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q24-solution.plan.json",
     "solutionImage": "assets/images/26_효천고_1학기_기말_고1_유사/q24-solution.svg",
-    "solutionImageAlt": "해설 그림: 가로축 x, 세로축 h인 좌표평면에 아래로 볼록한 포물선의 0≤x≤5 부분이 그려져 있고, 양 끝점과 꼭짓점, x축과 만나는 두 점이 표시되어 있다.",
-    "solutionImageCaption": "원본 f와 g 그림은 유지하고 차이 h만 따로 그렸다. h=c(x−1)(x−7),h(4)=−9에서 c=1. 구간0≤x≤5에서 꼭짓점 최소−9, 두 끝점 높이7,−8을 비교하면 정답 x=0에서 최댓값7.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "h=f−g=(x−1)(x−7)이며 0≤x≤5에서 최솟값 -9는 x=4, 최댓값 7은 x=0이다.",
+    "solutionImageCaption": "h=f−g=(x−1)(x−7)이며 0≤x≤5에서 최솟값 -9는 x=4, 최댓값 7은 x=0이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 25,

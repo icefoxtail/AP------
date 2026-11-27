@@ -949,7 +949,7 @@ window.questionBank = [
     "score": 5.2,
     "points": 5.2,
     "solutionImage": "assets/images/26_금당고_1학기_중간_고1_유사/q17-solution.svg",
-    "solutionImageAlt": "a=3일 때 함수 y=f(x)의 그래프와 y=g(x)의 그래프가 x=0, 2, 3에서 만나는 그림",
+    "solutionImageAlt": "a=3일 때 y=f(x)와 y=g(x)의 그래프는 x=0, 2, 3에서 서로 다른 세 점에서 만난다.",
     "solutionImageCaption": "a=3일 때 y=f(x)와 y=g(x)의 그래프는 x=0, 2, 3에서 서로 다른 세 점에서 만난다.",
     "solutionImageSize": "full",
     "difficultyBucket": 5,
@@ -1077,8 +1077,8 @@ window.questionBank = [
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사_plans/q19-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사_plans/q19-solution.plan.json",
     "solutionImage": "assets/images/26_금당고_1학기_중간_고1_유사/q19-solution.svg",
-    "solutionImageAlt": "해설 그림: 서로 외접하는 두 구의 중심을 지나는 단면이다. 중심 사이 거리 7은 접점 양쪽 반지름의 합이다.",
-    "solutionImageCaption": "서로 외접하는 두 구의 중심을 지나는 단면이다. 중심 사이 거리 7은 접점 양쪽 반지름의 합이다.",
+    "solutionImageAlt": "외접하는 두 구의 중심간 거리는 7이며, 해설에서 구한 반지름 3과 4의 합도 7이다. 원은 구의 중심을 지나는 평면 단면으로 나타냈다.",
+    "solutionImageCaption": "외접하는 두 구의 중심간 거리는 7이며, 해설에서 구한 반지름 3과 4의 합도 7이다. 원은 구의 중심을 지나는 평면 단면으로 나타냈다.",
     "solutionImageSize": "full"
   },
   {

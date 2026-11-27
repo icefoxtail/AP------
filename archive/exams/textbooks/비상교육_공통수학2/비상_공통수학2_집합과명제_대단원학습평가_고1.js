@@ -51,14 +51,17 @@ window.questionBank = [
     "choices": [
       "① $n(U-A)=3$", "② $n(U-B)=3$", "③ $n(B-A)=2$", "④ $n(A\\cup B^c)=5$", "⑤ $n((A-B)^c)=5$"
     ],
-    "image": "assets/images/비상_공통수학2_집합과명제_대단원학습평가_고1/q04_source.png",
+    "image": "assets/images/비상_공통수학2_집합과명제_대단원학습평가_고1/qid_v1_d1adb99b325801df5cd77a19b440477aaf42837b56b510dba9d60440091c80f0-problem.svg",
     "answer": "⑤",
     "solution": "$A-B=\\{0,2\\}$이므로 $n(A-B)=2$이다. 그림에서 색칠한 부분은 전체집합 $U$에서 $A-B$ 부분만 제외한 영역, 즉 $(A-B)^c$이다.\n따라서 색칠한 부분의 원소의 개수는 $n((A-B)^c)=n(U)-n(A-B)=7-2=5$이다. 그러므로 정답은 ⑤이다.",
     "difficultyBucket": "UNKNOWN", "difficultyConfidence": "UNKNOWN", "difficultyBoundaryFlag": "UNKNOWN", "legacyLevelCompatibility": "UNKNOWN",
     "solutionImage": "assets/images/비상_공통수학2_집합과명제_대단원학습평가_고1/qid_v1_d1adb99b325801df5cd77a19b440477aaf42837b56b510dba9d60440091c80f0-solution.svg",
     "solutionImageAlt": "A-B={0,2}를 제외한 다섯 원소가 색칠된 영역에 있다. n((A-B)^c)=5.",
     "solutionImageCaption": "A-B={0,2}를 제외한 다섯 원소가 색칠된 영역에 있다. n((A-B)^c)=5.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "전체집합 U 안의 A, B와 일곱 원소를 놓고 원본 문제의 음영 영역을 나타낸다.",
+    "imageCaption": "전체집합 U 안의 A, B와 일곱 원소를 놓고 원본 문제의 음영 영역을 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": "qid_v1_2b8c59e1f2ab4fddbc663f3d0086e6ea34d27e5ec0086095bbc1dca15f32b224",
@@ -118,9 +121,9 @@ window.questionBank = [
     "content": "명제 ‘$k-1<x\\le k+2$이면 $2<x<7$이다.’가 참이 되도록 하는 모든 자연수 $k$의 값의 합을 구하시오.",
     "choices": [], "answer": "$7$",
     "solutionImage": "assets/images/비상_공통수학2_집합과명제_대단원학습평가_고1/q09_implication-interval.svg",
-    "solutionImageAlt": "P=(k−1,k+2]가 Q=(2,7)에 포함되도록 비교한 수직선",
-    "solutionImageCaption": "P⊆Q이려면 k−1≥2이고 k+2<7이다.",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "P⊆Q이려면 왼쪽 열린 끝점 k−1≥2, 오른쪽 닫힌 끝점 k+2<7이어야 한다. 따라서 3≤k<5이고 가능한 자연수는 3과 4이다. 그림은 k=4의 예시이다.",
+    "solutionImageCaption": "P⊆Q이려면 왼쪽 열린 끝점 k−1≥2, 오른쪽 닫힌 끝점 k+2<7이어야 한다. 따라서 3≤k<5이고 가능한 자연수는 3과 4이다. 그림은 k=4의 예시이다.",
+    "solutionImageSize": "full",
     "solution": "$p$의 진리집합은 $P=(k-1,k+2]$, $q$의 진리집합은 $Q=(2,7)$이다. 명제 $p\\to q$가 참이려면 $P\\subset Q$여야 한다.\n왼쪽 끝에서 $P$의 원소는 $k-1$보다 크므로 $k-1=2$일 때도 $P$의 모든 원소는 2보다 크다. 따라서 $k-1\\ge2$이다. 오른쪽 끝 $k+2$는 P에 포함되지만 7은 Q에 포함되지 않으므로 $k+2<7$이어야 한다.\n두 조건에서 $3\\le k<5$이므로 자연수 $k$는 3,4이다. 그 합은 7이다.",
     "difficultyBucket": "UNKNOWN", "difficultyConfidence": "UNKNOWN", "difficultyBoundaryFlag": "UNKNOWN", "legacyLevelCompatibility": "UNKNOWN"
   },
@@ -178,9 +181,9 @@ window.questionBank = [
     "choices": [], "answer": "$13$",
     "solution": "$A-B=\\{1,2\\}$, $A\\cap B=\\{3\\}$이므로 $A=\\{1,2,3\\}$이다. 또한 $B\\cap(A\\cap B)^c=B-A=\\{4,5\\}$이므로 $B=\\{3,4,5\\}$이다.\n따라서 $A\\cup B=\\{1,2,3,4,5\\}$. 전체집합 $U=\\{1,2,3,4,5,6,7\\}$에서 이를 제외하면 $(A\\cup B)^c=\\{6,7\\}$이고 원소의 합은 $6+7=13$이다.",
     "solutionImage": "assets/images/비상_공통수학2_집합과명제_대단원학습평가_고1/q14_complement-venn.svg",
-    "solutionImageAlt": "A-only={1,2}, 교집합={3}, B-only={4,5}, 합집합 바깥={6,7}인 벤 다이어그램",
-    "solutionImageCaption": "(A∪B)ᶜ={6,7}이고 원소의 합은 13이다.",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "A-B={1,2}, A∩B={3}, B-A={4,5}. (A∪B)^c={6,7}이므로 원소의 합은 13이다.",
+    "solutionImageCaption": "A-B={1,2}, A∩B={3}, B-A={4,5}. (A∪B)^c={6,7}이므로 원소의 합은 13이다.",
+    "solutionImageSize": "full",
     "difficultyBucket": "UNKNOWN", "difficultyConfidence": "UNKNOWN", "difficultyBoundaryFlag": "UNKNOWN", "legacyLevelCompatibility": "UNKNOWN"
   },
   {

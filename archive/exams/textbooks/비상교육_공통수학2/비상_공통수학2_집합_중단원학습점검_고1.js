@@ -191,13 +191,14 @@ window.questionBank = [
     "answer": "$C-(A\\cap B)=(C-A)\\cup(C-B)$",
     "solution": "먼저 벤 다이어그램에서 왼쪽 $C-(A\\cap B)$는 집합 $C$의 영역 중 $A$와 $B$에 동시에 속하는 부분(세 집합의 공통 부분)만 제외한 영역이다. 오른쪽의 $C-A$는 $C$에서 $A$와 겹치는 부분을 제외하고, $C-B$는 $C$에서 $B$와 겹치는 부분을 제외한 영역이다. 이 두 영역의 합집합도 $C$ 안에서 $A$와 $B$에 동시에 속하는 부분만 제외한 영역이므로 두 다이어그램의 색칠 영역은 같다.\n원소로 확인하면, 임의의 원소 $x$에 대하여\n$x\\in C-(A\\cap B)$\n$\\iff x\\in C$이고 $x\\notin A\\cap B$\n$\\iff x\\in C$이고 ($x\\notin A$ 또는 $x\\notin B$)\n$\\iff x\\in(C-A)\\cup(C-B)$이다.\n따라서 $C-(A\\cap B)=(C-A)\\cup(C-B)$이다.",
     "solutionImage": "assets/images/비상_공통수학2_집합_중단원학습점검_고1/q07_set-venn.svg",
-    "solutionImageAlt": "세 집합 A, B, C의 벤 다이어그램에서 세 영역의 공통 부분만 뺀 양변의 같은 영역",
-    "solutionImageCaption": "양변은 집합 C에서 A와 B의 공통 부분만 제외한 영역이다.",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "좌변 C−(A∩B)와 우변 (C−A)∪(C−B)는 각 벤다이어그램에서 C 중 A∩B∩C만 제외한 동일한 영역을 칠한다.",
+    "solutionImageCaption": "좌변 C−(A∩B)와 우변 (C−A)∪(C−B)는 각 벤다이어그램에서 C 중 A∩B∩C만 제외한 동일한 영역을 칠한다.",
+    "solutionImageSize": "full",
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImageScale": 94
   },
   {
     "id": "qid_v1_8817bd451ba4b71825f758f2adde5b80aa25c14a1547650968bd7cb8b8d49033",

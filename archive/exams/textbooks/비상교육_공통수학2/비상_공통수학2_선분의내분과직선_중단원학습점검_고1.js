@@ -321,7 +321,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "오른쪽 그림과 같이 세 점 $O(0,0)$, $A(3,1)$, $B(1,5)$를 꼭짓점으로 하는 삼각형 $OAB$의 넓이를 원점 $O$를 지나는 직선 $l$이 이등분할 때, 직선 $l$의 방정식을 구하시오.",
-    "image": "assets/images/비상_공통수학2_선분의내분과직선_중단원학습점검_고1/q09_diagram.png",
+    "image": "assets/images/비상_공통수학2_선분의내분과직선_중단원학습점검_고1/qid_v1_980a769aa94fdffa89536bc9bdbb6b0f32ba97b036c00f8bf898887ce65311ad-problem.svg",
     "choices": [],
     "answer": "$y=\\dfrac{3}{2}x$",
     "solution": "원점 $O$를 지나는 직선이 삼각형 $OAB$의 넓이를 이등분하려면 변 $AB$의 중점을 지나야 한다.\n변 $AB$의 중점은 $\\left(\\dfrac{3+1}{2},\\,\\dfrac{1+5}{2}\\right)=(2,3)$이다.\n따라서 직선 $l$은 $O(0,0)$과 $(2,3)$을 지나므로 기울기는 $\\dfrac{3}{2}$이다.\n\n따라서 직선 $l$의 방정식은 $y=\\dfrac{3}{2}x$이다.",
@@ -332,7 +332,10 @@ window.questionBank = [
     "solutionImage": "assets/images/비상_공통수학2_선분의내분과직선_중단원학습점검_고1/qid_v1_980a769aa94fdffa89536bc9bdbb6b0f32ba97b036c00f8bf898887ce65311ad-solution.svg",
     "solutionImageAlt": "변 AB의 중점 M(2,3)을 지나는 OM이 삼각형의 넓이를 정확히 이등분한다.",
     "solutionImageCaption": "변 AB의 중점 M(2,3)을 지나는 OM이 삼각형의 넓이를 정확히 이등분한다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "삼각형 OAB를 원점 O를 지나는 분홍색 직선 l이 넓이만 같게 나눈다.",
+    "imageCaption": "삼각형 OAB를 원점 O를 지나는 분홍색 직선 l이 넓이만 같게 나눈다.",
+    "imageSize": "full"
   },
   {
     "id": "qid_v1_48ef2cf4edefd59b2d397237d65a2fb23e796a22acbb7cc3adfbe7e8f94b40e5",
@@ -445,10 +448,13 @@ window.questionBank = [
     "choices": [],
     "answer": "최댓값 $\\sqrt{89}$, 최솟값 $4$",
     "solution": "마름모 위의 점은 각 변 위에 있다. 선분 위의 점 $X$는 양 끝점 $U,V$를 이용하여 $X=tU+(1-t)V$ ($0\\le t\\le1$)로 나타낼 수 있으므로, 삼각부등식에 의해 $PX\\le tPU+(1-t)PV\\le\\max(PU,PV)$이다. 따라서 최댓값은 꼭짓점에서 생긴다.\n\n$PA=\\sqrt{(5+3)^2+(4-0)^2}=4\\sqrt5$, $PB=\\sqrt{(5-0)^2+(4+4)^2}=\\sqrt{89}$, $PC=\\sqrt{(5-3)^2+(4-0)^2}=2\\sqrt5$, $PD=5$이므로 최댓값은 $\\sqrt{89}$이다.\n\n변 $CD$의 직선의 방정식은 $4x+3y-12=0$이다. 점 $P(5,4)$에서 이 직선에 내린 수선의 발은\n$H\\left(5-\\dfrac{20\\cdot4}{25},4-\\dfrac{20\\cdot3}{25}\\right)=\\left(\\dfrac95,\\dfrac85\\right)$\n이고, 이는 선분 $CD$ 위에 있다. 따라서 선분 $CD$까지의 최단거리는\n$PH=\\dfrac{|4\\cdot5+3\\cdot4-12|}{\\sqrt{4^2+3^2}}=4$이다.\n\n직선 $BC$에 내린 수선의 발은 $\\left(\\dfrac{141}{25},\\dfrac{88}{25}\\right)$로 선분 $BC$ 밖에 있으므로, 선분 $BC$에서의 최단거리는 $PC=2\\sqrt5>4$이다. 직선 $DA$에 내린 수선의 발은 $\\left(\\dfrac95,\\dfrac{32}{5}\\right)$로 선분 $DA$ 밖에 있으므로, 선분 $DA$에서의 최단거리는 $PD=5>4$이다. 직선 $AB$에 내린 수선의 발은 $\\left(-\\dfrac{51}{25},-\\dfrac{32}{25}\\right)$로 선분 $AB$ 위에 있으므로, 선분 $AB$에서의 최단거리는 $\\dfrac{44}{5}>4$이다. 그러므로 마름모 위에서의 최솟값은 $4$이다.",
-    "image": "assets/images/비상_공통수학2_선분의내분과직선_중단원학습점검_고1/q12-rhombus-coordinate-diagram.png",
+    "image": "assets/images/비상_공통수학2_선분의내분과직선_중단원학습점검_고1/qid_v1_5d2fd6d67bbd576eb960b8601e0ba4123546f7f098b42adc119f820d49dfaea7-problem.svg",
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "imageAlt": "좌표축 위 분홍색 마름모 ABCD와 바깥 점 P(5,4), 점선 좌표 보조선을 그린다.",
+    "imageCaption": "좌표축 위 분홍색 마름모 ABCD와 바깥 점 P(5,4), 점선 좌표 보조선을 그린다.",
+    "imageSize": "full"
   }
 ];
