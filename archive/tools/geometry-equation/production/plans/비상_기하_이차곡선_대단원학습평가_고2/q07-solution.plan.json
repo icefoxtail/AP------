@@ -1,0 +1,12 @@
+{
+  "capability":"ellipse-figure-v1",
+  "sourceQuote":"쌍곡선 x²/16−y²/9=1과 FF′를 지름으로 하는 원의 교점 P, 삼각형 PF′F의 넓이",
+  "conics":[{"id":"h","kind":"HYPERBOLA","center":["0","0"],"aSquared":"16","bSquared":"9","transverse":"X"},{"id":"c","kind":"CIRCLE","center":["0","0"],"rSquared":"25"}],
+  "points":[{"id":"F","kind":"FOCUS","curve":"h","side":1},{"id":"F'","kind":"FOCUS","curve":"h","side":-1},{"id":"P","kind":"CONIC_CONIC","curves":["h","c"],"which":4},{"id":"O","kind":"ORIGIN"}],
+  "segments":[{"id":"base","from":"F'","to":"F","label":"10"},{"id":"leg1","from":"P","to":"F"},{"id":"leg2","from":"P","to":"F'"}],
+  "polygons":[{"id":"tri","points":["F'","F","P"],"fill":"LIGHT"}],
+  "caption":"쌍곡선과 초점 지름의 원에서 이루어진 삼각형 PF′F",
+  "accessibilityDescription":"쌍곡선의 두 초점 F와 F′, 그 사이를 지름으로 하는 원, 우상단 교점 P와 삼각형 PF′F를 나타낸다. 원주각 FPF′는 직각이다.",
+  "sourceConditions":[{"id":"h","condition":"a²=16,b²=9로 c=5, 초점 F=(5,0), F′=(-5,0)","mappedTo":["conics","F","F'"]},{"id":"c","condition":"원의 지름 FF′이므로 반지름 5","mappedTo":["conics"]},{"id":"p","condition":"오른쪽 위 교점 P; PF와 PF′는 직각으로 만나며 해당 표식은 현재 이 capability에서 직접 그리지 못함","mappedTo":["P","leg1","leg2"]}],
+  "newVisualInformation":["원의 지름과 양 초점까지의 거리 연결은 반영", "ENGINE_CAPABILITY_PENDING: CONIC_CONIC 점 P 자체에 직각 호/마커 및 원본 곡선 식 라벨이 충돌 없이 그려지도록 conic planeMarks와 curve-label 배치 개선 필요"]
+}

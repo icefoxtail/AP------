@@ -1,0 +1,12 @@
+{
+  "capability":"ellipse-figure-v1",
+  "sourceQuote":"쌍곡선 x²−3y²=6의 P(-3,1) 접선 l에 두 초점 F,F′에서 내린 수선의 발 A,B의 거리",
+  "conic":{"kind":"HYPERBOLA","center":["0","0"],"aSquared":"6","bSquared":"2","transverse":"X"},
+  "points":[{"id":"P","kind":"ON_CONIC","x":"-3","sign":"POS","coordinates":true},{"id":"F","kind":"FOCUS","side":1},{"id":"F'","kind":"FOCUS","side":-1},{"id":"A","kind":"FOOT","from":"F","onto":"l","rightAngle":true},{"id":"B","kind":"FOOT","from":"F'","onto":"l","rightAngle":true}],
+  "lines":[{"id":"l","tangent":true,"at":"P","label":"l"}],
+  "segments":[{"id":"fa","from":"F","to":"A"},{"id":"fb","from":"F'","to":"B"},{"id":"ab","from":"A","to":"B","label":"4"},{"id":"ff","from":"F","to":"F'","dashed":true}],
+  "caption":"접선 l 양쪽의 초점 F,F′에서 내린 두 수선과 AB",
+  "accessibilityDescription":"쌍곡선 왼쪽 가지 P(-3,1)의 접선 l, 두 초점에서 l에 내린 수선 FA와 F′B의 직각 표식 및 선분 AB를 나타낸다.",
+  "sourceConditions":[{"id":"c1","condition":"x²/6−y²/2=1과 P=(-3,1)","mappedTo":["conic","P"]},{"id":"c2","condition":"두 초점은 ±2√2, 접선 l: x+y+2=0","mappedTo":["F","F'","l"]},{"id":"c3","condition":"A,B는 초점에서 l로 내린 수선의 발","mappedTo":["A","B","fa","fb"]}],
+  "newVisualInformation":["FOOT 두 개의 실제 직각 표시", "해설의 AB=4 선분 라벨"]
+}

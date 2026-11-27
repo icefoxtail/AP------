@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "sourceQuote":"두 포물선 y²=-8x, x²=4y의 초점 F1,F2 사이 거리",
+  "conics":[{"id":"p1","kind":"PARABOLA","vertex":["0","0"],"p":"-2","axis":"X"},{"id":"p2","kind":"PARABOLA","vertex":["0","0"],"p":"1","axis":"Y"}],
+  "points":[{"id":"F1","kind":"FOCUS","curve":"p1","coordinates":true},{"id":"F2","kind":"FOCUS","curve":"p2","coordinates":true},{"id":"O","kind":"ORIGIN"}],
+  "segments":[{"id":"sFF","from":"F1","to":"F2"}],
+  "caption":"왼쪽으로 열린 포물선과 위로 열린 포물선의 초점 거리",
+  "accessibilityDescription":"y²=-8x의 초점 F1(-2,0), x²=4y의 초점 F2(0,1)를 같은 좌표평면에 놓아 선분 F1F2의 길이 √5를 보인다.",
+  "sourceConditions":[{"id":"c1","condition":"y²=-8x의 p=-2와 x²=4y의 p=1","mappedTo":["conics"]},{"id":"c2","condition":"초점 F1=(-2,0),F2=(0,1)","mappedTo":["F1","F2","sFF"]}],
+  "newVisualInformation":["서로 다른 축으로 열리는 두 포물선을 공통 배율에 그려 초점 위치 혼동 방지", "ENGINE_CAPABILITY_PENDING: 인접 좌표 라벨과의 충돌 때문에 F1F2=√5 선분 수치의 별도 배치 필요"]
+}

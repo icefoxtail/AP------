@@ -1,0 +1,12 @@
+{
+  "capability":"ellipse-figure-v1",
+  "sourceQuote":"포물선 y²=4x의 두 접점 P,Q에서 그은 접선이 C(-2,-1)에서 만날 때 PQ의 방정식",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"1","axis":"X"},
+  "points":[{"id":"C","kind":"POINT","x":"-2","y":"-1","coordinates":true},{"id":"P","kind":"TANGENT_FROM","from":"C","which":1},{"id":"Q","kind":"TANGENT_FROM","from":"C","which":2},{"id":"O","kind":"ORIGIN"}],
+  "lines":[{"id":"t1","tangent":true,"at":"P"},{"id":"t2","tangent":true,"at":"Q"},{"id":"chord","through":["P","Q"],"label":"2x+y=4"}],
+  "segments":[{"id":"cp","from":"C","to":"P"},{"id":"cq","from":"C","to":"Q"},{"id":"pq","from":"P","to":"Q"}],
+  "caption":"포물선의 접점 P,Q를 잇는 접촉현 PQ와 외부점 C의 두 접선",
+  "accessibilityDescription":"포물선 y²=4x의 외부점 C(-2,-1)에서 그은 두 접선의 접점 P,Q 및 접촉현 PQ, 그 직선식 2x+y=4를 표시한다.",
+  "sourceConditions":[{"id":"c1","condition":"C=(-2,-1), 포물선 y²=4x","mappedTo":["conic","C"]},{"id":"c2","condition":"P,Q는 C에서 그은 서로 다른 접선의 접점","mappedTo":["P","Q","t1","t2"]},{"id":"c3","condition":"해설에서 증명한 접촉현 2x+y-4=0","mappedTo":["chord","pq"]}],
+  "newVisualInformation":["접점 P,Q를 TANGENT_FROM으로 계산하고 두 접선 및 풀이의 접촉현을 함께 표시"]
+}

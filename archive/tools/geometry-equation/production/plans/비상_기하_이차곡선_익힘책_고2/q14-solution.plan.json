@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "sourceQuote":"쌍곡선 7x²−9y²−14x−36y−92=0에 대한 중심·초점·점근선 보기",
+  "conic":{"kind":"HYPERBOLA","center":["1","-2"],"aSquared":"9","bSquared":"7","transverse":"X"},
+  "points":[{"id":"C","kind":"CENTER","coordinates":true},{"id":"F","kind":"FOCUS","side":1},{"id":"F'","kind":"FOCUS","side":-1}],
+  "lines":[{"id":"u","role":"ASYMPTOTE","sign":1,"dashed":true},{"id":"v","role":"ASYMPTOTE","sign":-1,"dashed":true}],
+  "caption":"중심 (1,-2), 가로 주축의 쌍곡선과 두 점근선",
+  "accessibilityDescription":"쌍곡선 (x−1)²/9−(y+2)²/7=1은 중심 C(1,-2)에 있고 주축이 수평이다. 두 초점과 두 점근선이 표시되어 있다.",
+  "sourceConditions":[{"id":"c1","condition":"완전제곱: (x−1)²/9−(y+2)²/7=1","mappedTo":["conic","C"]},{"id":"c2","condition":"c²=16, 초점 (1±4,-2), 점근선은 중심 통과, 기울기 ±√7/3","mappedTo":["F","F'","u","v"]}],
+  "newVisualInformation":["중심이 원점이 아닌 쌍곡선의 초점과 두 점근선의 정확한 위치", "보기 선택 내용을 숫자 라벨로 과장하지 않음"]
+}

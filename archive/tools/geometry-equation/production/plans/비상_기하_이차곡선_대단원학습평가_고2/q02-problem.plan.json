@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "sourceQuote":"포물선 y²=12x 위 P, A(4,5),B(3,0)의 PA+PB 최솟값",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"3","axis":"X"},
+  "points":[{"id":"A","kind":"POINT","x":"4","y":"5","coordinates":true},{"id":"B","kind":"POINT","x":"3","y":"0","coordinates":true},{"id":"P","kind":"ON_CONIC","y":"3"}],
+  "segments":[{"id":"pa","from":"P","to":"A"},{"id":"pb","from":"P","to":"B"}],
+  "caption":"포물선 위의 임의의 위치 P와 두 점 A,B",
+  "accessibilityDescription":"포물선 y²=12x 위의 대표점 P가 A(4,5), B(3,0)와 연결되어 있지만 최솟값을 만드는 위치나 준선은 제시하지 않는다.",
+  "sourceConditions":[{"id":"c1","condition":"A=(4,5), B=(3,0)","mappedTo":["A","B"]},{"id":"c2","condition":"P는 y²=12x 위의 임의 위치이고 구하는 값·최적점은 숨김","mappedTo":["conic","P","pa","pb"]}],
+  "newVisualInformation":["두 거리 PA+PB를 구하는 구성을 답이 노출되지 않는 대표 위치로 나타낸다"]
+}

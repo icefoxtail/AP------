@@ -1,0 +1,12 @@
+{
+  "capability":"ellipse-figure-v1",
+  "sourceQuote":"직선 y=3x+5가 쌍곡선 x²/a−y²/2=1에 접할 때 초점 거리",
+  "conic":{"kind":"HYPERBOLA","center":["0","0"],"aSquared":"3","bSquared":"2","transverse":"X"},
+  "points":[{"id":"P","kind":"ON_CONIC","x":"-9/5","sign":"NEG"},{"id":"F","kind":"FOCUS","side":1},{"id":"F'","kind":"FOCUS","side":-1}],
+  "lines":[{"id":"l","slope":"3","intercept":"5","tangent":true}],
+  "segments":[{"id":"ff","from":"F","to":"F'"}],
+  "caption":"기울기 3인 직선이 쌍곡선 왼쪽 가지에 한 점에서 접한다",
+  "accessibilityDescription":"쌍곡선 x²/3−y²/2=1과 접선 y=3x+5의 접점 P, 두 초점 F,F′의 위치를 함께 보인다.",
+  "sourceConditions":[{"id":"c1","condition":"접선 조건 5²=9a−2로 a=3, 쌍곡선 x²/3−y²/2=1","mappedTo":["conic","l"]},{"id":"c2","condition":"접점 P=(-9/5,-2/5), c²=3+2=5","mappedTo":["P","F","F'","ff"]}],
+  "newVisualInformation":["실제 접점이 있는 쌍곡선과 직선의 기울기·위치", "두 초점을 잇는 선분", "ENGINE_CAPABILITY_PENDING: y=3x+5의 직선 식과 FF′=2√5의 수치 라벨이 겹치지 않도록 conic label 배치 개선 필요"]
+}
