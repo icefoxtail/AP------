@@ -1,0 +1,15 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"POLAR_POINT","inputs":["O","A"],"args":{"length":{"kind":"integer","value":"3"},"angleDeg":{"kind":"integer","value":"120"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"3"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["O","A","B"],"displayLines":[],"displayCircles":[],"displaySegments":[{"id":"sOA","refs":["O","A"]},{"id":"sOB","refs":["O","B"]},{"id":"sAB","refs":["A","B"]}],
+  "planeMarks":{"angles":[{"id":"aO","refs":["A","O","B"],"value":120,"label":"2pi/3","labelKind":"MATH","style":"ARC","factRole":"GIVEN"}],"arcs":[{"id":"arcAB","circle":"k","center":"O","from":"A","to":"B","side":"MINOR","label":"2pi","labelKind":"MATH"}],"expressionLabels":[{"id":"lOA","ownerSegment":"sOA","text":"3"},{"id":"lOB","ownerSegment":"sOB","text":"3"}]},
+  "caption":"호의 길이 2π=r·(2π/3)에서 r=3, 삼각형 OAB 넓이는 9√3/4이다.",
+  "accessibilityDescription":"중심각과 호의 길이, 두 반지름 3이 실제 선분과 호에 표시된 부채꼴 도식. 면 채움 없음.",
+  "sourceConditions":[{"id":"given","condition":"∠AOB=2π/3, 호 AB=2π","mappedTo":["aO","arcAB"]},{"id":"radius","condition":"OA=OB=3","mappedTo":["lOA","lOB"]}],
+  "newVisualInformation":["해설의 반지름 3 두 개를 선분 위에 실제 표시"]
+}

@@ -1,0 +1,15 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"POLAR_POINT","inputs":["B","C"],"args":{"length":{"kind":"integer","value":"4"},"angleDeg":{"kind":"integer","value":"120"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"TRANSLATE_POINT","inputs":["A"],"args":{"dx":{"kind":"integer","value":"6"},"dy":{"kind":"integer","value":"0"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["A","B","C","D"],"displayLines":[],"displayCircles":[],"displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sDA","refs":["D","A"]}],
+  "planeMarks":{"angles":[{"id":"aB","refs":["A","B","C"],"value":120,"label":"120","style":"ARC","factRole":"GIVEN"}],"dimensions":[{"id":"dAB","from":"A","to":"B","label":"4","side":"LEFT"},{"id":"dBC","from":"B","to":"C","label":"6","side":"BELOW"}]},
+  "caption":"이웃한 변 AB=4, BC=6과 끼인각 ∠ABC=120°인 평행사변형 ABCD. 넓이는 표시하지 않는다.",
+  "accessibilityDescription":"왼쪽 아래 B를 꼭짓점으로 A 방향과 C 방향의 각은 120°, 두 이웃 변에 4와 6이 표시된 평행사변형. 영역 채움 없음.",
+  "sourceConditions":[{"id":"sides","condition":"AB=4, BC=6, ABCD 평행사변형","mappedTo":["A","B","C","D","dAB","dBC"]},{"id":"angle","condition":"∠ABC=120°","mappedTo":["aB"]}],
+  "newVisualInformation":["원본 불필요한 살구색 면 채움을 제외하고 길이 치수선·각 호를 실물 필드로 유지"]
+}

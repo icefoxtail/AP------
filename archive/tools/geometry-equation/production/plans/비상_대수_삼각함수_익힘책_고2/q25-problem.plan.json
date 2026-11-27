@@ -1,0 +1,18 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"POLAR_POINT","inputs":["B","C"],"args":{"length":{"kind":"integer","value":"8"},"angleDeg":{"kind":"integer","value":"60"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"kA","op":"CIRCLE_CENTER_RADIUS","inputs":["A"],"args":{"radius":{"kind":"integer","value":"5"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"kC","op":"CIRCLE_CENTER_RADIUS","inputs":["C"],"args":{"radius":{"kind":"integer","value":"3"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"is","op":"INTERSECTION","inputs":["kA","kC"],"args":{},"outputType":"POINT_SET","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"D","op":"SELECT_POINT","inputs":["is"],"args":{},"branch":{"kind":"SIDE_OF_ORIENTED_LINE","refs":["A","C"],"sign":1},"outputType":"POINT","factRole":"GIVEN"}
+  ]},
+  "displayPoints":["A","B","C","D"],"displayLines":[],"displayCircles":[],"displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sDA","refs":["D","A"]}],
+  "planeMarks":{"angles":[{"id":"aB","refs":["A","B","C"],"value":60,"label":"60","style":"ARC","factRole":"GIVEN"}],"expressionLabels":[{"id":"lab","ownerSegment":"sAB","text":"8"},{"id":"lbc","ownerSegment":"sBC","text":"3"},{"id":"lcd","ownerSegment":"sCD","text":"3"},{"id":"lda","ownerSegment":"sDA","text":"5"}]},
+  "caption":"AB=8, BC=CD=3, AD=5, ∠ABC=60°인 사각형 ABCD. 원본의 불필요한 내부 면 채움은 제외한다.",
+  "accessibilityDescription":"아래 왼쪽 B의 60° 각호와 길이 8,3,3,5가 각 변에 표시된 볼록 사각형. 색칠 없음.",
+  "sourceConditions":[{"id":"sides","condition":"AB=8, BC=CD=3, AD=5","mappedTo":["lab","lbc","lcd","lda"]},{"id":"angle","condition":"∠ABC=60°","mappedTo":["aB"]}],
+  "newVisualInformation":["AD=5와 CD=3을 두 원의 교점으로 정확히 구성하고 원본 임의 채움 제거"]
+}

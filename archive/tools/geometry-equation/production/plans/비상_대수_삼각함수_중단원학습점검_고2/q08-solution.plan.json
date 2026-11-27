@@ -1,0 +1,14 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-4"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["O","H","P"],"displayLines":[],"displayCircles":[],"displaySegments":[{"id":"sOH","refs":["O","H"]},{"id":"sHP","refs":["H","P"]},{"id":"sOP","refs":["O","P"]}],
+  "rightAngles":[{"id":"rH","refs":["O","H","P"]}],"planeMarks":{"expressionLabels":[{"id":"x","ownerSegment":"sOH","text":"4"},{"id":"y","ownerSegment":"sHP","text":"3"},{"id":"r","ownerSegment":"sOP","text":"5"}]},
+  "caption":"제2사분면에서 cosθ=−4/5는 왼쪽 4, 위쪽 3, 빗변 5인 직각삼각형이고 sinθ−tanθ=27/20이다.",
+  "accessibilityDescription":"왼쪽 위 P에 닿는 빗변 5, 수평 길이 4, 수직 길이 3을 갖는 H의 직각삼각형.",
+  "sourceConditions":[{"id":"given","condition":"cosθ=−4/5, θ는 제2사분면","mappedTo":["sOH","sOP","P"]},{"id":"sin","condition":"sinθ=3/5, tanθ=−3/4","mappedTo":["sHP","x","y","r"]}],
+  "newVisualInformation":["2사분면의 부호와 3-4-5 삼각형의 대응"]
+}

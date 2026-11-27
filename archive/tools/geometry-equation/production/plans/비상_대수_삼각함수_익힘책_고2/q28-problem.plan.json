@@ -1,0 +1,16 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"POLAR_POINT","inputs":["A","B"],"args":{"length":{"kind":"integer","value":"6"},"angleDeg":{"kind":"integer","value":"60"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"P","op":"DIVISION_POINT","inputs":["A","B"],"args":{"m":{"kind":"integer","value":"3"},"n":{"kind":"integer","value":"1"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"Q","op":"DIVISION_POINT","inputs":["A","C"],"args":{"m":{"kind":"integer","value":"2"},"n":{"kind":"integer","value":"1"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["A","B","C","P","Q"],"displayLines":[],"displayCircles":[],"displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sAC","refs":["A","C"]},{"id":"sBC","refs":["B","C"]},{"id":"sPQ","refs":["P","Q"]}],
+  "planeMarks":{"angles":[{"id":"aA","refs":["B","A","C"],"value":60,"label":"60","style":"ARC","factRole":"GIVEN"}],"expressionLabels":[{"id":"lAB","ownerSegment":"sAB","text":"4"},{"id":"lAC","ownerSegment":"sAC","text":"6"}]},
+  "caption":"AB=4, AC=6, ∠A=60°인 삼각형에서 PQ는 넓이를 이등분하는 한 대표 배치이다. 최솟값은 표시하지 않는다.",
+  "accessibilityDescription":"삼각형 ABC의 두 변에 4,6이 붙고 ∠A의 60° 호가 있으며 P는 AB, Q는 AC 위에 있고 PQ가 연결된다. 면 채움 없음.",
+  "sourceConditions":[{"id":"given","condition":"AB=4, AC=6, ∠A=60°","mappedTo":["sAB","sAC","aA","lAB","lAC"]},{"id":"half","condition":"PQ가 삼각형 넓이 이등분; 표시 배치는 AP=3,AQ=4로 AP·AQ=12","mappedTo":["P","Q","sPQ"]}],
+  "newVisualInformation":["조건을 만족하는 내부점 P,Q의 비와 선분을 정확히 작도"]
+}
