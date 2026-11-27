@@ -418,7 +418,10 @@ window.questionBank = [
     "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사/q9-solution.svg",
     "solutionImageAlt": "평행한 대각선 BD와 FH로 공간각을 ∠AFH로 옮긴 그림",
     "solutionImageCaption": "평행한 대각선 BD와 FH로 공간각을 ∠AFH로 옮긴 그림",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageAlt": "정육면체 ABCD-EFGH에서 두 선분 AF와 BD를 그린 그림이다.",
+    "imageCaption": "정육면체 ABCD-EFGH에서 두 선분 AF와 BD를 그린 그림이다.",
+    "imageSize": "full"
   },
   {
     "id": 10,

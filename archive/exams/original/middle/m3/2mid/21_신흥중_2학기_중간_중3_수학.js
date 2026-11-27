@@ -56,7 +56,15 @@ window.questionBank = [
     "primaryMethod": "그림의 빗변5와 대변3·인접변4를 사인·코사인 정의에 직접 대입하고 합한다.",
     "decisiveStep": "그림의 빗변5와 대변3·인접변4를 사인·코사인 정의에 직접 대입하고 합한다.",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "image": "assets/images/21_신흥중_2학기_중간_중3_수학/q1-problem.svg",
+    "imageAlt": "ABC의 ∠B=90°, AB=4·BC=3·AC=5와 원본의 세 변 지시선",
+    "imageCaption": "ABC의 ∠B=90°, AB=4·BC=3·AC=5와 원본의 세 변 지시선",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_신흥중_2학기_중간_중3_수학/q1-solution.svg",
+    "solutionImageAlt": "3:4:5 직각삼각형, sinA=3/5와 cosA=4/5의 대변·인접변·빗변 대응",
+    "solutionImageCaption": "3:4:5 직각삼각형, sinA=3/5와 cosA=4/5의 대변·인접변·빗변 대응",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -113,7 +121,15 @@ window.questionBank = [
     "primaryMethod": "큰 직각삼각형의 빗변13을 복원하고 x와B의 여각 관계로 sinx=cosB를 적용한다.",
     "decisiveStep": "큰 직각삼각형의 빗변13을 복원하고 x와B의 여각 관계로 sinx=cosB를 적용한다.",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "image": "assets/images/21_신흥중_2학기_중간_중3_수학/q2-problem.svg",
+    "imageAlt": "원본 ∠A 직각인 ABC(AB12,AC5), D는 BA 위, DE⊥BC, ∠BDE=x; 수선 E 보존",
+    "imageCaption": "원본 ∠A 직각인 ABC(AB12,AC5), D는 BA 위, DE⊥BC, ∠BDE=x; 수선 E 보존",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_신흥중_2학기_중간_중3_수학/q2-solution.svg",
+    "solutionImageAlt": "피타고라스로 BC=13, DE⊥BC에서 x는 B의 여각이라는 대응 보조선",
+    "solutionImageCaption": "피타고라스로 BC=13, DE⊥BC에서 x는 B의 여각이라는 대응 보조선",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -170,7 +186,15 @@ window.questionBank = [
     "primaryMethod": "직선기울기3을 tan a로 읽고 변비1:3의 빗변√10에서 sin a cos a를 계산한다.",
     "decisiveStep": "직선기울기3을 tan a로 읽고 변비1:3의 빗변√10에서 sin a cos a를 계산한다.",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "image": "assets/images/21_신흥중_2학기_중간_중3_수학/q3-problem.svg",
+    "imageAlt": "좌표축과 직선 y=3x+9, x절편 A(−3,0)·y절편 B(0,9), x축과 이루는 예각 a",
+    "imageCaption": "좌표축과 직선 y=3x+9, x절편 A(−3,0)·y절편 B(0,9), x축과 이루는 예각 a",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_신흥중_2학기_중간_중3_수학/q3-solution.svg",
+    "solutionImageAlt": "기울기 9/3=3의 수평·수직 보조변과 직선의 예각 a; 무채색 축",
+    "solutionImageCaption": "기울기 9/3=3의 수평·수직 보조변과 직선의 예각 a; 무채색 축",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -227,7 +251,11 @@ window.questionBank = [
     "primaryMethod": "정육면체의 면대각선6√2와 공간대각선6√3을 복원한 뒤 cosx·tanx의 변비에서 GE가 소거되는 것을 읽는다. 길이 목표가 아닌 삼각비식이므로 GEOMETRIC_DERIVATION으로 교정한다.",
     "decisiveStep": "정육면체의 면대각선6√2와 공간대각선6√3을 복원한 뒤 cosx·tanx의 변비에서 GE가 소거되는 것을 읽는다. 길이 목표가 아닌 삼각비식이므로 GEOMETRIC_DERIVATION으로 교정한다.",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "image": "assets/images/21_신흥중_2학기_중간_중3_수학/q4-problem.svg",
+    "imageAlt": "원본 정육면체 ABCD-EFGH의 모서리 6, 숨은 모서리 점선, AE·EG·AG 대각선 및 ∠AGE=x(입체 꼭짓점·각 엔진 미지원)",
+    "imageCaption": "원본 정육면체 ABCD-EFGH의 모서리 6, 숨은 모서리 점선, AE·EG·AG 대각선 및 ∠AGE=x(입체 꼭짓점·각 엔진 미지원)",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -457,7 +485,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "A에서BC에 내린 수선의 발H를 두고 주어진sinC,cosC로높이12와밑변차8을 구한 뒤 피타고라스로AB=4√13을 구한다.",
-    "decisiveStep": "A에서BC에 내린 수선의 발H를 두고 주어진sinC,cosC로높이12와밑변차8을 구한 뒤 피타고라스로AB=4√13을 구한다."
+    "decisiveStep": "A에서BC에 내린 수선의 발H를 두고 주어진sinC,cosC로높이12와밑변차8을 구한 뒤 피타고라스로AB=4√13을 구한다.",
+    "image": "assets/images/21_신흥중_2학기_중간_중3_수학/q8-problem.svg",
+    "imageAlt": "원본 △ABC, AC=20·BC=24, C의 sin=3/5 cos=4/5, 원문에 없는 높이선은 문제 축에서 생략",
+    "imageCaption": "원본 △ABC, AC=20·BC=24, C의 sin=3/5 cos=4/5, 원문에 없는 높이선은 문제 축에서 생략",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -632,7 +664,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "중심 주위 여섯 합동각이60°임을 먼저 정하고 마름모 넓이12²sin60을 여섯배한다.",
-    "decisiveStep": "중심 주위 여섯 합동각이60°임을 먼저 정하고 마름모 넓이12²sin60을 여섯배한다."
+    "decisiveStep": "중심 주위 여섯 합동각이60°임을 먼저 정하고 마름모 넓이12²sin60을 여섯배한다.",
+    "image": "assets/images/21_신흥중_2학기_중간_중3_수학/q11-problem.svg",
+    "imageAlt": "중심 O를 둘러싼 합동 마름모 6개, 각 변 12cm, 여섯 방향의 동일한 길이 선과 중심 60°각(무채움)",
+    "imageCaption": "중심 O를 둘러싼 합동 마름모 6개, 각 변 12cm, 여섯 방향의 동일한 길이 선과 중심 60°각(무채움)",
+    "imageSize": "full"
   },
   {
     "id": 12,
@@ -756,7 +792,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "반현4와 OM=r−2를 피타고라스에 넣어 반지름5를 정하고 원넓이를 계산한다.",
-    "decisiveStep": "반현4와 OM=r−2를 피타고라스에 넣어 반지름5를 정하고 원넓이를 계산한다."
+    "decisiveStep": "반현4와 OM=r−2를 피타고라스에 넣어 반지름5를 정하고 원넓이를 계산한다.",
+    "image": "assets/images/21_신흥중_2학기_중간_중3_수학/q13-problem.svg",
+    "imageAlt": "원 O의 현 AB=8, OM⊥AB인 현 중점 M, 원호 위 C와 MC=2cm, 수선 표시",
+    "imageCaption": "원 O의 현 AB=8, OM⊥AB인 현 중점 M, 원호 위 C와 MC=2cm, 수선 표시",
+    "imageSize": "full"
   },
   {
     "id": 14,
@@ -1252,7 +1292,15 @@ window.questionBank = [
     "primaryMethod": "수평거리100과 제공된 tan34값을 높이식100tan34에 바로 대입한다.",
     "decisiveStep": "수평거리100과 제공된 tan34값을 높이식100tan34에 바로 대입한다.",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "image": "assets/images/21_신흥중_2학기_중간_중3_수학/q21-problem.svg",
+    "imageAlt": "높이를 재는 원본 송전탑·지면 선 도형: 100m 수평 거리, 34° 고도각, 탑 수직 AH",
+    "imageCaption": "높이를 재는 원본 송전탑·지면 선 도형: 100m 수평 거리, 34° 고도각, 탑 수직 AH",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_신흥중_2학기_중간_중3_수학/q21-solution.svg",
+    "solutionImageAlt": "tan34°≈0.6745를 이용한 탑 높이 67.45m; 직각 수선",
+    "solutionImageCaption": "tan34°≈0.6745를 이용한 탑 높이 67.45m; 직각 수선",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1305,7 +1353,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculum": "2015",
     "primaryMethod": "중점조건으로 두 길이BM=BN=2√5를 복원하고 정사각형에서 세 삼각형넓이를 빼 BMN넓이6을 만든 뒤 ½BM·BN·sinx=6을 역으로 푼다.",
-    "decisiveStep": "중점조건으로 두 길이BM=BN=2√5를 복원하고 정사각형에서 세 삼각형넓이를 빼 BMN넓이6을 만든 뒤 ½BM·BN·sinx=6을 역으로 푼다."
+    "decisiveStep": "중점조건으로 두 길이BM=BN=2√5를 복원하고 정사각형에서 세 삼각형넓이를 빼 BMN넓이6을 만든 뒤 ½BM·BN·sinx=6을 역으로 푼다.",
+    "image": "assets/images/21_신흥중_2학기_중간_중3_수학/q22-problem.svg",
+    "imageAlt": "정사각형 ABCD 한 변4, AD·CD의 중점 M·N, BM·BN의 끼인각 x(문제에는 별도 SVG 없음)",
+    "imageCaption": "정사각형 ABCD 한 변4, AD·CD의 중점 M·N, BM·BN의 끼인각 x(문제에는 별도 SVG 없음)",
+    "imageSize": "full"
   },
   {
     "id": 23,
@@ -1364,6 +1416,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculum": "2015",
     "primaryMethod": "빗변·직각변으로 남은변6을 얻고 K=rs에서내접원반지름2를 정해 중심의 두직각성분6,2로 OC를 구한다. 접선길이결정이 아니라 내심위치 복원이다.",
-    "decisiveStep": "빗변·직각변으로 남은변6을 얻고 K=rs에서내접원반지름2를 정해 중심의 두직각성분6,2로 OC를 구한다. 접선길이결정이 아니라 내심위치 복원이다."
+    "decisiveStep": "빗변·직각변으로 남은변6을 얻고 K=rs에서내접원반지름2를 정해 중심의 두직각성분6,2로 OC를 구한다. 접선길이결정이 아니라 내심위치 복원이다.",
+    "image": "assets/images/21_신흥중_2학기_중간_중3_수학/q23-problem.svg",
+    "imageAlt": "∠A=90°인 ABC의 내접원 O, BC10·AC8, 세 접점 D(AB)·E(AC)·F(BC), 수선 OD·OE·OF와 OC",
+    "imageCaption": "∠A=90°인 ABC의 내접원 O, BC10·AC8, 세 접점 D(AB)·E(AC)·F(BC), 수선 OD·OE·OF와 OC",
+    "imageSize": "full"
   }
 ];

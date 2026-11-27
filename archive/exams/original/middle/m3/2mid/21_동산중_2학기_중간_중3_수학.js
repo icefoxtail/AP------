@@ -652,7 +652,11 @@ window.questionBank = [
     "auditStatus": "AUDITED_REPAIR",
     "repairKind": "MINIMAL_CONDITION_CLARIFICATION",
     "semanticStatus": "FINAL",
-    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-053","rpmPrimaryPath":{"majorUnit":"이차함수","midUnit":"이차함수 y=ax²+bx+c의 그래프","l3":"그래프와 계수","l4":"그래프 위치"},"rpmL3":"그래프와 계수","rpmL4":"그래프 위치","subUnitKey":"M3-04-QUADRATIC_FUNCTION_GRAPH","problemTypeKey":"PT_FUNCTION_GRAPH_PROPERTIES","templateKey":"TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT","projectionStatus":"PROJECTION_REUSE","projectionReason":"아래로 볼록한 그래프의 두 x절편−1,2에서 a>0 및 y=a(x+1)(x−2)를 얻어 각 계수 진술을 대조한다. 잘못된④는 f(−1)=0과도 직접 충돌한다."}
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-053","rpmPrimaryPath":{"majorUnit":"이차함수","midUnit":"이차함수 y=ax²+bx+c의 그래프","l3":"그래프와 계수","l4":"그래프 위치"},"rpmL3":"그래프와 계수","rpmL4":"그래프 위치","subUnitKey":"M3-04-QUADRATIC_FUNCTION_GRAPH","problemTypeKey":"PT_FUNCTION_GRAPH_PROPERTIES","templateKey":"TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT","projectionStatus":"PROJECTION_REUSE","projectionReason":"아래로 볼록한 그래프의 두 x절편−1,2에서 a>0 및 y=a(x+1)(x−2)를 얻어 각 계수 진술을 대조한다. 잘못된④는 f(−1)=0과도 직접 충돌한다."},
+    "image": "assets/images/21_동산중_2학기_중간_중3_수학/q9-problem.svg",
+    "imageAlt": "위로 열린 포물선의 x절편은 −1과 2이다. a>0인 경우의 대표 모양으로 a=1을 선택했으며 계수의 실제 값은 주어지지 않았다.",
+    "imageCaption": "위로 열린 포물선의 x절편은 −1과 2이다. a>0인 경우의 대표 모양으로 a=1을 선택했으며 계수의 실제 값은 주어지지 않았다.",
+    "imageSize": "full"
   },
   {
     "id": 10,

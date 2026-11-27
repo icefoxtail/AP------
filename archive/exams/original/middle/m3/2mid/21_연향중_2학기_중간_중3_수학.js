@@ -378,7 +378,11 @@ window.examData = {
     "integrationPattern": "SEQUENTIAL",
     "curriculum": "2015",
     "primaryMethod": "중심에서AC와BC까지 같은거리 조건으로 AC=BC인 이등변 구조를 얻는 의미는 확정된다. 그러나 그림의115°가 수선OD·OE 사이에 있는데 기존 해설은 중심각AOC·BOC로 사용해 답65°를 주장하므로 목표각의 최종 수학판정은 보류한다.",
-    "decisiveStep": "중심에서AC와BC까지 같은거리 조건으로 AC=BC인 이등변 구조를 얻는 의미는 확정된다. 그러나 그림의115°가 수선OD·OE 사이에 있는데 기존 해설은 중심각AOC·BOC로 사용해 답65°를 주장하므로 목표각의 최종 수학판정은 보류한다."
+    "decisiveStep": "중심에서AC와BC까지 같은거리 조건으로 AC=BC인 이등변 구조를 얻는 의미는 확정된다. 그러나 그림의115°가 수선OD·OE 사이에 있는데 기존 해설은 중심각AOC·BOC로 사용해 답65°를 주장하므로 목표각의 최종 수학판정은 보류한다.",
+    "image": "assets/images/21_연향중_2학기_중간_중3_수학/q8-problem.svg",
+    "imageAlt": "원 내접 ABC, 세 현 위 수선발 D·E·F, OE=OF, ∠DOE=115°, ∠BCA=x",
+    "imageCaption": "원 내접 ABC, 세 현 위 수선발 D·E·F, OE=OF, ∠DOE=115°, ∠BCA=x",
+    "imageSize": "full"
   },
     {
       "id": 9,
@@ -480,7 +484,11 @@ window.examData = {
     "integrationPattern": "SEQUENTIAL",
     "curriculum": "2015",
     "primaryMethod": "먼저AC와AM에서CM4를 얻고 현의 수직이등분선 위 중심을 이용해 OA=OM+4를 제곱합과 결합한 뒤 원넓이를 구한다.",
-    "decisiveStep": "먼저AC와AM에서CM4를 얻고 현의 수직이등분선 위 중심을 이용해 OA=OM+4를 제곱합과 결합한 뒤 원넓이를 구한다."
+    "decisiveStep": "먼저AC와AM에서CM4를 얻고 현의 수직이등분선 위 중심을 이용해 OA=OM+4를 제곱합과 결합한 뒤 원넓이를 구한다.",
+    "image": "assets/images/21_연향중_2학기_중간_중3_수학/q10-problem.svg",
+    "imageAlt": "원 O의 현 AB 중점 M, AM=BM=8, CM⊥AB, CA=4√5, C는 원호 위",
+    "imageCaption": "원 O의 현 AB 중점 M, AM=BM=8, CM⊥AB, CA=4√5, C는 원호 위",
+    "imageSize": "full"
   },
     {
       "id": 11,
@@ -531,7 +539,11 @@ window.examData = {
     "integrationPattern": "SEQUENTIAL",
     "curriculum": "2015",
     "primaryMethod": "각 원의 외점P에 대한 등접선 PA=PT=PB를 얻고 두 이등변삼각형의 각과 접점수직으로 보기들을 확인한다.",
-    "decisiveStep": "각 원의 외점P에 대한 등접선 PA=PT=PB를 얻고 두 이등변삼각형의 각과 접점수직으로 보기들을 확인한다."
+    "decisiveStep": "각 원의 외점P에 대한 등접선 PA=PT=PB를 얻고 두 이등변삼각형의 각과 접점수직으로 보기들을 확인한다.",
+    "image": "assets/images/21_연향중_2학기_중간_중3_수학/q11-problem.svg",
+    "imageAlt": "서로 외접한 두 원 O·O′의 위쪽 공통접선 AB와 접점 A·B, 공통접선 PT의 접점 T, P는 A와 B 사이",
+    "imageCaption": "서로 외접한 두 원 O·O′의 위쪽 공통접선 AB와 접점 A·B, 공통접선 PT의 접점 T, P는 A와 B 사이",
+    "imageSize": "full"
   },
     {
       "id": 12,
@@ -583,7 +595,11 @@ window.examData = {
     "integrationPattern": "CASE_BRANCH",
     "curriculum": "2015",
     "primaryMethod": "현중점수선 위에 중심이 있음을 정하고 중심이 짧은호의 반대쪽임을 위치 경우검토로 확정한다. OA=OD+5와 OA²=OD²+100을 결합해반지름을 정한다.",
-    "decisiveStep": "현중점수선 위에 중심이 있음을 정하고 중심이 짧은호의 반대쪽임을 위치 경우검토로 확정한다. OA=OD+5와 OA²=OD²+100을 결합해반지름을 정한다."
+    "decisiveStep": "현중점수선 위에 중심이 있음을 정하고 중심이 짧은호의 반대쪽임을 위치 경우검토로 확정한다. OA=OD+5와 OA²=OD²+100을 결합해반지름을 정한다.",
+    "image": "assets/images/21_연향중_2학기_중간_중3_수학/q12-problem.svg",
+    "imageAlt": "원호 AB와 현 AB, AD=DB=10, 원호 정상 C에서 중점 D로 내린 수선 CD=5",
+    "imageCaption": "원호 AB와 현 AB, AD=DB=10, 원호 정상 C에서 중점 D로 내린 수선 CD=5",
+    "imageSize": "full"
   },
     {
       "id": 13,
@@ -635,7 +651,11 @@ window.examData = {
     "integrationPattern": "SEQUENTIAL",
     "curriculum": "2015",
     "primaryMethod": "반지름5로 두접선조각8을 정해 DE=8+u,CE=8−u를 구성한다. 기존 해설은 피타고라스로u를 정한뒤 둘레26을 합하므로 그 길이복원도 근거에 보존한다.",
-    "decisiveStep": "반지름5로 두접선조각8을 정해 DE=8+u,CE=8−u를 구성한다. 기존 해설은 피타고라스로u를 정한뒤 둘레26을 합하므로 그 길이복원도 근거에 보존한다."
+    "decisiveStep": "반지름5로 두접선조각8을 정해 DE=8+u,CE=8−u를 구성한다. 기존 해설은 피타고라스로u를 정한뒤 둘레26을 합하므로 그 길이복원도 근거에 보존한다.",
+    "image": "assets/images/21_연향중_2학기_중간_중3_수학/q13-problem.svg",
+    "imageAlt": "가로13·세로10 직사각형 ABCD, 세 변에 닿는 원 O, D에서 접선 DE, 접점 T 및 E는 BC 위",
+    "imageCaption": "가로13·세로10 직사각형 ABCD, 세 변에 닿는 원 O, D에서 접선 DE, 접점 T 및 E는 BC 위",
+    "imageSize": "full"
   },
     {
       "id": 14,
@@ -914,7 +934,11 @@ window.examData = {
     "integrationPattern": "SEQUENTIAL",
     "curriculum": "2015",
     "primaryMethod": "빗변에 내린 높이의 닮음 관계 DE²=BE·EC로4를 정하고 DC를 피타고라스로 구한 후 x+y90의 여각과 세삼각비를 식에 대입한다.",
-    "decisiveStep": "빗변에 내린 높이의 닮음 관계 DE²=BE·EC로4를 정하고 DC를 피타고라스로 구한 후 x+y90의 여각과 세삼각비를 식에 대입한다."
+    "decisiveStep": "빗변에 내린 높이의 닮음 관계 DE²=BE·EC로4를 정하고 DC를 피타고라스로 구한 후 x+y90의 여각과 세삼각비를 식에 대입한다.",
+    "image": "assets/images/21_연향중_2학기_중간_중3_수학/q19-problem.svg",
+    "imageAlt": "직각 ABC에서 C→AB의 수선 CD, D→BC의 수선 DE, BE2·EC8, C의 x·y 두 각",
+    "imageCaption": "직각 ABC에서 C→AB의 수선 CD, D→BC의 수선 DE, BE2·EC8, C의 x·y 두 각",
+    "imageSize": "full"
   },
     {
       "id": 20,
@@ -959,7 +983,11 @@ window.examData = {
     "integrationPattern": "SEQUENTIAL",
     "curriculum": "2015",
     "primaryMethod": "등접선조각x를 이용해 두직각변x+6,x+9와 빗변15를 제곱합으로 연결하고 양의근3을 선택한다. 직각 꼭짓점의 접선조각이 반지름임을 이용해 OB,OC와둘레를 구한다.",
-    "decisiveStep": "등접선조각x를 이용해 두직각변x+6,x+9와 빗변15를 제곱합으로 연결하고 양의근3을 선택한다. 직각 꼭짓점의 접선조각이 반지름임을 이용해 OB,OC와둘레를 구한다."
+    "decisiveStep": "등접선조각x를 이용해 두직각변x+6,x+9와 빗변15를 제곱합으로 연결하고 양의근3을 선택한다. 직각 꼭짓점의 접선조각이 반지름임을 이용해 OB,OC와둘레를 구한다.",
+    "image": "assets/images/21_연향중_2학기_중간_중3_수학/q20-problem.svg",
+    "imageAlt": "∠A=90°인 ABC 내접원 O, 접점 D·E·F와 BE6·CE9, 반지름 수선 및 OB·OC",
+    "imageCaption": "∠A=90°인 ABC 내접원 O, 접점 D·E·F와 BE6·CE9, 반지름 수선 및 OB·OC",
+    "imageSize": "full"
   },
     {
       "id": 21,
