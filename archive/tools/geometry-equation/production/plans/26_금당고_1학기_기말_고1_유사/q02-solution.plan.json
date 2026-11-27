@@ -1,0 +1,62 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "3",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "label": "첫째 조건"
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "7",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "label": "둘째 조건"
+      },
+      {
+        "kind": "RESULT",
+        "label": "공통해"
+      }
+    ]
+  },
+  "caption": "3x−4>5와 2x+5<19의 공통해는 3<x<7이며 양 끝점은 포함하지 않는다.",
+  "accessibilityDescription": "부등식의 끝점 포함 여부와 공통 범위·정수점을 실제 수직선에 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "lower",
+      "condition": "3x−4>5에서 x>3",
+      "mappedTo": [
+        "numberLine.rows[0].pieces"
+      ]
+    },
+    {
+      "id": "upper",
+      "condition": "2x+5<19에서 x<7",
+      "mappedTo": [
+        "numberLine.rows[1].pieces"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "부등식의 끝점 포함 여부와 공통 범위·정수점을 실제 수직선에 나타낸다."
+  ],
+  "numberLineCaption": {
+    "text": "연립부등식의 교집합"
+  }
+}

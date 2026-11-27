@@ -1,0 +1,190 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "A→B→C는 2×3=6가지이고, 다른 유효 방문 순서 A→D→C(4), A→B→D→C(4), A→D→B→C(6)을 합하면 20가지다.",
+  "accessibilityDescription": "문제의 다섯 도로 묶음 및 개수를 유지하면서 한 방문 순서 A에서 B를 거쳐 C로 가는 두 선을 강조한다.",
+  "sourceConditions": [
+    {
+      "id": "graph",
+      "condition": "도로는 AB 2, AD 2, BC 3, BD 1, CD 2개이며 AC 직통은 없음",
+      "mappedTo": [
+        "displaySegments",
+        "planeMarks.expressionLabels"
+      ]
+    },
+    {
+      "id": "route",
+      "condition": "A→B→C의 두 구간을 강조, 경우의 수 2×3",
+      "mappedTo": [
+        "displaySegments[0].emphasis",
+        "displaySegments[2].emphasis"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "문제의 다섯 도로 묶음 및 개수를 유지하면서 한 방문 순서 A에서 B를 거쳐 C로 가는 두 선을 강조한다."
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 460
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "wAB",
+        "ownerSegment": "AB",
+        "text": "2"
+      },
+      {
+        "id": "wAD",
+        "ownerSegment": "AD",
+        "text": "2"
+      },
+      {
+        "id": "wBC",
+        "ownerSegment": "BC",
+        "text": "3"
+      },
+      {
+        "id": "wBD",
+        "ownerSegment": "BD",
+        "text": "1"
+      },
+      {
+        "id": "wCD",
+        "ownerSegment": "CD",
+        "text": "2"
+      }
+    ]
+  }
+}

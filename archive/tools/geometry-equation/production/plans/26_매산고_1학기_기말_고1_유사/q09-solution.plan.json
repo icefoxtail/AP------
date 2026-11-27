@@ -1,0 +1,82 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "domain": [
+      -3,
+      2
+    ],
+    "viewport": [
+      -3,
+      2,
+      0,
+      19
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        -3,
+        2
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": -3,
+        "y": 16
+      },
+      {
+        "id": "R",
+        "x": 2,
+        "y": 11
+      },
+      {
+        "id": "V",
+        "x": "-1/4",
+        "y": "7/8"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        -3,
+        2
+      ],
+      "y": [
+        11,
+        16
+      ]
+    },
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "1",
+          "2"
+        ]
+      }
+    ]
+  },
+  "caption": "g(x)=2x²+x+1은 −3≤x≤2에서 아래로 볼록해 최댓값이 끝점 x=−3의 g(−3)=16이다.",
+  "accessibilityDescription": "주어진 닫힌 정의역과 실제 포물선의 양 끝값 및 꼭짓점을 표시해 최대 끝점을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "g",
+      "condition": "2x²+x+1의 계수는 (1,1,2)",
+      "mappedTo": [
+        "graphPlan.pieces"
+      ]
+    },
+    {
+      "id": "end",
+      "condition": "g(−3)=16, g(2)=11, 꼭짓점 (−1/4,7/8)",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.sourceDomain"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 닫힌 정의역과 실제 포물선의 양 끝값 및 꼭짓점을 표시해 최대 끝점을 비교한다."
+  ],
+  "coordinatePlacement": "PANEL"
+}

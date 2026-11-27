@@ -1,0 +1,41 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "t",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "4",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "label": "양수 범위"
+      }
+    ]
+  },
+  "caption": "아래로 열린 포물선 f(t)의 영점이 −2,4이므로 양수인 구간은 −2<t<4다. t=(x−a)/2를 대입해 양 끝을 비교한다.",
+  "accessibilityDescription": "부등식의 끝점 포함 여부와 공통 범위·정수점을 실제 수직선에 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "roots",
+      "condition": "포물선이 (−2,0),(4,0)을 지나고 아래로 열리므로 f(t)>0은 −2<t<4",
+      "mappedTo": [
+        "numberLine.rows[0].pieces"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "부등식의 끝점 포함 여부와 공통 범위·정수점을 실제 수직선에 나타낸다."
+  ],
+  "numberLineCaption": {
+    "text": "포물선의 양수 구간"
+  }
+}
