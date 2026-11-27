@@ -1,0 +1,8 @@
+{
+  "capability":"piecewise-polynomial-spike-v1",
+  "graphPlan":{"family":"piecewise-polynomial","pieces":[{"coefficients":["-3","-3"]},{"coefficients":["-1","-1"]}],"breakpoints":[{"x":"-1","y":"0"}],"sourceDomain":{"kind":"ALL_REALS"},"requiredPoints":[{"id":"P","x":-1,"y":0}],"axisTickValues":{"x":[],"y":[]}},
+  "caption":"a=-2인 허용 사례: y=|x+1|−2x−2가 두 조각 모두 감소한다.",
+  "accessibilityDescription":"점 (-1,0)에서 만나는 왼쪽 기울기 -3, 오른쪽 기울기 -1의 연속 두 직선 조각이 감소한다.",
+  "sourceConditions":[{"id":"left","condition":"x<-1의 기울기 a-1=-3","mappedTo":"graphPlan.pieces.0"},{"id":"right","condition":"x≥-1의 기울기 a+1=-1","mappedTo":"graphPlan.pieces.1"}],
+  "newVisualInformation":["a<-1 조건의 감소 경우를 증가 사례와 별도 그림으로 검증한다. 면 채움은 없다."]
+}

@@ -1,0 +1,8 @@
+{
+  "capability":"sqrt-affine-spike-v1",
+  "graphPlan":{"family":"sqrt-affine","radicand":["4","3"],"sign":1,"offset":"-1","sourceDomain":{"kind":"NATURAL_SQRT_AFFINE"},"domain":[-1.3333333333333333,5],"viewport":[-3,6,-2,4],"requiredPoints":[{"id":"A","x":-1,"y":0},{"id":"B","x":0,"y":1}],"axisTickValues":{"x":[],"y":[]}},
+  "caption":"y=√(3x+4)−1의 정의역·치역, x절편과 통과 사분면",
+  "accessibilityDescription":"시작점 (-4/3,-1)과 x절편 (-1,0)을 지나 제삼·제이·제일사분면으로 이어지고 제사사분면은 지나지 않는다.",
+  "sourceConditions":[{"id":"endpoint","condition":"x≥-4/3, y≥-1","mappedTo":"graphPlan.radicand"},{"id":"crossing","condition":"x절편 -1과 y절편 1","mappedTo":"graphPlan.requiredPoints"}],
+  "newVisualInformation":["절편과 시작점을 선·점으로 나타내고 사분면에 면색을 적용하지 않는다."]
+}

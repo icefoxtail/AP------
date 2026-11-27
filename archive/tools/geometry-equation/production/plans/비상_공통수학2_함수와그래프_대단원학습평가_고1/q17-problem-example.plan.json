@@ -1,0 +1,8 @@
+{
+  "capability":"sqrt-affine-spike-v1",
+  "graphPlan":{"family":"sqrt-affine","radicand":["-4","2"],"sign":1,"offset":"1","sourceDomain":{"kind":"NATURAL_SQRT_AFFINE"},"domain":[2,11],"viewport":[-1,12,-1,7],"axisTickValues":{"x":[],"y":[]}},
+  "caption":"조건 a>0,b<0,c>0을 만족하는 예시 a=2,b=-2,c=1의 개형",
+  "accessibilityDescription":"첫 점 (2,1)이 x축과 y축의 오른쪽 위에 있고, 오른쪽 위로 증가하는 근호함수의 선을 그린다.",
+  "sourceConditions":[{"id":"boundary","condition":"시작점 x=-b>0, y=c>0","mappedTo":["graphPlan.radicand","graphPlan.offset"]},{"id":"orientation","condition":"a>0이므로 x 증가 방향으로 증가","mappedTo":"graphPlan.sign"}],
+  "newVisualInformation":["원본은 계수의 정확한 값이 없는 개형이다. 숫자는 실제 조건이 아닌 예시라고 명시하여 혼동을 피한다."]
+}
