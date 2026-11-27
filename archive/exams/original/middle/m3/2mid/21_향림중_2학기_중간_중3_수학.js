@@ -922,7 +922,11 @@ window.examData = {
     "image": "assets/images/21_향림중_2학기_중간_중3_수학/q24-problem.svg",
     "imageAlt": "C가 직각이고 빗변 AB=6인 삼각형, A의 사인값 2/3은 발문에만 주어진다",
     "imageCaption": "C가 직각이고 빗변 AB=6인 삼각형, A의 사인값 2/3은 발문에만 주어진다",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중3_수학/q24-solution.svg",
+    "solutionImageAlt": "AB=6, BC=4, AC=2√5의 세 변으로 사인·코사인·탄젠트 정의를 연결한다",
+    "solutionImageCaption": "AB=6, BC=4, AC=2√5의 세 변으로 사인·코사인·탄젠트 정의를 연결한다",
+    "solutionImageSize": "full"
   },
     {
       "id": 25,
@@ -954,7 +958,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "공급된 tan43=.93을 수평거리20에 곱해 눈높이 위의18.6을 구하고 눈높이1.8을 더한다.",
-    "decisiveStep": "공급된 tan43=.93을 수평거리20에 곱해 눈높이 위의18.6을 구하고 눈높이1.8을 더한다."
+    "decisiveStep": "공급된 tan43=.93을 수평거리20에 곱해 눈높이 위의18.6을 구하고 눈높이1.8을 더한다.",
+    "image": "assets/images/21_향림중_2학기_중간_중3_수학/q25-problem.svg",
+    "imageAlt": "20m 수평거리, 1.8m 눈높이, 올려본각 43°인 번지 점프대 개형",
+    "imageCaption": "20m 수평거리, 1.8m 눈높이, 올려본각 43°인 번지 점프대 개형",
+    "imageSize": "full"
   }
   ]
 };

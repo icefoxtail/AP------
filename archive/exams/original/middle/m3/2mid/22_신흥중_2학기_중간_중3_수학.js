@@ -434,7 +434,11 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "각B의 맞은편 변과 빗변을 대응시켜 사인의 정의를 직접 적용한다.",
-    "decisiveStep": "각B의 맞은편 변과 빗변을 대응시켜 사인의 정의를 직접 적용한다."
+    "decisiveStep": "각B의 맞은편 변과 빗변을 대응시켜 사인의 정의를 직접 적용한다.",
+    "image": "assets/images/22_신흥중_2학기_중간_중3_수학/q7-problem.svg",
+    "imageAlt": "직각 C의 8-15-17 삼각형. 원본 손 SVG의 불필요한 흰 사각형을 배제한다.",
+    "imageCaption": "직각 C의 8-15-17 삼각형. 원본 손 SVG의 불필요한 흰 사각형을 배제한다.",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -618,7 +622,11 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "두 직각삼각형의 공통 높이를 먼저 sin45°로 구한 뒤 sin60° 관계로 목표변을 구한다.",
-    "decisiveStep": "두 직각삼각형의 공통 높이를 먼저 sin45°로 구한 뒤 sin60° 관계로 목표변을 구한다."
+    "decisiveStep": "두 직각삼각형의 공통 높이를 먼저 sin45°로 구한 뒤 sin60° 관계로 목표변을 구한다.",
+    "image": "assets/images/22_신흥중_2학기_중간_중3_수학/q10-problem.svg",
+    "imageAlt": "원본 AB=3√2 cm, 밑각 45°·60°와 보조 높이 AD⊥BC를 모두 표시한다.",
+    "imageCaption": "원본 AB=3√2 cm, 밑각 45°·60°와 보조 높이 AD⊥BC를 모두 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 11,
@@ -682,7 +690,11 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "직선의 절편에서 두 직각변을 복원하고 피타고라스로 빗변을 구한 다음 세 삼각비의 곱을 계산한다.",
-    "decisiveStep": "직선의 절편에서 두 직각변을 복원하고 피타고라스로 빗변을 구한 다음 세 삼각비의 곱을 계산한다."
+    "decisiveStep": "직선의 절편에서 두 직각변을 복원하고 피타고라스로 빗변을 구한 다음 세 삼각비의 곱을 계산한다.",
+    "image": "assets/images/22_신흥중_2학기_중간_중3_수학/q11-problem.svg",
+    "imageAlt": "일차함수 y=x/2+4의 x절편 A(-8,0), y절편 B(0,4), 좌표축과 a·b 각 호.",
+    "imageCaption": "일차함수 y=x/2+4의 x절편 A(-8,0), y절편 B(0,4), 좌표축과 a·b 각 호.",
+    "imageSize": "full"
   },
   {
     "id": 12,
@@ -746,7 +758,11 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "탑의 공통 높이를x로 두고 서로 반대편 두 관측점의 거리를x/√3과x로 나타내어 그 합10인 방정식을 세운다.",
-    "decisiveStep": "탑의 공통 높이를x로 두고 서로 반대편 두 관측점의 거리를x/√3과x로 나타내어 그 합10인 방정식을 세운다."
+    "decisiveStep": "탑의 공통 높이를x로 두고 서로 반대편 두 관측점의 거리를x/√3과x로 나타내어 그 합10인 방정식을 세운다.",
+    "image": "assets/images/22_신흥중_2학기_중간_중3_수학/q12-problem.svg",
+    "imageAlt": "탑 꼭대기 A, 밑 D, 두 관측점 B·C의 60°·45° 및 간격 10m를 무채움 삼각도로 옮긴다.",
+    "imageCaption": "탑 꼭대기 A, 밑 D, 두 관측점 B·C의 60°·45° 및 간격 10m를 무채움 삼각도로 옮긴다.",
+    "imageSize": "full"
   },
   {
     "id": 13,
@@ -810,7 +826,11 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "대각선으로 사각형을 두 삼각형으로 나누고 각각의 높이를 사인으로 만들어 두 넓이를 더한다.",
-    "decisiveStep": "대각선으로 사각형을 두 삼각형으로 나누고 각각의 높이를 사인으로 만들어 두 넓이를 더한다."
+    "decisiveStep": "대각선으로 사각형을 두 삼각형으로 나누고 각각의 높이를 사인으로 만들어 두 넓이를 더한다.",
+    "image": "assets/images/22_신흥중_2학기_중간_중3_수학/q13-problem.svg",
+    "imageAlt": "사각형 네 변 4·2√3·6·8 cm와 150°·60°, 넓이를 나누는 대각선 AC.",
+    "imageCaption": "사각형 네 변 4·2√3·6·8 cm와 150°·60°, 넓이를 나누는 대각선 AC.",
+    "imageSize": "full"
   },
   {
     "id": 14,
@@ -874,7 +894,11 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "원주각에서 중심각을 구해 부채꼴 넓이를 얻고, 두 반지름의 합동 직각삼각형에서 sin·cos로 밑변과 높이를 구해 삼각형 넓이를 더한다.",
-    "decisiveStep": "원주각에서 중심각을 구해 부채꼴 넓이를 얻고, 두 반지름의 합동 직각삼각형에서 sin·cos로 밑변과 높이를 구해 삼각형 넓이를 더한다."
+    "decisiveStep": "원주각에서 중심각을 구해 부채꼴 넓이를 얻고, 두 반지름의 합동 직각삼각형에서 sin·cos로 밑변과 높이를 구해 삼각형 넓이를 더한다.",
+    "image": "assets/images/22_신흥중_2학기_중간_중3_수학/q14-problem.svg",
+    "imageAlt": "반원 AB, ∠ABC=30°와 색칠한 부채꼴 AOC∪삼각형 OCB만 필수 음영으로 유지한다.",
+    "imageCaption": "반원 AB, ∠ABC=30°와 색칠한 부채꼴 AOC∪삼각형 OCB만 필수 음영으로 유지한다.",
+    "imageSize": "full"
   },
   {
     "id": 15,
@@ -933,7 +957,11 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "접기에서 보존되는 두 변의 상등과45° 이등변직각삼각형으로 밑변6√2를 복원하고 주어진 높이6으로 넓이를 구한다.",
-    "decisiveStep": "접기에서 보존되는 두 변의 상등과45° 이등변직각삼각형으로 밑변6√2를 복원하고 주어진 높이6으로 넓이를 구한다."
+    "decisiveStep": "접기에서 보존되는 두 변의 상등과45° 이등변직각삼각형으로 밑변6√2를 복원하고 주어진 높이6으로 넓이를 구한다.",
+    "image": "assets/images/22_신흥중_2학기_중간_중3_수학/q15-problem.svg",
+    "imageAlt": "접힌 종이의 직사각형 윤곽과 접힘 선 AB·BC, 높이 6cm, ∠ABC=45°를 표식으로 복원한다.",
+    "imageCaption": "접힌 종이의 직사각형 윤곽과 접힘 선 AB·BC, 높이 6cm, ∠ABC=45°를 표식으로 복원한다.",
+    "imageSize": "full"
   },
   {
     "id": 16,
@@ -1320,6 +1348,10 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "sin60°로 높이를 구해 넓이식에서 밑변을 역산하고 cos60°의 사영 길이를 빼서 만든 직각삼각형에 피타고라스를 적용한다.",
-    "decisiveStep": "sin60°로 높이를 구해 넓이식에서 밑변을 역산하고 cos60°의 사영 길이를 빼서 만든 직각삼각형에 피타고라스를 적용한다."
+    "decisiveStep": "sin60°로 높이를 구해 넓이식에서 밑변을 역산하고 cos60°의 사영 길이를 빼서 만든 직각삼각형에 피타고라스를 적용한다.",
+    "image": "assets/images/22_신흥중_2학기_중간_중3_수학/q22-problem.svg",
+    "imageAlt": "△ABC에서 BC=5cm, B=60°, 원문 삼각형 넓이 10√3 cm²와 높이 AH의 관계.",
+    "imageCaption": "△ABC에서 BC=5cm, B=60°, 원문 삼각형 넓이 10√3 cm²와 높이 AH의 관계.",
+    "imageSize": "full"
   }
 ];

@@ -157,7 +157,11 @@ window.questionBank = [
 ,
     "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
     "primaryMethod": "두 기준 포물선 사이의 영역을 y=ax²의 계수 범위로 바꾼다.",
-    "decisiveStep": "x≠0에서 −x²/2<ax²<x²를 양수 x²로 나누면 −1/2<a<1이다."
+    "decisiveStep": "x≠0에서 −x²/2<ax²<x²를 양수 x²로 나누면 −1/2<a<1이다.",
+    "image": "assets/images/20_신흥중_2학기_중간_중3_수학/q2-problem.svg",
+    "imageAlt": "y=x²와 y=-x²/2의 두 포물선 및 양옆 사이의 원본 어두운 영역",
+    "imageCaption": "y=x²와 y=-x²/2의 두 포물선 및 양옆 사이의 원본 어두운 영역",
+    "imageSize": "full"
   },
 {
   "id": 3,
@@ -315,7 +319,11 @@ window.questionBank = [
 ,
     "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
     "primaryMethod": "그래프의 열리는 방향과 y절편의 위치로 계수 부호를 읽는다.",
-    "decisiveStep": "아래로 열림에서 a<0, y축과 만나는 점이 위에 있어 q>0이다."
+    "decisiveStep": "아래로 열림에서 a<0, y축과 만나는 점이 위에 있어 q>0이다.",
+    "image": "assets/images/20_신흥중_2학기_중간_중3_수학/q4-problem.svg",
+    "imageAlt": "아래로 열리는 이차함수의 그래프는 y절편이 양수이며 축은 y축이다.",
+    "imageCaption": "아래로 열리는 이차함수의 그래프는 y절편이 양수이며 축은 y축이다.",
+    "imageSize": "full"
   },
 {
   "id": 5,
@@ -856,7 +864,11 @@ window.questionBank = [
 ,
     "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
     "primaryMethod": "포물선의 열림과 꼭짓점의 사분면을 매개변수 부호로 번역한다.",
-    "decisiveStep": "꼭짓점 (−p,−q)이 제2사분면에 있으므로 p>0,q<0이고 a<0이다."
+    "decisiveStep": "꼭짓점 (−p,−q)이 제2사분면에 있으므로 p>0,q<0이고 a<0이다.",
+    "image": "assets/images/20_신흥중_2학기_중간_중3_수학/q11-problem.svg",
+    "imageAlt": "꼭짓점이 y축 왼쪽·x축 위이고 아래로 열리는 이차함수 y=a(x+p)^2-q.",
+    "imageCaption": "꼭짓점이 y축 왼쪽·x축 위이고 아래로 열리는 이차함수 y=a(x+p)^2-q.",
+    "imageSize": "full"
   },
 {
   "id": 12,
@@ -1248,7 +1260,11 @@ window.questionBank = [
 ,
     "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
     "primaryMethod": "좌표축과 포물선의 교점을 구해 삼각형의 밑변과 높이로 해석한다.",
-    "decisiveStep": "근 −4,2에서 밑변 6, y절편 8에서 높이 8을 얻어 넓이 24를 계산한다."
+    "decisiveStep": "근 −4,2에서 밑변 6, y절편 8에서 높이 8을 얻어 넓이 24를 계산한다.",
+    "image": "assets/images/20_신흥중_2학기_중간_중3_수학/q16-problem.svg",
+    "imageAlt": "y=-x²-2x+8의 x절편 A(-4,0), B(2,0), y절편 C(0,8), 삼각형 ABC.",
+    "imageCaption": "y=-x²-2x+8의 x절편 A(-4,0), B(2,0), y절편 C(0,8), 삼각형 ABC.",
+    "imageSize": "full"
   },
 {
   "id": 17,
@@ -1406,7 +1422,11 @@ window.questionBank = [
 ,
     "conceptClusterKey": "TRIG_RATIO",
     "primaryMethod": "큰 직각삼각형에서 중점까지의 길이를 얻고 작은 직각삼각형의 코사인을 구한다.",
-    "decisiveStep": "BC=2√2, BD=√2, AD=√3이므로 cosx=AB/AD=1/√3이다."
+    "decisiveStep": "BC=2√2, BD=√2, AD=√3이므로 cosx=AB/AD=1/√3이다.",
+    "image": "assets/images/20_신흥중_2학기_중간_중3_수학/q18-problem.svg",
+    "imageAlt": "각 B가 직각인 ABC에서 AB=1, AC=3, D는 BC의 중점이며 BAD=x.",
+    "imageCaption": "각 B가 직각인 ABC에서 AB=1, AC=3, D는 BC의 중점이며 BAD=x.",
+    "imageSize": "full"
   },
 {
   "id": 19,
@@ -1561,7 +1581,11 @@ window.questionBank = [
 ,
     "conceptClusterKey": "TRIG_RATIO",
     "primaryMethod": "단위원의 두 직각삼각형과 여각 관계로 선분에 해당하는 삼각비를 비교한다.",
-    "decisiveStep": "OA=OD=1이므로 AB=sinx,OB=cosx,CD=tanx이며 y=90°−x이다."
+    "decisiveStep": "OA=OD=1이므로 AB=sinx,OB=cosx,CD=tanx이며 y=90°−x이다.",
+    "image": "assets/images/20_신흥중_2학기_중간_중3_수학/q20-problem.svg",
+    "imageAlt": "반지름 1인 사분원, 호 위 A, 수선 AB, 접선 CD, x·y와 두 직각.",
+    "imageCaption": "반지름 1인 사분원, 호 위 A, 수선 AB, 접선 CD, x·y와 두 직각.",
+    "imageSize": "full"
   },
 {
   "id": 21,
@@ -1634,7 +1658,11 @@ window.questionBank = [
 ,
     "conceptClusterKey": "TRIG_RATIO",
     "primaryMethod": "주어진 사인과 빗변으로 두 직각변을 구한 뒤 각 소문항의 비를 계산한다.",
-    "decisiveStep": "BC=6,AB=2√7를 공통으로 사용하면 cosA=sinC=√7/4,tanA=3/√7이다."
+    "decisiveStep": "BC=6,AB=2√7를 공통으로 사용하면 cosA=sinC=√7/4,tanA=3/√7이다.",
+    "image": "assets/images/20_신흥중_2학기_중간_중3_수학/q21-problem.svg",
+    "imageAlt": "직각삼각형 ABC의 B 직각, 빗변 AC=8과 sin A=3/4.",
+    "imageCaption": "직각삼각형 ABC의 B 직각, 빗변 AC=8과 sin A=3/4.",
+    "imageSize": "full"
   },
 {
   "id": 22,

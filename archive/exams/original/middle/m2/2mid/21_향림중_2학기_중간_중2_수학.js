@@ -470,7 +470,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "x절편 좌표와 기울기로 y절편 결정",
-    "decisiveStep": "x절편을 y=0인 점으로 읽어 주어진 기울기의 식에 넣고 상수항을 정한다."
+    "decisiveStep": "x절편을 y=0인 점으로 읽어 주어진 기울기의 식에 넣고 상수항을 정한다.",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중2_수학/q4-solution.svg",
+    "solutionImageAlt": "x절편 5/2에서 0=−2×5/2+b이므로 b=5이고 y절편은 5이다.",
+    "solutionImageCaption": "x절편 5/2에서 0=−2×5/2+b이므로 b=5이고 y절편은 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -501,7 +505,15 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "그래프의 기울기 판독과 계수 대응",
-    "decisiveStep": "실제 그래프의 두 절편에서 기울기를 읽고 y=ax-1의 x계수와 같은 값으로 대응한다."
+    "decisiveStep": "실제 그래프의 두 절편에서 기울기를 읽고 y=ax-1의 x계수와 같은 값으로 대응한다.",
+    "image": "assets/images/21_향림중_2학기_중간_중2_수학/q5-problem.svg",
+    "imageAlt": "그림의 직선은 y축의 3과 x축의 1을 지난다. 이 직선의 기울기와 평행한 다른 직선을 비교한다.",
+    "imageCaption": "그림의 직선은 y축의 3과 x축의 1을 지난다. 이 직선의 기울기와 평행한 다른 직선을 비교한다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중2_수학/q5-solution.svg",
+    "solutionImageAlt": "두 절편 (0,3), (1,0)에서 기울기는 (0−3)/(1−0)=−3으로 구한다.",
+    "solutionImageCaption": "두 절편 (0,3), (1,0)에서 기울기는 (0−3)/(1−0)=−3으로 구한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -532,7 +544,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "두 선행 직선의 축 위 교점으로 목표 직선 결정",
-    "decisiveStep": "첫 직선의 x절편과 둘째 직선의 y절편을 좌표로 정해 두 점을 지나는 직선을 세운다."
+    "decisiveStep": "첫 직선의 x절편과 둘째 직선의 y절편을 좌표로 정해 두 점을 지나는 직선을 세운다.",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중2_수학/q6-solution.svg",
+    "solutionImageAlt": "원래 두 직선의 x·y절편 중 (2,0), (0,−3)을 연결하여 기울기 3/2의 일차함수를 얻는다.",
+    "solutionImageCaption": "원래 두 직선의 x·y절편 중 (2,0), (0,−3)을 연결하여 기울기 3/2의 일차함수를 얻는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -563,7 +579,15 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "그래프의 감소와 y절편 부호 판독",
-    "decisiveStep": "그림에서 감소 방향과 음의 y절편을 읽고 식의 -b 부호를 b의 부호로 바꾼다."
+    "decisiveStep": "그림에서 감소 방향과 음의 y절편을 읽고 식의 -b 부호를 b의 부호로 바꾼다.",
+    "image": "assets/images/21_향림중_2학기_중간_중2_수학/q7-problem.svg",
+    "imageAlt": "기울기가 음수이고 y절편도 음수인 일차함수 y=ax−b의 개형이다. 숫자 절편은 원문에서 주어지지 않았으므로 주장하지 않는다.",
+    "imageCaption": "기울기가 음수이고 y절편도 음수인 일차함수 y=ax−b의 개형이다. 숫자 절편은 원문에서 주어지지 않았으므로 주장하지 않는다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중2_수학/q7-solution.svg",
+    "solutionImageAlt": "기울기 a는 음수이고 y절편 −b도 음수이다. 개형 위의 y=ax−b는 원문 식이며 수치 절편을 주장하지 않는다.",
+    "solutionImageCaption": "기울기 a는 음수이고 y절편 −b도 음수이다. 개형 위의 y=ax−b는 원문 식이며 수치 절편을 주장하지 않는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -594,7 +618,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "두 점의 좌표 차로 직선식 결정",
-    "decisiveStep": "두 점에서 기울기를 구한 뒤 한 점을 대입해 상수항을 정한다."
+    "decisiveStep": "두 점에서 기울기를 구한 뒤 한 점을 대입해 상수항을 정한다.",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중2_수학/q8-solution.svg",
+    "solutionImageAlt": "두 점 (1,1), (4,−2)를 잇는 직선의 기울기는 −1이고 식은 y=−x+2이다.",
+    "solutionImageCaption": "두 점 (1,1), (4,−2)를 잇는 직선의 기울기는 −1이고 식은 y=−x+2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -656,7 +684,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "두 직선 교점과 y축 절편의 삼각형 넓이",
-    "decisiveStep": "두 직선의 교점과 y축의 두 절편을 찾아 수직 밑변 길이와 수평 높이로 넓이를 정한다."
+    "decisiveStep": "두 직선의 교점과 y축의 두 절편을 찾아 수직 밑변 길이와 수평 높이로 넓이를 정한다.",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중2_수학/q10-solution.svg",
+    "solutionImageAlt": "y=−x−3, y=x/4+2, x=0의 교점 세 개를 연결하면 밑변 5, 높이 4의 삼각형이 된다.",
+    "solutionImageCaption": "y=−x−3, y=x/4+2, x=0의 교점 세 개를 연결하면 밑변 5, 높이 4의 삼각형이 된다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
