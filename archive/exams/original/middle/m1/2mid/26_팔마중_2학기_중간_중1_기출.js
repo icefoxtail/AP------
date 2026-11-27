@@ -153,7 +153,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "그림에서 AD=3cm, DC=4cm, AB=5cm, BC=6cm이다.\nㄱ. 그림의 직각 표시로 AD⊥ DC이므로 참이다.\nㄴ. AB는 비스듬하고 DC는 수직이므로 서로 평행하지 않아 거짓이다.\nㄷ. DC에 수직인 수평선이 B를 지나면 C를 지나므로 참이다.\nㄹ. D에서 BC까지의 거리는 높이 DC=4cm이고 AB=5cm이므로 거짓이다.\n따라서 옳은 것은 ㄱ, ㄷ이며 정답은 ②이다.",
-    "image": "assets/images/26_팔마중_2학기_중간_중1_기출/q03.png",
+    "image": "assets/images/26_팔마중_2학기_중간_중1_기출/q3-problem.svg",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -191,7 +191,10 @@ window.questionBank = [
     "decisiveStep": "비스듬한 변과 높이를 구별하여 거리 진술이 성립하는지 확인한다.",
     "canonicalBindingStatus": "ACTIVE",
     "rpmCrosswalkStatus": "DIRECT_ACTIVE",
-    "runtimeMaterializationStatus": "ACTIVE_BOUND"
+    "runtimeMaterializationStatus": "ACTIVE_BOUND",
+    "imageAlt": "AB가 기울어지고 AD와 BC가 평행한 사각형 ABCD와 네 변의 길이, C·D의 직각 표시",
+    "imageCaption": "AB가 기울어지고 AD와 BC가 평행한 사각형 ABCD와 네 변의 길이, C·D의 직각 표시",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -283,7 +286,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "L은 AB의 중점이므로 AL=LB=20÷2=10cm이다.\nM은 AL의 중점이므로 AM=ML=10÷2=5cm이다.\nN은 MB의 중점이다. MB=ML+LB=5+10=15cm이므로 MN=NB=15÷2=7.5cm이다.\n점의 순서는 A,M,L,N,B이므로 AN=AM+MN=5+7.5=12.5cm이다. 정답은 ⑤이다.",
-    "image": "assets/images/26_팔마중_2학기_중간_중1_기출/q05.png",
+    "image": "assets/images/26_팔마중_2학기_중간_중1_기출/q5-problem.svg",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -321,7 +324,10 @@ window.questionBank = [
     "decisiveStep": "앞서 구한 반선분을 다음 중점의 기준 구간에 반영하고 목표 선분을 합한다.",
     "canonicalBindingStatus": "ACTIVE",
     "rpmCrosswalkStatus": "DIRECT_ACTIVE",
-    "runtimeMaterializationStatus": "ACTIVE_BOUND"
+    "runtimeMaterializationStatus": "ACTIVE_BOUND",
+    "imageAlt": "한 직선 위 A, M, L, N, B의 순서와 전체 길이 AB 20cm",
+    "imageCaption": "한 직선 위 A, M, L, N, B의 순서와 전체 길이 AB 20cm",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -1461,7 +1467,7 @@ window.questionBank = [
     "choices": [],
     "answer": "16 cm²",
     "solution": "정사각형 ABCD의 중심은 E이다. 색칠한 부분은 삼각형 EJC와 삼각형 ECI로 이루어진다.\n삼각형 EDJ와 삼각형 ECI를 비교한다. 정사각형의 중심에서 꼭짓점까지의 길이는 같으므로 ED=EC이다. 정사각형의 대각선은 꼭짓점의 각을 반으로 나누므로 ∠EDJ=∠ECI=45°이다. 또 ∠DEJ와 ∠CEI는 각각 서로 수직인 두 대응 방향 사이의 각이므로 크기가 같다. 따라서 △EDJ≅△ECI이고 두 삼각형의 넓이는 같다.\n색칠한 넓이 = 넓이 △EDC − 넓이 △EDJ + 넓이 △ECI = 넓이 △EDC이다.\n정사각형 ABCD의 넓이는 8×8=64cm²이고 대각선은 이를 넓이가 같은 네 삼각형으로 나누므로 넓이 △EDC=64÷4=16cm²이다.",
-    "image": "assets/images/26_팔마중_2학기_중간_중1_기출/q24.png",
+    "image": "assets/images/26_팔마중_2학기_중간_중1_기출/q24-problem.svg",
     "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
     "subUnit": "작도와 합동",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -1503,6 +1509,9 @@ window.questionBank = [
     "decisiveStep": "중심에서 두 꼭짓점까지 같은 변과 그 양 끝의 같은 각으로 ASA 합동을 확정하고, 빼고 더하는 두 조각의 넓이를 상쇄한다.",
     "canonicalBindingStatus": "ACTIVE",
     "rpmCrosswalkStatus": "DIRECT_ACTIVE",
-    "runtimeMaterializationStatus": "ACTIVE_BOUND"
+    "runtimeMaterializationStatus": "ACTIVE_BOUND",
+    "imageAlt": "정사각형 ABCD와 중심 E에서 시작하는 정사각형 EFGH, 겹쳐 색칠한 부분",
+    "imageCaption": "정사각형 ABCD와 중심 E에서 시작하는 정사각형 EFGH, 겹쳐 색칠한 부분",
+    "imageSize": "full"
   }
 ];
