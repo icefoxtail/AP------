@@ -1,0 +1,66 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      4
+    ],
+    "viewport": [
+      -2.5,
+      4.5,
+      -2,
+      5.5
+    ],
+    "requiredPoints": [
+      {
+        "id": "X1",
+        "x": -1,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 1,
+        "y": 4
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "axis",
+          "x": "1"
+        }
+      ]
+    },
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "2",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": []
+  },
+  "caption": "동산중 8번 문제: 축이 x=1이고 한 x절편이 -1이며 위로 볼록한 이차함수의 그래프",
+  "accessibilityDescription": "동산중 8번 문제: 축이 x=1이고 한 x절편이 -1이며 위로 볼록한 이차함수의 그래프",
+  "newVisualInformation": [
+    "동산중 8번 문제: 축이 x=1이고 한 x절편이 -1이며 위로 볼록한 이차함수의 그래프"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림은 축의 방정식이 $x = 1$이고 한 $x$절편이 $-1$인 이차함수 $y = ax^2 + bx + c$의 그래프이다. 다음 중 옳지 않은 것은?",
+      "mappedTo": "CURRENT_EXAM_TEXT_AND_GEOMETRY"
+    },
+    {
+      "id": "problem",
+      "condition": "그림은 축의 방정식이 $x = 1$이고 한 $x$절편이 $-1$인 이차함수 $y = ax^2 + bx + c$의 그래프이다. 다음 중 옳지 않은 것은?",
+      "mappedTo": "PROBLEM_AXIS_INDEPENDENT_REVIEW"
+    }
+  ]
+}
