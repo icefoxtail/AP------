@@ -1,0 +1,270 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-9400000",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9400000",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "125",
+              "denominator": "47"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5875",
+              "denominator": "1417"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-3960",
+              "denominator": "1417"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O",
+    "F",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angle0",
+        "refs": [
+          "A",
+          "F",
+          "D"
+        ],
+        "value": 118,
+        "label": "118",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angle1",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 62,
+        "label": "62",
+        "arcs": 1,
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "caption": "해설: 직각삼각형 DEF에서 ∠BDC=28°, ∠BCD=124°, ∠ACB=62°. ∠DFE=62°, 직각삼각형 DEF에서 ∠FDE=28°.",
+  "accessibilityDescription": "해설용: 직각삼각형 DEF에서 ∠BDC=28°, ∠BCD=124°, ∠ACB=62°.; 원문의 점선·길이·각·점 표기 유지.",
+  "newVisualInformation": [
+    "마름모 ABCD",
+    "AE⊥CD, AE∩BD=F",
+    "각 AFD=118°",
+    "두 대각선 AC, BD"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "마름모 $ABCD$의 꼭짓점 $A$에서 변 $CD$에 내린 수선의 발을 $E$라고 하고, 선분 $AE$와 대각선 $BD$의 교점을 $F$라고 하자. $\\angle AFD = 118^\\circ$일 때, $\\angle ACB$의 크기는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "A",
+        "E",
+        "D"
+      ]
+    }
+  ]
+}

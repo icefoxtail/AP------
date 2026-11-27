@@ -1,0 +1,176 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "11329370",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8693330",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2329370",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8693330",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angle0",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 75,
+        "label": "5t",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angle1",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 105,
+        "label": "7t",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "caption": "원문 조건 기반 중등 유사 기하 도형: 평행사변형 ABCD; 이웃각 A:B=5:7.",
+  "accessibilityDescription": "도형의 점·선·각·길이를 전부 표시. 평행사변형 ABCD; 이웃각 A:B=5:7.",
+  "newVisualInformation": [
+    "평행사변형 ABCD",
+    "이웃각 A:B=5:7"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "평행사변형 $ABCD$에서 $\\angle A$와 $\\angle B$의 크기의 비가 $5 : 7$일 때, $\\angle A + \\angle C$의 크기는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

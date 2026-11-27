@@ -1,0 +1,188 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "6072949",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9006600",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2927051",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9006600",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angle0",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 72,
+        "label": "2t",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angle1",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 108,
+        "label": "3t",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "derived_angle_2",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "label": "108",
+        "value": 108,
+        "arcs": 1,
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "caption": "해설: 인접각 B=72°, C=108°이고 대각 A=C=108°. 이웃각의 합 180°에서 2t+3t=180°, t=36°.",
+  "accessibilityDescription": "해설용: 인접각 B=72°, C=108°이고 대각 A=C=108°.; 원문의 점선·길이·각·점 표기 유지.",
+  "newVisualInformation": [
+    "평행사변형 ABCD",
+    "인접한 각 B:C=2:3"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "평행사변형 $ABCD$에서 이웃하는 두 내각의 크기의 비가 $\\angle B : \\angle C = 2 : 3$일 때, $\\angle A$의 크기는? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
