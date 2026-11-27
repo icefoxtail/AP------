@@ -1,0 +1,37 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "P"
+      },
+      {
+        "id": "Q"
+      }
+    ]
+  },
+  "caption": "p가 ¬q의 필요조건이므로 Qᶜ⊆P이며 따라서 P∪Q=U이다. 두 집합의 합집합이 전체집합을 덮는다.",
+  "accessibilityDescription": "전체집합 U 안에 두 집합 P,Q를 표시한 벤다이어그램이며 빈 원소나 임의 원소·면 채움은 추가하지 않는다.",
+  "newVisualInformation": [
+    "Qᶜ⊆P의 집합 관계를 위한 P,Q의 외곽선",
+    "임의의 원소·면 채움 배제",
+    "ENGINE_CAPABILITY_PENDING: Q의 여집합을 P 안에 강제하는 COMPLEMENT_SUBSET 또는 P∪Q=U 전체 덮기 VENN 레이아웃 필요"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "전체집합 U, 두 진리집합 P,Q",
+      "mappedTo": [
+        "diagram.sets"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "Qᶜ⊆P의 논리 결론 P∪Q=U",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "-3",
+      "-2"
+    ],
+    "denominator": [
+      "-1",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -6,
+      8
+    ],
+    "viewport": [
+      -6,
+      8,
+      -7,
+      8
+    ],
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": 0,
+        "y": 3
+      },
+      {
+        "id": "Q",
+        "x": 6,
+        "y": -3
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "6"
+      ],
+      "y": [
+        "-2",
+        "3",
+        "-3"
+      ]
+    },
+    "asymptoteLabelAt": "END"
+  },
+  "pointNames": {
+    "P": "P",
+    "Q": "Q"
+  },
+  "caption": "a=−2,b=−3,c=−1에서 f(x)=(−2x−3)/(x−1)이고 Q(6,−3)에서 f(6)=−3이다.",
+  "accessibilityDescription": "점근선 x=1,y=−2와 주어진 P(0,3), 계산한 Q(6,−3)를 갖는 유리함수 그림이다.",
+  "newVisualInformation": [
+    "문항 그림의 점근선·P 유지",
+    "해설 계산점 Q(6,-3) 추가"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=(-2x-3)/(x-1)",
+      "mappedTo": [
+        "graphPlan.numerator",
+        "graphPlan.denominator"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "f(6)=-3, P=(0,3)",
+      "mappedTo": [
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      8,
+      -18,
+      7
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LINE",
+        "coefficients": [
+          "7",
+          "-3"
+        ],
+        "domain": [
+          "2",
+          "8"
+        ],
+        "color": "BLUE",
+        "label": "y=-3x+7"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": [
+        "1"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "2",
+          "y": "1"
+        }
+      ],
+      "guides": [
+        {
+          "id": "gP",
+          "from": "P",
+          "axis": "BOTH"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "P": "P"
+  },
+  "caption": "X=[2,∞)에서 Y=(−∞,1]로의 일대일대응은 기울기 −3의 직선 y=−3x+7이다. 시작점 P(2,1)에서 감소한다.",
+  "accessibilityDescription": "x=2,y=1 경계점 P에서 시작해 오른쪽 아래로 감소하는 직선과 두 축의 보조점선이 있다.",
+  "newVisualInformation": [
+    "경계점 (2,1)의 닫힌 표시",
+    "우하향 직선과 치역 y≤1"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x≥2,y≤1의 일대일대응",
+      "mappedTo": [
+        "graphPlan.curves"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "a=-3, f(2)=1",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.overlays.points"
+      ]
+    }
+  ]
+}

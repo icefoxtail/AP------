@@ -1,0 +1,70 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "0",
+      "3"
+    ],
+    "denominator": [
+      "-2",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -7,
+      8
+    ],
+    "viewport": [
+      -7,
+      8,
+      -4,
+      9
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": [
+        "3"
+      ]
+    },
+    "asymptoteLabelAt": "END"
+  },
+  "pointNames": {
+    "O": "O"
+  },
+  "caption": "a의 최솟값 3일 때 y=6/(x−2)+3=3x/(x−2)이다. x<0에서 y>0이므로 제3사분면은 지나지 않고 원점을 지난다.",
+  "accessibilityDescription": "x=2,y=3의 점선 점근선, 원점 O(0,0)을 통과하는 왼쪽 유리곡선과 오른쪽 가지를 보여 준다.",
+  "newVisualInformation": [
+    "a=3의 두 점근선",
+    "원점과 제3사분면 비통과"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=6/(x-2)+3",
+      "mappedTo": [
+        "graphPlan.numerator",
+        "graphPlan.denominator"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "x<0에서 y>0이고 f(0)=0",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.viewport"
+      ]
+    }
+  ]
+}

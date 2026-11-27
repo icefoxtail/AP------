@@ -1,0 +1,141 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "1/2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      6
+    ],
+    "viewport": [
+      -4,
+      6,
+      -3,
+      8
+    ],
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "2"
+      ]
+    },
+    "overlays": {
+      "circles": [
+        {
+          "id": "C",
+          "center": [
+            "1",
+            "2"
+          ],
+          "radiusSquared": "10"
+        }
+      ],
+      "points": [
+        {
+          "id": "O",
+          "x": "1",
+          "y": "2"
+        },
+        {
+          "id": "A",
+          "x": "-2",
+          "y": "1",
+          "onCircle": "C"
+        },
+        {
+          "id": "B",
+          "x": "4",
+          "y": "3",
+          "onCircle": "C"
+        },
+        {
+          "id": "P",
+          "x": "0",
+          "y": "5",
+          "onCircle": "C"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "AP",
+          "from": "A",
+          "to": "P"
+        },
+        {
+          "id": "BP",
+          "from": "B",
+          "to": "P"
+        }
+      ],
+      "rightAngles": [
+        {
+          "at": "P",
+          "from": [
+            "A",
+            "B"
+          ]
+        }
+      ],
+      "callouts": [
+        {
+          "id": "diam",
+          "point": "B",
+          "text": "AB=2√10",
+          "labelKind": "MATH",
+          "direction": "SE"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "O": "O",
+    "A": "A",
+    "B": "B",
+    "P": "P"
+  },
+  "caption": "AB를 지름으로 하는 원의 중심 O(1,2), 반지름 √10이다. k=−10을 대표로 선택하면 직선 y=(x+10)/2 위 P(0,5)에서 ∠APB=90°. 정수 k 범위 −10≤k≤4의 합은 −45다.",
+  "accessibilityDescription": "중심 O(1,2)와 원 위 A(−2,1), B(4,3), P(0,5)를 연결한 삼각형, AB 지름, P의 직각 표식, 직선 x−2y=−10, 길이 AB=2√10이 있다.",
+  "newVisualInformation": [
+    "원과 지름·직각 표식",
+    "한 예 k=-10의 직선과 점 P, AB 길이"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A(-2,1),B(4,3)에서 중심 (1,2),반지름²=10",
+      "mappedTo": [
+        "graphPlan.overlays.circles",
+        "graphPlan.overlays.segments"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "예시 k=-10에서 P(0,5)는 원과 직선 위이며 직각",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.overlays.points",
+        "graphPlan.overlays.rightAngles",
+        "graphPlan.overlays.callouts"
+      ]
+    }
+  ]
+}

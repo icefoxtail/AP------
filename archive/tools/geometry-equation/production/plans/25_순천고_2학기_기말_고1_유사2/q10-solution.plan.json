@@ -1,0 +1,167 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "2"
+        ],
+        "domain": [
+          "1",
+          "2"
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "2",
+          "1"
+        ],
+        "domain": [
+          "2",
+          "4"
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0",
+          "3/2"
+        ],
+        "domain": [
+          "4",
+          "6"
+        ],
+        "start": "CLOSED",
+        "end": "CLOSED"
+      }
+    ],
+    "functionName": "f",
+    "xWindow": [
+      0,
+      10
+    ],
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTickLabels": {
+      "x": {
+        "1": "a",
+        "2": "b",
+        "4": "c",
+        "6": "d",
+        "9": "e"
+      },
+      "y": {
+        "1": "a",
+        "2": "b",
+        "4": "c",
+        "6": "d",
+        "9": "e"
+      }
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "yx",
+          "slope": "1",
+          "intercept": "0",
+          "label": "y=x"
+        }
+      ],
+      "points": [
+        {
+          "id": "Pa",
+          "x": "1",
+          "y": "2",
+          "unnamed": true
+        },
+        {
+          "id": "Pb",
+          "x": "2",
+          "y": "4",
+          "unnamed": true
+        },
+        {
+          "id": "Pc",
+          "x": "4",
+          "y": "6",
+          "unnamed": true
+        },
+        {
+          "id": "Pd",
+          "x": "6",
+          "y": "9",
+          "unnamed": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "g0",
+          "from": "Pa",
+          "axis": "BOTH"
+        },
+        {
+          "id": "g1",
+          "from": "Pb",
+          "axis": "BOTH"
+        },
+        {
+          "id": "g2",
+          "from": "Pc",
+          "axis": "BOTH"
+        },
+        {
+          "id": "g3",
+          "from": "Pd",
+          "axis": "BOTH"
+        }
+      ],
+      "segments": [
+        {
+          "id": "bc",
+          "from": "Pb",
+          "to": "Pc",
+          "color": "BLUE"
+        },
+        {
+          "id": "cd",
+          "from": "Pc",
+          "to": "Pd",
+          "color": "BLUE"
+        }
+      ]
+    }
+  },
+  "caption": "f(b)=c, f(c)=d, f(d)=e이므로 (f∘f∘f)(b)=e이고 정답은 k=b이다.",
+  "accessibilityDescription": "문자 눈금 a~e 위에 y=f(x)와 y=x, 축 점선이 있으며 b에서 c,d를 거쳐 e로 이어지는 함수 경로가 파란색으로 강조된다.",
+  "newVisualInformation": [
+    "합성 세 단계 b→c→d→e 추적",
+    "문항의 모든 함수값·점선 유지",
+    "ENGINE_CAPABILITY_PENDING: 원본 S형 매끄러운 곡선을 문자축·합성 경로와 동시에 렌더하는 확장 필요"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원래 문제의 네 함숫값",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.overlays.points"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "합성 경로 b→c→d→e",
+      "mappedTo": [
+        "graphPlan.overlays.segments",
+        "graphPlan.overlays.guides"
+      ]
+    }
+  ]
+}

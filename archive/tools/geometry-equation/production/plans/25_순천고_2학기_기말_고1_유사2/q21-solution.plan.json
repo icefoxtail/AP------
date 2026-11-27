@@ -1,0 +1,142 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "id": "F",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "id": "G",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 1
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 2
+        },
+        "to": {
+          "column": 2,
+          "element": 2
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "F"
+      },
+      {
+        "name": "g",
+        "from": "F",
+        "to": "G"
+      }
+    ],
+    "highlightPaths": [
+      {
+        "path": [
+          "3",
+          "2",
+          "1"
+        ],
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "f(1)=1,f(2)=3,f(3)=2이고 g(1)=2,g(2)=1,g(3)=3이다. g(f(3))=1, g⁻¹(3)=3이므로 (3)의 답은 4이다.",
+  "accessibilityDescription": "세 X 열에 일대일대응 f와 g의 각 세 화살표를 표시하며 3→2→1의 합성 경로가 파란색으로 강조된다.",
+  "newVisualInformation": [
+    "조건 (가)(나)(다)로 구한 f,g 대응 여섯 개",
+    "합성 g∘f(3)의 강조 경로"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "조건에서 결정되는 f:1→1,2→3,3→2",
+      "mappedTo": [
+        "diagram.arrows"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "g:1→2,2→1,3→3 및 g∘f(3)=1",
+      "mappedTo": [
+        "diagram.arrows",
+        "diagram.highlightPaths"
+      ]
+    }
+  ]
+}

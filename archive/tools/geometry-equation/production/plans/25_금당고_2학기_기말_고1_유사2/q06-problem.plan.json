@@ -1,0 +1,97 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      {
+        "id": "Y",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y"
+      }
+    ]
+  },
+  "caption": "함수 f는 1→2,2→2,3→4,4→1의 네 화살표이다. 문제 정답은 표시하지 않는다.",
+  "accessibilityDescription": "두 집합 X,Y의 각각 네 원소를 네 화살표로 연결하고 1과 2가 같은 2에 대응한다.",
+  "newVisualInformation": [
+    "X,Y의 여덟 원소와 대응 화살표 네 개",
+    "불필요한 면 채움 없이 정확한 대응"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "X와 Y의 원소는 1,2,3,4",
+      "mappedTo": [
+        "diagram.columns"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "f(1)=2,f(2)=2,f(3)=4,f(4)=1",
+      "mappedTo": [
+        "diagram.arrows"
+      ]
+    }
+  ]
+}

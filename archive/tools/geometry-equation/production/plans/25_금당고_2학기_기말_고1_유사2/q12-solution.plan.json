@@ -1,0 +1,83 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -1,
+      5,
+      -3,
+      4
+    ],
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": [
+        "-1"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "vertical",
+          "x": "2"
+        },
+        {
+          "id": "critical",
+          "slope": "-3/4",
+          "intercept": "1/2",
+          "label": "3x+4y=2"
+        }
+      ],
+      "points": [
+        {
+          "id": "B",
+          "x": "2",
+          "y": "-1",
+          "marker": "OPEN",
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "결론이 거짓인 x>2,y>−1의 열린 경계점 (2,−1)에서 3x+4y=2가 성립하므로 k의 최댓값은 2다.",
+  "accessibilityDescription": "x=2 세로선, y=−1 가로선, 직선 3x+4y=2가 열린 점 (2,−1)에서 만난다. 면 채움은 없다.",
+  "newVisualInformation": [
+    "경계선과 열린 점",
+    "임계 직선과 경계값 2"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x>2, y>-1의 열린 영역",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.overlays.lines"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "경계 (2,-1)에서 3x+4y=2",
+      "mappedTo": [
+        "graphPlan.overlays.points",
+        "graphPlan.overlays.lines"
+      ]
+    }
+  ]
+}

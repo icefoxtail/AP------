@@ -1,0 +1,64 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-4",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ],
+        "label": "분자 조건"
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "3",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "label": "분모 조건"
+      },
+      {
+        "kind": "RESULT",
+        "integerPoints": true,
+        "label": "공통 정수"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "진수 조건과 정수 7개"
+  },
+  "caption": "x+4≥0, 6−2x>0이므로 -4≤x<3이고 정수는 -4부터 2까지 7개다.",
+  "accessibilityDescription": "첫 수직선은 -4 닫힌 점에서 오른쪽, 둘째는 3 열린 점에서 왼쪽, 셋째는 공통 정수 일곱 점이다.",
+  "newVisualInformation": [
+    "분모 조건 3의 열린 점",
+    "공통 범위에 있는 정수 일곱 점"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "분자 x+4≥0",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "분모 6-2x>0",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ]
+}
