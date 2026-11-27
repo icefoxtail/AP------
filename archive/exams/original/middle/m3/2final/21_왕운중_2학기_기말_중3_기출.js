@@ -229,8 +229,8 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "solutionImage": "assets/images/21_왕운중_2학기_기말_중3_기출/q5-solution.svg",
-    "solutionImageAlt": "해설 그림: 태도 점수를 가로, 실험 점수를 세로로 하는 산점도에 점 11개가 찍혀 있고, 가로 9점과 세로 9점의 경계선이 그어져 있다. 파란 점 5개는 두 점수가 같은 학생, 주황 점 2개는 태도 점수가 더 높은 학생이다.",
-    "solutionImageCaption": "산점도의 점은 모두 11개이다. 파란 점은 두 점수가 같은 학생 5명, 주황 점은 태도 점수가 실험 점수보다 높은 학생 2명이다. 어느 한 점수라도 9점 이상인 점은 경계선을 이용해 세면 7개이다. 정답은 ④이다.",
+    "solutionImageAlt": "전체는 11명, 두 점수가 같은 학생은 5명이며 태도 점수가 더 높은 학생은 2명이다. 적어도 한 점수가 9 이상인 학생은 7명이다.",
+    "solutionImageCaption": "전체는 11명, 두 점수가 같은 학생은 5명이며 태도 점수가 더 높은 학생은 2명이다. 적어도 한 점수가 9 이상인 학생은 7명이다.",
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
@@ -475,8 +475,8 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "solutionImage": "assets/images/21_왕운중_2학기_기말_중3_기출/q10-solution.svg",
-    "solutionImageAlt": "해설 그림: 원에 내접하는 오각형에서 각 B는 파란색 130°, 각 E는 초록색 100°로 표시되어 있고, 점 C에서 접선 CT가 그려져 있다. 분홍색 호 CD는 100°이고, 접선과 현 CD가 이루는 각이 분홍색 호로 강조되어 있다.",
-    "solutionImageCaption": "각 B와 각 E가 보는 호에서 호 AB와 BC의 합은 100°, 호 AB, BC, CD의 합은 200°이므로 호 CD(분홍)는 100°이다. 접선과 현이 이루는 각(분홍)은 그 현이 보는 원주각의 크기와 같다. 정답은 50°이다.",
+    "solutionImageAlt": "호 AB+BC=100°, 호 AB+BC+CD=200°이므로 호 CD=100°이다. 접선과 현의 각 ∠DCT=50°이다.",
+    "solutionImageCaption": "호 AB+BC=100°, 호 AB+BC+CD=200°이므로 호 CD=100°이다. 접선과 현의 각 ∠DCT=50°이다.",
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
@@ -954,8 +954,8 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "solutionImage": "assets/images/21_왕운중_2학기_기말_중3_기출/q20-solution.svg",
-    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에 내접원 O가 있고 각 A의 이등분선 AD가 중심 O를 지난다. 변 BC 위에서 파란색 BD는 10, 주황색 DC는 6으로 적혀 있고 점 C는 직각, 분홍색 선분 OH는 반지름 r이며, 초록색 두 각은 같다.",
-    "solutionImageCaption": "BC=16이고 각의 이등분선(초록)의 정리로 AB:AC=5:3이다. 직각삼각형 ABC에서 AC=12, AB=20을 얻고, 내접원의 반지름 r은 세 변의 길이로 구한다. 정답은 4cm이다.",
+    "solutionImageAlt": "각 이등분선 정리로 AB:AC=5:3이고 BC=16이므로 변은 12,16,20cm이다. 내접원의 반지름은 4cm이다.",
+    "solutionImageCaption": "각 이등분선 정리로 AB:AC=5:3이고 BC=16이므로 변은 12,16,20cm이다. 내접원의 반지름은 4cm이다.",
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",

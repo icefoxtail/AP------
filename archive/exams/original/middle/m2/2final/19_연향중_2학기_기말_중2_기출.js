@@ -90,11 +90,12 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q2-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼각형 ABC의 무게중심 G와 삼각형 GBC의 무게중심 G′이 중선 AD 위에 있고 D는 BC의 중점이며 삼각형 ABC의 넓이는 72이다. 둘째 그림(오른쪽 위)은 G가 삼각형 ABC를 넓이가 같은 세 삼각형으로 나누고 각각 24임을 나타낸다. 셋째 그림(왼쪽 아래)은 삼각형 GBC를 따로 그려 세 중선으로 나눈 넓이가 같은 6개의 삼각형이며 그중 삼각형 G′BD가 주황색이다.",
-    "solutionImageCaption": "삼각형 GBC의 넓이는 삼각형 ABC의 3분의 1인 24 cm²이다. G′은 삼각형 GBC의 무게중심이므로 세 중선이 삼각형 GBC를 넓이가 같은 6개의 삼각형으로 나누고, 삼각형 G′BD는 그중 하나이므로 24의 6분의 1이다. 정답은 ③ 4 cm²이다.",
+    "solutionImageAlt": "G는 ABC의 무게중심, G′은 GBC의 무게중심이다. 중선과 높이·넓이 관계를 구획선으로 설명한다.",
+    "solutionImageCaption": "G는 ABC의 무게중심, G′은 GBC의 무게중심이다. 중선과 높이·넓이 관계를 구획선으로 설명한다.",
     "solutionImageSize": "full",
     "primaryMethod": "중첩된 두 무게중심의 넓이 분할",
-    "decisiveStep": "첫무게중심의1/3부분을두번째무게중심과밑변중점으로1/6분할한다."
+    "decisiveStep": "첫무게중심의1/3부분을두번째무게중심과밑변중점으로1/6분할한다.",
+    "solutionImageScale": 94
   },
   {
     "id": 3,
@@ -137,11 +138,12 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q3-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼각형 ABC의 변 BC 위의 중점 M과 BC의 길이 12 cm가 표시되어 있고, 삼각형 ABM과 AMC의 무게중심 G, G′을 파란색 선분으로 이었다. 오른쪽 그림은 BM, MC의 중점 N, P를 잡아 삼각형 ANP를 그린 것으로, G, G′이 AN, AP를 2:1로 나누는 점이고 파란색 GG′이 NP와 평행하며 NP는 6 cm이다.",
-    "solutionImageCaption": "BM, MC의 중점 N, P에 대해 NP는 BM과 MC의 절반의 합이므로 6 cm이다. G, G′은 AN, AP를 2:1로 나누므로 GG′은 NP와 평행하고 NP의 3분의 2이다. 정답은 ① 4 cm이다.",
+    "solutionImageAlt": "BM, MC의 중점을 N, P라 하면 G, G′은 중선 AN, AP를 꼭짓점 A 쪽에서 2:1로 나누는 점이다. 따라서 삼각형 AGG′과 ANP는 닮음비가 2:3이고 파란색 GG′은 NP와 평행하며 NP의 3분의 2이다.",
+    "solutionImageCaption": "BM, MC의 중점을 N, P라 하면 G, G′은 중선 AN, AP를 꼭짓점 A 쪽에서 2:1로 나누는 점이다. 따라서 삼각형 AGG′과 ANP는 닮음비가 2:3이고 파란색 GG′은 NP와 평행하며 NP의 3분의 2이다.",
     "solutionImageSize": "full",
     "primaryMethod": "두 무게중심 좌표의 공통성분 소거",
-    "decisiveStep": "해설은밑변을좌표축에놓고임의꼭짓점(u,v)의평균좌표를구한뒤같은y좌표의차를취한다."
+    "decisiveStep": "해설은밑변을좌표축에놓고임의꼭짓점(u,v)의평균좌표를구한뒤같은y좌표의차를취한다.",
+    "solutionImageScale": 94
   },
   {
     "id": 4,
@@ -187,11 +189,12 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q4-solution.svg",
-    "solutionImageAlt": "해설 그림: 각 C가 직각인 직각삼각형 ABC의 세 변 위에 정사각형이 있다. 빗변 AB 위의 주황색 정사각형은 넓이가 100 cm², BC 위의 파란색 정사각형은 넓이가 64 cm²이고 AC 위의 초록색 정사각형은 넓이가 쓰여 있지 않다. 오른쪽 그림은 이 삼각형을 파란색으로 칠하고 세 변의 길이 10 cm, 8 cm, 6 cm를 나타낸다.",
-    "solutionImageCaption": "정사각형의 한 변은 넓이의 제곱근이므로 AB=10 cm, BC=8 cm이다. 피타고라스 정리 AC²+8²=10²에서 AC²=36이므로 AC=6 cm이다. 삼각형의 넓이는 직각을 낀 두 변을 곱해 2로 나누면 된다. 정답은 ① 24 cm²이다.",
+    "solutionImageAlt": "빗변 AB의 제곱은 100, BC의 제곱은 64이다. AC 위 정사각형의 넓이는 100−64=36이고, 원본의 수치는 면이 아닌 글자로 표시한다.",
+    "solutionImageCaption": "빗변 AB의 제곱은 100, BC의 제곱은 64이다. AC 위 정사각형의 넓이는 100−64=36이고, 원본의 수치는 면이 아닌 글자로 표시한다.",
     "solutionImageSize": "full",
     "primaryMethod": "정사각형 넓이에서 두 변을 얻는 피타고라스",
-    "decisiveStep": "주어진정사각형넓이100,64에서빗변10과직각변8을읽어남은변6과넓이를구한다."
+    "decisiveStep": "주어진정사각형넓이100,64에서빗변10과직각변8을읽어남은변6과넓이를구한다.",
+    "solutionImageScale": 94
   },
   {
     "id": 5,
@@ -234,11 +237,12 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q5-solution.svg",
-    "solutionImageAlt": "해설 그림: 각 B가 직각인 삼각형 ABC에서 변 BC 위의 점 D가 BD는 6, DC는 9이고 AC는 17이며 AB를 x, AD를 y라 했다. 둘째 그림(오른쪽 위)은 파란색 삼각형 ABC로 BC는 15, AC는 17이고, 셋째 그림(왼쪽 아래)은 주황색 삼각형 ABD로 AB는 8, BD는 6이다.",
-    "solutionImageCaption": "BC=6+9=15이고 삼각형 ABC에서 x²=17²−15²=64이므로 x=8이다. 삼각형 ABD에서 y²=8²+6²=100이므로 y=10이다. 따라서 x+y=8+10이다. 정답은 ④ 18이다.",
+    "solutionImageAlt": "BC=6+9=15. 삼각형 ABC에서 x²+15²=17², 삼각형 ABD에서 y²=8²+6²을 사용한다. 보조 삼각형의 면은 채우지 않는다.",
+    "solutionImageCaption": "BC=6+9=15. 삼각형 ABC에서 x²+15²=17², 삼각형 ABD에서 y²=8²+6²을 사용한다. 보조 삼각형의 면은 채우지 않는다.",
     "solutionImageSize": "full",
     "primaryMethod": "주어진 두 직각삼각형의 연속 피타고라스",
-    "decisiveStep": "밑변15에서AB8을구하고그값을작은직각삼각형의빗변계산에넣는다."
+    "decisiveStep": "밑변15에서AB8을구하고그값을작은직각삼각형의빗변계산에넣는다.",
+    "solutionImageScale": 94
   },
   {
     "id": 6,
@@ -282,11 +286,12 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q6-solution.svg",
-    "solutionImageAlt": "해설 그림: 한 변이 12 cm인 큰 정사각형 오른쪽 아래 꼭짓점 C에서 작은 정사각형이 이어지고 선분 AE의 길이는 20 cm이며 CE의 길이를 x라 했다. 오른쪽 그림은 직각이 B인 파란색 직각삼각형 ABE로 AB는 12 cm, BE는 12+x cm, AE는 20 cm이다.",
-    "solutionImageCaption": "삼각형 ABE는 B가 직각이므로 12²+(12+x)²=20²이다. (12+x)²=256에서 12+x=16이므로 x를 구한다. 정답은 ② 4 cm이다.",
+    "solutionImageAlt": "큰 정사각형의 한 변은 12cm이고 BE=12+x이다. 직각삼각형 ABE에서 12²+(12+x)²=20²을 적용한다.",
+    "solutionImageCaption": "큰 정사각형의 한 변은 12cm이고 BE=12+x이다. 직각삼각형 ABE에서 12²+(12+x)²=20²을 적용한다.",
     "solutionImageSize": "full",
     "primaryMethod": "붙인 정사각형에서 전체 가로길이 복원",
-    "decisiveStep": "AE20과세로12로전체가로16을구하고큰정사각형변12를뺀다."
+    "decisiveStep": "AE20과세로12로전체가로16을구하고큰정사각형변12를뺀다.",
+    "solutionImageScale": 94
   },
   {
     "id": 7,
@@ -327,11 +332,12 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q7-solution.svg",
-    "solutionImageAlt": "해설 그림: 가장 긴 변 c를 주황색, 나머지 두 변 a, b를 파란색으로 나타낸 세 삼각형이다. 왼쪽 위, 오른쪽 위, 왼쪽 아래 순서로 각 C가 예각인 삼각형, 직각인 삼각형, 둔각인 삼각형이다.",
-    "solutionImageCaption": "가장 긴 변을 c라 할 때 c²=a²+b²이면 직각삼각형이다. ①은 2²+3²=13이고 4²=16이므로 아니다. ②는 3²+4²=25=5²이므로 직각삼각형이다. ③은 3²+7²=58이고 9²=81, ④는 7²+14²=245이고 15²=225이므로 아니다. ⑤는 8²+15²=289=17²이므로 직각삼각형이다. 정답은 ②, ⑤이다.",
+    "solutionImageAlt": "가장 긴 변을 c(주황색), 나머지 두 변을 a, b(파란색)라 하고 c의 제곱과 a, b의 제곱의 합을 비교하면 삼각형의 종류를 알 수 있다.",
+    "solutionImageCaption": "가장 긴 변을 c(주황색), 나머지 두 변을 a, b(파란색)라 하고 c의 제곱과 a, b의 제곱의 합을 비교하면 삼각형의 종류를 알 수 있다.",
     "solutionImageSize": "full",
     "primaryMethod": "세 변 제곱합의 직접 대조",
-    "decisiveStep": "가장긴변을빗변후보로삼아두변제곱합이같은②⑤를고른다."
+    "decisiveStep": "가장긴변을빗변후보로삼아두변제곱합이같은②⑤를고른다.",
+    "solutionImageScale": 94
   },
   {
     "id": 8,
@@ -377,11 +383,12 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q8-solution.svg",
-    "solutionImageAlt": "해설 그림: 가로 12 cm, 세로 16 cm인 직사각형의 네 변을 지름으로 하는 반원 네 개와 네 꼭짓점을 지나는 원이 있고 반원과 원 사이의 네 초승달이 칠해져 있다. 오른쪽 그림은 대각선 BD를 그어 위쪽과 왼쪽 초승달 둘과 삼각형 ABD를 파란색으로, 오른쪽과 아래쪽 초승달 둘과 삼각형 BCD를 주황색으로 칠하고 BD에 20 cm라고 쓰여 있다.",
-    "solutionImageCaption": "대각선은 12²+16²=400에서 20 cm이고 외접원의 지름이다. 직각삼각형 ABD에서 두 초승달의 넓이의 합이 삼각형 ABD의 넓이와 같고, 삼각형 BCD에서도 마찬가지이다. 따라서 색칠한 네 부분의 넓이의 합은 직사각형의 넓이 12×16과 같다. 정답은 ④ 192 cm²이다.",
+    "solutionImageAlt": "직사각형의 대각선 BD는 외접원의 지름이다. 직각삼각형 ABD에서 두 직각변 위의 반원 넓이의 합과 빗변 위의 반원(원의 절반) 넓이가 같으므로, 파란색 두 초승달의 넓이의 합은 삼각형 ABD의 넓이와 같다. 주황색 두 초승달도 삼각형 BCD와 같다.",
+    "solutionImageCaption": "직사각형의 대각선 BD는 외접원의 지름이다. 직각삼각형 ABD에서 두 직각변 위의 반원 넓이의 합과 빗변 위의 반원(원의 절반) 넓이가 같으므로, 파란색 두 초승달의 넓이의 합은 삼각형 ABD의 넓이와 같다. 주황색 두 초승달도 삼각형 BCD와 같다.",
     "solutionImageSize": "full",
     "primaryMethod": "직사각형 밖 초승달 넓이의 상쇄",
-    "decisiveStep": "대각선지름원의넓이와네반원넓이의합이같음을확인하고공통원호영역을제거한다."
+    "decisiveStep": "대각선지름원의넓이와네반원넓이의합이같음을확인하고공통원호영역을제거한다.",
+    "solutionImageScale": 94
   },
   {
     "id": 9,
@@ -425,11 +432,12 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q9-solution.svg",
-    "solutionImageAlt": "해설 그림: 정육면체의 출발점에서 도착점까지 최단 경로를 고르는 세 단계이다. 첫째 그림은 출발점에서 오른쪽, 뒤, 위로 갈 수 있는 세 모서리를 빨간색으로, 둘째 그림은 오른쪽으로 간 뒤 다음에 고를 수 있는 두 모서리를 빨간색으로 나타낸다. 셋째 그림은 오른쪽, 뒤로 간 뒤 남은 위쪽 한 모서리를 빨간색으로 나타낸다.",
-    "solutionImageCaption": "출발점에서 도착점까지 최단으로 가려면 오른쪽, 뒤, 위 세 방향의 모서리를 한 번씩 지난다. 첫 모서리는 세 방향 중 하나를 고르는 3가지이고, 그다음은 남은 두 방향 중 하나를 고르는 2가지이며, 마지막은 남은 한 방향으로 정해지는 1가지이다. 곱의 법칙으로 3×2×1로 센다. 정답은 ③ 6가지이다.",
+    "solutionImageAlt": "출발점에서 도착점까지 최단으로 가려면 오른쪽, 뒤, 위 세 방향의 모서리를 한 번씩 지난다. 첫 모서리는 세 방향 중 하나를 고르고, 첫 방향을 정하면 다음은 남은 두 방향 중 하나이며, 마지막은 남은 한 방향으로 정해진다. 굵은 검은 선은 이미 지난 모서리이고 빨간 선은 그다음에 고를 수 있는 모서리이다.",
+    "solutionImageCaption": "출발점에서 도착점까지 최단으로 가려면 오른쪽, 뒤, 위 세 방향의 모서리를 한 번씩 지난다. 첫 모서리는 세 방향 중 하나를 고르고, 첫 방향을 정하면 다음은 남은 두 방향 중 하나이며, 마지막은 남은 한 방향으로 정해진다. 굵은 검은 선은 이미 지난 모서리이고 빨간 선은 그다음에 고를 수 있는 모서리이다.",
     "solutionImageSize": "full",
     "primaryMethod": "입체 모서리 최단경로의 세 방향 순열",
-    "decisiveStep": "맞은편꼭짓점까지각축방향을한번씩움직이는세이동의순서를센다."
+    "decisiveStep": "맞은편꼭짓점까지각축방향을한번씩움직이는세이동의순서를센다.",
+    "solutionImageScale": 94
   },
   {
     "id": 10,
@@ -894,8 +902,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q19-solution.svg",
-    "solutionImageAlt": "해설 그림: 위쪽 줄은 한울, 두울, 세울, 네울, 다울 다섯 사람을 칸으로 나타낸 것으로 한울은 파란색, 다울은 주황색이다. 아래쪽 줄은 한울과 다울을 붙여 한 묶음으로 만들고 두울, 세울, 네울과 함께 네 개를 한 줄로 놓은 모양이다.",
-    "solutionImageCaption": "다섯 사람을 한 줄로 세우는 경우는 5!=120가지이다. 한울이와 다울이가 이웃하는 경우는 묶음과 세 사람 4개를 세우는 4!가지에 묶음 안의 순서 2가지를 곱한 48가지이다. 이웃하지 않는 경우는 120−48=72가지이고 확률은 120분의 72이다. 정답은 ⑤ 5분의 3이다.",
+    "solutionImageAlt": "한울이와 다울이를 이웃하게 놓을 때 두 사람을 한 묶음으로 본다. 다섯 사람과 묶음의 위치를 이름으로 표시한다.",
+    "solutionImageCaption": "한울이와 다울이를 이웃하게 놓을 때 두 사람을 한 묶음으로 본다. 다섯 사람과 묶음의 위치를 이름으로 표시한다.",
     "solutionImageSize": "full",
     "primaryMethod": "이웃하는 두 사람을 묶어 여사건 계산",
     "decisiveStep": "이웃하지않음의여사건에서두사람을묶어4!·2를세고전체5!에서뺀다."
@@ -1019,11 +1027,12 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q22-solution.svg",
-    "solutionImageAlt": "해설 그림: 각 A가 직각인 두 직각삼각형이다. 왼쪽 삼각형은 빗변이 6이고 직각을 낀 두 변이 4와 a이며, 오른쪽 삼각형은 빗변이 a이고 직각을 낀 두 변이 6과 4이다. 빗변은 주황색으로 나타냈다.",
-    "solutionImageCaption": "가장 긴 변이 빗변이므로 빗변이 4인 경우는 불가능하다. 빗변이 6이면 a²+4²=6²이고, 빗변이 a이면 a²=4²+6²이다. 두 식에서 a²을 각각 구한다. 정답은 20, 52이다.",
+    "solutionImageAlt": "빗변은 6 또는 a이다. 두 경우의 직각삼각형에서 변의 길이와 직각 표식으로 a²을 판정한다.",
+    "solutionImageCaption": "빗변은 6 또는 a이다. 두 경우의 직각삼각형에서 변의 길이와 직각 표식으로 a²을 판정한다.",
     "solutionImageSize": "full",
     "primaryMethod": "미지변이 빗변인지에 따른 두 경우",
-    "decisiveStep": "빗변이6인경우와a인경우를나누고모든a²값을제시한다."
+    "decisiveStep": "빗변이6인경우와a인경우를나누고모든a²값을제시한다.",
+    "solutionImageScale": 94
   },
   {
     "id": 23,
@@ -1061,11 +1070,12 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "solutionImage": "assets/images/19_연향중_2학기_기말_중2_기출/q23-solution.svg",
-    "solutionImageAlt": "해설 그림: 세 자리 정수의 백의 자리, 십의 자리, 일의 자리에 쓸 수 있는 숫자를 칸으로 나타낸 세 줄의 그림이다. 모든 줄에서 백의 자리는 1, 2, 3, 십의 자리는 0, 1, 2, 3이다. 첫째 줄은 일의 자리가 1, 3인 홀수, 둘째 줄은 일의 자리가 0인 짝수, 셋째 줄은 일의 자리가 2인 짝수이다.",
-    "solutionImageCaption": "(1) 일의 자리가 1 또는 3인 홀수는 백의 자리 3가지, 십의 자리 4가지, 일의 자리 2가지이므로 3×4×2이다. (2) 일의 자리가 0이면 3×4×1, 2이면 3×4×1이고 두 경우를 더한다. 정답은 (1) 24가지, (2) 24가지이다.",
+    "solutionImageAlt": "세 자리 수의 백의 자리에는 0이 올 수 없고 십의 자리는 0부터 3까지 가능하다. 일의 자리 조건을 숫자 표로 구분한다.",
+    "solutionImageCaption": "세 자리 수의 백의 자리에는 0이 올 수 없고 십의 자리는 0부터 3까지 가능하다. 일의 자리 조건을 숫자 표로 구분한다.",
     "solutionImageSize": "full",
     "primaryMethod": "중복을 허용한 세 자리 홀짝 수의 자리별 선택",
-    "decisiveStep": "백의자리0을제외하고일의자리홀짝후보를정해독립선택수를곱한다."
+    "decisiveStep": "백의자리0을제외하고일의자리홀짝후보를정해독립선택수를곱한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 24,
