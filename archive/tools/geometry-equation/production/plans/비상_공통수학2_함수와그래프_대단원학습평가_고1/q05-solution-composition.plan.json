@@ -1,0 +1,8 @@
+{
+  "capability":"set-diagram-figure-v1",
+  "diagram":{"kind":"MAPPING","columns":[{"id":"W","name":"X","elements":["1","3","5"]},{"id":"X","name":"X","elements":["1","3","5"]},{"id":"Y","name":"X","elements":["1","3","5"]},{"id":"Z","name":"X","elements":["1","3","5"]}],"arrowGroups":[{"name":"f","from":"W","to":"X","color":"BLUE"},{"name":"g⁻¹","from":"X","to":"Y","color":"GREEN"},{"name":"f","from":"Y","to":"Z","color":"BLUE"}],"arrows":[{"from":{"column":0,"element":0},"to":{"column":1,"element":1}},{"from":{"column":0,"element":1},"to":{"column":1,"element":2}},{"from":{"column":0,"element":2},"to":{"column":1,"element":0}},{"from":{"column":1,"element":0},"to":{"column":2,"element":2}},{"from":{"column":1,"element":1},"to":{"column":2,"element":1}},{"from":{"column":1,"element":2},"to":{"column":2,"element":0}},{"from":{"column":2,"element":0},"to":{"column":3,"element":1}},{"from":{"column":2,"element":1},"to":{"column":3,"element":2}},{"from":{"column":2,"element":2},"to":{"column":3,"element":0}}],"highlightPaths":[{"path":["3","5","1","3"],"color":"VIOLET"}]},
+  "caption":"(f∘g⁻¹∘f)(3)은 3→5→1→3인 세 단계 대응이다.",
+  "accessibilityDescription":"집합 X가 네 번 나열되고 f, g의 역함수, f의 순서로 그린 화살표를 따라 3에서 출발해 3으로 돌아온다.",
+  "sourceConditions":[{"id":"f","condition":"f(1)=3, f(3)=5, f(5)=1","mappedTo":"diagram.arrows"},{"id":"ginv","condition":"g^-1(1)=5, g^-1(3)=3, g^-1(5)=1","mappedTo":"diagram.arrows"},{"id":"path","condition":"3→5→1→3","mappedTo":"diagram.highlightPaths"}],
+  "newVisualInformation":["역함수 방향을 독립된 중간 열로 분리해 원본 f→g 대응도의 역읽기 오류를 예방한다."]
+}

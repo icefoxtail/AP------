@@ -1,0 +1,8 @@
+{
+  "capability":"set-diagram-figure-v1",
+  "diagram":{"kind":"MAPPING","columns":[{"id":"X","name":"X","elements":["2","3","4"]},{"id":"Y","name":"X","elements":["2","3","4"]},{"id":"Z","name":"X","elements":["2","3","4"]}],"arrowGroups":[{"name":"f","from":"X","to":"Y","color":"BLUE"},{"name":"g","from":"Y","to":"Z","color":"BLUE"}],"arrows":[{"from":{"column":0,"element":0},"to":{"column":1,"element":2}},{"from":{"column":0,"element":1},"to":{"column":1,"element":0}},{"from":{"column":0,"element":2},"to":{"column":1,"element":1}},{"from":{"column":1,"element":0},"to":{"column":2,"element":0}},{"from":{"column":1,"element":1},"to":{"column":2,"element":2}},{"from":{"column":1,"element":2},"to":{"column":2,"element":1}}]},
+  "caption":"세 집합 X 사이의 두 함수 f와 g의 대응도",
+  "accessibilityDescription":"f는 2→4, 3→2, 4→3으로 대응하고 g는 2→2, 3→4, 4→3으로 대응한다.",
+  "sourceConditions":[{"id":"f","condition":"f(2)=4, f(3)=2, f(4)=3","mappedTo":"diagram.arrows"},{"id":"g","condition":"g(2)=2, g(3)=4, g(4)=3","mappedTo":"diagram.arrows"}],
+  "newVisualInformation":["원본과 같은 X→X→X 세 열, 함수 이름 f·g와 여섯 화살표를 표시하고 채움은 두지 않는다."]
+}

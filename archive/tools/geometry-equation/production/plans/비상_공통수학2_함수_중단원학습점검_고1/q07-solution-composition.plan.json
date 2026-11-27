@@ -1,0 +1,8 @@
+{
+  "capability":"set-diagram-figure-v1",
+  "diagram":{"kind":"MAPPING","columns":[{"id":"X","name":"X","elements":["2","3","4"]},{"id":"Y","name":"X","elements":["2","3","4"]},{"id":"Z","name":"X","elements":["2","3","4"]}],"arrowGroups":[{"name":"g","from":"X","to":"Y","color":"BLUE"},{"name":"f","from":"Y","to":"Z","color":"BLUE"}],"arrows":[{"from":{"column":0,"element":0},"to":{"column":1,"element":0}},{"from":{"column":0,"element":1},"to":{"column":1,"element":2}},{"from":{"column":0,"element":2},"to":{"column":1,"element":1}},{"from":{"column":1,"element":0},"to":{"column":2,"element":2}},{"from":{"column":1,"element":1},"to":{"column":2,"element":0}},{"from":{"column":1,"element":2},"to":{"column":2,"element":1}}],"highlightPaths":[{"path":["3","4","3"],"color":"GREEN"}]},
+  "caption":"합성 f∘g는 g를 먼저, f를 나중에 적용한다: 3→4→3.",
+  "accessibilityDescription":"세 집합 X를 가로질러 g의 3→4 화살표와 f의 4→3 화살표가 하나의 강조 경로를 이룬다.",
+  "sourceConditions":[{"id":"order","condition":"f∘g의 순서는 g 다음 f","mappedTo":"diagram.arrowGroups"},{"id":"path","condition":"g(3)=4, f(4)=3","mappedTo":"diagram.highlightPaths"}],
+  "newVisualInformation":["원본의 f→g 순서를 해설 목적에 맞게 g→f로 교정해 학생이 합성 순서를 혼동하지 않도록 했다."]
+}
