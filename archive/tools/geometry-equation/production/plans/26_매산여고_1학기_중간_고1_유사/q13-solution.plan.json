@@ -1,0 +1,53 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "8",
+      "1",
+      "2"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      3
+    ],
+    "viewport": [
+      -4,
+      3,
+      -3,
+      20
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "L",
+          "slope": "-3",
+          "intercept": "7",
+          "label": "y=-3x+7"
+        }
+      ],
+      "points": []
+    }
+  },
+  "caption": "자연수 k의 최댓값 8에서 포물선 y=2x²+x+8과 직선 y=−3x+7이 두 점에서 만나는 그림.",
+  "accessibilityDescription": "위로 열린 포물선과 기울기 −3인 직선이 서로 다른 두 점에서 교차한다. 이 두 교점의 존재는 판별식 18−2k가 양수임을 보여 준다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "k=8에서 두 그래프의 교점 두 개",
+      "mappedTo": [
+        "graphPlan.overlays.lines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "경계 k=9의 접점과 달리 k=8에서는 두 교점이 존재함을 확인한다."
+  ]
+}
