@@ -1,0 +1,15 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {"variable":"x","rows":[
+    {"kind":"SET","label":"⑴","color":"BLUE","pieces":[{"lo":null,"hi":{"value":"1","state":"OPEN"}},{"lo":{"value":"6","state":"OPEN"},"hi":null}]},
+    {"kind":"SET","label":"⑵","color":"WARM","pieces":[{"lo":{"value":"1/2","state":"OPEN"},"hi":{"value":"1","state":"OPEN"}}]}
+  ]},
+  "numberLineCaption":{"text":"⑴과 ⑵의 서로 독립된 해집합"},
+  "caption":"⑴ |2x−7|>5는 x<1 또는 x>6, ⑵ −2x²+3x−1>0은 1/2<x<1이다. ⑶의 해는 없다.",
+  "accessibilityDescription":"두 수직선 줄에 ⑴ x가 1보다 작거나 6보다 큰 열린 구간과 ⑵ 1/2과 1 사이의 열린 구간을 별도로 표시한다.",
+  "sourceConditions":[
+    {"id":"part1","condition":"⑴ x<1 또는 x>6","mappedTo":"numberLine.rows[0].pieces"},
+    {"id":"part2","condition":"⑵ 1/2<x<1","mappedTo":"numberLine.rows[1].pieces"}
+  ],
+  "newVisualInformation":["⑴의 양쪽 열린 반직선과 ⑵의 양쪽 열린 유계구간을 같은 눈금의 서로 다른 줄에서 구분한다."]
+}

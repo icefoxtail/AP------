@@ -1,0 +1,13 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{"family":"polynomial","coefficients":["-1","1","1"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[-3,5],"viewport":[-3,5,-3,17],"requiredPoints":[{"id":"T","x":1,"y":1}],"overlays":{"lines":[{"id":"g","slope":"3","intercept":"-2"}]},"axisTickValues":{"x":[1],"y":[1]}},
+  "caption":"k=−2에서 직선 y=3x−2는 포물선 y=x²+x−1과 T(1,1)에서 접한다.",
+  "accessibilityDescription":"포물선 y=x²+x−1과 직선 y=3x−2가 점 T(1,1) 한 곳에서 접하는 그래프이다.",
+  "sourceQuote":"y=x²+x−1과 y=3x+k가 한 점에서 만날 때. 해설 k=−2, 교점 (1,1).",
+  "sourceConditions":[
+    {"id":"curve","condition":"포물선 y=x²+x−1","mappedTo":"graphPlan.coefficients"},
+    {"id":"line","condition":"k=−2인 직선 y=3x−2","mappedTo":"graphPlan.overlays.lines[0]"},
+    {"id":"touch","condition":"접점 T(1,1)","mappedTo":"graphPlan.requiredPoints[0]"}
+  ],
+  "newVisualInformation":["한 교점의 접선 위치와 좌표를 선과 점·눈금으로 실제 그린다."]
+}

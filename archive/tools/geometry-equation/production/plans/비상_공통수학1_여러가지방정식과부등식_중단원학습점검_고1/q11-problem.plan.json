@@ -1,0 +1,22 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"expression","op":"div","args":[{"kind":"expression","op":"add","args":[{"kind":"integer","value":"4"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"2"}]}]},{"kind":"integer","value":"2"}]},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"expression","op":"div","args":[{"kind":"expression","op":"sub","args":[{"kind":"integer","value":"4"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"2"}]}]},{"kind":"integer","value":"2"}]}]},"outputType":"POINT","factRole":"GIVEN"}
+  ]},
+  "displayPoints":["O","B","C"],
+  "displaySegments":[{"id":"sOB","refs":["O","B"]},{"id":"sOC","refs":["O","C"]},{"id":"sBC","refs":["B","C"]}],
+  "hiddenPointNames":["O","B","C"],"hiddenPointStyle":"NONE",
+  "rightAngles":[{"id":"rO","refs":["B","O","C"]}],
+  "planeMarks":{"dimensions":[{"id":"dBC","from":"B","to":"C","label":"3","unit":"m","side":"ABOVE","style":"ARROW","factRole":"GIVEN"}]},
+  "coordinateCanvas":{"width":480,"height":380},
+  "caption":"다락방 수납공간의 단면은 빗변이 3m인 직각삼각형이다. 두 직각변의 길이는 문제 그림에 쓰지 않는다.",
+  "accessibilityDescription":"색을 채우지 않은 직각삼각형에 한 직각 표식과 빗변 3m 치수선을 표시한다. 두 직각변의 길이는 비워 두었다.",
+  "sourceConditions":[
+    {"id":"right","condition":"수납공간 단면은 직각삼각형","mappedTo":["displaySegments","rightAngles"]},
+    {"id":"hypotenuse","condition":"빗변의 길이 3m","mappedTo":"planeMarks.dimensions[0]"},
+    {"id":"area","condition":"면적 7/4m²를 만족하는 실물 비례는 수학 모델로만 사용하고 문제 그림에는 미지 변 길이를 표시하지 않음","mappedTo":"mathPlan.nodes"}
+  ],
+  "newVisualInformation":["원본 다락방의 장식·면 채움 없이 직각 표식과 빗변 3m 치수선만 정확히 그린다."]
+}

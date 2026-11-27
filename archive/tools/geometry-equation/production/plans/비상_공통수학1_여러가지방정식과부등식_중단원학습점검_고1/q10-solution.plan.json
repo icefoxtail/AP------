@@ -1,0 +1,17 @@
+{
+  "capability":"number-line-figure-v1",
+  "numberLine":{"variable":"a","rows":[
+    {"kind":"SET","label":"첫 판별식","color":"BLUE","pieces":[{"lo":{"value":"-2","state":"OPEN"},"hi":null}]},
+    {"kind":"SET","label":"둘째 판별식","color":"WARM","pieces":[{"lo":{"value":"-5","state":"OPEN"},"hi":{"value":"1","state":"OPEN"}}]},
+    {"kind":"RESULT","label":"공통 범위"}
+  ]},
+  "numberLineCaption":{"text":"두 판별식이 모두 음수가 되는 a 범위"},
+  "caption":"두 이차방정식이 모두 허근을 가질 조건 a>−2와 −5<a<1의 공통 범위는 −2<a<1이다.",
+  "accessibilityDescription":"매개변수 a의 수직선에서 a>−2 및 −5<a<1의 조건을 별도 줄에 표시하고 마지막 줄에서 두 구간의 교집합을 보여 준다.",
+  "sourceConditions":[
+    {"id":"d1","condition":"D₁/4=−a−2<0 ⇒ a>−2","mappedTo":"numberLine.rows[0].pieces"},
+    {"id":"d2","condition":"D₂/4=(a+5)(a−1)<0 ⇒ −5<a<1","mappedTo":"numberLine.rows[1].pieces"},
+    {"id":"common","condition":"−2<a<1","mappedTo":"numberLine.rows[2]"}
+  ],
+  "newVisualInformation":["두 허근 조건의 열린 구간을 겹쳐 실제 양끝 −2·1을 확인한다."]
+}
