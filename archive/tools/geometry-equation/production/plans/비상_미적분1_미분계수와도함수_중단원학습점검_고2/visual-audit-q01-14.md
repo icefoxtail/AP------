@@ -1,6 +1,6 @@
 # 비상_미적분1_미분계수와도함수_중단원학습점검_고2: 문항·해설 2축 정적 SVG 플랜 검수
 
-원문: `archive/exams/textbooks/비상_미적분1/비상_미적분1_미분계수와도함수_중단원학습점검_고2/비상_미적분1_미분계수와도함수_중단원학습점검_고2.js`
+원문: `archive/exams/textbooks/비상교육_미적분1/비상_미적분1_미분계수와도함수_중단원학습점검_고2/비상_미적분1_미분계수와도함수_중단원학습점검_고2.js`
 
 - 본 보고는 원문 텍스트/해설 SHA256과 원본 PNG의 점·선·라벨을 확인한 **정적 특징↔JSON 필드 1:1 검수**다. 최종 SVG 렌더·학생 화면·원본 PDF 픽셀 일치 검사는 실행하지 않았다.
 - `ENGINE_CAPABILITY_PENDING`은 지원하지 않는 도형을 다른 그림으로 속여 제작하지 않았다는 뜻이며, 해당 축의 실행 JSON은 작성하지 않았다.
@@ -11,7 +11,7 @@
 | 비상_미적분1_미분계수와도함수_중단원학습점검_고2/q01 | 문항 | EXEMPT | 독립 그림 없음: 문항 또는 해설의 식·대수 논증만으로 완결 | — | NOT_APPLICABLE/NOT_APPLICABLE | EXEMPT_NO_DRAWN_FEATURES |
 | 비상_미적분1_미분계수와도함수_중단원학습점검_고2/q01 | 해설 | EXEMPT | 독립 그림 없음: 문항 또는 해설의 식·대수 논증만으로 완결 | — | NOT_APPLICABLE/NOT_APPLICABLE | EXEMPT_NO_DRAWN_FEATURES |
 | 비상_미적분1_미분계수와도함수_중단원학습점검_고2/q02 | 문항 | EXEMPT | 독립 그림 없음: 문항 또는 해설의 식·대수 논증만으로 완결 | — | NOT_APPLICABLE/NOT_APPLICABLE | EXEMPT_NO_DRAWN_FEATURES |
-| 비상_미적분1_미분계수와도함수_중단원학습점검_고2/q02 | 해설 | BENEFICIAL | polynomial-spike-v1 | `archive/tools/geometry-equation/production/plans/비상_미적분1_미분계수와도함수_중단원학습점검_고2/q02-solution.json` | PASS/PASS | STATIC_FIELDS_1_TO_1_PASS / ORIGINAL_PNG_REVIEWED / RENDER_NOT_RUN |
+| 비상_미적분1_미분계수와도함수_중단원학습점검_고2/q02 | 해설 | BENEFICIAL | polynomial-spike-v1 | `archive/tools/geometry-equation/production/plans/비상_미적분1_미분계수와도함수_중단원학습점검_고2/q02-solution.json` | PASS/PASS | STATIC_FIELDS_1_TO_1_PASS / SOURCE_TEXT_REVIEWED / RENDER_NOT_RUN |
 | 비상_미적분1_미분계수와도함수_중단원학습점검_고2/q03 | 문항 | EXEMPT | 독립 그림 없음: 문항 또는 해설의 식·대수 논증만으로 완결 | — | NOT_APPLICABLE/NOT_APPLICABLE | EXEMPT_NO_DRAWN_FEATURES |
 | 비상_미적분1_미분계수와도함수_중단원학습점검_고2/q03 | 해설 | EXEMPT | 독립 그림 없음: 문항 또는 해설의 식·대수 논증만으로 완결 | — | NOT_APPLICABLE/NOT_APPLICABLE | EXEMPT_NO_DRAWN_FEATURES |
 | 비상_미적분1_미분계수와도함수_중단원학습점검_고2/q04 | 문항 | EXEMPT | 독립 그림 없음: 문항 또는 해설의 식·대수 논증만으로 완결 | — | NOT_APPLICABLE/NOT_APPLICABLE | EXEMPT_NO_DRAWN_FEATURES |
@@ -27,7 +27,7 @@
 | 비상_미적분1_미분계수와도함수_중단원학습점검_고2/q08 | 문항 | EXEMPT | 독립 그림 없음: 문항 또는 해설의 식·대수 논증만으로 완결 | — | NOT_APPLICABLE/NOT_APPLICABLE | EXEMPT_NO_DRAWN_FEATURES |
 | 비상_미적분1_미분계수와도함수_중단원학습점검_고2/q08 | 해설 | EXEMPT | 독립 그림 없음: 문항 또는 해설의 식·대수 논증만으로 완결 | — | NOT_APPLICABLE/NOT_APPLICABLE | EXEMPT_NO_DRAWN_FEATURES |
 | 비상_미적분1_미분계수와도함수_중단원학습점검_고2/q09 | 문항 | EXEMPT | 독립 그림 없음: 문항 또는 해설의 식·대수 논증만으로 완결 | — | NOT_APPLICABLE/NOT_APPLICABLE | EXEMPT_NO_DRAWN_FEATURES |
-| 비상_미적분1_미분계수와도함수_중단원학습점검_고2/q09 | 해설 | BENEFICIAL | piecewise-discontinuous-spike-v1 | `archive/tools/geometry-equation/production/plans/비상_미적분1_미분계수와도함수_중단원학습점검_고2/q09-solution.json` | PASS/PASS | STATIC_FIELDS_1_TO_1_PASS / ORIGINAL_PNG_REVIEWED / RENDER_NOT_RUN |
+| 비상_미적분1_미분계수와도함수_중단원학습점검_고2/q09 | 해설 | BENEFICIAL | piecewise-discontinuous-spike-v1 | `archive/tools/geometry-equation/production/plans/비상_미적분1_미분계수와도함수_중단원학습점검_고2/q09-solution.json` | PASS/PASS | STATIC_FIELDS_1_TO_1_PASS / SOURCE_TEXT_REVIEWED / RENDER_NOT_RUN |
 | 비상_미적분1_미분계수와도함수_중단원학습점검_고2/q10 | 문항 | EXEMPT | 독립 그림 없음: 문항 또는 해설의 식·대수 논증만으로 완결 | — | NOT_APPLICABLE/NOT_APPLICABLE | EXEMPT_NO_DRAWN_FEATURES |
 | 비상_미적분1_미분계수와도함수_중단원학습점검_고2/q10 | 해설 | EXEMPT | 독립 그림 없음: 문항 또는 해설의 식·대수 논증만으로 완결 | — | NOT_APPLICABLE/NOT_APPLICABLE | EXEMPT_NO_DRAWN_FEATURES |
 | 비상_미적분1_미분계수와도함수_중단원학습점검_고2/q11 | 문항 | EXEMPT | 독립 그림 없음: 문항 또는 해설의 식·대수 논증만으로 완결 | — | NOT_APPLICABLE/NOT_APPLICABLE | EXEMPT_NO_DRAWN_FEATURES |
@@ -37,6 +37,6 @@
 | 비상_미적분1_미분계수와도함수_중단원학습점검_고2/q13 | 문항 | EXEMPT | 독립 그림 없음: 문항 또는 해설의 식·대수 논증만으로 완결 | — | NOT_APPLICABLE/NOT_APPLICABLE | EXEMPT_NO_DRAWN_FEATURES |
 | 비상_미적분1_미분계수와도함수_중단원학습점검_고2/q13 | 해설 | EXEMPT | 독립 그림 없음: 문항 또는 해설의 식·대수 논증만으로 완결 | — | NOT_APPLICABLE/NOT_APPLICABLE | EXEMPT_NO_DRAWN_FEATURES |
 | 비상_미적분1_미분계수와도함수_중단원학습점검_고2/q14 | 문항 | EXEMPT | 독립 그림 없음: 문항 또는 해설의 식·대수 논증만으로 완결 | — | NOT_APPLICABLE/NOT_APPLICABLE | EXEMPT_NO_DRAWN_FEATURES |
-| 비상_미적분1_미분계수와도함수_중단원학습점검_고2/q14 | 해설 | BENEFICIAL | polynomial-spike-v1 | `archive/tools/geometry-equation/production/plans/비상_미적분1_미분계수와도함수_중단원학습점검_고2/q14-solution.json` | PASS/PASS | STATIC_FIELDS_1_TO_1_PASS / ORIGINAL_PNG_REVIEWED / RENDER_NOT_RUN |
+| 비상_미적분1_미분계수와도함수_중단원학습점검_고2/q14 | 해설 | BENEFICIAL | polynomial-spike-v1 | `archive/tools/geometry-equation/production/plans/비상_미적분1_미분계수와도함수_중단원학습점검_고2/q14-solution.json` | PASS/PASS | STATIC_FIELDS_1_TO_1_PASS / SOURCE_TEXT_REVIEWED / RENDER_NOT_RUN |
 
 합계: 14문항/28축 · 실행 플랜 3 · 엔진 대기 2 · 그림 불필요 23 · 발문 원본 PNG 1개
