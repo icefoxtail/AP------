@@ -569,7 +569,7 @@ window.questionBank = [
   {
     "id": 11,
     "imageSize": "full",
-    "imageAlt": "이등변삼각형 ABC의 A는 40도이다. 오른쪽 AC에 D, BD에 E가 있다. AB와 AC, BC와 BD, CD와 CE는 각각 같은 길이이며 ECD가 x이다.",
+    "imageAlt": "AB=AC인 이등변삼각형 ABC에서 BC=BD, CD=CE. A의 각 40°와 C의 미지각 x",
     "level": "상",
     "category": "이등변삼각형의 각",
     "originalCategory": "이등변삼각형의 각",
@@ -622,7 +622,8 @@ window.questionBank = [
     "solutionImageCaption": "BC=BD, CD=CE인 두 이등변삼각형의 밑각이 모두 70°",
     "solutionImageSize": "medium",
     "primaryMethod": "세 이등변삼각형의 밑각 연쇄",
-    "decisiveStep": "같은 각을 ABC→BCD→CDE 순서로 옮긴 뒤 마지막 꼭지각을 구한다."
+    "decisiveStep": "같은 각을 ABC→BCD→CDE 순서로 옮긴 뒤 마지막 꼭지각을 구한다.",
+    "imageCaption": "AB=AC인 이등변삼각형 ABC에서 BC=BD, CD=CE. A의 각 40°와 C의 미지각 x"
   },
   {
     "id": 12,
@@ -683,7 +684,7 @@ window.questionBank = [
   {
     "id": 13,
     "imageSize": "full",
-    "imageAlt": "C에서 두 변 AC와 BC가 직각으로 만난다. AC, BC, AD는 모두 같은 길이이다. D에서 AB와 수직인 선이 아래 E까지 이어진다. CE는 6 cm이다.",
+    "imageAlt": "∠C=90°, DE⊥AB, AC=BC=AD, EC=6cm인 △ABC의 내부 보조선 AE와 DE",
     "level": "상",
     "category": "직각이등변삼각형의 합동과 넓이",
     "originalCategory": "직각이등변삼각형의 합동과 넓이",
@@ -738,7 +739,8 @@ window.questionBank = [
     "solutionImageCaption": "보조선 CD를 그으면 ∠DCE=∠CDE=22.5°이므로 DE=CE이고, ∠B=45°이므로 BD=DE",
     "solutionImageSize": "medium",
     "primaryMethod": "각 연쇄로 마지막 이등변삼각형 판정",
-    "decisiveStep": "직각이등변과 AD=AC의 밑각을 이어 CDE의 두 각이 같음을 찾아 DE=CE로 목표 넓이의 길이를 정한다."
+    "decisiveStep": "직각이등변과 AD=AC의 밑각을 이어 CDE의 두 각이 같음을 찾아 DE=CE로 목표 넓이의 길이를 정한다.",
+    "imageCaption": "∠C=90°, DE⊥AB, AC=BC=AD, EC=6cm인 △ABC의 내부 보조선 AE와 DE"
   },
   {
     "id": 14,

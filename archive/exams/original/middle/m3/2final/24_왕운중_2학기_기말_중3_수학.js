@@ -835,13 +835,16 @@ window.questionBank = [
     "rpmL4": "반원에 대한 원주각",
     "primaryMethod": "지름을 보는 원주각의 직각으로 삼각형의 각을 정하고 같은 반지름의 이등변삼각형 밑각을 연결해 목표각을 구한다.",
     "decisiveStep": "지름을 보는 원주각의 직각으로 삼각형의 각을 정하고 같은 반지름의 이등변삼각형 밑각을 연결해 목표각을 구한다.",
-    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q12-source-crop-v2.png",
+    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q12-problem.svg",
     "solutionImage": "assets/images/24_왕운중_2학기_기말_중3_수학/q12-solution.svg",
     "solutionImageAlt": "해설 그림: 지름 AB인 원 O에서 OA=OP=OB를 같은 색으로, ∠APB=90°, ∠AOP=70°, ∠POB=110°와 이등변삼각형 OPB의 밑각 x와 ∠OBP를 같은 색으로 표시한다.",
     "solutionImageCaption": "AB가 지름이므로 ∠APB=90°이고 △APB에서 ∠PBA=35°이다. OA=OP이므로 ∠AOP=70°, ∠POB=110°이고, OP=OB인 이등변삼각형 OPB에서 x=(180°−110°)÷2=35°이다. 정답은 ②이다.",
     "solutionImageSize": "medium"
   ,
-    "curriculum": "2015"
+    "curriculum": "2015",
+    "imageAlt": "원 O에서 AB는 지름이고 P는 원 위의 점이다. 원주각 PAB는 55도이며 P에서 반지름 PO와 현 PB가 이루는 각을 x로 표시한다.",
+    "imageCaption": "원 O에서 AB는 지름이고 P는 원 위의 점이다. 원주각 PAB는 55도이며 P에서 반지름 PO와 현 PB가 이루는 각을 x로 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 13,

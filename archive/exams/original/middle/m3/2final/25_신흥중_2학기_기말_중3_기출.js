@@ -228,10 +228,10 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q5-solution-v2.svg",
-    "solutionImageSize": "medium",
+    "solutionImageSize": "full",
     "solutionImageLayout": "fullwidth",
-    "solutionImageAlt": "해설 그림: 원 O 밖의 점 A에서 접선 AB, AC를 긋고 접점의 직각 표시, ∠BDC=63°, 중심각 ∠BOC=126°, 파랗게 칠한 사각형 ABOC를 나타낸 그림.",
-    "solutionImageCaption": "∠BDC=63°는 호 BC를 보는 원주각이므로 중심각 ∠BOC=2×63°=126°이고, ∠ABO=∠ACO=90°이므로 사각형 ABOC의 네 각의 합 360°에서 ∠CAB=360°−(90°+126°+90°)=54°이다. 정답 ②."
+    "solutionImageAlt": "두 접선의 접점에서 반지름은 수직이고 중심각 BOC는 126°여서 바깥각 BAC는 54°이다.",
+    "solutionImageCaption": "두 접선의 접점에서 반지름은 수직이고 중심각 BOC는 126°여서 바깥각 BAC는 54°이다."
   ,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
@@ -665,9 +665,9 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q14-solution.svg",
-    "solutionImageAlt": "해설 그림: 수직선에 5 이상 11 이하(첫째), 8 이상(둘째), 그 공통 범위 8 이상 11 이하가 줄로 그려져 있고 공통 범위의 자연수 8, 9, 10, 11에 점이 있다.",
-    "solutionImageCaption": "공통 범위 8≤a≤11 안의 자연수는 8, 9, 10, 11의 4개이다. 정답은 ③이다.",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "첫째 자료에서 5≤a≤11이고 둘째 자료에서 a≥8이므로 8≤a≤11의 자연수 네 개가 가능하다.",
+    "solutionImageCaption": "첫째 자료에서 5≤a≤11이고 둘째 자료에서 a≥8이므로 8≤a≤11의 자연수 네 개가 가능하다.",
+    "solutionImageSize": "full"
   ,
     "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
     "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",

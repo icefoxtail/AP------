@@ -154,7 +154,7 @@ window.questionBank = [
   {
     "id": 4,
     "imageSize": "full",
-    "imageAlt": "C에서 직각인 삼각형 ABC의 변 AB는 10, BC는 8, AC는 6이다. A의 이등분선이 밑변을 D에서 만나며 D에서 AB로 내린 수선의 발이 E이다.",
+    "imageAlt": "AB=10, BC=8, AC=6인 직각삼각형에서 AD가 A의 각을 이등분하고 DE가 AB에 수직이다. 넓이를 구하는 작은 삼각형 BDE만 옅게 구분한다.",
     "level": "중",
     "category": "삼각형의 성질",
     "originalCategory": "삼각형의 성질",
@@ -202,7 +202,8 @@ window.questionBank = [
     "solutionImageCaption": "△ACD≅△AED로 얻는 길이와 색칠한 △BDE를 보여 준다.",
     "solutionImageSize": "medium",
     "primaryMethod": "각의 이등분선의 대변 분할비",
-    "decisiveStep": "RHA 합동으로 높이를 대응시키고 각 이등분선의 변 분할비로 그 높이를 수치화한다."
+    "decisiveStep": "RHA 합동으로 높이를 대응시키고 각 이등분선의 변 분할비로 그 높이를 수치화한다.",
+    "imageCaption": "AB=10, BC=8, AC=6인 직각삼각형에서 AD가 A의 각을 이등분하고 DE가 AB에 수직이다. 넓이를 구하는 작은 삼각형 BDE만 옅게 구분한다."
   },
   {
     "id": 5,
