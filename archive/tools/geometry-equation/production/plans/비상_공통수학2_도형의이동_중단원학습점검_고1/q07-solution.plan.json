@@ -1,0 +1,21 @@
+{
+  "capability":"construction-spike-v1",
+  "caption":"A(-2,3)를 y=x에 대칭이동한 B(3,-2)와, B를 (2,-2)만큼 옮긴 C(5,-4)는 한 직선 위에 있다.",
+  "accessibilityDescription":"좌표평면의 A(-2,3)와 B(3,-2)는 점선 y=x에 대하여 서로 대칭이고, B에서 오른쪽 2 아래쪽 2로 간 C(5,-4)는 A,B와 한 직선 위에 있다.",
+  "sourceConditions":[
+    {"id":"s1","condition":"A=(-2,3)을 직선 y=x에 대칭이동한 점은 B=(3,-2)이다.","mappedTo":["mathPlan.nodes[0]","mathPlan.nodes[1]","mathPlan.nodes[2]","displayLines[0]"]},
+    {"id":"s2","condition":"세 점 A,B,C가 일직선 위이고 B에서 C까지 이동량은 (2,a)이며 a=-2다.","mappedTo":["mathPlan.nodes[3]","mathPlan.nodes[4]","displaySegments","caption"]}
+  ],
+  "newVisualInformation":["대칭축 y=x와 AB, BC의 일직선 관계를 모두 드러낸다.","B에서 C까지의 이동 방향에 화살촉을 놓아 평행이동을 식별한다.","좌표 라벨은 A,B,C를 각각 직접 소유하며 영역 색칠을 하지 않는다."],
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-2"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"m","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"1"},"b":{"kind":"integer","value":"-1"},"c":{"kind":"integer","value":"0"}},"outputType":"LINE","factRole":"GIVEN"},
+    {"id":"B","op":"LINE_REFLECTION","inputs":["A","m"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"C","op":"TRANSLATE_POINT","inputs":["B"],"args":{"dx":{"kind":"integer","value":"2"},"dy":{"kind":"integer","value":"-2"}},"outputType":"POINT","factRole":"CONCLUSION"},
+    {"id":"l","op":"LINE_THROUGH","inputs":["A","B"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["A","B","C"],"coordinateLabels":["A","B","C"],
+  "displayLines":["m"],"lineLabels":[{"nodeId":"m","form":"GENERAL"}],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"],"arrow":"END"}],
+  "coordinateCanvas":{"width":560,"height":480}
+}
