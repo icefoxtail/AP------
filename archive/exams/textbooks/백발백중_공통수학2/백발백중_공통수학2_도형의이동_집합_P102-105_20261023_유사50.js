@@ -56,8 +56,9 @@ window.questionBank = [
     "targetChoiceSlot": 2,
     "metaRationale": "두 번의 대칭이동, 원 사이 최단거리 및 P,Q 교점의 순서·등호 가능성 검증이 모두 필요하다.",
     "image": "assets/images/백발백중_공통수학2_도형의이동_집합_P102-105_20261023_유사50/BV-BAKBAL-H-COM2-P102-Q01-T1-R1-problem.svg",
-    "imageAlt": "문제 도형",
-    "imageSize": "large"
+    "imageAlt": "주어진 두 원과 두 경유 직선의 위치",
+    "imageSize": "full",
+    "imageCaption": "주어진 두 원과 두 경유 직선의 위치"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P102-Q01-S1-R1",
@@ -115,12 +116,13 @@ window.questionBank = [
     "targetChoiceSlot": 3,
     "metaRationale": "두 번의 대칭이동, 원 사이 최단거리 및 P,Q 교점의 순서·등호 가능성 검증이 모두 필요하다.",
     "image": "assets/images/백발백중_공통수학2_도형의이동_집합_P102-105_20261023_유사50/BV-BAKBAL-H-COM2-P102-Q01-S1-R1-problem.svg",
-    "imageAlt": "문제 도형",
-    "imageSize": "large",
+    "imageAlt": "주어진 두 원과 두 경유 직선의 위치",
+    "imageSize": "full",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_집합_P102-105_20261023_유사50/BV-BAKBAL-H-COM2-P102-Q01-S1-R1-solution.svg",
     "solutionImageAlt": "반사된 두 원의 중심 연결선과 경유 교점 P,Q",
     "solutionImageCaption": "반사된 두 원의 중심 연결선과 경유 교점 P,Q",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageCaption": "주어진 두 원과 두 경유 직선의 위치"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P102-Q01-S2-R1",
@@ -178,8 +180,9 @@ window.questionBank = [
     "targetChoiceSlot": 5,
     "metaRationale": "두 번의 대칭이동, 원 사이 최단거리 및 P,Q 교점의 순서·등호 가능성 검증이 모두 필요하다.",
     "image": "assets/images/백발백중_공통수학2_도형의이동_집합_P102-105_20261023_유사50/BV-BAKBAL-H-COM2-P102-Q01-S2-R1-problem.svg",
-    "imageAlt": "문제 도형",
-    "imageSize": "large"
+    "imageAlt": "주어진 두 원과 두 경유 직선의 위치",
+    "imageSize": "full",
+    "imageCaption": "주어진 두 원과 두 경유 직선의 위치"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P102-Q02-T1-R1",
@@ -237,8 +240,9 @@ window.questionBank = [
     "targetChoiceSlot": 1,
     "metaRationale": "두 원·두 반사선의 순차 경유 최단거리",
     "image": "assets/images/백발백중_공통수학2_도형의이동_집합_P102-105_20261023_유사50/BV-BAKBAL-H-COM2-P102-Q02-T1-R1-problem.svg",
-    "imageAlt": "문제 도형",
-    "imageSize": "large"
+    "imageAlt": "주어진 두 원과 두 경유 직선의 위치",
+    "imageSize": "full",
+    "imageCaption": "주어진 두 원과 두 경유 직선의 위치"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P102-Q02-S1-R1",
@@ -414,12 +418,13 @@ window.questionBank = [
     "targetChoiceSlot": 1,
     "metaRationale": "원 밖의 점에서 원주까지 최단거리",
     "image": "assets/images/백발백중_공통수학2_도형의이동_집합_P102-105_20261023_유사50/BV-BAKBAL-H-COM2-P102-Q03-T1-R1-problem.svg",
-    "imageAlt": "문제 도형",
-    "imageSize": "large",
+    "imageAlt": "중심 O(3,4)의 단위원과 외부점 B(6,0)",
+    "imageSize": "full",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_집합_P102-105_20261023_유사50/BV-BAKBAL-H-COM2-P102-Q03-T1-R1-solution.svg",
     "solutionImageAlt": "점 B와 원의 가장 가까운 원주점 A",
     "solutionImageCaption": "점 B와 원의 가장 가까운 원주점 A",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageCaption": "중심 O(3,4)의 단위원과 외부점 B(6,0)"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P102-Q03-S1-R1",
@@ -477,12 +482,13 @@ window.questionBank = [
     "targetChoiceSlot": 2,
     "metaRationale": "원 밖의 점에서 원주까지 최장거리",
     "image": "assets/images/백발백중_공통수학2_도형의이동_집합_P102-105_20261023_유사50/BV-BAKBAL-H-COM2-P102-Q03-S1-R1-problem.svg",
-    "imageAlt": "문제 도형",
-    "imageSize": "large",
+    "imageAlt": "중심 O(3,4)의 단위원과 외부점 B(6,0)",
+    "imageSize": "full",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_집합_P102-105_20261023_유사50/BV-BAKBAL-H-COM2-P102-Q03-S1-R1-solution.svg",
     "solutionImageAlt": "점 B와 원의 가장 먼 원주점 A",
     "solutionImageCaption": "점 B와 원의 가장 먼 원주점 A",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageCaption": "중심 O(3,4)의 단위원과 외부점 B(6,0)"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P102-Q03-S2-R1",
@@ -599,12 +605,13 @@ window.questionBank = [
     "targetChoiceSlot": 5,
     "metaRationale": "직선에 대한 반사와 경유 최단거리",
     "image": "assets/images/백발백중_공통수학2_도형의이동_집합_P102-105_20261023_유사50/BV-BAKBAL-H-COM2-P102-Q04-T1-R1-problem.svg",
-    "imageAlt": "문제 도형",
-    "imageSize": "large",
+    "imageAlt": "주어진 A(1,3), B(3,6)과 반사축 y=x",
+    "imageSize": "full",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_집합_P102-105_20261023_유사50/BV-BAKBAL-H-COM2-P102-Q04-T1-R1-solution.svg",
     "solutionImageAlt": "A를 y=x에 반사한 A′와 직선 위의 최단 경유점 P",
     "solutionImageCaption": "A를 y=x에 반사한 A′와 직선 위의 최단 경유점 P",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageCaption": "주어진 A(1,3), B(3,6)과 반사축 y=x"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P102-Q04-S1-R1",

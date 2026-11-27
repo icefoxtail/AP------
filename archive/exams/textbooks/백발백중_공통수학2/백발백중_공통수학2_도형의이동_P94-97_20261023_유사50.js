@@ -55,8 +55,9 @@ window.questionBank = [
     "decisionOwner": "GPT_BOOK_MATH_META",
     "confidence": "HIGH_MATH_MEDIUM_SOURCE",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P94-97_20261023_유사50/BV-BAKBAL-H-COM2-P94-Q01-T1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "두 번의 평행이동으로 만든 삼각형의 무게중심 G(5,5)",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "두 번의 평행이동으로 만든 삼각형의 무게중심 G(5,5)"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P94-Q01-S1-R2",
@@ -113,8 +114,9 @@ window.questionBank = [
     "decisionOwner": "GPT_BOOK_MATH_META",
     "confidence": "HIGH_MATH_MEDIUM_SOURCE",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P94-97_20261023_유사50/BV-BAKBAL-H-COM2-P94-Q01-S1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "두 번의 평행이동으로 만든 삼각형의 무게중심 G(4,2)",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "두 번의 평행이동으로 만든 삼각형의 무게중심 G(4,2)"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P94-Q01-S2-R2",
@@ -171,8 +173,9 @@ window.questionBank = [
     "decisionOwner": "GPT_BOOK_MATH_META",
     "confidence": "HIGH_MATH_MEDIUM_SOURCE",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P94-97_20261023_유사50/BV-BAKBAL-H-COM2-P94-Q01-S2-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "두 번의 평행이동으로 만든 삼각형의 무게중심 G(4,3)",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "두 번의 평행이동으로 만든 삼각형의 무게중심 G(4,3)"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P94-Q02-T1-R2",
@@ -287,8 +290,9 @@ window.questionBank = [
     "decisionOwner": "GPT_BOOK_MATH_META",
     "confidence": "HIGH_MATH_MEDIUM_SOURCE",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P94-97_20261023_유사50/BV-BAKBAL-H-COM2-P94-Q02-S1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "두 직선의 평행이동 후 만나는 교점 I(2,2)",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "두 직선의 평행이동 후 만나는 교점 I(2,2)"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P94-Q02-S2-R2",
@@ -345,8 +349,9 @@ window.questionBank = [
     "decisionOwner": "GPT_BOOK_MATH_META",
     "confidence": "HIGH_MATH_MEDIUM_SOURCE",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P94-97_20261023_유사50/BV-BAKBAL-H-COM2-P94-Q02-S2-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "두 직선의 평행이동 후 만나는 교점 I(1,-1)",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "두 직선의 평행이동 후 만나는 교점 I(1,-1)"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P94-Q03-T1-R2",
@@ -403,8 +408,9 @@ window.questionBank = [
     "decisionOwner": "GPT_BOOK_MATH_META",
     "confidence": "HIGH_MATH_MEDIUM_SOURCE",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P94-97_20261023_유사50/BV-BAKBAL-H-COM2-P94-Q03-T1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원 중심의 이동과 y축이 만드는 현 AB",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원 중심의 이동과 y축이 만드는 현 AB"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P94-Q03-S1-R2",
@@ -461,8 +467,9 @@ window.questionBank = [
     "decisionOwner": "GPT_BOOK_MATH_META",
     "confidence": "HIGH_MATH_MEDIUM_SOURCE",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P94-97_20261023_유사50/BV-BAKBAL-H-COM2-P94-Q03-S1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원 중심의 이동과 y축이 만드는 현 AB",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원 중심의 이동과 y축이 만드는 현 AB"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P94-Q03-S2-R2",
@@ -519,8 +526,9 @@ window.questionBank = [
     "decisionOwner": "GPT_BOOK_MATH_META",
     "confidence": "HIGH_MATH_MEDIUM_SOURCE",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P94-97_20261023_유사50/BV-BAKBAL-H-COM2-P94-Q03-S2-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원 중심의 이동과 y축이 만드는 현 AB",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원 중심의 이동과 y축이 만드는 현 AB"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P94-Q04-T1-R2",
@@ -580,8 +588,9 @@ window.questionBank = [
     "problemImageAlt": "발문 도형",
     "problemImageSize": "large",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P94-97_20261023_유사50/BV-BAKBAL-H-COM2-P94-Q04-T1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "두 원의 중심 이동 (1,-1)에 따른 평행이동 전·후 포물선과 최종 y절편",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "두 원의 중심 이동 (1,-1)에 따른 평행이동 전·후 포물선과 최종 y절편"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P94-Q04-S1-R2",
@@ -638,8 +647,9 @@ window.questionBank = [
     "decisionOwner": "GPT_BOOK_MATH_META",
     "confidence": "HIGH_MATH_MEDIUM_SOURCE",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P94-97_20261023_유사50/BV-BAKBAL-H-COM2-P94-Q04-S1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "두 원의 중심 이동 (2,1)에 따른 평행이동 전·후 포물선과 최종 y절편",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "두 원의 중심 이동 (2,1)에 따른 평행이동 전·후 포물선과 최종 y절편"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P94-Q04-S2-R2",
@@ -696,8 +706,9 @@ window.questionBank = [
     "decisionOwner": "GPT_BOOK_MATH_META",
     "confidence": "HIGH_MATH_MEDIUM_SOURCE",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P94-97_20261023_유사50/BV-BAKBAL-H-COM2-P94-Q04-S2-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "두 원의 중심 이동 (1,2)에 따른 평행이동 전·후 포물선과 최종 y절편",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "두 원의 중심 이동 (1,2)에 따른 평행이동 전·후 포물선과 최종 y절편"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P94-Q05-T1-R2",
@@ -754,8 +765,9 @@ window.questionBank = [
     "decisionOwner": "GPT_BOOK_MATH_META",
     "confidence": "HIGH_MATH_MEDIUM_SOURCE",
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P94-97_20261023_유사50/BV-BAKBAL-H-COM2-P94-Q05-T1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "포물선의 이동량 (2,4)만큼 옮긴 직선과 원의 현 AB",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "포물선의 이동량 (2,4)만큼 옮긴 직선과 원의 현 AB"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P94-Q05-S1-R2",
