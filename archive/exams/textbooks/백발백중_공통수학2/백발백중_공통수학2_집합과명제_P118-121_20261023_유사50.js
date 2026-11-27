@@ -64,8 +64,9 @@ window.questionBank = [
     },
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P118-121_20261023_유사50/BV-BAKBAL-H-COM2-P118-Q01-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "a=2를 대입하면 A={2,3}, B={3,4}이므로 공통 원소는 3이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "a=2를 대입하면 A={2,3}, B={3,4}이므로 공통 원소는 3이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P118-Q01-S1-R1",
@@ -131,8 +132,9 @@ window.questionBank = [
     },
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P118-121_20261023_유사50/BV-BAKBAL-H-COM2-P118-Q01-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "해설의 a=3에서 A={1,3}, B={3,2}이다. 교집합 A∩B={3}.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "해설의 a=3에서 A={1,3}, B={3,2}이다. 교집합 A∩B={3}."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P118-Q01-S2-R1",
@@ -198,8 +200,9 @@ window.questionBank = [
     },
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P118-121_20261023_유사50/BV-BAKBAL-H-COM2-P118-Q01-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "해설의 a=3에서 A={3,5}, B={5,1}이다. 교집합 A∩B={5}.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "해설의 a=3에서 A={3,5}, B={5,1}이다. 교집합 A∩B={5}."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P118-Q02-T1-R1",
@@ -265,8 +268,9 @@ window.questionBank = [
     },
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P118-121_20261023_유사50/BV-BAKBAL-H-COM2-P118-Q02-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "해설의 a=3에서 A={2,5,3}, B={3,4}이다. 교집합 A∩B={3} 및 합집합 A∪B={2,3,4,5}.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "해설의 a=3에서 A={2,5,3}, B={3,4}이다. 교집합 A∩B={3} 및 합집합 A∪B={2,3,4,5}."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P118-Q02-S1-R1",
@@ -332,8 +336,9 @@ window.questionBank = [
     },
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P118-121_20261023_유사50/BV-BAKBAL-H-COM2-P118-Q02-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "해설의 a=2에서 A={1,4,2}, B={2,3}이다. 교집합 A∩B={2} 및 합집합 A∪B={1,2,3,4}.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "해설의 a=2에서 A={1,4,2}, B={2,3}이다. 교집합 A∩B={2} 및 합집합 A∪B={1,2,3,4}."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P118-Q02-S2-R1",
@@ -399,8 +404,9 @@ window.questionBank = [
     },
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P118-121_20261023_유사50/BV-BAKBAL-H-COM2-P118-Q02-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "해설의 a=2에서 A={3,5}, B={5,2}이다. 교집합 A∩B={5} 및 합집합 A∪B={2,3,5}.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "해설의 a=2에서 A={3,5}, B={5,2}이다. 교집합 A∩B={5} 및 합집합 A∪B={2,3,5}."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P118-Q03-T1-R1",
@@ -467,8 +473,9 @@ window.questionBank = [
     },
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P118-121_20261023_유사50/BV-BAKBAL-H-COM2-P118-Q03-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "해설의 a=3에서 A={3,4}, B={4,11}이다. 대칭차집합 (A-B)∪(B-A)={3,11}.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "해설의 a=3에서 A={3,4}, B={4,11}이다. 대칭차집합 (A-B)∪(B-A)={3,11}."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P118-Q03-S1-R1",
@@ -535,8 +542,9 @@ window.questionBank = [
     },
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P118-121_20261023_유사50/BV-BAKBAL-H-COM2-P118-Q03-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "해설의 a=4에서 A={12,2}, B={2,10}이다. 대칭차집합 (A-B)∪(B-A)={10,12}.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "해설의 a=4에서 A={12,2}, B={2,10}이다. 대칭차집합 (A-B)∪(B-A)={10,12}."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P118-Q03-S2-R1",
@@ -603,8 +611,9 @@ window.questionBank = [
     },
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P118-121_20261023_유사50/BV-BAKBAL-H-COM2-P118-Q03-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "해설의 a=2에서 A={5,1}, B={1,6}이다. 대칭차집합 (A-B)∪(B-A)={5,6}.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "해설의 a=2에서 A={5,1}, B={1,6}이다. 대칭차집합 (A-B)∪(B-A)={5,6}."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P118-Q04-T1-R1",
@@ -671,8 +680,9 @@ window.questionBank = [
     },
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P118-121_20261023_유사50/BV-BAKBAL-H-COM2-P118-Q04-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "해설의 a=2에서 A={1,4}, B={4,2}이다. 차집합 A-B={1}.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "해설의 a=2에서 A={1,4}, B={4,2}이다. 차집합 A-B={1}."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P118-Q04-S1-R1",
@@ -739,8 +749,9 @@ window.questionBank = [
     },
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P118-121_20261023_유사50/BV-BAKBAL-H-COM2-P118-Q04-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "해설의 a=2에서 A={3,4}, B={4,1}이다. 차집합 A-B={3}.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "해설의 a=2에서 A={3,4}, B={4,1}이다. 차집합 A-B={3}."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P118-Q04-S2-R1",
@@ -807,8 +818,9 @@ window.questionBank = [
     },
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P118-121_20261023_유사50/BV-BAKBAL-H-COM2-P118-Q04-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "해설의 a=2에서 A={4,5}, B={5,2}이다. 차집합 A-B={4}.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "해설의 a=2에서 A={4,5}, B={5,2}이다. 차집합 A-B={4}."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P118-Q05-T1-R1",
@@ -875,8 +887,9 @@ window.questionBank = [
     },
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P118-121_20261023_유사50/BV-BAKBAL-H-COM2-P118-Q05-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "해설의 a=-5에서 A={1,2}, B={2,3}이다. 교집합 A∩B={2}.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "해설의 a=-5에서 A={1,2}, B={2,3}이다. 교집합 A∩B={2}."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P118-Q05-S1-R1",

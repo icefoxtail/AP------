@@ -613,12 +613,13 @@ window.questionBank = [
     "sourceMatch": "UNKNOWN_ORIGINAL_STRUCTURE",
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q04-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "A(2,0)와 B(0,3)를 이으면 직각삼각형의 빗변 AB=√13이고, 수평·수직 길이는 각각 2, 3이다.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "original_printed_question_mapping",
       "original_structure_similarity"
-    ]
+    ],
+    "solutionImageCaption": "A(2,0)와 B(0,3)를 이으면 직각삼각형의 빗변 AB=√13이고, 수평·수직 길이는 각각 2, 3이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P140-Q04-S1-R1",
@@ -675,12 +676,13 @@ window.questionBank = [
     "sourceMatch": "UNKNOWN_ORIGINAL_STRUCTURE",
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q04-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "A(1,2)와 B(4,6)를 이으면 직각삼각형의 빗변 AB=5이고, 수평·수직 길이는 각각 3, 4이다.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "original_printed_question_mapping",
       "original_structure_similarity"
-    ]
+    ],
+    "solutionImageCaption": "A(1,2)와 B(4,6)를 이으면 직각삼각형의 빗변 AB=5이고, 수평·수직 길이는 각각 3, 4이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P140-Q04-S2-R1",
@@ -737,12 +739,13 @@ window.questionBank = [
     "sourceMatch": "UNKNOWN_ORIGINAL_STRUCTURE",
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q04-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "A(5,1)와 B(2,5)를 이으면 직각삼각형의 빗변 AB=5이고, 수평·수직 길이는 각각 3, 4이다.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "original_printed_question_mapping",
       "original_structure_similarity"
-    ]
+    ],
+    "solutionImageCaption": "A(5,1)와 B(2,5)를 이으면 직각삼각형의 빗변 AB=5이고, 수평·수직 길이는 각각 3, 4이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P140-Q05-T1-R1",
@@ -799,9 +802,10 @@ window.questionBank = [
     "sourceMatch": "SAME_CORE_CONCEPT_CONDITION_SOLUTION_STRUCTURE",
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q05-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
-    "inferredFields": []
+    "solutionImageAlt": "원의 중심 C(3,-1)를 구하고 점 P를 역방향으로 옮겨 (1,2)를 얻는다. P에서 C로 x방향 +2, y방향 -3 이동한다.",
+    "solutionImageSize": "full",
+    "inferredFields": [],
+    "solutionImageCaption": "원의 중심 C(3,-1)를 구하고 점 P를 역방향으로 옮겨 (1,2)를 얻는다. P에서 C로 x방향 +2, y방향 -3 이동한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P140-Q05-S1-R1",

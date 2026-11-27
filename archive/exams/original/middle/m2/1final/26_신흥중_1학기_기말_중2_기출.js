@@ -93,9 +93,10 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/26_신흥중_1학기_기말_중2_기출/q3-solution.svg",
-    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
-    "solutionImageCaption": "x가 0→3일 때 y8→2로 −6. 기울기 −6/3=−2인 y=−2x+8. 정답③.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "직선 y=−2x+8에서 x가 0에서 3으로 증가할 때 y는 8에서 2로 6 감소한다. 점선의 가로길이는 3, 세로길이는 6이다.",
+    "solutionImageCaption": "직선 y=−2x+8에서 x가 0에서 3으로 증가할 때 y는 8에서 2로 6 감소한다. 점선의 가로길이는 3, 세로길이는 6이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 4,

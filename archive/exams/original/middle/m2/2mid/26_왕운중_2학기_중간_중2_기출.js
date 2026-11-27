@@ -534,7 +534,7 @@ window.questionBank = [
   {
     "id": 8,
     "imageSize": "full",
-    "imageAlt": "삼각형 ABC의 AB와 AC는 같은 길이이다. 외심 O에서 B와 C로 이어진 선과 내심 I에서 B와 C로 이어진 선을 구별했다. 각 BIC가 108도이다.",
+    "imageAlt": "AB=AC인 이등변삼각형에서 외심 O와 내심 I를 각각 B, C에 실선으로 잇고 ∠BIC=108°를 나타낸다.",
     "level": "중",
     "category": "외심과 내심의 관계",
     "originalCategory": "도형의 성질",
@@ -606,12 +606,13 @@ window.questionBank = [
     "solutionImageCaption": "∠A=36°, ∠B=72°, ∠BOC=72°, ∠OBC=54°, ∠IBC=36°이므로 ∠OBI=∠OBC−∠IBC=18°이다.",
     "solutionImageSize": "medium",
     "primaryMethod": "내심각에서 꼭짓각을 복원하고 외심각과 비교",
-    "decisiveStep": "A=36, 밑각72를 구한 뒤 OBC54와 IBC36의 차를 취한다."
+    "decisiveStep": "A=36, 밑각72를 구한 뒤 OBC54와 IBC36의 차를 취한다.",
+    "imageCaption": "AB=AC인 이등변삼각형에서 외심 O와 내심 I를 각각 B, C에 실선으로 잇고 ∠BIC=108°를 나타낸다."
   },
   {
     "id": 9,
     "imageSize": "full",
-    "imageAlt": "첫 장면은 꼭짓점 A가 B에 닿도록 접는 선, 둘째는 A가 C에 닿도록 접는 선을 보인다. 셋째는 원래 삼각형에 두 선을 그어 만나는 점 O를 표시했다.",
+    "imageAlt": "두 변의 수직이등분선을 접어 만들고 그 교점 O를 찾는 세 단계의 활동이다.",
     "level": "하",
     "category": "수직이등분선과 외심",
     "originalCategory": "도형의 성질",
@@ -681,7 +682,8 @@ window.questionBank = [
     "solutionImageCaption": "수직이등분선의 교점 O는 세 꼭짓점에서 같은 거리이고, 정삼각형에서는 외심과 내심이 일치한다.",
     "solutionImageSize": "medium",
     "primaryMethod": "접은 선을 수직이등분선으로 해석해 외심 판정",
-    "decisiveStep": "두 수직이등분선의 교점을 외심으로 확인하고 중심각·등거리 진술을 검토한다."
+    "decisiveStep": "두 수직이등분선의 교점을 외심으로 확인하고 중심각·등거리 진술을 검토한다.",
+    "imageCaption": "두 변의 수직이등분선을 접어 만들고 그 교점 O를 찾는 세 단계의 활동이다."
   },
   {
     "id": 10,

@@ -55,12 +55,13 @@ window.questionBank = [
     "sourceMatch": "STRUCTURE_MATCHED_VARIANT",
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P126-129_20261023_유사50/BV-BAKBAL-H-COM2-P126-Q01-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "A=[1,3]이고, a=1일 때 B=[1,2]로 B⊆A이다. 이는 a의 최솟값 경계 그림이며 전체 a 범위는 1≤a≤3이다.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "exact_original_to_uid_number_mapping"
     ],
-    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S30-P126-Q11"
+    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S30-P126-Q11",
+    "solutionImageCaption": "A=[1,3]이고, a=1일 때 B=[1,2]로 B⊆A이다. 이는 a의 최솟값 경계 그림이며 전체 a 범위는 1≤a≤3이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P126-Q01-S1-R1",
@@ -117,12 +118,13 @@ window.questionBank = [
     "sourceMatch": "STRUCTURE_MATCHED_VARIANT",
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P126-129_20261023_유사50/BV-BAKBAL-H-COM2-P126-Q01-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "A=[1,4], B=[min(a,3),max(a,3)]. a=1에서 B=[1,3]⊆A이고 전체 허용 범위는 1≤a≤4.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "exact_original_to_uid_number_mapping"
     ],
-    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S30-P126-Q11"
+    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S30-P126-Q11",
+    "solutionImageCaption": "A=[1,4], B=[min(a,3),max(a,3)]. a=1에서 B=[1,3]⊆A이고 전체 허용 범위는 1≤a≤4."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P126-Q01-S2-R1",
@@ -179,12 +181,13 @@ window.questionBank = [
     "sourceMatch": "STRUCTURE_MATCHED_VARIANT",
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P126-129_20261023_유사50/BV-BAKBAL-H-COM2-P126-Q01-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "A=[2,4], B=[min(a,3),max(a,3)]. a=4에서 B=[3,4]⊆A이고 전체 허용 범위는 2≤a≤4.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "exact_original_to_uid_number_mapping"
     ],
-    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S30-P126-Q11"
+    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S30-P126-Q11",
+    "solutionImageCaption": "A=[2,4], B=[min(a,3),max(a,3)]. a=4에서 B=[3,4]⊆A이고 전체 허용 범위는 2≤a≤4."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P126-Q02-T1-R1",
@@ -241,12 +244,13 @@ window.questionBank = [
     "sourceMatch": "STRUCTURE_MATCHED_VARIANT",
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P126-129_20261023_유사50/BV-BAKBAL-H-COM2-P126-Q02-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "n(A)=14, n(B)=18, n(A∪B)=25이므로 공통 7개, A만 7개, B만 11개이다. 음영은 A-B 영역이다.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "exact_original_to_uid_number_mapping"
     ],
-    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S30-P126-Q12"
+    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S30-P126-Q12",
+    "solutionImageCaption": "n(A)=14, n(B)=18, n(A∪B)=25이므로 공통 7개, A만 7개, B만 11개이다. 음영은 A-B 영역이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P126-Q02-S1-R1",
@@ -303,12 +307,13 @@ window.questionBank = [
     "sourceMatch": "STRUCTURE_MATCHED_VARIANT",
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P126-129_20261023_유사50/BV-BAKBAL-H-COM2-P126-Q02-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "n(A)=17, n(B)=21, n(A∪B)=30이므로 공통 8개, A만 9개, B만 13개이다. 음영은 A-B 영역이다.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "exact_original_to_uid_number_mapping"
     ],
-    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S30-P126-Q12"
+    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S30-P126-Q12",
+    "solutionImageCaption": "n(A)=17, n(B)=21, n(A∪B)=30이므로 공통 8개, A만 9개, B만 13개이다. 음영은 A-B 영역이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P126-Q02-S2-R1",
@@ -365,12 +370,13 @@ window.questionBank = [
     "sourceMatch": "STRUCTURE_MATCHED_VARIANT",
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P126-129_20261023_유사50/BV-BAKBAL-H-COM2-P126-Q02-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "n(A)=22, n(B)=15, n(A∪B)=29이므로 공통 8개, A만 14개, B만 7개이다. 음영은 A-B 영역이다.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "exact_original_to_uid_number_mapping"
     ],
-    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S30-P126-Q12"
+    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S30-P126-Q12",
+    "solutionImageCaption": "n(A)=22, n(B)=15, n(A∪B)=29이므로 공통 8개, A만 14개, B만 7개이다. 음영은 A-B 영역이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P126-Q03-T1-R1",
@@ -427,12 +433,13 @@ window.questionBank = [
     "sourceMatch": "STRUCTURE_MATCHED_VARIANT",
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P126-129_20261023_유사50/BV-BAKBAL-H-COM2-P126-Q03-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "B∪(A-B)=A로 B⊆A이고, (A^c∪B^c)∩C=∅에서 C⊆B이다. 따라서 C⊆B⊆A.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "exact_original_to_uid_number_mapping"
     ],
-    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S30-P126-Q13"
+    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S30-P126-Q13",
+    "solutionImageCaption": "B∪(A-B)=A로 B⊆A이고, (A^c∪B^c)∩C=∅에서 C⊆B이다. 따라서 C⊆B⊆A."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P126-Q03-S1-R1",
@@ -489,12 +496,13 @@ window.questionBank = [
     "sourceMatch": "STRUCTURE_MATCHED_VARIANT",
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P126-129_20261023_유사50/BV-BAKBAL-H-COM2-P126-Q03-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "A∪(B-A)=B에서 A⊆B, (A^c∪C^c)∩B=∅에서 B⊆A∩C. 따라서 A=B⊆C.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "exact_original_to_uid_number_mapping"
     ],
-    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S30-P126-Q13"
+    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S30-P126-Q13",
+    "solutionImageCaption": "A∪(B-A)=B에서 A⊆B, (A^c∪C^c)∩B=∅에서 B⊆A∩C. 따라서 A=B⊆C."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P126-Q03-S2-R1",
@@ -551,12 +559,14 @@ window.questionBank = [
     "sourceMatch": "STRUCTURE_MATCHED_VARIANT",
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P126-129_20261023_유사50/BV-BAKBAL-H-COM2-P126-Q03-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "B⊆A와 B⊆C이므로 B⊆A∩C. A와 C의 상호 포함관계는 주어지지 않는다.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "exact_original_to_uid_number_mapping"
     ],
-    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S30-P126-Q13"
+    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S30-P126-Q13",
+    "solutionImageCaption": "B⊆A와 B⊆C이므로 B⊆A∩C. A와 C의 상호 포함관계는 주어지지 않는다.",
+    "solutionImageScale": 94
   },
   {
     "id": "BV-BAKBAL-H-COM2-P126-Q04-T1-R1",
@@ -613,12 +623,13 @@ window.questionBank = [
     "sourceMatch": "STRUCTURE_MATCHED_VARIANT",
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P126-129_20261023_유사50/BV-BAKBAL-H-COM2-P126-Q04-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "A=(-∞,1)∪(26,∞)이며 a=5에서 B=[5,25]로 A∩B=∅이다. B=[a,a²], a≥2; 이 그림은 모든 a가 아니라 최대 허용 자연수 사례이다.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "exact_original_to_uid_number_mapping"
     ],
-    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S30-P126-Q14"
+    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S30-P126-Q14",
+    "solutionImageCaption": "A=(-∞,1)∪(26,∞)이며 a=5에서 B=[5,25]로 A∩B=∅이다. B=[a,a²], a≥2; 이 그림은 모든 a가 아니라 최대 허용 자연수 사례이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P126-Q04-S1-R1",
@@ -675,12 +686,13 @@ window.questionBank = [
     "sourceMatch": "STRUCTURE_MATCHED_VARIANT",
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P126-129_20261023_유사50/BV-BAKBAL-H-COM2-P126-Q04-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "A=(-∞,1)∪(10,∞)이며 a=3에서 B=[3,9]로 A∩B=∅이다. B=[a,a²], a≥2; 이 그림은 모든 a가 아니라 최대 허용 자연수 사례이다.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "exact_original_to_uid_number_mapping"
     ],
-    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S30-P126-Q14"
+    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S30-P126-Q14",
+    "solutionImageCaption": "A=(-∞,1)∪(10,∞)이며 a=3에서 B=[3,9]로 A∩B=∅이다. B=[a,a²], a≥2; 이 그림은 모든 a가 아니라 최대 허용 자연수 사례이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P126-Q04-S2-R1",
@@ -737,12 +749,13 @@ window.questionBank = [
     "sourceMatch": "STRUCTURE_MATCHED_VARIANT",
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P126-129_20261023_유사50/BV-BAKBAL-H-COM2-P126-Q04-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "A=(-∞,2)∪(37,∞)이며 a=5에서 B=[5,36]로 A∩B=∅이다. B=[a,(a+1)²], a≥2; 이 그림은 모든 a가 아니라 최대 허용 자연수 사례이다.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "exact_original_to_uid_number_mapping"
     ],
-    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S30-P126-Q14"
+    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S30-P126-Q14",
+    "solutionImageCaption": "A=(-∞,2)∪(37,∞)이며 a=5에서 B=[5,36]로 A∩B=∅이다. B=[a,(a+1)²], a≥2; 이 그림은 모든 a가 아니라 최대 허용 자연수 사례이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P126-Q05-T1-R1",
@@ -799,12 +812,13 @@ window.questionBank = [
     "sourceMatch": "STRUCTURE_MATCHED_VARIANT",
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P126-129_20261023_유사50/BV-BAKBAL-H-COM2-P126-Q05-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "A3∩(A2∪A5)=A6∪A15이고 공통 부분은 A30(4개)이다. 따라서 20+8−4=24개.",
+    "solutionImageSize": "full",
     "inferredFields": [
       "exact_original_to_uid_number_mapping"
     ],
-    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S30-P126-Q15"
+    "verifiedSourceLocationId": "2022-BAKBAL-H-COM2-PART2-BODY-V1-S30-P126-Q15",
+    "solutionImageCaption": "A3∩(A2∪A5)=A6∪A15이고 공통 부분은 A30(4개)이다. 따라서 20+8−4=24개."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P126-Q05-S1-R1",

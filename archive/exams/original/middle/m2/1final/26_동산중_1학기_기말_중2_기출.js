@@ -284,9 +284,10 @@ window.questionBank = [
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
     ],
     "solutionImage": "assets/images/26_동산중_1학기_기말_중2_기출/q4-solution.svg",
-    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
-    "solutionImageCaption": "같은 x에서 세로좌표가 3 감소한다. y=2x−3, 정답④.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "직선 y=2x를 아래로 3만큼 평행이동하면 y=2x−3이다. 수직 화살표 두 개가 같은 x에서 y값이 3 감소함을 나타낸다.",
+    "solutionImageCaption": "직선 y=2x를 아래로 3만큼 평행이동하면 y=2x−3이다. 수직 화살표 두 개가 같은 x에서 y값이 3 감소함을 나타낸다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 5,
@@ -737,7 +738,7 @@ window.questionBank = [
   {
     "id": 11,
     "imageSize": "full",
-    "imageAlt": "가로 25 cm, 세로 10 cm인 직사각형 ABCD이다. P는 밑변을 따라 B에서 C로 움직이는 점이다. AP를 경계로 오른쪽 사다리꼴 APCD를 옅은 청록으로 표시했다.",
+    "imageAlt": "가로 25 cm, 세로 10 cm인 직사각형에서 P가 B에서 C로 이동하며, 색칠한 부분은 사다리꼴 APCD이다. P의 위치는 예시이다.",
     "level": "중",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
@@ -811,7 +812,8 @@ window.questionBank = [
     "solutionImage": "assets/images/26_동산중_1학기_기말_중2_기출/q11-solution.svg",
     "solutionImageAlt": "해설 그림: 직사각형 ABCD(가로 25cm, 세로 10cm)를 점 P로 나누어, 삼각형 ABP는 넓이 20x(BP=4x)로, 사다리꼴 APCD는 넓이 y로 서로 다른 색으로 구분해 보인다.",
     "solutionImageCaption": "x초 후 BP=4x이므로 삼각형 ABP의 넓이는 20x이고, 직사각형에서 이를 뺀 나머지가 사다리꼴 APCD의 넓이 y이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "imageCaption": "가로 25 cm, 세로 10 cm인 직사각형에서 P가 B에서 C로 이동하며, 색칠한 부분은 사다리꼴 APCD이다. P의 위치는 예시이다."
   },
   {
     "id": 12,

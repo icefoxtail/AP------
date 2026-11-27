@@ -65,8 +65,9 @@ window.questionBank = [
     "sourceMatch": "UNKNOWN_PRINTED_QUESTION_ALIGNMENT",
     "targetChoiceSlot": 4,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P122-125_20261023_유사50/BV-BAKBAL-H-COM2-P122-Q01-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "16의 양의 약수는 {1,16}, {2,8}, {4}의 세 묶음으로 선택한다. 4는 자기 자신과 짝이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "16의 양의 약수는 {1,16}, {2,8}, {4}의 세 묶음으로 선택한다. 4는 자기 자신과 짝이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P122-Q01-S1-R1",
@@ -133,8 +134,9 @@ window.questionBank = [
     "sourceMatch": "UNKNOWN_PRINTED_QUESTION_ALIGNMENT",
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P122-125_20261023_유사50/BV-BAKBAL-H-COM2-P122-Q01-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "20의 양의 약수 묶음 {1,20}, {2,10}, {4,5}. 공집합을 제외하고 세 묶음을 선택한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "20의 양의 약수 묶음 {1,20}, {2,10}, {4,5}. 공집합을 제외하고 세 묶음을 선택한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P122-Q01-S2-R1",
@@ -201,8 +203,9 @@ window.questionBank = [
     "sourceMatch": "UNKNOWN_PRINTED_QUESTION_ALIGNMENT",
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P122-125_20261023_유사50/BV-BAKBAL-H-COM2-P122-Q01-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "8의 양의 약수 묶음 {1,8}, {2,4}. 공집합을 제외하고 두 묶음을 선택한다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "8의 양의 약수 묶음 {1,8}, {2,4}. 공집합을 제외하고 두 묶음을 선택한다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P122-Q02-T1-R1",
@@ -269,8 +272,9 @@ window.questionBank = [
     "sourceMatch": "UNKNOWN_PRINTED_QUESTION_ALIGNMENT",
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P122-125_20261023_유사50/BV-BAKBAL-H-COM2-P122-Q02-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "24의 양의 약수 묶음 {1,24}, {2,12}, {3,8}, {4,6}. 2∈A이므로 {2,12} 묶음은 필수이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "24의 양의 약수 묶음 {1,24}, {2,12}, {3,8}, {4,6}. 2∈A이므로 {2,12} 묶음은 필수이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P122-Q02-S1-R1",
@@ -337,8 +341,9 @@ window.questionBank = [
     "sourceMatch": "UNKNOWN_PRINTED_QUESTION_ALIGNMENT",
     "targetChoiceSlot": 2,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P122-125_20261023_유사50/BV-BAKBAL-H-COM2-P122-Q02-S1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "18의 양의 약수 묶음 {1,18}, {2,9}, {3,6}. 3∈A이므로 {3,6} 묶음은 필수이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "18의 양의 약수 묶음 {1,18}, {2,9}, {3,6}. 3∈A이므로 {3,6} 묶음은 필수이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P122-Q02-S2-R1",
@@ -405,8 +410,9 @@ window.questionBank = [
     "sourceMatch": "UNKNOWN_PRINTED_QUESTION_ALIGNMENT",
     "targetChoiceSlot": 1,
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P122-125_20261023_유사50/BV-BAKBAL-H-COM2-P122-Q02-S2-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "16의 양의 약수 묶음 {1,16}, {2,8}, {4}. 4∈A이므로 자기대응 {4}가 필수이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "16의 양의 약수 묶음 {1,16}, {2,8}, {4}. 4∈A이므로 자기대응 {4}가 필수이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P122-Q03-T1-R1",

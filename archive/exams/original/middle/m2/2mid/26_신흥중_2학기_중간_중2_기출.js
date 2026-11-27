@@ -136,7 +136,7 @@ window.questionBank = [
   {
     "id": 4,
     "imageSize": "full",
-    "imageAlt": "직사각형 ABCD에서 두 대각선 AC와 BD가 O에서 교차한다. 오른쪽 CD에 6 cm, 아랫변 BC에 8 cm, 대각선 BD에 10 cm가 적혀 있다.",
+    "imageAlt": "가로 8 cm, 세로 6 cm인 직사각형 ABCD의 두 대각선이 O에서 만난다.",
     "level": "하",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -166,9 +166,9 @@ window.questionBank = [
     "solution": "직사각형의 두 대각선은 길이가 같고 서로를 이등분한다.\n$BD=10$cm이므로 $OA=OB=5$cm이고, $AB=DC=6$cm이다.\n따라서 $\\triangle OAB$의 둘레는 $5+5+6=16$cm이다.\n따라서 정답은 ①이다.",
     "image": "assets/images/26_신흥중_2학기_중간_중2_기출/q4-problem-visual-v2.svg",
     "solutionImage": "assets/images/26_신흥중_2학기_중간_중2_기출/q4-solution.svg",
-    "solutionImageAlt": "해설 그림: 직사각형 ABCD의 두 대각선이 만나는 점 O에서 OA, OB, OC, OD가 모두 같고 OA=OB=5cm, AB=6cm인 삼각형 OAB를 색칠한 그림. 둘레는 16cm이다. 색: 파란색으로 OA=OB=OC=OD.",
-    "solutionImageCaption": "△OAB에서 OA=OB=5cm, AB=6cm이므로 둘레는 16cm이다.",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "직사각형의 대각선은 서로를 이등분하므로 OA=OB=5 cm이고 AB=6 cm이다.",
+    "solutionImageCaption": "직사각형의 대각선은 서로를 이등분하므로 OA=OB=5 cm이고 AB=6 cm이다.",
+    "solutionImageSize": "full",
     "templateKey": "TPL_SPECIAL_QUADRILATERALS",
     "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
     "integrationPattern": "NONE",
@@ -177,7 +177,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "primaryMethod": "직사각형의 같은 대각선이 서로를 이등분",
-    "decisiveStep": "대각선 반 길이를 OA=OB로 읽고 대변 길이를 더해 삼각형 둘레를 만든다."
+    "decisiveStep": "대각선 반 길이를 OA=OB로 읽고 대변 길이를 더해 삼각형 둘레를 만든다.",
+    "imageCaption": "가로 8 cm, 세로 6 cm인 직사각형 ABCD의 두 대각선이 O에서 만난다.",
+    "solutionImageScale": 90
   },
   {
     "id": 5,
@@ -466,7 +468,7 @@ window.questionBank = [
   {
     "id": 11,
     "imageSize": "full",
-    "imageAlt": "왼쪽 삼각형 ABC와 오른쪽 삼각형 DEF를 나란히 보인다. 왼쪽 AB는 8 cm이고 오른쪽의 대응변 DE는 10 cm이다.",
+    "imageAlt": "원본처럼 닮은 두 삼각형 ABC와 DEF의 내부만 연하게 표시하고, 대응변 AB=8 cm와 DE=10 cm를 적는다.",
     "level": "하",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -503,7 +505,8 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "primaryMethod": "닮음비의 제곱으로 넓이비",
-    "decisiveStep": "대응변 8:10을 4:5로 정리하고 넓이비 16:25를 적용한다."
+    "decisiveStep": "대응변 8:10을 4:5로 정리하고 넓이비 16:25를 적용한다.",
+    "imageCaption": "원본처럼 닮은 두 삼각형 ABC와 DEF의 내부만 연하게 표시하고, 대응변 AB=8 cm와 DE=10 cm를 적는다."
   },
   {
     "id": 12,
