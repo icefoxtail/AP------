@@ -1,0 +1,93 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-2"
+        ],
+        "domain": [
+          null,
+          "0"
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "4",
+          "-2"
+        ],
+        "domain": [
+          "0",
+          "1"
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "-6",
+          "4"
+        ],
+        "domain": [
+          "1",
+          null
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "functionName": "f",
+    "xWindow": [
+      -3,
+      4
+    ],
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "-2",
+        "2",
+        "4"
+      ]
+    },
+    "limitArrows": [
+      {
+        "at": "0",
+        "side": "LEFT",
+        "toY": "2"
+      },
+      {
+        "at": "1",
+        "side": "LEFT",
+        "toY": "2"
+      }
+    ]
+  },
+  "caption": "f∘f의 식은 x<0에서 −2x+2, 0≤x<1에서 −2x+4, x≥1에서 4x−6이다. x=0과 1의 좌극한은 열린 점으로 구분된다.",
+  "accessibilityDescription": "세 개의 직선 조각에서 x=0과 x=1의 열린 끝점·닫힌 함수값이 서로 높이가 다른 점으로 나타나고 좌측 접근 화살표와 축 점선이 있다.",
+  "newVisualInformation": [
+    "불연속 경계 x=0,1의 열린·닫힌 점",
+    "세 정의역마다 정확한 일차식"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x<0: -2x+2, 0≤x<1: -2x+4, x≥1: 4x−6",
+      "mappedTo": [
+        "graphPlan.pieces"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "x=0,1에서 왼쪽 극한과 실제 함숫값 차이",
+      "mappedTo": [
+        "graphPlan.limitArrows",
+        "graphPlan.axisTickValues"
+      ]
+    }
+  ]
+}

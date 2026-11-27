@@ -1,0 +1,88 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "2",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "3",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "1",
+        "y": "5"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      5
+    ],
+    "viewport": [
+      -3,
+      5,
+      -15,
+      15
+    ],
+    "requiredPoints": [
+      {
+        "id": "J",
+        "x": 1,
+        "y": 5
+      },
+      {
+        "id": "P",
+        "x": 0,
+        "y": 4
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "4",
+        "5"
+      ]
+    }
+  },
+  "pointNames": {
+    "J": "J",
+    "P": "P"
+  },
+  "caption": "a의 최댓값 −1, b=5일 때 좌측은 −(x−1)²+5이고 우측은 2x+3이다. 두 치역 (−∞,5),[5,∞)가 이어져 역함수가 존재하며 f(0)=4.",
+  "accessibilityDescription": "x=1에서 좌측 아래로 뻗는 포물선과 우측 상승 직선이 J(1,5)에서 만나고 왼쪽 P(0,4)가 표시된다.",
+  "newVisualInformation": [
+    "치역 경계 J(1,5)",
+    "f(0)=4를 읽는 좌측 점 P"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x<1에서 a=-1,b=5, x≥1에서 2x+3",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.breakpoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "경계값 5와 P=(0,4)",
+      "mappedTo": [
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ]
+}

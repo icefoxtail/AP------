@@ -1,0 +1,85 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "name": "A",
+        "count": "4"
+      },
+      {
+        "id": "C",
+        "name": "C",
+        "count": "8"
+      }
+    ],
+    "disjoint": [
+      [
+        "A",
+        "C"
+      ]
+    ],
+    "elements": [
+      {
+        "text": "2",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "3",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "5",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "7",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "4",
+        "in": [
+          "C"
+        ]
+      },
+      {
+        "text": "8",
+        "in": [
+          "C"
+        ]
+      }
+    ]
+  },
+  "caption": "A={2,3,5,7}과 4의 배수로 이루어진 C는 서로소여서 n(A∪C)=4+n(C)이다. 예: k=35이면 n(C)=8, 다른 후보 k=42까지 합하여 답은 77이다.",
+  "accessibilityDescription": "전체집합 안에 떨어진 두 원 A와 C가 있으며 A 원에 2,3,5,7과 크기 4, C 원에 4,8 예시와 크기 8이 적혀 있다. 색칠은 없다.",
+  "newVisualInformation": [
+    "서로소 A∩C=∅의 떨어진 원",
+    "예시 k=35일 때 n(A)=4,n(C)=8"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A는 한 자리 소수 2,3,5,7",
+      "mappedTo": [
+        "diagram.elements"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "C는 4의 양의 배수로 A와 서로소, k=35에서 n(C)=8",
+      "mappedTo": [
+        "diagram.disjoint",
+        "diagram.sets"
+      ]
+    }
+  ]
+}

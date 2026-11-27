@@ -1,0 +1,138 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "elements": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "id": "Y",
+        "elements": [
+          "4",
+          "5",
+          "6"
+        ]
+      },
+      {
+        "id": "Z",
+        "elements": [
+          "7",
+          "8",
+          "9"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 1
+        },
+        "to": {
+          "column": 2,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 2
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y"
+      },
+      {
+        "name": "g",
+        "from": "Y",
+        "to": "Z"
+      }
+    ],
+    "highlightPaths": [
+      {
+        "path": [
+          "3",
+          "5",
+          "9"
+        ],
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "g(f(3))=g(5)=9이므로 a=3,f(a)=5,a+f(a)=8이다. 강조 경로는 3→5→9이다.",
+  "accessibilityDescription": "X=3에서 Y=5, 다시 Z=9까지 이어지는 두 화살표가 파란색으로 굵게 강조된 3열 함수 대응도이다.",
+  "newVisualInformation": [
+    "합성 경로 3→5→9 강조",
+    "두 함수의 나머지 원본 화살표 유지"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 함수의 원래 여섯 대응",
+      "mappedTo": [
+        "diagram.arrows"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "g∘f(a)=9인 경로 3→5→9",
+      "mappedTo": [
+        "diagram.highlightPaths"
+      ]
+    }
+  ]
+}

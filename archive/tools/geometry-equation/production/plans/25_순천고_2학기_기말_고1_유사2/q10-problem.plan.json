@@ -1,0 +1,153 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "2"
+        ],
+        "domain": [
+          "1",
+          "2"
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "2",
+          "1"
+        ],
+        "domain": [
+          "2",
+          "4"
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0",
+          "3/2"
+        ],
+        "domain": [
+          "4",
+          "6"
+        ],
+        "start": "CLOSED",
+        "end": "CLOSED"
+      }
+    ],
+    "functionName": "f",
+    "xWindow": [
+      0,
+      10
+    ],
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTickLabels": {
+      "x": {
+        "1": "a",
+        "2": "b",
+        "4": "c",
+        "6": "d",
+        "9": "e"
+      },
+      "y": {
+        "1": "a",
+        "2": "b",
+        "4": "c",
+        "6": "d",
+        "9": "e"
+      }
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "yx",
+          "slope": "1",
+          "intercept": "0",
+          "label": "y=x"
+        }
+      ],
+      "points": [
+        {
+          "id": "Pa",
+          "x": "1",
+          "y": "2",
+          "unnamed": true
+        },
+        {
+          "id": "Pb",
+          "x": "2",
+          "y": "4",
+          "unnamed": true
+        },
+        {
+          "id": "Pc",
+          "x": "4",
+          "y": "6",
+          "unnamed": true
+        },
+        {
+          "id": "Pd",
+          "x": "6",
+          "y": "9",
+          "unnamed": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "g0",
+          "from": "Pa",
+          "axis": "BOTH"
+        },
+        {
+          "id": "g1",
+          "from": "Pb",
+          "axis": "BOTH"
+        },
+        {
+          "id": "g2",
+          "from": "Pc",
+          "axis": "BOTH"
+        },
+        {
+          "id": "g3",
+          "from": "Pd",
+          "axis": "BOTH"
+        }
+      ]
+    }
+  },
+  "caption": "a<b<c<d<e를 대표 좌표 1,2,4,6,9로 나타낸 예이다. 그래프는 f(a)=b,f(b)=c,f(c)=d,f(d)=e를 보이며 답은 강조하지 않는다.",
+  "accessibilityDescription": "양축의 a,b,c,d,e 문자 눈금과 증가하는 세 직선 조각의 네 대응점 (a,b),(b,c),(c,d),(d,e), 축까지 점선 안내, 기준선 y=x가 있다.",
+  "newVisualInformation": [
+    "원본 증가 관계를 구간별 직선으로 표시",
+    "문자 눈금과 보조 점선 및 y=x",
+    "ENGINE_CAPABILITY_PENDING: 원본 S형 매끄러운 단조증가 곡선과 문자 축눈금 동시 구현 필요(삼차 OVERVIEW_LEFT_ARM_TOO_NARROW, 이차 조각 AXIS_TICK_VALUE_OUT_OF_VIEW)"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "문자 눈금 a<b<c<d<e의 대표 좌표 1,2,4,6,9",
+      "mappedTo": [
+        "graphPlan.axisTickLabels"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "함숫값 f(a)=b,f(b)=c,f(c)=d,f(d)=e",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.overlays.points",
+        "graphPlan.overlays.guides"
+      ]
+    }
+  ]
+}

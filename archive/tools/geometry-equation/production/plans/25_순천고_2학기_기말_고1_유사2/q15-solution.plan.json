@@ -1,0 +1,118 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      8,
+      0,
+      8
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "4",
+          "-2",
+          "1/2"
+        ],
+        "domain": [
+          "2",
+          "7"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "inv",
+        "inverseOf": "f",
+        "color": "WARM",
+        "label": "y=f^-1(x)"
+      },
+      {
+        "id": "yx",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "8"
+        ],
+        "style": "DASHED",
+        "label": "y=x"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2",
+        "4"
+      ],
+      "y": [
+        "2",
+        "4"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "2",
+          "y": "2"
+        },
+        {
+          "id": "Q",
+          "x": "4",
+          "y": "4"
+        }
+      ],
+      "segments": [
+        {
+          "id": "PQ",
+          "from": "P",
+          "to": "Q",
+          "color": "BLUE"
+        }
+      ],
+      "callouts": [
+        {
+          "id": "len",
+          "point": "Q",
+          "text": "2√2",
+          "labelKind": "MATH",
+          "direction": "SE"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "P": "P",
+    "Q": "Q"
+  },
+  "caption": "f(x)=1/2(x−2)²+2와 역함수는 y=x 위 P(2,2),Q(4,4)에서 만나며 거리 PQ=2√2, a=4이다.",
+  "accessibilityDescription": "두 대칭 곡선, 기준선 y=x, 교점 P(2,2)와 Q(4,4), 연결선 PQ 및 길이 2√2가 표시된다.",
+  "newVisualInformation": [
+    "역함수 대칭선과 두 교점",
+    "교점 사이 거리 지시선"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f=1/2x²−2x+4, x≥2",
+      "mappedTo": [
+        "graphPlan.curves"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "교점 (2,2),(4,4)과 거리 2√2",
+      "mappedTo": [
+        "graphPlan.overlays.points",
+        "graphPlan.overlays.segments",
+        "graphPlan.overlays.callouts"
+      ]
+    }
+  ]
+}

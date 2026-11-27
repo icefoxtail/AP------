@@ -1,0 +1,121 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      4,
+      -1,
+      5
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "3",
+          "-1"
+        ],
+        "domain": [
+          "-1",
+          "3"
+        ],
+        "color": "BLUE",
+        "label": "y=sqrt(3-x)"
+      },
+      {
+        "id": "line3",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "-1"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ],
+        "label": "y=-x+3"
+      },
+      {
+        "id": "tangent",
+        "kind": "LINE",
+        "coefficients": [
+          "13/4",
+          "-1"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ],
+        "style": "DASHED",
+        "label": "y=-x+13/4"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2",
+        "3",
+        "11/4"
+      ],
+      "y": [
+        "1",
+        "1/2"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "3",
+          "y": "0"
+        },
+        {
+          "id": "Q",
+          "x": "2",
+          "y": "1"
+        },
+        {
+          "id": "T",
+          "x": "11/4",
+          "y": "1/2"
+        }
+      ],
+      "guides": [
+        {
+          "id": "gT",
+          "from": "T",
+          "axis": "BOTH"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "P": "P",
+    "Q": "Q",
+    "T": "T"
+  },
+  "caption": "k=3이면 P(3,0),Q(2,1)에서 두 번 만나고, k=13/4이면 T(11/4,1/2)에서 접하여 한 점만 만난다. 범위는 3≤k<13/4이다.",
+  "accessibilityDescription": "왼쪽으로 뻗는 무리함수 y=√(3−x), 기울기 −1의 두 평행선, 아래쪽 두 교점 P·Q와 접점 T 및 점선 좌표 보조선이 있다.",
+  "newVisualInformation": [
+    "두 교점의 포함 경계 k=3",
+    "접점의 배제 경계 k=13/4"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x≤3의 무리함수 y=√(3−x)",
+      "mappedTo": [
+        "graphPlan.curves"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "k=3에서 두 교점, k=13/4에서 접점",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.overlays.points",
+        "graphPlan.overlays.guides"
+      ]
+    }
+  ]
+}

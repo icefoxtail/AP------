@@ -1,0 +1,44 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "P"
+      },
+      {
+        "id": "Q"
+      },
+      {
+        "id": "R"
+      }
+    ],
+    "subset": [
+      "P",
+      "Q",
+      "R"
+    ]
+  },
+  "caption": "P−Q=∅에서 P⊆Q, Rᶜ−Qᶜ=∅에서 Q⊆R이므로 P⊆Q⊆R이다. ㄱ과 ㄷ이 참이다.",
+  "accessibilityDescription": "전체집합 U 안에서 P 원이 Q 원 안에, Q 원이 다시 R 원 안에 있는 3중 포함 벤다이어그램이다.",
+  "newVisualInformation": [
+    "P⊆Q⊆R의 3중 포함 관계",
+    "불필요한 색칠과 가상 원소 제거"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "P-Q=∅에서 P⊆Q",
+      "mappedTo": [
+        "diagram.subset"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "Rᶜ-Qᶜ=∅에서 Q⊆R",
+      "mappedTo": [
+        "diagram.subset"
+      ]
+    }
+  ]
+}

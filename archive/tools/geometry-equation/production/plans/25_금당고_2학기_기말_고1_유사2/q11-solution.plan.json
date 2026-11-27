@@ -1,0 +1,108 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "name": "A6"
+      },
+      {
+        "id": "N",
+        "name": "An"
+      },
+      {
+        "id": "B",
+        "name": "A24"
+      }
+    ],
+    "subset": [
+      "A",
+      "N",
+      "B"
+    ],
+    "elements": [
+      {
+        "text": "1",
+        "in": [
+          "A",
+          "N",
+          "B"
+        ]
+      },
+      {
+        "text": "2",
+        "in": [
+          "A",
+          "N",
+          "B"
+        ]
+      },
+      {
+        "text": "3",
+        "in": [
+          "A",
+          "N",
+          "B"
+        ]
+      },
+      {
+        "text": "6",
+        "in": [
+          "A",
+          "N",
+          "B"
+        ]
+      },
+      {
+        "text": "4",
+        "in": [
+          "N",
+          "B"
+        ]
+      },
+      {
+        "text": "12",
+        "in": [
+          "N",
+          "B"
+        ]
+      },
+      {
+        "text": "8",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "24",
+        "in": [
+          "B"
+        ]
+      }
+    ]
+  },
+  "caption": "A6⊆An⊆A24의 포함 관계를 n=12일 때의 예로 나타낸다. 가능한 n=6,12,24이고 합은 42다.",
+  "accessibilityDescription": "가장 안쪽 A6에는 1,2,3,6이 있고 바깥 An과 A24로 3중 포함된 집합 그림이다. 4,12는 중간 영역, 8,24는 가장 바깥 영역이다.",
+  "newVisualInformation": [
+    "약수집합 3중 포함관계",
+    "n=12인 예에서 영역별 원소 분리"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A3∪A6=A6, A48∩A72=A24",
+      "mappedTo": [
+        "diagram.sets"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "n=12인 한 예: A6⊆An⊆A24",
+      "mappedTo": [
+        "diagram.subset",
+        "diagram.elements"
+      ]
+    }
+  ]
+}

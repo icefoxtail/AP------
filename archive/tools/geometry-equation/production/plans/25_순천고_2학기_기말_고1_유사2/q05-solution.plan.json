@@ -1,0 +1,69 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-1",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "4",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "원래 명제"
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-1",
+              "state": "CLOSED"
+            }
+          },
+          {
+            "lo": {
+              "value": "4",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "label": "부정의 범위"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "구간과 여집합 비교"
+  },
+  "caption": "모든 x에 대한 −1<x≤4의 부정은 어떤 x에 대하여 x≤−1 또는 x>4이다.",
+  "accessibilityDescription": "첫 수직선은 -1 열린 점과 4 닫힌 점 사이, 두 번째는 -1 닫힌 점 왼쪽과 4 열린 점 오른쪽으로 서로 갈라진다.",
+  "newVisualInformation": [
+    "전체 명제와 부정의 두 구간",
+    "부등호 끝점 열림·닫힘 구분"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원래 범위 -1<x≤4",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "부정 범위 x≤-1 또는 x>4",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ]
+}
