@@ -1,0 +1,16 @@
+{
+  "capability":"trigonometric-spike-v1",
+  "graphPlan":{
+    "family":"trigonometric", "function":"TAN", "ratePi":"1",
+    "coefficients":["1","0"], "phasePi":"0",
+    "sourceDomain":{"kind":"INTERVAL","range":["0","2"],"states":["OPEN","OPEN"]},
+    "axisTickValues":{"x":["1/2","1","3/2"],"y":[]}, "displaySize":"full"
+  },
+  "caption":"0<x<2에서 y=tan(πx)는 x=1/2,3/2를 점근선으로 하는 세 가지이며, 비교 직선 y=−(5/2)x+k의 위치에 따라 교점 수가 달라진다. 정확한 임계 조건은 0<k<5이다.",
+  "accessibilityDescription":"0부터 2까지 두 주기에 걸친 탄젠트 그래프. x=1/2,3/2에 점선 점근선을 표시한다. 비교 직선은 엔진에서 그리지 못하므로 문자로 따로 설명한다.",
+  "sourceConditions":[
+    {"id":"tan","condition":"0<x<2에서 y=tan(πx), x=1/2 및 x=3/2의 점근선","mappedTo":["graphPlan"]},
+    {"id":"line","condition":"y=−5x/2+k와 서로 다른 세 교점, 0<k<5","mappedTo":["caption"]}
+  ],
+  "newVisualInformation":["탄젠트의 세 가지와 극을 보존. 기울어진 비교 직선 및 세 교점을 동일 캔버스에 조합하는 기능은 ENGINE_CAPABILITY_PENDING:TRIG_TAN_OBLIQUE_REFERENCE_LINES_AND_INTERSECTIONS"]
+}

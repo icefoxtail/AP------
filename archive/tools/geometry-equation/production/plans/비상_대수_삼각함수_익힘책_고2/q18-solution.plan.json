@@ -1,0 +1,18 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"POLAR_POINT","inputs":["B","C"],"args":{"length":{"kind":"integer","value":"4"},"angleDeg":{"kind":"integer","value":"120"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"TRANSLATE_POINT","inputs":["A"],"args":{"dx":{"kind":"integer","value":"6"},"dy":{"kind":"integer","value":"0"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"lBC","op":"LINE_THROUGH","inputs":["B","C"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"H","op":"PERPENDICULAR_FOOT","inputs":["A","lBC"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["A","B","C","D","H"],"displayLines":[],"displayCircles":[],"displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sDA","refs":["D","A"]},{"id":"sAH","refs":["A","H"],"dashed":true},{"id":"sHB","refs":["H","B"],"dashed":true}],
+  "planeMarks":{"angles":[{"id":"aB","refs":["A","B","C"],"value":120,"label":"120","style":"ARC","factRole":"GIVEN"}],"dimensions":[{"id":"dAB","from":"A","to":"B","label":"4","side":"LEFT"},{"id":"dBC","from":"B","to":"C","label":"6","side":"BELOW"},{"id":"dAH","from":"A","to":"H","label":"2sqrt(3)","side":"LEFT"}]},
+  "rightAngles":[{"id":"rH","refs":["A","H","B"]}],
+  "caption":"AB=4, BC=6과 ∠B=120°에서 A의 수선 AH=2√3이므로 평행사변형의 넓이는 12√3이다.",
+  "accessibilityDescription":"120° 각, 4·6 치수선, 점선 높이 AH 및 H의 직각 표시가 있고 면 채움은 없다.",
+  "sourceConditions":[{"id":"given","condition":"AB=4, BC=6, ∠B=120°","mappedTo":["dAB","dBC","aB"]},{"id":"height","condition":"AH=4sin120°=2√3, AH⊥BC","mappedTo":["H","sAH","rH","dAH"]}],
+  "newVisualInformation":["넓이 계산에 필요한 높이와 직각 보조선 추가"]
+}

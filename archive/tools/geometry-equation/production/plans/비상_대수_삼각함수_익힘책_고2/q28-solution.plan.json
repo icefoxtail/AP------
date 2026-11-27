@@ -1,0 +1,16 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"POLAR_POINT","inputs":["A","B"],"args":{"length":{"kind":"integer","value":"6"},"angleDeg":{"kind":"integer","value":"60"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"P","op":"DIVISION_POINT","inputs":["A","B"],"args":{"m":{"kind":"integer","value":"3"},"n":{"kind":"integer","value":"1"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"Q","op":"DIVISION_POINT","inputs":["A","C"],"args":{"m":{"kind":"integer","value":"2"},"n":{"kind":"integer","value":"1"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["A","B","C","P","Q"],"displayLines":[],"displayCircles":[],"displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sAC","refs":["A","C"]},{"id":"sBC","refs":["B","C"]},{"id":"sPQ","refs":["P","Q"],"emphasis":"BOLD"},{"id":"sAP","refs":["A","P"]},{"id":"sAQ","refs":["A","Q"]}],
+  "planeMarks":{"angles":[{"id":"aA","refs":["B","A","C"],"value":60,"label":"60","style":"ARC","factRole":"GIVEN"}],"expressionLabels":[{"id":"lAB","ownerSegment":"sAB","text":"4"},{"id":"lAC","ownerSegment":"sAC","text":"6"},{"id":"lAP","ownerSegment":"sAP","text":"x"},{"id":"lAQ","ownerSegment":"sAQ","text":"y"}]},
+  "caption":"S(APQ)=S(ABC)/2이므로 xy=12, 코사인법칙으로 PQ²=x²+y²−12≥12이다. 그림은 xy=12를 만족하는 예시 x=3,y=4이다.",
+  "accessibilityDescription":"A에서 P와 Q까지의 길이가 각각 x와 y로 표시되고 PQ가 강조되어, 삼각형 APQ가 원래 삼각형 ABC의 절반 넓이임을 보인다.",
+  "sourceConditions":[{"id":"half","condition":"S(APQ)=S(ABC)/2, xy=12","mappedTo":["P","Q","sAP","sAQ"]},{"id":"cos","condition":"∠PAQ=60°, PQ²=x²+y²−xy","mappedTo":["aA","sPQ","lAP","lAQ"]}],
+  "newVisualInformation":["변수 x,y 라벨과 넓이 이등분을 실제 선분에 대응, 해는 본문에서 계산"]
+}

@@ -1,0 +1,16 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"V","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"B","op":"POLAR_POINT","inputs":["A","V"],"args":{"length":{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"8"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]},"angleDeg":{"kind":"integer","value":"180"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"POLAR_POINT","inputs":["A","B"],"args":{"length":{"kind":"integer","value":"8"},"angleDeg":{"kind":"integer","value":"30"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"D","op":"POLAR_POINT","inputs":["A","C"],"args":{"length":{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"2"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]},"angleDeg":{"kind":"integer","value":"30"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"}
+  ]},
+  "displayPoints":["A","B","C","D","V"],"hiddenPointNames":["V"],"hiddenPointStyle":"NONE","displayLines":[],"displayCircles":[],"displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]},{"id":"sAD","refs":["A","D"]},{"id":"sDC","refs":["D","C"],"emphasis":"BOLD"}],
+  "planeMarks":{"angles":[{"id":"aBAC","refs":["B","A","C"],"value":30,"label":"30","style":"ARC","factRole":"GIVEN"},{"id":"aCAD","refs":["C","A","D"],"value":30,"label":"30","style":"ARC","factRole":"GIVEN"},{"id":"aABC","refs":["A","B","C"],"value":30,"label":"30","style":"ARC","factRole":"GIVEN"}],"expressionLabels":[{"id":"lAB","ownerSegment":"sAB","text":"8sqrt(3)"},{"id":"lAD","ownerSegment":"sAD","text":"2sqrt(3)"},{"id":"lAC","ownerSegment":"sCA","text":"8"},{"id":"lCD","ownerSegment":"sDC","text":"2sqrt(7)"}]},
+  "caption":"삼각형 ABC에서 사인법칙으로 AC=8을 구하고 ACD의 끼인각 30°로 CD=2√7을 구한다.",
+  "accessibilityDescription":"세 개의 30° 각 호와 AB=8√3, AD=2√3, AC=8, 굵게 강조한 CD=2√7이 실제 연결선에 표시된다.",
+  "sourceConditions":[{"id":"source","condition":"AB=8√3, AD=2√3, ∠ABC=∠BAC=∠DAC=30°","mappedTo":["lAB","lAD","aABC","aBAC","aCAD"]},{"id":"derived","condition":"AC=8, CD=2√7","mappedTo":["lAC","lCD","sDC"]}],
+  "newVisualInformation":["해설의 AC=8, CD=2√7 길이 라벨을 해당 선분에 직접 배치"]
+}

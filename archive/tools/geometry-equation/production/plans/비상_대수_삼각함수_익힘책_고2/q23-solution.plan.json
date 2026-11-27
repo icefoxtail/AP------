@@ -1,0 +1,16 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"POLAR_POINT","inputs":["O","A"],"args":{"length":{"kind":"integer","value":"2"},"angleDeg":{"kind":"integer","value":"60"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"C","op":"POLAR_POINT","inputs":["O","A"],"args":{"length":{"kind":"integer","value":"2"},"angleDeg":{"kind":"integer","value":"210"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"2"}},"outputType":"CIRCLE","factRole":"GIVEN"}
+  ]},
+  "displayPoints":["O","A","B","C"],"displayLines":[],"displayCircles":["k"],"displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]},{"id":"sOA","refs":["O","A"],"dashed":true},{"id":"sOB","refs":["O","B"],"dashed":true},{"id":"sOC","refs":["O","C"],"dashed":true}],
+  "planeMarks":{"angles":[{"id":"aAOB","refs":["A","O","B"],"value":60,"label":"60","style":"ARC","factRole":"DERIVED_INTERMEDIATE"},{"id":"aBOC","refs":["B","O","C"],"value":150,"label":"150","style":"ARC","factRole":"DERIVED_INTERMEDIATE"},{"id":"aCOA","refs":["C","O","A"],"value":150,"label":"150","style":"ARC","factRole":"DERIVED_INTERMEDIATE"}],"facts":[{"kind":"ON_CIRCLE","circle":"k","points":["A","B","C"]}]},
+  "caption":"원주 세 호 AB:BC:CA=2:5:5에 대응하는 중심각은 60°,150°,150°, 반지름 2인 원 안에서 세 삼각형을 더하면 넓이 2+√3이다.",
+  "accessibilityDescription":"반지름 2의 원 안에 삼각형 ABC, 중심 O의 세 점선 반지름과 60°,150°,150° 각 호가 표시된다.",
+  "sourceConditions":[{"id":"ratio","condition":"호 AB:BC:CA=2:5:5","mappedTo":["A","B","C","aAOB","aBOC","aCOA"]},{"id":"radius","condition":"외접원 반지름 2","mappedTo":["k","sOA","sOB","sOC"]}],
+  "newVisualInformation":["호 비 2:5:5가 중심각 60°:150°:150°에 대응함을 실제 각 표식으로 표시"]
+}

@@ -1,0 +1,16 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"V","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"B","op":"POLAR_POINT","inputs":["A","V"],"args":{"length":{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"8"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]},"angleDeg":{"kind":"integer","value":"180"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"POLAR_POINT","inputs":["A","B"],"args":{"length":{"kind":"integer","value":"8"},"angleDeg":{"kind":"integer","value":"30"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"D","op":"POLAR_POINT","inputs":["A","C"],"args":{"length":{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"2"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]},"angleDeg":{"kind":"integer","value":"30"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"}
+  ]},
+  "displayPoints":["A","B","C","D","V"],"hiddenPointNames":["V"],"hiddenPointStyle":"NONE","displayLines":[],"displayCircles":[],"displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]},{"id":"sAD","refs":["A","D"]},{"id":"sDC","refs":["D","C"]}],
+  "planeMarks":{"angles":[{"id":"aBAC","refs":["B","A","C"],"value":30,"label":"30","style":"ARC","factRole":"GIVEN"},{"id":"aCAD","refs":["C","A","D"],"value":30,"label":"30","style":"ARC","factRole":"GIVEN"},{"id":"aABC","refs":["A","B","C"],"value":30,"label":"30","style":"ARC","factRole":"GIVEN"}],"expressionLabels":[{"id":"lAB","ownerSegment":"sAB","text":"8sqrt(3)"},{"id":"lAD","ownerSegment":"sAD","text":"2sqrt(3)"}]},
+  "caption":"AB=8√3, AD=2√3, ∠ABC=∠BAC=∠DAC=30°를 원본과 같은 두 삼각형 ABC·ACD로 나타낸다. CD의 길이는 표시하지 않는다.",
+  "accessibilityDescription":"A에서 B,C,D로 세 반직선이 내려가고 B와 A에서 30° 각 호 세 개, AB와 AD의 근호 길이 라벨이 있다.",
+  "sourceConditions":[{"id":"sides","condition":"AB=8√3, AD=2√3","mappedTo":["B","D","lAB","lAD"]},{"id":"angles","condition":"∠ABC=∠BAC=∠DAC=30°","mappedTo":["aABC","aBAC","aCAD"]}],
+  "newVisualInformation":["수치·세 각 호·연결선의 실제 필드 구현, 면 채움 없음"]
+}

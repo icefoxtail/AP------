@@ -1,0 +1,18 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"POLAR_POINT","inputs":["B","C"],"args":{"length":{"kind":"integer","value":"8"},"angleDeg":{"kind":"integer","value":"60"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"kA","op":"CIRCLE_CENTER_RADIUS","inputs":["A"],"args":{"radius":{"kind":"integer","value":"5"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"kC","op":"CIRCLE_CENTER_RADIUS","inputs":["C"],"args":{"radius":{"kind":"integer","value":"3"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"is","op":"INTERSECTION","inputs":["kA","kC"],"args":{},"outputType":"POINT_SET","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"D","op":"SELECT_POINT","inputs":["is"],"args":{},"branch":{"kind":"SIDE_OF_ORIENTED_LINE","refs":["A","C"],"sign":1},"outputType":"POINT","factRole":"GIVEN"}
+  ]},
+  "displayPoints":["A","B","C","D"],"displayLines":[],"displayCircles":[],"displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sDA","refs":["D","A"]},{"id":"sAC","refs":["A","C"],"dashed":true}],
+  "planeMarks":{"angles":[{"id":"aB","refs":["A","B","C"],"value":60,"label":"60","style":"ARC","factRole":"GIVEN"},{"id":"aD","refs":["A","D","C"],"value":120,"label":"120","style":"ARC","factRole":"DERIVED_INTERMEDIATE"}],"expressionLabels":[{"id":"lab","ownerSegment":"sAB","text":"8"},{"id":"lbc","ownerSegment":"sBC","text":"3"},{"id":"lcd","ownerSegment":"sCD","text":"3"},{"id":"lda","ownerSegment":"sDA","text":"5"},{"id":"lac","ownerSegment":"sAC","text":"7"}]},
+  "caption":"대각선 AC=7을 점선으로 그으면 ∠D=120°가 되고 두 삼각형의 넓이 합은 39√3/4이다.",
+  "accessibilityDescription":"사각형 ABCD의 네 변 8,3,3,5와 B의 60° 및 D의 120° 각호, 점선 대각선 AC=7이 있다.",
+  "sourceConditions":[{"id":"given","condition":"AB=8, BC=CD=3, AD=5, ∠B=60°","mappedTo":["lab","lbc","lcd","lda","aB"]},{"id":"split","condition":"AC=7, ∠D=120°","mappedTo":["sAC","lac","aD"]}],
+  "newVisualInformation":["대각선과 보조각 120°를 실제 필드에 추가하고 면 채움 없이 넓이 분할 표현"]
+}

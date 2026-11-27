@@ -1,0 +1,22 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"POLAR_POINT","inputs":["B","C"],"args":{"length":{"kind":"integer","value":"5"},"angleDeg":{"kind":"integer","value":"60"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"lBC","op":"LINE_THROUGH","inputs":["B","C"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"lBA","op":"LINE_THROUGH","inputs":["B","A"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"M","op":"MIDPOINT","inputs":["B","C"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"N","op":"MIDPOINT","inputs":["B","A"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"perpBC","op":"PERPENDICULAR_THROUGH","inputs":["M","lBC"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"perpBA","op":"PERPENDICULAR_THROUGH","inputs":["N","lBA"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"O","op":"LINE_INTERSECTION","inputs":["perpBC","perpBA"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"7"}]}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["A","B","C","O"],"displayLines":[],"displayCircles":["k"],"displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]},{"id":"sOA","refs":["O","A"],"dashed":true},{"id":"sOB","refs":["O","B"],"dashed":true},{"id":"sOC","refs":["O","C"],"dashed":true}],
+  "planeMarks":{"angles":[{"id":"aB","refs":["A","B","C"],"value":60,"label":"60","style":"ARC","factRole":"GIVEN"}],"expressionLabels":[{"id":"lAB","ownerSegment":"sAB","text":"5"},{"id":"lbBC","ownerSegment":"sBC","text":"4"},{"id":"lAC","ownerSegment":"sCA","text":"sqrt(21)"},{"id":"lOB","ownerSegment":"sOB","text":"sqrt(7)"}],"facts":[{"kind":"ON_CIRCLE","circle":"k","points":["A","B","C"]}]},
+  "caption":"AC=√21, 외접원 반지름 OB=√7이므로 원의 넓이는 7π이다.",
+  "accessibilityDescription":"원 위 ABC의 AB5, BC4, AC√21, 중심 O에서 꼭짓점까지의 점선 반지름 √7이 보인다. 원 면 채움 없음.",
+  "sourceConditions":[{"id":"sides","condition":"AB=5, BC=4, ∠B=60°","mappedTo":["sAB","sBC","aB"]},{"id":"ac","condition":"AC=√21","mappedTo":["sCA","lAC"]},{"id":"radius","condition":"2R=AC/sin60°, R=√7","mappedTo":["O","sOB","lOB","k"]}],
+  "newVisualInformation":["외접원 중심 O를 수직이등분선 교점으로 계산하고 반지름·보조선 표시"]
+}
