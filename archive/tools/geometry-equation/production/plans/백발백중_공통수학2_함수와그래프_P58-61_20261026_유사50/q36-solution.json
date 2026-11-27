@@ -1,0 +1,140 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "f: X→Y"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "MAPPING",
+          "columns": [
+            {
+              "id": "X",
+              "name": "X",
+              "elements": [
+                "1",
+                "2"
+              ]
+            },
+            {
+              "id": "Y",
+              "name": "Y",
+              "elements": [
+                "-2",
+                "1"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 0
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 1
+              },
+              "to": {
+                "column": 1,
+                "element": 1
+              }
+            }
+          ],
+          "arrowGroups": [
+            {
+              "name": "f",
+              "from": "X",
+              "to": "Y",
+              "color": "BLUE"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "g: X→Z"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "MAPPING",
+          "columns": [
+            {
+              "id": "X",
+              "name": "X",
+              "elements": [
+                "1",
+                "2"
+              ]
+            },
+            {
+              "id": "Y",
+              "name": "Y",
+              "elements": [
+                "2",
+                "3"
+              ]
+            }
+          ],
+          "arrows": [
+            {
+              "from": {
+                "column": 0,
+                "element": 0
+              },
+              "to": {
+                "column": 1,
+                "element": 0
+              }
+            },
+            {
+              "from": {
+                "column": 0,
+                "element": 1
+              },
+              "to": {
+                "column": 1,
+                "element": 1
+              }
+            }
+          ],
+          "arrowGroups": [
+            {
+              "name": "g",
+              "from": "X",
+              "to": "Y",
+              "color": "BLUE"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "f(1)=-2, f(2)=1, g(1)=2, g(2)=3의 대응을 두 패널로 보인다.",
+  "accessibilityDescription": "f(1)=-2, f(2)=1, g(1)=2, g(2)=3의 대응을 두 패널로 보인다.",
+  "sourceConditions": [
+    {
+      "id": "f0",
+      "condition": "f: X→Y의 모든 입력·출력 원소와 지시 화살표를 보존한다.",
+      "mappedTo": "panels[0].plan.diagram.arrows"
+    },
+    {
+      "id": "g1",
+      "condition": "g: X→Z의 모든 입력·출력 원소와 지시 화살표를 보존한다.",
+      "mappedTo": "panels[1].plan.diagram.arrows"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 표식·좌표·관계를 정확한 계획 필드에 보존한다."
+  ]
+}

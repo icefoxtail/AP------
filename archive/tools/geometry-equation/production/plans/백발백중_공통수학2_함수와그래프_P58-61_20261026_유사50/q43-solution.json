@@ -1,0 +1,60 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "6",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "4",
+        "9"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "4",
+        "y": "-2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "4"
+      ],
+      "y": [
+        "-2"
+      ]
+    },
+    "axisFold": false
+  },
+  "caption": "x≥4에서 f(x)=x²−6x+6, 꼭짓점 x=3은 범위 밖이고 경계 (4,−2)가 최솟값이다.",
+  "accessibilityDescription": "x≥4에서 f(x)=x²−6x+6, 꼭짓점 x=3은 범위 밖이고 경계 (4,−2)가 최솟값이다.",
+  "sourceConditions": [
+    {
+      "id": "function",
+      "condition": "원문 및 해설의 이차/일차함수 계수·단조구간",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "anchors",
+      "condition": "해설에서 확인한 꼭짓점·끝점·치역 경계",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 표식·좌표·관계를 정확한 계획 필드에 보존한다."
+  ]
+}

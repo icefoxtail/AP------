@@ -1,0 +1,95 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "b",
+          "c",
+          "d",
+          "e"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "Y",
+        "elements": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y",
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "원본에서 b→a, c→b, d→c, e→d; f²(d)=b, f⁻²(b)=d.",
+  "accessibilityDescription": "원본에서 b→a, c→b, d→c, e→d; f²(d)=b, f⁻²(b)=d.",
+  "sourceConditions": [
+    {
+      "id": "arrowMap",
+      "condition": "원본 기호 그래프에서 명시된 순서별 f(입력)=출력만 정확히 추출했다.",
+      "mappedTo": "diagram.arrows"
+    },
+    {
+      "id": "nodeLabels",
+      "condition": "각 집합의 원소·라벨을 정확히 보존한다.",
+      "mappedTo": "diagram.columns"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 표식·좌표·관계를 정확한 계획 필드에 보존한다."
+  ]
+}

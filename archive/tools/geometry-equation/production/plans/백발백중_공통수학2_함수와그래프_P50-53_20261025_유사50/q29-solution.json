@@ -1,0 +1,175 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      6,
+      -4,
+      6
+    ],
+    "curves": [
+      {
+        "id": "fl",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "2"
+        ],
+        "domain": [
+          "-2",
+          "0"
+        ],
+        "color": "BLUE",
+        "hideLabel": true
+      },
+      {
+        "id": "fr",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "1/2"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "gl",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "1/2"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "g"
+      },
+      {
+        "id": "gr",
+        "kind": "LINE",
+        "coefficients": [
+          "-4",
+          "2"
+        ],
+        "domain": [
+          "2",
+          "4"
+        ],
+        "color": "WARM",
+        "hideLabel": true
+      },
+      {
+        "id": "diag",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "4"
+        ],
+        "color": "GREEN",
+        "label": "y=x",
+        "style": "DASHED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "2",
+        "4"
+      ],
+      "y": [
+        "-2",
+        "2",
+        "4"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "L",
+          "x": "-2",
+          "y": "-2"
+        },
+        {
+          "id": "P",
+          "x": "0",
+          "y": "2"
+        },
+        {
+          "id": "Q",
+          "x": "2",
+          "y": "0"
+        },
+        {
+          "id": "R",
+          "x": "4",
+          "y": "4"
+        }
+      ]
+    },
+    "regions": [
+      {
+        "id": "a",
+        "between": [
+          "fl",
+          "gl"
+        ],
+        "from": "-2",
+        "to": "0",
+        "fill": "LIGHT"
+      },
+      {
+        "id": "b",
+        "between": [
+          "fr",
+          "gl"
+        ],
+        "from": "0",
+        "to": "2",
+        "fill": "LIGHT"
+      },
+      {
+        "id": "c",
+        "between": [
+          "fr",
+          "gr"
+        ],
+        "from": "2",
+        "to": "4",
+        "fill": "LIGHT"
+      }
+    ]
+  },
+  "caption": "두 그래프 f, g=f⁻¹와 y=x; L(-2,-2), P(0,2), Q(2,0), R(4,4). 실제 넓이 12인 영역만 칠한다.",
+  "accessibilityDescription": "두 그래프 f, g=f⁻¹와 y=x; L(-2,-2), P(0,2), Q(2,0), R(4,4). 실제 넓이 12인 영역만 칠한다.",
+  "sourceConditions": [
+    {
+      "id": "curves",
+      "condition": "두 구간 f(x)=2x+2(x<0), 1/2x+2(x≥0), 그 정확한 역함수 두 조각",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "points",
+      "condition": "L,P,Q,R는 주어진 교점·절편·대칭쌍으로 해설 좌표와 일치",
+      "mappedTo": "graphPlan.overlays.points"
+    },
+    {
+      "id": "askedArea",
+      "condition": "문제에서 실제 구한 영역의 경계만 색칠",
+      "mappedTo": "graphPlan.regions"
+    }
+  ],
+  "newVisualInformation": [
+    "실제 넓이를 구하는 세 띠만 색칠한다. 그 외 바탕·면은 투명하다."
+  ]
+}
