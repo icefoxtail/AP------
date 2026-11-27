@@ -3,7 +3,7 @@ window.examTitle = "25_왕운중_2학기_중간_중2_수학";
 window.questionBank = [
   {
     "id": 1,
-    "imageAlt": "한 직선이 가로축의 −2와 세로축의 4를 지나며 오른쪽 위로 올라간다.",
+    "imageAlt": "25_왕운중_2학기_중간_중2_수학 q01번 문제 조건 도형",
     "level": "하",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
@@ -33,7 +33,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "서로 평행한 두 직선은 기울기가 같다.\n주어진 그래프는 $(-2,0)$과 $(0,4)$를 지나므로 기울기는 $\\dfrac{4-0}{0-(-2)}=2$이다.\n각 보기를 $y=mx+n$ 꼴로 정리하면 ③은 $2x-y+3=0$, 즉 $y=2x+3$이므로 기울기가 2이다.\n따라서 주어진 그래프와 평행한 것은 ③이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중2_수학/q1-problem-visual-v2.svg",
-    "imageSize": "tall",
+    "imageSize": "full",
     "problemTypeKey": "PT_LINE_EQUATION",
     "templateKey": "TPL_LINE_PARALLEL",
     "crossConceptKeys": [],
@@ -57,11 +57,12 @@ window.questionBank = [
       "l4": "두 직선의 평행·일치"
     },
     "primaryMethod": "그래프의 두 점에서 기울기 비교",
-    "decisiveStep": "두절편으로 기울기2를 구해 같은 기울기의 방정식을 고른다."
+    "decisiveStep": "두절편으로 기울기2를 구해 같은 기울기의 방정식을 고른다.",
+    "imageCaption": "25_왕운중_2학기_중간_중2_수학 q01번 문제 조건 도형"
   },
   {
     "id": 2,
-    "imageAlt": "보라색 직선이 오른쪽 아래로 내려간다. 가로축과는 원점 오른쪽에서, 세로축과는 원점 위에서 만난다.",
+    "imageAlt": "25_왕운중_2학기_중간_중2_수학 q02번 문제 조건 도형",
     "level": "하",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
@@ -92,7 +93,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "기울기와 $y$절편의 부호를 식에서 읽는다.\n$x-ay+b=0$을 $y$에 대하여 정리하면 $y=\\dfrac{1}{a}x+\\dfrac{b}{a}$이다.\n그래프가 오른쪽으로 갈수록 내려가므로 기울기 $\\dfrac1a<0$, 따라서 $a<0$이다.\n또 $y$절편이 양수이므로 $\\dfrac ba>0$이다. $a<0$이므로 $b$도 음수여야 한다.\n따라서 $a<0,\\ b<0$인 ①이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중2_수학/q2-problem-visual-v2.svg",
-    "imageSize": "tall",
+    "imageSize": "full",
     "problemTypeKey": "PT_LINE_EQUATION",
     "templateKey": "",
     "crossConceptKeys": [],
@@ -116,7 +117,8 @@ window.questionBank = [
       "l4": "기울기·절편"
     },
     "primaryMethod": "그래프에서 기울기·절편의 부호를 역추론",
-    "decisiveStep": "1/a<0,b/a>0을 읽어 a,b의 부호를 정한다."
+    "decisiveStep": "1/a<0,b/a>0을 읽어 a,b의 부호를 정한다.",
+    "imageCaption": "25_왕운중_2학기_중간_중2_수학 q02번 문제 조건 도형"
   },
   {
     "id": 3,
@@ -160,8 +162,8 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중2_수학/q3-solution-visual-v2.svg",
-    "solutionImageAlt": "파란 가로 직선이 점 (−3, 4)를 지나고 가로축과 나란하다. 점에서 축으로 가는 옅은 세로 점선이 −3에 닿는다.",
-    "solutionImageCaption": "x축에 평행한 직선이 (−3, 4)를 지나므로 모든 점의 y좌표가 4이다. 방정식은 y=4이다.",
+    "solutionImageAlt": "25_왕운중_2학기_중간_중2_수학 q03번 해설 과정 도형",
+    "solutionImageCaption": "25_왕운중_2학기_중간_중2_수학 q03번 해설 과정 도형",
     "solutionImageSize": "full",
     "curriculum": "2015",
     "rpmL1": "일차함수",
@@ -478,12 +480,15 @@ window.questionBank = [
       "l4": "RHA"
     },
     "primaryMethod": "회전된 두 직각삼각형 RHA",
-    "decisiveStep": "같은 빗변과 수직관계의 같은예각에서 대응길이를 교환한다."
+    "decisiveStep": "같은 빗변과 수직관계의 같은예각에서 대응길이를 교환한다.",
+    "solutionImageAlt": "25_왕운중_2학기_중간_중2_수학 q08번 해설 과정 도형",
+    "solutionImageCaption": "25_왕운중_2학기_중간_중2_수학 q08번 해설 과정 도형",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
-    "imageSize": "tall",
-    "imageAlt": "처음 두 직각삼각형 ABC, DEF에서 C와 F는 직각이다. 두 빗변은 두 줄, 두 높이는 한 줄 눈금이다. 아래 그림은 DEF를 뒤집어 AC와 DF를 겹친 모습으로, B와 C(F), E가 밑변 위에 놓인다.",
+    "imageSize": "full",
+    "imageAlt": "두 직각삼각형과 겹쳐 놓은 세 번째 도형을 나란히 비교",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -539,11 +544,16 @@ window.questionBank = [
       "l4": "RHA"
     },
     "primaryMethod": "증명에 적힌 RHA 조건의 이름 확인",
-    "decisiveStep": "이미 주어진 직각·같은빗변·같은예각 세 사실에 맞는 설명을 고른다."
+    "decisiveStep": "이미 주어진 직각·같은빗변·같은예각 세 사실에 맞는 설명을 고른다.",
+    "imageCaption": "두 직각삼각형과 겹쳐 놓은 세 번째 도형을 나란히 비교",
+    "solutionImageAlt": "두 직각삼각형과 겹쳐 놓은 세 번째 도형을 나란히 비교",
+    "solutionImageCaption": "두 직각삼각형과 겹쳐 놓은 세 번째 도형을 나란히 비교",
+    "solutionImageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 10,
-    "imageAlt": "O는 삼각형 ABC의 외심이고 세 꼭짓점까지 선이 이어진다. B의 OBC는 30도, C의 ACO는 50도이다. A의 BAO가 x도이다.",
+    "imageAlt": "25_왕운중_2학기_중간_중2_수학 q10번 문제 조건 도형",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -575,7 +585,7 @@ window.questionBank = [
     "solution": "외심에서 세 꼭짓점까지의 거리가 같다는 성질을 두 번 이용한다.\n$OB=OC$이므로 $\\triangle BOC$는 이등변삼각형이다.\n따라서 $\\angle OBC=30^\\circ$이므로 $\\angle BCO=30^\\circ$이다.\n또 $OA=OC$이므로 $\\triangle AOC$도 이등변삼각형이고, $\\angle ACO=50^\\circ$이므로 $\\angle OAC=50^\\circ$이다. $OA=OB$이므로 $\\angle BAO=\\angle ABO=x$이다.\n$\\triangle ABC$의 세 각의 합에서 $(x+50^\\circ)+(x+30^\\circ)+(30^\\circ+50^\\circ)=180^\\circ$이므로 $2x=20^\\circ$, $x=10^\\circ$이다.\n정답은 ①이다.",
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중2_수학/q10-solution.svg",
     "image": "assets/images/25_왕운중_2학기_중간_중2_수학/q10-problem-visual-v2.svg",
-    "imageSize": "tall",
+    "imageSize": "full",
     "problemTypeKey": "PT_TRIANGLE_CENTERS",
     "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
     "crossConceptKeys": [],
@@ -599,11 +609,15 @@ window.questionBank = [
       "l4": "외심의 위치·각"
     },
     "primaryMethod": "외심의 같은반지름과 내각합",
-    "decisiveStep": "세 이등변삼각형의 밑각을 표시해2x+160=180으로 모은다."
+    "decisiveStep": "세 이등변삼각형의 밑각을 표시해2x+160=180으로 모은다.",
+    "imageCaption": "25_왕운중_2학기_중간_중2_수학 q10번 문제 조건 도형",
+    "solutionImageAlt": "25_왕운중_2학기_중간_중2_수학 q10번 해설 과정 도형",
+    "solutionImageCaption": "25_왕운중_2학기_중간_중2_수학 q10번 해설 과정 도형",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
-    "imageAlt": "삼각형 ABC 안에 외심 O가 있다. A와 B에서 O까지 선을 이었다. 변 AB는 13 cm이다.",
+    "imageAlt": "25_왕운중_2학기_중간_중2_수학 q11번 문제 조건 도형",
     "level": "하",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -635,7 +649,7 @@ window.questionBank = [
     "solution": "외심에서 꼭짓점까지의 거리는 모두 외접원의 반지름이다.\n외접원의 반지름을 $R$이라 하면 $OA=OB=R$이다. $\\triangle OAB$의 둘레가 29이므로 $R+R+13=29$이다.\n따라서 $2R=16$, $R=8$이다.\n외접원의 넓이는 $\\pi R^2=\\pi\\times8^2=64\\pi\\mathrm{cm}^2$이다.\n정답은 ③이다.",
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중2_수학/q11-solution.svg",
     "image": "assets/images/25_왕운중_2학기_중간_중2_수학/q11-problem-visual-v2.svg",
-    "imageSize": "tall",
+    "imageSize": "full",
     "problemTypeKey": "PT_TRIANGLE_CENTERS",
     "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
     "crossConceptKeys": [],
@@ -659,7 +673,11 @@ window.questionBank = [
       "l4": "반지름·각 계산"
     },
     "primaryMethod": "외접반지름을 둘레에서 역산",
-    "decisiveStep": "R+R+13=29를 풀어 원넓이에 넣는다."
+    "decisiveStep": "R+R+13=29를 풀어 원넓이에 넣는다.",
+    "imageCaption": "25_왕운중_2학기_중간_중2_수학 q11번 문제 조건 도형",
+    "solutionImageAlt": "25_왕운중_2학기_중간_중2_수학 q11번 해설 과정 도형",
+    "solutionImageCaption": "25_왕운중_2학기_중간_중2_수학 q11번 해설 과정 도형",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -723,12 +741,15 @@ window.questionBank = [
     },
     "primaryMethod": "내심의 등거리와 세삼각형 넓이합",
     "decisiveStep": "전체넓이96=반둘레24×r로r=4를 얻어 IAB넓이에 넣는다.",
-    "imageCaption": "25_왕운중_2학기_중간_중2_수학 q12번 문제 조건 도형"
+    "imageCaption": "25_왕운중_2학기_중간_중2_수학 q12번 문제 조건 도형",
+    "solutionImageAlt": "25_왕운중_2학기_중간_중2_수학 q12번 해설 과정 도형",
+    "solutionImageCaption": "25_왕운중_2학기_중간_중2_수학 q12번 해설 과정 도형",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
-    "imageSize": "tall",
-    "imageAlt": "첫 그림은 위 꼭짓점 A를 지나는 접은 선, 둘째 그림은 B를 지나는 접은 선이다. 세 번째에는 두 접은 선의 교점 I와 I에서 오른쪽 변 AC로 내린 수선의 발 D가 표시됐다.",
+    "imageSize": "full",
+    "imageAlt": "두 각의 이등분선을 접어 찾은 내심 I와 한 변까지의 거리",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -784,11 +805,16 @@ window.questionBank = [
       "l4": "각의 이등분선과 내심"
     },
     "primaryMethod": "접기 이등분선의 교점을 내심으로 해석",
-    "decisiveStep": "두이등분선교점에서 각이등분과 변까지등거리 성질을 구별한다."
+    "decisiveStep": "두이등분선교점에서 각이등분과 변까지등거리 성질을 구별한다.",
+    "imageCaption": "두 각의 이등분선을 접어 찾은 내심 I와 한 변까지의 거리",
+    "solutionImageAlt": "두 각의 이등분선을 접어 찾은 내심 I와 한 변까지의 거리",
+    "solutionImageCaption": "두 각의 이등분선을 접어 찾은 내심 I와 한 변까지의 거리",
+    "solutionImageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 14,
-    "imageAlt": "평행사변형 ABCD에서 AB에 x cm, DC에 10 cm를 표시했다. B의 각은 125도이고 A의 각은 y도이다.",
+    "imageAlt": "25_왕운중_2학기_중간_중2_수학 q14번 문제 조건 도형",
     "level": "하",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -844,12 +870,16 @@ window.questionBank = [
       "l4": "변·각의 성질"
     },
     "primaryMethod": "평행사변형의 대변과 이웃각",
-    "decisiveStep": "대변10과 이웃각의보각55를 더한다."
+    "decisiveStep": "대변10과 이웃각의보각55를 더한다.",
+    "imageCaption": "25_왕운중_2학기_중간_중2_수학 q14번 문제 조건 도형",
+    "solutionImageAlt": "25_왕운중_2학기_중간_중2_수학 q14번 해설 과정 도형",
+    "solutionImageCaption": "25_왕운중_2학기_중간_중2_수학 q14번 해설 과정 도형",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
     "imageSize": "full",
-    "imageAlt": "평행사변형 ABCD에서 두 대각선 AC와 BD가 O에서 만난다. 오른쪽 변 CD의 길이는 10 cm이다.",
+    "imageAlt": "25_왕운중_2학기_중간_중2_수학 q15번 문제 조건 도형",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -904,11 +934,15 @@ window.questionBank = [
       "l4": "평행사변형의 대각선 성질"
     },
     "primaryMethod": "대각선 이등분으로 두대각선합",
-    "decisiveStep": "둘레에서 AB를 뺀 AO+BO를 두배한다."
+    "decisiveStep": "둘레에서 AB를 뺀 AO+BO를 두배한다.",
+    "imageCaption": "25_왕운중_2학기_중간_중2_수학 q15번 문제 조건 도형",
+    "solutionImageAlt": "25_왕운중_2학기_중간_중2_수학 q15번 해설 과정 도형",
+    "solutionImageCaption": "25_왕운중_2학기_중간_중2_수학 q15번 해설 과정 도형",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
-    "imageAlt": "평행사변형 ABCD의 대각선 AC를 그었다. AD와 BC에는 같은 한 화살표, AB와 DC에는 같은 두 화살표가 표시됐다.",
+    "imageAlt": "25_왕운중_2학기_중간_중2_수학 q16번 문제 조건 도형",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -965,7 +999,11 @@ window.questionBank = [
       "l4": "변·각의 성질"
     },
     "primaryMethod": "대각선의 ASA 합동 증명 빈칸검토",
-    "decisiveStep": "엇각의 정확한 두각을 확인하여 부적절한 대응을 고른다."
+    "decisiveStep": "엇각의 정확한 두각을 확인하여 부적절한 대응을 고른다.",
+    "imageCaption": "25_왕운중_2학기_중간_중2_수학 q16번 문제 조건 도형",
+    "solutionImageAlt": "25_왕운중_2학기_중간_중2_수학 q16번 해설 과정 도형",
+    "solutionImageCaption": "25_왕운중_2학기_중간_중2_수학 q16번 해설 과정 도형",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1029,11 +1067,14 @@ window.questionBank = [
     },
     "primaryMethod": "대각선 넓이분할과 중심대칭",
     "decisiveStep": "4등넓이와 O중심180도회전으로 부분넓이합·이등분을 판정한다.",
-    "imageCaption": "25_왕운중_2학기_중간_중2_수학 q17번 문제 조건 도형"
+    "imageCaption": "25_왕운중_2학기_중간_중2_수학 q17번 문제 조건 도형",
+    "solutionImageAlt": "25_왕운중_2학기_중간_중2_수학 q17번 해설 과정 도형",
+    "solutionImageCaption": "25_왕운중_2학기_중간_중2_수학 q17번 해설 과정 도형",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
-    "imageAlt": "평행사변형 ABCD의 A에서 시작한 이등분선이 밑변 BC의 F에서 만나고 계속 이어져 CD의 연장선과 E에서 만난다. AB는 8 cm, FC는 x cm, DE는 y cm이다.",
+    "imageAlt": "25_왕운중_2학기_중간_중2_수학 q18번 문제 조건 도형",
     "level": "상",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -1066,7 +1107,7 @@ window.questionBank = [
     "solution": "각의 이등분선과 평행선의 엇각을 이용해 두 이등변삼각형을 찾는다.\n$AF$는 $\\angle A$의 이등분선이므로 $\\angle BAF=\\angle FAD$이다. $AD\\parallel BC$이므로 $\\angle FAD=\\angle AFB$이다.\n따라서 $\\triangle ABF$는 이등변삼각형이고 $BF=AB=8$이다.\n또 $AB\\parallel DE$이므로 $\\angle BAE=\\angle AED$이다. $\\angle BAE=\\angle EAD$이므로 $\\angle EAD=\\angle AED$, 따라서 $\\triangle ADE$는 이등변삼각형이고 $DE=AD$이다.\n평행사변형에서 $AD=BC=BF+FC=8+x$이므로 $y=DE=x+8$이다. $x+y=20$에 대입하면 $x+(x+8)=20$, $2x=12$, $x=6$이다.\n정답은 ②이다.",
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중2_수학/q18-solution.svg",
     "image": "assets/images/25_왕운중_2학기_중간_중2_수학/q18-problem-visual-v2.svg",
-    "imageSize": "tall",
+    "imageSize": "full",
     "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
     "templateKey": "TPL_ISOSCELES_CONVERSE",
     "crossConceptKeys": [
@@ -1093,11 +1134,15 @@ window.questionBank = [
       "l4": "두 각 조건"
     },
     "primaryMethod": "평행과 각이등분선에서 두 이등변 판정",
-    "decisiveStep": "BF=8,DE=AD=8+x를 얻어 x+y=20과 연결한다."
+    "decisiveStep": "BF=8,DE=AD=8+x를 얻어 x+y=20과 연결한다.",
+    "imageCaption": "25_왕운중_2학기_중간_중2_수학 q18번 문제 조건 도형",
+    "solutionImageAlt": "25_왕운중_2학기_중간_중2_수학 q18번 해설 과정 도형",
+    "solutionImageCaption": "25_왕운중_2학기_중간_중2_수학 q18번 해설 과정 도형",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
-    "imageAlt": "가로가 세로보다 긴 직사각형 ABCD다. AC와 BD의 교점은 O이다.",
+    "imageAlt": "25_왕운중_2학기_중간_중2_수학 q19번 문제 조건 도형",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -1153,7 +1198,11 @@ window.questionBank = [
       "l4": "특수 사각형의 대각선 성질"
     },
     "primaryMethod": "직사각형 대각선 성질 판정",
-    "decisiveStep": "같은길이·서로이등분은 보장되지만 수직과 이웃변같음은 배제한다."
+    "decisiveStep": "같은길이·서로이등분은 보장되지만 수직과 이웃변같음은 배제한다.",
+    "imageCaption": "25_왕운중_2학기_중간_중2_수학 q19번 문제 조건 도형",
+    "solutionImageAlt": "25_왕운중_2학기_중간_중2_수학 q19번 해설 과정 도형",
+    "solutionImageCaption": "25_왕운중_2학기_중간_중2_수학 q19번 해설 과정 도형",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1452,7 +1501,7 @@ window.questionBank = [
   {
     "id": 25,
     "imageSize": "full",
-    "imageAlt": "사각형 ABCD에서 AB와 DC에 같은 화살표와 길이 눈금이 붙었다. 나머지 두 변은 가는 파란 선이다.",
+    "imageAlt": "25_왕운중_2학기_중간_중2_수학 q25번 문제 조건 도형",
     "level": "상",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -1502,6 +1551,10 @@ window.questionBank = [
       "l4": "SAS 합동"
     },
     "primaryMethod": "대각선 SAS 합동으로 평행사변형 증명",
-    "decisiveStep": "대각선AC를 그어 SAS 합동을 얻고 대응엇각으로 두번째 평행쌍을 증명한다."
+    "decisiveStep": "대각선AC를 그어 SAS 합동을 얻고 대응엇각으로 두번째 평행쌍을 증명한다.",
+    "imageCaption": "25_왕운중_2학기_중간_중2_수학 q25번 문제 조건 도형",
+    "solutionImageAlt": "25_왕운중_2학기_중간_중2_수학 q25번 해설 과정 도형",
+    "solutionImageCaption": "25_왕운중_2학기_중간_중2_수학 q25번 해설 과정 도형",
+    "solutionImageSize": "full"
   }
 ];

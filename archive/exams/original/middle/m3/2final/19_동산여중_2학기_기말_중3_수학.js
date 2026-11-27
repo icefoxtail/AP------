@@ -103,8 +103,8 @@ window.examData = {
       "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q02-problem-v3.svg",
       "imageSize": "full",
       "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q02-solution-v2.svg",
-      "solutionImageAlt": "초록 AC는 A에 붙은 변이고 파랑 AB는 빗변이다. 주황 BC는 A의 맞은편이다.",
-      "solutionImageCaption": "cos A=AC/AB=15/17이므로 정답은 ②이다.",
+      "solutionImageAlt": "각 A에 이웃한 변 AC는 파란색, 빗변 AB는 주황색, 맞은편 변 BC는 초록색이고 각 A는 분홍색이다.",
+      "solutionImageCaption": "각 A에 이웃한 변 AC는 파란색, 빗변 AB는 주황색, 맞은편 변 BC는 초록색이고 각 A는 분홍색이다.",
       "solutionImageSize": "full"
     ,
     "conceptClusterKey": "TRIG_RATIO",
@@ -117,7 +117,9 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "직각삼각형의 주어진 세 변에서 cos A=AC/AB=15/17을 고른다.",
-    "decisiveStep": "직각삼각형의 주어진 세 변에서 cos A=AC/AB=15/17을 고른다."
+    "decisiveStep": "직각삼각형의 주어진 세 변에서 cos A=AC/AB=15/17을 고른다.",
+    "imageAlt": "q02번 문제 도형: 주어진 점·선·각·치수만 보이고 미지값은 유지한다.",
+    "imageCaption": "q02번 문제 도형: 주어진 점·선·각·치수만 보이고 미지값은 유지한다."
   },
     {
       "id": "q03",
@@ -157,8 +159,8 @@ window.examData = {
         "직각삼각형"
       ],
       "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q03-solution.svg",
-      "solutionImageAlt": "해설 그림: 세 변이 1, √3, 2이고 각이 30도, 60도, 90도인 직각삼각형과, 두 변이 1이고 빗변이 √2이며 각이 45도, 45도, 90도인 직각삼각형이다. 길이가 1인 변은 파란색, √3인 변은 초록색, 가장 긴 변은 주황색으로 표시되어 있다.",
-      "solutionImageCaption": "30°, 60°, 90° 직각삼각형에서 60°에 이웃한 변은 1, 빗변은 2이므로 cos 60°는 2분의 1이다. 30°의 맞은편 변은 1, 이웃한 변은 √3이므로 tan 30°는 √3분의 1, 곧 3분의 √3이다. 정답은 ①이다.",
+      "solutionImageAlt": "30°, 60°, 90° 직각삼각형의 세 변은 1, √3, 2이고, 45°, 45°, 90° 직각삼각형의 세 변은 1, 1, √2이다. 길이가 같은 변은 같은 색(1은 파랑)이다.",
+      "solutionImageCaption": "30°, 60°, 90° 직각삼각형의 세 변은 1, √3, 2이고, 45°, 45°, 90° 직각삼각형의 세 변은 1, 1, √2이다. 길이가 같은 변은 같은 색(1은 파랑)이다.",
       "solutionImageSize": "full"
     ,
     "conceptClusterKey": "TRIG_RATIO",
@@ -211,8 +213,8 @@ window.examData = {
         "직각삼각형"
       ],
       "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q04-solution.svg",
-      "solutionImageAlt": "해설 그림: 세 변이 1, √3, 2이고 각이 30도, 60도, 90도인 직각삼각형과, 두 변이 1이고 빗변이 √2이며 각이 45도, 45도, 90도인 직각삼각형이다. 길이가 1인 변은 파란색, √3인 변은 초록색, 가장 긴 변은 주황색으로 표시되어 있다.",
-      "solutionImageCaption": "30°, 60°, 90° 직각삼각형에서 tan 30°는 3분의 √3, tan 60°는 √3, sin 60°는 2분의 √3, cos 60°는 2분의 1이다. 45°, 45°, 90° 직각삼각형에서 tan 45°는 1, cos 45°는 2분의 √2이다. sin 0°=0, cos 0°=1, sin 90°=1이다. 따라서 옳은 것은 ①, ③이다. 정답은 ①, ③이다.",
+      "solutionImageAlt": "30°, 60°, 90° 직각삼각형의 세 변은 1, √3, 2이고, 45°, 45°, 90° 직각삼각형의 세 변은 1, 1, √2이다. 길이가 같은 변은 같은 색(1은 파랑)이다.",
+      "solutionImageCaption": "30°, 60°, 90° 직각삼각형의 세 변은 1, √3, 2이고, 45°, 45°, 90° 직각삼각형의 세 변은 1, 1, √2이다. 길이가 같은 변은 같은 색(1은 파랑)이다.",
       "solutionImageSize": "full"
     ,
     "conceptClusterKey": "TRIG_RATIO",
@@ -281,7 +283,9 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "빗변 AB와 각 A가 주어졌으므로 BC=AB sin30°를 바로 계산한다.",
-    "decisiveStep": "빗변 AB와 각 A가 주어졌으므로 BC=AB sin30°를 바로 계산한다."
+    "decisiveStep": "빗변 AB와 각 A가 주어졌으므로 BC=AB sin30°를 바로 계산한다.",
+    "imageAlt": "q05번 문제 도형: 주어진 점·선·각·치수만 보이고 미지값은 유지한다.",
+    "imageCaption": "q05번 문제 도형: 주어진 점·선·각·치수만 보이고 미지값은 유지한다."
   },
     {
       "id": "q06",

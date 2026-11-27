@@ -520,9 +520,9 @@ window.questionBank=[
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q11-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내접원이 세 변과 만나는 점 D, E, F를 표시한 그림. AD=AF=4cm, BD=BE=5cm를 같은 눈금으로 나타내고 CE=CF를 x로 나타냈다.",
-    "solutionImageCaption": "접점에서 꼭짓점까지의 길이가 같다: AF=AD=4cm, BE=BD=5cm, CE=CF=x.",
-    "solutionImageSize": "medium",
+    "solutionImageAlt": "25_연향중_2학기_중간_중2_수학 q11번 해설 과정 도형",
+    "solutionImageCaption": "25_연향중_2학기_중간_중2_수학 q11번 해설 과정 도형",
+    "solutionImageSize": "full",
     "problemTypeKey": "PT_CIRCLE_TANGENT",
     "templateKey": "TM_TANGENT_LENGTH",
     "crossConceptKeys": [],
@@ -539,7 +539,7 @@ window.questionBank=[
   {
     "id": 12,
     "imageSize": "full",
-    "imageAlt": "C가 직각인 삼각형에서 빗변 AB는 24 cm이다. A의 각을 이등분하는 선이 BC의 D에 닿고 DC는 6 cm이다.",
+    "imageAlt": "25_연향중_2학기_중간_중2_수학 q12번 문제 조건 도형",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -586,12 +586,13 @@ window.questionBank=[
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "각 이등분선 위 점의 두 변까지 거리",
-    "decisiveStep": "밑변 AB에 대한 새 높이를 내린 뒤 이등분선의 같은 거리로 그 높이를 주어진 CD와 같게 놓는다."
+    "decisiveStep": "밑변 AB에 대한 새 높이를 내린 뒤 이등분선의 같은 거리로 그 높이를 주어진 CD와 같게 놓는다.",
+    "imageCaption": "25_연향중_2학기_중간_중2_수학 q12번 문제 조건 도형"
   },
   {
     "id": 13,
     "imageSize": "full",
-    "imageAlt": "마름모 ABCD에서 A는 위, B는 왼쪽, C는 아래, D는 오른쪽에 있다. 대각선 AC와 BD가 O에서 교차한다.",
+    "imageAlt": "25_연향중_2학기_중간_중2_수학 q13번 문제 조건 도형",
     "level": "하",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -632,7 +633,8 @@ window.questionBank=[
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "primaryMethod": "마름모의 대각선과 꼭짓각 이등분",
-    "decisiveStep": "대각선이 나누는 서로 다른 꼭짓각의 절반이 항상 같지는 않음을 구별한다."
+    "decisiveStep": "대각선이 나누는 서로 다른 꼭짓각의 절반이 항상 같지는 않음을 구별한다.",
+    "imageCaption": "25_연향중_2학기_중간_중2_수학 q13번 문제 조건 도형"
   },
   {
     "id": 14,
@@ -688,8 +690,8 @@ window.questionBank=[
   },
   {
     "id": 15,
-    "imageSize": "tall",
-    "imageAlt": "왼쪽 평행사변형에서 (1)은 직사각형, (3)은 마름모로 간다. 가운데 직사각형에서 (2), 마름모에서 (4)를 거치면 오른쪽 정사각형으로 간다. 각 사각형의 두 대각선과 교점 O가 그려져 있다.",
+    "imageSize": "full",
+    "imageAlt": "평행사변형을 직사각형·마름모·정사각형으로 분류하는 네 도형",
     "level": "상",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -730,7 +732,8 @@ window.questionBank=[
     "legacyLevelCompatibility": "STRONG_CONFLICT",
     "difficultyConfidence": "high",
     "primaryMethod": "계통도의 추가 충분조건",
-    "decisiveStep": "각 화살표의 출발 도형에 이미 있는 성질과 새로 필요한 성질을 구별한다."
+    "decisiveStep": "각 화살표의 출발 도형에 이미 있는 성질과 새로 필요한 성질을 구별한다.",
+    "imageCaption": "평행사변형을 직사각형·마름모·정사각형으로 분류하는 네 도형"
   },
   {
     "id": 16,
@@ -786,8 +789,8 @@ window.questionBank=[
   },
   {
     "id": 17,
-    "imageSize": "tall",
-    "imageAlt": "삼각형 ABC의 밑변 위에 왼쪽부터 B, P, C가 있다. 위 꼭짓점 A를 P와 연결했다.",
+    "imageSize": "full",
+    "imageAlt": "25_연향중_2학기_중간_중2_수학 q17번 문제 조건 도형",
     "level": "하",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -830,7 +833,8 @@ window.questionBank=[
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "같은 높이인 삼각형의 밑변비와 넓이비",
-    "decisiveStep": "공통 꼭짓점에서 한 직선으로 내린 높이가 같으므로 전체 넓이를 밑변 분할비대로 나눈다."
+    "decisiveStep": "공통 꼭짓점에서 한 직선으로 내린 높이가 같으므로 전체 넓이를 밑변 분할비대로 나눈다.",
+    "imageCaption": "25_연향중_2학기_중간_중2_수학 q17번 문제 조건 도형"
   },
   {
     "id": 18,
@@ -886,8 +890,8 @@ window.questionBank=[
   },
   {
     "id": 19,
-    "imageSize": "tall",
-    "imageAlt": "C에서 직각인 삼각형 ABC의 변은 AB 5 cm, BC 3 cm, AC 4 cm이다. 외접원의 중심 O는 빗변 AB에 있고, 내접원의 중심 I는 삼각형 안에 있다.",
+    "imageSize": "full",
+    "imageAlt": "25_연향중_2학기_중간_중2_수학 q19번 문제 조건 도형",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -934,7 +938,8 @@ window.questionBank=[
     "difficultyConfidence": "high",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "직각삼각형 외접반지름과 넓이분할 내접반지름",
-    "decisiveStep": "외심은 빗변 중점으로, 내심은 동일 거리 높이의 세 넓이 합으로 반지름을 얻고 원의 둘레로 바꾼다."
+    "decisiveStep": "외심은 빗변 중점으로, 내심은 동일 거리 높이의 세 넓이 합으로 반지름을 얻고 원의 둘레로 바꾼다.",
+    "imageCaption": "25_연향중_2학기_중간_중2_수학 q19번 문제 조건 도형"
   },
   {
     "id": 20,
@@ -1031,8 +1036,8 @@ window.questionBank=[
   },
   {
     "id": 22,
-    "imageSize": "tall",
-    "imageAlt": "AB와 AC가 같은 이등변삼각형에서 A의 각은 56도이다. C에서 그은 각의 이등분선은 AB 위에 D에서 닿는다. D에서 DB와 DC 사이의 각이 표시됐다.",
+    "imageSize": "full",
+    "imageAlt": "25_연향중_2학기_중간_중2_수학 q22번 문제 조건 도형",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -1071,12 +1076,13 @@ window.questionBank=[
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "이등변 밑각과 밑각 이등분",
-    "decisiveStep": "두 밑각이 같음을 적용한 뒤 작은 삼각형에 반각과 내각합을 쓴다."
+    "decisiveStep": "두 밑각이 같음을 적용한 뒤 작은 삼각형에 반각과 내각합을 쓴다.",
+    "imageCaption": "25_연향중_2학기_중간_중2_수학 q22번 문제 조건 도형"
   },
   {
     "id": 23,
-    "imageSize": "tall",
-    "imageAlt": "정사각형 ABCD에서 AC와 BD가 O에서 만난다. AO 위 점 E를 B와 D에 연결했다. BEO는 65도, O에서 C까지는 6 cm이다. OD의 길이는 x이고 ABE는 y이다.",
+    "imageSize": "full",
+    "imageAlt": "25_연향중_2학기_중간_중2_수학 q23번 문제 조건 도형",
     "level": "상",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -1115,6 +1121,7 @@ window.questionBank=[
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "primaryMethod": "정사각형 대각선의 길이·직각·반각",
-    "decisiveStep": "같은 대각선의 반 길이로 x를 정하고 대각선 수직과45°반각으로 작은 각을 빼서 y를 구한다."
+    "decisiveStep": "같은 대각선의 반 길이로 x를 정하고 대각선 수직과45°반각으로 작은 각을 빼서 y를 구한다.",
+    "imageCaption": "25_연향중_2학기_중간_중2_수학 q23번 문제 조건 도형"
   }
 ];
