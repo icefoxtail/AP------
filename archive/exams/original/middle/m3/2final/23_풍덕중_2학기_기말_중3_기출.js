@@ -135,7 +135,7 @@ window.questionBank=[
     ],
     "answer": "③",
     "solution": "$\\angle AOB=60^\\circ$는 호 $AB$에 대한 중심각이고, $\\angle APB$는 같은 호 $AB$를 보는 원주각이다.\n같은 호에 대한 원주각은 중심각의 절반이므로 $\\angle APB=\\dfrac12\\times60^\\circ=30^\\circ$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/23_풍덕중_2학기_기말_중3_기출/q3.png",
+    "image": "assets/images/23_풍덕중_2학기_기말_중3_기출/q3-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -143,8 +143,8 @@ window.questionBank=[
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
     "solutionImage": "assets/images/23_풍덕중_2학기_기말_중3_기출/q3-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 O에서 중심각 AOB가 60도이고 원주각 APB가 같은 호 AB를 보도록 연결하며, 두 각의 호 표식을 구분한다.",
-    "solutionImageCaption": "같은 호 AB에 대한 원주각은 중심각의 절반이다. 답: ③",
+    "solutionImageAlt": "풍덕중 3번 해설: 호 AB를 보는 중심각은 원주각의 두 배임을 강조한 그림",
+    "solutionImageCaption": "풍덕중 3번 해설: 호 AB를 보는 중심각은 원주각의 두 배임을 강조한 그림",
     "solutionImageSize": "full"
   ,
     "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
@@ -159,7 +159,10 @@ window.questionBank=[
     "decisiveStep": "같은 호를 보는 원주각이 중심각의 절반임을 그대로 대입한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "같은 호 AB를 보는 중심각 60°와 원주각 x",
+    "imageCaption": "같은 호 AB를 보는 중심각 60°와 원주각 x",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -186,7 +189,7 @@ window.questionBank=[
     ],
     "answer": "⑤",
     "solution": "점 $P$에서 원 $O$에 그은 직선 $PR$은 접선이다.\n따라서 접선 $PR$과 현 $PA$가 이루는 각은\n같은 현 $PA$를 보는 원주각과 같다.\n즉\n$\\angle APR=\\angle ABP$이다.\n따라서 이에 해당하는 보기는 ⑤이다.",
-    "image": "assets/images/23_풍덕중_2학기_기말_중3_기출/q4.png",
+    "image": "assets/images/23_풍덕중_2학기_기말_중3_기출/q4-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -194,8 +197,8 @@ window.questionBank=[
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
     "solutionImage": "assets/images/23_풍덕중_2학기_기말_중3_기출/q4-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 위의 접점 P에서 접선 PR과 현 PA가 만드는 각, 같은 현 PA를 보는 원주각 ABP를 같은 색의 각호로 표시한다.",
-    "solutionImageCaption": "접선과 현 PA가 이루는 각은 같은 현 PA를 보는 원주각과 같다. 답: ⑤",
+    "solutionImageAlt": "풍덕중 4번 해설: 접선과 현의 각은 맞은편 원주각과 같다는 관계",
+    "solutionImageCaption": "풍덕중 4번 해설: 접선과 현의 각은 맞은편 원주각과 같다는 관계",
     "solutionImageSize": "full"
   ,
     "difficultyBoundaryFlag": "B12",
@@ -210,7 +213,10 @@ window.questionBank=[
     "decisiveStep": "접선 PR과 현 PA 사이의 각에 대응하는 같은 현의 원주각을 찾아 올바른 등식 보기를 고른다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "원 위의 접점 P에서 그은 접선 QR과 현 PA, PB",
+    "imageCaption": "원 위의 접점 P에서 그은 접선 QR과 현 PA, PB",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -279,7 +285,7 @@ window.questionBank=[
     ],
     "answer": "③",
     "solution": "$OH\\perp AB$이고 중심에서 현에 내린 수선은 현을 이등분하므로 $H$는 $AB$의 중점이다.\n$BH=\\sqrt{4^2-2^2}=2\\sqrt3$이므로 $AB=4\\sqrt3$이다.\n$AB=CD$이므로 중심 $O$에서 현 $CD$까지의 거리도 $2$이다.\n따라서 $[OCD]=\\dfrac12\\cdot4\\sqrt3\\cdot2=4\\sqrt3$이다.\n정답은 ③이다.",
-    "image": "assets/images/23_풍덕중_2학기_기말_중3_기출/q6.png",
+    "image": "assets/images/23_풍덕중_2학기_기말_중3_기출/q6-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
@@ -287,8 +293,8 @@ window.questionBank=[
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_CHORD_LENGTH",
     "solutionImage": "assets/images/23_풍덕중_2학기_기말_중3_기출/q6-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 원 O의 등현 AB, CD와 중심 수선 OH, ON을 그리고, 직각삼각형 OBH의 반현과 △OCD의 밑변 CD 및 높이 ON을 표시한다.",
-    "solutionImageCaption": "OH=2, OB=4에서 BH=2√3과 AB=4√3을 얻는다. 등현 CD의 중심거리 ON도 2이므로 △OCD의 밑변과 높이를 곱해 넓이를 구한다. 답: ③",
+    "solutionImageAlt": "풍덕중 6번 해설: 같은 현 사이 중심 거리 2와 두 직각을 이용해 삼각형 OCD의 높이를 읽는다",
+    "solutionImageCaption": "풍덕중 6번 해설: 같은 현 사이 중심 거리 2와 두 직각을 이용해 삼각형 OCD의 높이를 읽는다",
     "solutionImageSize": "full"
   ,
     "conceptClusterKey": "CIRCLE_LINE",
@@ -303,7 +309,10 @@ window.questionBank=[
     "decisiveStep": "현의 중점과 피타고라스로 현AB의 길이를 구하고 같은 현의 중심거리를 CD로 옮겨 삼각형 넓이를 계산한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "같은 길이의 두 현 AB, CD와 반지름 OB=4, 수선 OH=2",
+    "imageCaption": "같은 길이의 두 현 AB, CD와 반지름 OB=4, 수선 OH=2",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -381,7 +390,7 @@ window.questionBank=[
     ],
     "answer": "⑤",
     "solution": "삼각형의 세 변의 길이는\n$AB=14$, $BC=16$, $CA=10$이다.\n반둘레를 $s$라 하면\n$s=\\dfrac{14+16+10}{2}=20$이다.\n내접원의 접점을 $D,E,F$라 하자.\n한 꼭짓점에서 같은 원에 그은 두 접선의 길이는 같으므로\n$BD=BE$이다.\n또 접선 길이의 성질에서\n$BE=s-CA$이므로\n$BE=20-10=10$이다.\n따라서 정답은 ⑤이다.",
-    "image": "assets/images/23_풍덕중_2학기_기말_중3_기출/q8.png",
+    "image": "assets/images/23_풍덕중_2학기_기말_중3_기출/q8-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
@@ -389,8 +398,8 @@ window.questionBank=[
     "problemTypeKey": "PT_CIRCLE_TANGENT",
     "templateKey": "TM_TANGENT_LENGTH",
     "solutionImage": "assets/images/23_풍덕중_2학기_기말_중3_기출/q8-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내접원과 세 접점 D, E, F를 그리고, A·B·C에서 같은 원에 그은 접선 두 구간을 각각 같은 표시로 짝짓는다.",
-    "solutionImageCaption": "반둘레 s=20이고 BE=s−AC=20−10=10이다. 답: ⑤",
+    "solutionImageAlt": "풍덕중 8번 해설: 한 꼭짓점에서 그은 접선 두 개의 길이가 같은 세 쌍",
+    "solutionImageCaption": "풍덕중 8번 해설: 한 꼭짓점에서 그은 접선 두 개의 길이가 같은 세 쌍",
     "solutionImageSize": "full"
   ,
     "conceptClusterKey": "CIRCLE_LINE",
@@ -405,7 +414,10 @@ window.questionBank=[
     "decisiveStep": "같은 꼭짓점에서의 접선 등길이를 이용한 반둘레 관계에서 BE=s-CA로 목표 접선 길이를 계산한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "세 변이 14·16·10인 삼각형 ABC와 내접원의 세 접점 D, E, F",
+    "imageCaption": "세 변이 14·16·10인 삼각형 ABC와 내접원의 세 접점 D, E, F",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -432,7 +444,7 @@ window.questionBank=[
     ],
     "answer": "①",
     "solution": "같은 점에서 원에 그은 두 접선의 길이는 같다.\n$AR=AQ=x$, $CP=CQ=y$라 두면 $x+y=AC=4$이다.\n또 $BR=AB+AR=6+x$, $BP=BC+CP=8+y$이고 같은 점 $B$에서 그은 두 접선이므로 $BR=BP$이다.\n따라서 $x-y=2$이고, 두 식을 풀면 $x=3$, $y=1$이다.\n그러므로 $BR=6+3=9$이고 정답은 ①이다.",
-    "image": "assets/images/23_풍덕중_2학기_기말_중3_기출/q9.png",
+    "image": "assets/images/23_풍덕중_2학기_기말_중3_기출/q9-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
@@ -440,8 +452,8 @@ window.questionBank=[
     "problemTypeKey": "PT_CIRCLE_TANGENT",
     "templateKey": "TM_TANGENT_LENGTH",
     "solutionImage": "assets/images/23_풍덕중_2학기_기말_중3_기출/q9-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 R은 AB의 연장선, P는 BC의 연장선, Q는 AC 위의 접점이다. 원 O가 세 선에 접하고, x는 전체 접선 BR을 가리킨다.",
-    "solutionImageCaption": "AR=AQ=u, CP=CQ=v라 하면 u+v=AC=4이다. BR=AB+u=6+u, BP=BC+v=8+v이고 B에서 그은 두 접선 길이가 같으므로 6+u=8+v에서 u−v=2이다. 따라서 u=3이고 x=BR=6+3=9이다. 답: ①",
+    "solutionImageAlt": "풍덕중 9번 해설: B의 두 접선 BR=BP, A와 C의 접선 길이 분할",
+    "solutionImageCaption": "풍덕중 9번 해설: B의 두 접선 BR=BP, A와 C의 접선 길이 분할",
     "solutionImageSize": "full"
   ,
     "conceptClusterKey": "CIRCLE_LINE",
@@ -456,7 +468,10 @@ window.questionBank=[
     "decisiveStep": "각 꼭짓점의 두 접선 길이를 x,y로 두고 전체 변의 합 관계와 같은 점 B의 접선 등길이를 연립해 BR을 구한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "삼각형 ABC 두 변의 연장선에 접하는 바깥 원과 접점 R, Q, P",
+    "imageCaption": "삼각형 ABC 두 변의 연장선에 접하는 바깥 원과 접점 R, Q, P",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -1013,7 +1028,7 @@ window.questionBank=[
     "choices": [],
     "answer": "$30$",
     "solution": "직사각형 $ABCD$에서\n$AB=CD=12$, $BC=AD=15$이다.\n원이 서로 평행한 두 변 $AE$, $BC$에 접하므로\n원의 지름은 두 평행선 사이의 거리 $12$이고,\n반지름은 $6$이다.\n따라서\n$AP=AS=6$,\n$BS=BR=6$이다.\n그러므로\n$RC=BC-BR=15-6=9$이다.\n\n$PE=EQ=x$라 하자.\n같은 점에서 원에 그은 두 접선의 길이는 같으므로\n$CQ=CR=9$이다.\n따라서\n$EC=EQ+QC=x+9$이다.\n또\n$AE=AP+PE=6+x$이므로\n$ED=AD-AE=15-(6+x)=9-x$이다.\n\n직각삼각형 $CDE$에서\n$EC^2=CD^2+DE^2$이므로\n$(x+9)^2=12^2+(9-x)^2$이다.\n전개하면\n$x^2+18x+81=144+x^2-18x+81$,\n$36x=144$,\n$x=4$이다.\n따라서\n$ED=9-4=5$이다.\n그러므로\n$[\\triangle CDE]=\\dfrac{1}{2}\\times12\\times5=30$이다.",
-    "image": "assets/images/23_풍덕중_2학기_기말_중3_기출/q21.png",
+    "image": "assets/images/23_풍덕중_2학기_기말_중3_기출/q21-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
@@ -1021,8 +1036,8 @@ window.questionBank=[
     "problemTypeKey": "PT_CIRCLE_TANGENT",
     "templateKey": null,
     "solutionImage": "assets/images/23_풍덕중_2학기_기말_중3_기출/q21-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 직사각형 ABCD 안의 사다리꼴 ABCE에 원이 접하고, 접선 길이와 반지름 6, 직각삼각형 CDE의 중간 관계가 표시되어 있다.",
-    "solutionImageCaption": "반지름은 6이고 RC=CQ=9, PE=EQ=x이다. EC=x+9, ED=9−x이며 직각삼각형 CDE에서 x=4, ED=5이다. 따라서 삼각형 CDE의 넓이는 30이다.",
+    "solutionImageAlt": "풍덕중 21번 해설: 접선 분할 PE=4, RC=9, ED=5로 직각삼각형 CDE 넓이를 구한다",
+    "solutionImageCaption": "풍덕중 21번 해설: 접선 분할 PE=4, RC=9, ED=5로 직각삼각형 CDE 넓이를 구한다",
     "solutionImageSize": "full"
   ,
     "difficultyBoundaryFlag": "B34",
@@ -1034,7 +1049,10 @@ window.questionBank=[
     "difficultyConfidence": "medium",
     "difficultyBucket": 3,
     "primaryMethod": "평행 접선 사이 거리에서 반지름을 구하고 접선 등길이로 EC=x+9와 ED=9-x를 만든 뒤 피타고라스 방정식으로 목표 삼각형 넓이를 구한다.",
-    "decisiveStep": "평행 접선 사이 거리에서 반지름을 구하고 접선 등길이로 EC=x+9와 ED=9-x를 만든 뒤 피타고라스 방정식으로 목표 삼각형 넓이를 구한다."
+    "decisiveStep": "평행 접선 사이 거리에서 반지름을 구하고 접선 등길이로 EC=x+9와 ED=9-x를 만든 뒤 피타고라스 방정식으로 목표 삼각형 넓이를 구한다.",
+    "imageAlt": "12×15 직사각형 ABCD 안의 사다리꼴 ABCE와 내접원 접점 P,Q,R,S",
+    "imageCaption": "12×15 직사각형 ABCD 안의 사다리꼴 ABCE와 내접원 접점 P,Q,R,S",
+    "imageSize": "full"
   },
   {
     "id": 22,
@@ -1056,7 +1074,7 @@ window.questionBank=[
     "choices": [],
     "answer": "$2x$",
     "solution": "$Q,O,P$가 한 직선 위에 있고\n$OP=OA=OB$이다.\n$\\triangle AOP$는 이등변삼각형이므로\n$\\angle OPA=\\angle OAP=a$이다.\n따라서\n$\\angle AOP=180^\\circ-2a$이다.\n직선 $QOP$가 일직선이므로\n$\\angle QOA=180^\\circ-\\angle AOP=2a$이다.\n\n같은 방법으로\n$\\angle QOB=2b$이다.\n따라서\n$\\angle AOB\n=\\angle QOB-\\angle QOA\n=2b-2a\n=2(b-a)$이다.\n그림에서\n$\\angle APB=b-a=x$이므로\n$\\angle AOB=2x$이다.",
-    "image": "assets/images/23_풍덕중_2학기_기말_중3_기출/q22.png",
+    "image": "assets/images/23_풍덕중_2학기_기말_중3_기출/q22-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -1064,8 +1082,8 @@ window.questionBank=[
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": null,
     "solutionImage": "assets/images/23_풍덕중_2학기_기말_중3_기출/q22-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 원 O에서 PQ는 지름이고, 반지름 OA, OP, OB가 같은 눈금으로 표시되어 있다. P의 각 a, b, x와 중심각 2a, 2b가 표시되어 있다.",
-    "solutionImageCaption": "이등변삼각형에서 ∠QOA=2a, ∠QOB=2b이고 ∠APB=b−a=x이다. 따라서 ∠AOB=2x이다.",
+    "solutionImageAlt": "풍덕중 22번 해설: 반지름 OA=OP=OB로 이등변삼각형 두 개를 만들어 중심각 2(b−a) 구하기",
+    "solutionImageCaption": "풍덕중 22번 해설: 반지름 OA=OP=OB로 이등변삼각형 두 개를 만들어 중심각 2(b−a) 구하기",
     "solutionImageSize": "full"
   ,
     "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
@@ -1077,7 +1095,10 @@ window.questionBank=[
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "반지름으로 만든 두 이등변삼각형의 외각을2a,2b로 표현하고 두 각의 차에서 중심각=2×원주각의 관계를 설명한다.",
-    "decisiveStep": "반지름으로 만든 두 이등변삼각형의 외각을2a,2b로 표현하고 두 각의 차에서 중심각=2×원주각의 관계를 설명한다."
+    "decisiveStep": "반지름으로 만든 두 이등변삼각형의 외각을2a,2b로 표현하고 두 각의 차에서 중심각=2×원주각의 관계를 설명한다.",
+    "imageAlt": "지름 QP와 원주상의 점 A, B에서 ∠QPA=a, ∠QPB=b, ∠APB=x",
+    "imageCaption": "지름 QP와 원주상의 점 A, B에서 ∠QPA=a, ∠QPB=b, ∠APB=x",
+    "imageSize": "full"
   },
   {
     "id": 23,
@@ -1099,7 +1120,7 @@ window.questionBank=[
     "choices": [],
     "answer": "$30^\\circ$",
     "solution": "$\\angle CPD=18^\\circ$는 호 $CD$를 보는 원주각이다.\n따라서 같은 호 $CD$를 보는 중심각은\n$\\angle COD=2\\times18^\\circ=36^\\circ$이다.\n원의 반지름을 $r$라 하면\n색칠한 부채꼴의 넓이가 $10\\pi$이므로\n$\\dfrac{36}{360}\\pi r^2=10\\pi$이다.\n따라서\n$\\dfrac1{10}r^2=10$,\n$r^2=100$,\n$r=10$이다.\n\n$OA=OB=10$이고 $AB=10$이므로\n$\\triangle AOB$는 정삼각형이다.\n따라서\n$\\angle AOB=60^\\circ$이다.\n$\\angle AQB$는 같은 호 $AB$를 보는 원주각이므로\n$\\angle AQB=\\dfrac{60^\\circ}{2}=30^\\circ$이다.",
-    "image": "assets/images/23_풍덕중_2학기_기말_중3_기출/q23.png",
+    "image": "assets/images/23_풍덕중_2학기_기말_중3_기출/q23-problem.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
@@ -1107,8 +1128,8 @@ window.questionBank=[
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
     "solutionImage": "assets/images/23_풍덕중_2학기_기말_중3_기출/q23-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 원 O에서 색칠한 부채꼴 COD의 중심각 36°와 넓이 10π가 표시되어 있고, OA=OB=AB=10인 삼각형 AOB와 원주각 AQB가 그려져 있다.",
-    "solutionImageCaption": "∠CPD=18°에서 ∠COD=36°이고, 부채꼴 넓이로 반지름은 10이다. 현 AB=10이므로 △AOB는 정삼각형이고 ∠AOB=60°이다. 따라서 ∠AQB=30°이다.",
+    "solutionImageAlt": "풍덕중 23번 해설: 부채꼴 36°에서 반지름을 얻고 정삼각형 AOB의 중심각 60°를 이용한다",
+    "solutionImageCaption": "풍덕중 23번 해설: 부채꼴 36°에서 반지름을 얻고 정삼각형 AOB의 중심각 60°를 이용한다",
     "solutionImageSize": "full"
   ,
     "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
@@ -1123,7 +1144,10 @@ window.questionBank=[
     "decisiveStep": "첫 원주각에서 부채꼴 중심각을 정해 넓이로 반지름을 역산하고 현이 반지름과 같은 정삼각형을 만든 뒤 다른 원주각을 구한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "imageAlt": "호 CD와 중심 O의 색칠된 부채꼴 10π, 현 AB=10, 원주각 CPD=18°",
+    "imageCaption": "호 CD와 중심 O의 색칠된 부채꼴 10π, 현 AB=10, 원주각 CPD=18°",
+    "imageSize": "full"
   },
   {
     "id": 24,

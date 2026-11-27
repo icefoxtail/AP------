@@ -60,8 +60,8 @@ window.questionBank = [
     "metaNullReason": "NO_EXACT_ACTIVE_M2_PROBLEM_TYPE_AND_TEMPLATE_IN_CURRENT_TAXONOMY",
     "sourceMode": "ORIGINAL",
     "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q1-solution-visual-v2.svg",
-    "solutionImageAlt": "내려가는 검은 실선은 y=−3x+2이다. 주황 점선은 (0,5)를 지나고 검은 실선과 평행하다. 화살표는 세로로 옮기는 방향이다.",
-    "solutionImageCaption": "원래 세로축과 만나는 값은 2이고 새 값은 5이므로 5−2=3만큼 위로 옮긴다. 정답은 ④이다.",
+    "solutionImageAlt": "직선 y=−3x+2를 위로 3만큼 이동하면 y=−3x+5가 된다.",
+    "solutionImageCaption": "직선 y=−3x+2를 위로 3만큼 이동하면 y=−3x+5가 된다.",
     "solutionImageSize": "full"
   },
   {
@@ -186,8 +186,8 @@ window.questionBank = [
     "metaNullReason": "NO_EXACT_ACTIVE_M2_PROBLEM_TYPE_AND_TEMPLATE_IN_CURRENT_TAXONOMY",
     "sourceMode": "ORIGINAL",
     "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q3-solution-visual-v2.svg",
-    "solutionImageAlt": "오르는 검은 그래프 y=2x+4가 가로축의 −2, 세로축의 4를 지난다.",
-    "solutionImageCaption": "가로축과 만날 때 y=0이어서 x=−2이고, 세로축과 만날 때 x=0이어서 y=4이다. 따라서 a+b=2이고 정답은 ③이다.",
+    "solutionImageAlt": "일차함수 y=2x+4의 x절편 −2와 y절편 4.",
+    "solutionImageCaption": "일차함수 y=2x+4의 x절편 −2와 y절편 4.",
     "solutionImageSize": "full"
   },
   {
@@ -256,8 +256,8 @@ window.questionBank = [
   },
   {
     "id": 5,
-    "imageSize": "tall",
-    "imageAlt": "A는 (1,3), B는 (4,1)이다. 검은 선분으로 두 점을 이었다.",
+    "imageSize": "full",
+    "imageAlt": "좌표평면에서 주어진 A(1,3)와 B(4,1)를 잇는 선분 AB.",
     "questionType": "객관식",
     "tags": [
       "일차함수",
@@ -316,9 +316,10 @@ window.questionBank = [
     "metaNullReason": "NO_EXACT_ACTIVE_M2_PROBLEM_TYPE_AND_TEMPLATE_IN_CURRENT_TAXONOMY",
     "sourceMode": "AUDITED_REPAIR",
     "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q5-solution-visual-v2.svg",
-    "solutionImageAlt": "A는 (1,3), B는 (4,1)이다. 검은 선분으로 두 점을 이었다. 원점에서 A와 B로 향하는 두 경계 직선을 서로 다른 색으로 그렸다.",
-    "solutionImageCaption": "원점에서 A로 향하는 기울기는 3이고 B로 향하는 기울기는 1/4이다. 선분 AB를 만나는 범위는 1/4≤a≤3이고 정답은 ①이다.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "원점 O와 선분 AB의 두 끝점을 이은 두 경계 방향.",
+    "solutionImageCaption": "원점 O와 선분 AB의 두 끝점을 이은 두 경계 방향.",
+    "solutionImageSize": "full",
+    "imageCaption": "좌표평면에서 주어진 A(1,3)와 B(4,1)를 잇는 선분 AB."
   },
   {
     "id": 6,
@@ -380,14 +381,14 @@ window.questionBank = [
     "metaNullReason": "NO_EXACT_ACTIVE_M2_PROBLEM_TYPE_AND_TEMPLATE_IN_CURRENT_TAXONOMY",
     "sourceMode": "ORIGINAL",
     "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q6-solution-visual-v2.svg",
-    "solutionImageAlt": "검은 직선의 예는 제2사분면에서 위쪽을 지나 제1사분면으로 이어지고, 오른쪽 아래의 제4사분면으로 내려간다.",
-    "solutionImageCaption": "제2사분면에서 제4사분면으로 내려가는 직선이므로 a<0이다. 세로축을 원점보다 위에서 지나므로 b>0이고 정답은 ①이다.",
+    "solutionImageAlt": "제1·2·4사분면을 지나는 예시 직선의 기울기는 음수이고 y절편은 양수다.",
+    "solutionImageCaption": "제1·2·4사분면을 지나는 예시 직선의 기울기는 음수이고 y절편은 양수다.",
     "solutionImageSize": "full"
   },
   {
     "id": 7,
-    "imageSize": "tall",
-    "imageAlt": "그래프는 (−3,4)와 (3,0)을 지난다. 가로축과 세로축에 두 점의 위치를 보조선으로 표시했다.",
+    "imageSize": "full",
+    "imageAlt": "x=-3에서 y=4, x=3에서 y=0을 지나는 하강 직선.",
     "questionType": "객관식",
     "tags": [
       "일차함수",
@@ -447,9 +448,10 @@ window.questionBank = [
     "metaNullReason": "NO_EXACT_ACTIVE_M2_PROBLEM_TYPE_AND_TEMPLATE_IN_CURRENT_TAXONOMY",
     "sourceMode": "ORIGINAL",
     "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q7-solution-visual-v2.svg",
-    "solutionImageAlt": "그래프는 (−3,4)와 (3,0)을 지난다. 가로축과 세로축에 두 점의 위치를 보조선으로 표시했다. 가로 변화량과 세로 변화량을 색으로 구분했다.",
-    "solutionImageCaption": "기울기는 (0−4)/(3−(−3))=−2/3이다. 점 (3,0)을 대입하면 b=2이므로 정답은 ②이다.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "두 관측점 (−3,4),(3,0)에서 기울기 −2/3, y절편 2를 찾는다.",
+    "solutionImageCaption": "두 관측점 (−3,4),(3,0)에서 기울기 −2/3, y절편 2를 찾는다.",
+    "solutionImageSize": "full",
+    "imageCaption": "x=-3에서 y=4, x=3에서 y=0을 지나는 하강 직선."
   },
   {
     "id": 8,
@@ -516,8 +518,8 @@ window.questionBank = [
   },
   {
     "id": 9,
-    "imageSize": "tall",
-    "imageAlt": "일차함수가 세로축의 4와 원점 왼쪽의 가로축을 지난다. 세 선으로 둘러싸인 삼각형을 옅게 칠했다.",
+    "imageSize": "full",
+    "imageAlt": "양의 기울기를 가진 미지의 일차함수 y=ax+4와 두 좌표축으로 둘러싸인 원본 음영 삼각형.",
     "questionType": "객관식",
     "tags": [
       "일차함수",
@@ -579,9 +581,10 @@ window.questionBank = [
     "metaNullReason": "NO_EXACT_ACTIVE_M2_PROBLEM_TYPE_AND_TEMPLATE_IN_CURRENT_TAXONOMY",
     "sourceMode": "AUDITED_REPAIR",
     "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q9-solution-visual-v2.svg",
-    "solutionImageAlt": "일차함수가 세로축의 4와 원점 왼쪽의 가로축을 지난다. 세 선으로 둘러싸인 삼각형을 옅게 칠했다. 가로축 교점과 밑변을 확인한다.",
-    "solutionImageCaption": "넓이가 12이고 높이가 4이므로 밑변 길이는 6이다. 가로축 교점은 (−6,0)이므로 a=2/3이고 정답은 ⑤이다.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "넓이 12인 음영 삼각형의 밑변 길이 6과 높이 4에서 구한 기울기 a=2/3의 직선.",
+    "solutionImageCaption": "넓이 12인 음영 삼각형의 밑변 길이 6과 높이 4에서 구한 기울기 a=2/3의 직선.",
+    "solutionImageSize": "full",
+    "imageCaption": "양의 기울기를 가진 미지의 일차함수 y=ax+4와 두 좌표축으로 둘러싸인 원본 음영 삼각형."
   },
   {
     "id": 10,
@@ -644,8 +647,8 @@ window.questionBank = [
   },
   {
     "id": 11,
-    "imageSize": "tall",
-    "imageAlt": "일직선 위 A, B, C의 왼쪽 구간에는 위·가운데·아래 경로가 있다. B에서 C로 이어지는 구간도 세 경로다.",
+    "imageSize": "full",
+    "imageAlt": "A와 B, B와 C 사이를 각각 세 개의 경로로 연결한 도로망.",
     "questionType": "객관식",
     "tags": [
       "경우의 수",
@@ -706,7 +709,8 @@ window.questionBank = [
     "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q11-solution.svg",
     "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
     "solutionImageCaption": "그림에서 A-B 사이 경로는 위, 가운데, 아래의 3가지이고 B-C 사이 경로도 3가지이다. 두 구간의 경로를 각각 하나씩 고르면 되므로 3×3=9가지이다. 각 경로는 B에서 이어지고 다른 지점을 다시 지나지 않으므로 조건을 만족한다. 따라서 답은 ④이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "imageCaption": "A와 B, B와 C 사이를 각각 세 개의 경로로 연결한 도로망."
   },
   {
     "id": 12,
@@ -768,8 +772,8 @@ window.questionBank = [
   },
   {
     "id": 13,
-    "imageSize": "tall",
-    "imageAlt": "원 위의 여섯 점 A, B, C, D, E, F를 모두 서로 다른 곳에 배치했다. A는 위, D는 아래, B와 C는 왼쪽, E와 F는 오른쪽이다.",
+    "imageSize": "full",
+    "imageAlt": "원주 위에 놓인 여섯 점 A, B, C, D, E, F.",
     "questionType": "객관식",
     "tags": [
       "경우의 수",
@@ -828,7 +832,8 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": null,
-    "sourceMode": "AUDITED_REPAIR"
+    "sourceMode": "AUDITED_REPAIR",
+    "imageCaption": "원주 위에 놓인 여섯 점 A, B, C, D, E, F."
   },
   {
     "id": 14,
@@ -1018,8 +1023,8 @@ window.questionBank = [
   },
   {
     "id": 17,
-    "imageSize": "tall",
-    "imageAlt": "A는 왼쪽 위, B는 오른쪽 아래이다. P는 왼쪽에서 두 칸과 위에서 두 칸 이동한 교차점이다. 왼쪽 아래 모서리에 이어지는 두 도로는 없다.",
+    "imageSize": "full",
+    "imageAlt": "왼쪽 아래 모서리의 도로가 없는 3×3 격자 도로망에서 A, P, B의 위치.",
     "questionType": "객관식",
     "tags": [
       "확률"
@@ -1079,9 +1084,10 @@ window.questionBank = [
     "metaNullReason": null,
     "sourceMode": "AUDITED_REPAIR",
     "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q17-solution-visual-v2.svg",
-    "solutionImageAlt": "A는 왼쪽 위, B는 오른쪽 아래이다. P는 왼쪽에서 두 칸과 위에서 두 칸 이동한 교차점이다. 왼쪽 아래 모서리에 이어지는 두 도로는 없다. 각 교차점까지의 최단 경로 수를 붙였다.",
-    "solutionImageCaption": "B까지의 최단 경로는 19가지이다. P까지 6가지이고 P에서 B까지 2가지이므로 P를 지나는 경로는 12가지이다. 확률은 12/19이며 정답은 ③이다.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "도로망 각 교차점의 최단경로 수와 P 경유·전체 경로 수를 보여 주는 해설 도식.",
+    "solutionImageCaption": "도로망 각 교차점의 최단경로 수와 P 경유·전체 경로 수를 보여 주는 해설 도식.",
+    "solutionImageSize": "full",
+    "imageCaption": "왼쪽 아래 모서리의 도로가 없는 3×3 격자 도로망에서 A, P, B의 위치."
   },
   {
     "id": 18,
@@ -1280,8 +1286,8 @@ window.questionBank = [
   },
   {
     "id": 21,
-    "imageSize": "tall",
-    "imageAlt": "검은 직선이 (0,−2)와 (3,0)을 지난다.",
+    "imageSize": "full",
+    "imageAlt": "기울기를 묻는 서술형의 미지수 식 y=ax+b에 대응하는 선.",
     "questionType": "서술형",
     "tags": [
       "일차함수",
@@ -1335,9 +1341,10 @@ window.questionBank = [
     "metaNullReason": "NO_EXACT_ACTIVE_M2_PROBLEM_TYPE_AND_TEMPLATE_IN_CURRENT_TAXONOMY",
     "sourceMode": "AUDITED_REPAIR",
     "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q21-solution-visual-v2.svg",
-    "solutionImageAlt": "검은 직선이 (0,−2)와 (3,0)을 지난다. 두 점 사이의 가로 3과 세로 2를 색으로 표시했다.",
-    "solutionImageCaption": "기울기는 2/3이고 y절편은 −2이다. 따라서 일차함수의 식은 y=(2/3)x−2이다.",
-    "solutionImageSize": "full"
+    "solutionImageAlt": "절편 (0,−2),(3,0)에서 기울기 2/3와 식 y=(2/3)x−2를 결정한다.",
+    "solutionImageCaption": "절편 (0,−2),(3,0)에서 기울기 2/3와 식 y=(2/3)x−2를 결정한다.",
+    "solutionImageSize": "full",
+    "imageCaption": "기울기를 묻는 서술형의 미지수 식 y=ax+b에 대응하는 선."
   },
   {
     "id": 22,
