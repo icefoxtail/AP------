@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "visual-audit-v1",
+  "examFile": "archive/exams/similar/middle/m1/1mid/AP수학학원_1학기_중간_중1_모의고사_3회.js",
+  "sourceGitBlobSha": "a62f3a8751ecbbccf9efc46dddb0424002852084",
+  "reviewBaseMain": "dddc2c5206d61cd92315c5bbf8dcdbf4e434e4b3",
+  "questionCount": 25,
+  "axisCount": 50,
+  "exemptDefaults": { "capability": "TEXT_OR_FORMULA_ONLY", "planPath": null, "planLint": "NOT_APPLICABLE", "drawnFeatureParity": "NO_SVG_REQUIRED", "render": "NOT_APPLICABLE" },
+  "planDefaultChecks": { "planLintShallow": "PASS", "planLintFull": "PASS", "renderedSvg": "NOT_RUN", "pngReview": "NOT_RUN", "studentScreen": "NOT_RUN", "imageBinding": "NOT_RUN", "drawnFeatureParityInterpretation": "Source conditions vs engine drawing fields only; no rendered SVG/PNG/print claim" },
+  "summary": { "planFiles": 2, "shallowPass": 2, "fullPass": 2, "drawnFeatureStaticPass": 2, "drawnFeatureStaticPartial": 0, "engineCapabilityPendingAxes": 0, "exemptAxes": 48 },
+  "sourceJSFindings": [
+    "All 25 question objects have no image or solutionImage links; no bound source diagram is being replaced on this paper.",
+    "Two orphan PNG files are present in archive/assets/images/AP수학학원_1학기_중간_중1_모의고사_3회/: q15.png displays a long multi-step signed-number multiplication, but the actual q15 asks (-1)^50-(-1)^51; q25.png displays a shaded rectangle with internal quadrilateral, but the actual q25 asks about joining three ribbons. Reusing these PNGs would introduce false mathematical information; do not bind or make parity plans from them.",
+    "No JS or PNG assets were edited; supplementary number-line solution plans are new, not published figures."
+  ],
+  "entries": [
+    { "qid": "q01", "axes": { "problem": { "verdict": "EXEMPT", "reason": "20 이하 서로 다른 소수 두 개의 곱 개수 계산" }, "solution": { "verdict": "EXEMPT", "reason": "6,10,14,15 네 개를 숫자로 나열" } } },
+    { "qid": "q02", "axes": { "problem": { "verdict": "EXEMPT", "reason": "4²=2^n에서 자연수 n 계산" }, "solution": { "verdict": "EXEMPT", "reason": "(2²)²=2⁴의 지수법칙 설명" } } },
+    { "qid": "q03", "axes": { "problem": { "verdict": "EXEMPT", "reason": "72=2×2×2×9가 소인수분해가 아닌 이유" }, "solution": { "verdict": "EXEMPT", "reason": "9는 합성수, 72=2³×3² 식으로 교정" } } },
+    { "qid": "q04", "axes": { "problem": { "verdict": "EXEMPT", "reason": "약수 10개인 수의 객관식 산술 판정" }, "solution": { "verdict": "EXEMPT", "reason": "48=2⁴×3에서 (4+1)(1+1)=10" } } },
+    { "qid": "q05", "axes": { "problem": { "verdict": "EXEMPT", "reason": "36·60의 두 자리 공약수 조회" }, "solution": { "verdict": "EXEMPT", "reason": "최대공약수 12의 약수 나열" } } },
+    { "qid": "q06", "axes": { "problem": { "verdict": "EXEMPT", "reason": "최소공배수 24의 공배수 여부 선택" }, "solution": { "verdict": "EXEMPT", "reason": "24의 배수 중 84의 제외 설명" } } },
+    { "qid": "q07", "axes": { "problem": { "verdict": "EXEMPT", "reason": "1~20 중 12와 서로소인 자연수 개수" }, "solution": { "verdict": "EXEMPT", "reason": "2와 3의 배수를 제외한 일곱 수 나열" } } },
+    { "qid": "q08", "axes": { "problem": { "verdict": "EXEMPT", "reason": "50~120 사이 36의 배수 합" }, "solution": { "verdict": "EXEMPT", "reason": "72+108=180의 수식으로 완결" } } },
+    { "qid": "q09", "axes": { "problem": { "verdict": "EXEMPT", "reason": "정수인 유리수 고르기" }, "solution": { "verdict": "EXEMPT", "reason": "-12/4=-3의 약분식" } } },
+    { "qid": "q10", "axes": { "problem": { "verdict": "EXEMPT", "reason": "다섯 유리수의 최솟값 비교" }, "solution": { "verdict": "EXEMPT", "reason": "-11/4=-2.75 등 수치 대소관계" } } },
+    {
+      "qid": "q11",
+      "axes": {
+        "problem": { "verdict": "EXEMPT", "reason": "두 분수 위치·거리의 값이 발문으로 충분히 지정돼 있고 문제에 원본 그림이 없다" },
+        "solution": {
+          "verdict": "BENEFICIAL",
+          "reason": "-3/2와 7/2를 실제 수직선 위치에 놓고 거리 5를 괄호로 명시한다.",
+          "capability": "number-line-figure-v1",
+          "planPath": "archive/tools/geometry-equation/production/plans/AP수학학원_1학기_중간_중1_모의고사_3회/q11-solution.plan.json",
+          "requiredFeatures": ["-3/2의 정확한 위치", "7/2의 정확한 위치", "두 점 거리 5의 괄호", "수직선 눈금", "면 채움 없음"],
+          "featureFieldMapping": [
+            { "sourceFeature": "-3/2 위치", "renderField": "numberLine.rows[0].points A.value" },
+            { "sourceFeature": "7/2 위치", "renderField": "numberLine.rows[0].points B.value" },
+            { "sourceFeature": "두 점의 거리 5", "renderField": "numberLine.rows[0].spans[0] BRACE label=5" },
+            { "sourceFeature": "별도 면 채움 없음", "renderField": "numberLine.rows[0].band=false" }
+          ],
+          "drawnFeatureParity": "STATIC_1_TO_1_FEATURE_MATCH__RENDER_NOT_RUN"
+        }
+      }
+    },
+    { "qid": "q12", "axes": { "problem": { "verdict": "EXEMPT", "reason": "-2.5와 1.25의 절댓값 합" }, "solution": { "verdict": "EXEMPT", "reason": "2.5+1.25=3.75 계산" } } },
+    { "qid": "q13", "axes": { "problem": { "verdict": "EXEMPT", "reason": "-1/3-(-5/6)의 분수 가감" }, "solution": { "verdict": "EXEMPT", "reason": "-2/6+5/6=1/2 통분" } } },
+    { "qid": "q14", "axes": { "problem": { "verdict": "EXEMPT", "reason": "다섯 연산식 중 계산 결과가 최대인 것 고르기" }, "solution": { "verdict": "EXEMPT", "reason": "각 결과 2,4,-3,3,3의 비교" } } },
+    { "qid": "q15", "sourceImageStatus": "ORPHAN_UNBOUND_MISMATCH_q15.png", "axes": { "problem": { "verdict": "EXEMPT", "reason": "실제 JS는 (-1)^50-(-1)^51 계산식이며 별도 그림을 참조하지 않음. 고아 PNG는 다른 곱셈 문제이므로 사용 금지" }, "solution": { "verdict": "EXEMPT", "reason": "짝수·홀수 지수의 값 1과 -1을 뺄셈" } } },
+    { "qid": "q16", "axes": { "problem": { "verdict": "EXEMPT", "reason": "분배법칙으로 (-6)(2/3-1/2)를 계산" }, "solution": { "verdict": "EXEMPT", "reason": "-4+3=-1로 분배한 계산식" } } },
+    { "qid": "q17", "axes": { "problem": { "verdict": "EXEMPT", "reason": "옳지 않은 계산 결과를 보기에서 판별" }, "solution": { "verdict": "EXEMPT", "reason": "④의 (-4)-(-6)=2라는 반례 수식" } } },
+    { "qid": "q18", "axes": { "problem": { "verdict": "EXEMPT", "reason": "끈 길이 x의 3/4보다 5 cm 긴 일차식" }, "solution": { "verdict": "EXEMPT", "reason": "3x/4+5의 문장식 변환" } } },
+    { "qid": "q19", "axes": { "problem": { "verdict": "EXEMPT", "reason": "x=3에 2x²-x+1 대입" }, "solution": { "verdict": "EXEMPT", "reason": "18-3+1=16의 수치 계산" } } },
+    { "qid": "q20", "axes": { "problem": { "verdict": "EXEMPT", "reason": "2(3a-4)+(-2a+5)의 동류항 정리" }, "solution": { "verdict": "EXEMPT", "reason": "6a-8-2a+5=4a-3" } } },
+    { "qid": "q21", "axes": { "problem": { "verdict": "EXEMPT", "reason": "72 약수 중 3의 배수 나열 서술형" }, "solution": { "verdict": "EXEMPT", "reason": "2³3²의 지수 조건과 여덟 수 목록" } } },
+    { "qid": "q22", "axes": { "problem": { "verdict": "EXEMPT", "reason": "신호등 12·18·20초 주기의 동시점 15분 내 횟수" }, "solution": { "verdict": "EXEMPT", "reason": "최소공배수 180초=3분과 다섯 시점 계산" } } },
+    {
+      "qid": "q23",
+      "axes": {
+        "problem": { "verdict": "EXEMPT", "reason": "|a|≤3의 음의 정수·합을 수식으로 묻고 원본 그림은 없음" },
+        "solution": {
+          "verdict": "BENEFICIAL",
+          "reason": "-3부터 0 직전의 음의 정수 -3,-2,-1을 끝점·정수 점으로 확인한다.",
+          "capability": "number-line-figure-v1",
+          "planPath": "archive/tools/geometry-equation/production/plans/AP수학학원_1학기_중간_중1_모의고사_3회/q23-solution.plan.json",
+          "requiredFeatures": ["-3 포함", "0 제외", "음의 정수 -3,-2,-1", "같은 수직선", "면 채움 없음"],
+          "featureFieldMapping": [
+            { "sourceFeature": "|a|≤3의 왼쪽 포함 경계 -3", "renderField": "numberLine.rows[0].pieces[0].lo state=CLOSED" },
+            { "sourceFeature": "음의 정수만 해당하므로 0 제외", "renderField": "numberLine.rows[0].pieces[0].hi state=OPEN" },
+            { "sourceFeature": "정수 -3,-2,-1", "renderField": "numberLine.rows[0].integerPoints=true" }
+          ],
+          "drawnFeatureParity": "STATIC_1_TO_1_FEATURE_MATCH__RENDER_NOT_RUN"
+        }
+      }
+    },
+    { "qid": "q24", "axes": { "problem": { "verdict": "EXEMPT", "reason": "분수 곱셈 우선 계산과 덧셈" }, "solution": { "verdict": "EXEMPT", "reason": "-5/6-1/2=-4/3의 통분 과정" } } },
+    { "qid": "q25", "sourceImageStatus": "ORPHAN_UNBOUND_MISMATCH_q25.png", "axes": { "problem": { "verdict": "EXEMPT", "reason": "세 리본 (x+2) cm 연결 후 5 cm 잘라 내는 일차식; 고아 PNG의 색칠 도형은 다른 문제" }, "solution": { "verdict": "EXEMPT", "reason": "3(x+2)-5=3x+1, x=7에서 22 cm" } } }
+  ]
+}

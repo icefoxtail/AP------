@@ -1,0 +1,22 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [{
+      "kind": "SET",
+      "pieces": [{
+        "lo": { "value": "-4", "state": "OPEN" },
+        "hi": { "value": "4", "state": "OPEN" }
+      }],
+      "integerPoints": true
+    }]
+  },
+  "numberLineCaption": { "text": "절댓값이 4 미만인 정수" },
+  "caption": "|x|<4를 만족하는 정수는 -3,-2,-1,0,1,2,3의 일곱 개이다.",
+  "accessibilityDescription": "-4와 4에 열린 점을 표시하고 그 사이 -3부터 3까지 일곱 정수점을 보인 수직선.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "절댓값이 4 미만이면 -4<x<4로 양끝은 포함하지 않는다.", "mappedTo": ["numberLine.rows.0.pieces"] },
+    { "id": "c2", "condition": "해당 정수는 -3,-2,-1,0,1,2,3의 일곱 개이다.", "mappedTo": ["numberLine.rows.0.integerPoints"] }
+  ],
+  "newVisualInformation": ["-4·4의 열린 경계점, 내부 정수 일곱 점, 면 채움 없음."]
+}
