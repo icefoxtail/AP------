@@ -245,13 +245,14 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q5-solution.svg",
-    "solutionImageAlt": "해설 그림: x축 위 H30·H60 위치로 cos 감소, 주황 수직 투영으로 sin 증가, 초록 x=1 접선 높이로 tan 증가를 비교한다.",
-    "solutionImageCaption": "예각에서 각이 커질수록 sin A와 tan A는 커지고 cos A는 작아진다. 정답은 ③이다.",
+    "solutionImageAlt": "$\\angle A$의 크기가 예각일 때 다음 중 옳지 않은 것은? [4점]",
+    "solutionImageCaption": "$\\angle A$의 크기가 예각일 때 다음 중 옳지 않은 것은? [4점]",
     "solutionImageSize": "full"
   ,
     "conceptClusterKey": "TRIG_RATIO",
     "primaryMethod": "예각에서 각의 크기가 커질 때 cos가 감소한다는 성질로 잘못된 설명을 판정한다.",
-    "decisiveStep": "예각에서 각의 크기가 커질 때 cos가 감소한다는 성질로 잘못된 설명을 판정한다."
+    "decisiveStep": "예각에서 각의 크기가 커질 때 cos가 감소한다는 성질로 잘못된 설명을 판정한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 6,
@@ -341,8 +342,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q7-solution.svg",
-    "solutionImageAlt": "BC를 공유하는 45°-45°-90°와 30° 직각삼각형",
-    "solutionImageCaption": "두 삼각형에서 구한 공통 길이 BC로 AC를 결정한다.",
+    "solutionImageAlt": "다음 그림과 같은 직각삼각형 $ABC$와 $BCD$에서 $AC$의 길이는? [4점]",
+    "solutionImageCaption": "다음 그림과 같은 직각삼각형 $ABC$와 $BCD$에서 $AC$의 길이는? [4점]",
     "solutionImageSize": "full",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
@@ -357,7 +358,8 @@ window.questionBank = [
   ,
     "conceptClusterKey": "TRIG_RATIO",
     "primaryMethod": "첫 직각삼각형의tan30°로 공유변을 구하고 두 번째45° 직각삼각형의 두 변이 같음을 써 피타고라스로 목표 빗변을 구한다.",
-    "decisiveStep": "첫 직각삼각형의tan30°로 공유변을 구하고 두 번째45° 직각삼각형의 두 변이 같음을 써 피타고라스로 목표 빗변을 구한다."
+    "decisiveStep": "첫 직각삼각형의tan30°로 공유변을 구하고 두 번째45° 직각삼각형의 두 변이 같음을 써 피타고라스로 목표 빗변을 구한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 8,
@@ -455,7 +457,10 @@ window.questionBank = [
   ,
     "conceptClusterKey": "TRIG_RATIO",
     "primaryMethod": "직각삼각형의 빗변을 피타고라스로 복원하고 두 수직 관계에서 x를각A로 이동해cos를 읽는다.",
-    "decisiveStep": "직각삼각형의 빗변을 피타고라스로 복원하고 두 수직 관계에서 x를각A로 이동해cos를 읽는다."
+    "decisiveStep": "직각삼각형의 빗변을 피타고라스로 복원하고 두 수직 관계에서 x를각A로 이동해cos를 읽는다.",
+    "solutionImageAlt": "다음 직각삼각형 $ABC$에서 변 $BC$ 위의 한 점 $D$에서 변 $AC$에 내린 수선의 발을 $E$라 하고 $\\angle CDE=x^\\circ$라 할 때, $\\cos x^\\circ$의 값은? [4점]",
+    "solutionImageCaption": "다음 직각삼각형 $ABC$에서 변 $BC$ 위의 한 점 $D$에서 변 $AC$에 내린 수선의 발을 $E$라 하고 $\\angle CDE=x^\\circ$라 할 때, $\\cos x^\\circ$의 값은? [4점]",
+    "solutionImageScale": 90
   },
   {
     "id": 10,
@@ -551,13 +556,14 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q11-solution.svg",
-    "solutionImageAlt": "해설 그림: 30° 기울기와 y절편 2인 직선의 한 예, 수평 변화 3과 수직 변화 √3.",
-    "solutionImageCaption": "기울기는 tan30°=√3/3이고 y절편은 2이므로 직선은 y=(√3/3)x+2이다. 정답은 ③이다.",
+    "solutionImageAlt": "다음 그림의 직선의 방정식을 구하면? [4점]",
+    "solutionImageCaption": "다음 그림의 직선의 방정식을 구하면? [4점]",
     "solutionImageSize": "full"
   ,
     "conceptClusterKey": "TRIG_RATIO_APPLICATION",
     "primaryMethod": "x축과 이루는30°의tan을 직선의 기울기로 해석하고 그림의 y절편2를 결합하여 직선식을 구성한다.",
-    "decisiveStep": "x축과 이루는30°의tan을 직선의 기울기로 해석하고 그림의 y절편2를 결합하여 직선식을 구성한다."
+    "decisiveStep": "x축과 이루는30°의tan을 직선의 기울기로 해석하고 그림의 y절편2를 결합하여 직선식을 구성한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 12,
@@ -701,8 +707,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q14-solution.svg",
-    "solutionImageAlt": "원 O의 반지름이 5이다. 아래 현의 길이는 8이고 중심과 현 사이 거리는 3이다. 위 현의 반길이는 4이며 중심과 현 사이 거리가 x이다.",
-    "solutionImageCaption": "해설의 핵심 관계: 같은 반지름 5에서 아래 현 반길이 4, 중심거리 3; 위 현 반길이 4이므로 x²+4²=5², x=3.",
+    "solutionImageAlt": "오른쪽 원 $O$에서 $x$의 값은? [3점]",
+    "solutionImageCaption": "오른쪽 원 $O$에서 $x$의 값은? [3점]",
     "solutionImageSize": "full",
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_CHORD_LENGTH",
@@ -717,7 +723,8 @@ window.questionBank = [
   ,
     "conceptClusterKey": "CIRCLE_LINE",
     "primaryMethod": "현을 이등분한 반현과 중심거리로 반지름을 복원하고 동일 반지름을 위쪽 현의 직각삼각형에 적용해 중심거리를 구한다.",
-    "decisiveStep": "현을 이등분한 반현과 중심거리로 반지름을 복원하고 동일 반지름을 위쪽 현의 직각삼각형에 적용해 중심거리를 구한다."
+    "decisiveStep": "현을 이등분한 반현과 중심거리로 반지름을 복원하고 동일 반지름을 위쪽 현의 직각삼각형에 적용해 중심거리를 구한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 15,
@@ -752,8 +759,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q15-solution.svg",
-    "solutionImageAlt": "원 O에 같은 길이의 두 현 AB와 CD를 그리고, 중심 O에서 각 현의 중점 M,N에 내린 수선과 중점의 자취 원을 나타낸다.",
-    "solutionImageCaption": "해설의 핵심 관계: 같은 원의 같은 길이 현은 중심에서 같은 거리에 있고 각 현의 중점은 중심과 현을 잇는 수선 위에 있어 그 자취가 중심 O인 원.",
+    "solutionImageAlt": "한 원에서 길이가 같은 현을 무수히 많이 그리면 원이 되는 이유는? [4점]",
+    "solutionImageCaption": "한 원에서 길이가 같은 현을 무수히 많이 그리면 원이 되는 이유는? [4점]",
     "solutionImageSize": "full",
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_CHORD_LENGTH",
@@ -768,7 +775,8 @@ window.questionBank = [
   ,
     "conceptClusterKey": "CIRCLE_LINE",
     "primaryMethod": "같은 길이의 현이 중심에서 같은 거리에 있다는 성질로 현의 중점들이 같은 원 위에 놓임을 설명한다.",
-    "decisiveStep": "같은 길이의 현이 중심에서 같은 거리에 있다는 성질로 현의 중점들이 같은 원 위에 놓임을 설명한다."
+    "decisiveStep": "같은 길이의 현이 중심에서 같은 거리에 있다는 성질로 현의 중점들이 같은 원 위에 놓임을 설명한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 16,
@@ -820,7 +828,10 @@ window.questionBank = [
   ,
     "conceptClusterKey": "CIRCLE_LINE",
     "primaryMethod": "반현6과 중심거리r−3의 직각삼각형에서 r²=(r−3)²+36을 세워 반지름을 구하고 원둘레로 바꾼다.",
-    "decisiveStep": "반현6과 중심거리r−3의 직각삼각형에서 r²=(r−3)²+36을 세워 반지름을 구하고 원둘레로 바꾼다."
+    "decisiveStep": "반현6과 중심거리r−3의 직각삼각형에서 r²=(r−3)²+36을 세워 반지름을 구하고 원둘레로 바꾼다.",
+    "solutionImageAlt": "오른쪽 그림은 원 모양의 접시의 깨진 조각이다. 깨지기 전 접시의 둘레의 길이는? [4점]",
+    "solutionImageCaption": "오른쪽 그림은 원 모양의 접시의 깨진 조각이다. 깨지기 전 접시의 둘레의 길이는? [4점]",
+    "solutionImageScale": 90
   },
   {
     "id": 17,
@@ -858,8 +869,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q17-solution.svg",
-    "solutionImageAlt": "원 O 안의 삼각형 PBC에서 중심 O에서 현 PB와 BC에 내린 수선 OM, ON의 길이가 같다. 각 PBC는 62°이고 x는 P에서의 각이다.",
-    "solutionImageCaption": "해설의 핵심 관계: 중심에서 같은 거리인 두 현은 길이가 같아 삼각형 PBC에서 PB=BC; 꼭짓각 62°이므로 밑각 x=59°.",
+    "solutionImageAlt": "오른쪽 원 $O$에서 $\\angle x$의 크기는? [4점]",
+    "solutionImageCaption": "오른쪽 원 $O$에서 $\\angle x$의 크기는? [4점]",
     "solutionImageSize": "full",
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_CHORD_LENGTH",
@@ -874,7 +885,8 @@ window.questionBank = [
   ,
     "conceptClusterKey": "CIRCLE_LINE",
     "primaryMethod": "중심에서 두 현까지 거리가 같아 두 현이 같음을 얻고 이등변삼각형의 밑각을 계산한다.",
-    "decisiveStep": "중심에서 두 현까지 거리가 같아 두 현이 같음을 얻고 이등변삼각형의 밑각을 계산한다."
+    "decisiveStep": "중심에서 두 현까지 거리가 같아 두 현이 같음을 얻고 이등변삼각형의 밑각을 계산한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 18,
@@ -912,8 +924,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q18-solution.svg",
-    "solutionImageAlt": "원 O에 외접하는 삼각형 ABC의 변 길이는 AB=3, AC=6, BC=7이다. P,Q,R은 접점이고 x는 C에서의 접선 길이 CR이다.",
-    "solutionImageCaption": "해설의 핵심 관계: AB=3, AC=6, BC=7인 내접원 접선에서 C의 두 접선 길이 CQ=CR=5.",
+    "solutionImageAlt": "다음 $\\triangle ABC$가 원 $O$에 외접하고 세 점 $P$, $Q$, $R$은 그 접점일 때, $x$의 값은? [4점]",
+    "solutionImageCaption": "다음 $\\triangle ABC$가 원 $O$에 외접하고 세 점 $P$, $Q$, $R$은 그 접점일 때, $x$의 값은? [4점]",
     "solutionImageSize": "full",
     "problemTypeKey": "PT_CIRCLE_TANGENT",
     "templateKey": "TM_TANGENT_LENGTH",
@@ -928,7 +940,8 @@ window.questionBank = [
   ,
     "conceptClusterKey": "CIRCLE_LINE",
     "primaryMethod": "외접삼각형의 세 꼭짓점에서 동일 접선 길이를 대응하여 세 변을 두 길이의 합으로 적고 합·차로 목표 접선길이를 구한다.",
-    "decisiveStep": "외접삼각형의 세 꼭짓점에서 동일 접선 길이를 대응하여 세 변을 두 길이의 합으로 적고 합·차로 목표 접선길이를 구한다."
+    "decisiveStep": "외접삼각형의 세 꼭짓점에서 동일 접선 길이를 대응하여 세 변을 두 길이의 합으로 적고 합·차로 목표 접선길이를 구한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 19,
@@ -1020,8 +1033,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q20-solution.svg",
-    "solutionImageAlt": "원 O의 외부점 P에서 접선 PA, PB를 그었다. OA와 OB는 접선에 수직인 같은 반지름이며, OP는 두 직각삼각형의 공통 빗변이다.",
-    "solutionImageCaption": "해설의 핵심 관계: 접점에서 OA⊥PA, OB⊥PB이고 OP 공통, OA=OB이므로 직각삼각형 PAO와 PBO가 RHS 합동, PA=PB.",
+    "solutionImageAlt": "다음은 원 밖의 한 점에서 그 원에 그은 두 접선의 길이가 같음을 설명하는 과정의 일부이다. 다음 빈칸에 들어갈 말로 알맞지 않은 것은? [4점]",
+    "solutionImageCaption": "다음은 원 밖의 한 점에서 그 원에 그은 두 접선의 길이가 같음을 설명하는 과정의 일부이다. 다음 빈칸에 들어갈 말로 알맞지 않은 것은? [4점]",
     "solutionImageSize": "full",
     "problemTypeKey": "PT_CIRCLE_TANGENT",
     "templateKey": null,
@@ -1036,7 +1049,8 @@ window.questionBank = [
   ,
     "conceptClusterKey": "CIRCLE_LINE",
     "primaryMethod": "반지름과 접선의 수직, 공통 빗변, 두 반지름의 같음을 이용한 RHS 합동 증명에서 근거 칸을 판정한다.",
-    "decisiveStep": "반지름과 접선의 수직, 공통 빗변, 두 반지름의 같음을 이용한 RHS 합동 증명에서 근거 칸을 판정한다."
+    "decisiveStep": "반지름과 접선의 수직, 공통 빗변, 두 반지름의 같음을 이용한 RHS 합동 증명에서 근거 칸을 판정한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 21,

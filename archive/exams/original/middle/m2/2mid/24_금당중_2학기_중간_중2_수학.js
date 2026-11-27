@@ -511,10 +511,10 @@ window.questionBank=[
   {
     "id": 10,
     "solutionImageSize": "full",
-    "solutionImageCaption": "접어도 BC′=BC=10 cm이다. 직각삼각형 ABC′에서 AC′=6 cm이고 윗변 전체가 10 cm이므로 DC′=4 cm이다.",
-    "solutionImageAlt": "직사각형의 세로는 8 cm, 가로는 10 cm이다. E는 D 아래 3 cm이다. 접는 선 BE를 기준으로 C를 윗변 위의 C′로 이동했다. 풀이에서 AC′는 6 cm이다.",
-    "imageSize": "tall",
-    "imageAlt": "직사각형의 세로는 8 cm, 가로는 10 cm이다. E는 D 아래 3 cm이다. 접는 선 BE를 기준으로 C를 윗변 위의 C′로 이동했다.",
+    "solutionImageCaption": "접은 후 BC′=10cm, AB=8cm인 직각삼각형으로 AC′=6cm와 DC′=4cm를 구한다",
+    "solutionImageAlt": "접은 후 BC′=10cm, AB=8cm인 직각삼각형으로 AC′=6cm와 DC′=4cm를 구한다",
+    "imageSize": "full",
+    "imageAlt": "직사각형 ABCD의 접는 선 BE를 기준으로 C가 윗변의 C′로 옮겨지는 문제 그림",
     "level": "중",
     "category": "피타고라스 정리의 활용",
     "originalCategory": "피타고라스 정리",
@@ -566,7 +566,8 @@ window.questionBank=[
       "l4": "평면도형 길이"
     },
     "primaryMethod": "접기 길이보존 뒤 직각변 계산",
-    "decisiveStep": "접힌 BC의 길이를 빗변으로 옮겨 AC를 구하고 전체 AD에서 뺀다."
+    "decisiveStep": "접힌 BC의 길이를 빗변으로 옮겨 AC를 구하고 전체 AD에서 뺀다.",
+    "imageCaption": "직사각형 ABCD의 접는 선 BE를 기준으로 C가 윗변의 C′로 옮겨지는 문제 그림"
   },
   {
     "id": 11,

@@ -704,7 +704,10 @@ window.questionBank = [
       "l4": "특수 사각형의 대각선 성질"
     },
     "primaryMethod": "마름모 대각선 넓이 뒤 같은 높이 비",
-    "decisiveStep": "대각선으로 전체넓이를 구한 뒤 절반 삼각형의 밑변 분할비를 적용한다."
+    "decisiveStep": "대각선으로 전체넓이를 구한 뒤 절반 삼각형의 밑변 분할비를 적용한다.",
+    "solutionImageAlt": "마름모의 대각선 20·40, BP:PC=2:3으로 △ABC=200과 △APC=120을 구하는 풀이",
+    "solutionImageCaption": "마름모의 대각선 20·40, BP:PC=2:3으로 △ABC=200과 △APC=120을 구하는 풀이",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -764,7 +767,10 @@ window.questionBank = [
       "l4": "평행선과 넓이"
     },
     "primaryMethod": "평행한 밑변의 등넓이에서 공통부분 소거",
-    "decisiveStep": "같은 밑변 AD의 두 삼각형에서 공통 AOD를 빼 양쪽 작은 넓이를 같게 만든다."
+    "decisiveStep": "같은 밑변 AD의 두 삼각형에서 공통 AOD를 빼 양쪽 작은 넓이를 같게 만든다.",
+    "solutionImageAlt": "사다리꼴에서 △DBC의 넓이 90과 △OBC의 넓이 75를 나누어 △OCD=△AOB=15를 보인다",
+    "solutionImageCaption": "사다리꼴에서 △DBC의 넓이 90과 △OBC의 넓이 75를 나누어 △OCD=△AOB=15를 보인다",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -1251,8 +1257,8 @@ window.questionBank = [
   },
   {
     "id": 22,
-    "imageSize": "tall",
-    "imageAlt": "파란 정사각형 ABCD에서 두 대각선은 O에서 만난다. 다른 정사각형 OEFG의 한 꼭짓점도 O이다. 두 경계는 P와 Q에서 교차하며, OPCQ의 겹친 부분을 따로 칠했다.",
+    "imageSize": "full",
+    "imageAlt": "한 변이 6cm인 두 정사각형 ABCD와 OEFG의 겹친 영역 □OPCQ를 표시한 문제 그림",
     "level": "상",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -1301,7 +1307,11 @@ window.questionBank = [
       "l4": "ASA 합동"
     },
     "primaryMethod": "정사각형 중앙의 ASA와 넓이 재배치",
-    "decisiveStep": "두 쌍의 수직선의 같은각과 중심거리로 합동을 세우고 겹친영역을 OBC로 바꾼다."
+    "decisiveStep": "두 쌍의 수직선의 같은각과 중심거리로 합동을 세우고 겹친영역을 OBC로 바꾼다.",
+    "imageCaption": "한 변이 6cm인 두 정사각형 ABCD와 OEFG의 겹친 영역 □OPCQ를 표시한 문제 그림",
+    "solutionImageAlt": "두 정사각형의 겹친 □OPCQ는 △OBC와 넓이가 같아 9cm²가 되는 해설",
+    "solutionImageCaption": "두 정사각형의 겹친 □OPCQ는 △OBC와 넓이가 같아 9cm²가 되는 해설",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

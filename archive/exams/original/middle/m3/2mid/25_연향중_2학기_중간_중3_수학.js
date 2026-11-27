@@ -86,8 +86,8 @@ window.questionBank = [
     "problemTypeKey": "PT_TRIG_RATIO",
     "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
     "solutionImage": "assets/images/25_연향중_2학기_중간_중3_수학/q2-solution.svg",
-    "solutionImageAlt": "해설 그림: 여각 A, B를 가진 3:4:5 직각삼각형에서 세 변과 직각을 표시한 정규화 그림.",
-    "solutionImageCaption": "tan A=4/3, cos B=sin A=4/5이므로 식의 값은 41/15이다. 정답: ⑤",
+    "solutionImageAlt": "sin A=4/5인 직각삼각형에서 tan A와 cos B를 구한다.",
+    "solutionImageCaption": "sin A=4/5인 직각삼각형에서 tan A와 cos B를 구한다.",
     "solutionImageSize": "full"
   ,
     "crossConceptKeys": ["CC_COMPLEMENTARY_ANGLE_TRIG","CC_LINEAR_EQUATIONS"],
@@ -101,7 +101,8 @@ window.questionBank = [
     "decisiveStep": "일차식에서 sin A를 정하고 같은 예각의 cos·tan 및 여각인 B의 cos를 차례로 복원하여 주어진 식에 대입한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageScale": 90
   },
   {
     "id": 3,
@@ -634,7 +635,10 @@ window.questionBank = [
     "decisiveStep": "수선 높이로 첫 삼각형 넓이를 구하고 피타고라스로 대각선을 복원하여 다른 끼인각의 삼각비 높이를 만든 뒤 두 삼각형 넓이를 합한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "사각형 ABCD의 대각선 AC로 삼각형 ABC와 ACD의 넓이를 구분한다.",
+    "solutionImageCaption": "사각형 ABCD의 대각선 AC로 삼각형 ABC와 ACD의 넓이를 구분한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 14,
@@ -737,7 +741,10 @@ window.questionBank = [
     "decisiveStep": "현의 수직이등분선 위에 중심을 놓고 반지름r와 중심거리r−2를 피타고라스 식으로 연결하여 r를 결정한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "현 AB의 중점 D에 내린 중심 수선 OD와 원 위 점 C 사이 CD=2, AD=4에서 반지름을 구한다.",
+    "solutionImageCaption": "현 AB의 중점 D에 내린 중심 수선 OD와 원 위 점 C 사이 CD=2, AD=4에서 반지름을 구한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 16,
@@ -838,7 +845,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "같은 중심거리를 갖는 두 현이 같아 이등변삼각형이 됨을 이용하고 두 수직각과 사각형 내각합으로 꼭지각을 구하여 밑각을 정한다.",
-    "decisiveStep": "같은 중심거리를 갖는 두 현이 같아 이등변삼각형이 됨을 이용하고 두 수직각과 사각형 내각합으로 꼭지각을 구하여 밑각을 정한다."
+    "decisiveStep": "같은 중심거리를 갖는 두 현이 같아 이등변삼각형이 됨을 이용하고 두 수직각과 사각형 내각합으로 꼭지각을 구하여 밑각을 정한다.",
+    "solutionImageAlt": "원의 내접 이등변삼각형 ABC와 현 AB, AC의 중점 M,N의 중심각 130°를 사용한다.",
+    "solutionImageCaption": "원의 내접 이등변삼각형 ABC와 현 AB, AC의 중점 M,N의 중심각 130°를 사용한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 18,
@@ -889,7 +899,10 @@ window.questionBank = [
     "decisiveStep": "접선과 반지름의 직각 및 두 접선의 대칭으로30도 직각삼각형을 만들고 탄젠트로 접선 길이를 구하여 두 삼각형 넓이를 합한다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "원 밖 점 P에서 반지름 2인 원에 그은 두 접선 PA,PB가 60°를 이룬다.",
+    "solutionImageCaption": "원 밖 점 P에서 반지름 2인 원에 그은 두 접선 PA,PB가 60°를 이룬다.",
+    "solutionImageScale": 90
   },
   {
     "id": 19,
@@ -940,7 +953,10 @@ window.questionBank = [
     "decisiveStep": "반지름과 접선의 직각으로 바깥 접선 길이를 복원하고 세 꼭짓점의 등접선 관계를 적용하여 삼각형 둘레를 바깥 두 접선 길이의 합으로 묶는다.",
     "curriculum": "2015",
     "curriculumKey": "2015",
-    "courseKey": "M3-2"
+    "courseKey": "M3-2",
+    "solutionImageAlt": "원 밖 A와 원 O의 접선 두 개, 세 번째 접선 BC가 만드는 삼각형 ABC의 둘레를 구한다.",
+    "solutionImageCaption": "원 밖 A와 원 O의 접선 두 개, 세 번째 접선 BC가 만드는 삼각형 ABC의 둘레를 구한다.",
+    "solutionImageScale": 90
   },
   {
     "id": 20,

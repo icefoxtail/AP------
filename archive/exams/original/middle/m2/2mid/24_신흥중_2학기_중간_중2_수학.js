@@ -586,7 +586,10 @@ window.questionBank=[
     "difficultyConfidence": "high",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "대각선의 절반 길이 동등에서 전체 길이",
-    "decisiveStep": "같은 밑각으로 OA=OB를 얻고 평행사변형의 두 대각선 이등분으로 전체AC=BD를 잇는다."
+    "decisiveStep": "같은 밑각으로 OA=OB를 얻고 평행사변형의 두 대각선 이등분으로 전체AC=BD를 잇는다.",
+    "solutionImageAlt": "두 대각선의 교점 O에서 OA=OB, OA=OC, OB=OD이므로 AC=BD가 되는 관계",
+    "solutionImageCaption": "두 대각선의 교점 O에서 OA=OB, OA=OC, OB=OD이므로 AC=BD가 되는 관계",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -928,6 +931,9 @@ window.questionBank=[
     "difficultyConfidence": "high",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "대각선 양쪽 ASA로 대변 동등 증명",
-    "decisiveStep": "평행 대변의 두 엇각과 공통 대각선으로 합동을 보이고 대응변 동등을 결론짓는다."
+    "decisiveStep": "평행 대변의 두 엇각과 공통 대각선으로 합동을 보이고 대응변 동등을 결론짓는다.",
+    "solutionImageAlt": "평행사변형의 대각선 AC로 나눈 두 삼각형의 ASA 합동과 대응하는 대변의 길이",
+    "solutionImageCaption": "평행사변형의 대각선 AC로 나눈 두 삼각형의 ASA 합동과 대응하는 대변의 길이",
+    "solutionImageSize": "full"
   }
 ];

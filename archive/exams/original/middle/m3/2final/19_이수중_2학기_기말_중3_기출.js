@@ -394,8 +394,8 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "level": "중",
     "solutionImage": "assets/images/19_이수중_2학기_기말_중3_기출/q8-solution-v2.svg",
-    "solutionImageAlt": "A의 점에서 밑변 BC에 주황 수선을 내렸으므로 60도의 맞은편 길이가 높이다.",
-    "solutionImageCaption": "넓이는 4×5×sin60°/2=5√3 cm², 정답은 ②이다.",
+    "solutionImageAlt": "AB=4cm, BC=5cm이고 끼인각 B는 60도이다. 점 A에서 BC에 내린 점선 높이 AH와 직각 표시로 넓이 공식을 설명한다.",
+    "solutionImageCaption": "AB=4cm, BC=5cm이고 끼인각 B는 60도이다. 점 A에서 BC에 내린 점선 높이 AH와 직각 표시로 넓이 공식을 설명한다.",
     "solutionImageSize": "full"
   ,
     "conceptClusterKey": "TRIG_RATIO_APPLICATION",
@@ -447,8 +447,8 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
     "solutionImage": "assets/images/19_이수중_2학기_기말_중3_기출/q9-solution-v2.svg",
-    "solutionImageAlt": "A에서 밑변 쪽으로 주황 수선을 내렸다. B가 포함된 작은 직각삼각형에서 높이는 주어진 6 cm와 연결된다.",
-    "solutionImageCaption": "넓이 식에서 sin B=(15√2)/30=√2/2이다. B가 예각이므로 ∠B=45°이며 정답은 ③이다.",
+    "solutionImageAlt": "AB=6cm, BC=10cm이고 삼각형 넓이가 15√2cm²이다. B에서의 예각을 45도로 구한 후 점선 높이 AH와 직각 표시로 넓이 관계를 확인한다.",
+    "solutionImageCaption": "AB=6cm, BC=10cm이고 삼각형 넓이가 15√2cm²이다. B에서의 예각을 45도로 구한 후 점선 높이 AH와 직각 표시로 넓이 관계를 확인한다.",
     "solutionImageSize": "full"
   ,
     "conceptClusterKey": "TRIG_RATIO_APPLICATION",
