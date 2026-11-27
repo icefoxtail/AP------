@@ -29,6 +29,14 @@ export function classifyRegistrationFailure(rawLog, failingStep = '') {
       guidance: 'SVG 접근성 문구를 실제 수학 내용에 맞게 수정하고 원래 검증을 통과시킨 뒤 재등록해야 합니다. 검증 우회·무작정 재시도는 하지 않습니다.',
     };
   }
+  const accessibility = log.match(/(SVG_ACCESSIBILITY_[A-Z0-9_]+):(assets\/[\p{L}\p{N}_./-]+\.svg)/u);
+  if (accessibility && !accessibility[2].includes('..')) {
+    return {
+      type: 'SOURCE_VALIDATION', code: accessibility[1],
+      asset: `archive/${accessibility[2]}`, location: 'accessibility text',
+      guidance: '대상 SVG의 title/desc 문구를 실제 그림 내용에 맞는 한국어로 고친 뒤 공식 접근성 검증을 재실행해야 합니다.',
+    };
+  }
   const native = log.match(/NATIVE_COMMAND_FAILED:([A-Za-z][A-Za-z0-9_-]*):\d+/);
   if (native) {
     return {

@@ -32,6 +32,9 @@ test('registration assistant ignores stale and pull-request workflow runs', () =
   assert.equal(shouldTriage({ id: 42, head_branch: 'main', event: 'pull_request' }, newest), false);
   assert.equal(shouldTriage({ id: 42, head_branch: 'main', event: 'push' }, newest), true);
   assert.equal(classifyRegistrationFailure('NATIVE_COMMAND_FAILED:sharedDb:1').location, 'sharedDb');
+  const korean = classifyRegistrationFailure('SVG_ACCESSIBILITY_KOREAN_REQUIRED:assets/images/21_매산중_2학기_기말_중3_기출/q10-solution.svg');
+  assert.equal(korean.code, 'SVG_ACCESSIBILITY_KOREAN_REQUIRED');
+  assert.equal(korean.asset, 'archive/assets/images/21_매산중_2학기_기말_중3_기출/q10-solution.svg');
 });
 
 test('registration assistant only triages and never launches or bypasses the registration writer', () => {
