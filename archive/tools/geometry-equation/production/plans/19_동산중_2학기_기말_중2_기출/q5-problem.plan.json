@@ -1,0 +1,36 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "CONE",
+      "radius": 4,
+      "height": 12
+    },
+    {
+      "id": "s2",
+      "kind": "CONE",
+      "radius": 6,
+      "height": 18
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "radius": "bottom",
+      "label": "4"
+    },
+    {
+      "solid": "s1",
+      "height": true,
+      "side": "LEFT",
+      "label": "12"
+    },
+    {
+      "solid": "s2",
+      "height": true,
+      "side": "RIGHT",
+      "label": "18"
+    }
+  ]
+}

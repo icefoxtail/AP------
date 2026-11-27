@@ -1,0 +1,37 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "CYLINDER",
+      "radius": 2,
+      "height": 6
+    },
+    {
+      "id": "s2",
+      "kind": "CYLINDER",
+      "radius": 3,
+      "height": 9
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "radius": "bottom",
+      "label": "2"
+    },
+    {
+      "solid": "s1",
+      "height": true,
+      "label": "6",
+      "side": "LEFT"
+    },
+    {
+      "solid": "s2",
+      "height": true,
+      "label": "9",
+      "side": "RIGHT"
+    }
+  ]
+}
