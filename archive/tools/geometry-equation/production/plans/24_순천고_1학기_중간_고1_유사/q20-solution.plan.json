@@ -1,0 +1,8 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{"family":"polynomial","coefficients":["0","-1","2/5"],"axisVariable":"t","sourceDomain":{"kind":"INTERVAL","range":[0,4],"states":["CLOSED","CLOSED"]},"domain":[0,4],"viewport":[-1,5,-2,4],"requiredPoints":[{"id":"L","x":0,"y":0},{"id":"V","x":1.25,"y":-0.625},{"id":"R","x":4,"y":2.4}],"exactCoordinates":{"V":["5/4","-5/8"],"R":["4","12/5"]},"axisTickValues":{"x":[],"y":[]}},
+  "caption":"그림에서 BP=BQ=t로 두면 PQ²−BP=(2/5)t²−t이며 t=5/4에서 최소 −5/8을 갖는다.",
+  "accessibilityDescription":"t가 0에서 4까지인 위로 열린 포물선의 꼭짓점 V(5/4,−5/8)과 닫힌 양 끝 (0,0),(4,12/5)을 표시한다.",
+  "sourceConditions":[{"id":"geometry","condition":"직각삼각형 AB=4,BC=5,AC=3에서 BP=BQ=t이고 PQ²=2t²/5","mappedTo":["graphPlan.coefficients"]},{"id":"domain","condition":"P가 선분 AB 위이므로 0≤t≤4","mappedTo":["graphPlan.sourceDomain","graphPlan.domain"]},{"id":"minimum","condition":"꼭짓점 t=5/4에서 −5/8","mappedTo":["graphPlan.requiredPoints[1]","graphPlan.exactCoordinates.V"]}],
+  "newVisualInformation":["기존 문제 SVG의 같은 길이 표식으로 세운 t에 따른 목적식의 최솟점이 실제 허용 구간에 포함됨을 보인다."]
+}

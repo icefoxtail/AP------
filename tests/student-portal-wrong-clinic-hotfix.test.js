@@ -96,7 +96,8 @@ assert(home.indexOf('renderStudentQuickActions()') >= 0 && home.indexOf('renderS
 assert(!home.includes('renderWrongClinicPackets()') && !home.includes('id="clinic-learning-history"'), 'home must not stack full review and history sections');
 assert(home.includes('onclick="renderMore()"'), 'retained supporting features must be discoverable through more');
 const quickActions = studentIndex.match(/function renderStudentQuickActions\(\) \{[\s\S]*?\n    \}/);
-assert(quickActions && quickActions[0].includes('onclick="openPlanner()"') && quickActions[0].includes('onclick="renderAssignments()"'), 'both planner and assignment actions must remain available');
+const more = studentIndex.slice(studentIndex.indexOf('function renderMore('), studentIndex.indexOf('async function renderWrongNotebook('));
+assert(quickActions && quickActions[0].includes('onclick="openPlanner()"') && !quickActions[0].includes('onclick="renderAssignments()"') && more.includes('onclick="renderAssignments()"'), 'planner belongs on home and homework remains reachable through More');
 
 const materialRenderer = studentIndex.match(/function renderMaterialWrongAssignments\(\) \{[\s\S]*?\n    \}/);
 const materialToggle = studentIndex.match(/function toggleMaterialAssignmentList\(\) \{[\s\S]*?\n    \}/);

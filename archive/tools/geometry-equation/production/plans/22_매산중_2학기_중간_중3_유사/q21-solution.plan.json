@@ -1,0 +1,134 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "수준 1-①"
+      },
+      "plan": {
+        "capability": "multi-curve-figure-v1",
+        "graphPlan": {
+          "family": "multi-curve",
+          "viewport": [
+            -0.5,
+            7.5,
+            -5,
+            15
+          ],
+          "curves": [
+            {
+              "id": "f",
+              "kind": "Y_OF_X",
+              "coefficients": [
+                "77",
+                "-40",
+                "5"
+              ],
+              "domain": [
+                "2",
+                "6"
+              ]
+            }
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "overlays": {
+            "points": [
+              {
+                "id": "V",
+                "x": "4",
+                "y": "-3"
+              },
+              {
+                "id": "P",
+                "x": "5",
+                "y": "2"
+              }
+            ]
+          }
+        },
+        "caption": "꼭짓점 (4,-3), 점 (5,2)를 지나는 포물선",
+        "accessibilityDescription": "꼭짓점 (4,-3), 점 (5,2)를 지나는 포물선"
+      }
+    },
+    {
+      "caption": {
+        "text": "수준 1-②"
+      },
+      "plan": {
+        "capability": "multi-curve-figure-v1",
+        "graphPlan": {
+          "family": "multi-curve",
+          "viewport": [
+            -5.5,
+            6.5,
+            -20,
+            10
+          ],
+          "curves": [
+            {
+              "id": "f",
+              "kind": "Y_OF_X",
+              "coefficients": [
+                "3",
+                "-12",
+                "2"
+              ],
+              "domain": [
+                "0",
+                "6"
+              ]
+            },
+            {
+              "id": "g",
+              "kind": "Y_OF_X",
+              "coefficients": [
+                "3",
+                "-4",
+                "-1"
+              ],
+              "domain": [
+                "-5",
+                "1"
+              ]
+            }
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "overlays": {
+            "points": [
+              {
+                "id": "I",
+                "x": "0",
+                "y": "3"
+              }
+            ]
+          }
+        },
+        "caption": "두 이차함수가 y축의 점 (0,3)에서 만난다",
+        "accessibilityDescription": "두 이차함수가 y축의 점 (0,3)에서 만난다"
+      }
+    }
+  ],
+  "caption": "수준별 1-①과 1-②에서 각각 완성한 두 이차함수 그래프.",
+  "accessibilityDescription": "두 풀이의 서로 다른 이차함수 그래프를 패널로 구분한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "【서답형 1】 [서술형] 다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.\n\n**【수준별 1-①】** (4점) 꼭짓점의 좌표가 $(4, -3)$이고 점 $(5, 2)$를 지나는 그래프를 나타내는 이차함수의 식을 $y = a(x-p)^2 + q$의 꼴로 나타내는 풀이 과정과 답을 쓰시오.\n\n**【수준별 1-②】** (5점) 이차함수 $y = 2(x-p)^2 + q$의 그래프가 직선 $x = 3$을 축으로 하고, 이차함수 $y = -(x+2)^2 + 7$의 그래프와 $y$축에서 만날 때, 상수 $p, q$에 대하여 $p + q$의 값을 구하는 풀이 과정과 답을 쓰시오.",
+      "mappedTo": "ORIGINAL_PROBLEM_REVIEW"
+    },
+    {
+      "id": "solution",
+      "condition": "**【수준별 1-①】** 꼭짓점의 좌표가 $(4, -3)$이므로 구하는 이차함수의 식을 $y = a(x - 4)^2 - 3$이라 하자. 점 $(5, 2)$를 대입하면 $$2 = a(5 - 4)^2 - 3 \\implies a = 5$$ 따라서 구하는 이차함수의 식은 $y = 5(x - 4)^2 - 3$이다.\n\n**【수준별 1-②】** 축의 방정식이 $x = 3$이므로 $p = 3$이다. 두 그래프가 $y$축에서 만나므로 $x = 0$일 때의 함숫값이 서로 같다. $y = -(x + 2)^2 + 7$에 $x = 0$을 대입하면 $y = -(0 + 2)^2 + 7 = 3$이다. $y = 2(x - 3)^2 + q$에 $(0, 3)$을 대입하면 $$3 = 2(0 - 3)^2 + q = 18 + q \\implies q = -15$$ 따라서 $p + q = 3 + (-15) = -12$이다.",
+      "mappedTo": "INDEPENDENT_SOLUTION_REVIEW"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 해설에서 도출한 보조선과 기하 관계"
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "C",
+    "A",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "mx",
+        "ownerSegment": "sBC",
+        "text": "x"
+      },
+      {
+        "id": "my",
+        "ownerSegment": "sCA",
+        "text": "y"
+      },
+      {
+        "id": "mz",
+        "ownerSegment": "sAB",
+        "text": "z"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "atC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 420
+  },
+  "caption": "문항 1 해설: C가 직각인 삼각형 ABC에서 BC=x, CA=y, 빗변 AB=z이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 그림과 같은 $\\angle\\text{C}=90^\\circ$인 직각삼각형 $\\text{ABC}$에서 $\\overline{\\text{BC}}=x$, $\\overline{\\text{AC}}=y$, $\\overline{\\text{AB}}=z$일 때, $\\sin A$, $\\cos A$, $\\tan A$가 순서대로 바르게 짝지어진 것은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "solution",
+      "condition": "직각삼각형 $\\text{ABC}$에서 $\\angle\\text{C}=90^\\circ$이므로 빗변은 $\\overline{\\text{AB}}=z$, $\\angle\\text{A}$의 대변은 $\\overline{\\text{BC}}=x$, $\\angle\\text{A}$에 이웃한 변은 $\\overline{\\text{AC}}=y$이다. 따라서 $$\\sin A = \\frac{x}{z}, \\quad \\cos A = \\frac{y}{z}, \\quad \\tan A = \\frac{x}{y}$$ 이므로 정답은 ②이다.",
+      "mappedTo": "INDEPENDENT_SOLUTION_REVIEW"
+    }
+  ],
+  "accessibilityDescription": "풀이의 도형 관계를 확인한다. C가 직각인 삼각형 ABC에서 BC=x, CA=y, 빗변 AB=z이다.",
+  "newVisualInformation": [
+    "문제에 주어진 점·선·각·길이 관계를 나타낸 실제 도형",
+    "문제의 각·선분·원 관계를 해설과 대조하는 도식"
+  ]
+}

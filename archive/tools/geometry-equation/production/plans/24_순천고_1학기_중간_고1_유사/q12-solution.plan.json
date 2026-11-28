@@ -1,0 +1,8 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{"family":"polynomial","coefficients":["-5","-4","4"],"axisVariable":"a","sourceDomain":{"kind":"ALL_REALS"},"domain":[-1,2],"viewport":[-1,2,-8,6],"requiredPoints":[{"id":"V","x":0.5,"y":-6}],"exactCoordinates":{"V":["1/2","-6"]},"axisTickValues":{"x":[],"y":[]}},
+  "caption":"M(a)=4(a−1/2)²−6은 a=1/2에서 최솟값 −6을 갖는다.",
+  "accessibilityDescription":"위로 열린 포물선 M(a)의 꼭짓점 V(1/2,−6)가 최소를 나타낸다.",
+  "sourceConditions":[{"id":"maximum","condition":"x에 관한 원래 함수의 최대 M=4a²−4a−5","mappedTo":["graphPlan.coefficients"]},{"id":"minimum","condition":"M=4(a−1/2)²−6의 꼭짓점","mappedTo":["graphPlan.requiredPoints[0]"]}],
+  "newVisualInformation":["x의 최대값을 다시 a에 관해 최소화하는 2단 극값 관계를 그림에 보인다."]
+}

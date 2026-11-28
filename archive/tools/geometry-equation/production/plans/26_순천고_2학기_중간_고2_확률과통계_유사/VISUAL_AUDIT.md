@@ -1,5 +1,48 @@
 # 26_순천고_2학기_중간_고2_확률과통계_유사 — SVG 2축 정밀 재감사
 
+## 2026-11-28 최신 main 독립 재검증 (기존 공식 plan 전부 보존)
+
+- 작업 시작 기준 `origin/main` **`3e0c3da2e39f4acfd526d8a6b51b1a0ad06fc35d`** (원격 새 조회). 열린 PR **82개** 전체 변경 경로 **3,459개**에 대해 두 대상 JS 및 production plan 폴더 중첩 **0건**.
+- 현행 유사 JS **24문항·24해설 = 문제 24축 + 해설 24축 = 48축**. `REQUIRED` 3(문제 14·16·20), `BENEFICIAL` 6(해설 14·15·16·19·20·23), `EXEMPT` 39. 직접 연결된 현행 유사 자산은 문제 PNG q16·q20 **2개**, 직접 연결 유사 SVG **0개**. 원본 기출 PNG q14·q16·q20, 풀이 SVG 변형본, 기존 `_plans/`는 공식 plan 개수와 별도 확인.
+- 공식 실행형 production plan **6개 전부 유지 / 수정 0 / 신규 0**. q16 해설은 필요하지만 공식 지원 필드로 셀마다 정밀한 두 칸 접촉의 세 유형을 그릴 증거가 없어 **`ENGINE_CAPABILITY_PENDING:GRID_CELL_PAIR_HIGHLIGHT` 1축** (미지원 plan으로 통과 주장 금지). q16·q20 문제의 기존 PNG는 계획을 새로 만들거나 변경하지 않고 정적 확인했다.
+- JSON 파싱·필수 스키마 **6/6 PASS**, 공식 Shallow/Full lint **각 6 PASS·0 FAIL·0 SKIP**, 현행 JS와 모든 그려지는 수학 필드 및 설명 문구를 수동 대조한 `STATIC_FIELD_PARITY` **6 PASS**. 신규 Chromium 실행 검사에서 실제 `/usr/lib/chromium/chromium` 본체 부재로 exit 127: 공식 SVG·PNG·학생 화면·A4를 만들거나 보지 못했으므로 `DRAWN_FEATURE_PARITY` **PASS 0 / FAIL 0 / `RENDER_NOT_RUN` 6**. q16 해설 1축은 별도의 `ENGINE_CAPABILITY_PENDING`이며, 정적 PASS를 실제 시각 PASS로 보고하지 않는다.
+- **`ORIGINAL_EXAM_PNG_CONFLICT`:** 기출 q14 PNG는 C=(0,5)인 왼쪽 맨 위 교점이고 기출 C 회피 경로가 251개다. 현행 유사 JS는 **C=(0,3)**, 전체 252개 중 C 경유 21개를 빼서 231개다. 현행 유사 JS가 학생의 실제 발문이므로 기존 PNG 그대로 재사용하지 않고 두 기존 q14 plan의 C 위치를 유지한다.
+- **`ORIGINAL_EXAM_SVG_VARIANT_CONFLICT`:** 기출 q15는 공 3/5개·추출 3/4개·모두 같은 색 사건, 유사 q15는 공 4/4개·추출 2/3개·두 색 사건이다. 기출 q19는 합집합, 유사는 교집합(168/504); 기출 q20은 예각, 유사는 직각; 기출 q23은 세 문, 유사는 네 문이다. 현행 유사 JS·해설에 맞춘 확률, 라벨, 음영, 분기를 유지하고 기출 SVG 변형본의 수치를 덮어쓰지 않는다.
+- 직접 연결된 유사 SVG가 없으므로 불필요한 흰 `rect`의 직접 자산 결함은 **0건 관측**(PNG의 종이 흰색은 SVG 배경과 구분). 엔진 공통 렌더 시 기본 흰 캔버스를 삽입할 가능성은 있으나 본 환경에서 출력 확인이 안 되어 투명화 해결/시각 PASS를 주장하지 않는다. `TRANSPARENT_CANVAS_OPTION`, `MULTI_CURVE_INVERSE_CUBIC`, `PIECEWISE_POLYNOMIAL_UPPERCASE_FUNCTION_NAME`을 이 시험지의 확정 미지원 기능으로 복사하지 않는다.
+
+| 문항 | 문제 축 판정 | 해설 축 판정 | 원본 SVG | plan 파일 | STATIC_FIELD_PARITY | DRAWN_FEATURE_PARITY | 비고 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 01 | EXEMPT: 이항계수 식으로 완결 | EXEMPT: 계수 대입·산술 | 없음 | — | N/A | N/A | 위치·곡선 조건 없음 |
+| 02 | EXEMPT: 배반사건 수치 조건 | EXEMPT: 덧셈정리 계산 | 없음 | — | N/A | N/A | 그림 없이 사건식 충분 |
+| 03 | EXEMPT: 중복순열·조합 조건 | EXEMPT: 경우의 수 계산 | 없음 | — | N/A | N/A | 수식으로 완결 |
+| 04 | EXEMPT: 사건 등식 제시 | EXEMPT: 등식 판정·연산 | 없음 | — | N/A | N/A | 좌표·영역 관계 불필요 |
+| 05 | EXEMPT: 상대도수 HTML 표 | EXEMPT: 표 값·비율 계산 | 없음 | — | N/A | N/A | 표 반복 SVG 불필요 |
+| 06 | EXEMPT: 조건부확률 수식 | EXEMPT: 확률 대입 계산 | 없음 | — | N/A | N/A | 사건관계는 수식에 완결 |
+| 07 | EXEMPT: 이항계수 수치 | EXEMPT: 이항계수 연산 | 없음 | — | N/A | N/A | 조합식으로 충분 |
+| 08 | EXEMPT: 전개식의 특정 항 | EXEMPT: 항의 차수·계수 계산 | 없음 | — | N/A | N/A | 그래프 불필요 |
+| 09 | EXEMPT: 학년별 참가 수 조건 | EXEMPT: 조건부확률 분수 | 없음 | — | N/A | N/A | 빈도 수치 계산 |
+| 10 | EXEMPT: 거듭제곱 끝자리 | EXEMPT: 나머지의 주기 | 없음 | — | N/A | N/A | 시각조건 없음 |
+| 11 | EXEMPT: 자릿수 합 정수해 | EXEMPT: 정수해 경우 열거 | 없음 | — | N/A | N/A | 수식으로 충분 |
+| 12 | EXEMPT: 글자 순서·자리 제한 | EXEMPT: 배열 경우의 수 | 없음 | — | N/A | N/A | 자리 규칙 명확 |
+| 13 | EXEMPT: 함숫값 배수 조건 | EXEMPT: 배수 조건 계산 | 없음 | — | N/A | N/A | 도형 불필요 |
+| **14** | **REQUIRED: A·B·C의 격자 위치** | **BENEFICIAL: C 진입 간선 제외와 경로 수** | 유사 없음; 기출 `q14-solution-v2.svg` | `q14-problem.plan.json`, `q14-solution.plan.json` | PASS (2) | RENDER_NOT_RUN (2) | `ORIGINAL_EXAM_PNG_CONFLICT` 기출 C(0,5) ≠ 유사 C(0,3); 251 ≠ 231 |
+| 15 | EXEMPT: 공·동전·추출 규칙 명시 | BENEFICIAL: 앞·뒷면과 두 색 조건부확률 수형도 | 유사 없음; 기출 `q15-solution.svg` | `q15-solution.plan.json` | PASS | RENDER_NOT_RUN | 유사 4/4개·추출 2/3개; 기출과 `ORIGINAL_EXAM_SVG_VARIANT_CONFLICT` |
+| **16** | **REQUIRED: 4×5 격자 두 칸의 접촉관계** | **BENEFICIAL: 변 공유·꼭짓점 공유 세 종류의 시각적 분류** | 유사 없음; 기출 `q16-solution.svg` | 문제 기존 `q16.png`; 해설 공식 plan 없음 | 기존 PNG 확인; 해설 미지원 | 해설 `ENGINE_CAPABILITY_PENDING` | `GRID_CELL_PAIR_HIGHLIGHT`; 전체 190 중 수평 15·수직 16·대각 24 |
+| 17 | EXEMPT: 함수값 합·순서 제약 | EXEMPT: 함수 수치 계산 | 없음 | — | N/A | N/A | 선·축 필요 없음 |
+| 18 | EXEMPT: 세 부분집합의 조건 | EXEMPT: 조합·확률 계산 | 없음 | — | N/A | N/A | 집합 표기만으로 충분 |
+| 19 | EXEMPT: 카드 합·곱 조건 명시 | BENEFICIAL: E∩F 사건 영역 음영 | 유사 없음; 기출 풀이 SVG 변형 없음 | `q19-solution.plan.json` | PASS | RENDER_NOT_RUN | 504 중 교집합 168; 기출은 합집합이라 그대로 복제 금지 |
+| **20** | **REQUIRED: 원 위 A~F의 시계방향 순서** | **BENEFICIAL: AD 지름·∠ABD 직각 표시** | 유사 없음; 기출 `q20-solution-v3.svg` | 문제 기존 `q20.png`; `q20-solution.plan.json` | PASS (해설), PNG 확인 | RENDER_NOT_RUN (해설) | 기출 예각 ↔ 유사 직각: `ORIGINAL_EXAM_SVG_VARIANT_CONFLICT`; 면 채움 없음 |
+| 21 | EXEMPT: 이항계수 매개변수 조건 | EXEMPT: 연립·정수 해석 | 없음 | — | N/A | N/A | 풀이 수식 완결 |
+| 22 | EXEMPT: 비음수 정수해 조건 | EXEMPT: 정수해 세기 | 없음 | — | N/A | N/A | 좌표 정보 불필요 |
+| 23 | EXEMPT: 네 문과 사회자 규칙 명시 | BENEFICIAL: 유지·변경 성공 분기 확률 수형도 | 유사 없음; 기출 `q23-solution-v2.svg` | `q23-solution.plan.json` | PASS | RENDER_NOT_RUN | 기출 세 문·유사 네 문: `ORIGINAL_EXAM_SVG_VARIANT_CONFLICT` |
+| 24 | EXEMPT: 소인수분해와 서로소 조건 | EXEMPT: 거듭제곱 인수 배정 | 없음 | — | N/A | N/A | 수식 계산으로 완결 |
+
+**축 합계: 문제 24축 + 해설 24축 = 48축 = REQUIRED 3 + BENEFICIAL 6 + EXEMPT 39.** `STATIC_FIELD_PARITY`는 각 plan의 실제 그려지는 필드만 확인한 정적 결과다. 원본 PNG·SVG와 조건이 다른 문항은 현행 유사 JS가 제작 기준이며, 공식 SVG·학생 화면의 눈금·점·라벨·정답 노출·흰 배경은 여전히 `RENDER_NOT_RUN`이다.
+
+---
+
+## 이전 제작 당시 상세 감사 기록 (아래는 당시 상태이며 이번 상단 재검증이 우선)
+
 - 원문: `archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사.js` (main 읽기 기준 `6364a72256ad659a112922e76ad9fa29b87c0f81`).
 - 분모: 24 qid × 문항·해설 2축 = **48축**. 대상 외 JS·기존 PNG/SVG 변경 없음.
 - 새 production 실행형 plan: **6개**(q14 문제/해설, q15 해설, q19 해설, q20 해설, q23 해설); q16 해설 **ENGINE_CAPABILITY_PENDING 1축**.

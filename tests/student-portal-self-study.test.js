@@ -185,3 +185,20 @@ test('the portal wires the button on the list card and the result screen and loa
     assert.doesNotMatch(html, new RegExp(lazy), `${lazy} must not load at portal start`);
   }
 });
+
+
+test('notebook retains unclassified and legacy exam mistakes, and handles unavailable records', () => {
+  const notebook = require('../apmath/student/wrong-notebook.js');
+  const result = notebook.entries([
+    { is_submitted: 1, archive_file: 'exams/25_왕지중_2학기_기말_중2_기출.js', wrong_ids: [3, 3] },
+    { is_submitted: 1, exam_title: '중2 평가', archive_file: 'MIXED:example', wrong_ids: [7] },
+    { is_submitted: 1, wrong_ids: null },
+    { is_submitted: 0, wrong_ids: [1] }
+  ], view.normalizeNumbers);
+  assert.deepEqual(result.rows.map(({ no, scope }) => [no, scope]), [
+    [3, 'm2:2:final'],
+    [7, 'unknown']
+  ]);
+  assert.equal(result.unknownRecords, 1);
+  assert.equal(notebook.scopeLabel('m2:2:final'), '중학교 2학년 2학기 기말');
+});

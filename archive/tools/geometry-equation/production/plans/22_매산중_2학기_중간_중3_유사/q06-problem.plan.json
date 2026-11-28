@@ -1,0 +1,60 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2.3,
+      2.3,
+      -1,
+      13
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "2"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=2x^2"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "3"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "g",
+        "style": "DASHED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {}
+  },
+  "caption": "실선 y=2x²과 그것보다 폭이 좁은 점선 y=ax²의 개형.",
+  "accessibilityDescription": "실선 y=2x²과 그것보다 폭이 좁은 점선 y=ax²의 개형.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 그림에서 실선은 이차함수 $y = 2x^2$의 그래프이고, 점선은 이차함수 $y = ax^2$의 그래프이다. 두 그래프는 모두 원점을 꼭짓점으로 하고 아래로 볼록하다. 점선 그래프가 실선 그래프보다 폭이 좁을 때, 상수 $a$의 값으로 알맞은 것은?",
+      "mappedTo": "ORIGINAL_PROBLEM_REVIEW"
+    }
+  ],
+  "newVisualInformation": [
+    "문제에서 제공한 시각 조건과 도형 관계"
+  ]
+}

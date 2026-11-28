@@ -1,0 +1,9 @@
+{
+  "capability":"number-line-figure-v1",
+  "numberLine":{"variable":"m","rows":[{"kind":"SET","label":"왼쪽 1·오른쪽 2","pieces":[{"lo":{"value":"1/2","state":"OPEN"},"hi":{"value":"5-2*sqrt(5)","state":"OPEN"}}]}]},
+  "numberLineCaption":{"text":"교점 1+2개인 둘째 범위"},
+  "caption":"왼쪽 조각의 교점 한 개와 오른쪽 두 개가 모두 성립하려면 1/2<m<5−2√5이다.",
+  "accessibilityDescription":"m 수직선에서 1/2과 5−2√5 사이의 짧은 열린 구간을 표시하며 양 끝점은 모두 제외된다.",
+  "sourceConditions":[{"id":"left","condition":"왼쪽 조각에서 한 근이 x≤−1이 되려면 m>1/2","mappedTo":["numberLine.rows[0].pieces[0].lo"]},{"id":"right","condition":"오른쪽 조각의 두 양의 실근 조건 D_R=m²−10m+5>0","mappedTo":["numberLine.rows[0].pieces[0].hi"]}],
+  "newVisualInformation":["두 번째 허용 구간에서는 두 경계 모두 제외된다는 사실을 직접 나타낸다."]
+}

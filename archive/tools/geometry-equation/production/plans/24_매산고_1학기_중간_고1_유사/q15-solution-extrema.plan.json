@@ -1,0 +1,9 @@
+{
+  "capability":"polynomial-spike-v1",
+  "sourceQuote":"$8f(t)-4g(t)$의 최댓값과 최솟값의 합은?",
+  "graphPlan":{"family":"polynomial","coefficients":["-24","-8","4"],"axisVariable":"t","sourceDomain":{"kind":"INTERVAL","range":[-3,3],"states":["CLOSED","CLOSED"]},"domain":[-3,3],"viewport":[-4,4,-32,40],"requiredPoints":[{"id":"L","x":-3,"y":36},{"id":"V","x":1,"y":-28},{"id":"R","x":3,"y":-12}],"axisTickValues":{"x":[],"y":[]}},
+  "caption":"−3≤t≤3에서 8f(t)−4g(t)=4(t−1)²−28의 최솟값은 −28, 최댓값은 36이므로 합은 8이다.",
+  "accessibilityDescription":"이차함수의 닫힌 구간 −3부터 3까지의 곡선에 왼쪽 끝 (−3,36), 꼭짓점 (1,−28), 오른쪽 끝 (3,−12)가 표시되어 있다.",
+  "sourceConditions":[{"id":"function","condition":"a=2이면 8f(t)−4g(t)=4t²−8t−24","mappedTo":["graphPlan.coefficients"]},{"id":"domain","condition":"−3≤t≤3에서만 최대와 최소를 구한다","mappedTo":["graphPlan.sourceDomain","graphPlan.domain"]},{"id":"extremes","condition":"t=1에서 −28, t=−3에서 36, t=3에서 −12","mappedTo":["graphPlan.requiredPoints"]}],
+  "newVisualInformation":["극소점과 두 닫힌 끝점 중 어느 점에서 최대·최소가 나오는지 구간 제한 그래프로 확인한다."]
+}

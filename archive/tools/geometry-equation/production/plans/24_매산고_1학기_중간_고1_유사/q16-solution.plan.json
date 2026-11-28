@@ -1,0 +1,9 @@
+{
+  "capability":"number-line-figure-v1",
+  "numberLine":{"variable":"k","rows":[{"kind":"SET","label":"판별식 조건","pieces":[{"lo":null,"hi":{"value":"6","state":"OPEN"}}]},{"kind":"POINTS","label":"가능한 자연수","within":1,"points":[{"id":"K1","value":"1","hideName":true,"showValue":true},{"id":"K2","value":"2","hideName":true,"showValue":true},{"id":"K3","value":"3","hideName":true,"showValue":true},{"id":"K4","value":"4","hideName":true,"showValue":true},{"id":"K5","value":"5","hideName":true,"showValue":true}]}]},
+  "numberLineCaption":{"text":"k<6과 자연수 해집합"},
+  "caption":"D/4=6−k>0에서 k<6이며 가능한 자연수 1,2,3,4,5의 합은 15이다.",
+  "accessibilityDescription":"k 수직선에서 6은 열린 경계이고 1,2,3,4,5는 각각 조건에 포함되는 자연수로 표시되어 있다.",
+  "sourceConditions":[{"id":"discriminant","condition":"서로 다른 두 실근 조건 D/4=6−k>0","mappedTo":["numberLine.rows[0]"]},{"id":"integers","condition":"자연수 k는 1,2,3,4,5이고 6은 제외","mappedTo":["numberLine.rows[1].points","numberLine.rows[1].within"]}],
+  "newVisualInformation":["열린 끝점 6과 그 왼쪽의 다섯 자연수점을 별도로 그려 경계 포함 여부를 보인다."]
+}

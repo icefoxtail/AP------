@@ -1,0 +1,8 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{"family":"polynomial","coefficients":["1/3","1/3","-5/3","1"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[-1,2],"viewport":[-1,2,-2,3],"requiredPoints":[{"id":"R","x":-0.3333333333333333,"y":0},{"id":"T","x":1,"y":0}],"exactCoordinates":{"R":["-1/3","0"]},"axisTickValues":{"x":[],"y":[]}},
+  "caption":"a=1/3이면 (x−1)²(x+1/3)=0이어서 x=1이 중근, x=−1/3이 단근이다.",
+  "accessibilityDescription":"삼차곡선은 x=−1/3에서 x축을 가로지르고 x=1에서 접한다.",
+  "sourceConditions":[{"id":"factor","condition":"a=1/3일 때 (x−1)²(x+1/3)","mappedTo":["graphPlan.coefficients"]},{"id":"roots","condition":"−1/3은 단근, 1은 중근","mappedTo":["graphPlan.requiredPoints","graphPlan.exactCoordinates"]}],
+  "newVisualInformation":["중근 1과 다른 근 −1/3이 서로 다르다는 조건을 확인한다."]
+}
