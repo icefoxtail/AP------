@@ -1,0 +1,181 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "C",
+    "A",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l1",
+        "ownerSegment": "sAB",
+        "text": "12",
+        "unit": "cm"
+      },
+      {
+        "id": "l2",
+        "ownerSegment": "sBC",
+        "text": "x"
+      },
+      {
+        "id": "l3",
+        "ownerSegment": "sAC",
+        "text": "y"
+      }
+    ],
+    "angles": [
+      {
+        "id": "ang1",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "right1",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 380
+  },
+  "caption": "해설: C가 직각, A=60도, 빗변 AB=12cm인 삼각형과 미지 x, y",
+  "accessibilityDescription": "해설 도형: C가 직각, A=60도, 빗변 AB=12cm인 삼각형과 미지 x, y",
+  "newVisualInformation": [
+    "C가 직각, A=60도, 빗변 AB=12cm인 삼각형과 미지 x, y"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직각삼각형 $\\text{ABC}$에서 $\\angle\\text{C}=90^\\circ$, $\\angle\\text{A}=60^\\circ$, $\\overline{\\text{AB}}=12\\text{ cm}$이다. $x=\\overline{\\text{BC}}$, $y=\\overline{\\text{AC}}$라 할 때, 순서쌍 $(x, y)$는?",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "solution",
+      "condition": "직각삼각형 $\\text{ABC}$에서 $\\angle\\text{C}=90^\\circ$, $\\angle\\text{A}=60^\\circ$, 빗변 $\\overline{\\text{AB}}=12\\text{ cm}$이므로 $$x = \\overline{\\text{BC}} = 12\\sin 60^\\circ = 12 \\times \\frac{\\sqrt{3}}{2} = 6\\sqrt{3}$$ $$y = \\overline{\\text{AC}} = 12\\cos 60^\\circ = 12 \\times \\frac{1}{2} = 6$$ 따라서 $(x, y) = (6\\sqrt{3}, 6)$이므로 정답은 ④이다.",
+      "mappedTo": "SOLUTION_AXIS"
+    }
+  ]
+}

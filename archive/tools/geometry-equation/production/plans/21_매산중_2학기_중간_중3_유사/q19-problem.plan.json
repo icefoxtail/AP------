@@ -1,0 +1,164 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "circle"
+  ],
+  "displayPoints": [
+    "O",
+    "A",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAO",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l1",
+        "ownerSegment": "sAO",
+        "text": "8",
+        "unit": "cm"
+      },
+      {
+        "id": "l2",
+        "ownerSegment": "sOP",
+        "text": "17",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "right1",
+      "refs": [
+        "O",
+        "A",
+        "P"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 380
+  },
+  "caption": "원의 접점 A에서 OA⊥AP, 반지름 OA=8cm, OP=17cm",
+  "accessibilityDescription": "원의 접점 A에서 OA⊥AP, 반지름 OA=8cm, OP=17cm",
+  "newVisualInformation": [
+    "원의 접점 A에서 OA⊥AP, 반지름 OA=8cm, OP=17cm"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "원 밖의 점 $\\text{P}$에서 원 $\\text{O}$에 그은 접선이 원과 점 $\\text{A}$에서 만난다. $\\overline{\\text{OA}}=8\\text{ cm}$, $\\overline{\\text{OP}}=17\\text{ cm}$일 때, 접선 $\\overline{\\text{PA}}$의 길이는?",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "problem",
+      "condition": "원 밖의 점 $\\text{P}$에서 원 $\\text{O}$에 그은 접선이 원과 점 $\\text{A}$에서 만난다. $\\overline{\\text{OA}}=8\\text{ cm}$, $\\overline{\\text{OP}}=17\\text{ cm}$일 때, 접선 $\\overline{\\text{PA}}$의 길이는?",
+      "mappedTo": "PROBLEM_AXIS"
+    }
+  ]
+}

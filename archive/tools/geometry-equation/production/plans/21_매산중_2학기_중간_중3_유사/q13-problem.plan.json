@@ -1,0 +1,140 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "C",
+    "B",
+    "A"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l1",
+        "ownerSegment": "sBC",
+        "text": "9"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "right1",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 380
+  },
+  "caption": "직각삼각형 ABC에서 BC=9, tan A=3/4",
+  "accessibilityDescription": "직각삼각형 ABC에서 BC=9, tan A=3/4",
+  "newVisualInformation": [
+    "직각삼각형 ABC에서 BC=9, tan A=3/4"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직각삼각형 $\\text{ABC}$에서 $\\angle\\text{C}=90^\\circ$, $\\overline{\\text{BC}}=9$, $\\tan A = \\frac{3}{4}$일 때, $\\overline{\\text{AB}}$의 길이는?",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "problem",
+      "condition": "직각삼각형 $\\text{ABC}$에서 $\\angle\\text{C}=90^\\circ$, $\\overline{\\text{BC}}=9$, $\\tan A = \\frac{3}{4}$일 때, $\\overline{\\text{AB}}$의 길이는?",
+      "mappedTo": "PROBLEM_AXIS"
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "4",
+          "-1/2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      9
+    ],
+    "viewport": [
+      -1.5,
+      9.5,
+      -8,
+      12
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 2
+      },
+      {
+        "id": "B",
+        "x": 4,
+        "y": 10
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "PO",
+          "x": "0",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "PA",
+          "x": "0",
+          "y": "2",
+          "unnamed": true
+        },
+        {
+          "id": "PB",
+          "x": "4",
+          "y": "10",
+          "unnamed": true
+        },
+        {
+          "id": "PC",
+          "x": "4",
+          "y": "0",
+          "unnamed": true
+        }
+      ],
+      "polygons": [
+        {
+          "id": "trap",
+          "points": [
+            "PO",
+            "PA",
+            "PB",
+            "PC"
+          ]
+        }
+      ]
+    }
+  },
+  "caption": "해설: 포물선 위의 A(0,2), 꼭짓점 B(4,10)과 수선의 발 C(4,0)가 이루는 사다리꼴 OABC",
+  "accessibilityDescription": "해설 도형: 포물선 위의 A(0,2), 꼭짓점 B(4,10)과 수선의 발 C(4,0)가 이루는 사다리꼴 OABC",
+  "newVisualInformation": [
+    "포물선 위의 A(0,2), 꼭짓점 B(4,10)과 수선의 발 C(4,0)가 이루는 사다리꼴 OABC"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y = -\\frac{1}{2}x^2 + 4x + 2$의 그래프에서 $y$축과의 교점을 $\\text{A}$, 꼭짓점을 $\\text{B}$, 점 $\\text{B}$에서 $x$축에 내린 수선의 발을 $\\text{C}$라고 할 때, $\\square\\text{OABC}$의 넓이를 구하여라. (단, 점 $\\text{O}$는 원점)",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "solution",
+      "condition": "이차함수 $y = -\\frac{1}{2}x^2 + 4x + 2$에서 $x=0$을 대입하면 $y=2$이므로 $\\text{A}(0, 2)$이다. 식을 표준형으로 변형하면 $$y = -\\frac{1}{2}(x^2 - 8x) + 2 = -\\frac{1}{2}(x - 4)^2 + 10$$ 따라서 꼭짓점은 $\\text{B}(4, 10)$이고, 점 $\\text{B}$에서 $x$축에 내린 수선의 발은 $\\text{C}(4, 0)$이다. $\\square\\text{OABC}$는 $\\overline{\\text{OA}} \\parallel \\overline{\\text{BC}}$인 사다리꼴이므로 넓이는 $$\\frac{1}{2} \\times (\\overline{\\text{OA}} + \\overline{\\text{BC}}) \\times \\overline{\\text{OC}} = \\frac{1}{2} \\times (2 + 10) \\times 4 = 24$$",
+      "mappedTo": "SOLUTION_AXIS"
+    }
+  ]
+}
