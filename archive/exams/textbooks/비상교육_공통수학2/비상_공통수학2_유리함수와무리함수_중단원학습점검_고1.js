@@ -64,9 +64,9 @@ window.questionBank = [
     "answer": "(1) 정의역: $\\{x\\mid x\\ne1,\\ x\\in\\mathbb R\\}$, 치역: $\\{y\\mid y\\ne2,\\ y\\in\\mathbb R\\}$, 점근선: $x=1$, $y=2$\n(2) 정의역: $\\{x\\mid x\\ne-1,\\ x\\in\\mathbb R\\}$, 치역: $\\{y\\mid y\\ne-2,\\ y\\in\\mathbb R\\}$, 점근선: $x=-1$, $y=-2$",
     "solution": "(1) $y=\\dfrac{1}{x-1}+2$는 $y=\\dfrac1x$의 그래프를 오른쪽으로 $1$, 위쪽으로 $2$만큼 평행이동한 그래프이다.\n따라서 점근선은 $x=1$, $y=2$이고, 정의역은 $x\\ne1$, 치역은 $y\\ne2$인 실수 전체이다.\n\n(2) 분자를 나누어 쓰면\n$y=\\dfrac{-2x+1}{x+1}=-2+\\dfrac{3}{x+1}$이다.\n이는 $y=\\dfrac3x$의 그래프를 왼쪽으로 $1$, 아래쪽으로 $2$만큼 평행이동한 그래프이다.\n따라서 점근선은 $x=-1$, $y=-2$이고, 정의역은 $x\\ne-1$, 치역은 $y\\ne-2$인 실수 전체이다.\n두 그래프의 모양과 점근선은 그림과 같다.",
     "solutionImage": "assets/images/비상_공통수학2_유리함수와무리함수_중단원학습점검_고1/q02_rational-graphs.svg",
-    "solutionImageAlt": "두 유리함수의 쌍곡선 그래프와 각각의 수직·수평 점근선",
-    "solutionImageCaption": "점근선의 교점이 각 그래프의 중심이다.",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "(2) y=−2+3/(x+1)의 양쪽 가지, 점근선 x=−1·y=−2를 표시한다.",
+    "solutionImageCaption": "(2) y=−2+3/(x+1)의 양쪽 가지, 점근선 x=−1·y=−2를 표시한다.",
+    "solutionImageSize": "medium",
     "id": "qid_v1_ef5ce8496953bfc7e7c0d407670ac6e7dd80c2a9b8c99c1f0a4792ec49bc6eab",
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
@@ -137,9 +137,9 @@ window.questionBank = [
     "answer": "(1) 정의역: $\\{x\\mid x\\ge1\\}$, 치역: $\\{y\\mid y\\le2\\}$\n(2) 정의역: $\\{x\\mid x\\le2\\}$, 치역: $\\{y\\mid y\\ge-1\\}$",
     "solution": "(1) $y=-\\sqrt{x-1}+2$는 $y=-\\sqrt{x}$의 그래프를 오른쪽으로 $1$, 위쪽으로 $2$만큼 평행이동한 것이다.\n제곱근 안이 음수가 아니어야 하므로 $x-1\\ge0$, 즉 정의역은 $x\\ge1$이다.\n$-\\sqrt{x-1}\\le0$이므로 치역은 $y\\le2$이다.\n\n(2) 제곱근 안이 음수가 아니어야 하므로 $4-2x\\ge0$, 즉 $x\\le2$이다.\n또한 $\\sqrt{4-2x}\\ge0$이므로 $y=\\sqrt{4-2x}-1\\ge-1$이다.\n따라서 정의역은 $x\\le2$, 치역은 $y\\ge-1$이다.\n그래프는 각각 끝점 $(1,2)$에서 오른쪽 아래로, 끝점 $(2,-1)$에서 왼쪽 위로 뻗는다.",
     "solutionImage": "assets/images/비상_공통수학2_유리함수와무리함수_중단원학습점검_고1/q04_radical-graphs.svg",
-    "solutionImageAlt": "끝점이 각각 (1, 2), (2, -1)인 두 무리함수 그래프",
-    "solutionImageCaption": "끝점과 뻗는 방향으로 정의역과 치역을 확인한다.",
-    "solutionImageSize": "large",
+    "solutionImageAlt": "(2) 끝점 E(2,−1)에서 왼쪽 위로 증가하며 T(0,1)을 지나는 y=√(4−2x)−1의 그래프. 정의역 x≤2, 치역 y≥−1.",
+    "solutionImageCaption": "(2) 끝점 E(2,−1)에서 왼쪽 위로 증가하며 T(0,1)을 지나는 y=√(4−2x)−1의 그래프. 정의역 x≤2, 치역 y≥−1.",
+    "solutionImageSize": "medium",
     "id": "qid_v1_f8fc697c5f9a2fcfb1a118a862f460b005222944944b1b116df3b75155f5782c",
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
@@ -422,8 +422,8 @@ window.questionBank = [
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "UNKNOWN",
     "solutionImage": "assets/images/비상_공통수학2_유리함수와무리함수_중단원학습점검_고1/q12_intersection-threshold.svg",
-    "solutionImageAlt": "무리함수 y=-√(x-3)+1과 m=1, m=2일 때의 직선",
-    "solutionImageCaption": "m=1일 때는 시작점에서 만나고, m=2일 때는 직선이 곡선보다 위에 있다.",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "곡선 A는 (3,1)에서 오른쪽 아래로 뻗는다. m=1 직선은 P(3,1)에서 만나고, m=2 직선은 x≥3에서 곡선보다 항상 위에 있다.",
+    "solutionImageCaption": "곡선 A는 (3,1)에서 오른쪽 아래로 뻗는다. m=1 직선은 P(3,1)에서 만나고, m=2 직선은 x≥3에서 곡선보다 항상 위에 있다.",
+    "solutionImageSize": "full"
   }
 ];

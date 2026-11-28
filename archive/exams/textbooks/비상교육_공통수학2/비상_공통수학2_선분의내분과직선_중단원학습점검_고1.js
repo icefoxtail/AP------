@@ -33,7 +33,11 @@ window.questionBank = [
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/비상_공통수학2_선분의내분과직선_중단원학습점검_고1/qid_v1_1a84bdf969b7878498dc6e8ddf640ddaed69d10c94e06d3d8f00146b3cdaaee0-solution.svg",
+    "solutionImageAlt": "AB의 2:1 내분점 P(2,7)와 BA의 2:1 내분점 Q(0,6)는 같은 선분 위 서로 다른 점이다.",
+    "solutionImageCaption": "AB의 2:1 내분점 P(2,7)와 BA의 2:1 내분점 Q(0,6)는 같은 선분 위 서로 다른 점이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "qid_v1_2960ae6237cfadc4f2d647ee8b28e16365df434d193385c01f56da6889774072",
@@ -135,7 +139,11 @@ window.questionBank = [
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/비상_공통수학2_선분의내분과직선_중단원학습점검_고1/qid_v1_0be7bc1715fc113a9a31ad48d12e2645e25307fb821623902a368aa84027d44a-solution.svg",
+    "solutionImageAlt": "점 P(3,-1)에서 5x−12y−1=0에 내린 수선 PH가 최단거리 2를 나타낸다.",
+    "solutionImageCaption": "점 P(3,-1)에서 5x−12y−1=0에 내린 수선 PH가 최단거리 2를 나타낸다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "qid_v1_24835c24a36257e1e523dabc525938a3003b54b1695f1fd6d594ed9a73ca1399",
@@ -169,7 +177,11 @@ window.questionBank = [
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/비상_공통수학2_선분의내분과직선_중단원학습점검_고1/qid_v1_24835c24a36257e1e523dabc525938a3003b54b1695f1fd6d594ed9a73ca1399-solution.svg",
+    "solutionImageAlt": "내분점 P(-1,3)과 중점 M(1,4) 사이의 거리는 √5이다.",
+    "solutionImageCaption": "내분점 P(-1,3)과 중점 M(1,4) 사이의 거리는 √5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "qid_v1_728774a2314cfbdfa88a63449f9759677ca6746214dfaee5271d3af156849e1f",
@@ -237,7 +249,11 @@ window.questionBank = [
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/비상_공통수학2_선분의내분과직선_중단원학습점검_고1/qid_v1_766a8cddd3a8a404cde0d348401446cc554d2aa61db76e6cc8300c0297dcf5e6-solution.svg",
+    "solutionImageAlt": "두 중선의 교점 G(2,1)을 지나고 주어진 직선과 평행한 직선은 y=3x−5이다.",
+    "solutionImageCaption": "두 중선의 교점 G(2,1)을 지나고 주어진 직선과 평행한 직선은 y=3x−5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "qid_v1_369298662368baa5edb955ebdf7cf06e37f03dc8b7b23d3ab1a2a7a06b011f34",
@@ -271,7 +287,11 @@ window.questionBank = [
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/비상_공통수학2_선분의내분과직선_중단원학습점검_고1/qid_v1_369298662368baa5edb955ebdf7cf06e37f03dc8b7b23d3ab1a2a7a06b011f34-solution.svg",
+    "solutionImageAlt": "AB의 3:1 내분점 P(3,0)에서 AB에 수직인 직선의 식은 y=−x+3이다.",
+    "solutionImageCaption": "AB의 3:1 내분점 P(3,0)에서 AB에 수직인 직선의 식은 y=−x+3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "qid_v1_980a769aa94fdffa89536bc9bdbb6b0f32ba97b036c00f8bf898887ce65311ad",
@@ -301,14 +321,21 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "오른쪽 그림과 같이 세 점 $O(0,0)$, $A(3,1)$, $B(1,5)$를 꼭짓점으로 하는 삼각형 $OAB$의 넓이를 원점 $O$를 지나는 직선 $l$이 이등분할 때, 직선 $l$의 방정식을 구하시오.",
-    "image": "assets/images/비상_공통수학2_선분의내분과직선_중단원학습점검_고1/q09_diagram.png",
+    "image": "assets/images/비상_공통수학2_선분의내분과직선_중단원학습점검_고1/qid_v1_980a769aa94fdffa89536bc9bdbb6b0f32ba97b036c00f8bf898887ce65311ad-problem.svg",
     "choices": [],
     "answer": "$y=\\dfrac{3}{2}x$",
     "solution": "원점 $O$를 지나는 직선이 삼각형 $OAB$의 넓이를 이등분하려면 변 $AB$의 중점을 지나야 한다.\n변 $AB$의 중점은 $\\left(\\dfrac{3+1}{2},\\,\\dfrac{1+5}{2}\\right)=(2,3)$이다.\n따라서 직선 $l$은 $O(0,0)$과 $(2,3)$을 지나므로 기울기는 $\\dfrac{3}{2}$이다.\n\n따라서 직선 $l$의 방정식은 $y=\\dfrac{3}{2}x$이다.",
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/비상_공통수학2_선분의내분과직선_중단원학습점검_고1/qid_v1_980a769aa94fdffa89536bc9bdbb6b0f32ba97b036c00f8bf898887ce65311ad-solution.svg",
+    "solutionImageAlt": "변 AB의 중점 M(2,3)을 지나는 OM이 삼각형의 넓이를 정확히 이등분한다.",
+    "solutionImageCaption": "변 AB의 중점 M(2,3)을 지나는 OM이 삼각형의 넓이를 정확히 이등분한다.",
+    "solutionImageSize": "full",
+    "imageAlt": "삼각형 OAB를 원점 O를 지나는 분홍색 직선 l이 넓이만 같게 나눈다.",
+    "imageCaption": "삼각형 OAB를 원점 O를 지나는 분홍색 직선 l이 넓이만 같게 나눈다.",
+    "imageSize": "full"
   },
   {
     "id": "qid_v1_48ef2cf4edefd59b2d397237d65a2fb23e796a22acbb7cc3adfbe7e8f94b40e5",
@@ -342,7 +369,11 @@ window.questionBank = [
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/비상_공통수학2_선분의내분과직선_중단원학습점검_고1/qid_v1_48ef2cf4edefd59b2d397237d65a2fb23e796a22acbb7cc3adfbe7e8f94b40e5-solution.svg",
+    "solutionImageAlt": "교점 Q(-1,2)를 기준으로 거리 √13만큼 떨어진 두 평행선 2x+3y−17=0, 2x+3y+9=0을 함께 그린다.",
+    "solutionImageCaption": "교점 Q(-1,2)를 기준으로 거리 √13만큼 떨어진 두 평행선 2x+3y−17=0, 2x+3y+9=0을 함께 그린다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "qid_v1_e66ff653a3a02ac536755683d0d0496e16040beaa2367541aab254e9a6122e5f",
@@ -376,7 +407,15 @@ window.questionBank = [
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "image": "assets/images/비상_공통수학2_선분의내분과직선_중단원학습점검_고1/qid_v1_e66ff653a3a02ac536755683d0d0496e16040beaa2367541aab254e9a6122e5f-problem.svg",
+    "imageAlt": "PQ∥BC와 넓이비 [ABC]:[APQ]=9:1을 나타내되 미지점 P,Q의 좌표는 드러내지 않는다.",
+    "imageCaption": "PQ∥BC와 넓이비 [ABC]:[APQ]=9:1을 나타내되 미지점 P,Q의 좌표는 드러내지 않는다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/비상_공통수학2_선분의내분과직선_중단원학습점검_고1/qid_v1_e66ff653a3a02ac536755683d0d0496e16040beaa2367541aab254e9a6122e5f-solution.svg",
+    "solutionImageAlt": "PQ가 BC와 평행해 AP:AB=AQ:AC=1:3인 닮은 삼각형을 만든다.",
+    "solutionImageCaption": "PQ가 BC와 평행해 AP:AB=AQ:AC=1:3인 닮은 삼각형을 만든다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "qid_v1_5d2fd6d67bbd576eb960b8601e0ba4123546f7f098b42adc119f820d49dfaea7",
@@ -409,10 +448,13 @@ window.questionBank = [
     "choices": [],
     "answer": "최댓값 $\\sqrt{89}$, 최솟값 $4$",
     "solution": "마름모 위의 점은 각 변 위에 있다. 선분 위의 점 $X$는 양 끝점 $U,V$를 이용하여 $X=tU+(1-t)V$ ($0\\le t\\le1$)로 나타낼 수 있으므로, 삼각부등식에 의해 $PX\\le tPU+(1-t)PV\\le\\max(PU,PV)$이다. 따라서 최댓값은 꼭짓점에서 생긴다.\n\n$PA=\\sqrt{(5+3)^2+(4-0)^2}=4\\sqrt5$, $PB=\\sqrt{(5-0)^2+(4+4)^2}=\\sqrt{89}$, $PC=\\sqrt{(5-3)^2+(4-0)^2}=2\\sqrt5$, $PD=5$이므로 최댓값은 $\\sqrt{89}$이다.\n\n변 $CD$의 직선의 방정식은 $4x+3y-12=0$이다. 점 $P(5,4)$에서 이 직선에 내린 수선의 발은\n$H\\left(5-\\dfrac{20\\cdot4}{25},4-\\dfrac{20\\cdot3}{25}\\right)=\\left(\\dfrac95,\\dfrac85\\right)$\n이고, 이는 선분 $CD$ 위에 있다. 따라서 선분 $CD$까지의 최단거리는\n$PH=\\dfrac{|4\\cdot5+3\\cdot4-12|}{\\sqrt{4^2+3^2}}=4$이다.\n\n직선 $BC$에 내린 수선의 발은 $\\left(\\dfrac{141}{25},\\dfrac{88}{25}\\right)$로 선분 $BC$ 밖에 있으므로, 선분 $BC$에서의 최단거리는 $PC=2\\sqrt5>4$이다. 직선 $DA$에 내린 수선의 발은 $\\left(\\dfrac95,\\dfrac{32}{5}\\right)$로 선분 $DA$ 밖에 있으므로, 선분 $DA$에서의 최단거리는 $PD=5>4$이다. 직선 $AB$에 내린 수선의 발은 $\\left(-\\dfrac{51}{25},-\\dfrac{32}{25}\\right)$로 선분 $AB$ 위에 있으므로, 선분 $AB$에서의 최단거리는 $\\dfrac{44}{5}>4$이다. 그러므로 마름모 위에서의 최솟값은 $4$이다.",
-    "image": "assets/images/비상_공통수학2_선분의내분과직선_중단원학습점검_고1/q12-rhombus-coordinate-diagram.png",
+    "image": "assets/images/비상_공통수학2_선분의내분과직선_중단원학습점검_고1/qid_v1_5d2fd6d67bbd576eb960b8601e0ba4123546f7f098b42adc119f820d49dfaea7-problem.svg",
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "imageAlt": "좌표축 위 분홍색 마름모 ABCD와 바깥 점 P(5,4), 점선 좌표 보조선을 그린다.",
+    "imageCaption": "좌표축 위 분홍색 마름모 ABCD와 바깥 점 P(5,4), 점선 좌표 보조선을 그린다.",
+    "imageSize": "full"
   }
 ];

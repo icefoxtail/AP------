@@ -73,9 +73,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "UNKNOWN",
     "solutionImage": "assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q02_geometry_core_final.svg",
-    "solutionImageAlt": "A(2,14), B(6,2), C(7,8)의 무게중심 G(5,8)이 직선 x−y+3=0 위에 놓인 그림",
-    "solutionImageCaption": "무게중심과 직선",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "k=14일 때 무게중심 G(5,8)은 직선 x−y+3=0 위에 있고, 중선 AM을 2:1로 내분한다.",
+    "solutionImageCaption": "k=14일 때 무게중심 G(5,8)은 직선 x−y+3=0 위에 있고, 중선 AM을 2:1로 내분한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "qid_v1_e2625f0daf829b818c03659ac5c15f973a15a2a557ce4d9b7a64860155ac62d6",
@@ -145,9 +145,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "UNKNOWN",
     "solutionImage": "assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q04_geometry_core_final.svg",
-    "solutionImageAlt": "k=10과 k=−16에서 두 평행선 사이의 공통 수선 길이가 √13인 두 그림",
-    "solutionImageCaption": "평행선 사이 거리의 두 경우",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "기준 평행선 PA와 양쪽 평행선 HB, H2C 사이의 거리 PH=PH2=√13를 두 직각으로 표시한다.",
+    "solutionImageCaption": "기준 평행선 PA와 양쪽 평행선 HB, H2C 사이의 거리 PH=PH2=√13를 두 직각으로 표시한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "qid_v1_81b028a97af61d9c5c85f34737b9e38ae63c37818a14bb40a0f74f2c59708d07",
@@ -183,9 +183,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "UNKNOWN",
     "solutionImage": "assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q05_geometry_core_label_repaired.svg",
-    "solutionImageAlt": "직선이 중심 C(2,−3)을 지나는 원의 지름 방향 그림",
-    "solutionImageCaption": "원을 넓이가 같게 나누는 직선",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "원의 넓이를 이등분하는 직선은 중심 C(2,−3)을 지난다. a=3일 때 직선 2x+3y+5=0이다.",
+    "solutionImageCaption": "원의 넓이를 이등분하는 직선은 중심 C(2,−3)을 지난다. a=3일 때 직선 2x+3y+5=0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "qid_v1_685ceda707cd7842ae2889000b6b75efda29af06ad2fce6a19a10f5ffcadd118",
@@ -221,9 +221,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "UNKNOWN",
     "solutionImage": "assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q06_geometry_core_label_repaired.svg",
-    "solutionImageAlt": "중심 C, 수선의 발 H, 반대쪽 원주점 P가 한 직선 위에 놓인 그림",
-    "solutionImageCaption": "원 위 점에서 직선까지의 최댓거리",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "중심 C에서 직선까지 거리는 2√10, 반지름은 √10이다. 반대쪽 원주점 P(7,4)에서 거리가 3√10으로 가장 크다.",
+    "solutionImageCaption": "중심 C에서 직선까지 거리는 2√10, 반지름은 √10이다. 반대쪽 원주점 P(7,4)에서 거리가 3√10으로 가장 크다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "qid_v1_0251148df84aac752249499886748271b339fb63a6172551608793f9162e0368",
@@ -335,9 +335,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "UNKNOWN",
     "solutionImage": "assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q09_geometry_core_label_repaired.svg",
-    "solutionImageAlt": "외부점 T에서 그은 두 접선, 접점 P·Q, 중심 O와 접점 반지름의 직각 관계",
-    "solutionImageCaption": "모식도: 접점·접선·반지름 관계를 보이며 좌표와 축척은 원문과 다름",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "원 밖 T(3,−4)에서 그은 두 접선의 접점 P,Q를 잇는 직선은 3x−4y−10=0이고 중심에서 그은 수선 OH=2다.",
+    "solutionImageCaption": "원 밖 T(3,−4)에서 그은 두 접선의 접점 P,Q를 잇는 직선은 3x−4y−10=0이고 중심에서 그은 수선 OH=2다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "qid_v1_1c509b7d2139da0f76e7a30f4501fdcaf43e38f054e6b2300f2f1ce46cb235de",
@@ -373,9 +373,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "UNKNOWN",
     "solutionImage": "assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q10_geometry_core_final.svg",
-    "solutionImageAlt": "점 A(−3,6)과 원점 대칭점 P(3,−6)가 원점을 기준으로 마주 놓인 그림",
-    "solutionImageCaption": "원점 대칭에서 좌표 부호의 변화",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "a=−3에서 A(−3,6)의 원점 대칭점은 P(3,−6)이고, P는 y=x−9 위에 있다.",
+    "solutionImageCaption": "a=−3에서 A(−3,6)의 원점 대칭점은 P(3,−6)이고, P는 y=x−9 위에 있다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "qid_v1_7c7fc67c408e346e1b95989775fcfc7bc378691f4fa3cd8e71f7900f2cc30887",
@@ -449,9 +449,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "UNKNOWN",
     "solutionImage": "assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q12_geometry_core_label_repaired.svg",
-    "solutionImageAlt": "원 중심이 (3,6)에서 (−3,3)으로 이동하고, 마지막 원이 두 좌표축에 접하는 모습",
-    "solutionImageCaption": "평행이동한 원의 두 축 접점",
-    "solutionImageSize": "medium"
+    "solutionImageAlt": "a=3, b=6일 때 처음 중심 (3,6)을 (−6,−3)만큼 이동하면 (−3,3)이 된다. 반지름 3인 옮겨진 원은 두 축에 접한다.",
+    "solutionImageCaption": "a=3, b=6일 때 처음 중심 (3,6)을 (−6,−3)만큼 이동하면 (−3,3)이 된다. 반지름 3인 옮겨진 원은 두 축에 접한다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": "qid_v1_7c398cc5fde486d4b5aac52199efbe23a22765a2a119b395e3cdec7a15ff9431",
@@ -481,7 +482,7 @@ window.questionBank = [
     "content": "오른쪽 그림과 같이 두 점 $A(-3, 2)$, $B(3, 4)$와 $x$축 위를 움직이는 점 $P$, 직선 $y=x$ 위를 움직이는 점 $Q$에 대하여 $\\overline{AP}+\\overline{PQ}+\\overline{QB}$의 최솟값을 구하시오.\n(단, 두 점 $P$, $Q$는 서로 다른 점이다.)",
     "choices": [],
     "answer": "$\\sqrt{74}$",
-    "image": "assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q13_reflection_path.png",
+    "image": "assets/images/비상_공통수학2_도형의방정식_익힘책_고1/qid_v1_7c398cc5fde486d4b5aac52199efbe23a22765a2a119b395e3cdec7a15ff9431-problem.svg",
     "solution": "점 $A$를 $x$축에 대하여 대칭이동한 점은 $A′(-3,-2)$이고, 점 $B$를 직선 $y=x$에 대하여 대칭이동한 점은 $B′(4,3)$이다. 대칭이동은 거리를 보존하므로\n$AP=A′P$, $QB=QB′$이다.\n따라서\n$AP+PQ+QB=A′P+PQ+QB′$\n이며 삼각형 부등식에서\n$A′P+PQ+QB′\\ge A′B′$이다.\n\n선분 $A′B′$의 직선 위 점을\n$(x,y)=(-3+7t,-2+5t)$로 나타낸다.\n$x$축을 만날 때 $y=0$이므로 $-2+5t=0$, $t=\\dfrac25$이다.\n$y=x$와 만날 때\n$-3+7t=-2+5t$\n$2t=1$, $t=\\dfrac12$이다.\n두 값이 달라 두 교점은 서로 다른 $P,Q$가 될 수 있으므로 아래 경계값을 실제로 얻는다.\n\n이제\n$A′B′=\\sqrt{(4-(-3))^2+(3-(-2))^2}$\n$=\\sqrt{7^2+5^2}$\n$=\\sqrt{74}$이다.\n\n따라서 구하는 최솟값은 $\\sqrt{74}$이다.",
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
@@ -490,7 +491,10 @@ window.questionBank = [
     "solutionImage": "assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q13_geometry_core_final.svg",
     "solutionImageAlt": "A와 B를 각각 x축과 y=x에 대하여 대칭이동한 A′, B′ 및 일직선이 되는 최단 경로",
     "solutionImageCaption": "대칭이동으로 펴서 보는 최단 경로",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "imageAlt": "A(−3,2)와 B(3,4) 사이에서 P는 x축, Q는 y=x 위를 움직인다. 표시한 P,Q는 위치를 설명하는 예시이며 최단 경로의 정답 좌표는 아니다.",
+    "imageCaption": "A(−3,2)와 B(3,4) 사이에서 P는 x축, Q는 y=x 위를 움직인다. 표시한 P,Q는 위치를 설명하는 예시이며 최단 경로의 정답 좌표는 아니다.",
+    "imageSize": "full"
   },
   {
     "id": "qid_v1_18411ece86836f4a41191861b1763f6ed5763e3982a0c6acd0497e95b2fee41f",
@@ -526,15 +530,18 @@ window.questionBank = [
       "$g(x, y)=f(x+7, -y+2)$"
     ],
     "answer": "④",
-    "image": "assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q14_translation_reflection.png",
+    "image": "assets/images/비상_공통수학2_도형의방정식_익힘책_고1/qid_v1_18411ece86836f4a41191861b1763f6ed5763e3982a0c6acd0497e95b2fee41f-problem.svg",
     "solution": "도형 $f(x,y)=0$을 먼저 $(-7,2)$만큼 평행이동한다. 이동 전의 점을 $(u,v)$라 하고 이동 후의 점을 $(x,y)$라 하면\n$x=u-7$, $y=v+2$이므로\n$u=x+7$, $v=y-2$이다.\n따라서 평행이동한 도형의 방정식은\n$f(x+7,y-2)=0$이다.\n\n이 도형을 다시 $x$축에 대하여 대칭이동하면 대칭 전의 $y$좌표 $y$는 대칭 후 좌표에서 $-y$가 된다. 따라서 식의 $y$ 대신 $-y$를 대입하여\n$f(x+7,-y-2)=0$을 얻는다.\n즉 $g(x,y)=f(x+7,-y-2)$이므로 옳은 것은 ④이다.",
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "UNKNOWN",
     "solutionImage": "assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q14_geometry_core_final2.svg",
-    "solutionImageAlt": "f의 계단 모양 도형을 (−7,2)만큼 옮긴 뒤 x축 대칭하여 g의 위치에 놓는 세 단계 그림",
-    "solutionImageCaption": "도형의 이동 후 x축 대칭",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "f를 왼쪽 7, 위쪽 2만큼 평행이동한 뒤 x축 대칭하면 g가 된다. 대표 꼭짓점의 두 단계 이동을 점선으로 추적한다.",
+    "solutionImageCaption": "f를 왼쪽 7, 위쪽 2만큼 평행이동한 뒤 x축 대칭하면 g가 된다. 대표 꼭짓점의 두 단계 이동을 점선으로 추적한다.",
+    "solutionImageSize": "full",
+    "imageAlt": "그림에 주어진 f의 계단 모양 도형은 x=3~5, y=0~2에, g는 x=−4~−2, y=−4~−2에 있다. 점선은 좌표를 읽는 안내선이다.",
+    "imageCaption": "그림에 주어진 f의 계단 모양 도형은 x=3~5, y=0~2에, g는 x=−4~−2, y=−4~−2에 있다. 점선은 좌표를 읽는 안내선이다.",
+    "imageSize": "full"
   }
 ];

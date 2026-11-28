@@ -378,7 +378,11 @@ window.examData = {
     "integrationPattern": "SEQUENTIAL",
     "curriculum": "2015",
     "primaryMethod": "중심에서AC와BC까지 같은거리 조건으로 AC=BC인 이등변 구조를 얻는 의미는 확정된다. 그러나 그림의115°가 수선OD·OE 사이에 있는데 기존 해설은 중심각AOC·BOC로 사용해 답65°를 주장하므로 목표각의 최종 수학판정은 보류한다.",
-    "decisiveStep": "중심에서AC와BC까지 같은거리 조건으로 AC=BC인 이등변 구조를 얻는 의미는 확정된다. 그러나 그림의115°가 수선OD·OE 사이에 있는데 기존 해설은 중심각AOC·BOC로 사용해 답65°를 주장하므로 목표각의 최종 수학판정은 보류한다."
+    "decisiveStep": "중심에서AC와BC까지 같은거리 조건으로 AC=BC인 이등변 구조를 얻는 의미는 확정된다. 그러나 그림의115°가 수선OD·OE 사이에 있는데 기존 해설은 중심각AOC·BOC로 사용해 답65°를 주장하므로 목표각의 최종 수학판정은 보류한다.",
+    "image": "assets/images/21_연향중_2학기_중간_중3_수학/q8-problem.svg",
+    "imageAlt": "원 내접 ABC, 세 현 위 수선발 D·E·F, OE=OF, ∠DOE=115°, ∠BCA=x",
+    "imageCaption": "원 내접 ABC, 세 현 위 수선발 D·E·F, OE=OF, ∠DOE=115°, ∠BCA=x",
+    "imageSize": "full"
   },
     {
       "id": 9,
@@ -469,8 +473,8 @@ window.examData = {
       "legacyLevelCompatibility": "NORMAL",
       "content": "오른쪽 그림의 원 $\\mathrm{O}$에서 $\\overline{\\mathrm{CM}}\\perp\\overline{\\mathrm{AB}}$이고 $\\overline{\\mathrm{AM}}=\\overline{\\mathrm{BM}}=8\\,\\mathrm{cm}$, $\\overline{\\mathrm{CA}}=4\\sqrt{5}\\,\\mathrm{cm}$일 때, 원 $\\mathrm{O}$의 넓이는?<br><img src=\"assets/images/21_연향중_2학기_중간_중3_수학/q10.png\" />",
       "solutionImage": "assets/images/21_연향중_2학기_중간_중3_수학/q10-solution.svg",
-      "solutionImageAlt": "해설 그림: 현 AB의 중점 M에서 내린 수선 CM 위에 중심 O가 있고 M은 O와 C 사이에 있다. AM=BM=8cm, CA=4√5cm.",
-      "solutionImageCaption": "CM=4cm이고 OM=6cm이다. 반지름 OA=OC=10cm이므로 원의 넓이는 100πcm²이다. 정답은 ①이다.",
+      "solutionImageAlt": "AM=BM=8, CM=4, OM=6, OA=OC=10인 반지름 관계",
+      "solutionImageCaption": "AM=BM=8, CM=4, OM=6, OA=OC=10인 반지름 관계",
       "solutionImageSize": "full"
     ,
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
@@ -480,7 +484,11 @@ window.examData = {
     "integrationPattern": "SEQUENTIAL",
     "curriculum": "2015",
     "primaryMethod": "먼저AC와AM에서CM4를 얻고 현의 수직이등분선 위 중심을 이용해 OA=OM+4를 제곱합과 결합한 뒤 원넓이를 구한다.",
-    "decisiveStep": "먼저AC와AM에서CM4를 얻고 현의 수직이등분선 위 중심을 이용해 OA=OM+4를 제곱합과 결합한 뒤 원넓이를 구한다."
+    "decisiveStep": "먼저AC와AM에서CM4를 얻고 현의 수직이등분선 위 중심을 이용해 OA=OM+4를 제곱합과 결합한 뒤 원넓이를 구한다.",
+    "image": "assets/images/21_연향중_2학기_중간_중3_수학/q10-problem.svg",
+    "imageAlt": "원 O의 현 AB 중점 M, AM=BM=8, CM⊥AB, CA=4√5, C는 원호 위",
+    "imageCaption": "원 O의 현 AB 중점 M, AM=BM=8, CM⊥AB, CA=4√5, C는 원호 위",
+    "imageSize": "full"
   },
     {
       "id": 11,
@@ -520,8 +528,8 @@ window.examData = {
       "legacyLevelCompatibility": "NORMAL",
       "content": "다음 그림과 같이 $\\overleftrightarrow{\\mathrm{AB}}$와 $\\overline{\\mathrm{PT}}$는 두 원 $\\mathrm{O, O'}$의 공통인 접선이고, 세 점 $\\mathrm{A, B, T}$는 접점이다. &lt;보기&gt; 중 옳은 것을 모두 고른 것은?<br><img src=\"assets/images/21_연향중_2학기_중간_중3_수학/q11.png\" /><br><div style=\"border:1px solid #000; padding:8px; margin:6px 0;\"><strong>&lt;보기&gt;</strong><br>㉠ $\\angle\\mathrm{ATB}=80^\\circ$<br>㉡ $\\overline{\\mathrm{PA}}=\\overline{\\mathrm{PB}}=\\overline{\\mathrm{PT}}$<br>㉢ $\\angle\\mathrm{PBT}=\\angle\\mathrm{PTB}$<br>㉣ $\\angle\\mathrm{OTP}=\\angle\\mathrm{OAP}$</div>",
       "solutionImage": "assets/images/21_연향중_2학기_중간_중3_수학/q11-solution.svg",
-      "solutionImageAlt": "해설 그림: 두 원이 T에서 외접하고 A-P-B와 P-T가 공통 접선으로 그려져 있다. 세 접선 구간 PA, PB, PT를 같은 색 눈금으로 표시했다.",
-      "solutionImageCaption": "PA=PT, PB=PT이고 P는 AB 위에 있다. 이등변삼각형의 밑각을 더하면 ∠ATB=90°이므로 ㉠은 거짓이다. 옳은 것은 ㉡, ㉢, ㉣이며 정답은 ⑤이다.",
+      "solutionImageAlt": "PA=PB=PT=4, 접선·반지름의 세 직각, ∠ATB=90°를 확인",
+      "solutionImageCaption": "PA=PB=PT=4, 접선·반지름의 세 직각, ∠ATB=90°를 확인",
       "solutionImageSize": "full"
     ,
     "problemTypeKey": "PT_CIRCLE_TANGENT",
@@ -531,7 +539,11 @@ window.examData = {
     "integrationPattern": "SEQUENTIAL",
     "curriculum": "2015",
     "primaryMethod": "각 원의 외점P에 대한 등접선 PA=PT=PB를 얻고 두 이등변삼각형의 각과 접점수직으로 보기들을 확인한다.",
-    "decisiveStep": "각 원의 외점P에 대한 등접선 PA=PT=PB를 얻고 두 이등변삼각형의 각과 접점수직으로 보기들을 확인한다."
+    "decisiveStep": "각 원의 외점P에 대한 등접선 PA=PT=PB를 얻고 두 이등변삼각형의 각과 접점수직으로 보기들을 확인한다.",
+    "image": "assets/images/21_연향중_2학기_중간_중3_수학/q11-problem.svg",
+    "imageAlt": "서로 외접한 두 원 O·O′의 위쪽 공통접선 AB와 접점 A·B, 공통접선 PT의 접점 T, P는 A와 B 사이",
+    "imageCaption": "서로 외접한 두 원 O·O′의 위쪽 공통접선 AB와 접점 A·B, 공통접선 PT의 접점 T, P는 A와 B 사이",
+    "imageSize": "full"
   },
     {
       "id": 12,
@@ -572,8 +584,8 @@ window.examData = {
       "legacyLevelCompatibility": "NORMAL",
       "content": "오른쪽 그림에서 $\\overparen{\\mathrm{AB}}$는 원의 일부분이다. $\\overline{\\mathrm{AB}}\\perp\\overline{\\mathrm{CD}}$이고, $\\overline{\\mathrm{AD}}=\\overline{\\mathrm{BD}}=10$, $\\overline{\\mathrm{CD}}=5$일 때, 이 원의 반지름의 길이는?<br><img src=\"assets/images/21_연향중_2학기_중간_중3_수학/q12.png\" />",
       "solutionImage": "assets/images/21_연향중_2학기_중간_중3_수학/q12-solution.svg",
-      "solutionImageAlt": "해설 그림: 현 AB의 중점 D에서 CD가 수직이며 AD=DB=10, CD=5이다. 원의 중심 O를 D 아래쪽에 두어 호가 C를 지나게 했다.",
-      "solutionImageCaption": "OD=15/2이므로 반지름은 OC=OD+CD=25/2이다. 정답은 ④이다.",
+      "solutionImageAlt": "O-D-C 일직선, OD=7.5·OC=OA=12.5, 현의 반길이10과 수선5",
+      "solutionImageCaption": "O-D-C 일직선, OD=7.5·OC=OA=12.5, 현의 반길이10과 수선5",
       "solutionImageSize": "full"
     ,
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
@@ -583,7 +595,11 @@ window.examData = {
     "integrationPattern": "CASE_BRANCH",
     "curriculum": "2015",
     "primaryMethod": "현중점수선 위에 중심이 있음을 정하고 중심이 짧은호의 반대쪽임을 위치 경우검토로 확정한다. OA=OD+5와 OA²=OD²+100을 결합해반지름을 정한다.",
-    "decisiveStep": "현중점수선 위에 중심이 있음을 정하고 중심이 짧은호의 반대쪽임을 위치 경우검토로 확정한다. OA=OD+5와 OA²=OD²+100을 결합해반지름을 정한다."
+    "decisiveStep": "현중점수선 위에 중심이 있음을 정하고 중심이 짧은호의 반대쪽임을 위치 경우검토로 확정한다. OA=OD+5와 OA²=OD²+100을 결합해반지름을 정한다.",
+    "image": "assets/images/21_연향중_2학기_중간_중3_수학/q12-problem.svg",
+    "imageAlt": "원호 AB와 현 AB, AD=DB=10, 원호 정상 C에서 중점 D로 내린 수선 CD=5",
+    "imageCaption": "원호 AB와 현 AB, AD=DB=10, 원호 정상 C에서 중점 D로 내린 수선 CD=5",
+    "imageSize": "full"
   },
     {
       "id": 13,
@@ -624,8 +640,8 @@ window.examData = {
       "legacyLevelCompatibility": "NORMAL",
       "content": "오른쪽 그림과 같이 원 $\\mathrm{O}$는 직사각형 $\\mathrm{ABCD}$의 세 변에 내접하고, $\\overline{\\mathrm{DE}}$는 원 $\\mathrm{O}$의 접선이다. $\\overline{\\mathrm{AB}}=10$, $\\overline{\\mathrm{BC}}=13$일 때, $\\triangle\\mathrm{CDE}$의 둘레의 길이는?<br><img src=\"assets/images/21_연향중_2학기_중간_중3_수학/q13.png\" />",
       "solutionImage": "assets/images/21_연향중_2학기_중간_중3_수학/q13-solution.svg",
-      "solutionImageAlt": "해설 그림: 직사각형 ABCD 안에 세 변에 접하는 원 O가 있다. D에서 E로 가는 선분은 T에서 원에 접하고, 두 접선 길이 쌍을 표시했다.",
-      "solutionImageCaption": "DH=DT=13−5=8, EG=ET=u라 두면 DE=8+u, CE=8−u이다. 직각삼각형 CDE에서 u=25/8이므로 DE=89/8, CE=39/8이다. 둘레는 10+89/8+39/8=26이다. 정답은 ⑤이다.",
+      "solutionImageAlt": "DH=DT=8, EG=ET=25/8, CE=39/8, DE=89/8로 △CDE 둘레26; 직각·세 접점",
+      "solutionImageCaption": "DH=DT=8, EG=ET=25/8, CE=39/8, DE=89/8로 △CDE 둘레26; 직각·세 접점",
       "solutionImageSize": "full"
     ,
     "problemTypeKey": "PT_CIRCLE_TANGENT",
@@ -635,7 +651,11 @@ window.examData = {
     "integrationPattern": "SEQUENTIAL",
     "curriculum": "2015",
     "primaryMethod": "반지름5로 두접선조각8을 정해 DE=8+u,CE=8−u를 구성한다. 기존 해설은 피타고라스로u를 정한뒤 둘레26을 합하므로 그 길이복원도 근거에 보존한다.",
-    "decisiveStep": "반지름5로 두접선조각8을 정해 DE=8+u,CE=8−u를 구성한다. 기존 해설은 피타고라스로u를 정한뒤 둘레26을 합하므로 그 길이복원도 근거에 보존한다."
+    "decisiveStep": "반지름5로 두접선조각8을 정해 DE=8+u,CE=8−u를 구성한다. 기존 해설은 피타고라스로u를 정한뒤 둘레26을 합하므로 그 길이복원도 근거에 보존한다.",
+    "image": "assets/images/21_연향중_2학기_중간_중3_수학/q13-problem.svg",
+    "imageAlt": "가로13·세로10 직사각형 ABCD, 세 변에 닿는 원 O, D에서 접선 DE, 접점 T 및 E는 BC 위",
+    "imageCaption": "가로13·세로10 직사각형 ABCD, 세 변에 닿는 원 O, D에서 접선 DE, 접점 T 및 E는 BC 위",
+    "imageSize": "full"
   },
     {
       "id": 14,
@@ -903,8 +923,8 @@ window.examData = {
       "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
       "content": "서술형1. 아래 그림과 같이 직각삼각형 $\\mathrm{ABC}$의 꼭짓점 $\\mathrm{C}$에서 변 $\\mathrm{AB}$에 내린 수선의 발을 $\\mathrm{D}$라 하고, 점 $\\mathrm{D}$에서 변 $\\mathrm{BC}$에 내린 수선의 발을 $\\mathrm{E}$라고 하자. $\\angle\\mathrm{ACD}=x^\\circ$, $\\angle\\mathrm{DCE}=y^\\circ$라고 할 때, $\\sin x^\\circ - \\sin y^\\circ + 2\\tan y^\\circ$의 값을 구하시오.<br><img src=\"assets/images/21_연향중_2학기_중간_중3_수학/s01.png\" />",
       "solutionImage": "assets/images/21_연향중_2학기_중간_중3_수학/q19-solution.svg",
-      "solutionImageAlt": "해설 그림: A-B-D가 한 직선이고 C에서 ABC가 직각이다. D에서 BC에 내린 수선 DE, BE=2, EC=8, 각 x와 y를 표시했다.",
-      "solutionImageCaption": "DE=√(BE·EC)=4, DC=4√5이다. x+y=90°, sin x=cos y=2√5/5, sin y=√5/5, tan y=1/2이므로 구하는 값은 1+√5/5이다.",
+      "solutionImageAlt": "DE²=BE·EC=16, DC=4√5, ∠ACD=x와 ∠DCE=y가 여각인 두 직각삼각형",
+      "solutionImageCaption": "DE²=BE·EC=16, DC=4√5, ∠ACD=x와 ∠DCE=y가 여각인 두 직각삼각형",
       "solutionImageSize": "full"
     ,
     "problemTypeKey": "PT_TRIG_RATIO",
@@ -914,7 +934,11 @@ window.examData = {
     "integrationPattern": "SEQUENTIAL",
     "curriculum": "2015",
     "primaryMethod": "빗변에 내린 높이의 닮음 관계 DE²=BE·EC로4를 정하고 DC를 피타고라스로 구한 후 x+y90의 여각과 세삼각비를 식에 대입한다.",
-    "decisiveStep": "빗변에 내린 높이의 닮음 관계 DE²=BE·EC로4를 정하고 DC를 피타고라스로 구한 후 x+y90의 여각과 세삼각비를 식에 대입한다."
+    "decisiveStep": "빗변에 내린 높이의 닮음 관계 DE²=BE·EC로4를 정하고 DC를 피타고라스로 구한 후 x+y90의 여각과 세삼각비를 식에 대입한다.",
+    "image": "assets/images/21_연향중_2학기_중간_중3_수학/q19-problem.svg",
+    "imageAlt": "직각 ABC에서 C→AB의 수선 CD, D→BC의 수선 DE, BE2·EC8, C의 x·y 두 각",
+    "imageCaption": "직각 ABC에서 C→AB의 수선 CD, D→BC의 수선 DE, BE2·EC8, C의 x·y 두 각",
+    "imageSize": "full"
   },
     {
       "id": 20,
@@ -948,8 +972,8 @@ window.examData = {
       "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
       "content": "서술형2. 오른쪽 그림에서 원 $\\mathrm{O}$는 $\\angle\\mathrm{A}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$의 내접원이고, 세 점 $\\mathrm{D, E, F}$는 접점이다. $\\overline{\\mathrm{BE}}=6\\,\\mathrm{cm}$, $\\overline{\\mathrm{CE}}=9\\,\\mathrm{cm}$일 때, 다음에 답하시오.<br><img src=\"assets/images/21_연향중_2학기_중간_중3_수학/s02.png\" /><br>(1) 원 $\\mathrm{O}$의 반지름의 길이를 구하시오. (3점)<br>(2) $\\triangle\\mathrm{OBC}$의 둘레의 길이를 구하시오. (3점)",
       "solutionImage": "assets/images/21_연향중_2학기_중간_중3_수학/q20-solution.svg",
-      "solutionImageAlt": "해설 그림: 내접원 접점 D,E,F를 표시하고 같은 꼭짓점에서 나온 접선 길이 쌍을 같은 색 눈금으로 묶었다. BE=6cm, CE=9cm.",
-      "solutionImageCaption": "BC=15cm이고 AD=AF=x라 두면 (x+6)²+(x+9)²=15²에서 x=3cm이다. 따라서 원의 반지름은 3cm이다. OB=3√5cm, OC=3√10cm이므로 △OBC의 둘레는 15+3√5+3√10cm이다.",
+      "solutionImageAlt": "AB9·AC12·BC15, r=3, 접선분 3:6:9과 OB·OC 관계, 해설 면 채움 제거",
+      "solutionImageCaption": "AB9·AC12·BC15, r=3, 접선분 3:6:9과 OB·OC 관계, 해설 면 채움 제거",
       "solutionImageSize": "full"
     ,
     "problemTypeKey": "PT_CIRCLE_TANGENT",
@@ -959,7 +983,11 @@ window.examData = {
     "integrationPattern": "SEQUENTIAL",
     "curriculum": "2015",
     "primaryMethod": "등접선조각x를 이용해 두직각변x+6,x+9와 빗변15를 제곱합으로 연결하고 양의근3을 선택한다. 직각 꼭짓점의 접선조각이 반지름임을 이용해 OB,OC와둘레를 구한다.",
-    "decisiveStep": "등접선조각x를 이용해 두직각변x+6,x+9와 빗변15를 제곱합으로 연결하고 양의근3을 선택한다. 직각 꼭짓점의 접선조각이 반지름임을 이용해 OB,OC와둘레를 구한다."
+    "decisiveStep": "등접선조각x를 이용해 두직각변x+6,x+9와 빗변15를 제곱합으로 연결하고 양의근3을 선택한다. 직각 꼭짓점의 접선조각이 반지름임을 이용해 OB,OC와둘레를 구한다.",
+    "image": "assets/images/21_연향중_2학기_중간_중3_수학/q20-problem.svg",
+    "imageAlt": "∠A=90°인 ABC 내접원 O, 접점 D·E·F와 BE6·CE9, 반지름 수선 및 OB·OC",
+    "imageCaption": "∠A=90°인 ABC 내접원 O, 접점 D·E·F와 BE6·CE9, 반지름 수선 및 OB·OC",
+    "imageSize": "full"
   },
     {
       "id": 21,

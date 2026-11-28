@@ -395,7 +395,11 @@ window.questionBank = [
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_모의고사_1회/q14-solution.svg",
+    "solutionImageAlt": "제2사분면은 x<0, y>0이므로 다섯 보기 가운데 D(-2,4), 즉 ④만 해당한다.",
+    "solutionImageCaption": "제2사분면은 x<0, y>0이므로 다섯 보기 가운데 D(-2,4), 즉 ④만 해당한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -454,12 +458,18 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
-    "image": "assets/images/AP수학학원_1학기_기말_중1_모의고사_1회/q16.png",
-    "imageSize": "half",
+    "image": "assets/images/AP수학학원_1학기_기말_중1_모의고사_1회/q16-problem.svg",
+    "imageSize": "full",
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_모의고사_1회/q16-solution.svg",
+    "solutionImageAlt": "이동 거리가 90km에서 일정한 시간은 1시간부터 2.5시간까지이므로 정차 시간은 1시간 30분이다.",
+    "solutionImageCaption": "이동 거리가 90km에서 일정한 시간은 1시간부터 2.5시간까지이므로 정차 시간은 1시간 30분이다.",
+    "solutionImageSize": "full",
+    "imageAlt": "자동차의 이동 거리가 늘다가 잠시 일정하게 유지되고 다시 늘어나는 시간-거리 그래프이다.",
+    "imageCaption": "자동차의 이동 거리가 늘다가 잠시 일정하게 유지되고 다시 늘어나는 시간-거리 그래프이다."
   },
   {
     "id": 17,
@@ -487,7 +497,11 @@ window.questionBank = [
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_모의고사_1회/q17-solution.svg",
+    "solutionImageAlt": "(-3,15)를 지나는 정비례 직선의 비례상수는 -5이고, x=2이면 y=-10이다.",
+    "solutionImageCaption": "(-3,15)를 지나는 정비례 직선의 비례상수는 -5이고, x=2이면 y=-10이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -514,11 +528,18 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
-    "image": "assets/images/AP수학학원_1학기_기말_중1_모의고사_1회/q18.png",
+    "image": "assets/images/AP수학학원_1학기_기말_중1_모의고사_1회/q18-problem.svg",
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_모의고사_1회/q18-solution.svg",
+    "solutionImageAlt": "(1,-2)에서 a=-2이고 (-2,4)에서 b=-2이므로 a+b=-4이다.",
+    "solutionImageCaption": "(1,-2)에서 a=-2이고 (-2,4)에서 b=-2이므로 a+b=-4이다.",
+    "solutionImageSize": "full",
+    "imageAlt": "정비례 직선 y=ax가 주어진 격자점 (1,-2)와 (b,4)를 지나고 x축의 b 위치에 점선 안내가 그려져 있다.",
+    "imageCaption": "정비례 직선 y=ax가 주어진 격자점 (1,-2)와 (b,4)를 지나고 x축의 b 위치에 점선 안내가 그려져 있다.",
+    "imageSize": "full"
   },
   {
     "id": 19,
@@ -576,7 +597,11 @@ window.questionBank = [
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_모의고사_1회/q20-solution.svg",
+    "solutionImageAlt": "y=-36/x에 x=-9를 넣으면 a=4이고 y=-12를 넣으면 b=3이어서 a+b=7이다.",
+    "solutionImageCaption": "y=-36/x에 x=-9를 넣으면 a=4이고 y=-12를 넣으면 b=3이어서 a+b=7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

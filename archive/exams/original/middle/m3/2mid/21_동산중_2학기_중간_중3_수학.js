@@ -652,7 +652,11 @@ window.questionBank = [
     "auditStatus": "AUDITED_REPAIR",
     "repairKind": "MINIMAL_CONDITION_CLARIFICATION",
     "semanticStatus": "FINAL",
-    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-053","rpmPrimaryPath":{"majorUnit":"이차함수","midUnit":"이차함수 y=ax²+bx+c의 그래프","l3":"그래프와 계수","l4":"그래프 위치"},"rpmL3":"그래프와 계수","rpmL4":"그래프 위치","subUnitKey":"M3-04-QUADRATIC_FUNCTION_GRAPH","problemTypeKey":"PT_FUNCTION_GRAPH_PROPERTIES","templateKey":"TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT","projectionStatus":"PROJECTION_REUSE","projectionReason":"아래로 볼록한 그래프의 두 x절편−1,2에서 a>0 및 y=a(x+1)(x−2)를 얻어 각 계수 진술을 대조한다. 잘못된④는 f(−1)=0과도 직접 충돌한다."}
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-053","rpmPrimaryPath":{"majorUnit":"이차함수","midUnit":"이차함수 y=ax²+bx+c의 그래프","l3":"그래프와 계수","l4":"그래프 위치"},"rpmL3":"그래프와 계수","rpmL4":"그래프 위치","subUnitKey":"M3-04-QUADRATIC_FUNCTION_GRAPH","problemTypeKey":"PT_FUNCTION_GRAPH_PROPERTIES","templateKey":"TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT","projectionStatus":"PROJECTION_REUSE","projectionReason":"아래로 볼록한 그래프의 두 x절편−1,2에서 a>0 및 y=a(x+1)(x−2)를 얻어 각 계수 진술을 대조한다. 잘못된④는 f(−1)=0과도 직접 충돌한다."},
+    "image": "assets/images/21_동산중_2학기_중간_중3_수학/q9-problem.svg",
+    "imageAlt": "위로 열린 포물선의 x절편은 −1과 2이다. a>0인 경우의 대표 모양으로 a=1을 선택했으며 계수의 실제 값은 주어지지 않았다.",
+    "imageCaption": "위로 열린 포물선의 x절편은 −1과 2이다. a>0인 경우의 대표 모양으로 a=1을 선택했으며 계수의 실제 값은 주어지지 않았다.",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -1024,8 +1028,8 @@ window.questionBank = [
     "semanticStatus": "FINAL",
     "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-055","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비","l3":"삼각비의 뜻","l4":"sin·cos·tan"},"rpmL3":"삼각비의 뜻","rpmL4":"sin·cos·tan","subUnitKey":"M3-05-TRIG_RATIO","problemTypeKey":"PT_TRIG_RATIO","templateKey":"TPL_TRIG_RATIO_BASIC_RELATION","projectionStatus":"PROJECTION_REUSE","projectionReason":"AC의 중점 D에서 CD=AC/2를 읽고 AC=BC를 대입해 직각삼각형 DBC의 tan x=CD/BC를 계산한다. 직접 길이비를 삼각비로 바꾸는 기존 BASIC_RELATION을 보존한다."},
     "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q14-solution.svg",
-    "solutionImageAlt": "해설 그림: 직각이등변삼각형에서 D는 AC의 중점이다. 두 주황 변 AD와 DC에 같은 눈금이 있고 직각삼각형 BCD의 각 x가 표시된다.",
-    "solutionImageCaption": "CD=AC/2=BC/2이므로 tan x=CD/BC=1/2이다. 정답은 ①이다.",
+    "solutionImageAlt": "C에서 직각이고 AC=BC인 직각이등변삼각형에서 D는 AC의 중점이다. DC/BC=1/2이므로 tan x=1/2이다.",
+    "solutionImageCaption": "C에서 직각이고 AC=BC인 직각이등변삼각형에서 D는 AC의 중점이다. DC/BC=1/2이므로 tan x=1/2이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1173,8 +1177,8 @@ window.questionBank = [
     "semanticStatus": "FINAL",
     "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-055","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비","l3":"삼각비의 뜻","l4":"sin·cos·tan"},"rpmL3":"삼각비의 뜻","rpmL4":"sin·cos·tan","subUnitKey":"M3-05-TRIG_RATIO","problemTypeKey":"PT_TRIG_RATIO","templateKey":"TPL_TRIG_RATIO_BASIC_RELATION","projectionStatus":"PROJECTION_REUSE","projectionReason":"반지름1인 사분원의 직각삼각형 OPH에서 sin x=PH, cos x=OH, tan x=PH/OH를 대응하여 sin x=OP라는 진술을 배제한다. 원은 삼각비를 표현하는 주어진 그림이다."},
     "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q16-solution.svg",
-    "solutionImageAlt": "해설 그림: 반지름이 1인 사분원과 그 안의 점 P, 반지름 OA에 내린 수선 PH를 나타낸다. 각 POH는 x이며 직각삼각형의 변 OP, PH, OH를 구별한다.",
-    "solutionImageCaption": "OP=1인 직각삼각형에서 sin x=PH/OP=PH, cos x=OH/OP=OH, tan x=PH/OH이다. sin x=OP라는 설명이 틀렸으므로 정답은 ④이다.",
+    "solutionImageAlt": "반지름 OP=1인 사분원에서 PH⊥OA이고, sin x=PH, cos x=OH임을 직각삼각형 OPH로 보여 준다.",
+    "solutionImageCaption": "반지름 OP=1인 사분원에서 PH⊥OA이고, sin x=PH, cos x=OH임을 직각삼각형 OPH로 보여 준다.",
     "solutionImageSize": "full"
   },
   {
@@ -1329,8 +1333,8 @@ window.questionBank = [
     "semanticStatus": "FINAL",
     "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-066","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비의 활용","l3":"복합도형","l4":"피타고라스 결합"},"rpmL3":"복합도형","rpmL4":"피타고라스 결합","subUnitKey":"M3-05-TRIG_RATIO_APPLICATION","problemTypeKey":"PT_TRIG_RATIO_APPLICATION","templateKey":"TPL_TRIG_APPLICATION_CHAINED_MEASURE","projectionStatus":"PROJECTION_REUSE","projectionReason":"tanB=3/2와 BC8로 중간길이 AC12를 만든 뒤 피타고라스로 빗변 AB를 구한다. 삼각비 결과를 다른 길이로 잇는 기존 CHAINED를 재사용한다."},
     "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q18-solution.svg",
-    "solutionImageAlt": "해설 그림: C가 직각인 삼각형에서 각 B의 맞은편 변 AC=12cm와 이웃한 변 BC=8cm를 서로 다른 색으로 표시하고, 빗변 AB에는 길이를 쓰지 않는다.",
-    "solutionImageCaption": "tan B=AC/BC=3/2이므로 AC=12cm이다. 따라서 AB=√(12²+8²)=4√13cm이다. 정답은 ④이다.",
+    "solutionImageAlt": "C가 직각이며 tan B=3/2, BC=8cm인 삼각형. AC=12cm이고 빗변 AB=4√13cm이다.",
+    "solutionImageCaption": "C가 직각이며 tan B=3/2, BC=8cm인 삼각형. AC=12cm이고 빗변 AB=4√13cm이다.",
     "solutionImageSize": "full"
   },
   {

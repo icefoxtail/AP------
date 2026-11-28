@@ -686,7 +686,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "rpmPrimaryRecordId": "M2-RPM-018",
     "sourceQid": 15,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "solutionImage": "assets/images/19_연향중_1학기_중간_중2_유사/q15-solution.svg",
+    "solutionImageAlt": "2x−7≤13−3x의 해는 x≤4이다. 보기 1, 2, 3, 4는 해에 포함되고 5는 포함되지 않는다.",
+    "solutionImageCaption": "2x−7≤13−3x의 해는 x≤4이다. 보기 1, 2, 3, 4는 해에 포함되고 5는 포함되지 않는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -781,7 +785,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "rpmPrimaryRecordId": "M2-RPM-018",
     "sourceQid": 17,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "solutionImage": "assets/images/19_연향중_1학기_중간_중2_유사/q17-solution.svg",
+    "solutionImageAlt": "−2x<8의 양변을 음수로 나눌 때 부등호 방향이 바뀌므로 x>−4가 된다.",
+    "solutionImageCaption": "−2x<8의 양변을 음수로 나눌 때 부등호 방향이 바뀌므로 x>−4가 된다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -831,7 +839,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "rpmPrimaryRecordId": "M2-RPM-018",
     "sourceQid": 18,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "solutionImage": "assets/images/19_연향중_1학기_중간_중2_유사/q18-solution.svg",
+    "solutionImageAlt": "3(2−x)>3x의 해는 x<1이다. a=−5를 두 번째 부등식에 대입하면 −5(x+2)>−15의 해도 x<1이 되어 두 해집합이 일치한다.",
+    "solutionImageCaption": "3(2−x)>3x의 해는 x<1이다. a=−5를 두 번째 부등식에 대입하면 −5(x+2)>−15의 해도 x<1이 되어 두 해집합이 일치한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -929,7 +941,15 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "rpmPrimaryRecordId": "M2-RPM-024",
     "sourceQid": 20,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "image": "assets/images/19_연향중_1학기_중간_중2_유사/q20-problem.svg",
+    "imageAlt": "집에서 문구점까지 3km는 시속 6km로 걷고, 이어 서점까지 4km, 학교까지 5km를 걷는다. 문구점 이후 평균 속력은 미지수이다.",
+    "imageCaption": "집에서 문구점까지 3km는 시속 6km로 걷고, 이어 서점까지 4km, 학교까지 5km를 걷는다. 문구점 이후 평균 속력은 미지수이다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/19_연향중_1학기_중간_중2_유사/q20-solution.svg",
+    "solutionImageAlt": "집→문구점 3km에 1/2시간이 걸린다. 문구점→학교는 4+5=9km이므로 남은 3/2시간에 이동하려면 평균 속력이 최소 6km/h여야 한다.",
+    "solutionImageCaption": "집→문구점 3km에 1/2시간이 걸린다. 문구점→학교는 4+5=9km이므로 남은 3/2시간에 이동하려면 평균 속력이 최소 6km/h여야 한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1048,7 +1068,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "rpmPrimaryRecordId": "M2-RPM-018",
     "sourceQid": 23,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "solutionImage": "assets/images/19_연향중_1학기_중간_중2_유사/q23-solution.svg",
+    "solutionImageAlt": "4(3−x)<9를 정리하면 −4x<−3이고, 부등호 방향을 바꾸어 x>3/4가 된다.",
+    "solutionImageCaption": "4(3−x)<9를 정리하면 −4x<−3이고, 부등호 방향을 바꾸어 x>3/4가 된다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -1091,6 +1115,10 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "rpmPrimaryRecordId": "M2-RPM-024",
     "sourceQid": 24,
-    "variationType": "CONTEXT"
+    "variationType": "CONTEXT",
+    "solutionImage": "assets/images/19_연향중_1학기_중간_중2_유사/q24-solution.svg",
+    "solutionImageAlt": "구입비 300000+5000x가 대여비 11000x보다 작으려면 x>50이다. 개월 수는 자연수이므로 50은 포함하지 않고 51부터 구입이 유리하다.",
+    "solutionImageCaption": "구입비 300000+5000x가 대여비 11000x보다 작으려면 x>50이다. 개월 수는 자연수이므로 50은 포함하지 않고 51부터 구입이 유리하다.",
+    "solutionImageSize": "full"
   }
 ];

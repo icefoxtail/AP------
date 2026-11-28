@@ -223,7 +223,11 @@ window.questionBank = [
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_중간_중1_모의고사_5회/q8-solution.svg",
+    "solutionImageAlt": "수직선에서 -4, -11/4, -1/3, 9/2, 7의 위치를 비교하면 가장 왼쪽은 -4이다.",
+    "solutionImageCaption": "수직선에서 -4, -11/4, -1/3, 9/2, 7의 위치를 비교하면 가장 왼쪽은 -4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -279,7 +283,11 @@ window.questionBank = [
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_중간_중1_모의고사_5회/q10-solution.svg",
+    "solutionImageAlt": "-9/2<a≤3의 범위에서 정수는 -4부터 3까지 8개이다.",
+    "solutionImageCaption": "-9/2<a≤3의 범위에서 정수는 -4부터 3까지 8개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,

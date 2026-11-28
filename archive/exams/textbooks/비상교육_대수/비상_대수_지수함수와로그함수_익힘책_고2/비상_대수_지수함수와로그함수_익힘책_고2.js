@@ -537,7 +537,11 @@ window.questionBank = [
     "content": "정의역이 $\\{x \\mid a\\le x\\le 4\\}$인 함수 $y=\\left(\\frac{1}{2}\\right)^{x+b}-1$의 최댓값이 $7$, 최솟값이 $1$일 때, 실수 $a, b$에 대하여 $ab$의 값을 구하시오.",
     "choices": [],
     "answer": "$-10$",
-    "solution": "[풀이 전략]\n밑이 $\\frac{1}{2}$인 지수함수는 감소하므로 구간의 왼쪽 끝 $x=a$에서 최댓값, 오른쪽 끝 $x=4$에서 최솟값을 갖는다.\n[단계별 풀이]\n최솟값: $x=4$에서 $\\left(\\frac{1}{2}\\right)^{4+b}-1=1$이므로 $\\left(\\frac{1}{2}\\right)^{4+b}=2=\\left(\\frac{1}{2}\\right)^{-1}$이다. $4+b=-1$, $b=-5$이다.\n최댓값: $x=a$에서 $\\left(\\frac{1}{2}\\right)^{a+b}-1=7$이므로 $\\left(\\frac{1}{2}\\right)^{a+b}=8=\\left(\\frac{1}{2}\\right)^{-3}$이다. $a+b=-3$이므로 $a=2$이다.\n$a=2\\le4$이므로 구간이 성립한다. $ab=2\\times(-5)=-10$이다.\n[결론]\n$-10$"
+    "solution": "[풀이 전략]\n밑이 $\\frac{1}{2}$인 지수함수는 감소하므로 구간의 왼쪽 끝 $x=a$에서 최댓값, 오른쪽 끝 $x=4$에서 최솟값을 갖는다.\n[단계별 풀이]\n최솟값: $x=4$에서 $\\left(\\frac{1}{2}\\right)^{4+b}-1=1$이므로 $\\left(\\frac{1}{2}\\right)^{4+b}=2=\\left(\\frac{1}{2}\\right)^{-1}$이다. $4+b=-1$, $b=-5$이다.\n최댓값: $x=a$에서 $\\left(\\frac{1}{2}\\right)^{a+b}-1=7$이므로 $\\left(\\frac{1}{2}\\right)^{a+b}=8=\\left(\\frac{1}{2}\\right)^{-3}$이다. $a+b=-3$이므로 $a=2$이다.\n$a=2\\le4$이므로 구간이 성립한다. $ab=2\\times(-5)=-10$이다.\n[결론]\n$-10$",
+    "solutionImage": "assets/images/비상_대수_지수함수와로그함수_익힘책_고2/q19-solution.svg",
+    "solutionImageAlt": "밑이 1/2인 함수는 감소하므로 왼쪽 끝 M(2,7)이 최댓값, 오른쪽 끝 N(4,1)이 최솟값이다. a=2, b=-5이므로 ab=-10.",
+    "solutionImageCaption": "밑이 1/2인 함수는 감소하므로 왼쪽 끝 M(2,7)이 최댓값, 오른쪽 끝 N(4,1)이 최솟값이다. a=2, b=-5이므로 ab=-10.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

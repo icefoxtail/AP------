@@ -132,7 +132,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-003",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/21_제일고_1학기_중간_고2_수학I_유사/q3-solution.svg",
+    "solutionImageAlt": "제2사분면에서 tan θ=−3/4인 동경에 점 P(−4,3)을 잡으면 3:4:5 직각삼각형이 되어 sin θ=3/5이다.",
+    "solutionImageCaption": "제2사분면에서 tan θ=−3/4인 동경에 점 P(−4,3)을 잡으면 3:4:5 직각삼각형이 되어 sin θ=3/5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -220,7 +224,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-005",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/21_제일고_1학기_중간_고2_수학I_유사/q5-solution.svg",
+    "solutionImageAlt": "원식 √3sin x+cos x=0은 2sin(x+π/6)=0과 같고, 범위 0≤x<2π의 두 해는 5π/6, 11π/6이다.",
+    "solutionImageCaption": "원식 √3sin x+cos x=0은 2sin(x+π/6)=0과 같고, 범위 0≤x<2π의 두 해는 5π/6, 11π/6이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -528,7 +536,12 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-012",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/21_제일고_1학기_중간_고2_수학I_유사/q12-solution.svg",
+    "solutionImageAlt": "0<x<16에서 f(x)=(1/2)log_2[x(16−x)]이고 로그가 증가함수이므로 안쪽 이차식 x(16−x)의 꼭짓점 x=8, 값 64가 f의 최댓값을 결정한다.",
+    "solutionImageCaption": "0<x<16에서 f(x)=(1/2)log_2[x(16−x)]이고 로그가 증가함수이므로 안쪽 이차식 x(16−x)의 꼭짓점 x=8, 값 64가 f의 최댓값을 결정한다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 13,
@@ -748,7 +761,15 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-041",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "image": "assets/images/21_제일고_1학기_중간_고2_수학I_유사/q17-problem.svg",
+    "imageAlt": "0≤x≤6의 사인곡선 아래에 BC=4인 직사각형 ABCD가 내접한다. 문제에서는 A,D의 x좌표와 높이를 표시하지 않는다.",
+    "imageCaption": "0≤x≤6의 사인곡선 아래에 BC=4인 직사각형 ABCD가 내접한다. 문제에서는 A,D의 x좌표와 높이를 표시하지 않는다.",
+    "imageSize": "medium",
+    "solutionImage": "assets/images/21_제일고_1학기_중간_고2_수학I_유사/q17-solution.svg",
+    "solutionImageAlt": "사인곡선은 x=3 대칭이고 BC=4이므로 A와 D의 x좌표는 1,5이다. 높이는 sin(π/6)=1/2, 넓이는 4×1/2=2이다.",
+    "solutionImageCaption": "사인곡선은 x=3 대칭이고 BC=4이므로 A와 D의 x좌표는 1,5이다. 높이는 sin(π/6)=1/2, 넓이는 4×1/2=2이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -994,7 +1015,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-041",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/21_제일고_1학기_중간_고2_수학I_유사/q23-solution.svg",
+    "solutionImageAlt": "최댓값 5·최솟값 −3이므로 a=4,d=1이고, 연속 최댓점 3π/4과 19π/4 사이가 한 주기 4π이다.",
+    "solutionImageCaption": "최댓값 5·최솟값 −3이므로 a=4,d=1이고, 연속 최댓점 3π/4과 19π/4 사이가 한 주기 4π이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,
@@ -1032,6 +1057,10 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-028",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/21_제일고_1학기_중간_고2_수학I_유사/q24-solution.svg",
+    "solutionImageAlt": "처음 양을 1로 정규화하면 남은 비율은 (1/2)^(t/30)이고 t=30에 1/2, t=120에 1/16이 된다.",
+    "solutionImageCaption": "처음 양을 1로 정규화하면 남은 비율은 (1/2)^(t/30)이고 t=30에 1/2, t=120에 1/16이 된다.",
+    "solutionImageSize": "medium"
   }
 ];

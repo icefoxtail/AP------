@@ -247,7 +247,7 @@ window.questionBank = [
     "solution": "로그 $\\log_aN$이 정의되려면 밑 $a>0$, $a\\ne1$이고 진수 $N>0$이어야 한다.\n\n(i) 밑의 조건: $x-1>0$이고 $x-1\\ne1$이므로\n$x>1$, $x\\ne2$이다.\n\n(ii) 진수의 조건: $-x^2+6x+7>0$에서 $x^2-6x-7<0$이므로\n$(x-7)(x+1)<0$, 즉 $-1<x<7$이다.\n\n(i), (ii)를 모두 만족시키는 $x$의 범위는 $1<x<7$, $x\\ne2$이다.\n이 범위의 정수는 $3,\\ 4,\\ 5,\\ 6$이므로 개수는 $4$이다.\n정답은 ④이다.",
     "points": 3.5,
     "solutionImage": "assets/images/26_제일고_1학기_중간_고2_대수_유사/q5-solution.svg",
-    "solutionImageAlt": "수직선에서 밑의 조건 x>1과 진수의 조건 -1<x<7의 공통 범위는 1<x<7이다.",
+    "solutionImageAlt": "밑의 조건 x>1, 진수의 조건 -1<x<7, 밑이 1이 되는 x=2 제외를 모두 적용하면 가능한 정수는 3, 4, 5, 6이다.",
     "solutionImageSize": "full",
     "curriculum": "2022",
     "curriculumKey": "2022",
@@ -276,7 +276,8 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js#q5",
     "problemPlanRef": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/q05-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/q05-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/q05-solution.plan.json",
+    "solutionImageCaption": "밑의 조건 x>1, 진수의 조건 -1<x<7, 밑이 1이 되는 x=2 제외를 모두 적용하면 가능한 정수는 3, 4, 5, 6이다."
   },
   {
     "id": 6,
@@ -448,7 +449,11 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js#q8",
     "problemPlanRef": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/q08-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/q08-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/q08-solution.plan.json",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_대수_유사/q8-solution.svg",
+    "solutionImageAlt": "c=2, a=1, b=0인 원문 해설의 반례를 정확히 그린다. 파랑 f(x)=log_2(x-1)의 진짜 역함수는 초록 h(x)=2^x+1이다. 주황 g(x)=2^(x-1)는 역함수가 아니다. f와 h의 대응점 (2,0), (0,2)는 점선 y=x에 대칭이다.",
+    "solutionImageCaption": "c=2, a=1, b=0인 원문 해설의 반례를 정확히 그린다. 파랑 f(x)=log_2(x-1)의 진짜 역함수는 초록 h(x)=2^x+1이다. 주황 g(x)=2^(x-1)는 역함수가 아니다. f와 h의 대응점 (2,0), (0,2)는 점선 y=x에 대칭이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -783,7 +788,11 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js#q14",
     "problemPlanRef": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/q14-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/q14-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/q14-solution.plan.json",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_대수_유사/q14-solution.svg",
+    "solutionImageAlt": "0≤x≤5에서 f(x)=(x-2)^2+3의 꼭짓점 V(2,3)이 최솟값이고 닫힌 오른쪽 끝점 B(5,12)가 최댓값이다. 왼쪽 끝점 A(0,7)도 확인하여 3≤f(x)≤12임을 보인다. 두 로그함수의 단조성을 적용하면 M=log_3(13), m=log_(1/2)(27)이다.",
+    "solutionImageCaption": "0≤x≤5에서 f(x)=(x-2)^2+3의 꼭짓점 V(2,3)이 최솟값이고 닫힌 오른쪽 끝점 B(5,12)가 최댓값이다. 왼쪽 끝점 A(0,7)도 확인하여 3≤f(x)≤12임을 보인다. 두 로그함수의 단조성을 적용하면 M=log_3(13), m=log_(1/2)(27)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -814,7 +823,7 @@ window.questionBank = [
     "solution": "$y=2x$를 $x^2+y^2=20$에 대입하면\n$x^2+4x^2=20$, $x^2=4$이므로 $x=\\pm2$이다.\n$x=2$이면 $y=4$, $x=-2$이면 $y=-4$이다.\n\n제$3$사분면 위의 점은 $\\text{P}(-2,-4)$, 제$1$사분면 위의 점은 $\\text{Q}(2,4)$이다.\n두 점은 원 위의 점이므로 원점 $\\text{O}$에서의 거리가 $\\sqrt{20}=2\\sqrt5$이다.\n\n삼각함수의 정의에서\n$\\sin\\theta_1=\\dfrac{-4}{2\\sqrt5}=-\\dfrac{2}{\\sqrt5}$, $\\cos\\theta_2=\\dfrac{2}{2\\sqrt5}=\\dfrac{1}{\\sqrt5}$이다.\n\n따라서 $\\sin\\theta_1+\\cos\\theta_2=-\\dfrac{2}{\\sqrt5}+\\dfrac{1}{\\sqrt5}=-\\dfrac{1}{\\sqrt5}=-\\dfrac{\\sqrt5}{5}$이다.\n정답은 ②이다.",
     "points": 4.9,
     "solutionImage": "assets/images/26_제일고_1학기_중간_고2_대수_유사/q15-solution.svg",
-    "solutionImageAlt": "직선 y=2x와 원 x²+y²=20이 제3사분면의 점 P(-2, -4)와 제1사분면의 점 Q(2, 4)에서 만난다.",
+    "solutionImageAlt": "직선 y=2x와 원 x²+y²=20은 제3사분면의 점 P(-2,-4)와 제1사분면의 점 Q(2,4)에서 만난다.",
     "solutionImageSize": "full",
     "curriculum": "2022",
     "curriculumKey": "2022",
@@ -841,7 +850,8 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js#q15",
     "problemPlanRef": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/q15-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/q15-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/q15-solution.plan.json",
+    "solutionImageCaption": "직선 y=2x와 원 x²+y²=20은 제3사분면의 점 P(-2,-4)와 제1사분면의 점 Q(2,4)에서 만난다."
   },
   {
     "id": 16,
@@ -897,7 +907,11 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js#q16",
     "problemPlanRef": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/q16-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/q16-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/q16-solution.plan.json",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_대수_유사/q16-solution.svg",
+    "solutionImageAlt": "원 C의 중심 C(4,-3)과 원점 O의 거리는 5, 원 C의 반지름은 2이다. 원점 중심 반지름 3인 원은 C와 내접하여 P가 하나이다. 3<OP<7인 다른 세 자연수 값 m=3,4,5의 반지름에서는 각각 교점이 둘씩 생긴다.",
+    "solutionImageCaption": "원 C의 중심 C(4,-3)과 원점 O의 거리는 5, 원 C의 반지름은 2이다. 원점 중심 반지름 3인 원은 C와 내접하여 P가 하나이다. 3<OP<7인 다른 세 자연수 값 m=3,4,5의 반지름에서는 각각 교점이 둘씩 생긴다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -930,11 +944,11 @@ window.questionBank = [
     "solution": "그림에서 읽은 값은 다음과 같다. 그래프의 최댓값은 $3$, 최솟값은 $-1$이고 주기는 $\\pi$이다. 그래프는 점 $(0,2)$를 지나고, 최대인 점은 $y$축의 왼쪽에 있어 $x=0$ 근처에서 그래프는 감소한다.\n\n(i) 진폭은 $\\dfrac{3-(-1)}{2}=2$이고 중심선은 $y=1$이다. $a<0$이므로 $a=-2$이다.\n\n(ii) 주기가 $\\pi$이므로 $\\dfrac{2\\pi}{b}=\\pi$에서 $b=2$이다.\n\n(iii) $y=-2\\sin(2x-c)+1$이 점 $(0,2)$를 지나므로\n$2=-2\\sin(-c)+1=2\\sin c+1$이고 $\\sin c=\\dfrac12$이다.\n$0<c<\\pi$이므로 $c=\\dfrac{\\pi}{6}$ 또는 $c=\\dfrac{5\\pi}{6}$이다.\n\n두 값 중 그림과 맞는 것을 고른다. 최댓값 $3$을 갖는 점은 $-2\\sin(2x-c)+1=3$, 즉 $\\sin(2x-c)=-1$일 때이다.\n$c=\\dfrac{\\pi}{6}$이면 $2x-\\dfrac{\\pi}{6}=-\\dfrac{\\pi}{2}$에서 $x=-\\dfrac{\\pi}{6}$이다. 최대인 점이 $y$축의 왼쪽에 있으므로 $x=0$ 근처에서 그래프는 감소하여 그림과 같다.\n$c=\\dfrac{5\\pi}{6}$이면 $2x-\\dfrac{5\\pi}{6}=-\\dfrac{\\pi}{2}$에서 $x=\\dfrac{\\pi}{6}$이다. 최대인 점이 $y$축의 오른쪽에 있으므로 $x=0$ 근처에서 그래프가 증가하여 그림과 다르다.\n따라서 $c=\\dfrac{\\pi}{6}$이다.\n\n(iv) $abc=(-2)\\times2\\times\\dfrac{\\pi}{6}=-\\dfrac{2}{3}\\pi$이다.\n정답은 ④이다.",
     "points": 4.9,
     "image": "assets/images/26_제일고_1학기_중간_고2_대수_유사/q17-engine-upgrade.svg",
-    "imageAlt": "사인함수의 그래프",
-    "imageSize": "full",
+    "imageAlt": "함수 y=a sin(bx-c)+1의 그래프의 일부이다. 최댓값 3, 최솟값 -1, 주기 π이고 점 (0,2)에서 감소한다.",
+    "imageSize": "medium",
     "solutionImage": "assets/images/26_제일고_1학기_중간_고2_대수_유사/q17-solution.svg",
-    "solutionImageAlt": "y=a sin(bx-c)+1의 그래프이다. 최댓값 3, 최솟값 -1, 주기 π이고 점 (0, 2)를 지나며 이 점에서 감소한다.",
-    "solutionImageSize": "full",
+    "solutionImageAlt": "함수 y=a sin(bx-c)+1의 그래프이다. 최댓값 3, 최솟값 -1, 주기 π이고 점 (0,2)에서 감소한다.",
+    "solutionImageSize": "medium",
     "curriculum": "2022",
     "curriculumKey": "2022",
     "courseKey": "대수",
@@ -964,7 +978,9 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js#q17",
     "problemPlanRef": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/q17-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/q17-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/q17-solution.plan.json",
+    "imageCaption": "함수 y=a sin(bx-c)+1의 그래프의 일부이다. 최댓값 3, 최솟값 -1, 주기 π이고 점 (0,2)에서 감소한다.",
+    "solutionImageCaption": "함수 y=a sin(bx-c)+1의 그래프이다. 최댓값 3, 최솟값 -1, 주기 π이고 점 (0,2)에서 감소한다."
   },
   {
     "id": 18,
@@ -1054,8 +1070,8 @@ window.questionBank = [
     "solution": "직선 $y=\\dfrac2nx-1$은 점 $(0,-1)$과 $x$축 위의 점 $\\left(\\dfrac n2,0\\right)$을 지난다. 이 직선에서 $y<0$인 부분은 $0\\le x<\\dfrac n2$이므로 제$4$사분면의 교점은 $0<x<\\dfrac n2$에서만 생긴다.\n\n곡선 $y=\\sin\\dfrac{\\pi x}{2}$는 주기가 $4$이고 $y<0$인 부분은 $2<x<4$, $6<x<8$, $10<x<12$, $\\cdots$이다. 이를 차례로 구간 $I_0,\\ I_1,\\ I_2,\\ \\cdots$ ($I_k$는 $4k+2<x<4k+4$)이라 하자. 제$4$사분면의 교점은 이 구간 안에서만 생긴다.\n각 구간 $I_k$에서 곡선은 $(4k+2,0)$에서 $(4k+3,-1)$을 지나 $(4k+4,0)$으로 이어지는 아래로 볼록한 그릇 모양이다. 아래로 볼록한 곡선과 직선은 한 구간에서 최대 두 점에서 만난다. 또 직선은 $y>-1$ ($x>0$)이므로 곡선의 가장 낮은 점 $(4k+3,-1)$은 항상 직선보다 아래에 있다.\n\n(i) $4k+4<\\dfrac n2$인 구간 $I_k$: 구간의 양 끝에서는 곡선의 $y$좌표 $0$이 직선의 $y$좌표(음수)보다 크고, 가운데 $x=4k+3$에서는 곡선이 직선보다 아래에 있다. 곡선이 직선보다 위, 아래, 위로 바뀌므로 교점은 $2$개이다.\n\n(ii) $4k+2<\\dfrac n2\\le4k+4$인 구간 $I_k$: $x<\\dfrac n2$인 부분만 제$4$사분면이다. 구간의 왼쪽 끝에서는 곡선이 직선보다 위에 있고, 직선의 $y$좌표가 $0$이 되는 $x=\\dfrac n2$ 바로 앞에서는 곡선이 직선보다 아래에 있으므로 교점은 $1$개이다. (아래로 볼록한 곡선이므로 한 번 직선 아래로 내려가면 구간 끝까지 다시 만나지 않는다. $\\dfrac n2=4k+4$이면 곡선의 끝점 $(4k+4,0)$이 직선 위에 놓이지만 $x$축 위의 점이라 제$4$사분면에 포함되지 않고, 그 바로 앞에서는 곡선의 기울기 $\\dfrac{\\pi}{2}$가 직선의 기울기 $\\dfrac2n$보다 커서 곡선이 직선보다 아래에 있다.)\n\n(iii) $\\dfrac n2\\le4k+2$인 구간 $I_k$: 직선의 $y$좌표가 $0$ 이상인 부분이므로 이 구간에서는 교점이 없다.\n\n따라서 $\\dfrac n2$가 $4j+2<\\dfrac n2\\le4j+4$ ($j$는 음이 아닌 정수)이면 $I_0,\\ \\cdots,\\ I_{j-1}$에서 각각 $2$개, $I_j$에서 $1$개이므로 교점은 모두 $2j+1$개이다.\n$\\dfrac n2$가 $4j+4<\\dfrac n2\\le4j+6$이면 $I_0,\\ \\cdots,\\ I_j$에서 각각 $2$개이므로 교점은 $2j+2$개이다.\n\n교점이 $3$개이려면 $2j+1=3$에서 $j=1$이어야 한다. 즉 $6<\\dfrac n2\\le8$, $12<n\\le16$이므로 $n=13,\\ 14,\\ 15,\\ 16$이다.\n구하는 합은 $13+14+15+16=58$이다.\n(예를 들어 $n=14$이면 직선은 $y=\\dfrac17x-1$이고, $0<x<7$에서 곡선 $y=\\sin\\dfrac{\\pi x}{2}$와 서로 다른 세 점에서 만난다.)\n정답은 ⑤이다.",
     "points": 4.9,
     "solutionImage": "assets/images/26_제일고_1학기_중간_고2_대수_유사/q19-solution.svg",
-    "solutionImageAlt": "n=14일 때 직선 y=x/7-1과 곡선 y=sin(πx/2)는 0<x<7에서 제4사분면의 서로 다른 세 점에서 만난다.",
-    "solutionImageSize": "full",
+    "solutionImageAlt": "n=14일 때 직선 y=x/7-1은 곡선 y=sin(πx/2)와 0<x<7에서 세 점에서 만난다.",
+    "solutionImageSize": "medium",
     "curriculum": "2022",
     "curriculumKey": "2022",
     "courseKey": "대수",
@@ -1084,7 +1100,8 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js#q19",
     "problemPlanRef": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/q19-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/q19-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사_plans/q19-solution.plan.json",
+    "solutionImageCaption": "n=14일 때 직선 y=x/7-1은 곡선 y=sin(πx/2)와 0<x<7에서 세 점에서 만난다."
   },
   {
     "id": 20,

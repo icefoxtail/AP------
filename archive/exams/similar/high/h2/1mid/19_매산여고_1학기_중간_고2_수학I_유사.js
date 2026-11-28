@@ -396,7 +396,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-039",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/19_매산여고_1학기_중간_고2_수학I_유사/q9-solution.svg",
+    "solutionImageAlt": "y=3은 수평점근선이고, 감소함수이므로 −1≤x≤2에서 오른쪽 끝 x=2의 최솟값은 4이다.",
+    "solutionImageCaption": "y=3은 수평점근선이고, 감소함수이므로 −1≤x≤2에서 오른쪽 끝 x=2의 최솟값은 4이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -440,7 +444,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-004",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/19_매산여고_1학기_중간_고2_수학I_유사/q10-solution.svg",
+    "solutionImageAlt": "두 로그곡선의 같은 x에서의 높이차는 log₂(8x)−log₂(x/4)=5로 일정하다. 곡선 사이의 경계 및 넓이 음영은 엔진 확장이 필요하다.",
+    "solutionImageCaption": "두 로그곡선의 같은 x에서의 높이차는 log₂(8x)−log₂(x/4)=5로 일정하다. 곡선 사이의 경계 및 넓이 음영은 엔진 확장이 필요하다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -528,7 +536,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-012",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/19_매산여고_1학기_중간_고2_수학I_유사/q12-solution.svg",
+    "solutionImageAlt": "제3사분면의 동경 위 점 P(−3,−4)에서 수선을 내리면 3–4–5 직각삼각형으로 sinθ=−4/5, tanθ=4/3이다.",
+    "solutionImageCaption": "제3사분면의 동경 위 점 P(−3,−4)에서 수선을 내리면 3–4–5 직각삼각형으로 sinθ=−4/5, tanθ=4/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -616,7 +628,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-038",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/19_매산여고_1학기_중간_고2_수학I_유사/q14-solution.svg",
+    "solutionImageAlt": "y=cos(πx/2)와 y=x/7이 만나는 점은 −7≤x≤7 안에 7개이고 구간 밖에는 교점이 없다.",
+    "solutionImageCaption": "y=cos(πx/2)와 y=x/7이 만나는 점은 −7≤x≤7 안에 7개이고 구간 밖에는 교점이 없다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -704,7 +720,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-020",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/19_매산여고_1학기_중간_고2_수학I_유사/q16-solution.svg",
+    "solutionImageAlt": "f(x)=3sin2x−1은 주기 π, 최댓값 2, 최솟값 −4이고, f(0)=f(π)=−1이다.",
+    "solutionImageCaption": "f(x)=3sin2x−1은 주기 π, 최댓값 2, 최솟값 −4이고, f(0)=f(π)=−1이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -748,7 +768,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-016",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/19_매산여고_1학기_중간_고2_수학I_유사/q17-solution.svg",
+    "solutionImageAlt": "cosθ=−√3/2의 두 해는 5π/6과 7π/6이며 그 합은 2π이다.",
+    "solutionImageCaption": "cosθ=−√3/2의 두 해는 5π/6과 7π/6이며 그 합은 2π이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -862,7 +886,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-008",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/19_매산여고_1학기_중간_고2_수학I_유사/q20-solution.svg",
+    "solutionImageAlt": "두 부등식의 교집합은 3≤x<7이고 정수해는 3,4,5,6으로 합은 18이다.",
+    "solutionImageCaption": "두 부등식의 교집합은 3≤x<7이고 정수해는 3,4,5,6으로 합은 18이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -938,6 +966,10 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-028",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/19_매산여고_1학기_중간_고2_수학I_유사/q22-solution.svg",
+    "solutionImageAlt": "모형에서 P≤40이 되는 달의 범위는 t≥8이며 최소 정수 개월 수는 8이다.",
+    "solutionImageCaption": "모형에서 P≤40이 되는 달의 범위는 t≥8이며 최소 정수 개월 수는 8이다.",
+    "solutionImageSize": "full"
   }
 ];

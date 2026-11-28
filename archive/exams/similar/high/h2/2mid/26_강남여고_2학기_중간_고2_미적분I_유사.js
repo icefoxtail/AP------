@@ -90,7 +90,10 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H2-M2-RPM-049",
     "sourceQid": null,
     "variationType": "NUMERIC",
-    "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_강남여고_2학기_중간_고2_미적분I_유사_plans/q02-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_강남여고_2학기_중간_고2_미적분I_유사_plans/q02-problem.plan.json",
+    "imageAlt": "함수 y=f(x)의 그래프로, x=-1과 x=1에서 함숫값이 끊어져 있다.",
+    "imageCaption": "함수 y=f(x)의 그래프로, x=-1과 x=1에서 함숫값이 끊어져 있다.",
+    "imageSize": "medium"
   },
   {
     "id": 3,
@@ -358,7 +361,11 @@ window.questionBank = [
     "integrationPattern": "CASE_BRANCH",
     "rpmPrimaryRecordId": "H2-M2-RPM-055",
     "sourceQid": null,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "solutionImage": "assets/images/26_강남여고_2학기_중간_고2_미적분I_유사/q8-solution.svg",
+    "solutionImageAlt": "f(x)=-2+3/(x+1)의 수직·수평 점근선과 분리된 두 가지",
+    "solutionImageCaption": "f(x)=-2+3/(x+1)의 수직·수평 점근선과 분리된 두 가지",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -404,7 +411,10 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H2-M2-RPM-067",
     "sourceQid": null,
     "variationType": "NUMERIC",
-    "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_강남여고_2학기_중간_고2_미적분I_유사_plans/q09-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_강남여고_2학기_중간_고2_미적분I_유사_plans/q09-problem.plan.json",
+    "imageAlt": "함수 f(x)의 도함수 y=f′(x)의 그래프이다. 그래프가 x축과 만나는 점과 접하는 점, 아래로 볼록한 부분의 꼭짓점이 나타나 있다.",
+    "imageCaption": "함수 f(x)의 도함수 y=f′(x)의 그래프이다. 그래프가 x축과 만나는 점과 접하는 점, 아래로 볼록한 부분의 꼭짓점이 나타나 있다.",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -453,7 +463,8 @@ window.questionBank = [
     "image": "assets/images/26_강남여고_2학기_중간_고2_미적분I_유사/q10-problem.svg",
     "imageAlt": "x=0과 x=1에서 불연속인 두 함수 y=f(x)와 y=g(x)의 그래프.",
     "imageSize": "full",
-    "imageScale": 94
+    "imageScale": 94,
+    "imageCaption": "x=0과 x=1에서 불연속인 두 함수 y=f(x)와 y=g(x)의 그래프."
   },
   {
     "id": 11,
@@ -735,7 +746,8 @@ window.questionBank = [
     "image": "assets/images/26_강남여고_2학기_중간_고2_미적분I_유사/q16-problem.svg",
     "imageAlt": "포물선 y=4-x² 위의 제1사분면 점 P에서의 접선 l이 x축과 만나는 점 C와 수선 CR이 직선 OP와 만나는 점 R.",
     "imageSize": "full",
-    "imageScale": 90
+    "imageScale": 90,
+    "imageCaption": "포물선 y=4-x² 위의 제1사분면 점 P에서의 접선 l이 x축과 만나는 점 C와 수선 CR이 직선 OP와 만나는 점 R."
   },
   {
     "id": 17,
@@ -785,7 +797,10 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H2-M2-RPM-055",
     "sourceQid": null,
     "variationType": "NUMERIC",
-    "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_강남여고_2학기_중간_고2_미적분I_유사_plans/q17-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_강남여고_2학기_중간_고2_미적분I_유사_plans/q17-problem.plan.json",
+    "imageAlt": "함수 y=f(x)의 그래프로, x=2의 왼쪽에서 함숫값이 2에 가까워지고 x=2에서 함숫값이 -4인 그래프이다.",
+    "imageCaption": "함수 y=f(x)의 그래프로, x=2의 왼쪽에서 함숫값이 2에 가까워지고 x=2에서 함숫값이 -4인 그래프이다.",
+    "imageSize": "medium"
   },
   {
     "id": 18,
@@ -930,7 +945,11 @@ window.questionBank = [
     "integrationPattern": "DEEP_COMPOSITE",
     "rpmPrimaryRecordId": "H2-M2-RPM-067",
     "sourceQid": null,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "solutionImage": "assets/images/26_강남여고_2학기_중간_고2_미적분I_유사/q20-solution.svg",
+    "solutionImageAlt": "A와 B에서의 두 접선이 C에서 직교하고 지름 AB인 외접원이 있다",
+    "solutionImageCaption": "A와 B에서의 두 접선이 C에서 직교하고 지름 AB인 외접원이 있다",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1133,6 +1152,10 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "rpmPrimaryRecordId": "H2-M2-RPM-067",
     "sourceQid": null,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "solutionImage": "assets/images/26_강남여고_2학기_중간_고2_미적분I_유사/q25-solution.svg",
+    "solutionImageAlt": "삼차곡선에 접한 l과 평행 접선 m, 다른 교점 B와 접점 C의 거리",
+    "solutionImageCaption": "삼차곡선에 접한 l과 평행 접선 m, 다른 교점 B와 접점 C의 거리",
+    "solutionImageSize": "full"
   }
 ];

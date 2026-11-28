@@ -132,7 +132,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-003",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/20_제일고_1학기_중간_고2_수학I_유사/q3-solution.svg",
+    "solutionImageAlt": "y=log_(1/3)x는 감소한다. 1<x<27이면 -3<y<0이다.",
+    "solutionImageCaption": "y=log_(1/3)x는 감소한다. 1<x<27이면 -3<y<0이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -176,7 +180,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-004",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/20_제일고_1학기_중간_고2_수학I_유사/q4-solution.svg",
+    "solutionImageAlt": "5π/4=225°인 동경은 제3사분면에 있다.",
+    "solutionImageCaption": "5π/4=225°인 동경은 제3사분면에 있다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -220,7 +228,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-029",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "image": "assets/images/20_제일고_1학기_중간_고2_수학I_유사/q5-problem.svg",
+    "imageAlt": "원점 O와 P(-5,12)를 잇는 동경 OP와 θ.",
+    "imageCaption": "원점 O와 P(-5,12)를 잇는 동경 OP와 θ.",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -1032,6 +1044,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-006",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/20_제일고_1학기_중간_고2_수학I_유사/q24-solution.svg",
+    "solutionImageAlt": "t=log₃x∈[1,4]에서 y=(t−3)²−15는 t=3에서 최소 -15, t=1에서 최대 -11이다.",
+    "solutionImageCaption": "t=log₃x∈[1,4]에서 y=(t−3)²−15는 t=3에서 최소 -15, t=1에서 최대 -11이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   }
 ];

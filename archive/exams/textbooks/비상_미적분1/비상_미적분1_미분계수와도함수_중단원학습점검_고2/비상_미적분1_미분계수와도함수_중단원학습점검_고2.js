@@ -55,7 +55,11 @@ window.questionBank = [
     "content": "곡선 $y=-x^2+7x-2$ 위의 점 $(1, 4)$에서의 접선의 기울기를 구하시오.",
     "choices": [],
     "answer": "$5$",
-    "solution": "$y'=-2x+7$이므로 $x=1$에서의 접선의 기울기는 미분계수 $y'(1)=-2+7=5$이다."
+    "solution": "$y'=-2x+7$이므로 $x=1$에서의 접선의 기울기는 미분계수 $y'(1)=-2+7=5$이다.",
+    "solutionImage": "assets/images/비상_미적분1_미분계수와도함수_중단원학습점검_고2/q2-solution.svg",
+    "solutionImageAlt": "y=−x²+7x−2의 (1,4)에서 접선은 y=5x−1이므로 기울기는 5이다.",
+    "solutionImageCaption": "y=−x²+7x−2의 (1,4)에서 접선은 y=5x−1이므로 기울기는 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -251,7 +255,11 @@ window.questionBank = [
     "content": "함수\n$$f(x)=\\begin{cases} x^2+ax+3 & (x>1) \\\\ 3x+b & (x \\le 1) \\end{cases}$$\n가 모든 실수 $x$에서 미분가능할 때, 실수 $a, b$의 값을 구하시오.",
     "choices": [],
     "answer": "$a=1,\\ b=2$",
-    "solution": "$f(x)$가 $x=1$에서 미분가능하려면 연속이고 좌미분계수와 우미분계수가 같아야 한다.\n연속: $\\lim_{x\\to 1+}f(x)=1+a+3=a+4$, $f(1)=3+b$이므로 $a+4=3+b$에서 $b=a+1\\qquad\\cdots\\ ①$\n미분계수: $x>1$일 때 $f'(x)=2x+a$이므로 우미분계수는 $2+a$, $x<1$일 때 $f'(x)=3$이므로 좌미분계수는 $3$이다. 따라서 $2+a=3$에서 $a=1$\n①에 대입하면 $b=2$"
+    "solution": "$f(x)$가 $x=1$에서 미분가능하려면 연속이고 좌미분계수와 우미분계수가 같아야 한다.\n연속: $\\lim_{x\\to 1+}f(x)=1+a+3=a+4$, $f(1)=3+b$이므로 $a+4=3+b$에서 $b=a+1\\qquad\\cdots\\ ①$\n미분계수: $x>1$일 때 $f'(x)=2x+a$이므로 우미분계수는 $2+a$, $x<1$일 때 $f'(x)=3$이므로 좌미분계수는 $3$이다. 따라서 $2+a=3$에서 $a=1$\n①에 대입하면 $b=2$",
+    "solutionImage": "assets/images/비상_미적분1_미분계수와도함수_중단원학습점검_고2/q9-solution.svg",
+    "solutionImageAlt": "a=1, b=2일 때 x≤1에서는 y=3x+2, x>1에서는 y=x²+x+3이며 (1,5)에서 값과 기울기 3이 같다.",
+    "solutionImageCaption": "a=1, b=2일 때 x≤1에서는 y=3x+2, x>1에서는 y=x²+x+3이며 (1,5)에서 값과 기울기 3이 같다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,

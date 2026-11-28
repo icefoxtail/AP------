@@ -391,7 +391,11 @@ window.questionBank = [
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_모의고사_4회/q14-solution.svg",
+    "solutionImageAlt": "P(5,-2)를 x축에 대칭시키면 x좌표는 그대로이고 y좌표의 부호가 바뀌어 Q(5,2)가 된다.",
+    "solutionImageCaption": "P(5,-2)를 x축에 대칭시키면 x좌표는 그대로이고 y좌표의 부호가 바뀌어 Q(5,2)가 된다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -561,12 +565,18 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ⑤이다.",
-    "image": "assets/images/AP수학학원_1학기_기말_중1_모의고사_4회/q20.png",
-    "imageSize": "medium",
+    "image": "assets/images/AP수학학원_1학기_기말_중1_모의고사_4회/q20-problem.svg",
+    "imageSize": "full",
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_모의고사_4회/q20-solution.svg",
+    "solutionImageAlt": "반비례 그래프의 점 P에서 만든 직사각형 넓이 xy는 주어진 15로 일정하다.",
+    "solutionImageCaption": "반비례 그래프의 점 P에서 만든 직사각형 넓이 xy는 주어진 15로 일정하다.",
+    "solutionImageSize": "full",
+    "imageAlt": "반비례 그래프 위 점 P의 두 수선이 OAPB 직사각형을 만든다.",
+    "imageCaption": "반비례 그래프 위 점 P의 두 수선이 OAPB 직사각형을 만든다."
   },
   {
     "id": 21,
@@ -588,11 +598,18 @@ window.questionBank = [
     "choices": [],
     "answer": "(1) $\\dfrac{1}{2}(a+b)h$ cm$^2$, (2) 68 cm$^2$",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 (1) $\\dfrac{1}{2}(a+b)h$ cm$^2$, (2) 68 cm$^2$이다.",
-    "image": "assets/images/AP수학학원_1학기_기말_중1_모의고사_4회/q21.png",
+    "image": "assets/images/AP수학학원_1학기_기말_중1_모의고사_4회/q21-problem.svg",
     "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
     "subUnit": "평면도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/AP수학학원_1학기_기말_중1_모의고사_4회/q21-solution.svg",
+    "solutionImageAlt": "평행한 두 밑변 a,b와 그 사이 수직 높이 h를 확인하는 사다리꼴 넓이 설명도.",
+    "solutionImageCaption": "평행한 두 밑변 a,b와 그 사이 수직 높이 h를 확인하는 사다리꼴 넓이 설명도.",
+    "solutionImageSize": "full",
+    "imageAlt": "윗변 a cm, 아랫변 b cm, 높이 h cm인 사다리꼴의 높이와 직각을 표시한다.",
+    "imageCaption": "윗변 a cm, 아랫변 b cm, 높이 h cm인 사다리꼴의 높이와 직각을 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 22,
