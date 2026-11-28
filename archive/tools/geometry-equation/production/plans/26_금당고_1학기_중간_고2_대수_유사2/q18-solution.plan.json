@@ -1,0 +1,140 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      2.35,
+      3.65,
+      -2.8,
+      2.3
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LOGARITHMIC",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "5",
+          "-15",
+          "0"
+        ],
+        "domain": [
+          "301/100",
+          "7/2"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "kind": "LOGARITHMIC",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "-5",
+          "15",
+          "0"
+        ],
+        "domain": [
+          "5/2",
+          "299/100"
+        ],
+        "color": "WARM",
+        "label": "g"
+      },
+      {
+        "id": "h0",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "5/2",
+          "7/2"
+        ],
+        "style": "DASHED",
+        "label": "y=0"
+      },
+      {
+        "id": "h1",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "0"
+        ],
+        "domain": [
+          "5/2",
+          "7/2"
+        ],
+        "style": "DASHED",
+        "label": "y=1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "v",
+          "x": "3",
+          "style": "DASHED"
+        }
+      ],
+      "points": [
+        {
+          "id": "A",
+          "x": "16/5",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "14/5",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "17/5",
+          "y": "1",
+          "coordinates": true
+        },
+        {
+          "id": "D",
+          "x": "13/5",
+          "y": "1",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "y=0과 y=1에서 x=3을 기준으로 같은 거리에 있는 두 로그곡선 f, g의 해설 그림",
+  "accessibilityDescription": "수직점근선 x=3의 오른쪽 로그곡선 f와 왼쪽 로그곡선 g가 y=0과 y=1에서 각각 좌우 대칭인 네 점을 지난다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=log_2(5x-15), g(x)=log_2(15-5x)이며 양쪽 수직점근선 x=3을 공유한다.",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.overlays.lines"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "y=t(t=0,1)과의 교점 x좌표는 3±2^t/5이다.",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.overlays.points"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "수직점근선 x=3의 양측 로그곡선",
+    "수평선 y=0, y=1",
+    "동일 거리의 네 교점을 좌표와 함께 표시"
+  ]
+}

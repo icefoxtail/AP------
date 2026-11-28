@@ -1,0 +1,123 @@
+{
+  "capability": "solid-figure-v1",
+  "sourceQuote": "한 모서리의 길이가 $6$인 정육면체 $ABCD-EFGH$가 있다.",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 6
+      },
+      "height": 6,
+      "names": "ABCDEFGH",
+      "points": [
+        {
+          "id": "P",
+          "at": {
+            "divide": [
+              "A",
+              "B"
+            ],
+            "ratio": "2:1"
+          }
+        },
+        {
+          "id": "Q",
+          "at": {
+            "midpoint": [
+              "F",
+              "G"
+            ]
+          }
+        },
+        {
+          "id": "N",
+          "at": {
+            "footOnLine": {
+              "from": "C",
+              "line": [
+                "P",
+                "Q"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "C",
+      "to": "P",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "C",
+      "to": "Q",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "P",
+      "to": "N",
+      "style": "DASHED",
+      "role": "ACCENT"
+    },
+    {
+      "from": "N",
+      "to": "Q",
+      "style": "DASHED",
+      "role": "ACCENT"
+    },
+    {
+      "from": "C",
+      "to": "N",
+      "style": "DASHED",
+      "role": "REF"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "C",
+        "P",
+        "N"
+      ]
+    },
+    {
+      "polygon": [
+        "C",
+        "N",
+        "Q"
+      ]
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "N",
+        "refs": [
+          "C",
+          "Q"
+        ]
+      }
+    ]
+  },
+  "dims": [
+    {
+      "edge": "AB"
+    }
+  ],
+  "caption": "한 모서리의 길이가 6인 정육면체 ABCD-EFGH, AB를 2:1로 내분하는 점 P, FG의 중점 Q, C에서 PQ에 내린 수선의 발 N, 삼각형 CPQ",
+  "sourceConditions": [
+    "한 모서리의 길이가 6인 정육면체",
+    "AB를 2:1로 내분하는 점 P, FG의 중점 Q",
+    "C에서 PQ에 내린 수선의 발 N"
+  ],
+  "newVisualInformation": [
+    "삼각형 CPQ와 수선 CN"
+  ],
+  "accessibilityDescription": "한 모서리의 길이가 6인 정육면체 ABCD-EFGH, AB를 2:1로 내분하는 점 P, FG의 중점 Q, C에서 PQ에 내린 수선의 발 N, 삼각형 CPQ"
+}

@@ -1,0 +1,107 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "따라서 $BC=\\dfrac23\\times4p=\\dfrac{8p}{3}$",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "3",
+    "axis": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS"
+    },
+    {
+      "id": "A",
+      "kind": "ON_CONIC",
+      "x": "9",
+      "branch": "POS"
+    },
+    {
+      "id": "B",
+      "kind": "FOOT",
+      "from": "A",
+      "onto": "l",
+      "rightAngle": true
+    },
+    {
+      "id": "C",
+      "kind": "LINE_CONIC",
+      "line": "k1",
+      "which": 1
+    }
+  ],
+  "lines": [
+    {
+      "id": "l",
+      "role": "DIRECTRIX",
+      "label": "l"
+    },
+    {
+      "id": "k1",
+      "through": [
+        "B",
+        "F"
+      ],
+      "hidden": true
+    }
+  ],
+  "segments": [
+    {
+      "id": "sAB",
+      "from": "A",
+      "to": "B",
+      "label": "12"
+    },
+    {
+      "id": "sBC",
+      "from": "B",
+      "to": "C",
+      "label": "8"
+    },
+    {
+      "id": "sCF",
+      "from": "C",
+      "to": "F",
+      "label": "4"
+    },
+    {
+      "id": "sAF",
+      "from": "A",
+      "to": "F",
+      "label": "12",
+      "dashed": true
+    }
+  ],
+  "caption": "p=3일 때 포물선 y^2=12x에서 정삼각형 ABF(한 변 12)와 선분 BF 위의 점 C: BC=8, CF=4",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "p=3일 때 포물선 y^2=12x 위의 점 A(9,6√3), 준선 x=-3, 초점 F(3,0)",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "AB=AF=BF=12, BC=8, CF=4",
+      "mappedTo": [
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정삼각형 ABF와 BC:CF=2:1"
+  ],
+  "accessibilityDescription": "p=3일 때 포물선 y^2=12x에서 정삼각형 ABF(한 변 12)와 선분 BF 위의 점 C: BC=8, CF=4"
+}

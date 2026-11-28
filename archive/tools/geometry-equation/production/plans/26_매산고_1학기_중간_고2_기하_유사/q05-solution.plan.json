@@ -1,0 +1,65 @@
+{
+  "capability": "ellipse-figure-v1",
+  "sourceQuote": "따라서 접선은 $y=2x+3$, $y=2x-3$이고",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "5",
+    "bSquared": "11",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "S",
+      "kind": "POINT",
+      "x": "-10/3",
+      "y": "-11/3",
+      "coordinates": true
+    },
+    {
+      "id": "T",
+      "kind": "POINT",
+      "x": "10/3",
+      "y": "11/3",
+      "coordinates": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "t1",
+      "slope": "2",
+      "intercept": "3",
+      "tangent": true,
+      "label": "l_1"
+    },
+    {
+      "id": "t2",
+      "slope": "2",
+      "intercept": "-3",
+      "tangent": true,
+      "label": "l_2"
+    }
+  ],
+  "caption": "쌍곡선 x^2/5-y^2/11=1에 접하고 기울기가 2인 두 접선 l_1: y=2x+3, l_2: y=2x-3과 접점 S, T",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "쌍곡선 x^2/5-y^2/11=1에 접하고 기울기가 2인 직선을 구한다.",
+      "mappedTo": [
+        "conic",
+        "lines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 접선과 접점 S(-10/3,-11/3), T(10/3,11/3), y절편 3과 -3"
+  ],
+  "accessibilityDescription": "쌍곡선 x^2/5-y^2/11=1에 접하고 기울기가 2인 두 접선 l_1: y=2x+3, l_2: y=2x-3과 접점 S, T"
+}

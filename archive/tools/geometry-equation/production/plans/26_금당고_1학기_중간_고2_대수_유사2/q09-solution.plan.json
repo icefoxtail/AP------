@@ -1,0 +1,64 @@
+{
+  "capability": "logarithmic-affine-spike-v1",
+  "graphPlan": {
+    "family": "logarithmic-affine",
+    "base": "3",
+    "coefficients": [
+      "1",
+      "1",
+      "-6",
+      "-1"
+    ],
+    "sourceDomain": {
+      "kind": "NATURAL_LOG_AFFINE"
+    },
+    "domain": [
+      6.1,
+      35
+    ],
+    "viewport": [
+      5,
+      37,
+      -5,
+      4
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 9,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 33,
+        "y": 2
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "두 점 (9,0), (33,2)를 지나는 y=log₃(x-6)-1의 해설 그래프",
+  "accessibilityDescription": "x=6을 수직점근선으로 하는 증가 로그곡선 위 두 좌표 (9,0), (33,2)가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "계산된 h=6, k=-1을 대입한 y=log_3(x-6)-1",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "그래프는 (9,0), (33,2)를 지난다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "수직점근선 x=6",
+    "두 주어진 점의 위치와 좌표"
+  ]
+}

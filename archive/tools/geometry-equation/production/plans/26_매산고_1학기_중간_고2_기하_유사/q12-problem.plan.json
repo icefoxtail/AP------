@@ -1,0 +1,55 @@
+{
+  "capability": "solid-figure-v1",
+  "sourceQuote": "한 모서리의 길이가 $12$인 정사면체 $ABCD$가 있다.",
+  "solids": [
+    {
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 12,
+      "names": "BCDA",
+      "points": [
+        {
+          "id": "N",
+          "at": {
+            "midpoint": [
+              "A",
+              "B"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "N",
+      "to": "C",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "N",
+      "to": "D",
+      "style": "AUTO",
+      "role": "ACCENT"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "N",
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "caption": "한 모서리의 길이가 12인 정사면체 ABCD, 모서리 AB의 중점 N과 삼각형 NCD",
+  "sourceConditions": [
+    "한 모서리의 길이가 12인 정사면체 ABCD",
+    "모서리 AB의 중점 N"
+  ],
+  "newVisualInformation": [
+    "AB의 중점 N과 삼각형 NCD"
+  ],
+  "accessibilityDescription": "한 모서리의 길이가 12인 정사면체 ABCD, 모서리 AB의 중점 N과 삼각형 NCD"
+}
