@@ -1,0 +1,24 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "k",
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "허근 조건",
+        "pieces": [
+          {"lo": {"value": "25/12", "state": "OPEN"}, "hi": null}
+        ],
+        "integerPoints": {"range": ["3", "6"]}
+      }
+    ]
+  },
+  "caption": "이차방정식의 판별식 −12k+25<0에서 k>25/12이다. 자연수 중 이 범위에 처음 포함되는 값은 3이며 뒤의 4, 5, 6도 조건을 만족한다.",
+  "accessibilityDescription": "25/12보다 큰 구간을 열린 끝점에서 오른쪽으로 나타내고, 구간에 포함되는 자연수 3, 4, 5, 6의 정수점을 표시한 수직선이다.",
+  "sourceConditions": [
+    {"id": "discriminant", "condition": "허근 조건 D=−12k+25<0이므로 k>25/12", "mappedTo": "numberLine.rows[0].pieces[0]"},
+    {"id": "natural", "condition": "k는 자연수이며 25/12는 2와 3 사이에 있으므로 첫 허용 자연수는 3", "mappedTo": "numberLine.rows[0].integerPoints"}
+  ],
+  "newVisualInformation": ["판별식의 열린 경계 25/12와 그 오른쪽의 첫 자연수 3이 서로 다른 위치에 놓임을 보여 준다."]
+}
