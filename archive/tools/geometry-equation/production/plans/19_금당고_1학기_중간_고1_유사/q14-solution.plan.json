@@ -1,0 +1,18 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["9", "-6", "1"],
+    "sourceDomain": {"kind": "INTERVAL", "range": [1, 4], "states": ["CLOSED", "CLOSED"]},
+    "domain": [1, 4], "viewport": [-2, 6, -2, 6],
+    "requiredPoints": [{"id": "L", "x": 1, "y": 4}, {"id": "V", "x": 3, "y": 0}, {"id": "R", "x": 4, "y": 1}],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "f(x)=(x−3)²+6을 아래로 6만큼 옮긴 g=f−6=(x−3)²의 그림이다. 구간 1≤x≤4에서 L(1,4)이 높으므로 원래 f의 최댓값은 4+6=10이다.",
+  "accessibilityDescription": "수직으로 6만큼 내린 정규화 그래프 g는 왼쪽 끝 L(1,4), 꼭짓점 V(3,0), 오른쪽 끝 R(4,1)을 보여 준다. 원래 함수 f는 모두 6만큼 높다.",
+  "sourceConditions": [
+    {"id": "function", "condition": "대칭축 3으로 a=−6, b=15; 그림은 g=f−6=x²−6x+9", "mappedTo": "graphPlan.coefficients"},
+    {"id": "domain", "condition": "주어진 닫힌 구간 1≤x≤4", "mappedTo": "graphPlan.sourceDomain"},
+    {"id": "heights", "condition": "f(1)=10, f(3)=6, f(4)=7을 아래로 6만큼 옮겨 g(1)=4,g(3)=0,g(4)=1", "mappedTo": "graphPlan.requiredPoints"}
+  ],
+  "newVisualInformation": ["세로 평행이동이 상대 높이를 바꾸지 않으므로 축에서 더 먼 왼쪽 끝이 더 높음을 보여 준다."]
+}

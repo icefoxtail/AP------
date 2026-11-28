@@ -1,0 +1,27 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{"coefficients": ["2", "-4", "1"]}],
+    "breakpoints": [],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "functionName": "f",
+    "referenceCurves": [{"id": "g", "name": "g", "coefficients": ["0", "4", "-1"], "intersectionX": ["2-sqrt(3)", "2+sqrt(3)"]}],
+    "requiredPoints": [
+      {"id": "P", "x": "2-sqrt(3)", "y": 1},
+      {"id": "Q", "x": "2+sqrt(3)", "y": 1},
+      {"id": "Vf", "x": 2, "y": -2},
+      {"id": "Vg", "x": 2, "y": 4}
+    ],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "해설의 a=4,b=0에서 f(x)=x²−4x+2, g(x)=−x²+4x이며 교점 P,Q의 x좌표는 2±√3, 두 점의 높이는 모두 1이다.",
+  "accessibilityDescription": "위로 열린 포물선과 아래로 열린 포물선이 같은 높이 1에서 좌우 두 점 P,Q로 교차한다. 두 x좌표는 2−√3과 2+√3이다.",
+  "sourceConditions": [
+    {"id": "given_curve", "condition": "원문 y=x²−4x+2", "mappedTo": "graphPlan.pieces[0].coefficients"},
+    {"id": "solved_curve", "condition": "근의 대칭성으로 a=4,b=0 → y=−x²+4x", "mappedTo": "graphPlan.referenceCurves[0].coefficients"},
+    {"id": "roots", "condition": "2x²−8x+2=0의 근 2±√3에서 f=g=1", "mappedTo": ["graphPlan.referenceCurves[0].intersectionX", "graphPlan.requiredPoints[0]", "graphPlan.requiredPoints[1]"]},
+    {"id": "vertices", "condition": "두 포물선의 꼭짓점 (2,−2), (2,4)", "mappedTo": ["graphPlan.requiredPoints[2]", "graphPlan.requiredPoints[3]"]}
+  ],
+  "newVisualInformation": ["무리수 켤레쌍 두 x좌표가 공통 수평 높이를 갖는 두 포물선의 교점임을 보여 준다."]
+}

@@ -1,0 +1,19 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["1", "3", "-1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-2, 5], "viewport": [-3, 6, -12, 9],
+    "requiredPoints": [{"id": "T", "x": 2, "y": 3}],
+    "axisTickValues": {"x": [], "y": []},
+    "overlays": {"lines": [{"id": "linear", "slope": "-1", "intercept": "5"}]}
+  },
+  "caption": "k=5일 때 두 식 y=−x²+3x+1과 y=5−x는 T(2,3)에서 접해 연립방정식의 해가 하나뿐이다.",
+  "accessibilityDescription": "아래로 열린 포물선과 오른쪽으로 내려가는 직선이 (2,3) 한 점에서 접한다.",
+  "sourceConditions": [
+    {"id": "curve", "condition": "x²−3x+y=1에서 y=−x²+3x+1", "mappedTo": "graphPlan.coefficients"},
+    {"id": "line", "condition": "x+y=k에서 중근 경계 k=5", "mappedTo": "graphPlan.overlays.lines[0]"},
+    {"id": "touch", "condition": "x²−4x+4=0의 중근 x=2, y=3", "mappedTo": "graphPlan.requiredPoints[0]"}
+  ],
+  "newVisualInformation": ["연립방정식에서 단 하나의 순서쌍만 나온다는 조건을 두 곡선의 접점으로 시각화한다."]
+}

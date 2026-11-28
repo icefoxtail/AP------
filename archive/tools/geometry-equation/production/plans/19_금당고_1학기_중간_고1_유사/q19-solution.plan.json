@@ -1,0 +1,22 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["-16", "16", "-4"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-2, 5], "viewport": [-3, 6, -42, 5],
+    "requiredPoints": [
+      {"id": "T", "x": 2, "y": 0},
+      {"id": "C", "x": 3, "y": -4},
+      {"id": "R", "x": -1, "y": -36}
+    ],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "h(x)=f(x)−g(x)는 x=2를 중근으로 하고 h(3)=−4이므로 h(x)=−4(x−2)²이다. 접점 T(2,0)에서 x축을 접하고 h(−1)=−36이다.",
+  "accessibilityDescription": "아래로 열린 포물선 h가 x축의 T(2,0)에 접하고 C(3,−4), R(−1,−36)을 지난다.",
+  "sourceConditions": [
+    {"id": "factor", "condition": "중근 2와 h(3)=1−5=−4에서 h=−4(x−2)²", "mappedTo": "graphPlan.coefficients"},
+    {"id": "tangent", "condition": "중근에 대응하는 접점 T(2,0)", "mappedTo": "graphPlan.requiredPoints[0]"},
+    {"id": "remainder", "condition": "x+1로 나눈 나머지는 h(−1)=−36", "mappedTo": "graphPlan.requiredPoints[2]"}
+  ],
+  "newVisualInformation": ["중근을 x축 접점으로 바꾸어 보고, 나머지정리의 대입점 −1의 함수값을 비교한다."]
+}
