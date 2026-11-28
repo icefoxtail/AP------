@@ -1,0 +1,90 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "referenceLines": [
+      {
+        "id": "l",
+        "slope": "4",
+        "intercept": "3",
+        "intersectionX": [
+          "2-sqrt(7)",
+          "2+sqrt(7)"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "X",
+          "axis": "x",
+          "value": "-3/4",
+          "coordinates": true
+        }
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "P",
+        "x": "2-sqrt(7)",
+        "y": "11-4*sqrt(7)"
+      },
+      {
+        "id": "Q",
+        "x": "2+sqrt(7)",
+        "y": "11+4*sqrt(7)"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "y=x²과 y=4x+3의 두 교점 P, Q는 x좌표 2±√7을 가지고, 직선의 x절편은 -3/4이다.",
+  "accessibilityDescription": "y=x² 포물선과 y=4x+3 직선이 x좌표 2-√7, 2+√7인 두 교점 P, Q에서 만난다.",
+  "sourceConditions": [
+    {
+      "id": "curve",
+      "condition": "주어진 곡선은 y=x²이다.",
+      "mappedTo": [
+        "graphPlan.pieces"
+      ]
+    },
+    {
+      "id": "line",
+      "condition": "x²-mx-n=0의 실근이 2±√7이므로 m=4, n=3, 직선 y=4x+3이다.",
+      "mappedTo": [
+        "graphPlan.referenceLines"
+      ]
+    },
+    {
+      "id": "intersections",
+      "condition": "교점 좌표는 (2±√7, 11±4√7)이며 x절편은 -3/4이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+          "graphPlan.referenceLines",
+          "graphPlan.overlays.points"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 근의 켤레 관계를 두 교점 P, Q와 정확한 직선 기울기로 시각화한다."
+  ]
+}

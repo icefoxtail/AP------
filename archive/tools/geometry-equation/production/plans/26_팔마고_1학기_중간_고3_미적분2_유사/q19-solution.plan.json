@@ -1,0 +1,288 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "J",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "M",
+          "A"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "7"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "11"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "inscribed",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "J"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "7"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "M",
+    "J"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "inscribed"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBM",
+      "refs": [
+        "B",
+        "M"
+      ]
+    },
+    {
+      "id": "sMC",
+      "refs": [
+        "M",
+        "C"
+      ]
+    },
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sJM",
+      "refs": [
+        "J",
+        "M"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 470
+  },
+  "caption": "n=2인 대표 예시에서 밑변 14·양쪽 변 11, 높이 AM과 내접원 중심 J를 나타낸 그림",
+  "sourceConditions": [
+    {
+      "id": "inc19",
+      "condition": "n=2 대표 배치: AB=AC=11, BC=14, AM=6√2, 내접원은 BC에 M에서 접한다.",
+      "mappedTo": "mathPlan.nodes,planeMarks.dimensions"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 두 변의 동등성과 수선의 발 M, 내접원 접점 M, 반지름 JM의 직각을 표시"
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "14",
+        "side": "BELOW",
+        "style": "BAR"
+      },
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "11",
+        "side": "LEFT",
+        "style": "BAR"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "legs",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sAC"
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "foot",
+      "refs": [
+        "A",
+        "M",
+        "C"
+      ]
+    },
+    {
+      "id": "radius",
+      "refs": [
+        "J",
+        "M",
+        "B"
+      ]
+    }
+  ],
+  "sourceQuote": "자연수 $n$에 대하여 $\\overline{AB}=\\overline{AC}=5n+1$, $\\overline{BC}=8n-2$인 삼각형 $ABC$의 내접원의 반지름의 길이를 $r_n",
+  "accessibilityDescription": "n=2인 대표 예시에서 밑변 14·양쪽 변 11, 높이 AM과 내접원 중심 J를 나타낸 그림"
+}

@@ -1,0 +1,78 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "음의 속도",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "4",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "양의 속도",
+        "color": "WARM",
+        "pieces": [
+          {
+            "lo": {
+              "value": "4",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "7",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "label": "정지 시각",
+        "points": [
+          {
+            "id": "T",
+            "value": "4",
+            "hideName": true
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "t=4를 기준으로 운동 방향 변경"
+  },
+  "caption": "속도 v(t)=2t−8은 0≤t<4에서 음수, 4<t≤7에서 양수이므로 이동거리를 두 구간의 절댓값 적분으로 나눈다.",
+  "accessibilityDescription": "시간 t의 수직선 위 0부터4까지 속도가 음수이고 4에서 영, 4부터7까지 양수이다. 각 구간을 따로 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "v",
+      "condition": "v(t)=2t−8, t=4에서 방향 변화",
+      "mappedTo": "numberLine.rows[2].points[T]"
+    },
+    {
+      "id": "before",
+      "condition": "0≤t<4에서는 v<0, 이동거리 16",
+      "mappedTo": "numberLine.rows[0].pieces"
+    },
+    {
+      "id": "after",
+      "condition": "4<t≤7에서는 v>0, 이동거리 9",
+      "mappedTo": "numberLine.rows[1].pieces"
+    }
+  ],
+  "newVisualInformation": [
+    "속도의 부호만 시간축의 두 구간에 나누어 표현한다. 거리값은 해설의 적분 결과이며 그림 길이와 혼동하지 않는다."
+  ]
+}

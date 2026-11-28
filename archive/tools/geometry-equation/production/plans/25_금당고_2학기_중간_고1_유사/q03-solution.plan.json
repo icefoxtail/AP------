@@ -1,0 +1,93 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C"
+  ],
+  "displaySegments": [],
+  "caption": "완전제곱식으로 얻은 중심 C(-2,5)와 반지름 4의 원",
+  "accessibilityDescription": "중심 및 반지름을 식의 완전제곱 결과와 좌표 도형에서 대조한다.",
+  "sourceConditions": [
+    {
+      "id": "drawn",
+      "condition": "중심 및 반지름을 식의 완전제곱 결과와 좌표 도형에서 대조한다.",
+      "mappedTo": [
+        "C",
+        "k"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "중심 및 반지름을 식의 완전제곱 결과와 좌표 도형에서 대조한다."
+  ],
+  "coordinateLabels": [
+    "C"
+  ],
+  "displayCircles": [
+    "k"
+  ]
+}

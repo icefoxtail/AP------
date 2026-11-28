@@ -1,0 +1,40 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "새 해집합",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-3",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "9",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "해집합과 경계 확인"
+  },
+  "caption": "−2≤(x−1)/2≤4를 풀면 −3≤x≤9",
+  "accessibilityDescription": "−2≤(x−1)/2≤4를 풀면 −3≤x≤9",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "f(u)≤0의 해 [−2,4]와 u=(x−1)/2의 변환",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "변환된 새 정의역의 닫힌 끝점 −3,9와 정수점"
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "elements": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "id": "Y",
+        "elements": [
+          "4",
+          "5",
+          "6"
+        ]
+      },
+      {
+        "id": "Z",
+        "elements": [
+          "7",
+          "8",
+          "9"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 1
+        },
+        "to": {
+          "column": 2,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 2
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y"
+      },
+      {
+        "name": "g",
+        "from": "Y",
+        "to": "Z"
+      }
+    ]
+  },
+  "caption": "f는 1→6,2→4,3→5이고 g는 4→8,5→9,6→7이다. 문제의 정답 경로는 강조하지 않는다.",
+  "accessibilityDescription": "세 타원 X,Y,Z 사이 두 함수 f와 g가 총 여섯 화살표를 만든다. X의 3에서 Y의 5로, Y의 5에서 Z의 9로 이어진다.",
+  "newVisualInformation": [
+    "원본 3열 대응도의 함수별 화살표 여섯 개",
+    "문항 정답을 노출하지 않는 검은 선"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "X={1,2,3},Y={4,5,6},Z={7,8,9}",
+      "mappedTo": [
+        "diagram.columns"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "f(1)=6,f(2)=4,f(3)=5;g(4)=8,g(5)=9,g(6)=7",
+      "mappedTo": [
+        "diagram.arrows",
+        "diagram.arrowGroups"
+      ]
+    }
+  ]
+}

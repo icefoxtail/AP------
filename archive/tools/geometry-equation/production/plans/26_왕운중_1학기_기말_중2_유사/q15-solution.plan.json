@@ -1,0 +1,46 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "caption": "a<0, b<0이므로 ab>0, a+b<0인 대표 직선은 제2사분면을 지나지 않는다.",
+  "accessibilityDescription": "기울기가 양수이고 y절편이 음수인 대표 직선이 제1·3·4사분면을 지난다. 제2사분면은 지나지 않는다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "y=abx+a+b"
+      }
+    ],
+    "viewport": [
+      -4,
+      4,
+      -4,
+      4
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceConditions": [
+    {
+      "id": "origin",
+      "condition": "일차함수 $y = bx - a$의 그래프가 제$1, 2, 4$사분면을 지날 때, 일차함수 $y = abx + (a + b)$의 그래프가 지나지 않는 사분면을 구하면? (단, $a, b$는 상수)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "실수 계수의 대표 부호 관계를 나타내는 개형: y=abx+a+b",
+    "x축 및 y축과 교점",
+    "눈금 숫자와 정답 계수는 표시하지 않음"
+  ]
+}

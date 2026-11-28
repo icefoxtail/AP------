@@ -1,0 +1,39 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "공통해",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-4",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "2",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "해집합과 경계 확인"
+  },
+  "caption": "|x−1|+|x+3|≤6의 해 −4≤x≤2",
+  "accessibilityDescription": "|x−1|+|x+3|≤6의 해 −4≤x≤2",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "거리의 합 |x−1|+|x+3|≤6 및 동치 이차부등식의 해 [−4,2]",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "두 끝점의 닫힌 상태와 해집합 한 구간"
+  ]
+}

@@ -1,0 +1,224 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "접하는 원을 품은 사각형 ABCD: AB=9, BC=11, CD=8, AD=x",
+  "accessibilityDescription": "접하는 원을 품은 사각형 ABCD: AB=9, BC=11, CD=8, AD=x",
+  "newVisualInformation": [
+    "접하는 원을 품은 사각형 ABCD: AB=9, BC=11, CD=8, AD=x"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q18-archive",
+      "condition": "다음 그림과 같이 원 $O$에 외접하는 사각형 $ABCD$에서 $\\overline{AB} = 9\\,\\mathrm{cm}, \\overline{BC} = 11\\,\\mathrm{cm}, \\overline{CD} = 8\\,\\mathrm{cm}$일 때, 변 $AD$의 길이를 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "audit-1",
+      "condition": "ENGINE_CAPABILITY_PENDING: 임의의 네 접선변 길이를 갖는 접사각형과 내접원의 정확한 접점 좌표 자동 해결 기능. 현재는 변 길이 텍스트/연결 관계만 나타내며 원과 접점은 미구현.",
+      "mappedTo": "DRAWN_FEATURE_PARITY"
+    }
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "10"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-1"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "numerator": "351",
+                      "denominator": "10"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "10"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [],
+    "expressionLabels": [
+      {
+        "id": "lenAB",
+        "ownerSegment": "sAB",
+        "text": "9"
+      },
+      {
+        "id": "lenBC",
+        "ownerSegment": "sBC",
+        "text": "11"
+      },
+      {
+        "id": "lenCD",
+        "ownerSegment": "sCD",
+        "text": "8"
+      },
+      {
+        "id": "lenDA",
+        "ownerSegment": "sDA",
+        "text": "x"
+      }
+    ],
+    "arcs": []
+  },
+  "rightAngles": [],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 450
+  }
+}

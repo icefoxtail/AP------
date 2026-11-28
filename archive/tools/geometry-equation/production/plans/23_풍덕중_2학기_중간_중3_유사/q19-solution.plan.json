@@ -1,0 +1,108 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "REGULAR",
+        "n": 3,
+        "side": 12
+      },
+      "height": 9.797958971132712,
+      "names": {
+        "base": [
+          "B",
+          "C",
+          "D"
+        ],
+        "apex": "A"
+      },
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "edge": [
+              "C",
+              "D"
+            ],
+            "t": "1/2"
+          }
+        },
+        {
+          "id": "H",
+          "at": {
+            "base": "centroid"
+          }
+        }
+      ]
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "from": "A",
+      "to": "B",
+      "label": "12"
+    },
+    {
+      "solid": "s1",
+      "from": "A",
+      "to": "H",
+      "label": "4\\sqrt{6}"
+    },
+    {
+      "solid": "s1",
+      "from": "B",
+      "to": "H",
+      "label": "4\\sqrt{3}"
+    }
+  ],
+  "solidCaption": {
+    "text": "정사면체"
+  },
+  "caption": "풍덕중 19번 해설 과정: 원문 19번 해설에 필요한 풀이 관계.",
+  "accessibilityDescription": "원문 19번 해설에 필요한 풀이 관계",
+  "newVisualInformation": [
+    "원문 19번 해설에 필요한 풀이 관계"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q19-solution",
+      "condition": "밑면 정삼각형의 높이는 $6\\sqrt{3}$, 넓이는 $\\dfrac{1}{2}\\times 12\\times 6\\sqrt{3}=36\\sqrt{3}$이다. 밑면 무게중심 $H$에 대하여 $BH = \\dfrac{2}{3}\\times 6\\sqrt{3}=4\\sqrt{3}$이므로 정사면체의 높이는 $AH = \\sqrt{12^2-(4\\sqrt{3})^2} = 4\\sqrt{6}$이다. 따라서 부피는 $\\dfrac{1}{3}\\times 36\\sqrt{3}\\times 4\\sqrt{6} = 144\\sqrt{2}$이다. 정답은 ②이다.",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    }
+  ],
+  "segments": [
+    {
+      "from": "B",
+      "to": "H",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "H",
+      "to": "M",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "A",
+      "to": "H",
+      "style": "DASHED",
+      "role": "REF"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "H",
+        "refs": [
+          "A",
+          "B"
+        ]
+      }
+    ]
+  }
+}

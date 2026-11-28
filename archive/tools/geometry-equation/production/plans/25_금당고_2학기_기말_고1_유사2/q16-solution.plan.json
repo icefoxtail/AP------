@@ -1,0 +1,77 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "9",
+      "3"
+    ],
+    "denominator": [
+      "2",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -7,
+      6
+    ],
+    "viewport": [
+      -7,
+      6,
+      -4,
+      9
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -3,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 0,
+        "y": 4.5
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "-2"
+      ],
+      "y": [
+        "3"
+      ]
+    },
+    "asymptoteLabelAt": "END"
+  },
+  "pointNames": {
+    "A": "A",
+    "B": "B"
+  },
+  "caption": "무리함수의 계수 a=3,b=9,c=2를 대입하면 유리함수 y=3/(x+2)+3이다. x=−2,y=3이 점근선이며 제4사분면은 지나지 않는다.",
+  "accessibilityDescription": "유리함수 두 가지와 점선 점근선 x=−2, y=3, 점 A(−3,0), B(0,9/2)가 있어 지나지 않는 사분면을 알 수 있다.",
+  "newVisualInformation": [
+    "정확한 점근선·절편",
+    "한 사분면에 가지가 없는 위치관계"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a=3,b=9,c=2에서 (3x+9)/(x+2)",
+      "mappedTo": [
+        "graphPlan.numerator",
+        "graphPlan.denominator"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "점근선 x=-2,y=3과 점(-3,0),(0,9/2)",
+      "mappedTo": [
+        "graphPlan.requiredPoints",
+        "graphPlan.axisTickValues"
+      ]
+    }
+  ]
+}

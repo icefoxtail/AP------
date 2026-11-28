@@ -1,0 +1,38 @@
+name: Archive Registration Assistant
+# Automatic diagnosis and issue reconciliation; never runs a second writer or bypasses release gates.
+on:
+  workflow_run:
+    workflows: [Archive Main Auto Metadata]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: 'Optional completed main registration run ID (empty = latest)'
+        required: false
+        type: string
+permissions:
+  contents: read
+  actions: read
+  issues: write
+concurrency:
+  group: archive-registration-assistant-main
+  cancel-in-progress: false
+jobs:
+  diagnose:
+    if: ${{ github.event_name == 'workflow_dispatch' || (github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.event != 'pull_request' && github.event.workflow_run.head_repository.full_name == github.repository) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Diagnose the newest completed registration run
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          REQUESTED_RUN_ID: ${{ github.event_name == 'workflow_dispatch' && inputs.run_id || github.event.workflow_run.id }}
+        run: node tools/ci/archive-registration-assistant.mjs "$REQUESTED_RUN_ID"

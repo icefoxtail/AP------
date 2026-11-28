@@ -1,0 +1,45 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "k",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "4",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": true,
+        "label": "정확히 2개"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "해집합과 주요 경계"
+  },
+  "caption": "정수해가 정확히 2개가 되는 양의 정수 k는 2,3,4이다.",
+  "accessibilityDescription": "정수해가 정확히 2개가 되는 양의 정수 k는 2,3,4이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "k=1이면 정수해 3개",
+      "mappedTo": "numberLine.rows"
+    },
+    {
+      "id": "c2",
+      "condition": "k=2,3,4에서 x=1,2 두 정수해",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "부등식의 실제 끝점·개폐와 필요한 정수 해를 numberLine.rows의 구간·점 필드에 표시한다."
+  ]
+}

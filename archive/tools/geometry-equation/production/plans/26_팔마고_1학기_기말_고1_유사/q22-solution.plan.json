@@ -1,0 +1,500 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "F",
+          "G"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lEF",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "E",
+          "F"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lEG",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "E",
+          "G"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lCD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lEF",
+          "lAD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lEF",
+          "lAB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "J",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lEG",
+          "lAD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lEG",
+          "lCD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sFB",
+      "refs": [
+        "F",
+        "B"
+      ]
+    },
+    {
+      "id": "sCG",
+      "refs": [
+        "C",
+        "G"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sEG",
+      "refs": [
+        "E",
+        "G"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "sHJ",
+      "refs": [
+        "H",
+        "J"
+      ]
+    },
+    {
+      "id": "sJD",
+      "refs": [
+        "J",
+        "D"
+      ]
+    },
+    {
+      "id": "sAI",
+      "refs": [
+        "A",
+        "I"
+      ]
+    },
+    {
+      "id": "sEP",
+      "refs": [
+        "E",
+        "P"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sEH",
+      "refs": ["E", "H"]
+    },
+    {
+      "id": "sEJ",
+      "refs": ["E", "J"]
+    },
+    {
+      "id": "sHI",
+      "refs": ["H", "I"]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 520
+  },
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eFG",
+        "count": 1,
+        "segments": [
+          "sFB",
+          "sCG"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "aF",
+        "refs": [
+          "E",
+          "F",
+          "G"
+        ],
+        "value": 60,
+        "label": "60",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "len6",
+        "ownerSegment": "sAB",
+        "text": "6"
+      },
+      {
+        "id": "lenAH",
+        "ownerSegment": "sAH",
+        "text": "x"
+      },
+      {
+        "id": "lenHJ",
+        "ownerSegment": "sHJ",
+        "text": "6-2x"
+      },
+      {
+        "id": "lenAI",
+        "ownerSegment": "sAI",
+        "text": "sqrt(3)x"
+      },
+      {
+        "id": "lenH",
+        "ownerSegment": "sEP",
+        "text": "h"
+      }
+    ],
+    "regions": [
+      {
+        "id": "sumAreas",
+        "fill": "LIGHT",
+        "shapes": [
+          {"polygon": ["E", "H", "J"]},
+          {"polygon": ["A", "I", "H"]}
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "sqA",
+      "refs": [
+        "D",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sqP",
+      "refs": [
+        "E",
+        "P",
+        "A"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "P"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "t=BF=CG=3인 허용 대표 배치에서 AH=DJ=x, HJ=6−2x, AI=√3x, EP=h=√3(3−x)이다. 두 삼각형 넓이의 합 S(x)는 0<x≤1에서 x=1일 때 최소다.",
+  "accessibilityDescription": "두 겹친 삼각형의 주요 변과 실제 교점·수직 높이 EP, AH=x·HJ=6−2x·AI=√3x의 길이 라벨 및 직각표시를 그린다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "허용되는 대표 t=3, 2√3−1≤t<2√3",
+      "mappedTo": [
+        "mathPlan.nodes"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "AH=x, DJ=x, HJ=6−2x, AI=√3x",
+      "mappedTo": [
+        "displaySegments",
+        "planeMarks.expressionLabels"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "E에서 AD에 내린 수선 EP의 길이는 h=√3(3−x)",
+      "mappedTo": [
+        "displaySegments",
+        "rightAngles",
+        "planeMarks.expressionLabels"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 겹친 삼각형의 주요 변과 실제 교점·수직 높이 EP, AH=x·HJ=6−2x·AI=√3x의 길이 라벨 및 직각표시를 그린다."
+  ]
+}

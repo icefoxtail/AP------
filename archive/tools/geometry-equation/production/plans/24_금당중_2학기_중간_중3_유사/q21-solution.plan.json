@@ -1,0 +1,204 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "32"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "baseLine",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "X"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "A",
+          "baseLine"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "X",
+    "A",
+    "C"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 32,
+        "label": "32",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "10"
+      },
+      {
+        "id": "x",
+        "ownerSegment": "sCA",
+        "text": "5.3",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "y",
+        "ownerSegment": "sBC",
+        "text": "8.5",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "arcs": [],
+    "regions": []
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "hiddenPointNames": [
+    "X"
+  ],
+  "hiddenPointStyle": "NONE",
+  "sourceQuote": "[서술형 1] 다음 그림과 같은 직각삼각형 $ABC$($\\ang",
+  "caption": "21번 해설의 수학적 도형 관계",
+  "accessibilityDescription": "21번 해설의 수학적 도형 관계",
+  "sourceConditions": [
+    {
+      "id": "q21-solution-current",
+      "condition": "빗변이 $AB=10$이고 $\\angle B=32^\\circ$이므로 $$ x = AC = 10\\sin 32^\\circ = 10\\times 0.53 = 5.3, \\qquad y = BC = 10\\cos 32^\\circ = 10\\times 0.85 = 8.5 $$ 따라서 $x+y = 5.3 + 8.5 = 13.8$이다.",
+      "mappedTo": [
+        "mathPlan",
+        "displaySegments",
+        "planeMarks"
+      ]
+    },
+    {
+      "id": "q21-source-asset",
+      "condition": "archive/assets/images/24_금당중_2학기_중간_중3_유사/q21-problem.svg",
+      "mappedTo": "SOLUTION_INDEPENDENT_REVIEW"
+    }
+  ],
+  "newVisualInformation": [
+    "q21 해설에서 도출한 조건을 실제 점·선·각·호·라벨로 표시"
+  ]
+}

@@ -1,0 +1,402 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "11"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Y",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "11"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "A5",
+    "A6",
+    "X",
+    "Y",
+    "U",
+    "V"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sOX",
+      "refs": [
+        "O",
+        "X"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sOY",
+      "refs": [
+        "O",
+        "Y"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sOU",
+      "refs": [
+        "O",
+        "U"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOV",
+      "refs": [
+        "O",
+        "V"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sA1A2",
+      "refs": [
+        "A1",
+        "A2"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sA2A3",
+      "refs": [
+        "A2",
+        "A3"
+      ],
+      "dashed": true,
+      "arrow": "END"
+    },
+    {
+      "id": "sA3A4",
+      "refs": [
+        "A3",
+        "A4"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sA4A5",
+      "refs": [
+        "A4",
+        "A5"
+      ],
+      "dashed": true,
+      "arrow": "END"
+    },
+    {
+      "id": "sA5A6",
+      "refs": [
+        "A5",
+        "A6"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sOA1",
+      "refs": [
+        "O",
+        "A1"
+      ]
+    },
+    {
+      "id": "sOA2",
+      "refs": [
+        "O",
+        "A2"
+      ]
+    },
+    {
+      "id": "sOA3",
+      "refs": [
+        "O",
+        "A3"
+      ]
+    },
+    {
+      "id": "sOA4",
+      "refs": [
+        "O",
+        "A4"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 470
+  },
+  "caption": "A1=(8,4)에서 시작해 y=x 대칭과 수직 이동을 반복한 A2~A6의 예시 경로",
+  "sourceConditions": [
+    {
+      "id": "sym17",
+      "condition": "A1=(8,4)이며 A2는 y=x 대칭, A3는 x=4와 y=x/2의 교점이다.",
+      "mappedTo": "mathPlan.nodes,displaySegments"
+    }
+  ],
+  "newVisualInformation": [
+    "대칭선 y=x·직선 y=x/2, A1=(8,4), A2=(4,8), A3=(4,2), A4=(2,4) 및 화살표/점선 반복"
+  ],
+  "hiddenPointNames": [
+    "X",
+    "Y",
+    "U",
+    "V"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "fx",
+        "at": [
+          9,
+          10
+        ],
+        "text": "y=x"
+      },
+      {
+        "id": "gx",
+        "at": [
+          10,
+          4
+        ],
+        "text": "y=x/2",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "xt",
+        "at": [
+          10.7,
+          -0.8
+        ],
+        "text": "x"
+      },
+      {
+        "id": "yt",
+        "at": [
+          -0.8,
+          10.7
+        ],
+        "text": "y"
+      }
+    ]
+  },
+  "sourceQuote": "자연수 $n$에 대하여 점 $A_n$을 다음 규칙에 따라 정한다.\n\n점 $A_{2n-1}$을 직선 $y=x$에 대하여 대칭이동시킨 점이 $A_{2n}$이고, 점 $A_{2n}$을 ",
+  "accessibilityDescription": "A1=(8,4)에서 시작해 y=x 대칭과 수직 이동을 반복한 A2~A6의 예시 경로"
+}

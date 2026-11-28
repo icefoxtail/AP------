@@ -1,0 +1,214 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "caption": "주어진 A,B와 제1사분면 C,D가 만드는 정사각형",
+  "accessibilityDescription": "주어진 두 꼭짓점 A,B와 제1사분면의 C,D로 이루어진 정사각형의 네 변과 네 직각을 표시한다. C,D 좌표 및 절편값은 적지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "given",
+      "condition": "주어진 두 꼭짓점 A,B와 제1사분면의 C,D로 이루어진 정사각형의 네 변과 네 직각을 표시한다. C,D 좌표 및 절편값은 적지 않는다.",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "문제에 명시된 위치·선·직각·같은 길이의 시각적 관계만 표시"
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eq-square",
+        "count": 1,
+        "segments": ["s1", "s2", "s3", "s4"]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "ra1",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "ra2",
+      "refs": [
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "ra3",
+      "refs": [
+        "C",
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "ra4",
+      "refs": [
+        "D",
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "coordinateLabels": [
+    "A",
+    "B"
+  ]
+}

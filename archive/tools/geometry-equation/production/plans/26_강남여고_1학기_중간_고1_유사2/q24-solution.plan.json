@@ -1,0 +1,220 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "add",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "15"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "17"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sub",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "15"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "17"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "atA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lab1",
+        "ownerSegment": "sBC",
+        "text": "11"
+      },
+      {
+        "id": "lab2",
+        "ownerSegment": "sAC",
+        "text": "b"
+      },
+      {
+        "id": "lab3",
+        "ownerSegment": "sAB",
+        "text": "c"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "prod",
+        "at": [
+          10.1,
+          6.7
+        ],
+        "text": "bc=52"
+      },
+      {
+        "id": "area",
+        "at": [
+          10.2,
+          5.6
+        ],
+        "text": "S=26"
+      }
+    ]
+  },
+  "caption": "a²=b²+c²로 A가 직각이고 b+c=15, bc=52이므로 넓이는 26이다.",
+  "accessibilityDescription": "직각삼각형 ABC에서 BC가 빗변 11이고 A는 직각이며 두 직각변 곱은 52이다.",
+  "sourceConditions": [
+    {
+      "id": "pythagoras",
+      "condition": "(a+b-c)(a-b+c)=2bc에서 a²=b²+c²이므로 A가 직각이다.",
+      "mappedTo": [
+        "rightAngles"
+      ]
+    },
+    {
+      "id": "area",
+      "condition": "a=11, b+c=15이므로 bc=((b+c)²-a²)/2=52, 넓이는 26이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "planeMarks.textLabels",
+        "planeMarks.expressionLabels"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "빗변 BC=11과 A의 직각 표시 및 bc=52로부터 넓이 26을 제시한다."
+  ]
+}

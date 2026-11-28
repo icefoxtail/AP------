@@ -1,0 +1,106 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "$y=f(x)=-2(x-1)^2+5$",
+  "caption": "y=f(x)=−2x²+4x+3과 y=g(x)=2x²은 x=−1/2, 3/2에서 만나고 그 사이에서 f가 위쪽이다. 사이의 넓이를 칠했다.",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "4",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "formula": "-2x^2+4x+3",
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "coefficients": [
+          "0",
+          "0",
+          "2"
+        ],
+        "intersectionX": [
+          "-1/2",
+          "3/2"
+        ]
+      }
+    ],
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "f",
+        "lower": "g",
+        "from": "-1/2",
+        "to": "3/2",
+        "fill": "LIGHT",
+        "label": "S"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 1,
+        "y": 5
+      },
+      {
+        "id": "A",
+        "x": -0.5,
+        "y": 0.5
+      },
+      {
+        "id": "B",
+        "x": 1.5,
+        "y": 4.5
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-1/2",
+        "1/2"
+      ],
+      "B": [
+        "3/2",
+        "9/2"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "domain": [
+      -2,
+      3
+    ],
+    "viewport": [
+      -2,
+      3,
+      -2,
+      6
+    ]
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "곡선 $y=2x^2$을 $x$축에 대하여 대칭이동한 후 $x$축의 방향으로 $1$만큼, $y$축의 방향으로 $5$만큼 평행이동한 곡선을 $y=f(x)$라 하자. 두 곡선 $y=2x^2$, $y=f(x)$로 둘러싸인 도형의 넓이는? [4.3점]",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "y=f(x)=−2x²+4x+3과 y=g(x)=2x²은 x=−1/2, 3/2에서 만나고 그 사이에서 f가 위쪽이다. 사이의 넓이를 칠했다."
+  ],
+  "accessibilityDescription": "y=f(x)=−2x²+4x+3과 y=g(x)=2x²은 x=−1/2, 3/2에서 만나고 그 사이에서 f가 위쪽이다. 사이의 넓이를 칠했다."
+}

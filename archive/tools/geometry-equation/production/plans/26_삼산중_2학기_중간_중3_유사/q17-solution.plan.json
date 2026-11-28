@@ -1,0 +1,529 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "다음 그림에서 $\\overline{AD}, \\overline{BC}",
+  "sourceConditions": [
+    {
+      "id": "q17-c1",
+      "condition": "AD=15 cm, AC=10 cm, AB=10 cm",
+      "mappedTo": "seg-AD, seg-AC, seg-AB"
+    },
+    {
+      "id": "q17-c2",
+      "condition": "∠ACB=60°",
+      "mappedTo": "angle-C"
+    },
+    {
+      "id": "q17-c3",
+      "condition": "AD, BC, AF are tangents at D,E,F to circle O",
+      "mappedTo": "tangent-D, tangent-E, tangent-F"
+    }
+  ],
+  "newVisualInformation": [
+    "해설에서 도출한 수치와 도형 관계가 문제 그림에 추가 표시됨"
+  ],
+  "caption": "삼산중 17번 해설에서 보조선과 계산된 길이·각을 구분하여 표시한 그림",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "15",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "5",
+                  "denominator": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "15",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "15",
+                  "denominator": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lineAD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineAF",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "F"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circleO",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "5"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenAD",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenAC",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenAB",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "ad-distance",
+        "sourceConditionId": "q17-c1",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "D"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "15"
+        }
+      },
+      {
+        "id": "ac-distance",
+        "sourceConditionId": "q17-c1",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "C"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "10"
+        }
+      },
+      {
+        "id": "ab-distance",
+        "sourceConditionId": "q17-c1",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "A",
+          "B"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "10"
+        }
+      },
+      {
+        "id": "tangent-D",
+        "sourceConditionId": "q17-c3",
+        "kind": "TANGENCY_AT_POINT",
+        "refs": [
+          "circleO",
+          "D",
+          "lineAD"
+        ]
+      },
+      {
+        "id": "tangent-E",
+        "sourceConditionId": "q17-c3",
+        "kind": "TANGENCY_AT_POINT",
+        "refs": [
+          "circleO",
+          "E",
+          "lineBC"
+        ]
+      },
+      {
+        "id": "tangent-F",
+        "sourceConditionId": "q17-c3",
+        "kind": "TANGENCY_AT_POINT",
+        "refs": [
+          "circleO",
+          "F",
+          "lineAF"
+        ]
+      }
+    ]
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "seg-AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "seg-AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "seg-BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "seg-AF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "seg-BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "seg-BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "O"
+  ],
+  "displayCircles": [
+    "circleO"
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angle-C",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 60,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "text-lenAD",
+        "ownerSegment": "seg-AD",
+        "text": "15"
+      },
+      {
+        "id": "text-lenAC",
+        "ownerSegment": "seg-AC",
+        "text": "10"
+      },
+      {
+        "id": "text-lenAB",
+        "ownerSegment": "seg-AB",
+        "text": "10"
+      },
+      {
+        "id": "text-derivedBD",
+        "ownerSegment": "seg-BD",
+        "text": "5"
+      },
+      {
+        "id": "text-derivedBE",
+        "ownerSegment": "seg-BE",
+        "text": "5"
+      }
+    ]
+  },
+  "scalarLabels": [
+    {
+      "nodeId": "lenAD",
+      "ownerSegment": "seg-AD",
+      "prefix": "AD",
+      "unit": "cm"
+    },
+    {
+      "nodeId": "lenAC",
+      "ownerSegment": "seg-AC",
+      "prefix": "AC",
+      "unit": "cm"
+    },
+    {
+      "nodeId": "lenAB",
+      "ownerSegment": "seg-AB",
+      "prefix": "AB",
+      "unit": "cm"
+    }
+  ],
+  "accessibilityDescription": "문제에 제시된 점과 선에 해설 과정에서 계산한 길이, 각도 또는 보조선을 표시한 그림."
+}

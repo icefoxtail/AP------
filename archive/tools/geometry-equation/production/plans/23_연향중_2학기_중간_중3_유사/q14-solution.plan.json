@@ -1,0 +1,119 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 6
+      },
+      "height": 7.3484692283495345,
+      "names": {
+        "base": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "apex": "O"
+      },
+      "points": [
+        {
+          "id": "H",
+          "at": {
+            "base": "center"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "O",
+      "to": "H",
+      "style": "DASHED"
+    },
+    {
+      "from": "A",
+      "to": "H",
+      "style": "DASHED"
+    },
+    {
+      "from": "H",
+      "to": "C",
+      "style": "DASHED"
+    },
+    {
+      "from": "B",
+      "to": "H",
+      "style": "DASHED"
+    },
+    {
+      "from": "H",
+      "to": "D",
+      "style": "DASHED"
+    }
+  ],
+  "marks": {
+    "angles": [
+      {
+        "id": "ang1",
+        "refs": [
+          "O",
+          "A",
+          "H"
+        ],
+        "label": "60"
+      }
+    ],
+    "rightAngles": [
+      {
+        "at": "H",
+        "refs": [
+          "O",
+          "A"
+        ]
+      }
+    ]
+  },
+  "dims": [
+    {
+      "edge": "AB",
+      "label": "6"
+    },
+    {
+      "edge": "BC",
+      "label": "6"
+    },
+    {
+      "from": "A",
+      "to": "H",
+      "label": "3sqrt(2)"
+    },
+    {
+      "from": "O",
+      "to": "H",
+      "label": "3sqrt(6)"
+    }
+  ],
+  "caption": "정사각뿔 밑면 한 변 6, AH=3√2, OH=3√6의 정확한 높이 관계",
+  "accessibilityDescription": "정사각뿔 O-ABCD에서 밑면 대각선 AC와 BD의 교점 H로 꼭짓점 O에서 점선 수선 OH가 내려져 있고 각 OAH의 크기가 60도로 표시되어 있으며 밑면 모서리 AB와 BC의 길이가 각각 6 cm로 표시되어 있다.",
+  "newVisualInformation": [
+    "원문 해설에서 결정적 관계를 별도 구성"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q14-solution",
+      "condition": "밑면 정사각형의 대각선의 길이는 $6\\sqrt{2},\\mathrm{cm}$이므로 $AH = 3\\sqrt{2},\\mathrm{cm}$이다. 직각삼각형 $OAH$에서 $OH = 3\\sqrt{2}\\tan 60^\\circ = 3\\sqrt{6},\\mathrm{cm}$이다. 따라서 정사각뿔의 부피는 $\\dfrac{1}{3}\\times 6^2\\times 3\\sqrt{6} = 36\\sqrt{6},\\mathrm{cm}^3$이다. 정답은 ②이다.",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    },
+    {
+      "id": "q14-original-svg",
+      "condition": "archive/assets/images/23_연향중_2학기_중간_중3_유사/q14-problem.svg",
+      "mappedTo": "DRAWN_FEATURE_PARITY_STATIC"
+    }
+  ]
+}

@@ -48,6 +48,21 @@ test('material browse labels distinguish variants without changing canonical pro
   assert.match(output.displayTitle({...source,contentType:'단원평가',topic:'중간평가'}),/단원평가 · 유사2$/);
 });
 
+test('academy mock exam rounds remain visible in finder, preview and assignment titles', () => {
+  const common = {
+    contentType: '기출유사', year: 2026, school: 'AP수학학원',
+    grade: '중1', semester: 1, examType: 'final',
+  };
+  const file = n => `similar/middle/m1/1final/AP수학학원_1학기_기말_중1_모의고사_${n}회.js`;
+  const first = output.displayTitle({...common, file:file(1)});
+  const second = output.displayTitle({...common, file:file(2)});
+  assert.match(first, /모의고사 1회/);
+  assert.match(second, /모의고사 2회/);
+  assert.notEqual(first, second);
+  assert.match(first, /· 유사$/);
+  assert.equal(output.displayTitle({...common, file:'similar/middle/m1/1final/AP수학학원_1학기_기말_중1_유사.js'}).includes('모의고사'), false);
+});
+
 test('render-only review retains QR choice while assignment writes remain disabled', () => {
   for (const includeQr of [false,true]) {
     const url = output.applyUrl(new URL('https://example.test/archive/engine.html'),{includeQr});

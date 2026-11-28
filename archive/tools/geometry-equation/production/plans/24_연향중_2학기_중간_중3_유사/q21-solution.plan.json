@@ -1,0 +1,120 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 6
+      },
+      "height": 6,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "N",
+          "at": {
+            "foot": {
+              "from": "D",
+              "to": [
+                "B",
+                "H"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "B",
+      "to": "D",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "B",
+      "to": "H",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "N",
+      "to": "B",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "D",
+      "to": "N",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "D",
+      "to": "H",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "N",
+        "refs": [
+          "D",
+          "B"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "refs": [
+          "N",
+          "D",
+          "H"
+        ],
+        "arcs": 1,
+        "label": "x"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "edge": "DH",
+      "label": "6"
+    },
+    {
+      "from": "B",
+      "to": "D",
+      "label": "6\\sqrt{2}"
+    },
+    {
+      "from": "B",
+      "to": "H",
+      "label": "6\\sqrt{3}"
+    }
+  ],
+  "solidCaption": {
+    "text": "정육면체와 수선 DN"
+  },
+  "caption": "한 모서리가 6인 정육면체에서 공간대각선 BH와 수선 DN을 표시했다.",
+  "sourceQuote": "[서·논술형 1] 다음 그림과 같이 한 모서리의 길이가 $6$인 정육면체 $ABCD-EFGH$의 꼭",
+  "accessibilityDescription": "한 모서리가 6인 정육면체에서 공간대각선 BH와 수선 DN을 표시했다.",
+  "sourceConditions": [
+    {
+      "id": "q21-solution-text",
+      "condition": "$BD = 6\\sqrt{2}$, $DH = 6$이므로 $BH = \\sqrt{(6\\sqrt{2})^2+6^2} = 6\\sqrt{3}$이다. $\\triangle DNH \\sim \\triangle DBH$이므로 $x = \\angle NDH = \\angle DBH$이다. 직각삼각형 $DBH$에서 $$ \\sin x = \\dfrac{6}{6\\sqrt{3}} = \\dfrac{\\sqrt{3}}{3}, \\qquad \\cos x = \\dfrac{6\\sqrt{2}}{6\\sqrt{3}} = \\dfrac{\\sqrt{6}}{3}, \\qquad \\tan x = \\dfrac{6}{6\\sqrt{2}} = \\dfrac{\\sqrt{2}}{2} $$ 따라서 $\\sin x - \\cos x + \\tan x = \\dfrac{\\sqrt{3}}{3} - \\dfrac{\\sqrt{6}}{3} + \\dfrac{\\sqrt{2}}{2} = \\dfrac{2\\sqrt{3}-2\\sqrt{6}+3\\sqrt{2}}{6}$이다.",
+      "mappedTo": [
+        "solids",
+        "segments",
+        "dims"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 해설에서 필요한 보조선·길이·각을 독립 구성"
+  ]
+}

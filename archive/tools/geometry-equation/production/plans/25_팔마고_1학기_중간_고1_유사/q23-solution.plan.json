@@ -1,0 +1,18 @@
+{
+  "capability": "ellipse-figure-v1",
+  "ellipse": {"center": ["0", "0"], "semiAxisSquared": {"major": "6", "minor": "3"}, "majorAxis": "X"},
+  "points": [
+    {"id": "O", "kind": "ORIGIN"},
+    {"id": "T", "kind": "ON_ELLIPSE", "x": "2", "branch": "NEG", "coordinates": true}
+  ],
+  "lines": [{"id": "t", "slope": "1", "intercept": "-3", "tangent": true}],
+  "caption": "타원 x²+2y²=6에 직선 y=x−3이 T(2,−1)에서 접하므로 양수 k=3에서 교점이 한 개이다.",
+  "accessibilityDescription": "가로축이 긴 타원과 기울기 1인 접선 y=x−3이 제4사분면의 T(2,−1) 한 점에서 접한다.",
+  "sourceQuote": "x−y=k와 x²+2y²=6이 한 쌍의 해를 갖는 양수 k",
+  "sourceConditions": [
+    {"id": "ellipse", "condition": "x²/6+y²/3=1", "mappedTo": ["ellipse"]},
+    {"id": "line", "condition": "판별식 0에서 k=3, y=x−3", "mappedTo": ["lines[0]"]},
+    {"id": "contact", "condition": "해는 x=2,y=−1", "mappedTo": ["points[1]"]}
+  ],
+  "newVisualInformation": ["해가 하나라는 판별식의 결론을 실제 타원 접선과 정확한 접점 좌표로 보여 준다."]
+}

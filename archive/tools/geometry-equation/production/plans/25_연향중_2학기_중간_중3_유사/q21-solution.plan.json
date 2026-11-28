@@ -1,0 +1,93 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 8
+      },
+      "height": 6,
+      "names": "EFGHABCD"
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "G",
+      "style": "SOLID"
+    },
+    {
+      "from": "G",
+      "to": "E",
+      "style": "SOLID"
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "edge": "EF",
+      "label": "6"
+    },
+    {
+      "solid": "s1",
+      "edge": "FG",
+      "label": "8"
+    },
+    {
+      "solid": "s1",
+      "edge": "AE",
+      "label": "6"
+    },
+    {
+      "solid": "s1",
+      "edge": "EG",
+      "label": "10"
+    },
+    {
+      "solid": "s1",
+      "edge": "AG",
+      "label": "2sqrt(34)"
+    }
+  ],
+  "marks": {
+    "angles": [
+      {
+        "id": "aAGE",
+        "refs": [
+          "A",
+          "G",
+          "E"
+        ],
+        "label": "x"
+      }
+    ],
+    "rightAngles": [
+      {
+        "at": "E",
+        "refs": [
+          "A",
+          "G"
+        ]
+      }
+    ]
+  },
+  "solidCaption": {
+    "text": "직육면체와 두 대각선"
+  },
+  "caption": "EF=6 cm, FG=8 cm, AE=6 cm인 직육면체 ABCD-EFGH에서 공간대각선 AG와 밑면의 대각선 EG를 그어 각 AGE를 x로 표시한 그림이다. — 해설에서 구한 길이·각 또는 수선 및 등거리 관계",
+  "accessibilityDescription": "21번 풀이에서 도출한 길이·각도와 추가 보조선이 표시된 그림이다.",
+  "newVisualInformation": [
+    "21번 해설에서 계산하여 추가한 기하 정보"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형] 다음 그림과 같이 $EF=6,\\mathrm{cm}$, $FG=8,\\mathrm{cm}$, $AE=6,\\mathrm{cm}$인 직육면체 $ABCD-EFGH$에서 $\\angle AGE=x$라 할 때, $\\cos x$의 값을 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

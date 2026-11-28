@@ -1,0 +1,7 @@
+{
+ "capability":"stat-chart-figure-v1",
+ "caption":"Y의 평균 30 왼쪽 경계 25부터 오른쪽까지의 확률 영역이다.",
+ "chart":{"kind":"NORMAL_CURVE","curves":[{"id":"Y","mean":"30","sd":"10","label":"Y"}],"ticks":["20","25","30"],"zAxis":true,"shades":[{"curve":"Y","from":"25","to":null,"color":"BLUE"}]},
+ "sourceConditions":[{"id":"norm","condition":"X의 대칭에서 m=15, Y의 분산에서 σ=10을 얻고 P(Y>25)를 구한다.","mappedTo":["chart.curves","chart.shades"]}],
+ "newVisualInformation":["Y의 평균 30과 경계 25, 오른쪽 넓이"],"accessibilityDescription":"평균 30 표준편차 10인 정규분포 곡선에서 25보다 큰 영역을 색칠했다."
+}

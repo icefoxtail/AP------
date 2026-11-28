@@ -1,0 +1,54 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "m",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "2013/100",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "2787/100",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1053/50",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "1347/50",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": {
+          "range": [
+            "20",
+            "28"
+          ]
+        }
+      }
+    ]
+  },
+  "caption": "99% 신뢰구간 안에 있는 95% 신뢰구간과 그 안의 자연수 22부터 26까지를 수직선에 나타냈다.",
+  "sourceConditions": [
+    {
+      "id": "q16-c1",
+      "condition": "99% 구간 [20.13,27.87]과 95% 구간 [21.06,26.94]의 실제 양끝, 95% 구간 내 자연수 22,23,24,25,26을 대조한다.",
+      "mappedTo": ["numberLine.rows[0].pieces", "numberLine.rows[1].pieces", "numberLine.rows[1].integerPoints"]
+    }
+  ],
+  "newVisualInformation": ["99%·95% 신뢰구간의 포함 관계와 95% 신뢰구간 안의 자연수 22~26"],
+  "accessibilityDescription": "99% 신뢰구간 안에 있는 95% 신뢰구간과 그 안의 자연수 22부터 26까지를 수직선에 나타냈다."
+}

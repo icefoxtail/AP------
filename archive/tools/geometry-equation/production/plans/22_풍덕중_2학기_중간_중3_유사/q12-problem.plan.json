@@ -1,0 +1,207 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "원뿔 입체"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "id": "cone",
+            "kind": "CONE",
+            "radius": 6.928203230275509,
+            "height": 4
+          }
+        ],
+        "dims": [
+          {
+            "solid": "cone",
+            "slant": true,
+            "label": "8"
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "모선과 밑면의 30°"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "H",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "4"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "H"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "BH",
+            "refs": [
+              "B",
+              "H"
+            ]
+          },
+          {
+            "id": "HA",
+            "refs": [
+              "H",
+              "A"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "aB",
+              "refs": [
+                "A",
+                "B",
+                "H"
+              ],
+              "value": 30,
+              "label": "30",
+              "factRole": "GIVEN"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "lAB",
+              "ownerSegment": "AB",
+              "text": "8",
+              "unit": "cm",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "rH",
+            "refs": [
+              "A",
+              "H",
+              "B"
+            ]
+          }
+        ],
+        "hiddenPointNames": [
+          "A",
+          "B",
+          "H"
+        ],
+        "hiddenPointStyle": "NONE"
+      }
+    }
+  ],
+  "caption": "풍덕중 12번 문제: 모선 8cm·밑면과 30°인 원뿔과 해당 축단면의 직각삼각형",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 모선의 길이가 $8\\text{ cm}$인 원뿔이 있다. 모선과 밑면이 이루는 각의 크기가 $30^\\circ$일 때, 이 원뿔의 부피를 구하면?",
+      "mappedTo": "FULL_ORIGINAL_CONE_AND_ANGLE"
+    },
+    {
+      "id": "problem",
+      "condition": "다음 그림과 같이 모선의 길이가 $8\\text{ cm}$인 원뿔이 있다. 모선과 밑면이 이루는 각의 크기가 $30^\\circ$일 때, 이 원뿔의 부피를 구하면?",
+      "mappedTo": "PROBLEM_AXIS_INDEPENDENT_REVIEW"
+    }
+  ],
+  "newVisualInformation": [
+    "원뿔 입체의 모선 길이와 30° 단면각"
+  ],
+  "accessibilityDescription": "풍덕중 12번 문제: 모선 8cm·밑면과 30°인 원뿔과 해당 축단면의 직각삼각형"
+}

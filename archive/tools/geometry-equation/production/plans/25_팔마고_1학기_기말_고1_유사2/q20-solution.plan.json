@@ -1,0 +1,40 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "k",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "3",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "7",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "integerPoints": true,
+        "label": "가능한 정수 k"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "전체 실수에서 양수인 조건"
+  },
+  "caption": "k=3에서 상수 4>0이고, k>3이면 최솟값 7-k>0이므로 가능한 정수 k는 3,4,5,6이다.",
+  "accessibilityDescription": "k=3에서 상수 4>0이고, k>3이면 최솟값 7-k>0이므로 가능한 정수 k는 3,4,5,6이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "3≤k<7, k는 정수",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "열린 점과 닫힌 점, 유효 범위 및 필요한 정수점을 실제 수직선 필드로 표시한다."
+  ]
+}

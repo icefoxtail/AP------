@@ -1,0 +1,91 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "1/2"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -8,
+      6
+    ],
+    "viewport": [
+      -8,
+      6,
+      -3,
+      10
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "other",
+          "slope": "-2",
+          "intercept": "8",
+          "label": "2x+y-8=0"
+        }
+      ],
+      "points": [
+        {
+          "id": "A",
+          "x": "-6",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "4",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "2",
+          "y": "4",
+          "coordinates": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "gC",
+          "from": "C",
+          "axis": "BOTH"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "tri",
+          "points": [
+            "A",
+            "B",
+            "C"
+          ],
+          "fill": "NONE"
+        }
+      ]
+    }
+  },
+  "caption": "교점 (-6,0), (4,0), (2,4)로 삼각형을 이루며 넓이는 20이다.",
+  "accessibilityDescription": "교점 (-6,0), (4,0), (2,4)로 삼각형을 이루며 넓이는 20이다.",
+  "sourceConditions": [
+    {
+      "id": "origin",
+      "condition": "[서술형 3] 두 직선 $x - 2y + 6 = 0$, $2x + y - 8 = 0$과 $x$축으로 둘러싸인 삼각형의 넓이를 구하고, 그 풀이 과정을 상세히 서술하시오. [7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "교점 (-6,0), (4,0), (2,4)로 삼각형을 이루며 넓이는 20이다."
+  ]
+}

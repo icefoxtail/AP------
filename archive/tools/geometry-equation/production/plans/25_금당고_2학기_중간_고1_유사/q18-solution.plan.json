@@ -1,0 +1,254 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "N",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {"coordinates": [{"kind":"integer","value":"1"},{"kind":"integer","value":"-1"}]},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "14",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "19",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "20"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "D",
+    "M",
+    "A",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": ["M", "A"]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "caption": "k=20의 예에서 공통현 AB와 중심 O의 수선 거리",
+  "accessibilityDescription": "두 원이 만나는 공통현의 중점 M을 지나 중심 O에서 수직인 선을 내려 OM=3, AM=4, 삼각형 넓이 12를 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 원이 만나는 공통현의 중점 M을 지나 중심 O에서 수직인 선을 내려 OM=3, AM=4, 삼각형 넓이 12를 확인한다.",
+      "mappedTo": [
+        "D",
+        "M",
+        "A",
+        "B",
+        "k1",
+        "k2",
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 원이 만나는 공통현의 중점 M을 지나 중심 O에서 수직인 선을 내려 OM=3, AM=4, 삼각형 넓이 12를 확인한다."
+  ],
+  "coordinateLabels": [
+    "O",
+    "M"
+  ],
+  "displayCircles": [
+    "k1",
+    "k2"
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {"id":"center-to-chord","ownerSegment":"s1","text":"3"},
+      {"id":"half-chord","ownerSegment":"s6","text":"4"}
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "ra1",
+      "refs": [
+        "O",
+        "M",
+        "A"
+      ]
+    }
+  ]
+}

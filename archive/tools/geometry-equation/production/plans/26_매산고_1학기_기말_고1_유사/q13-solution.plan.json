@@ -1,0 +1,59 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "parameter": {
+      "name": "a",
+      "value": "11/2"
+    },
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "param": {
+                "mul": "-1",
+                "add": "-1"
+              },
+              "state": "CLOSED"
+            },
+            "hi": {
+              "param": {
+                "mul": "1",
+                "add": "-1"
+              },
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "정수 범위",
+        "integerPoints": true
+      }
+    ]
+  },
+  "caption": "5≤a<6 중 대표값 a=11/2일 때 범위 −13/2≤x≤9/2에는 −6부터 4까지 정수 11개가 있다.",
+  "accessibilityDescription": "부등식의 끝점 포함 여부와 공통 범위·정수점을 실제 수직선에 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "shape",
+      "condition": "|x−2|+|x+4|≤2a에서 −1−a≤x≤a−1",
+      "mappedTo": [
+        "numberLine.rows[0].pieces"
+      ]
+    },
+    {
+      "id": "count",
+      "condition": "a=11/2일 때 정수 −6,…,4 총 11개",
+      "mappedTo": [
+        "numberLine.rows[0].integerPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "부등식의 끝점 포함 여부와 공통 범위·정수점을 실제 수직선에 나타낸다."
+  ],
+  "numberLineCaption": {
+    "text": "대표 매개변수의 정수해"
+  }
+}

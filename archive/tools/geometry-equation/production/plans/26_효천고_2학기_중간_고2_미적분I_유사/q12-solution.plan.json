@@ -1,0 +1,28 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{"coefficients": ["4", "5", "1"]}],
+    "breakpoints": [],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-6, 0],
+    "viewport": [-7, 1, -7, 4],
+    "requiredPoints": [{"id": "V", "x": -2.5, "y": -2.25}],
+    "exactCoordinates": {"V": ["-5/2", "-9/4"]},
+    "axisTickValues": {"x": ["-3"], "y": ["-2"]},
+    "overlays": {
+      "lines": [{"id": "L", "slope": "-1", "intercept": "-8", "label": "y=-x-8"}],
+      "points": [{"id": "P", "curveX": "-3"}, {"id": "Q", "x": "-9/2", "y": "-7/2"}, {"id": "R", "x": "-6", "y": "-2", "unnamed": true}],
+      "segments": [{"id": "PQ", "from": "P", "to": "Q", "color": "BLUE"}],
+      "rightAngles": [{"at": "Q", "from": ["P", "R"]}]
+    }
+  },
+  "pointNames": {"P": "P", "Q": "Q"},
+  "caption": "포물선 y=x^2+5x+4의 P(-3,-2)에서 직선 y=-x-8에 내린 수선의 발 Q(-9/2,-7/2)가 최단거리를 이룬다.",
+  "accessibilityDescription": "포물선 위 P에서 직선 y=-x-8로 내려간 파란 선분 PQ와 발 Q의 직각 표식이 있다. 포물선의 꼭짓점 V와 거리 최솟값이 생기는 점 P는 다르다.",
+  "newVisualInformation": ["최솟거리의 원인인 포물선 위 P와 직선 위 Q의 정확한 좌표", "직선과 선분 PQ의 직각 마커", "꼭짓점 V가 거리 최솟값의 점과 다름을 비교", "원본에 없는 면 채움은 넣지 않음"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "두 도형은 y=x^2+5x+4와 y=-x-8이다.", "mappedTo": ["graphPlan.pieces", "graphPlan.overlays.lines"]},
+    {"id": "c2", "condition": "거리의 최소는 x=-3인 P(-3,-2)에서 직선에 내린 수선의 발 Q(-9/2,-7/2)까지의 거리이다.", "mappedTo": ["graphPlan.overlays.points", "graphPlan.overlays.segments", "graphPlan.overlays.rightAngles"]}
+  ]
+}

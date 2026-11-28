@@ -1,0 +1,81 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      6,
+      -3,
+      4
+    ],
+    "curves": [
+      {
+        "id": "g1",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "-1/2"
+        ],
+        "domain": [
+          "-2",
+          "6"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "id": "g2",
+        "kind": "LINE",
+        "coefficients": [
+          "1/2",
+          "1/4"
+        ],
+        "domain": [
+          "-2",
+          "6"
+        ],
+        "color": "WARM"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": [
+        "1"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "2",
+          "y": "1",
+          "coordinates": false,
+          "unnamed": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "gP",
+          "from": "P",
+          "axis": "BOTH"
+        }
+      ]
+    }
+  },
+  "caption": "좌표평면의 두 직선이 만나며 교점에서 x축의 2와 y축의 1로 점선이 이어진 그림",
+  "sourceConditions": [
+    {
+      "id": "intersect",
+      "condition": "두 직선의 교점은 원본 점선이 가리키는 (2,1)이다.",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.axisTickValues",
+        "graphPlan.overlays.guides"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 직선의 원본 방향과 수직·수평 점선을 유지하고 a,b의 값을 공개하지 않는다."
+  ]
+}

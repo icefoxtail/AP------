@@ -1,0 +1,46 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-4, 4, -1, 10],
+    "curves": [
+      {"id": "parabola", "kind": "Y_OF_X", "coefficients": ["9", "0", "-1"], "domain": ["-3", "3"], "label": "y=9-x^2"}
+    ],
+    "axisTickValues": {"x": ["-3", "3"], "y": []},
+    "overlays": {
+      "points": [
+        {"id": "O", "x": "0", "y": "0"},
+        {"id": "A", "axis": "x", "value": "-3"},
+        {"id": "B", "axis": "x", "value": "3"},
+        {"id": "P", "x": "5/2", "y": "11/4"},
+        {"id": "Q", "axis": "x", "value": "9/8"},
+        {"id": "MA", "x": "-1/4", "y": "11/8", "unnamed": true},
+        {"id": "MB", "x": "11/4", "y": "11/8", "unnamed": true}
+      ],
+      "segments": [
+        {"id": "PA", "from": "P", "to": "A"},
+        {"id": "PB", "from": "P", "to": "B"},
+        {"id": "PQ", "from": "P", "to": "Q"},
+        {"id": "AQ", "from": "A", "to": "Q"},
+        {"id": "QB", "from": "Q", "to": "B"}
+      ],
+      "angles": [
+        {"at": "P", "from": "A", "to": "Q", "color": "BLUE"},
+        {"at": "P", "from": "Q", "to": "B", "color": "BLUE"}
+      ],
+      "equalAngles": [{"angles": [0, 1], "color": "BLUE"}],
+      "callouts": [
+        {"id": "lenPA", "point": "MA", "text": "11sqrt(5)/4", "direction": "NW"},
+        {"id": "lenPB", "point": "MB", "text": "5sqrt(5)/4", "direction": "NE"}
+      ]
+    }
+  },
+  "pointNames": {"O": "O", "A": "A", "B": "B", "P": "P", "Q": "Q"},
+  "caption": "t=5/2에서 PA=11sqrt(5)/4, PB=5sqrt(5)/4이므로 AQ:QB=11:5이다. 일반 t에서는 각의 이등분선 정리와 극한으로 OQ/t를 계산한다.",
+  "accessibilityDescription": "포물선 위 P와 A,B,Q를 이은 삼각형에 P의 같은 각호가 있고 두 빗변 PA, PB의 길이가 표시돼 있다. 두 변의 비가 AQ와 QB의 비와 같음을 보인다.",
+  "newVisualInformation": ["예시 t=5/2에서 PA, PB의 정확한 근호 길이", "각의 이등분선 정리와 밑변 AQ:QB의 비 대응", "Q가 원점 오른쪽에 있는 정확한 위치", "해설에는 문제 그림보다 많은 치수와 관계를 표시"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "각의 이등분선 정리에 따라 AQ:QB=PA:PB이다.", "mappedTo": ["graphPlan.overlays.segments", "graphPlan.overlays.equalAngles"]},
+    {"id": "c2", "condition": "t=5/2인 예시에서는 PA=11sqrt(5)/4, PB=5sqrt(5)/4, Q=(9/8,0)이다.", "mappedTo": ["graphPlan.overlays.points", "graphPlan.overlays.segments"]}
+  ]
+}

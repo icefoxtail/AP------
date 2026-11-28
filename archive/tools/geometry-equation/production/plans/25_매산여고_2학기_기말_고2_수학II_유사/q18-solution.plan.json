@@ -1,0 +1,121 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "0",
+          "-10",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -0.5,
+      5.4
+    ],
+    "viewport": [
+      -1,
+      6,
+      -36,
+      9
+    ],
+    "functionName": "f",
+    "referenceLines": [
+      {
+        "id": "l",
+        "y": "4",
+        "intersectionX": [
+          "0",
+          "5"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": 0,
+        "y": 4,
+        "marker": "NONE"
+      },
+      {
+        "id": "V",
+        "x": "10/3",
+        "y": "-892/27",
+        "marker": "NONE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "0",
+          "y": "4"
+        },
+        {
+          "id": "B",
+          "x": "5",
+          "y": "4"
+        },
+        {
+          "id": "P",
+          "curveX": "15/4"
+        },
+        {
+          "id": "H",
+          "x": "15/4",
+          "y": "4"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "APH",
+          "points": [
+            "A",
+            "P",
+            "H"
+          ],
+          "fill": "LIGHT",
+          "label": "S"
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "A(0,4)의 접선 l:y=4와 곡선은 B(5,4)에서 다시 만나며, 넓이 최대일 때 P의 x=15/4, H=(15/4,4)이다.",
+  "accessibilityDescription": "삼차함수 곡선 위 A부터 B까지 이동하는 점 P의 수선의 발 H가 y=4 위에 있다. A,P,H가 만든 직각삼각형의 내부만 연하게 칠했다.",
+  "sourceConditions": [
+    {
+      "id": "curve",
+      "condition": "y=f(x)=2x³−10x²+4",
+      "mappedTo": "graphPlan.pieces[0].coefficients"
+    },
+    {
+      "id": "tangent",
+      "condition": "A(0,4) 접선은 l:y=4, 다른 교점 B(5,4)",
+      "mappedTo": "graphPlan.referenceLines[l];graphPlan.overlays.points[A,B]"
+    },
+    {
+      "id": "foot",
+      "condition": "P=(x,f(x)), H=(x,4)",
+      "mappedTo": "graphPlan.overlays.points[P,H]"
+    },
+    {
+      "id": "area",
+      "condition": "S(x)=5x³−x⁴, 최댓값에서 x=15/4",
+      "mappedTo": "graphPlan.overlays.polygons[APH] and P.curveX=15/4"
+    }
+  ],
+  "newVisualInformation": [
+    "점 P와 수선의 발 H 및 삼각형 APH만 명시하며 곡선과 접선 사이 전체 영역을 채우지 않는다."
+  ]
+}

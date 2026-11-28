@@ -1,0 +1,28 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [0.75, 1.75, -0.25, 1],
+    "curves": [
+      {"id": "f", "kind": "SQRT", "radicand": ["-1", "1"], "domain": ["1", "7/4"], "label": "y=sqrt(x-1)", "color": "BLUE"},
+      {"id": "two", "kind": "LINE", "coefficients": ["-2", "2"], "domain": ["3/4", "7/4"], "label": "y=2x-2"},
+      {"id": "tan", "kind": "LINE", "coefficients": ["-15/8", "2"], "domain": ["3/4", "7/4"], "style": "DASHED", "label": "y=2x-15/8"}
+    ],
+    "axisTickValues": {"x": ["1", "5/4"], "y": ["1/2"]},
+    "overlays": {
+      "points": [
+        {"id": "P", "x": "1", "y": "0"},
+        {"id": "Q", "x": "5/4", "y": "1/2"},
+        {"id": "T", "x": "17/16", "y": "1/4"}
+      ]
+    }
+  },
+  "pointNames": {"P": "P", "Q": "Q", "T": "T"},
+  "caption": "k=-2에서 무리함수와 직선은 P(1,0), Q(5/4,1/2)의 두 교점이다. k=-15/8에서는 T(17/16,1/4) 한 점에서 접한다. 따라서 -2≤k<-15/8이며 정답 -31.",
+  "accessibilityDescription": "근호 그래프, 두 교점을 만드는 실선과 한 점에서 접하는 점선이 한 좌표평면에 표시되어 두 교점 조건의 양 끝값을 보여 준다.",
+  "newVisualInformation": ["두 교점이 처음 나타나는 k=-2의 끝점 P·Q", "교점 둘이 접점 하나로 합쳐지는 경계 k=-15/8의 접점 T"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "y=sqrt(x-1)와 y=2x-2는 (1,0),(5/4,1/2) 두 점에서 만난다.", "mappedTo": ["graphPlan.curves", "graphPlan.overlays.points"]},
+    {"id": "c2", "condition": "경계 k=-15/8에서 직선은 (17/16,1/4)에 접하므로 k<-15/8이다.", "mappedTo": ["graphPlan.curves", "graphPlan.overlays.points"]}
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "2",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "절댓값의 해"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "해집합과 주요 경계"
+  },
+  "caption": "절댓값 부등식 |2x-1|≤x+1의 해는 0≤x≤2이다.",
+  "accessibilityDescription": "절댓값 부등식 |2x-1|≤x+1의 해는 0≤x≤2이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x≥0",
+      "mappedTo": "numberLine.rows"
+    },
+    {
+      "id": "c2",
+      "condition": "x≤2",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "부등식의 실제 끝점·개폐와 필요한 정수 해를 numberLine.rows의 구간·점 필드에 표시한다."
+  ]
+}

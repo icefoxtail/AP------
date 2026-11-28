@@ -1,0 +1,41 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {"text": "a=1: 접점 x=−1"},
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial", "coefficients": ["1", "2", "1"],
+          "sourceDomain": {"kind": "ALL_REALS"},
+          "domain": [-3, 1], "viewport": [-3, 1, -1, 5],
+          "requiredPoints": [{"id": "T", "x": -1, "y": 0}],
+          "axisTickValues": {"x": [-1], "y": []}
+        },
+        "caption": "a=1에서 y=(x+1)²"
+      }
+    },
+    {
+      "caption": {"text": "a=5: 접점 x=−5"},
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial", "coefficients": ["25", "10", "1"],
+          "sourceDomain": {"kind": "ALL_REALS"},
+          "domain": [-7, -3], "viewport": [-7, -3, -1, 5],
+          "requiredPoints": [{"id": "T", "x": -5, "y": 0}],
+          "axisTickValues": {"x": [-5], "y": []}
+        },
+        "caption": "a=5에서 y=(x+5)²"
+      }
+    }
+  ],
+  "caption": "a²−6a+5=0의 두 해 a=1, 5에서 포물선이 각각 x축에 접한다.",
+  "accessibilityDescription": "두 포물선 y=(x+1)²과 y=(x+5)²이 서로 다른 위치에서 x축에 접하는 두 패널.",
+  "sourceQuote": "y=x²+2ax+6a−5가 x축과 한 점에서 만나도록 하는 모든 실수 a의 곱",
+  "sourceConditions": [
+    {"id": "case1", "condition": "a=1이면 y=(x+1)²", "mappedTo": ["panels[0].plan.graphPlan.coefficients", "panels[0].plan.graphPlan.requiredPoints"]},
+    {"id": "case5", "condition": "a=5이면 y=(x+5)²", "mappedTo": ["panels[1].plan.graphPlan.coefficients", "panels[1].plan.graphPlan.requiredPoints"]}
+  ],
+  "newVisualInformation": ["매개변수 a의 서로 다른 두 해 모두 포물선의 x축 접점 한 개를 만든다는 사실."]
+}

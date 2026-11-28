@@ -1,0 +1,109 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "8",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "viewport": [
+      -1,
+      6,
+      -5,
+      7
+    ],
+    "requiredPoints": [],
+    "overlays": {
+      "circles": [
+        {
+          "id": "CIR",
+          "center": [
+            "2",
+            "0"
+          ],
+          "radiusSquared": "4"
+        }
+      ],
+      "points": [
+        {
+          "id": "C",
+          "x": "2",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "H",
+          "x": "18/5",
+          "y": "4/5",
+          "coordinates": true
+        },
+        {
+          "id": "R",
+          "x": "4",
+          "y": "0"
+        },
+        {
+          "id": "J",
+          "x": "16/5",
+          "y": "8/5",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "CH",
+          "from": "C",
+          "to": "H",
+          "dashed": true
+        },
+        {
+          "id": "CR",
+          "from": "C",
+          "to": "R",
+          "length": true
+        }
+      ],
+      "rightAngles": [
+        {
+          "at": "H",
+          "from": [
+            "C",
+            "R"
+          ]
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "C": "C",
+    "H": "H",
+    "R": "R",
+    "J": "J"
+  },
+  "caption": "원 (x−2)²+y²=4와 직선 2x+y=8은 두 점에서 만난다.",
+  "accessibilityDescription": "원 (x−2)²+y²=4와 직선 2x+y=8은 두 점에서 만난다.",
+  "sourceQuote": "(x−2)²+y²=4, 2x+y=k, 가장 큰 정수 k=8",
+  "sourceConditions": [
+    {
+      "id": "eq",
+      "condition": "(x−2)²+y²=4, 2x+y=k, 가장 큰 정수 k=8",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "vis",
+      "condition": "원 중심 C(2,0), 반지름 CR=2, 교점 R(4,0)과 J(16/5,8/5), 수선의 발 H(18/5,4/5)와 직각",
+      "mappedTo": "graphPlan.overlays,graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진의 실제 곡선 계수·정의역·특징점과 필요한 보조 도형 필드로 해설 조건을 표시한다."
+  ]
+}

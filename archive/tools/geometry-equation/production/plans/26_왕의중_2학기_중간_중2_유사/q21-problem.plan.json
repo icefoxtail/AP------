@@ -1,0 +1,202 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "11"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "927300",
+              "denominator": "100000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "649200",
+              "denominator": "100000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "573400",
+              "denominator": "100000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "401500",
+              "denominator": "100000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "B",
+    "C",
+    "A",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 540,
+    "height": 440
+  },
+  "caption": "왕의중 21번: D는 AB 위, ∠B=35°, ∠ACB=75°, ∠ADC=70°, BD=7 cm, BC=11 cm의 지시선과 호를 표시한다. [원문 수치 간 기하학적 불일치 별도 기록]",
+  "accessibilityDescription": "왕의중 21번: D는 AB 위, ∠B=35°, ∠ACB=75°, ∠ADC=70°, BD=7 cm, BC=11 cm의 지시선과 호를 표시한다. [원문 수치 간 기하학적 불일치 별도 기록]",
+  "newVisualInformation": [
+    "원문·원본 에셋의 꼭짓점 B, C, A, D, 선분 BD, DA, BC, AC, DC, 각·직각·길이·등변 및 지시 표식을 축별로 대조하여 재구성했다."
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "ang0",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 35,
+        "label": "35°",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ang1",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 75,
+        "label": "75°",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ang2",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "label": "70°",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "dim0",
+        "ownerSegment": "sBD",
+        "text": "7 cm"
+      },
+      {
+        "id": "dim1",
+        "ownerSegment": "sBC",
+        "text": "11 cm"
+      }
+    ]
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\triangle ABC$의 변 $AB$ 위의 점 $D$에 대하여 $\\angle B = 35^\\circ$, $\\angle ACB = 75^\\circ$, $\\angle ADC = 70^\\circ$이고 $\\overline{BD} = 7\\text{ cm}$, $\\overline{BC} = 11\\text{ cm}$일 때, $\\overline{AC}$의 길이를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

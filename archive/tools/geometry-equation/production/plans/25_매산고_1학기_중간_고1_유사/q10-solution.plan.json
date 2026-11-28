@@ -1,0 +1,27 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["0", "-6", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-4, 8],
+    "viewport": [-5, 9, -12, 65],
+    "overlays": {
+      "lines": [{"id": "g", "slope": "-2", "intercept": "24"}],
+      "points": [
+        {"id": "A", "curveX": "2-2*sqrt(7)"},
+        {"id": "B", "curveX": "2+2*sqrt(7)"}
+      ]
+    },
+    "axisTickValues": {"x": [2], "y": []}
+  },
+  "caption": "k=24에서 포물선 y=x²−6x와 직선 y=−2x+24는 x=2±2√7에서 만난다.",
+  "accessibilityDescription": "포물선과 직선이 두 점 A, B에서 만나며 교점의 x좌표 합이 4인 그래프.",
+  "sourceQuote": "y=x²−6x와 y=−2x+k의 두 교점 x좌표 차의 제곱 f(k), 곱 g(k)",
+  "sourceConditions": [
+    {"id": "parabola", "condition": "y=x²−6x", "mappedTo": ["graphPlan.coefficients"]},
+    {"id": "line", "condition": "k=24에서 y=−2x+24", "mappedTo": ["graphPlan.overlays.lines[0]"]},
+    {"id": "roots", "condition": "x²−4x−24=0의 근 2±2√7", "mappedTo": ["graphPlan.overlays.points[0]", "graphPlan.overlays.points[1]"]}
+  ],
+  "newVisualInformation": ["서로 다른 두 교점의 위치가 근의 합과 차·곱의 계산에 대응함을 확인한다."]
+}

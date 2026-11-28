@@ -1,0 +1,54 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "-2",
+          "1/3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "3",
+        "y": "0",
+        "marker": "NONE"
+      },
+      {
+        "id": "P",
+        "x": "0",
+        "y": "3",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "3"
+      ],
+      "y": [
+        "3"
+      ]
+    },
+    "functionName": "f"
+  },
+  "caption": "동산중 2번 해설 과정: 원문 2번 해설에 필요한 풀이 관계.",
+  "accessibilityDescription": "원문 2번 해설에 필요한 풀이 관계",
+  "newVisualInformation": [
+    "원문 2번 해설에 필요한 풀이 관계"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q02-solution",
+      "condition": "꼭짓점이 $(3, 0)$이므로 식을 $y=a(x-3)^2$으로 놓을 수 있다. 점 $(0, 3)$을 지나므로 $3 = a(0-3)^2 = 9a \\implies a = \\dfrac{1}{3}$이다. 정답은 ①이다.",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    }
+  ]
+}

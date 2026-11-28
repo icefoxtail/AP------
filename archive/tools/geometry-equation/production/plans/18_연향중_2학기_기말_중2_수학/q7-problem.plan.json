@@ -1,0 +1,254 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7425261",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "11008401",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7425261",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 44,
+        "factRole": "GIVEN",
+        "label": "44",
+        "color": "BLUE",
+        "style": "ARC"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "value": 34,
+        "factRole": "GIVEN",
+        "noLabel": true,
+        "color": "ROSE",
+        "equalGroup": 1,
+        "arcs": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "D",
+          "B",
+          "C"
+        ],
+        "value": 34,
+        "factRole": "GIVEN",
+        "noLabel": true,
+        "color": "ROSE",
+        "equalGroup": 1,
+        "arcs": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "a3",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "value": 56,
+        "factRole": "GIVEN",
+        "noLabel": true,
+        "color": "GREEN",
+        "equalGroup": 2,
+        "arcs": 2,
+        "style": "ARC"
+      },
+      {
+        "id": "a4",
+        "refs": [
+          "D",
+          "C",
+          "E"
+        ],
+        "value": 56,
+        "factRole": "GIVEN",
+        "noLabel": true,
+        "color": "GREEN",
+        "equalGroup": 2,
+        "arcs": 2,
+        "style": "ARC"
+      }
+    ]
+  },
+  "caption": "문제의 배치",
+  "coordinateCanvas": {
+    "width": 384,
+    "height": 320
+  },
+  "sourceConditions": [
+    {
+      "id": "original_statement",
+      "condition": "다음 그림과 같이 $\\overline{\\text{AB}}=\\overline{\\text{AC}}$인 이등변삼각형 $\\text{ABC}$에서 $\\angle\\text{B}$의 이등분선과 $\\angle\\text{C}$의 외각의 이등분선이 만나는 점을 $\\text{D}$라고 하면 $\\angle\\text{A}=44^\\circ$일 때, $\\angle\\text{BDC}$의 크기는?",
+      "mappedTo": "mathPlan; displaySegments; planeMarks; caption"
+    }
+  ],
+  "accessibilityDescription": "2018년 연향중 기말 7번의 원본 문제 그림. 점 이름, 주어진 선분과 조건의 표식을 보인다."
+}

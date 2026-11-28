@@ -1,0 +1,41 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "points": [
+          {
+            "id": "A",
+            "value": "61"
+          },
+          {
+            "id": "B",
+            "value": "75"
+          },
+          {
+            "id": "M",
+            "divides": {
+              "from": "A",
+              "to": "B",
+              "ratio": [
+                "1",
+                "1"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "수직선 위에서 61과 75는 평균 m을 가운데로 하여 대칭이고, 중점 M의 좌표가 m이다.",
+  "sourceConditions": [
+    {
+      "id": "q07-c1",
+      "condition": "P(X≥61)=P(X≤75)이므로 평균 m을 중심으로 61과 75가 대칭이며 m=(61+75)/2=68이다.",
+      "mappedTo": ["numberLine.rows[0].points", "numberLine.rows[0].points[2].divides"]
+    }
+  ],
+  "newVisualInformation": ["61과 75의 중점 M이 평균 m=68이라는 정확한 내분 관계"],
+  "accessibilityDescription": "수직선 위에서 61과 75는 평균 m을 가운데로 하여 대칭이고, 중점 M의 좌표가 m이다."
+}

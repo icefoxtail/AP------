@@ -1,0 +1,43 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"H","op":"MIDPOINT","inputs":["B","C"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"U","op":"MIDPOINT","inputs":["A","B"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"V","op":"MIDPOINT","inputs":["A","C"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"baseLine","op":"LINE_THROUGH","inputs":["B","C"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"L","op":"PERPENDICULAR_FOOT","inputs":["U","baseLine"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"R","op":"PERPENDICULAR_FOOT","inputs":["V","baseLine"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["A","B","C","H","L","R","U","V"],
+  "hiddenPointNames": ["A","B","C","H","L","R","U","V"], "hiddenPointStyle": "NONE",
+  "displayLines": [], "displayCircles": [],
+  "displaySegments": [
+    {"id":"sAB","refs":["A","B"]},{"id":"sAC","refs":["A","C"]},
+    {"id":"sBC","refs":["B","C"]},{"id":"sAH","refs":["A","H"],"dashed":true},
+    {"id":"sLU","refs":["L","U"]},{"id":"sUV","refs":["U","V"]},
+    {"id":"sVR","refs":["V","R"]}
+  ],
+  "rightAngles": [{"id":"rH","refs":["A","H","C"]}],
+  "planeMarks": {"dimensions": [
+    {"id":"base6","from":"B","to":"C","label":"6","side":"BELOW","factRole":"GIVEN"},
+    {"id":"height4","from":"A","to":"H","label":"4","side":"RIGHT","factRole":"GIVEN"},
+    {"id":"wide3","from":"U","to":"V","label":"3","side":"ABOVE","factRole":"CONCLUSION"},
+    {"id":"high2","from":"R","to":"V","label":"2","side":"RIGHT","factRole":"CONCLUSION"}
+  ]},
+  "coordinateCanvas": {"width": 560,"height": 440},
+  "caption": "직사각형 넓이 S(x)=3x(4−x)/2는 x=2에서 최대 6이므로 이때 직사각형의 폭은 3, 높이는 2이다.",
+  "accessibilityDescription": "밑변 6, 높이 4인 이등변삼각형 안에 가로 3, 세로 2인 최대 넓이의 직사각형을 표시한다.",
+  "sourceQuote": "S(x)=3x(4−x)/2의 최댓값은 x=2일 때 6",
+  "sourceConditions": [
+    {"id":"similarity","condition":"유사한 삼각형에 의해 직사각형 폭=3(4−x)/2","mappedTo":["mathPlan.nodes[4]","mathPlan.nodes[5]","mathPlan.nodes[6]","mathPlan.nodes[7]"]},
+    {"id":"optimal","condition":"x=2, 폭 3, 넓이 6","mappedTo":["planeMarks.dimensions[2]","planeMarks.dimensions[3]"]}
+  ],
+  "newVisualInformation": ["최대 넓이를 주는 두 실제 변 3과 2를 치수선으로 가리켜 3×2=6을 검산한다."]
+}

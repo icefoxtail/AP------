@@ -1,0 +1,52 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "label": "동전",
+      "children": [
+        {
+          "label": "앞면",
+          "p": "1/2",
+          "children": [
+            {
+              "label": "두 색",
+              "p": "4/7"
+            },
+            {
+              "label": "같은 색",
+              "p": "3/7"
+            }
+          ]
+        },
+        {
+          "label": "뒷면",
+          "p": "1/2",
+          "children": [
+            {
+              "label": "두 색",
+              "p": "6/7"
+            },
+            {
+              "label": "같은 색",
+              "p": "1/7"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "caption": "앞면에서는 2개 추출 시 두 색이 나올 확률 4/7, 뒷면에서는 3개 추출 시 6/7이다. 각 확률에 1/2을 곱해 합하면 5/7이다.",
+  "accessibilityDescription": "공정한 동전의 앞면과 뒷면에서 각각 2개 또는 3개 추출하는 수형도. 분기마다 두 색과 같은 색의 조건부확률을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "흰 공 4개, 검은 공 4개; 앞면이면 2개, 뒷면이면 3개를 뽑는다. 두 색이 함께 나올 확률을 계산한다.",
+      "mappedTo": "chart.root.children"
+    }
+  ],
+  "newVisualInformation": [
+    "앞면 1/2 → 두 색 4/7, 같은 색 3/7",
+    "뒷면 1/2 → 두 색 6/7, 같은 색 1/7"
+  ]
+}

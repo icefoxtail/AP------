@@ -1,0 +1,54 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "-6",
+          "3/2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "2",
+        "y": "-3",
+        "marker": "NONE"
+      },
+      {
+        "id": "P",
+        "x": "0",
+        "y": "3",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": [
+        "-3",
+        "3"
+      ]
+    }
+  },
+  "caption": "동산중 4번 문제 조건: 원문 4번 문제에 필요한 점·선·라벨.",
+  "accessibilityDescription": "원문 4번 문제에 필요한 점·선·라벨",
+  "newVisualInformation": [
+    "원문 4번 문제에 필요한 점·선·라벨"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q04-problem",
+      "condition": "이차함수 $y=a(x-p)^2+q$의 그래프가 꼭짓점이 $(2, -3)$이고 점 $(0, 3)$을 지날 때, $4a+p+q$의 값은?",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    }
+  ]
+}

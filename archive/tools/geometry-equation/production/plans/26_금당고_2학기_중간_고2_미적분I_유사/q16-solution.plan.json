@@ -1,0 +1,40 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": ["4", "0"],
+    "denominator": ["0", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [0.5, 5.5],
+    "viewport": [-0.5, 5.5, -0.5, 5.5],
+    "equalUnits": true,
+    "axisTickValues": {"x": ["2", "4"], "y": ["2", "4"]},
+    "overlays": {
+      "points": [
+        {"id": "O", "x": "0", "y": "0"},
+        {"id": "P", "curveX": "2"},
+        {"id": "Q", "axis": "x", "value": "4"},
+        {"id": "R", "axis": "y", "value": "4"}
+      ],
+      "lines": [{"id": "l", "slope": "-1", "intercept": "4", "label": "l"}],
+      "segments": [
+        {"id": "OP", "from": "O", "to": "P"},
+        {"id": "OQ", "from": "O", "to": "Q"},
+        {"id": "OR", "from": "O", "to": "R"},
+        {"id": "PQ", "from": "P", "to": "Q"},
+        {"id": "PR", "from": "P", "to": "R"}
+      ],
+      "rightAngles": [{"at": "P", "from": ["O", "Q"]}],
+      "guides": [{"id": "PtoAxes", "from": "P", "axis": "BOTH"}]
+    }
+  },
+  "pointNames": {"O": "O", "P": "P", "Q": "Q", "R": "R"},
+  "caption": "t=2에서 P(2,2), Q(4,0), R(0,4). OP의 기울기 1과 l의 기울기 -1은 서로 수직이고 두 삼각형의 넓이 관계를 읽을 수 있다.",
+  "accessibilityDescription": "쌍곡선 위 P(2,2)에서 직각을 이루는 두 직선 OP와 l이 교차하며, 직선 l은 (4,0)의 Q와 (0,4)의 R을 지나는 점과 두 삼각형 OPQ, OPR의 경계를 나타낸다.",
+  "newVisualInformation": ["정확한 쌍곡선과 점 P", "OP와 l의 수직 기울기 및 직각표식", "Q, R의 축 절편과 삼각형 OPQ·OPR의 변", "P에서 좌표축으로의 점선 가이드"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "직선 OP의 기울기는 4/t^2, 직선 l의 기울기는 -t^2/4이다.", "mappedTo": ["graphPlan.overlays.lines", "graphPlan.overlays.rightAngles"]},
+    {"id": "c2", "condition": "t=2에서 P=(2,2), Q=(4,0), R=(0,4)가 된다.", "mappedTo": ["graphPlan.overlays.points", "graphPlan.axisTickValues"]},
+    {"id": "c3", "condition": "삼각형 OPQ와 OPR은 양의 넓이를 갖는다.", "mappedTo": "PRESERVED_ARCHIVE_BANK"}
+  ]
+}

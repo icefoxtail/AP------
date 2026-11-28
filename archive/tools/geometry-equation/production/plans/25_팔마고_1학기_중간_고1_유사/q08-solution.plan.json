@@ -1,0 +1,18 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["-3", "-5", "2"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-2, 8], "viewport": [-3, 9, -13, 70],
+    "overlays": {"lines": [{"id": "g", "slope": "7", "intercept": "1"}]},
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "포물선 y=2x²−5x−3과 직선 y=7x+1의 교점 두 개의 x좌표 합은 방정식 x²−6x−2=0의 근의 합 6이다.",
+  "accessibilityDescription": "위로 열린 포물선과 기울기 7, 절편 1인 직선이 서로 다른 두 점에서 만나는 그래프이다.",
+  "sourceQuote": "y=2x²−5x−3과 y=7x+1의 교점 두 개의 x좌표 합",
+  "sourceConditions": [
+    {"id": "parabola", "condition": "y=2x²−5x−3", "mappedTo": ["graphPlan.coefficients"]},
+    {"id": "line", "condition": "y=7x+1", "mappedTo": ["graphPlan.overlays.lines[0]"]}
+  ],
+  "newVisualInformation": ["기울기가 큰 직선과 포물선의 두 교점이 서로 다른 위치에 실제로 생성됨을 보여 준다."]
+}

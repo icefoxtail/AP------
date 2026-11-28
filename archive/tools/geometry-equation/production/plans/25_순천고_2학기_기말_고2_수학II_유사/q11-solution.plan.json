@@ -1,0 +1,54 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "$f'(x)=3x^2-6x-9$",
+  "caption": "닫힌구간 [−2,4]에서 f(x)−a의 값 −2, 5, −27, −20 중 최대는 5, 최소는 −27이다.",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "-9",
+      "-3",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2.5,
+      4.5
+    ],
+    "viewport": [
+      -3.6,
+      6,
+      -34,
+      18
+    ],
+    "requiredPoints": [
+      {
+        "id": "B",
+        "x": -1,
+        "y": 5
+      },
+      {
+        "id": "C",
+        "x": 3,
+        "y": -27
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "닫힌구간 $[-2,4]$에서 함수 $f(x)=x^3-3x^2-9x+a$의 최댓값을 $M$, 최솟값을 $m$이라고 하자. $M+m=-2$일 때, 상수 $a$의 값은? [4.2점]",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "닫힌구간 [−2,4]에서 f(x)−a의 값 −2, 5, −27, −20 중 최대는 5, 최소는 −27이다."
+  ],
+  "accessibilityDescription": "닫힌구간 [−2,4]에서 f(x)−a의 값 −2, 5, −27, −20 중 최대는 5, 최소는 −27이다."
+}

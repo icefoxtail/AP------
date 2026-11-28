@@ -1,0 +1,45 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "Z",
+        "mean": "0",
+        "sd": "1",
+        "label": "Z"
+      }
+    ],
+    "ticks": [
+      "-1.96",
+      "0",
+      "1.64"
+    ],
+    "shades": [
+      {
+        "from": null,
+        "to": "-1.96",
+        "color": "BLUE"
+      },
+      {
+        "from": "0",
+        "to": "1.64",
+        "color": "WARM"
+      }
+    ],
+    "xLabel": "z",
+    "zAxis": true
+  },
+  "caption": "f(0)=0.95를 제외하면 f(2.4)≤0.025, 정규분포 왼쪽 꼬리 z≤−1.96과 주어진 z=1.64의 기준값",
+  "sourceConditions": [
+    {
+      "id": "N20",
+      "condition": "f(0)=0.95를 제외하면 f(2.4)≤0.025, 정규분포 왼쪽 꼬리 z≤−1.96과 주어진 z=1.64의 기준값",
+      "mappedTo": "chart.curves,chart.ticks,chart.shades"
+    }
+  ],
+  "newVisualInformation": [
+    "f(0)=0.95를 제외하면 f(2.4)≤0.025, 정규분포 왼쪽 꼬리 z≤−1.96과 주어진 z=1.64의 기준값"
+  ],
+  "accessibilityDescription": "f(0)=0.95를 제외하면 f(2.4)≤0.025, 정규분포 왼쪽 꼬리 z≤−1.96과 주어진 z=1.64의 기준값"
+}

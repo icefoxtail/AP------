@@ -1,0 +1,38 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 4
+      },
+      "height": 4,
+      "names": "........"
+    }
+  ],
+  "labels": [
+    {
+      "text": "출발",
+      "at": "#b0"
+    },
+    {
+      "text": "도착",
+      "at": "#t2"
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "source-cube",
+      "condition": "정육면체의 출발점은 아래 앞쪽 꼭짓점이며 도착점은 대각선으로 반대쪽 위 꼭짓점이다.",
+      "mappedTo": [
+        "solids",
+        "labels"
+      ]
+    }
+  ],
+  "caption": "정육면체에서 모서리를 따라 가는 출발점과 도착점"
+}

@@ -1,0 +1,39 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "k=1일 때",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "6",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "해집합과 경계 확인"
+  },
+  "caption": "k=1일 때 |x−1|+|x−3|≤8의 해 −2≤x≤6",
+  "accessibilityDescription": "k=1일 때 |x−1|+|x−3|≤8의 해 −2≤x≤6",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "근의 곱 −12에서 k=1이고 절댓값의 합의 해는 [2k−4,2k+4]",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "풀이로 확정된 두 근 −2,6과 그 사이 구간"
+  ]
+}

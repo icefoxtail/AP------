@@ -1,0 +1,136 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            6
+          ]
+        ]
+      },
+      "height": 11.135528725660043,
+      "apex": [
+        6,
+        2
+      ],
+      "names": "ABCV"
+    },
+    {
+      "id": "s2",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            12,
+            0
+          ],
+          [
+            12,
+            9
+          ]
+        ]
+      },
+      "height": 16.703293088490064,
+      "apex": [
+        9,
+        3
+      ],
+      "names": "A′B′C′V′"
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "edge": "AB",
+      "label": "8"
+    },
+    {
+      "solid": "s2",
+      "from": "A′",
+      "to": "B′",
+      "label": "12"
+    },
+    {
+      "solid": "s1",
+      "edge": "VC",
+      "label": "12"
+    },
+    {
+      "solid": "s2",
+      "from": "V′",
+      "to": "C′",
+      "label": "18"
+    },
+    {
+      "solid": "s1",
+      "edge": "BC",
+      "label": "6"
+    },
+    {
+      "solid": "s2",
+      "from": "B′",
+      "to": "C′",
+      "label": "9"
+    }
+  ],
+  "marks": {
+    "angles": [
+      {
+        "refs": [
+          "V",
+          "A",
+          "C"
+        ],
+        "value": 62,
+        "arcs": 1,
+        "equalGroup": "corresponding",
+        "label": "62^\\circ"
+      },
+      {
+        "refs": [
+          "V′",
+          "A′",
+          "C′"
+        ],
+        "value": 62,
+        "arcs": 1,
+        "equalGroup": "corresponding",
+        "label": "62^\\circ"
+      }
+    ]
+  },
+  "solidCaption": {
+    "text": "서로 닮은 삼각뿔"
+  },
+  "caption": "왕의중 16번: 정면/숨은모서리 점선이 있는 서로 닮은 두 삼각뿔 V-ABC와 V′-A′B′C′, 대응 모서리 8/12, x/18, z/9, 대응각 62°. 해설: 닮음비 2:3, x=12, y=62°, z=6; x+y−5z=44.",
+  "newVisualInformation": [
+    "3차원 각뿔 모형 2개를 동일 배율로 실제 투영하고 숨은 모서리를 점선으로 나타낸다.",
+    "대응각 62°와 모서리 길이를 원문의 두 그림과 대조했다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 삼각뿔 $V\\text{-}ABC$와 $V'\\text{-}A'B'C'$는 서로 닮은 도형이고, 꼭짓점 $V$, $A$, $B$, $C$에 대응하는 꼭짓점이 각각 $V'$, $A'$, $B'$, $C'$이다. $\\overline{AB} = 8\\text{ cm}$, $\\overline{A'B'} = 12\\text{ cm}$, $\\overline{VC} = x\\text{ cm}$, $\\overline{V'C'} = 18\\text{ cm}$, $\\overline{BC} = z\\text{ cm}$, $\\overline{B'C'} = 9\\text{ cm}$, $\\angle VAC = 62^\\circ$, $\\angle V'A'C' = y^\\circ$일 때, $x + y - 5z$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

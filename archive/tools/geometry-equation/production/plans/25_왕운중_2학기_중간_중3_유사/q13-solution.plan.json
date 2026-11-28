@@ -1,0 +1,209 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "해설 작도 — 반지름을 x라고 둔 원 O: 현 AB=16, OH=6, OH는 현에 수직",
+  "accessibilityDescription": "해설 작도 — 반지름을 x라고 둔 원 O: 현 AB=16, OH=6, OH는 현에 수직",
+  "newVisualInformation": [
+    "반지름을 x라고 둔 원 O: 현 AB=16, OH=6, OH는 현에 수직",
+    "해설의 보조선·계산된 길이와 각도는 문제 도형과 독립 검수"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q13-archive",
+      "condition": "다음 그림과 같이 $OA=x$, $OH=6$, $AB=16$인 원 $O$에서 $x$의 값을 구하면? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "H",
+    "A",
+    "B"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "sHB",
+      "refs": [
+        "H",
+        "B"
+      ]
+    },
+    {
+      "id": "sOH",
+      "refs": [
+        "O",
+        "H"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [],
+    "expressionLabels": [
+      {
+        "id": "lenOH",
+        "ownerSegment": "sOH",
+        "text": "6"
+      },
+      {
+        "id": "lenOA",
+        "ownerSegment": "sOA",
+        "text": "10"
+      },
+      {
+        "id": "lenAH",
+        "ownerSegment": "sAH",
+        "text": "8"
+      },
+      {
+        "id": "lenHB",
+        "ownerSegment": "sHB",
+        "text": "8"
+      }
+    ],
+    "arcs": [],
+    "pathLabels": [
+      {
+        "id": "fullAB",
+        "points": [
+          "A",
+          "H",
+          "B"
+        ],
+        "label": "16"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "h90",
+      "refs": [
+        "O",
+        "H",
+        "B"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 450
+  }
+}

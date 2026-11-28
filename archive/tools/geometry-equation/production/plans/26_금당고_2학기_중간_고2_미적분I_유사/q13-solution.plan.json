@@ -1,0 +1,25 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "xWindow": [-3, 4],
+    "pieces": [
+      {"coefficients": ["-1", "0", "1/4"], "domain": [-2, 0], "end": "OPEN"},
+      {"coefficients": ["0", "2"], "domain": [0, 1], "start": "CLOSED", "end": "OPEN"},
+      {"coefficients": ["9/2", "-3/2"], "domain": [1, 3], "start": "CLOSED", "end": "CLOSED"}
+    ],
+    "axisTickValues": {"x": ["1"], "y": ["-1", "2"]},
+    "limitArrows": [
+      {"at": "0", "side": "LEFT", "toY": "-1"},
+      {"at": "1", "side": "LEFT", "toY": "2"}
+    ],
+    "functionName": "f"
+  },
+  "caption": "t가 양의 무한대로 가면 입력값은 1의 왼쪽, 음의 무한대로 가면 0의 왼쪽에서 접근한다. 두 좌극한은 2와 -1이다.",
+  "accessibilityDescription": "그래프 x=0과 x=1의 왼쪽 가지에 접근 화살표와 점선 가이드를 그려 각각 y=-1, y=2로 수렴함을 보여 준다.",
+  "newVisualInformation": ["x=1^-에서 f(x)→2의 접근 화살표와 점선", "x=0^-에서 f(x)→-1의 접근 화살표와 점선", "실제 함수값과 극한값을 열린 점·닫힌 점으로 분리"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "t가 양의 무한대로 갈 때 (t-2)/(t+1)은 1의 왼쪽에서 접근한다.", "mappedTo": ["graphPlan.limitArrows[1]", "graphPlan.axisTickValues"]},
+    {"id": "c2", "condition": "t가 음의 무한대로 갈 때 1/t은 0의 왼쪽에서 접근한다.", "mappedTo": ["graphPlan.limitArrows[0]", "graphPlan.axisTickValues"]}
+  ]
+}

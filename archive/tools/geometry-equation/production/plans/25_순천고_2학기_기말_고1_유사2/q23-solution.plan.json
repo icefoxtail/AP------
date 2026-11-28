@@ -1,0 +1,136 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -6,
+      7,
+      -3,
+      7
+    ],
+    "curves": [
+      {
+        "id": "left",
+        "kind": "SQRT",
+        "radicand": [
+          "0",
+          "-1"
+        ],
+        "offset": "2",
+        "domain": [
+          "-6",
+          "0"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "right",
+        "kind": "SQRT",
+        "radicand": [
+          "-1",
+          "1"
+        ],
+        "amplitude": "-1",
+        "offset": "1",
+        "domain": [
+          "1",
+          "7"
+        ],
+        "hideLabel": true,
+        "color": "BLUE"
+      },
+      {
+        "id": "line",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "-1"
+        ],
+        "domain": [
+          "-6",
+          "7"
+        ],
+        "label": "y=-x+2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-1",
+          "y": "3"
+        },
+        {
+          "id": "Q",
+          "x": "0",
+          "y": "2"
+        },
+        {
+          "id": "R",
+          "x": "1",
+          "y": "1"
+        },
+        {
+          "id": "S",
+          "x": "2",
+          "y": "0"
+        }
+      ],
+      "guides": [
+        {
+          "id": "gP",
+          "from": "P",
+          "axis": "BOTH"
+        },
+        {
+          "id": "gR",
+          "from": "R",
+          "axis": "BOTH"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "P": "P",
+    "Q": "Q",
+    "R": "R",
+    "S": "S"
+  },
+  "caption": "x≤0 가지 √(−x)+2와 x≥1 가지 1−√(x−1)는 서로 떨어져 있다. k=2일 때 직선 y=−x+2가 (−1,3),(0,2),(1,1),(2,0)의 서로 다른 네 점에서 만난다.",
+  "accessibilityDescription": "왼쪽 위로 뻗는 첫 무리함수와 오른쪽 아래로 뻗는 둘째 무리함수, 빈 정의역 (0,1), 대각선 y=−x+2, 네 교점과 좌표 보조선이 보인다.",
+  "newVisualInformation": [
+    "끊긴 정의역 0<x<1 유지",
+    "k=2일 때 네 교점 모두 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x≤0에서 √(-x)+2, x≥1에서 1−√(x−1)",
+      "mappedTo": [
+        "graphPlan.curves"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "k=2와 교점 (-1,3),(0,2),(1,1),(2,0)",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.overlays.points",
+        "graphPlan.overlays.guides"
+      ]
+    }
+  ]
+}

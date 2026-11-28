@@ -1,0 +1,46 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "X",
+        "mean": "50",
+        "sd": "7",
+        "label": "X"
+      }
+    ],
+    "ticks": [
+      "50",
+      "57"
+    ],
+    "zAxis": true,
+    "shades": [
+      {
+        "curve": "X",
+        "from": "57",
+        "to": null,
+        "tone": 2
+      }
+    ],
+    "areaLabels": [
+      {
+        "shade": 0,
+        "text": "0.16",
+        "source": "TABLE"
+      }
+    ]
+  },
+  "caption": "불량품 수 W≈N(50,7²)에서 57 이상인 오른쪽 꼬리의 근사 확률",
+  "accessibilityDescription": "불량품 수 W≈N(50,7²)에서 57 이상인 오른쪽 꼬리의 근사 확률",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "전구 불량 확률 0.02, W~B(2500,0.02)≈N(50,7²), z=(57−50)/7=1.",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "정규근사에서 57 이상의 오른쪽 꼬리를 표시"
+  ]
+}

@@ -1,0 +1,228 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "50"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "E",
+          "U"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "50"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "35"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lEU",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "E",
+          "U"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "K",
+          "lEU"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "E",
+    "U",
+    "K",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "sEU",
+      "refs": [
+        "E",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEK",
+      "refs": [
+        "E",
+        "K"
+      ]
+    },
+    {
+      "id": "sHK",
+      "refs": [
+        "H",
+        "K"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayCircles": [],
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "E",
+        "H",
+        "K"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aE",
+        "refs": [
+          "H",
+          "E",
+          "K"
+        ],
+        "value": 35,
+        "label": "35",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "rope",
+        "ownerSegment": "sEK",
+        "text": "50",
+        "unit": "m"
+      },
+      {
+        "id": "hand",
+        "ownerSegment": "sBE",
+        "text": "1.5",
+        "unit": "m"
+      }
+    ],
+    "arcs": [],
+    "regions": [],
+    "equalLengths": [],
+    "parallels": [],
+    "facts": []
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "높이 1.5m의 손에서 35°로 올라간 길이 50m의 연",
+  "hiddenPointNames": [
+    "U",
+    "H"
+  ],
+  "hiddenPointStyle": "NONE",
+  "sourceQuote": "다음 그림에서 민지가 연을 올려본각의 크기가 $35^\\circ$이고 민지의 손에서 연까지의 거리는 ",
+  "accessibilityDescription": "높이 1.5m의 손에서 35°로 올라간 길이 50m의 연",
+  "sourceConditions": [
+    {
+      "id": "q11-problem-text",
+      "condition": "다음 그림에서 민지가 연을 올려본각의 크기가 $35^\\circ$이고 민지의 손에서 연까지의 거리는 $50,\\mathrm{m}$이다. 지면에서 민지의 손까지의 높이가 $1.5,\\mathrm{m}$일 때, 지면에서 연까지의 높이는 반올림하여 소수점 아래 첫째 자리까지 구하면? (단, $\\sin 35^\\circ=0.5736$, $\\cos 35^\\circ=0.8192$, $\\tan 35^\\circ=0.7002$)",
+      "mappedTo": [
+        "mathPlan",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "발문의 조건만 표시하며 해설 답 선노출 방지"
+  ]
+}

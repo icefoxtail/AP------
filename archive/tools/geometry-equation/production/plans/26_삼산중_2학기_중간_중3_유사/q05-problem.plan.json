@@ -1,0 +1,159 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "다음 직각삼각형 $ABC$에서 $\\overli",
+  "sourceConditions": [
+    {
+      "id": "q5-c1",
+      "condition": "각 C=90도 직각",
+      "mappedTo": "ra-C"
+    },
+    {
+      "id": "q5-c2",
+      "condition": "빗변 AB=4",
+      "mappedTo": "seg-AB"
+    },
+    {
+      "id": "verified-3",
+      "condition": "ENGINE_CAPABILITY_PENDING: 원본의 삼각비 37·38·39도 계산표와 직각삼각형을 한 실행형 패널에 병치할 표 셀·격자 지원 필요",
+      "mappedTo": "REQUIRES_TRIG_RATIO_TABLE_GEOMETRY_COMPOSITION"
+    }
+  ],
+  "newVisualInformation": [
+    "38도 각도를 갖는 직각삼각형 ABC"
+  ],
+  "caption": "빗변 AB=4이고 각 A=38도인 직각삼각형 ABC",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-3152000",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2462800",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [],
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    }
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "seg-BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "seg-AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "assetPath": "assets/images/26_삼산중_2학기_중간_중3_유사/q5.svg",
+  "accessibilityDescription": "중학교 3학년 5번 발문에서 주어진 점과 도형, 길이와 각 관계를 나타낸 그림.",
+  "rightAngles": [
+    {
+      "id": "rightC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "given38",
+        "refs": [
+          "C",
+          "A",
+          "B"
+        ],
+        "value": 38,
+        "label": "38",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "text-lenAB",
+        "ownerSegment": "seg-AB",
+        "text": "4"
+      }
+    ]
+  }
+}

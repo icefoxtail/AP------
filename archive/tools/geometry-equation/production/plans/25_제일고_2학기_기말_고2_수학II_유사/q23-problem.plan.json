@@ -1,0 +1,14 @@
+{
+  "capability":"piecewise-polynomial-spike-v1",
+  "sourceQuote":"삼차함수 F의 도함수 y=f(x)는 x=-1,3에서 0이고 (0,3)을 지난다.",
+  "caption":"도함수 f(x)=-x²+2x+3의 그래프는 x=-1,3에서 x축과 만난다.",
+  "graphPlan":{
+    "family":"piecewise-polynomial","pieces":[{"coefficients":["3","2","-1"]}],"breakpoints":[],
+    "sourceDomain":{"kind":"ALL_REALS"},"functionName":"f","domain":[-2.2,4.2],"viewport":[-3,5,-5.5,5],
+    "requiredPoints":[{"id":"A","x":-1,"y":0},{"id":"B","x":3,"y":0},{"id":"C","x":0,"y":3},{"id":"M","x":1,"y":4}],
+    "exactCoordinates":{"A":["-1","0"],"B":["3","0"],"C":["0","3"],"M":["1","4"]},"coordinateBand":{"hide":["M"]},"axisTickValues":{"x":[],"y":[]}
+  },
+  "sourceConditions":[{"id":"zeros","condition":"f(-1)=f(3)=0, f(0)=3, 아래로 열린 포물선.","mappedTo":["graphPlan.pieces","graphPlan.requiredPoints"]}],
+  "newVisualInformation":["도함수의 두 영점과 양/음 구간을 나타내는 포물선"],
+  "accessibilityDescription":"아래로 열린 도함수의 포물선이 -1과 3에서 x축을 지나며 y절편은 3이다."
+}

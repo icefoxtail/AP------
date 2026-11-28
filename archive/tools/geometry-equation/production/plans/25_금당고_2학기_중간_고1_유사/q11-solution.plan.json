@@ -1,0 +1,184 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "li",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "16"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lt",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "17"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "C",
+          "li"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "C",
+          "lt"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "M",
+    "T"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "C",
+        "T"
+      ]
+    }
+  ],
+  "caption": "k=16은 할선, k=17은 접선이 되는 경계",
+  "accessibilityDescription": "중심에서 l16까지의 거리 14/5가 반지름 3보다 작고 l17까지의 거리는 3으로 같은 것을 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "중심에서 l16까지의 거리 14/5가 반지름 3보다 작고 l17까지의 거리는 3으로 같은 것을 보인다.",
+      "mappedTo": [
+        "C",
+        "M",
+        "T",
+        "k",
+        "li",
+        "lt",
+        "s1",
+        "s2"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "중심에서 l16까지의 거리 14/5가 반지름 3보다 작고 l17까지의 거리는 3으로 같은 것을 보인다."
+  ],
+  "hiddenPointNames": [
+    "M"
+  ],
+  "displayCircles": [
+    "k"
+  ],
+  "displayLines": [
+    "li",
+    "lt"
+  ]
+}

@@ -1,0 +1,307 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "11"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "cOuter",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "cInner",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "9"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "cOuter",
+    "cInner"
+  ],
+  "displayPoints": [
+    "O",
+    "P",
+    "M",
+    "F",
+    "K"
+  ],
+  "displaySegments": [
+    {
+      "id": "flagpole",
+      "refs": [
+        "P",
+        "M"
+      ]
+    },
+    {
+      "id": "flag-a",
+      "refs": [
+        "M",
+        "F"
+      ]
+    },
+    {
+      "id": "flag-b",
+      "refs": [
+        "F",
+        "K"
+      ]
+    },
+    {
+      "id": "flag-c",
+      "refs": [
+        "K",
+        "M"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "clock1",
+        "at": [
+          3.85,
+          6.67
+        ],
+        "text": "1"
+      },
+      {
+        "id": "clock2",
+        "at": [
+          6.67,
+          3.85
+        ],
+        "text": "2"
+      },
+      {
+        "id": "clock3",
+        "at": [
+          7.7,
+          0
+        ],
+        "text": "3"
+      },
+      {
+        "id": "clock4",
+        "at": [
+          6.67,
+          -3.85
+        ],
+        "text": "4"
+      },
+      {
+        "id": "clock5",
+        "at": [
+          3.85,
+          -6.67
+        ],
+        "text": "5"
+      },
+      {
+        "id": "clock6",
+        "at": [
+          0,
+          -7.7
+        ],
+        "text": "6"
+      },
+      {
+        "id": "clock7",
+        "at": [
+          -3.85,
+          -6.67
+        ],
+        "text": "7"
+      },
+      {
+        "id": "clock8",
+        "at": [
+          -6.67,
+          -3.85
+        ],
+        "text": "8"
+      },
+      {
+        "id": "clock9",
+        "at": [
+          -7.7,
+          0
+        ],
+        "text": "9"
+      },
+      {
+        "id": "clock10",
+        "at": [
+          -6.67,
+          3.85
+        ],
+        "text": "10"
+      },
+      {
+        "id": "clock11",
+        "at": [
+          -3.85,
+          6.67
+        ],
+        "text": "11"
+      },
+      {
+        "id": "clock12",
+        "at": [
+          0,
+          7.7
+        ],
+        "text": "12"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "O",
+    "P",
+    "M",
+    "F",
+    "K"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 480
+  },
+  "caption": "1부터 12까지 숫자가 적힌 둥근 원판의 12 위치에 깃발이 꽂힌 그림",
+  "sourceConditions": [
+    {
+      "id": "dial",
+      "condition": "원판의 12 위치에 깃발이 있고 두 주사위의 눈의 곱만큼 시계방향으로 이동한다.",
+      "mappedTo": [
+        "displayCircles",
+        "planeMarks.textLabels",
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원판의 숫자와 깃발 초기 위치만 나타내고 풀이 결과를 표시하지 않는다."
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "13"
+      },
+      {
+        "id": "lAC",
+        "ownerSegment": "sCA",
+        "text": "12"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "5"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "caption": "직각삼각형 ABC의 세 변 5, 12, 13에서 삼각비를 읽는다.",
+  "accessibilityDescription": "C가 직각인 삼각형 ABC의 세 변에 13, 12, 5의 길이가 표시되어 있다.",
+  "newVisualInformation": [
+    "원문 해설에서 필요한 보조선·길이·각을 독립 구성"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q01-solution-text",
+      "condition": "$\\angle C=90^\\circ$이므로 빗변은 $AB=13$이다. 각 $A$에 대하여 $\\sin A=\\dfrac{5}{13}$, $\\cos A=\\dfrac{12}{13}$, $\\tan A=\\dfrac{5}{12}$이므로 ②는 옳지 않다. 각 $B$에 대하여 $\\sin B=\\dfrac{12}{13}$, $\\cos B=\\dfrac{5}{13}$이므로 ④도 옳지 않다. 따라서 옳지 않은 것은 ②, ④이다.",
+      "mappedTo": [
+        "mathPlan",
+        "displaySegments",
+        "planeMarks"
+      ]
+    },
+    {
+      "id": "q01-svg",
+      "condition": "archive/assets/images/24_신흥중_2학기_중간_중3_유사/q01-problem.svg",
+      "mappedTo": "DRAWN_FEATURE_PARITY_STATIC_REVIEW"
+    }
+  ],
+  "sourceQuote": "다음 직각삼각형 $ABC$($\\angle C=90^\\circ, AB=13, AC=12, BC=5$)"
+}

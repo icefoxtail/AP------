@@ -1,0 +1,24 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["2", "-12", "6", "-1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-1, 4],
+    "viewport": [-1.5, 4.5, -12, 10],
+    "requiredPoints": [{"id": "C", "x": 2, "y": -6}],
+    "axisTickValues": {"x": ["1", "2", "3"], "y": ["2", "-7"]},
+    "overlays": {
+      "lines": [{"id": "tan", "slope": "-3", "intercept": "-2", "label": "y=-3x-2"}],
+      "points": [{"id": "A", "x": "0", "y": "2"}, {"id": "B", "x": "3", "y": "-7"}, {"id": "T", "curveX": "1"}],
+      "segments": [{"id": "AB", "from": "A", "to": "B", "color": "BLUE"}]
+    }
+  },
+  "caption": "a=12인 대표 경우에 f(x)=-(x-2)^3-6은 전체에서 감소하고, [0,3] 할선 AB의 기울기 -3과 x=1 접선의 기울기 -3이 같다.",
+  "accessibilityDescription": "단조감소하는 삼차곡선 위 A(0,2), B(3,-7) 사이 파란 할선과 T(1,-5)를 지나는 기울기 -3의 접선이 평행하다. x=2에는 접선이 수평인 변곡점을 표시한다.",
+  "newVisualInformation": ["a=12에서 도함수 -3(x-2)^2가 0 이하인 단조감소 개형", "할선 AB와 x=1 접선의 평행 관계", "x=2는 극값이 아닌 수평 변곡점이라는 점"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "a=12에서 f=-x^3+6x^2-12x+2=-(x-2)^3-6이다.", "mappedTo": ["graphPlan.coefficients", "graphPlan.requiredPoints"]},
+    {"id": "c2", "condition": "[0,3]에서 평균변화율 -3과 f'(1)=-3이 같으며 c=1이다.", "mappedTo": ["graphPlan.overlays.points", "graphPlan.overlays.segments", "graphPlan.overlays.lines"]}
+  ]
+}

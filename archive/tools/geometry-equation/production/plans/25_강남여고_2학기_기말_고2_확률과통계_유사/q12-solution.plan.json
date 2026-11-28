@@ -1,0 +1,87 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2/5",
+          "-1/5"
+        ]
+      },
+      {
+        "coefficients": [
+          "-4/15",
+          "2/15"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "2",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "5"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "regions": [
+      {
+        "id": "S1",
+        "upper": "f",
+        "lower": "axis",
+        "from": "1",
+        "to": "2",
+        "fill": "LIGHT"
+      },
+      {
+        "id": "S2",
+        "upper": "f",
+        "lower": "axis",
+        "from": "2",
+        "to": "5",
+        "fill": "LIGHT"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": "2/5"
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "id": "C",
+        "x": 5,
+        "y": "2/5"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "확률밀도함수의 그래프에서 x=1 이상인 부분의 넓이가 P(X≥1)이다.",
+  "sourceConditions": [
+    {
+      "id": "q12-c1",
+      "condition": "a=2/5, 밀도함수는 (0,2/5)→(2,0)→(5,2/5)을 잇고 P(X≥1)은 [1,2]와 [2,5]의 두 삼각 영역 넓이의 합 7/10이다.",
+      "mappedTo": ["graphPlan.pieces", "graphPlan.breakpoints", "graphPlan.requiredPoints", "graphPlan.regions"]
+    }
+  ],
+  "newVisualInformation": ["x=2에서 높이가 0인 경계를 기준으로 [1,2]와 [2,5]의 밀도 영역을 분리해 P(X≥1)을 나타낸다"],
+  "accessibilityDescription": "V자 밀도함수의 오른쪽 확률 영역을 x=2에서 만나는 두 삼각형 [1,2]와 [2,5]로 나눠 칠한다."
+}

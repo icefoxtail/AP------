@@ -1,0 +1,145 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "V1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "V1",
+    "V2",
+    "F1",
+    "F2"
+  ],
+  "displaySegments": [
+    {
+      "id": "vertical",
+      "refs": [
+        "V1",
+        "V2"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "xminus2",
+        "at": [
+          -2,
+          -0.65
+        ],
+        "text": "-2",
+        "labelKind": "MATH"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "V1",
+    "V2",
+    "F1",
+    "F2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 390
+  },
+  "caption": "좌표평면에서 x=-2를 지나는 수직선",
+  "sourceConditions": [
+    {
+      "id": "vertical-x",
+      "condition": "일차방정식 2x-1=k의 수직선 그래프가 x=-2를 지난다.",
+      "mappedTo": [
+        "mathPlan.nodes.V1",
+        "mathPlan.nodes.V2",
+        "displaySegments.vertical"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "해설의 k값이나 y=2x-1 그래프를 문제 그림에 넣지 않는다."
+  ]
+}

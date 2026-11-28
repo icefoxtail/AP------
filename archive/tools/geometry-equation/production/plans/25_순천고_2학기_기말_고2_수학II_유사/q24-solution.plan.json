@@ -1,0 +1,58 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "4",
+      "0",
+      "-3",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1.4,
+      3.4
+    ],
+    "viewport": [
+      -1.8,
+      3.8,
+      -1.4,
+      6
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 0,
+        "y": 4
+      },
+      {
+        "id": "C",
+        "x": 2,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "삼차함수 y=x³−3x²+4는 (−1,0)을 통과하고 (0,4)에서 극대, (2,0)에서 극소로 x축에 접한다.",
+  "accessibilityDescription": "곡선은 왼쪽에서 올라와 x축의 마이너스 일에서 통과, 영에서 최댓값 사, 이에서 최솟값 영을 갖는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=x³−3x²+4=(x+1)(x−2)²; f'(x)=3x(x−2), x>1에서 최솟값은 f(2)=0.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "요구된 함수 f의 증가·감소와 y축 교점 (0,4), x축 통과·접점, 극대·극소를 직접 표시"
+  ]
+}

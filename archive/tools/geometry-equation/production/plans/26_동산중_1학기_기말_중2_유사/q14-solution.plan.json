@@ -1,0 +1,55 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-2/3"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      6
+    ],
+    "viewport": [
+      -4,
+      6,
+      -4,
+      6
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "Y",
+        "x": "0",
+      "y": "2"
+      },
+      {
+        "id": "X",
+        "x": "3",
+      "y": "0"
+      }
+    ]
+  },
+  "caption": "2x+3y-6=0을 정리한 직선은 y=-2x/3+2이다.",
+  "accessibilityDescription": "2x+3y-6=0을 정리한 직선은 y=-2x/3+2이다.",
+  "sourceConditions": [
+    {
+      "id": "origin",
+      "condition": "일차방정식 $2x + 3y - 6 = 0$의 그래프에 대한 설명으로 옳은 것은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "2x+3y-6=0을 정리한 직선은 y=-2x/3+2이다."
+  ]
+}

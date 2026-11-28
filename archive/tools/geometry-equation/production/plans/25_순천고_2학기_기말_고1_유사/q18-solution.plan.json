@@ -1,0 +1,39 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": ["4", "3"],
+    "denominator": ["1", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-1, 5],
+    "viewport": [-4, 5, -1, 8],
+    "equalUnits": true,
+    "requiredPoints": [],
+    "axisTickValues": {"x": ["-1"], "y": ["3"]},
+    "overlays": {
+      "circles": [{"id": "C", "center": ["-1", "3"], "radiusSquared": "7"}],
+      "points": [
+        {"id": "O", "x": "-1", "y": "3"},
+        {"id": "P", "curveX": "(1-sqrt(5))/2", "onCircle": "C"},
+        {"id": "Q", "curveX": "(1+sqrt(5))/2", "onCircle": "C"}
+      ],
+      "segments": [
+        {"id": "OP", "from": "O", "to": "P"},
+        {"id": "OQ", "from": "O", "to": "Q"},
+        {"id": "PQ", "from": "P", "to": "Q", "color": "BLUE"}
+      ],
+      "callouts": [
+        {"id": "lenPQ", "point": "Q", "text": "PQ=√10", "labelKind": "MATH", "direction": "SE"},
+        {"id": "lenOP", "point": "P", "text": "OP=√7", "labelKind": "MATH", "direction": "NW"}
+      ]
+    }
+  },
+  "pointNames": {"O": "O", "P": "P", "Q": "Q"},
+  "caption": "원 O(-1,3), 반지름 √7과 유리함수 y=1/(x+1)+3의 교점 P,Q는 각각 x=(1±√5)/2에 있다. 현 PQ=√10, 중심에서 현까지 3/√2여서 넓이 3√5/2이다.",
+  "accessibilityDescription": "중심 O(-1,3)인 원과 오른쪽 유리함수 가지가 P와 Q 두 점에서 만나며, O에서 P,Q로 두 반지름, P-Q 현, 길이 √7과 √10의 지시선 라벨이 표시된다.",
+  "newVisualInformation": ["원과 유리함수의 대수적 교점 두 개를 한 겹 근호의 정확한 좌표로 매핑", "OP·OQ·PQ 연결 및 √7·√10 길이 표기", "모든 배경·원판 채움 제거"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "x>-1에서 f(x)=1/(x+1)+3이고 원은 O(-1,3), 반지름 √7이다.", "mappedTo": ["graphPlan.numerator", "graphPlan.denominator", "graphPlan.overlays.circles"]},
+    {"id": "c2", "condition": "교점의 x좌표는 (1±√5)/2이며 두 반지름과 현 PQ=√10으로 삼각형을 이룬다.", "mappedTo": ["graphPlan.overlays.points", "graphPlan.overlays.segments", "graphPlan.overlays.callouts"]}
+  ]
+}

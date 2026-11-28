@@ -1,0 +1,17 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "t",
+    "rows": [
+      {"kind": "SET", "label": "치환 t", "pieces": [{"lo": {"value": "3", "state": "CLOSED"}, "hi": {"value": "7", "state": "CLOSED"}}]},
+      {"kind": "POINTS", "label": "a 후보", "points": [{"id": "A", "value": "1"}, {"id": "B", "value": "9"}]}
+    ]
+  },
+  "caption": "t=(x−2)²+3의 치역은 [3,7]이고 (t−a)²+1의 최솟값이 5가 되려면 a는 이 구간에서 거리가 2인 1 또는 9이다.",
+  "accessibilityDescription": "t의 닫힌 구간 3부터 7을 한 수직선에 표시하고, 다른 줄에 범위 바깥의 두 후보 a=1과 a=9를 표시한다.",
+  "sourceConditions": [
+    {"id": "t", "condition": "0≤x≤3에서 (x−2)²+3의 최솟값 3, 최댓값 7", "mappedTo": ["numberLine.rows[0]"]},
+    {"id": "a", "condition": "min(t−a)²=4의 해는 a=1 또는 9", "mappedTo": ["numberLine.rows[1].points"]}
+  ],
+  "newVisualInformation": ["치환 범위 밖에 위치하는 두 후보가 양쪽 경계에서 각각 거리 2임을 수직선으로 대조한다."]
+}

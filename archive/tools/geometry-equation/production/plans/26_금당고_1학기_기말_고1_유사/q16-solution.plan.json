@@ -1,0 +1,61 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "39",
+      "-16",
+      "8"
+    ],
+    "domain": [
+      -3,
+      4
+    ],
+    "viewport": [
+      -3,
+      4,
+      20,
+      170
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 1,
+        "y": 31
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        1
+      ],
+      "y": [
+        31
+      ]
+    }
+  },
+  "caption": "네 근을 묶어 계산한 a+b+c+d=8(s−1)²+31의 최솟값은 s=1에서 31이다. 근의 서로 다름 조건으로 s=−2,3은 제외되나 최소점 1은 허용된다.",
+  "accessibilityDescription": "부차 다항식 8s²−16s+39의 꼭짓점을 그려 허용되는 최소점 s=1을 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "formula",
+      "condition": "(x²−6x+13)(x²−2sx+s²+4)의 x=1 값에서 계수 합은 8s²−16s+39",
+      "mappedTo": [
+        "graphPlan.coefficients"
+      ]
+    },
+    {
+      "id": "minimum",
+      "condition": "8(s−1)²+31의 꼭짓점 (1,31)",
+      "mappedTo": [
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "부차 다항식 8s²−16s+39의 꼭짓점을 그려 허용되는 최소점 s=1을 확인한다."
+  ],
+  "coordinatePlacement": "PANEL"
+}

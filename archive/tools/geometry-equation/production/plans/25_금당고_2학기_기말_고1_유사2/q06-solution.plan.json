@@ -1,0 +1,103 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      {
+        "id": "Y",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y"
+      }
+    ],
+    "highlight": {
+      "arrows": [
+        0,
+        2
+      ]
+    }
+  },
+  "caption": "치역 {1,2,4}, f(1)+f(3)=2+4=6으로 옳은 것은 ④이다.",
+  "accessibilityDescription": "두 집합 대응도에서 f(1)=2, f(3)=4의 두 화살표가 굵고 나머지 두 화살표는 일반 선이다.",
+  "newVisualInformation": [
+    "1→2와 3→4를 해설에 강조",
+    "치역과 원소 대응을 모두 유지"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원래 문제의 네 함숫값",
+      "mappedTo": [
+        "diagram.arrows"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "해설에서 합산하는 1→2와 3→4",
+      "mappedTo": [
+        "diagram.highlight"
+      ]
+    }
+  ]
+}

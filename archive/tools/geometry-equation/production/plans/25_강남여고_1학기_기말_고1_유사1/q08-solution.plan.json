@@ -1,0 +1,40 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "정수해",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "6",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "해집합과 경계 확인"
+  },
+  "caption": "f(x−1)=x²−4x−12<0의 해 −2<x<6",
+  "accessibilityDescription": "f(x−1)=x²−4x−12<0의 해 −2<x<6",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "f(x−1)=(x−6)(x+2), 정수해 −1~5",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "이차식 두 근 −2,6의 열린 끝과 정수 구간"
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      6,
+      -3,
+      9
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "3",
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "6"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-3",
+          "6",
+          "-1"
+        ],
+        "domain": [
+          "-2",
+          "6"
+        ],
+        "color": "WARM",
+        "label": "y=g(x)"
+      },
+      {
+        "id": "level",
+        "kind": "LINE",
+        "coefficients": [
+          "5",
+          "0"
+        ],
+        "domain": [
+          "-2",
+          "6"
+        ],
+        "style": "DASHED",
+        "label": "y=5"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "y": [
+        "5"
+      ]
+    }
+  },
+  "caption": "해설에서 k=5를 얻은 뒤 두 포물선 f(x)=(x−1)²+2, g(x)=−(x−3)²+6과 수평선 y=5를 그린다. f와 y=5의 두 교점 x=1±√3, g와 y=5의 두 교점 x=2,4가 연립부등식 해 구간을 결정한다.",
+  "accessibilityDescription": "y=f(x), y=g(x), y=5 세 실제 곡선을 그려 네 교점의 좌우 위치와 두 포물선이 수평선보다 위·아래인 구간을 대조한다.",
+  "sourceConditions": [
+    {
+      "id": "f",
+      "condition": "f(x)=x²−2x+3의 계수 (3,−2,1)",
+      "mappedTo": [
+        "graphPlan.curves[0].coefficients"
+      ]
+    },
+    {
+      "id": "g",
+      "condition": "g(x)=−x²+6x−3의 계수 (−3,6,−1)",
+      "mappedTo": [
+        "graphPlan.curves[1].coefficients"
+      ]
+    },
+    {
+      "id": "k",
+      "condition": "해설에서 k=5로 결정, 비교 수평선 y=5",
+      "mappedTo": [
+        "graphPlan.curves[2].coefficients"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 포물선과 높이 5의 직선이 만나는 네 x위치를 통해 두 연립부등식의 교집합을 시각적으로 대조한다."
+  ]
+}

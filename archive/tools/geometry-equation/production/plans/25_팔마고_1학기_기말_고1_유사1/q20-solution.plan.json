@@ -1,0 +1,49 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "b",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "4",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "label": "범위"
+      },
+      {
+        "kind": "POINTS",
+        "points": [
+          {
+            "id": "minB",
+            "value": "5",
+            "hideName": true,
+            "showValue": true,
+            "style": "FILLED"
+          }
+        ],
+        "label": "최소 정수"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "최소 정수 b의 경계"
+  },
+  "caption": "k의 양수 해는 4이며, -(x-2)²+4-b<0이 모든 실수에서 성립하려면 b>4이다. 최소 정수 b=5.",
+  "accessibilityDescription": "k의 양수 해는 4이며, -(x-2)²+4-b<0이 모든 실수에서 성립하려면 b>4이다. 최소 정수 b=5.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "b>4, 최소 정수 b=5",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "열린 점과 닫힌 점, 유효 범위 및 필요한 정수점을 실제 수직선 필드로 표시한다."
+  ]
+}

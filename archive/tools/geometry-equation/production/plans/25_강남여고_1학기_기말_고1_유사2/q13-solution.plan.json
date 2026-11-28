@@ -1,0 +1,124 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "a=−2, 구간 [−2,0]"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "0",
+                "-2",
+                "1"
+              ]
+            }
+          ],
+          "sourceDomain": {
+            "kind": "INTERVAL",
+            "range": [
+              "-2",
+              "0"
+            ],
+            "states": [
+              "CLOSED",
+              "CLOSED"
+            ]
+          },
+          "domain": [
+            -2,
+            0
+          ],
+          "viewport": [
+            -3,
+            5,
+            -3,
+            11
+          ],
+          "requiredPoints": [
+            {
+              "id": "L",
+              "x": -2,
+              "y": 8
+            },
+            {
+              "id": "R",
+              "x": 0,
+              "y": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "a=2, 구간 [2,4]"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "0",
+                "-2",
+                "1"
+              ]
+            }
+          ],
+          "sourceDomain": {
+            "kind": "INTERVAL",
+            "range": [
+              "2",
+              "4"
+            ],
+            "states": [
+              "CLOSED",
+              "CLOSED"
+            ]
+          },
+          "domain": [
+            2,
+            4
+          ],
+          "viewport": [
+            -3,
+            5,
+            -3,
+            11
+          ],
+          "requiredPoints": [
+            {
+              "id": "L",
+              "x": 2,
+              "y": 0
+            },
+            {
+              "id": "R",
+              "x": 4,
+              "y": 8
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "a=−2인 구간 [−2,0]과 a=2인 구간 [2,4]에서 f의 양끝 값 합이 각각 8이다.",
+  "accessibilityDescription": "a=−2인 구간 [−2,0]과 a=2인 구간 [2,4]에서 f의 양끝 값 합이 각각 8이다.",
+  "sourceQuote": "y=x²−2x, a≤x≤a+2, 최댓값+최솟값=8, a∈{−2,2}",
+  "sourceConditions": [
+    {
+      "id": "cases",
+      "condition": "y=x²−2x, a≤x≤a+2, 최댓값+최솟값=8, a∈{−2,2}",
+      "mappedTo": "panels[].plan.graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "상황별 이차함수 계수·정의역·실제 교점·길이 표시를 서로 독립된 두 그래프 패널에 넣는다."
+  ]
+}

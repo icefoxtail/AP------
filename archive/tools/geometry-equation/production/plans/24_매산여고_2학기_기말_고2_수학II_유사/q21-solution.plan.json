@@ -1,0 +1,57 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "6",
+      "12",
+      "6"
+    ],
+    "domain": [
+      -3,
+      1
+    ],
+    "viewport": [
+      -3.5,
+      1.5,
+      -3,
+      26
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": -1,
+        "y": 0
+      }
+    ],
+    "exactCoordinates": {
+      "V": [
+        "-1",
+        "0"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "H'(x)=6(x+1)²의 그래프는 x=-1에서 x축에 접하고 그 양옆에서 모두 양수이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "m=6이면 H'(x)=6(x+1)²≥0이다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.sourceDomain",
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "도함수의 부호가 x=-1 양옆에서 바뀌지 않아 극값이 없음을 보여 준다."
+  ],
+  "accessibilityDescription": "H'(x)=6(x+1)²의 그래프는 x=-1에서 x축에 접하고 그 양옆에서 모두 양수이다."
+}

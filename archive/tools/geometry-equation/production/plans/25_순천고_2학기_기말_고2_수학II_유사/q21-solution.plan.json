@@ -1,0 +1,113 @@
+{
+  "capability": "composite-panels-v1",
+  "sourceQuote": "$s(t)=\\displaystyle\\int_0^tv(u)\\,du$",
+  "caption": "속도 v(t)의 부호는 t=2, 4에서 바뀌고 위치 s(t)는 s(2)=4, s(4)=0, s(6)=36이다.",
+  "panels": [
+    {
+      "caption": {
+        "math": "v(t)",
+        "text": "속도"
+      },
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "0",
+            "8",
+            "-6",
+            "1"
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "domain": [
+            -0.5,
+            6.5
+          ],
+          "viewport": [
+            -1,
+            7,
+            -8,
+            52
+          ],
+          "requiredPoints": [
+            {
+              "id": "A",
+              "x": 2,
+              "y": 0
+            },
+            {
+              "id": "B",
+              "x": 4,
+              "y": 0
+            }
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "math": "s(t)",
+        "text": "위치"
+      },
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "0",
+            "0",
+            "4",
+            "-2",
+            "1/4"
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "domain": [
+            -0.5,
+            6.5
+          ],
+          "viewport": [
+            -1,
+            9,
+            -4,
+            44
+          ],
+          "requiredPoints": [
+            {
+              "id": "C",
+              "x": 2,
+              "y": 4
+            },
+            {
+              "id": "D",
+              "x": 4,
+              "y": 0
+            }
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          }
+        }
+      }
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "서답형 1. (서술형) 원점을 출발하여 수직선 위를 움직이는 점 $P$의 시각 $t$에서의 속도 $v(t)$가 $v(t)=t^3-6t^2+8t$일 때 점 $P$가 출발한 후 처음으로 $36$에 위치할 때까지 움직인 거리를 구하는 과정을 풀이 과정과 함께 서술하시오. [부분 점수 있음, 4점]",
+      "mappedTo": "panels"
+    }
+  ],
+  "newVisualInformation": [
+    "속도 v(t)의 부호는 t=2, 4에서 바뀌고 위치 s(t)는 s(2)=4, s(4)=0, s(6)=36이다."
+  ],
+  "accessibilityDescription": "속도 v(t)의 부호는 t=2, 4에서 바뀌고 위치 s(t)는 s(2)=4, s(4)=0, s(6)=36이다."
+}

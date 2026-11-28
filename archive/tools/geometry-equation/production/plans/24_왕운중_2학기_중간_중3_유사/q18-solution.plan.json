@@ -1,0 +1,243 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "각 A를 공통으로 하는 두 직각삼각형 ABC와 ADE가 겹쳐 놓여 있고, 세 변의 길이가 주어져 있다.",
+  "accessibilityDescription": "점 A에서 같은 방향으로 뻗은 두 직각삼각형이 있고, 작은 삼각형의 두 변에는 8과 6, 큰 삼각형의 세로 변에는 12가 적혀 있다.",
+  "newVisualInformation": [
+    "q18 해설에서 도출한 조건을 실제 점·선·각·호·라벨로 표시"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "8",
+        "unit": "cm"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "lDE",
+        "ownerSegment": "sDE",
+        "text": "12",
+        "unit": "cm"
+      },
+      {
+        "id": "ac10",
+        "ownerSegment": "sCA",
+        "text": "10",
+        "unit": "cm",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ce10",
+        "ownerSegment": "sCE",
+        "text": "10",
+        "unit": "cm",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "angles": [],
+    "arcs": []
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 360
+  },
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "A",
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "q18-solution-current",
+      "condition": "$AC = \\sqrt{8^2+6^2} = 10,\\mathrm{cm}$이고 $\\triangle ABC \\sim \\triangle ADE$($1:2$ 닮음)이므로 $AE=20,\\mathrm{cm}$, $CE=10,\\mathrm{cm}$이다. $\\cos E = \\dfrac{6}{10} = \\dfrac{3}{5}$, $\\cos A = \\dfrac{8}{10} = \\dfrac{4}{5}$이므로 $\\cos E \\ne \\cos A$이다. 따라서 ①이 옳지 않다.",
+      "mappedTo": [
+        "mathPlan",
+        "displaySegments",
+        "planeMarks"
+      ]
+    },
+    {
+      "id": "q18-source-asset",
+      "condition": "archive/assets/images/24_왕운중_2학기_중간_중3_유사/q18-problem.svg",
+      "mappedTo": "SOLUTION_INDEPENDENT_REVIEW"
+    }
+  ],
+  "sourceQuote": "다음 그림과 같이 $\\angle A$가 공통이고 $\\angle "
+}

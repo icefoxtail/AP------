@@ -1,0 +1,35 @@
+{
+  "capability": "quadratic-inequality-chain-v1",
+  "inequality": {
+    "coefficients": [
+      "12",
+      "-8",
+      "1"
+    ],
+    "comparator": "<=",
+    "variable": "x",
+    "integerPoints": true
+  },
+  "graphCaption": {
+    "text": "이차함수의 부호"
+  },
+  "numberLineCaption": {
+    "text": "해집합과 정수 후보"
+  },
+  "caption": "k=6에서 (x-2)(x-6)≤0의 정수해는 2,3,4,5,6로 다섯 개이다.",
+  "accessibilityDescription": "k=6에서 (x-2)(x-6)≤0의 정수해는 2,3,4,5,6로 다섯 개이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "k=6, x²-(k+2)x+2k≤0",
+      "mappedTo": [
+        "inequality.coefficients",
+        "inequality.comparator",
+        "inequality.integerPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "계수에서 계산된 영점과 포물선의 부호, 포함되는 양 끝점 및 정수 후보를 그래프와 수직선에 연결한다."
+  ]
+}

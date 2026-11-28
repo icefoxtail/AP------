@@ -1,0 +1,58 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      1.5
+    ],
+    "viewport": [
+      -3.5,
+      2,
+      -6,
+      3
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": -1,
+        "y": -5
+      },
+      {
+        "id": "Y",
+        "x": 0,
+        "y": -3
+      }
+    ],
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "4",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": []
+  },
+  "caption": "동산중 7번 해설: 꼭짓점 (-1,-5)와 y절편 -3을 통해 이차항 계수 2를 계산한다.",
+  "accessibilityDescription": "동산중 7번 해설: 꼭짓점 (-1,-5)와 y절편 -3을 통해 이차항 계수 2를 계산한다.",
+  "newVisualInformation": [
+    "동산중 7번 해설: 꼭짓점 (-1,-5)와 y절편 -3을 통해 이차항 계수 2를 계산한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y = ax^2 + bx + c$의 그래프가 그림과 같을 때, $a + b + c$의 값은?",
+      "mappedTo": "CURRENT_EXAM_TEXT_AND_GEOMETRY"
+    },
+    {
+      "id": "solution",
+      "condition": "원문 해설의 수학적 관계를 독립적으로 확인: 그림에서 포물선의 꼭짓점의 좌표는 $(-1, -5)$이고, $y$축과의 교점의 좌표는 $(0, -3)$이다. 꼭짓점을 이용하여 식을 세우면 $$y = a(x + 1)^2 - 5$$ 점 $(0, -3)$을 대입하면 $$-3 = a(0 + 1)^2 - 5 \\implies a = 2$$ 따라서 $y = 2(x + 1)^2 - 5 = 2x^2 + 4x - 3$이다",
+      "mappedTo": "SOLUTION_AXIS_INDEPENDENT_REVIEW"
+    }
+  ]
+}

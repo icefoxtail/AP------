@@ -1,0 +1,76 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "9",
+      "3"
+    ],
+    "offset": "2",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      -3,
+      7
+    ],
+    "viewport": [
+      -5,
+      8,
+      -1,
+      9
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -3,
+        "y": 2
+      },
+      {
+        "id": "B",
+        "x": 0,
+        "y": 5
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3"
+      ],
+      "y": [
+        "2",
+        "5"
+      ]
+    },
+    "hideLabels": [
+      "formula"
+    ]
+  },
+  "pointNames": {
+    "A": "A",
+    "B": "B"
+  },
+  "caption": "문제의 무리함수는 시작점 A(−3,2)에서 출발하여 B(0,5)를 통과한다. 계수와 사분면 정답은 표시하지 않는다.",
+  "accessibilityDescription": "왼쪽 끝점 A(−3,2)와 y축 위 점 B(0,5)를 지나는 오른쪽 상승 무리함수이다. 불필요한 배경·면 채움이 없다.",
+  "newVisualInformation": [
+    "문제에 주어진 두 점과 시작점",
+    "원본 그래프의 오른쪽 상승 형태"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "시작점 A(-3,2): 진수가 0, 평행이동 c=2",
+      "mappedTo": [
+        "graphPlan.radicand",
+        "graphPlan.offset",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "통과점 B(0,5)",
+      "mappedTo": [
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ]
+}

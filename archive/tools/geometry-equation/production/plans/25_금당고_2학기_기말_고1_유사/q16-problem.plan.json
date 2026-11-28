@@ -1,0 +1,22 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": ["3", "2"],
+    "denominator": ["3", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-9, 7],
+    "viewport": [-9, 7, -3, 9],
+    "requiredPoints": [{"id": "P", "x": 0, "y": 1}],
+    "axisTickValues": {"x": ["-3"], "y": ["1", "2"]},
+    "asymptoteLabelAt": "END"
+  },
+  "pointNames": {"P": "(0,1)"},
+  "caption": "수직점근선 x=-3, 수평점근선 y=2, 지나가는 점 (0,1)이 원본 그림과 동일한 관계를 나타낸다. a,b,c 값은 공개하지 않는다.",
+  "accessibilityDescription": "좌표평면에 서로 반대 사분면으로 휘는 유리함수 두 가지, 점선 점근선 x=-3과 y=2, 표시된 점 (0,1)이 있다. 원본 그림의 핵심 조건만 표시한다.",
+  "newVisualInformation": ["원본 PNG의 두 점근선 x=-3,y=2와 점(0,1)을 유사문항 값으로 정확히 표시", "문제에서 묻는 계수 및 무리함수 시작점은 노출하지 않음", "배경 및 면 채움 없음"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "그래프의 점근선은 x=-3과 y=2이다.", "mappedTo": ["graphPlan.denominator", "graphPlan.numerator", "graphPlan.axisTickValues"]},
+    {"id": "c2", "condition": "유리함수는 (0,1)을 지나고 왼쪽 위·오른쪽 아래 두 가지를 가진다.", "mappedTo": ["graphPlan.requiredPoints", "graphPlan.viewport"]}
+  ]
+}

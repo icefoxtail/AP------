@@ -1,0 +1,73 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-6",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "-2",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "label": "첫째 식"
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-5",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "4",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "둘째 식"
+      },
+      {
+        "kind": "RESULT",
+        "label": "공통 정수",
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "두 조각으로 분리된 첫 부등식과 "
+  },
+  "caption": "x<−6 또는 x>−2와 −5≤x≤4의 공통부분은 −2<x≤4이므로 정수합은 9다.",
+  "accessibilityDescription": "두 조각으로 분리된 첫 부등식과 닫힌 둘째 구간의 교집합 −2<x≤4 및 정수점을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "(x+6)(x+2)>0의 두 외부구간",
+      "mappedTo": [
+        "numberLine.rows[0].pieces"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "(x+5)(x−4)≤0의 닫힌 내부구간",
+      "mappedTo": [
+        "numberLine.rows[1].pieces"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 조각으로 분리된 첫 부등식과 닫힌 둘째 구간의 교집합 −2<x≤4 및 정수점을 표시한다."
+  ]
+}

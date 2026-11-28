@@ -1,0 +1,69 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "-8",
+      "1"
+    ],
+    "domain": [
+      0,
+      8.3
+    ],
+    "viewport": [
+      -0.5,
+      9,
+      -19,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 4,
+        "y": -16
+      },
+      {
+        "id": "Z",
+        "x": 8,
+        "y": 0
+      },
+      {
+        "id": "T",
+        "x": 3,
+        "y": -15
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisVariable": "t",
+    "functionName": "v"
+  },
+  "caption": "시각 t≥0에서 속도 v(t)=t²−8t의 부호가 t=0부터 3까지 음수임을 나타낸다.",
+  "accessibilityDescription": "가로축 t에서 속도 포물선은 (0,0)을 지나 (4,−16)에서 최소, (8,0)에서 다시 0이 된다. t=3에서 속도는 −15이다.",
+  "sourceConditions": [
+    {
+      "id": "velocity",
+      "condition": "t≥0, v(t)=t²−8t",
+      "mappedTo": "graphPlan.coefficients;graphPlan.axisVariable"
+    },
+    {
+      "id": "signed_integral",
+      "condition": "위치 변화 ∫₀³ v(t)dt=−27",
+      "mappedTo": "graphPlan.requiredPoints[T] and caption; no area-fill approximation"
+    }
+  ],
+  "newVisualInformation": [
+    "운동 방향과 위치 변화의 음의 부호를 정적으로 보조한다. 넓이 음영을 지시하지 않아 시각화되지 않은 적분값을 면적처럼 주장하지 않는다."
+  ]
+}

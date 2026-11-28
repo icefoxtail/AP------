@@ -1,0 +1,28 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "label": "구간과 축",
+        "points": [
+          {"id": "A", "value": "0"},
+          {"id": "B", "value": "4"},
+          {"id": "V", "value": "5"}
+        ],
+        "spans": [{"from": "A", "to": "B", "label": "정의 구간", "style": "BRACE", "side": "BELOW"}]
+      }
+    ]
+  },
+  "numberLineCaption": {"text": "a=5일 때 대칭축은 구간 오른쪽"},
+  "caption": "a=5에서 f(x)=−x²+10x−5의 대칭축 x=5는 [0,4] 오른쪽이므로 경계 x=4에서 최대 19이다.",
+  "accessibilityDescription": "수직선 위에 정의 구간 양 끝 0과 4, 그 오른쪽의 대칭축 x=5를 표시한 그림.",
+  "sourceConditions": [
+    {"id": "interval", "condition": "정의 구간 0≤x≤4", "mappedTo": ["numberLine.rows[0].spans[0]"]},
+    {"id": "vertex", "condition": "a=5이므로 대칭축 x=5가 구간 바깥", "mappedTo": ["numberLine.rows[0].points[2]"]},
+    {"id": "right", "condition": "최댓값을 얻는 x=4", "mappedTo": ["numberLine.rows[0].points[1]"]}
+  ],
+  "newVisualInformation": ["대칭축 x=5가 [0,4] 오른쪽에 있는 위치 관계를 실제 수직선으로 보인다."]
+}

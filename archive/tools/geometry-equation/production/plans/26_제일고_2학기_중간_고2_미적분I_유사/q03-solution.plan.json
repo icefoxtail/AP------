@@ -1,0 +1,58 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "5",
+      "0",
+      "-1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -1,
+      5,
+      -13,
+      7
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 1,
+        "y": 4
+      },
+      {
+        "id": "B",
+        "x": 4,
+        "y": -11
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "sec",
+          "slope": "-5",
+          "intercept": "9"
+        }
+      ]
+    }
+  },
+  "caption": "구간 [1,4]의 두 점을 잇는 평균변화율의 할선.",
+  "accessibilityDescription": "A(1,4)와 B(4,-11)를 잇는 직선 y=-5x+9의 기울기가 평균변화율이다.",
+  "sourceQuote": "함수 $f(x)=-x^2+5$에서 $x$의 값이 $1$에서 $4$",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=-x^2+5$에서 $x$의 값이 $1$에서 $4$까지",
+      "mappedTo": "ARCHIVE_SIMILAR_JS"
+    }
+  ],
+  "newVisualInformation": [
+    "A(1,4)와 B(4,-11)를 잇는 직선 y=-5x+9의 기울기가 평균변화율이다."
+  ]
+}

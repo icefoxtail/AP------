@@ -1,0 +1,39 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "공통해",
+        "pieces": [
+          {
+            "lo": {
+              "value": "4",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "6",
+              "state": "OPEN"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "해집합과 경계 확인"
+  },
+  "caption": "2x−1<x+5≤3x−3의 공통해 4≤x<6",
+  "accessibilityDescription": "2x−1<x+5≤3x−3의 공통해 4≤x<6",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "2x−1<x+5와 x+5≤3x−3을 함께 만족하므로 4≤x<6",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "실제 닫힌 4, 열린 6 경계를 같은 수직선에 표시"
+  ]
+}

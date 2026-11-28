@@ -1,0 +1,40 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "k=16 예",
+        "pieces": [
+          {
+            "lo": {
+              "value": "2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "17/3",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "해집합과 경계 확인"
+  },
+  "caption": "k=16일 때 정수해 2,3,4,5의 합은 14",
+  "accessibilityDescription": "k=16일 때 정수해 2,3,4,5의 합은 14",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "x≥2 및 x<(k+1)/3. k=15,16,17 모두 정수해 {2,3,4,5}",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 연립부등식에서 허용되는 4개 정수를 한 줄에 표시"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-4",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "label": "첫째 부등식"
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-1",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "둘째 부등식"
+      },
+      {
+        "kind": "RESULT",
+        "integerPoints": true,
+        "label": "공통 정수해"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "연립부등식의 정수해"
+  },
+  "caption": "두 일차부등식의 공통 범위는 -4<x≤-1이며, 정수해는 −3, −2, −1의 세 개이다.",
+  "accessibilityDescription": "두 일차부등식의 공통 범위는 -4<x≤-1이며, 정수해는 −3, −2, −1의 세 개이다.",
+  "sourceConditions": [
+    {
+      "id": "geometry",
+      "condition": "첫째는 x>-4, 둘째는 x≤-1; 교집합의 정수 개수 계산.",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 일차부등식의 공통 범위는 -4<x≤-1이며, 정수해는 −3, −2, −1의 세 개이다."
+  ]
+}

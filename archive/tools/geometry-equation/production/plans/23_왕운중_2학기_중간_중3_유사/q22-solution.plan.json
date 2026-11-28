@@ -1,0 +1,52 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "4",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 2,
+        "y": 5
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -2,
+      6,
+      -3,
+      7
+    ]
+  },
+  "caption": "왕운중 22번 해설 기하 조건",
+  "accessibilityDescription": "왕운중 22번 해설 기하 조건",
+  "sourceConditions": [
+    {
+      "id": "q22-solution",
+      "condition": "$y=ax^2+bx+c$에 $(0, 1)$을 대입하면 $c=1$이다. $(1, 4)$, $(2, 5)$를 대입하면 $a+b=3$, $4a+2b=4$($2a+b=2$)이므로 두 식을 연립하면 $a=-1$, $b=4$이다. 따라서 구하는 이차함수의 식은 $y=-x^2+4x+1$이다.",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 해설에서 결정적 관계를 별도 구성"
+  ]
+}

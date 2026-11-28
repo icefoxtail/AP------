@@ -1,0 +1,68 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "viewport": [
+      -1,
+      7,
+      -6,
+      9
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 3,
+        "y": -4
+      },
+      {
+        "id": "A",
+        "x": 1,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 5,
+        "y": 0
+      },
+      {
+        "id": "Y",
+        "x": 0,
+        "y": 5
+      }
+    ],
+    "overlays": {
+      "lines": [{"id": "sym", "x": "3", "style": "DASHED"}]
+    }
+  },
+  "caption": "f(x)=(x−1)(x−5) 그래프는 두 근 1,5와 꼭짓점 (3,−4)를 갖는다.",
+  "accessibilityDescription": "f(x)=(x−1)(x−5) 그래프는 두 근 1,5와 꼭짓점 (3,−4)를 갖는다.",
+  "sourceQuote": "두 실근 1,5, 꼭짓점 (3,−4), f(0)=5",
+  "sourceConditions": [
+    {
+      "id": "eq",
+      "condition": "두 실근 1,5, 꼭짓점 (3,−4), f(0)=5",
+      "mappedTo": "graphPlan.pieces"
+    },
+    {
+      "id": "vis",
+      "condition": "f(x)=(x−1)(x−5) 그래프는 두 근 1,5와 꼭짓점 (3,−4)를 갖는다.",
+      "mappedTo": "graphPlan.requiredPoints,graphPlan.sourceDomain"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진의 실제 곡선 계수·정의역·특징점과 필요한 보조 도형 필드로 해설 조건을 표시한다."
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "CENTROID",
+        "inputs": [
+          "O",
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "CENTROID",
+        "inputs": [
+          "G",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "G",
+        "B"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "G",
+        "C"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "caption": "주어진 삼각형 OAB의 A각 이등분선과 무게중심 G",
+  "accessibilityDescription": "A에서 OB로 향하는 각 이등분선 AC를 같은 각 표시 두 개로, OAB의 무게중심 G를 별도 점으로 나타낸다. 수치 해는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "given",
+      "condition": "A에서 OB로 향하는 각 이등분선 AC를 같은 각 표시 두 개로, OAB의 무게중심 G를 별도 점으로 나타낸다. 수치 해는 쓰지 않는다.",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "G",
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "문제에 명시된 위치·선·직각·같은 길이의 시각적 관계만 표시"
+  ],
+  "coordinateLabels": [
+    "A",
+    "B"
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "ang1",
+        "refs": [
+          "O",
+          "A",
+          "C"
+        ],
+        "value": 26.565,
+        "arcs": 1,
+        "style": "ARC",
+        "equalGroup": 1,
+        "noLabel": true
+      },
+      {
+        "id": "ang2",
+        "refs": [
+          "C",
+          "A",
+          "B"
+        ],
+        "value": 26.565,
+        "arcs": 1,
+        "style": "ARC",
+        "equalGroup": 1,
+        "noLabel": true
+      }
+    ]
+  }
+}

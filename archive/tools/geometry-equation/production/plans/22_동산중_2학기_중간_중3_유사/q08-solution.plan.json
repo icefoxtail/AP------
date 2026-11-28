@@ -1,0 +1,66 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      4
+    ],
+    "viewport": [
+      -2.5,
+      4.5,
+      -2,
+      5.5
+    ],
+    "requiredPoints": [
+      {
+        "id": "X1",
+        "x": -1,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 1,
+        "y": 4
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "axis",
+          "x": "1"
+        }
+      ]
+    },
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "2",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": []
+  },
+  "caption": "동산중 8번 해설: 대칭축 x=1을 중심으로 x절편 -1과 3을 대칭으로 확인한다.",
+  "accessibilityDescription": "동산중 8번 해설: 대칭축 x=1을 중심으로 x절편 -1과 3을 대칭으로 확인한다.",
+  "newVisualInformation": [
+    "동산중 8번 해설: 대칭축 x=1을 중심으로 x절편 -1과 3을 대칭으로 확인한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림은 축의 방정식이 $x = 1$이고 한 $x$절편이 $-1$인 이차함수 $y = ax^2 + bx + c$의 그래프이다. 다음 중 옳지 않은 것은?",
+      "mappedTo": "CURRENT_EXAM_TEXT_AND_GEOMETRY"
+    },
+    {
+      "id": "solution",
+      "condition": "원문 해설의 수학적 관계를 독립적으로 확인: 그래프가 위로 볼록하므로 $a < 0$이다. 축이 $x = 1$이고 한 $x$절편이 $-1$이므로 대칭성에 의해 다른 $x$절편은 $3$이다. 따라서 $f(x) = ax^2 + bx + c = a(x + 1)(x - 3) = ax^2 - 2ax - 3a$이다. ① $a < 0$이므로 $b = -2a > 0$, $c = -3a > 0$이다. (참) ② $a ",
+      "mappedTo": "SOLUTION_AXIS_INDEPENDENT_REVIEW"
+    }
+  ]
+}

@@ -1,0 +1,281 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Gu",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "G"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lG",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "G",
+          "Gu"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "A",
+          "lG"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A2",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "P"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "28"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lA",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "A2"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lA",
+          "lG"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "G",
+    "P",
+    "B"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sOG",
+      "refs": [
+        "O",
+        "G"
+      ]
+    },
+    {
+      "id": "sGB",
+      "refs": [
+        "G",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "P",
+          "A",
+          "B"
+        ],
+        "value": 28,
+        "label": "28",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dOG",
+        "from": "O",
+        "to": "G",
+        "label": "15",
+        "unit": "m",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "eAO",
+        "ownerSegment": "sAO",
+        "text": "1.5",
+        "unit": "m",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 360
+  },
+  "hiddenPointNames": [
+    "O",
+    "G",
+    "P"
+  ],
+  "rightAngles": [
+    {
+      "id": "rG",
+      "refs": [
+        "O",
+        "G",
+        "B"
+      ]
+    },
+    {
+      "id": "rP",
+      "refs": [
+        "A",
+        "P",
+        "G"
+      ]
+    }
+  ],
+  "caption": "나무로부터 15미터 떨어진 지점 A에서 눈높이 1.5미터로 나무 꼭대기 B를 올려본 각이 28도로 표시되어 있다.",
+  "accessibilityDescription": "지면, 나무를 나타내는 세로선, 지점 A의 눈높이를 나타내는 세로선과 수평선이 보이고, 각 28도, 나무까지의 거리 15미터, 눈높이 1.5미터, 점 A와 B가 표시되어 있다.",
+  "newVisualInformation": [
+    "점 A와 나무 꼭대기 B",
+    "올려본 각 28도",
+    "나무까지의 거리 15미터",
+    "눈높이 1.5미터",
+    "나무와 지면의 직각"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 학생이 나무로부터 $15\\text{ m}$ 떨어진 지점 $\\text{A}$에서 나무의 꼭대기 $\\text{B}$를 올려본 각의 크기가 $28^\\circ$이다. 이 학생의 눈높이가 $1.5\\text{ m}$일 때, 이 나무의 높이는? (단, $\\sin 28^\\circ = 0.470$, $\\cos 28^\\circ = 0.883$, $\\tan 28^\\circ = 0.532$로 계산한다.) (4점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

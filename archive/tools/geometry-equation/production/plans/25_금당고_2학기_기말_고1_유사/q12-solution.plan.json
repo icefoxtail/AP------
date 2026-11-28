@@ -1,0 +1,28 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{"coefficients": ["1"]}],
+    "breakpoints": [],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "formula": "1",
+    "domain": [-1, 4],
+    "viewport": [-1, 4, -2, 5],
+    "requiredPoints": [],
+    "axisTickValues": {"x": ["2"], "y": ["1"]},
+    "overlays": {
+      "lines": [
+        {"id": "boundaryX", "x": "2"},
+        {"id": "boundaryK", "slope": "-4", "intercept": "9", "label": "4x+y=9"}
+      ],
+      "points": [{"id": "B", "x": "2", "y": "1", "marker": "OPEN", "unnamed": true}]
+    }
+  },
+  "caption": "결론이 거짓인 영역은 x<2, y<1이다. 경계점 (2,1)은 제외되고 그곳에서 4x+y=9이므로 임계 정수 k=9. 정답 4개.",
+  "accessibilityDescription": "좌표평면에 경계 x=2와 y=1, 사선 4x+y=9가 있으며 열린 점 (2,1)에서 세 경계가 만난다. 범위는 경계점의 왼쪽 아래이고 면 채움은 없다.",
+  "newVisualInformation": ["조건의 부정을 이루는 경계 x=2, y=1과 열린 꼭짓점", "4x+y=9가 그 경계에 닿는 이유를 직선으로 표시"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "결론이 거짓일 때 x<2이고 y<1이다.", "mappedTo": ["graphPlan.pieces", "graphPlan.overlays.lines"]},
+    {"id": "c2", "condition": "최댓값은 포함되지 않은 (2,1) 경계의 극한 9이며 4x+y=9가 그 점을 지난다.", "mappedTo": ["graphPlan.overlays.points", "graphPlan.overlays.lines"]}
+  ]
+}

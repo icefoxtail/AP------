@@ -1,0 +1,72 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "11000",
+      "1200",
+      "-200"
+    ],
+    "domain": [
+      0,
+      6
+    ],
+    "viewport": [
+      0,
+      6,
+      0,
+      14000
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        0,
+        6
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 3,
+        "y": 12800
+      }
+    ],
+    "applicationAxes": true,
+    "axisVariable": "x",
+    "axisTickValues": {
+      "x": [
+        2,
+        4
+      ],
+      "y": [
+        2000,
+        4000,
+        6000,
+        8000
+      ]
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "x는 판매가격을 4500원에서 100원씩 올린 횟수이고 y는 하루 이익(원)이다. x=3에서 이익은 최대 12800원이며 판매가격은 4800원이다.",
+  "sourceConditions": [
+    {
+      "id": "profit-model",
+      "condition": "판매가격 4500+100x원, 수요 22-2x개, 재료비 4000원에서 이익 I(x)=-200x²+1200x+11000이다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.pieces"
+      ]
+    },
+    {
+      "id": "vertex",
+      "condition": "완전제곱 I(x)=-200(x-3)²+12800에서 최댓값은 x=3, 12800원이다.",
+      "mappedTo": [
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "올린 횟수에 따른 하루 이익이 x=3에서 최대 12800원임을 보여 준다."
+  ],
+  "accessibilityDescription": "x는 판매가격을 4500원에서 100원씩 올린 횟수이고 y는 하루 이익(원)이다. x=3일 때 이익이 12800원으로 최대이다."
+}

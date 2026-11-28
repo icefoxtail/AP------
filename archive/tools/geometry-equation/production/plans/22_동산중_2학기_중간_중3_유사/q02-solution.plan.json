@@ -1,0 +1,53 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "75/4",
+          "-15/2",
+          "3/4"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      1,
+      9
+    ],
+    "viewport": [
+      0.5,
+      9.5,
+      -9,
+      9
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 5,
+        "y": 0
+      }
+    ]
+  },
+  "caption": "동산중 2번 해설: 주어진 이차함수의 꼭짓점과 대칭축을 나타낸 해설 그래프",
+  "accessibilityDescription": "동산중 2번 해설: 주어진 이차함수의 꼭짓점과 대칭축을 나타낸 해설 그래프",
+  "newVisualInformation": [
+    "동산중 2번 해설: 주어진 이차함수의 꼭짓점과 대칭축을 나타낸 해설 그래프"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y = \\dfrac{3}{4}(x-5)^2$의 그래프에 대한 설명으로 옳지 않은 것은?",
+      "mappedTo": "CURRENT_EXAM_TEXT_AND_GEOMETRY"
+    },
+    {
+      "id": "solution",
+      "condition": "원문 해설의 수학적 관계를 독립적으로 확인: $y = \\dfrac{3}{4}(x-5)^2$의 그래프는 $y = \\dfrac{3}{4}x^2$의 그래프를 $x$축의 방향으로 $5$만큼 평행이동한 것이다. ① 꼭짓점의 좌표는 $(5, 0)$이다. (참) ② 축의 방정식은 $x = 5$이다. (참) ③ $y$ 대신 $-y$를 대입하면 $y = -\\dfrac{3}{4}(x-5)^2$이므로 $x$축 대칭이다.",
+      "mappedTo": "SOLUTION_AXIS_INDEPENDENT_REVIEW"
+    }
+  ]
+}

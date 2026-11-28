@@ -1,0 +1,134 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "-6",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-1",
+          "6",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "1",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "3-2*sqrt(2)",
+        "y": "0"
+      },
+      {
+        "x": "3+2*sqrt(2)",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      8
+    ],
+    "viewport": [
+      -2,
+      8,
+      -1,
+      11
+    ],
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "3-2*sqrt(2)",
+        "y": "0"
+      },
+      {
+        "id": "R",
+        "x": "3+2*sqrt(2)",
+        "y": "0"
+      },
+      {
+        "id": "P",
+        "x": -1,
+        "y": 8
+      },
+      {
+        "id": "M",
+        "x": 3,
+        "y": 8
+      },
+      {
+        "id": "Q",
+        "x": 7,
+        "y": 8
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "3",
+        "7"
+      ],
+      "y": [
+        "8"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "K",
+          "slope": "0",
+          "intercept": "8",
+          "label": "y=k",
+          "labelValues": {
+            "k": "8"
+          }
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "L": "L",
+    "R": "R",
+    "P": "P",
+    "M": "M",
+    "Q": "Q"
+  },
+  "caption": "y=|(x−3)²−8|은 x=3에서 봉우리 8, 두 영점 3±2√2가 있다. k=8에서 정확히 세 실근 −1,3,7이므로 k+a+b+c=17이다.",
+  "accessibilityDescription": "중앙이 뒤집힌 이차곡선과 양쪽 윗가지, 두 근호 영점 L,R, 수평선 y=8, 세 교점 P(−1,8),M(3,8),Q(7,8)을 보여 준다.",
+  "newVisualInformation": [
+    "절댓값 뒤집힌 포물선 세 조각",
+    "높이 8의 수평선과 세 교점"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=|(x−3)²−8|로 꼭짓점 높이 8",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.breakpoints",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "k=8에서 교점 x=-1,3,7",
+      "mappedTo": [
+        "graphPlan.overlays.lines",
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ]
+}

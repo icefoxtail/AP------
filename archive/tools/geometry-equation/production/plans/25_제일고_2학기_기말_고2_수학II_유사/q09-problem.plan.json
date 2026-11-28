@@ -1,0 +1,15 @@
+{
+  "capability":"piecewise-polynomial-spike-v1",
+  "sourceQuote":"f(2)=f(8)=f′(8)=0이며 최고차항 계수가 양수인 삼차함수의 그래프",
+  "caption":"x=2에서 x축을 통과하고 x=8에서 접하는 삼차함수의 개형이다.",
+  "graphPlan": {
+    "family":"piecewise-polynomial", "pieces":[{"coefficients":["-16","12","-9/4","1/8"]}],"breakpoints":[],
+    "sourceDomain":{"kind":"ALL_REALS"},"functionName":"f","domain":[0.6,10.4],"viewport":[-1,11,-11,8],
+    "requiredPoints":[{"id":"A","x":2,"y":0},{"id":"B","x":8,"y":0},{"id":"M","x":4,"y":4}],
+    "exactCoordinates":{"A":["2","0"],"B":["8","0"],"M":["4","4"]},
+    "coordinateBand":{"hide":["M"]},"axisTickValues":{"x":[],"y":[]}
+  },
+  "sourceConditions":[{"id":"roots","condition":"2는 단순근이고 8은 접하는 중근이며 최고차항 계수가 양수다.","mappedTo":["graphPlan.pieces","graphPlan.requiredPoints"]}],
+  "newVisualInformation":["대표 개형의 두 x절편과 중근 접선 형태"],
+  "accessibilityDescription":"삼차곡선은 x=2에서 x축을 통과하고 x=8에서 x축에 닿았다가 다시 상승한다."
+}

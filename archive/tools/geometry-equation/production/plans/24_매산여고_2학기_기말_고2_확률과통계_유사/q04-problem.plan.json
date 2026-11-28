@@ -1,0 +1,50 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "A",
+        "mean": "55",
+        "sd": "3",
+        "label": "A",
+        "meanLine": false
+      },
+      {
+        "id": "B",
+        "mean": "45",
+        "sd": "6",
+        "label": "B",
+        "meanLine": false
+      }
+    ],
+    "ticks": [
+      {
+        "x": "55",
+        "text": "m1",
+        "curve": "A"
+      },
+      {
+        "x": "45",
+        "text": "m2",
+        "curve": "B"
+      }
+    ]
+  },
+  "caption": "두 정규분포곡선 A와 B의 중심 위치, 봉우리 높이, 퍼진 정도를 비교하는 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "q04-problem-source",
+      "condition": "곡선 A의 중심은 B의 중심보다 오른쪽이며 A의 봉우리는 더 높고 좁다. 55,45,3,6은 실제 성적 수치가 아닌 도해용 상대좌표이고, 표시되는 눈금 라벨은 m1,m2이다.",
+      "mappedTo": [
+        "chart.kind",
+        "chart.curves",
+        "chart.ticks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 곡선 A/B와 각 중심의 m1,m2 눈금이 보이도록 그린다."
+  ],
+  "accessibilityDescription": "두 정규분포곡선 A와 B를 비교한다. 오른쪽의 곡선 A는 더 높고 좁으며, 왼쪽의 B는 낮고 넓다. 각 중심 아래에 m1과 m2가 표시되어 있다."
+}

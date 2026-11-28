@@ -1,0 +1,302 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "D"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "40"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineOD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "A",
+          "lineOD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineOA",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "verticalD",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "D",
+          "lineOD"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lineOA",
+          "verticalD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "D",
+    "E",
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aX",
+        "refs": [
+          "B",
+          "O",
+          "A"
+        ],
+        "value": 40,
+        "label": "40",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lsOB",
+        "ownerSegment": "sOB",
+        "text": "0.77",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lsAB",
+        "ownerSegment": "sAB",
+        "text": "0.64",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lsCD",
+        "ownerSegment": "sCD",
+        "text": "0.84",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "quarter",
+        "circle": "circ",
+        "center": "O",
+        "from": "D",
+        "to": "E",
+        "side": "CCW"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rOBA",
+      "refs": [
+        "O",
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "rODC",
+      "refs": [
+        "O",
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "E"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 430
+  },
+  "caption": "풍덕중 23번 해설: 반지름 1의 사분원에서 OB는 cos40°≈0.77, AB와 CD는 각각 sin40° 및 tan40°에 대응한다.",
+  "accessibilityDescription": "반지름 1의 사분원에서 OB는 cos40°≈0.77, AB와 CD는 각각 sin40° 및 tan40°에 대응한다.",
+  "newVisualInformation": [
+    "OB의 0.77은 표의 반올림 값이며 좌표의 cos40°≈0.7660과 구별",
+    "사분원호, 두 수선, 길이 라벨"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 반지름의 길이가 $1$인 사분원에서 $\\overline{\\text{OB}}=0.77$이다. 아래 삼각비의 표를 이용하여 물음에 답하시오.\n\n| 각도 | $\\sin$ | $\\cos$ | $\\tan$ |\n| :---: | :---: | :---: | :---: |\n| $40^\\circ$ | $0.64$ | $0.77$ | $0.84$ |\n| $41^\\circ$ | $0.66$ | $0.75$ | $0.87$ |\n| $42^\\circ$ | $0.67$ | $0.74$ | $0.90$ |\n\n(1) $\\angle x$의 크기를 구하시오. (2) $\\overline{\\text{AB}}+\\overline{\\text{CD}}$의 값을 구하시오.",
+      "mappedTo": "CURRENT_EXAM_TEXT_AND_GEOMETRY"
+    },
+    {
+      "id": "solution",
+      "condition": "원문 해설의 수학적 관계를 독립적으로 확인: (1) 사분원의 반지름의 길이는 $\\overline{\\text{OA}}=\\overline{\\text{OD}}=1$이다. 직각삼각형 $\\text{OAB}$에서 $$\\cos x = \\frac{\\overline{\\text{OB}}}{\\overline{\\text{OA}}} = \\frac{0.77}{1} = 0.77$$ 삼각비의 표에서 $\\cos 40^\\circ =",
+      "mappedTo": "SOLUTION_AXIS_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "rounding",
+      "condition": "삼각비 표에 나타난 두 자리 소수는 실제 좌표의 삼각비를 반올림한 수치이며 정확한 길이와 동일하다고 단언하지 않는다.",
+      "mappedTo": "APPROXIMATED_TRIG_VALUES"
+    }
+  ]
+}

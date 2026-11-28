@@ -1,0 +1,25 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "xWindow": [-1, 10],
+    "pieces": [
+      {"coefficients": ["1", "-2", "1"], "domain": [0, 4], "end": "CLOSED"},
+      {"coefficients": ["49", "-14", "1"], "domain": [4, 9], "start": "OPEN", "end": "CLOSED"}
+    ],
+    "requiredPoints": [
+      {"id": "A", "x": "1", "y": "0"},
+      {"id": "B", "x": "7", "y": "0"}
+    ],
+    "axisTickValues": {"x": ["1", "4", "7"], "y": ["9"]},
+    "functionName": "g"
+  },
+  "caption": "조건을 만족하는 대표적인 경우 k=1, a=6에서 g(x)는 x=4에서 이어지는 두 포물선이고 x축과 x=1, x=7에서 만난다.",
+  "accessibilityDescription": "왼쪽 포물선 y=(x-1)^2는 꼭짓점 A(1,0)를 지나 x=4에서 높이 9까지 오른다. 오른쪽 포물선 y=(x-7)^2는 x=4에서 같은 높이 9로 이어져 B(7,0)에서 x축에 닿는다.",
+  "newVisualInformation": ["두 구간의 함수가 x=4에서 연속이라는 연결", "서로 다른 x절편 k와 k+a의 구분", "불필요한 포물선 내부 채움 없음", "k=1, a=6의 실현 가능한 조건 예시"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "x<=4인 구간은 f(x)=(x-k)^2, x>4에서는 k f(x-a)이다.", "mappedTo": "graphPlan.pieces"},
+    {"id": "c2", "condition": "x=4의 양쪽 극한이 일치하고 x축과 서로 다른 두 점에서 만난다.", "mappedTo": ["graphPlan.pieces", "graphPlan.requiredPoints"]},
+    {"id": "c3", "condition": "대표값 k=1, a=6은 0<k<4, a+k>4를 만족한다.", "mappedTo": "PRESERVED_ARCHIVE_BANK"}
+  ]
+}

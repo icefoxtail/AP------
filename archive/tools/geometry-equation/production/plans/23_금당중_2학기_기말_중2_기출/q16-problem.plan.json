@@ -1,0 +1,18 @@
+{
+  "capability": "lattice-path-figure-v1",
+  "caption": "가로 4칸·세로 3칸 도로망의 왼쪽 아래 A에서 P(2,2)를 거쳐 오른쪽 위 B까지 이동하는 최단 거리 문제 그림. 답에 해당하는 경로 수는 표시하지 않는다.",
+  "accessibilityDescription": "가로 네 칸, 세로 세 칸의 직사각형 격자 길이다. A는 왼쪽 아래, P는 오른쪽으로 두 칸 위로 두 칸의 교점, B는 오른쪽 위다.",
+  "sourceConditions": [
+    {"id": "q16-p", "condition": "원본 q16.png는 가로 4칸·세로 3칸이며 A(0,0), P(2,2), B(4,3)이다.", "mappedTo": "lattice.grid,lattice.points"},
+    {"id": "q16-p-via", "condition": "A에서 P를 반드시 거쳐 B로 가는 최단 경로만 센다.", "mappedTo": "lattice.viaPoints"},
+    {"id": "q16-p-hide", "condition": "발문이 경로 수를 물으므로 문제 그림에는 경로 수를 쓰지 않는다.", "mappedTo": "lattice.counts,lattice.hideTargetCount"}
+  ],
+  "newVisualInformation": ["원본의 4×3 전체 도로 선분과 A·P·B 위치를 빠짐없이 복원"],
+  "lattice": {
+    "grid": {"cols": 4, "rows": 3},
+    "points": {"A": [0, 0], "P": [2, 2], "B": [4, 3]},
+    "from": "A", "to": "B", "viaPoints": ["P"],
+    "counts": false,
+    "hideTargetCount": true
+  }
+}

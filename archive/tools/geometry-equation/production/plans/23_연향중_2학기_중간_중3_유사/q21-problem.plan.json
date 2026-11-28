@@ -1,0 +1,296 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "H",
+          "U"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "40"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "37"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lGround",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "G",
+          "G2"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lEye",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "H",
+          "U"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "K",
+          "lGround"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "K",
+          "lEye"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "G",
+    "H",
+    "U",
+    "K",
+    "F",
+    "E",
+    "G2"
+  ],
+  "displaySegments": [
+    {
+      "id": "sGH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "sHK",
+      "refs": [
+        "H",
+        "K"
+      ]
+    },
+    {
+      "id": "sGF",
+      "refs": [
+        "G",
+        "F"
+      ]
+    },
+    {
+      "id": "sKF",
+      "refs": [
+        "K",
+        "F"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sHE",
+      "refs": [
+        "H",
+        "E"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sKE",
+      "refs": [
+        "K",
+        "E"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayCircles": [],
+  "rightAngles": [
+    {
+      "id": "rG",
+      "refs": [
+        "H",
+        "G",
+        "F"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "rE",
+      "refs": [
+        "H",
+        "E",
+        "K"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aH",
+        "refs": [
+          "U",
+          "H",
+          "K"
+        ],
+        "value": 37,
+        "label": "37",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "rope",
+        "ownerSegment": "sHK",
+        "text": "40",
+        "unit": "m"
+      },
+      {
+        "id": "hand",
+        "ownerSegment": "sGH",
+        "text": "1.5",
+        "unit": "m"
+      }
+    ],
+    "arcs": [],
+    "regions": [],
+    "equalLengths": [],
+    "parallels": [],
+    "facts": []
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "높이 1.5m의 손에서 길이 40m의 연줄이 정확히 37° 각도로 올라간다. sin37°≈0.60은 문제 계산용 근삿값이다.",
+  "hiddenPointNames": [
+    "U",
+    "G2",
+    "E"
+  ],
+  "hiddenPointStyle": "NONE",
+  "accessibilityDescription": "높이 1.5m의 손에서 길이 40m의 연줄이 정확히 37° 각도로 올라간다. sin37°≈0.60은 문제 계산용 근삿값이다.",
+  "sourceConditions": [
+    {
+      "id": "q21-problem",
+      "condition": "[서술형 1] 다음 그림에서 민수가 연을 올려본각의 크기는 $37^\\circ$이고, 민수의 손에서 연까지의 거리는 $40,\\mathrm{m}$이다. 지면에서 민수의 손까지의 높이가 $1.5,\\mathrm{m}$일 때, 지면에서 연까지의 높이는 몇 $\\mathrm{m}$인지 구하고 그 과정을 서술하시오. (단, $\\sin 37^\\circ=0.60$, $\\cos 37^\\circ=0.80$, $\\tan 37^\\circ=0.75$로 계산한다.)",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    },
+    {
+      "id": "q21-original-svg",
+      "condition": "archive/assets/images/23_연향중_2학기_중간_중3_유사/q21-problem.svg",
+      "mappedTo": "DRAWN_FEATURE_PARITY_STATIC"
+    }
+  ],
+  "newVisualInformation": [
+    "문제에서 주어진 정보에 한정하며 해설의 미지 답을 선노출하지 않는다"
+  ]
+}

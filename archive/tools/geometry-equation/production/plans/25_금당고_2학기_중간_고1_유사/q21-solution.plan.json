@@ -1,0 +1,281 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "52",
+              "denominator": "25"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-14",
+              "denominator": "25"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "25"
+            },
+            {
+              "kind": "rational",
+              "numerator": "22",
+              "denominator": "25"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "P",
+    "M",
+    "A",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "C",
+        "P"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s8",
+      "refs": ["C", "M"]
+    },
+    {
+      "id": "s9",
+      "refs": ["M", "A"]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "P",
+        "M"
+      ]
+    }
+  ],
+  "caption": "CP=5, 접점현 AB와 수선 PM으로 삼각형 넓이 계산",
+  "accessibilityDescription": "CA=CB=3, PA=PB=4, AB=24/5, PM=16/5인 접선 삼각형 PAB의 높이를 보여준다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "CA=CB=3, PA=PB=4, AB=24/5, PM=16/5인 접선 삼각형 PAB의 높이를 보여준다.",
+      "mappedTo": [
+        "C",
+        "P",
+        "M",
+        "A",
+        "B",
+        "k",
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6",
+        "s7"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "CA=CB=3, PA=PB=4, AB=24/5, PM=16/5인 접선 삼각형 PAB의 높이를 보여준다."
+  ],
+  "coordinateLabels": [
+    "C",
+    "P"
+  ],
+  "displayCircles": [
+    "k"
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {"id":"cp-length","ownerSegment":"s1","text":"5"},
+      {"id":"cm-length","ownerSegment":"s8","text":"9/5"},
+      {"id":"am-length","ownerSegment":"s9","text":"12/5"},
+      {"id":"pm-length","ownerSegment":"s7","text":"16/5"}
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "ra1",
+      "refs": [
+        "C",
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "ra2",
+      "refs": [
+        "C",
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "ra3",
+      "refs": [
+        "A",
+        "M",
+        "P"
+      ]
+    }
+  ]
+}

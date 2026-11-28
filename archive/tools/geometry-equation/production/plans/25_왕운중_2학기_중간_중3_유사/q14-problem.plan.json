@@ -1,0 +1,201 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "원 O의 현 AB와 현의 중점 M: OM 수직 AB, OA=OB, AM=MB",
+  "accessibilityDescription": "원 O의 현 AB와 현의 중점 M: OM 수직 AB, OA=OB, AM=MB",
+  "newVisualInformation": [
+    "원 O의 현 AB와 현의 중점 M: OM 수직 AB, OA=OB, AM=MB"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q14-archive",
+      "condition": "다음은 원의 중심에서 현에 내린 수선은 그 현을 수직이등분함을 증명하는 과정이다. (가)~(마)에 들어갈 것으로 옳지 않은 것은? [증명] 오른쪽 그림과 같이 원 $O$의 중심에서 현 $AB$에 내린 수선의 발을 $M$이라 하면 $\\triangle OAM$과 $\\triangle OBM$에서 $\\angle OMA = \\angle OMB = (가)^\\circ$ $OA = (나)$ (반지름) $OM$은 (다) 따라서 $\\triangle OAM \\equiv \\triangle OBM$ ((라) 합동) 그러므로 $AM = (마)$ [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "M",
+    "A",
+    "B"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [],
+    "expressionLabels": [],
+    "arcs": [],
+    "equalLengths": [
+      {
+        "id": "ammb",
+        "count": 1,
+        "segments": [
+          "sAM",
+          "sMB"
+        ]
+      },
+      {
+        "id": "radii",
+        "count": 2,
+        "segments": [
+          "sOA",
+          "sOB"
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "m90",
+      "refs": [
+        "O",
+        "M",
+        "B"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 450
+  }
+}

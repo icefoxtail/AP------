@@ -1,0 +1,42 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {"coefficients": ["6", "-1"], "domain": ["1", "2"], "start": "CLOSED", "end": "OPEN"},
+      {"coefficients": ["8", "-2"], "domain": ["2", "3"], "start": "CLOSED", "end": "OPEN"},
+      {"coefficients": ["-1", "1"], "domain": ["3", "4"], "start": "CLOSED", "end": "OPEN"},
+      {"coefficients": ["11", "-2"], "domain": ["4", "5"], "start": "CLOSED", "end": "CLOSED"}
+    ],
+    "xWindow": [0, 6],
+    "requiredPoints": [],
+    "axisTickValues": {"x": [], "y": []},
+    "axisTickLabels": {
+      "x": {"1": "a", "2": "b", "3": "c", "4": "d", "5": "e"},
+      "y": {"1": "a", "2": "b", "3": "c", "4": "d", "5": "e"}
+    },
+    "overlays": {
+      "lines": [{"id": "yx", "slope": "1", "intercept": "0", "label": "y=x", "style": "DASHED"}],
+      "points": [
+        {"id": "Pa", "x": "1", "y": "5", "unnamed": true},
+        {"id": "Pb", "x": "2", "y": "4", "unnamed": true},
+        {"id": "Pc", "x": "3", "y": "2", "unnamed": true},
+        {"id": "Pd", "x": "4", "y": "3", "unnamed": true},
+        {"id": "Pe", "x": "5", "y": "1", "unnamed": true}
+      ],
+      "guides": [
+        {"id": "gB", "from": "Pb", "axis": "BOTH"},
+        {"id": "gC", "from": "Pc", "axis": "BOTH"},
+        {"id": "gD", "from": "Pd", "axis": "BOTH"},
+        {"id": "gE", "from": "Pe", "axis": "BOTH"}
+      ]
+    }
+  },
+  "caption": "문제 그림의 문자눈금 a<b<c<d<e에 해당하는 한 대표 좌표 1,2,3,4,5의 배열. f(a)=e,f(b)=d,f(c)=b,f(d)=c,f(e)=a이며 y=x를 함께 표시한다.",
+  "accessibilityDescription": "가로·세로 두 축의 눈금이 각각 a,b,c,d,e로 쓰이고, 첫째 점 (a,e)에서 시작하여 (b,d),(c,b),(d,c),(e,a)를 잇는 꺾은선과 기준선 y=x, 각 점의 점선 보조선이 있다. 예시 좌표가 정답인 것은 아니다.",
+  "newVisualInformation": ["원본의 문자 눈금 a,b,c,d,e를 임의 숫자로 바꾸어 노출하지 않고 축에 직접 표기", "다섯 함수값 관계를 잇는 정확한 꺾은선", "누락된 점선 안내와 y=x 기준선 복원"],
+  "sourceConditions": [
+    {"id": "c1", "condition": "문자값 a<b<c<d<e를 비율을 유지하는 대표 좌표 1,2,3,4,5로 놓는다.", "mappedTo": ["graphPlan.axisTickLabels"]},
+    {"id": "c2", "condition": "문제 그림의 함수값은 f(a)=e,f(b)=d,f(c)=b,f(d)=c,f(e)=a이다.", "mappedTo": ["graphPlan.pieces", "graphPlan.overlays.points", "graphPlan.overlays.guides"]}
+  ]
+}

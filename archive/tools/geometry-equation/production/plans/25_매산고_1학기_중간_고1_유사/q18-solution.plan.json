@@ -1,0 +1,36 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["10", "0", "-1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-5, 3],
+    "viewport": [-5, 3, -10, 12],
+    "overlays": {
+      "lines": [{"id": "g", "slope": "2", "intercept": "0"}],
+      "points": [
+        {"id": "A", "curveX": "-1-sqrt(11)"},
+        {"id": "B", "curveX": "-1+sqrt(11)"},
+        {"id": "C", "axis": "x", "value": "-1-sqrt(11)"},
+        {"id": "D", "axis": "x", "value": "-1+sqrt(11)"},
+        {"id": "O", "x": "0", "y": "0"}
+      ],
+      "segments": [{"id": "AC", "from": "A", "to": "C", "dashed": true}, {"id": "BD", "from": "B", "to": "D", "dashed": true}],
+      "polygons": [
+        {"id": "leftArea", "points": ["A", "O", "C"], "fill": "LIGHT"},
+        {"id": "rightArea", "points": ["B", "O", "D"], "fill": "MEDIUM"}
+      ]
+    },
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "두 교점의 x좌표 합 −2, 곱 −10이므로 두 삼각형 넓이 합 α²+β²=4+2m=24이다.",
+  "accessibilityDescription": "m=10인 포물선과 y=2x, 교점 A,B에서 x축까지의 두 수선, 삼각형 두 개를 실제 교점에 맞춰 나타낸다.",
+  "sourceQuote": "두 삼각형 AOC와 BOD 넓이의 합이 24일 때 m 구하기",
+  "sourceConditions": [
+    {"id": "parameter", "condition": "α+β=−2, αβ=−m, α²+β²=24에서 m=10", "mappedTo": ["graphPlan.coefficients"]},
+    {"id": "crossings", "condition": "교점 x=−1±√11, 각 y좌표는 2x", "mappedTo": ["graphPlan.overlays.points[0]", "graphPlan.overlays.points[1]"]},
+    {"id": "feet", "condition": "AC와 BD는 x축에 수직", "mappedTo": ["graphPlan.overlays.segments"]},
+    {"id": "area", "condition": "각 삼각형 넓이 α², β²의 합", "mappedTo": ["graphPlan.overlays.polygons"]}
+  ],
+  "newVisualInformation": ["수선의 발과 밑변·높이가 α², β²의 면적으로 연결되는 실제 해설 도식."]
+}

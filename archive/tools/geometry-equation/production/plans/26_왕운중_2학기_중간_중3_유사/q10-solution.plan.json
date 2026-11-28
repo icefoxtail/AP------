@@ -1,0 +1,375 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "15",
+              "denominator": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "lAB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-6"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-3",
+            "denominator": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "9",
+            "denominator": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Xl",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "-13",
+            "denominator": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Xr",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Yb",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-3",
+            "denominator": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Yt",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "H",
+    "L1",
+    "L2",
+    "Xl",
+    "Xr",
+    "Yb",
+    "Yt"
+  ],
+  "pointNames": {
+    "O": "O",
+    "A": "A",
+    "B": "B",
+    "H": "H"
+  },
+  "hiddenPointNames": [
+    "L1",
+    "L2",
+    "Xl",
+    "Xr",
+    "Yb",
+    "Yt"
+  ],
+  "unmarkedPointNames": [
+    "L1",
+    "L2",
+    "Xl",
+    "Xr",
+    "Yb",
+    "Yt"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sXaxis",
+      "refs": [
+        "Xl",
+        "Xr"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sYaxis",
+      "refs": [
+        "Yb",
+        "Yt"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sLineAB",
+      "refs": [
+        "L1",
+        "L2"
+      ]
+    },
+    {
+      "id": "sOH",
+      "refs": [
+        "O",
+        "H"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "O",
+        "H",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lx",
+        "ownerSegment": "sXaxis",
+        "text": "x"
+      },
+      {
+        "id": "ly",
+        "ownerSegment": "sYaxis",
+        "text": "y"
+      },
+      {
+        "id": "eOH",
+        "ownerSegment": "sOH",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text-derivedOA",
+        "ownerSegment": "sOA",
+        "text": "5"
+      },
+      {
+        "id": "text-derivedOB",
+        "ownerSegment": "sOB",
+        "text": "15/4"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aBAO",
+        "refs": [
+          "O",
+          "A",
+          "B"
+        ],
+        "value": 36.87,
+        "label": "α",
+        "labelKind": "MATH",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "왕운중 10번 해설에서 보조선과 계산된 길이·각을 구분하여 표시한 그림",
+  "accessibilityDescription": "문제에 제시된 점과 선에 해설 과정에서 계산한 길이, 각도 또는 보조선을 표시한 그림.",
+  "sourceQuote": "그림에서 두 점 A, B는 각각 직선 y=mx+n과 x축, y축의 교점이고 AB⊥OH, OH=3이다. ∠BAO=α",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "직선 AB는 x축, y축과 각각 점 A, B에서 만나며 제2사분면을 지난다.",
+      "mappedTo": [
+        "A",
+        "B",
+        "sLineAB"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "AB⊥OH, OH=3, ∠BAO=α",
+      "mappedTo": [
+        "H",
+        "rH",
+        "eOH",
+        "aBAO"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "해설에서 도출한 수치와 도형 관계가 문제 그림에 추가 표시됨"
+  ]
+}

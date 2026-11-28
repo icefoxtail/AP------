@@ -1,0 +1,46 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "caption": "문제의 y=bx-a가 1·2·4사분면을 지나는 부호 조건을 보여 주는 대표 개형이다.",
+  "accessibilityDescription": "왼쪽 위에서 오른쪽 아래로 내려오는 직선이 y축의 양의 부분을 지나며 1, 2, 4사분면을 통과한다. 임의 계수의 정확한 수치는 표시하지 않는다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "-1"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "y=bx-a"
+      }
+    ],
+    "viewport": [
+      -4,
+      4,
+      -4,
+      4
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceConditions": [
+    {
+      "id": "origin",
+      "condition": "일차함수 $y = bx - a$의 그래프가 제$1, 2, 4$사분면을 지날 때, 일차함수 $y = abx + (a + b)$의 그래프가 지나지 않는 사분면을 구하면? (단, $a, b$는 상수)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "실수 계수의 대표 부호 관계를 나타내는 개형: y=bx-a",
+    "x축 및 y축과 교점",
+    "눈금 숫자와 정답 계수는 표시하지 않음"
+  ]
+}

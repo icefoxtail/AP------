@@ -1,0 +1,275 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "40"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Gu",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "G"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lG",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "G",
+          "Gu"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "E",
+          "lG"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E2",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "E",
+          "P"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "42"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lE",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "E",
+          "E2"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lE",
+          "lG"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "E",
+    "G",
+    "P",
+    "T"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sOG",
+      "refs": [
+        "O",
+        "G"
+      ]
+    },
+    {
+      "id": "sGT",
+      "refs": [
+        "G",
+        "T"
+      ]
+    },
+    {
+      "id": "sEP",
+      "refs": [
+        "E",
+        "P"
+      ]
+    },
+    {
+      "id": "sEO",
+      "refs": [
+        "E",
+        "O"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aE",
+        "refs": [
+          "P",
+          "E",
+          "T"
+        ],
+        "value": 42,
+        "label": "42",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dOG",
+        "from": "O",
+        "to": "G",
+        "label": "40",
+        "unit": "m",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "eOE",
+        "ownerSegment": "sEO",
+        "text": "1.6",
+        "unit": "m",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "hiddenPointNames": [
+    "O",
+    "E",
+    "G",
+    "P",
+    "T"
+  ],
+  "rightAngles": [
+    {
+      "id": "rP",
+      "refs": [
+        "E",
+        "P",
+        "T"
+      ]
+    },
+    {
+      "id": "rG",
+      "refs": [
+        "O",
+        "G",
+        "T"
+      ]
+    }
+  ],
+  "caption": "지면에 수직으로 선 건물과 40미터 떨어진 곳에서 눈높이 1.6미터인 사람이 건물 꼭대기를 올려본 각이 42도로 표시된 장면이다.",
+  "accessibilityDescription": "수평 지면, 지면에 수직인 건물, 사람의 눈높이를 나타내는 짧은 세로선과 수평선이 보이고, 올려본 각 42도, 눈높이 1.6미터, 건물까지의 수평거리 40미터가 표시되어 있다.",
+  "newVisualInformation": [
+    "건물까지의 수평거리 40미터",
+    "사람의 눈높이 1.6미터",
+    "올려본 각 42도",
+    "건물과 지면이 이루는 직각"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 지면에 수직으로 서 있는 건물로부터 $40,\\mathrm{m}$ 떨어진 지점에서 건물의 꼭대기를 올려다본 각의 크기가 $42^\\circ$이다. 사람의 눈높이가 $1.6,\\mathrm{m}$일 때, 이 건물의 높이는? (단, $\\sin 42^\\circ=0.67$, $\\cos 42^\\circ=0.74$, $\\tan 42^\\circ=0.90$으로 계산한다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

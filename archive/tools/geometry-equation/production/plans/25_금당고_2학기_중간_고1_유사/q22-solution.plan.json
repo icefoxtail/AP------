@@ -1,0 +1,115 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      7
+    ],
+    "viewport": [
+      -2,
+      8,
+      -7,
+      3
+    ],
+    "functionName": "f",
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "coefficients": [
+          "-18",
+          "8",
+          "-1"
+        ],
+        "intersectionX": [
+          "3"
+        ],
+        "color": "BLUE"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 2,
+        "y": -4
+      },
+      {
+        "id": "A",
+        "x": 3,
+        "y": -3
+      },
+      {
+        "id": "W",
+        "x": 4,
+        "y": -2
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "k1",
+          "slope": "0",
+          "intercept": "-4",
+          "style": "DASHED"
+        },
+        {
+          "id": "k2",
+          "slope": "0",
+          "intercept": "-3",
+          "style": "DASHED"
+        },
+        {
+          "id": "k3",
+          "slope": "0",
+          "intercept": "-2",
+          "style": "DASHED"
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "pointNames": {
+    "V": "V",
+    "A": "A",
+    "W": "W"
+  },
+  "caption": "포물선 C의 최솟값 -4, C′의 최댓값 -2, 공통점 A(3,-3)과 세 수평선",
+  "accessibilityDescription": "위로 열린 y=x²-4x와 아래로 열린 y=-x²+8x-18의 공통점 A(3,-3), 꼭짓점 높이 -4와 -2 및 y=-4,-3,-2의 수평선이다.",
+  "sourceConditions": [
+    {
+      "id": "f",
+      "condition": "첫 곡선의 다항식과 꼭짓점",
+      "mappedTo": "graphPlan.pieces,graphPlan.requiredPoints"
+    },
+    {
+      "id": "g",
+      "condition": "이동한 두 번째 곡선과 첫 곡선의 유일한 공통점",
+      "mappedTo": "graphPlan.referenceCurves,graphPlan.overlays.points"
+    },
+    {
+      "id": "levels",
+      "condition": "서로 다른 교점 수가 3이 되는 세 수평선",
+      "mappedTo": "graphPlan.overlays.lines"
+    }
+  ],
+  "newVisualInformation": [
+    "두 곡선의 계수와 정확한 공통점, 세 수평선의 실제 그리기 필드"
+  ]
+}

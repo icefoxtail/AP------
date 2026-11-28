@@ -1,0 +1,82 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "l0",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "4"
+        ],
+        "domain": [
+          "-2",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "y=4x"
+      },
+      {
+        "id": "l1",
+        "kind": "LINE",
+        "coefficients": [
+          "-5",
+          "4"
+        ],
+        "domain": [
+          "-2",
+          "4"
+        ],
+        "color": "WARM",
+        "label": "y=4x-5"
+      }
+    ],
+    "viewport": [
+      -2,
+      4,
+      -10,
+      12
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "T",
+          "x": "0",
+          "y": "-5",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "g",
+          "from": "O",
+          "to": "T",
+          "dashed": true
+        }
+      ]
+    }
+  },
+  "caption": "직선 y=4x를 아래로 5만큼 이동하면 y=4x-5가 된다.",
+  "accessibilityDescription": "직선 y=4x를 아래로 5만큼 이동하면 y=4x-5가 된다.",
+  "sourceConditions": [
+    {
+      "id": "origin",
+      "condition": "일차함수 $y = 4x$의 그래프를 $y$축의 방향으로 $-5$만큼 평행이동한 직선의 식은? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "직선 y=4x를 아래로 5만큼 이동하면 y=4x-5가 된다."
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "5",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "P의 진리집합"
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "4",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "Q의 진리집합"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "두 진리집합의 포함"
+  },
+  "caption": "P=[1,5], Q=[1,4]이므로 Q⊂P이고 역은 성립하지 않는다. p는 q의 필요조건이다.",
+  "accessibilityDescription": "닫힌 수직선 구간 P는 1부터 5, Q는 1부터 4로 이어져 Q⊂P가 드러난다.",
+  "newVisualInformation": [
+    "두 범위의 오른쪽 경계 5와 4를 구별",
+    "필요조건을 Q⊂P로 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "p의 진리집합 P=[1,5]",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "q의 진리집합 Q=[1,4]",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ]
+}

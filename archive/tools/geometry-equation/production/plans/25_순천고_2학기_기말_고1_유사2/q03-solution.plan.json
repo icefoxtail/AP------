@@ -1,0 +1,64 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ],
+        "label": "분자 조건"
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "6",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "label": "분모 조건"
+      },
+      {
+        "kind": "RESULT",
+        "integerPoints": true,
+        "label": "가능한 정수"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "정수 8개와 합 12"
+  },
+  "caption": "무리식의 실수 조건은 x≥−2 및 x<6이다. 공통 정수 −2,−1,0,1,2,3,4,5의 합은 12다.",
+  "accessibilityDescription": "-2를 닫고 6을 연 공통 구간의 여덟 정수점이 세 번째 수직선에 표시된다.",
+  "newVisualInformation": [
+    "분모 근호의 열린 경계 6",
+    "공통범위 정수 여덟 점"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "√(x+2)에서 x≥-2",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "분모 √(6-x)>0에서 x<6",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ]
+}

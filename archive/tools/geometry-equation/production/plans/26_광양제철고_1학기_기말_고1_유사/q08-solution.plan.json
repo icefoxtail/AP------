@@ -1,0 +1,43 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-9/2-3/2*sqrt(5)",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "-9/2+3/2*sqrt(5)",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": true,
+        "label": "판별식 조건과 정수 a"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "판별식의 정수 범위"
+  },
+  "caption": "최고차항 계수가 음수인 경우 부등식이 해를 갖지 않으려면 a²+9a+9≤0이다. 양 끝은 포함되며 정수 a는 −7, −6, −5, −4, −3, −2의 6개이다.",
+  "accessibilityDescription": "두 정확한 무리수 근 -9/2-3/2*sqrt(5), -9/2+3/2*sqrt(5)를 닫힌 원으로, 그 사이 유계 구간과 정수 6개를 수직선에 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "discriminant",
+      "condition": "a<0, a²+9a+9≤0; 양 끝값 -9/2-3/2*sqrt(5)와 -9/2+3/2*sqrt(5)를 포함한다.",
+      "mappedTo": [
+        "numberLine.rows[0].pieces",
+        "numberLine.rows[0].integerPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "이차식의 판별식에 대한 실수 매개변수 a의 구간과 정수해를 정확한 무리수 끝점으로 함께 그려 계산 누락을 방지한다."
+  ]
+}

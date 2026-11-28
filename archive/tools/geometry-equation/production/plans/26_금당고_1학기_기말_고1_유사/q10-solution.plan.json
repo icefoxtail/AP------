@@ -1,0 +1,49 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "n",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "11",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "13",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "label": "가능 범위",
+        "integerPoints": true
+      }
+    ]
+  },
+  "caption": "50<4n+6<58을 풀면 11<n<13이고 자연수 n은 12 하나다.",
+  "accessibilityDescription": "부등식의 끝점 포함 여부와 공통 범위·정수점을 실제 수직선에 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "bound",
+      "condition": "50<4n+6<58에서 11<n<13",
+      "mappedTo": [
+        "numberLine.rows[0].pieces"
+      ]
+    },
+    {
+      "id": "integer",
+      "condition": "n은 자연수이므로 n=12만 허용",
+      "mappedTo": [
+        "numberLine.rows[0].integerPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "부등식의 끝점 포함 여부와 공통 범위·정수점을 실제 수직선에 나타낸다."
+  ],
+  "numberLineCaption": {
+    "text": "가능한 정수 n"
+  }
+}

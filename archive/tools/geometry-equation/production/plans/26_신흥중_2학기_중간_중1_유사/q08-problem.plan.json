@@ -1,0 +1,30 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "prism",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 5,
+        "depth": 3
+      },
+      "height": 4,
+      "names": "ABCDEFGH"
+    }
+  ],
+  "caption": "직육면체 ABCD-EFGH의 12개 모서리 및 가려진 모서리의 점선",
+  "accessibilityDescription": "직육면체의 아랫면 ABCD, 윗면 EFGH에서 AB와 나머지 11개 모서리의 위치를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "q08-1",
+      "condition": "ABCD-EFGH 직육면체에서 AB와 평행하거나 꼬인 모서리를 센다.",
+      "mappedTo": "solids[0].names"
+    }
+  ],
+  "newVisualInformation": [
+    "12개 모서리의 공간 연결과 보이지 않는 모서리의 점선, A-H 꼭짓점 표시"
+  ],
+  "sourceQuote": "다음 그림의 직육면체 $ABCD-EFGH$에서 모서리 $AB$와 평행한 모서리의 개수를 $a$, 모서리 $AB$와 꼬인 위치에 있는 모서리의 개수를 $b$라 할 때, $a+b$의 "
+}

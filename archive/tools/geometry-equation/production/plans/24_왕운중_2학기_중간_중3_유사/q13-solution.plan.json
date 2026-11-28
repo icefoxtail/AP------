@@ -1,0 +1,60 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-9",
+          "6",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "coefficients": [
+          "36",
+          "-24",
+          "4"
+        ],
+        "intersectionX": [
+          "3"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 3,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "두 포물선은 꼭짓점 (3,0)을 공유한다.",
+  "sourceQuote": "이차함수 $y=-x^2+6x-9$의 그래프와 꼭짓점이 같은 그래",
+  "accessibilityDescription": "두 포물선은 꼭짓점 (3,0)을 공유한다.",
+  "sourceConditions": [
+    {
+      "id": "q13-solution-current",
+      "condition": "$y = -(x^2 - 6x + 9) = -(x-3)^2$이므로 꼭짓점의 좌표는 $(3, 0)$이다. ⑤ $y=4(x-3)^2$의 꼭짓점의 좌표도 $(3, 0)$이므로 정답은 ⑤이다.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "q13 해설에서 도출한 조건을 실제 점·선·각·호·라벨로 표시"
+  ]
+}

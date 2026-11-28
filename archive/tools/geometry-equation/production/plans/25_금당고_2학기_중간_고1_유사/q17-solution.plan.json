@@ -1,0 +1,180 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-3"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-5"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "R",
+    "S",
+    "Q",
+    "T"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "R",
+        "S"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "Q",
+        "T"
+      ]
+    }
+  ],
+  "caption": "직선 RS와 QT의 기울기가 1/3으로 같다",
+  "accessibilityDescription": "Q(-4,-3)와 T(2,-1)를 잇는 직선은 RS와 평행하고 T(2,-1)을 지나는 조건을 만족한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "Q(-4,-3)와 T(2,-1)를 잇는 직선은 RS와 평행하고 T(2,-1)을 지나는 조건을 만족한다.",
+      "mappedTo": [
+        "R",
+        "S",
+        "Q",
+        "T",
+        "l",
+        "s1",
+        "s2"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "Q(-4,-3)와 T(2,-1)를 잇는 직선은 RS와 평행하고 T(2,-1)을 지나는 조건을 만족한다."
+  ],
+  "coordinateLabels": [
+    "Q",
+    "T"
+  ],
+  "displayLines": [
+    "l"
+  ]
+}

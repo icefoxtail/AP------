@@ -1,0 +1,109 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 6
+      },
+      "height": 7.3484692283495345,
+      "names": {
+        "base": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "apex": "O"
+      },
+      "points": [
+        {
+          "id": "H",
+          "at": {
+            "base": "center"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "O",
+      "to": "H",
+      "style": "DASHED"
+    },
+    {
+      "from": "A",
+      "to": "H",
+      "style": "DASHED"
+    },
+    {
+      "from": "H",
+      "to": "C",
+      "style": "DASHED"
+    },
+    {
+      "from": "B",
+      "to": "H",
+      "style": "DASHED"
+    },
+    {
+      "from": "H",
+      "to": "D",
+      "style": "DASHED"
+    }
+  ],
+  "marks": {
+    "angles": [
+      {
+        "id": "ang1",
+        "refs": [
+          "O",
+          "A",
+          "H"
+        ],
+        "label": "60"
+      }
+    ],
+    "rightAngles": [
+      {
+        "at": "H",
+        "refs": [
+          "O",
+          "A"
+        ]
+      }
+    ]
+  },
+  "dims": [
+    {
+      "edge": "AB",
+      "label": "6"
+    },
+    {
+      "edge": "BC",
+      "label": "6"
+    }
+  ],
+  "caption": "밑면의 한 변의 길이가 6 cm인 정사각형 ABCD이고 각 OAH가 60도인 정사각뿔 O-ABCD이다.",
+  "accessibilityDescription": "정사각뿔 O-ABCD에서 밑면 대각선 AC와 BD의 교점 H로 꼭짓점 O에서 점선 수선 OH가 내려져 있고 각 OAH의 크기가 60도로 표시되어 있으며 밑면 모서리 AB와 BC의 길이가 각각 6 cm로 표시되어 있다.",
+  "newVisualInformation": [
+    "문제에서 주어진 정보에 한정하며 해설의 미지 답을 선노출하지 않는다"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q14-problem",
+      "condition": "다음 그림과 같이 밑면이 한 변의 길이가 $6,\\mathrm{cm}$인 정사각형 $ABCD$이고 $\\angle OAH=60^\\circ$인 정사각뿔 $O-ABCD$의 부피는? (단, $H$는 꼭짓점 $O$에서 밑면에 내린 수선의 발이다.)",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    },
+    {
+      "id": "q14-original-svg",
+      "condition": "archive/assets/images/23_연향중_2학기_중간_중3_유사/q14-problem.svg",
+      "mappedTo": "DRAWN_FEATURE_PARITY_STATIC"
+    }
+  ]
+}

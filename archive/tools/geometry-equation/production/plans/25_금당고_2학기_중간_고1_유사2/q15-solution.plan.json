@@ -1,0 +1,209 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "C",
+          "l"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "C",
+    "T"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "P",
+        "T"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "C",
+        "T"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "P",
+        "C"
+      ]
+    }
+  ],
+  "caption": "P(0,3)에서 C(4,3) 원에 그은 최대 기울기 접선",
+  "accessibilityDescription": "반지름 2√3의 원에 기울기 √3인 직선이 접하는 곳에서 수직인 반지름 CT와 접선 PT를 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "반지름 2√3의 원에 기울기 √3인 직선이 접하는 곳에서 수직인 반지름 CT와 접선 PT를 보인다.",
+      "mappedTo": [
+        "P",
+        "C",
+        "T",
+        "k",
+        "l",
+        "s1",
+        "s2",
+        "s3"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "반지름 2√3의 원에 기울기 √3인 직선이 접하는 곳에서 수직인 반지름 CT와 접선 PT를 보인다."
+  ],
+  "coordinateLabels": [
+    "C"
+  ],
+  "displayCircles": [
+    "k"
+  ],
+  "displayLines": [
+    "l"
+  ],
+  "rightAngles": [
+    {
+      "id": "ra1",
+      "refs": [
+        "C",
+        "T",
+        "P"
+      ]
+    }
+  ]
+}

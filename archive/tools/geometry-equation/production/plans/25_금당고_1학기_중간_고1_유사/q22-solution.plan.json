@@ -1,0 +1,25 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["28", "-8", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [0, 5],
+    "viewport": [0, 5, 9, 30],
+    "requiredPoints": [
+      {"id": "A", "x": 1, "y": 21},
+      {"id": "B", "x": 3, "y": 13},
+      {"id": "V", "x": 4, "y": 12}
+    ],
+    "axisTickValues": {"x": [1, 3, 4], "y": []}
+  },
+  "caption": "a=4이면 꼭짓점 (4,12)는 [1,3] 밖에 있어 최솟값은 x=3, 최댓값은 x=1에서 얻는다.",
+  "accessibilityDescription": "위로 열린 포물선의 꼭짓점이 오른쪽 x=4에 있고 구간 양 끝 (1,21), (3,13)을 나타낸다.",
+  "sourceQuote": "1≤x≤3에서 f(x)=x²−2ax+2a²−4의 최솟값이 13일 때 최댓값",
+  "sourceConditions": [
+    {"id": "parameter", "condition": "세 경우 중 a>3만 가능하며 a=4", "mappedTo": ["graphPlan.coefficients"]},
+    {"id": "interval", "condition": "구간 [1,3]의 양 끝 함수값 21과 13", "mappedTo": ["graphPlan.requiredPoints[0]", "graphPlan.requiredPoints[1]"]},
+    {"id": "vertex", "condition": "꼭짓점 x=4는 구간 오른쪽에 있음", "mappedTo": ["graphPlan.requiredPoints[2]"]}
+  ],
+  "newVisualInformation": ["대칭축이 구간 밖에 있을 때 최댓값과 최솟값이 양 끝점에서 바뀌는 이유."]
+}

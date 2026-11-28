@@ -207,19 +207,19 @@
     "reviewedExam_m2s2-e021-q8-current-native-20261116": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-e021-q8-current-native-20261116.json"
   },
   "counts": {
-    "records": 1586,
+    "records": 1587,
     "finalL3": 921,
     "finalL4": 901,
     "explicitL4Hold": 20,
     "routeOut": 7,
     "difficultyHold": 781,
-    "defaultSelectable": 1093,
+    "defaultSelectable": 1096,
     "supplementary": 0,
     "sourceHold": 0,
-    "automaticEligibleExpected": 1001,
-    "catalogUidDirectJoin": 1586,
+    "automaticEligibleExpected": 1004,
+    "catalogUidDirectJoin": 1587,
     "catalogSourceIdentityRepairJoin": 0,
-    "taxonomyRows": 153
+    "taxonomyRows": 155
   },
   "ownedScopes": [
     {
@@ -327,6 +327,12 @@
     {
       "curriculumKey": "2015",
       "courseKey": "중2 수학",
+      "L1": "도형의 닮음과 피타고라스 정리",
+      "L2": "평행선과 선분의 길이의 비"
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "중2 수학",
       "L1": "도형의 성질",
       "L2": "사각형의 성질"
     },
@@ -335,6 +341,12 @@
       "courseKey": "중2 수학",
       "L1": "도형의 성질",
       "L2": "삼각형의 성질"
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "중2-2",
+      "L1": "사각형의 성질",
+      "L2": "평행사변형"
     },
     {
       "curriculumKey": "2015",
@@ -1587,7 +1599,7 @@
       "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": false,
-      "supportingItemCount": 19
+      "supportingItemCount": 18
     },
     {
       "curriculumKey": "2015",
@@ -1600,7 +1612,7 @@
       "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": false,
-      "supportingItemCount": 22
+      "supportingItemCount": 21
     },
     {
       "curriculumKey": "2015",
@@ -1614,6 +1626,19 @@
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": false,
       "supportingItemCount": 1
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "중2 수학",
+      "L1": "도형의 닮음과 피타고라스 정리",
+      "L2": "평행선과 선분의 길이의 비",
+      "L3": "삼각형의 닮음",
+      "L4": "삼각형 닮음의 활용",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 2
     },
     {
       "curriculumKey": "2015",
@@ -1874,6 +1899,19 @@
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": false,
       "supportingItemCount": 25
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "중2-2",
+      "L1": "사각형의 성질",
+      "L2": "평행사변형",
+      "L3": "평행사변형의 각 이등분선이 만드는 선분 계산",
+      "L4": "각 이등분선과 이등변삼각형을 이용한 선분 계산 절차",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
+      "templateKey": "TPL_MG_CALCULATE_OVERLAPPING_SEGMENT_FROM_TWO_BISECTORS",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
     },
     {
       "curriculumKey": "2015",
@@ -76260,48 +76298,106 @@
       "sourceOrdinal": 8,
       "sourceQuestionNo": "8",
       "sourceFingerprint": "89854baa8de5d060a009f06d6c599dc4b6975bd1257aae3b33ffc993227d6c54",
-      "rawQuestionHash": "aa8d878d4ccf49227adc007cd2fb1a3e376e718da15df14837bfb4ac98fd25c4",
-      "approvedSourceFingerprint": "89854baa8de5d060a009f06d6c599dc4b6975bd1257aae3b33ffc993227d6c54",
-      "curriculumKey": "2015",
-      "courseKey": "중2 수학",
+      "contentFingerprint": "258501b99cdfbe4325932cbec7fdb2764d2c4ac8d386acfa9c531084709125ef",
       "standardCourse": "중2 수학",
       "standardUnitKey": "M2-06",
       "standardUnit": "도형의 닮음",
       "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
       "subUnit": "평행선 사이의 선분의 길이의 비",
-      "L1": "도형의 닮음",
-      "L2": "평행선 사이의 선분의 길이의 비",
-      "L3": "평행선과 선분의 길이의 비",
-      "L4": "일반 도형의 평행선과 선분의 비",
-      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
-      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+      "conceptClusterKey": "M2-06-PARALLEL_LENGTH_RATIO",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "difficultyBucket": 4,
+      "tagConfidence": "rule_inferred",
+      "tagStatus": "approved_subunit_concept_partial",
+      "metadataStatus": "approved_partial_with_explicit_holds",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "approved_classification",
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment",
+        "difficulty": "approved_source"
+      },
+      "metadataRevision": "archive-main-merge-meta-v1:main-9484d043f81b1656-22ac51e0f957f3d03cbd5001",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json"
+      ],
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-39dfab5b506a-0d23f513",
+        "judge": "dots",
+        "rationale": "평행선으로 생긴 닮음에서 대각선 삼등분을 얻고 작은 두 삼각형 넓이를 뺀다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "0340de7d482afcb50c0731b3a5fd94d974e92ca3a549307828d9d8d137cb9d5b",
+        "judgedContentFingerprint": "258501b99cdfbe4325932cbec7fdb2764d2c4ac8d386acfa9c531084709125ef",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "d7c98f8b596b0cd45997c4d9a705081e72ffa6b8d7b09deeb2cbb4495774561b",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-39dfab5b506a-0d23f513.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+          "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      },
+      "curriculum": "2015",
       "crossConceptKeys": [
-        "CC_SIMILARITY",
         "CC_TRIANGLE_AREA"
       ],
       "conditionKeys": [],
-      "integrationPattern": "NONE",
-      "contentHash": "381737007003d0da937baeb0af6193c87f48a63b347e6517537a968457b1bbe7",
-      "solutionHash": "5e25b3f379986376869cb1a3a0e892bf4beb356a6d824224e28033763c8f0224",
-      "inputBundleSha": "122408704eac617e3838e2ee7d9509c980241603ab0dee6eb6b376cf16913e2a",
-      "difficultyBucket": 3,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevel": "상",
-      "legacyLevelCompatibility": "BORDERLINE_REVIEW",
-      "difficultyReviewStatus": "manual_review",
-      "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
-      "metaFoundationDifficultyStatus": "HOLD_RECHECK_PENDING",
-      "metaFoundationL3Status": "FINAL",
-      "metaFoundationL4Status": "FINAL",
-      "curriculumApplicability": "DEFAULT_SCOPE",
-      "defaultSelectable": false,
-      "reviewStatus": "manual_review",
-      "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
-      "metaFoundationStatus": "DIFFICULTY_RECHECK_HOLD",
+      "integrationPattern": "SEQUENTIAL",
+      "level": "상",
+      "primaryMethod": "평행사변형 교차선의 선분비",
+      "decisiveStep": "중점과 평행선에서 대각선 삼등분을 얻고 양 끝 삼각형 넓이를 전체에서 뺀다.",
+      "curriculumKey": "2015",
+      "courseKey": "중2 수학",
+      "L1": "도형의 닮음과 피타고라스 정리",
+      "L2": "평행선과 선분의 길이의 비",
+      "L3": "삼각형의 닮음",
+      "L4": "삼각형 닮음의 활용",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "MIDDLE_GEOMETRY",
-      "metaFoundationPackVersion": "1.0.0",
-      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
+      "metaFoundationPackVersion": "1.0.16",
+      "metadataRegistrationStatus": "REGISTERED",
+      "metadataRegistrationBasis": "MAIN_MERGED_EXPLICIT_METADATA",
+      "independentMathReviewStatus": "NOT_PERFORMED_BY_AUTO_REGISTRAR",
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "registrationEvidence": [
+        ".archive-meta-register/auto/receipts/main-9484d043f81b1656-22ac51e0f957f3d03cbd5001.json"
+      ],
+      "sourceIdentity": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js#8",
+      "approvedSourceFingerprint": "89854baa8de5d060a009f06d6c599dc4b6975bd1257aae3b33ffc993227d6c54",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_94e47a835c99154c2066f495f46eecf39bb2ff05601a45958f7fb8634feb2797",
@@ -98153,6 +98249,113 @@
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
     },
     {
+      "questionUid": "qid_v1_bf256da109e6fbcbf3c4ee71b20825c2a3df55620ac99f739e09a70321cec25f",
+      "sourceArchiveFile": "original/middle/m2/2mid/21_이수중_2학기_중간_중2_수학.js",
+      "sourceOrdinal": 17,
+      "sourceQuestionNo": "17",
+      "sourceFingerprint": "a6c0cbcbb377236007ead46cf1c5ae53e83eca97c8bdf01795930cf6fabd55b9",
+      "contentFingerprint": "4546e611473799a5fb1504aaa75e85083cbb167a8b76f640b5d08edee05cc6d6",
+      "standardCourse": "중2-2",
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "subUnit": "사각형의 성질",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
+      "templateKey": "TPL_MG_CALCULATE_OVERLAPPING_SEGMENT_FROM_TWO_BISECTORS",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-main-merge-meta-v1:main-bf256da109e6fbcb-a3521b9219a30b517b94f7e9",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "NORMAL",
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-5f770ee42109-f458d912",
+        "judge": "dots",
+        "rationale": "각 이등분선과 평행선의 엇각으로 BF=AB=8,CE=CD=8이다. 같은 밑변BC=11 위 중첩구간 EF=8+8-11=5를 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중2-2",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "d8d20a17dc0e105b696b33bb21b25648fcfc428fe21514dda211664048d45f40",
+        "judgedContentFingerprint": "4546e611473799a5fb1504aaa75e85083cbb167a8b76f640b5d08edee05cc6d6",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "aa4b194b8d16c7229b5666ae640c5c897e88837bebdaeca9a7ef2b91e6270c68",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-5f770ee42109-f458d912.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
+          "templateKey": "TPL_MG_CALCULATE_OVERLAPPING_SEGMENT_FROM_TWO_BISECTORS",
+          "matchesRegistered": true
+        },
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      },
+      "level": "중",
+      "primaryMethod": "두 각이등분선의 이등변과 겹친 구간",
+      "decisiveStep": "BF=AB,CE=CD를얻고BF+CE−BC로EF를구한다.",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "중2-2",
+      "L1": "사각형의 성질",
+      "L2": "평행사변형",
+      "L3": "평행사변형의 각 이등분선이 만드는 선분 계산",
+      "L4": "각 이등분선과 이등변삼각형을 이용한 선분 계산 절차",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.16",
+      "metadataRegistrationStatus": "REGISTERED",
+      "metadataRegistrationBasis": "MAIN_MERGED_EXPLICIT_METADATA",
+      "independentMathReviewStatus": "NOT_PERFORMED_BY_AUTO_REGISTRAR",
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "registrationEvidence": [
+        ".archive-meta-register/auto/receipts/main-bf256da109e6fbcb-a3521b9219a30b517b94f7e9.json"
+      ],
+      "sourceIdentity": "original/middle/m2/2mid/21_이수중_2학기_중간_중2_수학.js#17",
+      "approvedSourceFingerprint": "a6c0cbcbb377236007ead46cf1c5ae53e83eca97c8bdf01795930cf6fabd55b9",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_bf4a6fbf4fc42a7d24722b9d45cbb588d93c643e3ab3cca9809a3efabaae7071",
       "sourceArchiveFile": "original/middle/m3/2final/21_매산중_2학기_기말_중3_기출.js",
       "sourceOrdinal": 9,
@@ -106121,45 +106324,114 @@
       "sourceOrdinal": 1,
       "sourceQuestionNo": "1",
       "sourceFingerprint": "8919a8483dce8e9dfb24a3eb91e9a3f033329cde427cb6e845a4249d86dfa1d7",
-      "rawQuestionHash": "ad3a8f3223157397ce4e75522046ff6aa9e56aa11e14a3f209e4a224e6ec83c9",
-      "approvedSourceFingerprint": "8919a8483dce8e9dfb24a3eb91e9a3f033329cde427cb6e845a4249d86dfa1d7",
-      "curriculumKey": "2015",
-      "courseKey": "중2 수학",
+      "contentFingerprint": "ce319017685a33e068e918a23fbdf617af820cccbee9c2683726ed3838881e43",
       "standardCourse": "중2 수학",
       "standardUnitKey": "M2-06",
       "standardUnit": "도형의 닮음",
       "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
       "subUnit": "평행선 사이의 선분의 길이의 비",
-      "L1": "도형의 닮음",
-      "L2": "평행선 사이의 선분의 길이의 비",
-      "L3": "평행선과 선분의 길이의 비",
-      "L4": "삼각형에서 평행선과 선분의 비",
-      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
-      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+      "conceptClusterKey": "M2-06-PARALLEL_LENGTH_RATIO",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "difficultyBucket": 2,
+      "tagConfidence": "rule_inferred",
+      "tagStatus": "approved_subunit_concept_partial",
+      "metadataStatus": "approved_partial_with_explicit_holds",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "approved_classification",
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment",
+        "difficulty": "approved_source"
+      },
+      "metadataRevision": "archive-main-merge-meta-v1:main-ceb33b5cc9903d60-a54d7c8f2f47e09cca8958e9",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json"
+      ],
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-8cee82b5f421-31b878ca",
+        "judge": "dots",
+        "rationale": "맞꼭지각과 평행선 각으로 AA닮음을 얻어12:8=x:4를 푼다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "88e1064eba46166d72c9b2f1b7ac9501682a90ef0460db6c2b1b9cd02fc4fe08",
+        "judgedContentFingerprint": "ce319017685a33e068e918a23fbdf617af820cccbee9c2683726ed3838881e43",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "b9bac4ab6d7a9173c5062f39a2bdf2bf5bf5e5e8429ca74e452e880e1b2e8f3a",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8cee82b5f421-31b878ca.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+          "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      },
+      "curriculum": "2015",
       "crossConceptKeys": [],
       "conditionKeys": [],
       "integrationPattern": "NONE",
-      "contentHash": "f2b36cad27255f137defbd29e77fb0efd1a02aaa8bceef566df04e4bb29f3423",
-      "solutionHash": "184554c7d2d35a0830105ca5ec70b03ed3bd36b27158520369b6dbca19297971",
-      "inputBundleSha": "3961256a8dac8a2ebb989a1ba9560c91ddf9f13a497c0663fe390e0e9b9b2d7b",
-      "difficultyBucket": 1,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevel": "중",
-      "legacyLevelCompatibility": "BORDERLINE_REVIEW",
-      "difficultyReviewStatus": "manual_review",
-      "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
-      "metaFoundationDifficultyStatus": "HOLD_RECHECK_PENDING",
-      "metaFoundationL3Status": "FINAL",
-      "metaFoundationL4Status": "FINAL",
-      "curriculumApplicability": "DEFAULT_SCOPE",
-      "defaultSelectable": false,
-      "reviewStatus": "manual_review",
-      "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
-      "metaFoundationStatus": "DIFFICULTY_RECHECK_HOLD",
+      "level": "중",
+      "primaryMethod": "평행선으로 교차삼각형의 닮음",
+      "decisiveStep": "맞꼭지각과 엇각으로 두 삼각형을 대응시켜12:8=x:4를 쓴다.",
+      "rpmPrimaryPath": {
+        "majorUnit": "도형의 닮음과 피타고라스 정리",
+        "midUnit": "평행선과 선분의 길이의 비",
+        "l3": "비례 활용",
+        "l4": "선분비를 이용한 복합도형"
+      },
+      "rpmL1": "도형의 닮음과 피타고라스 정리",
+      "rpmL2": "평행선과 선분의 길이의 비",
+      "rpmL3": "비례 활용",
+      "rpmL4": "선분비를 이용한 복합도형",
+      "curriculumKey": "2015",
+      "courseKey": "중2 수학",
+      "L1": "도형의 닮음과 피타고라스 정리",
+      "L2": "평행선과 선분의 길이의 비",
+      "L3": "삼각형의 닮음",
+      "L4": "삼각형 닮음의 활용",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "MIDDLE_GEOMETRY",
-      "metaFoundationPackVersion": "1.0.0",
-      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
+      "metaFoundationPackVersion": "1.0.16",
+      "metadataRegistrationStatus": "REGISTERED",
+      "metadataRegistrationBasis": "MAIN_MERGED_EXPLICIT_METADATA",
+      "independentMathReviewStatus": "NOT_PERFORMED_BY_AUTO_REGISTRAR",
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "registrationEvidence": [
+        ".archive-meta-register/auto/receipts/main-ceb33b5cc9903d60-a54d7c8f2f47e09cca8958e9.json"
+      ],
+      "sourceIdentity": "original/middle/m2/2final/25_팔마중_2학기_기말_중2_기출.js#1",
+      "approvedSourceFingerprint": "8919a8483dce8e9dfb24a3eb91e9a3f033329cde427cb6e845a4249d86dfa1d7",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_ceb8b9def9b97d91e4c9cf075f2c4a058436803a972e0de7824c1cda6667dbbf",
@@ -117988,7 +118260,7 @@
       "sourceOrdinal": 10,
       "sourceQuestionNo": "10",
       "sourceFingerprint": "78f38329b3aefb14c8fedae6b954c035d114d9cb676bc24d0c0626b3f9b502c7",
-      "contentFingerprint": "fb2176a5f305043c2087f9252a76163ed6b35709efeff7e2ed39599fd477d770",
+      "contentFingerprint": "175ebf5e2bcad4507706a04c1b4cf98632573d749800aae8de9ca62335066633",
       "standardCourse": "중2 수학",
       "standardUnitKey": "M2-06",
       "standardUnit": "도형의 닮음",
@@ -118020,7 +118292,7 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.6:exam-final_qa-v2:m2s2-binding68-20261115-E001",
+      "metadataRevision": "archive-main-merge-meta-v1:main-e7c98995a1e9b097-e61a259e6b15ff706c1f70a2",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E001.json"
@@ -118044,12 +118316,18 @@
       "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "MIDDLE_GEOMETRY",
-      "metaFoundationPackVersion": "1.0.6",
+      "metaFoundationPackVersion": "1.0.16",
       "metaFoundationHoldReason": null,
       "l3Disposition": "ASSIGNED",
       "l4Disposition": "ASSIGNED",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
+      "metadataRegistrationStatus": "REGISTERED",
+      "metadataRegistrationBasis": "MAIN_MERGED_EXPLICIT_METADATA",
+      "independentMathReviewStatus": "NOT_PERFORMED_BY_AUTO_REGISTRAR",
+      "registrationEvidence": [
+        ".archive-meta-register/auto/receipts/main-e7c98995a1e9b097-e61a259e6b15ff706c1f70a2.json"
+      ],
       "sourceIdentity": "original/middle/m2/2mid/26_신흥중_2학기_중간_중2_기출.js#10",
       "approvedSourceFingerprint": "78f38329b3aefb14c8fedae6b954c035d114d9cb676bc24d0c0626b3f9b502c7",
       "legacyLevel": "상",
@@ -122175,7 +122453,7 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.11:exam-final_qa-v2:m2s2-native78-current-r9-20261116-60-e059",
+      "metadataRevision": "archive-main-merge-meta-v1:main-ef84d3b3a7f27f6a-869608579df186a101ee87da",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-native78-current-r9-20261116-60-e059.json"
@@ -122209,12 +122487,18 @@
       "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "MIDDLE_GEOMETRY",
-      "metaFoundationPackVersion": "1.0.11",
+      "metaFoundationPackVersion": "1.0.16",
       "metaFoundationHoldReason": null,
       "l3Disposition": "ASSIGNED",
       "l4Disposition": "ASSIGNED",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
+      "metadataRegistrationStatus": "REGISTERED",
+      "metadataRegistrationBasis": "MAIN_MERGED_EXPLICIT_METADATA",
+      "independentMathReviewStatus": "NOT_PERFORMED_BY_AUTO_REGISTRAR",
+      "registrationEvidence": [
+        ".archive-meta-register/auto/receipts/main-ef84d3b3a7f27f6a-869608579df186a101ee87da.json"
+      ],
       "sourceIdentity": "original/middle/m2/2final/19_신흥중_2학기_기말_중2_기출.js#4",
       "approvedSourceFingerprint": "244f062d723ff3dd3ad6d5242fb1fc097a42b31280b9201445fb418f60594b6a",
       "legacyLevel": "중",
@@ -130938,7 +131222,7 @@
   },
   "usage": {
     "schemaVersion": "archive-reviewed-runtime-usage-v1",
-    "records": 1586,
+    "records": 1587,
     "problemTypes": [
       {
         "key": "PT_CIRCLE_ANGLE_RELATIONS",
@@ -131649,8 +131933,9 @@
       },
       {
         "key": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
-        "count": 1,
+        "count": 2,
         "questionUids": [
+          "qid_v1_bf256da109e6fbcbf3c4ee71b20825c2a3df55620ac99f739e09a70321cec25f",
           "qid_v1_c56f8d08291cffb89de1583112e9319acfeac879f2f82a1d60951eaeb6d300e1"
         ]
       },
@@ -131733,7 +132018,7 @@
       },
       {
         "key": "PT_PARALLEL_SEGMENT_RATIO",
-        "count": 58,
+        "count": 56,
         "questionUids": [
           "qid_v1_004d1eb22fad0b7fb92d787a4579f21cec4c84c51da6951aa71cecfc0de0850f",
           "qid_v1_02838721674952fe74d57f1e53fcd946cd5b3548b35e1b903d115e3a759e177a",
@@ -131771,14 +132056,12 @@
           "qid_v1_836d281e4e8291b7278ba035721f6d0279387bd213f3b0cf70980e9e1ecaa42b",
           "qid_v1_8b84cb8330e0b70a74975b204c53a6a1f49e907b57205bcb72755db857993904",
           "qid_v1_947212c2f30df03661aae75fb862dba4ae61b8a755875f586a23a9f98841e2bd",
-          "qid_v1_9484d043f81b1656008d720515835c722bc55356d927de9833796572470fb14b",
           "qid_v1_9f84d23896f6cc1dd2e908e8c9d749b6aec821b15604beff803e4a8f57672e7e",
           "qid_v1_a274d67956f69f6cf75d5274ad19905483d2b463863737a03a59f67de9bdca30",
           "qid_v1_a9ae09608eb4d5b6a031c3fb54affa375839c4d212591f9f9b2f69fe9531a86f",
           "qid_v1_ad12b81b1c3ab360926638d03489dc016b03554f3c7cbea63f897cd1a435a52c",
           "qid_v1_bc22c829da7ecd8043ae570e69908ce564a80dbbc4120ebc091453bd2e21bf41",
           "qid_v1_cabeb01d604c16c39e86b56cb545700147864caafc640dfef6d4b2782d418f0a",
-          "qid_v1_ceb33b5cc9903d60759cddeeed4a4dbde6aa07cd61d59727bf539e5e1b2e27a9",
           "qid_v1_d3f58984f546344820f5d79b540bb7454f46e07e51a6e4219d9551527faae1b9",
           "qid_v1_d7e5277f2acfc875e8776a50f3095f27f4d5f933567e0af5cf5a50c8f80752aa",
           "qid_v1_d92b55d7318b8e8f359c2261548c4332b8440a17cd9119378a716bffd2a24550",
@@ -132132,7 +132415,7 @@
       },
       {
         "key": "PT_TRIANGLE_SIMILARITY",
-        "count": 40,
+        "count": 42,
         "questionUids": [
           "qid_v1_00cf896406a0e6c00ebf391bc7fd24dc3c56103c673c4fee847994ba20fba5c0",
           "qid_v1_149693b41bb7c7d07f61089bf7e98ff1b5505ac01e2164e1f5b9cae121172453",
@@ -132155,6 +132438,7 @@
           "qid_v1_8816278d03ba533549c076149c15a7d7349754434514d94e93dda3d0dc907e60",
           "qid_v1_8de9cb0748edf18969af54bdff060c95d18955b2c222b49c67d3ff6a33c7b716",
           "qid_v1_934643f2f1a0267dceff561827bf4442393a4686adb8e04d06225826ebfb9b51",
+          "qid_v1_9484d043f81b1656008d720515835c722bc55356d927de9833796572470fb14b",
           "qid_v1_a438810be625fa9cd973e8a7f2af2fd9fa0661a06794b02eae1ce5645a8c76f7",
           "qid_v1_a4725c01d82c6df45888fa0c5a375a18e468b284bb3003139ec6b6dbed466c85",
           "qid_v1_a7acf2664f85f108b60bcaecdddd7befc2f6ad4702cb737b94d4319211f277cb",
@@ -132164,6 +132448,7 @@
           "qid_v1_b76ab2efdd74c5eb7b69786754c8d631699a9a0c88a7df62da7ba60ae7cced09",
           "qid_v1_b9efb354b7ad06e277ca011db6d949b53bb845761c3cb92ced1ec8f113f13aba",
           "qid_v1_bf02eb64a71acfb1aa328a07eb434234b4f89895fd58f47ce9128bfff9021b51",
+          "qid_v1_ceb33b5cc9903d60759cddeeed4a4dbde6aa07cd61d59727bf539e5e1b2e27a9",
           "qid_v1_d143c4903e7842b0b13c8e8335d1f552eb7b206512ea33a8d6083ba0b51eeb73",
           "qid_v1_da67635473b15e366800e4e59d9fd943df3dd6f734f0ac0636d3ac0f3476249c",
           "qid_v1_dbb60c41a9f4c54ce180f53a1d60c0ba6fb10202262959097d6550a59d356f40",
@@ -133509,8 +133794,9 @@
       },
       {
         "key": "TPL_MG_CALCULATE_OVERLAPPING_SEGMENT_FROM_TWO_BISECTORS",
-        "count": 1,
+        "count": 2,
         "questionUids": [
+          "qid_v1_bf256da109e6fbcbf3c4ee71b20825c2a3df55620ac99f739e09a70321cec25f",
           "qid_v1_c56f8d08291cffb89de1583112e9319acfeac879f2f82a1d60951eaeb6d300e1"
         ]
       },
@@ -133593,7 +133879,7 @@
       },
       {
         "key": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
-        "count": 31,
+        "count": 30,
         "questionUids": [
           "qid_v1_004d1eb22fad0b7fb92d787a4579f21cec4c84c51da6951aa71cecfc0de0850f",
           "qid_v1_02838721674952fe74d57f1e53fcd946cd5b3548b35e1b903d115e3a759e177a",
@@ -133614,7 +133900,6 @@
           "qid_v1_719b8a04d235330a9ca882111843faea2883ae2932453f4554354f6f2d549a78",
           "qid_v1_79cc43cf9b5046297eff59f6cf68624a64876449c126f6454ea9a716ea5112d0",
           "qid_v1_8b84cb8330e0b70a74975b204c53a6a1f49e907b57205bcb72755db857993904",
-          "qid_v1_9484d043f81b1656008d720515835c722bc55356d927de9833796572470fb14b",
           "qid_v1_a274d67956f69f6cf75d5274ad19905483d2b463863737a03a59f67de9bdca30",
           "qid_v1_a9ae09608eb4d5b6a031c3fb54affa375839c4d212591f9f9b2f69fe9531a86f",
           "qid_v1_cabeb01d604c16c39e86b56cb545700147864caafc640dfef6d4b2782d418f0a",
@@ -133630,7 +133915,7 @@
       },
       {
         "key": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
-        "count": 27,
+        "count": 26,
         "questionUids": [
           "qid_v1_13b90c50a9b5071100a262047b2e8cdbde652bf003e85e9e718012a12485b303",
           "qid_v1_1cb3ac2b2df5ba6073493ee60b4fb037873bdee8d19bd1b95a6aa03e47bd1219",
@@ -133652,7 +133937,6 @@
           "qid_v1_9f84d23896f6cc1dd2e908e8c9d749b6aec821b15604beff803e4a8f57672e7e",
           "qid_v1_ad12b81b1c3ab360926638d03489dc016b03554f3c7cbea63f897cd1a435a52c",
           "qid_v1_bc22c829da7ecd8043ae570e69908ce564a80dbbc4120ebc091453bd2e21bf41",
-          "qid_v1_ceb33b5cc9903d60759cddeeed4a4dbde6aa07cd61d59727bf539e5e1b2e27a9",
           "qid_v1_d3f58984f546344820f5d79b540bb7454f46e07e51a6e4219d9551527faae1b9",
           "qid_v1_d92b55d7318b8e8f359c2261548c4332b8440a17cd9119378a716bffd2a24550",
           "qid_v1_da8b30f15b81ef1e6c1e003f3c02685c497fd4c8e78107f7a416249c24a3b04d",
@@ -134043,7 +134327,7 @@
       },
       {
         "key": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
-        "count": 22,
+        "count": 24,
         "questionUids": [
           "qid_v1_214cbb7253ddc80447ac27c0576660965f48ee534bcd03ff9b61a1ce1d8fcf98",
           "qid_v1_69bbc373b1677316a8864d62757b03e7077f405c35b6cb1360bb6dc703792fe9",
@@ -134054,6 +134338,7 @@
           "qid_v1_8816278d03ba533549c076149c15a7d7349754434514d94e93dda3d0dc907e60",
           "qid_v1_8de9cb0748edf18969af54bdff060c95d18955b2c222b49c67d3ff6a33c7b716",
           "qid_v1_934643f2f1a0267dceff561827bf4442393a4686adb8e04d06225826ebfb9b51",
+          "qid_v1_9484d043f81b1656008d720515835c722bc55356d927de9833796572470fb14b",
           "qid_v1_a438810be625fa9cd973e8a7f2af2fd9fa0661a06794b02eae1ce5645a8c76f7",
           "qid_v1_a4725c01d82c6df45888fa0c5a375a18e468b284bb3003139ec6b6dbed466c85",
           "qid_v1_a7acf2664f85f108b60bcaecdddd7befc2f6ad4702cb737b94d4319211f277cb",
@@ -134061,6 +134346,7 @@
           "qid_v1_b658cc140882250b33e691442f7fa1fab6e5fbb34251dab5a34284ba5e0b910f",
           "qid_v1_b76ab2efdd74c5eb7b69786754c8d631699a9a0c88a7df62da7ba60ae7cced09",
           "qid_v1_b9efb354b7ad06e277ca011db6d949b53bb845761c3cb92ced1ec8f113f13aba",
+          "qid_v1_ceb33b5cc9903d60759cddeeed4a4dbde6aa07cd61d59727bf539e5e1b2e27a9",
           "qid_v1_da67635473b15e366800e4e59d9fd943df3dd6f734f0ac0636d3ac0f3476249c",
           "qid_v1_df7a46a1d2551864d378ffa34389721380b230aa6e36d5a8d064be61aada21ea",
           "qid_v1_e384a4d310ce0eb3484b0a0ea791dbd848e6c18aa03c046f1527863934ce6bec",
@@ -135974,7 +136260,7 @@
       },
       {
         "key": "CC_SIMILARITY",
-        "count": 14,
+        "count": 13,
         "questionUids": [
           "qid_v1_0a9c48e55c5a0d94082e2fe352c1a9d450ad0c16db0baccd66889876f74c34e6",
           "qid_v1_207a3ceb971ccdc2f23334ba528ac7c6b6c7dd348a9369452753e726ebbf4869",
@@ -135986,7 +136272,6 @@
           "qid_v1_8b84cb8330e0b70a74975b204c53a6a1f49e907b57205bcb72755db857993904",
           "qid_v1_8cb17e84b83a3fe5882540582b3d52c6fd82d57489d10ff15e7a17af49605a96",
           "qid_v1_92ed29b514280561d03d1b87b6b494055a1bb98b10e6d74a8769779099db8f3c",
-          "qid_v1_9484d043f81b1656008d720515835c722bc55356d927de9833796572470fb14b",
           "qid_v1_bc22c829da7ecd8043ae570e69908ce564a80dbbc4120ebc091453bd2e21bf41",
           "qid_v1_d52b98d397b36d4690ffd2d5aeae3e4ededc63f975e6751acdb8e998d38abcf3",
           "qid_v1_ff68809eae1dff65f2a6e7a8443c3d42f3fed9f299ae5417e5e1b876014baaa5"

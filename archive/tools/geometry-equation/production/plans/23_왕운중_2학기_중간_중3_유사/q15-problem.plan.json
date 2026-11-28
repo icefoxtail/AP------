@@ -1,0 +1,113 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-8",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 1,
+        "y": -9,
+        "marker": "NONE"
+      },
+      {
+        "id": "Vg",
+        "x": 4,
+        "y": 0,
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "domain": [
+      -1,
+      6
+    ],
+    "viewport": [
+      -2,
+      7,
+      -12,
+      19
+    ],
+    "functionName": "f",
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "coefficients": [
+          "16",
+          "-8",
+          "1"
+        ],
+        "intersectionX": [
+          "4"
+        ]
+      }
+    ],
+    "regions": [
+      {
+        "id": "shade",
+        "upper": "g",
+        "lower": "f",
+        "from": "1",
+        "to": "4",
+        "fill": "LIGHT",
+        "label": "S"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "limit",
+          "x": "1",
+          "label": "x=1"
+        }
+      ],
+      "points": [
+        {
+          "id": "P",
+          "x": "1",
+          "y": "-9"
+        },
+        {
+          "id": "Q",
+          "x": "4",
+          "y": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "PQ",
+          "from": "P",
+          "to": "Q"
+        }
+      ]
+    }
+  },
+  "caption": "두 포물선 f,g, 꼭짓점 P,Q 및 x=1 사이의 영역과 선분 PQ(도형 내부 보조선)",
+  "accessibilityDescription": "두 포물선 f,g, 꼭짓점 P,Q 및 x=1 사이의 영역과 선분 PQ(도형 내부 보조선)",
+  "sourceConditions": [
+    {
+      "id": "q15-problem",
+      "condition": "두 이차함수 $y=x^2-2x-8$, $y=x^2-8x+16$의 그래프가 다음과 같고 두 그래프의 꼭짓점을 각각 $P$, $Q$라 할 때, 두 그래프와 선분 $PQ$ 및 직선 $x=1$로 둘러싸인 색칠한 부분의 넓이는?",
+      "mappedTo": "ORIGINAL_QUESTION_OR_SOLUTION"
+    }
+  ],
+  "newVisualInformation": [
+    "문제에서 주어진 정보에 한정하며 해설의 미지 답을 선노출하지 않는다"
+  ]
+}

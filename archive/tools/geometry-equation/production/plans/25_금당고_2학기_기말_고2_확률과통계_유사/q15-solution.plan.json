@@ -1,0 +1,87 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "X분포: m₁=27"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "NORMAL_CURVE",
+          "curves": [
+            {
+              "id": "X",
+              "mean": "27",
+              "sd": "3",
+              "label": "X"
+            }
+          ],
+          "ticks": [
+            "21",
+            "27",
+            "28.5",
+            "30"
+          ],
+          "shades": [
+            {
+              "from": "21",
+              "to": "28.5"
+            }
+          ],
+          "zAxis": true,
+          "areaLabels": [
+            {
+              "shade": 0,
+              "text": "0.6687",
+              "source": "TABLE"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "Y분포: m₂=37"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "NORMAL_CURVE",
+          "curves": [
+            {
+              "id": "Y",
+              "mean": "37",
+              "sd": "3",
+              "label": "Y"
+            }
+          ],
+          "ticks": [
+            "34",
+            "37",
+            "40"
+          ],
+          "shades": [
+            {
+              "from": "40",
+              "to": null
+            }
+          ],
+          "zAxis": true
+        }
+      }
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "probq15pair",
+      "condition": "같은 표준편차 3의 X~N(27,3²), Y~N(37,3²); 조건 f(30)=g(34) 및 구간 21≤X≤28.5 정답 0.6687",
+      "mappedTo": "panels[0].plan.chart,panels[1].plan.chart"
+    }
+  ],
+  "newVisualInformation": [
+    "같은 표준편차 3의 X~N(27,3²), Y~N(37,3²); 조건 f(30)=g(34) 및 구간 21≤X≤28.5 정답 0.6687"
+  ],
+  "caption": "같은 표준편차 3의 X~N(27,3²), Y~N(37,3²); 조건 f(30)=g(34) 및 구간 21≤X≤28.5 정답 0.6687",
+  "accessibilityDescription": "같은 표준편차 3의 X~N(27,3²), Y~N(37,3²); 조건 f(30)=g(34) 및 구간 21≤X≤28.5 정답 0.6687"
+}

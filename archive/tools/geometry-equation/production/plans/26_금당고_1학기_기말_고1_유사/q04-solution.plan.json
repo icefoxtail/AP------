@@ -1,0 +1,33 @@
+{
+  "capability": "quadratic-inequality-chain-v1",
+  "inequality": {
+    "coefficients": [
+      "-12",
+      "-1",
+      "1"
+    ],
+    "comparator": "<",
+    "variable": "x"
+  },
+  "caption": "x²−x−12=(x+3)(x−4)<0은 두 근 사이 −3<x<4에서 성립한다.",
+  "accessibilityDescription": "위로 열린 포물선의 x축 아래 부분과 두 열린 끝점 사이의 수직선을 함께 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "factor",
+      "condition": "x²−x−12<0, 근 −3과 4, 열린 끝점",
+      "mappedTo": [
+        "inequality.coefficients",
+        "inequality.comparator"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "위로 열린 포물선의 x축 아래 부분과 두 열린 끝점 사이의 수직선을 함께 표시한다."
+  ],
+  "graphCaption": {
+    "text": "포물선의 부호"
+  },
+  "numberLineCaption": {
+    "text": "음수 구간"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "-3",
+      "-2"
+    ],
+    "denominator": [
+      "-1",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -6,
+      8
+    ],
+    "viewport": [
+      -6,
+      8,
+      -7,
+      8
+    ],
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": 0,
+        "y": 3
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "-2",
+        "3"
+      ]
+    },
+    "asymptoteLabelAt": "END"
+  },
+  "pointNames": {
+    "P": "P"
+  },
+  "caption": "수직 점근선은 x=1, 수평 점근선은 y=−2, 주어진 통과점은 (0,3)이다. 구하려는 f(6)은 표시하지 않는다.",
+  "accessibilityDescription": "유리함수 두 가지, 점선 점근선 x=1과 y=−2, y축 위 점 P(0,3)가 있으며 함수식과 정답을 숨긴다.",
+  "newVisualInformation": [
+    "새 수치의 점근선과 통과점",
+    "정답 미노출"
+  ],
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "수직 점근선 x=1,수평 점근선 y=-2",
+      "mappedTo": [
+        "graphPlan.numerator",
+        "graphPlan.denominator"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "(0,3)을 통과",
+      "mappedTo": [
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ]
+}

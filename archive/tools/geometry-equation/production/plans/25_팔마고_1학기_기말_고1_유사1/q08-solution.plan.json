@@ -1,0 +1,65 @@
+{
+  "sourceQuote": "x+a≤x²-3x+8≤2x²+x+b 가 모든 실수에서 성립하는 조건",
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "8",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -2,
+      6,
+      0,
+      15
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 2,
+        "y": 4
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "h",
+          "slope": "0",
+          "intercept": "4",
+          "label": "y=4"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "V": "V"
+  },
+  "caption": "y=x²-4x+8=(x-2)²+4는 (2,4)에서 최솟값 4이므로 a≤4이다. 다른 쪽의 (x+2)²+b-12≥0은 b≥12를 준다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a≤(x-2)²+4, 따라서 a 최대 4",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.requiredPoints",
+        "graphPlan.overlays.lines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점 (2,4)와 수평선 y=4를 그려 모든 실수에서 성립하는 하한 경계를 시각화한다."
+  ]
+}

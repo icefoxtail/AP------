@@ -1,0 +1,239 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "$\\overline{AB} = \\overlin",
+  "sourceConditions": [
+    {
+      "id": "q18-c1",
+      "condition": "AB=AC, BC=1, 각 A=36도",
+      "mappedTo": "poly-ABC"
+    },
+    {
+      "id": "q18-c2",
+      "condition": "BD는 각 B의 이등분선",
+      "mappedTo": "seg-BD"
+    },
+    {
+      "id": "verified-3",
+      "condition": "이등변 삼각형의 꼭지각 A는 36도이고 BD는 각 B 이등분선",
+      "mappedTo": "seg-BD"
+    }
+  ],
+  "newVisualInformation": [
+    "해설에서 도출한 수치와 도형 관계가 문제 그림에 추가 표시됨"
+  ],
+  "caption": "삼산중 18번 해설에서 보조선과 계산된 길이·각을 구분하여 표시한 그림",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1538842",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-500000",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "500000",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "309017",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "587785",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [],
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    }
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "seg-BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "seg-CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "seg-BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "accessibilityDescription": "문제에 제시된 점과 선에 해설 과정에서 계산한 길이, 각도 또는 보조선을 표시한 그림.",
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angleA36",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 36,
+        "label": "36",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "bisectB1",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "value": 36,
+        "arcs": 1,
+        "equalGroup": 1,
+        "noLabel": true,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "bisectB2",
+        "refs": [
+          "D",
+          "B",
+          "C"
+        ],
+        "value": 36,
+        "arcs": 1,
+        "equalGroup": 1,
+        "noLabel": true,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "derivedB36",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "value": 36,
+        "label": "36",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "derivedC72",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "value": 72,
+        "label": "72",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "text-lenBC",
+        "ownerSegment": "seg-BC",
+        "text": "1"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "iso",
+        "count": 1,
+        "segments": [
+          "seg-AB",
+          "seg-CA"
+        ]
+      }
+    ]
+  }
+}
