@@ -1,0 +1,43 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "최솟값 $5$는 꼭짓점의 함수값보다 크므로 구간은 꼭짓점을 포함하지 않는다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-5, 7, -1, 28],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": ["2", "-2", "1"],
+        "domain": ["-5", "7"],
+        "color": "BLUE",
+        "label": "y=(x-1)^2+1",
+        "emphasis": [
+          {"from": "-4", "to": "-1", "color": "WARM", "fromState": "CLOSED", "toState": "CLOSED"},
+          {"from": "3", "to": "6", "color": "GREEN", "fromState": "CLOSED", "toState": "CLOSED"}
+        ]
+      }
+    ],
+    "axisTickValues": {"x": ["-4", "-1", "1", "3", "6"], "y": ["1", "5", "26"]},
+    "overlays": {
+      "points": [
+        {"id": "Lmax", "x": "-4", "y": "26", "coordinates": true},
+        {"id": "Lmin", "x": "-1", "y": "5", "coordinates": true},
+        {"id": "Rmin", "x": "3", "y": "5", "coordinates": true},
+        {"id": "Rmax", "x": "6", "y": "26", "coordinates": true},
+        {"id": "V", "x": "1", "y": "1", "coordinates": true}
+      ]
+    }
+  },
+  "caption": "같은 포물선에서 왼쪽 구간 [−4,−1]과 오른쪽 구간 [3,6]의 양 끝 높이는 각각 26과 5이며, 두 구간 모두 꼭짓점 V(1,1)을 피한다.",
+  "accessibilityDescription": "꼭짓점 V를 사이에 두고 포물선의 왼쪽과 오른쪽에 길이가 각각 3인 두 닫힌 구간을 다른 색으로 강조하고, 양 끝의 함수값 5와 26을 표시한다.",
+  "sourceConditions": [
+    {"id": "q17-s1", "condition": "f(x)=(x−1)²+1, 꼭짓점 (1,1)", "mappedTo": ["graphPlan.curves.0.coefficients", "graphPlan.overlays.points.4"]},
+    {"id": "q17-s2", "condition": "k=−4이면 정의역 구간 [−4,−1]", "mappedTo": ["graphPlan.curves.0.emphasis.0", "graphPlan.overlays.points.0", "graphPlan.overlays.points.1"]},
+    {"id": "q17-s3", "condition": "k=3이면 정의역 구간 [3,6]", "mappedTo": ["graphPlan.curves.0.emphasis.1", "graphPlan.overlays.points.2", "graphPlan.overlays.points.3"]}
+  ],
+  "newVisualInformation": [
+    "한 포물선 위에 길이 3인 두 가능한 정의역 구간을 주황·초록으로 각각 강조한다.",
+    "양쪽 구간의 끝점에 최솟값 5와 최댓값 26을 이루는 점을 좌표와 함께 표시하고, 꼭짓점이 어느 구간에도 포함되지 않음을 보인다."
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "capability": "rational-spike-v1",
+  "sourceQuote": "두 점근선은 $x=-1$, $y=2$이므로 교점의 좌표는 $(-1,2)$이다.",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": ["1", "2"],
+    "denominator": ["1", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-4, 3],
+    "viewport": [-4, 3, -3, 6],
+    "equalUnits": true,
+    "asymptoteOnly": true,
+    "hideLabels": ["formula"],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "함수식을 정리한 y=(2x+1)/(x+1)의 두 점근선은 수직선 x=−1과 수평선 y=2이며 교점은 (−1,2)이다. 원래 중첩 분수의 정의역에서 제외되는 점은 이 점근선 그림의 대상이 아니다.",
+  "accessibilityDescription": "좌표평면에 수직 점근선 x가 마이너스 일인 점선과 수평 점근선 y가 이인 점선을 서로 교차하게 표시한다. 함수 곡선은 보이지 않는다.",
+  "sourceConditions": [
+    {"id": "q16-s1", "condition": "분수식을 정리한 유리함수 (2x+1)/(x+1)", "mappedTo": ["graphPlan.numerator", "graphPlan.denominator"]},
+    {"id": "q16-s2", "condition": "수직점근선 x=−1과 수평점근선 y=2", "mappedTo": ["graphPlan.denominator", "graphPlan.numerator", "graphPlan.asymptoteOnly"]}
+  ],
+  "newVisualInformation": [
+    "수직 점근선 x=−1과 수평 점근선 y=2의 서로 수직인 배치 및 교차 위치 (−1,2)를 두 점선으로 시각화한다.",
+    "원래 중첩 분수에서 빠지는 x=0과 x=−1/2의 뚫린 점을 누락한 전체 곡선으로 오해하지 않도록 곡선을 그리지 않는 점근선 전용 모드만 사용한다."
+  ]
+}

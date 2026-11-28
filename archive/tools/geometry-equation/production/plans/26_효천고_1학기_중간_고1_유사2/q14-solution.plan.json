@@ -1,0 +1,38 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "두 식을 빼면 $u=v$이며, 대입하면 $2u(u-4)=0$이다.",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{"coefficients": ["0", "0"]}],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-5, 9],
+    "viewport": [-5, 9, -5, 9],
+    "axisTitles": {"x": "u", "y": "v"},
+    "requiredPoints": [{"id": "A", "x": "4", "y": "0"}],
+    "axisTickValues": {"x": ["4"], "y": ["4"]},
+    "overlays": {
+      "circles": [
+        {"id": "C1", "center": ["4", "0"], "radiusSquared": "16"},
+        {"id": "C2", "center": ["0", "4"], "radiusSquared": "16"}
+      ],
+      "points": [
+        {"id": "O", "x": "0", "y": "0", "coordinates": true},
+        {"id": "Z", "x": "4", "y": "4", "coordinates": true},
+        {"id": "B", "x": "0", "y": "4"}
+      ],
+      "callouts": [{"id": "drop", "point": "O", "text": "제외", "labelKind": "TEXT", "direction": "SW"}]
+    }
+  },
+  "caption": "복소수 z=u+vi에 대응하는 평면에서 두 원 |z−4|=4, |z−4i|=4는 (0,0)과 (4,4)에서 만나며, 조건 z≠0에 의해 원점은 제외한다.",
+  "accessibilityDescription": "실수축과 허수축 위 중심이 각각 (4,0)과 (0,4)이고 반지름이 4인 두 원을 표시하고, 원점은 제외라 표기하며 나머지 교점 Z(4,4)를 보인다.",
+  "sourceConditions": [
+    {"id": "q14-s1", "condition": "첫 번째 실계수 이차방정식의 허근 z−4는 절댓값 4", "mappedTo": ["graphPlan.overlays.circles.0"]},
+    {"id": "q14-s2", "condition": "두 번째 실계수 이차방정식의 허근 z−4i는 절댓값 4", "mappedTo": ["graphPlan.overlays.circles.1"]},
+    {"id": "q14-s3", "condition": "두 거리 조건의 교점 z=0은 원문의 z≠0에 의해 제외", "mappedTo": ["graphPlan.overlays.points.0", "graphPlan.overlays.callouts.0"]},
+    {"id": "q14-s4", "condition": "남은 교점 z=4+4i", "mappedTo": ["graphPlan.overlays.points.1"]}
+  ],
+  "newVisualInformation": [
+    "두 절댓값 조건을 두 원의 교점이라는 기하 관계로 나타내고, 유일한 허용 교점 (4,4)을 좌표로 표시한다.",
+    "교점 (0,0)은 실제로 표시하되 제외라는 지시선 라벨을 연결해 z≠0 조건을 시각적으로 구분한다."
+  ]
+}
