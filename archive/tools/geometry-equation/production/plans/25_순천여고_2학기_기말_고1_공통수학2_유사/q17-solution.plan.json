@@ -1,0 +1,32 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "$2\\le k<\\dfrac52$",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-2.5, 3.5, -1, 7],
+    "curves": [
+      {"id": "f", "kind": "SQRT", "radicand": ["4", "2"], "domain": ["-2", "3"], "color": "BLUE", "label": "y=sqrt(2x+4)"},
+      {"id": "l0", "kind": "LINE", "coefficients": ["2", "1"], "domain": ["-2", "3"], "color": "WARM", "label": "y=x+2"},
+      {"id": "lt", "kind": "LINE", "coefficients": ["5/2", "1"], "domain": ["-2", "3"], "style": "DASHED", "color": "GREEN", "label": "y=x+5/2"}
+    ],
+    "overlays": {
+      "points": [
+        {"id": "A", "x": "-2", "y": "0", "coordinates": true},
+        {"id": "B", "x": "0", "y": "2", "coordinates": true},
+        {"id": "T", "x": "-3/2", "y": "1", "coordinates": true}
+      ]
+    },
+    "axisTickValues": {"x": ["-2"], "y": ["1", "2"]}
+  },
+  "caption": "k=2에서는 무리함수와 직선 y=x+2가 (−2,0), (0,2)에서 두 번 만나고, k=5/2에서는 y=x+5/2가 (−3/2,1)에서 접하여 한 점에서 만난다. 그래서 2≤k<5/2이다.",
+  "accessibilityDescription": "무리함수 y=√(2x+4)와 서로 평행한 두 직선 y=x+2, y=x+5/2를 겹쳐 그려 두 교점과 접점의 차이를 보여 준다.",
+  "sourceConditions": [
+    {"id": "sc17-1", "condition": "무리함수 y=√(2x+4)의 시작점은 (−2,0)", "mappedTo": ["graphPlan.curves.0.radicand", "graphPlan.overlays.points.0"]},
+    {"id": "sc17-2", "condition": "k=2인 직선의 교점은 (−2,0)과 (0,2)", "mappedTo": ["graphPlan.curves.1.coefficients", "graphPlan.overlays.points.1"]},
+    {"id": "sc17-3", "condition": "k=5/2에서 접점은 (−3/2,1)", "mappedTo": ["graphPlan.curves.2.coefficients", "graphPlan.overlays.points.2"]}
+  ],
+  "newVisualInformation": [
+    "매개변수 경계 k=2일 때 두 교점을 실제 점으로 드러낸다.",
+    "k=5/2일 때 접하는 한 점을 실제 점으로 표시하여 교점 수가 바뀌는 이유를 보여 준다."
+  ]
+}

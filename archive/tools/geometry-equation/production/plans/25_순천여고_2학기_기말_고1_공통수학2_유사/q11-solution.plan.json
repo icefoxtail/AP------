@@ -1,0 +1,29 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "f(x)=x^2-4x=(x-2)^2-4",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [0, 7, -5, 12],
+    "curves": [
+      {"id": "f", "kind": "Y_OF_X", "coefficients": ["0", "-4", "1"], "domain": ["1", "7"], "color": "BLUE", "label": "f(x)"}
+    ],
+    "overlays": {
+      "points": [
+        {"id": "V", "x": "2", "y": "-4", "coordinates": true},
+        {"id": "B", "x": "5", "y": "5", "coordinates": true}
+      ],
+      "lines": [{"id": "axis", "x": "2", "style": "DASHED", "label": "x=2"}]
+    },
+    "axisTickValues": {"x": ["2", "5"], "y": ["-4", "5"]}
+  },
+  "caption": "포물선 f(x)=(x−2)²−4는 x=2부터 증가한다. 정의역 하한 a가 2 또는 5일 때 시작점은 각각 (2,−4), (5,5)이고 치역의 하한이 결정된다.",
+  "accessibilityDescription": "꼭짓점 (2,−4)와 점 (5,5)를 지나며 x=2 오른쪽에서 증가하는 포물선 및 대칭축 x=2를 보여 준다.",
+  "sourceConditions": [
+    {"id": "sc11-1", "condition": "f(x)=x²−4x=(x−2)²−4", "mappedTo": ["graphPlan.curves.0.coefficients", "graphPlan.overlays.points.0"]},
+    {"id": "sc11-2", "condition": "a≥2에서 일대일이고 f(a)=3a−10에서 a=2 또는 5", "mappedTo": ["graphPlan.overlays.points.0", "graphPlan.overlays.points.1", "graphPlan.overlays.lines.0"]}
+  ],
+  "newVisualInformation": [
+    "일대일이 되는 오른쪽 증가 가지와 기준 대칭축 x=2를 실제 곡선·점선으로 비교한다.",
+    "가능한 정의역 시작값 2와 5의 치역 하한을 두 실제 점에서 읽을 수 있다."
+  ]
+}

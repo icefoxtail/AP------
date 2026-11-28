@@ -1,0 +1,33 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "따라서 $f(x)=\\dfrac12$ 또는 $f(x)=2$이다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-0.3, 2.3, -0.4, 2.5],
+    "curves": [
+      {"id": "left", "kind": "LINE", "coefficients": ["1", "-1"], "domain": ["0", "1"], "color": "BLUE", "label": "y=f(x)"},
+      {"id": "right", "kind": "LINE", "coefficients": ["-2", "2"], "domain": ["1", "2"], "color": "BLUE", "hideLabel": true},
+      {"id": "diagonal", "kind": "LINE", "coefficients": ["0", "1"], "domain": ["0", "2"], "color": "WARM", "style": "DASHED", "label": "y=x"},
+      {"id": "level", "kind": "LINE", "coefficients": ["1/2", "0"], "domain": ["0", "2"], "color": "GREEN", "style": "DASHED", "label": "y=1/2"}
+    ],
+    "overlays": {
+      "points": [
+        {"id": "A", "x": "1/2", "y": "1/2", "coordinates": true},
+        {"id": "B", "x": "5/4", "y": "1/2", "coordinates": true},
+        {"id": "C", "x": "2", "y": "2", "coordinates": true}
+      ]
+    },
+    "axisTickValues": {"x": ["1", "2"], "y": ["1/2", "2"]}
+  },
+  "caption": "f(f(x))=f(x)의 조건은 먼저 f(u)=u인 u=1/2 또는 2를 찾는 것으로 바뀐다. 꺾인 선과 수평선 y=1/2의 두 교점, 점 (2,2)을 통해 원래 x의 세 값을 읽는다.",
+  "accessibilityDescription": "두 직선 조각으로 된 함수 f의 그래프에 y=x와 y=1/2를 점선으로 겹치고, 근 x=1/2, 5/4, 2에 해당하는 점 세 개를 표시한다.",
+  "sourceConditions": [
+    {"id": "sc18-1", "condition": "f는 [0,1]에서 1-x, [1,2]에서 2x-2이다", "mappedTo": ["graphPlan.curves.0.coefficients", "graphPlan.curves.1.coefficients"]},
+    {"id": "sc18-2", "condition": "f(u)=u의 해 u=1/2, 2를 보여 준다", "mappedTo": ["graphPlan.curves.2.coefficients", "graphPlan.overlays.points.2"]},
+    {"id": "sc18-3", "condition": "f(x)=1/2의 두 해 x=1/2,5/4", "mappedTo": ["graphPlan.curves.3.coefficients", "graphPlan.overlays.points.0", "graphPlan.overlays.points.1"]}
+  ],
+  "newVisualInformation": [
+    "대각선과 꺾인 선의 고정점을 수평선 역상 조건과 같은 좌표평면에 나타낸다.",
+    "f(x)=1/2를 만족하는 두 입력과 f(x)=2를 만족하는 한 입력을 서로 구분하여 표시한다."
+  ]
+}

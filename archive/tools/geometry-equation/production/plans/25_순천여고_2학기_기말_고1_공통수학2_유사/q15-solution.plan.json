@@ -1,0 +1,35 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "$6|x_2-x_1|=40$",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-1, 12, -1, 12],
+    "curves": [
+      {"id": "f", "kind": "RATIONAL", "numerator": ["224/9", "0"], "denominator": ["0", "1"], "domain": ["2", "11"], "color": "BLUE", "label": "y=(224/9)/x"},
+      {"id": "l", "kind": "LINE", "coefficients": ["12", "-1"], "domain": ["0", "12"], "color": "WARM", "label": "y=-x+12"}
+    ],
+    "overlays": {
+      "points": [
+        {"id": "O", "x": "0", "y": "0"},
+        {"id": "P", "x": "8/3", "y": "28/3", "coordinates": true},
+        {"id": "Q", "x": "28/3", "y": "8/3", "coordinates": true},
+        {"id": "H", "x": "6", "y": "6"}
+      ],
+      "polygons": [{"id": "T", "points": ["O", "P", "Q"], "fill": "NONE"}],
+      "segments": [{"id": "OH", "from": "O", "to": "H", "dashed": true}],
+      "rightAngles": [{"at": "H", "from": ["O", "P"]}]
+    },
+    "axisTickValues": {"x": ["6"], "y": ["6"]}
+  },
+  "caption": "두 교점 P(8/3,28/3), Q(28/3,8/3)에서 생기는 삼각형 OPQ에 원점에서 직선 PQ로 내린 수선 OH를 그린다. PQ=20√2/3, OH=6√2이고 넓이는 40이다.",
+  "accessibilityDescription": "양의 유리함수 가지와 기울기 마이너스 1인 직선의 교점 P,Q, 원점 O를 잇는 삼각형 및 수선 OH와 직각 표시가 함께 보인다.",
+  "sourceConditions": [
+    {"id": "sc15-1", "condition": "PQ의 직선은 y=−x+12", "mappedTo": ["graphPlan.curves.1.coefficients"]},
+    {"id": "sc15-2", "condition": "넓이가 40이면 두 x좌표 차이는 20/3이고 k=224/9", "mappedTo": ["graphPlan.curves.0.numerator", "graphPlan.overlays.points.1", "graphPlan.overlays.points.2"]},
+    {"id": "sc15-3", "condition": "원점에서 직선까지 수선 OH의 길이는 6√2", "mappedTo": ["graphPlan.overlays.points.3", "graphPlan.overlays.segments.0", "graphPlan.overlays.rightAngles.0"]}
+  ],
+  "newVisualInformation": [
+    "삼각형 OPQ의 세 꼭짓점과 밑변을 실제 polygon 필드로 그린다.",
+    "원점에서 PQ에 내린 수선과 직각 표식을 그려 거리 공식·넓이 공식이 어떻게 결합되는지 보여 준다."
+  ]
+}
