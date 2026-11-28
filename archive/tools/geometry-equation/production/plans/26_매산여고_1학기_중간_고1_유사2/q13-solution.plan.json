@@ -1,0 +1,23 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "만나지 않으려면 판별식이 음수여야 한다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-5, 2, 0, 20],
+    "curves": [
+      {"id": "f", "kind": "Y_OF_X", "coefficients": ["10", "2", "1"], "domain": ["-4", "1"], "color": "BLUE", "label": "y=x^2+2x+10"},
+      {"id": "l", "kind": "LINE", "coefficients": ["5", "-2"], "domain": ["-4", "1"], "style": "DASHED", "color": "WARM", "label": "y=-2x+5"}
+    ],
+    "axisTickValues": {"x": ["-2"], "y": ["5", "10"]}
+  },
+  "caption": "해설: 가능한 자연수 k의 최솟값 10에서 포물선과 직선은 만나지 않는다.",
+  "accessibilityDescription": "k가 10인 위로 열린 포물선 y=x²+2x+10과 기울기 -2인 직선을 같은 좌표평면에 그렸다. 두 곡선은 서로 교차하거나 접하지 않는다.",
+  "sourceConditions": [
+    {"id": "q13-s1", "condition": "k>9이고 최소 자연수 k=10이므로 y=x²+2x+10", "mappedTo": ["graphPlan.curves.0.coefficients", "graphPlan.curves.0.domain"]},
+    {"id": "q13-s2", "condition": "직선 y=-2x+5; 차식 x²+4x+5=(x+2)²+1>0", "mappedTo": ["graphPlan.curves.1.coefficients", "graphPlan.curves.1.domain"]}
+  ],
+  "newVisualInformation": [
+    "k=10에서 포물선이 직선보다 항상 위에 있어 교점이 없음을 두 곡선의 상대적 높이로 보여 준다.",
+    "판별식 음수가 좌표평면에서 분리된 그래프로 나타나는 것을 설명한다."
+  ]
+}
