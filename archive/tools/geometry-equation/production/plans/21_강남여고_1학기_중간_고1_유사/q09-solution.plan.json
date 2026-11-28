@@ -1,0 +1,20 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial", "pieces": [{"coefficients": ["-1", "4", "-4"]}], "breakpoints": [],
+    "sourceDomain": {"kind": "ALL_REALS"}, "domain": [-0.7, 1.7],
+    "viewport": [-1, 2, -8, 2], "functionName": "f",
+    "referenceCurves": [
+      {"id": "g", "name": "g", "coefficients": ["0", "4", "-4"], "intersectionX": [], "color": "WARM"}
+    ],
+    "requiredPoints": [{"id": "T", "x": 0.5, "y": 0}, {"id": "G", "x": 0.5, "y": 1}],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "경계값 k=−1에서는 포물선이 T(1/2,0)에 접하고, 예시 k=0에서는 서로 다른 두 점에서 x축을 만난다. 따라서 k>−1이다.",
+  "accessibilityDescription": "아래로 열린 접하는 포물선 k가 −1인 경우와, 그보다 1 높은 두 x절편을 갖는 k가 0인 경우를 비교한다.",
+  "sourceConditions": [
+    {"id": "boundary", "condition": "k=−1일 때 y=−4x²+4x−1=−(2x−1)²", "mappedTo": ["graphPlan.pieces[0]", "graphPlan.requiredPoints[0]"]},
+    {"id": "example", "condition": "k=0이면 y=−4x²+4x, 두 x절편 0,1, 꼭짓점 (1/2,1)", "mappedTo": ["graphPlan.referenceCurves[0]", "graphPlan.requiredPoints[1]"]}
+  ],
+  "newVisualInformation": ["판별식이 0인 접점과 양수인 서로 다른 두 교점의 차이를 두 정확한 곡선으로 표시한다."]
+}

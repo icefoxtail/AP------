@@ -1,0 +1,50 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id": "O", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "0"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "L", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "-5"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "R", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "5"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "B", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "-3"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "C", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "3"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "A", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "-3"}, {"kind": "integer", "value": "4"}]}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "D", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "3"}, {"kind": "integer", "value": "4"}]}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "k", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["O"], "args": {"radius": {"kind": "integer", "value": "5"}}, "outputType": "CIRCLE", "factRole": "DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["L", "B", "O", "C", "R", "A", "D"],
+  "hiddenPointNames": ["L", "R"],
+  "displayCircles": [], "displayLines": [],
+  "displaySegments": [
+    {"id": "sLB", "refs": ["L", "B"]},
+    {"id": "sBO", "refs": ["B", "O"]},
+    {"id": "sOC", "refs": ["O", "C"]},
+    {"id": "sCR", "refs": ["C", "R"]},
+    {"id": "sAB", "refs": ["A", "B"]},
+    {"id": "sCD", "refs": ["C", "D"]},
+    {"id": "sAD", "refs": ["A", "D"]}
+  ],
+  "rightAngles": [{"id": "rB", "refs": ["A", "B", "C"]}, {"id": "rC", "refs": ["B", "C", "D"]}],
+  "planeMarks": {
+    "arcs": [{"id": "upper", "circle": "k", "center": "O", "from": "L", "to": "R", "side": "CW", "highlight": false}],
+    "equalLengths": [{"id": "halves", "count": 1, "segments": ["sBO", "sOC"]}],
+    "expressionLabels": [
+      {"id": "lenBO", "ownerSegment": "sBO", "text": "p"},
+      {"id": "lenOC", "ownerSegment": "sOC", "text": "p"},
+      {"id": "lenCD", "ownerSegment": "sCD", "text": "q"},
+      {"id": "lenAD", "ownerSegment": "sAD", "text": "2p"}
+    ]
+  },
+  "coordinateCanvas": {"width": 680, "height": 440},
+  "caption": "반원의 대칭으로 BO=OC=p, AB=CD=q, DA=2p이다. 주어진 두 길이 조건에서 p=x+3, q=y+3이므로 넓이는 2pq이다.",
+  "accessibilityDescription": "반원 안의 직사각형 ABCD의 밑변 중앙에 O가 있고 BO와 OC에는 같은 길이 표식 p, 높이 CD에는 q, 윗변 DA에는 2p가 붙는다.",
+  "sourceConditions": [
+    {"id": "semicircle", "condition": "중심 O인 반원에 내접하는 직사각형, A,D는 같은 반원 위에 위치. 좌표는 p=3,q=4인 대표 배치", "mappedTo": ["mathPlan.nodes", "planeMarks.arcs[0]"]},
+    {"id": "symmetry", "condition": "BO=OC=p, DA=2p", "mappedTo": ["planeMarks.equalLengths[0]", "planeMarks.expressionLabels[0]", "planeMarks.expressionLabels[1]", "planeMarks.expressionLabels[3]"]},
+    {"id": "height", "condition": "CD=AB=q이고 두 꼭짓각은 직각", "mappedTo": ["planeMarks.expressionLabels[2]", "rightAngles"]},
+    {"id": "equations", "condition": "p+q=x+y+6, 3p+q=3x+y+12 ⇒ p=x+3,q=y+3", "mappedTo": "planeMarks.expressionLabels"}
+  ],
+  "newVisualInformation": ["반원의 대칭으로 밑변이 두 같은 부분 p로 나뉘고 직사각형 넓이가 2pq가 되는 기하 관계를 표시한다."]
+}

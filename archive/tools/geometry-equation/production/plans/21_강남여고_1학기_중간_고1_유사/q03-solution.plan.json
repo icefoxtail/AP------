@@ -1,0 +1,22 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["1", "-4", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-1, 5], "viewport": [-1.8, 5.8, -4.3, 7.4],
+    "requiredPoints": [
+      {"id": "L", "x": -1, "y": 6},
+      {"id": "V", "x": 2, "y": -3},
+      {"id": "R", "x": 5, "y": 6}
+    ],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "닫힌 구간 [−1,5]에서 y=(x−2)²−3의 최솟값은 −3, 두 끝점의 최댓값은 6이다.",
+  "accessibilityDescription": "구간 양끝의 높이는 6으로 같고, 그 사이의 꼭짓점은 (2,−3)에 있는 위로 열린 포물선.",
+  "sourceConditions": [
+    {"id": "formula", "condition": "y=x²−4x+1=(x−2)²−3", "mappedTo": "graphPlan.coefficients"},
+    {"id": "domain", "condition": "−1≤x≤5, 양쪽 끝점 모두 포함", "mappedTo": ["graphPlan.domain", "graphPlan.requiredPoints[0]", "graphPlan.requiredPoints[2]"]},
+    {"id": "extrema", "condition": "f(−1)=6, f(2)=−3, f(5)=6", "mappedTo": ["graphPlan.requiredPoints[0]", "graphPlan.requiredPoints[1]", "graphPlan.requiredPoints[2]"]}
+  ],
+  "newVisualInformation": ["구간의 두 끝점이 대칭축 x=2로부터 똑같이 떨어져 같은 최댓값을 갖는 것을 보여 준다."]
+}

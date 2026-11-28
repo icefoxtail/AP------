@@ -1,0 +1,17 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {"kind": "SET", "label": "P: 실근 존재", "pieces": [{"lo": {"value": "1", "state": "CLOSED"}, "hi": null}]},
+      {"kind": "SET", "label": "Q: 실근 존재", "pieces": [{"lo": {"value": "-1", "state": "CLOSED"}, "hi": null}]}
+    ]
+  },
+  "caption": "P=0의 실근 조건은 a≥1, Q=0의 실근 조건은 a≥−1이므로 P의 실근 조건은 Q의 실근 조건에 포함된다.",
+  "accessibilityDescription": "첫 수직선은 1부터 오른쪽 무한대, 둘째 수직선은 −1부터 오른쪽 무한대까지 닫힌 점과 색이 있는 해집합을 표시한다.",
+  "sourceConditions": [
+    {"id": "P", "condition": "D_P/4=a²−(a−2)²=4(a−1)≥0 ⇔ a≥1", "mappedTo": "numberLine.rows[0]"},
+    {"id": "Q", "condition": "D_Q/4=(a+2)²−a²=4(a+1)≥0 ⇔ a≥−1", "mappedTo": "numberLine.rows[1]"}
+  ],
+  "newVisualInformation": ["두 이차방정식의 실근 존재 매개변수 집합의 포함 관계와 경계의 차이를 수직선에서 비교한다."]
+}
