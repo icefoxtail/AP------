@@ -1,0 +1,290 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "4"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "2"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "numerator": "20",
+                      "denominator": "9"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "2"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "rational",
+              "numerator": "-46",
+              "denominator": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "M",
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angleA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "label": "A",
+        "labelKind": "MATH",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "om",
+        "ownerSegment": "sOM",
+        "text": "2",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 540,
+    "height": 420
+  },
+  "caption": "삼각형 ABC의 외접원 중심 O에서 BC에 내린 수선의 발 M까지 거리는 2이며 cos∠BAC=1/3이다.",
+  "accessibilityDescription": "원에 내접한 삼각형 ABC와 외접원의 중심 O, 선분 BC의 수선 발 M을 표시한다. 선분 OM은 길이 2이고 각 BAC의 코사인은 1/3이며 sin B 대 sin C는 2 대 3으로 주어져 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "현행 유사 q21: cos∠BAC=1/3, 외접원 중심과 BC의 직선거리 2, sin B/sin C=2/3, 삼각형의 넓이.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "원·중심·현 BC·수선 OM을 정확한 배치로 표시하며 원문에 없는 답의 반지름이나 넓이는 노출하지 않는다."
+  ],
+  "rightAngles": [
+    {
+      "id": "rM",
+      "refs": [
+        "O",
+        "M",
+        "B"
+      ]
+    }
+  ]
+}

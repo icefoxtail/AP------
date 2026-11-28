@@ -1,0 +1,150 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "16",
+                  "denominator": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sBA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "c",
+        "ownerSegment": "sBA",
+        "text": "c=15",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a",
+        "ownerSegment": "sBC",
+        "text": "a=8",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 540,
+    "height": 420
+  },
+  "caption": "sin(A+C)=1/5인 삼각형 ABC에서 a=8, c=15인 경우의 예각 B 대표 배치이다.",
+  "accessibilityDescription": "B를 꼭짓점으로 두 변 BA=15와 BC=8이 만나고, 다른 두 각의 사인 합 조건 sin(A+C)=1/5가 주어져 있다. 그림은 가능한 예각 B 구성 한 가지이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "현행 유사 q06: a=8, c=15, sin(A+C)=1/5일 때 삼각형 ABC의 넓이를 묻는다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "BA와 BC를 원문 길이에 맞추고 B가 예각인 가능한 하나의 삼각형을 보인다. 원문이 허용하는 다른 B의 배치를 배제하지 않는다."
+  ]
+}

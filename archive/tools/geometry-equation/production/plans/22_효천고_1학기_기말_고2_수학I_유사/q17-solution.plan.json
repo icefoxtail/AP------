@@ -1,0 +1,61 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": [
+      "1",
+      "1",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "12"
+      ],
+      "states": [
+        "CLOSED",
+        "OPEN"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "g",
+        "slope": "-1/6",
+        "perPi": true,
+        "intercept": "2",
+        "intersectionCount": 6,
+        "color": "BLUE"
+      }
+    ],
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [
+        "2",
+        "4",
+        "6",
+        "8",
+        "10"
+      ],
+      "y": [
+        "-1",
+        "1"
+      ]
+    },
+    "displaySize": "full"
+  },
+  "caption": "해설축: t=πx로 바꾸어 0≤t<12π에서 y=sin t와 y=2−t/(6π)의 교점 수를 비교한다.",
+  "accessibilityDescription": "0부터 12π 미만의 여섯 주기에서 사인 곡선과 우하향 직선의 교점을 나타낸다. 왼쪽 끝은 포함되고 오른쪽 끝은 제외된다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "현행 유사 q17: sin(πx)=−x/6+2, 0≤x<12에서 서로 다른 실근의 개수를 구한다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "t=πx의 등가 치환과 주기별 사인 곡선·기울어진 직선의 교점 위치를 나타낸다."
+  ]
+}

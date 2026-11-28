@@ -1,0 +1,335 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2331",
+              "denominator": "190"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "63",
+                  "denominator": "38"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-57",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-42",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-37",
+              "denominator": "5"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-99",
+              "denominator": "10"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "7",
+                  "denominator": "6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "57"
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "O"
+  ],
+  "hiddenPointNames": ["O"],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "bad",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "label": "π/3",
+        "labelKind": "MATH",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aeb",
+        "refs": [
+          "A",
+          "E",
+          "B"
+        ],
+        "label": "θ",
+        "labelKind": "MATH",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "ab",
+        "ownerSegment": "sAB",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "bc",
+        "ownerSegment": "sBC",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ad",
+        "ownerSegment": "sAD",
+        "text": "5",
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "ab_bc",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sBC"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 540,
+    "height": 420
+  },
+  "caption": "원에 내접한 ABCD에서 AB=BC=3, AD=5, ∠BAD=π/3이고 D는 AE, C는 BE 위에 있다.",
+  "accessibilityDescription": "하나의 원 위에 A B C D가 순서대로 놓인 사각형과, AD 및 BC를 각각 연장한 교점 E를 보인다. AB와 BC는 3, AD는 5, A의 각은 π/3이며 E의 각은 θ이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "현행 유사 q25: 원에 내접한 ABCD, AB=BC=3, AD=5, ∠BAD=π/3, D∈AE, C∈BE, θ=∠AEB. sin θ를 구한다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "원에 내접한 사각형, 두 변의 연장선 교점 E, 주어진 변 길이·각도와 θ를 표시한다."
+  ]
+}

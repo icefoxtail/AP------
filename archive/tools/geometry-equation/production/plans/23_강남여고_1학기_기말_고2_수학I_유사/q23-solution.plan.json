@@ -1,0 +1,216 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [{"kind": "integer", "value": "4"}, {"kind": "expression", "op": "sqrt", "args": [{"kind": "integer", "value": "3"}]}]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [{"kind": "rational", "numerator": "4", "denominator": "3"}, {"kind": "expression", "op": "sqrt", "args": [{"kind": "integer", "value": "3"}]}]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 120,
+        "label": "120",
+        "arcs": 1,
+        "side": "INNER",
+        "ring": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aBAD",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 60,
+        "noLabel": true,
+        "arcs": 1,
+        "ring": 2,
+        "equalGroup": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aDAC",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "value": 60,
+        "noLabel": true,
+        "arcs": 1,
+        "ring": 2,
+        "equalGroup": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "8",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lADDerived",
+        "ownerSegment": "sAD",
+        "text": "8/3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 400
+  },
+  "caption": "해설축: 120°를 두 60°로 나누어 두 부분삼각형의 넓이를 합하면 이등분선 AD=8/3을 얻는다.",
+  "accessibilityDescription": "AB=4, AC=8인 삼각형 ABC의 각 A가 120도이고 선분 AD가 이를 두 개의 60도 각으로 나눈다. 해설에서 얻은 AD=8/3이 실제 AD 선분에 표시되어 있다.",
+  "newVisualInformation": [
+    "AB=4",
+    "AC=8",
+    "각 A=120도",
+    "각 A의 이등분선 AD",
+    "해설에서 구한 AD=8/3을 선분 라벨에 추가"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 2] $\\overline{AB} = 4$, $\\overline{AC} = 8$, $\\angle A = 120^\\circ$인 삼각형 $ABC$에서 $\\angle A$의 이등분선이 변 $BC$와 만나는 점을 $D$라 할 때, 다음 물음에 답하시오. [총 5점]\n\n(1) 삼각형 $ABC$의 넓이를 구하시오. [2점]  \n(2) 선분 $AD$의 길이를 구하시오. [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
