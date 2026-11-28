@@ -1,9 +1,37 @@
 {
-  "capability": "construction-spike-v1",
-  "realization": {
-    "recipeId": "PLANE_FIGURE_v1",
-    "unit": "source-length",
-    "reflectionEquivalent": false
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"outputType":"POINT","args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"outputType":"POINT","args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"0"}]},"factRole":"GIVEN"},
+      {"id":"T","op":"SOURCE_POINT","inputs":[],"outputType":"POINT","args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"1"}]},"factRole":"GIVEN"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"outputType":"POINT","args":{"coordinates":[{"kind":"rational","numerator":"3","denominator":"5"},{"kind":"rational","numerator":"4","denominator":"5"}]},"factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"outputType":"POINT","args":{"coordinates":[{"kind":"rational","numerator":"3","denominator":"5"},{"kind":"integer","value":"0"}]},"factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"E","op":"SOURCE_POINT","inputs":[],"outputType":"POINT","args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"rational","numerator":"4","denominator":"3"}]},"factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["B"],"outputType":"CIRCLE","args":{"radius":{"kind":"integer","value":"1"}},"factRole":"DERIVED_INTERMEDIATE"}
+    ]
   },
-  "caption": "반지름 1 사분원에서 각 x 증가 시 sin x 증가, cos x 감소 성질 판별"
+  "displayPoints":["A","B","C","D","E","T"],
+  "displayCircles":[],
+  "displaySegments":[
+    {"id":"sBD","refs":["B","D"]},
+    {"id":"sBE","refs":["B","E"]},
+    {"id":"sAC","refs":["A","C"]},
+    {"id":"sED","refs":["E","D"]},
+    {"id":"sBC","refs":["B","C"]}
+  ],
+  "hiddenPointNames":["T"],"hiddenPointStyle":"NONE",
+  "rightAngles":[{"id":"rC","refs":["A","C","B"]},{"id":"rD","refs":["E","D","B"]}],
+  "planeMarks":{
+    "arcs":[{"id":"quarter","circle":"k","center":"B","from":"D","to":"T","side":"CCW"}],
+    "angles":[{"id":"ax","refs":["D","B","A"],"value":53.1301,"label":"x","style":"ARC","factRole":"GIVEN"}],
+    "dimensions":[{"id":"dBD","from":"B","to":"D","label":"1","side":"BELOW","style":"BAR","factRole":"GIVEN"}]
+  },
+  "caption":"중심 B, 반지름 1인 사분원에서 AC와 ED가 BD에 수직인 삼각비 도형이다. 각 x는 B에서 재며 삼각비의 결과는 표시하지 않는다.",
+  "sourceConditions":[
+    {"id":"radius","condition":"BA=BD=1","mappedTo":["mathPlan.nodes[k]","planeMarks.dimensions[dBD]"]},
+    {"id":"feet","condition":"AC와 ED는 BD에 수직이며 A는 사분원 위, E는 BA의 연장선 위","mappedTo":["rightAngles","displaySegments"]}
+  ]
 }

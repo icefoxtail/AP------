@@ -1,9 +1,38 @@
 {
-  "capability": "construction-spike-v1",
-  "realization": {
-    "recipeId": "PLANE_FIGURE_v1",
-    "unit": "source-length",
-    "reflectionEquivalent": false
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"outputType":"POINT","args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"outputType":"POINT","args":{"coordinates":[{"kind":"integer","value":"12"},{"kind":"integer","value":"0"}]},"factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"outputType":"POINT","args":{"coordinates":[{"kind":"integer","value":"12"},{"kind":"integer","value":"5"}]},"factRole":"GIVEN"},
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"outputType":"POINT","args":{"coordinates":[{"kind":"integer","value":"10"},{"kind":"integer","value":"2"}]},"factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"P","op":"SOURCE_POINT","inputs":[],"outputType":"POINT","args":{"coordinates":[{"kind":"rational","numerator":"120","denominator":"13"},{"kind":"rational","numerator":"50","denominator":"13"}]},"factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"Q","op":"SOURCE_POINT","inputs":[],"outputType":"POINT","args":{"coordinates":[{"kind":"integer","value":"12"},{"kind":"integer","value":"2"}]},"factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"R","op":"SOURCE_POINT","inputs":[],"outputType":"POINT","args":{"coordinates":[{"kind":"integer","value":"10"},{"kind":"integer","value":"0"}]},"factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"outputType":"CIRCLE","args":{"radius":{"kind":"integer","value":"2"}},"factRole":"GIVEN"}
+    ]
   },
-  "caption": "직각삼각형 빗변 13, 내접원 반지름 2에서 피타고라스 이차방정식 -> AP=10 산출"
+  "displayPoints":["A","B","C","O","P","Q","R"],
+  "displayCircles":["k"],
+  "displaySegments":[
+    {"id":"sAB","refs":["A","B"]},
+    {"id":"sBC","refs":["B","C"]},
+    {"id":"sCA","refs":["C","A"]},
+    {"id":"sOQ","refs":["O","Q"]}
+  ],
+  "rightAngles":[{"id":"rC","refs":["A","C","B"]},{"id":"rQ","refs":["O","Q","B"]}],
+  "planeMarks":{
+    "dimensions":[
+      {"id":"dAB","from":"A","to":"B","label":"13","side":"ABOVE","style":"BAR","factRole":"GIVEN"},
+      {"id":"dOQ","from":"O","to":"Q","label":"2","side":"BELOW","style":"BAR","factRole":"GIVEN"},
+      {"id":"dAP","from":"A","to":"P","label":"x","side":"BELOW","style":"BAR","factRole":"GIVEN"}
+    ]
+  },
+  "caption":"직각삼각형 ABC의 내접원 O가 AB,BC,CA에 각각 P,Q,R에서 접한다. AB=13, OQ=2, AP=x이고 x의 값은 밝히지 않는다.",
+  "sourceConditions":[
+    {"id":"right","condition":"angle C=90°, AB=13","mappedTo":["rightAngles[rC]","planeMarks.dimensions[dAB]"]},
+    {"id":"tangent","condition":"OQ=2, P,Q,R은 접점, AP=x>BP","mappedTo":["mathPlan.nodes[k]","displayPoints","planeMarks.dimensions[dAP]"]}
+  ]
 }

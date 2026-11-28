@@ -1,59 +1,27 @@
 {
-  "capability": "piecewise-polynomial-spike-v1",
+  "capability": "multi-curve-figure-v1",
   "graphPlan": {
-    "family": "piecewise_polynomial",
-    "domain": [
-      -1,
-      5
+    "family": "multi-curve",
+    "viewport": [-2, 6, -1, 6],
+    "curves": [
+      {"id":"lone","kind":"LINE","coefficients":["3","3"],"domain":["-1","1"],"label":"y=3x+3"},
+      {"id":"ltwo","kind":"LINE","coefficients":["5","-1"],"domain":["0","5"],"label":"y=5-x"}
     ],
-    "viewport": [
-      -2,
-      6,
-      -1,
-      6
-    ],
-    "pieces": [
-      {
-        "domain": [
-          -1,
-          "1/2"
-        ],
-        "coefficients": [
-          "3",
-          "3"
-        ]
-      },
-      {
-        "domain": [
-          "1/2",
-          5
-        ],
-        "coefficients": [
-          "5",
-          "-1"
-        ]
-      }
-    ],
-    "requiredPoints": [
-      {
-        "id": "I",
-        "x": "1/2",
-        "y": "9/2",
-        "label": "(1/2, 9/2)"
-      },
-      {
-        "id": "X1",
-        "x": "-1",
-        "y": "0",
-        "label": "(-1, 0)"
-      },
-      {
-        "id": "X2",
-        "x": "5",
-        "y": "0",
-        "label": "(5, 0)"
-      }
-    ]
+    "axisTickValues":{"x":["-1","5"],"y":[]},
+    "overlays": {
+      "points":[
+        {"id":"R1","x":"-1/3","y":"0","unnamed":true},
+        {"id":"R2","x":"3","y":"0","unnamed":true},
+        {"id":"R3","x":"3","y":"2","unnamed":true},
+        {"id":"R4","x":"-1/3","y":"2","unnamed":true}
+      ],
+      "segments":[
+        {"id":"rs1","from":"R1","to":"R2"},
+        {"id":"rs2","from":"R2","to":"R3"},
+        {"id":"rs3","from":"R3","to":"R4"},
+        {"id":"rs4","from":"R4","to":"R1"}
+      ]
+    }
   },
-  "caption": "두 직선 y=3x+3, y=5-x와 x축으로 둘러싸인 삼각형 영역"
+  "caption": "두 직선 l₁:y=3x+3, l₂:y=5-x 및 x축으로 둘러싸인 삼각형에 들어가는 직사각형의 예시 배치(높이 2). 최대 넓이의 위치는 표시하지 않는다."
 }

@@ -1,11 +1,13 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curve": "(x + 2)^2 + 1",
-  "points": {
-    "V": [
-      -2,
-      1
-    ]
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-5, 3, -1, 12],
+    "curves": [
+      {"id": "f", "kind": "Y_OF_X", "coefficients": ["5", "4", "1"], "domain": ["-4", "1"], "hideLabel": true}
+    ],
+    "axisTickValues": {"x": [], "y": []}
   },
-  "caption": "아래로 볼록하고 꼭짓점이 제2사분면에 위치한 포물선 그래프"
+  "caption": "아래로 볼록하고 꼭짓점이 제2사분면에 놓인 포물선의 개형이다. 계수와 꼭짓점의 수치는 밝히지 않는다.",
+  "sourceConditions": [{"id":"sign","condition":"a>0, p<0, q>0인 꼭짓점형 이차함수의 모양","mappedTo":"graphPlan.curves[0]"}]
 }

@@ -1,51 +1,14 @@
 {
-  "capability": "piecewise-polynomial-spike-v1",
+  "capability": "multi-curve-figure-v1",
   "graphPlan": {
-    "family": "piecewise_polynomial",
-    "domain": [
-      -3,
-      6
+    "family": "multi-curve",
+    "viewport": [-3, 6, -2, 25],
+    "curves": [
+      {"id":"f","kind":"Y_OF_X","coefficients":["5","0","1"],"domain":["-2","5"],"hideLabel":true},
+      {"id":"g","kind":"LINE","coefficients":["9","3"],"domain":["-2","5"],"hideLabel":true}
     ],
-    "viewport": [
-      -3,
-      6,
-      0,
-      24
-    ],
-    "pieces": [
-      {
-        "domain": [
-          -3,
-          6
-        ],
-        "coefficients": [
-          "5",
-          "0",
-          "1"
-        ]
-      }
-    ],
-    "referenceLines": [
-      {
-        "slope": "3",
-        "intercept": "9",
-        "label": "y=3x+9"
-      }
-    ],
-    "requiredPoints": [
-      {
-        "id": "P1",
-        "x": "-1",
-        "y": "6",
-        "label": "(-1, 6)"
-      },
-      {
-        "id": "P2",
-        "x": "4",
-        "y": "21",
-        "label": "(4, 21)"
-      }
-    ]
+    "axisTickValues":{"x":["-1","4"],"y":[]},
+    "overlays":{"points":[{"id":"P1","x":"-1","y":"6","unnamed":true},{"id":"P2","x":"4","y":"21","unnamed":true}]}
   },
-  "caption": "이차함수 y=x^2+5의 그래프와 직선 y=3x+9가 x=-1, x=4에서 만나는 교점"
+  "caption": "두 곡선 y=x²+ax+5, y=3x+b는 x=-1, x=4에서 만난다. 미지 계수와 교점의 y좌표는 표시하지 않는다."
 }

@@ -1,5 +1,10 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curve": "x^2 - 4*x + 2",
-  "caption": "아래로 볼록하고 축이 y축 오른쪽이며 y절편이 양수인 이차함수 그래프"
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family":"multi-curve",
+    "viewport":[-2,6,-4,10],
+    "curves":[{"id":"f","kind":"Y_OF_X","coefficients":["2","-4","1"],"domain":["-1","5"],"hideLabel":true}],
+    "axisTickValues":{"x":[],"y":[]}
+  },
+  "caption":"아래로 볼록하며 대칭축이 y축 오른쪽에 있고 y절편이 양수인 이차함수의 개형이다."
 }

@@ -1,18 +1,16 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curves": [
-    "1/3*x^2",
-    "3*x^2",
-    "6*x^2",
-    "-1/2*x^2",
-    "-2*x^2"
-  ],
-  "labels": [
-    "a",
-    "b",
-    "c",
-    "d",
-    "e"
-  ],
-  "caption": "원점을 꼭짓점으로 하고 폭이 다른 5개의 포물선 a, b, c, d, e"
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family":"multi-curve",
+    "viewport":[-3,3,-10,12],
+    "curves":[
+      {"id":"a","kind":"Y_OF_X","coefficients":["0","0","1/3"],"domain":["-2","2"],"label":"a"},
+      {"id":"b","kind":"Y_OF_X","coefficients":["0","0","3"],"domain":["-2","2"],"label":"b"},
+      {"id":"c","kind":"Y_OF_X","coefficients":["0","0","6"],"domain":["-2","2"],"label":"c"},
+      {"id":"d","kind":"Y_OF_X","coefficients":["0","0","-1/2"],"domain":["-2","2"],"label":"d"},
+      {"id":"e","kind":"Y_OF_X","coefficients":["0","0","-2"],"domain":["-2","2"],"label":"e"}
+    ],
+    "axisTickValues":{"x":[],"y":[]}
+  },
+  "caption":"원점을 꼭짓점으로 하고 폭과 개구 방향이 서로 다른 다섯 포물선 a,b,c,d,e를 한 좌표평면에서 비교한다."
 }
