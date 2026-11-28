@@ -31,10 +31,10 @@
   "pointNames": {"O": "O", "A": "A", "B": "B", "P": "P", "Q": "Q"},
   "caption": "곡선 y=9-x^2 위의 P에서 각 APB를 둘로 나누는 PQ와 x축 위 A, O, Q, B. 그림은 허용된 값 t=5/2의 대표 경우이다.",
   "accessibilityDescription": "A(-3,0), B(3,0)를 잇는 밑변 위에 O와 Q가 있고, 포물선 위의 P에서 A, B, Q를 잇는 세 선분이 그려져 있다. P에서 두 각이 같은 호 표식으로 나타난다.",
-  "newVisualInformation": ["원본에 누락된 각의 이등분선 PQ", "P에서 두 같은 각호의 표식", "포물선 위의 P와 x축 위 A·O·Q·B", "t=5/2일 때 정확한 각 이등분 비를 충족하는 동형 예시", "면 채움 없음"],
+  "newVisualInformation": ["원본에 누락된 각의 이등분선 PQ", "P에서 두 같은 각호의 표식", "포물선 위의 P와 x축 위 A·O·Q·B", "허용된 대표값에서 조건을 만족하도록 구성한 도식", "면 채움 없음"],
   "sourceConditions": [
     {"id": "c1", "condition": "A=(-3,0), B=(3,0), P=(t,9-t^2)이며 0<t<3이다.", "mappedTo": ["graphPlan.curves", "graphPlan.overlays.points"]},
     {"id": "c2", "condition": "PQ가 각 APB를 이등분하고 Q는 AB 위에 있다.", "mappedTo": ["graphPlan.overlays.segments", "graphPlan.overlays.angles", "graphPlan.overlays.equalAngles"]},
-    {"id": "c3", "condition": "대표값 t=5/2에서 PA:PB=11:5이므로 Q=9/8은 정확한 이등분점이다.", "mappedTo": "PRESERVED_ARCHIVE_BANK"}
+    {"id": "c3", "condition": "P는 일반 매개변수 t의 값을 예시로 고른 대표 점이며, 그림의 수치가 정답이나 극한값을 나타내지 않는다.", "mappedTo": ["graphPlan.overlays.points", "graphPlan.overlays.angles", "graphPlan.overlays.equalAngles"]}
   ]
 }
