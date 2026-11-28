@@ -1,0 +1,444 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "D"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "40"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "axis",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "A",
+          "axis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l1",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l2",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "D",
+          "V"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "l1",
+          "l2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 540
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "D",
+    "U",
+    "C"
+  ],
+  "hiddenPointNames": [
+    "O",
+    "A",
+    "B",
+    "D",
+    "U",
+    "C"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sOU",
+      "refs": [
+        "O",
+        "U"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aO",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 40,
+        "label": "40",
+        "color": "ROSE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcDU",
+        "circle": "circ",
+        "center": "O",
+        "from": "D",
+        "to": "U",
+        "side": "MINOR",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lOB",
+        "ownerSegment": "sOB",
+        "text": "0.77",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "0.64",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lDC",
+        "ownerSegment": "sDC",
+        "text": "0.84",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lOU",
+        "ownerSegment": "sOU",
+        "text": "1",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "O",
+        "B",
+        "A"
+      ]
+    }
+  ],
+  "caption": "반지름의 길이가 1인 사분원과 가로축에서 40도의 각을 이루는 반직선, 그 반직선 위의 점에서 가로축에 내린 수선, 가로축에 수직인 접선을 나타낸 그림. 가로 길이 0.77, 세로 길이 0.64, 접선 위의 세로 길이 0.84가 표시되어 있다.",
+  "accessibilityDescription": "사분원, 40도의 각, 가로 방향 0.77, 세로 방향 0.64, 오른쪽 접선 위 0.84가 보인다. 수선과 가로축이 만나는 곳에 직각 표시가 있고, 세로축에 1이 표시되어 있다.",
+  "newVisualInformation": [
+    "중심각 40도",
+    "가로 방향 0.77",
+    "세로 방향 0.64",
+    "접선 위 세로 길이 0.84",
+    "반지름 1"
+  ],
+  "sourceConditions": [
+    {
+      "id": "f1",
+      "condition": "O의 기하 원문 조건을 해당 작도 노드로 구현",
+      "mappedTo": "mathPlan.nodes[0]"
+    },
+    {
+      "id": "f2",
+      "condition": "D의 기하 원문 조건을 해당 작도 노드로 구현",
+      "mappedTo": "mathPlan.nodes[1]"
+    },
+    {
+      "id": "f3",
+      "condition": "A의 기하 원문 조건을 해당 작도 노드로 구현",
+      "mappedTo": "mathPlan.nodes[4]"
+    },
+    {
+      "id": "f4",
+      "condition": "circ의 기하 원문 조건을 해당 작도 노드로 구현",
+      "mappedTo": "mathPlan.nodes[10]"
+    },
+    {
+      "id": "f5",
+      "condition": "displayPoints에서 원문 도형의 실제 표시 대상 0",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "f6",
+      "condition": "displayPoints에서 원문 도형의 실제 표시 대상 1",
+      "mappedTo": "displayPoints[1]"
+    },
+    {
+      "id": "f7",
+      "condition": "displayPoints에서 원문 도형의 실제 표시 대상 2",
+      "mappedTo": "displayPoints[2]"
+    },
+    {
+      "id": "f8",
+      "condition": "displayPoints에서 원문 도형의 실제 표시 대상 3",
+      "mappedTo": "displayPoints[3]"
+    },
+    {
+      "id": "f9",
+      "condition": "displayPoints에서 원문 도형의 실제 표시 대상 4",
+      "mappedTo": "displayPoints[4]"
+    },
+    {
+      "id": "f10",
+      "condition": "displayPoints에서 원문 도형의 실제 표시 대상 5",
+      "mappedTo": "displayPoints[5]"
+    },
+    {
+      "id": "f11",
+      "condition": "displaySegments에서 원문 도형의 실제 표시 대상 0",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "f12",
+      "condition": "displaySegments에서 원문 도형의 실제 표시 대상 1",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "f13",
+      "condition": "displaySegments에서 원문 도형의 실제 표시 대상 2",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "f14",
+      "condition": "displaySegments에서 원문 도형의 실제 표시 대상 3",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "f15",
+      "condition": "displaySegments에서 원문 도형의 실제 표시 대상 4",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "f16",
+      "condition": "displaySegments에서 원문 도형의 실제 표시 대상 5",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "f17",
+      "condition": "displaySegments에서 원문 도형의 실제 표시 대상 6",
+      "mappedTo": "displaySegments[6]"
+    },
+    {
+      "id": "f18",
+      "condition": "angles의 원문에 대응하는 그리기 표식 aO",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "f19",
+      "condition": "arcs의 원문에 대응하는 그리기 표식 arcDU",
+      "mappedTo": "planeMarks.arcs[0]"
+    },
+    {
+      "id": "f20",
+      "condition": "expressionLabels의 원문에 대응하는 그리기 표식 lOB",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "f21",
+      "condition": "expressionLabels의 원문에 대응하는 그리기 표식 lAB",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "f22",
+      "condition": "expressionLabels의 원문에 대응하는 그리기 표식 lDC",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "f23",
+      "condition": "expressionLabels의 원문에 대응하는 그리기 표식 lOU",
+      "mappedTo": "planeMarks.expressionLabels[3]"
+    }
+  ],
+  "sourceQuote": "다음 그림과 같이 반지름의 길이가 $1$인 사분원을 이용하여 삼각비의"
+}

@@ -1,0 +1,391 @@
+{
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "36"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "72"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "108"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "144"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cO",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "O"
+  ],
+  "displayCircles": [
+    "cO"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "equalArc1",
+        "circle": "cO",
+        "center": "O",
+        "from": "A",
+        "to": "C",
+        "side": "MINOR",
+        "color": "BLUE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "equalArc2",
+        "circle": "cO",
+        "center": "O",
+        "from": "C",
+        "to": "D",
+        "side": "MINOR",
+        "color": "BLUE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "equalArc3",
+        "circle": "cO",
+        "center": "O",
+        "from": "D",
+        "to": "E",
+        "side": "MINOR",
+        "color": "BLUE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "equalArc4",
+        "circle": "cO",
+        "center": "O",
+        "from": "E",
+        "to": "F",
+        "side": "MINOR",
+        "color": "BLUE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "equalArc5",
+        "circle": "cO",
+        "center": "O",
+        "from": "F",
+        "to": "B",
+        "side": "MINOR",
+        "color": "BLUE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "x",
+        "refs": [
+          "D",
+          "A",
+          "E"
+        ],
+        "value": 18,
+        "label": "x",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "y",
+        "refs": [
+          "C",
+          "A",
+          "D"
+        ],
+        "value": 18,
+        "label": "y",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 580,
+    "height": 460
+  },
+  "caption": "원 O의 지름 AB와 같은 길이인 다섯 호 AC, CD, DE, EF, FB를 실제 반원 위에 표시한 그림.",
+  "accessibilityDescription": "원 O의 지름 AB와 같은 길이인 다섯 호 AC, CD, DE, EF, FB를 실제 반원 위에 표시한 그림.",
+  "newVisualInformation": [
+    "원 O의 지름 AB와 같은 길이인 다섯 호 AC, CD, DE, EF, FB를 실제 반원 위에 표시한 그림."
+  ],
+  "capability": "construction-spike-v1",
+  "sourceQuote": "다음 그림에서 선분 $\\overline{AB}$는 원 $O$의 지름이",
+  "sourceConditions": [
+    {
+      "id": "displaySegments-0",
+      "condition": "원문 displaySegments 요소 1",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "displaySegments-1",
+      "condition": "원문 displaySegments 요소 2",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "displaySegments-2",
+      "condition": "원문 displaySegments 요소 3",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "displayCircles-0",
+      "condition": "원문 displayCircles 요소 1",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "arcs-0",
+      "condition": "원문 arcs 표기 1",
+      "mappedTo": "planeMarks.arcs[0]"
+    },
+    {
+      "id": "arcs-1",
+      "condition": "원문 arcs 표기 2",
+      "mappedTo": "planeMarks.arcs[1]"
+    },
+    {
+      "id": "arcs-2",
+      "condition": "원문 arcs 표기 3",
+      "mappedTo": "planeMarks.arcs[2]"
+    },
+    {
+      "id": "arcs-3",
+      "condition": "원문 arcs 표기 4",
+      "mappedTo": "planeMarks.arcs[3]"
+    },
+    {
+      "id": "arcs-4",
+      "condition": "원문 arcs 표기 5",
+      "mappedTo": "planeMarks.arcs[4]"
+    },
+    {
+      "id": "angles-0",
+      "condition": "원문 angles 표기 1",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "angles-1",
+      "condition": "원문 angles 표기 2",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "node-0",
+      "condition": "원문의 작도 관계 O",
+      "mappedTo": "mathPlan.nodes[0]"
+    },
+    {
+      "id": "node-1",
+      "condition": "원문의 작도 관계 A",
+      "mappedTo": "mathPlan.nodes[1]"
+    },
+    {
+      "id": "node-2",
+      "condition": "원문의 작도 관계 C",
+      "mappedTo": "mathPlan.nodes[2]"
+    },
+    {
+      "id": "node-3",
+      "condition": "원문의 작도 관계 D",
+      "mappedTo": "mathPlan.nodes[3]"
+    },
+    {
+      "id": "node-4",
+      "condition": "원문의 작도 관계 E",
+      "mappedTo": "mathPlan.nodes[4]"
+    },
+    {
+      "id": "node-5",
+      "condition": "원문의 작도 관계 F",
+      "mappedTo": "mathPlan.nodes[5]"
+    },
+    {
+      "id": "node-6",
+      "condition": "원문의 작도 관계 B",
+      "mappedTo": "mathPlan.nodes[6]"
+    },
+    {
+      "id": "node-7",
+      "condition": "원문의 작도 관계 cO",
+      "mappedTo": "mathPlan.nodes[7]"
+    }
+  ]
+}

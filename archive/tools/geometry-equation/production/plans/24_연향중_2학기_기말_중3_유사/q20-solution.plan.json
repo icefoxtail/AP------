@@ -1,0 +1,181 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SCATTER",
+    "points": [
+      {
+        "x": 5,
+        "y": 6
+      },
+      {
+        "x": 6,
+        "y": 5
+      },
+      {
+        "x": 6,
+        "y": 7
+      },
+      {
+        "x": 7,
+        "y": 6
+      },
+      {
+        "x": 7,
+        "y": 7
+      },
+      {
+        "x": 7,
+        "y": 8
+      },
+      {
+        "x": 8,
+        "y": 6
+      },
+      {
+        "x": 8,
+        "y": 7
+      },
+      {
+        "x": 8,
+        "y": 8
+      },
+      {
+        "x": 8,
+        "y": 9
+      },
+      {
+        "x": 9,
+        "y": 7
+      },
+      {
+        "x": 9,
+        "y": 9
+      },
+      {
+        "x": 9,
+        "y": 10
+      },
+      {
+        "x": 10,
+        "y": 8
+      },
+      {
+        "x": 10,
+        "y": 10
+      }
+    ],
+    "xRange": [
+      "4",
+      "11"
+    ],
+    "yRange": [
+      "4",
+      "11"
+    ],
+    "xStep": "1",
+    "yStep": "1",
+    "xTitle": "음악 점수",
+    "yTitle": "미술 점수",
+    "grid": true,
+    "equalUnits": true,
+    "diagonal": true,
+    "regions": [
+      {
+        "kind": "HALF_PLANE",
+        "a": -1,
+        "b": 1,
+        "c": 0,
+        "side": "GT",
+        "markPoints": true
+      }
+    ]
+  },
+  "caption": "미술 점수가 음악 점수보다 높은 다섯 학생을 대각선 위쪽에서 확인하는 해설 산점도.",
+  "accessibilityDescription": "음악과 미술 점수의 산점도에 두 점수가 같은 y=x 대각선과 미술 점수가 더 높은 영역을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "dot0",
+      "condition": "학생 1의 (5,6)",
+      "mappedTo": "chart.points[0]"
+    },
+    {
+      "id": "dot1",
+      "condition": "학생 2의 (6,5)",
+      "mappedTo": "chart.points[1]"
+    },
+    {
+      "id": "dot2",
+      "condition": "학생 3의 (6,7)",
+      "mappedTo": "chart.points[2]"
+    },
+    {
+      "id": "dot3",
+      "condition": "학생 4의 (7,6)",
+      "mappedTo": "chart.points[3]"
+    },
+    {
+      "id": "dot4",
+      "condition": "학생 5의 (7,7)",
+      "mappedTo": "chart.points[4]"
+    },
+    {
+      "id": "dot5",
+      "condition": "학생 6의 (7,8)",
+      "mappedTo": "chart.points[5]"
+    },
+    {
+      "id": "dot6",
+      "condition": "학생 7의 (8,6)",
+      "mappedTo": "chart.points[6]"
+    },
+    {
+      "id": "dot7",
+      "condition": "학생 8의 (8,7)",
+      "mappedTo": "chart.points[7]"
+    },
+    {
+      "id": "dot8",
+      "condition": "학생 9의 (8,8)",
+      "mappedTo": "chart.points[8]"
+    },
+    {
+      "id": "dot9",
+      "condition": "학생 10의 (8,9)",
+      "mappedTo": "chart.points[9]"
+    },
+    {
+      "id": "dot10",
+      "condition": "학생 11의 (9,7)",
+      "mappedTo": "chart.points[10]"
+    },
+    {
+      "id": "dot11",
+      "condition": "학생 12의 (9,9)",
+      "mappedTo": "chart.points[11]"
+    },
+    {
+      "id": "dot12",
+      "condition": "학생 13의 (9,10)",
+      "mappedTo": "chart.points[12]"
+    },
+    {
+      "id": "dot13",
+      "condition": "학생 14의 (10,8)",
+      "mappedTo": "chart.points[13]"
+    },
+    {
+      "id": "dot14",
+      "condition": "학생 15의 (10,10)",
+      "mappedTo": "chart.points[14]"
+    },
+    {
+      "id": "ineq",
+      "condition": "미술 점수 y가 음악 점수 x보다 높음",
+      "mappedTo": "chart.regions[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "대각선 y=x와 그 위쪽 y>x 영역을 구분한다.",
+    "원문 15개 점을 그대로 유지하고 5개의 만족점을 강조한다."
+  ]
+}

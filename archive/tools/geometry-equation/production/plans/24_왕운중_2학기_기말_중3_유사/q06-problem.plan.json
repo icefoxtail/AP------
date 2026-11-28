@@ -1,0 +1,187 @@
+{
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "b",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 120,
+        "label": "120",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "ab",
+        "ownerSegment": "AB",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "bc",
+        "ownerSegment": "BC",
+        "text": "4",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 420
+  },
+  "caption": "AB 6cm, BC 4cm, 꼭짓점 B의 각이 120°인 둔각삼각형을 그린다.",
+  "accessibilityDescription": "삼각형 ABC에서 변 AB는 6cm, BC는 4cm이고 그 사이 각 B가 120도이다.",
+  "newVisualInformation": [
+    "둔각 120°의 실제 모양과 두 변 길이 6cm, 4cm를 선분 옆에 표시한다."
+  ],
+  "capability": "construction-spike-v1",
+  "sourceQuote": "다음 그림과 같이",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "B 작도로 원문의 도형 및 길이·각 관계를 구성",
+      "mappedTo": "mathPlan.nodes[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "A 작도로 원문의 도형 및 길이·각 관계를 구성",
+      "mappedTo": "mathPlan.nodes[1]"
+    },
+    {
+      "id": "c3",
+      "condition": "C 작도로 원문의 도형 및 길이·각 관계를 구성",
+      "mappedTo": "mathPlan.nodes[2]"
+    },
+    {
+      "id": "c4",
+      "condition": "원문에 제시된 도형 요소 displaySegments 1",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "c5",
+      "condition": "원문에 제시된 도형 요소 displaySegments 2",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "c6",
+      "condition": "원문에 제시된 도형 요소 displaySegments 3",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "c7",
+      "condition": "원문의 angles 표시 1",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "c8",
+      "condition": "원문의 expressionLabels 표시 1",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "c9",
+      "condition": "원문의 expressionLabels 표시 2",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    }
+  ]
+}

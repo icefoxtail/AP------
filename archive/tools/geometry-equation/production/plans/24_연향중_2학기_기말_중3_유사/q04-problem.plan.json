@@ -1,0 +1,352 @@
+{
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "50"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "150"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "80"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cO",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lAD",
+          "lBC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "P"
+  ],
+  "displayCircles": [
+    "cO"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "PA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "PB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "p",
+        "refs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "value": 40,
+        "label": "40",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 105,
+        "label": "105",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "x",
+        "refs": [
+          "P",
+          "C",
+          "D"
+        ],
+        "value": 65,
+        "label": "x",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 460
+  },
+  "caption": "원에 내접하는 사각형 ABCD와 연장선의 교점 P에서의 각 40°, 각 ABC 105°를 보인다.",
+  "accessibilityDescription": "사각형 ABCD가 원에 내접하고 AD 및 BC 연장선이 P에서 만나며 각 APB는 40도, 각 ABC는 105도, 각 PCD는 x이다.",
+  "newVisualInformation": [
+    "원 위 네 점과 바깥 교점 P를 실제 선분으로 잇는다.",
+    "각 40°, 105°와 미지각 x가 호 표식으로 그려진다."
+  ],
+  "capability": "construction-spike-v1",
+  "sourceQuote": "다음 그림에서 사각형 $ABCD$는 원 $O$에 내접하고",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "O 작도로 원문의 도형 및 길이·각 관계를 구성",
+      "mappedTo": "mathPlan.nodes[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "A 작도로 원문의 도형 및 길이·각 관계를 구성",
+      "mappedTo": "mathPlan.nodes[1]"
+    },
+    {
+      "id": "c3",
+      "condition": "B 작도로 원문의 도형 및 길이·각 관계를 구성",
+      "mappedTo": "mathPlan.nodes[2]"
+    },
+    {
+      "id": "c4",
+      "condition": "C 작도로 원문의 도형 및 길이·각 관계를 구성",
+      "mappedTo": "mathPlan.nodes[3]"
+    },
+    {
+      "id": "c5",
+      "condition": "D 작도로 원문의 도형 및 길이·각 관계를 구성",
+      "mappedTo": "mathPlan.nodes[4]"
+    },
+    {
+      "id": "c6",
+      "condition": "cO 작도로 원문의 도형 및 길이·각 관계를 구성",
+      "mappedTo": "mathPlan.nodes[5]"
+    },
+    {
+      "id": "c7",
+      "condition": "P 작도로 원문의 도형 및 길이·각 관계를 구성",
+      "mappedTo": "mathPlan.nodes[8]"
+    },
+    {
+      "id": "c8",
+      "condition": "원문에 제시된 도형 요소 displaySegments 1",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "c9",
+      "condition": "원문에 제시된 도형 요소 displaySegments 2",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "c10",
+      "condition": "원문에 제시된 도형 요소 displaySegments 3",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "c11",
+      "condition": "원문에 제시된 도형 요소 displaySegments 4",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "c12",
+      "condition": "원문에 제시된 도형 요소 displaySegments 5",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "c13",
+      "condition": "원문에 제시된 도형 요소 displaySegments 6",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "c14",
+      "condition": "원문에 제시된 도형 요소 displayCircles 1",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "c15",
+      "condition": "원문의 angles 표시 1",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "c16",
+      "condition": "원문의 angles 표시 2",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "c17",
+      "condition": "원문의 angles 표시 3",
+      "mappedTo": "planeMarks.angles[2]"
+    }
+  ]
+}
