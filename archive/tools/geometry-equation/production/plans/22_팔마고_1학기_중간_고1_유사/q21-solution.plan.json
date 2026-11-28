@@ -1,0 +1,29 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id": "C", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "0"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "B", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "5"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "A", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "0"}, {"kind": "integer", "value": "12"}]}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["A", "B", "C"], "displayLines": [], "displayCircles": [],
+  "displaySegments": [{"id": "sBC", "refs": ["B", "C"]}, {"id": "sCA", "refs": ["C", "A"]}, {"id": "sAB", "refs": ["A", "B"]}],
+  "rightAngles": [{"id": "raC", "refs": ["B", "C", "A"]}],
+  "planeMarks": {"expressionLabels": [
+    {"id": "a5", "ownerSegment": "sBC", "text": "5"},
+    {"id": "b12", "ownerSegment": "sCA", "text": "12"},
+    {"id": "c13", "ownerSegment": "sAB", "text": "13"}
+  ]},
+  "coordinateCanvas": {"width": 520, "height": 400},
+  "caption": "c(a+b)(a²+b²−c²)=0이므로 ∠C=90°이고, a=BC=5·b=CA=12·c=AB=13인 직각삼각형이다.",
+  "accessibilityDescription": "직각이 C에 있는 삼각형 ABC에 BC 5, CA 12, 빗변 AB 13과 직각 표식이 붙어 있다.",
+  "sourceConditions": [
+    {"id": "triangle", "condition": "a=BC=5, c=AB=13, a²+b²=c²에서 b=12; C(0,0), B(5,0), A(0,12)는 합동 대표 배치", "mappedTo": ["mathPlan.nodes[0]", "mathPlan.nodes[1]", "mathPlan.nodes[2]", "displaySegments"]},
+    {"id": "perpendicular", "condition": "피타고라스 역정리로 ∠C=90°", "mappedTo": "rightAngles[0]"},
+    {"id": "lengths", "condition": "세 변의 길이 5,12,13", "mappedTo": ["planeMarks.expressionLabels[0]", "planeMarks.expressionLabels[1]", "planeMarks.expressionLabels[2]"]}
+  ],
+  "newVisualInformation": ["직각의 실제 부착점과 세 길이를 그려 넓이 5×12/2의 두 변을 보여 준다."]
+}

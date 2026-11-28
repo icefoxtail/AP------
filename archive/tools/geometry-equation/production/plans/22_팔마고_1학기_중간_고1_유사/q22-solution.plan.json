@@ -1,0 +1,16 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial", "pieces": [{"coefficients": ["-7", "-2", "1"]}], "breakpoints": [],
+    "sourceDomain": {"kind": "ALL_REALS"}, "domain": [-2, 8], "viewport": [-2.5, 8.5, -10, 35],
+    "functionName": "f", "referenceLines": [{"id": "l", "slope": "4", "intercept": "-1", "intersectionX": ["3-sqrt(15)", "3+sqrt(15)"]}],
+    "requiredPoints": [{"id": "V", "x": 1, "y": -8}], "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "목적식 (m+1)²−11이 최소가 되는 m=−1에서 f(x)=x²−2x−7과 직선 y=4x−1은 서로 다른 두 점에서 만난다.",
+  "accessibilityDescription": "아래로 볼록한 포물선과 기울기 4인 직선이 두 군데에서 교차하는 해설 그래프이다.",
+  "sourceConditions": [
+    {"id": "minimum", "condition": "(α−1)(β−1)=(m+1)²−11, 최소의 m=−1", "mappedTo": "graphPlan.pieces[0]"},
+    {"id": "line", "condition": "m=−1에서 y=4x−1; 교점 방정식 x²−6x−6=0, 판별식>0", "mappedTo": "graphPlan.referenceLines[0]"}
+  ],
+  "newVisualInformation": ["최솟값을 주는 m이 두 교점을 갖는 정의역 제약에도 속함을 도식으로 확인한다."]
+}

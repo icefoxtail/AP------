@@ -1,0 +1,33 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial", "pieces": [{"coefficients": ["0", "0", "1/2"]}], "breakpoints": [],
+    "sourceDomain": {"kind": "ALL_REALS"}, "domain": [-5, 5], "viewport": [-5.5, 5.5, -1, 14],
+    "functionName": "f",
+    "overlays": {
+      "lines": [{"id": "tangent", "slope": "2*sqrt(3)", "intercept": "-6", "label": "PQ"}],
+      "points": [
+        {"id": "P", "curveX": "2*sqrt(3)"}, {"id": "R", "curveX": "-2*sqrt(3)"},
+        {"id": "Q", "axis": "x", "value": "sqrt(3)"},
+        {"id": "H", "x": "sqrt(3)", "y": "6"}, {"id": "A", "x": "0", "y": "2"}
+      ],
+      "segments": [
+        {"id": "RP", "from": "R", "to": "P", "length": true},
+        {"id": "RQ", "from": "R", "to": "Q"}, {"id": "PQ", "from": "P", "to": "Q"},
+        {"id": "QH", "from": "Q", "to": "H", "dashed": true, "length": true},
+        {"id": "QA", "from": "Q", "to": "A"}
+      ],
+      "rightAngles": [{"id": "rH", "at": "H", "from": ["P", "Q"]}]
+    },
+    "requiredPoints": [{"id": "V", "x": 0, "y": 0}],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "t=2√3에서 P(2√3,6), Q(√3,0), R(−2√3,6)이므로 RP=4√3, 높이 QH=6이다.",
+  "accessibilityDescription": "포물선 위의 두 점 P R을 잇는 수평 밑변과 Q에서 내린 점선 높이, 접선 PQ가 표시되어 있다.",
+  "sourceConditions": [
+    {"id": "parabola", "condition": "f(x)=x²/2, A=(0,2), t>0, R=(-t,6)에서 t=2√3", "mappedTo": ["graphPlan.pieces[0]", "graphPlan.overlays.points[0]", "graphPlan.overlays.points[1]", "graphPlan.overlays.points[4]"]},
+    {"id": "tangent", "condition": "P를 지나는 기울기 t=2√3인 접선 y=2√3x−6은 Q(√3,0)을 지난다", "mappedTo": ["graphPlan.overlays.lines[0]", "graphPlan.overlays.points[2]"]},
+    {"id": "area", "condition": "RP=4√3, 높이 QH=6, 넓이 12√3", "mappedTo": ["graphPlan.overlays.segments[0]", "graphPlan.overlays.segments[3]", "graphPlan.overlays.rightAngles[0]"]}
+  ],
+  "newVisualInformation": ["외분점 R과 접선의 x절편 Q를 정확한 근호 좌표로 놓아 넓이의 밑변·높이를 드러낸다."]
+}

@@ -1,0 +1,18 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["2", "-2", "2"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-1, 1], "viewport": [-1.4, 1.4, 0.8, 7],
+    "requiredPoints": [
+      {"id": "L", "x": -1, "y": 6}, {"id": "V", "x": 0.5, "y": 1.5}, {"id": "R", "x": 1, "y": 2}
+    ], "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "f(x)=2(x−1/2)²+3/2는 닫힌 구간 [−1,1]에서 꼭짓점의 최솟값 3/2와 왼쪽 끝점의 최댓값 6을 갖는다.",
+  "accessibilityDescription": "닫힌 구간 −1부터 1까지의 포물선 조각과 좌측 끝점, 꼭짓점, 우측 끝점을 표시한다.",
+  "sourceConditions": [
+    {"id": "identity", "condition": "f(x+1)−f(x)=4x, f(0)=2에서 f(x)=2x²−2x+2", "mappedTo": "graphPlan.coefficients"},
+    {"id": "interval", "condition": "−1≤x≤1과 세 비교점 −1,1/2,1", "mappedTo": ["graphPlan.sourceDomain", "graphPlan.requiredPoints[0]", "graphPlan.requiredPoints[1]", "graphPlan.requiredPoints[2]"]}
+  ],
+  "newVisualInformation": ["오른쪽 끝점보다 대칭축에서 먼 왼쪽 끝점에서 최댓값을 얻는 이유를 그린다."]
+}

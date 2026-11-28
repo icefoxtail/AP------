@@ -1,0 +1,34 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial", "pieces": [{"coefficients": ["1/4", "-5/12"]}], "breakpoints": [],
+    "sourceDomain": {"kind": "ALL_REALS"}, "domain": [-6, 6], "viewport": [-6.5, 6.5, -5, 5],
+    "functionName": "f",
+    "overlays": {
+      "lines": [
+        {"id": "upper", "slope": "-5/12", "intercept": "29/12", "label": "k=-29"},
+        {"id": "lower", "slope": "-5/12", "intercept": "-23/12", "label": "k=23"}
+      ],
+      "points": [
+        {"id": "A", "x": "0", "y": "1/4"},
+        {"id": "U", "x": "10/13", "y": "109/52"},
+        {"id": "L", "x": "-10/13", "y": "-83/52"},
+        {"id": "C", "x": "12/13", "y": "-7/52"}
+      ],
+      "segments": [
+        {"id": "dUpper", "from": "A", "to": "U", "length": true},
+        {"id": "dLower", "from": "A", "to": "L", "length": true}
+      ],
+      "rightAngles": [{"id": "rA", "at": "A", "from": ["U", "C"]}]
+    },
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "기준선 5x+12y−3=0에서 수직거리 2만큼 양쪽으로 떨어진 평행선은 k=−29와 k=23이다.",
+  "accessibilityDescription": "기울기가 같은 세 평행선과 기준선에서 양쪽 평행선까지 내린 길이 2의 수선 두 개이다.",
+  "sourceConditions": [
+    {"id": "base", "condition": "5x+12y−3=0", "mappedTo": "graphPlan.pieces[0]"},
+    {"id": "alternatives", "condition": "|k+3|/13=2에서 k=−29 또는 23", "mappedTo": ["graphPlan.overlays.lines[0]", "graphPlan.overlays.lines[1]"]},
+    {"id": "distance", "condition": "수선 길이는 각각 sqrt(10²+24²)/13=2", "mappedTo": ["graphPlan.overlays.segments[0]", "graphPlan.overlays.segments[1]", "graphPlan.overlays.rightAngles[0]"]}
+  ],
+  "newVisualInformation": ["절댓값 방정식의 ±가 기준 직선 양쪽의 서로 다른 평행선에 대응함을 표시한다."]
+}
