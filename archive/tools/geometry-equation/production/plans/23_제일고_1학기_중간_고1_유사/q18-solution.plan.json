@@ -1,0 +1,21 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"L","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"2"},"b":{"kind":"integer","value":"-1"},"c":{"kind":"integer","value":"-3"}},"outputType":"LINE","factRole":"GIVEN"},
+    {"id":"M","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"1"},"b":{"kind":"integer","value":"-2"},"c":{"kind":"integer","value":"3"}},"outputType":"LINE","factRole":"GIVEN"},
+    {"id":"C","op":"LINE_INTERSECTION","inputs":["L","M"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"U","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"1"},"b":{"kind":"integer","value":"1"},"c":{"kind":"integer","value":"-6"}},"outputType":"LINE","factRole":"CONCLUSION"},
+    {"id":"V","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"1"},"b":{"kind":"integer","value":"-1"},"c":{"kind":"integer","value":"0"}},"outputType":"LINE","factRole":"CONCLUSION"}
+  ]},
+  "displayPoints":["C"],"displayLines":["L","M","U","V"],
+  "lineLabels":[{"nodeId":"U","form":"GENERAL"},{"nodeId":"V","form":"GENERAL"}],
+  "coordinateLabels":["C"],"coordinateCanvas":{"width":720,"height":510},
+  "caption":"두 기준 직선의 거리 같음 조건에서 이등분선 x+y−6=0과 x−y=0이 나오고 두 선은 C(3,3)을 지난다.",
+  "accessibilityDescription":"좌표평면에서 C(3,3)을 지나는 두 주어진 직선의 각을 서로 수직인 두 이등분선이 나눈다.",
+  "sourceConditions":[
+    {"id":"given","condition":"2x−y−3=0, x−2y+3=0","mappedTo":"mathPlan.nodes[L,M]"},
+    {"id":"intersect","condition":"두 직선의 교점 C(3,3)","mappedTo":["mathPlan.nodes[C]","coordinateLabels"]},
+    {"id":"bisectors","condition":"|2x−y−3|=|x−2y+3|에서 x+y−6=0 또는 x−y=0","mappedTo":["mathPlan.nodes[U,V]","displayLines[U]","displayLines[V]"]}
+  ],
+  "newVisualInformation":["거리의 절댓값 등식이 두 방향의 이등분선으로 분기됨을 하나의 교점에서 시각화한다."]
+}

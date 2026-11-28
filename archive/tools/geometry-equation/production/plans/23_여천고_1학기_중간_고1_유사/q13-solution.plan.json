@@ -1,0 +1,18 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["4", "2", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"}, "domain": [-3, 4], "viewport": [-3, 4, 0, 19],
+    "requiredPoints": [{"id": "T", "x": -1, "y": 3}, {"id": "U", "x": 2, "y": 12}],
+    "axisTickValues": {"x": ["-1", "2"], "y": []},
+    "overlays": {"lines": [{"id": "l", "slope": "3", "intercept": "6", "label": "y=3x+6"}]}
+  },
+  "caption": "a=2, b=6이면 포물선 y=x²+2x+4와 직선 y=3x+6은 x=−1과 x=2에서 만난다.",
+  "accessibilityDescription": "포물선과 직선의 교점 T(−1,3), U(2,12)를 표시해 두 교점의 가로좌표가 주어진 조건과 같음을 보인다.",
+  "sourceConditions": [
+    {"id": "curve", "condition": "a=2를 구하면 y=x²+2x+4", "mappedTo": "graphPlan.coefficients"},
+    {"id": "line", "condition": "b=6을 구하면 y=3x+6", "mappedTo": "graphPlan.overlays.lines[0]"},
+    {"id": "intersections", "condition": "두 교점의 x는 −1, 2이고 y는 각각 3, 12", "mappedTo": "graphPlan.requiredPoints"}
+  ],
+  "newVisualInformation": ["연립한 이차방정식의 두 근이 두 실제 교점에 대응함을 보여 준다."]
+}

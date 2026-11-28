@@ -1,0 +1,214 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "300",
+              "denominator": "169"
+            },
+            {
+              "kind": "rational",
+              "numerator": "720",
+              "denominator": "169"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAC",
+        "ownerSegment": "sCA",
+        "text": "5",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sCB",
+        "text": "12",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sol_sAB",
+        "ownerSegment": "sAB",
+        "text": "13",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aX",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "label": "x",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aY",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "label": "y",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rD",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 500,
+    "height": 380
+  },
+  "caption": "해설 관계: 직각삼각형 ABC에서 CD가 AB에 수직이고, 각 ACD는 x, 각 BCD는 y로 표시되어 있다. AC는 5, BC는 12이다.",
+  "accessibilityDescription": "해설에서 사용하는 해설 관계: 직각삼각형 ABC에서 CD가 AB에 수직이고, 각 ACD는 x, 각 BCD는 y로 표시되어 있다. AC는 5, BC는 12이다.",
+  "newVisualInformation": [
+    "그려진 선분 sCA, sCB, sAB, sCD",
+    "expressionLabels 3개",
+    "angles 4개"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q04_solution",
+      "condition": "직각삼각형 $\\text{ABC}$에서 $\\overline{\\text{AB}} = \\sqrt{5^2 + 12^2} = 13$이다. $\\overline{\\text{CD}} \\perp \\overline{\\text{AB}}$이므로 닮음에 의해 $x^\\circ = \\angle\\text{B}$, $y^\\circ = \\angle\\text{A}$이다. 따라서 $\\tan x^\\circ = \\tan B = \\frac{5}{12}$, $\\cos y^\\circ = \\cos A = \\frac{5}{13}$이므로 $$\\frac{\\tan x^\\circ}{\\cos y^\\circ} = \\frac{\\frac{5}{12}}{\\frac{5}{13}} = \\frac{13}{12}$$ 따라서 정답은 ⑤이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "sourceQuote": "직각삼각형 $\\text{ABC}$에서 $\\overline{\\text{AB}} = \\sqrt{5^2 + 12^2} = 13$이다. $\\o"
+}

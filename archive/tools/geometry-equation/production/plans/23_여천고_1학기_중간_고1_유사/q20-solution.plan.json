@@ -1,0 +1,20 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["5", "-6", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"}, "domain": [-1, 7], "viewport": [-1, 7, -6, 9],
+    "requiredPoints": [
+      {"id": "P", "x": 1, "y": 0}, {"id": "V", "x": 3, "y": -4},
+      {"id": "Q", "x": 5, "y": 0}, {"id": "F", "x": 0, "y": 5}
+    ],
+    "axisTickValues": {"x": ["1", "3", "5"], "y": []}
+  },
+  "caption": "축 x=3, 꼭짓점 (3,−4), 두 x절편 사이의 거리 4에서 f(x)=(x−3)²−4와 f(0)=5를 얻는다.",
+  "accessibilityDescription": "포물선의 서로 다른 x절편 P(1,0), Q(5,0), 꼭짓점 V(3,−4), y절편 F(0,5)가 표시된다.",
+  "sourceConditions": [
+    {"id": "symmetry", "condition": "f(−1)=f(7)이므로 축 x=3, 꼭짓점 y=−4", "mappedTo": "graphPlan.requiredPoints[1]"},
+    {"id": "distance", "condition": "PQ=4와 축 x=3이므로 x절편은 1,5", "mappedTo": ["graphPlan.requiredPoints[0]", "graphPlan.requiredPoints[2]"]},
+    {"id": "value", "condition": "f(x)=x²−6x+5, f(0)=5", "mappedTo": ["graphPlan.coefficients", "graphPlan.requiredPoints[3]"]}
+  ],
+  "newVisualInformation": ["두 x절편의 간격과 대칭축, 꼭짓점의 높이에서 y절편이 결정되는 과정을 보인다."]
+}

@@ -1,0 +1,156 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "rational",
+              "numerator": "11918",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "C",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "CB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "rightC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angleA",
+        "refs": [
+          "C",
+          "A",
+          "B"
+        ],
+        "value": 50,
+        "label": "A",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAC",
+        "ownerSegment": "AC",
+        "text": "10",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "CB",
+        "text": "11.918",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "sourceQuote": "삼각비의 표에서 $\\cos A = 0.6428$인 각도는 $50^\\circ$이고, 이때 $\\tan 50^\\circ = 1.1918$이다",
+  "sourceConditions": [
+    {
+      "id": "q15_solution",
+      "condition": "삼각비의 표에서 $\\cos A = 0.6428$인 각도는 $50^\\circ$이고, 이때 $\\tan 50^\\circ = 1.1918$이다. 직각삼각형 $\\text{ABC}$에서 $\\angle\\text{C}=90^\\circ$이므로 $\\tan A = \\frac{\\overline{\\text{BC}}}{\\overline{\\text{AC}}}$이다. 따라서 $$\\overline{\\text{BC}} = \\overline{\\text{AC}} \\times \\tan 50^\\circ = 10 \\times 1.1918 = 11.918\\text{ (cm)}$$ 이므로 정답은 ⑤이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "해설 관계: 삼각비의 표에서 $\\cos A = 0.6428$인 각도는 $50^\\circ$이고, 이때 $\\tan 50^\\circ = 1.1918$이다. 직각삼각형 $\\text{ABC}$에서 $\\angle\\text{C}=90^\\circ$이므로 $\\tan A = \\frac{\\overline{\\t",
+  "newVisualInformation": [
+    "그려진 선분 AC, CB, AB",
+    "angles 2개",
+    "expressionLabels 2개"
+  ],
+  "accessibilityDescription": "해설에서 사용하는 해설 관계: 삼각비의 표에서 $\\cos A = 0.6428$인 각도는 $50^\\circ$이고, 이때 $\\tan 50^\\circ = 1.1918$이다. 직각삼각형 $\\text{ABC}$에서 $\\angle\\text{C}=90^\\circ$이므로 $\\tan A = \\frac{\\overline{\\t"
+}

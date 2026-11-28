@@ -1,0 +1,62 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-5",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "2",
+        "y": "-9",
+        "marker": "NONE"
+      },
+      {
+        "id": "P",
+        "x": "-1",
+        "y": "0",
+        "marker": "NONE"
+      },
+      {
+        "id": "Q",
+        "x": "5",
+        "y": "0",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "2",
+        "5"
+      ],
+      "y": [
+        "-9"
+      ]
+    }
+  },
+  "sourceQuote": "$x<2$일 때 감소하고 $x>2$일 때 증가하므로 대칭축은 $x=2$이다. $x$축과 만나는 두 점은 대칭축 $x=2$에 대하여 대칭",
+  "sourceConditions": [
+    {
+      "id": "q20_solution",
+      "condition": "$x<2$일 때 감소하고 $x>2$일 때 증가하므로 대칭축은 $x=2$이다. $x$축과 만나는 두 점은 대칭축 $x=2$에 대하여 대칭이고 두 점 사이의 거리가 $6$이므로, 각 점은 $x=2$로부터 $\\frac{6}{2}=3$만큼 떨어져 있다. 따라서 두 교점의 $x$좌표는 $2-3=-1$과 $2+3=5$이다. 이차항의 계수가 $1$이므로 $$y = (x+1)(x-5) = x^2 - 4x - 5$$ 따라서 $a=-4$, $b=-5$이므로 정답은 ⑤이다.",
+      "mappedTo": "graphPlan.pieces"
+    }
+  ],
+  "caption": "해설 관계: $x<2$일 때 감소하고 $x>2$일 때 증가하므로 대칭축은 $x=2$이다. $x$축과 만나는 두 점은 대칭축 $x=2$에 대하여 대칭이고 두 점 사이의 거리가 $6$이므로, 각 점은 $x=2$로부터 $\\frac{6}{2}=3$만큼 떨어져 있다. 따라서 두 교점의 $x$좌표는 ",
+  "newVisualInformation": [
+    "공식 그래프 계수 [{\"coefficients\":[\"-5\",\"-4\",\"1\"]}]"
+  ],
+  "accessibilityDescription": "해설에서 사용하는 해설 관계: $x<2$일 때 감소하고 $x>2$일 때 증가하므로 대칭축은 $x=2$이다. $x$축과 만나는 두 점은 대칭축 $x=2$에 대하여 대칭이고 두 점 사이의 거리가 $6$이므로, 각 점은 $x=2$로부터 $\\frac{6}{2}=3$만큼 떨어져 있다. 따라서 두 교점의 $x$좌표는 "
+}

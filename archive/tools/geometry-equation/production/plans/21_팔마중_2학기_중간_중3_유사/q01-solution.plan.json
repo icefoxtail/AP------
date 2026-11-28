@@ -1,0 +1,166 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "A",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "rC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "3sqrt(3)",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lCA",
+        "ownerSegment": "sCA",
+        "text": "3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "sourceQuote": "직각삼각형 $\\text{ABC}$에서 $\\angle\\text{C}=90^\\circ$, $\\overline{\\text{AB}}=6$, $",
+  "sourceConditions": [
+    {
+      "id": "q01_solution",
+      "condition": "직각삼각형 $\\text{ABC}$에서 $\\angle\\text{C}=90^\\circ$, $\\overline{\\text{AB}}=6$, $\\overline{\\text{BC}}=3\\sqrt{3}$이므로 $$\\overline{\\text{AC}} = \\sqrt{6^2 - (3\\sqrt{3})^2} = \\sqrt{36 - 27} = 3$$ 따라서 $\\sin A = \\frac{3\\sqrt{3}}{6} = \\frac{\\sqrt{3}}{2}$, $\\cos A = \\frac{3}{6} = \\frac{1}{2}$, $\\tan B = \\frac{3}{3\\sqrt{3}} = \\frac{\\sqrt{3}}{3}$, $\\cos B = \\frac{3\\sqrt{3}}{6} = \\frac{\\sqrt{3}}{2}$이고, $\\sin B = \\frac{3}{6} = \\frac{1}{2}$이다. 따라서 옳지 않은 것은 ②이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "해설 관계: 직각삼각형 $\\text{ABC}$에서 $\\angle\\text{C}=90^\\circ$, $\\overline{\\text{AB}}=6$, $\\overline{\\text{BC}}=3\\sqrt{3}$이므로 $$\\overline{\\text{AC}} = \\sqrt{6^2 - (3\\sqrt{",
+  "newVisualInformation": [
+    "그려진 선분 sAB, sBC, sCA",
+    "angles 1개",
+    "expressionLabels 3개"
+  ],
+  "accessibilityDescription": "해설에서 사용하는 해설 관계: 직각삼각형 $\\text{ABC}$에서 $\\angle\\text{C}=90^\\circ$, $\\overline{\\text{AB}}=6$, $\\overline{\\text{BC}}=3\\sqrt{3}$이므로 $$\\overline{\\text{AC}} = \\sqrt{6^2 - (3\\sqrt{"
+}

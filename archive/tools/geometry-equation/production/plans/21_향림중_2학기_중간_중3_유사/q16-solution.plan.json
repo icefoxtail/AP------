@@ -1,0 +1,256 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "75"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "45"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bRay",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "U"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cRay",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "V"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bRay",
+          "cRay"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "auditLineH",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "B",
+          "auditLineH"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "auditSegH",
+      "refs": [
+        "B",
+        "H"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 75,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 45,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "right_H",
+        "refs": [
+          "A",
+          "H",
+          "B"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "10",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sol_sAB",
+        "ownerSegment": "sAB",
+        "text": "10sqrt(6)/3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 360
+  },
+  "caption": "해설 관계: 삼각형 ABC에서 변 BC의 길이가 10 cm이고 각 B가 75도, 각 C가 45도임을 나타낸 그림이다.",
+  "accessibilityDescription": "해설에서 사용하는 해설 관계: 삼각형 ABC에서 변 BC의 길이가 10 cm이고 각 B가 75도, 각 C가 45도임을 나타낸 그림이다.",
+  "newVisualInformation": [
+    "그려진 선분 sAB, sBC, sCA, auditSegH",
+    "angles 3개",
+    "expressionLabels 2개"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q16_solution",
+      "condition": "$\\triangle\\text{ABC}$에서 $\\angle\\text{A} = 180^\\circ - 75^\\circ - 45^\\circ = 60^\\circ$이다. 꼭짓점 $\\text{B}$에서 변 $\\text{AC}$에 내린 수선의 발을 $\\text{H}$라 하자. 직각삼각형 $\\text{BCH}$에서 $$\\overline{\\text{BH}} = 10\\sin 45^\\circ = 10 \\times \\frac{\\sqrt{2}}{2} = 5\\sqrt{2}\\text{ (cm)}$$ 직각삼각형 $\\text{ABH}$에서 $\\sin 60^\\circ = \\frac{\\overline{\\text{BH}}}{\\overline{\\text{AB}}}$이므로 $$\\overline{\\text{AB}} = \\frac{5\\sqrt{2}}{\\sin 60^\\circ} = \\frac{5\\sqrt{2}}{\\frac{\\sqrt{3}}{2}} = \\frac{10\\sqrt{2}}{\\sqrt{3}} = \\frac{10\\sqrt{6}}{3}\\text{ (cm)}$$ 따라서 정답은 ②이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "sourceQuote": "$\\triangle\\text{ABC}$에서 $\\angle\\text{A} = 180^\\circ - 75^\\circ - 45^\\circ ="
+}

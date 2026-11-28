@@ -1,0 +1,147 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "C",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "10"
+      },
+      {
+        "id": "sol_sCB",
+        "ownerSegment": "sCB",
+        "text": "6",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "angles": [
+      {
+        "id": "rC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 340
+  },
+  "caption": "해설 관계: 각 C가 직각이고 빗변 AB의 길이가 10인 직각삼각형 ABC이다.",
+  "accessibilityDescription": "해설에서 사용하는 해설 관계: 각 C가 직각이고 빗변 AB의 길이가 10인 직각삼각형 ABC이다.",
+  "newVisualInformation": [
+    "그려진 선분 sAC, sCB, sAB",
+    "expressionLabels 2개",
+    "angles 1개"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q24_solution",
+      "condition": "직각삼각형 $\\text{ABC}$에서 $\\sin A = \\frac{\\overline{\\text{BC}}}{\\overline{\\text{AB}}} = \\frac{3}{5}$이고 $\\overline{\\text{AB}}=10$이므로 $$\\overline{\\text{BC}} = 10 \\times \\frac{3}{5} = 6$$ 피타고라스 정리에 의해 $$\\overline{\\text{AC}} = \\sqrt{10^2 - 6^2} = \\sqrt{64} = 8$$ 따라서 $$\\cos A = \\frac{\\overline{\\text{AC}}}{\\overline{\\text{AB}}} = \\frac{8}{10} = \\frac{4}{5}, \\quad \\tan A = \\frac{\\overline{\\text{BC}}}{\\overline{\\text{AC}}} = \\frac{6}{8} = \\frac{3}{4}$$",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "sourceQuote": "직각삼각형 $\\text{ABC}$에서 $\\sin A = \\frac{\\overline{\\text{BC}}}{\\overline{\\text{"
+}

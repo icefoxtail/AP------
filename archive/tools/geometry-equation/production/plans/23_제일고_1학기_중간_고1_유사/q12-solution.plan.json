@@ -1,0 +1,17 @@
+{
+  "capability":"number-line-figure-v1",
+  "numberLine":{"rows":[{"kind":"POINTS","label":"내분·외분","points":[
+    {"id":"A","value":"-2"},{"id":"B","value":"8"},
+    {"id":"P","divides":{"from":"A","to":"B","ratio":["2","3"]},"showValue":true},
+    {"id":"Q","value":"-7"}
+  ],"spans":[{"from":"Q","to":"P","label":"PQ","style":"BRACE","side":"ABOVE"}]}],"axisVariable":false},
+  "numberLineCaption":{"text":"외분점 Q는 A의 왼쪽"},
+  "caption":"A=−2, B=8을 2:3으로 내분하면 P=2, 1:3으로 외분하면 Q=−7이며 PQ=9이다.",
+  "accessibilityDescription":"수직선 위 왼쪽부터 Q(−7), A(−2), P(2), B(8)가 놓이고 Q와 P 사이가 괄호로 표시된다.",
+  "sourceConditions":[
+    {"id":"endpoints","condition":"A=−2, B=8","mappedTo":"numberLine.rows[0].points"},
+    {"id":"internal","condition":"AP:PB=2:3이면 P=2","mappedTo":"numberLine.rows[0].points[2]"},
+    {"id":"external","condition":"AQ:QB=1:3이면 Q=−7, PQ=9","mappedTo":["numberLine.rows[0].points[3]","numberLine.rows[0].spans"]}
+  ],
+  "newVisualInformation":["내분점은 AB 사이, 1:3 외분점은 A 바깥쪽이라는 순서를 보여 준다."]
+}

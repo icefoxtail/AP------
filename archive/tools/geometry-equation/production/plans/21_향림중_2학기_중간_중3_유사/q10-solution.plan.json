@@ -1,0 +1,61 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      -1,
+      -9,
+      9
+    ],
+    "curves": [
+      {
+        "id": "g1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-13",
+          "-12",
+          "-2"
+        ],
+        "domain": [
+          "-5",
+          "-1"
+        ],
+        "color": "BLUE",
+        "label": "y=-2(x+3)^2+5"
+      },
+      {
+        "id": "g2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "13",
+          "12",
+          "2"
+        ],
+        "domain": [
+          "-5",
+          "-1"
+        ],
+        "color": "WARM",
+        "label": "y=2(x+3)^2-5"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceQuote": "$x$축에 대하여 대칭인 그래프는 $y$ 대신 $-y$를 대입하여 얻으므로 $$-y = -2(x+3)^2 + 5 \\implies y =",
+  "sourceConditions": [
+    {
+      "id": "q10_solution",
+      "condition": "$x$축에 대하여 대칭인 그래프는 $y$ 대신 $-y$를 대입하여 얻으므로 $$-y = -2(x+3)^2 + 5 \\implies y = 2(x+3)^2 - 5$$ 따라서 정답은 ⑤이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "caption": "해설 관계: $x$축에 대하여 대칭인 그래프는 $y$ 대신 $-y$를 대입하여 얻으므로 $$-y = -2(x+3)^2 + 5 \\implies y = 2(x+3)^2 - 5$$ 따라서 정답은 ⑤이다.",
+  "newVisualInformation": [
+    "공식 그래프 계수 [{\"id\":\"g1\",\"kind\":\"Y_OF_X\",\"coefficients\":[\"-13\",\"-12\",\"-2\"],\"domain\":[\"-5\",\"-1\"],\"color\":\"BLUE\",\"label\":\"y=-2(x+3)^2+5\"},{\"id\":\"g2\",\"kind\":\"Y_OF_X\",\"coefficients\":[\"13\",\"12\",\"2\"],\"domain\":[\"-5\",\"-1\"],\"color\":\"WARM\",\"label\":\"y=2(x+3)^2-5\"}]"
+  ],
+  "accessibilityDescription": "해설에서 사용하는 해설 관계: $x$축에 대하여 대칭인 그래프는 $y$ 대신 $-y$를 대입하여 얻으므로 $$-y = -2(x+3)^2 + 5 \\implies y = 2(x+3)^2 - 5$$ 따라서 정답은 ⑤이다."
+}

@@ -1,0 +1,25 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"L","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"3"},"b":{"kind":"integer","value":"-4"},"c":{"kind":"integer","value":"12"}},"outputType":"LINE","factRole":"GIVEN"},
+    {"id":"K","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"4"},"b":{"kind":"integer","value":"3"},"c":{"kind":"integer","value":"-12"}},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"X","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"0"},"b":{"kind":"integer","value":"1"},"c":{"kind":"integer","value":"0"}},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"A","op":"LINE_INTERSECTION","inputs":["L","X"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"B","op":"LINE_INTERSECTION","inputs":["K","X"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"C","op":"LINE_INTERSECTION","inputs":["L","K"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"M","op":"MIDPOINT","inputs":["A","B"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"T","op":"LINE_THROUGH","inputs":["C","M"],"args":{},"outputType":"LINE","factRole":"CONCLUSION"}
+  ]},
+  "displayPoints":["A","B","C","M"],"displayLines":["L","K","T"],
+  "displaySegments":[{"id":"sCM","refs":["C","M"],"emphasis":"ACCENT"}],
+  "rightAngles":[{"id":"rC","refs":["A","C","B"]}],
+  "coordinateLabels":["A","B","C","M"],"coordinateCanvas":{"width":720,"height":530},
+  "caption":"두 직선과 x축의 삼각형에서 C(12/25,84/25)와 AB의 중점 M(−1/2,0)을 이은 직선이 넓이를 이등분한다. 식은 24x−7y+12=0.",
+  "accessibilityDescription":"x절편 A(−4,0), B(3,0), 두 직선의 교점 C, 밑변 중점 M 및 강조된 중선 CM을 표시한다.",
+  "sourceConditions":[
+    {"id":"perpendicular","condition":"a=4이면 두 직선의 기울기 곱은 −1","mappedTo":["mathPlan.nodes[L,K]","rightAngles[0]"]},
+    {"id":"intercepts","condition":"A(−4,0), B(3,0), C=(12/25,84/25)","mappedTo":"mathPlan.nodes[A,B,C]"},
+    {"id":"median","condition":"AB의 중점 M=(−1/2,0), CM이 삼각형의 넓이를 이등분","mappedTo":["mathPlan.nodes[M,T]","displaySegments[sCM]","displayLines[T]"]}
+  ],
+  "newVisualInformation":["삼각형 꼭짓점과 밑변 중점을 이은 중선이 넓이를 정확히 둘로 나누는 구조를 보인다."]
+}

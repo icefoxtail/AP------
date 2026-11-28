@@ -1,0 +1,220 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "해설 관계: 반지름이 14 cm인 원 모양의 종이에서 현 AB를 접는 선으로 접었을 때, 접힌 호 AB가 원의 중심 O를 지나는 모양을 나타낸 그림이다.",
+  "accessibilityDescription": "해설에서 사용하는 해설 관계: 반지름이 14 cm인 원 모양의 종이에서 현 AB를 접는 선으로 접었을 때, 접힌 호 AB가 원의 중심 O를 지나는 모양을 나타낸 그림이다.",
+  "newVisualInformation": [
+    "그려진 선분 OA, AB",
+    "arcs 1개",
+    "expressionLabels 2개",
+    "표시 원 circ"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D0",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "D0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "14"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "210"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "D0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "14"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "330"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Op",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-14"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "14"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "fold",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "Op"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "14"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "Op"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcFold",
+        "circle": "fold",
+        "center": "Op",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lOA",
+        "ownerSegment": "OA",
+        "text": "14",
+        "unit": "cm"
+      },
+      {
+        "id": "sol_AB",
+        "ownerSegment": "AB",
+        "text": "14sqrt(3)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "Op"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 560
+  },
+  "sourceConditions": [
+    {
+      "id": "q15_solution",
+      "condition": "중심 $\\text{O}$에서 현 $\\text{AB}$에 내린 수선의 발을 $\\text{M}$이라 하면 접기 대칭에 의해 $\\overline{\\text{OM}} = \\frac{14}{2} = 7\\text{ (cm)}$이다. 직각삼각형 $\\text{OAM}$에서 $$\\overline{\\text{AM}} = \\sqrt{14^2 - 7^2} = 7\\sqrt{3}\\text{ (cm)}$$ 따라서 $\\overline{\\text{AB}} = 2\\overline{\\text{AM}} = 14\\sqrt{3}\\text{ (cm)}$이다. 정답은 ②이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "sourceQuote": "중심 $\\text{O}$에서 현 $\\text{AB}$에 내린 수선의 발을 $\\text{M}$이라 하면 접기 대칭에 의해 $\\overli"
+}

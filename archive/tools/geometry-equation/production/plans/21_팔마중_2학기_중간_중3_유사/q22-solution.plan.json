@@ -1,0 +1,150 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "A",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "rightC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lCA",
+        "ownerSegment": "sCA",
+        "text": "1",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lCB",
+        "ownerSegment": "sCB",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "sqrt(10)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "sourceQuote": "(1) $0^\\circ < \\angle A < 90^\\circ$이고 $\\tan A = \\frac{3}{1}$이므로 밑변이 $1$, 높이",
+  "sourceConditions": [
+    {
+      "id": "q22_solution",
+      "condition": "(1) $0^\\circ < \\angle A < 90^\\circ$이고 $\\tan A = \\frac{3}{1}$이므로 밑변이 $1$, 높이가 $3$인 직각삼각형에서 빗변은 $\\sqrt{1^2+3^2}=\\sqrt{10}$이다. 따라서 $\\sin A = \\frac{3}{\\sqrt{10}} = \\frac{3\\sqrt{10}}{10}$, $\\cos A = \\frac{1}{\\sqrt{10}} = \\frac{\\sqrt{10}}{10}$이다. (2) (1)에서 구한 값을 대입하면 $$\\frac{\\sin A \\cos A}{(\\sin A)^2 - (\\cos A)^2} = \\frac{\\frac{3}{\\sqrt{10}} \\times \\frac{1}{\\sqrt{10}}}{\\frac{9}{10} - \\frac{1}{10}} = \\frac{\\frac{3}{10}}{\\frac{8}{10}} = \\frac{3}{8}$$",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "해설 관계: (1) $0^\\circ < \\angle A < 90^\\circ$이고 $\\tan A = \\frac{3}{1}$이므로 밑변이 $1$, 높이가 $3$인 직각삼각형에서 빗변은 $\\sqrt{1^2+3^2}=\\sqrt{10}$이다. 따라서 $\\sin A = \\frac{3}{\\sqrt{10",
+  "newVisualInformation": [
+    "그려진 선분 sCA, sCB, sAB",
+    "angles 1개",
+    "expressionLabels 3개"
+  ],
+  "accessibilityDescription": "해설에서 사용하는 해설 관계: (1) $0^\\circ < \\angle A < 90^\\circ$이고 $\\tan A = \\frac{3}{1}$이므로 밑변이 $1$, 높이가 $3$인 직각삼각형에서 빗변은 $\\sqrt{1^2+3^2}=\\sqrt{10}$이다. 따라서 $\\sin A = \\frac{3}{\\sqrt{10"
+}

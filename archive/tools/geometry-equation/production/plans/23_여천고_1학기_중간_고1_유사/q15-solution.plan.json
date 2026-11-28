@@ -1,0 +1,18 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["5", "-2", "1"],
+    "sourceDomain": {"kind": "INTERVAL", "range": ["-2", "3"], "states": ["CLOSED", "CLOSED"]},
+    "domain": [-2, 3], "viewport": [-3, 4, 0, 17],
+    "requiredPoints": [{"id": "L", "x": -2, "y": 13}, {"id": "V", "x": 1, "y": 4}, {"id": "R", "x": 3, "y": 8}],
+    "axisTickValues": {"x": ["-2", "1", "3"], "y": []}
+  },
+  "caption": "k=5인 y=(x−1)²+4를 −2≤x≤3에서 그리면 최솟값 4, 왼쪽 끝의 최댓값 13이 보인다.",
+  "accessibilityDescription": "닫힌 구간의 위로 열린 포물선에서 왼쪽 끝 L(−2,13), 꼭짓점 V(1,4), 오른쪽 끝 R(3,8)을 표시한다.",
+  "sourceConditions": [
+    {"id": "curve", "condition": "최솟값 k−1=4이므로 k=5", "mappedTo": "graphPlan.coefficients"},
+    {"id": "domain", "condition": "−2≤x≤3, 양 끝 포함", "mappedTo": "graphPlan.sourceDomain"},
+    {"id": "extrema", "condition": "f(−2)=13, f(1)=4, f(3)=8", "mappedTo": "graphPlan.requiredPoints"}
+  ],
+  "newVisualInformation": ["축 x=1에 가까운 쪽이 아닌 더 먼 왼쪽 끝점에서 구간 최댓값을 갖는 이유를 보여 준다."]
+}

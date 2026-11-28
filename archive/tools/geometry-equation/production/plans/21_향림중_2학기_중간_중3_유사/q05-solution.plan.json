@@ -1,0 +1,159 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "17"
+      },
+      {
+        "id": "sol_sCA",
+        "ownerSegment": "sCA",
+        "text": "15",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "8",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "r0",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 400
+  },
+  "caption": "해설 관계: 직각삼각형 ABC에서 빗변 AB가 17이고 변 BC가 8로 주어진 그림이다.",
+  "accessibilityDescription": "해설에서 사용하는 해설 관계: 직각삼각형 ABC에서 빗변 AB가 17이고 변 BC가 8로 주어진 그림이다.",
+  "newVisualInformation": [
+    "그려진 선분 sBC, sCA, sAB",
+    "expressionLabels 2개",
+    "dimensions 1개",
+    "angles 1개"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q05_solution",
+      "condition": "직각삼각형 $\\text{ABC}$에서 $\\angle\\text{C}=90^\\circ$이므로 피타고라스 정리에 의해 $$\\overline{\\text{AC}} = \\sqrt{\\overline{\\text{AB}}^2 - \\overline{\\text{BC}}^2} = \\sqrt{17^2 - 8^2} = \\sqrt{225} = 15$$ 따라서 $$\\sin B = \\frac{\\overline{\\text{AC}}}{\\overline{\\text{AB}}} = \\frac{15}{17}$$ 이므로 정답은 ⑤이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "sourceQuote": "직각삼각형 $\\text{ABC}$에서 $\\angle\\text{C}=90^\\circ$이므로 피타고라스 정리에 의해 $$\\overline{"
+}

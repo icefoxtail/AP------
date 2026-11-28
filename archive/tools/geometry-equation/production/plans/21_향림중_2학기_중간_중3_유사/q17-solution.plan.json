@@ -1,0 +1,325 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "9"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "15",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "A",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "EF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "FD",
+      "refs": [
+        "F",
+        "D"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lBC",
+        "ownerSegment": "BC",
+        "text": "9",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAD",
+        "ownerSegment": "AB",
+        "text": "9",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lDE",
+        "ownerSegment": "DE",
+        "text": "3sqrt(3)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAD",
+        "from": "A",
+        "to": "D",
+        "label": "3",
+        "side": "LEFT"
+      },
+      {
+        "id": "dBE",
+        "from": "B",
+        "to": "E",
+        "label": "3",
+        "side": "BELOW"
+      },
+      {
+        "id": "dCF",
+        "from": "C",
+        "to": "F",
+        "label": "3",
+        "side": "RIGHT"
+      }
+    ]
+  },
+  "sourceQuote": "큰 정삼각형 $\\text{ABC}$의 넓이는 $$\\frac{1}{2} \\times 9 \\times 9 \\sin 60^\\circ = \\f",
+  "sourceConditions": [
+    {
+      "id": "q17_solution",
+      "condition": "큰 정삼각형 $\\text{ABC}$의 넓이는 $$\\frac{1}{2} \\times 9 \\times 9 \\sin 60^\\circ = \\frac{81\\sqrt{3}}{4}\\text{ (cm}^2\\text{)}$$ $\\overline{\\text{BD}} = \\overline{\\text{CE}} = \\overline{\\text{AF}} = 9 - 3 = 6\\text{ cm}$이므로 바깥쪽 세 삼각형 $\\triangle\\text{ADF}$, $\\triangle\\text{BED}$, $\\triangle\\text{CFE}$는 모두 두 변이 $3\\text{ cm}$, $6\\text{ cm}$이고 끼인각이 $60^\\circ$인 합동인 삼각형이다. 그 하나의 넓이는 $$\\frac{1}{2} \\times 3 \\times 6 \\sin 60^\\circ = 9 \\times \\frac{\\sqrt{3}}{2} = \\frac{9\\sqrt{3}}{2}\\text{ (cm}^2\\text{)}$$ 따라서 $\\triangle\\text{DEF}$의 넓이는 $$\\frac{81\\sqrt{3}}{4} - 3 \\times \\frac{9\\sqrt{3}}{2} = \\frac{81\\sqrt{3} - 54\\sqrt{3}}{4} = \\frac{27\\sqrt{3}}{4}\\text{ (cm}^2\\text{)}$$ 이므로 정답은 ①이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "해설 관계: 큰 정삼각형 $\\text{ABC}$의 넓이는 $$\\frac{1}{2} \\times 9 \\times 9 \\sin 60^\\circ = \\frac{81\\sqrt{3}}{4}\\text{ (cm}^2\\text{)}$$ $\\overline{\\text{BD}} = \\overline{\\tex",
+  "newVisualInformation": [
+    "그려진 선분 AB, BC, CA, DE, EF, FD",
+    "angles 1개",
+    "expressionLabels 3개",
+    "dimensions 3개"
+  ],
+  "accessibilityDescription": "해설에서 사용하는 해설 관계: 큰 정삼각형 $\\text{ABC}$의 넓이는 $$\\frac{1}{2} \\times 9 \\times 9 \\sin 60^\\circ = \\frac{81\\sqrt{3}}{4}\\text{ (cm}^2\\text{)}$$ $\\overline{\\text{BD}} = \\overline{\\tex"
+}
