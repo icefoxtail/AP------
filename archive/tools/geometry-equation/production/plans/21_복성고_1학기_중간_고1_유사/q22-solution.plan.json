@@ -1,0 +1,33 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"12"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"12"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"12"},{"kind":"integer","value":"12"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"F","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"G","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"12"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"12"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints":["A","B","C","D","E","F","G","H"], "displayLines":[], "displayCircles":[],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sDA","refs":["D","A"]},{"id":"sEF","refs":["E","F"]},{"id":"sFG","refs":["F","G"]},{"id":"sGH","refs":["G","H"]},{"id":"sHE","refs":["H","E"]}],
+  "rightAngles":[{"id":"rA","refs":["E","A","H"],"factRole":"GIVEN"}],
+  "planeMarks": {
+    "dimensions":[{"id":"dAE","from":"A","to":"E","label":"6","side":"LEFT","factRole":"DERIVED_INTERMEDIATE"},{"id":"dAH","from":"A","to":"H","label":"6","side":"ABOVE","factRole":"DERIVED_INTERMEDIATE"}],
+    "regions":[{"id":"innerArea","fill":"LIGHT","shapes":[{"polygon":["E","F","G","H"]}],"factRole":"DERIVED_INTERMEDIATE"}]
+  },
+  "coordinateCanvas":{"width":650,"height":550},
+  "caption":"x=6에서 AE=AH=6이고, 직각삼각형 AEH의 EH²=6²+6²=72가 내접 정사각형의 최소 넓이이다.",
+  "accessibilityDescription":"한 변 12인 큰 정사각형 안에 EFGH 정사각형이 마름모 모양으로 내접하고 A에서 E, H까지 길이 6이 표시되며 A의 각은 직각이다.",
+  "sourceConditions":[
+    {"id":"outer","condition":"ABCD는 한 변 길이 12인 정사각형","mappedTo":["mathPlan.nodes[0]","mathPlan.nodes[1]","mathPlan.nodes[2]","mathPlan.nodes[3]","displaySegments"]},
+    {"id":"minimum","condition":"S=x²+(12-x)²=2(x-6)²+72에서 최소일 때 x=6","mappedTo":["mathPlan.nodes[4]","mathPlan.nodes[5]","mathPlan.nodes[6]","mathPlan.nodes[7]","planeMarks.dimensions"]},
+    {"id":"pythagoras","condition":"삼각형 AEH의 직각과 AE=AH=6, EH²=S=72","mappedTo":["rightAngles[0]","planeMarks.regions[0]","displaySegments[7]"]}
+  ],
+  "newVisualInformation":["풀이에서 구한 최적 배치의 두 직각변 길이와 색칠된 넓이 영역을 연결한다."]
+}

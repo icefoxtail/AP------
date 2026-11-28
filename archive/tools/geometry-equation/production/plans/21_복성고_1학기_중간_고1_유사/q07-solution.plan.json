@@ -1,0 +1,17 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["4", "6", "-1"],
+    "sourceDomain": {"kind": "ALL_REALS"}, "domain": [-1, 7], "viewport": [-2, 8, -4, 16],
+    "requiredPoints": [{"id": "V", "x": 3, "y": 13}, {"id": "Y", "x": 0, "y": 4}],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "y=−(x−3)²+13의 가장 높은 꼭짓점은 V(3,13)이다.",
+  "accessibilityDescription": "아래로 열린 포물선에 최댓값을 나타내는 꼭짓점 V(3,13)과 y축 교점 Y(0,4)를 표시한다.",
+  "sourceConditions": [
+    {"id": "curve", "condition": "-x²+6x+4=-(x-3)²+13", "mappedTo": "graphPlan.coefficients"},
+    {"id": "vertex", "condition": "꼭짓점에서 최댓값은 13", "mappedTo": "graphPlan.requiredPoints[0]"},
+    {"id": "intercept", "condition": "x=0일 때 y=4", "mappedTo": "graphPlan.requiredPoints[1]"}
+  ],
+  "newVisualInformation": ["최댓값이 꼭짓점의 y좌표라는 관계를 보여 준다."]
+}

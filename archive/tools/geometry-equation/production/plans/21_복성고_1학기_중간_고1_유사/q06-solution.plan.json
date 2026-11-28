@@ -1,0 +1,15 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["2", "-4", "2"],
+    "sourceDomain": {"kind": "ALL_REALS"}, "domain": [-1, 3], "viewport": [-2, 4, -2, 10],
+    "requiredPoints": [{"id": "T", "x": 1, "y": 0}], "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "k=2일 때 y=2(x−1)²은 T(1,0)에서 x축에 접한다.",
+  "accessibilityDescription": "위로 열린 포물선의 꼭짓점 T(1,0)이 x축 위에 있는 접선 조건을 보여 준다.",
+  "sourceConditions": [
+    {"id": "curve", "condition": "y=2x²-4x+k, 접선 판별식 4-2k=0에서 k=2", "mappedTo": "graphPlan.coefficients"},
+    {"id": "tangent", "condition": "y=2(x-1)²이므로 접점은 (1,0)", "mappedTo": "graphPlan.requiredPoints[0]"}
+  ],
+  "newVisualInformation": ["중근의 그래프 의미인 x축과의 한 점 접촉을 보인다."]
+}

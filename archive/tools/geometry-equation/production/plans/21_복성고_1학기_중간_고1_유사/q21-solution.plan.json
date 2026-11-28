@@ -1,0 +1,30 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints":["A","B","C","H"], "displayLines":[], "displayCircles":[],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]},{"id":"sAH","refs":["A","H"],"dashed":true}],
+  "rightAngles":[{"id":"rH","refs":["A","H","B"],"factRole":"DERIVED_INTERMEDIATE"}],
+  "planeMarks": {
+    "equalLengths":[{"id":"eqBC","count":1,"segments":["sAB","sCA"]}],
+    "dimensions":[{"id":"dBase","from":"B","to":"C","label":"6","side":"BELOW","factRole":"DERIVED_INTERMEDIATE"},{"id":"dHeight","from":"A","to":"H","label":"4","side":"RIGHT","factRole":"GIVEN"}],
+    "expressionLabels":[{"id":"labB","ownerSegment":"sCA","text":"5"},{"id":"labC","ownerSegment":"sAB","text":"5"}]
+  },
+  "coordinateCanvas":{"width":600,"height":460},
+  "caption":"b=c=5와 a=6인 이등변삼각형의 가장 긴 밑변 BC에 높이 AH=4를 내리면 BH=HC=3이다.",
+  "accessibilityDescription":"삼각형 ABC의 AB와 AC에 같은 길이 표시가 있으며 밑변 BC는 6, 높이 AH는 점선으로 4이고 H에 직각 표시가 있다.",
+  "sourceConditions":[
+    {"id":"iso","condition":"(a+b)(b-c)(a+b+c)=0, b=c=5","mappedTo":["planeMarks.equalLengths[0]","planeMarks.expressionLabels"]},
+    {"id":"ratio","condition":"5a=3b+3c에서 a=6, b=c=5","mappedTo":["mathPlan.nodes","planeMarks.dimensions[0]"]},
+    {"id":"height","condition":"높이 4와 반밑변 3에서 3²+4²=5²","mappedTo":["displaySegments[3]","rightAngles[0]","planeMarks.dimensions[1]"]}
+  ],
+  "newVisualInformation":["수선·직각·동일 변 눈금과 실제 길이 6·5·4로 둘레 16을 유도하는 관계를 그린다."]
+}

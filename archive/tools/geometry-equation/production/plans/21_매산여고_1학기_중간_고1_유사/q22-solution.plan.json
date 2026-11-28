@@ -1,0 +1,19 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["15", "6", "2"],
+    "sourceDomain": {"kind": "ALL_REALS"}, "domain": [-5, 0], "viewport": [-6, 1, 7, 40],
+    "requiredPoints": [
+      {"id": "A", "x": -5, "y": 35}, {"id": "V", "x": -1.5, "y": 10.5}, {"id": "C", "x": 0, "y": 15}
+    ],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "A에서 C까지 움직이는 점 P에 대한 식 g(x)=−6x+y+5=2x²+6x+15의 극값을 구간에서 비교한다.",
+  "accessibilityDescription": "위로 열린 g(x)의 포물선에서 왼쪽 끝 A(-5,35), 가장 낮은 V(-3/2,21/2), 오른쪽 끝 C(0,15)를 나타낸다.",
+  "sourceConditions": [
+    {"id": "objective", "condition": "y=2x²+12x+10을 -6x+y+5에 넣으면 g(x)=2x²+6x+15", "mappedTo": "graphPlan.coefficients"},
+    {"id": "interval", "condition": "원래 포물선에서 A의 x=-5, C의 x=0이므로 -5≤x≤0", "mappedTo": ["graphPlan.domain", "graphPlan.requiredPoints[0]", "graphPlan.requiredPoints[2]"]},
+    {"id": "extrema", "condition": "g(-3/2)=21/2, g(-5)=35, g(0)=15", "mappedTo": "graphPlan.requiredPoints"}
+  ],
+  "newVisualInformation": ["원래 y 그래프와 별개인 목적식 g의 꼭짓점과 양 끝을 비교해야 함을 나타낸다."]
+}

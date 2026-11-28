@@ -1,0 +1,26 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id": "A", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind":"integer","value":"-4"},{"kind":"integer","value":"0"}]}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "B", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "C", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind":"integer","value":"0"},{"kind":"integer","value":"3"}]}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["A","B","C"], "displayLines": [], "displayCircles": [],
+  "displaySegments": [{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]}],
+  "rightAngles": [{"id":"rB","refs":["A","B","C"],"factRole":"DERIVED_INTERMEDIATE"}],
+  "planeMarks": {
+    "expressionLabels": [{"id":"labA","ownerSegment":"sBC","text":"a"},{"id":"labB","ownerSegment":"sCA","text":"b"},{"id":"labC","ownerSegment":"sAB","text":"c"}]
+  },
+  "coordinateCanvas": {"width": 540, "height": 400},
+  "caption": "a²+c²=b²에서 빗변 b에 대한 직각삼각형의 개형이다. 수치 비율은 설명용 대표 배치이다.",
+  "accessibilityDescription": "삼각형 ABC에서 AB=c, BC=a, CA=b이고 B에 직각 표시가 있다. 넓이는 두 직각변의 곱의 절반이다.",
+  "sourceConditions": [
+    {"id":"identity","condition":"D/4=c²-(b²-a²)=0이므로 a²+c²=b²","mappedTo":["rightAngles[0]","displaySegments"]},
+    {"id":"sides","condition":"a=BC, b=CA, c=AB; 대표 3-4-5 좌표는 임의이며 실제 변 길이 수치가 아님","mappedTo":["mathPlan.nodes","planeMarks.expressionLabels"]}
+  ],
+  "newVisualInformation": ["판별식으로 얻은 피타고라스 관계가 직각삼각형을 만든다는 사실을 실제 직각 기호와 변 이름으로 표시한다."]
+}
