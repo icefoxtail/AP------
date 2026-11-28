@@ -1,0 +1,29 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [{"kind": "PYRAMID", "base": {"kind": "POLYGON", "points": [[0,0],[2,0],[0,2]]}, "height": 1.4142135623730951, "apex": [0,0], "names": "OBCA",
+    "points": [{"id": "H", "at": {"foot": {"from": "A", "to": ["B", "C"]}}}]
+  }],
+  "segments": [
+    {"from": "A", "to": "H", "style": "SOLID", "color": "BLUE"},
+    {"from": "H", "to": "B", "style": "AUTO", "role": "REF"}
+  ],
+  "dims": [
+    {"edge": "AO", "label": "\\sqrt{2}"},
+    {"edge": "OB", "label": "2"},
+    {"edge": "OC", "label": "2"}
+  ],
+  "marks": {"rightAngles": [
+    {"at": "O", "refs": ["A", "B"]},
+    {"at": "O", "refs": ["B", "C"]},
+    {"at": "H", "refs": ["A", "B"]}
+  ]},
+  "caption": "세 모서리 OA·OB·OC가 서로 수직인 사면체에서 BC에 내린 수선의 발 H와 AH를 나타낸다.",
+  "accessibilityDescription": "서로 수직인 세 모서리 OA OB OC의 길이가 각각 √2, 2, 2이고, A에서 BC에 내린 수선 AH를 파란색으로 강조한 사면체다.",
+  "sourceQuote": "OA=√2, OB=OC=2; 점 A에서 직선 BC에 내린 수선의 발 H",
+  "sourceConditions": [
+    {"id": "c1", "condition": "OA,OB,OC는 서로 수직", "mappedTo": "solids[0],marks.rightAngles"},
+    {"id": "c2", "condition": "OA=√2, OB=OC=2", "mappedTo": "dims"},
+    {"id": "c3", "condition": "AH⊥BC", "mappedTo": "solids[0].points,segments[0],marks.rightAngles[2]"}
+  ],
+  "newVisualInformation": ["기준 세 직각 모서리와 AH의 실제 수선 관계를 보여 준다. AH 길이는 문제 그림에 표시하지 않는다."]
+}

@@ -1,0 +1,24 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [{"kind": "PYRAMID", "base": {"kind": "RECT", "width": 2, "depth": 2}, "height": 1.4142135623730951, "names": "BCDEA",
+    "points": [
+      {"id": "M", "at": {"edge": ["C", "D"], "t": "1/2"}},
+      {"id": "N", "at": {"edge": ["D", "E"], "t": "1/2"}}
+    ]}],
+  "segments": [
+    {"from": "A", "to": "E", "style": "AUTO", "color": "WARM"},
+    {"from": "M", "to": "N", "style": "SOLID", "color": "BLUE"},
+    {"from": "C", "to": "E", "style": "AUTO", "color": "BLUE"},
+    {"from": "A", "to": "C", "style": "AUTO", "role": "REF"}
+  ],
+  "marks": {"rightAngles": [{"at": "A", "refs": ["E", "C"]}], "angles": [{"refs": ["A", "E", "C"], "arcs": 1, "label": "45^\\circ"}]},
+  "caption": "MN은 CE에 평행하다. 직각이등변삼각형 ACE에서 각 AEC는 45°이므로 AE와 MN 사이의 각도 같다.",
+  "accessibilityDescription": "정사각뿔에서 파란 중점연결선 MN과 같은 방향의 밑면 대각선 CE를 파란색으로 그린다. 삼각형 ACE의 A는 직각이고 E에는 45도 호가 있다.",
+  "sourceQuote": "MN은 CE에 평행하며 삼각형 ACE는 직각이등변삼각형이다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "MN∥CE", "mappedTo": "segments[1],segments[2]"},
+    {"id": "c2", "condition": "AE=AC=2, CE=2√2", "mappedTo": "solids[0],segments[3]"},
+    {"id": "c3", "condition": "각 CAE=90°, 각 AEC=45°", "mappedTo": "marks.rightAngles,marks.angles"}
+  ],
+  "newVisualInformation": ["문제에서 제시하지 않은 CE와 AC의 보조선을 해설에만 더하고 직각·각도 호를 그린다."]
+}

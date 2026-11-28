@@ -1,0 +1,29 @@
+{
+  "capability":"solid-figure-v1",
+  "space":{
+    "points":[
+      {"id":"A","at":[0,0,0]},{"id":"B","at":["2*sqrt(2)",0,0]},
+      {"id":"C","at":["2*sqrt(2)","2*sqrt(2)",0]},{"id":"D","at":[0,"2*sqrt(2)",0]},
+      {"id":"P","at":[0,0,2]},{"id":"Q","at":["2*sqrt(2)",0,"2+2*sqrt(2)"]},
+      {"id":"R","at":["2*sqrt(2)","2*sqrt(2)","2+2*sqrt(2)"]},{"id":"S","at":[0,"2*sqrt(2)",2]},
+      {"id":"T","at":["2*sqrt(2)",0,2],"hideName":true,"hideDot":true}
+    ],
+    "planes":[{"id":"alpha","name":"\\alpha","through":["A","B","D"]},{"id":"beta","name":"\\beta","through":["P","Q","S"]}],
+    "segments":[
+      {"from":"A","to":"B"},{"from":"B","to":"C"},{"from":"C","to":"D"},{"from":"D","to":"A"},
+      {"from":"P","to":"Q"},{"from":"Q","to":"R"},{"from":"R","to":"S"},{"from":"S","to":"P"},
+      {"from":"A","to":"P"},{"from":"B","to":"Q"},{"from":"C","to":"R"},{"from":"D","to":"S"},
+      {"from":"P","to":"T","style":"DASHED"},{"from":"T","to":"Q","style":"DASHED"}
+    ]
+  },
+  "marks":{"angles":[{"refs":["Q","P","T"],"label":"45^\\circ"}],"rightAngles":[{"at":"T","refs":["P","Q"]}]},
+  "caption":"밑면이 정사각형인 직육면체를 45°의 경사진 평면 PQRS로 자른 단면의 넓이는 8√2이다.",
+  "accessibilityDescription":"밑면 ABCD, 기울어진 위 단면 PQRS, 네 개의 수직 모서리로 된 잘린 직육면체의 선도. 점선 PT와 TQ, T의 직각 표식, P의 45도 각호가 있다.",
+  "sourceQuote":"정사각형 밑면, 45° 경사 단면 PQRS, 단면 넓이 8√2",
+  "sourceConditions":[
+    {"id":"c1","condition":"밑면은 정사각형","mappedTo":"space.points[0:4],space.segments[0:4]"},
+    {"id":"c2","condition":"단면은 밑면과 45°","mappedTo":"space.planes,marks.angles"},
+    {"id":"c3","condition":"PQRS 넓이 8√2","mappedTo":"caption"}
+  ],
+  "newVisualInformation":["기울기 45도를 확인하는 직각삼각형 PQT의 점선과 직각 표식을 보강한다. 밑면 한 변의 정답 길이는 표시하지 않는다."]
+}

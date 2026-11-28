@@ -1,0 +1,26 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [{"kind": "PRISM", "base": {"kind": "RECT", "width": 2, "depth": 2}, "height": 2, "names": "EFGHABCD",
+    "points": [
+      {"id": "M", "at": {"edge": ["A", "D"], "t": "1/2"}},
+      {"id": "N", "at": {"edge": ["B", "C"], "t": "1/2"}},
+      {"id": "K", "at": {"foot": {"from": "M", "to": ["E", "H"]}}}
+    ]}],
+  "segments": [
+    {"from": "M", "to": "N", "style": "AUTO", "role": "REF"},
+    {"from": "N", "to": "G", "style": "SOLID", "role": "REF"},
+    {"from": "H", "to": "M", "style": "SOLID", "color": "BLUE"},
+    {"from": "M", "to": "K", "style": "SOLID", "color": "WARM"},
+    {"from": "K", "to": "H", "style": "SOLID", "color": "WARM"}
+  ],
+  "marks": {"rightAngles": [{"at": "K", "refs": ["M", "H"]}]},
+  "caption": "교선 GH에 수직인 단면에서 θ=∠MHE이고, 직각삼각형 MKH의 MK=2, KH=1, MH=√5로 sin θ를 계산한다.",
+  "accessibilityDescription": "정육면체의 중점 M에서 밑면 모서리 EH에 내린 수선 MK와 빗변 MH가 직각삼각형을 이루고, K에는 직각 표식이 있다.",
+  "sourceQuote": "평면 MNGH와 EFGH의 교선 GH; θ=∠MHE",
+  "sourceConditions": [
+    {"id": "c1", "condition": "M,N은 AD,BC의 중점", "mappedTo": "solids[0].points"},
+    {"id": "c2", "condition": "MK⊥EH", "mappedTo": "marks.rightAngles,segments[3]"},
+    {"id": "c3", "condition": "MK=2, HK=1, MH=√5", "mappedTo": "solids[0].points,segments[2],segments[3],segments[4]"}
+  ],
+  "newVisualInformation": ["이면각을 평면 안의 직각삼각형으로 바꾸는 보조점 K와 직각을 나타낸다."]
+}

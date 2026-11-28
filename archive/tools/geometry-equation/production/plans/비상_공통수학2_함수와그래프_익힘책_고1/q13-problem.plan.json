@@ -1,0 +1,34 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-0.2, 3, -0.2, 3.4],
+    "curves": [
+      {"id": "f", "kind": "SQRT", "radicand": ["0", "1"], "amplitude": "2", "domain": ["0", "3"], "color": "BLUE", "label": "y=2sqrt(x)"},
+      {"id": "g", "kind": "SQRT", "radicand": ["0", "1"], "amplitude": "1", "domain": ["0", "3"], "color": "WARM", "label": "y=sqrt(x)"}
+    ],
+    "axisTickValues": {"x": [], "y": []},
+    "overlays": {
+      "points": [
+        {"id": "A", "x": "4/9", "y": "4/3"},
+        {"id": "B", "x": "4/9", "y": "0"},
+        {"id": "C", "x": "16/9", "y": "0"},
+        {"id": "D", "x": "16/9", "y": "4/3"}
+      ],
+      "polygons": [{"id": "S", "points": ["A", "B", "C", "D"], "fill": "NONE"}],
+      "rightAngles": [
+        {"at": "A", "from": ["B", "D"]},
+        {"at": "B", "from": ["A", "C"]},
+        {"at": "C", "from": ["B", "D"]}
+      ]
+    }
+  },
+  "caption": "두 무리함수의 그래프 위에 A와 D가 있고, B와 C는 x축 위에 있는 정사각형 ABCD이다.",
+  "accessibilityDescription": "y=2√x와 y=√x의 두 곡선 사이에서 위쪽 A-D, 아래쪽 B-C가 수평이고 양옆이 수직인 정사각형 ABCD를 그렸다. 좌표값은 표시하지 않았다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "A는 y=2√x, D는 y=√x 위", "mappedTo": "graphPlan.curves,graphPlan.overlays.points"},
+    {"id": "c2", "condition": "AD는 x축과 평행, AB와 DC는 x축에 수직", "mappedTo": "graphPlan.overlays.polygons,graphPlan.overlays.rightAngles"},
+    {"id": "c3", "condition": "ABCD는 정사각형", "mappedTo": "graphPlan.overlays.points,graphPlan.overlays.polygons"}
+  ],
+  "newVisualInformation": ["발문에서 주어진 점 이름, 두 곡선, 정사각형 네 변과 직각 표시만 보여 주고 구하는 점 A의 좌표는 숨긴다."]
+}

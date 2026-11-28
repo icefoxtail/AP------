@@ -1,0 +1,24 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {"kind": "PRISM", "base": {"kind": "REGULAR", "n": 5, "side": 2}, "height": 3, "names": "FGHIJABCDE"}
+  ],
+  "segments": [
+    {"from": "A", "to": "F", "style": "AUTO", "role": "REF"},
+    {"from": "B", "to": "C", "style": "AUTO", "color": "BLUE"},
+    {"from": "C", "to": "D", "style": "AUTO", "color": "BLUE"},
+    {"from": "D", "to": "E", "style": "AUTO", "color": "BLUE"},
+    {"from": "G", "to": "H", "style": "AUTO", "color": "BLUE"},
+    {"from": "H", "to": "I", "style": "AUTO", "color": "BLUE"},
+    {"from": "I", "to": "J", "style": "AUTO", "color": "BLUE"}
+  ],
+  "caption": "굵은 AF와 만나지도 평행하지도 않는 파란 BC·CD·DE·GH·HI·IJ가 꼬인 위치의 여섯 모서리다.",
+  "accessibilityDescription": "정오각기둥에서 기준 모서리 AF를 굵게, AF와 꼬인 관계에 있는 위 세 모서리와 아래 세 모서리를 파란색으로 표시했다.",
+  "sourceQuote": "AF와 꼬인 위치에 있는 모서리의 개수",
+  "sourceConditions": [
+    {"id": "c1", "condition": "AF와 만나는 AB, AE, FG, FJ는 제외", "mappedTo": "solids[0].names"},
+    {"id": "c2", "condition": "AF와 평행한 BG, CH, DI, EJ는 제외", "mappedTo": "solids[0].names"},
+    {"id": "c3", "condition": "BC, CD, DE, GH, HI, IJ는 꼬인 위치", "mappedTo": "segments[1],segments[2],segments[3],segments[4],segments[5],segments[6]"}
+  ],
+  "newVisualInformation": ["꼬인 모서리 여섯 개의 소속을 윗면 3개, 아랫면 3개로 시각화한다."]
+}

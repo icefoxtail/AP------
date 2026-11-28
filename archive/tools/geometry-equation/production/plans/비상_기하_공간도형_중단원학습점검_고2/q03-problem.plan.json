@@ -1,0 +1,32 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {"id": "A′", "at": [0,0,0]},
+      {"id": "B′", "at": [6,0,0]},
+      {"id": "C", "at": [0,3,0], "hideName": true, "hideDot": true},
+      {"id": "A", "at": [0,0,1]},
+      {"id": "B", "at": [6,0,"1+2*sqrt(3)"]},
+      {"id": "Q", "at": [6,0,1], "hideName": true, "hideDot": true}
+    ],
+    "planes": [{"id": "alpha", "name": "\\alpha", "through": ["A′", "B′", "C"]}],
+    "segments": [
+      {"from": "A", "to": "B"},
+      {"from": "A′", "to": "B′"},
+      {"from": "A", "to": "A′", "style": "DASHED"},
+      {"from": "B", "to": "B′", "style": "DASHED"},
+      {"from": "A", "to": "Q", "style": "DASHED"}
+    ]
+  },
+  "marks": {"rightAngles": [{"at": "A′", "refs": ["A", "B′"]}], "angles": [{"refs": ["B", "A", "Q"], "arcs": 1, "label": "30^\\circ"}]},
+  "dims": [{"from": "A′", "to": "B′", "label": "6"}],
+  "caption": "평면 α 위로 내린 A′,B′의 정사영 길이는 6이고, 선분 AB와 평면의 각은 30°다.",
+  "accessibilityDescription": "평면 알파 위에 정사영 A′B′, 그 위쪽에 원래 선분 AB가 있다. 두 끝에서 평면까지의 점선 수선과 30도 각호를 표시했다.",
+  "sourceQuote": "선분 AB의 평면 α 위로의 정사영이 A′B′, 이루는 각 30°, A′B′=6",
+  "sourceConditions": [
+    {"id": "c1", "condition": "A′B′는 AB의 평면 α 정사영", "mappedTo": "space.planes,space.segments"},
+    {"id": "c2", "condition": "A′B′=6", "mappedTo": "dims[0]"},
+    {"id": "c3", "condition": "AB와 α가 이루는 각 30°", "mappedTo": "marks.angles[0]"}
+  ],
+  "newVisualInformation": ["정사영 두 수선과 수평 보조선을 통해 각의 정의를 보이고 답 길이는 표시하지 않는다."]
+}

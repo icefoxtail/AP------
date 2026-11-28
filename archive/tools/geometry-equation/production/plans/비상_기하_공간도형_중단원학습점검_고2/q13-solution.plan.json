@@ -1,0 +1,33 @@
+{
+  "capability":"solid-figure-v1",
+  "space":{
+    "points":[
+      {"id":"O","at":[0,0,0]},{"id":"A","at":[3,0,0]},
+      {"id":"B","at":[0,4,0]},{"id":"C","at":[0,0,5]},
+      {"id":"P","at":[0,"100/41","80/41"]},
+      {"id":"Q","at":["75/34",0,"45/34"]},
+      {"id":"H","at":["1200/769","900/769","720/769"]}
+    ],
+    "planes":[{"id":"alpha","name":"\\alpha","through":["A","B","C"]}],
+    "segments":[
+      {"from":"O","to":"A"},{"from":"O","to":"B"},{"from":"O","to":"C"},
+      {"from":"A","to":"B"},{"from":"B","to":"C"},{"from":"C","to":"A"},
+      {"from":"A","to":"P"},{"from":"B","to":"Q"},
+      {"from":"O","to":"H","style":"DASHED"},{"from":"H","to":"A"},
+      {"from":"P","to":"B"},{"from":"Q","to":"A"}
+    ]
+  },
+  "marks":{"rightAngles":[
+    {"at":"O","refs":["A","B"]},{"at":"P","refs":["A","B"]},
+    {"at":"Q","refs":["B","A"]},{"at":"H","refs":["O","A"]}
+  ]},
+  "caption":"OA⊥BC 및 AP⊥BC이므로 BC⊥평면 OAP, OH⊥BC. 같은 논리로 OH⊥AC라서 OH⊥평면 ABC이다.",
+  "accessibilityDescription":"직교 삼각뿔의 대면 ABC 위에서 두 높이 AP,BQ의 교점 H를 표시한다. O와 H를 점선으로 연결하고 H에서 ABC의 높이 방향과 직교하는 작은 직각 표식을 보인다.",
+  "sourceQuote":"BC⊥평면 OAP→BC⊥OH, AC⊥평면 OBQ→AC⊥OH, 따라서 OH⊥평면 ABC",
+  "sourceConditions":[
+    {"id":"c1","condition":"서로 직교하는 OA,OB,OC","mappedTo":"space.points,marks.rightAngles[0]"},
+    {"id":"c2","condition":"AP⊥BC와 BQ⊥AC","mappedTo":"marks.rightAngles[1],marks.rightAngles[2]"},
+    {"id":"c3","condition":"OH⊥평면 ABC","mappedTo":"space.segments[8],marks.rightAngles[3]"}
+  ],
+  "newVisualInformation":["증명 결론 OH를 대면과 구분되는 점선으로 추가하고 OH와 평면 내 AH가 수직임을 직각 표식으로 보인다."]
+}

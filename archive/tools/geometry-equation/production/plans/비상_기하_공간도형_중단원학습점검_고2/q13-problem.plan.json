@@ -1,0 +1,31 @@
+{
+  "capability":"solid-figure-v1",
+  "space":{
+    "points":[
+      {"id":"O","at":[0,0,0]},{"id":"A","at":[3,0,0]},
+      {"id":"B","at":[0,4,0]},{"id":"C","at":[0,0,5]},
+      {"id":"P","at":[0,"100/41","80/41"]},
+      {"id":"Q","at":["75/34",0,"45/34"]},
+      {"id":"H","at":["1200/769","900/769","720/769"]}
+    ],
+    "segments":[
+      {"from":"O","to":"A"},{"from":"O","to":"B"},{"from":"O","to":"C"},
+      {"from":"A","to":"B"},{"from":"B","to":"C"},{"from":"C","to":"A"},
+      {"from":"A","to":"P"},{"from":"B","to":"Q"},
+      {"from":"P","to":"B"},{"from":"Q","to":"A"}
+    ]
+  },
+  "marks":{"rightAngles":[
+    {"at":"O","refs":["A","B"]},{"at":"P","refs":["A","B"]},{"at":"Q","refs":["B","A"]}
+  ]},
+  "caption":"서로 직교하는 세 모서리 OA, OB, OC와 대면 삼각형 ABC의 두 높이 AP, BQ의 교점 H.",
+  "accessibilityDescription":"삼각뿔 OABC. 세 직교 모서리의 꼭짓점 O에 직각 표식이 있으며 A에서 BC로 내린 AP, B에서 AC로 내린 BQ가 H에서 교차한다. 수선의 발 P와 Q에 직각 표식이 있다. 정답인 OH는 그리지 않는다.",
+  "sourceQuote":"OA, OB, OC가 서로 수직, AP⊥BC, BQ⊥AC, AP∩BQ=H. OH⊥ABC를 증명",
+  "sourceConditions":[
+    {"id":"c1","condition":"OA, OB, OC는 서로 직교","mappedTo":"space.points,marks.rightAngles[0]"},
+    {"id":"c2","condition":"P는 A에서 BC로 내린 수선의 발","mappedTo":"space.segments[6],marks.rightAngles[1]"},
+    {"id":"c3","condition":"Q는 B에서 AC로 내린 수선의 발","mappedTo":"space.segments[7],marks.rightAngles[2]"},
+    {"id":"c4","condition":"H=AP∩BQ","mappedTo":"space.points[6]"}
+  ],
+  "newVisualInformation":["선 AB, BC, CA와 두 고도 및 수선발을 정확히 분리했다. OA/OB/OC는 부등한 예시 좌표로 일반성을 오해하지 않게 하고 길이 표시는 하지 않는다."]
+}

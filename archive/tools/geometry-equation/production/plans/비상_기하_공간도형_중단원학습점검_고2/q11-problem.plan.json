@@ -1,0 +1,17 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [{"kind": "PRISM", "base": {"kind": "RECT", "width": 2, "depth": 2}, "height": 2, "names": "EFGHABCD",
+    "points": [{"id": "M", "at": {"edge": ["B", "F"], "t": "1/2"}}]
+  }],
+  "segments": [{"from": "M", "to": "H", "style": "SOLID", "color": "BLUE"}],
+  "dims": [{"edge": "EF", "label": "2"}],
+  "caption": "한 모서리가 2인 정육면체에서 BF의 중점 M과 꼭짓점 H를 잇는 파란 선분 MH를 나타낸다.",
+  "accessibilityDescription": "정육면체의 앞쪽 세로 모서리 BF 중점에 M이 있고 뒷면의 꼭짓점 H까지 선분을 그렸다. 기준 평면은 뒤쪽 AEHD다.",
+  "sourceQuote": "BF의 중점 M; 선분 MH와 평면 AEHD가 이루는 각",
+  "sourceConditions": [
+    {"id": "c1", "condition": "정육면체 한 모서리 2", "mappedTo": "solids[0],dims"},
+    {"id": "c2", "condition": "M은 BF의 중점", "mappedTo": "solids[0].points"},
+    {"id": "c3", "condition": "선분 MH", "mappedTo": "segments[0]"}
+  ],
+  "newVisualInformation": ["기준점 M과 H의 공간 위치만 표시하고 구하는 각의 정답은 노출하지 않는다."]
+}

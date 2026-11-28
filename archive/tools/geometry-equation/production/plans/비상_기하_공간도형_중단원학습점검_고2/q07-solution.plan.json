@@ -1,0 +1,37 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "m",
+  "space": {
+    "points": [
+      {"id": "A", "at": [0,0,0]},
+      {"id": "B", "at": [200,0,0]},
+      {"id": "C", "at": [200,100,0]},
+      {"id": "P", "at": [200,100,"100*sqrt(11)"]}
+    ],
+    "planes": [{"id": "ground", "through": ["A", "B", "C"]}],
+    "lines": [{"id": "road", "name": "l", "through": ["A", "B"]}],
+    "segments": [
+      {"from": "A", "to": "B"}, {"from": "B", "to": "C"},
+      {"from": "C", "to": "P"}, {"from": "A", "to": "P"},
+      {"from": "B", "to": "P", "style": "DASHED"}
+    ]
+  },
+  "marks": {
+    "rightAngles": [{"at": "B", "refs": ["A", "C"]}, {"at": "C", "refs": ["B", "P"]}],
+    "angles": [{"refs": ["P", "A", "B"], "arcs": 1, "label": "60^\\circ"}]
+  },
+  "dims": [
+    {"from": "A", "to": "B", "label": "200"},
+    {"from": "B", "to": "C", "label": "100"},
+    {"from": "C", "to": "P", "label": "100\\sqrt{11}"}
+  ],
+  "caption": "도로 AB와 진입로 BC는 수직이고 PC는 지면에 수직이다. 삼수선 정리로 PB⊥AB, PC=100√11m이다.",
+  "accessibilityDescription": "지면 위 A B C와 건물 꼭대기 P를 연결하고 AB=200m, BC=100m, PC=100√11m, 각 PAB=60도를 표시한다. B와 C에는 직각이 있다.",
+  "sourceQuote": "AB=200m, BC=100m, ∠PAB=60°; PC⊥지면",
+  "sourceConditions": [
+    {"id": "c1", "condition": "AB⊥BC, PC⊥지면", "mappedTo": "marks.rightAngles,space.planes"},
+    {"id": "c2", "condition": "AB=200, BC=100, 각 PAB=60°", "mappedTo": "dims[0],dims[1],marks.angles[0]"},
+    {"id": "c3", "condition": "PC=100√11", "mappedTo": "dims[2]"}
+  ],
+  "newVisualInformation": ["원본의 건물·도로 일러스트를 수학적 점·선 모델로 추상화하고 두 직각삼각형을 보인다. 문제 원본 PNG는 보존한다."]
+}

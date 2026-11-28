@@ -1,0 +1,29 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [0, 10, -20, 20],
+    "curves": [
+      {"id": "f", "kind": "RATIONAL", "numerator": ["1", "5"], "denominator": ["-3", "1"], "domain": ["0", "10"], "color": "BLUE", "label": "f(x)"},
+      {"id": "g", "kind": "RATIONAL", "numerator": ["6", "-5"], "denominator": ["-5", "1"], "domain": ["0", "10"], "color": "WARM", "label": "g(x)"}
+    ],
+    "axisTickValues": {"x": [3, 5], "y": [-5, 5]},
+    "overlays": {
+      "points": [
+        {"id": "A", "x": "3", "y": "5"},
+        {"id": "B", "x": "5", "y": "5"},
+        {"id": "C", "x": "5", "y": "-5"},
+        {"id": "D", "x": "3", "y": "-5"}
+      ],
+      "polygons": [{"id": "R", "points": ["A", "B", "C", "D"], "fill": "NONE"}]
+    }
+  },
+  "caption": "k=5일 때 점근선 x=3, x=5, y=5, y=-5가 만드는 직사각형의 가로는 2, 세로는 10이다.",
+  "accessibilityDescription": "두 유리함수의 점근선 네 개가 이루는 직사각형 ABCD를 면 채움 없이 윤곽선으로 나타내었다. x=3과 x=5, y=5와 y=-5가 경계다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "f(x)=(kx+1)/(x-3), g(x)=(-5x+6)/(x-k)", "mappedTo": "graphPlan.curves"},
+    {"id": "c2", "condition": "두 그래프의 점근선은 x=3, x=k, y=k, y=-5", "mappedTo": "graphPlan.curves,graphPlan.overlays.points"},
+    {"id": "c3", "condition": "점근선 직사각형의 넓이 20, k>0에 따라 k=5", "mappedTo": "graphPlan.overlays.polygons"}
+  ],
+  "newVisualInformation": ["정답 k=5의 경우 네 점근선을 경계로 하는 직사각형의 윤곽을 그려 넓이식을 시각화한다."]
+}

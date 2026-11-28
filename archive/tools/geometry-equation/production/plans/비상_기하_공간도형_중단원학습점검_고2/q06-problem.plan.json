@@ -1,0 +1,22 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [{"kind": "PYRAMID", "base": {"kind": "RECT", "width": 2, "depth": 2}, "height": 1.4142135623730951, "names": "BCDEA",
+    "points": [
+      {"id": "M", "at": {"edge": ["C", "D"], "t": "1/2"}},
+      {"id": "N", "at": {"edge": ["D", "E"], "t": "1/2"}}
+    ]}],
+  "segments": [
+    {"from": "A", "to": "E", "style": "AUTO", "color": "WARM"},
+    {"from": "M", "to": "N", "style": "SOLID", "color": "BLUE"}
+  ],
+  "dims": [{"edge": "AE", "label": "2"}],
+  "caption": "모든 모서리가 2인 정사각뿔 A-BCDE에서 CD의 중점 M과 DE의 중점 N, 두 직선 AE와 MN을 표시한다.",
+  "accessibilityDescription": "정사각뿔의 꼭짓점 A, 밑면 B C D E, 중점 M과 N이 보인다. 주황색 AE와 파란색 MN이 물어보는 두 직선이다.",
+  "sourceQuote": "모든 모서리의 길이가 2인 정사각뿔 A-BCDE, CD와 DE의 중점 M,N",
+  "sourceConditions": [
+    {"id": "c1", "condition": "모든 모서리 길이는 2", "mappedTo": "solids[0].base,solids[0].height,dims[0]"},
+    {"id": "c2", "condition": "M,N은 각각 CD,DE의 중점", "mappedTo": "solids[0].points"},
+    {"id": "c3", "condition": "직선 AE와 MN 사이 각을 구함", "mappedTo": "segments"}
+  ],
+  "newVisualInformation": ["미지 각은 드러내지 않은 채 각뿔과 중점연결선, 기준 모서리를 표현한다."]
+}
