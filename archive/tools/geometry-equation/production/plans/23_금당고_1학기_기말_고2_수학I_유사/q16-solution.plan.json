@@ -1,0 +1,198 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-12"
+            },
+            {
+              "kind": "integer",
+              "value": "-9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "-9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "15"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lc",
+        "ownerSegment": "AB",
+        "text": "c",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lb",
+        "ownerSegment": "CA",
+        "text": "b",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "la",
+        "ownerSegment": "BC",
+        "text": "24",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lr",
+        "ownerSegment": "OB",
+        "text": "15",
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "max",
+        "count": 1,
+        "segments": [
+          "AB",
+          "CA"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 480
+  },
+  "caption": "반지름 15, 현 BC 24인 원에서 b와 c가 같아지는 대칭 내접 삼각형으로 최댓값의 등호 조건을 보인다.",
+  "accessibilityDescription": "반지름 15, 현 BC 24인 원에서 b와 c가 같아지는 대칭 내접 삼각형으로 최댓값의 등호 조건을 보인다.",
+  "newVisualInformation": [
+    "산술·기하 평균의 등호 b=c를 해설에서만 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "반지름의 길이가 $15$인 원 $O$에 내접하는 삼각형 $ABC$에 대하여 $a = 24$일 때, $bc$의 최댓값은? (단, $a = \\overline{BC}$, $b = \\overline{CA}$, $c = \\overline{AB}$이다.) (6점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

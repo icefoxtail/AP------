@@ -1,0 +1,210 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "5"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "L",
+    "R",
+    "U",
+    "V"
+  ],
+  "hiddenPointNames": [
+    "L",
+    "R",
+    "U",
+    "V"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sLR",
+      "refs": [
+        "L",
+        "R"
+      ]
+    },
+    {
+      "id": "sLU",
+      "refs": [
+        "L",
+        "U"
+      ]
+    },
+    {
+      "id": "sRV",
+      "refs": [
+        "R",
+        "V"
+      ]
+    },
+    {
+      "id": "sUV",
+      "refs": [
+        "U",
+        "V"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "vertical",
+        "count": 1,
+        "segments": [
+          "sLU",
+          "sRV"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "width",
+        "ownerSegment": "sLR",
+        "text": "1",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "leftHeight",
+        "ownerSegment": "sLU",
+        "text": "2",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "rightHeight",
+        "ownerSegment": "sRV",
+        "text": "sqrt(5)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "leftfoot",
+      "refs": [
+        "U",
+        "L",
+        "R"
+      ]
+    },
+    {
+      "id": "rightfoot",
+      "refs": [
+        "L",
+        "R",
+        "V"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 470,
+    "height": 380
+  },
+  "caption": "폭 1, 양쪽 세로 길이 √k와 √(k+1)인 사다리꼴을 직선 변으로 연결하여 S_k를 계산한다.",
+  "accessibilityDescription": "폭 1, 양쪽 세로 길이 √k와 √(k+1)인 사다리꼴을 직선 변으로 연결하여 S_k를 계산한다.",
+  "newVisualInformation": [
+    "x=k, k+1의 함수값으로 구한 두 평행변의 길이와 너비 1"
+  ],
+  "sourceConditions": [
+    {
+      "id": "s1",
+      "condition": "y=√x 그래프와 x축 및 직선 x=k, x=k+1의 네 교점을 꼭짓점으로 연결한 사각형; 예시 k=4",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ]
+}

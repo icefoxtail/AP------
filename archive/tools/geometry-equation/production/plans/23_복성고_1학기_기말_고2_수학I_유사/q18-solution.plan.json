@@ -1,0 +1,56 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": [
+      "1",
+      "12",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "OPEN"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "cut",
+        "y": "1/4",
+        "intersectionCount": 12,
+        "color": "BLUE"
+      }
+    ],
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "1/4"
+      ]
+    },
+    "displaySize": "full"
+  },
+  "caption": "a=12일 때 0≤x<π 구간의 y=sin(12x)와 y=1/4의 교점이 주기마다 두 개씩 나타난다.",
+  "accessibilityDescription": "0부터 π 사이에 사인 함수가 여섯 번 진동하며 높이 1/4인 수평선과 열두 번 만나는 해설 그래프이다.",
+  "sourceConditions": [
+    {
+      "id": "s1",
+      "condition": "f(x+π)=f(x), a>0, 0≤x<π에서 y=1/4과 교점 x 합이 11π/2",
+      "mappedTo": [
+        "graphPlan.sourceDomain",
+        "graphPlan.referenceLines",
+        "graphPlan.coefficients"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "조건에서 도출한 a=12인 경우의 6주기와 12개 교점"
+  ]
+}

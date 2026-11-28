@@ -1,0 +1,289 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "25"
+            },
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "25"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "49",
+              "denominator": "625"
+            },
+            {
+              "kind": "rational",
+              "numerator": "168",
+              "denominator": "625"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "outer",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "inner",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "I"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "3",
+            "denominator": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "H",
+    "P",
+    "I"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "inner"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sPH",
+      "refs": [
+        "P",
+        "H"
+      ]
+    },
+    {
+      "id": "sOI",
+      "refs": [
+        "O",
+        "I"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sIP",
+      "refs": [
+        "I",
+        "P"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "theta",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "label": "θ",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "outer",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 550,
+    "height": 460
+  },
+  "caption": "내접원의 중심 I에서 OA의 접점 P까지 내린 수직 반지름과 중심 O에서 I까지의 선분으로 반각 관계를 보인다.",
+  "accessibilityDescription": "내접원의 중심 I에서 OA의 접점 P까지 내린 수직 반지름과 중심 O에서 I까지의 선분으로 반각 관계를 보인다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "OA=OB=1, ∠AOB=θ, cosθ=7/25, 원 C는 OA·OB와 호 AB에 접함, H는 A에서 OB의 수선 발, P는 OA의 접점",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "내접원 중심 I, 반지름 IP, 중심 간 거리 OI"
+  ],
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "A",
+        "H",
+        "O"
+      ]
+    },
+    {
+      "id": "rP",
+      "refs": [
+        "O",
+        "P",
+        "I"
+      ]
+    }
+  ]
+}
