@@ -1,0 +1,280 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "outer",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "inner",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "M"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "outer",
+    "inner"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "ring",
+        "fill": "MEDIUM",
+        "shapes": [
+          {
+            "loop": {
+              "start": "A",
+              "steps": [
+                {
+                  "to": "A",
+                  "arc": {
+                    "center": "O",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "holes": [
+          {
+            "loop": {
+              "start": "M",
+              "steps": [
+                {
+                  "to": "M",
+                  "arc": {
+                    "center": "O",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "angles": [],
+    "expressionLabels": [
+      {
+        "id": "givenChordAB",
+        "ownerSegment": "AB",
+        "text": "16",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rSymbol",
+        "ownerSegment": "sOM",
+        "text": "r",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "RSymbol",
+        "ownerSegment": "sOA",
+        "text": "R",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "M"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 520
+  },
+  "caption": "25_연향중_2학기_기말_중3_유사 1번 해설의 보조 관계와 독립 계산으로 얻은 결론",
+  "accessibilityDescription": "25_연향중_2학기_기말_중3_유사 1번 풀이의 기하 보조 관계을 점, 선분, 원, 각도 표식으로 설명하는 그림",
+  "newVisualInformation": [
+    "해설의 보조선, 관계 또는 정답 도출 과정을 그리기 필드에 대응"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q01_solution_s0",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q01_solution_s1",
+      "condition": "실제 그리는 선분 O–M",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q01_solution_s2",
+      "condition": "실제 그리는 선분 O–A",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q01_solution_l0",
+      "condition": "선분 AB의 표기 16",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q01_solution_l1",
+      "condition": "선분 sOM의 표기 r",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q01_solution_l2",
+      "condition": "선분 sOA의 표기 R",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q01_solution_c0",
+      "condition": "원 outer의 실제 원 테두리",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "q01_solution_c1",
+      "condition": "원 inner의 실제 원 테두리",
+      "mappedTo": "displayCircles[1]"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "solutionRight",
+      "refs": [
+        "O",
+        "M",
+        "A"
+      ]
+    }
+  ],
+  "sourceQuote": "작은 원이 직선 $AB$와 만나는 접점을 $M$이라 하자. 원의 중심에서 접점에 그은 반지름은 접선과 수직이므로 $\\overline{OM} \\perp \\overline{AB}$이다. 큰 원에서 중심 $O$에서 현 $AB$에 내린 수선은 현을 이등분하므로 $M$은 $\\overline{AB}$의 중점이다. $$ \\begin{aligned} \\overline{AM} = \\overline{BM} = \\dfrac{\\overline{AB}}{2} = \\dfrac{16}{2} = 8,\\mathrm{cm} \\end{aligned} $$ 작은 원의 반지름의 길이를 $r$, 큰 원의 반지름의 길이를 $R$이라 하면 직각삼각형 $OMA$에서 피타고라스 정리에 의하여 $$ \\begin{aligned} R^2 &= r^2 + 8^2 \\ R^2 - r^2 &= 64 \\end{aligned} $$ 색칠한 부분의 넓이는 큰 원의 넓이에서 작은 원의 넓이를 뺀 값이므로 $$ \\begin{aligned} \\pi R^2 - \\pi r^2 &= \\pi(R^2 - r^2) \\ &= 64\\pi,\\mathrm{cm}^2 \\end{aligned} $$ 따라서 정답은 ①이다."
+}

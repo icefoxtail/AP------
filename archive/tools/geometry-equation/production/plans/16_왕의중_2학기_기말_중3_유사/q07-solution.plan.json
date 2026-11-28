@@ -1,0 +1,316 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "D",
+    "A"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sBA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "B",
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aABD",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "value": 15,
+        "label": "15",
+        "color": "BLUE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aDBC",
+        "refs": [
+          "D",
+          "B",
+          "C"
+        ],
+        "value": 30,
+        "label": "30",
+        "color": "WARM",
+        "factRole": "GIVEN"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sDA"
+        ],
+        "color": "ROSE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lDC",
+        "ownerSegment": "sCD",
+        "text": "5",
+        "unit": "m",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "derived_AD",
+        "ownerSegment": "sDA",
+        "text": "5(sqrt(3)-1)",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 420
+  },
+  "caption": "16_왕의중_2학기_기말_중3_유사 7번 해설의 보조 관계와 독립 계산으로 얻은 결론",
+  "accessibilityDescription": "16_왕의중_2학기_기말_중3_유사 7번 풀이의 기하 보조 관계을 점, 선분, 원, 각도 표식으로 설명하는 그림",
+  "newVisualInformation": [
+    "해설의 보조선, 관계 또는 정답 도출 과정을 그리기 필드에 대응"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q07_solution_s0",
+      "condition": "실제 그리는 선분 B–C",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q07_solution_s1",
+      "condition": "실제 그리는 선분 C–D",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q07_solution_s2",
+      "condition": "실제 그리는 선분 D–A",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q07_solution_s3",
+      "condition": "실제 그리는 선분 B–D",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q07_solution_s4",
+      "condition": "실제 그리는 선분 B–A",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q07_solution_l0",
+      "condition": "선분 sCD의 표기 5",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q07_solution_l1",
+      "condition": "선분 sDA의 표기 5(sqrt(3)-1)",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q07_solution_a0",
+      "condition": "각 A–B–D의 15 표식",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q07_solution_a1",
+      "condition": "각 D–B–C의 30 표식",
+      "mappedTo": "planeMarks.angles[1]"
+    }
+  ],
+  "sourceQuote": "직각삼각형 $BCD$에서 $\\angle DBC = 30^\\circ$, $\\overline{DC} = 5\\text{ m}$이므로 $$\\overline{BC} = \\dfrac{\\overline{DC}}{\\tan 30^\\circ} = \\dfrac{5}{\\frac{\\sqrt{3}}{3}} = 5\\sqrt{3}\\text{ (m)}$$ $\\angle ABC = \\angle ABD + \\angle DBC = 15^\\circ + 30^\\circ = 45^\\circ$이므로 직각삼각형 $ABC$는 직각이등변삼각형이다. 따라서 $\\overline{AC} = \\overline{BC} = 5\\sqrt{3}\\text{ m}$이므로 $$\\overline{AD} = \\overline{AC} - \\overline{DC} = 5\\sqrt{3} - 5 = 5(\\sqrt{3} - 1)\\text{ (m)}$$ 따라서 정답은 ⑤이다."
+}

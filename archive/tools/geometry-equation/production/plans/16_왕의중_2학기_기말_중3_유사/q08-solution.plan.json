@@ -1,0 +1,259 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "add",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "3"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "add",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "9"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "3"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 75,
+        "label": "75",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 45,
+        "label": "45",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "6"
+      },
+      {
+        "id": "derived_AC",
+        "ownerSegment": "sCA",
+        "text": "3sqrt(6)",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "rightAngles": [],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 380
+  },
+  "caption": "16_왕의중_2학기_기말_중3_유사 8번 해설의 보조 관계와 독립 계산으로 얻은 결론",
+  "sourceConditions": [
+    {
+      "id": "q08_solution_s0",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q08_solution_s1",
+      "condition": "실제 그리는 선분 B–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q08_solution_s2",
+      "condition": "실제 그리는 선분 C–A",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q08_solution_l0",
+      "condition": "선분 sAB의 표기 6",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q08_solution_l1",
+      "condition": "선분 sCA의 표기 3sqrt(6)",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q08_solution_a0",
+      "condition": "각 B–A–C의 75 표식",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q08_solution_a1",
+      "condition": "각 A–C–B의 45 표식",
+      "mappedTo": "planeMarks.angles[1]"
+    }
+  ],
+  "accessibilityDescription": "16_왕의중_2학기_기말_중3_유사 8번 풀이의 기하 보조 관계을 점, 선분, 원, 각도 표식으로 설명하는 그림",
+  "newVisualInformation": [
+    "해설의 보조선, 관계 또는 정답 도출 과정을 그리기 필드에 대응"
+  ],
+  "sourceQuote": "$\\angle B = 180^\\circ - 75^\\circ - 45^\\circ = 60^\\circ$이다. 변 $BC$ 위에 $\\overline{BE} = \\overline{AB} = 6$이 되도록 점 $E$를 잡으면 $\\triangle ABE$는 한 변의 길이가 $6$인 정삼각형이고 $\\overline{AE} = 6$, $\\angle AEB = 60^\\circ$이다. 점 $A$에서 변 $BC$에 내린 수선의 발을 $F$라 하면 직각삼각형 $AEF$에서 $\\overline{EF} = 3$, $\\overline{AF} = 3\\sqrt{3}$이다. 직각삼각형 $AFC$에서 $\\angle C = 45^\\circ$이므로 $\\overline{FC} = \\overline{AF} = 3\\sqrt{3}$이고 피타고라스 정리에 의하여 $$\\overline{AC} = \\sqrt{(3\\sqrt{3})^2 + (3\\sqrt{3})^2} = \\sqrt{27 + 27} = \\sqrt{54} = 3\\sqrt{6}$$ 따라서 정답은 ②이다."
+}

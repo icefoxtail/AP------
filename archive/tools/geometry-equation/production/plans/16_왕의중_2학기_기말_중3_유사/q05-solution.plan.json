@@ -1,0 +1,374 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "quarter",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "right1",
+      "refs": [
+        "A",
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "quarterArc",
+        "circle": "quarter",
+        "center": "A",
+        "from": "D",
+        "to": "F",
+        "side": "MINOR",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "angle_CAB",
+        "refs": [
+          "C",
+          "A",
+          "B"
+        ],
+        "value": 53.130102354,
+        "label": "x",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angle_ACB",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 36.869897646,
+        "label": "y",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angle_AED",
+        "refs": [
+          "A",
+          "E",
+          "D"
+        ],
+        "value": 63.434948823,
+        "label": "z",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "l_sAC_1",
+        "ownerSegment": "sAC",
+        "text": "1",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l_sAD_1",
+        "ownerSegment": "sAD",
+        "text": "1",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "derived_BC",
+        "ownerSegment": "sBC",
+        "text": "sin(x)=cos(y)",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "derived_AB",
+        "ownerSegment": "sAB",
+        "text": "cos(x)",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "caption": "16_왕의중_2학기_기말_중3_유사 5번 해설의 보조 관계와 독립 계산으로 얻은 결론",
+  "sourceQuote": "반지름 $\\overline{AC} = \\overline{AD} = 1$인 사분원에서 직각삼각형 $ABC$를 보면 $$\\sin x^\\circ = \\dfrac{\\overline{BC}}{\\overline{AC}} = \\overline{BC}, \\quad \\cos y^\\circ = \\dfrac{\\overline{BC}}{\\overline{AC}} = \\overline{BC}, \\quad \\cos x^\\circ = \\dfrac{\\overline{AB}}{\\overline{AC}} = \\overline{AB}$$ 이므로 (ㄱ), (ㄴ), (ㄹ)은 옳다. 직각삼각형 $ADE$에서 $\\tan z^\\circ = \\dfrac{\\overline{AD}}{\\overline{DE}} = \\dfrac{1}{\\overline{DE}}$이므로 (ㄷ)은 옳지 않다. 따라서 옳은 것은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "q05_solution_s0",
+      "condition": "실제 그리는 선분 A–C",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q05_solution_s1",
+      "condition": "실제 그리는 선분 A–D",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q05_solution_s2",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q05_solution_s3",
+      "condition": "실제 그리는 선분 B–C",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q05_solution_s4",
+      "condition": "실제 그리는 선분 D–E",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q05_solution_s5",
+      "condition": "실제 그리는 선분 A–E",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "q05_solution_l0",
+      "condition": "선분 sAC의 표기 1",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q05_solution_l1",
+      "condition": "선분 sAD의 표기 1",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q05_solution_l2",
+      "condition": "선분 sBC의 표기 sin(x)=cos(y)",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q05_solution_l3",
+      "condition": "선분 sAB의 표기 cos(x)",
+      "mappedTo": "planeMarks.expressionLabels[3]"
+    },
+    {
+      "id": "q05_solution_a0",
+      "condition": "각 C–A–B의 x 표식",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q05_solution_a1",
+      "condition": "각 A–C–B의 y 표식",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "q05_solution_a2",
+      "condition": "각 A–E–D의 z 표식",
+      "mappedTo": "planeMarks.angles[2]"
+    },
+    {
+      "id": "q05_solution_arc0",
+      "condition": "호 D–F의 그림 표식",
+      "mappedTo": "planeMarks.arcs[0]"
+    }
+  ],
+  "accessibilityDescription": "16_왕의중_2학기_기말_중3_유사 5번 풀이의 기하 보조 관계을 점, 선분, 원, 각도 표식으로 설명하는 그림",
+  "newVisualInformation": [
+    "해설의 보조선, 관계 또는 정답 도출 과정을 그리기 필드에 대응"
+  ],
+  "hiddenPointNames": [
+    "F"
+  ],
+  "hiddenPointStyle": "NONE"
+}

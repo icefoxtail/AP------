@@ -1,0 +1,320 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "70"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "290"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Ta",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "O"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Tb",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "O"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "la",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "Ta"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lb",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "Tb"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "la",
+          "lb"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "P",
+    "X"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "minorAB",
+        "circle": "circ",
+        "center": "O",
+        "from": "B",
+        "to": "A",
+        "side": "MINOR",
+        "label": "140",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "angles": [
+      {
+        "id": "angle_APB",
+        "refs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "value": 40,
+        "label": "40",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": []
+  },
+  "caption": "25_연향중_2학기_기말_중3_유사 11번 해설의 보조 관계와 독립 계산으로 얻은 결론",
+  "sourceQuote": "원 밖의 점 $P$에서 그은 두 접선 $PA, PB$가 이루는 각이 $40^\\circ$이므로 작은 호 $AB$에 대한 중심각은 $$ \\begin{aligned} 180^\\circ - 40^\\circ = 140^\\circ \\end{aligned} $$ 따라서 작은 호 $AB$의 크기는 $140^\\circ$이다. 접선과 현이 이루는 각의 성질에 의하여 $$ \\begin{aligned} \\angle PAC = \\dfrac{1}{2}\\wideparen{AC}, \\quad \\angle PBC = \\dfrac{1}{2}\\wideparen{BC} \\end{aligned} $$ 점 $C$가 작은 호 $AB$ 위에 있으므로 두 호의 합은 호 $AB$의 크기와 같다. $$ \\begin{aligned} \\wideparen{AC} + \\wideparen{BC} = \\wideparen{AB} = 140^\\circ \\end{aligned} $$ 따라서 두 접현각의 합은 $$ \\begin{aligned} \\angle PAC + \\angle PBC &= \\dfrac{\\wideparen{AC} + \\wideparen{BC}}{2} \\ &= \\dfrac{140^\\circ}{2} \\ &= 70^\\circ \\end{aligned} $$ 따라서 정답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "q11_solution_s0",
+      "condition": "실제 그리는 선분 P–A",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q11_solution_s1",
+      "condition": "실제 그리는 선분 P–B",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q11_solution_s2",
+      "condition": "실제 그리는 선분 A–C",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q11_solution_s3",
+      "condition": "실제 그리는 선분 B–C",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q11_solution_a0",
+      "condition": "각 A–P–B의 40 표식",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q11_solution_c0",
+      "condition": "원 circ의 실제 원 테두리",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "q11_solution_arc0",
+      "condition": "호 B–A의 그림 표식",
+      "mappedTo": "planeMarks.arcs[0]"
+    }
+  ],
+  "accessibilityDescription": "25_연향중_2학기_기말_중3_유사 11번 풀이의 기하 보조 관계을 점, 선분, 원, 각도 표식으로 설명하는 그림",
+  "newVisualInformation": [
+    "해설의 보조선, 관계 또는 정답 도출 과정을 그리기 필드에 대응"
+  ],
+  "hiddenPointNames": [
+    "X"
+  ],
+  "hiddenPointStyle": "NONE"
+}

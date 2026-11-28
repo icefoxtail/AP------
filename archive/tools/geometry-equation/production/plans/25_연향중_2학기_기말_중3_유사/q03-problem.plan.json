@@ -1,0 +1,312 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "150"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "OD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 120,
+        "label": "120",
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "AB",
+          "AC"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lOA",
+        "ownerSegment": "OA",
+        "text": "8",
+        "unit": "cm"
+      },
+      {
+        "id": "lAB",
+        "ownerSegment": "AB",
+        "text": "8",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rE",
+      "refs": [
+        "O",
+        "E",
+        "A"
+      ]
+    }
+  ],
+  "caption": "25_연향중_2학기_기말_중3_유사 3번 문제의 주어진 원, 길이, 각과 선분 관계",
+  "accessibilityDescription": "25_연향중_2학기_기말_중3_유사 3번 문제의 주어진 조건을 점, 선분, 원, 각도 표식으로 설명하는 그림",
+  "newVisualInformation": [
+    "주어진 관계와 구해야 할 요소를 엔진 도형의 그리기 필드에 대응"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q03_problem_s0",
+      "condition": "실제 그리는 선분 O–A",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q03_problem_s1",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q03_problem_s2",
+      "condition": "실제 그리는 선분 A–C",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q03_problem_s3",
+      "condition": "실제 그리는 선분 B–C",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q03_problem_s4",
+      "condition": "실제 그리는 선분 O–D",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q03_problem_l0",
+      "condition": "선분 OA의 표기 8",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q03_problem_l1",
+      "condition": "선분 AB의 표기 8",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q03_problem_a0",
+      "condition": "각 B–A–C의 120 표식",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q03_problem_c0",
+      "condition": "원 circ의 실제 원 테두리",
+      "mappedTo": "displayCircles[0]"
+    }
+  ],
+  "sourceQuote": "다음 그림에서 $\\triangle ABC$는 $\\overline{AB} = \\overline{AC}$인 이등변삼각형이고 원 $O$에 내접한다. $\\angle BAC = 120^\\circ$, $\\overline{OA} = \\overline{AB} = 8$이고 $\\overline{OD} \\perp \\overline{AB}$일 때, $\\overline{OE}$의 길이는? (단, $E$는 $\\overline{OD}$와 $\\overline{AB}$의 교점이다.) [5점]"
+}

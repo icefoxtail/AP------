@@ -1,0 +1,322 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "X"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "X",
+    "A",
+    "B",
+    "M"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcBig",
+        "circle": "k",
+        "center": "O",
+        "from": "B",
+        "to": "A",
+        "side": "MAJOR"
+      },
+      {
+        "id": "arcFold",
+        "circle": "k2",
+        "center": "X",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR",
+        "color": "BLUE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lOA",
+        "ownerSegment": "sOA",
+        "text": "10",
+        "unit": "cm"
+      },
+      {
+        "id": "derived_AB",
+        "ownerSegment": "sAB",
+        "text": "10sqrt(3)",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "derived_OM",
+        "ownerSegment": "sOM",
+        "text": "5",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "angles": []
+  },
+  "hiddenPointNames": [
+    "X"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 560
+  },
+  "caption": "16_왕의중_2학기_기말_중3_유사 23번 해설의 보조 관계와 독립 계산으로 얻은 결론",
+  "accessibilityDescription": "16_왕의중_2학기_기말_중3_유사 23번 풀이의 기하 보조 관계을 점, 선분, 원, 각도 표식으로 설명하는 그림",
+  "newVisualInformation": [
+    "해설의 보조선, 관계 또는 정답 도출 과정을 그리기 필드에 대응"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q23_solution_s0",
+      "condition": "실제 그리는 선분 O–A",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q23_solution_s1",
+      "condition": "실제 그리는 선분 O–B",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q23_solution_s2",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q23_solution_s3",
+      "condition": "실제 그리는 선분 O–M",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q23_solution_l0",
+      "condition": "선분 sOA의 표기 10",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q23_solution_l1",
+      "condition": "선분 sAB의 표기 10sqrt(3)",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q23_solution_l2",
+      "condition": "선분 sOM의 표기 5",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q23_solution_arc0",
+      "condition": "호 B–A의 그림 표식",
+      "mappedTo": "planeMarks.arcs[0]"
+    },
+    {
+      "id": "q23_solution_arc1",
+      "condition": "호 A–B의 그림 표식",
+      "mappedTo": "planeMarks.arcs[1]"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "solutionRight",
+      "refs": [
+        "O",
+        "M",
+        "A"
+      ]
+    }
+  ],
+  "sourceQuote": "접기 전 원 위의 점 중 접은 뒤 중심 $O$와 겹치는 점을 $X$라 하면 접는 선 $\\overline{AB}$는 $\\overline{XO}$의 수직이등분선이다. $\\overline{AB}$와 $\\overline{XO}$의 교점을 $M$이라 하면 $\\overline{XO} = 10\\text{ cm}$이므로 $\\overline{OM} = 5\\text{ cm}$이고 $\\overline{OM} \\perp \\overline{AB}$이다. 직각삼각형 $OMA$에서 $\\overline{OA} = 10\\text{ cm}$이므로 피타고라스 정리에 의하여 $$\\overline{AM} = \\sqrt{10^2 - 5^2} = \\sqrt{100 - 25} = \\sqrt{75} = 5\\sqrt{3}\\text{ (cm)}$$ 따라서 $\\overline{AB} = 2\\overline{AM} = 10\\sqrt{3}\\text{ cm}$이므로 $\\triangle AOB$의 넓이는 $$\\triangle AOB = \\dfrac{1}{2} \\times 10\\sqrt{3} \\times 5 = 25\\sqrt{3}\\text{ (cm}^2\\text{)}$$"
+}

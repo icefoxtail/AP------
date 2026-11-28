@@ -1,0 +1,247 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "16_왕의중_2학기_기말_중3_유사 3번 해설의 보조 관계와 독립 계산으로 얻은 결론",
+  "accessibilityDescription": "16_왕의중_2학기_기말_중3_유사 3번 풀이의 기하 보조 관계을 점, 선분, 원, 각도 표식으로 설명하는 그림",
+  "sourceConditions": [
+    {
+      "id": "q03_solution_s0",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q03_solution_s1",
+      "condition": "실제 그리는 선분 A–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q03_solution_s2",
+      "condition": "실제 그리는 선분 B–C",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q03_solution_s3",
+      "condition": "실제 그리는 선분 C–D",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q03_solution_l0",
+      "condition": "선분 sBC의 표기 4",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q03_solution_a0",
+      "condition": "각 D–A–C의 x 표식",
+      "mappedTo": "planeMarks.angles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "해설의 보조선, 관계 또는 정답 도출 과정을 그리기 필드에 대응"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "ax",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "value": 30,
+        "label": "x",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAD",
+        "from": "A",
+        "to": "D",
+        "label": "6",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dDB",
+        "from": "D",
+        "to": "B",
+        "label": "2",
+        "side": "BELOW",
+        "style": "ARROW",
+        "offset": 2,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "derived_BC",
+        "ownerSegment": "sBC",
+        "text": "4",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 360
+  },
+  "sourceQuote": "$\\overline{AB} = \\overline{AD} + \\overline{DB} = 6 + 2 = 8$이다. $\\triangle BCD \\sim \\triangle BAC$ (AA 닮음)이므로 $$\\dfrac{\\overline{BC}}{\\overline{BA}} = \\dfrac{\\overline{BD}}{\\overline{BC}} \\implies \\overline{BC}^2 = \\overline{BD} \\times \\overline{BA} = 2 \\times 8 = 16$$ $\\overline{BC} > 0$이므로 $\\overline{BC} = 4$이다. 따라서 $\\sin x^\\circ = \\dfrac{\\overline{BC}}{\\overline{AB}} = \\dfrac{4}{8} = \\dfrac{1}{2}$이다. 정답은 ⑤이다."
+}

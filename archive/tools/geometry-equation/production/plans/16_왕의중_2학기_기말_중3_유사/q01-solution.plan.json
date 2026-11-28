@@ -1,0 +1,173 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "sqrt(5)"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "1"
+      },
+      {
+        "id": "derived_AC",
+        "ownerSegment": "sCA",
+        "text": "2",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "angles": []
+  },
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "caption": "16_왕의중_2학기_기말_중3_유사 1번 해설의 보조 관계와 독립 계산으로 얻은 결론",
+  "accessibilityDescription": "16_왕의중_2학기_기말_중3_유사 1번 풀이의 기하 보조 관계을 점, 선분, 원, 각도 표식으로 설명하는 그림",
+  "sourceConditions": [
+    {
+      "id": "q01_solution_s0",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q01_solution_s1",
+      "condition": "실제 그리는 선분 B–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q01_solution_s2",
+      "condition": "실제 그리는 선분 C–A",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q01_solution_l0",
+      "condition": "선분 sAB의 표기 sqrt(5)",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q01_solution_l1",
+      "condition": "선분 sBC의 표기 1",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q01_solution_l2",
+      "condition": "선분 sCA의 표기 2",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    }
+  ],
+  "newVisualInformation": [
+    "해설의 보조선, 관계 또는 정답 도출 과정을 그리기 필드에 대응"
+  ],
+  "sourceQuote": "직각삼각형 $ABC$에서 $\\angle C = 90^\\circ$, $\\overline{AB} = \\sqrt{5}$, $\\overline{BC} = 1$이므로 피타고라스 정리에 의하여 $$\\overline{AC} = \\sqrt{(\\sqrt{5})^2 - 1^2} = \\sqrt{5 - 1} = 2$$ 각 선지의 삼각비를 구하면 ① $\\tan B = \\dfrac{\\overline{AC}}{\\overline{BC}} = \\dfrac{2}{1} = 2$ (옳다) ② $\\sin A = \\dfrac{\\overline{BC}}{\\overline{AB}} = \\dfrac{1}{\\sqrt{5}} = \\dfrac{\\sqrt{5}}{5}$ ③ $\\sin B = \\dfrac{\\overline{AC}}{\\overline{AB}} = \\dfrac{2}{\\sqrt{5}} = \\dfrac{2\\sqrt{5}}{5}$ ④ $\\cos A = \\dfrac{\\overline{AC}}{\\overline{AB}} = \\dfrac{2\\sqrt{5}}{5}$ ⑤ $\\tan A = \\dfrac{\\overline{BC}}{\\overline{AC}} = \\dfrac{1}{2}$ 따라서 옳은 것은 ①이다."
+}
