@@ -1,0 +1,45 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "그래프가 접할 때 교점의 $x$좌표는 하나이므로 판별식이 $0$이다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [0, 7, -5, 17],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": ["7", "-6", "1"],
+        "domain": ["0", "7"],
+        "color": "BLUE",
+        "label": "y=x^2-6x+7"
+      },
+      {
+        "id": "t",
+        "kind": "LINE",
+        "coefficients": ["-9", "2"],
+        "domain": ["0", "7"],
+        "color": "WARM",
+        "label": "y=2x-9"
+      }
+    ],
+    "axisTickValues": {"x": ["3", "4"], "y": ["-2", "-1"]},
+    "overlays": {
+      "points": [
+        {"id": "T", "x": "4", "y": "-1", "coordinates": true},
+        {"id": "V", "x": "3", "y": "-2", "coordinates": true}
+      ]
+    }
+  },
+  "caption": "포물선 y=x²−6x+7과 직선 y=2x−9가 T(4,−1)에서 접하고, 포물선의 꼭짓점은 V(3,−2)이다.",
+  "accessibilityDescription": "파란 포물선의 꼭짓점 V와 주황색 직선이 만나는 유일한 접점 T를 표시한 좌표평면이다.",
+  "sourceConditions": [
+    {"id": "q09-s1", "condition": "주어진 이차함수 y=x²−6x+7", "mappedTo": ["graphPlan.curves.0.coefficients"]},
+    {"id": "q09-s2", "condition": "기울기 2인 직선의 접선 조건으로 k=−9", "mappedTo": ["graphPlan.curves.1.coefficients"]},
+    {"id": "q09-s3", "condition": "접점 x=4, y=−1은 판별식 0의 중근", "mappedTo": ["graphPlan.overlays.points.0"]},
+    {"id": "q09-s4", "condition": "포물선의 꼭짓점 (3,−2)", "mappedTo": ["graphPlan.overlays.points.1"]}
+  ],
+  "newVisualInformation": [
+    "접선이 포물선을 두 점에서 가로지르지 않고 정확히 T(4,−1) 한 점에서 만나는 모습을 같은 축에 표시한다.",
+    "최솟점 V(3,−2)와 접점 T가 서로 다른 위치임을 두 표시 점으로 보인다."
+  ]
+}
