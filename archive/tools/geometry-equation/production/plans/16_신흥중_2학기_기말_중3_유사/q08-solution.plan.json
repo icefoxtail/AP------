@@ -1,0 +1,294 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "16_신흥중_2학기_기말_중3_유사 8번: 풀이에서 구한 핵심 관계",
+  "accessibilityDescription": "16_신흥중_2학기_기말_중3_유사 8번 해설: 점과 선분·원·각의 관계를 보여 주는 기하 도형",
+  "sourceConditions": [
+    {
+      "id": "q08_solution_seg0",
+      "condition": "그림에 표시하는 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q08_solution_seg1",
+      "condition": "그림에 표시하는 선분 B–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q08_solution_seg2",
+      "condition": "그림에 표시하는 선분 A–D",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q08_solution_seg3",
+      "condition": "그림에 표시하는 선분 D–C",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q08_solution_seg4",
+      "condition": "그림에 표시하는 선분 B–D",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q08_solution_length0",
+      "condition": "선분 sDC 옆의 주어진 표기 '8'",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q08_solution_length1",
+      "condition": "선분 sBC 옆의 풀이로 도출한 표기 '4+4√3'",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q08_solution_angle0",
+      "condition": "각 B–A–D의 표시값 60",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q08_solution_angle1",
+      "condition": "각 D–B–C의 표시값 45",
+      "mappedTo": "planeMarks.angles[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "해설이 구한 길이·각도 또는 보조선을 실제 그리기 필드에 추가"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "4"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "div",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "4"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aDBC",
+        "refs": [
+          "D",
+          "B",
+          "C"
+        ],
+        "value": 45,
+        "label": "45",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lDC",
+        "ownerSegment": "sDC",
+        "text": "8",
+        "unit": "cm"
+      },
+      {
+        "id": "derived_sBC",
+        "ownerSegment": "sBC",
+        "text": "4+4√3",
+        "ownership": "NEAREST",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 440,
+    "height": 380
+  },
+  "sourceQuote": "$\\triangle ABC$에서 $\\angle ABC = 90^\\circ$, $\\angle BAC = 60^\\circ$이므로 $\\angle C = 30^\\circ$이다. 점 $D$에서 변 $BC$에 내린 수선의 발을 $F$라 하자. 직각삼각형 $DFC$에서 $\\overline{DC} = 8\\text{ cm}$, $\\angle C = 30^\\circ$이므로 $$\\overline{DF} = 8\\sin 30^\\circ = 8 \\times \\dfrac{1}{2} = 4\\text{ (cm)}$$ $$\\overline{FC} = 8\\cos 30^\\circ = 8 \\times \\dfrac{\\sqrt{3}}{2} = 4\\sqrt{3}\\text{ (cm)}$$ 직각삼각형 $BDF$에서 $\\angle DBF = 45^\\circ$이므로 $\\triangle BDF$는 직각이등변삼각형이고 $\\overline{BF} = \\overline{DF} = 4\\text{ cm}$이다. 따라서 $$\\overline{BC} = \\overline{BF} + \\overline{FC} = 4 + 4\\sqrt{3}\\text{ (cm)}$$ 따라서 정답은 ⑤이다."
+}

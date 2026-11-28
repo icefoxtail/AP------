@@ -1,0 +1,335 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sub",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "6"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "2"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "add",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "6"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "2"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "A",
+          "lBC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCH",
+      "refs": [
+        "C",
+        "H"
+      ]
+    },
+    {
+      "id": "sHB",
+      "refs": [
+        "H",
+        "B"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 75,
+        "label": "75",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 45,
+        "label": "45",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "12",
+        "unit": "m"
+      },
+      {
+        "id": "derived_sAB",
+        "ownerSegment": "sAB",
+        "text": "6√6",
+        "ownership": "NEAREST",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "derived_sAH",
+        "ownerSegment": "sAH",
+        "text": "6√3",
+        "ownership": "NEAREST",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 420
+  },
+  "caption": "16_신흥중_2학기_기말_중3_유사 21번: 풀이에서 구한 핵심 관계",
+  "accessibilityDescription": "16_신흥중_2학기_기말_중3_유사 21번 해설: 점과 선분·원·각의 관계를 보여 주는 기하 도형",
+  "newVisualInformation": [
+    "해설이 구한 길이·각도 또는 보조선을 실제 그리기 필드에 추가"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q21_solution_seg0",
+      "condition": "그림에 표시하는 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q21_solution_seg1",
+      "condition": "그림에 표시하는 선분 A–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q21_solution_seg2",
+      "condition": "그림에 표시하는 선분 C–H",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q21_solution_seg3",
+      "condition": "그림에 표시하는 선분 H–B",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q21_solution_seg4",
+      "condition": "그림에 표시하는 선분 A–H",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q21_solution_length0",
+      "condition": "선분 sAC 옆의 주어진 표기 '12'",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q21_solution_length1",
+      "condition": "선분 sAB 옆의 풀이로 도출한 표기 '6√6'",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q21_solution_length2",
+      "condition": "선분 sAH 옆의 풀이로 도출한 표기 '6√3'",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q21_solution_angle0",
+      "condition": "각 B–A–C의 표시값 75",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q21_solution_angle1",
+      "condition": "각 A–B–C의 표시값 45",
+      "mappedTo": "planeMarks.angles[1]"
+    }
+  ],
+  "sourceQuote": "(1) 삼각형 $ABC$의 세 내각의 합은 $180^\\circ$이므로 $$\\angle ACB = 180^\\circ - 75^\\circ - 45^\\circ = 60^\\circ$$ $\\overline{AH} \\perp \\overline{BC}$이므로 직각삼각형 $ACH$에서 $$\\angle CAH = 90^\\circ - 60^\\circ = 30^\\circ$$ (2) 직각삼각형 $ACH$에서 $\\overline{AC} = 12\\text{ m}$, $\\angle ACB = 60^\\circ$이므로 $$\\overline{AH} = \\overline{AC}\\sin 60^\\circ = 12 \\times \\dfrac{\\sqrt{3}}{2} = 6\\sqrt{3}\\text{ (m)}$$ (3) 직각삼각형 $ABH$에서 $\\angle ABH = 45^\\circ$이므로 $$\\overline{AB} = \\dfrac{\\overline{AH}}{\\sin 45^\\circ} = \\dfrac{6\\sqrt{3}}{\\frac{\\sqrt{2}}{2}} = \\dfrac{12\\sqrt{3}}{\\sqrt{2}} = 6\\sqrt{6}\\text{ (m)}$$"
+}

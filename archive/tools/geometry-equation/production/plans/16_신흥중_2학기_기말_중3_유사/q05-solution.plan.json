@@ -1,0 +1,330 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "4"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aD",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "value": 120,
+        "label": "120",
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sBC"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "id": "e2",
+        "count": 2,
+        "segments": [
+          "sDA",
+          "sCD"
+        ],
+        "color": "WARM"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "12",
+        "unit": "cm"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "12",
+        "unit": "cm"
+      },
+      {
+        "id": "lDA",
+        "ownerSegment": "sDA",
+        "text": "4sqrt(3)",
+        "unit": "cm"
+      },
+      {
+        "id": "lCD",
+        "ownerSegment": "sCD",
+        "text": "4sqrt(3)",
+        "unit": "cm"
+      },
+      {
+        "id": "partition",
+        "ownerSegment": "sAC",
+        "text": "AC=12",
+        "ownership": "NEAREST",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "rightAngles": [],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 420
+  },
+  "caption": "16_신흥중_2학기_기말_중3_유사 5번: 풀이에서 구한 핵심 관계",
+  "sourceConditions": [
+    {
+      "id": "q05_solution_seg0",
+      "condition": "그림에 표시하는 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q05_solution_seg1",
+      "condition": "그림에 표시하는 선분 B–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q05_solution_seg2",
+      "condition": "그림에 표시하는 선분 C–D",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q05_solution_seg3",
+      "condition": "그림에 표시하는 선분 D–A",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q05_solution_seg4",
+      "condition": "그림에 표시하는 선분 A–C",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q05_solution_length0",
+      "condition": "선분 sAB 옆의 주어진 표기 '12'",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q05_solution_length1",
+      "condition": "선분 sBC 옆의 주어진 표기 '12'",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q05_solution_length2",
+      "condition": "선분 sDA 옆의 주어진 표기 '4sqrt(3)'",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q05_solution_length3",
+      "condition": "선분 sCD 옆의 주어진 표기 '4sqrt(3)'",
+      "mappedTo": "planeMarks.expressionLabels[3]"
+    },
+    {
+      "id": "q05_solution_length4",
+      "condition": "선분 sAC 옆의 풀이로 도출한 표기 'AC=12'",
+      "mappedTo": "planeMarks.expressionLabels[4]"
+    },
+    {
+      "id": "q05_solution_angle0",
+      "condition": "각 A–B–C의 표시값 60",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q05_solution_angle1",
+      "condition": "각 A–D–C의 표시값 120",
+      "mappedTo": "planeMarks.angles[1]"
+    }
+  ],
+  "accessibilityDescription": "16_신흥중_2학기_기말_중3_유사 5번 해설: 점과 선분·원·각의 관계를 보여 주는 기하 도형",
+  "newVisualInformation": [
+    "해설이 구한 길이·각도 또는 보조선을 실제 그리기 필드에 추가"
+  ],
+  "sourceQuote": "대각선 $AC$를 그어 사각형을 두 삼각형 $\\triangle ABC$와 $\\triangle ADC$로 나눈다. $\\overline{AB} = \\overline{BC} = 12$이고 $\\angle ABC = 60^\\circ$이므로 $\\triangle ABC$는 한 변의 길이가 $12\\text{ cm}$인 정삼각형이고 $\\overline{AC} = 12\\text{ cm}$이다. $$\\triangle ABC = \\dfrac{1}{2} \\times 12 \\times 12 \\times \\sin 60^\\circ = 72 \\times \\dfrac{\\sqrt{3}}{2} = 36\\sqrt{3}\\text{ (cm}^2\\text{)}$$ $\\triangle ADC$에서 $\\overline{AD} = \\overline{DC} = 4\\sqrt{3}$, $\\angle ADC = 120^\\circ$이므로 $$\\triangle ADC = \\dfrac{1}{2} \\times 4\\sqrt{3} \\times 4\\sqrt{3} \\times \\sin(180^\\circ - 120^\\circ) = 24 \\times \\dfrac{\\sqrt{3}}{2} = 12\\sqrt{3}\\text{ (cm}^2\\text{)}$$ 따라서 $\\square ABCD$의 넓이는 $$36\\sqrt{3} + 12\\sqrt{3} = 48\\sqrt{3}\\text{ (cm}^2\\text{)}$$ 따라서 정답은 ③이다."
+}

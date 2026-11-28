@@ -1,0 +1,362 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "quarter",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "D",
+    "A",
+    "C",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sBA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "A",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "right1",
+      "refs": [
+        "B",
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "quadrant",
+        "circle": "quarter",
+        "center": "B",
+        "from": "D",
+        "to": "F",
+        "side": "MINOR",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "angleX",
+        "refs": [
+          "C",
+          "B",
+          "A"
+        ],
+        "value": 45,
+        "label": "x",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "unitBA",
+        "ownerSegment": "sBA",
+        "text": "1",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "unitBD",
+        "ownerSegment": "sBD",
+        "text": "1",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "반지름 1인 사분원과 삼각비의 기준 선분 AC, BC, DE",
+  "sourceQuote": "다음 그림과 같이 반지름의 길이가 $1$인 사분원에서 $\\angle x$ ($0^\\circ < x < 90^\\circ$)의 삼각비에 대한 설명 중 옳지 않은 것은? (단, 중심은 $B$, $\\overline{BA} = \\overline{BD} = 1$, $\\overline{AC} \\perp \\overline{BD}$, $\\overline{ED} \\perp \\overline{BD}$이다.)",
+  "sourceConditions": [
+    {
+      "id": "q03_problem_seg0",
+      "condition": "그림에 표시하는 선분 B–A",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q03_problem_seg1",
+      "condition": "그림에 표시하는 선분 B–D",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q03_problem_seg2",
+      "condition": "그림에 표시하는 선분 B–C",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q03_problem_seg3",
+      "condition": "그림에 표시하는 선분 A–C",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q03_problem_seg4",
+      "condition": "그림에 표시하는 선분 D–E",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q03_problem_seg5",
+      "condition": "그림에 표시하는 선분 B–E",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "q03_problem_length0",
+      "condition": "선분 sBA 옆의 주어진 표기 '1'",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q03_problem_length1",
+      "condition": "선분 sBD 옆의 주어진 표기 '1'",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q03_problem_angle0",
+      "condition": "각 C–B–A의 표시값 x",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q03_problem_arc0",
+      "condition": "중심 B인 반지름 1의 사분원 호 D–F",
+      "mappedTo": "planeMarks.arcs[0]"
+    }
+  ],
+  "accessibilityDescription": "15_왕의중_2학기_기말_중3_유사 3번 문제: 점과 선분·원·각의 관계를 보여 주는 기하 도형",
+  "newVisualInformation": [
+    "원문의 알려진 길이와 각도만 실제 그리기 필드로 표시"
+  ]
+}

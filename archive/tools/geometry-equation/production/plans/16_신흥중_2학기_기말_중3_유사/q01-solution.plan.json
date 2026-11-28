@@ -1,0 +1,183 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "5"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "12"
+      },
+      {
+        "id": "lCA",
+        "ownerSegment": "sCA",
+        "text": "13"
+      },
+      {
+        "id": "derived_sBC",
+        "ownerSegment": "sBC",
+        "text": "12=13sin(A)",
+        "ownership": "NEAREST",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 420
+  },
+  "caption": "16_신흥중_2학기_기말_중3_유사 1번: 풀이에서 구한 핵심 관계",
+  "accessibilityDescription": "16_신흥중_2학기_기말_중3_유사 1번 해설: 점과 선분·원·각의 관계를 보여 주는 기하 도형",
+  "sourceConditions": [
+    {
+      "id": "q01_solution_seg0",
+      "condition": "그림에 표시하는 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q01_solution_seg1",
+      "condition": "그림에 표시하는 선분 B–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q01_solution_seg2",
+      "condition": "그림에 표시하는 선분 C–A",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q01_solution_length0",
+      "condition": "선분 sAB 옆의 주어진 표기 '5'",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q01_solution_length1",
+      "condition": "선분 sBC 옆의 주어진 표기 '12'",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q01_solution_length2",
+      "condition": "선분 sCA 옆의 주어진 표기 '13'",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q01_solution_length3",
+      "condition": "선분 sBC 옆의 풀이로 도출한 표기 '12=13sin(A)'",
+      "mappedTo": "planeMarks.expressionLabels[3]"
+    }
+  ],
+  "newVisualInformation": [
+    "해설이 구한 길이·각도 또는 보조선을 실제 그리기 필드에 추가"
+  ],
+  "sourceQuote": "직각삼각형 $ABC$에서 빗변의 길이가 $\\overline{AC} = 13$이고 $\\overline{BC} = 12$, $\\overline{AB} = 5$이므로 $$\\sin A = \\dfrac{\\overline{BC}}{\\overline{AC}} = \\dfrac{12}{13}, \\quad \\cos A = \\dfrac{\\overline{AB}}{\\overline{AC}} = \\dfrac{5}{13}$$ 따라서 $$\\sin A \\cos A = \\dfrac{12}{13} \\times \\dfrac{5}{13} = \\dfrac{60}{169}$$ 따라서 정답은 ②이다."
+}

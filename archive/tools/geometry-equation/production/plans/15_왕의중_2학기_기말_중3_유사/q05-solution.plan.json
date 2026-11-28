@@ -1,0 +1,198 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lCA",
+        "ownerSegment": "sCA",
+        "text": "4"
+      },
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "7"
+      },
+      {
+        "id": "derived_sBC",
+        "ownerSegment": "sBC",
+        "text": "√37",
+        "ownership": "NEAREST",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "rightAngles": [],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 340
+  },
+  "caption": "15_왕의중_2학기_기말_중3_유사 5번: 풀이에서 구한 핵심 관계",
+  "sourceConditions": [
+    {
+      "id": "q05_solution_seg0",
+      "condition": "그림에 표시하는 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q05_solution_seg1",
+      "condition": "그림에 표시하는 선분 B–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q05_solution_seg2",
+      "condition": "그림에 표시하는 선분 C–A",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q05_solution_length0",
+      "condition": "선분 sCA 옆의 주어진 표기 '4'",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q05_solution_length1",
+      "condition": "선분 sAB 옆의 주어진 표기 '7'",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q05_solution_length2",
+      "condition": "선분 sBC 옆의 풀이로 도출한 표기 '√37'",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q05_solution_angle0",
+      "condition": "각 B–A–C의 표시값 60",
+      "mappedTo": "planeMarks.angles[0]"
+    }
+  ],
+  "accessibilityDescription": "15_왕의중_2학기_기말_중3_유사 5번 해설: 점과 선분·원·각의 관계를 보여 주는 기하 도형",
+  "newVisualInformation": [
+    "해설이 구한 길이·각도 또는 보조선을 실제 그리기 필드에 추가"
+  ],
+  "sourceQuote": "꼭짓점 $C$에서 변 $AB$에 내린 수선의 발을 $H$라 하자. 직각삼각형 $ACH$에서 $\\angle A = 60^\\circ$, $\\overline{AC} = 4$이므로 $$\\overline{AH} = 4\\cos 60^\\circ = 2, \\quad \\overline{CH} = 4\\sin 60^\\circ = 2\\sqrt{3}$$ $\\overline{BH} = \\overline{AB} - \\overline{AH} = 7 - 2 = 5$이므로 직각삼각형 $BCH$에서 피타고라스 정리에 의하여 $$\\overline{CB} = \\sqrt{5^2 + (2\\sqrt{3})^2} = \\sqrt{25 + 12} = \\sqrt{37}$$ 따라서 정답은 ⑤이다."
+}
