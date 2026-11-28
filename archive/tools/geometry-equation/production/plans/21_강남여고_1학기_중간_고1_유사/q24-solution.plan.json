@@ -1,0 +1,27 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "실허 조건",
+        "band": false,
+        "points": [
+          {"id": "Z", "value": "-1", "hideName": true, "style": "CROSS"},
+          {"id": "P", "value": "2"},
+          {"id": "Q", "value": "4"}
+        ]
+      }
+    ]
+  },
+  "caption": "실수부 (a+1)(a−4), 허수부 (a+1)(a−2)의 공통 근 a=−1에서는 z=0이므로 제외한다. P는 z가 0이 아닌 실수인 a=2, Q는 순허수인 a=4이다.",
+  "accessibilityDescription": "수직선에서 −1은 0인 복소수를 만들어 제외된 ×표시, 2는 P, 4는 Q로 표시되어 두 허용 조건이 서로 다른 위치임을 보여 준다.",
+  "sourceConditions": [
+    {"id": "zero", "condition": "a=−1이면 실수부와 허수부가 모두 0이어서 z=0이므로 문제의 두 조건에 모두 부적합", "mappedTo": "numberLine.rows[0].points[0]"},
+    {"id": "real", "condition": "허수부분만 0인 a=2는 z≠0인 실수이며 문제의 p", "mappedTo": "numberLine.rows[0].points[1]"},
+    {"id": "imaginary", "condition": "실수부분만 0인 a=4는 순허수이며 문제의 q", "mappedTo": "numberLine.rows[0].points[2]"}
+  ],
+  "newVisualInformation": ["두 인수분해 식에 공통으로 등장하는 a=−1을 제외점으로 구분하고, 남은 서로 다른 실수조건 p와 순허수조건 q의 값을 같은 축에서 비교한다."]
+}
