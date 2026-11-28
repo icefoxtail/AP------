@@ -1,0 +1,80 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 6,
+      "names": "BCDA",
+      "points": [
+        {
+          "id": "E",
+          "at": {
+            "edge": [
+              "A",
+              "C"
+            ],
+            "t": "2/3"
+          }
+        },
+        {
+          "id": "F",
+          "at": {
+            "edge": [
+              "A",
+              "D"
+            ],
+            "t": "2/3"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "B",
+      "to": "E",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "B",
+      "to": "F",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "E",
+      "to": "F",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "BC",
+      "label": "6"
+    },
+    {
+      "from": "E",
+      "to": "F",
+      "label": "4"
+    }
+  ],
+  "sourceQuote": "$\\overline{\\text{AE}}=\\overline{\\text{AF}}=6\\times\\frac{2}{3}=4\\text{ cm}$이고 $\\angle\\text{EAF}=60^\\circ$이므로 $\\triangle\\text{AEF}$는 정삼각형이어서 $\\overline{\\text{EF}}=4\\text{ cm}$이다. 정삼각형 $\\text{ABC}$에",
+  "sourceConditions": [
+    {
+      "id": "q20_solution",
+      "condition": "$\\overline{\\text{AE}}=\\overline{\\text{AF}}=6\\times\\frac{2}{3}=4\\text{ cm}$이고 $\\angle\\text{EAF}=60^\\circ$이므로 $\\triangle\\text{AEF}$는 정삼각형이어서 $\\overline{\\text{EF}}=4\\text{ cm}$이다. 정삼각형 $\\text{ABC}$에서 점 $\\text{B}$로부터 $\\overline{\\text{AC}}$에 내린 수선의 발을 $\\text{M}$이라 하면 $\\overline{\\text{AM}}=3\\text{ cm}$, $\\overline{\\text{BM}}=3\\sqrt{3}\\text{ cm}$이고 $\\overline{\\text{ME}}=4-3=1\\text{ cm}$이다. 따라서 $\\overline{\\text{BE}}=\\sqrt{(3\\sqrt{3})^2 + 1^2} = \\sqrt{28} = 2\\sqrt{7}\\text{ cm}$이고, 마찬가지로 $\\overline{\\text{BF}}=2\\sqrt{7}\\text{ cm}$이다. 이등변삼각형 $\\text{BEF}$의 밑변 $\\overline{\\text{EF}}=4\\text{ cm}$에 대한 높이는 $\\sqrt{(2\\sqrt{7})^2 - 2^2} = \\sqrt{24} = 2\\sqrt{6}\\text{ cm}$이므로 넓이는 $$\\frac{1}{2}\\times 4\\times 2\\sqrt{6} = 4\\sqrt{6}\\text{ (cm}^2\\text{)}$$ 따라서 정답은 ⑤이다.",
+      "mappedTo": "solids"
+    }
+  ],
+  "caption": "해설 관계: EF4, BE=BF=2√7, 밑변 EF에 대한 높이2√6인 이등변삼각형 BEF",
+  "accessibilityDescription": "신흥중 20번 해설 그림. EF4, BE=BF=2√7, 밑변 EF에 대한 높이2√6인 이등변삼각형 BEF",
+  "newVisualInformation": [
+    "실제 입체 REGULAR_POLYHEDRON",
+    "입체 선분 3개, 치수 2개, 단면 0개"
+  ]
+}

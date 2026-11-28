@@ -1,0 +1,62 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "16",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        0,
+        8
+      ],
+      "states": [
+        "OPEN",
+        "OPEN"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "4",
+        "y": "32"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "domain": [
+      0,
+      8
+    ],
+    "viewport": [
+      0,
+      8,
+      0,
+      36
+    ]
+  },
+  "sourceQuote": "벽에 평행한 변의 길이는 $(16-2x)\\text{ m}$ ($0<x<8$)이므로 닭장의 넓이 $S$는 $$S = x(16 - 2x) = -2x^2 + 16x = -2(x-4)^2 + 32$$ 따라서 $x=4$일 때 넓이가 최대가 되므로 정답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "q03_solution",
+      "condition": "벽에 평행한 변의 길이는 $(16-2x)\\text{ m}$ ($0<x<8$)이므로 닭장의 넓이 $S$는 $$S = x(16 - 2x) = -2x^2 + 16x = -2(x-4)^2 + 32$$ 따라서 $x=4$일 때 넓이가 최대가 되므로 정답은 ③이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "caption": "해설 관계: 철망 길이의 제약 0<x<8과 넓이 S=−2x²+16x의 꼭짓점 (4,32)",
+  "accessibilityDescription": "동산중 3번 해설 그림. 철망 길이의 제약 0<x<8과 넓이 S=−2x²+16x의 꼭짓점 (4,32)",
+  "newVisualInformation": [
+    "실제 곡선 1개, 참조곡선 0개",
+    "표시 꼭짓점 1개, 오버레이 점 0개, 오버레이 선분 0개"
+  ]
+}

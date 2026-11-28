@@ -1,0 +1,53 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 4,
+      "names": "BCDA",
+      "points": [
+        {
+          "id": "E",
+          "at": {
+            "edge": [
+              "B",
+              "C"
+            ],
+            "t": "1/2"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "E",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "BC",
+      "label": "4"
+    }
+  ],
+  "sourceQuote": "다음 그림과 같이 한 모서리의 길이가 $4\\text{ cm}$인 정사면체 $\\text{A}-\\text{BCD}$가 있다. 꼭짓점 $\\text{A}$에서 $\\overline{\\text{BC}}$에 내린 수선의 발을 $\\text{E}$라 하고 $\\overline{\\text{AC}}$ 위에 점 $\\text{P}$를 잡을 때, $\\overline{\\tex",
+  "sourceConditions": [
+    {
+      "id": "q19_problem",
+      "condition": "다음 그림과 같이 한 모서리의 길이가 $4\\text{ cm}$인 정사면체 $\\text{A}-\\text{BCD}$가 있다. 꼭짓점 $\\text{A}$에서 $\\overline{\\text{BC}}$에 내린 수선의 발을 $\\text{E}$라 하고 $\\overline{\\text{AC}}$ 위에 점 $\\text{P}$를 잡을 때, $\\overline{\\text{EP}}+\\overline{\\text{PD}}$의 최단 거리를 구하면?",
+      "mappedTo": "solids"
+    }
+  ],
+  "caption": "문제 조건: 정사면체 A−BCD에서 E는 BC의 중점이고 P는 AC 위 이동점",
+  "accessibilityDescription": "신흥중 19번 문제 그림. 정사면체 A−BCD에서 E는 BC의 중점이고 P는 AC 위 이동점",
+  "newVisualInformation": [
+    "실제 입체 REGULAR_POLYHEDRON",
+    "입체 선분 1개, 치수 1개, 단면 0개"
+  ]
+}

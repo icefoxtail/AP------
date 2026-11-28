@@ -1,0 +1,241 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "E",
+    "F",
+    "G",
+    "C",
+    "B",
+    "A"
+  ],
+  "displaySegments": [
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "sGC",
+      "refs": [
+        "G",
+        "C"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sBA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sFB",
+      "refs": [
+        "F",
+        "B"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "L0",
+        "ownerSegment": "sEF",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L1",
+        "ownerSegment": "sFG",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L2",
+        "ownerSegment": "sFB",
+        "text": "5",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L3",
+        "ownerSegment": "sEC",
+        "text": "13",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 480
+  },
+  "sourceQuote": "직육면체의 앞면 $\\text{EABF}$와 오른쪽 면 $\\text{FBCG}$를 모서리 $\\overline{\\text{FB}}$를 따라 평면으로 펼치면 가로의 길이가 $6+6=12\\text{ cm}$, 세로의 길이가 $5\\text{ cm}$인 직사각형이 된다. 최단 거리는 이 직사각형의 대각선 $\\overline{\\text{EC}}$의 길이이므로 $$\\overline{\\text{EC}} = \\sqrt{12^2 + 5^2} = \\sqrt{144 + 25} = \\sqrt{169} = 13\\text{ (cm)}$$",
+  "sourceConditions": [
+    {
+      "id": "q23_solution",
+      "condition": "직육면체의 앞면 $\\text{EABF}$와 오른쪽 면 $\\text{FBCG}$를 모서리 $\\overline{\\text{FB}}$를 따라 평면으로 펼치면 가로의 길이가 $6+6=12\\text{ cm}$, 세로의 길이가 $5\\text{ cm}$인 직사각형이 된다. 최단 거리는 이 직사각형의 대각선 $\\overline{\\text{EC}}$의 길이이므로 $$\\overline{\\text{EC}} = \\sqrt{12^2 + 5^2} = \\sqrt{144 + 25} = \\sqrt{169} = 13\\text{ (cm)}$$",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "해설 관계: 앞면·오른쪽 면을 펼친 12×5 직사각형의 대각선 13",
+  "accessibilityDescription": "신흥중 23번 해설 그림. 앞면·오른쪽 면을 펼친 12×5 직사각형의 대각선 13",
+  "newVisualInformation": [
+    "실제 선분 8개: sEF, sFG, sGC, sCB, sBA, sAE, sFB, sEC",
+    "원 0개, 각호 0개, 원호 0개, 길이라벨 4개"
+  ]
+}

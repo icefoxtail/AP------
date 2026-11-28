@@ -1,0 +1,80 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "4",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "2",
+        "y": "9"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-1",
+          "y": "0"
+        },
+        {
+          "id": "B",
+          "x": "5",
+          "y": "0"
+        },
+        {
+          "id": "C",
+          "x": "0",
+          "y": "5"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "BC",
+          "from": "B",
+          "to": "C"
+        },
+        {
+          "id": "CA",
+          "from": "C",
+          "to": "A"
+        }
+      ]
+    }
+  },
+  "sourceQuote": "(1) $y = -x^2 + 4x + 5 = -(x-2)^2 + 9$이므로 꼭짓점의 좌표는 $(2, 9)$, 축의 방정식은 $x=2$이다. (2) 이차항의 계수가 $-1<0$이므로 위로 볼록하여 $x=2$일 때 최댓값 $9$를 갖는다. (3) $y=0$을 대입하면 $-(x+1)(x-5)=0$이므로 $\\text{A}(-1, 0)$, $\\text{B}(5, 0)$이고 $\\overline{\\text{AB}}=6$이다. $x=0$일 때 $y=5$이므로 $\\text{C}(0, 5)$이다. 따라서 $\\triangle\\text{ABC}$의 넓이는 $\\frac{1}{2}\\times 6\\times 5 = 15$이다.",
+  "sourceConditions": [
+    {
+      "id": "q22_solution",
+      "condition": "(1) $y = -x^2 + 4x + 5 = -(x-2)^2 + 9$이므로 꼭짓점의 좌표는 $(2, 9)$, 축의 방정식은 $x=2$이다. (2) 이차항의 계수가 $-1<0$이므로 위로 볼록하여 $x=2$일 때 최댓값 $9$를 갖는다. (3) $y=0$을 대입하면 $-(x+1)(x-5)=0$이므로 $\\text{A}(-1, 0)$, $\\text{B}(5, 0)$이고 $\\overline{\\text{AB}}=6$이다. $x=0$일 때 $y=5$이므로 $\\text{C}(0, 5)$이다. 따라서 $\\triangle\\text{ABC}$의 넓이는 $\\frac{1}{2}\\times 6\\times 5 = 15$이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "caption": "해설 관계: y=−(x−2)²+9, 두 영점 −1·5, y절편5와 삼각형 ABC 넓이15",
+  "accessibilityDescription": "동산중 22번 해설 그림. y=−(x−2)²+9, 두 영점 −1·5, y절편5와 삼각형 ABC 넓이15",
+  "newVisualInformation": [
+    "실제 곡선 1개, 참조곡선 0개",
+    "표시 꼭짓점 1개, 오버레이 점 3개, 오버레이 선분 3개"
+  ]
+}

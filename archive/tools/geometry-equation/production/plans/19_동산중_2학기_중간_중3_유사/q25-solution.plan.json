@@ -1,0 +1,92 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 9,
+        "depth": 9
+      },
+      "height": 9,
+      "names": {
+        "base": [
+          "B",
+          "A",
+          ".",
+          "F"
+        ],
+        "top": [
+          "C",
+          ".",
+          ".",
+          "."
+        ]
+      },
+      "points": [
+        {
+          "id": "J",
+          "at": {
+            "projection": {
+              "from": "B",
+              "plane": [
+                "A",
+                "F",
+                "C"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "F",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "F",
+      "to": "C",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "C",
+      "to": "A",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "B",
+      "to": "J",
+      "style": "DASHED",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "B",
+      "to": "A",
+      "label": "9"
+    }
+  ],
+  "sourceQuote": "$\\overline{\\text{AF}}=\\overline{\\text{FC}}=\\overline{\\text{CA}}=9\\sqrt{2}\\text{ cm}$이므로 $\\triangle\\text{AFC}$는 정삼각형이다. $\\overline{\\text{BJ}}\\perp\\text{평면 AFC}$이고 $\\overline{\\text{BA}}=\\overline{\\",
+  "sourceConditions": [
+    {
+      "id": "q25_solution",
+      "condition": "$\\overline{\\text{AF}}=\\overline{\\text{FC}}=\\overline{\\text{CA}}=9\\sqrt{2}\\text{ cm}$이므로 $\\triangle\\text{AFC}$는 정삼각형이다. $\\overline{\\text{BJ}}\\perp\\text{평면 AFC}$이고 $\\overline{\\text{BA}}=\\overline{\\text{BF}}=\\overline{\\text{BC}}=9\\text{ cm}$이므로 세 직각삼각형 $\\text{BAJ}$, $\\text{BFJ}$, $\\text{BCJ}$는 RHS 합동이어서 $\\overline{\\text{JA}}=\\overline{\\text{JF}}=\\overline{\\text{JC}}$이다. 따라서 점 $\\text{J}$는 정삼각형 $\\text{AFC}$의 외심(무게중심)이고, 정삼각형 $\\text{AFC}$의 높이는 $\\frac{\\sqrt{3}}{2}\\times 9\\sqrt{2} = \\frac{9\\sqrt{6}}{2}\\text{ cm}$이므로 $$\\overline{\\text{AJ}} = \\frac{2}{3} \\times \\frac{9\\sqrt{6}}{2} = 3\\sqrt{6}\\text{ (cm)}$$ 직각삼각형 $\\text{BAJ}$에서 피타고라스 정리에 의해 $$\\overline{\\text{BJ}} = \\sqrt{9^2 - (3\\sqrt{6})^2} = \\sqrt{81 - 54} = \\sqrt{27} = 3\\sqrt{3}\\text{ (cm)}$$",
+      "mappedTo": "solids"
+    }
+  ],
+  "caption": "해설 관계: AFC 정삼각형 한 변9√2, 중심 J와 BJ⊥AFC, BJ=3√3",
+  "accessibilityDescription": "동산중 25번 해설 그림. AFC 정삼각형 한 변9√2, 중심 J와 BJ⊥AFC, BJ=3√3",
+  "newVisualInformation": [
+    "실제 입체 PRISM",
+    "입체 선분 4개, 치수 1개, 단면 0개"
+  ]
+}

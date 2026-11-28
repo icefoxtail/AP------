@@ -1,0 +1,167 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "L0",
+        "ownerSegment": "sBC",
+        "text": "x",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L1",
+        "ownerSegment": "sDA",
+        "text": "x",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L2",
+        "ownerSegment": "sCD",
+        "text": "16-2x",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 480
+  },
+  "sourceQuote": "오른쪽 그림과 같이 길이가 $16\\text{ m}$인 철망과 벽을 이용하여 벽을 한 변으로 하는 직사각형 모양의 닭장을 만들려고 한다. 벽에 수직인 두 변의 길이를 각각 $x\\text{ m}$라 할 때, 닭장의 넓이가 최대가 되도록 하는 $x$의 값은?",
+  "sourceConditions": [
+    {
+      "id": "q03_problem",
+      "condition": "오른쪽 그림과 같이 길이가 $16\\text{ m}$인 철망과 벽을 이용하여 벽을 한 변으로 하는 직사각형 모양의 닭장을 만들려고 한다. 벽에 수직인 두 변의 길이를 각각 $x\\text{ m}$라 할 때, 닭장의 넓이가 최대가 되도록 하는 $x$의 값은?",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "문제 조건: 벽을 윗변으로 쓰는 직사각형, 철망 세 변 x·x·(16−2x); x=3은 구조 예시",
+  "accessibilityDescription": "동산중 3번 문제 그림. 벽을 윗변으로 쓰는 직사각형, 철망 세 변 x·x·(16−2x); x=3은 구조 예시",
+  "newVisualInformation": [
+    "실제 선분 4개: sAB, sBC, sCD, sDA",
+    "원 0개, 각호 0개, 원호 0개, 길이라벨 3개"
+  ]
+}
