@@ -1,9 +1,78 @@
 {
-  "capability": "construction-spike-v1",
-  "realization": {
-    "recipeId": "SOLID_FIGURE_v1",
-    "unit": "source-length",
-    "reflectionEquivalent": false
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "pyramid",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 6
+      },
+      "height": 4.242640687119285,
+      "names": "ABCDV",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "edge": [
+              "A",
+              "B"
+            ],
+            "t": "1/2"
+          }
+        },
+        {
+          "id": "N",
+          "at": {
+            "edge": [
+              "C",
+              "D"
+            ],
+            "t": "1/2"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "V",
+      "to": "M",
+      "role": "REF"
+    },
+    {
+      "from": "V",
+      "to": "N",
+      "role": "REF"
+    },
+    {
+      "from": "M",
+      "to": "N",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AB",
+      "label": "6"
+    },
+    {
+      "edge": "AV",
+      "label": "6"
+    }
+  ],
+  "marks": {
+    "angles": [
+      {
+        "refs": [
+          "V",
+          "M",
+          "N"
+        ],
+        "label": "x"
+      }
+    ]
   },
-  "caption": "모든 모서리 길이 6인 정사각뿔의 단면 이등변삼각형 VMN에서 세 삼각비 식 계산"
+  "caption": "모든 모서리가 6인 정사각뿔 V-ABCD. AB의 중점 M과 CD의 중점 N 및 ∠VMN=x."
 }
