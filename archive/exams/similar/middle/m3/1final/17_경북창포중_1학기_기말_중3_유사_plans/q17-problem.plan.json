@@ -1,23 +1,60 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curve": "-x^2 + 2*x + 3",
-  "points": {
-    "A": [
-      1,
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "3",
+      "2",
+      "-1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
       4
     ],
-    "B": [
-      0,
-      3
+    "viewport": [
+      -3,
+      5,
+      -2,
+      6
     ],
-    "C": [
-      -1,
-      0
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "hideLabels": [
+      "formula"
     ],
-    "D": [
-      3,
-      0
-    ]
+    "requiredPoints": [
+      {
+        "id": "B",
+        "x": 0,
+        "y": 3
+      },
+      {
+        "id": "C",
+        "x": -1,
+        "y": 0
+      },
+      {
+        "id": "D",
+        "x": 3,
+        "y": 0
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "1"
+        }
+      ]
+    },
+    "pointNames": {
+      "A": "A"
+    }
   },
-  "caption": "꼭짓점 A(1, 4), y절편 B(0, 3), x절편 C(-1, 0), D(3, 0)을 잇는 사각형 ABCD"
+  "caption": "B(0,3), C(-1,0), D(3,0)을 지나고 꼭짓점이 A인 포물선. abc의 값은 표시하지 않는다."
 }

@@ -1,7 +1,15 @@
 {
-  "capability": "piecewise-polynomial-spike-v1",
+  "capability": "polynomial-spike-v1",
   "graphPlan": {
-    "family": "piecewise_polynomial",
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "0",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
     "domain": [
       -3,
       5
@@ -10,54 +18,87 @@
       -4,
       6,
       -1,
-      18
+      19
     ],
-    "pieces": [
-      {
-        "domain": [
-          -3,
-          5
-        ],
-        "coefficients": [
-          "0",
-          "0",
-          "1"
-        ]
-      }
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "hideLabels": [
+      "formula"
     ],
-    "referenceLines": [
-      {
-        "slope": "2",
-        "intercept": "8",
-        "label": "y=2x+8"
-      }
-    ],
-    "requiredPoints": [
-      {
-        "id": "A",
-        "x": "4",
-        "y": "16",
-        "label": "A(4, 16)"
-      },
-      {
-        "id": "B",
-        "x": "-2",
-        "y": "4",
-        "label": "B(-2, 4)"
-      },
-      {
-        "id": "C",
-        "x": "4",
-        "y": "0",
-        "label": "C"
-      },
-      {
-        "id": "D",
-        "x": "-2",
-        "y": "0",
-        "label": "D"
-      }
-    ]
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "4"
+        },
+        {
+          "id": "B",
+          "curveX": "-2"
+        },
+        {
+          "id": "C",
+          "axis": "x",
+          "value": "4"
+        },
+        {
+          "id": "D",
+          "axis": "x",
+          "value": "-2"
+        },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ],
+      "lines": [
+        {
+          "id": "l",
+          "slope": "2",
+          "intercept": "8"
+        }
+      ],
+      "segments": [
+        {
+          "id": "ac",
+          "from": "A",
+          "to": "C"
+        },
+        {
+          "id": "bd",
+          "from": "B",
+          "to": "D"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "T1",
+          "points": [
+            "A",
+            "O",
+            "C"
+          ]
+        },
+        {
+          "id": "T2",
+          "points": [
+            "D",
+            "O",
+            "B"
+          ]
+        }
+      ]
+    },
+    "pointNames": {
+      "A": "A",
+      "B": "B",
+      "C": "C",
+      "D": "D",
+      "O": "O"
+    },
+    "formulaLabel": "y=x^2"
   },
-  "caption": "이차함수 y=x^2과 직선 y=2x+8의 교점 A, B 및 수선의 발 C, D"
+  "caption": "이차함수 y=x²와 직선 y=ax+8의 교점 A,B에서 수선을 내린 두 삼각형 S₁:S₂=8:1의 모식도(계수 a와 교점 좌표는 표시하지 않음)."
 }

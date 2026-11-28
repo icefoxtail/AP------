@@ -1,8 +1,41 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curves": [
-    "-2*(x - 2)^2 + 8",
-    "-2*(x - 4)^2 + 8"
-  ],
-  "caption": "꼭짓점 높이가 8로 같은 두 포물선 y=-2(x-2)²+8과 y=-2(x-4)²+8 사이의 평행이동 영역"
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "8",
+          "-2"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ],
+        "label": "y=-2x^2+8x"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-24",
+          "16",
+          "-2"
+        ],
+        "domain": [
+          "2",
+          "6"
+        ],
+        "label": "y=-2x^2+16x-24"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "평행이동 전의 두 이차함수와 x축. 평행이동한 결과의 식이나 넓이 관계의 결론은 표시하지 않는다."
 }
