@@ -1,0 +1,43 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "문 안에 밑변이 $x$축 위에 있고 윗변의 두 꼭짓점이 포물선 위에 놓인 직사각형을 그린다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-4, 4, -1, 10],
+    "curves": [
+      {
+        "id": "door",
+        "kind": "Y_OF_X",
+        "coefficients": ["9", "0", "-1"],
+        "domain": ["-3", "3"],
+        "color": "BLUE",
+        "label": {"hidden": true, "reason": "ANSWER", "name": "f"}
+      }
+    ],
+    "axisTickValues": {"x": ["-3", "3"], "y": ["9"]},
+    "overlays": {
+      "points": [
+        {"id": "L", "x": "-3", "y": "0", "coordinates": true},
+        {"id": "R", "x": "3", "y": "0", "coordinates": true},
+        {"id": "V", "x": "0", "y": "9", "coordinates": true},
+        {"id": "BL", "x": "-2", "y": "0", "unnamed": true},
+        {"id": "BR", "x": "2", "y": "0", "unnamed": true},
+        {"id": "TR", "x": "2", "y": "5", "unnamed": true},
+        {"id": "TL", "x": "-2", "y": "5", "unnamed": true}
+      ],
+      "polygons": [
+        {"id": "Rect", "points": ["BL", "BR", "TR", "TL"], "fill": "NONE"}
+      ]
+    }
+  },
+  "caption": "예시: 폭이 6, 최고점 높이가 9인 포물선 모양의 문과, 그 안에 놓을 수 있는 한 직사각형의 배치이다. 최적 크기는 표시하지 않는다.",
+  "accessibilityDescription": "포물선의 두 밑점은 (-3,0), (3,0)이고 최고점은 (0,9)이다. 밑변이 가로축에, 윗변의 두 꼭짓점이 포물선에 닿는 예시 직사각형이 선으로만 그려져 있다.",
+  "sourceConditions": [
+    {"id": "q14-p1", "condition": "포물선은 y축에 대칭이고 (-3,0),(3,0),(0,9)을 지난다", "mappedTo": ["graphPlan.curves.0.coefficients", "graphPlan.overlays.points.0", "graphPlan.overlays.points.1", "graphPlan.overlays.points.2"]},
+    {"id": "q14-p2", "condition": "직사각형의 밑변은 x축, 윗변의 양 끝은 포물선 위이다. 그림의 반폭 2는 최적화 값이 아닌 배치 예시이다", "mappedTo": ["graphPlan.overlays.points.3", "graphPlan.overlays.points.4", "graphPlan.overlays.points.5", "graphPlan.overlays.points.6", "graphPlan.overlays.polygons.0"]}
+  ],
+  "newVisualInformation": [
+    "문 너비와 높이의 위치 관계 및 직사각형의 네 꼭짓점이 붙는 대상을 보여 준다.",
+    "최적 높이, 최적 반폭 및 포물선의 유도된 식은 문제 그림에 쓰지 않는다."
+  ]
+}
