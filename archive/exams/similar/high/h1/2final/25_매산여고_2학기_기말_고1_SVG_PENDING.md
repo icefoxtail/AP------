@@ -1,63 +1,68 @@
 # 2025 매산여고 공통수학2 SOURCE_BALANCED 3세트 — SVG_PENDING
 
-작성자 단계에서 문제·해설 내용을 완성하고, 2026-11-28 후속 계획 작성 단계에서 **공식 production plan 52건을 실제 작성**했다. 공식 엔진 shallow/full lint는 각각 **52/52 PASS**다. **실물 SVG render·PNG 확인·학생 화면·A4 출력은 모두 NOT_RUN**이다.
-아래 파일 경로는 현재 존재하는 공식 production plan JSON이며, SVG 파일 자체는 후속 전담 라인이 생성·검수해야 한다.
+작성자 단계에서 문제·해설 내용을 완성하고, 2026-11-28 후속 계획 작성 단계에서 **공식 production plan 52건을 실제 작성**했다. 공식 엔진 shallow/full lint는 각각 **52/52 PASS**다. 실제 브라우저 렌더는 유사 51/52건 `PASS`이며, 유사3 18번은 미렌더로 대기 중이다. 학생 화면과 A4 출력은 `NOT_RUN`이다.
+아래 표는 52개 공식 production plan과 렌더 실행 상태를 기록한다. `PASS`는 렌더 실행 결과만 뜻하며 시각 품질 검수 결과는 아니다.
+
+## 2026-11-28 렌더 결과
+
+전체 66개 plan 가운데 SVG 65개가 실제 브라우저 렌더 캡처 `PASS`를 받았고, 렌더 성공 항목만 JS에 연결했다. 유사3 18번 해설 SVG는 산출물과 렌더 기록이 없어 이번 성공분에서 제외하고 plan을 대기 상태로 남겼다. 이 결과는 렌더 실행 여부만 기록하며 시각 품질 검수와 A4 출력은 `NOT_RUN`이다.
+
 기준: 각 JS visualDisposition. SVG_ONLY_HANDOFF.md와 함께 읽는다.
 
-| 세트 | 문항 | 축 | 필요성 | 작성된 공식 엔진 plan 경로 | SVG 상태 | 렌더·실물 검수 |
+| 세트 | 문항 | 축 | 필요성 | 작성된 공식 엔진 plan 경로 | SVG 상태 | 렌더 실행 |
 |---|---|---|---|---|---|---|
-| 유사1 | 03 | problem | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사/q03-problem.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사1 | 03 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사/q03-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사1 | 06 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사/q06-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사1 | 10 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사/q10-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사1 | 11 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사/q11-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사1 | 12 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사/q12-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사1 | 13 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사/q13-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사1 | 14 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사/q14-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사1 | 15 | problem | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사/q15-problem.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사1 | 15 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사/q15-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사1 | 16 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사/q16-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사1 | 17 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사/q17-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사1 | 18 | solution | REQUIRED | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사/q18-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사1 | 19 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사/q19-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사1 | 20 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사/q20-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사1 | 22 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사/q22-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사1 | 23 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사/q23-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사2 | 03 | problem | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사2/q03-problem.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사2 | 03 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사2/q03-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사2 | 06 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사2/q06-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사2 | 10 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사2/q10-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사2 | 11 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사2/q11-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사2 | 12 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사2/q12-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사2 | 13 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사2/q13-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사2 | 14 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사2/q14-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사2 | 15 | problem | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사2/q15-problem.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사2 | 15 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사2/q15-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사2 | 16 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사2/q16-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사2 | 17 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사2/q17-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사2 | 18 | solution | REQUIRED | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사2/q18-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사2 | 19 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사2/q19-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사2 | 20 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사2/q20-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사2 | 22 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사2/q22-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사2 | 23 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사2/q23-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사3 | 03 | problem | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q03-problem.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사3 | 03 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q03-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사3 | 06 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q06-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사3 | 10 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q10-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사3 | 11 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q11-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사3 | 12 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q12-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사3 | 13 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q13-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사3 | 14 | problem | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q14-problem.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사3 | 14 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q14-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사3 | 15 | problem | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q15-problem.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사3 | 15 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q15-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사3 | 16 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q16-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사3 | 17 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q17-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
+| 유사1 | 03 | problem | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사/q03-problem.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사1 | 03 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사/q03-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사1 | 06 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사/q06-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사1 | 10 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사/q10-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사1 | 11 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사/q11-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사1 | 12 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사/q12-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사1 | 13 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사/q13-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사1 | 14 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사/q14-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사1 | 15 | problem | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사/q15-problem.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사1 | 15 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사/q15-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사1 | 16 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사/q16-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사1 | 17 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사/q17-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사1 | 18 | solution | REQUIRED | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사/q18-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사1 | 19 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사/q19-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사1 | 20 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사/q20-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사1 | 22 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사/q22-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사1 | 23 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사/q23-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사2 | 03 | problem | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사2/q03-problem.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사2 | 03 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사2/q03-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사2 | 06 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사2/q06-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사2 | 10 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사2/q10-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사2 | 11 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사2/q11-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사2 | 12 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사2/q12-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사2 | 13 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사2/q13-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사2 | 14 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사2/q14-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사2 | 15 | problem | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사2/q15-problem.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사2 | 15 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사2/q15-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사2 | 16 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사2/q16-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사2 | 17 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사2/q17-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사2 | 18 | solution | REQUIRED | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사2/q18-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사2 | 19 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사2/q19-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사2 | 20 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사2/q20-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사2 | 22 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사2/q22-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사2 | 23 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사2/q23-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사3 | 03 | problem | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q03-problem.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사3 | 03 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q03-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사3 | 06 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q06-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사3 | 10 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q10-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사3 | 11 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q11-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사3 | 12 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q12-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사3 | 13 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q13-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사3 | 14 | problem | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q14-problem.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사3 | 14 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q14-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사3 | 15 | problem | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q15-problem.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사3 | 15 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q15-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사3 | 16 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q16-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사3 | 17 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q17-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
 | 유사3 | 18 | solution | REQUIRED | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q18-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사3 | 19 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q19-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사3 | 20 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q20-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사3 | 22 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q22-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
-| 유사3 | 23 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q23-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
+| 유사3 | 19 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q19-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사3 | 20 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q20-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사3 | 22 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q22-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
+| 유사3 | 23 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q23-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
 
 요약: 3세트 × 46축 = 138축 전수 판정. REQUIRED 3, BENEFICIAL 49, EXEMPT 86. 공식 제작용 plan **52건 작성·shallow/full lint PASS**, 실제 SVG 렌더 0건.
 
