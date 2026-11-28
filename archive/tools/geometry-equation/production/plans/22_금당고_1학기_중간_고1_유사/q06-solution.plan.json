@@ -1,0 +1,36 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["9", "-6", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [0, 6],
+    "viewport": [-0.5, 6.5, -1, 10],
+    "requiredPoints": [
+      {"id": "T", "x": 3, "y": 0}
+    ],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "k=3일 때 y=(x−3)²은 x축에 T(3,0)에서 접하므로 중근을 가진다.",
+  "accessibilityDescription": "위로 열린 포물선 y=(x−3)²의 꼭짓점 T(3,0)가 x축과 접하고 다른 x절편은 없다.",
+  "sourceConditions": [
+    {
+      "id": "discriminant",
+      "condition": "x²−2kx+k²+2k−6=0의 판별식 D/4=−2k+6=0에서 k=3",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "doubleRoot",
+      "condition": "k=3을 대입하면 x²−6x+9=(x−3)²로 x=3에서 중근",
+      "mappedTo": "graphPlan.requiredPoints[0]"
+    },
+    {
+      "id": "domain",
+      "condition": "실수 x 전체에서 정의된 이차함수",
+      "mappedTo": "graphPlan.sourceDomain"
+    }
+  ],
+  "newVisualInformation": [
+    "판별식이 0인 중근 조건을 포물선의 꼭짓점과 x축의 한 점 접촉으로 연결한다."
+  ]
+}

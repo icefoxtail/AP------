@@ -1,0 +1,39 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["-2", "1", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-3.5, 2.5],
+    "viewport": [-4, 3, -3, 7],
+    "requiredPoints": [
+      {"id": "A", "x": -2, "y": 0},
+      {"id": "V", "x": -0.5, "y": -2.25},
+      {"id": "B", "x": 1, "y": 0}
+    ],
+    "exactCoordinates": {"V": ["-1/2", "-9/4"]},
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "a=1에서 x²+x−2=(x+2)(x−1)의 두 근 −2와 1은 0의 양쪽에 있다.",
+  "accessibilityDescription": "위로 열린 포물선 y=x²+x−2가 x축의 A(−2,0)와 B(1,0)을 통과하고 꼭짓점 V(−1/2,−9/4)가 축 아래에 있다.",
+  "sourceConditions": [
+    {
+      "id": "positiveParameter",
+      "condition": "해설에서 a>0, αβ=−2a와 (3a)²=a²+8a를 써 a=1로 확정",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "oppositeSigns",
+      "condition": "a=1일 때 x²+x−2=0의 두 근은 −2, 1로 서로 다른 부호",
+      "mappedTo": ["graphPlan.requiredPoints[0]", "graphPlan.requiredPoints[2]"]
+    },
+    {
+      "id": "vertex",
+      "condition": "이차함수 x²+x−2의 꼭짓점은 (−1/2,−9/4)",
+      "mappedTo": ["graphPlan.requiredPoints[1]", "graphPlan.exactCoordinates.V"]
+    }
+  ],
+  "newVisualInformation": [
+    "두 근이 원점의 서로 다른 쪽에 있어 절댓값 합이 두 근 사이 거리 3과 같음을 그래프로 드러낸다."
+  ]
+}

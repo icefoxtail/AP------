@@ -1,0 +1,67 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {
+        "id": "A", "op": "SOURCE_POINT", "inputs": [],
+        "args": {"coordinates": [{"kind": "integer", "value": "0"}, {"kind": "integer", "value": "0"}]},
+        "outputType": "POINT", "factRole": "GIVEN"
+      },
+      {
+        "id": "B", "op": "SOURCE_POINT", "inputs": [],
+        "args": {"coordinates": [{"kind": "integer", "value": "6"}, {"kind": "integer", "value": "0"}]},
+        "outputType": "POINT", "factRole": "GIVEN"
+      },
+      {
+        "id": "I", "op": "DIVISION_POINT", "inputs": ["A", "B"],
+        "args": {"m": {"kind": "integer", "value": "2"}, "n": {"kind": "integer", "value": "1"}, "mode": "INTERNAL"},
+        "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E", "op": "DIVISION_POINT", "inputs": ["A", "B"],
+        "args": {"m": {"kind": "integer", "value": "1"}, "n": {"kind": "integer", "value": "2"}, "mode": "EXTERNAL"},
+        "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": ["E", "A", "I", "B"],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {"id": "sEA", "refs": ["E", "A"]},
+    {"id": "sAI", "refs": ["A", "I"]},
+    {"id": "sIB", "refs": ["I", "B"]}
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {"id": "lenEA", "ownerSegment": "sEA", "text": "6"},
+      {"id": "lenAI", "ownerSegment": "sAI", "text": "4"},
+      {"id": "lenIB", "ownerSegment": "sIB", "text": "2"}
+    ]
+  },
+  "coordinateCanvas": {"width": 700, "height": 320},
+  "caption": "AB=6의 대표 배치에서 2:1 내분점 I는 A와 B 사이, 1:2 외분점 E는 A의 왼쪽에 놓인다.",
+  "accessibilityDescription": "한 직선에 E, A, I, B가 순서대로 있고 EA의 길이 6, AI 4, IB 2가 적혀 있어 외분점과 내분점의 차이를 보인다.",
+  "sourceConditions": [
+    {
+      "id": "representative",
+      "condition": "좌표가 주어지지 않아 거리비가 보존되는 대표 배치 A=0, B=6 사용",
+      "mappedTo": ["mathPlan.nodes[0]", "mathPlan.nodes[1]"]
+    },
+    {
+      "id": "inside",
+      "condition": "보기 ㄱ의 선분 AB 2:1 내분점은 AI:IB=4:2이고 AB 내부에 있음",
+      "mappedTo": ["mathPlan.nodes[2]", "planeMarks.expressionLabels[1]", "planeMarks.expressionLabels[2]"]
+    },
+    {
+      "id": "outside",
+      "condition": "보기 ㄴ의 선분 AB 1:2 외분점은 E=−6으로 A의 외부에 있으며 AE:EB=6:12",
+      "mappedTo": ["mathPlan.nodes[3]", "planeMarks.expressionLabels[0]"]
+    }
+  ],
+  "newVisualInformation": [
+    "같은 선분 AB에 내분점은 내부, 외분점은 연장선에 생긴다는 위치 차이를 비율을 보존하는 파생 연산으로 표시한다."
+  ]
+}
