@@ -1,0 +1,18 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"Q","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"-2"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"L","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"-3"},"b":{"kind":"integer","value":"1"},"c":{"kind":"integer","value":"0"}},"outputType":"LINE","factRole":"GIVEN"},
+    {"id":"M","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"2"},"b":{"kind":"integer","value":"1"},"c":{"kind":"integer","value":"0"}},"outputType":"LINE","factRole":"GIVEN"}
+  ]},
+  "displayPoints":["O","P","Q"],"displayLines":["L","M"],"lineLabels":[{"nodeId":"L","form":"SLOPE_INTERCEPT"},{"nodeId":"M","form":"SLOPE_INTERCEPT"}],
+  "displaySegments":[{"id":"sOP","refs":["O","P"]},{"id":"sOQ","refs":["O","Q"]},{"id":"sPQ","refs":["P","Q"],"dashed":true}],
+  "coordinateCanvas":{"width":700,"height":510},"axisTickValues":{"x":[],"y":[]},
+  "planeMarks":{"angles":[{"id":"theta","refs":["P","O","Q"],"value":135,"label":"135","style":"ARC","factRole":"CONCLUSION"}],"expressionLabels":[{"id":"p","ownerSegment":"sOP","text":"sqrt(10)","factRole":"DERIVED_INTERMEDIATE"},{"id":"q","ownerSegment":"sOQ","text":"sqrt(5)","factRole":"DERIVED_INTERMEDIATE"},{"id":"pq","ownerSegment":"sPQ","text":"5","factRole":"DERIVED_INTERMEDIATE"}]},
+  "caption":"P(1,3), Q(1,-2)를 두 직선 위에 잡아 OP=√10, OQ=√5, PQ=5의 삼각형을 보조선으로 표시하고 코사인법칙으로 θ=135°를 도출한다.",
+  "accessibilityDescription":"좌표축 위 두 직선과 원점 O, 점 P·Q 및 점선 PQ, OP=√10, OQ=√5, PQ=5 라벨, 원점의 둔각 135° 호.",
+  "sourceConditions":[{"id":"S1","condition":"P(1,3), Q(1,-2), OP=√10, OQ=√5, PQ=5","mappedTo":["mathPlan.nodes","displaySegments","planeMarks.expressionLabels"]},{"id":"S2","condition":"cosθ=-√2/2, θ=135°","mappedTo":["planeMarks.angles"]}],
+  "newVisualInformation":["해설에 등장하는 세 점·세 변·PQ 점선과 둔각 호를 모두 도형에 나타낸다. 각 영역의 불필요한 면 채움 없음."]
+}

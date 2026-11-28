@@ -1,0 +1,19 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"6"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"6"}]}]}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"4"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"6"}]}]}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"6"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"6"}]}]}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"k","op":"CIRCLE_THROUGH_3","inputs":["A","B","C"],"args":{},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["A","B","C","D","E"],"displayCircles":["k"],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCE","refs":["C","E"]},{"id":"sAD","refs":["A","D"]},{"id":"sDC","refs":["D","C"]},{"id":"sBD","refs":["B","D"]},{"id":"sDE","refs":["D","E"]}],
+  "coordinateCanvas":{"width":660,"height":540},
+  "planeMarks":{"angles":[{"id":"aA","refs":["B","A","C"],"value":78.46304096718453,"style":"ARC","factRole":"GIVEN"}],"expressionLabels":[{"id":"ab","ownerSegment":"sAB","text":"4","factRole":"GIVEN"},{"id":"de","ownerSegment":"sDE","text":"5","factRole":"GIVEN"}],"textLabels":[{"id":"sum","at":"D","text":"CD+CE=7","anchor":"W","factRole":"GIVEN"}]},
+  "caption":"원에 내접하는 A,B,C,E, AC 위 D 및 BE 위 D를 보이고 AB=4, DE=5, CD+CE=7, cos∠BAC=1/5를 표시한다. 미지 변의 수치는 드러내지 않는다.",
+  "accessibilityDescription":"한 원 위 A,B,C,E와 내부 교점 D, 분할된 AC·BE, AB4·DE5 라벨, CD+CE=7 콜아웃, 꼭짓점 A의 각 호. 흰 배경·면 채움 없음.",
+  "sourceConditions":[{"id":"S1","condition":"AB=4, cos∠BAC=1/5","mappedTo":["displaySegments","planeMarks.angles","planeMarks.expressionLabels"]},{"id":"S2","condition":"D∈AC∩BE, DE=5, CD+CE=7, A B C E 공원","mappedTo":["mathPlan.nodes","displayCircles","planeMarks.textLabels"]}],
+  "newVisualInformation":["원본의 교점 D와 두 직선의 분할 관계를 모두 보존하고 DE 길이·CD+CE 합을 도형에 직접 표시한다."]
+}

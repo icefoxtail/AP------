@@ -1,0 +1,19 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"12"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"3"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"6"}},"outputType":"CIRCLE","factRole":"GIVEN"}
+  ]},
+  "displayPoints":["A","B","C","O"],"displayCircles":["k"],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sAC","refs":["A","C"]},{"id":"sBC","refs":["B","C"]},{"id":"sOC","refs":["O","C"],"dashed":true}],
+  "rightAngles":[{"id":"rC","refs":["A","C","B"],"factRole":"DERIVED_INTERMEDIATE"}],
+  "coordinateCanvas":{"width":650,"height":460},
+  "planeMarks":{"angles":[{"id":"aA","refs":["B","A","C"],"value":60,"label":"60","style":"ARC","factRole":"GIVEN"}],"expressionLabels":[{"id":"ab","ownerSegment":"sAB","text":"12","factRole":"DERIVED_INTERMEDIATE"},{"id":"ac","ownerSegment":"sAC","text":"6","factRole":"CONCLUSION"},{"id":"bc","ownerSegment":"sBC","text":"6sqrt(3)","factRole":"DERIVED_INTERMEDIATE"},{"id":"oc","ownerSegment":"sOC","text":"6","factRole":"GIVEN"}]},
+  "caption":"코사인법칙 BC=√3·AC와 사인법칙 BC/sin60°=12에서 AC=6을 얻는다. 보조 직각은 AB가 이 구성에서 지름이라는 관계를 확인한다.",
+  "accessibilityDescription":"반지름 6 원과 삼각형 ABC, AB12·AC6·BC6√3, 각 A60도와 C 직각, 점선 OC=6.",
+  "sourceConditions":[{"id":"S1","condition":"AB:AC=2:1, BC=√3·AC","mappedTo":["displaySegments","planeMarks.expressionLabels"]},{"id":"S2","condition":"R=6, AC=6, BC=6√3","mappedTo":["displayCircles","planeMarks.expressionLabels","rightAngles"]}],
+  "newVisualInformation":["해설의 삼변 실제 길이와 60° 호·직각 표시를 표시하고 각 내부 면 채움 없음."]
+}

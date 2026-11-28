@@ -1,0 +1,18 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"-24","denominator":"5"},{"kind":"rational","numerator":"-32","denominator":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"8"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"8"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["A","B","C","O"],"hiddenPointNames":["O"],"hiddenPointStyle":"NONE","displayCircles":["k"],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]}],
+  "coordinateCanvas":{"width":620,"height":450},
+  "planeMarks":{"angles":[{"id":"aA","refs":["B","A","C"],"value":45,"label":"45","style":"ARC","factRole":"GIVEN"}],"expressionLabels":[{"id":"bc","ownerSegment":"sBC","text":"8sqrt(2)","factRole":"GIVEN"}]},
+  "caption":"원에 내접한 삼각형 ABC의 ∠A=45°와 대변 BC=8√2를 원·호·변 라벨로 표시한다. 외접원 반지름 수치는 문제축에서 숨긴다.",
+  "accessibilityDescription":"원 위 A,B,C를 이은 삼각형, 각 A에 45도 호와 BC에 8√2 길이 라벨. 원 내부나 각 내부는 채우지 않는다.",
+  "sourceConditions":[{"id":"S1","condition":"삼각형 ABC의 ∠A=45°, BC=8√2","mappedTo":["displaySegments","planeMarks.angles","planeMarks.expressionLabels"]},{"id":"S2","condition":"ABC의 외접원 반지름을 구한다","mappedTo":["mathPlan.nodes","displayCircles"]}],
+  "newVisualInformation":["원본의 원과 현 및 원주각을 유지하면서 회색 면 채움을 제거한다."]
+}

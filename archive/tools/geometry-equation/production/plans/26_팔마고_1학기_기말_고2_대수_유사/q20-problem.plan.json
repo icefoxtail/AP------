@@ -1,0 +1,1841 @@
+{
+  "capability": "composite-panels-v1",
+  "columns": 2,
+  "panels": [
+    {
+      "caption": {
+        "text": "R1: 누적 정사각형 1개"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "V1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V3",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V4",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "18",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V5",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "36",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "18",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V6",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "18",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "36",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V7",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "18",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "V1",
+          "V2",
+          "V3",
+          "V4",
+          "V5",
+          "V6",
+          "V7"
+        ],
+        "hiddenPointNames": [
+          "V1",
+          "V2",
+          "V3",
+          "V4",
+          "V5",
+          "V6",
+          "V7"
+        ],
+        "hiddenPointStyle": "NONE",
+        "displaySegments": [
+          {
+            "id": "baseX",
+            "refs": [
+              "V1",
+              "V2"
+            ]
+          },
+          {
+            "id": "baseY",
+            "refs": [
+              "V1",
+              "V3"
+            ]
+          },
+          {
+            "id": "hyp",
+            "refs": [
+              "V2",
+              "V3"
+            ]
+          },
+          {
+            "id": "s4",
+            "refs": [
+              "V4",
+              "V5"
+            ]
+          },
+          {
+            "id": "s5",
+            "refs": [
+              "V5",
+              "V6"
+            ]
+          },
+          {
+            "id": "s6",
+            "refs": [
+              "V6",
+              "V7"
+            ]
+          },
+          {
+            "id": "s7",
+            "refs": [
+              "V7",
+              "V4"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 480,
+          "height": 400
+        },
+        "rightAngles": [
+          {
+            "id": "right",
+            "refs": [
+              "V2",
+              "V1",
+              "V3"
+            ],
+            "factRole": "GIVEN"
+          }
+        ],
+        "planeMarks": {
+          "regions": [
+            {
+              "id": "squares",
+              "fill": "MEDIUM",
+              "shapes": [
+                {
+                  "polygon": [
+                    "V4",
+                    "V5",
+                    "V6",
+                    "V7"
+                  ]
+                }
+              ],
+              "factRole": "GIVEN"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "legX",
+              "ownerSegment": "baseX",
+              "text": "2",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "legY",
+              "ownerSegment": "baseY",
+              "text": "2",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "caption": "R_1: 직각이등변삼각형의 닮은 잔여 두 삼각형에 단계별 정사각형 1개를 나타낸다."
+      }
+    },
+    {
+      "caption": {
+        "text": "R2: 누적 정사각형 3개"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "V1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V3",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V4",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "18",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V5",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "36",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "18",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V6",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "18",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "36",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V7",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "18",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V8",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "42",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "12",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V9",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "42",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V10",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "30",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V11",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "30",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "12",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V12",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "12",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "30",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V13",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "30",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V14",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "42",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V15",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "12",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "42",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "V1",
+          "V2",
+          "V3",
+          "V4",
+          "V5",
+          "V6",
+          "V7",
+          "V8",
+          "V9",
+          "V10",
+          "V11",
+          "V12",
+          "V13",
+          "V14",
+          "V15"
+        ],
+        "hiddenPointNames": [
+          "V1",
+          "V2",
+          "V3",
+          "V4",
+          "V5",
+          "V6",
+          "V7",
+          "V8",
+          "V9",
+          "V10",
+          "V11",
+          "V12",
+          "V13",
+          "V14",
+          "V15"
+        ],
+        "hiddenPointStyle": "NONE",
+        "displaySegments": [
+          {
+            "id": "baseX",
+            "refs": [
+              "V1",
+              "V2"
+            ]
+          },
+          {
+            "id": "baseY",
+            "refs": [
+              "V1",
+              "V3"
+            ]
+          },
+          {
+            "id": "hyp",
+            "refs": [
+              "V2",
+              "V3"
+            ]
+          },
+          {
+            "id": "s4",
+            "refs": [
+              "V4",
+              "V5"
+            ]
+          },
+          {
+            "id": "s5",
+            "refs": [
+              "V5",
+              "V6"
+            ]
+          },
+          {
+            "id": "s6",
+            "refs": [
+              "V6",
+              "V7"
+            ]
+          },
+          {
+            "id": "s7",
+            "refs": [
+              "V7",
+              "V4"
+            ]
+          },
+          {
+            "id": "s8",
+            "refs": [
+              "V8",
+              "V9"
+            ]
+          },
+          {
+            "id": "s9",
+            "refs": [
+              "V9",
+              "V10"
+            ]
+          },
+          {
+            "id": "s10",
+            "refs": [
+              "V10",
+              "V11"
+            ]
+          },
+          {
+            "id": "s11",
+            "refs": [
+              "V11",
+              "V8"
+            ]
+          },
+          {
+            "id": "s12",
+            "refs": [
+              "V12",
+              "V13"
+            ]
+          },
+          {
+            "id": "s13",
+            "refs": [
+              "V13",
+              "V14"
+            ]
+          },
+          {
+            "id": "s14",
+            "refs": [
+              "V14",
+              "V15"
+            ]
+          },
+          {
+            "id": "s15",
+            "refs": [
+              "V15",
+              "V12"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 480,
+          "height": 400
+        },
+        "rightAngles": [
+          {
+            "id": "right",
+            "refs": [
+              "V2",
+              "V1",
+              "V3"
+            ],
+            "factRole": "GIVEN"
+          }
+        ],
+        "planeMarks": {
+          "regions": [
+            {
+              "id": "squares",
+              "fill": "MEDIUM",
+              "shapes": [
+                {
+                  "polygon": [
+                    "V4",
+                    "V5",
+                    "V6",
+                    "V7"
+                  ]
+                },
+                {
+                  "polygon": [
+                    "V8",
+                    "V9",
+                    "V10",
+                    "V11"
+                  ]
+                },
+                {
+                  "polygon": [
+                    "V12",
+                    "V13",
+                    "V14",
+                    "V15"
+                  ]
+                }
+              ],
+              "factRole": "GIVEN"
+            }
+          ],
+          "expressionLabels": [{"id":"legX","ownerSegment":"baseX","text":"2","factRole":"GIVEN"},{"id":"legY","ownerSegment":"baseY","text":"2","factRole":"GIVEN"}]
+        },
+        "caption": "R_2: 직각이등변삼각형의 닮은 잔여 두 삼각형에 단계별 정사각형 3개를 나타낸다."
+      }
+    },
+    {
+      "caption": {
+        "text": "R3: 누적 정사각형 7개"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "V1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V3",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V4",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "18",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V5",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "36",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "18",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V6",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "18",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "36",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V7",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "18",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V8",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "42",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "12",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V9",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "42",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V10",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "30",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V11",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "30",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "12",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V12",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "46",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V13",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "50",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "4",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V14",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "46",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "8",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V15",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "42",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "4",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V16",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "30",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "4",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V17",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "26",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "8",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V18",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "22",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "4",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V19",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "26",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V20",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "12",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "30",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V21",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "30",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V22",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "42",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V23",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "12",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "42",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V24",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "26",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V25",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "4",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "22",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V26",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "8",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "26",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V27",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "4",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "30",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V28",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "4",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "42",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V29",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "8",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "46",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V30",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "4",
+                    "denominator": "27"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "50",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V31",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "46",
+                    "denominator": "27"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "V1",
+          "V2",
+          "V3",
+          "V4",
+          "V5",
+          "V6",
+          "V7",
+          "V8",
+          "V9",
+          "V10",
+          "V11",
+          "V12",
+          "V13",
+          "V14",
+          "V15",
+          "V16",
+          "V17",
+          "V18",
+          "V19",
+          "V20",
+          "V21",
+          "V22",
+          "V23",
+          "V24",
+          "V25",
+          "V26",
+          "V27",
+          "V28",
+          "V29",
+          "V30",
+          "V31"
+        ],
+        "hiddenPointNames": [
+          "V1",
+          "V2",
+          "V3",
+          "V4",
+          "V5",
+          "V6",
+          "V7",
+          "V8",
+          "V9",
+          "V10",
+          "V11",
+          "V12",
+          "V13",
+          "V14",
+          "V15",
+          "V16",
+          "V17",
+          "V18",
+          "V19",
+          "V20",
+          "V21",
+          "V22",
+          "V23",
+          "V24",
+          "V25",
+          "V26",
+          "V27",
+          "V28",
+          "V29",
+          "V30",
+          "V31"
+        ],
+        "hiddenPointStyle": "NONE",
+        "displaySegments": [
+          {
+            "id": "baseX",
+            "refs": [
+              "V1",
+              "V2"
+            ]
+          },
+          {
+            "id": "baseY",
+            "refs": [
+              "V1",
+              "V3"
+            ]
+          },
+          {
+            "id": "hyp",
+            "refs": [
+              "V2",
+              "V3"
+            ]
+          },
+          {
+            "id": "s4",
+            "refs": [
+              "V4",
+              "V5"
+            ]
+          },
+          {
+            "id": "s5",
+            "refs": [
+              "V5",
+              "V6"
+            ]
+          },
+          {
+            "id": "s6",
+            "refs": [
+              "V6",
+              "V7"
+            ]
+          },
+          {
+            "id": "s7",
+            "refs": [
+              "V7",
+              "V4"
+            ]
+          },
+          {
+            "id": "s8",
+            "refs": [
+              "V8",
+              "V9"
+            ]
+          },
+          {
+            "id": "s9",
+            "refs": [
+              "V9",
+              "V10"
+            ]
+          },
+          {
+            "id": "s10",
+            "refs": [
+              "V10",
+              "V11"
+            ]
+          },
+          {
+            "id": "s11",
+            "refs": [
+              "V11",
+              "V8"
+            ]
+          },
+          {
+            "id": "s12",
+            "refs": [
+              "V12",
+              "V13"
+            ]
+          },
+          {
+            "id": "s13",
+            "refs": [
+              "V13",
+              "V14"
+            ]
+          },
+          {
+            "id": "s14",
+            "refs": [
+              "V14",
+              "V15"
+            ]
+          },
+          {
+            "id": "s15",
+            "refs": [
+              "V15",
+              "V12"
+            ]
+          },
+          {
+            "id": "s16",
+            "refs": [
+              "V16",
+              "V17"
+            ]
+          },
+          {
+            "id": "s17",
+            "refs": [
+              "V17",
+              "V18"
+            ]
+          },
+          {
+            "id": "s18",
+            "refs": [
+              "V18",
+              "V19"
+            ]
+          },
+          {
+            "id": "s19",
+            "refs": [
+              "V19",
+              "V16"
+            ]
+          },
+          {
+            "id": "s20",
+            "refs": [
+              "V20",
+              "V21"
+            ]
+          },
+          {
+            "id": "s21",
+            "refs": [
+              "V21",
+              "V22"
+            ]
+          },
+          {
+            "id": "s22",
+            "refs": [
+              "V22",
+              "V23"
+            ]
+          },
+          {
+            "id": "s23",
+            "refs": [
+              "V23",
+              "V20"
+            ]
+          },
+          {
+            "id": "s24",
+            "refs": [
+              "V24",
+              "V25"
+            ]
+          },
+          {
+            "id": "s25",
+            "refs": [
+              "V25",
+              "V26"
+            ]
+          },
+          {
+            "id": "s26",
+            "refs": [
+              "V26",
+              "V27"
+            ]
+          },
+          {
+            "id": "s27",
+            "refs": [
+              "V27",
+              "V24"
+            ]
+          },
+          {
+            "id": "s28",
+            "refs": [
+              "V28",
+              "V29"
+            ]
+          },
+          {
+            "id": "s29",
+            "refs": [
+              "V29",
+              "V30"
+            ]
+          },
+          {
+            "id": "s30",
+            "refs": [
+              "V30",
+              "V31"
+            ]
+          },
+          {
+            "id": "s31",
+            "refs": [
+              "V31",
+              "V28"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 480,
+          "height": 400
+        },
+        "rightAngles": [
+          {
+            "id": "right",
+            "refs": [
+              "V2",
+              "V1",
+              "V3"
+            ],
+            "factRole": "GIVEN"
+          }
+        ],
+        "planeMarks": {
+          "regions": [
+            {
+              "id": "squares",
+              "fill": "MEDIUM",
+              "shapes": [
+                {
+                  "polygon": [
+                    "V4",
+                    "V5",
+                    "V6",
+                    "V7"
+                  ]
+                },
+                {
+                  "polygon": [
+                    "V8",
+                    "V9",
+                    "V10",
+                    "V11"
+                  ]
+                },
+                {
+                  "polygon": [
+                    "V12",
+                    "V13",
+                    "V14",
+                    "V15"
+                  ]
+                },
+                {
+                  "polygon": [
+                    "V16",
+                    "V17",
+                    "V18",
+                    "V19"
+                  ]
+                },
+                {
+                  "polygon": [
+                    "V20",
+                    "V21",
+                    "V22",
+                    "V23"
+                  ]
+                },
+                {
+                  "polygon": [
+                    "V24",
+                    "V25",
+                    "V26",
+                    "V27"
+                  ]
+                },
+                {
+                  "polygon": [
+                    "V28",
+                    "V29",
+                    "V30",
+                    "V31"
+                  ]
+                }
+              ],
+              "factRole": "GIVEN"
+            }
+          ],
+          "expressionLabels": [{"id":"legX","ownerSegment":"baseX","text":"2","factRole":"GIVEN"},{"id":"legY","ownerSegment":"baseY","text":"2","factRole":"GIVEN"}]
+        },
+        "caption": "R_3: 직각이등변삼각형의 닮은 잔여 두 삼각형에 단계별 정사각형 7개를 나타낸다."
+      }
+    }
+  ],
+  "caption": "R1, R2, R3에서 한 정사각형→세 정사각형→일곱 정사각형으로 누적되는 칠하기 과정을 독립한 공식 작도 패널에 표현한다.",
+  "accessibilityDescription": "변 길이 2인 직각이등변삼각형의 세 단계: R1은 큰 정사각형 하나, R2는 큰 것과 두 작은 것, R3는 이전 세 개와 더 작은 네 개. 색칠된 각 영역은 공식 엔진의 MEDIUM 도형 영역.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "직각이등변삼각형의 두 직각변 2",
+      "mappedTo": [
+        "panels"
+      ]
+    },
+    {
+      "id": "S2",
+      "condition": "R1,R2,R3에서 남는 두 합동 삼각형에 새 정사각형을 차례로 추가",
+      "mappedTo": [
+        "panels"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 유사 SVG가 R1 한 장만 보이던 결함을 교정하여 원본 기출처럼 R1,R2,R3 단계 세 패널과 1·3·7개 색칠 영역을 모두 그린다."
+  ]
+}

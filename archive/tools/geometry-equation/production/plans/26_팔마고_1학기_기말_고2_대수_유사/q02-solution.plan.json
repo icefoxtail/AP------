@@ -1,0 +1,19 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"-24","denominator":"5"},{"kind":"rational","numerator":"-32","denominator":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"8"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"8"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["A","B","C","O"],"displayCircles":["k"],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]},{"id":"sOB","refs":["O","B"],"dashed":true},{"id":"sOC","refs":["O","C"],"dashed":true}],
+  "rightAngles":[{"id":"rO","refs":["B","O","C"],"factRole":"DERIVED_INTERMEDIATE"}],
+  "coordinateCanvas":{"width":650,"height":465},
+  "planeMarks":{"angles":[{"id":"aA","refs":["B","A","C"],"value":45,"label":"45","style":"ARC","factRole":"GIVEN"}],"expressionLabels":[{"id":"bc","ownerSegment":"sBC","text":"8sqrt(2)","factRole":"GIVEN"},{"id":"r","ownerSegment":"sOB","text":"8","factRole":"CONCLUSION"}]},
+  "caption":"사인법칙 2R=BC/sin45°에서 R=8을 얻는다. 두 점선 반지름과 중심의 직각은 해당 원의 90° 중심각을 확인하기 위한 보조선이다.",
+  "accessibilityDescription":"원에 내접한 삼각형, ∠A=45°, BC=8√2, 중심 O에서 B·C로 향하는 점선 반지름, 직각과 R=8 라벨.",
+  "sourceConditions":[{"id":"S1","condition":"BC=8√2, ∠A=45°, R=8","mappedTo":["planeMarks.expressionLabels","planeMarks.angles","displayCircles"]}],
+  "newVisualInformation":["해설에서 구한 반지름 8을 중심점·보조반지름·직각과 함께 시각화한다."]
+}

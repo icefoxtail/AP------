@@ -1,0 +1,331 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_THROUGH_3",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayCircles": [
+    "k"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 660,
+    "height": 540
+  },
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 78.46304096718453,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aE",
+        "refs": [
+          "C",
+          "E",
+          "D"
+        ],
+        "value": 78.46304096718453,
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "ab",
+        "ownerSegment": "sAB",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "de",
+        "ownerSegment": "sDE",
+        "text": "5",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ce",
+        "ownerSegment": "sCE",
+        "text": "2",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cd",
+        "ownerSegment": "sDC",
+        "text": "5",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ad",
+        "ownerSegment": "sAD",
+        "text": "10",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bc",
+        "ownerSegment": "sBC",
+        "text": "sqrt(217)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "∠CED=∠CAB인 원주각과 ∠CDE=∠BDA인 맞꼭지각으로 두 삼각형의 닮음을 보인다. CE=2, CD=5, DA=10, AC=15, BC=√217이므로 외접원 넓이=5425π/96이다.",
+  "accessibilityDescription": "원과 교점 D를 지나가는 두 선, 삼각형 CDE와 BDA의 같은 각 호 두 개, AB4·DE5·CE2·CD5·AD10·BC√217 라벨.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "AB=4, cos∠BAC=1/5",
+      "mappedTo": [
+        "displaySegments",
+        "planeMarks.angles",
+        "planeMarks.expressionLabels"
+      ]
+    },
+    {
+      "id": "S2",
+      "condition": "D∈AC∩BE, DE=5, CD+CE=7, A B C E 공원",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayCircles",
+        "planeMarks.textLabels"
+      ]
+    },
+    {
+      "id": "S3",
+      "condition": "CE=2, CD=5, DA=10, AC=15, BC=√217, 외접원 넓이5425π/96",
+      "mappedTo": [
+        "planeMarks.angles",
+        "planeMarks.expressionLabels",
+        "displayCircles"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "문제의 공원·두 분할 직선에서 ∠CAB=∠CED를 실제 각 호로 표시하고 닮음으로 구한 CD·CE·AD·BC 길이 라벨을 덧붙인다."
+  ]
+}
