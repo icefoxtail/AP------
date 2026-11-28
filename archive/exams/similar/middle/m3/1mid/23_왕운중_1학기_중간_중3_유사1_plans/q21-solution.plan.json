@@ -1,0 +1,29 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "정수 부분과 위치",
+        "band": false,
+        "points": [
+          { "id": "L", "value": "3", "hideName": true },
+          { "id": "R", "value": "sqrt(15)", "hideName": true, "valueSide": "ABOVE" },
+          { "id": "U", "value": "4", "hideName": true }
+        ]
+      }
+    ]
+  },
+  "caption": "3과 4 사이에 놓이는 √15의 위치로 정수 부분과 소수 부분을 구별한다.",
+  "accessibilityDescription": "수직선에서 3과 4 사이, 4에 조금 더 가까운 위치에 루트15가 표시되어 정수 부분 3과 나머지 소수 부분을 구분할 수 있다.",
+  "sourceConditions": [
+    { "id": "bounds", "condition": "3²<15<4²이므로 3<√15<4이다.", "mappedTo": "numberLine.rows[0].points의 L=3,R=√15,U=4의 순서" },
+    { "id": "integer", "condition": "정수 부분 a는 3이다.", "mappedTo": "numberLine.rows[0].points.L의 위치와 값 라벨" },
+    { "id": "fraction", "condition": "소수 부분 b=√15−3이다.", "mappedTo": "numberLine.rows[0].points.L에서 R까지 오른쪽 거리(길이는 캡션에서 계산 강요하지 않음)" }
+  ],
+  "newVisualInformation": [
+    "문제 그림으로 미리 답을 알려 주지 않고 해설에서만 √15의 정수 사이 위치를 시각화한다.",
+    "3·√15·4의 정확한 순서와 위치를 엔진 점 값에 결속한다."
+  ]
+}
