@@ -1,0 +1,390 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "19_동산여중_2학기_기말_중3_유사 10번: 원문의 삼각형, 원 및 측정 조건",
+  "accessibilityDescription": "19_동산여중_2학기_기말_중3_유사 10번 문제의 조건을 나타내는 도형",
+  "newVisualInformation": [
+    "원문의 주어진 관계를 실제 그리기 필드에 대응하여 도식화"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "8"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "8"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "8"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "rational",
+              "numerator": "51",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "E",
+    "F",
+    "G",
+    "T",
+    "X"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAG",
+      "refs": [
+        "A",
+        "G"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "sFT",
+      "refs": [
+        "F",
+        "T"
+      ]
+    },
+    {
+      "id": "sET",
+      "refs": [
+        "E",
+        "T"
+      ]
+    },
+    {
+      "id": "sXA",
+      "refs": [
+        "X",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aE",
+        "refs": [
+          "F",
+          "E",
+          "T"
+        ],
+        "value": 60,
+        "factRole": "GIVEN",
+        "color": "ROSE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAE",
+        "ownerSegment": "sAE",
+        "text": "1.5",
+        "unit": "m"
+      },
+      {
+        "id": "lEF",
+        "ownerSegment": "sEF",
+        "text": "8sqrt(3)",
+        "unit": "m"
+      },
+      {
+        "id": "lFT",
+        "ownerSegment": "sFT",
+        "text": "h",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sEF"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "segments": [
+          "sFT"
+        ],
+        "color": "GREEN"
+      },
+      {
+        "segments": [
+          "sET"
+        ],
+        "color": "WARM"
+      },
+      {
+        "segments": [
+          "sAE"
+        ],
+        "color": "VIOLET"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "E",
+        "F",
+        "T"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "E",
+    "F",
+    "G",
+    "T",
+    "X"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 400,
+    "height": 600
+  },
+  "sourceConditions": [
+    {
+      "id": "q10_problem_displaySegments_0",
+      "condition": "실제 그리는 선분 A–G",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q10_problem_displaySegments_1",
+      "condition": "실제 그리는 선분 A–E",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q10_problem_displaySegments_2",
+      "condition": "실제 그리는 선분 E–F",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q10_problem_displaySegments_3",
+      "condition": "실제 그리는 선분 F–G",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q10_problem_displaySegments_4",
+      "condition": "실제 그리는 선분 F–T",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q10_problem_displaySegments_5",
+      "condition": "실제 그리는 선분 E–T",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "q10_problem_displaySegments_6",
+      "condition": "실제 그리는 선분 X–A",
+      "mappedTo": "displaySegments[6]"
+    },
+    {
+      "id": "q10_problem_planeMarks_expressionLabels_0",
+      "condition": "선분 sAE의 표시 1.5",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q10_problem_planeMarks_expressionLabels_1",
+      "condition": "선분 sEF의 표시 8sqrt(3)",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q10_problem_planeMarks_expressionLabels_2",
+      "condition": "선분 sFT의 표시 h",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q10_problem_planeMarks_angles_0",
+      "condition": "각 F–E–T의 undefined 표시",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q10_problem_rightAngles_0",
+      "condition": "직각 표식 E–F–T",
+      "mappedTo": "rightAngles[0]"
+    }
+  ],
+  "sourceQuote": "어느 건물로부터 $8\\sqrt{3}\\rm,m$ 떨어진 지점 $A$에서 건물의 꼭대기를 올려다본 각의 크기가 $60^\\circ$이고, 측정자의 눈높이가 $1.5\\rm,m$일 때, 이 건물의 높이는?"
+}

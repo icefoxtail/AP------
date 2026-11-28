@@ -1,0 +1,278 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "19_연향중_2학기_기말_중3_유사 21번 해설: 독립 검산 결과와 보조 관계의 기하 시각화",
+  "accessibilityDescription": "19_연향중_2학기_기말_중3_유사 21번 해설의 수학적 도출 관계를 나타내는 도형",
+  "newVisualInformation": [
+    "계산으로 도출한 선분·각 또는 보조 관계를 공식 엔진 필드에 표시"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "75"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bc",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "A",
+          "bc"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 75,
+        "factRole": "GIVEN",
+        "label": "75",
+        "color": "BLUE",
+        "ring": 3,
+        "style": "ARC"
+      },
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 45,
+        "factRole": "GIVEN",
+        "label": "45",
+        "color": "GREEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "10",
+        "unit": "m"
+      },
+      {
+        "id": "sol_sAH_1",
+        "ownerSegment": "sAH",
+        "text": "5sqrt(3)",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "sol_sAB_2",
+        "ownerSegment": "sAB",
+        "text": "5sqrt(6)",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sAH"
+        ],
+        "color": "WARM"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 460
+  },
+  "sourceConditions": [
+    {
+      "id": "q21_solution_displaySegments_0",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q21_solution_displaySegments_1",
+      "condition": "실제 그리는 선분 A–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q21_solution_displaySegments_2",
+      "condition": "실제 그리는 선분 B–C",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q21_solution_displaySegments_3",
+      "condition": "실제 그리는 선분 A–H",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q21_solution_planeMarks_expressionLabels_0",
+      "condition": "선분 sAC의 표시 10",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q21_solution_planeMarks_expressionLabels_1",
+      "condition": "선분 sAH의 표시 5sqrt(3)",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q21_solution_planeMarks_expressionLabels_2",
+      "condition": "선분 sAB의 표시 5sqrt(6)",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q21_solution_planeMarks_angles_0",
+      "condition": "각 B–A–C의 75 표시",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q21_solution_planeMarks_angles_1",
+      "condition": "각 A–B–C의 45 표시",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "q21_solution_rightAngles_0",
+      "condition": "직각 표식 A–H–B",
+      "mappedTo": "rightAngles[0]"
+    }
+  ],
+  "sourceQuote": "(1) $\\overline{AH} \\perp \\overline{BC}$이므로 직각삼각형 $ABH$에서 $\\angle AHB = 90^\\circ$, $\\angle ABH = 45^\\circ$이다. $$\\angle BAH = 90^\\circ - 45^\\circ = 45^\\circ$$ (2) $\\angle BAC = 75^\\circ$이므로 $$\\angle CAH = \\angle BAC - \\angle BAH = 75^\\circ - 45^\\circ = 30^\\circ$$ (3) 직각삼각형 $ACH$에서 $\\overline{AC} = 10\\text{ m}$, $\\angle CAH = 30^\\circ$이므로 $$\\overline{AH} = \\overline{AC} \\cos 30^\\circ = 10 \\times \\dfrac{\\sqrt{3}}{2} = 5\\sqrt{3}\\text{ m}$$ (4) 직각삼각형 $ABH$는 $\\angle ABH = \\angle BAH = 45^\\circ$인 직각이등변삼각형이므로 $$\\overline{AB} = \\dfrac{\\overline{AH}}{\\sin 45^\\circ} = 5\\sqrt{3} \\div \\dfrac{\\sqrt{2}}{2} = 5\\sqrt{6}\\text{ m}$$"
+}

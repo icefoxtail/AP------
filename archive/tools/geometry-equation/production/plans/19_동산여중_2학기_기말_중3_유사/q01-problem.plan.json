@@ -1,0 +1,255 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "rational",
+              "numerator": "15",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "13",
+        "unit": "cm"
+      },
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "12",
+        "unit": "cm"
+      }
+    ],
+    "parallels": [
+      {
+        "id": "p1",
+        "count": 1,
+        "segments": [
+          "sBC",
+          "sDE"
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rD",
+      "refs": [
+        "A",
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "caption": "19_동산여중_2학기_기말_중3_유사 1번: 원문의 삼각형, 원 및 측정 조건",
+  "accessibilityDescription": "19_동산여중_2학기_기말_중3_유사 1번 문제의 조건을 나타내는 도형",
+  "sourceConditions": [
+    {
+      "id": "q01_problem_displaySegments_0",
+      "condition": "실제 그리는 선분 A–C",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q01_problem_displaySegments_1",
+      "condition": "실제 그리는 선분 C–D",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q01_problem_displaySegments_2",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q01_problem_displaySegments_3",
+      "condition": "실제 그리는 선분 B–E",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q01_problem_displaySegments_4",
+      "condition": "실제 그리는 선분 B–C",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q01_problem_displaySegments_5",
+      "condition": "실제 그리는 선분 D–E",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "q01_problem_planeMarks_expressionLabels_0",
+      "condition": "선분 sAB의 표시 13",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q01_problem_planeMarks_expressionLabels_1",
+      "condition": "선분 sAC의 표시 12",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q01_problem_rightAngles_0",
+      "condition": "직각 표식 A–D–E",
+      "mappedTo": "rightAngles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 주어진 관계를 실제 그리기 필드에 대응하여 도식화"
+  ],
+  "sourceQuote": "삼각형 $ADE$에서 $\\angle ADE = 90^\\circ$이고, 점 $B$는 선분 $AE$ 위에, 점 $C$는 선분 $AD$ 위에 있으며 $\\overline{BC} \\parallel \\overline{DE}$이다. $\\overline{AB} = 13\\rm,cm$, $\\overline{AC} = 12\\rm,cm$일 때, 다음 중 $\\sin A$를 나타내는 것은?"
+}

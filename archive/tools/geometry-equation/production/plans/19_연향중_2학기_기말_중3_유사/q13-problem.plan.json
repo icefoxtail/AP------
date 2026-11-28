@@ -1,0 +1,264 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "2",
+        "unit": "cm"
+      },
+      {
+        "id": "lBD",
+        "ownerSegment": "sDB",
+        "text": "8",
+        "unit": "cm"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "circ",
+        "center": "O",
+        "from": "B",
+        "to": "A",
+        "side": "CCW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "C",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "D",
+        "B",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 520
+  },
+  "caption": "19_연향중_2학기_기말_중3_유사 13번: 원문의 삼각형, 원 및 측정 조건",
+  "accessibilityDescription": "19_연향중_2학기_기말_중3_유사 13번 문제의 조건을 나타내는 도형",
+  "newVisualInformation": [
+    "원문의 주어진 관계를 실제 그리기 필드에 대응하여 도식화"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q13_problem_displaySegments_0",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q13_problem_displaySegments_1",
+      "condition": "실제 그리는 선분 A–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q13_problem_displaySegments_2",
+      "condition": "실제 그리는 선분 C–D",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q13_problem_displaySegments_3",
+      "condition": "실제 그리는 선분 D–B",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q13_problem_planeMarks_expressionLabels_0",
+      "condition": "선분 sAC의 표시 2",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q13_problem_planeMarks_expressionLabels_1",
+      "condition": "선분 sDB의 표시 8",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q13_problem_planeMarks_arcs_0",
+      "condition": "호 B–A의 실제 그리기",
+      "mappedTo": "planeMarks.arcs[0]"
+    },
+    {
+      "id": "q13_problem_rightAngles_0",
+      "condition": "직각 표식 C–A–B",
+      "mappedTo": "rightAngles[0]"
+    },
+    {
+      "id": "q13_problem_rightAngles_1",
+      "condition": "직각 표식 D–B–A",
+      "mappedTo": "rightAngles[1]"
+    }
+  ],
+  "sourceQuote": "다음 그림에서 $\\overline{AC}, \\overline{BD}, \\overline{CD}$는 지름이 $\\overline{AB}$인 원 $O$의 접선이다. $\\overline{AC} = 2\\text{ cm}$, $\\overline{BD} = 8\\text{ cm}$일 때, 원 $O$의 반지름의 길이는?"
+}

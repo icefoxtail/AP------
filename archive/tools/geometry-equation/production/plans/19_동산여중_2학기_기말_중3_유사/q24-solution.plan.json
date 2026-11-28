@@ -1,0 +1,343 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Xp",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Y1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Y2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "line",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "Xp",
+    "X1",
+    "X2",
+    "Y1",
+    "Y2"
+  ],
+  "displaySegments": [
+    {
+      "id": "AO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sx",
+      "refs": [
+        "X1",
+        "X2"
+      ]
+    },
+    {
+      "id": "sy",
+      "refs": [
+        "Y1",
+        "Y2"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [
+    "line"
+  ],
+  "coordinateLabels": [],
+  "rightAngles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "labA",
+        "ownerSegment": "AO",
+        "text": "-3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "labx",
+        "ownerSegment": "sx",
+        "text": "x"
+      },
+      {
+        "id": "laby",
+        "ownerSegment": "sy",
+        "text": "y"
+      },
+      {
+        "id": "sol_sAB_3",
+        "ownerSegment": "sAB",
+        "text": "m=sqrt(3)/3",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "angles": [
+      {
+        "id": "a30",
+        "refs": [
+          "Xp",
+          "A",
+          "B"
+        ],
+        "value": 30,
+        "label": "30",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "O",
+    "A",
+    "B",
+    "Xp",
+    "X1",
+    "X2",
+    "Y1",
+    "Y2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "19_동산여중_2학기_기말_중3_유사 24번 해설: 독립 검산 결과와 보조 관계의 기하 시각화",
+  "accessibilityDescription": "19_동산여중_2학기_기말_중3_유사 24번 해설의 수학적 도출 관계를 나타내는 도형",
+  "newVisualInformation": [
+    "계산으로 도출한 선분·각 또는 보조 관계를 공식 엔진 필드에 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q24_solution_displaySegments_0",
+      "condition": "실제 그리는 선분 A–O",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q24_solution_displaySegments_1",
+      "condition": "실제 그리는 선분 X1–X2",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q24_solution_displaySegments_2",
+      "condition": "실제 그리는 선분 Y1–Y2",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q24_solution_displaySegments_3",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q24_solution_planeMarks_expressionLabels_0",
+      "condition": "선분 AO의 표시 -3",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q24_solution_planeMarks_expressionLabels_1",
+      "condition": "선분 sx의 표시 x",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q24_solution_planeMarks_expressionLabels_2",
+      "condition": "선분 sy의 표시 y",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q24_solution_planeMarks_expressionLabels_3",
+      "condition": "선분 sAB의 표시 m=sqrt(3)/3",
+      "mappedTo": "planeMarks.expressionLabels[3]"
+    },
+    {
+      "id": "q24_solution_planeMarks_angles_0",
+      "condition": "각 Xp–A–B의 30 표시",
+      "mappedTo": "planeMarks.angles[0]"
+    }
+  ],
+  "sourceQuote": "(1) 직선이 $x$축의 양의 방향과 이루는 각의 크기가 $30^\\circ$이므로 직선의 기울기 $m$은 $$m = \\tan 30^\\circ = \\dfrac{\\sqrt{3}}{3}$$ (2) 직선의 방정식을 $y = \\dfrac{\\sqrt{3}}{3}x + b$라 하자. 이 직선은 $x$절편이 $-3$이므로 점 $(-3, 0)$을 지난다. $$0 = \\dfrac{\\sqrt{3}}{3} \\times (-3) + b \\implies 0 = -\\sqrt{3} + b \\implies b = \\sqrt{3}$$ 따라서 $y$절편은 $\\sqrt{3}$이다. (3) 구하는 직선의 방정식은 $$y = \\dfrac{\\sqrt{3}}{3}x + \\sqrt{3}$$"
+}

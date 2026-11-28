@@ -1,0 +1,266 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "144",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "60",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "96",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "40",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "96",
+              "denominator": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aX",
+        "refs": [
+          "B",
+          "D",
+          "E"
+        ],
+        "value": 67.38,
+        "label": "x",
+        "factRole": "GIVEN",
+        "color": "ROSE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "12"
+      },
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "5"
+      },
+      {
+        "id": "sol_sBC_2",
+        "ownerSegment": "sBC",
+        "text": "13",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "D",
+        "E",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 400
+  },
+  "caption": "19_연향중_2학기_기말_중3_유사 2번 해설: 독립 검산 결과와 보조 관계의 기하 시각화",
+  "accessibilityDescription": "19_연향중_2학기_기말_중3_유사 2번 해설의 수학적 도출 관계를 나타내는 도형",
+  "newVisualInformation": [
+    "계산으로 도출한 선분·각 또는 보조 관계를 공식 엔진 필드에 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q02_solution_displaySegments_0",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q02_solution_displaySegments_1",
+      "condition": "실제 그리는 선분 A–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q02_solution_displaySegments_2",
+      "condition": "실제 그리는 선분 B–C",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q02_solution_displaySegments_3",
+      "condition": "실제 그리는 선분 D–E",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q02_solution_planeMarks_expressionLabels_0",
+      "condition": "선분 sAB의 표시 12",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q02_solution_planeMarks_expressionLabels_1",
+      "condition": "선분 sAC의 표시 5",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q02_solution_planeMarks_expressionLabels_2",
+      "condition": "선분 sBC의 표시 13",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q02_solution_planeMarks_angles_0",
+      "condition": "각 B–D–E의 x 표시",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q02_solution_rightAngles_0",
+      "condition": "직각 표식 B–A–C",
+      "mappedTo": "rightAngles[0]"
+    },
+    {
+      "id": "q02_solution_rightAngles_1",
+      "condition": "직각 표식 D–E–B",
+      "mappedTo": "rightAngles[1]"
+    }
+  ],
+  "sourceQuote": "직각삼각형 $ABC$에서 $\\angle A = 90^\\circ$이므로 피타고라스 정리에 의하여 $$\\overline{BC} = \\sqrt{\\overline{AB}^2 + \\overline{AC}^2} = \\sqrt{12^2 + 5^2} = \\sqrt{169} = 13$$ 직각삼각형 $ABC$에서 $\\angle B$에 대하여 $$\\sin B = \\dfrac{\\overline{AC}}{\\overline{BC}} = \\dfrac{5}{13}, \\quad \\cos B = \\dfrac{\\overline{AB}}{\\overline{BC}} = \\dfrac{12}{13}$$ 직각삼각형 $DBE$에서 $\\angle DEB = 90^\\circ$이므로 $x = \\angle BDE = 90^\\circ - \\angle B$이다. 따라서 닮음인 직각삼각형의 여각 관계에 의해 $$\\sin x = \\cos B = \\dfrac{12}{13}, \\quad \\cos x = \\sin B = \\dfrac{5}{13}$$ $$\\sin x + \\cos x = \\dfrac{12}{13} + \\dfrac{5}{13} = \\dfrac{17}{13}$$ 이므로 정답은 ②이다."
+}

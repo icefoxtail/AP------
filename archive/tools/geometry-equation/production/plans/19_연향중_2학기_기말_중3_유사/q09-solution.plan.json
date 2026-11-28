@@ -1,0 +1,299 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "-12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "120",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "119",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "13"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "M"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lOD",
+        "ownerSegment": "sOD",
+        "text": "13",
+        "unit": "cm"
+      },
+      {
+        "id": "lOM",
+        "ownerSegment": "sOM",
+        "text": "5",
+        "unit": "cm"
+      },
+      {
+        "id": "sol_sAB_2",
+        "ownerSegment": "sAB",
+        "text": "24",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sCD"
+        ],
+        "color": "BLUE"
+      }
+    ],
+    "angles": []
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "O",
+        "M",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 520
+  },
+  "caption": "19_연향중_2학기_기말_중3_유사 9번 해설: 독립 검산 결과와 보조 관계의 기하 시각화",
+  "accessibilityDescription": "19_연향중_2학기_기말_중3_유사 9번 해설의 수학적 도출 관계를 나타내는 도형",
+  "newVisualInformation": [
+    "계산으로 도출한 선분·각 또는 보조 관계를 공식 엔진 필드에 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q09_solution_displaySegments_0",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q09_solution_displaySegments_1",
+      "condition": "실제 그리는 선분 C–D",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q09_solution_displaySegments_2",
+      "condition": "실제 그리는 선분 O–M",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q09_solution_displaySegments_3",
+      "condition": "실제 그리는 선분 O–C",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q09_solution_displaySegments_4",
+      "condition": "실제 그리는 선분 O–D",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q09_solution_planeMarks_expressionLabels_0",
+      "condition": "선분 sOD의 표시 13",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q09_solution_planeMarks_expressionLabels_1",
+      "condition": "선분 sOM의 표시 5",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q09_solution_planeMarks_expressionLabels_2",
+      "condition": "선분 sAB의 표시 24",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q09_solution_displayCircles_0",
+      "condition": "원의 테두리 circ",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "q09_solution_rightAngles_0",
+      "condition": "직각 표식 O–M–A",
+      "mappedTo": "rightAngles[0]"
+    }
+  ],
+  "sourceQuote": "원 $O$의 반지름의 길이가 $\\overline{OD} = 13\\text{ cm}$이고 $\\overline{OM} = 5\\text{ cm}$이다. 직각삼각형 $OAM$에서 피타고라스 정리에 의하여 $$\\overline{AM} = \\sqrt{\\overline{OA}^2 - \\overline{OM}^2} = \\sqrt{13^2 - 5^2} = \\sqrt{144} = 12\\text{ cm}$$ 원의 중심에서 현에 내린 수선은 그 현을 이등분하므로 $$\\overline{AB} = 2\\overline{AM} = 24\\text{ cm}$$ 한 원에서 길이가 같은 두 현은 중심으로부터의 거리가 같으므로 현 $CD$까지의 거리도 $5\\text{ cm}$이고 $\\overline{CD} = \\overline{AB} = 24\\text{ cm}$이다. 따라서 $\\triangle OCD$의 넓이는 $$\\dfrac{1}{2} \\times 24 \\times 5 = 60\\text{ cm}^2$$ 이므로 정답은 ③이다."
+}

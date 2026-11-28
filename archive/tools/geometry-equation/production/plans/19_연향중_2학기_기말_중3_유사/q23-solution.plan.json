@@ -1,0 +1,374 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "112"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "68"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ac",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bd",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ac",
+          "bd"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCP",
+      "refs": [
+        "C",
+        "P"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDP",
+      "refs": [
+        "D",
+        "P"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aO",
+        "refs": [
+          "C",
+          "O",
+          "D"
+        ],
+        "value": 44,
+        "factRole": "GIVEN",
+        "label": "44",
+        "color": "BLUE"
+      },
+      {
+        "id": "aX",
+        "refs": [
+          "C",
+          "P",
+          "D"
+        ],
+        "value": 68,
+        "factRole": "GIVEN",
+        "label": "x",
+        "color": "ROSE"
+      },
+      {
+        "id": "sol_APB",
+        "refs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "value": 68,
+        "label": "68",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "circ",
+        "center": "O",
+        "from": "B",
+        "to": "A",
+        "side": "CCW",
+        "color": "GREEN",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "arcCD",
+        "circle": "circ",
+        "center": "O",
+        "from": "D",
+        "to": "C",
+        "side": "MINOR",
+        "color": "WARM",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": []
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "caption": "19_연향중_2학기_기말_중3_유사 23번 해설: 독립 검산 결과와 보조 관계의 기하 시각화",
+  "accessibilityDescription": "19_연향중_2학기_기말_중3_유사 23번 해설의 수학적 도출 관계를 나타내는 도형",
+  "sourceConditions": [
+    {
+      "id": "q23_solution_displaySegments_0",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q23_solution_displaySegments_1",
+      "condition": "실제 그리는 선분 A–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q23_solution_displaySegments_2",
+      "condition": "실제 그리는 선분 C–P",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q23_solution_displaySegments_3",
+      "condition": "실제 그리는 선분 B–D",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q23_solution_displaySegments_4",
+      "condition": "실제 그리는 선분 D–P",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q23_solution_displaySegments_5",
+      "condition": "실제 그리는 선분 O–C",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "q23_solution_displaySegments_6",
+      "condition": "실제 그리는 선분 O–D",
+      "mappedTo": "displaySegments[6]"
+    },
+    {
+      "id": "q23_solution_planeMarks_angles_0",
+      "condition": "각 C–O–D의 44 표시",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q23_solution_planeMarks_angles_1",
+      "condition": "각 C–P–D의 x 표시",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "q23_solution_planeMarks_angles_2",
+      "condition": "각 A–P–B의 68 표시",
+      "mappedTo": "planeMarks.angles[2]"
+    },
+    {
+      "id": "q23_solution_planeMarks_arcs_0",
+      "condition": "호 B–A의 실제 그리기",
+      "mappedTo": "planeMarks.arcs[0]"
+    },
+    {
+      "id": "q23_solution_planeMarks_arcs_1",
+      "condition": "호 D–C의 실제 그리기",
+      "mappedTo": "planeMarks.arcs[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "계산으로 도출한 선분·각 또는 보조 관계를 공식 엔진 필드에 표시"
+  ],
+  "sourceQuote": "$\\overline{AB}$가 반원 $O$의 지름이므로 위쪽 반원의 호 $AB$에 대한 중심각의 크기는 $180^\\circ$이다. $\\angle COD = 44^\\circ$이므로 작은 호 $CD$에 대한 중심각의 크기는 $44^\\circ$이다. 원 밖의 점 $P$에서 두 할선 $PCA, PDB$가 이루는 각의 크기는 먼 호 $AB$와 가까운 호 $CD$의 중심각의 차의 절반이므로 $$\\angle x = \\dfrac{1}{2}(180^\\circ - 44^\\circ) = \\dfrac{136^\\circ}{2} = 68^\\circ$$"
+}

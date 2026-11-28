@@ -1,0 +1,394 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "1",
+                  "denominator": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "1",
+                  "denominator": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "1",
+                  "denominator": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "T"
+  ],
+  "hiddenPointNames": [
+    "T"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right_0",
+      "refs": [
+        "A",
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "right_1",
+      "refs": [
+        "O",
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "quarterArc",
+        "circle": "circle",
+        "center": "O",
+        "from": "D",
+        "to": "T",
+        "side": "MINOR",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "angle_AOB",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 30,
+        "label": "a",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angle_OCD",
+        "refs": [
+          "O",
+          "C",
+          "D"
+        ],
+        "value": 60,
+        "label": "b",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "sol_sCD_0",
+        "ownerSegment": "sCD",
+        "text": "sqrt(3)/3",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "sol_sAB_1",
+        "ownerSegment": "sAB",
+        "text": "1/2",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "caption": "19_연향중_2학기_기말_중3_유사 5번 해설: 독립 검산 결과와 보조 관계의 기하 시각화",
+  "sourceQuote": "반지름의 길이가 $1$인 사분원에서 $\\overline{OA} = \\overline{OD} = 1$이다. 직각삼각형 $OAB$에서 $\\sin a = \\dfrac{\\overline{AB}}{\\overline{OA}} = \\overline{AB}$, $\\cos a = \\dfrac{\\overline{OB}}{\\overline{OA}} = \\overline{OB}$이다. 직각삼각형 $OCD$에서 $\\tan a = \\dfrac{\\overline{CD}}{\\overline{OD}} = \\overline{CD}$이고, $b = 90^\\circ - a$이므로 $$\\sin b = \\dfrac{\\overline{OD}}{\\overline{OC}} = \\cos a = \\overline{OB}, \\quad \\cos b = \\dfrac{\\overline{CD}}{\\overline{OC}} = \\sin a = \\overline{AB}$$ 따라서 옳은 것은 ①과 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "q05_solution_displaySegments_0",
+      "condition": "실제 그리는 선분 O–A",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q05_solution_displaySegments_1",
+      "condition": "실제 그리는 선분 O–B",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q05_solution_displaySegments_2",
+      "condition": "실제 그리는 선분 A–B",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q05_solution_displaySegments_3",
+      "condition": "실제 그리는 선분 O–C",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q05_solution_displaySegments_4",
+      "condition": "실제 그리는 선분 O–D",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q05_solution_displaySegments_5",
+      "condition": "실제 그리는 선분 C–D",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "q05_solution_planeMarks_expressionLabels_0",
+      "condition": "선분 sCD의 표시 sqrt(3)/3",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q05_solution_planeMarks_expressionLabels_1",
+      "condition": "선분 sAB의 표시 1/2",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q05_solution_planeMarks_angles_0",
+      "condition": "각 A–O–B의 a 표시",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q05_solution_planeMarks_angles_1",
+      "condition": "각 O–C–D의 b 표시",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "q05_solution_planeMarks_arcs_0",
+      "condition": "호 D–T의 실제 그리기",
+      "mappedTo": "planeMarks.arcs[0]"
+    },
+    {
+      "id": "q05_solution_rightAngles_0",
+      "condition": "직각 표식 A–B–O",
+      "mappedTo": "rightAngles[0]"
+    },
+    {
+      "id": "q05_solution_rightAngles_1",
+      "condition": "직각 표식 O–D–C",
+      "mappedTo": "rightAngles[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "계산으로 도출한 선분·각 또는 보조 관계를 공식 엔진 필드에 표시"
+  ],
+  "accessibilityDescription": "19_연향중_2학기_기말_중3_유사 5번 해설의 수학적 도출 관계를 나타내는 도형"
+}

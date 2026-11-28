@@ -1,0 +1,101 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 6
+      },
+      "height": 3,
+      "names": "EFGHABCD"
+    }
+  ],
+  "segments": [
+    {
+      "from": "E",
+      "to": "G"
+    },
+    {
+      "from": "A",
+      "to": "G"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AD",
+      "label": "6"
+    },
+    {
+      "edge": "GH",
+      "label": "2"
+    },
+    {
+      "edge": "DH",
+      "label": "3"
+    },
+    {
+      "from": "E",
+      "to": "G",
+      "label": "2sqrt(10)"
+    },
+    {
+      "from": "A",
+      "to": "G",
+      "label": "7"
+    }
+  ],
+  "solidCaption": {
+    "text": "직육면체의 밑면대각선과 공간대각선"
+  },
+  "caption": "해설: EG²=6²+2²=40, AG²=3²+40=49",
+  "sourceQuote": "밑면 $EFGH$는 직사각형이고 $\\overline{EH} = \\overline{AD} = 6$, $\\overline{GH} = 2$이므로 밑면의 대각선 $\\overline{EG}$의 길이는 $$\\overl",
+  "sourceConditions": [
+    {
+      "id": "q03_solution_solids_0",
+      "condition": "실제 그리는 PRISM 입체",
+      "mappedTo": "solids[0]"
+    },
+    {
+      "id": "q03_solution_segments_0",
+      "condition": "실제 공간 선분 E–G",
+      "mappedTo": "segments[0]"
+    },
+    {
+      "id": "q03_solution_segments_1",
+      "condition": "실제 공간 선분 A–G",
+      "mappedTo": "segments[1]"
+    },
+    {
+      "id": "q03_solution_dims_0",
+      "condition": "입체 모서리 치수 AD: 6",
+      "mappedTo": "dims[0]"
+    },
+    {
+      "id": "q03_solution_dims_1",
+      "condition": "입체 모서리 치수 GH: 2",
+      "mappedTo": "dims[1]"
+    },
+    {
+      "id": "q03_solution_dims_2",
+      "condition": "입체 모서리 치수 DH: 3",
+      "mappedTo": "dims[2]"
+    },
+    {
+      "id": "q03_solution_dims_3",
+      "condition": "입체 모서리 치수 E–G: 2sqrt(10)",
+      "mappedTo": "dims[3]"
+    },
+    {
+      "id": "q03_solution_dims_4",
+      "condition": "입체 모서리 치수 A–G: 7",
+      "mappedTo": "dims[4]"
+    }
+  ],
+  "newVisualInformation": [
+    "계산으로 도출한 선분·각 또는 보조 관계를 공식 엔진 필드에 표시"
+  ],
+  "accessibilityDescription": "19_연향중_2학기_기말_중3_유사 3번 해설의 수학적 도출 관계를 나타내는 도형"
+}
