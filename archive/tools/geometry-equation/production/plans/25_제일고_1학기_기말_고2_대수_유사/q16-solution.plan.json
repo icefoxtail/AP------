@@ -1,0 +1,58 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": [
+      "1",
+      "16",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "1/8"
+      ],
+      "states": [
+        "OPEN",
+        "OPEN"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "pos",
+        "y": "1/2",
+        "intersectionCount": 2,
+        "color": "BLUE"
+      },
+      {
+        "id": "neg",
+        "y": "-1/2",
+        "intersectionCount": 2,
+        "color": "WARM"
+      }
+    ],
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "1/2",
+        "-1/2"
+      ]
+    }
+  },
+  "caption": "해설의 k=48과 대표 높이 a=1/2일 때 첫 주기에서 y=a 및 y=−a와 각각 두 점에서 만난다.",
+  "accessibilityDescription": "첫 한 주기 사인 곡선과 위아래 두 수평선이 각각 두 곳에서 교차하고 두 교점 쌍이 봉우리와 골을 중심으로 대칭이다.",
+  "newVisualInformation": [
+    "k=48, a=1/2을 대입한 해설 사례의 교점 수와 대칭성"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "양수 $k$에 대하여 함수 $y = \\sin\\frac{k}{3}x$ ($x > 0$)의 그래프와 직선 $y = a$ ($0 < a < 1$)의 교점의 $x$좌표 중 가장 작은 수를 $\\alpha$, 두 번째로 작은 수를 $\\beta$라 하고, 직선 $y = -a$와의 교점의 $x$좌표 중 가장 작은 수를 $\\gamma$, 두 번째로 작은 수를 $\\delta$라 하자. $\\tan(\\alpha + \\beta + \\gamma + \\delta) = 1$을 만족시키는 양수 $k$의 최댓값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

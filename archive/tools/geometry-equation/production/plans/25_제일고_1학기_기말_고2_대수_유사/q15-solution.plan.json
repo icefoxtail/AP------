@@ -1,0 +1,58 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "sin",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1/6",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "5/6",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "cos",
+        "color": "WARM",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1/4",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "7/4",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "label": "공통"
+      }
+    ]
+  },
+  "caption": "t=x/π로 바꾼 사인 부등식과 코사인 부등식의 해를 함께 비교한다.",
+  "accessibilityDescription": "첫째 수직선에는 1/6과 5/6 사이, 둘째에는 1/4과 7/4 사이의 열린 구간이 표시되고 마지막 줄에는 두 구간의 공통 부분이 표시된다.",
+  "newVisualInformation": [
+    "두 부등식의 열린 구간과 교집합을 같은 눈금에서 대조"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$0 \\le x < 2\\pi$일 때, 두 부등식 $\\sin x > \\frac{1}{2}$, $\\cos x < \\frac{\\sqrt{2}}{2}$를 동시에 만족시키는 $x$의 값의 범위가 $a\\pi < x < b\\pi$이다. $ab$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
