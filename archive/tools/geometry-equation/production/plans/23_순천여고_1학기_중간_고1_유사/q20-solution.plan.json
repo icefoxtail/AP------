@@ -1,0 +1,24 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "t",
+    "rows": [
+      {"kind": "POINTS", "label": "방정식의 해", "points": [
+        {"id": "A", "value": "1/3", "showValue": true},
+        {"id": "B", "value": "3", "showValue": true}
+      ]},
+      {"kind": "POINTS", "label": "분기점", "points": [
+        {"id": "M", "value": "1", "showValue": true}
+      ]}
+    ]
+  },
+  "numberLineCaption": {"text": "두 해와 경우를 나누는 값"},
+  "caption": "g(t)=0의 두 해 1/3과 3은 각각 t≤1, t>1인 경우에 속한다. 경계 t=1을 수직선에 함께 표시한다.",
+  "accessibilityDescription": "수직선에 1/3, 1, 3이 왼쪽부터 순서대로 표시되어 있고 1은 경우 분리 경계이다.",
+  "sourceConditions": [
+    {"id": "left", "condition": "t≤1인 경우 2−6t=0을 풀면 t=1/3", "mappedTo": "numberLine.rows[0].points[0]"},
+    {"id": "right", "condition": "t>1인 경우 2t−6=0을 풀면 t=3", "mappedTo": "numberLine.rows[0].points[1]"},
+    {"id": "split", "condition": "구간 [-1,3] 중점이 1이므로 t=1을 기준으로 경우를 나눈다", "mappedTo": "numberLine.rows[1].points[0]"}
+  ],
+  "newVisualInformation": ["구한 두 해가 각각 올바른 경우 범위에 들어가는지를 한 눈금 위에서 확인한다."]
+}

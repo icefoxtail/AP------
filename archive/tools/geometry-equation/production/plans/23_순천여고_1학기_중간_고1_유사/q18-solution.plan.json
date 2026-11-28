@@ -1,0 +1,20 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {"kind": "SET", "label": "첫 넓이 조건", "pieces": [{"lo": {"value": "5/3", "state": "OPEN"}, "hi": {"value": "5", "state": "OPEN"}}]},
+      {"kind": "SET", "label": "둘째 넓이 조건", "pieces": [{"lo": {"value": "0", "state": "OPEN"}, "hi": {"value": "10/3", "state": "OPEN"}}]},
+      {"kind": "RESULT", "label": "공통 범위"}
+    ]
+  },
+  "numberLineCaption": {"text": "두 넓이 부등식의 공통 범위"},
+  "caption": "직사각형 넓이가 두 직각삼각형보다 각각 클 조건은 5/3<a<5와 0<a<10/3으로, 공통 범위는 5/3<a<10/3이다.",
+  "accessibilityDescription": "수직선 세 줄의 공통 부분이 열린 구간 5/3부터 10/3까지임을 나타낸다.",
+  "sourceConditions": [
+    {"id": "one", "condition": "10a−2a²>(5−a)²에서 5/3<a<5", "mappedTo": "numberLine.rows[0]"},
+    {"id": "two", "condition": "10a−2a²>a²에서 0<a<10/3", "mappedTo": "numberLine.rows[1]"},
+    {"id": "intersection", "condition": "공통 범위 5/3<a<10/3", "mappedTo": "numberLine.rows[2]"}
+  ],
+  "newVisualInformation": ["넓이의 두 제약구간과 그 교집합을 동일 눈금으로 표시한다."]
+}
