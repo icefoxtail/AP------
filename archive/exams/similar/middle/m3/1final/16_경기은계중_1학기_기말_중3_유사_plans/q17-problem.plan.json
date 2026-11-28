@@ -1,22 +1,24 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curves": [
-    "x^2",
-    "-0.5*x^2"
-  ],
-  "points": {
-    "A": [
-      -0.667,
-      0.444
+  "capability":"multi-curve-figure-v1",
+  "graphPlan":{
+    "family":"multi-curve", "viewport":[-2,2,-3,5],
+    "curves":[
+      {"id":"upper","kind":"Y_OF_X","coefficients":["0","0","1"],"domain":["-2","2"],"label":"y=x^2","color":"BLUE"},
+      {"id":"lower","kind":"Y_OF_X","coefficients":["0","0","-1/2"],"domain":["-2","2"],"label":"y=-x^2/2","color":"WARM"}
     ],
-    "B": [
-      0.667,
-      0.444
-    ],
-    "C": [
-      0.667,
-      -0.222
-    ]
+    "axisTickValues":{"x":[],"y":[]},
+    "overlays":{
+      "points":[
+        {"id":"A","x":"-2/3","y":"4/9"}, {"id":"B","x":"2/3","y":"4/9"},
+        {"id":"C","x":"2/3","y":"-2/9"}
+      ],
+      "segments":[{"id":"AB","from":"A","to":"B"},{"id":"BC","from":"B","to":"C"}]
+    }
   },
-  "caption": "두 포물선 y=x²과 y=-1/2x² 위의 점 A, B, C의 선분 비"
+  "caption":"두 포물선 위의 A, B, C와 수평선 AB, 수직선 BC의 관계. A의 좌표는 표시하지 않는다.",
+  "sourceConditions":[
+    {"id":"curves","condition":"A,B는 y=x² 위, C는 y=-x²/2 위","mappedTo":"graphPlan.curves"},
+    {"id":"symmetry","condition":"A,B는 y축 대칭, BC는 y축에 평행, AB:BC=2:1","mappedTo":"graphPlan.overlays"}
+  ],
+  "newVisualInformation":["정확한 유리수 배치로 대칭과 수직/수평 관계를 복원한다. 좌표 숫자는 렌더에 노출하지 않는다."]
 }
