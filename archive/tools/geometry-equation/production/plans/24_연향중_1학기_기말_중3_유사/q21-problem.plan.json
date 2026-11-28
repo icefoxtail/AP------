@@ -1,0 +1,194 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "CIn",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "COut",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "Q"
+  ],
+  "displayCircles": [
+    "CIn",
+    "COut"
+  ],
+  "displaySegments": [
+    {
+      "id": "OP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "PQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "r",
+        "from": "O",
+        "to": "P",
+        "label": "8 cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "increase",
+        "from": "P",
+        "to": "Q",
+        "label": "x cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 460
+  },
+  "caption": "동심원에서 원래 반지름 8 cm와 증가분 x cm를 표시한 모식도",
+  "accessibilityDescription": "중심 O가 같은 두 원의 반지름을 한 직선 위에 놓고 안쪽 8 cm와 늘어난 길이 x cm를 별도 화살표로 나타낸다. x의 정답은 표시하지 않는다.",
+  "newVisualInformation": [
+    "원본 SVG의 동심원 두 개, 반지름 구간 두 개, 8 cm와 x cm 라벨을 실제 엔진 필드에 결속"
+  ],
+  "sourceConditions": [
+    {
+      "id": "center",
+      "condition": "두 원의 공통 중심 O",
+      "mappedTo": "mathPlan.nodes[0]"
+    },
+    {
+      "id": "innerRadius",
+      "condition": "주어진 8 cm 반지름",
+      "mappedTo": "mathPlan.nodes[3]"
+    },
+    {
+      "id": "outerRadius",
+      "condition": "바깥 원의 반지름은 8+x이며 수치 12는 그리기용 대표 길이일 뿐 답이 아님",
+      "mappedTo": "mathPlan.nodes[4]"
+    },
+    {
+      "id": "innerCircle",
+      "condition": "안쪽 원",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "outerCircle",
+      "condition": "바깥 원",
+      "mappedTo": "displayCircles[1]"
+    },
+    {
+      "id": "r8",
+      "condition": "8 cm 길이 구간 OP",
+      "mappedTo": "planeMarks.dimensions[0]"
+    },
+    {
+      "id": "rx",
+      "condition": "x cm 늘어난 구간 PQ",
+      "mappedTo": "planeMarks.dimensions[1]"
+    }
+  ],
+  "sourceQuote": "아래 그림과 같이 반지름의 길이가 $8\\text{ cm}$인 원이 있다. 이 원의 반지름의 길이를 $x\\text{ cm}$만큼 늘인 원"
+}

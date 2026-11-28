@@ -1,0 +1,106 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "G",
+        "x": "0",
+        "y": "-7",
+        "marker": "NONE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-2",
+          "y": "-8",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "-2",
+          "y": "-15",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B",
+          "length": true
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "coefficients": [
+          "-7",
+          "0",
+          "-2"
+        ],
+        "intersectionX": []
+      }
+    ],
+    "functionName": "f"
+  },
+  "caption": "세로 거리 |-2x²-(-2x²-7)|=7",
+  "accessibilityDescription": "A(-2,-8), B(-2,-15)를 세로로 연결하고 길이 7을 표시하여 평행이동 거리를 검산한다.",
+  "newVisualInformation": [
+    "세로 선분 길이 7을 해설에만 표기"
+  ],
+  "sourceConditions": [
+    {
+      "id": "upper",
+      "condition": "주어진 y=-2x²",
+      "mappedTo": "graphPlan.pieces[0].coefficients"
+    },
+    {
+      "id": "lower",
+      "condition": "주어진 y=-2x²-7",
+      "mappedTo": "graphPlan.referenceCurves[0].coefficients"
+    },
+    {
+      "id": "A",
+      "condition": "x=-2 위치에서 위 포물선의 예시점 A",
+      "mappedTo": "graphPlan.overlays.points[0]"
+    },
+    {
+      "id": "B",
+      "condition": "같은 x에서 아래 포물선의 예시점 B",
+      "mappedTo": "graphPlan.overlays.points[1]"
+    },
+    {
+      "id": "AB",
+      "condition": "y축에 평행한 두 곡선 사이 선분 AB",
+      "mappedTo": "graphPlan.overlays.segments[0]"
+    }
+  ],
+  "sourceQuote": "두 이차함수 $y=-2x^2$과 $y=-2x^2-7$의 그래프가 다음 그림과 같을 때, $\\overline{\\text{AB}}$의 길이"
+}

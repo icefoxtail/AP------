@@ -1,0 +1,77 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "7",
+          "-14/3",
+          "7/9"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "3",
+        "y": "0"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "Y",
+          "x": "0",
+          "y": "7",
+          "coordinates": true
+        },
+        {
+          "id": "P",
+          "x": "6",
+          "y": "7",
+          "coordinates": false
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "pointNames": {
+    "P": "(6,k)"
+  },
+  "caption": "꼭짓점 (3,0), 점 (0,7), 미지 점 (6,k)",
+  "accessibilityDescription": "축 x=3에 대칭인 포물선과 주어진 점, x=6의 미지 높이 k를 보여 준다. k의 숫자는 표시하지 않는다.",
+  "newVisualInformation": [
+    "원본 SVG의 V,Y,P 삼점과 곡선 실제 필드 연결"
+  ],
+  "sourceConditions": [
+    {
+      "id": "curve",
+      "condition": "꼭짓점 (3,0)과 y절편 7을 지나는 포물선",
+      "mappedTo": "graphPlan.pieces[0].coefficients"
+    },
+    {
+      "id": "V",
+      "condition": "주어진 꼭짓점 (3,0)",
+      "mappedTo": "graphPlan.requiredPoints[0]"
+    },
+    {
+      "id": "Y",
+      "condition": "주어진 그래프와 y축의 교점 (0,7)",
+      "mappedTo": "graphPlan.overlays.points[0]"
+    },
+    {
+      "id": "P",
+      "condition": "질문 점 (6,k), k는 문제에서 미지",
+      "mappedTo": "graphPlan.overlays.points[1]"
+    }
+  ],
+  "sourceQuote": "다음 그림은 이차함수 $y=ax^2$의 그래프를 평행이동한 것이다. 이 그래프가 점 $(6, k)$를 지날 때, $k$의 값은? (단,"
+}

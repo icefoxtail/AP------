@@ -1,0 +1,135 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-2",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "2",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "2",
+          "y": "12",
+          "coordinates": true
+        },
+        {
+          "id": "D",
+          "x": "-2",
+          "y": "12",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "BC",
+          "from": "B",
+          "to": "C"
+        },
+        {
+          "id": "CD",
+          "from": "C",
+          "to": "D"
+        },
+        {
+          "id": "DA",
+          "from": "D",
+          "to": "A"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "rect",
+          "points": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "t=2, 가로 4, 높이 12, 직사각형 둘레 32",
+  "accessibilityDescription": "C(2,12), D(-2,12)와 x축 위 A,B를 연결해 넓이 48에서 둘레 32를 계산한다.",
+  "newVisualInformation": [
+    "풀이에서 얻은 네 점의 좌표와 직사각형 경계"
+  ],
+  "sourceConditions": [
+    {
+      "id": "curve",
+      "condition": "주어진 포물선 y=3x²",
+      "mappedTo": "graphPlan.pieces[0].coefficients"
+    },
+    {
+      "id": "A",
+      "condition": "직사각형 왼쪽 밑변 끝 A=(-t,0)",
+      "mappedTo": "graphPlan.overlays.points[0]"
+    },
+    {
+      "id": "B",
+      "condition": "B=(t,0), t>0",
+      "mappedTo": "graphPlan.overlays.points[1]"
+    },
+    {
+      "id": "C",
+      "condition": "C=(t,3t²)",
+      "mappedTo": "graphPlan.overlays.points[2]"
+    },
+    {
+      "id": "D",
+      "condition": "D=(-t,3t²)",
+      "mappedTo": "graphPlan.overlays.points[3]"
+    },
+    {
+      "id": "edges",
+      "condition": "평행한 네 변과 직각 조건",
+      "mappedTo": "graphPlan.overlays.segments[1]"
+    },
+    {
+      "id": "area",
+      "condition": "가로 2t·세로 3t²인 직사각형 면적 48",
+      "mappedTo": "graphPlan.overlays.polygons[0]"
+    }
+  ],
+  "sourceQuote": "다음 그림과 같이 점 $\\text{A}, \\text{B}$는 $x$축 위에 있고, 점 $\\text{C}, \\text{D}$는 이차함수 "
+}
