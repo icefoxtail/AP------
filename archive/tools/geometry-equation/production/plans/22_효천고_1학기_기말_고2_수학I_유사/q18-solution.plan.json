@@ -1,0 +1,64 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": [
+      "1",
+      "1",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "OPEN",
+        "OPEN"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "upper",
+        "y": "1/2",
+        "intersectionCount": 2,
+        "color": "BLUE"
+      },
+      {
+        "id": "lower",
+        "y": "-1/2",
+        "intersectionCount": 2,
+        "color": "ROSE"
+      }
+    ],
+    "keyPoints": true,
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [
+        "1/2",
+        "1",
+        "3/2"
+      ],
+      "y": [
+        "-1",
+        "1"
+      ]
+    },
+    "displaySize": "full"
+  },
+  "caption": "해설축: t=4kx의 한 주기에서 0<a<1의 대표값 a=1/2로 y=sin t와 y=±a의 교점 순서를 보인다.",
+  "accessibilityDescription": "사인 곡선의 첫 주기에서 위쪽 수평선 y=1/2과 두 번, 아래쪽 수평선 y=−1/2과 두 번 만난다. 실제 문제의 a는 미정이고 대표값만 사용한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "현행 유사 q18: x>0, y=sin(4kx), y=a 및 y=−a (0<a<1,k>0)의 첫 두 교점을 각각 α,β,γ,δ라 한다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "t=4kx를 도입하고 대표값 a=1/2를 사용한 첫 주기 교점 순서. 매개변수의 실제 수치를 정한 것은 아니다."
+  ]
+}

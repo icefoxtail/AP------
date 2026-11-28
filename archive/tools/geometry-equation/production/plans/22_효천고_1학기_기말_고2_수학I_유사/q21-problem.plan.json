@@ -1,0 +1,371 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-7",
+              "denominator": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "4",
+                  "denominator": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-17",
+              "denominator": "27"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "56",
+                  "denominator": "27"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "16",
+              "denominator": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "numerator": "4",
+                      "denominator": "3"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "2"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circle1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circle2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O1",
+    "O2"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circle1",
+    "circle2"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAO1",
+      "refs": [
+        "A",
+        "O1"
+      ]
+    },
+    {
+      "id": "sO1O2",
+      "refs": [
+        "O1",
+        "O2"
+      ]
+    },
+    {
+      "id": "sO1B",
+      "refs": [
+        "O1",
+        "B"
+      ]
+    },
+    {
+      "id": "sO1C",
+      "refs": [
+        "O1",
+        "C"
+      ]
+    },
+    {
+      "id": "sCO2",
+      "refs": [
+        "C",
+        "O2"
+      ]
+    },
+    {
+      "id": "sO2D",
+      "refs": [
+        "O2",
+        "D"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sO1D",
+      "refs": [
+        "O1",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "theta1",
+        "refs": [
+          "B",
+          "O1",
+          "A"
+        ],
+        "label": "θ_1",
+        "labelKind": "MATH",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "theta2",
+        "refs": [
+          "O2",
+          "O1",
+          "C"
+        ],
+        "label": "θ_2",
+        "labelKind": "MATH",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "theta3",
+        "refs": [
+          "O1",
+          "O2",
+          "D"
+        ],
+        "label": "θ_3",
+        "labelKind": "MATH",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "abLength",
+        "ownerSegment": "sAB",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "odLength",
+        "ownerSegment": "sO1D",
+        "text": "4*sqrt(2)",
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "radii",
+        "count": 1,
+        "segments": [
+          "sAO1",
+          "sO1O2",
+          "sO1B",
+          "sO1C",
+          "sO2D"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 540,
+    "height": 420
+  },
+  "caption": "두 원은 반지름이 중심 사이 거리와 같고 A-O₁-O₂, C-O₂-D가 일직선이며 θ₃=θ₁+θ₂이다.",
+  "accessibilityDescription": "중심 O1, O2의 반지름이 같은 두 원을 겹쳐 놓고 A, B, C, D를 조건의 직선 순서에 맞게 표시했다. AB=2, O1D=4루트2이고 세 중심각을 θ1, θ2, θ3로 표기했다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "현행 유사 q21: 같은 반지름의 두 원 C1,C2, A-O1-O2 및 C-O2-D 순서, θ3=θ1+θ2, AB=2, O1D=4√2. CD를 구한다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "두 원의 겹침과 지정된 직선 순서, 세 각, 길이 2와 4√2 및 공통반지름 표식을 보인다."
+  ]
+}
