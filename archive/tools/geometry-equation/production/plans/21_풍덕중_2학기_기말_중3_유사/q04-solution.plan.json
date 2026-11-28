@@ -1,0 +1,341 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "190"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "320"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "hiddenPointNames": [
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aCBD",
+        "refs": [
+          "C",
+          "B",
+          "D"
+        ],
+        "value": 35,
+        "label": "35",
+        "factRole": "GIVEN",
+        "color": "BLUE"
+      },
+      {
+        "id": "aBDC",
+        "refs": [
+          "B",
+          "D",
+          "C"
+        ],
+        "value": 65,
+        "label": "65",
+        "factRole": "GIVEN",
+        "color": "GREEN"
+      },
+      {
+        "id": "aBCD",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "label": "80",
+        "factRole": "CONCLUSION",
+        "color": "ROSE",
+        "value": 80
+      },
+      {
+        "id": "aBAD",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "label": "100",
+        "factRole": "CONCLUSION",
+        "color": "WARM",
+        "value": 100
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 580
+  },
+  "caption": "풍덕중 중3 2학기 기말 04번 해설: 원에 내접한 사각형에서 삼각형 BCD의 35°·65°와 대각",
+  "accessibilityDescription": "풍덕중 4번 풀이 관계을 수학 도형·통계 분포로 나타낸 그림. 원에 내접한 사각형에서 삼각형 BCD의 35°·65°와 대각.",
+  "newVisualInformation": [
+    "원에 내접한 사각형에서 삼각형 BCD의 35°·65°와 대각",
+    "증명에 필요한 보조 관계·위치·수치 분포를 강조"
+  ],
+  "sourceConditions": [
+    {
+      "id": "F001",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "F002",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayPoints[1]"
+    },
+    {
+      "id": "F003",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayPoints[2]"
+    },
+    {
+      "id": "F004",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayPoints[3]"
+    },
+    {
+      "id": "F005",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayPoints[4]"
+    },
+    {
+      "id": "F006",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "F007",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "F008",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "F009",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "F010",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "F011",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "F012",
+      "condition": "발문 또는 풀이의 시각 표식",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "F013",
+      "condition": "발문 또는 풀이의 시각 표식",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "F014",
+      "condition": "발문 또는 풀이의 시각 표식",
+      "mappedTo": "planeMarks.angles[2]"
+    },
+    {
+      "id": "F015",
+      "condition": "발문 또는 풀이의 시각 표식",
+      "mappedTo": "planeMarks.angles[3]"
+    }
+  ],
+  "sourceQuote": "$\\triangle BCD$에서 세 내각의 크기의 합은 $180^\\circ$이므로 $$\\angle x = \\angle BCD = 180^\\circ - (35^\\circ + 65^\\circ) = 180^\\circ - 100^\\circ = 80^\\circ$$ 사각형 $ABCD$가 원에 내접하므로 마주 보는 두 대각의 크기의 합은 $180^\\circ$이다. $$\\angle y = \\angle BAD = 180^\\circ - \\angle BCD = 180^\\circ - 80^\\circ = 100^\\circ$$ 따라서 $\\angle x = 80^\\circ,\\ \\angle y = 100^\\circ$이다. 따라서 정답은 ①이다."
+}

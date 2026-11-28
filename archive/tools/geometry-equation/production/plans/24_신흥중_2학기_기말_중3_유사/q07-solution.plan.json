@@ -1,0 +1,393 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "270"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "340"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "tan",
+        "op": "TANGENT_AT_POINT",
+        "inputs": [
+          "circ",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "14"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "T"
+  ],
+  "displayLines": [
+    "tan"
+  ],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "DB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aBAT",
+        "refs": [
+          "B",
+          "A",
+          "T"
+        ],
+        "value": 35,
+        "label": "35",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aCDB",
+        "refs": [
+          "C",
+          "D",
+          "B"
+        ],
+        "value": 40,
+        "label": "40",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aADB",
+        "refs": [
+          "A",
+          "D",
+          "B"
+        ],
+        "value": 35,
+        "label": "35",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "aCDA",
+        "refs": [
+          "C",
+          "D",
+          "A"
+        ],
+        "value": 75,
+        "label": "75",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "aCBA",
+        "refs": [
+          "C",
+          "B",
+          "A"
+        ],
+        "value": 105,
+        "label": "105",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 660,
+    "height": 580
+  },
+  "caption": "신흥중 중3 2학기 기말 07번 해설: 접선 AT·원주각 CDB40°가 정하는 내접사각형의 대각",
+  "accessibilityDescription": "신흥중 7번 풀이 관계을 수학 도형·통계 분포로 나타낸 그림. 접선 AT·원주각 CDB40°가 정하는 내접사각형의 대각.",
+  "newVisualInformation": [
+    "접선 AT·원주각 CDB40°가 정하는 내접사각형의 대각",
+    "증명에 필요한 보조 관계·위치·수치 분포를 강조"
+  ],
+  "sourceConditions": [
+    {
+      "id": "F001",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "F002",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayPoints[1]"
+    },
+    {
+      "id": "F003",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayPoints[2]"
+    },
+    {
+      "id": "F004",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayPoints[3]"
+    },
+    {
+      "id": "F005",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayPoints[4]"
+    },
+    {
+      "id": "F006",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayPoints[5]"
+    },
+    {
+      "id": "F007",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "F008",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "F009",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "F010",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "F011",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "F012",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayLines[0]"
+    },
+    {
+      "id": "F013",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "F014",
+      "condition": "발문 또는 풀이의 시각 표식",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "F015",
+      "condition": "발문 또는 풀이의 시각 표식",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "F016",
+      "condition": "발문 또는 풀이의 시각 표식",
+      "mappedTo": "planeMarks.angles[2]"
+    },
+    {
+      "id": "F017",
+      "condition": "발문 또는 풀이의 시각 표식",
+      "mappedTo": "planeMarks.angles[3]"
+    },
+    {
+      "id": "F018",
+      "condition": "발문 또는 풀이의 시각 표식",
+      "mappedTo": "planeMarks.angles[4]"
+    }
+  ],
+  "sourceQuote": "접선과 현이 이루는 각 및 원에 내접하는 사각형의 성질을 단계별로 적용한다.\n\n1단계: 접선과 현이 이루는 각의 성질에 의하여 접선 $AT$와 현 $AB$가 이루는 각은 그 호에 대한 원주각 $\\angle ADB$의 크기와 같다. $$\\begin{aligned} \\angle ADB &= \\angle BAT \\ &= 35^\\circ \\end{aligned}$$\n\n2단계: 꼭짓점 $D$에서의 내각 $\\angle CDA$의 크기는 다음과 같다. $$\\begin{aligned} \\angle CDA &= \\angle CDB + \\angle ADB \\ &= 40^\\circ + 35^\\circ \\ &= 75^\\circ \\end{aligned}$$\n\n3단계: 사각형 $ABCD$는 원 $O$에 내접하므로 서로 마주 보는 두 대각의 크기의 합은 $180^\\circ$이다. $$\\begin{aligned} \\angle CBA + \\angle CDA &= 180^\\circ \\ \\angle CBA &= 180^\\circ - 75^\\circ \\ &= 105^\\circ \\end{aligned}$$\n\n4단계: 따라서 구하고자 하는 차의 값은 다음과 같다. $$\\begin{aligned} \\angle CBA - \\angle ADB &= 105^\\circ - 35^\\circ \\ &= 70^\\circ \\end{aligned}$$ 따라서 정답은 ①이다."
+}

@@ -1,0 +1,374 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "300"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "circ",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "CCW",
+        "label": "3",
+        "labelKind": "TEXT",
+        "labelPlacement": "LEADER",
+        "factRole": "GIVEN",
+        "labelWeight": "MATH"
+      },
+      {
+        "id": "arcBC",
+        "circle": "circ",
+        "center": "O",
+        "from": "B",
+        "to": "C",
+        "side": "CCW",
+        "label": "4",
+        "labelKind": "TEXT",
+        "labelPlacement": "LEADER",
+        "factRole": "GIVEN",
+        "labelWeight": "MATH"
+      },
+      {
+        "id": "arcCA",
+        "circle": "circ",
+        "center": "O",
+        "from": "C",
+        "to": "A",
+        "side": "CCW",
+        "label": "5",
+        "labelKind": "TEXT",
+        "labelPlacement": "LEADER",
+        "factRole": "GIVEN",
+        "labelWeight": "MATH"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lOA",
+        "ownerSegment": "OA",
+        "text": "8",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aAOB",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "aBOC",
+        "refs": [
+          "B",
+          "O",
+          "C"
+        ],
+        "value": 120,
+        "label": "120",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "aCOA",
+        "refs": [
+          "C",
+          "O",
+          "A"
+        ],
+        "value": 150,
+        "label": "150",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 540
+  },
+  "caption": "신흥중 중3 2학기 기말 21번 해설: 반지름8의 원에 내접한 삼각형의 세 호 길이 비3:4:5",
+  "accessibilityDescription": "신흥중 21번 풀이 관계을 수학 도형·통계 분포로 나타낸 그림. 반지름8의 원에 내접한 삼각형의 세 호 길이 비3:4:5.",
+  "newVisualInformation": [
+    "반지름8의 원에 내접한 삼각형의 세 호 길이 비3:4:5",
+    "증명에 필요한 보조 관계·위치·수치 분포를 강조"
+  ],
+  "sourceConditions": [
+    {
+      "id": "F001",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "F002",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayPoints[1]"
+    },
+    {
+      "id": "F003",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayPoints[2]"
+    },
+    {
+      "id": "F004",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayPoints[3]"
+    },
+    {
+      "id": "F005",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "F006",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "F007",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "F008",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "F009",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "F010",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "F011",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "F012",
+      "condition": "발문 또는 풀이의 시각 표식",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "F013",
+      "condition": "발문 또는 풀이의 시각 표식",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "F014",
+      "condition": "발문 또는 풀이의 시각 표식",
+      "mappedTo": "planeMarks.angles[2]"
+    },
+    {
+      "id": "F015",
+      "condition": "발문 또는 풀이의 시각 표식",
+      "mappedTo": "planeMarks.arcs[0]"
+    },
+    {
+      "id": "F016",
+      "condition": "발문 또는 풀이의 시각 표식",
+      "mappedTo": "planeMarks.arcs[1]"
+    },
+    {
+      "id": "F017",
+      "condition": "발문 또는 풀이의 시각 표식",
+      "mappedTo": "planeMarks.arcs[2]"
+    },
+    {
+      "id": "F018",
+      "condition": "발문 또는 풀이의 시각 표식",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    }
+  ],
+  "sourceQuote": "호의 길이의 비로부터 각 호의 중심각의 크기를 구한 뒤 세 삼각형의 넓이의 합으로 $\\triangle ABC$의 넓이를 계산한다.\n\n1단계: 한 원에서 호의 길이는 중심각의 크기에 정비례한다. 원 전체의 중심각의 크기는 $360^\\circ$이고, $3 + 4 + 5 = 12$이므로 각 호에 대한 중심각의 크기는 다음과 같다. $$\\begin{aligned} \\angle AOB &= 360^\\circ \\times \\dfrac{3}{12} = 90^\\circ \\ \\angle BOC &= 360^\\circ \\times \\dfrac{4}{12} = 120^\\circ \\ \\angle COA &= 360^\\circ \\times \\dfrac{5}{12} = 150^\\circ \\end{aligned}$$\n\n2단계: 원의 반지름의 길이가 $8$이므로, 원의 중심 $O$와 세 점을 이은 세 삼각형의 넓이를 삼각비를 이용하여 각각 구한다. $$\\begin{aligned} \\triangle AOB &= \\dfrac{1}{2} \\times 8 \\times 8 \\times \\sin 90^\\circ \\ &= 32 \\times 1 = 32 \\ \\triangle BOC &= \\dfrac{1}{2} \\times 8 \\times 8 \\times \\sin 120^\\circ \\ &= 32 \\times \\dfrac{\\sqrt{3}}{2} = 16\\sqrt{3} \\ \\triangle COA &= \\dfrac{1}{2} \\times 8 \\times 8 \\times \\sin 150^\\circ \\ &= 32 \\times \\dfrac{1}{2} = 16 \\end{aligned}$$\n\n3단계: 삼각형 $ABC$의 넓이는 세 삼각형의 넓이의 합과 같으므로 다음과 같다. $$\\begin{aligned} \\triangle ABC &= \\triangle AOB + \\triangle BOC + \\triangle COA \\ &= 32 + 16\\sqrt{3} + 16 \\ &= 48 + 16\\sqrt{3} \\end{aligned}$$ 따라서 구하는 삼각형 $ABC$의 넓이는 $48 + 16\\sqrt{3}$이다."
+}

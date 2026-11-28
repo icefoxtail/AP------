@@ -1,0 +1,314 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "R0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "25"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "R0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "25"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "210"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "R0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "25"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "14"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "R0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "25"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "54"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "25"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "R0",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "ab",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "bc",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "cd",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "da",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angleB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 38,
+        "label": "38",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angleD",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "value": 142,
+        "label": "142",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "facts": [
+      {
+        "kind": "ON_CIRCLE",
+        "circle": "circ",
+        "points": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 560
+  },
+  "hiddenPointNames": [
+    "O",
+    "R0"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "풍덕중 중3 2학기 기말 22번 해설: 내접사각형의 서로 마주 보는 대각 x와 (4x−10)°",
+  "accessibilityDescription": "풍덕중 22번 풀이 관계을 수학 도형·통계 분포로 나타낸 그림. 내접사각형의 서로 마주 보는 대각 x와 (4x−10)°.",
+  "newVisualInformation": [
+    "내접사각형의 서로 마주 보는 대각 x와 (4x−10)°",
+    "증명에 필요한 보조 관계·위치·수치 분포를 강조"
+  ],
+  "sourceConditions": [
+    {
+      "id": "F001",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "F002",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayPoints[1]"
+    },
+    {
+      "id": "F003",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayPoints[2]"
+    },
+    {
+      "id": "F004",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayPoints[3]"
+    },
+    {
+      "id": "F005",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayPoints[4]"
+    },
+    {
+      "id": "F006",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayPoints[5]"
+    },
+    {
+      "id": "F007",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "F008",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "F009",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "F010",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "F011",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "F012",
+      "condition": "발문 또는 풀이의 시각 표식",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "F013",
+      "condition": "발문 또는 풀이의 시각 표식",
+      "mappedTo": "planeMarks.angles[1]"
+    }
+  ],
+  "sourceQuote": "원에 내접하는 사각형의 마주 보는 두 대각의 크기의 합은 항상 $180^\\circ$이다. $$\\angle ADC + \\angle B = 180^\\circ$$ $$(4x - 10) + x = 180$$ $$5x - 10 = 180$$ $$5x = 190 \\implies x = 38$$ 따라서 구하는 값은 $38$이다."
+}

@@ -1,0 +1,360 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "55"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "305"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ob",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "oc",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "tb",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "B",
+          "ob"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "tc",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "C",
+          "oc"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "tb",
+          "tc"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aBDC",
+        "refs": [
+          "B",
+          "D",
+          "C"
+        ],
+        "value": 55,
+        "label": "55",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aBAC",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "label": "70",
+        "factRole": "CONCLUSION",
+        "value": 70
+      },
+      {
+        "id": "aBOC",
+        "refs": [
+          "B",
+          "O",
+          "C"
+        ],
+        "value": 110,
+        "label": "110",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "신흥중 중3 2학기 기말 22번 해설: 외부 점 A에서 그은 두 접선 AB·AC와 원주각 BDC55°",
+  "accessibilityDescription": "신흥중 22번 풀이 관계을 수학 도형·통계 분포로 나타낸 그림. 외부 점 A에서 그은 두 접선 AB·AC와 원주각 BDC55°.",
+  "newVisualInformation": [
+    "외부 점 A에서 그은 두 접선 AB·AC와 원주각 BDC55°",
+    "증명에 필요한 보조 관계·위치·수치 분포를 강조"
+  ],
+  "sourceConditions": [
+    {
+      "id": "F001",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "F002",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayPoints[1]"
+    },
+    {
+      "id": "F003",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayPoints[2]"
+    },
+    {
+      "id": "F004",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayPoints[3]"
+    },
+    {
+      "id": "F005",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayPoints[4]"
+    },
+    {
+      "id": "F006",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "F007",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "F008",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "F009",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "F010",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "F011",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "F012",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "F013",
+      "condition": "발문 또는 풀이의 시각 표식",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "F014",
+      "condition": "발문 또는 풀이의 시각 표식",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "F015",
+      "condition": "발문 또는 풀이의 시각 표식",
+      "mappedTo": "planeMarks.angles[2]"
+    }
+  ],
+  "sourceQuote": "원주각과 중심각의 관계 및 접선의 성질을 단계별로 서술한다.\n\n1단계: $\\angle BDC = 55^\\circ$는 호 $\\wideparen{BC}$에 대한 원주각이므로, 그에 대한 중심각 $\\angle BOC$의 크기는 다음과 같다. $$\\begin{aligned} \\angle BOC &= 2 \\times \\angle BDC \\ &= 2 \\times 55^\\circ \\ &= 110^\\circ \\end{aligned}$$\n\n2단계: 두 선분 $AB, AC$는 각각 접점 $B, C$에서의 접선이므로, 접선과 반지름은 서로 수직이다. $$\\angle ABO = 90^\\circ, \\quad \\angle ACO = 90^\\circ$$\n\n3단계: 사각형 $ABOC$의 네 내각의 크기의 합은 $360^\\circ$이므로 $$\\begin{aligned} \\angle BAC &= 360^\\circ - (\\angle ABO + \\angle ACO + \\angle BOC) \\ &= 360^\\circ - (90^\\circ + 90^\\circ + 110^\\circ) \\ &= 360^\\circ - 290^\\circ \\ &= 70^\\circ \\end{aligned}$$ 따라서 구하는 각 $\\angle BAC$의 크기는 $70^\\circ$이다."
+}

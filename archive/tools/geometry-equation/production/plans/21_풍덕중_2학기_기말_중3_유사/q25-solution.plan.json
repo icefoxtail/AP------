@@ -1,0 +1,414 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ah",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "H"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "ah"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "H",
+    "T",
+    "K"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "sTC",
+      "refs": [
+        "T",
+        "C"
+      ]
+    },
+    {
+      "id": "sCH",
+      "refs": [
+        "C",
+        "H"
+      ]
+    },
+    {
+      "id": "sOK",
+      "refs": [
+        "O",
+        "K"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sHK",
+      "refs": [
+        "H",
+        "K"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "10",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAH",
+        "ownerSegment": "sAH",
+        "text": "8",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "answerCH",
+        "ownerSegment": "sCH",
+        "text": "4",
+        "unit": "cm",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "rH",
+      "refs": [
+        "A",
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "caption": "풍덕중 중3 2학기 기말 25번 해설: 지름 AB10cm·접선 CT·수선 AH8cm의 직각삼각형",
+  "accessibilityDescription": "풍덕중 25번 풀이 관계을 수학 도형·통계 분포로 나타낸 그림. 지름 AB10cm·접선 CT·수선 AH8cm의 직각삼각형.",
+  "newVisualInformation": [
+    "지름 AB10cm·접선 CT·수선 AH8cm의 직각삼각형",
+    "증명에 필요한 보조 관계·위치·수치 분포를 강조"
+  ],
+  "sourceConditions": [
+    {
+      "id": "F001",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "F002",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayPoints[1]"
+    },
+    {
+      "id": "F003",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayPoints[2]"
+    },
+    {
+      "id": "F004",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayPoints[3]"
+    },
+    {
+      "id": "F005",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayPoints[4]"
+    },
+    {
+      "id": "F006",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayPoints[5]"
+    },
+    {
+      "id": "F007",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayPoints[6]"
+    },
+    {
+      "id": "F008",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "F009",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "F010",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "F011",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "F012",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "F013",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "F014",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[6]"
+    },
+    {
+      "id": "F015",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[7]"
+    },
+    {
+      "id": "F016",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[8]"
+    },
+    {
+      "id": "F017",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displaySegments[9]"
+    },
+    {
+      "id": "F018",
+      "condition": "문항의 실제 좌표·선·원",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "F019",
+      "condition": "발문 또는 풀이의 시각 표식",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "F020",
+      "condition": "발문 또는 풀이의 시각 표식",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "F021",
+      "condition": "발문 또는 풀이의 시각 표식",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    }
+  ],
+  "sourceQuote": "선분 $\\overline{AB}$가 원 $O$의 지름이므로 원의 반지름의 길이는 $$\\overline{OA} = \\overline{OC} = \\dfrac{1}{2}\\overline{AB} = \\dfrac{1}{2} \\times 10 = 5\\rm,cm$$ 원의 중심 $O$에서 접점 $C$에 이르는 반지름 $\\overline{OC}$는 접선 $CT$와 수직이다. $$\\overline{OC} \\perp \\overline{CT}$$ 또한 점 $A$에서 내린 수선 $\\overline{AH}$도 접선 $CT$와 수직이다. $$\\overline{AH} \\perp \\overline{CT}$$ 따라서 $\\overline{AH} \\parallel \\overline{OC}$이다. 점 $O$에서 선분 $\\overline{AH}$에 내린 수선의 발을 $K$라 하면 사각형 $OHCK$는 직사각형이 된다. $$\\overline{HK} = \\overline{OC} = 5\\rm,cm,\\quad \\overline{OK} = \\overline{CH}$$ $$\\overline{AK} = \\overline{AH} - \\overline{HK} = 8 - 5 = 3\\rm,cm$$ 직각삼각형 $OKA$에서 피타고라스 정리에 의하여 $$\\overline{OK} = \\sqrt{\\overline{OA}^2 - \\overline{AK}^2} = \\sqrt{5^2 - 3^2} = \\sqrt{25 - 9} = \\sqrt{16} = 4\\rm,cm$$ 따라서 $$\\overline{CH} = \\overline{OK} = 4\\rm,cm$$ 구하는 길이는 $4\\rm,cm$이다."
+}
