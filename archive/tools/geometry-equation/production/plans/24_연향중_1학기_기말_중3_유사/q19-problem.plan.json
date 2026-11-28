@@ -1,0 +1,114 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "2",
+        "y": "-4",
+        "marker": "NONE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0",
+          "coordinates": false
+        },
+        {
+          "id": "A",
+          "x": "2",
+          "y": "-4",
+          "coordinates": false
+        },
+        {
+          "id": "B",
+          "x": "4",
+          "y": "0",
+          "coordinates": false
+        }
+      ],
+      "segments": [
+        {
+          "id": "OA",
+          "from": "O",
+          "to": "A"
+        },
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "BO",
+          "from": "B",
+          "to": "O"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "triangle",
+          "points": [
+            "O",
+            "A",
+            "B"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "포물선·원점 O·x축 위 B(4,0)·꼭짓점 A의 삼각형",
+  "accessibilityDescription": "포물선 y=ax²+bx+c가 O,B를 지나며 꼭짓점 A와 x축 사이의 삼각형 넓이 8을 나타낸다. 풀이 좌표·계수는 표시하지 않는다.",
+  "newVisualInformation": [
+    "원본 SVG의 O,A,B·삼각형 채움과 축을 같은 수학 관계로 결속"
+  ],
+  "sourceConditions": [
+    {
+      "id": "curve",
+      "condition": "O(0,0), B(4,0)를 지나는 포물선 y=x(x-4)",
+      "mappedTo": "graphPlan.pieces[0].coefficients"
+    },
+    {
+      "id": "O",
+      "condition": "주어진 원점 O",
+      "mappedTo": "graphPlan.overlays.points[0]"
+    },
+    {
+      "id": "A",
+      "condition": "꼭짓점 A(2,-4)는 주어진 넓이 8에서 계산; 학생용 숫자 숨김",
+      "mappedTo": "graphPlan.overlays.points[1]"
+    },
+    {
+      "id": "B",
+      "condition": "주어진 B=(4,0)",
+      "mappedTo": "graphPlan.overlays.points[2]"
+    },
+    {
+      "id": "triangle",
+      "condition": "구하는 삼각형 OAB의 넓이 8",
+      "mappedTo": "graphPlan.overlays.polygons[0]"
+    }
+  ],
+  "sourceQuote": "다음 그림과 같은 이차함수 $y=ax^2+bx+c$의 그래프에서 꼭짓점을 $\\text{A}$라고 하자. $\\triangle\\text{O"
+}

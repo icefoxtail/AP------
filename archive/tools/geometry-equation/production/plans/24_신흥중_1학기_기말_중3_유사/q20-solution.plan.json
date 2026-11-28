@@ -1,0 +1,119 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-7",
+          "8",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "4",
+        "y": "9",
+        "marker": "NONE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "4",
+          "y": "9",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "1",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "7",
+          "y": "0",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "AC",
+          "from": "A",
+          "to": "C"
+        },
+        {
+          "id": "BC",
+          "from": "B",
+          "to": "C"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "triangle",
+          "points": [
+            "A",
+            "B",
+            "C"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "BC=6, 꼭짓점 A=(4,9), 삼각형 넓이 27",
+  "accessibilityDescription": "포물선의 꼭짓점과 x축의 두 교점을 잇고 높이 9를 표시한 해설 그림이다.",
+  "newVisualInformation": [
+    "원본 그림의 A,B,C를 독립 계산한 정확 좌표로 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "curve",
+      "condition": "주어진 y=-x²+8x+k, BC=6에서 실제 k=-7을 내부 작도에만 사용",
+      "mappedTo": "graphPlan.pieces[0].coefficients"
+    },
+    {
+      "id": "A",
+      "condition": "꼭짓점 A는 내부 좌표 (4,9)로 작도하되 학생용에 비표시",
+      "mappedTo": "graphPlan.overlays.points[0]"
+    },
+    {
+      "id": "B",
+      "condition": "왼쪽 x절편 B=(1,0)",
+      "mappedTo": "graphPlan.overlays.points[1]"
+    },
+    {
+      "id": "C",
+      "condition": "오른쪽 x절편 C=(7,0)",
+      "mappedTo": "graphPlan.overlays.points[2]"
+    },
+    {
+      "id": "BC",
+      "condition": "두 x절편 사이의 거리 6",
+      "mappedTo": "graphPlan.overlays.segments[2]"
+    },
+    {
+      "id": "area",
+      "condition": "삼각형 ABC의 넓이 계산 영역",
+      "mappedTo": "graphPlan.overlays.polygons[0]"
+    }
+  ],
+  "sourceQuote": "다음 그림과 같은 이차함수 $y=-x^2+8x+k$의 그래프에서 꼭짓점을 $\\text{A}$라 하고, $x$축과의 두 교점을 각각 $\\"
+}

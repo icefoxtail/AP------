@@ -1,0 +1,62 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-4",
+          "4",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "vertex",
+        "x": "2",
+        "y": "0",
+        "marker": "NONE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "T",
+          "x": "2",
+          "y": "0",
+          "coordinates": false
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "pointNames": {
+    "T": "V"
+  },
+  "caption": "위로 볼록하고 x축의 양의 부분에 꼭짓점이 있는 원문 개형",
+  "accessibilityDescription": "계수의 수치 없이 a가 음수이고 -p가 양수인 포물선의 개형을 보여 준다.",
+  "newVisualInformation": [
+    "원본 SVG의 개형을 대표 좌표로 재현, 답의 계수·좌표 수치는 표시하지 않음"
+  ],
+  "sourceConditions": [
+    {
+      "id": "curve",
+      "condition": "원본 개형 a<0, -p>0을 실현한 도식적 표본 y=-(x-2)²",
+      "mappedTo": "graphPlan.pieces[0].coefficients"
+    },
+    {
+      "id": "vertex",
+      "condition": "x축 양의 부분에 있는 꼭짓점; p의 실제 수치가 아니라 개형 표본",
+      "mappedTo": "graphPlan.overlays.points[0]"
+    }
+  ],
+  "sourceQuote": "이차함수 $y=a(x+p)^2$의 그래프가 아래 그림과 같을 때, 다음 중 이차함수 $y=ax^2+p$의 그래프로 알맞은 설명은? (단"
+}
