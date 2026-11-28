@@ -1,0 +1,24 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "두 곡선 $y=\\sqrt{2x+6}$, $y=\\sqrt{2x}$와 $x$축 및 직선 $y=4$로 둘러싸인 부분",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-4, 9, -1, 5],
+    "curves": [
+      {"id":"left","kind":"SQRT","radicand":["6","2"],"amplitude":"1","offset":"0","domain":["-3","8"],"color":"BLUE","label":"y=sqrt(2x+6)"},
+      {"id":"right","kind":"SQRT","radicand":["0","2"],"amplitude":"1","offset":"0","domain":["0","8"],"color":"WARM","label":"y=sqrt(2x)"},
+      {"id":"top","kind":"LINE","coefficients":["4","0"],"domain":["-3","8"],"style":"DASHED","label":"y=4"}
+    ],
+    "axisTickValues": {"x":[],"y":["4"]}
+  },
+  "caption": "문제에 주어진 두 무리함수의 오른쪽으로 늘어나는 개형과 x축·수평선 y=4의 위치 관계를 그렸다. 둘러싸인 부분의 넓이나 풀이로 구한 x좌표는 표시하지 않았다.",
+  "accessibilityDescription": "오른쪽 위로 증가하는 두 무리함수의 곡선이 수평선 y=4 및 x축과 함께 가운데 휘어진 띠 모양 영역의 경계가 된다. 넓이 값은 표시하지 않는다.",
+  "sourceConditions": [
+    {"id":"g16-p1","condition":"원문 두 곡선 y=√(2x+6)과 y=√(2x)","mappedTo":["graphPlan.curves.0.radicand","graphPlan.curves.1.radicand","graphPlan.curves.0.kind","graphPlan.curves.1.kind"]},
+    {"id":"g16-p2","condition":"x축 및 수평선 y=4로 닫힌 영역을 지정함","mappedTo":["graphPlan.curves.2.coefficients","graphPlan.curves.2.style","graphPlan.viewport"]}
+  ],
+  "newVisualInformation": [
+    "두 무리함수의 곡선을 서로 다른 색의 실제 곡선 필드로 같은 좌표축에 배치한다.",
+    "주어진 위쪽 경계 y=4를 실제 수평 점선 필드로 나타내고 x축과 함께 네 경계의 위치를 읽게 한다."
+  ]
+}

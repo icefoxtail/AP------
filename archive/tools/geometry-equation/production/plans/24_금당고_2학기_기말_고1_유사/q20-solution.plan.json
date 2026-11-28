@@ -1,0 +1,27 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "sourceQuote":"함수 $f(x)=\\sqrt{ax-12}+3$ $(a\\ge4)$에 대하여",
+  "graphPlan": {
+    "family":"multi-curve",
+    "viewport":[2,10,2,16],
+    "curves":[
+      {"id":"lower","kind":"SQRT","radicand":["-3","1"],"amplitude":"2","offset":"3","domain":["3","7"],"color":"BLUE","label":"y=2sqrt(x-3)+3"},
+      {"id":"upper","kind":"Y_OF_X","coefficients":["21/4","-3/2","1/4"],"domain":["7","10"],"color":"BLUE","label":"y=(x-3)^2/4+3"},
+      {"id":"t0","kind":"LINE","coefficients":["0","1"],"domain":["3","10"],"style":"DASHED","label":"y=x"},
+      {"id":"t1","kind":"LINE","coefficients":["1","1"],"domain":["3","10"],"style":"DASHED","label":"y=x+1"}
+    ],
+    "axisTickValues":{"x":["3","7"],"y":[]},
+    "overlays":{"points":[{"id":"P","x":"3","y":"3"},{"id":"Q","x":"7","y":"7"},{"id":"T","x":"4","y":"5"}]}
+  },
+  "caption":"해설에서 a=4로 정한 뒤 g는 3≤x≤7에서 f의 무리곡선, x≥7에서 역함수 이차곡선이 된다. 점 P(3,3), Q(7,7)와 직선 y=x, y=x+1을 겹쳐 h(0)=2, h(1)=2의 교점 구조를 비교한다.",
+  "accessibilityDescription":"g는 왼쪽의 무리곡선에서 점 Q를 지나 오른쪽의 이차곡선으로 이어진다. 기준 직선 y=x와 평행한 직선 y=x+1이 각 곡선과 만나는 위치가 다르게 나타난다.",
+  "sourceConditions":[
+    {"id":"d20-s1","condition":"해설에서 a=4, f(x)=2√(x−3)+3, f⁻¹(x)=(x−3)²/4+3","mappedTo":["graphPlan.curves.0.radicand","graphPlan.curves.0.amplitude","graphPlan.curves.0.offset","graphPlan.curves.1.coefficients"]},
+    {"id":"d20-s2","condition":"g는 [3,7]의 f와 [7,∞)의 f⁻¹ 조각으로 이어짐","mappedTo":["graphPlan.curves.0.domain","graphPlan.curves.1.domain","graphPlan.overlays.points.0","graphPlan.overlays.points.1"]},
+    {"id":"d20-s3","condition":"h(t)의 경계 t=0과 t=1을 직선 y=x+t로 비교","mappedTo":["graphPlan.curves.2","graphPlan.curves.3","graphPlan.overlays.points.2"]}
+  ],
+  "newVisualInformation":[
+    "g의 두 정확한 곡선 조각과 연결점 Q를 실제 curves 및 points 필드로 표시한다.",
+    "원문 조건의 교점 개수 판정에 필요한 y=x 및 y=x+1 두 직선을 실제 별도 곡선 필드로 그려 경계 개수 변화를 보여 준다."
+  ]
+}

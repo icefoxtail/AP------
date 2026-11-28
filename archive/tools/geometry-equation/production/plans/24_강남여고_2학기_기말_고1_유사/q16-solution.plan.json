@@ -1,0 +1,40 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "두 곡선 $y=\\sqrt{2x+6}$, $y=\\sqrt{2x}$와 $x$축 및 직선 $y=4$로 둘러싸인 부분",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-4, 9, -1, 5],
+    "curves": [
+      {"id":"left","kind":"SQRT","radicand":["6","2"],"domain":["-3","8"],"color":"BLUE","label":"y=sqrt(2x+6)"},
+      {"id":"right","kind":"SQRT","radicand":["0","2"],"domain":["0","8"],"color":"WARM","label":"y=sqrt(2x)"},
+      {"id":"top","kind":"LINE","coefficients":["4","0"],"domain":["-3","8"],"style":"DASHED","label":"y=4"}
+    ],
+    "axisTickValues":{"x":[],"y":["4"]},
+    "overlays": {
+      "points": [
+        {"id":"L1","x":"-5/2","y":"1","unnamed":true},
+        {"id":"R1","x":"1/2","y":"1","unnamed":true},
+        {"id":"L2","x":"-1","y":"2","unnamed":true},
+        {"id":"R2","x":"2","y":"2","unnamed":true},
+        {"id":"L3","x":"3/2","y":"3","unnamed":true},
+        {"id":"R3","x":"9/2","y":"3","unnamed":true}
+      ],
+      "segments": [
+        {"id":"s1","from":"L1","to":"R1","dashed":true},
+        {"id":"s2","from":"L2","to":"R2","dashed":true,"length":true},
+        {"id":"s3","from":"L3","to":"R3","dashed":true}
+      ]
+    }
+  },
+  "caption": "같은 높이 y=1,2,3에서 두 곡선 사이의 가로 선분을 그리면 길이가 모두 3으로 같다. 이 가로 조각들을 높이 0부터 4까지 쌓으면 넓이는 3×4=12이다.",
+  "accessibilityDescription": "두 무리함수 곡선과 높이 4의 수평선 사이에 길이가 서로 같은 가로 점선 세 개가 있다. 가운데 가로 선분의 길이는 3으로 표시되며 넓이를 직사각형과 비교하게 돕는다.",
+  "sourceConditions": [
+    {"id":"g16-s1","condition":"왼쪽 및 오른쪽 경계는 원문 두 무리함수","mappedTo":["graphPlan.curves.0","graphPlan.curves.1"]},
+    {"id":"g16-s2","condition":"해설의 가로 길이 x_right−x_left=3은 높이 0≤y≤4에서 일정","mappedTo":["graphPlan.overlays.points.0","graphPlan.overlays.points.1","graphPlan.overlays.points.2","graphPlan.overlays.points.3","graphPlan.overlays.points.4","graphPlan.overlays.points.5","graphPlan.overlays.segments.0","graphPlan.overlays.segments.1","graphPlan.overlays.segments.2"]},
+    {"id":"g16-s3","condition":"해설의 세로 높이 4와 넓이 12","mappedTo":["graphPlan.curves.2","graphPlan.axisTickValues.y"]}
+  ],
+  "newVisualInformation": [
+    "정확한 가로 길이 3을 가지는 서로 다른 세 높이의 점선 선분을 실제 points와 segments 필드로 표시한다.",
+    "곡선 사이 굽은 띠의 넓이가 가로 3, 높이 4인 직사각형의 넓이와 같다는 수평 단면의 불변량을 보인다."
+  ]
+}

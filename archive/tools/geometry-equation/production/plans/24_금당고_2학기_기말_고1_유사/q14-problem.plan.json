@@ -1,0 +1,25 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "sourceQuote":"의 그래프와 직선 $x-3y+20=0$이 두 점 $A(4,8)$, $B(-8,4)$에서 만난다.",
+  "graphPlan": {
+    "family":"multi-curve",
+    "viewport":[-9,5,-1,10],
+    "curves":[
+      {"id":"left","kind":"SQRT","radicand":["0","-2"],"domain":["-8","0"],"color":"BLUE","label":"y=sqrt(-2x)"},
+      {"id":"right","kind":"Y_OF_X","coefficients":["0","0","1/2"],"domain":["0","4"],"color":"BLUE","label":"y=x^2/2"},
+      {"id":"line","kind":"LINE","coefficients":["20/3","1/3"],"domain":["-8","4"],"color":"WARM","label":"y=(x+20)/3"}
+    ],
+    "axisTickValues":{"x":[],"y":[]},
+    "overlays":{"points":[{"id":"A","x":"4","y":"8"},{"id":"B","x":"-8","y":"4"}]}
+  },
+  "caption":"주어진 조각함수의 왼쪽 무리함수 부분·오른쪽 이차함수 부분 및 직선이 두 점 A, B에서 만나는 개형을 표시했다. 구할 넓이와 풀이용 삼각형은 표시하지 않는다.",
+  "accessibilityDescription":"왼쪽에는 원점으로 내려오는 무리함수 곡선, 오른쪽에는 원점에서 시작하는 이차곡선, 그 위를 가로지르는 비스듬한 직선과 교점 A, B가 보인다.",
+  "sourceConditions":[
+    {"id":"d14-p1","condition":"원문 f의 x<0 무리함수 조각과 x≥0 이차함수 조각","mappedTo":["graphPlan.curves.0","graphPlan.curves.1"]},
+    {"id":"d14-p2","condition":"원문 직선 x−3y+20=0과 주어진 교점 A(4,8), B(−8,4)","mappedTo":["graphPlan.curves.2","graphPlan.overlays.points.0","graphPlan.overlays.points.1"]}
+  ],
+  "newVisualInformation":[
+    "발문의 두 조각을 각각 실제 SVG 엔진 곡선 필드에 나타내어 원점에서 이어지는 방향을 보인다.",
+    "두 교점 A, B를 원문 좌표대로 점 필드에 표시하고 직선이 곡선들과 만드는 영역을 구별하게 돕는다."
+  ]
+}
