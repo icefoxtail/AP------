@@ -1,11 +1,11 @@
 # 2025 매산여고 공통수학2 SOURCE_BALANCED 3세트 — SVG_PENDING
 
-작성자 단계에서 문제·해설 내용을 완성하고, 2026-11-28 후속 계획 작성 단계에서 **공식 production plan 52건을 실제 작성**했다. 공식 엔진 shallow/full lint는 각각 **52/52 PASS**다. 실제 브라우저 렌더는 유사 51/52건 `PASS`이며, 유사3 18번은 미렌더로 대기 중이다. 학생 화면과 A4 출력은 `NOT_RUN`이다.
+작성자 단계에서 문제·해설 내용을 완성하고, 2026-11-28 후속 계획 작성 단계에서 **공식 production plan 52건을 실제 작성**했다. 공식 엔진 shallow/full lint는 각각 **52/52 PASS**다. 실제 브라우저 캡처 PASS는 유사 51/52건이며, 유사3 18번은 공식 엔진 ARCHIVE_BOUND 렌더 성공이다. 학생 화면과 A4 출력은 `NOT_RUN`이다.
 아래 표는 52개 공식 production plan과 렌더 실행 상태를 기록한다. `PASS`는 렌더 실행 결과만 뜻하며 시각 품질 검수 결과는 아니다.
 
 ## 2026-11-28 렌더 결과
 
-전체 66개 plan 가운데 SVG 65개가 실제 브라우저 렌더 캡처 `PASS`를 받았고, 렌더 성공 항목만 JS에 연결했다. 유사3 18번 해설 SVG는 산출물과 렌더 기록이 없어 이번 성공분에서 제외하고 plan을 대기 상태로 남겼다. 이 결과는 렌더 실행 여부만 기록하며 시각 품질 검수와 A4 출력은 `NOT_RUN`이다.
+66개 plan 중 65개는 실제 브라우저 캡처 PASS였고, 마지막 유사3 18번은 공식 엔진 ARCHIVE_BOUND로 렌더되어 JS에 연결됐다. 시각 품질 검수와 A4 출력은 NOT_RUN이다.
 
 기준: 각 JS visualDisposition. SVG_ONLY_HANDOFF.md와 함께 읽는다.
 
@@ -58,7 +58,7 @@
 | 유사3 | 15 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q15-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
 | 유사3 | 16 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q16-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
 | 유사3 | 17 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q17-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
-| 유사3 | 18 | solution | REQUIRED | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q18-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
+| 유사3 | 18 | solution | REQUIRED | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q18-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
 | 유사3 | 19 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q19-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
 | 유사3 | 20 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q20-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
 | 유사3 | 22 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q22-solution.plan.json | SVG_RENDER_PASS | RENDER_PASS |
