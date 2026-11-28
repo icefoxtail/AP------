@@ -1,19 +1,44 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curve": "-0.5*(x + 2)*(x - 4)",
-  "points": {
-    "X1": [
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "8",
+      "2",
+      "-1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2.8,
+      4.8
+    ],
+    "viewport": [
+      -3.5,
+      5.5,
       -2,
-      0
+      11
     ],
-    "X2": [
-      4,
-      0
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "hideLabels": [
+      "formula"
     ],
-    "V": [
-      1,
-      4.5
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": -2,
+        "y": 0
+      },
+      {
+        "id": "R",
+        "x": 4,
+        "y": 0
+      }
     ]
   },
-  "caption": "두 점 (-2, 0), (4, 0)을 지나는 위로 볼록한 이차함수 그래프"
+  "caption": "x절편이 (-2,0), (4,0)인 아래로 열린 포물선(계수 a,b,c는 표시하지 않음)."
 }

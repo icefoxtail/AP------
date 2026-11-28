@@ -1,6 +1,7 @@
 {
   "capability": "construction-spike-v1",
   "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
     "realization": {
       "recipeId": "PLANE_FIGURE_v1",
       "unit": "source-length",
@@ -10,66 +11,112 @@
       {
         "id": "O",
         "op": "SOURCE_POINT",
-        "outputType": "POINT",
+        "inputs": [],
         "args": {
           "coordinates": [
-            "0",
-            "0"
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
           ]
-        }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
       },
       {
         "id": "A",
         "op": "SOURCE_POINT",
-        "outputType": "POINT",
+        "inputs": [],
         "args": {
           "coordinates": [
-            "-5",
-            "0"
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
           ]
-        }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
       },
       {
         "id": "B",
         "op": "SOURCE_POINT",
-        "outputType": "POINT",
+        "inputs": [],
         "args": {
           "coordinates": [
-            "5",
-            "0"
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
           ]
-        }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
       },
       {
         "id": "C",
         "op": "SOURCE_POINT",
-        "outputType": "POINT",
+        "inputs": [],
         "args": {
           "coordinates": [
-            "-3",
-            "4"
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
           ]
-        }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
       },
       {
         "id": "D",
         "op": "SOURCE_POINT",
-        "outputType": "POINT",
+        "inputs": [],
         "args": {
           "coordinates": [
-            "-3",
-            "0"
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
           ]
-        }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
       },
       {
         "id": "k",
-        "op": "CIRCLE_CENTER_POINT",
+        "op": "CIRCLE_CENTER_RADIUS",
         "inputs": [
-          "O",
-          "A"
+          "O"
         ],
-        "outputType": "CIRCLE"
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
       }
     ]
   },
@@ -77,7 +124,8 @@
     "A",
     "B",
     "C",
-    "D"
+    "D",
+    "O"
   ],
   "displayCircles": [
     "k"
@@ -85,45 +133,35 @@
   "displaySegments": [
     {
       "id": "sAB",
-      "from": "A",
-      "to": "B"
+      "refs": [
+        "A",
+        "B"
+      ]
     },
     {
       "id": "sAC",
-      "from": "A",
-      "to": "C"
+      "refs": [
+        "A",
+        "C"
+      ]
     },
     {
       "id": "sBC",
-      "from": "B",
-      "to": "C"
+      "refs": [
+        "B",
+        "C"
+      ]
     },
     {
       "id": "sCD",
-      "from": "C",
-      "to": "D",
-      "dashed": true
+      "dashed": true,
+      "refs": [
+        "C",
+        "D"
+      ]
     }
   ],
   "planeMarks": {
-    "rightAngles": [
-      {
-        "id": "rC",
-        "refs": [
-          "A",
-          "C",
-          "B"
-        ]
-      },
-      {
-        "id": "rD",
-        "refs": [
-          "C",
-          "D",
-          "B"
-        ]
-      }
-    ],
     "expressionLabels": [
       {
         "id": "lCD",
@@ -142,5 +180,19 @@
       }
     ]
   },
-  "caption": "예시(2a=10, b=4)일 때 지름 AB 위의 점 C와 수선의 발 D로 이루어진 직각삼각형 ACB이다."
+  "caption": "지름 AB=2a인 원 위의 C와 수선의 발 D, 높이 CD=b. 좌표는 도형 비례만을 위한 예시다.",
+  "hiddenPointNames": [
+    "O"
+  ],
+  "hiddenPointStyle": "NONE",
+  "rightAngles": [
+    {
+      "id": "rD",
+      "refs": [
+        "C",
+        "D",
+        "B"
+      ]
+    }
+  ]
 }

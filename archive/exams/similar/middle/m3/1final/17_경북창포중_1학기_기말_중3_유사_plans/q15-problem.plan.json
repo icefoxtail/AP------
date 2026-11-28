@@ -1,15 +1,44 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curve": "2*(x - 2)^2 - 3",
-  "points": {
-    "V": [
-      2,
-      -3
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "5",
+      "-8",
+      "2"
     ],
-    "Y": [
-      0,
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
       5
+    ],
+    "viewport": [
+      -2,
+      6,
+      -4,
+      12
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "hideLabels": [
+      "formula"
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 2,
+        "y": -3
+      },
+      {
+        "id": "Y",
+        "x": 0,
+        "y": 5
+      }
     ]
   },
-  "caption": "꼭짓점이 (2, -3)이고 점 (0, 5)를 지나는 아래로 볼록한 포물선"
+  "caption": "꼭짓점 (2,-3)과 주어진 점 (0,5)을 지나는 포물선(구할 함수식은 표시하지 않음)."
 }
