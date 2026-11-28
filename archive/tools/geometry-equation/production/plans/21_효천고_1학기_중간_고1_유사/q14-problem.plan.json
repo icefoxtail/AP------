@@ -1,0 +1,20 @@
+{
+  "capability":"piecewise-polynomial-spike-v1",
+  "graphPlan":{
+    "family":"piecewise-polynomial","pieces":[{"coefficients":["18","-12","1"]}],
+    "breakpoints":[],"sourceDomain":{"kind":"ALL_REALS"},"domain":[2,12.5],"viewport":[0,14,-21,25],
+    "requiredPoints":[{"id":"P","x":3,"y":-9},{"id":"Q","x":12,"y":18},{"id":"V","x":6,"y":-18,"marker":"NONE"}],
+    "referenceLines":[{"id":"f","slope":"3","intercept":"-18","intersectionX":["3","12"],"hideLabel":true}],
+    "overlays":{"lines":[{"id":"axis","x":"6"}]},
+    "axisTickValues":{"x":[3,6,12],"y":[]}
+  },
+  "coordinateBand":{"hide":["P","Q","V"]},
+  "caption":"발문의 빠진 오른쪽 그림을 복원한다. 양의 기울기 직선 f는 (6,0)을 지나고, 위로 열린 포물선 g의 축은 x=6이다. 두 교점의 x좌표 3, 12만 보이며 정답 개수·y좌표는 숨긴다.",
+  "accessibilityDescription":"직선 f와 위로 열린 포물선 g가 x=3과 x=12에서 만나며 직선은 x축의 6을 지나고 포물선은 x=6에 대칭이다. 교점의 세로좌표는 표시하지 않는다.",
+  "sourceConditions":[
+    {"id":"line","condition":"f는 최고차항 계수가 양수인 일차식이고 f(6)=0. 내부 표본 f=3(x−6)을 쓰되 식 라벨은 숨김","mappedTo":["graphPlan.referenceLines[0]","graphPlan.referenceLines[0].hideLabel"]},
+    {"id":"parabola","condition":"g는 최고차항 계수가 양수이고 대칭축이 x=6. 내부 표본 g=(x−6)²−18","mappedTo":["graphPlan.pieces[0].coefficients","graphPlan.requiredPoints[2]","graphPlan.overlays.lines[0]"]},
+    {"id":"intersections","condition":"f와 g의 두 교점 x좌표는 3,12; 내부 표본은 y값을 드러내지 않음","mappedTo":["graphPlan.requiredPoints[0]","graphPlan.requiredPoints[1]","coordinateBand.hide"]}
+  ],
+  "newVisualInformation":["원문이 요구한 두 곡선의 상대 위치, 교점의 순서, 축 x=6을 문제의 주어진 정보만으로 복원한다."]
+}

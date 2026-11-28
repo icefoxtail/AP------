@@ -1,0 +1,19 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{
+    "family":"polynomial","coefficients":["14","-4","1"],"sourceDomain":{"kind":"ALL_REALS"},
+    "domain":[-1,5],"viewport":[-2,6,7,22],
+    "requiredPoints":[{"id":"T","x":0,"y":14},{"id":"V","x":2,"y":10},{"id":"B","x":4,"y":14}],
+    "overlays":{"lines":[{"id":"tangent","slope":"-4","intercept":"14"}]},
+    "axisTickValues":{"x":[2,4],"y":[10,14]}
+  },
+  "caption":"a=2/3, b=3, c=−4이므로 f(x)=x²−4x+14이고 직선 y=−4x+14와의 접점은 T(0,14)이다.",
+  "accessibilityDescription":"위로 열린 포물선의 꼭짓점은 (2,10)이고 왼쪽의 T(0,14)에서 우하향 직선 y=−4x+14가 포물선에 접한다.",
+  "sourceConditions":[
+    {"id":"quadratic","condition":"f(0)=f(4)에서 a=2/3, 한점 교차 조건에서 b=3, 따라서 f=x²−4x+14","mappedTo":"graphPlan.coefficients"},
+    {"id":"line","condition":"c=−4이므로 y=cx+14는 y=−4x+14","mappedTo":"graphPlan.overlays.lines[0]"},
+    {"id":"contact","condition":"두 그래프의 차는 x²이고 접점은 (0,14)","mappedTo":"graphPlan.requiredPoints[0]"},
+    {"id":"vertex","condition":"f의 꼭짓점은 (2,10)","mappedTo":"graphPlan.requiredPoints[1]"}
+  ],
+  "newVisualInformation":["한점 교차가 단순한 통과가 아니라 T(0,14)의 접선인 이유를 그래프로 보여준다."]
+}

@@ -1,0 +1,18 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{
+    "family":"polynomial","coefficients":["-72/5","-1","1/10"],"sourceDomain":{"kind":"ALL_REALS"},
+    "domain":[-9,19],"viewport":[-10,20,-20,10],
+    "requiredPoints":[{"id":"A","x":-8,"y":0},{"id":"B","x":18,"y":0},{"id":"V","x":5,"y":-16.9}],
+    "overlays":{"lines":[{"id":"sym","x":"5"}]},
+    "axisTickValues":{"x":[-8,5,18],"y":[]}
+  },
+  "caption":"양의 계수의 대표값 a=1/10으로 크기만 정한 그래프다. 실제 f의 축은 x=5이고 한 근 18의 대칭인 다른 근은 −8이다.",
+  "accessibilityDescription":"위로 열린 포물선이 x축의 −8과 18을 지나고 세로 대칭축 x=5를 중심으로 양쪽 근이 똑같이 떨어져 있다.",
+  "sourceConditions":[
+    {"id":"symmetry","condition":"모든 x에 f(x)≥f(5)이므로 대칭축 x=5, 최고차항 계수는 양수","mappedTo":["graphPlan.overlays.lines[0]","graphPlan.coefficients"]},
+    {"id":"roots","condition":"근 18의 대칭 근은 −8이며, a=1/10의 대표축 그림을 사용","mappedTo":["graphPlan.requiredPoints[0]","graphPlan.requiredPoints[1]"]},
+    {"id":"vertex","condition":"대표 f=(x−18)(x+8)/10의 꼭짓점 (5,−169/10)","mappedTo":"graphPlan.requiredPoints[2]"}
+  ],
+  "newVisualInformation":["x=5의 대칭축에서 두 근 −8,18이 등거리임을 보여줘 보기 ㄱ·ㄴ의 판정을 돕는다."]
+}

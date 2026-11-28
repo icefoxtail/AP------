@@ -1,0 +1,16 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{
+    "family":"polynomial","coefficients":["-36","15","-1"],"sourceDomain":{"kind":"ALL_REALS"},
+    "domain":[2,13],"viewport":[1,14,-5,24],
+    "requiredPoints":[{"id":"A","x":3,"y":0},{"id":"B","x":12,"y":0},{"id":"V","x":7.5,"y":20.25}],
+    "axisTickValues":{"x":[3,6,12],"y":[]}
+  },
+  "caption":"|x−6|≤3√2인 안쪽 구간에서는 3(x−6)−((x−6)²−18)=0, 즉 −(x−3)(x−12)=0이다. 후보 3,12 중 x=3만 유효하며 전체 실근은 0,3이다.",
+  "accessibilityDescription":"아래로 열린 포물선 y=−(x−3)(x−12)이 x축을 3과 12에서 지나지만 절댓값의 안쪽 구간에 속하는 근은 3뿐이다.",
+  "sourceConditions":[
+    {"id":"negative","condition":"g≤0일 때 3(x−6)−((x−6)²−18)=0, 즉 −(x−3)(x−12)=0","mappedTo":"graphPlan.coefficients"},
+    {"id":"roots","condition":"x=3,12 후보 중 |x−6|≤3√2를 만족하는 것은 x=3","mappedTo":["graphPlan.requiredPoints[0]","graphPlan.requiredPoints[1]"]}
+  ],
+  "newVisualInformation":["절댓값 안쪽 구간의 두 후보와 조건에 의해 남는 근을 구분해 전체 2실근을 설명한다."]
+}
