@@ -1,0 +1,185 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "866",
+              "denominator": "100"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "183",
+              "denominator": "100"
+            },
+            {
+              "kind": "rational",
+              "numerator": "183",
+              "denominator": "100"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sBI",
+      "refs": [
+        "B",
+        "I"
+      ]
+    },
+    {
+      "id": "sCI",
+      "refs": [
+        "C",
+        "I"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aBIC",
+        "refs": [
+          "B",
+          "I",
+          "C"
+        ],
+        "value": 105,
+        "label": "105",
+        "arcs": 1,
+        "side": "INNER",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 420
+  },
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "caption": "해설 도식: 내심 I와 BIC=105도 및 직각 C의 위치",
+  "accessibilityDescription": "해설: 내심 I와 BIC=105도 및 직각 C의 위치",
+  "newVisualInformation": [
+    "해설의 관계: 내심 I와 BIC=105도 및 직각 C의 위치"
+  ],
+  "sourceConditions": [
+    {
+      "id": "problem",
+      "condition": "다음 $\\angle\\text{C}=90^\\circ$인 직각삼각형 $\\text{ABC}$에서 점 $\\text{I}$는 내심이고 $\\angle\\text{BIC}=105^\\circ$일 때, $\\cos B + \\sin B \\times \\tan A$의 값은?",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "solution",
+      "condition": "점 $\\text{I}$가 $\\triangle\\text{ABC}$의 내심이므로 $\\angle\\text{BIC} = 90^\\circ + \\frac{1}{2}\\angle\\text{A}$이다. $$105^\\circ = 90^\\circ + \\frac{1}{2}\\angle\\text{A} \\implies \\angle\\text{A} = 30^\\circ$$ $\\angle\\text{C}=90^\\circ$이므로 $\\angle\\text{B} = 60^\\circ$이다. 따라서 $$\\cos 60^\\circ + \\sin 60^\\circ \\times \\tan 30^\\circ = \\frac{1}{2} + \\frac{\\sqrt{3}}{2} \\times \\frac{\\sqrt{3}}{3} = \\frac{1}{2} + \\frac{1}{2} = 1$$ 따라서 정답은 ④이다.",
+      "mappedTo": "SOLUTION_AXIS"
+    }
+  ]
+}

@@ -1,0 +1,283 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "sub",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "360"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "120"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "sub",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "120"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "360"
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "sub",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "120"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "120"
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "H"
+        ],
+        "value": 45,
+        "label": "45",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "H"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "240",
+        "unit": "m",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "label-sBC-1",
+        "ownerSegment": "sBC",
+        "text": "240",
+        "factRole": "GIVEN",
+        "unit": "m"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "A",
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 360
+  },
+  "caption": "해설 도식: B,C 사이 발 H와 서로 다른 두 앙각 45도,60도",
+  "accessibilityDescription": "해설: B,C 사이 발 H와 서로 다른 두 앙각 45도,60도",
+  "newVisualInformation": [
+    "해설의 관계: B,C 사이 발 H와 서로 다른 두 앙각 45도,60도"
+  ],
+  "sourceConditions": [
+    {
+      "id": "problem",
+      "condition": "다음 그림과 같이 두 지점 $\\text{B}$, $\\text{C}$에서 건물의 꼭대기 $\\text{A}$지점을 올려다본 각의 크기가 각각 $45^\\circ$, $60^\\circ$이고, $\\overline{\\text{BC}}=240\\text{ m}$(단, $\\text{A}$에서 $\\overline{\\text{BC}}$에 내린 수선의 발 $\\text{H}$는 선분 $\\text{BC}$ 위에 있음)일 때, 건물의 높이 $\\overline{\\text{AH}}$의 길이는?",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "solution",
+      "condition": "건물의 높이 $\\overline{\\text{AH}}=h\\text{ m}$라 하면 직각삼각형 $\\text{ABH}$와 $\\text{ACH}$에서 $$\\overline{\\text{BH}} = \\frac{h}{\\tan 45^\\circ} = h, \\quad \\overline{\\text{CH}} = \\frac{h}{\\tan 60^\\circ} = \\frac{h}{\\sqrt{3}}$$ 점 $\\text{H}$가 선분 $\\text{BC}$ 위에 있으므로 $\\overline{\\text{BH}} + \\overline{\\text{CH}} = 240$이다. $$h + \\frac{h}{\\sqrt{3}} = 240 \\implies h\\left(\\frac{\\sqrt{3}+1}{\\sqrt{3}}\\right) = 240$$ $$h = \\frac{240\\sqrt{3}}{\\sqrt{3}+1} = \\frac{240\\sqrt{3}(\\sqrt{3}-1)}{2} = 120(3-\\sqrt{3})\\text{ (m)}$$ 따라서 정답은 ③이다.",
+      "mappedTo": "SOLUTION_AXIS"
+    }
+  ]
+}

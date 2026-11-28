@@ -1,0 +1,267 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "32",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "36",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "EC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lBE",
+        "ownerSegment": "BE",
+        "text": "8",
+        "unit": "cm"
+      },
+      {
+        "id": "lCE",
+        "ownerSegment": "EC",
+        "text": "12",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 520
+  },
+  "caption": "해설 도식: 직각삼각형의 내접원과 접점 D,E,F 및 BE=8,CE=12",
+  "accessibilityDescription": "해설: 직각삼각형의 내접원과 접점 D,E,F 및 BE=8,CE=12",
+  "newVisualInformation": [
+    "해설의 관계: 직각삼각형의 내접원과 접점 D,E,F 및 BE=8,CE=12"
+  ],
+  "sourceConditions": [
+    {
+      "id": "problem",
+      "condition": "오른쪽 그림에서 원 $\\text{O}$는 $\\angle\\text{A}=90^\\circ$인 직각삼각형 $\\text{ABC}$의 내접원이고, 세 점 $\\text{D}$, $\\text{E}$, $\\text{F}$는 각각 변 $\\text{AB}$, $\\text{BC}$, $\\text{CA}$ 위의 접점이다. $\\overline{\\text{BE}}=8\\text{ cm}$, $\\overline{\\text{CE}}=12\\text{ cm}$일 때, 다음에 답하시오.\n\n(1) 원 $\\text{O}$의 반지름의 길이를 구하시오. (3점) (2) $\\triangle\\text{OBC}$의 둘레의 길이를 구하시오. (3점)",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "solution",
+      "condition": "(1) $\\overline{\\text{BC}} = 8 + 12 = 20\\text{ (cm)}$이고, 원 $\\text{O}$의 반지름의 길이를 $r\\text{ cm}$라 하면 $\\overline{\\text{AD}}=\\overline{\\text{AF}}=r$이므로 $\\overline{\\text{AB}}=r+8$, $\\overline{\\text{AC}}=r+12$이다. 직각삼각형 $\\text{ABC}$에서 피타고라스 정리에 의해 $$(r+8)^2 + (r+12)^2 = 20^2 \\implies 2r^2 + 40r + 208 = 400 \\implies r^2 + 20r - 96 = 0$$ $$(r + 24)(r - 4) = 0 \\implies r = 4\\text{ (cm)}$$ (2) $\\overline{\\text{OE}} \\perp \\overline{\\text{BC}}$이고 $\\overline{\\text{OE}}=4\\text{ cm}$이므로 직각삼각형 $\\text{OBE}$, $\\text{OCE}$에서 $$\\overline{\\text{OB}} = \\sqrt{8^2 + 4^2} = \\sqrt{80} = 4\\sqrt{5}\\text{ (cm)}, \\quad \\overline{\\text{OC}} = \\sqrt{12^2 + 4^2} = \\sqrt{160} = 4\\sqrt{10}\\text{ (cm)}$$ 따라서 $\\triangle\\text{OBC}$의 둘레의 길이는 $20 + 4\\sqrt{5} + 4\\sqrt{10}\\text{ (cm)}$이다.",
+      "mappedTo": "SOLUTION_AXIS"
+    }
+  ]
+}

@@ -1,0 +1,209 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-9"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "15"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "M",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCM",
+      "refs": [
+        "C",
+        "M"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lblAM",
+        "ownerSegment": "sAM",
+        "text": "12",
+        "unit": "cm"
+      },
+      {
+        "id": "lblMB",
+        "ownerSegment": "sMB",
+        "text": "12",
+        "unit": "cm"
+      },
+      {
+        "id": "lblAC",
+        "ownerSegment": "sAC",
+        "text": "6sqrt(5)",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rM",
+      "refs": [
+        "A",
+        "M",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "해설 도식: 지름방향 현 AB의 절반 12와 CD=6",
+  "accessibilityDescription": "해설: 지름방향 현 AB의 절반 12와 CD=6",
+  "newVisualInformation": [
+    "해설의 관계: 지름방향 현 AB의 절반 12와 CD=6"
+  ],
+  "sourceConditions": [
+    {
+      "id": "problem",
+      "condition": "오른쪽 그림의 원 $\\text{O}$에서 $\\overline{\\text{CM}}\\perp\\overline{\\text{AB}}$(단, $\\text{C}$는 원 위의 점, $\\text{M}$은 현 $\\text{AB}$ 위의 점)이고 $\\overline{\\text{AM}}=\\overline{\\text{BM}}=12\\text{ cm}$, $\\overline{\\text{CA}}=6\\sqrt{5}\\text{ cm}$일 때, 원 $\\text{O}$의 넓이는?",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "solution",
+      "condition": "직각삼각형 $\\text{ACM}$에서 $$\\overline{\\text{CM}} = \\sqrt{(6\\sqrt{5})^2 - 12^2} = \\sqrt{180 - 144} = 6\\text{ (cm)}$$ 원 $\\text{O}$의 반지름의 길이를 $r\\text{ cm}$라 하면 $\\overline{\\text{OM}}=r-6$이고, 직각삼각형 $\\text{OMA}$에서 $$r^2 = (r - 6)^2 + 12^2 = r^2 - 12r + 36 + 144 \\implies 12r = 180 \\implies r = 15$$ 따라서 원 $\\text{O}$의 넓이는 $\\pi \\times 15^2 = 225\\pi\\text{ (cm}^2\\text{)}$이다. 정답은 ②이다.",
+      "mappedTo": "SOLUTION_AXIS"
+    }
+  ]
+}

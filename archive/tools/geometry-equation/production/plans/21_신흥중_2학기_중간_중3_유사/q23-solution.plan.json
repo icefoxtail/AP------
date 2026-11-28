@@ -1,0 +1,289 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "27",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "36",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "18",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "39",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "27",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "ba",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "ac",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "cb",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "oc",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rightA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lenAC",
+        "ownerSegment": "ac",
+        "text": "12",
+        "unit": "cm",
+        "side": "RIGHT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lenBC",
+        "ownerSegment": "cb",
+        "text": "15",
+        "unit": "cm",
+        "side": "RIGHT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "facts": [
+      {
+        "kind": "ON_CIRCLE",
+        "circle": "circ",
+        "points": [
+          "D",
+          "E",
+          "F"
+        ]
+      },
+      {
+        "kind": "TANGENT_PERPENDICULAR",
+        "center": "O",
+        "contact": "D",
+        "tangent": "ba"
+      },
+      {
+        "kind": "TANGENT_PERPENDICULAR",
+        "center": "O",
+        "contact": "E",
+        "tangent": "ac"
+      },
+      {
+        "kind": "TANGENT_PERPENDICULAR",
+        "center": "O",
+        "contact": "F",
+        "tangent": "cb"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 420
+  },
+  "caption": "해설 도식: 9-12-15 직각삼각형과 반지름 3인 접원, 세 접점",
+  "accessibilityDescription": "해설: 9-12-15 직각삼각형과 반지름 3인 접원, 세 접점",
+  "newVisualInformation": [
+    "해설의 관계: 9-12-15 직각삼각형과 반지름 3인 접원, 세 접점"
+  ],
+  "sourceConditions": [
+    {
+      "id": "problem",
+      "condition": "다음 그림에서 원 $\\text{O}$는 $\\angle\\text{A}=90^\\circ$인 직각삼각형 $\\text{ABC}$의 내접원이고 세 점 $\\text{D}$, $\\text{E}$, $\\text{F}$는 접점이다. $\\overline{\\text{AC}}=12\\text{ cm}$, $\\overline{\\text{BC}}=15\\text{ cm}$일 때, $\\overline{\\text{OC}}$의 길이를 구하시오.",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "solution",
+      "condition": "직각삼각형 $\\text{ABC}$에서 $\\angle\\text{A}=90^\\circ$, $\\overline{\\text{AC}}=12\\text{ cm}$, $\\overline{\\text{BC}}=15\\text{ cm}$이므로 $$\\overline{\\text{AB}} = \\sqrt{15^2 - 12^2} = \\sqrt{81} = 9\\text{ (cm)}$$ 내접원 $\\text{O}$의 반지름의 길이를 $r\\text{ cm}$라 하면 삼각형의 넓이에서 $$\\frac{1}{2} \\times 9 \\times 12 = \\frac{1}{2} r (9 + 12 + 15) \\implies 54 = 18r \\implies r = 3\\text{ (cm)}$$ 변 $\\text{AC}$ 위의 접점을 $\\text{E}$라 하면 $\\overline{\\text{OE}}=3\\text{ cm}$, $\\overline{\\text{AE}}=3\\text{ cm}$이므로 $\\overline{\\text{CE}} = 12 - 3 = 9\\text{ (cm)}$이다. 직각삼각형 $\\text{OEC}$에서 피타고라스 정리에 의해 $$\\overline{\\text{OC}} = \\sqrt{\\overline{\\text{CE}}^2 + \\overline{\\text{OE}}^2} = \\sqrt{9^2 + 3^2} = \\sqrt{90} = 3\\sqrt{10}\\text{ (cm)}$$",
+      "mappedTo": "SOLUTION_AXIS"
+    }
+  ]
+}

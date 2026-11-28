@@ -1,0 +1,153 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "12",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "5",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "13",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "caption": "해설 도식: 5-12-13 직각삼각형에 직각과 세 변을 직접 표시",
+  "accessibilityDescription": "해설: 5-12-13 직각삼각형에 직각과 세 변을 직접 표시",
+  "newVisualInformation": [
+    "해설의 관계: 5-12-13 직각삼각형에 직각과 세 변을 직접 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "problem",
+      "condition": "다음 직각삼각형 $\\text{ABC}$에서 $\\angle\\text{B}=90^\\circ$, $\\overline{\\text{AB}}=12$, $\\overline{\\text{BC}}=5$, $\\overline{\\text{AC}}=13$일 때, $\\sin A + \\cos A$의 값은?",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "solution",
+      "condition": "직각삼각형 $\\text{ABC}$에서 $\\angle\\text{B}=90^\\circ$이므로 빗변은 $\\overline{\\text{AC}}=13$이다. $$\\sin A = \\frac{\\overline{\\text{BC}}}{\\overline{\\text{AC}}} = \\frac{5}{13}, \\quad \\cos A = \\frac{\\overline{\\text{AB}}}{\\overline{\\text{AC}}} = \\frac{12}{13}$$ 따라서 $$\\sin A + \\cos A = \\frac{5}{13} + \\frac{12}{13} = \\frac{17}{13}$$ 따라서 정답은 ②이다.",
+      "mappedTo": "SOLUTION_AXIS"
+    }
+  ]
+}
