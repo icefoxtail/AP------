@@ -4,13 +4,13 @@
 - 상태: **제작 중**, 출고 판정 아님. `main` 병합 금지(최종 검수 전).
 - 입력: 원본 시험지 6쪽과 현행 JS 23문항. 기출 원본 그림은 3번·15번의 함수 대응도.
 - 플랜 원칙: 수작업 SVG 및 시험지 PDF에서 그림 PNG 절취 금지. 공식 `set-diagram-figure-v1` 등 엔진 JSON만 작성한다.
-- 검사 진실값: 본 감사는 문제·해설 필요성의 정적 판정이다. 엔진 shallow lint **NOT_RUN**, full lint **NOT_RUN**, SVG render **NOT_RUN**, 390px/A4 PNG 실물 검수 **NOT_RUN**, 학생 UI **NOT_RUN**.
+- 검사 진실값: 본 감사는 문제·해설 필요성의 정적 판정이다. q03(문제·해설)·q15(문제)·q20(해설) 공식 엔진 shallow lint **4/4 PASS**, full lint **4/4 PASS** (2026-11-28, `node archive/tools/geometry-equation/ops/claude-batch/plan-lint.cjs`). SVG render **NOT_RUN**, 390px/A4 PNG 실물 검수 **NOT_RUN**, 학생 UI **NOT_RUN**.
 
 | qid | 문제 그림 | 해설 그림 | 개별 판정 이유와 플랜 상태 |
 | --- | --- | --- | --- |
 | 01 | EXEMPT | EXEMPT | 함의의 참거짓과 정수 경계는 부등식만으로 충분. |
 | 02 | EXEMPT | EXEMPT | 드모르간 법칙으로 교집합을 분리하면 원소가 정해짐; 임의의 벤다이어그램은 미지의 A 소속을 추정하게 됨. |
-| 03 | REQUIRED | BENEFICIAL | 원문에 직접 주어진 두 함수의 화살표가 필수. 문제 plan `q03-problem.plan.json` 작성; 해설은 합성·역방향 경로 강조 plan 추가 필요. |
+| 03 | REQUIRED | BENEFICIAL | 원문에 직접 주어진 두 함수의 화살표가 필수. 문제 plan `q03-problem.plan.json`, 합성 경로 강조 해설 plan `q03-solution.plan.json` 작성. |
 | 04 | EXEMPT | EXEMPT | 두 유리식 통분과 계수 비교의 순수 계산. |
 | 05 | EXEMPT | EXEMPT | 근호 조건과 시작값으로 정의역·치역 확인 가능. |
 | 06 | EXEMPT | BENEFICIAL | 점근선 이동 전후를 그래프에 표시하면 두 축 방향의 이동량을 이해하기 쉬움. 해설 plan 필요. |
@@ -27,20 +27,21 @@
 | 17 | EXEMPT | BENEFICIAL | 무리함수·역함수와 `y=x`의 교점 수를 보이면 제곱 후 가짜 해를 제외하는 이유가 선명함. 해설 plan 필요. |
 | 18 | EXEMPT | REQUIRED | 두 무리함수의 평행이동과 평행한 직선 사이 넓이를 평행사변형으로 바꾸는 핵심 관계가 시각적. 해설 plan 필수 제작. |
 | 19 | EXEMPT | BENEFICIAL | 조각함수 `f(t)`와 방정식 `t+f(t)=4`의 해 위치를 그래프에 표시하면 근 후보의 개수가 명확함. 해설 plan 필요. |
-| 20 | EXEMPT | BENEFICIAL | `p`·`q`의 열린구간과 정수 반례 0, 1, 2, 3을 같은 수직선에 표시하면 경계 조건을 확인하기 쉬움. 해설 plan 필요. |
+| 20 | EXEMPT | BENEFICIAL | `p`·`q`의 열린구간과 정수 반례 0, 1, 2, 3을 같은 수직선에 표시하면 경계 조건을 확인하기 쉬움. `k=3/4`인 경우를 그린 해설 plan `q20-solution.plan.json` 작성(전체 k 범위 증명의 예시임을 캡션에 명시). |
 | 21 | EXEMPT | EXEMPT | 명제 부정과 완전제곱 최소값 판단으로 완결. |
 | 22 | EXEMPT | BENEFICIAL | 무리함수와 직선의 두 교점 및 `k=2` 경계 상황을 보여 주면 `t≥0` 조건을 이해하기 쉬움. 해설 plan 필요. |
 | 23 | EXEMPT | EXEMPT | 유리함수의 두 방정식을 풀고 양의 근을 순서대로 비교하는 계산으로 완결. 원문 '오직 한 개의 음의 실근만'은 양의 근 추가를 배제하지 않아 정답이 불유일하므로, JS 발문에서 실근이 정확히 하나임을 최소 명확화함(원문과 다름; R1 검증 필요). |
 
 ## 계획 파일 현황
 
-1. 문제 필수: `q03-problem.plan.json` — **JSON 문법·원문 6화살표 정적 대조 PASS**, 엔진 lint/render NOT_RUN.
-2. 문제 필수: `q15-problem.plan.json` — **JSON 문법·원문 4화살표 정적 대조 PASS**, 엔진 lint/render NOT_RUN.
-3. 해설 필요 12축: q03·q06·q10·q11·q13·q14·q16·q17·q18·q19·q20·q22 — 제작용 JSON **미작성**, 적합한 엔진 capability 선정부터 진행.
-4. 학생 표시 연결: JS `image`·`solutionImage`는 엔진 생성 SVG가 아직 없으므로 비워 둠. 존재하지 않는 경로를 쓰지 않음.
+1. 문제 필수: `q03-problem.plan.json` — **JSON 문법·원문 6화살표 정적 대조 PASS**, 엔진 shallow/full lint PASS, render NOT_RUN.
+2. 문제 필수: `q15-problem.plan.json` — **JSON 문법·원문 4화살표 정적 대조 PASS**, 엔진 shallow/full lint PASS, render NOT_RUN.
+3. 해설 필요 12축 중 2개: `q03-solution.plan.json`(합성 경로 강조), `q20-solution.plan.json`(`k=3/4`인 조건 구간 예시) — 엔진 shallow/full lint PASS, render NOT_RUN.
+4. 남은 해설 필요 10축: q06·q10·q11·q13·q14·q16·q17·q18·q19·q22 — 제작용 JSON **미작성**, 적합한 엔진 capability 선정부터 진행.
+5. 학생 표시 연결: JS `image`·`solutionImage`는 엔진 생성 SVG가 아직 없으므로 비워 둠. 존재하지 않는 경로를 쓰지 않음.
 
 ## 다음 단계
 
-- q03·q15 공식 엔진 `plan-lint` shallow/full 실행 및 실제 렌더·도형 관계 대조.
-- 해설 REQUIRED인 q18부터 순서대로 다른 11개 BENEFICIAL 축의 공식 plan 작성·실제 렌더·시각 검수.
+- q03·q15 공식 엔진 실제 렌더·도형 관계 및 학생 표시 대조 (shallow/full lint 완료).
+- 해설 REQUIRED인 q18부터 순서대로 다른 9개 BENEFICIAL 축의 공식 plan 작성·실제 렌더·시각 검수.
 - 모든 필수 SVG 파일 생성 후 JS 자산 참조, 메타·R1/R2/R3 검수와 함께 출고 판정.
