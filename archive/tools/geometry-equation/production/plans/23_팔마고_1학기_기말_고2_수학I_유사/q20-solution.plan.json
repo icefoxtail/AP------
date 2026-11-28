@@ -1,0 +1,218 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "15",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "3",
+                  "denominator": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "11"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "D",
+    "A"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "9",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "5",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "8",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lBD",
+        "ownerSegment": "sBD",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lDC",
+        "ownerSegment": "sDC",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAD",
+        "ownerSegment": "sAD",
+        "text": "3sqrt(3)",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 390
+  },
+  "caption": "BD=6, DC=2에서 삼각형 ADC에 코사인법칙을 적용하는 해설 도형",
+  "accessibilityDescription": "정확한 삼각형 AB=9, BC=8, CA=5에서 D는 BC를 3:1로 내분하고, 해설 계산 결과 DC=2와 AD=3√3을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서답형 3] $\\overline{AB} = 9$, $\\overline{BC} = 8$, $\\overline{CA} = 5$인 삼각형 $ABC$에서 변 $BC$를 $3 : 1$로 내분하는 점을 $D$라 할 때, $\\overline{AD}$의 길이를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "현행 수치 AB=9, BC=8, CA=5를 실제 변에 표기",
+    "BD와 DC의 비 3:1을 3u와 u로 각 선분에 표기",
+    "점 D와 선분 AD",
+    "해설에서 DC=2, BD=6, AD=3√3을 표시"
+  ]
+}

@@ -1,0 +1,296 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "3",
+                  "denominator": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "7"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "7"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rBCD",
+        "fill": "WARM",
+        "shapes": [
+          {
+            "polygon": [
+              "B",
+              "C",
+              "D"
+            ]
+          }
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "2sqrt(7)",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lOB",
+        "ownerSegment": "sOB",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lBD",
+        "ownerSegment": "sBD",
+        "text": "2t",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lCD",
+        "ownerSegment": "sCD",
+        "text": "t",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 470,
+    "height": 460
+  },
+  "caption": "반지름 4인 원과 현 BC=2√7, 같은 원의 호 위 D를 연결한 삼각형 BCD",
+  "accessibilityDescription": "원 위 A B C D가 있고 A는 D가 놓인 BC 호와 다른 호에 있다. 삼각형 BCD 영역이 강조된다. 원의 반지름 4, BC의 길이 2√7, BD와 CD의 비 2대 1이 선분에 적힌다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "반지름의 길이가 $4$인 원에 내접하고 $\\overline{BC} = 2\\sqrt{7}$인 삼각형 $ABC$가 있다. 점 $A$를 포함하지 않는 호 $BC$ 위의 점 $D$에 대하여 $\\overline{BD} = 2\\overline{CD}$일 때, 삼각형 $BCD$의 넓이를 $S$라 하면 $4S^2$의 값은? (단, $\\frac{\\pi}{2} < \\angle CAB < \\pi$이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "원 반지름 4를 나타내는 OB",
+    "현 BC=2√7과 호 BC 위 D",
+    "BD:CD=2:1의 선분 비율",
+    "넓이를 묻는 △BCD의 강조"
+  ]
+}
