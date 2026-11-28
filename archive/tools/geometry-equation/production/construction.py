@@ -130,7 +130,7 @@ def dependencies(node):
     return sorted(set(refs))
 
 def validate(graph):
-    if graph.get('schemaVersion')!='construction-spike-v1' or set(graph)-{'schemaVersion','nodes','realization','conditionAudits'}: raise ValueError('UNSUPPORTED_GRAPH_SCHEMA')
+    if not isinstance(graph,dict) or graph.get('schemaVersion')!='construction-spike-v1' or set(graph)-{'schemaVersion','nodes','realization','conditionAudits'}: raise ValueError('UNSUPPORTED_GRAPH_SCHEMA')
     if 'nodes' not in graph: raise ValueError('MATH_PLAN_NODES_REQUIRED')
     if not isinstance(graph['nodes'],list) or not 1<=len(graph['nodes'])<=64: raise ValueError('NODE_BUDGET')
     nodes={}

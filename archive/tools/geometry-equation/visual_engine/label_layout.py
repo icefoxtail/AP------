@@ -81,7 +81,10 @@ def reads_as_one(box,other,gap=READING_ADJACENT_PX):
     return between<gap
 
 def collision(box,obstacle,pad=6):
-    kind=obstacle['kind'];geometry=obstacle['geometry'];a=box.expand(pad)
+    return _expanded_collision(box.expand(pad),obstacle)
+
+def _expanded_collision(a,obstacle,prepared=None):
+    kind=obstacle['kind'];geometry=obstacle['geometry']
     if kind in {'label','conditionBox','tick','indicator','rectangle'}:return a.overlaps(geometry)
     if kind in {'point','circle'}:
         x,y,r=geometry
@@ -90,8 +93,71 @@ def collision(box,obstacle,pad=6):
         farthest=max(math.hypot(cx-x,cy-y) for cx in (a.x,a.right) for cy in (a.y,a.bottom))
         return nearest<=r and farthest>=r
     if kind in {'line','axis','auxiliary','leader','curve'}:
+        if prepared is not None:return _polyline_hits_box(a,prepared)
         return any(segment_hits_box(p,q,a) for p,q in zip(geometry,geometry[1:]))
     raise ValueError('UNKNOWN_COLLISION_OBSTACLE')
+
+class StaticObstacles:
+    """Coarse screen grid that only excludes obstacles with disjoint bounds."""
+    cell_size=48
+
+    def __init__(self,obstacles):
+        self.obstacles=obstacles
+        self.clear_memo={}
+        self.cells={}
+        self.large=[]
+        self.strokes={}
+        for i,o in enumerate(obstacles):
+            kind,g=o['kind'],o['geometry']
+            if kind in {'label','conditionBox','tick','indicator','rectangle'}:
+                bounds=(g.x,g.right,g.y,g.bottom)
+            elif kind in {'point','circle'}:
+                x,y,r=g
+                bounds=(x-r,x+r,y-r,y+r)
+            elif kind in {'line','axis','auxiliary','leader','curve'} and g:
+                xs,ys=zip(*g)
+                bounds=(min(xs),max(xs),min(ys),max(ys))
+                if len(g)>8:self.strokes[i]=_prep_polyline(g)
+            else:
+                self.large.append(i)
+                continue
+            xs,ys=self.cell_ranges(bounds)
+            if len(xs)*len(ys)>1024:
+                self.large.append(i)
+                continue
+            for x in xs:
+                for y in ys:self.cells.setdefault((x,y),[]).append(i)
+
+    def cell_ranges(self,bounds):
+        x0,x1,y0,y1=bounds
+        S=self.cell_size
+        return range(math.floor(x0/S),math.floor(x1/S)+1),range(math.floor(y0/S),math.floor(y1/S)+1)
+
+    def candidates(self,box):
+        xs,ys=self.cell_ranges((box.x,box.right,box.y,box.bottom))
+        if len(xs)*len(ys)>1024:return range(len(self.obstacles))
+        indices=set(self.large)
+        for x in xs:
+            for y in ys:indices.update(self.cells.get((x,y),()))
+        return sorted(indices)
+
+    def clear(self,box,normal,adjusted,label_gap):
+        key=(box,label_gap)
+        cached=self.clear_memo.get(key)
+        if cached is not None:return cached
+        broad=adjusted if label_gap>6 else normal
+        clear=not any(_expanded_collision(adjusted if self.obstacles[i]['kind']=='label' else normal,
+                                          self.obstacles[i],self.strokes.get(i))
+                      for i in self.candidates(broad))
+        if len(self.clear_memo)<16384:self.clear_memo[key]=clear
+        return clear
+
+def _clear_box(box,occupied,static,label_gap):
+    normal=box.expand(6)
+    adjusted=normal if label_gap==6 else box.expand(label_gap)
+    return static.clear(box,normal,adjusted,label_gap) and not any(
+        _expanded_collision(adjusted if obstacle['kind']=='label' else normal,obstacle)
+        for obstacle in occupied[len(static.obstacles):])
 
 def approximate_size(text,font=13.25,lines=1):
     if '\n' in text:
@@ -156,6 +222,10 @@ def leader_clear(start,end,obstacles,owner_ids,clearance=6.0,near_start=False,st
         if abs(den)<=1e-12:return []
         t=cross(q,s)/den;u=cross(q,r)/den
         return [[a[0]+t*r[0],a[1]+t*r[1]]] if -1e-9<=t<=1+1e-9 and -1e-9<=u<=1+1e-9 else []
+    # A stroke whose bounds miss the leader's clearance cannot fail the exact distance test.
+    pad=clearance+1e-9
+    x0,x1=min(start[0],end[0])-pad,max(start[0],end[0])+pad
+    y0,y1=min(start[1],end[1])-pad,max(start[1],end[1])+pad
     for obstacle in obstacles:
         kind=obstacle.get('kind');geometry=obstacle.get('geometry');owner=obstacle.get('id') in owner_ids
         if obstacle.get('id') in skip_ids:continue
@@ -180,19 +250,21 @@ def leader_clear(start,end,obstacles,owner_ids,clearance=6.0,near_start=False,st
                     return False
             continue
         if kind not in {'line','axis','auxiliary','leader','curve','tick','indicator'} or not isinstance(geometry,(list,tuple)) or len(geometry)<2:continue
-        segments=list(zip(geometry,geometry[1:]))
+        segments=zip(geometry,geometry[1:])
         if owner:
             points=[point for c,d in segments for point in intersection_points(start,end,c,d)]
             if any(math.dist(point,start)>start_tolerance for point in points):return False
             continue
+        nearby=((c,d) for c,d in segments
+                if min(c[0],d[0])<=x1 and max(c[0],d[0])>=x0 and min(c[1],d[1])<=y1 and max(c[1],d[1])>=y0)
         if near_start:
-            for c,d in segments:
+            for c,d in nearby:
                 gap=segment_segment_distance(start,end,c,d)
                 if gap>clearance:continue
                 start_gap=point_segment_distance(start,c,d)
                 if start_gap<LEADER_NEAR_START_MIN_PX or gap<start_gap-1e-6:return False
             continue
-        if any(segment_segment_distance(start,end,c,d)<=clearance for c,d in segments):return False
+        if any(segment_segment_distance(start,end,c,d)<=clearance for c,d in nearby):return False
     return True
 
 
@@ -424,9 +496,13 @@ def find_clear_leader_path(start,end,obstacles,owner_ids,safe_area,clearance=6.0
 def box_segment_distance(box,a,b,samples=32):
     """Smallest distance from the box (0 inside) to the segment a-b, sampled."""
     best=math.inf
+    x0,x1,y0,y1=box.x,box.right,box.y,box.bottom
+    dx,dy=b[0]-a[0],b[1]-a[1]
     for i in range(samples+1):
-        x=a[0]+(b[0]-a[0])*i/samples;y=a[1]+(b[1]-a[1])*i/samples
-        best=min(best,math.hypot(max(box.x-x,0,x-box.right),max(box.y-y,0,y-box.bottom)))
+        x=a[0]+dx*i/samples;y=a[1]+dy*i/samples
+        distance=math.hypot(max(x0-x,0,x-x1),max(y0-y,0,y-y1))
+        if distance==0:return 0.0
+        if distance<best:best=distance
     return best
 
 LINE_LABEL_OWN_MAX=10.0
@@ -438,10 +514,17 @@ RELAXED_LINE_LABEL_MARGIN=4.0
 
 def line_label_unambiguous(box,own,others,own_max=LINE_LABEL_OWN_MAX,margin=LINE_LABEL_OTHER_MARGIN):
     """A label box names its line without a leader only when its own drawn line is the nearest by a clear margin."""
-    pairs=lambda o:list(zip(o["geometry"],o["geometry"][1:]))
-    own_distance=min(box_segment_distance(box,c,d) for c,d in pairs(own))
+    def distances(obstacle,threshold):
+        geometry=obstacle['geometry']
+        for c,d in zip(geometry,geometry[1:]):
+            bounds=(min(c[0],d[0]),max(c[0],d[0]),min(c[1],d[1]),max(c[1],d[1]))
+            if _bounds_distance(box,bounds)<=threshold+1e-9:
+                yield box_segment_distance(box,c,d)
+
+    own_distance=min(distances(own,own_max),default=math.inf)
     if own_distance>own_max:return False
-    return all(min(box_segment_distance(box,c,d) for c,d in pairs(o))>=own_distance+margin for o in others)
+    threshold=own_distance+margin
+    return all(distance>=threshold for obstacle in others for distance in distances(obstacle,threshold))
 
 def segment_on_line(owner,c,d,tolerance=0.5):
     """True when the segment c-d lies on the (infinite) line through the drawn segment `owner`: a polygon edge or a segment drawn over the line it
@@ -647,24 +730,70 @@ def near_box_polyline_distance(box,points):
     return min((near_box_segment_distance(box,a,b) for a,b in zip(points,points[1:])),default=math.inf)
 
 def _prep_polyline(points):
-    """(G18c) the segments of a polyline with their bounding boxes, so a distance search can skip segments that cannot beat the best one so far."""
-    return [(a,b,min(a[0],b[0]),max(a[0],b[0]),min(a[1],b[1]),max(a[1],b[1])) for a,b in zip(points,points[1:])]
+    """Group consecutive segments by bounds so distance tests can skip whole spans."""
+    segments=[(a,b,min(a[0],b[0]),max(a[0],b[0]),min(a[1],b[1]),max(a[1],b[1])) for a,b in zip(points,points[1:])]
+    if not segments:return None
 
-def _prepped_distance(box,prep):
-    """near_box_polyline_distance over a prepared polyline: the same minimum, a segment whose bounding box is already farther than the best is not measured."""
-    best=math.inf
-    for a,b,x0,x1,y0,y1 in prep:
-        if math.hypot(max(box.x-x1,0.0,x0-box.right),max(box.y-y1,0.0,y0-box.bottom))>=best:continue
-        value=near_box_segment_distance(box,a,b)
-        if value<best:best=value
-    return best
+    def group(lo,hi):
+        if hi-lo<=8:
+            rows=segments[lo:hi]
+            bounds=(min(s[2] for s in rows),max(s[3] for s in rows),min(s[4] for s in rows),max(s[5] for s in rows))
+            return bounds,rows,None
+        mid=(lo+hi)//2
+        left,right=group(lo,mid),group(mid,hi)
+        a,b=left[0],right[0]
+        return (min(a[0],b[0]),max(a[1],b[1]),min(a[2],b[2]),max(a[3],b[3])),left,right
+
+    return group(0,len(segments))
+
+def _polyline_hits_box(box,prep):
+    """Keep the same segment intersection test, skipping disjoint bounds."""
+    x0,x1,y0,y1=box.x,box.right,box.y,box.bottom
+
+    def overlaps(bounds):
+        a,b,c,d=bounds
+        return a<=x1 and b>=x0 and c<=y1 and d>=y0
+
+    def hit(node):
+        bounds,left,right=node
+        if not overlaps(bounds):return False
+        if right is None:
+            return any(overlaps(row[2:]) and segment_hits_box(row[0],row[1],box) for row in left)
+        return hit(left) or hit(right)
+
+    return hit(prep)
+
+def _bounds_distance(box,bounds):
+    x0,x1,y0,y1=bounds
+    return math.hypot(max(box.x-x1,0.0,x0-box.right),max(box.y-y1,0.0,y0-box.bottom))
+
+def _prepped_distance(box,prep,limit=math.inf,stop_at_first=False):
+    """Exact minimum below limit, or the first qualifying distance for an existence test."""
+    if prep is None or limit<=0:return limit
+
+    def search(node,bound,best):
+        # Projection and box-edge arithmetic can round on opposite sides of a touching bound.
+        if best==0 or bound>best+1e-9:return best
+        _,left,right=node
+        if right is None:
+            for a,b,x0,x1,y0,y1 in left:
+                if _bounds_distance(box,(x0,x1,y0,y1))>best+1e-9:continue
+                value=near_box_segment_distance(box,a,b)
+                if value<best:
+                    if stop_at_first or value==0:return value
+                    best=value
+            return best
+        dl,dr=_bounds_distance(box,left[0]),_bounds_distance(box,right[0])
+        if dr<dl:left,right,dl,dr=right,left,dr,dl
+        found=search(left,dl,best)
+        if stop_at_first and found<best:return found
+        return search(right,dr,found)
+
+    return search(prep,_bounds_distance(box,prep[0]),limit)
 
 def _prepped_within(box,prep,limit):
-    """True when some segment of the prepared polyline is nearer than `limit` (the same answer as near_box_polyline_distance(box,points)<limit)."""
-    for a,b,x0,x1,y0,y1 in prep:
-        if math.hypot(max(box.x-x1,0.0,x0-box.right),max(box.y-y1,0.0,y0-box.bottom))>=limit:continue
-        if near_box_segment_distance(box,a,b)<limit:return True
-    return False
+    """True when some segment of the prepared polyline is nearer than limit."""
+    return _prepped_distance(box,prep,limit,stop_at_first=True)<limit
 
 def _polyline_at(points,fraction):
     """The point at the arc-length fraction of a polyline, and the unit tangent there."""
@@ -696,12 +825,15 @@ def near_candidate_centers(label,w,h,safe=None):
     own_prep=[_prep_polyline(pts) for pts in (near['own'] if 'nearCurve' in label else [own_points])]
     others_prep=[_prep_polyline(pts) for pts in others]
     probe_cache={}
+    strokes={fraction:_polyline_at(own_points,fraction) for fraction in anchors}
+    seen=set()
     def own_distance(box):
         return min(_prepped_distance(box,prep) if prep else math.inf for prep in own_prep)
     for tier,tier_gaps in ((out,gaps),(far,far_gaps)):
+        seen.clear()
         for gap in tier_gaps:
             for fraction in anchors:
-                point,tangent=_polyline_at(own_points,fraction)
+                point,tangent=strokes[fraction]
                 normal=(-tangent[1],tangent[0])
                 if fraction not in probe_cache:probe_cache[fraction]=[(side,min((math.dist((point[0]+side*normal[0]*40,point[1]+side*normal[1]*40),q) for pts in others for q in pts),default=math.inf)) for side in (1,-1)]
                 probes=probe_cache[fraction]
@@ -711,10 +843,13 @@ def near_candidate_centers(label,w,h,safe=None):
                     cx=point[0]+side*normal[0]*(gap+extent)+tangent[0]*shift;cy=point[1]+side*normal[1]*(gap+extent)+tangent[1]*shift
                     if safe is not None:   # a box at the end of a line is slid back inside the drawing area (still beside the same stroke)
                         cx=min(max(cx,safe.x+w/2+.5),safe.right-w/2-.5);cy=min(max(cy,safe.y+h/2+.5),safe.bottom-h/2-.5)
+                    key=(cx,cy)
+                    if key in seen:continue
+                    seen.add(key)
                     if tier is out:
                         box=Box(cx-w/2,cy-h/2,w,h);mine=own_distance(box)
                         if any(_prepped_within(box,prep,mine+NEAR_OTHER_MARGIN_PX) for prep in others_prep):continue
-                    if [cx,cy] not in tier:tier.append([cx,cy])
+                    tier.append([cx,cy])
     return out+far
 
 
@@ -723,14 +858,16 @@ def near_wide_centers(near,w,h,safe=None):
     every 2 % of the branch, more slides along the stroke, the same ownership margin. Only asked for after every usual centre was refused, so labels that fit are untouched."""
     others_prep=[_prep_polyline(pts) for pts in near['others']]
     own_prep=[_prep_polyline(pts) for pts in near['own']]
-    def own_distance(box):return min(_prepped_distance(box,prep) for prep in own_prep)
+    reach_limit=math.nextafter(NEAR_CURVE_REACH_PX,math.inf)
+    def own_distance(box):return min(_prepped_distance(box,prep,reach_limit) for prep in own_prep)
     wide=[]
     for pts in sorted(near['own'],key=lambda row:-sum(math.dist(a,b) for a,b in zip(row,row[1:]))):
         line=sorted(pts,key=lambda point:point[0])
         if len(line)<2:continue
+        strokes=[_polyline_at(line,step/50) for step in range(1,50)]
+        seen=set()
         for gap in NEAR_CURVE_GAPS:
-            for step in range(1,50):
-                point,tangent=_polyline_at(line,step/50)
+            for point,tangent in strokes:
                 normal=(-tangent[1],tangent[0])
                 for side in (1,-1):
                     for slide in NEAR_WIDE_SLIDES:
@@ -738,10 +875,13 @@ def near_wide_centers(near,w,h,safe=None):
                         shift=slide*(abs(tangent[0])*w+abs(tangent[1])*h)
                         cx=point[0]+side*normal[0]*(gap+extent)+tangent[0]*shift;cy=point[1]+side*normal[1]*(gap+extent)+tangent[1]*shift
                         if safe is not None:cx=min(max(cx,safe.x+w/2+.5),safe.right-w/2-.5);cy=min(max(cy,safe.y+h/2+.5),safe.bottom-h/2-.5)
+                        key=(cx,cy)
+                        if key in seen:continue
+                        seen.add(key)
                         box=Box(cx-w/2,cy-h/2,w,h);mine=own_distance(box)
                         if mine>NEAR_CURVE_REACH_PX:continue
                         if any(_prepped_within(box,prep,mine+NEAR_OTHER_MARGIN_PX) for prep in others_prep):continue
-                        if [cx,cy] not in wide:wide.append([cx,cy])
+                        wide.append([cx,cy])
         if wide:break
     return wide
 
@@ -1341,17 +1481,21 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
     resolved at the first pass is never changed."""
     labels=respace_band_rows(labels,measurements,set(band_ids))
     order=lambda label:(label.get('priority',2),label['id'])
-    result=layout_pass(labels,obstacles,safe_area,panel,measurements,require_measurements)
+    near_cache={}
+    static=StaticObstacles(obstacles)
+    def run_pass(*args,must_place=None):
+        return layout_pass(*args,near_cache=near_cache,static=static,must_place=must_place)
+    result=run_pass(labels,obstacles,safe_area,panel,measurements,require_measurements)
     current=labels
     if any(any(label['id']==label_id and 'wedgeSearch' in label for label in labels) for label_id in result['unresolved']):
-        retry=layout_pass(copy.deepcopy(labels),obstacles,safe_area,panel,measurements,require_measurements,angle_labels_first_order)
+        retry=run_pass(copy.deepcopy(labels),obstacles,safe_area,panel,measurements,require_measurements,angle_labels_first_order)
         if len(retry['unresolved'])<len(result['unresolved']):
             if not last_resort or not retry['unresolved']:return retry
             result=retry;order=angle_labels_first_order
     if any(any(label['id']==label_id and label.get('kind')=='TICK_LABEL' for label in labels) for label_id in result['unresolved']):
         # A tick number beside a point name (the O of the origin and the tick 3 right next to it) found no room because the name took its place first
         # (equal priority, ordered by id): the second pass places the tick numbers first, so the point name moves to the free side instead.
-        retry=layout_pass(copy.deepcopy(labels),obstacles,safe_area,panel,measurements,require_measurements,tick_labels_first_order)
+        retry=run_pass(copy.deepcopy(labels),obstacles,safe_area,panel,measurements,require_measurements,tick_labels_first_order)
         if len(retry['unresolved'])<len(result['unresolved']):
             if not retry['unresolved']:return retry
             # Unresolved ticks continue to the leader fallback. Keep this order for the last-resort pass.
@@ -1361,7 +1505,7 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
     # can slide along its own stroke, so the second pass places the point names first. Only a figure with an unresolved point name gets here; it replaces the first result only when it leaves
     # fewer labels unresolved, so a layout that resolved at the first pass is never changed.
     if any(any(label['id']==label_id and label.get('kind')=='POINT_NAME' for label in labels) for label_id in result['unresolved']):
-        try:retry=layout_pass(copy.deepcopy(labels),obstacles,safe_area,panel,measurements,require_measurements,point_names_first_order)
+        try:retry=run_pass(copy.deepcopy(labels),obstacles,safe_area,panel,measurements,require_measurements,point_names_first_order)
         except ValueError:retry=None
         if retry is not None and len(retry['unresolved'])<len(result['unresolved']):
             if not retry['unresolved']:return retry
@@ -1371,7 +1515,7 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
     if any(any(label['id']==label_id and label.get('axisValue') in ('x','y') and label.get('axisAnchor') is not None for label in labels) for label_id in result['unresolved']):
         # the stuck value goes straight to its own place on the axis (its second try, axis_anchor_retry), not to the end of the queue behind the labels that took its room
         trial=[axis_anchor_retry(copy.deepcopy(label)) if label['id'] in result['unresolved'] and label.get('axisValue') in ('x','y') and label.get('axisAnchor') is not None and not label.get('_axisRetry') else copy.deepcopy(label) for label in labels]
-        try:retry=layout_pass(trial,obstacles,safe_area,panel,measurements,require_measurements,axis_values_first_order)
+        try:retry=run_pass(trial,obstacles,safe_area,panel,measurements,require_measurements,axis_values_first_order)
         except ValueError:retry=None
         if retry is not None and len(retry['unresolved'])<len(result['unresolved']):
             if not retry['unresolved']:return retry
@@ -1382,14 +1526,19 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
     pending=[label for label in labels if label['id'] in result['unresolved'] and label.get('kind')=='TICK_LABEL' and label.get('tickLabelCallout') is None]
     if pending:
         for target in pending:
+            w,h=_label_dimensions(target,measurements or {},require_measurements)
             for offset in tick_callout_offsets(target):
+                # This retry only wins if the callout itself is placed. Its box is fixed,
+                # so a collision with the immutable drawing cannot be repaired by reordering.
+                box=Box(target['at'][0]+offset[0]-w/2,target['at'][1]+offset[1]-h/2,w,h)
+                if not safe_area.contains(box) or not _clear_box(box,obstacles,static,target.get('labelGap',6)):continue
                 trial=copy.deepcopy(current)
                 for label in trial:
                     if label['id']==target['id']:
                         label['tickLabelCallout']={'schemaVersion':'TICK_LABEL_OWNER_LEADER_v1','tickId':label['tickId'],'axis':label['tickAxis'],'value':label['tickValue'],'sourceAt':list(label['at']),'offsetUser':list(offset)}
-                try:retry=layout_pass(copy.deepcopy(trial),obstacles,safe_area,panel,measurements,require_measurements,tick_labels_first_order)
+                try:retry=run_pass(copy.deepcopy(trial),obstacles,safe_area,panel,measurements,require_measurements,tick_labels_first_order,must_place=target['id'])
                 except ValueError:continue
-                if target['id'] not in retry['unresolved'] and len(retry['unresolved'])<=len(result['unresolved']):
+                if retry is not None and target['id'] not in retry['unresolved'] and len(retry['unresolved'])<=len(result['unresolved']):
                     current=trial;result=retry;order=tick_labels_first_order;break
     # (PN3) A label that is only a hair too tall for the frame (a stacked fraction under an axis: 3pi/2 stands 55.13 px high and the room under the axis held 55.12) found no place inside the
     # 12 px safe margin although the frame has room: the labels still unresolved get one more pass with the safe margin cut by SAFE_MARGIN_RELIEF_PX, every other rule unchanged. The result
@@ -1397,7 +1546,7 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
     if result['unresolved'] and safe_area.width>2*SAFE_MARGIN_RELIEF_PX and safe_area.height>2*SAFE_MARGIN_RELIEF_PX:
         relieved=Box(safe_area.x-SAFE_MARGIN_RELIEF_PX,safe_area.y-SAFE_MARGIN_RELIEF_PX,safe_area.width+2*SAFE_MARGIN_RELIEF_PX,safe_area.height+2*SAFE_MARGIN_RELIEF_PX)
         if relieved.x>=0 and relieved.y>=0:
-            try:retry=layout_pass(copy.deepcopy(current),obstacles,relieved,panel,measurements,require_measurements,order)
+            try:retry=run_pass(copy.deepcopy(current),obstacles,relieved,panel,measurements,require_measurements,order)
             except ValueError:retry=None
             if retry is not None and len(retry['unresolved'])<len(result['unresolved']):
                 if not retry['unresolved']:return retry
@@ -1421,7 +1570,7 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
                     else:label['crossFallbackAllowed' if label.get('kind')=='POINT_NAME' else 'collinearOwners']=True
                     if label.get('lineOwned'):label['crossFallbackAllowed']=True       # (FC) a segment or line label may also take a leader that crosses a thin stroke or two
                 trial.append(label)
-            try:retry=layout_pass(trial,obstacles,safe_area,panel,measurements,require_measurements,lambda v:(1 if v['id'] in stuck_ids else 0,*order(v)))
+            try:retry=run_pass(trial,obstacles,safe_area,panel,measurements,require_measurements,lambda v:(1 if v['id'] in stuck_ids else 0,*order(v)))
             except ValueError:retry=None
             if retry is not None and len(retry['unresolved'])<len(result['unresolved']):result=retry
     return result
@@ -1464,7 +1613,20 @@ def tick_labels_first_order(label):
     """The tick-label retry order: at one priority the tick numbers go first (each is bound to its axis tick and may stand on two sides only), then every other label as in the first pass."""
     return (label.get('priority',2),0 if label.get('kind')=='TICK_LABEL' else 1,label['id'])
 
-def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_measurements=False,order=None):
+def _label_dimensions(label,measurements,require_measurements):
+    if require_measurements:
+        if label['id'] not in measurements:raise ValueError('BROWSER_LABEL_MEASUREMENT_REQUIRED:'+label['id'])
+        measured=measurements[label['id']]
+        if not isinstance(measured,(list,tuple)) or len(measured)!=2:raise ValueError('INVALID_BROWSER_LABEL_MEASUREMENT:'+label['id'])
+        try:w,h=finite(measured[0]),finite(measured[1])
+        except ValueError:raise ValueError('INVALID_BROWSER_LABEL_MEASUREMENT:'+label['id']) from None
+        if w<=0 or h<=0:raise ValueError('INVALID_BROWSER_LABEL_MEASUREMENT:'+label['id'])
+    else:
+        w,h=measurements.get(label['id'],approximate_size(label.get('layoutText',label['text']),label.get('font',13.25)))
+        w,h=finite(w),finite(h)
+    return w,h
+
+def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_measurements=False,order=None,*,near_cache=None,static=None,must_place=None):
     """P0..P4, 8 candidates, coordinate relocation, suppression, side panel.
 
     Unsupported further repairs are explicit suggestions, never fake PASS.
@@ -1472,6 +1634,8 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
     needed. Critical point names remain at their marker or require polishing.
     """
     if require_measurements and not isinstance(measurements,dict):raise ValueError('BROWSER_MEASUREMENTS_REQUIRED')
+    near_cache={} if near_cache is None else near_cache
+    static=StaticObstacles(obstacles) if static is None else static
     measurements=measurements or {};placed=[];suppressed=[];unresolved=[];trace=[];repairs=[];leaders=[]
     if len({v['id'] for v in labels})!=len(labels):raise ValueError('DUPLICATE_LAYOUT_LABEL')
     occupied=list(obstacles)
@@ -1504,19 +1668,14 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
             matches=[marker for marker in markers if marker.get('id')==owner_id]
             if len(matches)!=1:raise ValueError('POINT_LABEL_OWNER_MARKER_REQUIRED:'+label['id'])
             owner_marker=matches[0];competing_markers=[marker for marker in markers if marker.get('id')!=owner_id]
-        if require_measurements:
-            if label['id'] not in measurements:raise ValueError('BROWSER_LABEL_MEASUREMENT_REQUIRED:'+label['id'])
-            measured=measurements[label['id']]
-            if not isinstance(measured,(list,tuple)) or len(measured)!=2:raise ValueError('INVALID_BROWSER_LABEL_MEASUREMENT:'+label['id'])
-            try:w,h=finite(measured[0]),finite(measured[1])
-            except ValueError:raise ValueError('INVALID_BROWSER_LABEL_MEASUREMENT:'+label['id']) from None
-            if w<=0 or h<=0:raise ValueError('INVALID_BROWSER_LABEL_MEASUREMENT:'+label['id'])
-        else:
-            w,h=measurements.get(label['id'],approximate_size(label.get('layoutText',label['text']),label.get('font',13.25)))
-            w,h=finite(w),finite(h)
+        w,h=_label_dimensions(label,measurements,require_measurements)
         if 'nearCurve' in label or 'nearLine' in label:
             # (G18b) the label's own stroke decides its place: candidate centres beside it, nearest first (see near_candidate_centers)
-            label={**{k:v for k,v in label.items() if k not in ('nearCurve','nearLine')},'_nearCenters':near_candidate_centers(label,w,h,safe_area),**({'_nearData':label['nearCurve']} if 'nearCurve' in label else {}),'_nearOwn':(label['nearCurve']['own'] if 'nearCurve' in label else [list(label['nearLine']['own'])]),'_nearReach':(NEAR_CURVE_REACH_PX if 'nearCurve' in label else NEAR_LINE_REACH_PX)}
+            # Candidate geometry depends on this label and frame, never on earlier placements.
+            near_key=(label['id'],w,h,safe_area.x,safe_area.y,safe_area.width,safe_area.height)
+            cached=near_cache.setdefault(near_key,{})
+            if 'regular' not in cached:cached['regular']=near_candidate_centers(label,w,h,safe_area)
+            label={**{k:v for k,v in label.items() if k not in ('nearCurve','nearLine')},'_nearCenters':cached['regular'],**({'_nearData':label['nearCurve']} if 'nearCurve' in label else {}),'_nearOwn':(label['nearCurve']['own'] if 'nearCurve' in label else [list(label['nearLine']['own'])]),'_nearReach':(NEAR_CURVE_REACH_PX if 'nearCurve' in label else NEAR_LINE_REACH_PX)}
         chosen=None;method=None;tick_callout=label.get('tickLabelCallout');leader_fallbacks=[];far_choice=None
         if tick_callout is not None:
             if (tick_owner is None or not isinstance(tick_callout,dict)
@@ -1537,7 +1696,7 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
         leader_owned_ids=set(label.get('leaderOwned',()))
         other_sectors=label.get('wedgeSearch',{}).get('others',())
         def acceptable(box,owner_check=True):
-            return (safe_area.contains(box) and not any(collision(box,o,label['labelGap']) if o['kind']=='label' and 'labelGap' in label else collision(box,o) for o in occupied)
+            return (safe_area.contains(box) and _clear_box(box,occupied,static,label.get('labelGap',6))
                 and not any(o['kind']=='label' and reads_as_one(box,o['geometry']) for o in occupied)
                 and not (other_sectors and box_in_other_sectors(box,other_sectors))
                 and (line_owner is None or not owner_check or line_label_unambiguous(box,line_owner,other_lines,*owner_limits))
@@ -1585,6 +1744,7 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                 if not leader_clear(label['at'],end,occupied,owner_ids):
                     chosen=None;method=None
                     trace.append({'id':label['id'],'fallback':'POLISH_REQUIRED','suggestions':['OWNER_LEADER_CLEARANCE']})
+                    if label['id']==must_place:return None
                     unresolved.append(label['id'])
                     continue
                 leader_id=label['id']+'-owner-leader'
@@ -1731,8 +1891,8 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                         break
                 if not near_won and '_nearData' in label:
                     # (G18c) the usual centres found no free box within reach of the stroke: the finer search (every branch, 2 % anchors, more slides) before the label is flagged as having no room
-                    _wc=near_wide_centers(label['_nearData'],w,h,safe_area)
-                    for x,y in _wc:
+                    if 'wide' not in cached:cached['wide']=near_wide_centers(label['_nearData'],w,h,safe_area)
+                    for x,y in cached['wide']:
                         box=Box(x-w/2,y-h/2,w,h)
                         if acceptable(box):chosen=box;method='NEAR_OWN_STROKE';default_gaps=();near_won=True;break
                 if not near_won and '_nearData' in label and label['_nearData'].get('id') is not None:
@@ -1916,7 +2076,7 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
             if fallback_owner is not None:
                 fallback_others=competing_lines(fallback_owner,obstacles) if collinear_owners else [o for o in obstacles if o.get('kind')=='line' and o is not fallback_owner]
                 def acceptable_fallback(box,owner_check=True):
-                    return (safe_area.contains(box) and not any(collision(box,o,label['labelGap']) if o['kind']=='label' and 'labelGap' in label else collision(box,o) for o in occupied)
+                    return (safe_area.contains(box) and _clear_box(box,occupied,static,label.get('labelGap',6))
                         and (not owner_check or line_label_unambiguous(box,fallback_owner,fallback_others,*owner_limits)))
                 for alternate in label['alternateAt']:
                     for gap in LINE_FALLBACK_GAPS:
@@ -2067,6 +2227,7 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
         if chosen is None and label.get('axisAnchor') is not None and label.get('axisValue') in ('x','y') and not label.get('_axisRetry'):
             queue.append(axis_anchor_retry(label));continue   # after every other label: the tick numbers (required, owned) take their places first, the axis value gets what is left of its own x
         if chosen is None:
+            if label['id']==must_place:return None
             unresolved.append(label['id'])
             trace.append({'id':label['id'],'fallback':'POLISH_REQUIRED','suggestions':['LEADER_LINE','VIEWPORT_EXPANSION','PANEL_SPLIT']});continue
         if label.get('hintNudge') is not None and chosen is not None:
