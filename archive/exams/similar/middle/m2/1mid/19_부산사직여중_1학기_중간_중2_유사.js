@@ -352,7 +352,15 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "M2-RPM-009",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "image": "assets/images/19_부산사직여중_1학기_중간_중2_유사/q8-problem.svg",
+    "imageAlt": "밑면의 두 변이 5a² cm와 3ab² cm이고 부피가 90a⁵b⁴ cm³인 직육면체의 높이 h를 묻는 모식도",
+    "imageCaption": "밑면의 두 변이 5a² cm와 3ab² cm이고 부피가 90a⁵b⁴ cm³인 직육면체의 높이 h를 묻는 모식도",
+    "imageSize": "full",
+    "solutionImage": "assets/images/19_부산사직여중_1학기_중간_중2_유사/q8-solution.svg",
+    "solutionImageAlt": "밑넓이 15a³b²로 부피 90a⁵b⁴를 나누어 구한 높이는 6a²b² cm이다",
+    "solutionImageCaption": "밑넓이 15a³b²로 부피 90a⁵b⁴를 나누어 구한 높이는 6a²b² cm이다",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -792,7 +800,16 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "M2-RPM-009",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "image": "assets/images/19_부산사직여중_1학기_중간_중2_유사/q18-problem.svg",
+    "imageAlt": "첫째 줄의 세 식을 이웃한 쌍으로 더하여 둘째 줄 두 칸과 맨 아래 A를 구하는 세 층 빈칸 도식",
+    "imageCaption": "첫째 줄의 세 식을 이웃한 쌍으로 더하여 둘째 줄 두 칸과 맨 아래 A를 구하는 세 층 빈칸 도식",
+    "imageSize": "full",
+    "solutionImage": "assets/images/19_부산사직여중_1학기_중간_중2_유사/q18-solution.svg",
+    "solutionImageAlt": "위 이웃한 두 식을 더하면 둘째 줄에 a+b와 2a−b, 맨 아래에 3a가 된다",
+    "solutionImageCaption": "위 이웃한 두 식을 더하면 둘째 줄에 a+b와 2a−b, 맨 아래에 3a가 된다",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 19,

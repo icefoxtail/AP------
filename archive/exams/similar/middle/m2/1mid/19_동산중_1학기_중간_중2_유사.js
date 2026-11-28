@@ -704,7 +704,15 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "M2-RPM-007",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "image": "assets/images/19_동산중_1학기_중간_중2_유사/q16-problem.svg",
+    "imageAlt": "세로가 4xy인 직사각형의 넓이는 24x³y+8x²y³이며 가로를 구한다.",
+    "imageCaption": "세로가 4xy인 직사각형의 넓이는 24x³y+8x²y³이며 가로를 구한다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/19_동산중_1학기_중간_중2_유사/q16-solution.svg",
+    "solutionImageAlt": "직사각형의 넓이를 세로 4xy로 나누면 가로는 6x²+2xy²이다.",
+    "solutionImageCaption": "직사각형의 넓이를 세로 4xy로 나누면 가로는 6x²+2xy²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -836,7 +844,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "M2-RPM-010",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/19_동산중_1학기_중간_중2_유사/q19-solution.svg",
+    "solutionImageAlt": "7−2x>−3은 x<5이므로 5는 해가 아니며 1,2,3,4는 해이다.",
+    "solutionImageCaption": "7−2x>−3은 x<5이므로 5는 해가 아니며 1,2,3,4는 해이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -880,7 +892,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "M2-RPM-011",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/19_동산중_1학기_중간_중2_유사/q20-solution.svg",
+    "solutionImageAlt": "0.4(x+3)>1.6x+0.6의 해는 x<1/2이다.",
+    "solutionImageCaption": "0.4(x+3)>1.6x+0.6의 해는 x<1/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -924,7 +940,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "M2-RPM-007",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/19_동산중_1학기_중간_중2_유사/q21-solution.svg",
+    "solutionImageAlt": "볼펜을 x개, 지우개를 12−x개 사되 두 종류를 모두 사려면 x≥1이다. 예산을 만족하는 정수 x는 1에서 6까지이므로 최대 6개이다.",
+    "solutionImageCaption": "볼펜을 x개, 지우개를 12−x개 사되 두 종류를 모두 사려면 x≥1이다. 예산을 만족하는 정수 x는 1에서 6까지이므로 최대 6개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1000,7 +1020,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "M2-RPM-009",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/19_동산중_1학기_중간_중2_유사/q23-solution.svg",
+    "solutionImageAlt": "x≥(3a−6)/2에서 음의 정수해가 없으려면 경계가 −1보다 커야 하므로 a>4/3이다.",
+    "solutionImageCaption": "x≥(3a−6)/2에서 음의 정수해가 없으려면 경계가 −1보다 커야 하므로 a>4/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -1038,7 +1062,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "M2-RPM-010",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/19_동산중_1학기_중간_중2_유사/q24-solution.svg",
+    "solutionImageAlt": "4(x−2)≤2x+6을 만족하는 자연수는 1부터 7까지 7개다.",
+    "solutionImageCaption": "4(x−2)≤2x+6을 만족하는 자연수는 1부터 7까지 7개다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,
@@ -1076,6 +1104,10 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "M2-RPM-011",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/19_동산중_1학기_중간_중2_유사/q25-solution.svg",
+    "solutionImageAlt": "걷는 거리 x에 대해 x/6+(18−x)/54≤1을 풀면 x≤4.5이고, 처음에 실제로 걸은 거리는 양수이므로 0<x≤4.5에서 최대 4.5km이다.",
+    "solutionImageCaption": "걷는 거리 x에 대해 x/6+(18−x)/54≤1을 풀면 x≤4.5이고, 처음에 실제로 걸은 거리는 양수이므로 0<x≤4.5에서 최대 4.5km이다.",
+    "solutionImageSize": "full"
   }
 ];

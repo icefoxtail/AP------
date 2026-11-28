@@ -194,7 +194,7 @@ window.questionBank = [
     "points": 3.5,
     "solution": "제한된 범위에서 이차함수의 최대, 최소는 이차함수를 표준형으로 고쳐 꼭짓점이 제한된 범위에 속하는지 확인한다.\n이차함수 $y=x^2-4x+5$의 정의역이 $0 \\le x \\le 3$이다.\n\n주어진 이차함수 식을 완전제곱식으로 변형하면 $y=x^2-4x+5=(x^2-4x+4)+1=(x-2)^2+1$이다.\n이 함수의 그래프는 아래로 볼록하고 꼭짓점의 $x$좌표가 $2$이다.\n주어진 범위 $0 \\le x \\le 3$ 안에 꼭짓점 $V(2, 1)$의 $x$좌표 $2$가 포함되므로, $x=2$일 때 최솟값은 $1$이다.\n구간의 양 끝점 $A(0, 5)$, $B(3, 2)$에서의 함숫값을 구해보면\n$x=0$일 때, $y=(0-2)^2+1=5$\n$x=3$일 때, $y=(3-2)^2+1=2$\n이므로 최댓값은 $5$이다.\n따라서 최솟값과 최댓값의 합은 $1+5=6$이다.\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/26_매산고_1학기_중간_고1_유사/q4-solution.svg",
-    "solutionImageAlt": "해설 그림: 닫힌 구간 0≤x≤3에서 포물선 y=(x-2)²+1의 꼭짓점 V(2,1)과 양 끝점 A(0,5), B(3,2)가 표시되어 있다. 꼭짓점이 구간 안에 있어 최솟값은 1, 점 A의 y좌표가 최댓값 5이므로 합은 6이다.",
+    "solutionImageAlt": "0≤x≤3에서 y=(x-2)^2+1의 그래프는 꼭짓점 V(2,1)을 지나며 양 끝점은 A(0,5), B(3,2)이다.",
     "solutionImageSize": "full",
     "curriculum": "2022",
     "curriculumKey": "2022",
@@ -221,7 +221,8 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/1mid/26_매산고_1학기_중간_고1_기출c.js#q4",
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사_plans/q04-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사_plans/q04-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사_plans/q04-solution.plan.json",
+    "solutionImageCaption": "0≤x≤3에서 y=(x-2)^2+1의 그래프는 꼭짓점 V(2,1)을 지나며 양 끝점은 A(0,5), B(3,2)이다."
   },
   {
     "id": 5,
@@ -528,7 +529,7 @@ window.questionBank = [
     "points": 3.5,
     "solution": "이차함수의 그래프가 $x$축과 만나려면 이차방정식의 판별식 $D \\ge 0$이어야 한다.\n이차함수 $y=x^2+(2m-5)x+m^2-3m+3$의 그래프가 $x$축과 만난다.\n$y=0$으로 놓은 이차방정식의 판별식 $D \\ge 0$을 만족하는 $m$의 범위를 구한다.\n\n$x^2+(2m-5)x+m^2-3m+3=0$의 판별식을 $D$라 하면\n$D=(2m-5)^2-4(m^2-3m+3) \\ge 0$이어야 한다.\n$4m^2-20m+25-4m^2+12m-12 \\ge 0$\n$-8m+13 \\ge 0$\n$8m \\le 13$이므로 $m \\le \\dfrac{13}{8}$이다.\n$m=\\dfrac{13}{8}$일 때는 $D=0$이므로 $y=\\left(x-\\dfrac{7}{8}\\right)^2$의 그래프가 $x$축과 점 $T\\left(\\dfrac{7}{8}, 0\\right)$에서 접한다.\n따라서 실수 $m$의 최댓값은 $\\dfrac{13}{8}$이다.\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/26_매산고_1학기_중간_고1_유사/q10-solution.svg",
-    "solutionImageAlt": "해설 그림: m=13/8일 때 포물선 y=(x-7/8)²이 x축의 점 T(7/8,0)에서 접한다. 그래프가 x축과 만나려면 판별식 D=13-8m≥0이어야 하므로 m의 최댓값은 13/8이다.",
+    "solutionImageAlt": "m=13/8일 때 y=(x-7/8)^2의 그래프는 x축과 점 T(7/8,0)에서 접한다.",
     "solutionImageSize": "full",
     "curriculum": "2022",
     "curriculumKey": "2022",
@@ -553,7 +554,8 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/1mid/26_매산고_1학기_중간_고1_기출c.js#q10",
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사_plans/q10-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사_plans/q10-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사_plans/q10-solution.plan.json",
+    "solutionImageCaption": "m=13/8일 때 y=(x-7/8)^2의 그래프는 x축과 점 T(7/8,0)에서 접한다."
   },
   {
     "id": 11,
@@ -586,7 +588,7 @@ window.questionBank = [
     "points": 4.2,
     "solution": "이차함수의 그래프와 직선이 접하면 연립하여 만든 이차방정식의 판별식 $D=0$이다.\n이차함수 $y=2x^2+kx+3$과 직선 $y=x-1$이 접한다.\n\n두 식을 연립하여 교점의 $x$좌표를 구하는 방정식을 세운다.\n$2x^2+kx+3 = x-1$\n$2x^2+(k-1)x+4 = 0$\n이 이차방정식이 중근을 가져야 하므로 판별식을 $D$라 하면 $D=0$이어야 한다.\n$D = (k-1)^2 - 4(2)(4) = 0$\n$k^2-2k+1-32 = 0$\n$k^2-2k-31 = 0$\n이 이차방정식은 판별식 $D/4=1+31=32>0$이므로 서로 다른 두 실근을 갖는다.\n(예를 들어 $k=1-4\\sqrt{2}$일 때 $2x^2+(k-1)x+4=2(x-\\sqrt{2})^2=0$이므로 그래프와 직선은 접점 $T(\\sqrt{2}, \\sqrt{2}-1)$에서 접한다.)\n이 이차방정식을 만족하는 모든 실수 $k$의 값의 곱은 이차방정식의 근과 계수의 관계에 의해 $-31$이다.\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/26_매산고_1학기_중간_고1_유사/q11-solution.svg",
-    "solutionImageAlt": "해설 그림: k=1-4√2일 때 포물선 y=2x²+kx+3과 직선 y=x-1이 접점 T(√2, √2-1)에서 접한다. 두 식을 연립한 2x²+(k-1)x+4=0이 중근을 가지므로 k²-2k-31=0이고 두 k의 곱은 -31이다.",
+    "solutionImageAlt": "k=1-4√2일 때 y=2x²+kx+3의 그래프가 직선 y=x-1에 접점 T에서 접한다.",
     "solutionImageSize": "full",
     "curriculum": "2022",
     "curriculumKey": "2022",
@@ -612,7 +614,8 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/1mid/26_매산고_1학기_중간_고1_기출c.js#q11",
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사_plans/q11-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사_plans/q11-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사_plans/q11-solution.plan.json",
+    "solutionImageCaption": "k=1-4√2일 때 y=2x²+kx+3의 그래프가 직선 y=x-1에 접점 T에서 접한다."
   },
   {
     "id": 12,
@@ -757,7 +760,7 @@ window.questionBank = [
     "points": 4.2,
     "solution": "서로 다른 두 점에서 만날 조건(판별식 $D>0$)을 이용하여 자연수 $a$의 범위를 구하고, 근과 계수의 관계를 통해 $\\alpha^2+\\beta^2$을 $a$에 대한 식으로 나타낸다.\n이차함수 그래프가 $x$축과 서로 다른 두 점에서 만나고, 두 교점의 $x$좌표가 $\\alpha, \\beta$이다. $a$는 자연수이다.\n\n$x^2-6ax+40-5a^2=0$의 판별식을 $D$라 하면, 서로 다른 두 실근을 가지므로\n$D/4 = (-3a)^2 - (40-5a^2) > 0$\n$9a^2 - 40 + 5a^2 > 0$\n$14a^2 > 40$이므로 $a^2 > \\dfrac{20}{7} = 2.85\\dots$이다.\n$a$는 자연수이므로 조건을 만족하는 가장 작은 자연수는 $a=2$이다. 즉, $a \\ge 2$이다.\n이차방정식의 근과 계수의 관계에 의해\n$\\alpha+\\beta = 6a$, $\\alpha\\beta = 40-5a^2$이다.\n$\\alpha^2+\\beta^2 = (\\alpha+\\beta)^2 - 2\\alpha\\beta$\n$= (6a)^2 - 2(40-5a^2)$\n$= 36a^2 - 80 + 10a^2$\n$= 46a^2 - 80$\n$a \\ge 2$인 자연수이므로 $a$가 가장 작을 때 $46a^2-80$도 최솟값을 갖는다.\n$a=2$일 때, 최솟값은 $46(2^2) - 80 = 184 - 80 = 104$이다.\n(확인: $a=2$이면 $y=x^2-12x+20=(x-2)(x-10)$이므로 그래프는 꼭짓점 $V(6, -16)$을 갖고 $x$축과 두 점 $A(2, 0)$, $B(10, 0)$에서 만나며 $\\alpha^2+\\beta^2=2^2+10^2=104$이다.)\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/26_매산고_1학기_중간_고1_유사/q14-solution.svg",
-    "solutionImageAlt": "해설 그림: a=2일 때 포물선 y=x²-12x+20=(x-2)(x-10)이 x축과 두 점 A(2,0), B(10,0)에서 만나며 꼭짓점은 V(6,-16)이다. α²+β²=2²+10²=104이다.",
+    "solutionImageAlt": "a=2일 때 y=x²-12x+20=(x-2)(x-10)의 그래프는 x축과 두 점 A(2,0), B(10,0)에서 만난다.",
     "solutionImageSize": "full",
     "curriculum": "2022",
     "curriculumKey": "2022",
@@ -785,7 +788,8 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/1mid/26_매산고_1학기_중간_고1_기출c.js#q14",
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사_plans/q14-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사_plans/q14-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사_plans/q14-solution.plan.json",
+    "solutionImageCaption": "a=2일 때 y=x²-12x+20=(x-2)(x-10)의 그래프는 x축과 두 점 A(2,0), B(10,0)에서 만난다."
   },
   {
     "id": 15,
@@ -820,7 +824,7 @@ window.questionBank = [
     "image": "assets/images/26_매산고_1학기_중간_고1_유사/q15-problem-readable-v2.svg",
     "imageSize": "full",
     "solutionImage": "assets/images/26_매산고_1학기_중간_고1_유사/q15-solution.svg",
-    "solutionImageAlt": "해설 그림: 위로 볼록한 포물선 h(x)=f(x)-g(x)=-(x-1)(x-6)이 x축과 두 점 A(1,0), B(6,0)에서 만나고 꼭짓점은 V(7/2, 25/4)이다. α=7/2, β=25/4이므로 4α+8β=64이다.",
+    "solutionImageAlt": "h(x)=f(x)-g(x)=-(x-1)(x-6)의 그래프는 x축과 A(1,0), B(6,0)에서 만나고 꼭짓점은 V(7/2, 25/4)이다.",
     "solutionImageSize": "full",
     "curriculum": "2022",
     "curriculumKey": "2022",
@@ -846,7 +850,11 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/1mid/26_매산고_1학기_중간_고1_기출c.js#q15",
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사_plans/q15-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사_plans/q15-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사_plans/q15-solution.plan.json",
+    "imageAlt": "이차함수 y=f(x)의 그래프와 직선 y=g(x)가 x좌표가 1, 6인 두 점에서 만난다.",
+    "imageCaption": "이차함수 y=f(x)의 그래프와 직선 y=g(x)가 x좌표가 1, 6인 두 점에서 만난다.",
+    "solutionImageCaption": "h(x)=f(x)-g(x)=-(x-1)(x-6)의 그래프는 x축과 A(1,0), B(6,0)에서 만나고 꼭짓점은 V(7/2, 25/4)이다.",
+    "solutionImageScale": 85
   },
   {
     "id": 16,
@@ -974,7 +982,7 @@ window.questionBank = [
     "points": 5.8,
     "solution": "서로 다른 교점의 개수가 $4$개가 되려면 직선 $y=t$가 두 이차함수의 그래프와 각각 서로 다른 두 점에서 만나야 하며, 교점이 일치하는 순간을 제외해야 한다.\n방정식 $x^2+2=t$와 $-x^2+2x+6=t$의 서로 다른 실근의 개수의 합이 $4$개여야 한다.\n$f(x)=x^2+2$, $g(x)=-x^2+2x+6$이라 하면 $y=f(x)$의 그래프의 꼭짓점은 $P(0, 2)$이다.\n\n두 함수가 각각 $y=t$와 서로 다른 두 점에서 만날 조건을 구한다.\n$x^2+2=t$에서 $x^2 = t-2 > 0$이므로 $t > 2$이다.\n$-x^2+2x+6=t$에서 $x^2-2x+(t-6)=0$의 판별식 $D/4 = 1-(t-6) > 0$, $7-t > 0$이므로 $t < 7$이다.\n따라서 각각 두 점에서 만나는 기본 범위는 $2 < t < 7$이다.\n이때 두 이차함수의 그래프가 만나는 교점을 직선 $y=t$가 지날 경우, 중복되는 실근이 생겨 전체 교점의 개수가 $3$개로 줄어들 수 있으므로 두 함수의 교점을 구한다.\n$x^2+2 = -x^2+2x+6$\n$2x^2-2x-4 = 0$\n$x^2-x-2 = 0$\n$(x-2)(x+1) = 0$이므로 $x=-1$ 또는 $x=2$이다.\n$x=-1$일 때 $y = (-1)^2+2 = 3$이므로 교점 $C(-1, 3)$을 지나는 $t=3$일 때 전체 교점은 $3$개가 된다.\n$x=2$일 때 $y = 2^2+2 = 6$이므로 교점 $D(2, 6)$을 지나는 $t=6$일 때 전체 교점은 $3$개가 된다.\n(예를 들어 $t=5$이면 직선 $y=5$는 두 그래프와 각각 서로 다른 두 점에서 만나 교점이 모두 $4$개이다.)\n따라서 교점이 정확히 $4$개가 되려면 $2 < t < 7$ 범위에서 $t=3$과 $t=6$을 제외해야 한다.\n따라서 구하는 범위는 $2 \\lt t \\lt 3$ 또는 $3 \\lt t \\lt 6$ 또는 $6 \\lt t \\lt 7$이다.",
     "solutionImage": "assets/images/26_매산고_1학기_중간_고1_유사/q18-solution.svg",
-    "solutionImageAlt": "해설 그림: 포물선 f(x)=x²+2, g(x)=-x²+2x+6이 두 점 C(-1,3), D(2,6)에서 만난다. 직선 y=3은 점 C를 지나 교점이 3개이고 직선 y=5는 두 포물선과 각각 두 점에서 만나 교점이 4개이다. 구하는 범위는 2<t<3 또는 3<t<6 또는 6<t<7이다.",
+    "solutionImageAlt": "y=f(x)=x²+2, y=g(x)=-x²+2x+6의 그래프는 두 점 C(-1,3), D(2,6)에서 만나고 직선 y=3은 C를 지나며 직선 y=5는 두 그래프와 각각 두 점에서 만난다.",
     "solutionImageSize": "full",
     "curriculum": "2022",
     "curriculumKey": "2022",
@@ -1002,7 +1010,9 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/1mid/26_매산고_1학기_중간_고1_기출c.js#q18",
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사_plans/q18-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사_plans/q18-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사_plans/q18-solution.plan.json",
+    "solutionImageCaption": "y=f(x)=x²+2, y=g(x)=-x²+2x+6의 그래프는 두 점 C(-1,3), D(2,6)에서 만나고 직선 y=3은 C를 지나며 직선 y=5는 두 그래프와 각각 두 점에서 만난다.",
+    "solutionImageScale": 90
   },
   {
     "id": 19,

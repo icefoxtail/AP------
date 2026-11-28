@@ -89,7 +89,15 @@ window.questionBank = [
     "content": "오른쪽 그림과 같은 정육면체의 꼭짓점 A에서 출발하여 모서리를 따라 꼭짓점 G까지 최단 거리로 가는 방법의 수를 구하시오.\n<img src=\"q03.png\" />",
     "choices": [],
     "answer": "$6$",
-    "solution": "꼭짓점 $\\mathrm{A}$에서 출발하여 모서리를 따라 가장 짧게 꼭짓점 $\\mathrm{G}$로 가려면 가로, 세로, 높이의 세 방향으로 각각 한 번씩 이동해야 한다. 세 방향을 어떤 순서로 이동하느냐에 따라 경우가 정해지므로\n$$3!=6$$\n(예: $\\mathrm{A}\\to\\mathrm{B}\\to\\mathrm{C}\\to\\mathrm{G}$, $\\mathrm{A}\\to\\mathrm{B}\\to\\mathrm{F}\\to\\mathrm{G}$, $\\mathrm{A}\\to\\mathrm{D}\\to\\mathrm{C}\\to\\mathrm{G}$, $\\mathrm{A}\\to\\mathrm{D}\\to\\mathrm{H}\\to\\mathrm{G}$, $\\mathrm{A}\\to\\mathrm{E}\\to\\mathrm{F}\\to\\mathrm{G}$, $\\mathrm{A}\\to\\mathrm{E}\\to\\mathrm{H}\\to\\mathrm{G}$)"
+    "solution": "꼭짓점 $\\mathrm{A}$에서 출발하여 모서리를 따라 가장 짧게 꼭짓점 $\\mathrm{G}$로 가려면 가로, 세로, 높이의 세 방향으로 각각 한 번씩 이동해야 한다. 세 방향을 어떤 순서로 이동하느냐에 따라 경우가 정해지므로\n$$3!=6$$\n(예: $\\mathrm{A}\\to\\mathrm{B}\\to\\mathrm{C}\\to\\mathrm{G}$, $\\mathrm{A}\\to\\mathrm{B}\\to\\mathrm{F}\\to\\mathrm{G}$, $\\mathrm{A}\\to\\mathrm{D}\\to\\mathrm{C}\\to\\mathrm{G}$, $\\mathrm{A}\\to\\mathrm{D}\\to\\mathrm{H}\\to\\mathrm{G}$, $\\mathrm{A}\\to\\mathrm{E}\\to\\mathrm{F}\\to\\mathrm{G}$, $\\mathrm{A}\\to\\mathrm{E}\\to\\mathrm{H}\\to\\mathrm{G}$)",
+    "image": "assets/images/비상_공통수학1_경우의수와행렬_대단원학습평가_고1/q3-problem.svg",
+    "imageAlt": "정육면체의 꼭짓점 A에서 G까지 모서리를 따라 이동한다. 보이지 않는 세 모서리는 점선이다.",
+    "imageCaption": "정육면체의 꼭짓점 A에서 G까지 모서리를 따라 이동한다. 보이지 않는 세 모서리는 점선이다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/비상_공통수학1_경우의수와행렬_대단원학습평가_고1/q3-solution.svg",
+    "solutionImageAlt": "최단 경로의 한 예 A→B→C→G는 서로 수직인 세 방향으로 한 번씩 이동한다. 세 방향의 순서를 바꾸어 여섯 경로를 얻는다.",
+    "solutionImageCaption": "최단 경로의 한 예 A→B→C→G는 서로 수직인 세 방향으로 한 번씩 이동한다. 세 방향의 순서를 바꾸어 여섯 경로를 얻는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -201,7 +209,15 @@ window.questionBank = [
     "content": "다음 그림과 같이 $6$개의 돌을 놓아 만든 징검다리가 있다. 한 번에 한 칸 또는 두 칸을 건널 수 있다고 할 때, 출발 지점에서 도착 지점까지 가는 방법의 수를 구하시오.\n<img src=\"q07.png\" />",
     "choices": [],
     "answer": "$21$",
-    "solution": "출발 지점을 $0$, 돌을 차례로 $1,\\ 2,\\ \\cdots,\\ 6$, 도착 지점을 $7$이라 하자. 한 번에 한 칸 또는 두 칸을 건널 수 있으므로 $n$번 자리에 도착하는 방법의 수 $a_n$은 $n-1$번 자리에서 한 칸, $n-2$번 자리에서 두 칸 오는 경우의 합이다.\n$$a_n=a_{n-1}+a_{n-2},\\qquad a_0=1,\\ a_1=1$$\n$a_2=2,\\ a_3=3,\\ a_4=5,\\ a_5=8,\\ a_6=13,\\ a_7=21$\n따라서 출발 지점에서 도착 지점까지 가는 방법의 수는 $21$이다."
+    "solution": "출발 지점을 $0$, 돌을 차례로 $1,\\ 2,\\ \\cdots,\\ 6$, 도착 지점을 $7$이라 하자. 한 번에 한 칸 또는 두 칸을 건널 수 있으므로 $n$번 자리에 도착하는 방법의 수 $a_n$은 $n-1$번 자리에서 한 칸, $n-2$번 자리에서 두 칸 오는 경우의 합이다.\n$$a_n=a_{n-1}+a_{n-2},\\qquad a_0=1,\\ a_1=1$$\n$a_2=2,\\ a_3=3,\\ a_4=5,\\ a_5=8,\\ a_6=13,\\ a_7=21$\n따라서 출발 지점에서 도착 지점까지 가는 방법의 수는 $21$이다.",
+    "image": "assets/images/비상_공통수학1_경우의수와행렬_대단원학습평가_고1/q7-problem.svg",
+    "imageAlt": "출발과 도착 사이에 징검돌 여섯 개가 왼쪽부터 순서대로 놓여 있는 모습을 흰 바탕의 원형 기호 여섯 개로 나타낸 도식이다. 사진 속 바위의 모양과 물결은 수학적 조건이 아니다.",
+    "imageCaption": "출발과 도착 사이에 징검돌 여섯 개가 왼쪽부터 순서대로 놓여 있는 모습을 흰 바탕의 원형 기호 여섯 개로 나타낸 도식이다. 사진 속 바위의 모양과 물결은 수학적 조건이 아니다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/비상_공통수학1_경우의수와행렬_대단원학습평가_고1/q7-solution.svg",
+    "solutionImageAlt": "해설에서는 출발을 0번, 여섯 돌을 1~6번, 도착을 7번이라 두어 한 번에 한 칸·두 칸 이동하는 경우를 aₙ=aₙ₋₁+aₙ₋₂로 센다. 해당 위치의 방법 수는 차례로 1,1,2,3,5,8,13,21이다.",
+    "solutionImageCaption": "해설에서는 출발을 0번, 여섯 돌을 1~6번, 도착을 7번이라 두어 한 번에 한 칸·두 칸 이동하는 경우를 aₙ=aₙ₋₁+aₙ₋₂로 센다. 해당 위치의 방법 수는 차례로 1,1,2,3,5,8,13,21이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -285,7 +301,12 @@ window.questionBank = [
     "content": "다음 그림에서 다섯 개의 영역을 서로 다른 $5$가지 이하의 색으로 칠하려고 한다. 같은 색을 중복하여 사용해도 좋으나 인접한 영역은 서로 다른 색으로 칠하여 구분할 때, 칠하는 방법의 수를 구하시오.\n<img src=\"q10.png\" />",
     "choices": [],
     "answer": "$540$",
-    "solution": "다섯 영역을 가, 나, 다, 라, 마라 하자. 인접한 영역은 (가, 나), (가, 라), (나, 라), (나, 다), (나, 마), (다, 마), (라, 마)이다. 영역 '나'는 가, 라, 다, 마와 모두 인접하다.\n나: $5$가지\n가: 나와 다른 색이므로 $4$가지\n라: 나, 가와 다른 색 ($\\text{나}\\ne\\text{가}$이므로) $3$가지\n마: 나, 라와 다른 색 ($\\text{나}\\ne\\text{라}$이므로) $3$가지 (가와는 같아도 된다.)\n다: 나, 마와 다른 색 ($\\text{나}\\ne\\text{마}$이므로) $3$가지\n곱의 법칙에 의하여 $5\\times 4\\times 3\\times 3\\times 3=540$"
+    "solution": "다섯 영역을 가, 나, 다, 라, 마라 하자. 인접한 영역은 (가, 나), (가, 라), (나, 라), (나, 다), (나, 마), (다, 마), (라, 마)이다. 영역 '나'는 가, 라, 다, 마와 모두 인접하다.\n나: $5$가지\n가: 나와 다른 색이므로 $4$가지\n라: 나, 가와 다른 색 ($\\text{나}\\ne\\text{가}$이므로) $3$가지\n마: 나, 라와 다른 색 ($\\text{나}\\ne\\text{라}$이므로) $3$가지 (가와는 같아도 된다.)\n다: 나, 마와 다른 색 ($\\text{나}\\ne\\text{마}$이므로) $3$가지\n곱의 법칙에 의하여 $5\\times 4\\times 3\\times 3\\times 3=540$",
+    "solutionImage": "assets/images/비상_공통수학1_경우의수와행렬_대단원학습평가_고1/q10-solution.svg",
+    "solutionImageAlt": "해설용 인접 관계 그래프(영역의 실제 모양이 아님). 나와 나머지 네 영역이 맞닿고, 나 이외에 가–라, 라–마, 다–마가 맞닿는다. 일곱 연결선이 모든 인접 쌍을 나타낸다.",
+    "solutionImageCaption": "해설용 인접 관계 그래프(영역의 실제 모양이 아님). 나와 나머지 네 영역이 맞닿고, 나 이외에 가–라, 라–마, 다–마가 맞닿는다. 일곱 연결선이 모든 인접 쌍을 나타낸다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 11,
@@ -313,7 +334,16 @@ window.questionBank = [
     "content": "다음 그림과 같이 서로 평행한 두 직선 $l$, $m$ 위에 각각 $3$개, $4$개의 점이 있다. 직선 $l$ 위의 점과 직선 $m$ 위의 점을 이은 선분을 $2$개 그릴 때, 두 선분이 교점을 갖도록 그리는 경우의 수를 구하시오. (단, 교점이 두 직선 $l$, $m$ 위에 있는 경우는 생각하지 않는다.)\n<img src=\"q11.png\" />",
     "choices": [],
     "answer": "$18$",
-    "solution": "두 선분이 교점을 가지려면 (두 직선 $l,\\ m$ 위가 아닌 곳에서) 서로 엇갈려 만나야 한다.\n직선 $l$ 위의 두 점 $\\mathrm{P}_1,\\ \\mathrm{P}_2$와 직선 $m$ 위의 두 점 $\\mathrm{Q}_1,\\ \\mathrm{Q}_2$를 택하고 $\\mathrm{P}_1$이 $\\mathrm{P}_2$보다 왼쪽, $\\mathrm{Q}_1$이 $\\mathrm{Q}_2$보다 왼쪽에 있을 때, 선분 $\\mathrm{P}_1\\mathrm{Q}_2$와 $\\mathrm{P}_2\\mathrm{Q}_1$을 그리면 교점이 생기고, 이 방법 하나뿐이다.\n따라서 $l$ 위에서 $2$개의 점을 택하는 방법 $_{3}\\mathrm{C}_2=3$, $m$ 위에서 $2$개의 점을 택하는 방법 $_{4}\\mathrm{C}_2=6$이므로\n$$3\\times 6=18$$"
+    "solution": "두 선분이 교점을 가지려면 (두 직선 $l,\\ m$ 위가 아닌 곳에서) 서로 엇갈려 만나야 한다.\n직선 $l$ 위의 두 점 $\\mathrm{P}_1,\\ \\mathrm{P}_2$와 직선 $m$ 위의 두 점 $\\mathrm{Q}_1,\\ \\mathrm{Q}_2$를 택하고 $\\mathrm{P}_1$이 $\\mathrm{P}_2$보다 왼쪽, $\\mathrm{Q}_1$이 $\\mathrm{Q}_2$보다 왼쪽에 있을 때, 선분 $\\mathrm{P}_1\\mathrm{Q}_2$와 $\\mathrm{P}_2\\mathrm{Q}_1$을 그리면 교점이 생기고, 이 방법 하나뿐이다.\n따라서 $l$ 위에서 $2$개의 점을 택하는 방법 $_{3}\\mathrm{C}_2=3$, $m$ 위에서 $2$개의 점을 택하는 방법 $_{4}\\mathrm{C}_2=6$이므로\n$$3\\times 6=18$$",
+    "image": "assets/images/비상_공통수학1_경우의수와행렬_대단원학습평가_고1/q11-problem.svg",
+    "imageAlt": "평행한 직선 l과 m 위에 점이 각각 세 개와 네 개 있고, 서로 다른 직선의 점을 잇는 두 선분이 내부에서 교차하는 예시이다.",
+    "imageCaption": "평행한 직선 l과 m 위에 점이 각각 세 개와 네 개 있고, 서로 다른 직선의 점을 잇는 두 선분이 내부에서 교차하는 예시이다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/비상_공통수학1_경우의수와행렬_대단원학습평가_고1/q11-solution.svg",
+    "solutionImageAlt": "위쪽 직선 l에서 두 점 P₁, P₂, 아래쪽 직선 m에서 두 점 Q₁, Q₂를 왼쪽부터 택하면 P₁Q₂와 P₂Q₁만 내부에서 교차한다. 점 선택 수는 3C2×4C2=18이다.",
+    "solutionImageCaption": "위쪽 직선 l에서 두 점 P₁, P₂, 아래쪽 직선 m에서 두 점 Q₁, Q₂를 왼쪽부터 택하면 P₁Q₂와 P₂Q₁만 내부에서 교차한다. 점 선택 수는 3C2×4C2=18이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 12,

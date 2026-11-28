@@ -1,0 +1,24 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["1", "0", "-1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-2, 2],
+    "viewport": [-2, 2, -4, 2],
+    "requiredPoints": [
+      {"id": "A", "x": -1, "y": 0},
+      {"id": "V", "x": 0, "y": 1},
+      {"id": "B", "x": 1, "y": 0}
+    ],
+    "axisTickValues": {"x": ["-1", "1"], "y": []}
+  },
+  "caption": "해설에서 구한 f(x)−g(x)=1−x²의 그래프는 −1≤x≤1에서 x축 위에 있어 조건의 해집합과 일치한다.",
+  "accessibilityDescription": "아래로 열린 포물선 y=1−x²는 마이너스 1과 1에서 x축과 만나고 그 사이에서 0 이상이다.",
+  "sourceConditions": [
+    {"id": "difference", "condition": "f(x)=−x²+2x+8, g(x)=2x+7이므로 f−g=1−x²", "mappedTo": "graphPlan.coefficients"},
+    {"id": "roots", "condition": "f(x)≥g(x)의 해는 −1≤x≤1", "mappedTo": ["graphPlan.requiredPoints[0]", "graphPlan.requiredPoints[2]"]},
+    {"id": "sign", "condition": "0 사이에서 f−g≥0이며 꼭짓점은 (0,1)", "mappedTo": "graphPlan.requiredPoints[1]"}
+  ],
+  "newVisualInformation": ["두 함수의 차를 따로 그려 부등식의 부호와 교점 두 개를 검산한다."]
+}

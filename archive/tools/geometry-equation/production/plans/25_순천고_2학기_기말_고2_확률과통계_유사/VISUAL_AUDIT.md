@@ -2,9 +2,9 @@
 
 ## 2026-11-28 최신 main 재검증 (기존 실행형 plan 보존)
 
-- 기준 `origin/main`: `5ab9491e8e84548d4941841b9dbffab780777a8e`. 현행 유사 JS **24문항·해설 24개, 총 48축** 재확인. 열린 PR 82개의 전체 변경 파일 조회 결과 대상 경로 충돌 0건.
+- 기준 `origin/main`: `6dc7e32c842c0be77a0bcfdd54b540d2c24e3e72` (원격 새 조회). 현행 유사 JS **24문항·해설 24개, 총 48축** 재확인. 열린 PR 82개 전체 변경 파일에서 대상 JS 및 두 production plan 폴더 충돌 0건.
 - 기존 공식 production plan **9개 유지 / 수정 0 / 신규 0**. 문제축 24개 EXEMPT, 해설축 9개 BENEFICIAL·15개 EXEMPT. 총 **BENEFICIAL 9 / EXEMPT 39**. 기출의 `_plans` 및 기존 PNG·SVG는 공식 plan 수에 포함하지 않는다.
-- JSON 파싱·스키마 필수값 **9/9 PASS**, 공식 `plan-lint.cjs` **shallow 9/9 PASS**, **full 9/9 PASS**, 원문 수식·통계 파라미터·x경계·면적 분리·기출 변형과 구분한 **`STATIC_FIELD_PARITY` 9/9 PASS**. Chromium 런처만 있고 `/usr/lib/chromium/chromium` 바이너리 없음: 전체 plan **`DRAWN_FEATURE_PARITY=RENDER_NOT_RUN` 9건**. 정적 PASS를 시각 PASS로 간주하지 않는다.
+- JSON 파싱·스키마 필수값 **9/9 PASS**, 공식 `plan-lint.cjs` **shallow 9/9 PASS**, **full 9/9 PASS** (각 FAIL 0 / SKIP 0), 원문 수식·통계 파라미터·x경계·면적 분리·기출 변형과 구분한 **`STATIC_FIELD_PARITY` 9/9 PASS**. Chromium 런처의 신규 실행 검사에서 `/usr/lib/chromium/chromium` 본체가 없어 종료 127: 실제 SVG 렌더와 육안대조 미실행, 전체 plan **`DRAWN_FEATURE_PARITY` PASS 0 / FAIL 0 / `RENDER_NOT_RUN` 9**. 정적 PASS를 시각 PASS로 간주하지 않는다.
 - 직접 연결된 유사판 SVG는 **해설 q15-solution.svg 1개**다. 원문에 따른 x=0,2,5 및 높이 2/3·0·2/9와 두 삼각형 회색 음영이 SVG 래스터 자료에서 확인되나, 배경 흰 `<rect>`도 확인됐다. **`ENGINE_CAPABILITY_PENDING:TRANSPARENT_CANVAS_OPTION`**: 공통 렌더러의 투명 배경 opt-out이 없으며 이 범위에서 SVG 태그를 직접 제거하지 않는다.
 - **원 기출과 유사판은 같은 번호여도 다른 문제다.** 기출 q15는 밀도 영역 [0,3]·[3,6], 현행 유사판은 [0,2]·[2,5]. 기출 q07·08·10·18·19·22·23 PNG 역시 모수·사건·기준점이 현행 JS와 다르므로 **`ORIGINAL_EXAM_PNG_CONFLICT`**를 기록한다. 원 기출 풀이 SVG의 수치가 다르면 **`ORIGINAL_EXAM_SVG_VARIANT_CONFLICT`**이며, 현행 유사 JS와 직접 연결된 SVG를 항상 우선한다.
 
@@ -35,7 +35,7 @@
 | 23 | EXEMPT: 두 유한집합·반복횟수 | BENEFICIAL: 정규근사 N(252,10.5²)의 273 이상 꼬리 | 유사 없음; 기출 `q23-solution-v3.svg` | `q23-solution.plan.json` | PASS | RENDER_NOT_RUN | 교집합 공집합 확률 9/16·448회; 기출 원소수 1 사건/8640회와 달라 `ORIGINAL_EXAM_PNG_CONFLICT` |
 | 24 | EXEMPT: 6면 숫자와 3회 반복 시행 | EXEMPT: 최댓값−최솟값 분포 계산 | 없음 | — | EXEMPT | N/A | 수식·확률 분할로 충분 |
 
-**축 합계:** 24문항 × 2축 = 48축. REQUIRED 0 / BENEFICIAL 9 / EXEMPT 39. 정규분포의 음영은 원문에 명시된 기준값에서 끊었고, q15·q21의 면적 영역은 영점·대칭점에서 정확히 분리했다. 남은 일은 실제 공식 엔진 출력의 시각적 라벨·획·배경·학생 화면 확인이며, **`ENGINE_CAPABILITY_PENDING:TRANSPARENT_CANVAS_OPTION`**과 **`RENDER_NOT_RUN`**을 분리 유지한다.
+**축 합계:** 24문항 × 2축 = 48축. REQUIRED 0 / BENEFICIAL 9 / EXEMPT 39. 정규분포의 음영은 원문에 명시된 기준값에서 끊었고, q15·q21의 면적 영역은 영점·대칭점에서 정확히 분리했다. 기존 9개 plan **모두 유지(수정 0/신규 0)**. 기출 PNG·SVG와 조건이 다른 경우 현행 유사 JS의 문항·해설이 실제 독자에게 제시되는 제작 대상이므로 기출 수치를 재사용하지 않았다. 남은 일은 실제 공식 엔진 출력의 시각적 라벨·획·배경·학생 화면 확인이며, **`ENGINE_CAPABILITY_PENDING:TRANSPARENT_CANVAS_OPTION`**과 **`RENDER_NOT_RUN`**을 분리 유지한다. `MULTI_CURVE_INVERSE_CUBIC` 및 `PIECEWISE_POLYNOMIAL_UPPERCASE_FUNCTION_NAME`은 이 시험지의 시각 축에 해당하지 않는다.
 
 ---
 

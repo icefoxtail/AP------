@@ -1,0 +1,141 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "C",
+    "B",
+    "A"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l1",
+        "ownerSegment": "sBC",
+        "text": "6",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "right1",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 380
+  },
+  "caption": "직각삼각형 ABC에서 BC=6cm, tan B=5/3에 대응하는 변의 비",
+  "accessibilityDescription": "직각삼각형 ABC에서 BC=6cm, tan B=5/3에 대응하는 변의 비",
+  "newVisualInformation": [
+    "직각삼각형 ABC에서 BC=6cm, tan B=5/3에 대응하는 변의 비"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\angle\\text{C}=90^\\circ$인 직각삼각형 $\\text{ABC}$에서 $\\tan B = \\frac{5}{3}$이다. $\\overline{\\text{BC}}=6\\text{ cm}$일 때, $\\overline{\\text{AB}}$의 길이를 구하면?",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "problem",
+      "condition": "$\\angle\\text{C}=90^\\circ$인 직각삼각형 $\\text{ABC}$에서 $\\tan B = \\frac{5}{3}$이다. $\\overline{\\text{BC}}=6\\text{ cm}$일 때, $\\overline{\\text{AB}}$의 길이를 구하면?",
+      "mappedTo": "PROBLEM_AXIS"
+    }
+  ]
+}

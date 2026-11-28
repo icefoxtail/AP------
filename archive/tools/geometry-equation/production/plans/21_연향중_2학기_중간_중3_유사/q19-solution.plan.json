@@ -1,0 +1,256 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "30"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lBE",
+        "ownerSegment": "sBE",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lEC",
+        "ownerSegment": "sEC",
+        "text": "12",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "label-sDE-3",
+        "ownerSegment": "sDE",
+        "text": "6",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aACD",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "label": "x",
+        "arcs": 1,
+        "side": "INNER",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aDCE",
+        "refs": [
+          "D",
+          "C",
+          "E"
+        ],
+        "label": "y",
+        "arcs": 1,
+        "side": "INNER",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 580
+  },
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "C",
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "rE",
+      "refs": [
+        "D",
+        "E",
+        "B"
+      ]
+    }
+  ],
+  "caption": "해설 도식: 직각삼각형의 두 단계 수선 CD,DE 및 BE=3,EC=12",
+  "accessibilityDescription": "해설: 직각삼각형의 두 단계 수선 CD,DE 및 BE=3,EC=12",
+  "newVisualInformation": [
+    "해설의 관계: 직각삼각형의 두 단계 수선 CD,DE 및 BE=3,EC=12"
+  ],
+  "sourceConditions": [
+    {
+      "id": "problem",
+      "condition": "아래 그림과 같이 $\\angle\\text{ACB}=90^\\circ$인 직각삼각형 $\\text{ABC}$의 꼭짓점 $\\text{C}$에서 변 $\\text{AB}$에 내린 수선의 발을 $\\text{D}$라 하고, 점 $\\text{D}$에서 변 $\\text{BC}$에 내린 수선의 발을 $\\text{E}$라고 하자. $\\overline{\\text{BE}}=3$, $\\overline{\\text{EC}}=12$이고 $\\angle\\text{ACD}=x^\\circ$, $\\angle\\text{DCE}=y^\\circ$라고 할 때, $\\sin x^\\circ - \\sin y^\\circ + 2\\tan y^\\circ$의 값을 구하시오.",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "solution",
+      "condition": "직각삼각형 $\\text{BDC}$에서 $\\overline{\\text{DE}} \\perp \\overline{\\text{BC}}$이므로 닮음에 의해 $$\\overline{\\text{DE}}^2 = \\overline{\\text{BE}} \\cdot \\overline{\\text{EC}} = 3 \\times 12 = 36 \\implies \\overline{\\text{DE}} = 6$$ 직각삼각형 $\\text{DCE}$에서 $\\overline{\\text{DC}} = \\sqrt{6^2 + 12^2} = \\sqrt{180} = 6\\sqrt{5}$이다. 또한 $\\angle\\text{ACB}=90^\\circ$이므로 $x + y = 90^\\circ$이고, $\\sin x^\\circ = \\cos y^\\circ = \\frac{12}{6\\sqrt{5}} = \\frac{2\\sqrt{5}}{5}$, $\\sin y^\\circ = \\frac{6}{6\\sqrt{5}} = \\frac{\\sqrt{5}}{5}$, $\\tan y^\\circ = \\frac{6}{12} = \\frac{1}{2}$이다. 따라서 $$\\sin x^\\circ - \\sin y^\\circ + 2\\tan y^\\circ = \\frac{2\\sqrt{5}}{5} - \\frac{\\sqrt{5}}{5} + 2 \\times \\frac{1}{2} = 1 + \\frac{\\sqrt{5}}{5}$$",
+      "mappedTo": "SOLUTION_AXIS"
+    }
+  ]
+}

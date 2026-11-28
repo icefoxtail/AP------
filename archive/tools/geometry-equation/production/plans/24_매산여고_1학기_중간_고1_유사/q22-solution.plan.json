@@ -1,0 +1,8 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{"family":"polynomial","coefficients":["-5","-4","1"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[-2,6],"viewport":[-2,6,-11,20],"requiredPoints":[{"id":"L","x":-1,"y":0},{"id":"P","x":2,"y":-9},{"id":"R","x":5,"y":0}],"axisTickValues":{"x":[],"y":[]}},
+  "caption":"항상 지나는 P(2,−9)가 꼭짓점인 경우 a=−4이고 x절편은 −1,5이다.",
+  "accessibilityDescription":"위로 열린 포물선의 꼭짓점 P(2,−9)와 x축 교점 (−1,0),(5,0)을 표시한다.",
+  "sourceConditions":[{"id":"common","condition":"y=x²−13+a(x−2)에서 x=2인 공통점 P(2,−9)","mappedTo":["graphPlan.requiredPoints[1]"]},{"id":"vertex","condition":"P가 꼭짓점이면 a=−4, y=x²−4x−5","mappedTo":["graphPlan.coefficients"]},{"id":"intercepts","condition":"(x+1)(x−5)=0","mappedTo":["graphPlan.requiredPoints[0]","graphPlan.requiredPoints[2]"]}],
+  "newVisualInformation":["고정점과 꼭짓점이 일치할 때 생기는 두 x절편의 대칭을 실제 곡선에 표현한다."]
+}

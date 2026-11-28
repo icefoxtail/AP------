@@ -1,0 +1,8 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {"family":"polynomial","coefficients":["7/2","3","-1/2"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[-3,9],"viewport":[-3,9,-8,11],"requiredPoints":[{"id":"L","x":-1,"y":0},{"id":"V","x":3,"y":8},{"id":"K","x":4,"y":7.5},{"id":"R","x":7,"y":0}],"exactCoordinates":{"K":["4","15/2"]},"axisTickValues":{"x":[],"y":[]}},
+  "caption": "조건에서 두 근 −1,7과 대칭축 x=3이 나오며 f(4)=k=15/2이다. 최종 f(x)=−(x+1)(x−7)/2이다.",
+  "accessibilityDescription": "아래로 열린 포물선에서 두 영점 −1,7과 꼭짓점 (3,8), f(4)=15/2에 해당하는 점을 표시한다.",
+  "sourceConditions": [{"id":"symmetry","condition":"f(7)=0이고 모든 x에 f(x)≤f(3)이므로 반대쪽 근은 −1","mappedTo":["graphPlan.requiredPoints[0]","graphPlan.requiredPoints[3]"]},{"id":"leading","condition":"두 교점과 k=f(4), 근의 곱 −1에서 최고차항 계수 −1/2, k=15/2","mappedTo":["graphPlan.coefficients","graphPlan.requiredPoints[2]","graphPlan.exactCoordinates.K"]},{"id":"vertex","condition":"f(x)=−(x−3)²/2+8","mappedTo":"graphPlan.requiredPoints[1]"}],
+  "newVisualInformation": ["조건 (가)(나)가 결정하는 대칭 근과 꼭짓점을 실제 곡선에 표시하고 f(4)의 값이 어떻게 정해지는지 보인다."]
+}

@@ -434,7 +434,11 @@ window.questionBank = [
     "image": "assets/images/26_삼산중_1학기_중간_중3_유사2/q10-problem.svg",
     "imageAlt": "마름모의 두 대각선이 직각으로 만나며 각각의 길이는 3√15와 2√3이다.",
     "imageCaption": "마름모의 두 대각선이 직각으로 만나며 각각의 길이는 3√15와 2√3이다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_삼산중_1학기_중간_중3_유사2/q10-solution.svg",
+    "solutionImageAlt": "대각선이 직각으로 교차하므로 마름모 넓이=(2√3)(3√15)/2=9√5이다.",
+    "solutionImageCaption": "대각선이 직각으로 교차하므로 마름모 넓이=(2√3)(3√15)/2=9√5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -562,7 +566,15 @@ window.questionBank = [
       "두 이등변삼각형의 길이 $\\sqrt{13}$인 변끼리 붙이고, 직각삼각형의 두 빗변은 남은 이등변삼각형의 변에 각각 붙인다.",
       "두 직각삼각형의 길이 2인 변끼리, 두 이등변삼각형의 밑변끼리 붙인 뒤 한 직각삼각형의 빗변을 이등변삼각형의 변에 붙인다."
     ],
-    "answer": "①"
+    "answer": "①",
+    "image": "assets/images/26_삼산중_1학기_중간_중3_유사2/q13-problem.svg",
+    "imageAlt": "왼쪽 두 개는 직각변 2,3인 직각삼각형, 오른쪽 두 개는 밑변 4와 같은 변 √13인 이등변삼각형이다.",
+    "imageCaption": "왼쪽 두 개는 직각변 2,3인 직각삼각형, 오른쪽 두 개는 밑변 4와 같은 변 √13인 이등변삼각형이다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_삼산중_1학기_중간_중3_유사2/q13-solution.svg",
+    "solutionImageAlt": "밑변 4 한 쌍과 빗변 √13 두 쌍을 붙이면 그 세 접합변이 둘레에서 두 번씩 제외된다.",
+    "solutionImageCaption": "밑변 4 한 쌍과 빗변 √13 두 쌍을 붙이면 그 세 접합변이 둘레에서 두 번씩 제외된다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -733,7 +745,15 @@ window.questionBank = [
       "$14$",
       "$16$"
     ],
-    "answer": "⑤"
+    "answer": "⑤",
+    "image": "assets/images/26_삼산중_1학기_중간_중3_유사2/q17-problem.svg",
+    "imageAlt": "예시 축척으로 2열 3행 정사각형 사진의 좌우에 a, 위아래에 2만큼 테두리가 놓인다.",
+    "imageCaption": "예시 축척으로 2열 3행 정사각형 사진의 좌우에 a, 위아래에 2만큼 테두리가 놓인다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_삼산중_1학기_중간_중3_유사2/q17-solution.svg",
+    "solutionImageAlt": "전체 가로 2x+2a, 세로 3x+4가 되므로 넓이를 곱셈공식으로 전개한다.",
+    "solutionImageCaption": "전체 가로 2x+2a, 세로 3x+4가 되므로 넓이를 곱셈공식으로 전개한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -897,7 +917,11 @@ window.questionBank = [
     "variationType": "EXAM_FOLLOWUP",
     "provenance": "SIMILAR_OF:archive/exams/original/middle/m3/1mid/26_삼산중_1학기_중간_중3_기출.js#q21",
     "choices": [],
-    "answer": "(1) 7, 8, 9, 10, 11; 합 45, (2) 13"
+    "answer": "(1) 7, 8, 9, 10, 11; 합 45, (2) 13",
+    "solutionImage": "assets/images/26_삼산중_1학기_중간_중3_유사2/q21-solution.svg",
+    "solutionImageAlt": "36보다 크고 49 이하인 자연수 m은 37부터 49까지 13개이다.",
+    "solutionImageCaption": "36보다 크고 49 이하인 자연수 m은 37부터 49까지 13개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1007,6 +1031,14 @@ window.questionBank = [
     "variationType": "EXAM_FOLLOWUP",
     "provenance": "SIMILAR_OF:archive/exams/original/middle/m3/1mid/26_삼산중_1학기_중간_중3_기출.js#q24",
     "choices": [],
-    "answer": "(1) x=4, (2) 5√2/2"
+    "answer": "(1) x=4, (2) 5√2/2",
+    "image": "assets/images/26_삼산중_1학기_중간_중3_유사2/q24-problem.svg",
+    "imageAlt": "직사각형을 세로로 이등분한 뒤 중점 F와 K를 차례로 표시한 배치이다.",
+    "imageCaption": "직사각형을 세로로 이등분한 뒤 중점 F와 K를 차례로 표시한 배치이다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_삼산중_1학기_중간_중3_유사2/q24-solution.svg",
+    "solutionImageAlt": "닮음으로 x=4, EK=EH/4=√2/2이므로 사다리꼴 ABKE 넓이는 5√2/2이다.",
+    "solutionImageCaption": "닮음으로 x=4, EK=EH/4=√2/2이므로 사다리꼴 ABKE 넓이는 5√2/2이다.",
+    "solutionImageSize": "full"
   }
 ];

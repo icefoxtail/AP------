@@ -96,10 +96,13 @@ async function assertHome(page) {
   const controls = page.locator('[data-portal-feature]');
   assert.equal(await controls.count(), 4, 'exactly four first-level learning destinations');
   const texts = await controls.allTextContents();
-  for (const expected of ['내 시험지', '도형·수학 실험실', '학습 플래너', '과제']) assert.ok(texts.some(value => value.includes(expected)), expected + ' is present');
+  for (const expected of ['내 시험지', '내 오답노트', '도형·수학 실험실', '학습 플래너']) assert.ok(texts.some(value => value.includes(expected)), expected + ' is present');
+  assert.equal(await page.locator(selectors.feature('assignments')).count(), 0, 'home keeps homework in More');
+  assert.deepEqual(await controls.evaluateAll(nodes => nodes.slice(0, 2).map(node => node.dataset.portalFeature)), ['exams', 'wrong-notebook']);
   const bounds = await controls.evaluateAll(nodes => nodes.map(node => {
     const r = node.getBoundingClientRect(); return { x: r.x, right: r.right, top: r.top, bottom: r.bottom, width: r.width, height: r.height };
   }));
+  assert.ok(bounds[1].x >= bounds[0].right && Math.abs(bounds[1].top - bounds[0].top) <= 1, 'the notebook sits beside exams');
   const navTop = await page.locator(selectors.nav).evaluate(el => getComputedStyle(el).position === 'fixed' ? el.getBoundingClientRect().top : innerHeight);
   for (const bound of bounds) {
     assert.ok(bound.top >= 0 && bound.bottom <= navTop, 'all four features visible above mobile navigation in first viewport');
@@ -225,7 +228,7 @@ async function run() {
       await capture(page, 'student-omr-390');
       await page.locator(selectors.navItem('more')).click(); await assertNav(page, 'more');
       await capture(page, 'student-more-390');
-      for (const label of ['학습 기록', '오답 클리닉', '수업자료 오답', '과제']) assert.ok((await page.locator('#app').innerText()).includes(label), label + ' is discoverable');
+      for (const label of ['내 오답노트', '학습 기록', '오답 클리닉', '수업자료 오답', '과제']) assert.ok((await page.locator('#app').innerText()).includes(label), label + ' is discoverable');
       await page.goBack(); await page.locator('#omr-submit-btn').waitFor();
       assert.equal(await page.locator('[data-omr-no="4"]').getAttribute('aria-pressed'), 'true', 'selected wrong number survives back');
       await page.locator(selectors.navItem('more')).click();
@@ -246,7 +249,8 @@ async function run() {
       assert.equal(new URL(page.url()).searchParams.has('pin'), false, 'portal does not put PIN into destination URL');
       await capture(page, 'student-planner-390');
       await page.locator(selectors.navItem('home')).click(); await assertHome(page);
-      await page.locator(selectors.feature('assignments')).click(); await assertNav(page, 'more');
+      await page.locator(selectors.navItem('more')).click();
+      await page.getByRole('button', { name: /^과제 / }).click(); await assertNav(page, 'more');
       await page.getByRole('button', { name: '제출하기', exact: true }).click();
       await page.waitForURL(url => url.pathname.includes('/apmath/homework/'));
       await page.locator('#pin-input').fill(worker.identity.pin);
@@ -330,7 +334,7 @@ async function run() {
         assert.match(await page.locator('#app').innerText(), /학생.*인증|PIN|이용.*불가|확인할 수 없/);
         await capture(page, 'teacher-planner-' + suffix);
         await page.locator(selectors.navItem('more')).click(); await assertNav(page, 'more');
-        for (const label of ['학습 기록', '오답 클리닉', '수업자료 오답', '과제']) assert.ok((await page.locator('#app').innerText()).includes(label));
+        for (const label of ['내 오답노트', '학습 기록', '오답 클리닉', '수업자료 오답', '과제']) assert.ok((await page.locator('#app').innerText()).includes(label));
         for (const label of ['오답 클리닉', '수업자료 오답']) {
           await page.getByRole('button', { name: new RegExp(label) }).click();
           assert.match(await page.locator('#app').innerText(), /미리보기|읽기 전용|학생.*인증|확인할 수 없/);
@@ -355,7 +359,8 @@ async function run() {
       await capture(page, 'teacher-preview-missing-target-390');
     }));
     await check('teacher child links explain access restrictions and public labs return to the same preview', () => withPage({ name: 'teacher-children', preview: true }, async (page, requests) => {
-      await page.locator(selectors.feature('assignments')).click(); await assertNav(page, 'more');
+      await page.locator(selectors.navItem('more')).click();
+      await page.getByRole('button', { name: /^과제 / }).click(); await assertNav(page, 'more');
       assert.equal(await page.locator('.assignment-card').count(), 1);
       assert.match(await page.locator('#app').innerText(), /읽기 전용/);
       assert.equal(await page.getByRole('button', { name: '제출하기', exact: true }).count(), 0);

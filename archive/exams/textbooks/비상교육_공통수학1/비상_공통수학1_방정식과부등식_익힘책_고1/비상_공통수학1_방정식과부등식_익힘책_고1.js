@@ -173,7 +173,12 @@ window.questionBank = [
     "content": "다음 그림과 같이 이차함수 $y=f(x)$의 그래프와 직선 $y=g(x)$가 만나는 두 점의 $x$좌표는 1, 5이다. $h(x)=f(x)-g(x)$라고 하면 $0\\le x\\le4$에서 이차함수 $y=h(x)$의 최솟값이 $-8$일 때, 최댓값을 구하시오.\n<img src=\"q06.png\" />",
     "choices": [],
     "answer": "$10$",
-    "solution": "$f(x)$와 $g(x)$의 그래프가 $x=1,\\ 5$에서 만나므로 $h(x)=f(x)-g(x)=0$의 두 근이 $1,\\ 5$이다. $y=f(x)$는 아래로 볼록한 이차함수이고 $g(x)$는 일차함수이므로 $h(x)$의 $x^2$의 계수는 $f(x)$의 $x^2$의 계수와 같은 양수 $c$이다.\n$$h(x)=c(x-1)(x-5)=c(x-3)^2-4c$$\n$0\\le x\\le 4$에서 꼭짓점 $x=3$이 포함되므로 최솟값은 $-4c=-8$이고 $c=2$이다.\n$h(x)=2(x-3)^2-8$이고 양 끝에서의 값은 $h(0)=18-8=10$, $h(4)=2-8=-6$이므로 최댓값은 $10$이다."
+    "solution": "$f(x)$와 $g(x)$의 그래프가 $x=1,\\ 5$에서 만나므로 $h(x)=f(x)-g(x)=0$의 두 근이 $1,\\ 5$이다. $y=f(x)$는 아래로 볼록한 이차함수이고 $g(x)$는 일차함수이므로 $h(x)$의 $x^2$의 계수는 $f(x)$의 $x^2$의 계수와 같은 양수 $c$이다.\n$$h(x)=c(x-1)(x-5)=c(x-3)^2-4c$$\n$0\\le x\\le 4$에서 꼭짓점 $x=3$이 포함되므로 최솟값은 $-4c=-8$이고 $c=2$이다.\n$h(x)=2(x-3)^2-8$이고 양 끝에서의 값은 $h(0)=18-8=10$, $h(4)=2-8=-6$이므로 최댓값은 $10$이다.",
+    "solutionImage": "assets/images/비상_공통수학1_방정식과부등식_익힘책_고1/q6-solution.svg",
+    "solutionImageAlt": "h(x)=2(x-3)²-8의 구간 0≤x≤4에서 꼭짓점 (3,-8)이 최솟값을, 왼쪽 끝점 (0,10)이 최댓값을 준다.",
+    "solutionImageCaption": "h(x)=2(x-3)²-8의 구간 0≤x≤4에서 꼭짓점 (3,-8)이 최솟값을, 왼쪽 끝점 (0,10)이 최댓값을 준다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 7,
@@ -201,7 +206,11 @@ window.questionBank = [
     "content": "$x$에 대한 이차함수 $y=2x^2-4kx+2k^2+k$의 그래프와 직선 $y=x+1$의 두 교점의 $x$좌표를 각각 $\\alpha$, $\\beta$라고 하자. $0\\le k\\le1$일 때, $(2\\alpha-1)(2\\beta-1)$의 최댓값과 최솟값을 구하시오.",
     "choices": [],
     "answer": "최댓값 $0$, 최솟값 $-\\frac{9}{4}$",
-    "solution": "이차함수의 그래프와 직선의 교점의 $x$좌표는 $2x^2-4kx+2k^2+k=x+1$, 즉\n$$2x^2-(4k+1)x+2k^2+k-1=0$$\n의 두 근이다. 근과 계수의 관계에서 $\\alpha+\\beta=\\frac{4k+1}{2}$, $\\alpha\\beta=\\frac{2k^2+k-1}{2}$\n$$(2\\alpha-1)(2\\beta-1)=4\\alpha\\beta-2(\\alpha+\\beta)+1=2(2k^2+k-1)-(4k+1)+1=4k^2-2k-2$$\n$$=4\\left(k-\\frac{1}{4}\\right)^2-\\frac{9}{4}$$\n$0\\le k\\le 1$에서 꼭짓점의 $k$좌표 $\\frac{1}{4}$이 포함되므로 $k=\\frac{1}{4}$일 때 최솟값 $-\\frac{9}{4}$이다.\n양 끝에서의 값은 $k=0$일 때 $-2$, $k=1$일 때 $0$이므로 $k=1$일 때 최댓값 $0$이다.\n(판별식 $D=(4k+1)^2-8(2k^2+k-1)=9>0$이므로 항상 서로 다른 두 교점이 있다.)"
+    "solution": "이차함수의 그래프와 직선의 교점의 $x$좌표는 $2x^2-4kx+2k^2+k=x+1$, 즉\n$$2x^2-(4k+1)x+2k^2+k-1=0$$\n의 두 근이다. 근과 계수의 관계에서 $\\alpha+\\beta=\\frac{4k+1}{2}$, $\\alpha\\beta=\\frac{2k^2+k-1}{2}$\n$$(2\\alpha-1)(2\\beta-1)=4\\alpha\\beta-2(\\alpha+\\beta)+1=2(2k^2+k-1)-(4k+1)+1=4k^2-2k-2$$\n$$=4\\left(k-\\frac{1}{4}\\right)^2-\\frac{9}{4}$$\n$0\\le k\\le 1$에서 꼭짓점의 $k$좌표 $\\frac{1}{4}$이 포함되므로 $k=\\frac{1}{4}$일 때 최솟값 $-\\frac{9}{4}$이다.\n양 끝에서의 값은 $k=0$일 때 $-2$, $k=1$일 때 $0$이므로 $k=1$일 때 최댓값 $0$이다.\n(판별식 $D=(4k+1)^2-8(2k^2+k-1)=9>0$이므로 항상 서로 다른 두 교점이 있다.)",
+    "solutionImage": "assets/images/비상_공통수학1_방정식과부등식_익힘책_고1/q7-solution.svg",
+    "solutionImageAlt": "교점의 두 근에 비에타 정리를 적용한 식 u(k)=4k²-2k-2는 0≤k≤1에서 k=1/4에 최솟값 -9/4, k=1에 최댓값 0을 갖는다.",
+    "solutionImageCaption": "교점의 두 근에 비에타 정리를 적용한 식 u(k)=4k²-2k-2는 0≤k≤1에서 k=1/4에 최솟값 -9/4, k=1에 최댓값 0을 갖는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -229,7 +238,16 @@ window.questionBank = [
     "content": "직각을 낀 두 변의 길이가 16, 20인 직각삼각형을 밑면으로 하고 높이가 24인 삼각기둥을 오른쪽 그림과 같이 두 번 잘라 직육면체를 만들 때, 직육면체의 부피의 최댓값을 구하시오.\n<img src=\"q08.png\" />",
     "choices": [],
     "answer": "$1920$",
-    "solution": "직육면체의 밑면은 직각삼각형의 직각 꼭짓점을 한 꼭짓점으로 하고 직각을 낀 두 변 위에 놓이는 직사각형이다. 직사각형의 가로를 $a$ (길이 $16$인 변 위), 세로를 $b$ (길이 $20$인 변 위)라 하면 직사각형의 꼭짓점이 빗변 위에 있으므로 닮음비에 의하여\n$$\\frac{a}{16}+\\frac{b}{20}=1\\quad\\text{에서}\\quad a=16\\left(1-\\frac{b}{20}\\right)=16-\\frac{4}{5}b$$\n밑면의 넓이는\n$$ab=\\left(16-\\frac{4}{5}b\\right)b=-\\frac{4}{5}b^2+16b=-\\frac{4}{5}(b-10)^2+80$$\n$0<b<20$에서 $b=10$일 때 최대 $80$이다. ($a=8$)\n직육면체의 높이는 삼각기둥의 높이 $24$이므로 부피의 최댓값은 $80\\times 24=1920$"
+    "solution": "직육면체의 밑면은 직각삼각형의 직각 꼭짓점을 한 꼭짓점으로 하고 직각을 낀 두 변 위에 놓이는 직사각형이다. 직사각형의 가로를 $a$ (길이 $16$인 변 위), 세로를 $b$ (길이 $20$인 변 위)라 하면 직사각형의 꼭짓점이 빗변 위에 있으므로 닮음비에 의하여\n$$\\frac{a}{16}+\\frac{b}{20}=1\\quad\\text{에서}\\quad a=16\\left(1-\\frac{b}{20}\\right)=16-\\frac{4}{5}b$$\n밑면의 넓이는\n$$ab=\\left(16-\\frac{4}{5}b\\right)b=-\\frac{4}{5}b^2+16b=-\\frac{4}{5}(b-10)^2+80$$\n$0<b<20$에서 $b=10$일 때 최대 $80$이다. ($a=8$)\n직육면체의 높이는 삼각기둥의 높이 $24$이므로 부피의 최댓값은 $80\\times 24=1920$",
+    "image": "assets/images/비상_공통수학1_방정식과부등식_익힘책_고1/q8-problem.svg",
+    "imageAlt": "직각삼각형 밑면의 두 직각변은 16, 20이고 삼각기둥 높이는 24이다. 직육면체의 밑면은 빗변에 닿는 내접 직사각형이다.",
+    "imageCaption": "직각삼각형 밑면의 두 직각변은 16, 20이고 삼각기둥 높이는 24이다. 직육면체의 밑면은 빗변에 닿는 내접 직사각형이다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/비상_공통수학1_방정식과부등식_익힘책_고1/q8-solution.svg",
+    "solutionImageAlt": "밑면 직각삼각형에서 a/16+b/20=1이며, 최대 넓이 80인 내접 직사각형의 두 변은 8,10이다. 높이 24를 곱해 부피 1920을 얻는다.",
+    "solutionImageCaption": "밑면 직각삼각형에서 a/16+b/20=1이며, 최대 넓이 80인 내접 직사각형의 두 변은 8,10이다. 높이 24를 곱해 부피 1920을 얻는다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 9,
@@ -313,7 +331,15 @@ window.questionBank = [
     "content": "오른쪽 그림과 같은 사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}}=2$, $\\overline{\\mathrm{BC}}=6$, $\\angle\\mathrm{A}=\\angle\\mathrm{C}=90^\\circ$이다. 사각형 $\\mathrm{ABCD}$의 넓이가 30일 때, 사각형 $\\mathrm{ABCD}$의 둘레의 길이를 구하시오.\n<img src=\"q11.png\" />",
     "choices": [],
     "answer": "$24$",
-    "solution": "대각선 $\\mathrm{BD}$를 그으면 삼각형 $\\mathrm{ABD}$는 $\\angle\\mathrm{A}=90^\\circ$, 삼각형 $\\mathrm{CBD}$는 $\\angle\\mathrm{C}=90^\\circ$인 직각삼각형이다.\n$\\overline{\\mathrm{AD}}=x,\\ \\overline{\\mathrm{CD}}=y$라 하자.\n넓이: $\\frac{1}{2}\\times 2\\times x+\\frac{1}{2}\\times 6\\times y=30$에서 $x+3y=30\\qquad\\cdots\\ ①$\n$\\overline{\\mathrm{BD}}$가 공통이므로 피타고라스 정리에 의하여 $2^2+x^2=6^2+y^2$에서 $x^2-y^2=32\\qquad\\cdots\\ ②$\n①에서 $x=30-3y$를 ②에 대입하면\n$$(30-3y)^2-y^2=32,\\quad 8y^2-180y+868=0,\\quad 2y^2-45y+217=0$$\n$(2y-31)(y-7)=0$에서 $y=\\frac{31}{2}$ 또는 $y=7$\n$y=\\frac{31}{2}$이면 $x=30-\\frac{93}{2}<0$이므로 불가능하다. 따라서 $y=7,\\ x=9$이다.\n사각형 $\\mathrm{ABCD}$의 둘레의 길이는 $2+6+7+9=24$"
+    "solution": "대각선 $\\mathrm{BD}$를 그으면 삼각형 $\\mathrm{ABD}$는 $\\angle\\mathrm{A}=90^\\circ$, 삼각형 $\\mathrm{CBD}$는 $\\angle\\mathrm{C}=90^\\circ$인 직각삼각형이다.\n$\\overline{\\mathrm{AD}}=x,\\ \\overline{\\mathrm{CD}}=y$라 하자.\n넓이: $\\frac{1}{2}\\times 2\\times x+\\frac{1}{2}\\times 6\\times y=30$에서 $x+3y=30\\qquad\\cdots\\ ①$\n$\\overline{\\mathrm{BD}}$가 공통이므로 피타고라스 정리에 의하여 $2^2+x^2=6^2+y^2$에서 $x^2-y^2=32\\qquad\\cdots\\ ②$\n①에서 $x=30-3y$를 ②에 대입하면\n$$(30-3y)^2-y^2=32,\\quad 8y^2-180y+868=0,\\quad 2y^2-45y+217=0$$\n$(2y-31)(y-7)=0$에서 $y=\\frac{31}{2}$ 또는 $y=7$\n$y=\\frac{31}{2}$이면 $x=30-\\frac{93}{2}<0$이므로 불가능하다. 따라서 $y=7,\\ x=9$이다.\n사각형 $\\mathrm{ABCD}$의 둘레의 길이는 $2+6+7+9=24$",
+    "image": "assets/images/비상_공통수학1_방정식과부등식_익힘책_고1/q11-problem.svg",
+    "imageAlt": "두 대각의 크기가 각각 90도인 사각형 ABCD에서 AB=2, BC=6을 표시한 문제 도형이다.",
+    "imageCaption": "두 대각의 크기가 각각 90도인 사각형 ABCD에서 AB=2, BC=6을 표시한 문제 도형이다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/비상_공통수학1_방정식과부등식_익힘책_고1/q11-solution.svg",
+    "solutionImageAlt": "직각삼각형 ABD와 CBD를 나누는 보조대각선 BD를 긋고, AD=x와 CD=y를 두어 넓이와 피타고라스 관계를 비교한다.",
+    "solutionImageCaption": "직각삼각형 ABD와 CBD를 나누는 보조대각선 BD를 긋고, AD=x와 CD=y를 두어 넓이와 피타고라스 관계를 비교한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -369,7 +395,11 @@ window.questionBank = [
     "content": "실수 $a$, $b$, $c$에 대하여 이차부등식 $ax^2+bx+c>0$의 해가 $-1<x<3$일 때, 이차부등식 $bx^2-ax-c<0$의 해를 구하시오.",
     "choices": [],
     "answer": "$-\\frac{3}{2}<x<1$",
-    "solution": "$ax^2+bx+c>0$의 해가 $-1<x<3$이므로 $a<0$이고\n$$ax^2+bx+c=a(x+1)(x-3)=ax^2-2ax-3a$$\n이므로 $b=-2a,\\ c=-3a$이다.\n$bx^2-ax-c<0$에 대입하면\n$$-2ax^2-ax+3a<0$$\n$a<0$이므로 양변을 $a$로 나누면 부등호의 방향이 바뀌어 $-2x^2-x+3>0$이다.\n$2x^2+x-3<0$이므로 $(2x+3)(x-1)<0$에서 $-\\frac{3}{2}<x<1$"
+    "solution": "$ax^2+bx+c>0$의 해가 $-1<x<3$이므로 $a<0$이고\n$$ax^2+bx+c=a(x+1)(x-3)=ax^2-2ax-3a$$\n이므로 $b=-2a,\\ c=-3a$이다.\n$bx^2-ax-c<0$에 대입하면\n$$-2ax^2-ax+3a<0$$\n$a<0$이므로 양변을 $a$로 나누면 부등호의 방향이 바뀌어 $-2x^2-x+3>0$이다.\n$2x^2+x-3<0$이므로 $(2x+3)(x-1)<0$에서 $-\\frac{3}{2}<x<1$",
+    "solutionImage": "assets/images/비상_공통수학1_방정식과부등식_익힘책_고1/q13-solution.svg",
+    "solutionImageAlt": "원래 이차부등식의 해 -1<x<3과 계수 관계를 대입한 뒤 구한 새 해 -3/2<x<1을 별도 수직선에 표시한다.",
+    "solutionImageCaption": "원래 이차부등식의 해 -1<x<3과 계수 관계를 대입한 뒤 구한 새 해 -3/2<x<1을 별도 수직선에 표시한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -397,6 +427,10 @@ window.questionBank = [
     "content": "연립부등식 $\\begin{cases} x^2-3x+2>0 \\\\ 2x-a\\le2 \\end{cases}$를 만족시키는 자연수 $x$가 1개가 되도록 하는 실수 $a$의 값의 범위를 구하시오.",
     "choices": [],
     "answer": "$4\\le a<6$",
-    "solution": "$x^2-3x+2>0$에서 $(x-1)(x-2)>0$이므로 $x<1$ 또는 $x>2$\n$2x-a\\le 2$에서 $x\\le\\frac{a+2}{2}$\n자연수 $x$ 중 $x<1$을 만족시키는 것은 없으므로 연립부등식을 만족시키는 자연수는 $x>2$, 즉 $3,\\ 4,\\ 5,\\ \\cdots$ 중에서 $x\\le\\frac{a+2}{2}$인 것이다.\n자연수가 $1$개이려면 $x=3$만 만족해야 하므로\n$$3\\le\\frac{a+2}{2}<4$$\n$6\\le a+2<8$이므로 $4\\le a<6$"
+    "solution": "$x^2-3x+2>0$에서 $(x-1)(x-2)>0$이므로 $x<1$ 또는 $x>2$\n$2x-a\\le 2$에서 $x\\le\\frac{a+2}{2}$\n자연수 $x$ 중 $x<1$을 만족시키는 것은 없으므로 연립부등식을 만족시키는 자연수는 $x>2$, 즉 $3,\\ 4,\\ 5,\\ \\cdots$ 중에서 $x\\le\\frac{a+2}{2}$인 것이다.\n자연수가 $1$개이려면 $x=3$만 만족해야 하므로\n$$3\\le\\frac{a+2}{2}<4$$\n$6\\le a+2<8$이므로 $4\\le a<6$",
+    "solutionImage": "assets/images/비상_공통수학1_방정식과부등식_익힘책_고1/q14-solution.svg",
+    "solutionImageAlt": "자연수 x가 오직 3만 해가 되려면 상한 t=(a+2)/2가 3 이상 4 미만이어야 함을 수직선으로 보인다.",
+    "solutionImageCaption": "자연수 x가 오직 3만 해가 되려면 상한 t=(a+2)/2가 3 이상 4 미만이어야 함을 수직선으로 보인다.",
+    "solutionImageSize": "full"
   }
 ];

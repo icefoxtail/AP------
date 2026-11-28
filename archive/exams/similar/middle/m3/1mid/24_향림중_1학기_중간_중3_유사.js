@@ -470,7 +470,15 @@ window.questionBank = [
     "rpmPrimaryRecordId": "M3-RPM-001",
     "sourceQid": 10,
     "variationType": "STRICT_VARIANT",
-    "problemPlanRef": "archive/exams/similar/middle/m3/1mid/24_향림중_1학기_중간_중3_유사_plans/q10-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/middle/m3/1mid/24_향림중_1학기_중간_중3_유사_plans/q10-problem.plan.json",
+    "image": "assets/images/24_향림중_1학기_중간_중3_유사/q10-problem.svg",
+    "imageAlt": "좌표 2인 점 P에서 가로 두 칸, 세로 한 칸인 직각삼각형의 빗변 PQ를 그린다. P를 중심으로 같은 반지름의 호가 만나는 왼쪽 A와 오른쪽 B를 표시하며 두 점의 좌표는 쓰지 않는다.",
+    "imageCaption": "좌표 2인 점 P에서 가로 두 칸, 세로 한 칸인 직각삼각형의 빗변 PQ를 그린다. P를 중심으로 같은 반지름의 호가 만나는 왼쪽 A와 오른쪽 B를 표시하며 두 점의 좌표는 쓰지 않는다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/24_향림중_1학기_중간_중3_유사/q10-solution.svg",
+    "solutionImageAlt": "가로 2, 세로 1인 직각삼각형의 빗변은 √5이다. 점 P의 좌표가 2이므로 왼쪽 A는 2−√5, 오른쪽 B는 2+√5이며 정답은 ⑤이다.",
+    "solutionImageCaption": "가로 2, 세로 1인 직각삼각형의 빗변은 √5이다. 점 P의 좌표가 2이므로 왼쪽 A는 2−√5, 오른쪽 B는 2+√5이며 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,

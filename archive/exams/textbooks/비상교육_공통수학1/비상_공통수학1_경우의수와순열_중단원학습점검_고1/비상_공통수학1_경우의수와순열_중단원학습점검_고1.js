@@ -195,6 +195,15 @@ window.questionBank = [
     "content": "다음 그림은 어느 건물들 사이의 산책로를 나타낸 것이다.\n<img src=\"q07.png\" />\n건물 B와 건물 C 사이에 산책로를 추가하여 건물 A에서 건물 D까지 가는 방법의 수가 $64$가 되도록 할 때, 추가해야 하는 산책로의 수를 구하시오. (단, 같은 지점은 두 번 이상 지나지 않고, 산책로는 서로 만나지 않는다.)",
     "choices": [],
     "answer": "$4$",
-    "solution": "[풀이 전략]\n건물 사이를 잇는 산책로의 수에서 $\\mathrm{A}$에서 $\\mathrm{D}$로 가는 경우를 곱의 법칙과 합의 법칙으로 센다.\n[단계별 풀이]\n그림에서 $\\mathrm{A}$-$\\mathrm{B}$는 $3$개, $\\mathrm{B}$-$\\mathrm{D}$는 $2$개, $\\mathrm{A}$-$\\mathrm{C}$는 $2$개, $\\mathrm{C}$-$\\mathrm{D}$는 $3$개의 산책로가 있다.\n$\\mathrm{B}$와 $\\mathrm{C}$ 사이에 산책로를 $n$개 추가한다.\n$\\mathrm{A}\\to\\mathrm{B}\\to\\mathrm{D}$: $3\\times2=6$\n$\\mathrm{A}\\to\\mathrm{C}\\to\\mathrm{D}$: $2\\times3=6$\n$\\mathrm{A}\\to\\mathrm{B}\\to\\mathrm{C}\\to\\mathrm{D}$: $3\\times n\\times3=9n$\n$\\mathrm{A}\\to\\mathrm{C}\\to\\mathrm{B}\\to\\mathrm{D}$: $2\\times n\\times2=4n$\n전체 방법의 수는 $6+6+9n+4n=12+13n=64$이므로 $n=4$이다.\n[결론]\n$4$"
+    "solution": "[풀이 전략]\n건물 사이를 잇는 산책로의 수에서 $\\mathrm{A}$에서 $\\mathrm{D}$로 가는 경우를 곱의 법칙과 합의 법칙으로 센다.\n[단계별 풀이]\n그림에서 $\\mathrm{A}$-$\\mathrm{B}$는 $3$개, $\\mathrm{B}$-$\\mathrm{D}$는 $2$개, $\\mathrm{A}$-$\\mathrm{C}$는 $2$개, $\\mathrm{C}$-$\\mathrm{D}$는 $3$개의 산책로가 있다.\n$\\mathrm{B}$와 $\\mathrm{C}$ 사이에 산책로를 $n$개 추가한다.\n$\\mathrm{A}\\to\\mathrm{B}\\to\\mathrm{D}$: $3\\times2=6$\n$\\mathrm{A}\\to\\mathrm{C}\\to\\mathrm{D}$: $2\\times3=6$\n$\\mathrm{A}\\to\\mathrm{B}\\to\\mathrm{C}\\to\\mathrm{D}$: $3\\times n\\times3=9n$\n$\\mathrm{A}\\to\\mathrm{C}\\to\\mathrm{B}\\to\\mathrm{D}$: $2\\times n\\times2=4n$\n전체 방법의 수는 $6+6+9n+4n=12+13n=64$이므로 $n=4$이다.\n[결론]\n$4$",
+    "image": "assets/images/비상_공통수학1_경우의수와순열_중단원학습점검_고1/q7-problem.svg",
+    "imageAlt": "원본의 노선 연결 수를 보존한 도식이다. A-B에는 산책로 3개, B-D에는 2개, A-C에는 2개, C-D에는 3개가 있고 B-C 사이에는 아직 산책로가 없다. 경로의 실제 길이는 주어지지 않았다.",
+    "imageCaption": "원본의 노선 연결 수를 보존한 도식이다. A-B에는 산책로 3개, B-D에는 2개, A-C에는 2개, C-D에는 3개가 있고 B-C 사이에는 아직 산책로가 없다. 경로의 실제 길이는 주어지지 않았다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/비상_공통수학1_경우의수와순열_중단원학습점검_고1/q7-solution.svg",
+    "solutionImageAlt": "건물 A-B 사이 3개, B-D 사이 2개, A-C 사이 2개, C-D 사이 3개 산책로에 B-C 사이 4개를 추가한 경우를 보여 주는 노선도이다. 경로 수는 3×2+2×3+3×4×3+2×4×2=64이다.",
+    "solutionImageCaption": "건물 A-B 사이 3개, B-D 사이 2개, A-C 사이 2개, C-D 사이 3개 산책로에 B-C 사이 4개를 추가한 경우를 보여 주는 노선도이다. 경로 수는 3×2+2×3+3×4×3+2×4×2=64이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   }
 ];

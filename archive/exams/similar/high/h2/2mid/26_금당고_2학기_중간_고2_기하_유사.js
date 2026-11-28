@@ -268,7 +268,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "rpmPrimaryRecordId": "H2-GEO-RPM-039",
     "sourceQid": null,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사/q6-solution.svg",
+    "solutionImageAlt": "점근선 y=±x/3과 y=3이 만드는 밑변 18, 높이 3의 삼각형",
+    "solutionImageCaption": "점근선 y=±x/3과 y=3이 만드는 밑변 18, 높이 3의 삼각형",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -312,7 +316,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "rpmPrimaryRecordId": "H2-GEO-RPM-047",
     "sourceQid": null,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사/q7-solution.svg",
+    "solutionImageAlt": "타원 x²/12+y²/6=1 위 P(2,2)의 접선과 x절편 A(6,0)",
+    "solutionImageCaption": "타원 x²/12+y²/6=1 위 P(2,2)의 접선과 x절편 A(6,0)",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -406,7 +414,14 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H2-GEO-RPM-053",
     "sourceQid": null,
     "variationType": "NUMERIC",
-    "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사_plans/q09-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사_plans/q09-problem.plan.json",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사/q9-solution.svg",
+    "solutionImageAlt": "평행한 대각선 BD와 FH로 공간각을 ∠AFH로 옮긴 그림",
+    "solutionImageCaption": "평행한 대각선 BD와 FH로 공간각을 ∠AFH로 옮긴 그림",
+    "solutionImageSize": "full",
+    "imageAlt": "정육면체 ABCD-EFGH에서 두 선분 AF와 BD를 그린 그림이다.",
+    "imageCaption": "정육면체 ABCD-EFGH에서 두 선분 AF와 BD를 그린 그림이다.",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -452,7 +467,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "rpmPrimaryRecordId": "H2-GEO-RPM-047",
     "sourceQid": null,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사/q10-solution.svg",
+    "solutionImageAlt": "외부 점 T(1,2)에서 포물선 y²=-4x에 그은 두 접선",
+    "solutionImageCaption": "외부 점 T(1,2)에서 포물선 y²=-4x에 그은 두 접선",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -500,7 +519,14 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H2-GEO-RPM-039",
     "sourceQid": null,
     "variationType": "NUMERIC",
-    "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사_plans/q11-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사_plans/q11-problem.plan.json",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사/q11-solution.svg",
+    "solutionImageAlt": "AF=AH, BF=BI, CF=CJ와 무게중심 F의 y좌표 3으로 세 거리 합을 구한다",
+    "solutionImageCaption": "AF=AH, BF=BI, CF=CJ와 무게중심 F의 y좌표 3으로 세 거리 합을 구한다",
+    "solutionImageSize": "full",
+    "imageAlt": "포물선 x²=12y 위의 세 점 A, B, C와 무게중심이자 초점인 F",
+    "imageCaption": "포물선 x²=12y 위의 세 점 A, B, C와 무게중심이자 초점인 F",
+    "imageSize": "full"
   },
   {
     "id": 12,
@@ -546,7 +572,14 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H2-GEO-RPM-053",
     "sourceQid": null,
     "variationType": "NUMERIC",
-    "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사_plans/q12-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사_plans/q12-problem.plan.json",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사/q12-solution.svg",
+    "solutionImageAlt": "직각삼각형 AOH와 밑면의 OH∥BC를 사용하는 해설 그림",
+    "solutionImageCaption": "직각삼각형 AOH와 밑면의 OH∥BC를 사용하는 해설 그림",
+    "solutionImageSize": "full",
+    "imageAlt": "정사각뿔 A-BCDE에서 AH⊥CD와 직선 BC의 위치 관계",
+    "imageCaption": "정사각뿔 A-BCDE에서 AH⊥CD와 직선 BC의 위치 관계",
+    "imageSize": "full"
   },
   {
     "id": 13,
@@ -596,7 +629,12 @@ window.questionBank = [
     "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사_plans/q13-problem.plan.json",
     "image": "assets/images/26_금당고_2학기_중간_고2_기하_유사/q13-problem.svg",
     "imageAlt": "타원 x²/a²+y²/b²=1과 포물선 y²=3x가 제4사분면의 점 P(4, -2√3)에서 만나는 그림.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사/q13-solution.svg",
+    "solutionImageAlt": "P(4,-2√3)에서 타원과 포물선에 각각 그은 두 접선의 기울기 비교",
+    "solutionImageCaption": "P(4,-2√3)에서 타원과 포물선에 각각 그은 두 접선의 기울기 비교",
+    "solutionImageSize": "full",
+    "imageCaption": "타원 x²/a²+y²/b²=1과 포물선 y²=3x가 제4사분면의 점 P(4, -2√3)에서 만나는 그림."
   },
   {
     "id": 14,
@@ -646,7 +684,8 @@ window.questionBank = [
     "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사_plans/q14-problem.plan.json",
     "image": "assets/images/26_금당고_2학기_중간_고2_기하_유사/q14-problem.svg",
     "imageAlt": "포물선 y²=12x 위의 점 P(3, 6)에서의 접선에 수직이고 점 A(3, 0)을 지나는 직선 l과 교점 Q, R.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "imageCaption": "포물선 y²=12x 위의 점 P(3, 6)에서의 접선에 수직이고 점 A(3, 0)을 지나는 직선 l과 교점 Q, R."
   },
   {
     "id": 15,
@@ -740,7 +779,8 @@ window.questionBank = [
     "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사_plans/q16-problem.plan.json",
     "image": "assets/images/26_금당고_2학기_중간_고2_기하_유사/q16-problem.svg",
     "imageAlt": "네 점 P, Q, R, S에서 만나는 포물선 C₁과 쌍곡선 C₂ 및 한 직선 위의 세 점 S, F, Q.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "imageCaption": "네 점 P, Q, R, S에서 만나는 포물선 C₁과 쌍곡선 C₂ 및 한 직선 위의 세 점 S, F, Q."
   },
   {
     "id": 17,
@@ -782,7 +822,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "rpmPrimaryRecordId": "H2-GEO-RPM-047",
     "sourceQid": null,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사/q17-solution.svg",
+    "solutionImageAlt": "제1사분면 접선이 축과 만드는 삼각형의 최소 넓이 18",
+    "solutionImageCaption": "제1사분면 접선이 축과 만드는 삼각형의 최소 넓이 18",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -824,7 +868,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "rpmPrimaryRecordId": "H2-GEO-RPM-047",
     "sourceQid": null,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사/q18-solution.svg",
+    "solutionImageAlt": "준선 x=-4, 접선 y=x+4, 수평선 y=8이 만드는 넓이 32의 삼각형",
+    "solutionImageCaption": "준선 x=-4, 접선 y=x+4, 수평선 y=8이 만드는 넓이 32의 삼각형",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -865,8 +913,13 @@ window.questionBank = [
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사_plans/q19-problem.plan.json",
     "image": "assets/images/26_금당고_2학기_중간_고2_기하_유사/q19-problem.svg",
-    "imageAlt": "원점 O가 꼭짓점이고 A가 초점인 포물선과 외부의 점 B, 포물선 위의 점 P를 잇는 경로 B-P-A.",
-    "imageSize": "full"
+    "imageAlt": "원점 O가 꼭짓점이고 A가 초점인 포물선과 외부의 점 B, 임의의 점 P를 잇는 경로 B-P-A.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사/q19-solution.svg",
+    "solutionImageAlt": "BP와 PH를 같은 수평선으로 두고 PA=PH인 최단경로",
+    "solutionImageCaption": "BP와 PH를 같은 수평선으로 두고 PA=PH인 최단경로",
+    "solutionImageSize": "full",
+    "imageCaption": "원점 O가 꼭짓점이고 A가 초점인 포물선과 외부의 점 B, 임의의 점 P를 잇는 경로 B-P-A."
   },
   {
     "id": 20,
@@ -913,6 +966,11 @@ window.questionBank = [
     "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사_plans/q20-problem.plan.json",
     "image": "assets/images/26_금당고_2학기_중간_고2_기하_유사/q20-problem.svg",
     "imageAlt": "y축 위의 점 A에서 타원 x²/32+y²/8=1에 그은 두 접선의 접점 P, Q와 x축 교점 R, S 및 마름모 OPAQ.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사/q20-solution.svg",
+    "solutionImageAlt": "마름모 OPAQ의 대각선 OA·PQ와 접선의 x절편 R,S",
+    "solutionImageCaption": "마름모 OPAQ의 대각선 OA·PQ와 접선의 x절편 R,S",
+    "solutionImageSize": "full",
+    "imageCaption": "y축 위의 점 A에서 타원 x²/32+y²/8=1에 그은 두 접선의 접점 P, Q와 x축 교점 R, S 및 마름모 OPAQ."
   }
 ];

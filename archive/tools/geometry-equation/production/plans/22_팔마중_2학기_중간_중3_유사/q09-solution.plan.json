@@ -1,0 +1,213 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "60"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "75"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "45"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bRay",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "U"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cRay",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "V"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bRay",
+          "cRay"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 60,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 75,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "60",
+        "unit": "m",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 420
+  },
+  "caption": "문항 9 해설: 강의 양쪽에 있는 두 지점 A와 B 사이의 거리를 재기 위해 삼각형 ABC를 나타낸 그림이다. 각 A는 60도, 각 B는 75도이고 BC는 60 m이다.",
+  "accessibilityDescription": "풀이의 도형 관계를 확인한다. 삼각형 ABC에서 꼭짓점 A의 각은 60도, 꼭짓점 B의 각은 75도로 표시되어 있고 변 BC 옆에 60 m가 적혀 있다.",
+  "newVisualInformation": [
+    "삼각형 ABC",
+    "각 A=60도, 각 B=75도",
+    "BC=60 m",
+    "문제의 각·선분·원 관계를 해설과 대조하는 도식"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림은 강의 양쪽에 있는 두 지점 $\\text{A}$, $\\text{B}$ 사이의 거리를 구하기 위하여 거리와 각을 측량하여 나타낸 그림이다. $\\angle\\text{A}=60^\\circ$, $\\angle\\text{B}=75^\\circ$이고 $\\overline{\\text{BC}}=60\\text{ m}$일 때, 두 지점 $\\text{A}$, $\\text{B}$ 사이의 거리는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "solution",
+      "condition": "$\\triangle\\text{ABC}$에서 $\\angle\\text{C} = 180^\\circ - (60^\\circ + 75^\\circ) = 45^\\circ$이다. 꼭짓점 $\\text{B}$에서 변 $\\text{AC}$에 내린 수선의 발을 $\\text{D}$라 하면 직각삼각형 $\\text{BCD}$에서 $\\angle\\text{C}=45^\\circ$, $\\overline{\\text{BC}}=60\\text{ m}$이므로 $$\\overline{\\text{BD}} = 60\\sin 45^\\circ = 60 \\times \\frac{\\sqrt{2}}{2} = 30\\sqrt{2}\\text{ (m)}$$ 직각삼각형 $\\text{ABD}$에서 $\\angle\\text{A}=60^\\circ$이므로 $$\\overline{\\text{AB}} = \\frac{\\overline{\\text{BD}}}{\\sin 60^\\circ} = \\frac{30\\sqrt{2}}{\\frac{\\sqrt{3}}{2}} = \\frac{60\\sqrt{2}}{\\sqrt{3}} = 20\\sqrt{6}\\text{ (m)}$$ 따라서 정답은 ②이다.",
+      "mappedTo": "INDEPENDENT_SOLUTION_REVIEW"
+    }
+  ]
+}

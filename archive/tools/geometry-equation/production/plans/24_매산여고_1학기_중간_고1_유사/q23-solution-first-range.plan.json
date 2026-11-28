@@ -1,0 +1,9 @@
+{
+  "capability":"number-line-figure-v1",
+  "numberLine":{"variable":"m","rows":[{"kind":"SET","label":"왼쪽 2·오른쪽 1","pieces":[{"lo":null,"hi":{"value":"-10-2*sqrt(26)","state":"OPEN"}}]}]},
+  "numberLineCaption":{"text":"교점 2+1개인 첫 범위"},
+  "caption":"왼쪽 조각의 교점이 2개이고 오른쪽 조각이 1개인 조건은 m<−10−2√26이다.",
+  "accessibilityDescription":"m 수직선에서 −10−2√26보다 왼쪽 범위만 진하게 표시하고 해당 무리수 끝점은 열린 원이다.",
+  "sourceConditions":[{"id":"left","condition":"D_L=m²+20m−4>0, 왼쪽 두 근의 합 음수·곱 양수","mappedTo":["numberLine.rows[0].pieces[0].hi"]},{"id":"right","condition":"이 범위에서는 오른쪽 조각의 양의 근이 하나 존재","mappedTo":["numberLine.rows[0]"]}],
+  "newVisualInformation":["중근 경계 m=−10−2√26을 제외한 첫 교점 3개의 허용 범위를 열린 점으로 명시한다."]
+}

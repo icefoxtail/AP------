@@ -1,0 +1,83 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      5,
+      -8,
+      18
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "8",
+          "2",
+          "-1"
+        ],
+        "domain": [
+          "-2",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": {
+          "hidden": true,
+          "reason": "ANSWER",
+          "name": "f"
+        }
+      },
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "7",
+          "2"
+        ],
+        "domain": [
+          "-3",
+          "5"
+        ],
+        "color": "WARM",
+        "label": {
+          "hidden": true,
+          "reason": "ANSWER",
+          "name": "g"
+        }
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "4"
+      ],
+      "y": []
+    }
+  },
+  "caption": "좌표평면에 위로 볼록한 이차함수 y=f(x)의 그래프가 x축과 x좌표 -2, 4인 두 점에서 만나고, 기울기가 2인 직선 y=g(x)가 이 그래프와 두 점에서 만난다.",
+  "accessibilityDescription": "좌표평면에 위로 볼록한 포물선과 오른쪽 위로 향하는 직선이 그려져 있고, 포물선이 x축과 만나는 두 점의 x좌표로 -2와 4가 표시되어 있다.",
+  "newVisualInformation": [
+    "정답 수식의 계수를 감춘 채 포물선과 기울기 2인 직선 및 x축 교점을 나타낸다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "roots",
+      "condition": "f(-2)=f(4)=0",
+      "mappedTo": [
+        "graphPlan.curves[0]",
+        "graphPlan.axisTickValues.x"
+      ]
+    },
+    {
+      "id": "slope",
+      "condition": "g의 기울기는 2",
+      "mappedTo": "graphPlan.curves[1]"
+    },
+    {
+      "id": "interval",
+      "condition": "f(x)≥g(x)의 해집합은 [-1,1]이므로 두 교점은 x=-1,1",
+      "mappedTo": "graphPlan.curves"
+    }
+  ]
+}

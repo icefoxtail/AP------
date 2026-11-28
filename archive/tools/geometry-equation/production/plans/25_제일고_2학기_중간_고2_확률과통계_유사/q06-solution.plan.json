@@ -1,0 +1,18 @@
+{
+  "capability":"piecewise-polynomial-spike-v1",
+  "graphPlan":{
+    "family":"piecewise-polynomial",
+    "pieces":[{"coefficients":["0","1/18"]}],
+    "breakpoints":[],
+    "sourceDomain":{"kind":"INTERVAL","range":["0","6"],"states":["CLOSED","CLOSED"]},
+    "domain":[0,6],"viewport":[-0.8,6.8,-0.035,0.4],
+    "axisScale":{"x":1,"y":12},
+    "axisTickValues":{"x":["2","4","6"],"y":["1/3"]},
+    "requiredPoints":[{"id":"O","x":"0","y":"0"},{"id":"B","x":"6","y":"1/3"}],
+    "regions":[{"id":"P","upper":"f","lower":"axis","from":"2","to":"4","fill":"LIGHT"}]
+  },
+  "caption":"밀도함수의 총넓이 6×(2a)/2=1에서 a=1/6, f(x)=x/18이다. x=2부터 x=4까지의 사다리꼴 넓이는 1/3이다.",
+  "accessibilityDescription":"원점에서 (6,1/3)까지 증가하는 선형 확률밀도함수와, x가 2에서 4까지인 구간 아래의 사다리꼴 넓이가 칠해져 있다.",
+  "sourceConditions":[{"id":"density","condition":"0≤x≤6에서 f(x)=ax/3이고 총넓이 1이므로 a=1/6이다.","mappedTo":["graphPlan.pieces","graphPlan.sourceDomain","graphPlan.requiredPoints"]},{"id":"interval","condition":"확률 P(2≤X≤4)는 그래프 아래 [2,4]의 넓이이다.","mappedTo":"graphPlan.regions"}],
+  "newVisualInformation":["정규화된 밀도 직선의 기울기 1/18과 오른쪽 끝 높이 1/3을 실제 수학 필드로 표시한다.","실제 확률 구간 [2,4]만 음영 처리한다."]
+}

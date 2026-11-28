@@ -1,0 +1,11 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "graphPlan":{"family":"multi-curve","viewport":[-1,7,-13,10],"curves":[
+    {"id":"f","kind":"Y_OF_X","coefficients":["0","4","-1"],"domain":["-1","6"],"color":"BLUE","label":"y=-x^2+4x"},
+    {"id":"tangent","kind":"LINE","coefficients":["64/9","-4/3"],"domain":["-1","6"],"color":"WARM","label":"y=-4/3*x+64/9"}
+  ],"overlays":{"points":[{"id":"O","x":"0","y":"0"},{"id":"A","x":"16/3","y":"0"},{"id":"B","x":"0","y":"64/9"},{"id":"C","x":"8/3","y":"32/9"},{"id":"D","x":"8/3","y":"0"}],"segments":[{"id":"OA","from":"O","to":"A"},{"id":"OB","from":"O","to":"B"},{"id":"AB","from":"A","to":"B"},{"id":"AC","from":"A","to":"C"},{"id":"CD","from":"C","to":"D","dashed":true},{"id":"DA","from":"D","to":"A"}],"polygons":[{"id":"ABO","points":["A","B","O"],"fill":"LIGHT"},{"id":"ACD","points":["A","C","D"],"fill":"MEDIUM"}],"rightAngles":[{"at":"D","from":["A","C"]}]},"axisTickValues":{"x":[],"y":[]}},
+  "pointNames":{"A":"A","B":"B","C":"C","D":"D","O":"O"},
+  "caption":"t=8/3에서 C(8/3,32/9)의 접선 기울기는 −4/3이며, [ABO]=512/27, [ACD]=128/27로 넓이 비가 4이다.",
+  "sourceConditions":[{"id":"tangent","condition":"f'(8/3)=4−16/3=−4/3, 접선 절편 b=(8/3)²=64/9","mappedTo":"graphPlan.curves"},{"id":"intercepts","condition":"A=(16/3,0), B=(0,64/9), C=(8/3,32/9), D=(8/3,0)","mappedTo":"graphPlan.overlays.points"},{"id":"areas","condition":"[ABO]=512/27=4×128/27=4[ACD]","mappedTo":"graphPlan.overlays.polygons"}],
+  "newVisualInformation":["첫째 근 t=8/3에서 접선과 두 삼각형·수선·직각의 정확한 위치 및 넓이 관계를 나타낸다."]
+}

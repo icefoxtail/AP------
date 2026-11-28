@@ -1,0 +1,372 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "6204081632653",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8964737249497",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1178571428571",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5883108819982",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3660601043545",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "6646258503401",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3984327666443",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1589923469388",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7038719481050",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-589285714286",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2941554409991",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "3660601043545",
+            "denominator": "1000000000000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O",
+    "E",
+    "F",
+    "G",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sEB",
+      "refs": [
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "sBF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "sFC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "sCG",
+      "refs": [
+        "C",
+        "G"
+      ]
+    },
+    {
+      "id": "sGD",
+      "refs": [
+        "G",
+        "D"
+      ]
+    },
+    {
+      "id": "sDH",
+      "refs": [
+        "D",
+        "H"
+      ]
+    },
+    {
+      "id": "sHA",
+      "refs": [
+        "H",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "ab7",
+        "ownerSegment": "sAB",
+        "text": "7",
+        "unit": "cm"
+      },
+      {
+        "id": "ae3",
+        "ownerSegment": "sAE",
+        "text": "3",
+        "unit": "cm"
+      },
+      {
+        "id": "cd8",
+        "ownerSegment": "sCD",
+        "text": "8",
+        "unit": "cm"
+      },
+      {
+        "id": "cf5",
+        "ownerSegment": "sFC",
+        "text": "5",
+        "unit": "cm"
+      },
+      {
+        "id": "bx",
+        "ownerSegment": "sBF",
+        "text": "x=4"
+      },
+      {
+        "id": "dy",
+        "ownerSegment": "sDH",
+        "text": "y=3"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 610,
+    "height": 490
+  },
+  "caption": "문항 19 해설: 내접원 O에 외접하는 사각형 ABCD에서 AB=7cm, AE=3cm, CD=8cm, CF=5cm이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 사각형 $\\text{ABCD}$는 원 $\\text{O}$에 외접하고, 원과 변 $\\text{AB}$, $\\text{BC}$, $\\text{CD}$, $\\text{DA}$의 접점을 각각 $\\text{E}$, $\\text{F}$, $\\text{G}$, $\\text{H}$라 하자. $\\overline{\\text{AB}}=7\\text{ cm}$, $\\overline{\\text{AE}}=3\\text{ cm}$, $\\overline{\\text{CD}}=8\\text{ cm}$, $\\overline{\\text{CF}}=5\\text{ cm}$이다. $x=\\overline{\\text{BF}}$, $y=\\overline{\\text{DH}}$일 때, $x+y$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "solution",
+      "condition": "같은 꼭짓점에서 원에 그은 두 접선의 길이는 같으므로 $$x = \\overline{\\text{BF}} = \\overline{\\text{BE}} = \\overline{\\text{AB}} - \\overline{\\text{AE}} = 7 - 3 = 4$$ $$\\overline{\\text{CG}} = \\overline{\\text{CF}} = 5 \\implies y = \\overline{\\text{DH}} = \\overline{\\text{DG}} = \\overline{\\text{CD}} - \\overline{\\text{CG}} = 8 - 5 = 3$$ 따라서 $x + y = 4 + 3 = 7\\text{ (cm)}$이다. 정답은 ⑤이다.",
+      "mappedTo": "INDEPENDENT_SOLUTION_REVIEW"
+    }
+  ],
+  "accessibilityDescription": "풀이의 도형 관계를 확인한다. 내접원 O에 외접하는 사각형 ABCD에서 AB=7cm, AE=3cm, CD=8cm, CF=5cm이다.",
+  "newVisualInformation": [
+    "문제에 주어진 점·선·각·길이 관계를 나타낸 실제 도형",
+    "문제의 각·선분·원 관계를 해설과 대조하는 도식"
+  ]
+}

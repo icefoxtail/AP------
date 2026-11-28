@@ -1,0 +1,157 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-7"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAC",
+        "ownerSegment": "sCA",
+        "text": "10",
+        "unit": "cm"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "8",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aC",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "value": 135,
+        "label": "135",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 340
+  },
+  "rightAngles": [],
+  "caption": "해설 관계: 한 각이 135도인 둔각삼각형 ABC에서 두 변 BC와 AC의 길이가 각각 8 cm와 10 cm로 주어진 그림이다.",
+  "accessibilityDescription": "해설에 사용되는 해설 관계: 한 각이 135도인 둔각삼각형 ABC에서 두 변 BC와 AC의 길이가 각각 8 cm와 10 cm로 주어진 그림이다.",
+  "newVisualInformation": [
+    "그려진 선분 sBC, sCA, sAB",
+    "expressionLabels 1개",
+    "dimensions 1개",
+    "angles 1개"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q09s",
+      "condition": "점 $\\text{A}$에서 직선 $\\text{BC}$의 $\\text{C}$쪽 연장선에 내린 수선의 발을 $\\text{H}$라 하면 $\\angle\\text{ACH} = 180^\\circ - 135^\\circ = 45^\\circ$이다. 직각삼각형 $\\text{ACH}$에서 $\\overline{\\text{AC}}=10\\text{ cm}$이므로 높이 $\\overline{\\text{AH}}$는 $$\\overline{\\text{AH}} = 10\\sin 45^\\circ = 10 \\times \\frac{\\sqrt{2}}{2} = 5\\sqrt{2}\\text{ (cm)}$$ 따라서 $\\triangle\\text{ABC}$의 넓이는 $$\\frac{1}{2} \\times \\overline{\\text{BC}} \\times \\overline{\\text{AH}} = \\frac{1}{2} \\times 8 \\times 5\\sqrt{2} = 20\\sqrt{2}\\text{ (cm}^2\\text{)}$$ 이므로 정답은 ②이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "sourceQuote": "다음 둔각삼각형 $\\text{ABC}$에서 $\\overline{"
+}

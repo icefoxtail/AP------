@@ -1,0 +1,9 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "sourceQuote":"이차함수 $f(x)=x^2+ax+b$가 두 점 $A(2,1)$, $B(4,3)$을 지난다.",
+  "graphPlan":{"family":"multi-curve","viewport":[1,5,-1,6],"curves":[{"id":"f","kind":"Y_OF_X","coefficients":["7","-5","1"],"domain":[1,5],"color":"BLUE","label":"y=f(x)"},{"id":"g","kind":"LINE","coefficients":["1","0"],"domain":[1,5],"style":"DASHED","label":"y=g(x)=1"}],"overlays":{"points":[{"id":"A","x":"2","y":"1","coordinates":true},{"id":"B","x":"4","y":"3","coordinates":true},{"id":"P","x":"3","y":"1","coordinates":true}],"guides":[{"id":"aGuide","from":"A","axis":"x"},{"id":"pGuide","from":"P","axis":"x"}]},"axisTickValues":{"x":[],"y":[]}},
+  "caption":"주어진 두 점을 지나는 f(x)=x²−5x+7과 n=0의 예시 직선 g(x)=1은 x=2,3에서 만난다.",
+  "accessibilityDescription":"포물선이 A(2,1), B(4,3)을 지나고 n=0인 수평 직선은 포물선과 A(2,1), P(3,1)의 서로 다른 두 점에서 교차한다.",
+  "sourceConditions":[{"id":"f","condition":"f(2)=1, f(4)=3 이므로 f(x)=x²−5x+7","mappedTo":["graphPlan.curves[0]","graphPlan.overlays.points[0]","graphPlan.overlays.points[1]"]},{"id":"line","condition":"n=0인 허용 예시 g(x)=nx+1−n=1","mappedTo":["graphPlan.curves[1]"]},{"id":"intersections","condition":"n=0일 때 f−g=(x−2)(x−3), 두 교점 x=2,3 모두 [2,4] 안","mappedTo":["graphPlan.overlays.points[0]","graphPlan.overlays.points[2]","graphPlan.overlays.guides"]}],
+  "newVisualInformation":["문항에 주어진 A·B와 풀이에서 확보한 교점 A·P를 시각적으로 구별한다."]
+}

@@ -1,0 +1,9 @@
+{
+  "capability":"polynomial-spike-v1",
+  "sourceQuote":"그 두 교점의 $x$좌표는 절댓값이 같고",
+  "graphPlan":{"family":"polynomial","coefficients":["-7","0","1"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[-4,4],"viewport":[-4,4,-8,10],"requiredPoints":[{"id":"L","x":-2.6457513110645907,"y":0},{"id":"V","x":0,"y":-7},{"id":"R","x":2.6457513110645907,"y":0}],"exactCoordinates":{"L":["-sqrt(7)","0"],"R":["sqrt(7)","0"]},"axisTickValues":{"x":[],"y":[]}},
+  "caption":"a=−5일 때 y=x²−7은 원점을 기준으로 대칭인 두 영점 −√7, √7을 갖는다.",
+  "accessibilityDescription":"포물선 y=x²−7의 꼭짓점 (0,−7)과 x축 교점 두 곳 (−√7,0), (√7,0)이 표시되어 있다.",
+  "sourceConditions":[{"id":"coefficient","condition":"서로 반대인 두 근의 합 0에서 a=−5를 선택하면 y=x²−7","mappedTo":["graphPlan.coefficients"]},{"id":"crossings","condition":"실근 −√7과 √7은 절댓값 같고 부호 반대","mappedTo":["graphPlan.requiredPoints[0]","graphPlan.requiredPoints[2]","graphPlan.exactCoordinates"]},{"id":"vertex","condition":"축 x=0, 꼭짓점 (0,−7)","mappedTo":["graphPlan.requiredPoints[1]"]}],
+  "newVisualInformation":["a=−1의 x²+1과 달리 a=−5만 서로 반대 부호의 두 교점을 낳는다는 형상 증거를 보여 준다."]
+}

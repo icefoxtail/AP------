@@ -1,0 +1,330 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "24"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4032"
+                },
+                {
+                  "kind": "integer",
+                  "value": "625"
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "1176"
+                },
+                {
+                  "kind": "integer",
+                  "value": "625"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "incircle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "incircle"
+  ],
+  "displayPoints": [
+    "C",
+    "A",
+    "B",
+    "O",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sCF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "sDO",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "sEO",
+      "refs": [
+        "O",
+        "E"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sBF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l1",
+        "ownerSegment": "sAB",
+        "text": "25",
+        "unit": "cm"
+      },
+      {
+        "id": "l2",
+        "ownerSegment": "sBC",
+        "text": "7",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "right1",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "right2",
+      "refs": [
+        "C",
+        "F",
+        "B"
+      ]
+    },
+    {
+      "id": "right3",
+      "refs": [
+        "O",
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "right4",
+      "refs": [
+        "O",
+        "E",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 380
+  },
+  "caption": "7-24-25 직각삼각형 ABC, C에서 AB로 내린 높이 CF와 내접원 O의 접점 D,E",
+  "accessibilityDescription": "7-24-25 직각삼각형 ABC, C에서 AB로 내린 높이 CF와 내접원 O의 접점 D,E",
+  "newVisualInformation": [
+    "7-24-25 직각삼각형 ABC, C에서 AB로 내린 높이 CF와 내접원 O의 접점 D,E"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직각삼각형 $\\text{ABC}$에서 $\\angle\\text{C}=90^\\circ$, $\\overline{\\text{AB}}=25\\text{ cm}$, $\\overline{\\text{BC}}=7\\text{ cm}$이다. 점 $\\text{F}$는 꼭짓점 $\\text{C}$에서 $\\overline{\\text{AB}}$에 내린 수선의 발이고, 원 $\\text{O}$가 삼각형 $\\text{ABC}$의 내접원이며 변 $\\text{AC}$, $\\text{BC}$에 각각 점 $\\text{D}$, $\\text{E}$에서 접한다. 다음을 차례로 구하시오.\n\n(1) $\\overline{\\text{AC}}$의 길이 (2) $\\overline{\\text{BF}}$의 길이 (3) $\\overline{\\text{CF}}$의 길이 (4) $\\overline{\\text{CD}}$의 길이 (5) $\\overline{\\text{DE}}$의 길이",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "problem",
+      "condition": "직각삼각형 $\\text{ABC}$에서 $\\angle\\text{C}=90^\\circ$, $\\overline{\\text{AB}}=25\\text{ cm}$, $\\overline{\\text{BC}}=7\\text{ cm}$이다. 점 $\\text{F}$는 꼭짓점 $\\text{C}$에서 $\\overline{\\text{AB}}$에 내린 수선의 발이고, 원 $\\text{O}$가 삼각형 $\\text{ABC}$의 내접원이며 변 $\\text{AC}$, $\\text{BC}$에 각각 점 $\\text{D}$, $\\text{E}$에서 접한다. 다음을 차례로 구하시오.\n\n(1) $\\overline{\\text{AC}}$의 길이 (2) $\\overline{\\text{BF}}$의 길이 (3) $\\overline{\\text{CF}}$의 길이 (4) $\\overline{\\text{CD}}$의 길이 (5) $\\overline{\\text{DE}}$의 길이",
+      "mappedTo": "PROBLEM_AXIS"
+    }
+  ]
+}

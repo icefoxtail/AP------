@@ -255,7 +255,15 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "image": "assets/images/23_왕운중_1학기_중간_중3_유사2/q9-problem.svg",
+    "imageAlt": "수직선에서 A(3)를 출발해 가로 1칸, 세로 2칸인 직각삼각형의 빗변 길이를 오른쪽으로 옮긴 점 P",
+    "imageCaption": "수직선에서 A(3)를 출발해 가로 1칸, 세로 2칸인 직각삼각형의 빗변 길이를 오른쪽으로 옮긴 점 P",
+    "imageSize": "full",
+    "solutionImage": "assets/images/23_왕운중_1학기_중간_중3_유사2/q9-solution.svg",
+    "solutionImageAlt": "직각삼각형의 빗변은 √5이고, A(3)에서 오른쪽으로 √5를 옮기면 P는 3+√5이다.",
+    "solutionImageCaption": "직각삼각형의 빗변은 √5이고, A(3)에서 오른쪽으로 √5를 옮기면 P는 3+√5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,

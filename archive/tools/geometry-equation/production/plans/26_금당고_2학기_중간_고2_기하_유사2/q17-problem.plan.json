@@ -1,0 +1,49 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "ELLIPSE",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "36",
+    "bSquared": "9",
+    "major": "X"
+  },
+  "points": [
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "3",
+      "branch": "POS"
+    }
+  ],
+  "lines": [
+    {
+      "id": "t",
+      "slope": "-sqrt(3)/6",
+      "intercept": "2*sqrt(3)",
+      "tangent": true
+    }
+  ],
+  "segments": [],
+  "polygons": [],
+  "caption": "Q17 발문 관계도 (조건을 만족하는 배치 예시, 미지수·좌표값은 생략)",
+  "accessibilityDescription": "발문에서 주어진 이차곡선과 점, 선분의 위치 관계를 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "타원 $\\dfrac{x^2}{36}+\\dfrac{y^2}{9}=1$ 위의 제1사분면 점 $P$에서의 접선과 두 좌표축으로 둘러싸인 삼각형의 넓이의 최솟값을 구하시오. [5점]",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "제1사분면 접선이 두 좌표축과 만드는 삼각형의 기하적 범위를 보인다."
+  ],
+  "sourceQuote": "타원 $\\dfrac{x^2}{36}+\\dfrac{y^2}{9}=1$ 위의 제1사분면 점 $P$에서의 접선과 두 좌표축으로 둘러싸인 삼각형의 넓이의 최솟값을 구하시오. [5점]"
+}

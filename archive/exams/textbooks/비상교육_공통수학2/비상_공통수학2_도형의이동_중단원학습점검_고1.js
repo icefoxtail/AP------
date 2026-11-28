@@ -176,8 +176,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/비상_공통수학2_도형의이동_중단원학습점검_고1/q06-solution.svg",
-    "solutionImageAlt": "중심 (0,1)과 (3,7)을 지나는 두 원과 공통 넓이 이등분선",
-    "solutionImageCaption": "공통 이등분선 l은 두 원의 중심을 지난다.",
+    "solutionImageAlt": "반지름이 1인 두 원의 중심 (0,1), (3,7)을 지나는 직선이 두 원의 넓이를 동시에 이등분한다.",
+    "solutionImageCaption": "반지름이 1인 두 원의 중심 (0,1), (3,7)을 지나는 직선이 두 원의 넓이를 동시에 이등분한다.",
     "solutionImageSize": "full"
   },
   {
@@ -208,7 +208,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-04-CORE",
     "subUnit": "도형의 이동 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/비상_공통수학2_도형의이동_중단원학습점검_고1/q7-solution.svg",
+    "solutionImageAlt": "A(-2,3)를 y=x에 대칭이동한 B(3,-2)와, B를 (2,-2)만큼 옮긴 C(5,-4)는 한 직선 위에 있다.",
+    "solutionImageCaption": "A(-2,3)를 y=x에 대칭이동한 B(3,-2)와, B를 (2,-2)만큼 옮긴 C(5,-4)는 한 직선 위에 있다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -240,8 +244,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/비상_공통수학2_도형의이동_중단원학습점검_고1/q08-solution.svg",
-    "solutionImageAlt": "원 위의 A, B, C와 직각 BAC, 중심 O, 지름 BC",
-    "solutionImageCaption": "직각삼각형 ABC의 외접원에서 빗변 BC는 지름이다.",
+    "solutionImageAlt": "∠BAC=90°이므로 BC는 원의 지름이고, B(1,√3)의 원점 대칭점은 C(-1,-√3)이다.",
+    "solutionImageCaption": "∠BAC=90°이므로 BC는 원의 지름이고, B(1,√3)의 원점 대칭점은 C(-1,-√3)이다.",
     "solutionImageSize": "full"
   },
   {
@@ -276,8 +280,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/비상_공통수학2_도형의이동_중단원학습점검_고1/q09-solution.svg",
-    "solutionImageAlt": "원 C의 중심 O(3,2), 반지름 2인 원과 k=-9, k=11인 두 접선",
-    "solutionImageCaption": "접점에서 반지름 OC는 k=-9, k=11인 두 접선에 각각 수직이다.",
+    "solutionImageAlt": "대칭이동한 원의 중심은 (3,2), 반지름은 2이며 평행한 두 접선 3x−4y+9=0, 3x−4y−11=0이 각각 k=-9, 11에 대응한다.",
+    "solutionImageCaption": "대칭이동한 원의 중심은 (3,2), 반지름은 2이며 평행한 두 접선 3x−4y+9=0, 3x−4y−11=0이 각각 k=-9, 11에 대응한다.",
     "solutionImageSize": "full"
   },
   {
@@ -340,8 +344,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/비상_공통수학2_도형의이동_중단원학습점검_고1/q11-solution.svg",
-    "solutionImageAlt": "A의 대칭점 A′, 중심 B의 반지름 1 원, B-Q-P-A′의 일직선 관계와 삼각형 APQ",
-    "solutionImageCaption": "최솟값은 A′, P, Q가 한 직선 위이고 P가 A′와 Q 사이일 때 얻는다.",
+    "solutionImageAlt": "A를 y축에 대칭이동한 A′와 B를 잇는 선 위의 Q, P를 선택하면 AP+PQ가 최소이고 △APQ의 넓이는 9/5다.",
+    "solutionImageCaption": "A를 y축에 대칭이동한 A′와 B를 잇는 선 위의 Q, P를 선택하면 AP+PQ가 최소이고 △APQ의 넓이는 9/5다.",
     "solutionImageSize": "full"
   }
 ];

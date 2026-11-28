@@ -1,0 +1,9 @@
+{
+  "capability":"polynomial-spike-v1",
+  "sourceQuote":"최고차항의 계수가 $-1$인 이차함수",
+  "graphPlan":{"family":"polynomial","coefficients":["16","6","-1"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[-3,9],"viewport":[-3,9,-8,30],"requiredPoints":[{"id":"L","x":-2,"y":0},{"id":"V","x":3,"y":25},{"id":"R","x":8,"y":0}],"axisTickValues":{"x":[],"y":[]},"overlays":{"points":[{"id":"T","x":"3","y":"25","unnamed":true}],"guides":[{"id":"midGuide","from":"T","axis":"x"}]}},
+  "caption":"a=1일 때 h(x)=−(x+2)(x−8)의 두 영점 −2와 8의 중점 x=3에서 최대 25이다.",
+  "accessibilityDescription":"아래로 열린 포물선 h가 (−2,0), (8,0)을 지나며 그 두 근의 중점 (3,25)에 꼭짓점을 갖고 수직 보조선이 이를 나타낸다.",
+  "sourceConditions":[{"id":"leading","condition":"h=f−g의 최고차항 계수는 −1","mappedTo":["graphPlan.coefficients"]},{"id":"roots","condition":"a=1이면 −a−1=−2, 3a+5=8","mappedTo":["graphPlan.requiredPoints[0]","graphPlan.requiredPoints[2]"]},{"id":"vertex","condition":"두 근의 중점 3과 최댓값 25","mappedTo":["graphPlan.requiredPoints[1]","graphPlan.overlays.points[0]","graphPlan.overlays.guides[0]"]}],
+  "newVisualInformation":["두 영점 사이의 대칭축과 위로 향한 최댓값 꼭짓점의 관계를 실제 곡선과 점선으로 보여 준다."]
+}

@@ -1,10 +1,11 @@
 # 25_금당고_2학기_기말_고2_확률과통계_유사 — 문항·해설 전축 DRAWN_FEATURE_PARITY 감사
 
-## 2026-11-28 최신 main 재검증 (기존 실행형 plan 보존)
+## 2026-11-28 독립 재검증 (금당고 7번 문제축 메타데이터 수정)
 
-- 기준 `origin/main`: `5ab9491e8e84548d4941841b9dbffab780777a8e`. 원문 JS 20문항·해설 20개 = **40축**을 각각 확인. 열린 PR 82개의 변경 파일에서 대상 경로 충돌 **0건**.
-- 공식 production plan **11개 유지 / 수정 0 / 신규 0**. 문제 2축(REQUIRED), 해설 9축(BENEFICIAL), 나머지 29축(EXEMPT: 발문·해설의 텍스트 수식, 표, 확률 연산으로 충분). `_plans/` 자료와 원본 기출의 자산은 production plan 수에 포함하지 않는다.
-- 공식 JSON 파싱·필수 필드 **11/11 PASS**, `plan-lint.cjs` **shallow 11/11 PASS**, **full 11/11 PASS**. 발문·해설 조건과 곡선 계수·눈금·구간·음영·점 이름의 수동 `STATIC_FIELD_PARITY` **11/11 PASS**. 다만 실제 plan 렌더 결과를 읽은 것이 아니므로 `DRAWN_FEATURE_PARITY` **11/11 미검수 (`RENDER_NOT_RUN`)**.
+- 기준 `origin/main`: `6dc7e32c842c0be77a0bcfdd54b540d2c24e3e72` (직전 #3425의 병합 SHA를 최신으로 가정하지 않고 원격 재조회). 원문 JS 20문항·해설 20개 = **40축**을 각각 확인. 열린 PR **82개 전부**의 변경 파일에서 대상 JS 및 두 production plan 폴더 충돌 **0건**.
+- 공식 production plan **10개 유지 / 1개 수정 / 신규 0**. 문제 2축(REQUIRED), 해설 9축(BENEFICIAL), 나머지 29축(EXEMPT: 발문·해설의 텍스트 수식, 표, 확률 연산으로 충분). `_plans/` 자료와 원본 기출의 자산은 production plan 수에 포함하지 않는다. 수정 파일은 오직 `q07-problem.plan.json`이며 그래프 수학 필드는 불변이다.
+- **확인·수정한 결함:** q07 문제축의 `caption`, `accessibilityDescription`, `sourceConditions[].condition`, `newVisualInformation[]`에 발문이 요구하지 않은 풀이 중간값 `a=1/3`이 글자로 명시되어 있었다. 이 네 필드에서 정답 유출 문구를 제거하고 `a`는 미지수라는 중립적 설명으로 교체했다. 실제 그래프의 내부 수치 좌표는 실행에 필요하므로 그대로 유지하되 축 라벨·설명에 풀이값을 써서는 안 된다. 과거 제작 기록 중 이 문구를 인용한 줄은 당시 상태이며 이 상단 수정 결과가 우선한다.
+- 공식 JSON 파싱·필수 필드 **11/11 PASS**, `plan-lint.cjs` **shallow 11/11 PASS**, **full 11/11 PASS** (각 FAIL 0 / SKIP 0). 발문·해설 조건과 곡선 계수·눈금·구간·음영·점 이름 및 메타데이터 정정의 수동 `STATIC_FIELD_PARITY` **11/11 PASS**. 다만 실제 plan 렌더 결과를 읽은 것이 아니므로 `DRAWN_FEATURE_PARITY` **PASS 0 / FAIL 0 / `RENDER_NOT_RUN` 11**이다.
 - **원 기출 ≠ 현행 유사판**: 원 기출 q07 PNG는 꺾임점 x=3, 5와 끝점 x=6, 현행 유사판은 A(2,a), B(3,a), C(5,0)이다. 원 기출 q16 PNG는 O→Q(5), 이동 +3/−2, 유사판 q16.svg는 O→Q(4), 이동 +2/−1이다. 두 건 **`ORIGINAL_EXAM_PNG_CONFLICT`**. 현행 유사 JS 및 직접 연결된 SVG를 우선하며 기출 PNG를 그대로 베끼지 않는다. 기출의 풀이 SVG도 서로 다른 계수·조건을 가진 **`ORIGINAL_EXAM_SVG_VARIANT_CONFLICT`**다.
 - 유사판 q16.svg를 별도 래스터 검사한 결과 O(0), Q(4), 오른쪽 화살표·눈금·점 이름이 확인되며 불필요한 흰 배경 rect는 없다. 이는 **기존 자산** 관측으로, official plan 출력의 시각적 PASS가 아니다. `chromium --version`은 런처까지만 실행되고 `/usr/lib/chromium/chromium` 부재로 실패한다. **`RENDER_NOT_RUN`**.
 
@@ -16,7 +17,7 @@
 | 04 | EXEMPT: 이항분포 모수 명시 | EXEMPT: 평균·분산·표준편차 대입 | 없음 | — | EXEMPT | N/A | 수치만 계산 |
 | 05 | EXEMPT: 선형변환의 두 모멘트 | EXEMPT: 연립방정식 | 없음 | — | EXEMPT | N/A | 변환 그래프 불필요 |
 | 06 | EXEMPT: 학년별 2×2 분할표 | EXEMPT: 빈도와 조건부확률 산출 | 없음 | — | EXEMPT | N/A | 본문 표로 조건 완결 |
-| 07 | REQUIRED: 사다리꼴 밀도함수의 네 꼭짓점 | BENEFICIAL: [1,3]의 밀도 아래 확률 넓이 | 유사 없음; 기출 `q7-solution-v2.svg` | `q07-problem.plan.json`, `q07-solution.plan.json` | PASS (2축) | RENDER_NOT_RUN (2축) | `ORIGINAL_EXAM_PNG_CONFLICT`: 기출 q07_graph.png의 꺾임 3·5·6과 유사본 2·3·5가 다름. 문제 plan의 내부 a=1/3이 출력 라벨에 노출되지 않는지는 렌더 후 확인 필요 |
+| 07 | REQUIRED: 사다리꼴 밀도함수의 네 꼭짓점 | BENEFICIAL: [1,3]의 밀도 아래 확률 넓이 | 유사 없음; 기출 `q7-solution-v2.svg` | `q07-problem.plan.json` **메타데이터 수정**, `q07-solution.plan.json` 유지 | PASS (2축) | RENDER_NOT_RUN (2축) | `ORIGINAL_EXAM_PNG_CONFLICT`: 기출 q07_graph.png의 꺾임 3·5·6과 유사본 2·3·5가 다름. 문제 `caption`·접근성 설명 등의 `a=1/3` 해설정보 노출을 제거; 실제 그림의 내부 a=1/3이 축 라벨에 노출되지 않는지는 렌더 후 확인 필요 |
 | 08 | EXEMPT: 정규분포와 이동 구간 수식 | BENEFICIAL: 평균 52 기준 [48,56] 대칭 음영 | 유사 없음; 기출 `q8-solution-v2.svg` | `q08-solution.plan.json` | PASS | RENDER_NOT_RUN | 원 기출 N(40,16)과 달라 `ORIGINAL_EXAM_SVG_VARIANT_CONFLICT`; 유사 N(52,5²) 우선 |
 | 09 | EXEMPT: 신뢰구간 폭 조건 수치 | BENEFICIAL: 표준정규 −1.96~1.96 중심 영역 | 없음 | `q09-solution.plan.json` | PASS | RENDER_NOT_RUN | 0.95 영역 및 양쪽 임계값 대응 확인 |
 | 10 | EXEMPT: 공장별 분율을 서술 | EXEMPT: 베이즈 계산으로 충분 | 유사 없음; 기출 `q10-solution.svg` | — | EXEMPT | N/A | 기출 45%/55%와 유사 30%/70% 차이; SVG 변형 직접 복제하지 않음 |
@@ -31,7 +32,7 @@
 | 19 | EXEMPT: 정규모집단·신뢰구간 조건 | BENEFICIAL: X와 표본평균의 13·9.7 임계 영역 | 유사 없음; 기출 `q19-solution.svg` | `q19-solution.plan.json` | PASS | RENDER_NOT_RUN | N(10,6²), N(10,0.6²) 및 n=100; 기출 다른 상수라 SVG 변형 충돌 |
 | 20 | EXEMPT: 주머니 교환 개수·사건 조건 | EXEMPT: 조합 조건부확률 계산 | 없음 | — | EXEMPT | N/A | 사건 집합은 부등식·조합으로 충분 |
 
-**축 합계:** 20문항 = 문제 20축 + 해설 20축 = 40축. REQUIRED 2 / BENEFICIAL 9 / EXEMPT 29. 기존 11개 plan의 수식·경계·색칠 필드는 현행 유사 JS 조건과 일치하며 손 SVG 수정·엔진 외 생성은 하지 않았다. 모든 plan 출력의 라벨 충돌·획·배경·화면 잘림은 아직 관측 불가하다.
+**축 합계:** 20문항 = 문제 20축 + 해설 20축 = 40축. REQUIRED 2 / BENEFICIAL 9 / EXEMPT 29. 기존 11개 plan의 수식·경계·색칠 필드는 현행 유사 JS 조건과 일치하며 손 SVG 수정·엔진 외 생성은 하지 않았다. 새 Chromium 실행 가능성 점검에서 `/usr/bin/chromium`은 실제 본체 `/usr/lib/chromium/chromium` 부재로 종료 127을 반환했다. 따라서 공식 plan 렌더·PNG·학생 화면 육안대조는 **`RENDER_NOT_RUN`**이며 실제 시각 PASS가 아니다. 기출 PNG와 JS의 충돌은 JS가 현행 제작 대상이므로 원본 계수를 옮기지 않았다. 다른 작업에서 발견한 `MULTI_CURVE_INVERSE_CUBIC`·`PIECEWISE_POLYNOMIAL_UPPERCASE_FUNCTION_NAME`은 본 시험지에는 해당하지 않는다. 통계 그림의 기본 흰 배경은 공식 렌더를 확인할 수 없으므로 투명화 성공을 주장하지 않는다.
 
 ---
 

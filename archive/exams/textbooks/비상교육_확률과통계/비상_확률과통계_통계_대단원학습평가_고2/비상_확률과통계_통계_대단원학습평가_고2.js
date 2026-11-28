@@ -221,7 +221,11 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "solutionImage": "assets/images/비상_확률과통계_통계_대단원학습평가_고2/q6-solution.svg",
+    "solutionImageAlt": "제품 A의 경계 104는 z=2, 제품 B의 같은 경계 104는 z=−2이므로 두 꼬리 확률은 표준정규분포의 대칭성에 따라 같다.",
+    "solutionImageCaption": "제품 A의 경계 104는 z=2, 제품 B의 같은 경계 104는 z=−2이므로 두 꼬리 확률은 표준정규분포의 대칭성에 따라 같다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -256,7 +260,11 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "solutionImage": "assets/images/비상_확률과통계_통계_대단원학습평가_고2/q7-solution.svg",
+    "solutionImageAlt": "평균 12000원에서 표준편차 2000원의 두 배만큼 오른쪽인 16000원 이상 영역의 확률은 0.0228이다.",
+    "solutionImageCaption": "평균 12000원에서 표준편차 2000원의 두 배만큼 오른쪽인 16000원 이상 영역의 확률은 0.0228이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -332,7 +340,11 @@ window.questionBank = [
       "standardUnit": "통계적 추정",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "solutionImage": "assets/images/비상_확률과통계_통계_대단원학습평가_고2/q9-solution.svg",
+    "solutionImageAlt": "X≥37은 Z≥0.7이고 표본평균의 같은 확률은 Z≤−0.7이므로, 표본평균의 경계는 30−0.7=29.3이다.",
+    "solutionImageCaption": "X≥37은 Z≥0.7이고 표본평균의 같은 확률은 Z≤−0.7이므로, 표본평균의 경계는 30−0.7=29.3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -367,7 +379,11 @@ window.questionBank = [
       "standardUnit": "통계적 추정",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "solutionImage": "assets/images/비상_확률과통계_통계_대단원학습평가_고2/q10-solution.svg",
+    "solutionImageAlt": "표본비율의 평균은 0.5이고 표준편차는 0.025이다. 0.55는 평균보다 2σ 높으므로 그 이하 넓이는 0.9772이다.",
+    "solutionImageCaption": "표본비율의 평균은 0.5이고 표준편차는 0.025이다. 0.55는 평균보다 2σ 높으므로 그 이하 넓이는 0.9772이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -507,7 +523,11 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "solutionImage": "assets/images/비상_확률과통계_통계_대단원학습평가_고2/q14-solution.svg",
+    "solutionImageAlt": "참여 학생 수를 평균 320, 표준편차 8인 정규분포로 근사한다. 304부터 320까지 0.4772와 320부터 328까지 0.3413을 합한다.",
+    "solutionImageCaption": "참여 학생 수를 평균 320, 표준편차 8인 정규분포로 근사한다. 304부터 320까지 0.4772와 320부터 328까지 0.3413을 합한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -542,7 +562,11 @@ window.questionBank = [
       "standardUnit": "통계적 추정",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "solutionImage": "assets/images/비상_확률과통계_통계_대단원학습평가_고2/q15-solution.svg",
+    "solutionImageAlt": "⑴ n=36일 때 표본평균의 표준편차는 0.5이므로 P(평균≤16)=0.9772이다. ⑵ n=4일 때 표본평균의 표준편차는 1.5이므로 P(평균≥16.5)=0.1587이다.",
+    "solutionImageCaption": "⑴ n=36일 때 표본평균의 표준편차는 0.5이므로 P(평균≤16)=0.9772이다. ⑵ n=4일 때 표본평균의 표준편차는 1.5이므로 P(평균≥16.5)=0.1587이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,

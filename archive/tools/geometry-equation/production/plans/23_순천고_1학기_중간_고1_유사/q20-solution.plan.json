@@ -1,0 +1,21 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "axisVariable": "x",
+    "coefficients": ["0", "24", "-1"],
+    "sourceDomain": {"kind": "INTERVAL", "range": ["0", "24"], "states": ["OPEN", "OPEN"]},
+    "domain": [0, 24],
+    "viewport": [-3, 27, -10, 170],
+    "requiredPoints": [{"id": "V", "x": 12, "y": 144}],
+    "axisTickValues": {"x": ["12"], "y": ["144"]}
+  },
+  "caption": "두 직사각형 넓이의 합 S(x)=−x²+24x는 0<x<24에서 x=12일 때 144로 최대다.",
+  "accessibilityDescription": "가로축 x, 세로축 두 직사각형 넓이의 합 S인 아래로 열린 포물선, 꼭짓점 V가 (12,144)이다.",
+  "sourceConditions": [
+    {"id": "range", "condition": "E는 대각선 AC의 내부점이므로 0<x<24", "mappedTo": ["graphPlan.sourceDomain", "graphPlan.domain"]},
+    {"id": "area", "condition": "S=x(12−x/2)+(24−x)(x/2)=−x²+24x", "mappedTo": "graphPlan.coefficients"},
+    {"id": "maximum", "condition": "S=−(x−12)²+144의 꼭짓점은 (12,144)", "mappedTo": "graphPlan.requiredPoints"}
+  ],
+  "newVisualInformation": ["문제 도식에서 정의한 두 넓이 합의 꼭짓점과 최댓값을 해설 그래프로 확인한다."]
+}

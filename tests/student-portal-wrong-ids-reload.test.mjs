@@ -97,6 +97,31 @@ test('exams response carries the student\'s own wrong numbers after a reload, ne
   const bById = Object.fromEntries(b.body.exams.map(exam => [exam.assignment_id, exam]));
   assert.deepEqual(bById['as-1'].wrong_ids, [1, 9]);
 
+  const notebookHeaders = { 'X-Student-Token': token('s-a', '1111') };
+  await db.prepare("UPDATE class_exam_assignments SET mixed_payload_json = ? WHERE id = 'as-1'").bind(JSON.stringify({
+    questions: [{}, { sourceArchiveFile: 'exams/similar/middle/m2/2final/sample.js', content: 'private snapshot text' }]
+  })).run();
+  // Force the next page even though the newest page only has unsubmitted exams.
+  await db.batch([db.prepare(`WITH RECURSIVE more(i) AS (SELECT 1 UNION ALL SELECT i+1 FROM more WHERE i < 61)
+    INSERT INTO class_exam_assignments (id,class_id,exam_title,exam_date,question_count,archive_file,source_type)
+    SELECT 'later-' || i,'class-a','새 시험 ' || i,'2026-11-24',10,'exams/original/x/one.js','original' FROM more`),
+    db.prepare(`INSERT INTO class_exam_assignment_recipients SELECT id, 's-a' FROM class_exam_assignments WHERE id LIKE 'later-%'`)]);
+  const notebookUrl = 'http://local/api/student-portal/exams?student_id=s-a&notebook_offset=';
+  const first = await getJson(mf, notebookUrl + '0', notebookHeaders);
+  assert.equal(first.status, 200, JSON.stringify(first.body));
+  assert.deepEqual(first.body.exams, []);
+  assert.equal(first.body.notebook_next_offset, 60);
+  const second = await getJson(mf, notebookUrl + first.body.notebook_next_offset, notebookHeaders);
+  assert.equal(second.status, 200, JSON.stringify(second.body));
+  assert.equal(second.body.notebook_next_offset, null);
+  assert.deepEqual(second.body.exams.map(exam => exam.assignment_id), ['as-1']);
+  assert.deepEqual(second.body.exams[0].wrong_ids, [2, 5, 7]);
+  assert.deepEqual(second.body.exams[0].wrong_sources, { 2: 'exams/similar/middle/m2/2final/sample.js' });
+  assert.equal(second.body.exams[0].has_snapshot, true);
+  assert.equal(second.body.exams[0].mixed_payload_json, undefined);
+  const denied = await getJson(mf, notebookUrl + '0', { 'X-Student-Token': token('s-b', '2222') });
+  assert.ok(denied.status >= 400);
+
   // exact assignment variant (portal deep link) reads the same numbers
   const exact = await getJson(mf, `http://local/api/student-portal/exams?student_id=s-a&assignment_id=as-1`, { 'X-Student-Token': token('s-a', '1111') });
   assert.deepEqual(exact.body.exams[0].wrong_ids, [2, 5, 7]);

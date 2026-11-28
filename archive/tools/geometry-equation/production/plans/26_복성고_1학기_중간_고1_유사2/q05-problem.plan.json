@@ -1,0 +1,11 @@
+{
+  "capability":"solid-figure-v1",
+  "sourceQuote":"이 직육면체의 공간대각선의 길이가",
+  "solids":[{"kind":"PRISM","base":{"kind":"RECT","width":3,"depth":4},"height":5,"names":"........"}],
+  "segments":[{"from":"#b0","to":"#t2","style":"SOLID","role":"REF"}],
+  "dims":[{"from":"#b0","to":"#b1","label":"a"},{"from":"#b1","to":"#b2","label":"b"},{"from":"#b1","to":"#t1","label":"c"},{"from":"#b0","to":"#t2","label":"sqrt(50)"}],
+  "caption":"서로 수직인 모서리 a,b,c의 합이 12이고 공간대각선이 √50인 직육면체의 조건 도식이다.",
+  "accessibilityDescription":"세 방향의 모서리 a,b,c와 공간대각선 √50을 선과 치수로 표시한 직육면체이다.",
+  "sourceConditions":[{"id":"edges","condition":"모든 모서리 길이 합 48에서 a+b+c=12","mappedTo":["solids","dims[0]","dims[1]","dims[2]"]},{"id":"diagonal","condition":"공간대각선 √50","mappedTo":["segments[0]","dims[3]"]}],
+  "newVisualInformation":["서로 수직인 세 모서리와 몸체 대각선의 관계를 명확히 한다. 3·4·5 비례는 a+b+c=12, a²+b²+c²=50을 만족하지만 숫자는 표시하지 않는다."]
+}

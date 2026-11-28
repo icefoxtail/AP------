@@ -503,3 +503,12 @@ body[data-student-view="omr-list"] .student-shell { gap: 12px; }
 .self-study-open { flex-direction: column; gap: 2px; }
 .self-study-open .button-meta { display: block; }
 .self-study-open .button-meta:empty { display: none; }
+
+/* 오답노트 */
+.notebook-entry { margin: 6px 0; }
+.wrong-notebook { max-width: 850px; }
+.notebook-filter { display: grid; gap: 4px; max-width: 340px; font-weight: 700; }
+.notebook-filter select { width: 100%; min-height: 44px; padding: 6px 10px; border: 1px solid var(--control-border); border-radius: 8px; background: var(--surface); color: var(--text); font: inherit; }
+[data-notebook-cards] { display: grid; gap: 14px; }
+[data-notebook-load] { min-height: 1px; }
+[data-notebook-status] { margin: 12px 0; }

@@ -1,0 +1,223 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sAD",
+          "sDC",
+          "sBC"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAD",
+        "ownerSegment": "sAD",
+        "text": "4",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lDC",
+        "ownerSegment": "sDC",
+        "text": "4",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "4",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aX",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "label": "x",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "right_0",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 380
+  },
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "B",
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "caption": "해설 관계: 직각삼각형 ABC에서 점 D가 변 AC 위에 있고, AD, DC, BC가 모두 4cm이며 각 ABD가 x로 표시되어 있다.",
+  "accessibilityDescription": "해설에 사용되는 해설 관계: 직각삼각형 ABC에서 점 D가 변 AC 위에 있고, AD, DC, BC가 모두 4cm이며 각 ABD가 x로 표시되어 있다.",
+  "newVisualInformation": [
+    "그려진 선분 sAB, sBC, sAD, sDC, sBD",
+    "equalLengths 1개",
+    "expressionLabels 3개",
+    "angles 2개"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q23s",
+      "condition": "$\\overline{\\text{AD}}=\\overline{\\text{DC}}=\\overline{\\text{BC}}=4\\text{ cm}$이므로 $\\overline{\\text{AC}}=8\\text{ cm}$이다. 직각삼각형 $\\text{ABC}$와 $\\text{DBC}$에서 피타고라스 정리에 의해 $$\\overline{\\text{AB}} = \\sqrt{8^2 + 4^2} = \\sqrt{80} = 4\\sqrt{5}\\text{ (cm)}, \\quad \\overline{\\text{BD}} = \\sqrt{4^2 + 4^2} = 4\\sqrt{2}\\text{ (cm)}$$ 점 $\\text{D}$에서 변 $\\text{AB}$에 내린 수선의 발을 $\\text{E}$라 하면 $\\triangle\\text{ABD}$의 넓이는 $$\\frac{1}{2} \\times \\overline{\\text{AD}} \\times \\overline{\\text{BC}} = \\frac{1}{2} \\times \\overline{\\text{AB}} \\times \\overline{\\text{DE}} \\implies 4 \\times 4 = 4\\sqrt{5} \\cdot \\overline{\\text{DE}} \\implies \\overline{\\text{DE}} = \\frac{4}{\\sqrt{5}}\\text{ (cm)}$$ 직각삼각형 $\\text{BDE}$에서 $$\\sin x^\\circ = \\frac{\\overline{\\text{DE}}}{\\overline{\\text{BD}}} = \\frac{\\frac{4}{\\sqrt{5}}}{4\\sqrt{2}} = \\frac{1}{\\sqrt{10}} = \\frac{\\sqrt{10}}{10}$$",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "sourceQuote": "아래 $\\angle\\text{C}=90^\\circ$인 직각삼각형"
+}

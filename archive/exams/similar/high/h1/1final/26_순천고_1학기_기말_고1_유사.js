@@ -499,7 +499,11 @@ window.questionBank = [
     "sourceQid": 9,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q09-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q09-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q09-solution.plan.json",
+    "solutionImage": "assets/images/26_순천고_1학기_기말_고1_유사/q9-solution.svg",
+    "solutionImageAlt": "열량 조건 x≤75와 단백질 조건 x≥50의 공통 범위는 50≤x≤75(g)이다.",
+    "solutionImageCaption": "열량 조건 x≤75와 단백질 조건 x≥50의 공통 범위는 50≤x≤75(g)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -730,7 +734,11 @@ window.questionBank = [
     "sourceQid": 13,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q13-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q13-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q13-solution.plan.json",
+    "solutionImage": "assets/images/26_순천고_1학기_기말_고1_유사/q13-solution.svg",
+    "solutionImageAlt": "두 연립부등식의 공통해가 2<x<6이 되는 매개변수 a의 범위는 -2≤a≤0이다.",
+    "solutionImageCaption": "두 연립부등식의 공통해가 2<x<6이 되는 매개변수 a의 범위는 -2≤a≤0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -848,7 +856,11 @@ window.questionBank = [
     "sourceQid": 15,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q15-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q15-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q15-solution.plan.json",
+    "solutionImage": "assets/images/26_순천고_1학기_기말_고1_유사/q15-solution.svg",
+    "solutionImageAlt": "n=7인 대표 경우의 이차부등식 (x-4)(x-7)<0은 4<x<7이고 자연수 해는 5와 6이다.",
+    "solutionImageCaption": "n=7인 대표 경우의 이차부등식 (x-4)(x-7)<0은 4<x<7이고 자연수 해는 5와 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -907,7 +919,11 @@ window.questionBank = [
     "sourceQid": 16,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q16-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q16-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q16-solution.plan.json",
+    "solutionImage": "assets/images/26_순천고_1학기_기말_고1_유사/q16-solution.svg",
+    "solutionImageAlt": "y=x²-6x+5는 꼭짓점 (3,-4), 점 (0,5), (6,5)를 지나므로 a의 범위에 따라 구간 최댓값이 달라진다.",
+    "solutionImageCaption": "y=x²-6x+5는 꼭짓점 (3,-4), 점 (0,5), (6,5)를 지나므로 a의 범위에 따라 구간 최댓값이 달라진다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -958,7 +974,11 @@ window.questionBank = [
     "sourceQid": 17,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q17-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q17-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q17-solution.plan.json",
+    "solutionImage": "assets/images/26_순천고_1학기_기말_고1_유사/q17-solution.svg",
+    "solutionImageAlt": "|x+2|+|x-3|≤11의 해는 -5≤x≤6이고, 양 끝 포함 정수는 12개이다.",
+    "solutionImageCaption": "|x+2|+|x-3|≤11의 해는 -5≤x≤6이고, 양 끝 포함 정수는 12개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1064,8 +1084,8 @@ window.questionBank = [
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q19-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천고_1학기_기말_고1_유사_plans/q19-solution.plan.json",
     "solutionImage": "assets/images/26_순천고_1학기_기말_고1_유사/q19-solution.svg",
-    "solutionImageAlt": "해설 그림: 두 줄의 수직선이 있고, 첫째 줄에는 −5보다 작은 부분과 1보다 큰 부분이, 둘째 줄에는 −7과 0 사이가 표시되어 있다. 각 범위의 끝은 모두 빈 원이다.",
-    "solutionImageCaption": "f의 x절편이 −5, 1이고 위로 열린 모양이므로 f(x)>0인 범위는 x<−5 또는 x>1이다. 두 그래프가 x=−7, 0에서 만나고 그 사이에서 g가 f보다 위에 있으므로 f(x)<g(x)는 −7<x<0이다. 공통부분 −7<x<−5에 속하는 정수는 −6 하나이다. 답은 −6이다.",
+    "solutionImageAlt": "f(x)>0은 x<-5 또는 x>1이고 f(x)<g(x)는 -7<x<0이므로 공통 범위는 -7<x<-5이다.",
+    "solutionImageCaption": "f(x)>0은 x<-5 또는 x>1이고 f(x)<g(x)는 -7<x<0이므로 공통 범위는 -7<x<-5이다.",
     "solutionImageSize": "full"
   },
   {

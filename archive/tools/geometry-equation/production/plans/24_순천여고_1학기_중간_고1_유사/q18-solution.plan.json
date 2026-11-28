@@ -1,0 +1,8 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {"family":"piecewise-polynomial","pieces":[{"coefficients":["-8","-2","1"]},{"coefficients":["8","2","-1"]},{"coefficients":["-8","-2","1"]}],"breakpoints":[{"x":"-2","y":"0"},{"x":"4","y":"0"}],"sourceDomain":{"kind":"ALL_REALS"},"requiredPoints":[{"id":"L","x":"-2","y":"0"},{"id":"V","x":"1","y":"9"},{"id":"R","x":"4","y":"0"}],"referenceLines":[{"id":"l","slope":"2","intercept":"6","intersectionX":["2-3*sqrt(2)","-sqrt(2)","sqrt(2)","2+3*sqrt(2)"]}],"axisTickValues":{"x":[],"y":[]}},
+  "caption": "허용 정수 k=6인 예: 직선 y=2x+6은 세 조각의 절댓값 그래프와 네 점에서 만난다. 4<k<8의 정수는 5,6,7이다.",
+  "accessibilityDescription": "절댓값 포물선의 두 바깥 조각과 가운데 뒤집힌 조각 위로 기울기 2인 직선이 지나면서 서로 다른 네 교점이 표시된다.",
+  "sourceConditions": [{"id":"function","condition":"f(x)=|x²−2x−8|의 세 구간 식 및 경계 −2,4","mappedTo":["graphPlan.pieces","graphPlan.breakpoints"]},{"id":"sample","condition":"해설이 얻은 4<k<8 중 k=6에서 y=2x+6의 교점은 2±3√2, ±√2의 네 개","mappedTo":"graphPlan.referenceLines[0]"},{"id":"peak","condition":"가운데 포물선의 꼭짓점 (1,9)","mappedTo":"graphPlan.requiredPoints[1]"}],
+  "newVisualInformation": ["기울어진 한 직선이 절댓값 함수의 안쪽과 바깥쪽에서 각각 두 번 만나는 실제 허용 사례를 그린다."]
+}

@@ -1,0 +1,88 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "cube",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 8,
+        "depth": 8
+      },
+      "height": 8,
+      "names": {
+        "base": [
+          "F",
+          "G",
+          "H",
+          "E"
+        ],
+        "top": [
+          "B",
+          "C",
+          "D",
+          "A"
+        ]
+      }
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "G",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "E",
+      "to": "G",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "E",
+      "label": "8"
+    }
+  ],
+  "marks": {
+    "angles": [
+      {
+        "refs": [
+          "A",
+          "G",
+          "E"
+        ],
+        "label": "x"
+      }
+    ],
+    "rightAngles": [
+      {
+        "at": "E",
+        "refs": [
+          "A",
+          "G"
+        ]
+      }
+    ]
+  },
+  "caption": "해설 도식: 실제 3차원 정육면체 모델의 AG 공간 대각선과 GE 밑면 대각선",
+  "accessibilityDescription": "해설: 실제 3차원 정육면체 모델의 AG 공간 대각선과 GE 밑면 대각선",
+  "newVisualInformation": [
+    "해설의 관계: 실제 3차원 정육면체 모델의 AG 공간 대각선과 GE 밑면 대각선"
+  ],
+  "sourceConditions": [
+    {
+      "id": "problem",
+      "condition": "다음 그림과 같이 한 모서리의 길이가 $8$인 정육면체 $\\text{ABCD}-\\text{EFGH}$에서 $\\angle\\text{AGE}=x^\\circ$일 때, $\\cos x^\\circ \\times \\tan x^\\circ$의 값은?",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "solution",
+      "condition": "정육면체의 한 모서리의 길이가 $8$이므로 $\\overline{\\text{AE}}=8$, 밑면 대각선 $\\overline{\\text{GE}}=8\\sqrt{2}$, 공간대각선 $\\overline{\\text{GA}}=\\sqrt{8^2+(8\\sqrt{2})^2}=8\\sqrt{3}$이다. 직각삼각형 $\\text{AEG}$에서 $\\angle\\text{AEG}=90^\\circ$이므로 $$\\cos x^\\circ \\times \\tan x^\\circ = \\frac{\\overline{\\text{GE}}}{\\overline{\\text{GA}}} \\times \\frac{\\overline{\\text{AE}}}{\\overline{\\text{GE}}} = \\frac{\\overline{\\text{AE}}}{\\overline{\\text{GA}}} = \\frac{8}{8\\sqrt{3}} = \\frac{\\sqrt{3}}{3}$$ 따라서 정답은 ⑤이다.",
+      "mappedTo": "SOLUTION_AXIS"
+    }
+  ]
+}

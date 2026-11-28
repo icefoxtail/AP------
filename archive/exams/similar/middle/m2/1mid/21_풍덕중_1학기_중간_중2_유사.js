@@ -440,7 +440,15 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "M2-RPM-011",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "image": "assets/images/21_풍덕중_1학기_중간_중2_유사/q10-problem.svg",
+    "imageAlt": "밑면은 서로 수직인 두 변 4x, 3y/4를 가진 직각삼각형이며 기둥 높이를 h로 표시했다. 외형 길이 비는 모식도이다.",
+    "imageCaption": "밑면은 서로 수직인 두 변 4x, 3y/4를 가진 직각삼각형이며 기둥 높이를 h로 표시했다. 외형 길이 비는 모식도이다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_풍덕중_1학기_중간_중2_유사/q10-solution.svg",
+    "solutionImageAlt": "밑넓이=(1/2)(4x)(3y/4)=3xy/2이고 부피 60x²y를 나누면 기둥 높이 40x이다. 비례는 모식도이다.",
+    "solutionImageCaption": "밑넓이=(1/2)(4x)(3y/4)=3xy/2이고 부피 60x²y를 나누면 기둥 높이 40x이다. 비례는 모식도이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -572,7 +580,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "M2-RPM-009",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "image": "assets/images/21_풍덕중_1학기_중간_중2_유사/q13-problem.svg",
+    "imageAlt": "이등변삼각형 ABC에서 A에서 BC로 내린 수선의 발 D, BC=22cm.",
+    "imageCaption": "이등변삼각형 ABC에서 A에서 BC로 내린 수선의 발 D, BC=22cm.",
+    "imageSize": "full"
   },
   {
     "id": 14,
@@ -748,7 +760,15 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "M2-RPM-008",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "image": "assets/images/21_풍덕중_1학기_중간_중2_유사/q17-problem.svg",
+    "imageAlt": "∠C=90°, AB=20, BC=12인 직각삼각형 ABC.",
+    "imageCaption": "∠C=90°, AB=20, BC=12인 직각삼각형 ABC.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_풍덕중_1학기_중간_중2_유사/q17-solution.svg",
+    "solutionImageAlt": "피타고라스 정리로 AC=16, 넓이는 12×16/2=96이다.",
+    "solutionImageCaption": "피타고라스 정리로 AC=16, 넓이는 12×16/2=96이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1038,6 +1058,10 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "M2-RPM-010",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "image": "assets/images/21_풍덕중_1학기_중간_중2_유사/q24-problem.svg",
+    "imageAlt": "∠C=90°, BC=12, CA=16인 직각삼각형의 외접원·내접원.",
+    "imageCaption": "∠C=90°, BC=12, CA=16인 직각삼각형의 외접원·내접원.",
+    "imageSize": "full"
   }
 ];

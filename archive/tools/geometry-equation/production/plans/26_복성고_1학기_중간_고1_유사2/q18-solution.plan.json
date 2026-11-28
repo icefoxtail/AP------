@@ -1,0 +1,9 @@
+{
+  "capability":"polynomial-spike-v1",
+  "sourceQuote":"삼각형 $AOD$의 넓이를 $S_1$",
+  "graphPlan":{"family":"polynomial","coefficients":["-2","-1","1"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[-3,3],"viewport":[-3.5,3.5,-4,6],"overlays":{"lines":[{"id":"L","slope":"-1","intercept":"2"}],"points":[{"id":"A","axis":"x","value":"2"},{"id":"B","axis":"x","value":"-1"},{"id":"D","axis":"y","value":"2"},{"id":"C","curveX":"-2"},{"id":"O","x":"0","y":"0"}],"segments":[{"id":"OD","from":"O","to":"D"},{"id":"OC","from":"O","to":"C","dashed":true}],"polygons":[{"id":"S1","points":["A","O","D"],"fill":"LIGHT"},{"id":"S2","points":["B","O","D","C"],"fill":"MEDIUM"}]},"axisTickValues":{"x":[-2,-1,2],"y":[2,4]}},
+  "caption":"a=2인 경우 A(2,0), B(−1,0), C(−2,4), D(0,2)이고 △AOD 넓이 2와 사각형 BODC 넓이 4를 구분한다.",
+  "accessibilityDescription":"포물선 y=x²−x−2와 직선 y=−x+2의 교점 A,C 및 절편 B,D,O를 표시하고 두 다각형의 넓이를 서로 다른 명도 채움으로 구별한다.",
+  "sourceConditions":[{"id":"curve","condition":"a=2에서 y=(x+1)(x−2)=x²−x−2","mappedTo":["graphPlan.coefficients"]},{"id":"line","condition":"y=−x+2","mappedTo":["graphPlan.overlays.lines[0]"]},{"id":"vertices","condition":"A(2,0), B(−1,0), C(−2,4), D(0,2)","mappedTo":["graphPlan.overlays.points"]},{"id":"areas","condition":"S1=2, S2=4이므로 1:2","mappedTo":["graphPlan.overlays.polygons"]}],
+  "newVisualInformation":["주어진 넓이비를 만족하는 a=2에서 두 면적의 경계와 직선·포물선 교점을 실제 곡선과 영역으로 보여 준다."]
+}

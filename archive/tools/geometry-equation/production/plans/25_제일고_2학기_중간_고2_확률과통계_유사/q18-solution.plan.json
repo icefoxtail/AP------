@@ -1,0 +1,8 @@
+{
+  "capability":"stat-chart-figure-v1",
+  "chart":{"kind":"NORMAL_CURVE","curves":[{"id":"X","mean":"144","sd":"6","label":"X"}],"ticks":["144","150"],"zAxis":true,"shades":[{"from":null,"to":"150","color":"BLUE"}]},
+  "caption":"B(192,0.75)의 정규근사는 평균 144, 분산 36, 표준편차 6이다. 누적확률 0.8413의 z점수 1에 해당하는 경계는 a=150이다.",
+  "accessibilityDescription":"평균 144, 표준편차 6인 정규근사 그래프에서 x=150 왼쪽 전체 영역을 칠하고 평균과 경계 눈금을 표시했다.",
+  "sourceConditions":[{"id":"binomial","condition":"자유투 성공확률 0.75, 시행 192회에서 X~B(192,0.75)이고 P(X≤a)=0.8413이다.","mappedTo":["chart.curves","chart.ticks","chart.shades"]}],
+  "newVisualInformation":["정규근사의 평균 144, 표준편차 6 및 누적확률이 평균 오른쪽 1σ인 경계를 시각적으로 연결한다."]
+}

@@ -1,0 +1,191 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "C",
+    "A",
+    "B",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "ang1",
+        "refs": [
+          "D",
+          "B",
+          "C"
+        ],
+        "value": 18.4349488229,
+        "label": "x",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eq1",
+        "count": 1,
+        "segments": [
+          "sAC",
+          "sBC"
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "right1",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 380
+  },
+  "caption": "해설: 직각이등변삼각형의 AC 삼등분점 D와 각 DBC=x",
+  "accessibilityDescription": "해설 도형: 직각이등변삼각형의 AC 삼등분점 D와 각 DBC=x",
+  "newVisualInformation": [
+    "직각이등변삼각형의 AC 삼등분점 D와 각 DBC=x"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\angle\\text{C}=90^\\circ$이고 $\\overline{\\text{AC}}=\\overline{\\text{BC}}$인 직각이등변삼각형 $\\text{ABC}$에서 변 $\\text{AC}$의 삼등분점 중 점 $\\text{C}$에 가까운 점을 $\\text{D}$라 하고, $\\angle\\text{DBC}=x$라고 할 때, $\\tan x$의 값을 구하면?",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "solution",
+      "condition": "점 $\\text{D}$는 변 $\\text{AC}$의 삼등분점 중 점 $\\text{C}$에 가까운 점이므로 $\\overline{\\text{CD}} = \\frac{1}{3}\\overline{\\text{AC}}$이다. $\\overline{\\text{AC}}=\\overline{\\text{BC}}$이므로 직각삼각형 $\\text{DBC}$에서 $$\\tan x = \\frac{\\overline{\\text{CD}}}{\\overline{\\text{BC}}} = \\frac{\\frac{1}{3}\\overline{\\text{BC}}}{\\overline{\\text{BC}}} = \\frac{1}{3}$$ 따라서 정답은 ②이다.",
+      "mappedTo": "SOLUTION_AXIS"
+    }
+  ]
+}

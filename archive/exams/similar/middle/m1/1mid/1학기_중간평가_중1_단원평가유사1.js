@@ -335,7 +335,15 @@ window.questionBank = [
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "image": "assets/images/1학기_중간평가_중1_단원평가유사1/q12-problem.svg",
+    "imageAlt": "-5부터 5까지의 수직선 위에 ㄱ, ㄴ, ㄷ, ㄹ, ㅁ을 표시하였다. 보기에 있는 수와 각 점의 위치를 비교한다.",
+    "imageCaption": "-5부터 5까지의 수직선 위에 ㄱ, ㄴ, ㄷ, ㄹ, ㅁ을 표시하였다. 보기에 있는 수와 각 점의 위치를 비교한다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/1학기_중간평가_중1_단원평가유사1/q12-solution.svg",
+    "solutionImageAlt": "ㄱ=-4, ㄴ=-8/3, ㄷ=-3/4, ㄹ=3/2, ㅁ=14/3이다. 보기 ④의 ㄴ=-7/3은 틀리다.",
+    "solutionImageCaption": "ㄱ=-4, ㄴ=-8/3, ㄷ=-3/4, ㄹ=3/2, ㅁ=14/3이다. 보기 ④의 ㄴ=-7/3은 틀리다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -363,7 +371,15 @@ window.questionBank = [
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "image": "assets/images/1학기_중간평가_중1_단원평가유사1/q13-problem.svg",
+    "imageAlt": "절댓값이 같고 부호가 다른 두 수를 -a와 a라고 하면 원점 양쪽에 놓인다. 두 수 사이의 거리는 10이며 a의 값은 문제 그림에 나타내지 않는다.",
+    "imageCaption": "절댓값이 같고 부호가 다른 두 수를 -a와 a라고 하면 원점 양쪽에 놓인다. 두 수 사이의 거리는 10이며 a의 값은 문제 그림에 나타내지 않는다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/1학기_중간평가_중1_단원평가유사1/q13-solution.svg",
+    "solutionImageAlt": "-5에서 0까지 5, 0에서 5까지 5이므로 전체 거리는 10이다. 두 수는 -5와 5이다.",
+    "solutionImageCaption": "-5에서 0까지 5, 0에서 5까지 5이므로 전체 거리는 10이다. 두 수는 -5와 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,

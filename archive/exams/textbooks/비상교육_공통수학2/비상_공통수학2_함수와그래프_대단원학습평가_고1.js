@@ -182,7 +182,10 @@ window.questionBank = [
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "UNKNOWN",
-    "image": "assets/images/비상_공통수학2_함수와그래프_대단원학습평가_고1/q05_composition-mappings.png"
+    "image": "assets/images/비상_공통수학2_함수와그래프_대단원학습평가_고1/qid_v1_eb0e28e5b618598bcba08bd35a3e8028e195ccbae0ac791b1f67cd86f20fe4a8-problem.svg",
+    "imageAlt": "집합 X={1,3,5}에서 함수 f, g를 잇는 원본 대응도",
+    "imageCaption": "집합 X={1,3,5}에서 함수 f, g를 잇는 원본 대응도",
+    "imageSize": "full"
   },
   {
     "id": "qid_v1_60410a397694db1270b37e525b395cb884c0ee4a0de0e8321cb67d787456e074",
@@ -291,7 +294,11 @@ window.questionBank = [
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/비상_공통수학2_함수와그래프_대단원학습평가_고1/qid_v1_c1d94e67ed05f650c8ec285308e4ac34f6a50cbcd40da76a07cc5572e1f49679-solution.svg",
+    "solutionImageAlt": "f(x)=(-2x−2)/(x−2)의 점근선 x=2, y=−2와 점 (3,−8)",
+    "solutionImageCaption": "f(x)=(-2x−2)/(x−2)의 점근선 x=2, y=−2와 점 (3,−8)",
+    "solutionImageSize": "medium"
   },
   {
     "id": "qid_v1_494b58338305b8a95e6eef1048c5672a8270b247bd57ed8a83518d072ef5b2ad",
@@ -328,7 +335,11 @@ window.questionBank = [
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/비상_공통수학2_함수와그래프_대단원학습평가_고1/qid_v1_494b58338305b8a95e6eef1048c5672a8270b247bd57ed8a83518d072ef5b2ad-solution.svg",
+    "solutionImageAlt": "x∈[-8,0]에서 y=√(9−5x)−2의 최댓값 5와 최솟값 1",
+    "solutionImageCaption": "x∈[-8,0]에서 y=√(9−5x)−2의 최댓값 5와 최솟값 1",
+    "solutionImageSize": "medium"
   },
   {
     "id": "qid_v1_9260f31c21f6766d04c0094ba15afba2949f7cbb07644784d7ed7ea3c2252497",
@@ -365,7 +376,11 @@ window.questionBank = [
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/비상_공통수학2_함수와그래프_대단원학습평가_고1/qid_v1_9260f31c21f6766d04c0094ba15afba2949f7cbb07644784d7ed7ea3c2252497-solution.svg",
+    "solutionImageAlt": "이동·대칭 후 최종 그래프 y=√(4x−1)−2",
+    "solutionImageCaption": "이동·대칭 후 최종 그래프 y=√(4x−1)−2",
+    "solutionImageSize": "medium"
   },
   {
     "id": "qid_v1_4ce7562b1179ec5e054497ebd4a61392312176195b126d8c05ab69e14e9ea4aa",
@@ -409,7 +424,11 @@ window.questionBank = [
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/비상_공통수학2_함수와그래프_대단원학습평가_고1/qid_v1_4ce7562b1179ec5e054497ebd4a61392312176195b126d8c05ab69e14e9ea4aa-solution.svg",
+    "solutionImageAlt": "y=√(3x+4)−1의 정의역·치역, x절편과 통과 사분면",
+    "solutionImageCaption": "y=√(3x+4)−1의 정의역·치역, x절편과 통과 사분면",
+    "solutionImageSize": "medium"
   },
   {
     "id": "qid_v1_6168b2676095ddee5bb6c832e71d54861727ecce784a3b6a9b382575a73ab640",
@@ -483,7 +502,11 @@ window.questionBank = [
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/비상_공통수학2_함수와그래프_대단원학습평가_고1/qid_v1_0c74879c564e97cf0bbd6b2f179931fb22642f1c25a2cceb43efc98a4d1568be-solution.svg",
+    "solutionImageAlt": "a=-2인 허용 사례: y=|x+1|−2x−2가 두 조각 모두 감소한다.",
+    "solutionImageCaption": "a=-2인 허용 사례: y=|x+1|−2x−2가 두 조각 모두 감소한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "qid_v1_187c82e8808766d1b6ca43b8bcfa4dee9085433ba654216fb67db2bb38337bce",
@@ -592,7 +615,11 @@ window.questionBank = [
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/비상_공통수학2_함수와그래프_대단원학습평가_고1/qid_v1_6fc1dbc0f074a0f3bf139f1816951aa7e57aea648aea992ea1d2e2a4ad6ebd04-solution.svg",
+    "solutionImageAlt": "f(x)=√(2x+4)+5, 최솟값 5와 f(0)=7을 나타낸 그래프",
+    "solutionImageCaption": "f(x)=√(2x+4)+5, 최솟값 5와 f(0)=7을 나타낸 그래프",
+    "solutionImageSize": "medium"
   },
   {
     "id": "qid_v1_b777c1fae0ac8aae968ed61da47dfd3cd57d4ffd20eff3887d3df7e35e787ae9",
@@ -630,6 +657,13 @@ window.questionBank = [
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "UNKNOWN",
-    "image": "assets/images/비상_공통수학2_함수와그래프_대단원학습평가_고1/q17_radical-function-graph.png"
+    "image": "assets/images/비상_공통수학2_함수와그래프_대단원학습평가_고1/qid_v1_b777c1fae0ac8aae968ed61da47dfd3cd57d4ffd20eff3887d3df7e35e787ae9-problem.svg",
+    "solutionImage": "assets/images/비상_공통수학2_함수와그래프_대단원학습평가_고1/qid_v1_b777c1fae0ac8aae968ed61da47dfd3cd57d4ffd20eff3887d3df7e35e787ae9-solution.svg",
+    "solutionImageAlt": "a=2,b=-2,c=1 예시에서 y=2/(x−2)−1의 점근선과 제2사분면 배제",
+    "solutionImageCaption": "a=2,b=-2,c=1 예시에서 y=2/(x−2)−1의 점근선과 제2사분면 배제",
+    "solutionImageSize": "medium",
+    "imageAlt": "조건 a>0,b<0,c>0을 만족하는 예시 a=2,b=-2,c=1의 개형",
+    "imageCaption": "조건 a>0,b<0,c>0을 만족하는 예시 a=2,b=-2,c=1의 개형",
+    "imageSize": "medium"
   }
 ];

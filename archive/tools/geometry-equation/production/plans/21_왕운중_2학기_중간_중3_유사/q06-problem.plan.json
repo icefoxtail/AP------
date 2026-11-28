@@ -1,0 +1,184 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lineAB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "O"
+        ],
+        "value": 18.4349488,
+        "label": "a",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "O"
+        ],
+        "value": 71.5650512,
+        "label": "b",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rO",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [
+    "lineAB"
+  ],
+  "sourceQuote": "아래 그림과 같이 기울기가 $\\frac{1}{3}$이고 점 $(",
+  "sourceConditions": [
+    {
+      "id": "q06p",
+      "condition": "아래 그림과 같이 기울기가 $\\frac{1}{3}$이고 점 $(-3, 2)$를 지나는 직선이 $x$축, $y$축과 만나는 점을 각각 $\\text{A}$, $\\text{B}$라 하자. $\\angle\\text{BAO}=a^\\circ$, $\\angle\\text{ABO}=b^\\circ$라고 할 때, $\\cos a^\\circ - \\sin b^\\circ + \\tan b^\\circ$의 값은?",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "문제 조건: 아래 그림과 같이 기울기가 $\\frac{1}{3}$이고 점 $(-3, 2)$를 지나는 직선이 $x$축, $y$축과 만나는 점을 각각 $\\text{A}$, $\\text{B}$라 하자. $\\angle\\text{BAO}=a^\\circ$, $\\angle\\text{ABO}=b^\\circ$라고 할 때, $\\cos ",
+  "newVisualInformation": [
+    "그려진 선분 sAO, sOB, sAB",
+    "angles 3개"
+  ],
+  "accessibilityDescription": "문제에 주어진 문제 조건: 아래 그림과 같이 기울기가 $\\frac{1}{3}$이고 점 $(-3, 2)$를 지나는 직선이 $x$축, $y$축과 만나는 점을 각각 $\\text{A}$, $\\text{B}$라 하자. $\\angle\\text{BAO}=a^\\circ$, $\\angle\\text{ABO}=b^\\circ$라고 할 때, $\\cos "
+}

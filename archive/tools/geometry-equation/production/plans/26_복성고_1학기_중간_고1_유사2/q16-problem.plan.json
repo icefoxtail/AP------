@@ -1,0 +1,20 @@
+{
+  "capability":"construction-spike-v1",
+  "sourceQuote":"넓이가 최대인 직사각형 $BPDQ$의 둘레는?",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"Q","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"rational","numerator":"6","denominator":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"rational","numerator":"6","denominator":"5"}]},"outputType":"POINT","factRole":"GIVEN"}
+  ]},
+  "displayPoints":["A","B","C","D","P","Q"],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]},{"id":"sQD","refs":["Q","D"]},{"id":"sDP","refs":["D","P"]},{"id":"sBP","refs":["B","P"]},{"id":"sBQ","refs":["B","Q"]}],
+  "rightAngles":[{"id":"rB","refs":["A","B","C"]},{"id":"rD","refs":["Q","D","P"]}],
+  "planeMarks":{"dimensions":[{"id":"lenAB","from":"A","to":"B","label":"α","side":"LEFT","factRole":"GIVEN"},{"id":"lenBC","from":"B","to":"C","label":"β","side":"BELOW","factRole":"GIVEN"}]},
+  "caption":"직각삼각형 ABC의 빗변 AC 위에 점 D가 있고, BPDQ가 안쪽 직사각형인 문제 배치이다.",
+  "accessibilityDescription":"A,B,C로 이루어진 직각삼각형에서 AB=α, BC=β, 직각 B와 내접 직사각형 BPDQ, 빗변 위 D를 표시한다. 직사각형의 미지 변 길이나 최적 위치는 쓰지 않는다.",
+  "sourceConditions":[{"id":"triangle","condition":"∠B=90°, AB=α, BC=β","mappedTo":["displaySegments[0]","displaySegments[1]","rightAngles[0]","planeMarks.dimensions"]},{"id":"rectangle","condition":"P는 BC, Q는 BA, D는 AC 위의 직사각형 BPDQ","mappedTo":["displaySegments[2]","displaySegments[3]","displaySegments[4]","displaySegments[5]","displaySegments[6]","rightAngles[1]"]}],
+  "newVisualInformation":["도형의 대표 배치는 u=2,v=6/5로, 두 값은 표시하지 않고 최댓값 배치를 미리 노출하지 않는다."]
+}

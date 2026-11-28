@@ -1,0 +1,8 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {"family":"multi-curve","viewport":[-1,5,-6,9],"curves":[{"id":"f","kind":"Y_OF_X","coefficients":["1","-4","1"],"domain":["-1","5"],"color":"BLUE","label":"y=f(x)"},{"id":"l","kind":"LINE","coefficients":["-4","0"],"domain":["-1","5"],"color":"WARM","label":"y=-4"}],"overlays":{"points":[{"id":"V","x":"2","y":"-3","coordinates":true}]},"axisTickValues":{"x":[],"y":[]}},
+  "caption": "y=(x−2)²−3의 최소 높이는 −3이므로 예시 y=−4처럼 k<−3인 수평선은 교점이 없다.",
+  "accessibilityDescription": "위로 열린 포물선의 꼭짓점 V(2,−3) 아래에 수평선 y=−4가 지나며 서로 만나지 않는다.",
+  "sourceConditions": [{"id":"function","condition":"y=x²−4x+1=(x−2)²−3","mappedTo":["graphPlan.curves[0]","graphPlan.overlays.points[0]"]},{"id":"inequality","condition":"k<−3의 허용 예 k=−4에서는 교점이 없음","mappedTo":"graphPlan.curves[1]"}],
+  "newVisualInformation": ["임의의 허용 k를 한 번만 예시로 그려 수평선이 최솟점보다 낮으면 만나지 않는 이유를 나타낸다."]
+}

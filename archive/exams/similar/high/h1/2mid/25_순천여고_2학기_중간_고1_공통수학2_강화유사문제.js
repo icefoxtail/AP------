@@ -27,7 +27,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-05-CORE",
     "subUnit": "집합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_순천여고_2학기_중간_고1_공통수학2_강화유사문제/q1-solution.svg",
+    "solutionImageAlt": "A={0,1,2}, B={0,2,{0}}로 원소 0과 집합 {0}은 다른 원소이다. {0}은 B에는 속하지만 A에는 속하지 않으므로 {{0}}⊆A는 거짓이다.",
+    "solutionImageCaption": "A={0,1,2}, B={0,2,{0}}로 원소 0과 집합 {0}은 다른 원소이다. {0}은 B에는 속하지만 A에는 속하지 않으므로 {{0}}⊆A는 거짓이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -83,7 +87,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
     "subUnit": "평면좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천여고_2학기_중간_고1_공통수학2_강화유사문제/q3-solution.svg",
+    "solutionImageAlt": "B(3,4)와 M(7/2,1/2)을 기준으로 C=2M−B=(4,−3)이다. AB=AC=5이고 ∠BAC=90°이므로 A에서 직각인 이등변삼각형이다.",
+    "solutionImageCaption": "B(3,4)와 M(7/2,1/2)을 기준으로 C=2M−B=(4,−3)이다. AB=AC=5이고 ∠BAC=90°이므로 A에서 직각인 이등변삼각형이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -111,7 +119,12 @@ window.questionBank = [
     "subUnitKey": "H22-C2-05-CORE",
     "subUnit": "집합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_순천여고_2학기_중간_고1_공통수학2_강화유사문제/q4-solution.svg",
+    "solutionImageAlt": "차집합 A−B와 B−A는 방향이 바뀌면 색칠되는 영역도 바뀐다. 따라서 A∩Bᶜ=A−B이고, 일반적으로 B−A와는 다르다.",
+    "solutionImageCaption": "차집합 A−B와 B−A는 방향이 바뀌면 색칠되는 영역도 바뀐다. 따라서 A∩Bᶜ=A−B이고, 일반적으로 B−A와는 다르다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 5,
@@ -139,7 +152,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-05-CORE",
     "subUnit": "집합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_순천여고_2학기_중간_고1_공통수학2_강화유사문제/q5-solution.svg",
+    "solutionImageAlt": "U의 원소가 60개이고 둘 다 속하지 않는 부분이 11개이므로 A∪B에는 49개가 있다. A는 32개, B는 27개여서 공통 부분이 10개이다. 숫자가 붙은 두 원은 영역 크기를 뜻하지 않는다.",
+    "solutionImageCaption": "U의 원소가 60개이고 둘 다 속하지 않는 부분이 11개이므로 A∪B에는 49개가 있다. A는 32개, B는 27개여서 공통 부분이 10개이다. 숫자가 붙은 두 원은 영역 크기를 뜻하지 않는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -167,7 +184,15 @@ window.questionBank = [
     "subUnitKey": "H22-C2-04-CORE",
     "subUnit": "도형의 이동 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "image": "assets/images/25_순천여고_2학기_중간_고1_공통수학2_강화유사문제/q6-problem.svg",
+    "imageAlt": "직선 x+y=2 위의 점 P를 임의로 잡아 A(4,2), B(6,6)까지 두 선분을 나타낸 문제 조건 그림이다. P의 위치는 예시이며 최솟값 경로는 표시하지 않았다.",
+    "imageCaption": "직선 x+y=2 위의 점 P를 임의로 잡아 A(4,2), B(6,6)까지 두 선분을 나타낸 문제 조건 그림이다. P의 위치는 예시이며 최솟값 경로는 표시하지 않았다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/25_순천여고_2학기_중간_고1_공통수학2_강화유사문제/q6-solution.svg",
+    "solutionImageAlt": "A(4,2)를 x+y=2에 대하여 대칭이동한 A′=(0,−2)와 B(6,6)을 직선으로 잇는다. PA=PA′이므로 PA+PB=PA′+PB≥A′B=10이고, A′,P,B가 일직선일 때 최소이다.",
+    "solutionImageCaption": "A(4,2)를 x+y=2에 대하여 대칭이동한 A′=(0,−2)와 B(6,6)을 직선으로 잇는다. PA=PA′이므로 PA+PB=PA′+PB≥A′B=10이고, A′,P,B가 일직선일 때 최소이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -257,7 +282,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
     "subUnit": "평면좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천여고_2학기_중간_고1_공통수학2_강화유사문제/q9-solution.svg",
+    "solutionImageAlt": "무게중심은 중선 AM을 AG:GM=2:1로 나누므로 A=3G−2M=(8,−1)이다. 원점 O에서 A까지의 거리 OA=√65이다.",
+    "solutionImageCaption": "무게중심은 중선 AM을 AG:GM=2:1로 나누므로 A=3G−2M=(8,−1)이다. 원점 O에서 A까지의 거리 OA=√65이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -313,7 +342,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-05-CORE",
     "subUnit": "집합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_순천여고_2학기_중간_고1_공통수학2_강화유사문제/q11-solution.svg",
+    "solutionImageAlt": "A={1,2,3,6,9,18}, B={6,12,18,24,30}이다. 조건 X⊆A, X∩B=∅을 동시에 만족시키려면 A−B={1,2,3,9}에서 원소를 고른다. 가능한 X는 2⁴=16개다.",
+    "solutionImageCaption": "A={1,2,3,6,9,18}, B={6,12,18,24,30}이다. 조건 X⊆A, X∩B=∅을 동시에 만족시키려면 A−B={1,2,3,9}에서 원소를 고른다. 가능한 X는 2⁴=16개다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,

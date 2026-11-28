@@ -1,0 +1,8 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{"family":"polynomial","coefficients":["1","4","-1"],"axisVariable":"t","sourceDomain":{"kind":"INTERVAL","range":[-3,1],"states":["CLOSED","CLOSED"]},"domain":[-3,1],"viewport":[-4,3,-22,7],"requiredPoints":[{"id":"L","x":-3,"y":-20},{"id":"R","x":1,"y":4}],"axisTickValues":{"x":[],"y":[]}},
+  "caption":"t=f(x)의 실제 치역 −3≤t≤1에서 −t²+4t+1은 증가하므로 양 끝 함숫값은 −20과 4이다.",
+  "accessibilityDescription":"t축의 닫힌 구간 −3부터 1까지만 그린 아래로 열린 포물선에서 왼쪽 끝값 −20, 오른쪽 끝값 4를 표시한다. 꼭짓점 t=2는 구간 밖이다.",
+  "sourceConditions":[{"id":"range","condition":"원래 구간별 f(x)의 치역은 [−3,1]","mappedTo":["graphPlan.sourceDomain","graphPlan.domain"]},{"id":"composition","condition":"H(t)=−t²+4t+1, t=2의 꼭짓점은 정의역 밖","mappedTo":["graphPlan.coefficients"]},{"id":"extrema","condition":"H(−3)=−20, H(1)=4","mappedTo":["graphPlan.requiredPoints"]}],
+  "newVisualInformation":["합성함수의 내부 치역 때문에 꼭짓점이 아닌 양 끝점에서 최솟값·최댓값을 얻는 모습을 나타낸다."]
+}

@@ -1,0 +1,31 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["0", "0", "4"],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "domain": [-1, 2],
+    "viewport": [-1, 2.5, -0.5, 12],
+    "overlays": {
+      "points": [
+        { "id": "O", "axis": "x", "value": "0" },
+        { "id": "P", "curveX": "1" },
+        { "id": "H", "axis": "y", "value": "4" },
+        { "id": "Q", "axis": "y", "value": "2" }
+      ],
+      "segments": [
+        { "id": "PH", "from": "P", "to": "H" },
+        { "id": "PQ", "from": "P", "to": "Q" }
+      ]
+    },
+    "axisTickValues": { "x": [], "y": [] }
+  },
+  "pointNames": { "O": "O", "P": "P", "H": "H", "Q": "Q" },
+  "caption": "현행 유사 JS의 포물선 y=4x², 수선의 발 H, OH의 중점 Q와 두 선분을 보이는 예시(t=1) 개형.",
+  "accessibilityDescription": "원점을 꼭짓점으로 하는 포물선 y=4x² 위 P에서 y축으로 수평선 PH를 내리고 O와 H 중간에 Q를 표시했다. P와 Q를 잇는 선분이 있다. 시각화를 위한 P의 x좌표만 1로 택했다.",
+  "sourceConditions": [
+    { "id": "source-q09-curve", "condition": "현행 유사 JS는 y=4x²이며 원 기출 JS는 y=9x²이다. 현행 식을 사용한다.", "mappedTo": "graphPlan.coefficients" },
+    { "id": "source-q09-geometry", "condition": "PH는 y축에 수직이고 Q는 OH의 중점. 그림만을 위한 t=1에서 P(1,4), H(0,4), Q(0,2)이다.", "mappedTo": "graphPlan.overlays" }
+  ],
+  "newVisualInformation": ["PQ와 HQ 길이를 비교할 구조와 수선의 발 및 중점을 나타낸다. 극한값은 표기하지 않는다."]
+}

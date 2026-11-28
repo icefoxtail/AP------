@@ -1,0 +1,8 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{"family":"polynomial","coefficients":["0","6","-1"],"sourceDomain":{"kind":"INTERVAL","range":[-1,1],"states":["CLOSED","CLOSED"]},"domain":[-1,1],"viewport":[-2,2,-9,7],"requiredPoints":[{"id":"L","x":-1,"y":-7},{"id":"R","x":1,"y":5}],"axisTickValues":{"x":[],"y":[]}},
+  "caption":"a=1이면 −1≤x≤1에서 y=−x²+6x는 증가하며 오른쪽 끝 x=1에서 최댓값 5이다.",
+  "accessibilityDescription":"구간 −1부터 1까지의 오른쪽으로 증가하는 아래로 열린 포물선 호로 왼쪽 끝 (−1,−7), 오른쪽 끝 (1,5)를 표시한다.",
+  "sourceConditions":[{"id":"branch","condition":"a=1의 경우 대칭축 x=3이 구간 오른쪽 밖에 있다","mappedTo":["graphPlan.coefficients","graphPlan.sourceDomain"]},{"id":"maximum","condition":"f(1)=5, f(−1)=−7","mappedTo":["graphPlan.requiredPoints"]}],
+  "newVisualInformation":["꼭짓점이 구간 밖에 있어 끝점이 최대가 되는 양의 a 경우를 표시한다."]
+}

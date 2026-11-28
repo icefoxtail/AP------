@@ -1,0 +1,11 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "graphPlan":{"family":"multi-curve","viewport":[-1,6,-2,18],"curves":[
+    {"id":"f","kind":"Y_OF_X","coefficients":["3","-4","1"],"domain":["0","5"],"color":"BLUE","label":"y=x^2-4x+3"},
+    {"id":"g","kind":"Y_OF_X","coefficients":["16","-8","1"],"domain":["0","5"],"color":"WARM","label":"y=x^2-8x+16"}
+  ],"overlays":{"points":[{"id":"A","x":"1","y":"0"},{"id":"B","x":"3","y":"0"},{"id":"T","x":"4","y":"0"}]},"axisTickValues":{"x":[],"y":[]}},
+  "pointNames":{"A":"A","B":"B","T":"T"},
+  "caption":"k=2일 때 첫 포물선은 x축과 A(1,0), B(3,0)에서 만나고 둘째 포물선은 T(4,0)에서 접한다.",
+  "sourceConditions":[{"id":"first","condition":"k=2: y=x²−4x+3, 영점 1,3","mappedTo":["graphPlan.curves[0]","graphPlan.overlays.points[0]","graphPlan.overlays.points[1]"]},{"id":"second","condition":"k=2: y=(x−4)², 중근 4","mappedTo":["graphPlan.curves[1]","graphPlan.overlays.points[2]"]}],
+  "newVisualInformation":["서로 다른 두 근과 중근의 접촉 차이를 두 실제 포물선으로 대비한다."]
+}

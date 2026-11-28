@@ -1,0 +1,160 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "100"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7002",
+              "denominator": "100"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "T"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AT",
+      "refs": [
+        "A",
+        "T"
+      ]
+    },
+    {
+      "id": "BT",
+      "refs": [
+        "B",
+        "T"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "elevation",
+        "refs": [
+          "A",
+          "B",
+          "T"
+        ],
+        "value": 35,
+        "label": "35",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "label-AB-1",
+        "ownerSegment": "AB",
+        "text": "100",
+        "factRole": "GIVEN",
+        "unit": "m"
+      },
+      {
+        "id": "label-AT-2",
+        "ownerSegment": "AT",
+        "text": "70.02",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "unit": "m"
+      }
+    ]
+  },
+  "caption": "해설 도식: 관측점에서 탑까지 수평거리 100m와 35도 앙각",
+  "accessibilityDescription": "해설: 관측점에서 탑까지 수평거리 100m와 35도 앙각",
+  "newVisualInformation": [
+    "해설의 관계: 관측점에서 탑까지 수평거리 100m와 35도 앙각"
+  ],
+  "sourceConditions": [
+    {
+      "id": "problem",
+      "condition": "다음 그림과 같은 탑의 높이를 알아보기 위하여 탑으로부터 $100\\text{ m}$ 떨어진 지점에서 탑의 꼭대기를 올려다본 각이 $35^\\circ$일 때, 탑의 높이를 구하시오. (단, $\\sin 35^\\circ = 0.5736$, $\\cos 35^\\circ = 0.8192$, $\\tan 35^\\circ = 0.7002$로 계산한다.)",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "solution",
+      "condition": "탑의 높이를 $h\\text{ m}$라 하면 수평 거리가 $100\\text{ m}$, 올려다본 각이 $35^\\circ$이므로 $$\\tan 35^\\circ = \\frac{h}{100} \\implies h = 100 \\tan 35^\\circ = 100 \\times 0.7002 = 70.02\\text{ (m)}$$",
+      "mappedTo": "SOLUTION_AXIS"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rightA",
+      "refs": [
+        "T",
+        "A",
+        "B"
+      ],
+      "factRole": "GIVEN"
+    }
+  ]
+}

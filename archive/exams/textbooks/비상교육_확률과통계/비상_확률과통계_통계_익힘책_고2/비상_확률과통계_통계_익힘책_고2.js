@@ -139,7 +139,11 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "solutionImage": "assets/images/비상_확률과통계_통계_익힘책_고2/q4-solution.svg",
+    "solutionImageAlt": "평균 40에서 한 표준편차 오른쪽인 45 이하를 구하므로 왼쪽 누적 넓이는 0.5+0.3413=0.8413이다.",
+    "solutionImageCaption": "평균 40에서 한 표준편차 오른쪽인 45 이하를 구하므로 왼쪽 누적 넓이는 0.5+0.3413=0.8413이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -279,7 +283,11 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "solutionImage": "assets/images/비상_확률과통계_통계_익힘책_고2/q8-solution.svg",
+    "solutionImageAlt": "원본의 (0,0),(1,b),(a,0)에서 ab/2=1, a=b를 계산하여 a=b=√2로 확정한다. x=a/2=√2/2의 높이는 1로 보조 점선에 표시한다.",
+    "solutionImageCaption": "원본의 (0,0),(1,b),(a,0)에서 ab/2=1, a=b를 계산하여 a=b=√2로 확정한다. x=a/2=√2/2의 높이는 1로 보조 점선에 표시한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -314,7 +322,11 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "solutionImage": "assets/images/비상_확률과통계_통계_익힘책_고2/q9-solution.svg",
+    "solutionImageAlt": "Y의 구간 [16,23]은 Z의 [−2,1.5]에 해당한다. X의 시작점 42도 Z=−2이므로 오른쪽 끝은 X=56이 되어야 넓이가 같다.",
+    "solutionImageCaption": "Y의 구간 [16,23]은 Z의 [−2,1.5]에 해당한다. X의 시작점 42도 Z=−2이므로 오른쪽 끝은 X=56이 되어야 넓이가 같다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -349,7 +361,11 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "solutionImage": "assets/images/비상_확률과통계_통계_익힘책_고2/q10-solution.svg",
+    "solutionImageAlt": "수리 시간 35분은 평균 30분보다 한 표준편차 크다. 35분 이하의 넓이는 0.5+0.3413=0.8413이다.",
+    "solutionImageCaption": "수리 시간 35분은 평균 30분보다 한 표준편차 크다. 35분 이하의 넓이는 0.5+0.3413=0.8413이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -384,7 +400,11 @@ window.questionBank = [
       "standardUnit": "확률분포",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "solutionImage": "assets/images/비상_확률과통계_통계_익힘책_고2/q11-solution.svg",
+    "solutionImageAlt": "식품 수는 평균 2000, 표준편차 40인 정규분포로 근사한다. 1960 이하와 2040 이상은 z=−1과 z=1 바깥의 대칭 두 꼬리로, 합은 0.3174이다.",
+    "solutionImageCaption": "식품 수는 평균 2000, 표준편차 40인 정규분포로 근사한다. 1960 이하와 2040 이상은 z=−1과 z=1 바깥의 대칭 두 꼬리로, 합은 0.3174이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -699,7 +719,11 @@ window.questionBank = [
       "standardUnit": "통계적 추정",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "solutionImage": "assets/images/비상_확률과통계_통계_익힘책_고2/q20-solution.svg",
+    "solutionImageAlt": "P(X≤62)=P(Z≤3)이고 P(표본평균≥48)=P(Z≥−√n/2)이다. 두 누적 넓이가 같으려면 기준이 −3이어야 하므로 n=36이다.",
+    "solutionImageCaption": "P(X≤62)=P(Z≤3)이고 P(표본평균≥48)=P(Z≥−√n/2)이다. 두 누적 넓이가 같으려면 기준이 −3이어야 하므로 n=36이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -734,7 +758,11 @@ window.questionBank = [
       "standardUnit": "통계적 추정",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "solutionImage": "assets/images/비상_확률과통계_통계_익힘책_고2/q21-solution.svg",
+    "solutionImageAlt": "16개 표본평균의 분포는 평균 40, 표준편차 0.5이다. 39.5 이상은 z≥−1이므로 오른쪽 넓이 0.8413이다.",
+    "solutionImageCaption": "16개 표본평균의 분포는 평균 40, 표준편차 0.5이다. 39.5 이상은 z≥−1이므로 오른쪽 넓이 0.8413이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -769,7 +797,11 @@ window.questionBank = [
       "standardUnit": "통계적 추정",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "solutionImage": "assets/images/비상_확률과통계_통계_익힘책_고2/q22-solution.svg",
+    "solutionImageAlt": "표본비율은 평균 0.1, 표준편차 0.01인 정규분포로 근사한다. [0.09,0.10]의 넓이 0.3413과 [0.10,0.13]의 넓이 0.4987을 더한다.",
+    "solutionImageCaption": "표본비율은 평균 0.1, 표준편차 0.01인 정규분포로 근사한다. [0.09,0.10]의 넓이 0.3413과 [0.10,0.13]의 넓이 0.4987을 더한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -874,7 +906,11 @@ window.questionBank = [
       "standardUnit": "통계적 추정",
       "majorUnit": "통계"
     },
-    "majorUnit": "통계"
+    "majorUnit": "통계",
+    "solutionImage": "assets/images/비상_확률과통계_통계_익힘책_고2/q25-solution.svg",
+    "solutionImageAlt": "공에 적힌 수의 평균은 2, 분산은 1이다. 크기 100의 표본평균은 근사적으로 N(2,0.1²)이고 1.8 이상인 넓이는 0.9772이다.",
+    "solutionImageCaption": "공에 적힌 수의 평균은 2, 분산은 1이다. 크기 100의 표본평균은 근사적으로 N(2,0.1²)이고 1.8 이상인 넓이는 0.9772이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 26,

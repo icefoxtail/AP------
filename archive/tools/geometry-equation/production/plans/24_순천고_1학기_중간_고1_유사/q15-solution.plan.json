@@ -1,0 +1,8 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{"family":"polynomial","coefficients":["-3","8","-2"],"sourceDomain":{"kind":"INTERVAL","range":[0,4],"states":["CLOSED","CLOSED"]},"domain":[0,4],"viewport":[-1,5,-5,7],"requiredPoints":[{"id":"L","x":0,"y":-3},{"id":"V","x":2,"y":5},{"id":"R","x":4,"y":-3}],"axisTickValues":{"x":[],"y":[]}},
+  "caption":"y=−2(x−2)²+5에서 k가 가능한 가장 큰 값 4일 때 범위 [0,4]의 최대는 5, 최소는 −3이다.",
+  "accessibilityDescription":"닫힌 구간 [0,4]의 아래로 열린 포물선에서 양 끝 (0,−3),(4,−3)과 꼭짓점 (2,5)를 표시한다.",
+  "sourceConditions":[{"id":"quadratic","condition":"y=−2x²+8x−3","mappedTo":["graphPlan.coefficients"]},{"id":"validInterval","condition":"최대 5, 최소 −3을 동시에 만족하는 k의 범위는 2≤k≤4; 대표 k=4","mappedTo":["graphPlan.sourceDomain","graphPlan.domain"]},{"id":"extrema","condition":"y(0)=y(4)=−3, y(2)=5","mappedTo":["graphPlan.requiredPoints"]}],
+  "newVisualInformation":["꼭짓점 x=2가 포함되어야 하고 오른쪽 끝이 x=4보다 멀어지면 최솟값이 변한다는 경계 관계를 보인다."]
+}

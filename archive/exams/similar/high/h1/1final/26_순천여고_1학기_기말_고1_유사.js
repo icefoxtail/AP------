@@ -272,8 +272,8 @@ window.questionBank = [
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q05-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q05-solution.plan.json",
     "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_유사/q5-solution.svg",
-    "solutionImageAlt": "해설 그림: 수직선 x 위에 −7과 5를 양 끝으로 하는 열린 구간이 굵은 선으로 표시되고, 그 사이에 0이 표시된 그림이다.",
-    "solutionImageCaption": "|x+1|<6은 중심−1에서 거리가6보다 작은 범위이다. 정답: −6부터4까지 정수11개.",
+    "solutionImageAlt": "-7<x<5에서 양 끝점은 제외한다. 포함되는 정수는 -6부터 4까지 11개이다.",
+    "solutionImageCaption": "-7<x<5에서 양 끝점은 제외한다. 포함되는 정수는 -6부터 4까지 11개이다.",
     "solutionImageSize": "full"
   },
   {
@@ -331,8 +331,8 @@ window.questionBank = [
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q06-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q06-solution.plan.json",
     "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_유사/q6-solution.svg",
-    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선이 x축과 (−3, 0), (4, 0)에서 만나고, 꼭짓점 (1/2, −49/4)이 표시된 그림이다.",
-    "solutionImageCaption": "원문 이차식의 두 근은−3,4이다. 두 x절편에서 근의 합1과 곱−12를 읽고 원문 계수와 대응시킨다. 정답: 두 근−3,4에서 b=−3,a=−1, 따라서 a+b=−4.",
+    "solutionImageAlt": "y=x²−x−12의 두 근 -3,4의 합으로 일차항 계수 a=-1을 확인한다.",
+    "solutionImageCaption": "y=x²−x−12의 두 근 -3,4의 합으로 일차항 계수 a=-1을 확인한다.",
     "solutionImageSize": "full"
   },
   {
@@ -447,8 +447,8 @@ window.questionBank = [
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q08-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q08-solution.plan.json",
     "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_유사/q8-solution.svg",
-    "solutionImageAlt": "해설 그림: 두 개의 수직선을 위아래로 놓고, 위 수직선에는 −4와 3을 양 끝으로 하는 닫힌 구간이, 아래 수직선에는 −1/2 이하인 왼쪽 부분과 3 이상인 오른쪽 부분이 굵은 선으로 표시된 그림이다.",
-    "solutionImageCaption": "첫 행은 절댓값 부등식, 둘째 행은 이차식의 부호를 정리한 결과이다. x=3은 두 조건에서 모두 등호를 만족하므로 겹치는 한 점도 빠뜨리지 않는다. 정답: 공통 정수−4,−3,−2,−1,3의 합은−7.",
+    "solutionImageAlt": "|x-1|+|x+2|≤7의 해 [-4,3]과 (2x+1)(x-3)≥0의 해 (-∞,-1/2]∪[3,∞)의 교집합은 [-4,-1/2]∪{3}이다.",
+    "solutionImageCaption": "|x-1|+|x+2|≤7의 해 [-4,3]과 (2x+1)(x-3)≥0의 해 (-∞,-1/2]∪[3,∞)의 교집합은 [-4,-1/2]∪{3}이다.",
     "solutionImageSize": "full"
   },
   {
@@ -564,7 +564,12 @@ window.questionBank = [
     "sourceQid": 10,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q10-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q10-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q10-solution.plan.json",
+    "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_유사/q10-solution.svg",
+    "solutionImageAlt": "t=x²−2x는 −1≤t≤3이고 y=t²−4t−3의 최소 −7은 t=2, 최대 2는 t=−1이다.",
+    "solutionImageCaption": "t=x²−2x는 −1≤t≤3이고 y=t²−4t−3의 최소 −7은 t=2, 최대 2는 t=−1이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   },
   {
     "id": 11,
@@ -623,7 +628,11 @@ window.questionBank = [
     "sourceQid": 11,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q11-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q11-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q11-solution.plan.json",
+    "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_유사/q11-solution.svg",
+    "solutionImageAlt": "이차식이 0≤x≤2에서 항상 0 이상인 a의 범위는 -2≤a≤4이며 최솟값은 -2이다.",
+    "solutionImageCaption": "이차식이 0≤x≤2에서 항상 0 이상인 a의 범위는 -2≤a≤4이며 최솟값은 -2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -682,7 +691,12 @@ window.questionBank = [
     "sourceQid": 12,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q12-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q12-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q12-solution.plan.json",
+    "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_유사/q12-solution.svg",
+    "solutionImageAlt": "t=|x|의 범위 [0,4]에서 y=3t²−6t는 t=1일 때 −3, t=4일 때 24이다.",
+    "solutionImageCaption": "t=|x|의 범위 [0,4]에서 y=3t²−6t는 t=1일 때 −3, t=4일 때 24이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 13,
@@ -974,8 +988,8 @@ window.questionBank = [
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q17-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q17-solution.plan.json",
     "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_유사/q17-solution.svg",
-    "solutionImageAlt": "해설 그림: 두 개의 수직선 a를 위아래로 놓고, 위 수직선에는 1부터 3까지, 아래 수직선에는 1부터 5까지의 닫힌 구간이 굵은 선으로 표시된 그림이다.",
-    "solutionImageCaption": "판별식은 (a−b)²−8이다. a,b가1부터6까지의 정수이므로 허근 조건은 정수 차이의 절댓값이2 이하인 경우로 세면 된다. 첫 행은 b=1일 때, 둘째 행은 b=3일 때 허용되는 a의 경계 비교이다. 연속 구간 전체가 주사위 결과가 아니라 각 행 안의 정수 점만 센다. b가 가장자리인지 가운데인지에 따라 경우 수가 달라짐을 비교하고 나머지 b도 같은 방식으로 조사한다. 정답: 차이가0,1,2인 순서쌍은6,10,8개이므로 합24개.",
+    "solutionImageAlt": "(a-b)²<8이고 a,b∈{1,...,6}이다. b=1이면 a∈{1,2,3}, b=3이면 a∈{1,...,5}인 대표 경우를 비교한다.",
+    "solutionImageCaption": "(a-b)²<8이고 a,b∈{1,...,6}이다. b=1이면 a∈{1,2,3}, b=3이면 a∈{1,...,5}인 대표 경우를 비교한다.",
     "solutionImageSize": "full"
   },
   {
@@ -1155,8 +1169,8 @@ window.questionBank = [
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q20-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q20-solution.plan.json",
     "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_유사/q20-solution.svg",
-    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선이 (1, 1)과 (6, 6)을 지나고 꼭짓점 (3, −3)이 표시되며, k=3일 때의 그림이라고 적힌 그림이다.",
-    "solutionImageCaption": "삼차식에서 고정근−1을 분리한 뒤 남은 이차식 g(x)=x²−2kx+6을 조사한다. 이 패널은 k=3인 정확한 비교 예시다. 두 끝점1,6에서는 양수이고 축이 안쪽이며 꼭짓점은 음수여야 서로 다른 두 근이 열린 구간 안에 들어간다. 이 예시만으로 모든 k를 확정하지 않고 네 조건을 일반적으로 결합한다. 정답: √6<k<7/2이므로 정수 k=3 하나, 정답1개.",
+    "solutionImageAlt": "k=3인 확인 예시 g(x)=x²−6x+6에서 g(1)=1, g(6)=6, 꼭짓점 g(3)=-3이므로 서로 다른 두 근이 1과 6 사이에 있다.",
+    "solutionImageCaption": "k=3인 확인 예시 g(x)=x²−6x+6에서 g(1)=1, g(6)=6, 꼭짓점 g(3)=-3이므로 서로 다른 두 근이 1과 6 사이에 있다.",
     "solutionImageSize": "full"
   },
   {
@@ -1209,7 +1223,11 @@ window.questionBank = [
     "sourceQid": 21,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q21-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q21-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q21-solution.plan.json",
+    "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_유사/q21-solution.svg",
+    "solutionImageAlt": "이차식의 판별식으로 -5<a<5이고, 일차근과 겹치는 a=0을 제외하여 -5<a<0 또는 0<a<5이다.",
+    "solutionImageCaption": "이차식의 판별식으로 -5<a<5이고, 일차근과 겹치는 a=0을 제외하여 -5<a<0 또는 0<a<5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1264,8 +1282,8 @@ window.questionBank = [
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q22-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q22-solution.plan.json",
     "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_유사/q22-solution.svg",
-    "solutionImageAlt": "해설 그림: 두 개의 수직선을 위아래로 놓고, 위 수직선에는 2부터 7까지의 닫힌 구간이, 아래 수직선에는 3 이하인 왼쪽 부분과 6 이상인 오른쪽 부분이 굵은 선으로 표시된 그림이다.",
-    "solutionImageCaption": "첫 행의 고정 구간에는 정수가 여섯 개 있다. 둘째 행은 n=6인 예시이며 두 근 n−3,n 사이의 열린 구간만 제외된다. 일반 n에서 제외되는 정수는 n−2,n−1이므로 둘 다 첫 구간 안에 있는 조건을 세운다. 정답: n−2,n−1이2..7에 모두 속해야 하므로 n=4,5,6,7,8.",
+    "solutionImageAlt": "첫째 조건은 2≤x≤7이고, n=6일 때 둘째 조건은 x≤3 또는 x≥6이다. 교집합 정수는 2,3,6,7의 네 개다.",
+    "solutionImageCaption": "첫째 조건은 2≤x≤7이고, n=6일 때 둘째 조건은 x≤3 또는 x≥6이다. 교집합 정수는 2,3,6,7의 네 개다.",
     "solutionImageSize": "full"
   },
   {
@@ -1297,8 +1315,8 @@ window.questionBank = [
     "wide": false,
     "content": "서술형3.<br>오른쪽 그림과 같이 폭이 $8\\,\\mathrm{m}$, 높이가 $8\\,\\mathrm{m}$인 포물선 모양의 조형물이 지면과 만나는 두 지점을 각각 $A,B$라 하자. $A$지점에 높이가 $\\dfrac{25}{2}\\,\\mathrm{m}$인 조명이 지면과 수직으로 설치되어 있을 때, $\\dfrac{25}{2}\\,\\mathrm{m}$ 조명이 있는 지점을 $C$라 하고, 이 조명의 불빛에 의하여 생기는 조형물의 그림자의 끝을 $D$라 하자. 또, 조형물에서 그림자의 끝인 $D$를 연결하는 선이 조형물과 접하는 점을 $E$라 할 때, 생기는 삼각형 $BDE$의 넓이를 구하고, 그 과정을 서술하시오. [9.0점, 부분점수 있음]<br>(단, 조형물의 두께는 생각하지 않는다.)",
     "image": "assets/images/26_순천여고_1학기_기말_고1_유사/q23-problem.svg",
-    "imageAlt": "폭 8, 높이 8인 포물선 모양 조형물과 점 A의 조명 기둥 AC, C에서 조형물에 접하는 빛이 지면과 만나는 점 D, 접점 E를 나타낸 그림",
-    "imageSize": "large",
+    "imageAlt": "폭 AB=8 m, 꼭짓점 높이 8 m, 수직 조명 AC=25/2 m. 점선은 꼭짓점에서 지면으로 내린 높이이며 접선 CED와 점 E를 보인다.",
+    "imageSize": "full",
     "answer": "$\\dfrac{135}{8}\\,\\mathrm{m}^2$",
     "solution": "지면을 $x$축으로 두고 $A=(0,0)$, $B=(8,0)$이라 하자.\n포물선의 꼭짓점은 $(4,8)$이므로\n$y=p(x-4)^2+8$로 놓을 수 있다.\n점 $A$를 지나므로\n$0=16p+8$\n$p=-\\dfrac12$이다.\n포물선을 전개하면\n$y=-\\dfrac12(x-4)^2+8$\n$=-\\dfrac12(x^2-8x+16)+8$\n$=-\\dfrac12x^2+4x-8+8$\n$=-\\dfrac12x^2+4x$이다.\n조명은 $C=(0,\\dfrac{25}{2})$에 있다.\n$C$를 지나는 빛의 직선을\n$y=tx+\\dfrac{25}{2}$라 두자.\n포물선과 직선의 교점에서는\n$-\\dfrac12x^2+4x=tx+\\dfrac{25}{2}$이다.\n양변에 $-2$를 곱하면\n$x^2-8x=-2tx-25$이다.\n항을 한쪽으로 옮기면\n$x^2-(8-2t)x+25=0$이다.\n접선과 포물선의 교점은 중근이므로 판별식은\n$(8-2t)^2-4\\cdot25=0$\n$(8-2t)^2=100$이다.\n따라서\n$8-2t=10$ 또는 $8-2t=-10$이다.\n첫째 경우에는 $t=-1$이고, 둘째 경우에는 $t=9$이다.\n$t=9$일 때 교점 방정식은\n$x^2+10x+25=0$\n$(x+5)^2=0$이므로 접점의 $x$좌표는 $-5$이다.\n이는 조형물이 놓인 구간 $0\\le x\\le8$ 밖이므로 조형물과의 접선이 아니다.\n따라서 $t=-1$이고 빛의 직선은\n$y=-x+\\dfrac{25}{2}$이다.\n$D$는 이 직선의 $x$절편이므로\n$0=-x+\\dfrac{25}{2}$\n$x=\\dfrac{25}{2}$이다.\n따라서 $D=(\\dfrac{25}{2},0)$이고\n$BD=\\dfrac{25}{2}-8$\n$=\\dfrac{25}{2}-\\dfrac{16}{2}$\n$=\\dfrac92$이다.\n$t=-1$을 교점 방정식에 대입하면\n$x^2-10x+25=0$\n$(x-5)^2=0$이다.\n따라서 접점 $E$의 $x$좌표는 $5$이다.\n직선 위에서 $E$의 높이는\n$y=-5+\\dfrac{25}{2}$\n$=-\\dfrac{10}{2}+\\dfrac{25}{2}$\n$=\\dfrac{15}{2}$이다.\n그러므로 $E=(5,\\dfrac{15}{2})$이고, 삼각형의 높이는 $\\dfrac{15}{2}$이다.\n따라서 삼각형 $BDE$의 넓이는\n$\\dfrac12\\cdot BD\\cdot\\dfrac{15}{2}$\n$=\\dfrac12\\cdot\\dfrac92\\cdot\\dfrac{15}{2}$\n$=\\dfrac{135}{8}\\,\\mathrm{m}^2$이다.\n그러므로 구하는 넓이는 $\\dfrac{135}{8}\\,\\mathrm{m}^2$이다.",
     "score": 9.0,
@@ -1326,6 +1344,7 @@ window.questionBank = [
     "sourceQid": 23,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q23-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q23-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q23-solution.plan.json",
+    "imageCaption": "폭 AB=8 m, 꼭짓점 높이 8 m, 수직 조명 AC=25/2 m. 점선은 꼭짓점에서 지면으로 내린 높이이며 접선 CED와 점 E를 보인다."
   }
 ];

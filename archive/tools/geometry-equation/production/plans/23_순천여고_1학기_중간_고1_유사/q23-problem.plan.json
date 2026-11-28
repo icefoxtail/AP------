@@ -1,0 +1,33 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["-16", "0", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-5, 5],
+    "viewport": [-5, 5, -18, 4],
+    "axisTickValues": {"x": ["-4", "4"], "y": []},
+    "overlays": {
+      "points": [
+        {"id": "A", "x": "-2", "y": "0"},
+        {"id": "B", "curveX": "-2"},
+        {"id": "C", "curveX": "2"},
+        {"id": "D", "x": "2", "y": "0"}
+      ],
+      "segments": [
+        {"id": "AB", "from": "A", "to": "B"},
+        {"id": "BC", "from": "B", "to": "C"},
+        {"id": "CD", "from": "C", "to": "D"},
+        {"id": "DA", "from": "D", "to": "A"}
+      ]
+    }
+  },
+  "caption": "포물선 y=x²−16 아래의 내접 직사각형 ABCD를 t=2인 예시로 나타낸다. 실제 t는 0<t<4에서 변한다.",
+  "accessibilityDescription": "x축과 포물선 y=x²−16 사이에 직사각형 ABCD가 놓이고 A와 D는 x축, B와 C는 포물선에 있다.",
+  "sourceConditions": [
+    {"id": "parabola", "condition": "y=x²−16, x축 교점 x=−4와 4", "mappedTo": ["graphPlan.coefficients", "graphPlan.axisTickValues.x"]},
+    {"id": "vertices", "condition": "A,D는 x축 위, B,C는 포물선 위이고 C는 제4사분면", "mappedTo": ["graphPlan.overlays.points", "graphPlan.overlays.segments"]},
+    {"id": "parameter", "condition": "예시 t=2에서 C=(2,−12), 일반 조건은 0<t<4", "mappedTo": ["graphPlan.overlays.points[2]", "graphPlan.overlays.points[3]"]}
+  ],
+  "newVisualInformation": ["원본의 네 꼭짓점과 네 변을 실제 그래프 위에 표시하되 정답 t=1 및 최대 둘레는 보이지 않는다."]
+}

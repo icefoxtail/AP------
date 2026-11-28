@@ -1,0 +1,48 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-10",
+      "4",
+      "-2/3"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      10
+    ],
+    "viewport": [
+      -5,
+      11,
+      -20,
+      2
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 3,
+        "y": -4
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceQuote": "이차함수 $y = -\\frac{2}{3}x^2 + 4x - 10",
+  "sourceConditions": [
+    {
+      "id": "q04s",
+      "condition": "주어진 이차함수를 표준형으로 변형하면 $$y = -\\frac{2}{3}(x^2 - 6x) - 10 = -\\frac{2}{3}(x - 3)^2 - 4$$ 따라서 위로 볼록한 포물선이고, 꼭짓점의 좌표는 $(3, -4)$이므로 그래프는 $x$축 아래쪽(제3, 4사분면)만 지난다. 또한 $y$축과의 교점은 $(0, -10)$이고, $y=-\\frac{2}{3}x^2$을 $x$축으로 $3$, $y$축으로 $-4$만큼 평행이동한 그래프이다. 따라서 옳은 것은 ⑤이다.",
+      "mappedTo": "graphPlan.coefficients"
+    }
+  ],
+  "caption": "해설 관계: 이차함수 $y = -\\frac{2}{3}x^2 + 4x - 10$의 그래프에 대한 설명으로 옳은 것은?",
+  "newVisualInformation": [
+    "그래프 계수 [\"-10\",\"4\",\"-2/3\"]"
+  ],
+  "accessibilityDescription": "해설에 사용되는 해설 관계: 이차함수 $y = -\\frac{2}{3}x^2 + 4x - 10$의 그래프에 대한 설명으로 옳은 것은?"
+}

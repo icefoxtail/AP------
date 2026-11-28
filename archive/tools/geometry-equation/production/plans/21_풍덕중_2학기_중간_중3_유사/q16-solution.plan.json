@@ -1,0 +1,236 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "해설 관계: 원 O 밖의 점 P에서 원에 그은 접선 PA와 중심 O를 지나는 할선이 만나는 점 B를 보여 준다. 반지름 OB는 3 cm, PB는 4 cm, PA는 x cm이다.",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-9",
+              "denominator": "7"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "10"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "7"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "A",
+    "B"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sBO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "O",
+        "A",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lPB",
+        "ownerSegment": "sPB",
+        "text": "4",
+        "unit": "cm"
+      },
+      {
+        "id": "lOB",
+        "ownerSegment": "sBO",
+        "text": "3",
+        "unit": "cm"
+      },
+      {
+        "id": "lPA",
+        "ownerSegment": "sPA",
+        "text": "2sqrt(10)",
+        "unit": "cm"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "P",
+          "A",
+          "O"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 360
+  },
+  "accessibilityDescription": "해설에 사용되는 해설 관계: 원 O 밖의 점 P에서 원에 그은 접선 PA와 중심 O를 지나는 할선이 만나는 점 B를 보여 준다. 반지름 OB는 3 cm, PB는 4 cm, PA는 x cm이다.",
+  "newVisualInformation": [
+    "그려진 선분 sPA, sPB, sBO, sOA",
+    "원 circ",
+    "expressionLabels 3개",
+    "angles 1개"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q16s",
+      "condition": "$\\overline{\\text{PO}} = \\overline{\\text{PB}} + \\overline{\\text{BO}} = 4 + 3 = 7\\text{ (cm)}$이고, 원의 접선은 접점을 지나는 반지름과 수직이므로 $\\angle\\text{PAO}=90^\\circ$이다. 직각삼각형 $\\text{PAO}$에서 $\\overline{\\text{OA}}=3\\text{ cm}$이므로 $$x = \\overline{\\text{PA}} = \\sqrt{\\overline{\\text{PO}}^2 - \\overline{\\text{OA}}^2} = \\sqrt{7^2 - 3^2} = \\sqrt{49 - 9} = \\sqrt{40} = 2\\sqrt{10}$$ 따라서 정답은 ①이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "sourceQuote": "다음 그림에서 $\\overline{\\text{PA}}$는 원 $"
+}

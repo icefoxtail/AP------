@@ -1,0 +1,22 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["-2", "0", "-3", "1"],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "domain": [-2, 5],
+    "viewport": [-2.5, 5, -10, 22],
+    "overlays": { "points": [
+      { "id": "A", "curveX": "3", "coordinates": true },
+      { "id": "B", "curveX": "4", "coordinates": true }
+    ] },
+    "axisTickValues": { "x": ["3", "4"], "y": [] }
+  },
+  "pointNames": { "A": "A", "B": "B" },
+  "caption": "해설: 연속인 P(x)=x³−3x²−2에서 P(3)=−2, P(4)=14이므로 (3,4)에 영점이 있다.",
+  "accessibilityDescription": "삼차곡선이 점 A(3,-2)와 점 B(4,14)를 지나며 그 사이에서 x축과 만난다. 두 점에서 함수값의 부호가 다르다.",
+  "sourceConditions": [
+    { "id": "source-q04-sign", "condition": "현행 유사 JS 풀이의 P(x)=x³−3x²−2, P(3)=−2, P(4)=14를 사용한다. 원 기출 SVG의 다른 삼차식을 사용하지 않는다.", "mappedTo": "graphPlan.coefficients,graphPlan.overlays.points" }
+  ],
+  "newVisualInformation": ["중간값정리의 부호가 다른 두 위치를 그림 위에 표시한다."]
+}

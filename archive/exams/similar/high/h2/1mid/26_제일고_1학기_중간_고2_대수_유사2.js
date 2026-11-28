@@ -251,7 +251,11 @@ window.questionBank = [
     "sourceQid": 6,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js#q6"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js#q6",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_대수_유사2/q6-solution.svg",
+    "solutionImageAlt": "제2사분면 단위원 위의 점 P(-12/13,5/13)에서 코사인은 음수이고 사인은 양수이다.",
+    "solutionImageCaption": "제2사분면 단위원 위의 점 P(-12/13,5/13)에서 코사인은 음수이고 사인은 양수이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -338,7 +342,15 @@ window.questionBank = [
     "sourceQid": 8,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js#q8"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js#q8",
+    "image": "assets/images/26_제일고_1학기_중간_고2_대수_유사2/q8-problem.svg",
+    "imageAlt": "주어진 점 (5,2)와 세로 점근선 x=3의 위치만 표시한 조건 그림",
+    "imageCaption": "주어진 점 (5,2)와 세로 점근선 x=3의 위치만 표시한 조건 그림",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_대수_유사2/q8-solution.svg",
+    "solutionImageAlt": "결정된 곡선 y=log₂(x−3)+1에서 f(7)=3이므로 (7,4)는 그래프 위의 점이 아니다.",
+    "solutionImageCaption": "결정된 곡선 y=log₂(x−3)+1에서 f(7)=3이므로 (7,4)는 그래프 위의 점이 아니다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -465,7 +477,11 @@ window.questionBank = [
     "sourceQid": 11,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js#q11"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js#q11",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_대수_유사2/q11-solution.svg",
+    "solutionImageAlt": "t=2^x+2^(-x)≥2에서 포물선 y=(t-3)²-2의 최솟값 -2는 t=3에서 나타난다.",
+    "solutionImageCaption": "t=2^x+2^(-x)≥2에서 포물선 y=(t-3)²-2의 최솟값 -2는 t=3에서 나타난다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -551,7 +567,11 @@ window.questionBank = [
     "sourceQid": 13,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js#q13"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js#q13",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_대수_유사2/q13-solution.svg",
+    "solutionImageAlt": "y=tan(3x+π/6)의 첫 양의 점근선은 x=π/9이며, x=π/6은 점근선이 아니다.",
+    "solutionImageCaption": "y=tan(3x+π/6)의 첫 양의 점근선은 x=π/9이며, x=π/6은 점근선이 아니다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -595,7 +615,11 @@ window.questionBank = [
     "sourceQid": 14,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js#q14"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js#q14",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_대수_유사2/q14-solution.svg",
+    "solutionImageAlt": "0≤x≤5에서 아래로 열린 포물선 f(x)=−(x−3)²+10의 최대는 x=3에서 10이다.",
+    "solutionImageCaption": "0≤x≤5에서 아래로 열린 포물선 f(x)=−(x−3)²+10의 최대는 x=3에서 10이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -637,7 +661,15 @@ window.questionBank = [
     "sourceQid": 15,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js#q15"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js#q15",
+    "image": "assets/images/26_제일고_1학기_중간_고2_대수_유사2/q15-problem.svg",
+    "imageAlt": "원 x²+y²=13과 원점을 지나지 않는 직선 y=−x+1의 제2·4사분면 교점 P, Q",
+    "imageCaption": "원 x²+y²=13과 원점을 지나지 않는 직선 y=−x+1의 제2·4사분면 교점 P, Q",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_대수_유사2/q15-solution.svg",
+    "solutionImageAlt": "P(−2,3), Q(3,−2)의 좌표를 연립방정식으로 구하면 두 동경의 사인·코사인은 각각 3/√13이다.",
+    "solutionImageCaption": "P(−2,3), Q(3,−2)의 좌표를 연립방정식으로 구하면 두 동경의 사인·코사인은 각각 3/√13이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -680,7 +712,15 @@ window.questionBank = [
     "sourceQid": 16,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js#q16"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js#q16",
+    "image": "assets/images/26_제일고_1학기_중간_고2_대수_유사2/q16-problem.svg",
+    "imageAlt": "문제에 주어진 원 C와 원점 O만 표시한다. 원의 중심, 거리의 최솟값·최댓값 및 접점은 표시하지 않는다.",
+    "imageCaption": "문제에 주어진 원 C와 원점 O만 표시한다. 원의 중심, 거리의 최솟값·최댓값 및 접점은 표시하지 않는다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_대수_유사2/q16-solution.svg",
+    "solutionImageAlt": "O 중심의 거리 2, 6인 원은 C에 각각 한 점에서 접하고, 두 거리 사이의 원은 두 점에서 만난다.",
+    "solutionImageCaption": "O 중심의 거리 2, 6인 원은 C에 각각 한 점에서 접하고, 두 거리 사이의 원은 두 점에서 만난다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -726,7 +766,15 @@ window.questionBank = [
     "sourceQid": 17,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js#q17"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js#q17",
+    "image": "assets/images/26_제일고_1학기_중간_고2_대수_유사2/q17-problem.svg",
+    "imageAlt": "최댓값 4와 최솟값 -2를 가지며 연속한 최댓값의 위치가 서로 다른 사인함수 그래프",
+    "imageCaption": "최댓값 4와 최솟값 -2를 가지며 연속한 최댓값의 위치가 서로 다른 사인함수 그래프",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_대수_유사2/q17-solution.svg",
+    "solutionImageAlt": "연속한 최고점 사이가 2파이 나누기 3인 사인 그래프에서 진폭과 평행이동을 읽는다",
+    "solutionImageCaption": "연속한 최고점 사이가 2파이 나누기 3인 사인 그래프에서 진폭과 평행이동을 읽는다",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -768,7 +816,11 @@ window.questionBank = [
     "sourceQid": 18,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js#q18"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js#q18",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_대수_유사2/q18-solution.svg",
+    "solutionImageAlt": "로그 곡선의 y=0 및 y=3 단면 길이는 각각 1과 8이므로, 높이 3인 사다리꼴의 넓이는 27/2이다.",
+    "solutionImageCaption": "로그 곡선의 y=0 및 y=3 단면 길이는 각각 1과 8이므로, 높이 3인 사다리꼴의 넓이는 27/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -813,7 +865,11 @@ window.questionBank = [
     "sourceQid": 19,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js#q19"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js#q19",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_대수_유사2/q19-solution.svg",
+    "solutionImageAlt": "n=10의 경우 t=πx/2로 치환하면 0<t<5π/2에서 곡선 y=-sin t와 직선 y=2t/(5π)-1이 정확히 세 번 만난다.",
+    "solutionImageCaption": "n=10의 경우 t=πx/2로 치환하면 0<t<5π/2에서 곡선 y=-sin t와 직선 y=2t/(5π)-1이 정확히 세 번 만난다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -850,7 +906,11 @@ window.questionBank = [
     "sourceQid": 20,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js#q20"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js#q20",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_대수_유사2/q20-solution.svg",
+    "solutionImageAlt": "시계방향 390°는 한 바퀴를 돌아 시계방향 30°와 같은 동경이므로 제4사분면을 가리킨다.",
+    "solutionImageCaption": "시계방향 390°는 한 바퀴를 돌아 시계방향 30°와 같은 동경이므로 제4사분면을 가리킨다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -891,7 +951,11 @@ window.questionBank = [
     "sourceQid": 21,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js#q21"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js#q21",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_대수_유사2/q21-solution.svg",
+    "solutionImageAlt": "모든 실수 x에 대한 이차식의 양수 조건은 cosθ<-1/2이고, 해 각도는 2π/3<θ<4π/3이다. 양 끝은 포함되지 않는다.",
+    "solutionImageCaption": "모든 실수 x에 대한 이차식의 양수 조건은 cosθ<-1/2이고, 해 각도는 2π/3<θ<4π/3이다. 양 끝은 포함되지 않는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

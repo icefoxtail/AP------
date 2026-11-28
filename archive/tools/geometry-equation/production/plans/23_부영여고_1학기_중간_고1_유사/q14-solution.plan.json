@@ -1,0 +1,8 @@
+{
+  "capability":"number-line-figure-v1",
+  "numberLine":{"variable":"k","rows":[{"kind":"SET","label":"두 근이 모두 1보다 큼","pieces":[{"lo":{"value":"7/4","state":"OPEN"},"hi":{"value":"11/4","state":"CLOSED"}}]}]},
+  "numberLineCaption":{"text":"7/4<k≤11/4"},
+  "caption":"f(1)>0에서 k>7/4, 판별식 11−4k≥0에서 k≤11/4이다. 왼쪽 경계는 열리고 오른쪽은 닫힌다.",
+  "sourceConditions":[{"id":"left","condition":"f(1)=4k−7>0에서 k>7/4","mappedTo":"numberLine.rows[0].pieces[0].lo"},{"id":"right","condition":"D/4=11−4k≥0에서 k≤11/4","mappedTo":"numberLine.rows[0].pieces[0].hi"}],
+  "newVisualInformation":["엄격한 부등식과 판별식에서 나온 포함 경계를 구분한다."]
+}

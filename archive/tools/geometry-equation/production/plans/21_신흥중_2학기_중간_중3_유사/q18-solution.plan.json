@@ -1,0 +1,229 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-5657",
+              "denominator": "1000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5657",
+              "denominator": "1000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "5657",
+            "denominator": "1000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAD",
+        "ownerSegment": "AD",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lCD",
+        "ownerSegment": "CD",
+        "text": "12",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "semicircle",
+        "circle": "circ",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "CW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "D",
+        "A",
+        "B"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "rB",
+      "refs": [
+        "C",
+        "B",
+        "A"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "caption": "해설 도식: AB를 지름으로 하는 위쪽 반원과 세 접선 AD,CD,BC",
+  "accessibilityDescription": "해설: AB를 지름으로 하는 위쪽 반원과 세 접선 AD,CD,BC",
+  "newVisualInformation": [
+    "해설의 관계: AB를 지름으로 하는 위쪽 반원과 세 접선 AD,CD,BC"
+  ],
+  "sourceConditions": [
+    {
+      "id": "problem",
+      "condition": "다음 그림에서 $\\overline{\\text{AD}}$, $\\overline{\\text{CD}}$, $\\overline{\\text{BC}}$는 지름이 $\\overline{\\text{AB}}$인 반원 $\\text{O}$의 접선이고, 두 점 $\\text{A}$, $\\text{B}$는 접점이다. $\\overline{\\text{AD}}=4$, $\\overline{\\text{CD}}=12$일 때, $\\overline{\\text{AB}}$의 길이는?",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "solution",
+      "condition": "$\\overline{\\text{CD}}$와 반원 $\\text{O}$의 접점을 $\\text{T}$라 하면 접선의 길이 성질에 의해 $\\overline{\\text{DT}}=\\overline{\\text{AD}}=4$이다. $\\overline{\\text{CD}}=12$이므로 $\\overline{\\text{CT}} = 12 - 4 = 8$이고, $\\overline{\\text{BC}}=\\overline{\\text{CT}}=8$이다. 점 $\\text{D}$에서 $\\overline{\\text{BC}}$에 내린 수선의 발을 $\\text{H}$라 하면 $\\overline{\\text{DH}}=\\overline{\\text{AB}}$, $\\overline{\\text{CH}} = 8 - 4 = 4$이다. 직각삼각형 $\\text{CDH}$에서 피타고라스 정리에 의해 $$\\overline{\\text{AB}} = \\overline{\\text{DH}} = \\sqrt{12^2 - 4^2} = \\sqrt{128} = 8\\sqrt{2}$$ 따라서 정답은 ①이다.",
+      "mappedTo": "SOLUTION_AXIS"
+    }
+  ]
+}

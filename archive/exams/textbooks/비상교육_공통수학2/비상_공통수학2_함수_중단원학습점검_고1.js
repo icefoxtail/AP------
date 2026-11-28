@@ -38,7 +38,14 @@ window.questionBank = [
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "UNKNOWN",
-    "image": "assets/images/비상_공통수학2_함수_중단원학습점검_고1/q01_function-mapping.png"
+    "image": "assets/images/비상_공통수학2_함수_중단원학습점검_고1/qid_v1_893cc1738f1bd043c854420fe7fceab97b5b0ddc906e5d5a07a4fe79a73ee5f7-problem.svg",
+    "solutionImage": "assets/images/비상_공통수학2_함수_중단원학습점검_고1/qid_v1_893cc1738f1bd043c854420fe7fceab97b5b0ddc906e5d5a07a4fe79a73ee5f7-solution.svg",
+    "solutionImageAlt": "치역은 도달하는 세 원소 {0,1,3}; Y의 2에는 화살표가 없다.",
+    "solutionImageCaption": "치역은 도달하는 세 원소 {0,1,3}; Y의 2에는 화살표가 없다.",
+    "solutionImageSize": "full",
+    "imageAlt": "정의역 X의 네 원소에서 공역 Y로 향하는 네 화살표의 대응도",
+    "imageCaption": "정의역 X의 네 원소에서 공역 Y로 향하는 네 화살표의 대응도",
+    "imageSize": "full"
   },
   {
     "id": "qid_v1_b73c5abd0928cc28b3dc54486963a9a86caf6cfab2c2884753acbdc5af6ea1ca",
@@ -182,7 +189,11 @@ window.questionBank = [
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/비상_공통수학2_함수_중단원학습점검_고1/qid_v1_0fc90031820098a588f4adc8b5d385a3382db1c64c87020be284b9d8939edcb5-solution.svg",
+    "solutionImageAlt": "a=0인 허용 사례: x<0에서 y=2x-1, x≥0에서 y=3x-1로 전 구간 증가한다.",
+    "solutionImageCaption": "a=0인 허용 사례: x<0에서 y=2x-1, x≥0에서 y=3x-1로 전 구간 증가한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "qid_v1_e604b684b6d8bb1e5a1a66a4a2ed5f257ecdf0814096eeb4f8bb676490907e98",
@@ -254,7 +265,14 @@ window.questionBank = [
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "UNKNOWN",
-    "image": "assets/images/비상_공통수학2_함수_중단원학습점검_고1/q07_composition-mappings.png"
+    "image": "assets/images/비상_공통수학2_함수_중단원학습점검_고1/qid_v1_1548e9a28ce9c3b2eb294478cf9df3836064c5e6631394fe1b36aec735e85a21-problem.svg",
+    "solutionImage": "assets/images/비상_공통수학2_함수_중단원학습점검_고1/qid_v1_1548e9a28ce9c3b2eb294478cf9df3836064c5e6631394fe1b36aec735e85a21-solution.svg",
+    "solutionImageAlt": "합성 f∘g는 g를 먼저, f를 나중에 적용한다: 3→4→3.",
+    "solutionImageCaption": "합성 f∘g는 g를 먼저, f를 나중에 적용한다: 3→4→3.",
+    "solutionImageSize": "full",
+    "imageAlt": "세 집합 X 사이의 두 함수 f와 g의 대응도",
+    "imageCaption": "세 집합 X 사이의 두 함수 f와 g의 대응도",
+    "imageSize": "full"
   },
   {
     "id": "qid_v1_7a3405a0cf5e0947c7da4632f566e1f18f2f499779a274b3ae5aaae75a6b8de4",
@@ -396,7 +414,11 @@ window.questionBank = [
     "difficultyBucket": "UNKNOWN",
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/비상_공통수학2_함수_중단원학습점검_고1/qid_v1_65c553a9ae9cdd494df708a45d414e574d8f53c03ef2c7d90db8decdbe78eb8a-solution.svg",
+    "solutionImageAlt": "증가하는 일대일대응: [-2,2]에서 f(x)=x+1, 양 끝의 치역 [-1,3]",
+    "solutionImageCaption": "증가하는 일대일대응: [-2,2]에서 f(x)=x+1, 양 끝의 치역 [-1,3]",
+    "solutionImageSize": "full"
   },
   {
     "id": "qid_v1_03217249a2e569b40540be5aa0132ae6854ff539dd2fb3376ed57385fd456c2f",

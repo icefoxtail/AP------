@@ -40,7 +40,15 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "image": "assets/images/비상_기하_이차곡선_대단원학습평가_고2/q1-problem.svg",
+    "imageAlt": "두 포물선의 초점 F1,F2와 두 초점 사이 선분",
+    "imageCaption": "두 포물선의 초점 F1,F2와 두 초점 사이 선분",
+    "imageSize": "full",
+    "solutionImage": "assets/images/비상_기하_이차곡선_대단원학습평가_고2/q1-solution.svg",
+    "solutionImageAlt": "왼쪽으로 열린 포물선과 위로 열린 포물선의 초점 거리",
+    "solutionImageCaption": "왼쪽으로 열린 포물선과 위로 열린 포물선의 초점 거리",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -116,7 +124,11 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선_대단원학습평가_고2/q3-solution.svg",
+    "solutionImageAlt": "서로 방향이 다른 두 포물선의 초점 F와 준선 l 사이 거리",
+    "solutionImageCaption": "서로 방향이 다른 두 포물선의 초점 F와 준선 l 사이 거리",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -221,7 +233,11 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선_대단원학습평가_고2/q6-solution.svg",
+    "solutionImageAlt": "두 관측소에서의 거리 차가 4 km인 쌍곡선의 두 가지",
+    "solutionImageCaption": "두 관측소에서의 거리 차가 4 km인 쌍곡선의 두 가지",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -256,7 +272,11 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선_대단원학습평가_고2/q7-solution.svg",
+    "solutionImageAlt": "쌍곡선과 초점 지름의 원에서 이루어진 삼각형 PF′F",
+    "solutionImageCaption": "쌍곡선과 초점 지름의 원에서 이루어진 삼각형 PF′F",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -291,7 +311,11 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선_대단원학습평가_고2/q8-solution.svg",
+    "solutionImageAlt": "a<-1일 때의 가로 주축 쌍곡선(대표 a=-2)",
+    "solutionImageCaption": "a<-1일 때의 가로 주축 쌍곡선(대표 a=-2)",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -326,7 +350,11 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선_대단원학습평가_고2/q9-solution.svg",
+    "solutionImageAlt": "기울기 3인 직선이 쌍곡선 왼쪽 가지에 한 점에서 접한다",
+    "solutionImageCaption": "기울기 3인 직선이 쌍곡선 왼쪽 가지에 한 점에서 접한다",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -361,7 +389,11 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선_대단원학습평가_고2/q10-solution.svg",
+    "solutionImageAlt": "타원의 두 초점 A,F와 포물선의 준선 x=-2에 내린 수선 PQ",
+    "solutionImageCaption": "타원의 두 초점 A,F와 포물선의 준선 x=-2에 내린 수선 PQ",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -396,7 +428,11 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선_대단원학습평가_고2/q11-solution.svg",
+    "solutionImageAlt": "초점 D를 가로지르는 현 AB와 삼각형 ABC의 둘레",
+    "solutionImageCaption": "초점 D를 가로지르는 현 AB와 삼각형 ABC의 둘레",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -431,7 +467,11 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선_대단원학습평가_고2/q12-solution.svg",
+    "solutionImageAlt": "초점 D와 두 접점 B,C, A가 만드는 사각형 ACDB",
+    "solutionImageCaption": "초점 D와 두 접점 B,C, A가 만드는 사각형 ACDB",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -466,6 +506,10 @@ window.questionBank = [
       "standardUnit": "이차곡선",
       "majorUnit": "이차곡선"
     },
-    "majorUnit": "이차곡선"
+    "majorUnit": "이차곡선",
+    "solutionImage": "assets/images/비상_기하_이차곡선_대단원학습평가_고2/q13-solution.svg",
+    "solutionImageAlt": "공통점 P에서 타원 접선과 쌍곡선 접선의 수직 관계",
+    "solutionImageCaption": "공통점 P에서 타원 접선과 쌍곡선 접선의 수직 관계",
+    "solutionImageSize": "full"
   }
 ];

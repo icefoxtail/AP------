@@ -139,7 +139,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-05-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산고_1학기_중간_고1_유사/q5-solution.svg",
+    "solutionImageAlt": "판별식 D=0을 만족하는 k=10을 대입하면 y=(x−4)²가 x축과 (4,0) 한 점에서 접한다.",
+    "solutionImageCaption": "판별식 D=0을 만족하는 k=10을 대입하면 y=(x−4)²가 x축과 (4,0) 한 점에서 접한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -279,7 +283,15 @@ window.questionBank = [
     "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "image": "assets/images/23_매산고_1학기_중간_고1_유사/q10-problem.svg",
+    "imageAlt": "정사각형의 한 변을 x, 두 영역의 전체 가로를 y라고 둔 배치 모형. 가운데 세로 변 x를 공용으로 사용하므로 끈 길이는 3x+2y이다.",
+    "imageCaption": "정사각형의 한 변을 x, 두 영역의 전체 가로를 y라고 둔 배치 모형. 가운데 세로 변 x를 공용으로 사용하므로 끈 길이는 3x+2y이다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/23_매산고_1학기_중간_고1_유사/q10-solution.svg",
+    "solutionImageAlt": "0<x<36에서 S(x)=−1.5x²+90x는 꼭짓점 x=30에서 최대 1350m²를 갖고 이때 전체 가로 y=45이다.",
+    "solutionImageCaption": "0<x<36에서 S(x)=−1.5x²+90x는 꼭짓점 x=30에서 최대 1350m²를 갖고 이때 전체 가로 y=45이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -335,7 +347,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_매산고_1학기_중간_고1_유사/q12-solution.svg",
+    "solutionImageAlt": "치환한 함수 y=t²−4t+5는 구간 [1,5]의 꼭짓점 (2,1)에서 최소 1, 오른쪽 끝 (5,10)에서 최대 10이며 합은 11이다.",
+    "solutionImageCaption": "치환한 함수 y=t²−4t+5는 구간 [1,5]의 꼭짓점 (2,1)에서 최소 1, 오른쪽 끝 (5,10)에서 최대 10이며 합은 11이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,

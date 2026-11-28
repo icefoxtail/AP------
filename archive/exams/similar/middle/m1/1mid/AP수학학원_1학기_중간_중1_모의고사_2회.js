@@ -279,7 +279,11 @@ window.questionBank = [
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/AP수학학원_1학기_중간_중1_모의고사_2회/q10-solution.svg",
+    "solutionImageAlt": "-5/4=-1.25, -1/2=-0.5 사이의 정수는 -1 하나이다. 두 경계 수 자체는 제외한다.",
+    "solutionImageCaption": "-5/4=-1.25, -1/2=-0.5 사이의 정수는 -1 하나이다. 두 경계 수 자체는 제외한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -307,7 +311,11 @@ window.questionBank = [
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/AP수학학원_1학기_중간_중1_모의고사_2회/q11-solution.svg",
+    "solutionImageAlt": "절댓값이 4인 점은 원점 왼쪽 -4와 오른쪽 4이다. 두 점 사이의 거리는 4-(-4)=8이다.",
+    "solutionImageCaption": "절댓값이 4인 점은 원점 왼쪽 -4와 오른쪽 4이다. 두 점 사이의 거리는 4-(-4)=8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -391,7 +399,11 @@ window.questionBank = [
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/AP수학학원_1학기_중간_중1_모의고사_2회/q14-solution.svg",
+    "solutionImageAlt": "-2에서 오른쪽으로 3/2 이동해 -1/2에 이르고, 왼쪽으로 1/4 이동하면 -3/4이다.",
+    "solutionImageCaption": "-2에서 오른쪽으로 3/2 이동해 -1/2에 이르고, 왼쪽으로 1/4 이동하면 -3/4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -631,7 +643,11 @@ window.questionBank = [
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/AP수학학원_1학기_중간_중1_모의고사_2회/q23-solution.svg",
+    "solutionImageAlt": "-5/3<-1<-2/3이므로 두 유리수 사이에 있는 정수는 -1 하나이다.",
+    "solutionImageCaption": "-5/3<-1<-2/3이므로 두 유리수 사이에 있는 정수는 -1 하나이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -679,6 +695,14 @@ window.questionBank = [
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "image": "assets/images/AP수학학원_1학기_중간_중1_모의고사_2회/q25-problem.svg",
+    "imageAlt": "가로 (2x+3) cm, 세로 x cm인 직사각형. 두 길이의 합에 2를 곱해 둘레를 구한다.",
+    "imageCaption": "가로 (2x+3) cm, 세로 x cm인 직사각형. 두 길이의 합에 2를 곱해 둘레를 구한다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/AP수학학원_1학기_중간_중1_모의고사_2회/q25-solution.svg",
+    "solutionImageAlt": "직사각형 둘레는 2[(2x+3)+x]=6x+6 cm이다. x=4일 때 가로 11 cm·세로 4 cm이고 둘레는 30 cm이다.",
+    "solutionImageCaption": "직사각형 둘레는 2[(2x+3)+x]=6x+6 cm이다. x=4일 때 가로 11 cm·세로 4 cm이고 둘레는 30 cm이다.",
+    "solutionImageSize": "full"
   }
 ];

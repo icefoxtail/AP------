@@ -19,7 +19,7 @@ assert(
     source.includes('function buildAssignmentDedupeKey') &&
     source.includes('function dedupeClassExamAssignments') &&
     source.includes('return `ASSIGNMENT|${assignmentId}`') &&
-    source.includes('dedupeClassExamAssignments(assignments.results || [], sessionByAssignment).map'),
+    source.includes('dedupeClassExamAssignments(scopedAssignmentRows, sessionByAssignment).map'),
   'student portal should preserve each issued assignment by assignment_id without collapsing same-day reissues'
 );
 

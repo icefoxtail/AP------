@@ -422,7 +422,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "rpmPrimaryRecordId": "M2-RPM-038",
     "sourceQid": 9,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "image": "assets/images/18_연향중_1학기_기말_중2_유사/q9-problem.svg",
+    "imageAlt": "위쪽은 터널 1750m와 기차 길이 x를 합친 130초간의 이동 거리, 아래쪽은 다리 400m와 기차 길이 x를 합친 40초간의 이동 거리이다. 선분 길이는 축척이 아니다.",
+    "imageCaption": "위쪽은 터널 1750m와 기차 길이 x를 합친 130초간의 이동 거리, 아래쪽은 다리 400m와 기차 길이 x를 합친 40초간의 이동 거리이다. 선분 길이는 축척이 아니다.",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -517,7 +521,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "rpmPrimaryRecordId": "M2-RPM-018",
     "sourceQid": 11,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "solutionImage": "assets/images/18_연향중_1학기_기말_중2_유사/q11-solution.svg",
+    "solutionImageAlt": "−7<3x+2<5의 양쪽을 정리하면 −3<x<1이므로 열린 양 끝점 사이의 정수는 −2, −1, 0의 세 개이다.",
+    "solutionImageCaption": "−7<3x+2<5의 양쪽을 정리하면 −3<x<1이므로 열린 양 끝점 사이의 정수는 −2, −1, 0의 세 개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -564,7 +572,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "rpmPrimaryRecordId": "M2-RPM-018",
     "sourceQid": 12,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "solutionImage": "assets/images/18_연향중_1학기_기말_중2_유사/q12-solution.svg",
+    "solutionImageAlt": "−2≤x<4에 음수 −3을 곱하고 5를 더하면 −7<−3x+5≤11이므로 아래쪽 −7은 열리고 위쪽 11은 닫힌다.",
+    "solutionImageCaption": "−2≤x<4에 음수 −3을 곱하고 5를 더하면 −7<−3x+5≤11이므로 아래쪽 −7은 열리고 위쪽 11은 닫힌다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -610,7 +622,15 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "rpmPrimaryRecordId": "M2-RPM-018",
     "sourceQid": 13,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "image": "assets/images/18_연향중_1학기_기말_중2_유사/q13-problem.svg",
+    "imageAlt": "두 일차부등식의 공통 해는 주어진 −5≤x≤2이다. 양 끝을 모두 포함하며 a와 b는 아직 미지수이다.",
+    "imageCaption": "두 일차부등식의 공통 해는 주어진 −5≤x≤2이다. 양 끝을 모두 포함하며 a와 b는 아직 미지수이다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/18_연향중_1학기_기말_중2_유사/q13-solution.svg",
+    "solutionImageAlt": "첫째 식은 x≥−a−4이고 둘째 식은 x≤(10−b)/3이다. 공통 해의 경계가 −5, 2이므로 a=1, b=4, ab=4이다.",
+    "solutionImageCaption": "첫째 식은 x≥−a−4이고 둘째 식은 x≤(10−b)/3이다. 공통 해의 경계가 −5, 2이므로 a=1, b=4, ab=4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -704,7 +724,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "rpmPrimaryRecordId": "M2-RPM-018",
     "sourceQid": 15,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "solutionImage": "assets/images/18_연향중_1학기_기말_중2_유사/q15-solution.svg",
+    "solutionImageAlt": "0.4(2x−3)>3.2x+3.6을 정리하면 −24x>48이고 음수로 나눠 x<−2이다.",
+    "solutionImageCaption": "0.4(2x−3)>3.2x+3.6을 정리하면 −24x>48이고 음수로 나눠 x<−2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -753,7 +777,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "rpmPrimaryRecordId": "M2-RPM-018",
     "sourceQid": 16,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "solutionImage": "assets/images/18_연향중_1학기_기말_중2_유사/q16-solution.svg",
+    "solutionImageAlt": "자연수 x가 1, 2 두 개만 해가 되려면 2<(a+2)/3≤3이고, 따라서 4<a≤7이다. 이 범위의 정수 a는 5, 6, 7이다.",
+    "solutionImageCaption": "자연수 x가 1, 2 두 개만 해가 되려면 2<(a+2)/3≤3이고, 따라서 4<a≤7이다. 이 범위의 정수 a는 5, 6, 7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -802,7 +830,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "rpmPrimaryRecordId": "M2-RPM-018",
     "sourceQid": 17,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "solutionImage": "assets/images/18_연향중_1학기_기말_중2_유사/q17-solution.svg",
+    "solutionImageAlt": "첫째 부등식은 x<9이고 둘째는 x≥0이다. 공통 범위 0≤x<9에서 가장 작은 정수 m은 0, 가장 큰 M은 8이므로 M+m=8이다.",
+    "solutionImageCaption": "첫째 부등식은 x<9이고 둘째는 x≥0이다. 공통 범위 0≤x<9에서 가장 작은 정수 m은 0, 가장 큰 M은 8이므로 M+m=8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -944,7 +976,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "rpmPrimaryRecordId": "M2-RPM-024",
     "sourceQid": 20,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "solutionImage": "assets/images/18_연향중_1학기_기말_중2_유사/q20-solution.svg",
+    "solutionImageAlt": "의자 수 x에 대해 학생 수는 3x+4이고, 네 명씩 앉아 빈 의자가 정확히 세 개가 되는 조건에서 16≤x≤19이다. 보기 13, 14, 15, 20, 17 중 이 범위의 값은 17이다.",
+    "solutionImageCaption": "의자 수 x에 대해 학생 수는 3x+4이고, 네 명씩 앉아 빈 의자가 정확히 세 개가 되는 조건에서 16≤x≤19이다. 보기 13, 14, 15, 20, 17 중 이 범위의 값은 17이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1066,7 +1102,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "rpmPrimaryRecordId": "M2-RPM-018",
     "sourceQid": 23,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "solutionImage": "assets/images/18_연향중_1학기_기말_중2_유사/q23-solution.svg",
+    "solutionImageAlt": "3x−2≤4(x+1)−a에서 x≥a−6이다. 주어진 해가 x≥−4이므로 a−6=−4, 따라서 a=2이다.",
+    "solutionImageCaption": "3x−2≤4(x+1)−a에서 x≥a−6이다. 주어진 해가 x≥−4이므로 a−6=−4, 따라서 a=2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -1107,6 +1147,14 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "rpmPrimaryRecordId": "M2-RPM-024",
     "sourceQid": 24,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "image": "assets/images/18_연향중_1학기_기말_중2_유사/q24-problem.svg",
+    "imageAlt": "같은 길 x km를 올라갈 때는 시속 3km, 내려올 때는 시속 6km로 걷는다. 왕복 시간은 4시간 이하이다.",
+    "imageCaption": "같은 길 x km를 올라갈 때는 시속 3km, 내려올 때는 시속 6km로 걷는다. 왕복 시간은 4시간 이하이다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/18_연향중_1학기_기말_중2_유사/q24-solution.svg",
+    "solutionImageAlt": "상행 거리와 하행 거리가 같으므로 x/3+x/6≤4, 즉 x≤8이다. 최대 x=8km이면 올라가는 데 8/3시간, 내려오는 데 4/3시간으로 총 4시간이다.",
+    "solutionImageCaption": "상행 거리와 하행 거리가 같으므로 x/3+x/6≤4, 즉 x≤8이다. 최대 x=8km이면 올라가는 데 8/3시간, 내려오는 데 4/3시간으로 총 4시간이다.",
+    "solutionImageSize": "full"
   }
 ];

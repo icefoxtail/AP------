@@ -1,0 +1,8 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {"family":"piecewise-polynomial","pieces":[{"coefficients":["0","4*sqrt(3)","-sqrt(3)/2"]}],"sourceDomain":{"kind":"INTERVAL","range":["0","8"],"states":["OPEN","OPEN"]},"requiredPoints":[{"id":"V","x":"4","y":"8*sqrt(3)"}],"axisTitles":{"x":"w","y":"S(w)"},"axisTickValues":{"x":[],"y":[]}},
+  "caption": "직사각형 가로 w가 0<w<8일 때 넓이 S(w)=4√3w−(√3/2)w²이고 w=4에서 8√3으로 최대다.",
+  "accessibilityDescription": "가로 길이 w의 허용 범위 0에서 8 사이의 아래로 열린 넓이 포물선에 꼭짓점 (4,8√3)을 표시한다. 양 끝은 퇴화하므로 열린 점이다.",
+  "sourceConditions": [{"id":"similarity","condition":"정삼각형 ABC의 변은 8, 높이는 4√3이고 내접 직사각형의 가로 w에서 세로는 4√3(1−w/8)","mappedTo":"graphPlan.pieces[0].coefficients"},{"id":"domain","condition":"양의 가로·세로를 가진 직사각형은 0<w<8","mappedTo":"graphPlan.sourceDomain"},{"id":"maximum","condition":"S(w)=−(√3/2)(w−4)²+8√3","mappedTo":"graphPlan.requiredPoints[0]"}],
+  "newVisualInformation": ["현행 문제 SVG의 닮음 구조로 얻은 넓이 함수를 열린 가로 구간과 최대 넓이의 꼭짓점으로 나타낸다."]
+}

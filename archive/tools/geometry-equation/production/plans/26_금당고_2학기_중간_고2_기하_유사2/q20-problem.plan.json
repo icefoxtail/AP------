@@ -1,0 +1,92 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "ELLIPSE",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "64",
+    "bSquared": "8",
+    "major": "X"
+  },
+  "points": [
+    {
+      "id": "A",
+      "kind": "POINT",
+      "x": "0",
+      "y": "4"
+    },
+    {
+      "id": "O",
+      "kind": "POINT",
+      "x": "0",
+      "y": "0"
+    },
+    {
+      "id": "P",
+      "kind": "POINT",
+      "x": "4*sqrt(2)",
+      "y": "2"
+    },
+    {
+      "id": "Q",
+      "kind": "POINT",
+      "x": "-4*sqrt(2)",
+      "y": "2"
+    }
+  ],
+  "lines": [
+    {
+      "id": "tp",
+      "tangent": true,
+      "at": "P"
+    },
+    {
+      "id": "tq",
+      "tangent": true,
+      "at": "Q"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sOP",
+      "from": "O",
+      "to": "P"
+    },
+    {
+      "id": "sPA",
+      "from": "P",
+      "to": "A"
+    },
+    {
+      "id": "sAQ",
+      "from": "A",
+      "to": "Q"
+    },
+    {
+      "id": "sQO",
+      "from": "Q",
+      "to": "O"
+    }
+  ],
+  "polygons": [],
+  "caption": "Q20 발문 관계도 (조건을 만족하는 배치 예시, 미지수·좌표값은 생략)",
+  "accessibilityDescription": "발문에서 주어진 이차곡선과 점, 선분의 위치 관계를 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "실수 $t>8$에 대하여 타원 $\\dfrac{x^2}{t}+\\dfrac{y^2}{8}=1$의 바깥 점 $A(0,k)$ $(k>2\\sqrt2)$에서 그은 두 접선의 접점을 제1사분면의 $P$, 제2사분면의 $Q$라 한다. 원점 $O$에 대하여 사각형 $OPAQ$가 둘레 $24$인 마름모이다. 두 접선이 $x$축과 만나는 점을 각각 $R,S$라 할 때 삼각형 $ARS$의 넓이를 구하고 그 과정을 서술하시오. [11점]",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "마름모 OPAQ의 꼭짓점 순서, 두 접선과 R,S의 상대 위치를 확인한다."
+  ],
+  "sourceQuote": "실수 $t>8$에 대하여 타원 $\\dfrac{x^2}{t}+\\dfrac{y^2}{8}=1$의 바깥 점 $A(0,k)$ $(k>2\\sqrt2)$에서 그은 두 접선의 접점을 제1사분면의 $P$, 제2사분면의 $Q$라 한다. 원점 $O$에 대하여 사각형 $"
+}

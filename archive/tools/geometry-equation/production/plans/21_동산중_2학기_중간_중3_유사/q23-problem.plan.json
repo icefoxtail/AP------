@@ -1,0 +1,97 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "4",
+          "-1/2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      9
+    ],
+    "viewport": [
+      -1.5,
+      9.5,
+      -8,
+      12
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 2
+      },
+      {
+        "id": "B",
+        "x": 4,
+        "y": 10
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "PO",
+          "x": "0",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "PA",
+          "x": "0",
+          "y": "2",
+          "unnamed": true
+        },
+        {
+          "id": "PB",
+          "x": "4",
+          "y": "10",
+          "unnamed": true
+        },
+        {
+          "id": "PC",
+          "x": "4",
+          "y": "0",
+          "unnamed": true
+        }
+      ],
+      "polygons": [
+        {
+          "id": "trap",
+          "points": [
+            "PO",
+            "PA",
+            "PB",
+            "PC"
+          ]
+        }
+      ]
+    }
+  },
+  "caption": "포물선 위의 A(0,2), 꼭짓점 B(4,10)과 수선의 발 C(4,0)가 이루는 사다리꼴 OABC",
+  "accessibilityDescription": "포물선 위의 A(0,2), 꼭짓점 B(4,10)과 수선의 발 C(4,0)가 이루는 사다리꼴 OABC",
+  "newVisualInformation": [
+    "포물선 위의 A(0,2), 꼭짓점 B(4,10)과 수선의 발 C(4,0)가 이루는 사다리꼴 OABC"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y = -\\frac{1}{2}x^2 + 4x + 2$의 그래프에서 $y$축과의 교점을 $\\text{A}$, 꼭짓점을 $\\text{B}$, 점 $\\text{B}$에서 $x$축에 내린 수선의 발을 $\\text{C}$라고 할 때, $\\square\\text{OABC}$의 넓이를 구하여라. (단, 점 $\\text{O}$는 원점)",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "problem",
+      "condition": "이차함수 $y = -\\frac{1}{2}x^2 + 4x + 2$의 그래프에서 $y$축과의 교점을 $\\text{A}$, 꼭짓점을 $\\text{B}$, 점 $\\text{B}$에서 $x$축에 내린 수선의 발을 $\\text{C}$라고 할 때, $\\square\\text{OABC}$의 넓이를 구하여라. (단, 점 $\\text{O}$는 원점)",
+      "mappedTo": "PROBLEM_AXIS"
+    }
+  ]
+}

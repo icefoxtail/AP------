@@ -1,0 +1,9 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {"family":"multi-curve","viewport":[1,8,-15,3],"curves":[{"id":"f","kind":"Y_OF_X","coefficients":["0","-7","1"],"domain":["1","8"],"color":"BLUE","label":"y=f(x)"}],"overlays":{"points":[{"id":"A","x":"5/2","y":"-45/4"},{"id":"B","x":"9/2","y":"-45/4"},{"id":"C","x":"13/2","y":"-13/4"}],"segments":[{"id":"AB","from":"A","to":"B"},{"id":"BC","from":"B","to":"C","color":"WARM"},{"id":"AC","from":"A","to":"C","color":"GREEN"}],"names":[{"id":"sAC","text":"기울기 2","segment":"AC"},{"id":"sBC","text":"기울기 4","segment":"BC"}]},"axisTickValues":{"x":[],"y":[]}},
+  "pointNames": {"A":"A","B":"B","C":"C"},
+  "caption": "f(x)=x²−7x+t 위 세 점의 상대 배치와 AC의 기울기 2, BC의 기울기 4를 나타낸 모식도. t=0인 세로 평행이동 대표형이며 좌표·면적은 노출하지 않는다.",
+  "accessibilityDescription": "포물선 위 같은 높이의 점 A,B와 오른쪽 위 점 C가 삼각형을 이루고, AC와 BC의 기울기 2와 4가 표시되어 있다.",
+  "sourceConditions": [{"id":"parabola","condition":"주어진 f(x)=x²−7x+t의 임의 높이 이동 t=0 대표 도형이며 f의 수치식은 그림에 쓰지 않는다","mappedTo":"graphPlan.curves[0]"},{"id":"points","condition":"A(a,k), B(b,k), C(c,d), a<b<c","mappedTo":["graphPlan.overlays.points","graphPlan.overlays.segments[0]"]},{"id":"slopes","condition":"AC의 기울기 2, BC의 기울기 4","mappedTo":["graphPlan.overlays.segments[1]","graphPlan.overlays.segments[2]","graphPlan.overlays.names"]}],
+  "newVisualInformation": ["원본 기출 BMP가 전달한 삼각형 A,B,C와 두 기울기 관계를 답 숫자 없이 재현한다."]
+}

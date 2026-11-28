@@ -1,0 +1,308 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "40"
+                },
+                {
+                  "kind": "expression",
+                  "op": "add",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "sub",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "40"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "add",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "1"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "3"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "sub",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sub",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "0"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "40"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "add",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "1"
+                            },
+                            {
+                              "kind": "expression",
+                              "op": "sqrt",
+                              "args": [
+                                {
+                                  "kind": "integer",
+                                  "value": "3"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "80"
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "D",
+    "A",
+    "C",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "value": 45,
+        "label": "45",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rD",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "80",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "sourceQuote": "그림과 같이 $80\\text{ m}$ 떨어진 두 지점 $\\tex",
+  "sourceConditions": [
+    {
+      "id": "q20s",
+      "condition": "$\\overline{\\text{CD}} = x\\text{ m}$, $\\overline{\\text{AD}} = h\\text{ m}$라 하면 $\\overline{\\text{BD}} = 80 + x$이다. 직각삼각형 $\\text{ACD}$에서 $\\tan 60^\\circ = \\frac{h}{x} = \\sqrt{3} \\implies h = \\sqrt{3}x$이고, 직각삼각형 $\\text{ABD}$에서 $\\tan 45^\\circ = \\frac{h}{80 + x} = 1 \\implies h = 80 + x$이다. 따라서 $\\sqrt{3}x = 80 + x \\implies (\\sqrt{3} - 1)x = 80$이므로 $$x = \\frac{80}{\\sqrt{3} - 1} = 40(\\sqrt{3} + 1)$$ 그러므로 $h = 80 + x = 80 + 40(\\sqrt{3} + 1) = 40(3 + \\sqrt{3})\\text{ (m)}$이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "해설 관계: 그림과 같이 $80\\text{ m}$ 떨어진 두 지점 $\\text{B}$와 $\\text{C}$에서 산의 꼭대기 $\\text{A}$지점을 올려다본 각의 크기가 각각 $45^\\circ$와 $60^\\circ$이다(단, $\\text{A}$에서 지면에 내린 수선의 발 $\\text{D}$에 대해 $\\text{B}$",
+  "newVisualInformation": [
+    "그려진 선분 sAD, sBD, sCD, sAB, sAC, sBC",
+    "angles 3개",
+    "expressionLabels 1개"
+  ],
+  "accessibilityDescription": "해설에 사용되는 해설 관계: 그림과 같이 $80\\text{ m}$ 떨어진 두 지점 $\\text{B}$와 $\\text{C}$에서 산의 꼭대기 $\\text{A}$지점을 올려다본 각의 크기가 각각 $45^\\circ$와 $60^\\circ$이다(단, $\\text{A}$에서 지면에 내린 수선의 발 $\\text{D}$에 대해 $\\text{B}$"
+}

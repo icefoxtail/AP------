@@ -1,0 +1,8 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{"family":"polynomial","coefficients":["-4","0","3","0","1"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[-2,2],"viewport":[-2,2,-6,27],"requiredPoints":[{"id":"L","x":-1,"y":0},{"id":"V","x":0,"y":-4},{"id":"R","x":1,"y":0}],"axisTickValues":{"x":[],"y":[]}},
+  "caption":"a=−1에서 (x²−1)(x²+4)=0은 x=−1,1에서만 두 실근을 갖는다.",
+  "accessibilityDescription":"x축과 두 번 만나는 위로 열린 사차곡선으로 교점 (−1,0),(1,0), 골짜기 (0,−4)를 표시한다.",
+  "sourceConditions":[{"id":"factor","condition":"a=−1이면 x⁴+3x²−4=(x²−1)(x²+4)","mappedTo":["graphPlan.coefficients"]},{"id":"realRoots","condition":"x²+4=0은 실근이 없고 x²−1=0의 두 근 ±1만 존재","mappedTo":["graphPlan.requiredPoints"]}],
+  "newVisualInformation":["허근을 주는 이차인수는 x축 교점을 추가하지 않는다는 사실을 두 실제 절편으로 확인한다."]
+}
