@@ -1,42 +1,286 @@
 {
-  "capability": "SOURCE_GEOMETRY_TRIANGLE_v1",
-  "triangle": {
-    "A": [
-      12,
-      6
-    ],
-    "B": [
-      0,
-      0
-    ],
-    "C": [
-      18,
-      0
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
     ]
   },
-  "altitude": {
-    "H": [
-      12,
-      0
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H",
+    "P",
+    "Q",
+    "R",
+    "S"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "AH",
+      "refs": [
+        "A",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "PQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "QR",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    },
+    {
+      "id": "RS",
+      "refs": [
+        "R",
+        "S"
+      ]
+    },
+    {
+      "id": "SP",
+      "refs": [
+        "S",
+        "P"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 420
+  },
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "ah6",
+        "from": "A",
+        "to": "H",
+        "label": "6",
+        "side": "RIGHT",
+        "value": "6"
+      },
+      {
+        "id": "bh12",
+        "from": "B",
+        "to": "H",
+        "label": "12",
+        "side": "BELOW",
+        "value": "12"
+      },
+      {
+        "id": "hc6",
+        "from": "H",
+        "to": "C",
+        "label": "6",
+        "side": "BELOW",
+        "value": "6"
+      }
     ]
   },
-  "inscribedRect": {
-    "P": [
-      6,
-      3
-    ],
-    "Q": [
-      6,
-      0
-    ],
-    "R": [
-      15,
-      0
-    ],
-    "S": [
-      15,
-      3
-    ]
-  },
-  "caption": "밑변 BC=18, 높이 AH=6인 삼각형 ABC에 내접하는 직사각형 PQRS"
+  "caption": "밑변 18, 높이 6인 삼각형 ABC에 내접하는 직사각형 PQRS",
+  "accessibilityDescription": "밑변 18, 높이 6인 삼각형 ABC에 내접하는 직사각형 PQRS",
+  "sourceQuote": "$\\overline{\\mathrm{AH}} = 6,\\ \\overline{\\mathrm{BH}} = 12",
+  "sourceConditions": [
+    {
+      "id": "triangle",
+      "condition": "BC=BH+HC=18, AH=6이고 AH는 BC에 수직이다.",
+      "mappedTo": "mathPlan.nodes;displaySegments"
+    },
+    {
+      "id": "rectangle",
+      "condition": "P(6,3),Q(6,0),R(15,0),S(15,3)으로 PQRS는 삼각형 안의 내접 직사각형이다.",
+      "mappedTo": "displaySegments"
+    }
+  ],
+  "newVisualInformation": [
+    "원문에서 주어진 길이와 도형의 관계만 표시하며 구하려는 값은 수치로 쓰지 않는다."
+  ]
 }

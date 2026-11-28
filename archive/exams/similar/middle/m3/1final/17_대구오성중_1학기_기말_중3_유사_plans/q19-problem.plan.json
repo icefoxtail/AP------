@@ -1,27 +1,96 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curve": "-1/3*(x-4)^2 + 16/3",
-  "points": {
-    "O": [
-      0,
-      0
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "8/3",
+          "-1/3"
+        ],
+        "domain": [
+          "-1",
+          "9"
+        ],
+        "label": "f(x)"
+      }
     ],
-    "B": [
-      2,
-      0
+    "viewport": [
+      -2,
+      10,
+      -2,
+      7
     ],
-    "C": [
-      6,
-      0
-    ],
-    "A": [
-      2,
-      4
-    ],
-    "D": [
-      6,
-      4
-    ]
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "A",
+          "x": "2",
+          "y": "4"
+        },
+        {
+          "id": "B",
+          "x": "2",
+          "y": "0"
+        },
+        {
+          "id": "C",
+          "x": "6",
+          "y": "0"
+        },
+        {
+          "id": "D",
+          "x": "6",
+          "y": "4"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "BC",
+          "from": "B",
+          "to": "C"
+        },
+        {
+          "id": "CD",
+          "from": "C",
+          "to": "D"
+        },
+        {
+          "id": "DA",
+          "from": "D",
+          "to": "A"
+        }
+      ]
+    }
   },
-  "caption": "원점과 정사각형 ABCD의 두 꼭짓점 A, D를 지나는 포물선"
+  "caption": "원점 O와 정사각형 A(2,4), B(2,0), C(6,0), D(6,4)를 지나는 포물선",
+  "accessibilityDescription": "원점 O와 정사각형 A(2,4), B(2,0), C(6,0), D(6,4)를 지나는 포물선",
+  "sourceQuote": "포물선이 원점 $\\mathrm{O}(0, 0)$과 정사각형의 두 꼭짓점",
+  "sourceConditions": [
+    {
+      "id": "square",
+      "condition": "정사각형의 한 변이 4이고 B=(2,0)이며 A,D가 포물선 위에 있다.",
+      "mappedTo": "graphPlan.overlays.points;graphPlan.overlays.segments"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 조건에 해당하는 곡선·교점·도형의 상대적 위치를 보여 준다. 문제에서 아직 구하지 않은 결과값은 표시하지 않는다."
+  ]
 }

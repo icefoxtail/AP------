@@ -1,16 +1,79 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curve": "x^2 - 4*x + 1",
-  "line": "2*x - 11",
-  "points": {
-    "P": [
-      3,
-      -2
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "1",
+          "-4",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "7"
+        ],
+        "label": "y=x^2-4x+1"
+      },
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "-11",
+          "2"
+        ],
+        "domain": [
+          "-1",
+          "7"
+        ],
+        "label": "y=2x-11"
+      }
     ],
-    "Q": [
-      4.5,
-      -2
-    ]
+    "viewport": [
+      -2,
+      8,
+      -13,
+      18
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "3",
+          "y": "-2"
+        },
+        {
+          "id": "Q",
+          "x": "9/2",
+          "y": "-2"
+        }
+      ],
+      "segments": [
+        {
+          "id": "PQ",
+          "from": "P",
+          "to": "Q"
+        }
+      ]
+    }
   },
-  "caption": "포물선 y=x²-4x+1 위의 점 P와 직선 y=2x-11 위의 점 Q"
+  "caption": "포물선 위 P와 직선 위 Q를 잇는 x축 평행 선분 PQ",
+  "accessibilityDescription": "포물선 위 P와 직선 위 Q를 잇는 x축 평행 선분 PQ",
+  "sourceQuote": "이차함수 $y = x^2 - 4x + 1$의 그래프 위의 한 점",
+  "sourceConditions": [
+    {
+      "id": "horizontal",
+      "condition": "P=(3,-2)와 Q=(9/2,-2)는 각 곡선 위의 점이며 PQ는 x축과 평행하다.",
+      "mappedTo": "graphPlan.overlays.points;graphPlan.overlays.segments"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 조건에 해당하는 곡선·교점·도형의 상대적 위치를 보여 준다. 문제에서 아직 구하지 않은 결과값은 표시하지 않는다."
+  ]
 }

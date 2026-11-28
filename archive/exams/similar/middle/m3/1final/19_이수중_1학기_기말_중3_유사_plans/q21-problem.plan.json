@@ -1,12 +1,59 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curves": [
-    "4*x^2",
-    "x^2"
-  ],
-  "labels": {
-    "4*x^2": "y=4x^2",
-    "x^2": "y=ax^2"
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "4"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "f(x)"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "g(x)"
+      }
+    ],
+    "viewport": [
+      -3,
+      3,
+      -1,
+      17
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
   },
-  "caption": "y=4x²보다 폭이 넓고 아래로 볼록한 포물선 y=ax²"
+  "caption": "아래로 볼록한 두 포물선의 폭을 비교하는 그래프",
+  "accessibilityDescription": "아래로 볼록한 두 포물선의 폭을 비교하는 그래프",
+  "sourceQuote": "이차함수 $y = ax^2$의 그래프가 다음과 같을 때",
+  "sourceConditions": [
+    {
+      "id": "given",
+      "condition": "f는 y=4x²이고, g는 y=ax²(a>0, a<4)의 대표 개형으로 a=1을 선택했다. a의 값은 문제 그림에 표시하지 않는다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 조건에 해당하는 곡선·교점·도형의 상대적 위치를 보여 준다. 문제에서 아직 구하지 않은 결과값은 표시하지 않는다."
+  ]
 }

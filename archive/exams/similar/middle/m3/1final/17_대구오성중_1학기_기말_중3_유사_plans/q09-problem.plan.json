@@ -1,23 +1,102 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "line": "0.75*x + 3",
-  "points": {
-    "O": [
-      0,
-      0
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "3/4"
+        ],
+        "domain": [
+          "-1",
+          "10"
+        ],
+        "label": "y=3/4x+3"
+      }
     ],
-    "B": [
-      0,
-      3
+    "viewport": [
+      -1,
+      11,
+      -1,
+      12
     ],
-    "A": [
-      8,
-      0
-    ],
-    "P": [
-      8,
-      9
-    ]
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "3"
+        },
+        {
+          "id": "A",
+          "x": "8",
+          "y": "0"
+        },
+        {
+          "id": "P",
+          "x": "8",
+          "y": "9"
+        }
+      ],
+      "segments": [
+        {
+          "id": "PB",
+          "from": "P",
+          "to": "B"
+        },
+        {
+          "id": "BO",
+          "from": "B",
+          "to": "O"
+        },
+        {
+          "id": "OA",
+          "from": "O",
+          "to": "A"
+        },
+        {
+          "id": "AP",
+          "from": "A",
+          "to": "P"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "PBOA",
+          "points": [
+            "P",
+            "B",
+            "O",
+            "A"
+          ],
+          "fill": "NONE"
+        }
+      ]
+    }
   },
-  "caption": "직선 y=(3/4)x+3 위의 점 P와 사다리꼴 PBOA"
+  "caption": "직선과 x축에 내린 수선으로 이룬 사다리꼴 PBOA",
+  "accessibilityDescription": "직선과 x축에 내린 수선으로 이룬 사다리꼴 PBOA",
+  "sourceQuote": "직선 $y = \\dfrac{3}{4}x + 3$ 위의 한 점",
+  "sourceConditions": [
+    {
+      "id": "line",
+      "condition": "직선의 y절편은 B(0,3)이고, 넓이 48을 만족하는 P(8,9), A(8,0)는 도형의 실제 좌표다.",
+      "mappedTo": "graphPlan.curves;graphPlan.overlays"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 조건에 해당하는 곡선·교점·도형의 상대적 위치를 보여 준다. 문제에서 아직 구하지 않은 결과값은 표시하지 않는다."
+  ]
 }

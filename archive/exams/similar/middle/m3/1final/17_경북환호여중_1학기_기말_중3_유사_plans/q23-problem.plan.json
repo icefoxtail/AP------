@@ -1,15 +1,66 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curve": "2*(x - 2)^2 - 1",
-  "points": {
-    "V": [
-      2,
-      -1
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "7",
+          "-8",
+          "2"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "label": "f(x)"
+      }
     ],
-    "Y": [
-      0,
-      7
-    ]
+    "viewport": [
+      -2,
+      6,
+      -4,
+      17
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "2",
+          "y": "-1",
+          "coordinates": true
+        },
+        {
+          "id": "Y",
+          "x": "0",
+          "y": "7",
+          "coordinates": true
+        }
+      ]
+    }
   },
-  "caption": "꼭짓점이 (2, -1)이고 점 (0, 7)을 지나는 아래로 볼록한 포물선"
+  "caption": "꼭짓점 V(2,-1)와 y절편 Y(0,7)를 지난 포물선",
+  "accessibilityDescription": "꼭짓점 V(2,-1)와 y절편 Y(0,7)를 지난 포물선",
+  "sourceQuote": "그래프가 아래 그림과 같을 때",
+  "sourceConditions": [
+    {
+      "id": "V",
+      "condition": "원문 그림의 꼭짓점은 (2,-1)",
+      "mappedTo": "graphPlan.overlays.points[0]"
+    },
+    {
+      "id": "Y",
+      "condition": "원문 그래프는 (0,7)을 지난다",
+      "mappedTo": "graphPlan.overlays.points[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 그래프의 오목·볼록 방향과 꼭짓점·축 위치를 동일한 좌표계에서 확인한다."
+  ]
 }
