@@ -1,0 +1,92 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "ELLIPSE",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "25",
+    "bSquared": "9",
+    "major": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "4",
+      "branch": "POS",
+      "coordinates": true
+    },
+    {
+      "id": "Q",
+      "kind": "POINT",
+      "x": "25/4",
+      "y": "0",
+      "coordinates": true
+    },
+    {
+      "id": "R",
+      "kind": "POINT",
+      "x": "0",
+      "y": "5",
+      "coordinates": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "t",
+      "slope": "-4/5",
+      "intercept": "5",
+      "tangent": true,
+      "label": "4x+5y=25"
+    }
+  ],
+  "segments": [
+    {
+      "id": "OQ",
+      "from": "O",
+      "to": "Q",
+      "label": "25/4"
+    },
+    {
+      "id": "OR",
+      "from": "O",
+      "to": "R",
+      "label": "5"
+    }
+  ],
+  "polygons": [
+    {
+      "id": "tri",
+      "points": [
+        "O",
+        "Q",
+        "R"
+      ],
+      "fill": "NONE"
+    }
+  ],
+  "caption": "타원 x²/25+y²/9=1과 P(4,9/5)에서의 접선이 좌표축과 이루는 삼각형",
+  "accessibilityDescription": "타원 x²/25+y²/9=1과 P(4,9/5)에서의 접선이 좌표축과 이루는 삼각형 Q(25/4,0), R(0,5), 두 절편의 길이 표시, 무채움 삼각형",
+  "sourceConditions": [
+    {
+      "id": "math",
+      "condition": "타원 x²/25+y²/9=1과 P(4,9/5)에서의 접선이 좌표축과 이루는 삼각형",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments",
+        "polygons"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "Q(25/4,0), R(0,5), 두 절편의 길이 표시, 무채움 삼각형"
+  ]
+}

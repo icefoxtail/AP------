@@ -1,0 +1,109 @@
+{
+  "capability": "solid-figure-v1",
+  "sourceQuote": "삼각형 $DLM$에서 $N$은 $M$에서 $DL$에 내린 수선의 발이므로",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 6
+      },
+      "height": 6,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "L",
+          "at": {
+            "edge": "AB",
+            "t": "2/3"
+          }
+        },
+        {
+          "id": "M",
+          "at": {
+            "edge": "HG",
+            "t": "1/2"
+          }
+        },
+        {
+          "id": "N",
+          "at": {
+            "foot": {
+              "from": "M",
+              "to": [
+                "D",
+                "L"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "D",
+      "to": "L",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "D",
+      "to": "M",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "L",
+      "to": "M",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "M",
+      "to": "N",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "D",
+      "to": "N",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "solidCaption": {
+    "text": "정육면체 DLM의 높이"
+  },
+  "caption": "한 모서리 6, AL:LB=2:1, M은 HG의 중점, MN은 DL에 수직인 높이이다.",
+  "sourceConditions": [
+    {
+      "id": "s1",
+      "condition": "한 모서리 길이 6, L은 AL:LB=2:1, M은 HG의 중점, N은 M에서 DL에 내린 수선의 발.",
+      "mappedTo": "solids[0].points"
+    }
+  ],
+  "newVisualInformation": [
+    "L의 내분비 2:1, HG 중점 M, DL 위 수선의 발 N과 직각",
+    "높이 MN과 삼각형 DLM 세 변"
+  ],
+  "accessibilityDescription": "한 모서리 6, AL:LB=2:1, M은 HG의 중점, MN은 DL에 수직인 높이이다.",
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "N",
+        "refs": [
+          "M",
+          "D"
+        ]
+      }
+    ]
+  },
+  "dims": [
+    {
+      "edge": "AB"
+    }
+  ]
+}

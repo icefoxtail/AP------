@@ -1,0 +1,136 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 8,
+      "names": "BCDA",
+      "points": [
+        {
+          "id": "G",
+          "at": {
+            "centroid": [
+              "B",
+              "C",
+              "D"
+            ]
+          }
+        },
+        {
+          "id": "T",
+          "at": {
+            "projection": {
+              "from": "B",
+              "plane": [
+                "A",
+                "C",
+                "D"
+              ]
+            }
+          }
+        },
+        {
+          "id": "J",
+          "at": {
+            "projection": {
+              "from": "G",
+              "plane": [
+                "A",
+                "C",
+                "D"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "G",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "C",
+      "to": "G",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "G",
+      "to": "J",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "B",
+      "to": "T",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "A",
+      "to": "J",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "C",
+      "to": "J",
+      "style": "AUTO",
+      "role": "ACCENT"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "A",
+        "C",
+        "J"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "J",
+        "refs": [
+          "G",
+          "A"
+        ]
+      },
+      {
+        "at": "J",
+        "refs": [
+          "G",
+          "C"
+        ]
+      }
+    ]
+  },
+  "dims": [
+    {
+      "edge": "AB"
+    }
+  ],
+  "caption": "정사면체 ABCD에서 G의 평면 ACD 위 정사영 J와 투영 삼각형 ACJ",
+  "accessibilityDescription": "정사면체 ABCD에서 G의 평면 ACD 위 정사영 J와 투영 삼각형 ACJ 무게중심 G, B의 발 T, G의 발 J, 두 직각 및 투영 영역 4/9 관계",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "정사면체 ABCD에서 G의 평면 ACD 위 정사영 J와 투영 삼각형 ACJ",
+      "mappedTo": [
+        "solids",
+        "segments",
+        "marks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "무게중심 G, B의 발 T, G의 발 J, 두 직각 및 투영 영역 4/9 관계"
+  ]
+}

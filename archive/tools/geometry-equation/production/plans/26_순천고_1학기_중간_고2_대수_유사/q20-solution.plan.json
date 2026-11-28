@@ -1,0 +1,51 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {"math": "n=1,2,3"},
+      "plan": {
+        "capability": "multi-curve-figure-v1",
+        "graphPlan": {
+          "family": "multi-curve",
+          "viewport": [-0.5, 6.5, -1, 7.5],
+          "axisTickValues": {"x": ["1", "3", "5"], "y": ["2", "4", "6"]},
+          "curves": [
+            {"id": "g", "kind": "LOGARITHMIC", "base": "2", "coefficients": ["1", "1", "-1", "2"], "domain": ["101/100", "13/2"], "color": "BLUE", "label": "g"},
+            {"id": "h", "kind": "LOGARITHMIC", "base": "1/2", "coefficients": ["1", "1", "-1", "1"], "domain": ["101/100", "13/2"], "color": "WARM", "label": "h"},
+            {"id": "f1", "kind": "ABSOLUTE_VALUE", "coefficients": ["-3", "1", "-2", "2"], "domain": ["2", "4"], "color": "GREEN", "label": "f1"},
+            {"id": "f2", "kind": "ABSOLUTE_VALUE", "coefficients": ["-3", "1", "-2", "4"], "domain": ["1", "5"], "color": "ROSE", "label": "f2"},
+            {"id": "f3", "kind": "ABSOLUTE_VALUE", "coefficients": ["-3", "1", "-2", "6"], "domain": ["0", "6"], "color": "VIOLET", "label": "f3"}
+          ]
+        }
+      }
+    },
+    {
+      "caption": {"math": "n=4,5"},
+      "plan": {
+        "capability": "multi-curve-figure-v1",
+        "graphPlan": {
+          "family": "multi-curve",
+          "viewport": [-2.5, 8.5, -1, 11],
+          "axisTickValues": {"x": ["1", "3", "7"], "y": ["4", "8", "10"]},
+          "curves": [
+            {"id": "g", "kind": "LOGARITHMIC", "base": "2", "coefficients": ["1", "1", "-1", "2"], "domain": ["101/100", "17/2"], "color": "BLUE", "label": "g"},
+            {"id": "h", "kind": "LOGARITHMIC", "base": "1/2", "coefficients": ["1", "1", "-1", "1"], "domain": ["101/100", "17/2"], "color": "WARM", "label": "h"},
+            {"id": "f4", "kind": "ABSOLUTE_VALUE", "coefficients": ["-3", "1", "-2", "8"], "domain": ["-1", "7"], "color": "GREEN", "label": "f4"},
+            {"id": "f5", "kind": "ABSOLUTE_VALUE", "coefficients": ["-3", "1", "-2", "10"], "domain": ["-2", "8"], "color": "ROSE", "label": "f5"}
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "f_n=-2|x-3|+2n (3-n≤x≤3+n, n=1,…,5)와 g=log₂(x-1)+2, h=log₁/₂(x-1)+1의 교점 개수를 두 패널에서 비교한다.",
+  "accessibilityDescription": "첫 패널은 n=1,2,3의 세 산 모양 절댓값 그래프와 로그곡선 g,h를, 둘째 패널은 n=4,5의 두 산 모양 그래프와 같은 로그곡선 g,h를 나타낸다. 모든 산의 양 끝점은 x=3±n에서 y=0이고 꼭짓점은 (3,2n)이다.",
+  "sourceConditions": [
+    {"id": "all_five", "condition": "f_n(x)=-2|x-3|+2n, 3-n≤x≤3+n, n=1,…,5", "mappedTo": ["panels[0].plan.graphPlan.curves", "panels[1].plan.graphPlan.curves"]},
+    {"id": "logs", "condition": "g(x)=log_2(x-1)+2; h(x)=log_(1/2)(x-1)+1, both x>1", "mappedTo": ["panels[0].plan.graphPlan.curves", "panels[1].plan.graphPlan.curves"]}
+  ],
+  "newVisualInformation": [
+    "각 n의 꼭짓점 (3,2n)과 두 끝점 (3-n,0), (3+n,0)의 정확한 구간 제한",
+    "동일한 로그곡선 두 개를 두 패널 모두 그려 다섯 산곡선과의 교점을 하나씩 셀 수 있도록 구성",
+    "곡선별 f1부터 f5, g, h 이름을 보존하며 면 채움을 선언하지 않음"
+  ]
+}

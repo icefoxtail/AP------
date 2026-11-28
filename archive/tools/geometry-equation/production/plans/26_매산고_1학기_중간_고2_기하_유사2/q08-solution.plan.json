@@ -1,0 +1,90 @@
+{
+  "capability": "solid-figure-v1",
+  "sourceQuote": "공통 모서리 $BC$의 중점 $M$과 밑면 정사각형의 중심 $O$를 잡자.",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 4
+      },
+      "height": 2.8284271247461903,
+      "names": "BCDEA",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "edge": "BC",
+            "t": "1/2"
+          }
+        },
+        {
+          "id": "O",
+          "at": {
+            "base": "center"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "M",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "M",
+      "to": "O",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "A",
+      "to": "O",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "solidCaption": {
+    "text": "옆면과 밑면의 이면각"
+  },
+  "caption": "BC 중점 M과 밑면 중심 O의 단면 AMO에서 이면각을 확인한다. 모서리 길이 4는 비율을 보여 주기 위한 대표값이다.",
+  "sourceConditions": [
+    {
+      "id": "s1",
+      "condition": "정사각뿔 A-BCDE의 모든 모서리 길이가 같다.",
+      "mappedTo": "solids[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "BC 중점 M, 정사각형 중심 O, AO⊥MO 직각 및 θ=∠AMO 직접 표시",
+    "AM과 MO 및 AO의 보조선"
+  ],
+  "accessibilityDescription": "BC 중점 M과 밑면 중심 O의 단면 AMO에서 이면각을 확인한다. 모서리 길이 4는 비율을 보여 주기 위한 대표값이다.",
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "O",
+        "refs": [
+          "A",
+          "M"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "refs": [
+          "A",
+          "M",
+          "O"
+        ],
+        "arcs": 1,
+        "label": "\\theta"
+      }
+    ]
+  }
+}

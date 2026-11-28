@@ -1,0 +1,79 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "ELLIPSE",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "18",
+    "bSquared": "8",
+    "major": "Y"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "2",
+      "branch": "POS",
+      "coordinates": true
+    },
+    {
+      "id": "Q",
+      "kind": "POINT",
+      "x": "4",
+      "y": "0",
+      "coordinates": true
+    },
+    {
+      "id": "R",
+      "kind": "POINT",
+      "x": "-5/2",
+      "y": "0"
+    }
+  ],
+  "lines": [
+    {
+      "id": "t",
+      "slope": "-3/2",
+      "intercept": "6",
+      "tangent": true,
+      "label": "3x+2y=12"
+    },
+    {
+      "id": "n",
+      "slope": "2/3",
+      "intercept": "5/3",
+      "label": "n"
+    }
+  ],
+  "segments": [
+    {
+      "id": "QR",
+      "from": "Q",
+      "to": "R",
+      "label": "13/2"
+    }
+  ],
+  "caption": "타원 x²/8+y²/18=1의 P(2,3) 접선과 법선의 두 x절편",
+  "accessibilityDescription": "타원 x²/8+y²/18=1의 P(2,3) 접선과 법선의 두 x절편 접선 Q(4,0), 법선 R(-5/2,0), QR=13/2 표시",
+  "sourceConditions": [
+    {
+      "id": "math",
+      "condition": "타원 x²/8+y²/18=1의 P(2,3) 접선과 법선의 두 x절편",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접선 Q(4,0), 법선 R(-5/2,0), QR=13/2 표시"
+  ]
+}

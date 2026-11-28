@@ -1,0 +1,156 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "B",
+        "at": [
+          -3.4641016151377544,
+          0,
+          0
+        ],
+        "on": "alpha"
+      },
+      {
+        "id": "C",
+        "at": [
+          3.4641016151377544,
+          0,
+          0
+        ],
+        "on": "alpha"
+      },
+      {
+        "id": "H",
+        "at": [
+          0,
+          0,
+          0
+        ],
+        "on": "alpha"
+      },
+      {
+        "id": "A",
+        "at": [
+          0,
+          6,
+          0
+        ],
+        "on": "alpha"
+      },
+      {
+        "id": "P",
+        "at": [
+          0,
+          6,
+          8
+        ]
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "through": [
+          "B",
+          "C",
+          "A"
+        ],
+        "extent": {
+          "center": [
+            0,
+            2.8,
+            0
+          ],
+          "u": [
+            5,
+            0,
+            0
+          ],
+          "v": [
+            0,
+            5.2,
+            0
+          ]
+        }
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "C",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "H",
+        "role": "REF"
+      },
+      {
+        "from": "H",
+        "to": "C",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "A",
+        "role": "ACCENT"
+      },
+      {
+        "from": "A",
+        "to": "H",
+        "role": "ACCENT"
+      },
+      {
+        "from": "P",
+        "to": "H",
+        "role": "ACCENT"
+      }
+    ]
+  },
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "A",
+        "refs": [
+          "P",
+          "H"
+        ]
+      },
+      {
+        "at": "H",
+        "refs": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "at": "H",
+        "refs": [
+          "P",
+          "B"
+        ]
+      }
+    ]
+  },
+  "caption": "정삼각형 ABC의 높이 AH=6, PA⊥평면 α, PH=10인 공간 직각삼각형 PAH",
+  "accessibilityDescription": "정삼각형 ABC의 높이 AH=6, PA⊥평면 α, PH=10인 공간 직각삼각형 PAH 직각 3곳과 PH를 점 P에서 BC로 내린 최단거리로 표시",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "정삼각형 ABC의 높이 AH=6, PA⊥평면 α, PH=10인 공간 직각삼각형 PAH",
+      "mappedTo": [
+        "space",
+        "marks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "직각 3곳과 PH를 점 P에서 BC로 내린 최단거리로 표시"
+  ]
+}

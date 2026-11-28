@@ -1,0 +1,70 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    {
+      "id": "p",
+      "kind": "PARABOLA",
+      "vertex": [
+        "0",
+        "0"
+      ],
+      "p": "2",
+      "axis": "X"
+    },
+    {
+      "id": "e",
+      "kind": "ELLIPSE",
+      "center": [
+        "-2",
+        "3"
+      ],
+      "aSquared": "9",
+      "bSquared": "4",
+      "major": "Y"
+    }
+  ],
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "curve": "p",
+      "x": "8",
+      "branch": "POS",
+      "coordinates": true
+    },
+    {
+      "id": "C",
+      "kind": "CENTER",
+      "curve": "e"
+    }
+  ],
+  "lines": [
+    {
+      "id": "t",
+      "tangent": true,
+      "at": "P",
+      "curve": "p",
+      "label": "y=x/2+4"
+    }
+  ],
+  "caption": "포물선 y²=8x의 접선이 타원 중심 (-2,3)을 통과하는 해설",
+  "accessibilityDescription": "포물선 y²=8x의 접선이 타원 중심 (-2,3)을 통과하는 해설 접점 P(8,8), 타원 중심 C(-2,3), 접선의 x절편 -8",
+  "sourceConditions": [
+    {
+      "id": "math",
+      "condition": "포물선 y²=8x의 접선이 타원 중심 (-2,3)을 통과하는 해설",
+      "mappedTo": [
+        "conics",
+        "points",
+        "lines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접점 P(8,8), 타원 중심 C(-2,3), 접선의 x절편 -8"
+  ]
+}

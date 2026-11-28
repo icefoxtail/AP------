@@ -1,0 +1,71 @@
+{
+  "capability": "ellipse-figure-v1",
+  "ellipses": [
+    {
+      "id": "K1",
+      "center": [
+        "1",
+        "5"
+      ],
+      "semiAxisSquared": {
+        "major": "25",
+        "minor": "9"
+      },
+      "majorAxis": "Y"
+    },
+    {
+      "id": "K2",
+      "center": [
+        "1",
+        "-5"
+      ],
+      "semiAxisSquared": {
+        "major": "25",
+        "minor": "9"
+      },
+      "majorAxis": "Y"
+    }
+  ],
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "F1",
+      "kind": "FOCUS",
+      "side": 1,
+      "ellipseId": "K1",
+      "coordinates": true
+    },
+    {
+      "id": "F2",
+      "kind": "FOCUS",
+      "side": 1,
+      "ellipseId": "K2"
+    }
+  ],
+  "lines": [
+    {
+      "id": "l",
+      "slope": "3/4",
+      "intercept": "13/4"
+    }
+  ],
+  "caption": "k=5와 k=-5에서 위쪽 초점 (1,k+4)이 직선에서 거리 4인 두 타원",
+  "accessibilityDescription": "k=5와 k=-5에서 위쪽 초점 (1,k+4)이 직선에서 거리 4인 두 타원 두 경우의 초점과 직선을 한 좌표계에 표시",
+  "sourceConditions": [
+    {
+      "id": "math",
+      "condition": "k=5와 k=-5에서 위쪽 초점 (1,k+4)이 직선에서 거리 4인 두 타원",
+      "mappedTo": [
+        "ellipses",
+        "points",
+        "lines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 경우의 초점과 직선을 한 좌표계에 표시"
+  ]
+}

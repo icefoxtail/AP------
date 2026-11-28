@@ -1,0 +1,111 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "9",
+    "bSquared": "16",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "39/5",
+      "sign": "POS"
+    },
+    {
+      "id": "Q",
+      "kind": "LINE_CONIC",
+      "line": "k1",
+      "which": 1
+    }
+  ],
+  "lines": [
+    {
+      "id": "k1",
+      "through": [
+        "P",
+        "F'"
+      ],
+      "hidden": true
+    }
+  ],
+  "segments": [
+    {
+      "id": "PF",
+      "from": "P",
+      "to": "F",
+      "label": "10"
+    },
+    {
+      "id": "PFp",
+      "from": "P",
+      "to": "F'",
+      "label": "16"
+    },
+    {
+      "id": "FFp",
+      "from": "F",
+      "to": "F'"
+    },
+    {
+      "id": "QF",
+      "from": "Q",
+      "to": "F"
+    }
+  ],
+  "polygons": [
+    {
+      "id": "tri",
+      "points": [
+        "P",
+        "Q",
+        "F"
+      ],
+      "fill": "NONE"
+    }
+  ],
+  "caption": "가능한 c=5인 경우의 쌍곡선 x²/9-y²/16=1, PF=10, PF'=16",
+  "accessibilityDescription": "가능한 c=5인 경우의 쌍곡선 x²/9-y²/16=1, PF=10, PF'=16 초점 F/F′, 직선 PF′과 왼쪽 가지의 교점 Q, 삼각형 무채움; c=8은 별도 대표 경우",
+  "sourceConditions": [
+    {
+      "id": "math",
+      "condition": "가능한 c=5인 경우의 쌍곡선 x²/9-y²/16=1, PF=10, PF'=16",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments",
+        "polygons"
+      ]
+    },
+    {
+      "id": "case",
+      "condition": "두 해 c=5와 c=8 중 c=5를 그림으로 표시하며 c=8은 글의 별도 경우이다.",
+      "mappedTo": [
+        "conic"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "초점 F/F′, 직선 PF′과 왼쪽 가지의 교점 Q, 삼각형 무채움; c=8은 별도 대표 경우"
+  ]
+}

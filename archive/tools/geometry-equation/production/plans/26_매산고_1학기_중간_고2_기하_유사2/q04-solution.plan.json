@@ -1,0 +1,82 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 3
+      },
+      "height": 2.8,
+      "names": "EFGHABCD"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "fill": "LIGHT"
+    },
+    {
+      "polygon": [
+        "E",
+        "F",
+        "G",
+        "H"
+      ],
+      "fill": "WARM"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "C",
+        "refs": [
+          "G",
+          "B"
+        ]
+      },
+      {
+        "at": "C",
+        "refs": [
+          "G",
+          "D"
+        ]
+      },
+      {
+        "at": "G",
+        "refs": [
+          "C",
+          "F"
+        ]
+      },
+      {
+        "at": "G",
+        "refs": [
+          "C",
+          "H"
+        ]
+      }
+    ]
+  },
+  "caption": "CG가 윗면 ABCD와 아랫면 EFGH에 각각 수직인 직육면체",
+  "accessibilityDescription": "CG가 윗면 ABCD와 아랫면 EFGH에 각각 수직인 직육면체 CG와 두 평면의 수직관계를 네 직각표식과 두 면의 대비로 표시",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "CG가 윗면 ABCD와 아랫면 EFGH에 각각 수직인 직육면체",
+      "mappedTo": [
+        "solids",
+        "marks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "CG와 두 평면의 수직관계를 네 직각표식과 두 면의 대비로 표시"
+  ]
+}
