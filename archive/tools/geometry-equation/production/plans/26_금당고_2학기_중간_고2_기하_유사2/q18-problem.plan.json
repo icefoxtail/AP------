@@ -1,0 +1,84 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "3",
+    "axis": "X"
+  },
+  "points": [
+    {
+      "id": "A",
+      "kind": "ON_CONIC",
+      "x": "3",
+      "branch": "POS"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "x": "-3",
+      "y": "0"
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "x": "-3",
+      "y": "6"
+    }
+  ],
+  "lines": [
+    {
+      "id": "t",
+      "tangent": true,
+      "at": "A"
+    },
+    {
+      "id": "d",
+      "role": "DIRECTRIX",
+      "label": "d"
+    },
+    {
+      "id": "h",
+      "y": "6"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sAB",
+      "from": "A",
+      "to": "B"
+    },
+    {
+      "id": "sAC",
+      "from": "A",
+      "to": "C"
+    },
+    {
+      "id": "sBC",
+      "from": "B",
+      "to": "C"
+    }
+  ],
+  "polygons": [],
+  "caption": "Q18 발문 관계도 (조건을 만족하는 배치 예시, 미지수·좌표값은 생략)",
+  "accessibilityDescription": "발문에서 주어진 이차곡선과 점, 선분의 위치 관계를 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "양수 $p$에 대하여 포물선 $y^2=4px$의 점 $A(p,2p)$에서의 접선과 준선 $x=-p$, 직선 $y=2p$가 이루는 삼각형의 둘레가 $12+6\\sqrt2$이다. 이 포물선의 초점과 준선 사이의 거리를 구하시오. [5점]",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접선과 준선, y=2p가 만드는 직각삼각형의 위치를 명확히 한다."
+  ],
+  "sourceQuote": "양수 $p$에 대하여 포물선 $y^2=4px$의 점 $A(p,2p)$에서의 접선과 준선 $x=-p$, 직선 $y=2p$가 이루는 삼각형의 둘레가 $12+6\\sqrt2$이다. 이 포물선의 초점과 준선 사이의 거리를 구하시오. [5점]"
+}

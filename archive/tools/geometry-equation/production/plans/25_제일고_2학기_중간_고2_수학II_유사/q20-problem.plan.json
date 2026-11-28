@@ -1,0 +1,186 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "tangent",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "P",
+          "tangent"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "4",
+                "denominator": "5"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [
+    "tangent"
+  ],
+  "displayCircles": [
+    "k"
+  ],
+  "displayPoints": [
+    "O",
+    "P",
+    "T"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPT",
+      "refs": [
+        "P",
+        "T"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "contact",
+      "refs": [
+        "O",
+        "T",
+        "P"
+      ]
+    }
+  ],
+  "lineLabels": [
+    {
+      "nodeId": "tangent",
+      "form": "SLOPE_INTERCEPT",
+      "labelAt": 0.37
+    }
+  ],
+  "planeMarks": {
+    "facts": [
+      {
+        "kind": "TANGENT_PERPENDICULAR",
+        "center": "P",
+        "contact": "T",
+        "tangent": "tangent"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "radius",
+        "ownerSegment": "sPT",
+        "text": "r"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 440
+  },
+  "caption": "직선 y=2x에 접하는 원과 중심 P를 나타낸 대표 배치의 그림(매개변수 값은 표기하지 않음)",
+  "accessibilityDescription": "원점 O를 지나는 직선 y=2x, 직선에 접하는 원, 중심 P, 접점 T, 접점에서 수직인 반지름 PT가 보인다. 미지 매개변수와 요구하는 극한값은 표시하지 않는다.",
+  "sourceConditions": [
+    {"id":"c1", "condition":"현행 유사 JS q20: a>4, 중심 P(a,2a-20/a)의 원 C_a가 직선 y=2x에 접한다.", "mappedTo":["mathPlan.nodes","displayLines","displayCircles","displayPoints"]},
+    {"id":"c2", "condition":"문제 그림은 원점 O, 접점 T, 중심 P 및 반지름 PT를 나타내되 a의 값과 최대거리 d는 지정하지 않는다.", "mappedTo":["displayPoints","displaySegments","planeMarks"]}
+  ],
+  "newVisualInformation": ["원과 직선이 접하는 위치 관계를 조건을 만족하는 대표 배치로 나타내고 수직 표시를 보존한다."]
+}
