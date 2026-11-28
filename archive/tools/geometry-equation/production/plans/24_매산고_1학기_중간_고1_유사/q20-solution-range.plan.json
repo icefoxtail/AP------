@@ -1,0 +1,9 @@
+{
+  "capability":"number-line-figure-v1",
+  "numberLine":{"variable":"n","rows":[{"kind":"SET","label":"교점 두 개의 범위","pieces":[{"lo":{"value":"-3+2*sqrt(2)","state":"OPEN"},"hi":{"value":"0","state":"CLOSED"}}]}]},
+  "numberLineCaption":{"text":"n의 허용 구간"},
+  "caption":"F(2)=−n≥0, 대칭축 2<(5+n)/2<4, 판별식 D=(n+3)²−8>0의 공통 범위는 −3+2√2<n≤0이다.",
+  "accessibilityDescription":"수직선에서 n=−3+2√2는 열린 끝점이고 n=0은 닫힌 끝점이다. 두 경계 사이가 해집합이다.",
+  "sourceConditions":[{"id":"lower","condition":"D=n²+6n+1>0 및 −1<n<3 조건을 합치면 n>−3+2√2","mappedTo":["numberLine.rows[0].pieces[0].lo"]},{"id":"upper","condition":"F(2)=−n≥0은 n≤0을 준다","mappedTo":["numberLine.rows[0].pieces[0].hi"]}],
+  "newVisualInformation":["판별식의 무근 경계를 열린 점으로, x=2의 허용 교점이 되는 n=0을 닫힌 점으로 구별한다."]
+}

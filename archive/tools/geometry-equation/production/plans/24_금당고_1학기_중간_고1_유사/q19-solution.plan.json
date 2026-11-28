@@ -1,0 +1,9 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "sourceQuote":"두 이차함수 $y=f(x)$와 $y=g(x)$의 그래프가 만나는 점의",
+  "graphPlan":{"family":"multi-curve","viewport":[-1,3,-1,5],"curves":[{"id":"f","kind":"Y_OF_X","coefficients":["1","-4","4"],"domain":["-1","2"],"color":"BLUE","label":"y=f(x)"},{"id":"g","kind":"Y_OF_X","coefficients":["9/4","-3","1"],"domain":["-1","3"],"color":"WARM","label":"y=g(x)"},{"id":"h","kind":"LINE","coefficients":["0","0"],"domain":["-1","3"],"style":"DASHED","label":"y=h(x)"}],"overlays":{"points":[{"id":"A","x":"1/2","y":"0"},{"id":"B","x":"3/2","y":"0"},{"id":"P","x":"-1/2","y":"4","coordinates":true},{"id":"Q","x":"5/6","y":"4/9","coordinates":true}],"guides":[{"id":"pGuide","from":"P","axis":"x"},{"id":"qGuide","from":"Q","axis":"x"}]},"axisTickValues":{"x":[],"y":[]}},
+  "caption":"α=1/2, β=3/2의 비례 예시에서 공통 접선 h=0과 두 포물선의 교점 x=−1/2, 5/6을 표시한다.",
+  "accessibilityDescription":"두 포물선 f와 g가 각각 x=1/2와 x=3/2에서 수평선 h에 접하고, 서로 만나는 두 점의 x좌표는 −1/2 및 5/6이다.",
+  "sourceConditions":[{"id":"tangency","condition":"f−h=4(x−α)², g−h=(x−β)²; α=1/2, β=3/2인 정확한 예시","mappedTo":["graphPlan.curves[0]","graphPlan.curves[1]","graphPlan.curves[2]","graphPlan.overlays.points[0]","graphPlan.overlays.points[1]"]},{"id":"ratio","condition":"교점은 x=−α와 5α/3이므로 두 x좌표 차를 α로 나누면 8/3","mappedTo":["graphPlan.overlays.points[2]","graphPlan.overlays.points[3]","graphPlan.overlays.guides"]}],
+  "newVisualInformation":["접점 두 개와 두 교점 사이의 간격을 구분하고 실제 그래프의 교차를 확인한다."]
+}

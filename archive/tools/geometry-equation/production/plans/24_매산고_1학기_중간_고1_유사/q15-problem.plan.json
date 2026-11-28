@@ -1,0 +1,9 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "sourceQuote":"사각형 $ABCD$의 넓이는 $16$이다.",
+  "graphPlan":{"family":"multi-curve","viewport":[-4,5,-3,8],"curves":[{"id":"f","kind":"Y_OF_X","coefficients":["-3/2","1/2","1/8"],"domain":["-4","4"],"color":"BLUE","label":"y=f(x)"},{"id":"g","kind":"Y_OF_X","coefficients":["3","3","-3/4"],"domain":["-1","5"],"color":"WARM","label":"y=g(x)"}],"overlays":{"points":[{"id":"A","x":"-2","y":"-2"},{"id":"B","x":"2","y":"0"},{"id":"C","x":"2","y":"6"},{"id":"D","x":"-2","y":"0"}],"polygons":[{"id":"ABCD","points":["A","B","C","D"],"fill":"NONE"}],"rightAngles":[{"at":"D","from":["A","B"]}]},"axisTickValues":{"x":["-2","2"],"y":[]}},
+  "caption":"두 포물선의 꼭짓점 A,C, f 위의 B, 수선의 발 D와 넓이 16인 사각형 ABCD의 조건 도식이다.",
+  "accessibilityDescription":"A와 D가 같은 수직선에, B와 C가 또 다른 수직선에 있으며 D에서 직각 표시가 있고 A와 B가 f 위에, C가 g의 꼭짓점에 놓인다. 세로 좌표의 미지수 a 값은 표시하지 않는다.",
+  "sourceConditions":[{"id":"vertices","condition":"A(−2,−a), B(2,0), C(2,3a), D(−2,0); a>0이고 넓이 16을 만족하는 정확한 숨김 수치 실현","mappedTo":["graphPlan.overlays.points","graphPlan.overlays.polygons[0]"]},{"id":"graphs","condition":"f의 꼭짓점은 A이고 B를 지나며 g의 꼭짓점은 C이고 y축 교점은 CD 위","mappedTo":["graphPlan.curves[0]","graphPlan.curves[1]"]},{"id":"perpendicular","condition":"D는 A에서 x축에 내린 수선의 발","mappedTo":["graphPlan.overlays.rightAngles[0]"]}],
+  "newVisualInformation":["원문의 보이는 점·곡선·사각형·직각을 복원하되 문제에서 미지수인 a=2와 함수의 계수, 해설 결과는 전혀 표기하지 않는다."]
+}

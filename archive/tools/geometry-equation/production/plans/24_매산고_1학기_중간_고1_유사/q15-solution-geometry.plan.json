@@ -1,0 +1,9 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "sourceQuote":"사각형 $ABCD$의 넓이는 $16$이다.",
+  "graphPlan":{"family":"multi-curve","viewport":[-4,5,-3,8],"curves":[{"id":"f","kind":"Y_OF_X","coefficients":["-3/2","1/2","1/8"],"domain":["-4","4"],"color":"BLUE","label":"y=f(x)"},{"id":"g","kind":"Y_OF_X","coefficients":["3","3","-3/4"],"domain":["-1","5"],"color":"WARM","label":"y=g(x)"}],"overlays":{"points":[{"id":"A","x":"-2","y":"-2","coordinates":true},{"id":"B","x":"2","y":"0"},{"id":"C","x":"2","y":"6","coordinates":true},{"id":"D","x":"-2","y":"0"},{"id":"P","x":"0","y":"3","coordinates":true}],"polygons":[{"id":"ABCD","points":["A","B","C","D"],"fill":"LIGHT"}],"rightAngles":[{"at":"D","from":["A","B"]}]},"axisTickValues":{"x":[],"y":[]}},
+  "caption":"사다리꼴 ABCD의 넓이 16에서 a=2이고, CD가 y축과 만나는 P(0,3)를 g가 지나므로 g의 계수 −3/4가 정해진다.",
+  "accessibilityDescription":"두 포물선 f, g와 A(−2,−2), B(2,0), C(2,6), D(−2,0), P(0,3)가 실제 위치에 나타나며 ABCD 넓이 영역과 D의 직각이 표시되어 있다.",
+  "sourceConditions":[{"id":"area","condition":"(AD+BC)×4/2=(a+3a)×2=16, a=2","mappedTo":["graphPlan.overlays.points[0]","graphPlan.overlays.points[2]","graphPlan.overlays.polygons[0]"]},{"id":"f","condition":"f(x)=(x+2)²/8−2는 A가 꼭짓점이고 B를 지난다","mappedTo":["graphPlan.curves[0]"]},{"id":"g","condition":"CD의 y절편 3이 g(0)이므로 g(x)=−3(x−2)²/4+6","mappedTo":["graphPlan.curves[1]","graphPlan.overlays.points[4]"]},{"id":"right","condition":"AD와 DB는 서로 수직","mappedTo":["graphPlan.overlays.rightAngles[0]"]}],
+  "newVisualInformation":["넓이 16인 사다리꼴을 명확히 칠하고 두 포물선의 실제 계수와 y축 교점의 일치를 보인다."]
+}
