@@ -1,0 +1,74 @@
+{
+  "capability": "composite-panels-v1",
+  "caption": "사각뿔의 전개도에서 네 직각과 접는 선을 확인하고, 접은 사각뿔에서 꼭짓점 5개와 모서리 8개를 각각 센다.",
+  "accessibilityDescription": "왼쪽에는 정사각형의 네 꼭짓점에 직각 표시가 있고 네 삼각형이 붙은 사각뿔 전개도, 오른쪽에는 모서리와 꼭짓점을 세기 위한 사각뿔이 있다.",
+  "sourceQuote": "다음 제시된 전개도로 만든 입체도형의 모서리와 꼭짓점의 개수 합을 옳게 구한 것은?",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원본 전개도의 중심은 네 직각이 표시된 정사각형이다.",
+      "mappedTo": ["panels[0].plan.net.rightAngles[0..3]"]
+    },
+    {
+      "id": "c2",
+      "condition": "정사각형의 네 변 각각에 삼각형이 한 개씩 붙고 접는 변은 점선이다.",
+      "mappedTo": ["panels[0].plan.net.root", "panels[0].plan.net.joins", "panels[0].plan.net.solid.names"]
+    },
+    {
+      "id": "c3",
+      "condition": "접으면 꼭짓점 5개, 모서리 8개인 사각뿔이 된다.",
+      "mappedTo": ["panels[1].plan.solids[0]", "panels[1].plan.solids[0].count"]
+    }
+  ],
+  "newVisualInformation": [
+    "원본에 있는 네 직각표식을 net.rightAngles에 모두 넣고 접는 선은 엔진 net.joins로 점선 표시한다.",
+    "해설에서 요구하는 사각뿔의 꼭짓점·모서리를 엔진 count로 센다.",
+    "불필요한 면 채움 없이 흰 바탕과 검은 선으로 그린다."
+  ],
+  "panels": [
+    {
+      "caption": {"text": "전개도: 네 직각과 접는 점선"},
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "net": {
+          "solid": {
+            "kind": "PYRAMID",
+            "base": {"kind": "RECT", "width": 4, "depth": 4},
+            "height": 5,
+            "names": "ABCDE"
+          },
+          "root": "bottom",
+          "joins": [
+            ["bottom", "side0"],
+            ["bottom", "side1"],
+            ["bottom", "side2"],
+            ["bottom", "side3"]
+          ],
+          "rightAngles": [
+            {"face": "bottom", "corner": 0},
+            {"face": "bottom", "corner": 1},
+            {"face": "bottom", "corner": 2},
+            {"face": "bottom", "corner": 3}
+          ]
+        }
+      }
+    },
+    {
+      "caption": {"text": "사각뿔: 꼭짓점 5, 모서리 8"},
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "kind": "PYRAMID",
+            "base": {"kind": "RECT", "width": 4, "depth": 4},
+            "height": 5,
+            "names": ".....",
+            "count": {"vertices": true, "edges": true}
+          }
+        ]
+      }
+    }
+  ]
+}

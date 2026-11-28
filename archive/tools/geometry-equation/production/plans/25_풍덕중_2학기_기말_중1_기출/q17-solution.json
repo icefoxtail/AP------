@@ -1,0 +1,27 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "caption": "풍덕중 배구부 40명의 팔굽혀 펴기 기록을 도수분포다각형만으로 나타낸다. 35회 미만은 13명, 45회 이상은 5명이다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "계급은 20회 이상 25회 미만부터 45회 이상 50회 미만까지, 크기 5회로 모두 여섯 개다.", "mappedTo": "chart.boundaries"},
+    {"id": "c2", "condition": "각 계급의 도수는 차례로 2, 5, 6, 12, 10, 5명이고 합계는 40명이다.", "mappedTo": "chart.series[0].frequencies"},
+    {"id": "c3", "condition": "35회 미만 세 계급은 13명이고 45회 이상 마지막 계급은 5명이다.", "mappedTo": "chart.classSums"}
+  ],
+  "newVisualInformation": [
+    "원본 기출은 선분과 꼭짓점만 있는 도수분포다각형이므로 기존 해설 SVG에 덧씌워진 회색 히스토그램 막대를 제거한다.",
+    "실제 계급 경계와 도수 6개를 그대로 보존하고 해설이 사용하는 두 구간 합을 축 아래 괄호로 보인다."
+  ],
+  "chart": {
+    "kind": "FREQUENCY_POLYGON",
+    "boundaries": ["20", "25", "30", "35", "40", "45", "50"],
+    "series": [{"frequencies": [2, 5, 6, 12, 10, 5]}],
+    "total": 40,
+    "xTitle": "기록(회)",
+    "yTitle": "도수(명)",
+    "grid": true,
+    "showValues": true,
+    "classSums": [
+      {"series": 0, "from": 0, "to": 2, "label": "13", "unit": "명"},
+      {"series": 0, "from": 5, "to": 5, "label": "5", "unit": "명"}
+    ]
+  }
+}
