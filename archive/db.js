@@ -7520,6 +7520,37 @@ window.mainDB = {
       "primaryStandardCourse": ""
     },
     {
+      "file": "original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js",
+      "school": "매산여고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2025,
+      "semester": "2",
+      "examType": "final",
+      "subject": "공통수학2",
+      "contentType": "기출",
+      "qCount": 23,
+      "rangeStartUnitKey": "H22-C2-01",
+      "rangeStartUnit": "평면좌표",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-C2-09",
+      "rangeEndUnit": "무리함수",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-01",
+          "rangeStartUnit": "평면좌표",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C2-09",
+          "rangeEndUnit": "무리함수",
+          "rangeEndUnitOrder": 9
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
       "file": "original/high/h1/1final/25_매산여고_1학기_기말_고1_기출c.js",
       "school": "매산여고",
       "topic": "",
@@ -8582,6 +8613,99 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": ""
+    },
+    {
+      "file": "similar/high/h1/2final/25_매산여고_2학기_기말_고1_유사.js",
+      "school": "매산여고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2025,
+      "semester": "2",
+      "examType": "final",
+      "subject": "공통수학2",
+      "contentType": "유형",
+      "qCount": 23,
+      "rangeStartUnitKey": "H22-C2-01",
+      "rangeStartUnit": "평면좌표",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-C2-09",
+      "rangeEndUnit": "무리함수",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-01",
+          "rangeStartUnit": "평면좌표",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C2-09",
+          "rangeEndUnit": "무리함수",
+          "rangeEndUnitOrder": 9
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "similar/high/h1/2final/25_매산여고_2학기_기말_고1_유사2.js",
+      "school": "매산여고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2025,
+      "semester": "2",
+      "examType": "final",
+      "subject": "공통수학2",
+      "contentType": "유형",
+      "qCount": 23,
+      "rangeStartUnitKey": "H22-C2-01",
+      "rangeStartUnit": "평면좌표",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-C2-09",
+      "rangeEndUnit": "무리함수",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-01",
+          "rangeStartUnit": "평면좌표",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C2-09",
+          "rangeEndUnit": "무리함수",
+          "rangeEndUnitOrder": 9
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "similar/high/h1/2final/25_매산여고_2학기_기말_고1_유사3.js",
+      "school": "매산여고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2025,
+      "semester": "2",
+      "examType": "final",
+      "subject": "공통수학2",
+      "contentType": "유형",
+      "qCount": 23,
+      "rangeStartUnitKey": "H22-C2-01",
+      "rangeStartUnit": "평면좌표",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-C2-09",
+      "rangeEndUnit": "무리함수",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-01",
+          "rangeStartUnit": "평면좌표",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C2-09",
+          "rangeEndUnit": "무리함수",
+          "rangeEndUnitOrder": 9
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
     },
     {
       "file": "similar/high/h1/2final/25_순천고_2학기_기말_고1_유사.js",
