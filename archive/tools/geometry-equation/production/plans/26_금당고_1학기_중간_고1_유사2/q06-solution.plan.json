@@ -1,0 +1,39 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "$a<1<2$이므로 구간 $[a,1]$에서는 $x$가 증가할수록 함수값이 감소한다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-3, 4, -4, 15],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": ["1", "-4", "1"],
+        "domain": ["-3", "4"],
+        "color": "BLUE",
+        "label": "y=x^2-4x+1",
+        "emphasis": [
+          {"from": "-2", "to": "1", "color": "WARM", "fromState": "CLOSED", "toState": "CLOSED"}
+        ]
+      }
+    ],
+    "axisTickValues": {"x": ["-2", "1", "2"], "y": ["-3", "13"]},
+    "overlays": {
+      "points": [
+        {"id": "A", "x": "-2", "y": "13", "coordinates": true},
+        {"id": "B", "x": "1", "y": "-2", "coordinates": true},
+        {"id": "V", "x": "2", "y": "-3", "coordinates": true}
+      ]
+    }
+  },
+  "caption": "해설: 축 x=2의 왼쪽 구간 [-2,1]에서는 포물선이 감소하므로 왼쪽 끝점 A(-2,13)가 최대를 준다.",
+  "accessibilityDescription": "위로 열린 포물선의 꼭짓점 V는 x=2에 있고, 왼쪽 구간 -2부터 1까지가 강조되어 있다. A(-2,13), B(1,-2)를 비교할 수 있다.",
+  "sourceConditions": [
+    {"id": "q06-s1", "condition": "f(x)=x²-4x+1=(x-2)²-3", "mappedTo": ["graphPlan.curves.0.coefficients", "graphPlan.overlays.points.2"]},
+    {"id": "q06-s2", "condition": "a<1, 최댓값 13은 a=-2에서 얻으며 x=1에서 f(1)=-2", "mappedTo": ["graphPlan.curves.0.emphasis.0", "graphPlan.overlays.points.0", "graphPlan.overlays.points.1"]}
+  ],
+  "newVisualInformation": [
+    "꼭짓점이 제한구간의 오른쪽에 있어 제한구간 전체가 감소구간임을 보여 준다.",
+    "최댓값을 만드는 왼쪽 끝점과 오른쪽 끝점의 높이를 같은 좌표축에서 대조한다."
+  ]
+}

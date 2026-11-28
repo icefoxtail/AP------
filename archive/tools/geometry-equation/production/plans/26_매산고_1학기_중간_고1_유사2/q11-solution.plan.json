@@ -1,0 +1,30 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "$k=0$ 또는 $k=8$이다.",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-4, 4, -5, 22],
+    "curves": [
+      {"id": "f0", "kind": "Y_OF_X", "coefficients": ["6", "-2", "1"], "domain": ["-4", "4"], "color": "BLUE", "label": "y=x^2-2x+6"},
+      {"id": "f8", "kind": "Y_OF_X", "coefficients": ["6", "6", "1"], "domain": ["-4", "4"], "color": "WARM", "label": "y=x^2+6x+6"},
+      {"id": "line", "kind": "LINE", "coefficients": ["2", "2"], "domain": ["-4", "4"], "style": "DASHED", "color": "GREEN", "label": "y=2x+2"}
+    ],
+    "axisTickValues": {"x": ["-2", "2"], "y": ["-2", "6"]},
+    "overlays": {
+      "points": [
+        {"id": "T0", "x": "2", "y": "6", "coordinates": true},
+        {"id": "T8", "x": "-2", "y": "-2", "coordinates": true}
+      ]
+    }
+  },
+  "caption": "해설: k=0에서 (2,6), k=8에서 (-2,-2)를 접점으로 갖는 두 포물선과 같은 직선 y=2x+2를 비교한다.",
+  "accessibilityDescription": "한 직선 y=2x+2에 서로 다른 두 포물선이 각각 접한다. k=0인 포물선의 접점은 (2,6), k=8인 포물선의 접점은 (-2,-2)이다.",
+  "sourceConditions": [
+    {"id": "q11-s1", "condition": "k=0일 때 교점 차식은 (x-2)²이며 접점은 (2,6)", "mappedTo": ["graphPlan.curves.0.coefficients", "graphPlan.curves.2.coefficients", "graphPlan.overlays.points.0"]},
+    {"id": "q11-s2", "condition": "k=8일 때 교점 차식은 (x+2)²이며 접점은 (-2,-2)", "mappedTo": ["graphPlan.curves.1.coefficients", "graphPlan.curves.2.coefficients", "graphPlan.overlays.points.1"]}
+  ],
+  "newVisualInformation": [
+    "서로 다른 두 매개변수 값이 동일한 직선과 서로 다른 위치에서 접하는 두 경우를 한눈에 비교한다.",
+    "각 접점의 좌표가 판별식의 중근과 일치함을 드러낸다."
+  ]
+}
