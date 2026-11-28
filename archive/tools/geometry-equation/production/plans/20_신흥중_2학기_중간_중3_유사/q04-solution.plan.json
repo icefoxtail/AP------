@@ -1,0 +1,45 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-2",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "0",
+        "y": "-2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceQuote": "그래프가 아래로 볼록하므로 $a>0$이다. $x=0$일 때 $y=q$이고, $y$축과 $x$축 아래쪽에서 만나므로 $q<0$이다. 따라서 옳은 것은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "q04_solution",
+      "condition": "그래프가 아래로 볼록하므로 $a>0$이다. $x=0$일 때 $y=q$이고, $y$축과 $x$축 아래쪽에서 만나므로 $q<0$이다. 따라서 옳은 것은 ②이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "caption": "해설 관계: a>0, q<0의 대표 예시 y=x²−2; 실제 미정계수의 확정값이 아님",
+  "accessibilityDescription": "해설 그림: a>0, q<0의 대표 예시 y=x²−2; 실제 미정계수의 확정값이 아님",
+  "newVisualInformation": [
+    "실제 표시 그래프 piecewise-polynomial",
+    "곡선/조각 1개",
+    "표시 점 1개"
+  ]
+}

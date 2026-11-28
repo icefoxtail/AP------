@@ -1,0 +1,77 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "coefficients": [
+          "0",
+          "0",
+          "-1/3"
+        ],
+        "intersectionX": [
+          "0"
+        ]
+      }
+    ],
+    "regions": [
+      {
+        "id": "bandL",
+        "upper": "f",
+        "lower": "g",
+        "from": "-1",
+        "to": "0",
+        "fill": "LIGHT"
+      },
+      {
+        "id": "bandR",
+        "upper": "f",
+        "lower": "g",
+        "from": "0",
+        "to": "1",
+        "fill": "LIGHT"
+      }
+    ]
+  },
+  "sourceQuote": "두 이차함수 $y=x^2$, $y=-\\frac{1}{3}x^2$의 그래프가 다음 그림과 같을 때, 다음 중 두 그래프 사이의 어두운 부분($-\\frac{1}{3}x^2 < y < x^2$, $x\\ne 0$)을 지나는 것은?",
+  "sourceConditions": [
+    {
+      "id": "q02_problem",
+      "condition": "두 이차함수 $y=x^2$, $y=-\\frac{1}{3}x^2$의 그래프가 다음 그림과 같을 때, 다음 중 두 그래프 사이의 어두운 부분($-\\frac{1}{3}x^2 < y < x^2$, $x\\ne 0$)을 지나는 것은?",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "caption": "문제 조건: y=x²와 y=−x²/3 사이 x≠0의 위아래 경계를 두 영역으로 나눠 색칠함",
+  "accessibilityDescription": "문제 그림: y=x²와 y=−x²/3 사이 x≠0의 위아래 경계를 두 영역으로 나눠 색칠함",
+  "newVisualInformation": [
+    "실제 표시 그래프 piecewise-polynomial",
+    "곡선/조각 1개",
+    "표시 점 1개"
+  ]
+}

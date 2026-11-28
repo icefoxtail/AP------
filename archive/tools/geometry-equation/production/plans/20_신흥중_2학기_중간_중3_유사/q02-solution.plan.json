@@ -1,0 +1,72 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=x^2",
+        "color": "BLUE"
+      },
+      {
+        "id": "f2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-1/3"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=-x^2/3",
+        "color": "WARM"
+      },
+      {
+        "id": "f3",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-1/5"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=-x^2/5",
+        "color": "GREEN"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceQuote": "이차함수 $y=ax^2$의 그래프가 $x\\ne 0$인 모든 $x$에 대하여 $-\\frac{1}{3}x^2 < ax^2 < x^2$을 만족하려면 $x^2 > 0$이므로 $$-\\frac{1}{3} < a < 1 \\quad (a \\ne 0)$$ 이어야 한다. 보기의 계수 중 이 범위에 속하는 것은 $-\\frac{1}{",
+  "sourceConditions": [
+    {
+      "id": "q02_solution",
+      "condition": "이차함수 $y=ax^2$의 그래프가 $x\\ne 0$인 모든 $x$에 대하여 $-\\frac{1}{3}x^2 < ax^2 < x^2$을 만족하려면 $x^2 > 0$이므로 $$-\\frac{1}{3} < a < 1 \\quad (a \\ne 0)$$ 이어야 한다. 보기의 계수 중 이 범위에 속하는 것은 $-\\frac{1}{5}$뿐이므로 정답은 ①이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "caption": "해설 관계: 두 경계 포물선 사이에 답의 −x²/5가 놓이는 계수 순서를 확인함",
+  "accessibilityDescription": "해설 그림: 두 경계 포물선 사이에 답의 −x²/5가 놓이는 계수 순서를 확인함",
+  "newVisualInformation": [
+    "실제 표시 그래프 multi-curve",
+    "곡선/조각 3개",
+    "표시 점 0개"
+  ]
+}

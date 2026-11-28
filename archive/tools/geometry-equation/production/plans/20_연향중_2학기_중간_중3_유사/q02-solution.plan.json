@@ -1,0 +1,212 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "D",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "r0",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "r1",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lsAD",
+        "ownerSegment": "sAD",
+        "text": "9",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lsDB",
+        "ownerSegment": "sDB",
+        "text": "16",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lsAC",
+        "ownerSegment": "sAC",
+        "text": "15",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lsBC",
+        "ownerSegment": "sBC",
+        "text": "20",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lsCD",
+        "ownerSegment": "sCD",
+        "text": "12",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 580,
+    "height": 480
+  },
+  "sourceQuote": "직각삼각형 $\\text{ABC}$에서 $\\overline{\\text{CD}}\\perp\\overline{\\text{AB}}$이므로 닮음에 의해 $\\overline{\\text{BC}}^2 = \\overline{\\text{AB}}\\cdot\\overline{\\text{BD}}$이다. $$20^2 = \\overline{\\",
+  "sourceConditions": [
+    {
+      "id": "q02_solution",
+      "condition": "직각삼각형 $\\text{ABC}$에서 $\\overline{\\text{CD}}\\perp\\overline{\\text{AB}}$이므로 닮음에 의해 $\\overline{\\text{BC}}^2 = \\overline{\\text{AB}}\\cdot\\overline{\\text{BD}}$이다. $$20^2 = \\overline{\\text{AB}} \\times 16 \\implies \\overline{\\text{AB}} = \\frac{400}{16} = 25$$ 따라서 $\\overline{\\text{AD}} = 25 - 16 = 9$이고, $\\overline{\\text{AC}} = \\sqrt{25^2 - 20^2} = 15$이다. 그러므로 $\\sin A = \\frac{20}{25} = \\frac{4}{5}$, $\\cos A = \\frac{15}{25} = \\frac{3}{5}$, $\\tan A = \\frac{20}{15} = \\frac{4}{3}$, $\\cos B = \\frac{20}{25} = \\frac{4}{5}$이고, $\\sin B = \\frac{15}{25} = \\frac{3}{5}$이다. 따라서 옳지 않은 것은 ④이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "해설 관계: 닮음과 피타고라스에서 AB25·AD9·AC15를 얻는 두 직각삼각형",
+  "accessibilityDescription": "해설 그림: 닮음과 피타고라스에서 AB25·AD9·AC15를 얻는 두 직각삼각형",
+  "newVisualInformation": [
+    "그린 선분 sAD, sDB, sAC, sBC, sCD",
+    "원 없음",
+    "각 2개",
+    "길이표시 5개"
+  ]
+}

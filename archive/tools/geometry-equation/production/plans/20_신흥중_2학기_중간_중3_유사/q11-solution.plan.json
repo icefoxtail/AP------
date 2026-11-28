@@ -1,0 +1,45 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "-4",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-2",
+        "y": "5"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceQuote": "그래프가 위로 볼록하므로 $a<0$이다. 꼭짓점의 좌표는 $(-p, -q)$이고 제2사분면 위에 있으므로 $$-p < 0 \\implies p > 0, \\quad -q > 0 \\implies q < 0$$ 따라서 $a<0$, $p>0$, $q<0$이므로 정답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "q11_solution",
+      "condition": "그래프가 위로 볼록하므로 $a<0$이다. 꼭짓점의 좌표는 $(-p, -q)$이고 제2사분면 위에 있으므로 $$-p < 0 \\implies p > 0, \\quad -q > 0 \\implies q < 0$$ 따라서 $a<0$, $p>0$, $q<0$이므로 정답은 ①이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "caption": "해설 관계: a=−1,p=2,q=−5의 예시이며 제2사분면의 꼭짓점(−2,5)을 갖는 위로 볼록한 곡선",
+  "accessibilityDescription": "해설 그림: a=−1,p=2,q=−5의 예시이며 제2사분면의 꼭짓점(−2,5)을 갖는 위로 볼록한 곡선",
+  "newVisualInformation": [
+    "실제 표시 그래프 piecewise-polynomial",
+    "곡선/조각 1개",
+    "표시 점 1개"
+  ]
+}

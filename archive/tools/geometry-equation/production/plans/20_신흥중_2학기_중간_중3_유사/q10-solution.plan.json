@@ -1,0 +1,45 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-9",
+          "16",
+          "-4"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "2",
+        "y": "7"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceQuote": "이차함수 $y=-4(x-2)^2+7$의 그래프는 꼭짓점이 $(2, 7)$이고 이차항의 계수 $-4<0$이므로 위로 볼록하다. 따라서 대칭축 $x=2$의 왼쪽 구간인 $x<2$에서 $x$의 값이 증가할 때 $y$의 값도 증가한다. 정답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "q10_solution",
+      "condition": "이차함수 $y=-4(x-2)^2+7$의 그래프는 꼭짓점이 $(2, 7)$이고 이차항의 계수 $-4<0$이므로 위로 볼록하다. 따라서 대칭축 $x=2$의 왼쪽 구간인 $x<2$에서 $x$의 값이 증가할 때 $y$의 값도 증가한다. 정답은 ⑤이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "caption": "해설 관계: 꼭짓점 (2,7)의 왼쪽에서 증가, 오른쪽에서 감소하는 y=−4(x−2)²+7",
+  "accessibilityDescription": "해설 그림: 꼭짓점 (2,7)의 왼쪽에서 증가, 오른쪽에서 감소하는 y=−4(x−2)²+7",
+  "newVisualInformation": [
+    "실제 표시 그래프 piecewise-polynomial",
+    "곡선/조각 1개",
+    "표시 점 1개"
+  ]
+}

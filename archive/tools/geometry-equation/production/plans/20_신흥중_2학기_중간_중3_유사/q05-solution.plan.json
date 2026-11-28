@@ -1,0 +1,55 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "P",
+        "x": "3",
+        "y": "-18"
+      },
+      {
+        "id": "Q",
+        "x": "-2",
+        "y": "-8"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceQuote": "점 $\\text{P}(3, -18)$을 $y=ax^2$에 대입하면 $$-18 = a \\times 3^2 = 9a \\implies a = -2$$ 점 $\\text{Q}(-2, b)$도 $y=-2x^2$의 그래프 위의 점이므로 $$b = -2 \\times (-2)^2 = -8$$ 따라서 $a+b = -2 + (-8)",
+  "sourceConditions": [
+    {
+      "id": "q05_solution",
+      "condition": "점 $\\text{P}(3, -18)$을 $y=ax^2$에 대입하면 $$-18 = a \\times 3^2 = 9a \\implies a = -2$$ 점 $\\text{Q}(-2, b)$도 $y=-2x^2$의 그래프 위의 점이므로 $$b = -2 \\times (-2)^2 = -8$$ 따라서 $a+b = -2 + (-8) = -10$이므로 정답은 ⑤이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "caption": "해설 관계: 해답 계수 a=−2의 포물선에 P(3,−18), Q(−2,−8)가 함께 놓이는지 확인",
+  "accessibilityDescription": "해설 그림: 해답 계수 a=−2의 포물선에 P(3,−18), Q(−2,−8)가 함께 놓이는지 확인",
+  "newVisualInformation": [
+    "실제 표시 그래프 piecewise-polynomial",
+    "곡선/조각 1개",
+    "표시 점 3개"
+  ]
+}

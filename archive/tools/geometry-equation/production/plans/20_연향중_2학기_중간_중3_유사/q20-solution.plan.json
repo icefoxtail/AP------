@@ -1,0 +1,228 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "D",
+    "C",
+    "A"
+  ],
+  "displaySegments": [
+    {
+      "id": "sBA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "r0",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a0",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lsBA",
+        "ownerSegment": "sBA",
+        "text": "6",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lsBD",
+        "ownerSegment": "sBD",
+        "text": "3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lsDC",
+        "ownerSegment": "sDC",
+        "text": "4",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lsAC",
+        "ownerSegment": "sAC",
+        "text": "sqrt(43)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lsAD",
+        "ownerSegment": "sAD",
+        "text": "3sqrt(3)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 580,
+    "height": 480
+  },
+  "sourceQuote": "(1) 꼭짓점 $\\text{A}$에서 변 $\\text{BC}$에 내린 수선의 발을 $\\text{D}$라 하자. $\\triangle\\text{ABC}$의 넓이가 $\\frac{21\\sqrt{3}}{2}\\text{ cm}^2$이므로 $$\\frac{1}{2} \\times 7 \\times \\overline{\\text{AD",
+  "sourceConditions": [
+    {
+      "id": "q20_solution",
+      "condition": "(1) 꼭짓점 $\\text{A}$에서 변 $\\text{BC}$에 내린 수선의 발을 $\\text{D}$라 하자. $\\triangle\\text{ABC}$의 넓이가 $\\frac{21\\sqrt{3}}{2}\\text{ cm}^2$이므로 $$\\frac{1}{2} \\times 7 \\times \\overline{\\text{AD}} = \\frac{21\\sqrt{3}}{2} \\implies \\overline{\\text{AD}} = 3\\sqrt{3}\\text{ (cm)}$$ 직각삼각형 $\\text{ABD}$에서 $\\angle\\text{B}=60^\\circ$이므로 $$\\overline{\\text{AB}} = \\frac{\\overline{\\text{AD}}}{\\sin 60^\\circ} = \\frac{3\\sqrt{3}}{\\frac{\\sqrt{3}}{2}} = 6\\text{ (cm)}$$ (2) $\\overline{\\text{BD}} = 6\\cos 60^\\circ = 3\\text{ cm}$이므로 $\\overline{\\text{DC}} = 7 - 3 = 4\\text{ cm}$이다. 직각삼각형 $\\text{ADC}$에서 피타고라스 정리에 의해 $$\\overline{\\text{AC}} = \\sqrt{(3\\sqrt{3})^2 + 4^2} = \\sqrt{27 + 16} = \\sqrt{43}\\text{ (cm)}$$",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "해설 관계: 넓이로 AD3√3, 이어 AB6·BD3·DC4·AC√43의 수선을 이용",
+  "accessibilityDescription": "해설 그림: 넓이로 AD3√3, 이어 AB6·BD3·DC4·AC√43의 수선을 이용",
+  "newVisualInformation": [
+    "그린 선분 sBA, sBD, sDC, sAC, sAD",
+    "원 없음",
+    "각 2개",
+    "길이표시 5개"
+  ]
+}

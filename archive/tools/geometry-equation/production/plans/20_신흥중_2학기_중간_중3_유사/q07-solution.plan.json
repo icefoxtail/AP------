@@ -1,0 +1,57 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-5",
+          "0",
+          "-3"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=-3x^2-5",
+        "color": "BLUE"
+      },
+      {
+        "id": "f2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "2",
+          "0",
+          "-3"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=-3x^2+2",
+        "color": "WARM"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceQuote": "이차함수 $y=-3x^2-5$의 그래프를 $y$축의 방향으로 $k$만큼 평행이동한 식은 $$y = -3x^2 - 5 + k$$ 이 그래프가 $y = -3x^2 + 2$와 일치하므로 $$-5 + k = 2 \\implies k = 7$$ 따라서 정답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "q07_solution",
+      "condition": "이차함수 $y=-3x^2-5$의 그래프를 $y$축의 방향으로 $k$만큼 평행이동한 식은 $$y = -3x^2 - 5 + k$$ 이 그래프가 $y = -3x^2 + 2$와 일치하므로 $$-5 + k = 2 \\implies k = 7$$ 따라서 정답은 ③이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "caption": "해설 관계: 같은 대칭축의 꼭짓점 높이가 −5와 2이므로 7만큼 위로 이동함",
+  "accessibilityDescription": "해설 그림: 같은 대칭축의 꼭짓점 높이가 −5와 2이므로 7만큼 위로 이동함",
+  "newVisualInformation": [
+    "실제 표시 그래프 multi-curve",
+    "곡선/조각 2개",
+    "표시 점 0개"
+  ]
+}

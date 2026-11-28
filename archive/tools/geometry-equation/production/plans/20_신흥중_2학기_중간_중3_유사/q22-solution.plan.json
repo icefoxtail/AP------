@@ -1,0 +1,45 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-22",
+          "-12",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-3",
+        "y": "-4"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceQuote": "이차함수 $y = -2(x+3)^2 - 4$는 이차항 계수가 $-2<0$이므로 위로 볼록하다. (1) 꼭짓점의 좌표는 $(-3, -4)$이다. (2) 축의 방정식은 $x=-3$이다. (3) $x$축에 대하여 대칭이동하면 $y$ 대신 $-y$를 대입하므로 $y = 2(x+3)^2 + 4$이다. (4) 위로 볼록하므",
+  "sourceConditions": [
+    {
+      "id": "q22_solution",
+      "condition": "이차함수 $y = -2(x+3)^2 - 4$는 이차항 계수가 $-2<0$이므로 위로 볼록하다. (1) 꼭짓점의 좌표는 $(-3, -4)$이다. (2) 축의 방정식은 $x=-3$이다. (3) $x$축에 대하여 대칭이동하면 $y$ 대신 $-y$를 대입하므로 $y = 2(x+3)^2 + 4$이다. (4) 위로 볼록하므로 최댓값 $-4$가 존재한다(최솟값은 없다). (5) 축 $x=-3$을 기준으로 $x<-3$일 때 $x$가 증가하면 $y$도 증가하고, $x>-3$일 때 $x$가 증가하면 $y$는 감소한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "caption": "해설 관계: y=−2(x+3)²−4 꼭짓점(−3,−4)와 대칭축 x=−3",
+  "accessibilityDescription": "해설 그림: y=−2(x+3)²−4 꼭짓점(−3,−4)와 대칭축 x=−3",
+  "newVisualInformation": [
+    "실제 표시 그래프 piecewise-polynomial",
+    "곡선/조각 1개",
+    "표시 점 1개"
+  ]
+}

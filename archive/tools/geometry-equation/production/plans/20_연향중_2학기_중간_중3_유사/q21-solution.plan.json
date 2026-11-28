@@ -1,0 +1,361 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "27",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "F",
+    "E",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sAF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "sFC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "sOE",
+      "refs": [
+        "O",
+        "E"
+      ]
+    },
+    {
+      "id": "sOF",
+      "refs": [
+        "O",
+        "F"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "r0",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "r1",
+        "refs": [
+          "O",
+          "D",
+          "B"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "r2",
+        "refs": [
+          "O",
+          "E",
+          "B"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "r3",
+        "refs": [
+          "O",
+          "F",
+          "C"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lsAD",
+        "ownerSegment": "sAD",
+        "text": "3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lsDB",
+        "ownerSegment": "sDB",
+        "text": "6",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lsFC",
+        "ownerSegment": "sFC",
+        "text": "9",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lsBE",
+        "ownerSegment": "sBE",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lsEC",
+        "ownerSegment": "sEC",
+        "text": "9",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lsOD",
+        "ownerSegment": "sOD",
+        "text": "3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 580,
+    "height": 480
+  },
+  "sourceQuote": "(1) 원 $\\text{O}$의 반지름의 길이를 $r\\text{ cm}$라 하면 $\\angle\\text{A}=90^\\circ$이고 $\\overline{\\text{OD}}\\perp\\overline{\\text{AB}}$, $\\overline{\\text{OF}}\\perp\\overline{\\text{AC}}$이므로 $\\",
+  "sourceConditions": [
+    {
+      "id": "q21_solution",
+      "condition": "(1) 원 $\\text{O}$의 반지름의 길이를 $r\\text{ cm}$라 하면 $\\angle\\text{A}=90^\\circ$이고 $\\overline{\\text{OD}}\\perp\\overline{\\text{AB}}$, $\\overline{\\text{OF}}\\perp\\overline{\\text{AC}}$이므로 $\\overline{\\text{AD}}=\\overline{\\text{AF}}=r\\text{ cm}$이다. 접선의 길이가 같으므로 $\\overline{\\text{BD}}=\\overline{\\text{BE}}=6\\text{ cm}$, $\\overline{\\text{CF}}=\\overline{\\text{CE}}=9\\text{ cm}$이고 $\\overline{\\text{BC}}=6+9=15\\text{ cm}$이다. 직각삼각형 $\\text{ABC}$에서 피타고라스 정리에 의해 $$(r + 6)^2 + (r + 9)^2 = 15^2$$ $$2r^2 + 30r + 117 = 225 \\implies r^2 + 15r - 54 = (r+18)(r-3) = 0$$ $r>0$이므로 $r = 3\\text{ (cm)}$이다. (2) $\\overline{\\text{OE}}\\perp\\overline{\\text{BC}}$이고 $\\overline{\\text{OE}}=3\\text{ cm}$이므로 두 직각삼각형 $\\text{OBE}$, $\\text{OCE}$에서 $$\\overline{\\text{OB}} = \\sqrt{6^2 + 3^2} = \\sqrt{45} = 3\\sqrt{5}\\text{ (cm)}, \\quad \\overline{\\text{OC}} = \\sqrt{9^2 + 3^2} = \\sqrt{90} = 3\\sqrt{10}\\text{ (cm)}$$ 따라서 $\\triangle\\text{OBC}$의 둘레의 길이는 $(15 + 3\\sqrt{5} + 3\\sqrt{10})\\text{ cm}$이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "해설 관계: 직각삼각형의 접선 길이에서 r3 및 OB3√5·OC3√10의 둘레 관계",
+  "accessibilityDescription": "해설 그림: 직각삼각형의 접선 길이에서 r3 및 OB3√5·OC3√10의 둘레 관계",
+  "newVisualInformation": [
+    "그린 선분 sAD, sDB, sAF, sFC, sBE, sEC, sOD, sOE, sOF, sOB, sOC",
+    "원 k",
+    "각 4개",
+    "길이표시 6개"
+  ]
+}

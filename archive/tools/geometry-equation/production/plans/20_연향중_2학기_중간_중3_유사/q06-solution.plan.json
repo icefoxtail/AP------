@@ -1,0 +1,293 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "A",
+    "E",
+    "D",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sBA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "r0",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a0",
+        "refs": [
+          "C",
+          "D",
+          "E"
+        ],
+        "value": 30,
+        "label": "30",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "D",
+          "B",
+          "E"
+        ],
+        "value": 15,
+        "label": "15",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lsEC",
+        "ownerSegment": "sEC",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lsCD",
+        "ownerSegment": "sCD",
+        "text": "3sqrt(3)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lsDB",
+        "ownerSegment": "sDB",
+        "text": "6",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lsDE",
+        "ownerSegment": "sDE",
+        "text": "6",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 580,
+    "height": 480
+  },
+  "sourceQuote": "직각삼각형 $\\text{DCE}$에서 $\\overline{\\text{CE}}=3$, $\\angle\\text{CDE}=30^\\circ$이므로 $$\\overline{\\text{DC}} = \\frac{3}{\\tan 30^\\circ} = 3\\sqrt{3}, \\quad \\overline{\\text{DE}} = \\frac{",
+  "sourceConditions": [
+    {
+      "id": "q06_solution",
+      "condition": "직각삼각형 $\\text{DCE}$에서 $\\overline{\\text{CE}}=3$, $\\angle\\text{CDE}=30^\\circ$이므로 $$\\overline{\\text{DC}} = \\frac{3}{\\tan 30^\\circ} = 3\\sqrt{3}, \\quad \\overline{\\text{DE}} = \\frac{3}{\\sin 30^\\circ} = 6$$ $\\triangle\\text{BDE}$에서 외각 $\\angle\\text{CDE}=30^\\circ = 15^\\circ + \\angle\\text{BED}$이므로 $\\angle\\text{BED}=15^\\circ = \\angle\\text{DBE}$이고, 따라서 $\\overline{\\text{BD}}=\\overline{\\text{DE}}=6$이다. 그러므로 $\\overline{\\text{BC}} = 6 + 3\\sqrt{3}$이고 $$\\tan 15^\\circ = \\frac{\\overline{\\text{CE}}}{\\overline{\\text{BC}}} = \\frac{3}{6 + 3\\sqrt{3}} = \\frac{1}{2+\\sqrt{3}} = 2 - \\sqrt{3}$$ 따라서 정답은 ②이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "해설 관계: DE=BD=6, DC=3√3에서 tan15°=3/(6+3√3)",
+  "accessibilityDescription": "해설 그림: DE=BD=6, DC=3√3에서 tan15°=3/(6+3√3)",
+  "newVisualInformation": [
+    "그린 선분 sAE, sEC, sCD, sDB, sBA, sDE, sBE",
+    "원 없음",
+    "각 3개",
+    "길이표시 4개"
+  ]
+}

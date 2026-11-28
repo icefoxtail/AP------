@@ -1,0 +1,161 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "5"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "A",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "r0",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lsCA",
+        "ownerSegment": "sCA",
+        "text": "1",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lsCB",
+        "ownerSegment": "sCB",
+        "text": "sqrt(5)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lsAB",
+        "ownerSegment": "sAB",
+        "text": "sqrt(6)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 580,
+    "height": 480
+  },
+  "sourceQuote": "$\\tan A = \\frac{\\overline{\\text{BC}}}{\\overline{\\text{AC}}} = \\sqrt{5}$이므로 $\\overline{\\text{AC}}=1$, $\\overline{\\text{BC}}=\\sqrt{5}$로 두면 피타고라스 정리에 의해 $$\\overline{\\text{AB}} = ",
+  "sourceConditions": [
+    {
+      "id": "q01_solution",
+      "condition": "$\\tan A = \\frac{\\overline{\\text{BC}}}{\\overline{\\text{AC}}} = \\sqrt{5}$이므로 $\\overline{\\text{AC}}=1$, $\\overline{\\text{BC}}=\\sqrt{5}$로 두면 피타고라스 정리에 의해 $$\\overline{\\text{AB}} = \\sqrt{1^2 + (\\sqrt{5})^2} = \\sqrt{6}$$ 따라서 $\\sin A = \\frac{\\sqrt{5}}{\\sqrt{6}} = \\frac{\\sqrt{30}}{6}$이고, $\\angle\\text{A}+\\angle\\text{B}=90^\\circ$이므로 $\\cos B = \\sin A = \\frac{\\sqrt{30}}{6}$이다. 그러므로 $$\\sin A + \\cos B = \\frac{\\sqrt{30}}{6} + \\frac{\\sqrt{30}}{6} = \\frac{\\sqrt{30}}{3}$$ 따라서 정답은 ②이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "해설 관계: AC:BC=1:√5, AB=√6를 이용하여 sinA=cosB",
+  "accessibilityDescription": "해설 그림: AC:BC=1:√5, AB=√6를 이용하여 sinA=cosB",
+  "newVisualInformation": [
+    "그린 선분 sCA, sCB, sAB",
+    "원 없음",
+    "각 1개",
+    "길이표시 3개"
+  ]
+}

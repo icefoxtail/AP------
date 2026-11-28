@@ -1,0 +1,159 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "A"
+  ],
+  "displaySegments": [
+    {
+      "id": "sBA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lsBC",
+        "ownerSegment": "sBC",
+        "text": "7",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 580,
+    "height": 480
+  },
+  "sourceQuote": "오른쪽 그림과 같은 $\\triangle\\text{ABC}$에서 $\\overline{\\text{BC}}=7\\text{ cm}$, $\\angle\\text{B}=60^\\circ$이고 $\\triangle\\text{ABC}$의 넓이가 $\\frac{21\\sqrt{3}}{2}\\text{ cm}^2$일 때, 다음 물음에 답하시",
+  "sourceConditions": [
+    {
+      "id": "q20_problem",
+      "condition": "오른쪽 그림과 같은 $\\triangle\\text{ABC}$에서 $\\overline{\\text{BC}}=7\\text{ cm}$, $\\angle\\text{B}=60^\\circ$이고 $\\triangle\\text{ABC}$의 넓이가 $\\frac{21\\sqrt{3}}{2}\\text{ cm}^2$일 때, 다음 물음에 답하시오. (1) $\\overline{\\text{AB}}$의 길이를 구하시오. [3점] (2) $\\overline{\\text{AC}}$의 길이를 구하시오. [4점]",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "문제 조건: BC=7, ∠B60°, △ABC 넓이 21√3/2 조건과 높이",
+  "accessibilityDescription": "문제 그림: BC=7, ∠B60°, △ABC 넓이 21√3/2 조건과 높이",
+  "newVisualInformation": [
+    "그린 선분 sBA, sBC, sAC",
+    "원 없음",
+    "각 1개",
+    "길이표시 1개"
+  ]
+}
