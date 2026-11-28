@@ -1,23 +1,72 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curve": "-x^2 + 10*x",
-  "points": {
-    "A": [
-      4,
-      24
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "10",
+      "-1"
     ],
-    "B": [
-      4,
-      0
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      10
     ],
-    "C": [
-      6,
-      0
+    "viewport": [
+      -1,
+      11,
+      -1,
+      27
     ],
-    "D": [
-      6,
-      24
-    ]
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "hideLabels": [
+      "formula"
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "2"
+        },
+        {
+          "id": "B",
+          "axis": "x",
+          "value": "2"
+        },
+        {
+          "id": "C",
+          "axis": "x",
+          "value": "8"
+        },
+        {
+          "id": "D",
+          "curveX": "8"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "R",
+          "points": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "fill": "NONE"
+        }
+      ]
+    },
+    "pointNames": {
+      "A": "A",
+      "B": "B",
+      "C": "C",
+      "D": "D"
+    }
   },
-  "caption": "축이 x=5인 포물선 y=-x²+bx와 x축 사이에 내접하는 직사각형 ABCD"
+  "caption": "축이 x=5인 포물선 위 A,D와 x축 위 B,C로 이루어진 직사각형 예시(계수 b와 최대 둘레는 표시하지 않음)."
 }

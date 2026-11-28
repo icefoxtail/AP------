@@ -1,7 +1,20 @@
 {
   "capability": "piecewise-polynomial-spike-v1",
   "graphPlan": {
-    "family": "piecewise_polynomial",
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "12",
+          "0",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
     "domain": [
       -7,
       4
@@ -12,58 +25,87 @@
       -26,
       14
     ],
-    "pieces": [
-      {
-        "domain": [
-          -7,
-          4
-        ],
-        "coefficients": [
-          "12",
-          "0",
-          "-1"
-        ]
-      }
-    ],
-    "referenceLines": [
-      {
-        "slope": "4",
-        "intercept": "0",
-        "label": "y=kx"
-      }
-    ],
     "requiredPoints": [
       {
-        "id": "A",
-        "x": "2",
-        "y": "8",
-        "label": "A"
-      },
-      {
-        "id": "B",
-        "x": "-6",
-        "y": "-24",
-        "label": "B"
-      },
-      {
-        "id": "A1",
-        "x": "2",
-        "y": "0",
-        "label": "A'"
-      },
-      {
-        "id": "B1",
-        "x": "-6",
-        "y": "0",
-        "label": "B'"
-      },
-      {
-        "id": "O",
+        "id": "V",
         "x": "0",
-        "y": "0",
-        "label": "O"
+        "y": "12",
+        "marker": "NONE"
       }
-    ]
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "g",
+          "slope": "4",
+          "intercept": "0",
+          "label": "y=kx",
+          "color": "BLUE"
+        }
+      ],
+      "points": [
+        { "id": "A", "curveX": "2" },
+        { "id": "B", "curveX": "-6" },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "A1",
+          "x": "2",
+          "y": "0"
+        },
+        {
+          "id": "B1",
+          "x": "-6",
+          "y": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "hA",
+          "from": "A",
+          "to": "A1",
+          "dashed": true
+        },
+        {
+          "id": "hB",
+          "from": "B",
+          "to": "B1",
+          "dashed": true
+        }
+      ]
+    }
   },
-  "caption": "y=12-x^2과 직선 y=kx의 교점 A, B 및 x축 수선의 발 A', B'"
+  "pointNames": {
+    "A1": "A'",
+    "B1": "B'"
+  },
+  "caption": "포물선과 직선 y=kx의 두 교점 A, B 및 각각의 x축 수선",
+  "sourceQuote": "이차함수 $y=12-x^2$의 그래프가 직선 $y=kx$와",
+  "sourceConditions": [
+    {
+      "id": "parabola",
+      "condition": "문제에 제시된 포물선 y=12-x²",
+      "mappedTo": "graphPlan.pieces[0]"
+    },
+    {
+      "id": "line",
+      "condition": "양수 k에 대한 y=kx는 두 점 A,B에서 포물선과 만난다. 좌표는 조건을 만족하는 작도용 대표값이며 수치 라벨로 표시하지 않는다.",
+      "mappedTo": "graphPlan.overlays.lines[0]"
+    },
+    {
+      "id": "feet",
+      "condition": "A', B'는 A, B에서 x축으로 내린 수선의 발이다.",
+      "mappedTo": "graphPlan.overlays.points;graphPlan.overlays.segments"
+    }
+  ],
+  "newVisualInformation": [
+    "교점이 x축의 양쪽에 있으며 두 수선으로 직각삼각형이 생김을 보여 준다. 정답 기울기는 표기하지 않는다."
+  ]
 }

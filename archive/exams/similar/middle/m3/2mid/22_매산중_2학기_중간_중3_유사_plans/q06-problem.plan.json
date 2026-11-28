@@ -1,39 +1,13 @@
 {
-  "capability": "piecewise-polynomial-spike-v1",
+  "capability": "multi-curve-figure-v1",
   "graphPlan": {
-    "family": "piecewise-polynomial",
-    "pieces": [
-      {
-        "coefficients": [
-          "0",
-          "0",
-          "2"
-        ]
-      }
+    "family":"multi-curve",
+    "viewport":[-2.5,2.5,-1,8],
+    "curves":[
+      {"id":"f","kind":"Y_OF_X","coefficients":["0","0","2"],"domain":["-2","2"],"label":"y=2x^2"},
+      {"id":"g","kind":"Y_OF_X","coefficients":["0","0","3"],"domain":["-2","2"],"style":"DASHED","hideLabel":true}
     ],
-    "referenceCurves": [
-      {
-        "id": "g",
-        "coefficients": [
-          "0",
-          "0",
-          "3"
-        ]
-      }
-    ],
-    "sourceDomain": {
-      "kind": "ALL_REALS"
-    },
-    "domain": [
-      -2,
-      2
-    ],
-    "viewport": [
-      -2.5,
-      2.5,
-      -1,
-      8
-    ]
+    "axisTickValues":{"x":[],"y":[]}
   },
-  "caption": "원점을 꼭짓점으로 하고 아래로 볼록한 y=2x^2과 폭이 더 좁은 y=ax^2의 그래프"
+  "caption": "실선 y=2x²과 그보다 폭이 좁은 점선 y=ax²을 원점 꼭짓점으로 비교한다. 미지 계수 a는 그림에 표시하지 않는다."
 }

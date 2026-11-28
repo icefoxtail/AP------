@@ -1,19 +1,48 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curve": "-x^2 + 6*x + 7",
-  "points": {
-    "A": [
-      3,
-      16
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      8,
+      -3,
+      18
     ],
-    "B": [
-      0,
-      7
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "7",
+          "6",
+          "-1"
+        ],
+        "domain": [
+          "-2",
+          "8"
+        ],
+        "hideLabel": true
+      }
     ],
-    "C": [
-      7,
-      0
-    ]
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "3",
+          "y": "16"
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "7"
+        },
+        {
+          "id": "C",
+          "x": "7",
+          "y": "0"
+        }
+      ]
+    }
   },
-  "caption": "꼭짓점 A(3, 16), y절편 B(0, 7), x절편 C(7, 0)을 꼭짓점으로 하는 삼각형 ABC"
+  "caption": "아래로 열린 포물선과 점 A(꼭짓점), B(y축 교점), C(양의 x축 교점)를 나타낸 문제 그림. 좌표와 넓이는 표시하지 않는다."
 }

@@ -1,19 +1,16 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curve": "(x - 2)^2",
-  "points": {
-    "A": [
-      2,
-      0
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-2, 6, -1, 11],
+    "curves": [
+      {"id":"f","kind":"Y_OF_X","coefficients":["4","-4","1"],"domain":["-1","5"],"hideLabel":true}
     ],
-    "B": [
-      -1,
-      9
-    ],
-    "C": [
-      5,
-      9
-    ]
+    "axisTickValues": {"x":["2"],"y":["9"]},
+    "overlays": {
+      "points": [{"id":"A","x":"2","y":"0"},{"id":"B","x":"-1","y":"9"},{"id":"C","x":"5","y":"9"}],
+      "segments": [{"id":"sAB","from":"A","to":"B"},{"id":"sBC","from":"B","to":"C"},{"id":"sCA","from":"C","to":"A"}]
+    }
   },
-  "caption": "꼭짓점 A(2, 0)과 y=9 위의 두 점 B, C가 이루는 삼각형 ABC"
+  "caption": "꼭짓점 A(2,0)와 포물선 위의 두 점 B,C를 잇는 삼각형 ABC. 두 점의 높이는 9이고 면적과 함수 계수는 적지 않는다."
 }

@@ -1,23 +1,73 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curve": "0.25*x^2",
-  "points": {
-    "B": [
-      1,
-      0.25
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "0",
+      "1/4"
     ],
-    "C": [
-      3,
-      0.25
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      5
     ],
-    "D": [
-      3,
-      2.25
+    "viewport": [
+      -1,
+      6,
+      -1,
+      7
     ],
-    "A": [
-      1,
-      2.25
-    ]
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "hideLabels": [
+      "formula"
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "9/4"
+        },
+        {
+          "id": "B",
+          "curveX": "1"
+        },
+        {
+          "id": "C",
+          "x": "3",
+          "y": "1/4"
+        },
+        {
+          "id": "D",
+          "curveX": "3"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "R",
+          "points": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "fill": "NONE"
+        }
+      ]
+    },
+    "pointNames": {
+      "A": "A",
+      "B": "B",
+      "C": "C",
+      "D": "D"
+    },
+    "formulaLabel": "y=x^2/4"
   },
-  "caption": "포물선 y=1/4x² 위의 두 점 B, D를 대각선 꼭짓점으로 하는 정사각형 ABCD"
+  "caption": "제1사분면에서 각 변이 축에 평행하고 B,D가 y=x²/4 위에 놓인 정사각형 ABCD. 둘레는 표시하지 않음."
 }

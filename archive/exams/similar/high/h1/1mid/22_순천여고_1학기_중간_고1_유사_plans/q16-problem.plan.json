@@ -1,86 +1,168 @@
 {
-  "capability": "plane",
-  "title": "반지름이 5인 원에 내접하는 직사각형",
-  "points": [
-    {
-      "id": "O",
-      "x": 0,
-      "y": 0,
-      "label": "O"
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
     },
-    {
-      "id": "A",
-      "x": -4,
-      "y": 3,
-      "label": "A"
-    },
-    {
-      "id": "B",
-      "x": -4,
-      "y": -3,
-      "label": "B"
-    },
-    {
-      "id": "C",
-      "x": 4,
-      "y": -3,
-      "label": "C"
-    },
-    {
-      "id": "D",
-      "x": 4,
-      "y": 3,
-      "label": "D"
-    }
-  ],
-  "circles": [
-    {
-      "id": "k",
-      "center": "O",
-      "radius": 5
-    }
-  ],
-  "segments": [
-    {
-      "id": "sAB",
-      "from": "A",
-      "to": "B"
-    },
-    {
-      "id": "sBC",
-      "from": "B",
-      "to": "C"
-    },
-    {
-      "id": "sCD",
-      "from": "C",
-      "to": "D"
-    },
-    {
-      "id": "sDA",
-      "from": "D",
-      "to": "A"
-    },
-    {
-      "id": "sAC",
-      "from": "A",
-      "to": "C",
-      "label": "10"
-    }
-  ],
-  "planeMarks": {
-    "facts": [
+    "nodes": [
       {
-        "kind": "ON_CIRCLE",
-        "circle": "k",
-        "points": [
-          "A",
-          "B",
-          "C",
-          "D"
-        ]
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
       }
     ]
   },
-  "caption": "반지름이 5인 원에 내접하는 둘레 28인 직사각형 ABCD"
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "ab",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "bc",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "cd",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "da",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "caption": "반지름 5인 원에 둘레 28인 직사각형 ABCD가 내접한다.",
+  "displayCircles": [
+    "k"
+  ],
+  "hiddenPointNames": [
+    "O"
+  ],
+  "hiddenPointStyle": "NONE"
 }

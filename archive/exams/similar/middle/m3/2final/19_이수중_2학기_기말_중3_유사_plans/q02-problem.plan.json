@@ -1,9 +1,166 @@
 {
   "capability": "construction-spike-v1",
-  "realization": {
-    "recipeId": "PLANE_FIGURE_v1",
-    "unit": "source-length",
-    "reflectionEquivalent": false
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "7"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
   },
-  "caption": "빗변 AC=16, sin A=3/4인 직각삼각형에서 BC=12, AB=4루트7 산출"
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "B90",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "hyp",
+        "from": "A",
+        "to": "C",
+        "label": "16",
+        "side": "RIGHT",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 630,
+    "height": 460
+  },
+  "caption": "빗변 AC=16cm, 직각 B, sin A=3/4인 삼각형 ABC.",
+  "accessibilityDescription": "점 B에서 직각인 삼각형 ABC이고 빗변 AC는 16cm다. 각 A의 사인은 3/4이다. 구하는 AB,BC의 길이는 적지 않는다.",
+  "sourceQuote": "직각삼각형 $ABC$에서 $\\sin A = \\dfrac{3}{4}$",
+  "sourceConditions": [
+    {
+      "id": "right",
+      "condition": "∠B=90°, AC=16 cm",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "rightAngles",
+        "planeMarks.dimensions"
+      ]
+    },
+    {
+      "id": "sine",
+      "condition": "sinA=BC/AC=3/4; 길이값을 내부에서 정확히 산출하되 문제용 그림에 답 AB,BC를 표시하지 않는다",
+      "mappedTo": [
+        "mathPlan.nodes"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "AB=4√7, BC=12가 내부 좌표로 성립해 주어진 직각삼각형의 사인비를 정확히 보존한다."
+  ]
 }

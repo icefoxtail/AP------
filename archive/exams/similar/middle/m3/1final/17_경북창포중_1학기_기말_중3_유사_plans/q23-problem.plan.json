@@ -1,10 +1,467 @@
 {
-  "capability": "SOURCE_GEOMETRY_RECTANGLE_v1",
-  "grid": [
-    3,
-    2
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P0X0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P0X3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P0X6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3X0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3X3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3X6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P6X0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P6X3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P6X6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P9X0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P9X3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P9X6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P11X0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "11"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P11X6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "11"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P0X0",
+    "P0X3",
+    "P0X6",
+    "P3X0",
+    "P3X3",
+    "P3X6",
+    "P6X0",
+    "P6X3",
+    "P6X6",
+    "P9X0",
+    "P9X3",
+    "P9X6",
+    "P11X0",
+    "P11X6"
   ],
-  "extraMarginRight": 2,
-  "totalArea": 66,
-  "caption": "넓이 66cm²인 직사각형 공간에 정사각형 타일 6개를 3×2로 붙이고 가로 2cm 공간이 남은 그림"
+  "displaySegments": [
+    {
+      "id": "h0i0",
+      "refs": [
+        "P0X0",
+        "P3X0"
+      ]
+    },
+    {
+      "id": "h0i1",
+      "refs": [
+        "P3X0",
+        "P6X0"
+      ]
+    },
+    {
+      "id": "h0i2",
+      "refs": [
+        "P6X0",
+        "P9X0"
+      ]
+    },
+    {
+      "id": "h3i0",
+      "refs": [
+        "P0X3",
+        "P3X3"
+      ]
+    },
+    {
+      "id": "h3i1",
+      "refs": [
+        "P3X3",
+        "P6X3"
+      ]
+    },
+    {
+      "id": "h3i2",
+      "refs": [
+        "P6X3",
+        "P9X3"
+      ]
+    },
+    {
+      "id": "h6i0",
+      "refs": [
+        "P0X6",
+        "P3X6"
+      ]
+    },
+    {
+      "id": "h6i1",
+      "refs": [
+        "P3X6",
+        "P6X6"
+      ]
+    },
+    {
+      "id": "h6i2",
+      "refs": [
+        "P6X6",
+        "P9X6"
+      ]
+    },
+    {
+      "id": "v0i0",
+      "refs": [
+        "P0X0",
+        "P0X3"
+      ]
+    },
+    {
+      "id": "v0i1",
+      "refs": [
+        "P0X3",
+        "P0X6"
+      ]
+    },
+    {
+      "id": "v3i0",
+      "refs": [
+        "P3X0",
+        "P3X3"
+      ]
+    },
+    {
+      "id": "v3i1",
+      "refs": [
+        "P3X3",
+        "P3X6"
+      ]
+    },
+    {
+      "id": "v6i0",
+      "refs": [
+        "P6X0",
+        "P6X3"
+      ]
+    },
+    {
+      "id": "v6i1",
+      "refs": [
+        "P6X3",
+        "P6X6"
+      ]
+    },
+    {
+      "id": "v9i0",
+      "refs": [
+        "P9X0",
+        "P9X3"
+      ]
+    },
+    {
+      "id": "v9i1",
+      "refs": [
+        "P9X3",
+        "P9X6"
+      ]
+    },
+    {
+      "id": "extraBottom",
+      "refs": [
+        "P9X0",
+        "P11X0"
+      ]
+    },
+    {
+      "id": "extraTop",
+      "refs": [
+        "P9X6",
+        "P11X6"
+      ]
+    },
+    {
+      "id": "extraSide",
+      "refs": [
+        "P11X0",
+        "P11X6"
+      ]
+    }
+  ],
+  "caption": "3열×2행의 정사각형 타일 6개와 폭 2 cm인 빈 직사각형. 전체 넓이는 66 cm²이다.",
+  "hiddenPointNames": [
+    "P0X0",
+    "P0X3",
+    "P0X6",
+    "P3X0",
+    "P3X3",
+    "P3X6",
+    "P6X0",
+    "P6X3",
+    "P6X6",
+    "P9X0",
+    "P9X3",
+    "P9X6",
+    "P11X0",
+    "P11X6"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dExtra",
+        "from": "P9X6",
+        "to": "P11X6",
+        "label": "2",
+        "unit": "cm",
+        "side": "ABOVE"
+      }
+    ]
+  }
 }

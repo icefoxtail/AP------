@@ -1,26 +1,78 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curves": [
-    "x^2",
-    "(1/9)*x^2"
-  ],
-  "points": {
-    "A": [
-      -9,
-      9
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-7/2",
+          "7/2"
+        ],
+        "label": "y=x^2"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1/9"
+        ],
+        "domain": [
+          "-10",
+          "10"
+        ]
+      }
     ],
-    "B": [
-      -3,
-      9
-    ],
-    "C": [
-      3,
-      9
-    ],
-    "D": [
-      9,
-      9
-    ]
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "y9",
+          "slope": "0",
+          "intercept": "9",
+          "label": "y=9"
+        }
+      ],
+      "points": [
+        {
+          "id": "A",
+          "x": "-9",
+          "y": "9"
+        },
+        {
+          "id": "B",
+          "x": "-3",
+          "y": "9"
+        },
+        {
+          "id": "C",
+          "x": "3",
+          "y": "9"
+        },
+        {
+          "id": "D",
+          "x": "9",
+          "y": "9"
+        }
+      ]
+    }
   },
-  "caption": "직선 y=9와 두 포물선 y=x², y=ax²의 네 교점 A, B, C, D가 등간격인 그림"
+  "caption": "y=9와 두 포물선 y=x², y=ax²가 만나는 네 점 A,B,C,D의 간격이 같다(상수 a와 교점의 x좌표는 표시하지 않음).",
+  "pointNames": {
+    "A": "A",
+    "B": "B",
+    "C": "C",
+    "D": "D"
+  }
 }
