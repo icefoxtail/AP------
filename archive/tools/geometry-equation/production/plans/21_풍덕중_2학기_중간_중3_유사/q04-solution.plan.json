@@ -1,0 +1,189 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lx",
+        "ownerSegment": "sAB",
+        "text": "3"
+      },
+      {
+        "id": "ly",
+        "ownerSegment": "sBC",
+        "text": "3sqrt(3)"
+      },
+      {
+        "id": "lAC",
+        "ownerSegment": "sCA",
+        "text": "6"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 520
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "caption": "해설 관계: 직각삼각형 ABC에서 빗변 AC가 6이고 각 A가 60도이며, 두 변 AB와 BC를 각각 x, y로 둔 그림이다.",
+  "accessibilityDescription": "해설에 사용되는 해설 관계: 직각삼각형 ABC에서 빗변 AC가 6이고 각 A가 60도이며, 두 변 AB와 BC를 각각 x, y로 둔 그림이다.",
+  "newVisualInformation": [
+    "그려진 선분 sAB, sBC, sCA",
+    "expressionLabels 3개",
+    "angles 2개"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q04s",
+      "condition": "직각삼각형 $\\text{ABC}$에서 빗변이 $\\overline{\\text{AC}}=6$이고 $\\angle\\text{A}=60^\\circ$이므로 $$x = 6\\cos 60^\\circ = 6 \\times \\frac{1}{2} = 3$$ $$y = 6\\sin 60^\\circ = 6 \\times \\frac{\\sqrt{3}}{2} = 3\\sqrt{3}$$ 따라서 $x=3$, $y=3\\sqrt{3}$이므로 정답은 ①이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "sourceQuote": "다음 직각삼각형 $\\text{ABC}$에서 $\\angle\\tex"
+}

@@ -1,0 +1,323 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "50"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "axis",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "C",
+          "axis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l1",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l2",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "D",
+          "V"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "l1",
+          "l2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "U"
+  ],
+  "hiddenPointNames": [
+    "U"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sAU",
+      "refs": [
+        "A",
+        "U"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "A",
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "C",
+          "A",
+          "B"
+        ],
+        "value": 50,
+        "label": "x",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "right_0",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcDU",
+        "circle": "circ",
+        "center": "A",
+        "from": "D",
+        "to": "U",
+        "side": "MINOR",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAU",
+        "ownerSegment": "sAU",
+        "text": "1"
+      }
+    ]
+  },
+  "caption": "문제 조건: 반지름의 길이가 1인 사분원과 직각삼각형을 이용하여 각 x에 대한 삼각비를 나타낸 그림이다.",
+  "accessibilityDescription": "문제에 주어진 문제 조건: 반지름의 길이가 1인 사분원과 직각삼각형을 이용하여 각 x에 대한 삼각비를 나타낸 그림이다.",
+  "newVisualInformation": [
+    "그려진 선분 sAB, sBD, sAU, sAC, sCE, sBC, sDE",
+    "angles 2개",
+    "arcs 1개",
+    "expressionLabels 1개"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q03p",
+      "condition": "오른쪽 그림과 같이 반지름의 길이가 $1$인 사분원에서 $\\sin x$가 나타내는 선분을 구하면?",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "sourceQuote": "오른쪽 그림과 같이 반지름의 길이가 $1$인 사분원에서 $\\si"
+}

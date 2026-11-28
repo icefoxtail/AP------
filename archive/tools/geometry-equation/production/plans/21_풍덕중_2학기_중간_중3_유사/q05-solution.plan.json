@@ -1,0 +1,149 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "A",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "2",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "1",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "sqrt(5)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "angles": [
+      {
+        "id": "rB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "sourceQuote": "$\\angle\\text{B}=90^\\circ$인 직각삼각형 $\\",
+  "sourceConditions": [
+    {
+      "id": "q05s",
+      "condition": "$\\tan A = \\frac{\\overline{\\text{BC}}}{\\overline{\\text{AB}}} = \\frac{1}{2}$이므로 $\\overline{\\text{BC}}=k$, $\\overline{\\text{AB}}=2k$ ($k>0$)로 두면 피타고라스 정리에 의해 $$\\overline{\\text{AC}} = \\sqrt{k^2 + (2k)^2} = \\sqrt{5}k$$ 따라서 $\\sin A = \\frac{k}{\\sqrt{5}k} = \\frac{1}{\\sqrt{5}}$, $\\cos A = \\frac{2k}{\\sqrt{5}k} = \\frac{2}{\\sqrt{5}}$이므로 $$\\sin A + \\cos A = \\frac{1}{\\sqrt{5}} + \\frac{2}{\\sqrt{5}} = \\frac{3}{\\sqrt{5}} = \\frac{3\\sqrt{5}}{5}$$ 따라서 정답은 ⑤이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "해설 관계: $\\angle\\text{B}=90^\\circ$인 직각삼각형 $\\text{ABC}$에서 $\\tan A = \\frac{1}{2}$일 때, $\\sin A + \\cos A$의 값을 구하면?",
+  "newVisualInformation": [
+    "그려진 선분 sAB, sBC, sAC",
+    "expressionLabels 3개",
+    "angles 1개"
+  ],
+  "accessibilityDescription": "해설에 사용되는 해설 관계: $\\angle\\text{B}=90^\\circ$인 직각삼각형 $\\text{ABC}$에서 $\\tan A = \\frac{1}{2}$일 때, $\\sin A + \\cos A$의 값을 구하면?"
+}

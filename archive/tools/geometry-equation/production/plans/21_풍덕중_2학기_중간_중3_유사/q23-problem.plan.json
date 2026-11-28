@@ -1,0 +1,208 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_THROUGH_3",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 30,
+        "label": "30",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "circ",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "CW",
+        "highlight": true
+      },
+      {
+        "id": "arcBC",
+        "circle": "circ",
+        "center": "O",
+        "from": "B",
+        "to": "C",
+        "side": "CCW",
+        "highlight": true
+      }
+    ],
+    "regions": [
+      {
+        "id": "shade",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "segment": {
+              "center": "O",
+              "from": "B",
+              "to": "C",
+              "side": "MINOR"
+            }
+          }
+        ]
+      }
+    ],
+    "expressionLabels": []
+  },
+  "sourceQuote": "다음 그림과 같이 반지름의 길이가 $6\\text{ cm}$인 반",
+  "sourceConditions": [
+    {
+      "id": "q23p",
+      "condition": "다음 그림과 같이 반지름의 길이가 $6\\text{ cm}$인 반원 $\\text{O}$에서 지름이 $\\overline{\\text{AB}}$이고 $\\angle\\text{ABC}=30^\\circ$일 때, 호 $\\text{BC}$와 현 $\\text{BC}$로 둘러싸인 색칠한 부분의 넓이를 구하시오.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "문제 조건: 다음 그림과 같이 반지름의 길이가 $6\\text{ cm}$인 반원 $\\text{O}$에서 지름이 $\\overline{\\text{AB}}$이고 $\\angle\\text{ABC}=30^\\circ$일 때, 호 $\\text{BC}$와 현 $\\text{BC}$로 둘러싸인 색칠한 부분의 넓이를 구하시오.",
+  "newVisualInformation": [
+    "그려진 선분 sAB, sBC",
+    "angles 1개",
+    "arcs 2개",
+    "regions 1개"
+  ],
+  "accessibilityDescription": "문제에 주어진 문제 조건: 다음 그림과 같이 반지름의 길이가 $6\\text{ cm}$인 반원 $\\text{O}$에서 지름이 $\\overline{\\text{AB}}$이고 $\\angle\\text{ABC}=30^\\circ$일 때, 호 $\\text{BC}$와 현 $\\text{BC}$로 둘러싸인 색칠한 부분의 넓이를 구하시오."
+}

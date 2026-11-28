@@ -1,0 +1,304 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "50",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "36",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "sOE",
+      "refs": [
+        "O",
+        "E"
+      ]
+    },
+    {
+      "id": "sOF",
+      "refs": [
+        "O",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "5",
+        "unit": "cm"
+      },
+      {
+        "id": "lAC",
+        "ownerSegment": "sCA",
+        "text": "12",
+        "unit": "cm"
+      }
+    ],
+    "angles": [
+      {
+        "id": "right_0",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "A",
+        "D",
+        "O"
+      ]
+    },
+    {
+      "id": "rE",
+      "refs": [
+        "B",
+        "E",
+        "O"
+      ]
+    },
+    {
+      "id": "rF",
+      "refs": [
+        "A",
+        "F",
+        "O"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 420
+  },
+  "hiddenPointNames": [],
+  "caption": "해설 관계: 직각삼각형 ABC와 그 내부에 접하는 원 O, 그리고 변 AB, BC, CA 위의 접점 D, E, F를 보여 준다.",
+  "accessibilityDescription": "해설에 사용되는 해설 관계: 직각삼각형 ABC와 그 내부에 접하는 원 O, 그리고 변 AB, BC, CA 위의 접점 D, E, F를 보여 준다.",
+  "newVisualInformation": [
+    "그려진 선분 sAB, sBC, sCA, sOD, sOE, sOF",
+    "원 circ",
+    "expressionLabels 2개",
+    "angles 1개"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q24s",
+      "condition": "직각삼각형 $\\text{ABC}$에서 피타고라스 정리에 의해 빗변 $\\overline{\\text{BC}}$의 길이는 $$\\overline{\\text{BC}} = \\sqrt{5^2 + 12^2} = 13\\text{ (cm)}$$ 원 $\\text{O}$의 반지름의 길이를 $r\\text{ cm}$라 하면 $\\angle\\text{A}=90^\\circ$이고 $\\overline{\\text{OD}}\\perp\\overline{\\text{AB}}$, $\\overline{\\text{OF}}\\perp\\overline{\\text{AC}}$이므로 $\\overline{\\text{AD}}=\\overline{\\text{AF}}=r\\text{ cm}$이다. 원 밖의 한 점에서 그은 두 접선의 길이는 같으므로 $\\overline{\\text{BD}}=\\overline{\\text{BE}}=5-r$, $\\overline{\\text{CF}}=\\overline{\\text{CE}}=12-r$이다. 따라서 $\\overline{\\text{BC}} = \\overline{\\text{BE}} + \\overline{\\text{CE}} = (5-r) + (12-r) = 13$이므로 $$17 - 2r = 13 \\implies 2r = 4 \\implies r = 2\\text{ (cm)}$$ 그러므로 (1) $\\overline{\\text{BD}} = 5 - 2 = 3\\text{ (cm)}$, $\\overline{\\text{CF}} = 12 - 2 = 10\\text{ (cm)}$ (2) 원 $\\text{O}$의 반지름의 길이는 $2\\text{ cm}$ (3) 구하는 넓이는 $\\triangle\\text{ABC}$의 넓이에서 원 $\\text{O}$의 넓이를 뺀 값이므로 $$\\frac{1}{2} \\times 5 \\times 12 - \\pi \\times 2^2 = 30 - 4\\pi\\text{ (cm}^2\\text{)}$$",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "sourceQuote": "다음 그림에서 $\\angle\\text{A}=90^\\circ$, "
+}

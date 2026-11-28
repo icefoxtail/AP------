@@ -1,0 +1,149 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "A",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "8",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "15",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "17",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "angles": [
+      {
+        "id": "rB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "sourceQuote": "$\\sin A = \\frac{8}{17}$일 때, $\\cos A",
+  "sourceConditions": [
+    {
+      "id": "q02s",
+      "condition": "$0^\\circ < A < 90^\\circ$이고 $\\sin A = \\frac{8}{17}$이므로 $$\\cos A = \\sqrt{1 - \\left(\\frac{8}{17}\\right)^2} = \\frac{15}{17}, \\quad \\tan A = \\frac{\\sin A}{\\cos A} = \\frac{8}{15}$$ 따라서 $$\\cos A \\times \\tan A = \\frac{15}{17} \\times \\frac{8}{15} = \\frac{8}{17}$$ 따라서 정답은 ①이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "해설 관계: $\\sin A = \\frac{8}{17}$일 때, $\\cos A \\times \\tan A$의 값은? (단, $0^\\circ < A < 90^\\circ$)",
+  "newVisualInformation": [
+    "그려진 선분 sAB, sBC, sAC",
+    "expressionLabels 3개",
+    "angles 1개"
+  ],
+  "accessibilityDescription": "해설에 사용되는 해설 관계: $\\sin A = \\frac{8}{17}$일 때, $\\cos A \\times \\tan A$의 값은? (단, $0^\\circ < A < 90^\\circ$)"
+}
