@@ -768,8 +768,8 @@ window.questionBank = [
     "sourceQid": 18,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사2/q18-solution.svg",
-    "solutionImageAlt": "해설 그림: ",
-    "solutionImageCaption": "",
+    "solutionImageAlt": "h(x)=(f∘g)(x)는 0≤x<1에서 -x+3, 1≤x≤3/2에서 2x, 3/2<x≤2에서 -6x+12이다. 세 구간 S₁, S₂, S₃의 넓이는 각각 (3+2)/2×1=5/2, (2+3)/2×1/2=5/4, 1/2×1/2×3=3/4이므로 합은 9/2이다. 따라서 답은 ⑤이다.",
+    "solutionImageCaption": "h(x)=(f∘g)(x)는 0≤x<1에서 -x+3, 1≤x≤3/2에서 2x, 3/2<x≤2에서 -6x+12이다. 세 구간 S₁, S₂, S₃의 넓이는 각각 (3+2)/2×1=5/2, (2+3)/2×1/2=5/4, 1/2×1/2×3=3/4이므로 합은 9/2이다. 따라서 답은 ⑤이다.",
     "solutionImageSize": "full"
   },
   {

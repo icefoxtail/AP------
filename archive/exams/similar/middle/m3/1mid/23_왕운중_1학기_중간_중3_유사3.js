@@ -493,7 +493,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_왕운중_1학기_중간_중3_유사3/q17-solution.svg",
+    "solutionImageAlt": "13/3보다 크고 26/3 이하인 자연수 5, 6, 7, 8을 수직선 위에 나타낸다.",
+    "solutionImageCaption": "13/3보다 크고 26/3 이하인 자연수 5, 6, 7, 8을 수직선 위에 나타낸다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -650,7 +654,15 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "image": "assets/images/23_왕운중_1학기_중간_중3_유사3/q23-problem.svg",
+    "imageAlt": "밑변을 일직선에 두고 왼쪽부터 넓이 12, 27, 48인 세 정사각형을 이어 붙인 모양이다.",
+    "imageCaption": "밑변을 일직선에 두고 왼쪽부터 넓이 12, 27, 48인 세 정사각형을 이어 붙인 모양이다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/23_왕운중_1학기_중간_중3_유사3/q23-solution.svg",
+    "solutionImageAlt": "넓이 12, 27, 48인 세 정사각형의 변은 각각 2√3, 3√3, 4√3이고, 바깥 둘레는 26√3이다.",
+    "solutionImageCaption": "넓이 12, 27, 48인 세 정사각형의 변은 각각 2√3, 3√3, 4√3이고, 바깥 둘레는 26√3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
