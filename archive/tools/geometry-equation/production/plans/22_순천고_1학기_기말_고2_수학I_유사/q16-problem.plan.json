@@ -1,0 +1,309 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sub",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "5"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "rational",
+                              "numerator": "3",
+                              "denominator": "1"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "15"
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "add",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "15"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "5"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "rational",
+                              "numerator": "3",
+                              "denominator": "1"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "Q",
+    "R",
+    "A",
+    "B"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQR",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    },
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sQA",
+      "refs": [
+        "Q",
+        "A"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sQB",
+      "refs": [
+        "Q",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aPA",
+        "refs": [
+          "A",
+          "P",
+          "Q"
+        ],
+        "value": 15,
+        "label": "15",
+        "arcs": 1,
+        "labelPlacement": "LEADER",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aPB",
+        "refs": [
+          "B",
+          "P",
+          "Q"
+        ],
+        "value": 45,
+        "label": "45",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aQA",
+        "refs": [
+          "A",
+          "Q",
+          "R"
+        ],
+        "value": 60,
+        "label": "60",
+        "arcs": 1,
+        "labelPlacement": "LEADER",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "raQ",
+      "refs": [
+        "B",
+        "Q",
+        "R"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "hiddenPointNames": [
+    "R"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "곧은 길 위의 두 지점 P, Q와 두 건물 A, B의 위치를 나타낸 그림이다. P와 Q에서 진행 방향을 기준으로 두 건물을 바라본 각이 각각 표시되어 있다.",
+  "accessibilityDescription": "곧은 길이 세로로 놓여 있고 아래쪽에 P, 그 위에 Q가 있다. P에서 왼쪽 위 방향으로 A, 오른쪽 위 방향으로 B가 있으며, Q에서 A는 왼쪽 위로, B는 오른쪽으로 이어진다. P에서 진행 방향과 PA가 이루는 각은 15도, PQ와 PB가 이루는 각은 45도이고, Q에서 진행 방향과 QA가 이루는 각은 60도이며 진행 방향과 QB는 직각이다.",
+  "newVisualInformation": [
+    "P와 Q는 곧은 길 위의 두 지점이다",
+    "P에서 A는 진행 방향의 왼쪽으로 15도, B는 오른쪽으로 45도 방향이다",
+    "Q에서 A는 진행 방향의 왼쪽으로 60도, B는 오른쪽으로 90도 방향이다"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "시속 $10\\,\\mathrm{km}$로 곧은 길을 달리는 자전거가 있다. 길 위의 지점 $\\mathrm{P}$에서 두 건물 $\\mathrm{A, B}$를 바라본 각의 크기가 각각 진행 방향의 왼쪽으로 $15^\\circ$, 진행 방향의 오른쪽으로 $45^\\circ$이었고, $1$시간을 달린 후 지점 $\\mathrm{Q}$에서 같은 방법으로 각도를 측정하였더니 두 건물 $\\mathrm{A, B}$를 바라본 각의 크기는 각각 진행 방향의 왼쪽으로 $60^\\circ$, 오른쪽으로 $90^\\circ$이었다. 두 건물 $\\mathrm{A}$와 $\\mathrm{B}$ 사이의 거리는? (단, $\\sqrt{3}=1.7$, $\\sqrt{5}=2.2$로 계산한다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
