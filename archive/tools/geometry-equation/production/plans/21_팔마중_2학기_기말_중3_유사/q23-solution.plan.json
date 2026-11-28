@@ -1,0 +1,332 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "128"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bc",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "oa",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "tan",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "A",
+          "oa"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "tan",
+          "bc"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "P"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "P",
+    "T"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CP",
+      "refs": [
+        "C",
+        "P"
+      ]
+    },
+    {
+      "id": "PT",
+      "refs": [
+        "P",
+        "T"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aBAT",
+        "refs": [
+          "B",
+          "A",
+          "T"
+        ],
+        "value": 64,
+        "label": "64",
+        "arcs": 1,
+        "side": "INNER",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aAPB",
+        "refs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "label": "38",
+        "labelKind": "MATH",
+        "arcs": 1,
+        "side": "INNER",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "facts": [
+      {
+        "kind": "TANGENT_PERPENDICULAR",
+        "center": "O",
+        "contact": "A",
+        "tangent": "PT"
+      }
+    ]
+  },
+  "caption": "팔마중 중3 2학기 기말 23번 해설: 지름 BC와 A의 접선 PA, 접현각 BAT64°",
+  "accessibilityDescription": "팔마중 23번 풀이의 보조 관계와 수학적 결론을 공식 엔진으로 표현한 그림. 지름 BC와 A의 접선 PA, 접현각 BAT64°.",
+  "newVisualInformation": [
+    "지름 BC와 A의 접선 PA, 접현각 BAT64°",
+    "문제축과 구분하여 증명에 도움이 되는 보조선·각·점과 자료 분포를 설명"
+  ],
+  "sourceConditions": [
+    {
+      "id": "POINT0",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "POINT1",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[1]"
+    },
+    {
+      "id": "POINT2",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[2]"
+    },
+    {
+      "id": "POINT3",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[3]"
+    },
+    {
+      "id": "POINT4",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[4]"
+    },
+    {
+      "id": "POINT5",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[5]"
+    },
+    {
+      "id": "SEG0",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "SEG1",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "SEG2",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "SEG3",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "CIRC0",
+      "condition": "실제로 표시하는 원",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "ANG0",
+      "condition": "주어진 각 또는 해설의 유도각",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "ANG1",
+      "condition": "주어진 각 또는 해설의 유도각",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "FACT0",
+      "condition": "접선·수직 사실",
+      "mappedTo": "planeMarks.facts[0]"
+    }
+  ],
+  "sourceQuote": "1) 선분 $BC$가 원 $O$의 지름이므로 반원에 대한 원주각의 크기는 $90^\\circ$이다. $$\\angle BAC = 90^\\circ$$   2) 접선과 현이 이루는 각의 성질에 의하여 접선 $AT$와 현 $AB$가 이루는 각 $\\angle BAT = 64^\\circ$는 호 $\\overparen{AB}$에 대한 원주각 $\\angle ACB$의 크기와 같다. $$\\angle ACB = \\angle BAT = 64^\\circ$$   3) 직각삼각형 $ABC$에서 세 내각의 합은 $180^\\circ$이므로 $$\\angle ABC = 180^\\circ - 90^\\circ - 64^\\circ = 26^\\circ$$   4) 삼각형 $PAB$에서 외각 $\\angle ACB = 64^\\circ$는 $\\angle P$와 $\\angle PAB$... (또는 평각 관계에서) 점 $P, A, T$가 일직선 위에 있으므로 평각에 의하여 $$\\angle PAB = 180^\\circ - \\angle BAT = 180^\\circ - 64^\\circ = 116^\\circ$$ 따라서 삼각형 $PAB$에서 세 내각의 합은 $180^\\circ$이므로 $$\\angle x = 180^\\circ - \\angle PAB - \\angle ABC = 180^\\circ - 116^\\circ - 26^\\circ = 38^\\circ$$\n\n답: $38^\\circ$"
+}

@@ -1,0 +1,294 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "M"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lBC",
+        "ownerSegment": "BC",
+        "text": "6",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "halfBC",
+        "from": "B",
+        "to": "M",
+        "label": "3",
+        "side": "BELOW",
+        "style": "BAR"
+      },
+      {
+        "id": "radiusR",
+        "from": "O",
+        "to": "B",
+        "label": "5",
+        "side": "LEFT",
+        "style": "BAR"
+      }
+    ],
+    "angles": [
+      {
+        "id": "rOMB",
+        "refs": [
+          "O",
+          "M",
+          "B"
+        ],
+        "value": 90,
+        "label": "90"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 580
+  },
+  "caption": "신흥중 중3 2학기 기말 02번 해설: 현 BC6cm와 sin A=3/5를 갖는 외접원",
+  "accessibilityDescription": "신흥중 2번 풀이의 보조 관계와 수학적 결론을 공식 엔진으로 표현한 그림. 현 BC6cm와 sin A=3/5를 갖는 외접원.",
+  "sourceConditions": [
+    {
+      "id": "POINT0",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "POINT1",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[1]"
+    },
+    {
+      "id": "POINT2",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[2]"
+    },
+    {
+      "id": "POINT3",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[3]"
+    },
+    {
+      "id": "POINT4",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[4]"
+    },
+    {
+      "id": "SEG0",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "SEG1",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "SEG2",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "SEG3",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "SEG4",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "CIRC0",
+      "condition": "실제로 표시하는 원",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "ANG0",
+      "condition": "주어진 각 또는 해설의 유도각",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "DIM0",
+      "condition": "선분 길이",
+      "mappedTo": "planeMarks.dimensions[0]"
+    },
+    {
+      "id": "DIM1",
+      "condition": "선분 길이",
+      "mappedTo": "planeMarks.dimensions[1]"
+    },
+    {
+      "id": "EXP0",
+      "condition": "수치 및 변수 길이",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "현 BC6cm와 sin A=3/5를 갖는 외접원",
+    "문제축과 구분하여 증명에 도움이 되는 보조선·각·점과 자료 분포를 설명"
+  ],
+  "sourceQuote": "원의 중심 $O$에서 현 $\\overline{BC}$에 내린 수선의 발을 $M$이라 하자. 원의 중심에서 현에 내린 수선은 현을 이등분하므로 $$\\overline{BM} = \\dfrac{1}{2}\\overline{BC} = \\dfrac{1}{2} \\times 6 = 3\\rm,cm$$ 호 $\\wideparen{BC}$에 대한 중심각은 $\\angle BOC = 2\\angle A$이고 선분 $\\overline{OM}$이 중심각을 이등분하므로 $$\\angle BOM = \\angle A$$ 직각삼각형 $OBM$에서 $\\overline{OB}$는 외접원의 반지름 $R$이므로 $$\\sin(\\angle BOM) = \\sin A = \\dfrac{\\overline{BM}}{\\overline{OB}} = \\dfrac{3}{R}$$ 조건에서 $\\sin A = \\dfrac{3}{5}$이므로 $$\\dfrac{3}{5} = \\dfrac{3}{R} \\implies R = 5\\rm,cm$$ 따라서 원 $O$의 반지름의 길이는 $5\\rm,cm$이다. 그러므로 정답은 ④이다."
+}

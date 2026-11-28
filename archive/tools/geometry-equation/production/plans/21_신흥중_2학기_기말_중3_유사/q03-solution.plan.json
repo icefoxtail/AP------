@@ -1,0 +1,321 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "160"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "232"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "300"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ac",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bd",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ac",
+          "bd"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "Px",
+        "refs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "value": 81,
+        "label": "81",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "circ",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR",
+        "color": "BLUE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "arcCD",
+        "circle": "circ",
+        "center": "O",
+        "from": "C",
+        "to": "D",
+        "side": "MINOR",
+        "color": "WARM",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 580
+  },
+  "caption": "신흥중 중3 2학기 기말 03번 해설: 원둘레의 1/5·1/4인 두 호와 현의 내부 교점",
+  "accessibilityDescription": "신흥중 3번 풀이의 보조 관계와 수학적 결론을 공식 엔진으로 표현한 그림. 원둘레의 1/5·1/4인 두 호와 현의 내부 교점.",
+  "sourceConditions": [
+    {
+      "id": "POINT0",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "POINT1",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[1]"
+    },
+    {
+      "id": "POINT2",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[2]"
+    },
+    {
+      "id": "POINT3",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[3]"
+    },
+    {
+      "id": "POINT4",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[4]"
+    },
+    {
+      "id": "POINT5",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[5]"
+    },
+    {
+      "id": "SEG0",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "SEG1",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "CIRC0",
+      "condition": "실제로 표시하는 원",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "ANG0",
+      "condition": "주어진 각 또는 해설의 유도각",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "ARC0",
+      "condition": "원호의 길이·방향",
+      "mappedTo": "planeMarks.arcs[0]"
+    },
+    {
+      "id": "ARC1",
+      "condition": "원호의 길이·방향",
+      "mappedTo": "planeMarks.arcs[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "원둘레의 1/5·1/4인 두 호와 현의 내부 교점",
+    "문제축과 구분하여 증명에 도움이 되는 보조선·각·점과 자료 분포를 설명"
+  ],
+  "sourceQuote": "호 $\\wideparen{AB}$의 길이는 원 둘레의 $\\dfrac{1}{5}$이므로 호 $\\wideparen{AB}$의 중심각의 크기는 $$360^\\circ \\times \\dfrac{1}{5} = 72^\\circ$$ 호 $\\wideparen{CD}$의 길이는 원 둘레의 $\\dfrac{1}{4}$이므로 호 $\\wideparen{CD}$의 중심각의 크기는 $$360^\\circ \\times \\dfrac{1}{4} = 90^\\circ$$ 원 내부에서 교차하는 두 현이 이루는 교각 $\\angle x$의 크기는 마주 보는 두 호의 중심각의 합의 절반과 같으므로 $$\\angle x = \\dfrac{\\wideparen{AB} + \\wideparen{CD}}{2} = \\dfrac{72^\\circ + 90^\\circ}{2} = \\dfrac{162^\\circ}{2} = 81^\\circ$$ 따라서 정답은 ②이다."
+}

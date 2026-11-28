@@ -1,0 +1,368 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "팔마중 중3 2학기 기말 07번 해설: 원 밖 P의 두 접선과 작은 호 AB 위 Q",
+  "accessibilityDescription": "팔마중 7번 풀이의 보조 관계와 수학적 결론을 공식 엔진으로 표현한 그림. 원 밖 P의 두 접선과 작은 호 AB 위 Q.",
+  "newVisualInformation": [
+    "원 밖 P의 두 접선과 작은 호 AB 위 Q",
+    "문제축과 구분하여 증명에 도움이 되는 보조선·각·점과 자료 분포를 설명"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Xax",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "Xax"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "Xax"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "150"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "Xax"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ra",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "rb",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ta",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "A",
+          "ra"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "tb",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "B",
+          "rb"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ta",
+          "tb"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "P",
+    "Q"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "PA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "PB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "QA",
+      "refs": [
+        "Q",
+        "A"
+      ]
+    },
+    {
+      "id": "QB",
+      "refs": [
+        "Q",
+        "B"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aQ",
+        "refs": [
+          "A",
+          "Q",
+          "B"
+        ],
+        "value": 120,
+        "label": "120",
+        "color": "BLUE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aP",
+        "refs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "value": 60,
+        "label": "60",
+        "color": "ROSE",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "aAOB",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 120,
+        "label": "120"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 600
+  },
+  "sourceConditions": [
+    {
+      "id": "POINT0",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "POINT1",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[1]"
+    },
+    {
+      "id": "POINT2",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[2]"
+    },
+    {
+      "id": "POINT3",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[3]"
+    },
+    {
+      "id": "POINT4",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[4]"
+    },
+    {
+      "id": "SEG0",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "SEG1",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "SEG2",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "SEG3",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "SEG4",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "SEG5",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "CIRC0",
+      "condition": "실제로 표시하는 원",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "ANG0",
+      "condition": "주어진 각 또는 해설의 유도각",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "ANG1",
+      "condition": "주어진 각 또는 해설의 유도각",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "ANG2",
+      "condition": "주어진 각 또는 해설의 유도각",
+      "mappedTo": "planeMarks.angles[2]"
+    }
+  ],
+  "sourceQuote": "점 $Q$가 작은 호 $\\overparen{AB}$ 위에 있으므로, 원주각 $\\angle AQB = 120^\\circ$가 바라보는 호는 점 $Q$를 포함하지 않는 큰 호 $\\overparen{AB}$이다. 큰 호 $\\overparen{AB}$에 대한 중심각의 크기는 원주각의 $2$배이므로 $$2 \\times 120^\\circ = 240^\\circ$$ 따라서 두 접점 $A, B$ 사이의 작은 호 $\\overparen{AB}$에 대한 중심각 $\\angle AOB$의 크기는 $$\\angle AOB = 360^\\circ - 240^\\circ = 120^\\circ$$ 접선과 반지름은 접점에서 수직이므로 사각형 $OAPB$에서 $\\angle OAP = \\angle OBP = 90^\\circ$이다. 사각형 내각의 합은 $360^\\circ$이므로 $$\\angle APB = 180^\\circ - \\angle AOB = 180^\\circ - 120^\\circ = 60^\\circ$$ 따라서 정답은 ①이다."
+}

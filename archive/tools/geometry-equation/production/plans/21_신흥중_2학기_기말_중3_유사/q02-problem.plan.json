@@ -1,0 +1,206 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lBC",
+        "ownerSegment": "BC",
+        "text": "6",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 580
+  },
+  "caption": "신흥중 중3 2학기 기말 02번 문제: 현 BC6cm와 sin A=3/5를 갖는 외접원",
+  "accessibilityDescription": "신흥중 2번 발문의 도형·조건을 공식 엔진으로 표현한 그림. 현 BC6cm와 sin A=3/5를 갖는 외접원.",
+  "sourceConditions": [
+    {
+      "id": "POINT0",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "POINT1",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[1]"
+    },
+    {
+      "id": "POINT2",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[2]"
+    },
+    {
+      "id": "POINT3",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[3]"
+    },
+    {
+      "id": "SEG0",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "SEG1",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "SEG2",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "CIRC0",
+      "condition": "실제로 표시하는 원",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "EXP0",
+      "condition": "수치 및 변수 길이",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "현 BC6cm와 sin A=3/5를 갖는 외접원",
+    "발문에서 명시한 조건만 제시하고 정답은 선노출하지 않음"
+  ],
+  "sourceQuote": "원 $O$에 내접하는 $\\triangle ABC$에서 $\\overline{BC} = 6\\rm,cm$이고 $\\sin A = \\dfrac{3}{5}$일 때, 원 $O$의 반지름의 길이는?"
+}

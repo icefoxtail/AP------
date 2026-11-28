@@ -1,0 +1,437 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "208"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "346"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "36"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ba",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cd",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ad",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bc",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ba",
+          "cd"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ad",
+          "bc"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "P",
+    "Q",
+    "O"
+  ],
+  "hiddenPointNames": [
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "PA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "PD",
+      "refs": [
+        "P",
+        "D"
+      ]
+    },
+    {
+      "id": "DC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "QD",
+      "refs": [
+        "Q",
+        "D"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "QC",
+      "refs": [
+        "Q",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aABC",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 52,
+        "label": "52",
+        "factRole": "GIVEN",
+        "color": "BLUE"
+      },
+      {
+        "id": "aAQB",
+        "refs": [
+          "A",
+          "Q",
+          "B"
+        ],
+        "value": 34,
+        "label": "34",
+        "factRole": "GIVEN",
+        "color": "GREEN"
+      },
+      {
+        "id": "aBPC",
+        "refs": [
+          "B",
+          "P",
+          "C"
+        ],
+        "label": "42",
+        "factRole": "CONCLUSION",
+        "color": "ROSE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "caption": "팔마중 중3 2학기 기말 09번 해설: 내접사각형의 두 외부 교점 P·Q와 각52°·34°",
+  "accessibilityDescription": "팔마중 9번 풀이의 보조 관계와 수학적 결론을 공식 엔진으로 표현한 그림. 내접사각형의 두 외부 교점 P·Q와 각52°·34°.",
+  "newVisualInformation": [
+    "내접사각형의 두 외부 교점 P·Q와 각52°·34°",
+    "문제축과 구분하여 증명에 도움이 되는 보조선·각·점과 자료 분포를 설명"
+  ],
+  "sourceConditions": [
+    {
+      "id": "POINT0",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "POINT1",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[1]"
+    },
+    {
+      "id": "POINT2",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[2]"
+    },
+    {
+      "id": "POINT3",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[3]"
+    },
+    {
+      "id": "POINT4",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[4]"
+    },
+    {
+      "id": "POINT5",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[5]"
+    },
+    {
+      "id": "POINT6",
+      "condition": "문항의 점·교점·보조점",
+      "mappedTo": "displayPoints[6]"
+    },
+    {
+      "id": "SEG0",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "SEG1",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "SEG2",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "SEG3",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "SEG4",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "SEG5",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "SEG6",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[6]"
+    },
+    {
+      "id": "SEG7",
+      "condition": "변·현·보조선",
+      "mappedTo": "displaySegments[7]"
+    },
+    {
+      "id": "CIRC0",
+      "condition": "실제로 표시하는 원",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "ANG0",
+      "condition": "주어진 각 또는 해설의 유도각",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "ANG1",
+      "condition": "주어진 각 또는 해설의 유도각",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "ANG2",
+      "condition": "주어진 각 또는 해설의 유도각",
+      "mappedTo": "planeMarks.angles[2]"
+    }
+  ],
+  "sourceQuote": "원 위의 네 호 $\\overparen{AB}, \\overparen{BC}, \\overparen{CD}, \\overparen{DA}$의 중심각의 크기를 각각 $a, b, c, d$라 하자.\n\n1) 원주각 $\\angle ABC = 52^\\circ$는 호 $\\overparen{CD} + \\overparen{DA}$를 바라보므로 $$c + d = 2 \\times 52^\\circ = 104^\\circ$$   2) 원 밖의 점 $Q$에서 두 할선이 이루는 각 $\\angle AQB = 34^\\circ$는 마주 보는 두 호의 차의 절반이므로 $$\\dfrac{a - c}{2} = 34^\\circ \\implies a - c = 68^\\circ$$   3) 원 전체의 중심각의 합은 $360^\\circ$이므로 $a + b + c + d = 360^\\circ$이다. 먼저 $a + c + 2d = (a - c) + 2(c + d)$이므로 $$a + c + 2d = 68^\\circ + 2 \\times 104^\\circ = 68^\\circ + 208^\\circ = 276^\\circ$$ 따라서 $b - d$의 값은 $$b - d = (a + b + c + d) - (a + c + 2d) = 360^\\circ - 276^\\circ = 84^\\circ$$   4) 원 밖의 점 $P$에서 두 할선이 이루는 각 $\\angle x$는 두 호 $\\overparen{BC}$와 $\\overparen{AD}$의 차의 절반이므로 $$\\angle x = \\dfrac{b - d}{2} = \\dfrac{84^\\circ}{2} = 42^\\circ$$ 따라서 정답은 ②이다."
+}
