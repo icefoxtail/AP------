@@ -1,0 +1,18 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["0", "-4", "1"],
+    "sourceDomain": {"kind": "INTERVAL", "range": [2, 7], "states": ["CLOSED", "CLOSED"]},
+    "domain": [2, 7], "viewport": [-1, 8, -8, 25],
+    "requiredPoints": [{"id": "L", "x": 2, "y": -4}, {"id": "R", "x": 7, "y": 21}],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "2≤x≤7에서 y=(x−2)²−4는 증가하므로 왼쪽 끝 L(2,−4)이 최소, 오른쪽 끝 R(7,21)이 최대이다.",
+  "accessibilityDescription": "구간 2부터 7까지 포물선의 오른쪽 증가 부분만 보이며 왼쪽 끝이 −4, 오른쪽 끝이 21이다.",
+  "sourceConditions": [
+    {"id": "f", "condition": "y=x²−4x", "mappedTo": "graphPlan.coefficients"},
+    {"id": "interval", "condition": "a=7이고 정의역은 2≤x≤7", "mappedTo": "graphPlan.sourceDomain"},
+    {"id": "extrema", "condition": "최소 b=−4와 최대 21의 양 끝점", "mappedTo": "graphPlan.requiredPoints"}
+  ],
+  "newVisualInformation": ["제한된 정의역에서 꼭짓점부터 오른쪽 끝까지 증가하는 구간의 양 끝 극값을 비교한다."]
+}

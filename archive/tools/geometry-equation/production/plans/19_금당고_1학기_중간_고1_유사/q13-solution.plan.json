@@ -1,0 +1,19 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["5", "-3", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-1, 5], "viewport": [-2, 6, -3, 16],
+    "requiredPoints": [{"id": "A", "x": 2, "y": 3}, {"id": "B", "x": 3, "y": 5}],
+    "axisTickValues": {"x": [2, 3], "y": []},
+    "overlays": {"lines": [{"id": "straight", "slope": "2", "intercept": "-1"}]}
+  },
+  "caption": "교점 x=2,3에서 x²+(m−2)x+(5−n)=(x−2)(x−3)이므로 m=−3,n=−1이다. 교점 A(2,3), B(3,5)가 두 그래프에 동시에 놓인다.",
+  "accessibilityDescription": "포물선 y=x²−3x+5와 직선 y=2x−1이 교점 A(2,3), B(3,5)에서 만난다.",
+  "sourceConditions": [
+    {"id": "f", "condition": "근과 계수 비교에서 m=−3, y=x²−3x+5", "mappedTo": "graphPlan.coefficients"},
+    {"id": "g", "condition": "5−n=6에서 n=−1, y=2x−1", "mappedTo": "graphPlan.overlays.lines[0]"},
+    {"id": "cross", "condition": "x=2,3 대입으로 두 교점 (2,3),(3,5)", "mappedTo": "graphPlan.requiredPoints"}
+  ],
+  "newVisualInformation": ["두 해의 x좌표가 실제 함수 그래프·직선의 공통점임을 좌표와 함께 검산한다."]
+}

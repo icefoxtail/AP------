@@ -1,0 +1,18 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["1", "2", "1"],
+    "sourceDomain": {"kind": "INTERVAL", "range": ["-8/3", "1/3"], "states": ["CLOSED", "CLOSED"]},
+    "domain": [-3, 1], "viewport": [-4, 2, -1, 5],
+    "requiredPoints": [{"id": "V", "x": -1, "y": 0}],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "세로 이동량 b−1을 뺀 g(x)=f(x)−b+1=(x+1)²의 그림이다. 대칭축 x=−1에서 왼쪽 끝 −8/3이 오른쪽 끝 1/3보다 멀어 최댓값은 왼쪽 끝에 있다.",
+  "accessibilityDescription": "꼭짓점 V(−1,0)인 포물선은 두 닫힌 끝 가운데 왼쪽 끝의 높이가 더 높다. 원래 함수 f는 이 그래프를 세로로 b−1만큼 옮긴 것이다.",
+  "sourceConditions": [
+    {"id": "shape", "condition": "f(−4)=f(2)에서 a=2, f(x)−b+1=(x+1)²", "mappedTo": "graphPlan.coefficients"},
+    {"id": "interval", "condition": "보기 ㄴ의 −8/3≤x≤1/3", "mappedTo": "graphPlan.sourceDomain"},
+    {"id": "comparison", "condition": "축 −1로부터 양끝 거리 5/3과 4/3 → 높이 25/9와 16/9", "mappedTo": ["graphPlan.sourceDomain.range", "graphPlan.coefficients"]}
+  ],
+  "newVisualInformation": ["b에 무관한 평행이동 정규화로 두 끝점 높이의 비교와 축에서의 거리를 드러낸다."]
+}

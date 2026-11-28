@@ -1,0 +1,19 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["8", "7", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-7, 1], "viewport": [-8, 2, -8, 20],
+    "requiredPoints": [{"id": "T", "x": -3, "y": -4}],
+    "axisTickValues": {"x": [], "y": []},
+    "overlays": {"lines": [{"id": "boundary", "slope": "1", "intercept": "-1"}]}
+  },
+  "caption": "경계 k=−1에서 y=x²+7x+8과 y=x−1은 T(−3,−4)에서 접한다. k>−1이면 서로 다른 두 교점이 된다.",
+  "accessibilityDescription": "위로 열린 포물선과 기울기 1의 직선이 판별식 0의 경계에서 T(−3,−4) 한 점에서 접한다.",
+  "sourceConditions": [
+    {"id": "quadratic", "condition": "문제의 이차함수 y=x²+7x+8", "mappedTo": "graphPlan.coefficients"},
+    {"id": "line", "condition": "D/4=k+1=0에서 경계 k=−1", "mappedTo": "graphPlan.overlays.lines[0]"},
+    {"id": "tangent", "condition": "x²+6x+9=(x+3)²=0에서 x=−3, y=−4", "mappedTo": "graphPlan.requiredPoints[0]"}
+  ],
+  "newVisualInformation": ["판별식의 부호 경계가 접선과 두 교점 사이의 전환점임을 보여 준다."]
+}

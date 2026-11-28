@@ -1,0 +1,17 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["9", "-6", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-1, 7], "viewport": [-2, 8, -2, 20],
+    "requiredPoints": [{"id": "T", "x": 3, "y": 0}],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "a가 허용되는 최대 경계 3일 때 y=(x−3)²이 x축에 T(3,0)에서 접한다.",
+  "accessibilityDescription": "위로 열린 포물선이 x축의 한 점 (3,0)에 접하며 그 아래로 내려가지 않는다.",
+  "sourceConditions": [
+    {"id": "boundary", "condition": "(x−a)²+a−3의 최솟값이 0인 경계 a=3", "mappedTo": "graphPlan.coefficients"},
+    {"id": "touch", "condition": "a=3일 때 꼭짓점 겸 x절편 (3,0)", "mappedTo": "graphPlan.requiredPoints[0]"}
+  ],
+  "newVisualInformation": ["판별식으로 얻는 a≤3의 경계가 x축 접점임을 한눈에 보여 준다."]
+}

@@ -1,0 +1,20 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-2, 6, -3, 16],
+    "curves": [
+      {"id": "parabola", "kind": "Y_OF_X", "coefficients": ["5", "-3", "1"], "domain": ["-1", "5"], "color": "BLUE", "label": {"hidden": true, "reason": "ANSWER", "name": "f"}},
+      {"id": "straight", "kind": "LINE", "coefficients": ["-1", "2"], "domain": ["-1", "5"], "color": "WARM", "label": {"hidden": true, "reason": "ANSWER", "name": "g"}}
+    ],
+    "axisTickValues": {"x": ["2", "3"], "y": []}
+  },
+  "caption": "두 그래프가 x=2와 x=3에서 만나는 상대적 모습만 보인다. 미지의 계수 m,n과 교점의 y좌표는 문제 그림에 쓰지 않는다.",
+  "accessibilityDescription": "위로 열린 포물선과 오른쪽 위로 향하는 직선이 서로 다른 두 점에서 교차하고 교점 아래의 x축 눈금 2와 3이 표시된다. 미지의 계수와 y좌표는 표시되지 않는다.",
+  "sourceConditions": [
+    {"id": "parabola", "condition": "발문 이차함수 y=x²+mx+5; x교점 2,3을 만족하도록 그린 개형이며 m을 나타내는 식 라벨은 ANSWER로 숨기고 f로 구별", "mappedTo": "graphPlan.curves[0]"},
+    {"id": "line", "condition": "발문 직선 y=2x+n; x교점 2,3을 만족하도록 그린 개형이며 n을 나타내는 식 라벨은 ANSWER로 숨기고 g로 구별", "mappedTo": "graphPlan.curves[1]"},
+    {"id": "abscissas", "condition": "주어진 두 교점의 x좌표 2,3만 눈금으로 제시", "mappedTo": "graphPlan.axisTickValues.x"}
+  ],
+  "newVisualInformation": ["발문에서 요구한 두 그래프의 교차·상대 위치를 정량 답 라벨 없이 시각화한다."]
+}

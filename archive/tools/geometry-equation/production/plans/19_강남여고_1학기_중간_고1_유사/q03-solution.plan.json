@@ -1,0 +1,17 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["-9", "8", "-1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-1, 9], "viewport": [-2, 10, -13, 10],
+    "requiredPoints": [{"id": "V", "x": 4, "y": 7}],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "완전제곱식 y=−(x−4)²+7의 꼭짓점 V(4,7)이 최댓값 7을 나타낸다.",
+  "accessibilityDescription": "아래로 열린 포물선의 꼭짓점 V가 (4,7)에 있어 x가 4일 때 최대 높이 7이다.",
+  "sourceConditions": [
+    {"id": "coeff", "condition": "해설에서 a=4, b=−4를 얻으므로 y=−x²+8x−9", "mappedTo": "graphPlan.coefficients"},
+    {"id": "vertex", "condition": "x=4에서 최대 7", "mappedTo": "graphPlan.requiredPoints[0]"}
+  ],
+  "newVisualInformation": ["완전제곱식의 제곱항 부호와 꼭짓점의 높이를 그래프 형태로 연결한다."]
+}

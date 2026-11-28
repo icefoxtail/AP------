@@ -1,0 +1,24 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["2", "-8", "2"],
+    "sourceDomain": {"kind": "INTERVAL", "range": [1, 7], "states": ["CLOSED", "CLOSED"]},
+    "domain": [1, 7], "viewport": [0, 8, -10, 49],
+    "requiredPoints": [
+      {"id": "A", "x": 1, "y": -4},
+      {"id": "V", "x": 2, "y": -6},
+      {"id": "B", "x": 7, "y": 44}
+    ],
+    "axisTickValues": {"x": [], "y": []},
+    "overlays": {"lines": [{"id": "linear", "slope": "8", "intercept": "-12"}]}
+  },
+  "caption": "f(x)=2(x−2)²−6이고 직선 y=8x−12와 A(1,−4), B(7,44)에서 만난다. 닫힌 구간 [1,7]에서 최솟값은 꼭짓점 V(2,−6)이다.",
+  "accessibilityDescription": "위로 열린 포물선과 직선이 A(1,−4), B(7,44)에서 만나며 포물선의 꼭짓점 V(2,−6)이 두 교점 사이의 최저점이다.",
+  "sourceConditions": [
+    {"id": "f", "condition": "f−(4ax−12)=a(x−1)(x−7)와 a=2에서 f=2x²−8x+2", "mappedTo": "graphPlan.coefficients"},
+    {"id": "line", "condition": "a=2인 직선 y=8x−12", "mappedTo": "graphPlan.overlays.lines[0]"},
+    {"id": "range", "condition": "발문 구간 1≤x≤7", "mappedTo": "graphPlan.sourceDomain"},
+    {"id": "critical", "condition": "최솟값 −6이 x=2의 꼭짓점 V, 교점은 x=1,7", "mappedTo": "graphPlan.requiredPoints"}
+  ],
+  "newVisualInformation": ["두 교점을 연결하는 조건과 구간 내부의 꼭짓점 최소 조건이 서로 다른 정보임을 시각적으로 구분한다."]
+}
