@@ -1,0 +1,84 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-7",
+      "3",
+      "2"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -4,
+      4,
+      -11,
+      10
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -2,
+        "y": -5
+      },
+      {
+        "id": "V",
+        "x": -0.75,
+        "y": -8.125
+      },
+      {
+        "id": "B",
+        "x": 1,
+        "y": -2
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "line",
+          "slope": "1",
+          "intercept": "-3"
+        }
+      ]
+    }
+  },
+  "caption": "교점의 x좌표가 −2, 1이어서 2(x+2)(x−1)=2x²+2x−4와 비교하면 m=3,n=−3이다. y=2x²+3x−7과 y=x−3은 해당 두 점에서 만난다.",
+  "accessibilityDescription": "포물선과 직선의 교점 A(−2,−5), B(1,−2)가 표시되어 있으며 포물선 꼭짓점은 (−3/4,−65/8)이다.",
+  "sourceConditions": [
+    {
+      "id": "curve",
+      "condition": "m=3이므로 포물선은 y=2x²+3x−7",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "line",
+      "condition": "n=−3이므로 직선은 y=x−3",
+      "mappedTo": "graphPlan.overlays.lines[0]"
+    },
+    {
+      "id": "intersections",
+      "condition": "2x²+2x−4=2(x+2)(x−1), 교점 x=−2,1",
+      "mappedTo": [
+        "graphPlan.requiredPoints[0]",
+        "graphPlan.requiredPoints[2]"
+      ]
+    },
+    {
+      "id": "vertex",
+      "condition": "포물선 꼭짓점 x=−3/4,y=−65/8",
+      "mappedTo": "graphPlan.requiredPoints[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "두 교점의 x좌표와 함수값을 함께 나타내 미지 계수 결정의 기하학적 의미를 보인다."
+  ]
+}

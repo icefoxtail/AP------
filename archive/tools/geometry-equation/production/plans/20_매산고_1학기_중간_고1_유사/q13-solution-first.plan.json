@@ -1,0 +1,52 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "25",
+      "-10",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      1,
+      9
+    ],
+    "viewport": [
+      0,
+      10,
+      -2,
+      18
+    ],
+    "requiredPoints": [
+      {
+        "id": "T",
+        "x": 5,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "첫째 판별식 D₁=0에서 k=5 또는 −1이다. 둘째 판별식 D₂>0으로 k>1을 요구하므로 k=5를 택한다. 첫째 곡선은 x=5에서 x축에 접한다.",
+  "accessibilityDescription": "첫째 위로 열린 포물선 y=(x−5)²이 x축 위의 점 T(5,0)에서 한 점으로 접한다.",
+  "sourceConditions": [
+    {
+      "id": "curve",
+      "condition": "k=5를 넣은 첫째 함수 x²−10x+25=(x−5)²",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "contact",
+      "condition": "판별식 0의 유일한 교점은 (5,0)",
+      "mappedTo": "graphPlan.requiredPoints[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "첫째 함수의 중근이 x축과의 접점임을 한 좌표로 표시한다."
+  ]
+}

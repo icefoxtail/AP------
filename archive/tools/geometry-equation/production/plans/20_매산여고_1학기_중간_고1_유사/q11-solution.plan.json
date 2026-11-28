@@ -1,0 +1,71 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "8",
+      "-3",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      4
+    ],
+    "viewport": [
+      -2,
+      5,
+      0,
+      13
+    ],
+    "requiredPoints": [
+      {
+        "id": "T",
+        "x": 1,
+        "y": 6
+      },
+      {
+        "id": "V",
+        "x": 1.5,
+        "y": 5.75
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "boundary",
+          "slope": "-1",
+          "intercept": "7"
+        }
+      ]
+    }
+  },
+  "caption": "두 함수의 차는 (x−1)²+7−k이다. 경계 k=7에서 직선 y=−x+7은 포물선에 T(1,6)에서 접하므로 엄격히 항상 위쪽이려면 k<7, 자연수 최댓값은 6이다.",
+  "accessibilityDescription": "위로 열린 포물선 y=x²−3x+8과 경계 직선 y=−x+7이 T(1,6)에서 접한다. 따라서 k=7은 항상 위쪽인 경우가 아니다.",
+  "sourceConditions": [
+    {
+      "id": "parabola",
+      "condition": "발문의 포물선 y=x²−3x+8",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "boundary",
+      "condition": "차 (x−1)²+7−k의 경계 k=7에서 직선 y=−x+7",
+      "mappedTo": "graphPlan.overlays.lines[0]"
+    },
+    {
+      "id": "contact",
+      "condition": "k=7의 접점 x=1, y=6",
+      "mappedTo": "graphPlan.requiredPoints[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "포물선이 직선보다 엄격히 위에 있어야 한다는 조건에서 k=7이 경계(접함)임을 보여 준다."
+  ]
+}

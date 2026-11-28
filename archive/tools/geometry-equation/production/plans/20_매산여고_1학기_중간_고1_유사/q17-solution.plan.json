@@ -1,0 +1,83 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "10",
+      "-6",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        -1,
+        4
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -1,
+      4
+    ],
+    "viewport": [
+      -2,
+      5,
+      0,
+      19
+    ],
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": -1,
+        "y": 17
+      },
+      {
+        "id": "V",
+        "x": 3,
+        "y": 1
+      },
+      {
+        "id": "R",
+        "x": 4,
+        "y": 2
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "최솟값 1과 꼭짓점 x=3으로 a=10이다. −1≤x≤4에서 꼭짓점 (3,1)이 최솟점이고 두 끝점의 함수값은 17과 2라 최댓값은 17이다.",
+  "accessibilityDescription": "닫힌 구간 x=−1부터 4 사이의 포물선에서 왼쪽 끝점 (−1,17), 최솟점 (3,1), 오른쪽 끝점 (4,2)가 표시된다.",
+  "sourceConditions": [
+    {
+      "id": "curve",
+      "condition": "최솟값 1에서 a=10을 구하여 y=x²−6x+10",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "range",
+      "condition": "원문 정의역은 −1≤x≤4",
+      "mappedTo": "graphPlan.sourceDomain"
+    },
+    {
+      "id": "endpoints",
+      "condition": "f(−1)=17,f(4)=2",
+      "mappedTo": [
+        "graphPlan.requiredPoints[0]",
+        "graphPlan.requiredPoints[2]"
+      ]
+    },
+    {
+      "id": "vertex",
+      "condition": "f(x)=(x−3)²+1의 꼭짓점 (3,1)",
+      "mappedTo": "graphPlan.requiredPoints[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "제한된 구간에서의 최솟점과 양 끝점 값의 대소 관계를 드러낸다."
+  ]
+}
