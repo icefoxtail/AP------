@@ -88,7 +88,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-008",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/23_부영여고_1학기_중간_고2_수학I_유사/q2-solution.svg",
+    "solutionImageAlt": "진수 조건 x>2와 로그부등식 x<6의 공통 범위에서 자연수는 3, 4, 5의 세 개다.",
+    "solutionImageCaption": "진수 조건 x>2와 로그부등식 x<6의 공통 범위에서 자연수는 3, 4, 5의 세 개다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -132,7 +136,15 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-016",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "image": "assets/images/23_부영여고_1학기_중간_고2_수학I_유사/q3-problem.svg",
+    "imageAlt": "2≤x≤4에서 감소하는 지수함수의 곡선과 두 닫힌 끝점을 표시한다. M, m, M−m의 수치는 표시하지 않는다.",
+    "imageCaption": "2≤x≤4에서 감소하는 지수함수의 곡선과 두 닫힌 끝점을 표시한다. M, m, M−m의 수치는 표시하지 않는다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/23_부영여고_1학기_중간_고2_수학I_유사/q3-solution.svg",
+    "solutionImageAlt": "밑 1/2<1로 감소하여 왼쪽 끝점 (2,9)이 최댓값, 오른쪽 끝점 (4,6)이 최솟값이다. 차는 3이다.",
+    "solutionImageCaption": "밑 1/2<1로 감소하여 왼쪽 끝점 (2,9)이 최댓값, 오른쪽 끝점 (4,6)이 최솟값이다. 차는 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -220,7 +232,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-005",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/23_부영여고_1학기_중간_고2_수학I_유사/q5-solution.svg",
+    "solutionImageAlt": "호의 길이 6π, 넓이 27π로부터 계산한 반지름 r=9와 중심각 θ=2π/3을 표시한다. 넓이 27π는 영역 안쪽에 글자로 쓰되 부채꼴의 내부는 면 채움 없이 흰색으로 둔다.",
+    "solutionImageCaption": "호의 길이 6π, 넓이 27π로부터 계산한 반지름 r=9와 중심각 θ=2π/3을 표시한다. 넓이 27π는 영역 안쪽에 글자로 쓰되 부채꼴의 내부는 면 채움 없이 흰색으로 둔다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -264,7 +280,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-006",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/23_부영여고_1학기_중간_고2_수학I_유사/q6-solution.svg",
+    "solutionImageAlt": "제3사분면의 동경 위 예시 P(−12,−5)에 대해 OP=13, tanθ=5/12이다. sinθ는 음수이므로 −5/13이다.",
+    "solutionImageCaption": "제3사분면의 동경 위 예시 P(−12,−5)에 대해 OP=13, tanθ=5/12이다. sinθ는 음수이므로 −5/13이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -484,7 +504,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-011",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/23_부영여고_1학기_중간_고2_수학I_유사/q11-solution.svg",
+    "solutionImageAlt": "역함수 f(x)=3−2^(x−4)는 언제나 3 미만, g(x)=10+3^(2−x)는 언제나 10 초과다. 모든 x에서 f(x)<n<g(x)인 정수 n은 3부터 10까지 8개다.",
+    "solutionImageCaption": "역함수 f(x)=3−2^(x−4)는 언제나 3 미만, g(x)=10+3^(2−x)는 언제나 10 초과다. 모든 x에서 f(x)<n<g(x)인 정수 n은 3부터 10까지 8개다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -660,7 +684,12 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-009",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/23_부영여고_1학기_중간_고2_수학I_유사/q15-solution.svg",
+    "solutionImageAlt": "원래 로그함수의 진수 q(x)=(x−2)(10−x)=16−(x−6)²만을 그린다. 진수 조건 2<x<10과 꼭짓점 q(6)=16에서 원래 y=log₂q(x)의 최댓값은 4다.",
+    "solutionImageCaption": "원래 로그함수의 진수 q(x)=(x−2)(10−x)=16−(x−6)²만을 그린다. 진수 조건 2<x<10과 꼭짓점 q(6)=16에서 원래 y=log₂q(x)의 최댓값은 4다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 16,
@@ -792,7 +821,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-014",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/23_부영여고_1학기_중간_고2_수학I_유사/q18-solution.svg",
+    "solutionImageAlt": "θ=x−π/6로 치환하면 −7π/6≤θ≤5π/6에서 sinθ≤−1/2이다. 두 교점 θ=−5π/6,−π/6 사이가 해이므로 원래 x는 −2π/3≤x≤0이다.",
+    "solutionImageCaption": "θ=x−π/6로 치환하면 −7π/6≤θ≤5π/6에서 sinθ≤−1/2이다. 두 교점 θ=−5π/6,−π/6 사이가 해이므로 원래 x는 −2π/3≤x≤0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -830,7 +863,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-023",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/23_부영여고_1학기_중간_고2_수학I_유사/q19-solution.svg",
+    "solutionImageAlt": "|sin(πx)|와 y=x/5의 후보 범위 0≤x≤5에서 양수 교차 9개와 원점 경계 교차 1개로 총 10개이며 x=5는 해가 아니다. 그래프 화면은 실제 함수의 전체 정의역을 제한하지 않는다.",
+    "solutionImageCaption": "|sin(πx)|와 y=x/5의 후보 범위 0≤x≤5에서 양수 교차 9개와 원점 경계 교차 1개로 총 10개이며 x=5는 해가 아니다. 그래프 화면은 실제 함수의 전체 정의역을 제한하지 않는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -906,6 +943,10 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-027",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/23_부영여고_1학기_중간_고2_수학I_유사/q21-solution.svg",
+    "solutionImageAlt": "로그를 취하면 길이 4인 구간에 들어가는 정수 n은 네 개이며 합이 22이므로 n=4,5,6,7이다. 이에 대응하는 8≤b/a<16에서 최소 자연수쌍은 a=1,b=8이다.",
+    "solutionImageCaption": "로그를 취하면 길이 4인 구간에 들어가는 정수 n은 네 개이며 합이 22이므로 n=4,5,6,7이다. 이에 대응하는 8≤b/a<16에서 최소 자연수쌍은 a=1,b=8이다.",
+    "solutionImageSize": "full"
   }
 ];

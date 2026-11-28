@@ -274,7 +274,11 @@ window.questionBank = [
       "$\\sqrt{21}$",
       "$\\sqrt{22}$"
     ],
-    "answer": "②"
+    "answer": "②",
+    "solutionImage": "assets/images/26_연향중_1학기_중간_중3_유사2/q7-solution.svg",
+    "solutionImageAlt": "각 점은 소수 둘째 자리까지의 근삿값이다. 수직선 순서는 c≈4.24 < b≈4.35 < a≈4.45이며 중간값은 b=7−√7이다.",
+    "solutionImageCaption": "각 점은 소수 둘째 자리까지의 근삿값이다. 수직선 순서는 c≈4.24 < b≈4.35 < a≈4.45이며 중간값은 b=7−√7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -393,7 +397,15 @@ window.questionBank = [
       "$6\\sqrt2$",
       "$7\\sqrt2$"
     ],
-    "answer": "④"
+    "answer": "④",
+    "image": "assets/images/26_연향중_1학기_중간_중3_유사2/q10-problem.svg",
+    "imageAlt": "밑변 √20과 높이 h인 삼각형, 가로 √45와 세로 √8인 직사각형이며 두 도형의 넓이는 같다.",
+    "imageCaption": "밑변 √20과 높이 h인 삼각형, 가로 √45와 세로 √8인 직사각형이며 두 도형의 넓이는 같다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_연향중_1학기_중간_중3_유사2/q10-solution.svg",
+    "solutionImageAlt": "직사각형 넓이 6√10과 삼각형 넓이 √5·h가 같아 높이 h=6√2이다.",
+    "solutionImageCaption": "직사각형 넓이 6√10과 삼각형 넓이 √5·h가 같아 높이 h=6√2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -512,7 +524,15 @@ window.questionBank = [
       "$3\\sqrt2$",
       "$4\\sqrt2$"
     ],
-    "answer": "④"
+    "answer": "④",
+    "image": "assets/images/26_연향중_1학기_중간_중3_유사2/q13-problem.svg",
+    "imageAlt": "평행한 윗변 √12와 아랫변 √75를 가지며 오른쪽 변이 두 밑변에 수직인 사다리꼴이다. 넓이는 21√6/2이다.",
+    "imageCaption": "평행한 윗변 √12와 아랫변 √75를 가지며 오른쪽 변이 두 밑변에 수직인 사다리꼴이다. 넓이는 21√6/2이다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_연향중_1학기_중간_중3_유사2/q13-solution.svg",
+    "solutionImageAlt": "평행변 합은 7√3이고 7√3·h/2=21√6/2이므로 높이 h=3√2이다.",
+    "solutionImageCaption": "평행변 합은 7√3이고 7√3·h/2=21√6/2이므로 높이 h=3√2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -670,7 +690,15 @@ window.questionBank = [
       "$4+\\sqrt{13}+\\sqrt{10}$",
       "$6+\\sqrt{13}+\\sqrt{10}$"
     ],
-    "answer": "③"
+    "answer": "③",
+    "image": "assets/images/26_연향중_1학기_중간_중3_유사2/q17-problem.svg",
+    "imageAlt": "수직선의 5인 A에서 첫 빗변만큼 왼쪽으로 P, 7인 C에서 둘째 빗변만큼 오른쪽으로 Q를 옮긴다.",
+    "imageCaption": "수직선의 5인 A에서 첫 빗변만큼 왼쪽으로 P, 7인 C에서 둘째 빗변만큼 오른쪽으로 Q를 옮긴다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_연향중_1학기_중간_중3_유사2/q17-solution.svg",
+    "solutionImageAlt": "P=5−√13, Q=7+√10이므로 PQ=(7+√10)−(5−√13)=2+√13+√10이다.",
+    "solutionImageCaption": "P=5−√13, Q=7+√10이므로 PQ=(7+√10)−(5−√13)=2+√13+√10이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -750,7 +778,15 @@ window.questionBank = [
       "$8$",
       "$9$"
     ],
-    "answer": "②"
+    "answer": "②",
+    "image": "assets/images/26_연향중_1학기_중간_중3_유사2/q19-problem.svg",
+    "imageAlt": "정사각형 타일 2개, x×1 직사각형 타일 5개, 1×1 정사각형 2개가 이루는 한 직사각형 배치의 개념도이다. 실제 x의 크기와 비례하지 않는다.",
+    "imageCaption": "정사각형 타일 2개, x×1 직사각형 타일 5개, 1×1 정사각형 2개가 이루는 한 직사각형 배치의 개념도이다. 실제 x의 크기와 비례하지 않는다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_연향중_1학기_중간_중3_유사2/q19-solution.svg",
+    "solutionImageAlt": "전체 넓이 2x²+5x+2=(2x+1)(x+2)인 직사각형. 둘레 6x+6=42에서 x=6이다. 개념도는 실제 축척이 아니다.",
+    "solutionImageCaption": "전체 넓이 2x²+5x+2=(2x+1)(x+2)인 직사각형. 둘레 6x+6=42에서 x=6이다. 개념도는 실제 축척이 아니다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

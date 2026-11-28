@@ -55,7 +55,11 @@ window.questionBank = [
     "content": "$\\triangle\\mathrm{ABC}$에서 $a=4\\sqrt{3},\\, A=60^\\circ,\\, B=45^\\circ$일 때, 다음을 구하시오.\n⑴ $b$의 값\n⑵ 외접원의 반지름의 길이 $R$",
     "choices": [],
     "answer": "⑴ $b=4\\sqrt{2}$\n⑵ $R=4$",
-    "solution": "⑴ 사인법칙에 의하여 $\\frac{a}{\\sin A}=\\frac{b}{\\sin B}$이므로\n$$\\frac{4\\sqrt{3}}{\\sin 60^\\circ}=\\frac{b}{\\sin 45^\\circ}$$\n$\\frac{4\\sqrt{3}}{\\frac{\\sqrt{3}}{2}}=8$이므로 $b=8\\sin 45^\\circ=8\\times\\frac{\\sqrt{2}}{2}=4\\sqrt{2}$\n⑵ $2R=\\frac{a}{\\sin A}=8$이므로 $R=4$"
+    "solution": "⑴ 사인법칙에 의하여 $\\frac{a}{\\sin A}=\\frac{b}{\\sin B}$이므로\n$$\\frac{4\\sqrt{3}}{\\sin 60^\\circ}=\\frac{b}{\\sin 45^\\circ}$$\n$\\frac{4\\sqrt{3}}{\\frac{\\sqrt{3}}{2}}=8$이므로 $b=8\\sin 45^\\circ=8\\times\\frac{\\sqrt{2}}{2}=4\\sqrt{2}$\n⑵ $2R=\\frac{a}{\\sin A}=8$이므로 $R=4$",
+    "image": "assets/images/미래엔_대수_사인법칙과코사인법칙_중단원마무리_고2/q2-problem.svg",
+    "imageAlt": "주어진 삼각형의 A는 60°, B는 45°이고 변 BC는 4√3이다. 구할 변 b와 외접원의 반지름은 표시하지 않았다.",
+    "imageCaption": "주어진 삼각형의 A는 60°, B는 45°이고 변 BC는 4√3이다. 구할 변 b와 외접원의 반지름은 표시하지 않았다.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -83,7 +87,12 @@ window.questionBank = [
     "content": "$\\triangle\\mathrm{ABC}$에서 다음을 구하시오.\n⑴ $b=6,\\, c=3,\\, A=60^\\circ$일 때, $a$의 값\n⑵ $a=\\sqrt{7},\\, b=2,\\, c=3$일 때, $A$의 크기",
     "choices": [],
     "answer": "⑴ $a=3\\sqrt{3}$\n⑵ $A=60^\\circ$",
-    "solution": "⑴ 코사인법칙에 의하여\n$$a^2=b^2+c^2-2bc\\cos A=6^2+3^2-2\\times 6\\times 3\\times\\cos 60^\\circ=36+9-18=27$$\n$a>0$이므로 $a=3\\sqrt{3}$\n⑵ 코사인법칙에 의하여\n$$\\cos A=\\frac{b^2+c^2-a^2}{2bc}=\\frac{4+9-7}{2\\times 2\\times 3}=\\frac{6}{12}=\\frac{1}{2}$$\n$0^\\circ<A<180^\\circ$이므로 $A=60^\\circ$"
+    "solution": "⑴ 코사인법칙에 의하여\n$$a^2=b^2+c^2-2bc\\cos A=6^2+3^2-2\\times 6\\times 3\\times\\cos 60^\\circ=36+9-18=27$$\n$a>0$이므로 $a=3\\sqrt{3}$\n⑵ 코사인법칙에 의하여\n$$\\cos A=\\frac{b^2+c^2-a^2}{2bc}=\\frac{4+9-7}{2\\times 2\\times 3}=\\frac{6}{12}=\\frac{1}{2}$$\n$0^\\circ<A<180^\\circ$이므로 $A=60^\\circ$",
+    "solutionImage": "assets/images/미래엔_대수_사인법칙과코사인법칙_중단원마무리_고2/q3-solution.svg",
+    "solutionImageAlt": "⑴ b=6, c=3, A=60°에서 코사인법칙으로 a=3√3이다. ⑵ a=√7, b=2, c=3이면 cosA=1/2이므로 A=60°다.",
+    "solutionImageCaption": "⑴ b=6, c=3, A=60°에서 코사인법칙으로 a=3√3이다. ⑵ a=√7, b=2, c=3이면 cosA=1/2이므로 A=60°다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 4,
@@ -111,7 +120,12 @@ window.questionBank = [
     "content": "다음 $\\triangle\\mathrm{ABC}$의 넓이를 구하시오.\n⑴ $a=4,\\, c=\\sqrt{2},\\, B=135^\\circ$\n⑵ $b=6,\\, c=10,\\, A=150^\\circ$",
     "choices": [],
     "answer": "⑴ $2$\n⑵ $15$",
-    "solution": "삼각형의 넓이는 $S=\\frac{1}{2}ac\\sin B=\\frac{1}{2}bc\\sin A$이다.\n⑴ $S=\\frac{1}{2}\\times 4\\times\\sqrt{2}\\times\\sin 135^\\circ=2\\sqrt{2}\\times\\frac{\\sqrt{2}}{2}=2$\n⑵ $S=\\frac{1}{2}\\times 6\\times 10\\times\\sin 150^\\circ=30\\times\\frac{1}{2}=15$"
+    "solution": "삼각형의 넓이는 $S=\\frac{1}{2}ac\\sin B=\\frac{1}{2}bc\\sin A$이다.\n⑴ $S=\\frac{1}{2}\\times 4\\times\\sqrt{2}\\times\\sin 135^\\circ=2\\sqrt{2}\\times\\frac{\\sqrt{2}}{2}=2$\n⑵ $S=\\frac{1}{2}\\times 6\\times 10\\times\\sin 150^\\circ=30\\times\\frac{1}{2}=15$",
+    "solutionImage": "assets/images/미래엔_대수_사인법칙과코사인법칙_중단원마무리_고2/q4-solution.svg",
+    "solutionImageAlt": "두 문제 모두 두 변이 끼는 둔각을 사용한다. ⑴ 넓이=(4×√2×sin135°)/2=2, ⑵ 넓이=(6×10×sin150°)/2=15다.",
+    "solutionImageCaption": "두 문제 모두 두 변이 끼는 둔각을 사용한다. ⑴ 넓이=(4×√2×sin135°)/2=2, ⑵ 넓이=(6×10×sin150°)/2=15다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 5,
@@ -195,7 +209,11 @@ window.questionBank = [
     "content": "오른쪽 그림과 같이 $80\\text{ m}$만큼 떨어져 있는 민호와 지아의 하늘에 떠 있는 드론에 대한 올려본각의 크기가 각각 $75^\\circ$와 $45^\\circ$일 때, 드론과 민호 사이의 거리를 구하시오. (단, 민호와 지아의 눈높이는 같다.)\n<img src=\"q7.png\" />",
     "choices": [],
     "answer": "$\\frac{80\\sqrt{6}}{3}\\text{ m}$",
-    "solution": "드론의 위치를 $\\mathrm{D}$, 민호를 $\\mathrm{M}$, 지아를 $\\mathrm{J}$라 하면 삼각형 $\\mathrm{DMJ}$에서 $\\overline{\\mathrm{MJ}}=80$, $\\angle\\mathrm{M}=75^\\circ$, $\\angle\\mathrm{J}=45^\\circ$이다.\n$$\\angle\\mathrm{D}=180^\\circ-(75^\\circ+45^\\circ)=60^\\circ$$\n구하는 거리는 $\\overline{\\mathrm{DM}}$이다. 사인법칙에 의하여 $\\frac{\\overline{\\mathrm{MJ}}}{\\sin 60^\\circ}=\\frac{\\overline{\\mathrm{DM}}}{\\sin 45^\\circ}$이므로\n$$\\overline{\\mathrm{DM}}=\\frac{80\\times\\sin 45^\\circ}{\\sin 60^\\circ}=80\\times\\frac{\\frac{\\sqrt{2}}{2}}{\\frac{\\sqrt{3}}{2}}=\\frac{80\\sqrt{2}}{\\sqrt{3}}=\\frac{80\\sqrt{6}}{3}$$\n따라서 드론과 민호 사이의 거리는 $\\frac{80\\sqrt{6}}{3}\\text{ m}$이다."
+    "solution": "드론의 위치를 $\\mathrm{D}$, 민호를 $\\mathrm{M}$, 지아를 $\\mathrm{J}$라 하면 삼각형 $\\mathrm{DMJ}$에서 $\\overline{\\mathrm{MJ}}=80$, $\\angle\\mathrm{M}=75^\\circ$, $\\angle\\mathrm{J}=45^\\circ$이다.\n$$\\angle\\mathrm{D}=180^\\circ-(75^\\circ+45^\\circ)=60^\\circ$$\n구하는 거리는 $\\overline{\\mathrm{DM}}$이다. 사인법칙에 의하여 $\\frac{\\overline{\\mathrm{MJ}}}{\\sin 60^\\circ}=\\frac{\\overline{\\mathrm{DM}}}{\\sin 45^\\circ}$이므로\n$$\\overline{\\mathrm{DM}}=\\frac{80\\times\\sin 45^\\circ}{\\sin 60^\\circ}=80\\times\\frac{\\frac{\\sqrt{2}}{2}}{\\frac{\\sqrt{3}}{2}}=\\frac{80\\sqrt{2}}{\\sqrt{3}}=\\frac{80\\sqrt{6}}{3}$$\n따라서 드론과 민호 사이의 거리는 $\\frac{80\\sqrt{6}}{3}\\text{ m}$이다.",
+    "solutionImage": "assets/images/미래엔_대수_사인법칙과코사인법칙_중단원마무리_고2/q7-solution.svg",
+    "solutionImageAlt": "민호 M과 지아 J 사이 80 m, 올려본각 75°와 45°로 삼각형 MDJ를 그리면 드론 D의 각은 60°다. 사인법칙으로 DM을 구한다.",
+    "solutionImageCaption": "민호 M과 지아 J 사이 80 m, 올려본각 75°와 45°로 삼각형 MDJ를 그리면 드론 D의 각은 60°다. 사인법칙으로 DM을 구한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -251,7 +269,15 @@ window.questionBank = [
     "content": "$\\triangle\\mathrm{ABC}$에서 $a=5,\\, b=3,\\, C=120^\\circ$일 때, $\\triangle\\mathrm{ABC}$의 외접원의 반지름의 길이를 구하는 풀이 과정과 답을 쓰시오.",
     "choices": [],
     "answer": "$\\frac{7\\sqrt{3}}{3}$",
-    "solution": "먼저 코사인법칙으로 변 $c$의 길이를 구한다.\n$$c^2=a^2+b^2-2ab\\cos C=25+9-2\\times 5\\times 3\\times\\cos 120^\\circ=34-30\\times\\left(-\\frac{1}{2}\\right)=49$$\n$c>0$이므로 $c=7$\n사인법칙에 의하여 $\\frac{c}{\\sin C}=2R$이므로\n$$2R=\\frac{7}{\\sin 120^\\circ}=\\frac{7}{\\frac{\\sqrt{3}}{2}}=\\frac{14}{\\sqrt{3}}$$\n따라서 외접원의 반지름의 길이는 $R=\\frac{7}{\\sqrt{3}}=\\frac{7\\sqrt{3}}{3}$"
+    "solution": "먼저 코사인법칙으로 변 $c$의 길이를 구한다.\n$$c^2=a^2+b^2-2ab\\cos C=25+9-2\\times 5\\times 3\\times\\cos 120^\\circ=34-30\\times\\left(-\\frac{1}{2}\\right)=49$$\n$c>0$이므로 $c=7$\n사인법칙에 의하여 $\\frac{c}{\\sin C}=2R$이므로\n$$2R=\\frac{7}{\\sin 120^\\circ}=\\frac{7}{\\frac{\\sqrt{3}}{2}}=\\frac{14}{\\sqrt{3}}$$\n따라서 외접원의 반지름의 길이는 $R=\\frac{7}{\\sqrt{3}}=\\frac{7\\sqrt{3}}{3}$",
+    "image": "assets/images/미래엔_대수_사인법칙과코사인법칙_중단원마무리_고2/q9-problem.svg",
+    "imageAlt": "삼각형 ABC에서 변 BC의 길이는 5, 변 CA의 길이는 3, 그 사이 각 C는 120°이고 맞은편 변 AB는 아직 구하지 않았다.",
+    "imageCaption": "삼각형 ABC에서 변 BC의 길이는 5, 변 CA의 길이는 3, 그 사이 각 C는 120°이고 맞은편 변 AB는 아직 구하지 않았다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/미래엔_대수_사인법칙과코사인법칙_중단원마무리_고2/q9-solution.svg",
+    "solutionImageAlt": "코사인법칙으로 AB=7을 먼저 구한 뒤, 이 변이 120°의 대변임을 이용해 사인법칙 7/sin120°=2R을 적용한다.",
+    "solutionImageCaption": "코사인법칙으로 AB=7을 먼저 구한 뒤, 이 변이 120°의 대변임을 이용해 사인법칙 7/sin120°=2R을 적용한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,

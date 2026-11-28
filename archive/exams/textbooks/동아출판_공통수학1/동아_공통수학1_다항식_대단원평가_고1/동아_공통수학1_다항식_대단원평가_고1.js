@@ -167,7 +167,15 @@ window.questionBank = [
     "content": "다음은 조립제법을 이용하여 다항식 $P(x)=3x^3+ax^2+bx-1$을 일차식 $3x+2$로 나누었을 때의 몫 $Q(x)$와 나머지를 구하는 과정이다. $P(1)+Q(-1)$의 값을 구하시오. (단, $a, b, c, d, e$는 상수이다.)\n<img src=\"q06.png\" />",
     "choices": [],
     "answer": "$1$",
-    "solution": "조립제법에서 $3x+2=3\\left(x+\\frac{2}{3}\\right)$이므로 $c=-\\frac{2}{3}$이다.\n첫 줄의 계수와 아래 줄의 합을 따라가면\n$d=c\\times 3=-2$, $a+d=3$이므로 $a=5$\n$e=c\\times 3=-2$, $b+e=-6$이므로 $b=-4$\n따라서 $P(x)=3x^3+5x^2-4x-1$이고, 나머지는 $3$이다.\n조립제법의 결과에서\n$$P(x)=\\left(x+\\frac{2}{3}\\right)(3x^2+3x-6)+3=(3x+2)(x^2+x-2)+3$$\n이므로 $3x+2$로 나누었을 때의 몫은 $Q(x)=x^2+x-2$이다.\n$$P(1)=3+5-4-1=3,\\qquad Q(-1)=1-1-2=-2$$\n따라서 $P(1)+Q(-1)=3+(-2)=1$"
+    "solution": "조립제법에서 $3x+2=3\\left(x+\\frac{2}{3}\\right)$이므로 $c=-\\frac{2}{3}$이다.\n첫 줄의 계수와 아래 줄의 합을 따라가면\n$d=c\\times 3=-2$, $a+d=3$이므로 $a=5$\n$e=c\\times 3=-2$, $b+e=-6$이므로 $b=-4$\n따라서 $P(x)=3x^3+5x^2-4x-1$이고, 나머지는 $3$이다.\n조립제법의 결과에서\n$$P(x)=\\left(x+\\frac{2}{3}\\right)(3x^2+3x-6)+3=(3x+2)(x^2+x-2)+3$$\n이므로 $3x+2$로 나누었을 때의 몫은 $Q(x)=x^2+x-2$이다.\n$$P(1)=3+5-4-1=3,\\qquad Q(-1)=1-1-2=-2$$\n따라서 $P(1)+Q(-1)=3+(-2)=1$",
+    "image": "assets/images/동아_공통수학1_다항식_대단원평가_고1/q6-problem.svg",
+    "imageAlt": "나눗셈 3x+2에 대한 조립제법 계수 배치와 미지수 c, d, e",
+    "imageCaption": "나눗셈 3x+2에 대한 조립제법 계수 배치와 미지수 c, d, e",
+    "imageSize": "full",
+    "solutionImage": "assets/images/동아_공통수학1_다항식_대단원평가_고1/q6-solution.svg",
+    "solutionImageAlt": "조립제법에서 c=-2/3과 a=5, b=-4, d=e=-2를 차례로 결정한 계수표",
+    "solutionImageCaption": "조립제법에서 c=-2/3과 a=5, b=-4, d=e=-2를 차례로 결정한 계수표",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -363,7 +371,15 @@ window.questionBank = [
     "content": "오른쪽 그림과 같은 직육면체의 모든 모서리의 길이의 합이 $20$이고 삼각형 $\\mathrm{AFC}$의 세 변의 길이의 제곱의 합이 $20$일 때, 이 직육면체의 겉넓이를 구하시오.\n<img src=\"q13.png\" />",
     "choices": [],
     "answer": "$15$",
-    "solution": "직육면체의 가로, 세로, 높이의 길이를 각각 $a,\\ b,\\ c$라 하자.\n모든 모서리의 길이의 합이 $20$이므로\n$$4(a+b+c)=20\\quad\\text{에서}\\quad a+b+c=5$$\n삼각형 $\\mathrm{AFC}$의 세 변은 직육면체의 세 면의 대각선이므로 길이의 제곱은 각각 $a^2+b^2$, $b^2+c^2$, $c^2+a^2$ 꼴이다. 세 변의 길이의 제곱의 합이 $20$이므로\n$$(a^2+b^2)+(b^2+c^2)+(c^2+a^2)=2(a^2+b^2+c^2)=20\\quad\\text{에서}\\quad a^2+b^2+c^2=10$$\n$(a+b+c)^2=a^2+b^2+c^2+2(ab+bc+ca)$이므로\n$$25=10+2(ab+bc+ca)\\quad\\text{에서}\\quad 2(ab+bc+ca)=15$$\n직육면체의 겉넓이는 $2(ab+bc+ca)$이므로 구하는 겉넓이는 $15$이다."
+    "solution": "직육면체의 가로, 세로, 높이의 길이를 각각 $a,\\ b,\\ c$라 하자.\n모든 모서리의 길이의 합이 $20$이므로\n$$4(a+b+c)=20\\quad\\text{에서}\\quad a+b+c=5$$\n삼각형 $\\mathrm{AFC}$의 세 변은 직육면체의 세 면의 대각선이므로 길이의 제곱은 각각 $a^2+b^2$, $b^2+c^2$, $c^2+a^2$ 꼴이다. 세 변의 길이의 제곱의 합이 $20$이므로\n$$(a^2+b^2)+(b^2+c^2)+(c^2+a^2)=2(a^2+b^2+c^2)=20\\quad\\text{에서}\\quad a^2+b^2+c^2=10$$\n$(a+b+c)^2=a^2+b^2+c^2+2(ab+bc+ca)$이므로\n$$25=10+2(ab+bc+ca)\\quad\\text{에서}\\quad 2(ab+bc+ca)=15$$\n직육면체의 겉넓이는 $2(ab+bc+ca)$이므로 구하는 겉넓이는 $15$이다.",
+    "image": "assets/images/동아_공통수학1_다항식_대단원평가_고1/q13-problem.svg",
+    "imageAlt": "직육면체 ABCD-EFGH의 서로 다른 세 면 대각선으로 이루어진 삼각형 AFC",
+    "imageCaption": "직육면체 ABCD-EFGH의 서로 다른 세 면 대각선으로 이루어진 삼각형 AFC",
+    "imageSize": "full",
+    "solutionImage": "assets/images/동아_공통수학1_다항식_대단원평가_고1/q13-solution.svg",
+    "solutionImageAlt": "가로 a, 세로 b, 높이 c를 잡으면 AFC의 세 변은 세 면의 대각선이다",
+    "solutionImageCaption": "가로 a, 세로 b, 높이 c를 잡으면 AFC의 세 변은 세 면의 대각선이다",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,

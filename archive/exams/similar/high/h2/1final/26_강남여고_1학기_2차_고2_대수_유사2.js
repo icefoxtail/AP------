@@ -125,7 +125,15 @@ window.questionBank = [
     "variationType": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js#q3",
     "problemPlanRef": "archive/exams/similar/high/h2/1final/26_강남여고_1학기_2차_고2_대수_유사2_plans/q03-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h2/1final/26_강남여고_1학기_2차_고2_대수_유사2_plans/q03-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h2/1final/26_강남여고_1학기_2차_고2_대수_유사2_plans/q03-solution.plan.json",
+    "image": "assets/images/26_강남여고_1학기_2차_고2_대수_유사2/q3-problem.svg",
+    "imageAlt": "삼각형 ABC의 두 변 AB=9, BC=4와 그 끼인각 B=150°.",
+    "imageCaption": "삼각형 ABC의 두 변 AB=9, BC=4와 그 끼인각 B=150°.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_강남여고_1학기_2차_고2_대수_유사2/q3-solution.svg",
+    "solutionImageAlt": "해설: AB=9, BC=4, 끼인각 B=150°이므로 넓이는 (1/2)×9×4×sin150°=9.",
+    "solutionImageCaption": "해설: AB=9, BC=4, 끼인각 B=150°이므로 넓이는 (1/2)×9×4×sin150°=9.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -458,7 +466,15 @@ window.questionBank = [
     "variationType": "ADVANCED",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js#q11",
     "problemPlanRef": "archive/exams/similar/high/h2/1final/26_강남여고_1학기_2차_고2_대수_유사2_plans/q11-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h2/1final/26_강남여고_1학기_2차_고2_대수_유사2_plans/q11-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h2/1final/26_강남여고_1학기_2차_고2_대수_유사2_plans/q11-solution.plan.json",
+    "image": "assets/images/26_강남여고_1학기_2차_고2_대수_유사2/q11-problem.svg",
+    "imageAlt": "반지름 6인 원의 중심 O와 세 점 A,B,C. 중심각 AOB는 90°이고 호 BC:CA=4:5이다.",
+    "imageCaption": "반지름 6인 원의 중심 O와 세 점 A,B,C. 중심각 AOB는 90°이고 호 BC:CA=4:5이다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_강남여고_1학기_2차_고2_대수_유사2/q11-solution.svg",
+    "solutionImageAlt": "해설: ∠AOB=90°, ∠BOC=120°, ∠COA=150°이고 세 중심삼각형의 넓이를 더한다.",
+    "solutionImageCaption": "해설: ∠AOB=90°, ∠BOC=120°, ∠COA=150°이고 세 중심삼각형의 넓이를 더한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -844,7 +860,15 @@ window.questionBank = [
     "variationType": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js#q20",
     "problemPlanRef": "archive/exams/similar/high/h2/1final/26_강남여고_1학기_2차_고2_대수_유사2_plans/q20-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h2/1final/26_강남여고_1학기_2차_고2_대수_유사2_plans/q20-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h2/1final/26_강남여고_1학기_2차_고2_대수_유사2_plans/q20-solution.plan.json",
+    "image": "assets/images/26_강남여고_1학기_2차_고2_대수_유사2/q20-problem.svg",
+    "imageAlt": "y=sin πx (x≥0)와 음의 수평선 y=-1/2의 처음 네 교점 위치.",
+    "imageCaption": "y=sin πx (x≥0)와 음의 수평선 y=-1/2의 처음 네 교점 위치.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_강남여고_1학기_2차_고2_대수_유사2/q20-solution.svg",
+    "solutionImageAlt": "해설: 한 주기 안의 두 교점은 7/6, 11/6이며 다음 주기마다 x좌표에 2를 더한다.",
+    "solutionImageCaption": "해설: 한 주기 안의 두 교점은 7/6, 11/6이며 다음 주기마다 x좌표에 2를 더한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

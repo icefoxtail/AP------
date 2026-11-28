@@ -316,7 +316,11 @@ window.questionBank = [
     "image": "assets/images/25_제일고_2학기_중간_고1_유사문제/q10-problem.svg",
     "imageAlt": "주어진 세 점 A, B, C를 이어 만든 삼각형으로, 변의 길이 관계는 표시하지 않는다.",
     "imageCaption": "주어진 세 점 A, B, C를 이어 만든 삼각형으로, 변의 길이 관계는 표시하지 않는다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고1_유사문제/q10-solution.svg",
+    "solutionImageAlt": "거리 공식으로 얻은 AB=BC의 관계를 같은 눈금 표식으로 표시한다.",
+    "solutionImageCaption": "거리 공식으로 얻은 AB=BC의 관계를 같은 눈금 표식으로 표시한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -404,7 +408,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-03-TANGENT",
     "subUnit": "원과 접선",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고1_유사문제/q13-solution.svg",
+    "solutionImageAlt": "중심 (3,-2), 반지름 √13인 원에 접하는 두 평행 직선의 위치를 나타낸다.",
+    "solutionImageCaption": "중심 (3,-2), 반지름 √13인 원에 접하는 두 평행 직선의 위치를 나타낸다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -501,7 +509,12 @@ window.questionBank = [
     "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
     "subUnit": "원의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고1_유사문제/q16-solution.svg",
+    "solutionImageAlt": "ABC의 외접원과 PBC의 무게중심 Q가 그 원 위에 놓이는 관계를 풀이 좌표로 보여 준다.",
+    "solutionImageCaption": "ABC의 외접원과 PBC의 무게중심 Q가 그 원 위에 놓이는 관계를 풀이 좌표로 보여 준다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 17,
@@ -534,7 +547,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
     "subUnit": "원의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고1_유사문제/q17-solution.svg",
+    "solutionImageAlt": "A, B에서 같은 벡터 (3,4)를 옮겨 얻은 정사각형과 CD를 지름으로 하는 원이다.",
+    "solutionImageCaption": "A, B에서 같은 벡터 (3,4)를 옮겨 얻은 정사각형과 CD를 지름으로 하는 원이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -568,7 +585,12 @@ window.questionBank = [
     "subUnitKey": "H22-C2-04-CORE",
     "subUnit": "도형의 이동 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고1_유사문제/q18-solution.svg",
+    "solutionImageAlt": "접는 선 PQ가 OO′와 FF′의 수직이등분선임을 직각 표식과 두 중점으로 나타낸다.",
+    "solutionImageCaption": "접는 선 PQ가 OO′와 FF′의 수직이등분선임을 직각 표식과 두 중점으로 나타낸다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 19,
@@ -621,7 +643,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
     "subUnit": "평면좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고1_유사문제/q20-solution.svg",
+    "solutionImageAlt": "A(-2,1), B(4,7)를 1:2로 내분해 얻은 P(0,3)의 위치와 두 부분의 비를 나타낸다.",
+    "solutionImageCaption": "A(-2,1), B(4,7)를 1:2로 내분해 얻은 P(0,3)의 위치와 두 부분의 비를 나타낸다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -674,6 +700,14 @@ window.questionBank = [
     "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
     "subUnit": "원의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "image": "assets/images/25_제일고_2학기_중간_고1_유사문제/q22-problem.svg",
+    "imageAlt": "원점 O와 중심 C(6,8), 반지름 6인 원의 위치 관계이다. 거리의 범위와 개수는 쓰지 않는다.",
+    "imageCaption": "원점 O와 중심 C(6,8), 반지름 6인 원의 위치 관계이다. 거리의 범위와 개수는 쓰지 않는다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고1_유사문제/q22-solution.svg",
+    "solutionImageAlt": "원점과 원 중심을 지나는 직선에서 가장 가까운 점과 먼 점까지의 거리가 각각 4, 16이다.",
+    "solutionImageCaption": "원점과 원 중심을 지나는 직선에서 가장 가까운 점과 먼 점까지의 거리가 각각 4, 16이다.",
+    "solutionImageSize": "full"
   }
 ];

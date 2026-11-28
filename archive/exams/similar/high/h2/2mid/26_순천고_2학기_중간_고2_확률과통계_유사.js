@@ -601,7 +601,15 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H2-PS-RPM-034",
     "sourceQid": 14,
     "variationType": "CONFIRMATION",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계.js#q14"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계.js#q14",
+    "image": "assets/images/26_순천고_2학기_중간_고2_확률과통계_유사/q14-problem.svg",
+    "imageAlt": "왼쪽 아래 A에서 오른쪽 위 B로 가는 5×5 도로망과 왼쪽 변의 C(0,3).",
+    "imageCaption": "왼쪽 아래 A에서 오른쪽 위 B로 가는 5×5 도로망과 왼쪽 변의 C(0,3).",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_순천고_2학기_중간_고2_확률과통계_유사/q14-solution.svg",
+    "solutionImageAlt": "최단 경로에서 C의 유일한 진입 구간 (0,2)→C를 제외하면 C를 지나지 않는 경우와 동치이다.",
+    "solutionImageCaption": "최단 경로에서 C의 유일한 진입 구간 (0,2)→C를 제외하면 C를 지나지 않는 경우와 동치이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -861,7 +869,11 @@ window.questionBank = [
     "sourceQid": 20,
     "variationType": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계.js#q20",
-    "image": "assets/images/26_순천고_2학기_중간_고2_확률과통계/q20.png"
+    "image": "assets/images/26_순천고_2학기_중간_고2_확률과통계/q20.png",
+    "solutionImage": "assets/images/26_순천고_2학기_중간_고2_확률과통계_유사/q20-solution.svg",
+    "solutionImageAlt": "정육각형의 AD는 외접원의 지름이다. 따라서 원주각 ABD는 90도이며, 지름을 포함한 삼각형이 직각삼각형이다.",
+    "solutionImageCaption": "정육각형의 AD는 외접원의 지름이다. 따라서 원주각 ABD는 90도이며, 지름을 포함한 삼각형이 직각삼각형이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
