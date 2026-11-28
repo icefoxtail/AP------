@@ -1,0 +1,292 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "MIDPOINT",
+        "inputs": [
+          "O",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "C",
+    "A",
+    "B",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOH",
+      "refs": [
+        "O",
+        "H"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "AB",
+        "from": "A",
+        "to": "B",
+        "label": "6sqrt(3)",
+        "side": "BELOW",
+        "style": "BAR"
+      },
+      {
+        "id": "AH",
+        "from": "A",
+        "to": "H",
+        "label": "3sqrt(3)",
+        "side": "ABOVE",
+        "style": "BAR"
+      },
+      {
+        "id": "OA",
+        "from": "O",
+        "to": "A",
+        "label": "6",
+        "side": "LEFT",
+        "style": "BAR"
+      },
+      {
+        "id": "OH",
+        "from": "O",
+        "to": "H",
+        "label": "3",
+        "side": "LEFT",
+        "style": "BAR"
+      }
+    ],
+    "angles": [
+      {
+        "id": "rH",
+        "refs": [
+          "A",
+          "H",
+          "O"
+        ],
+        "value": 90,
+        "label": "90"
+      }
+    ]
+  },
+  "caption": "동산중 중3 2학기 기말 03번 해설: 반지름의 수직이등분선인 현과 직각삼각형 OHA",
+  "accessibilityDescription": "동산중 3번 해설에 사용하는 점·현·원·각과 그 연결 관계를 엔진으로 나타낸 그림.",
+  "newVisualInformation": [
+    "반지름의 수직이등분선인 현과 직각삼각형 OHA",
+    "원문 해설에서 사용한 보조선·관계·산술값을 문제축과 구분해 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "CIRCLE",
+      "condition": "반지름의 수직이등분선인 현과 직각삼각형 OHA",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "SHAPE",
+      "condition": "원문 도형의 연결·교점·현·접선 구조",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "POINTS",
+      "condition": "그림에 표시된 주어진 점과 필요한 보조점",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "ANGLE0",
+      "condition": "그림에서 대응하는 원주각·중심각·접현각",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "LEN0",
+      "condition": "선분에 놓인 주어진 값 또는 해설에서 얻은 길이",
+      "mappedTo": "planeMarks.dimensions[0]"
+    },
+    {
+      "id": "LEN1",
+      "condition": "선분에 놓인 주어진 값 또는 해설에서 얻은 길이",
+      "mappedTo": "planeMarks.dimensions[1]"
+    },
+    {
+      "id": "LEN2",
+      "condition": "선분에 놓인 주어진 값 또는 해설에서 얻은 길이",
+      "mappedTo": "planeMarks.dimensions[2]"
+    },
+    {
+      "id": "LEN3",
+      "condition": "선분에 놓인 주어진 값 또는 해설에서 얻은 길이",
+      "mappedTo": "planeMarks.dimensions[3]"
+    }
+  ],
+  "sourceQuote": "원 $O$의 반지름의 길이를 $r$라 하자. 현 $\\overline{AB}$와 반지름 $\\overline{OC}$의 교점을 $H$라 하면, $\\overline{AB}$가 $\\overline{OC}$의 수직이등분선이므로 $$\\overline{OH} = \\dfrac{r}{2}$$ 또한 중심에서 현에 내린 수선은 현을 이등분하므로 $$\\overline{AH} = \\dfrac{1}{2}\\overline{AB} = \\dfrac{1}{2} \\times 6\\sqrt{3} = 3\\sqrt{3}\\rm,cm$$ 직각삼각형 $OHA$에서 $\\overline{OA} = r$이므로 피타고라스 정리에 의해 $$\\overline{OA}^2 = \\overline{OH}^2 + \\overline{AH}^2$$ $$r^2 = \\left(\\dfrac{r}{2}\\right)^2 + (3\\sqrt{3})^2$$ $$r^2 = \\dfrac{r^2}{4} + 27$$ $$\\dfrac{3}{4}r^2 = 27 \\implies r^2 = 36$$ $r > 0$이므로 $r = 6\\rm,cm$이다. 따라서 정답은 ③이다."
+}
