@@ -1,0 +1,56 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": [
+      "1",
+      "1",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "OPEN"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "cut",
+        "y": "1/2",
+        "intersectionCount": 2,
+        "color": "BLUE"
+      }
+    ],
+    "axisTickPi": true,
+    "axisTickPiStep": "1/6",
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "1/2"
+      ]
+    },
+    "displaySize": "full"
+  },
+  "caption": "0≤x<2π에서 y=sin x와 y=1/2의 두 교점 사이가 주어진 부등식의 해 구간임을 보인다.",
+  "accessibilityDescription": "한 주기의 사인 곡선과 수평선 y=1/2의 교점을 기준으로 사인 함수가 1/2 이상인 구간을 읽는 그래프이다.",
+  "sourceConditions": [
+    {
+      "id": "s1",
+      "condition": "0≤x<2π, 2sin²x+3sinx-2≥0의 동치 조건 sin x≥1/2",
+      "mappedTo": [
+        "graphPlan.sourceDomain",
+        "graphPlan.referenceLines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "해설에서 인수분해한 부등식의 해 구간을 그래프의 두 교점으로 설명"
+  ]
+}

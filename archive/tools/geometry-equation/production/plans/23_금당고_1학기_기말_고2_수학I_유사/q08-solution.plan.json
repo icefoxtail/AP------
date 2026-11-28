@@ -1,0 +1,206 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-400"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "600"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1100"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "500"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sPC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "400",
+        "unit": "m",
+        "side": "BELOW",
+        "style": "ARROW",
+        "offset": "AUTO",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "600",
+        "unit": "m",
+        "side": "BELOW",
+        "style": "ARROW",
+        "offset": "AUTO",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lPB",
+        "ownerSegment": "sPB",
+        "text": "1400",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lPC",
+        "ownerSegment": "sPC",
+        "text": "1000",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 440
+  },
+  "caption": "AB 400m, BC 600m이고 두 주행시간으로 구한 PB 1400m, PC 1000m를 표시하여 삼각형 PBC·PBA를 구별한다.",
+  "accessibilityDescription": "AB 400m, BC 600m이고 두 주행시간으로 구한 PB 1400m, PC 1000m를 표시하여 삼각형 PBC·PBA를 구별한다.",
+  "newVisualInformation": [
+    "두 단계 코사인법칙에 사용되는 거리 PB, PC"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "세 지점 $A, B, C$가 이 순서대로 한 직선 위에 있다. 강 건너편 지점 $P$에서 속력이 $10\\,\\mathrm{m/s}$인 모형 보트를 출발시켰더니 두 지점 $B, C$에 도착할 때까지 걸린 시간이 각각 $140$초, $100$초였다. 두 지점 $A, B$ 사이의 거리는 $400\\,\\mathrm{m}$, 두 지점 $B, C$ 사이의 거리는 $600\\,\\mathrm{m}$일 때, 지점 $P$에서 출발한 모형 보트가 지점 $A$에 도착할 때까지 걸린 시간은? (단, 모형 보트의 속력은 일정하고, 강물의 속력은 고려하지 않는다.) (4.8점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
