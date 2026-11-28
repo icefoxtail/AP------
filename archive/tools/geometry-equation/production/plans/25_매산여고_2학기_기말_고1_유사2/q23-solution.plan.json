@@ -1,0 +1,74 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      8,
+      -27,
+      27
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "14",
+          "3"
+        ],
+        "denominator": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "8"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "plus",
+        "kind": "LINE",
+        "coefficients": [
+          "17",
+          "0"
+        ],
+        "domain": [
+          "-3",
+          "8"
+        ],
+        "color": "WARM",
+        "label": "plus",
+        "style": "DASHED"
+      },
+      {
+        "id": "minus",
+        "kind": "LINE",
+        "coefficients": [
+          "-17",
+          "0"
+        ],
+        "domain": [
+          "-3",
+          "8"
+        ],
+        "color": "VIOLET",
+        "label": "minus",
+        "style": "DASHED"
+      }
+    ]
+  },
+  "caption": "극점 x=2 양쪽의 양의 해 x=1, 24/7은 각각 y=-17, y=17을 만족한다.",
+  "accessibilityDescription": "극점 x=2 양쪽의 양의 해 x=1, 24/7은 각각 y=-17, y=17을 만족한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$f(4)=13$이므로 $4a+b=26$이다. $|f|=3$에 실근이 한 개뿐이려면 점근선의 높이 $a$가 $\\pm3$이다. $a=3$이면 $b=14$, $f(x)=3+\\frac{20}{x-2}$이고 $f=-3$의 근은 $x=2-\\frac{20}6=-\\frac43 0$이므로 제외한다. $a=3$으로 확정한다. $|f|=\\alpha$가 두 양의 근을 가지려면 $\\alpha>3$이고 $\\beta=2-\\frac{20}{\\alpha+3}$는 $0<\\beta<2$이다. 정수이므로 $\\beta=1$, 따라서 $\\alpha=17$이다. 큰 근은 $\\gamma=2+\\frac{20}{17-3}=\\frac{24}7$이다. 따라서 $\\alpha+\\beta+\\gamma=17+1+\\frac{24}7=\\frac{150}7$이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "극점 x=2 양쪽의 양의 해 x=1, 24/7은 각각 y=-17, y=17을 만족한다."
+  ]
+}

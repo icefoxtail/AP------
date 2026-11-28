@@ -1,0 +1,70 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      5,
+      -1,
+      10
+    ],
+    "curves": [
+      {
+        "id": "left",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "4",
+          "-3",
+          "2"
+        ],
+        "domain": [
+          "0",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "left"
+      },
+      {
+        "id": "right",
+        "kind": "LINE",
+        "coefficients": [
+          "8",
+          "-1"
+        ],
+        "domain": [
+          "2",
+          "4"
+        ],
+        "color": "GREEN",
+        "label": "right"
+      },
+      {
+        "id": "target",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "0"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "color": "WARM",
+        "label": "target",
+        "style": "DASHED"
+      }
+    ]
+  },
+  "caption": "t=f(x)로 놓으면 가로선 y=4와 t+f(t)의 그래프가 만나는 후보는 t=0,3/2,4이다. 조각별 정의역·치역 제한을 적용한다.",
+  "accessibilityDescription": "t=f(x)로 놓으면 가로선 y=4와 t+f(t)의 그래프가 만나는 후보는 t=0,3/2,4이다. 조각별 정의역·치역 제한을 적용한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$0\\le x\\le2$에서는 $f(x)=2(x-1)^2+2$이고, $2<x\\le4$에서는 $f(x)=8-2x$이다. 먼저 $t=f(x)$로 놓으면 $0\\le t\\le4$이다.\n방정식은 $t+f(t)=4$이다.\n$0\\le t\\le2$에서는 $t+2t^2-4t+4=4$이므로 $2t^2-3t=0$이다. 따라서 $t=0$ 또는 $t=3/2$이다.\n$2<t\\le4$에서는 $t+8-2t=4$이므로 $t=4$이다.\n이제 $f(x)=0$은 $x=4$, $f(x)=3/2$는 $x=13/4$, $f(x)=4$는 $x=0,2$를 준다.\n서로 다른 모든 실근은 $0,2,13/4,4$이고 합은 $37/4$이므로 정답은 ⑤이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "t=f(x)로 놓으면 가로선 y=4와 t+f(t)의 그래프가 만나는 후보는 t=0,3/2,4이다. 조각별 정의역·치역 제한을 적용한다."
+  ]
+}

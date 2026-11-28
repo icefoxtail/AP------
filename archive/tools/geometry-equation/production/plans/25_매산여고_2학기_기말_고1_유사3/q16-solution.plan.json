@@ -1,0 +1,68 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -10,
+      12,
+      0,
+      10
+    ],
+    "curves": [
+      {
+        "id": "left",
+        "kind": "SQRT",
+        "radicand": [
+          "20",
+          "-4"
+        ],
+        "amplitude": "1",
+        "offset": "1",
+        "domain": [
+          "-9",
+          "1"
+        ],
+        "color": "BLUE",
+        "label": "left",
+        "domainStates": [
+          "NONE",
+          "OPEN"
+        ]
+      },
+      {
+        "id": "right",
+        "kind": "RATIONAL",
+        "numerator": [
+          "14",
+          "1"
+        ],
+        "denominator": [
+          "2",
+          "1"
+        ],
+        "domain": [
+          "1",
+          "11"
+        ],
+        "color": "WARM",
+        "label": "right",
+        "domainStates": [
+          "CLOSED",
+          "NONE"
+        ]
+      }
+    ]
+  },
+  "caption": "접합 높이 5를 오른쪽 조각에서 포함하고 왼쪽에서는 제외하여 두 치역이 겹치지 않고 이어진다.",
+  "accessibilityDescription": "접합 높이 5를 오른쪽 조각에서 포함하고 왼쪽에서는 제외하여 두 치역이 겹치지 않고 이어진다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 조각은 $x\\ge1$에서 엄격히 감소하며 치역이 $(1,5]$이다. 특히 경계값 $5$는 오른쪽 조각의 $x=1$에서 **포함된다**. 왼쪽 조각의 근호가 모든 $x<1$에서 실수이고 일대일이려면 $a<0$이며, 그 치역은 $(1+\\sqrt{-4a},\\infty)$처럼 경계값이 **포함되지 않는** 열린 구간이다. 두 조각이 중복 없이 만나 $(k,\\infty)$가 되려면 왼쪽 조각의 아래쪽 한계가 정확히 $5$여야 한다. 즉 $1+\\sqrt{-4a}=5$에서 $a=-4$. 이때 두 치역은 각각 $(5,\\infty)$와 $(1,5]$이므로 전체는 $(1,\\infty)$이고, 두 조각이 엄격히 단조하며 치역도 겹치지 않아 일대일이다. $k=1$이므로 $a+k=-3$이다. 만약 열린/닫힌 경계를 반대로 읽으면 $5$의 소속 조각이 뒤바뀌므로 치역 연결의 경계 논증이 틀린다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "접합 높이 5를 오른쪽 조각에서 포함하고 왼쪽에서는 제외하여 두 치역이 겹치지 않고 이어진다."
+  ]
+}

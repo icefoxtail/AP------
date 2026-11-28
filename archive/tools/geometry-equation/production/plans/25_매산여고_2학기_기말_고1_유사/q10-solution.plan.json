@@ -1,0 +1,56 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "p",
+        "color": "BLUE",
+        "hideSetLabel": true,
+        "pieces": [
+          {
+            "lo": {
+              "value": "-6",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "15",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "~q",
+        "color": "WARM",
+        "hideSetLabel": true,
+        "pieces": [
+          {
+            "lo": {
+              "value": "5",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "15",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "a=5를 예로 들면 ¬q의 닫힌구간이 p에 포함되어야 하며 p의 열린·닫힌 끝점을 구분한다.",
+  "accessibilityDescription": "a=5를 예로 들면 ¬q의 닫힌구간이 p에 포함되어야 하며 p의 열린·닫힌 끝점을 구분한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\sim q$의 진리집합은 두 근 $a,3a$ 사이의 닫힌 구간 $[\\min(a,3a),\\max(a,3a)]$이다. 이 구간이 $(-6,15]$에 포함되어야 한다. $a\\ge0$일 때 $3a\\le15$이므로 $a=0,1,2,3,4,5$이고, $a -6$이므로 $a=-1$뿐이다. 총 $6+1=7$개이다.",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "a=5를 예로 들면 ¬q의 닫힌구간이 p에 포함되어야 하며 p의 열린·닫힌 끝점을 구분한다."
+  ]
+}

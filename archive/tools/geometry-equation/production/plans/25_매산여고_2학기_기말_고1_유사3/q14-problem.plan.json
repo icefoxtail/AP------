@@ -1,0 +1,70 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -10,
+      0,
+      -1,
+      7
+    ],
+    "curves": [
+      {
+        "id": "Fleft",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-10",
+          "2"
+        ],
+        "denominator": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-9",
+          "-4"
+        ],
+        "color": "BLUE",
+        "label": "Fleft",
+        "domainStates": [
+          "CLOSED",
+          "CLOSED"
+        ]
+      },
+      {
+        "id": "Fright",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-6",
+          "0"
+        ],
+        "denominator": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "-1"
+        ],
+        "color": "GREEN",
+        "label": "Fright",
+        "domainStates": [
+          "OPEN",
+          "CLOSED"
+        ]
+      }
+    ]
+  },
+  "caption": "발문에서 주어진 조각함수 F만 그린다. x=-4는 왼쪽 조각에 포함되고 오른쪽 조각에서는 제외된다. 미정인 k의 값과 교점은 표시하지 않는다.",
+  "accessibilityDescription": "발문에서 주어진 조각함수 F만 그린다. x=-4는 왼쪽 조각에 포함되고 오른쪽 조각에서는 제외된다. 미정인 k의 값과 교점은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$-9\\le x\\le-1$에서 두 그래프 $y=F(x)$, $y=\\sqrt{-x}+k$를 생각하자. $F(x)=\\begin{cases}2-\\frac6{x-2}&(-9\\le x\\le-4)\\\\-\\frac6{x-2}&(-4<x\\le-1)\\end{cases}$이다. 두 그래프가 서로 다른 두 점에서 만나게 하는 $k$의 최댓값은? [4.2점]",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "발문에서 주어진 조각함수 F만 그린다. x=-4는 왼쪽 조각에 포함되고 오른쪽 조각에서는 제외된다. 미정인 k의 값과 교점은 표시하지 않는다."
+  ]
+}

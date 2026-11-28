@@ -1,0 +1,68 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "p",
+        "color": "BLUE",
+        "hideSetLabel": true,
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "6",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "q",
+        "color": "WARM",
+        "hideSetLabel": true,
+        "pieces": [
+          {
+            "lo": {
+              "value": "-1/2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "7/2",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "label": "반례",
+        "points": [
+          {
+            "id": "E",
+            "value": "0",
+            "name": "반례",
+            "style": "CROSS"
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "k=3/2를 예로 들면 q 구간의 정수 중 p에 들어가지 않는 반례는 x=0 하나이다.",
+  "accessibilityDescription": "k=3/2를 예로 들면 q 구간의 정수 중 p에 들어가지 않는 반례는 x=0 하나이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$q$의 진리집합은 $(k-2,k+2)$, $p$의 진리집합은 $(3-2k,3+2k)$이다.\n① $0<k<1$이면 $q$를 만족하는 정수 $-1,0,1,2$ 중 $-1,0,1$이 $p$ 밖에 있다. $k=1$에서는 $q$의 정수가 $0,1,2$이고 $p=(1,5)$이므로 $0,1$ 두 개가 반례다.\n② $1<k<2$이면 $q$의 정수는 $0,1,2,3$이다. 이 중 $1,2,3$은 $p$ 안에 있고, $0$이 $p$ 밖에 있을 조건은 $0\\le3-2k$, 즉 $k\\le\\frac32$이다. $k=\\frac32$에서 $0$은 $p$의 열린 끝점이어서 여전히 반례다.\n③ $k\\ge2$이면 $p$가 $q$에 속한 모든 정수를 포함한다. 따라서 $1<k\\le\\frac32$이며 $10(\\alpha+\\beta)=25$이다.",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "k=3/2를 예로 들면 q 구간의 정수 중 p에 들어가지 않는 반례는 x=0 하나이다."
+  ]
+}

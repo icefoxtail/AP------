@@ -1,0 +1,69 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      11,
+      -4,
+      10
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-14",
+          "3"
+        ],
+        "denominator": [
+          "-4",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "11"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "sym",
+        "kind": "LINE",
+        "coefficients": [
+          "7",
+          "-1"
+        ],
+        "domain": [
+          "-3",
+          "11"
+        ],
+        "color": "WARM",
+        "label": "sym",
+        "style": "DASHED"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "C",
+          "x": "4",
+          "y": "3",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "점근선 x=4, y=3과 기울기 -1 대칭축 y=-x+7을 확인한다.",
+  "accessibilityDescription": "점근선 x=4, y=3과 기울기 -1 대칭축 y=-x+7을 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\frac{3x-14}{x-4}=3-\\frac2{x-4}$이고 중심은 $(4,3)$이다. 두 대칭축은 $y-3=x-4$, $y-3=-(x-4)$이므로 $y=x-1$, $y=-x+7$이다. 점근선은 $x=4,y=3$이고 $x>4$의 충분히 큰 값에서 $y>0$이므로 제1사분면도 지난다. 따라서 옳은 진술은 $y=-x+7$에 관한 대칭이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "점근선 x=4, y=3과 기울기 -1 대칭축 y=-x+7을 확인한다."
+  ]
+}

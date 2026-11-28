@@ -1,0 +1,68 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "p",
+        "color": "BLUE",
+        "hideSetLabel": true,
+        "pieces": [
+          {
+            "lo": {
+              "value": "1/2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "7/2",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "q",
+        "color": "WARM",
+        "hideSetLabel": true,
+        "pieces": [
+          {
+            "lo": {
+              "value": "1/2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "9/2",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "label": "반례",
+        "points": [
+          {
+            "id": "E",
+            "value": "4",
+            "name": "반례",
+            "style": "CROSS"
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "k=1/2를 예로 들면 q 구간의 정수 중 p에 들어가지 않는 반례는 x=4 하나이다.",
+  "accessibilityDescription": "k=1/2를 예로 들면 q 구간의 정수 중 p에 들어가지 않는 반례는 x=4 하나이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$q$는 $k 1$이면 $p$의 양 끝이 $q$의 양 끝보다 넓어져 반례가 없다.\n따라서 범위는 $\\frac13<k\\le\\frac23$, $10(\\alpha+\\beta)=10$이다.",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "k=1/2를 예로 들면 q 구간의 정수 중 p에 들어가지 않는 반례는 x=4 하나이다."
+  ]
+}

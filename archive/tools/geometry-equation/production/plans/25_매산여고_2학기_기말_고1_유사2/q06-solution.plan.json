@@ -1,0 +1,62 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      11,
+      -7,
+      8
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "2",
+          "-1"
+        ],
+        "denominator": [
+          "-4",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "11"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-12",
+          "2"
+        ],
+        "denominator": [
+          "-5",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "11"
+        ],
+        "color": "WARM",
+        "label": "g"
+      }
+    ]
+  },
+  "caption": "a=-1로 역복원한 원함수의 중심 (4,-1)이 평행이동 후 (5,2)가 된다.",
+  "accessibilityDescription": "a=-1로 역복원한 원함수의 중심 (4,-1)이 평행이동 후 (5,2)가 된다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "처음 함수를 정리하면 $y=a+\\frac{4a+2}{x-4}$이고 결과 함수는 $y=2-\\frac2{x-5}$이다. 수직점근선 $x=4$가 $x=5$로 옮겨졌으므로 $p=1$이다. 평행이동해도 분자에 해당하는 나머지 계수는 바뀌지 않으므로 $4a+2=-2$, 즉 $a=-1$이다. 수평점근선 $y=a=-1$이 $y=2$가 되었으므로 $q=3$이다. 따라서 $a+2p+q=-1+2+3=4$이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "a=-1로 역복원한 원함수의 중심 (4,-1)이 평행이동 후 (5,2)가 된다."
+  ]
+}

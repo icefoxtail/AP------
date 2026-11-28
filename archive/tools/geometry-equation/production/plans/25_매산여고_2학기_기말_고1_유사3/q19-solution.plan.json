@@ -1,0 +1,70 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      4,
+      -1,
+      9
+    ],
+    "curves": [
+      {
+        "id": "left",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "3",
+          "-3",
+          "2"
+        ],
+        "domain": [
+          "0",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "left"
+      },
+      {
+        "id": "right",
+        "kind": "LINE",
+        "coefficients": [
+          "9",
+          "-2"
+        ],
+        "domain": [
+          "2",
+          "3"
+        ],
+        "color": "GREEN",
+        "label": "right"
+      },
+      {
+        "id": "target",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "0"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ],
+        "color": "WARM",
+        "label": "target",
+        "style": "DASHED"
+      }
+    ]
+  },
+  "caption": "t=f(x)로 놓으면 가로선 y=3와 t+f(t)의 그래프가 만나는 후보는 t=0,3/2,3; 조각 경계 x=2의 원상은 중복 제거이다. 조각별 정의역·치역 제한을 적용한다.",
+  "accessibilityDescription": "t=f(x)로 놓으면 가로선 y=3와 t+f(t)의 그래프가 만나는 후보는 t=0,3/2,3; 조각 경계 x=2의 원상은 중복 제거이다. 조각별 정의역·치역 제한을 적용한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$f$의 치역은 $[0,3]$이므로 $t=f(x)$라 두면 $0\\le t\\le3$이다. $0\\le t\\le2$에서는 $t+f(t)=2t^2-3t+3=3$으로부터 $t=0,\\frac32$를 얻는다. $2 2$이므로 이 값을 **추가로 세지 않는다**. 서로 다른 여섯 근의 합은 $3+\\frac12+\\frac32+\\frac52+0+2=\\frac{19}2$이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "t=f(x)로 놓으면 가로선 y=3와 t+f(t)의 그래프가 만나는 후보는 t=0,3/2,3; 조각 경계 x=2의 원상은 중복 제거이다. 조각별 정의역·치역 제한을 적용한다."
+  ]
+}

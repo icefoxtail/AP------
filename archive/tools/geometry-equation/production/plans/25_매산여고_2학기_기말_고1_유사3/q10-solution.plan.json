@@ -1,0 +1,56 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "p",
+        "color": "BLUE",
+        "hideSetLabel": true,
+        "pieces": [
+          {
+            "lo": {
+              "value": "-4",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "12",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "~q",
+        "color": "WARM",
+        "hideSetLabel": true,
+        "pieces": [
+          {
+            "lo": {
+              "value": "6",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "12",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "a=6를 예로 들면 ¬q의 닫힌구간이 p에 포함되어야 하며 p의 열린·닫힌 끝점을 구분한다.",
+  "accessibilityDescription": "a=6를 예로 들면 ¬q의 닫힌구간이 p에 포함되어야 하며 p의 열린·닫힌 끝점을 구분한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\sim q$의 진리집합 $[\\min(a,2a),\\max(a,2a)]$이 $(-4,12]$에 들어가야 한다. $a\\ge0$이면 $2a\\le12$에서 $a=0,1,\\ldots,6$의 $7$개이고, $a -4$에서 $a=-1$ 한 개이다. 끝점 $-4$는 허용되지 않고 $12$는 허용되므로 총 $8$개이다.",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "a=6를 예로 들면 ¬q의 닫힌구간이 p에 포함되어야 하며 p의 열린·닫힌 끝점을 구분한다."
+  ]
+}

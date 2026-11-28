@@ -1,0 +1,68 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "p",
+        "color": "BLUE",
+        "hideSetLabel": true,
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "4",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "q",
+        "color": "WARM",
+        "hideSetLabel": true,
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "5",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "label": "반례",
+        "points": [
+          {
+            "id": "E",
+            "value": "4",
+            "name": "반례",
+            "style": "CROSS"
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "k=1를 예로 들면 q 구간의 정수 중 p에 들어가지 않는 반례는 x=4 하나이다.",
+  "accessibilityDescription": "k=1를 예로 들면 q 구간의 정수 중 p에 들어가지 않는 반례는 x=4 하나이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$q$는 $k \\frac43$이면 반례가 없다.\n④ $k\\ge2$이면 $p$가 $q$에 속한 모든 정수를 포함한다. 따라서 정확히 하나인 범위는 $\\frac23<k\\le\\frac43$이고 $10(\\alpha+\\beta)=10(\\frac23+\\frac43)=20$이다.",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "k=1를 예로 들면 q 구간의 정수 중 p에 들어가지 않는 반례는 x=4 하나이다."
+  ]
+}

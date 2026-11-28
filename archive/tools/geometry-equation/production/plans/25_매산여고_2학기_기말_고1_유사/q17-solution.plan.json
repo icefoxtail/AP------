@@ -1,0 +1,67 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      9,
+      -4,
+      9
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "1",
+          "2"
+        ],
+        "amplitude": "1",
+        "offset": "-1",
+        "domain": [
+          "-1/2",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "inv",
+        "inverseOf": "f",
+        "domain": [
+          "-1",
+          "2"
+        ],
+        "color": "GREEN",
+        "label": "inverse"
+      },
+      {
+        "id": "diag",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "4"
+        ],
+        "color": "WARM",
+        "label": "diag",
+        "style": "DASHED"
+      }
+    ]
+  },
+  "caption": "k=0인 경우 f와 역함수가 y=x의 고정점 (0,0)에서 만나는 모습을 확인한다.",
+  "accessibilityDescription": "k=0인 경우 f와 역함수가 y=x의 고정점 (0,0)에서 만나는 모습을 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$f$가 엄격히 증가하므로 $f$와 역함수의 교점은 $f(x)=x$를 만족하는 점에만 있다. $\\sqrt{2x+1-k}=x+1$이므로 $x\\ge-1$이고 $k=2x+1-(x+1)^2=-x^2$이다. $x\\ge-1$에서 $-x^2$는 $x=0$에서 최댓값 $0$이며 $x=-1$에서 $-1$이다. 따라서 해가 정확히 하나인 것은 $k<-1$ 또는 $k=0$이다. $k\\ge-5$인 정수는 $-5,-4,-3,-2,0$이고 합은 $-14$이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "k=0인 경우 f와 역함수가 y=x의 고정점 (0,0)에서 만나는 모습을 확인한다."
+  ]
+}

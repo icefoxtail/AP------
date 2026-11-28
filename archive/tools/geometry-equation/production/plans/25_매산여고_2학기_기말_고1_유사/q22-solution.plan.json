@@ -1,0 +1,56 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      9,
+      -1,
+      10
+    ],
+    "curves": [
+      {
+        "id": "root",
+        "kind": "SQRT",
+        "radicand": [
+          "-4",
+          "4"
+        ],
+        "amplitude": "1",
+        "offset": "1",
+        "domain": [
+          "1",
+          "8"
+        ],
+        "color": "BLUE",
+        "label": "root"
+      },
+      {
+        "id": "line",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "9"
+        ],
+        "color": "WARM",
+        "label": "line"
+      }
+    ]
+  },
+  "caption": "k=0일 때 제곱근 시작점 x=1을 포함하여 직선과 두 점에서 만난다.",
+  "accessibilityDescription": "k=0일 때 제곱근 시작점 x=1을 포함하여 직선과 두 점에서 만난다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$t=\\sqrt{4x-4}\\ge0$으로 놓으면 $x=\\frac{t^2}4+1$, $y=t+1$이다. 두 식을 직선에 대입하면 $t^2-4t+4k=0$이다. 서로 다른 두 비음수 실근이 있을 조건을 구한다. 두 근의 합은 $4>0$, 곱은 $4k$이므로 $k\\ge0$이어야 하며, 판별식 $16-16k>0$에서 $k<1$이어야 한다. $k=0$에서는 $t=0,4$가 모두 허용되므로 결론은 $0\\le k<1$이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "k=0일 때 제곱근 시작점 x=1을 포함하여 직선과 두 점에서 만난다."
+  ]
+}

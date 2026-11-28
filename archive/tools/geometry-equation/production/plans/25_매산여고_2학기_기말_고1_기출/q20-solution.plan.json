@@ -1,0 +1,68 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "p",
+        "color": "BLUE",
+        "hideSetLabel": true,
+        "pieces": [
+          {
+            "lo": {
+              "value": "1/2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "7/2",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "q",
+        "color": "WARM",
+        "hideSetLabel": true,
+        "pieces": [
+          {
+            "lo": {
+              "value": "-1/4",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "15/4",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "label": "반례",
+        "points": [
+          {
+            "id": "E",
+            "value": "0",
+            "name": "반례",
+            "style": "CROSS"
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "k=3/4를 예로 들면 q 구간의 정수 중 p에 들어가지 않는 반례는 x=0 하나이다.",
+  "accessibilityDescription": "k=3/4를 예로 들면 q 구간의 정수 중 p에 들어가지 않는 반례는 x=0 하나이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$p:x^2-4x+(2-2k)(2+2k) 0$이므로 $p$의 진리집합은 $2-2k 1/2$이어야 한다.\n따라서 반례가 정수 하나($0$)뿐인 범위는 $1/2<k<1$이다. $\\alpha=1/2$, $\\beta=1$이므로 $10(\\alpha+\\beta)=15$이다. 정답은 ④이다.",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "k=3/4를 예로 들면 q 구간의 정수 중 p에 들어가지 않는 반례는 x=0 하나이다."
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -7,
+      7,
+      -8,
+      4
+    ],
+    "curves": [
+      {
+        "id": "start",
+        "kind": "SQRT",
+        "radicand": [
+          "4",
+          "2"
+        ],
+        "amplitude": "1",
+        "offset": "-3",
+        "domain": [
+          "-2",
+          "6"
+        ],
+        "color": "BLUE",
+        "label": "start"
+      },
+      {
+        "id": "final",
+        "kind": "SQRT",
+        "radicand": [
+          "6",
+          "-2"
+        ],
+        "amplitude": "1",
+        "offset": "-5",
+        "domain": [
+          "-6",
+          "3"
+        ],
+        "color": "WARM",
+        "label": "final"
+      }
+    ]
+  },
+  "caption": "원함수와 이동·대칭 후 최종 무리함수의 방향 및 시작점이 서로 달라짐을 비교한다.",
+  "accessibilityDescription": "원함수와 이동·대칭 후 최종 무리함수의 방향 및 시작점이 서로 달라짐을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "최종 식에서 $y$축 대칭을 역으로 되돌리면 $y=\\sqrt{2x+6}-5$이다. 아래쪽으로 $2$ 이동했던 것을 위쪽으로 $2$ 되돌리면 $y=\\sqrt{2x+6}-3$이다. 마지막으로 왼쪽으로 $1$ 이동했던 것을 오른쪽으로 $1$ 되돌려 $y=\\sqrt{2(x-1)+6}-3=\\sqrt{2x+4}-3$을 얻는다. 따라서 $(a,b,c)=(2,4,-3)$이고 $a+b+c=3$이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "원함수와 이동·대칭 후 최종 무리함수의 방향 및 시작점이 서로 달라짐을 비교한다."
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -7,
+      7,
+      -8,
+      5
+    ],
+    "curves": [
+      {
+        "id": "start",
+        "kind": "SQRT",
+        "radicand": [
+          "6",
+          "-3"
+        ],
+        "amplitude": "-1",
+        "offset": "-1",
+        "domain": [
+          "-6",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "start"
+      },
+      {
+        "id": "final",
+        "kind": "SQRT",
+        "radicand": [
+          "9",
+          "3"
+        ],
+        "amplitude": "-1",
+        "offset": "2",
+        "domain": [
+          "-3",
+          "6"
+        ],
+        "color": "WARM",
+        "label": "final"
+      }
+    ]
+  },
+  "caption": "원함수와 이동·대칭 후 최종 무리함수의 방향 및 시작점이 서로 달라짐을 비교한다.",
+  "accessibilityDescription": "원함수와 이동·대칭 후 최종 무리함수의 방향 및 시작점이 서로 달라짐을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "먼저 $x$를 $-x$로 바꾸면 $y=-\\sqrt{3x+6}-1$이다. 이어 왼쪽으로 $1$ 평행이동하면 $y=-\\sqrt{3(x+1)+6}-1=-\\sqrt{3x+9}-1$이고 위쪽으로 $3$ 옮기면 $y=-\\sqrt{3x+9}+2$이다. 따라서 $a=3,b=9,c=2$이고 $a+b-c=3+9-2=10$이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "원함수와 이동·대칭 후 최종 무리함수의 방향 및 시작점이 서로 달라짐을 비교한다."
+  ]
+}

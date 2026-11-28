@@ -1,0 +1,110 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X1",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      {
+        "id": "X2",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X1",
+        "to": "X2",
+        "color": "BLUE"
+      }
+    ],
+    "highlight": {
+      "elements": [
+        {
+          "column": 1,
+          "element": 0
+        },
+        {
+          "column": 1,
+          "element": 2
+        },
+        {
+          "column": 1,
+          "element": 3
+        }
+      ]
+    }
+  },
+  "caption": "f의 치역에 해당하는 세 입력만 g∘f의 치역 결정에 사용되며 나머지 한 입력은 자유롭다.",
+  "accessibilityDescription": "f의 치역에 해당하는 세 입력만 g∘f의 치역 결정에 사용되며 나머지 한 입력은 자유롭다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$f(X)=\\{1,3,4\\}$이므로 $g\\circ f$의 치역은 $\\{g(1),g(3),g(4)\\}$이다. 이 세 값이 정확히 두 종류가 되도록 할 방법은 출력값 두 개를 고르는 $\\binom{4}{2}=6$가지, 두 값을 모두 쓰도록 세 입력에 배정하는 $2^3-2=6$가지다. $g(2)$는 치역에 영향을 주지 않아 $4$가지 자유롭게 정한다. 답은 $6\\cdot6\\cdot4=144$이다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "f의 치역에 해당하는 세 입력만 g∘f의 치역 결정에 사용되며 나머지 한 입력은 자유롭다."
+  ]
+}

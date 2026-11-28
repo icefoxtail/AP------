@@ -1,0 +1,56 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      1,
+      18,
+      -1,
+      19
+    ],
+    "curves": [
+      {
+        "id": "root",
+        "kind": "SQRT",
+        "radicand": [
+          "-36",
+          "12"
+        ],
+        "amplitude": "1",
+        "offset": "2",
+        "domain": [
+          "3",
+          "17"
+        ],
+        "color": "BLUE",
+        "label": "root"
+      },
+      {
+        "id": "line",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          "1",
+          "18"
+        ],
+        "color": "WARM",
+        "label": "line"
+      }
+    ]
+  },
+  "caption": "k=-1일 때 정의역 시작점 x=3과 나머지 교점 x=15를 모두 포함한다.",
+  "accessibilityDescription": "k=-1일 때 정의역 시작점 x=3과 나머지 교점 x=15를 모두 포함한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$t=\\sqrt{12x-36}\\ge0$으로 바꾸면 $x=\\frac{t^2}{12}+3$, $y=t+2$이다. 교점 방정식은 $t^2-12t+12(k+1)=0$이다. 근의 합이 $12>0$이므로 두 실근이 비음수일 조건은 곱 $12(k+1)\\ge0$ 및 판별식 $144-48(k+1)>0$이다. 이로부터 $k\\ge-1$과 $k<2$를 얻는다. $k=-1$에서 $t=0$인 교점이 있으므로 포함된다. 답은 $-1\\le k<2$이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "k=-1일 때 정의역 시작점 x=3과 나머지 교점 x=15를 모두 포함한다."
+  ]
+}

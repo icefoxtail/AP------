@@ -1,0 +1,60 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -10,
+      -3,
+      0,
+      8
+    ],
+    "curves": [
+      {
+        "id": "F",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-10",
+          "2"
+        ],
+        "denominator": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-9",
+          "-4"
+        ],
+        "color": "BLUE",
+        "label": "F"
+      },
+      {
+        "id": "root",
+        "kind": "SQRT",
+        "radicand": [
+          "0",
+          "-1"
+        ],
+        "amplitude": "1",
+        "offset": "1",
+        "domain": [
+          "-9",
+          "-4"
+        ],
+        "color": "WARM",
+        "label": "root"
+      }
+    ]
+  },
+  "caption": "닫힌 구간 오른쪽 끝 x=-4에서 교점이 생기고 그때 k=1이다.",
+  "accessibilityDescription": "닫힌 구간 오른쪽 끝 x=-4에서 교점이 생기고 그때 k=1이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "교점은 $k=h(x)=2-\\frac6{x-2}-\\sqrt{-x}$를 만족하는 $x$이다. 주어진 구간에서 첫 항의 분수함수는 엄격히 증가하고 $\\sqrt{-x}$는 엄격히 감소하므로 $h$는 엄격히 증가한다. 따라서 정확히 한 교점은 $h(-9)\\le k\\le h(-4)$와 동치이고 최댓값은 $h(-4)=2-\\frac6{-6}-2=1$이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "닫힌 구간 오른쪽 끝 x=-4에서 교점이 생기고 그때 k=1이다."
+  ]
+}

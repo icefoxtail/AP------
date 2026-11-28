@@ -1,0 +1,56 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "p",
+        "color": "BLUE",
+        "hideSetLabel": true,
+        "pieces": [
+          {
+            "lo": {
+              "value": "-9",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "18",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "~q",
+        "color": "WARM",
+        "hideSetLabel": true,
+        "pieces": [
+          {
+            "lo": {
+              "value": "6",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "18",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "a=6를 예로 들면 ¬q의 닫힌구간이 p에 포함되어야 하며 p의 열린·닫힌 끝점을 구분한다.",
+  "accessibilityDescription": "a=6를 예로 들면 ¬q의 닫힌구간이 p에 포함되어야 하며 p의 열린·닫힌 끝점을 구분한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$q:x^2-4ax+3a^2>0$은 $(x-a)(x-3a)>0$과 같다. 따라서 $\\sim q$의 진리집합은 두 수 $a$, $3a$ 사이의 닫힌구간이다.\n이 집합이 $p:-9 -9$, 즉 $a>-3$이다. 가능한 음의 정수는 $-2,-1$이다.\n$a\\ge0$이면 오른쪽 끝은 $3a$이므로 $3a\\le18$, 즉 $0\\le a\\le6$이다. 가능한 정수는 $0,1,2,3,4,5,6$이다.\n모두 $2+7=9$개이므로 정답은 ②이다.",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "a=6를 예로 들면 ¬q의 닫힌구간이 p에 포함되어야 하며 p의 열린·닫힌 끝점을 구분한다."
+  ]
+}
