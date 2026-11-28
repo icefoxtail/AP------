@@ -1,0 +1,160 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "21"
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "5",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "acSolved",
+        "ownerSegment": "sCA",
+        "text": "sqrt(21)"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 360
+  },
+  "caption": "문항 1 해설: ∠C=90°인 직각삼각형 ABC에서 빗변 AB=5, 변 BC=2임을 보여 주는 그림이다.",
+  "accessibilityDescription": "풀이의 도형 관계를 확인한다. 직각삼각형 ABC가 있고 꼭짓점 C에 직각 표시가 있다. 빗변 AB 옆에 5, 세로 변 BC 옆에 2가 적혀 있고, 변 AC에는 길이가 적혀 있지 않다.",
+  "newVisualInformation": [
+    "직각삼각형 ABC와 ∠C의 직각 표시",
+    "AB=5, BC=2",
+    "문제의 각·선분·원 관계를 해설과 대조하는 도식"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 직각삼각형 $\\text{ABC}$에서 $\\angle\\text{C}=90^\\circ$, $\\overline{\\text{AB}}=5$, $\\overline{\\text{BC}}=2$일 때, $\\cos A \\times \\tan B$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "solution",
+      "condition": "직각삼각형 $\\text{ABC}$에서 $\\angle\\text{C}=90^\\circ$이므로 빗변은 $\\overline{\\text{AB}}=5$이다. $$\\begin{aligned} \\overline{\\text{AC}} &= \\sqrt{\\overline{\\text{AB}}^2 - \\overline{\\text{BC}}^2} \\ &= \\sqrt{5^2 - 2^2} = \\sqrt{21} \\end{aligned}$$ 따라서 $\\cos A = \\frac{\\overline{\\text{AC}}}{\\overline{\\text{AB}}} = \\frac{\\sqrt{21}}{5}$, $\\tan B = \\frac{\\overline{\\text{AC}}}{\\overline{\\text{BC}}} = \\frac{\\sqrt{21}}{2}$이므로 $$\\cos A \\times \\tan B = \\frac{\\sqrt{21}}{5} \\times \\frac{\\sqrt{21}}{2} = \\frac{21}{10}$$ 따라서 정답은 ③이다.",
+      "mappedTo": "INDEPENDENT_SOLUTION_REVIEW"
+    }
+  ]
+}
