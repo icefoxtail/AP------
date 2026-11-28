@@ -1,0 +1,88 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "38/5",
+          "12/5"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-4",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-4",
+          "y": "-2",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "1",
+          "y": "10",
+          "coordinates": true
+        },
+        {
+          "id": "R",
+          "x": "1",
+          "y": "-2",
+          "coordinates": false
+        }
+      ],
+      "segments": [
+        {
+          "id": "PQ",
+          "from": "P",
+          "to": "Q"
+        },
+        {
+          "id": "PR",
+          "from": "P",
+          "to": "R"
+        },
+        {
+          "id": "RQ",
+          "from": "R",
+          "to": "Q"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "P": "P",
+    "Q": "Q"
+  },
+  "caption": "좌표평면 위의 두 점 P(-4, -2), Q(1, 10)와 두 점을 잇는 선분을 나타낸 그림이다.",
+  "newVisualInformation": [
+    "piecewise-polynomial-spike-v1의 실제 도형 그리기 필드에 원문 조건 배치",
+    "풀이의 중간·최종 수학적 관계를 도형에서 대조"
+  ],
+  "accessibilityDescription": "19_이수중_2학기_중간_중3_유사 13번 해설 그림. 좌표평면 위의 두 점 P(-4, -2), Q(1, 10)와 두 점을 잇는 선분을 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "q13_solution",
+      "condition": "두 점 $\\text{P}(-4, -2)$, $\\text{Q}(1, 10)$ 사이의 거리는 $$\\overline{\\text{PQ}} = \\sqrt{{1 - (-4)}^2 + {10 - (-2)}^2} = \\sqrt{5^2 + 12^2} = \\sqrt{25 + 144} = \\sqrt{169} = 13$$ 따라서 정답은 ①이다.",
+      "mappedTo": "graphPlan.overlays.points"
+    }
+  ],
+  "sourceQuote": "두 점 $\\text{P}(-4, -2)$, $\\text{Q}(1"
+}

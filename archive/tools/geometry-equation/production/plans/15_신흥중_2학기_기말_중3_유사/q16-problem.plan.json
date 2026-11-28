@@ -1,0 +1,232 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5903230506327",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3688747820660",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "12182915314315",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7612730396822",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4119335645352",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "4119335645352",
+            "denominator": "1000000000000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "A",
+    "B",
+    "T",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "c"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sAT",
+      "refs": [
+        "A",
+        "T"
+      ]
+    },
+    {
+      "id": "sBT",
+      "refs": [
+        "B",
+        "T"
+      ]
+    },
+    {
+      "id": "sPT",
+      "refs": [
+        "P",
+        "T"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0TPA",
+        "refs": [
+          "T",
+          "P",
+          "A"
+        ],
+        "value": 32,
+        "label": "32",
+        "color": "ROSE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a1BAT",
+        "refs": [
+          "B",
+          "A",
+          "T"
+        ],
+        "value": 74,
+        "label": "74",
+        "color": "WARM",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a2ATB",
+        "refs": [
+          "A",
+          "T",
+          "B"
+        ],
+        "value": 64,
+        "label": "x",
+        "color": "VIOLET",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 360
+  },
+  "hiddenPointNames": [
+    "O"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "원에 접하는 직선 PT와 두 점 A, B를 지나는 할선이 있으며, 각 APT는 32도, 각 BAT는 74도로 주어져 있다. 각 ATB는 x로 표시되어 있다.",
+  "accessibilityDescription": "15_신흥중_2학기_기말_중3_유사 16번 문제 그림. 원에 접하는 직선 PT와 두 점 A, B를 지나는 할선이 있으며, 각 APT는 32도, 각 BAT는 74도로 주어져 있다. 각 ATB는 x로 표시되어 있다.",
+  "newVisualInformation": [
+    "construction-spike-v1의 실제 도형 그리기 필드에 원문 조건 배치",
+    "주어진 수학 조건만 표시하며 정답 선공개 없음"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q16_problem",
+      "condition": "다음 그림에서 $\\overline{PT}$는 원의 접선이고, $\\angle APT = 32^\\circ$, $\\angle BAT = 74^\\circ$일 때, $\\angle x = \\angle ATB$의 크기는?",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "sourceQuote": "다음 그림에서 $\\overline{PT}$는 원의 접선이고, $"
+}

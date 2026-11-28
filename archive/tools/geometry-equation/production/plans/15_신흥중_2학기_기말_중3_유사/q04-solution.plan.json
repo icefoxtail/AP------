@@ -1,0 +1,228 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "각 A가 직각인 삼각형 ABC에서 점 D는 변 AB 위에 있고, 점 E는 D에서 변 BC에 내린 수선의 발이다. 변 AC가 5, 변 BC가 13, 각 BDE가 x로 표시되어 있다.",
+  "accessibilityDescription": "15_신흥중_2학기_기말_중3_유사 4번 해설 그림. 각 A가 직각인 삼각형 ABC에서 점 D는 변 AB 위에 있고, 점 E는 D에서 변 BC에 내린 수선의 발이다. 변 AC가 5, 변 BC가 13, 각 BDE가 x로 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "q04_solution",
+      "condition": "직각삼각형 $ABC$에서 피타고라스 정리에 의하여 $$\\overline{AB} = \\sqrt{13^2 - 5^2} = \\sqrt{169 - 25} = \\sqrt{144} = 12$$ $\\overline{DE} \\perp \\overline{BC}$이므로 $\\angle DEB = 90^\\circ$이고 $\\triangle DBE \\sim \\triangle CBA$이므로 $x = \\angle BDE = \\angle ACB$이다. 따라서 $$\\cos x = \\cos C = \\dfrac{\\overline{AC}}{\\overline{BC}} = \\dfrac{5}{13}, \\quad \\tan x = \\tan C = \\dfrac{\\overline{AB}}{\\overline{AC}} = \\dfrac{12}{5}$$ 그러므로 $\\cos x \\times \\tan x = \\dfrac{5}{13} \\times \\dfrac{12}{5} = \\dfrac{12}{13}$이다. 정답은 ⑤이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "newVisualInformation": [
+    "construction-spike-v1의 실제 도형 그리기 필드에 원문 조건 배치",
+    "풀이의 중간·최종 수학적 관계를 도형에서 대조"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "144",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "60",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "72",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "30",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "72",
+              "denominator": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0BDE",
+        "refs": [
+          "B",
+          "D",
+          "E"
+        ],
+        "value": 67.38,
+        "label": "x",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "5"
+      },
+      {
+        "id": "ans4",
+        "ownerSegment": "sAB",
+        "text": "12",
+        "ownership": "NEAREST",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "13",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "B",
+        "E",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 440,
+    "height": 360
+  },
+  "sourceQuote": "직각삼각형 $ABC$에서 피타고라스 정리에 의하여 $$\\over"
+}

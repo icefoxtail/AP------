@@ -1,0 +1,331 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "C",
+    "B",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sOE",
+      "refs": [
+        "O",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0AOB",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 36.86989764584402,
+        "label": "x",
+        "color": "VIOLET",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a1OBA",
+        "refs": [
+          "O",
+          "B",
+          "A"
+        ],
+        "value": 53.13010235415598,
+        "label": "y",
+        "color": "ROSE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lOE",
+        "ownerSegment": "sOE",
+        "text": "1"
+      },
+      {
+        "id": "ans1",
+        "ownerSegment": "sAB",
+        "text": "sin(x)",
+        "ownership": "NEAREST",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sOA"
+        ],
+        "color": "WARM"
+      },
+      {
+        "segments": [
+          "sAB"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "segments": [
+          "sCD"
+        ],
+        "color": "GREEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e0",
+        "count": 1,
+        "segments": [
+          "sOB",
+          "sOE"
+        ],
+        "color": "ROSE"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcEC",
+        "circle": "circ",
+        "center": "O",
+        "from": "E",
+        "to": "C",
+        "side": "MINOR",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "O",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "O",
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "E"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 420
+  },
+  "caption": "반지름의 길이가 1인 사분원에서 중심각 x와 각 y에 대응하는 직각삼각형과 삼각비 선분을 나타낸 그림이다.",
+  "accessibilityDescription": "15_신흥중_2학기_기말_중3_유사 1번 해설 그림. 반지름의 길이가 1인 사분원에서 중심각 x와 각 y에 대응하는 직각삼각형과 삼각비 선분을 나타낸 그림이다.",
+  "newVisualInformation": [
+    "construction-spike-v1의 실제 도형 그리기 필드에 원문 조건 배치",
+    "풀이의 중간·최종 수학적 관계를 도형에서 대조"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q01_solution",
+      "condition": "반지름이 $1$이므로 $\\overline{OB} = \\overline{OC} = 1$이다. 직각삼각형 $OAB$에서 $\\sin x = \\dfrac{\\overline{AB}}{\\overline{OB}} = \\overline{AB}$, $\\cos x = \\dfrac{\\overline{OA}}{\\overline{OB}} = \\overline{OA}$, $\\sin y = \\dfrac{\\overline{OA}}{\\overline{OB}} = \\overline{OA}$, $\\cos y = \\dfrac{\\overline{AB}}{\\overline{OB}} = \\overline{AB}$이다. 또 직각삼각형 $OCD$에서 $\\tan x = \\dfrac{\\overline{CD}}{\\overline{OC}} = \\overline{CD}$이다. 점 $A$는 $O$와 $C$ 사이에 있으므로 $\\overline{AB} < 1 = \\overline{OC}$이고, 따라서 $\\cos y \\neq \\overline{OC}$이다. 옳지 않은 것은 ③이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "sourceQuote": "반지름이 $1$이므로 $\\overline{OB} = \\overl"
+}

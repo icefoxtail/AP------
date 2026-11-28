@@ -1,0 +1,244 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "4"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "2",
+        "unit": "cm"
+      },
+      {
+        "id": "ans7",
+        "ownerSegment": "sCD",
+        "text": "4",
+        "ownership": "NEAREST",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sAC",
+          "sCD"
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 520
+  },
+  "caption": "직각삼각형 ABC에서 변 BC를 점 C 쪽으로 연장한 위에 점 D가 있고, AC와 CD의 길이가 같다. AB의 길이와 각 CAB의 크기가 표시되어 있다.",
+  "accessibilityDescription": "15_신흥중_2학기_기말_중3_유사 7번 해설 그림. 직각삼각형 ABC에서 변 BC를 점 C 쪽으로 연장한 위에 점 D가 있고, AC와 CD의 길이가 같다. AB의 길이와 각 CAB의 크기가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "q07_solution",
+      "condition": "직각삼각형 $ABC$에서 $\\angle CAB = 60^\\circ$, $\\overline{AB} = 2\\text{ cm}$이므로 $$\\overline{AC} = \\dfrac{\\overline{AB}}{\\cos 60^\\circ} = 4\\text{ (cm)}, \\quad \\overline{BC} = \\overline{AB}\\tan 60^\\circ = 2\\sqrt{3}\\text{ (cm)}$$ $\\overline{CD} = \\overline{AC} = 4\\text{ cm}$이고 $\\angle ACD = 180^\\circ - 30^\\circ = 150^\\circ$이므로 이등변삼각형 $ACD$에서 $\\angle CAD = \\dfrac{180^\\circ - 150^\\circ}{2} = 15^\\circ$이다. 따라서 $\\angle DAB = 60^\\circ + 15^\\circ = 75^\\circ$이고 $\\overline{BD} = 2\\sqrt{3} + 4\\text{ cm}$이므로 $$\\tan 75^\\circ = \\dfrac{\\overline{BD}}{\\overline{AB}} = \\dfrac{4 + 2\\sqrt{3}}{2} = 2 + \\sqrt{3}$$ 따라서 정답은 ④이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "newVisualInformation": [
+    "construction-spike-v1의 실제 도형 그리기 필드에 원문 조건 배치",
+    "풀이의 중간·최종 수학적 관계를 도형에서 대조"
+  ],
+  "sourceQuote": "직각삼각형 $ABC$에서 $\\angle CAB = 60^\\cir"
+}
