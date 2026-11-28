@@ -1,0 +1,26 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{ "coefficients": ["-9/2", "3", "-1/2"] }],
+    "breakpoints": [],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "requiredPoints": [{ "id": "vertex", "x": "3", "y": "0" }],
+    "overlays": {
+      "points": [
+        { "id": "V", "x": "3", "y": "0", "unnamed": false, "coordinates": true },
+        { "id": "P", "x": "-1", "y": "-8", "unnamed": false, "coordinates": true }
+      ]
+    },
+    "axisTickValues": { "x": [], "y": [] }
+  },
+  "caption": "오른쪽으로 3 이동한 포물선이 점 (-1,-8)을 지나는 해설",
+  "accessibilityDescription": "평행이동한 포물선의 꼭짓점과 주어진 점을 보여 준다.",
+  "newVisualInformation": ["이동 후의 꼭짓점 위치", "주어진 점과 포물선의 관계"],
+  "sourceConditions": [
+    { "id": "curve", "condition": "-8=16a에서 a=-1/2", "mappedTo": "graphPlan.pieces[0].coefficients" },
+    { "id": "vertex", "condition": "원래 꼭짓점이 오른쪽으로 3 이동", "mappedTo": "graphPlan.requiredPoints[0]" },
+    { "id": "point", "condition": "평행이동된 그래프의 점 (-1,-8)", "mappedTo": "graphPlan.overlays.points[1]" }
+  ],
+  "sourceQuote": "이차함수 $y=ax^2$의 그래프를 $x$축의 방향으로 $3$만큼 평행이동한 그래프가"
+}

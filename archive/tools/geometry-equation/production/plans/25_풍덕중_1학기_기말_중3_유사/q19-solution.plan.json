@@ -1,0 +1,44 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{ "coefficients": ["0", "0", "1/4"] }],
+    "breakpoints": [],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "requiredPoints": [{ "id": "V", "x": "0", "y": "0" }],
+    "referenceCurves": [{ "id": "g", "name": "g", "coefficients": ["0", "0", "-2"], "intersectionX": ["0"] }],
+    "overlays": {
+      "points": [
+        { "id": "A", "x": "-6", "y": "9", "coordinates": true, "unnamed": false },
+        { "id": "B", "x": "6", "y": "9", "coordinates": true, "unnamed": false },
+        { "id": "C", "x": "2", "y": "-8", "coordinates": true, "unnamed": false },
+        { "id": "D", "x": "-2", "y": "-8", "coordinates": true, "unnamed": false }
+      ],
+      "segments": [
+        { "id": "AB", "from": "A", "to": "B" },
+        { "id": "BC", "from": "B", "to": "C" },
+        { "id": "CD", "from": "C", "to": "D" },
+        { "id": "DA", "from": "D", "to": "A" }
+      ],
+      "polygons": [
+        { "id": "trap", "points": ["A", "B", "C", "D"], "fill": "LIGHT" }
+      ]
+    },
+    "axisTickValues": { "x": [], "y": [] }
+  },
+  "caption": "CD=4, AB=12, 높이=17, 넓이=136에서 a=1/4",
+  "accessibilityDescription": "사다리꼴 ABCD의 양쪽 평행변과 17의 높이를 만드는 네 꼭짓점의 좌표를 표시한다.",
+  "newVisualInformation": ["풀이로 얻은 A, B, D의 좌표", "사다리꼴 넓이의 평행변·높이 관계"],
+  "sourceConditions": [
+    { "id": "up", "condition": "넓이 방정식에서 a=1/4", "mappedTo": "graphPlan.pieces[0].coefficients" },
+    { "id": "down", "condition": "주어진 y=-2x²", "mappedTo": "graphPlan.referenceCurves[0].coefficients" },
+    { "id": "A", "condition": "AB=12의 왼쪽 끝 A=(-6,9)", "mappedTo": "graphPlan.overlays.points[0]" },
+    { "id": "B", "condition": "AB=12의 오른쪽 끝 B=(6,9)", "mappedTo": "graphPlan.overlays.points[1]" },
+    { "id": "C", "condition": "주어진 C=(2,-8)", "mappedTo": "graphPlan.overlays.points[2]" },
+    { "id": "D", "condition": "대칭점 D=(-2,-8)", "mappedTo": "graphPlan.overlays.points[3]" },
+    { "id": "AB", "condition": "평행변 AB", "mappedTo": "graphPlan.overlays.segments[0]" },
+    { "id": "CD", "condition": "평행변 CD", "mappedTo": "graphPlan.overlays.segments[2]" },
+    { "id": "area", "condition": "넓이 136을 구할 사다리꼴 영역", "mappedTo": "graphPlan.overlays.polygons[0]" }
+  ],
+  "sourceQuote": "다음 그림과 같이 이차함수 $y=ax^2\\ (a>0)$의 그래프 위에"
+}

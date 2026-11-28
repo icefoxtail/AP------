@@ -1,0 +1,26 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{ "coefficients": ["7", "-12", "3"] }],
+    "breakpoints": [],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "requiredPoints": [{ "id": "vertex", "x": "2", "y": "-5" }],
+    "overlays": {
+      "points": [
+        { "id": "V", "x": "2", "y": "-5", "unnamed": false, "coordinates": true },
+        { "id": "Y", "x": "0", "y": "7", "unnamed": false, "coordinates": true }
+      ]
+    },
+    "axisTickValues": { "x": [], "y": [] }
+  },
+  "caption": "꼭짓점 (2,-5)에서 위로 열리는 y=3(x-2)²-5",
+  "accessibilityDescription": "위로 열리는 포물선의 꼭짓점과 y절편을 표시해 각 선택지의 성질을 비교한다.",
+  "newVisualInformation": ["포물선 개형 및 증가 방향", "해설에서 계산한 꼭짓점과 y절편"],
+  "sourceConditions": [
+    { "id": "curve", "condition": "y=3x²-12x+7", "mappedTo": "graphPlan.pieces[0].coefficients" },
+    { "id": "vertex", "condition": "완전제곱 결과 (2,-5)", "mappedTo": "graphPlan.requiredPoints[0]" },
+    { "id": "intercept", "condition": "y절편 7", "mappedTo": "graphPlan.overlays.points[1]" }
+  ],
+  "sourceQuote": "다음 중 이차함수 $y=3x^2-12x+7$의 그래프에 대한 설명으로 옳지 않은 것은?"
+}

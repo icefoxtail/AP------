@@ -1,0 +1,27 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{ "coefficients": ["2", "-8", "3"] }],
+    "breakpoints": [],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "requiredPoints": [{ "id": "vertex", "x": "4/3", "y": "-10/3" }],
+    "referenceLines": [{ "id": "l", "slope": "-4", "intercept": "2", "intersectionX": ["0", "4/3"] }],
+    "overlays": {
+      "points": [
+        { "id": "V", "x": "4/3", "y": "-10/3", "unnamed": false, "coordinates": true },
+        { "id": "Y", "x": "0", "y": "2", "unnamed": false, "coordinates": true }
+      ]
+    },
+    "axisTickValues": { "x": [], "y": [] }
+  },
+  "caption": "꼭짓점이 y=-4x+2 위에 있고 제4사분면에 있는 경우 a=4/3",
+  "accessibilityDescription": "포물선과 직선의 두 교점 및 제4사분면에 놓인 꼭짓점을 보여 준다.",
+  "newVisualInformation": ["두 함수의 교점", "제4사분면 꼭짓점"],
+  "sourceConditions": [
+    { "id": "curve", "condition": "a=4/3 대입 후 y=3x²-8x+2", "mappedTo": "graphPlan.pieces[0].coefficients" },
+    { "id": "line", "condition": "주어진 직선 y=-4x+2", "mappedTo": "graphPlan.referenceLines[0]" },
+    { "id": "vertex", "condition": "해설에서 계산한 꼭짓점 (4/3,-10/3)", "mappedTo": "graphPlan.requiredPoints[0]" }
+  ],
+  "sourceQuote": "이차함수 $y=3x^2-6ax+2$의 그래프가 제$4$사분면을 지나고"
+}
