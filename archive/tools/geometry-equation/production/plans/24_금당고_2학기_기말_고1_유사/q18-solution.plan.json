@@ -1,0 +1,25 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "sourceQuote":"두 함수 $y=\\dfrac{x+3}{x-1}$, $y=\\sqrt{x-k}$의 그래프가 서로 다른 두 점에서 만나도록",
+  "graphPlan": {
+    "family":"multi-curve",
+    "viewport":[-4,8,-1,8],
+    "curves":[
+      {"id":"r","kind":"RATIONAL","numerator":["3","1"],"denominator":["-1","1"],"domain":["-3","7"],"color":"BLUE","label":"y=(x+3)/(x-1)"},
+      {"id":"s","kind":"SQRT","radicand":["3","1"],"domain":["-3","7"],"color":"WARM","label":"y=sqrt(x+3)"}
+    ],
+    "axisTickValues":{"x":["-3","1"],"y":[]},
+    "overlays":{"points":[{"id":"A","x":"-3","y":"0"}]}
+  },
+  "caption":"경계값 k=−3일 때 원문 유리함수와 무리함수 y=√(x+3)을 겹쳐 그린 예시다. 왼쪽 끝 A(−3,0)과 오른쪽 가지에서 각각 한 번 만나 서로 다른 교점이 두 개 생긴다.",
+  "accessibilityDescription":"k가 −3인 경계 사례에서 유리함수는 x=1에서 끊기며, 무리함수는 x=−3에서 시작한다. 두 곡선은 시작점 A와 x>1 구간에서 한 번씩 교차한다.",
+  "sourceConditions":[
+    {"id":"d18-s1","condition":"원문 유리함수 y=(x+3)/(x−1)와 무리함수 y=√(x−k)","mappedTo":["graphPlan.curves.0","graphPlan.curves.1"]},
+    {"id":"d18-s2","condition":"해설의 경계값 k=−3에서 왼쪽 끝 교점은 (−3,0)","mappedTo":["graphPlan.curves.1.radicand","graphPlan.overlays.points.0"]},
+    {"id":"d18-s3","condition":"유리함수의 수직 점근선 x=1로 좌우 가지가 나뉨","mappedTo":["graphPlan.curves.0.denominator","graphPlan.axisTickValues.x"]}
+  ],
+  "newVisualInformation":[
+    "기존 레거시에서 미지원이었던 유리함수·무리함수의 실제 두 곡선을 같은 좌표축에 중첩한다.",
+    "k=−3에서 x=−3의 끝점 교점과 x>1 오른쪽 가지 교점을 곡선의 교차로 직접 보이며, 전체 답 범위가 아니라 경계 예시임을 명시한다."
+  ]
+}

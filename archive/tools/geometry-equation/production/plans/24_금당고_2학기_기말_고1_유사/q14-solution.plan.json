@@ -1,0 +1,29 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "sourceQuote":"의 그래프와 직선 $x-3y+20=0$이 두 점 $A(4,8)$, $B(-8,4)$에서 만난다.",
+  "graphPlan": {
+    "family":"multi-curve",
+    "viewport":[-9,5,-1,10],
+    "curves":[
+      {"id":"left","kind":"SQRT","radicand":["0","-2"],"domain":["-8","0"],"color":"BLUE","label":"y=sqrt(-2x)"},
+      {"id":"right","kind":"Y_OF_X","coefficients":["0","0","1/2"],"domain":["0","4"],"color":"BLUE","label":"y=x^2/2"},
+      {"id":"line","kind":"LINE","coefficients":["20/3","1/3"],"domain":["-8","4"],"color":"WARM","label":"y=(x+20)/3"}
+    ],
+    "axisTickValues":{"x":[],"y":[]},
+    "overlays":{
+      "points":[{"id":"O","x":"0","y":"0"},{"id":"A","x":"4","y":"8"},{"id":"B","x":"-8","y":"4"}],
+      "segments":[{"id":"OA","from":"O","to":"A","dashed":true},{"id":"OB","from":"O","to":"B","dashed":true}],
+      "polygons":[{"id":"OAB","points":["O","A","B"],"fill":"LIGHT"}]
+    }
+  },
+  "caption":"두 곡선 조각은 원점 O를 중심으로 90° 회전하면 서로 겹친다. 호 OA와 OB가 삼각형 OAB에서 더하고 빼는 넓이가 같아 구하는 넓이는 삼각형 OAB의 40과 같다.",
+  "accessibilityDescription":"조각 무리곡선과 이차곡선, 직선 AB, 원점 O에서 A·B로 그은 보조선과 삼각형 OAB가 함께 있다. 두 곡선 조각의 회전 대응과 넓이 상쇄를 비교한다.",
+  "sourceConditions":[
+    {"id":"d14-s1","condition":"해설에서 두 조각 곡선은 O 중심 90도 회전으로 서로 대응","mappedTo":["graphPlan.curves.0","graphPlan.curves.1","graphPlan.overlays.points.0"]},
+    {"id":"d14-s2","condition":"해설의 삼각형 OAB 넓이는 |4×4−8×(−8)|/2=40","mappedTo":["graphPlan.overlays.points.1","graphPlan.overlays.points.2","graphPlan.overlays.segments.0","graphPlan.overlays.segments.1","graphPlan.overlays.polygons.0"]}
+  ],
+  "newVisualInformation":[
+    "점 O, A, B와 OA·OB 선분 및 실제 삼각형 다각형 필드를 추가하여 회전으로 생긴 면적 상쇄 구조를 보인다.",
+    "왼쪽 무리곡선과 오른쪽 이차곡선을 같은 축에 표시하고 원점 중심 90도 회전의 대응을 시각적으로 비교한다."
+  ]
+}
