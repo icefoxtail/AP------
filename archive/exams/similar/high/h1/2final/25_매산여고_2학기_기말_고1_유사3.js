@@ -14,7 +14,7 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
-    "content": "명제 “$x<2k+5$이면 $3x<30$이다”가 모든 실수 $x$에 대하여 참이 되는 정수 $k$의 최댓값을 구하시오. [3.7점]",
+    "content": "명제 “$x\\le3k+1$이면 $3x<30$이다”가 모든 실수 $x$에 대하여 참이 되도록 하는 정수 $k$의 최댓값은? [3.7점]",
     "choices": [
       "$0$",
       "$2$",
@@ -23,7 +23,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "②",
-    "solution": "결론은 $x<10$이다. 전제와 결론이 모두 엄격한 부등식이므로 $(-\\infty,2k+5)\\subset(-\\infty,10)$일 조건은 $2k+5\\le10$이다. 따라서 $k\\le\\frac52$이고 정수 최댓값은 $2$이다. 경계가 같아도 전제에는 그 경계점 자체가 포함되지 않는다.",
+    "solution": "결론은 $x<10$이다. 전제 구간 $(-\\infty,3k+1]$은 오른쪽 끝점을 포함하므로 결론의 열린 구간 $(-\\infty,10)$에 포함되려면 반드시 $3k+1<10$이어야 한다. 즉 $k<3$이어서 정수 최댓값은 $2$이다. 경계 $k=3$에서 $x=10$은 전제를 만족하지만 결론을 만족하지 않으므로 제외된다.",
     "curriculum": "2022",
     "standardCourse": "공통수학2",
     "sourceQid": 1,
@@ -45,14 +45,23 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-06",
     "subUnitKey": "H22-C2-06-CORE",
+    "standardUnit": "명제",
+    "standardUnitOrder": 6,
+    "subUnit": "명제 핵심 개념",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-248",
     "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
     "templateKey": "TPL_IMPLICATION_INTERVAL_PARAMETER",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
+    "crossConceptKeys": [
+      "CC_TRUTH_SET_INCLUSION"
+    ],
+    "conditionKeys": [
+      "COND_INTEGER",
+      "COND_UNIVERSAL_INPUTS"
+    ],
     "integrationPattern": "NONE",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
@@ -96,15 +105,21 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-05",
     "subUnitKey": "H22-C2-05-CORE",
+    "standardUnit": "집합",
+    "standardUnitOrder": 5,
+    "subUnit": "집합 핵심 개념",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-241",
     "problemTypeKey": "PT_SET_OPERATION_LAW",
     "templateKey": "TPL_OPERATION_LAW_COMPOSITE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_SET_DIFFERENCE_COMPLEMENT"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
   },
@@ -147,15 +162,23 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-07",
     "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+    "standardUnit": "함수",
+    "standardUnitOrder": 7,
+    "subUnit": "합성함수",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-253",
     "problemTypeKey": "PT_INVERSE_COMPOSITION",
     "templateKey": "TPL_INVERSE_COMPOSITION_VALUE",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "crossConceptKeys": [
+      "CC_INVERSE_FUNCTION"
+    ],
+    "conditionKeys": [
+      "COND_FUNCTION_BIJECTION"
+    ],
+    "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked",
     "sourceDiagramModel": {
@@ -233,6 +256,10 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-08",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+    "standardUnit": "유리함수",
+    "standardUnitOrder": 8,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-263",
     "problemTypeKey": "PT_RATIONAL_EXPRESSION",
     "templateKey": "TPL_RATIONAL_EXPRESSION_SIMPLIFY",
@@ -240,7 +267,9 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": [
+      "COND_NONZERO"
+    ],
     "integrationPattern": "NONE",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
@@ -253,16 +282,16 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
-    "content": "함수 $y=-\\sqrt{2x+6}+4$의 정의역이 $[a,\\infty)$이고 치역이 $(-\\infty,b]$일 때 $a+b$의 값은? [3.6점]",
+    "content": "증가하는 무리함수 $y=\\sqrt{2x+6}+4$의 정의역이 $[a,\\infty)$, 치역이 $[b,\\infty)$이다. 그래프에서 두 끝점에 해당하는 점 $(a,b)$를 포함할 때 $2a+b$는? [3.6점]",
     "choices": [
-      "$-7$",
-      "$-3$",
-      "$-1$",
-      "$0$",
-      "$1$"
+      "$-10$",
+      "$-8$",
+      "$-6$",
+      "$-4$",
+      "$-2$"
     ],
     "answer": "⑤",
-    "solution": "$2x+6\\ge0$에서 $x\\ge-3$이므로 $a=-3$이다. $-\\sqrt{2x+6}\\le0$이고 $x=-3$에서 최댓값 $4$를 얻으므로 $b=4$이다. 따라서 $a+b=1$이다.",
+    "solution": "$2x+6\\ge0$에서 $x\\ge-3$이므로 정의역의 포함된 왼쪽 끝점은 $a=-3$이다. $x=-3$에서 근호가 $0$이 되고 그때 $y=4$로 치역의 포함된 아랫끝점 $b=4$를 얻는다. 근호 밖의 $+4$는 정의역 경계에 영향을 주지 않고, 근호 안의 $+6$은 치역의 수직이동량이 아니다. 따라서 $2a+b=-6+4=-2$이다.",
     "curriculum": "2022",
     "standardCourse": "공통수학2",
     "sourceQid": 5,
@@ -284,14 +313,22 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-09",
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+    "standardUnit": "무리함수",
+    "standardUnitOrder": 9,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-268",
     "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
     "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_DIRECT",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
+    "crossConceptKeys": [
+      "CC_RADICAL_FUNCTION_DOMAIN_RANGE"
+    ],
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
     "integrationPattern": "NONE",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
@@ -304,7 +341,7 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
-    "content": "$y=\\frac{4x+1}{x+1}$을 오른쪽으로 $p$, 위쪽으로 $q$만큼 평행이동하면 $y=\\frac{x-5}{x-2}$가 된다. $p-q$는? [3.8점]",
+    "content": "$y=\\frac{4x+1}{x+1}$의 그래프를 $x$축의 양의 방향을 기준으로 부호 있는 이동량 $p$, $y$축의 양의 방향을 기준으로 부호 있는 이동량 $q$만큼 평행이동하니 $y=\\frac{x-5}{x-2}$가 되었다. $p-q$는? [3.8점]",
     "choices": [
       "$3$",
       "$6$",
@@ -313,7 +350,7 @@ window.questionBank = [
       "$12$"
     ],
     "answer": "②",
-    "solution": "첫 함수는 $y=4-\\frac3{x+1}$, 둘째 함수는 $y=1-\\frac3{x-2}$이다. 수직점근선은 $-1\\to2$이므로 $p=3$, 수평점근선은 $4\\to1$이므로 $q=-3$이다. 따라서 $p-q=3-(-3)=6$이다.",
+    "solution": "처음 함수는 $y=4-\\frac3{x+1}$, 나중 함수는 $y=1-\\frac3{x-2}$이다. 수직점근선이 $x=-1$에서 $x=2$로 이동했으므로 $p=3$, 수평점근선이 $y=4$에서 $y=1$로 이동했으므로 $q=-3$이다. $q$가 음수라는 것은 위가 아니라 아래로 $3$만큼 이동했다는 뜻이다. 따라서 $p-q=3-(-3)=6$이다.",
     "curriculum": "2022",
     "standardCourse": "공통수학2",
     "sourceQid": 6,
@@ -335,15 +372,21 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-08",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+    "standardUnit": "유리함수",
+    "standardUnitOrder": 8,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-260",
     "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
     "templateKey": "TPL_FUNCTION_GRAPH_TRANSFORM_ASYMPTOTE_POINT",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_RATIONAL_FUNCTION_ASYMPTOTE"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
   },
@@ -386,14 +429,22 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-09",
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+    "standardUnit": "무리함수",
+    "standardUnitOrder": 9,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-269",
     "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
     "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_EXTREMUM",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
+    "crossConceptKeys": [
+      "CC_FUNCTION_MONOTONICITY"
+    ],
+    "conditionKeys": [
+      "COND_RESTRICTED_INTERVAL"
+    ],
     "integrationPattern": "NONE",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
@@ -437,15 +488,23 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-08",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+    "standardUnit": "유리함수",
+    "standardUnitOrder": 8,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-264",
     "problemTypeKey": "PT_FUNCTION_EXTREMUM",
     "templateKey": "TPL_FUNCTION_EXTREMUM_INEQUALITY",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "crossConceptKeys": [
+      "CC_AM_GM"
+    ],
+    "conditionKeys": [
+      "COND_POSITIVE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
   },
@@ -457,7 +516,7 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
-    "content": "함수 $f(x)=x^3-x^2-3x+1$, $g(x)=3x+1$에 대하여 $f(x)=g(x)$가 $X$의 모든 원소에서 성립한다. 원소가 두 개 이상인 실수의 부분집합 $X$는 모두 몇 개인가? [3.9점]",
+    "content": "두 함수 $f(x)=x+1+(x-1)^2(x+2)(x-3)$, $g(x)=x+1$에 대하여, 원소가 두 개 이상인 실수의 부분집합 $X$의 모든 원소에서 $f(x)=g(x)$가 성립한다. 가능한 집합 $X$는 몇 개인가? [3.9점]",
     "choices": [
       "$0$",
       "$1$",
@@ -466,7 +525,7 @@ window.questionBank = [
       "$4$"
     ],
     "answer": "⑤",
-    "solution": "$f(x)-g(x)=x^3-x^2-6x=x(x+2)(x-3)$이므로 가능한 원소는 $-2,0,3$이다. 이 가운데 두 개를 택하는 집합은 $\\binom{3}{2}=3$개, 세 개를 택하는 집합은 한 개이므로 모두 $4$개이다.",
+    "solution": "$f(x)-g(x)=(x-1)^2(x+2)(x-3)$이므로 방정식의 서로 다른 실근은 $-2,1,3$의 세 개다. $x=1$은 중근이지만 집합의 원소로는 한 번만 센다. 가능한 $X$는 이 세 원소 가운데 두 개를 택하는 $\\binom32=3$개와 세 개를 모두 택하는 $1$개이므로 총 $4$개다.",
     "curriculum": "2022",
     "standardCourse": "공통수학2",
     "sourceQid": 9,
@@ -488,15 +547,24 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-07",
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+    "standardUnit": "함수",
+    "standardUnitOrder": 7,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-251",
     "problemTypeKey": "PT_FUNCTION_EQUALITY",
     "templateKey": "TPL_EQUAL_FUNCTION_DOMAIN_SELECTION",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "crossConceptKeys": [
+      "CC_SUBSET_COUNTING"
+    ],
+    "conditionKeys": [
+      "COND_NONEMPTY_SELECTION",
+      "COND_EXACTLY_N_INPUTS_SATISFY_FUNCTION_RELATION"
+    ],
+    "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
   },
@@ -539,15 +607,24 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-06",
     "subUnitKey": "H22-C2-06-CORE",
+    "standardUnit": "명제",
+    "standardUnitOrder": 6,
+    "subUnit": "명제 핵심 개념",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-248",
     "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
     "templateKey": "TPL_IMPLICATION_INTERVAL_PARAMETER",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "crossConceptKeys": [
+      "CC_TRUTH_SET_INCLUSION"
+    ],
+    "conditionKeys": [
+      "COND_INTEGER",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
   },
@@ -590,15 +667,22 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-08",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+    "standardUnit": "유리함수",
+    "standardUnitOrder": 8,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-261",
     "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
     "templateKey": "TPL_RATIONAL_ASYMPTOTE_DIRECT",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_QUADRANT_PASSAGE",
+      "CC_RATIONAL_FUNCTION_SYMMETRY"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "CASE_BRANCH",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
   },
@@ -641,15 +725,24 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-07",
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+    "standardUnit": "함수",
+    "standardUnitOrder": 7,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-257",
     "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
     "templateKey": "TPL_ABSOLUTE_VALUE_INJECTIVITY",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "crossConceptKeys": [
+      "CC_FUNCTION_MONOTONICITY"
+    ],
+    "conditionKeys": [
+      "COND_INTEGER",
+      "COND_FUNCTION_BIJECTION"
+    ],
+    "integrationPattern": "CASE_BRANCH",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
   },
@@ -692,15 +785,21 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-09",
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+    "standardUnit": "무리함수",
+    "standardUnitOrder": 9,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-267",
     "problemTypeKey": "PT_FUNCTION_RECOVERY",
     "templateKey": "TPL_RECOVER_FUNCTION_BY_INPUT_CHANGE",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_TRANSLATION"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
   },
@@ -712,16 +811,16 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
-    "content": "구간 $-9\\le x\\le-1$에서 $y=1-\\frac4{x-1}$과 $y=\\sqrt{-x}+k$가 서로 다른 한 점에서만 만날 때 $k$의 최댓값은? [4.2점]",
+    "content": "$-9\\le x\\le-1$에서 두 그래프 $y=F(x)$, $y=\\sqrt{-x}+k$를 생각하자. $F(x)=\\begin{cases}2-\\frac6{x-2}&(-9\\le x\\le-4)\\\\-\\frac6{x-2}&(-4<x\\le-1)\\end{cases}$이다. 두 그래프가 서로 다른 두 점에서 만나게 하는 $k$의 최댓값은? [4.2점]",
     "choices": [
+      "$-3$",
       "$-2$",
       "$-1$",
       "$0$",
-      "$1$",
-      "$2$"
+      "$1$"
     ],
     "answer": "⑤",
-    "solution": "$h(x)=1-\\frac4{x-1}-\\sqrt{-x}$라 두면 분수함수 항은 증가하고 $-\\sqrt{-x}$도 증가하므로 $h$는 엄격히 증가한다. 따라서 교점이 정확히 한 개인 $k$의 범위는 $h(-9)\\le k\\le h(-1)$이며, 최댓값은 $h(-1)=1-\\frac4{-2}-1=2$이다.",
+    "solution": "교점은 $k=H(x)=F(x)-\\sqrt{-x}$를 만족한다. 함수 $-\\frac6{x-2}$는 $x<2$에서 엄격히 증가하고 $-\\sqrt{-x}$도 주어진 구간에서 엄격히 증가하므로 각 조각의 $H$도 엄격히 증가한다. $-9\\le x\\le-4$에서 $H(-9)=-\\frac5{11}$, $H(-4)=1$이므로 치역은 $[-\\frac5{11},1]$이다. $-4<x\\le-1$에서는 $H(-4+)= -1$이지만 $x=-4$는 제외되고 $H(-1)=1$이므로 치역은 $(-1,1]$이다. 한 조각에서 교점은 최대 한 개씩이므로 정확히 두 교점이 존재하는 범위는 두 치역의 교집합 $[-\\frac5{11},1]$이다. 따라서 최댓값은 $k=1$이다. 실제로 $x=-4,-1$에서 각각 교점을 얻으므로 끝점 $1$도 포함한다.",
     "curriculum": "2022",
     "standardCourse": "공통수학2",
     "sourceQid": 14,
@@ -733,25 +832,34 @@ window.questionBank = [
     "tags": [],
     "visualDisposition": {
       "problemVisual": {
-        "requirement": "EXEMPT",
-        "reason": "수식·문장으로 완결되며 문제 그림은 필요하지 않음"
+        "requirement": "BENEFICIAL",
+        "reason": "F(x)의 좌측 닫힌 조각·우측 열린 조각과 제곱근 곡선의 교점 0/1/2개 비교; 문제는 식만으로 완결"
       },
       "solutionVisual": {
         "requirement": "BENEFICIAL",
-        "reason": "제한구간에서 차 함수의 단조성과 교점 한 개"
+        "reason": "좌측 [-9,-4]·우측 (-4,-1]의 k 치역 중첩과 두 교점의 끝점 판정"
       }
     },
     "standardUnitKey": "H22-C2-09",
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+    "standardUnit": "무리함수",
+    "standardUnitOrder": 9,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-272",
     "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
     "templateKey": "TPL_GRAPH_INTERSECTION_COUNT",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "crossConceptKeys": [
+      "CC_GRAPH_INTERSECTION_COUNT"
+    ],
+    "conditionKeys": [
+      "COND_RESTRICTED_INTERVAL",
+      "COND_EXACT_INTERSECTION_COUNT"
+    ],
+    "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
   },
@@ -794,15 +902,23 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-07",
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+    "standardUnit": "함수",
+    "standardUnitOrder": 7,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-251",
     "problemTypeKey": "PT_FUNCTION_COUNTING",
     "templateKey": "TPL_CONSTRAINED_FUNCTION_COUNT",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "crossConceptKeys": [
+      "CC_FUNCTION_COUNTING"
+    ],
+    "conditionKeys": [
+      "COND_FUNCTION_VALUE_CONSTRAINT"
+    ],
+    "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked",
     "sourceDiagramModel": {
@@ -841,7 +957,7 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
-    "content": "$f(x)=\\begin{cases}\\sqrt{a(x-5)}+1&(x\\le1)\\\\5-\\frac{12}{x+2}&(x>1)\\end{cases}$의 치역이 $(k,\\infty)$이고 $f$는 일대일함수이다. $a+k$의 값은? [4.3점]",
+    "content": "$f(x)=\\begin{cases}\\sqrt{a(x-5)}+1&(x<1)\\\\1+\\frac{12}{x+2}&(x\\ge1)\\end{cases}$가 실수 전체에서 정의된 일대일함수이며 치역이 $(k,\\infty)$이다. $a+k$는? [4.3점]",
     "choices": [
       "$-3$",
       "$-2$",
@@ -850,7 +966,7 @@ window.questionBank = [
       "$1$"
     ],
     "answer": "①",
-    "solution": "$x>1$에서 분수함수의 치역은 $(1,5)$이다. 근호 조각은 그 위의 $[5,\\infty)$를 채워야 하므로 $x=1$에서 $\\sqrt{-4a}+1=5$여야 한다. 따라서 $a=-4$. 이때 두 조각은 각각 $[5,\\infty)$와 $(1,5)$를 일대일로 덮으므로 치역은 $(1,\\infty)$이고 $k=1$이다. $a+k=-4+1=-3$이다.",
+    "solution": "오른쪽 조각은 $x\\ge1$에서 엄격히 감소하며 치역이 $(1,5]$이다. 특히 경계값 $5$는 오른쪽 조각의 $x=1$에서 **포함된다**. 왼쪽 조각의 근호가 모든 $x<1$에서 실수이고 일대일이려면 $a<0$이며, 그 치역은 $(1+\\sqrt{-4a},\\infty)$처럼 경계값이 **포함되지 않는** 열린 구간이다. 두 조각이 중복 없이 만나 $(k,\\infty)$가 되려면 왼쪽 조각의 아래쪽 한계가 정확히 $5$여야 한다. 즉 $1+\\sqrt{-4a}=5$에서 $a=-4$. 이때 두 치역은 각각 $(5,\\infty)$와 $(1,5]$이므로 전체는 $(1,\\infty)$이고, 두 조각이 엄격히 단조하며 치역도 겹치지 않아 일대일이다. $k=1$이므로 $a+k=-3$이다. 만약 열린/닫힌 경계를 반대로 읽으면 $5$의 소속 조각이 뒤바뀌므로 치역 연결의 경계 논증이 틀린다.",
     "curriculum": "2022",
     "standardCourse": "공통수학2",
     "sourceQid": 16,
@@ -867,20 +983,29 @@ window.questionBank = [
       },
       "solutionVisual": {
         "requirement": "BENEFICIAL",
-        "reason": "두 조각함수의 치역 경계가 맞물리는 구간"
+        "reason": "x=1이 오른쪽에만 속하고 y=5가 오른쪽에서 닫힌 점이라는 접합 판단"
       }
     },
     "standardUnitKey": "H22-C2-07",
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+    "standardUnit": "함수",
+    "standardUnitOrder": 7,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-257",
     "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
     "templateKey": "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "crossConceptKeys": [
+      "CC_PIECEWISE_BIJECTION"
+    ],
+    "conditionKeys": [
+      "COND_PIECEWISE_DOMAIN_PARTITION",
+      "COND_FUNCTION_INJECTIVE"
+    ],
+    "integrationPattern": "INTERDEPENDENT",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
   },
@@ -923,15 +1048,24 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-07",
     "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+    "standardUnit": "함수",
+    "standardUnitOrder": 7,
+    "subUnit": "역함수",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-256",
     "problemTypeKey": "PT_INVERSE_GRAPH",
     "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
     "difficultyBucket": 5,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "crossConceptKeys": [
+      "CC_INVERSE_GRAPH_INTERSECTION"
+    ],
+    "conditionKeys": [
+      "COND_INTEGER",
+      "COND_EXACT_INTERSECTION_COUNT"
+    ],
+    "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
   },
@@ -969,20 +1103,29 @@ window.questionBank = [
       },
       "solutionVisual": {
         "requirement": "REQUIRED",
-        "reason": "평행이동 벡터와 영역 넓이의 기하적 근거를 SVG로 표시"
+        "reason": "기울기 −1인 두 직선의 절편 차와 곡선의 (−d,+d) 이동이 만드는 폭×높이 넓이 (세트 3)"
       }
     },
     "standardUnitKey": "H22-C2-09",
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+    "standardUnit": "무리함수",
+    "standardUnitOrder": 9,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-267",
     "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
     "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_STRIP",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "crossConceptKeys": [
+      "CC_CURVE_TRANSLATION_CONGRUENCE",
+      "CC_AREA"
+    ],
+    "conditionKeys": [
+      "COND_POSITIVE"
+    ],
+    "integrationPattern": "INTERDEPENDENT",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
   },
@@ -994,16 +1137,16 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
-    "content": "함수 $f(x)=\\begin{cases}2x^2-4x+3&(0\\le x\\le2)\\\\-x+5&(2<x\\le4)\\end{cases}$에 대하여 $f(x)+f(f(x))=3$의 서로 다른 실근의 합은? [4.3점]",
+    "content": "$0\\le x\\le3$에서 $f(x)=\\begin{cases}2(x-1)^2+1&(0\\le x\\le2)\\\\-3x+9&(2<x\\le3)\\end{cases}$이다. 방정식 $f(x)+f(f(x))=3$의 서로 다른 실근의 합은? [4.3점]",
     "choices": [
-      "$3$",
-      "$\\frac{9}{2}$",
-      "$5$",
-      "$\\frac{11}{2}$",
-      "$6$"
+      "$7$",
+      "$\\frac{17}{2}$",
+      "$9$",
+      "$\\frac{19}{2}$",
+      "$10$"
     ],
     "answer": "④",
-    "solution": "$f$의 치역은 $[1,3]$이므로 $t=f(x)$는 반드시 $1\\le t\\le3$이다. $1\\le t\\le2$에서 $t+f(t)=2t^2-3t+3=3$을 풀면 $t=\\frac32$만 가능하다($t=0$은 치역 밖). $2<t\\le3$에서는 $t+f(t)=5$이므로 불가능하다. $f(x)=\\frac32$은 첫 조각에서 $2(x-1)^2+1=\\frac32$이므로 $x=\\frac12,\\frac32$, 둘째 조각에서 $-x+5=\\frac32$이므로 $x=\\frac72$이다. 합은 $\\frac12+\\frac32+\\frac72=\\frac{11}2$이다.",
+    "solution": "$f$의 치역은 $[0,3]$이므로 $t=f(x)$라 두면 $0\\le t\\le3$이다. $0\\le t\\le2$에서는 $t+f(t)=2t^2-3t+3=3$으로부터 $t=0,\\frac32$를 얻는다. $2<t\\le3$에서는 $t+f(t)=9-2t=3$이어서 $t=3$이다. 이제 $f(x)=0$은 $x=3$ 한 개, $f(x)=\\frac32$은 $x=\\frac12,\\frac32,\\frac52$ 세 개, $f(x)=3$은 첫 조각에서 $x=0,2$ 두 개다. 둘째 조각의 식 $-3x+9=3$도 형식상 $x=2$를 주지만 이 조각은 $x>2$이므로 이 값을 **추가로 세지 않는다**. 서로 다른 여섯 근의 합은 $3+\\frac12+\\frac32+\\frac52+0+2=\\frac{19}2$이다.",
     "curriculum": "2022",
     "standardCourse": "공통수학2",
     "sourceQid": 19,
@@ -1020,20 +1163,28 @@ window.questionBank = [
       },
       "solutionVisual": {
         "requirement": "BENEFICIAL",
-        "reason": "조각함수의 중간값 t와 원상 분기 구조"
+        "reason": "f(x)=3에서 x=2가 두 식의 형식적 후보이지만 오른쪽 조각에서 제외됨을 표시"
       }
     },
     "standardUnitKey": "H22-C2-07",
     "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+    "standardUnit": "함수",
+    "standardUnitOrder": 7,
+    "subUnit": "합성함수",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-253",
     "problemTypeKey": "PT_COMPOSITION_EQUATION",
     "templateKey": "TPL_COMPOSITION_EQUATION_SOLVE",
     "difficultyBucket": 5,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "crossConceptKeys": [
+      "CC_PIECEWISE_FUNCTION_COMPOSITION"
+    ],
+    "conditionKeys": [
+      "COND_PIECEWISE_DOMAIN_PARTITION"
+    ],
+    "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
   },
@@ -1076,15 +1227,24 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-06",
     "subUnitKey": "H22-C2-06-CORE",
+    "standardUnit": "명제",
+    "standardUnitOrder": 6,
+    "subUnit": "명제 핵심 개념",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-248",
     "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
     "templateKey": "TPL_PROPOSITION_COUNTEREXAMPLE_COUNT_PARAMETER",
     "difficultyBucket": 5,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "crossConceptKeys": [
+      "CC_COUNTEREXAMPLE"
+    ],
+    "conditionKeys": [
+      "COND_INTEGER",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
   },
@@ -1121,15 +1281,24 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-06",
     "subUnitKey": "H22-C2-06-CORE",
+    "standardUnit": "명제",
+    "standardUnitOrder": 6,
+    "subUnit": "명제 핵심 개념",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-243",
     "problemTypeKey": "PT_QUANTIFIER_NEGATION",
     "templateKey": "TPL_EXISTENTIAL_NEGATION_PARAMETER",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "crossConceptKeys": [
+      "CC_QUANTIFIER_NEGATION"
+    ],
+    "conditionKeys": [
+      "COND_INTEGER",
+      "COND_UNIVERSAL_INPUTS"
+    ],
+    "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked",
     "essayAnswer": "-2,-1,0,1,2"
@@ -1167,15 +1336,23 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-09",
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+    "standardUnit": "무리함수",
+    "standardUnitOrder": 9,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-272",
     "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
     "templateKey": "TPL_GRAPH_INTERSECTION_COUNT",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "crossConceptKeys": [
+      "CC_RADICAL_LINE_INTERSECTION"
+    ],
+    "conditionKeys": [
+      "COND_EXACT_INTERSECTION_COUNT"
+    ],
+    "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked",
     "essayAnswer": "-1\\le k<2"
@@ -1188,10 +1365,10 @@ window.questionBank = [
     "questionType": "서술형",
     "layoutTag": "grid",
     "wide": false,
-    "content": "$f(x)=\\frac{ax+b}{x-2}$, $f(0)=-6$이다. 방정식 $|f(x)|=4$는 실근을 오직 하나 가지며, 그 근은 음수이다. $|f(x)|=\\alpha$($\\alpha>0$)의 두 실근 $\\beta<\\gamma$가 모두 양수이고 $\\beta$가 정수일 때 $\\alpha+2\\beta+\\gamma$의 값을 구하시오. 분모가 $0$이 되는 경우는 제외한다. [7점]",
+    "content": "$f(x)=\\frac{(x-5)(ax+b)}{(x-5)(x-2)}$($x\\ne2,5$), $a<4$, $f(0)=-6$이다. 방정식 $|f(x)|=4$는 실근을 오직 하나 가지며 그 근은 음수이다. $|f(x)|=\\alpha$($\\alpha>0$)의 서로 다른 두 실근 $\\beta<\\gamma$가 모두 양수이고 $\\beta$가 정수일 때 $\\alpha+2\\beta+\\gamma$를 구하시오. 분모가 $0$인 후보는 반드시 제외하고 이유를 설명하시오. [7점]",
     "choices": [],
-    "answer": "\\frac{65}{3}",
-    "solution": "$f(0)=-6$에서 $b=12$이다. $|f|=4$가 한 실근만 가지려면 $a=4$ 또는 $a=-4$이다. $a=4$일 때 $f(x)=4+\\frac{20}{x-2}$이고 $f=-4$의 근은 $x=2-\\frac{20}{8}=-\\frac12<0$. $a=-4$이면 $f(x)=-4+\\frac4{x-2}$이므로 $f=4$의 근 $x=2+\\frac48=\\frac52>0$이어서 제외된다. 따라서 $a=4$. $|f|=\\alpha$가 두 양의 근을 가질 때 $\\alpha>4$, 작은 근은 $\\beta=2-\\frac{20}{\\alpha+4}$이므로 $0<\\beta<2$인 정수 $\\beta=1$이어야 한다. $\\alpha+4=20$에서 $\\alpha=16$이고 큰 근은 $\\gamma=2+\\frac{20}{16-4}=\\frac{11}3$이다. $\\alpha+2\\beta+\\gamma=16+2+\\frac{11}3=\\frac{65}3$이다.",
+    "answer": "17",
+    "solution": "$f(0)=-6$에서 $b=12$이다. 분모의 인수에 따라 $x=2,5$는 반드시 제외한다. 허용된 $x$에서는 $f(x)=\\frac{ax+12}{x-2}$이고 $f(x)=4$의 형식상 해는 $x=\\frac{20}{4-a}$, $f(x)=-4$의 형식상 해는 $x=-\\frac4{a+4}$이다(각 분모가 $0$인 매개변수는 별도로 판정한다). $a<4$에서 첫 해는 양수이므로 이를 제거해야 음의 실근 하나만 남는다. $x=5$가 제외값이므로 $\\frac{20}{4-a}=5$, 즉 $a=0$이다. 이때 $f(x)=4$의 형식적 해 $x=5$는 실제 정의역 밖이어서 제거되며 $f(x)=-4$는 $x=-1$만 남는다. $a=-4$에서는 음의 근이 없고 $a< -4$에서는 두 후보가 양수이므로 다른 가능성은 없다. 이제 $f(x)=\\frac{12}{x-2}$($x\\ne2,5$)이므로 $|f(x)|=\\alpha$의 두 근은 $2-\\frac{12}{\\alpha},2+\\frac{12}{\\alpha}$이다. 두 근이 양수이려면 $\\alpha>6$, 따라서 작은 양의 근 $\\beta$는 $0<\\beta<2$인 정수이므로 $1$이다. $\\beta=1$에서 $\\alpha=12$, $\\gamma=3$이고 모두 정의역에 속한다. 최종값은 $12+2\\cdot1+3=17$이다.",
     "curriculum": "2022",
     "standardCourse": "공통수학2",
     "sourceQid": 23,
@@ -1208,22 +1385,33 @@ window.questionBank = [
       },
       "solutionVisual": {
         "requirement": "BENEFICIAL",
-        "reason": "유리함수에 대한 y=±c 교점과 극점 제외 확인"
+        "reason": "x=2 극점과 x=5 제거 가능한 구멍, y=±4의 실제/형식적 교점 구분"
       }
     },
     "standardUnitKey": "H22-C2-08",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+    "standardUnit": "유리함수",
+    "standardUnitOrder": 8,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-265",
     "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
     "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
     "difficultyBucket": 5,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "crossConceptKeys": [
+      "CC_ABSOLUTE_VALUE_EQUATION"
+    ],
+    "conditionKeys": [
+      "COND_INTEGER",
+      "COND_POSITIVE",
+      "COND_NEGATIVE",
+      "COND_NONZERO"
+    ],
+    "integrationPattern": "CASE_BRANCH",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked",
-    "essayAnswer": "\\frac{65}{3}"
+    "essayAnswer": "17"
   }
 ];

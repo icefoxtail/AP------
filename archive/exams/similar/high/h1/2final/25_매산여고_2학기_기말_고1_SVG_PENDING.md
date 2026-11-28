@@ -47,6 +47,7 @@
 | 유사3 | 11 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q11-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
 | 유사3 | 12 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q12-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
 | 유사3 | 13 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q13-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
+| 유사3 | 14 | problem | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q14-problem.plan.json | SVG_TO_CREATE | NOT_RUN |
 | 유사3 | 14 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q14-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
 | 유사3 | 15 | problem | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q15-problem.plan.json | SVG_TO_CREATE | NOT_RUN |
 | 유사3 | 15 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q15-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
@@ -58,8 +59,11 @@
 | 유사3 | 22 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q22-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
 | 유사3 | 23 | solution | BENEFICIAL | archive/tools/geometry-equation/production/plans/25_매산여고_2학기_기말_고1_유사3/q23-solution.plan.json | SVG_TO_CREATE | NOT_RUN |
 
-요약: 3세트 × 46축 = 138축 전수 판정. REQUIRED 3, BENEFICIAL 48, EXEMPT 87. 예정 제작용 plan 51건, 실제 제작·렌더 0건.
+요약: 3세트 × 46축 = 138축 전수 판정. REQUIRED 3, BENEFICIAL 49, EXEMPT 86. 예정 제작용 plan 52건, 실제 제작·렌더 0건.
 
-필수 문제 그림은 텍스트 매핑이 전부 있는 q03·q15에서는 해당하지 않는다. 그러나 시각화의 교육적 효용이 있으므로 BENEFICIAL로 예정에 포함한다.
+기존 초안 51건에서 유사3 14번 문제 축을 BENEFICIAL로 상향했다. 두 조각의 끝점과 교점 2개의 위치를 이해하는 데 보조 그래프가 유익하다.
+
+03·15번 대응도는 원소·함숫값이 모두 발문에 쓰여 있으므로 REQUIRED가 아닌 BENEFICIAL이다. 18번 해설 SVG는 세 세트 모두 REQUIRED이다.
+16번 접합 치역, 19번 경계 원상 중복, 23번 극점·제거 가능한 구멍은 해설의 BENEFICIAL 축에서 다룬다.
 
 작성자 단계의 메타·수학 자가 점검은 독립 R1/R2/R3 완료를 의미하지 않는다. SVG를 붙인 후 해당 축의 실제 이미지 QA가 필요하다.

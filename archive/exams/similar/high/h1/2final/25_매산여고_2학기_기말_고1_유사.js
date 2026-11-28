@@ -45,14 +45,23 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-06",
     "subUnitKey": "H22-C2-06-CORE",
+    "standardUnit": "명제",
+    "standardUnitOrder": 6,
+    "subUnit": "명제 핵심 개념",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-248",
     "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
     "templateKey": "TPL_IMPLICATION_INTERVAL_PARAMETER",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
+    "crossConceptKeys": [
+      "CC_TRUTH_SET_INCLUSION"
+    ],
+    "conditionKeys": [
+      "COND_INTEGER",
+      "COND_UNIVERSAL_INPUTS"
+    ],
     "integrationPattern": "NONE",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
@@ -65,7 +74,7 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
-    "content": "전체집합 $U=\\{1,2,\\ldots,8\\}$에서 $A\\cap B=\\{2,6\\}$이고 $B-A=\\{1,3,8\\}$이다. 집합 $B$의 원소의 개수는? [3.6점]",
+    "content": "전체집합 $U=\\{1,2,\\ldots,8\\}$의 부분집합 $A,B$가 $A-(A-B)=\\{2,6\\}$, $(A\\cup B^C)^C=\\{1,3,8\\}$를 만족한다. $B$의 원소의 개수는? [3.6점]",
     "choices": [
       "$3$",
       "$4$",
@@ -74,7 +83,7 @@ window.questionBank = [
       "$7$"
     ],
     "answer": "③",
-    "solution": "$B$는 서로 겹치지 않는 $A\\cap B$와 $B-A=A^C\\cap B$로 분해된다. 따라서 $B=\\{1,2,3,6,8\\}$이고 원소의 개수는 $5$이다.",
+    "solution": "집합의 차와 분배법칙에서 $A-(A-B)=A\\cap(A-B)^C=A\\cap(A^C\\cup B)=A\\cap B$이므로 $A\\cap B=\\{2,6\\}$이다. 드모르간 법칙에 의해 $(A\\cup B^C)^C=A^C\\cap B=\\{1,3,8\\}$이다. 두 집합은 서로소이고 합집합이 $B$이므로 $B=\\{1,2,3,6,8\\}$, $|B|=5$이다.",
     "curriculum": "2022",
     "standardCourse": "공통수학2",
     "sourceQid": 2,
@@ -96,15 +105,21 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-05",
     "subUnitKey": "H22-C2-05-CORE",
+    "standardUnit": "집합",
+    "standardUnitOrder": 5,
+    "subUnit": "집합 핵심 개념",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-241",
     "problemTypeKey": "PT_SET_OPERATION_LAW",
     "templateKey": "TPL_OPERATION_LAW_COMPOSITE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_SET_DIFFERENCE_COMPLEMENT"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
   },
@@ -147,15 +162,23 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-07",
     "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+    "standardUnit": "함수",
+    "standardUnitOrder": 7,
+    "subUnit": "합성함수",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-253",
     "problemTypeKey": "PT_INVERSE_COMPOSITION",
     "templateKey": "TPL_INVERSE_COMPOSITION_VALUE",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "crossConceptKeys": [
+      "CC_INVERSE_FUNCTION"
+    ],
+    "conditionKeys": [
+      "COND_FUNCTION_BIJECTION"
+    ],
+    "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked",
     "sourceDiagramModel": {
@@ -233,6 +256,10 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-08",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+    "standardUnit": "유리함수",
+    "standardUnitOrder": 8,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-263",
     "problemTypeKey": "PT_RATIONAL_EXPRESSION",
     "templateKey": "TPL_RATIONAL_EXPRESSION_SIMPLIFY",
@@ -240,7 +267,9 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": [
+      "COND_NONZERO"
+    ],
     "integrationPattern": "NONE",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
@@ -284,14 +313,22 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-09",
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+    "standardUnit": "무리함수",
+    "standardUnitOrder": 9,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-268",
     "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
     "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_DIRECT",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
+    "crossConceptKeys": [
+      "CC_RADICAL_FUNCTION_DOMAIN_RANGE"
+    ],
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
     "integrationPattern": "NONE",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
@@ -335,15 +372,21 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-08",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+    "standardUnit": "유리함수",
+    "standardUnitOrder": 8,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-260",
     "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
     "templateKey": "TPL_FUNCTION_GRAPH_TRANSFORM_ASYMPTOTE_POINT",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_RATIONAL_FUNCTION_ASYMPTOTE"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
   },
@@ -386,14 +429,22 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-09",
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+    "standardUnit": "무리함수",
+    "standardUnitOrder": 9,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-269",
     "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
     "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_EXTREMUM",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
+    "crossConceptKeys": [
+      "CC_FUNCTION_MONOTONICITY"
+    ],
+    "conditionKeys": [
+      "COND_RESTRICTED_INTERVAL"
+    ],
     "integrationPattern": "NONE",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
@@ -437,15 +488,23 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-08",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+    "standardUnit": "유리함수",
+    "standardUnitOrder": 8,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-264",
     "problemTypeKey": "PT_FUNCTION_EXTREMUM",
     "templateKey": "TPL_FUNCTION_EXTREMUM_INEQUALITY",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "crossConceptKeys": [
+      "CC_AM_GM"
+    ],
+    "conditionKeys": [
+      "COND_POSITIVE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
   },
@@ -488,15 +547,23 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-07",
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+    "standardUnit": "함수",
+    "standardUnitOrder": 7,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-251",
     "problemTypeKey": "PT_FUNCTION_EQUALITY",
     "templateKey": "TPL_EQUAL_FUNCTION_DOMAIN_SELECTION",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "crossConceptKeys": [
+      "CC_SUBSET_COUNTING"
+    ],
+    "conditionKeys": [
+      "COND_NONEMPTY_SELECTION"
+    ],
+    "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
   },
@@ -539,15 +606,24 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-06",
     "subUnitKey": "H22-C2-06-CORE",
+    "standardUnit": "명제",
+    "standardUnitOrder": 6,
+    "subUnit": "명제 핵심 개념",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-248",
     "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
     "templateKey": "TPL_IMPLICATION_INTERVAL_PARAMETER",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "crossConceptKeys": [
+      "CC_TRUTH_SET_INCLUSION"
+    ],
+    "conditionKeys": [
+      "COND_INTEGER",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
   },
@@ -559,16 +635,16 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
-    "content": "분수함수 $y=\\frac{2x+1}{x-1}$의 그래프에 대한 설명으로 옳은 것은? [4점]",
+    "content": "분수함수 $y=2+\\frac3{x-1}$의 그래프에 대하여 <보기>의 진술 중 옳은 것만을 있는 대로 고른 것은?\n<br><보기><br>ㄱ. 점근선은 $x=1$, $y=2$이다.<br>ㄴ. 그래프는 제3사분면을 지나지 않는다.<br>ㄷ. 직선 $y=x+1$에 대하여 대칭이다. [4점]",
     "choices": [
-      "$\\text{수직점근선은 }x=2\\text{이다.}$",
-      "$\\text{수평점근선은 }y=1\\text{이다.}$",
-      "$\\text{직선 }y=-x+1\\text{에 대하여 대칭이다.}$",
-      "$\\text{직선 }y=x+1\\text{에 대하여 대칭이다.}$",
-      "$\\text{그래프는 제3사분면을 지나지 않는다.}$"
+      "$\\text{ㄱ}$",
+      "$\\text{ㄴ}$",
+      "$\\text{ㄱ, ㄴ}$",
+      "$\\text{ㄱ, ㄷ}$",
+      "$\\text{ㄱ, ㄴ, ㄷ}$"
     ],
     "answer": "④",
-    "solution": "$\\frac{2x+1}{x-1}=2+\\frac3{x-1}$이므로 점근선은 $x=1,y=2$이고 중심은 $(1,2)$이다. 기울기 $1$인 대칭축은 $y-2=x-1$, 즉 $y=x+1$이다. $x=-\\frac14$일 때 $y=-\\frac25<0$이므로 그래프는 제3사분면도 지난다. 유일하게 옳은 설명은 $y=x+1$에 대한 대칭이다.",
+    "solution": "함수는 $y=2+\\frac3{x-1}$이므로 수직점근선 $x=1$과 수평점근선 $y=2$를 갖는다. 따라서 ㄱ은 참이다. $x=-\\frac14$이면 $y=2+\\frac3{-5/4}=-\\frac25<0$이므로 제3사분면을 지나 ㄴ은 거짓이다. 중심 $(1,2)$에서 기울기 $1$인 대칭축은 $y-2=x-1$, 즉 $y=x+1$이므로 ㄷ은 참이다. 정답은 ㄱ, ㄷ이다.",
     "curriculum": "2022",
     "standardCourse": "공통수학2",
     "sourceQid": 11,
@@ -585,20 +661,27 @@ window.questionBank = [
       },
       "solutionVisual": {
         "requirement": "BENEFICIAL",
-        "reason": "점근선·대칭축·사분면 진술의 그래프 위치 관계"
+        "reason": "세 그래프 진술 ㄱ·ㄴ·ㄷ 중 제3사분면 반례와 대칭축을 한 그림에서 비교"
       }
     },
     "standardUnitKey": "H22-C2-08",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+    "standardUnit": "유리함수",
+    "standardUnitOrder": 8,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-261",
     "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
     "templateKey": "TPL_RATIONAL_ASYMPTOTE_DIRECT",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_QUADRANT_PASSAGE",
+      "CC_RATIONAL_FUNCTION_SYMMETRY"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "CASE_BRANCH",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
   },
@@ -641,15 +724,23 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-07",
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+    "standardUnit": "함수",
+    "standardUnitOrder": 7,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-257",
     "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
     "templateKey": "TPL_ABSOLUTE_VALUE_INJECTIVITY",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "crossConceptKeys": [
+      "CC_FUNCTION_MONOTONICITY"
+    ],
+    "conditionKeys": [
+      "COND_FUNCTION_BIJECTION"
+    ],
+    "integrationPattern": "CASE_BRANCH",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
   },
@@ -661,16 +752,16 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
-    "content": "함수 $y=-\\sqrt{-3x+6}-1$을 오른쪽으로 $2$, 위쪽으로 $3$만큼 평행이동한 다음 $y$축에 대하여 대칭이동했다. 그래프의 식이 $y=-\\sqrt{ax+b}+c$일 때 $a+b+c$의 값은? [3.9점]",
+    "content": "함수 $y=-\\sqrt{-3x+6}-1$을 먼저 $y$축에 대하여 대칭이동한 다음 왼쪽으로 $1$, 위쪽으로 $3$만큼 평행이동하였다. 결과의 식이 $y=-\\sqrt{ax+b}+c$일 때 $a+b-c$의 값은? [3.9점]",
     "choices": [
-      "$-17$",
-      "$-11$",
-      "$-7$",
-      "$13$",
-      "$17$"
+      "$-14$",
+      "$-10$",
+      "$-4$",
+      "$8$",
+      "$10$"
     ],
     "answer": "⑤",
-    "solution": "평행이동하면 $y=-\\sqrt{-3(x-2)+6}+2=-\\sqrt{-3x+12}+2$이다. 여기서 $x$를 $-x$로 바꾸면 $y=-\\sqrt{3x+12}+2$가 된다. 따라서 $a=3,b=12,c=2$이고 합은 $17$이다.",
+    "solution": "먼저 $x$를 $-x$로 바꾸면 $y=-\\sqrt{3x+6}-1$이다. 이어 왼쪽으로 $1$ 평행이동하면 $y=-\\sqrt{3(x+1)+6}-1=-\\sqrt{3x+9}-1$이고 위쪽으로 $3$ 옮기면 $y=-\\sqrt{3x+9}+2$이다. 따라서 $a=3,b=9,c=2$이고 $a+b-c=3+9-2=10$이다.",
     "curriculum": "2022",
     "standardCourse": "공통수학2",
     "sourceQid": 13,
@@ -692,15 +783,21 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-09",
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+    "standardUnit": "무리함수",
+    "standardUnitOrder": 9,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-267",
     "problemTypeKey": "PT_FUNCTION_RECOVERY",
     "templateKey": "TPL_RECOVER_FUNCTION_BY_INPUT_CHANGE",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_TRANSLATION"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
   },
@@ -743,15 +840,24 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-09",
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+    "standardUnit": "무리함수",
+    "standardUnitOrder": 9,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-272",
     "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
     "templateKey": "TPL_GRAPH_INTERSECTION_COUNT",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "crossConceptKeys": [
+      "CC_GRAPH_INTERSECTION_COUNT"
+    ],
+    "conditionKeys": [
+      "COND_RESTRICTED_INTERVAL",
+      "COND_EXACT_INTERSECTION_COUNT"
+    ],
+    "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
   },
@@ -794,15 +900,23 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-07",
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+    "standardUnit": "함수",
+    "standardUnitOrder": 7,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-251",
     "problemTypeKey": "PT_FUNCTION_COUNTING",
     "templateKey": "TPL_CONSTRAINED_FUNCTION_COUNT",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "crossConceptKeys": [
+      "CC_FUNCTION_COUNTING"
+    ],
+    "conditionKeys": [
+      "COND_FUNCTION_VALUE_CONSTRAINT"
+    ],
+    "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked",
     "sourceDiagramModel": {
@@ -872,15 +986,24 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-07",
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+    "standardUnit": "함수",
+    "standardUnitOrder": 7,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-257",
     "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
     "templateKey": "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "crossConceptKeys": [
+      "CC_PIECEWISE_BIJECTION"
+    ],
+    "conditionKeys": [
+      "COND_PIECEWISE_DOMAIN_PARTITION",
+      "COND_FUNCTION_INJECTIVE"
+    ],
+    "integrationPattern": "INTERDEPENDENT",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
   },
@@ -923,15 +1046,24 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-07",
     "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+    "standardUnit": "함수",
+    "standardUnitOrder": 7,
+    "subUnit": "역함수",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-256",
     "problemTypeKey": "PT_INVERSE_GRAPH",
     "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
     "difficultyBucket": 5,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "crossConceptKeys": [
+      "CC_INVERSE_GRAPH_INTERSECTION"
+    ],
+    "conditionKeys": [
+      "COND_INTEGER",
+      "COND_EXACT_INTERSECTION_COUNT"
+    ],
+    "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
   },
@@ -969,20 +1101,29 @@ window.questionBank = [
       },
       "solutionVisual": {
         "requirement": "REQUIRED",
-        "reason": "평행이동 벡터와 영역 넓이의 기하적 근거를 SVG로 표시"
+        "reason": "기울기 −1인 두 직선의 절편 차와 곡선의 (−d,+d) 이동이 만드는 폭×높이 넓이 (세트 1)"
       }
     },
     "standardUnitKey": "H22-C2-09",
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+    "standardUnit": "무리함수",
+    "standardUnitOrder": 9,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-267",
     "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
     "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_STRIP",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "crossConceptKeys": [
+      "CC_CURVE_TRANSLATION_CONGRUENCE",
+      "CC_AREA"
+    ],
+    "conditionKeys": [
+      "COND_POSITIVE"
+    ],
+    "integrationPattern": "INTERDEPENDENT",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
   },
@@ -1025,15 +1166,23 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-07",
     "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+    "standardUnit": "함수",
+    "standardUnitOrder": 7,
+    "subUnit": "합성함수",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-253",
     "problemTypeKey": "PT_COMPOSITION_EQUATION",
     "templateKey": "TPL_COMPOSITION_EQUATION_SOLVE",
     "difficultyBucket": 5,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "crossConceptKeys": [
+      "CC_PIECEWISE_FUNCTION_COMPOSITION"
+    ],
+    "conditionKeys": [
+      "COND_PIECEWISE_DOMAIN_PARTITION"
+    ],
+    "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
   },
@@ -1076,15 +1225,24 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-06",
     "subUnitKey": "H22-C2-06-CORE",
+    "standardUnit": "명제",
+    "standardUnitOrder": 6,
+    "subUnit": "명제 핵심 개념",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-248",
     "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
     "templateKey": "TPL_PROPOSITION_COUNTEREXAMPLE_COUNT_PARAMETER",
     "difficultyBucket": 5,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "crossConceptKeys": [
+      "CC_COUNTEREXAMPLE"
+    ],
+    "conditionKeys": [
+      "COND_INTEGER",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked"
   },
@@ -1096,10 +1254,10 @@ window.questionBank = [
     "questionType": "서술형",
     "layoutTag": "grid",
     "wide": false,
-    "content": "정수 $k$에 대하여 명제 $P$: “어떤 실수 $x$에 대하여 $x^2+2kx+16\\le0$이다”를 생각하자. $P$의 부정이 참이 되게 하는 모든 정수 $k$를 구하고 이유를 서술하시오. [6점]",
+    "content": "정수 $k$에 대한 명제 $P$: “어떤 실수 $x$에 대하여 $x^2-2(k-1)x+4k+8\\le0$이다”를 생각하자. $P$의 부정을 쓰고, 부정이 참이 되도록 하는 모든 정수 $k$를 구하시오. [6점]",
     "choices": [],
-    "answer": "-3,-2,-1,0,1,2,3",
-    "solution": "$P$의 부정은 “모든 실수 $x$에 대하여 $x^2+2kx+16>0$이다”이다. 좌변을 완전제곱하면 $(x+k)^2+16-k^2$이다. 이 식이 모든 실수에서 엄격히 양수일 필요충분조건은 $16-k^2>0$, 즉 $-4<k<4$이다. 따라서 정수 $k$는 $-3,-2,-1,0,1,2,3$이다. 경계 $k=\\pm4$에서는 $x=-k$일 때 값이 $0$이므로 제외한다.",
+    "answer": "0,1,2,3,4,5,6",
+    "solution": "명제 $P$의 부정은 “모든 실수 $x$에 대하여 $x^2-2(k-1)x+4k+8>0$이다”이다. 좌변을 완전제곱하면 $(x-k+1)^2-(k-7)(k+1)$이다. 이 식의 모든 실수 $x$에 대한 최솟값은 $-(k-7)(k+1)$이므로 부정이 참일 필요충분조건은 $(k-7)(k+1)<0$이다. 즉 $-1<k<7$이고 정수 $k$는 $0,1,2,3,4,5,6$이다. 경계 $k=-1,7$에서는 최솟값이 $0$이어서 전칭명제의 엄격한 $>0$ 조건을 만족하지 않는다.",
     "curriculum": "2022",
     "standardCourse": "공통수학2",
     "sourceQid": 21,
@@ -1121,18 +1279,27 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-06",
     "subUnitKey": "H22-C2-06-CORE",
+    "standardUnit": "명제",
+    "standardUnitOrder": 6,
+    "subUnit": "명제 핵심 개념",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-243",
     "problemTypeKey": "PT_QUANTIFIER_NEGATION",
     "templateKey": "TPL_EXISTENTIAL_NEGATION_PARAMETER",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "crossConceptKeys": [
+      "CC_QUANTIFIER_NEGATION"
+    ],
+    "conditionKeys": [
+      "COND_INTEGER",
+      "COND_UNIVERSAL_INPUTS"
+    ],
+    "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked",
-    "essayAnswer": "-3,-2,-1,0,1,2,3"
+    "essayAnswer": "0,1,2,3,4,5,6"
   },
   {
     "id": 22,
@@ -1167,15 +1334,23 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-09",
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+    "standardUnit": "무리함수",
+    "standardUnitOrder": 9,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-272",
     "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
     "templateKey": "TPL_GRAPH_INTERSECTION_COUNT",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "crossConceptKeys": [
+      "CC_RADICAL_LINE_INTERSECTION"
+    ],
+    "conditionKeys": [
+      "COND_EXACT_INTERSECTION_COUNT"
+    ],
+    "integrationPattern": "SEQUENTIAL",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked",
     "essayAnswer": "0\\le k<1"
@@ -1213,15 +1388,26 @@ window.questionBank = [
     },
     "standardUnitKey": "H22-C2-08",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+    "standardUnit": "유리함수",
+    "standardUnitOrder": 8,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-265",
     "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
     "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
     "difficultyBucket": 5,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "crossConceptKeys": [
+      "CC_ABSOLUTE_VALUE_EQUATION"
+    ],
+    "conditionKeys": [
+      "COND_INTEGER",
+      "COND_POSITIVE",
+      "COND_NEGATIVE",
+      "COND_NONZERO"
+    ],
+    "integrationPattern": "CASE_BRANCH",
     "reviewStatus": "review_required",
     "solutionStatus": "self_checked",
     "essayAnswer": "\\frac{55}{3}"
