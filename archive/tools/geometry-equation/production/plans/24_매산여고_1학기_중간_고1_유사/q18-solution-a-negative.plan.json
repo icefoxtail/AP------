@@ -1,0 +1,8 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{"family":"polynomial","coefficients":["0","-6","-1"],"sourceDomain":{"kind":"INTERVAL","range":[-1,1],"states":["CLOSED","CLOSED"]},"domain":[-1,1],"viewport":[-2,2,-9,7],"requiredPoints":[{"id":"L","x":-1,"y":5},{"id":"R","x":1,"y":-7}],"axisTickValues":{"x":[],"y":[]}},
+  "caption":"a=−1이면 −1≤x≤1에서 y=−x²−6x는 감소하며 왼쪽 끝 x=−1에서 최댓값 5이다.",
+  "accessibilityDescription":"구간 −1부터 1까지의 오른쪽으로 감소하는 포물선 호로 왼쪽 끝 (−1,5), 오른쪽 끝 (1,−7)을 표시한다.",
+  "sourceConditions":[{"id":"branch","condition":"a=−1의 경우 대칭축 x=−3이 구간 왼쪽 밖에 있다","mappedTo":["graphPlan.coefficients","graphPlan.sourceDomain"]},{"id":"maximum","condition":"f(−1)=5, f(1)=−7","mappedTo":["graphPlan.requiredPoints"]}],
+  "newVisualInformation":["양의 a 경우와 좌우가 반대인 음의 a 경우에서도 최댓값은 5임을 확인한다."]
+}

@@ -1,0 +1,8 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{"family":"polynomial","coefficients":["0","0","-1","1"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[-1,2],"viewport":[-1,2,-2,3],"requiredPoints":[{"id":"T","x":0,"y":0},{"id":"R","x":1,"y":0}],"axisTickValues":{"x":[],"y":[]}},
+  "caption":"a=0에서는 x²(x−1)=0이므로 중근 0에서 접하고 단근 1에서 x축을 가로지른다.",
+  "accessibilityDescription":"삼차곡선이 원점 T(0,0)에서 x축에 접하고 R(1,0)에서 가로지른다.",
+  "sourceConditions":[{"id":"factor","condition":"a=0일 때 x³−x²=x²(x−1)","mappedTo":["graphPlan.coefficients"]},{"id":"roots","condition":"중근 0, 단근 1","mappedTo":["graphPlan.requiredPoints"]}],
+  "newVisualInformation":["중근과 단근 두 종류의 x축 교점을 같은 삼차곡선에서 구별한다."]
+}

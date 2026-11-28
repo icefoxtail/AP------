@@ -1,0 +1,8 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "graphPlan":{"family":"multi-curve","viewport":[-4,4,-13,26],"curves":[{"id":"f","kind":"Y_OF_X","coefficients":["6","2","1"],"domain":["-4","4"],"color":"BLUE","label":"y=f(x)"},{"id":"l1","kind":"LINE","coefficients":["2","6"],"domain":["-4","4"],"color":"WARM","label":"y=l1(x)"},{"id":"l2","kind":"LINE","coefficients":["2","-2"],"domain":["-4","4"],"color":"GREEN","label":"y=l2(x)"},{"id":"h","kind":"Y_OF_X","coefficients":["-3","0","-2"],"domain":["-3","3"],"color":"ROSE","label":"y=h(x)"}],"overlays":{"points":[{"id":"P","x":"0","y":"2","coordinates":true},{"id":"T","x":"-2","y":"6","coordinates":true},{"id":"U","x":"2","y":"14","coordinates":true},{"id":"V","x":"0","y":"-3"}]},"axisTickValues":{"x":[],"y":[]}},
+  "caption":"두 접선은 y=−2x+2, y=6x+2이고, 허용 예시 k=−3인 y=−2x²−3은 어느 접선과도 만나지 않는다.",
+  "accessibilityDescription":"원래 위로 열린 포물선과 두 접선의 접점 T(−2,6), U(2,14)를 보이고, 아래쪽에 놓인 k=−3의 포물선은 두 접선과 교차하지 않는다.",
+  "sourceConditions":[{"id":"first","condition":"f(x)=x²+2x+6과 P(0,2)를 지나는 접선의 기울기는 −2와 6","mappedTo":["graphPlan.curves[0]","graphPlan.curves[1]","graphPlan.curves[2]","graphPlan.overlays.points[0]","graphPlan.overlays.points[1]","graphPlan.overlays.points[2]"]},{"id":"second","condition":"k<−5/2인 예시 k=−3의 y=−2x²−3은 두 직선과 교점 없음","mappedTo":["graphPlan.curves[3]","graphPlan.overlays.points[3]"]}],
+  "newVisualInformation":["두 접선의 기울기 차이와 아래쪽 포물선이 동시에 두 직선을 피하는 위치 관계를 명확히 구별한다."]
+}
