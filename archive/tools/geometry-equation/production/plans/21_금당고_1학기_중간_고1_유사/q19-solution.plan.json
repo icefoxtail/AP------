@@ -1,0 +1,24 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "axisVariable": false,
+    "rows": [
+      {"kind": "SET", "label": "허용 구간", "pieces": [
+        {"lo": {"value": "-2*sqrt(5)", "state": "CLOSED"}, "hi": {"value": "2*sqrt(5)", "state": "CLOSED"}}
+      ]},
+      {"kind": "POINTS", "label": "중요 위치", "band": false, "points": [
+        {"id": "L", "value": "-2*sqrt(5)", "hideName": true},
+        {"id": "V", "value": "sqrt(5)", "hideName": true},
+        {"id": "R", "value": "2*sqrt(5)", "hideName": true}
+      ]}
+    ]
+  },
+  "caption": "p²=20이므로 p=2√5이다. [−p,p]에서 포물선 축 p/2=√5로부터 가장 먼 곳은 왼쪽 끝 −p이며 최솟값은 −45다.",
+  "accessibilityDescription": "왼쪽 끝 −2√5부터 오른쪽 끝 2√5까지의 닫힌 구간과 내부의 대칭축 위치 √5를 같은 눈금 위에 표시한다.",
+  "sourceConditions": [
+    {"id": "interval", "condition": "양수 p=2√5, −p≤x≤p", "mappedTo": "numberLine.rows[0]"},
+    {"id": "axis", "condition": "x축 접점을 가지는 f(x)=−(x−p/2)²의 대칭축 x=p/2=√5", "mappedTo": "numberLine.rows[1]"}
+  ],
+  "newVisualInformation": ["축 √5에서 왼쪽 구간 끝 −2√5까지의 거리가 오른쪽 끝보다 길어 아래로 열린 포물선의 최솟값 위치가 왼쪽임을 보여 준다."]
+}

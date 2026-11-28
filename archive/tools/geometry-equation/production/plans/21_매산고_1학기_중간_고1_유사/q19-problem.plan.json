@@ -1,0 +1,33 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["0", "10", "-1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [0, 10], "viewport": [-1, 11, -2, 28],
+    "requiredPoints": [],
+    "overlays": {
+      "points": [
+        {"id": "A", "curveX": "3"},
+        {"id": "D", "curveX": "7"},
+        {"id": "B", "axis": "x", "value": "3"},
+        {"id": "C", "axis": "x", "value": "7"},
+        {"id": "P", "axis": "x", "value": "5"}
+      ],
+      "segments": [
+        {"id": "sAB", "from": "A", "to": "B"},
+        {"id": "sBC", "from": "B", "to": "C"},
+        {"id": "sCD", "from": "C", "to": "D"},
+        {"id": "sDA", "from": "D", "to": "A"}
+      ]
+    },
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "주어진 포물선 y=−x²+10x 위의 A,D를 윗변으로, x축 위의 B,C를 밑변으로 하는 직사각형과 그 밑변을 움직이는 점 P의 대표 배치이다. 좌표값은 표시하지 않는다.",
+  "accessibilityDescription": "아래로 열린 포물선 아래에 수직인 두 세로변과 수평인 두 가로변으로 이루어진 직사각형 ABCD가 있고 P는 x축 위의 BC 안에 있다.",
+  "sourceConditions": [
+    {"id": "curve", "condition": "A와 D는 제1사분면 위 이차함수 y=−x²+10x의 그래프에 있다", "mappedTo": ["graphPlan.coefficients", "graphPlan.overlays.points[0]", "graphPlan.overlays.points[1]"]},
+    {"id": "rectangle", "condition": "ABCD는 직사각형이고 BC는 x축 위에 놓인다; t=3의 대표 배치로 위치 관계만 그린다", "mappedTo": "graphPlan.overlays.segments"},
+    {"id": "pointP", "condition": "점 P는 BC 위에서 움직이며 a의 수치는 주어지지 않는다", "mappedTo": "graphPlan.overlays.points[4]"}
+  ],
+  "newVisualInformation": ["문제에서 말한 포물선·직사각형·움직이는 점 P의 상대 위치를 보여 주되 최대 둘레일 때의 t·a나 정답을 선공개하지 않는다."]
+}

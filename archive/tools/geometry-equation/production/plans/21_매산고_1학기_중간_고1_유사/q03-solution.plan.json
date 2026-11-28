@@ -1,0 +1,19 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["2", "4", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-4, 1], "viewport": [-4.7, 1.7, -4.3, 13.2],
+    "requiredPoints": [{"id": "V", "x": -2, "y": -2}, {"id": "T", "x": 0, "y": 2}],
+    "overlays": {"lines": [{"id": "g", "slope": "4", "intercept": "2", "label": "y=4x+2", "labelAt": "END"}]},
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "경계값 k=2에서 y=x²+4x+2와 y=4x+2는 T(0,2)에 접한다. k<2이면 직선이 아래로 내려가 교점이 없다.",
+  "accessibilityDescription": "위로 열린 포물선의 꼭짓점은 (−2,−2)이고 기울기 4인 직선 y=4x+2와 접점 (0,2) 하나를 공유한다.",
+  "sourceConditions": [
+    {"id": "curve", "condition": "원래 이차함수 y=x²+4x+2", "mappedTo": "graphPlan.coefficients"},
+    {"id": "boundary", "condition": "x²+4x+2=4x+k의 실근 조건은 x²+2−k=0; k=2는 접하는 경계", "mappedTo": ["graphPlan.overlays.lines[0]", "graphPlan.requiredPoints[1]"]},
+    {"id": "vertex", "condition": "이차함수의 꼭짓점 (−2,−2)", "mappedTo": "graphPlan.requiredPoints[0]"}
+  ],
+  "newVisualInformation": ["서로 만나지 않는 범위 k<2를 결정하는 접점 경계를 실제 포물선·직선으로 표시한다."]
+}

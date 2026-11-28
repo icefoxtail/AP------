@@ -1,0 +1,31 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {"coefficients": ["14", "-9", "1"]},
+      {"coefficients": ["-14", "9", "-1"]},
+      {"coefficients": ["14", "-9", "1"]}
+    ],
+    "breakpoints": [{"x": "2", "y": "0"}, {"x": "7", "y": "0"}],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [0, 9], "viewport": [-0.8, 9.8, -1.6, 15],
+    "requiredPoints": [
+      {"id": "P", "x": 2, "y": 0}, {"id": "Q", "x": 7, "y": 0},
+      {"id": "V", "x": 4.5, "y": 6.25},
+      {"id": "A", "x": 1, "y": 6}, {"id": "B", "x": 3, "y": 4}
+    ],
+    "overlays": {"lines": [{"id": "f", "slope": "-1", "intercept": "7", "label": "y=-x+7", "labelAt": "END"}]},
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "k=7인 경우 직선 y=−x+7은 g와 A(1,6), B(3,4), C=Q(7,0)에서 만나며 삼각형 ABP의 넓이는 5다.",
+  "accessibilityDescription": "x=2,7에서 방향이 바뀌는 조각함수 g와 기울기 −1인 직선이 A, B, Q의 세 점에서 만난다. P는 (2,0)이다.",
+  "sourceConditions": [
+    {"id": "g", "condition": "g=|x²−9x+14|, 2와 7 사이에서는 −x²+9x−14", "mappedTo": ["graphPlan.pieces", "graphPlan.breakpoints"]},
+    {"id": "vertex", "condition": "안쪽 조각의 꼭짓점 (9/2,25/4)", "mappedTo": "graphPlan.requiredPoints[2]"},
+    {"id": "line", "condition": "k=7일 때 y=−x+7", "mappedTo": "graphPlan.overlays.lines[0]"},
+    {"id": "intersections", "condition": "세 교점 (1,6),(3,4),(7,0); 마지막 교점은 Q와 같다", "mappedTo": ["graphPlan.requiredPoints[1]", "graphPlan.requiredPoints[3]", "graphPlan.requiredPoints[4]"]},
+    {"id": "xroots", "condition": "P(2,0), Q(7,0)", "mappedTo": "graphPlan.requiredPoints[0]"}
+  ],
+  "newVisualInformation": ["첫 번째 세 교점 경우는 직선이 조각 경계 Q를 지나 교점 C=Q를 만들고 삼각형 ABP를 결정함을 보여 준다."]
+}
