@@ -1,0 +1,27 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{ "coefficients": ["0", "-8/3", "1"] }],
+    "breakpoints": [],
+    "sourceDomain": { "kind": "INTERVAL", "range": ["-1", "5"], "states": ["CLOSED", "CLOSED"] },
+    "functionName": "f",
+    "referenceLines": [{ "id": "l", "slope": "1/3", "intercept": "0", "intersectionX": ["0", "3"] }],
+    "requiredPoints": [
+      { "id": "P", "x": "3", "y": "1" },
+      { "id": "A", "x": "1", "y": "-5/3" },
+      { "id": "B", "x": "4", "y": "16/3" },
+      { "id": "V", "x": "4/3", "y": "-16/9", "marker": "NONE" }
+    ],
+    "exactCoordinates": { "P": ["3", "1"], "A": ["1", "-5/3"], "B": ["4", "16/3"] },
+    "axisTickValues": { "x": [], "y": [] }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "현행 유사판의 관계를 나타내는 예시 개형. 미분가능한 곡선 f와 직선 y=x/3이 원점 및 P에서 만나고 A, B는 곡선 위에 있다.",
+  "accessibilityDescription": "미분가능한 함수의 개형과 y=x/3을 함께 나타낸다. A의 가로좌표가 P보다 작고 B의 가로좌표가 P보다 크다. 곡선의 다항식은 그림을 그리기 위한 예시이며 문제의 정답을 뜻하지 않는다.",
+  "sourceConditions": [
+    { "id": "source-q08-1", "condition": "현행 유사 JS: 임의의 미분가능 함수 y=f(x)와 직선 y=x/3이 원점 및 P에서 만난다. 0<a<p<b이며 A, P, B는 그래프 위의 점이다.", "mappedTo": "graphPlan.referenceLines,graphPlan.requiredPoints" },
+    { "id": "source-q08-2", "condition": "다항식 y=x²−8x/3은 현재 직접 연결된 유사 SVG에서 사용한 개형의 대표식이며, 원문의 f를 확정하는 식이 아니다.", "mappedTo": "graphPlan.pieces" }
+  ],
+  "newVisualInformation": ["직선 y=x/3 및 원점·P 교차, A·P·B의 가로좌표 순서를 시각화한다. 보기의 진위와 도함수 부호는 표기하지 않는다."]
+}

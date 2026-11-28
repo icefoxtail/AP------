@@ -1,0 +1,19 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": ["1", "4"],
+    "denominator": ["2", "1"],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "domain": [-7, 7],
+    "viewport": [-7.5, 7.5, -9, 13],
+    "overlays": { "lines": [{ "id": "a", "slope": "0", "intercept": "4", "style": "DASHED" }] },
+    "axisTickValues": { "x": ["-2"], "y": ["4"] }
+  },
+  "caption": "해설: y=(4x+1)/(x+2)=4−7/(x+2)의 치역에서 4가 빠지므로 y=t와의 교점 개수가 t=4에서만 달라진다.",
+  "accessibilityDescription": "수직 점근선 x=-2와 수평 점근선 y=4를 가지는 유리함수의 두 가지가 그려져 있다. 곡선은 높이 4를 지나지 않는다.",
+  "sourceConditions": [
+    { "id": "source-q15-rational", "condition": "현행 유사 JS 유리식 (4x+1)/(x+2)와 제외되는 치역값 4를 사용한다. 원 기출 SVG의 t=3은 다른 버전이다.", "mappedTo": "graphPlan.numerator,graphPlan.denominator,graphPlan.overlays.lines" }
+  ],
+  "newVisualInformation": ["수평 점근선 y=4가 곡선의 치역에서 빠진다는 해설의 근거를 시각화한다."]
+}

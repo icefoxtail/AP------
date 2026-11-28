@@ -1,0 +1,21 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "xWindow": [-2, 2],
+    "pieces": [
+      { "coefficients": ["2", "-1"], "domain": [null, 0], "end": "OPEN" },
+      { "coefficients": ["0", "1"], "domain": [0, 1], "start": "CLOSED", "end": "CLOSED" },
+      { "coefficients": ["0", "-1"], "domain": [1, null], "start": "OPEN" }
+    ],
+    "requiredPoints": [],
+    "axisTickValues": { "x": ["-1", "1"], "y": ["-1", "2"] }
+  },
+  "caption": "현행 유사판의 함수 개형. x=0의 왼쪽은 열린 점 (0,2)에 접근하고 x=1의 오른쪽은 열린 점 (1,-1)에서 시작한다.",
+  "accessibilityDescription": "서로 이어지지 않은 세 그래프 조각의 경계에서 채운 점과 열린 점이 구별된다. x가 0보다 작은 구간의 오른쪽 끝 높이는 2이고, x가 1보다 큰 구간의 왼쪽 끝 높이는 -1이다.",
+  "sourceConditions": [
+    { "id": "source-q02-1", "condition": "현행 유사 JS가 직접 참조하는 q02-problem.svg의 열린 끝점 (0,2)·(1,-1)과 방향별 극한을 보존한다.", "mappedTo": "graphPlan.pieces" },
+    { "id": "source-q02-2", "condition": "원 기출 q2.png에서는 x→0-가 -1인 다른 개형이므로 현행 유사 JS의 이미지와 풀이를 기준으로 한다.", "mappedTo": "graphPlan.axisTickValues" }
+  ],
+  "newVisualInformation": ["양쪽 불연속 경계의 열린 점과 닫힌 점을 구분한다. 극한의 합이나 선택지 정답은 표기하지 않는다."]
+}

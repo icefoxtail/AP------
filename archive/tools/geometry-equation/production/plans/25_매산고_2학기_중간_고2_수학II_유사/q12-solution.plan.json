@@ -1,0 +1,19 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["11", "-12", "9", "-2"],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "domain": [0, 3.5],
+    "viewport": [-0.2, 3.7, 4, 12],
+    "overlays": { "lines": [{ "id": "k", "slope": "0", "intercept": "169/27" }] },
+    "axisTickValues": { "x": ["1", "2"], "y": ["6", "7"] }
+  },
+  "caption": "해설: 점 (1,k)를 지나는 접점 방정식은 k=−2t³+9t²−12t+11이다. k=169/27의 수평선이 그 곡선과 세 점에서 만난다.",
+  "accessibilityDescription": "국소 최솟값 6과 최댓값 7 사이의 높이를 가진 수평선이 삼차함수 h(t)와 서로 다른 세 점에서 만난다. 세 교점의 x좌표는 접점 조건을 나타낸다.",
+  "sourceConditions": [
+    { "id": "source-q12-curve", "condition": "현행 유사 JS의 점 (1,k)와 f(x)=x³−6x²+3x+8에서 h(t)=f(t)+(1−t)f'(t)=−2t³+9t²−12t+11이다.", "mappedTo": "graphPlan.coefficients" },
+    { "id": "source-q12-answer", "condition": "해설에서 정해지는 k=169/27은 6<k<7에 속한다. 원 기출 해설 SVG는 점 (2,k) 등 다른 조건이므로 사용하지 않는다.", "mappedTo": "graphPlan.overlays.lines" }
+  ],
+  "newVisualInformation": ["서로 다른 접선 세 개가 가능한 접점 매개변수의 세 교차 위치를 보여 준다. 해설 축이므로 k를 표시한다."]
+}

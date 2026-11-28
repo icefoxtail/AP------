@@ -1,0 +1,32 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["0", "0", "2"],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "domain": [-1, 2],
+    "viewport": [-1, 3.5, -1.5, 5],
+    "overlays": {
+      "circles": [{ "id": "C", "center": ["sqrt(5)/2", "(5-sqrt(5))/4"], "radiusSquared": "(25-5*sqrt(5))/8" }],
+      "points": [
+        { "id": "O", "axis": "x", "value": "0", "onCircle": "C" },
+        { "id": "P", "curveX": "1", "onCircle": "C" },
+        { "id": "Q", "axis": "x", "value": "sqrt(5)", "onCircle": "C" }
+      ],
+      "segments": [
+        { "id": "OP", "from": "O", "to": "P" },
+        { "id": "PQ", "from": "P", "to": "Q" },
+        { "id": "OQ", "from": "O", "to": "Q" }
+      ]
+    },
+    "axisTickValues": { "x": [], "y": [] }
+  },
+  "pointNames": { "O": "O", "P": "P", "Q": "Q" },
+  "caption": "현행 유사 JS의 포물선 y=2x² 위 P, OP=OQ인 양의 x축 위 Q와 삼각형 POQ의 외접원. t=1은 개형 표본이다.",
+  "accessibilityDescription": "원점을 지나는 포물선 y=2x², 그 위 제1사분면 점 P, 양의 x축 위 점 Q를 이은 삼각형과 세 꼭짓점을 지나는 원. 같은 길이 OP와 OQ를 가진 예시 배치이다.",
+  "sourceConditions": [
+    { "id": "source-q13-curve", "condition": "현행 유사 JS는 y=2x², P(t,2t²)이며 원 기출은 y=x²이다. 현재 유사 조건을 기준으로 한다.", "mappedTo": "graphPlan.coefficients" },
+    { "id": "source-q13-circle", "condition": "대표 t=1: P(1,2), Q(sqrt(5),0)로 OP=OQ=sqrt(5). 원 C는 O,P,Q를 정확히 지나며 지름의 극한값은 표시하지 않는다.", "mappedTo": "graphPlan.overlays.circles,graphPlan.overlays.points" }
+  ],
+  "newVisualInformation": ["외접원과 포물선 및 OP=OQ 구조만 표시한다. 미지 함수 f(t) 및 정답은 밝히지 않는다."]
+}
