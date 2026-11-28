@@ -1,0 +1,54 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"10"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"15"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"15"},{"kind":"integer","value":"10"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"O","op":"TRANSLATE_POINT","inputs":["B"],"args":{"dx":{"kind":"integer","value":"5"},"dy":{"kind":"integer","value":"5"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"Q","op":"TRANSLATE_POINT","inputs":["B"],"args":{
+        "dx":{"kind":"expression","op":"sub","args":[{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"10"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]},{"kind":"integer","value":"5"}]},
+        "dy":{"kind":"expression","op":"sub","args":[{"kind":"integer","value":"20"},{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"10"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]}]}
+      },"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"big","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"5"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"small","op":"CIRCLE_CENTER_RADIUS","inputs":["Q"],"args":{"radius":{"kind":"expression","op":"sub","args":[{"kind":"integer","value":"20"},{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"10"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]}]}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["A","B","C","D","O","Q"],
+  "pointNames": {"Q":"O'"},
+  "displayLines": [],
+  "displayCircles": ["big","small"],
+  "displaySegments": [
+    {"id":"sAB","refs":["A","B"]},
+    {"id":"sBC","refs":["B","C"]},
+    {"id":"sCD","refs":["C","D"]},
+    {"id":"sDA","refs":["D","A"]},
+    {"id":"sOQ","refs":["O","Q"],"dashed":true}
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {"id":"width","from":"B","to":"C","label":"15","unit":"cm","side":"BELOW","style":"BAR","value":15},
+      {"id":"height","from":"A","to":"B","label":"10","unit":"cm","side":"LEFT","style":"BAR","value":10}
+    ],
+    "expressionLabels": [
+      {"id":"centers","ownerSegment":"sOQ","text":"5+r","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "caption": "두 원 중심거리 5+r와 가로·세로 중심 차를 이용하는 외접 관계 풀이",
+  "accessibilityDescription": "높이 10cm인 직사각형 안에 두 원이 있으며, 반지름 5cm인 큰 원 O와 작은 원 O'의 중심을 잇는 점선에 길이 5+r이 표시되어 있다.",
+  "newVisualInformation": [
+    "외접하는 두 원의 중심을 점선으로 이어 피타고라스 정리의 빗변 5+r을 보인다.",
+    "반지름 r은 해설 계산으로 얻으며 실제 둘레와 접선을 그리지 않고 임의 치수를 만들지 않는다."
+  ],
+  "sourceConditions": [
+    {"id":"S08_WIDTH","condition":"가로 길이 15cm","mappedTo":"planeMarks.dimensions[0]"},
+    {"id":"S08_HEIGHT","condition":"세로 길이 10cm","mappedTo":"planeMarks.dimensions[1]"},
+    {"id":"S08_BIG","condition":"큰 원 반지름 5cm","mappedTo":"displayCircles[0]"},
+    {"id":"S08_SMALL","condition":"작은 원 반지름 r인 접원의 존재","mappedTo":"displayCircles[1]"},
+    {"id":"S08_DISTANCE","condition":"두 원의 중심거리 5+r","mappedTo":"planeMarks.expressionLabels[0]"}
+  ],
+  "sourceQuote": "큰 원 $O$는 직사각형의 세로 길이 $10\\rm,cm$에 접하므로 반지름의 길이는 $$R = \\dfrac{10}{2} = 5\\rm,cm$$ 작은 원 $O'$의 반지름의 길이를 $r\\rm,cm$ ($0 < r < 5$)라 하자. 두 원의 중심 $O, O'$에서 직사각형의 가로 방향 중심 거리는 $(15 - 5 - r) = (10 - r)\\rm,cm$이고, 세로 방향 중심 거리는 $(5 - r)\\rm,cm$이다. 두 원이 서로 외접하므로 두 중심 사이의 거리는 $(5 + r)\\rm,cm$이다. 피타고라스 정리에 의하여 $$(10 - r)^2 + (5 - r)^2 = (5 + r)^2$$ 전개하면 $$100 - 20r + r^2 + 25 - 10r + r^2 = 25 + 10r + r^2$$ $$r^2 - 40r + 100 = 0$$ 근의 공식을 적용하면 $$r = \\dfrac{40 \\pm \\sqrt{40^2 - 4 \\times 100}}{2} = \\dfrac{40 \\pm \\sqrt{1200}}{2} = \\dfrac{40 \\pm 20\\sqrt{3}}{2} = 20 \\pm 10\\sqrt{3}$$ 반지름 $r < 5$이므로 구하는 작은 원 $O'$의 반지름의 길이는 $$r = 20 - 10\\sqrt{3}\\rm,cm$$ 따라서 정답은 ②이다."
+}

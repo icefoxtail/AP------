@@ -1,0 +1,50 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"10"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"15"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"15"},{"kind":"integer","value":"10"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"O","op":"TRANSLATE_POINT","inputs":["B"],"args":{"dx":{"kind":"integer","value":"5"},"dy":{"kind":"integer","value":"5"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"Q","op":"TRANSLATE_POINT","inputs":["B"],"args":{
+        "dx":{"kind":"expression","op":"sub","args":[{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"10"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]},{"kind":"integer","value":"5"}]},
+        "dy":{"kind":"expression","op":"sub","args":[{"kind":"integer","value":"20"},{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"10"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]}]}
+      },"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"big","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"5"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"small","op":"CIRCLE_CENTER_RADIUS","inputs":["Q"],"args":{"radius":{"kind":"expression","op":"sub","args":[{"kind":"integer","value":"20"},{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"10"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]}]}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["A","B","C","D","O","Q"],
+  "pointNames": {"Q":"O'"},
+  "displayLines": [],
+  "displayCircles": ["big","small"],
+  "displaySegments": [
+    {"id":"sAB","refs":["A","B"]},
+    {"id":"sBC","refs":["B","C"]},
+    {"id":"sCD","refs":["C","D"]},
+    {"id":"sDA","refs":["D","A"]}
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {"id":"width","from":"B","to":"C","label":"15","unit":"cm","side":"BELOW","style":"BAR","value":15},
+      {"id":"height","from":"A","to":"B","label":"10","unit":"cm","side":"LEFT","style":"BAR","value":10}
+    ]
+  },
+  "caption": "가로 15cm, 세로 10cm 직사각형 안에서 세 변에 접하는 큰 원과 오른쪽 작은 원",
+  "accessibilityDescription": "직사각형 ABCD의 왼쪽에 반지름 5인 원 O가 AB, BC, AD에 접해 있고, 오른쪽 아래에 원 O'가 BC, CD 및 큰 원에 접해 있다.",
+  "newVisualInformation": [
+    "큰 원 O는 BC와 AD 사이의 세로 폭 10cm에 들어가는 반지름 5cm의 원이다.",
+    "작은 원 O'의 중심을 오른쪽 아래에 배치해 세 접촉 조건을 보존하고 답의 반지름 수치는 노출하지 않는다."
+  ],
+  "sourceConditions": [
+    {"id":"P08_RECT","condition":"직사각형의 가로 15cm, 세로 10cm","mappedTo":"planeMarks.dimensions[0]"},
+    {"id":"P08_HEIGHT","condition":"위아래 평행변 사이 높이 10cm","mappedTo":"planeMarks.dimensions[1]"},
+    {"id":"P08_BIG","condition":"큰 원은 AB, BC, AD에 접함","mappedTo":"displayCircles[0]"},
+    {"id":"P08_SMALL","condition":"작은 원은 BC, CD 및 큰 원에 외접함","mappedTo":"displayCircles[1]"},
+    {"id":"P08_CORNERS","condition":"직사각형 네 꼭짓점 A, B, C, D","mappedTo":"displaySegments[0]"}
+  ],
+  "sourceQuote": "가로의 길이가 $15\\rm,cm$, 세로의 길이가 $10\\rm,cm$인 직사각형 $ABCD$의 내부에 세 변($AB, BC, AD$)에 접하는 가장 큰 원 $O$가 있고, 나머지 오른쪽 빈 공간에 직사각형의 두 변($BC, CD$) 및 원 $O$에 동시에 접하는 가장 큰 원 $O'$가 내접해 있을 때, 작은 원 $O'$의 반지름의 길이는?"
+}

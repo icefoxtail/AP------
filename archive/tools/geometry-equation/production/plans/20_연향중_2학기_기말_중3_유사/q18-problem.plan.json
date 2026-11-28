@@ -1,0 +1,49 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SCATTER",
+    "points": [
+      {"x":15,"y":20}, {"x":18,"y":22}, {"x":20,"y":24},
+      {"x":22,"y":25}, {"x":25,"y":28}, {"x":28,"y":30},
+      {"x":30,"y":35}, {"x":20,"y":15}, {"x":22,"y":18},
+      {"x":25,"y":22}, {"x":28,"y":24}, {"x":30,"y":25},
+      {"x":32,"y":30}, {"x":35,"y":28}, {"x":35,"y":32},
+      {"x":38,"y":34}, {"x":40,"y":35}, {"x":24,"y":20},
+      {"x":26,"y":23}, {"x":38,"y":32}
+    ],
+    "xRange": ["10", "45"],
+    "yRange": ["10", "45"],
+    "xStep": "5",
+    "yStep": "5",
+    "xTitle": "왼손 악력",
+    "yTitle": "오른손 악력",
+    "grid": true,
+    "equalUnits": true,
+    "diagonal": true,
+    "pointGroups": [
+      {
+        "points": [[15,20],[18,22],[20,24],[22,25],[25,28],[28,30],[30,35]],
+        "color": "WARM",
+        "label": "위쪽"
+      },
+      {
+        "points": [[20,15],[22,18],[25,22],[28,24],[30,25],[32,30],[35,28],[35,32],[38,34],[40,35],[24,20],[26,23],[38,32]],
+        "color": "BLUE",
+        "label": "아래쪽"
+      }
+    ]
+  },
+  "caption": "왼손 악력과 오른손 악력의 순서쌍 20개와 기준선 y=x를 나타낸 산점도",
+  "accessibilityDescription": "가로축은 왼손 악력, 세로축은 오른손 악력이다. 20개의 점 중 기준선 위쪽에 일곱 점이 있다.",
+  "newVisualInformation": [
+    "원본 엔진 산점도의 점 20개를 눈금과 점의 상대 위치로 역검산하여 좌표로 보존한다.",
+    "y=x 기준선과 7개의 위쪽 점·13개의 아래쪽 점을 독립적으로 구분한다."
+  ],
+  "sourceConditions": [
+    {"id":"P18_DATA","condition":"학생 20명의 악력 자료를 좌표평면에 점 20개로 나타냄","mappedTo":"chart.points"},
+    {"id":"P18_AXIS_X","condition":"가로축이 왼손 악력","mappedTo":"chart.xTitle"},
+    {"id":"P18_AXIS_Y","condition":"세로축이 오른손 악력","mappedTo":"chart.yTitle"},
+    {"id":"P18_LINE","condition":"대각선 y=x","mappedTo":"chart.diagonal"},
+    {"id":"P18_ABOVE","condition":"y=x 위의 오른손 악력이 더 큰 점이 7개","mappedTo":"chart.pointGroups[0].points"}
+  ]
+}
