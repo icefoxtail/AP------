@@ -469,7 +469,11 @@ window.questionBank = [
     "score": 4,
     "sourceQid": 9,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q9"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q9",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_기하_유사2/q9-solution.svg",
+    "solutionImageAlt": "Q09 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 중심을 지나는 포물선 접선과 접점을 확인할 수 있다.",
+    "solutionImageCaption": "Q09 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 중심을 지나는 포물선 접선과 접점을 확인할 수 있다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -613,7 +617,15 @@ window.questionBank = [
     "score": 4.2,
     "sourceQid": 12,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q12"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q12",
+    "image": "assets/images/26_제일고_1학기_중간_고2_기하_유사2/q12-problem.svg",
+    "imageAlt": "Q12 문제에서 주어진 도형과 위치 관계만 표시한 예시: 지름에 대한 원주각과 초점거리 비를 직각삼각형으로 파악하기 쉽다.",
+    "imageCaption": "Q12 문제에서 주어진 도형과 위치 관계만 표시한 예시: 지름에 대한 원주각과 초점거리 비를 직각삼각형으로 파악하기 쉽다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_기하_유사2/q12-solution.svg",
+    "solutionImageAlt": "Q12 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 원에 내접한 직각삼각형의 세 변 관계를 확인할 수 있다.",
+    "solutionImageCaption": "Q12 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 원에 내접한 직각삼각형의 세 변 관계를 확인할 수 있다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -664,7 +676,11 @@ window.questionBank = [
     "score": 4.2,
     "sourceQid": 13,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q13"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q13",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_기하_유사2/q13-solution.svg",
+    "solutionImageAlt": "Q13 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 공초점 타원과 쌍곡선의 초점 위치를 비교할 수 있다.",
+    "solutionImageCaption": "Q13 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 공초점 타원과 쌍곡선의 초점 위치를 비교할 수 있다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -713,7 +729,11 @@ window.questionBank = [
     "score": 4,
     "sourceQid": 14,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q14"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q14",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_기하_유사2/q14-solution.svg",
+    "solutionImageAlt": "Q14 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 타원 지지접선과 평행 직선의 최단 거리 1/√5를 선분 TD로 확인한다.",
+    "solutionImageCaption": "Q14 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 타원 지지접선과 평행 직선의 최단 거리 1/√5를 선분 TD로 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -766,7 +786,15 @@ window.questionBank = [
     "score": 4.4,
     "sourceQid": 15,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q15"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q15",
+    "image": "assets/images/26_제일고_1학기_중간_고2_기하_유사2/q15-problem.svg",
+    "imageAlt": "Q15 문제에서 주어진 도형과 위치 관계만 표시한 예시: 접선, 원점에서의 수선, 제2사분면 교점의 위치 관계를 확인할 수 있다.",
+    "imageCaption": "Q15 문제에서 주어진 도형과 위치 관계만 표시한 예시: 접선, 원점에서의 수선, 제2사분면 교점의 위치 관계를 확인할 수 있다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_기하_유사2/q15-solution.svg",
+    "solutionImageAlt": "Q15 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 수선발의 법선 방향과 제2사분면 교점이 어떻게 연결되는지 확인할 수 있다.",
+    "solutionImageCaption": "Q15 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 수선발의 법선 방향과 제2사분면 교점이 어떻게 연결되는지 확인할 수 있다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -815,7 +843,11 @@ window.questionBank = [
     "score": 4.4,
     "sourceQid": 16,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q16"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q16",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_기하_유사2/q16-solution.svg",
+    "solutionImageAlt": "Q16 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 교점 A, x축 발 H, 준선의 상대 위치를 확인할 수 있다.",
+    "solutionImageCaption": "Q16 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 교점 A, x축 발 H, 준선의 상대 위치를 확인할 수 있다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -865,7 +897,15 @@ window.questionBank = [
     "score": 4.4,
     "sourceQid": 17,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q17"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q17",
+    "image": "assets/images/26_제일고_1학기_중간_고2_기하_유사2/q17-problem.svg",
+    "imageAlt": "Q17 문제에서 주어진 도형과 위치 관계만 표시한 예시: 대칭인 두 접점과 초점으로 만들어지는 삼각형 넓이를 이해하기 쉽다.",
+    "imageCaption": "Q17 문제에서 주어진 도형과 위치 관계만 표시한 예시: 대칭인 두 접점과 초점으로 만들어지는 삼각형 넓이를 이해하기 쉽다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_기하_유사2/q17-solution.svg",
+    "solutionImageAlt": "Q17 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 접점 현 PQ=24/5와 초점으로부터 현까지의 높이 1을 확인할 수 있다.",
+    "solutionImageCaption": "Q17 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 접점 현 PQ=24/5와 초점으로부터 현까지의 높이 1을 확인할 수 있다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -916,7 +956,15 @@ window.questionBank = [
     "score": 4.6,
     "sourceQid": 18,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q18"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q18",
+    "image": "assets/images/26_제일고_1학기_중간_고2_기하_유사2/q18-problem.svg",
+    "imageAlt": "Q18 문제에서 주어진 도형과 위치 관계만 표시한 예시: 두 초점과 정삼각형, 1:2 내분점의 위치를 확인할 수 있다.",
+    "imageCaption": "Q18 문제에서 주어진 도형과 위치 관계만 표시한 예시: 두 초점과 정삼각형, 1:2 내분점의 위치를 확인할 수 있다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_기하_유사2/q18-solution.svg",
+    "solutionImageAlt": "Q18 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: FF'=FP=F'P=6인 정삼각형과 내분점 Q가 x축에 놓이는 이유를 이해할 수 있다.",
+    "solutionImageCaption": "Q18 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: FF'=FP=F'P=6인 정삼각형과 내분점 Q가 x축에 놓이는 이유를 이해할 수 있다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -968,7 +1016,15 @@ window.questionBank = [
     "score": 4.6,
     "sourceQid": 19,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q19"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q19",
+    "image": "assets/images/26_제일고_1학기_중간_고2_기하_유사2/q19-problem.svg",
+    "imageAlt": "Q19 문제에서 주어진 도형과 위치 관계만 표시한 예시: 타원의 두 초점, 점 A, 수직 현을 한눈에 이해할 수 있다.",
+    "imageCaption": "Q19 문제에서 주어진 도형과 위치 관계만 표시한 예시: 타원의 두 초점, 점 A, 수직 현을 한눈에 이해할 수 있다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_기하_유사2/q19-solution.svg",
+    "solutionImageAlt": "Q19 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 초점거리와 타원 위 점의 거리합으로 둘레가 정해지는 관계를 확인할 수 있다.",
+    "solutionImageCaption": "Q19 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 초점거리와 타원 위 점의 거리합으로 둘레가 정해지는 관계를 확인할 수 있다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1019,7 +1075,15 @@ window.questionBank = [
     "score": 4.6,
     "sourceQid": 20,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q20"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q20",
+    "image": "assets/images/26_제일고_1학기_중간_고2_기하_유사2/q20-problem.svg",
+    "imageAlt": "Q20 문제에서 주어진 도형과 위치 관계만 표시한 예시: 포물선 초점과 준선 사이 최단 경로의 equality 위치가 중요하다.",
+    "imageCaption": "Q20 문제에서 주어진 도형과 위치 관계만 표시한 예시: 포물선 초점과 준선 사이 최단 경로의 equality 위치가 중요하다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_기하_유사2/q20-solution.svg",
+    "solutionImageAlt": "Q20 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 최단 경로가 준선에서 F′까지 직선이 되는 이유를 확인할 수 있다.",
+    "solutionImageCaption": "Q20 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 최단 경로가 준선에서 F′까지 직선이 되는 이유를 확인할 수 있다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1065,7 +1129,15 @@ window.questionBank = [
     "score": 6,
     "sourceQid": 21,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q21"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q21",
+    "image": "assets/images/26_제일고_1학기_중간_고2_기하_유사2/q21-problem.svg",
+    "imageAlt": "Q21 문제에서 주어진 도형과 위치 관계만 표시한 예시: 포물선의 수직 현, 두 접선의 교점과 30도 각을 함께 확인할 수 있다.",
+    "imageCaption": "Q21 문제에서 주어진 도형과 위치 관계만 표시한 예시: 포물선의 수직 현, 두 접선의 교점과 30도 각을 함께 확인할 수 있다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_기하_유사2/q21-solution.svg",
+    "solutionImageAlt": "Q21 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 접선 교점 A와 현 PQ가 만드는 각과 기하적 비를 확인할 수 있다.",
+    "solutionImageCaption": "Q21 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 접선 교점 A와 현 PQ가 만드는 각과 기하적 비를 확인할 수 있다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1112,7 +1184,15 @@ window.questionBank = [
     "score": 7,
     "sourceQid": 22,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q22"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q22",
+    "image": "assets/images/26_제일고_1학기_중간_고2_기하_유사2/q22-problem.svg",
+    "imageAlt": "Q22 문제에서 주어진 도형과 위치 관계만 표시한 예시: 접선·법선의 x축 교점과 양의 거리 곱을 시각적으로 확인할 수 있다.",
+    "imageCaption": "Q22 문제에서 주어진 도형과 위치 관계만 표시한 예시: 접선·법선의 x축 교점과 양의 거리 곱을 시각적으로 확인할 수 있다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_기하_유사2/q22-solution.svg",
+    "solutionImageAlt": "Q22 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 접선과 법선이 만드는 두 x절편의 곱 불변량을 확인할 수 있다.",
+    "solutionImageCaption": "Q22 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 접선과 법선이 만드는 두 x절편의 곱 불변량을 확인할 수 있다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1159,6 +1239,14 @@ window.questionBank = [
     "score": 7,
     "sourceQid": 23,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q23"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_제일고_1학기_중간_고2_기하.js#q23",
+    "image": "assets/images/26_제일고_1학기_중간_고2_기하_유사2/q23-problem.svg",
+    "imageAlt": "Q23 문제에서 주어진 도형과 위치 관계만 표시한 예시: 두 공초점 곡선의 제1사분면 교점과 두 초점의 거리 관계를 보여 준다.",
+    "imageCaption": "Q23 문제에서 주어진 도형과 위치 관계만 표시한 예시: 두 공초점 곡선의 제1사분면 교점과 두 초점의 거리 관계를 보여 준다.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_제일고_1학기_중간_고2_기하_유사2/q23-solution.svg",
+    "solutionImageAlt": "Q23 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 공초점 거리합과 거리차를 이용한 교점 좌표를 시각화할 수 있다.",
+    "solutionImageCaption": "Q23 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 공초점 거리합과 거리차를 이용한 교점 좌표를 시각화할 수 있다.",
+    "solutionImageSize": "full"
   }
 ];

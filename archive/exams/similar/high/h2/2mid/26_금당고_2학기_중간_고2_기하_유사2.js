@@ -133,7 +133,11 @@ window.questionBank = [
     "score": 3.6,
     "sourceQid": 3,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q3"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q3",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사2/q3-solution.svg",
+    "solutionImageAlt": "Q03 해설 관계도",
+    "solutionImageCaption": "Q03 해설 관계도",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -177,7 +181,11 @@ window.questionBank = [
     "score": 3.6,
     "sourceQid": 4,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q4"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q4",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사2/q4-solution.svg",
+    "solutionImageAlt": "Q04 해설 관계도",
+    "solutionImageCaption": "Q04 해설 관계도",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -221,7 +229,11 @@ window.questionBank = [
     "score": 3.8,
     "sourceQid": 5,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q5"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q5",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사2/q5-solution.svg",
+    "solutionImageAlt": "Q05 해설 관계도",
+    "solutionImageCaption": "Q05 해설 관계도",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -267,7 +279,15 @@ window.questionBank = [
     "score": 3.8,
     "sourceQid": 6,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q6"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q6",
+    "image": "assets/images/26_금당고_2학기_중간_고2_기하_유사2/q6-problem.svg",
+    "imageAlt": "Q06 발문 관계도",
+    "imageCaption": "Q06 발문 관계도",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사2/q6-solution.svg",
+    "solutionImageAlt": "Q06 해설 관계도",
+    "solutionImageCaption": "Q06 해설 관계도",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -311,7 +331,11 @@ window.questionBank = [
     "score": 4,
     "sourceQid": 7,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q7"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q7",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사2/q7-solution.svg",
+    "solutionImageAlt": "Q07 해설 관계도",
+    "solutionImageCaption": "Q07 해설 관계도",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -357,7 +381,11 @@ window.questionBank = [
     "score": 4,
     "sourceQid": 8,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q8"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q8",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사2/q8-solution.svg",
+    "solutionImageAlt": "Q08 해설 관계도",
+    "solutionImageCaption": "Q08 해설 관계도",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -401,7 +429,15 @@ window.questionBank = [
     "score": 4.4,
     "sourceQid": 9,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q9"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q9",
+    "image": "assets/images/26_금당고_2학기_중간_고2_기하_유사2/q9-problem.svg",
+    "imageAlt": "Q09 발문 관계도",
+    "imageCaption": "Q09 발문 관계도",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사2/q9-solution.svg",
+    "solutionImageAlt": "Q09 해설 관계도",
+    "solutionImageCaption": "Q09 해설 관계도",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -447,7 +483,11 @@ window.questionBank = [
     "score": 4.4,
     "sourceQid": 10,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q10"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q10",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사2/q10-solution.svg",
+    "solutionImageAlt": "Q10 해설 관계도",
+    "solutionImageCaption": "Q10 해설 관계도",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -493,7 +533,15 @@ window.questionBank = [
     "score": 4.8,
     "sourceQid": 11,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q11"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q11",
+    "image": "assets/images/26_금당고_2학기_중간_고2_기하_유사2/q11-problem.svg",
+    "imageAlt": "Q11 발문 관계도 (조건을 만족하는 배치 예시, 미지수·좌표값은 생략)",
+    "imageCaption": "Q11 발문 관계도 (조건을 만족하는 배치 예시, 미지수·좌표값은 생략)",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사2/q11-solution.svg",
+    "solutionImageAlt": "Q11 해설 관계도",
+    "solutionImageCaption": "Q11 해설 관계도",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -537,7 +585,15 @@ window.questionBank = [
     "score": 4.8,
     "sourceQid": 12,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q12"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q12",
+    "image": "assets/images/26_금당고_2학기_중간_고2_기하_유사2/q12-problem.svg",
+    "imageAlt": "Q12 발문 관계도 (조건을 만족하는 배치 예시, 미지수·좌표값은 생략)",
+    "imageCaption": "Q12 발문 관계도 (조건을 만족하는 배치 예시, 미지수·좌표값은 생략)",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사2/q12-solution.svg",
+    "solutionImageAlt": "Q12 해설 관계도",
+    "solutionImageCaption": "Q12 해설 관계도",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -583,7 +639,15 @@ window.questionBank = [
     "score": 5.2,
     "sourceQid": 13,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q13"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q13",
+    "image": "assets/images/26_금당고_2학기_중간_고2_기하_유사2/q13-problem.svg",
+    "imageAlt": "Q13 발문 관계도 (조건을 만족하는 배치 예시, 미지수·좌표값은 생략)",
+    "imageCaption": "Q13 발문 관계도 (조건을 만족하는 배치 예시, 미지수·좌표값은 생략)",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사2/q13-solution.svg",
+    "solutionImageAlt": "Q13 해설 관계도",
+    "solutionImageCaption": "Q13 해설 관계도",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -629,7 +693,15 @@ window.questionBank = [
     "score": 5.2,
     "sourceQid": 14,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q14"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q14",
+    "image": "assets/images/26_금당고_2학기_중간_고2_기하_유사2/q14-problem.svg",
+    "imageAlt": "Q14 발문 관계도",
+    "imageCaption": "Q14 발문 관계도",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사2/q14-solution.svg",
+    "solutionImageAlt": "Q14 해설 관계도",
+    "solutionImageCaption": "Q14 해설 관계도",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -675,7 +747,15 @@ window.questionBank = [
     "score": 5.6,
     "sourceQid": 15,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q15"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q15",
+    "image": "assets/images/26_금당고_2학기_중간_고2_기하_유사2/q15-problem.svg",
+    "imageAlt": "Q15 발문 관계도 (조건을 만족하는 배치 예시, 미지수·좌표값은 생략)",
+    "imageCaption": "Q15 발문 관계도 (조건을 만족하는 배치 예시, 미지수·좌표값은 생략)",
+    "imageSize": "full",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사2/q15-solution.svg",
+    "solutionImageAlt": "Q15 해설 관계도",
+    "solutionImageCaption": "Q15 해설 관계도",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -719,7 +799,11 @@ window.questionBank = [
     "score": 5.6,
     "sourceQid": 16,
     "variationType": "EXAM_FOLLOWUP",
-    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q16"
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q16",
+    "image": "assets/images/26_금당고_2학기_중간_고2_기하_유사2/q16-problem.svg",
+    "imageAlt": "Q16 발문 관계도",
+    "imageCaption": "Q16 발문 관계도",
+    "imageSize": "full"
   },
   {
     "id": 17,
