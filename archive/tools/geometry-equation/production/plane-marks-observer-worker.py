@@ -508,7 +508,7 @@ def audit(p):
                     for q in svg_points(n):
                         mx,my=inverse(q[0],q[1])
                         if mx<axis_frame[0]-1e-6 or mx>axis_frame[1]+1e-6 or my<axis_frame[2]-1e-6 or my>axis_frame[3]+1e-6:errors.append('CALLOUT_AXIS_EXTENT_MISMATCH:'+str(i))
-    leaders={n.get('data-owner-label'):n for n in root.iter() if tag(n)=='line' and n.get('data-role')=='leader' and n.get('data-owner-label')}
+    leaders={n.get('data-owner-label'):n for n in root.iter() if tag(n) in ('line','polyline') and n.get('data-role')=='leader' and n.get('data-owner-label')}
     # every drawn stroke a label must keep clear of (svg px): lines, polylines, polygons, circle outlines (sampled), point disks
     strokes=[]
     for n in root.iter():
@@ -533,11 +533,17 @@ def audit(p):
         for other,obox in label_boxes.items():
             if other!=label_id and box[0]<obox[0]+obox[2] and obox[0]<box[0]+box[2] and box[1]<obox[1]+obox[3] and obox[1]<box[1]+box[3]:errors.append('MARK_LABEL_OVERLAPS_LABEL:'+label_id+':'+other)
         return box
+    def leader_endpoints(node):
+        if tag(node)=='polyline':
+            points=[tuple(map(float,pair.split(','))) for pair in node.get('points','').split()]
+            return points[0],points[-1]
+        return (float(node.get('x1')),float(node.get('y1'))),(float(node.get('x2')),float(node.get('y2')))
+
     def leader_ok(label_id,box,anchor_ok):
         """A leader (when the label has one) starts where anchor_ok says (svg px point -> bool) and ends on the label box."""
         node=leaders.get(label_id)
         if node is None:return False
-        a=(float(node.get('x1')),float(node.get('y1')));b=(float(node.get('x2')),float(node.get('y2')))
+        a,b=leader_endpoints(node)
         if not anchor_ok(a):errors.append('MARK_LEADER_NOT_ON_OWNER:'+label_id)
         near=point_segment_distance(b,(box[0],box[1]),(box[0]+box[2],box[1]))
         edges=[((box[0],box[1]),(box[0]+box[2],box[1])),((box[0]+box[2],box[1]),(box[0]+box[2],box[1]+box[3])),((box[0]+box[2],box[1]+box[3]),(box[0],box[1]+box[3])),((box[0],box[1]+box[3]),(box[0],box[1]))]
@@ -1063,7 +1069,8 @@ def audit(p):
             at=row['labelAt']
             if not (at in ('START','MID','END') or (isinstance(at,(int,float)) and not isinstance(at,bool) and 0<=at<=1)):errors.append('SEGMENT_LABEL_AT_INVALID:'+oid)
             else:
-                a,b=own;d=sub(b,a);fraction=((centre_model[0]-a[0])*d[0]+(centre_model[1]-a[1])*d[1])/(norm(d)**2)
+                label_site=inverse(*leader_endpoints(leaders[oid])[0]) if oid in leaders and leaders[oid].get('data-routed-label')=='1' else centre_model
+                a,b=own;d=sub(b,a);fraction=((label_site[0]-a[0])*d[0]+(label_site[1]-a[1])*d[1])/(norm(d)**2)
                 # a number 0..1 (E31): the label's centre stands within 0.4 of the segment's length from the stated fraction
                 if (at=='START' and fraction>0.3) or (at=='END' and fraction<0.7) or (isinstance(at,(int,float)) and abs(fraction-at)>0.4):errors.append('SEGMENT_LABEL_NOT_AT_END:'+oid)
         observations.append({'id':oid,'type':'EXPRESSION_LABEL','ownerSegment':row['ownerSegment'],'distancePx':mine*sx,**({'labelKind':row['labelKind']} if row.get('labelKind') else {}),**({'unit':row['unit']} if row.get('unit') else {})})
@@ -1127,7 +1134,9 @@ def audit(p):
             want=math_label_codes(text);codes=glyph_codes(node)
             if len(codes)!=len(want) or any(code not in allowed for code,allowed in zip(codes,want)):errors.append('LABEL_TEXT_MISMATCH:'+oid)
         cx,cy=box[0]+box[2]/2,box[1]+box[3]/2;ax,ay=target
-        if anchor=='CENTER':
+        if isinstance(at,str) and leader_ok(oid,box,lambda q:math.dist(q,target)<=1.0):
+            if leaders[oid].get('data-owner')!=at:errors.append('MARK_LEADER_NOT_ON_OWNER:'+oid)
+        elif anchor=='CENTER':
             if math.hypot(cx-ax,cy-ay)>TEXT_LABEL_CENTER_SLACK_PX:errors.append('TEXT_LABEL_NOT_AT_PLACE:'+oid)
         else:
             gap=math.hypot(max(box[0]-ax,0,ax-(box[0]+box[2])),max(box[1]-ay,0,ay-(box[1]+box[3])))

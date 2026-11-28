@@ -260,6 +260,45 @@ def nearest_free_box(at,w,h,safe_area,acceptable,step=6.0):
             if acceptable(box):best=(distance,box)
     return best[1] if best else None
 
+def routed_label_box(anchor,w,h,safe_area,occupied,incident,acceptable,allow_bend=True):
+    # Reuse the collision-aware route for the closest unobstructed boxes.
+    step=12.0
+    reach=min(180.0,max(84.0,3.0*max(w,h)))
+    locations=[]
+    nx=int((safe_area.width-w)//step)+1
+    ny=int((safe_area.height-h)//step)+1
+    for i in range(nx):
+        for j in range(ny):
+            x=safe_area.x+i*step
+            y=safe_area.y+j*step
+            center=(x+w/2,y+h/2)
+            distance=math.dist(anchor,center)
+            if distance<=reach:
+                locations.append((distance,x,y,center))
+    blocked=[]
+    for _,x,y,center in sorted(locations):
+        box=Box(x,y,w,h)
+        if not acceptable(box) or box.expand(12).contains(Box(*anchor,0,0)):
+            continue
+        end=owner_leader_endpoint(box,anchor,center)
+        if leader_end_visible(anchor,end,occupied,incident):
+            return box,[list(anchor),list(end)]
+        if allow_bend and len(blocked)<6:
+            blocked.append((box,center))
+    for box,center in blocked:
+        end=owner_leader_endpoint(box,anchor,center)
+        route=find_clear_leader_path(anchor,end,occupied,incident,safe_area)
+        if route is None or len(route)<3 or not leader_end_visible(anchor,route[1],occupied,incident):
+            continue
+        end=owner_leader_endpoint(box,route[-2],center)
+        if (box.contains(Box(*route[-2],0,0))
+            or any(segment_hits_box(a,b,box) for a,b in zip(route[:-2],route[1:-1]))
+            or not leader_end_visible(route[-2],end,occupied,set())
+            or sum(math.dist(a,b) for a,b in zip(route[:-1],route[1:-1]+[end]))>reach*1.4):
+            continue
+        return box,[*route[:-1],list(end)]
+    return None
+
 def crossing_leader_placement(at,w,h,occupied,acceptable,owner_ids,allow_zero=False,max_radius=None):
     """(box, leader end, number of crossings, compass direction) of the nearest free box for a point name reached by a leader that crosses the fewest thin strokes, or None.
     allow_zero (a segment or line label's last resort): a clear leader that crosses nothing counts too (the ordinary search of such a label stops at a short reach)."""
@@ -1406,9 +1445,22 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
     # label so those keep the places they had. A point name may take a leader that crosses a thin stroke or two (crossFallbackAllowed); a segment label whose own segment lies
     # wholly on a longer one (the radius OM on the diameter OA) no longer counts that longer segment as a competitor (collinearOwners).
     if last_resort and result['unresolved']:
+        owner_values={label['id'] for label in current if label['id'] in result['unresolved'] and
+                      (label.get('pointOwned') or label.get('lineOwned'))}
+        if owner_values:
+            # An anchored value can have fewer legal boxes than an earlier name.
+            # Try its usual places first before moving it onto a leader.
+            priority=lambda label:(label['id'] not in owner_values,*order(label))
+            try:retry=layout_pass(copy.deepcopy(current),obstacles,safe_area,panel,measurements,require_measurements,priority)
+            except ValueError:retry=None
+            if retry is not None and not retry['unresolved']:
+                return retry
+        route_names={label['id'] for label in current if label['kind']=='POINT_NAME'
+                     and 'candidateBaselines' not in label and 'leaderFrom' not in label}
         stuck_ids={label['id'] for label in current if label['id'] in result['unresolved'] and (
+            label['id'] in route_names or
             (label.get('kind')=='POINT_NAME' and not label.get('directions') and not label.get('gaps') and label.get('preferred') is None)
-            or (label.get('lineOwned') and not label.get('collinearOwners'))
+            or label.get('lineOwned') or label.get('pointOwned') or 'nearCurve' in label
             or ('wedgeSearch' in label and label.get('crossFallbackAllowed') is not True and label.get('tickLabelCallout') is None)
             or (label.get('kind')=='EQUATION_LABEL' and label.get('ringLeader') is True and label.get('leaderOnly') is True and label.get('obliqueAllowed') is not True))}
         if stuck_ids:
@@ -1418,8 +1470,16 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
                 if label['id'] in stuck_ids:
                     if 'wedgeSearch' in label:label['crossFallbackAllowed']=True          # (FC) an angle label may take a leader from its arc that crosses a thin stroke or two
                     elif label.get('kind')=='EQUATION_LABEL' and label.get('ringLeader') is True and label.get('leaderOnly') is True:label['obliqueAllowed']=True   # (OBL) a point callout may end its leader anywhere on the facing edge of its box
-                    else:label['crossFallbackAllowed' if label.get('kind')=='POINT_NAME' else 'collinearOwners']=True
-                    if label.get('lineOwned'):label['crossFallbackAllowed']=True       # (FC) a segment or line label may also take a leader that crosses a thin stroke or two
+                    elif label.get('kind')=='POINT_NAME':
+                        if not label.get('directions') and not label.get('gaps') and label.get('preferred') is None:
+                            label['crossFallbackAllowed']=True
+                        if label['id'] in route_names:
+                            label['routeOwner']=True
+                    if label.get('lineOwned') or label.get('pointOwned'):label['routeOwner']=True
+                    if 'nearCurve' in label:label['routeCurve']=True
+                    if label.get('lineOwned') and not label.get('collinearOwners'):
+                        label['collinearOwners']=True
+                        label['crossFallbackAllowed']=True       # (FC) a segment or line label may also take a leader that crosses a thin stroke or two
                 trial.append(label)
             try:retry=layout_pass(trial,obstacles,safe_area,panel,measurements,require_measurements,lambda v:(1 if v['id'] in stuck_ids else 0,*order(v)))
             except ValueError:retry=None
@@ -1545,11 +1605,12 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                 and (owner_marker is None or not owner_check or not label.get('lineBarrier') or not line_between(tuple(label['at']),box,occupied,owner_incident_ids(tuple(label['at']),owner_marker,occupied),*((label['lineBarrierKinds'],) if 'lineBarrierKinds' in label else ())))
                 and (tick_owner is None or tick_callout is not None or tick_box_respects_owner(box,label['at'],label['tickAxis'],label.get('tickInk')))
                 and (not label.get('axisValue') or axis_value_box_ok(box,label)))
-        def tie_to_owner(end):
+        def tie_to_owner(end,route=None):
             leader_id=label['id']+'-owner-leader'
             dot='inner' in label.get('regionLeader',{}) and label['regionLeader']['inner'] is not None
             leaders.append({'schemaVersion':'OWNER_LABEL_LEADER_v1','id':leader_id,'from':list(label['at']),'to':end,'ownerLabelId':label['id'],'ownerId':label['target'],**({'pathLabelFallback':True} if label.get('_pathFallback') else {}),**({'dot':True} if dot else {})})
-            occupied.append({'id':leader_id,'kind':'leader','geometry':[list(label['at']),end]})
+            if route is not None and len(route)>2:leaders[-1]['route']=route
+            occupied.append({'id':leader_id,'kind':'leader','geometry':route or [list(label['at']),end]})
             if dot:occupied.append({'id':leader_id+'-dot','kind':'point','geometry':[label['at'][0],label['at'][1],REGION_LEADER_DOT_RADIUS_PX]})
         preferred=label.get('preferred');directions=((preferred,) if preferred in DIRECTIONS else ())+tuple(v for v in label.get('directions', DIRECTIONS) if v!=preferred)
         if tick_owner is not None:
@@ -1741,6 +1802,23 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                     if found is not None:
                         box,anchor,end,direction=found
                         label={**label,'at':list(anchor),'target':label['_nearData']['id']};tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction;default_gaps=();near_won=True
+                if not near_won and label.get('routeCurve') and '_nearData' in label:
+                    near=label['_nearData']
+                    anchors=[tuple(points[round(fraction*(len(points)-1))]) for points in near['own']
+                             for fraction in NEAR_LEADER_ANCHORS if points]
+                    for anchor in sorted(set(anchors),key=lambda p:(math.dist(p,label['at']),p)):
+                        if any(point_segment_distance(anchor,a,b)<NEAR_OTHER_MARGIN_PX for other in near['others'] for a,b in zip(other,other[1:])):
+                            continue
+                        incident=owner_incident_ids(anchor,{'id':near['id']},occupied)
+                        found=routed_label_box(anchor,w,h,safe_area,occupied,incident,lambda box:acceptable(box,owner_check=False),allow_bend=False)
+                        if found is None:continue
+                        chosen,route=found
+                        label={**label,'at':list(anchor),'target':near['id']}
+                        tie_to_owner(route[-1],route)
+                        method='OWNER_LEADER_ROUTED'
+                        default_gaps=()
+                        near_won=True
+                        break
                 # no room within reach of its own stroke (a tall fraction in a small window): the label stands at the nearest free place and says so on its group, so the observer judges it by ownership and a wider reach
                 label={**{k:v for k,v in label.items() if k not in ('_nearCenters','_nearOwn','_nearReach','_nearData','nearAtFirst')},**({} if near_won else {'nearRoom':'NONE'})}
             if 'candidateCenters' in label:
@@ -1936,6 +2014,28 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
             # either side of it), the nearest free box anywhere in the plot area takes it, so a long formula is never dropped. Reached only after every ordinary place failed.
             found=nearest_free_box(label['at'],w,h,safe_area,acceptable)
             if found is not None:chosen=found;method='FREE_AREA_NEAREST'
+        if chosen is None and label.get('routeOwner') and not leader_only:
+            anchors=[label['at'],*(label.get('alternateAt',()) if line_owner else ())]
+            for anchor in anchors:
+                if line_owner is not None:
+                    points=line_owner['geometry']
+                    if not any(point_segment_distance(anchor,a,b)<=1e-3 for a,b in zip(points,points[1:])):
+                        continue
+                owner_id=label['target']
+                incident=owner_incident_ids(anchor,{'id':owner_id},occupied)
+                # A vector end or intersection can locate a point with its dot hidden.
+                # A leader still needs visible geometry to attach to at the exact anchor.
+                if not any(o['id'] in incident and o['kind']!='leader' for o in obstacles):
+                    continue
+                route_result=routed_label_box(anchor,w,h,safe_area,occupied,incident,
+                                              lambda box:acceptable(box,owner_check=False),allow_bend=label['kind']!='POINT_NAME')
+                if route_result is None:
+                    continue
+                chosen,route=route_result
+                label={**label,'at':list(anchor)}
+                tie_to_owner(route[-1],route)
+                method='OWNER_LEADER_ROUTED'
+                break
         if chosen is None and line_owner is not None and label.get('crossFallbackAllowed') is True and not leader_only:
             # (FC) Last resort of a segment or line label (only layout(last_resort=True) sets crossFallbackAllowed): no box beside its line, no clear leader. The nearest free box
             # on a leader that starts on the label's own line and crosses at most CROSSING_LEADER_MAX_CROSSINGS thin strokes (an axis, a tick, a segment, a circle) at a clear angle.
@@ -2069,7 +2169,7 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
         if chosen is None:
             unresolved.append(label['id'])
             trace.append({'id':label['id'],'fallback':'POLISH_REQUIRED','suggestions':['LEADER_LINE','VIEWPORT_EXPANSION','PANEL_SPLIT']});continue
-        if label.get('hintNudge') is not None and chosen is not None:
+        if label.get('hintNudge') is not None and chosen is not None and method!='OWNER_LEADER_ROUTED':
             # labelHints nudge: the chosen box moved by the author's [dx,dy] when the moved place is still free; a leader of this label is drawn again to the moved box
             tied=[row for row in leaders if row.get('ownerLabelId')==label['id']]
             moved=Box(chosen.x+label['hintNudge'][0],chosen.y+label['hintNudge'][1],w,h)

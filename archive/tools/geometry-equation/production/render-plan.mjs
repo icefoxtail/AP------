@@ -28,7 +28,7 @@ import * as sol from './solid-figure-v1.mjs';
 import * as scf from './stat-chart-v1.mjs';
 import * as sdg from './set-diagram-v1.mjs';
 import {standaloneKindFor,runStandaloneKind} from './standalone-kinds.mjs';
-import {runRoomLadder,CONSTRUCTION_ROOM_CODES,CONSTRUCTION_ROOM_STEPS,constructionLeaderPlan,constructionMarginPlan,constructionDimensionPlan,CONSTRUCTION_DIMENSION_OFFSETS} from './label-room.mjs';
+import {runRoomLadder,CONSTRUCTION_ROOM_CODES,CONSTRUCTION_ROOM_STEPS,constructionLeaderPlan,constructionMarginPlan,constructionCanvasPlan,constructionDimensionPlan,CONSTRUCTION_DIMENSION_OFFSETS} from './label-room.mjs';
 import {observeDisplayedPointNames,planNameExpectations} from './point-name-observer.mjs';
 import {createAttemptLog,planDigest,stopwatch,errorCode} from './attempt-log.mjs';
 import {failureGuidance} from './error-guidance.mjs';
@@ -276,6 +276,7 @@ async function renderPlanOnce({item,plan:planInput,outDir,packetDir,forceSizeCla
     const m=await pythonWorker(plan.graphPlan?{action:'graph',graphPlan:plan.graphPlan}:{action:'construction',graph:plan.mathPlan},plan.graphPlan?undefined:{timeoutMs:90000});if(m.status!=='OK')throw {stage,detail:m.result};
     let model=m.result;
     // spec -> Archive policy -> L1, once; a construction plan whose labels found no room is retried once with coordinatePlacement PANEL.
+    const measurements=new Map();
     const attempt=async(candidatePlan,suffix,lastResort=false)=>{
       const watch=stopwatch();
       where.plan=candidatePlan;
@@ -288,7 +289,15 @@ async function renderPlanOnce({item,plan:planInput,outDir,packetDir,forceSizeCla
       const fullRequested=['trigonometric','sqrt-affine'].includes(candidatePlan.graphPlan?.family)&&candidatePlan.graphPlan.displaySize==='full';
       let size=forceSizeClass??(model.coordinateMode==='SOURCE_COORDINATES'||spec.displayFacts.formulaPlacement==='HEADER_BAND'||isPlaneFigure(candidatePlan)||multiCurve||fullRequested?'full':'medium');   // forceSizeClass: a test/diagnostic seam only (the CLI never sets it)
       stage='measure';
-      const measure=(sizeClass,runSuffix='')=>cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:sizeClass,intrinsicSvg:{width:spec.viewport.width,height:spec.viewport.height},runId:`pilot-measure-${tag}${suffix}${runSuffix}`});
+      const measure=async(sizeClass,runSuffix='')=>{
+        const {width,height}=spec.viewport;
+        const key=[sizeClass,width,height].join(':');
+        if(measurements.has(key))return measurements.get(key);
+        const result=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:sizeClass,intrinsicSvg:{width,height},runId:`pilot-measure-${tag}${suffix}${runSuffix}`});
+        // The same question and viewport use the same measured type policy on every placement retry.
+        if(result.status==='MEASURED')measurements.set(key,result);
+        return result;
+      };
       let measured=await measure(size);
       if(measured.status!=='MEASURED'&&multiCurve&&size==='full'&&forceSizeClass===undefined){size='medium';measured=await measure(size,'-medium');}
       // A wide family graph (520-610 px) could not reach the requested profile font scale at medium; the same figure was retried once at full.
@@ -424,9 +433,13 @@ async function renderPlanOnce({item,plan:planInput,outDir,packetDir,forceSizeCla
             for(const offsetPx of CONSTRUCTION_DIMENSION_OFFSETS)for(const base of [plan,leaderPlan?.plan]){const p=base&&constructionDimensionPlan(base,offsetPx);if(p)tries.push({plan:p,suffix:'-roomDIM'+offsetPx+(base===plan?'':'L'),target:{dimensionOffsetPx:offsetPx,...(base===plan?{}:{leader:leaderPlan.rows.map(r=>r.id)})}});}
           }
           if(step==='MARGIN')for(const pad of ROOM_PADS)for(const base of [plan,leaderPlan?.plan]){const p=base&&constructionMarginPlan(base,pad,isPlaneFigure);if(p)tries.push({plan:p,suffix:'-roomMARGIN'+Math.round(pad*100)+(base===plan?'':'L'),target:{pad,...(base===plan?{}:{leader:leaderPlan.rows.map(r=>r.id)})}});}
+          if(step==='MARGIN'){
+            const larger=constructionCanvasPlan(plan,isPlaneFigure);
+            if(larger)tries.push({plan:larger,suffix:'-roomCANVAS',target:{canvas:larger.coordinateCanvas}});
+          }
           // as written first, then once more with the last resort (a point name or a segment label may take a leader across a thin stroke) on the tries a plan can still compose with
           for(const lastResort of [false,true])for(const t of tries){
-            if(lastResort&&!/^-room(LEADER|DIM)/.test(t.suffix))continue;
+            if(lastResort&&!/^-room(LEADER|DIM|CANVAS|MARGIN14)/.test(t.suffix))continue;
             let out=null;try{out=await attempt(t.plan,t.suffix+(lastResort?'-last':''),lastResort);}catch{out=null;}
             if(out&&out.composed.status==='COMPOSED')return {...out,plan:t.plan,target:{...(typeof t.target==='object'&&!Array.isArray(t.target)?t.target:{labels:t.target}),...(lastResort?{lastResort:true}:{})}};
           }
