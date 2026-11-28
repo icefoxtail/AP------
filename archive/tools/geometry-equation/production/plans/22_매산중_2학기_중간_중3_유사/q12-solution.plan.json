@@ -1,0 +1,180 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "8"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "CB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "C",
+          "A",
+          "B"
+        ],
+        "value": 30,
+        "label": "30",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "BC",
+        "ownerSegment": "CB",
+        "text": "8",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ACderived",
+        "ownerSegment": "CA",
+        "text": "8sqrt(3)",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 460
+  },
+  "caption": "직각 C, ∠A=30°, BC=8cm인 삼각형.",
+  "accessibilityDescription": "문항의 점과 선분, 원과 기하 표식을 확인하는 그림.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직각삼각형 $\\mathrm{ABC}$에서 $\\angle C = 90^\\circ$, $\\angle A = 30^\\circ$, $\\overline{\\mathrm{BC}} = 8\\text{ cm}$일 때, 삼각형 $\\mathrm{ABC}$의 넓이는?",
+      "mappedTo": "ORIGINAL_PROBLEM_REVIEW"
+    },
+    {
+      "id": "solution",
+      "condition": "$\\angle C = 90^\\circ$, $\\angle A = 30^\\circ$인 직각삼각형에서 $\\overline{\\mathrm{BC}} = 8$이므로 $$\\overline{\\mathrm{AC}} = \\frac{8}{\\tan 30^\\circ} = 8\\sqrt{3}\\text{ cm}$$ 따라서 삼각형 $\\mathrm{ABC}$의 넓이는 $$\\frac{1}{2} \\times 8 \\times 8\\sqrt{3} = 32\\sqrt{3}\\text{ cm}^2$$ 따라서 정답은 ④이다.",
+      "mappedTo": "INDEPENDENT_SOLUTION_REVIEW"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 해설에서 도출한 보조선과 기하 관계"
+  ]
+}

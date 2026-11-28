@@ -1,0 +1,229 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "D"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "53"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "base",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "A",
+          "base"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aO",
+        "refs": [
+          "B",
+          "O",
+          "A"
+        ],
+        "value": 53,
+        "label": "53",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcQ",
+        "circle": "k",
+        "center": "O",
+        "from": "D",
+        "to": "E",
+        "side": "CCW"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "OA1",
+        "ownerSegment": "OA",
+        "text": "1",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "OBApprox",
+        "ownerSegment": "OB",
+        "text": "0.60",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "O",
+        "B",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 460
+  },
+  "caption": "53°인 반지름 1의 사분원; 가로 성분은 원문 반올림 0.60으로 표기.",
+  "accessibilityDescription": "문항의 점과 선분, 원과 기하 표식을 확인하는 그림.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같이 반지름의 길이가 $1$인 사분원에서 $\\sin 53^\\circ$의 값은? (단, $0.60$, $0.80$은 어림한 값이다.)",
+      "mappedTo": "ORIGINAL_PROBLEM_REVIEW"
+    }
+  ],
+  "newVisualInformation": [
+    "문제에서 제공한 시각 조건과 도형 관계"
+  ]
+}

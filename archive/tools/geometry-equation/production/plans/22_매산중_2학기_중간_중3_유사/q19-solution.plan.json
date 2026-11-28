@@ -1,0 +1,75 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4.5,
+      3.5,
+      -4,
+      30
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "14",
+          "12",
+          "3"
+        ],
+        "domain": [
+          "-4",
+          "0"
+        ]
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "1",
+          "-6",
+          "3"
+        ],
+        "domain": [
+          "-1",
+          "3"
+        ]
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "1",
+          "y": "-2"
+        },
+        {
+          "id": "P",
+          "x": "3",
+          "y": "10"
+        }
+      ]
+    }
+  },
+  "caption": "원래 함수와 오른쪽 3, 아래쪽 4만큼 이동한 함수의 꼭짓점 비교.",
+  "accessibilityDescription": "원래 함수와 오른쪽 3, 아래쪽 4만큼 이동한 함수의 꼭짓점 비교.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y = ax^2 + bx + c$의 그래프를 $x$축의 방향으로 $3$만큼, $y$축의 방향으로 $-4$만큼 평행이동한 그래프는 꼭짓점의 좌표가 $(1, -2)$이고 점 $(3, 10)$을 지난다. $a + b - c$의 값은? (단, $a, b, c$는 상수이다.)",
+      "mappedTo": "ORIGINAL_PROBLEM_REVIEW"
+    },
+    {
+      "id": "solution",
+      "condition": "평행이동한 그래프의 식을 $y = g(x)$라 하면 꼭짓점이 $(1, -2)$이므로 $$g(x) = a(x - 1)^2 - 2$$ 점 $(3, 10)$을 지나므로 대입하면 $$10 = a(3 - 1)^2 - 2 = 4a - 2 \\implies a = 3$$ 원래 이차함수 $y = ax^2 + bx + c$는 $y = g(x)$를 $x$축의 방향으로 $-3$만큼, $y$축의 방향으로 $+4$만큼 거꾸로 평행이동한 것이므로 꼭짓점은 $(1 - 3, -2 + 4) = (-2, 2)$이다. 따라서 $$y = 3(x + 2)^2 + 2 = 3(x^2 + 4x + 4) + 2 = 3x^2 + 12x + 14$$ 그러므로 $a = 3$, $b = 12$, $c = 14$이고 $$a + b - c = 3 + 12 - 14 = 1$$ 따라서 정답은 ③이다.",
+      "mappedTo": "INDEPENDENT_SOLUTION_REVIEW"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 해설에서 도출한 보조선과 기하 관계"
+  ]
+}

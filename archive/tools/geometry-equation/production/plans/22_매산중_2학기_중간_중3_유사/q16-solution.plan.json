@@ -1,0 +1,70 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2.2,
+      2.2,
+      -25,
+      12
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "5",
+          "0",
+          "-8"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ]
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "10",
+          "0",
+          "-8"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ]
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "1/2",
+          "y": "8"
+        }
+      ]
+    }
+  },
+  "caption": "이차함수를 위로 5 이동하면 (1/2,8)을 지나는 것을 보여 주는 해설 그래프.",
+  "accessibilityDescription": "이차함수를 위로 5 이동하면 (1/2,8)을 지나는 것을 보여 주는 해설 그래프.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y = -8x^2 + 5$의 그래프를 $y$축의 방향으로 $k$만큼 평행이동한 그래프가 점 $\\left(\\dfrac{1}{2}, 8\\right)$을 지날 때, $k$의 값은?",
+      "mappedTo": "ORIGINAL_PROBLEM_REVIEW"
+    },
+    {
+      "id": "solution",
+      "condition": "$y = -8x^2 + 5$의 그래프를 $y$축의 방향으로 $k$만큼 평행이동한 식은 $$y = -8x^2 + 5 + k$$ 이 그래프가 점 $\\left(\\dfrac{1}{2}, 8\\right)$을 지나므로 대입하면 $$8 = -8 \\times \\left(\\frac{1}{2}\\right)^2 + 5 + k = -2 + 5 + k = 3 + k$$ 따라서 $k = 5$이다. 정답은 ⑤이다.",
+      "mappedTo": "INDEPENDENT_SOLUTION_REVIEW"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 해설에서 도출한 보조선과 기하 관계"
+  ]
+}

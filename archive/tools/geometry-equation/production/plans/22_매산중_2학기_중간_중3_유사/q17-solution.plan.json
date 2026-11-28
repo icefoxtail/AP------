@@ -1,0 +1,70 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -8.5,
+      3.5,
+      -2,
+      20
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "2"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ]
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "50",
+          "20",
+          "2"
+        ],
+        "domain": [
+          "-8",
+          "-2"
+        ]
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "-5",
+          "y": "0"
+        }
+      ]
+    }
+  },
+  "caption": "y=2x²를 왼쪽으로 5 이동한 포물선의 꼭짓점과 원래 그래프.",
+  "accessibilityDescription": "y=2x²를 왼쪽으로 5 이동한 포물선의 꼭짓점과 원래 그래프.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 이차함수 $y = 2x^2$의 그래프를 $x$축의 방향으로 $-5$만큼 평행이동한 그래프에 대한 설명으로 옳지 않은 것은?",
+      "mappedTo": "ORIGINAL_PROBLEM_REVIEW"
+    },
+    {
+      "id": "solution",
+      "condition": "$y = 2x^2$의 그래프를 $x$축의 방향으로 $-5$만큼 평행이동한 그래프의 식은 $y = 2(x + 5)^2$이다. ① 꼭짓점의 좌표는 $(5, 0)$이 아니라 $(-5, 0)$이다. (거짓) ② 축의 방정식은 $x = -5$이다. (참) ③ 이차항의 계수가 $2 > 0$이므로 아래로 볼록한 포물선이다. (참) ④ $x = -3$일 때 $y = 2(-3 + 5)^2 = 8$이므로 점 $(-3, 8)$을 지난다. (참) ⑤ $x > 0$은 축 $x = -5$의 오른쪽이므로 $x$가 증가하면 $y$도 증가한다. (참) 따라서 정답은 ①이다.",
+      "mappedTo": "INDEPENDENT_SOLUTION_REVIEW"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 해설에서 도출한 보조선과 기하 관계"
+  ]
+}

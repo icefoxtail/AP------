@@ -1,0 +1,65 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2.3,
+      2.3,
+      -1,
+      13
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "2"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=2x^2"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "3"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=3x^2",
+        "style": "DASHED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {}
+  },
+  "caption": "상수 a=3을 예시로 택해 폭이 좁은 포물선을 비교한 해설 그림.",
+  "accessibilityDescription": "상수 a=3을 예시로 택해 폭이 좁은 포물선을 비교한 해설 그림.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 그림에서 실선은 이차함수 $y = 2x^2$의 그래프이고, 점선은 이차함수 $y = ax^2$의 그래프이다. 두 그래프는 모두 원점을 꼭짓점으로 하고 아래로 볼록하다. 점선 그래프가 실선 그래프보다 폭이 좁을 때, 상수 $a$의 값으로 알맞은 것은?",
+      "mappedTo": "ORIGINAL_PROBLEM_REVIEW"
+    },
+    {
+      "id": "solution",
+      "condition": "두 그래프가 모두 아래로 볼록하므로 $a > 0$이다. 이차함수 $y = ax^2$의 그래프는 $|a|$의 값이 클수록 폭이 좁아지므로, $y = 2x^2$보다 폭이 좁으려면 $$|a| > 2$$ $a > 0$이므로 $a > 2$이다. 보기 중 $a > 2$를 만족하는 수는 $3$뿐이므로 정답은 ⑤이다.",
+      "mappedTo": "INDEPENDENT_SOLUTION_REVIEW"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 해설에서 도출한 보조선과 기하 관계"
+  ]
+}

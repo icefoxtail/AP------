@@ -1,0 +1,191 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "M"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "OA10",
+        "ownerSegment": "OA",
+        "text": "10",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "AB16",
+        "ownerSegment": "AB",
+        "text": "16",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      }
+    ],
+    "facts": [
+      {
+        "kind": "ON_CIRCLE",
+        "circle": "k",
+        "points": [
+          "A",
+          "B"
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rM",
+      "refs": [
+        "O",
+        "M",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 460
+  },
+  "caption": "반지름 10cm, 길이 16cm의 현 AB와 수선 OM.",
+  "accessibilityDescription": "문항의 점과 선분, 원과 기하 표식을 확인하는 그림.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림의 원 $O$는 반지름의 길이가 $10\\text{ cm}$이다. 현 $\\mathrm{AB}$의 길이가 $16\\text{ cm}$일 때, 원의 중심 $O$와 현 $\\mathrm{AB}$ 사이의 거리는?",
+      "mappedTo": "ORIGINAL_PROBLEM_REVIEW"
+    }
+  ],
+  "newVisualInformation": [
+    "문제에서 제공한 시각 조건과 도형 관계"
+  ]
+}

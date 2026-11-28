@@ -1,0 +1,290 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "12"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "4"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "R",
+    "B",
+    "C",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "AR",
+      "refs": [
+        "A",
+        "R"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "RH",
+      "refs": [
+        "R",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "RB",
+      "refs": [
+        "R",
+        "B"
+      ]
+    },
+    {
+      "id": "RC",
+      "refs": [
+        "R",
+        "C"
+      ]
+    },
+    {
+      "id": "HC",
+      "refs": [
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a30",
+        "refs": [
+          "H",
+          "R",
+          "C"
+        ],
+        "value": 30,
+        "label": "30",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a45",
+        "refs": [
+          "B",
+          "R",
+          "H"
+        ],
+        "value": 45,
+        "label": "45",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "distance12",
+        "from": "A",
+        "to": "B",
+        "label": "12",
+        "unit": "m",
+        "side": "BELOW"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "AR12",
+        "ownerSegment": "AR",
+        "text": "12",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "HCdiff",
+        "ownerSegment": "HC",
+        "text": "4sqrt(3)",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "R",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 460
+  },
+  "caption": "두 건물이 12m 떨어져 있고 지붕 관측점에서 위로 30°, 아래로 45°를 본다.",
+  "accessibilityDescription": "문항의 점과 선분, 원과 기하 표식을 확인하는 그림.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "【서술형 2】 그림과 같이 $12\\text{ m}$ 떨어진 두 건물 $\\mathrm{A}$, $\\mathrm{B}$가 있다. $\\mathrm{A}$ 건물의 옥상에서 $\\mathrm{B}$ 건물의 꼭대기를 올려다본 각도가 $30^\\circ$이고 밑부분을 내려다본 각도가 $45^\\circ$일 때, $\\mathrm{B}$ 건물의 높이를 구하는 풀이 과정과 답을 쓰시오.",
+      "mappedTo": "ORIGINAL_PROBLEM_REVIEW"
+    },
+    {
+      "id": "solution",
+      "condition": "$\\mathrm{A}$ 건물의 높이는 $12\\tan 45^\\circ = 12\\text{ m}$이다. $\\mathrm{A}$ 건물 옥상에서 $\\mathrm{B}$ 건물 꼭대기까지의 높이 차는 $12\\tan 30^\\circ = 4\\sqrt{3}\\text{ m}$이다. 따라서 $\\mathrm{B}$ 건물의 높이는 $(12 + 4\\sqrt{3})\\text{ m}$이다.",
+      "mappedTo": "INDEPENDENT_SOLUTION_REVIEW"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 해설에서 도출한 보조선과 기하 관계"
+  ]
+}
