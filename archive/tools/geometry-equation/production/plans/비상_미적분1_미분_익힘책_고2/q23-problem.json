@@ -44,7 +44,7 @@
       "points": [
         {
           "id": "P",
-          "curveX": "2"
+          "curveX": "5/2"
         },
         {
           "id": "C",
@@ -63,6 +63,13 @@
           "id": "cg",
           "from": "C",
           "axis": "BOTH"
+        }
+      ],
+      "names": [
+        {
+          "id": "pn",
+          "text": "포물선",
+          "curveX": "2"
         }
       ]
     }
@@ -89,6 +96,11 @@
       "id": "guides",
       "condition": "원 중심 x=6, y=−2에 이르는 점선·P·Q",
       "mappedTo": "graphPlan.overlays"
+    },
+    {
+      "id": "curveOwnership",
+      "condition": "원본 포물선 y=x²−5는 곡선 모양·원문 식으로 검증하고 그림 안에는 지원되는 포물선 이름 라벨을 건다.",
+      "mappedTo": "graphPlan.overlays.names"
     }
   ],
   "newVisualInformation": [
