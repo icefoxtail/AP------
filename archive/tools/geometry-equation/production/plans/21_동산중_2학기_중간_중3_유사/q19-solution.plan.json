@@ -1,0 +1,236 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "C",
+    "D",
+    "B",
+    "A"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l1",
+        "ownerSegment": "sBD",
+        "text": "12",
+        "unit": "cm"
+      },
+      {
+        "id": "d2",
+        "ownerSegment": "sAD",
+        "text": "12",
+        "unit": "cm"
+      },
+      {
+        "id": "d3",
+        "ownerSegment": "sAC",
+        "text": "6*sqrt(3)",
+        "unit": "cm"
+      }
+    ],
+    "angles": [
+      {
+        "id": "ang1",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 30,
+        "label": "30",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ang2",
+        "refs": [
+          "A",
+          "D",
+          "B"
+        ],
+        "value": 120,
+        "label": "120",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "right1",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 380
+  },
+  "caption": "해설: 직각삼각형 ABC, BD=12cm, 각 B=30도, ADB=120도",
+  "accessibilityDescription": "해설 도형: 직각삼각형 ABC, BD=12cm, 각 B=30도, ADB=120도",
+  "newVisualInformation": [
+    "직각삼각형 ABC, BD=12cm, 각 B=30도, ADB=120도"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 $\\angle\\text{C}=90^\\circ$인 직각삼각형 $\\text{ABC}$에서 점 $\\text{D}$는 선분 $\\text{BC}$ 위에 있다. $\\overline{\\text{BD}}=12\\text{ cm}$, $\\angle\\text{B}=30^\\circ$, $\\angle\\text{ADB}=120^\\circ$일 때, $\\overline{\\text{AC}}$의 길이를 구하면?",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "solution",
+      "condition": "$\\triangle\\text{ABD}$에서 $\\angle\\text{B}=30^\\circ$, $\\angle\\text{ADB}=120^\\circ$이므로 $\\angle\\text{BAD} = 180^\\circ - 30^\\circ - 120^\\circ = 30^\\circ$이다. 따라서 $\\triangle\\text{ABD}$는 이등변삼각형이므로 $\\overline{\\text{AD}} = \\overline{\\text{BD}} = 12\\text{ cm}$이다. 또한 $\\angle\\text{ADC} = 180^\\circ - 120^\\circ = 60^\\circ$이므로 직각삼각형 $\\text{ACD}$에서 $$\\overline{\\text{AC}} = \\overline{\\text{AD}}\\sin 60^\\circ = 12 \\times \\frac{\\sqrt{3}}{2} = 6\\sqrt{3}\\text{ (cm)}$$ 따라서 정답은 ②이다.",
+      "mappedTo": "SOLUTION_AXIS"
+    }
+  ]
+}

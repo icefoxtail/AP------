@@ -1,0 +1,69 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-1",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      3
+    ],
+    "viewport": [
+      -4.5,
+      3.5,
+      -8,
+      5
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-1/2",
+        "y": "9/4"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "rootL",
+          "x": "-2",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "rootR",
+          "x": "1",
+          "y": "0",
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "아래로 열린 포물선의 x절편 -2와 1을 보이는 대표 그래프(계수 a=-1은 형태 예시)",
+  "accessibilityDescription": "아래로 열린 포물선의 x절편 -2와 1을 보이는 대표 그래프(계수 a=-1은 형태 예시)",
+  "newVisualInformation": [
+    "아래로 열린 포물선의 x절편 -2와 1을 보이는 대표 그래프(계수 a=-1은 형태 예시)"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=ax^2+bx+c$의 그래프는 아래 그림과 같이 위로 볼록하고 $x$축과 $x=-2$, $x=1$에서 만난다. 다음 중 옳지 않은 것은?",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "problem",
+      "condition": "이차함수 $y=ax^2+bx+c$의 그래프는 아래 그림과 같이 위로 볼록하고 $x$축과 $x=-2$, $x=1$에서 만난다. 다음 중 옳지 않은 것은?",
+      "mappedTo": "PROBLEM_AXIS"
+    }
+  ]
+}

@@ -1,0 +1,314 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sBF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sCF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "sDF",
+      "refs": [
+        "F",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l1",
+        "ownerSegment": "sAB",
+        "text": "6"
+      },
+      {
+        "id": "d2",
+        "ownerSegment": "sAE",
+        "text": "3"
+      },
+      {
+        "id": "d3",
+        "ownerSegment": "sCF",
+        "text": "2"
+      },
+      {
+        "id": "d4",
+        "ownerSegment": "sBE",
+        "text": "3*sqrt(5)"
+      },
+      {
+        "id": "d5",
+        "ownerSegment": "sBF",
+        "text": "2*sqrt(10)"
+      }
+    ],
+    "angles": [
+      {
+        "id": "ang1",
+        "refs": [
+          "E",
+          "B",
+          "F"
+        ],
+        "value": 45,
+        "label": "x",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "right1",
+      "refs": [
+        "D",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "right2",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "right3",
+      "refs": [
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "right4",
+      "refs": [
+        "C",
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 380
+  },
+  "caption": "해설: 정사각형 ABCD 한 변 6, AD 중점 E, CD의 C쪽 삼등분점 F, 각 EBF=x",
+  "accessibilityDescription": "해설 도형: 정사각형 ABCD 한 변 6, AD 중점 E, CD의 C쪽 삼등분점 F, 각 EBF=x",
+  "newVisualInformation": [
+    "정사각형 ABCD 한 변 6, AD 중점 E, CD의 C쪽 삼등분점 F, 각 EBF=x"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 한 변의 길이가 $6$인 정사각형 $\\text{ABCD}$에서 $\\text{E}$는 선분 $\\text{AD}$의 중점이고, $\\text{F}$는 선분 $\\text{CD}$의 삼등분점 중 $\\text{C}$에 더 가까운 점이다. $\\angle\\text{EBF}=x$일 때, $\\sin x$의 값을 구하면?",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "solution",
+      "condition": "정사각형의 한 변의 길이가 $6$이므로 $\\overline{\\text{AE}}=\\overline{\\text{ED}}=3$, $\\overline{\\text{CF}}=2$, $\\overline{\\text{FD}}=4$이다. 직각삼각형 $\\text{ABE}$와 $\\text{BCF}$에서 피타고라스 정리에 의해 $$\\overline{\\text{BE}} = \\sqrt{6^2 + 3^2} = \\sqrt{45} = 3\\sqrt{5}, \\quad \\overline{\\text{BF}} = \\sqrt{6^2 + 2^2} = \\sqrt{40} = 2\\sqrt{10}$$ 또한 $\\triangle\\text{EBF}$의 넓이는 정사각형에서 세 직각삼각형의 넓이를 뺀 것과 같으므로 $$\\triangle\\text{EBF} = 6^2 - \\left(\\frac{1}{2}\\cdot 6\\cdot 3 + \\frac{1}{2}\\cdot 6\\cdot 2 + \\frac{1}{2}\\cdot 3\\cdot 4\\right) = 36 - (9 + 6 + 6) = 15$$ 한편 $\\triangle\\text{EBF} = \\frac{1}{2}\\cdot\\overline{\\text{BE}}\\cdot\\overline{\\text{BF}}\\sin x$이므로 $$\\frac{1}{2} \\times 3\\sqrt{5} \\times 2\\sqrt{10} \\times \\sin x = 15 \\implies 15\\sqrt{2}\\sin x = 15 \\implies \\sin x = \\frac{1}{\\sqrt{2}} = \\frac{\\sqrt{2}}{2}$$ 따라서 정답은 ⑤이다.",
+      "mappedTo": "SOLUTION_AXIS"
+    }
+  ]
+}

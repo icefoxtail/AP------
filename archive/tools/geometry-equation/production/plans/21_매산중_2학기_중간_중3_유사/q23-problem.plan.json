@@ -1,0 +1,522 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "수준별 3-①"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "incircle",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [
+          "incircle"
+        ],
+        "displayPoints": [
+          "C",
+          "A",
+          "B",
+          "O"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "sCO",
+            "refs": [
+              "O",
+              "C"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "l1",
+              "ownerSegment": "sAC",
+              "text": "5",
+              "unit": "cm"
+            },
+            {
+              "id": "l2",
+              "ownerSegment": "sBC",
+              "text": "12",
+              "unit": "cm"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "right1",
+            "refs": [
+              "A",
+              "C",
+              "B"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 480,
+          "height": 380
+        },
+        "caption": "수준별 3-① 5-12-13 직각삼각형과 내접원 O",
+        "accessibilityDescription": "수준별 3-① 5-12-13 직각삼각형과 내접원 O",
+        "newVisualInformation": [
+          "수준별 3-① 5-12-13 직각삼각형과 내접원 O"
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "수준별 3-②"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "I",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "div",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "24"
+                      },
+                      {
+                        "kind": "integer",
+                        "value": "5"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "div",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "27"
+                      },
+                      {
+                        "kind": "integer",
+                        "value": "5"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "incircle",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "I"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [
+          "incircle"
+        ],
+        "displayPoints": [
+          "C",
+          "A",
+          "B",
+          "I",
+          "D",
+          "E",
+          "F"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "sDI",
+            "refs": [
+              "I",
+              "D"
+            ]
+          },
+          {
+            "id": "sEI",
+            "refs": [
+              "I",
+              "E"
+            ]
+          },
+          {
+            "id": "sFI",
+            "refs": [
+              "I",
+              "F"
+            ]
+          },
+          {
+            "id": "sBD",
+            "refs": [
+              "D",
+              "B"
+            ]
+          },
+          {
+            "id": "sBE",
+            "refs": [
+              "B",
+              "E"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "l1",
+              "ownerSegment": "sAC",
+              "text": "9",
+              "unit": "cm"
+            },
+            {
+              "id": "l2",
+              "ownerSegment": "sBC",
+              "text": "12",
+              "unit": "cm"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "right1",
+            "refs": [
+              "A",
+              "C",
+              "B"
+            ]
+          },
+          {
+            "id": "right2",
+            "refs": [
+              "I",
+              "E",
+              "B"
+            ]
+          },
+          {
+            "id": "right3",
+            "refs": [
+              "I",
+              "F",
+              "A"
+            ]
+          },
+          {
+            "id": "right4",
+            "refs": [
+              "I",
+              "D",
+              "A"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 480,
+          "height": 380
+        },
+        "caption": "수준별 3-② 직각삼각형의 내접원 I와 접점 D,E,F, 사각형 DBEI",
+        "accessibilityDescription": "수준별 3-② 직각삼각형의 내접원 I와 접점 D,E,F, 사각형 DBEI",
+        "newVisualInformation": [
+          "수준별 3-② 직각삼각형의 내접원 I와 접점 D,E,F, 사각형 DBEI"
+        ]
+      }
+    }
+  ],
+  "caption": "서로 다른 두 직각삼각형의 내접원과 접점 비교",
+  "accessibilityDescription": "서로 다른 두 직각삼각형의 내접원과 접점 비교",
+  "newVisualInformation": [
+    "서로 다른 두 직각삼각형의 내접원과 접점 비교"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.\n\n**【수준별 3-①】** (4점) 직각삼각형 $\\text{ABC}$에서 $\\angle\\text{C}=90^\\circ$, $\\overline{\\text{AC}}=5\\text{ cm}$, $\\overline{\\text{BC}}=12\\text{ cm}$이다. 원 $\\text{O}$가 삼각형 $\\text{ABC}$의 내접원일 때, 원 $\\text{O}$의 반지름의 길이를 구하시오.\n\n**【수준별 3-②】** (5점) 직각삼각형 $\\text{ABC}$에서 $\\angle\\text{C}=90^\\circ$, $\\overline{\\text{AC}}=9\\text{ cm}$, $\\overline{\\text{BC}}=12\\text{ cm}$이다. 원 $\\text{I}$는 삼각형 $\\text{ABC}$의 내접원이며, 변 $\\text{AB}$, $\\text{BC}$, $\\text{CA}$와의 접점은 각각 $\\text{D}$, $\\text{E}$, $\\text{F}$이다. 사각형 $\\text{DBEI}$의 넓이를 구하시오.",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "problem",
+      "condition": "다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.\n\n**【수준별 3-①】** (4점) 직각삼각형 $\\text{ABC}$에서 $\\angle\\text{C}=90^\\circ$, $\\overline{\\text{AC}}=5\\text{ cm}$, $\\overline{\\text{BC}}=12\\text{ cm}$이다. 원 $\\text{O}$가 삼각형 $\\text{ABC}$의 내접원일 때, 원 $\\text{O}$의 반지름의 길이를 구하시오.\n\n**【수준별 3-②】** (5점) 직각삼각형 $\\text{ABC}$에서 $\\angle\\text{C}=90^\\circ$, $\\overline{\\text{AC}}=9\\text{ cm}$, $\\overline{\\text{BC}}=12\\text{ cm}$이다. 원 $\\text{I}$는 삼각형 $\\text{ABC}$의 내접원이며, 변 $\\text{AB}$, $\\text{BC}$, $\\text{CA}$와의 접점은 각각 $\\text{D}$, $\\text{E}$, $\\text{F}$이다. 사각형 $\\text{DBEI}$의 넓이를 구하시오.",
+      "mappedTo": "PROBLEM_AXIS"
+    }
+  ]
+}

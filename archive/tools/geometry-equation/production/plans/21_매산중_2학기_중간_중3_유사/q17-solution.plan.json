@@ -1,0 +1,227 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "inner",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "outer",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "61"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "inner",
+    "outer"
+  ],
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "M"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAO",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sBO",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sMO",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sBM",
+      "refs": [
+        "M",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l1",
+        "ownerSegment": "sAB",
+        "text": "12",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "right1",
+      "refs": [
+        "O",
+        "M",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 380
+  },
+  "caption": "해설: 동심원 두 개와 작은 원에 접하는 큰 원의 현 AB=12cm",
+  "accessibilityDescription": "해설 도형: 동심원 두 개와 작은 원에 접하는 큰 원의 현 AB=12cm",
+  "newVisualInformation": [
+    "동심원 두 개와 작은 원에 접하는 큰 원의 현 AB=12cm"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "중심이 같은 두 원에서 큰 원의 현 하나가 작은 원에 접한다. 큰 원의 그 현의 길이가 $12\\text{ cm}$일 때, 두 원 사이의 고리 모양 영역의 넓이는?",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "solution",
+      "condition": "큰 원의 반지름을 $R$, 작은 원의 반지름을 $r$이라 하자. 중심에서 접점까지 내린 반지름 $r$은 큰 원의 현(길이 $12\\text{ cm}$)에 수직이므로 그 현을 이등분한다. 따라서 반현의 길이는 $6\\text{ cm}$이고, 피타고라스 정리에 의해 $$R^2 - r^2 = 6^2 = 36$$ 그러므로 두 원 사이의 고리 모양 영역의 넓이는 $$\\pi R^2 - \\pi r^2 = \\pi(R^2 - r^2) = 36\\pi\\text{ (cm}^2\\text{)}$$ 따라서 정답은 ①이다.",
+      "mappedTo": "SOLUTION_AXIS"
+    }
+  ]
+}

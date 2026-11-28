@@ -1,0 +1,211 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "8"
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "circle"
+  ],
+  "displayPoints": [
+    "O",
+    "M",
+    "A",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAO",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sBO",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sMO",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sBM",
+      "refs": [
+        "M",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l1",
+        "ownerSegment": "sAO",
+        "text": "10",
+        "unit": "cm"
+      },
+      {
+        "id": "l2",
+        "ownerSegment": "sMO",
+        "text": "6",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "right1",
+      "refs": [
+        "O",
+        "M",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 380
+  },
+  "caption": "원 O의 반지름 10cm, 현 AB의 중심 수선 OM=6cm",
+  "accessibilityDescription": "원 O의 반지름 10cm, 현 AB의 중심 수선 OM=6cm",
+  "newVisualInformation": [
+    "원 O의 반지름 10cm, 현 AB의 중심 수선 OM=6cm"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "원 $\\text{O}$의 반지름의 길이는 $10\\text{ cm}$이고, 중심 $\\text{O}$에서 현 $\\text{AB}$에 내린 수선의 발을 $\\text{M}$이라 할 때 $\\overline{\\text{OM}}=6\\text{ cm}$이다. 현 $\\text{AB}$의 길이는?",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "problem",
+      "condition": "원 $\\text{O}$의 반지름의 길이는 $10\\text{ cm}$이고, 중심 $\\text{O}$에서 현 $\\text{AB}$에 내린 수선의 발을 $\\text{M}$이라 할 때 $\\overline{\\text{OM}}=6\\text{ cm}$이다. 현 $\\text{AB}$의 길이는?",
+      "mappedTo": "PROBLEM_AXIS"
+    }
+  ]
+}

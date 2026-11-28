@@ -1,0 +1,275 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "30"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "30"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "30"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "H",
+    "B",
+    "C",
+    "K"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBH",
+      "refs": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "sCH",
+      "refs": [
+        "H",
+        "C"
+      ]
+    },
+    {
+      "id": "sAK",
+      "refs": [
+        "A",
+        "K"
+      ]
+    },
+    {
+      "id": "sCK",
+      "refs": [
+        "K",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l1",
+        "ownerSegment": "sAH",
+        "text": "30",
+        "unit": "m"
+      },
+      {
+        "id": "d2",
+        "ownerSegment": "sBH",
+        "text": "30*sqrt(3)",
+        "unit": "m"
+      },
+      {
+        "id": "d3",
+        "ownerSegment": "sCH",
+        "text": "30",
+        "unit": "m"
+      }
+    ],
+    "angles": [
+      {
+        "id": "ang1",
+        "refs": [
+          "H",
+          "A",
+          "B"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ang2",
+        "refs": [
+          "C",
+          "A",
+          "H"
+        ],
+        "value": 45,
+        "label": "45",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "right1",
+      "refs": [
+        "A",
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 380
+  },
+  "caption": "해설: 은행 꼭대기 A와 병원 벽 BC의 수평거리 30m, 올려다본 60도·내려다본 45도",
+  "accessibilityDescription": "해설 도형: 은행 꼭대기 A와 병원 벽 BC의 수평거리 30m, 올려다본 60도·내려다본 45도",
+  "newVisualInformation": [
+    "은행 꼭대기 A와 병원 벽 BC의 수평거리 30m, 올려다본 60도·내려다본 45도"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "은행과 병원 사이의 수평 거리는 $30\\text{ m}$이다. 은행의 꼭대기 $\\text{A}$지점에서 병원의 꼭대기 $\\text{B}$지점을 올려다본 각의 크기가 $60^\\circ$이고, 병원의 아랫부분 $\\text{C}$지점을 내려다본 각의 크기가 $45^\\circ$일 때, 병원의 높이는?",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "solution",
+      "condition": "지점 $\\text{A}$에서 병원 벽면 $\\text{BC}$에 내린 수선의 발을 $\\text{H}$라 하면 $\\overline{\\text{AH}}=30\\text{ m}$이다. 직각삼각형 $\\text{ABH}$에서 $\\overline{\\text{BH}} = 30\\tan 60^\\circ = 30\\sqrt{3}\\text{ (m)}$이고, 직각삼각형 $\\text{ACH}$에서 $\\overline{\\text{CH}} = 30\\tan 45^\\circ = 30\\text{ (m)}$이다. 따라서 병원의 높이는 $$\\overline{\\text{BC}} = \\overline{\\text{BH}} + \\overline{\\text{CH}} = 30\\sqrt{3} + 30 = 30(1 + \\sqrt{3})\\text{ (m)}$$ 따라서 정답은 ①이다.",
+      "mappedTo": "SOLUTION_AXIS"
+    }
+  ]
+}

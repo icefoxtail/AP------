@@ -1,0 +1,217 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "C",
+    "B",
+    "A",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "D",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l1",
+        "ownerSegment": "sAB",
+        "text": "8"
+      },
+      {
+        "id": "l2",
+        "ownerSegment": "sAD",
+        "text": "5"
+      },
+      {
+        "id": "l3",
+        "ownerSegment": "sCD",
+        "text": "3"
+      },
+      {
+        "id": "d4",
+        "ownerSegment": "sAC",
+        "text": "4"
+      },
+      {
+        "id": "d5",
+        "ownerSegment": "sBC",
+        "text": "4*sqrt(3)"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "right1",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 380
+  },
+  "caption": "해설: 직각삼각형 ABC에 BC 위 D, AB=8, AD=5, CD=3",
+  "accessibilityDescription": "해설 도형: 직각삼각형 ABC에 BC 위 D, AB=8, AD=5, CD=3",
+  "newVisualInformation": [
+    "직각삼각형 ABC에 BC 위 D, AB=8, AD=5, CD=3"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같은 $\\angle\\text{C}=90^\\circ$인 직각삼각형 $\\text{ABC}$에서 점 $\\text{D}$는 선분 $\\text{BC}$ 위에 있다. $\\overline{\\text{AB}}=8$, $\\overline{\\text{AD}}=5$, $\\overline{\\text{CD}}=3$일 때, $\\cos B$의 값을 구하여라.",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "solution",
+      "condition": "직각삼각형 $\\text{ACD}$에서 $\\angle\\text{C}=90^\\circ$, $\\overline{\\text{AD}}=5$, $\\overline{\\text{CD}}=3$이므로 $$\\overline{\\text{AC}} = \\sqrt{5^2 - 3^2} = 4$$ 직각삼각형 $\\text{ABC}$에서 $\\overline{\\text{AB}}=8$, $\\overline{\\text{AC}}=4$이므로 $$\\overline{\\text{BC}} = \\sqrt{8^2 - 4^2} = \\sqrt{48} = 4\\sqrt{3}$$ 따라서 $$\\cos B = \\frac{\\overline{\\text{BC}}}{\\overline{\\text{AB}}} = \\frac{4\\sqrt{3}}{8} = \\frac{\\sqrt{3}}{2}$$",
+      "mappedTo": "SOLUTION_AXIS"
+    }
+  ]
+}

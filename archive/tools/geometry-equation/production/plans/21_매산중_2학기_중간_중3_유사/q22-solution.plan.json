@@ -1,0 +1,385 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "수준별 2-①"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "15"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "15"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "C"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "C",
+              "B"
+            ]
+          },
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "l1",
+              "ownerSegment": "sAC",
+              "text": "15",
+              "unit": "m"
+            }
+          ],
+          "angles": [
+            {
+              "id": "ang1",
+              "refs": [
+                "C",
+                "A",
+                "B"
+              ],
+              "value": 31,
+              "label": "31",
+              "style": "ARC",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "right1",
+            "refs": [
+              "A",
+              "C",
+              "B"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 480,
+          "height": 380
+        },
+        "caption": "수준별 2-① 그림자 AC=15m와 올려다본 각 A≈31도(표의 tan31=0.6)",
+        "accessibilityDescription": "수준별 2-① 그림자 AC=15m와 올려다본 각 A≈31도(표의 tan31=0.6)",
+        "newVisualInformation": [
+          "수준별 2-① 그림자 AC=15m와 올려다본 각 A≈31도(표의 tan31=0.6)"
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "수준별 2-②"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "12310734148701",
+                    "denominator": "1000000000000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "6472135955",
+                    "denominator": "1000000000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "470228201834",
+                    "denominator": "100000000000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "sBD",
+            "refs": [
+              "B",
+              "D"
+            ]
+          },
+          {
+            "id": "sAD",
+            "refs": [
+              "A",
+              "D"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "D",
+              "C"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "l1",
+              "ownerSegment": "sBC",
+              "text": "8"
+            }
+          ],
+          "angles": [
+            {
+              "id": "ang1",
+              "refs": [
+                "A",
+                "B",
+                "C"
+              ],
+              "value": 72,
+              "label": "72",
+              "style": "ARC",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "ang2",
+              "refs": [
+                "A",
+                "B",
+                "D"
+              ],
+              "value": 36,
+              "label": "36",
+              "style": "ARC",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "ang3",
+              "refs": [
+                "D",
+                "B",
+                "C"
+              ],
+              "value": 36,
+              "label": "36",
+              "style": "ARC",
+              "factRole": "GIVEN"
+            }
+          ],
+          "equalLengths": [
+            {
+              "id": "eq1",
+              "count": 1,
+              "segments": [
+                "sAB",
+                "sAC"
+              ]
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 480,
+          "height": 380
+        },
+        "caption": "수준별 2-② AB=AC인 이등변삼각형, BC=8, B=72도, BD가 B를 이등분",
+        "accessibilityDescription": "수준별 2-② AB=AC인 이등변삼각형, BC=8, B=72도, BD가 B를 이등분",
+        "newVisualInformation": [
+          "수준별 2-② AB=AC인 이등변삼각형, BC=8, B=72도, BD가 B를 이등분"
+        ]
+      }
+    }
+  ],
+  "caption": "해설: 그림자 문제와 이등변삼각형 각 이등분 문제를 각 패널에 표시",
+  "accessibilityDescription": "해설 도형: 그림자 문제와 이등변삼각형 각 이등분 문제를 각 패널에 표시",
+  "newVisualInformation": [
+    "그림자 문제와 이등변삼각형 각 이등분 문제를 각 패널에 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.\n\n**【수준별 2-①】** (4점) 나무의 그림자의 길이는 $15\\text{ m}$이고, 그림자의 끝 $\\text{A}$지점에서 나무 꼭대기 $\\text{B}$지점을 올려다본 각의 크기가 $31^\\circ$일 때, 나무의 높이를 구하시오. (단, $\\tan 31^\\circ = 0.6$으로 계산한다.)\n\n**【수준별 2-②】** (5점) $\\overline{\\text{AB}}=\\overline{\\text{AC}}$인 이등변삼각형 $\\text{ABC}$에서 $\\angle\\text{B}=72^\\circ$, $\\overline{\\text{BC}}=8$이다. 점 $\\text{D}$는 선분 $\\text{AC}$ 위에 있고 $\\angle\\text{ABD}=\\angle\\text{DBC}$일 때, $\\cos 36^\\circ$의 값을 구하시오.",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "solution",
+      "condition": "**【수준별 2-①】** 나무의 높이를 $h\\text{ m}$라 하면 $\\tan 31^\\circ = \\frac{h}{15}$이므로 $$h = 15 \\times 0.6 = 9\\text{ (m)}$$\n\n**【수준별 2-②】** $\\overline{\\text{AB}}=\\overline{\\text{AC}}$이므로 $\\angle\\text{C}=\\angle\\text{B}=72^\\circ$, $\\angle\\text{A}=36^\\circ$이다. $\\angle\\text{ABD}=\\angle\\text{DBC}=36^\\circ$이므로 $\\triangle\\text{ABD}$에서 $\\overline{\\text{AD}}=\\overline{\\text{BD}}$이고, $\\triangle\\text{DBC}$에서 $\\angle\\text{BDC}=72^\\circ$이므로 $\\overline{\\text{BD}}=\\overline{\\text{BC}}=8$이다. 즉 $\\overline{\\text{AD}}=8$이다. $\\triangle\\text{ABC} \\sim \\triangle\\text{BCD}$이므로 $\\overline{\\text{AB}}=x$라 하면 $\\overline{\\text{CD}}=x-8$이고 $$x : 8 = 8 : (x - 8) \\implies x^2 - 8x - 64 = 0 \\implies x = 4 + 4\\sqrt{5}$$ 점 $\\text{D}$에서 $\\overline{\\text{AB}}$에 내린 수선의 발을 $\\text{F}$라 하면 $\\overline{\\text{AF}}=\\frac{x}{2}=2+2\\sqrt{5}$이므로 $$\\cos 36^\\circ = \\frac{\\overline{\\text{AF}}}{\\overline{\\text{AD}}} = \\frac{2 + 2\\sqrt{5}}{8} = \\frac{1 + \\sqrt{5}}{4}$$",
+      "mappedTo": "SOLUTION_AXIS"
+    }
+  ]
+}

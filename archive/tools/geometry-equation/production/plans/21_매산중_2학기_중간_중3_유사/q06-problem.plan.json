@@ -1,0 +1,243 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Xaxis",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "integer",
+                  "value": "4"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "unit",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "unit"
+  ],
+  "displayPoints": [
+    "O",
+    "A",
+    "C",
+    "D",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAO",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sCO",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sDO",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "sBO",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l1",
+        "ownerSegment": "sAO",
+        "text": "1"
+      }
+    ],
+    "angles": [
+      {
+        "id": "ang1",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 36.86989764584,
+        "label": "x",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "right1",
+      "refs": [
+        "O",
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 380
+  },
+  "caption": "좌표축의 단위원과 x축 접점 A의 수직 접선 AB, 각 AOB=x",
+  "accessibilityDescription": "좌표축의 단위원과 x축 접점 A의 수직 접선 AB, 각 AOB=x",
+  "newVisualInformation": [
+    "좌표축의 단위원과 x축 접점 A의 수직 접선 AB, 각 AOB=x"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "좌표평면에서 원점 $\\text{O}(0, 0)$을 중심으로 하고 반지름의 길이가 $1$인 원의 오른쪽 끝점을 $\\text{A}(1, 0)$, 위쪽 끝점을 $\\text{C}(0, 1)$, 왼쪽 끝점을 $\\text{D}(-1, 0)$이라 하자. 점 $\\text{A}$를 지나고 $\\overline{\\text{OA}}$에 수직인 직선과, 양의 $x$축과 $x^\\circ$의 각을 이루는 반직선이 만나는 점을 $\\text{B}$라 할 때($0 < x < 90$), $\\tan x^\\circ$를 나타내는 선분은?",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "problem",
+      "condition": "좌표평면에서 원점 $\\text{O}(0, 0)$을 중심으로 하고 반지름의 길이가 $1$인 원의 오른쪽 끝점을 $\\text{A}(1, 0)$, 위쪽 끝점을 $\\text{C}(0, 1)$, 왼쪽 끝점을 $\\text{D}(-1, 0)$이라 하자. 점 $\\text{A}$를 지나고 $\\overline{\\text{OA}}$에 수직인 직선과, 양의 $x$축과 $x^\\circ$의 각을 이루는 반직선이 만나는 점을 $\\text{B}$라 할 때($0 < x < 90$), $\\tan x^\\circ$를 나타내는 선분은?",
+      "mappedTo": "PROBLEM_AXIS"
+    }
+  ]
+}

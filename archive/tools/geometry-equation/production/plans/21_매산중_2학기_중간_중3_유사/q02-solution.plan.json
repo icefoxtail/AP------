@@ -1,0 +1,156 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "7"
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "C",
+    "A",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l1",
+        "ownerSegment": "sAB",
+        "text": "4k"
+      },
+      {
+        "id": "l2",
+        "ownerSegment": "sBC",
+        "text": "3k"
+      },
+      {
+        "id": "d3",
+        "ownerSegment": "sAC",
+        "text": "sqrt(7)k"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "right1",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 380
+  },
+  "caption": "해설: 직각삼각형 ABC의 sin A=3/4를 만족하는 대표 k=1 도형",
+  "accessibilityDescription": "해설 도형: 직각삼각형 ABC의 sin A=3/4를 만족하는 대표 k=1 도형",
+  "newVisualInformation": [
+    "직각삼각형 ABC의 sin A=3/4를 만족하는 대표 k=1 도형"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\angle\\text{C}=90^\\circ$인 직각삼각형 $\\text{ABC}$에서 $\\sin A = \\frac{3}{4}$일 때, $\\tan A$의 값은?",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "solution",
+      "condition": "직각삼각형 $\\text{ABC}$에서 $\\sin A = \\frac{\\overline{\\text{BC}}}{\\overline{\\text{AB}}} = \\frac{3}{4}$이므로 $\\overline{\\text{AB}}=4k$, $\\overline{\\text{BC}}=3k$ ($k>0$)라 하면 $$\\overline{\\text{AC}} = \\sqrt{(4k)^2 - (3k)^2} = \\sqrt{7}k$$ 따라서 $$\\tan A = \\frac{\\overline{\\text{BC}}}{\\overline{\\text{AC}}} = \\frac{3k}{\\sqrt{7}k} = \\frac{3\\sqrt{7}}{7}$$ 따라서 정답은 ①이다.",
+      "mappedTo": "SOLUTION_AXIS"
+    }
+  ]
+}

@@ -1,0 +1,312 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "수준별 1-①"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "6"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "C"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "C",
+              "A"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "l1",
+              "ownerSegment": "sAB",
+              "text": "10",
+              "unit": "cm"
+            },
+            {
+              "id": "l2",
+              "ownerSegment": "sAC",
+              "text": "12",
+              "unit": "cm"
+            }
+          ],
+          "angles": [
+            {
+              "id": "ang1",
+              "refs": [
+                "B",
+                "A",
+                "C"
+              ],
+              "value": 30,
+              "label": "30",
+              "style": "ARC",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 480,
+          "height": 380
+        },
+        "caption": "수준별 1-① 삼각형의 AB=10cm, AC=12cm, 끼인각 A=30도",
+        "accessibilityDescription": "수준별 1-① 삼각형의 AB=10cm, AC=12cm, 끼인각 A=30도",
+        "newVisualInformation": [
+          "수준별 1-① 삼각형의 AB=10cm, AC=12cm, 끼인각 A=30도"
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "수준별 1-②"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "4194335081419",
+                    "denominator": "1000000000000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "11863371114561",
+                    "denominator": "1000000000000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "C"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "C",
+              "A"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "l1",
+              "ownerSegment": "sAB",
+              "text": "6"
+            },
+            {
+              "id": "l2",
+              "ownerSegment": "sAC",
+              "text": "12"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 480,
+          "height": 380
+        },
+        "caption": "수준별 1-② AB=6, AC=12, 예각 B에서 cos B=1/3",
+        "accessibilityDescription": "수준별 1-② AB=6, AC=12, 예각 B에서 cos B=1/3",
+        "newVisualInformation": [
+          "수준별 1-② AB=6, AC=12, 예각 B에서 cos B=1/3"
+        ]
+      }
+    }
+  ],
+  "caption": "두 수준별 문항의 삼각형과 주어진 변·각을 각각 표시",
+  "accessibilityDescription": "두 수준별 문항의 삼각형과 주어진 변·각을 각각 표시",
+  "newVisualInformation": [
+    "두 수준별 문항의 삼각형과 주어진 변·각을 각각 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.\n\n**【수준별 1-①】** (4점) 삼각형 $\\text{ABC}$에서 $\\overline{\\text{AB}}=10\\text{ cm}$, $\\overline{\\text{AC}}=12\\text{ cm}$, $\\angle\\text{BAC}=30^\\circ$일 때, 삼각형 $\\text{ABC}$의 넓이를 구하시오.\n\n**【수준별 1-②】** (5점) 삼각형 $\\text{ABC}$에서 $\\overline{\\text{AB}}=6$, $\\overline{\\text{AC}}=12$이고 $\\cos B = \\frac{1}{3}$일 때, $\\sin C$의 값을 구하시오.",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "problem",
+      "condition": "다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.\n\n**【수준별 1-①】** (4점) 삼각형 $\\text{ABC}$에서 $\\overline{\\text{AB}}=10\\text{ cm}$, $\\overline{\\text{AC}}=12\\text{ cm}$, $\\angle\\text{BAC}=30^\\circ$일 때, 삼각형 $\\text{ABC}$의 넓이를 구하시오.\n\n**【수준별 1-②】** (5점) 삼각형 $\\text{ABC}$에서 $\\overline{\\text{AB}}=6$, $\\overline{\\text{AC}}=12$이고 $\\cos B = \\frac{1}{3}$일 때, $\\sin C$의 값을 구하시오.",
+      "mappedTo": "PROBLEM_AXIS"
+    }
+  ]
+}
