@@ -2,15 +2,15 @@
   "capability": "composite-panels-v1",
   "panels": [
     {
-      "caption": { "text": "⑴ x축과 서로 다른 두 점에서 만남" },
+      "caption": { "text": "⑴ 교점 2개" },
       "plan": { "capability": "polynomial-spike-v1", "graphPlan": { "family": "polynomial", "coefficients": ["8", "-7", "1"], "sourceDomain": { "kind": "ALL_REALS" }, "domain": [-1, 8], "viewport": [-1, 8, -6, 18], "axisTickValues": { "x": [2, 5], "y": [] } } }
     },
     {
-      "caption": { "text": "⑵ x축에 접함" },
+      "caption": { "text": "⑵ 접점 1개" },
       "plan": { "capability": "polynomial-spike-v1", "graphPlan": { "family": "polynomial", "coefficients": ["16", "8", "1"], "sourceDomain": { "kind": "ALL_REALS" }, "domain": [-7, -1], "viewport": [-7, -1, -1, 11], "requiredPoints": [{ "id": "V", "x": -4, "y": 0 }], "axisTickValues": { "x": [-4], "y": [] } } }
     },
     {
-      "caption": { "text": "⑶ x축과 만나지 않음" },
+      "caption": { "text": "⑶ 교점 없음" },
       "plan": { "capability": "polynomial-spike-v1", "graphPlan": { "family": "polynomial", "coefficients": ["-6", "3", "-1"], "sourceDomain": { "kind": "ALL_REALS" }, "domain": [-1, 4], "viewport": [-1, 4, -12, 1], "axisTickValues": { "x": [1], "y": [] } } }
     }
   ],

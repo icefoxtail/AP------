@@ -1,9 +1,329 @@
 {
   "capability": "construction-spike-v1",
-  "realization": {
-    "recipeId": "PLANE_FIGURE_v1",
-    "unit": "source-length",
-    "reflectionEquivalent": false
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+      "op": "TRANSLATE_POINT",
+      "inputs": [
+        "O"
+      ],
+        "args": {
+        "dx": {
+          "kind": "integer",
+          "value": "10"
+        },
+        "dy": {
+          "kind": "integer",
+          "value": "0"
+        }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "R"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "160"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "R"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "20"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "R"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "240"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "OA",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "OB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "tanA",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "A",
+          "OA"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "tanB",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "B",
+          "OB"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "tanA",
+          "tanB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
   },
-  "caption": "원 O의 두 접선 PA, PB와 큰 호의 비례배분 4:7"
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "P"
+  ],
+  "displayCircles": [
+    "circle"
+  ],
+  "displaySegments": [
+    {
+      "id": "PA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "PB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "A-tangent",
+      "refs": [
+        "O",
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "B-tangent",
+      "refs": [
+        "O",
+        "B",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "given40",
+        "refs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "value": 40,
+        "label": "40°",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "targetX",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 40,
+        "label": "x",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAC",
+        "circle": "circle",
+        "center": "O",
+        "from": "A",
+        "to": "C",
+        "side": "MINOR",
+        "label": "4"
+      },
+      {
+        "id": "arcCB",
+        "circle": "circle",
+        "center": "O",
+        "from": "C",
+        "to": "B",
+        "side": "MINOR",
+        "label": "7"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 690,
+    "height": 520
+  },
+  "caption": "두 접선 PA, PB와 큰 호 ACB의 호 길이 비 AC:CB=4:7을 나타낸 원의 그림.",
+  "accessibilityDescription": "원 O 위의 점 A, B에서 그은 접선이 P에서 40도를 이룬다. 큰 호 A-C-B의 두 부분의 비는 4 대 7이고, B에서 현 BA와 BC가 이루는 원주각은 x이다.",
+  "sourceQuote": "$\\angle APB = 40^\\circ$이다. 큰 호 위의 점 $C$",
+  "sourceConditions": [
+    {
+      "id": "tangents",
+      "condition": "A, B는 P에서 그은 접선의 접점이고 ∠APB=40°",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "rightAngles",
+        "planeMarks.angles"
+      ]
+    },
+    {
+      "id": "arc-ratio",
+      "condition": "점 C는 큰 호 ACB에 놓이고 호 AC:호 BC=4:7, 각 ABC=x",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayCircles",
+        "planeMarks.arcs",
+        "planeMarks.angles"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "그림의 좌표는 정답을 표시하지 않는 한 가지 정확한 구성이며 4:7의 호 비를 중심각 80°:140°로 만족시킨다."
+  ]
 }

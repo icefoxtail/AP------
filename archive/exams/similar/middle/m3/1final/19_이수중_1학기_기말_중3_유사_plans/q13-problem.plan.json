@@ -1,11 +1,45 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curve": "-(x + 2)^2 + 3",
-  "points": {
-    "V": [
-      -2,
-      3
-    ]
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-1",
+          "-4",
+          "-1"
+        ],
+        "domain": [
+          "-5",
+          "1"
+        ],
+        "label": "f(x)"
+      }
+    ],
+    "viewport": [
+      -6,
+      2,
+      -8,
+      6
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
   },
-  "caption": "위로 볼록하고 꼭짓점 (p, q)가 제2사분면에 있는 이차함수 y=a(x-p)²+q의 그래프"
+  "caption": "위로 볼록하며 꼭짓점이 제2사분면에 있는 원문 포물선의 개형",
+  "accessibilityDescription": "위로 볼록하며 꼭짓점이 제2사분면에 있는 원문 포물선의 개형",
+  "sourceQuote": "그래프가 다음과 같을 때",
+  "sourceConditions": [
+    {
+      "id": "signs",
+      "condition": "원문은 a<0, p<0, q>0인 그래프의 개형만 준다. 표시한 수치는 개형을 위한 예시이며 a,p,q를 따로 표기하지 않는다.",
+      "mappedTo": "graphPlan.curves[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 그래프의 오목·볼록 방향과 꼭짓점·축 위치를 동일한 좌표계에서 확인한다."
+  ]
 }
