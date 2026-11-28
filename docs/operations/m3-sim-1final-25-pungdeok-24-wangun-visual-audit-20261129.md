@@ -100,5 +100,19 @@
 
 ## PR·원격 파일별 blob readback
 
-- PR 및 병합: 아래 최종 처리 후 기입. 병합 직전 최신 main·열린 PR 변경 경로 재검사 필수.
-- 로컬 Git blob SHA vs 병합 후 원격 main blob SHA **변경 파일별 직접 비교** 결과: 아래 최종 처리 후 기입. PR 성공이나 branch head SHA만으로 개별 readback을 대체하지 않음.
+- 공식 실행형 계획 및 감사 본문: [PR #3505](https://github.com/icefoxtail/AP------/pull/3505) 정상 **merge**. 해당 병합 SHA **`678c8e024cc136b9e65423ff241407161c780da7`**; PR head `67db17eceb25d6106a99d9dc749d809d7f568b3b`, 병합 직전 원격 main `abd454fe339d6d221ca975b65d15109ab43912b9`. 변경 파일 **10개(공식 plan 9 + 감사 문서 1)**.
+- 병합 직전 재검사: 열린 PR **88개**, 실제 변경 파일 경로 **3,583개** 전수 수집 성공(실패 0); 자기 PR #3505의 대상 경로 10개를 제외한 다른 PR의 대상 원본 JS/SVG/이미지·레거시·공식 plan·감사 문서 직접 충돌 **0**. `git ls-remote origin refs/heads/main` 결과 위 `abd454fe...`와 일치.
+- 아래 Git blob 대조는 PR #3505 정상 병합 직후의 **원격 GitHub `main` 파일별 `fetch_file(ref=main)`** 직접 readback에 근거한다. 로컬 작성본(해당 PR 커밋의 tree) **10/10 일치**, 불일치 **0**, 조회 실패 **0**. 이 증거를 기록하기 위한 본 감사 문서의 사후 보완 커밋은 이후 별도 PR로 편입되므로, 해당 보완본 최종 blob은 별도로 다시 읽어 검증한다.
+
+| 번호 | 변경 파일 | 로컬 Git blob SHA | PR #3505 병합 직후 원격 main Git blob SHA | 비교 |
+|---:|---|---|---|---|
++| 1 | `archive/tools/geometry-equation/production/plans/24_왕운중_1학기_기말_중3_유사/q21-problem.plan.json` | `8ef9c75f4d4c8c27bb18f31af11fa43ba690c244` | `8ef9c75f4d4c8c27bb18f31af11fa43ba690c244` | 일치 |
+| 2 | `archive/tools/geometry-equation/production/plans/24_왕운중_1학기_기말_중3_유사/q21-solution.plan.json` | `1b8b28759ecaf48fbce7b677a1fca29c5ea83b23` | `1b8b28759ecaf48fbce7b677a1fca29c5ea83b23` | 일치 |
+| 3 | `archive/tools/geometry-equation/production/plans/25_풍덕중_1학기_기말_중3_유사/q15-solution.plan.json` | `64ea7b03bcbf7eb008450ad0f11e79e7dc3fae97` | `64ea7b03bcbf7eb008450ad0f11e79e7dc3fae97` | 일치 |
+| 4 | `archive/tools/geometry-equation/production/plans/25_풍덕중_1학기_기말_중3_유사/q17-solution.plan.json` | `469e9cf0f18859d6cbe30bcac7412efd9838898b` | `469e9cf0f18859d6cbe30bcac7412efd9838898b` | 일치 |
+| 5 | `archive/tools/geometry-equation/production/plans/25_풍덕중_1학기_기말_중3_유사/q19-problem.plan.json` | `57e2927b8c2fbf43c403c2d57d17b4c7596f8adb` | `57e2927b8c2fbf43c403c2d57d17b4c7596f8adb` | 일치 |
+| 6 | `archive/tools/geometry-equation/production/plans/25_풍덕중_1학기_기말_중3_유사/q19-solution.plan.json` | `6368cf3a4fc4ddb8563bc8e49d0678e6a8f56bee` | `6368cf3a4fc4ddb8563bc8e49d0678e6a8f56bee` | 일치 |
+| 7 | `archive/tools/geometry-equation/production/plans/25_풍덕중_1학기_기말_중3_유사/q20-solution.plan.json` | `0bb8f33a81a1e79176502ba56c1b03e26940878b` | `0bb8f33a81a1e79176502ba56c1b03e26940878b` | 일치 |
+| 8 | `archive/tools/geometry-equation/production/plans/25_풍덕중_1학기_기말_중3_유사/q25-problem.plan.json` | `9e36be5c8d00ca13683236a2d6e3da9f2efe7f15` | `9e36be5c8d00ca13683236a2d6e3da9f2efe7f15` | 일치 |
+| 9 | `archive/tools/geometry-equation/production/plans/25_풍덕중_1학기_기말_중3_유사/q25-solution.plan.json` | `c6a05ab3fce628dfd9f2318a01a970280017dd71` | `c6a05ab3fce628dfd9f2318a01a970280017dd71` | 일치 |
+| 10 | `docs/operations/m3-sim-1final-25-pungdeok-24-wangun-visual-audit-20261129.md` | `bafa045543dd0d3495a303e3b0f3c49ecc43329c` | `bafa045543dd0d3495a303e3b0f3c49ecc43329c` | 일치 |
