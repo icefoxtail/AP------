@@ -316,7 +316,11 @@ window.questionBank = [
     "image": "assets/images/25_제일고_2학기_중간_고1_유사문제/q10-problem.svg",
     "imageAlt": "주어진 세 점 A, B, C를 이어 만든 삼각형으로, 변의 길이 관계는 표시하지 않는다.",
     "imageCaption": "주어진 세 점 A, B, C를 이어 만든 삼각형으로, 변의 길이 관계는 표시하지 않는다.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고1_유사문제/q10-solution.svg",
+    "solutionImageAlt": "거리 공식으로 얻은 AB=BC의 관계를 같은 눈금 표식으로 표시한다.",
+    "solutionImageCaption": "거리 공식으로 얻은 AB=BC의 관계를 같은 눈금 표식으로 표시한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -404,7 +408,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-03-TANGENT",
     "subUnit": "원과 접선",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고1_유사문제/q13-solution.svg",
+    "solutionImageAlt": "중심 (3,-2), 반지름 √13인 원에 접하는 두 평행 직선의 위치를 나타낸다.",
+    "solutionImageCaption": "중심 (3,-2), 반지름 √13인 원에 접하는 두 평행 직선의 위치를 나타낸다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -501,7 +509,12 @@ window.questionBank = [
     "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
     "subUnit": "원의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고1_유사문제/q16-solution.svg",
+    "solutionImageAlt": "ABC의 외접원과 PBC의 무게중심 Q가 그 원 위에 놓이는 관계를 풀이 좌표로 보여 준다.",
+    "solutionImageCaption": "ABC의 외접원과 PBC의 무게중심 Q가 그 원 위에 놓이는 관계를 풀이 좌표로 보여 준다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 17,
