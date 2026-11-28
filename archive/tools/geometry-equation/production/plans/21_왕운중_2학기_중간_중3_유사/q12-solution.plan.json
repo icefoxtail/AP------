@@ -1,0 +1,162 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "C",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "C",
+          "A",
+          "B"
+        ],
+        "value": 30,
+        "label": "30",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "sourceQuote": "세 내각의 비가 $\\angle\\text{A} : \\angle\\t",
+  "sourceConditions": [
+    {
+      "id": "q12s",
+      "condition": "세 내각의 합 $180^\\circ$를 $1 : 2 : 3$으로 비례배분하면 $$\\angle\\text{A} = 30^\\circ, \\quad \\angle\\text{B} = 60^\\circ, \\quad \\angle\\text{C} = 90^\\circ$$ 따라서 $$\\sin 90^\\circ - \\tan 60^\\circ + \\cos 30^\\circ = 1 - \\sqrt{3} + \\frac{\\sqrt{3}}{2} = 1 - \\frac{\\sqrt{3}}{2}$$ 따라서 정답은 ④이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "해설 관계: 세 내각의 비가 $\\angle\\text{A} : \\angle\\text{B} : \\angle\\text{C} = 1 : 2 : 3$인 직각삼각형 $\\text{ABC}$에서 $\\sin C - \\tan B + \\cos A$의 값은?",
+  "newVisualInformation": [
+    "그려진 선분 sAC, sCB, sAB",
+    "angles 3개"
+  ],
+  "accessibilityDescription": "해설에 사용되는 해설 관계: 세 내각의 비가 $\\angle\\text{A} : \\angle\\text{B} : \\angle\\text{C} = 1 : 2 : 3$인 직각삼각형 $\\text{ABC}$에서 $\\sin C - \\tan B + \\cos A$의 값은?"
+}

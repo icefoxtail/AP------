@@ -1,0 +1,21 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "axisVariable": "t",
+    "coefficients": ["32", "4", "-2"],
+    "sourceDomain": {"kind": "INTERVAL", "range": ["0", "4"], "states": ["OPEN", "OPEN"]},
+    "domain": [0, 4],
+    "viewport": [-1, 5, 0, 38],
+    "requiredPoints": [{"id": "V", "x": 1, "y": 34}],
+    "axisTickValues": {"x": ["1", "4"], "y": ["34"]}
+  },
+  "caption": "둘레 L(t)=−2(t−1)²+34는 0<t<4에서 t=1일 때 최대 34를 갖는다.",
+  "accessibilityDescription": "열린 구간 0<t<4에서 아래로 열린 둘레 함수 그래프의 꼭짓점 V는 (1,34)이다.",
+  "sourceConditions": [
+    {"id": "perimeter", "condition": "직사각형 가로 2t, 세로 16−t², L=−2t²+4t+32", "mappedTo": "graphPlan.coefficients"},
+    {"id": "interval", "condition": "점 C는 제4사분면이므로 0<t<4", "mappedTo": ["graphPlan.sourceDomain", "graphPlan.domain"]},
+    {"id": "maximum", "condition": "L(t)=−2(t−1)²+34의 꼭짓점은 (1,34)", "mappedTo": "graphPlan.requiredPoints[0]"}
+  ],
+  "newVisualInformation": ["둘레 함수의 허용 구간과 최대점만 표시하여 평면 도식의 네 변 합과 결론을 연결한다."]
+}

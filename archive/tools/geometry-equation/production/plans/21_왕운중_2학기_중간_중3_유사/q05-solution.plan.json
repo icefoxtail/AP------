@@ -1,0 +1,48 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-10",
+      "-18",
+      "-3"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -8,
+      2
+    ],
+    "viewport": [
+      -9,
+      3,
+      -10,
+      22
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": -3,
+        "y": 17
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceQuote": "이차함수 $y = -3x^2 - 18x - 10$의 그래프에서 ",
+  "sourceConditions": [
+    {
+      "id": "q05s",
+      "condition": "표준형으로 변형하면 $$y = -3(x^2 + 6x) - 10 = -3(x + 3)^2 + 17$$ 위로 볼록한 포물선의 축이 $x = -3$이므로, $x$의 값이 증가할 때 $y$의 값도 증가하는 범위는 축의 왼쪽인 $x < -3$이다. 정답은 ③이다.",
+      "mappedTo": "graphPlan.coefficients"
+    }
+  ],
+  "caption": "해설 관계: 이차함수 $y = -3x^2 - 18x - 10$의 그래프에서 $x$의 값이 증가할 때 $y$의 값도 증가하는 $x$의 값의 범위는?",
+  "newVisualInformation": [
+    "그래프 계수 [\"-10\",\"-18\",\"-3\"]"
+  ],
+  "accessibilityDescription": "해설에 사용되는 해설 관계: 이차함수 $y = -3x^2 - 18x - 10$의 그래프에서 $x$의 값이 증가할 때 $y$의 값도 증가하는 $x$의 값의 범위는?"
+}

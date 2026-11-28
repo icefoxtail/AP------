@@ -1,0 +1,226 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "5"
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lineBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "A",
+          "lineBC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "sqrt(5)",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "2",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "ax",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 48.189685,
+        "label": "x",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ay",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "value": 41.810315,
+        "label": "y",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rD",
+        "refs": [
+          "A",
+          "D",
+          "B"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "sourceQuote": "아래 그림과 같이 $\\angle\\text{A}=90^\\circ$",
+  "sourceConditions": [
+    {
+      "id": "q13s",
+      "condition": "직각삼각형 $\\text{ABC}$에서 $\\overline{\\text{BC}} = \\sqrt{(\\sqrt{5})^2 + 2^2} = \\sqrt{9} = 3$이다. $\\overline{\\text{AD}} \\perp \\overline{\\text{BC}}$이므로 $\\triangle\\text{ABD} \\sim \\triangle\\text{CAD} \\sim \\triangle\\text{CBA}$이다. 따라서 $x^\\circ = \\angle\\text{C}$, $y^\\circ = \\angle\\text{B}$이므로 $$\\sin x^\\circ = \\sin C = \\frac{\\overline{\\text{AB}}}{\\overline{\\text{BC}}} = \\frac{\\sqrt{5}}{3}, \\quad \\tan y^\\circ = \\tan B = \\frac{\\overline{\\text{AC}}}{\\overline{\\text{AB}}} = \\frac{2}{\\sqrt{5}}$$ 그러므로 $$\\sin x^\\circ \\times \\tan y^\\circ = \\frac{\\sqrt{5}}{3} \\times \\frac{2}{\\sqrt{5}} = \\frac{2}{3}$$ 따라서 정답은 ①이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "해설 관계: 아래 그림과 같이 $\\angle\\text{A}=90^\\circ$인 직각삼각형 $\\text{ABC}$에서 $\\overline{\\text{AD}} \\perp \\overline{\\text{BC}}$이고 $\\overline{\\text{AB}}=\\sqrt{5}$, $\\overline{\\text{AC}}=2$일 때",
+  "newVisualInformation": [
+    "그려진 선분 sAB, sAC, sBC, sAD, sBD, sCD",
+    "expressionLabels 2개",
+    "angles 4개"
+  ],
+  "accessibilityDescription": "해설에 사용되는 해설 관계: 아래 그림과 같이 $\\angle\\text{A}=90^\\circ$인 직각삼각형 $\\text{ABC}$에서 $\\overline{\\text{AD}} \\perp \\overline{\\text{BC}}$이고 $\\overline{\\text{AB}}=\\sqrt{5}$, $\\overline{\\text{AC}}=2$일 때"
+}
