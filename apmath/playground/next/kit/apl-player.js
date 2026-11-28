@@ -23,7 +23,7 @@
   const NARROW = window.matchMedia ? window.matchMedia('(max-width: 859px)') : { matches: false };
   const TITLE_BIG_MS = 2000; // 제목이 크게 보이는 시간
   const DEFAULT_PLAYBACK_RATE = 2; // 사용자 기본 재생 속도: 2배
-  const SLOW_PLAYBACK_RATE = 0.5; // 기존 '느리게' 동작 보존
+  const SLOW_PLAYBACK_RATE = 1; // '느리게'는 기본 2배의 절반인 1배로 재생
   const mmss = (t) => `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, '0')}`;
 
   /** 주소의 ?이름=값 또는 #이름=값 */
@@ -250,7 +250,7 @@
       ui.prev = h('button', { class: 'apl-btn apl-vbtn', 'aria-label': '이전 자막', title: '이전 자막 (←)', html: icon('prev') + '<span class="lbl">이전</span>', onclick: () => this.skip(-1) });
       ui.next = h('button', { class: 'apl-btn apl-vbtn', 'aria-label': '다음 자막', title: '다음 자막 (→)', html: '<span class="lbl">다음</span>' + icon('next'), onclick: () => this.skip(1) });
       ui.replay = h('button', { class: 'apl-btn apl-vbtn', 'aria-label': '다시 보기', title: '처음부터 다시 보기 (R)', html: icon('reset') + '<span class="lbl">다시 보기</span>', onclick: () => this.replay() });
-      ui.slow = h('button', { class: 'apl-btn apl-vbtn', 'aria-pressed': 'false', title: '천천히 보기 (0.5배)', html: '<span>느리게</span>', onclick: () => this.setRate(this.rate === DEFAULT_PLAYBACK_RATE ? SLOW_PLAYBACK_RATE : DEFAULT_PLAYBACK_RATE) });
+      ui.slow = h('button', { class: 'apl-btn apl-vbtn', 'aria-pressed': 'false', title: `천천히 보기 (${SLOW_PLAYBACK_RATE}배)`, html: '<span>느리게</span>', onclick: () => this.setRate(this.rate === DEFAULT_PLAYBACK_RATE ? SLOW_PLAYBACK_RATE : DEFAULT_PLAYBACK_RATE) });
       ui.close = h('button', { class: 'apl-btn apl-vbtn ghost', 'aria-label': '영상 닫고 직접 해 보기', title: '닫기 (Esc)', html: icon('x') + '<span class="lbl">탐구로</span>', onclick: () => this.close() });
       ui.live = h('div', { class: 'apl-vctl' }, ui.play, ui.prev, ui.next, ui.replay, ui.slow, h('span', { class: 'sp' }), ui.close);
       ui.prog = h('div', { class: 'apl-vprog' }, ui.rangeWrap, ui.time, ui.mini);
@@ -538,7 +538,8 @@
       const slowed = r !== DEFAULT_PLAYBACK_RATE;
       this.ui.slow.setAttribute('aria-pressed', String(slowed));
       this.ui.slow.classList.toggle('on', slowed);
-      this.ui.slow.innerHTML = slowed ? '<span>0.5배</span>' : '<span>느리게</span>';
+      this.ui.slow.innerHTML = slowed ? `<span>${SLOW_PLAYBACK_RATE}배</span>` : '<span>느리게</span>';
+      this.ui.slow.title = slowed ? `기본 속도로 보기 (${DEFAULT_PLAYBACK_RATE}배)` : `천천히 보기 (${SLOW_PLAYBACK_RATE}배)`;
     }
     replay() {
       if (this.index < 0) return;
