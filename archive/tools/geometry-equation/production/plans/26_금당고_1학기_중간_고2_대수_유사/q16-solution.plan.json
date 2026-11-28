@@ -1,0 +1,50 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "$\\tan\\theta=\\frac{x^2}{x}=x$.",
+  "caption": "곡선 y=x^2 (x>0) 위의 점 P와 원점 O를 잇는 동경 OP이다. tanθ는 직선 OP의 기울기이고 점 P의 좌표는 (√2, 2)이다.",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "0",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      2
+    ],
+    "viewport": [
+      -1,
+      2,
+      -0.5,
+      4
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "sqrt(2)",
+          "coordinates": true
+        },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "OP",
+          "from": "O",
+          "to": "P"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "O": "O"
+  }
+}

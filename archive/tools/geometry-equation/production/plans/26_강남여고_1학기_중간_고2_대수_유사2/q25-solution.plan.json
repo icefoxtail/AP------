@@ -1,0 +1,46 @@
+{
+  "capability": "number-line-figure-v1",
+  "sourceConditions": [
+    {
+      "id": "domain",
+      "condition": "t=x/π, 0≤t<2에서 동시 부등식의 해집합",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "t=x/π 수직선에 열린 경계 1/4,1/2,7/6 표시",
+    "중간 제외점 1/2를 속 빈 원으로 남긴 두 구간"
+  ],
+  "caption": "t=x/π로 둔 수직선: 1/4<t<1/2 또는 1/2<t<7/6. x=π/2는 첫 부등식의 등호점이므로 제외한다.",
+  "numberLine": {
+    "variable": "t",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "해집합",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1/4",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "1/2",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "1/2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "7/6",
+              "state": "OPEN"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

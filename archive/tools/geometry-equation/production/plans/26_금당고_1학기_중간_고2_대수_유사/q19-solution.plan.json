@@ -1,0 +1,43 @@
+{
+  "capability": "number-line-figure-v1",
+  "sourceConditions": [
+    {
+      "id": "three",
+      "condition": "h=3이므로 교점 x=k-6,k,k+6; x=-2가 교점이라는 조건으로 k=-8,-2,4",
+      "mappedTo": "A,B,C"
+    }
+  ],
+  "newVisualInformation": [
+    "가능한 세 k값을 수직선 위 각각 분리된 점으로 표시"
+  ],
+  "caption": "g(-2)=64에서 가능한 k의 값 -8,-2,4를 수직선에 표시한다. 3교점의 중첩절댓값 지수함수 자체의 그래프는 엔진 기능 대기.",
+  "numberLine": {
+    "variable": "k",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "k 가능값",
+        "points": [
+          {
+            "id": "A",
+            "value": "-8",
+            "style": "FILLED",
+            "showValue": true
+          },
+          {
+            "id": "B",
+            "value": "-2",
+            "style": "FILLED",
+            "showValue": true
+          },
+          {
+            "id": "C",
+            "value": "4",
+            "style": "FILLED",
+            "showValue": true
+          }
+        ]
+      }
+    ]
+  }
+}

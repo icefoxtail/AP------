@@ -1,0 +1,159 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "점 P(3,-4)를 지나는 동경 OP, 제4사분면",
+  "sourceConditions": [
+    {
+      "id": "point",
+      "condition": "P(3,-4)와 동경 OP",
+      "mappedTo": "P,O,sOP"
+    },
+    {
+      "id": "foot",
+      "condition": "x축에 내린 수선과 3-4-5 직각삼각형",
+      "mappedTo": "H,sPH,sOH,raH"
+    }
+  ],
+  "newVisualInformation": [
+    "점 P에서 x축에 내린 수선은 점선으로, 발 H의 직각표식과 OP=5, OH=3, HP=4를 식 라벨로 표시"
+  ],
+  "caption": "제4사분면의 P(3,-4)와 x축의 수선의 발 H(3,0). OP=5, OH=3, HP=4이며 각 θ의 코사인과 사인 부호를 구분한다.",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sOH",
+      "refs": [
+        "O",
+        "H"
+      ]
+    },
+    {
+      "id": "sPH",
+      "refs": [
+        "P",
+        "H"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "theta",
+        "refs": [
+          "H",
+          "O",
+          "P"
+        ],
+        "value": 53.1301,
+        "label": "θ",
+        "labelKind": "MATH",
+        "arcs": 1
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "len5",
+        "ownerSegment": "sOP",
+        "text": "5"
+      },
+      {
+        "id": "len3",
+        "ownerSegment": "sOH",
+        "text": "3"
+      },
+      {
+        "id": "len4",
+        "ownerSegment": "sPH",
+        "text": "4"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "raH",
+      "refs": [
+        "O",
+        "H",
+        "P"
+      ]
+    }
+  ]
+}

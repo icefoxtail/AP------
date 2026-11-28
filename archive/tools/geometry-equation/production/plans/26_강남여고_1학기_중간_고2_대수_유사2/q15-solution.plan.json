@@ -1,0 +1,43 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "sourceQuote": "y=3tan(2x)의 기본주기 π/2, 점근선 x=π/4+nπ/2",
+  "sourceConditions": [
+    {
+      "id": "period",
+      "condition": "기본주기 π/2와 ±π/4 점근선",
+      "mappedTo": "tangraph"
+    }
+  ],
+  "newVisualInformation": [
+    "원점 근처에 탄젠트의 실제 가지와 점근선 두 개를 점선으로 표시"
+  ],
+  "caption": "y=3tan(2x): 주기는 π/2이고 x=π/4+nπ/2에서 수직점근선을 갖는다.",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "TAN",
+    "coefficients": [
+      "3",
+      "2",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "ALL_REALS_WITH_TAN_POLES"
+    },
+    "domain": [
+      -1.7,
+      1.7
+    ],
+    "viewport": [
+      -1.7,
+      1.7,
+      -7,
+      7
+    ],
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  }
+}

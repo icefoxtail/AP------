@@ -1,0 +1,73 @@
+{
+  "capability": "exponential-affine-spike-v1",
+  "sourceQuote": "점 $P(a,9)$에서\n$9=2^a+1$",
+  "caption": "y=2^x+1의 그래프 위의 점 P(3, 9)와 Q(2, 5)이다. 점 P의 y좌표가 9이므로 x좌표는 3이고, 점 Q의 x좌표가 2이므로 y좌표는 5이다.",
+  "graphPlan": {
+    "family": "exponential-affine",
+    "base": "2",
+    "coefficients": [
+      "1",
+      "1",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      4.4
+    ],
+    "viewport": [
+      -4,
+      5,
+      -3,
+      22
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "3",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "curveX": "2",
+          "coordinates": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "gp",
+          "from": "P",
+          "axis": "BOTH"
+        },
+        {
+          "id": "gq",
+          "from": "Q",
+          "axis": "BOTH"
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "2",
+        "3"
+      ],
+      "y": [
+        "5",
+        "9"
+      ]
+    }
+  },
+  "sourceConditions": [
+    {
+      "id": "sol",
+      "condition": "해설에서 a=3, b=5가 계산된다",
+      "mappedTo": "P,Q,gp,gq"
+    }
+  ],
+  "newVisualInformation": [
+    "두 점 P(3,9), Q(2,5)에 값이 확정된 좌표 눈금과 축 수선 안내선을 표시"
+  ]
+}

@@ -1,0 +1,179 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "y=-3/4x+2가 x축과 이루는 둔각 θ, 기울기 -3/4",
+  "sourceConditions": [
+    {
+      "id": "slope",
+      "condition": "기울기 -3/4, 제2사분면의 동경",
+      "mappedTo": "O,P,H"
+    },
+    {
+      "id": "length",
+      "condition": "직각삼각형 수평길이4, 수직길이3, 빗변5",
+      "mappedTo": "sOH,sPH,sOP"
+    }
+  ],
+  "newVisualInformation": [
+    "제2사분면 방향 삼각형과 직각표식, 3·4·5 길이 라벨, θ 각 호 표시"
+  ],
+  "caption": "기울기가 -3/4인 직선의 제2사분면 동경을 O→P(-4,3)으로 옮겨 그린 해설 도식이다. OP=5, 수평 4, 수직 3.",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "H",
+    "X"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sOH",
+      "refs": [
+        "O",
+        "H"
+      ]
+    },
+    {
+      "id": "sHP",
+      "refs": [
+        "H",
+        "P"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "theta",
+        "refs": [
+          "X",
+          "O",
+          "P"
+        ],
+        "value": 143.1301,
+        "label": "θ",
+        "labelKind": "MATH",
+        "arcs": 1
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "len5",
+        "ownerSegment": "sOP",
+        "text": "5"
+      },
+      {
+        "id": "len4",
+        "ownerSegment": "sOH",
+        "text": "4"
+      },
+      {
+        "id": "len3",
+        "ownerSegment": "sHP",
+        "text": "3"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "raH",
+      "refs": [
+        "O",
+        "H",
+        "P"
+      ]
+    }
+  ]
+}

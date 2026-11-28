@@ -1,0 +1,78 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "sourceQuote": "0≤x<2π에서 cos(2x)=1 또는 -1/2",
+  "sourceConditions": [
+    {
+      "id": "roots",
+      "condition": "cos 2x=1의 근 0,π 두 개",
+      "mappedTo": "upper"
+    },
+    {
+      "id": "roots2",
+      "condition": "cos 2x=-1/2의 근 π/3,2π/3,4π/3,5π/3 네 개",
+      "mappedTo": "lower"
+    }
+  ],
+  "newVisualInformation": [
+    "코사인 곡선과 두 수평점선을 한 그래프에 넣어 두 가지 경우의 실근 2+4개를 구분"
+  ],
+  "caption": "0≤x<2π의 cos 2x 곡선과 y=1, y=-1/2 수평선. 교점 2개와 4개를 합쳐 6근이다.",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "coefficients": [
+      "1",
+      "2",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "OPEN"
+      ]
+    },
+    "domain": [
+      0,
+      6.2832
+    ],
+    "viewport": [
+      -0.3,
+      6.6,
+      -1.3,
+      1.3
+    ],
+    "referenceLines": [
+      {
+        "id": "upper",
+        "y": "1",
+        "intersectionCount": 2,
+        "endCrossing": true
+      },
+      {
+        "id": "lower",
+        "y": "-1/2",
+        "intersectionCount": 4
+      }
+    ],
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [
+        "1/3",
+        "2/3",
+        "1",
+        "4/3",
+        "5/3"
+      ],
+      "y": [
+        "1",
+        "-1/2"
+      ]
+    }
+  }
+}
