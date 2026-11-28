@@ -1,0 +1,28 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "점근선은 $x=-a$, $y=2$",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-9, 8, -7, 10],
+    "curves": [
+      {"id": "f", "kind": "RATIONAL", "numerator": ["-4", "2"], "denominator": ["4", "1"], "domain": ["-9", "8"], "color": "BLUE", "label": "y=(2x-4)/(x+4)"}
+    ],
+    "overlays": {
+      "points": [
+        {"id": "C", "x": "-4", "y": "2", "coordinates": true},
+        {"id": "P", "x": "2", "y": "0", "coordinates": true}
+      ]
+    },
+    "axisTickValues": {"x": ["-4", "2"], "y": ["2"]}
+  },
+  "caption": "유리함수 y=2−12/(x+4)는 점근선 x=−4, y=2의 교점 C(−4,2)에 대해 점대칭이고 P(2,0)을 지난다.",
+  "accessibilityDescription": "점근선 x가 마이너스 4인 직선과 y가 2인 직선, 중심 C(−4,2), 그래프 위 P(2,0)을 함께 표시한 유리함수 그래프이다.",
+  "sourceConditions": [
+    {"id": "sc12-1", "condition": "대칭의 중심은 (−4,2)이므로 a=4,c=2", "mappedTo": ["graphPlan.curves.0.denominator", "graphPlan.overlays.points.0"]},
+    {"id": "sc12-2", "condition": "(2,0)을 지나는 조건에서 b=−4", "mappedTo": ["graphPlan.curves.0.numerator", "graphPlan.overlays.points.1"]}
+  ],
+  "newVisualInformation": [
+    "두 점근선의 실제 교점 C를 점으로 표시하여 유리함수의 중심대칭을 설명한다.",
+    "주어진 통과점 P를 곡선 위에 표시해 계수 결정에 쓰인 기하 조건을 연결한다."
+  ]
+}
