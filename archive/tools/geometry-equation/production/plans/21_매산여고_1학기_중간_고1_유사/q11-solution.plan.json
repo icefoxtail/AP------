@@ -1,0 +1,16 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["4", "4", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"}, "domain": [-5, 1], "viewport": [-6, 2, -2, 13],
+    "requiredPoints": [{"id": "T", "x": -2, "y": 0}],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "경계값 k=4에서 y=x²+4x+4는 T(−2,0)에서 x축에 접한다.",
+  "accessibilityDescription": "위로 열린 포물선이 꼭짓점 T(−2,0)에서 x축에 닿는다. k가 4보다 작으면 x축과 두 점에서 만난다.",
+  "sourceConditions": [
+    {"id": "boundary", "condition": "D/4=4-k=0인 경계 k=4를 대표 그래프로 선택", "mappedTo": "graphPlan.coefficients"},
+    {"id": "tangency", "condition": "k=4일 때 (x+2)²=0, T=(-2,0)", "mappedTo": "graphPlan.requiredPoints[0]"}
+  ],
+  "newVisualInformation": ["그래프가 x축과 만나는 조건의 경계가 중근인 접점으로 표현됨을 보여 준다."]
+}

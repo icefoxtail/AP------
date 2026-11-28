@@ -1,0 +1,26 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints":["A","B","C"], "displayLines":[], "displayCircles":[],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]}],
+  "planeMarks": {
+    "equalLengths":[{"id":"eqSides","count":1,"segments":["sAB","sBC"]}],
+    "expressionLabels":[{"id":"labC","ownerSegment":"sAB","text":"c"},{"id":"labA","ownerSegment":"sBC","text":"a"}]
+  },
+  "coordinateCanvas":{"width":530,"height":410},
+  "caption":"인수분해로 얻은 a=c를 AB=BC의 같은 길이 눈금으로 표시한 이등변삼각형의 대표 배치이다.",
+  "accessibilityDescription":"정점 B에서 A와 C까지 두 변이 같은 길이이며 두 변에 한 개씩 동일한 눈금이 있다.",
+  "sourceConditions":[
+    {"id":"factor","condition":"(a-c)(a+b)(a+b+c)=0, 양수인 두 인수로부터 a=c","mappedTo":"planeMarks.equalLengths[0]"},
+    {"id":"sides","condition":"삼각형의 변 a=BC, c=AB의 동등성. 좌표는 숫자 길이를 뜻하지 않는 대표 배치","mappedTo":["mathPlan.nodes","planeMarks.expressionLabels"]}
+  ],
+  "newVisualInformation":["삼각형의 두 변이 같다는 결론을 선분 길이 눈금으로 나타낸다."]
+}

@@ -1,0 +1,17 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["11", "-6", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"}, "domain": [0, 4], "viewport": [-1, 5, 0, 15],
+    "requiredPoints": [{"id": "V", "x": 3, "y": 2}, {"id": "L", "x": 0, "y": 11}, {"id": "R", "x": 4, "y": 3}],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "k=11일 때 0≤x≤4에서 V(3,2)가 최솟값을, 왼쪽 끝 L(0,11)이 최댓값을 준다.",
+  "accessibilityDescription": "위로 열린 포물선의 꼭짓점 V(3,2), 왼쪽 끝 L(0,11), 오른쪽 끝 R(4,3)를 비교한다.",
+  "sourceConditions": [
+    {"id": "curve", "condition": "y=(x-3)²+k-9, 최솟값 2이므로 k=11", "mappedTo": "graphPlan.coefficients"},
+    {"id": "interval", "condition": "0≤x≤4에서 꼭짓점 x=3이 포함됨", "mappedTo": ["graphPlan.domain", "graphPlan.requiredPoints"]},
+    {"id": "extrema", "condition": "f(3)=2, f(0)=11, f(4)=3", "mappedTo": "graphPlan.requiredPoints"}
+  ],
+  "newVisualInformation": ["구간 내 최솟점과 양 끝점 중 더 큰 함수값을 비교한다."]
+}

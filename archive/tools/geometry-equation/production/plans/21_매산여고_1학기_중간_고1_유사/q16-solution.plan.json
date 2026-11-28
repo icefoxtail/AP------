@@ -1,0 +1,19 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["8", "2", "-1"],
+    "sourceDomain": {"kind": "ALL_REALS"}, "domain": [-1, 4], "viewport": [-2, 5, -3, 12],
+    "requiredPoints": [
+      {"id": "V", "x": 1, "y": 9}, {"id": "L", "x": -1, "y": 5}, {"id": "R", "x": 4, "y": 0}
+    ],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "k=8일 때 꼭짓점 V(1,9)가 최댓값을, 구간 오른쪽 끝 R(4,0)이 최솟값을 준다.",
+  "accessibilityDescription": "아래로 열린 포물선에서 닫힌 구간의 양 끝 L(-1,5), R(4,0)과 꼭짓점 V(1,9)를 표시한다.",
+  "sourceConditions": [
+    {"id": "curve", "condition": "f(x)=-x²+2x+8=-(x-1)²+9", "mappedTo": "graphPlan.coefficients"},
+    {"id": "domain", "condition": "-1≤x≤4", "mappedTo": ["graphPlan.domain", "graphPlan.requiredPoints[1]", "graphPlan.requiredPoints[2]"]},
+    {"id": "extrema", "condition": "f(1)=9, f(-1)=5, f(4)=0; 최대+최소=9", "mappedTo": "graphPlan.requiredPoints"}
+  ],
+  "newVisualInformation": ["구간 안의 꼭짓점과 두 끝점 중 축에서 더 먼 쪽을 비교한다."]
+}

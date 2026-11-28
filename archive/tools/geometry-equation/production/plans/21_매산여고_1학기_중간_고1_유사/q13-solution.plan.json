@@ -1,0 +1,22 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial", "pieces": [{"coefficients": ["0", "-2", "1"]}], "breakpoints": [],
+    "sourceDomain": {"kind": "ALL_REALS"}, "domain": [-1, 5.5], "viewport": [-2, 6, -5, 16],
+    "referenceLines": [{"id": "l", "slope": "3", "intercept": "-3", "intersectionX": ["(5-sqrt(13))/2", "(5+sqrt(13))/2"]}],
+    "requiredPoints": [
+      {"id": "P", "x": "(5-sqrt(13))/2", "y": "(9-3*sqrt(13))/2"},
+      {"id": "Q", "x": "(5+sqrt(13))/2", "y": "(9+3*sqrt(13))/2"},
+      {"id": "V", "x": 1, "y": -1, "marker": "NONE"}
+    ],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "a=−2, b=c=3을 대입하면 포물선 y=x²−2x와 직선 y=3x−3이 P,Q에서 만난다.",
+  "accessibilityDescription": "포물선과 기울기 3인 직선이 서로 다른 두 점 P,Q에서 교차한다.",
+  "sourceConditions": [
+    {"id": "quadratic", "condition": "y=x²+ax이고 근의 합 5, 직선의 기울기 3이므로 a=-2", "mappedTo": ["graphPlan.pieces[0].coefficients", "graphPlan.requiredPoints[2]"]},
+    {"id": "line", "condition": "직선 (0,-3),(1,0)을 지나므로 y=3x-3", "mappedTo": "graphPlan.referenceLines[0]"},
+    {"id": "intersections", "condition": "교점 x좌표는 x²-5x+3=0의 두 근", "mappedTo": ["graphPlan.referenceLines[0].intersectionX", "graphPlan.requiredPoints"]}
+  ],
+  "newVisualInformation": ["교점의 x좌표 합이 이차방정식 근의 합이라는 수학 관계를 시각화한다."]
+}

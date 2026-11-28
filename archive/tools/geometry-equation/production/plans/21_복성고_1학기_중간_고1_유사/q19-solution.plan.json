@@ -1,0 +1,21 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["23/5", "-8/5", "2/5"],
+    "sourceDomain": {"kind": "ALL_REALS"}, "domain": [-1.5, 6.5], "viewport": [-2.5, 7.5, 1, 13],
+    "requiredPoints": [
+      {"id": "P", "x": -1, "y": 6.6}, {"id": "Q", "x": 6, "y": 9.4}, {"id": "V", "x": 2, "y": 3}
+    ],
+    "overlays": {"lines": [{"id": "l", "slope": "2/5", "intercept": "7"}]},
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "a=2/5일 때 f(x)=a(x−2)²+3과 y=ax+7은 x=−1,6에서 만나며, 1≤x≤3의 최솟값은 f(2)=3이다.",
+  "accessibilityDescription": "위로 열린 포물선과 완만한 직선이 P(-1,33/5), Q(6,47/5)에서 만나고 꼭짓점 V(2,3)가 x=1부터 3 사이에 있다.",
+  "sourceConditions": [
+    {"id": "curve", "condition": "f=a(x-2)²-10a+7, 최솟값 3에서 a=2/5이므로 계수는 (23/5,-8/5,2/5)", "mappedTo": "graphPlan.coefficients"},
+    {"id": "line", "condition": "y=ax+7, a=2/5", "mappedTo": "graphPlan.overlays.lines[0]"},
+    {"id": "intersections", "condition": "f-(ax+7)=a(x+1)(x-6); x=-1,6에서 일치", "mappedTo": "graphPlan.requiredPoints"},
+    {"id": "minimum", "condition": "1≤x≤3 안 꼭짓점 (2,3)", "mappedTo": "graphPlan.requiredPoints[2]"}
+  ],
+  "newVisualInformation": ["교점 두 개와 최솟점을 구별해 a의 산출 근거를 나타낸다."]
+}
