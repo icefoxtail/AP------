@@ -1,0 +1,233 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "25",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "60",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "25",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-60",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "A",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "r0",
+        "refs": [
+          "O",
+          "A",
+          "P"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "r1",
+        "refs": [
+          "O",
+          "B",
+          "P"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lsOA",
+        "ownerSegment": "sOA",
+        "text": "5",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lsOB",
+        "ownerSegment": "sOB",
+        "text": "5",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lsPA",
+        "ownerSegment": "sPA",
+        "text": "12",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lsPB",
+        "ownerSegment": "sPB",
+        "text": "12",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lsOP",
+        "ownerSegment": "sOP",
+        "text": "13",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 580,
+    "height": 480
+  },
+  "sourceQuote": "접선과 반지름은 접점에서 수직이므로 $\\triangle\\text{OAP}$와 $\\triangle\\text{OBP}$는 직각삼각형이다. 피타고라스 정리에 의해 $$x = \\overline{\\text{OP}} = \\sqrt{5^2 + 12^2} = 13\\text{ (cm)}$$ 두 삼각형의 넓이는 각각 $\\frac{",
+  "sourceConditions": [
+    {
+      "id": "q13_solution",
+      "condition": "접선과 반지름은 접점에서 수직이므로 $\\triangle\\text{OAP}$와 $\\triangle\\text{OBP}$는 직각삼각형이다. 피타고라스 정리에 의해 $$x = \\overline{\\text{OP}} = \\sqrt{5^2 + 12^2} = 13\\text{ (cm)}$$ 두 삼각형의 넓이는 각각 $\\frac{1}{2}\\times 5\\times 12 = 30\\text{ cm}^2$이므로 ②, ③은 옳지 않다. 또 $\\overline{\\text{OA}}=\\overline{\\text{OB}}$, $\\angle\\text{OAP}=\\angle\\text{OBP}=90^\\circ$, $\\overline{\\text{OP}}$는 공통이므로 $\\triangle\\text{OPB}\\equiv\\triangle\\text{OPA}$(RHS 합동)이다. 따라서 옳은 것은 ①, ⑤이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "해설 관계: 접선에 수직인 반지름에서 5²+12²=13², 두 직각삼각형 RHS 합동",
+  "accessibilityDescription": "해설 그림: 접선에 수직인 반지름에서 5²+12²=13², 두 직각삼각형 RHS 합동",
+  "newVisualInformation": [
+    "그린 선분 sOA, sOB, sPA, sPB, sOP",
+    "원 k",
+    "각 2개",
+    "길이표시 5개"
+  ]
+}

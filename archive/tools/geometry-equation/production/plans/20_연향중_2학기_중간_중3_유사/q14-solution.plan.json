@@ -1,0 +1,336 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "108",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "72",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "O",
+    "B",
+    "U",
+    "D",
+    "C",
+    "T",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "sHD",
+      "refs": [
+        "H",
+        "D"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sDT",
+      "refs": [
+        "D",
+        "T"
+      ]
+    },
+    {
+      "id": "sTC",
+      "refs": [
+        "T",
+        "C"
+      ]
+    },
+    {
+      "id": "sHC",
+      "refs": [
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "r0",
+        "refs": [
+          "D",
+          "H",
+          "C"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lsHD",
+        "ownerSegment": "sHD",
+        "text": "5",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lsBC",
+        "ownerSegment": "sBC",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lsDT",
+        "ownerSegment": "sDT",
+        "text": "9",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lsTC",
+        "ownerSegment": "sTC",
+        "text": "4",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lsHC",
+        "ownerSegment": "sHC",
+        "text": "12",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "semi1",
+        "circle": "k",
+        "center": "O",
+        "from": "B",
+        "to": "U",
+        "side": "MINOR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "semi2",
+        "circle": "k",
+        "center": "O",
+        "from": "U",
+        "to": "A",
+        "side": "MINOR",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "U"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 580,
+    "height": 480
+  },
+  "sourceQuote": "한 점에서 원에 그은 두 접선의 길이는 같으므로 $\\overline{\\text{DT}}=\\overline{\\text{DA}}=9\\text{ cm}$, $\\overline{\\text{CT}}=\\overline{\\text{CB}}=4\\text{ cm}$이다. 따라서 $\\overline{\\text{CD}} = 9 + ",
+  "sourceConditions": [
+    {
+      "id": "q14_solution",
+      "condition": "한 점에서 원에 그은 두 접선의 길이는 같으므로 $\\overline{\\text{DT}}=\\overline{\\text{DA}}=9\\text{ cm}$, $\\overline{\\text{CT}}=\\overline{\\text{CB}}=4\\text{ cm}$이다. 따라서 $\\overline{\\text{CD}} = 9 + 4 = 13\\text{ (cm)}$이다. 점 $\\text{C}$에서 $\\overline{\\text{AD}}$에 내린 수선의 발을 $\\text{H}$라 하면 $\\overline{\\text{CH}}=\\overline{\\text{AB}}$이고 $\\overline{\\text{DH}} = 9 - 4 = 5\\text{ (cm)}$이다. 직각삼각형 $\\text{CHD}$에서 피타고라스 정리에 의해 $$\\overline{\\text{AB}} = \\overline{\\text{CH}} = \\sqrt{13^2 - 5^2} = \\sqrt{144} = 12\\text{ (cm)}$$ 따라서 정답은 ①이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "해설 관계: 한 점 접선 길이 DT=DA=9, CT=CB=4 및 직각삼각형 DHC에서 AB=12",
+  "accessibilityDescription": "해설 그림: 한 점 접선 길이 DT=DA=9, CT=CB=4 및 직각삼각형 DHC에서 AB=12",
+  "newVisualInformation": [
+    "그린 선분 sAB, sAH, sHD, sBC, sDT, sTC, sHC",
+    "원 없음",
+    "각 1개",
+    "길이표시 5개"
+  ]
+}

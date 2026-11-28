@@ -1,0 +1,45 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "1",
+          "-1/4"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "2",
+        "y": "3"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceQuote": "그래프의 폭이 $y=-\\frac{1}{4}x^2$과 같으므로 $|a|=\\frac{1}{4}$이고, 최댓값을 가지므로 위로 볼록하여 $a = -\\frac{1}{4}$이다. $x=2$일 때 최댓값이 $3$이므로 꼭짓점의 좌표가 $(2, 3)$이어서 $$y = -\\frac{1}{4}(x-2)^2 + 3 = -\\frac",
+  "sourceConditions": [
+    {
+      "id": "q24_solution",
+      "condition": "그래프의 폭이 $y=-\\frac{1}{4}x^2$과 같으므로 $|a|=\\frac{1}{4}$이고, 최댓값을 가지므로 위로 볼록하여 $a = -\\frac{1}{4}$이다. $x=2$일 때 최댓값이 $3$이므로 꼭짓점의 좌표가 $(2, 3)$이어서 $$y = -\\frac{1}{4}(x-2)^2 + 3 = -\\frac{1}{4}(x^2 - 4x + 4) + 3 = -\\frac{1}{4}x^2 + x + 2$$ 따라서 $a=-\\frac{1}{4}$, $b=1$, $c=2$이므로 $$abc = \\left(-\\frac{1}{4}\\right) \\times 1 \\times 2 = -\\frac{1}{2}$$",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "caption": "해설 관계: 꼭짓점 (2,3), 아래로 열린 포물선 y=−x²/4+x+2의 계수 확인",
+  "accessibilityDescription": "해설 그림: 꼭짓점 (2,3), 아래로 열린 포물선 y=−x²/4+x+2의 계수 확인",
+  "newVisualInformation": [
+    "실제 표시 그래프 piecewise-polynomial",
+    "곡선/조각 1개",
+    "표시 점 1개"
+  ]
+}

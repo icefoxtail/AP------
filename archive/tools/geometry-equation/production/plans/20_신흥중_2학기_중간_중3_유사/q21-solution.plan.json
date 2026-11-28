@@ -1,0 +1,171 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "21"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "A",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sBA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "r0",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lsBA",
+        "ownerSegment": "sBA",
+        "text": "2sqrt(21)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lsBC",
+        "ownerSegment": "sBC",
+        "text": "4",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lsAC",
+        "ownerSegment": "sAC",
+        "text": "10",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 580,
+    "height": 480
+  },
+  "sourceQuote": "직각삼각형 $\\text{ABC}$에서 $\\angle\\text{B}=90^\\circ$이고 빗변 $\\overline{\\text{AC}}=10$이다. (1) $\\sin A = \\frac{\\overline{\\text{BC}}}{\\overline{\\text{AC}}} = \\frac{2}{5}$이므로 $\\overline{\\",
+  "sourceConditions": [
+    {
+      "id": "q21_solution",
+      "condition": "직각삼각형 $\\text{ABC}$에서 $\\angle\\text{B}=90^\\circ$이고 빗변 $\\overline{\\text{AC}}=10$이다. (1) $\\sin A = \\frac{\\overline{\\text{BC}}}{\\overline{\\text{AC}}} = \\frac{2}{5}$이므로 $\\overline{\\text{BC}} = 10 \\times \\frac{2}{5} = 4$ (2) 피타고라스 정리에 의해 $\\overline{\\text{AB}} = \\sqrt{10^2 - 4^2} = \\sqrt{84} = 2\\sqrt{21}$ (3) $\\cos A = \\frac{\\overline{\\text{AB}}}{\\overline{\\text{AC}}} = \\frac{2\\sqrt{21}}{10} = \\frac{\\sqrt{21}}{5}$ (4) $\\tan A = \\frac{\\overline{\\text{BC}}}{\\overline{\\text{AB}}} = \\frac{4}{2\\sqrt{21}} = \\frac{2\\sqrt{21}}{21}$ (5) $\\sin C = \\frac{\\overline{\\text{AB}}}{\\overline{\\text{AC}}} = \\frac{2\\sqrt{21}}{10} = \\frac{\\sqrt{21}}{5}$",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "해설 관계: BC=4·AB=2√21로 삼각비 sin,cos,tan을 대응",
+  "accessibilityDescription": "해설 그림: BC=4·AB=2√21로 삼각비 sin,cos,tan을 대응",
+  "newVisualInformation": [
+    "그린 선분 sBA, sBC, sAC",
+    "원 없음",
+    "각 1개",
+    "길이표시 3개"
+  ]
+}

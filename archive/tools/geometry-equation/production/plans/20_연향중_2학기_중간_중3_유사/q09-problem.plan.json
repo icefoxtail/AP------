@@ -1,0 +1,189 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "D",
+    "A",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sBA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "r0",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lsAD",
+        "ownerSegment": "sAD",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lsDC",
+        "ownerSegment": "sDC",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lsCB",
+        "ownerSegment": "sCB",
+        "text": "2",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 580,
+    "height": 480
+  },
+  "sourceQuote": "오른쪽 직각삼각형 $\\text{ABC}$에서 $\\angle\\text{C}=90^\\circ$, $\\overline{\\text{AD}}=\\overline{\\text{DC}}=\\overline{\\text{BC}}=2\\text{ cm}$이고(단, 점 $\\text{D}$는 $\\overline{\\text{AC}}$ 위의 점",
+  "sourceConditions": [
+    {
+      "id": "q09_problem",
+      "condition": "오른쪽 직각삼각형 $\\text{ABC}$에서 $\\angle\\text{C}=90^\\circ$, $\\overline{\\text{AD}}=\\overline{\\text{DC}}=\\overline{\\text{BC}}=2\\text{ cm}$이고(단, 점 $\\text{D}$는 $\\overline{\\text{AC}}$ 위의 점), $\\angle\\text{ABD}=x^\\circ$라고 할 때, $\\sin x^\\circ$의 값은?",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "문제 조건: C 직각, AC 위 D와 AD=DC=BC=2, ∠ABD의 위치",
+  "accessibilityDescription": "문제 그림: C 직각, AC 위 D와 AD=DC=BC=2, ∠ABD의 위치",
+  "newVisualInformation": [
+    "그린 선분 sAD, sDC, sCB, sBA, sBD",
+    "원 없음",
+    "각 1개",
+    "길이표시 3개"
+  ]
+}

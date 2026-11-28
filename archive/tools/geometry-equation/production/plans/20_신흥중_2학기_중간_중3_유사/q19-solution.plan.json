@@ -1,0 +1,155 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "A",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "r0",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lsCA",
+        "ownerSegment": "sCA",
+        "text": "15",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lsCB",
+        "ownerSegment": "sCB",
+        "text": "8",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lsAB",
+        "ownerSegment": "sAB",
+        "text": "17",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 580,
+    "height": 480
+  },
+  "sourceQuote": "$0^\\circ < A < 90^\\circ$이고 $\\tan A = \\frac{8}{15}$이므로 밑변이 $15k$, 높이가 $8k$ ($k>0$)인 직각삼각형을 생각하면 빗변은 $$\\sqrt{(15k)^2 + (8k)^2} = \\sqrt{289k^2} = 17k$$ 따라서 $\\cos A = \\frac{15}{17",
+  "sourceConditions": [
+    {
+      "id": "q19_solution",
+      "condition": "$0^\\circ < A < 90^\\circ$이고 $\\tan A = \\frac{8}{15}$이므로 밑변이 $15k$, 높이가 $8k$ ($k>0$)인 직각삼각형을 생각하면 빗변은 $$\\sqrt{(15k)^2 + (8k)^2} = \\sqrt{289k^2} = 17k$$ 따라서 $\\cos A = \\frac{15}{17}$, $\\sin A = \\frac{8}{17}$이므로 $$\\cos A - \\sin A = \\frac{15}{17} - \\frac{8}{17} = \\frac{7}{17}$$ 따라서 정답은 ④이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "해설 관계: 8·15·17 직각삼각형에서 cosA−sinA=(15−8)/17",
+  "accessibilityDescription": "해설 그림: 8·15·17 직각삼각형에서 cosA−sinA=(15−8)/17",
+  "newVisualInformation": [
+    "그린 선분 sCA, sCB, sAB",
+    "원 없음",
+    "각 1개",
+    "길이표시 3개"
+  ]
+}

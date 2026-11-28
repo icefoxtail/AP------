@@ -1,0 +1,165 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "A"
+  ],
+  "displaySegments": [
+    {
+      "id": "sBA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lsBA",
+        "ownerSegment": "sBA",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lsBC",
+        "ownerSegment": "sBC",
+        "text": "10",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 580,
+    "height": 480
+  },
+  "sourceQuote": "오른쪽 그림과 같이 연못의 두 지점 $\\text{A}$와 $\\text{C}$ 사이의 거리를 구하기 위해 점 $\\text{B}$를 잡았더니 $\\overline{\\text{AB}}=6\\text{ m}$, $\\overline{\\text{BC}}=10\\text{ m}$, $\\angle\\text{B}=60^\\circ$이었",
+  "sourceConditions": [
+    {
+      "id": "q12_problem",
+      "condition": "오른쪽 그림과 같이 연못의 두 지점 $\\text{A}$와 $\\text{C}$ 사이의 거리를 구하기 위해 점 $\\text{B}$를 잡았더니 $\\overline{\\text{AB}}=6\\text{ m}$, $\\overline{\\text{BC}}=10\\text{ m}$, $\\angle\\text{B}=60^\\circ$이었다. 두 지점 $\\text{A}$와 $\\text{C}$ 사이의 거리는?",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "문제 조건: 연못 A·C 사이 미지 거리와 AB6·BC10·∠B60°의 삼각형",
+  "accessibilityDescription": "문제 그림: 연못 A·C 사이 미지 거리와 AB6·BC10·∠B60°의 삼각형",
+  "newVisualInformation": [
+    "그린 선분 sBA, sBC, sAC",
+    "원 없음",
+    "각 1개",
+    "길이표시 2개"
+  ]
+}

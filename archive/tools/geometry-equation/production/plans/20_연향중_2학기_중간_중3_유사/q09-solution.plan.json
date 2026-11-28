@@ -1,0 +1,201 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "D",
+    "A",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sBA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "r0",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lsAD",
+        "ownerSegment": "sAD",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lsDC",
+        "ownerSegment": "sDC",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lsCB",
+        "ownerSegment": "sCB",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lsBA",
+        "ownerSegment": "sBA",
+        "text": "2sqrt(5)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lsBD",
+        "ownerSegment": "sBD",
+        "text": "2sqrt(2)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 580,
+    "height": 480
+  },
+  "sourceQuote": "$\\overline{\\text{AC}}=\\overline{\\text{AD}}+\\overline{\\text{DC}}=4\\text{ cm}$, $\\overline{\\text{BC}}=2\\text{ cm}$이므로 직각삼각형 $\\text{ABC}$에서 $$\\overline{\\text{AB}} = \\sqrt{4^2 + 2",
+  "sourceConditions": [
+    {
+      "id": "q09_solution",
+      "condition": "$\\overline{\\text{AC}}=\\overline{\\text{AD}}+\\overline{\\text{DC}}=4\\text{ cm}$, $\\overline{\\text{BC}}=2\\text{ cm}$이므로 직각삼각형 $\\text{ABC}$에서 $$\\overline{\\text{AB}} = \\sqrt{4^2 + 2^2} = \\sqrt{20} = 2\\sqrt{5}\\text{ (cm)}$$ 직각삼각형 $\\text{BCD}$에서 $$\\overline{\\text{BD}} = \\sqrt{2^2 + 2^2} = 2\\sqrt{2}\\text{ (cm)}$$ $\\triangle\\text{ABD}$의 넓이는 밑변 $\\overline{\\text{AD}}=2\\text{ cm}$, 높이 $\\overline{\\text{BC}}=2\\text{ cm}$이므로 $\\frac{1}{2}\\times 2\\times 2 = 2\\text{ cm}^2$이다. 한편 $\\triangle\\text{ABD} = \\frac{1}{2}\\times\\overline{\\text{AB}}\\times\\overline{\\text{BD}}\\sin x^\\circ$이므로 $$2 = \\frac{1}{2}\\times 2\\sqrt{5}\\times 2\\sqrt{2}\\sin x^\\circ = 2\\sqrt{10}\\sin x^\\circ \\implies \\sin x^\\circ = \\frac{1}{\\sqrt{10}} = \\frac{\\sqrt{10}}{10}$$ 따라서 정답은 ①이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "해설 관계: △ABD의 넓이 AD×BC/2=2와 AB·BD·sin∠ABD/2의 등식",
+  "accessibilityDescription": "해설 그림: △ABD의 넓이 AD×BC/2=2와 AB·BD·sin∠ABD/2의 등식",
+  "newVisualInformation": [
+    "그린 선분 sAD, sDC, sCB, sBA, sBD",
+    "원 없음",
+    "각 1개",
+    "길이표시 5개"
+  ]
+}

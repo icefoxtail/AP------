@@ -1,0 +1,57 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-2"
+        ],
+        "domain": [
+          "-2",
+          "7"
+        ],
+        "label": "y=-2x^2",
+        "color": "BLUE"
+      },
+      {
+        "id": "f2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-35",
+          "16",
+          "-2"
+        ],
+        "domain": [
+          "-2",
+          "7"
+        ],
+        "label": "y=-2(x-4)^2-3",
+        "color": "WARM"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceQuote": "$y=-2x^2$의 그래프를 $x$축의 방향으로 $4$만큼, $y$축의 방향으로 $-3$만큼 평행이동하면 $x$ 대신 $x-4$를 대입하고 $-3$을 더하므로 $$y = -2(x-4)^2 - 3$$ 따라서 정답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "q08_solution",
+      "condition": "$y=-2x^2$의 그래프를 $x$축의 방향으로 $4$만큼, $y$축의 방향으로 $-3$만큼 평행이동하면 $x$ 대신 $x-4$를 대입하고 $-3$을 더하므로 $$y = -2(x-4)^2 - 3$$ 따라서 정답은 ②이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "caption": "해설 관계: 꼭짓점이 (0,0)에서 (4,−3)으로 이동하는 두 포물선",
+  "accessibilityDescription": "해설 그림: 꼭짓점이 (0,0)에서 (4,−3)으로 이동하는 두 포물선",
+  "newVisualInformation": [
+    "실제 표시 그래프 multi-curve",
+    "곡선/조각 2개",
+    "표시 점 0개"
+  ]
+}

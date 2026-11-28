@@ -1,0 +1,45 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "-12",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-3",
+        "y": "17"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceQuote": "이차함수 $y = -2x^2 + 6ax - 1$의 축의 방정식은 $$x = -\\frac{6a}{2\\times(-2)} = \\frac{3a}{2}$$ $x=-3$일 때 최댓값을 가지므로 $$\\frac{3a}{2} = -3 \\implies a = -2$$ 따라서 정답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "q15_solution",
+      "condition": "이차함수 $y = -2x^2 + 6ax - 1$의 축의 방정식은 $$x = -\\frac{6a}{2\\times(-2)} = \\frac{3a}{2}$$ $x=-3$일 때 최댓값을 가지므로 $$\\frac{3a}{2} = -3 \\implies a = -2$$ 따라서 정답은 ⑤이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "caption": "해설 관계: a=−2로 결정된 y=−2x²−12x−1의 꼭짓점 x=−3",
+  "accessibilityDescription": "해설 그림: a=−2로 결정된 y=−2x²−12x−1의 꼭짓점 x=−3",
+  "newVisualInformation": [
+    "실제 표시 그래프 piecewise-polynomial",
+    "곡선/조각 1개",
+    "표시 점 1개"
+  ]
+}

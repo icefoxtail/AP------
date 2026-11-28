@@ -1,0 +1,66 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "3",
+          "6",
+          "3"
+        ],
+        "domain": [
+          "-3",
+          "7"
+        ],
+        "label": "y=3(x+1)^2",
+        "color": "BLUE"
+      },
+      {
+        "id": "f2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "27",
+          "-18",
+          "3"
+        ],
+        "domain": [
+          "-3",
+          "7"
+        ],
+        "label": "y=3(x-3)^2",
+        "color": "WARM"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "4",
+          "y": "3"
+        }
+      ]
+    }
+  },
+  "sourceQuote": "$y = 3x^2 + 6x + 3 = 3(x+1)^2$이다. 이 그래프를 $x$축의 방향으로 $4$만큼 평행이동한 식은 $$y = 3(x - 4 + 1)^2 = 3(x - 3)^2$$ 이 그래프가 점 $(4, m)$을 지나므로 $x=4$를 대입하면 $$m = 3(4 - 3)^2 = 3$$ 따라서 정답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "q13_solution",
+      "condition": "$y = 3x^2 + 6x + 3 = 3(x+1)^2$이다. 이 그래프를 $x$축의 방향으로 $4$만큼 평행이동한 식은 $$y = 3(x - 4 + 1)^2 = 3(x - 3)^2$$ 이 그래프가 점 $(4, m)$을 지나므로 $x=4$를 대입하면 $$m = 3(4 - 3)^2 = 3$$ 따라서 정답은 ④이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "caption": "해설 관계: 오른쪽 4 이동 후 (4,3)을 지나는 새 포물선",
+  "accessibilityDescription": "해설 그림: 오른쪽 4 이동 후 (4,3)을 지나는 새 포물선",
+  "newVisualInformation": [
+    "실제 표시 그래프 multi-curve",
+    "곡선/조각 2개",
+    "표시 점 1개"
+  ]
+}

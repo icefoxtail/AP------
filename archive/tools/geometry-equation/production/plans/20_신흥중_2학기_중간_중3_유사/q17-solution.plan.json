@@ -1,0 +1,171 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "A",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "r0",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lsCA",
+        "ownerSegment": "sCA",
+        "text": "2sqrt(3)",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lsCB",
+        "ownerSegment": "sCB",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lsAB",
+        "ownerSegment": "sAB",
+        "text": "4",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 580,
+    "height": 480
+  },
+  "sourceQuote": "직각삼각형 $\\text{ABC}$에서 피타고라스 정리에 의해 $$\\overline{\\text{AB}} = \\sqrt{(2\\sqrt{3})^2 + 2^2} = \\sqrt{12 + 4} = 4$$ 따라서 $$\\sin A = \\frac{2}{4} = \\frac{1}{2}, \\quad \\cos A = \\frac{2\\sq",
+  "sourceConditions": [
+    {
+      "id": "q17_solution",
+      "condition": "직각삼각형 $\\text{ABC}$에서 피타고라스 정리에 의해 $$\\overline{\\text{AB}} = \\sqrt{(2\\sqrt{3})^2 + 2^2} = \\sqrt{12 + 4} = 4$$ 따라서 $$\\sin A = \\frac{2}{4} = \\frac{1}{2}, \\quad \\cos A = \\frac{2\\sqrt{3}}{4} = \\frac{\\sqrt{3}}{2}, \\quad \\tan A = \\frac{2}{2\\sqrt{3}} = \\frac{1}{\\sqrt{3}}$$ $$\\sin B = \\frac{2\\sqrt{3}}{4} = \\frac{\\sqrt{3}}{2}, \\quad \\cos B = \\frac{2}{4} = \\frac{1}{2}$$ 이므로 $\\sin B = \\frac{2}{\\sqrt{3}}$이라 한 ③이 옳지 않다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "해설 관계: 피타고라스에서 구한 빗변 AB=4를 더해 삼각비를 확인",
+  "accessibilityDescription": "해설 그림: 피타고라스에서 구한 빗변 AB=4를 더해 삼각비를 확인",
+  "newVisualInformation": [
+    "그린 선분 sCA, sCB, sAB",
+    "원 없음",
+    "각 1개",
+    "길이표시 3개"
+  ]
+}

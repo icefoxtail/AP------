@@ -1,0 +1,60 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "8",
+          "2",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1",
+        "y": "9"
+      },
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "0"
+      },
+      {
+        "id": "C",
+        "x": "0",
+        "y": "8"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceQuote": "$x$축과의 교점이 $(-2, 0)$, $(4, 0)$이므로 $$y = a(x+2)(x-4)$$ $y$축과의 교점이 $(0, 8)$이므로 $x=0$, $y=8$을 대입하면 $$8 = a(2)(-4) = -8a \\implies a = -1$$ 두 $x$절편의 중점이 대칭축이므로 축의 방정식은 $x = \\frac{-",
+  "sourceConditions": [
+    {
+      "id": "q14_solution",
+      "condition": "$x$축과의 교점이 $(-2, 0)$, $(4, 0)$이므로 $$y = a(x+2)(x-4)$$ $y$축과의 교점이 $(0, 8)$이므로 $x=0$, $y=8$을 대입하면 $$8 = a(2)(-4) = -8a \\implies a = -1$$ 두 $x$절편의 중점이 대칭축이므로 축의 방정식은 $x = \\frac{-2+4}{2} = 1$이다. $a=-1<0$이므로 $x=1$일 때 최댓값은 $$-(1+2)(1-4) = -3 \\times (-3) = 9$$ 따라서 정답은 ③이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "caption": "해설 관계: x절편 −2,4와 y절편 8의 대칭축 중간 x=1 및 최댓값 9",
+  "accessibilityDescription": "해설 그림: x절편 −2,4와 y절편 8의 대칭축 중간 x=1 및 최댓값 9",
+  "newVisualInformation": [
+    "실제 표시 그래프 piecewise-polynomial",
+    "곡선/조각 1개",
+    "표시 점 4개"
+  ]
+}

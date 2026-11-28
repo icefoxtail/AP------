@@ -1,0 +1,57 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-9",
+          "6",
+          "-1"
+        ],
+        "domain": [
+          "-2",
+          "7"
+        ],
+        "label": "y=-(x-3)^2",
+        "color": "BLUE"
+      },
+      {
+        "id": "f2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-3"
+        ],
+        "domain": [
+          "-2",
+          "7"
+        ],
+        "label": "y=-3x^2",
+        "color": "WARM"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceQuote": "$y = -x^2 + 6x - 9 = -(x-3)^2$이다. 따라서 축의 방정식은 $x=3$, 위로 볼록한 포물선이며 $x$축과 점 $(3, 0)$에서 접하고 최댓값 $0$을 가지므로 최솟값은 없다. 한편 $y=-x^2+6x-9$의 이차항 계수는 $-1$이고 $y=-3x^2$의 이차항 계수는 $-3$으로 절댓값이",
+  "sourceConditions": [
+    {
+      "id": "q09_solution",
+      "condition": "$y = -x^2 + 6x - 9 = -(x-3)^2$이다. 따라서 축의 방정식은 $x=3$, 위로 볼록한 포물선이며 $x$축과 점 $(3, 0)$에서 접하고 최댓값 $0$을 가지므로 최솟값은 없다. 한편 $y=-x^2+6x-9$의 이차항 계수는 $-1$이고 $y=-3x^2$의 이차항 계수는 $-3$으로 절댓값이 다르므로 폭이 같지 않다. 따라서 옳지 않은 것은 ④이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "caption": "해설 관계: 서로 다른 절댓값의 이차항 계수 1과 3이 만드는 다른 폭",
+  "accessibilityDescription": "해설 그림: 서로 다른 절댓값의 이차항 계수 1과 3이 만드는 다른 폭",
+  "newVisualInformation": [
+    "실제 표시 그래프 multi-curve",
+    "곡선/조각 2개",
+    "표시 점 0개"
+  ]
+}

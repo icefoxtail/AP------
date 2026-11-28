@@ -1,0 +1,81 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "-4",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-2",
+        "y": "9"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-5",
+          "y": "0"
+        },
+        {
+          "id": "B",
+          "x": "1",
+          "y": "0"
+        },
+        {
+          "id": "C",
+          "x": "0",
+          "y": "5"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "BC",
+          "from": "B",
+          "to": "C"
+        },
+        {
+          "id": "CA",
+          "from": "C",
+          "to": "A"
+        }
+      ]
+    }
+  },
+  "sourceQuote": "다음 그림에서 이차함수 $y=-x^2-4x+5$의 그래프와 $x$축과의 교점을 각각 $\\text{A}$, $\\text{B}$, $y$축과의 교점을 $\\text{C}$라 할 때, $\\triangle\\text{ABC}$의 넓이는?",
+  "sourceConditions": [
+    {
+      "id": "q16_problem",
+      "condition": "다음 그림에서 이차함수 $y=-x^2-4x+5$의 그래프와 $x$축과의 교점을 각각 $\\text{A}$, $\\text{B}$, $y$축과의 교점을 $\\text{C}$라 할 때, $\\triangle\\text{ABC}$의 넓이는?",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "caption": "문제 조건: 포물선의 두 x절편 A,B와 y절편 C로 이루어진 삼각형의 위치",
+  "accessibilityDescription": "문제 그림: 포물선의 두 x절편 A,B와 y절편 C로 이루어진 삼각형의 위치",
+  "newVisualInformation": [
+    "실제 표시 그래프 piecewise-polynomial",
+    "곡선/조각 1개",
+    "표시 점 3개"
+  ]
+}
