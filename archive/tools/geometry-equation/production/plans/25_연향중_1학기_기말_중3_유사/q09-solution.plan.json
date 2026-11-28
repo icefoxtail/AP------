@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "-1/2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "vertex",
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "0",
+          "y": "0",
+          "coordinates": false,
+          "unnamed": true
+        },
+        {
+          "id": "M",
+          "x": "6",
+          "y": "-18",
+          "unnamed": false,
+          "coordinates": true
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "y=-x²/2의 대칭상과 지나는 점",
+  "accessibilityDescription": "9번의 포물선 위 꼭짓점 및 지정된 점을 확인한다.",
+  "newVisualInformation": [
+    "함수 계수로 그린 포물선",
+    "필수 꼭짓점과 지정된 실제 점"
+  ],
+  "sourceConditions": [
+    {
+      "id": "curve",
+      "condition": "원문 이차함수의 실제 계수",
+      "mappedTo": "graphPlan.pieces[0].coefficients"
+    },
+    {
+      "id": "vertex",
+      "condition": "함수에서 독립 계산한 꼭짓점",
+      "mappedTo": "graphPlan.requiredPoints[0]"
+    },
+    {
+      "id": "point1",
+      "condition": "기하 점 M=6,-18",
+      "mappedTo": "graphPlan.overlays.points[1]"
+    }
+  ],
+  "sourceQuote": "원점을 꼭짓점으로 하고 점 $(-4, 8)$을 지나는 이차함수의 그래프와 $x$축에 서로 "
+}

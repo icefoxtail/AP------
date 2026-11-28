@@ -1,0 +1,172 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-5",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "vertex",
+        "x": "2",
+        "y": "-9"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "2",
+          "y": "-9",
+          "coordinates": false,
+          "unnamed": true
+        },
+        {
+          "id": "A",
+          "x": "-1",
+          "y": "0",
+          "unnamed": false,
+          "coordinates": false
+        },
+        {
+          "id": "B",
+          "x": "5",
+          "y": "0",
+          "unnamed": false,
+          "coordinates": false
+        },
+        {
+          "id": "C",
+          "x": "2",
+          "y": "-9",
+          "unnamed": false,
+          "coordinates": false
+        },
+        {
+          "id": "D",
+          "x": "0",
+          "y": "-5",
+          "unnamed": false,
+          "coordinates": false
+        },
+        {
+          "id": "E",
+          "x": "0",
+          "y": "5",
+          "unnamed": false,
+          "coordinates": false
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "AC",
+          "from": "A",
+          "to": "C"
+        },
+        {
+          "id": "BC",
+          "from": "B",
+          "to": "C"
+        },
+        {
+          "id": "AE",
+          "from": "A",
+          "to": "E"
+        },
+        {
+          "id": "BE",
+          "from": "B",
+          "to": "E"
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "원문 A·B·C·D·E 점과 두 삼각형",
+  "accessibilityDescription": "20번의 포물선 위 꼭짓점 및 지정된 점을 확인한다.",
+  "newVisualInformation": [
+    "함수 계수로 그린 포물선",
+    "필수 꼭짓점과 지정된 실제 점"
+  ],
+  "sourceConditions": [
+    {
+      "id": "curve",
+      "condition": "원문 이차함수의 실제 계수",
+      "mappedTo": "graphPlan.pieces[0].coefficients"
+    },
+    {
+      "id": "vertex",
+      "condition": "함수에서 독립 계산한 꼭짓점",
+      "mappedTo": "graphPlan.requiredPoints[0]"
+    },
+    {
+      "id": "point1",
+      "condition": "기하 점 A=-1,0",
+      "mappedTo": "graphPlan.overlays.points[1]"
+    },
+    {
+      "id": "point2",
+      "condition": "기하 점 B=5,0",
+      "mappedTo": "graphPlan.overlays.points[2]"
+    },
+    {
+      "id": "point3",
+      "condition": "기하 점 C=2,-9",
+      "mappedTo": "graphPlan.overlays.points[3]"
+    },
+    {
+      "id": "point4",
+      "condition": "기하 점 D=0,-5",
+      "mappedTo": "graphPlan.overlays.points[4]"
+    },
+    {
+      "id": "point5",
+      "condition": "기하 점 E=0,5",
+      "mappedTo": "graphPlan.overlays.points[5]"
+    },
+    {
+      "id": "seg1",
+      "condition": "점 A,B의 길이/영역 결속",
+      "mappedTo": "graphPlan.overlays.segments[0]"
+    },
+    {
+      "id": "seg2",
+      "condition": "점 A,C의 길이/영역 결속",
+      "mappedTo": "graphPlan.overlays.segments[1]"
+    },
+    {
+      "id": "seg3",
+      "condition": "점 B,C의 길이/영역 결속",
+      "mappedTo": "graphPlan.overlays.segments[2]"
+    },
+    {
+      "id": "seg4",
+      "condition": "점 A,E의 길이/영역 결속",
+      "mappedTo": "graphPlan.overlays.segments[3]"
+    },
+    {
+      "id": "seg5",
+      "condition": "점 B,E의 길이/영역 결속",
+      "mappedTo": "graphPlan.overlays.segments[4]"
+    }
+  ],
+  "sourceQuote": "아래 그림은 이차함수 $y = x^2 - 4x - 5$의 그래프이다. $x$축과 만나는 두"
+}

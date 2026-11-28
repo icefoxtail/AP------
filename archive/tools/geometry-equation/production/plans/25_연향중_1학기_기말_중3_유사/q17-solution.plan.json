@@ -1,0 +1,84 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "29",
+          "12",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "vertex",
+        "x": "-6",
+        "y": "-7"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "-6",
+          "y": "-7",
+          "coordinates": false,
+          "unnamed": true
+        },
+        {
+          "id": "V2",
+          "x": "-6",
+          "y": "-7",
+          "unnamed": false,
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "L",
+          "slope": "1",
+          "intercept": "-1"
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "17번의 포물선과 주어진 점의 관계",
+  "accessibilityDescription": "17번의 포물선 위 꼭짓점 및 지정된 점을 확인한다.",
+  "newVisualInformation": [
+    "함수 계수로 그린 포물선",
+    "필수 꼭짓점과 지정된 실제 점"
+  ],
+  "sourceConditions": [
+    {
+      "id": "curve",
+      "condition": "원문 이차함수의 실제 계수",
+      "mappedTo": "graphPlan.pieces[0].coefficients"
+    },
+    {
+      "id": "vertex",
+      "condition": "함수에서 독립 계산한 꼭짓점",
+      "mappedTo": "graphPlan.requiredPoints[0]"
+    },
+    {
+      "id": "point1",
+      "condition": "기하 점 V2=-6,-7",
+      "mappedTo": "graphPlan.overlays.points[1]"
+    },
+    {
+      "id": "line1",
+      "condition": "원문 비교 직선 L",
+      "mappedTo": "graphPlan.overlays.lines[0]"
+    }
+  ],
+  "sourceQuote": "이차함수 $y = x^2 - 4kx + 3k^2 - 4k - 10$의 그래프의 꼭짓점이 일"
+}
