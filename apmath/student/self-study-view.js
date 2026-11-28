@@ -252,7 +252,7 @@
   }
 
   /** The issued questions of an assignment: the frozen snapshot when the server sent one, otherwise the exam's own file. */
-  async function loadExamQuestions(exam, { fetchImpl, baseUrl } = {}) {
+  async function loadExamQuestions(exam, { fetchImpl, baseUrl, numbers } = {}) {
     const archiveFile = String(exam?.archive_file || '').trim();
     let frozen = null;
     try { frozen = JSON.parse(String(exam?.mixed_payload_json || 'null')); } catch (error) { frozen = null; }
@@ -263,8 +263,13 @@
       // 2026-11-24: 출제 사본의 문항도 고쳐졌으면 지금 원본 내용으로(못 읽으면 사본 그대로). 구성·순서는 그대로다.
       try {
         // 받는 함수를 안 넘기면 current-question-content.js가 받을 때마다 서버에 새로 확인하는(no-cache) 기본 받기를 쓴다(바뀌지 않았으면 304).
-        const updated = await root.StudentCurrentContent.overlay(questions, { baseUrl, fetchQuestionList: fetchImpl ? (path, base) => fetchQuestionList(path, { fetchImpl, baseUrl: base }) : undefined });
-        if (Array.isArray(updated?.questions) && updated.questions.length === questions.length) questions = updated.questions;
+        const positions = numbers ? normalizeNumbers(numbers).filter(no => no <= questions.length).map(no => no - 1) : null;
+        const selected = positions ? positions.map(index => questions[index]) : questions;
+        const updated = await root.StudentCurrentContent.overlay(selected, { baseUrl, fetchQuestionList: fetchImpl ? (path, base) => fetchQuestionList(path, { fetchImpl, baseUrl: base }) : undefined });
+        if (Array.isArray(updated?.questions) && updated.questions.length === selected.length) {
+          if (positions) positions.forEach((index, offset) => { questions[index] = updated.questions[offset]; });
+          else questions = updated.questions;
+        }
       } catch (error) { /* 사본 그대로 */ }
     }
     const refresher = root.ArchiveStudentSvgRefresh;
@@ -422,7 +427,7 @@
 
   /**
    * Draws the card screen into options.container.
-   * options: { container, onBack(), headerHtml?, document?, baseUrl?, bottomAction? | bottomActions? [{ label, onClick }], recorder?, recordNote? }. set: { title, questions }.
+   * options: { container, onBack(), headerHtml?, document?, baseUrl?, bottomAction? | bottomActions? [{ label, onClick }], recorder?, recordNote?, embedded? }. set: { title, questions }.
    * recorder (self-study-record.js createRecorder) keeps the student's results; without one the screen works in memory only.
    * Returns once the cards are on screen; formulas are typeset card by card afterwards (first card first).
    */
@@ -444,10 +449,11 @@
       recorder.stop?.();
       handler?.();
     };
+    const embedded = options.embedded === true;
     const note = options.recordNote || RECORD_NOTE;
     // One or more buttons under the cards (bottomAction = the single-button form).
     const bottomActions = (Array.isArray(options.bottomActions) ? options.bottomActions : [options.bottomAction]).filter(action => action && action.label);
-    const shell = body => `<div class="student-shell self-study">${options.headerHtml || ''}
+    const shell = body => embedded ? `<div class="self-study">${body}</div>` : `<div class="student-shell self-study">${options.headerHtml || ''}
       <button type="button" class="btn back-btn" data-ss-back>← 돌아가기</button>
       <section class="ss-head"><h1 class="card-title ss-title">${escapeHtml(set?.title || '')}</h1>
         <p class="card-desc">풀고 나면 정답·해설이 열려요. 모르면 &lsquo;모르겠어요&rsquo;를 눌러도 돼요.</p>
@@ -469,14 +475,14 @@
     const cards = questions.map(entry => renderCard(entry, deps)).join('');
     container.innerHTML = shell(`
       ${assets.mathReady ? '' : '<p class="notice ss-math-notice" role="status">수식 표시를 불러오지 못해 일부 수식이 기호 그대로 보일 수 있어요.</p>'}
-      ${cards && answerable.length ? `<div class="ss-progress"><p class="ss-progress-text" data-ss-progress-text role="status" aria-live="polite"></p>
+      ${!embedded && cards && answerable.length ? `<div class="ss-progress"><p class="ss-progress-text" data-ss-progress-text role="status" aria-live="polite"></p>
         <button type="button" class="btn ss-retry-wrong" data-ss-retry-wrong hidden>틀린 것만 다시 풀기</button></div>` : ''}
       ${cards ? `<div class="ss-list">${cards}</div>` : `<div class="empty">${escapeHtml(set?.emptyText || '표시할 문항이 없습니다.')}</div>`}
       ${cards ? bottomActions.map((action, index) => `<button type="button" class="btn btn-primary ss-next" data-ss-next="${index}">${escapeHtml(action.label)}</button>`).join('') : ''}
-      <button type="button" class="btn back-btn ss-back-bottom" data-ss-back>← 돌아가기</button>`);
+      ${embedded ? '' : '<button type="button" class="btn back-btn ss-back-bottom" data-ss-back>← 돌아가기</button>'}`);
     container.querySelectorAll('[data-ss-next]').forEach(button => button.addEventListener('click', leave(() => bottomActions[Number(button.dataset.ssNext) || 0]?.onClick?.())));
     container.querySelectorAll('[data-ss-back]').forEach(button => button.addEventListener('click', leave(options.onBack)));
-    recorder.start?.(doc, root);
+    if (!embedded) recorder.start?.(doc, root);
 
     // Listeners live on this screen's own root (rebuilt on every open), not on the shared container.
     const screen = container.querySelector('.self-study');

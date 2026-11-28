@@ -230,7 +230,7 @@ function dedupeClassExamAssignments(rows = [], sessionByAssignment = new Map()) 
   return Array.from(byExam.values());
 }
 
-async function loadStudentClassExamAssignments(env, studentId, limit = 100, assignmentId = '', allowedClassIds = null) {
+async function loadStudentClassExamAssignments(env, studentId, limit = 100, assignmentId = '', allowedClassIds = null, notebookOffset = null) {
   const exactAssignmentId = String(assignmentId || '').trim();
   const classScope = Array.isArray(allowedClassIds)
     ? [...new Set(allowedClassIds.map(value => String(value || '')).filter(Boolean))]
@@ -240,7 +240,9 @@ async function loadStudentClassExamAssignments(env, studentId, limit = 100, assi
     : classScope.length
       ? `AND cea.class_id IN (${classScope.map(() => '?').join(',')})`
       : 'AND 1=0';
+  const notebook = notebookOffset !== null && !exactAssignmentId;
   const safeLimit = Math.max(1, Math.min(200, parseInt(limit, 10) || 100));
+  const selectedLimit = notebook ? safeLimit + 1 : safeLimit;
   const recipientSnapshotExists = await hasClassExamAssignmentRecipients(env);
   const cancellationColumnExists = await hasClassExamAssignmentCancellationAt(env);
   const exclusionsExist = await hasClassExamAssignmentExclusions(env);
@@ -275,7 +277,8 @@ async function loadStudentClassExamAssignments(env, studentId, limit = 100, assi
     studentId,
     ...(exactAssignmentId ? [exactAssignmentId] : []),
     ...(classScope || []),
-    ...(exactAssignmentId ? [] : [safeLimit])
+    ...(exactAssignmentId ? [] : [selectedLimit]),
+    ...(notebook ? [notebookOffset] : [])
   ];
   // exam_sessions has no wrong_ids column: the wrong numbers live in wrong_answers (one row per wrong position, written by omr-submit).
   // One read-only join for this student's sessions (both ids must be the student), never one query per exam. A failed read is
@@ -314,9 +317,13 @@ async function loadStudentClassExamAssignments(env, studentId, limit = 100, assi
         FROM scoped_assignments
         WHERE (is_cancelled = 0 AND is_excluded = 0) OR has_assignment_session = 1
       )
-      SELECT * FROM visible_assignments
-      ORDER BY exam_date DESC, updated_at DESC, created_at DESC
-      ${exactAssignmentId ? 'LIMIT 1' : 'LIMIT ?'}
+      SELECT *${notebook ? `, COUNT(*) OVER (
+        PARTITION BY TRIM(COALESCE(exam_title, '')), TRIM(COALESCE(exam_date, '')),
+          COALESCE(question_count, 0), TRIM(COALESCE(archive_file, ''))
+      ) AS legacy_session_match_count` : ''}
+      FROM visible_assignments
+      ORDER BY exam_date DESC, updated_at DESC, created_at DESC${notebook ? ', id DESC' : ''}
+      ${exactAssignmentId ? 'LIMIT 1' : notebook ? 'LIMIT ? OFFSET ?' : 'LIMIT ?'}
     `).bind(...assignmentBinds).all(),
     env.DB.prepare(`
       SELECT *
@@ -324,7 +331,7 @@ async function loadStudentClassExamAssignments(env, studentId, limit = 100, assi
       WHERE student_id = ?
         ${exactAssignmentId ? 'AND assignment_id = ?' : ''}
       ORDER BY exam_date DESC, updated_at DESC
-      ${exactAssignmentId ? 'LIMIT 1' : 'LIMIT 300'}
+      ${exactAssignmentId ? 'LIMIT 1' : notebook ? '' : 'LIMIT 300'}
     `).bind(...(exactAssignmentId ? [studentId, exactAssignmentId] : [studentId])).all(),
     wrongRowsPromise
   ]);
@@ -337,11 +344,12 @@ async function loadStudentClassExamAssignments(env, studentId, limit = 100, assi
 
   const sessionByAssignment = new Map();
   const sessionByExam = new Map();
-  const scopedAssignmentRows = assignments.results || [];
+  const assignmentRows = assignments.results || [];
+  const scopedAssignmentRows = notebook ? assignmentRows.slice(0, safeLimit) : assignmentRows;
   const assignmentsByExamKey = new Map();
   scopedAssignmentRows.forEach(row => {
     const key = buildOmrSessionKey(row);
-    assignmentsByExamKey.set(key, (assignmentsByExamKey.get(key) || 0) + 1);
+    assignmentsByExamKey.set(key, notebook ? Number(row.legacy_session_match_count) : (assignmentsByExamKey.get(key) || 0) + 1);
   });
   let sessionRows = sessions.results || [];
   if (classScope !== null) {
@@ -369,7 +377,7 @@ async function loadStudentClassExamAssignments(env, studentId, limit = 100, assi
     if (assignmentsByExamKey.get(key) === 1 && matches.length === 1) sessionByExam.set(key, matches[0]);
   }
 
-  return dedupeClassExamAssignments(assignments.results || [], sessionByAssignment).map(row => {
+  const exams = dedupeClassExamAssignments(scopedAssignmentRows, sessionByAssignment).map(row => {
     const exactAssignmentSession = sessionByAssignment.get(String(row.id || '')) || null;
     const session = exactAssignmentSession || sessionByExam.get(buildOmrSessionKey(row)) || null;
     return {
@@ -404,6 +412,34 @@ async function loadStudentClassExamAssignments(env, studentId, limit = 100, assi
         : normalizeWrongIds(session ? wrongBySession.get(String(session.id || '')) || [] : [], Number(row.question_count || session?.question_count || 0))
     };
   });
+  if (!notebook) return exams;
+  return {
+    exams: exams.filter(exam => exam.is_submitted && (exam.wrong_ids === null || exam.wrong_ids.length > 0))
+      .map(toWrongNotebookExam),
+    notebook_next_offset: assignmentRows.length > safeLimit ? notebookOffset + safeLimit : null
+  };
+}
+
+// The notebook lists provenance only. An issued snapshot is read through the
+// normal, authorized assignment endpoint when one of its cards is displayed.
+function toWrongNotebookExam(exam) {
+  const { assignment_id, exam_title, exam_date, archive_file, grade_label, is_submitted, wrong_ids } = exam;
+  const wrong_sources = {};
+  let has_snapshot = false;
+  if (exam.mixed_payload_json) {
+    try {
+      const payload = JSON.parse(exam.mixed_payload_json);
+      has_snapshot = Array.isArray(payload?.questions) && payload.questions.length > 0;
+      if (has_snapshot) {
+        for (const number of wrong_ids || []) {
+          const question = payload.questions[number - 1];
+          const source = question?.sourceArchiveFile || question?._sourceFile || payload.meta?.sourceArchiveFile;
+          if (typeof source === 'string') wrong_sources[number] = source;
+        }
+      }
+    } catch (_) { /* The notebook can still show the known wrong positions. */ }
+  }
+  return { assignment_id, exam_title, exam_date, archive_file, grade_label, is_submitted, wrong_ids, wrong_sources, has_snapshot };
 }
 
 export async function handleStudentPortal(request, env, teacher, path, url) {
@@ -588,6 +624,14 @@ export async function handleStudentPortal(request, env, teacher, path, url) {
     );
     if (classAccess?.error) return classAccess.error;
     const allowedClassIds = await teacherPreviewAllowedClassIds(env, teacher, verified.accessMode);
+    if (!exactAssignmentId && url.searchParams.has('notebook_offset')) {
+      const offset = Number(url.searchParams.get('notebook_offset'));
+      if (!Number.isSafeInteger(offset) || offset < 0) {
+        return jsonResponse({ success: false, message: 'invalid notebook offset' }, 400);
+      }
+      const notebook = await loadStudentClassExamAssignments(env, verified.student.id, 60, '', allowedClassIds, offset);
+      return jsonResponse({ success: true, access_mode: verified.accessMode, read_only: verified.readOnly, ...notebook });
+    }
     const exams = await loadStudentClassExamAssignments(
       env,
       verified.student.id,
