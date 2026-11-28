@@ -1,0 +1,18 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["3", "4", "-1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [0, 5], "viewport": [-0.7, 5.7, -3.5, 8.6],
+    "requiredPoints": [{"id": "L", "x": 0, "y": 3}, {"id": "V", "x": 2, "y": 7}, {"id": "R", "x": 5, "y": -2}],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "k=1에서 t=x²−2x≥0로 치환하면 y=−t²+4t+3=−(t−2)²+7이며 t=2에서 최댓값 7이다.",
+  "accessibilityDescription": "t가 0 이상인 부분의 아래로 열린 포물선에서 꼭짓점 (2,7)이 최댓점이고 왼쪽 기준점은 (0,3)이다. 그림은 t=0부터 5까지를 보여 준다.",
+  "sourceConditions": [
+    {"id": "range", "condition": "x≥2일 때 t=x²−2x=(x−1)²−1≥0, 그림은 t∈[0,5] 일부", "mappedTo": "graphPlan.domain"},
+    {"id": "formula", "condition": "k=1에서 y=−t²+4t+3", "mappedTo": "graphPlan.coefficients"},
+    {"id": "peak", "condition": "t=2에서 y=7", "mappedTo": "graphPlan.requiredPoints[1]"}
+  ],
+  "newVisualInformation": ["치환변수 t의 허용 영역에 꼭짓점 t=2가 포함되므로 y의 최대가 실제로 달성됨을 보여 준다."]
+}

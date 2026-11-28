@@ -1,0 +1,21 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {"kind": "SET", "label": "P의 위치", "pieces": [{"lo": {"value": "4", "state": "CLOSED"}, "hi": {"value": "6", "state": "CLOSED"}}]},
+      {"kind": "POINTS", "label": "최소 위치", "band": false, "within": 1, "points": [
+        {"id": "B", "value": "4", "showValue": false},
+        {"id": "P", "value": "16/3"},
+        {"id": "C", "value": "6", "showValue": false}
+      ]}
+    ]
+  },
+  "caption": "둘레가 최대일 때 BC는 [4,6]이므로 P(a,0)의 a∈[4,6]이다. 2a²+4(8−a)²은 a=16/3에서 256/3으로 최소다.",
+  "accessibilityDescription": "닫힌 구간 a=4부터 6까지 B·C의 위치를 표시하고 그 사이의 점 P를 16/3에 놓은 수직선.",
+  "sourceConditions": [
+    {"id": "interval", "condition": "t=4이므로 B(4,0),C(6,0), 4≤a≤6", "mappedTo": "numberLine.rows[0]"},
+    {"id": "optimum", "condition": "2a²+4(8−a)²=6(a−16/3)²+256/3", "mappedTo": "numberLine.rows[1]"}
+  ],
+  "newVisualInformation": ["점 P가 움직이는 실제 닫힌 구간과 최솟값을 달성하는 내부 위치 a=16/3의 포함을 보여 준다."]
+}

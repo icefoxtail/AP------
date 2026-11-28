@@ -1,0 +1,28 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id": "O", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "0"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "A", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "5"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "B", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "-3"}, {"kind": "integer", "value": "4"}]}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "k", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["O"], "args": {"radius": {"kind": "integer", "value": "5"}}, "outputType": "CIRCLE", "factRole": "GIVEN"},
+      {"id": "l", "op": "SOURCE_LINE", "inputs": [], "args": {"a": {"kind": "integer", "value": "1"}, "b": {"kind": "integer", "value": "2"}, "c": {"kind": "integer", "value": "-5"}}, "outputType": "LINE", "factRole": "GIVEN"}
+    ]
+  },
+  "displayPoints": ["O", "A", "B"],
+  "displayLines": ["l"], "displayCircles": ["k"], "displaySegments": [],
+  "coordinateLabels": ["A", "B"],
+  "lineLabels": [{"nodeId": "l", "form": "GENERAL"}],
+  "coordinateCanvas": {"width": 680, "height": 440},
+  "caption": "x²+y²=25인 원과 직선 x+2y=5의 교점은 A(5,0), B(−3,4)이다. x+y=b<2 조건은 B의 b=1을 고른다.",
+  "accessibilityDescription": "원점 O를 중심으로 반지름 5인 원과 직선 x+2y=5가 A(5,0), B(−3,4) 두 점에서 만난다.",
+  "sourceConditions": [
+    {"id": "circle", "condition": "x²+y²=25", "mappedTo": ["mathPlan.nodes[3]", "displayCircles[0]"]},
+    {"id": "line", "condition": "x+2y=5", "mappedTo": ["mathPlan.nodes[4]", "displayLines[0]", "lineLabels[0]"]},
+    {"id": "intersections", "condition": "원과 직선의 교점 (5,0), (−3,4)", "mappedTo": ["mathPlan.nodes[1]", "mathPlan.nodes[2]", "coordinateLabels"]},
+    {"id": "selection", "condition": "x+y=b<2는 (−3,4)를 선택하여 b=1, a=2", "mappedTo": "displayPoints"}
+  ],
+  "newVisualInformation": ["두 연립방정식의 해 후보가 원·직선의 두 교점이며 b<2가 그중 하나를 고른다는 기하 해석을 보여 준다."]
+}

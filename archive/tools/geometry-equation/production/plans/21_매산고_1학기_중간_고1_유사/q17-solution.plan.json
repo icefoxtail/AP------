@@ -1,0 +1,17 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["-3", "-2", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [1, 4], "viewport": [0.4, 4.6, -5.2, 6.4],
+    "requiredPoints": [{"id": "L", "x": 1, "y": -4}, {"id": "R", "x": 4, "y": 5}],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "f(x)=(x−1)²−4는 [1,4]에서 증가하므로 최솟값 f(1)=−4, 최댓값 f(4)=5이며 합은 1이다.",
+  "accessibilityDescription": "x=1에서 꼭짓점 (1,−4)으로 시작해 오른쪽 위로 증가하여 닫힌 끝점 (4,5)에 이르는 포물선 조각.",
+  "sourceConditions": [
+    {"id": "identity", "condition": "f(x−1)+2f(−x)=3x²−6을 계수 비교하면 f=x²−2x−3", "mappedTo": "graphPlan.coefficients"},
+    {"id": "range", "condition": "1≤x≤4이고 두 끝점 포함", "mappedTo": ["graphPlan.domain", "graphPlan.requiredPoints[0]", "graphPlan.requiredPoints[1]"]}
+  ],
+  "newVisualInformation": ["꼭짓점이 구간의 왼쪽 끝이므로 구간 전체에서 단조 증가하여 극값이 양 끝에서 얻어짐을 보여 준다."]
+}

@@ -1,0 +1,20 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["20", "16", "-2"],
+    "sourceDomain": {"kind": "INTERVAL", "range": [0, 5], "states": ["OPEN", "OPEN"]},
+    "domain": [0, 5], "viewport": [-0.5, 5.5, 15, 58],
+    "requiredPoints": [{"id": "V", "x": 4, "y": 52}],
+    "applicationAxes": true, "axisVariable": "t",
+    "axisTickValues": {"x": [1, 2, 3, 4], "y": [20, 30, 40, 50]}
+  },
+  "caption": "직사각형의 좌측 아래 꼭짓점 B(t,0), 우측 아래 C(10−t,0)에서 둘레 L(t)=−2t²+16t+20은 t=4에서 52로 최대다.",
+  "accessibilityDescription": "t가 0과 5 사이일 때 직사각형 둘레 L의 포물선이 (4,52)에서 가장 높고 양 끝은 열린 점이다.",
+  "sourceConditions": [
+    {"id": "geometry", "condition": "y=−x²+10x의 대칭축은 5, 폭 BC=10−2t, 높이 AB=−t²+10t, 0<t<5", "mappedTo": "graphPlan.sourceDomain"},
+    {"id": "perimeter", "condition": "L=2(BC+AB)=−2t²+16t+20", "mappedTo": "graphPlan.coefficients"},
+    {"id": "vertex", "condition": "L=−2(t−4)²+52", "mappedTo": "graphPlan.requiredPoints[0]"},
+    {"id": "axes", "condition": "가로는 위치 t, 세로는 둘레 L", "mappedTo": ["graphPlan.applicationAxes", "graphPlan.axisVariable"]}
+  ],
+  "newVisualInformation": ["원래 포물선 위 직사각형의 둘레 최댓값이 t=4에서 얻어져 밑변이 B(4,0)~C(6,0)임을 보여 준다."]
+}

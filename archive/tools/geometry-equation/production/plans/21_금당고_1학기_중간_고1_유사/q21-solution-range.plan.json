@@ -1,0 +1,19 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "k",
+    "rows": [
+      {"kind": "SET", "label": "첫째 두 교점", "pieces": [{"lo": null, "hi": {"value": "5/4", "state": "OPEN"}}]},
+      {"kind": "SET", "label": "둘째 교점 없음", "pieces": [{"lo": {"value": "-7/2", "state": "OPEN"}, "hi": null}]},
+      {"kind": "RESULT", "label": "공통 범위", "integerPoints": true}
+    ]
+  },
+  "caption": "첫째 이차함수와 서로 다른 두 점에서 만나려면 k<5/4, 둘째 함수와 만나지 않으려면 k>−7/2이며, 이 범위의 자연수는 1뿐이다.",
+  "accessibilityDescription": "각각 k가 5/4 미만과 −7/2 초과인 두 수직선의 공통 구간을 마지막 줄에 두 열린 끝점으로 표시한다.",
+  "sourceConditions": [
+    {"id": "first", "condition": "첫째 연립방정식 x²−4x+4k−1=0의 판별식 D/4=5−4k>0", "mappedTo": "numberLine.rows[0]"},
+    {"id": "second", "condition": "둘째 연립방정식 x²+2kx+k²+2k+7=0의 판별식 D/4=−2k−7<0", "mappedTo": "numberLine.rows[1]"},
+    {"id": "intersection", "condition": "−7/2<k<5/4의 교집합과 정수점", "mappedTo": "numberLine.rows[2]"}
+  ],
+  "newVisualInformation": ["서로 다른 교점 수 조건이 만드는 두 열린 부등식 범위의 교집합과 자연수 k=1의 포함을 보여 준다."]
+}

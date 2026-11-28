@@ -1,0 +1,24 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["0", "-7", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [1, 5], "viewport": [0.3, 5.7, -13.6, -4.8],
+    "requiredPoints": [
+      {"id": "L", "x": 1, "y": -6},
+      {"id": "V", "x": 3.5, "y": -12.25},
+      {"id": "R", "x": 5, "y": -10}
+    ],
+    "exactCoordinates": {"V": ["7/2", "-49/4"]},
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "t=f(x)의 실제 범위는 1≤t≤5이다. A=t²−7t는 t=1에서 −6으로 최대이며 x=2에서 이 값이 나온다.",
+  "accessibilityDescription": "t=1부터 5까지 양 끝이 포함된 위로 열린 포물선이며 (1,−6)이 꼭짓점 (7/2,−49/4)과 오른쪽 끝 (5,−10)보다 높다.",
+  "sourceConditions": [
+    {"id": "range", "condition": "x=−2에서 f(−2)=5를 포함하므로 실제 치역은 1≤t≤5", "mappedTo": ["graphPlan.domain", "graphPlan.requiredPoints[0]", "graphPlan.requiredPoints[2]"]},
+    {"id": "quadratic", "condition": "A=t²−7t=(t−7/2)²−49/4", "mappedTo": "graphPlan.coefficients"},
+    {"id": "minimum", "condition": "꼭짓점에서 A=−49/4", "mappedTo": "graphPlan.requiredPoints[1]"},
+    {"id": "maximum", "condition": "A(1)=−6>A(5)=−10", "mappedTo": ["graphPlan.requiredPoints[0]", "graphPlan.requiredPoints[2]"]}
+  ],
+  "newVisualInformation": ["현행 해설에서 빠진 x=−2에 해당하는 t=5의 닫힌 끝점을 정확히 넣고 최댓값이 t=1에서 나오는 이유를 보여 준다."]
+}
