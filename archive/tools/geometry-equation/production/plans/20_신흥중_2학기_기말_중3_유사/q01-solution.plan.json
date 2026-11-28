@@ -1,0 +1,221 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 53.13,
+        "label": "x",
+        "labelKind": "MATH",
+        "factRole": "GIVEN",
+        "color": "GREEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "8",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "6",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "solution_sCA_2",
+        "ownerSegment": "sCA",
+        "text": "10",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sAB"
+        ],
+        "color": "WARM"
+      },
+      {
+        "segments": [
+          "sCA"
+        ],
+        "color": "BLUE"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "caption": "20_신흥중_2학기_기말_중3_유사 1번 해설에서 보조선·도출 각 또는 계산된 길이를 표시한 그림",
+  "accessibilityDescription": "20_신흥중_2학기_기말_중3_유사 1번 풀이로 도출한 기하 관계을 보여 주는 공식 엔진 그림",
+  "newVisualInformation": [
+    "해설의 보조선과 독립 계산 결과를 공식 렌더 필드에 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q01_solution_f0",
+      "condition": "실제 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q01_solution_f1",
+      "condition": "실제 선분 B–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q01_solution_f2",
+      "condition": "실제 선분 C–A",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q01_solution_f3",
+      "condition": "선분 sAB의 수식 8",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q01_solution_f4",
+      "condition": "선분 sBC의 수식 6",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q01_solution_f5",
+      "condition": "선분 sCA의 수식 10",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q01_solution_f6",
+      "condition": "각 A–C–B의 x 표식",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q01_solution_f7",
+      "condition": "수직 표시 A–B–C",
+      "mappedTo": "rightAngles[0]"
+    },
+    {
+      "id": "q01_solution_f8",
+      "condition": "선분 색 구별 sAB",
+      "mappedTo": "planeMarks.segmentColors[0]"
+    },
+    {
+      "id": "q01_solution_f9",
+      "condition": "선분 색 구별 sCA",
+      "mappedTo": "planeMarks.segmentColors[1]"
+    }
+  ],
+  "sourceQuote": "직각삼각형 $ABC$에서 $\\angle B = 90^\\circ$이므로 빗변은 선분 $AC$이다. 피타고라스 정리에 의하여 $$\\overline{AC} = \\sqrt{\\overline{AB}^2 + \\overline{BC}^2} = \\sqrt{8^2 + 6^2} = \\sqrt{64 + 36} = \\sqrt{100} = 10\\rm,cm$$ 각 $x = \\angle ACB$의 맞은편 변(높이)은 $\\overline{AB} = 8\\rm,cm$이므로 사인의 정의에 의하여 $$\\sin x = \\dfrac{\\overline{AB}}{\\overline{AC}} = \\dfrac{8}{10} = \\dfrac{4}{5}$$ 따라서 정답은 ①이다."
+}

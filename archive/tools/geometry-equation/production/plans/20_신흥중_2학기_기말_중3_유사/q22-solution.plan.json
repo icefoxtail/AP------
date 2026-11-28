@@ -1,0 +1,451 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "215"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "325"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "15"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "65"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBA",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lCD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lBA",
+          "lCD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lBC",
+          "lAD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 580
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "hiddenPointNames": [
+    "O"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "BA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "AE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "DF",
+      "refs": [
+        "D",
+        "F"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aE",
+        "refs": [
+          "A",
+          "E",
+          "D"
+        ],
+        "value": 30,
+        "label": "30",
+        "color": "BLUE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aF",
+        "refs": [
+          "D",
+          "F",
+          "C"
+        ],
+        "value": 50,
+        "label": "50",
+        "color": "WARM",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "solution_DAB",
+        "refs": [
+          "D",
+          "A",
+          "B"
+        ],
+        "value": 80,
+        "label": "80",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "solution_ABC",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 50,
+        "label": "50",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "solution_BCD",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 100,
+        "label": "100",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "solution_CDA",
+        "refs": [
+          "C",
+          "D",
+          "A"
+        ],
+        "value": 130,
+        "label": "130",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "expressionLabels": []
+  },
+  "caption": "20_신흥중_2학기_기말_중3_유사 22번 해설에서 보조선·도출 각 또는 계산된 길이를 표시한 그림",
+  "accessibilityDescription": "20_신흥중_2학기_기말_중3_유사 22번 풀이로 도출한 기하 관계을 보여 주는 공식 엔진 그림",
+  "newVisualInformation": [
+    "해설의 보조선과 독립 계산 결과를 공식 렌더 필드에 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q22_solution_f0",
+      "condition": "실제 선분 B–A",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q22_solution_f1",
+      "condition": "실제 선분 A–E",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q22_solution_f2",
+      "condition": "실제 선분 C–D",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q22_solution_f3",
+      "condition": "실제 선분 D–E",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q22_solution_f4",
+      "condition": "실제 선분 A–D",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q22_solution_f5",
+      "condition": "실제 선분 D–F",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "q22_solution_f6",
+      "condition": "실제 선분 B–C",
+      "mappedTo": "displaySegments[6]"
+    },
+    {
+      "id": "q22_solution_f7",
+      "condition": "실제 선분 C–F",
+      "mappedTo": "displaySegments[7]"
+    },
+    {
+      "id": "q22_solution_f8",
+      "condition": "각 A–E–D의 30 표식",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q22_solution_f9",
+      "condition": "각 D–F–C의 50 표식",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "q22_solution_f10",
+      "condition": "각 D–A–B의 80 표식",
+      "mappedTo": "planeMarks.angles[2]"
+    },
+    {
+      "id": "q22_solution_f11",
+      "condition": "각 A–B–C의 50 표식",
+      "mappedTo": "planeMarks.angles[3]"
+    },
+    {
+      "id": "q22_solution_f12",
+      "condition": "각 B–C–D의 100 표식",
+      "mappedTo": "planeMarks.angles[4]"
+    },
+    {
+      "id": "q22_solution_f13",
+      "condition": "각 C–D–A의 130 표식",
+      "mappedTo": "planeMarks.angles[5]"
+    },
+    {
+      "id": "q22_solution_f14",
+      "condition": "원 circ의 테두리",
+      "mappedTo": "displayCircles[0]"
+    }
+  ],
+  "sourceQuote": "1) 삼각형 $EAD$에서 외각 및 평각의 성질에 의하여 $$\\angle EAD = 180^\\circ - \\angle A, \\quad \\angle ADE = 180^\\circ - \\angle D$$ 삼각형 $EAD$의 세 내각의 합은 $180^\\circ$이므로 $$30^\\circ + (180^\\circ - \\angle A) + (180^\\circ - \\angle D) = 180^\\circ$$ $$\\angle A + \\angle D = 210^\\circ \\quad \\cdots \\text{①}$$  \n     \n2) 삼각형 $FCD$에서 평각의 성질에 의하여 $$\\angle FDC = 180^\\circ - \\angle D, \\quad \\angle DCF = 180^\\circ - \\angle C$$ 삼각형 $FCD$의 세 내각의 합은 $180^\\circ$이므로 $$50^\\circ + (180^\\circ - \\angle D) + (180^\\circ - \\angle C) = 180^\\circ$$ $$\\angle C + \\angle D = 230^\\circ \\quad \\cdots \\text{②}$$  \n     \n3) 사각형 $ABCD$가 원에 내접하므로 마주 보는 두 대각의 크기의 합은 $180^\\circ$이다. $$\\angle A + \\angle C = 180^\\circ \\quad \\cdots \\text{③}$$ $$\\angle B + \\angle D = 180^\\circ \\quad \\cdots \\text{④}$$  \n     \n4) 식 ①과 식 ②를 변변 더하면 $$(\\angle A + \\angle C) + 2\\angle D = 210^\\circ + 230^\\circ = 440^\\circ$$ 여기에 식 ③($\\angle A + \\angle C = 180^\\circ$)을 대입하면 $$180^\\circ + 2\\angle D = 440^\\circ \\implies 2\\angle D = 260^\\circ \\implies \\angle D = 130^\\circ$$ 따라서 나머지 각들을 구하면 $$\\angle A = 210^\\circ - 130^\\circ = 80^\\circ$$ $$\\angle C = 230^\\circ - 130^\\circ = 100^\\circ$$ $$\\angle B = 180^\\circ - 130^\\circ = 50^\\circ$$\n\n답: $\\angle A = 80^\\circ, \\angle B = 50^\\circ, \\angle C = 100^\\circ, \\angle D = 130^\\circ$"
+}

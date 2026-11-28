@@ -1,0 +1,417 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "270"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "40"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "110"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "rOA",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "rOB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "tA",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "A",
+          "rOA"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "tB",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "B",
+          "rOB"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "tA",
+          "tB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "VECTOR_SCALE_POINT",
+        "inputs": [
+          "P",
+          "B"
+        ],
+        "args": {
+          "k": {
+            "kind": "rational",
+            "numerator": "5",
+            "denominator": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 580
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "P"
+  ],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "PA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "PB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aP",
+        "refs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "value": 50,
+        "label": "50",
+        "color": "VIOLET",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aA",
+        "refs": [
+          "C",
+          "A",
+          "D"
+        ],
+        "value": 80,
+        "label": "80",
+        "color": "GREEN",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aB",
+        "refs": [
+          "C",
+          "B",
+          "E"
+        ],
+        "value": 35,
+        "label": "35",
+        "color": "BLUE",
+        "factRole": "CONCLUSION",
+        "labelKind": "MATH"
+      }
+    ],
+    "expressionLabels": []
+  },
+  "caption": "20_신흥중_2학기_기말_중3_유사 14번 해설에서 보조선·도출 각 또는 계산된 길이를 표시한 그림",
+  "accessibilityDescription": "20_신흥중_2학기_기말_중3_유사 14번 풀이로 도출한 기하 관계을 보여 주는 공식 엔진 그림",
+  "sourceConditions": [
+    {
+      "id": "q14_solution_f0",
+      "condition": "실제 선분 P–A",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q14_solution_f1",
+      "condition": "실제 선분 A–D",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q14_solution_f2",
+      "condition": "실제 선분 P–B",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q14_solution_f3",
+      "condition": "실제 선분 B–E",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q14_solution_f4",
+      "condition": "실제 선분 A–B",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q14_solution_f5",
+      "condition": "실제 선분 A–C",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "q14_solution_f6",
+      "condition": "실제 선분 B–C",
+      "mappedTo": "displaySegments[6]"
+    },
+    {
+      "id": "q14_solution_f7",
+      "condition": "실제 선분 O–A",
+      "mappedTo": "displaySegments[7]"
+    },
+    {
+      "id": "q14_solution_f8",
+      "condition": "실제 선분 O–B",
+      "mappedTo": "displaySegments[8]"
+    },
+    {
+      "id": "q14_solution_f9",
+      "condition": "각 A–P–B의 50 표식",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q14_solution_f10",
+      "condition": "각 C–A–D의 80 표식",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "q14_solution_f11",
+      "condition": "각 C–B–E의 35 표식",
+      "mappedTo": "planeMarks.angles[2]"
+    },
+    {
+      "id": "q14_solution_f12",
+      "condition": "원 circ의 테두리",
+      "mappedTo": "displayCircles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "해설의 보조선과 독립 계산 결과를 공식 렌더 필드에 표시"
+  ],
+  "sourceQuote": "원 밖의 점 $P$에서 그은 두 접선이 이루는 각 $\\angle APB = 50^\\circ$와 두 접점에 대한 중심각 $\\angle AOB$의 합은 $180^\\circ$이므로 $$\\overparen{AB} = \\angle AOB = 180^\\circ - 50^\\circ = 130^\\circ$$ 접선 $AD$와 현 $AC$가 이루는 접현각 $\\angle CAD = 80^\\circ$에 대응하는 호 $\\overparen{AC}$의 중심각의 크기는 $$\\overparen{AC} = 2 \\times 80^\\circ = 160^\\circ$$ 원 전체의 중심각은 $360^\\circ$이므로 남은 호 $\\overparen{BC}$의 크기는 $$\\overparen{BC} = 360^\\circ - 130^\\circ - 160^\\circ = 70^\\circ$$ 접선 $BE$와 현 $BC$가 이루는 접현각 $\\angle CBE$의 크기는 호 $\\overparen{BC}$에 대한 원주각의 크기와 같으므로 $$\\angle CBE = \\dfrac{70^\\circ}{2} = 35^\\circ$$ 따라서 정답은 ④이다."
+}

@@ -1,0 +1,337 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "M"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBM",
+      "refs": [
+        "B",
+        "M"
+      ]
+    },
+    {
+      "id": "sMC",
+      "refs": [
+        "M",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "6",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAD",
+        "ownerSegment": "sDA",
+        "text": "12",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "solution_sBC_2",
+        "ownerSegment": "sBC",
+        "text": "12",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "solution_sMC_3",
+        "ownerSegment": "sMC",
+        "text": "6",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eM",
+        "count": 1,
+        "segments": [
+          "sBM",
+          "sMC"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 380
+  },
+  "caption": "20_신흥중_2학기_기말_중3_유사 4번 해설에서 보조선·도출 각 또는 계산된 길이를 표시한 그림",
+  "accessibilityDescription": "20_신흥중_2학기_기말_중3_유사 4번 풀이로 도출한 기하 관계을 보여 주는 공식 엔진 그림",
+  "newVisualInformation": [
+    "해설의 보조선과 독립 계산 결과를 공식 렌더 필드에 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q04_solution_f0",
+      "condition": "실제 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q04_solution_f1",
+      "condition": "실제 선분 B–M",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q04_solution_f2",
+      "condition": "실제 선분 M–C",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q04_solution_f3",
+      "condition": "실제 선분 C–D",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q04_solution_f4",
+      "condition": "실제 선분 D–A",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q04_solution_f5",
+      "condition": "실제 선분 A–M",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "q04_solution_f6",
+      "condition": "실제 선분 A–C",
+      "mappedTo": "displaySegments[6]"
+    },
+    {
+      "id": "q04_solution_f7",
+      "condition": "실제 선분 B–C",
+      "mappedTo": "displaySegments[7]"
+    },
+    {
+      "id": "q04_solution_f8",
+      "condition": "선분 sAB의 수식 6",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q04_solution_f9",
+      "condition": "선분 sDA의 수식 12",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q04_solution_f10",
+      "condition": "선분 sBC의 수식 12",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q04_solution_f11",
+      "condition": "선분 sMC의 수식 6",
+      "mappedTo": "planeMarks.expressionLabels[3]"
+    },
+    {
+      "id": "q04_solution_f12",
+      "condition": "각 A–B–C의 60 표식",
+      "mappedTo": "planeMarks.angles[0]"
+    }
+  ],
+  "sourceQuote": "평행사변형에서 마주 보는 두 변의 길이는 같으므로 $$\\overline{BC} = \\overline{AD} = 12\\rm,cm$$ 점 $M$이 변 $BC$의 중점이므로 $$\\overline{MC} = \\dfrac{1}{2}\\overline{BC} = \\dfrac{1}{2} \\times 12 = 6\\rm,cm$$ 평행사변형의 높이 $h$는 $\\angle B = 60^\\circ$를 이용하면 $$h = \\overline{AB} \\times \\sin 60^\\circ = 6 \\times \\dfrac{\\sqrt{3}}{2} = 3\\sqrt{3}\\rm,cm$$ 따라서 $\\triangle AMC$의 넓이는 $$\\triangle AMC = \\dfrac{1}{2} \\times \\overline{MC} \\times h = \\dfrac{1}{2} \\times 6 \\times 3\\sqrt{3} = 9\\sqrt{3}\\rm,cm^2$$ 그러므로 정답은 ③이다."
+}

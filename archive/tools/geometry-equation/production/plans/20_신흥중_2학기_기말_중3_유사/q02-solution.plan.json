@@ -1,0 +1,301 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sBH",
+      "refs": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "sHC",
+      "refs": [
+        "H",
+        "C"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aBAH",
+        "refs": [
+          "B",
+          "A",
+          "H"
+        ],
+        "value": 30,
+        "label": "30",
+        "factRole": "GIVEN",
+        "color": "BLUE"
+      },
+      {
+        "id": "aHAC",
+        "refs": [
+          "H",
+          "A",
+          "C"
+        ],
+        "value": 45,
+        "label": "45",
+        "factRole": "GIVEN",
+        "color": "WARM"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "6",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "solution_sAH_1",
+        "ownerSegment": "sAH",
+        "text": "3sqrt(3)",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "solution_sCA_2",
+        "ownerSegment": "sCA",
+        "text": "3sqrt(6)",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sAH"
+        ],
+        "color": "GREEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "B",
+        "H",
+        "A"
+      ]
+    }
+  ],
+  "caption": "20_신흥중_2학기_기말_중3_유사 2번 해설에서 보조선·도출 각 또는 계산된 길이를 표시한 그림",
+  "accessibilityDescription": "20_신흥중_2학기_기말_중3_유사 2번 풀이로 도출한 기하 관계을 보여 주는 공식 엔진 그림",
+  "newVisualInformation": [
+    "해설의 보조선과 독립 계산 결과를 공식 렌더 필드에 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q02_solution_f0",
+      "condition": "실제 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q02_solution_f1",
+      "condition": "실제 선분 C–A",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q02_solution_f2",
+      "condition": "실제 선분 B–H",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q02_solution_f3",
+      "condition": "실제 선분 H–C",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q02_solution_f4",
+      "condition": "실제 선분 A–H",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q02_solution_f5",
+      "condition": "선분 sAB의 수식 6",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q02_solution_f6",
+      "condition": "선분 sAH의 수식 3sqrt(3)",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q02_solution_f7",
+      "condition": "선분 sCA의 수식 3sqrt(6)",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q02_solution_f8",
+      "condition": "각 B–A–H의 30 표식",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q02_solution_f9",
+      "condition": "각 H–A–C의 45 표식",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "q02_solution_f10",
+      "condition": "수직 표시 B–H–A",
+      "mappedTo": "rightAngles[0]"
+    },
+    {
+      "id": "q02_solution_f11",
+      "condition": "선분 색 구별 sAH",
+      "mappedTo": "planeMarks.segmentColors[0]"
+    }
+  ],
+  "sourceQuote": "직각삼각형 $ABH$에서 $\\overline{AB} = 6\\rm,cm$, $\\angle BAH = 30^\\circ$이므로 $$\\overline{AH} = \\overline{AB} \\times \\cos 30^\\circ = 6 \\times \\dfrac{\\sqrt{3}}{2} = 3\\sqrt{3}\\rm,cm$$ 직각삼각형 $AHC$에서 $\\angle HAC = 45^\\circ$이므로 $$\\cos 45^\\circ = \\dfrac{\\overline{AH}}{\\overline{AC}}$$ $$\\overline{AC} = \\dfrac{\\overline{AH}}{\\cos 45^\\circ} = \\dfrac{3\\sqrt{3}}{\\sqrt{2}/2} = \\dfrac{6\\sqrt{3}}{\\sqrt{2}} = 3\\sqrt{6}\\rm,cm$$ 따라서 정답은 ③이다."
+}

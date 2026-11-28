@@ -1,0 +1,331 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "230"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "344"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "276"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "55"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "95"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "AE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "EC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aO",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 114,
+        "label": "114",
+        "color": "WARM",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aD",
+        "refs": [
+          "C",
+          "D",
+          "B"
+        ],
+        "value": 34,
+        "label": "34",
+        "color": "BLUE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aE",
+        "refs": [
+          "A",
+          "E",
+          "C"
+        ],
+        "value": 23,
+        "label": "23",
+        "color": "GREEN",
+        "factRole": "CONCLUSION",
+        "labelKind": "MATH"
+      }
+    ],
+    "expressionLabels": []
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 580
+  },
+  "caption": "20_신흥중_2학기_기말_중3_유사 12번 해설에서 보조선·도출 각 또는 계산된 길이를 표시한 그림",
+  "accessibilityDescription": "20_신흥중_2학기_기말_중3_유사 12번 풀이로 도출한 기하 관계을 보여 주는 공식 엔진 그림",
+  "newVisualInformation": [
+    "해설의 보조선과 독립 계산 결과를 공식 렌더 필드에 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q12_solution_f0",
+      "condition": "실제 선분 O–A",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q12_solution_f1",
+      "condition": "실제 선분 O–B",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q12_solution_f2",
+      "condition": "실제 선분 A–E",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q12_solution_f3",
+      "condition": "실제 선분 E–C",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q12_solution_f4",
+      "condition": "실제 선분 C–D",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q12_solution_f5",
+      "condition": "실제 선분 D–B",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "q12_solution_f6",
+      "condition": "각 A–O–B의 114 표식",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q12_solution_f7",
+      "condition": "각 C–D–B의 34 표식",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "q12_solution_f8",
+      "condition": "각 A–E–C의 23 표식",
+      "mappedTo": "planeMarks.angles[2]"
+    },
+    {
+      "id": "q12_solution_f9",
+      "condition": "원 circ의 테두리",
+      "mappedTo": "displayCircles[0]"
+    }
+  ],
+  "sourceQuote": "중심각 $\\angle AOB = 114^\\circ$이므로 호 $\\overparen{ACB}$의 중심각의 크기는 $114^\\circ$이다. 원주각 $\\angle CDB = 34^\\circ$가 바라보는 호 $\\overparen{CB}$의 중심각의 크기는 원주각의 $2$배이므로 $$\\overparen{CB} = 2 \\times 34^\\circ = 68^\\circ$$ 따라서 호 $\\overparen{AC}$의 중심각의 크기는 $$\\overparen{AC} = \\overparen{ACB} - \\overparen{CB} = 114^\\circ - 68^\\circ = 46^\\circ$$ 원주각 $\\angle x = \\angle AEC$는 호 $\\overparen{AC}$를 바라보는 원주각이므로 중심각의 절반이다. $$\\angle x = \\dfrac{46^\\circ}{2} = 23^\\circ$$ 따라서 정답은 ②이다."
+}

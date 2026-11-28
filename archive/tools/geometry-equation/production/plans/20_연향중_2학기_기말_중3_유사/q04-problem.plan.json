@@ -1,0 +1,371 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "160"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "210"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "300"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ab",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cd",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ad",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bc",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ab",
+          "cd"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ad",
+          "bc"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "PB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "PD",
+      "refs": [
+        "P",
+        "D"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "APC20",
+        "refs": [
+          "A",
+          "P",
+          "C"
+        ],
+        "value": 20,
+        "factRole": "GIVEN",
+        "label": "20",
+        "color": "BLUE"
+      },
+      {
+        "id": "BED70",
+        "refs": [
+          "B",
+          "E",
+          "D"
+        ],
+        "value": 70,
+        "factRole": "GIVEN",
+        "label": "70",
+        "color": "WARM"
+      },
+      {
+        "id": "ABC25",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 25,
+        "factRole": "DERIVED_INTERMEDIATE",
+        "label": "x",
+        "color": "ROSE",
+        "labelPlacement": "LEADER"
+      },
+      {
+        "id": "BCD45",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 45,
+        "factRole": "DERIVED_INTERMEDIATE",
+        "label": "y",
+        "color": "GREEN",
+        "labelPlacement": "LEADER"
+      }
+    ],
+    "expressionLabels": []
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "caption": "20_연향중_2학기_기말_중3_유사 4번 발문의 주어진 선분·각·호를 공식 엔진 좌표와 표식으로 옮긴 그림",
+  "accessibilityDescription": "20_연향중_2학기_기말_중3_유사 4번 발문 주어진 기하조건을 보여 주는 공식 엔진 그림",
+  "newVisualInformation": [
+    "발문의 주어진 도형·호·각 조건을 공식 렌더 필드에 1:1로 대응"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q04_problem_f0",
+      "condition": "실제 선분 P–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q04_problem_f1",
+      "condition": "실제 선분 P–D",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q04_problem_f2",
+      "condition": "실제 선분 A–D",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q04_problem_f3",
+      "condition": "실제 선분 B–C",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q04_problem_f4",
+      "condition": "각 A–P–C의 20 표식",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q04_problem_f5",
+      "condition": "각 B–E–D의 70 표식",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "q04_problem_f6",
+      "condition": "각 A–B–C의 x 표식",
+      "mappedTo": "planeMarks.angles[2]"
+    },
+    {
+      "id": "q04_problem_f7",
+      "condition": "각 B–C–D의 y 표식",
+      "mappedTo": "planeMarks.angles[3]"
+    },
+    {
+      "id": "q04_problem_f8",
+      "condition": "원 circ의 테두리",
+      "mappedTo": "displayCircles[0]"
+    }
+  ],
+  "sourceQuote": "원 위의 네 점 $A, B, C, D$에 대하여 두 현 $AD$와 $BC$의 원 내부 교점을 $E$라 하고, 두 현 $AB$와 $DC$의 연장선이 원 외부에서 만나는 점을 $P$라 하자. $\\angle P = 20^\\circ$, $\\angle BED = 70^\\circ$일 때, $\\angle x = \\angle ABC$, $\\angle y = \\angle BCD$의 크기는?"
+}

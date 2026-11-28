@@ -1,0 +1,363 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "25",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "60",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "25",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-60",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "10",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-10",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "P",
+    "Q",
+    "T"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "OP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "CQ",
+      "refs": [
+        "C",
+        "Q"
+      ]
+    },
+    {
+      "id": "BT",
+      "refs": [
+        "B",
+        "T"
+      ]
+    },
+    {
+      "id": "TC",
+      "refs": [
+        "T",
+        "C"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rP",
+      "refs": [
+        "O",
+        "P",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lOP",
+        "ownerSegment": "OP",
+        "text": "5",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      },
+      {
+        "id": "lOA",
+        "ownerSegment": "OA",
+        "text": "13",
+        "factRole": "GIVEN",
+        "unit": "cm",
+        "labelAt": 0.3
+      },
+      {
+        "id": "solution_sAP_2",
+        "ownerSegment": "sAP",
+        "text": "12",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "angles": []
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 580
+  },
+  "caption": "20_신흥중_2학기_기말_중3_유사 9번 해설에서 보조선·도출 각 또는 계산된 길이를 표시한 그림",
+  "accessibilityDescription": "20_신흥중_2학기_기말_중3_유사 9번 풀이로 도출한 기하 관계을 보여 주는 공식 엔진 그림",
+  "newVisualInformation": [
+    "해설의 보조선과 독립 계산 결과를 공식 렌더 필드에 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q09_solution_f0",
+      "condition": "실제 선분 O–P",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q09_solution_f1",
+      "condition": "실제 선분 O–A",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q09_solution_f2",
+      "condition": "실제 선분 A–B",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q09_solution_f3",
+      "condition": "실제 선분 B–P",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q09_solution_f4",
+      "condition": "실제 선분 A–C",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q09_solution_f5",
+      "condition": "실제 선분 C–Q",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "q09_solution_f6",
+      "condition": "실제 선분 B–T",
+      "mappedTo": "displaySegments[6]"
+    },
+    {
+      "id": "q09_solution_f7",
+      "condition": "실제 선분 T–C",
+      "mappedTo": "displaySegments[7]"
+    },
+    {
+      "id": "q09_solution_f8",
+      "condition": "실제 선분 A–P",
+      "mappedTo": "displaySegments[8]"
+    },
+    {
+      "id": "q09_solution_f9",
+      "condition": "선분 OP의 수식 5",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q09_solution_f10",
+      "condition": "선분 OA의 수식 13",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q09_solution_f11",
+      "condition": "선분 sAP의 수식 12",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q09_solution_f12",
+      "condition": "원 circ의 테두리",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "q09_solution_f13",
+      "condition": "수직 표시 O–P–B",
+      "mappedTo": "rightAngles[0]"
+    }
+  ],
+  "sourceQuote": "선분 $AP$는 원 $O$의 접선이므로 접점 $P$에서 반지름 $OP$와 수직이다. $$\\angle OPA = 90^\\circ$$ 직각삼각형 $OPA$에서 피타고라스 정리에 의하여 $$\\overline{AP} = \\sqrt{\\overline{OA}^2 - \\overline{OP}^2} = \\sqrt{13^2 - 5^2} = \\sqrt{169 - 25} = \\sqrt{144} = 12\\rm,cm$$ 원 밖의 한 점에서 원에 그은 두 접선의 길이는 같으므로 $$\\overline{AQ} = \\overline{AP} = 12\\rm,cm, \\quad \\overline{BP} = \\overline{BT}, \\quad \\overline{CQ} = \\overline{CT}$$ 따라서 삼각형 $ABC$의 둘레의 길이는 $$\\overline{AB} + \\overline{BC} + \\overline{CA} = \\overline{AB} + (\\overline{BT} + \\overline{CT}) + \\overline{CA} = (\\overline{AB} + \\overline{BP}) + (\\overline{AC} + \\overline{CQ}) = \\overline{AP} + \\overline{AQ}$$ $$= 12 + 12 = 24\\rm,cm$$ 그러므로 정답은 ④이다."
+}
