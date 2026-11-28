@@ -1,0 +1,7 @@
+{
+  "capability":"piecewise-polynomial-spike-v1",
+  "graphPlan":{"family":"piecewise-polynomial","pieces":[{"coefficients":["0","7"]},{"coefficients":["0","7","-1"]},{"coefficients":["36","-5"]}],"breakpoints":[{"x":"0","y":"0"},{"x":"6","y":"6"}],"sourceDomain":{"kind":"ALL_REALS"},"requiredPoints":[{"id":"L","x":"0","y":"0"},{"id":"V","x":"7/2","y":"49/4"},{"id":"R","x":"6","y":"6"},{"id":"P","x":"2","y":"10"},{"id":"Q","x":"5","y":"10"}],"referenceLines":[{"id":"h","y":"10","intersectionX":["2","5"]}],"axisTickValues":{"x":[],"y":[]}},
+  "caption":"가로축의 일반 변수 x는 매개변수 k를 뜻한다. 최솟값 함수 m(k)는 k<0에서 7k, 0≤k≤6에서 −k²+7k, k>6에서 36−5k이며 수평선 10과 k=2,5에서 만난다.",
+  "sourceConditions":[{"id":"left","condition":"k<0에서 x=0이 최소 ⇒ m(k)=7k","mappedTo":"graphPlan.pieces[0]"},{"id":"center","condition":"0≤k≤6에서 x=k가 최소 ⇒ m(k)=−k²+7k","mappedTo":"graphPlan.pieces[1]"},{"id":"right","condition":"k>6에서 x=6이 최소 ⇒ m(k)=36−5k","mappedTo":"graphPlan.pieces[2]"},{"id":"joins","condition":"k=0,6에서 각각 m=0,6으로 연속","mappedTo":"graphPlan.breakpoints"},{"id":"solutions","condition":"m(k)=10 ⇒ (k−2)(k−5)=0, 두 값 합7","mappedTo":["graphPlan.referenceLines","graphPlan.requiredPoints[3]","graphPlan.requiredPoints[4]"]}],
+  "newVisualInformation":["경계에서 끊어지지 않는 세 경우와 m=10과의 두 교점을 함께 그린다."]
+}

@@ -1,0 +1,11 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "graphPlan":{"family":"multi-curve","viewport":[-4,4,-6,26],"curves":[
+    {"id":"f","kind":"Y_OF_X","coefficients":["-1","4","1"],"domain":["-3","3"],"color":"BLUE","label":"y=x^2+4x-1"},
+    {"id":"g","kind":"Y_OF_X","coefficients":["4","-2","2"],"domain":["-3","3"],"color":"WARM","label":"y=2x^2-2x+4"},
+    {"id":"l","kind":"LINE","coefficients":["0","2"],"domain":["-3","3"],"color":"GREEN","label":"y=2x"}
+  ],"axisTickValues":{"x":[],"y":[]}},
+  "caption":"정수 범위 −2≤k<2의 대표값 k=0에서 직선 y=2x는 첫 포물선과 두 점에서 만나고, 둘째 포물선과 만나지 않는다.",
+  "sourceConditions":[{"id":"first","condition":"f(x)=x²+4x−1: y=2x+k와 만나려면 k≥−2","mappedTo":"graphPlan.curves[0]"},{"id":"second","condition":"g(x)=2x²−2x+4: y=2x+k와 안 만나려면 k<2","mappedTo":"graphPlan.curves[1]"},{"id":"sample","condition":"k=0은 −2≤k<2를 만족하며 직선 y=2x를 사용","mappedTo":"graphPlan.curves[2]"}],
+  "newVisualInformation":["두 포물선에 대한 동일 직선의 교점 유무를 실제 곡선 배치로 비교한다. k 전체 범위는 별도 수직선 plan으로 나타낸다."]
+}

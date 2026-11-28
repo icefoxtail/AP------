@@ -1,0 +1,11 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "graphPlan":{"family":"multi-curve","viewport":[-1,10,-50,70],"curves":[
+    {"id":"f","kind":"Y_OF_X","coefficients":["0","4","-1"],"domain":["-1","9"],"color":"BLUE","label":"y=-x^2+4x"},
+    {"id":"tangent","kind":"LINE","coefficients":["64","-12"],"domain":["-1","9"],"color":"WARM","label":"y=-12x+64"}
+  ],"overlays":{"points":[{"id":"O","x":"0","y":"0"},{"id":"A","x":"16/3","y":"0"},{"id":"B","x":"0","y":"64"},{"id":"C","x":"8","y":"-32"},{"id":"D","x":"8","y":"0"}],"segments":[{"id":"OA","from":"O","to":"A"},{"id":"OB","from":"O","to":"B"},{"id":"AB","from":"A","to":"B"},{"id":"AC","from":"A","to":"C"},{"id":"CD","from":"C","to":"D","dashed":true},{"id":"DA","from":"D","to":"A"}],"polygons":[{"id":"ABO","points":["A","B","O"],"fill":"LIGHT"},{"id":"ACD","points":["A","C","D"],"fill":"MEDIUM"}],"rightAngles":[{"at":"D","from":["O","C"]}]},"axisTickValues":{"x":[],"y":[]}},
+  "pointNames":{"A":"A","B":"B","C":"C","D":"D","O":"O"},
+  "caption":"다른 근 t=8에서도 접선 기울기는 −12이고, [ABO]=512/3, [ACD]=128/3으로 넓이 비 4를 만족한다. 따라서 최대 기울기는 −4/3이다.",
+  "sourceConditions":[{"id":"tangent","condition":"f'(8)=−12, b=8²=64","mappedTo":"graphPlan.curves"},{"id":"intercepts","condition":"A=(16/3,0), B=(0,64), C=(8,−32), D=(8,0)","mappedTo":"graphPlan.overlays.points"},{"id":"areas","condition":"[ABO]=512/3=4×128/3=4[ACD]","mappedTo":"graphPlan.overlays.polygons"}],
+  "newVisualInformation":["둘째 근 t=8에서는 접점이 x축 아래에 있어도 동일한 4배 넓이 관계가 성립함을 비교한다."]
+}

@@ -1,0 +1,11 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "graphPlan":{"family":"multi-curve","viewport":[-3,5,-1,18],"curves":[
+    {"id":"f","kind":"Y_OF_X","coefficients":["0","0","1"],"domain":["-2","4"],"color":"BLUE","label":"y=x^2"},
+    {"id":"l","kind":"LINE","coefficients":["6","2"],"domain":["-2","4"],"color":"WARM","label":"y=2x+6"}
+  ],"overlays":{"points":[{"id":"O","x":"0","y":"0"},{"id":"A","x":"1+sqrt(7)","y":"8+2*sqrt(7)"},{"id":"B","x":"1-sqrt(7)","y":"8-2*sqrt(7)"},{"id":"C","x":"1+sqrt(7)","y":"0"},{"id":"D","x":"1-sqrt(7)","y":"0"}],"segments":[{"id":"OA","from":"O","to":"A"},{"id":"OB","from":"O","to":"B"},{"id":"AC","from":"A","to":"C","dashed":true},{"id":"BD","from":"B","to":"D","dashed":true},{"id":"OC","from":"O","to":"C"},{"id":"OD","from":"O","to":"D"}],"polygons":[{"id":"S1","points":["A","O","C"],"fill":"LIGHT"},{"id":"S2","points":["D","O","B"],"fill":"MEDIUM"}],"rightAngles":[{"at":"C","from":["O","A"]},{"at":"D","from":["O","B"]}]},"axisTickValues":{"x":[],"y":[]}},
+  "pointNames":{"O":"O","A":"A","B":"B","C":"C","D":"D"},
+  "caption":"k=6일 때 A의 가로좌표는 1+√7, B는 1−√7이고 두 수선 AC, BD가 각 삼각형의 높이이다. [AOC]−[DOB]=22.",
+  "sourceConditions":[{"id":"roots","condition":"x²=2x+6에서 두 근 1±√7; 그 제곱 8±2√7","mappedTo":["graphPlan.curves","graphPlan.overlays.points[1]","graphPlan.overlays.points[2]"]},{"id":"feet","condition":"C=(1+√7,0), D=(1−√7,0)로 수직","mappedTo":["graphPlan.overlays.points[3]","graphPlan.overlays.points[4]","graphPlan.overlays.rightAngles"]},{"id":"areas","condition":"(u³+v³)/2=(8+6k)/2=4+3k=22","mappedTo":"graphPlan.overlays.polygons"}],
+  "newVisualInformation":["서로 다른 두 삼각형의 실제 수선·직각과 부호가 반대인 두 밑변을 나타낸다."]
+}
