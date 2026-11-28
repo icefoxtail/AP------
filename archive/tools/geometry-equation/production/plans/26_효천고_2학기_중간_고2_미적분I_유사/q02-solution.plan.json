@@ -1,0 +1,25 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {"coefficients": ["-5", "1"]},
+      {"coefficients": ["-3", "2"]}
+    ],
+    "breakpoints": [{"x": "-2", "y": "-7"}],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "requiredPoints": [{"id": "J", "x": "-2", "y": "-7"}],
+    "axisTickValues": {"x": ["-2"], "y": ["-7"]}
+  },
+  "caption": "좌극한과 우극한을 같게 하는 a=-5일 때 두 직선 y=x-5와 y=2x-3은 경계점 J(-2,-7)에서 이어진다.",
+  "accessibilityDescription": "x=-2의 왼쪽에서 기울기 1인 직선이 아래에서 올라와 J(-2,-7)에 닿고, 오른쪽으로 기울기 2인 직선이 같은 점에서 이어진다. 왼쪽 극한과 오른쪽 극한의 높이가 같다.",
+  "newVisualInformation": [
+    "기출 해설 SVG의 x=-1 접합과 다른 현행 유사 JS의 x=-2 접합을 복원",
+    "서로 다른 기울기의 직선 두 개가 같은 경계점에서 만나는 연속 조건",
+    "공식 조각 다항 그래프로 두 직선의 정확한 계수와 접합점을 표시"
+  ],
+  "sourceConditions": [
+    {"id": "c1", "condition": "함수는 x<-2에서 x+a, x≥-2에서 2x-3이며 양쪽 극한이 같다.", "mappedTo": ["graphPlan.pieces", "graphPlan.breakpoints"]},
+    {"id": "c2", "condition": "우극한 -7에 맞춰 a=-5이고 좌우 조각은 (-2,-7)에서 만난다.", "mappedTo": ["graphPlan.pieces", "graphPlan.requiredPoints"]}
+  ]
+}
