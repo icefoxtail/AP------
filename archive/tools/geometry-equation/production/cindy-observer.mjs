@@ -5,6 +5,21 @@ function numericEnvelope(value) {
   if(!Number.isFinite(value)||Math.abs(value)>1e6||(value!==0&&Math.abs(value)<1e-9))throw Error('UNSUPPORTED_CINDY_NUMERIC_ENVELOPE');
   return value;
 }
+function rationalProjection(numerator,denominator) {
+  // Keep exact operands until the binary64 rounding boundary of the numeric peer.
+  const sign=numerator<0n?-1:1;
+  const n=numerator<0n?-numerator:numerator;
+  if(n===0n)return 0;
+  if(n>1000000n*denominator||n*1000000000n<denominator)throw Error('UNSUPPORTED_CINDY_NUMERIC_ENVELOPE');
+  let exponent=n.toString(2).length-denominator.toString(2).length;
+  if(exponent>=0?n<(denominator<<BigInt(exponent)):(n<<BigInt(-exponent))<denominator)exponent--;
+  const shift=52-exponent;
+  const scaled=n<<BigInt(shift);
+  let mantissa=scaled/denominator;
+  const twiceRemainder=2n*(scaled%denominator);
+  if(twiceRemainder>denominator||(twiceRemainder===denominator&&(mantissa&1n)===1n))mantissa++;
+  return numericEnvelope(sign*Number(mantissa)*2**(-shift));
+}
 export function scalar(v,depth=0) {
   if(depth>24)throw Error('SCALAR_DEPTH');
   if(v.kind==='integer' && /^(0|-?[1-9][0-9]*)$/.test(v.value)){
@@ -14,10 +29,7 @@ export function scalar(v,depth=0) {
   }
   if(v.kind==='rational' && /^(0|-?[1-9][0-9]*)$/.test(v.numerator) && /^[1-9][0-9]*$/.test(v.denominator)){
     const n=BigInt(v.numerator),d=BigInt(v.denominator);
-    // Deliberately conservative peer scope: preserve operand precision before
-    // division, and reject ratios too sensitive for the numeric branch policy.
-    if(n>1000000000n||n< -1000000000n||d>1000000000n)throw Error('UNSUPPORTED_CINDY_EXACT_RATIONAL');
-    return numericEnvelope(Number(n)/Number(d));
+    return rationalProjection(n,d);
   }
   // A point placed by a non-special angle (POLAR_POINT) has no closed form: the model gives a 34 digit decimal.
   if(v.kind==='decimal' && typeof v.value==='string' && /^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][-+]?[0-9]+)?$/.test(v.value))return Number(v.value);

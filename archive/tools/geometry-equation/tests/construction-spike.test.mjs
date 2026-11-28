@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {pythonWorker} from '../production/worker.mjs';
-import {reconstruct,compareReconstruction} from '../production/cindy-observer.mjs';
+import {reconstruct,compareReconstruction,scalar} from '../production/cindy-observer.mjs';
 import {stageKey} from '../production/contracts.mjs';
 const int=n=>({kind:'integer',value:String(n)});
 const node=(id,op,inputs,outputType,args={},branch)=>({id,op,inputs,outputType,args,factRole:inputs.length?'DERIVED_INTERMEDIATE':'GIVEN',...(branch?{branch}:{})});
@@ -63,4 +63,22 @@ test('node order is stable; coincident geometry and missing recipe rejected',asy
   assert.deepEqual((await execute(reversed)).result,(await execute(sourceGraph)).result);
   const g=structuredClone(realizationGraph);delete g.realization;assert.equal((await execute(g)).status,'ERROR');
   const same=structuredClone(sourceGraph);same.nodes.find(n=>n.id==='d').inputs=['A'];assert.equal((await execute(same)).status,'ERROR');
+});
+
+test('Cindy projects large exact rational operands with one binary rounding',async()=>{
+  const rational=(numerator,denominator)=>({kind:'rational',numerator:String(numerator),denominator:String(denominator)});
+  const unit=1n<<53n;
+  assert.equal(scalar(rational(unit+1n,unit)),1);
+  assert.equal(scalar(rational(unit+3n,unit)),1+2*Number.EPSILON);
+  const huge=10n**400n;
+  assert.equal(scalar(rational(-3n*huge,7n*huge)),-3/7);
+  assert.throws(()=>scalar(rational(huge,huge*1000000001n)),/UNSUPPORTED_CINDY_NUMERIC_ENVELOPE/);
+  const graph=structuredClone(sourceGraph);
+  const source=rational(unit+3n,2n*unit+7n);
+  graph.nodes.find(n=>n.id==='P').args.coordinates[0]=source;
+  graph.conditionAudits=[{id:'length',sourceConditionId:'sourceLength',kind:'DISTANCE_EQUALS',refs:['A','H'],expected:source}];
+  const {status,result}=await execute(graph);
+  assert.equal(status,'OK');
+  assert.deepEqual(result.conditionAudits[0].observed,source);
+  assert.equal(compareReconstruction(result,reconstruct(graph)).status,'PASS');
 });
