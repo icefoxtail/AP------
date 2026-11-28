@@ -1,0 +1,57 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "9",
+      "-6",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      7
+    ],
+    "viewport": [
+      -2,
+      8,
+      -2,
+      18
+    ],
+    "requiredPoints": [
+      {
+        "id": "T",
+        "x": 3,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "항등식으로 a=−3,b=9를 구했다. 대표 k=0에서 포물선 y=x²−6x+9=(x−3)²은 x축과 T(3,0)에서 접한다.",
+  "accessibilityDescription": "k=0 대표 포물선이 x축에 T(3,0)에서 접하고 아래로 내려가지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "identity",
+      "condition": "D/4=−(2a+6)k+(a²−b)=0의 항등식에서 a=−3,b=9",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "sample",
+      "condition": "k=0의 정확한 대표 함수 y=(x−3)²",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "tangent",
+      "condition": "중근 x=3인 x축 접점 T(3,0)",
+      "mappedTo": "graphPlan.requiredPoints[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "모든 k에서 접해야 하는 대수 조건을 대표 k=0에서 검산 가능한 접점 관계로 설명한다."
+  ]
+}

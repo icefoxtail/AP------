@@ -1,0 +1,76 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 1.4285714285714286,
+        "depth": 0.8571428571428571
+      },
+      "height": 4.714285714285714,
+      "names": "ABCDEFGH"
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "C",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "A",
+      "to": "G",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "C",
+      "to": "G",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "C",
+        "refs": [
+          "A",
+          "G"
+        ]
+      }
+    ]
+  },
+  "solidCaption": {
+    "text": "직육면체와 공간대각선"
+  },
+  "caption": "바닥 대각선 AC와 수직 모서리 CG가 공간대각선 AG와 직각삼각형 ACG를 이룬다. AG²=a²+b²+c²=(a+b+c)²−2(ab+bc+ca)=25이므로 AG=5cm이다.",
+  "accessibilityDescription": "직육면체에 바닥 대각선 AC, 세로 모서리 CG, 공간대각선 AG가 표시되고 C에서 직각임을 보여 준다.",
+  "sourceConditions": [
+    {
+      "id": "pth",
+      "condition": "AC는 바닥 평면, CG는 수직 모서리이므로 ∠ACG=90°",
+      "mappedTo": [
+        "segments[0]",
+        "segments[2]",
+        "marks.rightAngles[0]"
+      ]
+    },
+    {
+      "id": "diag",
+      "condition": "공간대각선 AG는 직각삼각형 ACG의 빗변",
+      "mappedTo": "segments[1]"
+    },
+    {
+      "id": "algebra",
+      "condition": "모서리 합에서 a+b+c=7, 겉넓이에서 ab+bc+ca=12",
+      "mappedTo": "solids[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "공간대각선을 구하는 3차원 피타고라스 관계를 바닥 대각선과 수직 모서리로 나누어 표시한다."
+  ]
+}

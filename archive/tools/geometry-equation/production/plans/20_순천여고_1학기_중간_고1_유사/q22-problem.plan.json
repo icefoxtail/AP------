@@ -1,0 +1,124 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-6",
+          "-2",
+          "1/2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      8
+    ],
+    "viewport": [
+      -5,
+      9,
+      -12,
+      6
+    ],
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "2",
+        "y": "-8",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "-2"
+        },
+        {
+          "id": "B",
+          "curveX": "6"
+        },
+        {
+          "id": "C",
+          "curveX": "0",
+          "coordinates": true
+        },
+        {
+          "id": "S",
+          "x": "2",
+          "y": "0",
+          "unnamed": true
+        }
+      ],
+      "polygons": [
+        {
+          "id": "T",
+          "points": [
+            "A",
+            "C",
+            "B"
+          ],
+          "fill": "LIGHT",
+          "label": "24"
+        }
+      ],
+      "callouts": [
+        {
+          "id": "axis",
+          "point": "S",
+          "text": "x=2",
+          "labelKind": "MATH"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "A": "A",
+    "B": "B",
+    "C": "C"
+  },
+  "caption": "포물선 y=f(x)의 x축 교점 A, B와 C(0,−6), 대칭축 x=2, 삼각형 ACB의 넓이 24만 표시했다. 미지 A·B의 x좌표와 함수식은 표기하지 않았다.",
+  "accessibilityDescription": "위로 열린 포물선이 x축의 A,B와 y축의 C(0,−6)를 지나고 대칭축이 x=2이다. 색칠된 삼각형 ACB의 넓이는 24로 표시되고 A,B의 미지 좌표는 드러나지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "curve",
+      "condition": "원문의 y=f(x)는 x축 교점 A,B, y절편 C(0,−6), 대칭축 x=2, 면적 24를 동시에 만족한다",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.overlays.points",
+        "graphPlan.overlays.polygons"
+      ]
+    },
+    {
+      "id": "givenC",
+      "condition": "C(0,−6)만 좌표가 주어짐",
+      "mappedTo": "graphPlan.overlays.points[2]"
+    },
+    {
+      "id": "axis",
+      "condition": "대칭축 x=2는 주어진 조건",
+      "mappedTo": "graphPlan.overlays.callouts[0]"
+    },
+    {
+      "id": "noleak",
+      "condition": "A·B의 미지 x좌표는 점 이름만 표시하고 좌표를 출력하지 않음",
+      "mappedTo": [
+        "graphPlan.overlays.points[0]",
+        "graphPlan.overlays.points[1]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "x절편 A,B와 주어진 C의 삼각형 넓이 24 및 대칭축 x=2의 관계를, 구해야 할 좌표·식 라벨 없이 보여 준다."
+  ]
+}

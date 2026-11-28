@@ -1,0 +1,59 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "윗경계",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "4",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "아랫경계",
+        "pieces": [
+          {
+            "lo": {
+              "value": "4",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "해의 범위와 경계"
+  },
+  "caption": "해가 없도록 하는 정수 a의 경계는 a=2이며 이때 두 조건은 x<4, x≥4라 공통 해가 없다. a가 더 작아도 해가 없고 최댓값은 2이다.",
+  "accessibilityDescription": "윗경계 x<4는 열린 끝점, 아랫경계 x≥4는 닫힌 끝점으로 두 구간이 만나지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "upper",
+      "condition": "a=2일 때 2x−a<x+2에서 x<4",
+      "mappedTo": "numberLine.rows[0].pieces[0].hi"
+    },
+    {
+      "id": "lower",
+      "condition": "x+2≤3x−6에서 x≥4",
+      "mappedTo": "numberLine.rows[1].pieces[0].lo"
+    },
+    {
+      "id": "empty",
+      "condition": "양쪽 교집합이 공집합",
+      "mappedTo": ["numberLine.rows[0].pieces[0].hi", "numberLine.rows[1].pieces[0].lo"]
+    }
+  ],
+  "newVisualInformation": [
+    "정수 a의 최대 경계에서 두 반직선이 공통점을 갖지 않음을 보인다."
+  ]
+}

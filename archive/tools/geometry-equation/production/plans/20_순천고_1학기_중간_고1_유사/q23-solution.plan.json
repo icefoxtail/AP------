@@ -1,0 +1,44 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "k",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "공통 범위",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-6",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "10",
+              "state": "OPEN"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "부등식의 공통 범위"
+  },
+  "caption": "t=x+1의 두 근이 서로 다른 양수가 되려면 판별식 k<10, 근의 곱 k+6>0으로 k>−6이다. 따라서 −6<k<10이다.",
+  "accessibilityDescription": "매개변수 k의 두 열린 경계 −6과 10 사이가 허용 구간으로 표시된다.",
+  "sourceConditions": [
+    {
+      "id": "left",
+      "condition": "두 양수근의 곱 k+6>0에서 k>−6",
+      "mappedTo": "numberLine.rows[0].pieces[0].lo"
+    },
+    {
+      "id": "right",
+      "condition": "서로 다른 실근 D/4=10−k>0에서 k<10",
+      "mappedTo": "numberLine.rows[0].pieces[0].hi"
+    }
+  ],
+  "newVisualInformation": [
+    "판별식과 양수근 조건을 동시에 만족하는 매개변수 구간을 표시한다."
+  ]
+}

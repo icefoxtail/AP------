@@ -1,0 +1,44 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "해의 범위",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-3",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "1",
+              "state": "OPEN"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "해의 범위와 경계"
+  },
+  "caption": "a<0에서 −2<ax<6의 부등호를 뒤집어 x∈(6/a,−2/a)이다. 왼쪽 경계가 −3이어서 a=−2, 오른쪽 경계 b=1이다.",
+  "accessibilityDescription": "수직선에서 −3과 1의 열린 끝점 사이가 해이며 왼쪽이 6/a, 오른쪽이 −2/a에 해당한다.",
+  "sourceConditions": [
+    {
+      "id": "left",
+      "condition": "6/a=−3으로 a=−2",
+      "mappedTo": "numberLine.rows[0].pieces[0].lo"
+    },
+    {
+      "id": "right",
+      "condition": "−2/a=b=1",
+      "mappedTo": "numberLine.rows[0].pieces[0].hi"
+    }
+  ],
+  "newVisualInformation": [
+    "음수로 나눌 때 부등호가 바뀌어 생기는 양 끝점 순서를 보여 준다."
+  ]
+}

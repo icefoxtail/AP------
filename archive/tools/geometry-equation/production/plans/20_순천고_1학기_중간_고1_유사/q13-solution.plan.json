@@ -1,0 +1,52 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "4",
+      "-6",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      7
+    ],
+    "viewport": [
+      -2,
+      8,
+      -7,
+      12
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 3,
+        "y": -5
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "y=x²−6x+4=(x−3)²−5이므로 꼭짓점 V(3,−5)가 전체 실수에서의 최솟점이다.",
+  "accessibilityDescription": "위로 열린 포물선의 꼭짓점 V(3,−5)가 x축 아래에 있다.",
+  "sourceConditions": [
+    {
+      "id": "curve",
+      "condition": "원문의 이차함수 x²−6x+4",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "vertex",
+      "condition": "완전제곱 (x−3)²−5",
+      "mappedTo": "graphPlan.requiredPoints[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "최솟값 −5가 꼭짓점의 높이라는 관계를 실제 그래프에 나타낸다."
+  ]
+}

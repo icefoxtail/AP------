@@ -1,0 +1,90 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-6",
+      "-2",
+      "1/2"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      8
+    ],
+    "viewport": [
+      -5,
+      9,
+      -12,
+      7
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 2,
+        "y": -8
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {"id": "A", "curveX": "-2", "coordinates": true},
+        {"id": "B", "curveX": "6", "coordinates": true},
+        {"id": "C", "curveX": "0", "coordinates": true}
+      ],
+      "lines": [
+        {
+          "id": "axis",
+          "x": "2"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "T",
+          "points": [
+            "A",
+            "C",
+            "B"
+          ],
+          "fill": "LIGHT",
+          "label": "24"
+        }
+      ]
+    }
+  },
+  "caption": "삼각형 넓이 24와 높이 6에서 AB=8이고 축 x=2에서 A(−2,0),B(6,0)이다. C(0,−6)를 지나므로 f(x)=(x+2)(x−6)/2이다.",
+  "accessibilityDescription": "위로 열린 포물선의 교점 A(−2,0),B(6,0),C(0,−6), 꼭짓점 V(2,−8)와 삼각형 ACB의 넓이 24가 표시된다.",
+  "sourceConditions": [
+    {
+      "id": "roots",
+      "condition": "AB=8이고 중점 축 x=2에서 x절편은 −2와 6",
+      "mappedTo": [
+        "graphPlan.overlays.points[0]",
+        "graphPlan.overlays.points[1]"
+      ]
+    },
+    {
+      "id": "yint",
+      "condition": "C(0,−6)에서 최고차항 계수 1/2",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "area",
+      "condition": "삼각형 ACB의 밑변 8, 높이 6이어서 넓이 24",
+      "mappedTo": "graphPlan.overlays.polygons[0]"
+    },
+    {
+      "id": "axis",
+      "condition": "포물선 대칭축 x=2",
+      "mappedTo": "graphPlan.overlays.lines[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "해설에서 구한 절편·대칭축과 주어진 넓이의 일치를 그림에 명시한다."
+  ]
+}

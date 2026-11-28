@@ -1,0 +1,80 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-16",
+      "4",
+      "2"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -5,
+      2
+    ],
+    "viewport": [
+      -6,
+      3,
+      -21,
+      11
+    ],
+    "requiredPoints": [
+      {
+        "id": "Z",
+        "x": -4,
+        "y": 0
+      },
+      {
+        "id": "L",
+        "x": -2,
+        "y": -16
+      },
+      {
+        "id": "V",
+        "x": -1,
+        "y": -18
+      },
+      {
+        "id": "R",
+        "x": 0,
+        "y": -16
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "f(-4)=0, 꼭짓점 x=−1을 사용해 f(x)=a(x+1)²−9a이다. 길이 2 구간에서 양 끝이 축에서 같은 거리인 p=−2일 때 g가 최소이며 f(−2)=f(0)=−8a=−16이므로 a=2이다.",
+  "accessibilityDescription": "최종 포물선 y=2(x+1)²−18에서 x=−1이 축이고 양 끝 x=−2와 0의 높이가 모두 −16이다. 점 (−4,0)도 주어진 조건을 만족한다.",
+  "sourceConditions": [
+    {
+      "id": "f",
+      "condition": "a=2에서 f(x)=2x²+4x−16",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "root",
+      "condition": "조건 f(−4)=0",
+      "mappedTo": "graphPlan.requiredPoints[0]"
+    },
+    {
+      "id": "axis",
+      "condition": "모든 x에서 최소점을 x=−1에 가짐",
+      "mappedTo": "graphPlan.requiredPoints[2]"
+    },
+    {
+      "id": "symmetric",
+      "condition": "p=−2 구간의 양 끝은 −2,0으로 f값 −16이 같음",
+      "mappedTo": [
+        "graphPlan.requiredPoints[1]",
+        "graphPlan.requiredPoints[3]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "움직이는 길이 2 구간의 두 끝점이 대칭축 양쪽에 균형 있게 놓이는 최소 극대값 상황을 보인다."
+  ]
+}

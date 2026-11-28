@@ -1,0 +1,83 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "6",
+      "-3/4"
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        0,
+        8
+      ],
+      "states": [
+        "OPEN",
+        "OPEN"
+      ]
+    },
+    "domain": [
+      0,
+      8
+    ],
+    "viewport": [
+      0,
+      8,
+      0,
+      14
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 4,
+        "y": 12
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "y": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12
+      ]
+    },
+    "applicationAxes": true,
+    "axisVariable": "x"
+  },
+  "caption": "닮음으로 y=6−3x/4이고 넓이 S=xy=−3x²/4+6x=−3(x−4)²/4+12이다. 따라서 x=4에서 최대 12, y=3이다.",
+  "accessibilityDescription": "가로 x가 0부터 8 사이일 때 내접 직사각형 넓이 S가 x=4에서 12로 최대가 되는 포물선이다.",
+  "sourceConditions": [
+    {
+      "id": "area",
+      "condition": "S=x(6−3x/4)=−3x²/4+6x",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "range",
+      "condition": "삼각형 안의 직사각형이므로 0<x<8",
+      "mappedTo": "graphPlan.sourceDomain"
+    },
+    {
+      "id": "max",
+      "condition": "S=−3(x−4)²/4+12, V(4,12)",
+      "mappedTo": "graphPlan.requiredPoints[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "닮음으로 얻은 가로·높이 관계가 면적의 포물선을 만들고 최댓점을 정한다."
+  ]
+}

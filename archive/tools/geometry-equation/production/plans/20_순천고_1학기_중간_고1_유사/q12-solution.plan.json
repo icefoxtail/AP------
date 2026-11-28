@@ -1,0 +1,71 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "5",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -5,
+      1
+    ],
+    "viewport": [
+      -6,
+      2,
+      -8,
+      4
+    ],
+    "requiredPoints": [
+      {
+        "id": "T",
+        "x": -2,
+        "y": -6
+      },
+      {
+        "id": "V",
+        "x": -2.5,
+        "y": -6.25
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "line",
+          "slope": "1",
+          "intercept": "-4"
+        }
+      ]
+    }
+  },
+  "caption": "접함 조건에서 k=−4이고 포물선 y=x²+5x와 직선 y=x−4는 T(−2,−6)에서 접한다.",
+  "accessibilityDescription": "위로 열린 포물선 y=x²+5x에 직선 y=x−4가 점 T(−2,−6)에서 단 한 번 접하고 꼭짓점은 (−2.5,−6.25)이다.",
+  "sourceConditions": [
+    {
+      "id": "f",
+      "condition": "발문 함수 y=x²+5x",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "line",
+      "condition": "판별식 4+k=0으로 얻은 접선 y=x−4",
+      "mappedTo": "graphPlan.overlays.lines[0]"
+    },
+    {
+      "id": "tangent",
+      "condition": "교점 방정식 x²+4x+4=(x+2)²=0에서 T(−2,−6)",
+      "mappedTo": "graphPlan.requiredPoints[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "이차방정식 중근을 포물선과 직선의 접점으로 변환해 표시한다."
+  ]
+}

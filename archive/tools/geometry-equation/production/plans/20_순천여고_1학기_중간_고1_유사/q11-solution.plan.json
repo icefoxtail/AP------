@@ -1,0 +1,52 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-3",
+      "4",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -5,
+      1
+    ],
+    "viewport": [
+      -6,
+      2,
+      -9,
+      6
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": -2,
+        "y": -7
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "최솟점의 x좌표가 −2여서 a=2, 최솟값 −7에서 b=−3을 얻는다. f(x)=(x+2)²−7이다.",
+  "accessibilityDescription": "위로 열린 포물선의 꼭짓점 V(−2,−7)이 최솟점이다.",
+  "sourceConditions": [
+    {
+      "id": "f",
+      "condition": "a=2,b=−3에서 f(x)=x²+4x−3",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "min",
+      "condition": "문제에 주어진 최솟점 (−2,−7)",
+      "mappedTo": "graphPlan.requiredPoints[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "정점의 위치와 최솟값이 서로 다른 두 계수를 결정함을 보인다."
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-10",
+      "3",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -6,
+      3
+    ],
+    "viewport": [
+      -7,
+      4,
+      -14,
+      7
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -5,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": -1.5,
+        "y": -12.25
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "y=x+3을 x²+y²=29에 대입하면 x²+3x−10=0으로 x=−5,2를 얻는다. 이에 대응하는 두 해는 (−5,−2),(2,5)로 합의 총합은 0이다.",
+  "accessibilityDescription": "치환해 얻은 포물선 x²+3x−10이 x축과 x=−5,2에서 만나 두 연립방정식 해의 x좌표를 결정한다.",
+  "sourceConditions": [
+    {
+      "id": "substitution",
+      "condition": "x−y=−3에서 y=x+3, 원에 대입한 방정식 x²+3x−10=0",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "roots",
+      "condition": "근 −5,2에서 y=x+3을 계산해 두 좌표 해를 얻음",
+      "mappedTo": [
+        "graphPlan.requiredPoints[0]",
+        "graphPlan.requiredPoints[2]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원·직선 연립으로 생긴 두 x해를 x절편으로 구분한다."
+  ]
+}
