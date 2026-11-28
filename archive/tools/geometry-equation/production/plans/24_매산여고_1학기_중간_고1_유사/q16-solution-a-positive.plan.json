@@ -1,0 +1,8 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{"family":"polynomial","coefficients":["14","0","-9","0","1"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[-3,3],"viewport":[-3,3,-8,20],"requiredPoints":[{"id":"A","x":-2.6457513110645907,"y":0},{"id":"B","x":-1.4142135623730951,"y":0},{"id":"C","x":1.4142135623730951,"y":0},{"id":"D","x":2.6457513110645907,"y":0}],"exactCoordinates":{"A":["-sqrt(7)","0"],"B":["-sqrt(2)","0"],"C":["sqrt(2)","0"],"D":["sqrt(7)","0"]},"axisTickValues":{"x":[],"y":[]}},
+  "caption":"a=5에서 (x²−2)(x²−7)=0은 x=±√2, ±√7의 서로 다른 네 실근을 갖는다.",
+  "accessibilityDescription":"위로 열린 W자 모양의 사차곡선이 x축을 네 곳 −√7,−√2,√2,√7에서 가로지른다.",
+  "sourceConditions":[{"id":"factor","condition":"a=5이면 x⁴−9x²+14=(x²−2)(x²−7)","mappedTo":["graphPlan.coefficients"]},{"id":"realRoots","condition":"서로 다른 네 근 ±√2, ±√7","mappedTo":["graphPlan.requiredPoints","graphPlan.exactCoordinates"]}],
+  "newVisualInformation":["a=−1일 때와 달리 서로 구별되는 네 x절편이 실제로 존재함을 보여 준다."]
+}

@@ -1,0 +1,9 @@
+{
+  "capability":"number-line-figure-v1",
+  "numberLine":{"variable":"h","rows":[{"kind":"SET","label":"출입문 높이","pieces":[{"lo":{"value":"0","state":"OPEN"},"hi":{"value":"3*sqrt(3)","state":"OPEN"}}]},{"kind":"POINTS","label":"넓이 최대 높이","within":1,"points":[{"id":"M","value":"3*sqrt(3)/2","showValue":true}]}]},
+  "numberLineCaption":{"text":"허용 높이와 최대 넓이"},
+  "caption":"변 6m인 정삼각형의 높이는 3√3m이다. 출입문 높이 h는 (0,3√3)에 있고 h=3√3/2에서 넓이가 9√3/2제곱미터로 최대다.",
+  "accessibilityDescription":"높이 수직선의 열린 구간 0과 3√3 사이에서 넓이가 최대가 되는 내부 점 M(3√3/2)을 표시한다.",
+  "sourceConditions":[{"id":"height","condition":"정삼각형 높이 3√3m이므로 0<h<3√3","mappedTo":["numberLine.rows[0].pieces[0]"]},{"id":"optimal","condition":"A(h)=6h−2h²/√3의 꼭짓점 h=3√3/2","mappedTo":["numberLine.rows[1].points[0]","numberLine.rows[1].within"]}],
+  "newVisualInformation":["문제의 길이 제한 양 끝은 제외하고 최대 넓이는 정확히 허용 구간의 가운데 높이에서 얻는다는 것을 시각적으로 확인한다."]
+}

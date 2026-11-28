@@ -1,0 +1,8 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{"family":"polynomial","coefficients":["4","-2","1"],"sourceDomain":{"kind":"INTERVAL","range":[-1,4],"states":["CLOSED","CLOSED"]},"domain":[-1,4],"viewport":[-2,5,1,14],"requiredPoints":[{"id":"L","x":-1,"y":7},{"id":"V","x":1,"y":3},{"id":"R","x":4,"y":12}],"axisTickValues":{"x":[],"y":[]}},
+  "caption":"−1≤x≤4에서 y=(x−1)²+3의 최소는 꼭짓점 3, 최대는 오른쪽 끝점 12이다.",
+  "accessibilityDescription":"닫힌 구간의 포물선에서 왼쪽 끝 (−1,7), 꼭짓점 (1,3), 오른쪽 끝 (4,12)을 표시한다.",
+  "sourceConditions":[{"id":"quadratic","condition":"최솟값 3에서 k=4이므로 y=x²−2x+4","mappedTo":["graphPlan.coefficients"]},{"id":"domain","condition":"−1≤x≤4","mappedTo":["graphPlan.sourceDomain","graphPlan.domain"]},{"id":"extrema","condition":"f(−1)=7, f(1)=3, f(4)=12","mappedTo":["graphPlan.requiredPoints"]}],
+  "newVisualInformation":["꼭짓점보다 오른쪽 끝점이 높아 최대인 이유를 제한된 곡선에서 보인다."]
+}

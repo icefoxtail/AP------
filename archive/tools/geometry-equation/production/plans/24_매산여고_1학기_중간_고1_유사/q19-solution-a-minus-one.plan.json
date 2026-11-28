@@ -1,0 +1,8 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{"family":"polynomial","coefficients":["-1","-1","1","1"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[-2,2],"viewport":[-2,2,-5,7],"requiredPoints":[{"id":"T","x":-1,"y":0},{"id":"R","x":1,"y":0}],"axisTickValues":{"x":[],"y":[]}},
+  "caption":"a=−1에서는 (x+1)²(x−1)=0이고 x=−1이 중근, x=1이 단근이다.",
+  "accessibilityDescription":"삼차곡선은 x=−1에서 x축에 접하고 x=1에서 가로지른다.",
+  "sourceConditions":[{"id":"factor","condition":"a=−1일 때 x³+x²−x−1=(x+1)²(x−1)","mappedTo":["graphPlan.coefficients"]},{"id":"roots","condition":"−1은 중근, 1은 단근","mappedTo":["graphPlan.requiredPoints"]}],
+  "newVisualInformation":["세 번째 허용 매개변수에서 중근의 위치가 반대로 이동한 모습을 보인다."]
+}
