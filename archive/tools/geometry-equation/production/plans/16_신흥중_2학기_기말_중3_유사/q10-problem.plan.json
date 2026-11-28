@@ -1,0 +1,304 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "27",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "P",
+    "Q",
+    "R"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sBQ",
+      "refs": [
+        "B",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQC",
+      "refs": [
+        "Q",
+        "C"
+      ]
+    },
+    {
+      "id": "sCR",
+      "refs": [
+        "C",
+        "R"
+      ]
+    },
+    {
+      "id": "sRA",
+      "refs": [
+        "R",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAP",
+        "ownerSegment": "sAP",
+        "text": "3",
+        "unit": "cm"
+      }
+    ],
+    "pathLabels": [
+      {
+        "id": "pAB",
+        "points": [
+          "A",
+          "P",
+          "B"
+        ],
+        "label": "12",
+        "unit": "cm"
+      },
+      {
+        "id": "pAC",
+        "points": [
+          "A",
+          "R",
+          "C"
+        ],
+        "label": "9",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 420
+  },
+  "caption": "16_신흥중_2학기_기말_중3_유사 10번: 원문의 주어진 기하 관계",
+  "accessibilityDescription": "16_신흥중_2학기_기말_중3_유사 10번 문제: 점과 선분·원·각의 관계를 보여 주는 기하 도형",
+  "newVisualInformation": [
+    "원문의 알려진 길이와 각도만 실제 그리기 필드로 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q10_problem_seg0",
+      "condition": "그림에 표시하는 선분 A–P",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q10_problem_seg1",
+      "condition": "그림에 표시하는 선분 P–B",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q10_problem_seg2",
+      "condition": "그림에 표시하는 선분 B–Q",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q10_problem_seg3",
+      "condition": "그림에 표시하는 선분 Q–C",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q10_problem_seg4",
+      "condition": "그림에 표시하는 선분 C–R",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q10_problem_seg5",
+      "condition": "그림에 표시하는 선분 R–A",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "q10_problem_length0",
+      "condition": "선분 sAP 옆의 주어진 표기 '3'",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q10_problem_circle0",
+      "condition": "중심과 반지름으로 엔진이 그리는 원 circ",
+      "mappedTo": "displayCircles[0]"
+    }
+  ],
+  "sourceQuote": "다음 그림에서 $\\triangle ABC$는 원 $O$에 외접하고, 세 점 $P, Q, R$은 각각 $\\triangle ABC$의 세 변 $AB, BC, CA$와 원 $O$의 접점이다. $\\overline{AB} = 12\\text{ cm}$, $\\overline{AC} = 9\\text{ cm}$, $\\overline{AP} = 3\\text{ cm}$일 때, $\\dfrac{\\overline{CQ}}{\\overline{BQ}}$의 값은?"
+}

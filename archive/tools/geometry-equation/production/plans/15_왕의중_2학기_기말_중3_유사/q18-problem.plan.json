@@ -1,0 +1,286 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "15_왕의중_2학기_기말_중3_유사 18번: 원문의 주어진 기하 관계",
+  "accessibilityDescription": "15_왕의중_2학기_기말_중3_유사 18번 문제: 점과 선분·원·각의 관계를 보여 주는 기하 도형",
+  "newVisualInformation": [
+    "원문의 알려진 길이와 각도만 실제 그리기 필드로 표시"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-5",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "125"
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "P",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sCP",
+      "refs": [
+        "C",
+        "P"
+      ]
+    },
+    {
+      "id": "sPD",
+      "refs": [
+        "P",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAPz0",
+        "ownerSegment": "sAP",
+        "text": "8",
+        "unit": "cm"
+      },
+      {
+        "id": "lCPz0",
+        "ownerSegment": "sCP",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "lDPz0",
+        "ownerSegment": "sPD",
+        "text": "4",
+        "unit": "cm"
+      },
+      {
+        "id": "lPBz0",
+        "ownerSegment": "sPB",
+        "text": "x",
+        "unit": "cm"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "O"
+  ],
+  "hiddenPointStyle": "NONE",
+  "sourceConditions": [
+    {
+      "id": "q18_problem_seg0",
+      "condition": "그림에 표시하는 선분 A–P",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q18_problem_seg1",
+      "condition": "그림에 표시하는 선분 P–B",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q18_problem_seg2",
+      "condition": "그림에 표시하는 선분 C–P",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q18_problem_seg3",
+      "condition": "그림에 표시하는 선분 P–D",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q18_problem_length0",
+      "condition": "선분 sAP 옆의 주어진 표기 '8'",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q18_problem_length1",
+      "condition": "선분 sCP 옆의 주어진 표기 '6'",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q18_problem_length2",
+      "condition": "선분 sPD 옆의 주어진 표기 '4'",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q18_problem_length3",
+      "condition": "선분 sPB 옆의 주어진 표기 'x'",
+      "mappedTo": "planeMarks.expressionLabels[3]"
+    },
+    {
+      "id": "q18_problem_circle0",
+      "condition": "중심과 반지름으로 엔진이 그리는 원 k",
+      "mappedTo": "displayCircles[0]"
+    }
+  ],
+  "sourceQuote": "다음 그림의 원에서 두 현 $AB, CD$의 교점을 $P$라 하고 $\\overline{AP} = 8\\text{ cm}$, $\\overline{CP} = 6\\text{ cm}$, $\\overline{DP} = 4\\text{ cm}$일 때, $\\overline{BP} = x$의 값은?"
+}

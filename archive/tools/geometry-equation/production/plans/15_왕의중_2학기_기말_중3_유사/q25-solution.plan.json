@@ -1,0 +1,377 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "36",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "50",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "inc",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "A",
+    "B",
+    "O",
+    "P",
+    "Q",
+    "R"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "inc"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sBP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "sOQ",
+      "refs": [
+        "O",
+        "Q"
+      ]
+    },
+    {
+      "id": "sOR",
+      "refs": [
+        "O",
+        "R"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "right1",
+      "refs": [
+        "O",
+        "Q",
+        "C"
+      ]
+    },
+    {
+      "id": "right2",
+      "refs": [
+        "O",
+        "R",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "hyp13",
+        "ownerSegment": "sAB",
+        "text": "13",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "radius2",
+        "ownerSegment": "sOQ",
+        "text": "2",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "unknown",
+        "ownerSegment": "sAP",
+        "text": "10",
+        "ownership": "NEAREST",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "derived_sBP",
+        "ownerSegment": "sBP",
+        "text": "3",
+        "ownership": "NEAREST",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "derived_sCA",
+        "ownerSegment": "sCA",
+        "text": "12",
+        "ownership": "NEAREST",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "derived_sBC",
+        "ownerSegment": "sBC",
+        "text": "5",
+        "ownership": "NEAREST",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "caption": "15_왕의중_2학기_기말_중3_유사 25번: 풀이에서 구한 핵심 관계",
+  "sourceQuote": "$\\overline{AP} = \\overline{AR} = x$, $\\overline{BP} = \\overline{BQ} = 13 - x$이고 $\\angle C = 90^\\circ$이므로 사각형 $CQOR$은 한 변의 길이가 $2\\text{ cm}$인 정사각형이다. 따라서 $\\overline{AC} = x + 2$, $\\overline{BC} = (13 - x) + 2 = 15 - x$이다. (1) 직각삼각형 $ABC$에서 피타고라스 정리에 의하여 $$13^2 = (x + 2)^2 + (15 - x)^2$$ (2) $169 = 2x^2 - 26x + 229 \\implies x^2 - 13x + 30 = 0 \\implies (x - 3)(x - 10) = 0$ $\\overline{AP} > \\overline{BP}$이므로 $x > 13 - x$, 즉 $x > 6.5$이고 따라서 $x = 10\\text{ cm}$이다.",
+  "sourceConditions": [
+    {
+      "id": "q25_solution_seg0",
+      "condition": "그림에 표시하는 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q25_solution_seg1",
+      "condition": "그림에 표시하는 선분 B–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q25_solution_seg2",
+      "condition": "그림에 표시하는 선분 C–A",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q25_solution_seg3",
+      "condition": "그림에 표시하는 선분 A–P",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q25_solution_seg4",
+      "condition": "그림에 표시하는 선분 B–P",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q25_solution_seg5",
+      "condition": "그림에 표시하는 선분 O–Q",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "q25_solution_seg6",
+      "condition": "그림에 표시하는 선분 O–R",
+      "mappedTo": "displaySegments[6]"
+    },
+    {
+      "id": "q25_solution_length0",
+      "condition": "선분 sAB 옆의 주어진 표기 '13'",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q25_solution_length1",
+      "condition": "선분 sOQ 옆의 주어진 표기 '2'",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q25_solution_length2",
+      "condition": "선분 sAP 옆의 풀이로 도출한 표기 '10'",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q25_solution_length3",
+      "condition": "선분 sBP 옆의 풀이로 도출한 표기 '3'",
+      "mappedTo": "planeMarks.expressionLabels[3]"
+    },
+    {
+      "id": "q25_solution_length4",
+      "condition": "선분 sCA 옆의 풀이로 도출한 표기 '12'",
+      "mappedTo": "planeMarks.expressionLabels[4]"
+    },
+    {
+      "id": "q25_solution_length5",
+      "condition": "선분 sBC 옆의 풀이로 도출한 표기 '5'",
+      "mappedTo": "planeMarks.expressionLabels[5]"
+    },
+    {
+      "id": "q25_solution_circle0",
+      "condition": "중심과 반지름으로 엔진이 그리는 원 inc",
+      "mappedTo": "displayCircles[0]"
+    }
+  ],
+  "accessibilityDescription": "15_왕의중_2학기_기말_중3_유사 25번 해설: 점과 선분·원·각의 관계를 보여 주는 기하 도형",
+  "newVisualInformation": [
+    "해설이 구한 길이·각도 또는 보조선을 실제 그리기 필드에 추가"
+  ]
+}

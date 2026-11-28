@@ -1,0 +1,341 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "36",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "50",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "inc",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "A",
+    "B",
+    "O",
+    "P",
+    "Q",
+    "R"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "inc"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sBP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "sOQ",
+      "refs": [
+        "O",
+        "Q"
+      ]
+    },
+    {
+      "id": "sOR",
+      "refs": [
+        "O",
+        "R"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "right1",
+      "refs": [
+        "O",
+        "Q",
+        "C"
+      ]
+    },
+    {
+      "id": "right2",
+      "refs": [
+        "O",
+        "R",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "hyp13",
+        "ownerSegment": "sAB",
+        "text": "13",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "radius2",
+        "ownerSegment": "sOQ",
+        "text": "2",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "unknown",
+        "ownerSegment": "sAP",
+        "text": "x",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "빗변 13인 직각삼각형의 내접원, 접점 P·Q·R, 반지름 2",
+  "sourceQuote": "[서술형 5] 다음 그림에서 $\\angle C = 90^\\circ$인 직각삼각형 $ABC$가 원 $O$에 외접하고, 세 점 $P, Q, R$은 각각 변 $AB, BC, CA$ 위의 접점이다. $\\overline{AB} = 13\\text{ cm}$, 반지름 $\\overline{OQ} = 2\\text{ cm}$일 때, $\\overline{AP} = x$의 길이를 구하여라. (단, $\\overline{AP} > \\overline{BP}$) (1) 식 세우기 (2점) ($\\triangle ABC$의 세 변에 관한 등식을 기재하시오.) (2) 답 구하기 (2점)",
+  "sourceConditions": [
+    {
+      "id": "q25_problem_seg0",
+      "condition": "그림에 표시하는 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q25_problem_seg1",
+      "condition": "그림에 표시하는 선분 B–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q25_problem_seg2",
+      "condition": "그림에 표시하는 선분 C–A",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q25_problem_seg3",
+      "condition": "그림에 표시하는 선분 A–P",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q25_problem_seg4",
+      "condition": "그림에 표시하는 선분 B–P",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q25_problem_seg5",
+      "condition": "그림에 표시하는 선분 O–Q",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "q25_problem_seg6",
+      "condition": "그림에 표시하는 선분 O–R",
+      "mappedTo": "displaySegments[6]"
+    },
+    {
+      "id": "q25_problem_length0",
+      "condition": "선분 sAB 옆의 주어진 표기 '13'",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q25_problem_length1",
+      "condition": "선분 sOQ 옆의 주어진 표기 '2'",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q25_problem_length2",
+      "condition": "선분 sAP 옆의 주어진 표기 'x'",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q25_problem_circle0",
+      "condition": "중심과 반지름으로 엔진이 그리는 원 inc",
+      "mappedTo": "displayCircles[0]"
+    }
+  ],
+  "accessibilityDescription": "15_왕의중_2학기_기말_중3_유사 25번 문제: 점과 선분·원·각의 관계를 보여 주는 기하 도형",
+  "newVisualInformation": [
+    "원문의 알려진 길이와 각도만 실제 그리기 필드로 표시"
+  ]
+}

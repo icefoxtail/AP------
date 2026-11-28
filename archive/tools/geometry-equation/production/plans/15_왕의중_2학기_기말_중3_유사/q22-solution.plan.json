@@ -1,0 +1,226 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "15_왕의중_2학기_기말_중3_유사 22번: 풀이에서 구한 핵심 관계",
+  "accessibilityDescription": "15_왕의중_2학기_기말_중3_유사 22번 해설: 점과 선분·원·각의 관계를 보여 주는 기하 도형",
+  "sourceConditions": [
+    {
+      "id": "q22_solution_seg0",
+      "condition": "그림에 표시하는 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q22_solution_seg1",
+      "condition": "그림에 표시하는 선분 B–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q22_solution_seg2",
+      "condition": "그림에 표시하는 선분 C–A",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q22_solution_length0",
+      "condition": "선분 sBC 옆의 주어진 표기 '12sqrt(2)'",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q22_solution_length1",
+      "condition": "선분 sAB 옆의 풀이로 도출한 표기 '12+4√3'",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q22_solution_length2",
+      "condition": "선분 sCA 옆의 풀이로 도출한 표기 '8√3'",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q22_solution_angle0",
+      "condition": "각 A–B–C의 표시값 45",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q22_solution_angle1",
+      "condition": "각 A–C–B의 표시값 75",
+      "mappedTo": "planeMarks.angles[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "해설이 구한 길이·각도 또는 보조선을 실제 그리기 필드에 추가"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "sub",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-12"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "4"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-12"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 45,
+        "label": "45",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 75,
+        "label": "75",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "12sqrt(2)",
+        "unit": "cm"
+      },
+      {
+        "id": "derived_sAB",
+        "ownerSegment": "sAB",
+        "text": "12+4√3",
+        "ownership": "NEAREST",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "derived_sCA",
+        "ownerSegment": "sCA",
+        "text": "8√3",
+        "ownership": "NEAREST",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 440,
+    "height": 380
+  },
+  "sourceQuote": "$\\angle A = 180^\\circ - 45^\\circ - 75^\\circ = 60^\\circ$이다. 꼭짓점 $C$에서 변 $AB$에 내린 수선의 발을 $H$라 하자. 직각삼각형 $BCH$에서 $\\overline{CH} = 12\\sqrt{2}\\sin 45^\\circ = 12\\text{ cm}$, $\\overline{BH} = 12\\text{ cm}$이다. 직각삼각형 $ACH$에서 $\\angle A = 60^\\circ$이므로 $$\\overline{AH} = \\dfrac{\\overline{CH}}{\\tan 60^\\circ} = \\dfrac{12}{\\sqrt{3}} = 4\\sqrt{3}\\text{ (cm)}, \\quad \\overline{AC} = \\dfrac{\\overline{CH}}{\\sin 60^\\circ} = \\dfrac{12}{\\frac{\\sqrt{3}}{2}} = 8\\sqrt{3}\\text{ (cm)}$$ 따라서 $\\overline{AB} = \\overline{AH} + \\overline{BH} = (4\\sqrt{3} + 12)\\text{ cm}$이다. (1) 둘레의 길이는 $(4\\sqrt{3} + 12) + 12\\sqrt{2} + 8\\sqrt{3} = (12 + 12\\sqrt{2} + 12\\sqrt{3})\\text{ cm}$이다. (2) 넓이는 $\\dfrac{1}{2} \\times (4\\sqrt{3} + 12) \\times 12 = (72 + 24\\sqrt{3})\\text{ cm}^2$이다."
+}

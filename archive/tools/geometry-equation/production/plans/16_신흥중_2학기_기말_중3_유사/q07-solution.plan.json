@@ -1,0 +1,363 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "743145",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "743145",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "669131",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "900404",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "sOE",
+      "refs": [
+        "O",
+        "E"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "O",
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "O",
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aO",
+        "refs": [
+          "D",
+          "O",
+          "A"
+        ],
+        "value": 42,
+        "label": "42",
+        "color": "ROSE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcED",
+        "circle": "circ",
+        "center": "O",
+        "from": "E",
+        "to": "D",
+        "side": "MINOR",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lOC",
+        "ownerSegment": "sOD",
+        "text": "1"
+      },
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "0.67",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lCD",
+        "ownerSegment": "sCD",
+        "text": "0.90",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "derived_sAB",
+        "ownerSegment": "sAB",
+        "text": "sin(42°)≈0.67",
+        "ownership": "NEAREST",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "derived_sCD",
+        "ownerSegment": "sCD",
+        "text": "tan(42°)≈0.90",
+        "ownership": "NEAREST",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sAB"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "segments": [
+          "sCD"
+        ],
+        "color": "WARM"
+      },
+      {
+        "segments": [
+          "sOC",
+          "sOD"
+        ],
+        "color": "GREEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 520
+  },
+  "hiddenPointNames": [
+    "E"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "16_신흥중_2학기_기말_중3_유사 7번: 풀이에서 구한 핵심 관계",
+  "accessibilityDescription": "16_신흥중_2학기_기말_중3_유사 7번 해설: 점과 선분·원·각의 관계를 보여 주는 기하 도형",
+  "newVisualInformation": [
+    "해설이 구한 길이·각도 또는 보조선을 실제 그리기 필드에 추가"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q07_solution_seg0",
+      "condition": "그림에 표시하는 선분 O–D",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q07_solution_seg1",
+      "condition": "그림에 표시하는 선분 O–E",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q07_solution_seg2",
+      "condition": "그림에 표시하는 선분 O–C",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q07_solution_seg3",
+      "condition": "그림에 표시하는 선분 A–B",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q07_solution_seg4",
+      "condition": "그림에 표시하는 선분 C–D",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q07_solution_length0",
+      "condition": "선분 sOD 옆의 주어진 표기 '1'",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q07_solution_length1",
+      "condition": "선분 sAB 옆의 주어진 표기 '0.67'",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q07_solution_length2",
+      "condition": "선분 sCD 옆의 주어진 표기 '0.90'",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q07_solution_length3",
+      "condition": "선분 sAB 옆의 풀이로 도출한 표기 'sin(42°)≈0.67'",
+      "mappedTo": "planeMarks.expressionLabels[3]"
+    },
+    {
+      "id": "q07_solution_length4",
+      "condition": "선분 sCD 옆의 풀이로 도출한 표기 'tan(42°)≈0.90'",
+      "mappedTo": "planeMarks.expressionLabels[4]"
+    },
+    {
+      "id": "q07_solution_angle0",
+      "condition": "각 D–O–A의 표시값 42",
+      "mappedTo": "planeMarks.angles[0]"
+    }
+  ],
+  "sourceQuote": "반지름의 길이가 $1$이므로 $\\overline{OA} = \\overline{OD} = 1$이다. 직각삼각형 $OAB$에서 $$\\sin 42^\\circ = \\dfrac{\\overline{AB}}{\\overline{OA}} = \\dfrac{\\overline{AB}}{1} \\approx 0.67$$ 직각삼각형 $ODC$에서 $$\\tan 42^\\circ = \\dfrac{\\overline{CD}}{\\overline{OD}} = \\dfrac{\\overline{CD}}{1} \\approx 0.90$$ 따라서 $\\sin 42^\\circ + \\tan 42^\\circ \\approx 0.67 + 0.90 = 1.57$이다. 정답은 ②이다."
+}

@@ -1,0 +1,287 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "18"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lBD",
+        "ownerSegment": "sBD",
+        "text": "15",
+        "unit": "cm"
+      },
+      {
+        "id": "lDC",
+        "ownerSegment": "sDC",
+        "text": "9",
+        "unit": "cm"
+      }
+    ],
+    "angles": [
+      {
+        "id": "a1",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 26.56505117707799,
+        "noLabel": true,
+        "color": "BLUE",
+        "factRole": "GIVEN",
+        "label": "α"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "value": 26.56505117707799,
+        "noLabel": true,
+        "color": "BLUE",
+        "factRole": "GIVEN",
+        "label": "α"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 460
+  },
+  "caption": "16_신흥중_2학기_기말_중3_유사 14번: 원문의 주어진 기하 관계",
+  "accessibilityDescription": "16_신흥중_2학기_기말_중3_유사 14번 문제: 점과 선분·원·각의 관계를 보여 주는 기하 도형",
+  "newVisualInformation": [
+    "원문의 알려진 길이와 각도만 실제 그리기 필드로 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q14_problem_seg0",
+      "condition": "그림에 표시하는 선분 B–D",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q14_problem_seg1",
+      "condition": "그림에 표시하는 선분 D–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q14_problem_seg2",
+      "condition": "그림에 표시하는 선분 A–B",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q14_problem_seg3",
+      "condition": "그림에 표시하는 선분 A–C",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q14_problem_seg4",
+      "condition": "그림에 표시하는 선분 A–D",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q14_problem_length0",
+      "condition": "선분 sBD 옆의 주어진 표기 '15'",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q14_problem_length1",
+      "condition": "선분 sDC 옆의 주어진 표기 '9'",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q14_problem_angle0",
+      "condition": "각 B–A–D의 표시값 α",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q14_problem_angle1",
+      "condition": "각 D–A–C의 표시값 α",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "q14_problem_circle0",
+      "condition": "중심과 반지름으로 엔진이 그리는 원 circ",
+      "mappedTo": "displayCircles[0]"
+    }
+  ],
+  "sourceQuote": "다음 그림에서 원 $O$는 $\\angle C = 90^\\circ$인 직각삼각형 $ABC$의 내접원이고, $\\angle A$의 이등분선은 원 $O$의 중심과 $\\overline{BC}$ 위의 점 $D$를 지난다. $\\overline{BD} = 15\\text{ cm}$, $\\overline{CD} = 9\\text{ cm}$일 때, 내접원 $O$의 반지름의 길이는?"
+}

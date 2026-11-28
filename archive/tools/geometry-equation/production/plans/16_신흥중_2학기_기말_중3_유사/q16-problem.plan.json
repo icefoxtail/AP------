@@ -1,0 +1,328 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "14",
+              "denominator": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "8",
+                  "denominator": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "cO",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cO2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "O2",
+    "A",
+    "B",
+    "P",
+    "Q"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "cO",
+    "cO2"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOO2",
+      "refs": [
+        "O",
+        "O2"
+      ]
+    },
+    {
+      "id": "sO2B",
+      "refs": [
+        "O2",
+        "B"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sO2P",
+      "refs": [
+        "O2",
+        "P"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAO",
+        "ownerSegment": "sAO",
+        "text": "6"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "O2",
+        "P",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 480
+  },
+  "pointNames": {
+    "O2": "O'"
+  },
+  "caption": "16_신흥중_2학기_기말_중3_유사 16번: 원문의 주어진 기하 관계",
+  "accessibilityDescription": "16_신흥중_2학기_기말_중3_유사 16번 문제: 점과 선분·원·각의 관계를 보여 주는 기하 도형",
+  "newVisualInformation": [
+    "원문의 알려진 길이와 각도만 실제 그리기 필드로 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q16_problem_seg0",
+      "condition": "그림에 표시하는 선분 A–O",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q16_problem_seg1",
+      "condition": "그림에 표시하는 선분 O–O2",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q16_problem_seg2",
+      "condition": "그림에 표시하는 선분 O2–B",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q16_problem_seg3",
+      "condition": "그림에 표시하는 선분 A–P",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q16_problem_seg4",
+      "condition": "그림에 표시하는 선분 P–Q",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q16_problem_seg5",
+      "condition": "그림에 표시하는 선분 O2–P",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "q16_problem_length0",
+      "condition": "선분 sAO 옆의 주어진 표기 '6'",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q16_problem_circle0",
+      "condition": "중심과 반지름으로 엔진이 그리는 원 cO",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "q16_problem_circle1",
+      "condition": "중심과 반지름으로 엔진이 그리는 원 cO2",
+      "mappedTo": "displayCircles[1]"
+    }
+  ],
+  "sourceQuote": "다음 그림에서 원 $O'$은 원 $O$의 반지름 $\\overline{OB}$를 지름으로 하는 원이다. 또 선분 $AP$는 원 $O'$의 접선(점 $P$는 접점)이고 그 연장선이 원 $O$와 만나는 점을 $Q$라 하자. $\\overline{OA} = 6$일 때, $\\overline{AQ}$의 길이는?"
+}

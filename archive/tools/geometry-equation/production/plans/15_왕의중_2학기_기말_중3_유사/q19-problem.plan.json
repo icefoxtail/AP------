@@ -1,0 +1,335 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "15_왕의중_2학기_기말_중3_유사 19번: 원문의 주어진 기하 관계",
+  "accessibilityDescription": "15_왕의중_2학기_기말_중3_유사 19번 문제: 점과 선분·원·각의 관계를 보여 주는 기하 도형",
+  "newVisualInformation": [
+    "원문의 알려진 길이와 각도만 실제 그리기 필드로 표시"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "19",
+              "denominator": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-5",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "845"
+                  }
+                ]
+              },
+              {
+                "kind": "integer",
+                "value": "4"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "B",
+    "D",
+    "A",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sPC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "sBP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "sPD",
+      "refs": [
+        "P",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lABz0",
+        "ownerSegment": "sAB",
+        "text": "13",
+        "unit": "cm"
+      },
+      {
+        "id": "lBPz0",
+        "ownerSegment": "sBP",
+        "text": "5",
+        "unit": "cm"
+      },
+      {
+        "id": "lPDz0",
+        "ownerSegment": "sPD",
+        "text": "6",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "P",
+        "B"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "O"
+  ],
+  "hiddenPointStyle": "NONE",
+  "sourceConditions": [
+    {
+      "id": "q19_problem_seg0",
+      "condition": "그림에 표시하는 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q19_problem_seg1",
+      "condition": "그림에 표시하는 선분 B–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q19_problem_seg2",
+      "condition": "그림에 표시하는 선분 C–D",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q19_problem_seg3",
+      "condition": "그림에 표시하는 선분 D–A",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q19_problem_seg4",
+      "condition": "그림에 표시하는 선분 A–P",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q19_problem_seg5",
+      "condition": "그림에 표시하는 선분 P–C",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "q19_problem_seg6",
+      "condition": "그림에 표시하는 선분 B–P",
+      "mappedTo": "displaySegments[6]"
+    },
+    {
+      "id": "q19_problem_seg7",
+      "condition": "그림에 표시하는 선분 P–D",
+      "mappedTo": "displaySegments[7]"
+    },
+    {
+      "id": "q19_problem_length0",
+      "condition": "선분 sAB 옆의 주어진 표기 '13'",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q19_problem_length1",
+      "condition": "선분 sBP 옆의 주어진 표기 '5'",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q19_problem_length2",
+      "condition": "선분 sPD 옆의 주어진 표기 '6'",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q19_problem_circle0",
+      "condition": "중심과 반지름으로 엔진이 그리는 원 k",
+      "mappedTo": "displayCircles[0]"
+    }
+  ],
+  "sourceQuote": "다음 그림에서 $\\square ABCD$가 원에 내접하고 두 대각선 $AC, BD$가 점 $P$에서 수직으로 만난다. $\\overline{AB} = 13\\text{ cm}$, $\\overline{BP} = 5\\text{ cm}$, $\\overline{DP} = 6\\text{ cm}$일 때, $\\overline{AC}$의 길이는?"
+}

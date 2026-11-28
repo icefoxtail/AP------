@@ -1,0 +1,337 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "15_왕의중_2학기_기말_중3_유사 20번: 풀이에서 구한 핵심 관계",
+  "accessibilityDescription": "15_왕의중_2학기_기말_중3_유사 20번 해설: 점과 선분·원·각의 관계를 보여 주는 기하 도형",
+  "newVisualInformation": [
+    "해설이 구한 길이·각도 또는 보조선을 실제 그리기 필드에 추가"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "5"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "5"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "9",
+            "denominator": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "M",
+    "P",
+    "Q",
+    "A",
+    "B",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sQP",
+      "refs": [
+        "Q",
+        "P"
+      ]
+    },
+    {
+      "id": "sPM",
+      "refs": [
+        "P",
+        "M"
+      ]
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "sMA",
+      "refs": [
+        "M",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcAMz0",
+        "circle": "k",
+        "center": "O",
+        "from": "A",
+        "to": "M",
+        "side": "MINOR",
+        "color": "VIOLET"
+      },
+      {
+        "id": "arcMBz0",
+        "circle": "k",
+        "center": "O",
+        "from": "M",
+        "to": "B",
+        "side": "MINOR",
+        "color": "VIOLET"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lPMz0",
+        "ownerSegment": "sPM",
+        "text": "4",
+        "unit": "cm"
+      },
+      {
+        "id": "lQPz0",
+        "ownerSegment": "sQP",
+        "text": "5",
+        "unit": "cm"
+      },
+      {
+        "id": "derived_sMB",
+        "ownerSegment": "sMB",
+        "text": "6",
+        "ownership": "NEAREST",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "O"
+  ],
+  "hiddenPointStyle": "NONE",
+  "sourceConditions": [
+    {
+      "id": "q20_solution_seg0",
+      "condition": "그림에 표시하는 선분 A–P",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q20_solution_seg1",
+      "condition": "그림에 표시하는 선분 P–B",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q20_solution_seg2",
+      "condition": "그림에 표시하는 선분 Q–P",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q20_solution_seg3",
+      "condition": "그림에 표시하는 선분 P–M",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q20_solution_seg4",
+      "condition": "그림에 표시하는 선분 M–B",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q20_solution_seg5",
+      "condition": "그림에 표시하는 선분 M–A",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "q20_solution_length0",
+      "condition": "선분 sPM 옆의 주어진 표기 '4'",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q20_solution_length1",
+      "condition": "선분 sQP 옆의 주어진 표기 '5'",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q20_solution_length2",
+      "condition": "선분 sMB 옆의 풀이로 도출한 표기 '6'",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q20_solution_circle0",
+      "condition": "중심과 반지름으로 엔진이 그리는 원 k",
+      "mappedTo": "displayCircles[0]"
+    }
+  ],
+  "sourceQuote": "$\\triangle APQ \\sim \\triangle MPB$ (AA 닮음)이므로 $\\overline{AP} \\times \\overline{PB} = \\overline{MP} \\times \\overline{PQ} = 4 \\times 5 = 20$이다. $\\stackrel{\\frown}{AM} = \\stackrel{\\frown}{BM}$이므로 $\\overline{AM} = \\overline{BM}$이고 $\\overline{AB}$의 중점을 $N$이라 하면 $\\overline{MN} \\perp \\overline{AB}$이다. $\\overline{AP} = a$, $\\overline{PB} = b$라 하면 $\\overline{BN} = \\dfrac{a + b}{2}$, $\\overline{PN} = \\dfrac{|a - b|}{2}$이므로 피타고라스 정리에 의하여 $$\\overline{BM}^2 - \\overline{PM}^2 = \\overline{BN}^2 - \\overline{PN}^2 = \\dfrac{(a + b)^2 - (a - b)^2}{4} = ab = 20$$ 따라서 $\\overline{BM}^2 = 4^2 + 20 = 36$이므로 $\\overline{BM} = 6\\text{ cm}$이다. 정답은 ⑤이다."
+}

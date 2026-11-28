@@ -1,0 +1,332 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "18"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBC",
+        "op": "LINE_THROUGH",
+        "inputs": ["B", "C"],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": ["O", "lBC"],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sOF",
+      "refs": [
+        "O",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lBD",
+        "ownerSegment": "sBD",
+        "text": "15",
+        "unit": "cm"
+      },
+      {
+        "id": "lDC",
+        "ownerSegment": "sDC",
+        "text": "9",
+        "unit": "cm"
+      },
+      {
+        "id": "derived_sOF",
+        "ownerSegment": "sOF",
+        "text": "6",
+        "ownership": "NEAREST",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "angles": [
+      {
+        "id": "a1",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 26.56505117707799,
+        "noLabel": true,
+        "color": "BLUE",
+        "factRole": "GIVEN",
+        "label": "α"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "value": 26.56505117707799,
+        "noLabel": true,
+        "color": "BLUE",
+        "factRole": "GIVEN",
+        "label": "α"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "rOF",
+      "refs": ["O", "F", "B"]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 460
+  },
+  "caption": "16_신흥중_2학기_기말_중3_유사 14번: 풀이에서 구한 핵심 관계",
+  "accessibilityDescription": "16_신흥중_2학기_기말_중3_유사 14번 해설: 점과 선분·원·각의 관계를 보여 주는 기하 도형",
+  "newVisualInformation": [
+    "해설이 구한 길이·각도 또는 보조선을 실제 그리기 필드에 추가"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q14_solution_seg0",
+      "condition": "그림에 표시하는 선분 B–D",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q14_solution_seg1",
+      "condition": "그림에 표시하는 선분 D–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q14_solution_seg2",
+      "condition": "그림에 표시하는 선분 A–B",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q14_solution_seg3",
+      "condition": "그림에 표시하는 선분 A–C",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q14_solution_seg4",
+      "condition": "그림에 표시하는 선분 A–D",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "q14_solution_seg5",
+      "condition": "그림에 표시하는 수선의 발 F와 반지름 선분 O–F",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "q14_solution_length0",
+      "condition": "선분 sBD 옆의 주어진 표기 '15'",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q14_solution_length1",
+      "condition": "선분 sDC 옆의 주어진 표기 '9'",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q14_solution_length2",
+      "condition": "선분 sOF 옆의 풀이로 도출한 반지름 '6'",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q14_solution_angle0",
+      "condition": "각 B–A–D의 표시값 α",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q14_solution_angle1",
+      "condition": "각 D–A–C의 표시값 α",
+      "mappedTo": "planeMarks.angles[1]"
+    },
+    {
+      "id": "q14_solution_circle0",
+      "condition": "중심과 반지름으로 엔진이 그리는 원 circ",
+      "mappedTo": "displayCircles[0]"
+    }
+  ],
+  "sourceQuote": "$\\overline{AD}$가 $\\angle A$의 이등분선이므로 내각의 이등분선 정리에 의하여 $$\\dfrac{\\overline{AB}}{\\overline{AC}} = \\dfrac{\\overline{BD}}{\\overline{CD}} = \\dfrac{15}{9} = \\dfrac{5}{3}$$ $\\overline{AB} = 5k$, $\\overline{AC} = 3k$ ($k > 0$)라 하면 직각삼각형 $ABC$에서 피타고라스 정리에 의하여 $$\\overline{BC}^2 = (5k)^2 - (3k)^2 = 16k^2 \\implies \\overline{BC} = 4k$$ $\\overline{BC} = 15 + 9 = 24\\text{ cm}$이므로 $4k = 24 \\implies k = 6$이고 $\\overline{AB} = 30\\text{ cm}$, $\\overline{AC} = 18\\text{ cm}$이다. 직각삼각형 $ABC$의 내접원 반지름을 $r\\text{ cm}$라 하면 접선의 길이 성질에 의하여 $$2r = \\overline{AC} + \\overline{BC} - \\overline{AB} = 18 + 24 - 30 = 12$$ 따라서 $r = 6\\text{ cm}$이므로 정답은 ③이다."
+}

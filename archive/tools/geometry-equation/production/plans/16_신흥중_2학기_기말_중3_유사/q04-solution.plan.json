@@ -1,0 +1,261 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "16_신흥중_2학기_기말_중3_유사 4번: 풀이에서 구한 핵심 관계",
+  "accessibilityDescription": "16_신흥중_2학기_기말_중3_유사 4번 해설: 점과 선분·원·각의 관계를 보여 주는 기하 도형",
+  "sourceConditions": [
+    {
+      "id": "q04_solution_seg0",
+      "condition": "그림에 표시하는 선분 A–B",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "q04_solution_seg1",
+      "condition": "그림에 표시하는 선분 A–C",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "q04_solution_seg2",
+      "condition": "그림에 표시하는 선분 B–C",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "q04_solution_seg3",
+      "condition": "그림에 표시하는 선분 A–H",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "q04_solution_length0",
+      "condition": "선분 sAB 옆의 주어진 표기 '5'",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "q04_solution_length1",
+      "condition": "선분 sAC 옆의 주어진 표기 '12'",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "q04_solution_length2",
+      "condition": "선분 sBC 옆의 풀이로 도출한 표기 '13'",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "q04_solution_angle0",
+      "condition": "각 B–A–H의 표시값 x",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "q04_solution_angle1",
+      "condition": "각 H–A–C의 표시값 y",
+      "mappedTo": "planeMarks.angles[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "해설이 구한 길이·각도 또는 보조선을 실제 그리기 필드에 추가"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "25",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "60",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "25",
+              "denominator": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "ax",
+        "refs": [
+          "B",
+          "A",
+          "H"
+        ],
+        "value": 22.62,
+        "label": "x",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ay",
+        "refs": [
+          "H",
+          "A",
+          "C"
+        ],
+        "value": 67.38,
+        "label": "y",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "5"
+      },
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "12"
+      },
+      {
+        "id": "derived_sBC",
+        "ownerSegment": "sBC",
+        "text": "13",
+        "ownership": "NEAREST",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "13",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 440,
+    "height": 360
+  },
+  "sourceQuote": "$\\triangle ABH \\sim \\triangle CBA$이므로 $x = \\angle ACB$이고 $$\\sin x = \\sin \\angle ACB = \\dfrac{\\overline{AB}}{\\overline{BC}} = \\dfrac{5}{13}$$ $\\triangle ACH \\sim \\triangle BCA$이므로 $y = \\angle ABC$이고 $$\\tan y = \\tan \\angle ABC = \\dfrac{\\overline{AC}}{\\overline{AB}} = \\dfrac{12}{5}$$ 따라서 $$\\sin x \\times \\tan y = \\dfrac{5}{13} \\times \\dfrac{12}{5} = \\dfrac{12}{13}$$ 따라서 정답은 ⑤이다."
+}
