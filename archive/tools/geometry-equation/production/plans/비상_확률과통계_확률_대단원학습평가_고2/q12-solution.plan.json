@@ -1,0 +1,49 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "universe": {
+      "name": "U",
+      "count": "120"
+    },
+    "sets": [
+      {
+        "id": "A",
+        "count": "10"
+      },
+      {
+        "id": "B",
+        "count": "20"
+      }
+    ],
+    "shade": "(A∪B)^c"
+  },
+  "caption": "여사건 A∪B에서 A는 세 바지가 모두 긴바지인 경우 10가지, B는 모두 검은색인 경우 20가지이며 교집합은 1가지다. 구하는 영역은 두 원의 바깥이다.",
+  "accessibilityDescription": "전체 120가지 중 세 벌 모두 긴바지인 사건 A와 모두 검은색인 사건 B가 겹치는 벤다이어그램이며 두 원 바깥의 여집합만 칠해져 있다.",
+  "sourceConditions": [
+    {
+      "id": "universe",
+      "condition": "10벌 중 3벌을 꺼내는 전체 경우의 수는 120이다.",
+      "mappedTo": [
+        "diagram.universe"
+      ]
+    },
+    {
+      "id": "counts",
+      "condition": "모두 긴바지 10가지, 모두 검은색 20가지이고 교집합은 검은 긴바지 3벌을 고르는 1가지이다.",
+      "mappedTo": [
+        "diagram.sets"
+      ]
+    },
+    {
+      "id": "target",
+      "condition": "적어도 하나는 반바지이고 적어도 하나는 노란색인 사건은 (A∪B)의 여집합이다.",
+      "mappedTo": [
+        "diagram.shade"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 여사건의 겹침을 한번만 빼는 구조와 최종 구하는 원 바깥 영역을 구별한다."
+  ]
+}

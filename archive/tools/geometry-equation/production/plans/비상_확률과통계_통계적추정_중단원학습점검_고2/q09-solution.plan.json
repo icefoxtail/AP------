@@ -1,0 +1,55 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "X",
+        "mean": "0.25",
+        "sd": "0.025",
+        "label": "표본비율"
+      }
+    ],
+    "ticks": [
+      "0.2",
+      "0.25",
+      "0.3"
+    ],
+    "zAxis": true,
+    "shades": [
+      {
+        "from": "0.2",
+        "to": "0.3"
+      }
+    ],
+    "areaLabels": [
+      {
+        "shade": 0,
+        "text": "0.9544"
+      }
+    ]
+  },
+  "caption": "표본비율 0.2에서 0.3까지는 평균 0.25를 중심으로 표준점수 -2부터 2까지의 넓이다.",
+  "accessibilityDescription": "평균 0.25, 표준편차 0.025인 정규분포곡선 아래 0.2에서 0.3까지의 중앙 영역을 칠하고 z=-2,0,2를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "distribution",
+      "condition": "p=0.25, n=300이므로 표본비율의 표준편차는 0.025이다.",
+      "mappedTo": [
+        "chart.curves"
+      ]
+    },
+    {
+      "id": "bounds",
+      "condition": "0.2≤표본비율≤0.3은 -2≤Z≤2와 같다.",
+      "mappedTo": [
+        "chart.ticks",
+        "chart.zAxis",
+        "chart.shades"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "양쪽으로 같은 0.05씩 떨어진 범위가 정규분포 중앙의 약 95.44% 넓이임을 보여 준다."
+  ]
+}

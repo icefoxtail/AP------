@@ -1,0 +1,84 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "ADHD있음",
+          "p": "7/100",
+          "children": [
+            {
+              "label": "있음판정",
+              "p": "4/5"
+            },
+            {
+              "label": "없음판정",
+              "p": "1/5"
+            }
+          ]
+        },
+        {
+          "label": "ADHD없음",
+          "p": "93/100",
+          "children": [
+            {
+              "label": "있음판정",
+              "p": "3/10"
+            },
+            {
+              "label": "없음판정",
+              "p": "7/10"
+            }
+          ]
+        }
+      ]
+    },
+    "showPathProbability": true,
+    "highlightPaths": [
+      {
+        "path": [
+          "ADHD있음",
+          "있음판정"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "ADHD없음",
+          "없음판정"
+        ],
+        "color": "WARM"
+      }
+    ]
+  },
+  "caption": "정확한 진단은 ADHD가 있을 때 있음으로 판정한 경로와 없을 때 없음으로 판정한 경로의 합이다.",
+  "accessibilityDescription": "ADHD 유무에 따라 두 갈래로 나뉜 다음 검사 판정의 있음과 없음으로 다시 나뉘는 수형도이다. 정확히 판정한 두 경로가 강조되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "prior",
+      "condition": "ADHD가 있는 비율은 7%, 없는 비율은 93%이다.",
+      "mappedTo": [
+        "chart.root.children"
+      ]
+    },
+    {
+      "id": "test",
+      "condition": "ADHD가 있을 때 정확 진단 0.8, 없을 때 정확 진단 0.7이다.",
+      "mappedTo": [
+        "chart.root.children[0].children",
+        "chart.root.children[1].children"
+      ]
+    },
+    {
+      "id": "correct",
+      "condition": "정확한 판정 두 가지를 합한다.",
+      "mappedTo": [
+        "chart.highlightPaths"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "ADHD가 없는 아동의 정확한 음성 판정도 확률에 포함됨을 별도의 강조 경로로 보여 준다."
+  ]
+}

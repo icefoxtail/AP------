@@ -1,0 +1,85 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "고장",
+          "p": "1/5",
+          "children": [
+            {
+              "label": "신고",
+              "p": "9/10"
+            },
+            {
+              "label": "미신고",
+              "p": "1/10"
+            }
+          ]
+        },
+        {
+          "label": "정상",
+          "p": "4/5",
+          "children": [
+            {
+              "label": "신고",
+              "p": "3/100"
+            },
+            {
+              "label": "미신고",
+              "p": "97/100"
+            }
+          ]
+        }
+      ]
+    },
+    "showPathProbability": true,
+    "highlightPaths": [
+      {
+        "path": [
+          "고장",
+          "신고"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "정상",
+          "신고"
+        ],
+        "color": "WARM"
+      }
+    ]
+  },
+  "caption": "고장·정상에서 각각 신고에 이르는 두 경로의 확률 0.18과 0.024를 더하면 신고 확률은 0.204이다.",
+  "accessibilityDescription": "고장 확률 1/5과 정상 확률 4/5에서 각각 신고 여부로 갈라지는 두 단계 확률 수형도이며 신고로 끝나는 두 경로를 강조한다.",
+  "sourceConditions": [
+    {
+      "id": "first",
+      "condition": "P(고장)=0.2이고 P(정상)=0.8이다.",
+      "mappedTo": [
+        "chart.root.children"
+      ]
+    },
+    {
+      "id": "second",
+      "condition": "고장일 때 신고 0.9, 정상일 때 신고 0.03이다.",
+      "mappedTo": [
+        "chart.root.children[0].children",
+        "chart.root.children[1].children"
+      ]
+    },
+    {
+      "id": "event",
+      "condition": "구하는 신고 확률은 신고로 끝나는 두 갈래의 확률 합이다.",
+      "mappedTo": [
+        "chart.highlightPaths",
+        "chart.showPathProbability"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "고장일 때의 조건부확률과 정상일 때의 조건부확률이 서로 다른 1차 가지에 붙는다."
+  ]
+}

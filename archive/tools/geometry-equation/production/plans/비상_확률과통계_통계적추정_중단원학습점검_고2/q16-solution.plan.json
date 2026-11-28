@@ -1,0 +1,53 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "X",
+        "mean": "100",
+        "sd": "2",
+        "label": "표본평균"
+      }
+    ],
+    "ticks": [
+      "96",
+      "100",
+      "106"
+    ],
+    "zAxis": true,
+    "shades": [
+      {
+        "from": null,
+        "to": "96"
+      },
+      {
+        "from": "106",
+        "to": null
+      }
+    ]
+  },
+  "caption": "향수 한 세트가 불량인 두 경우는 표본평균 96 미만과 106 초과의 서로 다른 양쪽 꼬리 영역이다.",
+  "accessibilityDescription": "평균 100, 표준편차 2인 정규분포곡선에서 96 왼쪽과 106 오른쪽의 작은 꼬리 영역만 칠하고 표준점수 -2, 0, 3을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "distribution",
+      "condition": "4병 총량을 4로 나눈 표본평균은 평균 100, 표준편차 2이다.",
+      "mappedTo": [
+        "chart.curves"
+      ]
+    },
+    {
+      "id": "reject",
+      "condition": "불량품 기준 T<384 또는 T>424는 표본평균<96 또는 >106이다.",
+      "mappedTo": [
+        "chart.ticks",
+        "chart.shades",
+        "chart.zAxis"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "서로 다른 왼쪽 2표준편차 꼬리와 오른쪽 3표준편차 꼬리 두 구역만 면 채움으로 표현한다."
+  ]
+}
