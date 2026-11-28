@@ -1,0 +1,9 @@
+{
+  "capability":"polynomial-spike-v1",
+  "sourceQuote":"이차함수 $y=(x+2)^2+5$의 최솟값은?",
+  "graphPlan":{"family":"polynomial","coefficients":["9","4","1"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[-5,1],"viewport":[-5,1,0,15],"requiredPoints":[{"id":"V","x":-2,"y":5}],"axisTickValues":{"x":[],"y":[]}},
+  "caption":"포물선 y=(x+2)²+5는 꼭짓점 V(−2,5)에서 최솟값 5를 갖는다.",
+  "accessibilityDescription":"위로 열린 포물선의 꼭짓점 V의 좌표가 (−2,5)로 표시되어 최솟값이 결정된다.",
+  "sourceConditions":[{"id":"quadratic","condition":"y=(x+2)^2+5=x²+4x+9","mappedTo":["graphPlan.coefficients"]},{"id":"minimum","condition":"대칭축 x=−2, 꼭짓점 (−2,5)","mappedTo":["graphPlan.requiredPoints[0]"]}],
+  "newVisualInformation":["제곱항의 비음수 조건이 포물선의 꼭짓점에서 시각적으로 확인된다."]
+}

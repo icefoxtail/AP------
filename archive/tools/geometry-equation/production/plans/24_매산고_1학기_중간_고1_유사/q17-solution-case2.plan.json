@@ -1,0 +1,9 @@
+{
+  "capability":"polynomial-spike-v1",
+  "sourceQuote":"삼차방정식 $x^3+(3a-1)x-3a=0$의 서로 다른 실근의 개수가 $2$",
+  "graphPlan":{"family":"polynomial","coefficients":["2","-3","0","1"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[-2.8,1.8],"viewport":[-2.8,1.8,-8,6],"requiredPoints":[{"id":"L","x":-2,"y":0},{"id":"M","x":-1,"y":4},{"id":"T","x":1,"y":0}],"axisTickValues":{"x":[],"y":[]}},
+  "caption":"a=−2/3이면 (x−1)²(x+2)=0: x=−2에서 가로지르고 x=1에서 x축과 접한다.",
+  "accessibilityDescription":"삼차함수는 단근 L(−2,0)에서 x축을 가로지르고 중근 T(1,0)에서 접하며 극댓점은 M(−1,4)이다.",
+  "sourceConditions":[{"id":"factor","condition":"a=−2/3일 때 (x−1)^2(x+2)=x³−3x+2","mappedTo":["graphPlan.coefficients"]},{"id":"double","condition":"x=1은 중근, x=−2는 단근","mappedTo":["graphPlan.requiredPoints[0]","graphPlan.requiredPoints[2]"]},{"id":"turning","condition":"f'(x)=3x²−3, 극대 (−1,4)","mappedTo":["graphPlan.requiredPoints[1]"]}],
+  "newVisualInformation":["첫 번째 경우와 달리 x=1에서 접하는 두 번째 중근 조건을 독립 그래프로 표시한다."]
+}

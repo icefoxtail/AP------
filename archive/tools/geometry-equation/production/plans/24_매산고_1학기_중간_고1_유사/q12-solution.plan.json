@@ -1,0 +1,9 @@
+{
+  "capability":"polynomial-spike-v1",
+  "sourceQuote":"$x$축과 한 점에서 만나도록 하는 양의 실수 $k$의 최솟값은?",
+  "graphPlan":{"family":"polynomial","coefficients":["16/25","8/5","1"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[-3,2],"viewport":[-3,2,-1,8],"requiredPoints":[{"id":"T","x":-0.8,"y":0}],"exactCoordinates":{"T":["-4/5","0"]},"axisTickValues":{"x":[],"y":[]}},
+  "caption":"m=1과 k=3/5인 최솟값 경우의 함수 y=(x+4/5)²는 T(−4/5,0)에서 x축에 접한다.",
+  "accessibilityDescription":"위로 열린 이차함수가 x축과 오직 한 점 T(−4/5,0)에서 만나는 중근 상황을 보여 준다.",
+  "sourceConditions":[{"id":"candidate","condition":"D=0에서 k=3m/5 또는 5m/3이고 m=1에서 최소 후보 k=3/5","mappedTo":["graphPlan.coefficients"]},{"id":"tangency","condition":"m=1,k=3/5이면 (x+4/5)²로 접점은 x=−4/5","mappedTo":["graphPlan.requiredPoints[0]","graphPlan.exactCoordinates.T"]}],
+  "newVisualInformation":["판별식 0이 x축에 접한다는 것을 실제 이차곡선과 정확한 접점으로 표현한다."]
+}
