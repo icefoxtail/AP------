@@ -280,7 +280,7 @@ window.questionBank = [
     "solutionStatus": "created",
     "reviewStatus": "review_required",
     "sourcePage": "5-2",
-    "image": "assets/images/26_팔마중_2학기_중간_중2_기출/q5-problem-visual-v2.svg",
+    "image": "assets/images/26_팔마중_2학기_중간_중2_기출/q5_question-v2.svg",
     "imageStatus": "present",
     "solutionImage": "assets/images/26_팔마중_2학기_중간_중2_기출/q5-solution.svg",
     "solutionImageAlt": "해설 그림: 직사각형 ABCD의 두 대각선이 O에서 만나 OA=OB=OC=OD이고, BD=10과 25° 세 각(∠OBC, ∠OCB, ∠DAC), ∠BAC=65°, OC=5가 표시되어 있다.",

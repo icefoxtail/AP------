@@ -859,7 +859,11 @@ window.questionBank = [
       "COND_THREE_POINTS"
     ],
     "integrationPattern": "INTEG_ARITHMETIC_MEAN",
-    "metaRationale": "교재 p.15 Q06: ABC 무게중심 G를 포함한 GBC의 무게중심 H가 주어져 A(a,b)를 두 번 역산하는 동일 개념·조건·풀이구조. 난이도 중/2; 기존 TYPE_CENTROID/TMPL_CENTROID_BASIC 키 재사용, 신규 PT/TPL 없음."
+    "metaRationale": "교재 p.15 Q06: ABC 무게중심 G를 포함한 GBC의 무게중심 H가 주어져 A(a,b)를 두 번 역산하는 동일 개념·조건·풀이구조. 난이도 중/2; 기존 TYPE_CENTROID/TMPL_CENTROID_BASIC 키 재사용, 신규 PT/TPL 없음.",
+    "solutionImage": "assets/images/백발백중_공통수학2_Best2회_P14-17_20261022_유사50/BV-BAKBAL-H-COM2-P15-Q06-T1-R2-solution.svg",
+    "solutionImageAlt": "△ABC의 무게중심 G(1,3), △GBC의 무게중심 H(0,3)를 같은 중선 위에서 구분하고 A(4,3)를 확인한다.",
+    "solutionImageCaption": "△ABC의 무게중심 G(1,3), △GBC의 무게중심 H(0,3)를 같은 중선 위에서 구분하고 A(4,3)를 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P15-Q06-S1-R2",
@@ -907,7 +911,11 @@ window.questionBank = [
       "COND_THREE_POINTS"
     ],
     "integrationPattern": "INTEG_ARITHMETIC_MEAN",
-    "metaRationale": "교재 p.15 Q06: ABC 무게중심 G를 포함한 GBC의 무게중심 H가 주어져 A(a,b)를 두 번 역산하는 동일 개념·조건·풀이구조. 난이도 중/2; 기존 TYPE_CENTROID/TMPL_CENTROID_BASIC 키 재사용, 신규 PT/TPL 없음."
+    "metaRationale": "교재 p.15 Q06: ABC 무게중심 G를 포함한 GBC의 무게중심 H가 주어져 A(a,b)를 두 번 역산하는 동일 개념·조건·풀이구조. 난이도 중/2; 기존 TYPE_CENTROID/TMPL_CENTROID_BASIC 키 재사용, 신규 PT/TPL 없음.",
+    "solutionImage": "assets/images/백발백중_공통수학2_Best2회_P14-17_20261022_유사50/BV-BAKBAL-H-COM2-P15-Q06-S1-R2-solution.svg",
+    "solutionImageAlt": "ABC의 무게중심 G(1,4)와 GBC의 무게중심 H(1,2)를 같은 중선에서 비교하고 A(1,10)를 보인다.",
+    "solutionImageCaption": "ABC의 무게중심 G(1,4)와 GBC의 무게중심 H(1,2)를 같은 중선에서 비교하고 A(1,10)를 보인다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P15-Q06-S2-R2",
@@ -1008,7 +1016,11 @@ window.questionBank = [
       "COND_PARALLELOGRAM"
     ],
     "integrationPattern": "INTEG_MIDPOINT_PROPERTY",
-    "metaRationale": "교재 p.15 Q07: A,B,C,D의 평행사변형 조건에서 A+C=B+D로 두 미지 좌표를 구해 합산하는 동일 핵심 구조. 난이도 중/2; 기존 TYPE_PARALLELOGRAM/TMPL_PARALLELOGRAM_MIDPOINT 재사용, 신규 PT/TPL 없음."
+    "metaRationale": "교재 p.15 Q07: A,B,C,D의 평행사변형 조건에서 A+C=B+D로 두 미지 좌표를 구해 합산하는 동일 핵심 구조. 난이도 중/2; 기존 TYPE_PARALLELOGRAM/TMPL_PARALLELOGRAM_MIDPOINT 재사용, 신규 PT/TPL 없음.",
+    "solutionImage": "assets/images/백발백중_공통수학2_Best2회_P14-17_20261022_유사50/BV-BAKBAL-H-COM2-P15-Q07-T1-R2-solution.svg",
+    "solutionImageAlt": "A(2,4), B(-1,2), C(-3,-1), D(0,1)과 교차하는 대각선의 공통 중점 X(-1/2,3/2)를 표시한다.",
+    "solutionImageCaption": "A(2,4), B(-1,2), C(-3,-1), D(0,1)과 교차하는 대각선의 공통 중점 X(-1/2,3/2)를 표시한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P15-Q07-S1-R2",

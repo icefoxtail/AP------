@@ -226,7 +226,12 @@ window.questionBank = [
     "level": "중",
     "curriculum": "2015",
     "primaryMethod": "일반형을 꼭짓점형으로 변형하여 꼭짓점(2,−6), 축·개형·절편·평행이동 방향 진술을 비교한다.",
-    "decisiveStep": "일반형을 꼭짓점형으로 변형하여 꼭짓점(2,−6), 축·개형·절편·평행이동 방향 진술을 비교한다."
+    "decisiveStep": "일반형을 꼭짓점형으로 변형하여 꼭짓점(2,−6), 축·개형·절편·평행이동 방향 진술을 비교한다.",
+    "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q4-solution.svg",
+    "solutionImageAlt": "y=−3/4(x−2)²−6의 꼭짓점 (2,−6)과 아래로 열린 포물선",
+    "solutionImageCaption": "y=−3/4(x−2)²−6의 꼭짓점 (2,−6)과 아래로 열린 포물선",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 5,

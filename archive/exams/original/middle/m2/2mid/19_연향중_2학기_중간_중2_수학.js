@@ -588,7 +588,11 @@ window.examData = {
     "legacyLevelCompatibility": "UNKNOWN",
     "imageAlt": "8번 문제: 원본 q08.png: AC6·BD4의 대각선 교점 O와 AO=x, BO=y, OC=z.",
     "imageCaption": "8번 문제: 원본 q08.png: AC6·BD4의 대각선 교점 O와 AO=x, BO=y, OC=z.",
-    "imageSize": "full"
+    "imageSize": "full",
+    "solutionImage": "assets/images/19_연향중_2학기_중간_중2_수학/q8-solution.svg",
+    "solutionImageAlt": "평행사변형의 대각선은 서로 이등분한다. AC=6, BD=4이므로 AO=OC=3, BO=2이고 x=z=3, y=2이다.",
+    "solutionImageCaption": "평행사변형의 대각선은 서로 이등분한다. AC=6, BD=4이므로 AO=OC=3, BO=2이고 x=z=3, y=2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,

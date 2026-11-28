@@ -685,7 +685,11 @@ window.questionBank = [
     "image": "assets/images/26_금당고_2학기_중간_고2_기하_유사/q14-problem.svg",
     "imageAlt": "포물선 y²=12x 위의 점 P(3, 6)에서의 접선에 수직이고 점 A(3, 0)을 지나는 직선 l과 교점 Q, R.",
     "imageSize": "full",
-    "imageCaption": "포물선 y²=12x 위의 점 P(3, 6)에서의 접선에 수직이고 점 A(3, 0)을 지나는 직선 l과 교점 Q, R."
+    "imageCaption": "포물선 y²=12x 위의 점 P(3, 6)에서의 접선에 수직이고 점 A(3, 0)을 지나는 직선 l과 교점 Q, R.",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고2_기하_유사/q14-solution.svg",
+    "solutionImageAlt": "포물선의 접선에 수직인 직선 l과 그 교점 Q,R을 나타낸 해설 그림.",
+    "solutionImageCaption": "포물선의 접선에 수직인 직선 l과 그 교점 Q,R을 나타낸 해설 그림.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,

@@ -597,8 +597,9 @@ window.questionBank = [
     "targetChoiceSlot": 3,
     "inferredFields": [],
     "solutionImage": "assets/images/백발백중_공통수학2_실전모의4회_P152-155_20261023_유사50/BV-BAKBAL-H-COM2-P150-Q04-T1-R1-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "A=(2,4), B=(-2,6)에서 등거리인 P=(-5,-5)는 수직이등분선과 y=x의 교점이다. 삼각형 ABP의 무게중심은 G=(-5/3,5/3)이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "A=(2,4), B=(-2,6)에서 등거리인 P=(-5,-5)는 수직이등분선과 y=x의 교점이다. 삼각형 ABP의 무게중심은 G=(-5/3,5/3)이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P150-Q04-S1-R1",

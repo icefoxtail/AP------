@@ -143,9 +143,10 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "PDF 인쇄 P62 Q06: 두 고정점과 원 위의 점으로 만든 삼각형 무게중심 자취의 둘레. 발문·축소 1/3·둘레 구조 보존.",
-    "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P62-Q06-S2-R3-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P62-Q06-S2-R3-solution-plan-repair.svg",
+    "solutionImageAlt": "원래 원의 중심은 (3,0), 반지름 9이다. G=(A+B+P)/3으로 자취 원의 중심 (3,2), 반지름 3을 얻어 둘레가 6π임을 보여 준다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원래 원의 중심은 (3,0), 반지름 9이다. G=(A+B+P)/3으로 자취 원의 중심 (3,2), 반지름 3을 얻어 둘레가 6π임을 보여 준다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P62-Q07-T1-R3",

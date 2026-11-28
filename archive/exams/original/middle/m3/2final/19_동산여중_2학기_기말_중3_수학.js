@@ -494,9 +494,9 @@ window.examData = {
         "넓이"
       ],
       "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q09-problem-v3.svg",
-      "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q09-solution-v2.svg",
-      "solutionImageAlt": "원의 반지름과 정육각형의 한 변은 같은 길이(파랑)이고, 중심 O와 꼭짓점을 이으면 한 변이 6 cm인 정삼각형 6개로 나뉜다(주황 영역이 그중 하나).",
-      "solutionImageCaption": "원의 반지름과 정육각형의 한 변은 같은 길이(파랑)이고, 중심 O와 꼭짓점을 이으면 한 변이 6 cm인 정삼각형 6개로 나뉜다(주황 영역이 그중 하나).",
+      "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q09-solution-plan-repair.svg",
+      "solutionImageAlt": "현행 q09 solution-v2 SVG에 대응하는 해설용 plan. 문제의 배치",
+      "solutionImageCaption": "현행 q09 solution-v2 SVG에 대응하는 해설용 plan. 문제의 배치",
       "solutionImageSize": "full"
     ,
     "conceptClusterKey": "TRIG_RATIO_APPLICATION",

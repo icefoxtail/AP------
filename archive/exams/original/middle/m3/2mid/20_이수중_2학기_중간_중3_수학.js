@@ -1426,8 +1426,8 @@ window.questionBank = [
   {
     "id": 17,
     "solutionImageSize": "full",
-    "solutionImageAlt": "푸른 대각선 AC를 밑변으로 삼고 B와 D에서 보라 높이를 내렸다. 주황 대각선이 둘로 나뉘며 작은 삼각형 네 개의 영역을 비교한다.",
-    "solutionImageCaption": "네 삼각형을 더한 넓이는 1/2·AC·BD·sin45°=30√2 cm²이다. 정답은 ⑤이다.",
+    "solutionImageAlt": "사각형 ABCD의 두 대각선 AC=12cm, BD=10cm가 교차하며 교차각 45°를 이루고 원본 영역에만 음영이 있다.",
+    "solutionImageCaption": "사각형 ABCD의 두 대각선 AC=12cm, BD=10cm가 교차하며 교차각 45°를 이루고 원본 영역에만 음영이 있다.",
     "score": 4,
     "level": "중",
     "category": "삼각비",
@@ -1506,11 +1506,12 @@ window.questionBank = [
       "displayOnly": true,
       "noH22IdentityClaim": true
     },
-    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q17-solution-v2.svg"
+    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q17-solution-plan-repair.svg"
   ,
     "conceptClusterKey": "TRIG_RATIO_APPLICATION",
     "primaryMethod": "대각선으로 나뉜 삼각형 넓이합을 두 대각선 곱으로 묶기",
-    "decisiveStep": "네 삼각형의 합은(1/2)(AO+OC)(BO+OD)sin45=(1/2)×12×10×√2/2=30√2이다."
+    "decisiveStep": "네 삼각형의 합은(1/2)(AO+OC)(BO+OD)sin45=(1/2)×12×10×√2/2=30√2이다.",
+    "image": "assets/images/20_이수중_2학기_중간_중3_수학/q17_question-v2.svg"
   },
   {
     "id": 18,

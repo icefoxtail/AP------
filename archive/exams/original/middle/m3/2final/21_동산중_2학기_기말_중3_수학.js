@@ -1238,12 +1238,13 @@ window.questionBank = [
     "nullReason": "RPM_PUBLISHER_EXACT_LEAF_GAP_AND_NATIVE_TEMPLATE_GAP",
     "semanticStatus": "CANDIDATE",
     "meaningMeta": {"semanticStatus":"CANDIDATE","rpmPrimaryId":null,"rpmPrimaryPath":null,"rpmL3":null,"rpmL4":null,"subUnitKey":"M3-06-CIRCLE_LINE","problemTypeKey":"PT_CIRCLE_LINE_RELATION","templateKey":null,"projectionStatus":"PROJECTION_UNMATERIALIZED","projectionReason":"실제 풀이의 의미 판단은 완료했으나 정확 publisher leaf와 native TPL이 없어 제안 및 지원 UID를 보존한다."},
-    "solutionImage": "assets/images/21_동산중_2학기_기말_중3_수학/q15-solution.svg",
-    "solutionImageAlt": "해설 그림: 원 위의 세 점 A, B, C와 각 A의 이등분선이 변 BC와 만나는 점 D, 원과 다시 만나는 점 E를 나타낸 그림.",
-    "solutionImageCaption": "각의 이등분선 정리로 BD:DC=9:5이므로 BD=9k, DC=5k라 둘 수 있다. 교차하는 현의 정리로 AD·DE=BD·DC=45k²이므로 4AD=45k²이다. 한편 AD²=45−45k²이므로 AD²+4AD=45이다. 정답은 5이다.",
+    "solutionImage": "assets/images/21_동산중_2학기_기말_중3_수학/q15-solution-plan-repair.svg",
+    "solutionImageAlt": "원 위의 세 점 A, B, C와 각 A의 이등분선이 변 BC와 만나는 점 D, 원과 다시 만나는 점 E를 나타낸 그림.",
+    "solutionImageCaption": "원 위의 세 점 A, B, C와 각 A의 이등분선이 변 BC와 만나는 점 D, 원과 다시 만나는 점 E를 나타낸 그림.",
     "solutionImageSize": "full"
   ,
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "image": "assets/images/21_동산중_2학기_기말_중3_수학/q15_question-v2.svg"
   },
   {
     "id": 16,

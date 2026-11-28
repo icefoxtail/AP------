@@ -928,8 +928,9 @@ window.questionBank = [
       "sourceVariantRole": "T1"
     },
     "solutionImage": "assets/images/백발백중_공통수학2_도형의이동_P98-101_20261023_유사50/BV-BAKBAL-H-COM2-P98-Q05-T1-R2-solution.svg",
-    "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageAlt": "원점 O에 대하여 대칭인 A(3,4)와 B(−3,−4)는 반지름 5인 원의 지름 양 끝점으로, AB=10이다.",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "원점 O에 대하여 대칭인 A(3,4)와 B(−3,−4)는 반지름 5인 원의 지름 양 끝점으로, AB=10이다."
   },
   {
     "id": "BV-BAKBAL-H-COM2-P98-Q05-S1-R2",
