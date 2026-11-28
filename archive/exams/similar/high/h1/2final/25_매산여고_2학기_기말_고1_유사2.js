@@ -342,16 +342,16 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
-    "content": "분수함수 $y=\\frac{-x+2}{x-4}$를 $(p,q)$만큼 평행이동하면 $y=\\frac{2x-12}{x-5}$가 된다. $2p+q$를 구하시오. [3.8점]",
+    "content": "분수함수 $y=\\frac{ax+2}{x-4}$($a$는 실수)를 $x$축 방향으로 $p$, $y$축 방향으로 $q$만큼 평행이동했더니 $y=\\frac{2x-12}{x-5}$가 되었다. $a+2p+q$는? [3.8점]",
     "choices": [
+      "$4$",
       "$5$",
       "$6$",
       "$7$",
-      "$9$",
-      "$11$"
+      "$8$"
     ],
     "answer": "①",
-    "solution": "$\\frac{-x+2}{x-4}=-1-\\frac2{x-4}$, $\\frac{2x-12}{x-5}=2-\\frac2{x-5}$이다. 점근선 비교로 수평 이동은 $p=5-4=1$, 수직 이동은 $q=2-(-1)=3$이다. 따라서 $2p+q=2+3=5$이다.",
+    "solution": "처음 함수를 정리하면 $y=a+\\frac{4a+2}{x-4}$이고 결과 함수는 $y=2-\\frac2{x-5}$이다. 수직점근선 $x=4$가 $x=5$로 옮겨졌으므로 $p=1$이다. 평행이동해도 분자에 해당하는 나머지 계수는 바뀌지 않으므로 $4a+2=-2$, 즉 $a=-1$이다. 수평점근선 $y=a=-1$이 $y=2$가 되었으므로 $q=3$이다. 따라서 $a+2p+q=-1+2+3=4$이다.",
     "curriculum": "2022",
     "standardCourse": "공통수학2",
     "sourceQid": 6,
@@ -368,7 +368,7 @@ window.questionBank = [
       },
       "solutionVisual": {
         "requirement": "BENEFICIAL",
-        "reason": "점근선의 수평·수직 이동을 시각적으로 대조"
+        "reason": "이동 후 수평·수직 점근선과 미지 a의 나머지 계수 4a+2=−2를 역복원"
       }
     },
     "standardUnitKey": "H22-C2-08",
@@ -379,7 +379,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-260",
     "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
-    "templateKey": "TPL_FUNCTION_GRAPH_TRANSFORM_ASYMPTOTE_POINT",
+    "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
@@ -637,16 +637,16 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
-    "content": "분수함수 $y=\\frac{-x+2}{x+2}$의 그래프에 대한 설명으로 옳은 것 하나를 고르면? [4점]",
+    "content": "분수함수 $y=\\frac4x$를 $x$축 방향으로 $p$, $y$축 방향으로 $q$만큼 평행이동한 그래프를 $G$라 하자. $G$의 수직점근선은 $x=-2$이고 기울기가 $1$인 대칭축은 $y=x+1$이다. $G$에 대한 옳은 설명은? [4점]",
     "choices": [
-      "$\\text{수직점근선은 }x=2\\text{이다.}$",
       "$\\text{수평점근선은 }y=1\\text{이다.}$",
-      "$\\text{직선 }y=-x+3\\text{에 대하여 대칭이다.}$",
-      "$\\text{그래프는 제3사분면을 지나지 않는다.}$",
-      "$\\text{수평점근선은 }y=-1\\text{이다.}$"
+      "$\\text{직선 }y=-x+1\\text{에 대하여 대칭이다.}$",
+      "$\\text{제3사분면을 지나지 않는다.}$",
+      "$\\text{점 }(1,-\\frac13)\\text{을 지난다.}$",
+      "$\\text{점 }(1,\\frac13)\\text{을 지난다.}$"
     ],
     "answer": "⑤",
-    "solution": "$\\frac{-x+2}{x+2}=-1+\\frac4{x+2}$이다. 수직점근선은 $x=-2$, 수평점근선은 $y=-1$이다. 중심은 $(-2,-1)$이고 대칭축은 $y=x+1$과 $y=-x-3$이다. $x<-2$에서는 $y<-1$이므로 제3사분면을 지난다. 따라서 참인 설명은 수평점근선 $y=-1$이다.",
+    "solution": "$y=4/x$를 $(p,q)$만큼 옮기면 $y=q+\\frac4{x-p}$이고 중심은 $(p,q)$이다. 수직점근선에서 $p=-2$이다. 기울기 $1$인 대칭축은 $y-q=x-p$, 즉 $y=x+(q-p)$이므로 $q-p=1$, $q=-1$이다. 따라서 $G:y=-1+\\frac4{x+2}$이다. $x=1$에서 $y=-1+\\frac43=\\frac13$이므로 ⑤가 참이고, 부호를 바꾼 ④는 거짓이다. 수평점근선은 $y=-1$, 다른 대칭축은 $y=-x-3$, 제3사분면의 점도 존재하므로 나머지도 거짓이다.",
     "curriculum": "2022",
     "standardCourse": "공통수학2",
     "sourceQid": 11,
@@ -663,7 +663,7 @@ window.questionBank = [
       },
       "solutionVisual": {
         "requirement": "BENEFICIAL",
-        "reason": "점근선·대칭축·사분면 진술의 그래프 위치 관계"
+        "reason": "원쌍곡선 4/x의 점근선 x=−2, 대칭축 y=x+1에서 이동 중심 (−2,−1)을 결정"
       }
     },
     "standardUnitKey": "H22-C2-08",
@@ -695,7 +695,7 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
-    "content": "$f(x)=a|2x-5|+7x+1$이 실수 전체에서 실수 전체로의 일대일대응이 되도록 하는 정수 $a$의 개수는? [4.1점]",
+    "content": "함수 $f:\\mathbb R\\to\\mathbb R$의 그래프는 점 $(\\frac52,\\frac{37}2)$에서 이어지는 두 직선 조각이다. $x<\\frac52$에서 기울기는 $7-2a$, $x\\ge\\frac52$에서 기울기는 $7+2a$이다. $f$가 일대일대응이 되도록 하는 정수 $a$의 개수는? [4.1점]",
     "choices": [
       "$1$",
       "$3$",
@@ -704,7 +704,7 @@ window.questionBank = [
       "$7$"
     ],
     "answer": "⑤",
-    "solution": "꺾임점 양쪽의 기울기는 $7-2a$와 $7+2a$이다. 일대일대응이 되려면 두 기울기의 부호가 같아야 하므로 $(7-2a)(7+2a)>0$, 즉 $|a|<\\frac72$이다. 가능한 정수는 $-3,-2,-1,0,1,2,3$의 $7$개이다.",
+    "solution": "양쪽 직선의 기울기의 평균은 $7$, 차의 절반은 $2a$이므로 이 두 직선 조각은 절댓값 함수를 사용하면 $f(x)=a|2x-5|+7x+1$로 복원된다. 두 조각은 주어진 점에서 연속이다. 실수 전체에서 실수 전체로의 일대일대응이 되려면 양쪽 기울기가 모두 같은 엄격 부호여야 한다. 합이 $14>0$이므로 둘 다 양수여야 하며 $7-2a>0$, $7+2a>0$, 즉 $-\\frac72<a<\\frac72$이다. 정수 $a$는 $-3,-2,-1,0,1,2,3$의 $7$개다.",
     "curriculum": "2022",
     "standardCourse": "공통수학2",
     "sourceQid": 12,
@@ -721,7 +721,7 @@ window.questionBank = [
       },
       "solutionVisual": {
         "requirement": "BENEFICIAL",
-        "reason": "절댓값 그래프 꺾임점의 양쪽 기울기 및 경계"
+        "reason": "x=5/2의 닫힌/열린 직선 조각, 기울기 7∓2a의 엄격한 동부호 조건"
       }
     },
     "standardUnitKey": "H22-C2-07",
@@ -1079,7 +1079,7 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
-    "content": "두 제곱근 곡선 $y=\\sqrt{x+4}-2$, $y=\\sqrt{x+6}$과 직선 $y=-x+1$, $y=-x+k$($k>1$)로 둘러싸인 부분의 넓이는 $10$이다. $k$의 값은? [4.4점]",
+    "content": "두 제곱근 곡선 $y=\\sqrt{x+4}-2$, $y=\\sqrt{x+6}$과 직선 $y=-x+k$, $y=-x+11$($k<11$)로 둘러싸인 부분의 넓이가 $10$이다. 아래쪽 직선의 절편 $k$는? [4.4점]",
     "choices": [
       "$6$",
       "$7$",
@@ -1088,7 +1088,7 @@ window.questionBank = [
       "$11$"
     ],
     "answer": "①",
-    "solution": "뒤 곡선은 앞 곡선을 왼쪽 $2$, 위쪽 $2$만큼 옮긴 것으로, 이동 벡터 $(-2,2)$는 두 직선 $y=-x+c$와 평행하다. 직선 $x+y=t$를 따라 본 곡선 사이 수평 간격은 $2$이고 $t$의 구간 길이는 $k-1$이므로 넓이는 $2(k-1)$이다. $2(k-1)=10$에서 $k=6$이다.",
+    "solution": "뒤 곡선은 앞 곡선을 왼쪽으로 $2$, 위쪽으로 $2$만큼 옮긴 것이며 두 직선과 평행하다. 곡선 사이의 기울기 $-1$ 방향 평행이동 폭은 $2$이고 두 직선의 절편 차는 $11-k>0$이다. 따라서 넓이는 $2(11-k)=10$이며 $11-k=5$, $k=6$이다. 원본처럼 위쪽 직선의 절편을 구하는 대신 고정된 위쪽 절편과 넓이에서 아래쪽 절편을 역산한다.",
     "curriculum": "2022",
     "standardCourse": "공통수학2",
     "sourceQid": 18,
@@ -1258,10 +1258,10 @@ window.questionBank = [
     "questionType": "서술형",
     "layoutTag": "grid",
     "wide": false,
-    "content": "정수 $k$에 대하여 명제 $P$: “$\\exists x\\in\\mathbb R$에 대하여 $(x-k)^2\\le k^2-9$”이다. 명제 $P$의 부정이 참이 되도록 하는 $k$를 모두 쓰고 풀이 과정을 설명하시오. [6점]",
+    "content": "정수 $k$에 대하여 전칭명제 $Q$: “모든 실수 $x$에 대해 $(x-k)^2>k^2-9$이다”를 생각하자. $Q$의 부정을 존재명제로 쓰고, $Q$가 참이 되게 하는 모든 정수 $k$를 구하여 이유를 설명하시오. [6점]",
     "choices": [],
     "answer": "-2,-1,0,1,2",
-    "solution": "부정은 “모든 실수 $x$에 대하여 $(x-k)^2>k^2-9$”이다. 좌변의 최솟값은 $x=k$일 때 $0$이므로, 부정이 참인 조건은 $0>k^2-9$, 즉 $-3<k<3$이다. 따라서 정수 $k$는 $-2,-1,0,1,2$이다. $k=\\pm3$에서는 $x=k$가 등호를 이루므로 제외한다.",
+    "solution": "전칭명제 $Q$의 부정은 “어떤 실수 $x$에 대하여 $(x-k)^2\\le k^2-9$이다”라는 존재명제다. 원래 주어진 $Q$가 모든 실수에 대해 참이 되려면 $(x-k)^2$의 최솟값인 $0$이 우변보다 엄격히 커야 한다. 즉 $0>k^2-9$이므로 $-3<k<3$이다. 가능한 정수는 $-2,-1,0,1,2$이며 $k=\\pm3$에서는 $x=k$일 때 등호가 되어 $Q$가 거짓이다.",
     "curriculum": "2022",
     "standardCourse": "공통수학2",
     "sourceQid": 21,
@@ -1289,7 +1289,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-243",
     "problemTypeKey": "PT_QUANTIFIER_NEGATION",
-    "templateKey": "TPL_EXISTENTIAL_NEGATION_PARAMETER",
+    "templateKey": "TPL_QUANTIFIER_NEGATION_NEGATE",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",

@@ -74,7 +74,7 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
-    "content": "전체집합 $U=\\{1,2,\\ldots,8\\}$의 두 부분집합 $A,B$가 $A\\cap B=\\{2,5,8\\}$, $(A\\cup B)-A=\\{1,4\\}$를 만족한다. 집합 $B$의 원소의 개수는? [3.6점]",
+    "content": "전체집합 $U=\\{1,2,\\ldots,8\\}$의 두 부분집합 $A,B$에 대하여 $A\\cap(A^C\\cup B)$의 원소의 개수는 $3$이고, $(A\\cup B^C)^C=\\{1,4\\}$이다. 집합 $B$의 원소의 개수는? [3.6점]",
     "choices": [
       "$3$",
       "$4$",
@@ -83,7 +83,7 @@ window.questionBank = [
       "$7$"
     ],
     "answer": "③",
-    "solution": "$(A\\cup B)-A=B-A=A^C\\cap B$이다. $B$는 $A\\cap B=\\{2,5,8\\}$과 $A^C\\cap B=\\{1,4\\}$의 서로소 합집합이므로 $B=\\{1,2,4,5,8\\}$이고 $|B|=5$이다.",
+    "solution": "분배법칙으로 $A\\cap(A^C\\cup B)=(A\\cap A^C)\\cup(A\\cap B)=A\\cap B$이므로 $|A\\cap B|=3$이다. 드모르간 법칙으로 $(A\\cup B^C)^C=A^C\\cap B=\\{1,4\\}$이므로 $|A^C\\cap B|=2$이다. 특히 $1,4$는 $B$의 원소이지만 $A$의 원소는 아니다. $A\\cap B$와 $A^C\\cap B$는 서로소이며 그 합집합이 $B$이므로 $|B|=3+2=5$이다.",
     "curriculum": "2022",
     "standardCourse": "공통수학2",
     "sourceQid": 2,
@@ -378,7 +378,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_documented",
     "rpmPrimaryRecordId": "H1-RPM-260",
     "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
-    "templateKey": "TPL_FUNCTION_GRAPH_TRANSFORM_ASYMPTOTE_POINT",
+    "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
