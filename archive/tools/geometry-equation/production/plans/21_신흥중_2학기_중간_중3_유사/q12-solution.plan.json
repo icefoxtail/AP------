@@ -1,0 +1,238 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "T",
+    "P"
+  ],
+  "hiddenPointNames": [
+    "T",
+    "P"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "sTP",
+      "refs": [
+        "T",
+        "P"
+      ]
+    },
+    {
+      "id": "sTA",
+      "refs": [
+        "T",
+        "A"
+      ]
+    },
+    {
+      "id": "sPC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aABC",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 45,
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dWidth",
+        "from": "T",
+        "to": "P",
+        "label": "6",
+        "unit": "cm",
+        "side": "LEFT",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "label-sTP-1",
+        "ownerSegment": "sTP",
+        "text": "6",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 360
+  },
+  "caption": "해설 도식: 폭 6의 종이테이프 접기와 45도 이등변삼각형의 기하 관계",
+  "accessibilityDescription": "해설: 폭 6의 종이테이프 접기와 45도 이등변삼각형의 기하 관계",
+  "newVisualInformation": [
+    "해설의 관계: 폭 6의 종이테이프 접기와 45도 이등변삼각형의 기하 관계"
+  ],
+  "sourceConditions": [
+    {
+      "id": "problem",
+      "condition": "다음 그림과 같이 폭이 $6\\text{ cm}$인 종이테이프를 선분 $\\text{AC}$를 접는 선으로 하여 접었다. $\\angle\\text{ABC}=45^\\circ$일 때, $\\triangle\\text{ABC}$의 넓이는?",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "solution",
+      "condition": "접은 각과 평행선의 엇각 성질에 의해 $\\angle\\text{BAC}=\\angle\\text{ACB}$이므로 $\\triangle\\text{ABC}$는 $\\overline{\\text{AB}}=\\overline{\\text{BC}}$인 이등변삼각형이다. 점 $\\text{A}$에서 변 $\\text{BC}$에 내린 수선의 발을 $\\text{H}$라 하면 $\\overline{\\text{AH}}=6\\text{ cm}$이고 $\\angle\\text{ABH}=45^\\circ$이므로 $$\\overline{\\text{AB}} = \\frac{6}{\\sin 45^\\circ} = 6\\sqrt{2}\\text{ (cm)} \\implies \\overline{\\text{BC}} = 6\\sqrt{2}\\text{ (cm)}$$ 따라서 $\\triangle\\text{ABC}$의 넓이는 $$\\frac{1}{2} \\times 6\\sqrt{2} \\times 6 = 18\\sqrt{2}\\text{ (cm}^2\\text{)}$$ 따라서 정답은 ④이다.",
+      "mappedTo": "SOLUTION_AXIS"
+    }
+  ]
+}

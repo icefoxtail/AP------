@@ -1,0 +1,236 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "foldc",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "F"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "c"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "foldArc",
+        "circle": "foldc",
+        "center": "F",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lOA",
+        "ownerSegment": "sOA",
+        "text": "6",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "F"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 400
+  },
+  "caption": "해설 도식: 반지름 6 원의 접기 대칭 축과 현 AB",
+  "accessibilityDescription": "해설: 반지름 6 원의 접기 대칭 축과 현 AB",
+  "newVisualInformation": [
+    "해설의 관계: 반지름 6 원의 접기 대칭 축과 현 AB"
+  ],
+  "sourceConditions": [
+    {
+      "id": "problem",
+      "condition": "다음 그림과 같이 반지름의 길이가 $6\\text{ cm}$인 원 $\\text{O}$에서 $\\overline{\\text{AB}}$를 접는 선으로 하여 짧은 호 $\\text{AB}$가 원의 중심 $\\text{O}$를 지나도록 접었을 때, $\\overline{\\text{AB}}$의 길이는?",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "solution",
+      "condition": "중심 $\\text{O}$에서 현 $\\text{AB}$에 내린 수선의 발을 $\\text{M}$이라 하면 접기 대칭에 의해 $\\overline{\\text{OM}} = \\frac{6}{2} = 3\\text{ (cm)}$이다. 직각삼각형 $\\text{OAM}$에서 $$\\overline{\\text{AM}} = \\sqrt{6^2 - 3^2} = \\sqrt{27} = 3\\sqrt{3}\\text{ (cm)}$$ 따라서 $\\overline{\\text{AB}} = 2\\overline{\\text{AM}} = 6\\sqrt{3}\\text{ (cm)}$이다. 정답은 ⑤이다.",
+      "mappedTo": "SOLUTION_AXIS"
+    }
+  ]
+}

@@ -1,0 +1,258 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "M",
+    "N"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "BM",
+      "refs": [
+        "B",
+        "M"
+      ]
+    },
+    {
+      "id": "BN",
+      "refs": [
+        "B",
+        "N"
+      ]
+    },
+    {
+      "id": "MN",
+      "refs": [
+        "M",
+        "N"
+      ]
+    },
+    {
+      "id": "AM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "MD",
+      "refs": [
+        "M",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "x",
+        "refs": [
+          "M",
+          "B",
+          "N"
+        ],
+        "value": 36.86989764584402,
+        "label": "x",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "label-AB-1",
+        "ownerSegment": "AB",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "label-AM-2",
+        "ownerSegment": "AM",
+        "text": "3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "label-MN-3",
+        "ownerSegment": "MN",
+        "text": "3√2",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "해설 도식: 정사각형의 중점 M,N과 각 MBN=x 및 삼각형 BMN",
+  "accessibilityDescription": "해설: 정사각형의 중점 M,N과 각 MBN=x 및 삼각형 BMN",
+  "newVisualInformation": [
+    "해설의 관계: 정사각형의 중점 M,N과 각 MBN=x 및 삼각형 BMN"
+  ],
+  "sourceConditions": [
+    {
+      "id": "problem",
+      "condition": "한 변의 길이가 $6$인 정사각형 $\\text{ABCD}$의 두 변 $\\text{AD}$, $\\text{CD}$의 중점을 각각 $\\text{M}$, $\\text{N}$이라 하고 $\\angle\\text{MBN}=x^\\circ$라 할 때, $\\sin x^\\circ$의 값을 구하시오.",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "solution",
+      "condition": "$\\text{M}$, $\\text{N}$은 각각 변 $\\text{AD}$, $\\text{CD}$의 중점이므로 $\\overline{\\text{AM}}=\\overline{\\text{MD}}=\\overline{\\text{DN}}=\\overline{\\text{NC}}=3$이다. 직각삼각형 $\\text{ABM}$과 $\\text{CBN}$에서 $$\\overline{\\text{BM}} = \\overline{\\text{BN}} = \\sqrt{6^2 + 3^2} = \\sqrt{45} = 3\\sqrt{5}$$ $\\triangle\\text{BMN}$의 넓이는 정사각형에서 세 직각삼각형의 넓이를 뺀 것과 같으므로 $$\\triangle\\text{BMN} = 6^2 - \\left(\\frac{1}{2}\\cdot 6\\cdot 3 + \\frac{1}{2}\\cdot 6\\cdot 3 + \\frac{1}{2}\\cdot 3\\cdot 3\\right) = 36 - \\left(9 + 9 + \\frac{9}{2}\\right) = \\frac{27}{2}$$ 한편 $\\triangle\\text{BMN} = \\frac{1}{2} \\cdot \\overline{\\text{BM}} \\cdot \\overline{\\text{BN}} \\cdot \\sin x^\\circ$이므로 $$\\frac{1}{2} \\times 3\\sqrt{5} \\times 3\\sqrt{5} \\times \\sin x^\\circ = \\frac{27}{2} \\implies \\frac{45}{2}\\sin x^\\circ = \\frac{27}{2} \\implies \\sin x^\\circ = \\frac{27}{45} = \\frac{3}{5}$$",
+      "mappedTo": "SOLUTION_AXIS"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "D"
+      ],
+      "factRole": "GIVEN"
+    }
+  ]
+}

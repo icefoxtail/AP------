@@ -1,0 +1,247 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "15",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "15"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aBAC",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "ring": 3,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aBAD",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 30,
+        "noLabel": true,
+        "ring": 1,
+        "equalGroup": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aDAC",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "value": 30,
+        "noLabel": true,
+        "ring": 1,
+        "equalGroup": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "10",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAC",
+        "ownerSegment": "sCA",
+        "text": "15",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 340
+  },
+  "caption": "해설 도식: 변 AB=10,AC=15와 60도 각 A의 이등분선 AD",
+  "accessibilityDescription": "해설: 변 AB=10,AC=15와 60도 각 A의 이등분선 AD",
+  "newVisualInformation": [
+    "해설의 관계: 변 AB=10,AC=15와 60도 각 A의 이등분선 AD"
+  ],
+  "sourceConditions": [
+    {
+      "id": "problem",
+      "condition": "다음 그림과 같이 $\\overline{\\text{AB}}=10$, $\\overline{\\text{AC}}=15$인 $\\triangle\\text{ABC}$에서 $\\angle\\text{A}$의 이등분선이 $\\overline{\\text{BC}}$와 만나는 점을 $\\text{D}$라 하자. $\\angle\\text{BAC}=60^\\circ$일 때, $\\overline{\\text{AD}}$의 길이는?",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "solution",
+      "condition": "$\\triangle\\text{ABC} = \\triangle\\text{ABD} + \\triangle\\text{ACD}$이고 $\\angle\\text{BAD}=\\angle\\text{CAD}=30^\\circ$이므로 $$\\frac{1}{2} \\times 10 \\times 15 \\times \\sin 60^\\circ = \\frac{1}{2} \\times 10 \\times \\overline{\\text{AD}} \\times \\sin 30^\\circ + \\frac{1}{2} \\times 15 \\times \\overline{\\text{AD}} \\times \\sin 30^\\circ$$ $$\\frac{75\\sqrt{3}}{2} = \\frac{25}{4}\\overline{\\text{AD}} \\implies \\overline{\\text{AD}} = \\frac{75\\sqrt{3}}{2} \\times \\frac{4}{25} = 6\\sqrt{3}$$ 따라서 정답은 ⑤이다.",
+      "mappedTo": "SOLUTION_AXIS"
+    }
+  ]
+}

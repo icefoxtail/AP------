@@ -1,0 +1,192 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-17"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "17"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "161",
+              "denominator": "17"
+            },
+            {
+              "kind": "rational",
+              "numerator": "240",
+              "denominator": "17"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "17"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "AO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAO",
+        "ownerSegment": "AO",
+        "text": "17",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "BC",
+        "text": "16",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "caption": "해설 도식: 반지름 17인 원의 지름 AB와 원주각 C=90도, 현 BC=16",
+  "accessibilityDescription": "해설: 반지름 17인 원의 지름 AB와 원주각 C=90도, 현 BC=16",
+  "newVisualInformation": [
+    "해설의 관계: 반지름 17인 원의 지름 AB와 원주각 C=90도, 현 BC=16"
+  ],
+  "sourceConditions": [
+    {
+      "id": "problem",
+      "condition": "오른쪽 그림에서 $\\overline{\\text{AB}}$는 반지름의 길이가 $\\overline{\\text{AO}}=17$인 원 $\\text{O}$의 지름이고 점 $\\text{C}$는 원 위의 점이며 $\\overline{\\text{BC}}=16$일 때, $\\cos B$의 값은?",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "solution",
+      "condition": "$\\overline{\\text{AO}}=17$이므로 지름 $\\overline{\\text{AB}}=34$이다. $\\overline{\\text{AB}}$가 원 $\\text{O}$의 지름이므로 $\\angle\\text{ACB}=90^\\circ$이고, 직각삼각형 $\\text{ABC}$에서 $$\\cos B = \\frac{\\overline{\\text{BC}}}{\\overline{\\text{AB}}} = \\frac{16}{34} = \\frac{8}{17}$$ 따라서 정답은 ③이다.",
+      "mappedTo": "SOLUTION_AXIS"
+    }
+  ]
+}

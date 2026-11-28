@@ -1,0 +1,230 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "881",
+              "denominator": "250"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1232",
+              "denominator": "125"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "151",
+              "denominator": "40"
+            },
+            {
+              "kind": "rational",
+              "numerator": "151",
+              "denominator": "40"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "151",
+            "denominator": "40"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAD",
+        "ownerSegment": "DA",
+        "text": "6",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "BC",
+        "text": "12",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lBD",
+        "ownerSegment": "BD",
+        "text": "13",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "B",
+        "C",
+        "D"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "caption": "해설 도식: 원 외접 사각형의 네 변과 직각 C 및 대각선 BD",
+  "accessibilityDescription": "해설: 원 외접 사각형의 네 변과 직각 C 및 대각선 BD",
+  "newVisualInformation": [
+    "해설의 관계: 원 외접 사각형의 네 변과 직각 C 및 대각선 BD"
+  ],
+  "sourceConditions": [
+    {
+      "id": "problem",
+      "condition": "다음 그림과 같이 $\\square\\text{ABCD}$는 원 $\\text{O}$에 외접한다. $\\angle\\text{C}=90^\\circ$, $\\overline{\\text{AD}}=6\\text{ cm}$, $\\overline{\\text{BC}}=12\\text{ cm}$, $\\overline{\\text{BD}}=13\\text{ cm}$일 때, $\\overline{\\text{AB}}$의 길이는?",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "solution",
+      "condition": "직각삼각형 $\\text{BCD}$에서 $\\angle\\text{C}=90^\\circ$, $\\overline{\\text{BD}}=13\\text{ cm}$, $\\overline{\\text{BC}}=12\\text{ cm}$이므로 $$\\overline{\\text{CD}} = \\sqrt{13^2 - 12^2} = \\sqrt{25} = 5\\text{ (cm)}$$ 원 $\\text{O}$에 외접하는 사각형 $\\text{ABCD}$에서는 마주 보는 두 변의 길이의 합이 같으므로 $$\\overline{\\text{AB}} + \\overline{\\text{CD}} = \\overline{\\text{AD}} + \\overline{\\text{BC}} \\implies \\overline{\\text{AB}} + 5 = 6 + 12 \\implies \\overline{\\text{AB}} = 13\\text{ (cm)}$$ 따라서 정답은 ⑤이다.",
+      "mappedTo": "SOLUTION_AXIS"
+    }
+  ]
+}

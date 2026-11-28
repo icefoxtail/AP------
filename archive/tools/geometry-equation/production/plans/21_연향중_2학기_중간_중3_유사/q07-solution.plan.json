@@ -1,0 +1,264 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "5657",
+            "denominator": "1000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "M",
+    "N"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "OM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "ON",
+      "refs": [
+        "O",
+        "N"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "AB",
+        "text": "8",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lOM",
+        "ownerSegment": "OM",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lON",
+        "ownerSegment": "ON",
+        "text": "4",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rM",
+      "refs": [
+        "A",
+        "M",
+        "O"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "rN",
+      "refs": [
+        "C",
+        "N",
+        "O"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "caption": "해설 도식: 중심에서 같은 거리 4인 두 평행 현과 반지름",
+  "accessibilityDescription": "해설: 중심에서 같은 거리 4인 두 평행 현과 반지름",
+  "newVisualInformation": [
+    "해설의 관계: 중심에서 같은 거리 4인 두 평행 현과 반지름"
+  ],
+  "sourceConditions": [
+    {
+      "id": "problem",
+      "condition": "오른쪽 그림의 원 $\\text{O}$에서 $\\overline{\\text{ON}}\\perp\\overline{\\text{CD}}$, $\\overline{\\text{OM}}\\perp\\overline{\\text{AB}}$이고 $\\overline{\\text{ON}}=\\overline{\\text{OM}}=4$, $\\overline{\\text{AB}}=8$일 때, $\\overline{\\text{OC}}$의 길이는?",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "solution",
+      "condition": "원의 중심에서 현에 내린 수선은 현을 이등분하므로 $\\overline{\\text{AM}} = \\frac{8}{2} = 4$이다. 직각삼각형 $\\text{OMA}$에서 $\\overline{\\text{OM}}=4$, $\\overline{\\text{AM}}=4$이므로 반지름 $\\overline{\\text{OC}}=\\overline{\\text{OA}}$는 $$\\overline{\\text{OC}} = \\sqrt{4^2 + 4^2} = 4\\sqrt{2}$$ 따라서 정답은 ①이다.",
+      "mappedTo": "SOLUTION_AXIS"
+    }
+  ]
+}

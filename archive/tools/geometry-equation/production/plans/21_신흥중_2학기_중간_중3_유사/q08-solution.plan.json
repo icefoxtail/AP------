@@ -1,0 +1,181 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAC",
+        "ownerSegment": "sCA",
+        "text": "10",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "14",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "label-AH-3",
+        "ownerSegment": "AH",
+        "text": "6",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "caption": "해설 도식: AC=10,BC=14,각 C의 3:4:5 삼각비 비율",
+  "accessibilityDescription": "해설: AC=10,BC=14,각 C의 3:4:5 삼각비 비율",
+  "newVisualInformation": [
+    "해설의 관계: AC=10,BC=14,각 C의 3:4:5 삼각비 비율"
+  ],
+  "sourceConditions": [
+    {
+      "id": "problem",
+      "condition": "다음 그림의 $\\triangle\\text{ABC}$에서 $\\overline{\\text{AC}}=10$, $\\overline{\\text{BC}}=14$이고 $\\sin C = \\frac{3}{5}$, $\\cos C = \\frac{4}{5}$일 때, $\\overline{\\text{AB}}$의 길이는?",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "solution",
+      "condition": "꼭짓점 $\\text{A}$에서 변 $\\text{BC}$에 내린 수선의 발을 $\\text{H}$라 하자. 직각삼각형 $\\text{ACH}$에서 $$\\overline{\\text{CH}} = 10\\cos C = 10 \\times \\frac{4}{5} = 8, \\quad \\overline{\\text{AH}} = 10\\sin C = 10 \\times \\frac{3}{5} = 6$$ $\\overline{\\text{BC}}=14$이므로 $\\overline{\\text{BH}} = 14 - 8 = 6$이다. 직각삼각형 $\\text{ABH}$에서 피타고라스 정리에 의해 $$\\overline{\\text{AB}} = \\sqrt{\\overline{\\text{AH}}^2 + \\overline{\\text{BH}}^2} = \\sqrt{6^2 + 6^2} = 6\\sqrt{2}$$ 따라서 정답은 ①이다.",
+      "mappedTo": "SOLUTION_AXIS"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "A",
+        "H",
+        "C"
+      ],
+      "factRole": "GIVEN"
+    }
+  ]
+}

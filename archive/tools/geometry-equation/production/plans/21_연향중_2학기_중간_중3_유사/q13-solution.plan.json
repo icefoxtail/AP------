@@ -1,0 +1,229 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "11"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "11"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "44",
+              "denominator": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "AB",
+        "text": "8",
+        "unit": "cm"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "BC",
+        "text": "11",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 480
+  },
+  "caption": "해설 도식: 8×11 직사각형의 세 변에 접하는 원과 DE의 추가 접선",
+  "accessibilityDescription": "해설: 8×11 직사각형의 세 변에 접하는 원과 DE의 추가 접선",
+  "newVisualInformation": [
+    "해설의 관계: 8×11 직사각형의 세 변에 접하는 원과 DE의 추가 접선"
+  ],
+  "sourceConditions": [
+    {
+      "id": "problem",
+      "condition": "오른쪽 그림과 같이 원 $\\text{O}$는 $\\overline{\\text{AB}}=8$, $\\overline{\\text{BC}}=11$인 직사각형 $\\text{ABCD}$의 세 변 $\\overline{\\text{AB}}$, $\\overline{\\text{BC}}$, $\\overline{\\text{AD}}$에 내접하고, $\\overline{\\text{DE}}$(점 $\\text{E}$는 $\\overline{\\text{BC}}$ 위의 점)는 원 $\\text{O}$의 접선일 때, $\\triangle\\text{CDE}$의 둘레의 길이는?",
+      "mappedTo": "CURRENT_EXAM_TEXT"
+    },
+    {
+      "id": "solution",
+      "condition": "직사각형 $\\text{ABCD}$의 높이 $\\overline{\\text{AB}}=8$이므로 내접하는 원 $\\text{O}$의 반지름의 길이는 $4$이다. 위쪽 변 $\\text{AD}$와 원의 접점을 $\\text{H}$, 아래쪽 변 $\\text{BC}$와 원의 접점을 $\\text{G}$, $\\overline{\\text{DE}}$와 원의 접점을 $\\text{T}$라 하면 $$\\overline{\\text{DT}} = \\overline{\\text{DH}} = 11 - 4 = 7, \\quad \\overline{\\text{ET}} = \\overline{\\text{EG}}$$ 또 $\\overline{\\text{CG}} = 11 - 4 = 7$이므로 $\\overline{\\text{CE}} = 7 - \\overline{\\text{EG}}$이다. 따라서 $\\triangle\\text{CDE}$의 둘레의 길이는 $$\\overline{\\text{CD}} + \\overline{\\text{DE}} + \\overline{\\text{CE}} = 8 + (7 + \\overline{\\text{EG}}) + (7 - \\overline{\\text{EG}}) = 22$$ 따라서 정답은 ③이다.",
+      "mappedTo": "SOLUTION_AXIS"
+    }
+  ]
+}
