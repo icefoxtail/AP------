@@ -1,9 +1,425 @@
 {
-  "capability": "construction-spike-v1",
-  "realization": {
-    "recipeId": "PLANE_FIGURE_v1",
-    "unit": "source-length",
-    "reflectionEquivalent": false
-  },
-  "caption": "같은 현의 원주각 34도와 115도 원주각에 대응하는 중심각 130도의 합 164도 산출"
+  "capability": "composite-panels-v1",
+  "columns": 2,
+  "panels": [
+    {
+      "caption": {
+        "text": "① 길이가 같은 두 현과 원주각"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "P",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "A",
+                "B"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "8"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "112"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "cir",
+              "op": "CIRCLE_THROUGH_3",
+              "inputs": [
+                "A",
+                "B",
+                "P"
+              ],
+              "args": {},
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "P"
+        ],
+        "displayCircles": [
+          "cir"
+        ],
+        "displaySegments": [
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "AP",
+            "refs": [
+              "A",
+              "P"
+            ]
+          },
+          {
+            "id": "BP",
+            "refs": [
+              "B",
+              "P"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "dimensions": [
+            {
+              "id": "dAB",
+              "from": "A",
+              "to": "B",
+              "label": "8",
+              "side": "BELOW",
+              "unit": "cm",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "dAP",
+              "from": "A",
+              "to": "P",
+              "label": "8",
+              "side": "LEFT",
+              "unit": "cm",
+              "factRole": "GIVEN"
+            }
+          ],
+          "angles": [
+            {
+              "id": "given34",
+              "refs": [
+                "A",
+                "P",
+                "B"
+              ],
+              "value": 34,
+              "label": "34°",
+              "style": "ARC",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "x1",
+              "refs": [
+                "A",
+                "B",
+                "P"
+              ],
+              "value": 34,
+              "label": "x_1",
+              "style": "ARC",
+              "factRole": "GIVEN"
+            }
+          ],
+          "equalLengths": [
+            {
+              "id": "eq",
+              "count": 1,
+              "segments": [
+                "AB",
+                "AP"
+              ]
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 550,
+          "height": 440
+        },
+        "caption": "같은 원 안에 길이 8cm로 같은 현 AB, AP와 원주각 34°, x₁.",
+        "accessibilityDescription": "길이가 8cm인 현 AB와 AP가 같은 원에 있고 ∠APB=34°이며 같은 현에 대응하는 각 ABP=x₁이다.",
+        "sourceConditions": [
+          {
+            "id": "equal",
+            "condition": "AB=AP=8cm이고 그에 대응하는 두 원주각이 같은 크기이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "planeMarks.dimensions",
+              "planeMarks.angles"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "정확한 길이 8과 두 원주각 34°를 하나의 원 안에 동시에 만족시킨다."
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "② 원주각과 작은 중심각"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "A"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "130"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "A"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "65"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "cir",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "10"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "A",
+          "B",
+          "P"
+        ],
+        "displayCircles": [
+          "cir"
+        ],
+        "displaySegments": [
+          {
+            "id": "OA",
+            "refs": [
+              "O",
+              "A"
+            ]
+          },
+          {
+            "id": "OB",
+            "refs": [
+              "O",
+              "B"
+            ]
+          },
+          {
+            "id": "PA",
+            "refs": [
+              "P",
+              "A"
+            ]
+          },
+          {
+            "id": "PB",
+            "refs": [
+              "P",
+              "B"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "ins115",
+              "refs": [
+                "A",
+                "P",
+                "B"
+              ],
+              "value": 115,
+              "label": "115°",
+              "style": "ARC",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "x2",
+              "refs": [
+                "A",
+                "O",
+                "B"
+              ],
+              "value": 130,
+              "label": "x_2",
+              "style": "ARC",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 530,
+          "height": 440
+        },
+        "caption": "115°의 원주각과 같은 양 끝점을 잇는 작은 중심각 x₂.",
+        "accessibilityDescription": "원 O 위의 A,P,B가 있어 ∠APB는 115°이고, 작은 중심각 ∠AOB는 x₂이다.",
+        "sourceConditions": [
+          {
+            "id": "arc",
+            "condition": "115° 원주각이 마주 보는 큰 호는 230°, 작은 중심각은 x₂이다.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "planeMarks.angles"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "큰 호와 작은 중심각의 관계를 동일 원 위의 정확한 극좌표 배치로 보여준다."
+        ]
+      }
+    }
+  ],
+  "caption": "서로 다른 두 원 그림에서 같은 현의 원주각 x₁과 작은 중심각 x₂의 관계를 비교한다.",
+  "accessibilityDescription": "첫 원에는 같은 길이 8cm의 현 두 개와 34° 원주각이 있고, 둘째 원에는 115° 원주각과 미지의 작은 중심각 x₂가 있다.",
+  "sourceQuote": "주어진 두 원 그림에서",
+  "sourceConditions": [
+    {
+      "id": "left",
+      "condition": "길이가 8cm로 같은 두 현의 원주각 하나는 34°, 다른 각은 x1.",
+      "mappedTo": [
+        "panels"
+      ]
+    },
+    {
+      "id": "right",
+      "condition": "원주각은 115°, 대응 작은 중심각은 x2.",
+      "mappedTo": [
+        "panels"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 독립 문제를 한 패널에 혼합하지 않고 정확한 원 위 배치로 보인다."
+  ]
 }

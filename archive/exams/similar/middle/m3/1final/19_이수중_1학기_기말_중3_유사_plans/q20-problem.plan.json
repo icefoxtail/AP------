@@ -1,9 +1,326 @@
 {
-  "capability": "SOURCE_GEOMETRY_CONCENTRIC_RECTANGLES_v1",
-  "innerRect": [
-    10,
-    16
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "19"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "19"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "L",
+    "M",
+    "N",
+    "T",
+    "E"
   ],
-  "marginLabel": "x",
-  "caption": "가로 10cm, 세로 16cm인 사진 둘레에 폭이 xcm로 일정한 사진틀"
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "LM",
+      "refs": [
+        "L",
+        "M"
+      ]
+    },
+    {
+      "id": "MN",
+      "refs": [
+        "M",
+        "N"
+      ]
+    },
+    {
+      "id": "NT",
+      "refs": [
+        "N",
+        "T"
+      ]
+    },
+    {
+      "id": "TL",
+      "refs": [
+        "T",
+        "L"
+      ]
+    },
+    {
+      "id": "EA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 420
+  },
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "L",
+    "M",
+    "N",
+    "T",
+    "E"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "w10",
+        "from": "A",
+        "to": "B",
+        "label": "10",
+        "unit": "cm",
+        "side": "BELOW",
+        "value": "10"
+      },
+      {
+        "id": "h16",
+        "from": "A",
+        "to": "D",
+        "label": "16",
+        "unit": "cm",
+        "side": "RIGHT",
+        "value": "16"
+      },
+      {
+        "id": "wx",
+        "from": "E",
+        "to": "A",
+        "label": "x",
+        "unit": "cm",
+        "side": "ABOVE"
+      }
+    ]
+  },
+  "caption": "가로 10 cm·세로 16 cm의 사진과 일정한 폭 x의 바깥 사진틀",
+  "accessibilityDescription": "가로 10 cm·세로 16 cm의 사진과 일정한 폭 x의 바깥 사진틀",
+  "sourceQuote": "가로의 길이와 세로의 길이가 각각 $10,\\text{cm}, 16",
+  "sourceConditions": [
+    {
+      "id": "inner",
+      "condition": "사진의 실제 가로세로는 각각 10 cm,16 cm이다.",
+      "mappedTo": "mathPlan.nodes;displaySegments"
+    },
+    {
+      "id": "frame",
+      "condition": "바깥 사각형은 각 방향으로 동일한 폭 x만큼 확장되며 면적 차이가 192 cm²다. 작도 크기는 길이 비만 설명하는 예시다.",
+      "mappedTo": "displaySegments;planeMarks"
+    }
+  ],
+  "newVisualInformation": [
+    "원문에서 주어진 길이와 도형의 관계만 표시하며 구하려는 값은 수치로 쓰지 않는다."
+  ]
 }

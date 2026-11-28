@@ -1,9 +1,36 @@
 {
-  "capability": "construction-spike-v1",
-  "realization": {
-    "recipeId": "PLANE_FIGURE_v1",
-    "unit": "source-length",
-    "reflectionEquivalent": false
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"outputType":"POINT","args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"outputType":"POINT","args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"0"}]},"factRole":"GIVEN"},
+      {"id":"T","op":"SOURCE_POINT","inputs":[],"outputType":"POINT","args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"1"}]},"factRole":"GIVEN"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"outputType":"POINT","args":{"coordinates":[{"kind":"rational","numerator":"3","denominator":"5"},{"kind":"rational","numerator":"4","denominator":"5"}]},"factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"outputType":"POINT","args":{"coordinates":[{"kind":"rational","numerator":"3","denominator":"5"},{"kind":"integer","value":"0"}]},"factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"outputType":"POINT","args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"rational","numerator":"4","denominator":"3"}]},"factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"outputType":"CIRCLE","args":{"radius":{"kind":"integer","value":"1"}},"factRole":"DERIVED_INTERMEDIATE"}
+    ]
   },
-  "caption": "반지름 1인 사분원에서 각 a의 사인(AB), 코사인(OB), 탄젠트(CD) 및 여각 b의 삼각비 판별"
+  "displayPoints":["O","A","B","C","D","T"],
+  "displayCircles":[],
+  "displaySegments":[
+    {"id":"sOD","refs":["O","D"]},
+    {"id":"sOC","refs":["O","C"]},
+    {"id":"sAB","refs":["A","B"]},
+    {"id":"sCD","refs":["C","D"]},
+    {"id":"sOB","refs":["O","B"]}
+  ],
+  "hiddenPointNames":["T"],"hiddenPointStyle":"NONE",
+  "rightAngles":[{"id":"rB","refs":["A","B","O"]},{"id":"rD","refs":["C","D","O"]}],
+  "planeMarks":{
+    "arcs":[{"id":"quarter","circle":"k","center":"O","from":"D","to":"T","side":"CCW"}],
+    "angles":[
+      {"id":"a","refs":["B","O","A"],"value":53.1301,"label":"a","style":"ARC","factRole":"GIVEN"},
+      {"id":"b","refs":["O","C","D"],"value":36.8699,"label":"b","style":"ARC","factRole":"GIVEN"}
+    ],
+    "dimensions":[{"id":"rad","from":"O","to":"D","label":"1","side":"BELOW","style":"BAR","factRole":"GIVEN"}]
+  },
+  "caption":"반지름 1의 사분원에서 AB와 CD가 OD에 수직이며 a는 O의 각, b는 C의 각이다. 삼각비 결과는 표시하지 않는다."
 }

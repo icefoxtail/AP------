@@ -1,144 +1,85 @@
 {
-  "capability": "composite-panels-v1",
-  "panels": [
-    {
-      "caption": {
-        "text": "가: x축과 두 교점"
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      5,
+      -4,
+      10
+    ],
+    "curves": [
+      {
+        "id": "parabola",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "3",
+          "2",
+          "-1"
+        ],
+        "domain": [
+          "-3",
+          "5"
+        ],
+        "color": "BLUE",
+        "label": "y=-x^2+2x+3"
       },
-      "plan": {
-        "capability": "polynomial-spike-v1",
-        "graphPlan": {
-          "family": "polynomial",
-          "coefficients": [
-            "3",
-            "2",
-            "-1"
-          ],
-          "sourceDomain": {
-            "kind": "ALL_REALS"
-          },
-          "domain": [
-            -3,
-            5
-          ],
-          "viewport": [
-            -4,
-            6,
-            -3,
-            8
-          ],
-          "axisTickValues": {
-            "x": [],
-            "y": []
-          },
-          "requiredPoints": [
-            { "id": "A", "x": -1, "y": 0 },
-            { "id": "B", "x": 3, "y": 0 }
-          ]
-        }
-      }
-    },
-    {
-      "caption": {
-        "text": "나: 교점 없음"
+      {
+        "id": "lineNa",
+        "kind": "LINE",
+        "coefficients": [
+          "5",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "5"
+        ],
+        "color": "ROSE",
+        "label": "y=x+5"
       },
-      "plan": {
-        "capability": "polynomial-spike-v1",
-        "graphPlan": {
-          "family": "polynomial",
-          "coefficients": [
-            "3",
-            "2",
-            "-1"
-          ],
-          "sourceDomain": {
-            "kind": "ALL_REALS"
-          },
-          "domain": [
-            -3,
-            5
-          ],
-          "viewport": [
-            -4,
-            6,
-            -3,
-            9
-          ],
-          "axisTickValues": {
-            "x": [],
-            "y": []
-          },
-          "overlays": {
-            "lines": [
-              {
-                "id": "L",
-                "slope": "1",
-                "intercept": "5"
-              }
-            ],
-            "points": []
-          }
-        }
+      {
+        "id": "lineDa",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "3"
+        ],
+        "domain": [
+          "-3",
+          "5"
+        ],
+        "color": "GREEN",
+        "label": "y=3x-1"
       }
-    },
-    {
-      "caption": {
-        "text": "다: 교점 두 개"
-      },
-      "plan": {
-        "capability": "polynomial-spike-v1",
-        "graphPlan": {
-          "family": "polynomial",
-          "coefficients": [
-            "3",
-            "2",
-            "-1"
-          ],
-          "sourceDomain": {
-            "kind": "ALL_REALS"
-          },
-          "domain": [
-            -3,
-            5
-          ],
-          "viewport": [
-            -4,
-            6,
-            -3,
-            9
-          ],
-          "axisTickValues": {
-            "x": [],
-            "y": []
-          },
-          "overlays": {
-            "lines": [
-              {
-                "id": "L",
-                "slope": "3",
-                "intercept": "-1"
-              }
-            ],
-            "points": []
-          }
-        }
-      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "3"
+      ],
+      "y": []
     }
-  ],
-  "caption": "세 직선 (가) x축, (나) y=x+5, (다) y=3x−1과 이차함수 y=−x²+2x+3의 교점 존재를 비교했다.",
-  "accessibilityDescription": "세 패널 모두 같은 이차함수와 각기 다른 직선을 그렸다. (가)와 (다)는 두 점에서 만나고 (나)는 만나지 않는다.",
+  },
+  "caption": "파란 포물선과 x축, y=x+5, y=3x-1의 만남을 한 좌표평면에서 비교한다.",
+  "accessibilityDescription": "포물선은 x축과 두 번, y=3x-1과 두 번 교차하고, y=x+5와는 만나지 않는다.",
   "sourceConditions": [
     {
       "id": "c1",
-      "condition": "세 직선 (가) x축, (나) y=x+5, (다) y=3x−1과 이차함수 y=−x²+2x+3의 교점 존재를 비교했다.",
+      "condition": "원문 이차함수 y=-x²+2x+3",
+      "mappedTo": "graphPlan.curves[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "(가) x축, (나) y=x+5, (다) y=3x-1",
       "mappedTo": [
-        "panel-1",
-        "panel-2",
-        "panel-3"
+        "graphPlan.axisTickValues",
+        "graphPlan.curves[1]",
+        "graphPlan.curves[2]"
       ]
     }
   ],
   "newVisualInformation": [
-    "원본 기출의 판별식 비교를 동일 포물선의 세 경우로 분리하여 교점 누락 여부를 식별한다."
+    "세 직선을 같은 포물선에 겹쳐 보여 주고 x축 교점 두 개와 다른 두 직선의 교차 여부를 구분한다."
   ]
 }

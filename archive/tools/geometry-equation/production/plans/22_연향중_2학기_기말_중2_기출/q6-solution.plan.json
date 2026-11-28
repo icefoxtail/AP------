@@ -223,28 +223,10 @@
         ]
       }
     ],
-    "dimensions": [
-      {
-        "id": "bg",
-        "from": "B",
-        "to": "G",
-        "label": "6",
-        "side": "ABOVE"
-      },
-      {
-        "id": "ge",
-        "from": "G",
-        "to": "E",
-        "label": "3",
-        "side": "ABOVE"
-      },
-      {
-        "id": "df",
-        "from": "D",
-        "to": "F",
-        "label": "9/2",
-        "side": "BELOW"
-      }
+    "expressionLabels": [
+      {"id":"bg","ownerSegment":"sBG","text":"6","factRole":"GIVEN"},
+      {"id":"ge","ownerSegment":"sGE","text":"3","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"df","ownerSegment":"sDF","text":"9/2","factRole":"DERIVED_INTERMEDIATE"}
     ]
   },
   "caption": "삼각형의 무게중심 G에서 BG=6과 GE=3, 중점연결선 DF=9/2를 실제 중선·중점 눈금과 함께 표시한다.",
@@ -258,12 +240,12 @@
     {
       "id": "given",
       "condition": "BG=6이고 EF=FC이다.",
-      "mappedTo": "planeMarks.dimensions:bg; planeMarks.equalLengths:eEF"
+      "mappedTo": "planeMarks.expressionLabels:bg; planeMarks.equalLengths:eEF"
     },
     {
       "id": "derived",
       "condition": "BG:GE=2:1이므로 GE=3, DF=BE/2=9/2이다.",
-      "mappedTo": "planeMarks.dimensions:ge,df; displaySegments:sDF"
+      "mappedTo": "planeMarks.expressionLabels:ge,df; displaySegments:sDF"
     }
   ],
   "newVisualInformation": [

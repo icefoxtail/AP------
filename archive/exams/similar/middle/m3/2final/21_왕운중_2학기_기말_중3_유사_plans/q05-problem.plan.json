@@ -1,9 +1,15 @@
 {
-  "capability": "construction-spike-v1",
-  "realization": {
-    "recipeId": "PLANE_FIGURE_v1",
-    "unit": "source-length",
-    "reflectionEquivalent": false
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind":"SCATTER",
+    "points":[
+      {"x":10,"y":10},{"x":12,"y":12},{"x":14,"y":14},
+      {"x":16,"y":16},{"x":20,"y":20},{"x":10,"y":14},
+      {"x":12,"y":15},{"x":14,"y":18},{"x":18,"y":20},
+      {"x":15,"y":12},{"x":16,"y":14},{"x":18,"y":15}
+    ],
+    "xRange":[8,22],"yRange":[8,22],"xStep":2,"yStep":2,
+    "xTitle":"1학기 봉사(시간)","yTitle":"2학기 봉사(시간)","grid":true
   },
-  "caption": "12명 학생의 봉사활동 시간 산점도와 y=x 기준선"
+  "caption":"원문에 주어진 12명의 두 학기 봉사활동 시간을 모두 찍은 산점도이며 정답을 특정하는 보조선이나 강조는 넣지 않는다."
 }

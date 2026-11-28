@@ -31,9 +31,9 @@
       { "id": "semicircleAC", "circle": "kAC", "center": "MAC", "from": "A", "to": "C", "side": "CW", "highlight": false, "factRole": "GIVEN" },
       { "id": "semicircleBC", "circle": "kBC", "center": "MBC", "from": "C", "to": "B", "side": "CCW", "highlight": false, "factRole": "GIVEN" }
     ],
-    "dimensions": [
-      { "id": "labelAB12", "from": "A", "to": "B", "label": "12", "unit": "cm", "side": "BELOW", "factRole": "GIVEN" },
-      { "id": "guideBC13", "from": "B", "to": "C", "label": "13", "unit": "cm", "side": "BELOW", "factRole": "GIVEN" }
+    "expressionLabels": [
+      { "id": "labelAB12", "ownerSegment": "sAB", "text": "12 cm", "factRole": "GIVEN" },
+      { "id": "guideBC13", "ownerSegment": "sBC", "text": "13 cm", "factRole": "GIVEN" }
     ],
     "regions": [{
       "id": "onlyTwoLunes", "fill": "MEDIUM", "factRole": "GIVEN",

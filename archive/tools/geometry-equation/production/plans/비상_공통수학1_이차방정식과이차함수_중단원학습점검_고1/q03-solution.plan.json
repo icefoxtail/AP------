@@ -1,17 +1,161 @@
 {
-  "capability":"composite-panels-v1",
-  "panels":[
-    {"caption":{"text":"⑴ 접함"},"plan":{"capability":"polynomial-spike-v1","graphPlan":{"family":"polynomial","coefficients":["3","-2","1"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[0,5],"viewport":[0,5,-6,17],"overlays":{"lines":[{"id":"L","slope":"4","intercept":"-6"}]},"requiredPoints":[{"id":"T","x":3,"y":6}],"axisTickValues":{"x":[],"y":[]}}}},
-    {"caption":{"text":"⑵ 두 점에서 만남"},"plan":{"capability":"polynomial-spike-v1","graphPlan":{"family":"polynomial","coefficients":["8","5","1"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[-8,1],"viewport":[-8,1,-4,20],"overlays":{"lines":[{"id":"L","slope":"-2","intercept":"4"}]},"axisTickValues":{"x":[],"y":[]}}}},
-    {"caption":{"text":"⑶ 만나지 않음"},"plan":{"capability":"polynomial-spike-v1","graphPlan":{"family":"polynomial","coefficients":["4","1","2"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[-2,2],"viewport":[-2,2,-1,15],"overlays":{"lines":[{"id":"L","slope":"1","intercept":"3"}]},"axisTickValues":{"x":[],"y":[]}}}}
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "⑴ 접함"
+      },
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "3",
+            "-2",
+            "1"
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "domain": [
+            0,
+            5
+          ],
+          "viewport": [
+            0,
+            5,
+            -6,
+            17
+          ],
+          "overlays": {
+            "lines": [
+              {
+                "id": "L",
+                "slope": "4",
+                "intercept": "-6"
+              }
+            ]
+          },
+          "requiredPoints": [
+            {
+              "id": "T",
+              "x": 3,
+              "y": 6
+            }
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "⑵ 교점 2개"
+      },
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "8",
+            "5",
+            "1"
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "domain": [
+            -8,
+            1
+          ],
+          "viewport": [
+            -8,
+            1,
+            -4,
+            20
+          ],
+          "overlays": {
+            "lines": [
+              {
+                "id": "L",
+                "slope": "-2",
+                "intercept": "4"
+              }
+            ]
+          },
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "⑶ 교점 없음"
+      },
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "4",
+            "1",
+            "2"
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "domain": [
+            -2,
+            2
+          ],
+          "viewport": [
+            -2,
+            2,
+            -1,
+            15
+          ],
+          "overlays": {
+            "lines": [
+              {
+                "id": "L",
+                "slope": "1",
+                "intercept": "3"
+              }
+            ]
+          },
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          }
+        }
+      }
+    }
   ],
-  "caption":"연립 방정식의 판별식이 ⑴ 0, ⑵ 양수, ⑶ 음수인 세 위치 관계이다.",
-  "accessibilityDescription":"세 쌍의 이차함수와 직선을 순서대로 그려 접함, 교점 두 개, 교점 없음의 차이를 보인다.",
-  "sourceQuote":"⑴ y=x²−2x+3, y=4x−6 ⑵ y=x²+5x+8, y=−2x+4 ⑶ y=2x²+x+4, y=x+3.",
-  "sourceConditions":[
-    {"id":"case1","condition":"⑴ 접점 (3,6)","mappedTo":"panels[0].plan.graphPlan"},
-    {"id":"case2","condition":"⑵ 연립 x²+7x+4=0의 두 근","mappedTo":"panels[1].plan.graphPlan"},
-    {"id":"case3","condition":"⑶ 연립 2x²+1=0은 실근 없음","mappedTo":"panels[2].plan.graphPlan"}
+  "caption": "이차함수와 직선의 위치 관계 세 가지.",
+  "accessibilityDescription": "세 쌍의 이차함수와 직선을 순서대로 그려 접함, 교점 두 개, 교점 없음의 차이를 보인다.",
+  "sourceQuote": "⑴ y=x²−2x+3, y=4x−6 ⑵ y=x²+5x+8, y=−2x+4 ⑶ y=2x²+x+4, y=x+3.",
+  "sourceConditions": [
+    {
+      "id": "case1",
+      "condition": "⑴ 접점 (3,6)",
+      "mappedTo": "panels[0].plan.graphPlan"
+    },
+    {
+      "id": "case2",
+      "condition": "⑵ 연립 x²+7x+4=0의 두 근",
+      "mappedTo": "panels[1].plan.graphPlan"
+    },
+    {
+      "id": "case3",
+      "condition": "⑶ 연립 2x²+1=0은 실근 없음",
+      "mappedTo": "panels[2].plan.graphPlan"
+    }
   ],
-  "newVisualInformation":["각 포물선과 직선을 모두 겹쳐 그려 실제 교점 수를 확인한다."]
+  "newVisualInformation": [
+    "각 포물선과 직선을 모두 겹쳐 그려 실제 교점 수를 확인한다."
+  ]
 }

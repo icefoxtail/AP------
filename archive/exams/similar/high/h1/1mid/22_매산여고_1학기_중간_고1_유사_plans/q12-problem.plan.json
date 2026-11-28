@@ -1,44 +1,11 @@
 {
-  "capability": "piecewise-polynomial-spike-v1",
+  "capability": "polynomial-spike-v1",
   "graphPlan": {
-    "family": "piecewise_polynomial",
-    "domain": [
-      -1,
-      3
-    ],
-    "viewport": [
-      -2,
-      4,
-      -4,
-      8
-    ],
-    "pieces": [
-      {
-        "domain": [
-          -1,
-          3
-        ],
-        "coefficients": [
-          "2",
-          "4",
-          "-1"
-        ]
-      }
-    ],
-    "requiredPoints": [
-      {
-        "id": "V",
-        "x": "2",
-        "y": "6",
-        "label": "최댓값(2, 6)"
-      },
-      {
-        "id": "L",
-        "x": "-1",
-        "y": "-3",
-        "label": "최솟값(-1, -3)"
-      }
-    ]
+    "family": "polynomial",
+    "domain": [-1, 1],
+    "viewport": [-1.3, 1.3, -4, 7],
+    "coefficients": ["2", "-8", "0", "4", "-1"],
+    "sourceDomain": {"kind": "ALL_REALS"}
   },
-  "caption": "치환 범위 -1<=t<=3에서 y=-t^2+4t+2의 최댓값 6과 최솟값 -3"
+  "caption": "주어진 y=−(x²−2x)²+4(x²−2x)+2를 −1≤x≤1에서 살펴보는 그래프다. 치환과 극값, 최종 답은 표시하지 않는다."
 }

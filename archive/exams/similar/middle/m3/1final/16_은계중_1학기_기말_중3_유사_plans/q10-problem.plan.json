@@ -1,9 +1,82 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curves": [
-    "2*x^2",
-    "-0.5*x^2"
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "2"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=2x^2"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-1/2"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=-x^2/2"
+      }
+    ],
+    "viewport": [
+      -3,
+      3,
+      -7,
+      10
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "regions": [
+      {
+        "id": "left",
+        "between": [
+          "f",
+          "axis"
+        ],
+        "from": "-2",
+        "to": "0"
+      },
+      {
+        "id": "right",
+        "between": [
+          "f",
+          "axis"
+        ],
+        "from": "0",
+        "to": "2"
+      }
+    ]
+  },
+  "caption": "두 포물선과 제1·2사분면의 y=2x²와 x축 사이 빗금 영역.",
+  "accessibilityDescription": "두 포물선과 제1·2사분면의 y=2x²와 x축 사이 빗금 영역.",
+  "sourceQuote": "두 이차함수 $y = 2x^2$과 $y = -\\frac{1}{2}x^2$의 그래프",
+  "sourceConditions": [
+    {
+      "id": "parabolas",
+      "condition": "원문에 제시된 두 이차함수와 빗금 친 영역의 위아래 경계.",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.regions"
+      ]
+    }
   ],
-  "shadedRegion": "between y=2x^2 and x-axis in Q1 and Q2",
-  "caption": "두 포물선 y=2x²과 y=-1/2x² 사이에서 제1·2사분면에 빗금 친 영역"
+  "newVisualInformation": [
+    "두 곡선의 정확한 계수와 원문의 칠해진 영역을 동일 좌표계에 보존한다."
+  ]
 }

@@ -1,5 +1,45 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curve": "-x^2 + 4*x + 2",
-  "caption": "위로 볼록하고 축이 y축 오른쪽이며 y절편이 양수인 이차함수 y=ax²+bx+c의 그래프"
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "2",
+          "4",
+          "-1"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "label": "f(x)"
+      }
+    ],
+    "viewport": [
+      -2,
+      6,
+      -5,
+      8
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "위로 볼록·오른쪽 대칭축·양의 y절편인 원문 포물선의 개형",
+  "accessibilityDescription": "위로 볼록·오른쪽 대칭축·양의 y절편인 원문 포물선의 개형",
+  "sourceQuote": "이차함수 $y = ax^2 + bx + c$의 그래프가 아래 그림과 같을 때",
+  "sourceConditions": [
+    {
+      "id": "signs",
+      "condition": "원문 그래프의 a<0, 축 x>0, y절편 c>0을 만족하는 예시 곡선이다.",
+      "mappedTo": "graphPlan.curves[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 그래프의 오목·볼록 방향과 꼭짓점·축 위치를 동일한 좌표계에서 확인한다."
+  ]
 }

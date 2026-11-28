@@ -1,9 +1,22 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curves": [
-    "4*x^2",
-    "-2*x^2"
-  ],
-  "shadedRegion": "between 4x^2 and -2x^2 outside both parabolas",
-  "caption": "y=4x²과 y=-2x²의 그래프 바깥쪽 빗금 친 영역"
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-2.3, 2.3, -9, 17],
+    "curves": [
+      {"id":"up","kind":"Y_OF_X","coefficients":["0","0","4"],"domain":["-2","2"],"label":"y=4x^2"},
+      {"id":"down","kind":"Y_OF_X","coefficients":["0","0","-2"],"domain":["-2","2"],"label":"y=-2x^2"}
+    ],
+    "regions": [
+      {"id":"left","between":["up","down"],"from":"-2","to":"0","fill":"LIGHT"},
+      {"id":"right","between":["up","down"],"from":"0","to":"2","fill":"LIGHT"}
+    ],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "원점을 지나는 위·아래쪽 두 이차함수의 그래프와 그 사이 빗금 영역. 어느 계수의 그래프가 해당하는지는 표시하지 않는다.",
+  "sourceConditions": [
+    {"id":"up","condition":"y=4x²","mappedTo":"graphPlan.curves[0]"},
+    {"id":"down","condition":"y=-2x²","mappedTo":"graphPlan.curves[1]"},
+    {"id":"shade","condition":"두 곡선 사이의 빗금 영역","mappedTo":"graphPlan.regions"}
+  ]
 }

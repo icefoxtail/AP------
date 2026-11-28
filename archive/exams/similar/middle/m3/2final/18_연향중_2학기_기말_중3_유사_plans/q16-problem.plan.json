@@ -1,9 +1,382 @@
 {
   "capability": "construction-spike-v1",
-  "realization": {
-    "recipeId": "PLANE_FIGURE_v1",
-    "unit": "source-length",
-    "reflectionEquivalent": false
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "44"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "220"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lOA",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lOB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lDB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "D",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "tanA",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "A",
+          "lOA"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "tanB",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "B",
+          "lOB"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "tanA",
+          "lDB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Y",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "tanA",
+          "tanB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
   },
-  "caption": "두 접선 YA=YB와 할선 각 BXA=38도, 원주각 DBA=22도로부터 x=60도, y=82도, 합 142도 산출"
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "X",
+    "Y"
+  ],
+  "displayCircles": [
+    "circle"
+  ],
+  "displaySegments": [
+    {
+      "id": "XA",
+      "refs": [
+        "X",
+        "A"
+      ]
+    },
+    {
+      "id": "AY",
+      "refs": [
+        "A",
+        "Y"
+      ]
+    },
+    {
+      "id": "YB",
+      "refs": [
+        "Y",
+        "B"
+      ]
+    },
+    {
+      "id": "XD",
+      "refs": [
+        "X",
+        "D"
+      ]
+    },
+    {
+      "id": "DB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "BA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "CB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "tA",
+      "refs": [
+        "O",
+        "A",
+        "Y"
+      ]
+    },
+    {
+      "id": "tB",
+      "refs": [
+        "O",
+        "B",
+        "Y"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "g22",
+        "refs": [
+          "D",
+          "B",
+          "A"
+        ],
+        "value": 22,
+        "label": "22°",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g38",
+        "refs": [
+          "B",
+          "X",
+          "A"
+        ],
+        "value": 38,
+        "label": "38°",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "unknownX",
+        "refs": [
+          "A",
+          "Y",
+          "B"
+        ],
+        "value": 60,
+        "label": "x",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "unknownY",
+        "refs": [
+          "D",
+          "C",
+          "B"
+        ],
+        "value": 82,
+        "label": "y",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 700,
+    "height": 520
+  },
+  "caption": "두 접선 YA, YB와 할선 XDB, 호 위의 점 C 및 주어진 두 각을 나타낸다.",
+  "accessibilityDescription": "점 X,A,Y가 한 접선 위에 있고, 점 X,D,B가 할선 위에 있다. 점 Y에서 B로의 선분은 또 다른 접선이고 원 위 순서는 D,C,B,A이다. 각 DBA는 22도, BXA는 38도, 구할 각 AYB와 DCB에는 각각 x와 y를 붙인다.",
+  "sourceQuote": "$\\angle DBA = 22^\\circ$, $\\angle BXA = 38^\\circ$",
+  "sourceConditions": [
+    {
+      "id": "tangent-sec",
+      "condition": "X-A-Y는 A에서의 접선, YB는 B에서의 접선, X-D-B는 할선이며 D는 X와 B 사이",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "rightAngles"
+      ]
+    },
+    {
+      "id": "arc-order",
+      "condition": "원 위의 순서는 D,C,B,A이고 C는 A를 포함하지 않는 호 DB 위에 놓인다",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayCircles"
+      ]
+    },
+    {
+      "id": "angles",
+      "condition": "∠DBA=22°, ∠BXA=38°, 구하는 각은 x=∠AYB, y=∠DCB",
+      "mappedTo": [
+        "planeMarks.angles"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "중심각 AOB=120°, 호 DA=44°인 정확한 원 위 점을 통해 발문을 재현하되 문제용 각 x,y의 정답 숫자는 표시하지 않는다."
+  ]
 }

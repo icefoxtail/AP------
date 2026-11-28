@@ -1,23 +1,28 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curve": "x^2 - 2*x - 3",
-  "points": {
-    "O": [
-      0,
-      0
-    ],
-    "A": [
-      -1,
-      0
-    ],
-    "B": [
-      1,
-      -4
-    ],
-    "C": [
-      0,
-      -3
-    ]
+  "capability":"multi-curve-figure-v1",
+  "graphPlan": {
+    "family":"multi-curve",
+    "viewport":[-2,3.5,-5,3],
+    "curves":[{"id":"f","kind":"Y_OF_X","coefficients":["-3","-2","1"],"domain":["-3/2","33/10"],"label":"y=x^2-2x-3"}],
+    "axisTickValues":{"x":[],"y":[]},
+    "overlays": {
+      "points":[
+        {"id":"O","x":"0","y":"0"},
+        {"id":"A","x":"-1","y":"0"},
+        {"id":"B","x":"1","y":"-4"},
+        {"id":"C","x":"0","y":"-3"}
+      ],
+      "segments":[
+        {"id":"OA","from":"O","to":"A"},
+        {"id":"AB","from":"A","to":"B"},
+        {"id":"BC","from":"B","to":"C"},
+        {"id":"CO","from":"C","to":"O"}
+      ]
+    }
   },
-  "caption": "포물선 y=x²-2x-3의 음의 x절편 A, 꼭짓점 B, y절편 C와 원점 O로 이루어진 사각형 OABC"
+  "caption":"이차함수 y=x²-2x-3과 원점 O, 음의 x절편 A, 꼭짓점 B, y절편 C를 이은 사각형. 넓이는 적지 않는다.",
+  "sourceConditions":[
+    {"id":"parabola","condition":"y=x²-2x-3","mappedTo":"graphPlan.curves[0]"},
+    {"id":"quadrilateral","condition":"사각형 OABC","mappedTo":"graphPlan.overlays.segments"}
+  ]
 }

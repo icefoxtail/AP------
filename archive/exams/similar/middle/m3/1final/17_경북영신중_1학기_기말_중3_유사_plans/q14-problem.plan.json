@@ -1,11 +1,12 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curve": "-0.5*(x - 2)^2 + 6",
-  "points": {
-    "P": [
-      1,
-      5.5
-    ]
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-3, 6, -2, 8],
+    "curves": [
+      {"id": "f", "kind": "Y_OF_X", "coefficients": ["4", "2", "-1/2"], "domain": ["-3", "6"], "hideLabel": true}
+    ],
+    "axisTickValues": {"x": ["1"], "y": []}
   },
-  "caption": "점 (1, 11/2)를 지나는 위로 볼록한 이차함수 y=ax²+bx+c의 그래프"
+  "caption": "위로 볼록한 이차함수 그래프. x=1에서의 함숫값은 그림에 수치로 표시하지 않는다."
 }

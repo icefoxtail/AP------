@@ -1,27 +1,70 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curves": [
-    "x^2",
-    "4*x^2",
-    "16*x^2"
-  ],
-  "points": {
-    "A": [
-      0,
-      16
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "0",
+      "1"
     ],
-    "B": [
-      4,
-      16
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      5
     ],
-    "C": [
-      2,
-      16
+    "viewport": [
+      -2,
+      6,
+      -1,
+      19
     ],
-    "D": [
-      1,
-      16
-    ]
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "hideLabels": [
+      "formula"
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "y16",
+          "slope": "0",
+          "intercept": "16",
+          "label": "y=16"
+        }
+      ],
+      "points": [
+        {
+          "id": "A",
+          "x": "0",
+          "y": "16"
+        },
+        {
+          "id": "B",
+          "curveX": "4"
+        },
+        {
+          "id": "C",
+          "x": "2",
+          "y": "16"
+        },
+        {
+          "id": "D",
+          "x": "1",
+          "y": "16"
+        }
+      ]
+    },
+    "pointNames": {
+      "A": "A",
+      "B": "B",
+      "C": "C",
+      "D": "D"
+    },
+    "formulaLabel": "y=x^2"
   },
-  "caption": "직선 y=16과 포물선 y=x²의 교점 B, 그리고 선분 AB의 등분점 C, D를 지나는 포물선들"
+  "caption": "이차함수 y=x²와 직선 y=16 위 A,B 및 AB의 이등분점 C·사등분점 D."
 }

@@ -1,19 +1,17 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curve": "0.5*x^2 + x - 4",
-  "points": {
-    "A": [
-      -4,
-      0
-    ],
-    "B": [
-      2,
-      0
-    ],
-    "C": [
-      0,
-      -4
-    ]
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve", "viewport": [-5, 3, -6, 8],
+    "curves": [{"id": "f", "kind": "Y_OF_X", "coefficients": ["-4", "1", "1/2"], "domain": ["-5", "3"], "hideLabel": true}],
+    "axisTickValues": {"x": ["-4", "2"], "y": ["-4"]},
+    "overlays": {"points": [
+      {"id": "A", "x": "-4", "y": "0"}, {"id": "B", "x": "2", "y": "0"}, {"id": "C", "x": "0", "y": "-4"}
+    ]}
   },
-  "caption": "x축과 (-4, 0), (2, 0)에서 만나고 y절편이 (0, -4)인 포물선"
+  "caption": "주어진 두 x절편과 y절편을 지나는 이차함수. 식의 계수는 문제 그림에 표시하지 않는다.",
+  "sourceConditions": [
+    {"id":"roots","condition":"x절편 (-4,0), (2,0)","mappedTo":["graphPlan.overlays.points[0]","graphPlan.overlays.points[1]"]},
+    {"id":"intercept","condition":"y절편 (0,-4)","mappedTo":"graphPlan.overlays.points[2]"}
+  ],
+  "newVisualInformation": ["문제에서 주어진 세 절편만 표시하고 구해야 하는 이차함수 식은 숨긴다."]
 }

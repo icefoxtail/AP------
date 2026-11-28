@@ -1,12 +1,35 @@
 {
-  "capability": "SOURCE_GEOMETRY_RECTANGLE_v1",
-  "width": 12,
-  "height": 6,
-  "points": {
-    "E": [
-      2,
-      0
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"12"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"12"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"Q","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
     ]
   },
-  "caption": "직사각형 ABCD 위를 움직이는 두 점 P, Q가 만드는 직각삼각형 PBQ"
+  "displayPoints":["A","B","C","D","E","P","Q"],
+  "displaySegments":[
+    {"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},
+    {"id":"sCD","refs":["C","D"]},{"id":"sDA","refs":["D","A"]},
+    {"id":"sBE","refs":["B","E"]},{"id":"sPB","refs":["P","B"]},{"id":"sBQ","refs":["B","Q"]}
+  ],
+  "rightAngles":[{"id":"atB","refs":["P","B","Q"]}],
+  "planeMarks":{"expressionLabels":[
+    {"id":"ab","ownerSegment":"sAB","text":"6"},
+    {"id":"bc","ownerSegment":"sBC","text":"12"},
+    {"id":"be","ownerSegment":"sBE","text":"2"}
+  ]},
+  "caption":"AB=6, BC=12인 직사각형에서 P는 AB를, Q는 EC를 움직인다. P,Q 위치는 숫자 없는 예시 배치이다.",
+  "sourceConditions":[
+    {"id":"rectangle","condition":"AB=6 cm, AD=12 cm인 직사각형 ABCD","mappedTo":"displaySegments"},
+    {"id":"moving","condition":"P는 A에서 B로 1 cm/s, Q는 BE=2인 E에서 C로 2 cm/s 이동","mappedTo":["P","Q","E","sBE"]},
+    {"id":"triangle","condition":"삼각형 PBQ는 B에서 직각","mappedTo":"rightAngles[0]"}
+  ],
+  "newVisualInformation":["움직이는 두 점의 임의 시점을 정답 좌표로 오인하지 않도록 좌표 수치 없이 표시한다."]
 }

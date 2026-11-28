@@ -42,11 +42,12 @@
       }
     ]
   },
-  "sourceQuote": "따라서 $k=2,-2,6$이다.",
-  "assetPath": "assets/images/26_금당고_1학기_중간_고2_대수_유사2/q19-solution.svg",
-  "engineEvidence": {
-    "resultPath": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사2_plans/engine_evidence/q19-solution-result.json",
-    "statePath": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사2_plans/engine_evidence/q19-solution-state.json",
-    "svgPath": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사2_plans/engine_evidence/q19-solution.svg"
-  }
+  "sourceConditions": [
+    {
+      "id": "k-solutions",
+      "condition": "해설에서 가능한 k는 -2, 2, 6이고 이웃한 값 차이는 각각 4이다.",
+      "mappedTo": ["numberLine.rows"]
+    }
+  ],
+  "newVisualInformation": ["해설에서 얻은 세 k값을 수직선의 세 점과 두 4칸 괄호로 나타낸다."]
 }

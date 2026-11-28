@@ -1,23 +1,81 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curve": "-x^2 - 4*x + 5",
-  "points": {
-    "A": [
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "5",
+          "-4",
+          "-1"
+        ],
+        "domain": [
+          "-6",
+          "2"
+        ],
+        "label": "y=-x^2-4x+5"
+      }
+    ],
+    "viewport": [
+      -7,
+      3,
       -2,
-      9
+      11
     ],
-    "B": [
-      -5,
-      0
-    ],
-    "O": [
-      0,
-      0
-    ],
-    "C": [
-      0,
-      5
-    ]
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-2",
+          "y": "9"
+        },
+        {
+          "id": "B",
+          "x": "-5",
+          "y": "0"
+        },
+        {
+          "id": "C",
+          "x": "0",
+          "y": "5"
+        },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "ABOC",
+          "points": [
+            "A",
+            "B",
+            "O",
+            "C"
+          ],
+          "fill": "NONE"
+        }
+      ]
+    }
   },
-  "caption": "포물선 y=-x²-4x+5의 꼭짓점 A, x절편 B, y절편 C로 이루어진 사각형 ABOC"
+  "caption": "포물선 위 꼭짓점 A, 음의 x절편 B, 양의 y절편 C와 사각형 ABOC",
+  "accessibilityDescription": "포물선 위 꼭짓점 A, 음의 x절편 B, 양의 y절편 C와 사각형 ABOC",
+  "sourceQuote": "이차함수 $y = -x^2 - 4x + 5$의 그래프",
+  "sourceConditions": [
+    {
+      "id": "vertices",
+      "condition": "A(-2,9), B(-5,0), C(0,5), O(0,0)는 발문과 정확히 일치한다.",
+      "mappedTo": "graphPlan.overlays.points"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 조건에 해당하는 곡선·교점·도형의 상대적 위치를 보여 준다. 문제에서 아직 구하지 않은 결과값은 표시하지 않는다."
+  ]
 }

@@ -1,9 +1,17 @@
 {
-  "capability": "construction-spike-v1",
-  "realization": {
-    "recipeId": "PLANE_FIGURE_v1",
-    "unit": "source-length",
-    "reflectionEquivalent": false
+  "capability":"stat-chart-figure-v1",
+  "chart": {
+    "kind":"SCATTER",
+    "points":[
+      {"x":5,"y":25},{"x":5,"y":30},{"x":6,"y":20},{"x":6,"y":32},{"x":6,"y":40},
+      {"x":7,"y":28},{"x":7,"y":33},{"x":7,"y":38},{"x":8,"y":30},{"x":8,"y":35},
+      {"x":8,"y":42},{"x":9,"y":28},{"x":9,"y":36},{"x":9,"y":44},{"x":9,"y":48},
+      {"x":10,"y":32},{"x":10,"y":40},{"x":10,"y":45},{"x":4,"y":20},{"x":5,"y":35},
+      {"x":6,"y":25},{"x":7,"y":42},{"x":8,"y":38},{"x":9,"y":32},{"x":10,"y":30}
+    ],
+    "xRange":[4,10],"yRange":[20,50],"xStep":1,"yStep":5,
+    "xTitle":"턱걸이(회)","yTitle":"윗몸일으키기(회)"
   },
-  "caption": "25명 학생의 턱걸이와 윗몸일으키기 산점도 및 x>=8, y>=35 영역"
+  "caption":"학생 25명의 두 운동 횟수를 나타낸 산점도. 조건을 만족하는 점의 개수와 비율은 표시하지 않는다.",
+  "sourceConditions":[{"id":"students","condition":"학생 25명의 주어진 순서쌍 전체","mappedTo":"chart.points"}]
 }

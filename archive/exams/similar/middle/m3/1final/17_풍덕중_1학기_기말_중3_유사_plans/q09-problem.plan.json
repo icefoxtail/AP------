@@ -1,15 +1,43 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curve": "-2/3*x^2",
-  "points": {
-    "O": [
-      0,
-      0
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      4,
+      -10,
+      2
     ],
-    "P": [
-      3,
-      -6
-    ]
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-2/3"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "hideLabel": true
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "P",
+          "x": "3",
+          "y": "-6"
+        }
+      ]
+    }
   },
-  "caption": "원점을 꼭짓점으로 하고 점 (3, -6)을 지나는 위로 볼록한 포물선"
+  "caption": "원점을 꼭짓점으로 하고 P(3,-6)을 지나는 포물선. 구할 함수식은 표기하지 않는다."
 }

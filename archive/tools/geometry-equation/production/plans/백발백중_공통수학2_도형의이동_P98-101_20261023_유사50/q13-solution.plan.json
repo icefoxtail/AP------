@@ -1,327 +1,85 @@
 {
-  "capability": "construction-spike-v1",
-  "mathPlan": {
-    "schemaVersion": "construction-spike-v1",
-    "realization": {
-      "recipeId": "SOURCE_COORDINATE_AXES_v1",
-      "unit": "source-coordinate",
-      "reflectionEquivalent": false
-    },
-    "nodes": [
-      {
-        "id": "B",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "-13"
-            },
-            {
-              "kind": "integer",
-              "value": "0"
-            }
-          ]
-        },
-        "outputType": "POINT",
-        "factRole": "GIVEN"
-      },
-      {
-        "id": "K",
-        "op": "CIRCLE_CENTER_RADIUS",
-        "inputs": [
-          "O"
-        ],
-        "args": {
-          "radius": {
-            "kind": "integer",
-            "value": "13"
-          }
-        },
-        "outputType": "CIRCLE",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "V1",
-        "op": "SOURCE_LINE",
-        "inputs": [],
-        "args": {
-          "a": {
-            "kind": "integer",
-            "value": "1"
-          },
-          "b": {
-            "kind": "integer",
-            "value": "0"
-          },
-          "c": {
-            "kind": "integer",
-            "value": "-5"
-          }
-        },
-        "outputType": "LINE",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "V2",
-        "op": "SOURCE_LINE",
-        "inputs": [],
-        "args": {
-          "a": {
-            "kind": "integer",
-            "value": "1"
-          },
-          "b": {
-            "kind": "integer",
-            "value": "0"
-          },
-          "c": {
-            "kind": "integer",
-            "value": "-12"
-          }
-        },
-        "outputType": "LINE",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "I1",
-        "op": "INTERSECTION",
-        "inputs": [
-          "V1",
-          "K"
-        ],
-        "args": {},
-        "outputType": "POINT_SET",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "I2",
-        "op": "INTERSECTION",
-        "inputs": [
-          "V2",
-          "K"
-        ],
-        "args": {},
-        "outputType": "POINT_SET",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "A1",
-        "op": "SELECT_POINT",
-        "inputs": [
-          "I1"
-        ],
-        "args": {},
-        "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE",
-        "branch": {
-          "kind": "SIDE_OF_ORIENTED_LINE",
-          "refs": [
-            "O",
-            "U"
-          ],
-          "sign": 1
-        }
-      },
-      {
-        "id": "A2",
-        "op": "SELECT_POINT",
-        "inputs": [
-          "I2"
-        ],
-        "args": {},
-        "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE",
-        "branch": {
-          "kind": "SIDE_OF_ORIENTED_LINE",
-          "refs": [
-            "O",
-            "U"
-          ],
-          "sign": 1
-        }
-      },
-      {
-        "id": "C1",
-        "op": "POINT_REFLECTION",
-        "inputs": [
-          "A1",
-          "O"
-        ],
-        "args": {},
-        "outputType": "POINT",
-        "factRole": "CONCLUSION"
-      },
-      {
-        "id": "C2",
-        "op": "POINT_REFLECTION",
-        "inputs": [
-          "A2",
-          "O"
-        ],
-        "args": {},
-        "outputType": "POINT",
-        "factRole": "CONCLUSION"
-      },
-      {
-        "id": "O",
-        "op": "NORMALIZATION_ORIGIN",
-        "inputs": [],
-        "args": {},
-        "outputType": "POINT",
-        "factRole": "GIVEN"
-      },
-      {
-        "id": "U",
-        "op": "NORMALIZATION_AXIS",
-        "inputs": [],
-        "args": {
-          "length": {
-            "kind": "integer",
-            "value": "1"
-          }
-        },
-        "outputType": "POINT",
-        "factRole": "GIVEN"
-      }
-    ]
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "CIRCLE",
+    "center": [
+      "0",
+      "0"
+    ],
+    "rSquared": "25"
   },
-  "pointNames": {
-    "A1": "A_1",
-    "A2": "A_2",
-    "C1": "C_1",
-    "C2": "C_2"
-  },
-  "displayPoints": [
-    "B",
-    "A1",
-    "A2",
-    "C1",
-    "C2"
-  ],
-  "displayCircles": [
-    "K"
-  ],
-  "displaySegments": [
+  "points": [
     {
-      "id": "BA1",
-      "refs": [
-        "B",
-        "A1"
-      ]
+      "id": "O",
+      "kind": "CENTER"
     },
     {
-      "id": "BC1",
-      "refs": [
-        "B",
-        "C1"
-      ]
-    },
-    {
-      "id": "BA2",
-      "refs": [
-        "B",
-        "A2"
-      ]
-    },
-    {
-      "id": "BC2",
-      "refs": [
-        "B",
-        "C2"
-      ]
-    },
-    {
-      "id": "diam1",
-      "refs": [
-        "A1",
-        "C1"
-      ]
-    },
-    {
-      "id": "diam2",
-      "refs": [
-        "A2",
-        "C2"
-      ]
-    }
-  ],
-  "coordinateLabels": [
-    "B",
-    "A1",
-    "A2",
-    "C1",
-    "C2"
-  ],
-  "coordinatePlacement": "PANEL",
-  "rightAngles": [
-    {
-      "id": "right1",
-      "refs": [
-        "A1",
-        "B",
-        "C1"
-      ]
-    },
-    {
-      "id": "right2",
-      "refs": [
-        "A2",
-        "B",
-        "C2"
-      ]
-    }
-  ],
-  "caption": "원 위의 두 지름 A₁C₁, A₂C₂와 B에서의 직각",
-  "accessibilityDescription": "반지름 13인 원에서 B(-13,0), A₁(5,12), A₂(12,5), C₁(-5,-12), C₂(-12,-5)이다. 두 지름 A₁C₁·A₂C₂와 B의 두 직각을 표시한다.",
-  "sourceConditions": [
-    {
-      "id": "circle",
-      "condition": "x²+y²=169, 중심 O, 반지름 13",
-      "mappedTo": "K"
+      "id": "A",
+      "kind": "POINT",
+      "x": "3",
+      "y": "4",
+      "coordinates": true
     },
     {
       "id": "B",
-      "condition": "원 위 B(-13,0)",
-      "mappedTo": "B"
+      "kind": "POINT",
+      "x": "-3",
+      "y": "-4",
+      "coordinates": true
+    }
+  ],
+  "segments": [
+    {
+      "id": "OA",
+      "from": "O",
+      "to": "A"
     },
     {
-      "id": "A1",
-      "condition": "제1사분면 A₁의 x좌표 5, y좌표 12",
+      "id": "OB",
+      "from": "O",
+      "to": "B"
+    },
+    {
+      "id": "AB",
+      "from": "A",
+      "to": "B",
+      "label": "10"
+    }
+  ],
+  "caption": "원점 O에 대하여 대칭인 A(3,4)와 B(−3,−4)는 반지름 5인 원의 지름 양 끝점으로, AB=10이다.",
+  "accessibilityDescription": "중심 O(0,0), 반지름 5인 원 위의 A(3,4), B(-3,-4)가 O를 사이에 두고 일직선에 있다. 지름 AB의 길이는 10이다.",
+  "sourceQuote": "원 $x^2 + y^2 = 25$ 위의 점 $A(3, 4)$와 이 점을 원점에 대하여 대칭이동한 점을 $B$라 할 때",
+  "sourceConditions": [
+    {
+      "id": "circle",
+      "condition": "원 x²+y²=25에서 OA=OB=5",
       "mappedTo": [
-        "V1",
-        "A1"
+        "conic",
+        "O",
+        "OA",
+        "OB"
       ]
     },
     {
-      "id": "A2",
-      "condition": "제1사분면 A₂의 x좌표 12, y좌표 5",
+      "id": "reflection",
+      "condition": "원점 대칭에 의하여 A=(3,4), B=(-3,-4), O는 AB의 중점",
       "mappedTo": [
-        "V2",
-        "A2"
+        "A",
+        "B",
+        "O",
+        "AB"
       ]
     },
     {
-      "id": "right",
-      "condition": "BA₁⊥BC₁, BA₂⊥BC₂",
+      "id": "diameter",
+      "condition": "해설의 AB=10은 원의 지름",
       "mappedTo": [
-        "right1",
-        "right2"
-      ]
-    },
-    {
-      "id": "diameters",
-      "condition": "원점대칭 C₁=-A₁, C₂=-A₂",
-      "mappedTo": [
-        "diam1",
-        "diam2",
-        "C1",
-        "C2"
+        "AB"
       ]
     }
   ],
   "newVisualInformation": [
-    "원 위의 대응점이 지름의 양끝이라는 사실과 두 직각조건을 하나의 정확한 원 작도로 보인다. 두 삼각형 면은 채우지 않는다."
+    "원점 대칭으로 얻은 B의 좌표와 A,O,B의 일직선 관계",
+    "지름 AB=10을 해설의 핵심 결론으로 표기"
   ]
 }

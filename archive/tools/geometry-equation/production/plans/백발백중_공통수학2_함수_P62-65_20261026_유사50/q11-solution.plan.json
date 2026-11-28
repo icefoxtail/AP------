@@ -1,17 +1,7 @@
 {
-  "capability": "piecewise-polynomial-spike-v1",
+  "capability": "polynomial-spike-v1",
   "graphPlan": {
-    "family": "piecewise-polynomial",
-    "pieces": [
-      {
-        "coefficients": [
-          "7",
-          "4",
-          "1"
-        ]
-      }
-    ],
-    "breakpoints": [],
+    "family": "polynomial",
     "sourceDomain": {
       "kind": "ALL_REALS"
     },
@@ -48,7 +38,12 @@
       "y": [
         3
       ]
-    }
+    },
+    "coefficients": [
+      "7",
+      "4",
+      "1"
+    ]
   },
   "caption": "경계 a=4에서 g(x)=(x+2)²+3는 y=3에 꼭짓점에서 접한다.",
   "accessibilityDescription": "경계 매개변수 a=4일 때 함수 g의 이차함수 곡선과 높이 3인 기준선의 접점을 표시한다.",
@@ -56,7 +51,7 @@
     {
       "id": "c1",
       "condition": "g(x)=x²+4x+7 (매개변수의 경계 사례)",
-      "mappedTo": "graphPlan.pieces[0].coefficients"
+      "mappedTo": "graphPlan.coefficients"
     },
     {
       "id": "c2",

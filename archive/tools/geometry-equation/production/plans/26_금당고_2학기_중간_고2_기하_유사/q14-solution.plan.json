@@ -1,21 +1,85 @@
 {
   "capability": "ellipse-figure-v1",
-  "conic": { "kind": "PARABOLA", "vertex": ["0", "0"], "p": "3", "axis": "X" },
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "3",
+    "axis": "X"
+  },
   "points": [
-    { "id": "O", "kind": "ORIGIN" },
-    { "id": "A", "kind": "FOCUS", "coordinates": true },
-    { "id": "P", "kind": "ON_CONIC", "x": "3", "branch": "POS", "coordinates": true },
-    { "id": "Q", "kind": "LINE_CONIC", "line": "l", "which": 1 },
-    { "id": "R", "kind": "LINE_CONIC", "line": "l", "which": 2 },
-    { "id": "H", "kind": "FOOT", "from": "P", "onto": "l", "rightAngle": true, "label": false }
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "A",
+      "kind": "FOCUS",
+      "coordinates": true
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "3",
+      "branch": "POS",
+      "coordinates": true
+    },
+    {
+      "id": "Q",
+      "kind": "LINE_CONIC",
+      "line": "l",
+      "which": 1
+    },
+    {
+      "id": "R",
+      "kind": "LINE_CONIC",
+      "line": "l",
+      "which": 2
+    },
+    {
+      "id": "H",
+      "kind": "FOOT",
+      "from": "P",
+      "onto": "l",
+      "rightAngle": true,
+      "label": false
+    }
   ],
   "lines": [
-    { "id": "l", "slope": "-1", "intercept": "3", "label": "l" },
-    { "id": "t", "through": ["P", "H"], "tangent": true, "label": "P에서의 접선" }
+    {
+      "id": "l",
+      "slope": "-1",
+      "intercept": "3",
+      "label": "l"
+    },
+    {
+      "id": "t",
+      "through": [
+        "P",
+        "H"
+      ],
+      "tangent": true
+    }
   ],
-  "segments": [ { "id": "sQR", "from": "Q", "to": "R" } ],
-  "caption": "접선의 기울기 1, 그에 수직인 l의 기울기 -1과 QR=24",
+  "segments": [
+    {
+      "id": "sQR",
+      "from": "Q",
+      "to": "R"
+    }
+  ],
+  "caption": "포물선의 접선에 수직인 직선 l과 그 교점 Q,R을 나타낸 해설 그림.",
   "accessibilityDescription": "포물선 y²=12x의 점 P(3,6)에서 접선을 그린 뒤, 직각표식을 둔 수직선 l과 포물선의 교점을 Q,R로 나타내고 QR을 강조한다.",
-  "sourceConditions": [ { "id": "q14", "condition": "P의 접선에 수직인 l은 A(3,0)을 지나고 Q,R에서 포물선과 만남", "mappedTo": "lines,points,segments" } ],
-  "newVisualInformation": ["해설에서 필요한 QR 선분과 접선·수선 직각표식 보존"]
+  "sourceConditions": [
+    {
+      "id": "q14",
+      "condition": "P의 접선에 수직인 l은 A(3,0)을 지나고 Q,R에서 포물선과 만남",
+      "mappedTo": "lines,points,segments"
+    }
+  ],
+  "newVisualInformation": [
+    "해설에서 필요한 QR 선분과 접선·수선 직각표식 보존"
+  ]
 }
