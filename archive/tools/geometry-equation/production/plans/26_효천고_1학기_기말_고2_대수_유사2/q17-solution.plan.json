@@ -1,0 +1,447 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "D",
+          "C"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "d18",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "18"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "e12",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "E"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "hitsB",
+        "op": "INTERSECTION",
+        "inputs": [
+          "d18",
+          "e12"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "hitsB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "D",
+            "C"
+          ],
+          "sign": -1
+        }
+      },
+      {
+        "id": "dc",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "D",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bc",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "parallelB",
+        "op": "PARALLEL_THROUGH",
+        "inputs": [
+          "B",
+          "dc"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "parallelD",
+        "op": "PARALLEL_THROUGH",
+        "inputs": [
+          "D",
+          "bc"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "parallelB",
+          "parallelD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bdline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "A",
+          "bdline"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "perpBH",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "B",
+          "dc"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "perpBH",
+          "dc"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "DF",
+      "refs": [
+        "D",
+        "F"
+      ]
+    },
+    {
+      "id": "FE",
+      "refs": [
+        "F",
+        "E"
+      ]
+    },
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "CE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "BH",
+      "refs": [
+        "B",
+        "H"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "eqB",
+        "refs": [
+          "D",
+          "B",
+          "E"
+        ],
+        "arcs": 1,
+        "equalGroup": 1,
+        "noLabel": true,
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "eqD",
+        "refs": [
+          "B",
+          "D",
+          "E"
+        ],
+        "arcs": 1,
+        "equalGroup": 1,
+        "noLabel": true,
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "foldEq",
+        "count": 1,
+        "segments": [
+          "DE",
+          "BE"
+        ]
+      }
+    ],
+    "parallels": [
+      {
+        "id": "parallelABCD",
+        "count": 1,
+        "segments": [
+          "AB",
+          "CD"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "sAB",
+        "ownerSegment": "AB",
+        "text": "20",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sCE",
+        "ownerSegment": "CE",
+        "text": "8",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sDE",
+        "ownerSegment": "DE",
+        "text": "12",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sEB",
+        "ownerSegment": "BE",
+        "text": "12",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sBD",
+        "ownerSegment": "BD",
+        "text": "18",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "BD를 접는 선으로 A가 A′로 이동한다. E는 A′B와 DC의 교점이고 CE=8, DE=EB=12, BD=18, B에서 DC에 내린 점선 수선이 평행사변형의 높이이다.",
+  "accessibilityDescription": "왼쪽 아래 A에서 B까지 원래 밑변과 A에서 D까지 원래 변은 점선. B-D 접힘선, D-A′와 A′-E-B 접힌 변은 실선. 높이 BH는 점선이고 수선의 발에 직각 표식, DE=EB 같은 길이 표식이 있다.",
+  "sourceConditions": [
+    {
+      "id": "P1",
+      "condition": "AB=20이고 ABD를 BD에 대하여 접은 A′, E=A′B∩DC, [EBC]/[ABCD]=1/5, CE·BD=EB²",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "pointNames"
+      ]
+    },
+    {
+      "id": "S1",
+      "condition": "CE=8,DE=EB=12,BD=18,AB∥CD,높이 BH⊥DC",
+      "mappedTo": [
+        "planeMarks.expressionLabels",
+        "planeMarks.equalLengths",
+        "planeMarks.parallels",
+        "displaySegments.BH",
+        "rightAngles"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 접기 전 변 AB·AD는 점선, 접은 후 D-A′-E-B는 실선으로 정확히 구분한다.",
+    "기존 해설 플랜에서 빠졌던 A′와 접힌 변, 두 같은 각, DE=EB 눈금, 높이의 점선·직각 표식과 길이 숫자를 실체로 추가한다."
+  ],
+  "sourceQuote": "$AB=DC=20$이고 $E$는 $DC$ 위에 있다.",
+  "pointNames": {
+    "F": "A′"
+  },
+  "hiddenPointNames": [
+    "H"
+  ],
+  "hiddenPointStyle": "NONE",
+  "rightAngles": [
+    {
+      "id": "raH",
+      "refs": [
+        "B",
+        "H",
+        "C"
+      ]
+    }
+  ]
+}

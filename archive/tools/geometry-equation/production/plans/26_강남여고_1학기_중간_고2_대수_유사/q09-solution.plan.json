@@ -1,0 +1,50 @@
+{
+  "capability": "logarithmic-affine-spike-v1",
+  "graphPlan": {
+    "family": "logarithmic-affine",
+    "base": "1/2",
+    "coefficients": [
+      "1",
+      "1",
+      "-4",
+      "2"
+    ],
+    "sourceDomain": {
+      "kind": "NATURAL_LOG_AFFINE"
+    },
+    "domain": [
+      4.1,
+      16
+    ],
+    "viewport": [
+      -1,
+      17,
+      -4,
+      6
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "y=log_(1/2)(x-4)+2의 그래프는 점근선 x=4를 갖고 x가 커질수록 감소한다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "y=(1/2)^x의 역함수 y=log_(1/2) x를 x축 방향으로 a, y축 방향으로 2만큼 평행이동하면 y=log_(1/2)(x-a)+2이고 a=4이다.",
+      "mappedTo": [
+        "graphPlan.coefficients"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "평행이동한 로그함수 그래프의 점근선이 x=a=4임을 보여 준다."
+  ],
+  "sourceQuote": "점근선은 직선 $x=a$이므로 $b=4$이다.",
+  "assetPath": "assets/images/26_강남여고_1학기_중간_고2_대수_유사/q9-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_강남여고_1학기_중간_고2_대수_유사_plans/engine_evidence/q09-solution-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_강남여고_1학기_중간_고2_대수_유사_plans/engine_evidence/q09-solution-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_강남여고_1학기_중간_고2_대수_유사_plans/engine_evidence/q09-solution.svg"
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b3",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c3",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "hitsA",
+        "op": "INTERSECTION",
+        "inputs": [
+          "b3",
+          "c3"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "hitsA"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "B",
+            "C"
+          ],
+          "sign": 1
+        }
+      },
+      {
+        "id": "circum",
+        "op": "CIRCLE_THROUGH_3",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "circum"
+  ],
+  "caption": "삼각형 ABC의 AB=AC를 같은 눈금으로 표시하고, 사인법칙의 BC:AB=2:3을 BC=2t, AB=AC=3t로 비교한다.",
+  "accessibilityDescription": "두 빗변 AB, AC는 같은 길이의 눈금이 있고 3t 표시, 밑변 BC는 2t 표시. 외접원은 둘레만 있으며 면 채움은 없다. t는 비례 도식의 임의 양수이다.",
+  "sourceConditions": [
+    {
+      "id": "G1",
+      "condition": "AB=AC, 3sinA=2sinB 및 외접원 실제 넓이 9π",
+      "mappedTo": [
+        "planeMarks.equalLengths",
+        "displayCircles"
+      ]
+    },
+    {
+      "id": "S1",
+      "condition": "사인법칙에 따른 BC:AB=2:3; 정확한 실제 길이는 BC=8√2/3, AB=AC=4√2",
+      "mappedTo": [
+        "planeMarks.expressionLabels"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "등변 두 변의 한 눈금과 두 변 3t·밑변 2t의 비례 라벨을 모두 실제 표시한다.",
+    "실제 길이·최종 둘레값은 비례 그림에 왜곡해 적지 않는다."
+  ],
+  "sourceQuote": "사인법칙으로 $a/b=\\sin A/\\sin B=2/3$이다.",
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "isosceles",
+        "count": 1,
+        "segments": [
+          "AB",
+          "AC"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "sAB",
+        "ownerSegment": "AB",
+        "text": "3t",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sAC",
+        "ownerSegment": "AC",
+        "text": "3t",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sBC",
+        "ownerSegment": "BC",
+        "text": "2t",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  }
+}

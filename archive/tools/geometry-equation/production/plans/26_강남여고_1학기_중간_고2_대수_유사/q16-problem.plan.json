@@ -1,0 +1,68 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      4,
+      -1,
+      7
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "3",
+        "coefficients": [
+          "1",
+          "1/2",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ],
+        "label": "y=3^(x/2)"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "rightEdge",
+          "x": "3"
+        }
+      ]
+    }
+  },
+  "caption": "지수함수 y=3^(x/2)와 x축·y축 및 x=3으로 둘러싸인 첫사분면 구간을 나타낸다.",
+  "accessibilityDescription": "0부터 3까지의 x범위에서 3의 x/2제곱 곡선이 오른쪽 위로 상승하고 x=3 경계선이 있다. 면은 칠하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "P1",
+      "condition": "y=3^(x/2), x=0, x=3, y=0이 둘러싼 영역의 정수 격자점 개수",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.overlays.lines",
+        "graphPlan.axisTickValues"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "지수함수의 정확한 밑과 지수, 좌우 경계 x=0과 x=3 및 정수 눈금을 표시한다.",
+    "곡선 아래 정확한 영역 면 채움은 지원되지 않아 채움을 넣지 않는다."
+  ]
+}

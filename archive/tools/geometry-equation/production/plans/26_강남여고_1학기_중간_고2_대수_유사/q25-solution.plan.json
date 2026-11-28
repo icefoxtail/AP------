@@ -1,0 +1,60 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "t",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "공통범위",
+        "pieces": [
+          {
+            "lo": {
+              "value": "5/6",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "3/2",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "3/2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "7/4",
+              "state": "OPEN"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "t=x/π의 최종 해집합"
+  },
+  "caption": "t=x/π로 치환하면 두 부등식의 공통 범위는 5/6<t<3/2 또는 3/2<t<7/4이다. 따라서 x는 5π/6<x<3π/2 또는 3π/2<x<7π/4이다.",
+  "accessibilityDescription": "t=x/π인 수직선에서 5/6, 3/2, 7/4를 열린 끝점으로 표시하고 (5/6,3/2)과 (3/2,7/4) 두 구간만 진하게 그린다. 가운데 3/2는 제외한다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "-1<sin x<1/2 및 sin x+cos x<0, 0≤x<2π의 공통 범위",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "S2",
+      "condition": "치환 t=x/π에서 5/6<t<3/2 또는 3/2<t<7/4",
+      "mappedTo": [
+        "numberLine.variable",
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "서술형 풀이에서 x=3π/2를 빠뜨리기 쉬우므로 그 중간 제외점을 열린 원 두 개로 표현한다.",
+    "π계수 끝점은 공식 수직선의 유리수 기능에 맞춰 t=x/π로 치환하고 이를 캡션에 분명히 밝힌다."
+  ]
+}
