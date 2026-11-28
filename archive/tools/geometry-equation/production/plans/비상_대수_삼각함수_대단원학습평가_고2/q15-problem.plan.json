@@ -1,0 +1,222 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "cO",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cB",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "meet",
+        "op": "INTERSECTION",
+        "inputs": [
+          "cO",
+          "cB"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "meet"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "sign": 1
+        }
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "cO"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sBP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "P"
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "th",
+        "refs": [
+          "P",
+          "B",
+          "A"
+        ],
+        "value": 41.4096,
+        "label": "θ",
+        "style": "ARC"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "ab8",
+        "ownerSegment": "sAB",
+        "text": "8"
+      },
+      {
+        "id": "bp6",
+        "ownerSegment": "sBP",
+        "text": "6"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 490
+  },
+  "caption": "지름 AB=8인 원 O 위의 점 P와 BP=6인 현, B의 각 θ.",
+  "accessibilityDescription": "AB가 원 O의 지름이고 P는 원 위의 점이다. AB는 8, BP는 6, B에서 BA와 BP가 이루는 각은 세타다.",
+  "sourceQuote": "오른쪽 그림과 같이 길이가 $8$인 선분",
+  "sourceConditions": [
+    {
+      "id": "diameter",
+      "condition": "AB는 중심 O를 지나는 길이 8의 지름",
+      "mappedTo": "displayCircles"
+    },
+    {
+      "id": "chord",
+      "condition": "P는 원 위, BP=6",
+      "mappedTo": "planeMarks.expressionLabels"
+    },
+    {
+      "id": "theta",
+      "condition": "∠PBA=θ",
+      "mappedTo": "planeMarks.angles"
+    }
+  ],
+  "newVisualInformation": [
+    "원둘레 전체 및 A·O·B 일직선",
+    "BP=6과 지름 AB=8의 길이 라벨",
+    "B에서 θ 각호, 정답 cos2θ 미노출, 면 채움 없음"
+  ]
+}

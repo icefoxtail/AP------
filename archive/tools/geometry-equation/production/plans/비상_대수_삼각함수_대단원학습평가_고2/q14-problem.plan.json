@@ -1,0 +1,235 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cO",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "P",
+    "Q"
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aO",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 30,
+        "noLabel": true,
+        "style": "ARC"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "cO",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "pi6",
+        "at": [
+          1.25,
+          0.55
+        ],
+        "text": "π/6",
+        "labelKind": "TEXT"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 470
+  },
+  "caption": "중심각 π/6인 부채꼴 OAB. OA를 2:1로 나누는 P, OB를 1:2로 나누는 Q와 선분 PQ.",
+  "accessibilityDescription": "O에서 A와 B로 향하는 두 반지름과 짧은 호 AB, 각 π/6, OA 안의 P와 OB 안의 Q, 선분 PQ가 있다.",
+  "sourceQuote": "오른쪽 그림과 같이 중심각의 크기가",
+  "sourceConditions": [
+    {
+      "id": "angle",
+      "condition": "∠AOB=π/6, 즉 30°",
+      "mappedTo": "planeMarks.angles"
+    },
+    {
+      "id": "angleLabel",
+      "condition": "원문은 라디안 π/6로 각을 표기",
+      "mappedTo": "planeMarks.textLabels"
+    },
+    {
+      "id": "partition",
+      "condition": "OP:PA=2:1, OQ:QB=1:2",
+      "mappedTo": "mathPlan.nodes"
+    },
+    {
+      "id": "sector",
+      "condition": "반지름 OA=OB와 호 AB",
+      "mappedTo": "planeMarks.arcs"
+    }
+  ],
+  "newVisualInformation": [
+    "호 AB와 두 반지름 및 P-Q 연결선",
+    "π/6 라디안 각 표기",
+    "문제 그림에 미지의 반지름 값과 정답 호의 길이 미노출"
+  ]
+}
