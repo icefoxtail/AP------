@@ -96,7 +96,7 @@
 
 | 기준 | 수 |
 |------|---:|
-| q.image 보유 | 8292 |
+| q.image 보유 | 8294 |
 | content <img> | 1247 |
 | content <svg> | 36 |
 | content <table> | 418 |
