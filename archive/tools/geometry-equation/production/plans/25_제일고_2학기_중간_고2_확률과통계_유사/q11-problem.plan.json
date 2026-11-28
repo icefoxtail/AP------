@@ -1,0 +1,17 @@
+{
+  "capability":"stat-chart-figure-v1",
+  "chart":{
+    "kind":"NORMAL_CURVE",
+    "curves":[
+      {"id":"A","mean":"-2","sd":"6/5","label":"A","meanLine":false},
+      {"id":"B","mean":"0","sd":"7/10","label":"B","meanLine":false},
+      {"id":"C","mean":"2","sd":"9/5","label":"C","meanLine":false}
+    ],
+    "ticks":[{"x":"-2","text":"A"},{"x":"0","text":"B"},{"x":"2","text":"C"}],
+    "span":4
+  },
+  "caption":"세 확률밀도함수의 위치와 퍼짐이 다른 개형을 나타내는 정규분포 비교 그림.",
+  "accessibilityDescription":"A, B, C로 이름 붙인 정규분포 곡선 세 개가 한 x축 위에서 서로 다른 중심과 폭을 갖도록 그려져 있다. 수치는 예시 좌표계이다.",
+  "sourceConditions":[{"id":"shape","condition":"기존 유사 q11의 세 곡선 A,B,C를 정규분포 개형으로 비교한다. 발문에는 실제 평균과 표준편차의 수치가 없으므로 그려지는 좌표는 상대 모양을 위한 무단위 대표값이고, 눈금의 A/B/C는 숫자가 아닌 각 곡선의 중심 이름이다.","mappedTo":["chart.curves","chart.ticks"]}],
+  "newVisualInformation":["A, B, C의 서로 다른 정규밀도 곡선과 곡선 소유 라벨을 엔진의 실제 곡선 모델 필드로 제공한다.","원문에 없는 통계 수치나 크기 비교의 정답 문장은 그리지 않는다."]
+}
