@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
+import crypto from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 
 export function semanticFailuresAreSupplementary(report) {
@@ -21,6 +22,26 @@ export function verifyStudentAccess(root, request) {
     const rows=ctx.window.questionBank||ctx.window.questions||ctx.questions||ctx.questionBank||ctx.window.examData?.questions;
     if(!Array.isArray(rows)||!rows.length)throw Error('QUESTION_BANK_MISSING');
     if(request.expectedQuestionCount!==rows.length)failures.push('QUESTION_COUNT_MISMATCH');
+    // Some original exams contain all choices inside a single problem image.
+    // Accept that representation only with an explicit, SHA-bound visual review.
+    let visualChoices=[];
+    if(request.studentAccessEvidenceRef){
+      const ref=request.studentAccessEvidenceRef, evidencePath=path.resolve(root,ref.path||'');
+      if(!evidencePath.startsWith(path.resolve(root,'archive/data/meta-foundation/evidence')+path.sep))throw Error('INVALID_STUDENT_ACCESS_EVIDENCE_PATH');
+      const bytes=fs.readFileSync(evidencePath);
+      if(crypto.createHash('sha256').update(bytes).digest('hex')!==ref.sha256)throw Error('STUDENT_ACCESS_EVIDENCE_SHA_MISMATCH');
+      const evidence=JSON.parse(bytes.toString('utf8'));
+      if(evidence.schemaVersion!=='archive-visual-choice-review-v1'||evidence.sourceArchiveFile!==source||evidence.requestId!==request.requestId||!Array.isArray(evidence.records))throw Error('STUDENT_ACCESS_EVIDENCE_IDENTITY_MISMATCH');
+      visualChoices=evidence.records;
+    }
+    const hasReviewedImageChoices=(q,qid)=>{
+      const matches=visualChoices.filter(r=>r.sourceOrdinal===qid);
+      if(matches.length!==1)return false;
+      const r=matches[0], item=(request.items||[]).find(x=>x.sourceOrdinal===qid);
+      if(!item||item.questionUid!==r.questionUid||r.choiceCount!==5||r.visualReview!=='CHOICES_1_TO_5_PRESENT'||r.imagePath!==q.image||!r.reviewer)return false;
+      const file=path.resolve(root,'archive',r.imagePath||'');
+      return file.startsWith(path.resolve(root,'archive/assets/images')+path.sep)&&fs.existsSync(file)&&crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex')===r.imageSha256;
+    };
     const checkAsset=(url,qid,{supplemental=false}={})=>{
       const report=supplemental?supplements:failures;
       if(url&&typeof url==='object'){url=url.src||url.url||url.path;if(!url){report.push(`${qid}:${supplemental?'SOLUTION_ASSET_REFERENCE_UNSUPPORTED':'ASSET_REFERENCE_UNSUPPORTED'}`);return;}}
@@ -34,8 +55,15 @@ export function verifyStudentAccess(root, request) {
       const qid=i+1;
       if(!String(q.content??q.question??q.stem??'').trim())failures.push(`${qid}:QUESTION_EMPTY`);
       if(!String(q.solution??q.explanation??'').trim()&&!q.solutionImage&&!q.solutionFigureSvg)supplements.push(`${qid}:SOLUTION_PENDING`);
-      if(q.questionType==='객관식'&&(!Array.isArray(q.choices)||!q.choices.length))failures.push(`${qid}:CHOICES_EMPTY`);
-      for(const value of [q.image,...(Array.isArray(q.images)?q.images:[])])checkAsset(value,qid);
+      if(q.questionType==='객관식'&&(!Array.isArray(q.choices)||!q.choices.length)&&!hasReviewedImageChoices(q,qid))failures.push(`${qid}:CHOICES_EMPTY`);
+      checkAsset(q.image,qid);
+      const displayed=[q.image,...Array.from(String(q.content||'').matchAll(/(?:src|href)=["']([^"']+)["']/g),m=>m[1])].filter(x=>typeof x==='string'&&x.startsWith('assets/images/'));
+      for(const value of (Array.isArray(q.images)?q.images:[])){
+        // Legacy metadata sometimes repeats only the basename of a displayed asset.
+        // Resolve it only when the displayed canonical asset is unique and exists.
+        const aliases=typeof value==='string'&&!/[\\/]/.test(value)?displayed.filter(x=>path.posix.basename(x.split(/[?#]/)[0])===value):[];
+        if(aliases.length===1&&fs.existsSync(path.resolve(root,'archive',aliases[0])))checkAsset(aliases[0],qid);else checkAsset(value,qid);
+      }
       if(q.solutionImage)checkAsset(q.solutionImage,qid,{supplemental:true});
       for(const [html,supplemental] of [[q.content,false],[q.figureSvg,false],[q.solution,true],[q.solutionFigureSvg,true]])for(const m of String(html||'').matchAll(/(?:src|href)=["']([^"']+)["']/g)){
         if(!m[1].startsWith('#'))checkAsset(m[1],qid,{supplemental});

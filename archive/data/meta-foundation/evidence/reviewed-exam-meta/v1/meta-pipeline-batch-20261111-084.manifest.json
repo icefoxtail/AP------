@@ -1,0 +1,424 @@
+{
+  "schemaVersion": "ALIVE_COURIER_INTAKE_MANIFEST_v3",
+  "examTitle": "22_순천고_2학기_기말_고2_확률과통계",
+  "sourceFileDriveId": "1QEZVZ77_PyxHqW55AX2kXKkilC2lneD8",
+  "sourceSha256": "a4f3b5f4f3ae6de02ca9e79fbb6fe625f2e96338b439d6d662232c4569eec156",
+  "status": "READY_FOR_COURIER_REGISTRATION",
+  "manifestTimestamp": "2026-10-23T15:39:31.773959+00:00",
+  "totalQuestions": 21,
+  "totalHoldCount": 0,
+  "recordsToBind": [
+    {
+      "questionId": 1,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
+      "subUnit": "통계적 추정",
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_SAMPLE_MEAN",
+        "CC_POPULATION_MEAN"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "표본평균의 기댓값은 모평균과 일치함(E(Xbar)=40)을 확인하는 1단계 기본 성질"
+    },
+    {
+      "questionId": 2,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+      "subUnit": "확률변수와 기댓값",
+      "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+      "templateKey": "TPL_EXPECTATION_TRANSFORM",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_DISTRIBUTION",
+        "CC_VARIANCE_FORMULA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "이항분포 B(90, 1/3)에서 E(X)=30, V(X)=20 구하고 V(X)=E(X²)-{E(X)}²에서 E(X²)=920 산출 (3단계)"
+    },
+    {
+      "questionId": 3,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+      "crossConceptKeys": [
+        "CC_NORMAL_DISTRIBUTION_SYMMETRY",
+        "CC_STANDARDIZATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "평균 10 중심 대칭성으로 P(X>=5)=P(X<=15) 파악 후 a/6=15에서 a=90 산출 (2단계)"
+    },
+    {
+      "questionId": 4,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+      "templateKey": "TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY",
+      "crossConceptKeys": [
+        "CC_PROBABILITY_DENSITY_FUNCTION",
+        "CC_TRIANGLE_AREA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "전체 넓이 1/2*10*b=1에서 b=1/5, 구간 넓이 1/2*a*b=2/5에서 ab=4/5 직접 산출 (3단계, 시각자료 확인)"
+    },
+    {
+      "questionId": 5,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+      "subUnit": "확률변수와 기댓값",
+      "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+      "templateKey": "TPL_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_PROBABILITY_MASS_FUNCTION",
+        "CC_EXPECTED_VALUE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "확률의 총합 (6+4k)/10=1에서 k=1 구하고 E(X)=20/10=2 산출 (2단계)"
+    },
+    {
+      "questionId": 6,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-CONFIDENCE_INTERVAL",
+      "subUnit": "신뢰구간",
+      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE",
+      "crossConceptKeys": [
+        "CC_CONFIDENCE_INTERVAL_LENGTH",
+        "CC_NORMAL_DISTRIBUTION_CRITICAL_VALUE"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "99% 신뢰구간 길이로부터 모표준편차 sigma=10 역산 후 95% 구간 길이 2*1.96*10/sqrt(n)<=4에서 n>=96.04 최소 자연수 97 도출 (4단계)"
+    },
+    {
+      "questionId": 7,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-04",
+      "standardUnit": "조건부확률",
+      "subUnitKey": "H15-PS-04-REPEATED_TRIALS",
+      "subUnit": "조건부확률",
+      "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+      "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+      "crossConceptKeys": [
+        "CC_INDEPENDENT_TRIALS",
+        "CC_COMPLEMENTARY_EVENT",
+        "CC_ABSOLUTE_VALUE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "여사건 X=4를 (D,C)=(3,1), (2,2)로 분할 계산(2/27)하여 P(|X-4|>=1)=1-2/27=25/27 산출 (4단계)"
+    },
+    {
+      "questionId": 8,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-NORMAL_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+      "crossConceptKeys": [
+        "CC_NORMAL_APPROXIMATION_TO_BINOMIAL",
+        "CC_STANDARDIZATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "개별 확률 p1=P(Z>=2)=0.02 구하고 이항분포 B(2500, 0.02)~N(50, 7²) 정규근사에서 (n-50)/7=2로부터 n=64 산출 (4단계, 시각자료 확인)"
+    },
+    {
+      "questionId": 9,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+      "templateKey": "TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY",
+      "crossConceptKeys": [
+        "CC_PROBABILITY_DENSITY_FUNCTION",
+        "CC_EVEN_FUNCTION_INTEGRATION"
+      ],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "대칭 밀도함수 전체 넓이 a+2b=1과 구간 넓이 a/4+b=3/8 연립하여 a=1/2, b=1/4, ab=1/8 산출 (3단계)"
+    },
+    {
+      "questionId": 10,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-03",
+      "standardUnit": "확률의 뜻과 활용",
+      "subUnitKey": "H15-PS-03-PROBABILITY_ADDITION",
+      "subUnit": "확률의 덧셈정리",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+      "crossConceptKeys": [
+        "CC_COMPLEMENTARY_EVENT",
+        "CC_PROBABILITY_ADDITION_THEOREM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "P(B)=1-7/10=3/10 구하고 덧셈정리 3/5=1/2+3/10-P(A∩B)에서 P(A∩B)=1/5 산출 (1단계)"
+    },
+    {
+      "questionId": 11,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+      "crossConceptKeys": [
+        "CC_COMPLEMENTARY_EVENT",
+        "CC_ADJACENT_PERMUTATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "A, B 이웃 확률 2*5!/6!=1/3을 여사건 공식에 적용하여 이웃하지 않을 확률 1-1/3=2/3 산출 (2단계)"
+    },
+    {
+      "questionId": 12,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-04",
+      "standardUnit": "조건부확률",
+      "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
+      "subUnit": "조건부확률",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+      "crossConceptKeys": [
+        "CC_INDEPENDENT_EVENTS",
+        "CC_PROBABILITY_ADDITION_THEOREM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "독립 조건 P(B)=1/5, P(A^c)=5/7에서 P(A)=2/7 도출 후 덧셈정리로 P(A∪B)=2/7+1/5-2/35=3/7 산출 (3단계)"
+    },
+    {
+      "questionId": 13,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-04",
+      "standardUnit": "조건부확률",
+      "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
+      "subUnit": "조건부확률",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+      "crossConceptKeys": [
+        "CC_CONDITIONAL_PROBABILITY",
+        "CC_CONTINGENCY_TABLE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "분할표 구성으로 축구 선택자 280명 중 2학년 120명을 찾아 조건부확률 120/280=3/7 산출 (3단계)"
+    },
+    {
+      "questionId": 14,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "crossConceptKeys": [
+        "CC_COMBINATION_NON_ADJACENT",
+        "CC_CLASSICAL_PROBABILITY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "차이가 1이 아닌 4개 선택을 bi=ai-(i-1) 변환으로 7C4=35가지 센 후 35/10C4=35/210=1/6 산출 (3단계)"
+    },
+    {
+      "questionId": 15,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-03",
+      "standardUnit": "확률의 뜻과 활용",
+      "subUnitKey": "H15-PS-03-MATHEMATICAL_PROBABILITY",
+      "subUnit": "확률의 뜻과 활용",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+      "crossConceptKeys": [
+        "CC_CLASSICAL_PROBABILITY",
+        "CC_EXTREMAL_VALUE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "최댓값 4인 경우의 수 4³-3³=37을 전체 6³=216으로 나누어 37/216 산출 (2단계)"
+    },
+    {
+      "questionId": 16,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-BINOMIAL_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+      "templateKey": "TPL_BINOMIAL_PROBABILITY",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_DISTRIBUTION",
+        "CC_STOPPING_TIME_EQUIVALENCE"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "4회 시행 시 이동거리 4+K>=6 (K>=2) 동치 변환 후 B(4, 2/3) 여사건 확률 8/9에서 p+q=17 산출 (4단계)"
+    },
+    {
+      "questionId": 17,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-04",
+      "standardUnit": "조건부확률",
+      "subUnitKey": "H15-PS-04-REPEATED_TRIALS",
+      "subUnit": "조건부확률",
+      "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+      "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+      "crossConceptKeys": [
+        "CC_MULTINOMIAL_DISTRIBUTION",
+        "CC_INDEPENDENT_TRIALS"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "네 수의 합 10 이상인 경우를 (3,3,3,3), (3,3,3,2), (3,3,3,1), (3,3,2,2) 4가지로 분류 카운트하여 19/256 도출 후 p+q=275 산출 (4단계)"
+    },
+    {
+      "questionId": 18,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-04",
+      "standardUnit": "조건부확률",
+      "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
+      "subUnit": "조건부확률",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+      "crossConceptKeys": [
+        "CC_CONDITIONAL_PROBABILITY",
+        "CC_NON_REPLACEMENT_SELECTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 5,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "파란 공 이전 1이 3개인 조건확률 P(E)=1/4과 숫자합 5인 교집합 P(E∩F)=1/15로부터 조건부확률 (1/15)/(1/4)=4/15 산출 (5단계 킬러)"
+    },
+    {
+      "questionId": 19,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-CONFIDENCE_INTERVAL",
+      "subUnit": "신뢰구간",
+      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "templateKey": "TPL_POPULATION_MEAN_ESTIMATION",
+      "crossConceptKeys": [
+        "CC_CONFIDENCE_INTERVAL",
+        "CC_POPULATION_MEAN"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "173.5 ± 2.58*(5/10) = 173.5 ± 1.29에서 172.21 <= m <= 174.79 신뢰구간 산출 (2단계 서술형)"
+    },
+    {
+      "questionId": 20,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-NORMAL_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+      "crossConceptKeys": [
+        "CC_STANDARDIZATION",
+        "CC_NORMAL_DISTRIBUTION_SYMMETRY"
+      ],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "P(Z>=2/3)+P(Z<=4/sigma)>=1을 P(Z<=4/sigma)>=P(Z<=2/3)로 변환하여 4/sigma>=2/3에서 sigma<=6 최댓값 6 산출 (3단계 서술형)"
+    },
+    {
+      "questionId": 21,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "crossConceptKeys": [
+        "CC_HOMOGENEOUS_PRODUCT",
+        "CC_MONOTONE_FUNCTION_COUNT"
+      ],
+      "conditionKeys": [
+        "COND_DIVISIBILITY"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 5,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "비감소 함수에서 f(3)+f(4)+f(5)가 4의 배수인 5개 유형별 중복조합 합 10+1+3+12+10=36 도출 후 36/4^8 = 9/4^7에서 a=9 산출 (5단계 킬러)"
+    }
+  ]
+}

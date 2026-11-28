@@ -1,0 +1,620 @@
+{
+  "schemaVersion": "ALIVE_META_AUDIT_ATOMIC_PACKAGE_v3",
+  "auditTimestamp": "2026-10-25T08:30:58.248359+00:00",
+  "examTitle": "26_연향중_1학기_중간_중3_수학",
+  "sourceDriveId": "1rQrqybvKk5lqb4xVr1MxHxTluVbdOjo2",
+  "sourceSha256": "3fd8bcd6912e16a4251e91a39feb18944876c0725366b129633015195f92c9c6",
+  "totalQuestions": 23,
+  "totalApproved": 23,
+  "totalHold": 0,
+  "auditStatus": "PASSED_CANONICAL_AUDIT",
+  "records": [
+    {
+      "questionId": 1,
+      "questionNo": 1,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 중 옳은 것은? [3점]",
+        "solutionDecisiveExcerpt": "⑤ $121$의 제곱근은 $\\pm 11$이며 두 수의 합은 $11 + (-11) = 0$이므로 옳다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 연산",
+      "subUnitKey": "M3-01-SQUARE_ROOT",
+      "subUnit": "제곱근의 뜻과 성질",
+      "problemTypeKey": "PT_M3_SQUARE_ROOT_DEFINITION",
+      "templateKey": "TPL_SQUARE_ROOT_TRUE_FALSE",
+      "crossConceptKeys": [
+        "CC_SQUARE_ROOT_DEFINITION",
+        "CC_POSITIVE_NEGATIVE_SQUARE_ROOT"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "121의 두 제곱근 11과 -11의 합이 0임을 확인하고 제곱근의 기본 정의를 대조하는 1단계 진위 판정 문항으로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 2,
+      "questionNo": 2,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 식을 계산한 값은? [4점]<br>$$\\sqrt{(-3)^2}+(-\\sqrt{8})^2\\times\\sqrt{\\frac{1}{16}}$$",
+        "solutionDecisiveExcerpt": "$\\sqrt{(-3)^2} = 3$, $(-\\sqrt{8})^2 = 8$, $\\sqrt{\\frac{1}{16}} = \\frac{1}{4}$이므로 $3 + 8 \\times \\frac{1}{4} = 3 + 2 = 5$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 연산",
+      "subUnitKey": "M3-01-SQUARE_ROOT",
+      "subUnit": "제곱근의 뜻과 성질",
+      "problemTypeKey": "PT_M3_RADICAL_SIMPLIFICATION",
+      "templateKey": "TPL_RADICAL_ARITHMETIC_CHAIN",
+      "crossConceptKeys": [
+        "CC_RADICAL_SQUARE_SIMPLIFICATION",
+        "CC_RADICAL_FRACTION_SIMPLIFICATION"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "근호 밖 제곱과 근호 안 제곱의 기본 성질을 적용하여 3+8*(1/4)=5를 산출하는 1단계 사칙 계산 문항으로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 3,
+      "questionNo": 3,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 중 $\\sqrt{150x}$ 가 자연수가 되도록 하는 $100$ 이하의 자연수 $x$의 개수는? [5점]",
+        "solutionDecisiveExcerpt": "$150 = 6 \\times 5^2$이므로 $x = 6n^2$이어야 한다. $6n^2 \\le 100 \\implies n^2 \\le 16.67$에서 $n = 1, 2, 3, 4$의 4개이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 연산",
+      "subUnitKey": "M3-01-SQUARE_ROOT",
+      "subUnit": "제곱근의 뜻과 성질",
+      "problemTypeKey": "PT_M3_SQUARE_ROOT_INTEGER_CONDITION",
+      "templateKey": "TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION",
+      "crossConceptKeys": [
+        "CC_PRIME_FACTORIZATION",
+        "CC_PERFECT_SQUARE_CONDITION",
+        "CC_INTEGER_COUNT_IN_INTERVAL"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "150=2*3*5^2 소인수분해에서 x=6n^2을 세우고 6n^2<=100을 만족하는 자연수 n=1,2,3,4로부터 개수 4개를 산출하는 2단계 정수 조건 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 4,
+      "questionNo": 4,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 <보기> 중 대소 관계가 옳은 것을 있는 대로 고른 것은? [4점]<br><br><b><보기></b><br>ㄱ. $\\sqrt{7} < 2$<br>ㄴ. $\\sqrt{0.3} > 0.3$<br>ㄷ. $-5 < -\\sqrt{23}$<br>ㄹ. $-\\frac{\\sqrt{",
+        "solutionDecisiveExcerpt": "ㄴ. $0.3 = \\sqrt{0.09} < \\sqrt{0.3}$ (참). ㄷ. $-5 = -\\sqrt{25} < -\\sqrt{23}$ (참). 따라서 옳은 것은 ③ ㄴ, ㄷ이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 연산",
+      "subUnitKey": "M3-01-SQUARE_ROOT",
+      "subUnit": "제곱근의 뜻과 성질",
+      "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+      "templateKey": "TPL_REAL_NUMBER_ORDER_COMPARISON",
+      "crossConceptKeys": [
+        "CC_RADICAL_COMPARISON",
+        "CC_NEGATIVE_REAL_NUMBER_ORDER"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "소수 및 음수 근호 수의 대소 비교 규칙을 각각 적용하여 옳은 보기 ㄴ, ㄷ을 선별하는 1단계 대소 비교 문항으로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 5,
+      "questionNo": 5,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 <보기> 중 무리수의 개수는? [3점]<br><br><b><보기></b><br>$$\\sqrt{0.4},\\quad \\pi,\\quad -\\sqrt{\\frac{9}{64}},\\quad \\sqrt{10},\\quad 1.2\\dot{4},\\quad \\sqrt{3}-1,\\qu",
+        "solutionDecisiveExcerpt": "무리수는 $\\sqrt{0.4}, \\pi, \\sqrt{10}, \\sqrt{3}-1$의 4개이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 연산",
+      "subUnitKey": "M3-01-REAL_NUMBER",
+      "subUnit": "무리수와 실수",
+      "problemTypeKey": "PT_M3_REAL_NUMBER_CLASSIFICATION",
+      "templateKey": "TPL_IRRATIONAL_NUMBER_FILTER",
+      "crossConceptKeys": [
+        "CC_IRRATIONAL_NUMBER",
+        "CC_RATIONAL_NUMBER_CLASSIFICATION"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "주어진 7개의 수 중 근호가 벗겨지지 않는 수와 원주율을 포함한 무리수 4개를 분류하는 1단계 개념 분류 문항으로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 6,
+      "questionNo": 6,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 중 옳은 것은? [4점]",
+        "solutionDecisiveExcerpt": "⑤ $1+\\sqrt{2}$는 실수이므로 수직선 위의 한 점으로 나타낼 수 있다. 따라서 정답은 ⑤이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 연산",
+      "subUnitKey": "M3-01-REAL_NUMBER",
+      "subUnit": "무리수와 실수",
+      "problemTypeKey": "PT_M3_REAL_NUMBER_CLASSIFICATION",
+      "templateKey": "TPL_REAL_NUMBER_PROPERTY_AUDIT",
+      "crossConceptKeys": [
+        "CC_COMPLETENESS_OF_REAL_LINE",
+        "CC_RATIONAL_NUMBER_CLASSIFICATION"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "실수 1+sqrt(2)가 수직선 위의 한 점으로 대응된다는 실수의 완비성 정의를 선별하는 1단계 진위 문항으로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 7,
+      "questionNo": 7,
+      "readingEvidence": {
+        "sourceTextExcerpt": "세 수 $A=2+\\sqrt{6}$, $B=7-\\sqrt{6}$, $C=2\\sqrt{6}$ 의 대소 관계로 옳은 것은? [5점]",
+        "solutionDecisiveExcerpt": "$B-A = 5-2\\sqrt{6} = \\sqrt{25}-\\sqrt{24} > 0 \\implies A < B$.\n$C-B = 3\\sqrt{6}-7 = \\sqrt{54}-\\sqrt{49} > 0 \\implies B < C$.\n따라서 $A < B < C$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 연산",
+      "subUnitKey": "M3-01-REAL_NUMBER",
+      "subUnit": "무리수와 실수",
+      "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+      "templateKey": "TPL_REAL_NUMBER_ORDER_COMPARISON",
+      "crossConceptKeys": [
+        "CC_SUBTRACTION_COMPARISON",
+        "CC_RADICAL_COMPARISON"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "실수의 차 B-A=5-2*sqrt(6)>0과 C-B=3*sqrt(6)-7>0을 통해 세 수의 대소 관계 A<B<C를 순차 판별하는 2단계 대소 비교 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 8,
+      "questionNo": 8,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$\\sqrt{4.12}=2.03$, $\\sqrt{41.2}=6.42$ 일 때, $\\sqrt{412}=a$, $\\sqrt{0.412}=b$라고 하자. $a+100b$의 값은? [4점]",
+        "solutionDecisiveExcerpt": "$a = 10\\sqrt{4.12} = 20.3$, $b = \\frac{\\sqrt{41.2}}{10} = 0.642 \\implies 100b = 64.2$이다. 따라서 $a+100b = 20.3+64.2 = 84.5$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 연산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+      "templateKey": "TPL_M3_RADICAL_LETTER_REPRESENTATION",
+      "crossConceptKeys": [
+        "CC_RADICAL_POWER_OF_10_TRANSFORMATION",
+        "CC_SQUARE_ROOT_DECIMAL_ESTIMATION"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "10의 거듭제곱을 근호 밖으로 꺼내어 a=20.3, b=0.642를 구하고 a+100b=84.5를 산출하는 1단계 어림수 계산 문항으로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 9,
+      "questionNo": 9,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 계산 중 옳은 것은? [3점]",
+        "solutionDecisiveExcerpt": "⑤ $6\\sqrt{5}-2\\sqrt{5} = (6-2)\\sqrt{5} = 4\\sqrt{5}$로 옳다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 연산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+      "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+      "crossConceptKeys": [
+        "CC_RADICAL_ADDITION_SUBTRACTION",
+        "CC_LIKE_RADICAL_TERMS"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "동류근호 덧셈·뺄셈 규칙을 확인하여 6*sqrt(5)-2*sqrt(5)=4*sqrt(5)가 참임을 선별하는 1단계 기본 연산 문항으로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 10,
+      "questionNo": 10,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 그림에서 삼각형과 직사각형의 넓이가 같을 때, $x$의 값은? [4점]<br><img src=\"assets/images/26_연향중_1학기_중간_중3_수학/q10.png\">",
+        "solutionDecisiveExcerpt": "삼각형의 넓이와 직사각형의 넓이가 같다는 조건식을 세워 근호를 약분 및 정리함으로써 $x$의 값을 구한다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 연산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "problemTypeKey": "PT_M3_SQUARE_ROOT_APPLICATION",
+      "templateKey": "TPL_M3_GEOMETRIC_PERIMETER_RADICAL_APPLICATION",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA",
+        "CC_RECTANGLE_AREA",
+        "CC_RADICAL_EQUATION_SOLVING"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "삼각형의 넓이와 직사각형의 넓이를 같게 놓는 방정식을 세우고 근호 계산을 통해 미지수 x의 길이를 도출하는 2단계 기하 응용 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 11,
+      "questionNo": 11,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$a>0$, $b>0$, $c>0$이고, $abc=36$일 때,<br>$$a\\sqrt{\\frac{27bc}{a}}-b\\sqrt{\\frac{12ac}{b}}+c\\sqrt{\\frac{3ab}{c}}$$의 값은? [5점]",
+        "solutionDecisiveExcerpt": "각 항의 계수를 근호 안으로 넣으면 $\\sqrt{27abc} - \\sqrt{12abc} + \\sqrt{3abc}$이다. $abc=36$을 대입하면 $18\\sqrt{3} - 12\\sqrt{3} + 6\\sqrt{3} = 12\\sqrt{3}$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 연산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+      "templateKey": "TPL_M3_RADICAL_LETTER_REPRESENTATION",
+      "crossConceptKeys": [
+        "CC_RADICAL_INSERTION",
+        "CC_RADICAL_SIMPLIFICATION",
+        "CC_RADICAL_ADDITION_SUBTRACTION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "외적 계수를 근호 안으로 넣어 sqrt(27abc)-sqrt(12abc)+sqrt(3abc)로 변형한 뒤 abc=36을 대입하여 12*sqrt(3)을 산출하는 3단계 심화 근호 연산 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 12,
+      "questionNo": 12,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$\\frac{6+\\sqrt{3}}{\\sqrt{6}}-\\frac{\\sqrt{3}+4}{\\sqrt{2}}=a\\sqrt{6}+b\\sqrt{2}$ 일 때, 두 수 $a, b$에 대하여 $a+b$의 값은? [4점]",
+        "solutionDecisiveExcerpt": "$\\frac{6+\\sqrt{3}}{\\sqrt{6}} = \\sqrt{6}+\\frac{1}{2}\\sqrt{2}$, $\\frac{\\sqrt{3}+4}{\\sqrt{2}} = \\frac{1}{2}\\sqrt{6}+2\\sqrt{2}$이다. 빼면 $\\frac{1}{2}\\sqrt{6}-\\frac{3}{2}\\sqrt{2}$이므로 $a=\\frac{1}{2}, b=-\\frac{3}{2}$이고 $a+b = -1$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 연산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+      "templateKey": "TPL_M3_RADICAL_LETTER_REPRESENTATION",
+      "crossConceptKeys": [
+        "CC_DENOMINATOR_RATIONALIZATION",
+        "CC_COEFFICIENT_MATCHING",
+        "CC_LIKE_RADICAL_TERMS"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "두 분수식을 각각 분모 유리화하여 a=1/2, b=-3/2를 매칭하고 합 a+b=-1을 계산하는 2단계 유리화 연산 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 13,
+      "questionNo": 13,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 그림과 같은 사다리꼴 $\\mathrm{ABCD}$의 넓이는? [4점]<br><img src=\"assets/images/26_연향중_1학기_중간_중3_수학/q13.png\">",
+        "solutionDecisiveExcerpt": "사다리꼴의 넓이 공식 $\\frac{1}{2} \\times (\\text{윗변}+\\text{아랫변}) \\times \\text{높이}$에 주어진 근호 변의 길이를 대입하여 넓이를 산출한다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 연산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "problemTypeKey": "PT_M3_SQUARE_ROOT_APPLICATION",
+      "templateKey": "TPL_M3_GEOMETRIC_PERIMETER_RADICAL_APPLICATION",
+      "crossConceptKeys": [
+        "CC_TRAPEZOID_AREA",
+        "CC_RADICAL_MULTIPLICATION",
+        "CC_RADICAL_ADDITION_SUBTRACTION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "사다리꼴의 윗변과 아랫변의 합에 높이를 곱하고 1/2을 취하는 근호 사칙 계산을 통해 넓이를 구하는 2단계 기하 응용 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 14,
+      "questionNo": 14,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다항식을 전개한 것으로 옳은 것은? [3점]",
+        "solutionDecisiveExcerpt": "④ $(x-2)(x+3) = x^2 + x - 6$으로 옳다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+      "subUnit": "다항식의 곱셈 공식",
+      "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+      "templateKey": "TPL_M3_POLY_EXPANSION_COEFFICIENT",
+      "crossConceptKeys": [
+        "CC_POLYNOMIAL_EXPANSION",
+        "CC_MULTIPLICATION_FORMULA"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "일차식의 전개 $(x-2)(x+3)=x^2+x-6$의 정확성을 확인하는 1단계 곱셈공식 진위 문항으로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 15,
+      "questionNo": 15,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 중 곱셈공식 $(a+b)(a-b)=a^2-b^2$ 를 이용하여 계산하면 가장 편리한 수의 계산은? [4점]",
+        "solutionDecisiveExcerpt": "④ $203 \\times 197 = (200+3)(200-3) = 200^2 - 3^2$이므로 합차공식을 이용하기에 가장 편리하다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+      "subUnit": "곱셈 공식의 활용",
+      "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+      "templateKey": "TPL_M3_DIFFERENCE_OF_SQUARES_CHAIN",
+      "crossConceptKeys": [
+        "CC_DIFFERENCE_OF_SQUARES",
+        "CC_NUMERICAL_CALCULATION_APPLICATION"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "203*197=(200+3)(200-3)으로 합차공식을 이용하기에 가장 적합한 수 계산을 선별하는 1단계 곱셈공식 활용 문항으로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 16,
+      "questionNo": 16,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$x=\\frac{1}{\\sqrt{10}+3}$, $y=\\frac{1}{\\sqrt{10}-3}$ 일 때, $x^2+y^2$의 값은? [4점]",
+        "solutionDecisiveExcerpt": "$x = \\sqrt{10}-3, y = \\sqrt{10}+3$이다. $x+y=2\\sqrt{10}, xy=1$이므로 $x^2+y^2 = (x+y)^2-2xy = 40-2 = 38$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+      "subUnit": "곱셈 공식의 변형",
+      "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+      "templateKey": "TPL_M3_POLY_EXPANSION_COEFFICIENT",
+      "crossConceptKeys": [
+        "CC_DENOMINATOR_RATIONALIZATION",
+        "CC_MULTIPLICATION_FORMULA_TRANSFORMATION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "분모 유리화 후 곱셈공식 변형 (x+y)^2-2xy=40-2=38을 계산하는 2단계 식의 값 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 17,
+      "questionNo": 17,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 그림은 한 눈금의 길이가 $1$인 모눈종이에 두 선분 $\\mathrm{AB}$와 $\\mathrm{CD}$를 그린 후, $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AP}}$, $\\overline{\\mathrm{CD}}=\\overlin",
+        "solutionDecisiveExcerpt": "피타고라스 정리로 대각선 길이 $\\sqrt{5}$를 구하고 점 A, C를 기준점으로 하여 $a, b$의 좌표를 구한 뒤 곱 $ab$를 산출한다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 연산",
+      "subUnitKey": "M3-01-REAL_NUMBER",
+      "subUnit": "무리수와 실수",
+      "problemTypeKey": "PT_M3_REAL_NUMBER_LINE",
+      "templateKey": "TPL_M3_NUMBER_LINE_SQUARE_ROTATION",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN_THEOREM_ON_GRID",
+        "CC_REAL_NUMBER_COORDINATE_TRANSLATION",
+        "CC_RADICAL_MULTIPLICATION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "모눈 피타고라스 정리로 선분 길이 sqrt(5)를 구하고 두 점 P, Q의 좌표 a, b를 특정하여 곱 ab를 전개 계산하는 3단계 종합 수직선 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 18,
+      "questionNo": 18,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다항식 $x^2-y^2+4y-4$ 를 인수분해 한 것으로 옳은 것은? [4점]",
+        "solutionDecisiveExcerpt": "$x^2-(y^2-4y+4) = x^2-(y-2)^2 = (x+y-2)(x-y+2)$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "subUnit": "복잡한 식의 인수분해",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_SUBSTITUTION_FACTORIZATION",
+      "crossConceptKeys": [
+        "CC_PERFECT_SQUARE_TRINOMIAL",
+        "CC_DIFFERENCE_OF_SQUARES",
+        "CC_FOUR_TERM_GROUPING"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "뒤의 세 항을 완전제곱식 -(y-2)^2으로 묶어 x^2-(y-2)^2 합차공식으로 (x+y-2)(x-y+2)를 도출하는 2단계 인수분해 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 19,
+      "questionNo": 19,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 그림과 같이 넓이가 각각 $x^2$, $x$, $1$인 직사각형 $9$개를 겹치지 않게 이어 붙여 하나의 새로운 직사각형을 만들 때, 새로운 직사각형의 둘레의 길이는? [4점]<br><img src=\"assets/images/26_연향중_1학기_중간_중3_수학/q",
+        "solutionDecisiveExcerpt": "전체 넓이는 $2x^2+5x+2 = (2x+1)(x+2)$이다. 직사각형의 가로와 세로가 $2x+1, x+2$이므로 둘레는 $2(2x+1+x+2) = 6x+6$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "subUnit": "인수분해 공식의 활용",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_QUADRATIC_FACTORIZATION_SUM",
+      "crossConceptKeys": [
+        "CC_GEOMETRIC_AREA_FACTORIZATION_MODEL",
+        "CC_PERIMETER_FORMULA"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "직사각형 타일들의 넓이의 총합 2x^2+5x+2를 (2x+1)(x+2)로 인수분해하여 가로·세로를 구한 후 둘레 2(3x+3)=6x+6을 산출하는 2단계 기하 모델 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 20,
+      "questionNo": 20,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$(x-3)(x+7)+k$가 완전제곱식이 되도록 하는 수 $k$의 값은? [4점]",
+        "solutionDecisiveExcerpt": "$(x-3)(x+7)+k = x^2+4x-21+k$이다. 완전제곱식이 되려면 상수항이 $(4/2)^2 = 4$이어야 하므로 $-21+k = 4 \\implies k = 25$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "subUnit": "인수분해 공식",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_PERFECT_SQUARE_CONDITION",
+      "crossConceptKeys": [
+        "CC_POLYNOMIAL_EXPANSION",
+        "CC_PERFECT_SQUARE_TRINOMIAL"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "전개식 x^2+4x-21+k에서 일차항 계수 4의 반의 제곱인 4와 상수항 -21+k를 일치시켜 k=25를 구하는 2단계 완전제곱식 조건 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 21,
+      "questionNo": 21,
+      "readingEvidence": {
+        "sourceTextExcerpt": "[서술형 1]<br>$ab < 0$, $a > b$일 때, $\\sqrt{(-a)^2}+\\sqrt{4b^2}-\\sqrt{(b-a)^2}$ 를 간단히 하는 과정을 서술하시오. [6점]",
+        "solutionDecisiveExcerpt": "$ab < 0, a > b$에서 $a > 0, b < 0$이다.\n$\\sqrt{(-a)^2} = |-a| = a$, $\\sqrt{4b^2} = |2b| = -2b$, $\\sqrt{(b-a)^2} = |b-a| = -(b-a)$이다.\n따라서 식은 $a + (-2b) - [-(b-a)] = a - 2b + b - a = -b$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 연산",
+      "subUnitKey": "M3-01-SQUARE_ROOT",
+      "subUnit": "제곱근의 뜻과 성질",
+      "problemTypeKey": "PT_M3_RADICAL_SIMPLIFICATION",
+      "templateKey": "TPL_M3_RADICAL_VARIABLE_SIMPLIFY",
+      "crossConceptKeys": [
+        "CC_VARIABLE_SIGN_ANALYSIS",
+        "CC_RADICAL_SQUARE_SIMPLIFICATION",
+        "CC_ABSOLUTE_VALUE_SIMPLIFICATION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "ab<0, a>b에서 a>0, b<0을 도출하고 각각의 근호식 절댓값 부호를 풀어 a+(-2b)+(b-a)=-b로 정리하는 3단계 서술형 문자식 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 22,
+      "questionNo": 22,
+      "readingEvidence": {
+        "sourceTextExcerpt": "[서술형 2]<br>$a-b=5$, $ab=2$일 때, $\\frac{a^3+a^2b+ab^2+b^3}{a+b}$ 의 값을 인수분해와 곱셈공식을 이용하여 구하는 과정을 서술하시오. [7점]",
+        "solutionDecisiveExcerpt": "분자: $a^2(a+b)+b^2(a+b) = (a+b)(a^2+b^2)$.\n따라서 식은 $\\frac{(a+b)(a^2+b^2)}{a+b} = a^2+b^2$이다.\n$a^2+b^2 = (a-b)^2+2ab = 5^2+2(2) = 25+4 = 29$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "subUnit": "인수분해 공식의 활용",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_SUBSTITUTION_FACTORIZATION",
+      "crossConceptKeys": [
+        "CC_GROUPING_FACTORIZATION",
+        "CC_MULTIPLICATION_FORMULA_TRANSFORMATION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "분자를 (a+b)(a^2+b^2)로 인수분해하여 a+b를 약분한 뒤 곱셈공식 변형 (a-b)^2+2ab=25+4=29를 계산하는 3단계 서술형 식의 값 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 23,
+      "questionNo": 23,
+      "readingEvidence": {
+        "sourceTextExcerpt": "[서술형 3]<br>$x=2+\\sqrt{3}$일 때, $x^2-4x+3$의 값을 구하려고 한다. 다음 물음에 답하시오. [7점]<br><br>(1) 인수분해를 이용하여 위의 식의 값을 구하는 과정을 서술하시오. [4점]<br>(2) 완전제곱식을 이용하여 위의 식의 값을",
+        "solutionDecisiveExcerpt": "(1) $x^2-4x+3 = (x-1)(x-3) = (1+\\sqrt{3})(\\sqrt{3}-1) = 3-1 = 2$.\n(2) $x-2 = \\sqrt{3}$의 양변을 제곱하면 $(x-2)^2 = 3$이다. $x^2-4x+3 = (x-2)^2-1 = 3-1 = 2$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "subUnit": "인수분해 공식의 활용",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_NUMERICAL_FACTORIZATION_APPLICATION",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FACTORIZATION",
+        "CC_DIFFERENCE_OF_SQUARES",
+        "CC_PERFECT_SQUARE_EQUATION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "인수분해 (x-1)(x-3)=2와 무리수 이항 제곱식 (x-2)^2-1=2의 두 가지 방법으로 2를 유도하는 3단계 서술형 다항식 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    }
+  ]
+}

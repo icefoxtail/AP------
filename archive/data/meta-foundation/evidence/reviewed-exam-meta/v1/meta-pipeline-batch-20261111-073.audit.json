@@ -1,0 +1,684 @@
+{
+  "schemaVersion": "ALIVE_META_AUDIT_ATOMIC_v3",
+  "examTitle": "21_동산중_2학기_기말_중3_수학",
+  "sourceFileDriveId": "1cm0ShyTa0SNFhp9EGnzvgGhvScRQszx1",
+  "sourceSha256": "317c38a4710ccccb1bc704e3cd0de4a9d97fdbb5e8de6f04d4effb34109c2fd6",
+  "auditedTimestamp": "2026-10-23T18:41:00.162344+00:00",
+  "auditVerdict": "APPROVED",
+  "totalAuditedCount": 25,
+  "zeroStubCertified": true,
+  "allVisualAssetsVerified": true,
+  "records": [
+    {
+      "questionId": 1,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "subUnit": "원과 현의 성질",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT",
+      "crossConceptKeys": [
+        "CC_CIRCLE_TERMINOLOGY",
+        "CC_INSCRIBED_ANGLE",
+        "CC_CHORD_DEFINITION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "원, 현, 중심거리, 원주각, 내접사각형의 5가지 기본 기하학적 성질 진위 판별 (2단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 내용 중 <u>틀린</u> 것을 찾으면?(3점)",
+        "solutionDecisiveExcerpt": "원주각의 크기는 현의 길이에 일반적으로 정비례하지 않는다. 따라서 틀린 것은 ④이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 2,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "subUnit": "현의 수직이등분선과 중심거리",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CHORD_DISTANCE_EQUALITY",
+      "crossConceptKeys": [
+        "CC_CHORD_DISTANCE_EQUALITY",
+        "CC_MIDPOINT_THEOREM",
+        "CC_TRIANGLE_PERIMETER"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "같은 중심거리인 두 현의 길이 일치(AB=AC=9) 및 수선에 의한 중점연결정리로 둘레 12 산출 (2단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "그림의 원 $\\mathrm{O}$에서 $\\overline{\\mathrm{OM}}=\\overline{\\mathrm{ON}}$이고 $\\overline{\\mathrm{OM}}\\perp\\overline{\\mathrm{AB}}$... $\\triangle\\mathrm{AMN}$의 둘레의 길이를 구하면?",
+        "solutionDecisiveExcerpt": "같은 원에서 중심으로부터 같은 거리에 있는 현의 길이는 같으므로 AB=AC=9... 삼각형 AMN의 둘레는 4.5+4.5+3=12이다.",
+        "visualAssetChecked": true,
+        "visualType": "PNG_IMAGE"
+      }
+    },
+    {
+      "questionId": 3,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "subUnit": "현의 수직이등분선과 피타고라스 정리",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CHORD_PERPENDICULAR_BISECTOR",
+      "crossConceptKeys": [
+        "CC_PERPENDICULAR_BISECTOR",
+        "CC_PYTHAGOREAN_THEOREM",
+        "CC_CIRCLE_RADIUS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "반지름의 수직이등분선인 현의 기하학적 대칭성을 피타고라스 정리(r^2=6^2+(r/2)^2)로 풀어 r=4*sqrt(3) 산출 (3단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "그림은 원 $\\mathrm{O}$에서 현 $\\mathrm{AB}$는 반지름 $\\mathrm{OC}$의 수직이등분선이다. $\\overline{\\mathrm{AB}}=12$일 때, 원 $\\mathrm{O}$의 반지름의 길이는?",
+        "solutionDecisiveExcerpt": "직각삼각형 OHA에서 OA=r이므로 r²=6²+(r/2)². 따라서 3r²/4=36, r=4√3이다.",
+        "visualAssetChecked": true,
+        "visualType": "PNG_IMAGE"
+      }
+    },
+    {
+      "questionId": 4,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "subUnit": "평행현과 원주각",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "crossConceptKeys": [
+        "CC_PARALLEL_CHORD_ARC",
+        "CC_ALTERNATE_ANGLES",
+        "CC_DIAMETER_INSCRIBED_ANGLE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "평행현의 엇각 및 양쪽 대칭 호의 크기(각 40도)를 반원(180도)에서 차감하여 호 CD=100도와 원주각 50도 산출 (4단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "그림에서 $\\overline{\\mathrm{AB}}$는 원 $\\mathrm{O}$의 지름이고 $\\overline{\\mathrm{AB}} // \\overline{\\mathrm{CD}}$이다. $\\angle\\mathrm{ADC}=20^\\circ$일 때, $\\angle x$의 크기는?",
+        "solutionDecisiveExcerpt": "윗반원의 호 A-C-D-B는 180°이므로 호 CD=180°−40°−40°=100°이다. ∠x는 호 CD를 보는 원주각이므로 50°이다.",
+        "visualAssetChecked": true,
+        "visualType": "PNG_IMAGE"
+      }
+    },
+    {
+      "questionId": 5,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "subUnit": "원주각과 중심각",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "crossConceptKeys": [
+        "CC_INSCRIBED_ANGLE",
+        "CC_CENTRAL_ANGLE",
+        "CC_ARC_SUM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "중심각(46도)과 원주각(21도)으로부터 합성 호 BD=88도를 구하고 원주각 44도 산출 (3단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "그림에서 점 $\\mathrm{A, B, C, D, E}$는 원주위에 있고 $\\angle\\mathrm{BOC}=46^\\circ$, $\\angle\\mathrm{CED}=21^\\circ$일 때, $\\angle\\mathrm{BAD}$의 크기는?",
+        "solutionDecisiveExcerpt": "호 BD는 호 BC+호 CD=46°+42°=88°이다. 원주각은 같은 호에 대한 중심각의 절반이므로 ∠BAD=44°이다.",
+        "visualAssetChecked": true,
+        "visualType": "PNG_IMAGE"
+      }
+    },
+    {
+      "questionId": 6,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "subUnit": "외접다각형과 접선의 길이",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_TANGENT_SEGMENTS_LENGTH",
+      "crossConceptKeys": [
+        "CC_TANGENT_SEGMENT_EQUALITY",
+        "CC_TRIANGLE_PERIMETER",
+        "CC_TANGENT_LINE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "삼각형의 외접원 접선의 길이 성질을 접선 DE에 연쇄 적용하여 삼각형 BDE 둘레 16 산출 (4단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "그림에서 $\\triangle\\mathrm{ABC}$는 원 $\\mathrm{O}$에 외접하고, 세 점 $\\mathrm{P, Q, R}$는 각각 원 $\\mathrm{O}$의 접점이고... $\\triangle\\mathrm{BDE}$의 둘레의 길이는?",
+        "solutionDecisiveExcerpt": "BD+DE+BE=(BP−u)+(u+v)+(BR−v)=BP+BR=8+8=16이다.",
+        "visualAssetChecked": true,
+        "visualType": "PNG_IMAGE"
+      }
+    },
+    {
+      "questionId": 7,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "subUnit": "직사각형 내접원과 접선",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_TANGENT_SEGMENTS_LENGTH",
+      "crossConceptKeys": [
+        "CC_RECTANGLE_INSCRIBED_CIRCLE",
+        "CC_PYTHAGOREAN_THEOREM",
+        "CC_TANGENT_SEGMENT_EQUALITY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "직사각형 내접원의 접선 길이 표현 및 직각삼각형 DEC에서 피타고라스 정리로 x=5/3 도출 (4단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "그림과 같이 직사각형 $\\mathrm{ABCD}$ 안에 원 $\\mathrm{O}$와 $\\triangle\\mathrm{DEC}$가 접하고 있다. $\\overline{\\mathrm{AD}}=6$, $\\overline{\\mathrm{AB}}=4$일 때, $\\overline{\\mathrm{CE}}$의 길이는?",
+        "solutionDecisiveExcerpt": "직각삼각형 DEC에서 (8−x)²=4²+x², 64−16x+x²=16+x², 16x=48, x=3... 따라서 CE=5/3이다.",
+        "visualAssetChecked": true,
+        "visualType": "PNG_IMAGE"
+      }
+    },
+    {
+      "questionId": 8,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "subUnit": "외접사각형과 대각선 수직",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_TANGENT_SEGMENTS_LENGTH",
+      "crossConceptKeys": [
+        "CC_CIRCUMSCRIBED_QUADRILATERAL",
+        "CC_PERPENDICULAR_DIAGONALS",
+        "CC_PYTHAGOREAN_THEOREM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "원 외접 사각형의 대변의 합 성질(AB+CD=BC+DA)과 대각선 수직 피타고라스 성질을 결합하여 AD=7 도출 (4단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "두 대각선이 수직으로 만나는 $\\square\\mathrm{ABCD}$가 원 $\\mathrm{O}$에 외접한다. $\\overline{\\mathrm{BC}}=6$, $\\overline{\\mathrm{CD}}=8$, $\\overline{\\mathrm{AB}}=5$일 때, $\\overline{\\mathrm{AD}}$의 길이를 구하면?",
+        "solutionDecisiveExcerpt": "원에 외접하므로 AB+CD=AD+BC에서 5+8=AD+6, 따라서 AD=7이다.",
+        "visualAssetChecked": true,
+        "visualType": "PNG_IMAGE"
+      }
+    },
+    {
+      "questionId": 9,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "subUnit": "동심원과 원환의 넓이",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CHORD_PERPENDICULAR_BISECTOR",
+      "crossConceptKeys": [
+        "CC_CONCENTRIC_CIRCLES",
+        "CC_ANNULUS_AREA",
+        "CC_PYTHAGOREAN_THEOREM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "동심원의 현과 접선에서 피타고라스 정리(R^2-r^2=8^2=64)를 원환의 넓이 pi(R^2-r^2)=64pi로 연결 (3단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "그림은 중심이 같은 두 원에서 $\\overline{\\mathrm{AB}}$는 큰 원의 현이고 작은 원의 접선이다. $\\overline{\\mathrm{AB}}=16$일 때, 빗금친 부분의 넓이를 구하면?",
+        "solutionDecisiveExcerpt": "직각삼각형에서 R²−r²=8²=64이다. 빗금친 원환의 넓이는 πR²−πr²=π(R²−r²)=64π이다.",
+        "visualAssetChecked": true,
+        "visualType": "PNG_IMAGE"
+      }
+    },
+    {
+      "questionId": 10,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "subUnit": "원 내부 교각과 원주각",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "crossConceptKeys": [
+        "CC_INTERIOR_INTERSECTING_CHORDS",
+        "CC_ARC_RATIO",
+        "CC_INSCRIBED_ANGLE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "원 내부 두 현 교각 공식((3호AB+호AB)/2=80도)으로 호 AB=40도를 구하고 원주각 20도 산출 (4단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "그림의 원 $\\mathrm{O}$에서 두 현 $\\overline{\\mathrm{AD}}$와 $\\overline{\\mathrm{BC}}$가 점 $\\mathrm{P}$에서 만나고... $\\angle\\mathrm{ADC}$의 크기를 구하면?",
+        "solutionDecisiveExcerpt": "호 AB=40°이므로 ∠ADC는 호 AB를 보는 원주각으로 20°이다.",
+        "visualAssetChecked": true,
+        "visualType": "PNG_IMAGE"
+      }
+    },
+    {
+      "questionId": 11,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "subUnit": "반지름 이등변삼각형과 원주각",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "crossConceptKeys": [
+        "CC_ISOSCELES_TRIANGLE_RADIUS",
+        "CC_CENTRAL_ANGLE",
+        "CC_INSCRIBED_ANGLE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "반지름 이등변삼각형 AOD의 밑각(35도)으로부터 중심각 110도와 원주각 55도 산출 (2단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "그림에서 $\\overline{\\mathrm{AB}}$는 원 $\\mathrm{O}$의 지름이고 $\\angle\\mathrm{DAO}=35^\\circ$일 때, $\\angle\\mathrm{ACD}$의 크기는?",
+        "solutionDecisiveExcerpt": "∠AOD=180°−35°−35°=110°이다. ∠ACD는 같은 호 AD를 보는 원주각이므로 중심각의 절반인 55°이다.",
+        "visualAssetChecked": true,
+        "visualType": "PNG_IMAGE"
+      }
+    },
+    {
+      "questionId": 12,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "subUnit": "외부 할선각과 원주각",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "crossConceptKeys": [
+        "CC_EXTERIOR_SECANT_ANGLE",
+        "CC_DIAMETER_ARC",
+        "CC_CENTRAL_ANGLE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "지름 호(180도)와 중심각 호(50도)의 차를 이용한 외부 할선 각 공식 (180-50)/2=65도 산출 (3단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "그림에서 $\\overline{\\mathrm{AB}}$는 원 $\\mathrm{O}$의 지름이고, $\\angle\\mathrm{COD}=50^\\circ$일 때, $\\angle\\mathrm{CPD}$의 크기는?",
+        "solutionDecisiveExcerpt": "원 밖에서 만나는 두 할선의 각은 큰 호와 작은 호의 차의 절반이므로 ∠CPD=(180°−50°)/2=65°이다.",
+        "visualAssetChecked": true,
+        "visualType": "PNG_IMAGE"
+      }
+    },
+    {
+      "questionId": 13,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "subUnit": "네 점이 한 원 위에 있을 조건",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CONCYCLIC_FOUR_POINTS_ANGLE",
+      "crossConceptKeys": [
+        "CC_CONCYCLIC_POINTS",
+        "CC_INSCRIBED_ANGLE_CONVERSE",
+        "CC_CIRCLE_UNIQUENESS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "원주각 크기 일치(43도)로 네 점 A, B, C, E의 공원 판정 및 원의 유일성 진위 검토 (3단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 그림에서 $\\angle\\mathrm{A}=43^\\circ$, $\\angle\\mathrm{D}=40^\\circ$, $\\angle\\mathrm{E}=43^\\circ$이다. 다음 내용 중 옳지 않은 것은?",
+        "solutionDecisiveExcerpt": "세 비공선점을 지나는 원은 하나뿐이므로 “두 개 이상”이라는 ⑤가 틀렸다.",
+        "visualAssetChecked": true,
+        "visualType": "PNG_IMAGE"
+      }
+    },
+    {
+      "questionId": 14,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "subUnit": "내접오각형과 원주각",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "crossConceptKeys": [
+        "CC_INSCRIBED_POLYGON",
+        "CC_CENTRAL_ANGLE",
+        "CC_ARC_ADDITION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "내접오각형의 원주각(100도)과 중심각(50도)으로 호 AED=150도를 구하고 대원주각 105도 산출 (4단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "그림과 같이 원 $\\mathrm{O}$에 내접하는 오각형 $\\mathrm{ABCDE}$에서 $\\angle\\mathrm{ABC}=100^\\circ$, $\\angle\\mathrm{COD}=50^\\circ$일 때, $\\angle\\mathrm{AED}$의 크기는?",
+        "solutionDecisiveExcerpt": "호 AED=150°이므로 점 E를 포함하지 않는 호 AD는 210°이고, 원주각 ∠AED=210°/2=105°이다.",
+        "visualAssetChecked": true,
+        "visualType": "PNG_IMAGE"
+      }
+    },
+    {
+      "questionId": 15,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "subUnit": "각의 이등분선과 외접원의 할선",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_TRIANGLE_ANGLE_BISECTOR_SIDE_RATIO",
+      "crossConceptKeys": [
+        "CC_ANGLE_BISECTOR",
+        "CC_CIRCUMSCRIBED_CIRCLE",
+        "CC_SIMILARITY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 5,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "내각의 이등분선 정리 및 원과 삼각형의 외접원 할선 성질을 결합하여 선분 AE 길이 유도 (5단계 킬러)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "그림에서 $\\overline{\\mathrm{AE}}$는 $\\angle\\mathrm{A}$의 이등분 선이고... $\\overline{\\mathrm{AE}}$의 길이를 구하면?",
+        "solutionDecisiveExcerpt": "각의 이등분선 정리와 원주각 닮음을 연립하여 선분 AE의 길이를 도출한다.",
+        "visualAssetChecked": true,
+        "visualType": "PNG_IMAGE"
+      }
+    },
+    {
+      "questionId": 16,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-07",
+      "standardUnit": "통계",
+      "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+      "subUnit": "대푯값의 선택",
+      "problemTypeKey": "PT_STATISTICS_REPRESENTATIVE_VALUE",
+      "templateKey": "TPL_OUTLIER_MEDIAN_PREFERENCE_AUDIT",
+      "crossConceptKeys": [
+        "CC_MODE",
+        "CC_REPRESENTATIVE_VALUE_SELECTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "수량화 곤란 및 동일 빈도 자료에서 최빈값의 대푯값 적합성 판정 (1단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "대푯값 중 수량으로 나타내어지기 어렵거나 자료에 비슷한 값이 많은 경우 대푯값으로 사용하기에 가장 적절한 것은?(3점)",
+        "solutionDecisiveExcerpt": "자료에 비슷한 값이 많거나 수량으로 표현하기 어려운 자료에서는 가장 자주 나타나는 값인 최빈값을 대표값으로 쓰는 것이 알맞다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 17,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-07",
+      "standardUnit": "통계",
+      "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+      "subUnit": "중앙값과 최빈값",
+      "problemTypeKey": "PT_STATISTICS_REPRESENTATIVE_VALUE",
+      "templateKey": "TPL_MEAN_MEDIAN_UNKNOWN_VARIABLE",
+      "crossConceptKeys": [
+        "CC_MEDIAN",
+        "CC_MODE",
+        "CC_PRODUCT_OPERATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "8개 자료의 정렬을 통해 중앙값 4.5와 최빈값 6을 구하고 곱 a*b=27 계산 (2단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 자료의 중앙값을 $a$, 최빈값을 $b$라고 할 때, $a \\times b$의 값을 구하면?(3점)",
+        "solutionDecisiveExcerpt": "중앙값 a=(3+6)/2=4.5이고 최빈값 b=6이다. 따라서 a×b=4.5×6=27이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 18,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-07",
+      "standardUnit": "통계",
+      "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+      "subUnit": "평균과 최빈값 조건의 미지수",
+      "problemTypeKey": "PT_STATISTICS_REPRESENTATIVE_VALUE",
+      "templateKey": "TPL_MEAN_MEDIAN_UNKNOWN_VARIABLE",
+      "crossConceptKeys": [
+        "CC_MEAN",
+        "CC_MODE",
+        "CC_LINEAR_EQUATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "평균 조건(a+b=24)과 유일 최빈값(9) 조건을 만족하는 미지수 순서쌍 (15,9) 추론 (4단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 자료의 평균이 10이고 최빈값이 9 하나뿐일 때, $a, b$의 값을 구하면? (단, $a>b$)(4점)",
+        "solutionDecisiveExcerpt": "a+b=24이고 9가 유일한 최빈값이 되려면 a=15, b=9이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 19,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-07",
+      "standardUnit": "통계",
+      "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+      "subUnit": "편차와 평균",
+      "problemTypeKey": "PT_STATISTICS_DISPERSION",
+      "templateKey": "TPL_DEVIATION_CALCULATION",
+      "crossConceptKeys": [
+        "CC_DEVIATION_SUM",
+        "CC_SCORE_RECONSTRUCTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "편차의 총합=0 성질로 B의 편차 2점을 구하고 평균 85점에 더해 성적 87점 산출 (2단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 표는 $\\mathrm{A, B, C, D, E}$ 다섯 명의 수학시험 편차를 나타낸 것이다. 평균이 85일 때, $\\mathrm{B}$학생의 수학성적을 구하면?(3점)",
+        "solutionDecisiveExcerpt": "편차의 합은 0이므로 x=2이다. 따라서 B의 점수는 85+2=87점이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 20,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-07",
+      "standardUnit": "통계",
+      "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+      "subUnit": "산포도의 정의",
+      "problemTypeKey": "PT_STATISTICS_DISPERSION",
+      "templateKey": "TPL_DISPERSION_PROPERTIES_AUDIT",
+      "crossConceptKeys": [
+        "CC_VARIANCE",
+        "CC_STANDARD_DEVIATION",
+        "CC_DISPERSION_CONCEPT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "변량의 흩어진 정도를 나타내는 산포도로서 분산과 표준편차의 개념 판별 (1단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 중 변량들이 흩어져 있는 정도를 하나의 수로 나타낸 값을 모두 고르면?(3점)",
+        "solutionDecisiveExcerpt": "자료의 흩어진 정도를 나타내는 산포도는 분산과 표준편차이다. 따라서 ⑤이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 21,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-07",
+      "standardUnit": "통계",
+      "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+      "subUnit": "표준편차와 자료의 분포",
+      "problemTypeKey": "PT_STATISTICS_DISPERSION",
+      "templateKey": "TPL_DISPERSION_PROPERTIES_AUDIT",
+      "crossConceptKeys": [
+        "CC_STANDARD_DEVIATION",
+        "CC_DATA_CONSISTENCY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "표준편차가 작을수록 점수가 평균 주위에 고르게 분포한다는 산포도의 의미 해석 (2단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 표는 어느 학교 3학년 학생들의 학급별 중간고사 성적의 평균과 표준편차를 조사하여 나타낸 것이다. 성적이 가장 고르게 분포된 학급은?(3점)",
+        "solutionDecisiveExcerpt": "표준편차가 작을수록 점수가 평균 주위에 더 모여 있다. 가장 작은 값은 4반이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 22,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-07",
+      "standardUnit": "통계",
+      "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+      "subUnit": "분산과 제곱의 평균",
+      "problemTypeKey": "PT_STATISTICS_DISPERSION",
+      "templateKey": "TPL_MEAN_VARIANCE_SIMULTANEOUS_SYSTEM",
+      "crossConceptKeys": [
+        "CC_VARIANCE_FORMULA",
+        "CC_SQUARE_MEAN"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "분산=(제곱의 평균)-(평균의 제곱) 공식을 이용하여 a^2, b^2, c^2의 평균 21 산출 (3단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "3개의 변량 $a, b, c$의 평균이 4이고 표준편차가 $\\sqrt{5}$일 때, $a^2, b^2, c^2$의 평균을 구하면?(4점)",
+        "solutionDecisiveExcerpt": "분산=제곱의 평균−평균의 제곱이므로 a²,b²,c²의 평균은 5+4²=21이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 23,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "subUnit": "현의 수직이등분선 작도",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CHORD_PERPENDICULAR_BISECTOR",
+      "crossConceptKeys": [
+        "CC_PERPENDICULAR_BISECTOR",
+        "CC_CIRCLE_CENTER_CONSTRUCTION",
+        "CC_CHORD_PROPERTY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "깨진 원호에서 평행하지 않은 두 현의 수직이등분선 교점을 작도하는 원의 중심 복원 서술 (3단계 서술형)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "[서답형 1] 그림은 원 모양의 접시의 일부가 깨진 것이다. 이를 복원하기 위해 원의 중심을 찾고자 할 때, 원의 중심을 찾는 방법을 서술하여라. (6점)",
+        "solutionDecisiveExcerpt": "남은 원둘레에서 서로 평행하지 않은 두 현을 긋고, 각 현의 수직이등분선의 교점을 작도한다.",
+        "visualAssetChecked": true,
+        "visualType": "PNG_IMAGE"
+      }
+    },
+    {
+      "questionId": 24,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "subUnit": "외부 할선각과 내부 교각의 연립",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "crossConceptKeys": [
+        "CC_INTERIOR_SECANT_ANGLE",
+        "CC_EXTERIOR_SECANT_ANGLE",
+        "CC_ARC_RATIO"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 5,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "외부 할선각(30도=(호AC-호BD)/2)과 내부 현교각(60도=(호AC+호BD)/2)을 연립하여 각 호와 원주각 및 비례 1:3 도출 (5단계 서술형 킬러)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "[서답형 2] 그림과 같이 원 $\\mathrm{O}$의 두 현 $\\mathrm{AB, CD}$의 연장선이 점 $\\mathrm{P}$에서 만난다... $\\angle x, \\angle y$의 크기를 각각 구하고, 호 $\\mathrm{BD}$와 호 $\\mathrm{AC}$의 길이의 비를 구하시오. (8점)",
+        "solutionDecisiveExcerpt": "호 AC=90°, 호 BD=30°이므로 x=15°, y=45°, 호 BD:호 AC=1:3이다.",
+        "visualAssetChecked": true,
+        "visualType": "PNG_IMAGE"
+      }
+    },
+    {
+      "questionId": 25,
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-07",
+      "standardUnit": "통계",
+      "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+      "subUnit": "표준편차 계산",
+      "problemTypeKey": "PT_STATISTICS_DISPERSION",
+      "templateKey": "TPL_DEVIATION_CALCULATION",
+      "crossConceptKeys": [
+        "CC_MEAN",
+        "CC_DEVIATION_SQUARE_SUM",
+        "CC_STANDARD_DEVIATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "6개 자료의 평균(10), 편차 제곱의 합(150), 분산(25)을 차례로 구하여 표준편차 5 산출 (3단계 서술형)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "[서답형 3] 다음 자료의 표준편차를 구하여라. (7점)",
+        "solutionDecisiveExcerpt": "평균 10, 편차 제곱의 합 150, 분산 150/6=25이므로 표준편차는 5이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    }
+  ]
+}
