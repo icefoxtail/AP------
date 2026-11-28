@@ -1,0 +1,341 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "17"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "17"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "17"
+            },
+            {
+              "kind": "integer",
+              "value": "17"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "17"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "17"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "E",
+    "F",
+    "G",
+    "H",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sEB",
+      "refs": [
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "sBF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "sFC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "sCG",
+      "refs": [
+        "C",
+        "G"
+      ]
+    },
+    {
+      "id": "sGD",
+      "refs": [
+        "G",
+        "D"
+      ]
+    },
+    {
+      "id": "sDH",
+      "refs": [
+        "D",
+        "H"
+      ]
+    },
+    {
+      "id": "sHA",
+      "refs": [
+        "H",
+        "A"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sHA",
+          "sEB",
+          "sFC",
+          "sGD"
+        ],
+        "color": "BLUE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lHA",
+        "ownerSegment": "sHA",
+        "text": "5",
+        "unit": "cm",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "inner",
+        "ownerSegment": "sAB",
+        "text": "13",
+        "unit": "cm"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rABCD",
+        "fill": "LIGHT",
+        "label": "169",
+        "unit": "cm^2",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ]
+          }
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "outer17",
+        "from": "E",
+        "to": "F",
+        "label": "17",
+        "side": "LEFT",
+        "style": "ARROW",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 420
+  },
+  "caption": "한 변 13인 안쪽 정사각형과 각 바깥쪽 조각 길이 5인 큰 정사각형: 핵심 보조선과 풀이 관계",
+  "accessibilityDescription": "19년 연향중 13번 해설 그림. 한 변 13인 안쪽 정사각형과 각 바깥쪽 조각 길이 5인 큰 정사각형: 핵심 보조선과 풀이 관계",
+  "newVisualInformation": [
+    "문제에 없는 해설 전용 값·보조선·영역 중 해당 관계를 렌더 필드에 반영",
+    "렌더 필드: 점 8, 선분 12, 각도호 0, 직각 0, 입체 0"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q13_solution",
+      "condition": "안쪽 정사각형 $\\square\\text{ABCD}$의 넓이가 $169\\text{ cm}^2$이므로 한 변의 길이는 $\\sqrt{169}=13\\text{ cm}$이다. 직각삼각형 $\\text{AEH}$에서 $\\overline{\\text{AD}}$ 대신 빗변 $\\overline{\\text{AB}}=13\\text{ cm}$, 한 직각변 $\\overline{\\text{BE}}=5\\text{ cm}$이므로 다른 직각변의 길이는 $$\\sqrt{13^2 - 5^2} = \\sqrt{169 - 25} = 12\\text{ (cm)}$$ 따라서 바깥쪽 정사각형 $\\square\\text{EFGH}$의 한 변의 길이는 $5 + 12 = 17\\text{ cm}$이고, 넓이는 $17^2 = 289\\text{ cm}^2$이다. 정답은 ②이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "sourceQuote": "안쪽 정사각형 $\\square\\text{ABCD}$의 넓이가 $169\\text{ cm}^2$이므로 한 변의 길이는 $\\sqrt{169}=13\\text{ cm}$이다. 직각삼각형 $\\text{AEH}$에서 $\\overline{\\text{AD}}$ 대신 빗변 $\\overline{\\text{AB}}=13\\text{ cm}$, 한 직각변 $\\overline{\\text{BE}}=5\\text{ cm}$이므로 다른 직각변의 길이는 $$\\sqrt{13^2 - 5^2} = \\sqrt{169 - 25} = 12\\text{ (cm)}$$ 따라서 바깥쪽 정사각형 $\\square\\text{EFGH}$의 한 변의 길이는 $5 + 12 = 17\\text{ cm}$이고, 넓이는 $17^2 = 289\\text{ cm}^2$이다. 정답은 ②이다."
+}

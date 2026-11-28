@@ -1,0 +1,188 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "B",
+    "X",
+    "M"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOX",
+      "refs": [
+        "O",
+        "X"
+      ]
+    },
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "sBM",
+      "refs": [
+        "B",
+        "M"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "central",
+        "refs": [
+          "B",
+          "O",
+          "X"
+        ],
+        "value": 90,
+        "label": "90",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "sectorArc",
+        "circle": "k",
+        "center": "O",
+        "from": "B",
+        "to": "X",
+        "side": "CCW"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "ob",
+        "ownerSegment": "sOB",
+        "text": "8",
+        "unit": "cm"
+      },
+      {
+        "id": "om",
+        "ownerSegment": "sOM",
+        "text": "4",
+        "unit": "cm"
+      }
+    ]
+  },
+  "caption": "원뿔 전개도의 90도 부채꼴에서 B와 모선 중점 M 연결",
+  "accessibilityDescription": "18년 연향중 20번 해설 그림. 원뿔 전개도의 90도 부채꼴에서 B와 모선 중점 M 연결",
+  "newVisualInformation": [
+    "부채꼴 호 BX, 반지름 8, 절반 반지름 4, 최단 BM",
+    "렌더 필드: 점 4, 선분 4, 각도호 1, 직각 0, 입체 0"
+  ],
+  "sourceQuote": "원뿔의 옆면을 펼치면 반지름의 길이가 $8,\\mathrm{cm}$, 호의 길이가 $2\\pi \\times 2 = 4\\pi,\\mathrm{cm}$인 부채꼴이 된다. 부채꼴의 중심각의 크기를 $\\theta$라 하면 $$\\theta = \\frac{4\\pi}{2\\pi \\times 8} \\times 360^\\circ = 90^\\circ$$ 한쪽 절선의 점 $\\mathrm{B}$에서 다른 쪽 절선의 중점 $\\mathrm{M}'$까지의 선분이 최단 경로가 된다. $\\overline{\\mathrm{OB}}=8,\\mathrm{cm}$, $\\overline{\\mathrm{OM}'}=4,\\mathrm{cm}$, $\\angle\\mathrm{BOM}'=90^\\circ$이므로 $$\\overline{\\mathrm{BM}'} = \\sqrt{8^2 + 4^2} = \\sqrt{64 + 16} = \\sqrt{80} = 4\\sqrt{5},(\\mathrm{cm})$$ 따라서 정답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "q20_solution",
+      "condition": "원뿔의 옆면을 펼치면 반지름의 길이가 $8,\\mathrm{cm}$, 호의 길이가 $2\\pi \\times 2 = 4\\pi,\\mathrm{cm}$인 부채꼴이 된다. 부채꼴의 중심각의 크기를 $\\theta$라 하면 $$\\theta = \\frac{4\\pi}{2\\pi \\times 8} \\times 360^\\circ = 90^\\circ$$ 한쪽 절선의 점 $\\mathrm{B}$에서 다른 쪽 절선의 중점 $\\mathrm{M}'$까지의 선분이 최단 경로가 된다. $\\overline{\\mathrm{OB}}=8,\\mathrm{cm}$, $\\overline{\\mathrm{OM}'}=4,\\mathrm{cm}$, $\\angle\\mathrm{BOM}'=90^\\circ$이므로 $$\\overline{\\mathrm{BM}'} = \\sqrt{8^2 + 4^2} = \\sqrt{64 + 16} = \\sqrt{80} = 4\\sqrt{5},(\\mathrm{cm})$$ 따라서 정답은 ②이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ]
+}

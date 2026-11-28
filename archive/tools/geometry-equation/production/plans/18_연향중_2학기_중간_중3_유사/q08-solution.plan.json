@@ -1,0 +1,147 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "ab",
+        "ownerSegment": "sAB",
+        "text": "13"
+      },
+      {
+        "id": "ac",
+        "ownerSegment": "sCA",
+        "text": "5"
+      },
+      {
+        "id": "bc",
+        "ownerSegment": "sBC",
+        "text": "12"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 400
+  },
+  "rightAngles": [
+    {
+      "id": "raC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "caption": "C에서 직각인 삼각형 ABC와 주어진 세 변의 식: 핵심 보조선과 풀이 관계",
+  "accessibilityDescription": "18년 연향중 8번 해설 그림. C에서 직각인 삼각형 ABC와 주어진 세 변의 식: 핵심 보조선과 풀이 관계",
+  "newVisualInformation": [
+    "문제에 없는 해설 전용 값·보조선·영역 중 해당 관계를 렌더 필드에 반영",
+    "렌더 필드: 점 3, 선분 3, 각도호 0, 직각 1, 입체 0"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q08_solution",
+      "condition": "그림에서 $\\overline{\\mathrm{AB}}=x+4$, $\\overline{\\mathrm{AC}}=x-4$, $\\overline{\\mathrm{BC}}=x+3$이다. $\\angle\\mathrm{C}=90^\\circ$이므로 빗변은 $\\overline{\\mathrm{AB}}$이고, 피타고라스 정리에 의해 $$(x-4)^2 + (x+3)^2 = (x+4)^2$$ $$x^2 - 8x + 16 + x^2 + 6x + 9 = x^2 + 8x + 16$$ $$x^2 - 10x + 9 = 0 \\implies (x-1)(x-9) = 0$$ $x=1$이면 $\\overline{\\mathrm{AC}} = -3 < 0$이므로 성립하지 않는다. 따라서 $x = 9$이므로 정답은 ①이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "sourceQuote": "그림에서 $\\overline{\\mathrm{AB}}=x+4$, $\\overline{\\mathrm{AC}}=x-4$, $\\overline{\\mathrm{BC}}=x+3$이다. $\\angle\\mathrm{C}=90^\\circ$이므로 빗변은 $\\overline{\\mathrm{AB}}$이고, 피타고라스 정리에 의해 $$(x-4)^2 + (x+3)^2 = (x+4)^2$$ $$x^2 - 8x + 16 + x^2 + 6x + 9 = x^2 + 8x + 16$$ $$x^2 - 10x + 9 = 0 \\implies (x-1)(x-9) = 0$$ $x=1$이면 $\\overline{\\mathrm{AC}} = -3 < 0$이므로 성립하지 않는다. 따라서 $x = 9$이므로 정답은 ①이다."
+}

@@ -1,0 +1,79 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 12,
+        "depth": 12
+      },
+      "height": 12,
+      "names": "G...CD.B",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "edge": [
+              "C",
+              "G"
+            ],
+            "t": "1/2"
+          }
+        },
+        {
+          "id": "N",
+          "at": {
+            "edge": [
+              "C",
+              "D"
+            ],
+            "t": "1/2"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "B",
+      "to": "M",
+      "style": "AUTO"
+    },
+    {
+      "from": "B",
+      "to": "N",
+      "style": "AUTO"
+    },
+    {
+      "from": "M",
+      "to": "N",
+      "style": "AUTO"
+    }
+  ],
+  "dims": [
+    {
+      "edge": [
+        "G",
+        "C"
+      ],
+      "label": "12"
+    }
+  ],
+  "caption": "모서리 12인 정육면체에서 CG, CD의 중점 M, N과 삼각형 BMN",
+  "accessibilityDescription": "18년 연향중 19번 문제 그림. 모서리 12인 정육면체에서 CG, CD의 중점 M, N과 삼각형 BMN",
+  "newVisualInformation": [
+    "발문의 조건과 라벨: 모서리 12인 정육면체에서 CG, CD의 중점 M, N과 삼각형 BMN",
+    "렌더 필드: 점 0, 선분 0, 각도호 0, 직각 0, 입체 1"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q19_problem",
+      "condition": "다음 그림과 같이 한 모서리의 길이가 $12,\\mathrm{cm}$인 정육면체에서 모서리 $\\overline{\\mathrm{CG}}, \\overline{\\mathrm{CD}}$의 중점을 각각 $\\mathrm{M, N}$이라고 할 때, $\\triangle\\mathrm{BMN}$의 넓이를 구하면?",
+      "mappedTo": "solids"
+    }
+  ],
+  "sourceQuote": "다음 그림과 같이 한 모서리의 길이가 $12,\\mathrm{cm}$인 정육면체에서 모서리 $\\overline{\\mathrm{CG}}, \\overline{\\mathrm{CD}}$의 중점을 각각 $\\mathrm{M, N}$이라고 할 때, $\\triangle\\mathrm{BMN}$의 넓이를 구하면?"
+}

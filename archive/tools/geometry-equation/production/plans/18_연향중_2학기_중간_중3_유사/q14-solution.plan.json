@@ -1,0 +1,140 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "Q",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sPH",
+      "refs": [
+        "P",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sHQ",
+      "refs": [
+        "H",
+        "Q"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "dx",
+        "ownerSegment": "sPH",
+        "text": "5"
+      },
+      {
+        "id": "dy",
+        "ownerSegment": "sHQ",
+        "text": "5"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "raH",
+      "refs": [
+        "P",
+        "H",
+        "Q"
+      ]
+    }
+  ],
+  "caption": "이차함수와 직선의 교점 P(-1,3), Q(4,8) 사이 거리",
+  "accessibilityDescription": "18년 연향중 14번 해설 그림. 이차함수와 직선의 교점 P(-1,3), Q(4,8) 사이 거리",
+  "newVisualInformation": [
+    "좌표 차 5와 5, 피타고라스 직각 보조삼각형",
+    "렌더 필드: 점 3, 선분 3, 각도호 0, 직각 1, 입체 0"
+  ],
+  "sourceQuote": "두 그래프의 교점의 $x$좌표는 $x^2 - 2x = x + 4$의 해이다. $$x^2 - 3x - 4 = 0 \\implies (x+1)(x-4) = 0$$ 따라서 $x = -1$ 또는 $x = 4$이고, 일차함수 $y = x+4$에 대입하면 두 교점은 $\\mathrm{P}(-1,\\ 3)$, $\\mathrm{Q}(4,\\ 8)$이다. 좌표평면 위의 두 점 사이의 거리는 $$\\overline{\\mathrm{PQ}} = \\sqrt{(4 - (-1))^2 + (8 - 3)^2} = \\sqrt{5^2 + 5^2} = \\sqrt{50} = 5\\sqrt{2}$$ 따라서 정답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "q14_solution",
+      "condition": "두 그래프의 교점의 $x$좌표는 $x^2 - 2x = x + 4$의 해이다. $$x^2 - 3x - 4 = 0 \\implies (x+1)(x-4) = 0$$ 따라서 $x = -1$ 또는 $x = 4$이고, 일차함수 $y = x+4$에 대입하면 두 교점은 $\\mathrm{P}(-1,\\ 3)$, $\\mathrm{Q}(4,\\ 8)$이다. 좌표평면 위의 두 점 사이의 거리는 $$\\overline{\\mathrm{PQ}} = \\sqrt{(4 - (-1))^2 + (8 - 3)^2} = \\sqrt{5^2 + 5^2} = \\sqrt{50} = 5\\sqrt{2}$$ 따라서 정답은 ③이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ]
+}

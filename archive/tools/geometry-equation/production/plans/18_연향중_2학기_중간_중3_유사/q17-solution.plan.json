@@ -1,0 +1,242 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "sFE",
+      "refs": [
+        "F",
+        "E"
+      ]
+    },
+    {
+      "id": "sED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sAF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "ab",
+        "ownerSegment": "sAB",
+        "text": "4",
+        "unit": "cm"
+      },
+      {
+        "id": "bc",
+        "ownerSegment": "sBC",
+        "text": "3",
+        "unit": "cm"
+      },
+      {
+        "id": "be",
+        "ownerSegment": "sBE",
+        "text": "5",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "raE",
+      "refs": [
+        "B",
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "caption": "모서리 BE를 공유한 두 옆면의 전개: 가로 4+3, 세로 5",
+  "accessibilityDescription": "18년 연향중 17번 해설 그림. 모서리 BE를 공유한 두 옆면의 전개: 가로 4+3, 세로 5",
+  "newVisualInformation": [
+    "접는 선 BE 점선, 전개 직사각형의 대각선 AF",
+    "렌더 필드: 점 6, 선분 8, 각도호 0, 직각 1, 입체 0"
+  ],
+  "sourceQuote": "윗면의 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AC}}=5,\\mathrm{cm}$, $\\overline{\\mathrm{BC}}=3,\\mathrm{cm}$이므로 $$\\overline{\\mathrm{AB}} = \\sqrt{5^2 - 3^2} = \\sqrt{25 - 9} = 4,(\\mathrm{cm})$$ 모서리 $\\mathrm{BE}$를 공유하는 두 옆면 $\\mathrm{ABED}$와 $\\mathrm{BCEF}$를 한 평면 위에 펼치면 가로 길이는 $\\overline{\\mathrm{AB}}+\\overline{\\mathrm{BC}} = 4 + 3 = 7,\\mathrm{cm}$, 세로 길이는 $\\overline{\\mathrm{BE}}=5,\\mathrm{cm}$인 직사각형이 된다. 따라서 점 $\\mathrm{A}$에서 $\\mathrm{F}$까지의 최단 거리는 $$\\sqrt{7^2 + 5^2} = \\sqrt{49 + 25} = \\sqrt{74},(\\mathrm{cm})$$ 이므로 정답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "q17_solution",
+      "condition": "윗면의 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AC}}=5,\\mathrm{cm}$, $\\overline{\\mathrm{BC}}=3,\\mathrm{cm}$이므로 $$\\overline{\\mathrm{AB}} = \\sqrt{5^2 - 3^2} = \\sqrt{25 - 9} = 4,(\\mathrm{cm})$$ 모서리 $\\mathrm{BE}$를 공유하는 두 옆면 $\\mathrm{ABED}$와 $\\mathrm{BCEF}$를 한 평면 위에 펼치면 가로 길이는 $\\overline{\\mathrm{AB}}+\\overline{\\mathrm{BC}} = 4 + 3 = 7,\\mathrm{cm}$, 세로 길이는 $\\overline{\\mathrm{BE}}=5,\\mathrm{cm}$인 직사각형이 된다. 따라서 점 $\\mathrm{A}$에서 $\\mathrm{F}$까지의 최단 거리는 $$\\sqrt{7^2 + 5^2} = \\sqrt{49 + 25} = \\sqrt{74},(\\mathrm{cm})$$ 이므로 정답은 ①이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ]
+}

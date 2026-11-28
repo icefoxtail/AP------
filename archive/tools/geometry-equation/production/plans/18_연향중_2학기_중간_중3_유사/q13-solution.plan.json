@@ -1,0 +1,259 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "45"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBP",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "P"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lCQ",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "Q"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lBP",
+          "lCQ"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "A",
+          "lineBC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "C",
+          "B",
+          "A"
+        ],
+        "value": 60,
+        "label": "60",
+        "arcs": 1,
+        "side": "INNER",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 45,
+        "label": "45",
+        "arcs": 1,
+        "side": "INNER",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "8",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "height",
+        "ownerSegment": "sAH",
+        "text": "h"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "caption": "밑변 BC가 8이고 양쪽 밑각이 60도, 45도인 삼각형: 핵심 보조선과 풀이 관계",
+  "accessibilityDescription": "18년 연향중 13번 해설 그림. 밑변 BC가 8이고 양쪽 밑각이 60도, 45도인 삼각형: 핵심 보조선과 풀이 관계",
+  "newVisualInformation": [
+    "문제에 없는 해설 전용 값·보조선·영역 중 해당 관계를 렌더 필드에 반영",
+    "렌더 필드: 점 6, 선분 4, 각도호 2, 직각 1, 입체 0"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q13_solution",
+      "condition": "꼭짓점 $\\mathrm{A}$에서 $\\overline{\\mathrm{BC}}$에 내린 수선의 발을 $\\mathrm{H}$라 하고 $\\overline{\\mathrm{AH}}=h$라 하자. $\\triangle\\mathrm{ACH}$는 $\\angle\\mathrm{C}=45^\\circ$인 직각이등변삼각형이므로 $\\overline{\\mathrm{CH}}=h$이다. $\\triangle\\mathrm{ABH}$에서 $\\angle\\mathrm{B}=60^\\circ$이므로 $\\overline{\\mathrm{BH}}=\\frac{h}{\\sqrt{3}}$이다. $\\overline{\\mathrm{BH}}+\\overline{\\mathrm{CH}}=\\overline{\\mathrm{BC}}$이므로 $$\\frac{h}{\\sqrt{3}} + h = 8 \\implies h\\left(\\frac{1+\\sqrt{3}}{\\sqrt{3}}\\right) = 8$$ $$h = \\frac{8\\sqrt{3}}{\\sqrt{3}+1} = \\frac{8\\sqrt{3}(\\sqrt{3}-1)}{2} = 4\\sqrt{3}(\\sqrt{3}-1) = 4(3-\\sqrt{3}),(\\mathrm{cm})$$ 따라서 $\\triangle\\mathrm{ABC}$의 넓이는 $$\\frac{1}{2} \\times 8 \\times 4(3-\\sqrt{3}) = 16(3-\\sqrt{3}),(\\mathrm{cm}^2)$$ 이므로 정답은 ②이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "raH",
+      "refs": [
+        "A",
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "sourceQuote": "꼭짓점 $\\mathrm{A}$에서 $\\overline{\\mathrm{BC}}$에 내린 수선의 발을 $\\mathrm{H}$라 하고 $\\overline{\\mathrm{AH}}=h$라 하자. $\\triangle\\mathrm{ACH}$는 $\\angle\\mathrm{C}=45^\\circ$인 직각이등변삼각형이므로 $\\overline{\\mathrm{CH}}=h$이다. $\\triangle\\mathrm{ABH}$에서 $\\angle\\mathrm{B}=60^\\circ$이므로 $\\overline{\\mathrm{BH}}=\\frac{h}{\\sqrt{3}}$이다. $\\overline{\\mathrm{BH}}+\\overline{\\mathrm{CH}}=\\overline{\\mathrm{BC}}$이므로 $$\\frac{h}{\\sqrt{3}} + h = 8 \\implies h\\left(\\frac{1+\\sqrt{3}}{\\sqrt{3}}\\right) = 8$$ $$h = \\frac{8\\sqrt{3}}{\\sqrt{3}+1} = \\frac{8\\sqrt{3}(\\sqrt{3}-1)}{2} = 4\\sqrt{3}(\\sqrt{3}-1) = 4(3-\\sqrt{3}),(\\mathrm{cm})$$ 따라서 $\\triangle\\mathrm{ABC}$의 넓이는 $$\\frac{1}{2} \\times 8 \\times 4(3-\\sqrt{3}) = 16(3-\\sqrt{3}),(\\mathrm{cm}^2)$$ 이므로 정답은 ②이다."
+}

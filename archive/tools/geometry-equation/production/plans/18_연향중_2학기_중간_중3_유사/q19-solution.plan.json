@@ -1,0 +1,86 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 12,
+        "depth": 12
+      },
+      "height": 12,
+      "names": "G...CD.B",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "edge": [
+              "C",
+              "G"
+            ],
+            "t": "1/2"
+          }
+        },
+        {
+          "id": "N",
+          "at": {
+            "edge": [
+              "C",
+              "D"
+            ],
+            "t": "1/2"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "B",
+      "to": "M",
+      "style": "AUTO"
+    },
+    {
+      "from": "B",
+      "to": "N",
+      "style": "AUTO"
+    },
+    {
+      "from": "M",
+      "to": "N",
+      "style": "AUTO"
+    }
+  ],
+  "dims": [
+    {
+      "edge": [
+        "G",
+        "C"
+      ],
+      "label": "12"
+    },
+    {
+      "edge": [
+        "C",
+        "D"
+      ],
+      "label": "12"
+    }
+  ],
+  "caption": "모서리 12인 정육면체에서 CG, CD의 중점 M, N과 삼각형 BMN: 핵심 보조선과 풀이 관계",
+  "accessibilityDescription": "18년 연향중 19번 해설 그림. 모서리 12인 정육면체에서 CG, CD의 중점 M, N과 삼각형 BMN: 핵심 보조선과 풀이 관계",
+  "newVisualInformation": [
+    "문제에 없는 해설 전용 값·보조선·영역 중 해당 관계를 렌더 필드에 반영",
+    "렌더 필드: 점 0, 선분 0, 각도호 0, 직각 0, 입체 1"
+  ],
+  "sourceConditions": [
+    {
+      "id": "q19_solution",
+      "condition": "$\\mathrm{M, N}$이 각각 $\\overline{\\mathrm{CG}}, \\overline{\\mathrm{CD}}$의 중점이므로 $\\overline{\\mathrm{CM}}=\\overline{\\mathrm{CN}}=6,\\mathrm{cm}$이다. 정육면체의 모서리는 서로 수직이므로 $$\\overline{\\mathrm{BM}}^2 = 12^2 + 6^2 = 180,\\quad \\overline{\\mathrm{BN}}^2 = 12^2 + 6^2 = 180$$ $$\\overline{\\mathrm{MN}} = \\sqrt{6^2 + 6^2} = 6\\sqrt{2},(\\mathrm{cm})$$ $\\triangle\\mathrm{BMN}$은 $\\overline{\\mathrm{BM}}=\\overline{\\mathrm{BN}}$인 이등변삼각형이므로 $\\mathrm{B}$에서 $\\overline{\\mathrm{MN}}$에 내린 높이를 $h$라 하면 $$h = \\sqrt{180 - (3\\sqrt{2})^2} = \\sqrt{180 - 18} = \\sqrt{162} = 9\\sqrt{2},(\\mathrm{cm})$$ 따라서 $\\triangle\\mathrm{BMN}$의 넓이는 $$\\frac{1}{2} \\times 6\\sqrt{2} \\times 9\\sqrt{2} = 54,(\\mathrm{cm}^2)$$ 이므로 정답은 ③이다.",
+      "mappedTo": "solids"
+    }
+  ],
+  "sourceQuote": "$\\mathrm{M, N}$이 각각 $\\overline{\\mathrm{CG}}, \\overline{\\mathrm{CD}}$의 중점이므로 $\\overline{\\mathrm{CM}}=\\overline{\\mathrm{CN}}=6,\\mathrm{cm}$이다. 정육면체의 모서리는 서로 수직이므로 $$\\overline{\\mathrm"
+}

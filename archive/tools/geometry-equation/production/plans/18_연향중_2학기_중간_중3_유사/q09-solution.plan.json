@@ -1,0 +1,290 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "O"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "O"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "D",
+          "O"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sOE",
+      "refs": [
+        "O",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "oa",
+        "ownerSegment": "sOA",
+        "text": "3"
+      },
+      {
+        "id": "ab",
+        "ownerSegment": "sAB",
+        "text": "3"
+      },
+      {
+        "id": "bc",
+        "ownerSegment": "sBC",
+        "text": "4"
+      },
+      {
+        "id": "cd",
+        "ownerSegment": "sCD",
+        "text": "5"
+      },
+      {
+        "id": "de",
+        "ownerSegment": "sDE",
+        "text": "6"
+      },
+      {
+        "id": "oe",
+        "ownerSegment": "sOE",
+        "text": "√95"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "raA",
+      "refs": [
+        "O",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "raB",
+      "refs": [
+        "O",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "raC",
+      "refs": [
+        "O",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "raD",
+      "refs": [
+        "O",
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "caption": "OB²=18, OC²=34, OD²=59, OE²=95의 직각삼각형 연쇄",
+  "accessibilityDescription": "18년 연향중 9번 해설 그림. OB²=18, OC²=34, OD²=59, OE²=95의 직각삼각형 연쇄",
+  "newVisualInformation": [
+    "빗변 O-E 강조와 네 개 직각 관계",
+    "렌더 필드: 점 6, 선분 9, 각도호 0, 직각 4, 입체 0"
+  ],
+  "sourceQuote": "그림에서 $\\overline{\\mathrm{OA}}=\\overline{\\mathrm{AB}}=3$, $\\overline{\\mathrm{BC}}=4$, $\\overline{\\mathrm{CD}}=5$, $\\overline{\\mathrm{DE}}=6$이고 각 꼭짓점 $\\mathrm{A, B, C, D}$에서 직각을 이룬다. 피타고라스 정리를 차례로 적용하면 $$\\overline{\\mathrm{OB}}^2 = 3^2 + 3^2 = 18$$ $$\\overline{\\mathrm{OC}}^2 = \\overline{\\mathrm{OB}}^2 + 4^2 = 18 + 16 = 34$$ $$\\overline{\\mathrm{OD}}^2 = \\overline{\\mathrm{OC}}^2 + 5^2 = 34 + 25 = 59$$ $$\\overline{\\mathrm{OE}}^2 = \\overline{\\mathrm{OD}}^2 + 6^2 = 59 + 36 = 95$$ 따라서 $\\overline{\\mathrm{OE}} = \\sqrt{95}$이므로 정답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "q09_solution",
+      "condition": "그림에서 $\\overline{\\mathrm{OA}}=\\overline{\\mathrm{AB}}=3$, $\\overline{\\mathrm{BC}}=4$, $\\overline{\\mathrm{CD}}=5$, $\\overline{\\mathrm{DE}}=6$이고 각 꼭짓점 $\\mathrm{A, B, C, D}$에서 직각을 이룬다. 피타고라스 정리를 차례로 적용하면 $$\\overline{\\mathrm{OB}}^2 = 3^2 + 3^2 = 18$$ $$\\overline{\\mathrm{OC}}^2 = \\overline{\\mathrm{OB}}^2 + 4^2 = 18 + 16 = 34$$ $$\\overline{\\mathrm{OD}}^2 = \\overline{\\mathrm{OC}}^2 + 5^2 = 34 + 25 = 59$$ $$\\overline{\\mathrm{OE}}^2 = \\overline{\\mathrm{OD}}^2 + 6^2 = 59 + 36 = 95$$ 따라서 $\\overline{\\mathrm{OE}} = \\sqrt{95}$이므로 정답은 ⑤이다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ]
+}
