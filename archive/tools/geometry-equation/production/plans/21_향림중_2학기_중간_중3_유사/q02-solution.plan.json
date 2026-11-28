@@ -1,0 +1,46 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-32",
+          "-16",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-4",
+        "y": "0",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-4"
+      ],
+      "y": []
+    }
+  },
+  "sourceQuote": "이차함수 $y=-2x^2$의 그래프를 $x$축의 방향으로 $-4$만큼 평행이동한 그래프의 식은 $$y = -2(x+4)^2$$ 이므로 ",
+  "sourceConditions": [
+    {
+      "id": "q02_solution",
+      "condition": "이차함수 $y=-2x^2$의 그래프를 $x$축의 방향으로 $-4$만큼 평행이동한 그래프의 식은 $$y = -2(x+4)^2$$ 이므로 축의 방정식은 $x=-4$이다. 따라서 정답은 ①이다.",
+      "mappedTo": "graphPlan.pieces"
+    }
+  ],
+  "caption": "해설 관계: 이차함수 $y=-2x^2$의 그래프를 $x$축의 방향으로 $-4$만큼 평행이동한 그래프의 식은 $$y = -2(x+4)^2$$ 이므로 축의 방정식은 $x=-4$이다. 따라서 정답은 ①이다.",
+  "newVisualInformation": [
+    "공식 그래프 계수 [{\"coefficients\":[\"-32\",\"-16\",\"-2\"]}]"
+  ],
+  "accessibilityDescription": "해설에서 사용하는 해설 관계: 이차함수 $y=-2x^2$의 그래프를 $x$축의 방향으로 $-4$만큼 평행이동한 그래프의 식은 $$y = -2(x+4)^2$$ 이므로 축의 방정식은 $x=-4$이다. 따라서 정답은 ①이다."
+}

@@ -1,0 +1,294 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "해설 관계: 원 O에 내접하는 삼각형 ABC에서 중심 O에서 두 현 AB, AC에 내린 수선의 발이 D, E인 그림이다. DO와 EO의 길이는 같고 DO는 3 cm이며 각 B는 60도, 각 A는 x로 표시되어 있다.",
+  "accessibilityDescription": "해설에서 사용하는 해설 관계: 원 O에 내접하는 삼각형 ABC에서 중심 O에서 두 현 AB, AC에 내린 수선의 발이 D, E인 그림이다. DO와 EO의 길이는 같고 DO는 3 cm이며 각 B는 60도, 각 A는 x로 표시되어 있다.",
+  "newVisualInformation": [
+    "그려진 선분 AB, AC, BC, OD, OE",
+    "equalLengths 1개",
+    "expressionLabels 2개",
+    "angles 4개",
+    "표시 원 c"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D0",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "D0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "D0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "210"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "D0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "330"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "c"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "OD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "OE",
+      "refs": [
+        "O",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "OD",
+          "OE"
+        ],
+        "color": "GREEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lOD",
+        "ownerSegment": "OD",
+        "text": "3",
+        "unit": "cm"
+      },
+      {
+        "id": "sol_AB",
+        "ownerSegment": "AB",
+        "text": "6sqrt(3)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 60,
+        "label": "x",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rD",
+        "refs": [
+          "A",
+          "D",
+          "O"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rE",
+        "refs": [
+          "A",
+          "E",
+          "O"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 560
+  },
+  "sourceConditions": [
+    {
+      "id": "q25_solution",
+      "condition": "(1) 중심 $\\text{O}$에서 두 현 $\\text{AB}$, $\\text{AC}$까지의 거리가 같으므로 $\\overline{\\text{AB}}=\\overline{\\text{AC}}$이다. $\\angle\\text{B}=60^\\circ$인 이등변삼각형이므로 $\\angle\\text{C}=60^\\circ$이고, 따라서 $\\angle x = \\angle\\text{A} = 60^\\circ$이다. (2) $\\triangle\\text{ABC}$는 정삼각형이고 $\\overline{\\text{AO}}$는 $\\angle\\text{A}$의 이등분선이므로 $\\angle\\text{OAB}=30^\\circ$, $\\angle\\text{OBD}=30^\\circ$이다. 직각삼각형 $\\text{ODB}$에서 $\\overline{\\text{BD}} = \\frac{3}{\\tan 30^\\circ} = 3\\sqrt{3}\\text{ (cm)}$이므로 한 변의 길이는 $\\overline{\\text{AB}} = 2\\overline{\\text{BD}} = 6\\sqrt{3}\\text{ (cm)}$이다. 따라서 $\\triangle\\text{ABC}$의 넓이는 $$\\frac{1}{2} \\times 6\\sqrt{3} \\times 6\\sqrt{3} \\times \\sin 60^\\circ = 54 \\times \\frac{\\sqrt{3}}{2} = 27\\sqrt{3}\\text{ (cm}^2\\text{)}$$",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "sourceQuote": "(1) 중심 $\\text{O}$에서 두 현 $\\text{AB}$, $\\text{AC}$까지의 거리가 같으므로 $\\overline{\\te"
+}

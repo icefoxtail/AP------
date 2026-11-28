@@ -1,0 +1,295 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "961",
+              "denominator": "2500"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "-31",
+                  "denominator": "2500"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "1539"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "32",
+              "denominator": "25"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "unit",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "D",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "BA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "OD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "DC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a52a",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 52,
+        "label": "52",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a52d",
+        "refs": [
+          "D",
+          "O",
+          "C"
+        ],
+        "value": 52,
+        "label": "52",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rightB",
+        "refs": [
+          "O",
+          "B",
+          "A"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rightD",
+        "refs": [
+          "O",
+          "D",
+          "C"
+        ],
+        "value": 90,
+        "label": "90",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lOA",
+        "ownerSegment": "OA",
+        "text": "1",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lOD",
+        "ownerSegment": "OD",
+        "text": "1",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lOB",
+        "ownerSegment": "OB",
+        "text": "0.62",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lDC",
+        "ownerSegment": "DC",
+        "text": "1.28",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAD",
+        "circle": "unit",
+        "center": "O",
+        "from": "A",
+        "to": "D",
+        "side": "CW"
+      }
+    ]
+  },
+  "sourceQuote": "다음 그림과 같이 반지름의 길이가 $1$인 사분원에서 $\\angle\\text{COD}=\\angle\\text{AOB}=52^\\circ$,",
+  "sourceConditions": [
+    {
+      "id": "q14_problem",
+      "condition": "다음 그림과 같이 반지름의 길이가 $1$인 사분원에서 $\\angle\\text{COD}=\\angle\\text{AOB}=52^\\circ$, $\\overline{\\text{CD}}=1.28$, $\\overline{\\text{OB}}=0.62$일 때, $\\tan 52^\\circ - \\sin 38^\\circ$의 값은? (단, $\\angle\\text{OBA}=\\angle\\text{ODC}=90^\\circ$이다.)",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "caption": "문제 조건: 다음 그림과 같이 반지름의 길이가 $1$인 사분원에서 $\\angle\\text{COD}=\\angle\\text{AOB}=52^\\circ$, $\\overline{\\text{CD}}=1.28$, $\\overline{\\text{OB}}=0.62$일 때, $\\tan 52^\\circ - \\",
+  "newVisualInformation": [
+    "그려진 선분 OA, OB, BA, OD, DC, OC",
+    "angles 4개",
+    "expressionLabels 4개",
+    "arcs 1개"
+  ],
+  "accessibilityDescription": "문제에 주어진 문제 조건: 다음 그림과 같이 반지름의 길이가 $1$인 사분원에서 $\\angle\\text{COD}=\\angle\\text{AOB}=52^\\circ$, $\\overline{\\text{CD}}=1.28$, $\\overline{\\text{OB}}=0.62$일 때, $\\tan 52^\\circ - \\"
+}
