@@ -1,0 +1,56 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      9,
+      -3,
+      11
+    ],
+    "curves": [
+      {
+        "id": "root",
+        "kind": "SQRT",
+        "radicand": [
+          "16",
+          "8"
+        ],
+        "amplitude": "1",
+        "offset": "-1",
+        "domain": [
+          "-2",
+          "8"
+        ],
+        "color": "BLUE",
+        "label": "root"
+      },
+      {
+        "id": "line",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "9"
+        ],
+        "color": "WARM",
+        "label": "line"
+      }
+    ]
+  },
+  "caption": "k=1일 때 시작점 (-2,-1)과 다른 교점 (6,7)이 존재한다.",
+  "accessibilityDescription": "k=1일 때 시작점 (-2,-1)과 다른 교점 (6,7)이 존재한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$t=\\sqrt{8x+16}\\ge0$이라 두면 $x=\\frac{t^2}8-2$, $y=t-1$이고 직선 조건은 $t^2-8t+8(k-1)=0$이다. 서로 다른 두 비음수 근을 가져야 하므로 근의 곱 $8(k-1)\\ge0$에서 $k\\ge1$, 판별식 $64-32(k-1)>0$에서 $k 0$이고 $k=1$에서 한 근이 $0$이므로 포함된다. 답은 $1\\le k<3$이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "k=1일 때 시작점 (-2,-1)과 다른 교점 (6,7)이 존재한다."
+  ]
+}

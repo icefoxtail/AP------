@@ -1,0 +1,129 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X1",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "4"
+        ]
+      },
+      {
+        "id": "X2",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "4"
+        ]
+      },
+      {
+        "id": "X3",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "4"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 2
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 1
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 2
+        },
+        "to": {
+          "column": 2,
+          "element": 1
+        },
+        "style": "SOLID"
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X1",
+        "to": "X2",
+        "color": "BLUE"
+      },
+      {
+        "name": "g",
+        "from": "X2",
+        "to": "X3",
+        "color": "WARM"
+      }
+    ]
+  },
+  "caption": "발문에 주어진 두 전단사 함수 f와 g의 원소별 대응을 표시한다.",
+  "accessibilityDescription": "발문에 주어진 두 전단사 함수 f와 g의 원소별 대응을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "집합 $X=\\{1,2,4\\}$의 두 전단사 함수가 $f(1)=2,f(2)=4,f(4)=1$, $g(1)=4,g(2)=1,g(4)=2$로 주어진다. $(g\\circ f^{-1})(4)+(g\\circ f)^{-1}(2)$의 값은? [3.7점]",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "발문에 주어진 두 전단사 함수 f와 g의 원소별 대응을 표시한다."
+  ]
+}

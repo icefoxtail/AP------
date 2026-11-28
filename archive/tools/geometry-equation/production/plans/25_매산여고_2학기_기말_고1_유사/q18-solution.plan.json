@@ -1,0 +1,108 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      13,
+      -10,
+      14
+    ],
+    "curves": [
+      {
+        "id": "C1",
+        "kind": "SQRT",
+        "radicand": [
+          "-2",
+          "1"
+        ],
+        "amplitude": "1",
+        "offset": "-2",
+        "domain": [
+          "2",
+          "12"
+        ],
+        "color": "BLUE",
+        "label": "C1"
+      },
+      {
+        "id": "C2",
+        "kind": "SQRT",
+        "radicand": [
+          "1",
+          "1"
+        ],
+        "amplitude": "1",
+        "offset": "1",
+        "domain": [
+          "-1",
+          "12"
+        ],
+        "color": "GREEN",
+        "label": "C2"
+      },
+      {
+        "id": "lower",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "-1"
+        ],
+        "domain": [
+          "-4",
+          "13"
+        ],
+        "color": "WARM",
+        "label": "lower"
+      },
+      {
+        "id": "upper",
+        "kind": "LINE",
+        "coefficients": [
+          "6",
+          "-1"
+        ],
+        "domain": [
+          "-4",
+          "13"
+        ],
+        "color": "VIOLET",
+        "label": "upper"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "2",
+          "y": "-2"
+        },
+        {
+          "id": "B",
+          "x": "-1",
+          "y": "1"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B",
+          "dashed": true
+        }
+      ]
+    }
+  },
+  "caption": "두 곡선의 대응점은 (-3,3) 방향으로 옮겨지고 넓이 3·6=18이다.",
+  "accessibilityDescription": "두 곡선의 대응점은 (-3,3) 방향으로 옮겨지고 넓이 3·6=18이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 번째 곡선은 첫 번째 곡선을 왼쪽으로 $3$, 위쪽으로 $3$ 평행이동한 것이다. 이 이동은 기울기 $-1$인 직선 방향과 평행하다. 각 직선 $x+y=t$ 위에서 두 곡선의 점 사이 $x$좌표 차이가 항상 $3$이므로, 두 직선 사이의 절편 차 $k$에 대하여 둘러싸인 넓이는 $3k$이다. $3k=18$이므로 $k=6$이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "두 곡선의 대응점은 (-3,3) 방향으로 옮겨지고 넓이 3·6=18이다."
+  ]
+}

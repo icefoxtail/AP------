@@ -1,0 +1,110 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X1",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      {
+        "id": "X2",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        },
+        "style": "SOLID"
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X1",
+        "to": "X2",
+        "color": "BLUE"
+      }
+    ],
+    "highlight": {
+      "elements": [
+        {
+          "column": 1,
+          "element": 1
+        },
+        {
+          "column": 1,
+          "element": 2
+        },
+        {
+          "column": 1,
+          "element": 3
+        }
+      ]
+    }
+  },
+  "caption": "f의 치역에 해당하는 세 입력만 g∘f의 치역 결정에 사용되며 나머지 한 입력은 자유롭다.",
+  "accessibilityDescription": "f의 치역에 해당하는 세 입력만 g∘f의 치역 결정에 사용되며 나머지 한 입력은 자유롭다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$f(X)=\\{2,3,4\\}$이므로 $g(2),g(3),g(4)$가 만드는 치역은 $\\{1,c\\}$($c\\in\\{2,3,4\\}$)이어야 한다. $c$는 $3$가지, 두 값을 모두 쓰도록 세 위치에 배정하는 방법은 $2^3-2=6$가지다. 쓰이지 않는 입력 $1$의 $g(1)$은 $4$가지이므로 $3\\cdot6\\cdot4=72$이다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "f의 치역에 해당하는 세 입력만 g∘f의 치역 결정에 사용되며 나머지 한 입력은 자유롭다."
+  ]
+}

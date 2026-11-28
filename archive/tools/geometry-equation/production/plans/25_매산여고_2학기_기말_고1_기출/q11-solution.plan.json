@@ -1,0 +1,69 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      8,
+      -5,
+      9
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-3",
+          "2"
+        ],
+        "denominator": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          "-5",
+          "8"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "sym",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          "-5",
+          "8"
+        ],
+        "color": "WARM",
+        "label": "sym",
+        "style": "DASHED"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "C",
+          "x": "1",
+          "y": "2",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "점근선 x=1, y=2와 대칭축 y=x+1을 확인한다.",
+  "accessibilityDescription": "점근선 x=1, y=2와 대칭축 y=x+1을 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$y=\\dfrac{2x-3}{x-1}=2-\\dfrac1{x-1}$로 정리한다.\nㄱ. 분모가 $0$이 되는 $x=1$과 상수항 $y=2$가 점근선이므로 참이다.\nㄴ. $x 0$이고 $y>2>0$이다. 따라서 $x<0,y<0$인 제3사분면을 지나지 않으므로 참이다.\nㄷ. $(x-1)(y-2)=-1$은 중심 $(1,2)$를 지나고 기울기가 $1$인 직선 $y-2=x-1$, 즉 $y=x+1$에 대하여 대칭이므로 참이다.\n세 설명이 모두 옳으므로 정답은 ⑤이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "점근선 x=1, y=2와 대칭축 y=x+1을 확인한다."
+  ]
+}

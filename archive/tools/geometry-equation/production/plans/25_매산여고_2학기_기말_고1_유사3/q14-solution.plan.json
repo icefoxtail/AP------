@@ -1,0 +1,86 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -10,
+      0,
+      -1,
+      7
+    ],
+    "curves": [
+      {
+        "id": "Fleft",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-10",
+          "2"
+        ],
+        "denominator": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-9",
+          "-4"
+        ],
+        "color": "BLUE",
+        "label": "Fleft",
+        "domainStates": [
+          "CLOSED",
+          "CLOSED"
+        ]
+      },
+      {
+        "id": "Fright",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-6",
+          "0"
+        ],
+        "denominator": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "-1"
+        ],
+        "color": "GREEN",
+        "label": "Fright",
+        "domainStates": [
+          "OPEN",
+          "CLOSED"
+        ]
+      },
+      {
+        "id": "root",
+        "kind": "SQRT",
+        "radicand": [
+          "0",
+          "-1"
+        ],
+        "amplitude": "1",
+        "offset": "1",
+        "domain": [
+          "-9",
+          "-1"
+        ],
+        "color": "WARM",
+        "label": "root"
+      }
+    ]
+  },
+  "caption": "왼쪽 조각은 x=-4를 포함하고 오른쪽 조각은 제외하며, k=1일 때 두 끝점 x=-4,-1에서 각각 만난다.",
+  "accessibilityDescription": "왼쪽 조각은 x=-4를 포함하고 오른쪽 조각은 제외하며, k=1일 때 두 끝점 x=-4,-1에서 각각 만난다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "교점은 $k=H(x)=F(x)-\\sqrt{-x}$를 만족한다. 함수 $-\\frac6{x-2}$는 $x<2$에서 엄격히 증가하고 $-\\sqrt{-x}$도 주어진 구간에서 엄격히 증가하므로 각 조각의 $H$도 엄격히 증가한다. $-9\\le x\\le-4$에서 $H(-9)=-\\frac5{11}$, $H(-4)=1$이므로 치역은 $[-\\frac5{11},1]$이다. $-4<x\\le-1$에서는 $H(-4+)= -1$이지만 $x=-4$는 제외되고 $H(-1)=1$이므로 치역은 $(-1,1]$이다. 한 조각에서 교점은 최대 한 개씩이므로 정확히 두 교점이 존재하는 범위는 두 치역의 교집합 $[-\\frac5{11},1]$이다. 따라서 최댓값은 $k=1$이다. 실제로 $x=-4,-1$에서 각각 교점을 얻으므로 끝점 $1$도 포함한다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "왼쪽 조각은 x=-4를 포함하고 오른쪽 조각은 제외하며, k=1일 때 두 끝점 x=-4,-1에서 각각 만난다."
+  ]
+}

@@ -1,0 +1,1470 @@
+/* 2025 순천매산여고 고1 2학기 기말 공통수학2 — SOURCE_BALANCED 유사2.
+ * 문제·해설·정답: 신규 작성. SVG 제작은 별도 Codex 엔진 담당.
+ * 원본 대응 23문항 / 객관식20 + 서술형3 / 100점.
+ * 검증: 생성 스크립트의 구조검증을 통과. 수학 검산 결과는 별도 보고서를 참조.
+ */
+window.examTitle = "25_매산여고_2학기_기말_고1_유사2";
+window.examDisplayTitle = "2025 순천매산여고 고1 2학기 기말 공통수학2 유사2";
+window.questionBank = [
+  {
+    "id": 1,
+    "number": 1,
+    "score": 3.7,
+    "points": 3.7,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "wide": false,
+    "content": "$m=4$일 때, “$x\\le3k-1$인 모든 실수 $x$는 $x<2m+1$을 만족한다”라는 명제가 참이 되는 정수 $k$의 최댓값을 구하시오. [3.7점]",
+    "choices": [
+      "$3$",
+      "$4$",
+      "$5$",
+      "$6$",
+      "$7$"
+    ],
+    "answer": "①",
+    "solution": "$m=4$이므로 결론은 $x<9$이다. 닫힌 반직선 $(-\\infty,3k-1]$이 열린 반직선 $(-\\infty,9)$에 포함될 조건은 $3k-1<9$이다. $k<\\frac{10}{3}$이므로 정수 최댓값은 $3$이다.",
+    "curriculum": "2022",
+    "standardCourse": "공통수학2",
+    "sourceQid": 1,
+    "variationType": "EXAM_FOLLOWUP",
+    "followupKind": "CONFIRMATION",
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q1",
+    "image": "",
+    "solutionImage": "",
+    "tags": [],
+    "visualDisposition": {
+      "problemVisual": {
+        "requirement": "EXEMPT",
+        "reason": "수식·문장으로 완결되며 문제 그림은 필요하지 않음"
+      },
+      "solutionVisual": {
+        "requirement": "EXEMPT",
+        "reason": "계산·논리 서술만으로 해설 완결"
+      }
+    },
+    "standardUnitKey": "H22-C2-06",
+    "subUnitKey": "H22-C2-06-CORE",
+    "standardUnit": "명제",
+    "standardUnitOrder": 6,
+    "subUnit": "명제 핵심 개념",
+    "subUnitClassificationDepth": "complete_documented",
+    "rpmPrimaryRecordId": "H1-RPM-248",
+    "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+    "templateKey": "TPL_IMPLICATION_INTERVAL_PARAMETER",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "crossConceptKeys": [
+      "CC_TRUTH_SET_INCLUSION"
+    ],
+    "conditionKeys": [
+      "COND_INTEGER",
+      "COND_UNIVERSAL_INPUTS"
+    ],
+    "integrationPattern": "NONE",
+    "reviewStatus": "review_required",
+    "solutionStatus": "self_checked"
+  },
+  {
+    "id": 2,
+    "number": 2,
+    "score": 3.6,
+    "points": 3.6,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "wide": false,
+    "content": "전체집합 $U=\\{1,2,\\ldots,9\\}$의 부분집합 $A,B$가 $(A^C\\cup B)\\cap A=\\{1,4,6\\}$, $(A\\cup B^C)^C=\\{3,8\\}$을 만족한다. $|B^C|$의 값은? [3.6점]",
+    "choices": [
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$",
+      "$6$"
+    ],
+    "answer": "③",
+    "solution": "첫 조건은 $A\\cap B=\\{1,4,6\\}$이고 둘째 조건은 드모르간 법칙에 따라 $A^C\\cap B=\\{3,8\\}$이다. $B=\\{1,3,4,6,8\\}$이므로 $|B|=5$, $|B^C|=9-5=4$이다.",
+    "curriculum": "2022",
+    "standardCourse": "공통수학2",
+    "sourceQid": 2,
+    "variationType": "EXAM_FOLLOWUP",
+    "followupKind": "CONFIRMATION",
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q2",
+    "image": "",
+    "solutionImage": "",
+    "tags": [],
+    "visualDisposition": {
+      "problemVisual": {
+        "requirement": "EXEMPT",
+        "reason": "수식·문장으로 완결되며 문제 그림은 필요하지 않음"
+      },
+      "solutionVisual": {
+        "requirement": "EXEMPT",
+        "reason": "계산·논리 서술만으로 해설 완결"
+      }
+    },
+    "standardUnitKey": "H22-C2-05",
+    "subUnitKey": "H22-C2-05-CORE",
+    "standardUnit": "집합",
+    "standardUnitOrder": 5,
+    "subUnit": "집합 핵심 개념",
+    "subUnitClassificationDepth": "complete_documented",
+    "rpmPrimaryRecordId": "H1-RPM-241",
+    "problemTypeKey": "PT_SET_OPERATION_LAW",
+    "templateKey": "TPL_OPERATION_LAW_COMPOSITE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "crossConceptKeys": [
+      "CC_SET_DIFFERENCE_COMPLEMENT"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "reviewStatus": "review_required",
+    "solutionStatus": "self_checked"
+  },
+  {
+    "id": 3,
+    "number": 3,
+    "score": 3.7,
+    "points": 3.7,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "wide": false,
+    "content": "집합 $X=\\{2,4,6\\}$에서 $f:2\\mapsto4,4\\mapsto6,6\\mapsto2$와 $g:2\\mapsto6,4\\mapsto2,6\\mapsto4$는 전단사 함수이다. $(f\\circ g^{-1}\\circ f)(2)+(g\\circ f)^{-1}(6)$을 구하면? [3.7점]",
+    "choices": [
+      "$4$",
+      "$6$",
+      "$8$",
+      "$10$",
+      "$12$"
+    ],
+    "answer": "③",
+    "solution": "$f(2)=4$, $g^{-1}(4)=6$, $f(6)=2$이므로 첫 항은 $2$이다. $g\\circ f$는 $2,4,6$ 각각을 자기 자신으로 보내므로 $(g\\circ f)^{-1}(6)=6$이다. 합은 $8$이다.",
+    "curriculum": "2022",
+    "standardCourse": "공통수학2",
+    "sourceQid": 3,
+    "variationType": "EXAM_FOLLOWUP",
+    "followupKind": "CONFIRMATION",
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q3",
+    "image": "assets/images/25_매산여고_2학기_기말_고1_유사2/q3-problem.svg",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사2/q3-solution.svg",
+    "tags": [],
+    "visualDisposition": {
+      "problemVisual": {
+        "requirement": "BENEFICIAL",
+        "reason": "대응표는 글로 완결되지만 화살표도가 합성·치역 구조 이해에 유익함"
+      },
+      "solutionVisual": {
+        "requirement": "BENEFICIAL",
+        "reason": "합성 및 역함수 대응 화살표 추적을 단계별 강조"
+      }
+    },
+    "standardUnitKey": "H22-C2-07",
+    "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+    "standardUnit": "함수",
+    "standardUnitOrder": 7,
+    "subUnit": "합성함수",
+    "subUnitClassificationDepth": "complete_documented",
+    "rpmPrimaryRecordId": "H1-RPM-253",
+    "problemTypeKey": "PT_INVERSE_COMPOSITION",
+    "templateKey": "TPL_INVERSE_COMPOSITION_VALUE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "crossConceptKeys": [
+      "CC_INVERSE_FUNCTION"
+    ],
+    "conditionKeys": [
+      "COND_FUNCTION_BIJECTION"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "reviewStatus": "review_required",
+    "solutionStatus": "self_checked",
+    "sourceDiagramModel": {
+      "X": [
+        2,
+        4,
+        6
+      ],
+      "f": [
+        [
+          2,
+          4
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          6,
+          2
+        ]
+      ],
+      "g": [
+        [
+          2,
+          6
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          6,
+          4
+        ]
+      ]
+    },
+    "imageAlt": "발문에 주어진 두 전단사 함수 f와 g의 원소별 대응을 표시한다.",
+    "imageCaption": "발문에 주어진 두 전단사 함수 f와 g의 원소별 대응을 표시한다.",
+    "imageSize": "full",
+    "solutionImageAlt": "함수 f와 g의 화살표를 정방향·역방향으로 따라 합성함수와 역함수의 값을 결정한다.",
+    "solutionImageCaption": "함수 f와 g의 화살표를 정방향·역방향으로 따라 합성함수와 역함수의 값을 결정한다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 4,
+    "number": 4,
+    "score": 3.5,
+    "points": 3.5,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "wide": false,
+    "content": "$x\\ne0,2$에서 항등식 $\\frac{bx+c}{x^2+ax}-\\frac3x=\\frac4{x(x-2)}$가 성립한다. $a+b-c$를 구하면? [3.5점]",
+    "choices": [
+      "$-3$",
+      "$-1$",
+      "$1$",
+      "$3$",
+      "$7$"
+    ],
+    "answer": "④",
+    "solution": "좌변은 $\\frac{3(x-2)+4}{x(x-2)}=\\frac{3x-2}{x(x-2)}$이다. 따라서 $a=-2,b=3,c=-2$이므로 $a+b-c=-2+3+2=3$이다.",
+    "curriculum": "2022",
+    "standardCourse": "공통수학2",
+    "sourceQid": 4,
+    "variationType": "EXAM_FOLLOWUP",
+    "followupKind": "CONFIRMATION",
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q4",
+    "image": "",
+    "solutionImage": "",
+    "tags": [],
+    "visualDisposition": {
+      "problemVisual": {
+        "requirement": "EXEMPT",
+        "reason": "수식·문장으로 완결되며 문제 그림은 필요하지 않음"
+      },
+      "solutionVisual": {
+        "requirement": "EXEMPT",
+        "reason": "계산·논리 서술만으로 해설 완결"
+      }
+    },
+    "standardUnitKey": "H22-C2-08",
+    "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+    "standardUnit": "유리함수",
+    "standardUnitOrder": 8,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
+    "rpmPrimaryRecordId": "H1-RPM-263",
+    "problemTypeKey": "PT_RATIONAL_EXPRESSION",
+    "templateKey": "TPL_RATIONAL_EXPRESSION_SIMPLIFY",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NONZERO"
+    ],
+    "integrationPattern": "NONE",
+    "reviewStatus": "review_required",
+    "solutionStatus": "self_checked"
+  },
+  {
+    "id": 5,
+    "number": 5,
+    "score": 3.6,
+    "points": 3.6,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "wide": false,
+    "content": "$a>0$일 때 $y=\\sqrt{ax+8}+b$의 정의역은 $[-2,\\infty)$이고 치역은 $[3,\\infty)$이다. $a+b$는? [3.6점]",
+    "choices": [
+      "$-1$",
+      "$1$",
+      "$7$",
+      "$8$",
+      "$11$"
+    ],
+    "answer": "③",
+    "solution": "정의역의 시작점은 $ax+8=0$의 해 $x=-8/a$이다. $-8/a=-2$에서 $a=4$. 근호가 $0$일 때 함수값이 $b$이므로 $b=3$. 따라서 $a+b=7$이다.",
+    "curriculum": "2022",
+    "standardCourse": "공통수학2",
+    "sourceQid": 5,
+    "variationType": "EXAM_FOLLOWUP",
+    "followupKind": "CONFIRMATION",
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q5",
+    "image": "",
+    "solutionImage": "",
+    "tags": [],
+    "visualDisposition": {
+      "problemVisual": {
+        "requirement": "EXEMPT",
+        "reason": "수식·문장으로 완결되며 문제 그림은 필요하지 않음"
+      },
+      "solutionVisual": {
+        "requirement": "EXEMPT",
+        "reason": "계산·논리 서술만으로 해설 완결"
+      }
+    },
+    "standardUnitKey": "H22-C2-09",
+    "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+    "standardUnit": "무리함수",
+    "standardUnitOrder": 9,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
+    "rpmPrimaryRecordId": "H1-RPM-268",
+    "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+    "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_DIRECT",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "crossConceptKeys": [
+      "CC_RADICAL_FUNCTION_DOMAIN_RANGE"
+    ],
+    "conditionKeys": [
+      "COND_POSITIVE",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "NONE",
+    "reviewStatus": "review_required",
+    "solutionStatus": "self_checked"
+  },
+  {
+    "id": 6,
+    "number": 6,
+    "score": 3.8,
+    "points": 3.8,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "wide": false,
+    "content": "분수함수 $y=\\frac{ax+2}{x-4}$($a$는 실수)를 $x$축 방향으로 $p$, $y$축 방향으로 $q$만큼 평행이동했더니 $y=\\frac{2x-12}{x-5}$가 되었다. $a+2p+q$는? [3.8점]",
+    "choices": [
+      "$4$",
+      "$5$",
+      "$6$",
+      "$7$",
+      "$8$"
+    ],
+    "answer": "①",
+    "solution": "처음 함수를 정리하면 $y=a+\\frac{4a+2}{x-4}$이고 결과 함수는 $y=2-\\frac2{x-5}$이다. 수직점근선 $x=4$가 $x=5$로 옮겨졌으므로 $p=1$이다. 평행이동해도 분자에 해당하는 나머지 계수는 바뀌지 않으므로 $4a+2=-2$, 즉 $a=-1$이다. 수평점근선 $y=a=-1$이 $y=2$가 되었으므로 $q=3$이다. 따라서 $a+2p+q=-1+2+3=4$이다.",
+    "curriculum": "2022",
+    "standardCourse": "공통수학2",
+    "sourceQid": 6,
+    "variationType": "EXAM_FOLLOWUP",
+    "followupKind": "CONFIRMATION",
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q6",
+    "image": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사2/q6-solution.svg",
+    "tags": [],
+    "visualDisposition": {
+      "problemVisual": {
+        "requirement": "EXEMPT",
+        "reason": "수식·문장으로 완결되며 문제 그림은 필요하지 않음"
+      },
+      "solutionVisual": {
+        "requirement": "BENEFICIAL",
+        "reason": "이동 후 수평·수직 점근선과 미지 a의 나머지 계수 4a+2=−2를 역복원"
+      }
+    },
+    "standardUnitKey": "H22-C2-08",
+    "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+    "standardUnit": "유리함수",
+    "standardUnitOrder": 8,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
+    "rpmPrimaryRecordId": "H1-RPM-260",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+    "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "crossConceptKeys": [
+      "CC_RATIONAL_FUNCTION_ASYMPTOTE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "reviewStatus": "review_required",
+    "solutionStatus": "self_checked",
+    "solutionImageAlt": "a=-1로 역복원한 원함수의 중심 (4,-1)이 평행이동 후 (5,2)가 된다.",
+    "solutionImageCaption": "a=-1로 역복원한 원함수의 중심 (4,-1)이 평행이동 후 (5,2)가 된다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 7,
+    "number": 7,
+    "score": 3.8,
+    "points": 3.8,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "wide": false,
+    "content": "실수 $a>2$에 대하여 $1\\le x\\le3$에서 정의된 무리함수 $y=\\sqrt{ax-2}+1$의 치역이 $[3,b]$이다. $b$의 값은? [3.8점]",
+    "choices": [
+      "$3$",
+      "$5$",
+      "$6$",
+      "$8$",
+      "$11$"
+    ],
+    "answer": "②",
+    "solution": "$a>2$이므로 $ax-2$가 증가하고 함수도 $[1,3]$에서 증가한다. 치역의 왼쪽 끝 $3$은 $x=1$에서의 함숫값이므로 $\\sqrt{a-2}+1=3$, 따라서 $a=6$이다. 오른쪽 끝은 $x=3$의 값으로 $b=\\sqrt{3a-2}+1=\\sqrt{16}+1=5$이다. 처음부터 근호의 계수 $a$가 알려진 것이 아니므로 치역 끝점 조건에서 $a$를 역복원해야 반대 끝값을 구할 수 있다.",
+    "curriculum": "2022",
+    "standardCourse": "공통수학2",
+    "sourceQid": 7,
+    "variationType": "EXAM_FOLLOWUP",
+    "followupKind": "CONFIRMATION",
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q7",
+    "image": "",
+    "solutionImage": "",
+    "tags": [],
+    "visualDisposition": {
+      "problemVisual": {
+        "requirement": "EXEMPT",
+        "reason": "수식·문장으로 완결되며 문제 그림은 필요하지 않음"
+      },
+      "solutionVisual": {
+        "requirement": "EXEMPT",
+        "reason": "계산·논리 서술만으로 해설 완결"
+      }
+    },
+    "standardUnitKey": "H22-C2-09",
+    "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+    "standardUnit": "무리함수",
+    "standardUnitOrder": 9,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
+    "rpmPrimaryRecordId": "H1-RPM-269",
+    "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+    "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_EXTREMUM",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "crossConceptKeys": [
+      "CC_FUNCTION_MONOTONICITY"
+    ],
+    "conditionKeys": [
+      "COND_RESTRICTED_INTERVAL"
+    ],
+    "integrationPattern": "NONE",
+    "reviewStatus": "review_required",
+    "solutionStatus": "self_checked"
+  },
+  {
+    "id": 8,
+    "number": 8,
+    "score": 3.9,
+    "points": 3.9,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "wide": false,
+    "content": "$x>-3$에서 $y=x+3+\\frac{c}{x+3}$($c>0$)가 $x=1$에서 최솟값 $m$을 갖는다. $c+m$의 값은? [3.9점]",
+    "choices": [
+      "$8$",
+      "$16$",
+      "$20$",
+      "$22$",
+      "$24$"
+    ],
+    "answer": "⑤",
+    "solution": "$t=x+3>0$이면 $y=t+\\frac ct\\ge2\\sqrt c$이며 등호는 $t=\\sqrt c$일 때 성립한다. 최솟값을 갖는 $x=1$에서 $t=4$이므로 $\\sqrt c=4$, $c=16$이다. 따라서 $m=2\\sqrt{16}=8$이고 $c+m=16+8=24$이다.",
+    "curriculum": "2022",
+    "standardCourse": "공통수학2",
+    "sourceQid": 8,
+    "variationType": "EXAM_FOLLOWUP",
+    "followupKind": "CONFIRMATION",
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q8",
+    "image": "",
+    "solutionImage": "",
+    "tags": [],
+    "visualDisposition": {
+      "problemVisual": {
+        "requirement": "EXEMPT",
+        "reason": "수식·문장으로 완결되며 문제 그림은 필요하지 않음"
+      },
+      "solutionVisual": {
+        "requirement": "EXEMPT",
+        "reason": "계산·논리 서술만으로 해설 완결"
+      }
+    },
+    "standardUnitKey": "H22-C2-08",
+    "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+    "standardUnit": "유리함수",
+    "standardUnitOrder": 8,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
+    "rpmPrimaryRecordId": "H1-RPM-264",
+    "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+    "templateKey": "TPL_FUNCTION_EXTREMUM_INEQUALITY",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "crossConceptKeys": [
+      "CC_AM_GM"
+    ],
+    "conditionKeys": [
+      "COND_POSITIVE",
+      "COND_FUNCTION_VALUE_CONSTRAINT"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "reviewStatus": "review_required",
+    "solutionStatus": "self_checked"
+  },
+  {
+    "id": 9,
+    "number": 9,
+    "score": 3.9,
+    "points": 3.9,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "wide": false,
+    "content": "$f(x)=x^3-7x^2+15x-5$, $g(x)=x+3$이다. $2\\in X$인 공집합 아닌 실수의 부분집합 $X$에 대하여 모든 $x\\in X$에서 $f(x)=g(x)$가 성립한다. 가능한 집합 $X$의 개수는? [3.9점]",
+    "choices": [
+      "$2$",
+      "$3$",
+      "$4$",
+      "$6$",
+      "$8$"
+    ],
+    "answer": "③",
+    "solution": "$f(x)-g(x)=x^3-7x^2+14x-8=(x-1)(x-2)(x-4)$이다. 가능한 원소는 $\\{1,2,4\\}$이고 반드시 $2$를 포함한다. 나머지 $1,4$는 각각 포함 여부 두 가지이므로 $2^2=4$개이다.",
+    "curriculum": "2022",
+    "standardCourse": "공통수학2",
+    "sourceQid": 9,
+    "variationType": "EXAM_FOLLOWUP",
+    "followupKind": "CONFIRMATION",
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q9",
+    "image": "",
+    "solutionImage": "",
+    "tags": [],
+    "visualDisposition": {
+      "problemVisual": {
+        "requirement": "EXEMPT",
+        "reason": "수식·문장으로 완결되며 문제 그림은 필요하지 않음"
+      },
+      "solutionVisual": {
+        "requirement": "EXEMPT",
+        "reason": "계산·논리 서술만으로 해설 완결"
+      }
+    },
+    "standardUnitKey": "H22-C2-07",
+    "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+    "standardUnit": "함수",
+    "standardUnitOrder": 7,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
+    "rpmPrimaryRecordId": "H1-RPM-251",
+    "problemTypeKey": "PT_FUNCTION_EQUALITY",
+    "templateKey": "TPL_EQUAL_FUNCTION_DOMAIN_SELECTION",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "crossConceptKeys": [
+      "CC_SUBSET_COUNTING"
+    ],
+    "conditionKeys": [
+      "COND_NONEMPTY_SELECTION"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "reviewStatus": "review_required",
+    "solutionStatus": "self_checked"
+  },
+  {
+    "id": 10,
+    "number": 10,
+    "score": 4.1,
+    "points": 4.1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "wide": false,
+    "content": "조건 $p:-8\\le x<12$, $q:(x-2a)(x-4a)>0$가 주어졌다. 명제 “$\\sim q$이면 $p$이다”가 참이 되도록 하는 정수 $a$는 몇 개인가? [4.1점]",
+    "choices": [
+      "$5$",
+      "$6$",
+      "$7$",
+      "$8$",
+      "$10$"
+    ],
+    "answer": "①",
+    "solution": "$\\sim q$는 두 실수 $2a,4a$ 사이의 닫힌 구간이다. 이것이 $[-8,12)$에 포함되려면 $\\min(2a,4a)\\ge-8$, $\\max(2a,4a)<12$가 필요충분하다. $a\\ge0$이면 $a=0,1,2$이고 $a<0$이면 $a=-2,-1$이다. 총 $5$개이다.",
+    "curriculum": "2022",
+    "standardCourse": "공통수학2",
+    "sourceQid": 10,
+    "variationType": "EXAM_FOLLOWUP",
+    "followupKind": "CONFIRMATION",
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q10",
+    "image": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사2/q10-solution.svg",
+    "tags": [],
+    "visualDisposition": {
+      "problemVisual": {
+        "requirement": "EXEMPT",
+        "reason": "수식·문장으로 완결되며 문제 그림은 필요하지 않음"
+      },
+      "solutionVisual": {
+        "requirement": "BENEFICIAL",
+        "reason": "부정 진리집합과 반열린 구간의 경계 포함관계"
+      }
+    },
+    "standardUnitKey": "H22-C2-06",
+    "subUnitKey": "H22-C2-06-CORE",
+    "standardUnit": "명제",
+    "standardUnitOrder": 6,
+    "subUnit": "명제 핵심 개념",
+    "subUnitClassificationDepth": "complete_documented",
+    "rpmPrimaryRecordId": "H1-RPM-248",
+    "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+    "templateKey": "TPL_IMPLICATION_INTERVAL_PARAMETER",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "crossConceptKeys": [
+      "CC_TRUTH_SET_INCLUSION"
+    ],
+    "conditionKeys": [
+      "COND_INTEGER",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "reviewStatus": "review_required",
+    "solutionStatus": "self_checked",
+    "solutionImageAlt": "a=2를 예로 들면 ¬q의 닫힌구간이 p에 포함되어야 하며 p의 열린·닫힌 끝점을 구분한다.",
+    "solutionImageCaption": "a=2를 예로 들면 ¬q의 닫힌구간이 p에 포함되어야 하며 p의 열린·닫힌 끝점을 구분한다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 11,
+    "number": 11,
+    "score": 4,
+    "points": 4,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "wide": false,
+    "content": "분수함수 $y=\\frac4x$를 $x$축 방향으로 $p$, $y$축 방향으로 $q$만큼 평행이동한 그래프를 $G$라 하자. $G$의 수직점근선은 $x=-2$이고 기울기가 $1$인 대칭축은 $y=x+1$이다. $G$에 대한 옳은 설명은? [4점]",
+    "choices": [
+      "$\\text{수평점근선은 }y=1\\text{이다.}$",
+      "$\\text{직선 }y=-x+1\\text{에 대하여 대칭이다.}$",
+      "$\\text{제3사분면을 지나지 않는다.}$",
+      "$\\text{점 }(1,-\\frac13)\\text{을 지난다.}$",
+      "$\\text{점 }(1,\\frac13)\\text{을 지난다.}$"
+    ],
+    "answer": "⑤",
+    "solution": "$y=4/x$를 $(p,q)$만큼 옮기면 $y=q+\\frac4{x-p}$이고 중심은 $(p,q)$이다. 수직점근선에서 $p=-2$이다. 기울기 $1$인 대칭축은 $y-q=x-p$, 즉 $y=x+(q-p)$이므로 $q-p=1$, $q=-1$이다. 따라서 $G:y=-1+\\frac4{x+2}$이다. $x=1$에서 $y=-1+\\frac43=\\frac13$이므로 ⑤가 참이고, 부호를 바꾼 ④는 거짓이다. 수평점근선은 $y=-1$, 다른 대칭축은 $y=-x-3$, 제3사분면의 점도 존재하므로 나머지도 거짓이다.",
+    "curriculum": "2022",
+    "standardCourse": "공통수학2",
+    "sourceQid": 11,
+    "variationType": "EXAM_FOLLOWUP",
+    "followupKind": "CONFIRMATION",
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q11",
+    "image": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사2/q11-solution.svg",
+    "tags": [],
+    "visualDisposition": {
+      "problemVisual": {
+        "requirement": "EXEMPT",
+        "reason": "수식·문장으로 완결되며 문제 그림은 필요하지 않음"
+      },
+      "solutionVisual": {
+        "requirement": "BENEFICIAL",
+        "reason": "원쌍곡선 4/x의 점근선 x=−2, 대칭축 y=x+1에서 이동 중심 (−2,−1)을 결정"
+      }
+    },
+    "standardUnitKey": "H22-C2-08",
+    "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+    "standardUnit": "유리함수",
+    "standardUnitOrder": 8,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
+    "rpmPrimaryRecordId": "H1-RPM-261",
+    "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+    "templateKey": "TPL_RATIONAL_ASYMPTOTE_GEOMETRY",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "crossConceptKeys": [
+      "CC_QUADRANT_PASSAGE",
+      "CC_RATIONAL_FUNCTION_SYMMETRY"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "reviewStatus": "review_required",
+    "solutionStatus": "self_checked",
+    "solutionImageAlt": "수직점근선 x=-2와 대칭축 y=x+1의 교점에서 중심 (-2,-1)을 역복원한다.",
+    "solutionImageCaption": "수직점근선 x=-2와 대칭축 y=x+1의 교점에서 중심 (-2,-1)을 역복원한다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 12,
+    "number": 12,
+    "score": 4.1,
+    "points": 4.1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "wide": false,
+    "content": "함수 $f:\\mathbb R\\to\\mathbb R$의 그래프는 점 $(\\frac52,\\frac{37}2)$에서 이어지는 두 직선 조각이다. 실수 $t$에 대하여 $x<\\frac52$에서 기울기는 $9-4t$, $x\\ge\\frac52$에서 기울기는 $5+4t$이다. 이 함수를 $f(x)=a|2x-5|+bx+c$로 나타낼 때 $a$가 정수이고 $f$가 일대일대응이 되도록 하는 정수 $a$의 개수는? [4.1점]",
+    "choices": [
+      "$1$",
+      "$3$",
+      "$4$",
+      "$6$",
+      "$7$"
+    ],
+    "answer": "⑤",
+    "solution": "절댓값 식 $a|2x-5|+bx+c$의 왼쪽·오른쪽 기울기는 각각 $b-2a$, $b+2a$이다. 문제의 두 직선 기울기와 비교하면 $2b=(9-4t)+(5+4t)=14$이므로 $b=7$, $4a=(5+4t)-(9-4t)=8t-4$이므로 $a=2t-1$이다. 교점 조건에서 $c=1$로 복원되지만 전단사 개수 계산에는 $a$의 역복원이 핵심이다. 연속인 두 직선 조각이 $\\mathbb R$에서 $\\mathbb R$로 일대일대응이 되려면 양쪽 기울기가 같은 엄격 부호여야 한다. 합이 $14>0$이므로 둘 다 양수이다. 따라서 $9-4t>0$, $5+4t>0$에서 $-\\frac54<t<\\frac94$, 이를 $a=2t-1$로 옮기면 $-\\frac72<a<\\frac72$이다. 허용 정수 $a=-3,-2,-1,0,1,2,3$으로 $7$개다. $t$를 곧바로 정수로 세면 $a$의 정수성 조건을 잘못 적용한 것이다.",
+    "curriculum": "2022",
+    "standardCourse": "공통수학2",
+    "sourceQid": 12,
+    "variationType": "EXAM_FOLLOWUP",
+    "followupKind": "CONFIRMATION",
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q12",
+    "image": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사2/q12-solution.svg",
+    "tags": [],
+    "visualDisposition": {
+      "problemVisual": {
+        "requirement": "EXEMPT",
+        "reason": "수식·문장으로 완결되며 문제 그림은 필요하지 않음"
+      },
+      "solutionVisual": {
+        "requirement": "BENEFICIAL",
+        "reason": "x=5/2의 두 직선 기울기 9−4t, 5+4t에서 a=2t−1 역복원 및 전단사 엄격 동부호 조건"
+      }
+    },
+    "standardUnitKey": "H22-C2-07",
+    "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+    "standardUnit": "함수",
+    "standardUnitOrder": 7,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
+    "rpmPrimaryRecordId": "H1-RPM-257",
+    "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+    "templateKey": "TPL_ABSOLUTE_VALUE_INJECTIVITY",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "crossConceptKeys": [
+      "CC_FUNCTION_MONOTONICITY"
+    ],
+    "conditionKeys": [
+      "COND_INTEGER",
+      "COND_FUNCTION_BIJECTION"
+    ],
+    "integrationPattern": "CASE_BRANCH",
+    "reviewStatus": "review_required",
+    "solutionStatus": "self_checked",
+    "solutionImageAlt": "t=1에서 좌우 기울기는 5와 9이며, 두 기울기의 차이를 4로 나누어 절댓값 계수 a=1을 역복원한다.",
+    "solutionImageCaption": "t=1에서 좌우 기울기는 5와 9이며, 두 기울기의 차이를 4로 나누어 절댓값 계수 a=1을 역복원한다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 13,
+    "number": 13,
+    "score": 3.9,
+    "points": 3.9,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "wide": false,
+    "content": "처음 그래프가 $y=\\sqrt{ax+b}+c$였다. 이를 왼쪽으로 $1$, 아래쪽으로 $2$만큼 평행이동하고 마지막에 $y$축 대칭이동하니 $y=\\sqrt{-2x+6}-5$가 되었다. 원래 함수의 $a+b+c$는? [3.9점]",
+    "choices": [
+      "$-1$",
+      "$3$",
+      "$5$",
+      "$7$",
+      "$9$"
+    ],
+    "answer": "②",
+    "solution": "최종 식에서 $y$축 대칭을 역으로 되돌리면 $y=\\sqrt{2x+6}-5$이다. 아래쪽으로 $2$ 이동했던 것을 위쪽으로 $2$ 되돌리면 $y=\\sqrt{2x+6}-3$이다. 마지막으로 왼쪽으로 $1$ 이동했던 것을 오른쪽으로 $1$ 되돌려 $y=\\sqrt{2(x-1)+6}-3=\\sqrt{2x+4}-3$을 얻는다. 따라서 $(a,b,c)=(2,4,-3)$이고 $a+b+c=3$이다.",
+    "curriculum": "2022",
+    "standardCourse": "공통수학2",
+    "sourceQid": 13,
+    "variationType": "EXAM_FOLLOWUP",
+    "followupKind": "CONFIRMATION",
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q13",
+    "image": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사2/q13-solution.svg",
+    "tags": [],
+    "visualDisposition": {
+      "problemVisual": {
+        "requirement": "EXEMPT",
+        "reason": "수식·문장으로 완결되며 문제 그림은 필요하지 않음"
+      },
+      "solutionVisual": {
+        "requirement": "BENEFICIAL",
+        "reason": "평행이동 뒤 y축 반사 순서의 그래프 좌표 추적"
+      }
+    },
+    "standardUnitKey": "H22-C2-09",
+    "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+    "standardUnit": "무리함수",
+    "standardUnitOrder": 9,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
+    "rpmPrimaryRecordId": "H1-RPM-267",
+    "problemTypeKey": "PT_FUNCTION_RECOVERY",
+    "templateKey": "TPL_RECOVER_FUNCTION_BY_INPUT_CHANGE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "crossConceptKeys": [
+      "CC_TRANSLATION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "reviewStatus": "review_required",
+    "solutionStatus": "self_checked",
+    "solutionImageAlt": "원함수와 이동·대칭 후 최종 무리함수의 방향 및 시작점이 서로 달라짐을 비교한다.",
+    "solutionImageCaption": "원함수와 이동·대칭 후 최종 무리함수의 방향 및 시작점이 서로 달라짐을 비교한다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 14,
+    "number": 14,
+    "score": 4.2,
+    "points": 4.2,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "wide": false,
+    "content": "$-16\\le x\\le-9$에서 두 그래프 $y=2-\\frac{15}{x+1}$과 $y=\\sqrt{-x}+k$가 한 점에서 만나도록 하는 $k$의 최솟값은? [4.2점]",
+    "choices": [
+      "$-3$",
+      "$-1$",
+      "$0$",
+      "$1$",
+      "$3$"
+    ],
+    "answer": "②",
+    "solution": "$k=h(x)=2-\\frac{15}{x+1}-\\sqrt{-x}$이다. $x<-1$에서 분수함수 $2-15/(x+1)$은 증가하고 $\\sqrt{-x}$는 감소하므로 $h$는 엄격히 증가한다. 교점은 $h([-16,-9])$ 안의 $k$마다 정확히 한 점이므로 최솟값은 $h(-16)=2-\\frac{15}{-15}-4=-1$이다.",
+    "curriculum": "2022",
+    "standardCourse": "공통수학2",
+    "sourceQid": 14,
+    "variationType": "EXAM_FOLLOWUP",
+    "followupKind": "CONFIRMATION",
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q14",
+    "image": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사2/q14-solution.svg",
+    "tags": [],
+    "visualDisposition": {
+      "problemVisual": {
+        "requirement": "EXEMPT",
+        "reason": "수식·문장으로 완결되며 문제 그림은 필요하지 않음"
+      },
+      "solutionVisual": {
+        "requirement": "BENEFICIAL",
+        "reason": "제한구간에서 차 함수의 단조성과 교점 한 개"
+      }
+    },
+    "standardUnitKey": "H22-C2-09",
+    "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+    "standardUnit": "무리함수",
+    "standardUnitOrder": 9,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
+    "rpmPrimaryRecordId": "H1-RPM-272",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+    "templateKey": "TPL_GRAPH_INTERSECTION_COUNT",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "crossConceptKeys": [
+      "CC_GRAPH_INTERSECTION_COUNT"
+    ],
+    "conditionKeys": [
+      "COND_RESTRICTED_INTERVAL",
+      "COND_EXACT_INTERSECTION_COUNT"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "reviewStatus": "review_required",
+    "solutionStatus": "self_checked",
+    "solutionImageAlt": "닫힌 구간 왼쪽 끝 x=-16에서 교점이 생기고 그때 k=-1이다.",
+    "solutionImageCaption": "닫힌 구간 왼쪽 끝 x=-16에서 교점이 생기고 그때 k=-1이다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 15,
+    "number": 15,
+    "score": 4.3,
+    "points": 4.3,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "wide": false,
+    "content": "$X=\\{1,2,3,4\\}$에서 $f(1)=1$, $f(2)=4$, $f(3)=2$, $f(4)=4$이다. 함수 $g:X\\to X$ 중 $g(1)\\ne g(2)$이면서 $g\\circ f$의 치역의 원소 수가 정확히 $2$개가 되게 하는 $g$는 몇 개인가? [4.3점]",
+    "choices": [
+      "$24$",
+      "$48$",
+      "$72$",
+      "$96$",
+      "$144$"
+    ],
+    "answer": "④",
+    "solution": "$f(X)=\\{1,2,4\\}$이므로 합성함수의 치역은 $\\{g(1),g(2),g(4)\\}$이다. 먼저 서로 다른 $g(1),g(2)$를 순서 있게 정하는 방법은 $4\\cdot3=12$가지다. 치역은 이 두 값으로 정확히 두 개이므로 $g(4)$는 이 둘 가운데 하나를 고르는 $2$가지다. $f(X)$에 없는 입력 $3$에서의 $g(3)$은 $4$가지로 자유롭게 정한다. 따라서 $12\\cdot2\\cdot4=96$가지이다. 크기가 $3$이던 이전 초안의 목표를 $2$로 고쳤고, 세 사용 입력·한 미사용 입력이라는 핵심을 유지했다.",
+    "curriculum": "2022",
+    "standardCourse": "공통수학2",
+    "sourceQid": 15,
+    "variationType": "EXAM_FOLLOWUP",
+    "followupKind": "CONFIRMATION",
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q15",
+    "image": "assets/images/25_매산여고_2학기_기말_고1_유사2/q15-problem.svg",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사2/q15-solution.svg",
+    "tags": [],
+    "visualDisposition": {
+      "problemVisual": {
+        "requirement": "BENEFICIAL",
+        "reason": "대응표는 글로 완결되지만 화살표도가 합성·치역 구조 이해에 유익함"
+      },
+      "solutionVisual": {
+        "requirement": "BENEFICIAL",
+        "reason": "g(1)≠g(2) 선행조건과 사용 입력 {1,2,4}, 미사용 입력3의 분리"
+      }
+    },
+    "standardUnitKey": "H22-C2-07",
+    "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+    "standardUnit": "함수",
+    "standardUnitOrder": 7,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
+    "rpmPrimaryRecordId": "H1-RPM-251",
+    "problemTypeKey": "PT_FUNCTION_COUNTING",
+    "templateKey": "TPL_CONSTRAINED_FUNCTION_COUNT",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "crossConceptKeys": [
+      "CC_FUNCTION_COUNTING"
+    ],
+    "conditionKeys": [
+      "COND_FUNCTION_VALUE_CONSTRAINT",
+      "COND_INEQUALITY_CONSTRAINT"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "reviewStatus": "review_required",
+    "solutionStatus": "self_checked",
+    "sourceDiagramModel": {
+      "X": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "f": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          4
+        ]
+      ],
+      "unusedGInput": 3
+    },
+    "imageAlt": "발문에 주어진 함수 f의 대응을 원소별 화살표로 표시한다.",
+    "imageCaption": "발문에 주어진 함수 f의 대응을 원소별 화살표로 표시한다.",
+    "imageSize": "full",
+    "solutionImageAlt": "f의 치역에 해당하는 세 입력만 g∘f의 치역 결정에 사용되며 나머지 한 입력은 자유롭다.",
+    "solutionImageCaption": "f의 치역에 해당하는 세 입력만 g∘f의 치역 결정에 사용되며 나머지 한 입력은 자유롭다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 16,
+    "number": 16,
+    "score": 4.3,
+    "points": 4.3,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "wide": false,
+    "content": "$f(x)=\\begin{cases}\\sqrt{a(x-4)}+2&(x\\le0)\\\\4-\\frac9{x+3}&(x>0)\\end{cases}$가 일대일함수이고 치역이 $(k,\\infty)$를 이룬다. $a-k$는? [4.3점]",
+    "choices": [
+      "$-5$",
+      "$-4$",
+      "$-3$",
+      "$-2$",
+      "$0$"
+    ],
+    "answer": "④",
+    "solution": "$x>0$인 조각의 치역은 $(1,4)$이다. 전체가 빈틈 없는 $(k,\\infty)$가 되려면 다른 조각의 치역은 $[4,\\infty)$여야 한다. 경계 $x=0$에서 $\\sqrt{-4a}+2=4$로부터 $a=-1$. 이 값에서는 근호 조각이 $[4,\\infty)$이고 두 치역이 겹치지 않으므로 일대일이다. $k=1$이므로 $a-k=-1-1=-2$이다.",
+    "curriculum": "2022",
+    "standardCourse": "공통수학2",
+    "sourceQid": 16,
+    "variationType": "EXAM_FOLLOWUP",
+    "followupKind": "CONFIRMATION",
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q16",
+    "image": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사2/q16-solution.svg",
+    "tags": [],
+    "visualDisposition": {
+      "problemVisual": {
+        "requirement": "EXEMPT",
+        "reason": "수식·문장으로 완결되며 문제 그림은 필요하지 않음"
+      },
+      "solutionVisual": {
+        "requirement": "BENEFICIAL",
+        "reason": "두 조각함수의 치역 경계가 맞물리는 구간"
+      }
+    },
+    "standardUnitKey": "H22-C2-07",
+    "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+    "standardUnit": "함수",
+    "standardUnitOrder": 7,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
+    "rpmPrimaryRecordId": "H1-RPM-257",
+    "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+    "templateKey": "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "crossConceptKeys": [
+      "CC_PIECEWISE_BIJECTION"
+    ],
+    "conditionKeys": [
+      "COND_PIECEWISE_DOMAIN_PARTITION",
+      "COND_FUNCTION_INJECTIVE"
+    ],
+    "integrationPattern": "INTERDEPENDENT",
+    "reviewStatus": "review_required",
+    "solutionStatus": "self_checked",
+    "solutionImageAlt": "접합 높이 4에서 왼쪽 치역 [4,∞)와 오른쪽 치역 (1,4)가 만난다.",
+    "solutionImageCaption": "접합 높이 4에서 왼쪽 치역 [4,∞)와 오른쪽 치역 (1,4)가 만난다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 17,
+    "number": 17,
+    "score": 4.4,
+    "points": 4.4,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "wide": false,
+    "content": "$f(x)=\\sqrt{4x+3-k}-2$가 역함수 $f^{-1}$와 정확히 한 점에서 교차하도록 하는 정수 $k\\ge-8$은 모두 몇 개인가? [4.4점]",
+    "choices": [
+      "$3$",
+      "$4$",
+      "$5$",
+      "$6$",
+      "$7$"
+    ],
+    "answer": "②",
+    "solution": "엄격히 증가하는 함수에서 역함수와의 교점은 $y=x$ 위에 있다. $\\sqrt{4x+3-k}=x+2$에서 $x\\ge-2$이고 $k=4x+3-(x+2)^2=-x^2-1$이다. 이 함수의 최댓값은 $x=0$에서 $-1$이고 왼쪽 끝 $x=-2$에서 $-5$이다. 따라서 $k<-5$이면 해가 한 개, $-5\\le k<-1$이면 두 개, $k=-1$이면 한 개다. $k\\ge-8$인 정수는 $-8,-7,-6,-1$ 네 개이다.",
+    "curriculum": "2022",
+    "standardCourse": "공통수학2",
+    "sourceQid": 17,
+    "variationType": "EXAM_FOLLOWUP",
+    "followupKind": "CONFIRMATION",
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q17",
+    "image": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사2/q17-solution.svg",
+    "tags": [],
+    "visualDisposition": {
+      "problemVisual": {
+        "requirement": "EXEMPT",
+        "reason": "수식·문장으로 완결되며 문제 그림은 필요하지 않음"
+      },
+      "solutionVisual": {
+        "requirement": "BENEFICIAL",
+        "reason": "함수·역함수의 대칭과 y=x 위 교점 수 판정"
+      }
+    },
+    "standardUnitKey": "H22-C2-07",
+    "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+    "standardUnit": "함수",
+    "standardUnitOrder": 7,
+    "subUnit": "역함수",
+    "subUnitClassificationDepth": "complete_documented",
+    "rpmPrimaryRecordId": "H1-RPM-256",
+    "problemTypeKey": "PT_INVERSE_GRAPH",
+    "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+    "difficultyBucket": 5,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "crossConceptKeys": [
+      "CC_INVERSE_GRAPH_INTERSECTION"
+    ],
+    "conditionKeys": [
+      "COND_INTEGER",
+      "COND_EXACT_INTERSECTION_COUNT"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "reviewStatus": "review_required",
+    "solutionStatus": "self_checked",
+    "solutionImageAlt": "k=-1인 경우 f와 역함수가 y=x의 고정점 (0,0)에서 만나는 모습을 확인한다.",
+    "solutionImageCaption": "k=-1인 경우 f와 역함수가 y=x의 고정점 (0,0)에서 만나는 모습을 확인한다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 18,
+    "number": 18,
+    "score": 4.4,
+    "points": 4.4,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "wide": false,
+    "content": "두 제곱근 곡선 $y=\\sqrt{x+4}-2$, $y=\\sqrt{x+6}$과 직선 $y=-x+k$, $y=-x+11$($k<11$)로 둘러싸인 부분의 넓이가 $10$이다. 아래쪽 직선의 절편 $k$는? [4.4점]",
+    "choices": [
+      "$6$",
+      "$7$",
+      "$8$",
+      "$10$",
+      "$11$"
+    ],
+    "answer": "①",
+    "solution": "뒤 곡선은 앞 곡선을 왼쪽으로 $2$, 위쪽으로 $2$만큼 옮긴 것이며 두 직선과 평행하다. 곡선 사이의 기울기 $-1$ 방향 평행이동 폭은 $2$이고 두 직선의 절편 차는 $11-k>0$이다. 따라서 넓이는 $2(11-k)=10$이며 $11-k=5$, $k=6$이다. 원본처럼 위쪽 직선의 절편을 구하는 대신 고정된 위쪽 절편과 넓이에서 아래쪽 절편을 역산한다.",
+    "curriculum": "2022",
+    "standardCourse": "공통수학2",
+    "sourceQid": 18,
+    "variationType": "EXAM_FOLLOWUP",
+    "followupKind": "CONFIRMATION",
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q18",
+    "image": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사2/q18-solution.svg",
+    "tags": [],
+    "visualDisposition": {
+      "problemVisual": {
+        "requirement": "EXEMPT",
+        "reason": "수식·문장으로 완결되며 문제 그림은 필요하지 않음"
+      },
+      "solutionVisual": {
+        "requirement": "REQUIRED",
+        "reason": "기울기 −1인 두 직선의 절편 차와 곡선의 (−d,+d) 이동이 만드는 폭×높이 넓이 (세트 2)"
+      }
+    },
+    "standardUnitKey": "H22-C2-09",
+    "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+    "standardUnit": "무리함수",
+    "standardUnitOrder": 9,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
+    "rpmPrimaryRecordId": "H1-RPM-267",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+    "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_STRIP",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "crossConceptKeys": [
+      "CC_CURVE_TRANSLATION_CONGRUENCE",
+      "CC_AREA"
+    ],
+    "conditionKeys": [
+      "COND_POSITIVE"
+    ],
+    "integrationPattern": "INTERDEPENDENT",
+    "reviewStatus": "review_required",
+    "solutionStatus": "self_checked",
+    "solutionImageAlt": "위쪽 절편 11과 아래쪽 절편 k=6 사이 넓이는 2(11-6)=10이다.",
+    "solutionImageCaption": "위쪽 절편 11과 아래쪽 절편 k=6 사이 넓이는 2(11-6)=10이다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 19,
+    "number": 19,
+    "score": 4.3,
+    "points": 4.3,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "wide": false,
+    "content": "$0\\le x\\le4$에서 $f(x)=\\begin{cases}x^2-2x+3&(0\\le x\\le2)\\\\-2x+8&(2<x\\le4)\\end{cases}$이다. $f(x)+f(f(x))=5$의 서로 다른 실근은 몇 개인가? [4.3점]",
+    "choices": [
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$"
+    ],
+    "answer": "⑤",
+    "solution": "$t=f(x)$라 두면 $0\\le t<4$. $0\\le t\\le2$에서 $t+f(t)=t^2-t+3=5$를 풀어 $t=2$를 얻고(다른 근 $-1$ 제외), $2<t<4$에서 $8-t=5$이므로 $t=3$을 얻는다. $f(x)=2$의 해는 $x=1,3$이고, $f(x)=3$의 해는 $x=0,2,\\frac52$이다. 서로 다른 해는 다섯 개다.",
+    "curriculum": "2022",
+    "standardCourse": "공통수학2",
+    "sourceQid": 19,
+    "variationType": "EXAM_FOLLOWUP",
+    "followupKind": "CONFIRMATION",
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q19",
+    "image": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사2/q19-solution.svg",
+    "tags": [],
+    "visualDisposition": {
+      "problemVisual": {
+        "requirement": "EXEMPT",
+        "reason": "수식·문장으로 완결되며 문제 그림은 필요하지 않음"
+      },
+      "solutionVisual": {
+        "requirement": "BENEFICIAL",
+        "reason": "조각함수의 중간값 t와 원상 분기 구조"
+      }
+    },
+    "standardUnitKey": "H22-C2-07",
+    "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+    "standardUnit": "함수",
+    "standardUnitOrder": 7,
+    "subUnit": "합성함수",
+    "subUnitClassificationDepth": "complete_documented",
+    "rpmPrimaryRecordId": "H1-RPM-253",
+    "problemTypeKey": "PT_COMPOSITION_EQUATION",
+    "templateKey": "TPL_COMPOSITION_EQUATION_SOLVE",
+    "difficultyBucket": 5,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "crossConceptKeys": [
+      "CC_PIECEWISE_FUNCTION_COMPOSITION"
+    ],
+    "conditionKeys": [
+      "COND_PIECEWISE_DOMAIN_PARTITION"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "reviewStatus": "review_required",
+    "solutionStatus": "self_checked",
+    "solutionImageAlt": "t=f(x)로 놓으면 가로선 y=5와 t+f(t)의 그래프가 만나는 후보는 t=2,3이다. 조각별 정의역·치역 제한을 적용한다.",
+    "solutionImageCaption": "t=f(x)로 놓으면 가로선 y=5와 t+f(t)의 그래프가 만나는 후보는 t=2,3이다. 조각별 정의역·치역 제한을 적용한다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 20,
+    "number": 20,
+    "score": 4.5,
+    "points": 4.5,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "wide": false,
+    "content": "$k>0$일 때 조건 $p:(x-3)^2<4k^2$, $q:|x-k|<2$이다. $q$를 만족하지만 $p$를 만족하지 않는 정수 $x$가 정확히 한 개가 되도록 하는 $k$의 범위를 $\\alpha<k\\le\\beta$라 한다. $10(\\alpha+\\beta)$는? [4.5점]",
+    "choices": [
+      "$10$",
+      "$15$",
+      "$20$",
+      "$25$",
+      "$30$"
+    ],
+    "answer": "④",
+    "solution": "$q$의 진리집합은 $(k-2,k+2)$, $p$의 진리집합은 $(3-2k,3+2k)$이다.\n① $0<k<1$이면 $q$를 만족하는 정수 $-1,0,1,2$ 중 $-1,0,1$이 $p$ 밖에 있다. $k=1$에서는 $q$의 정수가 $0,1,2$이고 $p=(1,5)$이므로 $0,1$ 두 개가 반례다.\n② $1<k<2$이면 $q$의 정수는 $0,1,2,3$이다. 이 중 $1,2,3$은 $p$ 안에 있고, $0$이 $p$ 밖에 있을 조건은 $0\\le3-2k$, 즉 $k\\le\\frac32$이다. $k=\\frac32$에서 $0$은 $p$의 열린 끝점이어서 여전히 반례다.\n③ $k\\ge2$이면 $p$가 $q$에 속한 모든 정수를 포함한다. 따라서 $1<k\\le\\frac32$이며 $10(\\alpha+\\beta)=25$이다.",
+    "curriculum": "2022",
+    "standardCourse": "공통수학2",
+    "sourceQid": 20,
+    "variationType": "EXAM_FOLLOWUP",
+    "followupKind": "CONFIRMATION",
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q20",
+    "image": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사2/q20-solution.svg",
+    "tags": [],
+    "visualDisposition": {
+      "problemVisual": {
+        "requirement": "EXEMPT",
+        "reason": "수식·문장으로 완결되며 문제 그림은 필요하지 않음"
+      },
+      "solutionVisual": {
+        "requirement": "BENEFICIAL",
+        "reason": "q 구간과 p 구간의 정수 반례·양 끝 포함관계"
+      }
+    },
+    "standardUnitKey": "H22-C2-06",
+    "subUnitKey": "H22-C2-06-CORE",
+    "standardUnit": "명제",
+    "standardUnitOrder": 6,
+    "subUnit": "명제 핵심 개념",
+    "subUnitClassificationDepth": "complete_documented",
+    "rpmPrimaryRecordId": "H1-RPM-248",
+    "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+    "templateKey": "TPL_PROPOSITION_COUNTEREXAMPLE_COUNT_PARAMETER",
+    "difficultyBucket": 5,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "crossConceptKeys": [
+      "CC_COUNTEREXAMPLE"
+    ],
+    "conditionKeys": [
+      "COND_INTEGER",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "reviewStatus": "review_required",
+    "solutionStatus": "self_checked",
+    "solutionImageAlt": "k=3/2를 예로 들면 q 구간의 정수 중 p에 들어가지 않는 반례는 x=0 하나이다.",
+    "solutionImageCaption": "k=3/2를 예로 들면 q 구간의 정수 중 p에 들어가지 않는 반례는 x=0 하나이다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 21,
+    "number": 21,
+    "score": 6,
+    "points": 6,
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "wide": false,
+    "content": "정수 $k$에 대하여 전칭명제 $Q$: “모든 실수 $x$에 대해 $(x-k)^2>k^2-9$이다”를 생각하자. $Q$의 부정을 존재명제로 쓰고, $Q$가 참이 되게 하는 모든 정수 $k$를 구하여 이유를 설명하시오. [6점]",
+    "choices": [],
+    "answer": "-2,-1,0,1,2",
+    "solution": "전칭명제 $Q$의 부정은 “어떤 실수 $x$에 대하여 $(x-k)^2\\le k^2-9$이다”라는 존재명제다. 원래 주어진 $Q$가 모든 실수에 대해 참이 되려면 $(x-k)^2$의 최솟값인 $0$이 우변보다 엄격히 커야 한다. 즉 $0>k^2-9$이므로 $-3<k<3$이다. 가능한 정수는 $-2,-1,0,1,2$이며 $k=\\pm3$에서는 $x=k$일 때 등호가 되어 $Q$가 거짓이다.",
+    "curriculum": "2022",
+    "standardCourse": "공통수학2",
+    "sourceQid": 21,
+    "variationType": "EXAM_FOLLOWUP",
+    "followupKind": "CONFIRMATION",
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q21",
+    "image": "",
+    "solutionImage": "",
+    "tags": [],
+    "visualDisposition": {
+      "problemVisual": {
+        "requirement": "EXEMPT",
+        "reason": "수식·문장으로 완결되며 문제 그림은 필요하지 않음"
+      },
+      "solutionVisual": {
+        "requirement": "EXEMPT",
+        "reason": "계산·논리 서술만으로 해설 완결"
+      }
+    },
+    "standardUnitKey": "H22-C2-06",
+    "subUnitKey": "H22-C2-06-CORE",
+    "standardUnit": "명제",
+    "standardUnitOrder": 6,
+    "subUnit": "명제 핵심 개념",
+    "subUnitClassificationDepth": "complete_documented",
+    "rpmPrimaryRecordId": "H1-RPM-243",
+    "problemTypeKey": "PT_QUANTIFIER_NEGATION",
+    "templateKey": "TPL_QUANTIFIER_NEGATION_NEGATE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "crossConceptKeys": [
+      "CC_QUANTIFIER_NEGATION"
+    ],
+    "conditionKeys": [
+      "COND_INTEGER",
+      "COND_UNIVERSAL_INPUTS"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "reviewStatus": "review_required",
+    "solutionStatus": "self_checked",
+    "essayAnswer": "-2,-1,0,1,2"
+  },
+  {
+    "id": 22,
+    "number": 22,
+    "score": 7,
+    "points": 7,
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "wide": false,
+    "content": "곡선 $y=\\sqrt{8x+16}-1$과 직선 $x-y=-k$가 서로 다른 두 점에서 만나도록 하는 실수 $k$의 범위를 모두 구하여 설명하시오. [7점]",
+    "choices": [],
+    "answer": "1\\le k<3",
+    "solution": "$t=\\sqrt{8x+16}\\ge0$이라 두면 $x=\\frac{t^2}8-2$, $y=t-1$이고 직선 조건은 $t^2-8t+8(k-1)=0$이다. 서로 다른 두 비음수 근을 가져야 하므로 근의 곱 $8(k-1)\\ge0$에서 $k\\ge1$, 판별식 $64-32(k-1)>0$에서 $k<3$이다. 두 근의 합은 $8>0$이고 $k=1$에서 한 근이 $0$이므로 포함된다. 답은 $1\\le k<3$이다.",
+    "curriculum": "2022",
+    "standardCourse": "공통수학2",
+    "sourceQid": 22,
+    "variationType": "EXAM_FOLLOWUP",
+    "followupKind": "CONFIRMATION",
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q22",
+    "image": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사2/q22-solution.svg",
+    "tags": [],
+    "visualDisposition": {
+      "problemVisual": {
+        "requirement": "EXEMPT",
+        "reason": "수식·문장으로 완결되며 문제 그림은 필요하지 않음"
+      },
+      "solutionVisual": {
+        "requirement": "BENEFICIAL",
+        "reason": "제곱근 곡선과 직선의 두 교점·정의역 끝점"
+      }
+    },
+    "standardUnitKey": "H22-C2-09",
+    "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+    "standardUnit": "무리함수",
+    "standardUnitOrder": 9,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
+    "rpmPrimaryRecordId": "H1-RPM-272",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+    "templateKey": "TPL_GRAPH_INTERSECTION_COUNT",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "crossConceptKeys": [
+      "CC_RADICAL_LINE_INTERSECTION"
+    ],
+    "conditionKeys": [
+      "COND_EXACT_INTERSECTION_COUNT"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "reviewStatus": "review_required",
+    "solutionStatus": "self_checked",
+    "essayAnswer": "1\\le k<3",
+    "solutionImageAlt": "k=1일 때 시작점 (-2,-1)과 다른 교점 (6,7)이 존재한다.",
+    "solutionImageCaption": "k=1일 때 시작점 (-2,-1)과 다른 교점 (6,7)이 존재한다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 23,
+    "number": 23,
+    "score": 7,
+    "points": 7,
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "wide": false,
+    "content": "$f(x)=\\frac{ax+b}{x-2}$에서 $f(4)=13$이다. $|f(x)|=3$은 실근을 오직 한 개 가지며 그 실근은 음수이다. $|f(x)|=\\alpha$($\\alpha>0$)의 두 실근 $\\beta<\\gamma$가 모두 양수이고 작은 근 $\\beta$가 정수일 때, $\\alpha+\\beta+\\gamma$를 구하고 근의 부호를 검증하시오. [7점]",
+    "choices": [],
+    "answer": "\\frac{150}{7}",
+    "solution": "$f(4)=13$이므로 $4a+b=26$이다. $|f|=3$에 실근이 한 개뿐이려면 점근선의 높이 $a$가 $\\pm3$이다. $a=3$이면 $b=14$, $f(x)=3+\\frac{20}{x-2}$이고 $f=-3$의 근은 $x=2-\\frac{20}6=-\\frac43<0$이다. 반면 $a=-3$이면 $b=38$, $f(x)=-3+\\frac{32}{x-2}$이고 $f=3$의 근 $x=2+\\frac{32}6>0$이므로 제외한다. $a=3$으로 확정한다. $|f|=\\alpha$가 두 양의 근을 가지려면 $\\alpha>3$이고 $\\beta=2-\\frac{20}{\\alpha+3}$는 $0<\\beta<2$이다. 정수이므로 $\\beta=1$, 따라서 $\\alpha=17$이다. 큰 근은 $\\gamma=2+\\frac{20}{17-3}=\\frac{24}7$이다. 따라서 $\\alpha+\\beta+\\gamma=17+1+\\frac{24}7=\\frac{150}7$이다.",
+    "curriculum": "2022",
+    "standardCourse": "공통수학2",
+    "sourceQid": 23,
+    "variationType": "EXAM_FOLLOWUP",
+    "followupKind": "CONFIRMATION",
+    "provenance": "SIMILAR_OF:archive/exams/original/high/h1/2final/25_매산여고_2학기_기말_고1_기출.js#q23",
+    "image": "",
+    "solutionImage": "assets/images/25_매산여고_2학기_기말_고1_유사2/q23-solution.svg",
+    "tags": [],
+    "visualDisposition": {
+      "problemVisual": {
+        "requirement": "EXEMPT",
+        "reason": "수식·문장으로 완결되며 문제 그림은 필요하지 않음"
+      },
+      "solutionVisual": {
+        "requirement": "BENEFICIAL",
+        "reason": "유리함수에 대한 y=±c 교점과 극점 제외 확인"
+      }
+    },
+    "standardUnitKey": "H22-C2-08",
+    "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+    "standardUnit": "유리함수",
+    "standardUnitOrder": 8,
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitClassificationDepth": "complete_documented",
+    "rpmPrimaryRecordId": "H1-RPM-265",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+    "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+    "difficultyBucket": 5,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "crossConceptKeys": [
+      "CC_ABSOLUTE_VALUE_EQUATION"
+    ],
+    "conditionKeys": [
+      "COND_INTEGER",
+      "COND_POSITIVE",
+      "COND_NEGATIVE",
+      "COND_NONZERO"
+    ],
+    "integrationPattern": "CASE_BRANCH",
+    "reviewStatus": "review_required",
+    "solutionStatus": "self_checked",
+    "essayAnswer": "\\frac{150}{7}",
+    "solutionImageAlt": "극점 x=2 양쪽의 양의 해 x=1, 24/7은 각각 y=-17, y=17을 만족한다.",
+    "solutionImageCaption": "극점 x=2 양쪽의 양의 해 x=1, 24/7은 각각 y=-17, y=17을 만족한다.",
+    "solutionImageSize": "full"
+  }
+];

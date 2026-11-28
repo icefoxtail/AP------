@@ -1,0 +1,74 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      8,
+      -23,
+      23
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "12",
+          "2"
+        ],
+        "denominator": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "8"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "plus",
+        "kind": "LINE",
+        "coefficients": [
+          "14",
+          "0"
+        ],
+        "domain": [
+          "-3",
+          "8"
+        ],
+        "color": "WARM",
+        "label": "plus",
+        "style": "DASHED"
+      },
+      {
+        "id": "minus",
+        "kind": "LINE",
+        "coefficients": [
+          "-14",
+          "0"
+        ],
+        "domain": [
+          "-3",
+          "8"
+        ],
+        "color": "VIOLET",
+        "label": "minus",
+        "style": "DASHED"
+      }
+    ]
+  },
+  "caption": "극점 x=2 양쪽의 양의 해 x=1, 10/3은 각각 y=-14, y=14를 만족한다.",
+  "accessibilityDescription": "극점 x=2 양쪽의 양의 해 x=1, 10/3은 각각 y=-14, y=14를 만족한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$f(0)=-6$에서 $b=12$이다. $|f|=2$의 해가 한 개뿐이려면 한 부호 방정식의 계수 $a$가 $2$ 또는 $-2$여야 한다(그렇지 않으면 두 부호 방정식이 각각 해를 갖는다). $a=2$이면 $f(x)=2+\\frac{16}{x-2}$이며 $f=-2$의 유일한 해는 $x=-2 0$이므로 제외한다. 따라서 $a=2$이다. $|f|=\\alpha$가 두 양의 근을 가지려면 $\\alpha>2$이고, 작은 근은 $\\beta=2-\\frac{16}{\\alpha+2}$로 $0<\\beta<2$이다. 양의 정수는 $\\beta=1$뿐이므로 $\\alpha+2=16$, $\\alpha=14$이다. 큰 근은 $\\gamma=2+\\frac{16}{14-2}=\\frac{10}3$이다. 따라서 $\\alpha+\\beta+\\gamma=14+1+\\frac{10}3=\\frac{55}3$이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "극점 x=2 양쪽의 양의 해 x=1, 10/3은 각각 y=-14, y=14를 만족한다."
+  ]
+}

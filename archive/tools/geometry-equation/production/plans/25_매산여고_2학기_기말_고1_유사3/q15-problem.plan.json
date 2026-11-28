@@ -1,0 +1,94 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X1",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      {
+        "id": "X2",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        },
+        "style": "SOLID"
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X1",
+        "to": "X2",
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "발문에 주어진 함수 f의 대응을 원소별 화살표로 표시한다.",
+  "accessibilityDescription": "발문에 주어진 함수 f의 대응을 원소별 화살표로 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$X=\\{1,2,3,4\\}$에서 $f(1)=f(3)=2$, $f(2)=3$, $f(4)=4$이다. 함수 $g:X\\to X$ 중 $g\\circ f$의 치역에 원소 $1$이 포함되고 그 치역의 원소 수가 정확히 $2$인 것의 개수는? [4.3점]",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "발문에 주어진 함수 f의 대응을 원소별 화살표로 표시한다."
+  ]
+}

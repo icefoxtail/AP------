@@ -1,0 +1,56 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "p",
+        "color": "BLUE",
+        "hideSetLabel": true,
+        "pieces": [
+          {
+            "lo": {
+              "value": "-8",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "12",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "~q",
+        "color": "WARM",
+        "hideSetLabel": true,
+        "pieces": [
+          {
+            "lo": {
+              "value": "4",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "8",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "a=2를 예로 들면 ¬q의 닫힌구간이 p에 포함되어야 하며 p의 열린·닫힌 끝점을 구분한다.",
+  "accessibilityDescription": "a=2를 예로 들면 ¬q의 닫힌구간이 p에 포함되어야 하며 p의 열린·닫힌 끝점을 구분한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\sim q$는 두 실수 $2a,4a$ 사이의 닫힌 구간이다. 이것이 $[-8,12)$에 포함되려면 $\\min(2a,4a)\\ge-8$, $\\max(2a,4a)<12$가 필요충분하다. $a\\ge0$이면 $a=0,1,2$이고 $a<0$이면 $a=-2,-1$이다. 총 $5$개이다.",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "a=2를 예로 들면 ¬q의 닫힌구간이 p에 포함되어야 하며 p의 열린·닫힌 끝점을 구분한다."
+  ]
+}

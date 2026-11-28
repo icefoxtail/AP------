@@ -1,0 +1,60 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -17,
+      -8,
+      0,
+      8
+    ],
+    "curves": [
+      {
+        "id": "F",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-13",
+          "2"
+        ],
+        "denominator": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          "-16",
+          "-9"
+        ],
+        "color": "BLUE",
+        "label": "F"
+      },
+      {
+        "id": "root",
+        "kind": "SQRT",
+        "radicand": [
+          "0",
+          "-1"
+        ],
+        "amplitude": "1",
+        "offset": "-1",
+        "domain": [
+          "-16",
+          "-9"
+        ],
+        "color": "WARM",
+        "label": "root"
+      }
+    ]
+  },
+  "caption": "닫힌 구간 왼쪽 끝 x=-16에서 교점이 생기고 그때 k=-1이다.",
+  "accessibilityDescription": "닫힌 구간 왼쪽 끝 x=-16에서 교점이 생기고 그때 k=-1이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$k=h(x)=2-\\frac{15}{x+1}-\\sqrt{-x}$이다. $x<-1$에서 분수함수 $2-15/(x+1)$은 증가하고 $\\sqrt{-x}$는 감소하므로 $h$는 엄격히 증가한다. 교점은 $h([-16,-9])$ 안의 $k$마다 정확히 한 점이므로 최솟값은 $h(-16)=2-\\frac{15}{-15}-4=-1$이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "닫힌 구간 왼쪽 끝 x=-16에서 교점이 생기고 그때 k=-1이다."
+  ]
+}

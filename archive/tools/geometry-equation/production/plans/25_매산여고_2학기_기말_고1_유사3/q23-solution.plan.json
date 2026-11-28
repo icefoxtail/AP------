@@ -1,0 +1,100 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      9,
+      -20,
+      20
+    ],
+    "curves": [
+      {
+        "id": "left",
+        "kind": "RATIONAL",
+        "numerator": [
+          "12",
+          "0"
+        ],
+        "denominator": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "5"
+        ],
+        "color": "BLUE",
+        "label": "left",
+        "domainStates": [
+          "NONE",
+          "OPEN"
+        ]
+      },
+      {
+        "id": "right",
+        "kind": "RATIONAL",
+        "numerator": [
+          "12",
+          "0"
+        ],
+        "denominator": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "5",
+          "9"
+        ],
+        "color": "GREEN",
+        "label": "right",
+        "domainStates": [
+          "OPEN",
+          "NONE"
+        ]
+      },
+      {
+        "id": "plus",
+        "kind": "LINE",
+        "coefficients": [
+          "12",
+          "0"
+        ],
+        "domain": [
+          "-3",
+          "9"
+        ],
+        "color": "WARM",
+        "label": "plus",
+        "style": "DASHED"
+      },
+      {
+        "id": "minus",
+        "kind": "LINE",
+        "coefficients": [
+          "-12",
+          "0"
+        ],
+        "domain": [
+          "-3",
+          "9"
+        ],
+        "color": "VIOLET",
+        "label": "minus",
+        "style": "DASHED"
+      }
+    ]
+  },
+  "caption": "x=2는 극점, x=5는 원래 함수의 제거 가능한 구멍이며 두 양의 근은 x=1,3이다.",
+  "accessibilityDescription": "x=2는 극점, x=5는 원래 함수의 제거 가능한 구멍이며 두 양의 근은 x=1,3이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$f(0)=-6$에서 $b=12$이다. 분모의 인수에 따라 $x=2,5$는 반드시 제외한다. 허용된 $x$에서는 $f(x)=\\frac{ax+12}{x-2}$이고 $f(x)=4$의 형식상 해는 $x=\\frac{20}{4-a}$, $f(x)=-4$의 형식상 해는 $x=-\\frac4{a+4}$이다(각 분모가 $0$인 매개변수는 별도로 판정한다). $a 6$, 따라서 작은 양의 근 $\\beta$는 $0<\\beta<2$인 정수이므로 $1$이다. $\\beta=1$에서 $\\alpha=12$, $\\gamma=3$이고 모두 정의역에 속한다. 최종값은 $12+2\\cdot1+3=17$이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "x=2는 극점, x=5는 원래 함수의 제거 가능한 구멍이며 두 양의 근은 x=1,3이다."
+  ]
+}

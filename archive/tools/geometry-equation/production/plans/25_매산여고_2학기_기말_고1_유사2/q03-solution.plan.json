@@ -1,0 +1,139 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X1",
+        "name": "X",
+        "elements": [
+          "2",
+          "4",
+          "6"
+        ]
+      },
+      {
+        "id": "X2",
+        "name": "X",
+        "elements": [
+          "2",
+          "4",
+          "6"
+        ]
+      },
+      {
+        "id": "X3",
+        "name": "X",
+        "elements": [
+          "2",
+          "4",
+          "6"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 2
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 1
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 2
+        },
+        "to": {
+          "column": 2,
+          "element": 1
+        },
+        "style": "SOLID"
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X1",
+        "to": "X2",
+        "color": "BLUE"
+      },
+      {
+        "name": "g",
+        "from": "X2",
+        "to": "X3",
+        "color": "WARM"
+      }
+    ],
+    "highlightPaths": [
+      {
+        "path": [
+          "6",
+          "2",
+          "6"
+        ],
+        "color": "GREEN"
+      }
+    ]
+  },
+  "caption": "함수 f와 g의 화살표를 정방향·역방향으로 따라 합성함수와 역함수의 값을 결정한다.",
+  "accessibilityDescription": "함수 f와 g의 화살표를 정방향·역방향으로 따라 합성함수와 역함수의 값을 결정한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$f(2)=4$, $g^{-1}(4)=6$, $f(6)=2$이므로 첫 항은 $2$이다. $g\\circ f$는 $2,4,6$ 각각을 자기 자신으로 보내므로 $(g\\circ f)^{-1}(6)=6$이다. 합은 $8$이다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "함수 f와 g의 화살표를 정방향·역방향으로 따라 합성함수와 역함수의 값을 결정한다."
+  ]
+}

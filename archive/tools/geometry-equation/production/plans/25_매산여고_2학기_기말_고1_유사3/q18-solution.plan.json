@@ -1,0 +1,108 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -7,
+      13,
+      -10,
+      18
+    ],
+    "curves": [
+      {
+        "id": "C1",
+        "kind": "SQRT",
+        "radicand": [
+          "-1",
+          "1"
+        ],
+        "amplitude": "1",
+        "offset": "-1",
+        "domain": [
+          "1",
+          "12"
+        ],
+        "color": "BLUE",
+        "label": "C1"
+      },
+      {
+        "id": "C2",
+        "kind": "SQRT",
+        "radicand": [
+          "5",
+          "1"
+        ],
+        "amplitude": "1",
+        "offset": "5",
+        "domain": [
+          "-5",
+          "12"
+        ],
+        "color": "GREEN",
+        "label": "C2"
+      },
+      {
+        "id": "lower",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "-1"
+        ],
+        "domain": [
+          "-7",
+          "13"
+        ],
+        "color": "WARM",
+        "label": "lower"
+      },
+      {
+        "id": "upper",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "-1"
+        ],
+        "domain": [
+          "-7",
+          "13"
+        ],
+        "color": "VIOLET",
+        "label": "upper"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "-1"
+        },
+        {
+          "id": "B",
+          "x": "-5",
+          "y": "5"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B",
+          "dashed": true
+        }
+      ]
+    }
+  },
+  "caption": "두 곡선이 (-6,6)만큼 평행이동되며 넓이 6·3=18이다.",
+  "accessibilityDescription": "두 곡선이 (-6,6)만큼 평행이동되며 넓이 6·3=18이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이동된 곡선은 $y=\\sqrt{x-1+d}-1+d$이다. 이동 방향 $(-d,d)$는 두 직선의 방향과 같고, $x+y=t$가 일정할 때 두 곡선의 $x$좌표 간격은 항상 $d$다. 두 직선의 절편 차가 $3$이므로 넓이는 $3d$. 따라서 $3d=18$에서 $d=6$이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "두 곡선이 (-6,6)만큼 평행이동되며 넓이 6·3=18이다."
+  ]
+}

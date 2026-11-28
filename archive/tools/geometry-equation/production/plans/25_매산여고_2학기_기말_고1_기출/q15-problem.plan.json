@@ -1,0 +1,36 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X1",
+        "name": "X",
+        "elements": ["1", "2", "3", "4"]
+      },
+      {
+        "id": "X2",
+        "name": "X",
+        "elements": ["1", "2", "3", "4"]
+      }
+    ],
+    "arrows": [
+      {"from": {"column": 0, "element": 0}, "to": {"column": 1, "element": 1}, "style": "SOLID"},
+      {"from": {"column": 0, "element": 1}, "to": {"column": 1, "element": 0}, "style": "SOLID"},
+      {"from": {"column": 0, "element": 2}, "to": {"column": 1, "element": 1}, "style": "SOLID"},
+      {"from": {"column": 0, "element": 3}, "to": {"column": 1, "element": 3}, "style": "SOLID"}
+    ],
+    "arrowGroups": [
+      {"name": "f", "from": "X1", "to": "X2", "color": "BLUE"}
+    ]
+  },
+  "caption": "집합 X에서 X로 가는 함수 f의 대응도",
+  "accessibilityDescription": "왼쪽과 오른쪽 집합 X는 모두 원소 1, 2, 3, 4를 갖는다. 함수 f의 화살표는 1에서 2로, 2에서 1로, 3에서 2로, 4에서 4로 향한다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "X={1,2,3,4}", "mappedTo": "diagram"},
+    {"id": "c2", "condition": "f(1)=2, f(2)=1, f(3)=2, f(4)=4", "mappedTo": "diagram"}
+  ],
+  "newVisualInformation": [
+    "원본 시험지 4쪽의 함수 f 화살표 네 개를 정확히 복원"
+  ]
+}

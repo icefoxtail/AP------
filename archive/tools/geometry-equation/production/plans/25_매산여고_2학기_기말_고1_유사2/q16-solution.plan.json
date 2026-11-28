@@ -1,0 +1,68 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -11,
+      12,
+      -3,
+      9
+    ],
+    "curves": [
+      {
+        "id": "left",
+        "kind": "SQRT",
+        "radicand": [
+          "4",
+          "-1"
+        ],
+        "amplitude": "1",
+        "offset": "2",
+        "domain": [
+          "-10",
+          "0"
+        ],
+        "color": "BLUE",
+        "label": "left",
+        "domainStates": [
+          "NONE",
+          "CLOSED"
+        ]
+      },
+      {
+        "id": "right",
+        "kind": "RATIONAL",
+        "numerator": [
+          "3",
+          "4"
+        ],
+        "denominator": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "11"
+        ],
+        "color": "WARM",
+        "label": "right",
+        "domainStates": [
+          "OPEN",
+          "NONE"
+        ]
+      }
+    ]
+  },
+  "caption": "접합 높이 4에서 왼쪽 치역 [4,∞)와 오른쪽 치역 (1,4)가 만난다.",
+  "accessibilityDescription": "접합 높이 4에서 왼쪽 치역 [4,∞)와 오른쪽 치역 (1,4)가 만난다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x>0$인 조각의 치역은 $(1,4)$이다. 전체가 빈틈 없는 $(k,\\infty)$가 되려면 다른 조각의 치역은 $[4,\\infty)$여야 한다. 경계 $x=0$에서 $\\sqrt{-4a}+2=4$로부터 $a=-1$. 이 값에서는 근호 조각이 $[4,\\infty)$이고 두 치역이 겹치지 않으므로 일대일이다. $k=1$이므로 $a-k=-1-1=-2$이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "접합 높이 4에서 왼쪽 치역 [4,∞)와 오른쪽 치역 (1,4)가 만난다."
+  ]
+}

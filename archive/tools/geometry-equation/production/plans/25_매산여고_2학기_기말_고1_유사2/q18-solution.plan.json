@@ -1,0 +1,108 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -8,
+      14,
+      -10,
+      18
+    ],
+    "curves": [
+      {
+        "id": "C1",
+        "kind": "SQRT",
+        "radicand": [
+          "4",
+          "1"
+        ],
+        "amplitude": "1",
+        "offset": "-2",
+        "domain": [
+          "-4",
+          "13"
+        ],
+        "color": "BLUE",
+        "label": "C1"
+      },
+      {
+        "id": "C2",
+        "kind": "SQRT",
+        "radicand": [
+          "6",
+          "1"
+        ],
+        "amplitude": "1",
+        "offset": "0",
+        "domain": [
+          "-6",
+          "13"
+        ],
+        "color": "GREEN",
+        "label": "C2"
+      },
+      {
+        "id": "lower",
+        "kind": "LINE",
+        "coefficients": [
+          "6",
+          "-1"
+        ],
+        "domain": [
+          "-8",
+          "14"
+        ],
+        "color": "WARM",
+        "label": "lower"
+      },
+      {
+        "id": "upper",
+        "kind": "LINE",
+        "coefficients": [
+          "11",
+          "-1"
+        ],
+        "domain": [
+          "-8",
+          "14"
+        ],
+        "color": "VIOLET",
+        "label": "upper"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-4",
+          "y": "-2"
+        },
+        {
+          "id": "B",
+          "x": "-6",
+          "y": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B",
+          "dashed": true
+        }
+      ]
+    }
+  },
+  "caption": "위쪽 절편 11과 아래쪽 절편 k=6 사이 넓이는 2(11-6)=10이다.",
+  "accessibilityDescription": "위쪽 절편 11과 아래쪽 절편 k=6 사이 넓이는 2(11-6)=10이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "뒤 곡선은 앞 곡선을 왼쪽으로 $2$, 위쪽으로 $2$만큼 옮긴 것이며 두 직선과 평행하다. 곡선 사이의 기울기 $-1$ 방향 평행이동 폭은 $2$이고 두 직선의 절편 차는 $11-k>0$이다. 따라서 넓이는 $2(11-k)=10$이며 $11-k=5$, $k=6$이다. 원본처럼 위쪽 직선의 절편을 구하는 대신 고정된 위쪽 절편과 넓이에서 아래쪽 절편을 역산한다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "위쪽 절편 11과 아래쪽 절편 k=6 사이 넓이는 2(11-6)=10이다."
+  ]
+}

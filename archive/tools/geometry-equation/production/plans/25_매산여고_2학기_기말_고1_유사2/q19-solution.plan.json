@@ -1,0 +1,70 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      5,
+      0,
+      9
+    ],
+    "curves": [
+      {
+        "id": "left",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "3",
+          "-1",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "left"
+      },
+      {
+        "id": "right",
+        "kind": "LINE",
+        "coefficients": [
+          "8",
+          "-1"
+        ],
+        "domain": [
+          "2",
+          "4"
+        ],
+        "color": "GREEN",
+        "label": "right"
+      },
+      {
+        "id": "target",
+        "kind": "LINE",
+        "coefficients": [
+          "5",
+          "0"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "color": "WARM",
+        "label": "target",
+        "style": "DASHED"
+      }
+    ]
+  },
+  "caption": "t=f(x)로 놓으면 가로선 y=5와 t+f(t)의 그래프가 만나는 후보는 t=2,3이다. 조각별 정의역·치역 제한을 적용한다.",
+  "accessibilityDescription": "t=f(x)로 놓으면 가로선 y=5와 t+f(t)의 그래프가 만나는 후보는 t=2,3이다. 조각별 정의역·치역 제한을 적용한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$t=f(x)$라 두면 $0\\le t<4$. $0\\le t\\le2$에서 $t+f(t)=t^2-t+3=5$를 풀어 $t=2$를 얻고(다른 근 $-1$ 제외), $2<t<4$에서 $8-t=5$이므로 $t=3$을 얻는다. $f(x)=2$의 해는 $x=1,3$이고, $f(x)=3$의 해는 $x=0,2,\\frac52$이다. 서로 다른 해는 다섯 개다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "t=f(x)로 놓으면 가로선 y=5와 t+f(t)의 그래프가 만나는 후보는 t=2,3이다. 조각별 정의역·치역 제한을 적용한다."
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      5,
+      0,
+      9
+    ],
+    "curves": [
+      {
+        "id": "left",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "2",
+          "3",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "left"
+      },
+      {
+        "id": "right",
+        "kind": "LINE",
+        "coefficients": [
+          "8",
+          "-1"
+        ],
+        "domain": [
+          "2",
+          "4"
+        ],
+        "color": "GREEN",
+        "label": "right"
+      },
+      {
+        "id": "target",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "0"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "color": "WARM",
+        "label": "target",
+        "style": "DASHED"
+      }
+    ]
+  },
+  "caption": "t=f(x)로 놓으면 가로선 y=4와 t+f(t)의 그래프가 만나는 후보는 t=1,2이며 t=4는 f의 치역에서 제외이다. 조각별 정의역·치역 제한을 적용한다.",
+  "accessibilityDescription": "t=f(x)로 놓으면 가로선 y=4와 t+f(t)의 그래프가 만나는 후보는 t=1,2이며 t=4는 f의 치역에서 제외이다. 조각별 정의역·치역 제한을 적용한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$t=f(x)$라 놓으면 $0\\le t<4$이다. $0\\le t\\le2$일 때 $t+f(t)=-t^2+3t+2=4$이므로 $t=1,2$. $2<t\\le4$일 때 $t+f(t)=8-t=4$이므로 $t=4$이나 $4$는 $f$의 치역에 없으므로 제외한다. $f(x)=1$은 두 번째 조각의 $x=\\frac72$ 하나, $f(x)=2$는 첫 조각의 $x=0,2$와 두 번째 조각의 $x=3$이다. 서로 다른 실근의 합은 $0+2+3+\\frac72=\\frac{17}2$이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "t=f(x)로 놓으면 가로선 y=4와 t+f(t)의 그래프가 만나는 후보는 t=1,2이며 t=4는 f의 치역에서 제외이다. 조각별 정의역·치역 제한을 적용한다."
+  ]
+}

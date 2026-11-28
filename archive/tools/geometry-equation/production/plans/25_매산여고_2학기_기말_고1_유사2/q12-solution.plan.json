@@ -1,0 +1,54 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      6,
+      -3,
+      49
+    ],
+    "curves": [
+      {
+        "id": "left",
+        "kind": "LINE",
+        "coefficients": [
+          "6",
+          "5"
+        ],
+        "domain": [
+          "-1",
+          "5/2"
+        ],
+        "color": "WARM",
+        "label": "left"
+      },
+      {
+        "id": "right",
+        "kind": "LINE",
+        "coefficients": [
+          "-4",
+          "9"
+        ],
+        "domain": [
+          "5/2",
+          "6"
+        ],
+        "color": "GREEN",
+        "label": "right"
+      }
+    ]
+  },
+  "caption": "t=1에서 좌우 기울기는 5와 9이며, 두 기울기의 차이를 4로 나누어 절댓값 계수 a=1을 역복원한다.",
+  "accessibilityDescription": "t=1에서 좌우 기울기는 5와 9이며, 두 기울기의 차이를 4로 나누어 절댓값 계수 a=1을 역복원한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "절댓값 식 $a|2x-5|+bx+c$의 왼쪽·오른쪽 기울기는 각각 $b-2a$, $b+2a$이다. 문제의 두 직선 기울기와 비교하면 $2b=(9-4t)+(5+4t)=14$이므로 $b=7$, $4a=(5+4t)-(9-4t)=8t-4$이므로 $a=2t-1$이다. 교점 조건에서 $c=1$로 복원되지만 전단사 개수 계산에는 $a$의 역복원이 핵심이다. 연속인 두 직선 조각이 $\\mathbb R$에서 $\\mathbb R$로 일대일대응이 되려면 양쪽 기울기가 같은 엄격 부호여야 한다. 합이 $14>0$이므로 둘 다 양수이다. 따라서 $9-4t>0$, $5+4t>0$에서 $-\\frac54<t<\\frac94$, 이를 $a=2t-1$로 옮기면 $-\\frac72<a<\\frac72$이다. 허용 정수 $a=-3,-2,-1,0,1,2,3$으로 $7$개다. $t$를 곧바로 정수로 세면 $a$의 정수성 조건을 잘못 적용한 것이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "t=1에서 좌우 기울기는 5와 9이며, 두 기울기의 차이를 4로 나누어 절댓값 계수 a=1을 역복원한다."
+  ]
+}

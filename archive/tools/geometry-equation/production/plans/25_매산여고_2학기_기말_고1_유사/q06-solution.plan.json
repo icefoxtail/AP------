@@ -1,0 +1,62 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -9,
+      9,
+      -4,
+      10
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "10",
+          "3"
+        ],
+        "denominator": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          "-9",
+          "9"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-9",
+          "5"
+        ],
+        "denominator": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-9",
+          "9"
+        ],
+        "color": "WARM",
+        "label": "g"
+      }
+    ]
+  },
+  "caption": "원래 점근선 (-3,3)에서 이동 후 (2,5)로 옮겨진다.",
+  "accessibilityDescription": "원래 점근선 (-3,3)에서 이동 후 (2,5)로 옮겨진다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 식은 각각 $y=3+\\frac1{x+3}$과 $y=5+\\frac1{x-2}$이다. 수직점근선 $x=-3$이 $x=2$로 움직여 $p=5$, 수평점근선 $y=3$이 $y=5$로 움직여 $q=2$이다. 따라서 $p+q=7$이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "원래 점근선 (-3,3)에서 이동 후 (2,5)로 옮겨진다."
+  ]
+}

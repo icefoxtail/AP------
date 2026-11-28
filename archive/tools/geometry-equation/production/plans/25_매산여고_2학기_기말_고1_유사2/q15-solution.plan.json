@@ -1,0 +1,110 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X1",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      {
+        "id": "X2",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        },
+        "style": "SOLID"
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X1",
+        "to": "X2",
+        "color": "BLUE"
+      }
+    ],
+    "highlight": {
+      "elements": [
+        {
+          "column": 1,
+          "element": 0
+        },
+        {
+          "column": 1,
+          "element": 1
+        },
+        {
+          "column": 1,
+          "element": 3
+        }
+      ]
+    }
+  },
+  "caption": "f의 치역에 해당하는 세 입력만 g∘f의 치역 결정에 사용되며 나머지 한 입력은 자유롭다.",
+  "accessibilityDescription": "f의 치역에 해당하는 세 입력만 g∘f의 치역 결정에 사용되며 나머지 한 입력은 자유롭다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$f(X)=\\{1,2,4\\}$이므로 합성함수의 치역은 $\\{g(1),g(2),g(4)\\}$이다. 먼저 서로 다른 $g(1),g(2)$를 순서 있게 정하는 방법은 $4\\cdot3=12$가지다. 치역은 이 두 값으로 정확히 두 개이므로 $g(4)$는 이 둘 가운데 하나를 고르는 $2$가지다. $f(X)$에 없는 입력 $3$에서의 $g(3)$은 $4$가지로 자유롭게 정한다. 따라서 $12\\cdot2\\cdot4=96$가지이다. 크기가 $3$이던 이전 초안의 목표를 $2$로 고쳤고, 세 사용 입력·한 미사용 입력이라는 핵심을 유지했다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "f의 치역에 해당하는 세 입력만 g∘f의 치역 결정에 사용되며 나머지 한 입력은 자유롭다."
+  ]
+}

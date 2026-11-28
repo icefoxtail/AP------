@@ -1,0 +1,67 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      9,
+      -4,
+      9
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "4",
+          "4"
+        ],
+        "amplitude": "1",
+        "offset": "-2",
+        "domain": [
+          "-1",
+          "8"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "inv",
+        "inverseOf": "f",
+        "domain": [
+          "-2",
+          "4"
+        ],
+        "color": "GREEN",
+        "label": "inverse"
+      },
+      {
+        "id": "diag",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "8"
+        ],
+        "color": "WARM",
+        "label": "diag",
+        "style": "DASHED"
+      }
+    ]
+  },
+  "caption": "k=-1인 경우 f와 역함수가 y=x의 고정점 (0,0)에서 만나는 모습을 확인한다.",
+  "accessibilityDescription": "k=-1인 경우 f와 역함수가 y=x의 고정점 (0,0)에서 만나는 모습을 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "엄격히 증가하는 함수에서 역함수와의 교점은 $y=x$ 위에 있다. $\\sqrt{4x+3-k}=x+2$에서 $x\\ge-2$이고 $k=4x+3-(x+2)^2=-x^2-1$이다. 이 함수의 최댓값은 $x=0$에서 $-1$이고 왼쪽 끝 $x=-2$에서 $-5$이다. 따라서 $k<-5$이면 해가 한 개, $-5\\le k<-1$이면 두 개, $k=-1$이면 한 개다. $k\\ge-8$인 정수는 $-8,-7,-6,-1$ 네 개이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "k=-1인 경우 f와 역함수가 y=x의 고정점 (0,0)에서 만나는 모습을 확인한다."
+  ]
+}

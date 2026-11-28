@@ -1,0 +1,56 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      10,
+      -3,
+      11
+    ],
+    "curves": [
+      {
+        "id": "root",
+        "kind": "SQRT",
+        "radicand": [
+          "4",
+          "2"
+        ],
+        "amplitude": "1",
+        "offset": "0",
+        "domain": [
+          "-2",
+          "9"
+        ],
+        "color": "BLUE",
+        "label": "root"
+      },
+      {
+        "id": "line",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "10"
+        ],
+        "color": "WARM",
+        "label": "line"
+      }
+    ]
+  },
+  "caption": "k=2일 때 정의역 시작점 t=0과 다른 교점 t=2가 모두 포함된다.",
+  "accessibilityDescription": "k=2일 때 정의역 시작점 t=0과 다른 교점 t=2가 모두 포함된다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "교점에서 $y=\\sqrt{2x+4}\\ge0$이고 직선 $y=x+k$도 만족한다. $y=t\\ge0$으로 놓으면 $t^2=2x+4$이므로 $x=(t^2-4)/2$이다.\n이를 $t=x+k$에 대입하면 $t=(t^2-4)/2+k$이고, 정리하면 $t^2-2t+2k-4=0$, 즉 $(t-1)^2=5-2k$이다.\n서로 다른 두 교점이 되려면 서로 다른 두 $t$값이 모두 $0$ 이상이어야 한다. 따라서 $5-2k>0$이고 작은 근 $1-\\sqrt{5-2k}\\ge0$이어야 한다.\n이를 풀면 $k<5/2$와 $k\\ge2$를 동시에 만족해야 하므로 $2\\le k<5/2$이다. $k=2$에서는 $t=0,2$로 두 교점이 실제 존재하므로 왼쪽 끝은 포함된다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "k=2일 때 정의역 시작점 t=0과 다른 교점 t=2가 모두 포함된다."
+  ]
+}

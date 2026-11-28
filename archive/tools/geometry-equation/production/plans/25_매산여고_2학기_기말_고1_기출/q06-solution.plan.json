@@ -1,0 +1,62 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -9,
+      9,
+      -7,
+      8
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "8",
+          "3"
+        ],
+        "denominator": [
+          "2",
+          "1"
+        ],
+        "domain": [
+          "-9",
+          "9"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "kind": "RATIONAL",
+        "numerator": [
+          "7",
+          "-1"
+        ],
+        "denominator": [
+          "-5",
+          "1"
+        ],
+        "domain": [
+          "-9",
+          "9"
+        ],
+        "color": "WARM",
+        "label": "g"
+      }
+    ]
+  },
+  "caption": "원래 점근선 (-2,3)에서 이동 후 (5,-1)로 옮겨져 이동량 (7,-4)이 된다.",
+  "accessibilityDescription": "원래 점근선 (-2,3)에서 이동 후 (5,-1)로 옮겨져 이동량 (7,-4)이 된다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "원래 함수를 정리하면 $y=\\dfrac{3x+8}{x+2}=3+\\dfrac2{x+2}$이다. 점근선은 $x=-2$, $y=3$이다.\n이동한 함수는 $y=\\dfrac{-x+7}{x-5}=-1+\\dfrac2{x-5}$이고 점근선은 $x=5$, $y=-1$이다.\n따라서 오른쪽으로 $7$만큼, 아래로 $4$만큼 이동했으므로 $p=7$, $q=-4$이다.\n$p+q=3$이므로 정답은 ③이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "원래 점근선 (-2,3)에서 이동 후 (5,-1)로 옮겨져 이동량 (7,-4)이 된다."
+  ]
+}

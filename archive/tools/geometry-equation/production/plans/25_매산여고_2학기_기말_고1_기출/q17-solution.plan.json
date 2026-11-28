@@ -1,0 +1,67 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      9,
+      -5,
+      9
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "3",
+          "2"
+        ],
+        "amplitude": "1",
+        "offset": "-2",
+        "domain": [
+          "-3/2",
+          "3"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "inv",
+        "inverseOf": "f",
+        "domain": [
+          "-2",
+          "1"
+        ],
+        "color": "GREEN",
+        "label": "inverse"
+      },
+      {
+        "id": "diag",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "color": "WARM",
+        "label": "diag",
+        "style": "DASHED"
+      }
+    ]
+  },
+  "caption": "k=-7인 경우 f와 역함수가 y=x의 고정점 (-1,-1)에서 만나는 모습을 확인한다.",
+  "accessibilityDescription": "k=-7인 경우 f와 역함수가 y=x의 고정점 (-1,-1)에서 만나는 모습을 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수는 $f(x)=\\sqrt{2x-4-k}-2$이고 정의역에서 엄격히 증가한다. 증가함수와 그 역함수의 그래프가 만나는 점은 직선 $y=x$ 위에 있으므로 $f(x)=x$를 푼다.\n$\\sqrt{2x-4-k}=x+2$이므로 $x\\ge-2$가 필요하다. 양변을 제곱하면 $2x-4-k=(x+2)^2$, 즉 $(x+1)^2=-7-k$이다.\n실근이 존재하려면 $k\\le-7$이고, 주어진 $k\\ge-10$과 합치면 후보 정수는 $-10,-9,-8,-7$이다.\n$k=-10,-9$에서는 두 형식적인 근 중 작은 근이 $-2$보다 작아 제외되어 교점이 하나다. $k=-8$에서는 $x=-2,0$으로 교점이 두 개다. $k=-7$에서는 $x=-1$ 하나다.\n따라서 조건을 만족하는 $k$는 $-10,-9,-7$이고 합은 $-26$이다. 정답은 ③이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "k=-7인 경우 f와 역함수가 y=x의 고정점 (-1,-1)에서 만나는 모습을 확인한다."
+  ]
+}

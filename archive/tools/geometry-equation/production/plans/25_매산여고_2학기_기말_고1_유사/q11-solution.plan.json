@@ -1,0 +1,69 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      8,
+      -7,
+      10
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "1",
+          "2"
+        ],
+        "denominator": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          "-5",
+          "8"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "sym",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          "-5",
+          "8"
+        ],
+        "color": "WARM",
+        "label": "sym",
+        "style": "DASHED"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "C",
+          "x": "1",
+          "y": "2",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "점근선 x=1, y=2와 대칭축 y=x+1, 제3사분면을 지나는 가지를 확인한다.",
+  "accessibilityDescription": "점근선 x=1, y=2와 대칭축 y=x+1, 제3사분면을 지나는 가지를 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수는 $y=2+\\frac3{x-1}$이므로 수직점근선 $x=1$과 수평점근선 $y=2$를 갖는다. 따라서 ㄱ은 참이다. $x=-\\frac14$이면 $y=2+\\frac3{-5/4}=-\\frac25<0$이므로 제3사분면을 지나 ㄴ은 거짓이다. 중심 $(1,2)$에서 기울기 $1$인 대칭축은 $y-2=x-1$, 즉 $y=x+1$이므로 ㄷ은 참이다. 정답은 ㄱ, ㄷ이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "점근선 x=1, y=2와 대칭축 y=x+1, 제3사분면을 지나는 가지를 확인한다."
+  ]
+}

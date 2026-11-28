@@ -1,0 +1,60 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -6,
+      -2,
+      -6,
+      6
+    ],
+    "curves": [
+      {
+        "id": "F",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-4",
+          "-2"
+        ],
+        "denominator": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          "-5",
+          "-3"
+        ],
+        "color": "BLUE",
+        "label": "F"
+      },
+      {
+        "id": "root",
+        "kind": "SQRT",
+        "radicand": [
+          "0",
+          "-3"
+        ],
+        "amplitude": "1",
+        "offset": "-4",
+        "domain": [
+          "-5",
+          "-3"
+        ],
+        "color": "WARM",
+        "label": "root"
+      }
+    ]
+  },
+  "caption": "닫힌 구간 오른쪽 끝 x=-3에서 두 그래프가 만날 때 k의 최댓값을 얻는다.",
+  "accessibilityDescription": "닫힌 구간 오른쪽 끝 x=-3에서 두 그래프가 만날 때 k의 최댓값을 얻는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "원문에서 두 함수는 $y=\\dfrac{-2x-4}{x+1}$와 $y=\\sqrt{-3x}+k$이다. 두 그래프가 만나는 점의 $x$좌표는 $-5\\le x\\le-3$을 만족해야 한다.\n교점 조건을 $k$에 대하여 정리하면 $k=h(x)=\\dfrac{-2x-4}{x+1}-\\sqrt{-3x}$이다.\n첫 항을 $-2-\\dfrac2{x+1}$로 고치자. $-5\\le x\\le-3$에서 $x$가 증가하면 $x+1$은 음수인 채로 $0$에 가까워지므로 $-2/(x+1)$은 증가한다. 또 $-3x$는 감소하므로 $-\\sqrt{-3x}$는 증가한다. 따라서 두 항의 합인 $h(x)$는 이 구간에서 엄격히 증가한다.\n그러므로 하나의 $k$에 대응하는 교점은 많아야 하나이며, 가능한 $k$의 최댓값은 오른쪽 끝 $x=-3$에서의 값 $h(-3)=\\dfrac{6-4}{-2}-\\sqrt9=-1-3=-4$이다.\n정답은 ④이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "닫힌 구간 오른쪽 끝 x=-3에서 두 그래프가 만날 때 k의 최댓값을 얻는다."
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      3,
+      -9,
+      23
+    ],
+    "curves": [
+      {
+        "id": "left",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "2"
+        ],
+        "domain": [
+          "-3",
+          "1/2"
+        ],
+        "color": "WARM",
+        "label": "left"
+      },
+      {
+        "id": "right",
+        "kind": "LINE",
+        "coefficients": [
+          "-5",
+          "10"
+        ],
+        "domain": [
+          "1/2",
+          "3"
+        ],
+        "color": "GREEN",
+        "label": "right"
+      }
+    ]
+  },
+  "caption": "a=2인 대표 그래프는 두 기울기가 양수여서 끊어짐 없이 증가한다. 절댓값 꺾임점은 (1/2,0)이다.",
+  "accessibilityDescription": "a=2인 대표 그래프는 두 기울기가 양수여서 끊어짐 없이 증가한다. 절댓값 꺾임점은 (1/2,0)이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "절댓값 안이 음수인 구간에서는 기울기가 $6-2a$, 양수인 구간에서는 $6+2a$이다. 연속인 두 반직선의 함수가 실수 전체로 일대일대응이 되려면 두 기울기가 모두 양수이거나 모두 음수여야 한다. 합이 $12>0$이므로 둘 다 양수여야 하며 $6-2a>0$, $6+2a>0$에서 $-3<a<3$이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "a=2인 대표 그래프는 두 기울기가 양수여서 끊어짐 없이 증가한다. 절댓값 꺾임점은 (1/2,0)이다."
+  ]
+}

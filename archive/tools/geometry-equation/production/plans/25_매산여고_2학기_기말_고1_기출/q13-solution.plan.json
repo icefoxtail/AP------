@@ -1,0 +1,58 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -7,
+      7,
+      -8,
+      4
+    ],
+    "curves": [
+      {
+        "id": "start",
+        "kind": "SQRT",
+        "radicand": [
+          "3",
+          "-4"
+        ],
+        "amplitude": "-1",
+        "offset": "0",
+        "domain": [
+          "-5",
+          "3/4"
+        ],
+        "color": "BLUE",
+        "label": "start"
+      },
+      {
+        "id": "final",
+        "kind": "SQRT",
+        "radicand": [
+          "7",
+          "4"
+        ],
+        "amplitude": "-1",
+        "offset": "-2",
+        "domain": [
+          "-7/4",
+          "6"
+        ],
+        "color": "WARM",
+        "label": "final"
+      }
+    ]
+  },
+  "caption": "원함수와 이동·대칭 후 최종 무리함수의 방향 및 시작점이 서로 달라짐을 비교한다.",
+  "accessibilityDescription": "원함수와 이동·대칭 후 최종 무리함수의 방향 및 시작점이 서로 달라짐을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "처음 함수는 $y=-\\sqrt{-4x+3}$이다. $x$축 방향으로 $1$만큼 평행이동하면 $x$를 $x-1$로 바꾸므로 $y=-\\sqrt{-4(x-1)+3}=-\\sqrt{-4x+7}$이다.\n이어 $y$축 방향으로 $-2$만큼 이동하면 $y=-\\sqrt{-4x+7}-2$이다.\n마지막으로 $y$축에 대하여 대칭이동하면 $x$ 대신 $-x$를 대입하여 $y=-\\sqrt{4x+7}-2$를 얻는다.\n$a=4$, $b=7$, $c=-2$이므로 합은 $9$, 정답은 ③이다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "원함수와 이동·대칭 후 최종 무리함수의 방향 및 시작점이 서로 달라짐을 비교한다."
+  ]
+}
