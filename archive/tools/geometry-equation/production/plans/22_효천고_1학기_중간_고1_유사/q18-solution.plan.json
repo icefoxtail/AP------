@@ -1,0 +1,26 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "SOURCE_COORDINATE_AXES_v1", "unit": "source-coordinate", "reflectionEquivalent": false},
+    "nodes": [
+      {"id": "O", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "0"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "P", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "0"}, {"kind": "integer", "value": "2"}]}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "Q", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "0"}, {"kind": "integer", "value": "-2"}]}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "locus", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["O"], "args": {"radius": {"kind": "integer", "value": "2"}}, "outputType": "CIRCLE", "factRole": "CONCLUSION"}
+    ]
+  },
+  "displayPoints": ["O", "P", "Q"],
+  "displayLines": [],
+  "displayCircles": ["locus"],
+  "displaySegments": [{"id": "sOP", "refs": ["O", "P"]}, {"id": "sOQ", "refs": ["O", "Q"]}],
+  "coordinateLabels": ["P", "Q"],
+  "coordinateCanvas": {"width": 580, "height": 470},
+  "caption": "허수 z에 대해 z+4/z가 실수이면 z·z̄=|z|²=4이므로 복소평면에서 원점으로부터 거리가 2이다. 다만 실수축 위 두 점 z=±2는 허수 조건에 의해 제외된다.",
+  "accessibilityDescription": "복소평면 원점 O를 중심으로 반지름 2인 원과 허수축 위 두 점 P(0,2), Q(0,-2), 반지름 OP와 OQ를 표시한다. 실수축 위 두 교점은 허수의 범위에서 제외된다.",
+  "sourceConditions": [
+    {"id": "modulus", "condition": "z가 실수가 아니어서 z≠z̄; (z−z̄)(1−4/(z·z̄))=0으로부터 |z|²=4", "mappedTo": "mathPlan.nodes[3]"},
+    {"id": "examples", "condition": "허수 z=2i와 z=−2i는 |z|=2를 만족하고 원점에서 2 떨어진 점", "mappedTo": ["mathPlan.nodes[0]", "mathPlan.nodes[1]", "mathPlan.nodes[2]", "displaySegments[0]", "displaySegments[1]"]}
+  ],
+  "newVisualInformation": ["켤레복소수의 곱이라는 대수 조건을 복소평면의 거리 조건 |z|=2로 옮겨 원의 자취로 보여 준다. 원의 실수축 위 두 점은 제외됨을 캡션으로 명시한다."]
+}

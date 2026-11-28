@@ -1,0 +1,27 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "축과 비교점",
+        "band": false,
+        "points": [
+          {"id": "A", "value": "0", "hideName": true},
+          {"id": "B", "value": "1/2", "hideName": true},
+          {"id": "V", "value": "2"},
+          {"id": "C", "value": "7", "hideName": true}
+        ]
+      }
+    ]
+  },
+  "caption": "조건 f(x)≥f(2)로부터 확인되는 대칭축 x=2와 보기 ㄱ의 비교 입력값 0, 1/2, 7의 위치를 같은 수직선 위에 놓았다. 세 함숫값 자체는 표시하지 않는다.",
+  "accessibilityDescription": "수직선의 0, 1/2, 2, 7에 점이 있고 2에는 대칭축이라는 이름을 붙였다. 포물선의 높이나 미정인 계수는 나오지 않는다.",
+  "sourceConditions": [
+    {"id": "axis", "condition": "모든 실수 x에 대해 f(x)≥f(2)이므로 이차함수의 대칭축은 x=2", "mappedTo": "numberLine.rows[0].points[2]"},
+    {"id": "choice", "condition": "보기 ㄱ의 입력값은 0, 1/2, 7", "mappedTo": ["numberLine.rows[0].points[0]", "numberLine.rows[0].points[1]", "numberLine.rows[0].points[3]"]}
+  ],
+  "newVisualInformation": ["대칭축 2를 기준으로 비교점들의 좌우 배치와 상대적인 수평거리를 한 눈금 위에서 확인할 수 있다. 함수의 미지 계수나 최종 선택지는 표시하지 않는다."]
+}
