@@ -1,0 +1,24 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "공역 $X=[k,\\infty)$와 치역이 같아야 하므로",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [4, 8, 3, 23],
+    "curves": [
+      {"id": "f", "kind": "Y_OF_X", "coefficients": ["6", "-6", "1"], "domain": ["6", "8"], "color": "BLUE", "label": "f(x)"},
+      {"id": "l", "kind": "LINE", "coefficients": ["0", "1"], "domain": ["4", "8"], "style": "DASHED", "color": "WARM", "label": "y=x"}
+    ],
+    "overlays": {"points": [{"id": "K", "x": "6", "y": "6", "coordinates": true}]},
+    "axisTickValues": {"x": ["3", "6"], "y": ["6"]}
+  },
+  "caption": "k=6이면 정의역 [6,∞)에서 포물선이 증가하고 시작점 (6,6)이 직선 y=x에 놓여 치역 역시 [6,∞)가 된다. 그림은 x=6부터 8까지를 보여 준다.",
+  "accessibilityDescription": "포물선 y=x²−6x+6의 x가 6 이상인 증가하는 부분과 직선 y=x를 비교하고 두 그래프가 점 (6,6)에서 만나는 것을 보인다.",
+  "sourceConditions": [
+    {"id": "p20-1", "condition": "f(x)=x²−6x+6이며 k≥3이면 증가", "mappedTo": ["graphPlan.curves.0.coefficients", "graphPlan.curves.0.domain"]},
+    {"id": "p20-2", "condition": "공역과 치역의 일치를 위해 f(k)=k, 가능한 해 k=6", "mappedTo": ["graphPlan.curves.1.coefficients", "graphPlan.overlays.points.0"]}
+  ],
+  "newVisualInformation": [
+    "x=6에서 출발하는 증가 가지와 항등직선의 교점 (6,6)을 같은 축 위에 표시한다.",
+    "정의역 하한 6과 치역 하한 6이 일치해야 일대일대응이 됨을 기하적으로 연결한다."
+  ]
+}

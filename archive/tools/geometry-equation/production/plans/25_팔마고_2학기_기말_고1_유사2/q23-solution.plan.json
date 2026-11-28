@@ -1,0 +1,30 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "sourceQuote": "$k=-1$일 때 방정식은 $y^2-4y=0$이 되어",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [0, 12, -1, 6],
+    "curves": [
+      {"id": "f", "kind": "SQRT", "radicand": ["-4", "2"], "domain": ["2", "12"], "color": "BLUE", "label": "y=sqrt(2*x-4)"},
+      {"id": "l", "kind": "LINE", "coefficients": ["-1", "1/2"], "domain": ["2", "12"], "color": "WARM", "label": "y=x/2-1"}
+    ],
+    "overlays": {
+      "points": [
+        {"id": "A", "x": "2", "y": "0", "coordinates": true},
+        {"id": "B", "x": "10", "y": "4", "coordinates": true}
+      ]
+    },
+    "axisTickValues": {"x": ["2", "10"], "y": ["4"]}
+  },
+  "caption": "경계 k=−1에서 직선 y=x/2−1은 무리함수 y=√(2x−4)와 (2,0), (10,4)에서 만나 서로 다른 두 교점을 갖는다. k=0에서는 접하므로 제외한다.",
+  "accessibilityDescription": "무리함수의 시작점 (2,0)과 직선의 첫 교점이 일치하고, 두 번째 교점 (10,4)도 존재해 경계 k=−1이 허용되는 모습을 보여 준다.",
+  "sourceConditions": [
+    {"id": "p23-1", "condition": "무리함수 y=√(2x−4), x≥2", "mappedTo": ["graphPlan.curves.0.radicand", "graphPlan.curves.0.domain"]},
+    {"id": "p23-2", "condition": "k=−1인 직선 y=x/2−1", "mappedTo": ["graphPlan.curves.1.coefficients"]},
+    {"id": "p23-3", "condition": "경계 k=−1에서 두 교점 (2,0) 및 (10,4)", "mappedTo": ["graphPlan.overlays.points.0", "graphPlan.overlays.points.1"]}
+  ],
+  "newVisualInformation": [
+    "허용 구간의 닫힌 경계 k=−1에서 x=2의 시작점도 유효한 교점임을 보인다.",
+    "나머지 교점 (10,4)을 함께 표시해 이 경계에서 교점 수가 정확히 두 개임을 확인한다."
+  ]
+}
