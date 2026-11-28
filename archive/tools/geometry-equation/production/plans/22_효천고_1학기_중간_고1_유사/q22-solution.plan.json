@@ -1,0 +1,30 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "두 근",
+        "band": false,
+        "points": [
+          {"id": "N", "value": "-2"},
+          {"id": "O", "value": "0", "hideName": true},
+          {"id": "P", "value": "2/5"}
+        ],
+        "spans": [
+          {"from": "N", "to": "O", "label": "절댓값", "side": "ABOVE"},
+          {"from": "O", "to": "P", "label": "절댓값", "side": "ABOVE"}
+        ]
+      }
+    ]
+  },
+  "caption": "해설에서 p=8/5, q=−4/5가 확정되면 5x²+8x−4=(x+2)(5x−2)이고 두 근은 −2와 2/5이다. 수직선에서 부호가 다른 근의 절댓값을 각각 원점까지의 거리로 확인한다.",
+  "accessibilityDescription": "수직선에서 α=−2가 원점 왼쪽, β=2/5가 오른쪽에 있으며 원점에서 두 근까지의 거리를 각각 2, 2/5로 표시한다.",
+  "sourceConditions": [
+    {"id": "roots", "condition": "풀이에서 p=8/5, q=−4/5; 근은 α=−2, β=2/5이며 αβ<0", "mappedTo": ["numberLine.rows[0].points[0]", "numberLine.rows[0].points[1]", "numberLine.rows[0].points[2]"]},
+    {"id": "absolute", "condition": "|−2|=2, |2/5|=2/5이며 두 절댓값은 원점에서 각각의 근까지의 거리", "mappedTo": ["numberLine.rows[0].spans[0]", "numberLine.rows[0].spans[1]"]}
+  ],
+  "newVisualInformation": ["해설에서 확정된 서로 다른 부호의 두 근이 절댓값을 취하면 각각 원점으로부터의 양의 거리가 되는 관계를 정확한 분수 눈금과 거리 표시로 확인한다."]
+}

@@ -1,0 +1,37 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "판별식",
+        "pieces": [{"lo": {"value": "-3/2", "state": "CLOSED"}, "hi": {"value": "5", "state": "CLOSED"}}]
+      },
+      {
+        "kind": "POINTS",
+        "label": "정수 후보",
+        "band": false,
+        "within": 1,
+        "points": [
+          {"id": "A", "value": "-1", "hideName": true},
+          {"id": "Z", "value": "0", "hideName": true, "style": "CROSS"},
+          {"id": "B", "value": "1", "hideName": true},
+          {"id": "C", "value": "2", "hideName": true},
+          {"id": "D", "value": "3", "hideName": true},
+          {"id": "E", "value": "4", "hideName": true},
+          {"id": "F", "value": "5", "hideName": true}
+        ]
+      }
+    ]
+  },
+  "caption": "판별식 6a+9≥0과 a≤5를 합치면 −3/2≤a≤5이다. 이 범위의 정수 후보 −1,0,1,2,3,4,5 중 a=0은 이차방정식의 최고차항이 사라지므로 ×로 제외한다.",
+  "accessibilityDescription": "첫 줄은 −3/2 이상 5 이하인 범위, 둘째 줄은 −1부터 5까지 정수 일곱 점 중 0에 제외 표시가 있고 나머지 여섯 점은 허용됨을 보인다.",
+  "sourceConditions": [
+    {"id": "discriminant", "condition": "이차방정식의 판별식 6a+9≥0이고 a≤5이므로 −3/2≤a≤5", "mappedTo": "numberLine.rows[0].pieces[0]"},
+    {"id": "integer", "condition": "범위 안의 정수 후보는 −1,0,1,2,3,4,5", "mappedTo": ["numberLine.rows[1].points[0]", "numberLine.rows[1].points[1]", "numberLine.rows[1].points[2]", "numberLine.rows[1].points[3]", "numberLine.rows[1].points[4]", "numberLine.rows[1].points[5]", "numberLine.rows[1].points[6]"]},
+    {"id": "nonzero", "condition": "이차방정식의 최고차항 계수이므로 a≠0", "mappedTo": "numberLine.rows[1].points[1].style"}
+  ],
+  "newVisualInformation": ["실근 판별식의 연속 범위와 정수 후보를 정렬하고, 그중 이차식의 차수가 소멸하는 0 하나만 제외해 여섯 개를 셀 수 있다."]
+}
