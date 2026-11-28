@@ -1,0 +1,20 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {"kind": "SET", "label": "첫 판별식", "pieces": [{"lo": {"value": "-16/3", "state": "CLOSED"}, "hi": null}]},
+      {"kind": "SET", "label": "둘째 판별식", "pieces": [{"lo": null, "hi": {"value": "2", "state": "OPEN"}}]},
+      {"kind": "RESULT", "label": "공통 정수", "integerPoints": true}
+    ]
+  },
+  "numberLineCaption": {"text": "판별식 범위의 교집합"},
+  "caption": "첫 방정식의 실근 조건 k≥−16/3, 둘째 방정식의 허근 조건 k<2를 같은 수직선에서 비교하면 공통 정수의 최댓값은 1이다.",
+  "accessibilityDescription": "첫째 줄은 -16/3을 포함하여 오른쪽, 둘째 줄은 2를 제외하고 왼쪽의 범위를 표시한다. 마지막 줄은 두 범위의 교집합과 그 안의 정수점을 표시한다.",
+  "sourceConditions": [
+    {"id": "d1", "condition": "3x²−8x−k=0의 실근 조건 16+3k≥0", "mappedTo": "numberLine.rows[0].pieces[0]"},
+    {"id": "d2", "condition": "x²+2kx+k²−k+2=0의 허근 조건 k−2<0", "mappedTo": "numberLine.rows[1].pieces[0]"},
+    {"id": "intersection", "condition": "−16/3≤k<2인 정수는 -5,-4,-3,-2,-1,0,1", "mappedTo": "numberLine.rows[2].integerPoints"}
+  ],
+  "newVisualInformation": ["두 판별식의 각각 다른 끝점 포함 여부와 공통 정수 범위를 한 눈금에서 비교한다."]
+}
