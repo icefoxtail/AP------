@@ -1,0 +1,18 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{
+    "family":"polynomial","coefficients":["-18","3","1"],"sourceDomain":{"kind":"ALL_REALS"},
+    "domain":[-7,4],"viewport":[-8,5,-24,14],
+    "requiredPoints":[{"id":"A","x":-6,"y":0},{"id":"T","x":3,"y":0}],
+    "overlays":{"lines":[{"id":"x3","x":"3"}]},
+    "axisTickValues":{"x":[],"y":[]}
+  },
+  "caption":"m=27이면 이차인수는 (x−3)(x+6)이며 x=3은 다른 인수 (x−3)과 겹쳐 삼차식의 중근이다.",
+  "accessibilityDescription":"포물선 y=x²+3x−18의 두 x절편 −6, 3과 x=3인 세로 보조선을 그려 겹친 근을 강조한다.",
+  "sourceConditions":[
+    {"id":"factor","condition":"x³−27−m(x−3)=(x−3)(x²+3x+9−m)","mappedTo":"graphPlan.coefficients"},
+    {"id":"parameter","condition":"이차인수가 x=3을 근으로 가지려면 m=27","mappedTo":"graphPlan.overlays.lines[0]"},
+    {"id":"shared","condition":"m=27에서 Q(3)=0, Q(−6)=0이며 x=3이 중근","mappedTo":"graphPlan.requiredPoints"}
+  ],
+  "newVisualInformation":["고정 인수 x−3의 근과 이차인수의 근이 x=3에서 겹치는 첫 경우를 시각화한다."]
+}

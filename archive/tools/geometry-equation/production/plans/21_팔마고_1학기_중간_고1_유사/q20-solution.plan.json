@@ -1,0 +1,18 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{
+    "family":"polynomial","coefficients":["-8","12","-2"],"sourceDomain":{"kind":"ALL_REALS"},
+    "domain":[1,7],"viewport":[0,8,-14,16],
+    "requiredPoints":[{"id":"T","x":2,"y":8},{"id":"V","x":3,"y":10},{"id":"E","x":6,"y":-8}],
+    "overlays":{"lines":[{"id":"l","slope":"4","intercept":"0"}]},
+    "axisTickValues":{"x":[],"y":[]}
+  },
+  "caption":"해설의 a<0인 경우 f(x)=−2(x−3)²+10이고 2≤x≤6에서 V(3,10)가 최고, E(6,−8)가 최저이며 y=4x에 T(2,8)에서 접한다.",
+  "accessibilityDescription":"아래로 열린 포물선의 꼭짓점 V(3,10), 오른쪽 끝 E(6,−8), 직선 y=4x와 접하는 점 T(2,8)가 함께 나타난다.",
+  "sourceConditions":[
+    {"id":"symmetry","condition":"f(3−x)=f(3+x)이므로 축은 x=3","mappedTo":"graphPlan.coefficients"},
+    {"id":"range","condition":"a<0에서 최고 q=10, 최저 f(6)=−8이므로 a=−2","mappedTo":["graphPlan.requiredPoints[1]","graphPlan.requiredPoints[2]"]},
+    {"id":"contact","condition":"f(x)−4x=−2(x−2)²라서 T(2,8)에서 접한다","mappedTo":["graphPlan.overlays.lines[0]","graphPlan.requiredPoints[0]"]}
+  ],
+  "newVisualInformation":["구간 최댓값·최솟값과 접선 조건이 동시에 성립하는 선택된 포물선의 핵심 세 점을 표시한다."]
+}

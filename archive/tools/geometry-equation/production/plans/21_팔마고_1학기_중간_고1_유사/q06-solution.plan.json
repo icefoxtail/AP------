@@ -1,0 +1,17 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{
+    "family":"polynomial","coefficients":["3","4","1"],"sourceDomain":{"kind":"ALL_REALS"},
+    "domain":[-4,0],"viewport":[-5,1,-3,8],
+    "requiredPoints":[{"id":"A","x":-3,"y":0},{"id":"V","x":-2,"y":-1},{"id":"B","x":-1,"y":0}],
+    "axisTickValues":{"x":[],"y":[]}
+  },
+  "caption":"f(a)=b, f(b)=a 및 a≠b로 a+b=−4, ab=3을 구하면 y=(x+3)(x+1)은 V(−2,−1)에서 최소다.",
+  "accessibilityDescription":"위로 열린 포물선의 두 x절편 A(−3,0)·B(−1,0) 사이에 최솟점 V(−2,−1)가 놓여 있다.",
+  "sourceConditions":[
+    {"id":"sums","condition":"두 식을 빼서 a+b=−4, 합해서 ab=3","mappedTo":"graphPlan.coefficients"},
+    {"id":"roots","condition":"a,b는 −3,−1이며 y=(x−a)(x−b)","mappedTo":["graphPlan.requiredPoints[0]","graphPlan.requiredPoints[2]"]},
+    {"id":"vertex","condition":"y=(x+2)²−1의 꼭짓점 (α,β)=(−2,−1)","mappedTo":"graphPlan.requiredPoints[1]"}
+  ],
+  "newVisualInformation":["두 근의 중점이 대칭축이 되고 꼭짓점이 가장 낮다는 관계를 실제 좌표로 보인다."]
+}

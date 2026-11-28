@@ -1,0 +1,19 @@
+{
+  "capability":"piecewise-polynomial-spike-v1",
+  "graphPlan":{
+    "family":"piecewise-polynomial","pieces":[{"coefficients":["5","-3","1"]}],
+    "breakpoints":[],"sourceDomain":{"kind":"ALL_REALS"},
+    "domain":[0.75,5.75],"viewport":[0.5,6,-1,19],
+    "requiredPoints":[{"id":"P","x":1,"y":3},{"id":"Q","x":5,"y":15},{"id":"V","x":"3/2","y":"11/4","marker":"NONE"}],
+    "overlays":{"lines":[{"id":"l","slope":"3","intercept":"0"}]},
+    "axisTickValues":{"x":[1,5],"y":[]}
+  },
+  "coordinateBand":{"hide":["P","Q"]},
+  "caption":"발문이 지정한 두 교점의 x좌표 1, 5만 표시한다. 계산해야 할 m, n과 교점의 y값은 숨기고 y축 절편은 그림 창 밖에 둔다.",
+  "accessibilityDescription":"위로 열린 곡선과 우상향 직선이 왼쪽 P, 오른쪽 Q에서 만나고 x축 눈금 1과 5만 표시되어 있으며 교점의 y좌표는 적혀 있지 않다.",
+  "sourceConditions":[
+    {"id":"intersections","condition":"교점 x좌표가 1,5라는 발문 조건; P,Q는 두 교점의 구별용 이름","mappedTo":["graphPlan.requiredPoints[0]","graphPlan.requiredPoints[1]","graphPlan.axisTickValues.x"]},
+    {"id":"curve","condition":"정확한 배치를 위해 내부 계수 m=−3,n=0을 사용하나 식과 y절편을 표시하지 않는다","mappedTo":["graphPlan.pieces[0].coefficients","graphPlan.overlays.lines[0]","graphPlan.viewport","coordinateBand.hide"]}
+  ],
+  "newVisualInformation":["원문이 '오른쪽 그림'이라고 지시한 포물선·직선의 두 교점 순서와 x좌표를 정답 노출 없이 복원한다."]
+}

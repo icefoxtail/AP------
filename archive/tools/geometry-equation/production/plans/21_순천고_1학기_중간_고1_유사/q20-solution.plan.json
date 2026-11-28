@@ -1,0 +1,17 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{
+    "family":"polynomial","coefficients":["30","4","-2"],"sourceDomain":{"kind":"ALL_REALS"},
+    "domain":[-4,6],"viewport":[-5,7,-5,39],
+    "requiredPoints":[{"id":"A","x":-3,"y":0},{"id":"B","x":5,"y":0},{"id":"C","x":0,"y":30},{"id":"V","x":1,"y":32}],
+    "axisTickValues":{"x":[],"y":[]}
+  },
+  "caption":"x절편 −3, 5와 y절편 30에서 f(x)=−2(x−1)²+32이며 꼭짓점 V(1,32)가 최댓값이다.",
+  "accessibilityDescription":"아래로 열린 포물선에서 두 x축 교점 A(−3,0), B(5,0), y축 교점 C(0,30), 꼭짓점 V(1,32)를 함께 표시한다.",
+  "sourceConditions":[
+    {"id":"roots","condition":"f=a(x+3)(x−5)의 두 근 −3과 5","mappedTo":["graphPlan.requiredPoints[0]","graphPlan.requiredPoints[1]"]},
+    {"id":"intercept","condition":"f(0)=−15a=30에서 a=−2","mappedTo":["graphPlan.coefficients","graphPlan.requiredPoints[2]"]},
+    {"id":"maximum","condition":"−2(x−1)²+32의 꼭짓점은 (1,32)","mappedTo":"graphPlan.requiredPoints[3]"}
+  ],
+  "newVisualInformation":["두 근의 가운데 있는 대칭축과 y절편·최대점의 관계를 같은 그래프에 표시한다."]
+}

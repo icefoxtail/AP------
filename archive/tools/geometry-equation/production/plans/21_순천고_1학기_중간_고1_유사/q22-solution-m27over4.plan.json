@@ -1,0 +1,16 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{
+    "family":"polynomial","coefficients":["9/4","3","1"],"sourceDomain":{"kind":"ALL_REALS"},
+    "domain":[-4,4],"viewport":[-5,5,-3,27],
+    "requiredPoints":[{"id":"T","x":-1.5,"y":0}],
+    "axisTickValues":{"x":[],"y":[]}
+  },
+  "caption":"m=27/4이면 이차인수는 (x+3/2)²로 x=−3/2에서 중근을 만들고, x=3은 별도의 단순근이다.",
+  "accessibilityDescription":"위로 열린 포물선 y=x²+3x+9/4가 T(−3/2,0)에서 x축에 접한다. 삼차식의 다른 인수 x−3은 그림 밖의 식으로 구분한다.",
+  "sourceConditions":[
+    {"id":"quadratic","condition":"m=27/4에서 x²+3x+9−m=(x+3/2)²","mappedTo":"graphPlan.coefficients"},
+    {"id":"double","condition":"이차인수 판별식 D=4m−27=0이므로 T(−3/2,0)에 접한다","mappedTo":"graphPlan.requiredPoints[0]"}
+  ],
+  "newVisualInformation":["x=3과 무관하게 이차인수 자체가 x축에 접하는 두 번째 중근 경우를 나타낸다."]
+}

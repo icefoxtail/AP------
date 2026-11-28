@@ -1,0 +1,18 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{
+    "family":"polynomial","coefficients":["5","-3","1"],"sourceDomain":{"kind":"ALL_REALS"},
+    "domain":[-1,6],"viewport":[-2,7,-2,20],
+    "requiredPoints":[{"id":"P","x":1,"y":3},{"id":"Q","x":5,"y":15}],
+    "overlays":{"lines":[{"id":"l","slope":"3","intercept":"0"}]},
+    "axisTickValues":{"x":[],"y":[]}
+  },
+  "caption":"두 교점의 x좌표 1,5로 m=−3,n=0을 구하면 y=x²−3x+5와 y=3x는 P(1,3), Q(5,15)에서 만난다.",
+  "accessibilityDescription":"포물선과 직선 y=3x의 교점 P(1,3), Q(5,15)를 실제 좌표로 표시하는 해설 그래프다.",
+  "sourceConditions":[
+    {"id":"curve","condition":"근의 합 6에서 m−3=−6로 m=−3","mappedTo":"graphPlan.coefficients"},
+    {"id":"line","condition":"근의 곱 5에서 5−n=5로 n=0","mappedTo":"graphPlan.overlays.lines[0]"},
+    {"id":"points","condition":"x²−6x+5=(x−1)(x−5)의 두 근에서 y=3x","mappedTo":"graphPlan.requiredPoints"}
+  ],
+  "newVisualInformation":["문제 단계에서 감췄던 실제 교점 y값 및 확정된 직선과 곡선을 풀이 뒤 표시한다."]
+}

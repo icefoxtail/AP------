@@ -1,0 +1,16 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{
+    "family":"polynomial","coefficients":["3","4","1"],"sourceDomain":{"kind":"ALL_REALS"},
+    "domain":[-3,2],"viewport":[-4,3,-3,18],
+    "requiredPoints":[{"id":"L","x":-3,"y":0},{"id":"V","x":-2,"y":-1},{"id":"R","x":2,"y":15}],
+    "axisTickValues":{"x":[],"y":[]}
+  },
+  "caption":"k=3인 y=(x+2)²−1은 [−3,2]에서 꼭짓점 V(−2,−1)이 최솟값, 오른쪽 끝 R(2,15)이 최댓값이다.",
+  "accessibilityDescription":"위로 열린 포물선의 정의역 −3부터 2까지와 왼쪽 끝 L(−3,0), 꼭짓점 V(−2,−1), 오른쪽 끝 R(2,15)를 비교한다.",
+  "sourceConditions":[
+    {"id":"parameter","condition":"x=2에서 12+k=15이므로 k=3","mappedTo":"graphPlan.coefficients"},
+    {"id":"interval","condition":"−3≤x≤2에서 가장 먼 끝은 x=2이고 꼭짓점 x=−2가 구간 안에 있다","mappedTo":["graphPlan.domain","graphPlan.requiredPoints"]}
+  ],
+  "newVisualInformation":["왼쪽 끝과 오른쪽 끝, 안쪽 꼭짓점의 높이 차이를 실제 눈금과 좌표로 구분한다."]
+}

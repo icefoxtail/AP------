@@ -1,0 +1,18 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{
+    "family":"polynomial","coefficients":["4","3","1"],"sourceDomain":{"kind":"ALL_REALS"},
+    "domain":[-4,3],"viewport":[-5,4,-4,25],
+    "requiredPoints":[{"id":"T","x":0,"y":4}],
+    "overlays":{"lines":[{"id":"l","slope":"3","intercept":"4"}]},
+    "axisTickValues":{"x":[],"y":[]}
+  },
+  "caption":"곡선 y=x²+3x+4와 직선 y=3x+4는 T(0,4)에서 접하므로 접선의 a=3,b=4다.",
+  "accessibilityDescription":"위로 열린 포물선과 기울기 3인 직선이 y축 위의 점 T(0,4)에서 단 한 번 만나는 모습이다.",
+  "sourceConditions":[
+    {"id":"curve","condition":"발문 함수는 y=x²+3x+4","mappedTo":"graphPlan.coefficients"},
+    {"id":"tangent","condition":"접선은 (0,4)를 지나고 x²+(3−a)x=0 중근에서 a=3,b=4","mappedTo":"graphPlan.overlays.lines[0]"},
+    {"id":"contact","condition":"x²=0에서 접점 T(0,4)","mappedTo":"graphPlan.requiredPoints[0]"}
+  ],
+  "newVisualInformation":["판별식이 0일 때 직선과 곡선이 한 점에서 만나는 접선 관계를 표시한다."]
+}

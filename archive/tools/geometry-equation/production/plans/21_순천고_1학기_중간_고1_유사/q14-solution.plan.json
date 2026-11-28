@@ -1,0 +1,17 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{
+    "family":"polynomial","coefficients":["-5","4","1"],"sourceDomain":{"kind":"ALL_REALS"},
+    "domain":[-6,2],"viewport":[-7,3,-11,7],
+    "requiredPoints":[{"id":"A","x":-5,"y":0},{"id":"B","x":1,"y":0},{"id":"V","x":-2,"y":-9}],
+    "axisTickValues":{"x":[],"y":[]}
+  },
+  "caption":"근과 계수의 관계로 k=5를 구하면 두 x축 교점 A(−5,0), B(1,0)의 간격은 6이다.",
+  "accessibilityDescription":"위로 열린 포물선이 x축과 −5, 1에서 만나 두 x절편의 차가 6이고 꼭짓점이 V(−2,−9)임을 보여 준다.",
+  "sourceConditions":[
+    {"id":"curve","condition":"(α−β)²=16+4k=36에서 k=5, y=x²+4x−5","mappedTo":"graphPlan.coefficients"},
+    {"id":"distance","condition":"근 α,β는 −5와 1이고 |α−β|=6","mappedTo":["graphPlan.requiredPoints[0]","graphPlan.requiredPoints[1]"]},
+    {"id":"vertex","condition":"완전제곱 (x+2)²−9의 꼭짓점은 (−2,−9)","mappedTo":"graphPlan.requiredPoints[2]"}
+  ],
+  "newVisualInformation":["두 x절편 사이 6의 길이와 대칭축·꼭짓점을 실제 그래프 위에 함께 나타낸다."]
+}

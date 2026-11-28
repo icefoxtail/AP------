@@ -1,0 +1,25 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints":["A","B","C"],"displayLines":[],"displayCircles":[],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]}],
+  "rightAngles":[{"id":"rB","refs":["A","B","C"],"factRole":"DERIVED_INTERMEDIATE"}],
+  "planeMarks":{"expressionLabels":[{"id":"la","ownerSegment":"sBC","text":"a"},{"id":"lb","ownerSegment":"sCA","text":"b"},{"id":"lc","ownerSegment":"sAB","text":"c"}]},
+  "coordinateCanvas":{"width":540,"height":400},
+  "caption":"(a²+c²)²−b⁴=0에서 b²=a²+c²이므로 삼각형 ABC는 ∠B=90°인 직각삼각형이다. 3:4:5 배치는 길이가 아닌 예시 비율이다.",
+  "accessibilityDescription":"삼각형 ABC에서 BC=a, CA=b, AB=c가 변마다 표시되고 꼭짓점 B에 직각 기호가 있다.",
+  "sourceConditions":[
+    {"id":"equation","condition":"a⁴+c⁴−b⁴+2a²c²=(a²+c²+b²)(a²+c²−b²)=0","mappedTo":"planeMarks.expressionLabels"},
+    {"id":"right","condition":"양의 변 길이에서 b²=a²+c²이고 마주 보는 각 B는 직각","mappedTo":["rightAngles[0]","displaySegments"]},
+    {"id":"representative","condition":"대표좌표 A(0,4),B(0,0),C(3,0)는 일반 a,b,c의 수치값이 아니라 직각 관계 예시","mappedTo":"mathPlan.nodes"}
+  ],
+  "newVisualInformation":["인수분해로 얻은 피타고라스 관계를 실제 직각 표식과 세 변의 문자 라벨로 보인다."]
+}

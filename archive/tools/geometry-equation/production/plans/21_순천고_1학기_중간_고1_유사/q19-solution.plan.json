@@ -1,0 +1,19 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{
+    "family":"polynomial","coefficients":["24000","4000","-500"],
+    "sourceDomain":{"kind":"INTERVAL","range":[0,11]},"domain":[0,11],"viewport":[0,11,0,35000],
+    "applicationAxes":true,"axisVariable":"x",
+    "axisTickValues":{"x":[2,4,6,8,10],"y":[10000,20000,30000]},
+    "requiredPoints":[{"id":"S","x":0,"y":24000},{"id":"V","x":4,"y":32000},{"id":"E","x":11,"y":7500}]
+  },
+  "caption":"x는 100원씩 이익을 줄인 횟수, y는 하루 이익금(원)이다. x=4에서 32000원으로 최대이고 판매량은 40개다.",
+  "accessibilityDescription":"가로축은 100원씩 이익을 낮춘 횟수 x, 세로축은 원 단위 총이익이다. 아래로 열린 포물선의 꼭짓점 V(4,32000)를 표시한다.",
+  "sourceConditions":[
+    {"id":"profit","condition":"P=(1200−100x)(20+5x)=−500x²+4000x+24000","mappedTo":"graphPlan.coefficients"},
+    {"id":"interval","condition":"0≤x<12인 정수 횟수에서 유효한 구간은 0부터 11","mappedTo":["graphPlan.sourceDomain","graphPlan.domain"]},
+    {"id":"vertex","condition":"P=−500(x−4)²+32000의 꼭짓점은 (4,32000)","mappedTo":"graphPlan.requiredPoints[1]"},
+    {"id":"sales","condition":"x=4에서 판매량 20+5x=40개, 이는 y축 이익금과 다른 단위","mappedTo":"graphPlan.axisVariable"}
+  ],
+  "newVisualInformation":["판매량을 바꾸는 선택 변수 x와 총이익 y의 서로 다른 축 단위를 명시하고 최적점을 표시한다."]
+}
