@@ -9,41 +9,42 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="AP 학생">
   <meta name="apple-mobile-web-app-title" content="AP 학생">
-  <link rel="manifest" href="./manifest.json?v=2026.11.24.4">
-  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png?v=2026.11.24.4">
-  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png?v=2026.11.24.4">
-  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png?v=2026.11.24.4">
+  <link rel="manifest" href="./manifest.json?v=2026.11.28.1">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png?v=2026.11.28.1">
+  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png?v=2026.11.28.1">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png?v=2026.11.28.1">
   <title>AP Math OS | 학생 포털</title>
   <script>try{localStorage.removeItem("ap.examImageBase.qa");}catch(e){}/* students never use the teacher-only exam image base QA override */</script>
   <script src="../../archive/archive2-output-contract.js?v=20261003-student-review-1"></script>
   <script src="../../archive/archive2-output.js?v=20261123-similar-title-1"></script>
-  <script src="./current-question-content.js?v=2026.11.24.4"></script>
+  <script src="./current-question-content.js?v=2026.11.28.1"></script>
   <script src="./archive-review-output.js?v=20261124-current-1"></script>
   <link rel="stylesheet" href="../../archive/figure-zoom.css?v=20261124-zoom-3">
   <script src="../../archive/figure-zoom.js?v=20261124-zoom-3"></script>
-  <script src="./clinic-lineage-view.js?v=2026.11.24.4"></script>
-  <script src="../js/similar-exam.js?v=2026.11.24.4"></script>
+  <script src="./clinic-lineage-view.js?v=2026.11.28.1"></script>
+  <script src="../js/similar-exam.js?v=2026.11.28.1"></script>
   <script src="../../archive/exam-display-title.js?v=20261123-korean-titles-1"></script>
-  <script src="./student-fetch.js?v=2026.11.24.4"></script>
-  <script src="./similar-link.js?v=2026.11.24.4"></script>
-  <script src="./self-study-record.js?v=2026.11.24.4"></script>
-  <script src="./self-study-view.js?v=2026.11.24.4"></script>
-  <script src="./self-study-similar.js?v=2026.11.24.4"></script>
-  <script src="./self-study-type.js?v=2026.11.24.4"></script>
-  <script src="./clinic-learning-view.js?v=2026.11.24.4"></script>
-  <link rel="stylesheet" href="../css/student-navigation.css?v=2026.11.24.4">
-  <script src="../js/student-navigation.js?v=2026.11.24.4" data-student-navigation="manual"></script>
+  <script src="./student-fetch.js?v=2026.11.28.1"></script>
+  <script src="./similar-link.js?v=2026.11.28.1"></script>
+  <script src="./self-study-record.js?v=2026.11.28.1"></script>
+  <script src="./self-study-view.js?v=2026.11.28.1"></script>
+  <script src="./wrong-notebook.js?v=2026.11.28.1"></script>
+  <script src="./self-study-similar.js?v=2026.11.28.1"></script>
+  <script src="./self-study-type.js?v=2026.11.28.1"></script>
+  <script src="./clinic-learning-view.js?v=2026.11.28.1"></script>
+  <link rel="stylesheet" href="../css/student-navigation.css?v=2026.11.28.1">
+  <script src="../js/student-navigation.js?v=2026.11.28.1" data-student-navigation="manual"></script>
   <!-- 글꼴은 화면을 막지 않고, 첫 화면이 그려져 한가해진 뒤에 적용한다(처음엔 시스템 글꼴, 이어서 Pretendard로 바뀜). dynamic-subset은 쓰는 글자 조각만 받는다. -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css" media="print" onload="var l=this,f=function(){l.media='all'};window.requestIdleCallback?requestIdleCallback(f,{timeout:2500}):setTimeout(f,400)">
   <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css"></noscript>
-  <link rel="stylesheet" href="./student-portal.css?v=2026.11.24.4">
+  <link rel="stylesheet" href="./student-portal.css?v=2026.11.28.1">
 </head>
 <body class="student-portal-theme">
   <a class="skip-link" href="#app">본문으로 바로가기</a>
   <header class="top">
     <div class="brand">
-      <img class="brand-logo" src="./icons/icon-192.png?v=2026.11.24.4" alt="AP Math">
+      <img class="brand-logo" src="./icons/icon-192.png?v=2026.11.28.1" alt="AP Math">
       <div class="brand-copy">
         <div class="brand-main">AP Math OS</div>
         <div class="brand-sub">학생 포털</div>
@@ -66,7 +67,7 @@
     // 3. manifest.json version
     // 4. sw.js STUDENT_SW_VERSION / CACHE_NAME
     // 5. index.html 정적 리소스 ?v=
-    const STUDENT_APP_VERSION = '2026.11.24.4';
+    const STUDENT_APP_VERSION = '2026.11.28.1';
     const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
     const SESSION_KEY = 'APMATH_STUDENT_PORTAL_SESSION';
     const TEACHER_SESSION_KEY = 'APMATH_SESSION';
@@ -82,6 +83,7 @@
     const studentRequestSequences = Object.create(null);
     let studentViewGeneration = 0;
     let currentStudentView = 'boot';
+    let disposeWrongNotebook = null;
     let isLoadingViewGeneration = null;
     let homeData = null;
     let homeIndex = null;
@@ -169,6 +171,10 @@
         studentRequestSequences[request.resource] === request.sequence;
     }
     function enterStudentView(view, preserveCurrent = false, forceNew = false) {
+      if (currentStudentView === 'wrong-notebook' && (view !== currentStudentView || forceNew)) {
+        disposeWrongNotebook?.();
+        disposeWrongNotebook = null;
+      }
       if (currentStudentView !== view && clinicLearningController) disposeClinicLearningView();
       if (preserveCurrent && currentStudentView === view) return captureStudentView();
       if (currentStudentView !== view || forceNew) {
@@ -224,6 +230,7 @@
       if (view === 'more') return renderMore();
       if (view === 'assignments') return renderAssignments();
       if (view === 'history') return renderLearningHistory();
+      if (view === 'wrong-notebook') return renderWrongNotebook();
       if (view === 'clinic') return renderClinicList();
       if (view === 'materials') return renderMaterialList();
       return renderHome();
@@ -260,6 +267,7 @@
         else if (view === 'assignments') renderAssignments();
         else if (view === 'more') renderMore();
         else if (view === 'learning-history') renderLearningHistory();
+        else if (view === 'wrong-notebook') await renderWrongNotebook();
         else if (view === 'clinic-list') renderClinicList();
         else if (view === 'material-list') renderMaterialList();
         else if (view === 'planner-unavailable') renderPlannerUnavailable();
@@ -705,7 +713,7 @@
         if (!isStudentRequestCurrent(continuation) || !isStudentViewCurrent(homeView, 'home')) return;
         const requestedView = initialStudentRouteConsumed ? '' : String(previewParams.get('view') || '');
         initialStudentRouteConsumed = true;
-        if (['home', 'exams', 'labs', 'planner', 'more', 'assignments', 'history', 'clinic', 'materials'].includes(requestedView)) {
+        if (['home', 'exams', 'labs', 'planner', 'more', 'assignments', 'history', 'clinic', 'materials', 'wrong-notebook'].includes(requestedView)) {
           if (requestedView !== 'home') await navigateStudentPortal(requestedView);
         } else if (shouldOpenOmrFromUrl() && typeof renderOmrExams === 'function') {
           await renderOmrExams();
@@ -1418,13 +1426,12 @@
     }
     function renderStudentQuickActions() {
       const groups = groupStudentPortalExams(getStudentPortalAssignments());
-      const { missing } = splitAssignments();
       return `
         <section class="portal-feature-grid" aria-label="바로 시작">
           <button type="button" class="portal-feature" data-portal-feature="exams" onclick="renderOmrExams()"><span class="feature-heading"><strong>내 시험지</strong><span aria-hidden="true">→</span></span><span class="feature-description">시험지 · OMR · 해설</span><span class="feature-status">${isTeacherPreview ? '읽기 전용' : `진행 ${groups.pending.length} · 완료 ${groups.complete.length}`}</span></button>
+          <button type="button" class="portal-feature" data-portal-feature="wrong-notebook" onclick="renderWrongNotebook()"><span class="feature-heading"><strong>내 오답노트</strong><span aria-hidden="true">→</span></span><span class="feature-description">틀린 문항 모아 보기</span></button>
           ${renderGeometryLabEntry()}
           <button type="button" class="portal-feature" data-portal-feature="planner" onclick="openPlanner()"><span class="feature-heading"><strong>학습 플래너</strong><span aria-hidden="true">→</span></span><span class="feature-description">계획 · 공부 시간</span><span class="feature-status">${isTeacherPreview ? '학생 로그인 필요 · 사유 보기' : '오늘의 계획 확인'}</span></button>
-          <button type="button" class="portal-feature" data-portal-feature="assignments" onclick="renderAssignments()"><span class="feature-heading"><strong>과제</strong><span aria-hidden="true">→</span></span><span class="feature-description">내용 확인 · 사진 제출</span><span class="feature-status">${isTeacherPreview ? '내용 보기 · 읽기 전용' : `미제출 ${missing.length}개`}</span></button>
         </section>
       `;
     }
@@ -1529,6 +1536,7 @@
         ${renderPreviewNotice()}
         <header><h1 class="card-title">더보기</h1><p class="card-desc">학습 기록과 오답을 한곳에서 찾아보세요.</p></header>
         <section class="portal-menu-list" aria-label="전체 학습 메뉴">
+          <button type="button" class="portal-menu-item" onclick="renderWrongNotebook()"><span><strong>내 오답노트</strong><small>시험 범위별로 모은 기출·유사문제 오답</small></span><span class="menu-availability">오답 복습 <span aria-hidden="true">→</span></span></button>
           <button type="button" class="portal-menu-item" onclick="renderLearningHistory()"><span><strong>학습 기록</strong><small>기간별 시험 결과와 복습 기록</small></span><span class="menu-availability">${isTeacherPreview ? '읽기 전용' : '기록 보기'} <span aria-hidden="true">→</span></span></button>
           <button type="button" class="portal-menu-item" onclick="renderClinicList()"><span><strong>오답 클리닉</strong><small>나에게 배포된 문제와 해설 · 오답 체크</small></span><span class="menu-availability">${isTeacherPreview ? '이용 제한 · 사유 보기' : '클리닉 열기'} <span aria-hidden="true">→</span></span></button>
           <button type="button" class="portal-menu-item" onclick="renderMaterialList()"><span><strong>수업자료 오답</strong><small>배정된 수업자료의 틀린 번호 입력</small></span><span class="menu-availability">${isTeacherPreview ? '이용 제한 · 사유 보기' : '오답 입력'} <span aria-hidden="true">→</span></span></button>
@@ -1536,6 +1544,134 @@
         </section>
         ${renderInstallCard(true)}${renderStudentAppVersion()}
       </div>`;
+    }
+    async function renderWrongNotebook() {
+      const view = enterStudentView('wrong-notebook', false, true);
+      const request = beginStudentRequest('wrongNotebook');
+      const current = () => isStudentRequestCurrent(request) && isStudentViewCurrent(view, 'wrong-notebook');
+      $('app').innerHTML = '<div class="student-shell wrong-notebook">' + renderPreviewNotice() +
+        '<button type="button" class="btn back-btn" onclick="renderHome()">← 홈</button>' +
+        '<h1 class="card-title">내 오답노트</h1><p class="card-desc">시험 범위를 골라 틀린 문항을 다시 풀어 보세요.</p>' +
+        '<div data-notebook-body><p class="empty" role="status">오답 기록을 불러오는 중입니다.</p></div></div>';
+      const host = $('app').querySelector('[data-notebook-body]');
+      const fetchExams = params => apiGet('student-portal/exams?' + new URLSearchParams({
+        student_id: request.studentId, ...params
+      }), request.studentToken);
+      const study = window.StudentSelfStudyView;
+      const notebook = window.StudentWrongNotebook;
+      const exams = new Map();
+      try {
+        let offset = 0;
+        do {
+          const result = await fetchExams({ notebook_offset: offset });
+          if (!current()) return;
+          if (!Array.isArray(result.exams)) throw new Error('NOTEBOOK_LIST_UNAVAILABLE');
+          for (const exam of result.exams) exams.set(String(exam.assignment_id), exam);
+          const next = result.notebook_next_offset;
+          offset = Number.isSafeInteger(next) && next > offset ? next : null;
+        } while (offset !== null);
+      } catch (_) {
+        if (current()) host.innerHTML = study.loadFailureHtml('오답 기록', 'renderWrongNotebook()');
+        return;
+      }
+      const { rows, unknownRecords } = notebook.entries(exams.values(), study.normalizeNumbers);
+      const scopes = Array.from(new Set(rows.map(row => row.scope)))
+        .sort((a, b) => a === 'unknown' ? 1 : b === 'unknown' ? -1 :
+          a.slice(0, 4) === b.slice(0, 4) ? (a.endsWith('mid') ? -1 : 1) : b[0].localeCompare(a[0]) || a.localeCompare(b));
+      const warning = unknownRecords ? '<p class="notice" role="status">일부 시험의 오답 기록을 확인하지 못했어요. <button type="button" class="btn" onclick="renderWrongNotebook()">다시 불러오기</button></p>' : '';
+      host.innerHTML = warning + (rows.length ?
+        '<label class="notebook-filter">시험 범위<select data-notebook-scope><option value="">전체 범위</option>' +
+        scopes.map(scope => '<option value="' + scope + '">' + notebook.scopeLabel(scope) + '</option>').join('') +
+        '</select></label><p data-notebook-status role="status"></p><div data-notebook-cards></div><div data-notebook-load role="status"></div>' :
+        unknownRecords ? '' : '<p class="empty">표시할 오답이 없어요. 시험지에서 틀린 번호를 체크하고 제출하면 여기에 모여요.</p>');
+      if (!rows.length) return;
+      const scope = host.querySelector('[data-notebook-scope]');
+      const status = host.querySelector('[data-notebook-status]');
+      const cards = host.querySelector('[data-notebook-cards]');
+      const load = host.querySelector('[data-notebook-load]');
+
+      function drawList() {
+        disposeWrongNotebook?.();
+        let cancelled = false;
+        const active = () => current() && !cancelled;
+        const matches = rows.filter(row => !scope.value || row.scope === scope.value);
+        status.textContent = matches.length ? '오답 ' + matches.length + '개' : '이 범위에 오답이 없어요.';
+        cards.replaceChildren();
+        load.replaceChildren();
+        let offset = 0;
+        const observer = typeof IntersectionObserver === 'function'
+          ? new IntersectionObserver(entries => {
+            if (entries.some(entry => entry.isIntersecting)) appendQuestions();
+          }, { rootMargin: '600px 0px' })
+          : null;
+        disposeWrongNotebook = () => { cancelled = true; observer?.disconnect(); };
+
+        async function showBatch(batch, block, start) {
+          block.innerHTML = '<p class="empty" role="status">문항을 불러오는 중입니다.</p>';
+          const positionsByExam = new Map();
+          for (const { exam, no } of batch) {
+            if (!positionsByExam.has(exam)) positionsByExam.set(exam, []);
+            positionsByExam.get(exam).push(no);
+          }
+          const sources = new Map(await Promise.all(Array.from(positionsByExam, async ([exam, numbers]) => {
+            try {
+              const hasSnapshot = exam.has_snapshot || exam.archive_file?.startsWith('MIXED:');
+              const full = hasSnapshot && !exam.mixed_payload_json
+                ? (await fetchExams({ assignment_id: exam.assignment_id })).exams?.find(item => item.assignment_id === exam.assignment_id)
+                : exam;
+              return [exam, active() && full ? await study.loadExamQuestions(full, { numbers }) : null];
+            } catch (_) { return [exam, null]; }
+          })));
+          if (!active()) return;
+          const questions = batch.map(({ exam, no }, index) => {
+            const question = sources.get(exam)?.[no - 1];
+            return { ...question, no: start + index + 1, missing: !question };
+          });
+          try {
+            await study.show({ questions }, { container: block, embedded: true });
+          } catch (_) {
+            if (!active()) return;
+            block.innerHTML = '<p class="empty" role="alert">문항을 표시하지 못했어요.</p>';
+          }
+          if (active() && (questions.some(question => question.missing) || !block.querySelector('.ss-list'))) {
+            const retry = document.createElement('button');
+            retry.type = 'button';
+            retry.className = 'btn';
+            retry.textContent = '문항 다시 불러오기';
+            retry.onclick = () => showBatch(batch, block, start);
+            block.append(retry);
+          }
+        }
+
+        let loading = false;
+        async function appendQuestions() {
+          if (!active() || loading || offset >= matches.length) return;
+          loading = true;
+          observer?.disconnect();
+          load.replaceChildren();
+          const start = offset;
+          const batch = matches.slice(start, start + 10);
+          const block = document.createElement('div');
+          cards.append(block);
+          offset += batch.length;
+          await showBatch(batch, block, start);
+          loading = false;
+          if (!active() || offset >= matches.length) return;
+          if (observer) observer.observe(load);
+          else {
+            const more = document.createElement('button');
+            more.type = 'button';
+            more.className = 'btn';
+            more.textContent = '오답 더 보기';
+            more.onclick = appendQuestions;
+            load.append(more);
+          }
+        }
+        appendQuestions();
+      }
+
+      scope.onchange = drawList;
+      drawList();
     }
     function renderLearningHistory() {
       enterStudentView('learning-history', false, true);
@@ -2158,6 +2294,7 @@
           <button class="btn back-btn" onclick="renderHome()">← 홈</button>
           <section class="omr-list-header">
             <h1 class="card-title">시험지 목록</h1>
+            <button type="button" class="btn notebook-entry" onclick="renderWrongNotebook()">내 오답노트</button>
             <p class="card-desc">${isTeacherPreview ? '학생에게 표시되는 시험지와 기록을 읽기 전용으로 확인합니다. OMR 입력·제출은 학생 로그인에서만 가능합니다.' : '시험지 확인 → 직접 채점 → 틀린 번호 체크 → 해설 복습'}</p>
           </section>
           <div class="omr-browser"><div class="empty">시험지를 불러오는 중입니다.</div></div>

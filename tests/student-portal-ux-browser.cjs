@@ -66,6 +66,8 @@ async function instrument(context, options = {}) {
     const url = new URL(request.url());
     if (url.hostname === '127.0.0.1' || url.hostname === 'localhost') {
       if (/\/archive\/(mixed_)?engine\.html$/.test(url.pathname)) return route.fulfill({status:200,contentType:'text/html',body:'<!doctype html><html lang="ko"><title>합성 출제본 링크 검수</title><h1>합성 출제본 링크 검수</h1><p>뷰어 목적지입니다. 실제 시험지·정답·해설은 사용하지 않습니다.</p></html>'});
+      const fixtureSource = state.notebookFiles?.[decodeURIComponent(url.pathname)];
+      if (fixtureSource) return route.fulfill({ status: 200, contentType: 'application/javascript', body: fixtureSource });
       if (options.newVersion && url.pathname.endsWith('/student-version.json')) return route.fulfill({status:200,contentType:'application/json',body:JSON.stringify({version:'qa-new-version',message:'합성 검수용 업데이트 안내'})});
       return route.continue();
     }
@@ -82,6 +84,12 @@ async function instrument(context, options = {}) {
       const rows = structuredClone(data.exams);
       if (state.delayExams) { state.delayedExamRequests++; await new Promise(resolve => setTimeout(resolve, state.delayExams)); }
       if (state.examError) return json({ success:false, message:'QA 시험지 조회 실패' }, 503);
+      if (state.notebookPages && url.searchParams.has('notebook_offset')) {
+        return json({ success: true, ...state.notebookPages[url.searchParams.get('notebook_offset')] });
+      }
+      if (state.notebookPages && url.searchParams.has('assignment_id')) {
+        return json({ success: true, exams: rows.filter(row => row.assignment_id === url.searchParams.get('assignment_id')) });
+      }
       return json({ success: true, exams: rows });
     }
     if (endpoint === 'student-portal/wrong-clinics') return state.clinicError ? json({ success:false, message:'QA 클리닉 조회 실패' }, 503) : json({ success:true, packets: data.packets });
@@ -183,6 +191,54 @@ async function behaviorSuite(browser, base, check) {
     assert.equal(await page.evaluate(()=>localStorage.getItem('APMATH_STUDENT_PORTAL_SESSION')),null);
     assert.equal(await page.evaluate(()=>localStorage.getItem('PLANNER_PIN')),null);
   }));
+  await check('home places the notebook beside exams and keeps all wrong questions in one scroll', () => withStudent({name:'wrong-notebook'}, async (page,state) => {
+    const original = 'exams/original/middle/m2/2final/qa-original.js';
+    const similar = 'exams/similar/middle/m2/2final/qa-similar.js';
+    const other = 'exams/original/middle/m2/2mid/qa-other.js';
+    const question = (name, id) => ({ id, content: name + ' \\(x+1\\)', answer: '2', solution: '풀이에서 값을 구합니다.' });
+    const source = (name, count) => 'window.questionBank = ' + JSON.stringify(Array.from({length:count}, (_, i) => question(name, i+1)));
+    state.notebookFiles = { ['/archive/' + original]: source('기출 문항', 10), ['/archive/' + similar]: source('유사 문항', 1), ['/archive/' + other]: source('중간 문항', 1) };
+    const first = { assignment_id: 'note-original', exam_title: '기출 시험지', is_submitted: 1, wrong_ids: [1,2,3,4,5,6,7,8,9,10], archive_file: original };
+    const second = { assignment_id: 'note-mixed', exam_title: '혼합 시험지', is_submitted: 1, wrong_ids: [1,2], archive_file: 'MIXED:qa', has_snapshot: true, wrong_sources: { 1: similar, 2: other } };
+    state.data.exams.push({ ...second, mixed_payload_json: JSON.stringify({ questions: [question('유사 문항', 700), question('중간 문항', 900)] }) });
+    state.notebookPages = {
+      0: { exams: [first], notebook_next_offset: 60 },
+      60: { exams: [second], notebook_next_offset: null }
+    };
+    const homeActions = page.locator('.portal-feature-grid');
+    assert.deepEqual(await homeActions.locator('.portal-feature').evaluateAll(cards => cards.map(card => card.dataset.portalFeature)), ['exams', 'wrong-notebook', 'labs', 'planner']);
+    const examCard = await homeActions.locator('[data-portal-feature="exams"]').boundingBox();
+    const notebookCard = await homeActions.locator('[data-portal-feature="wrong-notebook"]').boundingBox();
+    assert.ok(notebookCard.x > examCard.x && notebookCard.y === examCard.y);
+    assert.equal(await homeActions.getByRole('button', { name: /과제/ }).count(), 0);
+    await clickCall(page, 'renderWrongNotebook');
+    await page.getByRole('heading', { name: '내 오답노트' }).waitFor();
+    await page.getByLabel('시험 범위').selectOption('m2:2:final');
+    assert.match(await page.locator('[data-notebook-status]').textContent(), /11개/);
+    assert.equal(await page.getByLabel('문제 출처').count(), 0);
+    await page.locator('.ss-card.is-ready').first().waitFor();
+    await page.locator('[data-notebook-load]').scrollIntoViewIfNeeded();
+    await page.locator('#ss-q-11.is-ready').waitFor();
+    assert.equal(await page.locator('.ss-card').count(), 11);
+    assert.equal(await page.locator('.ss-source').count(), 0);
+    assert.match(await page.locator('#ss-q-11 .ss-stem').textContent(), /유사 문항/);
+    const last = page.locator('#ss-q-11');
+    assert.equal(await last.locator('.ss-solution').isVisible(), false);
+    await last.getByRole('button', { name: '다 풀었어요' }).click();
+    assert.equal(await last.locator('.ss-solution').isVisible(), true);
+    assert.match(await last.locator('.ss-solution').textContent(), /풀이에서 값을 구합니다/);
+    await last.getByRole('button', { name: '맞았어요' }).click();
+    assert.equal(await last.getAttribute('data-state'), 'c');
+    await page.getByLabel('시험 범위').selectOption('m2:2:mid');
+    await page.locator('.ss-card.is-ready').first().waitFor();
+    assert.match(await page.locator('.ss-stem').textContent(), /중간 문항/);
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+    await capture(page, 'wrong-notebook-390');
+    await page.goBack();
+    await page.locator('#student-portal-omr-home-section').waitFor();
+    assert.equal(state.requests.some(request => request.method === 'POST'), false);
+  }));
+
   await check('every assigned exam remains discoverable and filters are keyboard operable', () => withStudent({name:'exam-filters'}, async (page,state) => {
     assert.equal(await page.locator('#student-portal-omr-home-section .portal-recent-item').count(),1);
     assert.equal(await page.locator('[data-portal-feature]').count(),4);
@@ -502,7 +558,7 @@ async function behaviorSuite(browser, base, check) {
     await page.locator('#student-portal-omr-home-section').waitFor();
   }));
   await check('homework PIN, photo selection, failure recovery and completion use the real UI', () => withStudent({name:'homework'}, async (page,state) => {
-    await clickCall(page,'renderAssignments');
+    await openRetainedFeature(page,'renderAssignments');
     await capture(page,'assignments-390');
     await page.goto(base+'/apmath/homework/?assignment_id=qa-homework&student_id=qa-student');
     await page.locator('#pin-input').waitFor();
