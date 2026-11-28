@@ -1,0 +1,43 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "4" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "4" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D"],
+  "displaySegments": [
+    { "id": "AB", "refs": ["A", "B"] },
+    { "id": "BC", "refs": ["B", "C"] },
+    { "id": "CD", "refs": ["C", "D"] },
+    { "id": "DA", "refs": ["D", "A"] }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      { "id": "width", "from": "A", "to": "B", "label": "3x+5y", "side": "BELOW", "style": "ARROW", "factRole": "GIVEN" },
+      { "id": "height", "from": "B", "to": "C", "label": "2x+3y", "side": "RIGHT", "style": "ARROW", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "coordinateCanvas": { "width": 600, "height": 470 },
+  "caption": "넓이 인수분해 (3x+5y)(2x+3y): 둘레 10x+16y",
+  "accessibilityDescription": "직사각형의 가로 3x+5y와 풀이로 얻은 세로 2x+3y를 각각의 변에 표시한다.",
+  "newVisualInformation": ["인수분해로 확인한 두 변을 실제 사각형 선분에 결속"],
+  "sourceConditions": [
+    { "id": "A", "condition": "직사각형 왼쪽 아래", "mappedTo": "mathPlan.nodes[0]" },
+    { "id": "B", "condition": "직사각형 오른쪽 아래", "mappedTo": "mathPlan.nodes[1]" },
+    { "id": "C", "condition": "직사각형 오른쪽 위", "mappedTo": "mathPlan.nodes[2]" },
+    { "id": "D", "condition": "직사각형 왼쪽 위", "mappedTo": "mathPlan.nodes[3]" },
+    { "id": "AB", "condition": "가로변", "mappedTo": "displaySegments[0]" },
+    { "id": "BC", "condition": "세로변", "mappedTo": "displaySegments[1]" },
+    { "id": "CD", "condition": "윗변", "mappedTo": "displaySegments[2]" },
+    { "id": "DA", "condition": "왼쪽 세로변", "mappedTo": "displaySegments[3]" },
+    { "id": "width", "condition": "문제에서 제공한 가로 3x+5y", "mappedTo": "planeMarks.dimensions[0]" },
+    { "id": "height", "condition": "6x²+19xy+15y²=(3x+5y)(2x+3y)", "mappedTo": "planeMarks.dimensions[1]" }
+  ],
+  "sourceQuote": "다음 그림과 같이 넓이가 $6x^2+19xy+15y^2$인 직사각형 모양의 액자가 있다."
+}

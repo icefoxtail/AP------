@@ -1,0 +1,35 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{ "coefficients": ["5", "-4", "1"] }],
+    "breakpoints": [],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "requiredPoints": [{ "id": "vertex", "x": "2", "y": "1" }],
+    "overlays": {
+      "points": [
+        { "id": "O", "x": "0", "y": "0", "coordinates": false, "unnamed": false },
+        { "id": "B", "x": "0", "y": "5", "coordinates": false, "unnamed": false },
+        { "id": "A", "x": "4", "y": "5", "coordinates": false, "unnamed": false }
+      ],
+      "segments": [
+        { "id": "OB", "from": "O", "to": "B" },
+        { "id": "OA", "from": "O", "to": "A" },
+        { "id": "AB", "from": "A", "to": "B" }
+      ]
+    },
+    "axisTickValues": { "x": [], "y": [] }
+  },
+  "caption": "원점 O와 y축의 점 B, 포물선 위의 제1사분면 점 A가 만드는 삼각형",
+  "accessibilityDescription": "포물선과 O, A, B 세 점의 삼각형을 나타내며 A의 구하는 좌표는 표시하지 않는다.",
+  "newVisualInformation": ["삼각형 OAB의 밑변 OB와 높이 방향", "계산값 없는 학생용 포물선"],
+  "sourceConditions": [
+    { "id": "curve", "condition": "주어진 이차함수 y=x²-4x+5", "mappedTo": "graphPlan.pieces[0].coefficients" },
+    { "id": "B", "condition": "y축과 그래프의 교점 B", "mappedTo": "graphPlan.overlays.points[1]" },
+    { "id": "A", "condition": "제1사분면 위의 그래프 점 A; 정답 숫자 출력 금지", "mappedTo": "graphPlan.overlays.points[2]" },
+    { "id": "OB", "condition": "삼각형의 밑변 OB", "mappedTo": "graphPlan.overlays.segments[0]" },
+    { "id": "OA", "condition": "삼각형 경계 OA", "mappedTo": "graphPlan.overlays.segments[1]" },
+    { "id": "AB", "condition": "삼각형 경계 AB", "mappedTo": "graphPlan.overlays.segments[2]" }
+  ],
+  "sourceQuote": "그림과 같이 제$1$사분면 위의 점 $\\text{A}(a, b)$는 이차함수"
+}

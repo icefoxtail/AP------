@@ -1,0 +1,35 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{ "coefficients": ["5", "-4", "1"] }],
+    "breakpoints": [],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "requiredPoints": [{ "id": "vertex", "x": "2", "y": "1" }],
+    "overlays": {
+      "points": [
+        { "id": "O", "x": "0", "y": "0", "coordinates": true, "unnamed": false },
+        { "id": "B", "x": "0", "y": "5", "coordinates": true, "unnamed": false },
+        { "id": "A", "x": "4", "y": "5", "coordinates": true, "unnamed": false }
+      ],
+      "segments": [
+        { "id": "OB", "from": "O", "to": "B" },
+        { "id": "OA", "from": "O", "to": "A" },
+        { "id": "AB", "from": "A", "to": "B" }
+      ]
+    },
+    "axisTickValues": { "x": [], "y": [] }
+  },
+  "caption": "OB=5, 넓이 10에서 A의 x좌표 4, A=(4,5), a+b=9",
+  "accessibilityDescription": "밑변 OB의 길이 5와 높이 4를 이용해 넓이 10을 설명하는 포물선 위 삼각형이다.",
+  "newVisualInformation": ["풀이에서 결정한 점 A의 좌표", "세 변과 포물선의 위치"],
+  "sourceConditions": [
+    { "id": "curve", "condition": "주어진 y=x²-4x+5", "mappedTo": "graphPlan.pieces[0].coefficients" },
+    { "id": "B", "condition": "y절편 (0,5)", "mappedTo": "graphPlan.overlays.points[1]" },
+    { "id": "A", "condition": "1/2×5×a=10 에서 a=4; b=5", "mappedTo": "graphPlan.overlays.points[2]" },
+    { "id": "OB", "condition": "삼각형 밑변", "mappedTo": "graphPlan.overlays.segments[0]" },
+    { "id": "OA", "condition": "삼각형 경계", "mappedTo": "graphPlan.overlays.segments[1]" },
+    { "id": "AB", "condition": "삼각형 경계", "mappedTo": "graphPlan.overlays.segments[2]" }
+  ],
+  "sourceQuote": "그림과 같이 제$1$사분면 위의 점 $\\text{A}(a, b)$는 이차함수"
+}

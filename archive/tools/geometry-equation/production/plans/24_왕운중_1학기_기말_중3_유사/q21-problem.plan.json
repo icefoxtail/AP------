@@ -1,0 +1,39 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "4" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "4" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D"],
+  "displaySegments": [
+    { "id": "AB", "refs": ["A", "B"] },
+    { "id": "BC", "refs": ["B", "C"] },
+    { "id": "CD", "refs": ["C", "D"] },
+    { "id": "DA", "refs": ["D", "A"] }
+  ],
+  "planeMarks": {
+    "dimensions": [{ "id": "width", "from": "A", "to": "B", "label": "3x+5y", "side": "BELOW", "style": "ARROW", "factRole": "GIVEN" }]
+  },
+  "coordinateCanvas": { "width": 600, "height": 470 },
+  "caption": "넓이가 6x²+19xy+15y²이고 가로가 3x+5y인 직사각형 액자",
+  "accessibilityDescription": "액자 모양의 직사각형과 가로변에 주어진 문자식을 나타내며 세로는 미지수로 남긴다.",
+  "newVisualInformation": ["원본 SVG의 네 변과 가로 길이 라벨을 공식 선분에 결속"],
+  "sourceConditions": [
+    { "id": "A", "condition": "직사각형 왼쪽 아래의 도식적 기준점", "mappedTo": "mathPlan.nodes[0]" },
+    { "id": "B", "condition": "가로변 AB 오른쪽 끝", "mappedTo": "mathPlan.nodes[1]" },
+    { "id": "C", "condition": "오른쪽 위의 직각 꼭짓점", "mappedTo": "mathPlan.nodes[2]" },
+    { "id": "D", "condition": "왼쪽 위의 직각 꼭짓점", "mappedTo": "mathPlan.nodes[3]" },
+    { "id": "AB", "condition": "가로변", "mappedTo": "displaySegments[0]" },
+    { "id": "BC", "condition": "오른쪽 세로변", "mappedTo": "displaySegments[1]" },
+    { "id": "CD", "condition": "윗변", "mappedTo": "displaySegments[2]" },
+    { "id": "DA", "condition": "왼쪽 세로변", "mappedTo": "displaySegments[3]" },
+    { "id": "width", "condition": "원문 가로 3x+5y", "mappedTo": "planeMarks.dimensions[0]" }
+  ],
+  "sourceQuote": "다음 그림과 같이 넓이가 $6x^2+19xy+15y^2$인 직사각형 모양의 액자가 있다."
+}

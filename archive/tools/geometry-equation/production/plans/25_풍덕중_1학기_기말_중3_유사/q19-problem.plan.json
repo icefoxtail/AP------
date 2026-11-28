@@ -1,0 +1,41 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{ "coefficients": ["0", "0", "1/4"] }],
+    "breakpoints": [],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "requiredPoints": [{ "id": "V", "x": "0", "y": "0" }],
+    "referenceCurves": [{ "id": "g", "name": "g", "coefficients": ["0", "0", "-2"], "intersectionX": ["0"] }],
+    "overlays": {
+      "points": [
+        { "id": "A", "x": "-6", "y": "9", "coordinates": false, "unnamed": false },
+        { "id": "B", "x": "6", "y": "9", "coordinates": false, "unnamed": false },
+        { "id": "C", "x": "2", "y": "-8", "coordinates": true, "unnamed": false },
+        { "id": "D", "x": "-2", "y": "-8", "coordinates": false, "unnamed": false }
+      ],
+      "segments": [
+        { "id": "AB", "from": "A", "to": "B" },
+        { "id": "BC", "from": "B", "to": "C" },
+        { "id": "CD", "from": "C", "to": "D" },
+        { "id": "DA", "from": "D", "to": "A" }
+      ],
+      "polygons": [
+        { "id": "trap", "points": ["A", "B", "C", "D"], "fill": "LIGHT" }
+      ]
+    },
+    "axisTickValues": { "x": [], "y": [] }
+  },
+  "caption": "위쪽 y=ax²과 아래쪽 y=-2x² 사이의 사다리꼴 ABCD; 미지 계수 a는 표기하지 않음",
+  "accessibilityDescription": "두 포물선 위의 A, B, C, D를 이은 사다리꼴이며 주어진 C의 좌표만 수치로 표시한다.",
+  "newVisualInformation": ["두 포물선의 공통 대칭축", "사다리꼴 AB와 CD의 수평·평행 관계"],
+  "sourceConditions": [
+    { "id": "up", "condition": "원문 y=ax²와 AB가 수평인 포물선의 작도 기준이며 a 값은 문제 그림에 표기하지 않음", "mappedTo": "graphPlan.pieces[0].coefficients" },
+    { "id": "down", "condition": "y=-2x²", "mappedTo": "graphPlan.referenceCurves[0].coefficients" },
+    { "id": "C", "condition": "원문 C=(2,-8)", "mappedTo": "graphPlan.overlays.points[2]" },
+    { "id": "AB", "condition": "AB는 x축 평행", "mappedTo": "graphPlan.overlays.segments[0]" },
+    { "id": "CD", "condition": "AB=3CD", "mappedTo": "graphPlan.overlays.segments[2]" },
+    { "id": "area", "condition": "구하는 사다리꼴 영역을 원본과 같이 연하게 구분", "mappedTo": "graphPlan.overlays.polygons[0]" }
+  ],
+  "sourceQuote": "다음 그림과 같이 이차함수 $y=ax^2\\ (a>0)$의 그래프 위에"
+}
