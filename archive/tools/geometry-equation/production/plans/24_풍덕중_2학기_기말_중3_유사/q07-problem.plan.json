@@ -1,0 +1,296 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-17"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-64",
+              "denominator": "17"
+            },
+            {
+              "kind": "rational",
+              "numerator": "120",
+              "denominator": "17"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-64",
+              "denominator": "17"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-120",
+              "denominator": "17"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "c"
+  ],
+  "displaySegments": [
+    {
+      "id": "PA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "PB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "OP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lPA",
+        "ownerSegment": "PA",
+        "text": "2x-1",
+        "unit": "cm"
+      },
+      {
+        "id": "lPB",
+        "ownerSegment": "PB",
+        "text": "15",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "O",
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "rB",
+      "refs": [
+        "O",
+        "B",
+        "P"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 416,
+    "height": 400
+  },
+  "caption": "원 O 밖의 점 P에서 원 O에 그은 두 접선의 접점을 A, B라 하고, 두 접선의 길이를 문자와 수로 나타낸 그림이다.",
+  "accessibilityDescription": "원의 중심 O와 원 밖의 점 P를 잇는 선분, 점 P에서 원에 그은 두 접선 PA, PB가 그려져 있다. 접점 A, B에서 반지름 OA, OB와 접선이 이루는 각에 수직 표시가 있고, PA는 2x-1 cm, PB는 15 cm로 표시되어 있다.",
+  "newVisualInformation": [
+    "원 밖의 한 점에서 그은 두 접선과 접점 A, B를 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "f1",
+      "condition": "원문 도형 O의 SOURCE_POINT 기하 작도",
+      "mappedTo": "mathPlan.nodes[0]"
+    },
+    {
+      "id": "f2",
+      "condition": "원문 도형 P의 SOURCE_POINT 기하 작도",
+      "mappedTo": "mathPlan.nodes[1]"
+    },
+    {
+      "id": "f3",
+      "condition": "원문 도형 A의 SOURCE_POINT 기하 작도",
+      "mappedTo": "mathPlan.nodes[2]"
+    },
+    {
+      "id": "f4",
+      "condition": "원문 도형 B의 SOURCE_POINT 기하 작도",
+      "mappedTo": "mathPlan.nodes[3]"
+    },
+    {
+      "id": "f5",
+      "condition": "원문 도형 c의 CIRCLE_CENTER_RADIUS 기하 작도",
+      "mappedTo": "mathPlan.nodes[4]"
+    },
+    {
+      "id": "f6",
+      "condition": "원문 displayPoints 표식 1",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "f7",
+      "condition": "원문 displayPoints 표식 2",
+      "mappedTo": "displayPoints[1]"
+    },
+    {
+      "id": "f8",
+      "condition": "원문 displayPoints 표식 3",
+      "mappedTo": "displayPoints[2]"
+    },
+    {
+      "id": "f9",
+      "condition": "원문 displayPoints 표식 4",
+      "mappedTo": "displayPoints[3]"
+    },
+    {
+      "id": "f10",
+      "condition": "원문 displayCircles 표식 1",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "f11",
+      "condition": "원문 displaySegments 표식 1",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "f12",
+      "condition": "원문 displaySegments 표식 2",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "f13",
+      "condition": "원문 displaySegments 표식 3",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "f14",
+      "condition": "원문 displaySegments 표식 4",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "f15",
+      "condition": "원문 displaySegments 표식 5",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "f16",
+      "condition": "원문 rightAngles 표식 1",
+      "mappedTo": "rightAngles[0]"
+    },
+    {
+      "id": "f17",
+      "condition": "원문 rightAngles 표식 2",
+      "mappedTo": "rightAngles[1]"
+    },
+    {
+      "id": "f18",
+      "condition": "원문 기하 expressionLabels 표시 1",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "f19",
+      "condition": "원문 기하 expressionLabels 표시 2",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    }
+  ],
+  "sourceQuote": "다음 그림과 같이 원 $O$ 밖의 한 점 $P$에서 원 $O$에 "
+}

@@ -1,0 +1,372 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "25"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "-12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "20"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "DO",
+      "refs": [
+        "D",
+        "O"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "AO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "AB",
+        "text": "15",
+        "unit": "cm"
+      },
+      {
+        "id": "lAD",
+        "ownerSegment": "AD",
+        "text": "5",
+        "unit": "cm"
+      },
+      {
+        "id": "radius20",
+        "ownerSegment": "OB",
+        "text": "20",
+        "unit": "cm",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "hyp25",
+        "ownerSegment": "AO",
+        "text": "25",
+        "unit": "cm",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "O",
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "rC",
+      "refs": [
+        "O",
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 560
+  },
+  "caption": "원 O 밖의 점 A에서 원에 두 접선 AB, AC를 그었고, 선분 AO가 원과 만나는 점이 D이다. AB는 15cm, AD는 5cm이다. 해설에서는 필요한 보조선·계산된 길이 또는 각의 관계를 추가로 표시한다.",
+  "accessibilityDescription": "원 밖의 점 A에서 원에 두 접선을 그어 접점 B, C를 만들고, 점 A와 중심 O를 잇는 선분이 원과 만나는 점 D가 표시되어 있다. AB에는 15cm, AD에는 5cm가 적혀 있고 두 접점에 직각 표시가 있다.",
+  "newVisualInformation": [
+    "원 밖의 한 점에서 그은 두 접선과 두 접점, 중심을 지나는 선분 위의 점 D를 보여 준다.",
+    "AB는 15cm, AD는 5cm로 표시한다.",
+    "해설의 결정적 수학 관계를 실제 선분·호·길이·각 필드로 추가하거나 미지수 라벨을 계산 결과로 교체"
+  ],
+  "sourceConditions": [
+    {
+      "id": "f1",
+      "condition": "기하 O의 SOURCE_POINT",
+      "mappedTo": "mathPlan.nodes[0]"
+    },
+    {
+      "id": "f2",
+      "condition": "기하 A의 SOURCE_POINT",
+      "mappedTo": "mathPlan.nodes[1]"
+    },
+    {
+      "id": "f3",
+      "condition": "기하 B의 SOURCE_POINT",
+      "mappedTo": "mathPlan.nodes[2]"
+    },
+    {
+      "id": "f4",
+      "condition": "기하 C의 SOURCE_POINT",
+      "mappedTo": "mathPlan.nodes[3]"
+    },
+    {
+      "id": "f5",
+      "condition": "기하 D의 SOURCE_POINT",
+      "mappedTo": "mathPlan.nodes[4]"
+    },
+    {
+      "id": "f6",
+      "condition": "기하 circ의 CIRCLE_CENTER_RADIUS",
+      "mappedTo": "mathPlan.nodes[5]"
+    },
+    {
+      "id": "f7",
+      "condition": "displayPoints 요소 1",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "f8",
+      "condition": "displayPoints 요소 2",
+      "mappedTo": "displayPoints[1]"
+    },
+    {
+      "id": "f9",
+      "condition": "displayPoints 요소 3",
+      "mappedTo": "displayPoints[2]"
+    },
+    {
+      "id": "f10",
+      "condition": "displayPoints 요소 4",
+      "mappedTo": "displayPoints[3]"
+    },
+    {
+      "id": "f11",
+      "condition": "displayPoints 요소 5",
+      "mappedTo": "displayPoints[4]"
+    },
+    {
+      "id": "f12",
+      "condition": "displaySegments 요소 1",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "f13",
+      "condition": "displaySegments 요소 2",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "f14",
+      "condition": "displaySegments 요소 3",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "f15",
+      "condition": "displaySegments 요소 4",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "f16",
+      "condition": "displaySegments 요소 5",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "f17",
+      "condition": "displaySegments 요소 6",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "f18",
+      "condition": "displaySegments 요소 7",
+      "mappedTo": "displaySegments[6]"
+    },
+    {
+      "id": "f19",
+      "condition": "displayCircles 요소 1",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "f20",
+      "condition": "rightAngles 요소 1",
+      "mappedTo": "rightAngles[0]"
+    },
+    {
+      "id": "f21",
+      "condition": "rightAngles 요소 2",
+      "mappedTo": "rightAngles[1]"
+    },
+    {
+      "id": "f22",
+      "condition": "expressionLabels 표시 1",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "f23",
+      "condition": "expressionLabels 표시 2",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "f24",
+      "condition": "expressionLabels 표시 3",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    },
+    {
+      "id": "f25",
+      "condition": "expressionLabels 표시 4",
+      "mappedTo": "planeMarks.expressionLabels[3]"
+    }
+  ],
+  "sourceQuote": "다음은 지면에 박힌 둥근 바퀴의 반지름의 길이를 구하기 위하여 측"
+}

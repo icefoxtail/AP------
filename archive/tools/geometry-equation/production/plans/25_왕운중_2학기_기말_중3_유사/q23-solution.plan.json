@@ -1,0 +1,438 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "110"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "342"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "250"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ab",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "oc",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "tan",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "C",
+          "oc"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "tan",
+          "ab"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ac",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bis",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bis",
+          "ac"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 64,
+        "label": "64",
+        "color": "BLUE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aE",
+        "refs": [
+          "A",
+          "E",
+          "D"
+        ],
+        "value": 122,
+        "label": "122",
+        "labelKind": "MATH",
+        "color": "WARM",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "caption": "삼각형의 외접원에서 한 변의 연장선과 한 꼭짓점에서 그은 접선이 만나고, 그 교점에서 그은 각의 이등분선이 다른 변과 만난다. 한 꼭짓점의 각 64도와 이등분선 위의 한 점의 미지각이 표시되어 있다. 해설에서는 필요한 보조선·계산된 길이 또는 각의 관계를 추가로 표시한다.",
+  "accessibilityDescription": "원 위의 세 점이 삼각형을 이루고, 한 변을 연장한 직선과 한 꼭짓점에서 그은 접선이 만난다. 그 교점에서 각을 이등분하는 선이 다른 변과 만나며, 한 꼭짓점에 64도, 이등분선 위의 한 점에 미지각 표시가 있다.",
+  "newVisualInformation": [
+    "삼각형과 외접원",
+    "변의 연장선과 접선의 교점",
+    "각의 이등분선과 미지각",
+    "각 64도",
+    "해설의 결정적 수학 관계를 실제 선분·호·길이·각 필드로 추가하거나 미지수 라벨을 계산 결과로 교체"
+  ],
+  "sourceConditions": [
+    {
+      "id": "f1",
+      "condition": "기하 O의 SOURCE_POINT",
+      "mappedTo": "mathPlan.nodes[0]"
+    },
+    {
+      "id": "f2",
+      "condition": "기하 X의 TRANSLATE_POINT",
+      "mappedTo": "mathPlan.nodes[1]"
+    },
+    {
+      "id": "f3",
+      "condition": "기하 circ의 CIRCLE_CENTER_RADIUS",
+      "mappedTo": "mathPlan.nodes[2]"
+    },
+    {
+      "id": "f4",
+      "condition": "기하 A의 POLAR_POINT",
+      "mappedTo": "mathPlan.nodes[3]"
+    },
+    {
+      "id": "f5",
+      "condition": "기하 B의 POLAR_POINT",
+      "mappedTo": "mathPlan.nodes[4]"
+    },
+    {
+      "id": "f6",
+      "condition": "기하 C의 POLAR_POINT",
+      "mappedTo": "mathPlan.nodes[5]"
+    },
+    {
+      "id": "f7",
+      "condition": "기하 ab의 LINE_THROUGH",
+      "mappedTo": "mathPlan.nodes[6]"
+    },
+    {
+      "id": "f8",
+      "condition": "기하 oc의 LINE_THROUGH",
+      "mappedTo": "mathPlan.nodes[7]"
+    },
+    {
+      "id": "f9",
+      "condition": "기하 tan의 PERPENDICULAR_THROUGH",
+      "mappedTo": "mathPlan.nodes[8]"
+    },
+    {
+      "id": "f10",
+      "condition": "기하 D의 LINE_INTERSECTION",
+      "mappedTo": "mathPlan.nodes[9]"
+    },
+    {
+      "id": "f11",
+      "condition": "기하 ac의 LINE_THROUGH",
+      "mappedTo": "mathPlan.nodes[10]"
+    },
+    {
+      "id": "f12",
+      "condition": "기하 bis의 ANGLE_BISECTOR",
+      "mappedTo": "mathPlan.nodes[11]"
+    },
+    {
+      "id": "f13",
+      "condition": "기하 E의 LINE_INTERSECTION",
+      "mappedTo": "mathPlan.nodes[12]"
+    },
+    {
+      "id": "f14",
+      "condition": "displayPoints 요소 1",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "f15",
+      "condition": "displayPoints 요소 2",
+      "mappedTo": "displayPoints[1]"
+    },
+    {
+      "id": "f16",
+      "condition": "displayPoints 요소 3",
+      "mappedTo": "displayPoints[2]"
+    },
+    {
+      "id": "f17",
+      "condition": "displayPoints 요소 4",
+      "mappedTo": "displayPoints[3]"
+    },
+    {
+      "id": "f18",
+      "condition": "displayPoints 요소 5",
+      "mappedTo": "displayPoints[4]"
+    },
+    {
+      "id": "f19",
+      "condition": "displayPoints 요소 6",
+      "mappedTo": "displayPoints[5]"
+    },
+    {
+      "id": "f20",
+      "condition": "displaySegments 요소 1",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "f21",
+      "condition": "displaySegments 요소 2",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "f22",
+      "condition": "displaySegments 요소 3",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "f23",
+      "condition": "displaySegments 요소 4",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "f24",
+      "condition": "displaySegments 요소 5",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "f25",
+      "condition": "displayCircles 요소 1",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "f26",
+      "condition": "angles 표시 1",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "f27",
+      "condition": "angles 표시 2",
+      "mappedTo": "planeMarks.angles[1]"
+    }
+  ],
+  "sourceQuote": "[서술형 3] 다음 그림과 같이 $\\triangle ABC$의 외"
+}

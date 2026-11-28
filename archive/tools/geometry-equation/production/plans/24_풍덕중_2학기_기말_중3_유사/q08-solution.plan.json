@@ -1,0 +1,242 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "T",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "c"
+  ],
+  "displaySegments": [
+    {
+      "id": "OT",
+      "refs": [
+        "O",
+        "T"
+      ]
+    },
+    {
+      "id": "TP",
+      "refs": [
+        "T",
+        "P"
+      ]
+    },
+    {
+      "id": "OP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lOT",
+        "ownerSegment": "OT",
+        "text": "5000",
+        "unit": "km"
+      },
+      {
+        "id": "lTP",
+        "ownerSegment": "TP",
+        "text": "12000",
+        "unit": "km"
+      },
+      {
+        "id": "centerDist",
+        "ownerSegment": "OP",
+        "text": "13000",
+        "unit": "km",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rT",
+      "refs": [
+        "O",
+        "T",
+        "P"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "O"
+  ],
+  "hiddenPointStyle": "DOT",
+  "coordinateCanvas": {
+    "width": 416,
+    "height": 400
+  },
+  "caption": "행성과 지평선의 접점 T, 인공위성 P의 위치를 나타낸 그림이다. 행성의 반지름은 5000 km, 접선 PT의 길이는 12000 km이다. 해설에서는 필요한 보조선·계산된 길이 또는 각의 관계를 추가로 표시한다.",
+  "accessibilityDescription": "행성을 나타내는 원과 원 위의 접점 T, 원 밖의 인공위성 P가 그려져 있다. 중심에서 T까지의 반지름은 5000 km, T에서 P까지의 접선은 12000 km로 표시되어 있고, T에서 수직 표시가 있다.",
+  "newVisualInformation": [
+    "행성, 지평선의 접점 T, 인공위성 P와 반지름 및 접선의 길이를 보여 준다.",
+    "해설의 결정적 수학 관계를 실제 선분·호·길이·각 필드로 추가하거나 미지수 라벨을 계산 결과로 교체"
+  ],
+  "sourceConditions": [
+    {
+      "id": "f1",
+      "condition": "기하 O의 SOURCE_POINT",
+      "mappedTo": "mathPlan.nodes[0]"
+    },
+    {
+      "id": "f2",
+      "condition": "기하 T의 SOURCE_POINT",
+      "mappedTo": "mathPlan.nodes[1]"
+    },
+    {
+      "id": "f3",
+      "condition": "기하 P의 SOURCE_POINT",
+      "mappedTo": "mathPlan.nodes[2]"
+    },
+    {
+      "id": "f4",
+      "condition": "기하 c의 CIRCLE_CENTER_RADIUS",
+      "mappedTo": "mathPlan.nodes[3]"
+    },
+    {
+      "id": "f5",
+      "condition": "displayPoints 요소 1",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "f6",
+      "condition": "displayPoints 요소 2",
+      "mappedTo": "displayPoints[1]"
+    },
+    {
+      "id": "f7",
+      "condition": "displayPoints 요소 3",
+      "mappedTo": "displayPoints[2]"
+    },
+    {
+      "id": "f8",
+      "condition": "displaySegments 요소 1",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "f9",
+      "condition": "displaySegments 요소 2",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "f10",
+      "condition": "displaySegments 요소 3",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "f11",
+      "condition": "displayCircles 요소 1",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "f12",
+      "condition": "rightAngles 요소 1",
+      "mappedTo": "rightAngles[0]"
+    },
+    {
+      "id": "f13",
+      "condition": "expressionLabels 표시 1",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "f14",
+      "condition": "expressionLabels 표시 2",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    },
+    {
+      "id": "f15",
+      "condition": "expressionLabels 표시 3",
+      "mappedTo": "planeMarks.expressionLabels[2]"
+    }
+  ],
+  "sourceQuote": "어떤 행성의 반지름의 길이가 $5{,}000\\rm,km$이고, 인"
+}

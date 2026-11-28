@@ -1,0 +1,325 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "140"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "50"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "230"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "310"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "P",
+    "Q"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "PA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "PB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "QA",
+      "refs": [
+        "Q",
+        "A"
+      ]
+    },
+    {
+      "id": "QB",
+      "refs": [
+        "Q",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aQ",
+        "refs": [
+          "A",
+          "Q",
+          "B"
+        ],
+        "value": 45,
+        "label": "45",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aP",
+        "refs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "value": 45,
+        "label": "45",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 480
+  },
+  "caption": "원형 레일 위의 두 점 A, B를 서로 다른 두 점 P, Q에서 바라본다. 점 Q에서의 각 AQB는 45도이고, 점 P에서의 각 APB를 x로 표시하였다. 해설에서는 필요한 보조선·계산된 길이 또는 각의 관계를 추가로 표시한다.",
+  "accessibilityDescription": "원 위에 네 점 A, B, P, Q가 있고, P와 Q에서 A, B로 각각 선을 그어 두 각을 만든다. Q의 각에는 45, P의 각에는 x가 적혀 있다.",
+  "newVisualInformation": [
+    "같은 원 위의 두 점 P, Q에서 같은 두 점 A, B를 바라보는 각을 함께 보여 준다.",
+    "해설의 결정적 수학 관계를 실제 선분·호·길이·각 필드로 추가하거나 미지수 라벨을 계산 결과로 교체"
+  ],
+  "sourceConditions": [
+    {
+      "id": "f1",
+      "condition": "기하 O의 SOURCE_POINT",
+      "mappedTo": "mathPlan.nodes[0]"
+    },
+    {
+      "id": "f2",
+      "condition": "기하 X의 TRANSLATE_POINT",
+      "mappedTo": "mathPlan.nodes[1]"
+    },
+    {
+      "id": "f3",
+      "condition": "기하 A의 POLAR_POINT",
+      "mappedTo": "mathPlan.nodes[2]"
+    },
+    {
+      "id": "f4",
+      "condition": "기하 B의 POLAR_POINT",
+      "mappedTo": "mathPlan.nodes[3]"
+    },
+    {
+      "id": "f5",
+      "condition": "기하 P의 POLAR_POINT",
+      "mappedTo": "mathPlan.nodes[4]"
+    },
+    {
+      "id": "f6",
+      "condition": "기하 Q의 POLAR_POINT",
+      "mappedTo": "mathPlan.nodes[5]"
+    },
+    {
+      "id": "f7",
+      "condition": "기하 circ의 CIRCLE_CENTER_RADIUS",
+      "mappedTo": "mathPlan.nodes[6]"
+    },
+    {
+      "id": "f8",
+      "condition": "displayPoints 요소 1",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "f9",
+      "condition": "displayPoints 요소 2",
+      "mappedTo": "displayPoints[1]"
+    },
+    {
+      "id": "f10",
+      "condition": "displayPoints 요소 3",
+      "mappedTo": "displayPoints[2]"
+    },
+    {
+      "id": "f11",
+      "condition": "displayPoints 요소 4",
+      "mappedTo": "displayPoints[3]"
+    },
+    {
+      "id": "f12",
+      "condition": "displayPoints 요소 5",
+      "mappedTo": "displayPoints[4]"
+    },
+    {
+      "id": "f13",
+      "condition": "displaySegments 요소 1",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "f14",
+      "condition": "displaySegments 요소 2",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "f15",
+      "condition": "displaySegments 요소 3",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "f16",
+      "condition": "displaySegments 요소 4",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "f17",
+      "condition": "displayCircles 요소 1",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "f18",
+      "condition": "angles 표시 1",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "f19",
+      "condition": "angles 표시 2",
+      "mappedTo": "planeMarks.angles[1]"
+    }
+  ],
+  "sourceQuote": "[14-15 공통] 다음 그림과 같이 드라마를 제작할 때, 흔들림"
+}

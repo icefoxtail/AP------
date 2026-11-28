@@ -1,0 +1,350 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "50"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "O"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineAT",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "T"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lineAT",
+          "lineBC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "T"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "TD",
+      "refs": [
+        "T",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "T",
+          "A",
+          "B"
+        ],
+        "value": 65,
+        "label": "65",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aD",
+        "refs": [
+          "A",
+          "D",
+          "B"
+        ],
+        "value": 40,
+        "label": "x",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 540
+  },
+  "caption": "선분 BC가 원 O의 지름이고 직선 TA는 점 A에서의 접선이다. 접선 TA와 BC의 연장선이 점 D에서 만나고, 각 TAB는 65도이며 각 ADB를 x로 표시하였다.",
+  "accessibilityDescription": "원 O의 지름 BC를 오른쪽으로 연장한 직선과 점 A에서의 접선이 점 D에서 만난다. A에서 접선과 현 AB 사이의 각은 65, D에서의 각은 x로 표시되어 있다.",
+  "newVisualInformation": [
+    "지름 BC, 접선 TA, 두 직선의 교점 D, 각 65와 x를 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "f1",
+      "condition": "원문 도형 O의 SOURCE_POINT 기하 작도",
+      "mappedTo": "mathPlan.nodes[0]"
+    },
+    {
+      "id": "f2",
+      "condition": "원문 도형 B의 SOURCE_POINT 기하 작도",
+      "mappedTo": "mathPlan.nodes[1]"
+    },
+    {
+      "id": "f3",
+      "condition": "원문 도형 C의 SOURCE_POINT 기하 작도",
+      "mappedTo": "mathPlan.nodes[2]"
+    },
+    {
+      "id": "f4",
+      "condition": "원문 도형 A의 POLAR_POINT 기하 작도",
+      "mappedTo": "mathPlan.nodes[3]"
+    },
+    {
+      "id": "f5",
+      "condition": "원문 도형 T의 POLAR_POINT 기하 작도",
+      "mappedTo": "mathPlan.nodes[4]"
+    },
+    {
+      "id": "f6",
+      "condition": "원문 도형 lineAT의 LINE_THROUGH 기하 작도",
+      "mappedTo": "mathPlan.nodes[5]"
+    },
+    {
+      "id": "f7",
+      "condition": "원문 도형 lineBC의 LINE_THROUGH 기하 작도",
+      "mappedTo": "mathPlan.nodes[6]"
+    },
+    {
+      "id": "f8",
+      "condition": "원문 도형 D의 LINE_INTERSECTION 기하 작도",
+      "mappedTo": "mathPlan.nodes[7]"
+    },
+    {
+      "id": "f9",
+      "condition": "원문 도형 circ의 CIRCLE_CENTER_RADIUS 기하 작도",
+      "mappedTo": "mathPlan.nodes[8]"
+    },
+    {
+      "id": "f10",
+      "condition": "원문 displayPoints 표식 1",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "f11",
+      "condition": "원문 displayPoints 표식 2",
+      "mappedTo": "displayPoints[1]"
+    },
+    {
+      "id": "f12",
+      "condition": "원문 displayPoints 표식 3",
+      "mappedTo": "displayPoints[2]"
+    },
+    {
+      "id": "f13",
+      "condition": "원문 displayPoints 표식 4",
+      "mappedTo": "displayPoints[3]"
+    },
+    {
+      "id": "f14",
+      "condition": "원문 displayPoints 표식 5",
+      "mappedTo": "displayPoints[4]"
+    },
+    {
+      "id": "f15",
+      "condition": "원문 displayPoints 표식 6",
+      "mappedTo": "displayPoints[5]"
+    },
+    {
+      "id": "f16",
+      "condition": "원문 displayCircles 표식 1",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "f17",
+      "condition": "원문 displaySegments 표식 1",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "f18",
+      "condition": "원문 displaySegments 표식 2",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "f19",
+      "condition": "원문 displaySegments 표식 3",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "f20",
+      "condition": "원문 displaySegments 표식 4",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "f21",
+      "condition": "원문 기하 angles 표시 1",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "f22",
+      "condition": "원문 기하 angles 표시 2",
+      "mappedTo": "planeMarks.angles[1]"
+    }
+  ],
+  "sourceQuote": "다음 그림과 같이 선분 $\\overline{BC}$가 지름인 원 "
+}

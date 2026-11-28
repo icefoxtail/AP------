@@ -1,0 +1,1168 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V2",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "15"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V3",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V4",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "45"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V5",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V6",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "75"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V7",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V8",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "105"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V9",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V10",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "135"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V11",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "150"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V12",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "165"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V13",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V14",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "195"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V15",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "210"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V16",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "225"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V17",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "240"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V18",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "255"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V19",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "270"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V20",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "285"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V21",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "300"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V22",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "315"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V23",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "330"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V24",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "345"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "V5",
+    "V6",
+    "V7",
+    "V8",
+    "V9",
+    "V10",
+    "V11",
+    "V12",
+    "V13",
+    "V14",
+    "V15",
+    "V16",
+    "V17",
+    "V18",
+    "V19",
+    "V20",
+    "V21",
+    "V22",
+    "V23",
+    "V24"
+  ],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "s01",
+      "refs": [
+        "V1",
+        "V6"
+      ]
+    },
+    {
+      "id": "s02",
+      "refs": [
+        "V2",
+        "V7"
+      ]
+    },
+    {
+      "id": "s03",
+      "refs": [
+        "V3",
+        "V8"
+      ]
+    },
+    {
+      "id": "s04",
+      "refs": [
+        "V4",
+        "V9"
+      ]
+    },
+    {
+      "id": "s05",
+      "refs": [
+        "V5",
+        "V10"
+      ]
+    },
+    {
+      "id": "s06",
+      "refs": [
+        "V6",
+        "V11"
+      ]
+    },
+    {
+      "id": "s07",
+      "refs": [
+        "V7",
+        "V12"
+      ]
+    },
+    {
+      "id": "s08",
+      "refs": [
+        "V8",
+        "V13"
+      ]
+    },
+    {
+      "id": "s09",
+      "refs": [
+        "V9",
+        "V14"
+      ]
+    },
+    {
+      "id": "s10",
+      "refs": [
+        "V10",
+        "V15"
+      ]
+    },
+    {
+      "id": "s11",
+      "refs": [
+        "V11",
+        "V16"
+      ]
+    },
+    {
+      "id": "s12",
+      "refs": [
+        "V12",
+        "V17"
+      ]
+    },
+    {
+      "id": "s13",
+      "refs": [
+        "V13",
+        "V18"
+      ]
+    },
+    {
+      "id": "s14",
+      "refs": [
+        "V14",
+        "V19"
+      ]
+    },
+    {
+      "id": "s15",
+      "refs": [
+        "V15",
+        "V20"
+      ]
+    },
+    {
+      "id": "s16",
+      "refs": [
+        "V16",
+        "V21"
+      ]
+    },
+    {
+      "id": "s17",
+      "refs": [
+        "V17",
+        "V22"
+      ]
+    },
+    {
+      "id": "s18",
+      "refs": [
+        "V18",
+        "V23"
+      ]
+    },
+    {
+      "id": "s19",
+      "refs": [
+        "V19",
+        "V24"
+      ]
+    },
+    {
+      "id": "s20",
+      "refs": [
+        "V20",
+        "V1"
+      ]
+    },
+    {
+      "id": "s21",
+      "refs": [
+        "V21",
+        "V2"
+      ]
+    },
+    {
+      "id": "s22",
+      "refs": [
+        "V22",
+        "V3"
+      ]
+    },
+    {
+      "id": "s23",
+      "refs": [
+        "V23",
+        "V4"
+      ]
+    },
+    {
+      "id": "s24",
+      "refs": [
+        "V24",
+        "V5"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "V5",
+    "V6",
+    "V7",
+    "V8",
+    "V9",
+    "V10",
+    "V11",
+    "V12",
+    "V13",
+    "V14",
+    "V15",
+    "V16",
+    "V17",
+    "V18",
+    "V19",
+    "V20",
+    "V21",
+    "V22",
+    "V23",
+    "V24"
+  ],
+  "planeMarks": {},
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 500
+  },
+  "caption": "원을 24등분한 점들을 다섯 칸 간격으로 이어 만든 대칭적인 별다각형과 같은 길이의 스물네 현을 보인다.",
+  "accessibilityDescription": "원을 24등분한 점들을 다섯 칸 간격으로 이어 만든 대칭적인 별다각형과 같은 길이의 스물네 현을 보인다.",
+  "newVisualInformation": [
+    "원을 24등분한 점들을 다섯 칸 간격으로 이어 만든 대칭적인 별다각형과 같은 길이의 스물네 현을 보인다."
+  ],
+  "sourceQuote": "[서술형 2] 원의 둘레를 $24$등분하는 점들이 일정한 간격으로",
+  "sourceConditions": [
+    {
+      "id": "f1",
+      "condition": "원문 O 작도 SOURCE_POINT",
+      "mappedTo": "mathPlan.nodes[0]"
+    },
+    {
+      "id": "f2",
+      "condition": "원문 V1 작도 SOURCE_POINT",
+      "mappedTo": "mathPlan.nodes[1]"
+    },
+    {
+      "id": "f3",
+      "condition": "원문 V2 작도 POLAR_POINT",
+      "mappedTo": "mathPlan.nodes[2]"
+    },
+    {
+      "id": "f4",
+      "condition": "원문 V3 작도 POLAR_POINT",
+      "mappedTo": "mathPlan.nodes[3]"
+    },
+    {
+      "id": "f5",
+      "condition": "원문 V4 작도 POLAR_POINT",
+      "mappedTo": "mathPlan.nodes[4]"
+    },
+    {
+      "id": "f6",
+      "condition": "원문 V5 작도 POLAR_POINT",
+      "mappedTo": "mathPlan.nodes[5]"
+    },
+    {
+      "id": "f7",
+      "condition": "원문 V6 작도 POLAR_POINT",
+      "mappedTo": "mathPlan.nodes[6]"
+    },
+    {
+      "id": "f8",
+      "condition": "원문 V7 작도 POLAR_POINT",
+      "mappedTo": "mathPlan.nodes[7]"
+    },
+    {
+      "id": "f9",
+      "condition": "원문 V8 작도 POLAR_POINT",
+      "mappedTo": "mathPlan.nodes[8]"
+    },
+    {
+      "id": "f10",
+      "condition": "원문 V9 작도 POLAR_POINT",
+      "mappedTo": "mathPlan.nodes[9]"
+    },
+    {
+      "id": "f11",
+      "condition": "원문 V10 작도 POLAR_POINT",
+      "mappedTo": "mathPlan.nodes[10]"
+    },
+    {
+      "id": "f12",
+      "condition": "원문 V11 작도 POLAR_POINT",
+      "mappedTo": "mathPlan.nodes[11]"
+    },
+    {
+      "id": "f13",
+      "condition": "원문 V12 작도 POLAR_POINT",
+      "mappedTo": "mathPlan.nodes[12]"
+    },
+    {
+      "id": "f14",
+      "condition": "원문 V13 작도 POLAR_POINT",
+      "mappedTo": "mathPlan.nodes[13]"
+    },
+    {
+      "id": "f15",
+      "condition": "원문 V14 작도 POLAR_POINT",
+      "mappedTo": "mathPlan.nodes[14]"
+    },
+    {
+      "id": "f16",
+      "condition": "원문 V15 작도 POLAR_POINT",
+      "mappedTo": "mathPlan.nodes[15]"
+    },
+    {
+      "id": "f17",
+      "condition": "원문 V16 작도 POLAR_POINT",
+      "mappedTo": "mathPlan.nodes[16]"
+    },
+    {
+      "id": "f18",
+      "condition": "원문 V17 작도 POLAR_POINT",
+      "mappedTo": "mathPlan.nodes[17]"
+    },
+    {
+      "id": "f19",
+      "condition": "원문 V18 작도 POLAR_POINT",
+      "mappedTo": "mathPlan.nodes[18]"
+    },
+    {
+      "id": "f20",
+      "condition": "원문 V19 작도 POLAR_POINT",
+      "mappedTo": "mathPlan.nodes[19]"
+    },
+    {
+      "id": "f21",
+      "condition": "원문 V20 작도 POLAR_POINT",
+      "mappedTo": "mathPlan.nodes[20]"
+    },
+    {
+      "id": "f22",
+      "condition": "원문 V21 작도 POLAR_POINT",
+      "mappedTo": "mathPlan.nodes[21]"
+    },
+    {
+      "id": "f23",
+      "condition": "원문 V22 작도 POLAR_POINT",
+      "mappedTo": "mathPlan.nodes[22]"
+    },
+    {
+      "id": "f24",
+      "condition": "원문 V23 작도 POLAR_POINT",
+      "mappedTo": "mathPlan.nodes[23]"
+    },
+    {
+      "id": "f25",
+      "condition": "원문 V24 작도 POLAR_POINT",
+      "mappedTo": "mathPlan.nodes[24]"
+    },
+    {
+      "id": "f26",
+      "condition": "원문 circ 작도 CIRCLE_CENTER_RADIUS",
+      "mappedTo": "mathPlan.nodes[25]"
+    },
+    {
+      "id": "f27",
+      "condition": "원문 displayPoints 1",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "f28",
+      "condition": "원문 displayPoints 2",
+      "mappedTo": "displayPoints[1]"
+    },
+    {
+      "id": "f29",
+      "condition": "원문 displayPoints 3",
+      "mappedTo": "displayPoints[2]"
+    },
+    {
+      "id": "f30",
+      "condition": "원문 displayPoints 4",
+      "mappedTo": "displayPoints[3]"
+    },
+    {
+      "id": "f31",
+      "condition": "원문 displayPoints 5",
+      "mappedTo": "displayPoints[4]"
+    },
+    {
+      "id": "f32",
+      "condition": "원문 displayPoints 6",
+      "mappedTo": "displayPoints[5]"
+    },
+    {
+      "id": "f33",
+      "condition": "원문 displayPoints 7",
+      "mappedTo": "displayPoints[6]"
+    },
+    {
+      "id": "f34",
+      "condition": "원문 displayPoints 8",
+      "mappedTo": "displayPoints[7]"
+    },
+    {
+      "id": "f35",
+      "condition": "원문 displayPoints 9",
+      "mappedTo": "displayPoints[8]"
+    },
+    {
+      "id": "f36",
+      "condition": "원문 displayPoints 10",
+      "mappedTo": "displayPoints[9]"
+    },
+    {
+      "id": "f37",
+      "condition": "원문 displayPoints 11",
+      "mappedTo": "displayPoints[10]"
+    },
+    {
+      "id": "f38",
+      "condition": "원문 displayPoints 12",
+      "mappedTo": "displayPoints[11]"
+    },
+    {
+      "id": "f39",
+      "condition": "원문 displayPoints 13",
+      "mappedTo": "displayPoints[12]"
+    },
+    {
+      "id": "f40",
+      "condition": "원문 displayPoints 14",
+      "mappedTo": "displayPoints[13]"
+    },
+    {
+      "id": "f41",
+      "condition": "원문 displayPoints 15",
+      "mappedTo": "displayPoints[14]"
+    },
+    {
+      "id": "f42",
+      "condition": "원문 displayPoints 16",
+      "mappedTo": "displayPoints[15]"
+    },
+    {
+      "id": "f43",
+      "condition": "원문 displayPoints 17",
+      "mappedTo": "displayPoints[16]"
+    },
+    {
+      "id": "f44",
+      "condition": "원문 displayPoints 18",
+      "mappedTo": "displayPoints[17]"
+    },
+    {
+      "id": "f45",
+      "condition": "원문 displayPoints 19",
+      "mappedTo": "displayPoints[18]"
+    },
+    {
+      "id": "f46",
+      "condition": "원문 displayPoints 20",
+      "mappedTo": "displayPoints[19]"
+    },
+    {
+      "id": "f47",
+      "condition": "원문 displayPoints 21",
+      "mappedTo": "displayPoints[20]"
+    },
+    {
+      "id": "f48",
+      "condition": "원문 displayPoints 22",
+      "mappedTo": "displayPoints[21]"
+    },
+    {
+      "id": "f49",
+      "condition": "원문 displayPoints 23",
+      "mappedTo": "displayPoints[22]"
+    },
+    {
+      "id": "f50",
+      "condition": "원문 displayPoints 24",
+      "mappedTo": "displayPoints[23]"
+    },
+    {
+      "id": "f51",
+      "condition": "원문 displayPoints 25",
+      "mappedTo": "displayPoints[24]"
+    },
+    {
+      "id": "f52",
+      "condition": "원문 displaySegments 1",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "f53",
+      "condition": "원문 displaySegments 2",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "f54",
+      "condition": "원문 displaySegments 3",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "f55",
+      "condition": "원문 displaySegments 4",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "f56",
+      "condition": "원문 displaySegments 5",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "f57",
+      "condition": "원문 displaySegments 6",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "f58",
+      "condition": "원문 displaySegments 7",
+      "mappedTo": "displaySegments[6]"
+    },
+    {
+      "id": "f59",
+      "condition": "원문 displaySegments 8",
+      "mappedTo": "displaySegments[7]"
+    },
+    {
+      "id": "f60",
+      "condition": "원문 displaySegments 9",
+      "mappedTo": "displaySegments[8]"
+    },
+    {
+      "id": "f61",
+      "condition": "원문 displaySegments 10",
+      "mappedTo": "displaySegments[9]"
+    },
+    {
+      "id": "f62",
+      "condition": "원문 displaySegments 11",
+      "mappedTo": "displaySegments[10]"
+    },
+    {
+      "id": "f63",
+      "condition": "원문 displaySegments 12",
+      "mappedTo": "displaySegments[11]"
+    },
+    {
+      "id": "f64",
+      "condition": "원문 displaySegments 13",
+      "mappedTo": "displaySegments[12]"
+    },
+    {
+      "id": "f65",
+      "condition": "원문 displaySegments 14",
+      "mappedTo": "displaySegments[13]"
+    },
+    {
+      "id": "f66",
+      "condition": "원문 displaySegments 15",
+      "mappedTo": "displaySegments[14]"
+    },
+    {
+      "id": "f67",
+      "condition": "원문 displaySegments 16",
+      "mappedTo": "displaySegments[15]"
+    },
+    {
+      "id": "f68",
+      "condition": "원문 displaySegments 17",
+      "mappedTo": "displaySegments[16]"
+    },
+    {
+      "id": "f69",
+      "condition": "원문 displaySegments 18",
+      "mappedTo": "displaySegments[17]"
+    },
+    {
+      "id": "f70",
+      "condition": "원문 displaySegments 19",
+      "mappedTo": "displaySegments[18]"
+    },
+    {
+      "id": "f71",
+      "condition": "원문 displaySegments 20",
+      "mappedTo": "displaySegments[19]"
+    },
+    {
+      "id": "f72",
+      "condition": "원문 displaySegments 21",
+      "mappedTo": "displaySegments[20]"
+    },
+    {
+      "id": "f73",
+      "condition": "원문 displaySegments 22",
+      "mappedTo": "displaySegments[21]"
+    },
+    {
+      "id": "f74",
+      "condition": "원문 displaySegments 23",
+      "mappedTo": "displaySegments[22]"
+    },
+    {
+      "id": "f75",
+      "condition": "원문 displaySegments 24",
+      "mappedTo": "displaySegments[23]"
+    },
+    {
+      "id": "f76",
+      "condition": "원문 displayCircles 1",
+      "mappedTo": "displayCircles[0]"
+    }
+  ]
+}

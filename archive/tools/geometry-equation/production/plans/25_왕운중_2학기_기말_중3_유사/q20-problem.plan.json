@@ -1,0 +1,370 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-9"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "T"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "T",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "AT",
+      "refs": [
+        "A",
+        "T"
+      ]
+    },
+    {
+      "id": "HT",
+      "refs": [
+        "H",
+        "T"
+      ]
+    },
+    {
+      "id": "TC",
+      "refs": [
+        "T",
+        "C"
+      ]
+    },
+    {
+      "id": "OT",
+      "refs": [
+        "O",
+        "T"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "A",
+        "H",
+        "T"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "rT",
+      "refs": [
+        "O",
+        "T",
+        "C"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "AB",
+        "text": "10",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAH",
+        "ownerSegment": "AH",
+        "text": "9",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 600
+  },
+  "caption": "원 O에서 지름 AB의 길이가 10 cm이고, 점 T에서의 접선 CT 위에 수선의 발 H가 있다. AH=9 cm와 삼각형 AHT가 표시되어 있다.",
+  "accessibilityDescription": "원의 중심 O를 지나는 지름 AB가 그려져 있고, 원 아래의 접선 위에 점 T와 C가 있다. 점 A에서 접선에 내린 수선의 발 H가 표시되어 삼각형 AHT를 이루며, AB 옆에 10 cm, AH 옆에 9 cm가 적혀 있다.",
+  "newVisualInformation": [
+    "원 O와 지름 AB=10 cm",
+    "접선 CT와 수선의 발 H",
+    "AH=9 cm와 삼각형 AHT"
+  ],
+  "sourceConditions": [
+    {
+      "id": "f1",
+      "condition": "원문 도형 O의 SOURCE_POINT 기하 작도",
+      "mappedTo": "mathPlan.nodes[0]"
+    },
+    {
+      "id": "f2",
+      "condition": "원문 도형 A의 TRANSLATE_POINT 기하 작도",
+      "mappedTo": "mathPlan.nodes[1]"
+    },
+    {
+      "id": "f3",
+      "condition": "원문 도형 B의 TRANSLATE_POINT 기하 작도",
+      "mappedTo": "mathPlan.nodes[2]"
+    },
+    {
+      "id": "f4",
+      "condition": "원문 도형 T의 TRANSLATE_POINT 기하 작도",
+      "mappedTo": "mathPlan.nodes[3]"
+    },
+    {
+      "id": "f5",
+      "condition": "원문 도형 H의 TRANSLATE_POINT 기하 작도",
+      "mappedTo": "mathPlan.nodes[4]"
+    },
+    {
+      "id": "f6",
+      "condition": "원문 도형 C의 TRANSLATE_POINT 기하 작도",
+      "mappedTo": "mathPlan.nodes[5]"
+    },
+    {
+      "id": "f7",
+      "condition": "원문 도형 circ의 CIRCLE_CENTER_RADIUS 기하 작도",
+      "mappedTo": "mathPlan.nodes[6]"
+    },
+    {
+      "id": "f8",
+      "condition": "원문 displayPoints 표식 1",
+      "mappedTo": "displayPoints[0]"
+    },
+    {
+      "id": "f9",
+      "condition": "원문 displayPoints 표식 2",
+      "mappedTo": "displayPoints[1]"
+    },
+    {
+      "id": "f10",
+      "condition": "원문 displayPoints 표식 3",
+      "mappedTo": "displayPoints[2]"
+    },
+    {
+      "id": "f11",
+      "condition": "원문 displayPoints 표식 4",
+      "mappedTo": "displayPoints[3]"
+    },
+    {
+      "id": "f12",
+      "condition": "원문 displayPoints 표식 5",
+      "mappedTo": "displayPoints[4]"
+    },
+    {
+      "id": "f13",
+      "condition": "원문 displayPoints 표식 6",
+      "mappedTo": "displayPoints[5]"
+    },
+    {
+      "id": "f14",
+      "condition": "원문 displayCircles 표식 1",
+      "mappedTo": "displayCircles[0]"
+    },
+    {
+      "id": "f15",
+      "condition": "원문 displaySegments 표식 1",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "f16",
+      "condition": "원문 displaySegments 표식 2",
+      "mappedTo": "displaySegments[1]"
+    },
+    {
+      "id": "f17",
+      "condition": "원문 displaySegments 표식 3",
+      "mappedTo": "displaySegments[2]"
+    },
+    {
+      "id": "f18",
+      "condition": "원문 displaySegments 표식 4",
+      "mappedTo": "displaySegments[3]"
+    },
+    {
+      "id": "f19",
+      "condition": "원문 displaySegments 표식 5",
+      "mappedTo": "displaySegments[4]"
+    },
+    {
+      "id": "f20",
+      "condition": "원문 displaySegments 표식 6",
+      "mappedTo": "displaySegments[5]"
+    },
+    {
+      "id": "f21",
+      "condition": "원문 rightAngles 표식 1",
+      "mappedTo": "rightAngles[0]"
+    },
+    {
+      "id": "f22",
+      "condition": "원문 rightAngles 표식 2",
+      "mappedTo": "rightAngles[1]"
+    },
+    {
+      "id": "f23",
+      "condition": "원문 기하 expressionLabels 표시 1",
+      "mappedTo": "planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "f24",
+      "condition": "원문 기하 expressionLabels 표시 2",
+      "mappedTo": "planeMarks.expressionLabels[1]"
+    }
+  ],
+  "sourceQuote": "다음 그림에서 선분 $AB$가 지름인 원 $O$의 지름의 길이는 "
+}
